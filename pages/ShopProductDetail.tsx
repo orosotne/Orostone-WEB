@@ -38,7 +38,8 @@ import {
   MessageSquare,
   Download
 } from 'lucide-react';
-import { SHOP_PRODUCTS, ShopProduct } from '../constants';
+import { ShopProduct } from '../constants';
+import { useShopifyProducts, useShopifyProduct } from '../hooks/useShopifyProducts';
 import { Button } from '../components/UI/Button';
 import { useCart, formatPrice } from '../context/CartContext';
 import { cn } from '@/lib/utils';
@@ -1639,13 +1640,23 @@ const ProductSchema: React.FC<ProductSchemaProps> = ({ product, totalPrice }) =>
 export const ShopProductDetail: React.FC = () => {
   const { id } = useParams();
   const { addItem, isInCart } = useCart();
+  const { product: shopifyProduct, isLoading } = useShopifyProduct(id);
+  const { products: allProducts } = useShopifyProducts();
   // Default to 2 platne for higher AOV
   const [selectedBundle, setSelectedBundle] = useState<BundleOption>(BUNDLE_OPTIONS[1]);
 
-  const product = useMemo(() => 
-    SHOP_PRODUCTS.find(p => p.id === id), 
-    [id]
-  );
+  const product = shopifyProduct;
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin w-8 h-8 border-2 border-brand-gold border-t-transparent rounded-full mx-auto mb-4" />
+          <p className="text-gray-500">Načítavam produkt...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!product) {
     return (
@@ -1665,32 +1676,9 @@ export const ShopProductDetail: React.FC = () => {
   }
 
   const handleAddToCart = () => {
-    // Calculate surface area from dimensions
-    const match = product.dimensions.match(/(\d+)\s*x\s*(\d+)/i);
-    let surfaceArea = 5.12; // Default
-    if (match) {
-      const width = parseInt(match[1]) / 1000;
-      const height = parseInt(match[2]) / 1000;
-      surfaceArea = width * height;
+    if (product.shopifyVariantId) {
+      addItem(product.shopifyVariantId, selectedBundle.quantity);
     }
-
-    // Bundle name for cart display
-    const bundleName = selectedBundle.quantity > 1 
-      ? `${product.name} (${selectedBundle.quantity}x, -${selectedBundle.discountPercent}%)`
-      : product.name;
-
-    addItem({
-      productId: product.id,
-      name: bundleName,
-      slug: product.id,
-      image: product.image,
-      price: product.pricePerM2,
-      quantity: selectedBundle.quantity,
-      dimensions: product.dimensions,
-      thickness: product.thickness,
-      surfaceArea: surfaceArea,
-      discountPercent: selectedBundle.discountPercent,
-    });
   };
 
   return (
@@ -1698,7 +1686,7 @@ export const ShopProductDetail: React.FC = () => {
       {/* Section 1: Hero */}
       <HeroSection 
         product={product}
-        allProducts={SHOP_PRODUCTS}
+        allProducts={allProducts}
         selectedBundle={selectedBundle}
         onBundleChange={setSelectedBundle}
         onAddToCart={handleAddToCart}

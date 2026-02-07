@@ -3,7 +3,8 @@ import {
   ArrowRight, CheckCircle, ChevronRight,
   Clock, Thermometer, MessageSquare, Star
 } from 'lucide-react';
-import { SHOP_PRODUCTS, ShopProduct } from '../constants';
+import { ShopProduct } from '../constants';
+import { useShopifyProducts } from '../hooks/useShopifyProducts';
 import { OrderModal } from '../components/Shop/OrderModal';
 import { Button } from '../components/UI/Button';
 import { SEOHead, OROSTONE_ORGANIZATION_LD } from '../components/UI/SEOHead';
@@ -31,6 +32,7 @@ const SLIDE_INTERVAL = 8000; // 8 sekúnd
 
 export const Shop = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { products: SHOP_PRODUCTS, isLoading: productsLoading } = useShopifyProducts();
 
   const [selectedProduct, setSelectedProduct] = useState<ShopProduct | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);

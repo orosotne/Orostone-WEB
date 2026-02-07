@@ -6,7 +6,8 @@ import {
   Search, X, ShoppingBag, Grid3X3, LayoutGrid, 
   ChevronRight, Truck, ArrowUpDown, SlidersHorizontal, CheckCircle
 } from 'lucide-react';
-import { SHOP_PRODUCTS, ShopProduct, ProductCategory } from '../constants';
+import { ShopProduct, ProductCategory } from '../constants';
+import { useShopifyProducts } from '../hooks/useShopifyProducts';
 import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
@@ -26,16 +27,18 @@ const CATEGORY_LABELS: Record<ProductCategory, string> = {
   jednofarebne: 'Jednofarebné',
 };
 
-const CATEGORIES = [
-  { id: 'all' as const, name: 'Všetky produkty', count: SHOP_PRODUCTS.length },
-  ...Object.entries(CATEGORY_LABELS)
-    .map(([id, name]) => ({
-      id: id as ProductCategory,
-      name,
-      count: SHOP_PRODUCTS.filter(p => p.category === id).length,
-    }))
-    .filter(cat => cat.count > 0), // Zobrazíme len kategórie s produktmi
-];
+function buildCategories(products: ShopProduct[]) {
+  return [
+    { id: 'all' as const, name: 'Všetky produkty', count: products.length },
+    ...Object.entries(CATEGORY_LABELS)
+      .map(([id, name]) => ({
+        id: id as ProductCategory,
+        name,
+        count: products.filter(p => p.category === id).length,
+      }))
+      .filter(cat => cat.count > 0),
+  ];
+}
 
 // ===========================================
 // PRODUCT CARD COMPONENT
@@ -164,7 +167,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
 // ===========================================
 export const ProductCatalog = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { addItem, isInCart, getItemQuantity } = useCart();
+  const { addItem, isInCart } = useCart();
+  const { products: SHOP_PRODUCTS } = useShopifyProducts();
+  const CATEGORIES = useMemo(() => buildCategories(SHOP_PRODUCTS), [SHOP_PRODUCTS]);
 
   // Filter states
   const [searchQuery, setSearchQuery] = useState('');
@@ -215,17 +220,9 @@ export const ProductCatalog = () => {
   };
 
   const handleAddToCart = (product: ShopProduct) => {
-    addItem({
-      productId: product.id,
-      name: product.name,
-      slug: product.id,
-      image: product.image,
-      price: product.pricePerM2,
-      quantity: 1,
-      dimensions: product.dimensions,
-      thickness: product.thickness,
-      surfaceArea: 5.12,
-    });
+    if (product.shopifyVariantId) {
+      addItem(product.shopifyVariantId, 1);
+    }
   };
 
   useGSAP(() => {
@@ -547,7 +544,7 @@ export const ProductCatalog = () => {
                       compact={viewMode === 'compact'}
                       onAddToCart={() => handleAddToCart(product)}
                       inCart={isInCart(product.id)}
-                      quantity={getItemQuantity(product.id)}
+                      quantity={0}
                     />
                   ))}
                 </div>

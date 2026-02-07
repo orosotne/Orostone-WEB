@@ -1,151 +1,81 @@
-import React, { createContext, useContext, useReducer, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react';
+import { isShopifyConfigured } from '../lib/shopify';
+import {
+  createCart as shopifyCreateCart,
+  getCart as shopifyGetCart,
+  addToCart as shopifyAddToCart,
+  removeFromCart as shopifyRemoveFromCart,
+  updateCartItem as shopifyUpdateCartItem,
+  type ShopifyCart,
+  type ShopifyCartLine,
+} from '../services/shopify.service';
 
 // ===========================================
 // TYPES
 // ===========================================
 
 export interface CartItem {
-  id: string;
-  productId: string;
+  id: string;            // Shopify line item ID
+  variantId: string;     // Shopify variant GID
+  productId: string;     // Product handle
   name: string;
-  slug: string;
   image: string;
-  price: number;        // cena za m²
-  quantity: number;     // počet kusov
-  dimensions: string;
-  thickness: string;
-  surfaceArea?: number; // m² za kus
-  discountPercent?: number; // bundle zlava (napr. 20 = 20%)
+  price: number;         // cena za kus
+  quantity: number;
+  variant: string;       // variant title (napr. "12mm / 3200x1600")
 }
-
-export interface CartState {
-  items: CartItem[];
-  isOpen: boolean;
-}
-
-type CartAction =
-  | { type: 'ADD_ITEM'; payload: CartItem }
-  | { type: 'REMOVE_ITEM'; payload: string }
-  | { type: 'UPDATE_QUANTITY'; payload: { id: string; quantity: number } }
-  | { type: 'CLEAR_CART' }
-  | { type: 'OPEN_CART' }
-  | { type: 'CLOSE_CART' }
-  | { type: 'TOGGLE_CART' }
-  | { type: 'LOAD_CART'; payload: CartItem[] };
 
 interface CartContextType {
-  state: CartState;
+  // State
+  items: CartItem[];
+  isOpen: boolean;
+  isLoading: boolean;
+  checkoutUrl: string | null;
+  
   // Actions
-  addItem: (item: Omit<CartItem, 'id'>) => void;
-  removeItem: (id: string) => void;
-  updateQuantity: (id: string, quantity: number) => void;
-  clearCart: () => void;
+  addItem: (variantId: string, quantity?: number) => Promise<void>;
+  removeItem: (lineId: string) => Promise<void>;
+  updateQuantity: (lineId: string, quantity: number) => Promise<void>;
+  clearCart: () => Promise<void>;
   openCart: () => void;
   closeCart: () => void;
   toggleCart: () => void;
+  
   // Computed
   itemCount: number;
   subtotal: number;
-  isInCart: (productId: string) => boolean;
-  getItemQuantity: (productId: string) => number;
+  total: number;
+  isInCart: (productHandle: string) => boolean;
 }
 
 // ===========================================
 // CONSTANTS
 // ===========================================
 
-const CART_STORAGE_KEY = 'orostone_cart';
-const SHIPPING_FLAT_RATE = 49; // €49 paušálna doprava
-
-// ===========================================
-// INITIAL STATE
-// ===========================================
-
-const initialState: CartState = {
-  items: [],
-  isOpen: false,
-};
-
-// ===========================================
-// REDUCER
-// ===========================================
-
-function cartReducer(state: CartState, action: CartAction): CartState {
-  switch (action.type) {
-    case 'ADD_ITEM': {
-      // Hladaj existujucu polozku s rovnakym produktom A zlavou
-      const existingIndex = state.items.findIndex(
-        (item) => item.productId === action.payload.productId && 
-                  item.discountPercent === action.payload.discountPercent
-      );
-
-      if (existingIndex > -1) {
-        // Zvýš množstvo existujúcej položky
-        const updatedItems = [...state.items];
-        updatedItems[existingIndex] = {
-          ...updatedItems[existingIndex],
-          quantity: updatedItems[existingIndex].quantity + action.payload.quantity,
-        };
-        return { ...state, items: updatedItems, isOpen: true };
-      }
-
-      // Pridaj novú položku
-      return {
-        ...state,
-        items: [...state.items, action.payload],
-        isOpen: true,
-      };
-    }
-
-    case 'REMOVE_ITEM':
-      return {
-        ...state,
-        items: state.items.filter((item) => item.id !== action.payload),
-      };
-
-    case 'UPDATE_QUANTITY': {
-      if (action.payload.quantity <= 0) {
-        return {
-          ...state,
-          items: state.items.filter((item) => item.id !== action.payload.id),
-        };
-      }
-
-      return {
-        ...state,
-        items: state.items.map((item) =>
-          item.id === action.payload.id
-            ? { ...item, quantity: action.payload.quantity }
-            : item
-        ),
-      };
-    }
-
-    case 'CLEAR_CART':
-      return { ...state, items: [] };
-
-    case 'OPEN_CART':
-      return { ...state, isOpen: true };
-
-    case 'CLOSE_CART':
-      return { ...state, isOpen: false };
-
-    case 'TOGGLE_CART':
-      return { ...state, isOpen: !state.isOpen };
-
-    case 'LOAD_CART':
-      return { ...state, items: action.payload };
-
-    default:
-      return state;
-  }
-}
+const CART_ID_KEY = 'orostone_shopify_cart_id';
 
 // ===========================================
 // CONTEXT
 // ===========================================
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
+
+// ===========================================
+// HELPERS
+// ===========================================
+
+function mapShopifyCartLines(cart: ShopifyCart): CartItem[] {
+  return cart.lines.edges.map(({ node: line }) => ({
+    id: line.id,
+    variantId: line.merchandise.id,
+    productId: line.merchandise.product.handle,
+    name: line.merchandise.product.title,
+    image: line.merchandise.image?.url || line.merchandise.product.images.edges[0]?.node.url || '',
+    price: parseFloat(line.cost.amountPerQuantity.amount),
+    quantity: line.quantity,
+    variant: line.merchandise.title !== 'Default Title' ? line.merchandise.title : '',
+  }));
+}
 
 // ===========================================
 // PROVIDER
@@ -156,97 +86,141 @@ interface CartProviderProps {
 }
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
-  const [state, dispatch] = useReducer(cartReducer, initialState);
+  const [cart, setCart] = useState<ShopifyCart | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Načítaj košík z localStorage pri inicializácii
+  // ------------------------------------------
+  // Inicializacia kosika
+  // ------------------------------------------
   useEffect(() => {
-    try {
-      const savedCart = localStorage.getItem(CART_STORAGE_KEY);
-      if (savedCart) {
-        const parsedCart = JSON.parse(savedCart);
-        if (Array.isArray(parsedCart) && parsedCart.length > 0) {
-          dispatch({ type: 'LOAD_CART', payload: parsedCart });
+    if (!isShopifyConfigured()) return;
+
+    const initCart = async () => {
+      try {
+        // Skus nacitat existujuci cart z localStorage
+        const savedCartId = localStorage.getItem(CART_ID_KEY);
+        
+        if (savedCartId) {
+          const existingCart = await shopifyGetCart(savedCartId);
+          if (existingCart) {
+            setCart(existingCart);
+            return;
+          }
+        }
+
+        // Ak neexistuje, vytvor novy
+        const newCart = await shopifyCreateCart();
+        setCart(newCart);
+        localStorage.setItem(CART_ID_KEY, newCart.id);
+      } catch (error) {
+        console.error('Chyba pri inicializacii kosika:', error);
+        // Vytvor novy cart ak sa nieco pokazilo
+        try {
+          const newCart = await shopifyCreateCart();
+          setCart(newCart);
+          localStorage.setItem(CART_ID_KEY, newCart.id);
+        } catch (retryError) {
+          console.error('Nepodarilo sa vytvorit kosik:', retryError);
         }
       }
+    };
+
+    initCart();
+  }, []);
+
+  // ------------------------------------------
+  // ACTIONS
+  // ------------------------------------------
+
+  const addItem = useCallback(async (variantId: string, quantity: number = 1) => {
+    if (!cart) return;
+    
+    setIsLoading(true);
+    try {
+      const updatedCart = await shopifyAddToCart(cart.id, variantId, quantity);
+      setCart(updatedCart);
+      setIsOpen(true); // Otvor drawer po pridani
     } catch (error) {
-      console.error('Failed to load cart from localStorage:', error);
+      console.error('Chyba pri pridani do kosika:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [cart]);
+
+  const removeItem = useCallback(async (lineId: string) => {
+    if (!cart) return;
+    
+    setIsLoading(true);
+    try {
+      const updatedCart = await shopifyRemoveFromCart(cart.id, lineId);
+      setCart(updatedCart);
+    } catch (error) {
+      console.error('Chyba pri odstraneni z kosika:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [cart]);
+
+  const updateQuantity = useCallback(async (lineId: string, quantity: number) => {
+    if (!cart) return;
+    
+    setIsLoading(true);
+    try {
+      if (quantity <= 0) {
+        const updatedCart = await shopifyRemoveFromCart(cart.id, lineId);
+        setCart(updatedCart);
+      } else {
+        const updatedCart = await shopifyUpdateCartItem(cart.id, lineId, quantity);
+        setCart(updatedCart);
+      }
+    } catch (error) {
+      console.error('Chyba pri aktualizacii mnozstva:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [cart]);
+
+  const clearCart = useCallback(async () => {
+    setIsLoading(true);
+    try {
+      const newCart = await shopifyCreateCart();
+      setCart(newCart);
+      localStorage.setItem(CART_ID_KEY, newCart.id);
+    } catch (error) {
+      console.error('Chyba pri vyprazdneni kosika:', error);
+    } finally {
+      setIsLoading(false);
     }
   }, []);
 
-  // Ulož košík do localStorage pri zmene
-  useEffect(() => {
-    try {
-      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(state.items));
-    } catch (error) {
-      console.error('Failed to save cart to localStorage:', error);
-    }
-  }, [state.items]);
+  const openCart = useCallback(() => setIsOpen(true), []);
+  const closeCart = useCallback(() => setIsOpen(false), []);
+  const toggleCart = useCallback(() => setIsOpen(prev => !prev), []);
 
-  // ===========================================
-  // ACTIONS
-  // ===========================================
-
-  const addItem = (item: Omit<CartItem, 'id'>) => {
-    const newItem: CartItem = {
-      ...item,
-      id: `${item.productId}_${Date.now()}`,
-    };
-    dispatch({ type: 'ADD_ITEM', payload: newItem });
-  };
-
-  const removeItem = (id: string) => {
-    dispatch({ type: 'REMOVE_ITEM', payload: id });
-  };
-
-  const updateQuantity = (id: string, quantity: number) => {
-    dispatch({ type: 'UPDATE_QUANTITY', payload: { id, quantity } });
-  };
-
-  const clearCart = () => {
-    dispatch({ type: 'CLEAR_CART' });
-  };
-
-  const openCart = () => {
-    dispatch({ type: 'OPEN_CART' });
-  };
-
-  const closeCart = () => {
-    dispatch({ type: 'CLOSE_CART' });
-  };
-
-  const toggleCart = () => {
-    dispatch({ type: 'TOGGLE_CART' });
-  };
-
-  // ===========================================
+  // ------------------------------------------
   // COMPUTED VALUES
-  // ===========================================
+  // ------------------------------------------
 
-  const itemCount = state.items.reduce((total, item) => total + item.quantity, 0);
+  const items = cart ? mapShopifyCartLines(cart) : [];
+  const itemCount = cart?.totalQuantity || 0;
+  const subtotal = cart ? parseFloat(cart.cost.subtotalAmount.amount) : 0;
+  const total = cart ? parseFloat(cart.cost.totalAmount.amount) : 0;
+  const checkoutUrl = cart?.checkoutUrl || null;
 
-  const subtotal = state.items.reduce((total, item) => {
-    // Cena = cena za m² × plocha × množstvo × (1 - zlava)
-    const area = item.surfaceArea || 5.12; // default 3200x1600mm = 5.12m²
-    const discount = item.discountPercent ? item.discountPercent / 100 : 0;
-    const itemTotal = item.price * area * item.quantity * (1 - discount);
-    return total + itemTotal;
-  }, 0);
+  const isInCart = useCallback((productHandle: string) => {
+    return items.some(item => item.productId === productHandle);
+  }, [items]);
 
-  const isInCart = (productId: string) => {
-    return state.items.some((item) => item.productId === productId);
-  };
-
-  const getItemQuantity = (productId: string) => {
-    const item = state.items.find((item) => item.productId === productId);
-    return item?.quantity || 0;
-  };
-
-  // ===========================================
+  // ------------------------------------------
   // CONTEXT VALUE
-  // ===========================================
+  // ------------------------------------------
 
   const value: CartContextType = {
-    state,
+    items,
+    isOpen,
+    isLoading,
+    checkoutUrl,
     addItem,
     removeItem,
     updateQuantity,
@@ -256,8 +230,8 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     toggleCart,
     itemCount,
     subtotal,
+    total,
     isInCart,
-    getItemQuantity,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
@@ -278,12 +252,6 @@ export const useCart = (): CartContextType => {
 // ===========================================
 // UTILITY EXPORTS
 // ===========================================
-
-export const SHIPPING_COST = SHIPPING_FLAT_RATE;
-
-export const calculateTotal = (subtotal: number, shippingCost: number = SHIPPING_FLAT_RATE) => {
-  return subtotal + shippingCost;
-};
 
 export const formatPrice = (price: number): string => {
   return new Intl.NumberFormat('sk-SK', {

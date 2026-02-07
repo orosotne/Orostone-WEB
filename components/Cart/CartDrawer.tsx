@@ -1,16 +1,23 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Minus, Plus, ShoppingBag, Trash2, ArrowRight } from 'lucide-react';
+import { X, Minus, Plus, ShoppingBag, Trash2, ArrowRight, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useCart, formatPrice, SHIPPING_COST, calculateTotal } from '../../context/CartContext';
+import { useCart, formatPrice } from '../../context/CartContext';
 import { Button } from '../UI/Button';
 
 export const CartDrawer: React.FC = () => {
-  const { state, closeCart, removeItem, updateQuantity, itemCount, subtotal } = useCart();
+  const { items, isOpen, closeCart, removeItem, updateQuantity, itemCount, subtotal, total, checkoutUrl, isLoading } = useCart();
+
+  const handleCheckout = () => {
+    if (checkoutUrl) {
+      window.location.href = checkoutUrl;
+    }
+    closeCart();
+  };
 
   return (
     <AnimatePresence>
-      {state.isOpen && (
+      {isOpen && (
         <>
           {/* Overlay */}
           <motion.div
@@ -53,7 +60,7 @@ export const CartDrawer: React.FC = () => {
 
             {/* Content */}
             <div className="flex-1 overflow-y-auto">
-              {state.items.length === 0 ? (
+              {items.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-full p-8 text-center">
                   <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-6">
                     <ShoppingBag size={32} className="text-gray-400" />
@@ -73,7 +80,7 @@ export const CartDrawer: React.FC = () => {
                 </div>
               ) : (
                 <ul className="divide-y divide-gray-100">
-                  {state.items.map((item) => (
+                  {items.map((item) => (
                     <li key={item.id} className="p-4">
                       <div className="flex gap-4">
                         {/* Image */}
@@ -90,11 +97,13 @@ export const CartDrawer: React.FC = () => {
                           <h4 className="font-semibold text-brand-dark truncate">
                             {item.name}
                           </h4>
-                          <p className="text-sm text-gray-500 mt-1">
-                            {item.dimensions} • {item.thickness}
-                          </p>
+                          {item.variant && (
+                            <p className="text-sm text-gray-500 mt-1">
+                              {item.variant}
+                            </p>
+                          )}
                           <p className="text-sm font-medium text-brand-gold mt-1">
-                            {formatPrice(item.price)}/m²
+                            {formatPrice(item.price)}
                           </p>
 
                           {/* Quantity controls */}
@@ -103,6 +112,7 @@ export const CartDrawer: React.FC = () => {
                               <button
                                 onClick={() => updateQuantity(item.id, item.quantity - 1)}
                                 className="p-2 hover:bg-gray-100 transition-colors"
+                                disabled={isLoading}
                               >
                                 <Minus size={16} />
                               </button>
@@ -112,6 +122,7 @@ export const CartDrawer: React.FC = () => {
                               <button
                                 onClick={() => updateQuantity(item.id, item.quantity + 1)}
                                 className="p-2 hover:bg-gray-100 transition-colors"
+                                disabled={isLoading}
                               >
                                 <Plus size={16} />
                               </button>
@@ -120,6 +131,7 @@ export const CartDrawer: React.FC = () => {
                             <button
                               onClick={() => removeItem(item.id)}
                               className="p-2 text-gray-400 hover:text-red-500 transition-colors"
+                              disabled={isLoading}
                             >
                               <Trash2 size={18} />
                             </button>
@@ -133,7 +145,7 @@ export const CartDrawer: React.FC = () => {
             </div>
 
             {/* Footer - Summary */}
-            {state.items.length > 0 && (
+            {items.length > 0 && (
               <div className="border-t border-gray-100 p-6 space-y-4 bg-[#F9F9F7]">
                 {/* Subtotal */}
                 <div className="flex justify-between text-sm">
@@ -141,30 +153,40 @@ export const CartDrawer: React.FC = () => {
                   <span className="font-medium">{formatPrice(subtotal)}</span>
                 </div>
 
-                {/* Shipping */}
+                {/* Shipping info */}
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Doprava (paušál)</span>
-                  <span className="font-medium">{formatPrice(SHIPPING_COST)}</span>
+                  <span className="text-gray-600">Doprava a DPH</span>
+                  <span className="text-xs text-gray-400">Vypočíta sa pri platbe</span>
                 </div>
 
                 {/* Total */}
                 <div className="flex justify-between text-lg font-bold pt-4 border-t border-gray-200">
-                  <span>Celkom</span>
-                  <span className="text-brand-gold">{formatPrice(calculateTotal(subtotal))}</span>
+                  <span>Medzisúčet</span>
+                  <span className="text-brand-gold">{formatPrice(total)}</span>
                 </div>
 
-                {/* Info */}
-                <p className="text-xs text-gray-500 text-center">
-                  Platba bankovým prevodom alebo kartou. Bez dobierky.
-                </p>
+                {/* CTA - Shopify Checkout */}
+                <button
+                  onClick={handleCheckout}
+                  disabled={!checkoutUrl || isLoading}
+                  className="w-full bg-brand-dark text-white hover:bg-brand-gold hover:text-brand-dark py-4 text-base rounded-full font-semibold transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                >
+                  {isLoading ? (
+                    <>
+                      <span className="animate-spin w-5 h-5 border-2 border-white border-t-transparent rounded-full" />
+                      Načítavam...
+                    </>
+                  ) : (
+                    <>
+                      Pokračovať k platbe
+                      <ExternalLink size={18} />
+                    </>
+                  )}
+                </button>
 
-                {/* CTA */}
-                <Link to="/checkout" onClick={closeCart} className="block">
-                  <Button className="w-full bg-brand-dark text-white hover:bg-brand-gold hover:text-brand-dark py-4 text-base">
-                    Pokračovať k platbe
-                    <ArrowRight size={18} className="ml-2" />
-                  </Button>
-                </Link>
+                <p className="text-xs text-gray-400 text-center">
+                  Bezpečná platba cez Shopify
+                </p>
 
                 {/* Continue shopping */}
                 <button

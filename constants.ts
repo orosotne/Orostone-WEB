@@ -222,6 +222,9 @@ export interface ShopProduct {
 
   // Rich description (Shopify-style structured content)
   richDescription?: ProductRichDescription;
+
+  // Shopify Storefront API
+  shopifyVariantId?: string;  // Shopify variant GID pre Cart API
 }
 
 export const SHOP_PRODUCTS: ShopProduct[] = [
