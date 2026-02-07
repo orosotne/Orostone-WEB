@@ -1,0 +1,121 @@
+# ===========================================
+# Apache .htaccess for Orostone MPA Setup
+# ===========================================
+#
+# This configuration supports the Multi-Page Application architecture.
+# 
+# IMPORTANT: This file is for the MAIN website (www.orostone.sk).
+# For the e-shop subdomain, you need separate Apache VirtualHost configuration.
+#
+# Rename this file to .htaccess and place it in the dist folder.
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # ===========================================
+    # Redirect /shop to e-shop subdomain
+    # ===========================================
+    RewriteRule ^shop/?$ https://eshop.orostone.sk/ [R=301,L]
+
+    # ===========================================
+    # SPA Routing - Main Website
+    # ===========================================
+    # If the requested resource doesn't exist as a file or directory
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Don't rewrite requests for eshop.html
+    RewriteCond %{REQUEST_URI} !^/eshop\.html
+
+    # Rewrite all other requests to index.html
+    RewriteRule ^ index.html [QSA,L]
+</IfModule>
+
+# ===========================================
+# Compression (Gzip)
+# ===========================================
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/json
+</IfModule>
+
+# ===========================================
+# Cache Control for Static Assets
+# ===========================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Images
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    
+    # Fonts
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/eot "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+    
+    # CSS & JavaScript
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType text/javascript "access plus 1 year"
+    
+    # HTML - shorter cache for dynamic content
+    ExpiresByType text/html "access plus 1 hour"
+</IfModule>
+
+# ===========================================
+# Security Headers
+# ===========================================
+<IfModule mod_headers.c>
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # Cache control for assets
+    <FilesMatch "\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot|webp)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+</IfModule>
+
+# ===========================================
+# ESHOP SUBDOMAIN CONFIGURATION
+# ===========================================
+# 
+# For eshop.orostone.sk, create a separate .htaccess file
+# or configure Apache VirtualHost:
+#
+# <VirtualHost *:80>
+#     ServerName eshop.orostone.sk
+#     DocumentRoot /var/www/orostone/dist
+#     
+#     <Directory /var/www/orostone/dist>
+#         Options Indexes FollowSymLinks
+#         AllowOverride All
+#         Require all granted
+#         
+#         # Rewrite rules for e-shop SPA
+#         RewriteEngine On
+#         RewriteBase /
+#         RewriteCond %{REQUEST_FILENAME} !-f
+#         RewriteCond %{REQUEST_FILENAME} !-d
+#         RewriteRule ^ eshop.html [QSA,L]
+#     </Directory>
+# </VirtualHost>
