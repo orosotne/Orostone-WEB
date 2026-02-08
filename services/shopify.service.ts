@@ -27,7 +27,6 @@ interface ShopifyProductVariant {
   id: string;
   title: string;
   availableForSale: boolean;
-  quantityAvailable: number | null;
   price: ShopifyPrice;
   compareAtPrice: ShopifyPrice | null;
   selectedOptions: { name: string; value: string }[];
@@ -131,7 +130,6 @@ const PRODUCT_FRAGMENT = `
           id
           title
           availableForSale
-          quantityAvailable
           price {
             amount
             currencyCode
@@ -537,8 +535,16 @@ function mapProductTypeToCategory(productType: string): ProductCategory {
 function shopifyProductToShopProduct(product: ShopifyProduct): ShopProduct {
   const firstVariant = product.variants.edges[0]?.node;
   const images = product.images.edges.map(({ node }) => node.url);
-  const pricePerM2 = firstVariant ? parseFloat(firstVariant.price.amount) : 0;
-  const stockQuantity = firstVariant?.quantityAvailable ?? 0;
+
+  // Shopify variant price = cena za celú platňu (nie za m²)
+  // Prepočítame na cenu za m² vydelením plochou platne
+  const slabPrice = firstVariant ? parseFloat(firstVariant.price.amount) : 0;
+  const dims = getMetafieldValue(product, 'dimensions') || '3200 x 1600 mm';
+  const dimMatch = dims.match(/(\d+)\s*x\s*(\d+)/i);
+  const slabArea = dimMatch
+    ? (parseInt(dimMatch[1]) / 1000) * (parseInt(dimMatch[2]) / 1000)
+    : 5.12; // Default 3200x1600 = 5.12 m²
+  const pricePerM2 = slabArea > 0 ? Math.round((slabPrice / slabArea) * 100) / 100 : slabPrice;
 
   return {
     id: product.handle,
@@ -548,12 +554,12 @@ function shopifyProductToShopProduct(product: ShopifyProduct): ShopProduct {
     image: images[0] || '',
     gallery: images,
     category: mapProductTypeToCategory(product.productType),
-    dimensions: getMetafieldValue(product, 'dimensions') || '3200 x 1600 mm',
+    dimensions: dims,
     thickness: getMetafieldValue(product, 'thickness') || '12mm',
     finish: getMetafieldValue(product, 'finish') || 'Leštený',
     material: getMetafieldValue(product, 'material') || 'Sinterovaný kameň',
     inStock: product.availableForSale,
-    stockQuantity,
+    stockQuantity: 0,
     vendor: product.vendor,
     heatResistance: getMetafieldValue(product, 'heat_resistance') || 'Do 300°C',
     weight: getMetafieldValue(product, 'weight') ? parseFloat(getMetafieldValue(product, 'weight')!) : undefined,

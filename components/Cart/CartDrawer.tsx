@@ -6,7 +6,7 @@ import { useCart, formatPrice } from '../../context/CartContext';
 import { Button } from '../UI/Button';
 
 export const CartDrawer: React.FC = () => {
-  const { items, isOpen, closeCart, removeItem, updateQuantity, itemCount, subtotal, total, checkoutUrl, isLoading } = useCart();
+  const { items, isOpen, closeCart, removeItem, updateQuantity, itemCount, subtotal, total, checkoutUrl, isLoading, error, clearError } = useCart();
 
   const handleCheckout = () => {
     if (checkoutUrl) {
@@ -57,6 +57,19 @@ export const CartDrawer: React.FC = () => {
                 <X size={24} />
               </button>
             </div>
+
+            {/* Error Banner */}
+            {error && (
+              <div className="mx-4 mt-3 p-3 bg-red-50 border border-red-200 rounded-lg flex items-start justify-between gap-2">
+                <p className="text-sm text-red-700">{error}</p>
+                <button
+                  onClick={clearError}
+                  className="text-red-400 hover:text-red-600 flex-shrink-0 p-0.5"
+                >
+                  <X size={16} />
+                </button>
+              </div>
+            )}
 
             {/* Content */}
             <div className="flex-1 overflow-y-auto">

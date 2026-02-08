@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Check, Maximize2, Layers, Download, FileText, Share2 } from 'lucide-react';
+import { ArrowLeft, Check, Maximize2, Layers, Download, FileText } from 'lucide-react';
+import { ShareButton } from '../components/UI/ShareButton';
 import { PRODUCTS, COLLECTIONS } from '../constants';
 import { Button } from '../components/UI/Button';
 import { motion } from 'framer-motion';
@@ -32,9 +33,7 @@ export const ProductDetail = () => {
         <Link to="/kolekcie" className="text-xs text-gray-500 hover:text-brand-dark uppercase tracking-widest flex items-center gap-2 group">
           <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform"/> Späť na kolekcie
         </Link>
-        <button className="text-xs text-gray-400 hover:text-brand-gold uppercase tracking-widest flex items-center gap-2">
-          <Share2 size={14} /> Zdieľať
-        </button>
+        <ShareButton title={product.name} variant="gold" />
       </div>
 
       <div className="container mx-auto px-6">

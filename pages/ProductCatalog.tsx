@@ -181,6 +181,9 @@ export const ProductCatalog = () => {
   // Mobile filter drawer state
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   
+  // Cart error notification
+  const [cartError, setCartError] = useState<string | null>(null);
+  
   // Sort popup state
   const [sortPopupOpen, setSortPopupOpen] = useState(false);
 
@@ -221,7 +224,12 @@ export const ProductCatalog = () => {
 
   const handleAddToCart = (product: ShopProduct) => {
     if (product.shopifyVariantId) {
+      setCartError(null);
       addItem(product.shopifyVariantId, 1);
+    } else {
+      console.warn('Produkt nemá shopifyVariantId, nie je možné pridať do košíka:', product.id);
+      setCartError('Tento produkt momentálne nie je možné pridať do košíka.');
+      setTimeout(() => setCartError(null), 5000);
     }
   };
 
@@ -386,6 +394,20 @@ export const ProductCatalog = () => {
 
   return (
     <main ref={containerRef} className="bg-white min-h-screen">
+      {/* Cart Error Toast */}
+      <AnimatePresence>
+        {cartError && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-red-600 text-white px-6 py-3 rounded-lg shadow-xl text-sm font-medium max-w-md text-center"
+          >
+            {cartError}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <SEOHead
         title="Všetky produkty | OROSTONE E-Shop"
         description="Kompletná ponuka sinterovaných kameňov — mramor, granit, betón a jednofarebné. Dosky 3200x1600mm s dopravou po celom Slovensku."

@@ -30,6 +30,7 @@ interface CartContextType {
   items: CartItem[];
   isOpen: boolean;
   isLoading: boolean;
+  error: string | null;
   checkoutUrl: string | null;
   
   // Actions
@@ -40,6 +41,7 @@ interface CartContextType {
   openCart: () => void;
   closeCart: () => void;
   toggleCart: () => void;
+  clearError: () => void;
   
   // Computed
   itemCount: number;
@@ -89,6 +91,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [cart, setCart] = useState<ShopifyCart | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   // ------------------------------------------
   // Inicializacia kosika
@@ -134,15 +137,20 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   // ------------------------------------------
 
   const addItem = useCallback(async (variantId: string, quantity: number = 1) => {
-    if (!cart) return;
+    if (!cart) {
+      setError('Košík nie je inicializovaný. Skúste obnoviť stránku.');
+      return;
+    }
     
     setIsLoading(true);
+    setError(null);
     try {
       const updatedCart = await shopifyAddToCart(cart.id, variantId, quantity);
       setCart(updatedCart);
       setIsOpen(true); // Otvor drawer po pridani
-    } catch (error) {
-      console.error('Chyba pri pridani do kosika:', error);
+    } catch (err) {
+      console.error('Chyba pri pridani do kosika:', err);
+      setError('Nepodarilo sa pridať produkt do košíka. Skúste to prosím znova.');
     } finally {
       setIsLoading(false);
     }
@@ -152,11 +160,13 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     if (!cart) return;
     
     setIsLoading(true);
+    setError(null);
     try {
       const updatedCart = await shopifyRemoveFromCart(cart.id, lineId);
       setCart(updatedCart);
-    } catch (error) {
-      console.error('Chyba pri odstraneni z kosika:', error);
+    } catch (err) {
+      console.error('Chyba pri odstraneni z kosika:', err);
+      setError('Nepodarilo sa odstrániť produkt z košíka.');
     } finally {
       setIsLoading(false);
     }
@@ -166,6 +176,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     if (!cart) return;
     
     setIsLoading(true);
+    setError(null);
     try {
       if (quantity <= 0) {
         const updatedCart = await shopifyRemoveFromCart(cart.id, lineId);
@@ -174,8 +185,9 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         const updatedCart = await shopifyUpdateCartItem(cart.id, lineId, quantity);
         setCart(updatedCart);
       }
-    } catch (error) {
-      console.error('Chyba pri aktualizacii mnozstva:', error);
+    } catch (err) {
+      console.error('Chyba pri aktualizacii mnozstva:', err);
+      setError('Nepodarilo sa aktualizovať množstvo.');
     } finally {
       setIsLoading(false);
     }
@@ -183,12 +195,14 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
   const clearCart = useCallback(async () => {
     setIsLoading(true);
+    setError(null);
     try {
       const newCart = await shopifyCreateCart();
       setCart(newCart);
       localStorage.setItem(CART_ID_KEY, newCart.id);
-    } catch (error) {
-      console.error('Chyba pri vyprazdneni kosika:', error);
+    } catch (err) {
+      console.error('Chyba pri vyprazdneni kosika:', err);
+      setError('Nepodarilo sa vyprázdniť košík.');
     } finally {
       setIsLoading(false);
     }
@@ -197,6 +211,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const openCart = useCallback(() => setIsOpen(true), []);
   const closeCart = useCallback(() => setIsOpen(false), []);
   const toggleCart = useCallback(() => setIsOpen(prev => !prev), []);
+  const clearError = useCallback(() => setError(null), []);
 
   // ------------------------------------------
   // COMPUTED VALUES
@@ -220,6 +235,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     items,
     isOpen,
     isLoading,
+    error,
     checkoutUrl,
     addItem,
     removeItem,
@@ -228,6 +244,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     openCart,
     closeCart,
     toggleCart,
+    clearError,
     itemCount,
     subtotal,
     total,

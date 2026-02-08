@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { useLocation } from 'react-router-dom';
 import { EshopAnnouncementBar } from './EshopAnnouncementBar';
 import { EshopNavbar } from './EshopNavbar';
 import { EshopFooter } from './EshopFooter';
@@ -20,23 +21,25 @@ interface EshopLayoutProps {
 // ===========================================
 
 export const EshopLayout: React.FC<EshopLayoutProps> = ({ children }) => {
+  const location = useLocation();
+  const isHomepage = location.pathname === '/';
+
   return (
     <div className="min-h-screen flex flex-col font-sans text-brand-dark bg-white">
       {/* Noise Overlay for texture */}
       <NoiseOverlay />
       
-      {/* Announcement Bar (zlatá lišta - fixed, vždy viditeľná) */}
-      <EshopAnnouncementBar />
+      {/* Announcement Bar — hidden on homepage for immersive hero experience */}
+      {!isHomepage && <EshopAnnouncementBar />}
       
-      {/* Navbar with Mega Menu (pod announcement bar) */}
+      {/* Navbar with Mega Menu */}
       <EshopNavbar />
       
       {/* Cart Drawer (slide-in panel) */}
       <CartDrawer />
       
-      {/* Main Content */}
-      {/* pt-[calc(announcement 36px + top bar 64px + nav 48px)] = 148px */}
-      <main className="flex-grow pt-[92px] lg:pt-[148px]">
+      {/* Main Content — homepage has no top padding (hero goes behind transparent navbar) */}
+      <main className={`flex-grow ${isHomepage ? '' : 'pt-[92px] lg:pt-[148px]'}`}>
         {children}
       </main>
       

@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowLeft, 
   Check, 
-  Share2,
   Minus,
   Plus,
   ShoppingBag,
@@ -43,6 +42,7 @@ import { useShopifyProducts, useShopifyProduct } from '../hooks/useShopifyProduc
 import { Button } from '../components/UI/Button';
 import { useCart, formatPrice } from '../context/CartContext';
 import { cn } from '@/lib/utils';
+import { ShareButton } from '../components/UI/ShareButton';
 
 // ===========================================
 // HELPER: Calculate total price
@@ -676,9 +676,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             <ChevronRight size={12} />
             <span className="text-brand-dark font-medium">{product.name}</span>
           </nav>
-          <button className="text-xs text-gray-400 hover:text-brand-dark uppercase tracking-widest flex items-center gap-2 transition-colors">
-            <Share2 size={14} /> Zdieľať
-          </button>
+          <ShareButton title={product.name} variant="dark" />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
@@ -1640,12 +1638,40 @@ const ProductSchema: React.FC<ProductSchemaProps> = ({ product, totalPrice }) =>
 export const ShopProductDetail: React.FC = () => {
   const { id } = useParams();
   const { addItem, isInCart } = useCart();
-  const { product: shopifyProduct, isLoading } = useShopifyProduct(id);
-  const { products: allProducts } = useShopifyProducts();
+  const { product: shopifyProduct, isLoading: productLoading } = useShopifyProduct(id);
+  const { products: allProducts, isLoading: productsLoading } = useShopifyProducts();
   // Default to 2 platne for higher AOV
   const [selectedBundle, setSelectedBundle] = useState<BundleOption>(BUNDLE_OPTIONS[1]);
+  const [cartError, setCartError] = useState<string | null>(null);
 
-  const product = shopifyProduct;
+  // Smart matching: if product loaded from fallback (no variantId),
+  // try to find matching Shopify product by name and copy its variantId
+  const product = useMemo(() => {
+    if (!shopifyProduct) return null;
+    if (shopifyProduct.shopifyVariantId) return shopifyProduct; // Already has variant ID
+
+    // Cross-reference with Shopify products by normalized name
+    const normalize = (s: string) => s.toLowerCase().replace(/[^a-záčďéíľňóŕšťúýž0-9]/g, '');
+    const targetName = normalize(shopifyProduct.name);
+
+    const shopifyMatch = allProducts.find(p => {
+      if (!p.shopifyVariantId) return false;
+      const shopifyName = normalize(p.name);
+      return shopifyName.includes(targetName) || targetName.includes(shopifyName);
+    });
+
+    if (shopifyMatch) {
+      return {
+        ...shopifyProduct,                                // Keep local rich data (descriptions, gallery, etc.)
+        shopifyVariantId: shopifyMatch.shopifyVariantId,   // Add Shopify variant ID for cart
+        inStock: shopifyMatch.inStock,                      // Use live stock status
+      };
+    }
+
+    return shopifyProduct;
+  }, [shopifyProduct, allProducts]);
+
+  const isLoading = productLoading || productsLoading;
 
   if (isLoading) {
     return (
@@ -1677,12 +1703,31 @@ export const ShopProductDetail: React.FC = () => {
 
   const handleAddToCart = () => {
     if (product.shopifyVariantId) {
+      setCartError(null);
       addItem(product.shopifyVariantId, selectedBundle.quantity);
+    } else {
+      console.warn('Produkt nemá shopifyVariantId, nie je možné pridať do košíka:', product.id);
+      setCartError('Tento produkt momentálne nie je možné pridať do košíka. Skúste to prosím neskôr.');
+      setTimeout(() => setCartError(null), 5000);
     }
   };
 
   return (
     <main className="bg-white min-h-screen">
+      {/* Cart Error Toast */}
+      <AnimatePresence>
+        {cartError && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-red-600 text-white px-6 py-3 rounded-lg shadow-xl text-sm font-medium max-w-md text-center"
+          >
+            {cartError}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Section 1: Hero */}
       <HeroSection 
         product={product}

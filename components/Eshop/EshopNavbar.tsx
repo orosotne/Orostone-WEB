@@ -29,6 +29,10 @@ export const EshopNavbar: React.FC = () => {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
+  // Transparent mode for homepage hero overlay
+  const isHomepage = location.pathname === '/';
+  const isTransparent = isHomepage && !scrolled;
+
   // Vyhľadávanie — filtruje produkty podľa názvu, popisu a farby
   const searchResults = useMemo(() => {
     if (!searchQuery.trim() || searchQuery.length < 2) return [];
@@ -78,12 +82,18 @@ export const EshopNavbar: React.FC = () => {
   return (
     <>
     <header className={cn(
-      "fixed top-[36px] left-0 right-0 z-50 transition-all duration-300",
-      scrolled ? "shadow-md" : ""
+      "fixed left-0 right-0 z-50 transition-all duration-500",
+      isHomepage ? "top-0" : "top-[36px]",
+      scrolled && "shadow-md"
     )}>
       
       {/* ==================== TOP BAR (ZARA STYLE) ==================== */}
-      <div className="bg-white border-b border-gray-100">
+      <div className={cn(
+        "transition-all duration-500",
+        isTransparent 
+          ? "bg-transparent border-b border-white/10" 
+          : "bg-white border-b border-gray-100"
+      )}>
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex items-center justify-between h-14 lg:h-16">
             
@@ -92,7 +102,10 @@ export const EshopNavbar: React.FC = () => {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden p-2 -ml-2 text-black hover:text-gray-600 transition-colors"
+                className={cn(
+                  "lg:hidden p-2 -ml-2 transition-colors",
+                  isTransparent ? "text-white hover:text-white/70" : "text-black hover:text-gray-600"
+                )}
                 aria-label="Menu"
               >
                 {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -101,12 +114,18 @@ export const EshopNavbar: React.FC = () => {
               {/* Back to main website - Desktop */}
               <a
                 href="/"
-                className="group hidden lg:flex items-center gap-1.5 text-[11px] tracking-[0.15em] uppercase text-gray-500 hover:text-brand-gold hover:font-semibold transition-all duration-300"
+                className={cn(
+                  "group hidden lg:flex items-center gap-1.5 text-[11px] tracking-[0.15em] uppercase hover:font-semibold transition-all duration-500",
+                  isTransparent ? "text-white/60 hover:text-white" : "text-gray-500 hover:text-brand-gold"
+                )}
               >
                 <Diamond 
                   size={14} 
                   strokeWidth={1.5} 
-                  className="transition-transform duration-500 ease-out group-hover:rotate-[360deg] group-hover:fill-brand-gold"
+                  className={cn(
+                    "transition-all duration-500 ease-out group-hover:rotate-[360deg]",
+                    isTransparent ? "group-hover:fill-white" : "group-hover:fill-brand-gold"
+                  )}
                 />
                 <span>O značke</span>
               </a>
@@ -117,7 +136,10 @@ export const EshopNavbar: React.FC = () => {
               <img
                 src="/images/logo.png"
                 alt="OROSTONE"
-                className="h-8 lg:h-10 object-contain"
+                className={cn(
+                  "h-8 lg:h-10 object-contain transition-all duration-500",
+                  isTransparent && "brightness-0 invert"
+                )}
               />
             </Link>
 
@@ -128,7 +150,11 @@ export const EshopNavbar: React.FC = () => {
                 onClick={() => setSearchOpen(!searchOpen)}
                 className={cn(
                   "p-2 transition-all duration-200 hover:[&_svg]:stroke-[2]",
-                  searchOpen ? "text-brand-gold" : "text-gray-600 hover:text-brand-gold"
+                  searchOpen 
+                    ? "text-brand-gold" 
+                    : isTransparent 
+                      ? "text-white/80 hover:text-white" 
+                      : "text-gray-600 hover:text-brand-gold"
                 )}
                 aria-label="Hľadať"
               >
@@ -138,7 +164,10 @@ export const EshopNavbar: React.FC = () => {
               {/* User Account */}
               <Link
                 to={isAuthenticated ? "/ucet" : "/login"}
-                className="p-2 text-gray-600 hover:text-brand-gold transition-all duration-200 hover:[&_svg]:stroke-[2]"
+                className={cn(
+                  "p-2 transition-all duration-200 hover:[&_svg]:stroke-[2]",
+                  isTransparent ? "text-white/80 hover:text-white" : "text-gray-600 hover:text-brand-gold"
+                )}
                 aria-label={isAuthenticated ? "Môj účet" : "Prihlásiť sa"}
               >
                 <User size={20} strokeWidth={1.5} className="transition-all duration-200" />
@@ -146,7 +175,10 @@ export const EshopNavbar: React.FC = () => {
 
               {/* Wishlist */}
               <button
-                className="hidden sm:block p-2 text-gray-600 hover:text-brand-gold transition-all duration-200 hover:[&_svg]:stroke-[2]"
+                className={cn(
+                  "hidden sm:block p-2 transition-all duration-200 hover:[&_svg]:stroke-[2]",
+                  isTransparent ? "text-white/80 hover:text-white" : "text-gray-600 hover:text-brand-gold"
+                )}
                 aria-label="Obľúbené"
               >
                 <Heart size={20} strokeWidth={1.5} className="transition-all duration-200" />
@@ -155,7 +187,10 @@ export const EshopNavbar: React.FC = () => {
               {/* Cart */}
               <button
                 onClick={openCart}
-                className="relative p-2 text-gray-600 hover:text-brand-gold transition-all duration-200 hover:[&_svg]:stroke-[2]"
+                className={cn(
+                  "relative p-2 transition-all duration-200 hover:[&_svg]:stroke-[2]",
+                  isTransparent ? "text-white/80 hover:text-white" : "text-gray-600 hover:text-brand-gold"
+                )}
                 aria-label="Košík"
               >
                 <ShoppingBag size={20} strokeWidth={1.5} className="transition-all duration-200" />
@@ -167,7 +202,10 @@ export const EshopNavbar: React.FC = () => {
               </button>
 
               {/* Cart count text - Desktop */}
-              <span className="hidden xl:block text-[11px] tracking-[0.1em] uppercase text-gray-600 ml-1">
+              <span className={cn(
+                "hidden xl:block text-[11px] tracking-[0.1em] uppercase ml-1",
+                isTransparent ? "text-white/60" : "text-gray-600"
+              )}>
                 ({itemCount})
               </span>
             </div>
@@ -269,7 +307,12 @@ export const EshopNavbar: React.FC = () => {
 
       {/* ==================== NAVIGATION BAR (ZARA STYLE) ==================== */}
       <nav 
-        className="hidden lg:block bg-white border-b border-gray-100 relative"
+        className={cn(
+          "hidden lg:block border-b relative transition-all duration-500",
+          isTransparent 
+            ? "bg-transparent border-white/10" 
+            : "bg-white border-gray-100"
+        )}
         onMouseLeave={() => setActiveCategory(null)}
       >
         <div className="container mx-auto px-8">
@@ -278,14 +321,17 @@ export const EshopNavbar: React.FC = () => {
             <li>
               <button
                 onClick={() => setOffCanvasOpen(true)}
-                className="px-6 py-4 text-[11px] font-medium tracking-[0.2em] uppercase transition-all duration-200 inline-block text-gray-600 hover:text-brand-gold"
+                className={cn(
+                  "px-6 py-4 text-[11px] font-medium tracking-[0.2em] uppercase transition-all duration-200 inline-block",
+                  isTransparent ? "text-white/70 hover:text-white" : "text-gray-600 hover:text-brand-gold"
+                )}
               >
                 Menu
               </button>
             </li>
 
             {/* Divider */}
-            <li className="h-4 w-px bg-gray-200 mx-2" />
+            <li className={cn("h-4 w-px mx-2", isTransparent ? "bg-white/20" : "bg-gray-200")} />
 
             {MEGA_MENU_CATEGORIES.map((category) => (
               <li
@@ -297,10 +343,10 @@ export const EshopNavbar: React.FC = () => {
                   to={`/kategoria/${category.slug}`}
                   className={({ isActive }) => cn(
                     "flex items-center gap-1.5 px-6 py-4 text-[11px] font-normal tracking-[0.2em] uppercase transition-all duration-200",
-                    isActive 
-                      ? "text-black" 
-                      : "text-gray-600 hover:text-black",
-                    activeCategory?.id === category.id && "text-black"
+                    isTransparent
+                      ? (isActive || activeCategory?.id === category.id) ? "text-white" : "text-white/60 hover:text-white"
+                      : isActive ? "text-black" : "text-gray-600 hover:text-black",
+                    !isTransparent && activeCategory?.id === category.id && "text-black"
                   )}
                 >
                   {category.name}
@@ -317,7 +363,7 @@ export const EshopNavbar: React.FC = () => {
             ))}
 
             {/* Divider */}
-            <li className="h-4 w-px bg-gray-200 mx-4" />
+            <li className={cn("h-4 w-px mx-4", isTransparent ? "bg-white/20" : "bg-gray-200")} />
 
             {/* Additional Links */}
             <li>
@@ -325,7 +371,9 @@ export const EshopNavbar: React.FC = () => {
                 to="/novinky"
                 className={({ isActive }) => cn(
                   "px-6 py-4 text-[11px] font-normal tracking-[0.2em] uppercase transition-colors inline-block",
-                  isActive ? "text-black" : "text-gray-600 hover:text-black"
+                  isTransparent
+                    ? isActive ? "text-white" : "text-white/60 hover:text-white"
+                    : isActive ? "text-black" : "text-gray-600 hover:text-black"
                 )}
               >
                 Novinky
@@ -336,7 +384,9 @@ export const EshopNavbar: React.FC = () => {
                 to="/vypredaj"
                 className={({ isActive }) => cn(
                   "px-6 py-4 text-[11px] font-normal tracking-[0.2em] uppercase transition-colors inline-block",
-                  isActive ? "text-black" : "text-gray-600 hover:text-black"
+                  isTransparent
+                    ? isActive ? "text-white" : "text-white/60 hover:text-white"
+                    : isActive ? "text-black" : "text-gray-600 hover:text-black"
                 )}
               >
                 Výpredaj
@@ -349,7 +399,7 @@ export const EshopNavbar: React.FC = () => {
         {activeCategory && (
           <motion.div
             layoutId="nav-underline"
-            className="absolute bottom-0 left-0 right-0 h-0.5 bg-black"
+            className={cn("absolute bottom-0 left-0 right-0 h-0.5", isTransparent ? "bg-white" : "bg-black")}
             initial={false}
             transition={{ type: "spring", stiffness: 500, damping: 30 }}
           />

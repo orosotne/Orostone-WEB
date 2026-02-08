@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Share2 } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
+import { ShareButton } from '../components/UI/ShareButton';
 import { motion } from 'framer-motion';
 import { COLLECTIONS, PRODUCTS } from '../constants';
 import { TextReveal } from '../components/UI/TextReveal';
@@ -37,9 +38,7 @@ export const CollectionDetail = () => {
           <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
           Späť na kolekcie
         </Link>
-        <button className="text-xs text-gray-400 hover:text-brand-gold uppercase tracking-widest flex items-center gap-2">
-          <Share2 size={14} /> Zdieľať
-        </button>
+        <ShareButton title={collection.name} variant="gold" />
       </div>
 
       {/* Hero sekcia */}
