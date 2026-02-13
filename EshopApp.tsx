@@ -18,6 +18,9 @@ const Account = lazy(() => import('./pages/Account').then(m => ({ default: m.Acc
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy').then(m => ({ default: m.PrivacyPolicy })));
 const CookiesPolicy = lazy(() => import('./pages/CookiesPolicy').then(m => ({ default: m.CookiesPolicy })));
 const VOP = lazy(() => import('./pages/VOP').then(m => ({ default: m.VOP })));
+const CategoryPage = lazy(() => import('./pages/CategoryPage').then(m => ({ default: m.CategoryPage })));
+const BlogPage = lazy(() => import('./pages/Blog').then(m => ({ default: m.Blog })));
+const BlogArticlePage = lazy(() => import('./pages/BlogArticle').then(m => ({ default: m.BlogArticle })));
 
 // Contexts
 import { ThemeProvider } from './context/ThemeContext';
@@ -39,28 +42,6 @@ const ScrollToTop = () => {
   }, [pathname]);
   
   return null;
-};
-
-// ===========================================
-// CATEGORY PAGE (placeholder)
-// ===========================================
-
-const CategoryPage: React.FC = () => {
-  const { pathname } = useLocation();
-  const categorySlug = pathname.split('/kategoria/')[1];
-  
-  return (
-    <div className="container mx-auto px-6 py-12">
-      <h1 className="text-3xl font-bold text-brand-dark mb-4">
-        Kategória: {categorySlug}
-      </h1>
-      <p className="text-gray-500">
-        Tu budú produkty z kategórie {categorySlug}.
-      </p>
-      {/* TODO: Filter Shop by category */}
-      <Shop />
-    </div>
-  );
 };
 
 // ===========================================
@@ -90,7 +71,11 @@ const EshopAppContent = () => {
           <Route path="/vsetky-produkty" element={<ProductCatalog />} />
           
           {/* Categories */}
-          <Route path="/kategoria/*" element={<CategoryPage />} />
+          <Route path="/kategoria/:slug" element={
+            <Suspense fallback={<ProductGridSkeleton />}>
+              <CategoryPage />
+            </Suspense>
+          } />
           
           {/* Product Detail — skeleton loader */}
           <Route path="/produkt/:id" element={
@@ -123,6 +108,18 @@ const EshopAppContent = () => {
             </Suspense>
           } />
           
+          {/* Blog */}
+          <Route path="/blog" element={
+            <Suspense fallback={<LoadingSpinner text="Načítavam blog..." fullScreen={false} />}>
+              <BlogPage />
+            </Suspense>
+          } />
+          <Route path="/blog/:slug" element={
+            <Suspense fallback={<LoadingSpinner text="Načítavam článok..." fullScreen={false} />}>
+              <BlogArticlePage />
+            </Suspense>
+          } />
+
           {/* Special Pages */}
           <Route path="/novinky" element={<PlaceholderPage title="Novinky" />} />
           <Route path="/vypredaj" element={<PlaceholderPage title="Výpredaj" />} />

@@ -8,7 +8,7 @@ import { useCart } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
 import { EshopMegaMenu, MEGA_MENU_CATEGORIES, MegaMenuCategory } from './EshopMegaMenu';
 import { cn } from '../../lib/utils';
-import { SHOP_PRODUCTS, ShopProduct } from '../../constants';
+import { SHOP_PRODUCTS, ShopProduct, SHOW_ANNOUNCEMENT_BAR } from '../../constants';
 
 // ===========================================
 // ZARA-STYLE ESHOP NAVBAR
@@ -83,7 +83,7 @@ export const EshopNavbar: React.FC = () => {
     <>
     <header className={cn(
       "fixed left-0 right-0 z-50 transition-all duration-500",
-      isHomepage ? "top-0" : "top-[36px]",
+      SHOW_ANNOUNCEMENT_BAR ? "top-[36px]" : "top-0",
       scrolled && "shadow-md"
     )}>
       
@@ -315,24 +315,19 @@ export const EshopNavbar: React.FC = () => {
         )}
         onMouseLeave={() => setActiveCategory(null)}
       >
-        <div className="container mx-auto px-8">
+        <div className="container mx-auto px-8 relative">
+          {/* Menu Button - positioned left, aligned under "O značke" */}
+          <button
+            onClick={() => setOffCanvasOpen(true)}
+            className={cn(
+              "absolute left-8 top-1/2 -translate-y-1/2 text-[11px] font-medium tracking-[0.2em] uppercase transition-all duration-200",
+              isTransparent ? "text-white/70 hover:text-white" : "text-gray-600 hover:text-brand-gold"
+            )}
+          >
+            Menu
+          </button>
+
           <ul className="flex items-center justify-center">
-            {/* Menu Button - Opens Off-Canvas */}
-            <li>
-              <button
-                onClick={() => setOffCanvasOpen(true)}
-                className={cn(
-                  "px-6 py-4 text-[11px] font-medium tracking-[0.2em] uppercase transition-all duration-200 inline-block",
-                  isTransparent ? "text-white/70 hover:text-white" : "text-gray-600 hover:text-brand-gold"
-                )}
-              >
-                Menu
-              </button>
-            </li>
-
-            {/* Divider */}
-            <li className={cn("h-4 w-px mx-2", isTransparent ? "bg-white/20" : "bg-gray-200")} />
-
             {MEGA_MENU_CATEGORIES.map((category) => (
               <li
                 key={category.id}
@@ -362,36 +357,6 @@ export const EshopNavbar: React.FC = () => {
               </li>
             ))}
 
-            {/* Divider */}
-            <li className={cn("h-4 w-px mx-4", isTransparent ? "bg-white/20" : "bg-gray-200")} />
-
-            {/* Additional Links */}
-            <li>
-              <NavLink
-                to="/novinky"
-                className={({ isActive }) => cn(
-                  "px-6 py-4 text-[11px] font-normal tracking-[0.2em] uppercase transition-colors inline-block",
-                  isTransparent
-                    ? isActive ? "text-white" : "text-white/60 hover:text-white"
-                    : isActive ? "text-black" : "text-gray-600 hover:text-black"
-                )}
-              >
-                Novinky
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/vypredaj"
-                className={({ isActive }) => cn(
-                  "px-6 py-4 text-[11px] font-normal tracking-[0.2em] uppercase transition-colors inline-block",
-                  isTransparent
-                    ? isActive ? "text-white" : "text-white/60 hover:text-white"
-                    : isActive ? "text-black" : "text-gray-600 hover:text-black"
-                )}
-              >
-                Výpredaj
-              </NavLink>
-            </li>
           </ul>
         </div>
 
@@ -500,6 +465,13 @@ export const EshopNavbar: React.FC = () => {
                 >
                   Výpredaj
                 </Link>
+                <Link
+                  to="/blog"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block px-6 py-4 text-[13px] tracking-[0.1em] uppercase text-black hover:bg-gray-50"
+                >
+                  Blog
+                </Link>
               </div>
 
               {/* Account Section */}
@@ -592,7 +564,7 @@ export const EshopNavbar: React.FC = () => {
                     onClick={() => setCollectionsExpanded(!collectionsExpanded)}
                     className="w-full flex items-center justify-between px-8 py-5 text-[14px] tracking-[0.15em] uppercase font-bold text-black hover:bg-gray-50 transition-colors"
                   >
-                    Kolekcie
+                    Kategórie
                     <ChevronDown 
                       size={18} 
                       strokeWidth={1.5}
@@ -603,7 +575,7 @@ export const EshopNavbar: React.FC = () => {
                     />
                   </button>
 
-                  {/* Expanded Collections */}
+                  {/* Expanded Categories */}
                   <AnimatePresence>
                     {collectionsExpanded && (
                       <motion.div
@@ -660,6 +632,13 @@ export const EshopNavbar: React.FC = () => {
                   className="flex items-center px-8 py-5 text-[14px] tracking-[0.15em] uppercase font-bold text-black hover:bg-gray-50 transition-colors border-b border-gray-100"
                 >
                   Výpredaj
+                </Link>
+                <Link
+                  to="/blog"
+                  onClick={() => setOffCanvasOpen(false)}
+                  className="flex items-center px-8 py-5 text-[14px] tracking-[0.15em] uppercase font-bold text-black hover:bg-gray-50 transition-colors border-b border-gray-100"
+                >
+                  Blog
                 </Link>
               </div>
 

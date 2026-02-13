@@ -9,12 +9,16 @@ import {
   Instagram
 } from 'lucide-react';
 import { ShopProduct, TESTIMONIALS, REALIZATIONS } from '../constants';
+import { BlogPreviewSection } from '../components/Eshop/BlogPreviewSection';
+import { getLatestArticles } from '../data/blogArticles';
 import { useShopifyProducts } from '../hooks/useShopifyProducts';
 import { useInstagramFeed, getPostImageUrl } from '../hooks/useInstagramFeed';
 import { OrderModal } from '../components/Shop/OrderModal';
+import { Lightbox } from '../components/UI/Lightbox';
 import { Marquee } from '../components/UI/Marquee';
 import { SEOHead, OROSTONE_ORGANIZATION_LD } from '../components/UI/SEOHead';
 import { Link } from 'react-router-dom';
+import type { CollectionGalleryImage } from '../types';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -23,28 +27,28 @@ gsap.registerPlugin(ScrollTrigger);
 // ===========================================
 const CATEGORIES = [
   {
-    name: 'Mramor',
-    slug: 'mramor',
-    image: 'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=800&h=1000&fit=crop',
-    description: 'Nadčasová elegancia',
+    name: 'Sinterovaný kameň',
+    slug: 'sintered-stone',
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&h=1000&fit=crop',
+    description: '12 exkluzívnych dekorov',
   },
   {
-    name: 'Granit',
-    slug: 'granit',
-    image: 'https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=800&h=1000&fit=crop',
-    description: 'Prírodná sila',
+    name: 'Stoly',
+    slug: 'tables',
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=1000&fit=crop',
+    description: 'Zo sinterovaného kameňa',
   },
   {
-    name: 'Betón',
-    slug: 'beton',
-    image: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&h=1000&fit=crop',
-    description: 'Moderný minimalizmus',
+    name: 'Invisible Cooktop',
+    slug: 'invisible-cooktop',
+    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=1000&fit=crop',
+    description: 'Neviditeľné varné dosky',
   },
   {
-    name: 'Drevo',
-    slug: 'drevo',
-    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=1000&fit=crop',
-    description: 'Teplo prírody',
+    name: 'Doplnky',
+    slug: 'accessories',
+    image: 'https://images.unsplash.com/photo-1563453392212-326f5e854473?w=800&h=1000&fit=crop',
+    description: 'Údržba a čistenie',
   },
 ];
 
@@ -52,26 +56,13 @@ const CATEGORIES = [
 // INSPIRATION GALLERY DATA
 // ===========================================
 const INSPIRATION_IMAGES = [
-  {
-    src: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=1200&auto=format&fit=crop',
-    label: 'Kuchyňa',
-    large: true,
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?q=80&w=800&auto=format&fit=crop',
-    label: 'Kúpeľňa',
-    large: false,
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=800&auto=format&fit=crop',
-    label: 'Obývačka',
-    large: false,
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=800&auto=format&fit=crop',
-    label: 'Kuchyňa',
-    large: false,
-  },
+  { src: '/images/inspiration/inspiration-1.webp', label: 'Kuchyňa', large: true },
+  { src: '/images/inspiration/inspiration-2.webp', label: 'Kuchyňa', large: false },
+  { src: '/images/inspiration/inspiration-3.webp', label: 'Kuchyňa', large: false },
+  { src: '/images/inspiration/inspiration-4.webp', label: 'Kuchyňa', large: false },
+  { src: '/images/inspiration/inspiration-5.webp', label: 'Kuchyňa', large: false },
+  { src: '/images/inspiration/inspiration-7.webp', label: 'Kuchyňa', large: false },
+  { src: '/images/inspiration/inspiration-6.webp', label: 'Kuchyňa', large: false },
 ];
 
 // INSTAGRAM_IMAGES removed — now loaded via useInstagramFeed hook
@@ -88,6 +79,16 @@ export const Shop = () => {
   const [selectedProduct, setSelectedProduct] = useState<ShopProduct | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { posts: instagramPosts, isLoading: igLoading, isUsingFallback: igFallback } = useInstagramFeed(8);
+
+  // Inspiration lightbox
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const lightboxImages: CollectionGalleryImage[] = INSPIRATION_IMAGES.map((img) => ({
+    name: img.label,
+    url: img.src,
+    publicUrl: img.src,
+  }));
 
   // Testimonials carousel
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -208,17 +209,6 @@ export const Shop = () => {
         },
       }
     );
-
-    // --- Lifestyle parallax image ---
-    gsap.to('.lifestyle-image', {
-      yPercent: -15,
-      scrollTrigger: {
-        trigger: '.lifestyle-section',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: true,
-      },
-    });
 
     // --- Section headers fade-in ---
     gsap.utils.toArray<HTMLElement>('.section-reveal').forEach((el) => {
@@ -401,39 +391,47 @@ export const Shop = () => {
       <Marquee />
 
       {/* ==================== TRUST BAR — Refined Minimal ==================== */}
-      <section className="bg-white py-12 lg:py-16 border-b border-gray-100">
+      <section className="bg-brand-gold py-12 lg:py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
 
             <Link to="/realizacie" className="trust-counter group text-center">
               <div className="flex flex-col items-center">
-                <CheckCircle size={20} className="text-brand-gold mb-3" strokeWidth={1.5} />
+                <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center mb-4 group-hover:bg-white/90 transition-colors duration-300">
+                  <CheckCircle size={28} className="text-brand-gold" strokeWidth={1.5} />
+                </div>
                 <span className="text-2xl lg:text-3xl font-bold text-brand-dark mb-1">200+</span>
-                <span className="text-xs text-gray-400 font-medium tracking-wide">overených realizácií</span>
+                <span className="text-xs text-brand-dark/60 font-medium tracking-wide">overených realizácií</span>
               </div>
             </Link>
 
             <div className="trust-counter group text-center">
               <div className="flex flex-col items-center">
-                <Clock size={20} className="text-brand-gold mb-3" strokeWidth={1.5} />
+                <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center mb-4">
+                  <Clock size={28} className="text-brand-gold" strokeWidth={1.5} />
+                </div>
                 <span className="text-2xl lg:text-3xl font-bold text-brand-dark mb-1">24–48h</span>
-                <span className="text-xs text-gray-400 font-medium tracking-wide">expedícia skladom</span>
+                <span className="text-xs text-brand-dark/60 font-medium tracking-wide">expedícia skladom</span>
               </div>
             </div>
 
             <Link to="/o-kameni" className="trust-counter group text-center">
               <div className="flex flex-col items-center">
-                <Thermometer size={20} className="text-brand-gold mb-3" strokeWidth={1.5} />
+                <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center mb-4 group-hover:bg-white/90 transition-colors duration-300">
+                  <Thermometer size={28} className="text-brand-gold" strokeWidth={1.5} />
+                </div>
                 <span className="text-2xl lg:text-3xl font-bold text-brand-dark mb-1">Do 300°C</span>
-                <span className="text-xs text-gray-400 font-medium tracking-wide">odolnosť voči teplu</span>
+                <span className="text-xs text-brand-dark/60 font-medium tracking-wide">odolnosť voči teplu</span>
               </div>
             </Link>
 
             <Link to="/kontakt?openWizard=true" className="trust-counter group text-center">
               <div className="flex flex-col items-center">
-                <MessageSquare size={20} className="text-brand-gold mb-3" strokeWidth={1.5} />
+                <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center mb-4 group-hover:bg-white/90 transition-colors duration-300">
+                  <MessageSquare size={28} className="text-brand-gold" strokeWidth={1.5} />
+                </div>
                 <span className="text-2xl lg:text-3xl font-bold text-brand-dark mb-1">Zadarmo</span>
-                <span className="text-xs text-gray-400 font-medium tracking-wide">vzorky a poradenstvo</span>
+                <span className="text-xs text-brand-dark/60 font-medium tracking-wide">vzorky a poradenstvo</span>
               </div>
             </Link>
 
@@ -546,14 +544,15 @@ export const Shop = () => {
             </p>
           </div>
 
-          {/* Asymmetric Grid: 1 large + 3 small */}
+          {/* Asymmetric Grid: 1 large + 5 small, last item spans 2 cols on desktop */}
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4 auto-rows-[200px] lg:auto-rows-[260px]">
             {INSPIRATION_IMAGES.map((img, idx) => (
               <div
                 key={idx}
                 className={`inspiration-item group relative rounded-2xl overflow-hidden cursor-pointer ${
                   img.large ? 'row-span-2 col-span-1' : ''
-                }`}
+                } ${idx === INSPIRATION_IMAGES.length - 1 ? 'lg:col-span-2' : ''}`}
+                onClick={() => { setLightboxIndex(idx); setLightboxOpen(true); }}
               >
                 <img
                   src={img.src}
@@ -682,6 +681,9 @@ export const Shop = () => {
           </div>
         </div>
       </section>
+
+      {/* ==================== BLOG PREVIEW SECTION ==================== */}
+      <BlogPreviewSection articles={getLatestArticles(4)} />
 
       {/* ==================== TESTIMONIALS ==================== */}
       <section className="testimonials-section py-20 lg:py-28 bg-white overflow-hidden">
@@ -838,29 +840,6 @@ export const Shop = () => {
         </div>
       </section>
 
-      {/* ==================== LIFESTYLE PARALLAX SECTION ==================== */}
-      <section className="lifestyle-section relative h-[60vh] min-h-[400px] overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&h=1080&fit=crop"
-            alt="Luxusný interiér so sinterovaným kameňom"
-            className="lifestyle-image absolute inset-0 w-full h-[130%] object-cover"
-          />
-        </div>
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center text-white px-6">
-          <span className="text-[11px] tracking-[0.3em] uppercase text-brand-gold font-bold mb-4 block">
-            Inšpirácie
-          </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-sans font-bold mb-4 max-w-2xl leading-tight">
-            Materiály, ktoré definujú priestor
-          </h2>
-          <p className="text-white/50 text-base lg:text-lg font-light max-w-xl">
-            Od kuchýň po kúpeľne — sinterovaný kameň prináša eleganciu do každého detailu
-          </p>
-        </div>
-      </section>
-
       {/* ==================== CTA SECTION ==================== */}
       <section className="cta-section py-24 lg:py-32 bg-white">
         <div className="container mx-auto px-6">
@@ -898,6 +877,15 @@ export const Shop = () => {
         product={selectedProduct}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+      />
+
+      <Lightbox
+        images={lightboxImages}
+        currentIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        onPrevious={() => setLightboxIndex((prev) => Math.max(0, prev - 1))}
+        onNext={() => setLightboxIndex((prev) => Math.min(lightboxImages.length - 1, prev + 1))}
       />
     </main>
   );

@@ -518,18 +518,17 @@ function getMetafieldValue(product: ShopifyProduct, key: string): string | undef
 // Mapovanie Shopify productType na nase kategorie
 function mapProductTypeToCategory(productType: string): ProductCategory {
   const typeMap: Record<string, ProductCategory> = {
-    'mramor': 'mramor',
-    'marble': 'mramor',
-    'granit': 'granit',
-    'granite': 'granit',
-    'beton': 'beton',
-    'concrete': 'beton',
-    'drevo': 'drevo',
-    'wood': 'drevo',
-    'jednofarebne': 'jednofarebne',
-    'solid color': 'jednofarebne',
+    'sintered-stone': 'sintered-stone',
+    'sintered stone': 'sintered-stone',
+    'sinterovaný kameň': 'sintered-stone',
+    'tables': 'tables',
+    'stoly': 'tables',
+    'invisible-cooktop': 'invisible-cooktop',
+    'invisible cooktop': 'invisible-cooktop',
+    'accessories': 'accessories',
+    'doplnky': 'accessories',
   };
-  return typeMap[productType.toLowerCase()] || 'mramor';
+  return typeMap[productType.toLowerCase()] || 'sintered-stone';
 }
 
 function shopifyProductToShopProduct(product: ShopifyProduct): ShopProduct {

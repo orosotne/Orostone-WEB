@@ -7,6 +7,7 @@ import { CartDrawer } from '../Cart/CartDrawer';
 import { NoiseOverlay } from '../UI/NoiseOverlay';
 import { CookieBanner } from '../UI/CookieBanner';
 import { CookieSettings } from '../UI/CookieSettings';
+import { SHOW_ANNOUNCEMENT_BAR } from '../../constants';
 
 // ===========================================
 // TYPES
@@ -29,8 +30,8 @@ export const EshopLayout: React.FC<EshopLayoutProps> = ({ children }) => {
       {/* Noise Overlay for texture */}
       <NoiseOverlay />
       
-      {/* Announcement Bar — hidden on homepage for immersive hero experience */}
-      {!isHomepage && <EshopAnnouncementBar />}
+      {/* Announcement Bar — controlled by SHOW_ANNOUNCEMENT_BAR constant */}
+      {SHOW_ANNOUNCEMENT_BAR && <EshopAnnouncementBar />}
       
       {/* Navbar with Mega Menu */}
       <EshopNavbar />
@@ -39,7 +40,7 @@ export const EshopLayout: React.FC<EshopLayoutProps> = ({ children }) => {
       <CartDrawer />
       
       {/* Main Content — homepage has no top padding (hero goes behind transparent navbar) */}
-      <main className={`flex-grow ${isHomepage ? '' : 'pt-[92px] lg:pt-[148px]'}`}>
+      <main className={`flex-grow ${isHomepage ? '' : SHOW_ANNOUNCEMENT_BAR ? 'pt-[92px] lg:pt-[148px]' : 'pt-[56px] lg:pt-[112px]'}`}>
         {children}
       </main>
       

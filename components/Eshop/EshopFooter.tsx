@@ -134,6 +134,11 @@ export const EshopFooter: React.FC = () => {
                   Výpredaj
                 </Link>
               </li>
+              <li>
+                <Link to="/blog" className="text-brand-gold hover:text-white text-sm transition-colors font-medium">
+                  Blog
+                </Link>
+              </li>
             </ul>
           </div>
 
