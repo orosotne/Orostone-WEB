@@ -4,8 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  ArrowRight, ChevronRight, Star,
-  CheckCircle, Clock, Thermometer, MessageSquare,
+  ArrowRight, ChevronLeft, ChevronRight, Star,
   Instagram
 } from 'lucide-react';
 import { ShopProduct, TESTIMONIALS, REALIZATIONS } from '../constants';
@@ -15,12 +14,23 @@ import { useShopifyProducts } from '../hooks/useShopifyProducts';
 import { useInstagramFeed, getPostImageUrl } from '../hooks/useInstagramFeed';
 import { OrderModal } from '../components/Shop/OrderModal';
 import { Lightbox } from '../components/UI/Lightbox';
-import { Marquee } from '../components/UI/Marquee';
 import { SEOHead, OROSTONE_ORGANIZATION_LD } from '../components/UI/SEOHead';
 import { Link } from 'react-router-dom';
 import type { CollectionGalleryImage } from '../types';
 
 gsap.registerPlugin(ScrollTrigger);
+
+// ===========================================
+// PREFETCH: Preload product detail chunk + images on hover
+// ===========================================
+const prefetchProduct = (product: ShopProduct) => {
+  // Prefetch the lazy-loaded ShopProductDetail chunk
+  import('./ShopProductDetail');
+  // Preload hero + first gallery images into browser cache
+  [product.image, ...(product.gallery || []).slice(0, 2)].forEach(url => {
+    if (url) { const img = new Image(); img.src = url; }
+  });
+};
 
 // ===========================================
 // CATEGORY TILES DATA
@@ -56,16 +66,54 @@ const CATEGORIES = [
 // INSPIRATION GALLERY DATA
 // ===========================================
 const INSPIRATION_IMAGES = [
-  { src: '/images/inspiration/inspiration-1.webp', label: 'Kuchyňa', large: true },
-  { src: '/images/inspiration/inspiration-2.webp', label: 'Kuchyňa', large: false },
-  { src: '/images/inspiration/inspiration-3.webp', label: 'Kuchyňa', large: false },
-  { src: '/images/inspiration/inspiration-4.webp', label: 'Kuchyňa', large: false },
-  { src: '/images/inspiration/inspiration-5.webp', label: 'Kuchyňa', large: false },
-  { src: '/images/inspiration/inspiration-7.webp', label: 'Kuchyňa', large: false },
-  { src: '/images/inspiration/inspiration-6.webp', label: 'Kuchyňa', large: false },
+  { src: '/images/inspiration/inspiration-1.webp', video: '/videos/inspiration/inspiration-1.mp4', label: 'Kuchyňa', title: 'Moderná kuchyňa', subtitle: 'Elegantný sinterovaný kameň' },
+  { src: '/images/inspiration/inspiration-2.webp', video: '/videos/inspiration/inspiration-2.mp4', label: 'Kuchyňa', title: 'Minimalistický dizajn', subtitle: 'Čisté línie a nadčasový štýl' },
+  { src: '/images/inspiration/inspiration-3.webp', video: '/videos/inspiration/inspiration-3.mp4', label: 'Kuchyňa', title: 'Prírodná elegancia', subtitle: 'Inšpirované prírodou' },
+  { src: '/images/inspiration/inspiration-4.webp', video: '/videos/inspiration/inspiration-4.mp4', label: 'Kuchyňa', title: 'Luxusný priestor', subtitle: 'Prémiové materiály' },
+  { src: '/images/inspiration/inspiration-5.webp', video: '/videos/inspiration/inspiration-5.mp4', label: 'Kuchyňa', title: 'Funkčná krása', subtitle: 'Praktickosť a estetika' },
 ];
 
+// Tripled array for infinite carousel — [set0, set1(middle), set2]
+const INSPIRATION_SLIDES = [...INSPIRATION_IMAGES, ...INSPIRATION_IMAGES, ...INSPIRATION_IMAGES];
+const INSPIRATION_COUNT = INSPIRATION_IMAGES.length; // 5
+
 // INSTAGRAM_IMAGES removed — now loaded via useInstagramFeed hook
+
+// ===========================================
+// HERO VIDEO SLIDES DATA
+// ===========================================
+const HERO_SLIDES = [
+  {
+    id: 1,
+    video: 'https://cdn.coverr.co/videos/coverr-modern-kitchen-interior-4k-6159/1080p.mp4',
+    poster: '/images/home/hero-1.jpeg',
+    label: 'Prémiový sinterovaný kameň',
+    title: 'Krása kameňa.',
+    titleAccent: 'Bez kompromisov.',
+    subtitle: 'Prémiové sinterované platne pre náročné interiéry',
+    cta: 'Objavte kolekcie',
+  },
+  {
+    id: 2,
+    video: 'https://cdn.coverr.co/videos/coverr-modern-kitchen-interior-4k-6159/1080p.mp4',
+    poster: '/images/home/hero-2.jpeg',
+    label: 'Invisible Cooktop',
+    title: 'Neviditeľná',
+    titleAccent: 'varná doska.',
+    subtitle: 'Revolučná technológia varenia priamo na kameni',
+    cta: 'Zistiť viac',
+  },
+  {
+    id: 3,
+    video: 'https://cdn.coverr.co/videos/coverr-modern-kitchen-interior-4k-6159/1080p.mp4',
+    poster: '/images/home/hero-4.jpeg',
+    label: 'Stoly zo sinterovaného kameňa',
+    title: 'Dizajnové stoly.',
+    titleAccent: 'Na mieru.',
+    subtitle: 'Luxusné jedálenské a konferenčné stoly na zákazku',
+    cta: 'Pozrieť stoly',
+  },
+];
 
 // ===========================================
 // COMPONENT
@@ -73,11 +121,13 @@ const INSPIRATION_IMAGES = [
 export const Shop = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const heroAutoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const { products: SHOP_PRODUCTS, isLoading: productsLoading } = useShopifyProducts();
 
   const [selectedProduct, setSelectedProduct] = useState<ShopProduct | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeSlide, setActiveSlide] = useState(0);
   const { posts: instagramPosts, isLoading: igLoading, isUsingFallback: igFallback } = useInstagramFeed(8);
 
   // Inspiration lightbox
@@ -89,6 +139,101 @@ export const Shop = () => {
     url: img.src,
     publicUrl: img.src,
   }));
+
+  // Inspiration carousel — infinite loop via triple-clone technique
+  // inspirationIndex tracks position in the tripled INSPIRATION_SLIDES array.
+  // It always starts in the middle set (offset INSPIRATION_COUNT).
+  const [inspirationIndex, setInspirationIndex] = useState(INSPIRATION_COUNT); // start at middle set, image 0
+  const inspirationAnimating = useRef(false);
+  const inspirationTrackRef = useRef<HTMLDivElement>(null);
+  const inspirationContainerRef = useRef<HTMLDivElement>(null);
+  const inspirationVideoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  // Compute offset for the track — centers the slide at `index` in the tripled array
+  const getInspirationOffset = useCallback((index: number) => {
+    const container = inspirationContainerRef.current;
+    const track = inspirationTrackRef.current;
+    if (!container || !track) return 0;
+    const slide = track.querySelector('.inspiration-slide') as HTMLElement | null;
+    if (!slide) return 0;
+    const slideWidth = slide.offsetWidth;
+    const containerWidth = container.offsetWidth;
+    const gap = 16; // gap-4 = 16px
+    const centerOffset = (containerWidth - slideWidth) / 2;
+    return centerOffset - index * (slideWidth + gap);
+  }, []);
+
+  // Set initial position on mount
+  useEffect(() => {
+    if (inspirationTrackRef.current) {
+      gsap.set(inspirationTrackRef.current, { x: getInspirationOffset(INSPIRATION_COUNT) });
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const goToInspiration = useCallback((newIndex: number) => {
+    if (inspirationAnimating.current) return;
+    inspirationAnimating.current = true;
+
+    // Immediately update for CSS-driven scale/opacity
+    setInspirationIndex(newIndex);
+
+    if (inspirationTrackRef.current) {
+      const targetX = getInspirationOffset(newIndex);
+
+      gsap.to(inspirationTrackRef.current, {
+        x: targetX,
+        duration: 0.6,
+        ease: 'power3.out',
+        onComplete: () => {
+          // After animation: silently snap back to the equivalent position in the middle set
+          const logicalIndex = ((newIndex % INSPIRATION_COUNT) + INSPIRATION_COUNT) % INSPIRATION_COUNT;
+          const middleIndex = INSPIRATION_COUNT + logicalIndex;
+
+          if (newIndex !== middleIndex) {
+            const resetX = getInspirationOffset(middleIndex);
+            gsap.set(inspirationTrackRef.current!, { x: resetX });
+            setInspirationIndex(middleIndex);
+          }
+
+          inspirationAnimating.current = false;
+        },
+      });
+    } else {
+      inspirationAnimating.current = false;
+    }
+  }, [getInspirationOffset]);
+
+  const goNextInspiration = useCallback(() => {
+    goToInspiration(inspirationIndex + 1);
+  }, [inspirationIndex, goToInspiration]);
+
+  const goPrevInspiration = useCallback(() => {
+    goToInspiration(inspirationIndex - 1);
+  }, [inspirationIndex, goToInspiration]);
+
+  // Handle window resize — reposition track without animation
+  useEffect(() => {
+    const handleResize = () => {
+      if (inspirationTrackRef.current) {
+        gsap.set(inspirationTrackRef.current, { x: getInspirationOffset(inspirationIndex) });
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [inspirationIndex, getInspirationOffset]);
+
+  // Play/pause inspiration videos — only the active (center) slide plays
+  useEffect(() => {
+    inspirationVideoRefs.current.forEach((video, idx) => {
+      if (!video) return;
+      if (idx === inspirationIndex) {
+        video.currentTime = 0;
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }, [inspirationIndex]);
 
   // Testimonials carousel
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -103,6 +248,71 @@ export const Shop = () => {
   }, [nextTestimonial]);
 
   // ===========================================
+  // HERO SLIDE NAVIGATION
+  // ===========================================
+  const goToSlide = useCallback((index: number) => {
+    // Pause current video
+    const currentVideo = videoRefs.current[activeSlide];
+    if (currentVideo) currentVideo.pause();
+
+    // Set new slide
+    setActiveSlide(index);
+
+    // Play new video
+    const nextVideo = videoRefs.current[index];
+    if (nextVideo) {
+      nextVideo.currentTime = 0;
+      nextVideo.play().catch(() => {});
+    }
+
+    // Reset auto-advance timer
+    if (heroAutoplayRef.current) clearInterval(heroAutoplayRef.current);
+    heroAutoplayRef.current = setInterval(() => {
+      setActiveSlide((prev) => {
+        const next = (prev + 1) % HERO_SLIDES.length;
+        const prevVideo = videoRefs.current[prev];
+        if (prevVideo) prevVideo.pause();
+        const nextVid = videoRefs.current[next];
+        if (nextVid) { nextVid.currentTime = 0; nextVid.play().catch(() => {}); }
+        return next;
+      });
+    }, 8000);
+  }, [activeSlide]);
+
+  const goToNextSlide = useCallback(() => {
+    goToSlide((activeSlide + 1) % HERO_SLIDES.length);
+  }, [activeSlide, goToSlide]);
+
+  const goToPrevSlide = useCallback(() => {
+    goToSlide((activeSlide - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+  }, [activeSlide, goToSlide]);
+
+  // Auto-advance hero slides
+  useEffect(() => {
+    heroAutoplayRef.current = setInterval(() => {
+      setActiveSlide((prev) => {
+        const next = (prev + 1) % HERO_SLIDES.length;
+        const prevVideo = videoRefs.current[prev];
+        if (prevVideo) prevVideo.pause();
+        const nextVid = videoRefs.current[next];
+        if (nextVid) { nextVid.currentTime = 0; nextVid.play().catch(() => {}); }
+        return next;
+      });
+    }, 8000);
+    return () => {
+      if (heroAutoplayRef.current) clearInterval(heroAutoplayRef.current);
+    };
+  }, []);
+
+  // Play first video on mount
+  useEffect(() => {
+    const firstVideo = videoRefs.current[0];
+    if (firstVideo) {
+      firstVideo.play().catch(() => {});
+    }
+  }, []);
+
+  // ===========================================
   // GSAP ANIMATIONS
   // ===========================================
   useGSAP(() => {
@@ -110,35 +320,40 @@ export const Shop = () => {
 
     // --- Hero text reveal ---
     gsap.fromTo('.hero-text-line', 
-      { y: 100, opacity: 0 },
+      { y: 60, opacity: 0 },
       { 
         y: 0, opacity: 1,
-        duration: 1.2,
+        duration: 1,
         ease: 'power4.out',
-        stagger: 0.15,
+        stagger: 0.12,
         delay: 0.3,
       }
     );
 
     gsap.fromTo('.hero-subtitle',
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 0.8 }
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 0.7 }
     );
 
     gsap.fromTo('.hero-cta',
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 1.1 }
+      { y: 15, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out', delay: 0.9 }
     );
 
-    gsap.fromTo('.scroll-indicator',
+    gsap.fromTo('.hero-nav-arrows',
       { opacity: 0 },
-      { opacity: 1, duration: 1, delay: 1.5 }
+      { opacity: 1, duration: 0.8, delay: 1.2 }
     );
 
-    // --- Parallax effect on hero video ---
+    gsap.fromTo('.hero-indicators',
+      { opacity: 0 },
+      { opacity: 1, duration: 0.8, delay: 1.3 }
+    );
+
+    // --- Parallax effect on hero videos ---
     if (heroRef.current) {
       gsap.to('.hero-video', {
-        scale: 1.15,
+        scale: 1.1,
         scrollTrigger: {
           trigger: heroRef.current,
           start: 'top top',
@@ -147,23 +362,6 @@ export const Shop = () => {
         },
       });
     }
-
-    // --- Trust bar counters ---
-    gsap.utils.toArray<HTMLElement>('.trust-counter').forEach((el) => {
-      gsap.fromTo(el,
-        { y: 30, opacity: 0 },
-        {
-          y: 0, opacity: 1,
-          duration: 0.8,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 85%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
-    });
 
     // --- Category tiles staggered reveal ---
     gsap.fromTo('.category-tile',
@@ -243,21 +441,23 @@ export const Shop = () => {
       }
     );
 
-    // --- Inspiration gallery ---
-    gsap.fromTo('.inspiration-item',
-      { y: 50, opacity: 0 },
-      {
-        y: 0, opacity: 1,
-        duration: 0.8,
-        ease: 'power3.out',
-        stagger: 0.15,
-        scrollTrigger: {
-          trigger: '.inspiration-section',
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
-        },
-      }
-    );
+    // --- Inspiration carousel entrance ---
+    const inspirationContainer = document.querySelector('.inspiration-section .overflow-hidden');
+    if (inspirationContainer) {
+      gsap.fromTo(inspirationContainer,
+        { y: 50, opacity: 0 },
+        {
+          y: 0, opacity: 1,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.inspiration-section',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
+    }
 
     // --- Testimonials ---
     gsap.fromTo('.testimonials-section .testimonial-inner',
@@ -319,152 +519,191 @@ export const Shop = () => {
         structuredData={OROSTONE_ORGANIZATION_LD}
       />
 
-      {/* ==================== CINEMATIC VIDEO HERO (75vh) ==================== */}
+      {/* ==================== CINEMATIC VIDEO HERO CAROUSEL (80vh) ==================== */}
       <section 
         ref={heroRef} 
-        className="relative h-[75vh] min-h-[600px] w-full flex items-center justify-center overflow-hidden bg-black"
+        className="relative h-[80vh] min-h-[600px] w-full flex items-center justify-center overflow-hidden bg-black"
       >
-        {/* Fullscreen Video Background */}
-        <video
-          ref={videoRef}
-          className="hero-video absolute inset-0 w-full h-full object-cover opacity-50"
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="/images/home/hero-1.jpeg"
-        >
-          <source 
-            src="https://cdn.coverr.co/videos/coverr-modern-kitchen-interior-4k-6159/1080p.mp4" 
-            type="video/mp4" 
-          />
-        </video>
+        {/* Video Slides */}
+        {HERO_SLIDES.map((slide, idx) => (
+          <div
+            key={slide.id}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              idx === activeSlide ? 'opacity-100 z-[1]' : 'opacity-0 z-0'
+            }`}
+          >
+            {/* Poster Image Fallback (visible while video loads) */}
+            <img
+              src={slide.poster}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            {/* Video */}
+            <video
+              ref={(el) => { videoRefs.current[idx] = el; }}
+              className="hero-video absolute inset-0 w-full h-full object-cover"
+              loop
+              muted
+              playsInline
+              poster={slide.poster}
+              preload="auto"
+            >
+              <source src={slide.video} type="video/mp4" />
+            </video>
+          </div>
+        ))}
 
         {/* Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/50" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-transparent to-black/30" />
+        <div className="absolute inset-0 z-[2] bg-gradient-to-t from-black/80 via-black/20 to-black/40" />
+        <div className="absolute inset-0 z-[2] bg-gradient-to-r from-black/20 via-transparent to-black/20" />
 
-        {/* Minimal Centered Content */}
-        <div className="relative z-10 text-center text-white px-6 max-w-4xl mx-auto">
-          <div className="mb-8 flex flex-col items-center">
-            <div className="overflow-hidden">
-              <h1 className="hero-text-line text-5xl md:text-6xl lg:text-8xl font-sans font-bold tracking-tight leading-[0.95] text-white">
-                Krása kameňa.
-              </h1>
-            </div>
-            <div className="overflow-hidden mt-2 md:mt-3">
-              <h1 className="hero-text-line text-5xl md:text-6xl lg:text-8xl font-sans font-light italic text-brand-gold tracking-tight leading-[0.95]">
-                Bez kompromisov.
-              </h1>
-            </div>
-          </div>
-
-          <p className="hero-subtitle font-sans font-light text-base md:text-lg text-white/50 max-w-xl mx-auto mb-14">
-            Prémiové sinterované platne pre náročné interiéry
-          </p>
-
-          <div className="hero-cta">
-            <button
-              onClick={() => {
-                document.querySelector('.categories-grid')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              className="group inline-flex items-center gap-3 text-white/90 hover:text-white transition-all duration-300"
+        {/* Centered Content — DJI Reference Style */}
+        <div className="relative z-10 text-center text-white px-6 max-w-3xl mx-auto" style={{ zIndex: 3 }}>
+          {/* Small Category Label */}
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={`label-${activeSlide}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.4 }}
+              className="hero-text-line text-[10px] md:text-xs tracking-[0.3em] uppercase text-white/60 font-light mb-6"
             >
-              <span className="text-sm md:text-base font-light tracking-[0.2em] uppercase border-b border-white/30 group-hover:border-brand-gold pb-1 transition-colors duration-300">
-                Objavte kolekcie
+              {HERO_SLIDES[activeSlide].label}
+            </motion.p>
+          </AnimatePresence>
+
+          {/* Title */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`title-${activeSlide}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.5, delay: 0.05 }}
+              className="mb-1 md:mb-2"
+            >
+              <h1 className="hero-text-line text-3xl md:text-4xl lg:text-5xl font-sans font-bold tracking-tight leading-[1.1] text-white uppercase">
+                {HERO_SLIDES[activeSlide].title}
+              </h1>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Title Accent */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`accent-${activeSlide}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="mb-5 md:mb-6"
+            >
+              <span className="hero-text-line text-3xl md:text-4xl lg:text-5xl font-sans font-light italic text-brand-gold tracking-tight leading-[1.1]">
+                {HERO_SLIDES[activeSlide].titleAccent}
               </span>
-              <ArrowRight size={18} className="text-brand-gold opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Subtitle */}
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={`sub-${activeSlide}`}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.4, delay: 0.15 }}
+              className="hero-subtitle font-sans font-light text-sm md:text-base text-white/50 max-w-md mx-auto mb-8 md:mb-10"
+            >
+              {HERO_SLIDES[activeSlide].subtitle}
+            </motion.p>
+          </AnimatePresence>
+
+          {/* CTA Button */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`cta-${activeSlide}`}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="hero-cta"
+            >
+              <button
+                onClick={() => {
+                  document.querySelector('.categories-grid')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="group inline-flex items-center gap-2 border border-white/40 hover:border-white text-white/90 hover:text-white px-6 py-2.5 text-xs md:text-sm tracking-[0.15em] uppercase transition-all duration-300"
+              >
+                {HERO_SLIDES[activeSlide].cta}
+                <ChevronRight size={14} className="group-hover:translate-x-0.5 transition-transform duration-300" />
+              </button>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Left Arrow */}
+        <button
+          onClick={goToPrevSlide}
+          className="hero-nav-arrows absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-white/40 hover:text-white transition-colors duration-300"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft size={28} strokeWidth={1} />
+        </button>
+
+        {/* Right Arrow */}
+        <button
+          onClick={goToNextSlide}
+          className="hero-nav-arrows absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-white/40 hover:text-white transition-colors duration-300"
+          aria-label="Next slide"
+        >
+          <ChevronRight size={28} strokeWidth={1} />
+        </button>
+
+        {/* Bottom Slide Indicators */}
+        <div className="hero-indicators absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
+          {HERO_SLIDES.map((slide, idx) => (
+            <button
+              key={slide.id}
+              onClick={() => goToSlide(idx)}
+              className="group flex items-center gap-2 py-2 transition-all duration-300"
+              aria-label={`Slide ${idx + 1}: ${slide.label}`}
+            >
+              <span
+                className={`block h-[2px] rounded-full transition-all duration-500 ${
+                  idx === activeSlide
+                    ? 'w-8 bg-brand-gold'
+                    : 'w-4 bg-white/30 group-hover:bg-white/50'
+                }`}
+              />
             </button>
-          </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 text-white/40 z-10">
-          <div className="flex flex-col items-center gap-3">
-            <span className="font-sans text-[10px] tracking-[0.3em] uppercase">Scroll</span>
-            <div className="w-px h-10 bg-gradient-to-b from-white/40 to-transparent animate-pulse" />
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* ==================== TRUST MARQUEE ==================== */}
-      <Marquee />
 
-      {/* ==================== TRUST BAR — Refined Minimal ==================== */}
-      <section className="bg-brand-gold py-12 lg:py-16">
+      {/* ==================== CATEGORY TILES — 9:16 Portrait Row ==================== */}
+      <section className="py-16 lg:py-24 bg-brand-gold">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-
-            <Link to="/realizacie" className="trust-counter group text-center">
-              <div className="flex flex-col items-center">
-                <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center mb-4 group-hover:bg-white/90 transition-colors duration-300">
-                  <CheckCircle size={28} className="text-brand-gold" strokeWidth={1.5} />
-                </div>
-                <span className="text-2xl lg:text-3xl font-bold text-brand-dark mb-1">200+</span>
-                <span className="text-xs text-brand-dark/60 font-medium tracking-wide">overených realizácií</span>
-              </div>
-            </Link>
-
-            <div className="trust-counter group text-center">
-              <div className="flex flex-col items-center">
-                <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center mb-4">
-                  <Clock size={28} className="text-brand-gold" strokeWidth={1.5} />
-                </div>
-                <span className="text-2xl lg:text-3xl font-bold text-brand-dark mb-1">24–48h</span>
-                <span className="text-xs text-brand-dark/60 font-medium tracking-wide">expedícia skladom</span>
-              </div>
-            </div>
-
-            <Link to="/o-kameni" className="trust-counter group text-center">
-              <div className="flex flex-col items-center">
-                <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center mb-4 group-hover:bg-white/90 transition-colors duration-300">
-                  <Thermometer size={28} className="text-brand-gold" strokeWidth={1.5} />
-                </div>
-                <span className="text-2xl lg:text-3xl font-bold text-brand-dark mb-1">Do 300°C</span>
-                <span className="text-xs text-brand-dark/60 font-medium tracking-wide">odolnosť voči teplu</span>
-              </div>
-            </Link>
-
-            <Link to="/kontakt?openWizard=true" className="trust-counter group text-center">
-              <div className="flex flex-col items-center">
-                <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center mb-4 group-hover:bg-white/90 transition-colors duration-300">
-                  <MessageSquare size={28} className="text-brand-gold" strokeWidth={1.5} />
-                </div>
-                <span className="text-2xl lg:text-3xl font-bold text-brand-dark mb-1">Zadarmo</span>
-                <span className="text-xs text-brand-dark/60 font-medium tracking-wide">vzorky a poradenstvo</span>
-              </div>
-            </Link>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ==================== EDITORIAL CATEGORY TILES ==================== */}
-      <section className="py-20 lg:py-28 bg-[#FAFAFA]">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="section-reveal text-center mb-12 lg:mb-16">
-            <span className="text-[11px] tracking-[0.3em] uppercase text-brand-gold font-bold mb-3 block">
-              Kolekcie
-            </span>
-            <h2 className="text-3xl lg:text-4xl font-sans font-bold text-brand-dark">
-              Objavte naše materiály
-            </h2>
-          </div>
-
-          <div className="categories-grid grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          <div className="categories-grid grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
             {CATEGORIES.map((cat) => (
               <Link
                 key={cat.slug}
                 to={`/kategoria/${cat.slug}`}
-                className="category-tile group relative aspect-[3/4] rounded-2xl overflow-hidden"
+                className="category-tile group relative aspect-[9/16] rounded-2xl overflow-hidden"
               >
+                {/* Full-bleed Image */}
                 <img
                   src={cat.image}
                   alt={cat.name}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
+
+                {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent group-hover:from-black/80 transition-all duration-500" />
-                <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6">
+
+                {/* Text Content — Bottom */}
+                <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6 z-10">
                   <p className="text-[10px] tracking-[0.2em] uppercase text-white/50 mb-1 font-medium">
                     {cat.description}
                   </p>
@@ -480,6 +719,148 @@ export const Shop = () => {
                 </div>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== INSPIRUJTE SA — Inspiration Carousel ==================== */}
+      <section className="inspiration-section py-20 lg:py-28 bg-[#FAFAFA]">
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="inspiration-header section-reveal text-center mb-12 lg:mb-16">
+            <span className="text-[11px] tracking-[0.3em] uppercase text-brand-gold font-bold mb-3 block">
+              Inšpirácie
+            </span>
+            <h2 className="text-3xl lg:text-4xl font-sans font-bold text-brand-dark">
+              Inspirujte sa
+            </h2>
+            <p className="text-gray-400 text-sm lg:text-base mt-3 font-light max-w-lg mx-auto">
+              Ako môže sinterovaný kameň premeniť váš priestor
+            </p>
+          </div>
+
+          {/* Carousel — infinite loop with tripled slides */}
+          <div ref={inspirationContainerRef} className="relative">
+            {/* Track container */}
+            <div className="overflow-hidden rounded-2xl">
+              <div
+                ref={inspirationTrackRef}
+                className="flex gap-4"
+                style={{ willChange: 'transform' }}
+              >
+                {INSPIRATION_SLIDES.map((img, idx) => {
+                  const isCenter = idx === inspirationIndex;
+                  const isAdjacent = idx === inspirationIndex - 1 || idx === inspirationIndex + 1;
+
+                  return (
+                    <div
+                      key={idx}
+                      className="inspiration-slide flex-shrink-0 relative rounded-2xl overflow-hidden cursor-pointer w-[85vw] sm:w-[70vw] lg:w-[50%]"
+                      style={{
+                        aspectRatio: '16 / 9',
+                        transform: isCenter ? 'scale(1)' : 'scale(0.92)',
+                        opacity: isCenter ? 1 : isAdjacent ? 0.6 : 0.3,
+                        transition: 'transform 0.6s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.6s cubic-bezier(0.33, 1, 0.68, 1)',
+                      }}
+                      onClick={() => {
+                        if (isCenter) {
+                          const logicalIdx = idx % INSPIRATION_COUNT;
+                          setLightboxIndex(logicalIdx);
+                          setLightboxOpen(true);
+                        } else {
+                          goToInspiration(idx);
+                        }
+                      }}
+                    >
+                      {/* Poster image (visible while video loads or if video missing) */}
+                      <img
+                        src={img.src}
+                        alt={img.label}
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+
+                      {/* VEO-generated video — plays only on center slide */}
+                      <video
+                        ref={(el) => { inspirationVideoRefs.current[idx] = el; }}
+                        className="absolute inset-0 w-full h-full object-cover"
+                        loop
+                        muted
+                        playsInline
+                        poster={img.src}
+                        preload={isCenter ? 'auto' : 'none'}
+                      >
+                        <source src={img.video} type="video/mp4" />
+                      </video>
+
+                      {/* Dark gradient overlay for text readability */}
+                      <div
+                        className="absolute inset-0 transition-opacity duration-500"
+                        style={{
+                          background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0) 100%)',
+                          opacity: isCenter ? 1 : 0.3,
+                        }}
+                      />
+
+                      {/* Text overlay — integrated into image, visible on center */}
+                      <div
+                        className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 transition-all duration-500"
+                        style={{
+                          opacity: isCenter ? 1 : 0,
+                          transform: isCenter ? 'translateY(0)' : 'translateY(16px)',
+                        }}
+                      >
+                        <span className="text-[10px] lg:text-[11px] tracking-[0.3em] uppercase text-white/80 font-medium mb-2 lg:mb-3">
+                          {img.label}
+                        </span>
+                        <h3 className="text-xl sm:text-2xl lg:text-3xl font-sans font-bold text-white leading-tight mb-1 lg:mb-2 drop-shadow-lg">
+                          {img.title}
+                        </h3>
+                        <p className="text-xs lg:text-sm text-white/70 font-light">
+                          {img.subtitle}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Arrow buttons */}
+            <button
+              onClick={goPrevInspiration}
+              className="absolute left-2 lg:left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center hover:bg-white hover:scale-105 active:scale-95 transition-all duration-200"
+              aria-label="Predchádzajúca inšpirácia"
+            >
+              <ChevronLeft size={20} className="text-brand-dark" />
+            </button>
+            <button
+              onClick={goNextInspiration}
+              className="absolute right-2 lg:right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center hover:bg-white hover:scale-105 active:scale-95 transition-all duration-200"
+              aria-label="Nasledujúca inšpirácia"
+            >
+              <ChevronRight size={20} className="text-brand-dark" />
+            </button>
+
+            {/* Dot indicators — mapped to 5 logical images */}
+            <div className="flex justify-center gap-2 mt-6 lg:mt-8">
+              {INSPIRATION_IMAGES.map((_, idx) => {
+                const activeLogical = ((inspirationIndex % INSPIRATION_COUNT) + INSPIRATION_COUNT) % INSPIRATION_COUNT;
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      // Navigate to the corresponding position in the middle set
+                      goToInspiration(INSPIRATION_COUNT + idx);
+                    }}
+                    className={`rounded-full transition-all duration-300 ${
+                      idx === activeLogical
+                        ? 'w-8 h-2 bg-brand-gold'
+                        : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
+                    }`}
+                    aria-label={`Inšpirácia ${idx + 1}`}
+                  />
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
@@ -518,6 +899,8 @@ export const Shop = () => {
                 </p>
                 <Link
                   to={`/produkt/${spotlightProduct.id}`}
+                  onMouseEnter={() => prefetchProduct(spotlightProduct)}
+                  onTouchStart={() => prefetchProduct(spotlightProduct)}
                   className="inline-flex items-center gap-3 bg-brand-dark text-white px-8 py-4 rounded-full text-sm font-bold uppercase tracking-wider hover:bg-brand-gold hover:text-brand-dark transition-all duration-300"
                 >
                   Zobraziť detail
@@ -528,48 +911,6 @@ export const Shop = () => {
           </div>
         </section>
       )}
-
-      {/* ==================== INSPIRUJTE SA — Inspiration Gallery ==================== */}
-      <section className="inspiration-section py-20 lg:py-28 bg-[#FAFAFA]">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="section-reveal text-center mb-12 lg:mb-16">
-            <span className="text-[11px] tracking-[0.3em] uppercase text-brand-gold font-bold mb-3 block">
-              Inšpirácie
-            </span>
-            <h2 className="text-3xl lg:text-4xl font-sans font-bold text-brand-dark">
-              Inspirujte sa
-            </h2>
-            <p className="text-gray-400 text-sm lg:text-base mt-3 font-light max-w-lg mx-auto">
-              Ako môže sinterovaný kameň premeniť váš priestor
-            </p>
-          </div>
-
-          {/* Asymmetric Grid: 1 large + 5 small, last item spans 2 cols on desktop */}
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4 auto-rows-[200px] lg:auto-rows-[260px]">
-            {INSPIRATION_IMAGES.map((img, idx) => (
-              <div
-                key={idx}
-                className={`inspiration-item group relative rounded-2xl overflow-hidden cursor-pointer ${
-                  img.large ? 'row-span-2 col-span-1' : ''
-                } ${idx === INSPIRATION_IMAGES.length - 1 ? 'lg:col-span-2' : ''}`}
-                onClick={() => { setLightboxIndex(idx); setLightboxOpen(true); }}
-              >
-                <img
-                  src={img.src}
-                  alt={img.label}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500" />
-                <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                  <span className="text-[11px] tracking-[0.2em] uppercase text-white font-medium bg-brand-gold/90 px-3 py-1 rounded-full">
-                    {img.label}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ==================== FEATURED PRODUCTS CAROUSEL ==================== */}
       <section className="products-section bg-[#FAFAFA] py-20 lg:py-28 overflow-hidden">
@@ -624,6 +965,8 @@ export const Shop = () => {
                   <Link 
                     key={product.id}
                     to={`/produkt/${product.id}`}
+                    onMouseEnter={() => prefetchProduct(product)}
+                    onTouchStart={() => prefetchProduct(product)}
                     className="product-card group flex-shrink-0 w-[280px] lg:w-[300px] snap-start"
                   >
                     <div className="bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300">

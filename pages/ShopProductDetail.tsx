@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -8,7 +8,6 @@ import {
   Plus,
   ShoppingBag,
   ChevronRight,
-  ChevronLeft,
   X,
   ZoomIn,
   Maximize2,
@@ -43,6 +42,7 @@ import { Button } from '../components/UI/Button';
 import { useCart, formatPrice } from '../context/CartContext';
 import { cn } from '@/lib/utils';
 import { ShareButton } from '../components/UI/ShareButton';
+import { ProductDetailSkeleton } from '../components/UI/Skeleton';
 
 // ===========================================
 // HELPER: Calculate total price
@@ -53,9 +53,10 @@ const calculateSlabPrice = (pricePerM2: number, dimensions: string): number => {
   if (match) {
     const width = parseInt(match[1]) / 1000; // Convert mm to m
     const height = parseInt(match[2]) / 1000;
-    return pricePerM2 * width * height;
+    // Round to 2 decimals to avoid floating point artifacts from pricePerM2 round-trip
+    return Math.round(pricePerM2 * width * height * 100) / 100;
   }
-  return pricePerM2 * 5.12; // Default 3200x1600 = 5.12m²
+  return Math.round(pricePerM2 * 5.12 * 100) / 100; // Default 3200x1600 = 5.12m²
 };
 
 // ===========================================
@@ -69,10 +70,37 @@ interface ProductSwitcherProps {
 const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProductId, products }) => {
   const navigate = useNavigate();
 
+  // Filter out Shopify example/test products
+  const filteredProducts = products.filter((p) => {
+    const name = p.name.toLowerCase();
+    return !name.includes('example product') && !name.includes('test product');
+  });
+
   const handleProductClick = (productId: string) => {
     // AJAX-like navigation - React Router handles this without full page reload
     navigate(`/produkt/${productId}`);
   };
+
+  // Preload ALL gallery images for other products (delayed so we don't compete with current product rendering)
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      filteredProducts.forEach(p => {
+        if (p.id !== currentProductId) {
+          const allImages = [p.image, ...(p.gallery || [])];
+          allImages.forEach(url => {
+            if (url) {
+              const img = new Image();
+              img.src = url;
+            }
+          });
+        }
+      });
+    }, 1000); // 1s delay to prioritize current product rendering
+    return () => clearTimeout(timeout);
+  }, [filteredProducts, currentProductId]);
+
+  // Don't render if only current product remains after filtering
+  if (filteredProducts.length <= 1) return null;
 
   return (
     <div className="mb-8">
@@ -80,7 +108,7 @@ const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProductId, pro
         Ďalšie produkty
       </h3>
       <div className="grid grid-cols-4 gap-2">
-        {products.map((product) => {
+        {filteredProducts.map((product) => {
           const isActive = product.id === currentProductId;
           return (
             <button
@@ -144,13 +172,13 @@ const BundleSelector: React.FC<BundleSelectorProps> = ({
   const calculateBundlePrice = (bundle: BundleOption) => {
     const basePrice = pricePerSlab * bundle.quantity;
     const discount = bundle.discountPercent / 100;
-    return basePrice * (1 - discount);
+    return Math.round(basePrice * (1 - discount) * 100) / 100;
   };
 
   const calculateSavings = (bundle: BundleOption) => {
-    const basePrice = pricePerSlab * bundle.quantity;
+    const basePrice = Math.round(pricePerSlab * bundle.quantity * 100) / 100;
     const discountedPrice = calculateBundlePrice(bundle);
-    return basePrice - discountedPrice;
+    return Math.round((basePrice - discountedPrice) * 100) / 100;
   };
 
   return (
@@ -439,7 +467,7 @@ const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProps> = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.4 }}
-      className="mt-8"
+      className="!mt-[73px]"
     >
       {/* Header */}
       <div className="text-center mb-6">
@@ -640,8 +668,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   const currentImage = images[selectedImageIndex];
   const singleSlabPrice = calculateSlabPrice(product.pricePerM2, product.dimensions);
   
-  // Calculate bundle price with discount
-  const bundleTotalPrice = singleSlabPrice * selectedBundle.quantity * (1 - selectedBundle.discountPercent / 100);
+  // Calculate bundle price with discount (round to avoid floating point artifacts)
+  const bundleTotalPrice = Math.round(singleSlabPrice * selectedBundle.quantity * (1 - selectedBundle.discountPercent / 100) * 100) / 100;
 
   // Lightbox handlers
   const openLightbox = (index?: number) => {
@@ -662,7 +690,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   };
 
   // Show only first 2 thumbnails unless "Show more" is clicked
-  const visibleThumbnails = showAllImages ? images : images.slice(0, 2);
+  const visibleThumbnails = showAllImages ? images : images.slice(0, 4);
 
   return (
     <section className="pt-8 pb-16 bg-gradient-to-br from-white via-[#FAFAF8] to-[#F5F5F0]">
@@ -671,8 +699,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="flex items-center justify-between mb-8">
           <nav className="flex items-center gap-2 text-xs text-gray-500">
             <Link to="/" className="hover:text-brand-dark transition-colors">Shop</Link>
-            <ChevronRight size={12} />
-            <Link to="/" className="hover:text-brand-dark transition-colors">Kolekcie</Link>
             <ChevronRight size={12} />
             <span className="text-brand-dark font-medium">{product.name}</span>
           </nav>
@@ -683,11 +709,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           {/* Left: Image Gallery */}
           <div className="hidden lg:block lg:order-1 lg:col-span-7 space-y-4">
             {/* Main Image with Carousel Arrows */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
+            <div>
               <div 
                 className="aspect-square bg-[#F5F5F3] overflow-hidden relative group rounded-xl cursor-pointer"
                 onClick={() => openLightbox()}
@@ -746,19 +768,15 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                   </div>
                 )}
               </div>
-            </motion.div>
+            </div>
 
             {/* Thumbnails - 2 visible + Show More button */}
             {images.length > 1 && (
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="space-y-3"
+              <div className="space-y-3"
               >
                 <div className={cn(
                   "grid gap-3",
-                  showAllImages ? "grid-cols-4" : "grid-cols-2"
+                  "grid-cols-4"
                 )}>
                   {visibleThumbnails.map((img, index) => {
                     // When showing all, use actual index; when showing limited, find actual index
@@ -785,7 +803,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 </div>
 
                 {/* Show More / Show Less Button */}
-                {images.length > 2 && (
+                {images.length > 4 && (
                   <button
                     onClick={() => setShowAllImages(!showAllImages)}
                     className="w-full py-3 border border-gray-300 rounded-lg text-sm font-medium text-brand-dark hover:border-brand-dark transition-colors flex items-center justify-center gap-2"
@@ -803,19 +821,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                     )}
                   </button>
                 )}
-              </motion.div>
+              </div>
             )}
-
-            {/* Lightbox */}
-            <ProductLightbox
-              images={images}
-              currentIndex={selectedImageIndex}
-              isOpen={isLightboxOpen}
-              onClose={closeLightbox}
-              onPrevious={goToPreviousLightbox}
-              onNext={goToNextLightbox}
-              productName={product.name}
-            />
 
             {/* Material Perspectives Viewer */}
             <MaterialPerspectivesViewer product={product} />
@@ -823,11 +830,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
           {/* Right: Product Info */}
           <div className="lg:order-2 lg:col-span-5">
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
+            <div>
               {/* Collection badge */}
               {product.vendor && (
                 <div className="mb-4">
@@ -859,9 +862,16 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               </h1>
 
               {/* Short Description */}
-              <p className="text-gray-600 font-light leading-relaxed mb-8 text-lg">
-                {product.description}
-              </p>
+              {product.descriptionHtml ? (
+                <div 
+                  className="prose prose-sm prose-gray max-w-none mb-8 font-light leading-relaxed text-lg border-l-2 border-brand-gold pl-6 [&>p]:text-gray-600 [&>p]:mb-3 [&>ul]:text-gray-600 [&>ol]:text-gray-600 [&>p:last-child]:mb-0 [&_strong]:text-brand-gold [&_strong]:font-semibold"
+                  dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+                />
+              ) : (
+                <p className="text-gray-600 font-light leading-relaxed mb-8 text-lg">
+                  {product.description}
+                </p>
+              )}
 
               {/* Key Specs Quick View */}
               <div className="grid grid-cols-2 gap-4 mb-8 pb-8 border-b border-gray-200">
@@ -943,7 +953,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 {images.length > 1 && (
                   <div className={cn(
                     "grid gap-3",
-                    showAllImages ? "grid-cols-4" : "grid-cols-2"
+                    "grid-cols-4"
                   )}>
                     {visibleThumbnails.map((img, index) => {
                       const actualIndex = showAllImages ? index : images.indexOf(img);
@@ -970,7 +980,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 )}
 
                 {/* Show More / Show Less */}
-                {images.length > 2 && (
+                {images.length > 4 && (
                   <button
                     onClick={() => setShowAllImages(!showAllImages)}
                     className="w-full py-3 border border-gray-300 rounded-lg text-sm font-medium text-brand-dark hover:border-brand-dark transition-colors flex items-center justify-center gap-2"
@@ -1011,7 +1021,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 <div className="text-sm text-gray-500">
                   {formatPrice(singleSlabPrice)} / doska • {formatPrice(product.pricePerM2)} / m²
                 </div>
-                {product.stockQuantity && (
+                {product.stockQuantity > 0 && (
                   <div className="text-sm text-gray-500 mt-1">
                     {product.stockQuantity} ks skladom
                   </div>
@@ -1067,9 +1077,20 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                   <span>Záruka 24 mesiacov na materiál</span>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
+
+        {/* Lightbox — outside the grid so it works on both mobile and desktop (fixed + z-50) */}
+        <ProductLightbox
+          images={images}
+          currentIndex={selectedImageIndex}
+          isOpen={isLightboxOpen}
+          onClose={closeLightbox}
+          onPrevious={goToPreviousLightbox}
+          onNext={goToNextLightbox}
+          productName={product.name}
+        />
       </div>
     </section>
   );
@@ -1077,15 +1098,50 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
 // ===========================================
 // SECTION: Product Story (Rich Description)
-// ===========================================
+// =========================================== 
 interface ProductStorySectionProps {
   product: ShopProduct;
 }
 
 const ProductStorySection: React.FC<ProductStorySectionProps> = ({ product }) => {
   const rd = product.richDescription;
-  if (!rd) return null;
+  
+  // If no richDescription and no designInsight, don't render the section
+  if (!rd && !product.designInsight) return null;
 
+  // Design insight: researched content about style matching & use cases (Shopify products)
+  if (!rd && product.designInsight) {
+    return (
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-[11px] font-bold tracking-[0.2em] uppercase text-brand-gold mb-8">
+                Štýl & Inšpirácia
+              </h2>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="prose prose-lg prose-gray max-w-none [&>p]:text-gray-700 [&>p]:leading-relaxed [&>p]:mb-4 [&>ul]:text-gray-700 [&>ol]:text-gray-700 [&>strong]:text-brand-dark border-l-2 border-brand-gold pl-6"
+              dangerouslySetInnerHTML={{ __html: product.designInsight }}
+            />
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Rich description path (local products)
+  if (!rd) return null;
   const highlightsTitle = rd.highlightsTitle || `Prečo si vybrať ${product.name}?`;
 
   return (
@@ -1638,8 +1694,17 @@ const ProductSchema: React.FC<ProductSchemaProps> = ({ product, totalPrice }) =>
 export const ShopProductDetail: React.FC = () => {
   const { id } = useParams();
   const { addItem, isInCart } = useCart();
-  const { product: shopifyProduct, isLoading: productLoading } = useShopifyProduct(id);
   const { products: allProducts, isLoading: productsLoading } = useShopifyProducts();
+
+  // SWR: find product in already-loaded allProducts cache for instant display
+  const cachedProduct = useMemo(
+    () => allProducts.find(p => p.id === id) ?? null,
+    [allProducts, id]
+  );
+
+  // Pass cached product as initialData — hook renders it immediately,
+  // then fetches fresh data from Shopify in the background
+  const { product: shopifyProduct, isLoading: productLoading } = useShopifyProduct(id, cachedProduct);
   // Default to 2 platne for higher AOV
   const [selectedBundle, setSelectedBundle] = useState<BundleOption>(BUNDLE_OPTIONS[1]);
   const [cartError, setCartError] = useState<string | null>(null);
@@ -1674,14 +1739,7 @@ export const ShopProductDetail: React.FC = () => {
   const isLoading = productLoading || productsLoading;
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin w-8 h-8 border-2 border-brand-gold border-t-transparent rounded-full mx-auto mb-4" />
-          <p className="text-gray-500">Načítavam produkt...</p>
-        </div>
-      </div>
-    );
+    return <ProductDetailSkeleton />;
   }
 
   if (!product) {
@@ -1728,8 +1786,9 @@ export const ShopProductDetail: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {/* Section 1: Hero */}
+      {/* Section 1: Hero — key forces full remount on product change so internal states reset */}
       <HeroSection 
+        key={product.id}
         product={product}
         allProducts={allProducts}
         selectedBundle={selectedBundle}

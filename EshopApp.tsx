@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense, lazy } from 'react';
+import React, { useEffect, useRef, Suspense, lazy } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { EshopLayout } from './components/Eshop/EshopLayout';
 import { LoadingSpinner } from './components/UI/LoadingSpinner';
@@ -34,13 +34,23 @@ import { AuthProvider } from './context/AuthContext';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-  
+  const prevPathRef = useRef(pathname);
+
   useEffect(() => {
+    const prev = prevPathRef.current;
+    prevPathRef.current = pathname;
+
+    // Skip scroll when switching between product detail pages
+    const isProductRoute = (p: string) => /^\/produkt\//.test(p);
+    if (isProductRoute(prev) && isProductRoute(pathname)) {
+      return;
+    }
+
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
   }, [pathname]);
-  
+
   return null;
 };
 

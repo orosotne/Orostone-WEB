@@ -14,7 +14,6 @@ import {
   Briefcase, Home as HomeIcon, Ruler, Truck, CreditCard, Clock, 
   MessageSquare, ShoppingBag, FileText, CheckCircle2
 } from 'lucide-react';
-import { Marquee } from '../components/UI/Marquee';
 import { TextReveal } from '../components/UI/TextReveal';
 import { cn } from '@/lib/utils';
 
@@ -509,8 +508,6 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* Marquee */}
-      <Marquee />
 
       {/* ==================== SKLADOM TERAZ SECTION ==================== */}
       <section className="py-24 bg-white">

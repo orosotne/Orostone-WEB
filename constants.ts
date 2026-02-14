@@ -189,6 +189,7 @@ export interface ShopProduct {
   thickness: string;
   inStock: boolean;
   description: string;
+  descriptionHtml?: string;
   category: ProductCategory;
   
   // Technical metafields (Shopify-compatible)
@@ -227,6 +228,9 @@ export interface ShopProduct {
 
   // Rich description (Shopify-style structured content)
   richDescription?: ProductRichDescription;
+
+  // Design insight — unique researched content about style matching & use cases (HTML)
+  designInsight?: string;
 
   // Subcategory (e.g. for tables: 'dining' | 'coffee' | 'console')
   subcategory?: string;

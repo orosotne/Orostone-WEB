@@ -1,24 +1,24 @@
 import React from 'react';
 import { 
+  Sun, 
+  Flame, 
   ShieldCheck, 
-  Leaf, 
-  Award, 
+  ShieldPlus, 
+  CookingPot, 
   Sparkles, 
-  Droplets, 
-  Factory, 
-  MapPin, 
-  Recycle 
+  Building2, 
+  Layers 
 } from 'lucide-react';
 
 const TRUST_ICONS = [
-  { icon: ShieldCheck, label: "NSF Hygiene Certified" },
-  { icon: Leaf, label: "Green Guard" },
-  { icon: Sparkles, label: "Eco Stone Tech" },
-  { icon: Award, label: "10 Year Warranty" },
-  { icon: ShieldCheck, label: "ISO 9001" },
-  { icon: Factory, label: "Breton Technology" },
-  { icon: MapPin, label: "Made in Italy" },
-  { icon: Recycle, label: "Recycled Content" }
+  { icon: Sun, label: "UV Resistant" },
+  { icon: Flame, label: "Heat Resistant" },
+  { icon: ShieldCheck, label: "Stain Proof" },
+  { icon: ShieldPlus, label: "Hygienic Surface" },
+  { icon: CookingPot, label: "Food Safe" },
+  { icon: Sparkles, label: "Easy Maintenance" },
+  { icon: Building2, label: "Indoor & Outdoor" },
+  { icon: Layers, label: "Sintered Stone Tech" }
 ];
 
 export const Marquee = () => {
