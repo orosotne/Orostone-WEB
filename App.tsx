@@ -18,6 +18,7 @@ const CookiesPolicy = lazy(() => import('./pages/CookiesPolicy').then(m => ({ de
 const VOP = lazy(() => import('./pages/VOP').then(m => ({ default: m.VOP })));
 const KeyFacts = lazy(() => import('./pages/KeyFacts').then(m => ({ default: m.KeyFacts })));
 const OKameni = lazy(() => import('./pages/O_Kameni').then(m => ({ default: m.OKameni })));
+const SinterovanyKamen = lazy(() => import('./pages/SinterovanyKamen').then(m => ({ default: m.SinterovanyKamen })));
 
 import { QuoteWizard } from './components/Wizard/QuoteWizard';
 import { NoiseOverlay } from './components/UI/NoiseOverlay';
@@ -96,6 +97,7 @@ const AppContent = () => {
             <Route path="/vizualizator" element={<Visualizer />} />
             <Route path="/key-facts" element={<KeyFacts />} />
             <Route path="/o-kameni" element={<OKameni />} />
+            <Route path="/sinterovany-kamen" element={<SinterovanyKamen />} />
             
             {/* Legal stránky */}
             <Route path="/ochrana-sukromia" element={<PrivacyPolicy />} />

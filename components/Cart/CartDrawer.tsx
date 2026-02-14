@@ -1,12 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Minus, Plus, ShoppingBag, Trash2, ArrowRight, ExternalLink } from 'lucide-react';
+import { X, Minus, Plus, ShoppingBag, Trash2, ArrowRight, ExternalLink, Wrench, Package, Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCart, formatPrice } from '../../context/CartContext';
 import { Button } from '../UI/Button';
 
+const INSTALLATION_STORAGE_KEY = 'orostone_installation_data';
+
+interface InstallationData {
+  installation_selected: boolean;
+  installation_area_m2: number;
+  installation_price_estimate_vat: number;
+  installation_pricing_basis: string;
+  installation_disclaimer: string;
+  product_id: string;
+  product_name: string;
+}
+
 export const CartDrawer: React.FC = () => {
-  const { items, isOpen, closeCart, removeItem, updateQuantity, itemCount, subtotal, total, checkoutUrl, isLoading, error, clearError } = useCart();
+  const { items, isOpen, closeCart, removeItem, updateQuantity, itemCount, subtotal, total, checkoutUrl, isLoading, error, clearError, productItems, sampleItems } = useCart();
+
+  // Load installation data from localStorage
+  const [installationData, setInstallationData] = useState<InstallationData | null>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      try {
+        const raw = localStorage.getItem(INSTALLATION_STORAGE_KEY);
+        setInstallationData(raw ? JSON.parse(raw) : null);
+      } catch {
+        setInstallationData(null);
+      }
+    }
+  }, [isOpen]);
+
+  const removeInstallation = () => {
+    localStorage.removeItem(INSTALLATION_STORAGE_KEY);
+    setInstallationData(null);
+  };
 
   const handleCheckout = () => {
     if (checkoutUrl) {
@@ -92,79 +123,228 @@ export const CartDrawer: React.FC = () => {
                   </Link>
                 </div>
               ) : (
-                <ul className="divide-y divide-gray-100">
-                  {items.map((item) => (
-                    <li key={item.id} className="p-4">
-                      <div className="flex gap-4">
-                        {/* Image */}
-                        <div className="w-24 h-24 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
-                          <img
-                            src={item.image}
-                            alt={item.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-
-                        {/* Info */}
-                        <div className="flex-1 min-w-0">
-                          <h4 className="font-semibold text-brand-dark truncate">
-                            {item.name}
-                          </h4>
-                          {item.variant && (
-                            <p className="text-sm text-gray-500 mt-1">
-                              {item.variant}
-                            </p>
-                          )}
-                          <p className="text-sm font-medium text-brand-gold mt-1">
-                            {formatPrice(item.price)}
-                          </p>
-
-                          {/* Quantity controls */}
-                          <div className="flex items-center justify-between mt-3">
-                            <div className="flex items-center border border-gray-200 rounded-lg">
-                              <button
-                                onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                className="p-2 hover:bg-gray-100 transition-colors"
-                                disabled={isLoading}
-                              >
-                                <Minus size={16} />
-                              </button>
-                              <span className="px-4 py-2 text-sm font-medium min-w-[3rem] text-center">
-                                {item.quantity}
-                              </span>
-                              <button
-                                onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                                className="p-2 hover:bg-gray-100 transition-colors"
-                                disabled={isLoading}
-                              >
-                                <Plus size={16} />
-                              </button>
+                <>
+                  {/* ---- Products Section ---- */}
+                  {productItems.length > 0 && (
+                    <ul className="divide-y divide-gray-100">
+                      {productItems.map((item) => (
+                        <li key={item.id} className="p-4">
+                          <div className="flex gap-4">
+                            {/* Image */}
+                            <div className="w-24 h-24 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+                              <img
+                                src={item.image}
+                                alt={item.name}
+                                className="w-full h-full object-cover"
+                              />
                             </div>
 
-                            <button
-                              onClick={() => removeItem(item.id)}
-                              className="p-2 text-gray-400 hover:text-red-500 transition-colors"
-                              disabled={isLoading}
-                            >
-                              <Trash2 size={18} />
-                            </button>
+                            {/* Info */}
+                            <div className="flex-1 min-w-0">
+                              <h4 className="font-semibold text-brand-dark truncate">
+                                {item.name}
+                              </h4>
+                              {item.variant && (
+                                <p className="text-sm text-gray-500 mt-1">
+                                  {item.variant}
+                                </p>
+                              )}
+                              <p className="text-sm font-medium text-brand-gold mt-1">
+                                {formatPrice(item.price)}
+                              </p>
+
+                              {/* Quantity controls */}
+                              <div className="flex items-center justify-between mt-3">
+                                <div className="flex items-center border border-gray-200 rounded-lg">
+                                  <button
+                                    onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                                    className="p-2 hover:bg-gray-100 transition-colors"
+                                    disabled={isLoading}
+                                  >
+                                    <Minus size={16} />
+                                  </button>
+                                  <span className="px-4 py-2 text-sm font-medium min-w-[3rem] text-center">
+                                    {item.quantity}
+                                  </span>
+                                  <button
+                                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                    className="p-2 hover:bg-gray-100 transition-colors"
+                                    disabled={isLoading}
+                                  >
+                                    <Plus size={16} />
+                                  </button>
+                                </div>
+
+                                <button
+                                  onClick={() => removeItem(item.id)}
+                                  className="p-2 text-gray-400 hover:text-red-500 transition-colors"
+                                  disabled={isLoading}
+                                >
+                                  <Trash2 size={18} />
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {/* ---- Samples (Vzorky) Section ---- */}
+                  {sampleItems.length > 0 && (
+                    <div className="border-t border-gray-200">
+                      {/* Section Header */}
+                      <div className="flex items-center gap-2 px-4 pt-4 pb-2">
+                        <Package size={16} className="text-amber-600" />
+                        <h3 className="text-xs font-bold tracking-[0.15em] uppercase text-amber-700">
+                          Vzorky materiálu
+                        </h3>
+                        <span className="text-[9px] font-bold tracking-wider uppercase text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded">
+                          {sampleItems.length}x
+                        </span>
+                      </div>
+
+                      {/* Sample Items (compact, no quantity controls) */}
+                      <ul className="divide-y divide-gray-50">
+                        {sampleItems.map((item) => (
+                          <li key={item.id} className="px-4 py-3 bg-amber-50/30">
+                            <div className="flex gap-3 items-center">
+                              {/* Small image */}
+                              <div className="w-14 h-14 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+                                <img
+                                  src={item.image}
+                                  alt={item.name}
+                                  className="w-full h-full object-cover"
+                                />
+                              </div>
+
+                              {/* Info */}
+                              <div className="flex-1 min-w-0">
+                                <h4 className="font-medium text-brand-dark text-sm truncate">
+                                  {item.name}
+                                </h4>
+                                <p className="text-xs text-gray-500 mt-0.5">
+                                  {item.variant}
+                                </p>
+                                <p className="text-xs font-medium text-amber-700 mt-0.5">
+                                  Záloha {formatPrice(item.price)}
+                                </p>
+                              </div>
+
+                              {/* Remove */}
+                              <button
+                                onClick={() => removeItem(item.id)}
+                                className="p-1.5 text-gray-400 hover:text-red-500 transition-colors flex-shrink-0"
+                                disabled={isLoading}
+                              >
+                                <Trash2 size={16} />
+                              </button>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+
+                      {/* Deposit info */}
+                      <div className="px-4 py-3 flex items-start gap-2">
+                        <Info size={14} className="text-amber-600 mt-0.5 flex-shrink-0" />
+                        <p className="text-[11px] text-amber-700 leading-relaxed">
+                          Záloha za vzorku sa odpočíta pri objednávke plného produktu.
+                        </p>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Installation service addon (visual-only, not a Shopify item) */}
+                  {installationData && installationData.installation_selected && (
+                    <div className="border-t border-gray-100">
+                      <div className="p-4">
+                        <div className="flex gap-4">
+                          {/* Icon */}
+                          <div className="w-24 h-24 bg-brand-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <Wrench size={28} className="text-brand-gold" />
+                          </div>
+
+                          {/* Info */}
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2">
+                              <h4 className="font-semibold text-brand-dark text-sm truncate">
+                                Montáž & inštalácia
+                              </h4>
+                              <span className="text-[9px] font-bold tracking-wider uppercase text-brand-gold bg-brand-gold/10 px-1.5 py-0.5 rounded flex-shrink-0">
+                                Služba
+                              </span>
+                            </div>
+                            {installationData.installation_area_m2 > 0 ? (
+                              <>
+                                <p className="text-xs text-gray-500 mt-1">
+                                  Sprostredkovaná služba • {installationData.installation_area_m2} m²
+                                </p>
+                                <p className="text-sm font-medium text-brand-gold mt-1">
+                                  {formatPrice(installationData.installation_price_estimate_vat)}
+                                  <span className="text-[10px] font-normal text-gray-400 ml-1">s DPH</span>
+                                </p>
+                                <p className="text-[10px] text-gray-400 mt-1">
+                                  Orientačná cena – potvrdí sa po zameraní
+                                </p>
+                              </>
+                            ) : (
+                              <>
+                                <p className="text-xs text-gray-500 mt-1">
+                                  Sprostredkovaná služba • plocha na dohodnutie
+                                </p>
+                                <p className="text-[10px] text-gray-400 mt-1">
+                                  Budeme vás kontaktovať o ďalšom postupe
+                                </p>
+                              </>
+                            )}
+
+                            <div className="flex items-center justify-end mt-2">
+                              <button
+                                onClick={removeInstallation}
+                                className="p-2 text-gray-400 hover:text-red-500 transition-colors"
+                              >
+                                <Trash2 size={18} />
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </li>
-                  ))}
-                </ul>
+                    </div>
+                  )}
+                </>
               )}
             </div>
 
             {/* Footer - Summary */}
             {items.length > 0 && (
               <div className="border-t border-gray-100 p-6 space-y-4 bg-[#F9F9F7]">
-                {/* Subtotal */}
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Medzisúčet</span>
-                  <span className="font-medium">{formatPrice(subtotal)}</span>
-                </div>
+                {/* Product subtotal (shown when both products and samples exist) */}
+                {productItems.length > 0 && sampleItems.length > 0 && (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-600">Produkty</span>
+                    <span className="font-medium">
+                      {formatPrice(productItems.reduce((sum, item) => sum + item.price * item.quantity, 0))}
+                    </span>
+                  </div>
+                )}
+
+                {/* Sample subtotal (shown when both products and samples exist) */}
+                {productItems.length > 0 && sampleItems.length > 0 && (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-amber-700">Vzorky (záloha)</span>
+                    <span className="font-medium text-amber-700">
+                      {formatPrice(sampleItems.reduce((sum, item) => sum + item.price * item.quantity, 0))}
+                    </span>
+                  </div>
+                )}
+
+                {/* Subtotal (when only one type, or as combined total) */}
+                {!(productItems.length > 0 && sampleItems.length > 0) && (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-600">Medzisúčet</span>
+                    <span className="font-medium">{formatPrice(subtotal)}</span>
+                  </div>
+                )}
 
                 {/* Shipping info */}
                 <div className="flex justify-between text-sm">
@@ -174,7 +354,7 @@ export const CartDrawer: React.FC = () => {
 
                 {/* Total */}
                 <div className="flex justify-between text-lg font-bold pt-4 border-t border-gray-200">
-                  <span>Medzisúčet</span>
+                  <span>Celkom</span>
                   <span className="text-brand-gold">{formatPrice(total)}</span>
                 </div>
 

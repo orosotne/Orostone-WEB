@@ -317,7 +317,7 @@ export const OKameni = () => {
            <p className="text-lg text-gray-500 font-light mb-12 max-w-2xl mx-auto">
              Dotknite sa budúcnosti. Vyžiadajte si vzorku alebo nezáväznú cenovú ponuku ešte dnes.
            </p>
-           <div className="flex flex-col sm:flex-row gap-6 justify-center">
+           <div className="flex flex-col sm:flex-row gap-6 justify-center flex-wrap">
              <Link to="/kontakt?openWizard=true">
                <Button size="lg" className="bg-brand-dark text-white px-10 py-8 text-lg rounded-full hover:bg-brand-gold hover:text-brand-dark transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1">
                  Vytvoriť cenovú ponuku
@@ -326,6 +326,11 @@ export const OKameni = () => {
              <Link to="/kolekcie">
                <Button variant="outline" size="lg" className="border-brand-dark text-brand-dark px-10 py-8 text-lg rounded-full hover:bg-brand-dark hover:text-white transition-all">
                  Prezrieť kolekcie
+               </Button>
+             </Link>
+             <Link to="/sinterovany-kamen">
+               <Button variant="outline" size="lg" className="border-brand-gold text-brand-gold px-10 py-8 text-lg rounded-full hover:bg-brand-gold hover:text-brand-dark transition-all">
+                 Čo je sinterovaný kameň?
                </Button>
              </Link>
            </div>

@@ -236,8 +236,16 @@ export interface ShopProduct {
   subcategory?: string;
 
   // Shopify Storefront API
-  shopifyVariantId?: string;  // Shopify variant GID pre Cart API
+  shopifyVariantId?: string;        // Shopify variant GID pre Cart API
+  sampleShopifyVariantId?: string;  // Shopify variant GID pre vzorku (deposit)
 }
+
+// ===========================================
+// SAMPLE (VZORKA) CONSTANTS
+// ===========================================
+
+export const MAX_SAMPLES = 5;
+export const SAMPLE_VARIANT_KEYWORD = 'Vzorka';  // keyword in variant title to identify samples in cart
 
 export const SHOP_PRODUCTS: ShopProduct[] = [
   // ============================================================

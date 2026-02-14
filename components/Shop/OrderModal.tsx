@@ -4,6 +4,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ShopProduct } from '../../constants';
 import { submitQuote } from '../../services/quotes.service';
 import { orderInquirySchema, extractFieldErrors } from '../../lib/validations';
+import { formatPrice } from '../../context/CartContext';
+
+const INSTALLATION_STORAGE_KEY = 'orostone_installation_data';
 
 interface OrderModalProps {
     product: ShopProduct | null;
@@ -72,6 +75,32 @@ export const OrderModal: React.FC<OrderModalProps> = ({ product, isOpen, onClose
         setIsSubmitting(true);
 
         try {
+            // Read installation data from localStorage if available
+            let installationLines: string[] = [];
+            try {
+                const rawInstall = localStorage.getItem(INSTALLATION_STORAGE_KEY);
+                if (rawInstall) {
+                    const installData = JSON.parse(rawInstall);
+                    if (installData && installData.installation_selected) {
+                        const hasArea = installData.installation_area_m2 > 0;
+                        installationLines = [
+                            '',
+                            '--- Montáž & inštalácia (sprostredkovaná) ---',
+                            `Montáž: Áno`,
+                            hasArea
+                                ? `Plocha: ${installData.installation_area_m2} m²`
+                                : `Plocha: neudaná – kontaktovať zákazníka`,
+                            hasArea
+                                ? `Orientačná cena montáže: ${formatPrice(installData.installation_price_estimate_vat)} s DPH`
+                                : `Orientačná cena montáže: na dohodnutie po zameraní`,
+                            `Poznámka: Sprostredkovaná služba – cena sa hradí priamo dodávateľovi, potvrdenie po zameraní`,
+                        ];
+                    }
+                }
+            } catch {
+                // Ignore localStorage parse errors
+            }
+
             const description = [
                 `Produkt: ${product.name}`,
                 `SKU: ${product.sku || product.id}`,
@@ -81,6 +110,7 @@ export const OrderModal: React.FC<OrderModalProps> = ({ product, isOpen, onClose
                 `Celková plocha: ${totalArea.toFixed(2)} m²`,
                 `Orientačná cena: €${totalPrice.toLocaleString('de-DE', { minimumFractionDigits: 2 })}`,
                 formNote ? `Poznámka: ${formNote}` : '',
+                ...installationLines,
             ].filter(Boolean).join('\n');
 
             const result = await submitQuote({

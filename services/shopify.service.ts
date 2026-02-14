@@ -5,6 +5,7 @@
 // Produkty, kolekcie, kosik, checkout
 
 import { shopifyFetch } from '../lib/shopify';
+import { SAMPLE_VARIANT_KEYWORD } from '../constants';
 import type { ShopProduct, ProductCategory } from '../constants';
 
 // ===========================================
@@ -712,7 +713,11 @@ function mapProductTypeToCategory(productType: string): ProductCategory {
 }
 
 function shopifyProductToShopProduct(product: ShopifyProduct): ShopProduct {
-  const firstVariant = product.variants.edges[0]?.node;
+  // Separate sample variant from regular variants
+  const sampleKeyword = SAMPLE_VARIANT_KEYWORD.toLowerCase();
+  const allVariants = product.variants.edges.map(({ node }) => node);
+  const firstVariant = allVariants.find(v => !v.title.toLowerCase().includes(sampleKeyword)) || allVariants[0];
+  const sampleVariant = allVariants.find(v => v.title.toLowerCase().includes(sampleKeyword));
   const images = product.images.edges.map(({ node }) => node.url);
 
   // Parse technical specs from descriptionHtml
@@ -771,6 +776,8 @@ function shopifyProductToShopProduct(product: ShopifyProduct): ShopProduct {
     designInsight: PRODUCT_DESIGN_INSIGHTS[product.handle] || undefined,
     // Shopify variant ID pre pridanie do kosika
     shopifyVariantId: firstVariant?.id || '',
+    // Shopify variant ID pre vzorku (deposit)
+    sampleShopifyVariantId: sampleVariant?.id || undefined,
     // Dalsie fieldy so default hodnotami
     scratchResistance: 'Mohs 7+',
     stainResistance: 'Nenasiakavý',

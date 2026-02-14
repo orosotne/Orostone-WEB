@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useMemo, ReactNode } from 'react';
 import { isShopifyConfigured } from '../lib/shopify';
+import { SAMPLE_VARIANT_KEYWORD } from '../constants';
 import {
   createCart as shopifyCreateCart,
   getCart as shopifyGetCart,
@@ -48,6 +49,12 @@ interface CartContextType {
   subtotal: number;
   total: number;
   isInCart: (productHandle: string) => boolean;
+  
+  // Sample (vzorka) helpers
+  sampleCount: number;
+  isSampleInCart: (productHandle: string) => boolean;
+  productItems: CartItem[];
+  sampleItems: CartItem[];
 }
 
 // ===========================================
@@ -228,6 +235,29 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   }, [items]);
 
   // ------------------------------------------
+  // SAMPLE (VZORKA) COMPUTED VALUES
+  // ------------------------------------------
+
+  const { productItems, sampleItems } = useMemo(() => {
+    const products: CartItem[] = [];
+    const samples: CartItem[] = [];
+    for (const item of items) {
+      if (item.variant.toLowerCase().includes(SAMPLE_VARIANT_KEYWORD.toLowerCase())) {
+        samples.push(item);
+      } else {
+        products.push(item);
+      }
+    }
+    return { productItems: products, sampleItems: samples };
+  }, [items]);
+
+  const sampleCount = sampleItems.length;
+
+  const isSampleInCart = useCallback((productHandle: string) => {
+    return sampleItems.some(item => item.productId === productHandle);
+  }, [sampleItems]);
+
+  // ------------------------------------------
   // CONTEXT VALUE
   // ------------------------------------------
 
@@ -249,6 +279,11 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     subtotal,
     total,
     isInCart,
+    // Sample helpers
+    sampleCount,
+    isSampleInCart,
+    productItems,
+    sampleItems,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
@@ -276,4 +311,9 @@ export const formatPrice = (price: number): string => {
     currency: 'EUR',
     minimumFractionDigits: 2,
   }).format(price);
+};
+
+/** Identifies whether a cart item is a sample (vzorka) by its variant title */
+export const isSampleItem = (item: CartItem): boolean => {
+  return item.variant.toLowerCase().includes(SAMPLE_VARIANT_KEYWORD.toLowerCase());
 };

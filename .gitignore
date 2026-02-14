@@ -34,6 +34,15 @@ dist-ssr
 
 # System/temp files
 nul
+temp_*
+*.b64
+
+# Playwright MCP
+.playwright-mcp/
+
+# Icon previews (temporary)
+icon-preview*
+icon-v2-*
 
 # Local skill files
 skill/

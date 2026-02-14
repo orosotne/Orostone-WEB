@@ -98,7 +98,7 @@ export const EshopNavbar: React.FC = () => {
           <div className="flex items-center justify-between h-14 lg:h-16">
             
             {/* Left: Back to www link */}
-            <div className="flex items-center min-w-[180px]">
+            <div className="flex items-center min-w-[100px] lg:min-w-[180px]">
               {/* Mobile Menu Button */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -137,14 +137,14 @@ export const EshopNavbar: React.FC = () => {
                 src="/images/logo.png"
                 alt="OROSTONE"
                 className={cn(
-                  "h-8 lg:h-10 object-contain transition-all duration-500",
+                  "h-6 lg:h-10 object-contain transition-all duration-500",
                   isTransparent && "brightness-0 invert"
                 )}
               />
             </Link>
 
             {/* Right: Actions */}
-            <div className="flex items-center gap-1 min-w-[180px] justify-end">
+            <div className="flex items-center gap-1 min-w-[100px] lg:min-w-[180px] justify-end">
               {/* Search */}
               <button
                 onClick={() => setSearchOpen(!searchOpen)}
@@ -165,7 +165,7 @@ export const EshopNavbar: React.FC = () => {
               <Link
                 to={isAuthenticated ? "/ucet" : "/login"}
                 className={cn(
-                  "p-2 transition-all duration-200 hover:[&_svg]:stroke-[2]",
+                  "hidden lg:flex p-2 transition-all duration-200 hover:[&_svg]:stroke-[2]",
                   isTransparent ? "text-white/80 hover:text-white" : "text-gray-600 hover:text-brand-gold"
                 )}
                 aria-label={isAuthenticated ? "Môj účet" : "Prihlásiť sa"}
@@ -176,7 +176,7 @@ export const EshopNavbar: React.FC = () => {
               {/* Wishlist */}
               <button
                 className={cn(
-                  "hidden sm:block p-2 transition-all duration-200 hover:[&_svg]:stroke-[2]",
+                  "hidden lg:block p-2 transition-all duration-200 hover:[&_svg]:stroke-[2]",
                   isTransparent ? "text-white/80 hover:text-white" : "text-gray-600 hover:text-brand-gold"
                 )}
                 aria-label="Obľúbené"
@@ -495,6 +495,13 @@ export const EshopNavbar: React.FC = () => {
                   <ShoppingBag size={18} strokeWidth={1.5} />
                   Moje objednávky
                 </Link>
+                <button
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-6 py-4 text-[13px] tracking-[0.1em] uppercase text-black hover:bg-gray-50 w-full"
+                >
+                  <Heart size={18} strokeWidth={1.5} />
+                  Obľúbené
+                </button>
               </div>
 
               {/* Footer */}

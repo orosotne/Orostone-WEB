@@ -7,6 +7,7 @@ import {
   Minus,
   Plus,
   ShoppingBag,
+  ChevronLeft,
   ChevronRight,
   X,
   ZoomIn,
@@ -14,7 +15,10 @@ import {
   Search,
   Layers,
   GitMerge,
-  Droplets,
+  Square,
+  Stone,
+  Sparkle,
+  SquareAsterisk,
   // Icons for ApplicationSection
   Utensils,
   LayoutGrid,
@@ -25,8 +29,6 @@ import {
   Armchair,
   LucideIcon,
   // Icons for other sections
-  Flame,
-  Sun,
   Shield,
   Package,
   Clock,
@@ -34,15 +36,24 @@ import {
   MapPin,
   FileText,
   MessageSquare,
-  Download
+  Download,
+  Info,
+  ChevronDown,
+  Wrench,
+  HelpCircle,
+  Flame,
+  Apple,
+  Diamond,
+  Droplet,
 } from 'lucide-react';
-import { ShopProduct } from '../constants';
+import { ShopProduct, MAX_SAMPLES } from '../constants';
 import { useShopifyProducts, useShopifyProduct } from '../hooks/useShopifyProducts';
 import { Button } from '../components/UI/Button';
 import { useCart, formatPrice } from '../context/CartContext';
 import { cn } from '@/lib/utils';
 import { ShareButton } from '../components/UI/ShareButton';
 import { ProductDetailSkeleton } from '../components/UI/Skeleton';
+import { useCookies } from '../context/CookieContext';
 
 // ===========================================
 // HELPER: Calculate total price
@@ -57,6 +68,17 @@ const calculateSlabPrice = (pricePerM2: number, dimensions: string): number => {
     return Math.round(pricePerM2 * width * height * 100) / 100;
   }
   return Math.round(pricePerM2 * 5.12 * 100) / 100; // Default 3200x1600 = 5.12m²
+};
+
+// ===========================================
+// HELPER: Get icon for product finish type
+// ===========================================
+const getFinishIcon = (finish?: string): LucideIcon => {
+  const f = (finish || '').toLowerCase();
+  if (f.includes('lešten') || f.includes('polish') || f.includes('leskl')) return Sparkle;
+  if (f.includes('hladk') || f.includes('silk')) return SquareAsterisk;
+  // Matný, Matte, or any other finish
+  return Square;
 };
 
 // ===========================================
@@ -104,10 +126,11 @@ const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProductId, pro
 
   return (
     <div className="mb-8">
-      <h3 className="text-[11px] font-bold tracking-[0.2em] uppercase text-brand-gold mb-4">
+      <h3 className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-brand-gold mb-4">
         Ďalšie produkty
       </h3>
-      <div className="grid grid-cols-4 gap-2">
+      {/* Horizontal scroll on mobile, 4-col grid on lg+ */}
+      <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory p-1 -m-1 scrollbar-hide lg:grid lg:grid-cols-4 lg:gap-2 lg:overflow-visible lg:p-0 lg:m-0">
         {filteredProducts.map((product) => {
           const isActive = product.id === currentProductId;
           return (
@@ -115,7 +138,7 @@ const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProductId, pro
               key={product.id}
               onClick={() => handleProductClick(product.id)}
               className={cn(
-                "group flex flex-col items-center p-2 transition-all rounded-lg",
+                "group flex-shrink-0 w-[90px] lg:w-auto flex flex-col items-center p-2 transition-all rounded-lg snap-start",
                 isActive 
                   ? "ring-2 ring-brand-gold bg-brand-gold/5" 
                   : "ring-1 ring-gray-200 hover:ring-brand-gold/50 bg-white"
@@ -126,10 +149,11 @@ const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProductId, pro
                   src={product.image} 
                   alt={product.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
                 />
               </div>
               <span className={cn(
-                "text-[10px] font-medium text-center leading-tight line-clamp-2",
+                "text-xs lg:text-[10px] font-medium text-center leading-tight line-clamp-2",
                 isActive ? "text-brand-dark" : "text-gray-600 group-hover:text-brand-dark"
               )}>
                 {product.name}
@@ -160,15 +184,19 @@ const BUNDLE_OPTIONS: BundleOption[] = [
 
 interface BundleSelectorProps {
   pricePerSlab: number;
+  pricePerM2: number;
   selectedBundle: BundleOption;
   onBundleChange: (bundle: BundleOption) => void;
 }
 
 const BundleSelector: React.FC<BundleSelectorProps> = ({ 
   pricePerSlab, 
+  pricePerM2,
   selectedBundle, 
   onBundleChange 
 }) => {
+  const slabAreaM2 = pricePerM2 > 0 ? Math.round((pricePerSlab / pricePerM2) * 100) / 100 : 5.12;
+
   const calculateBundlePrice = (bundle: BundleOption) => {
     const basePrice = pricePerSlab * bundle.quantity;
     const discount = bundle.discountPercent / 100;
@@ -181,9 +209,14 @@ const BundleSelector: React.FC<BundleSelectorProps> = ({
     return Math.round((basePrice - discountedPrice) * 100) / 100;
   };
 
+  const calculatePricePerM2 = (bundle: BundleOption) => {
+    const discountMultiplier = 1 - bundle.discountPercent / 100;
+    return Math.round(pricePerM2 * discountMultiplier * 100) / 100;
+  };
+
   return (
     <div className="mb-8">
-      <h3 className="text-[10px] font-bold tracking-[0.15em] uppercase text-gray-400 mb-4">
+      <h3 className="text-xs lg:text-[10px] font-bold tracking-[0.15em] uppercase text-gray-400 mb-4">
         Počet platní
       </h3>
       <div className="space-y-3">
@@ -191,7 +224,8 @@ const BundleSelector: React.FC<BundleSelectorProps> = ({
           const isSelected = selectedBundle.quantity === bundle.quantity;
           const bundlePrice = calculateBundlePrice(bundle);
           const savings = calculateSavings(bundle);
-          const pricePerSlabInBundle = bundlePrice / bundle.quantity;
+          const bundlePricePerM2 = calculatePricePerM2(bundle);
+          const totalAreaM2 = Math.round(slabAreaM2 * bundle.quantity * 100) / 100;
 
           return (
             <button
@@ -206,7 +240,7 @@ const BundleSelector: React.FC<BundleSelectorProps> = ({
             >
               {/* Best Value Badge */}
               {bundle.isBestValue && (
-                <span className="absolute -top-2.5 right-4 bg-brand-gold text-brand-dark text-[9px] font-bold tracking-wider uppercase px-2 py-0.5">
+                <span className="absolute -top-2.5 right-4 bg-brand-gold text-brand-dark text-xs lg:text-[9px] font-bold tracking-wider uppercase px-2 py-0.5">
                   Najlepšia hodnota
                 </span>
               )}
@@ -214,13 +248,13 @@ const BundleSelector: React.FC<BundleSelectorProps> = ({
               <div className="flex items-start justify-between gap-4">
                 {/* Left: Radio + Label */}
                 <div className="flex items-start gap-3">
-                  {/* Custom Radio */}
+                  {/* Custom Radio — 24px visual, 44px touch via parent button */}
                   <div className={cn(
-                    "w-5 h-5 rounded-full border-2 flex items-center justify-center mt-0.5 flex-shrink-0",
+                    "w-6 h-6 lg:w-5 lg:h-5 rounded-full border-2 flex items-center justify-center mt-0.5 flex-shrink-0",
                     isSelected ? "border-brand-dark" : "border-gray-300"
                   )}>
                     {isSelected && (
-                      <div className="w-2.5 h-2.5 rounded-full bg-brand-dark" />
+                      <div className="w-3 h-3 lg:w-2.5 lg:h-2.5 rounded-full bg-brand-dark" />
                     )}
                   </div>
 
@@ -241,18 +275,19 @@ const BundleSelector: React.FC<BundleSelectorProps> = ({
                         </span>
                       )}
                     </div>
-                    {bundle.discountPercent > 0 && (
-                      <div className="text-xs text-gray-500">
-                        Cena za 1 platňu: {formatPrice(pricePerSlabInBundle)}
-                      </div>
-                    )}
+                    <div className="text-xs text-gray-500">
+                      {formatPrice(bundlePricePerM2)} / m² • {totalAreaM2.toFixed(2)} m²
+                    </div>
                   </div>
                 </div>
 
                 {/* Right: Price */}
                 <div className="text-right flex-shrink-0">
                   <div className="font-bold text-brand-dark text-lg">
-                    {formatPrice(bundlePrice)}
+                    {formatPrice(bundlePricePerM2)}<span className="text-sm font-normal text-gray-400"> / m²</span>
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    spolu {formatPrice(bundlePrice)}
                   </div>
                   {savings > 0 && (
                     <div className="text-emerald-600 text-xs font-medium">
@@ -264,6 +299,326 @@ const BundleSelector: React.FC<BundleSelectorProps> = ({
             </button>
           );
         })}
+      </div>
+    </div>
+  );
+};
+
+// ===========================================
+// COMPONENT: Installation Selector
+// ===========================================
+const INSTALLATION_RATE_PER_M2 = 279; // EUR per m² VAT incl.
+const INSTALLATION_STORAGE_KEY = 'orostone_installation_data';
+
+interface InstallationData {
+  installation_selected: boolean;
+  installation_area_m2: number;
+  installation_price_estimate_vat: number;
+  installation_pricing_basis: string;
+  installation_disclaimer: string;
+  product_id: string;
+  product_name: string;
+}
+
+const saveInstallationToStorage = (data: InstallationData | null) => {
+  if (data) {
+    localStorage.setItem(INSTALLATION_STORAGE_KEY, JSON.stringify(data));
+  } else {
+    localStorage.removeItem(INSTALLATION_STORAGE_KEY);
+  }
+};
+
+const loadInstallationFromStorage = (): InstallationData | null => {
+  try {
+    const raw = localStorage.getItem(INSTALLATION_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+};
+
+interface InstallationSelectorProps {
+  installationSelected: boolean;
+  installationAreaM2: number | null;
+  onInstallationToggle: (selected: boolean) => void;
+  onAreaChange: (area: number | null) => void;
+}
+
+const InstallationSelector: React.FC<InstallationSelectorProps> = ({
+  installationSelected,
+  installationAreaM2,
+  onInstallationToggle,
+  onAreaChange,
+}) => {
+  const [showInfo, setShowInfo] = useState(false);
+  const [showAreaTooltip, setShowAreaTooltip] = useState(false);
+
+  const installationPrice =
+    installationSelected && installationAreaM2 && installationAreaM2 >= 0.1
+      ? Math.round(installationAreaM2 * INSTALLATION_RATE_PER_M2)
+      : null;
+
+  return (
+    <div className="mb-8">
+      {/* Header */}
+      <div className="border border-gray-200 bg-white transition-all">
+        {/* Toggle row */}
+        <button
+          type="button"
+          onClick={() => onInstallationToggle(!installationSelected)}
+          className="w-full flex items-center justify-between p-4 group"
+        >
+          <div className="flex items-center gap-3">
+            <div className={cn(
+              "w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-colors",
+              installationSelected ? "bg-brand-gold/20" : "bg-gray-100"
+            )}>
+              <Wrench size={16} className={installationSelected ? "text-brand-gold" : "text-gray-400"} />
+            </div>
+            <div className="text-left">
+              <span className="font-semibold text-brand-dark text-sm block">
+                Montáž & inštalácia
+              </span>
+              <span className="text-xs text-gray-400">sprostredkovaná služba</span>
+            </div>
+          </div>
+
+          {/* Toggle switch */}
+          <div
+            className={cn(
+              "relative inline-flex h-6 w-11 flex-shrink-0 rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out",
+              installationSelected ? "bg-brand-gold" : "bg-gray-300"
+            )}
+          >
+            <span
+              className={cn(
+                "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out",
+                installationSelected ? "translate-x-5" : "translate-x-0"
+              )}
+            />
+          </div>
+        </button>
+
+        {/* Benefit text - always visible */}
+        {!installationSelected && (
+          <div className="px-4 pb-4 -mt-1">
+            <p className="text-xs text-gray-500">
+              Chcete to bez starostí? Zabezpečíme montáž cez overeného partnera.
+            </p>
+          </div>
+        )}
+
+        {/* Expanded content */}
+        <AnimatePresence>
+          {installationSelected && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="overflow-hidden"
+            >
+              <div className="px-4 pb-5 space-y-4 border-t border-gray-100 pt-4">
+                {/* Trust badges */}
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs lg:text-[11px] text-gray-500">
+                  <span className="flex items-center gap-1">
+                    <Check size={12} className="text-brand-gold" />
+                    Overený partner
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Check size={12} className="text-brand-gold" />
+                    Zameranie a doprava v cene
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Check size={12} className="text-brand-gold" />
+                    Bez starostí
+                  </span>
+                </div>
+
+                {/* Area input */}
+                <div>
+                  <div className="flex items-center gap-1.5 mb-1.5">
+                    <label className="text-xs font-medium text-gray-600">
+                      Plocha na opracovanie (m²)
+                    </label>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setShowAreaTooltip(!showAreaTooltip);
+                      }}
+                      className={cn(
+                        "w-6 h-6 lg:w-4 lg:h-4 rounded-full flex items-center justify-center transition-colors -m-1 p-1",
+                        showAreaTooltip
+                          ? "text-brand-gold"
+                          : "text-gray-400 hover:text-gray-600"
+                      )}
+                      aria-label="Čo je plocha na opracovanie?"
+                    >
+                      <HelpCircle size={16} />
+                    </button>
+                  </div>
+
+                  {/* Area tooltip */}
+                  <AnimatePresence>
+                    {showAreaTooltip && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: 'easeInOut' }}
+                        className="overflow-hidden"
+                      >
+                        <div className="bg-[#F9F9F7] border border-gray-100 p-3 mb-2 text-xs lg:text-[11px] text-gray-600 leading-relaxed space-y-2">
+                          <p className="font-semibold text-brand-dark text-xs lg:text-[11px]">
+                            Čo je plocha na opracovanie?
+                          </p>
+                          <p>
+                            Je to súčet všetkých plôch (v m²), na ktoré sa bude montovať sinterovaný kameň — pracovné dosky, ostrovčeky, zásteny a pod.
+                          </p>
+                          <p className="font-semibold text-brand-dark text-xs lg:text-[11px] pt-1">
+                            Ako merať?
+                          </p>
+                          <p>
+                            Zmerajte dĺžku a šírku každej plochy v centimetroch, prepočítajte na metre (delené 100) a vynásobte. Sčítajte všetky plochy dohromady.
+                          </p>
+                          <div className="bg-white border border-gray-100 p-2.5 space-y-1.5 rounded">
+                            <p className="font-semibold text-brand-dark text-xs lg:text-[11px]">Príklad:</p>
+                            <div className="space-y-1 text-xs lg:text-[11px]">
+                              <div className="flex justify-between">
+                                <span>Ostrovček 120 × 90 cm</span>
+                                <span className="font-medium text-brand-dark">1,08 m²</span>
+                              </div>
+                              <div className="flex justify-between">
+                                <span>Kuchynská linka 320 × 60 cm</span>
+                                <span className="font-medium text-brand-dark">1,92 m²</span>
+                              </div>
+                              <div className="flex justify-between">
+                                <span>Zástena 320 × 70 cm</span>
+                                <span className="font-medium text-brand-dark">2,24 m²</span>
+                              </div>
+                              <div className="flex justify-between border-t border-gray-200 pt-1.5 mt-1.5">
+                                <span className="font-semibold text-brand-dark">Spolu</span>
+                                <span className="font-bold text-brand-dark">5,24 m²</span>
+                              </div>
+                            </div>
+                          </div>
+                          <p className="text-gray-400 italic pt-1">
+                            Nie ste si istí? Nevadí — nechajte pole prázdne, zakliknite montáž a my vás budeme kontaktovať o ďalšom postupe.
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  <input
+                    type="number"
+                    min={0.1}
+                    step={0.1}
+                    value={installationAreaM2 ?? ''}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      if (val === '') {
+                        onAreaChange(null);
+                      } else {
+                        const num = parseFloat(val);
+                        onAreaChange(isNaN(num) ? null : num);
+                      }
+                    }}
+                    placeholder="napr. 2.5"
+                    className="w-full px-4 py-2.5 border border-gray-200 text-sm text-brand-dark bg-white focus:ring-1 focus:ring-brand-gold focus:border-brand-gold outline-none transition-all placeholder:text-gray-300"
+                  />
+                  <p className="text-xs lg:text-[11px] text-gray-400 mt-1">
+                    Zadajte súčet všetkých plôch, ktoré sa budú opracovávať. Ak si nie ste istí, nechajte pole prázdne — budeme vás kontaktovať.
+                  </p>
+                </div>
+
+                {/* Price output */}
+                <div className="bg-[#F9F9F7] p-4 border border-gray-100">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-xs lg:text-[11px] text-gray-500 block mb-1">Orientačná cena montáže</span>
+                      <span className="text-xl font-bold text-brand-dark">
+                        {installationPrice !== null ? (
+                          <>{formatPrice(installationPrice)} <span className="text-xs lg:text-[11px] font-normal text-gray-400">s DPH</span></>
+                        ) : (
+                          <span className="text-gray-300">—</span>
+                        )}
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setShowInfo(!showInfo);
+                      }}
+                      className={cn(
+                        "w-8 h-8 rounded-full flex items-center justify-center transition-colors",
+                        showInfo
+                          ? "bg-brand-gold/20 text-brand-gold"
+                          : "bg-gray-100 text-gray-400 hover:bg-gray-200 hover:text-gray-600"
+                      )}
+                      aria-label="Informácie o cene montáže"
+                    >
+                      <Info size={16} />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Info panel */}
+                <AnimatePresence>
+                  {showInfo && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25, ease: 'easeInOut' }}
+                      className="overflow-hidden"
+                    >
+                      <div className="bg-[#F9F9F7] border border-gray-100 p-4 space-y-3 text-xs lg:text-[11px] text-gray-600 leading-relaxed">
+                        <div>
+                          <h4 className="font-semibold text-brand-dark text-xs lg:text-[11px] uppercase tracking-wider mb-1">
+                            Ako sa počíta orientačná cena?
+                          </h4>
+                          <p>Zadáte plochu v m² a systém vypočíta orientačnú cenu podľa štandardnej sadzby za montáž.</p>
+                        </div>
+                        <div className="border-t border-gray-200 pt-3">
+                          <h4 className="font-semibold text-brand-dark text-xs lg:text-[11px] uppercase tracking-wider mb-1">
+                            Čo je v cene?
+                          </h4>
+                          <p>Cena zahŕňa zameranie, dopravu, opracovanie hrán, leštenie a montáž.</p>
+                        </div>
+                        <div className="border-t border-gray-200 pt-3">
+                          <h4 className="font-semibold text-brand-dark text-xs lg:text-[11px] uppercase tracking-wider mb-1">
+                            Orientačnosť
+                          </h4>
+                          <p>Ide o orientačnú cenu. Po obhliadke/zameraní sa môže mierne znížiť alebo zvýšiť podľa prístupu, členitosti, výrezov a detailov realizácie.</p>
+                        </div>
+                        <div className="border-t border-gray-200 pt-3">
+                          <h4 className="font-semibold text-brand-dark text-xs lg:text-[11px] uppercase tracking-wider mb-1">
+                            Presnosť
+                          </h4>
+                          <p>Ak zadáte správne rozmery, vo väčšine prípadov je výsledná cena veľmi blízko realite (cca 90 % prípadov).</p>
+                        </div>
+                        <div className="border-t border-gray-200 pt-3">
+                          <h4 className="font-semibold text-brand-dark text-xs lg:text-[11px] uppercase tracking-wider mb-1">
+                            Právne/transparentne
+                          </h4>
+                          <p>Montáž nepredávame priamo cez e-shop – službu iba sprostredkujeme. Cenu montáže hradíte priamo dodávateľovi služby. Finálnu ponuku a termín potvrdí montážny partner po zameraní.</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Disclaimer */}
+                <p className="text-xs lg:text-[10px] text-gray-400 leading-snug">
+                  Orientačná cena – potvrdí sa po zameraní. Cenu montáže hradíte priamo dodávateľovi služby, nie cez e-shop. Montáž sprostredkujeme cez montážneho partnera.
+                </p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
@@ -345,25 +700,25 @@ const ProductLightbox: React.FC<ProductLightboxProps> = ({
             {currentIndex + 1} / {images.length}
           </div>
 
-          {/* Previous button */}
+          {/* Previous button — min 48px touch target */}
           {hasPrevious && (
             <button
               onClick={(e) => { e.stopPropagation(); onPrevious(); }}
-              className="absolute left-6 z-50 text-white hover:text-brand-gold transition-colors p-2"
+              className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-50 w-12 h-12 md:w-auto md:h-auto flex items-center justify-center text-white hover:text-brand-gold active:text-brand-gold transition-colors p-2"
               aria-label="Predchádzajúci obrázok"
             >
-              <ChevronLeft size={48} />
+              <ChevronLeft size={48} className="w-9 h-9 md:w-12 md:h-12" />
             </button>
           )}
 
-          {/* Next button */}
+          {/* Next button — min 48px touch target */}
           {hasNext && (
             <button
               onClick={(e) => { e.stopPropagation(); onNext(); }}
-              className="absolute right-6 z-50 text-white hover:text-brand-gold transition-colors p-2"
+              className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-50 w-12 h-12 md:w-auto md:h-auto flex items-center justify-center text-white hover:text-brand-gold active:text-brand-gold transition-colors p-2"
               aria-label="Ďalší obrázok"
             >
-              <ChevronRight size={48} />
+              <ChevronRight size={48} className="w-9 h-9 md:w-12 md:h-12" />
             </button>
           )}
 
@@ -523,7 +878,7 @@ const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProps> = ({
             />
             {/* Badge */}
             <div className="absolute top-4 left-4">
-              <span className="bg-white/90 backdrop-blur text-brand-dark text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded">
+              <span className="bg-white/90 backdrop-blur text-brand-dark text-xs lg:text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded">
                 {activePerspective.badge}
               </span>
             </div>
@@ -592,7 +947,7 @@ const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProps> = ({
                     
                     {/* Badge in lightbox */}
                     <div className="absolute top-4 left-4">
-                      <span className="bg-white/90 backdrop-blur text-brand-dark text-xs font-bold uppercase tracking-wider px-4 py-2 rounded">
+                      <span className="bg-white/90 backdrop-blur text-brand-dark text-xs lg:text-[10px] font-bold uppercase tracking-wider px-4 py-2 rounded">
                         {activePerspective.badge}
                       </span>
                     </div>
@@ -647,6 +1002,14 @@ interface HeroSectionProps {
   onBundleChange: (bundle: BundleOption) => void;
   onAddToCart: () => void;
   isInCart: boolean;
+  installationSelected: boolean;
+  installationAreaM2: number | null;
+  onInstallationToggle: (selected: boolean) => void;
+  onInstallationAreaChange: (area: number | null) => void;
+  // Sample (vzorka)
+  onAddSample: () => void;
+  isSampleInCart: boolean;
+  sampleCount: number;
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({ 
@@ -655,11 +1018,19 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   selectedBundle,
   onBundleChange, 
   onAddToCart,
-  isInCart 
+  isInCart,
+  installationSelected,
+  installationAreaM2,
+  onInstallationToggle,
+  onInstallationAreaChange,
+  onAddSample,
+  isSampleInCart,
+  sampleCount,
 }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [showAllImages, setShowAllImages] = useState(false);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [descExpanded, setDescExpanded] = useState(false);
 
   const images = product.gallery && product.gallery.length > 0 
     ? product.gallery 
@@ -667,9 +1038,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
   const currentImage = images[selectedImageIndex];
   const singleSlabPrice = calculateSlabPrice(product.pricePerM2, product.dimensions);
-  
-  // Calculate bundle price with discount (round to avoid floating point artifacts)
-  const bundleTotalPrice = Math.round(singleSlabPrice * selectedBundle.quantity * (1 - selectedBundle.discountPercent / 100) * 100) / 100;
 
   // Lightbox handlers
   const openLightbox = (index?: number) => {
@@ -693,7 +1061,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   const visibleThumbnails = showAllImages ? images : images.slice(0, 4);
 
   return (
-    <section className="pt-8 pb-16 bg-gradient-to-br from-white via-[#FAFAF8] to-[#F5F5F0]">
+    <section className="pt-6 pb-8 lg:pt-8 lg:pb-16 bg-gradient-to-br from-white via-[#FAFAF8] to-[#F5F5F0]">
       <div className="container mx-auto px-6">
         {/* Breadcrumb */}
         <div className="flex items-center justify-between mb-8">
@@ -828,76 +1196,119 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             <MaterialPerspectivesViewer product={product} />
           </div>
 
-          {/* Right: Product Info */}
+          {/* Right: Product Info — flex column with CSS order for mobile reordering */}
           <div className="lg:order-2 lg:col-span-5">
-            <div>
-              {/* Collection badge */}
+            <div className="flex flex-col">
+              {/* ===== 1. Collection badge (vendor) ===== */}
               {product.vendor && (
-                <div className="mb-4">
-                  <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-brand-gold">
+                <div className="order-1 mb-2 lg:mb-4">
+                  <span className="text-xs lg:text-[10px] font-bold tracking-[0.2em] uppercase text-brand-gold">
                     {product.vendor}
                   </span>
                 </div>
               )}
 
-              {/* Spec Badges */}
-              <div className="flex flex-wrap gap-2 mb-4">
-                <span className="inline-flex items-center gap-1.5 bg-brand-dark text-brand-gold px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide uppercase">
+              {/* ===== 2. Product Title — mobile: after spec badges, desktop: after spec badges ===== */}
+              <h1 className="order-3 lg:order-3 text-3xl md:text-4xl lg:text-5xl font-sans font-bold text-brand-dark leading-tight mb-2 lg:mb-4">
+                {product.name}
+              </h1>
+
+
+              {/* ===== Spec Badges — mobile: right after vendor (order-2), desktop: before title (order-2) ===== */}
+              <div className="order-2 lg:order-2 flex flex-wrap gap-2 mb-4">
+                <span className="inline-flex items-center gap-1.5 bg-brand-dark text-brand-gold px-3 py-1.5 rounded-full text-xs lg:text-[11px] font-semibold tracking-wide uppercase">
                   <Layers size={14} />
                   {product.thickness}
                 </span>
-                <span className="inline-flex items-center gap-1.5 bg-brand-dark text-brand-gold px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide uppercase">
+                <span className="inline-flex items-center gap-1.5 bg-brand-dark text-brand-gold px-3 py-1.5 rounded-full text-xs lg:text-[11px] font-semibold tracking-wide uppercase">
                   <Maximize2 size={14} />
                   {product.dimensions}
                 </span>
-                <span className="inline-flex items-center gap-1.5 bg-brand-dark text-brand-gold px-3 py-1.5 rounded-full text-[11px] font-semibold tracking-wide uppercase">
-                  <Droplets size={14} />
+                <span className="inline-flex items-center gap-1.5 bg-brand-dark text-brand-gold px-3 py-1.5 rounded-full text-xs lg:text-[11px] font-semibold tracking-wide uppercase">
+                  {React.createElement(getFinishIcon(product.finish), { size: 14 })}
                   {product.finish || 'Leštený'}
                 </span>
               </div>
 
-              {/* Product Title */}
-              <h1 className="text-4xl md:text-5xl font-sans font-bold text-brand-dark leading-tight mb-4">
-                {product.name}
-              </h1>
-
-              {/* Short Description */}
-              {product.descriptionHtml ? (
-                <div 
-                  className="prose prose-sm prose-gray max-w-none mb-8 font-light leading-relaxed text-lg border-l-2 border-brand-gold pl-6 [&>p]:text-gray-600 [&>p]:mb-3 [&>ul]:text-gray-600 [&>ol]:text-gray-600 [&>p:last-child]:mb-0 [&_strong]:text-brand-gold [&_strong]:font-semibold"
-                  dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
-                />
-              ) : (
-                <p className="text-gray-600 font-light leading-relaxed mb-8 text-lg">
-                  {product.description}
-                </p>
-              )}
-
-              {/* Key Specs Quick View */}
-              <div className="grid grid-cols-2 gap-4 mb-8 pb-8 border-b border-gray-200">
-                <div>
-                  <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-gray-400 block mb-1">Rozmery</span>
-                  <span className="text-brand-dark font-medium">{product.dimensions}</span>
+              {/* ===== 5. Short Description — mobile: after gallery, desktop: after title ===== */}
+              <div className="order-5 lg:order-4 mb-6 lg:mb-8">
+                <div className="relative">
+                  {product.descriptionHtml ? (
+                    <div 
+                      className={cn(
+                        "prose prose-sm prose-gray max-w-none font-light leading-relaxed text-lg border-l-2 border-brand-gold pl-6 [&>p]:text-gray-600 [&>p]:mb-3 [&>ul]:text-gray-600 [&>ol]:text-gray-600 [&>p:last-child]:mb-0 [&_strong]:text-brand-gold [&_strong]:font-semibold transition-all duration-300",
+                        !descExpanded && "max-h-[6.5rem] overflow-hidden"
+                      )}
+                      dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+                    />
+                  ) : (
+                    <p className={cn(
+                      "text-gray-600 font-light leading-relaxed text-lg transition-all duration-300",
+                      !descExpanded && "max-h-[6.5rem] overflow-hidden"
+                    )}>
+                      {product.description}
+                    </p>
+                  )}
+                  {!descExpanded && (
+                    <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none" />
+                  )}
                 </div>
-                <div>
-                  <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-gray-400 block mb-1">Hrúbka</span>
-                  <span className="text-brand-dark font-medium">{product.thickness}</span>
-                </div>
-                <div>
-                  <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-gray-400 block mb-1">Povrch</span>
-                  <span className="text-brand-dark font-medium">{product.finish || 'Leštený'}</span>
-                </div>
-                <div>
-                  <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-gray-400 block mb-1">Materiál</span>
-                  <span className="text-brand-dark font-medium">{product.material || 'Sinterovaný kameň'}</span>
-                </div>
+                <button
+                  onClick={() => setDescExpanded(!descExpanded)}
+                  className="mt-3 min-h-[44px] text-sm font-semibold text-brand-gold hover:text-brand-dark active:text-brand-dark transition-colors flex items-center gap-1.5"
+                >
+                  {descExpanded ? (
+                    <>
+                      <ChevronDown size={14} className="rotate-180 transition-transform" />
+                      Skryť
+                    </>
+                  ) : (
+                    <>
+                      <ChevronDown size={14} className="transition-transform" />
+                      Čítať viac o produkte
+                    </>
+                  )}
+                </button>
               </div>
 
-              {/* Mobile Image Gallery - visible only on small screens */}
-              <div className="lg:hidden mb-8 space-y-3">
-                {/* Main Image */}
+              {/* ===== 8. Key Specs Quick View — mobile: after badges, desktop: after description ===== */}
+              <div className="order-[8] lg:order-5">
+              <h3 className="text-xs lg:text-[10px] font-bold tracking-[0.15em] uppercase text-gray-400 mb-4 pt-8 border-t border-gray-200">
+                Technické parametre
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 pb-8 border-b border-gray-200">
+                {[
+                  { label: 'Rozmery', value: product.dimensions, icon: Maximize2 },
+                  { label: 'Hrúbka', value: product.thickness, icon: Layers },
+                  { label: 'Povrch', value: product.finish || 'Leštený', icon: getFinishIcon(product.finish) },
+                  { label: 'Materiál', value: product.material || 'Sinterovaný kameň', icon: Stone },
+                ].map((spec) => {
+                  const Icon = spec.icon;
+                  const isMaterial = spec.label === 'Materiál';
+                  const inner = (
+                    <div key={spec.label} className={`flex flex-col items-center text-center p-2 ${isMaterial ? 'group cursor-pointer' : ''}`}>
+                      <Icon size={40} className={`text-brand-dark mb-2 ${isMaterial ? 'group-hover:text-brand-gold transition-colors' : ''}`} />
+                      <span className="text-xs lg:text-[10px] font-bold tracking-[0.15em] uppercase text-gray-400 block mb-1">
+                        {spec.label}
+                      </span>
+                      <span className={`text-brand-dark font-medium text-xs ${isMaterial ? 'group-hover:text-brand-gold underline underline-offset-2 decoration-brand-gold/30 transition-colors' : ''}`}>
+                        {spec.value}
+                      </span>
+                    </div>
+                  );
+                  if (isMaterial) {
+                    return <a key={spec.label} href="/sinterovany-kamen">{inner}</a>;
+                  }
+                  return inner;
+                })}
+              </div>
+              </div>
+
+              {/* ===== 4. Mobile Image Gallery — full-width, swipe-optimized ===== */}
+              <div className="order-4 lg:hidden mb-6">
+                {/* Main Image with navigation */}
                 <div 
-                  className="aspect-square bg-[#F5F5F3] overflow-hidden relative group rounded-xl cursor-pointer"
+                  className="aspect-[3/4] bg-[#F5F5F3] overflow-hidden relative cursor-pointer"
                   onClick={() => openLightbox()}
                 >
                   <AnimatePresence mode="wait">
@@ -909,134 +1320,100 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.25 }}
                     />
                   </AnimatePresence>
 
-                  {/* Zoom indicator */}
-                  <div className="absolute bottom-4 right-4 w-10 h-10 bg-white/90 backdrop-blur rounded-lg flex items-center justify-center text-brand-dark opacity-0 group-hover:opacity-100 transition-opacity">
-                    <ZoomIn size={18} />
-                  </div>
-
-                  {/* Carousel Navigation Arrows */}
+                  {/* Always-visible navigation arrows — 48px touch targets */}
                   {images.length > 1 && (
                     <>
                       <button
                         onClick={(e) => { e.stopPropagation(); goToPrevious(); }}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur rounded-lg flex items-center justify-center text-brand-dark hover:bg-white transition-colors"
+                        className="absolute left-3 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-dark active:bg-white active:scale-95 transition-all shadow-sm"
                         aria-label="Predchádzajúci obrázok"
                       >
-                        <ChevronRight size={20} className="rotate-180" />
+                        <ChevronRight size={22} className="rotate-180" />
                       </button>
                       <button
                         onClick={(e) => { e.stopPropagation(); goToNext(); }}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur rounded-lg flex items-center justify-center text-brand-dark hover:bg-white transition-colors"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-dark active:bg-white active:scale-95 transition-all shadow-sm"
                         aria-label="Ďalší obrázok"
                       >
-                        <ChevronRight size={20} />
+                        <ChevronRight size={22} />
                       </button>
-                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur px-3 py-1.5 rounded-lg text-[11px] tracking-wider text-brand-dark font-medium">
-                        {selectedImageIndex + 1} / {images.length}
-                      </div>
                     </>
                   )}
 
                   {/* Stock badge */}
                   {product.inStock && (
-                    <div className="absolute top-4 left-4 bg-emerald-600 text-white px-3 py-1 rounded-md text-[10px] uppercase tracking-widest font-medium">
+                    <div className="absolute top-3 left-3 bg-emerald-600 text-white px-3 py-1.5 rounded-md text-xs uppercase tracking-widest font-medium">
                       Skladom
                     </div>
                   )}
+
+                  {/* Zoom hint */}
+                  <div className="absolute bottom-3 right-3 w-11 h-11 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-dark shadow-sm">
+                    <ZoomIn size={18} />
+                  </div>
                 </div>
 
-                {/* Thumbnails */}
+                {/* Dot indicators — replaces thumbnails for cleaner mobile UX */}
                 {images.length > 1 && (
-                  <div className={cn(
-                    "grid gap-3",
-                    "grid-cols-4"
-                  )}>
-                    {visibleThumbnails.map((img, index) => {
-                      const actualIndex = showAllImages ? index : images.indexOf(img);
-                      return (
-                        <button
-                          key={actualIndex}
-                          onClick={() => setSelectedImageIndex(actualIndex)}
-                          className={cn(
-                            "aspect-square bg-[#F5F5F3] overflow-hidden transition-all rounded-lg",
-                            selectedImageIndex === actualIndex 
-                              ? "ring-2 ring-brand-dark" 
-                              : "ring-1 ring-gray-200 hover:ring-gray-400"
-                          )}
-                        >
-                          <img 
-                            src={img} 
-                            alt={`${product.name} - ${actualIndex + 1}`}
-                            className="w-full h-full object-cover"
-                          />
-                        </button>
-                      );
-                    })}
-                  </div>
-                )}
-
-                {/* Show More / Show Less */}
-                {images.length > 4 && (
-                  <button
-                    onClick={() => setShowAllImages(!showAllImages)}
-                    className="w-full py-3 border border-gray-300 rounded-lg text-sm font-medium text-brand-dark hover:border-brand-dark transition-colors flex items-center justify-center gap-2"
-                  >
-                    {showAllImages ? (
-                      <>
-                        <Minus size={16} />
-                        Skryť
-                      </>
-                    ) : (
-                      <>
-                        <Plus size={16} />
-                        Ukázať viac
-                      </>
-                    )}
-                  </button>
-                )}
-              </div>
-
-              {/* Product Switcher */}
-              <ProductSwitcher 
-                currentProductId={product.id} 
-                products={allProducts} 
-              />
-
-              {/* Price */}
-              <div className="mb-6">
-                <div className="flex items-baseline gap-3 mb-2">
-                  <span className="text-4xl font-bold text-brand-dark">
-                    {formatPrice(bundleTotalPrice)}
-                  </span>
-                  {selectedBundle.quantity > 1 && (
-                    <span className="text-sm text-emerald-600 font-semibold">
-                      -{selectedBundle.discountPercent}%
-                    </span>
-                  )}
-                </div>
-                <div className="text-sm text-gray-500">
-                  {formatPrice(singleSlabPrice)} / doska • {formatPrice(product.pricePerM2)} / m²
-                </div>
-                {product.stockQuantity > 0 && (
-                  <div className="text-sm text-gray-500 mt-1">
-                    {product.stockQuantity} ks skladom
+                  <div className="flex items-center justify-center gap-2 pt-3 px-6">
+                    {images.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setSelectedImageIndex(index)}
+                        className={cn(
+                          "rounded-full transition-all duration-300",
+                          selectedImageIndex === index
+                            ? "w-7 h-2.5 bg-brand-dark"
+                            : "w-2.5 h-2.5 bg-gray-300 active:bg-gray-400"
+                        )}
+                        aria-label={`Obrázok ${index + 1}`}
+                      />
+                    ))}
                   </div>
                 )}
               </div>
 
-              {/* Bundle Selector */}
-              <BundleSelector 
-                pricePerSlab={singleSlabPrice}
-                selectedBundle={selectedBundle}
-                onBundleChange={onBundleChange}
-              />
+              {/* ===== 6. Product Switcher — mobile: after description ===== */}
+              <div className="order-6 lg:order-[7]">
+                <ProductSwitcher 
+                  currentProductId={product.id} 
+                  products={allProducts} 
+                />
+              </div>
 
-              {/* CTAs */}
-              <div className="space-y-3 mb-8">
+              {/* ===== 9. Stock info ===== */}
+              {product.stockQuantity > 0 && (
+                <div className="order-[9] lg:order-[8] text-sm text-gray-500 mb-4">
+                  {product.stockQuantity} ks skladom
+                </div>
+              )}
+
+              {/* ===== 10. Bundle Selector ===== */}
+              <div className="order-[10] lg:order-[9]">
+                <BundleSelector 
+                  pricePerSlab={singleSlabPrice}
+                  pricePerM2={product.pricePerM2}
+                  selectedBundle={selectedBundle}
+                  onBundleChange={onBundleChange}
+                />
+              </div>
+
+              {/* ===== 11. Installation Selector ===== */}
+              <div className="order-[11] lg:order-[10]">
+                <InstallationSelector
+                  installationSelected={installationSelected}
+                  installationAreaM2={installationAreaM2}
+                  onInstallationToggle={onInstallationToggle}
+                  onAreaChange={onInstallationAreaChange}
+                />
+              </div>
+
+              {/* ===== 12. CTAs — hidden on mobile (sticky bar instead), visible on desktop ===== */}
+              <div className="order-[12] lg:order-[11] hidden lg:block space-y-3 mb-8">
                 <button
                   onClick={onAddToCart}
                   className={cn(
@@ -1058,16 +1435,40 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                     </>
                   )}
                 </button>
-                <Link to="/kontakt?openWizard=true" className="block">
-                  <button className="w-full py-4 px-8 text-sm font-semibold tracking-widest uppercase border border-gray-300 text-brand-dark hover:border-brand-gold hover:text-brand-gold transition-all flex items-center justify-center gap-3">
-                    <Package size={18} />
-                    Objednať vzorku
-                  </button>
-                </Link>
+                <button
+                  onClick={onAddSample}
+                  className={cn(
+                    "w-full py-4 px-8 text-sm font-semibold tracking-widest uppercase border transition-all flex items-center justify-center gap-3",
+                    isSampleInCart
+                      ? "border-emerald-300 bg-emerald-50 text-emerald-700 cursor-default"
+                      : !product.sampleShopifyVariantId
+                        ? "border-gray-200 text-gray-400 cursor-not-allowed opacity-60"
+                        : sampleCount >= MAX_SAMPLES
+                          ? "border-gray-200 text-gray-400 cursor-not-allowed"
+                          : "border-gray-300 text-brand-dark hover:border-brand-gold hover:text-brand-gold"
+                  )}
+                >
+                  {isSampleInCart ? (
+                    <>
+                      <Check size={18} />
+                      Vzorka v košíku
+                    </>
+                  ) : sampleCount >= MAX_SAMPLES ? (
+                    <>
+                      <Package size={18} />
+                      Maximum vzoriek ({MAX_SAMPLES})
+                    </>
+                  ) : (
+                    <>
+                      <Package size={18} />
+                      Pridať vzorku
+                    </>
+                  )}
+                </button>
               </div>
 
-              {/* Trust indicators */}
-              <div className="space-y-3 text-sm text-gray-600">
+              {/* ===== 13. Trust indicators ===== */}
+              <div className="order-[13] lg:order-[12] space-y-3 text-sm text-gray-600">
                 <div className="flex items-center gap-3">
                   <Truck size={16} className="text-brand-gold" />
                   <span>Expedícia do {product.deliveryTimeframe || '5 pracovných dní'}</span>
@@ -1109,34 +1510,57 @@ const ProductStorySection: React.FC<ProductStorySectionProps> = ({ product }) =>
   // If no richDescription and no designInsight, don't render the section
   if (!rd && !product.designInsight) return null;
 
+  // Shared decorative wrapper with gold background and stone images peeking from sides
+  const StoryWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+    <section className="py-12 lg:py-20 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #ECD488 0%, #f5e6b8 40%, #ECD488 100%)' }}>
+      {/* Content */}
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-3xl mx-auto">
+          {children}
+        </div>
+      </div>
+
+      {/* Decorative stone slab — top-right accent, rendered above content */}
+      <motion.div
+        initial={{ opacity: 0, x: 30, y: -20 }}
+        whileInView={{ opacity: 0.55, x: 0, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, ease: 'easeOut' }}
+        className="absolute top-0 right-0 translate-x-[25%] -translate-y-[15%] w-[280px] h-[360px] rotate-[10deg] pointer-events-none hidden lg:block z-0"
+      >
+        <img
+          src={product.image}
+          alt=""
+          className="w-full h-full object-cover rounded-2xl shadow-2xl"
+        />
+      </motion.div>
+    </section>
+  );
+
   // Design insight: researched content about style matching & use cases (Shopify products)
   if (!rd && product.designInsight) {
     return (
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-[11px] font-bold tracking-[0.2em] uppercase text-brand-gold mb-8">
-                Štýl & Inšpirácia
-              </h2>
-            </motion.div>
+      <StoryWrapper>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-brand-dark/60 mb-8">
+            Štýl & Inšpirácia
+          </h2>
+        </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="prose prose-lg prose-gray max-w-none [&>p]:text-gray-700 [&>p]:leading-relaxed [&>p]:mb-4 [&>ul]:text-gray-700 [&>ol]:text-gray-700 [&>strong]:text-brand-dark border-l-2 border-brand-gold pl-6"
-              dangerouslySetInnerHTML={{ __html: product.designInsight }}
-            />
-          </div>
-        </div>
-      </section>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="prose prose-lg max-w-none [&>p]:text-brand-dark/80 [&>p]:leading-relaxed [&>p]:mb-4 [&>ul]:text-brand-dark/80 [&>ol]:text-brand-dark/80 [&>strong]:text-brand-dark [&>strong]:font-bold border-l-2 border-brand-dark/20 pl-6"
+          dangerouslySetInnerHTML={{ __html: product.designInsight }}
+        />
+      </StoryWrapper>
     );
   }
 
@@ -1145,75 +1569,71 @@ const ProductStorySection: React.FC<ProductStorySectionProps> = ({ product }) =>
   const highlightsTitle = rd.highlightsTitle || `Prečo si vybrať ${product.name}?`;
 
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto">
-          {/* Section Label */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-[11px] font-bold tracking-[0.2em] uppercase text-brand-gold mb-8">
-              O produkte
-            </h2>
-          </motion.div>
+    <StoryWrapper>
+      {/* Section Label */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <h2 className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-brand-dark/60 mb-8">
+          O produkte
+        </h2>
+      </motion.div>
 
-          {/* Intro Paragraph */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-lg md:text-xl text-gray-700 leading-relaxed mb-12 border-l-2 border-brand-gold pl-6"
-          >
-            {rd.intro}
-          </motion.p>
+      {/* Intro Paragraph */}
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+        className="text-lg md:text-xl text-brand-dark/80 leading-relaxed mb-12 border-l-2 border-brand-dark/20 pl-6"
+      >
+        {rd.intro}
+      </motion.p>
 
-          {/* Highlights */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-12"
-          >
-            <h3 className="text-lg font-bold text-brand-dark mb-6">
-              {highlightsTitle}
-            </h3>
-            <ul className="space-y-3">
-              {rd.highlights.map((highlight, index) => (
-                <motion.li
-                  key={index}
-                  initial={{ opacity: 0, x: -10 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.3 + index * 0.07 }}
-                  className="flex items-start gap-3"
-                >
-                  <div className="w-5 h-5 rounded-full bg-brand-gold/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check size={12} className="text-brand-gold" />
-                  </div>
-                  <span className="text-gray-700 leading-relaxed">{highlight}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </motion.div>
+      {/* Highlights */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="mb-12"
+      >
+        <h3 className="text-lg font-bold text-brand-dark mb-6">
+          {highlightsTitle}
+        </h3>
+        <ul className="space-y-3">
+          {rd.highlights.map((highlight, index) => (
+            <motion.li
+              key={index}
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.3 + index * 0.07 }}
+              className="flex items-start gap-3"
+            >
+              <div className="w-5 h-5 rounded-full bg-brand-dark/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <Check size={12} className="text-brand-dark" />
+              </div>
+              <span className="text-brand-dark/80 leading-relaxed">{highlight}</span>
+            </motion.li>
+          ))}
+        </ul>
+      </motion.div>
 
-          {/* Closing Paragraph */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-base md:text-lg text-gray-600 leading-relaxed italic"
-          >
-            {rd.closing}
-          </motion.p>
-        </div>
-      </div>
-    </section>
+      {/* Closing Paragraph */}
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className="text-base md:text-lg text-brand-dark/60 leading-relaxed italic"
+      >
+        {rd.closing}
+      </motion.p>
+    </StoryWrapper>
   );
 };
 
@@ -1225,6 +1645,7 @@ interface TechnicalOverviewProps {
 }
 
 const TechnicalOverview: React.FC<TechnicalOverviewProps> = ({ product }) => {
+  const [isOpen, setIsOpen] = useState(false);
   const specs = [
     { label: 'Materiál', value: product.material || 'Sinterovaný kameň' },
     { label: 'Hrúbka', value: product.thickness },
@@ -1236,8 +1657,26 @@ const TechnicalOverview: React.FC<TechnicalOverviewProps> = ({ product }) => {
     { label: 'SKU', value: product.sku || '—' },
   ];
 
+  const specGrid = (
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200">
+      {specs.map((spec, index) => (
+        <div 
+          key={index}
+          className="bg-white p-4 lg:p-6"
+        >
+          <span className="text-xs lg:text-[10px] font-bold tracking-[0.15em] uppercase text-gray-400 block mb-2">
+            {spec.label}
+          </span>
+          <span className="text-base sm:text-lg font-medium text-brand-dark">
+            {spec.value}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+
   return (
-    <section className="py-16 bg-[#F9F9F7]">
+    <section className="py-10 lg:py-16 bg-[#F9F9F7]">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -1245,24 +1684,41 @@ const TechnicalOverview: React.FC<TechnicalOverviewProps> = ({ product }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-[11px] font-bold tracking-[0.2em] uppercase text-brand-gold mb-8">
-            Technické parametre
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200">
-            {specs.map((spec, index) => (
-              <div 
-                key={index}
-                className="bg-white p-6"
-              >
-                <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-gray-400 block mb-2">
-                  {spec.label}
-                </span>
-                <span className="text-lg font-medium text-brand-dark">
-                  {spec.value}
-                </span>
+          {/* Mobile: collapsible accordion */}
+          <div className="lg:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="w-full flex items-center justify-between py-2"
+            >
+              <h2 className="text-xs font-bold tracking-[0.2em] uppercase text-brand-gold">
+                Technické parametre
+              </h2>
+              <ChevronDown 
+                size={20} 
+                className={cn(
+                  "text-brand-gold transition-transform duration-300",
+                  isOpen && "rotate-180"
+                )} 
+              />
+            </button>
+            <motion.div
+              initial={false}
+              animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="overflow-hidden"
+            >
+              <div className="pt-4">
+                {specGrid}
               </div>
-            ))}
+            </motion.div>
+          </div>
+
+          {/* Desktop: always visible */}
+          <div className="hidden lg:block">
+            <h2 className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-brand-gold mb-8">
+              Technické parametre
+            </h2>
+            {specGrid}
           </div>
         </motion.div>
       </div>
@@ -1304,7 +1760,7 @@ const ApplicationSection: React.FC<ApplicationSectionProps> = ({ product }) => {
   const productApplications = product.applications || ['Kuchynské dosky', 'Kúpeľne', 'Obklad stien'];
 
   return (
-    <section className="py-16">
+    <section className="py-10 lg:py-16">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -1312,11 +1768,11 @@ const ApplicationSection: React.FC<ApplicationSectionProps> = ({ product }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-[11px] font-bold tracking-[0.2em] uppercase text-brand-gold mb-12">
+          <h2 className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-brand-gold mb-12">
             Vhodné použitie
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-6 lg:gap-4">
+          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory py-4 -mx-6 px-8 scrollbar-hide lg:mx-0 lg:px-0 lg:py-0 lg:grid lg:grid-cols-8 lg:gap-4 lg:overflow-visible">
             {allApplications.map((app, index) => {
               const isSupported = productApplications.includes(app);
               const Icon = applicationIcons[app] || Layers;
@@ -1328,13 +1784,13 @@ const ApplicationSection: React.FC<ApplicationSectionProps> = ({ product }) => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   className={cn(
-                    "flex flex-col items-center text-center transition-all",
+                    "flex-shrink-0 w-[80px] snap-start lg:w-auto flex flex-col items-center text-center transition-all",
                     !isSupported && "opacity-40"
                   )}
                 >
                   {/* Circular icon container */}
                   <div className={cn(
-                    "w-20 h-20 lg:w-24 lg:h-24 rounded-full flex items-center justify-center mb-4 transition-colors",
+                    "w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full flex items-center justify-center mb-3 sm:mb-4 transition-colors",
                     isSupported 
                       ? "bg-gray-100" 
                       : "bg-gray-50"
@@ -1350,7 +1806,7 @@ const ApplicationSection: React.FC<ApplicationSectionProps> = ({ product }) => {
                   </div>
                   {/* Label */}
                   <span className={cn(
-                    "text-sm font-medium leading-tight",
+                    "text-xs sm:text-sm font-medium leading-tight",
                     isSupported ? "text-brand-dark" : "text-gray-400"
                   )}>
                     {app}
@@ -1375,33 +1831,37 @@ interface ResistanceParametersProps {
 const ResistanceParameters: React.FC<ResistanceParametersProps> = ({ product }) => {
   const parameters = [
     {
-      icon: Flame,
       title: 'Odolnosť voči teplu',
       value: product.heatResistance || 'Do 300°C',
-      description: 'Horúce nádoby môžete položiť priamo na povrch'
+      description: 'Horúce nádoby môžete položiť priamo na povrch',
+      image: '/images/resistance/heat-resistance.webp',
+      icon: Flame,
     },
     {
-      icon: Sun,
-      title: 'UV stabilita',
-      value: product.uvResistance ? 'Áno' : 'Nie',
-      description: 'Farba zostáva nemenná aj pri priamom slnečnom žiarení'
+      title: 'Hygiena a bezpečnosť potravín',
+      value: 'Certifikovaný',
+      description: 'Povrch je hygienický, nepórovitý a bezpečný pre kontakt s potravinami',
+      image: '/images/resistance/food-safety.webp',
+      icon: Apple,
     },
     {
-      icon: Shield,
       title: 'Odolnosť voči škrabancom',
       value: product.scratchResistance || 'Mohs 7+',
-      description: 'Tvrdosť blízka diamantu'
+      description: 'Tvrdosť blízka diamantu',
+      image: '/images/resistance/scratch-resistance.webp',
+      icon: Diamond,
     },
     {
-      icon: Droplets,
       title: 'Odolnosť voči škvrnám',
       value: product.stainResistance || 'Nenasiakavý',
-      description: `Porozita ${product.porosity || '< 0.1%'}`
+      description: `Porozita ${product.porosity || '< 0.1%'}`,
+      image: '/images/resistance/stain-resistance.webp',
+      icon: Droplet,
     },
   ];
 
   return (
-    <section className="py-16 bg-brand-dark text-white">
+    <section className="py-10 lg:py-16 bg-brand-dark text-white">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -1409,26 +1869,44 @@ const ResistanceParameters: React.FC<ResistanceParametersProps> = ({ product }) 
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-[11px] font-bold tracking-[0.2em] uppercase text-brand-gold mb-12">
+          <h2 className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-brand-gold mb-12">
             Odolnosť materiálu
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {parameters.map((param, index) => {
-              const Icon = param.icon;
-              return (
-                <div key={index} className="space-y-4">
-                  <div className="w-12 h-12 border border-brand-gold/30 flex items-center justify-center">
-                    <Icon size={24} className="text-brand-gold" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+            {parameters.map((param, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="space-y-3 lg:space-y-4"
+              >
+                {/* Image — 4:3 on mobile to save space, square on desktop */}
+                <div className="aspect-[4/3] sm:aspect-square relative rounded-lg overflow-hidden">
+                  <img
+                    src={param.image}
+                    alt={param.title}
+                    className="w-full h-full object-cover"
+                  />
+                  {/* Icon badge */}
+                  <div className="absolute top-3 left-3 w-10 h-10 sm:w-14 sm:h-14 bg-brand-gold backdrop-blur rounded-full flex items-center justify-center">
+                    <param.icon size={20} className="text-brand-dark sm:w-7 sm:h-7" />
                   </div>
-                  <div>
-                    <h3 className="text-sm font-medium text-white/60 mb-1">{param.title}</h3>
-                    <p className="text-xl font-bold text-white mb-2">{param.value}</p>
-                    <p className="text-sm text-white/50">{param.description}</p>
+                  {/* Value badge on image */}
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <p className="text-lg sm:text-xl font-bold text-white drop-shadow-lg">{param.value}</p>
                   </div>
                 </div>
-              );
-            })}
+
+                {/* Text below */}
+                <div>
+                  <h3 className="text-sm font-medium text-white/60 mb-1">{param.title}</h3>
+                  <p className="text-sm text-white/50">{param.description}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>
@@ -1470,7 +1948,7 @@ const LogisticsSection: React.FC<LogisticsSectionProps> = ({ product }) => {
   ];
 
   return (
-    <section className="py-16 bg-[#F9F9F7]">
+    <section className="py-10 lg:py-16 bg-[#F9F9F7]">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -1478,17 +1956,17 @@ const LogisticsSection: React.FC<LogisticsSectionProps> = ({ product }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-[11px] font-bold tracking-[0.2em] uppercase text-brand-gold mb-8">
+          <h2 className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-brand-gold mb-8">
             Dodanie a logistika
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
             {logistics.map((item, index) => {
               const Icon = item.icon;
               return (
-                <div key={index} className="bg-white p-6 border border-gray-200">
+                <div key={index} className="bg-white p-4 lg:p-6 border border-gray-200">
                   <Icon size={20} className="text-brand-gold mb-4" />
-                  <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-gray-400 block mb-2">
+                  <span className="text-xs lg:text-[10px] font-bold tracking-[0.15em] uppercase text-gray-400 block mb-2">
                     {item.label}
                   </span>
                   <span className="text-brand-dark font-medium">
@@ -1518,8 +1996,29 @@ interface ArchitectBlockProps {
 }
 
 const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
+  const { addItem, sampleCount, isSampleInCart } = useCart();
+  const [sampleError, setSampleError] = useState<string | null>(null);
+
+  const handleAddSample = () => {
+    if (!product.sampleShopifyVariantId) {
+      setSampleError('Vzorka pre tento produkt nie je momentálne dostupná.');
+      setTimeout(() => setSampleError(null), 5000);
+      return;
+    }
+    if (isSampleInCart(product.id)) return; // Already in cart
+    if (sampleCount >= MAX_SAMPLES) {
+      setSampleError(`Dosiahli ste maximum ${MAX_SAMPLES} vzoriek. Odoberte niektorú pred pridaním novej.`);
+      setTimeout(() => setSampleError(null), 5000);
+      return;
+    }
+    setSampleError(null);
+    addItem(product.sampleShopifyVariantId, 1);
+  };
+
+  const sampleInCart = isSampleInCart(product.id);
+
   return (
-    <section className="py-16">
+    <section className="py-10 lg:py-16">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -1528,8 +2027,8 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
           transition={{ duration: 0.6 }}
         >
           <div className="border border-gray-200 bg-white">
-            <div className="p-8 border-b border-gray-200">
-              <h2 className="text-[11px] font-bold tracking-[0.2em] uppercase text-brand-gold mb-2">
+            <div className="p-5 lg:p-8 border-b border-gray-200">
+              <h2 className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-brand-gold mb-2">
                 Pre architektov a dizajnérov
               </h2>
               <p className="text-gray-600">
@@ -1539,21 +2038,41 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200">
               {/* Left: Sample Request */}
-              <div className="p-8">
+              <div className="p-5 lg:p-8">
                 <h3 className="font-bold text-brand-dark mb-4">Vzorky materiálu</h3>
                 <p className="text-sm text-gray-600 mb-6">
                   Objednajte si fyzickú vzorku pre presné posúdenie farby, textúry a povrchu.
                 </p>
-                <Link to="/kontakt?openWizard=true">
-                  <button className="flex items-center gap-3 px-6 py-3 bg-brand-dark text-white text-sm font-semibold tracking-wider uppercase hover:bg-black transition-colors">
-                    <Package size={16} />
-                    Objednať vzorku
-                  </button>
-                </Link>
+                <button
+                  onClick={handleAddSample}
+                  className={cn(
+                    "flex items-center gap-3 px-6 py-3 text-sm font-semibold tracking-wider uppercase transition-colors",
+                    sampleInCart
+                      ? "bg-emerald-600 text-white cursor-default"
+                      : !product.sampleShopifyVariantId
+                        ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                        : "bg-brand-dark text-white hover:bg-black"
+                  )}
+                >
+                  {sampleInCart ? (
+                    <>
+                      <Check size={16} />
+                      Vzorka v košíku
+                    </>
+                  ) : (
+                    <>
+                      <Package size={16} />
+                      Pridať vzorku
+                    </>
+                  )}
+                </button>
+                {sampleError && (
+                  <p className="mt-2 text-xs text-red-600">{sampleError}</p>
+                )}
               </div>
 
               {/* Right: Downloads */}
-              <div className="p-8">
+              <div className="p-5 lg:p-8">
                 <h3 className="font-bold text-brand-dark mb-4">Technická dokumentácia</h3>
                 <div className="space-y-3">
                   <button className="w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 transition-colors group">
@@ -1575,7 +2094,7 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
             </div>
 
             {/* Contact CTA */}
-            <div className="p-8 bg-gray-50 border-t border-gray-200">
+            <div className="p-5 lg:p-8 bg-gray-50 border-t border-gray-200">
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                 <div>
                   <h4 className="font-medium text-brand-dark mb-1">Potrebujete konzultáciu?</h4>
@@ -1693,7 +2212,8 @@ const ProductSchema: React.FC<ProductSchemaProps> = ({ product, totalPrice }) =>
 // ===========================================
 export const ShopProductDetail: React.FC = () => {
   const { id } = useParams();
-  const { addItem, isInCart } = useCart();
+  const { addItem, isInCart, sampleCount, isSampleInCart } = useCart();
+  const { hasConsented } = useCookies();
   const { products: allProducts, isLoading: productsLoading } = useShopifyProducts();
 
   // SWR: find product in already-loaded allProducts cache for instant display
@@ -1708,6 +2228,10 @@ export const ShopProductDetail: React.FC = () => {
   // Default to 2 platne for higher AOV
   const [selectedBundle, setSelectedBundle] = useState<BundleOption>(BUNDLE_OPTIONS[1]);
   const [cartError, setCartError] = useState<string | null>(null);
+
+  // Installation service state
+  const [installationSelected, setInstallationSelected] = useState(false);
+  const [installationAreaM2, setInstallationAreaM2] = useState<number | null>(null);
 
   // Smart matching: if product loaded from fallback (no variantId),
   // try to find matching Shopify product by name and copy its variantId
@@ -1727,9 +2251,10 @@ export const ShopProductDetail: React.FC = () => {
 
     if (shopifyMatch) {
       return {
-        ...shopifyProduct,                                // Keep local rich data (descriptions, gallery, etc.)
-        shopifyVariantId: shopifyMatch.shopifyVariantId,   // Add Shopify variant ID for cart
-        inStock: shopifyMatch.inStock,                      // Use live stock status
+        ...shopifyProduct,                                          // Keep local rich data (descriptions, gallery, etc.)
+        shopifyVariantId: shopifyMatch.shopifyVariantId,             // Add Shopify variant ID for cart
+        sampleShopifyVariantId: shopifyMatch.sampleShopifyVariantId, // Add sample variant ID
+        inStock: shopifyMatch.inStock,                               // Use live stock status
       };
     }
 
@@ -1763,11 +2288,44 @@ export const ShopProductDetail: React.FC = () => {
     if (product.shopifyVariantId) {
       setCartError(null);
       addItem(product.shopifyVariantId, selectedBundle.quantity);
+
+      // Save or clear installation data in localStorage
+      if (installationSelected) {
+        const hasArea = installationAreaM2 !== null && installationAreaM2 >= 0.1;
+        const installationPrice = hasArea ? Math.round(installationAreaM2! * INSTALLATION_RATE_PER_M2) : 0;
+        saveInstallationToStorage({
+          installation_selected: true,
+          installation_area_m2: hasArea ? installationAreaM2! : 0,
+          installation_price_estimate_vat: installationPrice,
+          installation_pricing_basis: hasArea ? '279 EUR per m2 VAT incl' : 'to be confirmed after site visit',
+          installation_disclaimer: 'estimated; confirmed after site visit; brokerage only',
+          product_id: product.id,
+          product_name: product.name,
+        });
+      } else {
+        saveInstallationToStorage(null);
+      }
     } else {
       console.warn('Produkt nemá shopifyVariantId, nie je možné pridať do košíka:', product.id);
       setCartError('Tento produkt momentálne nie je možné pridať do košíka. Skúste to prosím neskôr.');
       setTimeout(() => setCartError(null), 5000);
     }
+  };
+
+  const handleAddSample = () => {
+    if (!product.sampleShopifyVariantId) {
+      setCartError('Vzorka pre tento produkt nie je momentálne dostupná.');
+      setTimeout(() => setCartError(null), 5000);
+      return;
+    }
+    if (isSampleInCart(product.id)) return; // Already in cart
+    if (sampleCount >= MAX_SAMPLES) {
+      setCartError(`Dosiahli ste maximum ${MAX_SAMPLES} vzoriek. Odoberte niektorú pred pridaním novej.`);
+      setTimeout(() => setCartError(null), 5000);
+      return;
+    }
+    setCartError(null);
+    addItem(product.sampleShopifyVariantId, 1);
   };
 
   return (
@@ -1795,6 +2353,13 @@ export const ShopProductDetail: React.FC = () => {
         onBundleChange={setSelectedBundle}
         onAddToCart={handleAddToCart}
         isInCart={isInCart(product.id)}
+        installationSelected={installationSelected}
+        installationAreaM2={installationAreaM2}
+        onInstallationToggle={setInstallationSelected}
+        onInstallationAreaChange={setInstallationAreaM2}
+        onAddSample={handleAddSample}
+        isSampleInCart={isSampleInCart(product.id)}
+        sampleCount={sampleCount}
       />
 
       {/* Section 2: Product Story (Rich Description) */}
@@ -1817,6 +2382,88 @@ export const ShopProductDetail: React.FC = () => {
 
       {/* JSON-LD Structured Data for SEO (invisible to users, visible to Google) */}
       <ProductSchema product={product} totalPrice={calculateSlabPrice(product.pricePerM2, product.dimensions)} />
+
+      {/* ===== Sticky Add-to-Cart Bottom Bar — mobile only ===== */}
+      <div className={cn(
+        "fixed left-0 right-0 z-[10000] lg:hidden bg-white border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] transition-all duration-300",
+        hasConsented ? "bottom-0" : "bottom-[200px] sm:bottom-[160px]"
+      )}
+        style={{ paddingBottom: hasConsented ? 'env(safe-area-inset-bottom, 0px)' : '0px' }}
+      >
+        <div className="px-4 py-3 space-y-2">
+          {/* Top row: Price + Add to Cart */}
+          <div className="flex items-center gap-3">
+            {/* Price info */}
+            <div className="flex-1 min-w-0">
+              <p className="text-xs text-gray-500 truncate">{product.name} • {selectedBundle.quantity} {selectedBundle.quantity === 1 ? 'platňa' : selectedBundle.quantity < 5 ? 'platne' : 'platní'}</p>
+              <p className="text-lg font-bold text-brand-dark leading-tight">
+                {formatPrice(Math.round(product.pricePerM2 * (1 - selectedBundle.discountPercent / 100) * 100) / 100)}
+                <span className="text-xs font-normal text-gray-400 ml-1">/ m²</span>
+                {selectedBundle.discountPercent > 0 && (
+                  <span className="text-xs font-normal text-gray-400 ml-1 line-through">{formatPrice(product.pricePerM2)}</span>
+                )}
+              </p>
+            </div>
+            {/* Add to Cart button */}
+            <button
+              onClick={handleAddToCart}
+              className={cn(
+                "flex-shrink-0 h-12 px-5 text-sm font-semibold tracking-wider uppercase transition-all flex items-center justify-center gap-2 rounded-lg",
+                isInCart(product.id)
+                  ? "bg-emerald-600 text-white"
+                  : "bg-brand-dark text-white active:bg-black"
+              )}
+            >
+              {isInCart(product.id) ? (
+                <>
+                  <Check size={16} />
+                  V košíku
+                </>
+              ) : (
+                <>
+                  <ShoppingBag size={16} />
+                  Do košíka
+                </>
+              )}
+            </button>
+          </div>
+          {/* Bottom row: Sample button */}
+          <button
+            onClick={handleAddSample}
+            disabled={!product.sampleShopifyVariantId || (sampleCount >= MAX_SAMPLES && !isSampleInCart(product.id))}
+            className={cn(
+              "w-full h-11 text-xs font-semibold tracking-wider uppercase transition-all flex items-center justify-center gap-2 rounded-lg border",
+              isSampleInCart(product.id)
+                ? "border-emerald-300 bg-emerald-50 text-emerald-700"
+                : !product.sampleShopifyVariantId
+                  ? "border-gray-200 text-gray-400 opacity-60"
+                  : sampleCount >= MAX_SAMPLES
+                    ? "border-gray-200 text-gray-400"
+                    : "border-gray-300 text-brand-dark active:border-brand-gold active:text-brand-gold"
+            )}
+          >
+            {isSampleInCart(product.id) ? (
+              <>
+                <Check size={14} />
+                Vzorka v košíku
+              </>
+            ) : sampleCount >= MAX_SAMPLES ? (
+              <>
+                <Package size={14} />
+                Maximum vzoriek ({MAX_SAMPLES})
+              </>
+            ) : (
+              <>
+                <Package size={14} />
+                Objednať vzorku zadarmo
+              </>
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Spacer for sticky bar so content isn't hidden behind it on mobile */}
+      <div className="h-28 lg:hidden" />
     </main>
   );
 };

@@ -546,7 +546,7 @@ export const Shop = () => {
               muted
               playsInline
               poster={slide.poster}
-              preload="auto"
+              preload="metadata"
             >
               <source src={slide.video} type="video/mp4" />
             </video>
@@ -567,7 +567,7 @@ export const Shop = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.4 }}
-              className="hero-text-line text-[10px] md:text-xs tracking-[0.3em] uppercase text-white/60 font-light mb-6"
+              className="hero-text-line text-xs md:text-xs tracking-[0.3em] uppercase text-white/60 font-light mb-6"
             >
               {HERO_SLIDES[activeSlide].label}
             </motion.p>
@@ -645,7 +645,7 @@ export const Shop = () => {
         {/* Left Arrow */}
         <button
           onClick={goToPrevSlide}
-          className="hero-nav-arrows absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-white/40 hover:text-white transition-colors duration-300"
+          className="hero-nav-arrows absolute left-3 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-12 md:h-12 flex items-center justify-center text-white/40 hover:text-white active:text-white transition-colors duration-300"
           aria-label="Previous slide"
         >
           <ChevronLeft size={28} strokeWidth={1} />
@@ -654,7 +654,7 @@ export const Shop = () => {
         {/* Right Arrow */}
         <button
           onClick={goToNextSlide}
-          className="hero-nav-arrows absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-white/40 hover:text-white transition-colors duration-300"
+          className="hero-nav-arrows absolute right-3 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-12 md:h-12 flex items-center justify-center text-white/40 hover:text-white active:text-white transition-colors duration-300"
           aria-label="Next slide"
         >
           <ChevronRight size={28} strokeWidth={1} />
@@ -704,14 +704,14 @@ export const Shop = () => {
 
                 {/* Text Content — Bottom */}
                 <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6 z-10">
-                  <p className="text-[10px] tracking-[0.2em] uppercase text-white/50 mb-1 font-medium">
+                  <p className="text-xs lg:text-[10px] tracking-[0.2em] uppercase text-white/50 mb-1 font-medium">
                     {cat.description}
                   </p>
                   <h3 className="text-xl lg:text-2xl font-bold text-white font-sans">
                     {cat.name}
                   </h3>
                   <div className="mt-3 flex items-center gap-2 text-white/60 group-hover:text-white transition-colors duration-300">
-                    <span className="text-[11px] tracking-[0.15em] uppercase font-medium">
+                    <span className="text-xs lg:text-[11px] tracking-[0.15em] uppercase font-medium">
                       Objaviť
                     </span>
                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
@@ -727,7 +727,7 @@ export const Shop = () => {
       <section className="inspiration-section py-20 lg:py-28 bg-[#FAFAFA]">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="inspiration-header section-reveal text-center mb-12 lg:mb-16">
-            <span className="text-[11px] tracking-[0.3em] uppercase text-brand-gold font-bold mb-3 block">
+            <span className="text-xs lg:text-[11px] tracking-[0.3em] uppercase text-brand-gold font-bold mb-3 block">
               Inšpirácie
             </span>
             <h2 className="text-3xl lg:text-4xl font-sans font-bold text-brand-dark">
@@ -754,7 +754,7 @@ export const Shop = () => {
                   return (
                     <div
                       key={idx}
-                      className="inspiration-slide flex-shrink-0 relative rounded-2xl overflow-hidden cursor-pointer w-[85vw] sm:w-[70vw] lg:w-[50%]"
+                      className="inspiration-slide flex-shrink-0 relative rounded-2xl overflow-hidden cursor-pointer w-[92vw] sm:w-[80vw] lg:w-[50%]"
                       style={{
                         aspectRatio: '16 / 9',
                         transform: isCenter ? 'scale(1)' : 'scale(0.92)',
@@ -808,7 +808,7 @@ export const Shop = () => {
                           transform: isCenter ? 'translateY(0)' : 'translateY(16px)',
                         }}
                       >
-                        <span className="text-[10px] lg:text-[11px] tracking-[0.3em] uppercase text-white/80 font-medium mb-2 lg:mb-3">
+                        <span className="text-xs lg:text-[11px] tracking-[0.3em] uppercase text-white/80 font-medium mb-2 lg:mb-3">
                           {img.label}
                         </span>
                         <h3 className="text-xl sm:text-2xl lg:text-3xl font-sans font-bold text-white leading-tight mb-1 lg:mb-2 drop-shadow-lg">
@@ -884,7 +884,7 @@ export const Shop = () => {
 
               {/* Product Info */}
               <div className="spotlight-content flex-1 max-w-lg">
-                <span className="text-[11px] tracking-[0.3em] uppercase text-brand-gold font-bold mb-4 block">
+                <span className="text-xs lg:text-[11px] tracking-[0.3em] uppercase text-brand-gold font-bold mb-4 block">
                   Odporúčame
                 </span>
                 <h2 className="text-3xl lg:text-4xl font-bold text-brand-dark mb-4 uppercase tracking-wide">
@@ -1005,7 +1005,7 @@ export const Shop = () => {
                   const container = document.getElementById('featured-carousel');
                   if (container) container.scrollBy({ left: -300, behavior: 'smooth' });
                 }}
-                className="lg:hidden absolute left-0 top-1/3 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-brand-dark z-10"
+                className="lg:hidden absolute left-0 top-1/3 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-brand-dark z-10 active:bg-gray-100"
                 aria-label="Previous"
               >
                 <ChevronRight size={20} className="rotate-180" />
@@ -1015,7 +1015,7 @@ export const Shop = () => {
                   const container = document.getElementById('featured-carousel');
                   if (container) container.scrollBy({ left: 300, behavior: 'smooth' });
                 }}
-                className="lg:hidden absolute right-0 top-1/3 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-brand-dark z-10"
+                className="lg:hidden absolute right-0 top-1/3 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-brand-dark z-10 active:bg-gray-100"
                 aria-label="Next"
               >
                 <ChevronRight size={20} />
@@ -1026,13 +1026,13 @@ export const Shop = () => {
       </section>
 
       {/* ==================== BLOG PREVIEW SECTION ==================== */}
-      <BlogPreviewSection articles={getLatestArticles(4)} />
+      <BlogPreviewSection articles={getLatestArticles(5)} />
 
       {/* ==================== TESTIMONIALS ==================== */}
       <section className="testimonials-section py-20 lg:py-28 bg-white overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="testimonial-inner max-w-3xl mx-auto text-center">
-            <span className="text-[11px] tracking-[0.3em] uppercase text-brand-gold font-bold mb-3 block">
+            <span className="text-xs lg:text-[11px] tracking-[0.3em] uppercase text-brand-gold font-bold mb-3 block">
               Recenzie
             </span>
             <h2 className="text-3xl lg:text-4xl font-sans font-bold text-brand-dark mb-12 lg:mb-16">
@@ -1114,7 +1114,7 @@ export const Shop = () => {
       <section className="instagram-section py-20 lg:py-28 bg-[#FAFAFA]">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="section-reveal text-center mb-12 lg:mb-16">
-            <span className="text-[11px] tracking-[0.3em] uppercase text-brand-gold font-bold mb-3 block">
+            <span className="text-xs lg:text-[11px] tracking-[0.3em] uppercase text-brand-gold font-bold mb-3 block">
               @orostone_
             </span>
             <h2 className="text-3xl lg:text-4xl font-sans font-bold text-brand-dark">
@@ -1187,7 +1187,7 @@ export const Shop = () => {
       <section className="cta-section py-24 lg:py-32 bg-white">
         <div className="container mx-auto px-6">
           <div className="cta-content max-w-3xl mx-auto text-center">
-            <span className="text-[11px] tracking-[0.3em] uppercase text-brand-gold font-bold mb-4 block">
+            <span className="text-xs lg:text-[11px] tracking-[0.3em] uppercase text-brand-gold font-bold mb-4 block">
               Potrebujete pomoc?
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-dark mb-6">

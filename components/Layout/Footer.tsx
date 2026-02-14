@@ -43,6 +43,7 @@ export const Footer = () => {
           <div>
             <h3 className="font-sans text-xs font-bold tracking-widest uppercase text-gray-500 mb-6">Materiály</h3>
             <ul className="space-y-4">
+              <li><Link to="/sinterovany-kamen" className="font-sans font-light text-sm text-gray-300 hover:text-brand-gold transition-colors">Sinterovaný kameň</Link></li>
               <li className="font-sans font-light text-sm text-gray-300">Unita (Color Body)</li>
               <li className="font-sans font-light text-sm text-gray-300">Marbelito (Full Body)</li>
               <li className="font-sans font-light text-sm text-gray-300">Bianco (White Body)</li>
