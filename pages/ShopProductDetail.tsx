@@ -1272,7 +1272,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
 
               {/* ===== 8. Key Specs Quick View — mobile: after badges, desktop: after description ===== */}
-              <div className="order-[8] lg:order-5">
+              <div className="order-[8] lg:order-[7]">
               <h3 className="text-xs lg:text-[10px] font-bold tracking-[0.15em] uppercase text-gray-400 mb-4 pt-8 border-t border-gray-200">
                 Technické parametre
               </h3>
@@ -1378,7 +1378,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
 
               {/* ===== 6. Product Switcher — mobile: after description ===== */}
-              <div className="order-6 lg:order-[7]">
+              <div className="order-6 lg:order-5">
                 <ProductSwitcher 
                   currentProductId={product.id} 
                   products={allProducts} 
