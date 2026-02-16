@@ -661,8 +661,10 @@ function parseShopifyDescription(descriptionHtml: string): ParsedDescription {
   const highlightPhrases = [
     // Najdlhsie frazy (priority - vsetky odstavce pokryte)
     'výnimočný dizajn s luxusným zlatým akcentom a haute couture eleganciou',
+    'čistého, minimalistického dizajnu s klasickým mramorovým charakterom',
     'teplý, prirodzený dizajn s charakterom historického kameňa',
     'čistý, minimalistický dizajn s ľadovou eleganciou',
+    'jemnými šedými žilami na snežobielom podklade',
     'klasický Calacatta dizajn s výrazným žilkovaním',
     'ikonický mramorový dizajn so zlatými akcentmi',
     'výnimočný dizajn s teplými tónmi a luxusným charakterom',
@@ -680,14 +682,17 @@ function parseShopifyDescription(descriptionHtml: string): ParsedDescription {
     'jemné krémové tóny s bohatými zlatými žilami',
     'bohatými šedými a zlatými žilami',
     'čistý, minimalistický a sofistikovaný dizajn',
+    'sofistikovaný a nadčasový dizajn',
     'historickú krásu antických stavieb',
     'snežobielu farbu s jemnými šedými odtieňmi',
     'luxusnú krásu exotického kameňa',
     'autentický, surovo-luxusný vzhľad',
     'jedinečný statement piece s módnym šarmom',
     'statement piece s nadčasovým šarmom',
+    'vrchol elegancie a čistoty',
     // Strednedlhe frazy
     'luxus talianskeho mramoru Calacatta',
+    'najluxusnejším talianskym mramorom',
     'slavným talianskym mramorom Calacatta',
     'najkrajších odrôd prírodného kameňa',
     'prírodného mramoru bez jeho nevýhod',
