@@ -129,8 +129,8 @@ const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProductId, pro
       <h3 className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-brand-gold mb-4">
         Ďalšie produkty
       </h3>
-      {/* Horizontal scroll on mobile, 4-col grid on lg+ */}
-      <div className="flex gap-3 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-px-6 py-1 -my-1 -mx-6 px-6 scrollbar-hide touch-pan-x lg:grid lg:grid-cols-4 lg:gap-2 lg:overflow-visible lg:p-0 lg:m-0 lg:scroll-p-0 lg:touch-auto">
+      {/* Grid on mobile (6 cols, wraps), 4-col grid on lg+ */}
+      <div className="grid grid-cols-6 gap-2 lg:grid-cols-4">
         {filteredProducts.map((product) => {
           const isActive = product.id === currentProductId;
           return (
@@ -138,13 +138,13 @@ const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProductId, pro
               key={product.id}
               onClick={() => handleProductClick(product.id)}
               className={cn(
-                "group flex-shrink-0 w-[90px] lg:w-auto flex flex-col items-center p-2 transition-all rounded-lg snap-start",
+                "group flex flex-col items-center p-1.5 lg:p-2 transition-all rounded-lg",
                 isActive 
                   ? "ring-2 ring-brand-gold bg-brand-gold/5" 
                   : "ring-1 ring-gray-200 hover:ring-brand-gold/50 bg-white"
               )}
             >
-              <div className="aspect-square w-full overflow-hidden bg-gray-100 mb-2 rounded-md">
+              <div className="aspect-square w-full overflow-hidden bg-gray-100 mb-1 lg:mb-2 rounded-md">
                 <img 
                   src={product.image} 
                   alt={product.name}
@@ -153,7 +153,7 @@ const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProductId, pro
                 />
               </div>
               <span className={cn(
-                "text-xs lg:text-[10px] font-medium text-center leading-tight line-clamp-2",
+                "text-[9px] lg:text-[10px] font-medium text-center leading-tight line-clamp-2",
                 isActive ? "text-brand-dark" : "text-gray-600 group-hover:text-brand-dark"
               )}>
                 {product.name}
