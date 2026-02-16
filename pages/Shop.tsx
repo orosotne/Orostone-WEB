@@ -5,7 +5,7 @@ import { useGSAP } from '@gsap/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowRight, ChevronLeft, ChevronRight, Star,
-  Instagram
+  Instagram, ShieldCheck, Flame, Droplets, Sparkles, Sun
 } from 'lucide-react';
 import { ShopProduct, TESTIMONIALS, REALIZATIONS } from '../constants';
 import { BlogPreviewSection } from '../components/Eshop/BlogPreviewSection';
@@ -17,7 +17,6 @@ import { Lightbox } from '../components/UI/Lightbox';
 import { SEOHead, OROSTONE_ORGANIZATION_LD } from '../components/UI/SEOHead';
 import { Link } from 'react-router-dom';
 import type { CollectionGalleryImage } from '../types';
-import { VISIBLE_CATEGORIES } from '../config/features';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,43 +33,53 @@ const prefetchProduct = (product: ShopProduct) => {
 };
 
 // ===========================================
-// CATEGORY TILES DATA
+// STONE EXPERIENCE PIN-POINT DATA
 // ===========================================
-const ALL_CATEGORIES = [
+const STONE_EXPERIENCE_POINTS = [
   {
-    id: 'sintered-stone',
-    name: 'Sinterovaný kameň',
-    slug: 'sintered-stone',
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&h=1000&fit=crop',
-    description: '12 exkluzívnych dekorov',
+    id: 'scratch',
+    title: 'Odolnosť voči poškriabaniu',
+    description: 'Povrch si zachováva prémiový vzhľad aj pri každodennom používaní.',
+    side: 'left',
+    markerTop: '33%',
   },
   {
-    id: 'tables',
-    name: 'Stoly',
-    slug: 'tables',
-    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=1000&fit=crop',
-    description: 'Zo sinterovaného kameňa',
+    id: 'heat',
+    title: 'Vysoká tepelná stabilita',
+    description: 'Navrhnuté pre kuchyne, kde je výkon a bezpečnosť absolútnou prioritou.',
+    side: 'right',
+    markerTop: '22%',
   },
   {
-    id: 'invisible-cooktop',
-    name: 'Invisible Cooktop',
-    slug: 'invisible-cooktop',
-    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=1000&fit=crop',
-    description: 'Neviditeľné varné dosky',
+    id: 'stain',
+    title: 'Nízka nasiakavosť',
+    description: 'Škvrny od vína, kávy či oleja sa čistia rýchlo a bez stresu.',
+    side: 'left',
+    markerTop: '63%',
   },
   {
-    id: 'accessories',
-    name: 'Doplnky',
-    slug: 'accessories',
-    image: 'https://images.unsplash.com/photo-1563453392212-326f5e854473?w=800&h=1000&fit=crop',
-    description: 'Údržba a čistenie',
+    id: 'hygiene',
+    title: 'Hygienický povrch',
+    description: 'Kompaktný neporézny materiál pre čisté a bezpečné pracovné plochy.',
+    side: 'right',
+    markerTop: '58%',
   },
-];
+  {
+    id: 'uv',
+    title: 'UV stálosť farieb',
+    description: 'Dekor ostáva konzistentný aj v presvetlených interiéroch.',
+    side: 'right',
+    markerTop: '78%',
+  },
+] as const;
 
-// Filtruj len viditeľné kategórie
-const CATEGORIES = ALL_CATEGORIES.filter(
-  cat => VISIBLE_CATEGORIES[cat.id as keyof typeof VISIBLE_CATEGORIES] !== false
-);
+const STONE_POINT_ICONS: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
+  scratch: ShieldCheck,
+  heat: Flame,
+  stain: Droplets,
+  hygiene: Sparkles,
+  uv: Sun,
+};
 
 // ===========================================
 // INSPIRATION GALLERY DATA
@@ -373,21 +382,101 @@ export const Shop = () => {
       });
     }
 
-    // --- Category tiles staggered reveal ---
-    gsap.fromTo('.category-tile',
-      { y: 60, opacity: 0 },
-      {
-        y: 0, opacity: 1,
-        duration: 0.8,
-        ease: 'power3.out',
-        stagger: 0.12,
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // --- Stone Experience: Pin-and-reveal scroll animation (desktop only) ---
+    const stonePinned = document.querySelector('.stone-experience-pinned');
+    if (stonePinned && !reducedMotion) {
+      const stoneTl = gsap.timeline({
         scrollTrigger: {
-          trigger: '.categories-grid',
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
+          trigger: '.stone-experience-pinned',
+          start: 'top top',
+          end: '+=250%',
+          scrub: 0.3,
+          pin: true,
+          anticipatePin: 1,
         },
-      }
-    );
+      });
+
+      // Phase 1 (0–10%): Background expands from inset+rounded to full-bleed
+      stoneTl.fromTo('.stone-bg',
+        { margin: '80px 120px', borderRadius: '32px' },
+        { margin: '0px 0px', borderRadius: '0px', ease: 'power2.out', duration: 0.06 },
+        0
+      );
+
+      // Heading is always visible — no animation needed
+
+      // Phase 2 (5–18%): Slab reveals quickly with scale + opacity
+      stoneTl.fromTo('.stone-slab-wrap',
+        { y: 30, scale: 0.95, opacity: 0 },
+        { y: 0, scale: 1, opacity: 1, ease: 'power3.out', duration: 0.13 },
+        0.05
+      );
+
+      // Phase 4 (20–75%): Each property point reveals one by one
+      // Each point = card + its pin + connector appear together
+      const pointOrder = [0, 1, 2, 3, 4];
+      const allCards = document.querySelectorAll('.stone-experience-pinned .stone-point-card');
+      const allPins = document.querySelectorAll('.stone-experience-pinned .stone-pin');
+      const allConnectors = document.querySelectorAll('.stone-experience-pinned .stone-connector');
+
+      pointOrder.forEach((i) => {
+        const offset = 0.20 + i * 0.11;
+
+        if (allCards[i]) {
+          stoneTl.fromTo(allCards[i],
+            { y: 20, opacity: 0 },
+            { y: 0, opacity: 1, ease: 'power2.out', duration: 0.08 },
+            offset
+          );
+        }
+        if (allPins[i]) {
+          stoneTl.fromTo(allPins[i],
+            { scale: 0, opacity: 0 },
+            { scale: 1, opacity: 1, ease: 'back.out(1.4)', duration: 0.06 },
+            offset + 0.02
+          );
+        }
+        if (allConnectors[i]) {
+          stoneTl.fromTo(allConnectors[i],
+            { scaleX: 0 },
+            { scaleX: 1, ease: 'power2.out', duration: 0.05, transformOrigin: 'center center' },
+            offset + 0.03
+          );
+        }
+      });
+
+      // Phase 5 (78–88%): CTA button fades in
+      stoneTl.fromTo('.stone-experience-pinned .stone-cta',
+        { y: 15, opacity: 0 },
+        { y: 0, opacity: 1, ease: 'power2.out', duration: 0.10 },
+        0.78
+      );
+
+      // 88–100%: Free space before unpin (section releases)
+
+      // Pin pulse animation (independent, not scrub-linked)
+      gsap.to('.stone-experience-pinned .stone-pin-pulse', {
+        scale: 1.9,
+        opacity: 0,
+        duration: 1.7,
+        ease: 'power1.out',
+        stagger: { each: 0.22, repeat: -1 },
+        repeat: -1,
+        delay: 1,
+      });
+    }
+
+    // Reduced-motion fallback: show everything immediately, no scroll animation
+    if (stonePinned && reducedMotion) {
+      gsap.set('.stone-bg', { margin: '0', borderRadius: '0' });
+      gsap.set('.stone-slab-wrap', { opacity: 1, y: 0, scale: 1 });
+      gsap.set('.stone-experience-pinned .stone-point-card', { opacity: 1, y: 0 });
+      gsap.set('.stone-experience-pinned .stone-pin', { opacity: 1, scale: 1 });
+      gsap.set('.stone-experience-pinned .stone-connector', { scaleX: 1 });
+      gsap.set('.stone-experience-pinned .stone-cta', { opacity: 1, y: 0 });
+    }
 
     // --- Spotlight product reveal ---
     gsap.fromTo('.spotlight-image',
@@ -641,7 +730,8 @@ export const Shop = () => {
             >
               <button
                 onClick={() => {
-                  document.querySelector('.categories-grid')?.scrollIntoView({ behavior: 'smooth' });
+                  const target = document.querySelector('.stone-experience-pinned') || document.querySelector('.stone-experience-section');
+                  target?.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className="group inline-flex items-center gap-2 border border-white/40 hover:border-white text-white/90 hover:text-white px-6 py-2.5 text-xs md:text-sm tracking-[0.15em] uppercase transition-all duration-300"
               >
@@ -692,43 +782,178 @@ export const Shop = () => {
       </section>
 
 
-      {/* ==================== CATEGORY TILES — 9:16 Portrait Row ==================== */}
-      <section className="py-16 lg:py-24 bg-brand-gold">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="categories-grid grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
-            {CATEGORIES.map((cat) => (
-              <Link
-                key={cat.slug}
-                to={`/kategoria/${cat.slug}`}
-                className="category-tile group relative aspect-[9/16] rounded-2xl overflow-hidden"
-              >
-                {/* Full-bleed Image */}
-                <img
-                  src={cat.image}
-                  alt={cat.name}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
+      {/* ==================== STONE EXPERIENCE — Pin-and-reveal scroll animation ==================== */}
+      <section className="stone-experience-pinned relative hidden lg:block h-screen overflow-hidden">
+        {/* Animated background — starts inset + rounded, expands to full-bleed */}
+        <div
+          className="stone-bg absolute inset-0 bg-brand-gold"
+          style={{ margin: '80px 120px', borderRadius: '32px' }}
+        />
 
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent group-hover:from-black/80 transition-all duration-500" />
+        {/* Content layer */}
+        <div className="stone-content relative z-10 w-full h-full flex items-center justify-center overflow-hidden pt-[112px]">
+          <div className="w-full max-w-[1200px] mx-auto px-4 lg:px-8">
+            {/* Decorative glow */}
+            <div className="stone-glow pointer-events-none absolute inset-x-1/4 -top-8 h-40 rounded-full bg-white/30 blur-3xl opacity-70" />
 
-                {/* Text Content — Bottom */}
-                <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6 z-10">
-                  <p className="text-xs lg:text-[10px] tracking-[0.2em] uppercase text-white/50 mb-1 font-medium">
-                    {cat.description}
-                  </p>
-                  <h3 className="text-xl lg:text-2xl font-bold text-white font-sans">
-                    {cat.name}
-                  </h3>
-                  <div className="mt-3 flex items-center gap-2 text-white/60 group-hover:text-white transition-colors duration-300">
-                    <span className="text-xs lg:text-[11px] tracking-[0.15em] uppercase font-medium">
-                      Objaviť
-                    </span>
-                    <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
+            {/* Heading */}
+            <div className="stone-heading text-center mb-6 lg:mb-8">
+              <span className="text-xs lg:text-[11px] tracking-[0.25em] uppercase text-brand-dark/60 font-bold block mb-2">
+                Stone Experience
+              </span>
+              <h2 className="text-3xl lg:text-4xl font-sans font-bold text-brand-dark tracking-tight">
+                Jedna platňa. Kompletný zážitok.
+              </h2>
+              <p className="mt-2 text-sm lg:text-base text-brand-dark/70 max-w-2xl mx-auto font-light">
+                Objavte materiál navrhnutý pre estetiku, výkon a pokoj v každodennom používaní.
+              </p>
+            </div>
+
+            {/* 3-column layout */}
+            <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,300px)_minmax(0,1fr)] gap-6 items-center">
+              {/* Left cards */}
+              <div className="space-y-4 pr-4">
+                {STONE_EXPERIENCE_POINTS.filter((point) => point.side === 'left').map((point, index) => {
+                  const Icon = STONE_POINT_ICONS[point.id];
+                  return (
+                    <article key={point.id} className="stone-point stone-point-card bg-white/78 backdrop-blur-sm border border-white/65 rounded-xl p-4 shadow-[0_12px_32px_rgba(0,0,0,0.12)] opacity-0">
+                      <div className="flex items-center gap-3">
+                        {Icon && (
+                          <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-dark/8 flex items-center justify-center">
+                            <Icon size={20} className="text-brand-dark/70" />
+                          </div>
+                        )}
+                        <div className="flex-1 min-w-0">
+                          <p className="text-[10px] tracking-[0.18em] uppercase text-brand-dark/45 mb-1">0{index + 1}</p>
+                          <h3 className="text-sm font-bold text-brand-dark mb-1">{point.title}</h3>
+                          <p className="text-xs text-brand-dark/70 leading-relaxed">{point.description}</p>
+                        </div>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+
+              {/* Center slab */}
+              <div className="stone-slab-wrap relative flex items-center justify-center opacity-0">
+                <div className="stone-slab relative w-full max-w-[300px] aspect-[9/16] rounded-[28px] p-2 bg-gradient-to-br from-white/70 via-white/20 to-black/10 shadow-[0_35px_80px_rgba(0,0,0,0.25)]">
+                  <div className="w-full h-full rounded-[22px] overflow-hidden border border-white/40">
+                    <img
+                      src="/images/yabo-white-slab.jpg"
+                      alt="YABO WHITE platňa"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
+                  <div className="absolute inset-0 rounded-[22px] bg-gradient-to-t from-black/25 via-transparent to-white/10 pointer-events-none" />
+
+                  {STONE_EXPERIENCE_POINTS.map((point) => (
+                    <div
+                      key={`pin-${point.id}`}
+                      className={`stone-pin absolute -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-brand-dark border-2 border-white shadow-[0_0_0_6px_rgba(255,255,255,0.25)] opacity-0 ${
+                        point.side === 'left' ? '-left-2' : '-right-2'
+                      }`}
+                      style={{ top: point.markerTop }}
+                    >
+                      <span
+                        className={`stone-connector absolute top-1/2 -translate-y-1/2 h-[1px] bg-brand-dark/45 ${
+                          point.side === 'left' ? 'right-full w-10' : 'left-full w-10'
+                        }`}
+                      />
+                      <span className="stone-pin-pulse absolute inset-0 rounded-full border border-brand-dark/60" />
+                    </div>
+                  ))}
                 </div>
+              </div>
+
+              {/* Right cards */}
+              <div className="space-y-4 pl-4">
+                {STONE_EXPERIENCE_POINTS.filter((point) => point.side === 'right').map((point, index) => {
+                  const Icon = STONE_POINT_ICONS[point.id];
+                  return (
+                    <article key={point.id} className="stone-point stone-point-card bg-white/78 backdrop-blur-sm border border-white/65 rounded-xl p-4 shadow-[0_12px_32px_rgba(0,0,0,0.12)] opacity-0">
+                      <div className="flex items-center gap-3">
+                        {Icon && (
+                          <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-dark/8 flex items-center justify-center">
+                            <Icon size={20} className="text-brand-dark/70" />
+                          </div>
+                        )}
+                        <div className="flex-1 min-w-0">
+                          <p className="text-[10px] tracking-[0.18em] uppercase text-brand-dark/45 mb-1">
+                            0{STONE_EXPERIENCE_POINTS.filter((p) => p.side === 'left').length + index + 1}
+                          </p>
+                          <h3 className="text-sm font-bold text-brand-dark mb-1">{point.title}</h3>
+                          <p className="text-xs text-brand-dark/70 leading-relaxed">{point.description}</p>
+                        </div>
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="stone-cta text-center mt-6 lg:mt-8 opacity-0">
+              <Link
+                to="/kategoria/sintered-stone"
+                className="inline-flex items-center gap-2 bg-brand-dark text-white px-8 py-3.5 rounded-full text-xs lg:text-sm tracking-[0.16em] uppercase font-semibold hover:bg-white hover:text-brand-dark transition-all duration-300"
+              >
+                Objaviť všetky dekory
+                <ArrowRight size={15} />
               </Link>
-            ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mobile / Tablet fallback — no scroll animation, static layout */}
+      <section className="stone-experience-section py-16 lg:hidden bg-brand-gold">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-10">
+            <span className="text-xs tracking-[0.25em] uppercase text-brand-dark/60 font-bold block mb-3">
+              Stone Experience
+            </span>
+            <h2 className="text-3xl font-sans font-bold text-brand-dark tracking-tight">
+              Jedna platňa. Kompletný zážitok.
+            </h2>
+            <p className="mt-4 text-sm text-brand-dark/70 max-w-2xl mx-auto font-light">
+              Objavte materiál navrhnutý pre estetiku, výkon a pokoj v každodennom používaní.
+            </p>
+          </div>
+          <div className="stone-slab-mobile relative rounded-3xl overflow-hidden border border-white/40 shadow-[0_20px_55px_rgba(0,0,0,0.22)] mb-6 max-w-[340px] mx-auto">
+            <div className="aspect-[9/16]">
+              <img src="/images/yabo-white-slab.jpg" alt="YABO WHITE platňa" className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+          </div>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {STONE_EXPERIENCE_POINTS.map((point, index) => {
+              const Icon = STONE_POINT_ICONS[point.id];
+              return (
+                <article key={point.id} className="stone-point-card bg-white/80 backdrop-blur-sm border border-white/70 rounded-xl p-4">
+                  <div className="flex items-center gap-3">
+                    {Icon && (
+                      <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-dark/8 flex items-center justify-center">
+                        <Icon size={20} className="text-brand-dark/70" />
+                      </div>
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[10px] tracking-[0.18em] uppercase text-brand-dark/45 mb-1">0{index + 1}</p>
+                      <h3 className="text-sm font-bold text-brand-dark mb-1">{point.title}</h3>
+                      <p className="text-xs text-brand-dark/70 leading-relaxed">{point.description}</p>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+          <div className="text-center mt-10">
+            <Link
+              to="/kategoria/sintered-stone"
+              className="inline-flex items-center gap-2 bg-brand-dark text-white px-8 py-3.5 rounded-full text-xs tracking-[0.16em] uppercase font-semibold hover:bg-white hover:text-brand-dark transition-all duration-300"
+            >
+              Objaviť všetky dekory
+              <ArrowRight size={15} />
+            </Link>
           </div>
         </div>
       </section>
