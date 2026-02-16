@@ -1308,7 +1308,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               <div className="order-4 lg:hidden mb-6">
                 {/* Main Image with navigation */}
                 <div 
-                  className="aspect-[3/4] bg-[#F5F5F3] overflow-hidden relative cursor-pointer"
+                  className="aspect-[3/4] bg-[#F5F5F3] overflow-hidden relative cursor-pointer rounded-lg"
                   onClick={() => openLightbox()}
                 >
                   <AnimatePresence mode="wait">
@@ -1884,7 +1884,7 @@ const ResistanceParameters: React.FC<ResistanceParametersProps> = ({ product }) 
                 className="space-y-3 lg:space-y-4"
               >
                 {/* Image — 4:3 on mobile to save space, square on desktop */}
-                <div className="aspect-[4/3] sm:aspect-square relative rounded-lg overflow-hidden">
+                <div className="aspect-square relative rounded-lg overflow-hidden">
                   <img
                     src={param.image}
                     alt={param.title}
