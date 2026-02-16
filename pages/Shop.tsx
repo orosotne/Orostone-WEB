@@ -17,6 +17,7 @@ import { Lightbox } from '../components/UI/Lightbox';
 import { SEOHead, OROSTONE_ORGANIZATION_LD } from '../components/UI/SEOHead';
 import { Link } from 'react-router-dom';
 import type { CollectionGalleryImage } from '../types';
+import { VISIBLE_CATEGORIES } from '../config/features';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,32 +36,41 @@ const prefetchProduct = (product: ShopProduct) => {
 // ===========================================
 // CATEGORY TILES DATA
 // ===========================================
-const CATEGORIES = [
+const ALL_CATEGORIES = [
   {
+    id: 'sintered-stone',
     name: 'Sinterovaný kameň',
     slug: 'sintered-stone',
     image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&h=1000&fit=crop',
     description: '12 exkluzívnych dekorov',
   },
   {
+    id: 'tables',
     name: 'Stoly',
     slug: 'tables',
     image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=1000&fit=crop',
     description: 'Zo sinterovaného kameňa',
   },
   {
+    id: 'invisible-cooktop',
     name: 'Invisible Cooktop',
     slug: 'invisible-cooktop',
     image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=1000&fit=crop',
     description: 'Neviditeľné varné dosky',
   },
   {
+    id: 'accessories',
     name: 'Doplnky',
     slug: 'accessories',
     image: 'https://images.unsplash.com/photo-1563453392212-326f5e854473?w=800&h=1000&fit=crop',
     description: 'Údržba a čistenie',
   },
 ];
+
+// Filtruj len viditeľné kategórie
+const CATEGORIES = ALL_CATEGORIES.filter(
+  cat => VISIBLE_CATEGORIES[cat.id as keyof typeof VISIBLE_CATEGORIES] !== false
+);
 
 // ===========================================
 // INSPIRATION GALLERY DATA

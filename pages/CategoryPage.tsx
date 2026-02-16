@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronRight, ArrowRight, Package } from 'lucide-react';
-import { MEGA_MENU_CATEGORIES } from '../components/Eshop/EshopMegaMenu';
+import { getVisibleCategories, getProductColorCategory, type ColorCategory } from '../components/Eshop/EshopMegaMenu';
 import { useShopifyProducts } from '../hooks/useShopifyProducts';
 import { useCart } from '../context/CartContext';
 import { ProductCard } from './ProductCatalog';
@@ -17,17 +17,35 @@ export const CategoryPage: React.FC = () => {
   const { products, isLoading } = useShopifyProducts();
   const { addItem, isInCart } = useCart();
 
-  // Find category metadata from mega menu
+  // Parse slug pre podkategórie (napr. "sintered-stone/biele")
+  const [mainCategory, subCategory] = slug?.split('/') || [];
+
+  // Find category metadata from visible categories only (vždy podľa hlavnej kategórie)
   const category = useMemo(
-    () => MEGA_MENU_CATEGORIES.find((c) => c.slug === slug),
-    [slug]
+    () => getVisibleCategories().find((c) => c.slug === mainCategory),
+    [mainCategory]
   );
 
-  // Filter products by category slug
-  const filteredProducts = useMemo(
-    () => products.filter((p) => p.category === slug),
-    [products, slug]
-  );
+  // Nájdi názov podkategórie
+  const subCategoryName = useMemo(() => {
+    if (!category || !subCategory) return null;
+    const sub = category.subcategories.find(s => s.slug.endsWith(subCategory));
+    return sub?.name || null;
+  }, [category, subCategory]);
+
+  // Filter products by category slug a voliteľne podľa farebnej podkategórie
+  const filteredProducts = useMemo(() => {
+    // Filter by main category
+    let result = products.filter((p) => p.category === mainCategory);
+    
+    // Ak je podkategória farby, filtruj podľa farby
+    if (mainCategory === 'sintered-stone' && subCategory) {
+      const colorCat = subCategory as ColorCategory;
+      result = result.filter(p => getProductColorCategory(p) === colorCat);
+    }
+    
+    return result;
+  }, [products, mainCategory, subCategory]);
 
   // Category not found
   if (!category) {
@@ -87,7 +105,15 @@ export const CategoryPage: React.FC = () => {
               E-Shop
             </Link>
             <ChevronRight size={12} />
-            <span className="text-white">{category.name}</span>
+            <Link to={`/kategoria/${category.slug}`} className="hover:text-white transition-colors">
+              {category.name}
+            </Link>
+            {subCategoryName && (
+              <>
+                <ChevronRight size={12} />
+                <span className="text-white">{subCategoryName}</span>
+              </>
+            )}
           </motion.nav>
 
           {/* Title */}
@@ -97,7 +123,7 @@ export const CategoryPage: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-3"
           >
-            {category.name}
+            {subCategoryName ? `${category.name} — ${subCategoryName}` : category.name}
           </motion.h1>
 
           {/* Description */}

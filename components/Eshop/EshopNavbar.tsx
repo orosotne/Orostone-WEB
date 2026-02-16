@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
-import { EshopMegaMenu, MEGA_MENU_CATEGORIES, MegaMenuCategory } from './EshopMegaMenu';
+import { EshopMegaMenu, MEGA_MENU_CATEGORIES, MegaMenuCategory, getVisibleCategories } from './EshopMegaMenu';
 import { cn } from '../../lib/utils';
 import { SHOP_PRODUCTS, ShopProduct, SHOW_ANNOUNCEMENT_BAR } from '../../constants';
 
@@ -328,7 +328,7 @@ export const EshopNavbar: React.FC = () => {
           </button>
 
           <ul className="flex items-center justify-center">
-            {MEGA_MENU_CATEGORIES.map((category) => (
+            {getVisibleCategories().map((category) => (
               <li
                 key={category.id}
                 onMouseEnter={() => setActiveCategory(category)}
@@ -437,7 +437,7 @@ export const EshopNavbar: React.FC = () => {
 
                 <div className="h-px bg-gray-100 my-2" />
 
-                {MEGA_MENU_CATEGORIES.map((category) => (
+                {getVisibleCategories().map((category) => (
                   <Link
                     key={category.id}
                     to={`/kategoria/${category.slug}`}
@@ -606,7 +606,7 @@ export const EshopNavbar: React.FC = () => {
                         </Link>
 
                         {/* Category Items */}
-                        {MEGA_MENU_CATEGORIES.map((category) => (
+                        {getVisibleCategories().map((category) => (
                           <Link
                             key={category.id}
                             to={`/kategoria/${category.slug}`}
