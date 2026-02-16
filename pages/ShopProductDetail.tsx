@@ -130,7 +130,7 @@ const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProductId, pro
         Ďalšie produkty
       </h3>
       {/* Horizontal scroll on mobile, 4-col grid on lg+ */}
-      <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory p-1 -m-1 scrollbar-hide lg:grid lg:grid-cols-4 lg:gap-2 lg:overflow-visible lg:p-0 lg:m-0">
+      <div className="flex gap-3 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-px-6 py-1 -my-1 -mx-6 px-6 scrollbar-hide touch-pan-x lg:grid lg:grid-cols-4 lg:gap-2 lg:overflow-visible lg:p-0 lg:m-0 lg:scroll-p-0 lg:touch-auto">
         {filteredProducts.map((product) => {
           const isActive = product.id === currentProductId;
           return (
@@ -1772,7 +1772,7 @@ const ApplicationSection: React.FC<ApplicationSectionProps> = ({ product }) => {
             Vhodné použitie
           </h2>
 
-          <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory py-4 -mx-6 px-8 scrollbar-hide lg:mx-0 lg:px-0 lg:py-0 lg:grid lg:grid-cols-8 lg:gap-4 lg:overflow-visible">
+          <div className="flex gap-4 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-px-6 py-4 -mx-6 px-6 scrollbar-hide touch-pan-x lg:mx-0 lg:px-0 lg:py-0 lg:scroll-p-0 lg:grid lg:grid-cols-8 lg:gap-4 lg:overflow-visible lg:touch-auto">
             {allApplications.map((app, index) => {
               const isSupported = productApplications.includes(app);
               const Icon = applicationIcons[app] || Layers;
@@ -2329,7 +2329,7 @@ export const ShopProductDetail: React.FC = () => {
   };
 
   return (
-    <main className="bg-white min-h-screen">
+    <main className="bg-white min-h-screen overflow-x-hidden">
       {/* Cart Error Toast */}
       <AnimatePresence>
         {cartError && (
@@ -2337,7 +2337,7 @@ export const ShopProductDetail: React.FC = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-red-600 text-white px-6 py-3 rounded-lg shadow-xl text-sm font-medium max-w-md text-center"
+            className="fixed top-4 left-4 right-4 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 z-50 bg-red-600 text-white px-6 py-3 rounded-lg shadow-xl text-sm font-medium sm:max-w-md text-center"
           >
             {cartError}
           </motion.div>

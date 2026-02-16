@@ -26,7 +26,7 @@ export const EshopLayout: React.FC<EshopLayoutProps> = ({ children }) => {
   const isHomepage = location.pathname === '/';
 
   return (
-    <div className="min-h-screen flex flex-col font-sans text-brand-dark bg-white">
+    <div className="min-h-screen flex flex-col font-sans text-brand-dark bg-white overflow-x-hidden">
       {/* Noise Overlay for texture */}
       <NoiseOverlay />
       
