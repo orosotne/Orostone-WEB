@@ -478,6 +478,76 @@ export const Shop = () => {
       gsap.set('.stone-experience-pinned .stone-cta', { opacity: 1, y: 0 });
     }
 
+    // --- Stone Experience: Mobile scroll-triggered reveals (no pinning) ---
+    const stoneMobile = document.querySelector('.stone-mobile-section');
+    if (stoneMobile && !reducedMotion) {
+      // Background: inset + rounded → full-bleed
+      gsap.fromTo('.stone-bg-mobile',
+        { margin: '40px 24px', borderRadius: '24px' },
+        {
+          margin: '0px 0px', borderRadius: '0px',
+          ease: 'power2.out', duration: 0.8,
+          scrollTrigger: {
+            trigger: '.stone-mobile-section',
+            start: 'top 85%',
+            end: 'top 40%',
+            scrub: 0.3,
+          },
+        }
+      );
+
+      // Slab: fade-in + scale
+      gsap.fromTo('.stone-slab-mobile',
+        { opacity: 0, y: 40, scale: 0.95 },
+        {
+          opacity: 1, y: 0, scale: 1,
+          duration: 0.8, ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.stone-slab-mobile',
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+
+      // Cards: staggered fade-in
+      gsap.fromTo('.stone-card-mobile',
+        { opacity: 0, y: 25 },
+        {
+          opacity: 1, y: 0,
+          duration: 0.6, ease: 'power2.out',
+          stagger: 0.12,
+          scrollTrigger: {
+            trigger: '.stone-cards-mobile',
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+
+      // CTA: fade-in
+      gsap.fromTo('.stone-cta-mobile',
+        { opacity: 0, y: 15 },
+        {
+          opacity: 1, y: 0,
+          duration: 0.6, ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '.stone-cta-mobile',
+            start: 'top 90%',
+            toggleActions: 'play none none none',
+          },
+        }
+      );
+    }
+
+    // Mobile reduced-motion fallback
+    if (stoneMobile && reducedMotion) {
+      gsap.set('.stone-bg-mobile', { margin: '0', borderRadius: '0' });
+      gsap.set('.stone-slab-mobile', { opacity: 1, y: 0, scale: 1 });
+      gsap.set('.stone-card-mobile', { opacity: 1, y: 0 });
+      gsap.set('.stone-cta-mobile', { opacity: 1, y: 0 });
+    }
+
     // --- Spotlight product reveal ---
     gsap.fromTo('.spotlight-image',
       { x: -60, opacity: 0 },
@@ -905,9 +975,15 @@ export const Shop = () => {
         </div>
       </section>
 
-      {/* Mobile / Tablet fallback — no scroll animation, static layout */}
-      <section className="stone-experience-section py-16 lg:hidden bg-brand-gold">
-        <div className="container mx-auto px-4">
+      {/* Mobile / Tablet — scroll-triggered reveal animations (no pinning) */}
+      <section className="stone-mobile-section relative py-16 lg:hidden overflow-hidden">
+        {/* Animated background — starts inset + rounded, expands on scroll */}
+        <div
+          className="stone-bg-mobile absolute inset-0 bg-brand-gold"
+          style={{ margin: '40px 24px', borderRadius: '24px' }}
+        />
+
+        <div className="relative z-10 container mx-auto px-4">
           <div className="text-center mb-10">
             <span className="text-xs tracking-[0.25em] uppercase text-brand-dark/60 font-bold block mb-3">
               Stone Experience
@@ -919,17 +995,17 @@ export const Shop = () => {
               Objavte materiál navrhnutý pre estetiku, výkon a pokoj v každodennom používaní.
             </p>
           </div>
-          <div className="stone-slab-mobile relative rounded-3xl overflow-hidden border border-white/40 shadow-[0_20px_55px_rgba(0,0,0,0.22)] mb-6 max-w-[340px] mx-auto">
+          <div className="stone-slab-mobile relative rounded-3xl overflow-hidden border border-white/40 shadow-[0_20px_55px_rgba(0,0,0,0.22)] mb-6 max-w-[340px] mx-auto opacity-0">
             <div className="aspect-[9/16]">
               <img src="/images/yabo-white-slab.jpg" alt="YABO WHITE platňa" className="w-full h-full object-cover" />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
           </div>
-          <div className="grid sm:grid-cols-2 gap-3">
+          <div className="stone-cards-mobile grid sm:grid-cols-2 gap-3">
             {STONE_EXPERIENCE_POINTS.map((point, index) => {
               const Icon = STONE_POINT_ICONS[point.id];
               return (
-                <article key={point.id} className="stone-point-card bg-white/80 backdrop-blur-sm border border-white/70 rounded-xl p-4">
+                <article key={point.id} className="stone-card-mobile bg-white/80 backdrop-blur-sm border border-white/70 rounded-xl p-4 opacity-0">
                   <div className="flex items-center gap-3">
                     {Icon && (
                       <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-dark/8 flex items-center justify-center">
@@ -946,7 +1022,7 @@ export const Shop = () => {
               );
             })}
           </div>
-          <div className="text-center mt-10">
+          <div className="stone-cta-mobile text-center mt-10 opacity-0">
             <Link
               to="/kategoria/sintered-stone"
               className="inline-flex items-center gap-2 bg-brand-dark text-white px-8 py-3.5 rounded-full text-xs tracking-[0.16em] uppercase font-semibold hover:bg-white hover:text-brand-dark transition-all duration-300"
