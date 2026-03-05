@@ -8,18 +8,19 @@ export function TextKnockoutSection() {
   const svgRef = useRef<SVGSVGElement>(null);
   const goldSvgRef = useRef<HTMLDivElement>(null);
 
-  // Style the GSAP pin-spacer wrapper after it's created to prevent white line flicker
+  // Style the GSAP pin-spacer wrapper (desktop only) to prevent white line flicker
   useEffect(() => {
     const timer = setTimeout(() => {
       const pinSpacer = containerRef.current?.parentElement;
       if (pinSpacer && pinSpacer.classList.contains('pin-spacer')) {
         pinSpacer.style.backgroundColor = 'black';
+        pinSpacer.style.overflow = 'hidden';
       }
-    }, 100);
+    }, 300);
     return () => clearTimeout(timer);
   }, []);
 
-  // Start video playback when near viewport (300px before entering)
+  // Start video playback when near viewport
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -39,39 +40,59 @@ export function TextKnockoutSection() {
     return () => observer.disconnect();
   }, []);
 
-  // Scroll-triggered SVG zoom + gold logo (independent of video)
+  // Responsive GSAP animations via matchMedia
   useGSAP(() => {
     if (!containerRef.current || !svgRef.current || !goldSvgRef.current) return;
 
-    gsap.set(svgRef.current, { scale: 700 });
-    gsap.set(goldSvgRef.current, { opacity: 0 });
+    const mm = gsap.matchMedia();
 
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: 'top top',
-        end: '+=200%',
-        scrub: 0.5,
-        pin: true,
-        pinSpacing: true,
-        refreshPriority: -1,
-      },
-    })
-    .to(svgRef.current, {
-      scale: 1,
-      duration: 0.35,
-      ease: 'power4.out',
-    }, 0)
-    .to(goldSvgRef.current, {
-      opacity: 1,
-      duration: 0.1,
-      ease: 'power2.inOut',
-    }, 0.5)
-    .to(goldSvgRef.current, {
-      opacity: 0,
-      duration: 0.25,
-      ease: 'power2.inOut',
-    }, 0.85);
+    // ── Desktop: pin + scale 700 zoom (unchanged) ──────────────────────────
+    mm.add('(min-width: 1024px)', () => {
+      gsap.set(svgRef.current!, { scale: 700 });
+      gsap.set(goldSvgRef.current!, { opacity: 0 });
+
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current!,
+          start: 'top top',
+          end: '+=200%',
+          scrub: 0.5,
+          pin: true,
+          pinSpacing: true,
+          refreshPriority: -1,
+        },
+      })
+      .to(svgRef.current!, { scale: 1, duration: 0.35, ease: 'power4.out' }, 0)
+      .to(goldSvgRef.current!, { opacity: 1, duration: 0.1, ease: 'power2.inOut' }, 0.5)
+      .to(goldSvgRef.current!, { opacity: 0, duration: 0.25, ease: 'power2.inOut' }, 0.85);
+    });
+
+    // ── Mobile: pin + scale 30 zoom (same flow as desktop, smaller scale) ──
+    mm.add('(max-width: 1023px)', () => {
+      gsap.set(svgRef.current!, { scale: 500 });
+      gsap.set(goldSvgRef.current!, { opacity: 0 });
+
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current!,
+          start: 'top top',
+          end: '+=200%',
+          scrub: 0.5,
+          pin: true,
+          pinSpacing: true,
+          refreshPriority: -1,
+          onRefresh: (self) => {
+            const spacer = (self as any).spacer;
+            if (spacer) spacer.style.overflow = 'hidden';
+          },
+        },
+      })
+      .to(svgRef.current!, { scale: 1, duration: 0.2, ease: 'power4.out' }, 0.15)
+      .to(goldSvgRef.current!, { opacity: 1, duration: 0.1, ease: 'power2.inOut' }, 0.4)
+      .to(goldSvgRef.current!, { opacity: 0, duration: 0.25, ease: 'power2.inOut' }, 0.7);
+    });
+
+    return () => mm.revert();
 
   }, { scope: containerRef });
 
@@ -80,7 +101,7 @@ export function TextKnockoutSection() {
       ref={containerRef}
       className="relative h-screen w-full overflow-hidden bg-black"
     >
-      {/* Layer 1: Background video — continuous autoplay ping-pong */}
+      {/* Layer 1: Background video */}
       <video
         ref={videoRef}
         src="/videos/knockout-bg.mp4"

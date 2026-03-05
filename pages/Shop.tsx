@@ -976,11 +976,14 @@ export const Shop = () => {
         </div>
       </section>
 
-      {/* Text Knockout — large headline with gradient fill */}
-      <TextKnockoutSection />
+      {/* Order wrapper: on mobile stone-mobile-section first, TextKnockout second; desktop reversed */}
+      <div className="flex flex-col">
+        <div className="order-2 lg:order-1">
+          <TextKnockoutSection />
+        </div>
 
-      {/* Mobile / Tablet — scroll-triggered reveal animations (no pinning) */}
-      <section className="stone-mobile-section relative py-16 lg:hidden overflow-hidden">
+        {/* Mobile / Tablet — scroll-triggered reveal animations (no pinning) */}
+        <section className="stone-mobile-section order-1 lg:order-2 relative py-16 lg:hidden overflow-hidden">
         {/* Animated background — starts inset + rounded, expands on scroll */}
         <div
           className="stone-bg-mobile absolute inset-0 bg-brand-gold"
@@ -1036,7 +1039,8 @@ export const Shop = () => {
             </Link>
           </div>
         </div>
-      </section>
+        </section>
+      </div>
 
       {/* ==================== INSPIRUJTE SA — Inspiration Carousel ==================== */}
       <section className="inspiration-section py-20 lg:py-28 bg-[#FAFAFA]">
@@ -1178,7 +1182,7 @@ export const Shop = () => {
             </div>
           </div>
         </div>
-      </section>
+        </section>
 
       {/* ==================== SPOTLIGHT PRODUCT ==================== */}
       {spotlightProduct && (
