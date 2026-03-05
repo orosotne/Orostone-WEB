@@ -14,6 +14,7 @@ import { useShopifyProducts } from '../hooks/useShopifyProducts';
 import { useInstagramFeed, getPostImageUrl } from '../hooks/useInstagramFeed';
 import { OrderModal } from '../components/Shop/OrderModal';
 import { Lightbox } from '../components/UI/Lightbox';
+import { TextKnockoutSection } from '../components/TextKnockoutSection';
 import { SEOHead, OROSTONE_ORGANIZATION_LD } from '../components/UI/SEOHead';
 import { Link } from 'react-router-dom';
 import type { CollectionGalleryImage } from '../types';
@@ -974,6 +975,9 @@ export const Shop = () => {
           </div>
         </div>
       </section>
+
+      {/* Text Knockout — large headline with gradient fill */}
+      <TextKnockoutSection />
 
       {/* Mobile / Tablet — scroll-triggered reveal animations (no pinning) */}
       <section className="stone-mobile-section relative py-16 lg:hidden overflow-hidden">

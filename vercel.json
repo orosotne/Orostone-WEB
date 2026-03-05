@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/eshop(.*)",
+      "destination": "/eshop.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
