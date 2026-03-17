@@ -65,6 +65,46 @@ const PlaceholderPage: React.FC<{ title: string }> = ({ title }) => (
   </div>
 );
 
+const NotFoundPage: React.FC = () => {
+  useEffect(() => {
+    document.title = 'Stránka nenájdená | OROSTONE';
+    let meta = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.name = 'robots';
+      document.head.appendChild(meta);
+    }
+    meta.content = 'noindex, nofollow';
+    return () => { if (meta) meta.content = 'index, follow'; };
+  }, []);
+
+  return (
+    <div className="min-h-[60vh] flex items-center justify-center px-6">
+      <div className="text-center max-w-lg">
+        <p className="text-7xl font-bold text-brand-gold mb-4">404</p>
+        <h1 className="text-2xl font-bold text-brand-dark mb-3">Stránka nenájdená</h1>
+        <p className="text-gray-500 mb-8 leading-relaxed">
+          Hľadaná stránka neexistuje alebo bola presunutá. Skúste sa pozrieť na naše produkty alebo sa vráťte na hlavnú stránku.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <a
+            href="#/"
+            className="inline-flex items-center justify-center gap-2 bg-brand-dark text-white px-6 py-3 rounded-lg text-sm tracking-wider uppercase font-semibold hover:bg-brand-gold hover:text-brand-dark transition-all"
+          >
+            Hlavná stránka
+          </a>
+          <a
+            href="#/vsetky-produkty"
+            className="inline-flex items-center justify-center gap-2 border border-gray-300 text-brand-dark px-6 py-3 rounded-lg text-sm tracking-wider uppercase font-semibold hover:border-brand-dark transition-all"
+          >
+            Všetky produkty
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // ===========================================
 // ESHOP APP CONTENT
 // ===========================================
@@ -154,8 +194,8 @@ const EshopAppContent = () => {
             </Suspense>
           } />
           
-          {/* Fallback */}
-          <Route path="*" element={<Shop />} />
+          {/* 404 */}
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </ErrorBoundary>
     </EshopLayout>

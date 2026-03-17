@@ -7,6 +7,7 @@
 import { shopifyFetch } from '../lib/shopify';
 import { SAMPLE_VARIANT_KEYWORD } from '../constants';
 import type { ShopProduct, ProductCategory } from '../constants';
+import { getProductSEOContent } from '../data/product-seo-content';
 
 // ===========================================
 // TYPES
@@ -656,6 +657,42 @@ function parseShopifyDescription(descriptionHtml: string): ParsedDescription {
     }
   }
 
+  // Fallback: scan whole HTML for "Povrchová úprava: ..." anywhere in a <li> or plain text
+  // This handles products where specs are not under a "Technické parametre" heading
+  if (!specs.finish) {
+    const finishMatch = descriptionHtml.match(/Povrchov[aá]\s+[uú]prava\s*:\s*([^<\n]+)/i);
+    if (finishMatch) {
+      specs.finish = finishMatch[1].trim();
+    }
+  }
+  if (!specs.dimensions) {
+    const dimsMatch = descriptionHtml.match(/Rozmer\s*:\s*([^<\n]+)/i);
+    if (dimsMatch) {
+      const val = dimsMatch[1].trim();
+      const threeDims = val.match(/(\d+)\s*[×x]\s*(\d+)\s*[×x]\s*(\d+)\s*mm/i);
+      if (threeDims) {
+        const nums = [parseInt(threeDims[1]), parseInt(threeDims[2]), parseInt(threeDims[3])];
+        nums.sort((a, b) => b - a);
+        specs.dimensions = `${nums[0]} x ${nums[1]} mm`;
+        specs.thickness = `${nums[2]}mm`;
+      } else {
+        const twoDims = val.match(/(\d+)\s*(?:mm)?\s*[×x]\s*(\d+)\s*(?:mm)?/i);
+        if (twoDims) {
+          const a = parseInt(twoDims[1]);
+          const b = parseInt(twoDims[2]);
+          specs.dimensions = `${Math.max(a, b)} x ${Math.min(a, b)} mm`;
+        }
+      }
+    }
+  }
+  if (!specs.thickness) {
+    const thickMatch = descriptionHtml.match(/Hr[uú]bka\s*:\s*([^<\n]+)/i);
+    if (thickMatch) {
+      const m = thickMatch[1].match(/(\d+)\s*mm/i);
+      specs.thickness = m ? `${m[1]}mm` : thickMatch[1].trim();
+    }
+  }
+
   // Post-process: highlight key selling phrases with <strong> tags (renders as gold bold)
   // Longer phrases first to avoid partial matches
   const highlightPhrases = [
@@ -740,16 +777,13 @@ function parseShopifyDescription(descriptionHtml: string): ParsedDescription {
 }
 
 // ===========================================
-// DESIGN INSIGHTS: Researched content per product
+// DESIGN INSIGHTS: sourced from centralized SEO content
 // ===========================================
-// Unique style/design guidance for each sintered stone product.
-// Keyed by Shopify product handle. Content is HTML (Slovak).
-// See .cursor/rules/design-insight-workflow.md for the process.
-
-const PRODUCT_DESIGN_INSIGHTS: Record<string, string> = {
-  'yabo-white': `<p>Teplý béžovo-krémový odtieň s jemným žilkovaním ideálne dopĺňa interiéry v štýle Japandi, Scandinavian či Mediterranean. Matný povrch vnáša do priestoru organický pokoj a eleganciu.</p><p>Vyniká ako kuchynský ostrov, obklad za varnou doskou či kúpeľňová doska — všade, kde chcete prirodzený luxus bez chladného dojmu klasického mramoru.</p>`,
-  'bianco-statuario': `<p>Čistá biela so subtílnym šedým žilkovaním evokuje taliansky Carrara mramor a ladí s Contemporary, Minimalist aj Mediterranean štýlom. Leštený povrch dodáva priestoru zrkadlovú hĺbku.</p><p>Veľkoformátová platňa umožňuje bezšvové kuchynské ostrovy a súvislé kúpeľňové obklady — luxus mramoru s konzistentnou kresbou a bezúdržbovou odolnosťou.</p>`,
-};
+// Returns the longDescription HTML for a given product handle.
+// See data/product-seo-content.ts for the full catalog.
+function getDesignInsight(handle: string): string | undefined {
+  return getProductSEOContent(handle)?.longDescription;
+}
 
 // Mapovanie Shopify productType na nase kategorie
 function mapProductTypeToCategory(productType: string): ProductCategory {
@@ -827,8 +861,11 @@ function shopifyProductToShopProduct(product: ShopifyProduct): ShopProduct {
     weight: resolvedWeight,
     countryOfOrigin: getMetafieldValue(product, 'country_of_origin') || parsedSpecs.countryOfOrigin,
     sku: resolvedSku,
-    // Researched design insight (from PRODUCT_DESIGN_INSIGHTS map)
-    designInsight: PRODUCT_DESIGN_INSIGHTS[product.handle] || undefined,
+    designInsight: getDesignInsight(product.handle),
+    metaTitle: getProductSEOContent(product.handle)?.metaTitle,
+    metaDescription: getProductSEOContent(product.handle)?.metaDescription,
+    keywords: getProductSEOContent(product.handle)?.keywords,
+    keyBenefits: getProductSEOContent(product.handle)?.keyBenefits,
     // Shopify variant ID pre pridanie do kosika
     shopifyVariantId: firstVariant?.id || '',
     // Shopify variant ID pre vzorku (deposit)

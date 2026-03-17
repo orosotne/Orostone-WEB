@@ -17,8 +17,14 @@ import {
   GitMerge,
   Square,
   Stone,
-  Sparkle,
+  Sparkles,
   SquareAsterisk,
+  Waves,
+  Gem,
+  Palette,
+  ScanLine,
+  Fingerprint,
+  SquareDot,
   // Icons for ApplicationSection
   Utensils,
   LayoutGrid,
@@ -45,8 +51,12 @@ import {
   Apple,
   Diamond,
   Droplet,
+  Loader2,
+  Mail,
+  CheckCircle,
 } from 'lucide-react';
 import { ShopProduct, MAX_SAMPLES } from '../constants';
+import { submitQuote } from '../services/quotes.service';
 import { useShopifyProducts, useShopifyProduct } from '../hooks/useShopifyProducts';
 import { Button } from '../components/UI/Button';
 import { useCart, formatPrice } from '../context/CartContext';
@@ -54,6 +64,21 @@ import { cn } from '@/lib/utils';
 import { ShareButton } from '../components/UI/ShareButton';
 import { ProductDetailSkeleton } from '../components/UI/Skeleton';
 import { useCookies } from '../context/CookieContext';
+import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
+import { getProductSEOContent, GENERIC_PRODUCT_FAQS } from '../data/product-seo-content';
+
+// ===========================================
+// Custom thickness icon (from layers-icon.svg)
+// ===========================================
+const ThicknessIcon: React.FC<{ size?: number; className?: string }> = ({ size = 24, className }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+    <path strokeWidth={2} d="M12,16.17v6.75" />
+    <path strokeWidth={2} d="M14.95,18.3l-2.95-2.9-2.95,2.9" />
+    <path strokeWidth={2} d="M12,7.83V1.08" />
+    <path strokeWidth={2} d="M9.05,5.7l2.95,2.9,2.95-2.9" />
+    <path strokeWidth={3} d="M19.65,12H4.35" />
+  </svg>
+);
 
 // ===========================================
 // HELPER: Calculate total price
@@ -71,14 +96,56 @@ const calculateSlabPrice = (pricePerM2: number, dimensions: string): number => {
 };
 
 // ===========================================
+// HELPER: Generate srcset for Shopify CDN images
+const shopifySrcSet = (url: string): string | undefined => {
+  if (!url || !url.includes('cdn.shopify.com')) return undefined;
+  const widths = [400, 600, 800, 1200, 1600];
+  return widths
+    .map(w => {
+      const resized = url.replace(/(\.\w+)(\?.*)?$/, `_${w}x$1$2`);
+      return `${resized} ${w}w`;
+    })
+    .join(', ');
+};
+
+// ===========================================
+// HELPER: SEO-rich image alt text
+const productImageAlt = (product: ShopProduct, index?: number): string => {
+  const base = `${product.name} veľkoformátová platňa`;
+  const suffix = product.metaDescription
+    ? ` – ${product.metaDescription.split('.')[0]}`
+    : '';
+  const num = index != null ? ` ${index + 1}` : '';
+  return `${base}${suffix}${num}`;
+};
+
+// ===========================================
+// HELPER: Strip parenthesised suffix from finish label
+const FINISH_LABEL_MAP: [RegExp, string][] = [
+  [/4d\s*marble/i, '4D Marble'],
+];
+
+const shortFinish = (finish?: string): string => {
+  const raw = (finish || 'Leštený').split('(')[0].trim();
+  for (const [pattern, label] of FINISH_LABEL_MAP) {
+    if (pattern.test(raw)) return label;
+  }
+  return raw;
+};
+
 // HELPER: Get icon for product finish type
 // ===========================================
 const getFinishIcon = (finish?: string): LucideIcon => {
   const f = (finish || '').toLowerCase();
-  if (f.includes('lešten') || f.includes('polish') || f.includes('leskl')) return Sparkle;
-  if (f.includes('hladk') || f.includes('silk')) return SquareAsterisk;
-  // Matný, Matte, or any other finish
-  return Square;
+  if (f.includes('lešten') || f.includes('polish') || f.includes('leskl')) return Sparkles;
+  if (f.includes('silk'))                                                    return Waves;
+  if (f.includes('matt') || f.includes('matný') || f.includes('matte'))     return Square;
+  if (f.includes('diamond') || f.includes('micro'))                         return Gem;
+  if (f.includes('color') || f.includes('body'))                            return Palette;
+  if (f.includes('textur') || f.includes('štruktúr'))                       return Grid3x3;
+  if (f.includes('hladk') || f.includes('smooth'))                          return ScanLine;
+  if (f.includes('4d') || f.includes('marble'))                             return Fingerprint;
+  return SquareDot;
 };
 
 // ===========================================
@@ -1087,8 +1154,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                   <motion.img 
                     key={selectedImageIndex}
                     src={currentImage} 
-                    alt={product.name} 
+                    alt={productImageAlt(product, selectedImageIndex)} 
                     className="w-full h-full object-cover"
+                    srcSet={shopifySrcSet(currentImage)}
+                    sizes="(max-width: 768px) 100vw, 58vw"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -1162,7 +1231,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                       >
                         <img 
                           src={img} 
-                          alt={`${product.name} - ${actualIndex + 1}`}
+                          alt={productImageAlt(product, actualIndex)}
                           className="w-full h-full object-cover"
                         />
                       </button>
@@ -1217,7 +1286,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               {/* ===== Spec Badges — mobile: right after vendor (order-2), desktop: before title (order-2) ===== */}
               <div className="order-2 lg:order-2 flex flex-wrap gap-2 mb-4">
                 <span className="inline-flex items-center gap-1.5 bg-brand-dark text-brand-gold px-3 py-1.5 rounded-full text-xs lg:text-[11px] font-semibold tracking-wide uppercase">
-                  <Layers size={14} />
+                  <ThicknessIcon size={14} />
                   {product.thickness}
                 </span>
                 <span className="inline-flex items-center gap-1.5 bg-brand-dark text-brand-gold px-3 py-1.5 rounded-full text-xs lg:text-[11px] font-semibold tracking-wide uppercase">
@@ -1226,7 +1295,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 </span>
                 <span className="inline-flex items-center gap-1.5 bg-brand-dark text-brand-gold px-3 py-1.5 rounded-full text-xs lg:text-[11px] font-semibold tracking-wide uppercase">
                   {React.createElement(getFinishIcon(product.finish), { size: 14 })}
-                  {product.finish || 'Leštený'}
+                  {shortFinish(product.finish)}
                 </span>
               </div>
 
@@ -1279,8 +1348,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 pb-8 border-b border-gray-200">
                 {[
                   { label: 'Rozmery', value: product.dimensions, icon: Maximize2 },
-                  { label: 'Hrúbka', value: product.thickness, icon: Layers },
-                  { label: 'Povrch', value: product.finish || 'Leštený', icon: getFinishIcon(product.finish) },
+                  { label: 'Hrúbka', value: product.thickness, icon: ThicknessIcon },
+                  { label: 'Povrch', value: shortFinish(product.finish), icon: getFinishIcon(product.finish) },
                   { label: 'Materiál', value: product.material || 'Sinterovaný kameň', icon: Stone },
                 ].map((spec) => {
                   const Icon = spec.icon;
@@ -1315,8 +1384,10 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                     <motion.img 
                       key={selectedImageIndex}
                       src={currentImage} 
-                      alt={product.name} 
+                      alt={productImageAlt(product, selectedImageIndex)} 
                       className="w-full h-full object-cover"
+                      srcSet={shopifySrcSet(currentImage)}
+                      sizes="100vw"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
@@ -1634,6 +1705,56 @@ const ProductStorySection: React.FC<ProductStorySectionProps> = ({ product }) =>
         {rd.closing}
       </motion.p>
     </StoryWrapper>
+  );
+};
+
+// ===========================================
+// SECTION: Key Benefits (SEO bullet points)
+// ===========================================
+interface KeyBenefitsSectionProps {
+  product: ShopProduct;
+}
+
+const KeyBenefitsSection: React.FC<KeyBenefitsSectionProps> = ({ product }) => {
+  const benefits = product.keyBenefits;
+  if (!benefits || benefits.length === 0) return null;
+
+  return (
+    <section className="py-12 lg:py-16 bg-white">
+      <div className="container mx-auto px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto"
+        >
+          <h2 className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-gray-400 mb-8">
+            Kľúčové výhody
+          </h2>
+
+          <ul className="space-y-4">
+            {benefits.map((benefit, index) => (
+              <motion.li
+                key={index}
+                initial={{ opacity: 0, x: -12 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.1 + index * 0.08 }}
+                className="flex items-start gap-4"
+              >
+                <div className="w-7 h-7 rounded-full bg-brand-gold/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Check size={14} className="text-brand-gold" />
+                </div>
+                <span className="text-base lg:text-lg text-gray-700 leading-relaxed font-light">
+                  {benefit}
+                </span>
+              </motion.li>
+            ))}
+          </ul>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 
@@ -1998,6 +2119,24 @@ interface ArchitectBlockProps {
 const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
   const { addItem, sampleCount, isSampleInCart } = useCart();
   const [sampleError, setSampleError] = useState<string | null>(null);
+  const [isBimModalOpen, setIsBimModalOpen] = useState(false);
+  const [bimEmail, setBimEmail] = useState('');
+  const [bimSubmitted, setBimSubmitted] = useState(false);
+  const [bimSubmitting, setBimSubmitting] = useState(false);
+
+  const handleBimSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setBimSubmitting(true);
+    await submitQuote({
+      name: 'BIM/CAD Request',
+      phone: '',
+      email: bimEmail,
+      description: `Záujem o BIM / CAD High-Res Textúry — produkt: ${product.name}`,
+      files: [],
+    });
+    setBimSubmitting(false);
+    setBimSubmitted(true);
+  };
 
   const handleAddSample = () => {
     if (!product.sampleShopifyVariantId) {
@@ -2082,12 +2221,15 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
                     </span>
                     <Download size={14} className="text-gray-400 group-hover:text-brand-dark" />
                   </button>
-                  <button className="w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 transition-colors group">
+                  <button
+                    onClick={() => { setIsBimModalOpen(true); setBimEmail(''); setBimSubmitted(false); }}
+                    className="w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 transition-colors group"
+                  >
                     <span className="flex items-center gap-3 text-sm text-brand-dark">
                       <FileText size={16} className="text-brand-gold" />
                       BIM / CAD Textúry (High-Res)
                     </span>
-                    <Download size={14} className="text-gray-400 group-hover:text-brand-dark" />
+                    <Mail size={14} className="text-gray-400 group-hover:text-brand-dark" />
                   </button>
                 </div>
               </div>
@@ -2111,6 +2253,198 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
           </div>
         </motion.div>
       </div>
+
+      {/* BIM/CAD Email Gate Modal */}
+      <AnimatePresence>
+        {isBimModalOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              onClick={() => setIsBimModalOpen(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              transition={{ duration: 0.2 }}
+              className="relative z-10 w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden"
+            >
+              {/* Header */}
+              <div className="bg-brand-dark px-6 py-5 flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="text-white font-bold text-lg leading-tight">BIM / CAD High-Res Textúry</h3>
+                  <p className="text-white/60 text-sm mt-1">{product.name}</p>
+                </div>
+                <button
+                  onClick={() => setIsBimModalOpen(false)}
+                  className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors flex-shrink-0 mt-0.5"
+                >
+                  <X size={16} />
+                </button>
+              </div>
+
+              {/* Body */}
+              <div className="px-6 py-6">
+                {!bimSubmitted ? (
+                  <>
+                    <p className="text-gray-600 text-sm mb-5">
+                      Nechajte nám váš email a my vám BIM / CAD textúry v plnom rozlíšení zašleme obratom. Súbory sú dostupné pre registrovaných architektov a dizajnérov.
+                    </p>
+                    <form onSubmit={handleBimSubmit} className="space-y-4">
+                      <div>
+                        <label className="block text-xs font-semibold text-brand-dark uppercase tracking-wide mb-1.5">
+                          Váš email
+                        </label>
+                        <div className="relative">
+                          <Mail size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                          <input
+                            type="email"
+                            required
+                            value={bimEmail}
+                            onChange={e => setBimEmail(e.target.value)}
+                            placeholder="vas@email.sk"
+                            className="w-full pl-9 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold transition-colors"
+                          />
+                        </div>
+                      </div>
+                      <button
+                        type="submit"
+                        disabled={bimSubmitting}
+                        className="w-full bg-brand-dark hover:bg-brand-dark/90 text-brand-gold font-semibold text-sm py-3 rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-60"
+                      >
+                        {bimSubmitting ? (
+                          <>
+                            <Loader2 size={15} className="animate-spin" />
+                            Odosielam...
+                          </>
+                        ) : (
+                          <>
+                            <Mail size={15} />
+                            Poslať žiadosť
+                          </>
+                        )}
+                      </button>
+                    </form>
+                  </>
+                ) : (
+                  <div className="text-center py-4">
+                    <div className="w-14 h-14 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle size={28} className="text-green-500" />
+                    </div>
+                    <h4 className="font-bold text-brand-dark text-lg mb-2">Ďakujeme!</h4>
+                    <p className="text-gray-600 text-sm">
+                      Súbory vám zašleme na <span className="font-medium text-brand-dark">{bimEmail}</span> do 24 hodín.
+                    </p>
+                    <button
+                      onClick={() => setIsBimModalOpen(false)}
+                      className="mt-5 text-sm text-brand-gold hover:underline font-medium"
+                    >
+                      Zavrieť
+                    </button>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+    </section>
+  );
+};
+
+// ===========================================
+// SECTION: Product FAQ (SEO + schema)
+// ===========================================
+interface ProductFAQSectionProps {
+  product: ShopProduct;
+}
+
+const ProductFAQSection: React.FC<ProductFAQSectionProps> = ({ product }) => {
+  const seoContent = getProductSEOContent(product.id);
+  const productFaqs = seoContent?.faqs || [];
+  const allFaqs = [...productFaqs, ...GENERIC_PRODUCT_FAQS];
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  if (allFaqs.length === 0) return null;
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": allFaqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer,
+      },
+    })),
+  };
+
+  return (
+    <section className="py-12 lg:py-16 bg-white">
+      <div className="container mx-auto px-6">
+        <div className="max-w-3xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-gray-400 mb-8"
+          >
+            Časté otázky
+          </motion.h2>
+
+          <div className="divide-y divide-gray-200">
+            {allFaqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+              >
+                <button
+                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                  className="w-full flex items-center justify-between py-5 text-left gap-4"
+                >
+                  <span className="text-base lg:text-lg font-medium text-brand-dark leading-snug">
+                    {faq.question}
+                  </span>
+                  <ChevronDown
+                    size={18}
+                    className={cn(
+                      "flex-shrink-0 text-gray-400 transition-transform duration-200",
+                      openIndex === index && "rotate-180"
+                    )}
+                  />
+                </button>
+                <AnimatePresence>
+                  {openIndex === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="overflow-hidden"
+                    >
+                      <p className="pb-5 text-gray-600 font-light leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
     </section>
   );
 };
@@ -2124,12 +2458,14 @@ interface ProductSchemaProps {
 }
 
 const ProductSchema: React.FC<ProductSchemaProps> = ({ product, totalPrice }) => {
-  const schema = {
+  const richDescription = product.metaDescription || product.seoDescription || 
+    `${product.name} je prémiový sinterovaný kameň s rozmermi ${product.dimensions}. Tento ${product.material || 'sinterovaný kameň'} s povrchom ${product.finish || 'leštený'} je ideálny pre ${(product.applications || ['kuchyne', 'kúpeľne']).slice(0, 3).join(', ').toLowerCase()}. Materiál ponúka výnimočnú odolnosť voči teplu (${product.heatResistance || 'do 300°C'}), škrabancom a škvrnám.`;
+
+  const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": product.name,
-    "description": product.seoDescription || 
-      `${product.name} je prémiový sinterovaný kameň s rozmermi ${product.dimensions}. Tento ${product.material || 'sinterovaný kameň'} s povrchom ${product.finish || 'leštený'} je ideálny pre ${(product.applications || ['kuchyne', 'kúpeľne']).slice(0, 3).join(', ').toLowerCase()}. Materiál ponúka výnimočnú odolnosť voči teplu (${product.heatResistance || 'do 300°C'}), škrabancom a škvrnám.`,
+    "description": richDescription,
     "image": product.gallery && product.gallery.length > 0 ? product.gallery : [product.image],
     "sku": product.sku || product.id,
     "brand": {
@@ -2138,15 +2474,27 @@ const ProductSchema: React.FC<ProductSchemaProps> = ({ product, totalPrice }) =>
     },
     "manufacturer": {
       "@type": "Organization",
-      "name": "OROSTONE"
+      "name": "OROSTONE s.r.o.",
+      "url": "https://www.orostone.sk",
+      "areaServed": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": 48.1486,
+          "longitude": 17.1077
+        },
+        "geoRadius": "50000"
+      }
     },
+    "category": "Veľkoformátové platne",
     "material": product.material || "Sinterovaný kameň",
     "size": product.dimensions,
     "weight": product.weight ? `${product.weight} kg` : undefined,
     "countryOfOrigin": product.countryOfOrigin || "Slovensko",
+    "url": `https://eshop.orostone.sk/#/produkt/${product.id}`,
     "offers": {
       "@type": "Offer",
-      "url": `https://eshop.orostone.sk/produkt/${product.id}`,
+      "url": `https://eshop.orostone.sk/#/produkt/${product.id}`,
       "priceCurrency": "EUR",
       "price": totalPrice.toFixed(2),
       "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
@@ -2198,6 +2546,10 @@ const ProductSchema: React.FC<ProductSchemaProps> = ({ product, totalPrice }) =>
       }
     ]
   };
+
+  if (product.keywords && product.keywords.length > 0) {
+    schema["keywords"] = product.keywords.join(', ');
+  }
 
   return (
     <script
@@ -2328,8 +2680,20 @@ export const ShopProductDetail: React.FC = () => {
     addItem(product.sampleShopifyVariantId, 1);
   };
 
+  const seoTitle = product.metaTitle || product.seoTitle || `${product.name} | Veľkoformátové platne | OROSTONE`;
+  const seoDescription = product.metaDescription || product.seoDescription || product.description;
+  const seoImage = (product.gallery && product.gallery.length > 0 ? product.gallery[0] : product.image) || '/images/logo.png';
+
   return (
     <main className="bg-white min-h-screen overflow-x-hidden">
+      <SEOHead
+        title={seoTitle}
+        description={seoDescription}
+        canonical={`https://eshop.orostone.sk/#/produkt/${product.id}`}
+        ogType="product"
+        ogImage={seoImage}
+      />
+
       {/* Cart Error Toast */}
       <AnimatePresence>
         {cartError && (
@@ -2365,6 +2729,9 @@ export const ShopProductDetail: React.FC = () => {
       {/* Section 2: Product Story (Rich Description) */}
       <ProductStorySection product={product} />
 
+      {/* Section 2b: Key Benefits (SEO) */}
+      <KeyBenefitsSection product={product} />
+
       {/* Section 3: Technical Overview */}
       <TechnicalOverview product={product} />
 
@@ -2380,8 +2747,19 @@ export const ShopProductDetail: React.FC = () => {
       {/* Section 7: Architect Block */}
       <ArchitectBlock product={product} />
 
+      {/* Section 8: FAQ */}
+      <ProductFAQSection product={product} />
+
       {/* JSON-LD Structured Data for SEO (invisible to users, visible to Google) */}
       <ProductSchema product={product} totalPrice={calculateSlabPrice(product.pricePerM2, product.dimensions)} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(createBreadcrumbLD([
+          { name: 'OROSTONE', url: 'https://eshop.orostone.sk/' },
+          { name: 'E-Shop', url: 'https://eshop.orostone.sk/#/' },
+          { name: product.name, url: `https://eshop.orostone.sk/#/produkt/${product.id}` },
+        ])) }}
+      />
 
       {/* ===== Sticky Add-to-Cart Bottom Bar — mobile only ===== */}
       <div className={cn(

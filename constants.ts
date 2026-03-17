@@ -225,6 +225,10 @@ export interface ShopProduct {
   // SEO
   seoTitle?: string;
   seoDescription?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  keywords?: string[];
+  keyBenefits?: string[];
 
   // Rich description (Shopify-style structured content)
   richDescription?: ProductRichDescription;

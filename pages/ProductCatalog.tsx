@@ -167,6 +167,7 @@ export const ProductCatalog = () => {
       <SEOHead
         title="Všetky produkty | OROSTONE E-Shop"
         description="Kompletná ponuka prémiových sinterovaných kameňov, stolov, indukčných dosiek a doplnkov. Dosky 3200x1600mm s dopravou po celom Slovensku."
+        canonical="https://eshop.orostone.sk/#/vsetky-produkty"
         structuredData={createBreadcrumbLD([
           { name: 'E-Shop', url: 'https://eshop.orostone.sk/' },
           { name: 'Všetky produkty', url: 'https://eshop.orostone.sk/#/vsetky-produkty' },

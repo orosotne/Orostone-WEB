@@ -106,6 +106,18 @@ const AppContent = () => {
             
             {/* Fallback routes */}
             <Route path="/kuchyne" element={<Home />} />
+            <Route path="*" element={
+              <div className="min-h-[60vh] flex items-center justify-center px-6">
+                <div className="text-center max-w-lg">
+                  <p className="text-7xl font-bold" style={{ color: '#ECD488' }}>404</p>
+                  <h1 className="text-2xl font-bold text-gray-900 mb-3 mt-4">Stránka nenájdená</h1>
+                  <p className="text-gray-500 mb-8">Hľadaná stránka neexistuje alebo bola presunutá.</p>
+                  <a href="/" className="inline-flex items-center justify-center bg-gray-900 text-white px-6 py-3 rounded-lg text-sm tracking-wider uppercase font-semibold hover:opacity-90 transition-all">
+                    Hlavná stránka
+                  </a>
+                </div>
+              </div>
+            } />
           </Routes>
         </Suspense>
         </ErrorBoundary>
