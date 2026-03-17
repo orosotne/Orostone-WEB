@@ -13,11 +13,12 @@ import { getLatestArticles } from '../data/blogArticles';
 import { useShopifyProducts } from '../hooks/useShopifyProducts';
 import { useInstagramFeed, getPostImageUrl } from '../hooks/useInstagramFeed';
 import { OrderModal } from '../components/Shop/OrderModal';
-import { Lightbox } from '../components/UI/Lightbox';
 import { TextKnockoutSection } from '../components/TextKnockoutSection';
 import { SEOHead, OROSTONE_ORGANIZATION_LD } from '../components/UI/SEOHead';
+import { InspirationSection } from '../components/Shop/InspirationSection';
+import { SampleLeadSection } from '../components/Shop/SampleLeadSection';
+import { RotatingBadge } from '../components/UI/RotatingBadge';
 import { Link } from 'react-router-dom';
-import type { CollectionGalleryImage } from '../types';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -93,10 +94,6 @@ const INSPIRATION_IMAGES = [
   { src: '/images/inspiration/inspiration-5.webp', video: '/videos/inspiration/inspiration-5.mp4', label: 'Kuchyňa', title: 'Funkčná krása', subtitle: 'Praktickosť a estetika' },
 ];
 
-// Tripled array for infinite carousel — [set0, set1(middle), set2]
-const INSPIRATION_SLIDES = [...INSPIRATION_IMAGES, ...INSPIRATION_IMAGES, ...INSPIRATION_IMAGES];
-const INSPIRATION_COUNT = INSPIRATION_IMAGES.length; // 5
-
 // INSTAGRAM_IMAGES removed — now loaded via useInstagramFeed hook
 
 // ===========================================
@@ -149,111 +146,6 @@ export const Shop = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
   const { posts: instagramPosts, isLoading: igLoading, isUsingFallback: igFallback } = useInstagramFeed(8);
-
-  // Inspiration lightbox
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [lightboxIndex, setLightboxIndex] = useState(0);
-
-  const lightboxImages: CollectionGalleryImage[] = INSPIRATION_IMAGES.map((img) => ({
-    name: img.label,
-    url: img.src,
-    publicUrl: img.src,
-  }));
-
-  // Inspiration carousel — infinite loop via triple-clone technique
-  // inspirationIndex tracks position in the tripled INSPIRATION_SLIDES array.
-  // It always starts in the middle set (offset INSPIRATION_COUNT).
-  const [inspirationIndex, setInspirationIndex] = useState(INSPIRATION_COUNT); // start at middle set, image 0
-  const inspirationAnimating = useRef(false);
-  const inspirationTrackRef = useRef<HTMLDivElement>(null);
-  const inspirationContainerRef = useRef<HTMLDivElement>(null);
-  const inspirationVideoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-
-  // Compute offset for the track — centers the slide at `index` in the tripled array
-  const getInspirationOffset = useCallback((index: number) => {
-    const container = inspirationContainerRef.current;
-    const track = inspirationTrackRef.current;
-    if (!container || !track) return 0;
-    const slide = track.querySelector('.inspiration-slide') as HTMLElement | null;
-    if (!slide) return 0;
-    const slideWidth = slide.offsetWidth;
-    const containerWidth = container.offsetWidth;
-    const gap = 16; // gap-4 = 16px
-    const centerOffset = (containerWidth - slideWidth) / 2;
-    return centerOffset - index * (slideWidth + gap);
-  }, []);
-
-  // Set initial position on mount
-  useEffect(() => {
-    if (inspirationTrackRef.current) {
-      gsap.set(inspirationTrackRef.current, { x: getInspirationOffset(INSPIRATION_COUNT) });
-    }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-  const goToInspiration = useCallback((newIndex: number) => {
-    if (inspirationAnimating.current) return;
-    inspirationAnimating.current = true;
-
-    // Immediately update for CSS-driven scale/opacity
-    setInspirationIndex(newIndex);
-
-    if (inspirationTrackRef.current) {
-      const targetX = getInspirationOffset(newIndex);
-
-      gsap.to(inspirationTrackRef.current, {
-        x: targetX,
-        duration: 0.6,
-        ease: 'power3.out',
-        onComplete: () => {
-          // After animation: silently snap back to the equivalent position in the middle set
-          const logicalIndex = ((newIndex % INSPIRATION_COUNT) + INSPIRATION_COUNT) % INSPIRATION_COUNT;
-          const middleIndex = INSPIRATION_COUNT + logicalIndex;
-
-          if (newIndex !== middleIndex) {
-            const resetX = getInspirationOffset(middleIndex);
-            gsap.set(inspirationTrackRef.current!, { x: resetX });
-            setInspirationIndex(middleIndex);
-          }
-
-          inspirationAnimating.current = false;
-        },
-      });
-    } else {
-      inspirationAnimating.current = false;
-    }
-  }, [getInspirationOffset]);
-
-  const goNextInspiration = useCallback(() => {
-    goToInspiration(inspirationIndex + 1);
-  }, [inspirationIndex, goToInspiration]);
-
-  const goPrevInspiration = useCallback(() => {
-    goToInspiration(inspirationIndex - 1);
-  }, [inspirationIndex, goToInspiration]);
-
-  // Handle window resize — reposition track without animation
-  useEffect(() => {
-    const handleResize = () => {
-      if (inspirationTrackRef.current) {
-        gsap.set(inspirationTrackRef.current, { x: getInspirationOffset(inspirationIndex) });
-      }
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [inspirationIndex, getInspirationOffset]);
-
-  // Play/pause inspiration videos — only the active (center) slide plays
-  useEffect(() => {
-    inspirationVideoRefs.current.forEach((video, idx) => {
-      if (!video) return;
-      if (idx === inspirationIndex) {
-        video.currentTime = 0;
-        video.play().catch(() => {});
-      } else {
-        video.pause();
-      }
-    });
-  }, [inspirationIndex]);
 
   // Testimonials carousel
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -549,35 +441,6 @@ export const Shop = () => {
       gsap.set('.stone-cta-mobile', { opacity: 1, y: 0 });
     }
 
-    // --- Spotlight product reveal ---
-    gsap.fromTo('.spotlight-image',
-      { x: -60, opacity: 0 },
-      {
-        x: 0, opacity: 1,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.spotlight-section',
-          start: 'top 75%',
-          toggleActions: 'play none none reverse',
-        },
-      }
-    );
-
-    gsap.fromTo('.spotlight-content',
-      { x: 60, opacity: 0 },
-      {
-        x: 0, opacity: 1,
-        duration: 1,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.spotlight-section',
-          start: 'top 75%',
-          toggleActions: 'play none none reverse',
-        },
-      }
-    );
-
     // --- Section headers fade-in ---
     gsap.utils.toArray<HTMLElement>('.section-reveal').forEach((el) => {
       gsap.fromTo(el,
@@ -685,9 +548,30 @@ export const Shop = () => {
       <SEOHead
         title="OROSTONE E-Shop | Prémiový sinterovaný kameň"
         description="Nakupujte prémiové sinterované kamene od OROSTONE. Mramor, granit, betón — všetko s dopravou po celom Slovensku. Dosky 3200x1600mm skladom."
+        canonical="https://eshop.orostone.sk/"
         ogType="website"
         structuredData={OROSTONE_ORGANIZATION_LD}
       />
+
+      {/* ItemList JSON-LD for product listing rich results */}
+      {SHOP_PRODUCTS.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "name": "OROSTONE veľkoformátové platne",
+            "numberOfItems": SHOP_PRODUCTS.length,
+            "itemListElement": SHOP_PRODUCTS.slice(0, 20).map((p, i) => ({
+              "@type": "ListItem",
+              "position": i + 1,
+              "name": p.name,
+              "url": `https://eshop.orostone.sk/#/produkt/${p.id}`,
+              "image": p.image,
+            })),
+          }) }}
+        />
+      )}
 
       {/* ==================== CINEMATIC VIDEO HERO CAROUSEL (80vh) ==================== */}
       <section 
@@ -854,7 +738,7 @@ export const Shop = () => {
 
 
       {/* ==================== STONE EXPERIENCE — Pin-and-reveal scroll animation ==================== */}
-      <section className="stone-experience-pinned relative hidden lg:block h-screen overflow-hidden">
+      <section className="stone-experience-pinned relative hidden lg:block h-[110vh] overflow-hidden">
         {/* Animated background — starts inset + rounded, expands to full-bleed */}
         <div
           className="stone-bg absolute inset-0 bg-brand-gold"
@@ -862,7 +746,7 @@ export const Shop = () => {
         />
 
         {/* Content layer */}
-        <div className="stone-content relative z-10 w-full h-full flex items-center justify-center overflow-hidden pt-[112px]">
+        <div className="stone-content relative z-10 w-full h-full flex items-center justify-center overflow-hidden py-[80px]">
           <div className="w-full max-w-[1200px] mx-auto px-4 lg:px-8">
             {/* Decorative glow */}
             <div className="stone-glow pointer-events-none absolute inset-x-1/4 -top-8 h-40 rounded-full bg-white/30 blur-3xl opacity-70" />
@@ -963,7 +847,7 @@ export const Shop = () => {
             </div>
 
             {/* CTA */}
-            <div className="stone-cta text-center mt-6 lg:mt-8 opacity-0">
+            <div className="stone-cta text-center mt-8 opacity-0">
               <Link
                 to="/kategoria/sintered-stone"
                 className="inline-flex items-center gap-2 bg-brand-dark text-white px-8 py-3.5 rounded-full text-xs lg:text-sm tracking-[0.16em] uppercase font-semibold hover:bg-white hover:text-brand-dark transition-all duration-300"
@@ -1042,194 +926,11 @@ export const Shop = () => {
         </section>
       </div>
 
-      {/* ==================== INSPIRUJTE SA — Inspiration Carousel ==================== */}
-      <section className="inspiration-section py-20 lg:py-28 bg-[#FAFAFA]">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="inspiration-header section-reveal text-center mb-12 lg:mb-16">
-            <span className="text-xs lg:text-[11px] tracking-[0.3em] uppercase text-brand-gold font-bold mb-3 block">
-              Inšpirácie
-            </span>
-            <h2 className="text-3xl lg:text-4xl font-sans font-bold text-brand-dark">
-              Inspirujte sa
-            </h2>
-            <p className="text-gray-400 text-sm lg:text-base mt-3 font-light max-w-lg mx-auto">
-              Ako môže sinterovaný kameň premeniť váš priestor
-            </p>
-          </div>
+      {/* ==================== INSPIRUJTE SA — Inspiration Slider ==================== */}
+      <InspirationSection items={INSPIRATION_IMAGES} />
 
-          {/* Carousel — infinite loop with tripled slides */}
-          <div ref={inspirationContainerRef} className="relative">
-            {/* Track container */}
-            <div className="overflow-hidden rounded-2xl">
-              <div
-                ref={inspirationTrackRef}
-                className="flex gap-4"
-                style={{ willChange: 'transform' }}
-              >
-                {INSPIRATION_SLIDES.map((img, idx) => {
-                  const isCenter = idx === inspirationIndex;
-                  const isAdjacent = idx === inspirationIndex - 1 || idx === inspirationIndex + 1;
-
-                  return (
-                    <div
-                      key={idx}
-                      className="inspiration-slide flex-shrink-0 relative rounded-2xl overflow-hidden cursor-pointer w-[92vw] sm:w-[80vw] lg:w-[50%]"
-                      style={{
-                        aspectRatio: '16 / 9',
-                        transform: isCenter ? 'scale(1)' : 'scale(0.92)',
-                        opacity: isCenter ? 1 : isAdjacent ? 0.6 : 0.3,
-                        transition: 'transform 0.6s cubic-bezier(0.33, 1, 0.68, 1), opacity 0.6s cubic-bezier(0.33, 1, 0.68, 1)',
-                      }}
-                      onClick={() => {
-                        if (isCenter) {
-                          const logicalIdx = idx % INSPIRATION_COUNT;
-                          setLightboxIndex(logicalIdx);
-                          setLightboxOpen(true);
-                        } else {
-                          goToInspiration(idx);
-                        }
-                      }}
-                    >
-                      {/* Poster image (visible while video loads or if video missing) */}
-                      <img
-                        src={img.src}
-                        alt={img.label}
-                        className="absolute inset-0 w-full h-full object-cover"
-                      />
-
-                      {/* VEO-generated video — plays only on center slide */}
-                      <video
-                        ref={(el) => { inspirationVideoRefs.current[idx] = el; }}
-                        className="absolute inset-0 w-full h-full object-cover"
-                        loop
-                        muted
-                        playsInline
-                        poster={img.src}
-                        preload={isCenter ? 'auto' : 'none'}
-                      >
-                        <source src={img.video} type="video/mp4" />
-                      </video>
-
-                      {/* Dark gradient overlay for text readability */}
-                      <div
-                        className="absolute inset-0 transition-opacity duration-500"
-                        style={{
-                          background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0) 100%)',
-                          opacity: isCenter ? 1 : 0.3,
-                        }}
-                      />
-
-                      {/* Text overlay — integrated into image, visible on center */}
-                      <div
-                        className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 transition-all duration-500"
-                        style={{
-                          opacity: isCenter ? 1 : 0,
-                          transform: isCenter ? 'translateY(0)' : 'translateY(16px)',
-                        }}
-                      >
-                        <span className="text-xs lg:text-[11px] tracking-[0.3em] uppercase text-white/80 font-medium mb-2 lg:mb-3">
-                          {img.label}
-                        </span>
-                        <h3 className="text-xl sm:text-2xl lg:text-3xl font-sans font-bold text-white leading-tight mb-1 lg:mb-2 drop-shadow-lg">
-                          {img.title}
-                        </h3>
-                        <p className="text-xs lg:text-sm text-white/70 font-light">
-                          {img.subtitle}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Arrow buttons */}
-            <button
-              onClick={goPrevInspiration}
-              className="absolute left-2 lg:left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center hover:bg-white hover:scale-105 active:scale-95 transition-all duration-200"
-              aria-label="Predchádzajúca inšpirácia"
-            >
-              <ChevronLeft size={20} className="text-brand-dark" />
-            </button>
-            <button
-              onClick={goNextInspiration}
-              className="absolute right-2 lg:right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center hover:bg-white hover:scale-105 active:scale-95 transition-all duration-200"
-              aria-label="Nasledujúca inšpirácia"
-            >
-              <ChevronRight size={20} className="text-brand-dark" />
-            </button>
-
-            {/* Dot indicators — mapped to 5 logical images */}
-            <div className="flex justify-center gap-2 mt-6 lg:mt-8">
-              {INSPIRATION_IMAGES.map((_, idx) => {
-                const activeLogical = ((inspirationIndex % INSPIRATION_COUNT) + INSPIRATION_COUNT) % INSPIRATION_COUNT;
-                return (
-                  <button
-                    key={idx}
-                    onClick={() => {
-                      // Navigate to the corresponding position in the middle set
-                      goToInspiration(INSPIRATION_COUNT + idx);
-                    }}
-                    className={`rounded-full transition-all duration-300 ${
-                      idx === activeLogical
-                        ? 'w-8 h-2 bg-brand-gold'
-                        : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
-                    }`}
-                    aria-label={`Inšpirácia ${idx + 1}`}
-                  />
-                );
-              })}
-            </div>
-          </div>
-        </div>
-        </section>
-
-      {/* ==================== SPOTLIGHT PRODUCT ==================== */}
-      {spotlightProduct && (
-        <section className="spotlight-section py-20 lg:py-28 bg-white overflow-hidden">
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
-              
-              {/* Product Image */}
-              <div className="spotlight-image flex-1 w-full lg:w-auto">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden bg-[#F5F5F3]">
-                  <img
-                    src={spotlightProduct.image}
-                    alt={spotlightProduct.name}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                  />
-                </div>
-              </div>
-
-              {/* Product Info */}
-              <div className="spotlight-content flex-1 max-w-lg">
-                <span className="text-xs lg:text-[11px] tracking-[0.3em] uppercase text-brand-gold font-bold mb-4 block">
-                  Odporúčame
-                </span>
-                <h2 className="text-3xl lg:text-4xl font-bold text-brand-dark mb-4 uppercase tracking-wide">
-                  {spotlightProduct.name}
-                </h2>
-                <p className="text-gray-500 text-base lg:text-lg font-light leading-relaxed mb-6">
-                  {spotlightProduct.description}
-                </p>
-                <p className="text-2xl font-bold text-brand-dark mb-8">
-                  €{spotlightProduct.pricePerM2}
-                  <span className="text-base font-normal text-gray-400 ml-1">/m²</span>
-                </p>
-                <Link
-                  to={`/produkt/${spotlightProduct.id}`}
-                  onMouseEnter={() => prefetchProduct(spotlightProduct)}
-                  onTouchStart={() => prefetchProduct(spotlightProduct)}
-                  className="inline-flex items-center gap-3 bg-brand-dark text-white px-8 py-4 rounded-full text-sm font-bold uppercase tracking-wider hover:bg-brand-gold hover:text-brand-dark transition-all duration-300"
-                >
-                  Zobraziť detail
-                  <ArrowRight size={16} />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
+      {/* ==================== SAMPLE LEAD SECTION ==================== */}
+      <SampleLeadSection />
 
       {/* ==================== FEATURED PRODUCTS CAROUSEL ==================== */}
       <section className="products-section bg-[#FAFAFA] py-20 lg:py-28 overflow-hidden">
@@ -1348,7 +1049,10 @@ export const Shop = () => {
       <BlogPreviewSection articles={getLatestArticles(5)} />
 
       {/* ==================== TESTIMONIALS ==================== */}
-      <section className="testimonials-section py-20 lg:py-28 bg-white overflow-hidden">
+      <section className="testimonials-section relative py-20 lg:py-28 bg-white overflow-hidden">
+        <div className="badge-blink-delay-2 absolute top-10 right-16 z-30 pointer-events-none hidden lg:block">
+          <RotatingBadge variant="dark" />
+        </div>
         <div className="container mx-auto px-4 lg:px-8">
           <div className="testimonial-inner max-w-3xl mx-auto text-center">
             <span className="text-xs lg:text-[11px] tracking-[0.3em] uppercase text-brand-gold font-bold mb-3 block">
@@ -1541,14 +1245,6 @@ export const Shop = () => {
         onClose={() => setIsModalOpen(false)}
       />
 
-      <Lightbox
-        images={lightboxImages}
-        currentIndex={lightboxIndex}
-        isOpen={lightboxOpen}
-        onClose={() => setLightboxOpen(false)}
-        onPrevious={() => setLightboxIndex((prev) => Math.max(0, prev - 1))}
-        onNext={() => setLightboxIndex((prev) => Math.min(lightboxImages.length - 1, prev + 1))}
-      />
     </main>
   );
 };

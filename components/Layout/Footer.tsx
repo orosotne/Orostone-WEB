@@ -1,6 +1,7 @@
 import React from 'react';
 import { NAV_LINKS } from '../../constants';
 import { Link } from 'react-router-dom';
+import { RotatingBadge } from '../UI/RotatingBadge';
 
 export const Footer = () => {
   return (
@@ -72,6 +73,7 @@ export const Footer = () => {
             <Link to="/key-facts" className="hover:text-gray-400 transition-colors">Key facts</Link>
             <Link to="/cookies" className="hover:text-gray-400 transition-colors">Cookies</Link>
           </div>
+          <RotatingBadge onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
         </div>
       </div>
     </footer>

@@ -199,3 +199,57 @@ CREATE TRIGGER on_new_quote
     AFTER INSERT ON quotes
     FOR EACH ROW
     EXECUTE FUNCTION notify_new_quote();
+
+-- ===========================================
+-- 8. INSTAGRAM TOKEN STORAGE
+-- ===========================================
+-- Tabuľka pre automatické obnovenie Instagram API tokenu.
+-- Token sa obnovuje cez Edge Function + pg_cron každých 50 dní.
+
+CREATE TABLE instagram_tokens (
+    id INTEGER PRIMARY KEY DEFAULT 1 CHECK (id = 1),
+    access_token TEXT NOT NULL,
+    token_type TEXT DEFAULT 'long_lived',
+    expires_at TIMESTAMPTZ NOT NULL,
+    account_id TEXT NOT NULL,
+    last_refreshed_at TIMESTAMPTZ DEFAULT NOW(),
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+ALTER TABLE instagram_tokens ENABLE ROW LEVEL SECURITY;
+
+-- Anon môže čítať token (frontend ho potrebuje na načítanie feedu)
+CREATE POLICY "Allow anon read instagram token" ON instagram_tokens
+    FOR SELECT
+    USING (true);
+
+-- Len service_role môže meniť (Edge Function)
+CREATE POLICY "Allow service_role write instagram token" ON instagram_tokens
+    FOR ALL
+    USING (auth.role() = 'service_role');
+
+-- ===========================================
+-- 9. CRON JOB — AUTOMATICKÝ REFRESH TOKENU
+-- ===========================================
+-- Vyžaduje pg_cron extension (v Supabase zapnúť cez Dashboard > Database > Extensions)
+--
+-- Spúšťa sa každých 50 dní — token vydrží 60 dní, takže máme 10-dňový buffer.
+-- Cron volá Edge Function refresh-instagram-token cez HTTP.
+--
+-- POZOR: Nasledujúci SQL spusti AŽ PO deployi Edge Function
+-- a po zapnutí pg_cron + pg_net extensions v Supabase Dashboard.
+
+-- SELECT cron.schedule(
+--   'refresh-instagram-token',
+--   '0 3 */50 * *',  -- každých ~50 dní o 3:00 ráno
+--   $$
+--   SELECT net.http_post(
+--     url := current_setting('app.settings.supabase_url') || '/functions/v1/refresh-instagram-token',
+--     headers := jsonb_build_object(
+--       'Authorization', 'Bearer ' || current_setting('app.settings.service_role_key'),
+--       'Content-Type', 'application/json'
+--     ),
+--     body := '{}'::jsonb
+--   );
+--   $$
+-- );

@@ -4,6 +4,7 @@ import {
   Facebook, Instagram, Youtube, Mail, Phone, MapPin,
   CreditCard, Truck, Shield, Clock
 } from 'lucide-react';
+import { RotatingBadge } from '../UI/RotatingBadge';
 
 // ===========================================
 // COMPONENT
@@ -238,6 +239,8 @@ export const EshopFooter: React.FC = () => {
                 </div>
               </div>
             </div>
+
+            <RotatingBadge onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
           </div>
           
           {/* Back to main site */}

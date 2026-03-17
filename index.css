@@ -87,3 +87,21 @@ html.lenis, html.lenis body {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
+/* ===== ROTATING BADGE BLINK ===== */
+@keyframes badge-blink {
+  0%, 100%  { transform: scale(0); opacity: 0; }
+  10%       { transform: scale(1); opacity: 1; }
+  70%       { transform: scale(1); opacity: 1; }
+  85%       { transform: scale(0); opacity: 0; }
+}
+
+.badge-blink {
+  animation: badge-blink 5s ease-in-out infinite;
+}
+.badge-blink-delay-1 {
+  animation: badge-blink 5s ease-in-out infinite 1.5s;
+}
+.badge-blink-delay-2 {
+  animation: badge-blink 5s ease-in-out infinite 3s;
+}
