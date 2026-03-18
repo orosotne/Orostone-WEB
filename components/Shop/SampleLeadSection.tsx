@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { CheckCircle, Loader2 } from 'lucide-react';
-import { SHOP_PRODUCTS } from '../../constants';
+import { useShopifyProducts } from '../../hooks/useShopifyProducts';
 import { RotatingBadge } from '../UI/RotatingBadge';
 
 const TESTIMONIAL = {
@@ -19,6 +19,7 @@ export const SampleLeadSection: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+  const { products } = useShopifyProducts();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -42,10 +43,10 @@ export const SampleLeadSection: React.FC = () => {
   };
 
   return (
-    <section className="relative bg-[#ECD488] overflow-hidden">
+    <section className="relative bg-[#ECD488]" style={{ overflow: 'clip' }}>
 
       {/* Top wave — animated by horizontal translate */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden leading-none pointer-events-none" style={{ height: '80px' }}>
+      <div className="absolute top-0 left-0 w-full leading-none pointer-events-none" style={{ height: '80px', overflow: 'clip' }}>
         <svg
           viewBox="0 0 2880 80"
           xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +63,7 @@ export const SampleLeadSection: React.FC = () => {
       </div>
 
       {/* Bottom wave — animated in opposite direction */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none pointer-events-none" style={{ height: '80px' }}>
+      <div className="absolute bottom-0 left-0 w-full leading-none pointer-events-none" style={{ height: '80px', overflow: 'clip' }}>
         <svg
           viewBox="0 0 2880 80"
           xmlns="http://www.w3.org/2000/svg"
@@ -204,7 +205,7 @@ export const SampleLeadSection: React.FC = () => {
                       className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-brand-dark focus:outline-none focus:border-brand-gold transition-colors appearance-none bg-white"
                     >
                       <option value="" disabled>Vyberte dekor...</option>
-                      {SHOP_PRODUCTS.map(p => (
+                      {products.map(p => (
                         <option key={p.id} value={p.name}>
                           {p.name} — €{p.pricePerM2}/m²
                         </option>

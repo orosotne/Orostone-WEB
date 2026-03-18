@@ -140,7 +140,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 // ===========================================
 export const ProductCatalog = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { addItem, isInCart } = useCart();
+  const { addItem, isInCart, getItemQuantity } = useCart();
   const { products, isLoading } = useShopifyProducts();
 
   // GSAP scroll animations on product cards
@@ -259,14 +259,18 @@ export const ProductCatalog = () => {
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
           >
             {products.map((product) => {
-              const cartItem = isInCart(product.shopifyVariantId || product.id);
+              const inCart = isInCart(product.id);
               return (
                 <ProductCard
                   key={product.id}
                   product={product}
-                  onAddToCart={() => addItem(product.shopifyVariantId || product.id, 1)}
-                  inCart={!!cartItem}
-                  quantity={cartItem ? 1 : 0}
+                  onAddToCart={() => {
+                    if (product.shopifyVariantId) {
+                      addItem(product.shopifyVariantId, 1);
+                    }
+                  }}
+                  inCart={inCart}
+                  quantity={getItemQuantity(product.id)}
                 />
               );
             })}

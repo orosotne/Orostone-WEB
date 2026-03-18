@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, useState, useCallback, ReactNode } from 'react';
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import type { User, Session, AuthError } from '@supabase/supabase-js';
 
@@ -86,8 +86,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     };
   }, []);
 
-  // Fetch user profile from customers table
-  const fetchProfile = async (userId: string) => {
+  const fetchProfile = useCallback(async (userId: string) => {
     try {
       const { data, error } = await supabase
         .from('customers')
@@ -104,7 +103,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     } catch (error) {
       console.error('Error fetching profile:', error);
     }
-  };
+  }, []);
 
   // ===========================================
   // ACTIONS

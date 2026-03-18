@@ -25,7 +25,7 @@ export const Checkout = () => {
           <ShoppingBag size={64} className="mx-auto text-gray-300 mb-6" />
           <h1 className="text-2xl font-bold text-brand-dark mb-4">Váš košík je prázdny</h1>
           <p className="text-gray-500 mb-8">Pridajte produkty do košíka a pokračujte v nákupe.</p>
-          <Link to="/shop">
+          <Link to="/">
             <Button className="bg-brand-dark text-white px-8 py-4 rounded-full hover:bg-brand-gold hover:text-brand-dark">
               Prejsť do obchodu
             </Button>
@@ -135,7 +135,7 @@ export const Checkout = () => {
                   <span className="text-gray-400 text-xs">Vypočíta sa v ďalšom kroku</span>
                 </div>
                 <div className="flex justify-between pt-3 border-t border-gray-100 text-lg">
-                  <span className="font-bold text-brand-dark">Medzisúčet</span>
+                  <span className="font-bold text-brand-dark">Celkom</span>
                   <span className="font-bold text-brand-gold">{formatPrice(total)}</span>
                 </div>
               </div>

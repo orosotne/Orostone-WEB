@@ -176,6 +176,8 @@ const EshopAppContent = () => {
           <Route path="/doprava" element={<PlaceholderPage title="Doprava a platba" />} />
           <Route path="/reklamacie" element={<PlaceholderPage title="Reklamácie a vrátenie" />} />
           <Route path="/kontakt" element={<PlaceholderPage title="Kontakt" />} />
+          <Route path="/key-facts" element={<PlaceholderPage title="Kľúčové fakty" />} />
+          <Route path="/objednavky" element={<Navigate to="/ucet" replace />} />
           
           {/* Legal */}
           <Route path="/vop" element={

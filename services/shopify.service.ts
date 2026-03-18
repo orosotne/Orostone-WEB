@@ -847,7 +847,7 @@ function shopifyProductToShopProduct(product: ShopifyProduct): ShopProduct {
     // Use cleaned marketing HTML (tech specs stripped out) to avoid duplication with TechnicalOverview
     descriptionHtml: marketingHtml || undefined,
     pricePerM2,
-    image: images[0] || '',
+    image: images[0] || '/images/logo.png',
     gallery: images,
     category: mapProductTypeToCategory(product.productType),
     dimensions: dims,

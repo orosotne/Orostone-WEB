@@ -36,7 +36,8 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   };
 
   handleGoHome = () => {
-    window.location.href = '/';
+    window.location.hash = '#/';
+    window.location.reload();
   };
 
   render() {

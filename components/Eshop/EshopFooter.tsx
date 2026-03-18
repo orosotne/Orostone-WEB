@@ -5,6 +5,7 @@ import {
   CreditCard, Truck, Shield, Clock
 } from 'lucide-react';
 import { RotatingBadge } from '../UI/RotatingBadge';
+import { getVisibleCategories } from './EshopMegaMenu';
 
 // ===========================================
 // COMPONENT
@@ -110,26 +111,13 @@ export const EshopFooter: React.FC = () => {
           <div>
             <h4 className="font-bold text-sm uppercase tracking-wider mb-4">Obchod</h4>
             <ul className="space-y-3">
-              <li>
-                <Link to="/kategoria/mramor" className="text-gray-400 hover:text-white text-sm transition-colors">
-                  Mramor
-                </Link>
-              </li>
-              <li>
-                <Link to="/kategoria/granit" className="text-gray-400 hover:text-white text-sm transition-colors">
-                  Granit
-                </Link>
-              </li>
-              <li>
-                <Link to="/kategoria/beton" className="text-gray-400 hover:text-white text-sm transition-colors">
-                  Betón
-                </Link>
-              </li>
-              <li>
-                <Link to="/kategoria/drevo" className="text-gray-400 hover:text-white text-sm transition-colors">
-                  Drevo
-                </Link>
-              </li>
+              {getVisibleCategories().map((cat) => (
+                <li key={cat.id}>
+                  <Link to={`/kategoria/${cat.slug}`} className="text-gray-400 hover:text-white text-sm transition-colors">
+                    {cat.name}
+                  </Link>
+                </li>
+              ))}
               <li>
                 <Link to="/vypredaj" className="text-red-400 hover:text-red-300 text-sm transition-colors">
                   Výpredaj

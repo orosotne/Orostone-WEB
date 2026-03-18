@@ -8,7 +8,8 @@ import { useCart } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
 import { EshopMegaMenu, MEGA_MENU_CATEGORIES, MegaMenuCategory, getVisibleCategories } from './EshopMegaMenu';
 import { cn } from '../../lib/utils';
-import { SHOP_PRODUCTS, ShopProduct, SHOW_ANNOUNCEMENT_BAR } from '../../constants';
+import { ShopProduct, SHOW_ANNOUNCEMENT_BAR } from '../../constants';
+import { useShopifyProducts } from '../../hooks/useShopifyProducts';
 
 // ===========================================
 // ZARA-STYLE ESHOP NAVBAR
@@ -19,6 +20,7 @@ export const EshopNavbar: React.FC = () => {
   const navigate = useNavigate();
   const { openCart, itemCount } = useCart();
   const { isAuthenticated } = useAuth();
+  const { products: shopProducts } = useShopifyProducts();
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const [scrolled, setScrolled] = useState(false);
@@ -37,13 +39,13 @@ export const EshopNavbar: React.FC = () => {
   const searchResults = useMemo(() => {
     if (!searchQuery.trim() || searchQuery.length < 2) return [];
     const query = searchQuery.toLowerCase();
-    return SHOP_PRODUCTS.filter(p =>
+    return shopProducts.filter(p =>
       p.name.toLowerCase().includes(query) ||
       p.description.toLowerCase().includes(query) ||
       (p.color && p.color.toLowerCase().includes(query)) ||
       (p.finish && p.finish.toLowerCase().includes(query))
-    ).slice(0, 6); // Max 6 výsledkov
-  }, [searchQuery]);
+    ).slice(0, 6);
+  }, [searchQuery, shopProducts]);
 
   const handleSearchSelect = useCallback((product: ShopProduct) => {
     setSearchOpen(false);

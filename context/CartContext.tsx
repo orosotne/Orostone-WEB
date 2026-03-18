@@ -49,6 +49,7 @@ interface CartContextType {
   subtotal: number;
   total: number;
   isInCart: (productHandle: string) => boolean;
+  getItemQuantity: (productHandle: string) => number;
   
   // Sample (vzorka) helpers
   sampleCount: number;
@@ -73,13 +74,15 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 // HELPERS
 // ===========================================
 
+const PLACEHOLDER_IMAGE = '/images/logo.png';
+
 function mapShopifyCartLines(cart: ShopifyCart): CartItem[] {
   return cart.lines.edges.map(({ node: line }) => ({
     id: line.id,
     variantId: line.merchandise.id,
     productId: line.merchandise.product.handle,
     name: line.merchandise.product.title,
-    image: line.merchandise.image?.url || line.merchandise.product.images.edges[0]?.node.url || '',
+    image: line.merchandise.image?.url || line.merchandise.product.images.edges[0]?.node.url || PLACEHOLDER_IMAGE,
     price: parseFloat(line.cost.amountPerQuantity.amount),
     quantity: line.quantity,
     variant: line.merchandise.title !== 'Default Title' ? line.merchandise.title : '',
@@ -234,6 +237,12 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     return items.some(item => item.productId === productHandle);
   }, [items]);
 
+  const getItemQuantity = useCallback((productHandle: string) => {
+    return items
+      .filter(item => item.productId === productHandle)
+      .reduce((sum, item) => sum + item.quantity, 0);
+  }, [items]);
+
   // ------------------------------------------
   // SAMPLE (VZORKA) COMPUTED VALUES
   // ------------------------------------------
@@ -279,6 +288,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     subtotal,
     total,
     isInCart,
+    getItemQuantity,
     // Sample helpers
     sampleCount,
     isSampleInCart,

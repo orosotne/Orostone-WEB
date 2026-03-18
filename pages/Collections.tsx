@@ -301,7 +301,7 @@ export const Collections = () => {
         {/* Stats Bar */}
         <div className="absolute bottom-0 left-0 right-0 z-10 bg-black/30 backdrop-blur-sm border-t border-white/10">
           <div className="container mx-auto px-6 py-8">
-            <div className="grid grid-cols-4 gap-8 text-center text-white">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center text-white">
               <div className="collections-hero-stat">
                 <span className="text-3xl md:text-4xl font-sans font-bold text-brand-gold">50+</span>
                 <p className="text-xs font-bold uppercase tracking-widest mt-2 text-gray-400">Dekorov</p>

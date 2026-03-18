@@ -15,7 +15,7 @@ import { SEOHead } from '../components/UI/SEOHead';
 export const CategoryPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const { products, isLoading } = useShopifyProducts();
-  const { addItem, isInCart } = useCart();
+  const { addItem, isInCart, getItemQuantity } = useCart();
 
   // Parse slug pre podkategórie (napr. "sintered-stone/biele")
   const [mainCategory, subCategory] = slug?.split('/') || [];
@@ -178,14 +178,18 @@ export const CategoryPage: React.FC = () => {
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
           >
             {filteredProducts.map((product) => {
-              const cartItem = isInCart(product.shopifyVariantId || product.id);
+              const inCart = isInCart(product.id);
               return (
                 <ProductCard
                   key={product.id}
                   product={product}
-                  onAddToCart={() => addItem(product.shopifyVariantId || product.id, 1)}
-                  inCart={!!cartItem}
-                  quantity={cartItem ? 1 : 0}
+                  onAddToCart={() => {
+                    if (product.shopifyVariantId) {
+                      addItem(product.shopifyVariantId, 1);
+                    }
+                  }}
+                  inCart={inCart}
+                  quantity={getItemQuantity(product.id)}
                 />
               );
             })}
