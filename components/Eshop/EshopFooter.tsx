@@ -119,11 +119,6 @@ export const EshopFooter: React.FC = () => {
                 </li>
               ))}
               <li>
-                <Link to="/vypredaj" className="text-red-400 hover:text-red-300 text-sm transition-colors">
-                  Výpredaj
-                </Link>
-              </li>
-              <li>
                 <Link to="/blog" className="text-brand-gold hover:text-white text-sm transition-colors font-medium">
                   Blog
                 </Link>
@@ -231,15 +226,6 @@ export const EshopFooter: React.FC = () => {
             <RotatingBadge onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
           </div>
           
-          {/* Back to main site */}
-          <div className="mt-4 text-center">
-            <a 
-              href="https://www.orostone.sk" 
-              className="text-xs text-gray-500 hover:text-brand-gold transition-colors"
-            >
-              ← Späť na www.orostone.sk
-            </a>
-          </div>
         </div>
       </div>
     </footer>

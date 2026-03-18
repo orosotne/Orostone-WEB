@@ -333,12 +333,10 @@ export const Account = () => {
                   <span className="text-xl font-bold text-brand-gold">
                     {formatPrice(order.total)}
                   </span>
-                  <Link to={`/objednavka/${order.order_number}`}>
-                    <Button variant="outline" size="sm" className="border-gray-200">
-                      Detail
-                      <ChevronRight size={16} />
-                    </Button>
-                  </Link>
+                  <Button variant="outline" size="sm" className="border-gray-200 opacity-50 cursor-not-allowed" disabled>
+                    Detail
+                    <ChevronRight size={16} />
+                  </Button>
                 </div>
               </div>
             </motion.div>

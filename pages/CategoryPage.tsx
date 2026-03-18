@@ -77,7 +77,7 @@ export const CategoryPage: React.FC = () => {
       <SEOHead
         title={`${category.name} | OROSTONE E-Shop`}
         description={category.description || `${category.name} — prémiové produkty od OROSTONE.`}
-        canonical={`https://eshop.orostone.sk/#/kategoria/${slug}`}
+        canonical={`https://www.orostone.sk/kategoria/${slug}`}
       />
 
       {/* ==================== HERO ==================== */}

@@ -296,18 +296,18 @@ export const OrderModal: React.FC<OrderModalProps> = ({ product, isOpen, onClose
                                             />
                                             <span className="text-xs text-stone-500 group-hover:text-stone-700 transition-colors">
                                                 Súhlasím s{' '}
-                                                <a href="#/vop#eshop-uvod" target="_blank" rel="noopener noreferrer" className="underline hover:text-brand-gold" onClick={(e) => e.stopPropagation()}>
+                                                <a href="/vop#eshop-uvod" target="_blank" rel="noopener noreferrer" className="underline hover:text-brand-gold" onClick={(e) => e.stopPropagation()}>
                                                     VOP pre e-shop
                                                 </a>
                                                 {' '}a{' '}
-                                                <a href="#/ochrana-sukromia" target="_blank" rel="noopener noreferrer" className="underline hover:text-brand-gold" onClick={(e) => e.stopPropagation()}>
+                                                <a href="/ochrana-sukromia" target="_blank" rel="noopener noreferrer" className="underline hover:text-brand-gold" onClick={(e) => e.stopPropagation()}>
                                                     spracovaním osobných údajov
                                                 </a>
                                             </span>
                                         </label>
                                         
                                         <a
-                                            href="#/vop"
+                                            href="/vop"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="flex items-center justify-center gap-2 text-xs text-stone-400 hover:text-brand-gold transition-colors"

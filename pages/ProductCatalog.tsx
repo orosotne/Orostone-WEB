@@ -166,11 +166,11 @@ export const ProductCatalog = () => {
     <main ref={containerRef} className="bg-white min-h-screen">
       <SEOHead
         title="Všetky produkty | OROSTONE E-Shop"
-        description="Kompletná ponuka prémiových sinterovaných kameňov, stolov, indukčných dosiek a doplnkov. Dosky 3200x1600mm s dopravou po celom Slovensku."
-        canonical="https://eshop.orostone.sk/#/vsetky-produkty"
+        description="Kompletná ponuka prémiových sinterovaných kameňov. Veľkoformátové dosky 3200x1600mm s dopravou po celom Slovensku."
+        canonical="https://www.orostone.sk/vsetky-produkty"
         structuredData={createBreadcrumbLD([
-          { name: 'E-Shop', url: 'https://eshop.orostone.sk/' },
-          { name: 'Všetky produkty', url: 'https://eshop.orostone.sk/#/vsetky-produkty' },
+          { name: 'E-Shop', url: 'https://www.orostone.sk/' },
+          { name: 'Všetky produkty', url: 'https://www.orostone.sk/vsetky-produkty' },
         ])}
       />
 

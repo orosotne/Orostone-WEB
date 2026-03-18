@@ -240,7 +240,7 @@ export const BlogArticle: React.FC = () => {
   const content = article[lang];
 
   // Canonical URL
-  const canonicalUrl = `https://www.orostone.sk/#/blog/${article.slug}`;
+  const canonicalUrl = `https://www.orostone.sk/blog/${article.slug}`;
 
   // Estimate word count from HTML content (strip tags)
   const wordCount = useMemo(() => {
@@ -336,7 +336,7 @@ export const BlogArticle: React.FC = () => {
           __html: JSON.stringify(
             createBreadcrumbLD([
               { name: 'OROSTONE', url: 'https://www.orostone.sk/' },
-              { name: 'Blog', url: 'https://www.orostone.sk/#/blog' },
+              { name: 'Blog', url: 'https://www.orostone.sk/blog' },
               { name: content.title, url: canonicalUrl },
             ]),
           ),

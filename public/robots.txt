@@ -30,4 +30,3 @@ User-agent: Applebot
 Allow: /
 
 Sitemap: https://www.orostone.sk/sitemap.xml
-Sitemap: https://eshop.orostone.sk/sitemap.xml

@@ -113,24 +113,8 @@ export const EshopNavbar: React.FC = () => {
                 {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
               </button>
 
-              {/* Back to main website - Desktop */}
-              <a
-                href="/"
-                className={cn(
-                  "group hidden lg:flex items-center gap-1.5 text-[11px] tracking-[0.15em] uppercase hover:font-semibold transition-all duration-500",
-                  isTransparent ? "text-white/60 hover:text-white" : "text-gray-500 hover:text-brand-gold"
-                )}
-              >
-                <Diamond 
-                  size={14} 
-                  strokeWidth={1.5} 
-                  className={cn(
-                    "transition-all duration-500 ease-out group-hover:rotate-[360deg]",
-                    isTransparent ? "group-hover:fill-white" : "group-hover:fill-brand-gold"
-                  )}
-                />
-                <span>O značke</span>
-              </a>
+              {/* Spacer for layout balance */}
+              <div className="hidden lg:block" />
             </div>
 
             {/* Center: Logo */}
@@ -318,7 +302,7 @@ export const EshopNavbar: React.FC = () => {
         onMouseLeave={() => setActiveCategory(null)}
       >
         <div className="container mx-auto px-8 relative">
-          {/* Menu Button - positioned left, aligned under "O značke" */}
+          {/* Menu Button */}
           <button
             onClick={() => setOffCanvasOpen(true)}
             className={cn(
@@ -416,29 +400,8 @@ export const EshopNavbar: React.FC = () => {
                 </button>
               </div>
 
-              {/* Back to main website - Mobile */}
-              <a
-                href="/"
-                className="flex items-center gap-2 px-6 py-4 text-[11px] tracking-[0.15em] uppercase text-gray-500 hover:text-black border-b border-gray-100"
-              >
-                <ArrowLeft size={14} strokeWidth={1.5} />
-                O značke
-              </a>
-
               {/* Categories */}
               <div className="py-4">
-                {/* All Products - First Item */}
-                <Link
-                  to="/vsetky-produkty"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between px-6 py-4 text-[13px] tracking-[0.1em] uppercase text-brand-gold font-medium hover:bg-gray-50 transition-colors"
-                >
-                  Všetky produkty
-                  <ChevronDown size={16} strokeWidth={1.5} className="-rotate-90" />
-                </Link>
-
-                <div className="h-px bg-gray-100 my-2" />
-
                 {getVisibleCategories().map((category) => (
                   <Link
                     key={category.id}
@@ -453,20 +416,6 @@ export const EshopNavbar: React.FC = () => {
 
                 <div className="h-px bg-gray-100 my-2" />
 
-                <Link
-                  to="/novinky"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block px-6 py-4 text-[13px] tracking-[0.1em] uppercase text-black hover:bg-gray-50"
-                >
-                  Novinky
-                </Link>
-                <Link
-                  to="/vypredaj"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block px-6 py-4 text-[13px] tracking-[0.1em] uppercase text-black hover:bg-gray-50"
-                >
-                  Výpredaj
-                </Link>
                 <Link
                   to="/blog"
                   onClick={() => setMobileMenuOpen(false)}
@@ -556,92 +505,18 @@ export const EshopNavbar: React.FC = () => {
                 </button>
               </div>
 
-              {/* Back to main website */}
-              <a
-                href="/"
-                className="flex items-center gap-2 px-8 py-5 text-[11px] tracking-[0.15em] uppercase text-gray-500 hover:text-black border-b border-gray-100 transition-colors"
-              >
-                <Diamond size={14} strokeWidth={1.5} />
-                O značke
-              </a>
-
               {/* Menu Content */}
               <div className="py-6">
-                {/* KOLEKCIE - Expandable Section */}
-                <div className="border-b border-gray-100">
-                  <button
-                    onClick={() => setCollectionsExpanded(!collectionsExpanded)}
-                    className="w-full flex items-center justify-between px-8 py-5 text-[14px] tracking-[0.15em] uppercase font-bold text-black hover:bg-gray-50 transition-colors"
+                {getVisibleCategories().map((category) => (
+                  <Link
+                    key={category.id}
+                    to={`/kategoria/${category.slug}`}
+                    onClick={() => setOffCanvasOpen(false)}
+                    className="flex items-center px-8 py-5 text-[14px] tracking-[0.15em] uppercase font-bold text-black hover:bg-gray-50 transition-colors border-b border-gray-100"
                   >
-                    Kategórie
-                    <ChevronDown 
-                      size={18} 
-                      strokeWidth={1.5}
-                      className={cn(
-                        "transition-transform duration-300",
-                        collectionsExpanded && "rotate-180"
-                      )}
-                    />
-                  </button>
-
-                  {/* Expanded Categories */}
-                  <AnimatePresence>
-                    {collectionsExpanded && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="overflow-hidden bg-gray-50"
-                      >
-                        {/* Všetky produkty - First Item */}
-                        <Link
-                          to="/vsetky-produkty"
-                          onClick={() => {
-                            setOffCanvasOpen(false);
-                            setCollectionsExpanded(false);
-                          }}
-                          className="flex items-center justify-between px-8 py-4 text-[13px] tracking-[0.08em] uppercase font-normal text-brand-gold hover:bg-gray-100 transition-colors"
-                        >
-                          Všetky produkty
-                          <ChevronDown size={14} strokeWidth={1.5} className="-rotate-90" />
-                        </Link>
-
-                        {/* Category Items */}
-                        {getVisibleCategories().map((category) => (
-                          <Link
-                            key={category.id}
-                            to={`/kategoria/${category.slug}`}
-                            onClick={() => {
-                              setOffCanvasOpen(false);
-                              setCollectionsExpanded(false);
-                            }}
-                            className="flex items-center justify-between px-8 py-4 text-[13px] tracking-[0.08em] uppercase font-normal text-gray-700 hover:text-black hover:bg-gray-100 transition-colors"
-                          >
-                            {category.name}
-                            <ChevronDown size={14} strokeWidth={1.5} className="-rotate-90" />
-                          </Link>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                {/* Other Menu Items */}
-                <Link
-                  to="/novinky"
-                  onClick={() => setOffCanvasOpen(false)}
-                  className="flex items-center px-8 py-5 text-[14px] tracking-[0.15em] uppercase font-bold text-black hover:bg-gray-50 transition-colors border-b border-gray-100"
-                >
-                  Novinky
-                </Link>
-                <Link
-                  to="/vypredaj"
-                  onClick={() => setOffCanvasOpen(false)}
-                  className="flex items-center px-8 py-5 text-[14px] tracking-[0.15em] uppercase font-bold text-black hover:bg-gray-50 transition-colors border-b border-gray-100"
-                >
-                  Výpredaj
-                </Link>
+                    {category.name}
+                  </Link>
+                ))}
                 <Link
                   to="/blog"
                   onClick={() => setOffCanvasOpen(false)}

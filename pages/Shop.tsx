@@ -110,26 +110,6 @@ const HERO_SLIDES = [
     subtitle: 'Prémiové sinterované platne pre náročné interiéry',
     cta: 'Objavte kolekcie',
   },
-  {
-    id: 2,
-    video: 'https://cdn.coverr.co/videos/coverr-modern-kitchen-interior-4k-6159/1080p.mp4',
-    poster: '/images/home/hero-2.jpeg',
-    label: 'Invisible Cooktop',
-    title: 'Neviditeľná',
-    titleAccent: 'varná doska.',
-    subtitle: 'Revolučná technológia varenia priamo na kameni',
-    cta: 'Zistiť viac',
-  },
-  {
-    id: 3,
-    video: 'https://cdn.coverr.co/videos/coverr-modern-kitchen-interior-4k-6159/1080p.mp4',
-    poster: '/images/home/hero-4.jpeg',
-    label: 'Stoly zo sinterovaného kameňa',
-    title: 'Dizajnové stoly.',
-    titleAccent: 'Na mieru.',
-    subtitle: 'Luxusné jedálenské a konferenčné stoly na zákazku',
-    cta: 'Pozrieť stoly',
-  },
 ];
 
 // ===========================================
@@ -548,7 +528,7 @@ export const Shop = () => {
       <SEOHead
         title="OROSTONE E-Shop | Prémiový sinterovaný kameň"
         description="Nakupujte prémiové sinterované kamene od OROSTONE. Mramor, granit, betón — všetko s dopravou po celom Slovensku. Dosky 3200x1600mm skladom."
-        canonical="https://eshop.orostone.sk/"
+        canonical="https://www.orostone.sk/"
         ogType="website"
         structuredData={OROSTONE_ORGANIZATION_LD}
       />
@@ -566,7 +546,7 @@ export const Shop = () => {
               "@type": "ListItem",
               "position": i + 1,
               "name": p.name,
-              "url": `https://eshop.orostone.sk/#/produkt/${p.id}`,
+              "url": `https://www.orostone.sk/produkt/${p.id}`,
               "image": p.image,
             })),
           }) }}

@@ -129,53 +129,55 @@ export const Navbar = () => {
       {/* MOBILE MENU */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 bg-white z-40 flex flex-col pt-32 px-8 h-screen xl:hidden"
-          >
-            <nav className="flex flex-col gap-6">
-              {NAV_LINKS.map((link) => (
-                link.external ? (
-                  <a
-                    key={link.path}
-                    href={link.path}
-                    className="font-sans text-2xl font-light tracking-wide border-b border-gray-100 pb-4 flex justify-between items-center text-brand-dark hover:text-brand-gold"
-                  >
-                    {link.label}
-                    <ArrowRight className="text-gray-300" size={20} />
-                  </a>
-                ) : (
-                  <NavLink
-                    key={link.path}
-                    to={link.path}
-                    className={({ isActive }) =>
-                      `font-sans text-2xl font-light tracking-wide border-b border-gray-100 pb-4 flex justify-between items-center ${isActive ? 'text-brand-gold' : 'text-brand-dark'
-                      }`
-                    }
-                  >
-                    {link.label}
-                    <ArrowRight className="text-gray-300" size={20} />
+          <div className="fixed inset-0 z-40 overflow-hidden xl:hidden">
+            <motion.div
+              initial={{ opacity: 0, x: '100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: '100%' }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="absolute inset-0 bg-white flex flex-col pt-32 px-8"
+            >
+              <nav className="flex flex-col gap-6">
+                {NAV_LINKS.map((link) => (
+                  link.external ? (
+                    <a
+                      key={link.path}
+                      href={link.path}
+                      className="font-sans text-2xl font-light tracking-wide border-b border-gray-100 pb-4 flex justify-between items-center text-brand-dark hover:text-brand-gold"
+                    >
+                      {link.label}
+                      <ArrowRight className="text-gray-300" size={20} />
+                    </a>
+                  ) : (
+                    <NavLink
+                      key={link.path}
+                      to={link.path}
+                      className={({ isActive }) =>
+                        `font-sans text-2xl font-light tracking-wide border-b border-gray-100 pb-4 flex justify-between items-center ${isActive ? 'text-brand-gold' : 'text-brand-dark'
+                        }`
+                      }
+                    >
+                      {link.label}
+                      <ArrowRight className="text-gray-300" size={20} />
+                    </NavLink>
+                  )
+                ))}
+
+                <div className="mt-8 space-y-4">
+                  <NavLink to="/kontakt?openWizard=true" className="block">
+                    <Button className="w-full justify-between py-4" variant="primary">
+                      Nezáväzný dopyt
+                      <MessageSquare size={18} />
+                    </Button>
                   </NavLink>
-                )
-              ))}
+                </div>
+              </nav>
 
-              <div className="mt-8 space-y-4">
-                <NavLink to="/kontakt?openWizard=true" className="block">
-                  <Button className="w-full justify-between py-4" variant="primary">
-                    Nezáväzný dopyt
-                    <MessageSquare size={18} />
-                  </Button>
-                </NavLink>
+              <div className="font-sans mt-auto pb-12 text-center text-gray-400 text-xs tracking-widest uppercase">
+                Orostone Premium Surfaces
               </div>
-            </nav>
-
-            <div className="font-sans mt-auto pb-12 text-center text-gray-400 text-xs tracking-widest uppercase">
-              Orostone Premium Surfaces
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </header>

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, Suspense, lazy } from 'react';
-import { HashRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { EshopLayout } from './components/Eshop/EshopLayout';
 import { LoadingSpinner } from './components/UI/LoadingSpinner';
 import { ErrorBoundary } from './components/UI/ErrorBoundary';
@@ -88,13 +88,13 @@ const NotFoundPage: React.FC = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <a
-            href="#/"
+            href="/"
             className="inline-flex items-center justify-center gap-2 bg-brand-dark text-white px-6 py-3 rounded-lg text-sm tracking-wider uppercase font-semibold hover:bg-brand-gold hover:text-brand-dark transition-all"
           >
             Hlavná stránka
           </a>
           <a
-            href="#/vsetky-produkty"
+            href="/vsetky-produkty"
             className="inline-flex items-center justify-center gap-2 border border-gray-300 text-brand-dark px-6 py-3 rounded-lg text-sm tracking-wider uppercase font-semibold hover:border-brand-dark transition-all"
           >
             Všetky produkty
@@ -170,14 +170,21 @@ const EshopAppContent = () => {
             </Suspense>
           } />
 
-          {/* Special Pages */}
-          <Route path="/novinky" element={<PlaceholderPage title="Novinky" />} />
-          <Route path="/vypredaj" element={<PlaceholderPage title="Výpredaj" />} />
+          {/* Info Pages */}
           <Route path="/doprava" element={<PlaceholderPage title="Doprava a platba" />} />
           <Route path="/reklamacie" element={<PlaceholderPage title="Reklamácie a vrátenie" />} />
           <Route path="/kontakt" element={<PlaceholderPage title="Kontakt" />} />
-          <Route path="/key-facts" element={<PlaceholderPage title="Kľúčové fakty" />} />
           <Route path="/objednavky" element={<Navigate to="/ucet" replace />} />
+
+          {/* Redirects for old presentation site paths */}
+          <Route path="/kolekcie" element={<Navigate to="/vsetky-produkty" replace />} />
+          <Route path="/kolekcie/:collectionId" element={<Navigate to="/vsetky-produkty" replace />} />
+          <Route path="/realizacie" element={<Navigate to="/" replace />} />
+          <Route path="/online-kalkulacka" element={<Navigate to="/" replace />} />
+          <Route path="/vizualizator" element={<Navigate to="/" replace />} />
+          <Route path="/o-kameni" element={<Navigate to="/" replace />} />
+          <Route path="/sinterovany-kamen" element={<Navigate to="/" replace />} />
+          <Route path="/key-facts" element={<Navigate to="/" replace />} />
           
           {/* Legal */}
           <Route path="/vop" element={

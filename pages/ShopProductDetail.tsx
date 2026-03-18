@@ -2491,10 +2491,10 @@ const ProductSchema: React.FC<ProductSchemaProps> = ({ product, totalPrice }) =>
     "size": product.dimensions,
     "weight": product.weight ? `${product.weight} kg` : undefined,
     "countryOfOrigin": product.countryOfOrigin || "Slovensko",
-    "url": `https://eshop.orostone.sk/#/produkt/${product.id}`,
+    "url": `https://www.orostone.sk/produkt/${product.id}`,
     "offers": {
       "@type": "Offer",
-      "url": `https://eshop.orostone.sk/#/produkt/${product.id}`,
+      "url": `https://www.orostone.sk/produkt/${product.id}`,
       "priceCurrency": "EUR",
       "price": totalPrice.toFixed(2),
       "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
@@ -2689,7 +2689,7 @@ export const ShopProductDetail: React.FC = () => {
       <SEOHead
         title={seoTitle}
         description={seoDescription}
-        canonical={`https://eshop.orostone.sk/#/produkt/${product.id}`}
+        canonical={`https://www.orostone.sk/produkt/${product.id}`}
         ogType="product"
         ogImage={seoImage}
       />
@@ -2755,9 +2755,9 @@ export const ShopProductDetail: React.FC = () => {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(createBreadcrumbLD([
-          { name: 'OROSTONE', url: 'https://eshop.orostone.sk/' },
-          { name: 'E-Shop', url: 'https://eshop.orostone.sk/#/' },
-          { name: product.name, url: `https://eshop.orostone.sk/#/produkt/${product.id}` },
+          { name: 'OROSTONE', url: 'https://www.orostone.sk/' },
+          { name: 'E-Shop', url: 'https://www.orostone.sk/' },
+          { name: product.name, url: `https://www.orostone.sk/produkt/${product.id}` },
         ])) }}
       />
 

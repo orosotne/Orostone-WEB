@@ -28,13 +28,15 @@ const ALL_IMAGES = [
   '/images/inspiration/inspiration-7.webp',
 ];
 
-// All 5 videos available in /public/videos/inspiration/
+// All 7 videos available in /public/videos/inspiration/
 const ALL_VIDEOS = [
   '/videos/inspiration/inspiration-1.mp4',
   '/videos/inspiration/inspiration-2.mp4',
   '/videos/inspiration/inspiration-3.mp4',
   '/videos/inspiration/inspiration-4.mp4',
   '/videos/inspiration/inspiration-5.mp4',
+  '/videos/inspiration/inspiration-6.mp4',
+  '/videos/inspiration/inspiration-7.mp4',
 ];
 
 const UNIQUE_COLS = Math.max(ALL_IMAGES.length, ALL_VIDEOS.length); // 7
@@ -209,6 +211,30 @@ const ImageCard = ({ src, idx, onOpen }: { src: string; idx: number; onOpen: () 
 const VideoCard = ({ src, idx, onOpen }: { src: string; idx: number; onOpen: () => void; key?: React.Key }) => {
   const [muted, setMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const cardRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const el = cardRef.current;
+    const video = videoRef.current;
+    if (!el || !video) return;
+
+    // Prevent autoplay — we manage it via observer
+    video.pause();
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { rootMargin: '200px' },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const toggleMute = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -221,6 +247,7 @@ const VideoCard = ({ src, idx, onOpen }: { src: string; idx: number; onOpen: () 
 
   return (
     <button
+      ref={cardRef}
       type="button"
       onClick={onOpen}
       className="insp-card block relative flex-shrink-0 overflow-hidden rounded-xl cursor-zoom-in"
@@ -232,8 +259,8 @@ const VideoCard = ({ src, idx, onOpen }: { src: string; idx: number; onOpen: () 
         className="absolute inset-0 w-full h-full object-cover"
         muted
         loop
-        autoPlay
         playsInline
+        preload="none"
       >
         <source src={src} type="video/mp4" />
       </video>
@@ -292,11 +319,11 @@ export const InspirationSection: React.FC<Props> = () => {
   const getMediaIndex = (colIdx: number, position: 'top' | 'bottom') =>
     colIdx * 2 + (position === 'top' ? 0 : 1);
 
-  // 6 copies total (3 per half) for the seamless -50% loop
-  // 7 unique cols × 230px = 1610px → 3 copies per half = 4830px > 1920px ✓
+  // 4 copies (2 per half) for the seamless -50% loop
+  // 7 unique cols × 230px = 1610px → 2 copies per half = 3220px > 1920px ✓
   const strip = [
-    ...UNIQUE_COLUMNS, ...UNIQUE_COLUMNS, ...UNIQUE_COLUMNS,
-    ...UNIQUE_COLUMNS, ...UNIQUE_COLUMNS, ...UNIQUE_COLUMNS,
+    ...UNIQUE_COLUMNS, ...UNIQUE_COLUMNS,
+    ...UNIQUE_COLUMNS, ...UNIQUE_COLUMNS,
   ];
 
   const isOpen = lightboxIndex !== null;

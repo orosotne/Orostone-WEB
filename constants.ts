@@ -1113,8 +1113,7 @@ export interface NavLinkItem {
 }
 
 export const NAV_LINKS: NavLinkItem[] = [
-  { label: 'Shop', path: '/eshop.html', external: true },
-  { label: 'O kameni', path: '/o-kameni' },
+  { label: 'Shop', path: '/' },
   { label: 'Kolekcie', path: '/kolekcie' },
   { label: 'Realizácie', path: '/realizacie' },
   { label: 'Vizualizátor', path: '/vizualizator' },

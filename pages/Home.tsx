@@ -453,7 +453,7 @@ export const Home = () => {
         
         {/* Parallax Background */}
         <div className="absolute inset-0 z-0 overflow-hidden">
-          <div className="hero-bg-image absolute -inset-[10%] w-[120%] h-[120%]">
+          <div className="hero-bg-image absolute inset-0 w-full h-full" style={{ transform: 'scale(1.2)' }}>
             <img
               src="/images/home/hero-1.jpeg"
               alt="Luxury Stone Kitchen"
@@ -1239,7 +1239,7 @@ export const Home = () => {
           </p>
           
           <Link to="/kontakt?openWizard=true" className="cta-text">
-            <Button className="bg-brand-gold text-brand-dark px-16 py-6 text-lg shadow-2xl hover:shadow-brand-gold/30 hover:scale-105 transition-all duration-300 rounded-full hover:bg-white">
+            <Button className="bg-brand-gold text-brand-dark px-8 sm:px-16 py-6 text-lg shadow-2xl hover:shadow-brand-gold/30 hover:scale-105 transition-all duration-300 rounded-full hover:bg-white max-w-full">
               Vytvoriť Nezáväzný Dopyt
             </Button>
           </Link>
@@ -1267,7 +1267,7 @@ export const Home = () => {
           </button>
 
           {/* Modal Content */}
-          <div className="relative z-10 w-full max-w-5xl mx-6">
+          <div className="relative z-10 w-[calc(100%-3rem)] max-w-5xl mx-auto">
             {/* Header */}
             <div className="cta-modal-header text-center mb-12">
               <span className="text-brand-gold text-xs font-bold tracking-[0.3em] uppercase mb-4 block">

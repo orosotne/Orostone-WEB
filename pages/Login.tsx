@@ -115,9 +115,9 @@ export const Login = () => {
                 <label className="text-sm font-medium text-gray-700">
                   Heslo
                 </label>
-                <Link to="/forgot-password" className="text-sm text-brand-gold hover:underline">
+                <span className="text-sm text-gray-400 cursor-not-allowed" title="Už čoskoro">
                   Zabudli ste heslo?
-                </Link>
+                </span>
               </div>
               <div className="relative">
                 <Lock size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />

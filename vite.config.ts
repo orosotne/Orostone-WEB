@@ -19,17 +19,9 @@ export default defineConfig(({ mode }) => {
           '@': path.resolve(__dirname, '.'),
         }
       },
-      // Multi-page build configuration
-      // www.orostone.sk -> index.html
-      // eshop.orostone.sk -> eshop.html
       build: {
         rollupOptions: {
-          input: {
-            main: path.resolve(__dirname, 'index.html'),
-            eshop: path.resolve(__dirname, 'eshop.html'),
-          },
           output: {
-            // Shared chunks pre optimalizáciu bundle size
             manualChunks: {
               'vendor-react': ['react', 'react-dom', 'react-router-dom'],
               'vendor-ui': ['framer-motion', 'lucide-react'],
