@@ -5,13 +5,13 @@ import { useShopifyProducts } from '../../hooks/useShopifyProducts';
 import { RotatingBadge } from '../UI/RotatingBadge';
 
 const TESTIMONIAL = {
-  quote: 'Presne to, čo sme hľadali pre náš projekt. Materiál vyzerá luxusne a je extrémne odolný. Klienti sú nadšení.',
+  quote: 'Bezplatná vzorka nám ušetrila množstvo času. Videli sme aj cítili kvalitu materiálu ešte pred objednávkou — klienti boli presvedčení okamžite.',
   name: 'Arch. Zuzana Nováková',
   role: 'Studio Z, Bratislava',
   avatar: 'https://i.pravatar.cc/64?img=47',
 };
 
-const LIFESTYLE_IMAGE = 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80';
+const LIFESTYLE_IMAGE = '/images/sample-lead.webp';
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 
@@ -101,7 +101,7 @@ export const SampleLeadSection: React.FC = () => {
             <div className="relative rounded-2xl overflow-hidden aspect-[4/5] lg:aspect-auto lg:h-[600px]">
               <img
                 src={LIFESTYLE_IMAGE}
-                alt="Luxusný kuchynský interiér so sinterovaným kameňom"
+                alt="Prémiové vzorky sinterovaného kameňa OROSTONE v elegantnom balení"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand-dark/10 to-transparent" />

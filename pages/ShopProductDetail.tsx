@@ -299,68 +299,75 @@ const BundleSelector: React.FC<BundleSelectorProps> = ({
               key={bundle.quantity}
               onClick={() => onBundleChange(bundle)}
               className={cn(
-                "w-full p-4 border transition-all text-left relative",
+                "w-full p-3 sm:p-4 border transition-all text-left relative",
                 isSelected 
                   ? "border-brand-dark bg-white ring-1 ring-brand-dark" 
                   : "border-gray-200 bg-white hover:border-gray-400"
               )}
             >
-              {/* Best Value Badge */}
+              {/* Best Value Badge — inline on mobile, absolute on desktop */}
               {bundle.isBestValue && (
-                <span className="absolute -top-2.5 right-4 bg-brand-gold text-brand-dark text-xs lg:text-[9px] font-bold tracking-wider uppercase px-2 py-0.5">
+                <span className="hidden sm:block absolute -top-2.5 right-4 bg-brand-gold text-brand-dark text-[9px] font-bold tracking-wider uppercase px-2 py-0.5">
                   Najlepšia hodnota
                 </span>
               )}
 
-              <div className="flex items-start justify-between gap-4">
-                {/* Left: Radio + Label */}
-                <div className="flex items-start gap-3">
-                  {/* Custom Radio — 24px visual, 44px touch via parent button */}
-                  <div className={cn(
-                    "w-6 h-6 lg:w-5 lg:h-5 rounded-full border-2 flex items-center justify-center mt-0.5 flex-shrink-0",
-                    isSelected ? "border-brand-dark" : "border-gray-300"
-                  )}>
-                    {isSelected && (
-                      <div className="w-3 h-3 lg:w-2.5 lg:h-2.5 rounded-full bg-brand-dark" />
-                    )}
-                  </div>
-
-                  {/* Bundle Info */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="font-semibold text-brand-dark">
-                        {bundle.quantity} {bundle.quantity === 1 ? 'platňa' : bundle.quantity < 5 ? 'platne' : 'platní'}
-                      </span>
-                      {bundle.discountPercent > 0 && (
-                        <span className="text-emerald-600 text-sm font-semibold">
-                          {bundle.label}
-                        </span>
-                      )}
-                      {bundle.discountPercent === 0 && (
-                        <span className="text-gray-400 text-sm">
-                          — {bundle.label}
-                        </span>
-                      )}
-                    </div>
-                    <div className="text-xs text-gray-500">
-                      {formatPrice(bundlePricePerM2)} / m² • {totalAreaM2.toFixed(2)} m²
-                    </div>
-                  </div>
+              <div className="flex items-start gap-3">
+                {/* Custom Radio */}
+                <div className={cn(
+                  "w-6 h-6 lg:w-5 lg:h-5 rounded-full border-2 flex items-center justify-center mt-0.5 flex-shrink-0",
+                  isSelected ? "border-brand-dark" : "border-gray-300"
+                )}>
+                  {isSelected && (
+                    <div className="w-3 h-3 lg:w-2.5 lg:h-2.5 rounded-full bg-brand-dark" />
+                  )}
                 </div>
 
-                {/* Right: Price */}
-                <div className="text-right flex-shrink-0">
-                  <div className="font-bold text-brand-dark text-lg">
-                    {formatPrice(bundlePricePerM2)}<span className="text-sm font-normal text-gray-400"> / m²</span>
-                  </div>
-                  <div className="text-xs text-gray-500">
-                    spolu {formatPrice(bundlePrice)}
-                  </div>
-                  {savings > 0 && (
-                    <div className="text-emerald-600 text-xs font-medium">
-                      Ušetríš: {formatPrice(savings)}
+                {/* Content — stacked on mobile, side-by-side on sm+ */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+                    {/* Left: Label + meta */}
+                    <div className="min-w-0">
+                      <div className="flex items-center flex-wrap gap-x-2 gap-y-0.5 mb-0.5 sm:mb-1">
+                        <span className="font-semibold text-brand-dark text-sm sm:text-base">
+                          {bundle.quantity} {bundle.quantity === 1 ? 'platňa' : bundle.quantity < 5 ? 'platne' : 'platní'}
+                        </span>
+                        {bundle.discountPercent > 0 && (
+                          <span className="text-emerald-600 text-xs sm:text-sm font-semibold">
+                            {bundle.label}
+                          </span>
+                        )}
+                        {bundle.discountPercent === 0 && (
+                          <span className="text-gray-400 text-xs sm:text-sm">
+                            — {bundle.label}
+                          </span>
+                        )}
+                        {bundle.isBestValue && (
+                          <span className="sm:hidden bg-brand-gold text-brand-dark text-[9px] font-bold tracking-wider uppercase px-1.5 py-0.5 leading-none">
+                            Najlepšia hodnota
+                          </span>
+                        )}
+                      </div>
+                      <div className="text-[11px] sm:text-xs text-gray-500">
+                        {formatPrice(bundlePricePerM2)} / m² • {totalAreaM2.toFixed(2)} m²
+                      </div>
                     </div>
-                  )}
+
+                    {/* Right: Price — below label on mobile, right-aligned on sm+ */}
+                    <div className="mt-1.5 sm:mt-0 sm:text-right flex-shrink-0">
+                      <div className="font-bold text-brand-dark text-base sm:text-lg">
+                        {formatPrice(bundlePricePerM2)}<span className="text-xs sm:text-sm font-normal text-gray-400"> / m²</span>
+                      </div>
+                      <div className="text-[11px] sm:text-xs text-gray-500">
+                        spolu {formatPrice(bundlePrice)}
+                      </div>
+                      {savings > 0 && (
+                        <div className="text-emerald-600 text-[11px] sm:text-xs font-medium">
+                          Ušetríš: {formatPrice(savings)}
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
             </button>
@@ -2839,9 +2846,6 @@ export const ShopProductDetail: React.FC = () => {
           </button>
         </div>
       </div>
-
-      {/* Spacer for sticky bar so content isn't hidden behind it on mobile */}
-      <div className="h-28 lg:hidden" />
     </main>
   );
 };

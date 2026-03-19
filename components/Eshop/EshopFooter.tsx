@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { 
   Facebook, Instagram, Youtube, Mail, Phone, MapPin,
   CreditCard, Truck, Shield, Clock
@@ -12,8 +12,11 @@ import { getVisibleCategories } from './EshopMegaMenu';
 // ===========================================
 
 export const EshopFooter: React.FC = () => {
+  const { pathname } = useLocation();
+  const isProductDetail = pathname.startsWith('/produkt/');
+
   return (
-    <footer className="bg-brand-dark text-white">
+    <footer className={`bg-brand-dark text-white${isProductDetail ? ' pb-40 lg:pb-0' : ''}`}>
       
       {/* Trust Badges */}
       <div className="border-b border-white/10">

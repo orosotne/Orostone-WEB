@@ -97,7 +97,7 @@ export const BlogPreviewSection: React.FC<BlogPreviewSectionProps> = ({
         {/* Horizontal scroll container */}
         <div
           ref={scrollRef}
-          className="blog-scroll-container flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-4 lg:-mx-0 lg:px-0"
+          className="blog-scroll-container flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 -mx-4 px-6 lg:-mx-0 lg:px-0"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           <style>{`
@@ -107,7 +107,7 @@ export const BlogPreviewSection: React.FC<BlogPreviewSectionProps> = ({
             <Link
               key={article.id}
               to={`/blog/${article.slug}`}
-              className="blog-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 snap-start shrink-0 w-[75vw] sm:w-[320px] lg:w-[300px]"
+              className="blog-card group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 snap-start shrink-0 w-[72vw] sm:w-[320px] lg:w-[300px]"
             >
               {/* Image */}
               <div className="relative aspect-[3/2] overflow-hidden">

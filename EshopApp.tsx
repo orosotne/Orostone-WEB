@@ -8,6 +8,7 @@ import { ProductGridSkeleton, ProductDetailSkeleton, CheckoutSkeleton } from './
 // Core pages (always loaded)
 import { Shop } from './pages/Shop';
 import { ProductCatalog } from './pages/ProductCatalog';
+import { EshopContact } from './pages/EshopContact';
 
 // Lazy loaded pages for better bundle splitting
 const ShopProductDetail = lazy(() => import('./pages/ShopProductDetail').then(m => ({ default: m.ShopProductDetail })));
@@ -173,7 +174,7 @@ const EshopAppContent = () => {
           {/* Info Pages */}
           <Route path="/doprava" element={<PlaceholderPage title="Doprava a platba" />} />
           <Route path="/reklamacie" element={<PlaceholderPage title="Reklamácie a vrátenie" />} />
-          <Route path="/kontakt" element={<PlaceholderPage title="Kontakt" />} />
+          <Route path="/kontakt" element={<EshopContact />} />
           <Route path="/objednavky" element={<Navigate to="/ucet" replace />} />
 
           {/* Redirects for old presentation site paths */}

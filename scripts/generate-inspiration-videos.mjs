@@ -1,12 +1,12 @@
 /**
  * generate-inspiration-videos.mjs
  * --------------------------------
- * One-time script that converts the 5 inspiration images into short
- * 5-second videos using Google VEO 3 (via the @google/genai SDK).
+ * One-time script that converts inspiration images into short
+ * 5-second videos using Google VEO 3.1 (via the @google/genai SDK).
  *
  * Prerequisites:
  *   1. Set GEMINI_API_KEY in your .env (must have Veo access)
- *   2. Ensure images exist at public/images/inspiration/inspiration-{1..5}.webp
+ *   2. Ensure images exist at public/images/inspiration/inspiration-{1..7}.webp
  *
  * Usage:
  *   node scripts/generate-inspiration-videos.mjs
@@ -64,6 +64,16 @@ const IMAGES = [
     prompt:
       'Cinematic zoom in on the kitchen workspace, shallow depth of field effect, smooth forward camera motion, 5 seconds',
   },
+  {
+    file: 'inspiration-6.webp',
+    prompt:
+      'Slow cinematic dolly forward into the kitchen scene, camera steadily moving straight ahead toward the countertop, smooth continuous forward motion, natural ambient lighting, 5 seconds',
+  },
+  {
+    file: 'inspiration-7.webp',
+    prompt:
+      'Slow cinematic dolly forward, camera gliding straight ahead into the interior space, steady smooth forward camera movement, soft natural lighting, 5 seconds',
+  },
 ];
 
 const INPUT_DIR = path.join(ROOT, 'public', 'images', 'inspiration');
@@ -82,7 +92,7 @@ async function main() {
 
   console.log('');
   console.log('='.repeat(60));
-  console.log('  VEO 3 — Inspiration Video Generator');
+  console.log('  VEO 3.1 — Inspiration Video Generator');
   console.log('='.repeat(60));
   console.log('');
 
@@ -94,17 +104,17 @@ async function main() {
 
     // Skip if output already exists
     if (fs.existsSync(outputPath)) {
-      console.log(`⏭  [${i + 1}/5] ${outputFilename} already exists, skipping.`);
+      console.log(`⏭  [${i + 1}/${IMAGES.length}] ${outputFilename} already exists, skipping.`);
       continue;
     }
 
     // Check input exists
     if (!fs.existsSync(inputPath)) {
-      console.error(`❌  [${i + 1}/5] Input image not found: ${inputPath}`);
+      console.error(`❌  [${i + 1}/${IMAGES.length}] Input image not found: ${inputPath}`);
       continue;
     }
 
-    console.log(`📤  [${i + 1}/5] Uploading ${filename}...`);
+    console.log(`📤  [${i + 1}/${IMAGES.length}] Uploading ${filename}...`);
 
     // 1. Upload image to Gemini Files API
     const uploadedFile = await ai.files.upload({
@@ -113,7 +123,7 @@ async function main() {
     });
 
     console.log(`   Uploaded as: ${uploadedFile.name}`);
-    console.log(`🎬  [${i + 1}/5] Generating video with prompt:`);
+    console.log(`🎬  [${i + 1}/${IMAGES.length}] Generating video with prompt:`);
     console.log(`   "${prompt}"`);
 
     // 2. Generate video (returns an async operation)
@@ -160,7 +170,7 @@ async function main() {
       continue;
     }
 
-    console.log(`💾  [${i + 1}/5] Downloading to ${outputFilename}...`);
+    console.log(`💾  [${i + 1}/${IMAGES.length}] Downloading to ${outputFilename}...`);
 
     const generatedVideo = generatedVideos[0];
     await ai.files.download({

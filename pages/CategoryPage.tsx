@@ -81,17 +81,12 @@ export const CategoryPage: React.FC = () => {
       />
 
       {/* ==================== HERO ==================== */}
-      <section className="relative h-[320px] md:h-[400px] overflow-hidden">
-        {/* Background Image */}
-        {category.heroImage && (
-          <img
-            src={category.heroImage}
-            alt={category.name}
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-        )}
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20" />
+      <section
+        className="relative h-[320px] md:h-[400px] overflow-hidden"
+        style={{ background: 'linear-gradient(135deg, #F5E9B8 0%, #ECD488 50%, #C9A85C 100%)' }}
+      >
+        {/* Dark overlay at bottom for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
 
         {/* Content */}
         <div className="relative h-full container mx-auto px-6 lg:px-8 flex flex-col justify-end pb-10 md:pb-14">
