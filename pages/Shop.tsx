@@ -127,6 +127,9 @@ export const Shop = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const { posts: instagramPosts, isLoading: igLoading, isUsingFallback: igFallback } = useInstagramFeed(8);
 
+  // Stone Experience slab carousel (desktop)
+  const [activeStoneIdx, setActiveStoneIdx] = useState(0);
+
   // Testimonials carousel
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
@@ -369,14 +372,14 @@ export const Shop = () => {
         }
       );
 
-      // Slab: fade-in + scale
-      gsap.fromTo('.stone-slab-mobile',
+      // Slab carousel: fade-in + scale
+      gsap.fromTo('.stone-slab-carousel',
         { opacity: 0, y: 40, scale: 0.95 },
         {
           opacity: 1, y: 0, scale: 1,
           duration: 0.8, ease: 'power3.out',
           scrollTrigger: {
-            trigger: '.stone-slab-mobile',
+            trigger: '.stone-slab-carousel',
             start: 'top 80%',
             toggleActions: 'play none none none',
           },
@@ -416,7 +419,7 @@ export const Shop = () => {
     // Mobile reduced-motion fallback
     if (stoneMobile && reducedMotion) {
       gsap.set('.stone-bg-mobile', { margin: '0', borderRadius: '0' });
-      gsap.set('.stone-slab-mobile', { opacity: 1, y: 0, scale: 1 });
+      gsap.set('.stone-slab-carousel', { opacity: 1, y: 0, scale: 1 });
       gsap.set('.stone-card-mobile', { opacity: 1, y: 0 });
       gsap.set('.stone-cta-mobile', { opacity: 1, y: 0 });
     }
@@ -522,6 +525,8 @@ export const Shop = () => {
 
   // Get featured/spotlight product
   const spotlightProduct = SHOP_PRODUCTS[0];
+
+  const sinteredProducts = SHOP_PRODUCTS.filter(p => p.category === 'sintered-stone');
 
   return (
     <main ref={containerRef} className="overflow-hidden w-full">
@@ -770,16 +775,22 @@ export const Shop = () => {
               </div>
 
               {/* Center slab */}
-              <div className="stone-slab-wrap relative flex items-center justify-center opacity-0">
-                <div className="stone-slab relative w-full max-w-[300px] aspect-[9/16] rounded-[28px] p-2 bg-gradient-to-br from-white/70 via-white/20 to-black/10 shadow-[0_35px_80px_rgba(0,0,0,0.25)]">
+              <div className="stone-slab-wrap relative flex flex-col items-center justify-center opacity-0">
+                <Link
+                  to={`/produkt/${sinteredProducts[activeStoneIdx]?.id ?? 'yabo-white'}`}
+                  className="stone-slab group relative block w-full max-w-[300px] aspect-[9/16] rounded-[28px] p-2 bg-gradient-to-br from-white/70 via-white/20 to-black/10 shadow-[0_35px_80px_rgba(0,0,0,0.25)]"
+                >
                   <div className="w-full h-full rounded-[22px] overflow-hidden border border-white/40">
                     <img
-                      src="/images/yabo-white-slab.jpg"
-                      alt="YABO WHITE platňa"
-                      className="w-full h-full object-cover"
+                      src={sinteredProducts[activeStoneIdx]?.image ?? '/images/yabo-white-slab.jpg'}
+                      alt={`${sinteredProducts[activeStoneIdx]?.name ?? 'YABO WHITE'} platňa`}
+                      className="w-full h-full object-cover transition-all duration-500"
                     />
                   </div>
                   <div className="absolute inset-0 rounded-[22px] bg-gradient-to-t from-black/25 via-transparent to-white/10 pointer-events-none" />
+                  <span className="absolute bottom-5 left-0 right-0 text-center text-white/80 text-[11px] tracking-[0.25em] uppercase font-semibold pointer-events-none transition-opacity duration-300">
+                    {sinteredProducts[activeStoneIdx]?.name ?? 'Yabo White'}
+                  </span>
 
                   {STONE_EXPERIENCE_POINTS.map((point) => (
                     <div
@@ -797,7 +808,30 @@ export const Shop = () => {
                       <span className="stone-pin-pulse absolute inset-0 rounded-full border border-brand-dark/60" />
                     </div>
                   ))}
-                </div>
+                </Link>
+
+                {/* Slab navigation */}
+                {sinteredProducts.length > 1 && (
+                  <div className="flex items-center gap-3 mt-5">
+                    <button
+                      onClick={(e) => { e.preventDefault(); setActiveStoneIdx((prev) => (prev - 1 + sinteredProducts.length) % sinteredProducts.length); }}
+                      className="w-8 h-8 rounded-full border border-brand-dark/20 flex items-center justify-center text-brand-dark/50 hover:bg-brand-dark hover:text-white hover:border-brand-dark transition-all duration-300"
+                      aria-label="Previous slab"
+                    >
+                      <ChevronLeft size={14} />
+                    </button>
+                    <span className="text-[10px] tracking-[0.2em] uppercase text-brand-dark/50 font-semibold min-w-[80px] text-center">
+                      {activeStoneIdx + 1} / {sinteredProducts.length}
+                    </span>
+                    <button
+                      onClick={(e) => { e.preventDefault(); setActiveStoneIdx((prev) => (prev + 1) % sinteredProducts.length); }}
+                      className="w-8 h-8 rounded-full border border-brand-dark/20 flex items-center justify-center text-brand-dark/50 hover:bg-brand-dark hover:text-white hover:border-brand-dark transition-all duration-300"
+                      aria-label="Next slab"
+                    >
+                      <ChevronRight size={14} />
+                    </button>
+                  </div>
+                )}
               </div>
 
               {/* Right cards */}
@@ -866,11 +900,31 @@ export const Shop = () => {
               Objavte materiál navrhnutý pre estetiku, výkon a pokoj v každodennom používaní.
             </p>
           </div>
-          <div className="stone-slab-mobile relative rounded-3xl overflow-hidden border border-white/40 shadow-[0_20px_55px_rgba(0,0,0,0.22)] mb-6 max-w-[340px] mx-auto opacity-0">
-            <div className="aspect-[9/16]">
-              <img src="/images/yabo-white-slab.jpg" alt="YABO WHITE platňa" className="w-full h-full object-cover" />
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+          <div
+            className="stone-slab-carousel flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 mb-6 opacity-0"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', paddingLeft: 'calc(50% - 130px)', paddingRight: 'calc(50% - 130px)' }}
+          >
+            <style>{`.stone-slab-carousel::-webkit-scrollbar { display: none; }`}</style>
+            {sinteredProducts.map((product) => (
+              <Link
+                key={product.id}
+                to={`/produkt/${product.id}`}
+                className="group relative block shrink-0 w-[260px] rounded-3xl overflow-hidden border border-white/40 snap-center"
+              >
+                <div className="aspect-[9/16]">
+                  <img
+                    src={product.image}
+                    alt={`${product.name} platňa`}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                <span className="absolute bottom-5 left-0 right-0 text-center text-white/80 text-[11px] tracking-[0.25em] uppercase font-semibold">
+                  {product.name}
+                </span>
+              </Link>
+            ))}
           </div>
           <div className="stone-cards-mobile grid sm:grid-cols-2 gap-3">
             {STONE_EXPERIENCE_POINTS.map((point, index) => {
