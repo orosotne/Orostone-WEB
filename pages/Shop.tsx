@@ -108,7 +108,7 @@ const HERO_SLIDES = [
     title: 'Krása kameňa.',
     titleAccent: 'Bez kompromisov.',
     subtitle: 'Prémiové sinterované platne pre náročné interiéry',
-    cta: 'Objavte kolekcie',
+    cta: 'Objavte dekory',
   },
 ];
 
@@ -840,9 +840,9 @@ export const Shop = () => {
         </div>
       </section>
 
-      {/* Order wrapper: on mobile stone-mobile-section first, TextKnockout second; desktop reversed */}
+      {/* Order wrapper: mobile: stone(1) → products(2) → TextKnockout(3); desktop: TextKnockout(1) → stone(2) → products(3) */}
       <div className="flex flex-col">
-        <div className="order-2 lg:order-1">
+        <div className="order-3 lg:order-1">
           <TextKnockoutSection />
         </div>
 
@@ -904,16 +904,9 @@ export const Shop = () => {
           </div>
         </div>
         </section>
-      </div>
 
-      {/* ==================== INSPIRUJTE SA — Inspiration Slider ==================== */}
-      <InspirationSection items={INSPIRATION_IMAGES} />
-
-      {/* ==================== SAMPLE LEAD SECTION ==================== */}
-      <SampleLeadSection />
-
-      {/* ==================== FEATURED PRODUCTS CAROUSEL ==================== */}
-      <section className="products-section bg-[#FAFAFA] py-20 lg:py-28 overflow-hidden">
+        {/* ==================== FEATURED PRODUCTS CAROUSEL ==================== */}
+        <section className="products-section order-2 lg:order-3 bg-[#FAFAFA] py-20 lg:py-28 overflow-hidden">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
             
@@ -1023,7 +1016,14 @@ export const Shop = () => {
             </div>
           </div>
         </div>
-      </section>
+        </section>
+      </div>
+
+      {/* ==================== INSPIRUJTE SA — Inspiration Slider ==================== */}
+      <InspirationSection items={INSPIRATION_IMAGES} />
+
+      {/* ==================== SAMPLE LEAD SECTION ==================== */}
+      <SampleLeadSection />
 
       {/* ==================== BLOG PREVIEW SECTION ==================== */}
       <BlogPreviewSection articles={getLatestArticles(5)} />
@@ -1207,12 +1207,6 @@ export const Shop = () => {
               >
                 Kontaktovať predajcu
                 <ArrowRight size={16} />
-              </Link>
-              <Link 
-                to="/key-facts"
-                className="inline-flex items-center justify-center gap-2 border border-gray-300 text-brand-dark px-8 py-4 rounded-full text-sm font-bold uppercase tracking-wider hover:bg-gray-100 transition-all duration-300"
-              >
-                Technické parametre
               </Link>
             </div>
           </div>

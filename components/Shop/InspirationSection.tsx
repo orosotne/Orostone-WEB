@@ -337,7 +337,7 @@ export const InspirationSection: React.FC<Props> = () => {
             Inšpirácie
           </span>
           <h2 className="text-3xl lg:text-4xl font-sans font-bold text-brand-dark leading-tight mb-4">
-            Inspirujte sa.<br />Premena vášho priestoru.
+            Inšpirujte sa.<br />Premena vášho priestoru.
           </h2>
           <p className="text-gray-400 text-sm lg:text-base font-light max-w-lg">
             Každý priestor má svoj príbeh. Nechajte kameň, nech ho rozpráva za vás.

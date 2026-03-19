@@ -5,10 +5,9 @@ import { useShopifyProducts } from '../../hooks/useShopifyProducts';
 import { RotatingBadge } from '../UI/RotatingBadge';
 
 const TESTIMONIAL = {
-  quote: 'Bezplatná vzorka nám ušetrila množstvo času. Videli sme aj cítili kvalitu materiálu ešte pred objednávkou — klienti boli presvedčení okamžite.',
-  name: 'Arch. Zuzana Nováková',
-  role: 'Studio Z, Bratislava',
-  avatar: 'https://i.pravatar.cc/64?img=47',
+  quote: 'Vzorka nás presvedčila ešte pred objednávkou — klienti ocenili kvalitu okamžite.',
+  name: 'Ing. arch. Martin Štefánik',
+  role: 'MS Interiors, Bratislava',
 };
 
 const LIFESTYLE_IMAGE = '/images/sample-lead.webp';
@@ -118,16 +117,9 @@ export const SampleLeadSection: React.FC = () => {
               <p className="text-white text-sm lg:text-base font-light leading-relaxed italic mb-4">
                 "{TESTIMONIAL.quote}"
               </p>
-              <div className="flex items-center gap-3">
-                <img
-                  src={TESTIMONIAL.avatar}
-                  alt={TESTIMONIAL.name}
-                  className="w-10 h-10 rounded-full object-cover border-2 border-brand-gold"
-                />
-                <div>
-                  <p className="text-white text-sm font-semibold">{TESTIMONIAL.name}</p>
-                  <p className="text-gray-400 text-xs">{TESTIMONIAL.role}</p>
-                </div>
+              <div>
+                <p className="text-white text-sm font-semibold">{TESTIMONIAL.name}</p>
+                <p className="text-gray-400 text-xs">{TESTIMONIAL.role}</p>
               </div>
             </div>
           </div>
@@ -235,7 +227,7 @@ export const SampleLeadSection: React.FC = () => {
 
                 {/* Trust badges */}
                 <div className="mt-6 pt-6 border-t border-gray-100 flex flex-wrap gap-x-5 gap-y-2">
-                  {['Doprava zadarmo', 'Bez záväzkov', 'Odpovieme do 24h'].map(item => (
+                  {['Vzorka zadarmo', 'Bez záväzkov', 'Odpovieme do 24h'].map(item => (
                     <span key={item} className="flex items-center gap-1.5 text-xs text-gray-400">
                       <span className="text-brand-gold text-[10px]">✦</span>
                       {item}
