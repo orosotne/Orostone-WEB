@@ -329,7 +329,7 @@ export const InspirationSection: React.FC<Props> = () => {
   const isOpen = lightboxIndex !== null;
 
   return (
-    <section className="inspiration-section py-20 lg:py-28 bg-[#FAFAFA] w-full" style={{ overflow: 'clip' }}>
+    <section className="inspiration-section py-20 lg:py-28 bg-[#FAFAFA] w-full" style={{ overflow: 'clip', overflowX: 'hidden' }}>
       {/* Header */}
       <div className="relative container mx-auto px-4 lg:px-8 mb-10 lg:mb-14">
         <div className="inspiration-header section-reveal">
@@ -387,6 +387,7 @@ export const InspirationSection: React.FC<Props> = () => {
         /* ── Wrapper clips overflow ── */
         .insp-marquee-wrapper {
           width: 100%;
+          overflow-x: hidden;
           overflow: clip;
           contain: layout paint;
         }

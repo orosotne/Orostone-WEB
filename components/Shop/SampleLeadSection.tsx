@@ -43,7 +43,7 @@ export const SampleLeadSection: React.FC = () => {
   };
 
   return (
-    <section className="relative bg-[#ECD488]" style={{ overflow: 'clip' }}>
+    <section className="relative bg-[#ECD488]" style={{ overflow: 'clip', overflowX: 'hidden' }}>
 
       {/* Top wave — animated by horizontal translate */}
       <div className="absolute top-0 left-0 w-full leading-none pointer-events-none" style={{ height: '80px', overflow: 'clip' }}>

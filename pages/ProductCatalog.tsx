@@ -32,8 +32,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   quantity 
 }) => {
   return (
-    <div className="shop-product-card group bg-[#F9F9F7] rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300">
-      <Link to={`/produkt/${product.id}`} className="block">
+    <div className="shop-product-card group bg-[#F9F9F7] rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col">
+      <Link to={`/produkt/${product.id}`} className="flex flex-col flex-1">
         {/* Image Container */}
         <div className={cn(
           "relative overflow-hidden",
@@ -47,17 +47,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           
           {/* Stock Badge */}
           {product.inStock && (
-            <div className="absolute top-3 left-3">
-              <span className="inline-flex items-center gap-1.5 bg-green-500 text-white text-[10px] tracking-wider uppercase px-2.5 py-1 font-bold rounded-full shadow-sm">
-                <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span>
+            <div className="absolute top-2 left-2 md:top-3 md:left-3">
+              <span className="inline-flex items-center gap-1 md:gap-1.5 bg-green-500 text-white text-[8px] md:text-[10px] tracking-wider uppercase px-1.5 md:px-2.5 py-0.5 md:py-1 font-bold rounded-full shadow-sm">
+                <span className="w-1 h-1 md:w-1.5 md:h-1.5 bg-white rounded-full animate-pulse"></span>
                 Skladom
               </span>
             </div>
           )}
           
           {/* Thickness Badge */}
-          <div className="absolute top-3 right-3">
-            <span className="bg-white/95 backdrop-blur-sm text-[10px] tracking-wider uppercase px-2.5 py-1.5 font-bold text-brand-dark rounded-full shadow-sm border border-black/5">
+          <div className="absolute top-2 right-2 md:top-3 md:right-3">
+            <span className="bg-white/95 backdrop-blur-sm text-[8px] md:text-[10px] tracking-wider uppercase px-1.5 md:px-2.5 py-1 md:py-1.5 font-bold text-brand-dark rounded-full shadow-sm border border-black/5">
               {product.thickness}
             </span>
           </div>
@@ -88,30 +88,32 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         </div>
 
         {/* Product Info */}
-        <div className={cn("px-4 pt-4", compact ? "pb-3" : "pb-5")}>
+        <div className={cn("px-3 pt-3 md:px-4 md:pt-4 flex flex-col flex-1", compact ? "pb-2 md:pb-3" : "pb-3 md:pb-5")}>
           <h3 className={cn(
-            "font-medium text-brand-dark mb-1 group-hover:text-brand-gold transition-colors",
-            compact ? "text-sm" : "text-base"
+            "font-medium text-brand-dark mb-0.5 md:mb-1 group-hover:text-brand-gold transition-colors min-h-[2.5rem] md:min-h-0 line-clamp-2",
+            compact ? "text-xs md:text-sm" : "text-sm md:text-base"
           )}>
             {product.name}
           </h3>
           
           {!compact && (
-            <p className="text-sm text-gray-500 mb-2 line-clamp-1">
+            <p className="text-xs md:text-sm text-gray-500 mb-1.5 md:mb-2 line-clamp-1">
               {product.description}
             </p>
           )}
           
-          <div className="flex items-baseline gap-2">
-            <span className="text-[11px] tracking-wider uppercase text-gray-400">Cena</span>
+          <div className="flex items-baseline gap-1.5 md:gap-2">
+            <span className="text-[9px] md:text-[11px] tracking-wider uppercase text-gray-400">Cena</span>
             <span className={cn(
               "font-semibold text-brand-dark",
-              compact ? "text-sm" : "text-lg"
+              compact ? "text-xs md:text-sm" : "text-sm md:text-lg"
             )}>
               €{product.pricePerM2}
             </span>
-            <span className="text-sm text-gray-400">/m²</span>
+            <span className="text-xs md:text-sm text-gray-400">/m²</span>
           </div>
+
+          <div className="flex-1 min-h-4 md:min-h-0" />
 
           {/* Add to Cart CTA */}
           <button
@@ -121,13 +123,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               onAddToCart();
             }}
             className={cn(
-              "mt-3 w-full py-2.5 rounded-lg text-[11px] tracking-wider uppercase font-semibold transition-all",
+              "mt-2 md:mt-3 w-full py-2 md:py-2.5 rounded-lg text-[9px] md:text-[11px] tracking-wider uppercase font-semibold transition-all leading-relaxed md:leading-normal",
               inCart 
                 ? "bg-brand-gold text-brand-dark" 
                 : "bg-brand-dark text-white hover:bg-brand-gold hover:text-brand-dark"
             )}
           >
-            {inCart ? `V košíku (${quantity})` : "Pridať do košíka"}
+            {inCart ? `V košíku (${quantity})` : (<>Pridať<br className="md:hidden" /> do košíka</>)}
           </button>
         </div>
       </Link>

@@ -8,17 +8,13 @@ export function TextKnockoutSection() {
   const svgRef = useRef<SVGSVGElement>(null);
   const goldSvgRef = useRef<HTMLDivElement>(null);
 
-  // Style the GSAP pin-spacer wrapper (desktop only) to prevent white line flicker
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const pinSpacer = containerRef.current?.parentElement;
-      if (pinSpacer && pinSpacer.classList.contains('pin-spacer')) {
-        pinSpacer.style.backgroundColor = 'black';
-        pinSpacer.style.overflow = 'hidden';
-      }
-    }, 300);
-    return () => clearTimeout(timer);
-  }, []);
+  const stylePinSpacer = (self: any) => {
+    const spacer = self.spacer || self.pin?.parentElement;
+    if (spacer) {
+      spacer.style.backgroundColor = 'black';
+      spacer.style.overflow = 'hidden';
+    }
+  };
 
   // Start video playback when near viewport
   useEffect(() => {
@@ -60,6 +56,7 @@ export function TextKnockoutSection() {
           pin: true,
           pinSpacing: true,
           refreshPriority: -1,
+          onRefresh: stylePinSpacer,
         },
       })
       .to(svgRef.current!, { scale: 1, duration: 0.35, ease: 'power4.out' }, 0)
@@ -81,10 +78,7 @@ export function TextKnockoutSection() {
           pin: true,
           pinSpacing: true,
           refreshPriority: -1,
-          onRefresh: (self) => {
-            const spacer = (self as any).spacer;
-            if (spacer) spacer.style.overflow = 'hidden';
-          },
+          onRefresh: stylePinSpacer,
         },
       })
       .to(svgRef.current!, { scale: 1, duration: 0.2, ease: 'power4.out' }, 0.15)
