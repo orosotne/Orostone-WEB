@@ -6,7 +6,12 @@
 
 import { shopifyFetch } from '../lib/shopify';
 import { SAMPLE_VARIANT_KEYWORD } from '../constants';
-import type { ShopProduct, ProductCategory } from '../constants';
+import {
+  PRODUCT_COLOR_TONES,
+  type ShopProduct,
+  type ProductCategory,
+  type ProductColorTone,
+} from '../constants';
 import { getProductSEOContent } from '../data/product-seo-content';
 
 // ===========================================
@@ -200,6 +205,46 @@ const PRODUCT_FRAGMENT = `
       namespace
     }
     country_of_origin: metafield(namespace: "custom", key: "country_of_origin") {
+      key
+      value
+      namespace
+    }
+    color_category: metafield(namespace: "custom", key: "color_category") {
+      key
+      value
+      namespace
+    }
+    color_for_cursor: metafield(namespace: "custom", key: "color_for_cursor") {
+      key
+      value
+      namespace
+    }
+    color_name_for_cursor: metafield(namespace: "custom", key: "color_name_for_cursor") {
+      key
+      value
+      namespace
+    }
+    color_name: metafield(namespace: "custom", key: "color_name") {
+      key
+      value
+      namespace
+    }
+    color_hex_for_cursor: metafield(namespace: "custom", key: "color_hex_for_cursor") {
+      key
+      value
+      namespace
+    }
+    shopify_color: metafield(namespace: "shopify", key: "color") {
+      key
+      value
+      namespace
+    }
+    shopify_color_pattern: metafield(namespace: "shopify", key: "color-pattern") {
+      key
+      value
+      namespace
+    }
+    custom_color_pattern: metafield(namespace: "custom", key: "color-pattern") {
       key
       value
       namespace
@@ -543,6 +588,148 @@ function getMetafieldValue(product: ShopifyProduct, key: string): string | undef
   return metafield?.value || undefined;
 }
 
+/** Metafield `custom.color_category` — hodnoty: biele | sede | bezove | cierne (malými písmenami) */
+function parseProductColorTone(raw: string | undefined): ProductColorTone | undefined {
+  if (!raw?.trim()) return undefined;
+  const v = raw.trim().toLowerCase();
+  return (PRODUCT_COLOR_TONES as readonly string[]).includes(v) ? (v as ProductColorTone) : undefined;
+}
+
+/**
+ * Category metafield / variant option často vracia JSON pole alebo čistý text (napr. "White", "beige").
+ */
+function unwrapMetafieldListOrJson(value: string | undefined): string | undefined {
+  if (!value?.trim()) return undefined;
+  const t = value.trim();
+  if (t.startsWith('[')) {
+    try {
+      const parsed = JSON.parse(t) as unknown;
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        const first = parsed[0];
+        if (typeof first === 'string' && !first.startsWith('gid://')) return first;
+      }
+    } catch {
+      /* nie je JSON */
+    }
+  }
+  if (t.startsWith('gid://')) return undefined;
+  return t;
+}
+
+/**
+ * Mapovanie anglických (a bežných) označení farby z Shopify category metafields / variant option.
+ */
+function mapEnglishColorLabelToTone(label: string | undefined): ProductColorTone | undefined {
+  if (!label?.trim()) return undefined;
+  const v = label.trim().toLowerCase();
+
+  const exact: Record<string, ProductColorTone> = {
+    white: 'biele',
+    black: 'cierne',
+    grey: 'sede',
+    gray: 'sede',
+    beige: 'bezove',
+    silver: 'sede',
+    ivory: 'biele',
+    cream: 'bezove',
+    gold: 'bezove',
+    brown: 'bezove',
+    tan: 'bezove',
+    charcoal: 'cierne',
+    navy: 'cierne',
+    graphite: 'sede',
+    steel: 'sede',
+    slate: 'sede',
+  };
+  if (exact[v]) return exact[v];
+
+  if (/\b(black|nero|čiern|ciern|graphite|anthracite|ebony)\b/i.test(v)) return 'cierne';
+  if (/\b(white|off[\s-]?white|biel|snow|pearl|milky|super[\s-]?white)\b/i.test(v)) return 'biele';
+  if (/\b(gre?y|silver|steel|slate|siv|chrome|metal)\b/i.test(v)) return 'sede';
+  if (/\b(beige|cream|ivory|tan|sand|taupe|travertin|béž|walnut|camel|champagne)\b/i.test(v)) return 'bezove';
+
+  return undefined;
+}
+
+/** Heuristika z custom color metafieldu (#RRGGBB) — pre Nero atď. keď name metafield nie je v Storefront API */
+function approximateToneFromHex(hex: string | undefined): ProductColorTone | undefined {
+  if (!hex?.startsWith('#')) return undefined;
+  const raw = hex.slice(1).trim();
+  const full =
+    raw.length === 3
+      ? raw
+          .split('')
+          .map((c) => c + c)
+          .join('')
+      : raw;
+  if (!/^[0-9a-fA-F]{6}$/.test(full)) return undefined;
+  const r = parseInt(full.slice(0, 2), 16) / 255;
+  const g = parseInt(full.slice(2, 4), 16) / 255;
+  const b = parseInt(full.slice(4, 6), 16) / 255;
+  const l = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  if (l < 0.2) return 'cierne';
+  if (l > 0.82) return 'biele';
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  const sat = max === 0 ? 0 : (max - min) / max;
+  if (sat < 0.14 && l >= 0.25 && l <= 0.75) return 'sede';
+  if (sat > 0.12 && r > 0.45 && g > 0.38 && b < 0.55 && l < 0.78) return 'bezove';
+  if (l >= 0.2 && l <= 0.82) return 'sede';
+  return undefined;
+}
+
+function resolveColorCategoryFromShopifyProduct(
+  product: ShopifyProduct,
+  firstVariant: ShopifyProductVariant | undefined,
+): ProductColorTone | undefined {
+  const rawCategory = getMetafieldValue(product, 'color_category');
+  const explicit = parseProductColorTone(rawCategory);
+  if (explicit) return explicit;
+  if (rawCategory?.trim()) {
+    const fromEnglishCategory = mapEnglishColorLabelToTone(rawCategory);
+    if (fromEnglishCategory) return fromEnglishCategory;
+  }
+
+  const cursorVal = getMetafieldValue(product, 'color_for_cursor');
+  if (cursorVal?.trim()) {
+    const skTone = parseProductColorTone(cursorVal);
+    if (skTone) return skTone;
+    const enTone = mapEnglishColorLabelToTone(cursorVal);
+    if (enTone) return enTone;
+  }
+
+  const colorNameRaw =
+    getMetafieldValue(product, 'color_name') || getMetafieldValue(product, 'color_name_for_cursor');
+  if (colorNameRaw?.trim()) {
+    const fromName = mapEnglishColorLabelToTone(colorNameRaw);
+    if (fromName) return fromName;
+  }
+
+  const hexCursor = getMetafieldValue(product, 'color_hex_for_cursor');
+  const fromHex = approximateToneFromHex(hexCursor);
+  if (fromHex) return fromHex;
+
+  const mfSources = [
+    getMetafieldValue(product, 'shopify_color'),
+    getMetafieldValue(product, 'shopify_color_pattern'),
+    getMetafieldValue(product, 'custom_color_pattern'),
+  ];
+  for (const raw of mfSources) {
+    const text = unwrapMetafieldListOrJson(raw);
+    const tone = mapEnglishColorLabelToTone(text);
+    if (tone) return tone;
+  }
+
+  const opts = firstVariant?.selectedOptions ?? [];
+  const colorOpt = opts.find((o) => /^(color|colour|farba|farby)$/i.test(o.name.trim()));
+  if (colorOpt) {
+    const tone = mapEnglishColorLabelToTone(colorOpt.value);
+    if (tone) return tone;
+  }
+
+  return undefined;
+}
+
 // ===========================================
 // PARSER: Extract tech specs from descriptionHtml
 // ===========================================
@@ -840,6 +1027,12 @@ function shopifyProductToShopProduct(product: ShopifyProduct): ShopProduct {
   // SKU: variant built-in > parsed from description
   const resolvedSku = firstVariant?.sku || parsedSpecs.sku || undefined;
 
+  const category = mapProductTypeToCategory(product.productType);
+  const rawCountry = getMetafieldValue(product, 'country_of_origin') || parsedSpecs.countryOfOrigin;
+  const trimmedCountry = rawCountry?.trim() || undefined;
+  const countryOfOrigin =
+    trimmedCountry || (category === 'sintered-stone' ? 'CN' : undefined);
+
   return {
     id: product.handle,
     name: product.title,
@@ -849,7 +1042,7 @@ function shopifyProductToShopProduct(product: ShopifyProduct): ShopProduct {
     pricePerM2,
     image: images[0] || '/images/logo.png',
     gallery: images,
-    category: mapProductTypeToCategory(product.productType),
+    category,
     dimensions: dims,
     thickness: getMetafieldValue(product, 'thickness') || parsedSpecs.thickness || '12mm',
     finish: getMetafieldValue(product, 'finish') || parsedSpecs.finish || 'Leštený',
@@ -859,7 +1052,7 @@ function shopifyProductToShopProduct(product: ShopifyProduct): ShopProduct {
     vendor: product.vendor,
     heatResistance: getMetafieldValue(product, 'heat_resistance') || 'Do 300°C',
     weight: resolvedWeight,
-    countryOfOrigin: getMetafieldValue(product, 'country_of_origin') || parsedSpecs.countryOfOrigin,
+    countryOfOrigin,
     sku: resolvedSku,
     designInsight: getDesignInsight(product.handle),
     metaTitle: getProductSEOContent(product.handle)?.metaTitle,
@@ -878,6 +1071,7 @@ function shopifyProductToShopProduct(product: ShopifyProduct): ShopProduct {
     edgeStyle: 'Rovná hrana',
     applications: ['Kuchynské dosky', 'Ostrovčeky', 'Kúpeľne', 'Obklad stien', 'Komerčné interiéry', 'Fasády', 'Podlahy', 'Nábytok'],
     deliveryTimeframe: '5 pracovných dní',
+    colorCategory: resolveColorCategoryFromShopifyProduct(product, firstVariant),
   };
 }
 

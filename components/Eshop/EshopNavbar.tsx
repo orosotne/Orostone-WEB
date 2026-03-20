@@ -20,7 +20,7 @@ export const EshopNavbar: React.FC = () => {
   const navigate = useNavigate();
   const { openCart, itemCount } = useCart();
   const { isAuthenticated } = useAuth();
-  const { products: shopProducts } = useShopifyProducts();
+  const { products: shopProducts } = useShopifyProducts(50, { shopifyOnly: true });
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const [scrolled, setScrolled] = useState(false);

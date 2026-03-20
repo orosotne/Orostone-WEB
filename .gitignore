@@ -46,3 +46,6 @@ icon-v2-*
 
 # Local skill files
 skill/
+
+# Supabase CLI cache
+supabase/.temp/

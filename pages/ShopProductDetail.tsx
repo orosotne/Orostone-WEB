@@ -55,7 +55,7 @@ import {
   Mail,
   CheckCircle,
 } from 'lucide-react';
-import { ShopProduct, MAX_SAMPLES } from '../constants';
+import { ShopProduct, MAX_SAMPLES, resolveCountryOfOrigin } from '../constants';
 import { submitQuote } from '../services/quotes.service';
 import { useShopifyProducts, useShopifyProduct } from '../hooks/useShopifyProducts';
 import { Button } from '../components/UI/Button';
@@ -1781,7 +1781,7 @@ const TechnicalOverview: React.FC<TechnicalOverviewProps> = ({ product }) => {
     { label: 'Povrch', value: product.finish || '—' },
     { label: 'Hrana', value: product.edgeStyle || 'Rovná hrana' },
     { label: 'Hmotnosť', value: product.weight ? `${product.weight} kg` : '—' },
-    { label: 'Krajina pôvodu', value: product.countryOfOrigin || '—' },
+    { label: 'Krajina pôvodu', value: resolveCountryOfOrigin(product) },
     { label: 'SKU', value: product.sku || '—' },
   ];
 
@@ -2497,7 +2497,7 @@ const ProductSchema: React.FC<ProductSchemaProps> = ({ product, totalPrice }) =>
     "material": product.material || "Sinterovaný kameň",
     "size": product.dimensions,
     "weight": product.weight ? `${product.weight} kg` : undefined,
-    "countryOfOrigin": product.countryOfOrigin || "Slovensko",
+    "countryOfOrigin": resolveCountryOfOrigin(product, 'slovakia'),
     "url": `https://www.orostone.sk/produkt/${product.id}`,
     "offers": {
       "@type": "Offer",

@@ -43,35 +43,35 @@ const STONE_EXPERIENCE_POINTS = [
     title: 'Odolnosť voči poškriabaniu',
     description: 'Povrch si zachováva prémiový vzhľad aj pri každodennom používaní.',
     side: 'left',
-    markerTop: '33%',
+    markerTop: '38%',
   },
   {
     id: 'heat',
     title: 'Vysoká tepelná stabilita',
     description: 'Navrhnuté pre kuchyne, kde je výkon a bezpečnosť absolútnou prioritou.',
     side: 'right',
-    markerTop: '22%',
+    markerTop: '26%',
   },
   {
     id: 'stain',
     title: 'Nízka nasiakavosť',
     description: 'Škvrny od vína, kávy či oleja sa čistia rýchlo a bez stresu.',
     side: 'left',
-    markerTop: '63%',
+    markerTop: '68%',
   },
   {
     id: 'hygiene',
     title: 'Hygienický povrch',
     description: 'Kompaktný neporézny materiál pre čisté a bezpečné pracovné plochy.',
     side: 'right',
-    markerTop: '58%',
+    markerTop: '62%',
   },
   {
     id: 'uv',
     title: 'UV stálosť farieb',
     description: 'Dekor ostáva konzistentný aj v presvetlených interiéroch.',
     side: 'right',
-    markerTop: '78%',
+    markerTop: '82%',
   },
 ] as const;
 
@@ -731,13 +731,13 @@ export const Shop = () => {
         />
 
         {/* Content layer */}
-        <div className="stone-content relative z-10 w-full h-full flex items-center justify-center overflow-hidden py-[80px]">
+        <div className="stone-content relative z-10 w-full h-full flex items-center justify-center overflow-hidden pt-32 pb-20 lg:pt-44 lg:pb-28">
           <div className="w-full max-w-[1200px] mx-auto px-4 lg:px-8">
             {/* Decorative glow */}
             <div className="stone-glow pointer-events-none absolute inset-x-1/4 -top-8 h-40 rounded-full bg-white/30 blur-3xl opacity-70" />
 
-            {/* Heading */}
-            <div className="stone-heading text-center mb-6 lg:mb-8">
+            {/* Heading — extra top spacing so copy clears the rounded gold inset (bg uses margin-top 80px until scroll expands) */}
+            <div className="stone-heading text-center mb-6 lg:mb-8 pt-2 lg:pt-4">
               <span className="text-xs lg:text-[11px] tracking-[0.25em] uppercase text-brand-dark/60 font-bold block mb-2">
                 Stone Experience
               </span>
@@ -751,8 +751,8 @@ export const Shop = () => {
 
             {/* 3-column layout */}
             <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,300px)_minmax(0,1fr)] gap-6 items-center">
-              {/* Left cards */}
-              <div className="space-y-4 pr-4">
+              {/* Left cards — above slab connectors that extend into this column */}
+              <div className="relative z-10 space-y-4 pr-4">
                 {STONE_EXPERIENCE_POINTS.filter((point) => point.side === 'left').map((point, index) => {
                   const Icon = STONE_POINT_ICONS[point.id];
                   return (
@@ -774,68 +774,71 @@ export const Shop = () => {
                 })}
               </div>
 
-              {/* Center slab */}
-              <div className="stone-slab-wrap relative flex flex-col items-center justify-center opacity-0">
-                <Link
-                  to={`/produkt/${sinteredProducts[activeStoneIdx]?.id ?? 'yabo-white'}`}
-                  className="stone-slab group relative block w-full max-w-[300px] aspect-[9/16] rounded-[28px] p-2 bg-gradient-to-br from-white/70 via-white/20 to-black/10 shadow-[0_35px_80px_rgba(0,0,0,0.25)]"
-                >
-                  <div className="w-full h-full rounded-[22px] overflow-hidden border border-white/40">
-                    <img
-                      src={sinteredProducts[activeStoneIdx]?.image ?? '/images/yabo-white-slab.jpg'}
-                      alt={`${sinteredProducts[activeStoneIdx]?.name ?? 'YABO WHITE'} platňa`}
-                      className="w-full h-full object-cover transition-all duration-500"
-                    />
-                  </div>
-                  <div className="absolute inset-0 rounded-[22px] bg-gradient-to-t from-black/25 via-transparent to-white/10 pointer-events-none" />
-                  <span className="absolute bottom-5 left-0 right-0 text-center text-white/80 text-[11px] tracking-[0.25em] uppercase font-semibold pointer-events-none transition-opacity duration-300">
-                    {sinteredProducts[activeStoneIdx]?.name ?? 'Yabo White'}
-                  </span>
-
-                  {STONE_EXPERIENCE_POINTS.map((point) => (
-                    <div
-                      key={`pin-${point.id}`}
-                      className={`stone-pin absolute -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-brand-dark border-2 border-white shadow-[0_0_0_6px_rgba(255,255,255,0.25)] opacity-0 ${
-                        point.side === 'left' ? '-left-2' : '-right-2'
-                      }`}
-                      style={{ top: point.markerTop }}
-                    >
-                      <span
-                        className={`stone-connector absolute top-1/2 -translate-y-1/2 h-[1px] bg-brand-dark/45 ${
-                          point.side === 'left' ? 'right-full w-10' : 'left-full w-10'
-                        }`}
+              {/* Center slab — in-flow height = slab only; caption/nav absolute + pb reserves space for grid */}
+              <div className="stone-slab-wrap relative z-0 flex flex-col items-center opacity-0 pb-24">
+                <div className="relative w-full max-w-[300px]">
+                  <Link
+                    to={`/produkt/${sinteredProducts[activeStoneIdx]?.id ?? 'yabo-white'}`}
+                    className="stone-slab group relative block w-full aspect-[9/16]"
+                  >
+                    <div className="w-full h-full rounded-[22px] overflow-hidden">
+                      <img
+                        src={sinteredProducts[activeStoneIdx]?.image ?? '/images/yabo-white-slab.jpg'}
+                        alt={`${sinteredProducts[activeStoneIdx]?.name ?? 'YABO WHITE'} platňa`}
+                        className="w-full h-full object-cover transition-all duration-500"
                       />
-                      <span className="stone-pin-pulse absolute inset-0 rounded-full border border-brand-dark/60" />
                     </div>
-                  ))}
-                </Link>
 
-                {/* Slab navigation */}
-                {sinteredProducts.length > 1 && (
-                  <div className="flex items-center gap-3 mt-5">
-                    <button
-                      onClick={(e) => { e.preventDefault(); setActiveStoneIdx((prev) => (prev - 1 + sinteredProducts.length) % sinteredProducts.length); }}
-                      className="w-8 h-8 rounded-full border border-brand-dark/20 flex items-center justify-center text-brand-dark/50 hover:bg-brand-dark hover:text-white hover:border-brand-dark transition-all duration-300"
-                      aria-label="Previous slab"
-                    >
-                      <ChevronLeft size={14} />
-                    </button>
-                    <span className="text-[10px] tracking-[0.2em] uppercase text-brand-dark/50 font-semibold min-w-[80px] text-center">
-                      {activeStoneIdx + 1} / {sinteredProducts.length}
-                    </span>
-                    <button
-                      onClick={(e) => { e.preventDefault(); setActiveStoneIdx((prev) => (prev + 1) % sinteredProducts.length); }}
-                      className="w-8 h-8 rounded-full border border-brand-dark/20 flex items-center justify-center text-brand-dark/50 hover:bg-brand-dark hover:text-white hover:border-brand-dark transition-all duration-300"
-                      aria-label="Next slab"
-                    >
-                      <ChevronRight size={14} />
-                    </button>
+                    {STONE_EXPERIENCE_POINTS.map((point) => (
+                      <div
+                        key={`pin-${point.id}`}
+                        className={`stone-pin absolute -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-brand-dark border-2 border-white shadow-[0_0_0_6px_rgba(255,255,255,0.25)] opacity-0 ${
+                          point.side === 'left' ? '-left-2' : '-right-2'
+                        }`}
+                        style={{ top: point.markerTop }}
+                      >
+                        <span
+                          className={`stone-connector absolute top-1/2 -translate-y-1/2 h-[1px] bg-brand-dark/45 ${
+                            point.side === 'left' ? 'right-full w-12' : 'left-full w-12'
+                          }`}
+                        />
+                        <span className="stone-pin-pulse absolute inset-0 rounded-full border border-brand-dark/60" />
+                      </div>
+                    ))}
+                  </Link>
+                  <div className="absolute left-0 right-0 top-full mt-3 flex flex-col items-center gap-5 pointer-events-none">
+                    <p className="text-center text-[11px] tracking-[0.25em] uppercase font-semibold text-brand-dark/75 pointer-events-auto">
+                      {sinteredProducts[activeStoneIdx]?.name ?? 'Yabo White'}
+                    </p>
+                    {sinteredProducts.length > 1 && (
+                      <div className="flex items-center gap-3 pointer-events-auto">
+                        <button
+                          type="button"
+                          onClick={(e) => { e.preventDefault(); setActiveStoneIdx((prev) => (prev - 1 + sinteredProducts.length) % sinteredProducts.length); }}
+                          className="w-8 h-8 rounded-full border border-brand-dark/20 flex items-center justify-center text-brand-dark/50 hover:bg-brand-dark hover:text-white hover:border-brand-dark transition-all duration-300"
+                          aria-label="Previous slab"
+                        >
+                          <ChevronLeft size={14} />
+                        </button>
+                        <span className="text-[10px] tracking-[0.2em] uppercase text-brand-dark/50 font-semibold min-w-[80px] text-center">
+                          {activeStoneIdx + 1} / {sinteredProducts.length}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={(e) => { e.preventDefault(); setActiveStoneIdx((prev) => (prev + 1) % sinteredProducts.length); }}
+                          className="w-8 h-8 rounded-full border border-brand-dark/20 flex items-center justify-center text-brand-dark/50 hover:bg-brand-dark hover:text-white hover:border-brand-dark transition-all duration-300"
+                          aria-label="Next slab"
+                        >
+                          <ChevronRight size={14} />
+                        </button>
+                      </div>
+                    )}
                   </div>
-                )}
+                </div>
               </div>
 
-              {/* Right cards */}
-              <div className="space-y-4 pl-4">
+              {/* Right cards — above slab connectors that extend into this column */}
+              <div className="relative z-10 space-y-4 pl-4">
                 {STONE_EXPERIENCE_POINTS.filter((point) => point.side === 'right').map((point, index) => {
                   const Icon = STONE_POINT_ICONS[point.id];
                   return (
@@ -909,18 +912,19 @@ export const Shop = () => {
               <Link
                 key={product.id}
                 to={`/produkt/${product.id}`}
-                className="group relative block shrink-0 w-[260px] rounded-3xl overflow-hidden border border-white/40 snap-center"
+                className="group flex flex-col shrink-0 w-[260px] snap-center"
               >
-                <div className="aspect-[9/16]">
-                  <img
-                    src={product.image}
-                    alt={`${product.name} platňa`}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
+                <div className="rounded-3xl overflow-hidden border border-white/40">
+                  <div className="aspect-[9/16]">
+                    <img
+                      src={product.image}
+                      alt={`${product.name} platňa`}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                <span className="absolute bottom-5 left-0 right-0 text-center text-white/80 text-[11px] tracking-[0.25em] uppercase font-semibold">
+                <span className="mt-2.5 text-center text-brand-dark/80 text-[11px] tracking-[0.25em] uppercase font-semibold">
                   {product.name}
                 </span>
               </Link>

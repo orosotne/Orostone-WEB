@@ -4,13 +4,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { VISIBLE_CATEGORIES } from '../../config/features';
 import { useShopifyProducts } from '../../hooks/useShopifyProducts';
-import type { ShopProduct } from '../../constants';
+import type { ProductColorTone, ShopProduct } from '../../constants';
 
 // ===========================================
 // TYPES
 // ===========================================
 
-export type ColorCategory = 'biele' | 'sede' | 'bezove' | 'cierne';
+export type ColorCategory = ProductColorTone;
 
 export interface SubCategory {
   id: string;
@@ -53,7 +53,7 @@ export const MEGA_MENU_CATEGORIES: MegaMenuCategory[] = [
     id: 'sintered-stone',
     name: 'Sinterovaný kameň',
     slug: 'sintered-stone',
-    description: 'Prémiové sinterované platne 3200×1600 mm — 12 exkluzívnych dekorov',
+    description: 'Prémiové sinterované platne 3200×1600 mm',
     heroImage: '/images/app-kitchen.png',
     subcategories: [
       { id: 'all-sintered', name: 'Všetky dekory', slug: 'sintered-stone' },
@@ -115,71 +115,49 @@ export const getVisibleCategories = (): MegaMenuCategory[] => {
 };
 
 /**
- * Handle-based mapovanie produktov na farebné kategórie.
- * Zdroj: Shopify produkty (10 produktov).
+ * Farebné zatriedenie z `ShopProduct.colorCategory` (po mapovaní v shopify.service):
+ * `custom.color_category` (SK alebo EN), `custom.color_for_cursor`, `custom.color_name`, hex, shopify color meta, variant Color/Farba.
  */
-const HANDLE_COLOR_MAP: Record<string, ColorCategory> = {
-  // BIELE (5)
-  'glacier': 'biele',
-  'venus-white-calacatta': 'biele',
-  'bianco-statuario': 'biele',
-  'calacatta-polido': 'biele',
-  'givenchy-gold': 'biele',
-  // BÉŽOVÉ (3)
-  'yabo-white': 'bezove',
-  'roman-travertine': 'bezove',
-  'taj-mahal': 'bezove',
-  // ŠEDÉ (2)
-  'iron-copper': 'sede',
-  'gothic-gold': 'sede',
-};
-
-/**
- * Fallback mapovanie color stringov (pre statické dáta z constants.ts)
- */
-const COLOR_CATEGORY_MAP: Record<string, ColorCategory> = {
-  'Ľadovo biela': 'biele',
-  'Teplá biela s béžovými podtónmi': 'bezove',
-  'Krémovo biela so šedými žilkami': 'biele',
-  'Biela s výrazným sivým žilovaním': 'biele',
-  'Biela so zlatistým žilovaním': 'biele',
-  'Biela s oblačným sivým vzorom': 'biele',
-  'Biela s klasickými sivými žilkami': 'biele',
-  'Čistá biela s výraznými sivými žilkami': 'biele',
-  'Béžová travertínová': 'bezove',
-  'Zlatisto-béžová s jemnými žilkami': 'bezove',
-  'Tmavá s medenými odleskami': 'sede',
-  'Čierna so zlatými žilkami': 'sede',
-};
-
-/**
- * Vráti farebnú kategóriu pre produkt — primárne podľa handle/id,
- * sekundárne podľa color stringu (fallback pre statické dáta).
- */
-export function getProductColorCategory(product: { id: string; color?: string }): ColorCategory | null {
-  if (HANDLE_COLOR_MAP[product.id]) return HANDLE_COLOR_MAP[product.id];
-  if (product.color && COLOR_CATEGORY_MAP[product.color]) return COLOR_CATEGORY_MAP[product.color];
-  return null;
+export function getProductColorCategory(product: Pick<ShopProduct, 'colorCategory'>): ColorCategory | null {
+  return product.colorCategory ?? null;
 }
 
-/**
- * Spätne kompatibilná verzia — vráti farebnú kategóriu podľa color stringu
- */
-export function getColorCategory(color: string | undefined): ColorCategory | null {
-  if (!color) return null;
-  return COLOR_CATEGORY_MAP[color] || null;
+const COLOR_TONE_SORT_ORDER: Record<ProductColorTone, number> = {
+  biele: 0,
+  sede: 1,
+  bezove: 2,
+  cierne: 3,
+};
+
+const CATALOG_CATEGORY_ORDER: Record<ShopProduct['category'], number> = {
+  'sintered-stone': 0,
+  tables: 1,
+  'invisible-cooktop': 2,
+  accessories: 3,
+};
+
+/** Zoradenie podľa Shopify `colorCategory` (metafield), potom názvu. Bez farby na konci skupiny. */
+export function sortSinteredByColorThenName(products: ShopProduct[]): ShopProduct[] {
+  return [...products].sort((a, b) => {
+    const oa = a.colorCategory !== undefined ? COLOR_TONE_SORT_ORDER[a.colorCategory] : 100;
+    const ob = b.colorCategory !== undefined ? COLOR_TONE_SORT_ORDER[b.colorCategory] : 100;
+    if (oa !== ob) return oa - ob;
+    return a.name.localeCompare(b.name, 'sk', { sensitivity: 'base' });
+  });
 }
 
-/**
- * Získa produkty pre danú farebnú kategóriu
- */
-export function getProductsByColorCategory(
-  products: ShopProduct[], 
-  colorCategory: ColorCategory
-): ShopProduct[] {
-  return products.filter(
-    p => p.category === 'sintered-stone' && getProductColorCategory(p) === colorCategory
-  );
+/** Katalóg: typ produktu, pri sinterovanom kameni farba z metafieldu, potom názov. */
+export function sortShopCatalogProducts(products: ShopProduct[]): ShopProduct[] {
+  return [...products].sort((a, b) => {
+    const catDiff = CATALOG_CATEGORY_ORDER[a.category] - CATALOG_CATEGORY_ORDER[b.category];
+    if (catDiff !== 0) return catDiff;
+    if (a.category === 'sintered-stone') {
+      const oa = a.colorCategory !== undefined ? COLOR_TONE_SORT_ORDER[a.colorCategory] : 100;
+      const ob = b.colorCategory !== undefined ? COLOR_TONE_SORT_ORDER[b.colorCategory] : 100;
+      if (oa !== ob) return oa - ob;
+    }
+    return a.name.localeCompare(b.name, 'sk', { sensitivity: 'base' });
+  });
 }
 
 // ===========================================
@@ -207,16 +185,18 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
   isOpen,
   onClose,
 }) => {
-  const { products, isLoading } = useShopifyProducts();
+  const { products, isLoading } = useShopifyProducts(50, { shopifyOnly: true });
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeFilter, setActiveFilter] = useState<ColorCategory | null>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
 
-  // Filter products for sintered-stone category
+  // Filter products for sintered-stone category (zoradené podľa metafield colorCategory)
   const displayProducts = useMemo(() => {
     if (category.id !== 'sintered-stone') return [];
-    const sintered = products.filter(p => p.category === 'sintered-stone');
+    const sintered = sortSinteredByColorThenName(
+      products.filter(p => p.category === 'sintered-stone'),
+    );
     if (!activeFilter) return sintered;
     return sintered.filter(p => getProductColorCategory(p) === activeFilter);
   }, [products, activeFilter, category.id]);

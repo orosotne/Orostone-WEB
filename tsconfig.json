@@ -24,6 +24,7 @@
       "lib/*": ["./lib/*"]
     },
     "allowImportingTsExtensions": true,
-    "noEmit": true
+    "noEmit": true,
+    "resolveJsonModule": true
   }
 }

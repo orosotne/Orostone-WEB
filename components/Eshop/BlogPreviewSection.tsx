@@ -60,7 +60,7 @@ export const BlogPreviewSection: React.FC<BlogPreviewSectionProps> = ({
   };
 
   return (
-    <section className="blog-section py-12 lg:py-16 bg-[#FAFAFA]">
+    <section className="blog-section relative z-[1] -mt-px py-12 lg:py-16 bg-[#FAFAFA]">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Header */}
         <div className="section-reveal flex items-end justify-between gap-4 mb-6 lg:mb-8">

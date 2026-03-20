@@ -7,18 +7,24 @@ import { SHOP_PRODUCTS, type ShopProduct } from '../constants';
 // Hook: useShopifyProducts
 // ===========================================
 // Nacita produkty z Shopify Storefront API.
-// Ak Shopify nie je nakonfigurovany, pouzije
-// fallback data z constants.ts (pre development).
+// Ak Shopify nie je nakonfigurovany alebo API zlyha (bez shopifyOnly), pouzije sa
+// snapshot v data/shop-products-fallback.json (`npm run sync:shop-fallback`).
+// `shopifyOnly: true` — bez fallbacku (mega menu: iba live Shopify).
 
-export function useShopifyProducts(count: number = 50) {
-  const [products, setProducts] = useState<ShopProduct[]>(SHOP_PRODUCTS);
+export interface UseShopifyProductsOptions {
+  shopifyOnly?: boolean;
+}
+
+export function useShopifyProducts(count: number = 50, options?: UseShopifyProductsOptions) {
+  const shopifyOnly = options?.shopifyOnly === true;
+
+  const [products, setProducts] = useState<ShopProduct[]>(() => (shopifyOnly ? [] : SHOP_PRODUCTS));
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!isShopifyConfigured()) {
-      // Fallback na lokalne data
-      setProducts(SHOP_PRODUCTS);
+      setProducts(shopifyOnly ? [] : SHOP_PRODUCTS);
       setIsLoading(false);
       return;
     }
@@ -31,13 +37,13 @@ export function useShopifyProducts(count: number = 50) {
       try {
         const data = await fetchProducts(count);
         if (!cancelled) {
-          setProducts(data.length > 0 ? data : SHOP_PRODUCTS);
+          setProducts(data.length > 0 ? data : (shopifyOnly ? [] : SHOP_PRODUCTS));
         }
       } catch (err) {
         if (!cancelled) {
           console.error('Chyba pri nacitavani produktov z Shopify:', err);
           setError(err instanceof Error ? err.message : 'Neznama chyba');
-          setProducts(SHOP_PRODUCTS); // Fallback
+          setProducts(shopifyOnly ? [] : SHOP_PRODUCTS);
         }
       } finally {
         if (!cancelled) setIsLoading(false);
@@ -46,7 +52,7 @@ export function useShopifyProducts(count: number = 50) {
 
     load();
     return () => { cancelled = true; };
-  }, [count]);
+  }, [count, shopifyOnly]);
 
   return { products, isLoading, error };
 }

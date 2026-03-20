@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sync:shop-fallback": "tsx scripts/sync-shop-fallback.ts"
   },
   "dependencies": {
-    "@emailjs/browser": "^4.4.1",
     "@google/genai": "^1.41.0",
     "@gsap/react": "^2.1.2",
     "@radix-ui/react-separator": "^1.1.8",
@@ -39,6 +39,7 @@
     "postcss": "^8.5.6",
     "sharp": "^0.34.5",
     "tailwindcss": "^3.4.19",
+    "tsx": "^4.19.3",
     "typescript": "~5.8.2",
     "vite": "^6.2.0"
   }

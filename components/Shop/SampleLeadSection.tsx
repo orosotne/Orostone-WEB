@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
 import { CheckCircle, Loader2 } from 'lucide-react';
 import { useShopifyProducts } from '../../hooks/useShopifyProducts';
+import { submitSampleLead } from '../../services/quotes.service';
 import { RotatingBadge } from '../UI/RotatingBadge';
 
 const TESTIMONIAL = {
@@ -27,17 +27,28 @@ export const SampleLeadSection: React.FC = () => {
     setStatus('loading');
     setErrorMsg('');
 
-    try {
-      await emailjs.sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID || '',
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '',
-        formRef.current,
-        { publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '' },
-      );
+    const fd = new FormData(formRef.current);
+    const name = String(fd.get('from_name') ?? '').trim();
+    const email = String(fd.get('from_email') ?? '').trim();
+    const phone = String(fd.get('phone') ?? '').trim();
+    const dekor = String(fd.get('dekor') ?? '').trim();
+
+    const result = await submitSampleLead({
+      name,
+      email,
+      phone: phone || undefined,
+      dekor,
+    });
+
+    if (result.success) {
       setStatus('success');
-    } catch {
+    } else {
       setStatus('error');
-      setErrorMsg('Niečo sa nepodarilo. Skúste nás kontaktovať priamo na info@orostone.sk');
+      setErrorMsg(
+        result.error
+          ? `${result.error} Skúste nás kontaktovať priamo na info@orostone.sk`
+          : 'Niečo sa nepodarilo. Skúste nás kontaktovať priamo na info@orostone.sk',
+      );
     }
   };
 
@@ -76,6 +87,12 @@ export const SampleLeadSection: React.FC = () => {
           />
         </svg>
       </div>
+
+      {/* Sub-pixel hairline between sections (mobile): mask last row of yellow under the wave */}
+      <div
+        className="pointer-events-none absolute bottom-0 left-0 right-0 z-[5] h-[2px] bg-[#FAFAFA]"
+        aria-hidden
+      />
 
       <style>{`
         @keyframes waveSlideLeft {

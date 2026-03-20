@@ -4,8 +4,22 @@
 // Konfiguracia a GraphQL klient pre Shopify Storefront API
 // Dokumentacia: https://shopify.dev/docs/api/storefront
 
-const SHOPIFY_STORE_DOMAIN = import.meta.env.VITE_SHOPIFY_STORE_DOMAIN || '';
-const SHOPIFY_STOREFRONT_TOKEN = import.meta.env.VITE_SHOPIFY_STOREFRONT_TOKEN || '';
+function readViteShopifyEnv(key: 'VITE_SHOPIFY_STORE_DOMAIN' | 'VITE_SHOPIFY_STOREFRONT_TOKEN'): string {
+  try {
+    const env = import.meta.env as Record<string, string | undefined> | undefined;
+    const v = env?.[key];
+    if (typeof v === 'string' && v.trim()) return v.trim();
+  } catch {
+    /* import.meta.env nemusí existovať v Node (sync skript) */
+  }
+  if (typeof process !== 'undefined' && process.env[key]?.trim()) {
+    return process.env[key]!.trim();
+  }
+  return '';
+}
+
+const SHOPIFY_STORE_DOMAIN = readViteShopifyEnv('VITE_SHOPIFY_STORE_DOMAIN');
+const SHOPIFY_STOREFRONT_TOKEN = readViteShopifyEnv('VITE_SHOPIFY_STOREFRONT_TOKEN');
 const STOREFRONT_API_VERSION = '2024-10';
 
 // ===========================================

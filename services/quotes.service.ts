@@ -86,6 +86,64 @@ export async function submitQuote(formData: QuoteFormData): Promise<SubmitQuoteR
   }
 }
 
+export interface SampleLeadFormData {
+  name: string;
+  email: string;
+  phone?: string;
+  dekor: string;
+}
+
+/**
+ * Žiadosť o fyzickú vzorku zo Shop stránky — customers + quotes (decor).
+ */
+export async function submitSampleLead(data: SampleLeadFormData): Promise<SubmitQuoteResult> {
+  if (!isSupabaseConfigured()) {
+    console.warn('Supabase nie je nakonfigurovaný - simulujem odoslanie (vzorka)');
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({ success: true, quoteId: 'demo-sample-' + Date.now() });
+      }, 1500);
+    });
+  }
+
+  try {
+    const customer = await findOrCreateCustomer({
+      email: data.email.trim(),
+      name: data.name.trim(),
+      phone: data.phone?.trim() || undefined,
+    });
+
+    if (!customer) {
+      return { success: false, error: 'Nepodarilo sa vytvoriť zákazníka' };
+    }
+
+    const quoteData: QuoteInsert = {
+      customer_id: customer.id,
+      project_type: 'Vzorka zadarmo (Shop)',
+      decor: data.dekor,
+    };
+
+    const { data: quote, error: quoteError } = await supabase
+      .from('quotes')
+      .insert(quoteData)
+      .select()
+      .single();
+
+    if (quoteError || !quote) {
+      console.error('Error creating sample lead quote:', quoteError);
+      return { success: false, error: 'Nepodarilo sa odoslať žiadosť' };
+    }
+
+    return { success: true, quoteId: quote.id };
+  } catch (error) {
+    console.error('Unexpected error in submitSampleLead:', error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Neočakávaná chyba',
+    };
+  }
+}
+
 /**
  * Nájde existujúceho zákazníka podľa emailu alebo vytvorí nového
  */

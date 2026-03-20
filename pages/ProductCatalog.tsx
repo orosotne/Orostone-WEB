@@ -1,10 +1,11 @@
-import React, { useRef } from 'react';
+import React, { useMemo, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { ShoppingBag, ChevronRight } from 'lucide-react';
 import { ShopProduct } from '../constants';
 import { useShopifyProducts } from '../hooks/useShopifyProducts';
+import { sortShopCatalogProducts } from '../components/Eshop/EshopMegaMenu';
 import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
@@ -143,7 +144,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 export const ProductCatalog = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { addItem, isInCart, getItemQuantity } = useCart();
-  const { products, isLoading } = useShopifyProducts();
+  const { products, isLoading } = useShopifyProducts(50, { shopifyOnly: true });
+  const sortedProducts = useMemo(() => sortShopCatalogProducts(products), [products]);
 
   // GSAP scroll animations on product cards
   useGSAP(() => {
@@ -162,7 +164,7 @@ export const ProductCatalog = () => {
         }
       );
     });
-  }, { scope: containerRef, dependencies: [products] });
+  }, { scope: containerRef, dependencies: [sortedProducts] });
 
   return (
     <main ref={containerRef} className="bg-white min-h-screen">
@@ -224,14 +226,15 @@ export const ProductCatalog = () => {
           </motion.p>
 
           {/* Product count */}
-          {products.length > 0 && (
+          {sortedProducts.length > 0 && (
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
               className="mt-3 text-[11px] tracking-[0.15em] uppercase text-white/50"
             >
-              {products.length} {products.length === 1 ? 'produkt' : products.length < 5 ? 'produkty' : 'produktov'}
+              {sortedProducts.length}{' '}
+              {sortedProducts.length === 1 ? 'produkt' : sortedProducts.length < 5 ? 'produkty' : 'produktov'}
             </motion.p>
           )}
         </div>
@@ -260,7 +263,7 @@ export const ProductCatalog = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
           >
-            {products.map((product) => {
+            {sortedProducts.map((product) => {
               const inCart = isInCart(product.id);
               return (
                 <ProductCard

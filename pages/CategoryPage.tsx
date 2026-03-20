@@ -2,7 +2,12 @@ import React, { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ChevronRight, ArrowRight, Package } from 'lucide-react';
-import { getVisibleCategories, getProductColorCategory, type ColorCategory } from '../components/Eshop/EshopMegaMenu';
+import {
+  getVisibleCategories,
+  getProductColorCategory,
+  sortSinteredByColorThenName,
+  type ColorCategory,
+} from '../components/Eshop/EshopMegaMenu';
 import { useShopifyProducts } from '../hooks/useShopifyProducts';
 import { useCart } from '../context/CartContext';
 import { ProductCard } from './ProductCatalog';
@@ -14,7 +19,7 @@ import { SEOHead } from '../components/UI/SEOHead';
 
 export const CategoryPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
-  const { products, isLoading } = useShopifyProducts();
+  const { products, isLoading } = useShopifyProducts(50, { shopifyOnly: true });
   const { addItem, isInCart, getItemQuantity } = useCart();
 
   // Parse slug pre podkategórie (napr. "sintered-stone/biele")
@@ -43,7 +48,16 @@ export const CategoryPage: React.FC = () => {
       const colorCat = subCategory as ColorCategory;
       result = result.filter(p => getProductColorCategory(p) === colorCat);
     }
-    
+
+    if (mainCategory === 'sintered-stone') {
+      result =
+        subCategory
+          ? [...result].sort((a, b) => a.name.localeCompare(b.name, 'sk', { sensitivity: 'base' }))
+          : sortSinteredByColorThenName(result);
+    } else {
+      result = [...result].sort((a, b) => a.name.localeCompare(b.name, 'sk', { sensitivity: 'base' }));
+    }
+
     return result;
   }, [products, mainCategory, subCategory]);
 
