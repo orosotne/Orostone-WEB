@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -66,6 +66,31 @@ import { ProductDetailSkeleton } from '../components/UI/Skeleton';
 import { useCookies } from '../context/CookieContext';
 import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
 import { getProductSEOContent, GENERIC_PRODUCT_FAQS } from '../data/product-seo-content';
+
+// #region agent log
+const debugLog = (
+  location: string,
+  message: string,
+  data: Record<string, unknown>,
+  hypothesisId: string,
+) => {
+  if (import.meta.env.DEV) {
+    console.debug('[orostone-debug]', { location, message, data, hypothesisId, t: Date.now() });
+  }
+  void fetch('http://127.0.0.1:7731/ingest/fe10e622-0fa2-40d2-8709-73e6a557fd3f', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '0e45ef' },
+    body: JSON.stringify({
+      sessionId: '0e45ef',
+      location,
+      message,
+      data,
+      timestamp: Date.now(),
+      hypothesisId,
+    }),
+  }).catch(() => {});
+};
+// #endregion
 
 // ===========================================
 // Custom thickness icon (from layers-icon.svg)
@@ -158,6 +183,8 @@ interface ProductSwitcherProps {
 
 const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProductId, products }) => {
   const navigate = useNavigate();
+  const railRef = useRef<HTMLDivElement>(null);
+  const touchStartRef = useRef<{ scrollY: number; railLeft: number } | null>(null);
 
   // Filter out Shopify example/test products
   const filteredProducts = products.filter((p) => {
@@ -166,7 +193,14 @@ const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProductId, pro
   });
 
   const handleProductClick = (productId: string) => {
-    // AJAX-like navigation - React Router handles this without full page reload
+    // #region agent log
+    debugLog(
+      'ProductSwitcher:handleProductClick',
+      'navigate',
+      { fromId: currentProductId, toId: productId, scrollY: window.scrollY },
+      'H2',
+    );
+    // #endregion
     navigate(`/produkt/${productId}`);
   };
 
@@ -197,7 +231,55 @@ const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProductId, pro
         Ďalšie produkty
       </h3>
       {/* 2-row horizontal scroll on mobile, 4-col grid on lg+ */}
-      <div className="grid grid-rows-2 grid-flow-col gap-2 overflow-x-auto overflow-y-hidden overscroll-x-contain snap-x snap-mandatory scroll-px-6 -mx-6 px-6 py-1 scrollbar-hide touch-pan-x lg:grid-rows-none lg:grid-flow-row lg:grid-cols-4 lg:gap-2 lg:overflow-visible lg:p-0 lg:m-0 lg:scroll-p-0 lg:touch-auto">
+      <div
+        ref={railRef}
+        className="grid grid-rows-2 grid-flow-col gap-2 overflow-x-auto overflow-y-hidden overscroll-x-contain scroll-px-6 -mx-6 px-6 py-1 scrollbar-hide touch-pan-x lg:grid-rows-none lg:grid-flow-row lg:grid-cols-4 lg:gap-2 lg:overflow-visible lg:m-0 lg:scroll-p-0 lg:p-0 lg:touch-auto"
+        style={{ WebkitOverflowScrolling: 'touch' }}
+        onTouchStart={() => {
+          // #region agent log
+          touchStartRef.current = {
+            scrollY: window.scrollY,
+            railLeft: railRef.current?.scrollLeft ?? 0,
+          };
+          debugLog(
+            'ProductSwitcher:rail',
+            'touchstart',
+            {
+              scrollY: window.scrollY,
+              railScrollLeft: railRef.current?.scrollLeft ?? 0,
+            },
+            'H1',
+          );
+          // #endregion
+        }}
+        onTouchEnd={() => {
+          // #region agent log
+          const start = touchStartRef.current;
+          const endY = window.scrollY;
+          const endLeft = railRef.current?.scrollLeft ?? 0;
+          debugLog(
+            'ProductSwitcher:rail',
+            'touchend',
+            {
+              scrollY: endY,
+              deltaScrollY: start === null ? null : endY - start.scrollY,
+              railScrollLeft: endLeft,
+              deltaRail: start === null ? null : endLeft - start.railLeft,
+            },
+            'H4',
+          );
+          touchStartRef.current = null;
+          requestAnimationFrame(() => {
+            debugLog(
+              'ProductSwitcher:rail',
+              'afterRAF',
+              { scrollY: window.scrollY },
+              'H5',
+            );
+          });
+          // #endregion
+        }}
+      >
         {filteredProducts.map((product) => {
           const isActive = product.id === currentProductId;
           return (
@@ -205,7 +287,7 @@ const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProductId, pro
               key={product.id}
               onClick={() => handleProductClick(product.id)}
               className={cn(
-                "group w-[90px] lg:w-auto flex flex-col items-center p-1.5 lg:p-2 transition-all rounded-lg snap-start",
+                "group w-[90px] lg:w-auto touch-manipulation flex flex-col items-center p-1.5 lg:p-2 transition-all rounded-lg",
                 isActive 
                   ? "ring-2 ring-brand-gold bg-brand-gold/5" 
                   : "ring-1 ring-gray-200 hover:ring-brand-gold/50 bg-white"
@@ -1900,7 +1982,7 @@ const ApplicationSection: React.FC<ApplicationSectionProps> = ({ product }) => {
             Vhodné použitie
           </h2>
 
-          <div className="flex gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain snap-x snap-mandatory scroll-px-6 py-4 -mx-6 px-6 scrollbar-hide touch-pan-x lg:mx-0 lg:px-0 lg:py-0 lg:scroll-p-0 lg:grid lg:grid-cols-8 lg:gap-4 lg:overflow-visible lg:touch-auto">
+          <div className="flex touch-pan-x gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain scroll-px-6 py-4 -mx-6 px-6 scrollbar-hide lg:mx-0 lg:grid lg:grid-cols-8 lg:gap-4 lg:overflow-visible lg:px-0 lg:py-0 lg:scroll-p-0 lg:touch-auto">
             {allApplications.map((app, index) => {
               const isSupported = productApplications.includes(app);
               const Icon = applicationIcons[app] || Layers;
@@ -1912,7 +1994,7 @@ const ApplicationSection: React.FC<ApplicationSectionProps> = ({ product }) => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
                   className={cn(
-                    "flex-shrink-0 w-[80px] snap-start lg:w-auto flex flex-col items-center text-center transition-all",
+                    "flex-shrink-0 w-[80px] lg:w-auto flex flex-col items-center text-center transition-all",
                     !isSupported && "opacity-40"
                   )}
                 >
@@ -2571,6 +2653,16 @@ const ProductSchema: React.FC<ProductSchemaProps> = ({ product, totalPrice }) =>
 // ===========================================
 export const ShopProductDetail: React.FC = () => {
   const { id } = useParams();
+  useEffect(() => {
+    // #region agent log
+    debugLog(
+      'ShopProductDetail',
+      'route id effect',
+      { id: id ?? null, scrollY: window.scrollY },
+      'H3',
+    );
+    // #endregion
+  }, [id]);
   const { addItem, isInCart, sampleCount, isSampleInCart } = useCart();
   const { hasConsented } = useCookies();
   const { products: allProducts, isLoading: productsLoading } = useShopifyProducts();
@@ -2692,7 +2784,7 @@ export const ShopProductDetail: React.FC = () => {
   const seoImage = (product.gallery && product.gallery.length > 0 ? product.gallery[0] : product.image) || '/images/logo.png';
 
   return (
-    <main className="bg-white min-h-screen overflow-x-hidden">
+    <main className="min-h-screen w-full overflow-x-hidden overflow-y-visible bg-white">
       <SEOHead
         title={seoTitle}
         description={seoDescription}

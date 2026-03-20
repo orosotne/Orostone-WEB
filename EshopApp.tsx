@@ -44,9 +44,37 @@ const ScrollToTop = () => {
     // Skip scroll when switching between product detail pages
     const isProductRoute = (p: string) => /^\/produkt\//.test(p);
     if (isProductRoute(prev) && isProductRoute(pathname)) {
+      // #region agent log
+      void fetch('http://127.0.0.1:7731/ingest/fe10e622-0fa2-40d2-8709-73e6a557fd3f', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '0e45ef' },
+        body: JSON.stringify({
+          sessionId: '0e45ef',
+          location: 'EshopApp:ScrollToTop',
+          message: 'skipped product-to-product',
+          data: { prev, pathname, scrollY: window.scrollY },
+          timestamp: Date.now(),
+          hypothesisId: 'H2',
+        }),
+      }).catch(() => {});
+      // #endregion
       return;
     }
 
+    // #region agent log
+    void fetch('http://127.0.0.1:7731/ingest/fe10e622-0fa2-40d2-8709-73e6a557fd3f', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '0e45ef' },
+      body: JSON.stringify({
+        sessionId: '0e45ef',
+        location: 'EshopApp:ScrollToTop',
+        message: 'scroll to top applied',
+        data: { prev, pathname, scrollYBefore: window.scrollY },
+        timestamp: Date.now(),
+        hypothesisId: 'H2',
+      }),
+    }).catch(() => {});
+    // #endregion
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;

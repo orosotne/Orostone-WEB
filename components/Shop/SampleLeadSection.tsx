@@ -53,7 +53,7 @@ export const SampleLeadSection: React.FC = () => {
   };
 
   return (
-    <section className="relative bg-[#ECD488]" style={{ overflow: 'clip', overflowX: 'hidden' }}>
+    <section className="relative overflow-x-hidden bg-[#ECD488]">
 
       {/* Top wave — animated by horizontal translate */}
       <div className="absolute top-0 left-0 w-full leading-none pointer-events-none" style={{ height: '80px', overflow: 'clip' }}>
@@ -112,8 +112,14 @@ export const SampleLeadSection: React.FC = () => {
           {/* Left — photo shifted up; testimonial half on image, half on yellow (#ECD488) */}
           <div className="relative z-10 -mt-3 lg:-mt-14">
             <div className="relative">
-              <div className="badge-blink-delay-1 absolute top-[6%] lg:top-[10%] left-[8%] lg:left-[14%] z-30 pointer-events-none hidden lg:block">
-                <RotatingBadge variant="dark-white" />
+              <div
+                className="badge-blink-delay-1 absolute z-30 pointer-events-none
+                  top-[8%] left-[11%]
+                  lg:top-[6%] lg:left-[10%]"
+              >
+                <div className="origin-top-left scale-[0.82] sm:scale-90 lg:scale-100">
+                  <RotatingBadge variant="dark-white" />
+                </div>
               </div>
               <div className="relative rounded-2xl overflow-hidden aspect-[4/5] lg:aspect-auto lg:h-[580px]">
                 <img

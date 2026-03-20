@@ -124,6 +124,44 @@ export const Home = () => {
     };
   }, [isCtaModalOpen]);
 
+  // #region agent log
+  useEffect(() => {
+    if (!import.meta.env.DEV) return;
+    const payload = {
+      sessionId: '0e45ef',
+      location: 'Home:ctaModal',
+      message: isCtaModalOpen ? 'modal open' : 'modal closed',
+      data: { isCtaModalOpen, scrollY: window.scrollY, bodyOverflow: document.body.style.overflow || 'default' },
+      timestamp: Date.now(),
+      hypothesisId: 'HOME_H2',
+    };
+    console.debug('[orostone-debug]', payload);
+    void fetch('http://127.0.0.1:7731/ingest/fe10e622-0fa2-40d2-8709-73e6a557fd3f', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '0e45ef' },
+      body: JSON.stringify(payload),
+    }).catch(() => {});
+  }, [isCtaModalOpen]);
+
+  useEffect(() => {
+    if (!import.meta.env.DEV) return;
+    const payload = {
+      sessionId: '0e45ef',
+      location: 'Home',
+      message: 'home mounted',
+      data: { scrollY: window.scrollY, path: window.location.pathname },
+      timestamp: Date.now(),
+      hypothesisId: 'HOME_H3',
+    };
+    console.debug('[orostone-debug]', payload);
+    void fetch('http://127.0.0.1:7731/ingest/fe10e622-0fa2-40d2-8709-73e6a557fd3f', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '0e45ef' },
+      body: JSON.stringify(payload),
+    }).catch(() => {});
+  }, []);
+  // #endregion
+
   // GSAP animation for CTA modal
   useEffect(() => {
     if (isCtaModalOpen && ctaModalRef.current) {

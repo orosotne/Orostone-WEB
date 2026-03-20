@@ -527,7 +527,7 @@ export const Shop = () => {
   const sinteredProducts = SHOP_PRODUCTS.filter(p => p.category === 'sintered-stone');
 
   return (
-    <main ref={containerRef} className="overflow-hidden w-full">
+    <main ref={containerRef} className="w-full overflow-x-hidden overflow-y-visible">
       <SEOHead
         title="OROSTONE E-Shop | Prémiový sinterovaný kameň"
         description="Nakupujte prémiové sinterované kamene od OROSTONE. Mramor, granit, betón — všetko s dopravou po celom Slovensku. Dosky 3200x1600mm skladom."
@@ -565,7 +565,7 @@ export const Shop = () => {
         {HERO_SLIDES.map((slide, idx) => (
           <div
             key={slide.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            className={`pointer-events-none absolute inset-0 transition-opacity duration-1000 ease-in-out ${
               idx === activeSlide ? 'opacity-100 z-[1]' : 'opacity-0 z-0'
             }`}
           >
@@ -590,12 +590,12 @@ export const Shop = () => {
           </div>
         ))}
 
-        {/* Gradient Overlays */}
-        <div className="absolute inset-0 z-[2] bg-gradient-to-t from-black/80 via-black/20 to-black/40" />
-        <div className="absolute inset-0 z-[2] bg-gradient-to-r from-black/20 via-transparent to-black/20" />
+        {/* Gradient Overlays — pointer-events-none so touch scroll passes through on mobile */}
+        <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-t from-black/80 via-black/20 to-black/40" />
+        <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-black/20 via-transparent to-black/20" />
 
         {/* Centered Content — DJI Reference Style */}
-        <div className="relative z-10 text-center text-white px-6 max-w-3xl mx-auto" style={{ zIndex: 3 }}>
+        <div className="relative z-10 text-center text-white px-6 max-w-3xl mx-auto pointer-events-auto" style={{ zIndex: 3 }}>
           {/* Small Category Label */}
           <AnimatePresence mode="wait">
             <motion.p
@@ -886,7 +886,7 @@ export const Shop = () => {
         <section className="stone-mobile-section order-1 lg:order-2 relative py-16 lg:hidden overflow-hidden">
         {/* Animated background — starts inset + rounded, expands on scroll */}
         <div
-          className="stone-bg-mobile absolute inset-0 bg-brand-gold"
+          className="stone-bg-mobile pointer-events-none absolute inset-0 bg-brand-gold"
           style={{ margin: '40px 24px', borderRadius: '24px' }}
         />
 
@@ -903,7 +903,7 @@ export const Shop = () => {
             </p>
           </div>
           <div
-            className="stone-slab-carousel flex gap-4 overflow-x-auto overscroll-x-contain snap-x snap-mandatory pb-2 mb-6 opacity-0"
+            className="stone-slab-carousel flex touch-pan-x gap-4 overflow-x-auto overscroll-x-contain snap-x snap-mandatory pb-2 mb-6 opacity-0"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', paddingLeft: 'calc(50% - 130px)', paddingRight: 'calc(50% - 130px)' }}
           >
             <style>{`.stone-slab-carousel::-webkit-scrollbar { display: none; }`}</style>
@@ -1008,7 +1008,7 @@ export const Shop = () => {
             <div className="flex-1 relative min-w-0">
               <div 
                 id="featured-carousel"
-                className="flex gap-4 lg:gap-6 overflow-x-auto overscroll-x-contain pb-4 snap-x snap-mandatory scrollbar-hide"
+                className="flex touch-pan-x gap-4 lg:gap-6 overflow-x-auto overscroll-x-contain pb-4 snap-x snap-mandatory scrollbar-hide"
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
               >
                 {SHOP_PRODUCTS.slice(0, 8).map((product, idx) => (
@@ -1109,7 +1109,7 @@ export const Shop = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.5, ease: 'easeInOut' }}
-                    className="absolute inset-0 flex flex-col items-center justify-center"
+                    className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center"
                   >
                     {/* Gold quote mark */}
                     <span className="text-6xl lg:text-7xl font-serif text-brand-gold/30 leading-none mb-4 select-none">
@@ -1208,7 +1208,7 @@ export const Shop = () => {
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
+                    <div className="pointer-events-none absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
                       <Instagram
                         size={28}
                         className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"

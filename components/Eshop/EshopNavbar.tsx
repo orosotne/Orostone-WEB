@@ -387,10 +387,10 @@ export const EshopNavbar: React.FC = () => {
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed top-0 left-0 bottom-0 w-full max-w-[320px] bg-white z-50 lg:hidden overflow-y-auto"
+              className="fixed top-0 left-0 bottom-0 z-50 flex h-[100dvh] max-h-[100dvh] w-full max-w-[320px] flex-col bg-white lg:hidden"
             >
               {/* Header */}
-              <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+              <div className="flex flex-shrink-0 items-center justify-between border-b border-gray-100 px-6 py-5">
                 <img src="/images/logo.png" alt="OROSTONE" className="h-6" />
                 <button
                   onClick={() => setMobileMenuOpen(false)}
@@ -400,6 +400,7 @@ export const EshopNavbar: React.FC = () => {
                 </button>
               </div>
 
+              <div className="min-h-0 flex-1 overflow-y-auto overscroll-y-contain">
               {/* Categories */}
               <div className="py-4">
                 {getVisibleCategories().map((category) => (
@@ -461,10 +462,11 @@ export const EshopNavbar: React.FC = () => {
                   Obľúbené
                 </button>
               </div>
+              </div>
 
-              {/* Footer */}
-              <div className="absolute bottom-0 left-0 right-0 px-6 py-6 border-t border-gray-100 bg-white">
-                <p className="text-[10px] tracking-[0.15em] uppercase text-gray-400 text-center">
+              {/* Footer — was position:absolute and overlapped scrollable links */}
+              <div className="flex-shrink-0 border-t border-gray-100 bg-white px-6 py-6">
+                <p className="text-center text-[10px] uppercase tracking-[0.15em] text-gray-400">
                   OROSTONE E-SHOP
                 </p>
               </div>

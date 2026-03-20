@@ -50,6 +50,24 @@ const ScrollToTop = () => {
   const { pathname } = useLocation();
   
   useEffect(() => {
+    // #region agent log
+    if (import.meta.env.DEV) {
+      const payload = {
+        sessionId: '0e45ef',
+        location: 'App:ScrollToTop',
+        message: 'route scroll reset',
+        data: { pathname, scrollYBefore: window.scrollY },
+        timestamp: Date.now(),
+        hypothesisId: 'APP_ST1',
+      };
+      console.debug('[orostone-debug]', payload);
+      void fetch('http://127.0.0.1:7731/ingest/fe10e622-0fa2-40d2-8709-73e6a557fd3f', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '0e45ef' },
+        body: JSON.stringify(payload),
+      }).catch(() => {});
+    }
+    // #endregion
     // Force immediate scroll to top, bypassing smooth scroll
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     
