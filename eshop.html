@@ -79,10 +79,14 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         overflow-x: hidden;
+        overscroll-behavior-x: none;
         width: 100%;
       }
       #root {
         width: 100%;
+        max-width: 100%;
+        overflow-x: clip;
+        min-height: 100%;
       }
       .scrollbar-hide::-webkit-scrollbar {
           display: none;

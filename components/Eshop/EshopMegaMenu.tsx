@@ -378,7 +378,7 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
             {/* Scrollable product carousel */}
             <div
               ref={scrollRef}
-              className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-2"
+              className="flex gap-4 overflow-x-auto overscroll-x-contain scrollbar-hide snap-x snap-mandatory pb-2"
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
               {isLoading ? (

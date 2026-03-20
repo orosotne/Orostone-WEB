@@ -197,7 +197,7 @@ const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProductId, pro
         Ďalšie produkty
       </h3>
       {/* 2-row horizontal scroll on mobile, 4-col grid on lg+ */}
-      <div className="grid grid-rows-2 grid-flow-col gap-2 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-px-6 -mx-6 px-6 py-1 scrollbar-hide touch-pan-x lg:grid-rows-none lg:grid-flow-row lg:grid-cols-4 lg:gap-2 lg:overflow-visible lg:p-0 lg:m-0 lg:scroll-p-0 lg:touch-auto">
+      <div className="grid grid-rows-2 grid-flow-col gap-2 overflow-x-auto overflow-y-hidden overscroll-x-contain snap-x snap-mandatory scroll-px-6 -mx-6 px-6 py-1 scrollbar-hide touch-pan-x lg:grid-rows-none lg:grid-flow-row lg:grid-cols-4 lg:gap-2 lg:overflow-visible lg:p-0 lg:m-0 lg:scroll-p-0 lg:touch-auto">
         {filteredProducts.map((product) => {
           const isActive = product.id === currentProductId;
           return (
@@ -1900,7 +1900,7 @@ const ApplicationSection: React.FC<ApplicationSectionProps> = ({ product }) => {
             Vhodné použitie
           </h2>
 
-          <div className="flex gap-4 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scroll-px-6 py-4 -mx-6 px-6 scrollbar-hide touch-pan-x lg:mx-0 lg:px-0 lg:py-0 lg:scroll-p-0 lg:grid lg:grid-cols-8 lg:gap-4 lg:overflow-visible lg:touch-auto">
+          <div className="flex gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain snap-x snap-mandatory scroll-px-6 py-4 -mx-6 px-6 scrollbar-hide touch-pan-x lg:mx-0 lg:px-0 lg:py-0 lg:scroll-p-0 lg:grid lg:grid-cols-8 lg:gap-4 lg:overflow-visible lg:touch-auto">
             {allApplications.map((app, index) => {
               const isSupported = productApplications.includes(app);
               const Icon = applicationIcons[app] || Layers;

@@ -731,13 +731,13 @@ export const Shop = () => {
         />
 
         {/* Content layer */}
-        <div className="stone-content relative z-10 w-full h-full flex items-center justify-center overflow-hidden pt-32 pb-20 lg:pt-44 lg:pb-28">
+        <div className="stone-content relative z-10 w-full h-full flex items-center justify-center overflow-hidden pt-32 pb-20 lg:pt-52 lg:pb-28">
           <div className="w-full max-w-[1200px] mx-auto px-4 lg:px-8">
             {/* Decorative glow */}
             <div className="stone-glow pointer-events-none absolute inset-x-1/4 -top-8 h-40 rounded-full bg-white/30 blur-3xl opacity-70" />
 
-            {/* Heading — extra top spacing so copy clears the rounded gold inset (bg uses margin-top 80px until scroll expands) */}
-            <div className="stone-heading text-center mb-6 lg:mb-8 pt-2 lg:pt-4">
+            {/* Heading — extra top spacing vs rounded gold inset (bg margin-top 80px) + room under arc on desktop */}
+            <div className="stone-heading text-center mb-6 lg:mb-10 pt-2 lg:pt-12">
               <span className="text-xs lg:text-[11px] tracking-[0.25em] uppercase text-brand-dark/60 font-bold block mb-2">
                 Stone Experience
               </span>
@@ -904,7 +904,7 @@ export const Shop = () => {
             </p>
           </div>
           <div
-            className="stone-slab-carousel flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2 mb-6 opacity-0"
+            className="stone-slab-carousel flex gap-4 overflow-x-auto overscroll-x-contain snap-x snap-mandatory pb-2 mb-6 opacity-0"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', paddingLeft: 'calc(50% - 130px)', paddingRight: 'calc(50% - 130px)' }}
           >
             <style>{`.stone-slab-carousel::-webkit-scrollbar { display: none; }`}</style>
@@ -1009,7 +1009,7 @@ export const Shop = () => {
             <div className="flex-1 relative min-w-0">
               <div 
                 id="featured-carousel"
-                className="flex gap-4 lg:gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
+                className="flex gap-4 lg:gap-6 overflow-x-auto overscroll-x-contain pb-4 snap-x snap-mandatory scrollbar-hide"
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
               >
                 {SHOP_PRODUCTS.slice(0, 8).map((product, idx) => (

@@ -13,6 +13,7 @@ export function TextKnockoutSection() {
     if (spacer) {
       spacer.style.backgroundColor = 'black';
       spacer.style.overflow = 'hidden';
+      spacer.style.overflowX = 'clip';
     }
   };
 
@@ -93,7 +94,7 @@ export function TextKnockoutSection() {
   return (
     <section
       ref={containerRef}
-      className="relative h-screen w-full overflow-hidden bg-black"
+      className="relative isolate h-screen w-full overflow-x-clip overflow-hidden bg-black"
     >
       {/* Layer 1: Background video */}
       <video

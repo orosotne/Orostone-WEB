@@ -65,6 +65,12 @@
   html, body {
     overflow-x: hidden;
     max-width: 100%;
+    overscroll-behavior-x: none;
+  }
+  #root {
+    overflow-x: clip;
+    max-width: 100%;
+    min-height: 100%;
   }
   body {
     @apply bg-background text-foreground;

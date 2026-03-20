@@ -40,7 +40,7 @@ export const EshopLayout: React.FC<EshopLayoutProps> = ({ children }) => {
       <CartDrawer />
       
       {/* Main Content — homepage has no top padding (hero goes behind transparent navbar) */}
-      <main className={`flex-grow ${isHomepage ? '' : SHOW_ANNOUNCEMENT_BAR ? 'pt-[92px] lg:pt-[148px]' : 'pt-[56px] lg:pt-[112px]'}`}>
+      <main className={`min-w-0 w-full flex-grow overflow-x-hidden ${isHomepage ? '' : SHOW_ANNOUNCEMENT_BAR ? 'pt-[92px] lg:pt-[148px]' : 'pt-[56px] lg:pt-[112px]'}`}>
         {children}
       </main>
       
