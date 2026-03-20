@@ -903,7 +903,7 @@ export const Shop = () => {
             </p>
           </div>
           <div
-            className="stone-slab-carousel flex touch-pan-x gap-4 overflow-x-auto overscroll-x-contain snap-x snap-mandatory pb-2 mb-6 opacity-0"
+            className="stone-slab-carousel flex [touch-action:pan-x_pan-y] gap-4 overflow-x-auto overscroll-x-contain snap-x snap-proximity pb-2 mb-6 opacity-0"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', paddingLeft: 'calc(50% - 130px)', paddingRight: 'calc(50% - 130px)' }}
           >
             <style>{`.stone-slab-carousel::-webkit-scrollbar { display: none; }`}</style>
@@ -1008,7 +1008,7 @@ export const Shop = () => {
             <div className="flex-1 relative min-w-0">
               <div 
                 id="featured-carousel"
-                className="flex touch-pan-x gap-4 lg:gap-6 overflow-x-auto overscroll-x-contain pb-4 snap-x snap-mandatory scrollbar-hide"
+                className="flex [touch-action:pan-x_pan-y] gap-4 lg:gap-6 overflow-x-auto overscroll-x-contain pb-4 snap-x snap-proximity scrollbar-hide"
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
               >
                 {SHOP_PRODUCTS.slice(0, 8).map((product, idx) => (

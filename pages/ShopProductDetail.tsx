@@ -152,7 +152,7 @@ const FINISH_LABEL_MAP: [RegExp, string][] = [
 const shortFinish = (finish?: string): string => {
   const raw = (finish || 'Leštený').split('(')[0].trim();
   for (const [pattern, label] of FINISH_LABEL_MAP) {
-    if (pattern.test(raw)) return label;
+    if (pattern.test(raw)) return `${label} - Leštený`;
   }
   return raw;
 };
@@ -232,7 +232,7 @@ const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProductId, pro
       {/* 2-row horizontal scroll on mobile, 4-col grid on lg+ */}
       <div
         ref={railRef}
-        className="grid grid-rows-2 grid-flow-col gap-2 overflow-x-auto overflow-y-hidden overscroll-x-contain scroll-px-6 -mx-6 px-6 py-1 scrollbar-hide touch-pan-x lg:grid-rows-none lg:grid-flow-row lg:grid-cols-4 lg:gap-2 lg:overflow-visible lg:m-0 lg:scroll-p-0 lg:p-0 lg:touch-auto"
+        className="grid grid-rows-2 grid-flow-col gap-2 overflow-x-auto overflow-y-hidden overscroll-x-contain scroll-px-6 -mx-6 px-6 py-1 scrollbar-hide [touch-action:pan-x_pan-y] lg:grid-rows-none lg:grid-flow-row lg:grid-cols-4 lg:gap-2 lg:overflow-visible lg:m-0 lg:scroll-p-0 lg:p-0 lg:touch-auto"
         style={{ WebkitOverflowScrolling: 'touch' }}
         onTouchStart={() => {
           // #region agent log
@@ -1371,17 +1371,20 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               </h1>
 
 
-              {/* ===== Spec Badges — mobile: right after vendor (order-2), desktop: before title (order-2) ===== */}
-              <div className="order-2 lg:order-2 flex flex-wrap gap-2 mb-4">
-                <span className="inline-flex items-center gap-1.5 bg-brand-dark text-brand-gold px-3 py-1.5 rounded-full text-xs lg:text-[11px] font-semibold tracking-wide uppercase">
+              {/* ===== Spec Badges — mobile: horizontal scroll (pan-x+pan-y touch-action, no snap); lg: wrap ===== */}
+              <div
+                className="order-2 lg:order-2 mb-4 flex w-full min-w-0 flex-nowrap gap-2 overflow-x-auto overflow-y-hidden overscroll-x-contain [touch-action:pan-x_pan-y] scrollbar-hide lg:flex-wrap lg:overflow-visible"
+                style={{ WebkitOverflowScrolling: 'touch' }}
+              >
+                <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-brand-dark px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-brand-gold lg:text-[11px]">
                   <ThicknessIcon size={14} />
                   {product.thickness}
                 </span>
-                <span className="inline-flex items-center gap-1.5 bg-brand-dark text-brand-gold px-3 py-1.5 rounded-full text-xs lg:text-[11px] font-semibold tracking-wide uppercase">
+                <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-brand-dark px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-brand-gold lg:text-[11px]">
                   <Maximize2 size={14} />
                   {product.dimensions}
                 </span>
-                <span className="inline-flex items-center gap-1.5 bg-brand-dark text-brand-gold px-3 py-1.5 rounded-full text-xs lg:text-[11px] font-semibold tracking-wide uppercase">
+                <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-brand-dark px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-brand-gold lg:text-[11px]">
                   {React.createElement(getFinishIcon(product.finish), { size: 14 })}
                   {shortFinish(product.finish)}
                 </span>
@@ -1981,7 +1984,7 @@ const ApplicationSection: React.FC<ApplicationSectionProps> = ({ product }) => {
             Vhodné použitie
           </h2>
 
-          <div className="flex touch-pan-x gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain scroll-px-6 py-4 -mx-6 px-6 scrollbar-hide lg:mx-0 lg:grid lg:grid-cols-8 lg:gap-4 lg:overflow-visible lg:px-0 lg:py-0 lg:scroll-p-0 lg:touch-auto">
+          <div className="flex [touch-action:pan-x_pan-y] gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain scroll-px-6 py-4 -mx-6 px-6 scrollbar-hide lg:mx-0 lg:grid lg:grid-cols-8 lg:gap-4 lg:overflow-visible lg:px-0 lg:py-0 lg:scroll-p-0 lg:touch-auto">
             {allApplications.map((app, index) => {
               const isSupported = productApplications.includes(app);
               const Icon = applicationIcons[app] || Layers;
