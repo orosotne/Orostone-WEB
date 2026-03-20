@@ -10,7 +10,7 @@ const TESTIMONIAL = {
   role: 'MS Interiors, Bratislava',
 };
 
-const LIFESTYLE_IMAGE = '/images/sample-lead.webp';
+const LIFESTYLE_IMAGE = '/images/sample-lead-hero.png';
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 
@@ -109,37 +109,40 @@ export const SampleLeadSection: React.FC = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 
-          {/* Left — lifestyle photo + testimonial overlay */}
-          <div className="relative">
-            <div className="badge-blink-delay-1 absolute -top-16 -left-16 z-30 pointer-events-none hidden lg:block">
-              <RotatingBadge variant="dark-white" />
-            </div>
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/5] lg:aspect-auto lg:h-[600px]">
-              <img
-                src={LIFESTYLE_IMAGE}
-                alt="Prémiové vzorky sinterovaného kameňa OROSTONE v elegantnom balení"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand-dark/10 to-transparent" />
-
-              {/* Testimonial card */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
-              <div className="flex gap-0.5 mb-3">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-4 h-4 text-brand-gold fill-current" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
+          {/* Left — photo shifted up; testimonial half on image, half on yellow (#ECD488) */}
+          <div className="relative z-10 -mt-3 lg:-mt-14">
+            <div className="relative">
+              <div className="badge-blink-delay-1 absolute top-[6%] lg:top-[10%] left-[8%] lg:left-[14%] z-30 pointer-events-none hidden lg:block">
+                <RotatingBadge variant="dark-white" />
               </div>
-              <p className="text-white text-sm lg:text-base font-light leading-relaxed italic mb-4">
-                "{TESTIMONIAL.quote}"
-              </p>
-              <div>
-                <p className="text-white text-sm font-semibold">{TESTIMONIAL.name}</p>
-                <p className="text-gray-400 text-xs">{TESTIMONIAL.role}</p>
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/5] lg:aspect-auto lg:h-[580px]">
+                <img
+                  src={LIFESTYLE_IMAGE}
+                  alt="Prémiové vzorky sinterovaného kameňa OROSTONE v elegantnom balení"
+                  className="w-full h-full object-cover lg:object-[50%_30%]"
+                />
+              </div>
+              <div className="absolute inset-x-0 bottom-0 z-20 translate-y-[62%] px-3 sm:px-4 lg:px-5">
+                <div className="rounded-xl bg-brand-dark/75 backdrop-blur-md px-5 py-5 lg:px-7 lg:py-6 shadow-lg ring-1 ring-white/10">
+                  <div className="flex gap-0.5 mb-3">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="w-4 h-4 text-brand-gold fill-current" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <p className="text-white text-sm lg:text-base font-light leading-relaxed italic mb-4 text-pretty">
+                    "{TESTIMONIAL.quote}"
+                  </p>
+                  <div>
+                    <p className="text-white text-sm font-semibold">{TESTIMONIAL.name}</p>
+                    <p className="text-gray-300 text-xs">{TESTIMONIAL.role}</p>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+            {/* Reserve space so the bottom half of the card sits on section yellow, not under the form */}
+            <div className="h-32 sm:h-36 lg:h-44" aria-hidden />
           </div>
 
           {/* Right — form */}

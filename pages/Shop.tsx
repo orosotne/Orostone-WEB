@@ -259,10 +259,13 @@ export const Shop = () => {
     }
 
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    // --- Stone Experience: Pin-and-reveal scroll animation (desktop only) ---
     const stonePinned = document.querySelector('.stone-experience-pinned');
-    if (stonePinned && !reducedMotion) {
+
+    // Pin only at lg+ — section is `hidden lg:flex`; pin on display:none broke mobile scroll
+    const stonePinMedia = gsap.matchMedia();
+    stonePinMedia.add('(min-width: 1024px)', () => {
+      if (reducedMotion || !document.querySelector('.stone-experience-pinned')) return;
+
       const stoneTl = gsap.timeline({
         scrollTrigger: {
           trigger: '.stone-experience-pinned',
@@ -274,14 +277,12 @@ export const Shop = () => {
         },
       });
 
-      // Phase 1 (0–10%): Background expands from inset+rounded to full-bleed
-      stoneTl.fromTo('.stone-bg',
+      // Phase 1 (0–10%): Gold frame expands from inset+rounded to full-bleed (content lives inside frame)
+      stoneTl.fromTo('.stone-bg-frame',
         { margin: '80px 120px', borderRadius: '32px' },
         { margin: '0px 0px', borderRadius: '0px', ease: 'power2.out', duration: 0.06 },
         0
       );
-
-      // Heading is always visible — no animation needed
 
       // Phase 2 (5–18%): Slab reveals quickly with scale + opacity
       stoneTl.fromTo('.stone-slab-wrap',
@@ -290,8 +291,6 @@ export const Shop = () => {
         0.05
       );
 
-      // Phase 4 (20–75%): Each property point reveals one by one
-      // Each point = card + its pin + connector appear together
       const pointOrder = [0, 1, 2, 3, 4];
       const allCards = document.querySelectorAll('.stone-experience-pinned .stone-point-card');
       const allPins = document.querySelectorAll('.stone-experience-pinned .stone-pin');
@@ -323,16 +322,12 @@ export const Shop = () => {
         }
       });
 
-      // Phase 5 (78–88%): CTA button fades in
       stoneTl.fromTo('.stone-experience-pinned .stone-cta',
         { y: 15, opacity: 0 },
         { y: 0, opacity: 1, ease: 'power2.out', duration: 0.10 },
         0.78
       );
 
-      // 88–100%: Free space before unpin (section releases)
-
-      // Pin pulse animation (independent, not scrub-linked)
       gsap.to('.stone-experience-pinned .stone-pin-pulse', {
         scale: 1.9,
         opacity: 0,
@@ -342,11 +337,11 @@ export const Shop = () => {
         repeat: -1,
         delay: 1,
       });
-    }
+    });
 
     // Reduced-motion fallback: show everything immediately, no scroll animation
     if (stonePinned && reducedMotion) {
-      gsap.set('.stone-bg', { margin: '0', borderRadius: '0' });
+      gsap.set('.stone-bg-frame', { margin: '0', borderRadius: '0' });
       gsap.set('.stone-slab-wrap', { opacity: 1, y: 0, scale: 1 });
       gsap.set('.stone-experience-pinned .stone-point-card', { opacity: 1, y: 0 });
       gsap.set('.stone-experience-pinned .stone-pin', { opacity: 1, scale: 1 });
@@ -521,6 +516,9 @@ export const Shop = () => {
       }
     );
 
+    return () => {
+      stonePinMedia.revert();
+    };
   }, { scope: containerRef });
 
   // Get featured/spotlight product
@@ -723,16 +721,16 @@ export const Shop = () => {
 
 
       {/* ==================== STONE EXPERIENCE — Pin-and-reveal scroll animation ==================== */}
-      <section className="stone-experience-pinned relative hidden lg:block h-[110vh] overflow-hidden">
-        {/* Animated background — starts inset + rounded, expands to full-bleed */}
+      <section className="stone-experience-pinned relative hidden lg:flex lg:flex-col h-[118vh] overflow-hidden">
+        {/* Frame = same inset as gold so copy + grid stay inside yellow; GSAP expands frame to full-bleed */}
         <div
-          className="stone-bg absolute inset-0 bg-brand-gold"
+          className="stone-bg-frame relative z-0 flex flex-1 min-h-0 flex-col overflow-hidden"
           style={{ margin: '80px 120px', borderRadius: '32px' }}
-        />
+        >
+          <div className="stone-bg pointer-events-none absolute inset-0 bg-brand-gold" />
 
-        {/* Content layer */}
-        <div className="stone-content relative z-10 w-full h-full flex items-center justify-center overflow-hidden pt-32 pb-20 lg:pt-52 lg:pb-28">
-          <div className="w-full max-w-[1200px] mx-auto px-4 lg:px-8">
+          <div className="stone-content relative z-10 flex min-h-0 flex-1 items-center justify-center overflow-hidden px-4 pt-32 pb-24 lg:px-6 lg:pt-52 lg:pb-40">
+            <div className="relative w-full max-w-[1200px] min-w-0 mx-auto">
             {/* Decorative glow */}
             <div className="stone-glow pointer-events-none absolute inset-x-1/4 -top-8 h-40 rounded-full bg-white/30 blur-3xl opacity-70" />
 
@@ -864,7 +862,7 @@ export const Shop = () => {
             </div>
 
             {/* CTA */}
-            <div className="stone-cta text-center mt-8 opacity-0">
+            <div className="stone-cta text-center mt-10 lg:mt-14 lg:mb-2 opacity-0">
               <Link
                 to="/kategoria/sintered-stone"
                 className="inline-flex items-center gap-2 bg-brand-dark text-white px-8 py-3.5 rounded-full text-xs lg:text-sm tracking-[0.16em] uppercase font-semibold hover:bg-white hover:text-brand-dark transition-all duration-300"
@@ -872,6 +870,7 @@ export const Shop = () => {
                 Objaviť všetky dekory
                 <ArrowRight size={15} />
               </Link>
+            </div>
             </div>
           </div>
         </div>
