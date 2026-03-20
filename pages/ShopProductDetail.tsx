@@ -74,9 +74,8 @@ const debugLog = (
   data: Record<string, unknown>,
   hypothesisId: string,
 ) => {
-  if (import.meta.env.DEV) {
-    console.debug('[orostone-debug]', { location, message, data, hypothesisId, t: Date.now() });
-  }
+  if (!import.meta.env.DEV) return;
+  console.debug('[orostone-debug]', { location, message, data, hypothesisId, t: Date.now() });
   void fetch('http://127.0.0.1:7731/ingest/fe10e622-0fa2-40d2-8709-73e6a557fd3f', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '0e45ef' },
