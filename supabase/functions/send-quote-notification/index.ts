@@ -143,7 +143,7 @@ async function sendAdminNotification(quote: QuotePayload['record'], customer: Cu
 async function sendCustomerConfirmation(quote: QuotePayload['record'], customer: CustomerData) {
   const html = `
     <div style="font-family: Georgia, serif; max-width: 600px; margin: 0 auto;">
-      <img src="https://orostone.sk/images/logo.png" alt="Orostone" style="height: 40px; margin-bottom: 24px;">
+      <img src="https://www.orostone.sk/images/brand/orostone-circle.png" alt="Orostone" style="height: 40px; margin-bottom: 24px;">
       
       <h2 style="font-weight: normal;">Ďakujeme za Váš dopyt</h2>
       
@@ -190,7 +190,7 @@ async function sendCustomerConfirmation(quote: QuotePayload['record'], customer:
       <hr style="margin-top: 48px; border: none; border-top: 1px solid #eee;">
       <p style="color: #999; font-size: 12px;">
         Orostone s.r.o. | Priemyselná 12, 821 09 Bratislava<br>
-        <a href="https://orostone.sk" style="color: #999;">www.orostone.sk</a>
+        <a href="https://www.orostone.sk" style="color: #999;">www.orostone.sk</a>
       </p>
     </div>
   `;

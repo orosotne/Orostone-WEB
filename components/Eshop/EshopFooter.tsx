@@ -7,6 +7,17 @@ import {
 import { RotatingBadge } from '../UI/RotatingBadge';
 import { getVisibleCategories } from './EshopMegaMenu';
 
+const PAYMENT_MARKS = [
+  { src: '/images/payments/visa.svg', alt: 'Visa' },
+  { src: '/images/payments/mastercard.svg', alt: 'Mastercard' },
+  { src: '/images/payments/amex.svg', alt: 'American Express' },
+  { src: '/images/payments/discover.svg', alt: 'Discover' },
+  { src: '/images/payments/jcb.svg', alt: 'JCB' },
+  { src: '/images/payments/diners.svg', alt: 'Diners Club' },
+  { src: '/images/payments/apple-pay.svg', alt: 'Apple Pay' },
+  { src: '/images/payments/google-pay.svg', alt: 'Google Pay' },
+] as const;
+
 // ===========================================
 // COMPONENT
 // ===========================================
@@ -48,7 +59,7 @@ export const EshopFooter: React.FC = () => {
               </div>
               <div>
                 <h4 className="font-semibold text-sm">Bezpečná platba</h4>
-                <p className="text-xs text-gray-400">Kartou alebo prevodom</p>
+                <p className="text-xs text-gray-400">Platobnou kartou</p>
               </div>
             </div>
             
@@ -72,9 +83,9 @@ export const EshopFooter: React.FC = () => {
           {/* Logo & About */}
           <div className="lg:col-span-2">
             <Link to="/">
-              <img 
-                src="/images/logo.png" 
-                alt="OROSTONE" 
+              <img
+                src="/images/logo.png"
+                alt="OROSTONE"
                 className="h-10 brightness-0 invert mb-4"
               />
             </Link>
@@ -210,19 +221,26 @@ export const EshopFooter: React.FC = () => {
               </Link>
             </div>
             
-            {/* Payment Methods */}
-            <div className="flex items-center gap-3">
-              <span className="text-xs text-gray-500">Platobné metódy:</span>
-              <div className="flex items-center gap-2">
-                <div className="bg-white rounded px-2 py-1">
-                  <span className="text-[10px] font-bold text-blue-600">VISA</span>
-                </div>
-                <div className="bg-white rounded px-2 py-1">
-                  <span className="text-[10px] font-bold text-orange-500">MC</span>
-                </div>
-                <div className="bg-white rounded px-2 py-1">
-                  <span className="text-[10px] font-bold text-green-600">SEPA</span>
-                </div>
+            {/* Platobné značky — zobrazujte len to, čo máte zapnuté v Stripe Dashboard (Payment methods) */}
+            <div className="flex flex-wrap items-center gap-2 justify-center md:justify-end" aria-label="Podporované platobné metódy">
+              <span className="text-[10px] sm:text-[11px] text-gray-500/90 shrink-0">Platobné metódy:</span>
+              <div className="flex flex-wrap items-center gap-1 justify-center md:justify-end max-w-[min(100%,22rem)] md:max-w-none">
+                {PAYMENT_MARKS.map(({ src, alt }) => (
+                  <div
+                    key={src}
+                    className="bg-white/95 rounded-sm px-1 py-0.5 flex items-center justify-center h-7 min-w-[1.75rem] max-w-[3.5rem]"
+                  >
+                    <img
+                      src={src}
+                      alt={alt}
+                      width={52}
+                      height={16}
+                      className="h-4 w-auto max-w-[3rem] object-contain object-center opacity-[0.88]"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                ))}
               </div>
             </div>
 

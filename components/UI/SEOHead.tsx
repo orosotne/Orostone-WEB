@@ -1,5 +1,17 @@
 import { useEffect } from 'react';
 
+const SITE_ORIGIN = (import.meta.env.VITE_PUBLIC_SITE_URL as string | undefined)?.replace(/\/$/, '')
+  || 'https://www.orostone.sk';
+
+const DEFAULT_OG_PATH = '/images/og-orostone.png';
+
+function toAbsoluteOgImage(url: string | undefined): string | undefined {
+  if (!url) return undefined;
+  if (/^https?:\/\//i.test(url)) return url;
+  if (url.startsWith('/')) return `${SITE_ORIGIN}${url}`;
+  return url;
+}
+
 interface SEOHeadProps {
   title: string;
   description: string;
@@ -19,7 +31,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   title,
   description,
   canonical,
-  ogImage = '/images/logo.png',
+  ogImage = DEFAULT_OG_PATH,
   ogType = 'website',
   noindex = false,
   structuredData,
@@ -40,24 +52,42 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       el.content = content;
     };
 
+    const removeMetaProperty = (name: string) => {
+      document.querySelector(`meta[property="${name}"]`)?.remove();
+    };
+
     // Standard meta
     setMeta('description', description);
     if (noindex) {
       setMeta('robots', 'noindex, nofollow');
     }
 
+    const absoluteOg = toAbsoluteOgImage(ogImage);
+    const isDefaultOg =
+      ogImage === DEFAULT_OG_PATH
+      || absoluteOg?.endsWith(DEFAULT_OG_PATH)
+      || absoluteOg?.endsWith('/images/og-orostone.png');
+
     // Open Graph
     setMeta('og:title', title, true);
     setMeta('og:description', description, true);
     setMeta('og:type', ogType, true);
-    if (ogImage) setMeta('og:image', ogImage, true);
+    if (absoluteOg) setMeta('og:image', absoluteOg, true);
+    setMeta('og:image:alt', title, true);
+    if (isDefaultOg) {
+      setMeta('og:image:width', '1200', true);
+      setMeta('og:image:height', '630', true);
+    } else {
+      removeMetaProperty('og:image:width');
+      removeMetaProperty('og:image:height');
+    }
     if (canonical) setMeta('og:url', canonical, true);
 
     // Twitter Card
     setMeta('twitter:card', 'summary_large_image');
     setMeta('twitter:title', title);
     setMeta('twitter:description', description);
-    if (ogImage) setMeta('twitter:image', ogImage);
+    if (absoluteOg) setMeta('twitter:image', absoluteOg);
 
     // Canonical
     let linkCanonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
@@ -157,7 +187,7 @@ export const OROSTONE_ORGANIZATION_LD = {
   '@type': 'Organization',
   name: 'OROSTONE',
   url: 'https://www.orostone.sk',
-  logo: 'https://www.orostone.sk/images/logo.png',
+  logo: 'https://www.orostone.sk/images/brand/orostone-circle.png',
   description: 'Prémiový sinterovaný kameň pre kuchyne, kúpeľne a architektonické projekty.',
   address: {
     '@type': 'PostalAddress',

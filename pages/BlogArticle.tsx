@@ -297,7 +297,7 @@ export const BlogArticle: React.FC = () => {
               url: 'https://www.orostone.sk',
               logo: {
                 '@type': 'ImageObject',
-                url: 'https://www.orostone.sk/images/logo.png',
+                url: 'https://www.orostone.sk/images/brand/orostone-circle.png',
               },
             },
             mainEntityOfPage: {

@@ -1,234 +1,134 @@
 # Orostone E-Shop Setup Guide
 
-Tento dokument obsahuje kompletný návod na nastavenie e-shopu Orostone.
+Návod na nastavenie e-shopu Orostone. **Platby a dokončenie objednávky prebiehajú cez Shopify Hosted Checkout** (presmerovanie z košíka na `checkoutUrl` z Storefront API).
 
-## 📋 Prehľad komponentov
-
-E-shop sa skladá z nasledujúcich komponentov:
+## Prehľad komponentov
 
 ### Frontend (React + TypeScript)
-- **Cart System** - `context/CartContext.tsx` - localStorage persistencia
-- **Auth System** - `context/AuthContext.tsx` - Supabase Auth
-- **Checkout Flow** - `pages/Checkout.tsx` - 4-krokový checkout
-- **Shop Page** - `pages/Shop.tsx` - produktový katalóg
-- **User Account** - `pages/Account.tsx` - objednávky, adresy, nastavenia
 
-### Backend (Supabase)
-- **Database** - PostgreSQL schéma pre produkty, objednávky, zákazníkov
-- **Edge Functions** - Stripe integrácia, email notifikácie
-- **Storage** - Obrázky produktov
-- **Auth** - Registrácia, prihlásenie, reset hesla
+- **Shopify Storefront API** — produkty, košík, `checkoutUrl` ([`lib/shopify.ts`](lib/shopify.ts), [`services/shopify.service.ts`](services/shopify.service.ts))
+- **Cart System** — [`context/CartContext.tsx`](context/CartContext.tsx), persistencia `orostone_shopify_cart_id` v `localStorage`
+- **Checkout** — [`pages/Checkout.tsx`](pages/Checkout.tsx) a [`components/Cart/CartDrawer.tsx`](components/Cart/CartDrawer.tsx): `window.location.href = checkoutUrl`
+- **Shop / katalóg** — [`pages/Shop.tsx`](pages/Shop.tsx), [`hooks/useShopifyProducts.ts`](hooks/useShopifyProducts.ts)
+- **Auth / účet** (voliteľné) — Supabase: [`context/AuthContext.tsx`](context/AuthContext.tsx), [`pages/Account.tsx`](pages/Account.tsx)
 
-### Platobná brána (Stripe)
-- **Payment Intents** - Bezpečné platby kartou
-- **Webhooks** - Automatická aktualizácia stavu objednávok
+### Shopify (obchod)
 
-### Emaily (Resend)
-- **Potvrdenie objednávky** - Zákazníkovi
-- **Notifikácia** - Adminovi o novej objednávke
+- Produkty, sklad, ceny, doprava, dane, **platobné brány** a e-mailové potvrdenia objednávok
 
 ---
 
-## 🔧 Inštalácia
+## Checklist: Shopify Admin (povinné pre reálne platby)
 
-### 1. Environment Variables
+Toto sa nastavuje v administrácii obchodu na [Shopify Admin](https://admin.shopify.com). Kód frontendu už smeruje zákazníka na checkout URL z košíka.
 
-Vytvor súbor `.env.local` v roote projektu:
+1. **Platby** — *Settings → Payments*
+   - Zapnite **Shopify Payments** (ak je dostupné pre vašu krajinu / právnickú osobu) alebo **alternatívnu bránu** podporovanú Shopify pre vašu lokalitu.
+   - Voliteľne: **Manuálna platba** (bankový prevod) s inštrukciami pre zákazníka.
+2. **Checkout** — *Settings → Checkout*
+   - Kontaktné údaje, povinné polia, súhlasy, e-mailové notifikácie.
+3. **Doprava** — *Settings → Shipping and delivery*
+   - Zóny, sadzby, alebo dynamické ceny podľa potreby.
+4. **Trhy a dane** — *Settings → Markets* / dane podľa predajných krajín; mena obchodu musí zodpovedať tomu, čo zákazník vidí v košíku.
+5. **Doména** — *Settings → Domains*: vlastná doména zvyšuje dôveru pri presmerovaní na checkout.
+6. **Testovacia objednávka**
+   - Zapnite testovací režim podľa typu platobnej brány.
+   - Na webe: pridajte produkt s platným `shopifyVariantId` → košík → Pokladňa → dokončite platbu na Shopify checkout → overte objednávku v *Orders*.
+
+---
+
+## Environment variables
+
+Vytvor `.env` alebo `.env.local` v koreni projektu (šablóna: [`.env.example`](.env.example)).
+
+### Shopify (produkčný e-shop)
 
 ```env
-# Supabase
+VITE_SHOPIFY_STORE_DOMAIN=vas-obchod.myshopify.com
+VITE_SHOPIFY_STOREFRONT_TOKEN=storefront-access-token
+```
+
+- **Produkcia:** použite token a doménu z **živého** Shopify obchodu (nie vývojový duplikát, ak už predávate).
+- Token vytvoríte v *Settings → Apps and sales channels → Develop apps → Storefront API* s oprávneniami na čítanie produktov a úpravu košíka (checkout).
+- Ak premenné chýbajú, `isShopifyConfigured()` je false a katalóg môže ísť z fallbacku — košík/checkout nebudú funkčné voči živému obchodu.
+
+### Overenie toku košík → platba (E2E)
+
+1. `VITE_SHOPIFY_*` nastavené a aplikácia znovu zbuildovaná (`npm run build` / deploy).
+2. Otvoriť produkt, ktorý má v dátach `shopifyVariantId`, pridať do košíka.
+3. Na stránke Pokladňa alebo v košíkovom draweri kliknúť na dokončenie nákupu — presmeruje na `*.myshopify.com` / checkout.
+4. Dokončiť testovaciu platbu v Shopify.
+
+### Supabase (ak používate účet / auth)
+
+```env
 VITE_SUPABASE_URL=https://your-project.supabase.co
 VITE_SUPABASE_ANON_KEY=your-anon-key
-
-# Stripe (Publishable key pre frontend)
-VITE_STRIPE_PUBLISHABLE_KEY=pk_live_xxx  # alebo pk_test_xxx pre testovanie
 ```
 
-### 2. Supabase Setup
-
-#### A. Vytvor nový projekt na [supabase.com](https://supabase.com)
-
-#### B. Spusti databázovú schému
-
-V SQL editore spusti postupne:
-1. `supabase/schema.sql` - základná schéma (zákazníci, dopyty)
-2. `supabase/schema-eshop.sql` - e-shop schéma (produkty, objednávky)
-
-#### C. Nastav Edge Functions secrets
-
-```bash
-supabase secrets set STRIPE_SECRET_KEY=sk_live_xxx
-supabase secrets set STRIPE_WEBHOOK_SECRET=whsec_xxx
-supabase secrets set RESEND_API_KEY=re_xxx
-```
-
-#### D. Deploy Edge Functions
-
-```bash
-supabase functions deploy create-payment-intent
-supabase functions deploy stripe-webhook
-supabase functions deploy send-order-confirmation
-```
-
-### 3. Stripe Setup
-
-#### A. Vytvor účet na [stripe.com](https://stripe.com)
-
-#### B. Získaj API kľúče
-- Dashboard → Developers → API keys
-- Skopíruj `Publishable key` a `Secret key`
-
-#### C. Nastav Webhook
-- Dashboard → Developers → Webhooks
-- Add endpoint: `https://your-project.supabase.co/functions/v1/stripe-webhook`
-- Events: `payment_intent.succeeded`, `payment_intent.payment_failed`, `charge.refunded`
-- Skopíruj `Signing secret`
-
-### 4. Resend Setup (Email)
-
-#### A. Vytvor účet na [resend.com](https://resend.com)
-
-#### B. Pridaj a over doménu
-- Settings → Domains → Add Domain
-- Pridaj DNS záznamy
-
-#### C. Získaj API kľúč
-- Settings → API Keys → Create API Key
+Ďalšie kľúče podľa funkcií (vizualizér atď.) sú v [`.env.example`](.env.example).
 
 ---
 
-## 📱 Použitie
+## Offline katalóg (fallback)
 
-### Pridanie produktu do košíka
+Pri výpadku Storefront API alebo vývoji bez `.env`:
+
+```bash
+npm run sync:shop-fallback
+```
+
+Zapíše snapshot do [`data/shop-products-fallback.json`](data/shop-products-fallback.json) — vhodné commitnúť pred release.
+
+---
+
+## Použitie košíka (Shopify variant)
 
 ```tsx
 import { useCart } from '../context/CartContext';
 
 const { addItem } = useCart();
 
-addItem({
-  productId: 'product-123',
-  name: 'Carrara Statuario',
-  slug: 'carrara-statuario',
-  image: '/images/product.jpg',
-  price: 189, // €/m²
-  quantity: 1,
-  dimensions: '3200 x 1600 mm',
-  thickness: '12mm',
-  surfaceArea: 5.12, // m² za kus
-});
+// variantId = Shopify ProductVariant GID (napr. z product.shopifyVariantId)
+await addItem(variantId, 1);
 ```
 
-### Autentifikácia
+Presmerovanie na platbu:
 
 ```tsx
-import { useAuth } from '../context/AuthContext';
+const { checkoutUrl } = useCart();
 
-const { signIn, signUp, signOut, isAuthenticated, user } = useAuth();
-
-// Prihlásenie
-await signIn('user@email.com', 'password');
-
-// Registrácia
-await signUp('user@email.com', 'password', 'Ján Novák');
-
-// Odhlásenie
-await signOut();
-```
-
-### Stripe Payment
-
-```tsx
-import { useStripePayment } from '../hooks/useStripe';
-import { StripePaymentForm } from '../components/Checkout/StripePaymentForm';
-
-const { createPaymentIntent } = useStripePayment();
-
-// Vytvor payment intent
-const result = await createPaymentIntent(items, shippingCost, email, name);
-
-// Zobraz platobný formulár
-<StripePaymentForm 
-  clientSecret={result.clientSecret}
-  onSuccess={(paymentIntentId) => { /* success */ }}
-  onError={(error) => { /* error */ }}
-/>
+if (checkoutUrl) {
+  window.location.href = checkoutUrl;
+}
 ```
 
 ---
 
-## 🗄️ Databázová schéma
+## Platobné metódy v pätičke
 
-### Hlavné tabuľky
-
-| Tabuľka | Popis |
-|---------|-------|
-| `categories` | Kategórie produktov |
-| `products` | Produkty (skladové platne) |
-| `orders` | Objednávky |
-| `order_items` | Položky objednávok |
-| `user_addresses` | Uložené adresy zákazníkov |
-| `discount_codes` | Zľavové kódy |
-
-### Status flow objednávky
-
-```
-pending → paid → processing → shipped → delivered
-                    ↓
-                cancelled
-```
+Ikony sú v [`public/images/payments/`](public/images/payments/). **Zobrazujte len metódy, ktoré máte skutočne aktivované** v Shopify (*Settings → Payments*), aby marketing sedel s checkoutom.
 
 ---
 
-## 💳 Platobné metódy
+## Databáza a rozšírenia (Supabase)
 
-1. **Platba kartou** (Stripe)
-   - Visa, Mastercard, Maestro
-   - Apple Pay, Google Pay
-   - Okamžité spracovanie
-
-2. **Bankový prevod**
-   - IBAN + variabilný symbol
-   - Manuálne potvrdenie po prijatí platby
+Ak používate schémy z `supabase/` pre účty, dopyty alebo budúce rozšírenia, postupujte podľa SQL súborov v repozitári. **Objednávky z headless checkoutu vznikajú v Shopify** — synchronizácia do vlastnej DB by vyžadovala Shopify webhooks alebo Admin API (mimo základného tohto setupu).
 
 ---
 
-## 📧 Email šablóny
+## Deployment checklist
 
-### Potvrdenie objednávky
-- Odosielateľ: `objednavky@orostone.sk`
-- Obsah: Číslo objednávky, položky, súhrn, platobné údaje (ak prevod)
-
-### Admin notifikácia
-- Príjemca: `info@orostone.sk`
-- Obsah: Základné info o objednávke
+- [ ] `VITE_SHOPIFY_STORE_DOMAIN` a `VITE_SHOPIFY_STOREFRONT_TOKEN` nastavené na produkčnom build-e
+- [ ] Shopify: platby, doprava, dane/trhy, checkout otestované
+- [ ] Aspoň jedna úspešná testovacia objednávka cez web → Shopify *Orders*
+- [ ] (Voliteľné) Supabase URL/kľúč pre auth
+- [ ] Fallback katalóg aktualizovaný pred release: `npm run sync:shop-fallback`
 
 ---
 
-## 🔒 Bezpečnosť
+## Podpora a dokumentácia
 
-- **RLS (Row Level Security)** - Každý vidí len svoje dáta
-- **HTTPS** - Všetka komunikácia je šifrovaná
-- **Stripe PCI DSS** - Kartové údaje nikdy neprechádzajú naším serverom
-- **CSRF Protection** - Supabase Auth cookies
-
----
-
-## 🚀 Deployment Checklist
-
-- [ ] Environment variables nastavené
-- [ ] Supabase schéma nasadená
-- [ ] Edge Functions deploynuté
-- [ ] Stripe webhook nakonfigurovaný
-- [ ] Resend doména overená
-- [ ] Testovacia objednávka úspešná
-- [ ] Produkčné Stripe kľúče aktivované
-
----
-
-## 📞 Podpora
-
-V prípade problémov kontaktujte:
+- [Shopify Storefront API](https://shopify.dev/docs/api/storefront)
+- [Shopify Checkout](https://shopify.dev/docs/storefronts/headless/building-with-the-storefront-api/cart/manage)
 - Email: dev@orostone.sk
-- Dokumentácia: [Supabase Docs](https://supabase.com/docs)
-- Stripe: [Stripe Docs](https://stripe.com/docs)
