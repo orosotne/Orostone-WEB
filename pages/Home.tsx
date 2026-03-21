@@ -26,21 +26,21 @@ const BRAND_STORY = [
     label: '01. Tradícia',
     title: 'Tisíce rokov histórie',
     text: 'Kameň sprevádzal ľudstvo od úsvitu civilizácie. Od pyramíd po renesančné paláce - vždy symbolizoval trvácnosť a eleganciu.',
-    image: '/images/home/hero-2.jpeg'
+    image: '/images/home/hero-2.webp'
   },
   {
     id: 'innovation',
     label: '02. Inovácia',
     title: 'Technológia 21. storočia',
     text: 'Sinterovaný kameň vzniká pri 1200°C a tlaku 400 barov. Výsledkom je materiál tvrdší ako granit, odolnejší ako mramor.',
-    image: '/images/home/hero-3.jpeg'
+    image: '/images/home/hero-3.webp'
   },
   {
     id: 'future',
     label: '03. Budúcnosť',
     title: 'Vaša vízia, náš materiál',
     text: 'Od výberu dekoru po dodanie materiálu. Montáž zabezpečí váš realizátor – radi vám odporučíme overených odborníkov.',
-    image: '/images/home/hero-4.jpeg'
+    image: '/images/home/hero-4.webp'
   }
 ];
 
@@ -493,7 +493,7 @@ export const Home = () => {
         <div className="absolute inset-0 z-0 overflow-hidden">
           <div className="hero-bg-image absolute inset-0 w-full h-full" style={{ transform: 'scale(1.2)' }}>
             <img
-              src="/images/home/hero-1.jpeg"
+              src="/images/home/hero-1.webp"
               alt="Luxury Stone Kitchen"
               className="w-full h-full object-cover object-center"
             />
@@ -990,7 +990,7 @@ export const Home = () => {
           loop
           muted
           playsInline
-          poster="/images/home/hero-4.jpeg"
+          poster="/images/home/hero-4.webp"
         >
           <source src="https://cdn.coverr.co/videos/coverr-modern-kitchen-interior-4k-6159/1080p.mp4" type="video/mp4" />
         </video>
@@ -1257,7 +1257,7 @@ export const Home = () => {
       <section className="cta-section py-40 bg-brand-dark text-white text-center relative overflow-hidden">
         <div className="cta-bg absolute inset-0 opacity-20 scale-110">
           <img 
-            src="/images/home/hero-5.png" 
+            src="/images/home/hero-5.webp" 
             className="w-full h-full object-cover grayscale" 
             alt="texture" 
           />

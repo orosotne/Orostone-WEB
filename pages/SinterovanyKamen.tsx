@@ -349,7 +349,7 @@ export const SinterovanyKamen = () => {
             loop
             playsInline
             className="w-full h-full object-cover brightness-[0.35]"
-            poster="/images/home/hero-1.jpeg"
+            poster="/images/home/hero-1.webp"
           >
             <source src="/videos/hero-stone-shatter.mp4" type="video/mp4" />
           </video>
