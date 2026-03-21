@@ -125,55 +125,174 @@ async function sendAdminNotification(quote: QuoteData, customer: CustomerData, i
 
   const html = `
 <!DOCTYPE html>
-<html>
-<head><meta charset="UTF-8"></head>
-<body style="font-family: Arial, sans-serif; color: #1A1A1A; padding: 24px; max-width: 600px;">
-  <img src="${LOGO_URL}" alt="Orostone" style="height: 36px; margin-bottom: 20px;">
-  <div style="background: #ECD488; height: 3px; margin-bottom: 24px;"></div>
+<html lang="sk" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+  :root { color-scheme: light only; }
+  body { margin: 0; padding: 0; }
 
-  <h2 style="margin: 0 0 4px 0; font-size: 18px;">${isSampleLead ? '📦 Nová žiadosť o vzorku' : '📋 Nový dopyt z webu'}</h2>
-  <p style="color: #666; font-size: 13px; margin: 0 0 24px 0;">
-    ${new Date(quote.created_at).toLocaleString('sk-SK')}
-  </p>
+  @media (prefers-color-scheme: dark) {
+    .email-card  { background-color: #1e1e1e !important; }
+    .email-body  { background-color: #1e1e1e !important; }
+    .email-text  { color: #f0f0f0 !important; }
+    .data-label  { color: #888888 !important; }
+    .data-value  { color: #f0f0f0 !important; }
+    .data-link   { color: #ECD488 !important; }
+    .data-row td { border-bottom-color: #333333 !important; }
+    .footer-cell { background-color: #1e1e1e !important; border-top-color: #333333 !important; }
+    .footer-id   { color: #555555 !important; }
+    .cta-btn     { background-color: #ECD488 !important; color: #1A1A1A !important; }
+  }
+  [data-ogsc] .email-card  { background-color: #1e1e1e !important; }
+  [data-ogsc] .email-body  { background-color: #1e1e1e !important; }
+  [data-ogsc] .email-text  { color: #f0f0f0 !important; }
+  [data-ogsc] .data-label  { color: #888888 !important; }
+  [data-ogsc] .data-value  { color: #f0f0f0 !important; }
+  [data-ogsc] .data-link   { color: #ECD488 !important; }
+  [data-ogsc] .data-row td { border-bottom-color: #333333 !important; }
+  [data-ogsc] .footer-cell { background-color: #1e1e1e !important; border-top-color: #333333 !important; }
+  [data-ogsc] .footer-id   { color: #555555 !important; }
+  [data-ogsc] .cta-btn     { background-color: #ECD488 !important; color: #1A1A1A !important; }
+</style>
+</head>
+<body style="font-family: 'Montserrat', Arial, sans-serif; margin: 0; padding: 0;">
 
-  <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
-    <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee; color: #666; width: 35%;">Meno</td>
-        <td style="padding: 8px 0; border-bottom: 1px solid #eee; font-weight: 600;">${customer.name}</td></tr>
-    <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee; color: #666;">Email</td>
-        <td style="padding: 8px 0; border-bottom: 1px solid #eee;">
-          <a href="mailto:${customer.email}" style="color: #1A1A1A;">${customer.email}</a>
-        </td></tr>
-    ${customer.phone ? `
-    <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee; color: #666;">Telefón</td>
-        <td style="padding: 8px 0; border-bottom: 1px solid #eee;">
-          <a href="tel:${customer.phone}" style="color: #1A1A1A;">${customer.phone}</a>
-        </td></tr>` : ''}
-    ${quote.decor ? `
-    <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee; color: #666;">Dekor</td>
-        <td style="padding: 8px 0; border-bottom: 1px solid #eee; font-weight: 600; color: #1A1A1A;">${quote.decor}</td></tr>` : ''}
-    ${quote.project_type && !isSampleLead ? `
-    <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee; color: #666;">Typ projektu</td>
-        <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${quote.project_type}</td></tr>` : ''}
-    ${quote.item_needed ? `
-    <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee; color: #666;">Predmet</td>
-        <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${quote.item_needed}</td></tr>` : ''}
-    ${quote.dimensions ? `
-    <tr><td style="padding: 8px 0; color: #666;">Rozmery / Popis</td>
-        <td style="padding: 8px 0;">${quote.dimensions}</td></tr>` : ''}
+  <!-- OUTER: zlaté PNG pozadie -->
+  <table width="100%" cellpadding="0" cellspacing="0"
+         style="background-color: #ECD488;
+                background-image: url('https://www.orostone.sk/images/email-gold-bg.png');
+                background-repeat: repeat; border-collapse: collapse;">
+    <tr>
+      <td style="background-color: #ECD488;
+                 background-image: url('https://www.orostone.sk/images/email-gold-bg.png');
+                 background-repeat: repeat; padding: 36px 16px 40px 16px;">
+
+        <!-- LOGO: čierne, vycentrované nad kartou -->
+        <div style="max-width: 560px; margin: 0 auto; text-align: center; padding-bottom: 24px;">
+          <img src="${LOGO_URL}" alt="Orostone"
+               style="height: 42px; display: inline-block;
+                      filter: brightness(0); -webkit-filter: brightness(0);">
+        </div>
+
+        <!-- BIELA KARTA -->
+        <div class="email-card" style="max-width: 560px; margin: 0 auto; border-radius: 16px;
+                    overflow: hidden; background-color: #ffffff;">
+          <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+
+            <!-- HLAVIČKA -->
+            <tr>
+              <td class="email-body" style="background-color: #ffffff; padding: 36px 40px 24px 40px;">
+                <p style="margin: 0 0 6px 0; font-size: 10px; font-weight: 700; letter-spacing: 0.25em;
+                          text-transform: uppercase; color: #B8960C;">
+                  ${isSampleLead ? 'Žiadosť o vzorku' : 'Dopyt z webu'}
+                </p>
+                <h2 class="email-text" style="margin: 0 0 6px 0; font-size: 22px; font-weight: 700; color: #1A1A1A;">
+                  ${customer.name}
+                </h2>
+                <p style="margin: 0; font-size: 12px; color: #999999; font-weight: 300;">
+                  ${new Date(quote.created_at).toLocaleString('sk-SK')}
+                </p>
+              </td>
+            </tr>
+
+            <!-- DATA TABUĽKA -->
+            <tr>
+              <td class="email-body" style="background-color: #ffffff; padding: 0 40px 8px 40px;">
+                <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+
+                  <tr class="data-row">
+                    <td class="data-label" style="padding: 10px 0; border-bottom: 1px solid #eeeeee;
+                                font-size: 12px; color: #999999; width: 35%; font-weight: 400;">Email</td>
+                    <td class="data-value" style="padding: 10px 0; border-bottom: 1px solid #eeeeee;
+                                font-size: 14px; font-weight: 600; color: #1A1A1A;">
+                      <a href="mailto:${customer.email}" class="data-link"
+                         style="color: #1A1A1A; text-decoration: none;">${customer.email}</a>
+                    </td>
+                  </tr>
+
+                  ${customer.phone ? `
+                  <tr class="data-row">
+                    <td class="data-label" style="padding: 10px 0; border-bottom: 1px solid #eeeeee;
+                                font-size: 12px; color: #999999; font-weight: 400;">Telefón</td>
+                    <td class="data-value" style="padding: 10px 0; border-bottom: 1px solid #eeeeee;
+                                font-size: 14px; font-weight: 600; color: #1A1A1A;">
+                      <a href="tel:${customer.phone}" class="data-link"
+                         style="color: #1A1A1A; text-decoration: none;">${customer.phone}</a>
+                    </td>
+                  </tr>` : ''}
+
+                  ${quote.decor ? `
+                  <tr class="data-row">
+                    <td class="data-label" style="padding: 10px 0; border-bottom: 1px solid #eeeeee;
+                                font-size: 12px; color: #999999; font-weight: 400;">Dekor</td>
+                    <td class="data-value" style="padding: 10px 0; border-bottom: 1px solid #eeeeee;
+                                font-size: 14px; font-weight: 700; color: #1A1A1A;">${quote.decor}</td>
+                  </tr>` : ''}
+
+                  ${quote.project_type && !isSampleLead ? `
+                  <tr class="data-row">
+                    <td class="data-label" style="padding: 10px 0; border-bottom: 1px solid #eeeeee;
+                                font-size: 12px; color: #999999; font-weight: 400;">Typ projektu</td>
+                    <td class="data-value" style="padding: 10px 0; border-bottom: 1px solid #eeeeee;
+                                font-size: 14px; font-weight: 600; color: #1A1A1A;">${quote.project_type}</td>
+                  </tr>` : ''}
+
+                  ${quote.item_needed ? `
+                  <tr class="data-row">
+                    <td class="data-label" style="padding: 10px 0; border-bottom: 1px solid #eeeeee;
+                                font-size: 12px; color: #999999; font-weight: 400;">Predmet</td>
+                    <td class="data-value" style="padding: 10px 0; border-bottom: 1px solid #eeeeee;
+                                font-size: 14px; font-weight: 600; color: #1A1A1A;">${quote.item_needed}</td>
+                  </tr>` : ''}
+
+                  ${quote.dimensions ? `
+                  <tr class="data-row">
+                    <td class="data-label" style="padding: 10px 0; font-size: 12px; color: #999999; font-weight: 400;">
+                      Popis</td>
+                    <td class="data-value" style="padding: 10px 0; font-size: 14px; font-weight: 400;
+                                color: #1A1A1A; line-height: 1.5;">${quote.dimensions}</td>
+                  </tr>` : ''}
+
+                </table>
+              </td>
+            </tr>
+
+            <!-- CTA -->
+            <tr>
+              <td class="email-body" style="background-color: #ffffff; padding: 28px 40px 32px 40px;">
+                <a href="mailto:${customer.email}?subject=Re: ${isSampleLead ? 'Vzorka Orostone' : 'Váš dopyt — Orostone'}"
+                   class="cta-btn"
+                   style="display: inline-block; background-color: #1A1A1A; color: #ffffff;
+                          padding: 12px 28px; text-decoration: none; font-size: 11px; font-weight: 700;
+                          letter-spacing: 0.1em; text-transform: uppercase; border-radius: 3px;">
+                  Odpovedať zákazníkovi
+                </a>
+              </td>
+            </tr>
+
+            <!-- FOOTER: quote ID -->
+            <tr>
+              <td class="footer-cell" style="background-color: #ffffff; border-top: 1px solid #eeeeee;
+                         padding: 14px 40px 20px 40px;">
+                <p class="footer-id" style="margin: 0; font-size: 11px; color: #cccccc; font-weight: 300;">
+                  ID: ${quote.id}
+                </p>
+              </td>
+            </tr>
+
+          </table>
+        </div>
+        <!-- /BIELA KARTA -->
+
+      </td>
+    </tr>
   </table>
 
-  <div style="margin-top: 28px;">
-    <a href="mailto:${customer.email}?subject=Re: ${isSampleLead ? 'Vzorka Orostone' : 'Váš dopyt'}"
-       style="display: inline-block; background: #1A1A1A; color: white; padding: 12px 28px;
-              text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: 0.05em;
-              text-transform: uppercase; border-radius: 3px;">
-      Odpovedať zákazníkovi
-    </a>
-  </div>
-
-  <p style="margin-top: 32px; color: #bbb; font-size: 11px; border-top: 1px solid #eee; padding-top: 16px;">
-    Dopyt ID: ${quote.id}
-  </p>
 </body>
 </html>`;
 
