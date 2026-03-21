@@ -16,6 +16,10 @@ export default defineConfig(() => {
       },
       build: {
         rollupOptions: {
+          input: {
+            main: path.resolve(__dirname, 'index.html'),
+            eshop: path.resolve(__dirname, 'eshop.html'),
+          },
           output: {
             manualChunks: {
               'vendor-react': ['react', 'react-dom', 'react-router-dom'],
