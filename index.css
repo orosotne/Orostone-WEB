@@ -64,11 +64,14 @@
   }
   html {
     overflow-x: clip;
+    overflow-y: auto;
     max-width: 100%;
     overscroll-behavior-x: none;
   }
   body {
-    overflow-x: clip;
+    /* overflow: clip = clip obe osi bez scrollbaru; zabraňuje dvojitému scrollbaru
+       (overflow-x: clip + implicit overflow-y: auto by vytvoril druhý scrollbar na body) */
+    overflow: clip;
     max-width: 100%;
     overscroll-behavior-x: none;
   }
