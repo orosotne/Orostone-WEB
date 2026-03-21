@@ -74,9 +74,9 @@ export const SampleLeadSection: React.FC = () => {
           style={{ width: '200%', animation: 'waveSlideLeft 8s linear infinite' }}
           preserveAspectRatio="none"
         >
-          {/* two full cycles side by side so the loop is seamless */}
+          {/* 4 half-periods of 720 units each → half-SVG = 1440 = 2 full cycles, loop is seamless */}
           <path
-            d="M0,40 C180,80 360,0 540,40 C720,80 900,0 1080,40 C1260,80 1440,0 1620,40 C1800,80 1980,0 2160,40 C2340,80 2520,0 2700,40 C2880,80 2880,0 2880,0 L0,0 Z"
+            d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 C1680,80 1920,0 2160,40 C2400,80 2640,0 2880,40 L2880,0 L0,0 Z"
             fill="#FAFAFA"
           />
         </svg>
@@ -92,7 +92,7 @@ export const SampleLeadSection: React.FC = () => {
           preserveAspectRatio="none"
         >
           <path
-            d="M0,40 C180,0 360,80 540,40 C720,0 900,80 1080,40 C1260,0 1440,80 1620,40 C1800,0 1980,80 2160,40 C2340,0 2520,80 2700,40 C2880,0 2880,80 2880,80 L0,80 Z"
+            d="M0,40 C240,0 480,80 720,40 C960,0 1200,80 1440,40 C1680,0 1920,80 2160,40 C2400,0 2640,80 2880,40 L2880,80 L0,80 Z"
             fill="#FAFAFA"
           />
         </svg>
