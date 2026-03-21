@@ -232,7 +232,7 @@ const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProductId, pro
       {/* 2-row horizontal scroll on mobile, 4-col grid on lg+ */}
       <div
         ref={railRef}
-        className="grid grid-rows-2 grid-flow-col gap-2 overflow-x-auto overflow-y-hidden overscroll-x-contain scroll-px-6 -mx-6 px-6 py-1 scrollbar-hide [touch-action:pan-x_pan-y] lg:grid-rows-none lg:grid-flow-row lg:grid-cols-4 lg:gap-2 lg:overflow-visible lg:m-0 lg:scroll-p-0 lg:p-0 lg:touch-auto"
+        className="grid grid-rows-2 grid-flow-col gap-2 overflow-x-auto overflow-y-hidden overscroll-x-contain scroll-px-6 -mx-6 px-6 py-1 scrollbar-hide [touch-action:pan-x] lg:grid-rows-none lg:grid-flow-row lg:grid-cols-4 lg:gap-2 lg:overflow-visible lg:m-0 lg:scroll-p-0 lg:p-0 lg:touch-auto"
         style={{ WebkitOverflowScrolling: 'touch' }}
         onTouchStart={() => {
           // #region agent log
@@ -1373,7 +1373,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
               {/* ===== Spec Badges — mobile: horizontal scroll (pan-x+pan-y touch-action, no snap); lg: wrap ===== */}
               <div
-                className="order-2 lg:order-2 mb-4 flex w-full min-w-0 flex-nowrap gap-2 overflow-x-auto overflow-y-hidden overscroll-x-contain [touch-action:pan-x_pan-y] scrollbar-hide lg:flex-wrap lg:overflow-visible"
+                className="order-2 lg:order-2 mb-4 flex w-full min-w-0 flex-nowrap gap-2 overflow-x-auto overflow-y-hidden overscroll-x-contain [touch-action:pan-x] scrollbar-hide lg:flex-wrap lg:overflow-visible"
                 style={{ WebkitOverflowScrolling: 'touch' }}
               >
                 <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-brand-dark px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-brand-gold lg:text-[11px]">
@@ -1984,7 +1984,7 @@ const ApplicationSection: React.FC<ApplicationSectionProps> = ({ product }) => {
             Vhodné použitie
           </h2>
 
-          <div className="flex [touch-action:pan-x_pan-y] gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain scroll-px-6 py-4 -mx-6 px-6 scrollbar-hide lg:mx-0 lg:grid lg:grid-cols-8 lg:gap-4 lg:overflow-visible lg:px-0 lg:py-0 lg:scroll-p-0 lg:touch-auto">
+          <div className="flex [touch-action:pan-x] gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain scroll-px-6 py-4 -mx-6 px-6 scrollbar-hide lg:mx-0 lg:grid lg:grid-cols-8 lg:gap-4 lg:overflow-visible lg:px-0 lg:py-0 lg:scroll-p-0 lg:touch-auto">
             {allApplications.map((app, index) => {
               const isSupported = productApplications.includes(app);
               const Icon = applicationIcons[app] || Layers;
@@ -2215,6 +2215,47 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
   const [bimSubmitted, setBimSubmitted] = useState(false);
   const [bimSubmitting, setBimSubmitting] = useState(false);
 
+  // Close BIM modal on Escape
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isBimModalOpen) setIsBimModalOpen(false);
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [isBimModalOpen]);
+
+  // Scroll lock when BIM modal is open — html + body; position:fixed for iOS Safari
+  useEffect(() => {
+    if (!isBimModalOpen) return;
+    const scrollY = window.scrollY;
+    const prevHtmlOverflow = document.documentElement.style.overflow;
+    const prevBodyOverflow = document.body.style.overflow;
+    const prevBodyPosition = document.body.style.position;
+    const prevBodyTop = document.body.style.top;
+    const prevBodyLeft = document.body.style.left;
+    const prevBodyRight = document.body.style.right;
+    const prevBodyWidth = document.body.style.width;
+
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+
+    return () => {
+      document.documentElement.style.overflow = prevHtmlOverflow;
+      document.body.style.overflow = prevBodyOverflow;
+      document.body.style.position = prevBodyPosition;
+      document.body.style.top = prevBodyTop;
+      document.body.style.left = prevBodyLeft;
+      document.body.style.right = prevBodyRight;
+      document.body.style.width = prevBodyWidth;
+      window.scrollTo(0, scrollY);
+    };
+  }, [isBimModalOpen]);
+
   const handleBimSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setBimSubmitting(true);
@@ -2348,12 +2389,12 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
       {/* BIM/CAD Email Gate Modal */}
       <AnimatePresence>
         {isBimModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+          <div className="fixed inset-0 z-50 flex items-center justify-center px-4 max-h-[100dvh] overflow-y-auto overscroll-contain">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm touch-none overscroll-none"
               onClick={() => setIsBimModalOpen(false)}
             />
             <motion.div
@@ -2361,10 +2402,10 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
               transition={{ duration: 0.2 }}
-              className="relative z-10 w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden"
+              className="relative z-10 w-full max-w-md max-h-[90dvh] flex flex-col bg-white rounded-2xl shadow-2xl overflow-hidden"
             >
               {/* Header */}
-              <div className="bg-brand-dark px-6 py-5 flex items-start justify-between gap-4">
+              <div className="bg-brand-dark px-6 py-5 flex items-start justify-between gap-4 flex-shrink-0">
                 <div>
                   <h3 className="text-white font-bold text-lg leading-tight">BIM / CAD High-Res Textúry</h3>
                   <p className="text-white/60 text-sm mt-1">{product.name}</p>
@@ -2377,8 +2418,8 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
                 </button>
               </div>
 
-              {/* Body */}
-              <div className="px-6 py-6">
+              {/* Body — scrollable when viewport shrinks (e.g. keyboard) */}
+              <div className="px-6 py-6 overflow-y-auto overscroll-contain flex-1 min-h-0">
                 {!bimSubmitted ? (
                   <>
                     <p className="text-gray-600 text-sm mb-5">

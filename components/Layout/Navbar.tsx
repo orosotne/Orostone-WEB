@@ -40,9 +40,9 @@ export const Navbar = () => {
         <NavLink to="/" className="z-50 relative group">
           {/* Using text logo if image fails or for SEO, but keeping image as primary */}
           <img
-            src="/images/logo.png"
+            src="/images/orostone-logo.svg"
             alt="OROSTONE"
-            className={`transition-all duration-300 object-contain ${isTransparent ? 'h-14 brightness-0 invert' : 'h-12' // Invert logic assumes logo handles being white on dark bg, or remove invert if logo is gold
+            className={`transition-all duration-300 w-auto max-w-[min(55vw,220px)] sm:max-w-none object-contain object-left ${isTransparent ? 'h-14 brightness-0 invert' : 'h-12' // Invert logic assumes logo handles being white on dark bg, or remove invert if logo is gold
               }`}
           // Fallback style if no logo image:
           // className="h-10 w-auto" 

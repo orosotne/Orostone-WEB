@@ -120,10 +120,10 @@ export const EshopNavbar: React.FC = () => {
             {/* Center: Logo */}
             <Link to="/" className="absolute left-1/2 -translate-x-1/2">
               <img
-                src="/images/logo.png"
+                src="/images/orostone-logo.svg"
                 alt="OROSTONE"
                 className={cn(
-                  "h-6 lg:h-10 object-contain transition-all duration-500",
+                  "h-6 lg:h-10 w-auto max-w-[min(52vw,280px)] object-contain object-center transition-all duration-500",
                   isTransparent && "brightness-0 invert"
                 )}
               />
@@ -391,7 +391,7 @@ export const EshopNavbar: React.FC = () => {
             >
               {/* Header */}
               <div className="flex flex-shrink-0 items-center justify-between border-b border-gray-100 px-6 py-5">
-                <img src="/images/logo.png" alt="OROSTONE" className="h-6" />
+                <img src="/images/orostone-logo.svg" alt="OROSTONE" className="h-6 w-auto max-w-[200px] object-contain" />
                 <button
                   onClick={() => setMobileMenuOpen(false)}
                   className="p-1 text-black"
@@ -502,7 +502,7 @@ export const EshopNavbar: React.FC = () => {
             >
               {/* Header */}
               <div className="flex items-center justify-between px-8 py-6 border-b border-gray-100">
-                <img src="/images/logo.png" alt="OROSTONE" className="h-7" />
+                <img src="/images/orostone-logo.svg" alt="OROSTONE" className="h-7 w-auto max-w-[220px] object-contain" />
                 <button
                   onClick={() => {
                     setOffCanvasOpen(false);
