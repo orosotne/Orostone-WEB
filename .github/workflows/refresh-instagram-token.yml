@@ -1,0 +1,48 @@
+name: Refresh Instagram Token
+
+on:
+  # Spúšťa sa automaticky každý mesiac 1. dňa o 3:00 UTC
+  # Token vydrží 60 dní — mesačný refresh dáva 30-dňový buffer
+  schedule:
+    - cron: '0 3 1 * *'
+
+  # Možnosť spustiť manuálne z GitHub Actions UI
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    name: Refresh Instagram long-lived token
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call Supabase Edge Function
+        run: |
+          RESPONSE=$(curl -s -o /tmp/ig_response.json -w "%{http_code}" \
+            -X POST \
+            "https://xfkznvqufhnrphpdhfnc.supabase.co/functions/v1/refresh-instagram-token" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{}')
+
+          echo "HTTP status: $RESPONSE"
+          echo "Response body:"
+          cat /tmp/ig_response.json
+
+          # Zlyháme ak HTTP status nie je 200
+          if [ "$RESPONSE" != "200" ]; then
+            echo "❌ Refresh failed with status $RESPONSE"
+            exit 1
+          fi
+
+          # Skontroluj success field v JSON
+          SUCCESS=$(cat /tmp/ig_response.json | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('success','false'))")
+          if [ "$SUCCESS" != "True" ]; then
+            echo "❌ Refresh returned success=false"
+            cat /tmp/ig_response.json
+            exit 1
+          fi
+
+          echo "✅ Instagram token refreshed successfully"
+          EXPIRES=$(cat /tmp/ig_response.json | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('expires_at','?'))")
+          DAYS=$(cat /tmp/ig_response.json | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('expires_in_days','?'))")
+          echo "   New expiry: $EXPIRES (~$DAYS days)"
