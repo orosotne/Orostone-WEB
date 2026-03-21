@@ -29,42 +29,28 @@ serve(async (req) => {
     const expiresAt = new Date(tokenRow.expires_at);
     const now = new Date();
 
-    // 2. Skontroluj či token ešte nie je expirnutý
-    if (now > expiresAt) {
-      console.error('[Instagram Refresh] Token already expired! Manual re-auth needed.');
-      return new Response(
-        JSON.stringify({
-          success: false,
-          error: 'Token expired. Generate a new long-lived token manually in Meta Developer Console.',
-        }),
-        { status: 400, headers: corsHeaders }
+    // 2. Overí že token stále funguje volaním Instagram API
+    const verifyUrl =
+      `https://graph.facebook.com/${GRAPH_API_VERSION}/${tokenRow.account_id}` +
+      `?fields=id,username&access_token=${currentToken}`;
+
+    const verifyResponse = await fetch(verifyUrl);
+    const verifyData = await verifyResponse.json();
+
+    if (!verifyResponse.ok || verifyData.error) {
+      throw new Error(
+        verifyData.error?.message ||
+        'Token verification failed. Generate a new Page token manually in Meta Developer Console.'
       );
     }
 
-    // 3. Zavolaj Facebook Graph API na refresh
-    const refreshUrl =
-      `https://graph.facebook.com/${GRAPH_API_VERSION}/oauth/access_token` +
-      `?grant_type=fb_exchange_token` +
-      `&client_id=${Deno.env.get('INSTAGRAM_APP_ID')}` +
-      `&client_secret=${Deno.env.get('INSTAGRAM_APP_SECRET')}` +
-      `&fb_exchange_token=${currentToken}`;
+    // Page token je permanentný — nastavíme expires_at na +60 dní a aktualizujeme last_refreshed_at
+    const newExpiresAt = new Date(Date.now() + 60 * 24 * 60 * 60 * 1000).toISOString();
 
-    const response = await fetch(refreshUrl);
-    const data = await response.json();
-
-    if (!response.ok || data.error) {
-      throw new Error(data.error?.message || `Refresh failed: ${response.status}`);
-    }
-
-    const newToken = data.access_token;
-    const expiresInSeconds = data.expires_in || 5184000; // default 60 dní
-    const newExpiresAt = new Date(Date.now() + expiresInSeconds * 1000).toISOString();
-
-    // 4. Ulož nový token do DB
+    // 3. Aktualizuj DB
     const { error: updateError } = await supabase
       .from('instagram_tokens')
       .update({
-        access_token: newToken,
         expires_at: newExpiresAt,
         last_refreshed_at: new Date().toISOString(),
       })
@@ -74,13 +60,13 @@ serve(async (req) => {
       throw new Error(`Failed to save new token: ${updateError.message}`);
     }
 
-    console.log(`[Instagram Refresh] Token refreshed. Expires at: ${newExpiresAt}`);
+    console.log(`[Instagram Refresh] Token verified OK. Expires at: ${newExpiresAt}`);
 
     return new Response(
       JSON.stringify({
         success: true,
         expires_at: newExpiresAt,
-        expires_in_days: Math.floor(expiresInSeconds / 86400),
+        expires_in_days: 60,
       }),
       { status: 200, headers: corsHeaders }
     );
