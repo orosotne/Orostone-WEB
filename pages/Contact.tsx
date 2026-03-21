@@ -31,10 +31,10 @@ const CONTACT_INFO = [
   },
   {
     icon: MapPin,
-    title: 'Showroom',
-    value: 'Priemyselná 12',
-    subtitle: '821 09 Bratislava',
-    href: 'https://maps.google.com'
+    title: 'Adresa',
+    value: 'Landererova 8',
+    subtitle: '811 09 Bratislava',
+    href: 'https://www.google.com/maps?q=Landererova+8,+811+09+Bratislava'
   },
   {
     icon: Clock,
@@ -244,7 +244,7 @@ export const Contact: React.FC<ContactProps> = ({ onOpenWizard }) => {
                   </div>
                   <div>
                     <h3 className="font-sans font-bold text-brand-dark mb-1">Adresa</h3>
-                    <p className="text-gray-500 text-base font-light">Priemyselná 12, 821 09 Bratislava</p>
+                    <p className="text-gray-500 text-base font-light">Landererova 8, 811 09 Bratislava</p>
                   </div>
                 </div>
 

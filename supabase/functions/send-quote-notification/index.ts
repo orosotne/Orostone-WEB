@@ -189,7 +189,7 @@ async function sendCustomerConfirmation(quote: QuotePayload['record'], customer:
       
       <hr style="margin-top: 48px; border: none; border-top: 1px solid #eee;">
       <p style="color: #999; font-size: 12px;">
-        Orostone s.r.o. | Priemyselná 12, 821 09 Bratislava<br>
+        Orostone s.r.o. | Landererova 8, 811 09 Bratislava<br>
         <a href="https://www.orostone.sk" style="color: #999;">www.orostone.sk</a>
       </p>
     </div>

@@ -191,9 +191,9 @@ export const EshopFooter: React.FC = () => {
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-brand-gold flex-shrink-0 mt-0.5" />
-                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white text-sm transition-colors">
-                  Priemyselná 12<br />
-                  821 09 Bratislava
+                <a href="https://www.google.com/maps?q=Landererova+8,+811+09+Bratislava" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  Landererova 8<br />
+                  811 09 Bratislava
                 </a>
               </li>
             </ul>

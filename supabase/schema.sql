@@ -231,17 +231,23 @@ CREATE POLICY "Allow service_role write instagram token" ON instagram_tokens
 -- ===========================================
 -- 9. CRON JOB — AUTOMATICKÝ REFRESH TOKENU
 -- ===========================================
--- Vyžaduje pg_cron extension (v Supabase zapnúť cez Dashboard > Database > Extensions)
+-- Vyžaduje pg_cron + pg_net extensions (zapnúť cez Supabase Dashboard > Database > Extensions)
 --
--- Spúšťa sa každých 50 dní — token vydrží 60 dní, takže máme 10-dňový buffer.
--- Cron volá Edge Function refresh-instagram-token cez HTTP.
+-- Spúšťa sa každý mesiac 1. dňa o 3:00 UTC.
+-- Token vydrží 60 dní — mesačný refresh dáva 30-dňový buffer.
+-- POZOR: */50 v cron výraze NEFUNGUJE ako "každých 50 dní" — štandardný cron
+--         to interpretuje ako deň 1,51 (čo neexistuje). Preto používame mesačný plán.
 --
--- POZOR: Nasledujúci SQL spusti AŽ PO deployi Edge Function
--- a po zapnutí pg_cron + pg_net extensions v Supabase Dashboard.
+-- Primárny cron beží cez GitHub Actions (.github/workflows/refresh-instagram-token.yml).
+-- Tento pg_cron je záložný — spusti ho AŽ PO:
+--   1. zapnutí pg_cron + pg_net extensions v Supabase Dashboard
+--   2. deployi Edge Function: supabase functions deploy refresh-instagram-token
+--   3. nastavení app.settings cez: ALTER DATABASE postgres SET app.settings.supabase_url = '...';
+--                                   ALTER DATABASE postgres SET app.settings.service_role_key = '...';
 
 -- SELECT cron.schedule(
 --   'refresh-instagram-token',
---   '0 3 */50 * *',  -- každých ~50 dní o 3:00 ráno
+--   '0 3 1 * *',  -- každý mesiac 1. dňa o 3:00 UTC
 --   $$
 --   SELECT net.http_post(
 --     url := current_setting('app.settings.supabase_url') || '/functions/v1/refresh-instagram-token',
