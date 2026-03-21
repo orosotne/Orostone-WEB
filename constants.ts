@@ -51,7 +51,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'p2',
-    name: 'Nero Marquina',
+    name: 'Nero Margiua',
     collectionId: 'marbelito',
     bodyType: 'FULL BODY',
     image: 'https://picsum.photos/600/800?random=11',
@@ -287,31 +287,32 @@ export interface Testimonial {
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: 't1',
-    name: 'Ing. Peter Kováč',
-    role: 'Majiteľ',
-    project: 'Vila Horský Park',
-    quote: 'Orostone prekonal všetky naše očakávania. Kvalita materiálu a precíznosť realizácie sú bezkonkurenčné. Naša kuchyňa sa stala srdcom celého domu.',
-    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop',
+    name: 'Tomáš Balážik',
+    role: 'Majiteľ reštaurácie',
+    company: 'Bistro Koliba, Bratislava',
+    project: 'Kuchynský bar & recepcia',
+    quote: 'Hľadal som materiál, ktorý vydrží kuchynské peklo a zároveň bude vyzerať dobre pred hosťami. Vzorku Nero Margiua som dostal do týždňa — ešte pred podpisom zmluvy sme mali jasnú predstavu. Pulty v bare stoja druhý rok, ani škrabance, ani škvrny od vína.',
+    avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop',
     rating: 5
   },
   {
     id: 't2',
-    name: 'Arch. Zuzana Nováková',
-    role: 'Hlavný architekt',
-    company: 'Studio Z',
-    project: 'Rezidencia Sky Park',
-    quote: 'Spolupráca s Orostone bola profesionálna od začiatku až do konca. Ich pozornosť k detailom a schopnosť realizovať aj náročné projekty je výnimočná.',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop',
+    name: 'Simona Drgoňová',
+    role: 'Interiérová dizajnérka',
+    company: 'Atelier SD, Žilina',
+    project: 'Rodinný dom — terasa a kúpeľňa',
+    quote: 'Klientka chcela mramor, ale bojala sa údržby pri deťoch. Odporučila som sintrovaný kameň od Orostone a dnes mi píše, že by nevymenila. Hrúbka 12mm na terase pôsobí solídne a pritom ľahko — presne taký efekt sme hľadali. Dodávka prišla bez jediného rozbitého kusu.',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop',
     rating: 5
   },
   {
     id: 't3',
-    name: 'Martin Hudec',
-    role: 'Developerský riaditeľ',
-    company: 'Premium Living',
-    project: 'Penthouse Koliba',
-    quote: 'Už tretí projekt s Orostone a každý bol dokonalý. Termíny dodržané na deň, kvalita vždy na najvyššej úrovni. Jednoznačne odporúčam.',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop',
+    name: 'Rastislav Jurčo',
+    role: 'Projektový manažér',
+    company: 'Jurčo Develop, Košice',
+    project: 'Bytový komplex — lobby & spoločné priestory',
+    quote: 'Pri projekte s 18 bytmi potrebuješ dodávateľa, ktorý nezlyháva. Objednali sme tri rôzne dekory, každý v inej fáze stavby — vždy na termín, vždy s kompletnou dokumentáciou. Žiadne improvizácie, žiadne prekvapenia na faktúre. To sa v tomto biznise nenosí.',
+    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=200&auto=format&fit=crop',
     rating: 5
   }
 ];
@@ -394,7 +395,7 @@ export const BEFORE_AFTER_PROJECTS: BeforeAfterProject[] = [
     location: 'Košice',
     beforeImage: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?q=80&w=1600&auto=format&fit=crop',
     afterImage: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1600&auto=format&fit=crop',
-    description: 'Z obyčajnej kúpeľne luxusný wellness s Nero Marquina.'
+    description: 'Z obyčajnej kúpeľne luxusný wellness s Nero Margiua.'
   },
   {
     id: 'ba3',

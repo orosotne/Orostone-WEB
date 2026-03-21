@@ -1169,7 +1169,7 @@ export const Home = () => {
                 <img
                   src={TESTIMONIALS[activeTestimonial].avatar}
                   alt={TESTIMONIALS[activeTestimonial].name}
-                  className="w-20 h-20 rounded-full object-cover mb-6 border-2 border-brand-gold"
+                  className="w-20 h-20 rounded-full object-cover object-top mb-6 border-2 border-brand-gold"
                 />
                 <h4 className="text-2xl font-sans font-bold mb-2">{TESTIMONIALS[activeTestimonial].name}</h4>
                 <p className="text-gray-400 text-base mb-2">

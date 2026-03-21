@@ -2665,7 +2665,7 @@ export const ShopProductDetail: React.FC = () => {
     );
     // #endregion
   }, [id]);
-  const { addItem, isInCart, sampleCount, isSampleInCart } = useCart();
+  const { addItem, isInCart, sampleCount, isSampleInCart, isOpen: isCartOpen } = useCart();
   const { hasConsented } = useCookies();
   const { products: allProducts, isLoading: productsLoading } = useShopifyProducts();
 
@@ -2864,8 +2864,9 @@ export const ShopProductDetail: React.FC = () => {
 
       {/* ===== Sticky Add-to-Cart Bottom Bar — mobile only ===== */}
       <div className={cn(
-        "fixed left-0 right-0 z-[10000] lg:hidden bg-white border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] transition-all duration-300",
-        hasConsented ? "bottom-0" : "bottom-[200px] sm:bottom-[160px]"
+        "fixed left-0 right-0 z-[60] lg:hidden bg-white border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] transition-all duration-300",
+        hasConsented ? "bottom-0" : "bottom-[200px] sm:bottom-[160px]",
+        isCartOpen && "hidden"
       )}
         style={{ paddingBottom: hasConsented ? 'env(safe-area-inset-bottom, 0px)' : '0px' }}
       >
