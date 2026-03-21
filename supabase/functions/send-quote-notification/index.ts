@@ -205,7 +205,7 @@ async function sendSampleLeadConfirmation(quote: QuoteData, customer: CustomerDa
     <!-- HEADER: hlavné logo na zlatom pozadí -->
     <tr>
       <td style="background: #ECD488; padding: 36px 40px 28px 40px; text-align: center; border-radius: 12px 12px 0 0;">
-        <img src="${LOGO_URL}" alt="Orostone" style="height: 44px; display: inline-block;">
+        <img src="${LOGO_URL}" alt="Orostone" style="height: 44px; display: block; margin: 0 auto;">
       </td>
     </tr>
 
