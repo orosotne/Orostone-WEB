@@ -5,6 +5,9 @@ import { Button } from '../UI/Button';
 import { submitQuote } from '../../services/quotes.service';
 import { isFileAllowed, formatFileSize } from '../../services/storage.service';
 import type { QuoteFormData } from '../../types/database.types';
+import { useHoneypot } from '../../hooks/useHoneypot';
+import { useTurnstile } from '../../hooks/useTurnstile';
+import { Turnstile } from '@marsidev/react-turnstile';
 
 // Ikona podľa typu súboru
 const FileIcon = ({ type }: { type: string }) => {
@@ -27,6 +30,8 @@ export const QuoteWizard: React.FC<{ isOpen: boolean; onClose: () => void }> = (
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const { honeypotValue, setHoneypotValue, isBot } = useHoneypot();
+  const { turnstileRef, turnstileToken, setTurnstileToken, verifyToken, reset: resetTurnstile } = useTurnstile();
 
   const updateField = (field: keyof QuoteFormData, value: any) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -82,13 +87,17 @@ export const QuoteWizard: React.FC<{ isOpen: boolean; onClose: () => void }> = (
   // Odoslanie formulára
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+    if (isBot) return;
+    if (!turnstileToken) { setError('Prosím potvrďte že nie ste robot.'); return; }
     if (!isFormValid()) return;
 
     setIsSubmitting(true);
     setError(null);
 
     try {
+      const valid = await verifyToken(turnstileToken);
+      if (!valid) { setError('Overenie zlyhalo, skúste znova.'); setIsSubmitting(false); resetTurnstile(); return; }
+
       const result = await submitQuote(formData);
       
       if (result.success) {
@@ -274,9 +283,21 @@ export const QuoteWizard: React.FC<{ isOpen: boolean; onClose: () => void }> = (
                   </span>
                 </label>
 
+                {/* Honeypot — skryté pred používateľmi, odhalí boty */}
+                <input type="text" name="website" value={honeypotValue} onChange={(e) => setHoneypotValue(e.target.value)} style={{ display: 'none' }} tabIndex={-1} autoComplete="off" aria-hidden="true" />
+
+                {/* Turnstile CAPTCHA */}
+                <Turnstile
+                  ref={turnstileRef}
+                  siteKey={import.meta.env.VITE_TURNSTILE_SITEKEY}
+                  onSuccess={setTurnstileToken}
+                  onExpire={() => setTurnstileToken(null)}
+                  options={{ theme: 'dark', language: 'sk' }}
+                />
+
                 {/* Submit Button */}
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   variant="primary" 
                   className="w-full py-4 rounded-xl flex items-center justify-center gap-2"
                   disabled={!isFormValid() || isSubmitting}

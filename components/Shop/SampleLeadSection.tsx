@@ -3,6 +3,9 @@ import { CheckCircle, Loader2 } from 'lucide-react';
 import { useShopifyProducts } from '../../hooks/useShopifyProducts';
 import { submitSampleLead } from '../../services/quotes.service';
 import { RotatingBadge } from '../UI/RotatingBadge';
+import { useHoneypot } from '../../hooks/useHoneypot';
+import { useTurnstile } from '../../hooks/useTurnstile';
+import { Turnstile } from '@marsidev/react-turnstile';
 
 const TESTIMONIAL = {
   quote: 'Vzorka nás presvedčila ešte pred objednávkou — klienti ocenili kvalitu okamžite.',
@@ -19,9 +22,13 @@ export const SampleLeadSection: React.FC = () => {
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errorMsg, setErrorMsg] = useState('');
   const { products } = useShopifyProducts();
+  const { honeypotValue, setHoneypotValue, isBot } = useHoneypot();
+  const { turnstileRef, turnstileToken, setTurnstileToken, verifyToken, reset: resetTurnstile } = useTurnstile();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (isBot) return;
+    if (!turnstileToken) { setStatus('error'); setErrorMsg('Prosím potvrďte že nie ste robot.'); return; }
     if (!formRef.current) return;
 
     setStatus('loading');
@@ -32,6 +39,9 @@ export const SampleLeadSection: React.FC = () => {
     const email = String(fd.get('from_email') ?? '').trim();
     const phone = String(fd.get('phone') ?? '').trim();
     const dekor = String(fd.get('dekor') ?? '').trim();
+
+    const valid = await verifyToken(turnstileToken);
+    if (!valid) { setStatus('error'); setErrorMsg('Overenie zlyhalo, skúste znova.'); resetTurnstile(); return; }
 
     const result = await submitSampleLead({
       name,
@@ -234,6 +244,18 @@ export const SampleLeadSection: React.FC = () => {
                   {status === 'error' && (
                     <p className="text-red-500 text-sm">{errorMsg}</p>
                   )}
+
+                  {/* Honeypot — skryté pred používateľmi, odhalí boty */}
+                  <input type="text" name="website" value={honeypotValue} onChange={(e) => setHoneypotValue(e.target.value)} style={{ display: 'none' }} tabIndex={-1} autoComplete="off" aria-hidden="true" />
+
+                  {/* Turnstile CAPTCHA */}
+                  <Turnstile
+                    ref={turnstileRef}
+                    siteKey={import.meta.env.VITE_TURNSTILE_SITEKEY}
+                    onSuccess={setTurnstileToken}
+                    onExpire={() => setTurnstileToken(null)}
+                    options={{ theme: 'light', language: 'sk' }}
+                  />
 
                   <button
                     type="submit"

@@ -6,6 +6,9 @@ import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/UI/Button';
 import { cn } from '@/lib/utils';
 import { loginSchema, extractFieldErrors } from '@/lib/validations';
+import { useHoneypot } from '@/hooks/useHoneypot';
+import { useTurnstile } from '@/hooks/useTurnstile';
+import { Turnstile } from '@marsidev/react-turnstile';
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -18,14 +21,21 @@ export const Login = () => {
   const [error, setError] = useState<string | null>(null);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { honeypotValue, setHoneypotValue, isBot } = useHoneypot();
+  const { turnstileRef, turnstileToken, setTurnstileToken, verifyToken, reset: resetTurnstile } = useTurnstile();
 
   // Get redirect path from location state
   const from = (location.state as any)?.from?.pathname || '/';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isBot) return;
+    if (!turnstileToken) { setError('Prosím potvrďte že nie ste robot.'); return; }
     setError(null);
     setFieldErrors({});
+
+    const valid = await verifyToken(turnstileToken);
+    if (!valid) { setError('Overenie zlyhalo, skúste znova.'); resetTurnstile(); return; }
 
     // Zod validácia
     const result = loginSchema.safeParse({ email, password });
@@ -138,6 +148,18 @@ export const Login = () => {
                 </button>
               </div>
             </div>
+
+            {/* Honeypot — skryté pred používateľmi, odhalí boty */}
+            <input type="text" name="website" value={honeypotValue} onChange={(e) => setHoneypotValue(e.target.value)} style={{ display: 'none' }} tabIndex={-1} autoComplete="off" aria-hidden="true" />
+
+            {/* Turnstile CAPTCHA */}
+            <Turnstile
+              ref={turnstileRef}
+              siteKey={import.meta.env.VITE_TURNSTILE_SITEKEY}
+              onSuccess={setTurnstileToken}
+              onExpire={() => setTurnstileToken(null)}
+              options={{ theme: 'light', language: 'sk' }}
+            />
 
             {/* Submit */}
             <Button

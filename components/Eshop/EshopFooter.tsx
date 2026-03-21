@@ -178,23 +178,23 @@ export const EshopFooter: React.FC = () => {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Phone size={18} className="text-brand-gold flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-white font-medium">+421 900 123 456</p>
-                  <p className="text-gray-400 text-xs">Po-Pi: 9:00-17:00</p>
-                </div>
+                <a href="tel:+421917588738" className="group">
+                  <p className="text-white font-medium group-hover:text-brand-gold transition-colors">+421 917 588 738</p>
+                  <p className="text-gray-400 text-xs">Po-Pia 8:00 – 17:00</p>
+                </a>
               </li>
               <li className="flex items-start gap-3">
                 <Mail size={18} className="text-brand-gold flex-shrink-0 mt-0.5" />
-                <a href="mailto:eshop@orostone.sk" className="text-white hover:text-brand-gold transition-colors">
-                  eshop@orostone.sk
+                <a href="mailto:info@orostone.sk" className="text-white hover:text-brand-gold transition-colors">
+                  info@orostone.sk
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-brand-gold flex-shrink-0 mt-0.5" />
-                <p className="text-gray-400 text-sm">
-                  Showroom Bratislava<br />
-                  Po dohode
-                </p>
+                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  Priemyselná 12<br />
+                  821 09 Bratislava
+                </a>
               </li>
             </ul>
           </div>

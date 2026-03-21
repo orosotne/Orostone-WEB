@@ -5,6 +5,9 @@ import { ShopProduct } from '../../constants';
 import { submitQuote } from '../../services/quotes.service';
 import { orderInquirySchema, extractFieldErrors } from '../../lib/validations';
 import { formatPrice } from '../../context/CartContext';
+import { useHoneypot } from '../../hooks/useHoneypot';
+import { useTurnstile } from '../../hooks/useTurnstile';
+import { Turnstile } from '@marsidev/react-turnstile';
 
 const INSTALLATION_STORAGE_KEY = 'orostone_installation_data';
 
@@ -21,6 +24,8 @@ export const OrderModal: React.FC<OrderModalProps> = ({ product, isOpen, onClose
     const [agreedToVOP, setAgreedToVOP] = useState(false);
     const [submitError, setSubmitError] = useState<string | null>(null);
     const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+    const { honeypotValue, setHoneypotValue, isBot } = useHoneypot();
+    const { turnstileRef, turnstileToken, setTurnstileToken, verifyToken, reset: resetTurnstile } = useTurnstile();
 
     // Form fields
     const [formName, setFormName] = useState('');
@@ -49,6 +54,8 @@ export const OrderModal: React.FC<OrderModalProps> = ({ product, isOpen, onClose
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (isBot) return;
+        if (!turnstileToken) { setSubmitError('Prosím potvrďte že nie ste robot.'); return; }
         if (!product) return;
         
         setSubmitError(null);
@@ -71,6 +78,9 @@ export const OrderModal: React.FC<OrderModalProps> = ({ product, isOpen, onClose
             setSubmitError(firstError.message);
             return;
         }
+
+        const valid = await verifyToken(turnstileToken);
+        if (!valid) { setSubmitError('Overenie zlyhalo, skúste znova.'); resetTurnstile(); return; }
 
         setIsSubmitting(true);
 
@@ -316,6 +326,18 @@ export const OrderModal: React.FC<OrderModalProps> = ({ product, isOpen, onClose
                                             <span>Prečítať VOP pre e-shop (sekcie 11–15)</span>
                                         </a>
                                     </div>
+
+                                    {/* Honeypot — skryté pred používateľmi, odhalí boty */}
+                                    <input type="text" name="website" value={honeypotValue} onChange={(e) => setHoneypotValue(e.target.value)} style={{ display: 'none' }} tabIndex={-1} autoComplete="off" aria-hidden="true" />
+
+                                    {/* Turnstile CAPTCHA */}
+                                    <Turnstile
+                                        ref={turnstileRef}
+                                        siteKey={import.meta.env.VITE_TURNSTILE_SITEKEY}
+                                        onSuccess={setTurnstileToken}
+                                        onExpire={() => setTurnstileToken(null)}
+                                        options={{ theme: 'light', language: 'sk' }}
+                                    />
 
                                     <button
                                         type="submit"
