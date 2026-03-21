@@ -21,7 +21,8 @@ const ADMIN_EMAIL = 'info@orostone.sk';
 const FROM_EMAIL = 'Orostone <noreply@orostone.sk>';
 const SUPABASE_URL = Deno.env.get('SUPABASE_URL')!;
 const SUPABASE_SERVICE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
-const LOGO_URL = 'https://www.orostone.sk/images/brand/orostone-circle.png';
+const LOGO_URL = 'https://www.orostone.sk/images/orostone-logo-email.png';
+const LOGO_CIRCLE_URL = 'https://www.orostone.sk/images/logo-circle.png';
 
 const corsHeaders = {
   'Content-Type': 'application/json',
@@ -193,27 +194,18 @@ async function sendSampleLeadConfirmation(quote: QuoteData, customer: CustomerDa
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
-  body { margin: 0; padding: 0; background: #F5F5F0; }
+  body { margin: 0; padding: 0; background: #ECD488; }
   * { box-sizing: border-box; }
 </style>
 </head>
-<body style="font-family: 'Montserrat', Arial, sans-serif; background: #F5F5F0; padding: 40px 16px;">
+<body style="font-family: 'Montserrat', Arial, sans-serif; background: #ECD488; padding: 40px 16px;">
 
   <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 0 auto;">
 
-    <!-- HEADER: logo -->
+    <!-- HEADER: hlavné logo na zlatom pozadí -->
     <tr>
-      <td style="background: #ffffff; padding: 36px 40px 0 40px; text-align: center; border-radius: 12px 12px 0 0;">
-        <img src="${LOGO_URL}" alt="Orostone" style="height: 52px; display: inline-block;">
-        <p style="margin: 8px 0 0 0; font-size: 11px; font-weight: 700; letter-spacing: 0.3em;
-                  text-transform: uppercase; color: #ECD488;">OROSTONE</p>
-      </td>
-    </tr>
-
-    <!-- ZLATÁ LINKA -->
-    <tr>
-      <td style="background: #ffffff; padding: 0 40px;">
-        <div style="background: #ECD488; height: 3px; margin: 24px 0;"></div>
+      <td style="background: #ECD488; padding: 36px 40px 28px 40px; text-align: center; border-radius: 12px 12px 0 0;">
+        <img src="${LOGO_URL}" alt="Orostone" style="height: 44px; display: inline-block;">
       </td>
     </tr>
 
@@ -315,8 +307,9 @@ async function sendSampleLeadConfirmation(quote: QuoteData, customer: CustomerDa
 
     <!-- FOOTER -->
     <tr>
-      <td style="background: #ffffff; border-top: 1px solid #eeeeee; padding: 24px 40px;
+      <td style="background: #ffffff; border-top: 1px solid #eeeeee; padding: 28px 40px 32px 40px;
                  border-radius: 0 0 12px 12px; text-align: center;">
+        <img src="${LOGO_CIRCLE_URL}" alt="Orostone" style="height: 36px; display: inline-block; margin-bottom: 14px; opacity: 0.7;">
         <p style="margin: 0 0 6px 0; font-size: 12px; color: #999; font-weight: 300;">
           V prípade otázok nás kontaktujte:
         </p>
@@ -325,7 +318,7 @@ async function sendSampleLeadConfirmation(quote: QuoteData, customer: CustomerDa
           &nbsp;·&nbsp;
           <a href="tel:+421917588738" style="color: #1A1A1A; text-decoration: none; font-weight: 600;">+421 917 588 738</a>
         </p>
-        <p style="margin: 12px 0 0 0; font-size: 11px; color: #bbb; font-weight: 300;">
+        <p style="margin: 10px 0 0 0; font-size: 11px; color: #bbb; font-weight: 300;">
           Orostone s.r.o. &nbsp;·&nbsp; Landererova 8, 811 09 Bratislava
           &nbsp;·&nbsp; <a href="https://www.orostone.sk" style="color: #bbb;">www.orostone.sk</a>
         </p>
