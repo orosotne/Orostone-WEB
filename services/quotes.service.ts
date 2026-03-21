@@ -1,5 +1,8 @@
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { uploadQuoteFiles } from './storage.service';
+
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
 import type { 
   CustomerInsert, 
   QuoteInsert, 
@@ -133,6 +136,17 @@ export async function submitSampleLead(data: SampleLeadFormData): Promise<Submit
       console.error('Error creating sample lead quote:', quoteError);
       return { success: false, error: 'Nepodarilo sa odoslať žiadosť' };
     }
+
+    // Pošli email notifikácie (nezablokuje success ak zlyhá)
+    fetch(`${SUPABASE_URL}/functions/v1/send-quote-notification`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'apikey': SUPABASE_ANON_KEY,
+      },
+      body: JSON.stringify({ quote_id: quote.id }),
+    }).catch((err) => console.warn('[submitSampleLead] Email notification failed:', err));
 
     return { success: true, quoteId: quote.id };
   } catch (error) {
