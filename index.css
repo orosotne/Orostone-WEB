@@ -106,6 +106,13 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 
+/* Desktop-only: fix pre dvojitý scrollbar; mobil sa nemení */
+@media (min-width: 1024px) {
+  #root {
+    overflow: clip;
+  }
+}
+
 /* ===== ROTATING BADGE BLINK ===== */
 @keyframes badge-blink {
   0%, 100%  { transform: scale(0); opacity: 0; }

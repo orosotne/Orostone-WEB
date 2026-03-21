@@ -83,7 +83,7 @@ const AppContent = () => {
   const [isWizardOpen, setIsWizardOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col font-sans text-brand-dark bg-[#F9F9F7] overflow-x-hidden">
+    <div className="min-h-screen flex flex-col font-sans text-brand-dark bg-[#F9F9F7] overflow-x-clip lg:overflow-clip">
       <SmoothScroll />
       <ScrollProgress />
       <NoiseOverlay />
