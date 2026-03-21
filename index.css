@@ -62,8 +62,13 @@
   * {
     @apply border-border;
   }
-  html, body {
-    overflow-x: hidden;
+  html {
+    overflow-x: clip;
+    max-width: 100%;
+    overscroll-behavior-x: none;
+  }
+  body {
+    overflow-x: clip;
     max-width: 100%;
     overscroll-behavior-x: none;
   }
