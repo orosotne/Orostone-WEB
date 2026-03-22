@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, MapPin, AlertTriangle, UserRound } from 'lucide-react';
+import { Mail, Phone, MapPin, AlertTriangle } from 'lucide-react';
 
 export const EshopContact: React.FC = () => {
   return (
@@ -36,6 +36,13 @@ export const EshopContact: React.FC = () => {
                 <br />
                 mestská časť Staré Mesto
               </p>
+              <div className="mt-4 space-y-1 text-sm text-gray-600">
+                <p>IČO: 55 254 772</p>
+                <p>DIČ: 2121930580</p>
+                <p>IČ DPH: SK2121930580</p>
+                <p>Platiteľ DPH podľa §4 od 11. 4. 2023</p>
+                <p>Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B</p>
+              </div>
               <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3">
                 <p className="text-sm text-amber-900 flex items-start gap-2">
                   <AlertTriangle size={16} className="mt-0.5 flex-shrink-0" />
@@ -67,7 +74,7 @@ export const EshopContact: React.FC = () => {
               </div>
               <h2 className="text-xl font-bold text-brand-dark mb-3">Konzultácie</h2>
               <p className="text-gray-600 leading-relaxed mb-5">
-                Máš otázky? Neváhaj a zavolaj nám, radi ti poradíme.
+                Máte otázky k výberu materiálu, realizácii alebo objednávke? Kontaktujte nás a člen nášho tímu sa vám v krátkom čase ozve s odborným odporúčaním.
               </p>
               <a
                 href="tel:+421917588738"
@@ -78,14 +85,18 @@ export const EshopContact: React.FC = () => {
               </a>
             </article>
 
-            <article className="rounded-2xl border border-gray-200 p-6 sm:p-8 bg-[#F9F9F7]">
-              <div className="w-12 h-12 rounded-full bg-brand-dark/10 flex items-center justify-center mb-5">
-                <UserRound className="text-brand-dark" size={20} />
+            <article className="rounded-2xl border border-brand-gold/40 p-6 sm:p-8 bg-brand-gold/10">
+              <div className="w-14 h-14 rounded-full overflow-hidden mb-5">
+                <img
+                  src="/images/marian-brazdil.png"
+                  alt="Marián Brázdil"
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
               <h2 className="text-xl font-bold text-brand-dark mb-1">Kto odpovedá na tvoju správu</h2>
               <p className="text-brand-dark font-semibold">Marián Brázdil</p>
               <p className="text-gray-600 text-sm mb-5">Špecialista na sinterovaný kameň</p>
-              <div className="space-y-2">
+              <div className="flex flex-col gap-2">
                 <a
                   href="mailto:marian.brazdil@orostone.sk"
                   className="inline-flex items-center gap-2 text-brand-dark hover:text-brand-gold transition-colors"

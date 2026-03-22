@@ -22,7 +22,7 @@ interface EshopAnnouncementBarProps {
 // ===========================================
 
 const DEFAULT_ANNOUNCEMENTS: Announcement[] = [
-  { id: '1', text: 'DOPRAVA ZADARMO', highlight: 'NAD 200€' },
+  { id: '1', text: 'DOPRAVA ZADARMO', highlight: 'NAD 4 500 EUR' },
   { id: '2', text: 'SKLADOVÉ PLATNE', highlight: 'IHNEĎ K ODBERU' },
   { id: '3', text: 'GARANCIA VRÁTENIA', highlight: '14 DNÍ' },
 ];

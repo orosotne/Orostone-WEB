@@ -106,6 +106,25 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 
+/* GSAP pin-spacer intercepts mouse events by default — pass through to pinned content */
+.pin-spacer {
+  pointer-events: none !important;
+}
+
+/* Restore pointer events for all interactive content inside the pinned stone section */
+.stone-experience-pinned,
+.stone-experience-pinned * {
+  pointer-events: auto;
+}
+
+/* Decorative/overlay elements that must not intercept clicks */
+.stone-experience-pinned .stone-bg,
+.stone-experience-pinned .stone-glow,
+.stone-experience-pinned .stone-connector,
+.stone-experience-pinned .stone-pin-pulse {
+  pointer-events: none;
+}
+
 /* Desktop-only: fix pre dvojitý scrollbar; mobil sa nemení */
 @media (min-width: 1024px) {
   #root {

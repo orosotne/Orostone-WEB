@@ -39,7 +39,7 @@ export const EshopFooter: React.FC = () => {
               </div>
               <div>
                 <h4 className="font-semibold text-sm">Doprava zadarmo</h4>
-                <p className="text-xs text-gray-400">Pri objednávke nad 200€</p>
+                <p className="text-xs text-gray-400">Pri objednávke nad 4 500 EUR</p>
               </div>
             </div>
             
@@ -205,20 +205,25 @@ export const EshopFooter: React.FC = () => {
       <div className="border-t border-white/10">
         <div className="container mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-gray-400">
-              <span>© {new Date().getFullYear()} Orostone</span>
-              <span>•</span>
-              <Link to="/vop" className="hover:text-white transition-colors">
-                Obchodné podmienky
-              </Link>
-              <span>•</span>
-              <Link to="/ochrana-sukromia" className="hover:text-white transition-colors">
-                Ochrana súkromia
-              </Link>
-              <span>•</span>
-              <Link to="/cookies" className="hover:text-white transition-colors">
-                Cookies
-              </Link>
+            <div className="flex flex-col items-center md:items-start gap-2 text-center md:text-left">
+              <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-gray-400">
+                <span>© {new Date().getFullYear()} Orostone</span>
+                <span>•</span>
+                <Link to="/vop" className="hover:text-white transition-colors">
+                  Obchodné podmienky
+                </Link>
+                <span>•</span>
+                <Link to="/ochrana-sukromia" className="hover:text-white transition-colors">
+                  Ochrana súkromia
+                </Link>
+                <span>•</span>
+                <Link to="/cookies" className="hover:text-white transition-colors">
+                  Cookies
+                </Link>
+              </div>
+              <div className="text-[11px] leading-relaxed text-gray-500 max-w-2xl">
+                Orostone s.r.o., Landererova 8, 811 09 Bratislava - mestská časť Staré Mesto, IČO: 55 254 772, DIČ: 2121930580, IČ DPH: SK2121930580. Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B.
+              </div>
             </div>
             
             {/* Platobné značky — zobrazujte len to, čo máte zapnuté v Stripe Dashboard (Payment methods) */}

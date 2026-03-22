@@ -91,9 +91,11 @@ export const PrivacyPolicy = () => {
               </p>
               <div className="bg-gray-50 rounded-orostone p-6 font-medium">
                 <p className="text-brand-dark text-lg mb-2">Orostone s.r.o.</p>
-                <p>IČO: 55254772</p>
-                <p>Landererova 8</p>
-                <p>811 09 Bratislava - mestská časť Staré Mesto</p>
+                <p>IČO: 55 254 772</p>
+                <p>DIČ: 2121930580</p>
+                <p>IČ DPH: SK2121930580</p>
+                <p>Landererova 8, 811 09 Bratislava - mestská časť Staré Mesto</p>
+                <p className="text-sm text-gray-500 mt-2">Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B</p>
                 <p className="mt-4 text-brand-gold">info@orostone.sk</p>
               </div>
             </div>
@@ -348,7 +350,11 @@ export const PrivacyPolicy = () => {
               <div className="bg-gray-50 rounded-orostone p-6">
                 <p className="font-medium text-brand-dark text-lg mb-4">Orostone s.r.o.</p>
                 <div className="space-y-2">
-                  <p>📍 Landererova 8, 811 09 Bratislava</p>
+                  <p>📍 Landererova 8, 811 09 Bratislava - mestská časť Staré Mesto</p>
+                  <p>IČO: 55 254 772</p>
+                  <p>DIČ: 2121930580</p>
+                  <p>IČ DPH: SK2121930580</p>
+                  <p className="text-sm text-gray-500">Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B</p>
                   <p>📧 <a href="mailto:info@orostone.sk" className="text-brand-gold hover:underline">info@orostone.sk</a></p>
                   <p>📞 <a href="tel:+421917588738" className="text-brand-gold hover:underline">+421 917 588 738</a></p>
                 </div>

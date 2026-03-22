@@ -123,10 +123,12 @@ export const VOP = () => {
             <SubSection number="1.2">
               Kameň Orostone® je na území Slovenskej a Českej republiky distribuovaný spoločnosťou:
               <div className="bg-gray-50 rounded-orostone p-4 mt-3 font-medium">
-                <p className="text-brand-dark">Orostone, s.r.o.</p>
+                <p className="text-brand-dark">Orostone s.r.o.</p>
                 <p>Landererova 8, 811 09 Bratislava - mestská časť Staré Mesto</p>
                 <p>IČO: 55 254 772</p>
-                <p className="text-sm text-gray-500 mt-2">Zapísaná v Obchodnom registri Mestského súdu Bratislava III, Oddiel: Sro, Vložka číslo: 167404/B</p>
+                <p>DIČ: 2121930580</p>
+                <p>IČ DPH: SK2121930580</p>
+                <p className="text-sm text-gray-500 mt-2">Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B</p>
               </div>
             </SubSection>
             <SubSection number="1.3">

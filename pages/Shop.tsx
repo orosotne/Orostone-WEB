@@ -777,9 +777,9 @@ export const Shop = () => {
                 <div className="relative w-full max-w-[300px]">
                   <Link
                     to={`/produkt/${sinteredProducts[activeStoneIdx]?.id ?? 'yabo-white'}`}
-                    className="stone-slab group relative block w-full aspect-[9/16]"
+                    className="stone-slab group relative block w-full aspect-[9/16] cursor-pointer"
                   >
-                    <div className="w-full h-full rounded-[22px] overflow-hidden">
+                    <div className="w-full h-full rounded-[22px] overflow-hidden ring-2 ring-transparent group-hover:ring-brand-gold transition-all duration-300">
                       <img
                         src={sinteredProducts[activeStoneIdx]?.image ?? '/images/yabo-white-slab.jpg'}
                         alt={`${sinteredProducts[activeStoneIdx]?.name ?? 'YABO WHITE'} platňa`}

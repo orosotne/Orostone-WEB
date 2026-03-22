@@ -34,6 +34,25 @@ export const CookiesPolicy = () => {
           </p>
         </motion.div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.05 }}
+          className="bg-white rounded-orostone p-6 shadow-sm mb-12"
+        >
+          <h2 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">
+            Prevádzkovateľ webu
+          </h2>
+          <div className="space-y-1 text-sm text-gray-600 leading-relaxed">
+            <p className="font-medium text-brand-dark">Orostone s.r.o.</p>
+            <p>Landererova 8, 811 09 Bratislava - mestská časť Staré Mesto</p>
+            <p>IČO: 55 254 772</p>
+            <p>DIČ: 2121930580</p>
+            <p>IČ DPH: SK2121930580</p>
+            <p>Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B</p>
+          </div>
+        </motion.div>
+
         {/* Quick Navigation */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
