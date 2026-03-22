@@ -248,7 +248,7 @@ export const CartDrawer: React.FC = () => {
                       <div className="px-4 py-3 flex items-start gap-2">
                         <Info size={14} className="text-amber-600 mt-0.5 flex-shrink-0" />
                         <p className="text-[11px] text-amber-700 leading-relaxed">
-                          Záloha za vzorku sa odpočíta pri objednávke plného produktu.
+                          Zálohu za vzorku vám vrátime po objednávke plného produktu.
                         </p>
                       </div>
                     </div>
@@ -308,6 +308,14 @@ export const CartDrawer: React.FC = () => {
                             </div>
                           </div>
                         </div>
+
+                        {/* Important notice: installation is not included in Shopify checkout */}
+                        <div className="mt-3 flex items-start gap-2 rounded-lg bg-amber-50 border border-amber-200 px-3 py-2.5">
+                          <Info size={13} className="text-amber-600 mt-0.5 flex-shrink-0" />
+                          <p className="text-[11px] text-amber-800 leading-relaxed">
+                            <span className="font-semibold">Upozornenie:</span> Montáž nie je súčasťou Shopify objednávky. Po prijatí platby vás náš tím kontaktuje a dohodne detaily montáže.
+                          </p>
+                        </div>
                       </div>
                     </div>
                   )}
@@ -348,9 +356,19 @@ export const CartDrawer: React.FC = () => {
 
                 {/* Shipping info */}
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Doprava a DPH</span>
-                  <span className="text-xs text-gray-400">Vypočíta sa pri platbe</span>
+                  <span className="text-gray-600">Doprava</span>
+                  <span className="text-xs text-gray-500 text-right">
+                    od 80 EUR s DPH
+                    <br />
+                    <span className="text-gray-400">nad 4 500 EUR zadarmo</span>
+                  </span>
                 </div>
+                <p className="text-[11px] text-gray-400">
+                  Presná cena sa potvrdí v pokladni podľa adresy a počtu paliet.{' '}
+                  <Link to="/doprava" onClick={closeCart} className="text-brand-gold hover:underline">
+                    Viac o doprave
+                  </Link>
+                </p>
 
                 {/* Total */}
                 <div className="flex justify-between text-lg font-bold pt-4 border-t border-gray-200">
@@ -378,7 +396,7 @@ export const CartDrawer: React.FC = () => {
                 </button>
 
                 <p className="text-xs text-gray-400 text-center">
-                  Bezpečná platba cez Shopify
+                  Budete presmerovaný na zabezpečenú pokladňu OROSTONE
                 </p>
 
                 {/* Continue shopping */}

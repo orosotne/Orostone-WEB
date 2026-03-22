@@ -77,16 +77,25 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 const PLACEHOLDER_IMAGE = '/images/logo.png';
 
 function mapShopifyCartLines(cart: ShopifyCart): CartItem[] {
-  return cart.lines.edges.map(({ node: line }) => ({
-    id: line.id,
-    variantId: line.merchandise.id,
-    productId: line.merchandise.product.handle,
-    name: line.merchandise.product.title,
-    image: line.merchandise.image?.url || line.merchandise.product.images.edges[0]?.node.url || PLACEHOLDER_IMAGE,
-    price: parseFloat(line.cost.amountPerQuantity.amount),
-    quantity: line.quantity,
-    variant: line.merchandise.title !== 'Default Title' ? line.merchandise.title : '',
-  }));
+  return cart.lines.edges
+    .filter(({ node: line }) => line.merchandise?.product != null)
+    .map(({ node: line }) => {
+      // #region agent log
+      if (import.meta.env.DEV) {
+        fetch('http://127.0.0.1:7731/ingest/fe10e622-0fa2-40d2-8709-73e6a557fd3f',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'686860'},body:JSON.stringify({sessionId:'686860',location:'CartContext.tsx:mapShopifyCartLines',message:'mapping cart line',data:{lineId:line.id,merchandiseTitle:line.merchandise?.title,productTitle:line.merchandise?.product?.title,imageUrl:line.merchandise?.image?.url,edgesLen:line.merchandise?.product?.images?.edges?.length,nodeUrl:line.merchandise?.product?.images?.edges?.[0]?.node?.url},timestamp:Date.now(),hypothesisId:'H2'})}).catch(()=>{});
+      }
+      // #endregion
+      return {
+        id: line.id,
+        variantId: line.merchandise.id,
+        productId: line.merchandise.product.handle,
+        name: line.merchandise.product.title,
+        image: line.merchandise.image?.url || line.merchandise.product.images?.edges?.[0]?.node?.url || PLACEHOLDER_IMAGE,
+        price: parseFloat(line.cost?.amountPerQuantity?.amount ?? '0'),
+        quantity: line.quantity,
+        variant: (line.merchandise.title ?? '') !== 'Default Title' ? (line.merchandise.title ?? '') : '',
+      };
+    });
 }
 
 // ===========================================
@@ -110,6 +119,12 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     if (!isShopifyConfigured()) return;
 
     const initCart = async () => {
+      setIsLoading(true);
+      // #region agent log
+      if (import.meta.env.DEV) {
+        fetch('http://127.0.0.1:7731/ingest/fe10e622-0fa2-40d2-8709-73e6a557fd3f',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'686860'},body:JSON.stringify({sessionId:'686860',location:'CartContext.tsx:initCart',message:'cart init start',data:{shopifyConfigured:true},timestamp:Date.now(),hypothesisId:'H2'})}).catch(()=>{});
+      }
+      // #endregion
       try {
         // Skus nacitat existujuci cart z localStorage
         const savedCartId = localStorage.getItem(CART_ID_KEY);
@@ -136,6 +151,8 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         } catch (retryError) {
           console.error('Nepodarilo sa vytvorit kosik:', retryError);
         }
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -231,7 +248,9 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const itemCount = cart?.totalQuantity || 0;
   const subtotal = cart ? parseFloat(cart.cost.subtotalAmount.amount) : 0;
   const total = cart ? parseFloat(cart.cost.totalAmount.amount) : 0;
-  const checkoutUrl = cart?.checkoutUrl || null;
+  const checkoutUrl = cart?.checkoutUrl
+    ? `${cart.checkoutUrl}${cart.checkoutUrl.includes('?') ? '&' : '?'}return_to=${encodeURIComponent('https://eshop.orostone.sk')}`
+    : null;
 
   const isInCart = useCallback((productHandle: string) => {
     return items.some(item => item.productId === productHandle);

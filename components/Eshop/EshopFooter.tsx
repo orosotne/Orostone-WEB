@@ -10,10 +10,6 @@ import { getVisibleCategories } from './EshopMegaMenu';
 const PAYMENT_MARKS = [
   { src: '/images/payments/visa.svg', alt: 'Visa' },
   { src: '/images/payments/mastercard.svg', alt: 'Mastercard' },
-  { src: '/images/payments/amex.svg', alt: 'American Express' },
-  { src: '/images/payments/discover.svg', alt: 'Discover' },
-  { src: '/images/payments/jcb.svg', alt: 'JCB' },
-  { src: '/images/payments/diners.svg', alt: 'Diners Club' },
   { src: '/images/payments/apple-pay.svg', alt: 'Apple Pay' },
   { src: '/images/payments/google-pay.svg', alt: 'Google Pay' },
 ] as const;
@@ -27,7 +23,7 @@ export const EshopFooter: React.FC = () => {
   const isProductDetail = pathname.startsWith('/produkt/');
 
   return (
-    <footer className={`bg-brand-dark text-white${isProductDetail ? ' pb-40 lg:pb-0' : ''}`}>
+    <footer className={`bg-brand-dark text-white${isProductDetail ? ' pb-32 lg:pb-0' : ''}`}>
       
       {/* Trust Badges */}
       <div className="border-b border-white/10">
@@ -39,7 +35,7 @@ export const EshopFooter: React.FC = () => {
               </div>
               <div>
                 <h4 className="font-semibold text-sm">Doprava zadarmo</h4>
-                <p className="text-xs text-gray-400">Pri objednávke nad 4 500 EUR</p>
+                <p className="text-xs text-gray-400">Pri objednavke nad 3 platne</p>
               </div>
             </div>
             
@@ -68,7 +64,7 @@ export const EshopFooter: React.FC = () => {
                 <Clock size={24} className="text-brand-gold" />
               </div>
               <div>
-                <h4 className="font-semibold text-sm">Expedícia do 5 dní</h4>
+                <h4 className="font-semibold text-sm">Expedícia do 5 pracovných dní</h4>
                 <p className="text-xs text-gray-400">Po prijatí platby</p>
               </div>
             </div>
@@ -95,26 +91,29 @@ export const EshopFooter: React.FC = () => {
             </p>
             <div className="flex items-center gap-4">
               <a 
-                href="https://facebook.com" 
+                href="https://www.facebook.com/orostone.sk" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-colors"
+                aria-label="Orostone na Facebooku"
               >
                 <Facebook size={18} />
               </a>
               <a 
-                href="https://instagram.com" 
+                href="https://www.instagram.com/orostone_" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-colors"
+                aria-label="Orostone na Instagrame"
               >
                 <Instagram size={18} />
               </a>
               <a 
-                href="https://youtube.com" 
+                href="https://www.youtube.com/@orostone" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-colors"
+                aria-label="Orostone na YouTube"
               >
                 <Youtube size={18} />
               </a>

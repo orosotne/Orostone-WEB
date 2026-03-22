@@ -66,6 +66,7 @@ import { ProductDetailSkeleton } from '../components/UI/Skeleton';
 import { useCookies } from '../context/CookieContext';
 import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
 import { getProductSEOContent, GENERIC_PRODUCT_FAQS } from '../data/product-seo-content';
+import { useScrollLock } from '../hooks/useScrollLock';
 
 // #region agent log
 const debugLog = (
@@ -297,7 +298,7 @@ const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProductId, pro
                   src={product.image} 
                   alt={product.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <span className={cn(
@@ -815,15 +816,7 @@ const ProductLightbox: React.FC<ProductLightboxProps> = ({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose, onPrevious, onNext]);
 
-  // Prevent body scroll when open
-  React.useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => { document.body.style.overflow = ''; };
-  }, [isOpen]);
+  useScrollLock(isOpen);
 
   if (!isOpen || !images[currentIndex]) return null;
 
@@ -919,20 +912,16 @@ const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProps> = ({
   const [activeTab, setActiveTab] = useState<string>('space');
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
-  // Close lightbox on ESC key
   React.useEffect(() => {
+    if (!isLightboxOpen) return;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setIsLightboxOpen(false);
     };
-    if (isLightboxOpen) {
-      document.addEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'hidden';
-    }
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = '';
-    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
   }, [isLightboxOpen]);
+
+  useScrollLock(isLightboxOpen);
 
   // Define perspectives with product-aware data
   const perspectives: PerspectiveTab[] = [
@@ -1221,7 +1210,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         {/* Breadcrumb */}
         <div className="flex items-center justify-between mb-8">
           <nav className="flex items-center gap-2 text-xs text-gray-500">
-            <Link to="/" className="hover:text-brand-dark transition-colors">Shop</Link>
+            <Link to="/" className="hover:text-brand-dark transition-colors">E-Shop</Link>
             <ChevronRight size={12} />
             <span className="text-brand-dark font-medium">{product.name}</span>
           </nav>
@@ -2189,8 +2178,26 @@ const LogisticsSection: React.FC<LogisticsSectionProps> = ({ product }) => {
             })}
           </div>
 
+          <div className="mt-6 p-4 lg:p-5 bg-white border border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div className="space-y-1">
+              <p className="text-sm font-semibold text-brand-dark">
+                Doprava od 80 EUR s DPH
+              </p>
+              <p className="text-xs text-gray-500">
+                Presná cena sa potvrdí v pokladni podľa adresy a počtu paliet.
+                Nad 4 500 EUR doprava zadarmo.
+              </p>
+            </div>
+            <Link
+              to="/doprava"
+              className="text-xs font-semibold text-brand-gold hover:text-brand-dark transition-colors uppercase tracking-wider whitespace-nowrap"
+            >
+              Viac o doprave →
+            </Link>
+          </div>
+
           {product.handlingNotes && (
-            <div className="mt-6 p-4 bg-amber-50 border border-amber-200 text-amber-800 text-sm">
+            <div className="mt-4 p-4 bg-amber-50 border border-amber-200 text-amber-800 text-sm">
               <strong>Upozornenie:</strong> {product.handlingNotes}
             </div>
           )}
@@ -2229,37 +2236,7 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
     return () => document.removeEventListener('keydown', handleEscape);
   }, [isBimModalOpen]);
 
-  // Scroll lock when BIM modal is open — html + body; position:fixed for iOS Safari
-  useEffect(() => {
-    if (!isBimModalOpen) return;
-    const scrollY = window.scrollY;
-    const prevHtmlOverflow = document.documentElement.style.overflow;
-    const prevBodyOverflow = document.body.style.overflow;
-    const prevBodyPosition = document.body.style.position;
-    const prevBodyTop = document.body.style.top;
-    const prevBodyLeft = document.body.style.left;
-    const prevBodyRight = document.body.style.right;
-    const prevBodyWidth = document.body.style.width;
-
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.left = '0';
-    document.body.style.right = '0';
-    document.body.style.width = '100%';
-
-    return () => {
-      document.documentElement.style.overflow = prevHtmlOverflow;
-      document.body.style.overflow = prevBodyOverflow;
-      document.body.style.position = prevBodyPosition;
-      document.body.style.top = prevBodyTop;
-      document.body.style.left = prevBodyLeft;
-      document.body.style.right = prevBodyRight;
-      document.body.style.width = prevBodyWidth;
-      window.scrollTo(0, scrollY);
-    };
-  }, [isBimModalOpen]);
+  useScrollLock(isBimModalOpen);
 
   const handleBimSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -2351,13 +2328,16 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
               <div className="p-5 lg:p-8">
                 <h3 className="font-bold text-brand-dark mb-4">Technická dokumentácia</h3>
                 <div className="space-y-3">
-                  <button className="w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 transition-colors group">
+                  <a
+                    href={`mailto:info@orostone.sk?subject=Technický list (TDS) — ${encodeURIComponent(product.name)}&body=Dobrý deň,%0A%0Aprosíme o zaslanie technického listu (TDS) pre produkt: ${encodeURIComponent(product.name)}.%0A%0AĎakujeme.`}
+                    className="w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 transition-colors group"
+                  >
                     <span className="flex items-center gap-3 text-sm text-brand-dark">
                       <FileText size={16} className="text-brand-gold" />
                       Technický list (TDS)
                     </span>
                     <Download size={14} className="text-gray-400 group-hover:text-brand-dark" />
-                  </button>
+                  </a>
                   <button
                     onClick={() => { setIsBimModalOpen(true); setBimEmail(''); setBimSubmitted(false); }}
                     className="w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 transition-colors group"
@@ -2760,7 +2740,7 @@ export const ShopProductDetail: React.FC = () => {
     return shopifyProduct;
   }, [shopifyProduct, allProducts]);
 
-  const isLoading = productLoading || productsLoading;
+  const isLoading = productLoading && !product;
 
   if (isLoading) {
     return <ProductDetailSkeleton />;
@@ -2775,7 +2755,7 @@ export const ShopProductDetail: React.FC = () => {
           <Link to="/">
             <Button variant="primary">
               <ArrowLeft size={16} />
-              Späť na shop
+              Späť do obchodu
             </Button>
           </Link>
         </div>
@@ -2832,7 +2812,7 @@ export const ShopProductDetail: React.FC = () => {
   const seoImage = (product.gallery && product.gallery.length > 0 ? product.gallery[0] : product.image) || '/images/logo.png';
 
   return (
-    <main className="min-h-screen w-full overflow-x-hidden overflow-y-visible bg-white">
+    <div className="min-h-screen w-full overflow-x-hidden overflow-y-visible bg-white">
       <SEOHead
         title={seoTitle}
         description={seoDescription}
@@ -2910,11 +2890,10 @@ export const ShopProductDetail: React.FC = () => {
 
       {/* ===== Sticky Add-to-Cart Bottom Bar — mobile only ===== */}
       <div className={cn(
-        "fixed left-0 right-0 z-[60] lg:hidden bg-white border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] transition-all duration-300",
-        hasConsented ? "bottom-0" : "bottom-[200px] sm:bottom-[160px]",
+        "fixed left-0 right-0 z-[60] lg:hidden bg-white border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 bottom-0",
         isCartOpen && "hidden"
       )}
-        style={{ paddingBottom: hasConsented ? 'env(safe-area-inset-bottom, 0px)' : '0px' }}
+        style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
       >
         <div className="px-4 py-3 space-y-2">
           {/* Top row: Price + Add to Cart */}
@@ -2929,6 +2908,7 @@ export const ShopProductDetail: React.FC = () => {
                   <span className="text-xs font-normal text-gray-400 ml-1 line-through">{formatPrice(product.pricePerM2)}</span>
                 )}
               </p>
+              <p className="text-[10px] text-gray-400 leading-tight">Doprava od 80 EUR s DPH</p>
             </div>
             {/* Add to Cart button */}
             <button
@@ -2987,7 +2967,7 @@ export const ShopProductDetail: React.FC = () => {
           </button>
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 

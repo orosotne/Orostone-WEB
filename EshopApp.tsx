@@ -1,25 +1,39 @@
-import React, { useEffect, useRef, Suspense, lazy } from 'react';
+import React, { useEffect, useRef, Suspense } from 'react';
+import { useAnalytics } from './hooks/useAnalytics';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { EshopLayout } from './components/Eshop/EshopLayout';
 import { LoadingSpinner } from './components/UI/LoadingSpinner';
 import { ErrorBoundary } from './components/UI/ErrorBoundary';
 import { ProductGridSkeleton, ProductDetailSkeleton, CheckoutSkeleton } from './components/UI/Skeleton';
+import { lazyWithRetry } from './lib/utils';
 
-// Core pages (always loaded)
+// Core pages (always loaded — high-intent routes should never show a loading spinner)
 import { Shop } from './pages/Shop';
 import { ProductCatalog } from './pages/ProductCatalog';
 import { EshopContact } from './pages/EshopContact';
+import { CategoryPage } from './pages/CategoryPage';
+import { Checkout } from './pages/Checkout';
 
-// Lazy loaded pages for better bundle splitting
-const ShopProductDetail = lazy(() => import('./pages/ShopProductDetail').then(m => ({ default: m.ShopProductDetail })));
-const Checkout = lazy(() => import('./pages/Checkout').then(m => ({ default: m.Checkout })));
+// Lazy loaded pages — lazyWithRetry retries failed chunk loads (e.g. after deployment)
+const ShopProductDetail = lazyWithRetry(() => import('./pages/ShopProductDetail').then(m => ({ default: m.ShopProductDetail })));
 
-const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy').then(m => ({ default: m.PrivacyPolicy })));
-const CookiesPolicy = lazy(() => import('./pages/CookiesPolicy').then(m => ({ default: m.CookiesPolicy })));
-const VOP = lazy(() => import('./pages/VOP').then(m => ({ default: m.VOP })));
-const CategoryPage = lazy(() => import('./pages/CategoryPage').then(m => ({ default: m.CategoryPage })));
-const BlogPage = lazy(() => import('./pages/Blog').then(m => ({ default: m.Blog })));
-const BlogArticlePage = lazy(() => import('./pages/BlogArticle').then(m => ({ default: m.BlogArticle })));
+const BlogPage = lazyWithRetry(() => import('./pages/Blog').then(m => ({ default: m.Blog })));
+const BlogArticlePage = lazyWithRetry(() => import('./pages/BlogArticle').then(m => ({ default: m.BlogArticle })));
+const PrivacyPolicy = lazyWithRetry(() => import('./pages/PrivacyPolicy').then(m => ({ default: m.PrivacyPolicy })));
+const CookiesPolicy = lazyWithRetry(() => import('./pages/CookiesPolicy').then(m => ({ default: m.CookiesPolicy })));
+const VOP = lazyWithRetry(() => import('./pages/VOP').then(m => ({ default: m.VOP })));
+const DopravaAPlatba = lazyWithRetry(() => import('./pages/DopravaAPlatba').then(m => ({ default: m.DopravaAPlatba })));
+const ReklamacieAVratenie = lazyWithRetry(() => import('./pages/ReklamacieAVratenie').then(m => ({ default: m.ReklamacieAVratenie })));
+
+// Prefetch the heaviest lazy chunk (product detail) after first idle
+if (typeof window !== 'undefined') {
+  const prefetch = () => { import('./pages/ShopProductDetail'); };
+  if ('requestIdleCallback' in window) {
+    (window as any).requestIdleCallback(prefetch, { timeout: 4000 });
+  } else {
+    setTimeout(prefetch, 2000);
+  }
+}
 
 // Contexts
 import { ThemeProvider } from './context/ThemeContext';
@@ -39,47 +53,10 @@ const ScrollToTop = () => {
     const prev = prevPathRef.current;
     prevPathRef.current = pathname;
 
-    // Skip scroll when switching between product detail pages
     const isProductRoute = (p: string) => /^\/produkt\//.test(p);
-    if (isProductRoute(prev) && isProductRoute(pathname)) {
-      // #region agent log
-      if (import.meta.env.DEV) {
-        void fetch('http://127.0.0.1:7731/ingest/fe10e622-0fa2-40d2-8709-73e6a557fd3f', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '0e45ef' },
-          body: JSON.stringify({
-            sessionId: '0e45ef',
-            location: 'EshopApp:ScrollToTop',
-            message: 'skipped product-to-product',
-            data: { prev, pathname, scrollY: window.scrollY },
-            timestamp: Date.now(),
-            hypothesisId: 'H2',
-          }),
-        }).catch(() => {});
-      }
-      // #endregion
-      return;
-    }
+    if (isProductRoute(prev) && isProductRoute(pathname)) return;
 
-    // #region agent log
-    if (import.meta.env.DEV) {
-      void fetch('http://127.0.0.1:7731/ingest/fe10e622-0fa2-40d2-8709-73e6a557fd3f', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '0e45ef' },
-        body: JSON.stringify({
-          sessionId: '0e45ef',
-          location: 'EshopApp:ScrollToTop',
-          message: 'scroll to top applied',
-          data: { prev, pathname, scrollYBefore: window.scrollY },
-          timestamp: Date.now(),
-          hypothesisId: 'H2',
-        }),
-      }).catch(() => {});
-    }
-    // #endregion
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
   }, [pathname]);
 
   return null;
@@ -146,6 +123,8 @@ const NotFoundPage: React.FC = () => {
 // ===========================================
 
 const EshopAppContent = () => {
+  useAnalytics();
+
   return (
     <EshopLayout>
       <ScrollToTop />
@@ -157,11 +136,7 @@ const EshopAppContent = () => {
           <Route path="/vsetky-produkty" element={<ProductCatalog />} />
           
           {/* Categories */}
-          <Route path="/kategoria/:slug" element={
-            <Suspense fallback={<ProductGridSkeleton />}>
-              <CategoryPage />
-            </Suspense>
-          } />
+          <Route path="/kategoria/:slug" element={<CategoryPage />} />
           
           {/* Product Detail — skeleton loader */}
           <Route path="/produkt/:id" element={
@@ -170,12 +145,8 @@ const EshopAppContent = () => {
             </Suspense>
           } />
           
-          {/* Checkout Flow — skeleton loader */}
-          <Route path="/checkout" element={
-            <Suspense fallback={<CheckoutSkeleton />}>
-              <Checkout />
-            </Suspense>
-          } />
+          {/* Checkout Flow */}
+          <Route path="/checkout" element={<Checkout />} />
           
           {/* Auth — redirect to Shopify Customer Accounts */}
           <Route path="/login" element={<ExternalRedirect to="https://shopify.com/101386420570/account" />} />
@@ -195,8 +166,8 @@ const EshopAppContent = () => {
           } />
 
           {/* Info Pages */}
-          <Route path="/doprava" element={<PlaceholderPage title="Doprava a platba" />} />
-          <Route path="/reklamacie" element={<PlaceholderPage title="Reklamácie a vrátenie" />} />
+          <Route path="/doprava" element={<Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}><DopravaAPlatba /></Suspense>} />
+          <Route path="/reklamacie" element={<Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}><ReklamacieAVratenie /></Suspense>} />
           <Route path="/kontakt" element={<EshopContact />} />
           <Route path="/objednavky" element={<ExternalRedirect to="https://shopify.com/101386420570/account" />} />
 

@@ -131,9 +131,21 @@ export const Checkout = () => {
                   <span className="font-medium">{formatPrice(subtotal)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-500">Doprava a DPH</span>
-                  <span className="text-gray-400 text-xs">Vypočíta sa v ďalšom kroku</span>
+                  <span className="text-gray-500">Doprava</span>
+                  <span className="text-gray-500 text-xs text-right">od 80 EUR s DPH</span>
                 </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-500">DPH</span>
+                  <span className="text-gray-400 text-xs">potvrdí sa v pokladni</span>
+                </div>
+                <p className="text-[11px] text-gray-400 leading-relaxed">
+                  Presná cena dopravy závisí od adresy a počtu paliet.
+                  Nad 4 500 EUR doprava zadarmo.
+                  Montáž nie je súčasťou objednávky.{' '}
+                  <Link to="/doprava" className="text-brand-gold hover:underline">
+                    Viac o doprave
+                  </Link>
+                </p>
                 <div className="flex justify-between pt-3 border-t border-gray-100 text-lg">
                   <span className="font-bold text-brand-dark">Celkom</span>
                   <span className="font-bold text-brand-gold">{formatPrice(total)}</span>
@@ -160,22 +172,22 @@ export const Checkout = () => {
               </button>
 
               <p className="text-xs text-gray-400 text-center mt-3">
-                Budete presmerovaný na bezpečnú pokladňu Shopify
+                Budete presmerovaný na zabezpečenú pokladňu OROSTONE
               </p>
 
               {/* Trust badges */}
               <div className="mt-6 pt-6 border-t border-gray-100 space-y-3">
                 <div className="flex items-center gap-2 text-sm text-gray-500">
-                  <Package size={16} className="text-green-500" />
+                  <Lock size={16} className="text-green-500 flex-shrink-0" />
+                  Zabezpečená platba kartou, Apple Pay alebo Google Pay
+                </div>
+                <div className="flex items-center gap-2 text-sm text-gray-500">
+                  <Package size={16} className="text-green-500 flex-shrink-0" />
                   Expedícia do 5 pracovných dní
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-500">
-                  <Lock size={16} className="text-green-500" />
-                  Bezpečná platba cez Shopify
-                </div>
-                <div className="flex items-center gap-2 text-sm text-gray-500">
-                  <Truck size={16} className="text-green-500" />
-                  Doprava po celom Slovensku
+                  <Truck size={16} className="text-green-500 flex-shrink-0" />
+                  Paletová preprava po celom Slovensku
                 </div>
               </div>
             </div>
