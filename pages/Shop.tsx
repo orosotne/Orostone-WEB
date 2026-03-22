@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  ArrowRight, ChevronLeft, ChevronRight, Star,
+  ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, Star,
   Instagram, ShieldCheck, Flame, Droplets, Sparkles, Sun
 } from 'lucide-react';
 import { ShopProduct, TESTIMONIALS, REALIZATIONS } from '../constants';
@@ -785,6 +785,11 @@ export const Shop = () => {
                         alt={`${sinteredProducts[activeStoneIdx]?.name ?? 'YABO WHITE'} platňa`}
                         className="w-full h-full object-cover transition-all duration-500"
                       />
+                    </div>
+
+                    {/* Clickability badge — pravý horný roh */}
+                    <div className="absolute top-3 right-3 z-10 w-7 h-7 rounded-full bg-brand-gold flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md">
+                      <ArrowUpRight size={14} className="text-brand-dark" />
                     </div>
 
                     {STONE_EXPERIENCE_POINTS.map((point) => (
