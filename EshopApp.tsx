@@ -13,9 +13,7 @@ import { EshopContact } from './pages/EshopContact';
 // Lazy loaded pages for better bundle splitting
 const ShopProductDetail = lazy(() => import('./pages/ShopProductDetail').then(m => ({ default: m.ShopProductDetail })));
 const Checkout = lazy(() => import('./pages/Checkout').then(m => ({ default: m.Checkout })));
-const Login = lazy(() => import('./pages/Login').then(m => ({ default: m.Login })));
-const Register = lazy(() => import('./pages/Register').then(m => ({ default: m.Register })));
-const Account = lazy(() => import('./pages/Account').then(m => ({ default: m.Account })));
+
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy').then(m => ({ default: m.PrivacyPolicy })));
 const CookiesPolicy = lazy(() => import('./pages/CookiesPolicy').then(m => ({ default: m.CookiesPolicy })));
 const VOP = lazy(() => import('./pages/VOP').then(m => ({ default: m.VOP })));
@@ -27,7 +25,7 @@ const BlogArticlePage = lazy(() => import('./pages/BlogArticle').then(m => ({ de
 import { ThemeProvider } from './context/ThemeContext';
 import { CookieProvider } from './context/CookieContext';
 import { CartProvider } from './context/CartContext';
-import { AuthProvider } from './context/AuthContext';
+
 
 // ===========================================
 // SCROLL TO TOP ON ROUTE CHANGE
@@ -90,6 +88,11 @@ const ScrollToTop = () => {
 // ===========================================
 // PLACEHOLDER PAGES
 // ===========================================
+
+const ExternalRedirect: React.FC<{ to: string }> = ({ to }) => {
+  useEffect(() => { window.location.href = to; }, [to]);
+  return <LoadingSpinner text="Presmerovanie..." fullScreen={false} />;
+};
 
 const PlaceholderPage: React.FC<{ title: string }> = ({ title }) => (
   <div className="container mx-auto px-6 py-24 text-center">
@@ -174,22 +177,10 @@ const EshopAppContent = () => {
             </Suspense>
           } />
           
-          {/* Auth — generic spinner */}
-          <Route path="/login" element={
-            <Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}>
-              <Login />
-            </Suspense>
-          } />
-          <Route path="/register" element={
-            <Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}>
-              <Register />
-            </Suspense>
-          } />
-          <Route path="/ucet" element={
-            <Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}>
-              <Account />
-            </Suspense>
-          } />
+          {/* Auth — redirect to Shopify Customer Accounts */}
+          <Route path="/login" element={<ExternalRedirect to="https://shopify.com/101386420570/account" />} />
+          <Route path="/register" element={<ExternalRedirect to="https://shopify.com/101386420570/account" />} />
+          <Route path="/ucet" element={<ExternalRedirect to="https://shopify.com/101386420570/account" />} />
           
           {/* Blog */}
           <Route path="/blog" element={
@@ -207,7 +198,7 @@ const EshopAppContent = () => {
           <Route path="/doprava" element={<PlaceholderPage title="Doprava a platba" />} />
           <Route path="/reklamacie" element={<PlaceholderPage title="Reklamácie a vrátenie" />} />
           <Route path="/kontakt" element={<EshopContact />} />
-          <Route path="/objednavky" element={<Navigate to="/ucet" replace />} />
+          <Route path="/objednavky" element={<ExternalRedirect to="https://shopify.com/101386420570/account" />} />
 
           {/* Redirects for old presentation site paths */}
           <Route path="/kolekcie" element={<Navigate to="/vsetky-produkty" replace />} />
@@ -252,13 +243,11 @@ const EshopApp = () => {
   return (
     <ThemeProvider>
       <CookieProvider>
-        <AuthProvider>
-          <CartProvider>
-            <Router>
-              <EshopAppContent />
-            </Router>
-          </CartProvider>
-        </AuthProvider>
+        <CartProvider>
+          <Router>
+            <EshopAppContent />
+          </Router>
+        </CartProvider>
       </CookieProvider>
     </ThemeProvider>
   );

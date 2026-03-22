@@ -168,7 +168,7 @@ export const Blog: React.FC = () => {
       {/* ==================== CATEGORY FILTERS ==================== */}
       <section className="bg-white border-b border-gray-100 sticky top-[56px] lg:top-[112px] z-30">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex [touch-action:pan-x] items-center gap-2 overflow-x-auto overscroll-x-contain py-4 scrollbar-hide" style={{ scrollbarWidth: 'none' }}>
+          <div className="flex [touch-action:manipulation] items-center gap-2 overflow-x-auto overscroll-x-contain py-4 scrollbar-hide" style={{ scrollbarWidth: 'none' }}>
             {/* All tab */}
             <button
               onClick={() => setActiveCategory('all')}

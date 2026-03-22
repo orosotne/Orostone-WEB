@@ -5,7 +5,7 @@ import {
   Search, User, ShoppingBag, Menu, X, ChevronDown, Heart, ArrowLeft, Diamond
 } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
-import { useAuth } from '../../context/AuthContext';
+
 import { EshopMegaMenu, MEGA_MENU_CATEGORIES, MegaMenuCategory, getVisibleCategories } from './EshopMegaMenu';
 import { cn } from '../../lib/utils';
 import { ShopProduct, SHOW_ANNOUNCEMENT_BAR } from '../../constants';
@@ -19,7 +19,7 @@ export const EshopNavbar: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { openCart, itemCount } = useCart();
-  const { isAuthenticated } = useAuth();
+
   const { products: shopProducts } = useShopifyProducts(50, { shopifyOnly: true });
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -147,17 +147,17 @@ export const EshopNavbar: React.FC = () => {
                 <Search size={20} strokeWidth={1.5} className="transition-all duration-200" />
               </button>
 
-              {/* User Account */}
-              <Link
-                to={isAuthenticated ? "/ucet" : "/login"}
+              {/* User Account — Shopify Customer Accounts */}
+              <a
+                href="https://shopify.com/101386420570/account"
                 className={cn(
                   "hidden lg:flex p-2 transition-all duration-200 hover:[&_svg]:stroke-[2]",
                   isTransparent ? "text-white/80 hover:text-white" : "text-gray-600 hover:text-brand-gold"
                 )}
-                aria-label={isAuthenticated ? "Môj účet" : "Prihlásiť sa"}
+                aria-label="Môj účet"
               >
                 <User size={20} strokeWidth={1.5} className="transition-all duration-200" />
-              </Link>
+              </a>
 
               {/* Wishlist */}
               <button
@@ -433,27 +433,27 @@ export const EshopNavbar: React.FC = () => {
                 </Link>
               </div>
 
-              {/* Account Section */}
+              {/* Account Section — Shopify Customer Accounts */}
               <div className="border-t border-gray-100 py-4">
                 <h3 className="px-6 py-2 text-[10px] tracking-[0.2em] uppercase text-gray-400">
                   Účet
                 </h3>
-                <Link
-                  to={isAuthenticated ? "/ucet" : "/login"}
+                <a
+                  href="https://shopify.com/101386420570/account"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center gap-3 px-6 py-4 text-[13px] tracking-[0.1em] uppercase text-black hover:bg-gray-50"
                 >
                   <User size={18} strokeWidth={1.5} />
-                  {isAuthenticated ? 'Môj účet' : 'Prihlásiť sa'}
-                </Link>
-                <Link
-                  to="/objednavky"
+                  Môj účet
+                </a>
+                <a
+                  href="https://shopify.com/101386420570/account"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center gap-3 px-6 py-4 text-[13px] tracking-[0.1em] uppercase text-black hover:bg-gray-50"
                 >
                   <ShoppingBag size={18} strokeWidth={1.5} />
                   Moje objednávky
-                </Link>
+                </a>
                 <button
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center gap-3 px-6 py-4 text-[13px] tracking-[0.1em] uppercase text-black hover:bg-gray-50 w-full"
@@ -542,27 +542,27 @@ export const EshopNavbar: React.FC = () => {
                 </Link>
               </div>
 
-              {/* Account Section */}
+              {/* Account Section — Shopify Customer Accounts */}
               <div className="border-t border-gray-100 py-6 mt-4">
                 <h3 className="px-8 py-2 text-[10px] tracking-[0.2em] uppercase text-gray-400 font-medium">
                   Účet
                 </h3>
-                <Link
-                  to={isAuthenticated ? "/ucet" : "/login"}
+                <a
+                  href="https://shopify.com/101386420570/account"
                   onClick={() => setOffCanvasOpen(false)}
                   className="flex items-center gap-3 px-8 py-4 text-[13px] tracking-[0.1em] uppercase font-normal text-black hover:bg-gray-50 transition-colors"
                 >
                   <User size={18} strokeWidth={1.5} />
-                  {isAuthenticated ? 'Môj účet' : 'Prihlásiť sa'}
-                </Link>
-                <Link
-                  to="/objednavky"
+                  Môj účet
+                </a>
+                <a
+                  href="https://shopify.com/101386420570/account"
                   onClick={() => setOffCanvasOpen(false)}
                   className="flex items-center gap-3 px-8 py-4 text-[13px] tracking-[0.1em] uppercase font-normal text-black hover:bg-gray-50 transition-colors"
                 >
                   <ShoppingBag size={18} strokeWidth={1.5} />
                   Moje objednávky
-                </Link>
+                </a>
               </div>
 
               {/* Footer */}

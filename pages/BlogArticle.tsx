@@ -353,7 +353,7 @@ export const BlogArticle: React.FC = () => {
       <article itemScope itemType="https://schema.org/BlogPosting">
 
       {/* ==================== HERO ==================== */}
-      <header className="relative h-[50vh] min-h-[400px] lg:h-[60vh] overflow-hidden">
+      <header className="relative h-[50vh] min-h-[50dvh] min-h-[400px] lg:h-[60vh] overflow-hidden">
         <img
           src={article.heroImage}
           alt={content.title}

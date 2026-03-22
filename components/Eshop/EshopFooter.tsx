@@ -145,14 +145,14 @@ export const EshopFooter: React.FC = () => {
             <h4 className="font-bold text-sm uppercase tracking-wider mb-4">Zákaznícky servis</h4>
             <ul className="space-y-3">
               <li>
-                <Link to="/ucet" className="text-gray-400 hover:text-white text-sm transition-colors">
+                <a href="https://shopify.com/101386420570/account" className="text-gray-400 hover:text-white text-sm transition-colors">
                   Môj účet
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to="/objednavky" className="text-gray-400 hover:text-white text-sm transition-colors">
+                <a href="https://shopify.com/101386420570/account" className="text-gray-400 hover:text-white text-sm transition-colors">
                   Sledovanie objednávky
-                </Link>
+                </a>
               </li>
               <li>
                 <Link to="/doprava" className="text-gray-400 hover:text-white text-sm transition-colors">

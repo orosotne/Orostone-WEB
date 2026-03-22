@@ -97,7 +97,7 @@ export const BlogPreviewSection: React.FC<BlogPreviewSectionProps> = ({
         {/* Horizontal scroll container */}
         <div
           ref={scrollRef}
-          className="blog-scroll-container flex [touch-action:pan-x] gap-4 overflow-x-auto overscroll-x-contain snap-x snap-proximity pb-2 -mx-4 px-4 scroll-pl-4 lg:-mx-0 lg:px-0 lg:scroll-pl-0"
+          className="blog-scroll-container flex [touch-action:manipulation] gap-4 overflow-x-auto overscroll-x-contain snap-x snap-proximity pb-2 -mx-4 px-4 scroll-pl-4 lg:-mx-0 lg:px-0 lg:scroll-pl-0"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           <style>{`

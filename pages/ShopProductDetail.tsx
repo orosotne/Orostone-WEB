@@ -2216,9 +2216,14 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
   const [bimSubmitting, setBimSubmitting] = useState(false);
 
   // Close BIM modal on Escape
+  const handleBimModalClose = () => {
+    (document.activeElement as HTMLElement)?.blur();
+    setIsBimModalOpen(false);
+  };
+
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isBimModalOpen) setIsBimModalOpen(false);
+      if (e.key === 'Escape' && isBimModalOpen) handleBimModalClose();
     };
     document.addEventListener('keydown', handleEscape);
     return () => document.removeEventListener('keydown', handleEscape);
@@ -2395,7 +2400,7 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="absolute inset-0 bg-black/60 backdrop-blur-sm touch-none overscroll-none"
-              onClick={() => setIsBimModalOpen(false)}
+              onClick={handleBimModalClose}
             />
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 10 }}
@@ -2411,7 +2416,7 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
                   <p className="text-white/60 text-sm mt-1">{product.name}</p>
                 </div>
                 <button
-                  onClick={() => setIsBimModalOpen(false)}
+                  onClick={handleBimModalClose}
                   className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors flex-shrink-0 mt-0.5"
                 >
                   <X size={16} />
@@ -2438,7 +2443,7 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
                             value={bimEmail}
                             onChange={e => setBimEmail(e.target.value)}
                             placeholder="vas@email.sk"
-                            className="w-full pl-9 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold transition-colors"
+                            className="w-full pl-9 pr-4 py-2.5 border border-gray-200 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold transition-colors"
                           />
                         </div>
                       </div>
@@ -2471,7 +2476,7 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
                       Súbory vám zašleme na <span className="font-medium text-brand-dark">{bimEmail}</span> do 24 hodín.
                     </p>
                     <button
-                      onClick={() => setIsBimModalOpen(false)}
+                      onClick={handleBimModalClose}
                       className="mt-5 text-sm text-brand-gold hover:underline font-medium"
                     >
                       Zavrieť
