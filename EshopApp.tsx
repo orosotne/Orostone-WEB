@@ -14,6 +14,7 @@ import { ProductCatalog } from './pages/ProductCatalog';
 import { EshopContact } from './pages/EshopContact';
 import { CategoryPage } from './pages/CategoryPage';
 import { Checkout } from './pages/Checkout';
+import { ThankYou } from './pages/ThankYou';
 
 // Lazy loaded pages — lazyWithRetry retries failed chunk loads (e.g. after deployment)
 const ShopProductDetail = lazyWithRetry(() => import('./pages/ShopProductDetail').then(m => ({ default: m.ShopProductDetail })));
@@ -153,6 +154,7 @@ const EshopAppContent = () => {
           
           {/* Checkout Flow */}
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/objednavka-dokoncena" element={<ThankYou />} />
           
           {/* Auth — redirect to Shopify Customer Accounts */}
           <Route path="/login" element={<ExternalRedirect to="https://shopify.com/101386420570/account" />} />

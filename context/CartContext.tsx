@@ -271,7 +271,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const subtotal = cart ? parseFloat(cart.cost.subtotalAmount.amount) : 0;
   const total = cart ? parseFloat(cart.cost.totalAmount.amount) : 0;
   const checkoutUrl = cart?.checkoutUrl
-    ? `${cart.checkoutUrl}${cart.checkoutUrl.includes('?') ? '&' : '?'}return_to=${encodeURIComponent('https://eshop.orostone.sk')}`
+    ? `${cart.checkoutUrl}${cart.checkoutUrl.includes('?') ? '&' : '?'}return_to=${encodeURIComponent('https://eshop.orostone.sk/objednavka-dokoncena')}`
     : null;
 
   const isInCart = useCallback((productHandle: string) => {

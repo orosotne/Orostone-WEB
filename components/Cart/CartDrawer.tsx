@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Minus, Plus, ShoppingBag, Trash2, ArrowRight, ExternalLink, Wrench, Package, Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCart, formatPrice } from '../../context/CartContext';
-import { trackMetaEvent } from '../../hooks/useMetaPixel';
+import { trackMetaEvent, savePendingPurchase } from '../../hooks/useMetaPixel';
 import { Button } from '../UI/Button';
 
 const INSTALLATION_STORAGE_KEY = 'orostone_installation_data';
@@ -43,6 +43,12 @@ export const CartDrawer: React.FC = () => {
   const handleCheckout = () => {
     if (checkoutUrl) {
       trackMetaEvent('InitiateCheckout', { value: subtotal, currency: 'EUR', num_items: itemCount });
+      savePendingPurchase({
+        value: total,
+        currency: 'EUR',
+        num_items: itemCount,
+        content_ids: items.map(i => i.variantId),
+      });
       window.location.href = checkoutUrl;
     }
   };

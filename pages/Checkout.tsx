@@ -6,7 +6,7 @@ import {
   Minus, Plus, Trash2, Package, ExternalLink
 } from 'lucide-react';
 import { useCart, formatPrice } from '../context/CartContext';
-import { trackMetaEvent } from '../hooks/useMetaPixel';
+import { trackMetaEvent, savePendingPurchase } from '../hooks/useMetaPixel';
 import { Button } from '../components/UI/Button';
 
 // ===========================================
@@ -39,6 +39,12 @@ export const Checkout = () => {
   const handleCheckout = () => {
     if (checkoutUrl) {
       trackMetaEvent('InitiateCheckout', { value: subtotal, currency: 'EUR', num_items: itemCount });
+      savePendingPurchase({
+        value: total,
+        currency: 'EUR',
+        num_items: itemCount,
+        content_ids: items.map(i => i.variantId),
+      });
       window.location.href = checkoutUrl;
     }
   };

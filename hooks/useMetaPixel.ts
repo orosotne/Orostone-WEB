@@ -72,3 +72,38 @@ export function trackMetaEvent(eventName: string, params?: Record<string, unknow
     }
   }
 }
+
+const PURCHASE_SESSION_KEY = 'orostone_pending_purchase';
+
+export interface PendingPurchaseData {
+  value: number;
+  currency: string;
+  num_items: number;
+  content_ids: string[];
+}
+
+/**
+ * Save cart data to sessionStorage before redirecting to Shopify checkout.
+ * Called in handleCheckout — data is read on the thank-you page to fire Purchase.
+ */
+export function savePendingPurchase(data: PendingPurchaseData): void {
+  try {
+    sessionStorage.setItem(PURCHASE_SESSION_KEY, JSON.stringify(data));
+  } catch {
+    // sessionStorage not available — silently ignore
+  }
+}
+
+/**
+ * Read and clear the pending purchase data. Returns null if nothing stored.
+ */
+export function popPendingPurchase(): PendingPurchaseData | null {
+  try {
+    const raw = sessionStorage.getItem(PURCHASE_SESSION_KEY);
+    if (!raw) return null;
+    sessionStorage.removeItem(PURCHASE_SESSION_KEY);
+    return JSON.parse(raw) as PendingPurchaseData;
+  } catch {
+    return null;
+  }
+}
