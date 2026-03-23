@@ -61,10 +61,12 @@ const formatDate = (dateStr: string, lang: BlogLanguage) => {
 export const BlogArticle: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const containerRef = useRef<HTMLDivElement>(null);
+  const progressBarRef = useRef<HTMLDivElement>(null);
+  const articleBodyRef = useRef<HTMLDivElement>(null);
+  const showBackToTopRef = useRef(false);
   const [lang, setLang] = useState<BlogLanguage>('sk');
   const [activeHeading, setActiveHeading] = useState<string>('');
   const [directAnswerOpen, setDirectAnswerOpen] = useState(true);
-  const [readProgress, setReadProgress] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [mobileTocOpen, setMobileTocOpen] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
@@ -110,12 +112,26 @@ export const BlogArticle: React.FC = () => {
   // ===========================================
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
-      setReadProgress(progress);
-      setShowBackToTop(scrollTop > 500);
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? Math.min((scrollTop / docHeight) * 100, 100) : 0;
+
+        if (progressBarRef.current) {
+          progressBarRef.current.style.width = `${progress}%`;
+        }
+
+        const shouldShow = scrollTop > 500;
+        if (shouldShow !== showBackToTopRef.current) {
+          showBackToTopRef.current = shouldShow;
+          setShowBackToTop(shouldShow);
+        }
+        ticking = false;
+      });
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -151,7 +167,7 @@ export const BlogArticle: React.FC = () => {
 
       gsap.fromTo(
         '.article-body',
-        { y: 40, opacity: 0 },
+        { y: 20, opacity: 0 },
         {
           y: 0,
           opacity: 1,
@@ -159,15 +175,15 @@ export const BlogArticle: React.FC = () => {
           ease: 'power3.out',
           scrollTrigger: {
             trigger: '.article-body',
-            start: 'top 85%',
-            toggleActions: 'play none none reverse',
+            start: 'top 90%',
+            once: true,
           },
         },
       );
 
       gsap.fromTo(
         '.related-section',
-        { y: 40, opacity: 0 },
+        { y: 20, opacity: 0 },
         {
           y: 0,
           opacity: 1,
@@ -175,8 +191,8 @@ export const BlogArticle: React.FC = () => {
           ease: 'power3.out',
           scrollTrigger: {
             trigger: '.related-section',
-            start: 'top 85%',
-            toggleActions: 'play none none reverse',
+            start: 'top 90%',
+            once: true,
           },
         },
       );
@@ -209,6 +225,18 @@ export const BlogArticle: React.FC = () => {
 
     return () => observer.disconnect();
   }, [headings]);
+
+  // ===========================================
+  // ASYNC DECODE FOR ARTICLE IMAGES
+  // ===========================================
+
+  useEffect(() => {
+    if (!articleBodyRef.current) return;
+    const imgs = articleBodyRef.current.querySelectorAll('img');
+    imgs.forEach((img) => {
+      img.decoding = 'async';
+    });
+  }, [lang]);
 
   // ===========================================
   // 404 STATE
@@ -345,8 +373,9 @@ export const BlogArticle: React.FC = () => {
 
       {/* ==================== READING PROGRESS BAR ==================== */}
       <div
-        className="fixed top-0 left-0 h-[3px] bg-brand-gold z-[100] transition-[width] duration-150 ease-out"
-        style={{ width: `${readProgress}%` }}
+        ref={progressBarRef}
+        className="fixed top-0 left-0 h-[3px] bg-brand-gold z-[100] will-change-[width]"
+        style={{ width: '0%' }}
       />
 
       {/* ==================== SEMANTIC ARTICLE WRAPPER ==================== */}
@@ -561,6 +590,7 @@ export const BlogArticle: React.FC = () => {
 
               {/* HTML Content */}
               <div
+                ref={articleBodyRef}
                 className="
                   prose prose-lg max-w-none
 
@@ -572,7 +602,7 @@ export const BlogArticle: React.FC = () => {
                   prose-strong:text-brand-dark prose-strong:font-semibold
                   [&_.gold]:text-brand-gold [&_.gold]:font-bold
                   prose-ul:my-6 prose-ul:space-y-2 prose-li:text-gray-600 prose-li:font-light prose-li:leading-relaxed prose-li:text-[1.05rem]
-                  prose-img:rounded-2xl prose-img:my-12 prose-img:shadow-lg
+                  prose-img:rounded-2xl prose-img:my-12 prose-img:shadow-lg prose-img:aspect-[16/10] prose-img:object-cover prose-img:bg-gray-100
                   prose-blockquote:border-brand-gold prose-blockquote:text-gray-500 prose-blockquote:font-light prose-blockquote:italic prose-blockquote:my-12
                   prose-table:text-sm prose-th:bg-gray-50 prose-th:py-3 prose-th:px-4 prose-td:py-3 prose-td:px-4
 
@@ -613,6 +643,7 @@ export const BlogArticle: React.FC = () => {
 
                   [&_.article-figure]:my-12 [&_.article-figure]:lg:my-16 [&_.article-figure]:not-prose
                   [&_.article-figure_img]:w-full [&_.article-figure_img]:rounded-2xl [&_.article-figure_img]:shadow-lg [&_.article-figure_img]:mb-3
+                  [&_.article-figure_img]:aspect-[16/10] [&_.article-figure_img]:object-cover [&_.article-figure_img]:bg-gray-100
                   [&_.article-figure_figcaption]:text-center [&_.article-figure_figcaption]:text-gray-400
                   [&_.article-figure_figcaption]:text-sm [&_.article-figure_figcaption]:font-light [&_.article-figure_figcaption]:italic
 

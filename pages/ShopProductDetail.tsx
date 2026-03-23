@@ -64,6 +64,7 @@ import { cn } from '@/lib/utils';
 import { ShareButton } from '../components/UI/ShareButton';
 import { ProductDetailSkeleton } from '../components/UI/Skeleton';
 import { useCookies } from '../context/CookieContext';
+import { trackMetaEvent } from '../hooks/useMetaPixel';
 import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
 import { getProductSEOContent, GENERIC_PRODUCT_FAQS } from '../data/product-seo-content';
 import { useScrollLock } from '../hooks/useScrollLock';
@@ -2741,6 +2742,18 @@ export const ShopProductDetail: React.FC = () => {
   }, [shopifyProduct, allProducts]);
 
   const isLoading = productLoading && !product;
+
+  // Meta Pixel ViewContent — product page view
+  useEffect(() => {
+    if (!product) return;
+    const price = calculateSlabPrice(product.pricePerM2, product.dimensions);
+    trackMetaEvent('ViewContent', {
+      content_ids: [product.shopifyVariantId ?? product.id],
+      content_type: 'product',
+      value: price,
+      currency: 'EUR',
+    });
+  }, [product]);
 
   if (isLoading) {
     return <ProductDetailSkeleton />;

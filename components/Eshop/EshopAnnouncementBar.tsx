@@ -22,8 +22,8 @@ interface EshopAnnouncementBarProps {
 // ===========================================
 
 const DEFAULT_ANNOUNCEMENTS: Announcement[] = [
-  { id: '1', text: 'DOPRAVA ZADARMO', highlight: 'NAD 4 500 EUR' },
-  { id: '2', text: 'SKLADOVÉ PLATNE', highlight: 'IHNEĎ K ODBERU' },
+  { id: '1', text: 'PRÉMIOVÝ SINTEROVANÝ KAMEŇ', highlight: 'SKLADOM' },
+  { id: '2', text: 'EXPEDÍCIA', highlight: 'DO 5 PRACOVNÝCH DNÍ' },
   { id: '3', text: 'GARANCIA VRÁTENIA', highlight: '14 DNÍ' },
 ];
 
@@ -68,7 +68,7 @@ export const EshopAnnouncementBar: React.FC<EshopAnnouncementBarProps> = ({
           </div>
 
           {/* Center - Rotating announcements */}
-          <div className="flex-1 lg:flex-none text-center min-h-[20px] relative">
+          <div className="flex-1 lg:flex-none text-center min-h-[20px] relative" aria-live="polite" aria-atomic="true">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}

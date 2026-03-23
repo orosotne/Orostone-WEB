@@ -3,6 +3,7 @@ export default {
     darkMode: ["class"],
     content: [
     "./index.html",
+    "./eshop.html",
     "./src/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
@@ -23,7 +24,9 @@ export default {
   			brand: {
   				gold: '#ECD488',
   				dark: '#1A1A1A',
-  				light: '#F9F9F7'
+  				light: '#F9F9F7',
+  				gray: '#F5F5F0',
+  				stone: '#2A2A2A'
   			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -71,7 +74,19 @@ export default {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)',
   			orostone: '1rem'
-  		}
+  		},
+  		backgroundImage: {
+  			noise: "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.05%22/%3E%3C/svg%3E')",
+  		},
+  		animation: {
+  			marquee: 'marquee 40s linear infinite',
+  		},
+  		keyframes: {
+  			marquee: {
+  				'0%': { transform: 'translateX(0)' },
+  				'100%': { transform: 'translateX(-50%)' },
+  			},
+  		},
   	}
   },
   plugins: [

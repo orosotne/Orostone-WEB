@@ -1,16 +1,76 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useSyncExternalStore } from 'react';
 import { isShopifyConfigured } from '../lib/shopify';
 import { fetchProducts, fetchProductByHandle } from '../services/shopify.service';
 import { SHOP_PRODUCTS, type ShopProduct } from '../constants';
 
 // ===========================================
+// Shared catalog cache (module-level singleton)
+// ===========================================
+// All useShopifyProducts instances share one fetch/result so Navbar,
+// MegaMenu, Catalog, ProductDetail, etc. don't duplicate Storefront calls.
+
+type CatalogState = {
+  products: ShopProduct[];
+  isLoading: boolean;
+  error: string | null;
+};
+
+let catalogState: CatalogState = {
+  products: [],
+  isLoading: false,
+  error: null,
+};
+let listeners: Set<() => void> = new Set();
+let catalogFetchPromise: Promise<void> | null = null;
+
+function emitChange() {
+  listeners.forEach(fn => fn());
+}
+
+function subscribeCatalog(listener: () => void) {
+  listeners.add(listener);
+  return () => { listeners.delete(listener); };
+}
+
+function getCatalogSnapshot() {
+  return catalogState;
+}
+
+function ensureCatalogFetch(count: number) {
+  if (catalogFetchPromise || catalogState.products.length > 0) return;
+  if (!isShopifyConfigured()) {
+    catalogState = { products: [], isLoading: false, error: null };
+    emitChange();
+    return;
+  }
+
+  catalogState = { ...catalogState, isLoading: true, error: null };
+  emitChange();
+
+  catalogFetchPromise = fetchProducts(count)
+    .then(data => {
+      catalogState = {
+        products: data.length > 0 ? data : [],
+        isLoading: false,
+        error: null,
+      };
+    })
+    .catch(err => {
+      catalogState = {
+        products: [],
+        isLoading: false,
+        error: err instanceof Error ? err.message : 'Neznáma chyba',
+      };
+    })
+    .finally(() => {
+      catalogFetchPromise = null;
+      emitChange();
+    });
+}
+
+// ===========================================
 // Hook: useShopifyProducts
 // ===========================================
-// Nacita produkty z Shopify Storefront API.
-// Ak Shopify nie je nakonfigurovany alebo API zlyha (bez shopifyOnly), pouzije sa
-// snapshot v data/shop-products-fallback.json (`npm run sync:shop-fallback`).
-// `shopifyOnly: true` — bez fallbacku (mega menu: iba live Shopify).
-
 export interface UseShopifyProductsOptions {
   shopifyOnly?: boolean;
 }
@@ -18,49 +78,27 @@ export interface UseShopifyProductsOptions {
 export function useShopifyProducts(count: number = 50, options?: UseShopifyProductsOptions) {
   const shopifyOnly = options?.shopifyOnly === true;
 
-  const [products, setProducts] = useState<ShopProduct[]>(() => (shopifyOnly ? [] : SHOP_PRODUCTS));
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
   useEffect(() => {
-    if (!isShopifyConfigured()) {
-      setProducts(shopifyOnly ? [] : SHOP_PRODUCTS);
-      setIsLoading(false);
-      return;
-    }
+    ensureCatalogFetch(count);
+  }, [count]);
 
-    let cancelled = false;
+  const state = useSyncExternalStore(subscribeCatalog, getCatalogSnapshot, getCatalogSnapshot);
 
-    const load = async () => {
-      setIsLoading(true);
-      setError(null);
-      try {
-        const data = await fetchProducts(count);
-        if (!cancelled) {
-          setProducts(data.length > 0 ? data : (shopifyOnly ? [] : SHOP_PRODUCTS));
-        }
-      } catch (err) {
-        if (!cancelled) {
-          console.error('Chyba pri nacitavani produktov z Shopify:', err);
-          setError(err instanceof Error ? err.message : 'Neznama chyba');
-          setProducts(shopifyOnly ? [] : SHOP_PRODUCTS);
-        }
-      } finally {
-        if (!cancelled) setIsLoading(false);
-      }
-    };
+  const products = state.products.length > 0
+    ? state.products
+    : shopifyOnly ? [] : SHOP_PRODUCTS;
 
-    load();
-    return () => { cancelled = true; };
-  }, [count, shopifyOnly]);
-
-  return { products, isLoading, error };
+  return {
+    products,
+    isLoading: state.isLoading,
+    error: state.error,
+  };
 }
 
 // ===========================================
 // Hook: useShopifyProduct
 // ===========================================
-// Nacita jeden produkt podla handle/slug.
+// Loads a single product by handle/slug.
 // Supports "Stale-While-Revalidate" pattern:
 // if initialData is provided (e.g. from allProducts cache),
 // it is used immediately (no loading state) and fresh data
@@ -71,11 +109,9 @@ export function useShopifyProduct(handle: string | undefined, initialData?: Shop
   const [isLoading, setIsLoading] = useState(!initialData);
   const [error, setError] = useState<string | null>(null);
 
-  // Track the current handle to sync initialData changes across navigations
   const prevHandleRef = useRef(handle);
 
   useEffect(() => {
-    // When handle changes AND we have new initialData, apply it instantly
     if (handle !== prevHandleRef.current) {
       prevHandleRef.current = handle;
       if (initialData) {
@@ -95,7 +131,6 @@ export function useShopifyProduct(handle: string | undefined, initialData?: Shop
     }
 
     if (!isShopifyConfigured()) {
-      // Fallback na lokalne data
       const found = SHOP_PRODUCTS.find(p => p.id === handle) || null;
       setProduct(found);
       setIsLoading(false);
@@ -106,7 +141,6 @@ export function useShopifyProduct(handle: string | undefined, initialData?: Shop
     const hasInitial = !!initialData;
 
     const load = async () => {
-      // Only show loading spinner if we have no cached data to display
       if (!hasInitial) {
         setIsLoading(true);
       }
@@ -114,14 +148,12 @@ export function useShopifyProduct(handle: string | undefined, initialData?: Shop
       try {
         const data = await fetchProductByHandle(handle);
         if (!cancelled) {
-          // Silently update with fresh data (no loading flash)
           setProduct(data || SHOP_PRODUCTS.find(p => p.id === handle) || null);
         }
       } catch (err) {
         if (!cancelled) {
           console.error('Chyba pri nacitavani produktu:', err);
           setError(err instanceof Error ? err.message : 'Neznama chyba');
-          // Only fallback if we don't already have initialData displayed
           if (!hasInitial) {
             setProduct(SHOP_PRODUCTS.find(p => p.id === handle) || null);
           }

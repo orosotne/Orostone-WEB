@@ -207,6 +207,14 @@ export const Shop = () => {
     }
   }, []);
 
+  // Refresh ScrollTrigger when product data arrives (changes page height)
+  useEffect(() => {
+    if (!productsLoading) {
+      const id = requestAnimationFrame(() => ScrollTrigger.refresh());
+      return () => cancelAnimationFrame(id);
+    }
+  }, [productsLoading]);
+
   // ===========================================
   // GSAP ANIMATIONS
   // ===========================================
@@ -530,8 +538,8 @@ export const Shop = () => {
     <main ref={containerRef} className="w-full overflow-x-hidden overflow-y-visible">
       <SEOHead
         title="OROSTONE E-Shop | Prémiový sinterovaný kameň"
-        description="Nakupujte prémiové sinterované kamene od OROSTONE. Mramor, granit, betón — všetko s dopravou po celom Slovensku. Dosky 3200x1600mm skladom."
-        canonical="https://www.orostone.sk/"
+        description="Prémiové sinterované platne 3200×1600mm skladom. Odolnosť kameňa a luxusný dizajn. Bezplatná vzorka, expedícia do 5 dní. Bratislava."
+        canonical="https://eshop.orostone.sk/"
         ogType="website"
         structuredData={OROSTONE_ORGANIZATION_LD}
       />
@@ -549,7 +557,7 @@ export const Shop = () => {
               "@type": "ListItem",
               "position": i + 1,
               "name": p.name,
-              "url": `https://www.orostone.sk/produkt/${p.id}`,
+              "url": `https://eshop.orostone.sk/produkt/${p.id}`,
               "image": p.image,
             })),
           }) }}
@@ -872,7 +880,7 @@ export const Shop = () => {
                 to="/kategoria/sintered-stone"
                 className="inline-flex items-center gap-2 bg-brand-dark text-white px-8 py-3.5 rounded-full text-xs lg:text-sm tracking-[0.16em] uppercase font-semibold hover:bg-white hover:text-brand-dark transition-all duration-300"
               >
-                Objaviť všetky dekory
+                Objavte všetky dekory
                 <ArrowRight size={15} />
               </Link>
             </div>
@@ -960,7 +968,7 @@ export const Shop = () => {
               to="/kategoria/sintered-stone"
               className="inline-flex items-center gap-2 bg-brand-dark text-white px-8 py-3.5 rounded-full text-xs tracking-[0.16em] uppercase font-semibold hover:bg-white hover:text-brand-dark transition-all duration-300"
             >
-              Objaviť všetky dekory
+              Objavte všetky dekory
               <ArrowRight size={15} />
             </Link>
           </div>
@@ -1033,14 +1041,6 @@ export const Shop = () => {
                         />
                       </div>
                       <div className="p-4">
-                        <div className="flex items-center gap-1 mb-2">
-                          {[...Array(5)].map((_, i) => (
-                            <Star key={i} size={12} fill="#ECD488" className="text-brand-gold" />
-                          ))}
-                          <span className="text-xs text-gray-400 ml-1">
-                            ({((idx + 1) * 37 + 50) % 200 + 50})
-                          </span>
-                        </div>
                         <h3 className="font-sans font-bold text-brand-dark text-sm mb-1 uppercase tracking-wide line-clamp-1">
                           {product.name}
                         </h3>

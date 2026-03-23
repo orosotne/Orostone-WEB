@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, Suspense } from 'react';
 import { useAnalytics } from './hooks/useAnalytics';
+import { useMetaPixel } from './hooks/useMetaPixel';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { EshopLayout } from './components/Eshop/EshopLayout';
 import { LoadingSpinner } from './components/UI/LoadingSpinner';
@@ -124,6 +125,7 @@ const NotFoundPage: React.FC = () => {
 
 const EshopAppContent = () => {
   useAnalytics();
+  useMetaPixel();
 
   return (
     <EshopLayout>

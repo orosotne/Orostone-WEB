@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Minus, Plus, ShoppingBag, Trash2, ArrowRight, ExternalLink, Wrench, Package, Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCart, formatPrice } from '../../context/CartContext';
+import { trackMetaEvent } from '../../hooks/useMetaPixel';
 import { Button } from '../UI/Button';
 
 const INSTALLATION_STORAGE_KEY = 'orostone_installation_data';
@@ -41,9 +42,9 @@ export const CartDrawer: React.FC = () => {
 
   const handleCheckout = () => {
     if (checkoutUrl) {
+      trackMetaEvent('InitiateCheckout', { value: subtotal, currency: 'EUR', num_items: itemCount });
       window.location.href = checkoutUrl;
     }
-    closeCart();
   };
 
   return (
@@ -115,12 +116,32 @@ export const CartDrawer: React.FC = () => {
                   <p className="text-gray-500 mb-6">
                     Prezrite si naše skladové platne a pridajte ich do košíka.
                   </p>
-                  <Link to="/" onClick={closeCart}>
+                  <Link to="/vsetky-produkty" onClick={closeCart}>
                     <Button className="bg-brand-gold text-brand-dark hover:bg-brand-dark hover:text-white">
-                      Prejsť do obchodu
+                      Prezrieť produkty
                       <ArrowRight size={18} className="ml-2" />
                     </Button>
                   </Link>
+                  <div className="mt-8 w-full">
+                    <p className="text-[10px] tracking-widest uppercase text-gray-400 mb-3">Populárne kategórie</p>
+                    <div className="grid grid-cols-2 gap-2">
+                      {[
+                        { label: 'Biele dekory', to: '/kategoria/sintered-stone/biele' },
+                        { label: 'Šedé dekory', to: '/kategoria/sintered-stone/sede' },
+                        { label: 'Béžové dekory', to: '/kategoria/sintered-stone/bezove' },
+                        { label: 'Čierne dekory', to: '/kategoria/sintered-stone/cierne' },
+                      ].map(({ label, to }) => (
+                        <Link
+                          key={to}
+                          to={to}
+                          onClick={closeCart}
+                          className="py-2.5 px-3 bg-[#F9F9F7] rounded-lg text-xs font-medium text-brand-dark hover:bg-brand-gold/20 transition-colors text-center"
+                        >
+                          {label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               ) : (
                 <>
@@ -310,9 +331,9 @@ export const CartDrawer: React.FC = () => {
                         </div>
 
                         {/* Important notice: installation is not included in Shopify checkout */}
-                        <div className="mt-3 flex items-start gap-2 rounded-lg bg-amber-50 border border-amber-200 px-3 py-2.5">
-                          <Info size={13} className="text-amber-600 mt-0.5 flex-shrink-0" />
-                          <p className="text-[11px] text-amber-800 leading-relaxed">
+                        <div className="mt-3 flex items-start gap-2 rounded-lg bg-brand-gold/10 border border-brand-gold/30 px-3 py-2.5">
+                          <Info size={13} className="text-brand-dark/50 mt-0.5 flex-shrink-0" />
+                          <p className="text-[11px] text-brand-dark/70 leading-relaxed">
                             <span className="font-semibold">Upozornenie:</span> Montáž nie je súčasťou Shopify objednávky. Po prijatí platby vás náš tím kontaktuje a dohodne detaily montáže.
                           </p>
                         </div>

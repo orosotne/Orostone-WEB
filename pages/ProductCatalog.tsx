@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from 'react';
+import React, { useMemo, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -25,15 +25,21 @@ export interface ProductCardProps {
   quantity: number;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ 
-  product, 
-  compact = false, 
+const prefetchProductDetail = () => { import('./ShopProductDetail'); };
+
+export const ProductCard: React.FC<ProductCardProps> = ({
+  product,
+  compact = false,
   onAddToCart,
   inCart,
-  quantity 
+  quantity
 }) => {
   return (
-    <div className="shop-product-card group bg-[#F9F9F7] rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col">
+    <div
+      className="shop-product-card group bg-[#F9F9F7] rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col"
+      onMouseEnter={prefetchProductDetail}
+      onFocus={prefetchProductDetail}
+    >
       <Link to={`/produkt/${product.id}`} className="flex flex-col flex-1">
         {/* Image Container */}
         <div className={cn(
@@ -43,6 +49,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <img
             src={product.image}
             alt={product.name}
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
           
@@ -147,22 +155,27 @@ export const ProductCatalog = () => {
   const { products, isLoading } = useShopifyProducts(50, { shopifyOnly: true });
   const sortedProducts = useMemo(() => sortShopCatalogProducts(products), [products]);
 
-  // GSAP scroll animations on product cards
+  useEffect(() => {
+    if (!isLoading) {
+      const id = requestAnimationFrame(() => ScrollTrigger.refresh());
+      return () => cancelAnimationFrame(id);
+    }
+  }, [isLoading]);
+
+  // Single batch reveal for the product grid — avoids N separate ScrollTrigger instances
   useGSAP(() => {
-    gsap.utils.toArray('.shop-product-card').forEach((card: any) => {
-      gsap.fromTo(card,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          scrollTrigger: {
-            trigger: card,
-            start: 'top 90%',
-            toggleActions: 'play none none reverse'
-          }
-        }
-      );
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const cards = gsap.utils.toArray<HTMLElement>('.shop-product-card');
+    if (!cards.length) return;
+
+    gsap.set(cards, { opacity: 0, y: 24 });
+
+    ScrollTrigger.batch(cards, {
+      start: 'top 92%',
+      onEnter: (batch) => {
+        gsap.to(batch, { opacity: 1, y: 0, duration: 0.45, stagger: 0.06, ease: 'power2.out', overwrite: true });
+      },
     });
   }, { scope: containerRef, dependencies: [sortedProducts] });
 
@@ -184,6 +197,8 @@ export const ProductCatalog = () => {
         <img
           src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=80"
           alt="Všetky produkty"
+          fetchPriority="high"
+          decoding="async"
           className="absolute inset-0 w-full h-full object-cover"
         />
         {/* Overlay */}

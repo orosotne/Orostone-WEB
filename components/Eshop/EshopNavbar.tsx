@@ -11,6 +11,8 @@ import { cn } from '../../lib/utils';
 import { ShopProduct, SHOW_ANNOUNCEMENT_BAR } from '../../constants';
 import { useShopifyProducts } from '../../hooks/useShopifyProducts';
 
+const SHOPIFY_ACCOUNT_URL = 'https://shopify.com/101386420570/account';
+
 // ===========================================
 // ZARA-STYLE ESHOP NAVBAR
 // ===========================================
@@ -67,7 +69,7 @@ export const EshopNavbar: React.FC = () => {
   // Handle scroll
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -149,7 +151,7 @@ export const EshopNavbar: React.FC = () => {
 
               {/* User Account — Shopify Customer Accounts */}
               <a
-                href="https://shopify.com/101386420570/account"
+                href={SHOPIFY_ACCOUNT_URL}
                 className={cn(
                   "hidden lg:flex p-2 transition-all duration-200 hover:[&_svg]:stroke-[2]",
                   isTransparent ? "text-white/80 hover:text-white" : "text-gray-600 hover:text-brand-gold"
@@ -439,7 +441,7 @@ export const EshopNavbar: React.FC = () => {
                   Účet
                 </h3>
                 <a
-                  href="https://shopify.com/101386420570/account"
+                  href={SHOPIFY_ACCOUNT_URL}
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center gap-3 px-6 py-4 text-[13px] tracking-[0.1em] uppercase text-black hover:bg-gray-50"
                 >
@@ -447,7 +449,7 @@ export const EshopNavbar: React.FC = () => {
                   Môj účet
                 </a>
                 <a
-                  href="https://shopify.com/101386420570/account"
+                  href={SHOPIFY_ACCOUNT_URL}
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center gap-3 px-6 py-4 text-[13px] tracking-[0.1em] uppercase text-black hover:bg-gray-50"
                 >
@@ -548,7 +550,7 @@ export const EshopNavbar: React.FC = () => {
                   Účet
                 </h3>
                 <a
-                  href="https://shopify.com/101386420570/account"
+                  href={SHOPIFY_ACCOUNT_URL}
                   onClick={() => setOffCanvasOpen(false)}
                   className="flex items-center gap-3 px-8 py-4 text-[13px] tracking-[0.1em] uppercase font-normal text-black hover:bg-gray-50 transition-colors"
                 >
@@ -556,7 +558,7 @@ export const EshopNavbar: React.FC = () => {
                   Môj účet
                 </a>
                 <a
-                  href="https://shopify.com/101386420570/account"
+                  href={SHOPIFY_ACCOUNT_URL}
                   onClick={() => setOffCanvasOpen(false)}
                   className="flex items-center gap-3 px-8 py-4 text-[13px] tracking-[0.1em] uppercase font-normal text-black hover:bg-gray-50 transition-colors"
                 >

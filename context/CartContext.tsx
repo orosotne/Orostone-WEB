@@ -10,6 +10,7 @@ import {
   type ShopifyCart,
   type ShopifyCartLine,
 } from '../services/shopify.service';
+import { trackMetaEvent } from '../hooks/useMetaPixel';
 
 // ===========================================
 // TYPES
@@ -63,6 +64,15 @@ interface CartContextType {
 // ===========================================
 
 const CART_ID_KEY = 'orostone_shopify_cart_id';
+const CART_OP_TIMEOUT_MS = 15000;
+
+function withTimeout<T>(promise: Promise<T>, ms: number = CART_OP_TIMEOUT_MS): Promise<T> {
+  let timeoutId: ReturnType<typeof setTimeout>;
+  const timeout = new Promise<never>((_, reject) => {
+    timeoutId = setTimeout(() => reject(new Error('Požiadavka vypršala. Skúste to znova.')), ms);
+  });
+  return Promise.race([promise, timeout]).finally(() => clearTimeout(timeoutId));
+}
 
 // ===========================================
 // CONTEXT
@@ -88,9 +98,9 @@ function mapShopifyCartLines(cart: ShopifyCart): CartItem[] {
       return {
         id: line.id,
         variantId: line.merchandise.id,
-        productId: line.merchandise.product.handle,
-        name: line.merchandise.product.title,
-        image: line.merchandise.image?.url || line.merchandise.product.images?.edges?.[0]?.node?.url || PLACEHOLDER_IMAGE,
+        productId: line.merchandise.product?.handle ?? '',
+        name: line.merchandise.product?.title ?? '',
+        image: line.merchandise.image?.url || line.merchandise.product?.images?.edges?.[0]?.node?.url || PLACEHOLDER_IMAGE,
         price: parseFloat(line.cost?.amountPerQuantity?.amount ?? '0'),
         quantity: line.quantity,
         variant: (line.merchandise.title ?? '') !== 'Default Title' ? (line.merchandise.title ?? '') : '',
@@ -172,9 +182,21 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     setIsLoading(true);
     setError(null);
     try {
-      const updatedCart = await shopifyAddToCart(cart.id, variantId, quantity);
+      const updatedCart = await withTimeout(shopifyAddToCart(cart.id, variantId, quantity));
       setCart(updatedCart);
       setIsOpen(true); // Otvor drawer po pridani
+      // Meta Pixel AddToCart
+      const line = updatedCart.lines.edges.find(({ node }) => node.merchandise.id === variantId);
+      if (line) {
+        const price = parseFloat(line.node.cost?.amountPerQuantity?.amount ?? '0');
+        trackMetaEvent('AddToCart', {
+          content_ids: [variantId],
+          content_type: 'product',
+          value: price * quantity,
+          currency: 'EUR',
+          num_items: quantity,
+        });
+      }
     } catch (err) {
       console.error('Chyba pri pridani do kosika:', err);
       setError('Nepodarilo sa pridať produkt do košíka. Skúste to prosím znova.');
@@ -189,7 +211,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     setIsLoading(true);
     setError(null);
     try {
-      const updatedCart = await shopifyRemoveFromCart(cart.id, lineId);
+      const updatedCart = await withTimeout(shopifyRemoveFromCart(cart.id, lineId));
       setCart(updatedCart);
     } catch (err) {
       console.error('Chyba pri odstraneni z kosika:', err);
@@ -206,10 +228,10 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     setError(null);
     try {
       if (quantity <= 0) {
-        const updatedCart = await shopifyRemoveFromCart(cart.id, lineId);
+        const updatedCart = await withTimeout(shopifyRemoveFromCart(cart.id, lineId));
         setCart(updatedCart);
       } else {
-        const updatedCart = await shopifyUpdateCartItem(cart.id, lineId, quantity);
+        const updatedCart = await withTimeout(shopifyUpdateCartItem(cart.id, lineId, quantity));
         setCart(updatedCart);
       }
     } catch (err) {

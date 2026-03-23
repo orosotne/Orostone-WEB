@@ -226,7 +226,7 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
       el.removeEventListener('scroll', updateScrollState);
       ro.disconnect();
     };
-  }, [updateScrollState, displayProducts]);
+  }, [updateScrollState]);
 
   // Reset scroll when filter changes
   useEffect(() => {

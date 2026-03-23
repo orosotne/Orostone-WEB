@@ -80,7 +80,7 @@ export const EshopFooter: React.FC = () => {
           <div className="lg:col-span-2">
             <Link to="/">
               <img
-                src="/images/logo.png"
+                src="/images/orostone-logo.svg"
                 alt="OROSTONE"
                 className="h-10 brightness-0 invert mb-4"
               />

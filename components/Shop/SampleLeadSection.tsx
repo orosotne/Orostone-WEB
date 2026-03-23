@@ -28,7 +28,7 @@ export const SampleLeadSection: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isBot) return;
-    if (!turnstileToken) { setStatus('error'); setErrorMsg('Prosím potvrďte že nie ste robot.'); return; }
+    if (!turnstileToken) { setStatus('error'); setErrorMsg('Prosím, potvrďte, že nie ste robot.'); return; }
     if (!formRef.current) return;
 
     setStatus('loading');
@@ -168,7 +168,7 @@ export const SampleLeadSection: React.FC = () => {
                 <CheckCircle className="w-14 h-14 text-brand-gold" strokeWidth={1.5} />
                 <h3 className="text-2xl font-bold text-brand-dark">Vzorka je na ceste!</h3>
                 <p className="text-gray-500 text-base font-light">
-                  Ozveme sa vám do 24 hodín s potvrdením a detailmi doručenia.
+                  Vzorku odošleme do 2–3 pracovných dní. Potvrdenie pošleme emailom.
                 </p>
               </div>
             ) : (

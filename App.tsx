@@ -1,24 +1,25 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Layout/Navbar';
 import { Footer } from './components/Layout/Footer';
 import { Home } from './pages/Home';
+import { lazyWithRetry } from './lib/utils';
 
-// Lazy loaded pages for better bundle splitting
+// Lazy loaded pages — lazyWithRetry retries failed chunk loads (e.g. after deployment)
 // E-shop pages (Checkout, Login, Register, Account) removed - they live in EshopApp.tsx
-const Collections = lazy(() => import('./pages/Collections').then(m => ({ default: m.Collections })));
-const CollectionDetail = lazy(() => import('./pages/CollectionDetail').then(m => ({ default: m.CollectionDetail })));
+const Collections = lazyWithRetry(() => import('./pages/Collections').then(m => ({ default: m.Collections })));
+const CollectionDetail = lazyWithRetry(() => import('./pages/CollectionDetail').then(m => ({ default: m.CollectionDetail })));
 // ProductDetail presmerovaný na e-shop - lazy import odstránený
-const Realizations = lazy(() => import('./pages/Realizations').then(m => ({ default: m.Realizations })));
-const Contact = lazy(() => import('./pages/Contact').then(m => ({ default: m.Contact })));
-const Calculator = lazy(() => import('./pages/Calculator').then(m => ({ default: m.Calculator })));
-const Visualizer = lazy(() => import('./pages/Visualizer').then(m => ({ default: m.Visualizer })));
-const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy').then(m => ({ default: m.PrivacyPolicy })));
-const CookiesPolicy = lazy(() => import('./pages/CookiesPolicy').then(m => ({ default: m.CookiesPolicy })));
-const VOP = lazy(() => import('./pages/VOP').then(m => ({ default: m.VOP })));
-const KeyFacts = lazy(() => import('./pages/KeyFacts').then(m => ({ default: m.KeyFacts })));
-const OKameni = lazy(() => import('./pages/O_Kameni').then(m => ({ default: m.OKameni })));
-const SinterovanyKamen = lazy(() => import('./pages/SinterovanyKamen').then(m => ({ default: m.SinterovanyKamen })));
+const Realizations = lazyWithRetry(() => import('./pages/Realizations').then(m => ({ default: m.Realizations })));
+const Contact = lazyWithRetry(() => import('./pages/Contact').then(m => ({ default: m.Contact })));
+const Calculator = lazyWithRetry(() => import('./pages/Calculator').then(m => ({ default: m.Calculator })));
+const Visualizer = lazyWithRetry(() => import('./pages/Visualizer').then(m => ({ default: m.Visualizer })));
+const PrivacyPolicy = lazyWithRetry(() => import('./pages/PrivacyPolicy').then(m => ({ default: m.PrivacyPolicy })));
+const CookiesPolicy = lazyWithRetry(() => import('./pages/CookiesPolicy').then(m => ({ default: m.CookiesPolicy })));
+const VOP = lazyWithRetry(() => import('./pages/VOP').then(m => ({ default: m.VOP })));
+const KeyFacts = lazyWithRetry(() => import('./pages/KeyFacts').then(m => ({ default: m.KeyFacts })));
+const OKameni = lazyWithRetry(() => import('./pages/O_Kameni').then(m => ({ default: m.OKameni })));
+const SinterovanyKamen = lazyWithRetry(() => import('./pages/SinterovanyKamen').then(m => ({ default: m.SinterovanyKamen })));
 
 import { QuoteWizard } from './components/Wizard/QuoteWizard';
 import { NoiseOverlay } from './components/UI/NoiseOverlay';
@@ -45,37 +46,13 @@ const RedirectToEshop: React.FC<{ path?: string }> = ({ path = '' }) => {
   return <LoadingSpinner text="Presmerovávam do e-shopu..." />;
 };
 
-// Scroll to top on route change
 const ScrollToTop = () => {
   const { pathname } = useLocation();
-  
+
   useEffect(() => {
-    // #region agent log
-    if (import.meta.env.DEV) {
-      const payload = {
-        sessionId: '0e45ef',
-        location: 'App:ScrollToTop',
-        message: 'route scroll reset',
-        data: { pathname, scrollYBefore: window.scrollY },
-        timestamp: Date.now(),
-        hypothesisId: 'APP_ST1',
-      };
-      console.debug('[orostone-debug]', payload);
-      void fetch('http://127.0.0.1:7731/ingest/fe10e622-0fa2-40d2-8709-73e6a557fd3f', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '0e45ef' },
-        body: JSON.stringify(payload),
-      }).catch(() => {});
-    }
-    // #endregion
-    // Force immediate scroll to top, bypassing smooth scroll
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-    
-    // Also try to scroll the body/html in case smooth scroll library intercepts
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
   }, [pathname]);
-  
+
   return null;
 };
 

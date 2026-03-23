@@ -2,6 +2,7 @@ import React, { useRef, useState, useCallback, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { RotatingBadge } from '../UI/RotatingBadge';
+import { useScrollLock } from '../../hooks/useScrollLock';
 
 interface InspirationItem {
   src: string;
@@ -99,11 +100,7 @@ const InspirationLightbox: React.FC<LightboxProps> = ({ items, index, onClose, o
     return () => window.removeEventListener('keydown', onKey);
   }, [onClose, onPrev, onNext, hasPrev, hasNext]);
 
-  // Lock body scroll
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = ''; };
-  }, []);
+  useScrollLock(true);
 
   if (!item) return null;
 
@@ -319,12 +316,8 @@ export const InspirationSection: React.FC<Props> = () => {
   const getMediaIndex = (colIdx: number, position: 'top' | 'bottom') =>
     colIdx * 2 + (position === 'top' ? 0 : 1);
 
-  // 4 copies (2 per half) for the seamless -50% loop
-  // 7 unique cols × 230px = 1610px → 2 copies per half = 3220px > 1920px ✓
-  const strip = [
-    ...UNIQUE_COLUMNS, ...UNIQUE_COLUMNS,
-    ...UNIQUE_COLUMNS, ...UNIQUE_COLUMNS,
-  ];
+  // 2 copies for the seamless -50% loop (reduced from 4 to lower DOM video count)
+  const strip = [...UNIQUE_COLUMNS, ...UNIQUE_COLUMNS];
 
   const isOpen = lightboxIndex !== null;
 

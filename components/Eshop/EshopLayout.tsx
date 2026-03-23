@@ -26,7 +26,7 @@ export const EshopLayout: React.FC<EshopLayoutProps> = ({ children }) => {
   const isHomepage = location.pathname === '/';
 
   return (
-    <div className="min-h-screen flex flex-col font-sans text-brand-dark bg-white overflow-x-hidden lg:overflow-clip">
+    <div className="min-h-screen flex flex-col font-sans text-brand-dark bg-white">
       {/* Noise Overlay for texture */}
       <NoiseOverlay />
       
@@ -40,7 +40,7 @@ export const EshopLayout: React.FC<EshopLayoutProps> = ({ children }) => {
       <CartDrawer />
       
       {/* Main Content — homepage has no top padding (hero goes behind transparent navbar) */}
-      <main className={`min-w-0 w-full flex-grow overflow-x-hidden lg:overflow-clip ${isHomepage ? '' : SHOW_ANNOUNCEMENT_BAR ? 'pt-[92px] lg:pt-[148px]' : 'pt-[56px] lg:pt-[112px]'}`}>
+      <main className={`min-w-0 w-full flex-grow ${isHomepage ? '' : SHOW_ANNOUNCEMENT_BAR ? 'pt-[92px] lg:pt-[148px]' : 'pt-[56px] lg:pt-[112px]'}`}>
         {children}
       </main>
       

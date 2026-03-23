@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { CollectionGalleryImage } from '../../types';
+import { useScrollLock } from '../../hooks/useScrollLock';
 
 interface LightboxProps {
   images: CollectionGalleryImage[];
@@ -38,18 +39,7 @@ export const Lightbox: React.FC<LightboxProps> = ({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose, onPrevious, onNext]);
 
-  // Zabráň scrollovaniu na pozadí
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
+  useScrollLock(isOpen);
 
   if (!images[currentIndex]) return null;
 

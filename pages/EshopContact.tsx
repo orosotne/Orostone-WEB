@@ -57,7 +57,7 @@ export const EshopContact: React.FC = () => {
               </div>
               <h2 className="text-xl font-bold text-brand-dark mb-3">Cenová ponuka</h2>
               <p className="text-gray-600 leading-relaxed mb-5">
-                Pre vyžiadanie cenovej ponuky nám neváhaj zaslať email.
+                Pre vyžiadanie cenovej ponuky nám neváhajte zaslať email.
               </p>
               <a
                 href="mailto:info@orostone.sk"
@@ -93,7 +93,7 @@ export const EshopContact: React.FC = () => {
                   className="w-full h-full object-cover object-top"
                 />
               </div>
-              <h2 className="text-xl font-bold text-brand-dark mb-1">Kto odpovedá na tvoju správu</h2>
+              <h2 className="text-xl font-bold text-brand-dark mb-1">Kto odpovedá na vašu správu</h2>
               <p className="text-brand-dark font-semibold">Marián Brázdil</p>
               <p className="text-gray-600 text-sm mb-5">Špecialista na sinterovaný kameň</p>
               <div className="flex flex-col gap-2">
