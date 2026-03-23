@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, Suspense } from 'react';
+import { SEOHead } from './components/UI/SEOHead';
 import { useAnalytics } from './hooks/useAnalytics';
 import { useMetaPixel } from './hooks/useMetaPixel';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
@@ -26,6 +27,7 @@ const CookiesPolicy = lazyWithRetry(() => import('./pages/CookiesPolicy').then(m
 const VOP = lazyWithRetry(() => import('./pages/VOP').then(m => ({ default: m.VOP })));
 const DopravaAPlatba = lazyWithRetry(() => import('./pages/DopravaAPlatba').then(m => ({ default: m.DopravaAPlatba })));
 const ReklamacieAVratenie = lazyWithRetry(() => import('./pages/ReklamacieAVratenie').then(m => ({ default: m.ReklamacieAVratenie })));
+const SinterovanyKamen = lazyWithRetry(() => import('./pages/SinterovanyKamen').then(m => ({ default: m.SinterovanyKamen })));
 
 // Prefetch lazy chunks after first idle
 if (typeof window !== 'undefined') {
@@ -85,20 +87,9 @@ const PlaceholderPage: React.FC<{ title: string }> = ({ title }) => (
 );
 
 const NotFoundPage: React.FC = () => {
-  useEffect(() => {
-    document.title = 'Stránka nenájdená | OROSTONE';
-    let meta = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
-    if (!meta) {
-      meta = document.createElement('meta');
-      meta.name = 'robots';
-      document.head.appendChild(meta);
-    }
-    meta.content = 'noindex, nofollow';
-    return () => { if (meta) meta.content = 'index, follow'; };
-  }, []);
-
   return (
     <div className="min-h-[60vh] flex items-center justify-center px-6">
+      <SEOHead title="Stránka nenájdená | OROSTONE" description="Hľadaná stránka neexistuje alebo bola presunutá." noindex={true} />
       <div className="text-center max-w-lg">
         <p className="text-7xl font-bold text-brand-gold mb-4">404</p>
         <h1 className="text-2xl font-bold text-brand-dark mb-3">Stránka nenájdená</h1>
@@ -186,7 +177,11 @@ const EshopAppContent = () => {
           <Route path="/online-kalkulacka" element={<Navigate to="/" replace />} />
           <Route path="/vizualizator" element={<Navigate to="/" replace />} />
           <Route path="/o-kameni" element={<Navigate to="/" replace />} />
-          <Route path="/sinterovany-kamen" element={<Navigate to="/" replace />} />
+          <Route path="/sinterovany-kamen" element={
+            <Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}>
+              <SinterovanyKamen />
+            </Suspense>
+          } />
           <Route path="/key-facts" element={<Navigate to="/" replace />} />
           
           {/* Legal */}

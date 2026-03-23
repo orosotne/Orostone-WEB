@@ -268,7 +268,7 @@ export const BlogArticle: React.FC = () => {
   const content = article[lang];
 
   // Canonical URL
-  const canonicalUrl = `https://www.orostone.sk/blog/${article.slug}`;
+  const canonicalUrl = `https://orostone.sk/blog/${article.slug}`;
 
   // Estimate word count from HTML content (strip tags)
   const wordCount = useMemo(() => {
@@ -298,7 +298,7 @@ export const BlogArticle: React.FC = () => {
             description: content.directAnswer || content.excerpt,
             image: article.heroImage.startsWith('http')
               ? article.heroImage
-              : `https://www.orostone.sk${article.heroImage}`,
+              : `https://orostone.sk${article.heroImage}`,
             datePublished: article.publishDate,
             dateModified: article.lastModified || article.publishDate,
             wordCount,
@@ -309,23 +309,23 @@ export const BlogArticle: React.FC = () => {
               '@type': 'Person',
               name: article.author?.name || 'OROSTONE tím',
               jobTitle: article.author?.role || 'Odborníci na sinterovaný kameň',
-              url: 'https://www.orostone.sk',
+              url: 'https://orostone.sk',
               image: article.author?.avatar
-                ? `https://www.orostone.sk${article.author.avatar}`
+                ? `https://orostone.sk${article.author.avatar}`
                 : undefined,
               worksFor: {
                 '@type': 'Organization',
                 name: 'OROSTONE',
-                url: 'https://www.orostone.sk',
+                url: 'https://orostone.sk',
               },
             },
             publisher: {
               '@type': 'Organization',
               name: 'OROSTONE',
-              url: 'https://www.orostone.sk',
+              url: 'https://orostone.sk',
               logo: {
                 '@type': 'ImageObject',
-                url: 'https://www.orostone.sk/images/brand/orostone-circle.png',
+                url: 'https://orostone.sk/images/brand/orostone-circle.png',
               },
             },
             mainEntityOfPage: {
@@ -363,8 +363,8 @@ export const BlogArticle: React.FC = () => {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             createBreadcrumbLD([
-              { name: 'OROSTONE', url: 'https://www.orostone.sk/' },
-              { name: 'Blog', url: 'https://www.orostone.sk/blog' },
+              { name: 'OROSTONE', url: 'https://orostone.sk/' },
+              { name: 'Blog', url: 'https://orostone.sk/blog' },
               { name: content.title, url: canonicalUrl },
             ]),
           ),

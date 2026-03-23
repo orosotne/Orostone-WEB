@@ -1688,7 +1688,7 @@ const ProductStorySection: React.FC<ProductStorySectionProps> = ({ product }) =>
       >
         <img
           src={product.image}
-          alt=""
+          alt={`${product.name} — povrch sinterovaného kameňa`}
           className="w-full h-full object-cover rounded-2xl shadow-2xl"
         />
       </motion.div>
@@ -2599,7 +2599,7 @@ const ProductSchema: React.FC<ProductSchemaProps> = ({ product, totalPrice }) =>
     "manufacturer": {
       "@type": "Organization",
       "name": "OROSTONE s.r.o.",
-      "url": "https://www.orostone.sk",
+      "url": "https://orostone.sk",
       "areaServed": {
         "@type": "GeoCircle",
         "geoMidpoint": {
@@ -2615,10 +2615,10 @@ const ProductSchema: React.FC<ProductSchemaProps> = ({ product, totalPrice }) =>
     "size": product.dimensions,
     "weight": product.weight ? `${product.weight} kg` : undefined,
     "countryOfOrigin": resolveCountryOfOrigin(product, 'slovakia'),
-    "url": `https://www.orostone.sk/produkt/${product.id}`,
+    "url": `https://orostone.sk/produkt/${product.id}`,
     "offers": {
       "@type": "Offer",
-      "url": `https://www.orostone.sk/produkt/${product.id}`,
+      "url": `https://orostone.sk/produkt/${product.id}`,
       "priceCurrency": "EUR",
       "price": totalPrice.toFixed(2),
       "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
@@ -2836,7 +2836,7 @@ export const ShopProductDetail: React.FC = () => {
       <SEOHead
         title={seoTitle}
         description={seoDescription}
-        canonical={`https://www.orostone.sk/produkt/${product.id}`}
+        canonical={`https://orostone.sk/produkt/${product.id}`}
         ogType="product"
         ogImage={seoImage}
       />
@@ -2902,9 +2902,9 @@ export const ShopProductDetail: React.FC = () => {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(createBreadcrumbLD([
-          { name: 'OROSTONE', url: 'https://www.orostone.sk/' },
-          { name: 'E-Shop', url: 'https://www.orostone.sk/' },
-          { name: product.name, url: `https://www.orostone.sk/produkt/${product.id}` },
+          { name: 'OROSTONE', url: 'https://orostone.sk/' },
+          { name: 'E-Shop', url: 'https://orostone.sk/' },
+          { name: product.name, url: `https://orostone.sk/produkt/${product.id}` },
         ])) }}
       />
 

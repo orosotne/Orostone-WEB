@@ -331,7 +331,7 @@ export const SinterovanyKamen = () => {
       <SEOHead
         title="Sinterovaný kameň | Čo to je a prečo ho chcete | Orostone"
         description="Sinterovaný kameň je prémiový povrch z prírodných minerálov. Odolný teplu, škvrnám aj UV. Zistite, prečo je ideálny na kuchynské dosky a interiéry."
-        canonical="https://www.orostone.sk/sinterovany-kamen"
+        canonical="https://orostone.sk/sinterovany-kamen"
         structuredData={faqStructuredData}
       />
 

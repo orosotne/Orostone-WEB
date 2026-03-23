@@ -1,9 +1,19 @@
 import React from 'react';
 import { Mail, Phone, MapPin, AlertTriangle } from 'lucide-react';
+import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
 
 export const EshopContact: React.FC = () => {
   return (
     <main className="bg-white">
+      <SEOHead
+        title="Kontakt | OROSTONE — Prémiový sinterovaný kameň"
+        description="Kontaktujte OROSTONE pre cenovú ponuku alebo odbornú konzultáciu. Sídlo v Bratislave — Landererova 8. Email: info@orostone.sk, Tel: +421 917 588 738."
+        canonical="https://orostone.sk/kontakt"
+        structuredData={createBreadcrumbLD([
+          { name: 'OROSTONE', url: 'https://orostone.sk/' },
+          { name: 'Kontakt', url: 'https://orostone.sk/kontakt' },
+        ])}
+      />
       <section className="py-16 lg:py-24 bg-white">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">

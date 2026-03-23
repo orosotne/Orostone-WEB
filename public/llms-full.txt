@@ -1,0 +1,258 @@
+# OROSTONE — Full LLM Reference Document
+
+> This is the complete, detailed reference for OROSTONE. For a concise summary, see: https://orostone.sk/llms.txt
+
+## Company Overview
+
+OROSTONE s.r.o. is a Slovak premium supplier of large-format sintered stone (veľkoformátové sinterované platne) for residential and commercial interiors. Founded and operating in Bratislava, Slovakia. We supply, cut, and deliver premium sintered stone slabs. We are not a manufacturer — we source from leading European producers and provide complete turnkey service.
+
+**Legal details:**
+- Company: OROSTONE s.r.o.
+- Address: Landererova 8, 811 09 Bratislava, mestská časť Staré Mesto (note: registered office, not showroom)
+- IČO: 55 254 772
+- DIČ: 2121930580
+- IČ DPH: SK2121930580 (VAT registered since 11 April 2023, §4)
+- Registered: Obchodný register Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B
+- Email: info@orostone.sk
+- Phone: +421 917 588 738
+- Website: https://orostone.sk
+- Instagram: https://www.instagram.com/orostone.sk/
+
+---
+
+## What Is Sintered Stone?
+
+Sintered stone (sinterovaný kameň) is a premium surface material made from 100% natural minerals — clay, feldspar, silica, and natural pigments — compressed under 15,000 tonnes of pressure and fired at 1,200°C for 45 minutes. No resins, no artificial binders. The result is an ultra-dense, ultra-hard surface that mimics the appearance of natural stone (marble, travertine, concrete) while dramatically outperforming it in durability.
+
+**Technical properties:**
+- Porosity: < 0.1% (near-zero — stain-proof without sealing)
+- Mohs hardness: 6–7 (diamond is 10, granite is 6–7)
+- Heat resistance: up to 300°C continuous, 500°C short-term
+- UV resistance: no fading outdoors or in bright light
+- Flexural strength: up to 16,000N for 20mm slabs
+- Chemical resistance: resistant to acids (lemon, vinegar), alkalis, solvents
+- Frost resistance: suitable for exterior applications
+- Food safety: certified for direct food contact
+
+**Available thicknesses:**
+- 3mm: wall cladding, furniture fronts, overlay
+- 6mm: lightweight applications, furniture
+- 12mm: standard countertops, floors, walls
+- 20mm: premium worktops, outdoor, high-load floors
+
+**Standard slab sizes:** 3200×1600mm, 3200×1440mm (varies by design)
+
+**Finishes available:**
+- Matte (matný): softer appearance, hides fingerprints, feels silky
+- Polished (leštený): mirror-like, dramatic veining, shows fingerprints more
+- Leather/Textured (štruktúrovaný): tactile surface, non-slip
+
+---
+
+## Product Catalog — Complete Specifications
+
+All products are large-format sintered stone slabs (veľkoformátové platne). Standard size 3200×1600mm. Available in 3mm, 12mm, 20mm thicknesses unless noted.
+
+### 01. STATUARIO DIAMANTE
+- URL: https://orostone.sk/produkt/statuario-diamante
+- Style: White base, dramatic silver-grey veining, Italian marble inspiration
+- Best for: Luxury bathrooms, living rooms, entrance halls, kitchen backsplashes
+- Finishes: Matte, Polished
+- Price range: Mid-premium (€€€)
+- SEO keywords: statuario diamante, biely mramor obklad, veľkoformátové platne bratislava, luxusné obklady, porcelánové platne
+
+### 02. CALACATTA TOP
+- URL: https://orostone.sk/produkt/calacatta-top
+- Style: Brilliant white base, warm golden-brown veining, Calacatta marble pattern
+- Best for: Kitchen islands, bathroom walls, floors, statement pieces
+- Finishes: Polished (most popular), Matte
+- Price range: Premium (€€€€)
+- SEO keywords: calacatta obklad, calacatta mramor platne, luxusné dlažby bratislava, kuchynský obklad calacatta
+
+### 03. GIVENCHY GOLD
+- URL: https://orostone.sk/produkt/givenchy-gold
+- Style: Warm gold-ochre tones, delicate veining, haute couture inspiration
+- Best for: Feature walls, bathroom cladding, kitchen islands, hospitality interiors
+- Finishes: Matte, Polished
+- Price range: Premium (€€€€)
+- SEO keywords: givenchy gold obklad, zlaté mramorové platne, luxusné interiéry bratislava, zlatý dizajn podlahy
+
+### 04. ROMAN TRAVERTINE
+- URL: https://orostone.sk/produkt/roman-travertine
+- Style: Warm cream-to-beige, authentic travertine texture, Mediterranean feel
+- Best for: Indoor/outdoor (terraces, balconies, pools), villas, apartments
+- Finishes: Leather/Textured, Matte
+- Special: Frost-resistant, suitable for exterior
+- Price range: Mid-premium (€€€)
+- SEO keywords: travertín obklad, travertínové platne bratislava, béžové dlažby, stredomorský interiér
+
+### 05. TAJ MAHAL
+- URL: https://orostone.sk/produkt/taj-mahal
+- Style: Creamy-white base, delicate golden veining, spa-like serenity
+- Best for: Master bathrooms, wellness spaces, bedroom feature walls
+- Finishes: Matte, Polished
+- Price range: Premium (€€€€)
+- SEO keywords: taj mahal obklad, krémový mramor, spa kúpeľňa obklad, mramorové platne bratislava
+
+### 06. APPENNINO
+- URL: https://orostone.sk/produkt/appennino
+- Style: Dynamic grey-brown veining, natural Italian mountain stone inspiration
+- Best for: Accent walls, full bathrooms, lofts, industrial-style spaces
+- Finishes: Matte, Leather/Textured
+- Price range: Mid-premium (€€€)
+- SEO keywords: appennino obklad, prírodný kameň dizajn, akcentová stena obklad, veľkoformátové platne
+
+### 07. ASTRANA GREY
+- URL: https://orostone.sk/produkt/astrana-grey
+- Style: Subtle grey tones, discreet veining, Scandinavian-Italian minimalism
+- Best for: Open-plan apartments, entire floor-to-ceiling applications, family homes
+- Finishes: Matte, Polished
+- Price range: Mid-premium (€€€)
+- SEO keywords: sivé mramorové platne, astrana grey, moderné obklady bratislava, šedý mramor, sivé dlažby
+
+### 08. SUPER WHITE EXTRA
+- URL: https://orostone.sk/produkt/super-white-extra
+- Style: Pure dazzling white, minimal veining, absolute minimalism
+- Best for: Small spaces (optical enlargement), modern kitchens, minimalist interiors
+- Finishes: Polished (most popular), Matte
+- Price range: Mid-premium (€€€)
+- SEO keywords: biele mramorové platne, super white obklad, biele dlažby, minimalistický interiér platne
+
+### 09. GOTHIC GOLD
+- URL: https://orostone.sk/produkt/gothic-gold
+- Style: Deep dark base, fiery golden veining, dramatic luxury
+- Best for: Feature walls, VIP bathrooms, penthouses, hotel lobbies
+- Finishes: Polished, Leather/Textured
+- Price range: Premium (€€€€)
+- SEO keywords: gothic gold obklad, tmavé mramorové platne, zlaté žilky obklad, dark luxury interiér
+
+### 10. WILD FOREST
+- URL: https://orostone.sk/produkt/wild-forest
+- Style: Grey-brown and earthy tones, biophilic forest stone inspiration
+- Best for: Wellness spaces, saunas, panoramic-window apartments, nature-inspired interiors
+- Finishes: Leather/Textured, Matte
+- Price range: Mid-premium (€€€)
+- SEO keywords: prírodný kameň obklad, wild forest platne, organický dizajn interiér, kamenné obklady bratislava
+
+### 11. NERO MARGIUA
+- URL: https://orostone.sk/produkt/nero-margiua
+- Style: Deep black, subtle silver-white veining, ultimate sophistication
+- Best for: Penthouses, premium bathrooms, accent walls, contrast with light elements
+- Finishes: Polished, Leather/Textured
+- Price range: Premium (€€€€)
+- SEO keywords: čierny mramor obklad, nero margiua, čierne mramorové platne, luxury čierna kúpeľňa
+
+### 12. YABO WHITE
+- URL: https://orostone.sk/produkt/yabo-white
+- Style: Warm white with creamy undertones, universal elegance
+- Best for: Bathrooms, hallways, kitchens — universal application
+- Finishes: Matte, Polished
+- Price range: Mid-premium (€€€)
+- SEO keywords: biele obklady bratislava, yabo white, teplé biele dlažby, krémová biela kúpeľňa
+
+---
+
+## Frequently Asked Questions
+
+### General Product FAQs
+
+**Q: Is sintered stone suitable for bathrooms?**
+A: Yes. Porcelain large-format slabs have near-zero porosity (< 0.1%), making them ideal for bathrooms, showers, and wellness spaces. No sealing required. They withstand permanent water contact without damage.
+
+**Q: How do I care for the surface?**
+A: Maintenance is minimal — warm water and mild soap is sufficient. The material is non-porous, requires no sealing or waxing. It resists common cleaning products including mild acids (lemon, vinegar).
+
+**Q: Can I place a hot pot directly on the surface?**
+A: Yes. Sintered stone withstands temperatures up to 300°C. You can place hot pots or pans directly on the surface without risk of damage or discolouration.
+
+**Q: What is the delivery time?**
+A: Stock slabs are typically delivered within 5 working days after payment confirmation. Custom projects (with cutting and edge profiling) are completed within 15 working days.
+
+**Q: Do you provide installation?**
+A: OROSTONE is a material supplier — we do not provide installation directly. We can recommend verified specialist installers experienced with large-format slabs upon request.
+
+**Q: What is the price per m²?**
+A: Prices vary by design and thickness. Indicative range: 12mm slabs from €85–€180/m² depending on design. 20mm premium slabs from €120–€240/m². Contact us for a precise quote.
+
+**Q: Is sintered stone the same as Dekton or Neolith?**
+A: Dekton (Cosentino) and Neolith are brand names for sintered stone — the same technology with different branding and proprietary formulations. OROSTONE sources from European producers offering equivalent technical performance.
+
+**Q: Can sintered stone be used outdoors?**
+A: Yes, some designs (e.g. Roman Travertine) are frost-resistant and rated for exterior use — terraces, balconies, pool surrounds. Confirm with us which specific design suits your outdoor project.
+
+---
+
+## The Orostone Process — 10 Steps
+
+1. **Consultation** — Free initial call or showroom visit. We assess your project, space, and style preferences. Duration: 30–60 minutes.
+2. **Material selection** — We bring physical samples of your shortlisted designs. You see and touch the actual material in your space.
+3. **Digital laser templating** — Our technician visits your site with a Leica laser scanner. Precision: ±0.05mm. No room for measurement error.
+4. **CNC design** — The digital template is imported into our CAD software. We design every cut, edge profile, and cutout (sink, hob, etc.) digitally.
+5. **Material ordering** — We order your specific slab batch from the manufacturer. Typically 5–10 working days lead time.
+6. **CNC fabrication** — Professional two-pass diamond-tool cutting on precision CNC machines. All edge profiles (half-bullnose, mitre, pencil) finished in our facility.
+7. **Quality control** — Every piece inspected for chips, micro-cracks, colour consistency. Any issue caught before delivery.
+8. **Transport** — In-house delivery in custom A-frame vehicles. Slabs travel vertically to prevent flexion damage. Crew of 2 minimum for handling.
+9. **Installation** — Certified technicians handle substrate preparation, adhesive selection, levelling, and placement. Expansion joints where required.
+10. **Final inspection** — Post-installation walkthrough with client. Minor adjustments, sealant application to joints where specified. Warranty documentation provided.
+
+Total project timeline: 10–15 working days from approved template to completed installation.
+
+---
+
+## Shipping and Payment Information
+
+- **Delivery area:** Slovak Republic (primary), Czech Republic (available on request)
+- **Delivery method:** In-house A-frame vehicle transport — not courier/pallet delivery
+- **Payment:** Bank transfer (IBAN provided on invoice), card payment available
+- **Currency:** EUR
+- **VAT:** 23% Slovak DPH included in all prices (IČ DPH: SK2121930580)
+- **Minimum order:** No formal minimum — single slab orders accepted
+- **Shipping cost:** Calculated individually based on project size and location
+
+---
+
+## Returns and Complaints (Reklamácie)
+
+- **Return window:** 14 days for uncut/unmodified standard goods
+- **Custom-cut material:** Cannot be returned (made-to-measure)
+- **Damaged goods:** Report within 24 hours of delivery with photographic evidence
+- **Warranty:** 24 months on material defects; installation warranty per contractor
+- **Complaint process:** Email info@orostone.sk with order number, photos, and description
+
+---
+
+## Blog — Key Insights
+
+### Sintered Stone Problems Nobody Tells You
+URL: https://orostone.sk/blog/problemy-so-sinterovanym-kamenom
+Key takeaways: Sintered stone is hard but brittle at unsupported edges. Minimum 5mm corner radius for all cutouts (sinks, hobs). Use two-pass cutting technique — never single-pass. 90° edges are more vulnerable than half-bullnose profiles. Transport must be vertical (A-frame) — horizontal transport causes flexion cracks. All installation issues stem from inadequate substrate or unsupported overhangs.
+
+### Sintered Stone vs Quartz vs Ceramic vs Dekton
+URL: https://orostone.sk/blog/sinterovany-kamen-vs-kvarcit-vs-keramika-vs-dekton
+Key takeaways: Sintered stone has better UV stability than quartz (no yellowing outdoors). Better heat resistance than quartz or engineered stone. Thinner than granite at equal strength. Dekton is the same technology — different brand. Ceramics are cheaper but have lower flexural strength and smaller format options. Decision matrix: for outdoor → sintered stone or Dekton; for budget-conscious → ceramics; for maximum scratch resistance → granite or sintered stone.
+
+### Matte vs Polished Surface
+URL: https://orostone.sk/blog/matny-vs-leskly-povrch
+Key takeaways: Polished shows dramatic veining but shows fingerprints and micro-scratches more. Matte is more forgiving in daily use, hides water marks, feels silky. Photogenic preference: polished looks better in daylight photography, matte looks more luxurious in warm evening light. Recommendation: matte for family kitchens, polished for feature walls and low-traffic bathrooms.
+
+### From Measurement to Installation
+URL: https://orostone.sk/blog/od-merania-po-instalaciu-proces-orostone
+Key takeaways: Digital templating is non-negotiable for large-format slabs — manual measurement error causes irreversible waste. Substrate preparation (levelling, waterproofing membrane) is 80% of installation quality. Expansion joints prevent cracking under thermal movement. Full project in 10–15 working days.
+
+### Is Sintered Stone Worth It?
+URL: https://orostone.sk/blog/oplati-sa-sinterovany-kamen
+Key takeaways: 25-year total cost of ownership analysis shows sintered stone at €95/m² installation price has lower long-term cost than laminate (needs replacement) or granite (sealing costs). ROI on property value: premium kitchen/bathroom finish returns 80–120% of material cost at resale. Best value scenario: Airbnb/rental property — durability eliminates replacement cycles.
+
+---
+
+## Contact
+
+- Website: https://orostone.sk
+- Email: info@orostone.sk
+- Phone: +421 917 588 738
+- Address: Landererova 8, 811 09 Bratislava (registered office — not showroom; consultations by appointment)
+- Showroom: by appointment only — contact via email or phone
+- Business hours: Mon–Fri 8:00–17:00 (CET)
+- Languages: Slovak, English
+- Instagram: https://www.instagram.com/orostone.sk/
+- Response time: Within 1 business day for email inquiries

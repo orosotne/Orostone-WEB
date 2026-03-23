@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 const SITE_ORIGIN = (import.meta.env.VITE_PUBLIC_SITE_URL as string | undefined)?.replace(/\/$/, '')
-  || 'https://www.orostone.sk';
+  || 'https://orostone.sk';
 
 const DEFAULT_OG_PATH = '/images/og-orostone.png';
 
@@ -60,6 +60,11 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
     setMeta('description', description);
     if (noindex) {
       setMeta('robots', 'noindex, nofollow');
+    } else {
+      const robotsMeta = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
+      if (robotsMeta && robotsMeta.content === 'noindex, nofollow') {
+        robotsMeta.content = 'index, follow';
+      }
     }
 
     const absoluteOg = toAbsoluteOgImage(ogImage);
@@ -186,13 +191,24 @@ export const OROSTONE_ORGANIZATION_LD = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'OROSTONE',
-  url: 'https://www.orostone.sk',
-  logo: 'https://www.orostone.sk/images/brand/orostone-circle.png',
+  url: 'https://orostone.sk',
+  logo: 'https://orostone.sk/images/brand/orostone-circle.png',
   description: 'Prémiový sinterovaný kameň pre kuchyne, kúpeľne a architektonické projekty.',
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Landererova 8',
+    addressLocality: 'Bratislava',
+    postalCode: '811 09',
     addressCountry: 'SK',
   },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+421917588738',
+    contactType: 'customer service',
+    availableLanguage: ['Slovak', 'English'],
+    email: 'info@orostone.sk',
+  },
+  sameAs: ['https://www.instagram.com/orostone.sk/'],
 };
 
 export default SEOHead;

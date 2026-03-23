@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { SEOHead } from '../components/UI/SEOHead';
 
 export const PrivacyPolicy = () => {
   const scrollToSection = (sectionId: string) => {
@@ -12,6 +13,11 @@ export const PrivacyPolicy = () => {
 
   return (
     <div className="pt-32 pb-24 min-h-screen bg-[#F9F9F7]">
+      <SEOHead
+        title="Ochrana osobných údajov | OROSTONE"
+        description="Zásady ochrany osobných údajov spoločnosti OROSTONE s.r.o. Spracúvanie údajov v súlade s GDPR — účely, právny základ a vaše práva."
+        canonical="https://orostone.sk/ochrana-sukromia"
+      />
       <div className="container mx-auto px-6 max-w-4xl">
         {/* Header */}
         <motion.div

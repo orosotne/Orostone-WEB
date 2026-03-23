@@ -1,8 +1,14 @@
 # Orostone - Premium Sintered Stone
-# https://www.orostone.sk
+# https://orostone.sk
 
 User-agent: *
 Allow: /
+Disallow: /checkout
+Disallow: /objednavka-dokoncena
+Disallow: /login
+Disallow: /register
+Disallow: /ucet
+Disallow: /objednavky
 
 # AI Crawlers - explicitly allowed
 User-agent: GPTBot
@@ -14,6 +20,9 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: anthropic-ai
+Allow: /
+
 User-agent: Google-Extended
 Allow: /
 
@@ -23,10 +32,13 @@ Allow: /
 User-agent: Amazonbot
 Allow: /
 
+User-agent: Bytespider
+Allow: /
+
 User-agent: FacebookBot
 Allow: /
 
 User-agent: Applebot
 Allow: /
 
-Sitemap: https://www.orostone.sk/sitemap.xml
+Sitemap: https://orostone.sk/sitemap.xml

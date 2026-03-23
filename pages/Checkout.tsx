@@ -8,6 +8,7 @@ import {
 import { useCart, formatPrice } from '../context/CartContext';
 import { trackMetaEvent, savePendingPurchase } from '../hooks/useMetaPixel';
 import { trackGA4BeginCheckout } from '../hooks/useGA4Ecommerce';
+import { SEOHead } from '../components/UI/SEOHead';
 import { Button } from '../components/UI/Button';
 
 // ===========================================
@@ -23,6 +24,7 @@ export const Checkout = () => {
   if (itemCount === 0 && !isLoading) {
     return (
       <main className="min-h-screen bg-[#F9F9F7] pt-32 pb-24">
+        <SEOHead title="Košík | OROSTONE" description="Váš nákupný košík." noindex={true} />
         <div className="container mx-auto px-6 text-center">
           <ShoppingBag size={64} className="mx-auto text-gray-300 mb-6" />
           <h1 className="text-2xl font-bold text-brand-dark mb-4">Váš košík je prázdny</h1>
@@ -55,6 +57,7 @@ export const Checkout = () => {
 
   return (
     <main className="min-h-screen bg-[#F9F9F7] pt-32 pb-24">
+      <SEOHead title="Pokladňa | OROSTONE" description="Dokončite vašu objednávku." noindex={true} />
       <div className="container mx-auto px-6">
         
         {/* Header */}

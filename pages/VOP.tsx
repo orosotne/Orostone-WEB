@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { SEOHead } from '../components/UI/SEOHead';
 
 const Section = ({ id, number, title, children }: { id: string; number: string; title: string; children: React.ReactNode }) => (
   <motion.section
@@ -40,6 +41,11 @@ export const VOP = () => {
 
   return (
     <div className="pt-32 pb-24 min-h-screen bg-[#F9F9F7]">
+      <SEOHead
+        title="Všeobecné obchodné podmienky | OROSTONE E-Shop"
+        description="Všeobecné obchodné podmienky e-shopu OROSTONE. Informácie o objednávke, platbe, doprave, reklamáciách a právach spotrebiteľa podľa slovenského práva."
+        canonical="https://orostone.sk/vop"
+      />
       <div className="container mx-auto px-6 max-w-4xl">
         {/* Header */}
         <motion.div
@@ -144,7 +150,7 @@ export const VOP = () => {
               <strong>Právny režim:</strong> Objednávka je v podmienkach spoločnosti Orostone <strong>kúpnou zmluvou</strong> – v prípade Klienta – spotrebiteľa (fyzická osoba) sa spravuje ustanoveniami § 588 a nasl. Občianskeho zákonníka; v prípade Klienta – podnikateľa (právnická osoba alebo fyzická osoba – podnikateľ) sa spravuje ustanoveniami § 409 a nasl. Obchodného zákonníka.
             </SubSection>
             <SubSection number="1.7">
-              Klient bol pred uzatvorením kúpnej zmluvy oboznámený s týmito VOP prostredníctvom ich zverejnenia na webovom sídle spoločnosti Orostone <a href="https://www.orostone.sk" className="text-brand-gold hover:underline">www.orostone.sk</a>.
+              Klient bol pred uzatvorením kúpnej zmluvy oboznámený s týmito VOP prostredníctvom ich zverejnenia na webovom sídle spoločnosti Orostone <a href="https://orostone.sk" className="text-brand-gold hover:underline">www.orostone.sk</a>.
             </SubSection>
           </Section>
 
@@ -350,7 +356,7 @@ export const VOP = () => {
               <div className="flex-1 h-px bg-gradient-to-r from-transparent via-brand-gold/50 to-transparent"></div>
             </div>
             <p className="text-center text-gray-500 text-sm mt-4">
-              Nasledujúce ustanovenia sa vzťahujú výlučne na nákupy realizované prostredníctvom e-shopu na <a href="https://www.orostone.sk" className="text-brand-gold hover:underline">www.orostone.sk</a>
+              Nasledujúce ustanovenia sa vzťahujú výlučne na nákupy realizované prostredníctvom e-shopu na <a href="https://orostone.sk" className="text-brand-gold hover:underline">www.orostone.sk</a>
             </p>
           </motion.div>
 
@@ -446,7 +452,7 @@ export const VOP = () => {
           {/* Záverečné ustanovenia */}
           <Section id="zaverecne-ustanovenia" number="16" title="Záverečné ustanovenia">
             <SubSection number="16.1">
-              Spoločnosť Orostone si vyhradzuje právo na zmenu týchto VOP. Aktuálne znenie VOP je vždy zverejnené na <a href="https://www.orostone.sk/vop" className="text-brand-gold hover:underline">www.orostone.sk/vop</a>.
+              Spoločnosť Orostone si vyhradzuje právo na zmenu týchto VOP. Aktuálne znenie VOP je vždy zverejnené na <a href="https://orostone.sk/vop" className="text-brand-gold hover:underline">www.orostone.sk/vop</a>.
             </SubSection>
             <SubSection number="16.2">
               Vzťahy neupravené týmito VOP sa riadia príslušnými ustanoveniami Občianskeho zákonníka, Obchodného zákonníka a zákona č. 250/2007 Z.z. o ochrane spotrebiteľa.

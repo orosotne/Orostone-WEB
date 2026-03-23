@@ -540,7 +540,7 @@ export const Shop = () => {
       <SEOHead
         title="OROSTONE E-Shop | Prémiový sinterovaný kameň"
         description="Prémiové sinterované platne 3200×1600mm skladom. Odolnosť kameňa a luxusný dizajn. Bezplatná vzorka, expedícia do 5 dní. Bratislava."
-        canonical="https://eshop.orostone.sk/"
+        canonical="https://orostone.sk/"
         ogType="website"
         structuredData={OROSTONE_ORGANIZATION_LD}
       />
@@ -558,7 +558,7 @@ export const Shop = () => {
               "@type": "ListItem",
               "position": i + 1,
               "name": p.name,
-              "url": `https://eshop.orostone.sk/produkt/${p.id}`,
+              "url": `https://orostone.sk/produkt/${p.id}`,
               "image": p.image,
             })),
           }) }}

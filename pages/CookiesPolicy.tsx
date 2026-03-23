@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useCookies } from '../context/CookieContext';
+import { SEOHead } from '../components/UI/SEOHead';
 
 export const CookiesPolicy = () => {
   const { preferences, openSettings } = useCookies();
@@ -14,6 +15,11 @@ export const CookiesPolicy = () => {
 
   return (
     <div className="pt-32 pb-24 min-h-screen bg-[#F9F9F7]">
+      <SEOHead
+        title="Zásady používania cookies | OROSTONE"
+        description="Informácie o cookies a sledovacích technológiách na webe OROSTONE. Druhy cookies, účely spracovania a nastavenie vlastných preferencií."
+        canonical="https://orostone.sk/cookies"
+      />
       <div className="container mx-auto px-6 max-w-4xl">
         {/* Header */}
         <motion.div
