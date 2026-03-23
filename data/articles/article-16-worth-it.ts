@@ -239,7 +239,7 @@ export const ARTICLE_16: BlogArticle = {
 <p>Pre umývadlovú dosku v kúpeľni je sinterovaný kameň technicky vynikajúci, ale cenový rozdiel oproti kvalitnej porcelánovej dlažbe je neúmerný pri malom rozmere. Spracovanie malých kusov sinterovaného kameňa je relatívne drahé (fixné náklady na CNC nastavenie). <strong>Riešenie:</strong> veľkoformátová porcelánová dlaždica alebo kvalitný kvarcit.</p>
 
 <h3>5. Exteriérový jedálenský stôl v tieni</h3>
-<p>Sinterovaný kameň je vynikajúci v exteriéri vďaka UV a mrazuvzdornosti. Ale ak je stôl v tieni a nepotrebuješ UV odolnosť, prémiový porcelán za nižšiu cenu splní rovnakú funkciu. <strong>Riešenie:</strong> veľkoformátové porcelánové dosky od Laminam alebo podobných výrobcov.</p>
+<p>Sinterovaný kameň je vynikajúci v exteriéri vďaka UV a mrazuvzdornosti. Ale ak je stôl v tieni a nepotrebuješ UV odolnosť, prémiový porcelán za nižšiu cenu splní rovnakú funkciu. <strong>Riešenie:</strong> veľkoformátové porcelánové dosky od špecializovaných výrobcov.</p>
 
 <h2 id="navratnost-investicie">Aká je návratnosť investície?</h2>
 
@@ -565,7 +565,7 @@ export const ARTICLE_16: BlogArticle = {
 <p>For a bathroom vanity countertop, sintered stone is technically excellent, but the price difference versus quality porcelain tile is disproportionate for a small size. Processing small pieces of sintered stone is relatively expensive (fixed CNC setup costs). <strong>Solution:</strong> large-format porcelain tile or quality quartz.</p>
 
 <h3>5. Outdoor dining table in shade</h3>
-<p>Sintered stone is excellent outdoors thanks to UV and frost resistance. But if the table is in shade and you don't need UV resistance, premium porcelain at a lower price serves the same function. <strong>Solution:</strong> large-format porcelain slabs from Laminam or similar manufacturers.</p>
+<p>Sintered stone is excellent outdoors thanks to UV and frost resistance. But if the table is in shade and you don't need UV resistance, premium porcelain at a lower price serves the same function. <strong>Solution:</strong> large-format porcelain slabs from specialized manufacturers.</p>
 
 <h2 id="return-on-investment">What is the return on investment?</h2>
 
