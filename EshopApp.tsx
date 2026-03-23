@@ -26,9 +26,13 @@ const VOP = lazyWithRetry(() => import('./pages/VOP').then(m => ({ default: m.VO
 const DopravaAPlatba = lazyWithRetry(() => import('./pages/DopravaAPlatba').then(m => ({ default: m.DopravaAPlatba })));
 const ReklamacieAVratenie = lazyWithRetry(() => import('./pages/ReklamacieAVratenie').then(m => ({ default: m.ReklamacieAVratenie })));
 
-// Prefetch the heaviest lazy chunk (product detail) after first idle
+// Prefetch lazy chunks after first idle
 if (typeof window !== 'undefined') {
-  const prefetch = () => { import('./pages/ShopProductDetail'); };
+  const prefetch = () => {
+    import('./pages/ShopProductDetail');
+    import('./pages/Blog');
+    import('./pages/BlogArticle');
+  };
   if ('requestIdleCallback' in window) {
     (window as any).requestIdleCallback(prefetch, { timeout: 4000 });
   } else {

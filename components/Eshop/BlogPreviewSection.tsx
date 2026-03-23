@@ -1,14 +1,14 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronLeft, ChevronRight, Clock } from 'lucide-react';
-import { BlogArticle, BLOG_CATEGORY_LABELS } from '../../data/blogTypes';
+import { BlogArticleMeta, BLOG_CATEGORY_LABELS } from '../../data/blogTypes';
 
 // ===========================================
 // TYPES
 // ===========================================
 
 interface BlogPreviewSectionProps {
-  articles: BlogArticle[];
+  articles: BlogArticleMeta[];
   lang?: 'sk' | 'en';
 }
 

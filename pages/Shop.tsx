@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 import { ShopProduct, TESTIMONIALS, REALIZATIONS } from '../constants';
 import { BlogPreviewSection } from '../components/Eshop/BlogPreviewSection';
-import { getLatestArticles } from '../data/blogArticles';
+import { getLatestArticlesMeta } from '../data/blogArticlesMeta';
 import { useShopifyProducts } from '../hooks/useShopifyProducts';
 import { useInstagramFeed, getPostImageUrl } from '../hooks/useInstagramFeed';
 import { OrderModal } from '../components/Shop/OrderModal';
@@ -1088,7 +1088,7 @@ export const Shop = () => {
       <SampleLeadSection />
 
       {/* ==================== BLOG PREVIEW SECTION ==================== */}
-      <BlogPreviewSection articles={getLatestArticles(5)} />
+      <BlogPreviewSection articles={getLatestArticlesMeta(5)} />
 
       {/* ==================== TESTIMONIALS ==================== */}
       <section className="testimonials-section relative py-20 lg:py-28 bg-white overflow-hidden">

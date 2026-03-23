@@ -48,6 +48,33 @@ export interface BlogArticle {
   };
 }
 
+/** Lightweight article metadata — no content/faqs/directAnswer. Used on homepage preview. */
+export interface BlogArticleMeta {
+  id: string;
+  slug: string;
+  category: BlogCategory;
+  publishDate: string;
+  lastModified?: string;
+  readTimeMinutes: number;
+  heroImage: string;
+  author: {
+    name: string;
+    role: string;
+    avatar?: string;
+  };
+  tags: string[];
+  sk: {
+    title: string;
+    subtitle: string;
+    excerpt: string;
+  };
+  en: {
+    title: string;
+    subtitle: string;
+    excerpt: string;
+  };
+}
+
 export const BLOG_CATEGORY_LABELS: Record<BlogCategory, { sk: string; en: string }> = {
   'risk-killers': { sk: 'Riziká a prevencia', en: 'Risk Prevention' },
   'trust-builders': { sk: 'Dôvera a kvalita', en: 'Trust & Quality' },
