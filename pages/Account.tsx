@@ -454,7 +454,7 @@ export const Account = () => {
                     value={addressForm.label}
                     onChange={(e) => setAddressForm(f => ({ ...f, label: e.target.value }))}
                     placeholder="napr. Domov, Práca"
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-brand-gold outline-none transition-all text-sm"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-brand-gold outline-none transition-all text-base"
                   />
                 </div>
 
@@ -466,7 +466,7 @@ export const Account = () => {
                     value={addressForm.name}
                     onChange={(e) => setAddressForm(f => ({ ...f, name: e.target.value }))}
                     placeholder="Ján Novák"
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-brand-gold outline-none transition-all text-sm"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-brand-gold outline-none transition-all text-base"
                     required
                   />
                 </div>
@@ -479,7 +479,7 @@ export const Account = () => {
                     value={addressForm.street}
                     onChange={(e) => setAddressForm(f => ({ ...f, street: e.target.value }))}
                     placeholder="Hlavná 123/A"
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-brand-gold outline-none transition-all text-sm"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-brand-gold outline-none transition-all text-base"
                     required
                   />
                 </div>
@@ -493,7 +493,7 @@ export const Account = () => {
                       value={addressForm.city}
                       onChange={(e) => setAddressForm(f => ({ ...f, city: e.target.value }))}
                       placeholder="Bratislava"
-                      className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-brand-gold outline-none transition-all text-sm"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-brand-gold outline-none transition-all text-base"
                       required
                     />
                   </div>
@@ -504,7 +504,7 @@ export const Account = () => {
                       value={addressForm.postal_code}
                       onChange={(e) => setAddressForm(f => ({ ...f, postal_code: e.target.value }))}
                       placeholder="811 01"
-                      className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-brand-gold outline-none transition-all text-sm"
+                      className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-brand-gold outline-none transition-all text-base"
                       required
                     />
                   </div>
@@ -518,7 +518,7 @@ export const Account = () => {
                     value={addressForm.phone}
                     onChange={(e) => setAddressForm(f => ({ ...f, phone: e.target.value }))}
                     placeholder="+421 900 123 456"
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-brand-gold outline-none transition-all text-sm"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:border-brand-gold outline-none transition-all text-base"
                   />
                 </div>
 

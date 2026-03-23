@@ -193,7 +193,7 @@ export const SampleLeadSection: React.FC = () => {
                       name="from_name"
                       required
                       placeholder="Ján Novák"
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-brand-dark placeholder-gray-300 focus:outline-none focus:border-brand-gold transition-colors"
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-base text-brand-dark placeholder-gray-300 focus:outline-none focus:border-brand-gold transition-colors"
                     />
                   </div>
 
@@ -206,7 +206,7 @@ export const SampleLeadSection: React.FC = () => {
                       name="from_email"
                       required
                       placeholder="jan.novak@email.sk"
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-brand-dark placeholder-gray-300 focus:outline-none focus:border-brand-gold transition-colors"
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-base text-brand-dark placeholder-gray-300 focus:outline-none focus:border-brand-gold transition-colors"
                     />
                   </div>
 
@@ -218,7 +218,7 @@ export const SampleLeadSection: React.FC = () => {
                       type="tel"
                       name="phone"
                       placeholder="+421 9XX XXX XXX"
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-brand-dark placeholder-gray-300 focus:outline-none focus:border-brand-gold transition-colors"
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-base text-brand-dark placeholder-gray-300 focus:outline-none focus:border-brand-gold transition-colors"
                     />
                   </div>
 
@@ -230,7 +230,7 @@ export const SampleLeadSection: React.FC = () => {
                       name="dekor"
                       required
                       defaultValue=""
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-brand-dark focus:outline-none focus:border-brand-gold transition-colors appearance-none bg-white"
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-base text-brand-dark focus:outline-none focus:border-brand-gold transition-colors appearance-none bg-white"
                     >
                       <option value="" disabled>Vyberte dekor...</option>
                       {products.map(p => (

@@ -683,7 +683,7 @@ const InstallationSelector: React.FC<InstallationSelectorProps> = ({
                       }
                     }}
                     placeholder="napr. 2.5"
-                    className="w-full px-4 py-2.5 border border-gray-200 text-sm text-brand-dark bg-white focus:ring-1 focus:ring-brand-gold focus:border-brand-gold outline-none transition-all placeholder:text-gray-300"
+                    className="w-full px-4 py-2.5 border border-gray-200 text-base text-brand-dark bg-white focus:ring-1 focus:ring-brand-gold focus:border-brand-gold outline-none transition-all placeholder:text-gray-300"
                   />
                   <p className="text-xs lg:text-[11px] text-gray-400 mt-1">
                     Zadajte súčet všetkých plôch, ktoré sa budú opracovávať. Ak si nie ste istí, nechajte pole prázdne — budeme vás kontaktovať.
