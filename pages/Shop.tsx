@@ -102,7 +102,6 @@ const INSPIRATION_IMAGES = [
 const HERO_SLIDES = [
   {
     id: 1,
-    video: '/videos/hero-stone-shatter.mp4',
     poster: '/images/home/hero-1.webp',
     label: 'Prémiový sinterovaný kameň',
     title: 'Krása kameňa.',
@@ -119,7 +118,6 @@ const HERO_SLIDES = [
 export const Shop = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const heroAutoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const { products: SHOP_PRODUCTS, isLoading: productsLoading } = useShopifyProducts();
 
@@ -147,33 +145,12 @@ export const Shop = () => {
   // HERO SLIDE NAVIGATION
   // ===========================================
   const goToSlide = useCallback((index: number) => {
-    // Pause current video
-    const currentVideo = videoRefs.current[activeSlide];
-    if (currentVideo) currentVideo.pause();
-
-    // Set new slide
     setActiveSlide(index);
-
-    // Play new video
-    const nextVideo = videoRefs.current[index];
-    if (nextVideo) {
-      nextVideo.currentTime = 0;
-      nextVideo.play().catch(() => {});
-    }
-
-    // Reset auto-advance timer
     if (heroAutoplayRef.current) clearInterval(heroAutoplayRef.current);
     heroAutoplayRef.current = setInterval(() => {
-      setActiveSlide((prev) => {
-        const next = (prev + 1) % HERO_SLIDES.length;
-        const prevVideo = videoRefs.current[prev];
-        if (prevVideo) prevVideo.pause();
-        const nextVid = videoRefs.current[next];
-        if (nextVid) { nextVid.currentTime = 0; nextVid.play().catch(() => {}); }
-        return next;
-      });
+      setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length);
     }, 8000);
-  }, [activeSlide]);
+  }, []);
 
   const goToNextSlide = useCallback(() => {
     goToSlide((activeSlide + 1) % HERO_SLIDES.length);
@@ -186,26 +163,11 @@ export const Shop = () => {
   // Auto-advance hero slides
   useEffect(() => {
     heroAutoplayRef.current = setInterval(() => {
-      setActiveSlide((prev) => {
-        const next = (prev + 1) % HERO_SLIDES.length;
-        const prevVideo = videoRefs.current[prev];
-        if (prevVideo) prevVideo.pause();
-        const nextVid = videoRefs.current[next];
-        if (nextVid) { nextVid.currentTime = 0; nextVid.play().catch(() => {}); }
-        return next;
-      });
+      setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length);
     }, 8000);
     return () => {
       if (heroAutoplayRef.current) clearInterval(heroAutoplayRef.current);
     };
-  }, []);
-
-  // Play first video on mount
-  useEffect(() => {
-    const firstVideo = videoRefs.current[0];
-    if (firstVideo) {
-      firstVideo.play().catch(() => {});
-    }
   }, []);
 
   // Refresh ScrollTrigger when product data arrives (changes page height)
@@ -254,9 +216,9 @@ export const Shop = () => {
       { opacity: 1, duration: 0.8, delay: 1.3 }
     );
 
-    // --- Parallax effect on hero videos ---
+    // --- Parallax effect on hero image ---
     if (heroRef.current) {
-      gsap.to('.hero-video', {
+      gsap.to('.hero-img', {
         scale: 1.1,
         scrollTrigger: {
           trigger: heroRef.current,
@@ -578,24 +540,12 @@ export const Shop = () => {
               idx === activeSlide ? 'opacity-100 z-[1]' : 'opacity-0 z-0'
             }`}
           >
-            {/* Poster Image Fallback (visible while video loads) */}
+            {/* Hero Image */}
             <img
               src={slide.poster}
               alt=""
-              className="absolute inset-0 w-full h-full object-cover"
+              className="hero-img absolute inset-0 w-full h-full object-cover"
             />
-            {/* Video */}
-            <video
-              ref={(el) => { videoRefs.current[idx] = el; }}
-              className="hero-video absolute inset-0 w-full h-full object-cover"
-              loop
-              muted
-              playsInline
-              poster={slide.poster}
-              preload="metadata"
-            >
-              <source src={slide.video} type="video/mp4" />
-            </video>
           </div>
         ))}
 
