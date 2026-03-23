@@ -102,7 +102,7 @@ const INSPIRATION_IMAGES = [
 const HERO_SLIDES = [
   {
     id: 1,
-    poster: '/images/home/hero-1.webp',
+    poster: '/images/home/hero-4.webp',
     label: 'Prémiový sinterovaný kameň',
     title: 'Krása kameňa.',
     titleAccent: 'Bez kompromisov.',
