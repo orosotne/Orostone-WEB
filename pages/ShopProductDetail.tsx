@@ -878,7 +878,7 @@ const ProductLightbox: React.FC<ProductLightboxProps> = ({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.3 }}
-            className="max-w-7xl max-h-[90vh] px-20"
+            className="max-w-7xl max-h-[90vh] px-4 md:px-16"
             onClick={(e) => e.stopPropagation()}
           >
             <img
@@ -1205,6 +1205,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   // Show only first 2 thumbnails unless "Show more" is clicked
   const visibleThumbnails = showAllImages ? images : images.slice(0, 4);
 
+  // Preload all gallery images so switching feels instant
+  useEffect(() => {
+    images.forEach(src => { const img = new Image(); img.src = src; });
+  }, [images]);
+
   return (
     <section className="pt-6 pb-8 lg:pt-8 lg:pb-16 bg-gradient-to-br from-white via-[#FAFAF8] to-[#F5F5F0]">
       <div className="container mx-auto px-6">
@@ -1228,18 +1233,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 onClick={() => openLightbox()}
               >
                 {/* Main Image */}
-                <AnimatePresence mode="wait">
-                  <motion.img 
+                <AnimatePresence mode="sync">
+                  <motion.img
                     key={selectedImageIndex}
-                    src={currentImage} 
-                    alt={productImageAlt(product, selectedImageIndex)} 
+                    src={currentImage}
+                    alt={productImageAlt(product, selectedImageIndex)}
                     className="w-full h-full object-cover"
                     srcSet={shopifySrcSet(currentImage)}
                     sizes="(max-width: 768px) 100vw, 58vw"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.2 }}
                   />
                 </AnimatePresence>
 
@@ -1461,18 +1466,18 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                   className="aspect-[3/4] bg-[#F5F5F3] overflow-hidden relative cursor-pointer rounded-lg"
                   onClick={() => openLightbox()}
                 >
-                  <AnimatePresence mode="wait">
-                    <motion.img 
+                  <AnimatePresence mode="sync">
+                    <motion.img
                       key={selectedImageIndex}
-                      src={currentImage} 
-                      alt={productImageAlt(product, selectedImageIndex)} 
+                      src={currentImage}
+                      alt={productImageAlt(product, selectedImageIndex)}
                       className="w-full h-full object-cover"
                       srcSet={shopifySrcSet(currentImage)}
                       sizes="100vw"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: 0.25 }}
+                      transition={{ duration: 0.2 }}
                     />
                   </AnimatePresence>
 
