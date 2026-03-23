@@ -16,7 +16,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ enabled, onChange, disabled
       type="button"
       onClick={() => !disabled && onChange(!enabled)}
       className={`
-        relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent 
+        relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent
         transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-brand-gold focus:ring-offset-2
         ${enabled ? 'bg-brand-gold' : 'bg-gray-600'}
         ${disabled ? 'opacity-50 cursor-not-allowed' : ''}
@@ -25,7 +25,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ enabled, onChange, disabled
     >
       <span
         className={`
-          pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 
+          pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0
           transition duration-200 ease-in-out
           ${enabled ? 'translate-x-5' : 'translate-x-0'}
         `}
@@ -54,8 +54,8 @@ const CookieCategory: React.FC<CookieCategoryProps> = ({
   alwaysOn,
 }) => {
   return (
-    <div className="flex items-start gap-3 p-3 md:p-4 bg-gray-800/50 border border-gray-700/50" style={{ borderRadius: 'var(--radius-card, 0)' }}>
-      <div className="w-10 h-10 bg-gray-700/50 flex items-center justify-center flex-shrink-0" style={{ borderRadius: 'var(--radius-button, 0)' }}>
+    <div className="flex items-start gap-3 p-3 md:p-4 bg-gray-800/50 border border-gray-700/50 rounded-xl">
+      <div className="w-10 h-10 bg-gray-700/50 rounded-lg flex items-center justify-center flex-shrink-0">
         {icon}
       </div>
       <div className="flex-1 min-w-0">
@@ -75,7 +75,7 @@ const CookieCategory: React.FC<CookieCategoryProps> = ({
 };
 
 export const CookieSettings: React.FC = () => {
-  const { isSettingsOpen, closeSettings, preferences, updatePreferences, savePreferences, acceptAll, rejectAll } = useCookies();
+  const { isSettingsOpen, closeSettings, preferences, savePreferences, acceptAll, rejectAll } = useCookies();
   const [localPrefs, setLocalPrefs] = useState<CookiePreferences>(preferences);
 
   useEffect(() => {
@@ -85,7 +85,6 @@ export const CookieSettings: React.FC = () => {
   }, [isSettingsOpen, preferences]);
 
   const handleSave = () => {
-    // Pass localPrefs directly to savePreferences to avoid race condition
     const prefsToSave: CookiePreferences = {
       necessary: true,
       analytics: localPrefs.analytics,
@@ -115,14 +114,12 @@ export const CookieSettings: React.FC = () => {
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:max-w-2xl md:w-full z-[10001] overflow-hidden flex flex-col max-h-[85vh] md:max-h-[90vh]"
           >
-            <div 
-              className="bg-[#1a1a1a] border border-gray-800 shadow-2xl flex flex-col max-h-full"
-              style={{ borderRadius: 'var(--radius-card, 0)' }}
-            >
+            <div className="bg-[#1a1a1a] border border-gray-800 shadow-2xl rounded-2xl overflow-hidden flex flex-col max-h-full">
+
               {/* Header */}
               <div className="flex items-center justify-between p-4 md:p-6 border-b border-gray-800 flex-shrink-0">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-brand-gold/10 flex items-center justify-center" style={{ borderRadius: 'var(--radius-button, 0)' }}>
+                  <div className="w-10 h-10 bg-brand-gold/10 rounded-xl flex items-center justify-center">
                     <Cookie className="w-5 h-5 text-brand-gold" />
                   </div>
                   <div>
@@ -132,8 +129,7 @@ export const CookieSettings: React.FC = () => {
                 </div>
                 <button
                   onClick={closeSettings}
-                  className="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-800 transition-colors"
-                  style={{ borderRadius: 'var(--radius-button, 0)' }}
+                  className="w-10 h-10 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-gray-800 transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -175,30 +171,28 @@ export const CookieSettings: React.FC = () => {
                 />
               </div>
 
-              {/* Footer */}
-              <div className="flex flex-col sm:flex-row gap-2 p-3 md:p-4 border-t border-gray-800 bg-gray-900/50 flex-shrink-0">
+              {/* Footer — col-reverse on mobile so Accept All is on top */}
+              <div className="flex flex-col-reverse sm:flex-row gap-2 p-3 md:p-4 border-t border-gray-800 bg-gray-900/50 flex-shrink-0">
                 <button
                   onClick={rejectAll}
-                  className="flex-1 px-4 py-2 md:py-2.5 border border-gray-700 text-gray-300 hover:text-white hover:border-gray-500 transition-all text-xs md:text-sm font-medium"
-                  style={{ borderRadius: 'var(--radius-button, 0)' }}
+                  className="flex-1 px-4 py-2 md:py-2.5 text-gray-400 hover:text-white rounded-full text-xs md:text-sm font-medium transition-colors"
                 >
                   Odmietnuť
                 </button>
                 <button
                   onClick={handleSave}
-                  className="flex-1 px-4 py-2 md:py-2.5 bg-gray-700 text-white hover:bg-gray-600 transition-all text-xs md:text-sm font-medium"
-                  style={{ borderRadius: 'var(--radius-button, 0)' }}
+                  className="flex-1 px-4 py-2 md:py-2.5 bg-gray-700 text-white hover:bg-gray-600 rounded-full text-xs md:text-sm font-medium transition-all"
                 >
                   Uložiť výber
                 </button>
                 <button
                   onClick={acceptAll}
-                  className="flex-1 px-4 py-2 md:py-2.5 bg-brand-gold text-brand-dark hover:bg-white transition-all text-xs md:text-sm font-semibold"
-                  style={{ borderRadius: 'var(--radius-button, 0)' }}
+                  className="flex-1 px-4 py-2 md:py-2.5 bg-brand-gold text-brand-dark hover:bg-white rounded-full text-xs md:text-sm font-bold transition-all"
                 >
                   Prijať všetky
                 </button>
               </div>
+
             </div>
           </motion.div>
         </>
@@ -206,4 +200,3 @@ export const CookieSettings: React.FC = () => {
     </AnimatePresence>
   );
 };
-

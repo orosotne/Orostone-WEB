@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Cookie, Settings, X } from 'lucide-react';
+import { Cookie, Settings } from 'lucide-react';
 import { useCookies } from '../../context/CookieContext';
 import { Link } from 'react-router-dom';
 
@@ -12,65 +12,61 @@ export const CookieBanner: React.FC = () => {
   return (
     <AnimatePresence>
       <motion.div
-        initial={{ y: 100, opacity: 0 }}
+        initial={{ y: 60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        exit={{ y: 100, opacity: 0 }}
-        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+        exit={{ y: 60, opacity: 0 }}
+        transition={{ type: 'spring', damping: 30, stiffness: 180, delay: 1.5 }}
         className="fixed bottom-0 left-0 right-0 z-[9999] p-4 md:p-6"
       >
         <div className="container mx-auto max-w-5xl">
-          <div 
-            className="bg-[#1a1a1a] border border-gray-800 shadow-2xl shadow-black/50 p-6 md:p-8"
-            style={{ borderRadius: 'var(--radius-card, 0)' }}
-          >
+          <div className="bg-[#1a1a1a]/95 backdrop-blur-xl border border-gray-800/60 shadow-2xl shadow-black/40 rounded-2xl p-6 md:p-8">
             <div className="flex flex-col lg:flex-row gap-6 lg:items-center">
+
               {/* Icon & Text */}
               <div className="flex-1">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-brand-gold/10 flex items-center justify-center" style={{ borderRadius: 'var(--radius-button, 0)' }}>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="w-10 h-10 bg-brand-gold/10 rounded-xl flex items-center justify-center">
                     <Cookie className="w-5 h-5 text-brand-gold" />
                   </div>
                   <h3 className="text-white font-medium text-lg">Táto stránka používa cookies</h3>
                 </div>
                 <p className="text-gray-400 text-sm leading-relaxed">
-                  Používame cookies na zlepšenie vášho zážitku, analýzu návštevnosti a personalizáciu obsahu. 
-                  Kliknutím na "Prijať všetky" súhlasíte s používaním všetkých cookies. 
-                  Viac informácií nájdete v našej{' '}
-                  <Link to="/ochrana-sukromia" className="text-brand-gold hover:underline">
-                    ochrane súkromia
-                  </Link>
-                  {' '}a{' '}
+                  Pre lepší zážitok používame cookies. Podrobnosti v našich{' '}
                   <Link to="/cookies" className="text-brand-gold hover:underline">
-                    zásadách používania cookies
+                    zásadách cookies
                   </Link>.
                 </p>
               </div>
 
               {/* Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 lg:flex-shrink-0">
-                <button
-                  onClick={openSettings}
-                  className="group flex items-center justify-center gap-2 px-5 py-3 border border-gray-700 text-gray-300 hover:text-white hover:border-gray-500 transition-all text-sm font-medium"
-                  style={{ borderRadius: 'var(--radius-button, 0)' }}
-                >
-                  <Settings className="w-4 h-4 group-hover:rotate-45 transition-transform" />
-                  Nastavenia
-                </button>
-                <button
-                  onClick={rejectAll}
-                  className="px-5 py-3 border border-gray-700 text-gray-300 hover:text-white hover:border-gray-500 transition-all text-sm font-medium"
-                  style={{ borderRadius: 'var(--radius-button, 0)' }}
-                >
-                  Odmietnuť
-                </button>
+              <div className="flex flex-col gap-3 lg:flex-shrink-0">
+                {/* Primary CTA — full width on mobile */}
                 <button
                   onClick={acceptAll}
-                  className="px-6 py-3 bg-brand-gold text-brand-dark hover:bg-white transition-all text-sm font-semibold shadow-lg shadow-brand-gold/20"
-                  style={{ borderRadius: 'var(--radius-button, 0)' }}
+                  className="w-full lg:w-auto px-8 py-3.5 bg-brand-gold text-brand-dark rounded-full text-sm font-bold uppercase tracking-wider shadow-lg shadow-brand-gold/25 hover:bg-white hover:shadow-xl transition-all duration-300"
                 >
                   Prijať všetky
                 </button>
+
+                {/* Secondary actions — text links */}
+                <div className="flex items-center justify-center gap-4">
+                  <button
+                    onClick={openSettings}
+                    className="group flex items-center gap-1.5 text-gray-400 hover:text-white transition-colors text-sm font-medium"
+                  >
+                    <Settings className="w-3.5 h-3.5 group-hover:rotate-45 transition-transform" />
+                    Nastavenia
+                  </button>
+                  <span className="text-gray-700">|</span>
+                  <button
+                    onClick={rejectAll}
+                    className="text-gray-500 hover:text-gray-300 hover:underline underline-offset-4 transition-colors text-sm font-medium"
+                  >
+                    Odmietnuť
+                  </button>
+                </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -78,4 +74,3 @@ export const CookieBanner: React.FC = () => {
     </AnimatePresence>
   );
 };
-
