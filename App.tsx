@@ -32,6 +32,7 @@ import { AnimatePresence } from 'framer-motion';
 import { SmoothScroll } from './components/Utils/SmoothScroll';
 import { ThemeProvider } from './context/ThemeContext';
 import { CookieProvider } from './context/CookieContext';
+import { useMetaPixel } from './hooks/useMetaPixel';
 // CartProvider and AuthProvider removed - not needed on main website
 import { DesignSwitcher } from './components/Utils/DesignSwitcher';
 // CartDrawer removed - lives in EshopApp.tsx only
@@ -58,6 +59,7 @@ const ScrollToTop = () => {
 
 const AppContent = () => {
   const [isWizardOpen, setIsWizardOpen] = useState(false);
+  useMetaPixel();
 
   return (
     <div className="min-h-screen flex flex-col font-sans text-brand-dark bg-[#F9F9F7] overflow-x-clip lg:overflow-clip">
