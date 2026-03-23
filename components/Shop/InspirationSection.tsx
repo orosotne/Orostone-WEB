@@ -16,7 +16,7 @@ interface Props {
   items: InspirationItem[];
 }
 
-type MediaItem = { type: 'image' | 'video'; src: string };
+type MediaItem = { type: 'image' | 'video'; src: string; label: string };
 
 // All 7 images available in /public/images/inspiration/
 const ALL_IMAGES = [
@@ -52,10 +52,10 @@ const UNIQUE_COLUMNS = Array.from({ length: UNIQUE_COLS }, (_, i) => ({
 }));
 
 // Flat ordered media list for lightbox navigation (14 items: 2 per column)
-const MEDIA_ITEMS: MediaItem[] = UNIQUE_COLUMNS.flatMap((col) =>
+const MEDIA_ITEMS: MediaItem[] = UNIQUE_COLUMNS.flatMap((col, i) =>
   col.reversed
-    ? [{ type: 'video', src: col.video }, { type: 'image', src: col.image }]
-    : [{ type: 'image', src: col.image }, { type: 'video', src: col.video }]
+    ? [{ type: 'video', src: col.video, label: `Inšpirácia ${i + 1} — sinterovaný kameň interiér` }, { type: 'image', src: col.image, label: `Inšpirácia ${i + 1} — sinterovaný kameň interiér` }]
+    : [{ type: 'image', src: col.image, label: `Inšpirácia ${i + 1} — sinterovaný kameň interiér` }, { type: 'video', src: col.video, label: `Inšpirácia ${i + 1} — sinterovaný kameň interiér` }]
 );
 
 // ──────────────────────────────────────────
@@ -162,7 +162,7 @@ const InspirationLightbox: React.FC<LightboxProps> = ({ items, index, onClose, o
         {item.type === 'image' ? (
           <img
             src={item.src}
-            alt=""
+            alt={item.label}
             className="max-h-[90vh] max-w-[90vw] object-contain rounded-xl"
           />
         ) : (
