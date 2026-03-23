@@ -65,6 +65,7 @@ import { ShareButton } from '../components/UI/ShareButton';
 import { ProductDetailSkeleton } from '../components/UI/Skeleton';
 import { useCookies } from '../context/CookieContext';
 import { trackMetaEvent } from '../hooks/useMetaPixel';
+import { trackGA4ViewItem } from '../hooks/useGA4Ecommerce';
 import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
 import { getProductSEOContent, GENERIC_PRODUCT_FAQS } from '../data/product-seo-content';
 import { useScrollLock } from '../hooks/useScrollLock';
@@ -2748,7 +2749,7 @@ export const ShopProductDetail: React.FC = () => {
 
   const isLoading = productLoading && !product;
 
-  // Meta Pixel ViewContent — product page view
+  // Meta Pixel ViewContent + GA4 view_item — product page view
   useEffect(() => {
     if (!product) return;
     const price = calculateSlabPrice(product.pricePerM2, product.dimensions);
@@ -2758,6 +2759,7 @@ export const ShopProductDetail: React.FC = () => {
       value: price,
       currency: 'EUR',
     });
+    trackGA4ViewItem({ id: product.shopifyVariantId ?? product.id, name: product.name, price });
   }, [product]);
 
   if (isLoading) {

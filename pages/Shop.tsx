@@ -109,6 +109,7 @@ const HERO_SLIDES = [
     titleAccent: 'Bez kompromisov.',
     subtitle: 'Prémiové sinterované platne pre náročné interiéry',
     cta: 'Objavte dekory',
+    ctaTo: '/kategoria/sintered-stone',
   },
 ];
 
@@ -674,16 +675,13 @@ export const Shop = () => {
               transition={{ duration: 0.4, delay: 0.2 }}
               className="hero-cta"
             >
-              <button
-                onClick={() => {
-                  const target = document.querySelector('.stone-experience-pinned') || document.querySelector('.stone-experience-section');
-                  target?.scrollIntoView({ behavior: 'smooth' });
-                }}
+              <Link
+                to={HERO_SLIDES[activeSlide].ctaTo}
                 className="group inline-flex items-center gap-2 border border-white/40 hover:border-white text-white/90 hover:text-white px-6 py-2.5 text-xs md:text-sm tracking-[0.15em] uppercase transition-all duration-300"
               >
                 {HERO_SLIDES[activeSlide].cta}
                 <ChevronRight size={14} className="group-hover:translate-x-0.5 transition-transform duration-300" />
-              </button>
+              </Link>
             </motion.div>
           </AnimatePresence>
         </div>

@@ -11,6 +11,7 @@ import {
   type ShopifyCartLine,
 } from '../services/shopify.service';
 import { trackMetaEvent } from '../hooks/useMetaPixel';
+import { trackGA4AddToCart } from '../hooks/useGA4Ecommerce';
 
 // ===========================================
 // TYPES
@@ -196,6 +197,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
           currency: 'EUR',
           num_items: quantity,
         });
+        trackGA4AddToCart({ id: variantId, name: line.node.merchandise.title, price, quantity });
       }
     } catch (err) {
       console.error('Chyba pri pridani do kosika:', err);

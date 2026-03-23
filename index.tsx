@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import EshopApp from './EshopApp';
+
+declare global {
+  interface Window { gtag?: (...args: any[]) => void; }
+}
 import './index.css';
 
 const rootElement = document.getElementById('root');

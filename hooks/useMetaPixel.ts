@@ -80,6 +80,7 @@ export interface PendingPurchaseData {
   currency: string;
   num_items: number;
   content_ids: string[];
+  items?: Array<{ item_id: string; item_name?: string; price?: number; quantity?: number }>;
 }
 
 /**

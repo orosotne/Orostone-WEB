@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle, ShoppingBag } from 'lucide-react';
 import { popPendingPurchase, trackMetaEvent } from '../hooks/useMetaPixel';
+import { trackGA4Purchase } from '../hooks/useGA4Ecommerce';
 
 export const ThankYou: React.FC = () => {
   const firedRef = useRef(false);
@@ -18,6 +19,10 @@ export const ThankYou: React.FC = () => {
         content_ids: purchase.content_ids,
         content_type: 'product',
         num_items: purchase.num_items,
+      });
+      trackGA4Purchase({
+        value: purchase.value,
+        items: purchase.items ?? purchase.content_ids.map(id => ({ item_id: id })),
       });
     }
   }, []);
