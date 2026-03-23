@@ -102,7 +102,7 @@ const INSPIRATION_IMAGES = [
 const HERO_SLIDES = [
   {
     id: 1,
-    video: 'https://cdn.coverr.co/videos/coverr-modern-kitchen-interior-4k-6159/1080p.mp4',
+    video: '/videos/hero-stone-shatter.mp4',
     poster: '/images/home/hero-1.webp',
     label: 'Prémiový sinterovaný kameň',
     title: 'Krása kameňa.',

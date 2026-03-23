@@ -470,7 +470,7 @@ export const Realizations = () => {
           playsInline
           poster="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=2500&auto=format&fit=crop"
         >
-          <source src="https://cdn.coverr.co/videos/coverr-modern-kitchen-interior-4k-6159/1080p.mp4" type="video/mp4" />
+          <source src="/videos/hero-stone-shatter.mp4" type="video/mp4" />
         </video>
         
         {/* Gradient overlays */}
