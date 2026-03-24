@@ -440,7 +440,7 @@ const BundleSelector: React.FC<BundleSelectorProps> = ({
                     {/* Right: Price — below label on mobile, right-aligned on sm+ */}
                     <div className="mt-1.5 sm:mt-0 sm:text-right flex-shrink-0">
                       <div className="font-bold text-brand-dark text-base sm:text-lg">
-                        {formatPrice(bundlePricePerM2)}<span className="text-xs sm:text-sm font-normal text-gray-400"> / m²</span>
+                        {formatPrice(bundlePricePerM2)}<span className="text-xs sm:text-sm font-normal text-gray-400"> / m² s DPH</span>
                       </div>
                       <div className="text-[11px] sm:text-xs text-gray-500">
                         spolu {formatPrice(bundlePrice)}
@@ -2923,7 +2923,7 @@ export const ShopProductDetail: React.FC = () => {
               <p className="text-xs text-gray-500 truncate">{product.name} • {selectedBundle.quantity} {selectedBundle.quantity === 1 ? 'platňa' : selectedBundle.quantity < 5 ? 'platne' : 'platní'}</p>
               <p className="text-lg font-bold text-brand-dark leading-tight">
                 {formatPrice(Math.round(product.pricePerM2 * (1 - selectedBundle.discountPercent / 100) * 100) / 100)}
-                <span className="text-xs font-normal text-gray-400 ml-1">/ m²</span>
+                <span className="text-xs font-normal text-gray-400 ml-1">/ m² s DPH</span>
                 {selectedBundle.discountPercent > 0 && (
                   <span className="text-xs font-normal text-gray-400 ml-1 line-through">{formatPrice(product.pricePerM2)}</span>
                 )}

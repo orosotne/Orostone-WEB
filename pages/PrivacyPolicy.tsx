@@ -129,36 +129,57 @@ export const PrivacyPolicy = () => {
             </div>
             <div className="pl-16 text-gray-600 leading-relaxed">
               <p className="mb-4">Vaše osobné údaje spracovávame za týmito účelmi:</p>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-3">
-                  <span className="text-brand-gold mt-1">•</span>
-                  <span><strong>Vybavenie objednávky</strong> – spracovanie a doručenie vášho tovaru</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-brand-gold mt-1">•</span>
-                  <span><strong>Komunikácia</strong> – informovanie o stave objednávky a zodpovedanie dopytov</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-brand-gold mt-1">•</span>
-                  <span><strong>Cenové ponuky</strong> – príprava individuálnych kalkulácií a ponúk</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-brand-gold mt-1">•</span>
-                  <span><strong>Zákonné povinnosti</strong> – účtovníctvo, daňové účely, archivačné lehoty</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-brand-gold mt-1">•</span>
-                  <span><strong>Bezpečnosť</strong> – ochrana formulárov a služieb pred automatizovanými útokmi a podvodmi (Cloudflare Turnstile)</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-brand-gold mt-1">•</span>
-                  <span><strong>AI vizualizácia</strong> – spracovanie obrázkov cez AI vizualizér priestoru (len na základe vášho výslovného súhlasu pri spustení funkcie)</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-brand-gold mt-1">•</span>
-                  <span><strong>Marketing</strong> – len s vaším výslovným súhlasom (newsletter, remarketingové ponuky)</span>
-                </li>
-              </ul>
+              <div className="overflow-x-auto -mx-2">
+                <table className="w-full text-sm border-collapse min-w-[500px]">
+                  <thead>
+                    <tr className="border-b-2 border-brand-gold/30">
+                      <th className="text-left py-2 px-3 text-brand-dark font-bold text-xs uppercase tracking-wider">Účel</th>
+                      <th className="text-left py-2 px-3 text-brand-dark font-bold text-xs uppercase tracking-wider">Opis</th>
+                      <th className="text-left py-2 px-3 text-brand-dark font-bold text-xs uppercase tracking-wider">Právny základ (GDPR čl. 6)</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    <tr>
+                      <td className="py-3 px-3 font-semibold text-brand-dark align-top">Vybavenie objednávky</td>
+                      <td className="py-3 px-3 text-gray-600 align-top">Spracovanie a doručenie objednaného tovaru</td>
+                      <td className="py-3 px-3 text-gray-600 align-top">čl. 6 ods. 1 písm. b) — plnenie zmluvy</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-3 font-semibold text-brand-dark align-top">Komunikácia</td>
+                      <td className="py-3 px-3 text-gray-600 align-top">Informovanie o stave objednávky, odpovede na dopyty a cenovú ponuku</td>
+                      <td className="py-3 px-3 text-gray-600 align-top">čl. 6 ods. 1 písm. b) — plnenie zmluvy / čl. 6 ods. 1 písm. f) — oprávnený záujem</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-3 font-semibold text-brand-dark align-top">Zákonné povinnosti</td>
+                      <td className="py-3 px-3 text-gray-600 align-top">Vedenie účtovníctva, plnenie daňových a archivačných povinností</td>
+                      <td className="py-3 px-3 text-gray-600 align-top">čl. 6 ods. 1 písm. c) — zákonná povinnosť</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-3 font-semibold text-brand-dark align-top">Bezpečnosť</td>
+                      <td className="py-3 px-3 text-gray-600 align-top">Ochrana formulárov pred automatizovanými útokmi (Cloudflare Turnstile)</td>
+                      <td className="py-3 px-3 text-gray-600 align-top">čl. 6 ods. 1 písm. f) — oprávnený záujem (bezpečnosť systémov)</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-3 font-semibold text-brand-dark align-top">AI vizualizácia</td>
+                      <td className="py-3 px-3 text-gray-600 align-top">Spracovanie obrázkov cez AI vizualizér (len pri spustení funkcie)</td>
+                      <td className="py-3 px-3 text-gray-600 align-top">čl. 6 ods. 1 písm. a) — súhlas</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-3 font-semibold text-brand-dark align-top">Marketing</td>
+                      <td className="py-3 px-3 text-gray-600 align-top">Newsletter a remarketingové ponuky (len s výslovným súhlasom)</td>
+                      <td className="py-3 px-3 text-gray-600 align-top">čl. 6 ods. 1 písm. a) — súhlas</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-3 font-semibold text-brand-dark align-top">Analytika</td>
+                      <td className="py-3 px-3 text-gray-600 align-top">Meranie návštevnosti a správania na webe (Google Analytics 4) po udelení súhlasu</td>
+                      <td className="py-3 px-3 text-gray-600 align-top">čl. 6 ods. 1 písm. a) — súhlas</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-xs text-gray-400 mt-3">
+                Automatizované rozhodovanie ani profilovanie v zmysle čl. 22 GDPR <strong>nevykonávame</strong>.
+              </p>
             </div>
           </motion.section>
 
@@ -417,12 +438,13 @@ export const PrivacyPolicy = () => {
             <div className="pl-16 text-gray-600 leading-relaxed">
               <div className="grid md:grid-cols-2 gap-4">
                 {[
-                  { title: 'Právo na prístup', desc: 'Máte právo vedieť, aké údaje o vás spracovávame' },
-                  { title: 'Právo na opravu', desc: 'Môžete požiadať o opravu nesprávnych údajov' },
-                  { title: 'Právo na vymazanie', desc: 'Za určitých podmienok môžete žiadať o výmaz' },
-                  { title: 'Právo na obmedzenie', desc: 'Môžete obmedziť spracovanie vašich údajov' },
-                  { title: 'Právo na prenosnosť', desc: 'Môžete žiadať o prenos údajov k inému subjektu' },
-                  { title: 'Právo namietať', desc: 'Môžete namietať proti určitým typom spracovania' },
+                  { title: 'Právo na prístup (čl. 15)', desc: 'Máte právo vedieť, aké údaje o vás spracovávame, na aký účel a ako dlho' },
+                  { title: 'Právo na opravu (čl. 16)', desc: 'Môžete požiadať o opravu nesprávnych alebo neúplných osobných údajov' },
+                  { title: 'Právo na vymazanie (čl. 17)', desc: 'Za určitých podmienok môžete žiadať o výmaz svojich údajov (právo byť zabudnutý)' },
+                  { title: 'Právo na obmedzenie (čl. 18)', desc: 'Môžete žiadať o obmedzenie spracovania vašich údajov počas riešenia sporu' },
+                  { title: 'Právo na prenosnosť (čl. 20)', desc: 'Môžete žiadať o prenos vašich údajov k inému prevádzkovateľovi v štruktúrovanom formáte' },
+                  { title: 'Právo namietať (čl. 21)', desc: 'Môžete namietať voči spracovaniu na základe oprávneného záujmu alebo na účely priameho marketingu' },
+                  { title: 'Právo odvolať súhlas (čl. 7 ods. 3)', desc: 'Ak spracovanie prebieha na základe súhlasu, môžete ho kedykoľvek odvolať bez ujmy na zákonnosti spracovania pred odvolaním. Newsletter odber zrušíte kliknutím na odkaz v e-maile.' },
                 ].map((item, index) => (
                   <div key={index} className="bg-gray-50 rounded-orostone p-4">
                     <h4 className="font-sans font-bold text-brand-dark mb-1">{item.title}</h4>
@@ -433,8 +455,14 @@ export const PrivacyPolicy = () => {
               <div className="mt-6 p-4 bg-amber-50 border-l-4 border-brand-gold rounded-orostone">
                 <p className="text-sm">
                   <strong>Ako uplatniť svoje práva?</strong><br />
-                  Napíšte nám na <span className="text-brand-gold">info@orostone.sk</span>.
-                  Na vašu žiadosť odpovieme do 30 dní.
+                  Napíšte nám na <a href="mailto:info@orostone.sk" className="text-brand-gold hover:underline">info@orostone.sk</a> alebo
+                  zavolajte na <a href="tel:+421917588738" className="text-brand-gold hover:underline">+421 917 588 738</a>.
+                  Na vašu žiadosť odpovieme do 30 dní (podľa čl. 12 ods. 3 GDPR).
+                </p>
+                <p className="text-sm mt-3">
+                  <strong>Sťažnosť dozornému orgánu:</strong> Máte právo podať sťažnosť Úradu na ochranu osobných údajov SR:{' '}
+                  Hraničná 12, 820 07 Bratislava 27,{' '}
+                  <a href="https://dataprotection.gov.sk" target="_blank" rel="noopener noreferrer" className="text-brand-gold hover:underline">dataprotection.gov.sk</a>.
                 </p>
               </div>
             </div>

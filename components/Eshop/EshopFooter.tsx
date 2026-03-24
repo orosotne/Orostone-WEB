@@ -67,6 +67,12 @@ const NewsletterWidget: React.FC = () => {
         </button>
       </div>
       {status === 'error' && <p className="text-red-400 text-xs">{msg}</p>}
+      <p className="text-[11px] text-gray-500 leading-relaxed">
+        Prihlásením súhlasíte so zasielaním noviniek. Odhlásiť sa môžete kedykoľvek.{' '}
+        <Link to="/ochrana-sukromia" target="_blank" className="underline hover:text-gray-300">
+          Ochrana súkromia
+        </Link>
+      </p>
     </form>
   );
 };
@@ -281,6 +287,11 @@ export const EshopFooter: React.FC = () => {
               </div>
               <div className="text-[11px] leading-relaxed text-gray-500 max-w-2xl">
                 Orostone s.r.o., Landererova 8, 811 09 Bratislava - mestská časť Staré Mesto, IČO: 55 254 772, DIČ: 2121930580, IČ DPH: SK2121930580. Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B.
+              </div>
+              <div className="text-[11px] text-gray-500/80">
+                Alternatívne riešenie sporov: <a href="https://www.soi.sk" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 underline underline-offset-2">Slovenská obchodná inšpekcia (SOI)</a>
+                {' · '}
+                <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 underline underline-offset-2">Online riešenie sporov (ODR)</a>
               </div>
             </div>
             

@@ -4,17 +4,15 @@ import { X, Loader2, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { subscribeToNewsletter } from '../../services/newsletter.service';
 
-const COOKIE_KEY = 'orostone-newsletter-popup';
+const LS_KEY = 'orostone-newsletter-popup';
 const DELAY_MS = 8000;
 
-function getCookie(name: string): string | null {
-  const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-  return match ? decodeURIComponent(match[2]) : null;
+function getPopupState(): string | null {
+  try { return localStorage.getItem(LS_KEY); } catch { return null; }
 }
 
-function setCookie(name: string, value: string, days: number) {
-  const expires = new Date(Date.now() + days * 864e5).toUTCString();
-  document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/; SameSite=Lax`;
+function setPopupState(value: string) {
+  try { localStorage.setItem(LS_KEY, value); } catch { /* ignore */ }
 }
 
 export const NewsletterPopup: React.FC = () => {
@@ -24,7 +22,7 @@ export const NewsletterPopup: React.FC = () => {
   const [errorMsg, setErrorMsg] = useState('');
 
   useEffect(() => {
-    if (getCookie(COOKIE_KEY)) return;
+    if (getPopupState()) return;
 
     const timer = setTimeout(() => setVisible(true), DELAY_MS);
     return () => clearTimeout(timer);
@@ -32,7 +30,7 @@ export const NewsletterPopup: React.FC = () => {
 
   const dismiss = () => {
     setVisible(false);
-    setCookie(COOKIE_KEY, 'dismissed', 30);
+    setPopupState('dismissed');
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -44,7 +42,7 @@ export const NewsletterPopup: React.FC = () => {
 
     if (result.success) {
       setStatus('success');
-      setCookie(COOKIE_KEY, 'done', 30);
+      setPopupState('done');
     } else {
       setStatus('error');
       setErrorMsg(result.error || 'Niečo sa nepodarilo. Skúste to znova.');

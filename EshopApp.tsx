@@ -28,6 +28,7 @@ const VOP = lazyWithRetry(() => import('./pages/VOP').then(m => ({ default: m.VO
 const DopravaAPlatba = lazyWithRetry(() => import('./pages/DopravaAPlatba').then(m => ({ default: m.DopravaAPlatba })));
 const ReklamacieAVratenie = lazyWithRetry(() => import('./pages/ReklamacieAVratenie').then(m => ({ default: m.ReklamacieAVratenie })));
 const SinterovanyKamen = lazyWithRetry(() => import('./pages/SinterovanyKamen').then(m => ({ default: m.SinterovanyKamen })));
+const OdstupeniOdZmluvy = lazyWithRetry(() => import('./pages/OdstupeniOdZmluvy').then(m => ({ default: m.OdstupeniOdZmluvy })));
 
 // Prefetch lazy chunks after first idle
 if (typeof window !== 'undefined') {
@@ -172,6 +173,7 @@ const EshopAppContent = () => {
           {/* Info Pages */}
           <Route path="/doprava" element={<Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}><DopravaAPlatba /></Suspense>} />
           <Route path="/reklamacie" element={<Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}><ReklamacieAVratenie /></Suspense>} />
+          <Route path="/odstupenie-od-zmluvy" element={<Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}><OdstupeniOdZmluvy /></Suspense>} />
           <Route path="/kontakt" element={<EshopContact />} />
           <Route path="/objednavky" element={<ExternalRedirect to="https://shopify.com/101386420570/account" />} />
 

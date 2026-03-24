@@ -444,16 +444,17 @@ export const VOP = () => {
           {/* 14. E-shop: Odstúpenie od zmluvy */}
           <Section id="eshop-odstupenie" number="14" title="E-shop: Odstúpenie od zmluvy (spotrebiteľ)">
             <SubSection number="14.1">
-              Klient – spotrebiteľ má právo odstúpiť od zmluvy bez uvedenia dôvodu do <strong>14 dní</strong> odo dňa prevzatia tovaru.
+              Klient – spotrebiteľ má právo odstúpiť od zmluvy bez uvedenia dôvodu do <strong>14 dní</strong> odo dňa prevzatia tovaru, v súlade s § 7 zákona č. 102/2014 Z.z. o ochrane spotrebiteľa pri predaji tovaru na základe zmluvy uzavretej na diaľku.
             </SubSection>
             <SubSection number="14.2">
-              Odstúpenie od zmluvy je potrebné zaslať písomne na e-mail info@orostone.sk alebo poštou na adresu sídla spoločnosti.
+              Odstúpenie od zmluvy je potrebné zaslať písomne na e-mail info@orostone.sk alebo poštou na adresu sídla spoločnosti pred uplynutím 14-dňovej lehoty. Klient môže využiť{' '}
+              <Link to="/odstupenie-od-zmluvy" className="text-brand-gold hover:underline">vzorový formulár na odstúpenie od zmluvy</Link>.
             </SubSection>
             <SubSection number="14.3" highlight>
-              <strong>Podmienky vrátenia:</strong> Tovar musí byť nepoužitý, nepoškodený a v pôvodnom obale. Klient znáša náklady na vrátenie tovaru.
+              <strong>Podmienky vrátenia:</strong> Tovar musí byť nepoužitý, nepoškodený a v pôvodnom obale. Klient znáša priame náklady na vrátenie tovaru.
             </SubSection>
             <SubSection number="14.4">
-              Spoločnosť Orostone vráti Klientovi všetky platby do 14 dní od doručenia vráteného tovaru, a to rovnakým spôsobom, akým boli prijaté.
+              Spoločnosť Orostone vráti Klientovi všetky platby vrátane nákladov na doručenie (vo výške zodpovedajúcej najlacnejšiemu ponúkanému spôsobu doručenia) do 14 dní od doručenia oznámenia o odstúpení od zmluvy. Spoločnosť je oprávnená zadržať vrátenie platby až do prijatia tovaru alebo dokladu o jeho odoslaní. Vrátenie platby prebehne rovnakým spôsobom, akým bola platba prijatá.
             </SubSection>
             <SubSection number="14.5">
               Právo na odstúpenie od zmluvy sa nevzťahuje na tovar zhotovený podľa osobitných požiadaviek Klienta (v e-shope sa štandardne nepredáva).
@@ -482,13 +483,17 @@ export const VOP = () => {
               Spoločnosť Orostone si vyhradzuje právo na zmenu týchto VOP. Aktuálne znenie VOP je vždy zverejnené na <a href="https://orostone.sk/vop" className="text-brand-gold hover:underline">www.orostone.sk/vop</a>.
             </SubSection>
             <SubSection number="16.2">
-              Vzťahy neupravené týmito VOP sa riadia príslušnými ustanoveniami Občianskeho zákonníka, Obchodného zákonníka a zákona č. 250/2007 Z.z. o ochrane spotrebiteľa.
+              Vzťahy neupravené týmito VOP sa riadia príslušnými ustanoveniami zákona č. 40/1964 Zb. Občiansky zákonník, zákona č. 513/1991 Zb. Obchodný zákonník, zákona č. 250/2007 Z.z. o ochrane spotrebiteľa a zákona č. 102/2014 Z.z. o ochrane spotrebiteľa pri predaji na diaľku.
             </SubSection>
             <SubSection number="16.3">
-              Pre riešenie sporov je príslušný súd Slovenskej republiky podľa sídla spoločnosti Orostone.
+              Pre riešenie sporov je príslušný súd Slovenskej republiky podľa platných právnych predpisov SR. Na spotrebiteľské zmluvy sa vzťahujú príslušné ustanovenia zákona č. 250/2007 Z.z., ktoré umožňujú spotrebiteľovi uplatniť nárok aj v mieste svojho bydliska.
             </SubSection>
             <SubSection number="16.4">
-              V prípade spotrebiteľských sporov má Klient – spotrebiteľ právo obrátiť sa na subjekt alternatívneho riešenia sporov (SOI – Slovenská obchodná inšpekcia).
+              V prípade spotrebiteľských sporov má Klient – spotrebiteľ právo obrátiť sa na subjekt alternatívneho riešenia sporov podľa zákona č. 391/2015 Z.z. Príslušným subjektom ARS je:{' '}
+              <strong>Slovenská obchodná inšpekcia (SOI)</strong>, Bajkalská 21/A, 827 99 Bratislava,{' '}
+              <a href="https://www.soi.sk/sk/alternativne-riesenie-spotrebitelskych-sporov.soi" target="_blank" rel="noopener noreferrer" className="text-brand-gold hover:underline">www.soi.sk</a>.
+              {' '}Spotrebiteľ môže podať návrh aj prostredníctvom platformy riešenia sporov online (ODR):{' '}
+              <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" className="text-brand-gold hover:underline">ec.europa.eu/consumers/odr</a>.
             </SubSection>
             <SubSection number="16.5">
               Ak sa akékoľvek ustanovenie týchto VOP stane neplatným alebo nevymáhateľným, nemá to vplyv na platnosť ostatných ustanovení.

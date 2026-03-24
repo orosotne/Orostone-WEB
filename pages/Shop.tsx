@@ -1009,7 +1009,7 @@ export const Shop = () => {
                         </h3>
                         <p className="text-lg font-bold text-brand-dark mt-2">
                           €{product.pricePerM2}
-                          <span className="text-sm font-normal text-gray-400">/m²</span>
+                          <span className="text-sm font-normal text-gray-400">/m² s DPH</span>
                         </p>
                       </div>
                     </div>
