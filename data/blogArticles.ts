@@ -4,7 +4,12 @@ import { BLOG_AUTHOR_OROSTONE } from './blogTypes';
 
 // Completed articles
 import { ARTICLE_01 } from './articles/article-01-problems';
+import { ARTICLE_02 } from './articles/article-02-hot-pans';
+import { ARTICLE_03 } from './articles/article-03-stain-test';
+import { ARTICLE_04 } from './articles/article-04-12mm-vs-20mm';
+import { ARTICLE_05 } from './articles/article-05-edges-chipping';
 import { ARTICLE_06 } from './articles/article-06-comparison';
+import { ARTICLE_07 } from './articles/article-07-certifications';
 import { ARTICLE_10 } from './articles/article-10-matte-vs-polished';
 import { ARTICLE_13 } from './articles/article-13-process';
 import { ARTICLE_16 } from './articles/article-16-worth-it';
@@ -12,181 +17,6 @@ import { ARTICLE_16 } from './articles/article-16-worth-it';
 // ---------------------------------------------------------------------------
 // Stub articles (content coming soon)
 // ---------------------------------------------------------------------------
-
-const ARTICLE_02: BlogArticle = {
-  id: 'hot-pans-sintered-stone',
-  slug: 'horuce-hrnce-na-sinterovanom-kameni',
-  category: 'risk-killers',
-  publishDate: '2026-03-03',
-  readTimeMinutes: 8,
-  heroImage: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200',
-  author: BLOG_AUTHOR_OROSTONE,
-  tags: ['sinterovaný kameň', 'tepelná odolnosť', 'horúce hrnce', 'kuchyňa'],
-  sk: {
-    title: 'Môžete položiť horúci hrniec na sinterovaný kameň?',
-    subtitle: 'Test tepelnej odolnosti sinterovaného kameňa v praxi',
-    excerpt: 'Zisti, či sinterovaný kameň skutočne vydrží horúce hrnce priamo z platne — a za akých podmienok.',
-    directAnswer: 'Sinterovaný kameň odolá teplotám do 1 200 °C a horúce hrnce na neho môžeš pokojne položiť. Na rozdiel od kremeňa či laminátu nehrozí poškodenie ani zmena farby.',
-    content: '<p>Článok sa pripravuje...</p>',
-    faqs: [
-      { question: 'Vydrží sinterovaný kameň horúci hrniec?', answer: 'Článok sa pripravuje...' },
-      { question: 'Je potrebná podložka pod horúce nádoby?', answer: 'Článok sa pripravuje...' },
-      { question: 'Aká je maximálna teplota pre sinterovaný kameň?', answer: 'Článok sa pripravuje...' },
-    ],
-  },
-  en: {
-    title: 'Can You Put Hot Pans on Sintered Stone?',
-    subtitle: 'Real-world heat resistance test of sintered stone',
-    excerpt: 'Find out if sintered stone truly handles hot pans straight from the stove — and under what conditions.',
-    directAnswer: 'Sintered stone withstands temperatures up to 1,200 °C and hot pans can safely be placed directly on it. Unlike quartz or laminate, there is no risk of damage or discoloration.',
-    content: '<p>Article coming soon...</p>',
-    faqs: [
-      { question: 'Can sintered stone handle hot pans?', answer: 'Article coming soon...' },
-      { question: 'Do I need a trivet on sintered stone?', answer: 'Article coming soon...' },
-      { question: 'What is the maximum temperature for sintered stone?', answer: 'Article coming soon...' },
-    ],
-  },
-};
-
-const ARTICLE_03: BlogArticle = {
-  id: 'sintered-stone-stain-test',
-  slug: 'skvrny-na-sinterovanom-kameni',
-  category: 'risk-killers',
-  publishDate: '2026-03-10',
-  readTimeMinutes: 9,
-  heroImage: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200',
-  author: BLOG_AUTHOR_OROSTONE,
-  tags: ['sinterovaný kameň', 'škvrny', 'káva', 'víno', 'kurkuma', 'test'],
-  sk: {
-    title: 'Zafarbí sa sinterovaný kameň? Test s kávou, vínom a kurkumou',
-    subtitle: 'Reálny test odolnosti sinterovaného kameňa voči najčastejším škvrnotvorným látkam',
-    excerpt: 'Testovali sme sinterovaný kameň s kávou, vínom a kurkumou. Výsledky ťa možno prekvapia.',
-    directAnswer: 'Sinterovaný kameň má takmer nulovú pórovitosť (pod 0,1 %), čo znamená, že káva, víno ani kurkuma do povrchu neprenikajú. Škvrny stačí zotrieť vlhkou handrou.',
-    content: '<p>Článok sa pripravuje...</p>',
-    faqs: [
-      { question: 'Zanecháva káva škvrny na sinterovanom kameni?', answer: 'Článok sa pripravuje...' },
-      { question: 'Je potrebné impregnačné ošetrenie?', answer: 'Článok sa pripravuje...' },
-      { question: 'Čo ak škvrna zaschne?', answer: 'Článok sa pripravuje...' },
-    ],
-  },
-  en: {
-    title: 'Does Sintered Stone Stain? Coffee/Wine/Turmeric Test',
-    subtitle: 'Real stain resistance test against the most common culprits',
-    excerpt: 'We tested sintered stone with coffee, wine, and turmeric. The results may surprise you.',
-    directAnswer: 'Sintered stone has near-zero porosity (under 0.1%), meaning coffee, wine, and turmeric cannot penetrate the surface. Stains wipe off with a damp cloth.',
-    content: '<p>Article coming soon...</p>',
-    faqs: [
-      { question: 'Does coffee stain sintered stone?', answer: 'Article coming soon...' },
-      { question: 'Does sintered stone need sealing?', answer: 'Article coming soon...' },
-      { question: 'What if a stain dries on sintered stone?', answer: 'Article coming soon...' },
-    ],
-  },
-};
-
-const ARTICLE_04: BlogArticle = {
-  id: '12mm-vs-20mm-thickness',
-  slug: '12mm-vs-20mm-hrubka',
-  category: 'risk-killers',
-  publishDate: '2026-03-17',
-  readTimeMinutes: 10,
-  heroImage: 'https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1200',
-  author: BLOG_AUTHOR_OROSTONE,
-  tags: ['sinterovaný kameň', 'hrúbka', '12mm', '20mm', 'kuchyňa'],
-  sk: {
-    title: '12 mm vs 20 mm: aká hrúbka je správna pre tvoju kuchyňu?',
-    subtitle: 'Porovnanie hrúbok sinterovaného kameňa — kedy zvoliť tenkú a kedy hrubú dosku',
-    excerpt: 'Hrúbka dosky ovplyvňuje odolnosť, cenu aj estetiku. Porovnaj si, čo je pre teba najlepšie.',
-    directAnswer: '20 mm dosky sú odolnejšie a lepšie pre kuchynské pracovné dosky s výrezmi. 12 mm dosky sú vhodné pre obklady, steny a aplikácie bez výrezov. Pre kuchynské linky odporúčame 20 mm.',
-    content: '<p>Článok sa pripravuje...</p>',
-    faqs: [
-      { question: 'Stačí 12 mm doska na kuchynskú linku?', answer: 'Článok sa pripravuje...' },
-      { question: 'Je 20 mm doska výrazne drahšia?', answer: 'Článok sa pripravuje...' },
-      { question: 'Aká hrúbka je najlepšia pre ostrovček?', answer: 'Článok sa pripravuje...' },
-    ],
-  },
-  en: {
-    title: '12mm vs 20mm: Which Thickness Is Right?',
-    subtitle: 'Comparing sintered stone thicknesses — when to choose thin vs thick slabs',
-    excerpt: 'Slab thickness affects durability, price, and aesthetics. Compare which is best for you.',
-    directAnswer: '20mm slabs are more durable and better suited for kitchen countertops with cutouts. 12mm slabs work well for cladding, walls, and applications without cutouts. We recommend 20mm for kitchen worktops.',
-    content: '<p>Article coming soon...</p>',
-    faqs: [
-      { question: 'Is a 12mm slab enough for a kitchen countertop?', answer: 'Article coming soon...' },
-      { question: 'Is a 20mm slab significantly more expensive?', answer: 'Article coming soon...' },
-      { question: 'What thickness is best for an island?', answer: 'Article coming soon...' },
-    ],
-  },
-};
-
-const ARTICLE_05: BlogArticle = {
-  id: 'edges-chipping-profiles',
-  slug: 'hrany-a-profily-chipovanie',
-  category: 'risk-killers',
-  publishDate: '2026-03-24',
-  readTimeMinutes: 8,
-  heroImage: 'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=1200',
-  author: BLOG_AUTHOR_OROSTONE,
-  tags: ['sinterovaný kameň', 'hrany', 'profily', 'chipovanie', 'odolnosť'],
-  sk: {
-    title: 'Hrany: prečo väčšina odštiepení vzniká na profiloch',
-    subtitle: 'Aký profil hrany zvoliť, aby si predišiel chipovaniu sinterovaného kameňa',
-    excerpt: 'Správny profil hrany je kľúčový pre dlhú životnosť dosky. Zisti, ktorý je najbezpečnejší.',
-    directAnswer: 'Väčšina odštiepení na sinterovanom kameni vzniká na ostrých 90° hranách. Zaoblené profily (half-bullnose, bevel) znižujú riziko chipovania až 3×. Pre kuchynské dosky vždy odporúčame minimálne 2 mm chamfer.',
-    content: '<p>Článok sa pripravuje...</p>',
-    faqs: [
-      { question: 'Aký profil hrany je najodolnejší?', answer: 'Článok sa pripravuje...' },
-      { question: 'Prečo sa ostrá hrana odštepuje?', answer: 'Článok sa pripravuje...' },
-      { question: 'Dá sa profil hrany zmeniť dodatočne?', answer: 'Článok sa pripravuje...' },
-    ],
-  },
-  en: {
-    title: 'Edges: Why Most Chips Happen on Profiles',
-    subtitle: 'Which edge profile to choose to prevent sintered stone chipping',
-    excerpt: 'The right edge profile is key to long-lasting slabs. Find out which is safest.',
-    directAnswer: 'Most chips on sintered stone occur on sharp 90° edges. Rounded profiles (half-bullnose, bevel) reduce chipping risk by up to 3×. For kitchen countertops, we always recommend at least a 2mm chamfer.',
-    content: '<p>Article coming soon...</p>',
-    faqs: [
-      { question: 'Which edge profile is most durable?', answer: 'Article coming soon...' },
-      { question: 'Why do sharp edges chip?', answer: 'Article coming soon...' },
-      { question: 'Can the edge profile be changed later?', answer: 'Article coming soon...' },
-    ],
-  },
-};
-
-const ARTICLE_07: BlogArticle = {
-  id: 'certifications-sintered-stone',
-  slug: 'certifikacie-sinterovany-kamen',
-  category: 'trust-builders',
-  publishDate: '2026-04-07',
-  readTimeMinutes: 7,
-  heroImage: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200',
-  author: BLOG_AUTHOR_OROSTONE,
-  tags: ['sinterovaný kameň', 'certifikácie', 'kvalita', 'normy'],
-  sk: {
-    title: 'Aké certifikácie majú zmysel (a ktoré sú marketing)',
-    subtitle: 'Prehľad certifikácií sinterovaného kameňa — čo naozaj zaručuje kvalitu',
-    excerpt: 'Nie každá certifikácia znamená kvalitu. Rozlíšte zmysluplné normy od marketingových nástrojov.',
-    directAnswer: 'Zmysluplné certifikácie pre sinterovaný kameň zahŕňajú CE označenie, testy podľa ISO 10545 a certifikáty potravinovej bezpečnosti. Mnoho „certifikátov" na trhu sú len interné testy výrobcov bez nezávislého overenia.',
-    content: '<p>Článok sa pripravuje...</p>',
-    faqs: [
-      { question: 'Aké certifikácie by mal mať sinterovaný kameň?', answer: 'Článok sa pripravuje...' },
-      { question: 'Čo znamená CE označenie?', answer: 'Článok sa pripravuje...' },
-      { question: 'Ako overím pravosť certifikátu?', answer: 'Článok sa pripravuje...' },
-    ],
-  },
-  en: {
-    title: 'What Certifications Matter (and Which Are Fluff)',
-    subtitle: 'A guide to sintered stone certifications — what truly guarantees quality',
-    excerpt: 'Not every certification means quality. Distinguish meaningful standards from marketing tools.',
-    directAnswer: 'Meaningful certifications for sintered stone include CE marking, ISO 10545 tests, and food-safety certificates. Many "certifications" on the market are just internal manufacturer tests without independent verification.',
-    content: '<p>Article coming soon...</p>',
-    faqs: [
-      { question: 'What certifications should sintered stone have?', answer: 'Article coming soon...' },
-      { question: 'What does CE marking mean?', answer: 'Article coming soon...' },
-      { question: 'How can I verify a certification is real?', answer: 'Article coming soon...' },
-    ],
-  },
-};
 
 const ARTICLE_08: BlogArticle = {
   id: 'spot-low-quality-slabs',
@@ -577,11 +407,6 @@ const ARTICLE_21: BlogArticle = {
 // All stub articles collected
 // ---------------------------------------------------------------------------
 const STUB_ARTICLES: BlogArticle[] = [
-  ARTICLE_02,
-  ARTICLE_03,
-  ARTICLE_04,
-  ARTICLE_05,
-  ARTICLE_07,
   ARTICLE_08,
   ARTICLE_09,
   ARTICLE_11,
@@ -600,7 +425,12 @@ const STUB_ARTICLES: BlogArticle[] = [
 // ---------------------------------------------------------------------------
 const ALL_ARTICLES: BlogArticle[] = [
   ARTICLE_01,
+  ARTICLE_02,
+  ARTICLE_03,
+  ARTICLE_04,
+  ARTICLE_05,
   ARTICLE_06,
+  ARTICLE_07,
   ARTICLE_10,
   ARTICLE_13,
   ARTICLE_16,

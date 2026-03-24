@@ -117,27 +117,19 @@ export const ARTICLE_01: BlogArticle = {
 
 <h3>12 mm dosky</h3>
 <ul>
-  <li>Vhodné pre kuchynské dosky, ale s <strong>obmedzeným previsom</strong></li>
+  <li>Náš <strong>štandard pre všetky aplikácie</strong> — kuchynské dosky, obklady, kúpeľne</li>
   <li>Maximálny previs bez podpery: <strong>200 mm</strong> (cca 1/3 hĺbky dosky)</li>
-  <li>Lomová sila: približne <strong>5 000 N</strong> — stačí pre bežné použitie, nie pre veľké ostrovy</li>
-  <li><strong>Kedy je 12 mm chybou:</strong> veľké kuchynské ostrovy bez konzol, barové výsuvy, dosky s viacerými výrezmi blízko seba</li>
-</ul>
-
-<h3>20 mm dosky</h3>
-<ul>
-  <li>Náš <strong>štandard pre kuchynské dosky</strong> a ostrovy</li>
-  <li>Maximálny previs bez podpery: stále odporúčame max <strong>200 mm</strong>, ale štrukturálna rezerva je výrazne vyššia</li>
-  <li>Lomová sila: približne <strong>16 000 N</strong> — trojnásobok oproti 12 mm</li>
-  <li>Umožňuje lepšie profilovanie hrán a odolnejšie výrezy</li>
+  <li>Lomová sila: približne <strong>5 000 N</strong> — pri správnom podklade a plánovaní výrezov plne dostačujúce</li>
+  <li><strong>Kedy treba zvýšenú pozornosť:</strong> veľké ostrovy bez konzol, barové výsuvy nad 200 mm, dosky s viacerými výrezmi blízko seba</li>
 </ul>
 
 <div class="article-highlight">
-  <p><strong>Porovnanie lomovej sily:</strong> 20 mm doska má približne <strong>16 000 N</strong> oproti <strong>5 000 N</strong> pri 12 mm — to je trojnásobný rozdiel v odolnosti. Pre kuchynské ostrovy je voľba jasná.</p>
+  <p><strong>Na trhu existujú aj 20 mm dosky</strong> s lomovou silou ~16 000 N — trojnásobok oproti 12 mm. V Orostone pracujeme výhradne s 12 mm, ktorá pri správnom plánovaní a inštalácii pokrýva všetky bežné aplikácie vrátane kuchynských dosiek. Kľúčom je správna podkladová konštrukcia a dodržanie pravidiel pre výrezy a previs.</p>
 </div>
 
 <div class="article-tip">
   <p><strong>Čo robíme v Orostone</strong></p>
-  <p>Pre kuchynské ostrovy vždy odporúčame 20 mm. Pre bežné L-tvarové kuchyne s podperou je 12 mm prijateľných, ale vždy ťa informujeme o rozdieloch. Každý previs nad 200 mm musí mať konštrukčnú podperu — bez výnimiek.</p>
+  <p>Pred každou zákazkou posúdime rozmiestnenie výrezov, dĺžku previsu a podkladovú konštrukciu. Ak projekt vyžaduje špeciálny prístup — napríklad dlhý barový výsun — navrhneme riešenie s konzolami. Každý previs nad 200 mm musí mať konštrukčnú podperu — bez výnimiek.</p>
 </div>
 
 <div class="article-cta">
@@ -287,7 +279,7 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Môžem použiť 12 mm dosku na kuchynský ostrov?',
-        answer: 'Záleží na veľkosti. Pre menšie ostrovy (do 1 800 mm) s podperou po celej dĺžke je 12 mm prijateľných. Pre väčšie ostrovy, barové previsy alebo dosky s viacerými výrezmi odporúčame 20 mm. Lomová sila 20 mm dosky je približne 16 000 N oproti 5 000 N pri 12 mm — trojnásobný rozdiel.',
+        answer: 'Áno, pri správnom plánovaní. Kľúčové je zabezpečiť dostatočnú podkladovú konštrukciu (plný podklad alebo rám skriniek bez medzier), dodržať max. previs 200 mm a správne naplánovať výrezy. V Orostone pracujeme výhradne s 12 mm — pre ostrovy vždy posúdime projekt individuálne.',
       },
       {
         question: 'Čo ak spadne hrniec na hranu dosky?',
@@ -311,7 +303,7 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Je 3 mm sinterovaný kameň vhodný na kuchynskú dosku?',
-        answer: 'Rozhodne nie. 3 mm dosky sú určené výlučne na obklady stien, fasády, dvere a dekoratívne aplikácie. Nemajú dostatočnú štrukturálnu pevnosť pre kuchynské pracovné povrchy. Minimálna hrúbka pre kuchyňu je 12 mm, pre ostrovy a väčšie plochy odporúčame 20 mm.',
+        answer: 'Rozhodne nie. 3 mm dosky sú určené výlučne na obklady stien, fasády, dvere a dekoratívne aplikácie. Nemajú dostatočnú štrukturálnu pevnosť pre kuchynské pracovné povrchy. Minimálna hrúbka pre kuchynskú dosku je 12 mm.',
       },
       {
         question: 'Ako spoznám, že inštalatér nemá skúsenosti so sinterovaným kameňom?',
@@ -319,7 +311,7 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Aký maximálny previs môže mať doska bez podpery?',
-        answer: 'Pre 12 mm aj 20 mm dosky odporúčame max 200 mm (cca 1/3 hĺbky dosky). Pri 20 mm je štrukturálna rezerva väčšia, ale dodržiavame rovnakú normu. Ak potrebuješ väčší previs — napríklad pre barové sedenie — je nutná konštrukčná podpera.',
+        answer: 'Pre 12 mm dosky odporúčame max 200 mm (cca 1/3 hĺbky dosky). Ak potrebuješ väčší previs — napríklad pre barové sedenie — je nutná konštrukčná podpera (kovová konzola). Toto pravidlo dodržiavame bez výnimiek.',
       },
       {
         question: 'Môžem si nechať dosku prepraviť bežnou firmou?',

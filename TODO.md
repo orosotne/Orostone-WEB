@@ -36,7 +36,7 @@
 | 1.15 | Image alt texty — popisné SEO alt atribúty | MEDIUM | ✅ | `ShopProductDetail.tsx` |
 | 1.16 | Responsive images — srcset/sizes | LOW | ✅ | `ShopProductDetail.tsx` |
 | 1.17 | Performance hints — dns-prefetch, preconnect | LOW | ✅ | `eshop.html` |
-| 1.18 | Registrácia v Google Search Console | HIGH | 🔲 | Manuálne — pridať eshop.orostone.sk, submitnúť sitemap |
+| 1.18 | Registrácia v Google Search Console | HIGH | ✅ | Hotové 2026-03-23 |
 | 1.19 | Otestovať Rich Results (Google Rich Results Test) | HIGH | 🔲 | Manuálne — https://search.google.com/test/rich-results |
 | 1.20 | Otestovať OG tagy (Facebook Debugger, Twitter Validator) | MEDIUM | 🔲 | Manuálne — https://developers.facebook.com/tools/debug/ |
 | 1.21 | Lighthouse audit + Core Web Vitals | MEDIUM | 🔲 | Manuálne — Chrome DevTools → Lighthouse |
@@ -59,7 +59,7 @@
 | 3.1 | Shop page redesign — InspirationSection, SampleLeadSection | — | ✅ | Commitnuté |
 | 3.2 | RotatingBadge komponent | — | ✅ | Commitnuté |
 | 3.3 | Instagram feed integrácia (Supabase Edge Functions) | — | ✅ | `useInstagramFeed`, supabase functions |
-| 3.4 | Košík a checkout flow | HIGH | 🔲 | |
+| 3.4 | Košík a checkout flow | HIGH | ✅ | Shopify hosted checkout, redirect cez `checkoutUrl` + return_to thank-you stránka |
 | 3.5 | Kontaktný formulár — SEO optimalizovaná stránka | MEDIUM | 🔲 | |
 | 3.6 | Zákaznícke recenzie — zbieranie a zobrazovanie | MEDIUM | 🔲 | |
 | 3.7 | Wishlist / obľúbené produkty | LOW | 🔲 | |
@@ -95,7 +95,7 @@
 
 **Nasledujúce kroky (najbližšie):**
 1. ✅ ~~Push na GitHub~~ → 🔲 Spustiť `git push origin main` v termináli
-2. 🔲 Google Search Console — registrácia a submit sitemapy
+2. ✅ ~~Google Search Console — registrácia a submit sitemapy~~
 3. 🔲 Google Business Profile — claimnúť a optimalizovať
 4. 🔲 GA4 Analytics — implementovať tracking
 5. 🔲 Otestovať structured data cez Rich Results Test
@@ -104,7 +104,7 @@
 **Strednodobé (1–4 týždne):**
 - Blog články optimalizované pre SEO
 - OG obrázky pre produkty
-- Košík a checkout flow
+- ~~Košík a checkout flow~~ ✅
 - Cookie consent banner
 
 **Dlhodobé (1–3 mesiace):**

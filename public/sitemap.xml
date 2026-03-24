@@ -9,6 +9,14 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- O kameni -->
+  <url>
+    <loc>https://orostone.sk/o-kameni</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Informačná stránka o sinterovanom kameni (FAQ, high-value SEO) -->
   <url>
     <loc>https://orostone.sk/sinterovany-kamen</loc>
@@ -19,7 +27,7 @@
 
   <!-- Blog -->
   <url>
-    <loc>https://orostone.sk/blog</loc>
+    <loc>https://eshop.orostone.sk/blog</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -27,61 +35,61 @@
 
   <!-- Blog articles -->
   <url>
-    <loc>https://orostone.sk/blog/problemy-so-sinterovanym-kamenom</loc>
+    <loc>https://eshop.orostone.sk/blog/problemy-so-sinterovanym-kamenom</loc>
     <lastmod>2026-02-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://orostone.sk/blog/sinterovany-kamen-vs-kvarcit-vs-keramika-vs-porcelan</loc>
+    <loc>https://eshop.orostone.sk/blog/sinterovany-kamen-vs-kvarcit-vs-keramika-vs-porcelan</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://orostone.sk/blog/matny-vs-leskly-povrch</loc>
+    <loc>https://eshop.orostone.sk/blog/matny-vs-leskly-povrch</loc>
     <lastmod>2026-02-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://orostone.sk/blog/od-merania-po-instalaciu-proces-orostone</loc>
+    <loc>https://eshop.orostone.sk/blog/od-merania-po-instalaciu-proces-orostone</loc>
     <lastmod>2026-03-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://orostone.sk/blog/oplati-sa-sinterovany-kamen</loc>
+    <loc>https://eshop.orostone.sk/blog/oplati-sa-sinterovany-kamen</loc>
     <lastmod>2026-03-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://orostone.sk/blog/horuce-hrnce-na-sinterovanom-kameni</loc>
+    <loc>https://eshop.orostone.sk/blog/horuce-hrnce-na-sinterovanom-kameni</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://orostone.sk/blog/skvrny-na-sinterovanom-kameni</loc>
+    <loc>https://eshop.orostone.sk/blog/skvrny-na-sinterovanom-kameni</loc>
     <lastmod>2026-03-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://orostone.sk/blog/12mm-vs-20mm-hrubka</loc>
+    <loc>https://eshop.orostone.sk/blog/12mm-vs-20mm-hrubka</loc>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://orostone.sk/blog/hrany-a-profily-chipovanie</loc>
+    <loc>https://eshop.orostone.sk/blog/hrany-a-profily-chipovanie</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://orostone.sk/blog/certifikacie-sinterovany-kamen</loc>
+    <loc>https://eshop.orostone.sk/blog/certifikacie-sinterovany-kamen</loc>
     <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
