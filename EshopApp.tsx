@@ -104,7 +104,7 @@ const NotFoundPage: React.FC = () => {
             Hlavná stránka
           </a>
           <a
-            href="/vsetky-produkty"
+            href="/kategoria/sintered-stone"
             className="inline-flex items-center justify-center gap-2 border border-gray-300 text-brand-dark px-6 py-3 rounded-lg text-sm tracking-wider uppercase font-semibold hover:border-brand-dark transition-all"
           >
             Všetky produkty
@@ -131,7 +131,7 @@ const EshopAppContent = () => {
           {/* Main Shop */}
           <Route path="/" element={<Shop />} />
           <Route path="/shop" element={<Navigate to="/" replace />} />
-          <Route path="/vsetky-produkty" element={<ProductCatalog />} />
+          <Route path="/vsetky-produkty" element={<Navigate to="/kategoria/sintered-stone" replace />} />
           
           {/* Categories */}
           <Route path="/kategoria/:slug" element={<CategoryPage />} />

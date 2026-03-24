@@ -72,7 +72,7 @@ export const CategoryPage: React.FC = () => {
             Kategória s týmto názvom neexistuje.
           </p>
           <Link
-            to="/vsetky-produkty"
+            to="/kategoria/sintered-stone"
             className="inline-flex items-center gap-2 bg-brand-dark text-white px-6 py-3 rounded-lg text-sm tracking-wider uppercase font-semibold hover:bg-brand-gold hover:text-brand-dark transition-all"
           >
             Všetky produkty
@@ -90,7 +90,16 @@ export const CategoryPage: React.FC = () => {
       <SEOHead
         title={`${category.name} | OROSTONE E-Shop`}
         description={category.description || `${category.name} — prémiové produkty od OROSTONE.`}
-        canonical={`https://orostone.sk/kategoria/${slug}`}
+        canonical={`https://eshop.orostone.sk/kategoria/${slug}${subCategory ? '/' + subCategory : ''}`}
+        structuredData={{
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'E-Shop', item: 'https://eshop.orostone.sk/' },
+            { '@type': 'ListItem', position: 2, name: category.name, item: `https://eshop.orostone.sk/kategoria/${slug}` },
+            ...(subCategoryName ? [{ '@type': 'ListItem', position: 3, name: subCategoryName, item: `https://eshop.orostone.sk/kategoria/${slug}/${subCategory}` }] : []),
+          ],
+        }}
       />
 
       {/* ==================== HERO ==================== */}
@@ -225,7 +234,7 @@ export const CategoryPage: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
-                to="/vsetky-produkty"
+                to="/kategoria/sintered-stone"
                 className="inline-flex items-center justify-center gap-2 bg-brand-dark text-white px-6 py-3 rounded-lg text-[11px] tracking-wider uppercase font-semibold hover:bg-brand-gold hover:text-brand-dark transition-all"
               >
                 Prehliadnuť produkty

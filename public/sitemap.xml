@@ -56,13 +56,67 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Katalóg produktov -->
   <url>
-    <loc>https://orostone.sk/vsetky-produkty</loc>
-    <lastmod>2026-03-17</lastmod>
+    <loc>https://orostone.sk/blog/horuce-hrnce-na-sinterovanom-kameni</loc>
+    <lastmod>2026-03-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://orostone.sk/blog/skvrny-na-sinterovanom-kameni</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://orostone.sk/blog/12mm-vs-20mm-hrubka</loc>
+    <lastmod>2026-03-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://orostone.sk/blog/hrany-a-profily-chipovanie</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://orostone.sk/blog/certifikacie-sinterovany-kamen</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Katalóg produktov — kategória sinterovaný kameň -->
+  <url>
+    <loc>https://eshop.orostone.sk/kategoria/sintered-stone</loc>
+    <lastmod>2026-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://eshop.orostone.sk/kategoria/sintered-stone/biele</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eshop.orostone.sk/kategoria/sintered-stone/bezove</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eshop.orostone.sk/kategoria/sintered-stone/sede</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://eshop.orostone.sk/kategoria/sintered-stone/cierne</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <!-- Produktové stránky -->

@@ -62,7 +62,7 @@ export const EshopNavbar: React.FC = () => {
     } else if (searchQuery.trim()) {
       // Prejdi na katalóg s vyhľadávaním
       setSearchOpen(false);
-      navigate(`/vsetky-produkty`);
+      navigate(`/kategoria/sintered-stone`);
     }
   }, [searchResults, searchQuery, handleSearchSelect, navigate]);
 
@@ -272,7 +272,7 @@ export const EshopNavbar: React.FC = () => {
                           </button>
                         ))}
                         <Link
-                          to="/vsetky-produkty"
+                          to="/kategoria/sintered-stone"
                           onClick={() => { setSearchOpen(false); setSearchQuery(''); }}
                           className="block px-4 py-3 text-center text-xs tracking-wider uppercase text-brand-gold font-semibold hover:bg-gray-50 border-t border-gray-100"
                         >
@@ -285,7 +285,7 @@ export const EshopNavbar: React.FC = () => {
                           Žiadne výsledky pre „{searchQuery}"
                         </p>
                         <Link
-                          to="/vsetky-produkty"
+                          to="/kategoria/sintered-stone"
                           onClick={() => { setSearchOpen(false); setSearchQuery(''); }}
                           className="inline-block mt-2 text-xs tracking-wider uppercase text-brand-gold font-semibold hover:underline"
                         >

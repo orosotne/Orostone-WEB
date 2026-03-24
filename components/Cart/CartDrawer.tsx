@@ -126,7 +126,7 @@ export const CartDrawer: React.FC = () => {
                   <p className="text-gray-500 mb-6">
                     Prezrite si naše skladové platne a pridajte ich do košíka.
                   </p>
-                  <Link to="/vsetky-produkty" onClick={closeCart}>
+                  <Link to="/kategoria/sintered-stone" onClick={closeCart}>
                     <Button className="bg-brand-gold text-brand-dark hover:bg-brand-dark hover:text-white">
                       Prezrieť produkty
                       <ArrowRight size={18} className="ml-2" />
