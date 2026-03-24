@@ -1,7 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { CheckCircle, Loader2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useShopifyProducts } from '../../hooks/useShopifyProducts';
 import { submitSampleLead } from '../../services/quotes.service';
+import { subscribeToNewsletter } from '../../services/newsletter.service';
 import { RotatingBadge } from '../UI/RotatingBadge';
 import { useHoneypot } from '../../hooks/useHoneypot';
 import { useTurnstile } from '../../hooks/useTurnstile';
@@ -21,6 +23,8 @@ export const SampleLeadSection: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+  const [agreedToVOP, setAgreedToVOP] = useState(false);
+  const [newsletterConsent, setNewsletterConsent] = useState(false);
   const { products } = useShopifyProducts();
   const { honeypotValue, setHoneypotValue, isBot } = useHoneypot();
   const { turnstileRef, turnstileToken, setTurnstileToken, verifyToken, reset: resetTurnstile } = useTurnstile();
@@ -40,6 +44,12 @@ export const SampleLeadSection: React.FC = () => {
     const phone = String(fd.get('phone') ?? '').trim();
     const dekor = String(fd.get('dekor') ?? '').trim();
 
+    if (!agreedToVOP) {
+      setStatus('error');
+      setErrorMsg('Prosím, súhlaste s VOP a ochranou osobných údajov.');
+      return;
+    }
+
     const valid = await verifyToken(turnstileToken);
     if (!valid) { setStatus('error'); setErrorMsg('Overenie zlyhalo, skúste znova.'); resetTurnstile(); return; }
 
@@ -51,6 +61,9 @@ export const SampleLeadSection: React.FC = () => {
     });
 
     if (result.success) {
+      if (newsletterConsent) {
+        await subscribeToNewsletter({ email, name, source: 'sample_lead' });
+      }
       setStatus('success');
     } else {
       setStatus('error');
@@ -241,6 +254,40 @@ export const SampleLeadSection: React.FC = () => {
                     </select>
                   </div>
 
+                  {/* VOP súhlas — povinný */}
+                  <label className="flex items-start gap-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={agreedToVOP}
+                      onChange={(e) => setAgreedToVOP(e.target.checked)}
+                      className="mt-0.5 w-4 h-4 rounded border-gray-300 accent-brand-gold cursor-pointer flex-shrink-0"
+                    />
+                    <span className="text-xs text-gray-500">
+                      Súhlasím s{' '}
+                      <Link to="/vop" target="_blank" rel="noopener noreferrer" className="underline hover:text-brand-dark">
+                        obchodnými podmienkami
+                      </Link>
+                      {' '}a{' '}
+                      <Link to="/ochrana-sukromia" target="_blank" rel="noopener noreferrer" className="underline hover:text-brand-dark">
+                        ochranou osobných údajov
+                      </Link>
+                      {' '}*
+                    </span>
+                  </label>
+
+                  {/* Newsletter súhlas — voliteľný */}
+                  <label className="flex items-start gap-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={newsletterConsent}
+                      onChange={(e) => setNewsletterConsent(e.target.checked)}
+                      className="mt-0.5 w-4 h-4 rounded border-gray-300 accent-brand-gold cursor-pointer flex-shrink-0"
+                    />
+                    <span className="text-xs text-gray-500">
+                      Súhlasím so zasielaním noviniek a marketingových ponúk na moju emailovú adresu (voliteľné)
+                    </span>
+                  </label>
+
                   {status === 'error' && (
                     <p className="text-red-500 text-sm">{errorMsg}</p>
                   )}
@@ -259,7 +306,7 @@ export const SampleLeadSection: React.FC = () => {
 
                   <button
                     type="submit"
-                    disabled={status === 'loading'}
+                    disabled={status === 'loading' || !agreedToVOP}
                     className="w-full flex items-center justify-center gap-3 bg-brand-dark text-white px-8 py-4 rounded-full text-sm font-bold uppercase tracking-wider hover:bg-brand-gold hover:text-brand-dark transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed mt-2"
                   >
                     {status === 'loading' ? (

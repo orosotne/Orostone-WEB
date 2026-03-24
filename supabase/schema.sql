@@ -60,6 +60,17 @@ CREATE TABLE quote_files (
     created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
+-- Newsletter odberi
+CREATE TABLE newsletter_subscribers (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    email TEXT UNIQUE NOT NULL,
+    name TEXT,
+    source TEXT NOT NULL DEFAULT 'unknown',
+    subscribed_at TIMESTAMPTZ DEFAULT NOW(),
+    unsubscribed_at TIMESTAMPTZ,
+    is_active BOOLEAN DEFAULT TRUE
+);
+
 -- ===========================================
 -- 3. INDEXY
 -- ===========================================
@@ -70,6 +81,8 @@ CREATE INDEX idx_quotes_created_at ON quotes(created_at DESC);
 CREATE INDEX idx_quote_files_quote_id ON quote_files(quote_id);
 CREATE INDEX idx_customers_email ON customers(email);
 CREATE INDEX idx_customers_status ON customers(status);
+CREATE INDEX idx_newsletter_email ON newsletter_subscribers(email);
+CREATE INDEX idx_newsletter_active ON newsletter_subscribers(is_active);
 
 -- ===========================================
 -- 4. FUNKCIE PRE UPDATED_AT
@@ -137,6 +150,29 @@ CREATE POLICY "Allow anonymous select" ON quotes
 
 -- Authenticated (admin) má plný prístup
 CREATE POLICY "Allow authenticated full access" ON quotes
+    FOR ALL
+    USING (auth.role() = 'authenticated');
+
+-- NEWSLETTER_SUBSCRIBERS policies
+ALTER TABLE newsletter_subscribers ENABLE ROW LEVEL SECURITY;
+
+-- Anonymous môže vkladať (subscribe)
+CREATE POLICY "Allow anonymous insert" ON newsletter_subscribers
+    FOR INSERT
+    WITH CHECK (true);
+
+-- Anonymous môže čítať vlastný záznam (upsert)
+CREATE POLICY "Allow anonymous select" ON newsletter_subscribers
+    FOR SELECT
+    USING (true);
+
+-- Anonymous môže updatovať (reaktivácia)
+CREATE POLICY "Allow anonymous update" ON newsletter_subscribers
+    FOR UPDATE
+    USING (true);
+
+-- Authenticated (admin) má plný prístup
+CREATE POLICY "Allow authenticated full access" ON newsletter_subscribers
     FOR ALL
     USING (auth.role() = 'authenticated');
 

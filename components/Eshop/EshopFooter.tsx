@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { 
+import {
   Facebook, Instagram, Youtube, Mail, Phone, MapPin,
-  CreditCard, Truck, Shield, Clock
+  CreditCard, Truck, Shield, Clock, CheckCircle, Loader2
 } from 'lucide-react';
 import { RotatingBadge } from '../UI/RotatingBadge';
 import { getVisibleCategories } from './EshopMegaMenu';
+import { subscribeToNewsletter } from '../../services/newsletter.service';
 
 const PAYMENT_MARKS = [
   { src: '/images/payments/visa.svg', alt: 'Visa' },
@@ -17,6 +18,58 @@ const PAYMENT_MARKS = [
 // ===========================================
 // COMPONENT
 // ===========================================
+
+const NewsletterWidget: React.FC = () => {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [msg, setMsg] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+    setStatus('loading');
+    const result = await subscribeToNewsletter({ email, source: 'footer' });
+    if (result.success) {
+      setStatus('success');
+      setMsg(result.alreadySubscribed ? 'Tento email je už prihlásený.' : 'Ďakujeme za prihlásenie!');
+    } else {
+      setStatus('error');
+      setMsg('Niečo sa nepodarilo. Skúste to znova.');
+    }
+  };
+
+  if (status === 'success') {
+    return (
+      <div className="flex items-center gap-2 text-sm text-brand-gold">
+        <CheckCircle size={16} />
+        <span>{msg}</span>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-2">
+      <div className="flex gap-2">
+        <input
+          type="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="vas@email.sk"
+          className="flex-1 bg-white/10 text-white placeholder-gray-500 text-sm px-4 py-2.5 rounded-full border border-white/20 focus:outline-none focus:border-brand-gold transition-colors"
+        />
+        <button
+          type="submit"
+          disabled={status === 'loading'}
+          className="px-4 py-2.5 bg-brand-gold text-brand-dark text-sm font-bold rounded-full hover:bg-white transition-colors disabled:opacity-60 flex-shrink-0"
+        >
+          {status === 'loading' ? <Loader2 size={16} className="animate-spin" /> : 'Odoberať'}
+        </button>
+      </div>
+      {status === 'error' && <p className="text-red-400 text-xs">{msg}</p>}
+    </form>
+  );
+};
 
 export const EshopFooter: React.FC = () => {
   const { pathname } = useLocation();
@@ -89,9 +142,15 @@ export const EshopFooter: React.FC = () => {
               Prémiové sinterované platne pre náročných zákazníkov. 
               Spájame odolnosť kameňa s precíznosťou moderných technológií.
             </p>
+            {/* Newsletter */}
+            <div className="mb-6">
+              <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Odoberajte novinky</p>
+              <NewsletterWidget />
+            </div>
+
             <div className="flex items-center gap-4">
-              <a 
-                href="https://www.facebook.com/orostone.sk" 
+              <a
+                href="https://www.facebook.com/orostone.sk"
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-colors"

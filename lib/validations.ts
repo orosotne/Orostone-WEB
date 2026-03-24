@@ -93,35 +93,6 @@ export const shippingSchema = z.object({
 
 export type ShippingFormData = z.infer<typeof shippingSchema>;
 
-// ===========================================
-// ORDER MODAL (DOPYT) SCHÉMA
-// ===========================================
-
-export const orderInquirySchema = z.object({
-  name: z
-    .string()
-    .min(2, 'Meno musí mať aspoň 2 znaky'),
-  email: z
-    .string()
-    .min(1, 'Email je povinný')
-    .email('Neplatný formát emailu'),
-  phone: z
-    .string()
-    .min(1, 'Telefón je povinný')
-    .regex(phoneRegex, 'Neplatný formát telefónu'),
-  note: z
-    .string()
-    .max(1000, 'Poznámka je príliš dlhá')
-    .optional(),
-  quantity: z
-    .number()
-    .min(1, 'Minimálne 1 platňa')
-    .max(100, 'Maximálne 100 platní'),
-  agreedToVOP: z
-    .literal(true, { errorMap: () => ({ message: 'Musíte súhlasiť s VOP' }) }),
-});
-
-export type OrderInquiryFormData = z.infer<typeof orderInquirySchema>;
 
 // ===========================================
 // ADRESA SCHÉMA
