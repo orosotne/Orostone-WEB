@@ -109,6 +109,16 @@ CREATE POLICY "Allow anonymous insert" ON customers
     FOR INSERT
     WITH CHECK (true);
 
+-- Anonymous môže čítať zákazníkov (potrebné pre findOrCreateCustomer a RETURNING po INSERT/UPSERT)
+CREATE POLICY "Allow anonymous select" ON customers
+    FOR SELECT
+    USING (true);
+
+-- Anonymous môže aktualizovať zákazníkov (potrebné pre upsert vracajúcich sa zákazníkov)
+CREATE POLICY "Allow anonymous update" ON customers
+    FOR UPDATE
+    USING (true);
+
 -- Authenticated (admin) má plný prístup
 CREATE POLICY "Allow authenticated full access" ON customers
     FOR ALL

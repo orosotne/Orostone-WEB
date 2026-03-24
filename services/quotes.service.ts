@@ -159,45 +159,29 @@ export async function submitSampleLead(data: SampleLeadFormData): Promise<Submit
 }
 
 /**
- * Nájde existujúceho zákazníka podľa emailu alebo vytvorí nového
+ * Nájde existujúceho zákazníka podľa emailu alebo vytvorí nového (upsert)
  */
 async function findOrCreateCustomer(data: CustomerInsert): Promise<Customer | null> {
-  // Najprv skús nájsť existujúceho zákazníka
-  const { data: existing } = await supabase
+  const { data: customer, error } = await supabase
     .from('customers')
-    .select()
-    .eq('email', data.email)
-    .single();
-
-  if (existing) {
-    // Aktualizuj údaje ak sa zmenili
-    const { data: updated } = await supabase
-      .from('customers')
-      .update({
+    .upsert(
+      {
+        email: data.email,
         name: data.name,
         phone: data.phone,
         city: data.city,
-      })
-      .eq('id', existing.id)
-      .select()
-      .single();
-
-    return updated || existing;
-  }
-
-  // Vytvor nového zákazníka
-  const { data: newCustomer, error } = await supabase
-    .from('customers')
-    .insert(data)
+      },
+      { onConflict: 'email' }
+    )
     .select()
     .single();
 
   if (error) {
-    console.error('Error creating customer:', error);
+    console.error('Error upserting customer:', error);
     return null;
   }
 
-  return newCustomer;
+  return customer;
 }
 
 // ===========================================
