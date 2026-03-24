@@ -130,6 +130,11 @@ CREATE POLICY "Allow anonymous insert" ON quotes
     FOR INSERT
     WITH CHECK (true);
 
+-- Anonymous môže čítať quotes (potrebné pre RETURNING po INSERT)
+CREATE POLICY "Allow anonymous select" ON quotes
+    FOR SELECT
+    USING (true);
+
 -- Authenticated (admin) má plný prístup
 CREATE POLICY "Allow authenticated full access" ON quotes
     FOR ALL
