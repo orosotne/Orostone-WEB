@@ -118,13 +118,13 @@ export const Lightbox: React.FC<LightboxProps> = ({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.3 }}
-            className="max-w-7xl max-h-[90vh] px-20"
+            className="max-w-[95vw] max-h-[95vh] px-4"
             onClick={(e) => e.stopPropagation()}
           >
             <img
               src={currentImage.publicUrl}
               alt={currentImage.name}
-              className="max-w-full max-h-[90vh] object-contain"
+              className="max-w-[95vw] max-h-[95vh] object-contain"
             />
           </motion.div>
         </motion.div>

@@ -837,21 +837,13 @@ export const SinterovanyKamen = () => {
             ))}
           </div>
 
-          <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="mt-12 flex justify-center">
             <button
               onClick={() => { setGalleryIndex(0); setGalleryOpen(true); }}
               className="inline-flex items-center gap-2 border border-white/30 text-white px-6 py-3 rounded-full hover:bg-white hover:text-black transition-all font-sans text-sm font-semibold tracking-widest uppercase"
             >
               <Images className="w-4 h-4" /> Ukážky realizácií
             </button>
-            <Link to="/realizacie">
-              <Button
-                variant="outline"
-                className="border-white/30 text-white hover:bg-white hover:text-black"
-              >
-                Pozrieť realizácie <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
           </div>
         </div>
       </section>
