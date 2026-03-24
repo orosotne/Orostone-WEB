@@ -33,8 +33,8 @@ export const PrivacyPolicy = () => {
             Ochrana osobných údajov
           </h1>
           <p className="font-sans font-light text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            Snažíme sa o to, aby ste sa pri nás cítili v bezpečí, preto potvrdzujeme, 
-            že sme implementovali všetky potrebné technické a organizačné opatrenia 
+            Snažíme sa o to, aby ste sa pri nás cítili v bezpečí, preto potvrdzujeme,
+            že sme implementovali všetky potrebné technické a organizačné opatrenia
             na ochranu vašich osobných údajov.
           </p>
         </motion.div>
@@ -53,8 +53,10 @@ export const PrivacyPolicy = () => {
             {[
               { id: 'prevadzkovatel', label: 'Prevádzkovateľ' },
               { id: 'ucel', label: 'Účel spracovania' },
+              { id: 'tretie-strany', label: 'Tretie strany' },
               { id: 'rozsah', label: 'Rozsah údajov' },
               { id: 'doba', label: 'Doba uchovávania' },
+              { id: 'medzinarodny-prenos', label: 'Medzinárodný prenos' },
               { id: 'prava', label: 'Vaše práva' },
               { id: 'cookies', label: 'Cookies' },
               { id: 'kontakt', label: 'Kontakt' },
@@ -72,7 +74,7 @@ export const PrivacyPolicy = () => {
 
         {/* Content */}
         <div className="space-y-12">
-          {/* Prevádzkovateľ */}
+          {/* 1. Prevádzkovateľ */}
           <motion.section
             id="prevadzkovatel"
             initial={{ opacity: 0, y: 20 }}
@@ -92,7 +94,7 @@ export const PrivacyPolicy = () => {
             </div>
             <div className="pl-16 text-gray-600 leading-relaxed space-y-4">
               <p>
-                Prevádzkovateľom osobných údajov podľa § 5 písm. o) zákona č. 18/2018 Z.z. 
+                Prevádzkovateľom osobných údajov podľa § 5 písm. o) zákona č. 18/2018 Z.z.
                 o ochrane osobných údajov v znení neskorších predpisov (ďalej len „Zákon") je:
               </p>
               <div className="bg-gray-50 rounded-orostone p-6 font-medium">
@@ -107,7 +109,7 @@ export const PrivacyPolicy = () => {
             </div>
           </motion.section>
 
-          {/* Účel spracovania */}
+          {/* 2. Účel spracovania */}
           <motion.section
             id="ucel"
             initial={{ opacity: 0, y: 20 }}
@@ -146,13 +148,102 @@ export const PrivacyPolicy = () => {
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-brand-gold mt-1">•</span>
-                  <span><strong>Marketing</strong> – len s vaším výslovným súhlasom (newsletter, ponuky)</span>
+                  <span><strong>Bezpečnosť</strong> – ochrana formulárov a služieb pred automatizovanými útokmi a podvodmi (Cloudflare Turnstile)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-brand-gold mt-1">•</span>
+                  <span><strong>AI vizualizácia</strong> – spracovanie obrázkov cez AI vizualizér priestoru (len na základe vášho výslovného súhlasu pri spustení funkcie)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-brand-gold mt-1">•</span>
+                  <span><strong>Marketing</strong> – len s vaším výslovným súhlasom (newsletter, remarketingové ponuky)</span>
                 </li>
               </ul>
             </div>
           </motion.section>
 
-          {/* Rozsah údajov */}
+          {/* 3. Tretie strany a sprostredkovatelia */}
+          <motion.section
+            id="tretie-strany"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-white rounded-orostone p-8 shadow-sm"
+          >
+            <div className="flex items-start gap-4 mb-6">
+              <div className="w-12 h-12 bg-brand-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-brand-gold font-semibold">3</span>
+              </div>
+              <div>
+                <h2 className="text-xl md:text-2xl font-sans font-bold text-brand-dark mb-2">Tretie strany a sprostredkovatelia</h2>
+                <p className="text-gray-500 text-base">Komu môžeme vaše údaje poskytnúť</p>
+              </div>
+            </div>
+            <div className="pl-16 text-gray-600 leading-relaxed space-y-4">
+              <p>
+                Na prevádzku našich služieb využívame nasledujúcich sprostredkovateľov a partnerov,
+                ktorým môžu byť vaše osobné údaje sprístupnené v rozsahu nevyhnutnom na poskytnutie danej služby:
+              </p>
+              <div className="space-y-3">
+                {[
+                  {
+                    name: 'Shopify Inc.',
+                    purpose: 'E-shop platforma, spracovanie objednávok a platieb pri nákupe cez e-shop',
+                    location: 'Kanada / USA',
+                    note: 'Shopify je certifikovaný PCI DSS spracovateľ platieb. Vlastné zásady: privacy.shopify.com',
+                  },
+                  {
+                    name: 'Supabase Inc.',
+                    purpose: 'Databáza zákazníkov, ukladanie dopytov a cenových ponúk, autentifikácia',
+                    location: 'EÚ (Frankfurt, Nemecko)',
+                    note: 'Dáta sú uložené na serveroch v EÚ.',
+                  },
+                  {
+                    name: 'Resend Inc.',
+                    purpose: 'Odosielanie transakčných emailov — potvrdenia dopytov, notifikácie o objednávke',
+                    location: 'USA',
+                    note: 'Emailová adresa príjemcu je zdieľaná iba za účelom doručenia správy.',
+                  },
+                  {
+                    name: 'Vercel Inc.',
+                    purpose: 'Hosting a doručovanie webovej stránky orostone.sk',
+                    location: 'USA',
+                    note: 'IP adresa a technické údaje návštevníka môžu byť dočasne spracované.',
+                  },
+                  {
+                    name: 'Cloudflare, Inc.',
+                    purpose: 'Ochrana formulárov pred botmi a automatizovanými útokmi (Turnstile CAPTCHA)',
+                    location: 'USA',
+                    note: 'Zbierajú technické signály zariadenia bez uloženia osobne identifikovateľných údajov.',
+                  },
+                  {
+                    name: 'Meta Platforms, Inc. (Facebook / Instagram)',
+                    purpose: 'Remarketing a meranie konverzií cez Meta Pixel — zobrazovanie relevantných reklám',
+                    location: 'USA',
+                    note: 'Aktivuje sa iba po vašom súhlase s marketingovými cookies.',
+                  },
+                  {
+                    name: 'Google LLC',
+                    purpose: 'Analytika návštevnosti (Google Analytics) a AI vizualizér (Google Gemini API)',
+                    location: 'USA',
+                    note: 'Analytics sa aktivuje iba po súhlase s analytickými cookies. Gemini API spracuje obrázok, ktorý nahráte v AI vizualizéri.',
+                  },
+                ].map((item) => (
+                  <div key={item.name} className="bg-gray-50 rounded-orostone p-4">
+                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-1 mb-1">
+                      <h4 className="font-sans font-bold text-brand-dark">{item.name}</h4>
+                      <span className="text-xs text-gray-400 font-medium shrink-0">{item.location}</span>
+                    </div>
+                    <p className="text-sm mb-1">{item.purpose}</p>
+                    <p className="text-xs text-gray-400 italic">{item.note}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.section>
+
+          {/* 4. Rozsah údajov */}
           <motion.section
             id="rozsah"
             initial={{ opacity: 0, y: 20 }}
@@ -163,7 +254,7 @@ export const PrivacyPolicy = () => {
           >
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 bg-brand-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
-                <span className="text-brand-gold font-semibold">3</span>
+                <span className="text-brand-gold font-semibold">4</span>
               </div>
               <div>
                 <h2 className="text-xl md:text-2xl font-sans font-bold text-brand-dark mb-2">Rozsah spracovaných údajov</h2>
@@ -202,13 +293,15 @@ export const PrivacyPolicy = () => {
                     <li>• IP adresa</li>
                     <li>• Cookies (podľa súhlasu)</li>
                     <li>• Údaje o prehliadači</li>
+                    <li>• Meta Pixel ID (len so súhlasom)</li>
+                    <li>• Nahrané obrázky (AI vizualizér, len na vašu žiadosť)</li>
                   </ul>
                 </div>
               </div>
             </div>
           </motion.section>
 
-          {/* Doba uchovávania */}
+          {/* 5. Doba uchovávania */}
           <motion.section
             id="doba"
             initial={{ opacity: 0, y: 20 }}
@@ -219,7 +312,7 @@ export const PrivacyPolicy = () => {
           >
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 bg-brand-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
-                <span className="text-brand-gold font-semibold">4</span>
+                <span className="text-brand-gold font-semibold">5</span>
               </div>
               <div>
                 <h2 className="text-xl md:text-2xl font-sans font-bold text-brand-dark mb-2">Doba uchovávania údajov</h2>
@@ -256,7 +349,54 @@ export const PrivacyPolicy = () => {
             </div>
           </motion.section>
 
-          {/* Vaše práva */}
+          {/* 6. Medzinárodný prenos údajov */}
+          <motion.section
+            id="medzinarodny-prenos"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-white rounded-orostone p-8 shadow-sm"
+          >
+            <div className="flex items-start gap-4 mb-6">
+              <div className="w-12 h-12 bg-brand-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-brand-gold font-semibold">6</span>
+              </div>
+              <div>
+                <h2 className="text-xl md:text-2xl font-sans font-bold text-brand-dark mb-2">Medzinárodný prenos údajov</h2>
+                <p className="text-gray-500 text-base">Prenos údajov mimo Európskeho hospodárskeho priestoru</p>
+              </div>
+            </div>
+            <div className="pl-16 text-gray-600 leading-relaxed space-y-4">
+              <p>
+                Niektorí naši sprostredkovatelia (Shopify, Resend, Vercel, Cloudflare, Meta, Google)
+                sídlia v USA alebo Kanade, teda mimo Európskeho hospodárskeho priestoru (EHP).
+                Prenos vašich osobných údajov do týchto krajín je zabezpečený jedným z nasledujúcich mechanizmov:
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <span className="text-brand-gold mt-1">•</span>
+                  <span><strong>Štandardné zmluvné doložky (SCC)</strong> – schválené Európskou komisiou, zaväzujú príjemcu dodržiavať úroveň ochrany porovnateľnú s EÚ</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-brand-gold mt-1">•</span>
+                  <span><strong>Rozhodnutie o primeranosti</strong> – Kanada je krajina uznaná Európskou komisiou za poskytujúcu primeranú ochranu údajov</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-brand-gold mt-1">•</span>
+                  <span><strong>EU–US Data Privacy Framework</strong> – certifikácia platná pre niektorých amerických poskytovateľov (Google, Meta)</span>
+                </li>
+              </ul>
+              <div className="mt-4 p-4 bg-amber-50 border-l-4 border-brand-gold rounded-orostone">
+                <p className="text-sm">
+                  Supabase (databáza) je prevádzkovaná na serveroch v <strong>Nemecku (EÚ)</strong>
+                  — vaše dáta z dopytov a objednávok zostávajú primárne v EHP.
+                </p>
+              </div>
+            </div>
+          </motion.section>
+
+          {/* 7. Vaše práva */}
           <motion.section
             id="prava"
             initial={{ opacity: 0, y: 20 }}
@@ -267,7 +407,7 @@ export const PrivacyPolicy = () => {
           >
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 bg-brand-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
-                <span className="text-brand-gold font-semibold">5</span>
+                <span className="text-brand-gold font-semibold">7</span>
               </div>
               <div>
                 <h2 className="text-xl md:text-2xl font-sans font-bold text-brand-dark mb-2">Vaše práva</h2>
@@ -293,14 +433,14 @@ export const PrivacyPolicy = () => {
               <div className="mt-6 p-4 bg-amber-50 border-l-4 border-brand-gold rounded-orostone">
                 <p className="text-sm">
                   <strong>Ako uplatniť svoje práva?</strong><br />
-                  Napíšte nám na <span className="text-brand-gold">info@orostone.sk</span>. 
+                  Napíšte nám na <span className="text-brand-gold">info@orostone.sk</span>.
                   Na vašu žiadosť odpovieme do 30 dní.
                 </p>
               </div>
             </div>
           </motion.section>
 
-          {/* Cookies */}
+          {/* 8. Cookies */}
           <motion.section
             id="cookies"
             initial={{ opacity: 0, y: 20 }}
@@ -311,7 +451,7 @@ export const PrivacyPolicy = () => {
           >
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 bg-brand-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
-                <span className="text-brand-gold font-semibold">6</span>
+                <span className="text-brand-gold font-semibold">8</span>
               </div>
               <div>
                 <h2 className="text-xl md:text-2xl font-sans font-bold text-brand-dark mb-2">Cookies</h2>
@@ -320,12 +460,13 @@ export const PrivacyPolicy = () => {
             </div>
             <div className="pl-16 text-gray-600 leading-relaxed">
               <p className="mb-4">
-                Naša webová stránka používa cookies na zabezpečenie základných funkcií 
-                a zlepšenie používateľského zážitku. Podrobné informácie nájdete v našich 
-                zásadách používania cookies.
+                Naša webová stránka používa cookies na zabezpečenie základných funkcií
+                a zlepšenie používateľského zážitku. Analytické a marketingové cookies
+                (Google Analytics, Meta Pixel) aktivujeme iba po vašom súhlase.
+                Podrobné informácie nájdete v našich zásadách používania cookies.
               </p>
-              <Link 
-                to="/cookies" 
+              <Link
+                to="/cookies"
                 className="inline-flex items-center gap-2 text-brand-gold hover:text-brand-dark transition-colors"
               >
                 <span>Zobraziť zásady cookies</span>
@@ -334,7 +475,7 @@ export const PrivacyPolicy = () => {
             </div>
           </motion.section>
 
-          {/* Kontakt */}
+          {/* 9. Kontakt */}
           <motion.section
             id="kontakt"
             initial={{ opacity: 0, y: 20 }}
@@ -345,7 +486,7 @@ export const PrivacyPolicy = () => {
           >
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 bg-brand-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
-                <span className="text-brand-gold font-semibold">7</span>
+                <span className="text-brand-gold font-semibold">9</span>
               </div>
               <div>
                 <h2 className="text-xl md:text-2xl font-sans font-bold text-brand-dark mb-2">Kontakt</h2>
@@ -366,7 +507,7 @@ export const PrivacyPolicy = () => {
                 </div>
               </div>
               <p className="mt-4 text-sm">
-                Ak sa domnievate, že spracovanie vašich osobných údajov je v rozpore so zákonom, 
+                Ak sa domnievate, že spracovanie vašich osobných údajov je v rozpore so zákonom,
                 máte právo podať sťažnosť na <strong>Úrad na ochranu osobných údajov SR</strong>.
               </p>
             </div>
@@ -384,9 +525,9 @@ export const PrivacyPolicy = () => {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
             <div>
               <p className="text-sm text-gray-500">Posledná aktualizácia</p>
-              <p className="text-lg font-medium text-brand-dark">01.01.2026</p>
+              <p className="text-lg font-medium text-brand-dark">24.03.2026</p>
             </div>
-            <Link 
+            <Link
               to="/kontakt"
               className="inline-flex items-center gap-2 px-6 py-3 bg-brand-gold text-white rounded-full hover:bg-brand-dark transition-colors"
             >

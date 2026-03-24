@@ -245,12 +245,39 @@ export const VOP = () => {
           {/* 6. Doprava */}
           <Section id="doprava" number="6" title="Doprava">
             <SubSection number="6.1">
-              Cena dopravy sa účtuje k cene kameňa Orostone® a zahŕňa náklady na prepravu a manipuláciu s tovarom.
+              Doručenie tovaru zabezpečuje spoločnosť Orostone prostredníctvom zmluvného prepravcu <strong>I2M s.r.o.</strong> Spoločnosť Orostone si vyhradzuje právo využiť aj iného dopravcu bez predchádzajúceho upozornenia Klienta, pričom kvalita a podmienky doručenia zostávajú zachované.
             </SubSection>
-            <SubSection number="6.2">
+            <SubSection number="6.2" highlight>
+              <strong>Región doručenia:</strong> Doručujeme výlučne na území <strong>Slovenskej republiky</strong>.
+            </SubSection>
+            <SubSection number="6.3">
+              <strong>Cenník dopravy:</strong>
+              <div className="mt-3 space-y-2">
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="bg-gray-50 rounded-orostone p-3">
+                    <p className="font-bold text-brand-dark text-sm">Bratislava a okolie</p>
+                    <p className="text-sm">do 50 km od Bratislavy</p>
+                    <p className="text-brand-gold font-bold mt-1">150 € s DPH</p>
+                  </div>
+                  <div className="bg-gray-50 rounded-orostone p-3">
+                    <p className="font-bold text-brand-dark text-sm">Územie SR</p>
+                    <p className="text-sm">mimo Bratislavy a okolia</p>
+                    <p className="text-brand-gold font-bold mt-1">350 € s DPH</p>
+                  </div>
+                </div>
+                <div className="bg-amber-50 border-l-4 border-brand-gold p-3 rounded-orostone">
+                  <p className="font-bold text-brand-dark text-sm">Doprava zadarmo</p>
+                  <p className="text-sm">pri objednávke <strong>3 a viac platní</strong></p>
+                </div>
+              </div>
+            </SubSection>
+            <SubSection number="6.4">
+              <strong>Doručenie na poschodie:</strong> Doručenie tovaru na poschodie je možné výlučne po predchádzajúcej dohode a odsúhlasení ceny za túto príplatkovú službu zo strany spoločnosti Orostone. Klient je povinný uviesť požiadavku na doručenie na poschodie pri zadaní Objednávky. Štandardná cena dopravy zahŕňa doručenie iba na prízemie (resp. k vozidlu / na miesto dostupné pre nákladné vozidlo).
+            </SubSection>
+            <SubSection number="6.5">
               V prípade, že spoločnosť Orostone nie je v dôsledku okolností vylučujúcich zodpovednosť (tzv. vyššej moci) schopná splniť svoj záväzok v dodacej lehote, vrátane oneskorenia dodávok od jej dodávateľov, nebude toto omeškanie považované za porušenie podmienok Objednávky a dodacia lehota sa primerane predĺži.
             </SubSection>
-            <SubSection number="6.3" highlight>
+            <SubSection number="6.6" highlight>
               <strong>Prevzatie tovaru:</strong> Klient je povinný pri prevzatí tovaru skontrolovať jeho stav a neporušenosť obalu. Prípadné zjavné poškodenie je potrebné <strong>bezodkladne</strong> zaznamenať do dodacieho listu a oznámiť dopravcovi/spoločnosti Orostone.
             </SubSection>
           </Section>
