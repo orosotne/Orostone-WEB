@@ -18,12 +18,11 @@ import { SEOHead } from '../components/UI/SEOHead';
 // ===========================================
 
 export const CategoryPage: React.FC = () => {
-  const { slug } = useParams<{ slug: string }>();
+  const { slug, subCategory } = useParams<{ slug: string; subCategory?: string }>();
   const { products, isLoading } = useShopifyProducts(50, { shopifyOnly: true });
   const { addItem, isInCart, getItemQuantity } = useCart();
 
-  // Parse slug pre podkategórie (napr. "sintered-stone/biele")
-  const [mainCategory, subCategory] = slug?.split('/') || [];
+  const mainCategory = slug || '';
 
   // Find category metadata from visible categories only (vždy podľa hlavnej kategórie)
   const category = useMemo(

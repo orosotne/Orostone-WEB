@@ -135,6 +135,7 @@ const EshopAppContent = () => {
           
           {/* Categories */}
           <Route path="/kategoria/:slug" element={<CategoryPage />} />
+          <Route path="/kategoria/:slug/:subCategory" element={<CategoryPage />} />
           
           {/* Product Detail — skeleton loader */}
           <Route path="/produkt/:id" element={
