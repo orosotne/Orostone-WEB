@@ -49,7 +49,7 @@ const NewsletterWidget: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-2">
-      <div className="flex gap-2">
+      <div className="flex flex-col sm:flex-row gap-2">
         <input
           type="email"
           required
@@ -61,7 +61,7 @@ const NewsletterWidget: React.FC = () => {
         <button
           type="submit"
           disabled={status === 'loading'}
-          className="px-4 py-2.5 bg-brand-gold text-brand-dark text-sm font-bold rounded-full hover:bg-white transition-colors disabled:opacity-60 flex-shrink-0"
+          className="w-full sm:w-auto px-4 py-2.5 bg-brand-gold text-brand-dark text-sm font-bold rounded-full hover:bg-white transition-colors disabled:opacity-60 flex-shrink-0"
         >
           {status === 'loading' ? <Loader2 size={16} className="animate-spin" /> : 'Odoberať'}
         </button>

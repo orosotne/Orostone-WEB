@@ -48,6 +48,9 @@ import { ThemeProvider } from './context/ThemeContext';
 import { CookieProvider } from './context/CookieContext';
 import { CartProvider } from './context/CartContext';
 
+// Global overlays
+import { NewsletterPopup } from './components/UI/NewsletterPopup';
+
 
 // ===========================================
 // SCROLL TO TOP ON ROUTE CHANGE
@@ -126,6 +129,7 @@ const EshopAppContent = () => {
   return (
     <EshopLayout>
       <ScrollToTop />
+      <NewsletterPopup />
       <ErrorBoundary level="page">
         <Routes>
           {/* Main Shop */}

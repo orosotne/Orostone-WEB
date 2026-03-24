@@ -12,7 +12,7 @@ import { BlogPreviewSection } from '../components/Eshop/BlogPreviewSection';
 import { getLatestArticlesMeta } from '../data/blogArticlesMeta';
 import { useShopifyProducts } from '../hooks/useShopifyProducts';
 import { useInstagramFeed, getPostImageUrl } from '../hooks/useInstagramFeed';
-import { OrderModal } from '../components/Shop/OrderModal';
+
 import { TextKnockoutSection } from '../components/TextKnockoutSection';
 import { SEOHead, OROSTONE_ORGANIZATION_LD } from '../components/UI/SEOHead';
 import { InspirationSection } from '../components/Shop/InspirationSection';
@@ -121,8 +121,7 @@ export const Shop = () => {
   const heroAutoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const { products: SHOP_PRODUCTS, isLoading: productsLoading } = useShopifyProducts();
 
-  const [selectedProduct, setSelectedProduct] = useState<ShopProduct | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [activeSlide, setActiveSlide] = useState(0);
   const { posts: instagramPosts, isLoading: igLoading, isUsingFallback: igFallback } = useInstagramFeed(8);
 
@@ -1239,11 +1238,6 @@ export const Shop = () => {
         </div>
       </section>
 
-      <OrderModal
-        product={selectedProduct}
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
 
     </main>
   );
