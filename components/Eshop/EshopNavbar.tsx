@@ -115,8 +115,16 @@ export const EshopNavbar: React.FC = () => {
                 {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
               </button>
 
-              {/* Spacer for layout balance */}
-              <div className="hidden lg:block" />
+              {/* O kameni — link na hlavny web */}
+              <a
+                href="https://orostone.sk/sinterovany-kamen"
+                className={cn(
+                  "hidden lg:block text-[11px] tracking-[0.15em] uppercase font-normal transition-colors",
+                  isTransparent ? "text-white/70 hover:text-white" : "text-gray-500 hover:text-black"
+                )}
+              >
+                O kameni
+              </a>
             </div>
 
             {/* Center: Logo */}
@@ -419,6 +427,13 @@ export const EshopNavbar: React.FC = () => {
 
                 <div className="h-px bg-gray-100 my-2" />
 
+                <a
+                  href="https://orostone.sk/sinterovany-kamen"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block px-6 py-4 text-[13px] tracking-[0.1em] uppercase text-black hover:bg-gray-50"
+                >
+                  O kameni
+                </a>
                 <Link
                   to="/blog"
                   onClick={() => setMobileMenuOpen(false)}
