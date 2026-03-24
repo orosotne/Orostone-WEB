@@ -519,9 +519,25 @@ export const Shop = () => {
             "itemListElement": SHOP_PRODUCTS.slice(0, 20).map((p, i) => ({
               "@type": "ListItem",
               "position": i + 1,
-              "name": p.name,
-              "url": `https://orostone.sk/produkt/${p.id}`,
-              "image": p.image,
+              "item": {
+                "@type": "Product",
+                "name": p.name,
+                "url": `https://eshop.orostone.sk/produkt/${p.id}`,
+                "image": p.image,
+                "brand": { "@type": "Brand", "name": p.vendor || "OROSTONE" },
+                "sku": p.sku || p.id,
+                "offers": {
+                  "@type": "Offer",
+                  "url": `https://eshop.orostone.sk/produkt/${p.id}`,
+                  "priceCurrency": "EUR",
+                  "price": p.pricePerM2.toFixed(2),
+                  "availability": p.inStock
+                    ? "https://schema.org/InStock"
+                    : "https://schema.org/PreOrder",
+                  "itemCondition": "https://schema.org/NewCondition",
+                  "seller": { "@type": "Organization", "name": "OROSTONE s.r.o." },
+                },
+              },
             })),
           }) }}
         />
