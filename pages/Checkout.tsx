@@ -6,6 +6,7 @@ import {
   Minus, Plus, Trash2, Package, ExternalLink
 } from 'lucide-react';
 import { useCart, formatPrice } from '../context/CartContext';
+import { useCookies } from '../context/CookieContext';
 import { trackMetaEvent, savePendingPurchase } from '../hooks/useMetaPixel';
 import { trackGA4BeginCheckout } from '../hooks/useGA4Ecommerce';
 import { SEOHead } from '../components/UI/SEOHead';
@@ -19,6 +20,7 @@ import { Button } from '../components/UI/Button';
 
 export const Checkout = () => {
   const { items, removeItem, updateQuantity, subtotal, total, itemCount, checkoutUrl, isLoading } = useCart();
+  const { preferences } = useCookies();
 
   // Redirect if cart is empty
   if (itemCount === 0 && !isLoading) {
@@ -44,13 +46,15 @@ export const Checkout = () => {
       const ga4Items = items.map(i => ({ item_id: i.variantId, item_name: i.name, price: i.price, quantity: i.quantity }));
       trackMetaEvent('InitiateCheckout', { value: subtotal, currency: 'EUR', num_items: itemCount });
       trackGA4BeginCheckout({ value: subtotal, items: ga4Items });
-      savePendingPurchase({
-        value: total,
-        currency: 'EUR',
-        num_items: itemCount,
-        content_ids: items.map(i => i.variantId),
-        items: ga4Items,
-      });
+      if (preferences.marketing) {
+        savePendingPurchase({
+          value: total,
+          currency: 'EUR',
+          num_items: itemCount,
+          content_ids: items.map(i => i.variantId),
+          items: ga4Items,
+        });
+      }
       window.location.href = checkoutUrl;
     }
   };
@@ -147,7 +151,7 @@ export const Checkout = () => {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-500">Doprava</span>
-                  <span className="text-gray-500 text-xs text-right">od 80 EUR s DPH</span>
+                  <span className="text-gray-500 text-xs text-right">od 150 EUR s DPH</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-500">DPH</span>
@@ -155,7 +159,7 @@ export const Checkout = () => {
                 </div>
                 <p className="text-[11px] text-gray-400 leading-relaxed">
                   Presná cena dopravy závisí od adresy a počtu paliet.
-                  Nad 4 500 EUR doprava zadarmo.
+                  Nad 3 platne doprava zadarmo.
                   Montáž nie je súčasťou objednávky.{' '}
                   <Link to="/doprava" className="text-brand-gold hover:underline">
                     Viac o doprave
@@ -168,6 +172,9 @@ export const Checkout = () => {
               </div>
 
               {/* Checkout Button */}
+              <p className="text-sm text-gray-500 mt-6">
+                Kliknutím na „Pokračovať k platbe" potvrdzujete záväznú objednávku s povinnosťou platby.
+              </p>
               <button
                 onClick={handleCheckout}
                 disabled={!checkoutUrl || isLoading}

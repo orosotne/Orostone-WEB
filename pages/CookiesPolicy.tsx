@@ -35,8 +35,8 @@ export const CookiesPolicy = () => {
             Zásady používania Cookies
           </h1>
           <p className="font-sans font-light text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            Táto stránka vysvetľuje, ako používame cookies a podobné technológie 
-            na našom webe.
+            Táto stránka vysvetľuje, ako používame cookies a podobné technológie na našom webe
+            v súlade so zákonom č. 452/2021 Z.z. o elektronických komunikáciách a nariadením GDPR.
           </p>
         </motion.div>
 
@@ -273,28 +273,58 @@ export const CookiesPolicy = () => {
                   </thead>
                   <tbody className="text-gray-600">
                     <tr className="border-b border-gray-100">
-                      <td className="py-3 pr-4 font-mono text-xs">cookie_consent</td>
+                      <td className="py-3 pr-4 font-mono text-xs">orostone-cookies</td>
                       <td className="py-3 pr-4">Nevyhnutné</td>
-                      <td className="py-3 pr-4">Uloženie vašich preferencií cookies</td>
-                      <td className="py-3">1 rok</td>
+                      <td className="py-3 pr-4">localStorage — uloženie vašich cookie preferencií vrátane časovej pečiatky súhlasu</td>
+                      <td className="py-3">Trvalé</td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="py-3 pr-4 font-mono text-xs">orostone_shopify_cart_id</td>
+                      <td className="py-3 pr-4">Nevyhnutné</td>
+                      <td className="py-3 pr-4">localStorage — ID nákupného košíka Shopify pre zachovanie obsahu košíka</td>
+                      <td className="py-3">Trvalé</td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="py-3 pr-4 font-mono text-xs">orostone-theme</td>
+                      <td className="py-3 pr-4">Funkčné</td>
+                      <td className="py-3 pr-4">localStorage — preferencia svetlej / tmavej témy</td>
+                      <td className="py-3">Trvalé</td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="py-3 pr-4 font-mono text-xs">orostone-newsletter-popup</td>
+                      <td className="py-3 pr-4">Funkčné</td>
+                      <td className="py-3 pr-4">localStorage — stav newsletter popupu (zobrazený / odmietnutý / prihlásený)</td>
+                      <td className="py-3">Trvalé</td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="py-3 pr-4 font-mono text-xs">cf_clearance, __cf_bm</td>
+                      <td className="py-3 pr-4">Nevyhnutné</td>
+                      <td className="py-3 pr-4">Cloudflare Turnstile — ochrana formulárov pred automatizovanými útokmi (bot protection)</td>
+                      <td className="py-3">Do 30 min</td>
                     </tr>
                     <tr className="border-b border-gray-100">
                       <td className="py-3 pr-4 font-mono text-xs">_ga</td>
                       <td className="py-3 pr-4">Analytické</td>
-                      <td className="py-3 pr-4">Google Analytics - rozlíšenie používateľov</td>
+                      <td className="py-3 pr-4"><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-brand-gold hover:underline">Google Analytics</a> — rozlíšenie a sledovanie používateľov (len so súhlasom)</td>
                       <td className="py-3">2 roky</td>
                     </tr>
                     <tr className="border-b border-gray-100">
                       <td className="py-3 pr-4 font-mono text-xs">_gid</td>
                       <td className="py-3 pr-4">Analytické</td>
-                      <td className="py-3 pr-4">Google Analytics - rozlíšenie používateľov</td>
+                      <td className="py-3 pr-4">Google Analytics — relácia používateľa (len so súhlasom)</td>
                       <td className="py-3">24 hodín</td>
                     </tr>
                     <tr className="border-b border-gray-100">
                       <td className="py-3 pr-4 font-mono text-xs">_fbp</td>
                       <td className="py-3 pr-4">Marketingové</td>
-                      <td className="py-3 pr-4">Facebook Pixel - sledovanie konverzií</td>
+                      <td className="py-3 pr-4"><a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer" className="text-brand-gold hover:underline">Meta Pixel</a> — sledovanie konverzií a remarketingové publiká (len so súhlasom)</td>
                       <td className="py-3">3 mesiace</td>
+                    </tr>
+                    <tr className="border-b border-gray-100">
+                      <td className="py-3 pr-4 font-mono text-xs">_fbc</td>
+                      <td className="py-3 pr-4">Marketingové</td>
+                      <td className="py-3 pr-4">Meta Pixel — identifikátor kliknutia z Meta reklamy (len so súhlasom)</td>
+                      <td className="py-3">2 roky</td>
                     </tr>
                   </tbody>
                 </table>

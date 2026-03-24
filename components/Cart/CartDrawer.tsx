@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Minus, Plus, ShoppingBag, Trash2, ArrowRight, ExternalLink, Wrench, Package, Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCart, formatPrice } from '../../context/CartContext';
+import { useCookies } from '../../context/CookieContext';
 import { trackMetaEvent, savePendingPurchase } from '../../hooks/useMetaPixel';
 import { trackGA4BeginCheckout } from '../../hooks/useGA4Ecommerce';
 import { Button } from '../UI/Button';
@@ -21,6 +22,7 @@ interface InstallationData {
 
 export const CartDrawer: React.FC = () => {
   const { items, isOpen, closeCart, removeItem, updateQuantity, itemCount, subtotal, total, checkoutUrl, isLoading, error, clearError, productItems, sampleItems } = useCart();
+  const { preferences } = useCookies();
 
   // Load installation data from localStorage
   const [installationData, setInstallationData] = useState<InstallationData | null>(null);
@@ -46,13 +48,15 @@ export const CartDrawer: React.FC = () => {
       const ga4Items = items.map(i => ({ item_id: i.variantId, item_name: i.name, price: i.price, quantity: i.quantity }));
       trackMetaEvent('InitiateCheckout', { value: subtotal, currency: 'EUR', num_items: itemCount });
       trackGA4BeginCheckout({ value: subtotal, items: ga4Items });
-      savePendingPurchase({
-        value: total,
-        currency: 'EUR',
-        num_items: itemCount,
-        content_ids: items.map(i => i.variantId),
-        items: ga4Items,
-      });
+      if (preferences.marketing) {
+        savePendingPurchase({
+          value: total,
+          currency: 'EUR',
+          num_items: itemCount,
+          content_ids: items.map(i => i.variantId),
+          items: ga4Items,
+        });
+      }
       window.location.href = checkoutUrl;
     }
   };
@@ -389,9 +393,9 @@ export const CartDrawer: React.FC = () => {
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-600">Doprava</span>
                   <span className="text-xs text-gray-500 text-right">
-                    od 80 EUR s DPH
+                    od 150 EUR s DPH
                     <br />
-                    <span className="text-gray-400">nad 4 500 EUR zadarmo</span>
+                    <span className="text-gray-400">nad 3 platne zadarmo</span>
                   </span>
                 </div>
                 <p className="text-[11px] text-gray-400">
@@ -408,6 +412,9 @@ export const CartDrawer: React.FC = () => {
                 </div>
 
                 {/* CTA - Shopify Checkout */}
+                <p className="text-sm text-gray-500">
+                  Kliknutím na „Pokračovať k platbe" potvrdzujete záväznú objednávku s povinnosťou platby.
+                </p>
                 <button
                   onClick={handleCheckout}
                   disabled={!checkoutUrl || isLoading}

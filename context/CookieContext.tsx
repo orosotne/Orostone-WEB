@@ -64,10 +64,10 @@ export const CookieProvider: React.FC<CookieProviderProps> = ({ children }) => {
     }
   }, []);
 
-  // Save preferences to localStorage
+  // Save preferences to localStorage (includes consentedAt timestamp for GDPR Art. 7(1) accountability)
   const saveToStorage = useCallback((prefs: CookiePreferences) => {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...prefs, consentedAt: new Date().toISOString() }));
       setPreferences(prefs);
       setHasConsented(true);
     } catch (error) {

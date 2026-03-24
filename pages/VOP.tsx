@@ -127,7 +127,7 @@ export const VOP = () => {
               Tieto všeobecné obchodné podmienky (ďalej len „VOP") ustanovujú podmienky predaja a dodania platní sinterovaného kameňa Orostone® (ďalej len „kameň Orostone®" alebo „tovar").
             </SubSection>
             <SubSection number="1.2">
-              Kameň Orostone® je na území Slovenskej a Českej republiky distribuovaný spoločnosťou:
+              Kameň Orostone® je na území Slovenskej republiky distribuovaný spoločnosťou:
               <div className="bg-gray-50 rounded-orostone p-4 mt-3 font-medium">
                 <p className="text-brand-dark">Orostone s.r.o.</p>
                 <p>Landererova 8, 811 09 Bratislava - mestská časť Staré Mesto</p>

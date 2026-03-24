@@ -2188,11 +2188,11 @@ const LogisticsSection: React.FC<LogisticsSectionProps> = ({ product }) => {
           <div className="mt-6 p-4 lg:p-5 bg-white border border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div className="space-y-1">
               <p className="text-sm font-semibold text-brand-dark">
-                Doprava od 80 EUR s DPH
+                Doprava od 150 EUR s DPH
               </p>
               <p className="text-xs text-gray-500">
                 Presná cena sa potvrdí v pokladni podľa adresy a počtu paliet.
-                Nad 4 500 EUR doprava zadarmo.
+                Nad 3 platne doprava zadarmo.
               </p>
             </div>
             <Link
@@ -2928,7 +2928,7 @@ export const ShopProductDetail: React.FC = () => {
                   <span className="text-xs font-normal text-gray-400 ml-1 line-through">{formatPrice(product.pricePerM2)}</span>
                 )}
               </p>
-              <p className="text-[10px] text-gray-400 leading-tight">Doprava od 80 EUR s DPH</p>
+              <p className="text-[10px] text-gray-400 leading-tight">Doprava od 150 EUR s DPH</p>
             </div>
             {/* Add to Cart button */}
             <button

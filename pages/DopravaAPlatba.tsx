@@ -102,24 +102,24 @@ export const DopravaAPlatba: React.FC = () => {
                   <tbody className="divide-y divide-gray-100">
                     <tr>
                       <td className="py-3 pr-6 text-gray-700">Bratislava a okolie (do 50 km)</td>
-                      <td className="py-3 pr-6 font-medium text-brand-dark">od 80 EUR</td>
-                      <td className="py-3 text-gray-500">Závisí od počtu paliet</td>
+                      <td className="py-3 pr-6 font-medium text-brand-dark">150 EUR</td>
+                      <td className="py-3 text-gray-500">Paletová preprava, závisí od počtu paliet</td>
                     </tr>
                     <tr>
                       <td className="py-3 pr-6 text-gray-700">Celé Slovensko</td>
-                      <td className="py-3 pr-6 font-medium text-brand-dark">od 120 EUR</td>
+                      <td className="py-3 pr-6 font-medium text-brand-dark">350 EUR</td>
                       <td className="py-3 text-gray-500">Závisí od vzdialenosti a počtu paliet</td>
                     </tr>
-                    <tr>
-                      <td className="py-3 pr-6 text-gray-700">Česká republika</td>
-                      <td className="py-3 pr-6 font-medium text-brand-dark">na dopyt</td>
-                      <td className="py-3 text-gray-500">Kontaktujte nás pred objednaním</td>
+                    <tr className="bg-amber-50">
+                      <td className="py-3 pr-6 font-semibold text-brand-dark">Pri 3 a viac platniach</td>
+                      <td className="py-3 pr-6 font-bold text-emerald-700">Doprava zadarmo</td>
+                      <td className="py-3 text-gray-500">Automaticky pri objednávke</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <p className="text-xs text-gray-400 mt-4">
-                * Presná cena dopravy sa zobrazí v objednávkovom procese na stránke Shopify. Ceny sú orientačné a môžu sa líšiť podľa aktuálneho cenníka prepravcu.
+                Ceny sú uvedené s DPH. Doručujeme výlučne na území Slovenskej republiky. Presná cena dopravy sa potvrdí pri objednávke.
               </p>
             </div>
 
