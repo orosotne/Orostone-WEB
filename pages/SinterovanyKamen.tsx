@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -23,12 +24,14 @@ import {
   Blocks,
   Sofa,
   Landmark,
+  Images,
 } from 'lucide-react';
 import { TextReveal } from '@/components/UI/TextReveal';
 import { Button } from '@/components/UI/Button';
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@/components/UI/Card';
 import { SEOHead } from '@/components/UI/SEOHead';
+import { Lightbox } from '@/components/UI/Lightbox';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -215,10 +218,19 @@ const FAQItem: React.FC<{
 /* =============================================================
    HLAVNÝ KOMPONENT
    ============================================================= */
+const INSPIRATION_GALLERY = Array.from({ length: 7 }, (_, i) => ({
+  name: `Inšpirácia ${i + 1}`,
+  url: `/images/inspiration/inspiration-${i + 1}.webp`,
+  publicUrl: `/images/inspiration/inspiration-${i + 1}.webp`,
+  category: 'inspiration' as const,
+}));
+
 export const SinterovanyKamen = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [galleryIndex, setGalleryIndex] = useState(0);
 
   useGSAP(
     () => {
@@ -365,21 +377,21 @@ export const SinterovanyKamen = () => {
             100 % prírodné minerály. Extrémna odolnosť. Nulová údržba.
             Povrch, ktorý prekoná prírodný kameň aj quartz.
           </p>
-          <div className="sk-hero-text flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/kolekcie">
+          <div className="sk-hero-text flex flex-col sm:flex-row gap-4 w-fit mx-auto">
+            <Link to="/kolekcie" className="w-full sm:w-auto">
               <Button
                 size="lg"
-                className="bg-brand-gold text-brand-dark px-10 py-6 text-base rounded-full hover:bg-white hover:text-brand-dark transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1"
+                className="w-full bg-brand-gold text-brand-dark px-10 py-6 text-base rounded-full hover:bg-white hover:text-brand-dark transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1"
               >
                 Pozrieť kolekcie
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
-            <Link to="/kontakt">
+            <Link to="/kontakt" className="w-full sm:w-auto">
               <Button
                 variant="outline"
                 size="lg"
-                className="border-white/40 text-white px-10 py-6 text-base rounded-full hover:bg-white hover:text-brand-dark transition-all"
+                className="w-full border-white/40 text-white px-10 py-6 text-base rounded-full hover:bg-white hover:text-brand-dark transition-all"
               >
                 Vyžiadať vzorku
               </Button>
@@ -825,7 +837,13 @@ export const SinterovanyKamen = () => {
             ))}
           </div>
 
-          <div className="text-center mt-12">
+          <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <button
+              onClick={() => { setGalleryIndex(0); setGalleryOpen(true); }}
+              className="inline-flex items-center gap-2 border border-white/30 text-white px-6 py-3 rounded-full hover:bg-white hover:text-black transition-all font-sans text-sm font-semibold tracking-widest uppercase"
+            >
+              <Images className="w-4 h-4" /> Ukážky realizácií
+            </button>
             <Link to="/realizacie">
               <Button
                 variant="outline"
@@ -1086,6 +1104,19 @@ export const SinterovanyKamen = () => {
           </div>
         </div>
       </section>
+
+      <AnimatePresence>
+        {galleryOpen && (
+          <Lightbox
+            images={INSPIRATION_GALLERY}
+            currentIndex={galleryIndex}
+            isOpen={galleryOpen}
+            onClose={() => setGalleryOpen(false)}
+            onPrevious={() => setGalleryIndex(i => Math.max(0, i - 1))}
+            onNext={() => setGalleryIndex(i => Math.min(INSPIRATION_GALLERY.length - 1, i + 1))}
+          />
+        )}
+      </AnimatePresence>
     </main>
   );
 };
