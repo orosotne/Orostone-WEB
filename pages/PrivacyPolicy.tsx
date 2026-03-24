@@ -81,7 +81,7 @@ export const PrivacyPolicy = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-orostone p-8 shadow-sm"
+            className="bg-white rounded-orostone p-8 shadow-sm scroll-mt-[72px] lg:scroll-mt-[128px]"
           >
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 bg-brand-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
@@ -116,7 +116,7 @@ export const PrivacyPolicy = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-orostone p-8 shadow-sm"
+            className="bg-white rounded-orostone p-8 shadow-sm scroll-mt-[72px] lg:scroll-mt-[128px]"
           >
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 bg-brand-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
@@ -169,7 +169,7 @@ export const PrivacyPolicy = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-orostone p-8 shadow-sm"
+            className="bg-white rounded-orostone p-8 shadow-sm scroll-mt-[72px] lg:scroll-mt-[128px]"
           >
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 bg-brand-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
@@ -250,7 +250,7 @@ export const PrivacyPolicy = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-orostone p-8 shadow-sm"
+            className="bg-white rounded-orostone p-8 shadow-sm scroll-mt-[72px] lg:scroll-mt-[128px]"
           >
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 bg-brand-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
@@ -308,7 +308,7 @@ export const PrivacyPolicy = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-orostone p-8 shadow-sm"
+            className="bg-white rounded-orostone p-8 shadow-sm scroll-mt-[72px] lg:scroll-mt-[128px]"
           >
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 bg-brand-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
@@ -356,7 +356,7 @@ export const PrivacyPolicy = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-orostone p-8 shadow-sm"
+            className="bg-white rounded-orostone p-8 shadow-sm scroll-mt-[72px] lg:scroll-mt-[128px]"
           >
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 bg-brand-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
@@ -403,7 +403,7 @@ export const PrivacyPolicy = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-orostone p-8 shadow-sm"
+            className="bg-white rounded-orostone p-8 shadow-sm scroll-mt-[72px] lg:scroll-mt-[128px]"
           >
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 bg-brand-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
@@ -447,7 +447,7 @@ export const PrivacyPolicy = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-orostone p-8 shadow-sm"
+            className="bg-white rounded-orostone p-8 shadow-sm scroll-mt-[72px] lg:scroll-mt-[128px]"
           >
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 bg-brand-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
@@ -482,7 +482,7 @@ export const PrivacyPolicy = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-orostone p-8 shadow-sm"
+            className="bg-white rounded-orostone p-8 shadow-sm scroll-mt-[72px] lg:scroll-mt-[128px]"
           >
             <div className="flex items-start gap-4 mb-6">
               <div className="w-12 h-12 bg-brand-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
