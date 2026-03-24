@@ -118,7 +118,7 @@ export const Lightbox: React.FC<LightboxProps> = ({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.3 }}
-            className="max-w-[95vw] max-h-[95vh] px-4"
+            className="max-w-[95vw] max-h-[95vh] px-4 flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
             <img
