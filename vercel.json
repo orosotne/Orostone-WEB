@@ -9,8 +9,16 @@
   ],
   "rewrites": [
     {
-      "source": "/sitemap.xml",
-      "destination": "/sitemap.xml"
+      "source": "/sitemap-index.xml",
+      "destination": "/sitemap-index.xml"
+    },
+    {
+      "source": "/sitemap-main.xml",
+      "destination": "/sitemap-main.xml"
+    },
+    {
+      "source": "/sitemap-eshop.xml",
+      "destination": "/sitemap-eshop.xml"
     },
     {
       "source": "/robots.txt",
