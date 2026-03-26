@@ -1,6 +1,7 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { ChevronDown } from 'lucide-react';
 
 export function TextKnockoutSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -43,7 +44,7 @@ export function TextKnockoutSection() {
 
     const mm = gsap.matchMedia();
 
-    // ── Desktop: pin + scale 700 zoom (unchanged) ──────────────────────────
+    // ── Desktop: pin + scale 700 zoom ──────────────────────────────────────
     mm.add('(min-width: 1024px)', () => {
       gsap.set(svgRef.current!, { scale: 700 });
       gsap.set(goldSvgRef.current!, { opacity: 0 });
@@ -52,7 +53,7 @@ export function TextKnockoutSection() {
         scrollTrigger: {
           trigger: containerRef.current!,
           start: 'top top',
-          end: '+=200%',
+          end: '+=130%',
           scrub: 0.5,
           pin: true,
           pinSpacing: true,
@@ -65,7 +66,7 @@ export function TextKnockoutSection() {
       .to(goldSvgRef.current!, { opacity: 0, duration: 0.25, ease: 'power2.inOut' }, 0.85);
     });
 
-    // ── Mobile: pin + scale 30 zoom (same flow as desktop, smaller scale) ──
+    // ── Mobile: pin + scale 500 zoom ───────────────────────────────────────
     mm.add('(max-width: 1023px)', () => {
       gsap.set(svgRef.current!, { scale: 500 });
       gsap.set(goldSvgRef.current!, { opacity: 0 });
@@ -74,7 +75,7 @@ export function TextKnockoutSection() {
         scrollTrigger: {
           trigger: containerRef.current!,
           start: 'top top',
-          end: '+=200%',
+          end: '+=120%',
           scrub: 0.5,
           pin: true,
           pinSpacing: true,
@@ -134,6 +135,16 @@ export function TextKnockoutSection() {
           alt="Orostone Gold"
           className="w-full h-full object-cover"
         />
+      </div>
+
+      {/* Scroll hint — fades out as soon as user starts scrolling */}
+      <div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 text-white/50 pointer-events-none"
+      >
+        <div className="flex flex-col items-center gap-2 animate-bounce">
+          <span className="font-sans text-xs tracking-widest uppercase">Scroll</span>
+          <ChevronDown size={28} />
+        </div>
       </div>
     </section>
   );
