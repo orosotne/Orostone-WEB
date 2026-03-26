@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, AlertTriangle } from 'lucide-react';
 import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
 
@@ -8,10 +9,10 @@ export const EshopContact: React.FC = () => {
       <SEOHead
         title="Kontakt | OROSTONE — Prémiový sinterovaný kameň"
         description="Kontaktujte OROSTONE pre cenovú ponuku alebo odbornú konzultáciu. Sídlo v Bratislave — Landererova 8. Email: info@orostone.sk, Tel: +421 917 588 738."
-        canonical="https://orostone.sk/kontakt"
+        canonical="https://eshop.orostone.sk/kontakt"
         structuredData={createBreadcrumbLD([
-          { name: 'OROSTONE', url: 'https://orostone.sk/' },
-          { name: 'Kontakt', url: 'https://orostone.sk/kontakt' },
+          { name: 'OROSTONE', url: 'https://eshop.orostone.sk/' },
+          { name: 'Kontakt', url: 'https://eshop.orostone.sk/kontakt' },
         ])}
       />
       <section className="py-16 lg:py-24 bg-white">
@@ -123,6 +124,18 @@ export const EshopContact: React.FC = () => {
                 </a>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="pb-4 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-5xl mx-auto text-center text-xs text-gray-400 flex flex-wrap justify-center gap-x-4 gap-y-1">
+            <Link to="/vop" className="hover:text-brand-gold transition-colors">Všeobecné obchodné podmienky</Link>
+            <span>·</span>
+            <Link to="/ochrana-sukromia" className="hover:text-brand-gold transition-colors">Ochrana osobných údajov</Link>
+            <span>·</span>
+            <Link to="/reklamacie" className="hover:text-brand-gold transition-colors">Reklamácie a vrátenie</Link>
           </div>
         </div>
       </section>

@@ -395,11 +395,11 @@ export const CartDrawer: React.FC = () => {
                   <span className="text-xs text-gray-500 text-right">
                     od 150 EUR s DPH
                     <br />
-                    <span className="text-gray-400">nad 3 platne zadarmo</span>
+                    <span className="text-gray-400">pri 3 a viac platniach zadarmo</span>
                   </span>
                 </div>
                 <p className="text-[11px] text-gray-400">
-                  Presná cena sa potvrdí v pokladni podľa adresy a počtu paliet.{' '}
+                  Presná cena sa potvrdí v pokladni podľa adresy a počtu platní.{' '}
                   <Link to="/doprava" onClick={closeCart} className="text-brand-gold hover:underline">
                     Viac o doprave
                   </Link>
@@ -411,10 +411,19 @@ export const CartDrawer: React.FC = () => {
                   <span className="text-brand-gold">{formatPrice(total)}</span>
                 </div>
 
+                {/* Return cost notice — required by § 3 ods. 1 písm. i) zákona č. 108/2024 Z.z. */}
+                <div className="flex items-start gap-2 rounded-lg bg-amber-50 border border-amber-200 px-3 py-2.5">
+                  <Info size={13} className="text-amber-600 mt-0.5 flex-shrink-0" />
+                  <p className="text-[11px] text-amber-800 leading-relaxed">
+                    <span className="font-semibold">Náklady na vrátenie tovaru</span> pri odstúpení od zmluvy znáša kupujúci.
+                    Orientačná cena spätného odvozu: <span className="font-semibold">od 150 EUR</span> (Bratislava) / <span className="font-semibold">od 350 EUR</span> (SR).{' '}
+                    <Link to="/reklamacie" onClick={closeCart} className="text-amber-700 hover:underline">
+                      Viac info
+                    </Link>
+                  </p>
+                </div>
+
                 {/* CTA - Shopify Checkout */}
-                <p className="text-sm text-gray-500">
-                  Kliknutím na „Pokračovať k platbe" potvrdzujete záväznú objednávku s povinnosťou platby.
-                </p>
                 <button
                   onClick={handleCheckout}
                   disabled={!checkoutUrl || isLoading}
@@ -427,14 +436,14 @@ export const CartDrawer: React.FC = () => {
                     </>
                   ) : (
                     <>
-                      Pokračovať k platbe
+                      Prejsť do pokladne
                       <ExternalLink size={18} />
                     </>
                   )}
                 </button>
 
                 <p className="text-xs text-gray-400 text-center">
-                  Budete presmerovaný na zabezpečenú pokladňu OROSTONE
+                  Budete presmerovaný do zabezpečenej pokladne. Záväzná objednávka s povinnosťou platby vznikne až v poslednom kroku po jej odoslaní.
                 </p>
 
                 {/* Continue shopping */}

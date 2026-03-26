@@ -1,6 +1,7 @@
 import React from 'react';
 import { Shield, AlertTriangle, Package, Hammer, Phone, Mail, MapPin, CheckCircle, Download, Printer } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { SEOHead } from '../components/UI/SEOHead';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 16 },
@@ -35,6 +36,11 @@ export const KeyFacts: React.FC = () => {
 
   return (
     <div className="pt-32 pb-24 min-h-screen bg-[#F9F9F7]">
+      <SEOHead
+        title="Key Facts — Technické parametre platní | OROSTONE"
+        description="Technické parametre, aplikácie a pokyny pre sinterované platne Orostone. Rozmer 3200×1600 mm, hrúbka 12 mm, povrchy Lesklý, Matný, Polo-matný."
+        canonical="https://eshop.orostone.sk/key-facts"
+      />
       <div className="container mx-auto px-6 max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

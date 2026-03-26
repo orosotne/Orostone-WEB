@@ -1,5 +1,6 @@
 import React from 'react';
-import { Truck, CreditCard, Clock, Package, MapPin, Phone, Mail } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Truck, CreditCard, Clock, Package, MapPin, Phone, Mail, RotateCcw } from 'lucide-react';
 import { SEOHead } from '../components/UI/SEOHead';
 
 export const DopravaAPlatba: React.FC = () => {
@@ -7,8 +8,8 @@ export const DopravaAPlatba: React.FC = () => {
     <main className="bg-white">
       <SEOHead
         title="Doprava a platba | OROSTONE E-Shop"
-        description="Informácie o doprave, platobných metódach a časoch expedície. Paletová preprava po celom Slovensku."
-        canonical="https://orostone.sk/doprava"
+        description="Informácie o doprave, platobných metódach a časoch expedície. Špeciálna preprava veľkoformátových platní po celom Slovensku."
+        canonical="https://eshop.orostone.sk/doprava"
       />
 
       {/* Header */}
@@ -22,7 +23,7 @@ export const DopravaAPlatba: React.FC = () => {
               Doprava a platba
             </h1>
             <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
-              Veľkoformátové platne doručujeme na paletách bezpečne a spoľahlivo po celom Slovensku.
+              Veľkoformátové platne Orostone doručujeme bezpečne na špeciálnom prepravnom vozíku prostredníctvom zmluvného dopravcu v rámci Slovenskej republiky.
             </p>
           </div>
         </div>
@@ -42,46 +43,47 @@ export const DopravaAPlatba: React.FC = () => {
               <div className="rounded-2xl border border-gray-200 p-6 bg-white shadow-sm">
                 <div className="flex items-center gap-3 mb-4">
                   <Package size={20} className="text-brand-gold" />
-                  <h3 className="font-bold text-brand-dark">Paletová preprava</h3>
+                  <h3 className="font-bold text-brand-dark">Špeciálna preprava platní</h3>
                 </div>
                 <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                  Platne sú veľkoformátové (3200 × 1600 mm) a ťažké — prepravujeme ich výhradne na palete s profesionálnym dopravcom.
+                  Platne majú veľkoformátový rozmer 3&nbsp;200&nbsp;×&nbsp;1&nbsp;600&nbsp;mm a vysokú hmotnosť. Prepravujeme ich výlučne na špeciálnom prepravnom vozíku s kolieskami, kde sú platne bezpečne uchytené popruhmi.
                 </p>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-start gap-2">
-                    <span className="text-brand-gold mt-0.5">✦</span>
-                    Doručenie priamo na vami zvolenú adresu
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-brand-gold mt-0.5">✦</span>
-                    Vozidlo so zadným zdvíhacím čelom
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-brand-gold mt-0.5">✦</span>
-                    Preberanie platní je potrebné zabezpečiť na mieste (min. 2 osoby)
-                  </li>
-                </ul>
+                <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                  <strong className="text-brand-dark">Štandardná doprava zahŕňa</strong> doručenie na adresu uvedenú v objednávke, na miesto prístupné pre nákladné vozidlo, spravidla na prízemie alebo k vozidlu.
+                </p>
+                <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                  <strong className="text-brand-dark">Súčasťou štandardnej dopravy nie je</strong> vnútorná manipulácia, vynáška, presun po schodoch, vykládka pomocou žeriava, vysokozdvižnej techniky ani iná nadštandardná manipulácia, ak nebolo písomne dohodnuté inak.
+                </p>
+                <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                  Kupujúci je povinný zabezpečiť na mieste prevzatia primerané podmienky na bezpečné prevzatie tovaru, vrátane najmenej 2 osôb na asistenciu pri prevzatí.
+                </p>
+                <div className="rounded-xl bg-amber-50 border border-amber-200 p-4 text-sm text-amber-900 leading-relaxed">
+                  Ak kupujúci nezabezpečí prevzatie tovaru, prístup na miesto doručenia alebo potrebnú súčinnosť, spoločnosť Orostone je oprávnená požadovať náhradu nákladov márneho doručenia, opätovného doručenia a primeraných nákladov na skladovanie.
+                </div>
               </div>
 
               <div className="rounded-2xl border border-gray-200 p-6 bg-white shadow-sm">
                 <div className="flex items-center gap-3 mb-4">
                   <Clock size={20} className="text-brand-gold" />
-                  <h3 className="font-bold text-brand-dark">Čas expedície</h3>
+                  <h3 className="font-bold text-brand-dark">Dodacie lehoty</h3>
                 </div>
-                <ul className="space-y-3 text-sm text-gray-600">
+                <ul className="space-y-4 text-sm text-gray-600">
                   <li className="flex items-start gap-2">
                     <span className="text-brand-gold mt-0.5">✦</span>
-                    <span><strong className="text-brand-dark">Skladové platne:</strong> expedícia do 5 pracovných dní od prijatia platby</span>
+                    <span><strong className="text-brand-dark">Skladové platne:</strong> expedujeme spravidla do 5 pracovných dní od prijatia platby</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-brand-gold mt-0.5">✦</span>
-                    <span><strong className="text-brand-dark">Na objednávku:</strong> 3–6 týždňov (závisí od dostupnosti u výrobcu)</span>
+                    <span><strong className="text-brand-dark">Na objednávku:</strong> expedujeme spravidla v lehote 3 až 6 týždňov v závislosti od dostupnosti u výrobcu</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-brand-gold mt-0.5">✦</span>
-                    O expedícii vás informujeme emailom s číslom zásielky
+                    <span>Ak to spôsob dopravy umožňuje, o expedícii vás budeme informovať e-mailom</span>
                   </li>
                 </ul>
+                <p className="text-xs text-gray-400 mt-5 leading-relaxed">
+                  Uvedené lehoty sú orientačné a môžu sa meniť v závislosti od skladovej dostupnosti, výrobcu, logistiky a okolností, ktoré spoločnosť Orostone nemôže primerane ovplyvniť.
+                </p>
               </div>
             </div>
 
@@ -96,30 +98,76 @@ export const DopravaAPlatba: React.FC = () => {
                     <tr className="border-b border-gray-200">
                       <th className="text-left py-3 pr-6 font-semibold text-brand-dark">Oblasť</th>
                       <th className="text-left py-3 pr-6 font-semibold text-brand-dark">Cena (s DPH)</th>
-                      <th className="text-left py-3 font-semibold text-brand-dark">Poznámka</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
                     <tr>
                       <td className="py-3 pr-6 text-gray-700">Bratislava a okolie (do 50 km)</td>
-                      <td className="py-3 pr-6 font-medium text-brand-dark">150 EUR</td>
-                      <td className="py-3 text-gray-500">Paletová preprava, závisí od počtu paliet</td>
+                      <td className="py-3 pr-6 font-medium text-brand-dark">od 150 EUR</td>
                     </tr>
                     <tr>
-                      <td className="py-3 pr-6 text-gray-700">Celé Slovensko</td>
-                      <td className="py-3 pr-6 font-medium text-brand-dark">350 EUR</td>
-                      <td className="py-3 text-gray-500">Závisí od vzdialenosti a počtu paliet</td>
+                      <td className="py-3 pr-6 text-gray-700">Ostatné územie Slovenskej republiky</td>
+                      <td className="py-3 pr-6 font-medium text-brand-dark">od 350 EUR</td>
                     </tr>
                     <tr className="bg-amber-50">
                       <td className="py-3 pr-6 font-semibold text-brand-dark">Pri 3 a viac platniach</td>
-                      <td className="py-3 pr-6 font-bold text-emerald-700">Doprava zadarmo</td>
-                      <td className="py-3 text-gray-500">Automaticky pri objednávke</td>
+                      <td className="py-3 pr-6 font-bold text-emerald-700">Doprava zadarmo*</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-              <p className="text-xs text-gray-400 mt-4">
-                Ceny sú uvedené s DPH. Doručujeme výlučne na území Slovenskej republiky. Presná cena dopravy sa potvrdí pri objednávke.
+              <p className="text-xs text-gray-500 mt-4 leading-relaxed">
+                Konečná cena dopravy sa určuje podľa adresy doručenia, počtu platní, hmotnosti zásielky a prípadných osobitných požiadaviek na manipuláciu. Presná cena dopravy bude zobrazená alebo potvrdená pred odoslaním záväznej objednávky. Doručujeme výlučne na území Slovenskej republiky.
+              </p>
+              <p className="text-xs text-gray-400 mt-2">
+                * Doprava zadarmo pri 3 a viac platniach, ak nie je pri konkrétnej objednávke uvedené inak.
+              </p>
+              <p className="text-xs text-gray-400 mt-2">
+                Úplné obchodné podmienky vrátane podmienok dodania nájdete v{' '}
+                <Link to="/vop" className="text-brand-gold hover:underline">Všeobecných obchodných podmienkach</Link>.
+              </p>
+            </div>
+
+            {/* Vrátenie tovaru — náklady */}
+            <div className="rounded-2xl border border-amber-200 bg-amber-50 p-6 mb-6">
+              <h3 className="font-bold text-brand-dark mb-4 flex items-center gap-2">
+                <RotateCcw size={18} className="text-amber-600" />
+                Náklady na vrátenie tovaru
+              </h3>
+              <p className="text-sm text-gray-700 leading-relaxed mb-3">
+                Vzhľadom na povahu, hmotnosť a rozmery platní (3&nbsp;200&nbsp;×&nbsp;1&nbsp;600&nbsp;mm) <strong>nie je možné tovar vrátiť bežnou poštou</strong>. V prípade odstúpenia od zmluvy znáša náklady na vrátenie tovaru kupujúci.
+              </p>
+              <p className="text-sm text-gray-700 leading-relaxed mb-4">
+                Orientačné náklady na spätný zvoz tovaru:
+              </p>
+              <div className="overflow-x-auto mb-4">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-amber-200">
+                      <th className="text-left py-2 pr-6 font-semibold text-brand-dark">Oblasť vyzdvihnutia</th>
+                      <th className="text-left py-2 font-semibold text-brand-dark">Odhadované náklady (s DPH)</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-amber-100">
+                    <tr>
+                      <td className="py-2 pr-6 text-gray-700">Bratislava a okolie (do 50 km)</td>
+                      <td className="py-2 font-medium text-brand-dark">od 150 EUR</td>
+                    </tr>
+                    <tr>
+                      <td className="py-2 pr-6 text-gray-700">Ostatné územie Slovenskej republiky</td>
+                      <td className="py-2 font-medium text-brand-dark">od 350 EUR</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-xs text-gray-500 leading-relaxed">
+                Presná výška nákladov na vrátenie závisí od miesta vyzdvihnutia, počtu kusov a spôsobu prepravy a bude potvrdená pred odoslaním záväznej objednávky. Táto informácia je poskytovaná v súlade s § 3 ods. 1 písm. i) zákona č. 108/2024 Z.z. o ochrane spotrebiteľa.
+              </p>
+              <p className="text-xs text-gray-500 mt-3 leading-relaxed">
+                Podrobný postup pri odstúpení od zmluvy nájdete na stránke{' '}
+                <Link to="/reklamacie" className="text-brand-gold hover:underline">Reklamácie a vrátenie</Link>{' '}
+                alebo vyplňte{' '}
+                <Link to="/odstupenie-od-zmluvy" className="text-brand-gold hover:underline">formulár na odstúpenie od zmluvy</Link>.
               </p>
             </div>
 
@@ -141,25 +189,25 @@ export const DopravaAPlatba: React.FC = () => {
               <div className="rounded-2xl border border-gray-200 p-6 bg-white shadow-sm">
                 <h3 className="font-bold text-brand-dark mb-3">Online platba kartou</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Bezpečná platba cez Shopify Payments. Akceptujeme Visa a Mastercard. Platba prebehne na zabezpečenej Shopify stránke.
+                  Bezpečná platba prostredníctvom zabezpečenej platobnej brány. Akceptujeme Visa a Mastercard.
                 </p>
               </div>
               <div className="rounded-2xl border border-gray-200 p-6 bg-white shadow-sm">
                 <h3 className="font-bold text-brand-dark mb-3">Apple Pay / Google Pay</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Rýchla a bezpečná platba cez Apple Pay alebo Google Pay priamo v prehliadači alebo zariadení.
+                  Rýchla platba cez Apple Pay alebo Google Pay, ak sú na zariadení kupujúceho dostupné.
                 </p>
               </div>
               <div className="rounded-2xl border border-gray-200 p-6 bg-white shadow-sm">
                 <h3 className="font-bold text-brand-dark mb-3">Bankový prevod</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Pre väčšie objednávky alebo firemných zákazníkov vieme dohodnúť platbu bankovým prevodom na faktúru. Kontaktujte nás pred objednaním.
+                  Bankový prevod je možný, ak to spoločnosť Orostone v konkrétnom prípade umožní. Pri väčších objednávkach alebo pri firemných zákazníkoch si spoločnosť Orostone vyhradzuje právo určiť individuálne platobné podmienky, vrátane úhrady zálohy alebo platby vopred.
                 </p>
               </div>
               <div className="rounded-2xl border border-gray-200 p-6 bg-white shadow-sm">
                 <h3 className="font-bold text-brand-dark mb-3">DPH a fakturácia</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Sme platitelia DPH (IČ DPH: SK2121930580). Na požiadanie vystavíme faktúru s DPH. Pre firemných zákazníkov uveďte IČO pri objednávke do poznámky.
+                  Spoločnosť Orostone je platiteľom DPH (IČ DPH: SK2121930580). Daňový doklad zasielame elektronicky. Ak kupujúci požaduje vystavenie faktúry na podnikateľský subjekt, je povinný uviesť správne fakturačné údaje pri objednávke. Neskoršia zmena fakturačných údajov je možná len v rozsahu pripustenom príslušnými právnymi predpismi.
                 </p>
               </div>
             </div>

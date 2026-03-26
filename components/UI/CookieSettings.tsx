@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Cookie, BarChart3, Megaphone, Shield } from 'lucide-react';
+import { X, Cookie, BarChart3, Megaphone, Shield, Layers } from 'lucide-react';
 import { useCookies, CookiePreferences } from '../../context/CookieContext';
 import { Link } from 'react-router-dom';
 
@@ -123,7 +123,7 @@ export const CookieSettings: React.FC = () => {
                     <Cookie className="w-5 h-5 text-brand-gold" />
                   </div>
                   <div>
-                    <h2 className="text-white font-medium text-lg">Nastavenia cookies</h2>
+                    <h2 className="text-white font-medium text-lg">Nastavenia cookies a podobných technológií</h2>
                     <p className="text-gray-500 text-xs">Upravte svoje preferencie</p>
                   </div>
                 </div>
@@ -138,7 +138,10 @@ export const CookieSettings: React.FC = () => {
               {/* Content */}
               <div className="flex-1 min-h-0 overflow-y-auto p-4 md:p-6 space-y-2.5 md:space-y-3">
                 <p className="text-gray-400 text-xs md:text-sm leading-relaxed mb-3">
-                  Vyberte si, ktoré kategórie cookies chcete povoliť.{' '}
+                  Tu si môžete nastaviť, ktoré cookies a podobné technológie povolíte.
+                  Nevyhnutné technológie sú vždy aktívne. Ostatné kategórie môžete
+                  povoliť alebo odmietnuť podľa svojich preferencií.
+                  Svoje rozhodnutie môžete kedykoľvek zmeniť cez odkaz v pätičke webu.{' '}
                   <Link to="/cookies" onClick={closeSettings} className="text-brand-gold hover:underline">
                     Viac informácií
                   </Link>.
@@ -146,8 +149,8 @@ export const CookieSettings: React.FC = () => {
 
                 <CookieCategory
                   icon={<Shield className="w-5 h-5 text-green-400" />}
-                  title="Nevyhnutné cookies"
-                  description="Potrebné pre základné fungovanie stránky. Nie je možné ich vypnúť."
+                  title="Nevyhnutné"
+                  description="Technicky nutné pre základné fungovanie webu, bezpečnosť stránky, uloženie vašich nastavení súhlasu a ochranu formulárov pred zneužitím. Bez nich by web nemusel fungovať správne."
                   enabled={true}
                   onChange={() => {}}
                   disabled={true}
@@ -155,41 +158,51 @@ export const CookieSettings: React.FC = () => {
                 />
 
                 <CookieCategory
-                  icon={<BarChart3 className="w-5 h-5 text-blue-400" />}
-                  title="Analytické cookies"
-                  description="Pomáhajú nám pochopiť, ako návštevníci používajú našu stránku."
+                  icon={<Layers className="w-5 h-5 text-blue-400" />}
+                  title="Funkčné"
+                  description="Slúžia na zapamätanie vašich preferencií a zlepšenie používateľského komfortu, napríklad pri práci s rozhraním alebo nepovinnými funkciami webu."
+                  enabled={true}
+                  onChange={() => {}}
+                  disabled={true}
+                  alwaysOn={true}
+                />
+
+                <CookieCategory
+                  icon={<BarChart3 className="w-5 h-5 text-amber-400" />}
+                  title="Analytické"
+                  description="Pomáhajú nám merať návštevnosť a pochopiť, ako návštevníci používajú náš web, aby sme vedeli zlepšovať obsah, štruktúru a výkon stránky."
                   enabled={localPrefs.analytics}
                   onChange={(enabled) => setLocalPrefs(prev => ({ ...prev, analytics: enabled }))}
                 />
 
                 <CookieCategory
                   icon={<Megaphone className="w-5 h-5 text-purple-400" />}
-                  title="Marketingové cookies"
-                  description="Zobrazovanie relevantných reklám a meranie efektivity kampaní."
+                  title="Marketingové"
+                  description="Používajú sa na meranie účinnosti reklamy, remarketing a zobrazovanie relevantnejších reklamných kampaní."
                   enabled={localPrefs.marketing}
                   onChange={(enabled) => setLocalPrefs(prev => ({ ...prev, marketing: enabled }))}
                 />
               </div>
 
-              {/* Footer — col-reverse on mobile so Accept All is on top */}
+              {/* Footer — Reject / Save / Accept */}
               <div className="flex flex-col-reverse sm:flex-row gap-2 p-3 md:p-4 border-t border-gray-800 bg-gray-900/50 flex-shrink-0">
                 <button
                   onClick={rejectAll}
-                  className="flex-1 px-4 py-2 md:py-2.5 text-gray-400 hover:text-white rounded-full text-xs md:text-sm font-medium transition-colors"
+                  className="flex-1 px-4 py-2 md:py-2.5 border border-gray-700 text-gray-300 hover:text-white hover:bg-gray-800 rounded-full text-xs md:text-sm font-medium transition-all"
                 >
-                  Odmietnuť
+                  Odmietnuť všetko
                 </button>
                 <button
                   onClick={handleSave}
                   className="flex-1 px-4 py-2 md:py-2.5 bg-gray-700 text-white hover:bg-gray-600 rounded-full text-xs md:text-sm font-medium transition-all"
                 >
-                  Uložiť výber
+                  Uložiť nastavenia
                 </button>
                 <button
                   onClick={acceptAll}
                   className="flex-1 px-4 py-2 md:py-2.5 bg-brand-gold text-brand-dark hover:bg-white rounded-full text-xs md:text-sm font-bold transition-all"
                 >
-                  Prijať všetky
+                  Prijať všetko
                 </button>
               </div>
 

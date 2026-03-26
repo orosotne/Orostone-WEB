@@ -1,20 +1,66 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { SEOHead } from '../components/UI/SEOHead';
-import { FileText, ArrowLeft, Printer } from 'lucide-react';
+import { FileText, ArrowLeft, Printer, Mail } from 'lucide-react';
+
+const inputClass = 'w-full border-b-2 border-dashed border-gray-300 bg-transparent py-1.5 text-sm text-brand-dark outline-none focus:border-brand-gold transition-colors print:border-solid print:border-gray-400';
 
 /**
  * Vzorový formulár na odstúpenie od zmluvy
- * Príloha č. 3 zákona č. 102/2014 Z.z. o ochrane spotrebiteľa pri predaji na diaľku
+ * Podľa zákona č. 108/2024 Z.z. o ochrane spotrebiteľa
  */
 export const OdstupeniOdZmluvy: React.FC = () => {
+  const [form, setForm] = useState({
+    meno: '',
+    adresa: '',
+    email: '',
+    telefon: '',
+    nazovTovaru: '',
+    pocetKusov: '',
+    cisloObjednavky: '',
+    cisloFaktury: '',
+    datumObjednania: '',
+    datumPrevzatia: '',
+    dovod: '',
+    iban: '',
+  });
+
+  const update = (field: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm(prev => ({ ...prev, [field]: e.target.value }));
+  };
+
+  const buildMailtoHref = () => {
+    const subject = encodeURIComponent('Odstúpenie od zmluvy');
+    const body = encodeURIComponent(
+      `Dobrý deň,\n\nTýmto oznamujem, že odstupujem od zmluvy o kúpe tovaru:\n\n` +
+      `— ÚDAJE O TOVARE —\n` +
+      `Názov tovaru: ${form.nazovTovaru}\n` +
+      `Počet kusov: ${form.pocetKusov}\n` +
+      `Číslo objednávky: ${form.cisloObjednavky}\n` +
+      `Číslo faktúry: ${form.cisloFaktury}\n` +
+      `Dátum objednania: ${form.datumObjednania}\n` +
+      `Dátum prevzatia tovaru: ${form.datumPrevzatia}\n\n` +
+      `— MOJE ÚDAJE —\n` +
+      `Meno a priezvisko: ${form.meno}\n` +
+      `Adresa: ${form.adresa}\n` +
+      `E-mail: ${form.email}\n` +
+      `Telefón: ${form.telefon}\n\n` +
+      `— VRÁTENIE PLATBY —\n` +
+      `IBAN: ${form.iban}\n\n` +
+      `— DÔVOD ODSTÚPENIA (nepovinné) —\n` +
+      `${form.dovod}\n\n` +
+      `S pozdravom,\n${form.meno}`
+    );
+    return `mailto:info@orostone.sk?subject=${subject}&body=${body}`;
+  };
+
   return (
     <div className="pt-32 pb-24 min-h-screen bg-[#F9F9F7]">
       <SEOHead
         title="Formulár na odstúpenie od zmluvy | OROSTONE"
-        description="Vzorový formulár na odstúpenie od kúpnej zmluvy uzavretej na diaľku podľa zákona č. 102/2014 Z.z. OROSTONE e-shop."
-        canonical="https://orostone.sk/odstupenie-od-zmluvy"
+        description="Vzorový formulár na odstúpenie od kúpnej zmluvy uzavretej na diaľku podľa zákona č. 108/2024 Z.z. o ochrane spotrebiteľa. OROSTONE e-shop."
+        canonical="https://eshop.orostone.sk/odstupenie-od-zmluvy"
         noindex={false}
       />
       <div className="container mx-auto px-6 max-w-3xl">
@@ -23,17 +69,18 @@ export const OdstupeniOdZmluvy: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-12 print:hidden"
         >
           <span className="font-sans text-brand-gold text-xs font-bold tracking-widest uppercase mb-4 block">
-            Práva spotrebiteľa • Zákon č. 102/2014 Z.z.
+            Práva spotrebiteľa • Zákon č. 108/2024 Z.z.
           </span>
           <h1 className="text-3xl md:text-4xl font-sans font-bold text-brand-dark mb-4">
             Formulár na odstúpenie od zmluvy
           </h1>
           <p className="text-gray-500 font-light leading-relaxed max-w-2xl mx-auto">
-            Vzorový formulár podľa prílohy č. 3 zákona č. 102/2014 Z.z. o ochrane spotrebiteľa
-            pri predaji tovaru na základe zmluvy uzavretej na diaľku.
+            Vyplňte formulár priamo na tejto stránke, vytlačte ho, podpíšte a zašlite e-mailom na{' '}
+            <a href="mailto:info@orostone.sk" className="text-brand-gold hover:underline font-medium">info@orostone.sk</a>{' '}
+            alebo poštou na adresu sídla spoločnosti.
           </p>
         </motion.div>
 
@@ -42,13 +89,10 @@ export const OdstupeniOdZmluvy: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="bg-amber-50 border-l-4 border-brand-gold rounded-orostone p-6 mb-8"
+          className="bg-amber-50 border-l-4 border-brand-gold rounded-orostone p-6 mb-8 print:hidden"
         >
           <p className="text-sm text-gray-700 leading-relaxed">
-            <strong className="text-brand-dark">Ako postupovať:</strong> Tento formulár vyplňte a zašlite e-mailom na{' '}
-            <a href="mailto:info@orostone.sk" className="text-brand-gold hover:underline font-medium">info@orostone.sk</a>{' '}
-            alebo poštou na adresu sídla spoločnosti pred uplynutím 14-dňovej lehoty od prevzatia tovaru.
-            Lehota na odstúpenie je dodržaná, ak zašlete oznámenie pred jej uplynutím.
+            <strong className="text-brand-dark">Ako postupovať:</strong> 1. Vyplňte všetky polia nižšie. 2. Kliknite na „Vytlačiť formulár". 3. Vytlačený formulár podpíšte. 4. Podpísaný formulár nám zašlite e-mailom (naskenovaný/odfotený) alebo poštou pred uplynutím 14-dňovej lehoty od prevzatia tovaru.
           </p>
         </motion.div>
 
@@ -69,7 +113,7 @@ export const OdstupeniOdZmluvy: React.FC = () => {
                 Oznámenie o odstúpení od zmluvy
               </h2>
               <p className="text-sm text-gray-500">
-                Príloha č. 3 zákona č. 102/2014 Z.z. (vzorový formulár)
+                Vzorový formulár podľa zákona č. 108/2024 Z.z. o ochrane spotrebiteľa
               </p>
             </div>
           </div>
@@ -93,58 +137,91 @@ export const OdstupeniOdZmluvy: React.FC = () => {
               Týmto oznamujem, že odstupujem od zmluvy o kúpe tohto tovaru:
             </p>
 
-            {/* Polia na vyplnenie */}
-            <div className="space-y-4">
-
+            {/* Údaje spotrebiteľa */}
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mt-6 mb-3">Údaje spotrebiteľa</p>
+            <div className="space-y-4 break-inside-avoid">
               <div>
-                <p className="font-medium text-brand-dark mb-1">Číslo objednávky / popis objednaného tovaru:</p>
-                <div className="border-b-2 border-dashed border-gray-300 h-8 w-full mt-2"></div>
-                <div className="border-b-2 border-dashed border-gray-300 h-8 w-full mt-3"></div>
+                <label className="font-medium text-brand-dark mb-1 block">Meno a priezvisko:</label>
+                <input type="text" value={form.meno} onChange={update('meno')} className={inputClass} />
               </div>
-
               <div>
-                <p className="font-medium text-brand-dark mb-1">Dátum objednania:</p>
-                <div className="border-b-2 border-dashed border-gray-300 h-8 w-full mt-2"></div>
+                <label className="font-medium text-brand-dark mb-1 block">Adresa:</label>
+                <input type="text" value={form.adresa} onChange={update('adresa')} className={inputClass} />
               </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="font-medium text-brand-dark mb-1 block">E-mail:</label>
+                  <input type="email" value={form.email} onChange={update('email')} className={inputClass} />
+                </div>
+                <div>
+                  <label className="font-medium text-brand-dark mb-1 block">Telefón:</label>
+                  <input type="tel" value={form.telefon} onChange={update('telefon')} className={inputClass} />
+                </div>
+              </div>
+            </div>
 
+            {/* Údaje o tovare */}
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mt-8 mb-3">Údaje o tovare</p>
+            <div className="space-y-4 break-inside-avoid">
               <div>
-                <p className="font-medium text-brand-dark mb-1">Dátum prevzatia tovaru:</p>
-                <div className="border-b-2 border-dashed border-gray-300 h-8 w-full mt-2"></div>
+                <label className="font-medium text-brand-dark mb-1 block">Názov tovaru:</label>
+                <input type="text" value={form.nazovTovaru} onChange={update('nazovTovaru')} className={inputClass} />
               </div>
-
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="font-medium text-brand-dark mb-1 block">Počet kusov:</label>
+                  <input type="text" value={form.pocetKusov} onChange={update('pocetKusov')} className={inputClass} />
+                </div>
+                <div>
+                  <label className="font-medium text-brand-dark mb-1 block">Číslo objednávky:</label>
+                  <input type="text" value={form.cisloObjednavky} onChange={update('cisloObjednavky')} className={inputClass} />
+                </div>
+              </div>
               <div>
-                <p className="font-medium text-brand-dark mb-1">Meno a priezvisko spotrebiteľa:</p>
-                <div className="border-b-2 border-dashed border-gray-300 h-8 w-full mt-2"></div>
+                <label className="font-medium text-brand-dark mb-1 block">Číslo faktúry <span className="text-gray-400 font-normal">(ak bolo vystavené)</span>:</label>
+                <input type="text" value={form.cisloFaktury} onChange={update('cisloFaktury')} className={inputClass} />
               </div>
-
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="font-medium text-brand-dark mb-1 block">Dátum objednania:</label>
+                  <input type="text" value={form.datumObjednania} onChange={update('datumObjednania')} placeholder="dd.mm.rrrr" className={inputClass} />
+                </div>
+                <div>
+                  <label className="font-medium text-brand-dark mb-1 block">Dátum prevzatia tovaru:</label>
+                  <input type="text" value={form.datumPrevzatia} onChange={update('datumPrevzatia')} placeholder="dd.mm.rrrr" className={inputClass} />
+                </div>
+              </div>
               <div>
-                <p className="font-medium text-brand-dark mb-1">Adresa spotrebiteľa:</p>
-                <div className="border-b-2 border-dashed border-gray-300 h-8 w-full mt-2"></div>
-                <div className="border-b-2 border-dashed border-gray-300 h-8 w-full mt-3"></div>
+                <label className="font-medium text-brand-dark mb-1 block">Dôvod odstúpenia <span className="text-gray-400 font-normal">(nepovinné)</span>:</label>
+                <textarea value={form.dovod} onChange={update('dovod')} rows={2} className="w-full border-2 border-dashed border-gray-300 bg-transparent rounded-lg p-2.5 text-sm text-brand-dark outline-none focus:border-brand-gold transition-colors resize-none print:border-solid print:border-gray-400" />
               </div>
+            </div>
 
-              <div>
-                <p className="font-medium text-brand-dark mb-1">Číslo bankového účtu (IBAN) pre vrátenie platby:</p>
-                <div className="border-b-2 border-dashed border-gray-300 h-8 w-full mt-2"></div>
-              </div>
-
+            {/* Vrátenie platby */}
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mt-8 mb-3">Vrátenie platby</p>
+            <div>
+              <label className="font-medium text-brand-dark mb-1 block">Číslo bankového účtu (IBAN):</label>
+              <input type="text" value={form.iban} onChange={update('iban')} placeholder="SK00 0000 0000 0000 0000 0000" className={inputClass} />
             </div>
 
             {/* Dátum a podpis */}
-            <div className="flex flex-col sm:flex-row gap-8 pt-4 border-t border-gray-100">
+            <div className="flex flex-col sm:flex-row gap-8 pt-4 border-t border-gray-100 mt-6 break-inside-avoid">
               <div className="flex-1">
                 <p className="font-medium text-brand-dark mb-1">Dátum:</p>
-                <div className="border-b-2 border-dashed border-gray-300 h-8 w-full mt-2"></div>
+                <p className="text-sm text-gray-600 py-1.5 border-b-2 border-dashed border-gray-300 print:border-solid print:border-gray-400">
+                  {new Date().toLocaleDateString('sk-SK')}
+                </p>
               </div>
               <div className="flex-1">
-                <p className="font-medium text-brand-dark mb-1">Podpis spotrebiteľa <span className="text-gray-400 font-normal">(len ak sa zasiela písomne)</span>:</p>
-                <div className="border-b-2 border-dashed border-gray-300 h-8 w-full mt-2"></div>
+                <p className="font-medium text-brand-dark mb-1">Podpis spotrebiteľa:</p>
+                <div className="border-b-2 border-dashed border-gray-300 h-12 w-full mt-2 print:border-solid print:border-gray-400"></div>
+                <p className="text-xs text-gray-400 mt-1">Vytlačte formulár a podpíšte ho tu</p>
               </div>
             </div>
 
           </div>
 
-          {/* Tlač */}
+          {/* Tlačidlá */}
           <div className="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row gap-3 print:hidden">
             <button
               onClick={() => window.print()}
@@ -154,9 +231,10 @@ export const OdstupeniOdZmluvy: React.FC = () => {
               Vytlačiť formulár
             </button>
             <a
-              href="mailto:info@orostone.sk?subject=Odst%C3%BApenie%20od%20zmluvy&body=Dobr%C3%BD%20de%C5%88%2C%0A%0AT%C3%BDmto%20oznamujem%2C%20%C5%BEe%20odst%C3%BApu%jem%20od%20zmluvy%20o%20k%C3%BApe%20tovaru%3A%0A%0A%C4%8C%C3%ADslo%20objedn%C3%A1vky%3A%20%0APopis%20tovaru%3A%20%0AD%C3%A1tum%20objedn%C3%A1nia%3A%20%0AD%C3%A1tum%20prevzatia%3A%20%0AMeno%20a%20priezvisko%3A%20%0AAdresa%3A%20%0AIBAN%3A%20"
+              href={buildMailtoHref()}
               className="flex items-center gap-2 px-5 py-2.5 border border-gray-300 text-brand-dark text-sm font-semibold rounded-xl hover:border-brand-dark transition-all"
             >
+              <Mail size={16} />
               Odoslať e-mailom
             </a>
           </div>
@@ -168,23 +246,29 @@ export const OdstupeniOdZmluvy: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="bg-white rounded-orostone shadow-sm p-6 mt-6"
+          className="bg-white rounded-orostone shadow-sm p-6 mt-6 print:hidden"
         >
           <h3 className="font-bold text-brand-dark mb-3 text-sm uppercase tracking-wider">Dôležité informácie</h3>
           <ul className="space-y-2 text-sm text-gray-600 leading-relaxed">
-            <li>• Lehota na odstúpenie je <strong>14 dní</strong> od prevzatia tovaru.</li>
-            <li>• Tovar musí byť vrátený nepoužitý, nepoškodený, v pôvodnom obale.</li>
+            <li>• Spotrebiteľ môže odstúpiť od zmluvy do <strong>14 dní</strong> od prevzatia tovaru.</li>
+            <li>• Tovar je potrebné zaslať späť najneskôr do 14 dní odo dňa odstúpenia od zmluvy.</li>
             <li>• Náklady na vrátenie tovaru znáša spotrebiteľ.</li>
-            <li>• Orostone vráti platbu vrátane nákladov na doručenie (najlacnejší spôsob) do <strong>14 dní</strong> od doručenia oznámenia o odstúpení, nie skôr ako po prevzatí vráteného tovaru.</li>
-            <li>• Právo na odstúpenie sa nevzťahuje na tovar zhotovený podľa osobitných požiadaviek.</li>
+            <li>• Veľkoformátové platne vzhľadom na svoju povahu, hmotnosť a rozmery nemožno spravidla vrátiť bežnou poštovou službou; vracajú sa primeranou prepravou.</li>
+            <li>• Predpokladané priame náklady na vrátenie tovaru sa spravidla pohybujú v rozmedzí <strong>150 € až 350 € s DPH</strong> podľa miesta vyzdvihnutia, počtu kusov a spôsobu dopravy.</li>
+            <li>• Spoločnosť Orostone vráti spotrebiteľovi platby najneskôr do <strong>14 dní</strong> od doručenia oznámenia o odstúpení od zmluvy, nie však skôr, ako jej bude tovar doručený späť alebo ako spotrebiteľ preukáže jeho odoslanie späť.</li>
+            <li>• Právo na odstúpenie sa nevzťahuje na tovar vyrobený podľa osobitných požiadaviek spotrebiteľa, tovar vyrobený na mieru alebo upravený pre konkrétneho spotrebiteľa.</li>
           </ul>
           <p className="mt-4 text-xs text-gray-400">
-            Podľa § 7 zákona č. 102/2014 Z.z. o ochrane spotrebiteľa pri predaji tovaru na základe zmluvy uzavretej na diaľku.
+            Podľa zákona č. 108/2024 Z.z. o ochrane spotrebiteľa.
+          </p>
+          <p className="mt-3 text-xs text-gray-400">
+            Informácie o spracúvaní vašich osobných údajov nájdete v{' '}
+            <Link to="/ochrana-sukromia" className="text-brand-gold hover:underline">Ochrane osobných údajov</Link>.
           </p>
         </motion.div>
 
         {/* Späť */}
-        <div className="mt-8 flex gap-4 print:hidden">
+        <div className="mt-8 flex gap-4 print:hidden" aria-label="Navigácia">
           <Link
             to="/reklamacie"
             className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-brand-dark transition-colors"

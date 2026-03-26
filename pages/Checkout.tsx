@@ -158,8 +158,8 @@ export const Checkout = () => {
                   <span className="text-gray-400 text-xs">potvrdí sa v pokladni</span>
                 </div>
                 <p className="text-[11px] text-gray-400 leading-relaxed">
-                  Presná cena dopravy závisí od adresy a počtu paliet.
-                  Nad 3 platne doprava zadarmo.
+                  Presná cena dopravy závisí od adresy a počtu platní.
+                  Pri 3 a viac platniach doprava zadarmo.
                   Montáž nie je súčasťou objednávky.{' '}
                   <Link to="/doprava" className="text-brand-gold hover:underline">
                     Viac o doprave
@@ -172,9 +172,6 @@ export const Checkout = () => {
               </div>
 
               {/* Checkout Button */}
-              <p className="text-sm text-gray-500 mt-6">
-                Kliknutím na „Pokračovať k platbe" potvrdzujete záväznú objednávku s povinnosťou platby.
-              </p>
               <button
                 onClick={handleCheckout}
                 disabled={!checkoutUrl || isLoading}
@@ -187,14 +184,16 @@ export const Checkout = () => {
                   </>
                 ) : (
                   <>
-                    Pokračovať k platbe
+                    Prejsť do pokladne
                     <ExternalLink size={18} />
                   </>
                 )}
               </button>
 
               <p className="text-xs text-gray-400 text-center mt-3">
-                Budete presmerovaný na zabezpečenú pokladňu OROSTONE
+                Budete presmerovaný do zabezpečenej pokladne. Záväzná objednávka s povinnosťou platby vznikne až v poslednom kroku po jej odoslaní.
+                Nákupom súhlasíte s{' '}
+                <Link to="/vop" className="text-brand-gold hover:underline">VOP</Link>.
               </p>
 
               {/* Trust badges */}
@@ -209,7 +208,7 @@ export const Checkout = () => {
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-500">
                   <Truck size={16} className="text-green-500 flex-shrink-0" />
-                  Paletová preprava po celom Slovensku
+                  Špeciálna preprava platní po celom Slovensku
                 </div>
               </div>
             </div>

@@ -212,3 +212,45 @@ html.lenis, html.lenis body {
 .badge-blink-delay-2 {
   animation: badge-blink 5s ease-in-out infinite 3s;
 }
+
+/* ===== Print styles (withdrawal form, etc.) ===== */
+@media print {
+  /* Hide navbar, footer */
+  header, footer {
+    display: none !important;
+  }
+
+  /* Remove background colors, shadows */
+  body, main, div {
+    background: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Remove top padding that compensates for fixed navbar */
+  .pt-32 {
+    padding-top: 1rem !important;
+  }
+
+  /* Prevent page breaks inside form sections */
+  .break-inside-avoid, input, textarea, label {
+    break-inside: avoid;
+  }
+
+  /* Make inputs show their values clearly */
+  input, textarea {
+    border-color: #9ca3af !important;
+    border-style: solid !important;
+    color: #1A1A1A !important;
+  }
+
+  /* Ensure text is black for readability */
+  p, span, li, h1, h2, h3, label, strong {
+    color: #1A1A1A !important;
+  }
+
+  /* Keep section headers gold for structure */
+  .text-brand-gold {
+    color: #ECD488 !important;
+  }
+}

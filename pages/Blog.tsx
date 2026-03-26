@@ -141,10 +141,10 @@ export const Blog: React.FC = () => {
         title="Blog | OROSTONE — Odborné rady pre váš projekt"
         description="Odborné rady, porovnania a tipy pre váš projekt so sinterovaným kameňom. Čítajte náš blog."
         ogType="website"
-        canonical="https://orostone.sk/blog"
+        canonical="https://eshop.orostone.sk/blog"
         structuredData={createBreadcrumbLD([
-          { name: 'OROSTONE', url: 'https://orostone.sk/' },
-          { name: 'Blog', url: 'https://orostone.sk/blog' },
+          { name: 'OROSTONE', url: 'https://eshop.orostone.sk/' },
+          { name: 'Blog', url: 'https://eshop.orostone.sk/blog' },
         ])}
       />
 

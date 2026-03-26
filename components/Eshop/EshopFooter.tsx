@@ -5,6 +5,7 @@ import {
   CreditCard, Truck, Shield, Clock, CheckCircle, Loader2
 } from 'lucide-react';
 import { RotatingBadge } from '../UI/RotatingBadge';
+import { useCookies } from '../../context/CookieContext';
 import { getVisibleCategories } from './EshopMegaMenu';
 import { subscribeToNewsletter } from '../../services/newsletter.service';
 
@@ -80,6 +81,7 @@ const NewsletterWidget: React.FC = () => {
 export const EshopFooter: React.FC = () => {
   const { pathname } = useLocation();
   const isProductDetail = pathname.startsWith('/produkt/');
+  const { openSettings } = useCookies();
 
   return (
     <footer className={`bg-brand-dark text-white${isProductDetail ? ' pb-32 lg:pb-0' : ''}`}>
@@ -94,7 +96,7 @@ export const EshopFooter: React.FC = () => {
               </div>
               <div>
                 <h4 className="font-semibold text-sm">Doprava zadarmo</h4>
-                <p className="text-xs text-gray-400">Pri objednavke nad 3 platne</p>
+                <p className="text-xs text-gray-400">Pri 3 a viac platniach</p>
               </div>
             </div>
             
@@ -229,6 +231,11 @@ export const EshopFooter: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/odstupenie-od-zmluvy" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  Odstúpenie od zmluvy
+                </Link>
+              </li>
+              <li>
                 <Link to="/kontakt" className="text-gray-400 hover:text-white text-sm transition-colors">
                   Kontakt
                 </Link>
@@ -284,14 +291,16 @@ export const EshopFooter: React.FC = () => {
                 <Link to="/cookies" className="hover:text-white transition-colors">
                   Cookies
                 </Link>
+                <span>•</span>
+                <button onClick={openSettings} className="hover:text-white transition-colors">
+                  Nastavenia cookies
+                </button>
               </div>
               <div className="text-[11px] leading-relaxed text-gray-500 max-w-2xl">
                 Orostone s.r.o., Landererova 8, 811 09 Bratislava - mestská časť Staré Mesto, IČO: 55 254 772, DIČ: 2121930580, IČ DPH: SK2121930580. Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B.
               </div>
               <div className="text-[11px] text-gray-500/80">
                 Alternatívne riešenie sporov: <a href="https://www.soi.sk" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 underline underline-offset-2">Slovenská obchodná inšpekcia (SOI)</a>
-                {' · '}
-                <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 underline underline-offset-2">Online riešenie sporov (ODR)</a>
               </div>
             </div>
             

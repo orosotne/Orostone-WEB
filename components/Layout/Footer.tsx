@@ -2,8 +2,11 @@ import React from 'react';
 import { NAV_LINKS } from '../../constants';
 import { Link } from 'react-router-dom';
 import { RotatingBadge } from '../UI/RotatingBadge';
+import { useCookies } from '../../context/CookieContext';
 
 export const Footer = () => {
+  const { openSettings } = useCookies();
+
   return (
     <footer className="bg-[#121212] text-white pt-24 pb-12 relative overflow-hidden">
       {/* Subtle Background Pattern */}
@@ -72,6 +75,7 @@ export const Footer = () => {
             <Link to="/vop" className="hover:text-gray-400 transition-colors">VOP</Link>
             <Link to="/key-facts" className="hover:text-gray-400 transition-colors">Key facts</Link>
             <Link to="/cookies" className="hover:text-gray-400 transition-colors">Cookies</Link>
+            <button onClick={openSettings} className="hover:text-gray-400 transition-colors">Nastavenia cookies</button>
           </div>
           <RotatingBadge onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
         </div>

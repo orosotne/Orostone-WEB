@@ -43,7 +43,7 @@ export const VOP = () => {
     <div className="pt-32 pb-24 min-h-screen bg-[#F9F9F7]">
       <SEOHead
         title="Všeobecné obchodné podmienky | OROSTONE E-Shop"
-        description="Všeobecné obchodné podmienky e-shopu OROSTONE. Informácie o objednávke, platbe, doprave, reklamáciách a právach spotrebiteľa podľa slovenského práva."
+        description="Všeobecné obchodné podmienky e-shopu OROSTONE. Informácie o objednávke, platbe, doprave, reklamáciách a právach spotrebiteľa podľa zákona č. 108/2024 Z.z."
         canonical="https://orostone.sk/vop"
       />
       <div className="container mx-auto px-6 max-w-4xl">
@@ -61,8 +61,9 @@ export const VOP = () => {
             Všeobecné obchodné podmienky
           </h1>
           <p className="font-sans font-light text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-            Tieto všeobecné obchodné podmienky upravujú vzťahy medzi spoločnosťou Orostone, s.r.o. a jej klientmi pri predaji a dodaní sinterovaného kameňa Orostone®.
+            Tieto všeobecné obchodné podmienky upravujú vzťahy medzi spoločnosťou Orostone s.r.o. a jej zákazníkmi pri predaji tovaru prostredníctvom webového sídla <a href="https://orostone.sk" className="text-brand-gold hover:underline">www.orostone.sk</a>, ako aj pri individuálnych objednávkach realizovaných mimo e-shopu.
           </p>
+          <p className="font-sans text-sm text-gray-400 mt-4">Účinné od: 24. 3. 2026</p>
         </motion.div>
 
         {/* Quick Navigation */}
@@ -75,18 +76,24 @@ export const VOP = () => {
           <h2 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">
             Rýchla navigácia
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
             {[
-              { id: 'uvodne-ustanovenia', label: '1. Úvodné ustanovenia' },
-              { id: 'objednavky', label: '2. Objednávky' },
-              { id: 'ceny', label: '3. Ceny' },
-              { id: 'platobne-podmienky', label: '4. Platobné podmienky' },
-              { id: 'dodacie-podmienky', label: '5. Dodacie podmienky' },
-              { id: 'doprava', label: '6. Doprava' },
-              { id: 'vlastnicke-pravo', label: '7. Vlastnícke právo' },
-              { id: 'zaruka-reklamacie', label: '8. Záruka a reklamácie' },
-              { id: 'prava-zodpovednost', label: '9. Práva a zodpovednosť' },
-              { id: 'odporucanie-realizatora', label: '10. Odporúčanie realizátora' },
+              { id: 'zakladne-ustanovenia', label: '1. Základné ustanovenia' },
+              { id: 'tovar-vlastnosti', label: '2. Tovar a jeho vlastnosti' },
+              { id: 'objednavka-zmluva', label: '3. Objednávka a uzatvorenie zmluvy' },
+              { id: 'cena-platba', label: '4. Cena a platobné podmienky' },
+              { id: 'dodanie-tovaru', label: '5. Dodanie Tovaru' },
+              { id: 'prechod-nebezpecenstva', label: '6. Prechod nebezpečenstva škody' },
+              { id: 'b2b-ustanovenia', label: '7. Individuálne a B2B objednávky' },
+              { id: 'eshop-zmluva', label: '8. E-shop a zmluva na diaľku' },
+              { id: 'odstupenie-zmluvy', label: '9. Odstúpenie od zmluvy' },
+              { id: 'vady-reklamacie', label: '10. Vady a reklamácie' },
+              { id: 'externe-sluzby', label: '11. Externé služby' },
+              { id: 'obmedzenie-zodpovednosti', label: '12. Obmedzenie zodpovednosti' },
+              { id: 'vyssia-moc', label: '13. Vyššia moc' },
+              { id: 'riesenie-sporov', label: '14. Riešenie sporov' },
+              { id: 'ochrana-udajov', label: '15. Ochrana osobných údajov' },
+              { id: 'zaverecne-ustanovenia', label: '16. Záverečné ustanovenia' },
             ].map((item) => (
               <button
                 key={item.id}
@@ -97,454 +104,457 @@ export const VOP = () => {
               </button>
             ))}
           </div>
-          <div className="border-t border-gray-100 pt-4 mt-2">
-            <p className="text-xs text-gray-400 uppercase tracking-wider mb-3">E-shop sekcie</p>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3" id="vop-eshop">
-              {[
-                { id: 'eshop-zmluva', label: '11. E-shop: Uzatvorenie zmluvy' },
-                { id: 'eshop-platba', label: '12. E-shop: Cena a platba' },
-                { id: 'eshop-dodanie', label: '13. E-shop: Dodanie tovaru' },
-                { id: 'eshop-odstupenie', label: '14. E-shop: Odstúpenie od zmluvy' },
-                { id: 'eshop-reklamacie', label: '15. E-shop: Reklamácie' },
-              ].map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-left text-sm text-gray-600 hover:text-brand-gold transition-colors py-2 px-3 rounded-orostone hover:bg-gray-50"
-                >
-                  → {item.label}
-                </button>
-              ))}
-            </div>
-          </div>
         </motion.div>
 
         {/* Content */}
         <div className="space-y-8">
-          {/* 1. Úvodné ustanovenia */}
-          <Section id="uvodne-ustanovenia" number="1" title="Úvodné ustanovenia">
+
+          {/* 1. Základné ustanovenia */}
+          <Section id="zakladne-ustanovenia" number="1" title="Základné ustanovenia">
             <SubSection number="1.1">
-              Tieto všeobecné obchodné podmienky (ďalej len „VOP") ustanovujú podmienky predaja a dodania platní sinterovaného kameňa Orostone® (ďalej len „kameň Orostone®" alebo „tovar").
-            </SubSection>
-            <SubSection number="1.2">
-              Kameň Orostone® je na území Slovenskej republiky distribuovaný spoločnosťou:
+              Predávajúcim je:
               <div className="bg-gray-50 rounded-orostone p-4 mt-3 font-medium">
                 <p className="text-brand-dark">Orostone s.r.o.</p>
-                <p>Landererova 8, 811 09 Bratislava - mestská časť Staré Mesto</p>
+                <p>Landererova 8, 811 09 Bratislava – mestská časť Staré Mesto</p>
+                <p>Slovenská republika</p>
                 <p>IČO: 55 254 772</p>
                 <p>DIČ: 2121930580</p>
                 <p>IČ DPH: SK2121930580</p>
-                <p className="text-sm text-gray-500 mt-2">Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B</p>
+                <p className="text-sm text-gray-500 mt-2">Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka č. 167404/B</p>
+                <p className="mt-2">E-mail: <a href="mailto:info@orostone.sk" className="text-brand-gold hover:underline">info@orostone.sk</a></p>
+                <p>Telefón: <a href="tel:+421917588738" className="text-brand-gold hover:underline">+421 917 588 738</a></p>
+                <p>Web: <a href="https://orostone.sk" className="text-brand-gold hover:underline">www.orostone.sk</a></p>
               </div>
+            </SubSection>
+            <SubSection number="1.2">
+              Tieto všeobecné obchodné podmienky (ďalej len „VOP") upravujú:
+              <br />a) predaj tovaru prostredníctvom e-shopu na webovom sídle <a href="https://orostone.sk" className="text-brand-gold hover:underline">www.orostone.sk</a>,
+              <br />b) predaj tovaru na základe individuálnej písomnej objednávky, cenovej ponuky alebo objednávkového formulára.
             </SubSection>
             <SubSection number="1.3">
-              Tieto VOP sú neoddeliteľnou súčasťou každej Objednávky klienta. <strong>Klientom</strong> sa rozumie každá fyzická a/alebo právnická osoba, ktorá potvrdením objednávky a uhradením zálohy prejavila nespornú vôľu zakúpiť si v objednávke špecifikovaný kameň Orostone® (ďalej len „Klient").
+              Kupujúcim je každá fyzická osoba alebo právnická osoba, ktorá uzatvorí s predávajúcim kúpnu zmluvu alebo odošle objednávku (ďalej len „Klient"). Klient, ktorý pri uzatváraní a plnení zmluvy nekoná v rámci predmetu svojej podnikateľskej činnosti, zamestnania alebo povolania, považuje sa za spotrebiteľa (ďalej len „Spotrebiteľ").
             </SubSection>
             <SubSection number="1.4">
-              Účelom týchto VOP je vymedzenie vzájomných práv a povinností medzi spoločnosťou Orostone a Klientom.
+              Spotrebiteľom v zmysle týchto VOP je fyzická osoba, ktorá pri uzatváraní a plnení zmluvy nekoná v rámci predmetu svojej obchodnej činnosti alebo inej podnikateľskej činnosti, zamestnania alebo povolania.
             </SubSection>
             <SubSection number="1.5">
-              Ustanovenia týchto VOP sú v plnom rozsahu záväzné pre spoločnosť Orostone aj pre Klienta. Osobitné podmienky odlišné od týchto VOP sú platné len v prípade, ak boli písomne potvrdené spoločnosťou Orostone aj Klientom.
+              Ak je Klient podnikateľom, právnickou osobou alebo fyzickou osobou – podnikateľom, na zmluvný vzťah sa primerane použijú aj ustanovenia Obchodného zákonníka a osobitné ustanovenia týchto VOP pre B2B režim.
             </SubSection>
             <SubSection number="1.6" highlight>
-              <strong>Právny režim:</strong> Objednávka je v podmienkach spoločnosti Orostone <strong>kúpnou zmluvou</strong> – v prípade Klienta – spotrebiteľa (fyzická osoba) sa spravuje ustanoveniami § 588 a nasl. Občianskeho zákonníka; v prípade Klienta – podnikateľa (právnická osoba alebo fyzická osoba – podnikateľ) sa spravuje ustanoveniami § 409 a nasl. Obchodného zákonníka.
+              Tieto VOP sú neoddeliteľnou súčasťou každej objednávky, cenovej ponuky potvrdenej Klientom a každej kúpnej zmluvy, ak nebolo medzi stranami výslovne a písomne dohodnuté inak.
             </SubSection>
             <SubSection number="1.7">
-              Klient bol pred uzatvorením kúpnej zmluvy oboznámený s týmito VOP prostredníctvom ich zverejnenia na webovom sídle spoločnosti Orostone <a href="https://orostone.sk" className="text-brand-gold hover:underline">www.orostone.sk</a>.
+              Ak je medzi predávajúcim a Klientom uzatvorená osobitná písomná dohoda, cenová ponuka alebo individuálne obchodné podmienky, majú prednosť pred týmito VOP.
+            </SubSection>
+            <SubSection number="1.8">
+              Tieto VOP sa primárne vzťahujú na predaj s miestom dodania na území Slovenskej republiky. Dodanie mimo územia Slovenskej republiky je možné len na základe osobitnej dohody.
             </SubSection>
           </Section>
 
-          {/* 2. Objednávky */}
-          <Section id="objednavky" number="2" title="Objednávky">
+          {/* 2. Tovar a jeho vlastnosti */}
+          <Section id="tovar-vlastnosti" number="2" title="Tovar a jeho vlastnosti">
             <SubSection number="2.1">
-              Dodanie kameňa Orostone® sa uskutočňuje na základe písomnej objednávky Klienta.
+              Predmetom predaja sú najmä platne sinterovaného kameňa, dlaždice, obkladové materiály, ich vzorky a súvisiaci tovar ponúkaný predávajúcim (ďalej len „Tovar").
             </SubSection>
-            <SubSection number="2.2">
-              Písomná objednávka Klienta môže byť v podmienkach spoločnosti Orostone zadaná výlučne v elektronickej podobe prostredníctvom elektronickej pošty na objednávkovom formulári spoločnosti Orostone vo formáte PDF (ďalej len „Objednávka").
+            <SubSection number="2.2" highlight>
+              Klient berie na vedomie, že Tovar je materiál určený na <strong>ďalšie odborné spracovanie, manipuláciu a montáž</strong>, pričom vzhľadom na svoju povahu, hmotnosť, rozmery a spôsob použitia vyžaduje odbornú manipuláciu, odborné rezanie, odborné opracovanie a odbornú montáž.
             </SubSection>
             <SubSection number="2.3">
-              Objednávkový formulár obsahuje minimálne: dodaciu adresu, špecifikáciu objednaného kameňa Orostone® (druh, množstvo, rozmery) a konečnú cenu vrátane aktuálnej sadzby DPH.
+              Vyobrazenie Tovaru na webovom sídle, v katalógoch, na sociálnych sieťach, v reklamných materiáloch alebo vo vzorkovníkoch je informatívne. Predávajúci nezodpovedá za drobné rozdiely vo farbe, kresbe, štruktúre povrchu, lesku alebo inom vizuálnom prejave Tovaru spôsobené:
+              <br />a) výrobným procesom,
+              <br />b) charakterom materiálu,
+              <br />c) rozdielnym zobrazením na monitoroch a mobilných zariadeniach,
+              <br />d) rozdielom medzi vzorkou a celou platňou.
             </SubSection>
-            <SubSection number="2.4">
-              Návrh Objednávky Klienta vypracuje spoločnosť Orostone na základe požiadaviek Klienta. Návrh Objednávky zašle spoločnosť Orostone na adresu elektronickej pošty Klienta.
+            <SubSection number="2.4" highlight>
+              <strong>Vzorka vs. celá platňa:</strong> Vzorka Tovaru slúži len na orientačné posúdenie farby, štruktúry a povrchu. Vzorka nemusí zobrazovať celý priebeh kresby, žilovania, opakovanie dekoru ani všetky vizuálne vlastnosti celej platne. Predávajúci nenesie zodpovednosť za rozdiely medzi vzorkou a dodanou platňou, ktoré sú dôsledkom prirodzenej variability materiálu.
             </SubSection>
-            <SubSection number="2.5" highlight>
-              Objednávka sa považuje za <strong>úplnú a záväznú</strong> dňom jej bezvýhradného potvrdenia zo strany Klienta prostredníctvom elektronickej pošty.
+            <SubSection number="2.5">
+              Ak nie je osobitne písomne dohodnuté inak, predávajúci negarantuje zhodu kresby viacerých platní, nadväznosť dekoru, tzv. bookmatch efekt ani iné špecifické estetické vlastnosti.
             </SubSection>
             <SubSection number="2.6">
-              Bezvýhradným potvrdením Objednávky Klient zároveň súhlasí, že spoločnosť Orostone vystaví Klientovi zálohovú faktúru v dohodnutej výške.
+              Rozmery, hrúbka, povrch, hmotnosť a ostatné parametre Tovaru sa posudzujú v rámci obvyklých výrobných a technických tolerancií výrobcu.
             </SubSection>
             <SubSection number="2.7">
-              Ak boli po potvrdení Objednávky ústne dojednané akékoľvek doplnky alebo zmeny, vyžadujú si vždy písomné potvrdenie zo strany spoločnosti Orostone prostredníctvom elektronickej pošty. Takýmto písomným potvrdením zaniká pôvodný záväzok a nahrádza sa novým záväzkom.
+              Predávajúci neposkytuje projektovú, architektonickú, statickú, stavebnú ani montážnu zodpovednosť za použitie Tovaru, pokiaľ takáto služba nebola osobitne písomne objednaná a písomne potvrdená.
+            </SubSection>
+            <SubSection number="2.8">
+              Predávajúci nevykonáva montáž, rezanie ani opracovanie Tovaru, ak nie je písomne dohodnuté inak.
             </SubSection>
           </Section>
 
-          {/* 3. Ceny */}
-          <Section id="ceny" number="3" title="Ceny">
+          {/* 3. Objednávka a uzatvorenie zmluvy */}
+          <Section id="objednavka-zmluva" number="3" title="Objednávka a uzatvorenie zmluvy">
             <SubSection number="3.1">
-              Ceny v Objednávke sú uvádzané v mene EUR vrátane aktuálnej sadzby DPH.
+              Klient môže objednať Tovar:
+              <br />a) prostredníctvom e-shopu na <a href="https://orostone.sk" className="text-brand-gold hover:underline">www.orostone.sk</a>,
+              <br />b) e-mailom,
+              <br />c) na základe individuálnej cenovej ponuky alebo objednávkového formulára.
             </SubSection>
             <SubSection number="3.2">
-              Cena uvedená v úplnej Objednávke sa považuje za konečnú, pokiaľ nedošlo k doplneniu alebo zmene Objednávky (ďalej len „Cena").
+              Objednávka Klienta musí obsahovať najmä identifikačné údaje Klienta, kontaktné údaje, presnú špecifikáciu Tovaru, množstvo, miesto dodania a prípadné osobitné požiadavky.
             </SubSection>
-            <SubSection number="3.3" highlight>
-              <strong>Platnosť cenovej ponuky:</strong> Platnosť Ceny garantovanej v Objednávke zaniká dňom uplynutia splatnosti vystavenej zálohovej faktúry, ktorú Klient v stanovenej lehote neuhradil.
+            <SubSection number="3.3">
+              Odoslaná objednávka Klienta predstavuje návrh na uzatvorenie kúpnej zmluvy.
+            </SubSection>
+            <SubSection number="3.4" highlight>
+              Kúpna zmluva je uzatvorená až okamihom, keď predávajúci objednávku <strong>výslovne potvrdí</strong>. Automatické potvrdenie o prijatí objednávky do systému sa nepovažuje za akceptáciu objednávky.
+            </SubSection>
+            <SubSection number="3.5">
+              Predávajúci je oprávnený objednávku neprijať alebo zrušiť, najmä ak:
+              <br />a) Tovar nie je dostupný,
+              <br />b) došlo k zjavnej chybe v cene, technickom údaji alebo popise Tovaru,
+              <br />c) Klient uviedol neúplné, nepravdivé alebo neoveriteľné údaje,
+              <br />d) Klient v minulosti porušil svoje povinnosti voči predávajúcemu,
+              <br />e) predávajúci má dôvodné pochybnosti o serióznosti objednávky.
+            </SubSection>
+            <SubSection number="3.6">
+              Klient zodpovedá za správnosť a úplnosť údajov uvedených v objednávke. Predávajúci nezodpovedá za škodu, omeškanie alebo nemožnosť dodania spôsobenú nesprávnymi údajmi Klienta.
+            </SubSection>
+            <SubSection number="3.7">
+              Ak je objednávka individuálna, nadštandardná, neštandardných rozmerov, mimo bežného skladového sortimentu alebo viazaná na osobitné požiadavky Klienta, kúpna zmluva vzniká až okamihom výslovného písomného potvrdenia objednávky zo strany predávajúceho. Ak predávajúci požaduje zálohu, jej úhrada je podmienkou plnenia, ak nebolo písomne dohodnuté inak.
             </SubSection>
           </Section>
 
-          {/* 4. Platobné podmienky */}
-          <Section id="platobne-podmienky" number="4" title="Platobné podmienky">
+          {/* 4. Cena a platobné podmienky */}
+          <Section id="cena-platba" number="4" title="Cena a platobné podmienky">
             <SubSection number="4.1">
-              Po bezvýhradnom potvrdení Objednávky zo strany Klienta vystaví spoločnosť Orostone zálohovú faktúru v dohodnutej výške.
+              Všetky ceny sú uvádzané v mene EUR. Ak nie je uvedené inak, ceny v e-shope sú uvádzané vrátane DPH.
             </SubSection>
             <SubSection number="4.2">
-              Spoločnosť Orostone vyžaduje zaplatenie zálohy na dodávaný kameň Orostone® vo výške stanovenej zálohovou faktúrou.
+              Cena Tovaru nezahŕňa cenu dopravy, vynášky, manipulácie, skladovania, opätovného doručenia ani iných doplnkových služieb, pokiaľ nie je výslovne uvedené inak.
             </SubSection>
             <SubSection number="4.3">
-              Nárok na doplatenie Ceny vzniká spoločnosti Orostone v momente splnenia všetkých náležitostí stanovených Objednávkou. Podkladom pre platbu je daňový doklad – faktúra vystavená spoločnosťou Orostone.
+              Predávajúci je oprávnený požadovať úhradu zálohy, a to najmä pri individuálnych, nadštandardných alebo B2B objednávkach.
             </SubSection>
             <SubSection number="4.4" highlight>
-              <strong>Spôsob platby:</strong> Platby je možné realizovať výlučne na bankový účet spoločnosti Orostone uvedený v zálohovej faktúre, resp. faktúre. <strong>Ceny nie je možné uhradiť platbou v hotovosti.</strong>
+              Predávajúci je oprávnený dodať Tovar až po <strong>úplnom zaplatení ceny alebo dohodnutej zálohy</strong>.
             </SubSection>
             <SubSection number="4.5">
-              Splatnosť zálohovej faktúry, resp. faktúry je spravidla <strong>14 dní</strong> odo dňa jej vystavenia, ak nebolo dohodnuté inak. Klient sa zaväzuje uhradiť Cenu včas, v plnej výške a bez akejkoľvek zrážky. Bankové poplatky za prevod sú hradené Klientom.
+              Platbu je možné vykonať spôsobmi uvedenými na webovom sídle alebo v zálohovej faktúre, najmä:
+              <br />a) bankovým prevodom,
+              <br />b) platbou kartou online,
+              <br />c) iným spôsobom, ktorý predávajúci výslovne umožní.
             </SubSection>
             <SubSection number="4.6">
-              Za deň zaplatenia sa považuje deň pripísania platby v prospech bankového účtu spoločnosti Orostone.
+              Dobierka sa neposkytuje, ak predávajúci výslovne neurčí inak.
             </SubSection>
             <SubSection number="4.7">
-              Pokiaľ bude Klient s úhradou faktúry v omeškaní o viac než 10 dní, sú všetky pohľadávky splatné okamžite. Spoločnosť Orostone je oprávnená postúpiť svoje pohľadávky tretím stranám.
+              Splatnosť faktúr je uvedená na daňovom doklade. Ak nie je uvedené inak, splatnosť zálohovej faktúry je <strong>7 dní</strong> odo dňa jej vystavenia.
+            </SubSection>
+            <SubSection number="4.8">
+              Za deň zaplatenia sa považuje deň pripísania celej sumy na bankový účet predávajúceho.
+            </SubSection>
+            <SubSection number="4.9">
+              Predávajúci si vyhradzuje vlastnícke právo k Tovaru až do úplného zaplatenia celej kúpnej ceny a všetkých súvisiacich nárokov voči Klientovi.
+            </SubSection>
+            <SubSection number="4.10">
+              Ak je Klient v omeškaní s úhradou, predávajúci je oprávnený pozastaviť ďalšie dodávky, nevydávať Tovar, jednostranne zmeniť termín dodania a uplatniť si zákonné úroky z omeškania a náklady spojené s vymáhaním pohľadávky.
             </SubSection>
           </Section>
 
-          {/* 5. Dodacie podmienky */}
-          <Section id="dodacie-podmienky" number="5" title="Dodacie podmienky">
+          {/* 5. Dodanie Tovaru */}
+          <Section id="dodanie-tovaru" number="5" title="Dodanie Tovaru">
             <SubSection number="5.1">
-              Dodacia lehota objednaného kameňa Orostone® je spravidla <strong>15 pracovných dní</strong> odo dňa bezvýhradného potvrdenia Objednávky a pripísania platby vo výške stanovenej zálohovou faktúrou v prospech bankového účtu spoločnosti Orostone.
+              Dodacia lehota závisí najmä od skladovej dostupnosti Tovaru, potvrdenia objednávky, úhrady ceny alebo zálohy a od logistických možností predávajúceho alebo zmluvného dopravcu.
             </SubSection>
             <SubSection number="5.2">
-              V prípade nadštandardných zákaziek môže byť dodacia lehota spravidla <strong>20 pracovných dní</strong>.
+              Ak nie je pri konkrétnom Tovare alebo v potvrdení objednávky uvedené inak, dodacia lehota je orientačná. Pri Spotrebiteľovi je dodacia lehota uvedená pri Tovare, v objednávkovom procese alebo v potvrdení objednávky; ak nebola medzi stranami dohodnutá osobitná lehota dodania, predávajúci dodá Tovar bez zbytočného odkladu, <strong>najneskôr do 30 dní od uzavretia zmluvy</strong>.
             </SubSection>
             <SubSection number="5.3">
-              Dodacia lehota objednaného kameňa Orostone®, ktorý spoločnosť Orostone nemá skladom, sa dohodne osobitne a uvedie sa v texte Objednávky.
+              Predávajúci nezodpovedá za omeškanie dodania spôsobené:
+              <br />a) vyššou mocou,
+              <br />b) omeškaním výrobcu alebo dodávateľa,
+              <br />c) dopravnými obmedzeniami,
+              <br />d) neposkytnutím súčinnosti zo strany Klienta,
+              <br />e) nesprávnymi údajmi v objednávke.
             </SubSection>
             <SubSection number="5.4">
-              Po splnení podmienok informuje spoločnosť Orostone Klienta o dátume možného dodania kameňa Orostone®.
+              Predávajúci zabezpečuje prepravu Tovaru prostredníctvom zmluvného dopravcu podľa vlastného výberu. Podrobnosti o spôsobe, rozsahu a cenách dopravy sú uvedené na stránke{' '}
+              <Link to="/doprava" className="text-brand-gold hover:underline">Doprava a platba</Link>.
             </SubSection>
             <SubSection number="5.5">
-              V prípade, ak spoločnosť Orostone eviduje voči Klientovi pohľadávku po splatnosti z predchádzajúcej objednávky, dodacia lehota sa predlžuje do doby vysporiadania nedoplatku.
+              Klient je povinný zabezpečiť, aby bolo miesto dodania prístupné pre doručovacie vozidlo a aby boli splnené podmienky bezpečného vyloženia Tovaru.
             </SubSection>
             <SubSection number="5.6" highlight>
-              <strong>Spôsob dodania:</strong> Objednávka môže byť splnená: a) dodaním kameňa Orostone® na miesto určené Klientom, b) osobným prevzatím Klientom, c) naložením kameňa na prepravný prostriedok a odovzdaním prvému prepravcovi.
+              Ak si povaha Tovaru vyžaduje osobitnú manipuláciu, techniku, zdvíhacie zariadenie, viac osôb na prevzatie alebo iný špeciálny režim, <strong>Klient je povinný zabezpečiť potrebnú súčinnosť</strong>, ak nebolo písomne dohodnuté, že ju zabezpečí predávajúci.
             </SubSection>
             <SubSection number="5.7">
-              Spoločnosť Orostone si vyhradzuje právo na zmenu dodacej lehoty. Termín dodania bude predmetom rokovania pred zadaním Objednávky.
+              <strong>Štandardná doprava zahŕňa doručenie Tovaru na prízemie, k vozidlu alebo na miesto obvykle dostupné pre nákladné vozidlo.</strong> Vynáška, vykladanie na poschodie, presun do interiéru alebo iná nadštandardná manipulácia nie sú súčasťou štandardnej dopravy, ak nebolo písomne dohodnuté inak.
+            </SubSection>
+            <SubSection number="5.8">
+              Ak sa dodanie alebo odovzdanie Tovaru neuskutoční z dôvodov na strane Klienta, najmä pre jeho neprítomnosť, neprístupnosť miesta dodania, nezabezpečenie prevzatia alebo nezabezpečenie potrebnej manipulácie, predávajúci je oprávnený požadovať:
+              <br />a) náhradu skutočne vzniknutých nákladov na márny výjazd,
+              <br />b) náhradu nákladov na opätovné doručenie,
+              <br />c) primerané náklady na skladovanie Tovaru.
+            </SubSection>
+            <SubSection number="5.9">
+              Pri Spotrebiteľovi sa náhrada podľa bodu 5.8 uplatní len v rozsahu skutočne, primerane a preukázateľne vzniknutých nákladov.
             </SubSection>
           </Section>
 
-          {/* 6. Doprava */}
-          <Section id="doprava" number="6" title="Doprava">
+          {/* 6. Prechod nebezpečenstva škody a prevzatie Tovaru */}
+          <Section id="prechod-nebezpecenstva" number="6" title="Prechod nebezpečenstva škody a prevzatie Tovaru">
             <SubSection number="6.1">
-              Doručenie tovaru zabezpečuje spoločnosť Orostone prostredníctvom zmluvného prepravcu <strong>I2M s.r.o.</strong> Spoločnosť Orostone si vyhradzuje právo využiť aj iného dopravcu bez predchádzajúceho upozornenia Klienta, pričom kvalita a podmienky doručenia zostávajú zachované.
+              Pri Spotrebiteľovi prechádza nebezpečenstvo škody na Tovare okamihom, keď Spotrebiteľ alebo ním určená tretia osoba, iná ako dopravca, prevezme Tovar.
             </SubSection>
-            <SubSection number="6.2" highlight>
-              <strong>Región doručenia:</strong> Doručujeme výlučne na území <strong>Slovenskej republiky</strong>.
+            <SubSection number="6.2">
+              Ak si Spotrebiteľ zabezpečí prepravu sám a nejde o dopravcu ponúknutého predávajúcim, nebezpečenstvo škody na Tovare prechádza odovzdaním Tovaru tomuto dopravcovi.
             </SubSection>
             <SubSection number="6.3">
-              <strong>Cenník dopravy:</strong>
-              <div className="mt-3 space-y-2">
-                <div className="grid grid-cols-2 gap-2">
-                  <div className="bg-gray-50 rounded-orostone p-3">
-                    <p className="font-bold text-brand-dark text-sm">Bratislava a okolie</p>
-                    <p className="text-sm">do 50 km od Bratislavy</p>
-                    <p className="text-brand-gold font-bold mt-1">150 € s DPH</p>
-                  </div>
-                  <div className="bg-gray-50 rounded-orostone p-3">
-                    <p className="font-bold text-brand-dark text-sm">Územie SR</p>
-                    <p className="text-sm">mimo Bratislavy a okolia</p>
-                    <p className="text-brand-gold font-bold mt-1">350 € s DPH</p>
-                  </div>
-                </div>
-                <div className="bg-amber-50 border-l-4 border-brand-gold p-3 rounded-orostone">
-                  <p className="font-bold text-brand-dark text-sm">Doprava zadarmo</p>
-                  <p className="text-sm">pri objednávke <strong>3 a viac platní</strong></p>
-                </div>
-              </div>
+              Pri Klientovi – podnikateľovi prechádza nebezpečenstvo škody na Tovare okamihom jeho odovzdania prvému dopravcovi alebo okamihom, keď si Klient Tovar prevezme, podľa toho, čo nastane skôr.
             </SubSection>
-            <SubSection number="6.4">
-              <strong>Doručenie na poschodie:</strong> Doručenie tovaru na poschodie je možné výlučne po predchádzajúcej dohode a odsúhlasení ceny za túto príplatkovú službu zo strany spoločnosti Orostone. Klient je povinný uviesť požiadavku na doručenie na poschodie pri zadaní Objednávky. Štandardná cena dopravy zahŕňa doručenie iba na prízemie (resp. k vozidlu / na miesto dostupné pre nákladné vozidlo).
+            <SubSection number="6.4" highlight>
+              Klient je povinný pri prevzatí Tovaru bezodkladne skontrolovať:
+              <br />a) neporušenosť obalu zásielky,
+              <br />b) množstvo a druh dodaného Tovaru podľa dodacieho listu,
+              <br />c) zjavné vady a poškodenia Tovaru.
             </SubSection>
             <SubSection number="6.5">
-              V prípade, že spoločnosť Orostone nie je v dôsledku okolností vylučujúcich zodpovednosť (tzv. vyššej moci) schopná splniť svoj záväzok v dodacej lehote, vrátane oneskorenia dodávok od jej dodávateľov, nebude toto omeškanie považované za porušenie podmienok Objednávky a dodacia lehota sa primerane predĺži.
+              Ak je pri prevzatí zistené zjavné poškodenie zásielky alebo Tovaru, Klient je povinný túto skutočnosť bezodkladne vyznačiť v dodacom liste alebo inom prepravnom doklade a bezodkladne o tom informovať predávajúceho.
             </SubSection>
             <SubSection number="6.6" highlight>
-              <strong>Prevzatie tovaru:</strong> Klient je povinný pri prevzatí tovaru skontrolovať jeho stav a neporušenosť obalu. Prípadné zjavné poškodenie je potrebné <strong>bezodkladne</strong> zaznamenať do dodacieho listu a oznámiť dopravcovi/spoločnosti Orostone.
+              Klient je povinný <strong>pred akýmkoľvek rezaním, montážou, opracovaním alebo iným zásahom do Tovaru</strong> vykonať dôkladnú kontrolu Tovaru, najmä kontrolu rozmeru, dekoru, odtieňa, povrchu a zjavných vád.
+            </SubSection>
+            <SubSection number="6.7">
+              Po rezaní, opracovaní, montáži alebo inom zásahu do Tovaru <strong>nemožno úspešne uplatňovať reklamáciu</strong> tých vlastností alebo vád, ktoré boli zjavné alebo zistiteľné pri primeranej kontrole pred spracovaním Tovaru.
             </SubSection>
           </Section>
 
-          {/* 7. Prechod vlastníckeho práva */}
-          <Section id="vlastnicke-pravo" number="7" title="Prechod vlastníckeho práva ku kameňu Orostone®">
+          {/* 7. Osobitné ustanovenia pre individuálne a B2B objednávky */}
+          <Section id="b2b-ustanovenia" number="7" title="Osobitné ustanovenia pre individuálne a B2B objednávky">
             <SubSection number="7.1">
-              Vlastnícke právo ku kameňu Orostone® vzniká Klientovi úplným zaplatením kúpnej ceny dohodnutej v Objednávke.
+              Pri individuálnych objednávkach, zákazkách mimo bežného skladového sortimentu, špeciálnych povrchoch, neštandardných množstvách alebo Tovare zabezpečovanom osobitne pre Klienta je predávajúci oprávnený požadovať zálohu až do výšky <strong>100 % ceny</strong>.
             </SubSection>
-            <SubSection number="7.2" highlight>
-              <strong>Výhrada vlastníctva:</strong> Kameň Orostone® zostáva vo vlastníctve spoločnosti Orostone a Klient k nemu nadobudne vlastnícke právo až úplným zaplatením čiastky dohodnutej v Objednávke.
+            <SubSection number="7.2">
+              Pri Klientovi – podnikateľovi je predávajúci v prípade zrušenia individuálnej objednávky po jej potvrdení oprávnený započítať prijatú zálohu na preukázateľne vzniknuté náklady, najmä na zabezpečenie Tovaru, rezerváciu výroby alebo skladových zásob, dopravu, balenie, skladovanie a administratívne spracovanie objednávky. Ak preukázateľná škoda alebo náklady presahujú výšku prijatej zálohy, predávajúci je oprávnený požadovať aj náhradu škody v prevyšujúcej časti.
             </SubSection>
-            <SubSection number="7.3">
-              Až do nadobudnutia vlastníckeho práva nie je Klient oprávnený kameň Orostone® založiť, poskytnúť ako istinu, prenajať alebo inak zaťažiť právami tretích osôb.
+            <SubSection number="7.3" highlight>
+              Pri Spotrebiteľovi sa zrušenie individuálnej objednávky, vrátenie zálohy a právo na odstúpenie od zmluvy spravujú kogentnými ustanoveniami právnych predpisov. Ak ide o Tovar vyrobený podľa osobitných požiadaviek Spotrebiteľa, Tovar vyrobený na mieru alebo Tovar zabezpečovaný osobitne pre konkrétneho Spotrebiteľa, predávajúci je oprávnený odmietnuť storno objednávky alebo vrátenie Tovaru v rozsahu pripustenom zákonom.
+            </SubSection>
+            <SubSection number="7.4">
+              Ak Klient – podnikateľ mešká s prevzatím Tovaru viac ako 5 pracovných dní od dohodnutého termínu, predávajúci je oprávnený účtovať primerané skladné, náklady ďalšej manipulácie a ďalšie preukázateľne vzniknuté náklady súvisiace s omeškaným prevzatím.
             </SubSection>
           </Section>
 
-          {/* 8. Garancia kvality, záruka a reklamácie */}
-          <Section id="zaruka-reklamacie" number="8" title="Garancia kvality, záruka a reklamácie">
+          {/* 8. E-shop a zmluva uzatvorená na diaľku */}
+          <Section id="eshop-zmluva" number="8" title="E-shop a zmluva uzatvorená na diaľku">
             <SubSection number="8.1">
-              Kameň Orostone® je neporézny, preto ho nie je potrebné impregnovať a nie je schopný absorbovať žiadne kvapaliny, čoho výsledkom sú vynikajúce hygienické parametre a jednoduchá údržba.
+              Predaj prostredníctvom e-shopu sa uskutočňuje ako zmluva uzatvorená na diaľku v zmysle zákona č. 108/2024 Z.z. o ochrane spotrebiteľa.
             </SubSection>
             <SubSection number="8.2">
-              Farebný odtieň a kresba vzorky z kameňa Orostone® sa môžu mierne líšiť od skutočne dodaného kameňa Orostone® v dôsledku výrobného procesu.
+              Pred odoslaním objednávky je Klient povinný oboznámiť sa s obsahom objednávky, cenou, nákladmi na dopravu a týmito VOP.
             </SubSection>
             <SubSection number="8.3" highlight>
-              <strong>Záručná doba:</strong> 24 mesiacov odo dňa prevzatia Objednávky Klientom.
+              Objednávka uskutočnená prostredníctvom e-shopu predstavuje návrh na uzatvorenie kúpnej zmluvy. <strong>Klient pred odoslaním objednávky potvrdzuje, že berie na vedomie, že odoslanie objednávky je spojené s povinnosťou platby.</strong> Kúpna zmluva je uzavretá až potvrdením objednávky zo strany predávajúceho.
             </SubSection>
             <SubSection number="8.4">
-              Poskytnutie záruky sa týka len nedostatkov na dodanom kameni Orostone®, ktoré vznikli <strong>chybou výroby alebo materiálu</strong>.
+              Predávajúci je povinný poskytnúť Spotrebiteľovi pred odoslaním objednávky najmä informácie o:
+              <br />a) totožnosti predávajúceho,
+              <br />b) hlavných vlastnostiach Tovaru,
+              <br />c) celkovej cene Tovaru vrátane DPH a nákladov na dopravu,
+              <br />d) podmienkach, lehote a postupe na uplatnenie práva na odstúpenie od zmluvy,
+              <br />e) skutočnosti, že Spotrebiteľ znáša náklady na vrátenie Tovaru.
             </SubSection>
             <SubSection number="8.5">
-              <strong>Záruka sa neposkytuje</strong> na vady, ktoré vznikli čo i len jedným z nasledujúcich dôvodov:
-              <ul className="list-disc ml-6 mt-2 space-y-1 text-sm">
-                <li>chybné zadanie Klienta</li>
-                <li>používanie kameňa v rozpore s dodaným Technickým manuálom</li>
-                <li>chybná montáž alebo uvedenie do používania Klientom alebo treťou osobou</li>
-                <li>škody spôsobené pokračovaním v používaní kameňa napriek prejavenej chybe</li>
-                <li>následkom živelnej pohromy</li>
-                <li>mechanickým poškodením</li>
-              </ul>
+              Predávajúci zašle Spotrebiteľovi potvrdenie o uzatvorení zmluvy najneskôr pri dodaní Tovaru. Toto potvrdenie obsahuje úplné informácie podľa § 17 zákona č. 108/2024 Z.z., vrátane odkazu na tieto VOP.
             </SubSection>
             <SubSection number="8.6">
-              Prípadné zjavné vady na kameni Orostone® je potrebné zaznamenať bezodkladne pri preberaní spolu s fotodokumentáciou.
-            </SubSection>
-            <SubSection number="8.7" highlight>
-              <strong>Uplatnenie reklamácie:</strong> Reklamácie sa uplatňujú písomne e-mailom na info@orostone.sk s uvedením čísla objednávky, popisu vady a fotodokumentácie. Spoločnosť Orostone potvrdí prijatie reklamácie do 3 pracovných dní a rozhodne o nej do 30 dní.
-            </SubSection>
-            <SubSection number="8.8">
-              Klient je po vzájomnej dohode povinný poskytnúť dostatočný čas a príležitosť na vykonanie všetkých potrebných opráv.
+              Predávajúci uchováva uzatvorenú zmluvu v elektronickej podobe. Zmluva nie je prístupná tretím osobám.
             </SubSection>
           </Section>
 
-          {/* 9. Práva a zodpovednosti */}
-          <Section id="prava-zodpovednost" number="9" title="Práva a zodpovednosti">
-            <SubSection number="9.1">
-              Spoločnosť Orostone nezodpovedá za nesplnenie povinností z potvrdených Objednávok, ak sa tak stane z dôvodu nepredvídaných a neodvrátiteľných okolností (vyššia moc).
+          {/* 9. Odstúpenie od zmluvy Spotrebiteľom pri nákupe na diaľku */}
+          <Section id="odstupenie-zmluvy" number="9" title="Odstúpenie od zmluvy Spotrebiteľom pri nákupe na diaľku">
+            <SubSection number="9.1" highlight>
+              Spotrebiteľ má právo odstúpiť od zmluvy uzatvorenej na diaľku <strong>bez uvedenia dôvodu do 14 dní</strong> odo dňa prevzatia Tovaru.
             </SubSection>
             <SubSection number="9.2">
-              Spoločnosť Orostone nezodpovedá Klientovi za škody následné alebo nepriame.
+              Spotrebiteľ môže odstúpenie od zmluvy zaslať:
+              <br />a) e-mailom na adresu <a href="mailto:info@orostone.sk" className="text-brand-gold hover:underline">info@orostone.sk</a>,
+              <br />b) poštou na adresu sídla predávajúceho,
+              <br />c) použitím vzorového formulára na odstúpenie od zmluvy zverejneného na webovom sídle predávajúceho — <Link to="/odstupenie-od-zmluvy" className="text-brand-gold hover:underline">Formulár na odstúpenie od zmluvy</Link>.
             </SubSection>
-            <SubSection number="9.3" highlight>
-              <strong>Zrušenie objednávky Klientom (B2B):</strong> V prípade zrušenia Objednávky zo strany Klienta – podnikateľa má spoločnosť Orostone nárok na náhradu preukázateľných nákladov spojených s prípravou a spracovaním objednávky.
+            <SubSection number="9.3">
+              Spotrebiteľ je povinný najneskôr do 14 dní odo dňa odstúpenia od zmluvy zaslať Tovar späť alebo ho odovzdať predávajúcemu, ak predávajúci nenavrhne jeho osobné vyzdvihnutie.
             </SubSection>
-            <SubSection number="9.4">
-              <strong>Zrušenie objednávky spotrebiteľom:</strong> Pre Klientov – spotrebiteľov platia ustanovenia o odstúpení od zmluvy podľa príslušných právnych predpisov (viď sekcia 14 pre e-shop objednávky).
+            <SubSection number="9.4" highlight>
+              <strong>Náklady na vrátenie Tovaru znáša Spotrebiteľ</strong>, vrátane priamych nákladov na vrátenie Tovaru. Keďže Tovar vzhľadom na svoju povahu, hmotnosť a rozmery nemožno spravidla vrátiť prostredníctvom bežnej poštovej služby, priame náklady na jeho vrátenie prepravou sa spravidla pohybujú v rozmedzí od <strong>150 € do 350 € s DPH</strong> v závislosti od miesta vyzdvihnutia, počtu kusov a spôsobu prepravy. Presná výška týchto nákladov bude Spotrebiteľovi zobrazená alebo oznámená najneskôr pred odoslaním záväznej objednávky, ak sa konkrétny Tovar vzhľadom na svoju povahu a spôsob dodania riadi individuálnym dopravným režimom.
+            </SubSection>
+            <SubSection number="9.5">
+              Predávajúci vráti Spotrebiteľovi všetky platby, ktoré od neho prijal na základe zmluvy alebo v súvislosti s ňou, vrátane nákladov na dodanie v rozsahu najlacnejšieho bežného spôsobu dodania ponúkaného predávajúcim, a to bez zbytočného odkladu, najneskôr do 14 dní odo dňa doručenia oznámenia o odstúpení od zmluvy.
+            </SubSection>
+            <SubSection number="9.6">
+              Predávajúci nie je povinný vrátiť platby podľa bodu 9.5 skôr, ako mu bude Tovar doručený späť alebo kým Spotrebiteľ nepreukáže odoslanie Tovaru späť, podľa toho, čo nastane skôr.
+            </SubSection>
+            <SubSection number="9.7">
+              Spotrebiteľ zodpovedá len za zníženie hodnoty Tovaru, ktoré vzniklo v dôsledku takého zaobchádzania s Tovarom, ktoré je nad rámec zaobchádzania potrebného na zistenie vlastností a funkčnosti Tovaru.
+            </SubSection>
+            <SubSection number="9.8" highlight>
+              <strong>Výnimky z práva na odstúpenie:</strong> Spotrebiteľ nemá právo odstúpiť od zmluvy, ak ide o:
+              <br />a) Tovar vyrobený podľa osobitných požiadaviek Spotrebiteľa,
+              <br />b) Tovar vyrobený na mieru alebo upravený pre konkrétneho Spotrebiteľa,
+              <br />c) Tovar, ktorý bol po dodaní nenávratne zmiešaný s iným tovarom.
+            </SubSection>
+            <SubSection number="9.9">
+              Právo Spotrebiteľa na odstúpenie od zmluvy sa riadi zákonom č. 108/2024 Z.z. o ochrane spotrebiteľa.
             </SubSection>
           </Section>
 
-          {/* 10. Odporúčanie realizátora */}
-          <Section id="odporucanie-realizatora" number="10" title="Odporúčanie realizátora">
-            <div className="bg-amber-50 -mx-4 px-4 py-4 border-l-4 border-brand-gold rounded-orostone mb-4">
-              <p className="font-medium text-brand-dark mb-2">Dôležité upozornenie</p>
-              <p className="text-sm">
-                Spoločnosť Orostone <strong>neposkytuje služby montáže, rezania ani opracovania kameňa</strong>. 
-                Spoločnosť Orostone je výlučne dodávateľom materiálu (kameňa Orostone®) a dopravy.
-              </p>
-            </div>
+          {/* 10. Zodpovednosť za vady a reklamácie */}
+          <Section id="vady-reklamacie" number="10" title="Zodpovednosť za vady a reklamácie">
             <SubSection number="10.1">
-              Na požiadanie Klienta môže spoločnosť Orostone poskytnúť <strong>nezáväzné odporúčanie</strong> na externých kamenárov/realizátorov, ktorí sa špecializujú na spracovanie a montáž sinterovaného kameňa.
+              Predávajúci zodpovedá za vady, ktoré má Tovar pri prevzatí, a za vady, ktoré sa prejavia v zákonnej dobe zodpovednosti za vady.
             </SubSection>
             <SubSection number="10.2" highlight>
-              Toto odporúčanie má <strong>výlučne informatívny charakter</strong>. Spoločnosť Orostone nezodpovedá za kvalitu práce, termíny, ceny ani iné aspekty služieb poskytovaných odporúčanými realizátormi.
+              Predávajúci <strong>nezodpovedá</strong> za vady alebo poškodenia spôsobené najmä:
+              <br />a) neodbornou manipuláciou,
+              <br />b) neodborným rezaním, opracovaním alebo montážou,
+              <br />c) použitím nevhodných montážnych postupov, podkladov, lepidiel, náradia alebo technológie,
+              <br />d) mechanickým poškodením po prevzatí Tovaru,
+              <br />e) používaním v rozpore s účelom Tovaru alebo technickými odporúčaniami výrobcu,
+              <br />f) zásahom tretej osoby,
+              <br />g) prirodzenými, obvyklými alebo technologicky podmienenými rozdielmi vo farbe, kresbe, žilovaní, štruktúre alebo povrchu,
+              <br />h) vadou alebo nevhodnosťou podkladu, stavby alebo priestoru, do ktorého bol Tovar osadený,
+              <br />i) tým, že Klient spracoval, narezal alebo namontoval Tovar napriek tomu, že vada alebo nesúlad boli zjavné alebo zistiteľné pred spracovaním.
             </SubSection>
             <SubSection number="10.3">
-              Klient vstupuje do zmluvného vzťahu s odporúčaným realizátorom priamo a na vlastnú zodpovednosť. Akékoľvek reklamácie týkajúce sa montáže, rezania alebo opracovania kameňa je potrebné uplatniť priamo u príslušného realizátora.
+              Klient je povinný vadu vytknúť bez zbytočného odkladu po jej zistení. Klient – podnikateľ je povinný prezrieť Tovar s odbornou starostlivosťou bezodkladne po jeho prevzatí a zjavné vady vytknúť bezodkladne, najneskôr pri prevzatí Tovaru alebo bezprostredne po ňom; skryté vady je povinný vytknúť bez zbytočného odkladu po ich zistení. Pri Spotrebiteľovi sa práva zo zodpovednosti za vady spravujú kogentnými ustanoveniami právnych predpisov; tým nie je dotknutá povinnosť Spotrebiteľa vytknúť vadu bez zbytočného odkladu po jej zistení.
             </SubSection>
             <SubSection number="10.4">
-              Spoločnosť Orostone vystavuje Klientovi <strong>iba faktúru za dodaný materiál (kameň)</strong>. Služby realizátora sú predmetom samostatnej fakturácie medzi Klientom a realizátorom.
+              Reklamáciu vady je potrebné uplatniť písomne, najmä e-mailom na <a href="mailto:info@orostone.sk" className="text-brand-gold hover:underline">info@orostone.sk</a>, a uviesť:
+              <br />a) identifikáciu objednávky alebo faktúry,
+              <br />b) popis vady,
+              <br />c) dátum zistenia vady,
+              <br />d) fotodokumentáciu alebo inú primeranú dokumentáciu, ak je to vzhľadom na povahu vady možné.
+            </SubSection>
+            <SubSection number="10.5">
+              Predávajúci je oprávnený požadovať doplnenie informácií, fotodokumentácie alebo obhliadku Tovaru, ak je to potrebné na posúdenie reklamácie.
+            </SubSection>
+            <SubSection number="10.6" highlight>
+              Ak ide o Spotrebiteľa, predávajúci poskytne <strong>bezodkladne po vytknutí vady písomné potvrdenie o vytknutí vady</strong> a uvedie primeranú lehotu, v ktorej vadu odstráni alebo vybaví uplatnené právo zo zodpovednosti za vady. Táto lehota <strong>nesmie presiahnuť 30 dní</strong> odo dňa vytknutia vady, ak dlhšia lehota nie je odôvodnená objektívnym dôvodom, ktorý predávajúci nemôže ovplyvniť.
+            </SubSection>
+            <SubSection number="10.7">
+              Ak je na riadne posúdenie reklamácie potrebné sprístupnenie Tovaru, obhliadka na mieste, odobratie vzorky, súčinnosť realizátora alebo predloženie technických podkladov, Klient je povinný takúto primeranú súčinnosť poskytnúť.
+            </SubSection>
+            <SubSection number="10.8">
+              Predávajúci nezodpovedá za škodu vzniknutú tým, že Klient pokračoval v používaní alebo spracovaní Tovaru napriek zistenej alebo oznámenej vade, alebo napriek tomu, že vada bola zrejmá.
+            </SubSection>
+            <SubSection number="10.9">
+              Podrobný postup a praktické informácie k uplatneniu práv zo zodpovednosti za vady a k odstúpeniu od zmluvy sú dostupné na stránke{' '}
+              <Link to="/reklamacie" className="text-brand-gold hover:underline">Reklamácie a vrátenie tovaru</Link>.
             </SubSection>
           </Section>
 
-          {/* E-SHOP SECTIONS DIVIDER */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="py-8"
-          >
-            <div className="flex items-center gap-4">
-              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-brand-gold/50 to-transparent"></div>
-              <span className="text-brand-gold font-semibold tracking-wider uppercase text-sm">E-shop sekcie</span>
-              <div className="flex-1 h-px bg-gradient-to-r from-transparent via-brand-gold/50 to-transparent"></div>
-            </div>
-            <p className="text-center text-gray-500 text-sm mt-4">
-              Nasledujúce ustanovenia sa vzťahujú výlučne na nákupy realizované prostredníctvom e-shopu na <a href="https://orostone.sk" className="text-brand-gold hover:underline">www.orostone.sk</a>
-            </p>
-          </motion.div>
-
-          {/* 11. E-shop: Uzatvorenie zmluvy */}
-          <Section id="eshop-zmluva" number="11" title="E-shop: Uzatvorenie zmluvy na diaľku">
+          {/* 11. Externé služby a tretie osoby */}
+          <Section id="externe-sluzby" number="11" title="Externé služby a tretie osoby">
             <SubSection number="11.1">
-              Prostredníctvom e-shopu je možné objednať výlučne <strong>skladové platne kameňa Orostone® bez úprav</strong> (rezania, opracovania).
+              Predávajúci neposkytuje montážne služby, kamenárske práce ani stavebné práce, pokiaľ nebolo písomne dohodnuté inak.
             </SubSection>
             <SubSection number="11.2">
-              Objednávka Klienta odoslaná prostredníctvom e-shopu je návrhom na uzatvorenie kúpnej zmluvy.
+              Ak predávajúci Klientovi odporučí externého realizátora, kamenára, montážnika alebo inú tretiu osobu, ide výlučne o <strong>nezáväzné odporúčanie</strong>.
             </SubSection>
             <SubSection number="11.3" highlight>
-              <strong>Vznik zmluvy:</strong> Kúpna zmluva vzniká momentom, keď spoločnosť Orostone potvrdí objednávku e-mailom (automatické potvrdenie o prijatí objednávky nie je potvrdením objednávky).
+              Predávajúci <strong>nezodpovedá</strong> za kvalitu práce, termíny, cenu, vady montáže, vady opracovania, škody ani akékoľvek iné nároky vyplývajúce zo služieb poskytnutých externým realizátorom.
             </SubSection>
             <SubSection number="11.4">
-              Spoločnosť Orostone si vyhradzuje právo odmietnuť objednávku, najmä ak tovar nie je dostupný alebo ak existujú pochybnosti o pravdivosti údajov uvedených Klientom.
+              Zmluvný vzťah medzi Klientom a externým realizátorom vzniká priamo medzi nimi a na ich vlastnú zodpovednosť.
             </SubSection>
           </Section>
 
-          {/* 12. E-shop: Cena, platba */}
-          <Section id="eshop-platba" number="12" title="E-shop: Cena, platba a daňové doklady">
+          {/* 12. Obmedzenie zodpovednosti */}
+          <Section id="obmedzenie-zodpovednosti" number="12" title="Obmedzenie zodpovednosti">
             <SubSection number="12.1">
-              Ceny tovaru v e-shope sú uvedené vrátane DPH. Cena dopravy je uvedená samostatne pred dokončením objednávky.
+              Predávajúci nezodpovedá za nepriame škody, následné škody, ušlý zisk, prestoje, stratu zákazky, náklady tretích osôb ani iné následné ekonomické ujmy, ak takáto zodpovednosť nemôže byť podľa kogentných právnych predpisov vylúčená.
             </SubSection>
             <SubSection number="12.2" highlight>
-              <strong>Spôsoby platby:</strong> Bankový prevod alebo platba kartou online. <strong>Dobierka nie je možná.</strong>
+              Pri Klientovi – podnikateľovi sa celková zodpovednosť predávajúceho obmedzuje <strong>najviac do výšky ceny realizovanej objednávky</strong>, z ktorej škoda vznikla.
             </SubSection>
             <SubSection number="12.3">
-              Tovar je expedovaný až po pripísaní platby na účet spoločnosti Orostone.
-            </SubSection>
-            <SubSection number="12.4">
-              V prípade neuhradenia objednávky do 5 pracovných dní od jej potvrdenia sa objednávka automaticky ruší.
-            </SubSection>
-            <SubSection number="12.5">
-              Daňový doklad (faktúra) bude zaslaný elektronicky na e-mailovú adresu Klienta.
+              Nič v týchto VOP nevylučuje ani neobmedzuje práva Spotrebiteľa podľa kogentných ustanovení právnych predpisov.
             </SubSection>
           </Section>
 
-          {/* 13. E-shop: Dodanie tovaru */}
-          <Section id="eshop-dodanie" number="13" title="E-shop: Dodanie tovaru a prechod rizika">
+          {/* 13. Vyššia moc */}
+          <Section id="vyssia-moc" number="13" title="Vyššia moc">
             <SubSection number="13.1">
-              Dodacia lehota pre e-shop objednávky je spravidla <strong>5 pracovných dní</strong> od pripísania platby, ak je tovar skladom.
+              Predávajúci nezodpovedá za porušenie povinnosti, ak bolo spôsobené okolnosťami vylučujúcimi zodpovednosť, najmä vyššou mocou, vojnovým stavom, štrajkom, pandémiou, výpadkom dopravy, výpadkom dodávateľského reťazca, zásahom orgánov verejnej moci alebo inou nepredvídateľnou a neodvrátiteľnou okolnosťou.
             </SubSection>
             <SubSection number="13.2">
-              Tovar je doručovaný prepravnou spoločnosťou na adresu uvedenú Klientom v objednávke.
-            </SubSection>
-            <SubSection number="13.3" highlight>
-              <strong>Prechod rizika:</strong> Nebezpečenstvo škody na tovare prechádza na Klienta momentom prevzatia tovaru od dopravcu.
-            </SubSection>
-            <SubSection number="13.4">
-              Klient je povinný pri prevzatí skontrolovať neporušenosť obalu a stav tovaru. Poškodenie zásielky je potrebné <strong>ihneď</strong> oznámiť dopravcovi a spoločnosti Orostone.
-            </SubSection>
-            <SubSection number="13.5">
-              Skryté poškodenie zistené po rozbalení je potrebné nahlásiť spoločnosti Orostone do <strong>24 hodín</strong> od prevzatia, spolu s fotodokumentáciou.
+              Po dobu trvania okolností podľa bodu 13.1 sa primerane predlžujú lehoty na plnenie.
             </SubSection>
           </Section>
 
-          {/* 14. E-shop: Odstúpenie od zmluvy */}
-          <Section id="eshop-odstupenie" number="14" title="E-shop: Odstúpenie od zmluvy (spotrebiteľ)">
+          {/* 14. Alternatívne riešenie sporov a orgán dozoru */}
+          <Section id="riesenie-sporov" number="14" title="Alternatívne riešenie sporov a orgán dozoru">
             <SubSection number="14.1">
-              Klient – spotrebiteľ má právo odstúpiť od zmluvy bez uvedenia dôvodu do <strong>14 dní</strong> odo dňa prevzatia tovaru, v súlade s § 7 zákona č. 102/2014 Z.z. o ochrane spotrebiteľa pri predaji tovaru na základe zmluvy uzavretej na diaľku.
+              Spotrebiteľ má právo obrátiť sa na predávajúceho so žiadosťou o nápravu, ak nie je spokojný so spôsobom, ktorým predávajúci vybavil jeho reklamáciu alebo ak sa domnieva, že predávajúci porušil jeho práva.
             </SubSection>
             <SubSection number="14.2">
-              Odstúpenie od zmluvy je potrebné zaslať písomne na e-mail info@orostone.sk alebo poštou na adresu sídla spoločnosti pred uplynutím 14-dňovej lehoty. Klient môže využiť{' '}
-              <Link to="/odstupenie-od-zmluvy" className="text-brand-gold hover:underline">vzorový formulár na odstúpenie od zmluvy</Link>.
+              Ak predávajúci na žiadosť Spotrebiteľa odpovie zamietavo alebo na ňu neodpovie do 30 dní odo dňa jej odoslania, Spotrebiteľ má právo podať návrh na začatie alternatívneho riešenia sporu (ďalej len „ARS") príslušnému subjektu ARS. Návrh na začatie ARS sa podáva písomne na adresu subjektu ARS alebo prostredníctvom jeho webového sídla.
             </SubSection>
-            <SubSection number="14.3" highlight>
-              <strong>Podmienky vrátenia:</strong> Tovar musí byť nepoužitý, nepoškodený a v pôvodnom obale. Klient znáša priame náklady na vrátenie tovaru.
+            <SubSection number="14.3">
+              Subjektom alternatívneho riešenia sporov je najmä Slovenská obchodná inšpekcia alebo iný oprávnený subjekt zapísaný v zozname subjektov alternatívneho riešenia sporov.
             </SubSection>
-            <SubSection number="14.4">
-              Spoločnosť Orostone vráti Klientovi všetky platby vrátane nákladov na doručenie (vo výške zodpovedajúcej najlacnejšiemu ponúkanému spôsobu doručenia) do 14 dní od doručenia oznámenia o odstúpení od zmluvy. Spoločnosť je oprávnená zadržať vrátenie platby až do prijatia tovaru alebo dokladu o jeho odoslaní. Vrátenie platby prebehne rovnakým spôsobom, akým bola platba prijatá.
-            </SubSection>
-            <SubSection number="14.5">
-              Právo na odstúpenie od zmluvy sa nevzťahuje na tovar zhotovený podľa osobitných požiadaviek Klienta (v e-shope sa štandardne nepredáva).
+            <SubSection number="14.4" highlight>
+              <strong>Orgánom dozoru</strong> je:
+              <div className="mt-2">
+                <p className="font-medium text-brand-dark">Slovenská obchodná inšpekcia (SOI)</p>
+                <p>Inšpektorát SOI pre Bratislavský kraj</p>
+                <p>Bajkalská 21/A, 827 99 Bratislava</p>
+                <a href="https://www.soi.sk" target="_blank" rel="noopener noreferrer" className="text-brand-gold hover:underline">www.soi.sk</a>
+              </div>
             </SubSection>
           </Section>
 
-          {/* 15. E-shop: Reklamácie */}
-          <Section id="eshop-reklamacie" number="15" title="E-shop: Reklamácie tovaru">
+          {/* 15. Ochrana osobných údajov */}
+          <Section id="ochrana-udajov" number="15" title="Ochrana osobných údajov">
             <SubSection number="15.1">
-              Spoločnosť Orostone zodpovedá za vady materiálu, ktoré mal tovar pri prevzatí Klientom, alebo ktoré sa prejavia počas záručnej doby (24 mesiacov).
-            </SubSection>
-            <SubSection number="15.2" highlight>
-              <strong>Spoločnosť Orostone nezodpovedá</strong> za vady vzniknuté v dôsledku montáže, rezania, opracovania alebo iného zásahu do tovaru vykonaného Klientom alebo treťou osobou.
-            </SubSection>
-            <SubSection number="15.3">
-              Reklamáciu je potrebné uplatniť písomne na info@orostone.sk s uvedením čísla objednávky, popisu vady a fotodokumentácie.
-            </SubSection>
-            <SubSection number="15.4">
-              Spoločnosť Orostone rozhodne o reklamácii ihneď, v zložitých prípadoch do 3 pracovných dní. Vybavenie reklamácie vrátane odstránenia vady nebude trvať dlhšie ako 30 dní.
+              Informácie o spracúvaní osobných údajov sú uvedené v samostatnom dokumente{' '}
+              <Link to="/ochrana-sukromia" className="text-brand-gold hover:underline">
+                Zásady ochrany osobných údajov
+              </Link>{' '}
+              zverejnenom na webovom sídle predávajúceho. Informácie o používaní cookies a podobných technológií sú uvedené v{' '}
+              <Link to="/cookies" className="text-brand-gold hover:underline">Zásadách používania cookies</Link>.
             </SubSection>
           </Section>
 
-          {/* Záverečné ustanovenia */}
+          {/* 16. Záverečné ustanovenia */}
           <Section id="zaverecne-ustanovenia" number="16" title="Záverečné ustanovenia">
             <SubSection number="16.1">
-              Spoločnosť Orostone si vyhradzuje právo na zmenu týchto VOP. Aktuálne znenie VOP je vždy zverejnené na <a href="https://orostone.sk/vop" className="text-brand-gold hover:underline">www.orostone.sk/vop</a>.
+              Právne vzťahy neupravené týmito VOP sa riadia príslušnými ustanoveniami právneho poriadku Slovenskej republiky.
             </SubSection>
-            <SubSection number="16.2">
-              Vzťahy neupravené týmito VOP sa riadia príslušnými ustanoveniami zákona č. 40/1964 Zb. Občiansky zákonník, zákona č. 513/1991 Zb. Obchodný zákonník, zákona č. 250/2007 Z.z. o ochrane spotrebiteľa a zákona č. 102/2014 Z.z. o ochrane spotrebiteľa pri predaji na diaľku.
+            <SubSection number="16.2" highlight>
+              Na Spotrebiteľa sa vzťahujú kogentné ustanovenia právnych predpisov na ochranu spotrebiteľa. Ak je niektoré ustanovenie týchto VOP v rozpore s kogentným právnym predpisom, použije sa príslušný právny predpis; tým nie je dotknutá platnosť ostatných ustanovení VOP.
             </SubSection>
             <SubSection number="16.3">
-              Pre riešenie sporov je príslušný súd Slovenskej republiky podľa platných právnych predpisov SR. Na spotrebiteľské zmluvy sa vzťahujú príslušné ustanovenia zákona č. 250/2007 Z.z., ktoré umožňujú spotrebiteľovi uplatniť nárok aj v mieste svojho bydliska.
+              Ak sa niektoré ustanovenie týchto VOP ukáže ako neplatné alebo nevymáhateľné, nemá to vplyv na platnosť a účinnosť ostatných ustanovení.
             </SubSection>
             <SubSection number="16.4">
-              V prípade spotrebiteľských sporov má Klient – spotrebiteľ právo obrátiť sa na subjekt alternatívneho riešenia sporov podľa zákona č. 391/2015 Z.z. Príslušným subjektom ARS je:{' '}
-              <strong>Slovenská obchodná inšpekcia (SOI)</strong>, Bajkalská 21/A, 827 99 Bratislava,{' '}
-              <a href="https://www.soi.sk/sk/alternativne-riesenie-spotrebitelskych-sporov.soi" target="_blank" rel="noopener noreferrer" className="text-brand-gold hover:underline">www.soi.sk</a>.
-              {' '}Spotrebiteľ môže podať návrh aj prostredníctvom platformy riešenia sporov online (ODR):{' '}
-              <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" className="text-brand-gold hover:underline">ec.europa.eu/consumers/odr</a>.
+              Predávajúci je oprávnený tieto VOP meniť alebo dopĺňať. Na zmluvný vzťah sa použije znenie VOP účinné v čase odoslania objednávky, ak kogentný právny predpis neustanovuje inak.
             </SubSection>
             <SubSection number="16.5">
-              Ak sa akékoľvek ustanovenie týchto VOP stane neplatným alebo nevymáhateľným, nemá to vplyv na platnosť ostatných ustanovení.
+              Tieto VOP nadobúdajú platnosť a účinnosť dňa <strong>24. 3. 2026</strong>.
             </SubSection>
           </Section>
 
-          {/* Signature Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-orostone p-8 text-center"
-          >
-            <p className="text-gray-600 mb-6">
-              Tieto Všeobecné obchodné podmienky spoločnosti Orostone, s.r.o. nadobúdajú platnosť a účinnosť dňa:
-            </p>
-            <p className="text-2xl font-light text-brand-dark mb-8">01.01.2026</p>
-            <div className="inline-block">
-              <div className="w-32 h-px bg-brand-gold mb-4 mx-auto"></div>
-              <p className="text-brand-dark font-medium">JUDr. Martin Miškeje</p>
-              <p className="text-gray-500 text-sm">konateľ</p>
-              <p className="text-gray-500 text-sm">Orostone, s.r.o.</p>
-            </div>
-          </motion.div>
         </div>
 
-        {/* Footer Info */}
+        {/* Footer note */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mt-16 pt-8 border-t border-gray-200"
+          className="mt-12 bg-white rounded-orostone p-6 shadow-sm text-center"
         >
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-            <div>
-              <p className="text-sm text-gray-500">Platnosť a účinnosť</p>
-              <p className="text-lg font-medium text-brand-dark">01.01.2026</p>
-            </div>
-            <div className="flex gap-4">
-              <Link 
-                to="/kontakt"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-brand-gold text-white rounded-full hover:bg-brand-dark transition-colors"
-              >
-                <span>Kontaktujte nás</span>
-                <span>→</span>
-              </Link>
-            </div>
-          </div>
+          <p className="text-sm text-gray-500">
+            Orostone s.r.o. • Landererova 8, 811 09 Bratislava • IČO: 55 254 772 • DIČ: 2121930580
+          </p>
+          <p className="text-xs text-gray-400 mt-2">
+            V Bratislave, 24. 3. 2026 — JUDr. Martin Miškeje, konateľ Orostone s.r.o.
+          </p>
         </motion.div>
+
       </div>
     </div>
   );

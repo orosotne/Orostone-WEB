@@ -2146,12 +2146,12 @@ const LogisticsSection: React.FC<LogisticsSectionProps> = ({ product }) => {
     {
       icon: Truck,
       label: 'Doprava',
-      value: 'Paletová preprava'
+      value: 'Špeciálna preprava na vozíku'
     },
     {
       icon: MapPin,
       label: 'Balenie',
-      value: product.packagingInfo || 'Drevená paleta, ochranná fólia'
+      value: product.packagingInfo || 'Prepravný vozík, ochranná fólia, popruhy'
     },
   ];
 
@@ -2191,8 +2191,8 @@ const LogisticsSection: React.FC<LogisticsSectionProps> = ({ product }) => {
                 Doprava od 150 EUR s DPH
               </p>
               <p className="text-xs text-gray-500">
-                Presná cena sa potvrdí v pokladni podľa adresy a počtu paliet.
-                Nad 3 platne doprava zadarmo.
+                Presná cena sa potvrdí v pokladni podľa adresy a počtu platní.
+                Pri 3 a viac platniach doprava zadarmo.
               </p>
             </div>
             <Link
@@ -2836,7 +2836,7 @@ export const ShopProductDetail: React.FC = () => {
       <SEOHead
         title={seoTitle}
         description={seoDescription}
-        canonical={`https://orostone.sk/produkt/${product.id}`}
+        canonical={`https://eshop.orostone.sk/produkt/${product.id}`}
         ogType="product"
         ogImage={seoImage}
       />

@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 
-const SITE_ORIGIN = (import.meta.env.VITE_PUBLIC_SITE_URL as string | undefined)?.replace(/\/$/, '')
-  || 'https://orostone.sk';
+const SITE_ORIGIN = typeof window !== 'undefined'
+  ? window.location.origin
+  : ((import.meta.env.VITE_PUBLIC_SITE_URL as string | undefined)?.replace(/\/$/, '') || 'https://orostone.sk');
 
 const DEFAULT_OG_PATH = '/images/og-orostone.png';
 
