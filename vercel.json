@@ -9,7 +9,7 @@
   ],
   "rewrites": [
     {
-      "source": "/((?!assets|images|videos|fonts|favicon|apple-touch|robots|sitemap|llms).*)",
+      "source": "/:path*",
       "has": [{ "type": "host", "value": "eshop.orostone.sk" }],
       "destination": "/eshop.html"
     },
