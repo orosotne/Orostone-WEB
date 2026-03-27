@@ -41,8 +41,7 @@ import { DesignSwitcher } from './components/Utils/DesignSwitcher';
 // Redirect e-shop routes to eshop.html with optional path
 const RedirectToEshop: React.FC<{ path?: string }> = ({ path = '' }) => {
   useEffect(() => {
-    const targetPath = path ? `#${path}` : '';
-    window.location.href = `/eshop.html${targetPath}`;
+    window.location.href = `https://eshop.orostone.sk${path}`;
   }, [path]);
   return <LoadingSpinner text="Presmerovávam do e-shopu..." />;
 };

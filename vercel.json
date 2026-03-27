@@ -9,6 +9,11 @@
   ],
   "rewrites": [
     {
+      "source": "/((?!assets|images|videos|fonts|favicon|apple-touch|robots|sitemap|llms).*)",
+      "has": [{ "type": "host", "value": "eshop.orostone.sk" }],
+      "destination": "/eshop.html"
+    },
+    {
       "source": "/sitemap-index.xml",
       "destination": "/sitemap-index.xml"
     },
@@ -27,11 +32,6 @@
     {
       "source": "/llms.txt",
       "destination": "/llms.txt"
-    },
-    {
-      "source": "/(.*)",
-      "has": [{ "type": "host", "value": "eshop.orostone.sk" }],
-      "destination": "/eshop.html"
     },
     {
       "source": "/(.*)",
