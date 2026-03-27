@@ -167,7 +167,14 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       }
     };
 
-    initCart();
+    // Defer cart init to avoid competing with LCP resources
+    if ('requestIdleCallback' in window) {
+      const id = (window as any).requestIdleCallback(() => initCart(), { timeout: 3000 });
+      return () => (window as any).cancelIdleCallback(id);
+    } else {
+      const id = setTimeout(() => initCart(), 2000);
+      return () => clearTimeout(id);
+    }
   }, []);
 
   // ------------------------------------------

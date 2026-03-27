@@ -66,16 +66,16 @@ export function TextKnockoutSection() {
       .to(goldSvgRef.current!, { opacity: 0, duration: 0.25, ease: 'power2.inOut' }, 0.85);
     });
 
-    // ── Mobile: pin + scale 500 zoom ───────────────────────────────────────
+    // ── Mobile: lighter animation — reduced scale range, shorter pin ────────
     mm.add('(max-width: 1023px)', () => {
-      gsap.set(svgRef.current!, { scale: 500 });
+      gsap.set(svgRef.current!, { scale: 50, willChange: 'transform' });
       gsap.set(goldSvgRef.current!, { opacity: 0 });
 
       gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current!,
           start: 'top top',
-          end: '+=120%',
+          end: '+=80%',
           scrub: 0.5,
           pin: true,
           pinSpacing: true,
@@ -83,7 +83,7 @@ export function TextKnockoutSection() {
           onRefresh: stylePinSpacer,
         },
       })
-      .to(svgRef.current!, { scale: 1, duration: 0.2, ease: 'power4.out' }, 0.15)
+      .to(svgRef.current!, { scale: 1, duration: 0.3, ease: 'power4.out', clearProps: 'willChange' }, 0.1)
       .to(goldSvgRef.current!, { opacity: 1, duration: 0.1, ease: 'power2.inOut' }, 0.4)
       .to(goldSvgRef.current!, { opacity: 0, duration: 0.25, ease: 'power2.inOut' }, 0.7);
     });
@@ -105,7 +105,7 @@ export function TextKnockoutSection() {
         muted
         playsInline
         loop
-        preload="auto"
+        preload="none"
         className="absolute inset-0 w-full h-full object-cover"
       />
 

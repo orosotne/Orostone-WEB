@@ -259,34 +259,54 @@ export const Home = () => {
       }
     });
 
-    // Brand Story Pinning
-    const storyTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: storyRef.current,
-        start: 'top top',
-        end: '+=200%',
-        pin: true,
-        scrub: 1,
-        snap: 0.33,
-        onUpdate: (self) => {
-          // Calculate active slide based on progress
-          const progress = self.progress;
-          if (progress < 0.33) {
-            setActiveStorySlide(0);
-          } else if (progress < 0.66) {
-            setActiveStorySlide(1);
-          } else {
-            setActiveStorySlide(2);
+    // Brand Story — desktop: pinned scroll sequence, mobile: simple reveals
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 1024px)', () => {
+      const storyTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: storyRef.current,
+          start: 'top top',
+          end: '+=200%',
+          pin: true,
+          scrub: 1,
+          snap: 0.33,
+          onUpdate: (self) => {
+            const progress = self.progress;
+            if (progress < 0.33) {
+              setActiveStorySlide(0);
+            } else if (progress < 0.66) {
+              setActiveStorySlide(1);
+            } else {
+              setActiveStorySlide(2);
+            }
           }
         }
-      }
+      });
+
+      storyTl
+        .to('.story-slide-0', { opacity: 0, scale: 0.95, duration: 1 })
+        .fromTo('.story-slide-1', { opacity: 0, scale: 1.05 }, { opacity: 1, scale: 1, duration: 1 })
+        .to('.story-slide-1', { opacity: 0, scale: 0.95, duration: 1 })
+        .fromTo('.story-slide-2', { opacity: 0, scale: 1.05 }, { opacity: 1, scale: 1, duration: 1 });
     });
 
-    storyTl
-      .to('.story-slide-0', { opacity: 0, scale: 0.95, duration: 1 })
-      .fromTo('.story-slide-1', { opacity: 0, scale: 1.05 }, { opacity: 1, scale: 1, duration: 1 })
-      .to('.story-slide-1', { opacity: 0, scale: 0.95, duration: 1 })
-      .fromTo('.story-slide-2', { opacity: 0, scale: 1.05 }, { opacity: 1, scale: 1, duration: 1 });
+    mm.add('(max-width: 1023px)', () => {
+      // Mobile: simple fade-in reveals without pinning
+      ['.story-slide-0', '.story-slide-1', '.story-slide-2'].forEach((sel) => {
+        gsap.fromTo(sel,
+          { opacity: 0, y: 40 },
+          {
+            opacity: 1, y: 0, duration: 0.8,
+            scrollTrigger: {
+              trigger: sel,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse'
+            }
+          }
+        );
+      });
+    });
 
     // Video section scroll-triggered play/pause
     ScrollTrigger.create({
@@ -319,16 +339,18 @@ export const Home = () => {
       }
     });
 
-    // Video parallax text
-    gsap.to('.video-overlay-text', {
-      y: -100,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.video-section',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: true
-      }
+    // Video parallax text — desktop only (scrub is expensive on mobile)
+    mm.add('(min-width: 1024px)', () => {
+      gsap.to('.video-overlay-text', {
+        y: -100,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.video-section',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true
+        }
+      });
     });
 
     // Benefits Bento Grid reveal

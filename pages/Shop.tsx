@@ -102,7 +102,7 @@ const INSPIRATION_IMAGES = [
 const HERO_SLIDES = [
   {
     id: 1,
-    poster: '/images/home/hero-1.jpeg',
+    poster: '/images/home/hero-1.webp',
     label: 'Prémiový sinterovaný kameň',
     title: 'Krása kameňa.',
     titleAccent: 'Bez kompromisov.',
@@ -123,7 +123,21 @@ export const Shop = () => {
 
 
   const [activeSlide, setActiveSlide] = useState(0);
-  const { posts: instagramPosts, isLoading: igLoading, isUsingFallback: igFallback } = useInstagramFeed(8);
+
+  // Defer Instagram feed fetch until section is near viewport
+  const igSectionRef = useRef<HTMLElement>(null);
+  const [igEnabled, setIgEnabled] = useState(false);
+  useEffect(() => {
+    const el = igSectionRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setIgEnabled(true); io.disconnect(); } },
+      { rootMargin: '600px' }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  const { posts: instagramPosts, isLoading: igLoading, isUsingFallback: igFallback } = useInstagramFeed(8, igEnabled);
 
   // Stone Experience slab carousel (desktop)
   const [activeStoneIdx, setActiveStoneIdx] = useState(0);
@@ -577,6 +591,8 @@ export const Shop = () => {
             <img
               src={slide.poster}
               alt=""
+              fetchPriority="high"
+              decoding="async"
               className="hero-img absolute inset-0 w-full h-full object-cover"
             />
           </div>
@@ -1157,7 +1173,7 @@ export const Shop = () => {
       </section>
 
       {/* ==================== INSTAGRAM FEED ==================== */}
-      <section className="instagram-section py-20 lg:py-28 bg-[#FAFAFA]">
+      <section ref={igSectionRef} className="instagram-section py-20 lg:py-28 bg-[#FAFAFA]">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="section-reveal text-center mb-12 lg:mb-16">
             <span className="text-xs lg:text-[11px] tracking-[0.3em] uppercase text-brand-gold font-bold mb-3 block">

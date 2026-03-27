@@ -11,14 +11,14 @@ export interface InstagramPost {
 }
 
 const FALLBACK_IMAGES = [
-  'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1620626011761-996317b8d101?q=80&w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=400&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=400&auto=format&fit=crop',
+  '/images/instagram-fallback/ig-fallback-1.webp',
+  '/images/instagram-fallback/ig-fallback-2.webp',
+  '/images/instagram-fallback/ig-fallback-3.webp',
+  '/images/instagram-fallback/ig-fallback-4.webp',
+  '/images/instagram-fallback/ig-fallback-5.webp',
+  '/images/instagram-fallback/ig-fallback-6.webp',
+  '/images/instagram-fallback/ig-fallback-7.webp',
+  '/images/instagram-fallback/ig-fallback-8.webp',
 ];
 
 const FALLBACK_POSTS: InstagramPost[] = FALLBACK_IMAGES.map((url, i) => ({
@@ -31,13 +31,15 @@ const FALLBACK_POSTS: InstagramPost[] = FALLBACK_IMAGES.map((url, i) => ({
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 
-export function useInstagramFeed(limit: number = 8) {
+export function useInstagramFeed(limit: number = 8, enabled: boolean = true) {
   const [posts, setPosts] = useState<InstagramPost[]>(FALLBACK_POSTS.slice(0, limit));
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isUsingFallback, setIsUsingFallback] = useState(false);
 
   useEffect(() => {
+    if (!enabled) return;
+
     if (!SUPABASE_URL) {
       console.warn('[Instagram Feed] SUPABASE_URL chýba — používam fallback');
       setPosts(FALLBACK_POSTS.slice(0, limit));
@@ -94,7 +96,7 @@ export function useInstagramFeed(limit: number = 8) {
     return () => {
       cancelled = true;
     };
-  }, [limit]);
+  }, [limit, enabled]);
 
   return { posts, isLoading, error, isUsingFallback };
 }

@@ -9,15 +9,15 @@ import { ErrorBoundary } from './components/UI/ErrorBoundary';
 import { ProductGridSkeleton, ProductDetailSkeleton, CheckoutSkeleton } from './components/UI/Skeleton';
 import { lazyWithRetry } from './lib/utils';
 
-// Core pages (always loaded — high-intent routes should never show a loading spinner)
+// Core page — landing page must never show a loading spinner
 import { Shop } from './pages/Shop';
-import { ProductCatalog } from './pages/ProductCatalog';
-import { EshopContact } from './pages/EshopContact';
-import { CategoryPage } from './pages/CategoryPage';
-import { Checkout } from './pages/Checkout';
-import { ThankYou } from './pages/ThankYou';
 
 // Lazy loaded pages — lazyWithRetry retries failed chunk loads (e.g. after deployment)
+const ProductCatalog = lazyWithRetry(() => import('./pages/ProductCatalog').then(m => ({ default: m.ProductCatalog })));
+const EshopContact = lazyWithRetry(() => import('./pages/EshopContact').then(m => ({ default: m.EshopContact })));
+const CategoryPage = lazyWithRetry(() => import('./pages/CategoryPage').then(m => ({ default: m.CategoryPage })));
+const Checkout = lazyWithRetry(() => import('./pages/Checkout').then(m => ({ default: m.Checkout })));
+const ThankYou = lazyWithRetry(() => import('./pages/ThankYou').then(m => ({ default: m.ThankYou })));
 const ShopProductDetail = lazyWithRetry(() => import('./pages/ShopProductDetail').then(m => ({ default: m.ShopProductDetail })));
 
 const BlogPage = lazyWithRetry(() => import('./pages/Blog').then(m => ({ default: m.Blog })));
@@ -30,10 +30,13 @@ const ReklamacieAVratenie = lazyWithRetry(() => import('./pages/ReklamacieAVrate
 const SinterovanyKamen = lazyWithRetry(() => import('./pages/SinterovanyKamen').then(m => ({ default: m.SinterovanyKamen })));
 const OdstupeniOdZmluvy = lazyWithRetry(() => import('./pages/OdstupeniOdZmluvy').then(m => ({ default: m.OdstupeniOdZmluvy })));
 
-// Prefetch lazy chunks after first idle
+// Prefetch high-intent lazy chunks after first idle
 if (typeof window !== 'undefined') {
   const prefetch = () => {
+    import('./pages/CategoryPage');
+    import('./pages/ProductCatalog');
     import('./pages/ShopProductDetail');
+    import('./pages/Checkout');
     import('./pages/Blog');
     import('./pages/BlogArticle');
   };
@@ -139,8 +142,16 @@ const EshopAppContent = () => {
           <Route path="/vsetky-produkty" element={<Navigate to="/kategoria/sintered-stone" replace />} />
           
           {/* Categories */}
-          <Route path="/kategoria/:slug" element={<CategoryPage />} />
-          <Route path="/kategoria/:slug/:subCategory" element={<CategoryPage />} />
+          <Route path="/kategoria/:slug" element={
+            <Suspense fallback={<ProductGridSkeleton />}>
+              <CategoryPage />
+            </Suspense>
+          } />
+          <Route path="/kategoria/:slug/:subCategory" element={
+            <Suspense fallback={<ProductGridSkeleton />}>
+              <CategoryPage />
+            </Suspense>
+          } />
           
           {/* Product Detail — skeleton loader */}
           <Route path="/produkt/:id" element={
@@ -150,8 +161,16 @@ const EshopAppContent = () => {
           } />
           
           {/* Checkout Flow */}
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/objednavka-dokoncena" element={<ThankYou />} />
+          <Route path="/checkout" element={
+            <Suspense fallback={<CheckoutSkeleton />}>
+              <Checkout />
+            </Suspense>
+          } />
+          <Route path="/objednavka-dokoncena" element={
+            <Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}>
+              <ThankYou />
+            </Suspense>
+          } />
           
           {/* Auth — redirect to Shopify Customer Accounts */}
           <Route path="/login" element={<ExternalRedirect to="https://shopify.com/101386420570/account" />} />
@@ -174,7 +193,11 @@ const EshopAppContent = () => {
           <Route path="/doprava" element={<Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}><DopravaAPlatba /></Suspense>} />
           <Route path="/reklamacie" element={<Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}><ReklamacieAVratenie /></Suspense>} />
           <Route path="/odstupenie-od-zmluvy" element={<Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}><OdstupeniOdZmluvy /></Suspense>} />
-          <Route path="/kontakt" element={<EshopContact />} />
+          <Route path="/kontakt" element={
+            <Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}>
+              <EshopContact />
+            </Suspense>
+          } />
           <Route path="/objednavky" element={<ExternalRedirect to="https://shopify.com/101386420570/account" />} />
 
           {/* Redirects for old presentation site paths */}

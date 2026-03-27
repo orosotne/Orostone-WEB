@@ -113,6 +113,111 @@ export interface ShopifyCart {
 // GRAPHQL FRAGMENTS
 // ===========================================
 
+// Lightweight fragment for product grid listing (fewer images, variants, metafields)
+const PRODUCT_LIST_FRAGMENT = `
+  fragment ProductListFields on Product {
+    id
+    handle
+    title
+    description
+    descriptionHtml
+    vendor
+    productType
+    tags
+    availableForSale
+    images(first: 1) {
+      edges {
+        node {
+          url
+          altText
+          width
+          height
+        }
+      }
+    }
+    variants(first: 3) {
+      edges {
+        node {
+          id
+          title
+          availableForSale
+          price {
+            amount
+            currencyCode
+          }
+          compareAtPrice {
+            amount
+            currencyCode
+          }
+          selectedOptions {
+            name
+            value
+          }
+          sku
+          weight
+          weightUnit
+        }
+      }
+    }
+    priceRange {
+      minVariantPrice {
+        amount
+        currencyCode
+      }
+      maxVariantPrice {
+        amount
+        currencyCode
+      }
+    }
+    thickness: metafield(namespace: "custom", key: "thickness") {
+      key
+      value
+      namespace
+    }
+    dimensions: metafield(namespace: "custom", key: "dimensions") {
+      key
+      value
+      namespace
+    }
+    finish: metafield(namespace: "custom", key: "finish") {
+      key
+      value
+      namespace
+    }
+    material: metafield(namespace: "custom", key: "material") {
+      key
+      value
+      namespace
+    }
+    color_category: metafield(namespace: "custom", key: "color_category") {
+      key
+      value
+      namespace
+    }
+    color_hex_for_cursor: metafield(namespace: "custom", key: "color_hex_for_cursor") {
+      key
+      value
+      namespace
+    }
+    shopify_color: metafield(namespace: "shopify", key: "color") {
+      key
+      value
+      namespace
+    }
+    shopify_color_pattern: metafield(namespace: "shopify", key: "color-pattern") {
+      key
+      value
+      namespace
+    }
+    custom_color_pattern: metafield(namespace: "custom", key: "color-pattern") {
+      key
+      value
+      namespace
+    }
+  }
+`;
+
+// Full fragment for product detail (all images, variants, metafields)
 const PRODUCT_FRAGMENT = `
   fragment ProductFields on Product {
     id
@@ -340,6 +445,28 @@ export async function fetchProducts(first: number = 50): Promise<ShopProduct[]> 
         edges {
           node {
             ...ProductFields
+          }
+        }
+      }
+    }
+  `;
+
+  const data = await shopifyFetch<{
+    products: { edges: { node: ShopifyProduct }[] };
+  }>({ query, variables: { first } });
+
+  return data.products.edges.map(({ node }) => shopifyProductToShopProduct(node));
+}
+
+// Lightweight listing fetch — fewer images, variants, metafields (~70% smaller response)
+export async function fetchProductsForListing(first: number = 50): Promise<ShopProduct[]> {
+  const query = `
+    ${PRODUCT_LIST_FRAGMENT}
+    query Products($first: Int!) {
+      products(first: $first, sortKey: BEST_SELLING) {
+        edges {
+          node {
+            ...ProductListFields
           }
         }
       }

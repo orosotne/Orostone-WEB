@@ -195,7 +195,7 @@ export const ProductCatalog = () => {
       <section className="relative h-[320px] md:h-[400px] overflow-hidden">
         {/* Background Image */}
         <img
-          src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1600&q=80"
+          src="/images/catalog/catalog-hero.webp"
           alt="Všetky produkty"
           fetchPriority="high"
           decoding="async"

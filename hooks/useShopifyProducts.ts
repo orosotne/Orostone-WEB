@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useSyncExternalStore } from 'react';
 import { isShopifyConfigured } from '../lib/shopify';
-import { fetchProducts, fetchProductByHandle } from '../services/shopify.service';
+import { fetchProductsForListing, fetchProductByHandle } from '../services/shopify.service';
 import { SHOP_PRODUCTS, type ShopProduct } from '../constants';
 
 // ===========================================
@@ -47,7 +47,7 @@ function ensureCatalogFetch(count: number) {
   catalogState = { ...catalogState, isLoading: true, error: null };
   emitChange();
 
-  catalogFetchPromise = fetchProducts(count)
+  catalogFetchPromise = fetchProductsForListing(count)
     .then(data => {
       catalogState = {
         products: data.length > 0 ? data : [],

@@ -1,19 +1,38 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import EshopApp from './EshopApp';
-
 declare global {
   interface Window { gtag?: (...args: any[]) => void; }
 }
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
 import './index.css';
 
-const rootElement = document.getElementById('root');
-if (!rootElement) throw new Error('Failed to find the root element');
-
-const root = ReactDOM.createRoot(rootElement);
-
-root.render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <EshopApp />
+    <App />
   </React.StrictMode>
 );
+
+// Web Vitals — report LCP, INP, CLS to GA4 (or console in dev)
+import { onLCP, onINP, onCLS } from 'web-vitals';
+
+function sendToAnalytics(metric: { name: string; value: number; id: string; delta: number }) {
+  if (import.meta.env.DEV) {
+    console.log(`[web-vital] ${metric.name}: ${Math.round(metric.value)}ms (delta: ${Math.round(metric.delta)}ms)`);
+    return;
+  }
+  if (typeof window.gtag === 'function') {
+    const gaId = (window as any)._GA_ESHOP_ID as string | undefined;
+    window.gtag('event', metric.name, {
+      ...(gaId ? { send_to: gaId } : {}),
+      event_category: 'Web Vitals',
+      value: Math.round(metric.name === 'CLS' ? metric.delta * 1000 : metric.delta),
+      event_label: metric.id,
+      non_interaction: true,
+    });
+  }
+}
+
+onLCP(sendToAnalytics);
+onINP(sendToAnalytics);
+onCLS(sendToAnalytics);
