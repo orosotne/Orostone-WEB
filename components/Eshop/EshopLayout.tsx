@@ -2,7 +2,8 @@ import React, { ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 import { EshopAnnouncementBar } from './EshopAnnouncementBar';
 import { EshopNavbar } from './EshopNavbar';
-import { EshopFooter } from './EshopFooter';
+import { Footer } from '../Layout/Footer';
+import { getVisibleCategories } from './EshopMegaMenu';
 import { CartDrawer } from '../Cart/CartDrawer';
 import { NoiseOverlay } from '../UI/NoiseOverlay';
 import { CookieBanner } from '../UI/CookieBanner';
@@ -45,7 +46,7 @@ export const EshopLayout: React.FC<EshopLayoutProps> = ({ children }) => {
       </main>
       
       {/* Footer */}
-      <EshopFooter />
+      <Footer variant="eshop" eshopCategories={getVisibleCategories()} />
       
       {/* Cookie Banner & Settings */}
       <CookieBanner />
@@ -60,5 +61,4 @@ export const EshopLayout: React.FC<EshopLayoutProps> = ({ children }) => {
 
 export { EshopAnnouncementBar } from './EshopAnnouncementBar';
 export { EshopNavbar } from './EshopNavbar';
-export { EshopFooter } from './EshopFooter';
 export { EshopMegaMenu, MEGA_MENU_CATEGORIES } from './EshopMegaMenu';
