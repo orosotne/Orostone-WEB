@@ -459,7 +459,7 @@ export const Home = () => {
     <main ref={containerRef} className="overflow-hidden w-full">
       
       {/* ==================== HERO SECTION ==================== */}
-      <section ref={heroRef} className="relative h-screen min-h-[800px] w-full flex items-center justify-center overflow-hidden bg-brand-dark">
+      <section ref={heroRef} className="relative h-screen min-h-[100svh] w-full flex items-center justify-center overflow-hidden bg-brand-dark">
         
         {/* Parallax Background */}
         <div className="absolute inset-0 z-0 overflow-hidden">
@@ -477,13 +477,13 @@ export const Home = () => {
         {/* Hero Content */}
         <div className="container mx-auto px-6 relative z-10 text-center text-white mt-10">
           <div className="mb-8 flex flex-col items-center">
-            <div className="overflow-hidden">
+            <div className="overflow-hidden pt-1">
               <h1 className="hero-text-line text-5xl md:text-6xl lg:text-7xl font-sans font-bold tracking-normal leading-[1] text-white">
                 Krása kameňa.
               </h1>
             </div>
             <div className="mt-2 md:mt-3">
-              <h1 className="hero-text-line text-5xl md:text-6xl lg:text-7xl font-sans font-light italic text-brand-gold tracking-normal leading-[1] pb-4">
+              <h1 className="hero-text-line text-5xl md:text-6xl lg:text-7xl font-sans font-light italic text-brand-gold tracking-normal leading-[1.1] pb-4">
                 Sila technológie.
               </h1>
             </div>
