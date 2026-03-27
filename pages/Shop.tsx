@@ -871,7 +871,7 @@ export const Shop = () => {
       </section>
 
       {/* Order wrapper: mobile: stone(1) → products(2) → TextKnockout(3); desktop: TextKnockout(1) → stone(2) → products(3) */}
-      <div className="flex flex-col">
+      <div className="flex flex-col w-full overflow-x-hidden">
         <div className="order-3 lg:order-1">
           <TextKnockoutSection />
         </div>
