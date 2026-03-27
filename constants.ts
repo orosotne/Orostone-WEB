@@ -414,7 +414,7 @@ export interface NavLinkItem {
 }
 
 export const NAV_LINKS: NavLinkItem[] = [
-  { label: 'Shop', path: '/' },
+  { label: 'Shop', path: 'https://eshop.orostone.sk', external: true },
   { label: 'Kolekcie', path: '/kolekcie' },
   { label: 'Realizácie', path: '/realizacie' },
   { label: 'Vizualizátor', path: '/vizualizator' },
