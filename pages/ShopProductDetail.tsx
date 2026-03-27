@@ -2615,15 +2615,15 @@ const ProductSchema: React.FC<ProductSchemaProps> = ({ product, totalPrice }) =>
     "size": product.dimensions,
     "weight": product.weight ? `${product.weight} kg` : undefined,
     "countryOfOrigin": resolveCountryOfOrigin(product, 'slovakia'),
-    "url": `https://orostone.sk/produkt/${product.id}`,
+    "url": `https://eshop.orostone.sk/produkt/${product.id}`,
     "offers": {
       "@type": "Offer",
-      "url": `https://orostone.sk/produkt/${product.id}`,
+      "url": `https://eshop.orostone.sk/produkt/${product.id}`,
       "priceCurrency": "EUR",
       "price": totalPrice.toFixed(2),
       "priceValidUntil": new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
-      "availability": product.inStock 
-        ? "https://schema.org/InStock" 
+      "availability": product.inStock
+        ? "https://schema.org/InStock"
         : "https://schema.org/PreOrder",
       "itemCondition": "https://schema.org/NewCondition",
       "seller": {
@@ -2636,6 +2636,11 @@ const ProductSchema: React.FC<ProductSchemaProps> = ({ product, totalPrice }) =>
           "@type": "DefinedRegion",
           "addressCountry": "SK"
         },
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "150",
+          "currency": "EUR"
+        },
         "deliveryTime": {
           "@type": "ShippingDeliveryTime",
           "handlingTime": {
@@ -2645,6 +2650,14 @@ const ProductSchema: React.FC<ProductSchemaProps> = ({ product, totalPrice }) =>
             "unitCode": "d"
           }
         }
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "SK",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 14,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
       }
     },
     "additionalProperty": [

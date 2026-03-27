@@ -521,6 +521,7 @@ export const Shop = () => {
               "item": {
                 "@type": "Product",
                 "name": p.name,
+                "description": p.metaDescription || p.seoDescription || `${p.name} — prémiový sinterovaný kameň od OROSTONE.`,
                 "url": `https://eshop.orostone.sk/produkt/${p.id}`,
                 "image": p.image,
                 "brand": { "@type": "Brand", "name": p.vendor || "OROSTONE" },
@@ -535,6 +536,23 @@ export const Shop = () => {
                     : "https://schema.org/PreOrder",
                   "itemCondition": "https://schema.org/NewCondition",
                   "seller": { "@type": "Organization", "name": "OROSTONE s.r.o." },
+                  "shippingDetails": {
+                    "@type": "OfferShippingDetails",
+                    "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "SK" },
+                    "shippingRate": { "@type": "MonetaryAmount", "value": "150", "currency": "EUR" },
+                    "deliveryTime": {
+                      "@type": "ShippingDeliveryTime",
+                      "handlingTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 5, "unitCode": "d" }
+                    }
+                  },
+                  "hasMerchantReturnPolicy": {
+                    "@type": "MerchantReturnPolicy",
+                    "applicableCountry": "SK",
+                    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                    "merchantReturnDays": 14,
+                    "returnMethod": "https://schema.org/ReturnByMail",
+                    "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
+                  }
                 },
               },
             })),
