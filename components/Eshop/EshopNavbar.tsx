@@ -441,6 +441,13 @@ export const EshopNavbar: React.FC = () => {
                 >
                   Blog
                 </Link>
+                <a
+                  href="https://orostone.sk"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block px-6 py-4 text-[13px] tracking-[0.1em] uppercase text-black hover:bg-gray-50"
+                >
+                  O značke
+                </a>
                 <Link
                   to="/kontakt"
                   onClick={() => setMobileMenuOpen(false)}
@@ -550,6 +557,13 @@ export const EshopNavbar: React.FC = () => {
                 >
                   Blog
                 </Link>
+                <a
+                  href="https://orostone.sk"
+                  onClick={() => setOffCanvasOpen(false)}
+                  className="flex items-center px-8 py-5 text-[14px] tracking-[0.15em] uppercase font-bold text-black hover:bg-gray-50 transition-colors border-b border-gray-100"
+                >
+                  O značke
+                </a>
                 <Link
                   to="/kontakt"
                   onClick={() => setOffCanvasOpen(false)}
