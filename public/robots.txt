@@ -41,6 +41,4 @@ Allow: /
 User-agent: Applebot
 Allow: /
 
-Sitemap: https://orostone.sk/sitemap-index.xml
-Sitemap: https://orostone.sk/sitemap-main.xml
-Sitemap: https://eshop.orostone.sk/sitemap-eshop.xml
+Sitemap: https://orostone.sk/sitemap.xml

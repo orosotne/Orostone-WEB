@@ -263,8 +263,8 @@ export const Shop = () => {
 
       // Phase 1 (0–10%): Gold frame expands from inset+rounded to full-bleed (content lives inside frame)
       stoneTl.fromTo('.stone-bg-frame',
-        { margin: '80px 120px', borderRadius: '32px' },
-        { margin: '0px 0px', borderRadius: '0px', ease: 'power2.out', duration: 0.06 },
+        { marginTop: '80px', marginBottom: '80px', marginLeft: '120px', marginRight: '120px', borderRadius: '32px' },
+        { marginTop: '0px', marginBottom: '0px', marginLeft: '0px', marginRight: '0px', borderRadius: '0px', ease: 'power2.out', duration: 0.06 },
         0
       );
 
@@ -726,11 +726,11 @@ export const Shop = () => {
 
 
       {/* ==================== STONE EXPERIENCE — Pin-and-reveal scroll animation ==================== */}
-      <section className="stone-experience-pinned relative hidden lg:flex lg:flex-col h-[118vh] overflow-hidden">
+      <section className="stone-experience-pinned relative hidden lg:flex lg:flex-col h-[118vh] overflow-hidden w-full">
         {/* Frame = same inset as gold so copy + grid stay inside yellow; GSAP expands frame to full-bleed */}
         <div
           className="stone-bg-frame relative z-0 flex flex-1 min-h-0 flex-col overflow-hidden"
-          style={{ margin: '80px 120px', borderRadius: '32px' }}
+          style={{ marginTop: '80px', marginBottom: '80px', marginLeft: '120px', marginRight: '120px', borderRadius: '32px' }}
         >
           <div className="stone-bg pointer-events-none absolute inset-0 bg-brand-gold" />
 

@@ -117,7 +117,7 @@ export const EshopNavbar: React.FC = () => {
 
               {/* O kameni — link na hlavny web */}
               <a
-                href="https://orostone.sk/sinterovany-kamen"
+                href="https://marketing.orostone.sk/sinterovany-kamen"
                 className={cn(
                   "hidden lg:block text-[11px] tracking-[0.15em] uppercase font-normal transition-colors",
                   isTransparent ? "text-white/70 hover:text-white" : "text-gray-500 hover:text-black"
@@ -428,7 +428,7 @@ export const EshopNavbar: React.FC = () => {
                 <div className="h-px bg-gray-100 my-2" />
 
                 <a
-                  href="https://orostone.sk/sinterovany-kamen"
+                  href="https://marketing.orostone.sk/sinterovany-kamen"
                   onClick={() => setMobileMenuOpen(false)}
                   className="block px-6 py-4 text-[13px] tracking-[0.1em] uppercase text-black hover:bg-gray-50"
                 >
@@ -442,7 +442,7 @@ export const EshopNavbar: React.FC = () => {
                   Blog
                 </Link>
                 <a
-                  href="https://orostone.sk"
+                  href="https://marketing.orostone.sk"
                   onClick={() => setMobileMenuOpen(false)}
                   className="block px-6 py-4 text-[13px] tracking-[0.1em] uppercase text-black hover:bg-gray-50"
                 >
@@ -558,7 +558,7 @@ export const EshopNavbar: React.FC = () => {
                   Blog
                 </Link>
                 <a
-                  href="https://orostone.sk"
+                  href="https://marketing.orostone.sk"
                   onClick={() => setOffCanvasOpen(false)}
                   className="flex items-center px-8 py-5 text-[14px] tracking-[0.15em] uppercase font-bold text-black hover:bg-gray-50 transition-colors border-b border-gray-100"
                 >

@@ -9,11 +9,11 @@
     <meta name="author" content="OROSTONE" />
     <meta name="robots" content="index, follow" />
     <!-- Google Analytics — script sa načíta až po súhlase s cookies (GDPR/ePrivacy compliant) -->
-    <!-- Inicializácia prebieha dynamicky v App.tsx cez useAnalytics hook -->
+    <!-- Inicializácia prebieha dynamicky v EshopApp cez useAnalytics hook -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      window._GA_ESHOP_ID = 'G-DYP9ZCNGW2';
+      window._GA_ESHOP_ID = 'G-W3ZPVYZ9HQ';
     </script>
     <link rel="preload" as="image" href="/images/home/hero-1.webp" type="image/webp" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -57,18 +57,6 @@
         color: #121212;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        overflow: clip;
-        overscroll-behavior-x: none;
-        width: 100%;
-      }
-      #root {
-        width: 100%;
-        max-width: 100%;
-        overflow-x: clip;
-        min-height: 100%;
-      }
-      @media (min-width: 1024px) {
-        #root { overflow: clip; }
       }
       .scrollbar-hide::-webkit-scrollbar {
           display: none;
@@ -94,7 +82,7 @@
 </head>
   <body>
     <div id="root"></div>
-    <!-- LocalBusiness JSON-LD -->
+    <!-- LocalBusiness JSON-LD for local SEO -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -139,7 +127,7 @@
       "paymentAccepted": "Bankový prevod, Platba kartou"
     }
     </script>
-    <!-- WebSite JSON-LD with SearchAction -->
+    <!-- WebSite JSON-LD with SearchAction for sitelinks -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",

@@ -3,7 +3,7 @@
 
   <!-- Eshop homepage -->
   <url>
-    <loc>https://eshop.orostone.sk/</loc>
+    <loc>https://orostone.sk/</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -11,7 +11,7 @@
 
   <!-- Blog -->
   <url>
-    <loc>https://eshop.orostone.sk/blog</loc>
+    <loc>https://orostone.sk/blog</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -19,67 +19,67 @@
 
   <!-- Blog articles -->
   <url>
-    <loc>https://eshop.orostone.sk/blog/problemy-so-sinterovanym-kamenom</loc>
+    <loc>https://orostone.sk/blog/problemy-so-sinterovanym-kamenom</loc>
     <lastmod>2026-02-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/blog/sinterovany-kamen-vs-kvarcit-vs-keramika-vs-porcelan</loc>
+    <loc>https://orostone.sk/blog/sinterovany-kamen-vs-kvarcit-vs-keramika-vs-porcelan</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/blog/matny-vs-leskly-povrch</loc>
+    <loc>https://orostone.sk/blog/matny-vs-leskly-povrch</loc>
     <lastmod>2026-02-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/blog/od-merania-po-instalaciu-proces-orostone</loc>
+    <loc>https://orostone.sk/blog/od-merania-po-instalaciu-proces-orostone</loc>
     <lastmod>2026-03-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/blog/oplati-sa-sinterovany-kamen</loc>
+    <loc>https://orostone.sk/blog/oplati-sa-sinterovany-kamen</loc>
     <lastmod>2026-03-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/blog/horuce-hrnce-na-sinterovanom-kameni</loc>
+    <loc>https://orostone.sk/blog/horuce-hrnce-na-sinterovanom-kameni</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/blog/skvrny-na-sinterovanom-kameni</loc>
+    <loc>https://orostone.sk/blog/skvrny-na-sinterovanom-kameni</loc>
     <lastmod>2026-03-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/blog/12mm-vs-20mm-hrubka</loc>
+    <loc>https://orostone.sk/blog/12mm-vs-20mm-hrubka</loc>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/blog/hrany-a-profily-chipovanie</loc>
+    <loc>https://orostone.sk/blog/hrany-a-profily-chipovanie</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/blog/certifikacie-sinterovany-kamen</loc>
+    <loc>https://orostone.sk/blog/certifikacie-sinterovany-kamen</loc>
     <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/blog/sinterovany-kamen-vs-kvarcit-vs-keramika-vs-dekton</loc>
+    <loc>https://orostone.sk/blog/sinterovany-kamen-vs-kvarcit-vs-keramika-vs-dekton</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -87,31 +87,31 @@
 
   <!-- Katalóg produktov — kategórie -->
   <url>
-    <loc>https://eshop.orostone.sk/kategoria/sintered-stone</loc>
+    <loc>https://orostone.sk/kategoria/sintered-stone</loc>
     <lastmod>2026-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/kategoria/sintered-stone/biele</loc>
+    <loc>https://orostone.sk/kategoria/sintered-stone/biele</loc>
     <lastmod>2026-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/kategoria/sintered-stone/bezove</loc>
+    <loc>https://orostone.sk/kategoria/sintered-stone/bezove</loc>
     <lastmod>2026-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/kategoria/sintered-stone/sede</loc>
+    <loc>https://orostone.sk/kategoria/sintered-stone/sede</loc>
     <lastmod>2026-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/kategoria/sintered-stone/cierne</loc>
+    <loc>https://orostone.sk/kategoria/sintered-stone/cierne</loc>
     <lastmod>2026-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -119,73 +119,73 @@
 
   <!-- Produktové stránky -->
   <url>
-    <loc>https://eshop.orostone.sk/produkt/statuario-diamante</loc>
+    <loc>https://orostone.sk/produkt/statuario-diamante</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/produkt/calacatta-top</loc>
+    <loc>https://orostone.sk/produkt/calacatta-top</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/produkt/givenchy-gold</loc>
+    <loc>https://orostone.sk/produkt/givenchy-gold</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/produkt/roman-travertine</loc>
+    <loc>https://orostone.sk/produkt/roman-travertine</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/produkt/taj-mahal</loc>
+    <loc>https://orostone.sk/produkt/taj-mahal</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/produkt/appennino</loc>
+    <loc>https://orostone.sk/produkt/appennino</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/produkt/astrana-grey</loc>
+    <loc>https://orostone.sk/produkt/astrana-grey</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/produkt/super-white-extra</loc>
+    <loc>https://orostone.sk/produkt/super-white-extra</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/produkt/gothic-gold</loc>
+    <loc>https://orostone.sk/produkt/gothic-gold</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/produkt/wild-forest</loc>
+    <loc>https://orostone.sk/produkt/wild-forest</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/produkt/nero-margiua</loc>
+    <loc>https://orostone.sk/produkt/nero-margiua</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/produkt/yabo-white</loc>
+    <loc>https://orostone.sk/produkt/yabo-white</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -193,25 +193,25 @@
 
   <!-- Info stránky eshop -->
   <url>
-    <loc>https://eshop.orostone.sk/kontakt</loc>
+    <loc>https://orostone.sk/kontakt</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/doprava</loc>
+    <loc>https://orostone.sk/doprava</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/reklamacie</loc>
+    <loc>https://orostone.sk/reklamacie</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://eshop.orostone.sk/odstupenie-od-zmluvy</loc>
+    <loc>https://orostone.sk/odstupenie-od-zmluvy</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>

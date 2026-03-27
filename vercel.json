@@ -5,43 +5,27 @@
       "has": [{ "type": "host", "value": "www.orostone.sk" }],
       "destination": "https://orostone.sk/$1",
       "permanent": true
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/",
-      "has": [{ "type": "host", "value": "eshop.orostone.sk" }],
-      "destination": "/eshop.html"
-    },
-    {
-      "source": "/:path+",
-      "has": [{ "type": "host", "value": "eshop.orostone.sk" }],
-      "destination": "/eshop.html"
-    },
-    {
-      "source": "/sitemap-index.xml",
-      "destination": "/sitemap-index.xml"
-    },
-    {
-      "source": "/sitemap-main.xml",
-      "destination": "/sitemap-main.xml"
-    },
-    {
-      "source": "/sitemap-eshop.xml",
-      "destination": "/sitemap-eshop.xml"
-    },
-    {
-      "source": "/robots.txt",
-      "destination": "/robots.txt"
-    },
-    {
-      "source": "/llms.txt",
-      "destination": "/llms.txt"
     },
     {
       "source": "/(.*)",
-      "destination": "/marketing.html"
-    }
+      "has": [{ "type": "host", "value": "eshop.orostone.sk" }],
+      "destination": "https://orostone.sk/$1",
+      "permanent": true
+    },
+    { "source": "/kolekcie/:path*", "destination": "https://marketing.orostone.sk/kolekcie/:path*", "permanent": true },
+    { "source": "/kolekcie", "destination": "https://marketing.orostone.sk/kolekcie", "permanent": true },
+    { "source": "/realizacie", "destination": "https://marketing.orostone.sk/realizacie", "permanent": true },
+    { "source": "/online-kalkulacka", "destination": "https://marketing.orostone.sk/online-kalkulacka", "permanent": true },
+    { "source": "/vizualizator", "destination": "https://marketing.orostone.sk/vizualizator", "permanent": true },
+    { "source": "/key-facts", "destination": "https://marketing.orostone.sk/key-facts", "permanent": true },
+    { "source": "/o-kameni", "destination": "https://marketing.orostone.sk/o-kameni", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/sitemap.xml", "destination": "/sitemap-eshop.xml" },
+    { "source": "/sitemap-eshop.xml", "destination": "/sitemap-eshop.xml" },
+    { "source": "/robots.txt", "destination": "/robots.txt" },
+    { "source": "/llms.txt", "destination": "/llms.txt" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
     {

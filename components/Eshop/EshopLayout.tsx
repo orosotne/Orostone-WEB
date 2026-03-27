@@ -46,7 +46,7 @@ export const EshopLayout: React.FC<EshopLayoutProps> = ({ children }) => {
       </main>
       
       {/* Footer */}
-      <Footer variant="eshop" eshopCategories={getVisibleCategories()} />
+      <Footer categories={getVisibleCategories()} />
       
       {/* Cookie Banner & Settings */}
       <CookieBanner />

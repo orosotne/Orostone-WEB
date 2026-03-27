@@ -7,7 +7,6 @@ import {
 import { RotatingBadge } from '../UI/RotatingBadge';
 import { useCookies } from '../../context/CookieContext';
 import { subscribeToNewsletter } from '../../services/newsletter.service';
-import { NAV_LINKS } from '../../constants';
 
 const PAYMENT_MARKS = [
   { src: '/images/payments/visa.svg', alt: 'Visa' },
@@ -75,46 +74,6 @@ const NewsletterWidget: React.FC = () => {
     </form>
   );
 };
-
-// ===========================================
-// MARKETING COLUMNS
-// ===========================================
-
-const MarketingColumns: React.FC = () => (
-  <>
-    {/* Objavte */}
-    <div>
-      <h4 className="font-bold text-sm uppercase tracking-wider mb-4">Objavte</h4>
-      <ul className="space-y-3">
-        {NAV_LINKS.map(link => (
-          <li key={link.path}>
-            {link.external ? (
-              <a href={link.path} className="text-gray-400 hover:text-white text-sm transition-colors">
-                {link.label}
-              </a>
-            ) : (
-              <Link to={link.path} className="text-gray-400 hover:text-white text-sm transition-colors">
-                {link.label}
-              </Link>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
-
-    {/* Materiály */}
-    <div>
-      <h4 className="font-bold text-sm uppercase tracking-wider mb-4">Materiály</h4>
-      <ul className="space-y-3">
-        <li><Link to="/sinterovany-kamen" className="text-gray-400 hover:text-white text-sm transition-colors">Sinterovaný kameň</Link></li>
-        <li className="text-gray-400 text-sm">Unita (Color Body)</li>
-        <li className="text-gray-400 text-sm">Marbelito (Full Body)</li>
-        <li className="text-gray-400 text-sm">Bianco (White Body)</li>
-        <li className="text-gray-400 text-sm">Space Black</li>
-      </ul>
-    </div>
-  </>
-);
 
 // ===========================================
 // ESHOP COLUMNS
@@ -198,13 +157,12 @@ const EshopColumns: React.FC<FooterEshopColumnsProps> = ({ categories = [] }) =>
 // ===========================================
 
 interface FooterProps {
-  variant?: 'marketing' | 'eshop';
-  eshopCategories?: EshopCategory[];
+  categories?: EshopCategory[];
 }
 
-export const Footer: React.FC<FooterProps> = ({ variant = 'marketing', eshopCategories }) => {
+export const Footer: React.FC<FooterProps> = ({ categories }) => {
   const { pathname } = useLocation();
-  const isProductDetail = variant === 'eshop' && pathname.startsWith('/produkt/');
+  const isProductDetail = pathname.startsWith('/produkt/');
   const { openSettings } = useCookies();
 
   return (
@@ -307,8 +265,8 @@ export const Footer: React.FC<FooterProps> = ({ variant = 'marketing', eshopCate
             </div>
           </div>
 
-          {/* Variant-specific columns */}
-          {variant === 'eshop' ? <EshopColumns categories={eshopCategories} /> : <MarketingColumns />}
+          {/* Eshop columns */}
+          <EshopColumns categories={categories} />
 
           {/* Contact */}
           <div>

@@ -200,19 +200,11 @@ const EshopAppContent = () => {
           } />
           <Route path="/objednavky" element={<ExternalRedirect to="https://shopify.com/101386420570/account" />} />
 
-          {/* Redirects for old presentation site paths */}
-          <Route path="/kolekcie" element={<Navigate to="/vsetky-produkty" replace />} />
-          <Route path="/kolekcie/:collectionId" element={<Navigate to="/vsetky-produkty" replace />} />
-          <Route path="/realizacie" element={<Navigate to="/" replace />} />
-          <Route path="/online-kalkulacka" element={<Navigate to="/" replace />} />
-          <Route path="/vizualizator" element={<Navigate to="/" replace />} />
-          <Route path="/o-kameni" element={<Navigate to="/" replace />} />
           <Route path="/sinterovany-kamen" element={
             <Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}>
               <SinterovanyKamen />
             </Suspense>
           } />
-          <Route path="/key-facts" element={<Navigate to="/" replace />} />
           
           {/* Legal */}
           <Route path="/vop" element={
