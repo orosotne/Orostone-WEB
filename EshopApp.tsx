@@ -65,8 +65,8 @@ import { ThemeProvider } from './context/ThemeContext';
 import { CookieProvider } from './context/CookieContext';
 import { CartProvider } from './context/CartContext';
 
-// Global overlays
-import { NewsletterPopup } from './components/UI/NewsletterPopup';
+// Global overlays (lazy — defers supabase from initial bundle)
+const NewsletterPopup = lazyWithRetry(() => import('./components/UI/NewsletterPopup').then(m => ({ default: m.NewsletterPopup })));
 
 
 // ===========================================
@@ -146,7 +146,7 @@ const EshopAppContent = () => {
   return (
     <EshopLayout>
       <ScrollToTop />
-      <NewsletterPopup />
+      <Suspense fallback={null}><NewsletterPopup /></Suspense>
       <ErrorBoundary level="page">
         <Routes>
           {/* Main Shop */}

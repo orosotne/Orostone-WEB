@@ -16,7 +16,8 @@ import { useInstagramFeed, getPostImageUrl } from '../hooks/useInstagramFeed';
 import { TextKnockoutSection } from '../components/TextKnockoutSection';
 import { SEOHead, OROSTONE_ORGANIZATION_LD } from '../components/UI/SEOHead';
 import { InspirationSection } from '../components/Shop/InspirationSection';
-import { SampleLeadSection } from '../components/Shop/SampleLeadSection';
+
+const SampleLeadSection = React.lazy(() => import('../components/Shop/SampleLeadSection').then(m => ({ default: m.SampleLeadSection })));
 import { RotatingBadge } from '../components/UI/RotatingBadge';
 import { Link } from 'react-router-dom';
 
@@ -229,8 +230,8 @@ export const Shop = () => {
       { opacity: 1, duration: 0.8, delay: 1.3 }
     );
 
-    // --- Parallax effect on hero image ---
-    if (heroRef.current) {
+    // --- Parallax effect on hero image (desktop only — saves INP on mobile) ---
+    if (heroRef.current && window.innerWidth >= 1024) {
       gsap.to('.hero-img', {
         scale: 1.1,
         scrollTrigger: {
@@ -336,7 +337,7 @@ export const Shop = () => {
     // --- Stone Experience: Mobile scroll-triggered reveals (no pinning) ---
     const stoneMobile = document.querySelector('.stone-mobile-section');
     if (stoneMobile && !reducedMotion) {
-      // Background: inset + rounded → full-bleed
+      // Background: inset + rounded → full-bleed (one-shot, no scrub for INP)
       gsap.fromTo('.stone-bg-mobile',
         { margin: '40px 24px', borderRadius: '24px' },
         {
@@ -344,9 +345,8 @@ export const Shop = () => {
           ease: 'power2.out', duration: 0.8,
           scrollTrigger: {
             trigger: '.stone-mobile-section',
-            start: 'top 85%',
-            end: 'top 40%',
-            scrub: 0.3,
+            start: 'top 70%',
+            toggleActions: 'play none none none',
           },
         }
       );
@@ -1082,7 +1082,9 @@ export const Shop = () => {
       <InspirationSection items={INSPIRATION_IMAGES} />
 
       {/* ==================== SAMPLE LEAD SECTION ==================== */}
-      <SampleLeadSection />
+      <React.Suspense fallback={null}>
+        <SampleLeadSection />
+      </React.Suspense>
 
       {/* ==================== BLOG PREVIEW SECTION ==================== */}
       <BlogPreviewSection articles={getLatestArticlesMeta(5)} />

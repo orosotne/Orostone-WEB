@@ -6,7 +6,8 @@ import {
 } from 'lucide-react';
 import { RotatingBadge } from '../UI/RotatingBadge';
 import { useCookies } from '../../context/CookieContext';
-import { subscribeToNewsletter } from '../../services/newsletter.service';
+// Dynamic import — keeps supabase out of the initial bundle
+const loadNewsletter = () => import('../../services/newsletter.service');
 
 const PAYMENT_MARKS = [
   { src: '/images/payments/visa.svg', alt: 'Visa' },
@@ -28,6 +29,7 @@ const NewsletterWidget: React.FC = () => {
     e.preventDefault();
     if (!email.trim()) return;
     setStatus('loading');
+    const { subscribeToNewsletter } = await loadNewsletter();
     const result = await subscribeToNewsletter({ email, source: 'footer' });
     if (result.success) {
       setStatus('success');
