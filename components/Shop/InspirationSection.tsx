@@ -207,15 +207,34 @@ const ImageCard = ({ src, idx, onOpen }: { src: string; idx: number; onOpen: () 
 // ──────────────────────────────────────────
 const VideoCard = ({ src, idx, onOpen }: { src: string; idx: number; onOpen: () => void; key?: React.Key }) => {
   const [muted, setMuted] = useState(true);
+  const [visible, setVisible] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const cardRef = useRef<HTMLButtonElement>(null);
 
+  // Mount <video> element only when card enters extended viewport (400px margin)
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '400px' },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Play/pause based on visibility
   useEffect(() => {
     const el = cardRef.current;
     const video = videoRef.current;
     if (!el || !video) return;
 
-    // Prevent autoplay — we manage it via observer
     video.pause();
 
     const observer = new IntersectionObserver(
@@ -231,7 +250,7 @@ const VideoCard = ({ src, idx, onOpen }: { src: string; idx: number; onOpen: () 
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [visible]);
 
   const toggleMute = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -251,16 +270,20 @@ const VideoCard = ({ src, idx, onOpen }: { src: string; idx: number; onOpen: () 
       style={{ aspectRatio: '9 / 16' }}
       aria-label={`Otvoriť video ${idx + 1}`}
     >
-      <video
-        ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover"
-        muted
-        loop
-        playsInline
-        preload="none"
-      >
-        <source src={src} type="video/mp4" />
-      </video>
+      {visible ? (
+        <video
+          ref={videoRef}
+          className="absolute inset-0 w-full h-full object-cover"
+          muted
+          loop
+          playsInline
+          preload="none"
+        >
+          <source src={src} type="video/mp4" />
+        </video>
+      ) : (
+        <div className="absolute inset-0 w-full h-full bg-gray-900" />
+      )}
       <button
         type="button"
         aria-label="Toggle volume"

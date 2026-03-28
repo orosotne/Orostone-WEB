@@ -73,14 +73,17 @@ function ensureCatalogFetch(count: number) {
 // ===========================================
 export interface UseShopifyProductsOptions {
   shopifyOnly?: boolean;
+  /** Skip fetching until enabled (default: true). Useful for deferring load until user interaction. */
+  enabled?: boolean;
 }
 
 export function useShopifyProducts(count: number = 50, options?: UseShopifyProductsOptions) {
   const shopifyOnly = options?.shopifyOnly === true;
+  const enabled = options?.enabled !== false;
 
   useEffect(() => {
-    ensureCatalogFetch(count);
-  }, [count]);
+    if (enabled) ensureCatalogFetch(count);
+  }, [count, enabled]);
 
   const state = useSyncExternalStore(subscribeCatalog, getCatalogSnapshot, getCatalogSnapshot);
 

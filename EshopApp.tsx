@@ -30,21 +30,34 @@ const ReklamacieAVratenie = lazyWithRetry(() => import('./pages/ReklamacieAVrate
 const SinterovanyKamen = lazyWithRetry(() => import('./pages/SinterovanyKamen').then(m => ({ default: m.SinterovanyKamen })));
 const OdstupeniOdZmluvy = lazyWithRetry(() => import('./pages/OdstupeniOdZmluvy').then(m => ({ default: m.OdstupeniOdZmluvy })));
 
-// Prefetch high-intent lazy chunks after first idle
+// Stagger prefetch of lazy chunks — high-intent routes first, lower-priority later
 if (typeof window !== 'undefined') {
-  const prefetch = () => {
+  const schedule = (fn: () => void, delay: number) => setTimeout(fn, delay);
+  const idle = (fn: () => void, timeout: number) => {
+    if ('requestIdleCallback' in window) {
+      (window as any).requestIdleCallback(fn, { timeout });
+    } else {
+      setTimeout(fn, timeout);
+    }
+  };
+
+  // Batch 1: most likely next pages (after 2s idle)
+  idle(() => {
     import('./pages/CategoryPage');
     import('./pages/ProductCatalog');
+  }, 3000);
+
+  // Batch 2: product detail + checkout (after 5s)
+  schedule(() => {
     import('./pages/ShopProductDetail');
     import('./pages/Checkout');
+  }, 5000);
+
+  // Batch 3: blog (lowest priority, after 8s)
+  schedule(() => {
     import('./pages/Blog');
     import('./pages/BlogArticle');
-  };
-  if ('requestIdleCallback' in window) {
-    (window as any).requestIdleCallback(prefetch, { timeout: 4000 });
-  } else {
-    setTimeout(prefetch, 2000);
-  }
+  }, 8000);
 }
 
 // Contexts

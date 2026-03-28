@@ -22,7 +22,6 @@ export const EshopNavbar: React.FC = () => {
   const navigate = useNavigate();
   const { openCart, itemCount } = useCart();
 
-  const { products: shopProducts } = useShopifyProducts(50, { shopifyOnly: true });
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const [scrolled, setScrolled] = useState(false);
@@ -32,6 +31,10 @@ export const EshopNavbar: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<MegaMenuCategory | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchEverOpened, setSearchEverOpened] = useState(false);
+
+  // Defer product catalog fetch until search is actually opened (saves ~50 product fetch on first load)
+  const { products: shopProducts } = useShopifyProducts(50, { shopifyOnly: true, enabled: searchEverOpened });
 
   // Transparent mode for homepage hero overlay
   const isHomepage = location.pathname === '/';
@@ -143,7 +146,7 @@ export const EshopNavbar: React.FC = () => {
             <div className="flex items-center gap-1 min-w-[100px] lg:min-w-[180px] justify-end">
               {/* Search */}
               <button
-                onClick={() => setSearchOpen(!searchOpen)}
+                onClick={() => { if (!searchOpen) setSearchEverOpened(true); setSearchOpen(!searchOpen); }}
                 className={cn(
                   "p-2 transition-all duration-200 hover:[&_svg]:stroke-[2]",
                   searchOpen 

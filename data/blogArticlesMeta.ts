@@ -4,7 +4,8 @@
 import type { BlogArticleMeta } from './blogTypes';
 import { BLOG_AUTHOR_OROSTONE } from './blogTypes';
 
-const ARTICLES_META: BlogArticleMeta[] = [
+/** Lightweight listing — no content/faqs, keeps blogArticles chunk out of Blog listing page */
+export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
   {
     id: 'sintered-stone-problems',
     slug: 'problemy-so-sinterovanym-kamenom',
@@ -212,5 +213,10 @@ const ARTICLES_META: BlogArticleMeta[] = [
   },
 ];
 
+/** Published articles only (same filter as blogArticles.ts) */
+export const BLOG_ARTICLES_LISTING: BlogArticleMeta[] = BLOG_ARTICLES_META
+  .filter(a => new Date(a.publishDate) <= new Date())
+  .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
+
 export const getLatestArticlesMeta = (count: number): BlogArticleMeta[] =>
-  ARTICLES_META.slice(0, count);
+  BLOG_ARTICLES_LISTING.slice(0, count);

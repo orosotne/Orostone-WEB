@@ -206,21 +206,16 @@ const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProductId, pro
     navigate(`/produkt/${productId}`);
   };
 
-  // Preload ALL gallery images for other products (delayed so we don't compete with current product rendering)
+  // Preload only hero images for related products (not full galleries — saves bandwidth & CPU)
   useEffect(() => {
     const timeout = setTimeout(() => {
       filteredProducts.forEach(p => {
-        if (p.id !== currentProductId) {
-          const allImages = [p.image, ...(p.gallery || [])];
-          allImages.forEach(url => {
-            if (url) {
-              const img = new Image();
-              img.src = url;
-            }
-          });
+        if (p.id !== currentProductId && p.image) {
+          const img = new Image();
+          img.src = p.image;
         }
       });
-    }, 1000); // 1s delay to prioritize current product rendering
+    }, 1500);
     return () => clearTimeout(timeout);
   }, [filteredProducts, currentProductId]);
 
@@ -1207,8 +1202,9 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   const visibleThumbnails = showAllImages ? images : images.slice(0, 4);
 
   // Preload all gallery images so switching feels instant
+  // Preload only first 3 gallery images (hero + adjacent thumbnails)
   useEffect(() => {
-    images.forEach(src => { const img = new Image(); img.src = src; });
+    images.slice(0, 3).forEach(src => { const img = new Image(); img.src = src; });
   }, [images]);
 
   return (

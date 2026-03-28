@@ -8,7 +8,7 @@ import {
   BlogCategory,
   BLOG_CATEGORY_LABELS,
 } from '../data/blogTypes';
-import { BLOG_ARTICLES } from '../data/blogArticles';
+import { BLOG_ARTICLES_LISTING_LISTING } from '../data/blogArticlesMeta';
 import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -43,8 +43,8 @@ export const Blog: React.FC = () => {
 
   const filteredArticles = useMemo(() => {
     let articles = activeCategory === 'all'
-      ? BLOG_ARTICLES
-      : BLOG_ARTICLES.filter((a) => a.category === activeCategory);
+      ? BLOG_ARTICLES_LISTING
+      : BLOG_ARTICLES_LISTING.filter((a) => a.category === activeCategory);
     if (activeTag) {
       articles = articles.filter((a) => a.tags.some((t) => t.toLowerCase() === activeTag.toLowerCase()));
     }

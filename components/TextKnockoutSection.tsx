@@ -66,24 +66,24 @@ export function TextKnockoutSection() {
       .to(goldSvgRef.current!, { opacity: 0, duration: 0.25, ease: 'power2.inOut' }, 0.85);
     });
 
-    // ── Mobile: lighter animation — reduced scale range, shorter pin ────────
+    // ── Mobile: lighter animation — reduced scale, shorter pin, less CPU ────
     mm.add('(max-width: 1023px)', () => {
-      gsap.set(svgRef.current!, { scale: 50, willChange: 'transform' });
+      gsap.set(svgRef.current!, { scale: 70, willChange: 'transform' });
       gsap.set(goldSvgRef.current!, { opacity: 0 });
 
       gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current!,
           start: 'top top',
-          end: '+=80%',
-          scrub: 0.5,
+          end: '+=60%',
+          scrub: true,
           pin: true,
           pinSpacing: true,
           refreshPriority: -1,
           onRefresh: stylePinSpacer,
         },
       })
-      .to(svgRef.current!, { scale: 1, duration: 0.3, ease: 'power4.out', clearProps: 'willChange' }, 0.1)
+      .to(svgRef.current!, { scale: 1, duration: 0.3, ease: 'power2.out', clearProps: 'willChange' }, 0.1)
       .to(goldSvgRef.current!, { opacity: 1, duration: 0.1, ease: 'power2.inOut' }, 0.4)
       .to(goldSvgRef.current!, { opacity: 0, duration: 0.25, ease: 'power2.inOut' }, 0.7);
     });
