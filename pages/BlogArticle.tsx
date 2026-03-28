@@ -268,7 +268,7 @@ export const BlogArticle: React.FC = () => {
   const content = article[lang];
 
   // Canonical URL
-  const canonicalUrl = `https://eshop.orostone.sk/blog/${article.slug}`;
+  const canonicalUrl = `https://orostone.sk/blog/${article.slug}`;
 
   // Estimate word count from HTML content (strip tags)
   const wordCount = useMemo(() => {

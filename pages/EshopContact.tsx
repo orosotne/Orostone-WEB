@@ -9,11 +9,41 @@ export const EshopContact: React.FC = () => {
       <SEOHead
         title="Kontakt | OROSTONE — Prémiový sinterovaný kameň"
         description="Kontaktujte OROSTONE pre cenovú ponuku alebo odbornú konzultáciu. Sídlo v Bratislave — Landererova 8. Email: info@orostone.sk, Tel: +421 917 588 738."
-        canonical="https://eshop.orostone.sk/kontakt"
+        canonical="https://orostone.sk/kontakt"
         structuredData={createBreadcrumbLD([
-          { name: 'OROSTONE', url: 'https://eshop.orostone.sk/' },
-          { name: 'Kontakt', url: 'https://eshop.orostone.sk/kontakt' },
+          { name: 'OROSTONE', url: 'https://orostone.sk/' },
+          { name: 'Kontakt', url: 'https://orostone.sk/kontakt' },
         ])}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "@id": "https://orostone.sk/kontakt#business",
+          "name": "OROSTONE s.r.o.",
+          "description": "Prémiový sinterovaný kameň pre kuchynské dosky, obklady a architektonické projekty.",
+          "url": "https://orostone.sk",
+          "telephone": "+421917588738",
+          "email": "info@orostone.sk",
+          "image": "https://orostone.sk/images/og-orostone.png",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Landererova 8",
+            "addressLocality": "Bratislava",
+            "addressRegion": "Bratislavský kraj",
+            "postalCode": "811 09",
+            "addressCountry": "SK"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 48.1486,
+            "longitude": 17.1077
+          },
+          "priceRange": "€€€",
+          "currenciesAccepted": "EUR",
+          "paymentAccepted": "Bankový prevod, Platba kartou, Apple Pay, Google Pay"
+        }) }}
       />
       <section className="py-16 lg:py-24 bg-white">
         <div className="container mx-auto px-6">

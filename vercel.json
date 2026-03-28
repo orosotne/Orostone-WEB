@@ -18,7 +18,10 @@
     { "source": "/online-kalkulacka", "destination": "https://marketing.orostone.sk/online-kalkulacka", "permanent": true },
     { "source": "/vizualizator", "destination": "https://marketing.orostone.sk/vizualizator", "permanent": true },
     { "source": "/key-facts", "destination": "https://marketing.orostone.sk/key-facts", "permanent": true },
-    { "source": "/o-kameni", "destination": "https://marketing.orostone.sk/o-kameni", "permanent": true }
+    { "source": "/o-kameni", "destination": "https://marketing.orostone.sk/o-kameni", "permanent": true },
+    { "source": "/kuchyne", "destination": "/kategoria/sintered-stone", "permanent": true },
+    { "source": "/vyhody", "destination": "/sinterovany-kamen", "permanent": true },
+    { "source": "/onas", "destination": "/kontakt", "permanent": true }
   ],
   "rewrites": [
     { "source": "/sitemap.xml", "destination": "/sitemap-eshop.xml" },

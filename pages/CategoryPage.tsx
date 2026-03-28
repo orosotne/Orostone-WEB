@@ -90,14 +90,14 @@ export const CategoryPage: React.FC = () => {
       <SEOHead
         title={`${category.name} | OROSTONE E-Shop`}
         description={category.description || `${category.name} — prémiové produkty od OROSTONE.`}
-        canonical={`https://eshop.orostone.sk/kategoria/${slug}${subCategory ? '/' + subCategory : ''}`}
+        canonical={`https://orostone.sk/kategoria/${slug}${subCategory ? '/' + subCategory : ''}`}
         structuredData={{
           '@context': 'https://schema.org',
           '@type': 'BreadcrumbList',
           itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'E-Shop', item: 'https://eshop.orostone.sk/' },
-            { '@type': 'ListItem', position: 2, name: category.name, item: `https://eshop.orostone.sk/kategoria/${slug}` },
-            ...(subCategoryName ? [{ '@type': 'ListItem', position: 3, name: subCategoryName, item: `https://eshop.orostone.sk/kategoria/${slug}/${subCategory}` }] : []),
+            { '@type': 'ListItem', position: 1, name: 'E-Shop', item: 'https://orostone.sk/' },
+            { '@type': 'ListItem', position: 2, name: category.name, item: `https://orostone.sk/kategoria/${slug}` },
+            ...(subCategoryName ? [{ '@type': 'ListItem', position: 3, name: subCategoryName, item: `https://orostone.sk/kategoria/${slug}/${subCategory}` }] : []),
           ],
         }}
       />

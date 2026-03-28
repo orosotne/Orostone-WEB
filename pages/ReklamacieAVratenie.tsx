@@ -9,7 +9,7 @@ export const ReklamacieAVratenie: React.FC = () => {
       <SEOHead
         title="Reklamácie a vrátenie tovaru | OROSTONE E-Shop"
         description="Reklamačný poriadok, podmienky vrátenia tovaru a postup pri reklamácii. Zákonná zodpovednosť za vady 24 mesiacov. Vzorový formulár na odstúpenie od zmluvy."
-        canonical="https://eshop.orostone.sk/reklamacie"
+        canonical="https://orostone.sk/reklamacie"
       />
 
       {/* Header */}

@@ -60,7 +60,7 @@ export const OdstupeniOdZmluvy: React.FC = () => {
       <SEOHead
         title="Formulár na odstúpenie od zmluvy | OROSTONE"
         description="Vzorový formulár na odstúpenie od kúpnej zmluvy uzavretej na diaľku podľa zákona č. 108/2024 Z.z. o ochrane spotrebiteľa. OROSTONE e-shop."
-        canonical="https://eshop.orostone.sk/odstupenie-od-zmluvy"
+        canonical="https://orostone.sk/odstupenie-od-zmluvy"
         noindex={false}
       />
       <div className="container mx-auto px-6 max-w-3xl">
