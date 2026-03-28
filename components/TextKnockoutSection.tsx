@@ -68,7 +68,7 @@ export function TextKnockoutSection() {
 
     // ── Mobile: lighter animation — reduced scale, shorter pin, less CPU ────
     mm.add('(max-width: 1023px)', () => {
-      gsap.set(svgRef.current!, { scale: 120, willChange: 'transform' });
+      gsap.set(svgRef.current!, { scale: 200, willChange: 'transform' });
       gsap.set(goldSvgRef.current!, { opacity: 0 });
 
       gsap.timeline({
