@@ -59,14 +59,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
 
     // Standard meta
     setMeta('description', description);
-    if (noindex) {
-      setMeta('robots', 'noindex, nofollow');
-    } else {
-      const robotsMeta = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
-      if (robotsMeta && robotsMeta.content === 'noindex, nofollow') {
-        robotsMeta.content = 'index, follow';
-      }
-    }
+    setMeta('robots', noindex ? 'noindex, nofollow' : 'index, follow');
 
     const absoluteOg = toAbsoluteOgImage(ogImage);
     const isDefaultOg =

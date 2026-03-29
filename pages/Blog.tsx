@@ -8,7 +8,7 @@ import {
   BlogCategory,
   BLOG_CATEGORY_LABELS,
 } from '../data/blogTypes';
-import { BLOG_ARTICLES_LISTING_LISTING } from '../data/blogArticlesMeta';
+import { BLOG_ARTICLES_LISTING } from '../data/blogArticlesMeta';
 import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
 
 gsap.registerPlugin(ScrollTrigger);

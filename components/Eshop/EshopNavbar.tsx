@@ -118,16 +118,16 @@ export const EshopNavbar: React.FC = () => {
                 {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
               </button>
 
-              {/* O kameni — link na hlavny web */}
-              <a
-                href="https://marketing.orostone.sk/sinterovany-kamen"
+              {/* O kameni — interná stránka */}
+              <Link
+                to="/sinterovany-kamen"
                 className={cn(
                   "hidden lg:block text-[11px] tracking-[0.15em] uppercase font-normal transition-colors",
                   isTransparent ? "text-white/70 hover:text-white" : "text-gray-500 hover:text-black"
                 )}
               >
                 O kameni
-              </a>
+              </Link>
             </div>
 
             {/* Center: Logo */}
@@ -344,8 +344,8 @@ export const EshopNavbar: React.FC = () => {
                   )}
                 >
                   {category.name}
-                  <ChevronDown 
-                    size={12} 
+                  <ChevronDown
+                    size={12}
                     strokeWidth={1.5}
                     className={cn(
                       "transition-transform duration-200",
@@ -356,6 +356,46 @@ export const EshopNavbar: React.FC = () => {
               </li>
             ))}
 
+            {/* Priame navigačné linky */}
+            <li onMouseEnter={() => setActiveCategory(null)}>
+              <NavLink
+                to="/sinterovany-kamen"
+                className={({ isActive }) => cn(
+                  "flex items-center px-6 py-4 text-[11px] font-normal tracking-[0.2em] uppercase transition-all duration-200",
+                  isTransparent
+                    ? isActive ? "text-white" : "text-white/60 hover:text-white"
+                    : isActive ? "text-black" : "text-gray-600 hover:text-black"
+                )}
+              >
+                O kameni
+              </NavLink>
+            </li>
+            <li onMouseEnter={() => setActiveCategory(null)}>
+              <NavLink
+                to="/blog"
+                className={({ isActive }) => cn(
+                  "flex items-center px-6 py-4 text-[11px] font-normal tracking-[0.2em] uppercase transition-all duration-200",
+                  isTransparent
+                    ? isActive ? "text-white" : "text-white/60 hover:text-white"
+                    : isActive ? "text-black" : "text-gray-600 hover:text-black"
+                )}
+              >
+                Blog
+              </NavLink>
+            </li>
+            <li onMouseEnter={() => setActiveCategory(null)}>
+              <NavLink
+                to="/kontakt"
+                className={({ isActive }) => cn(
+                  "flex items-center px-6 py-4 text-[11px] font-normal tracking-[0.2em] uppercase transition-all duration-200",
+                  isTransparent
+                    ? isActive ? "text-white" : "text-white/60 hover:text-white"
+                    : isActive ? "text-black" : "text-gray-600 hover:text-black"
+                )}
+              >
+                Kontakt
+              </NavLink>
+            </li>
           </ul>
         </div>
 
@@ -430,13 +470,13 @@ export const EshopNavbar: React.FC = () => {
 
                 <div className="h-px bg-gray-100 my-2" />
 
-                <a
-                  href="https://marketing.orostone.sk/sinterovany-kamen"
+                <Link
+                  to="/sinterovany-kamen"
                   onClick={() => setMobileMenuOpen(false)}
                   className="block px-6 py-4 text-[13px] tracking-[0.1em] uppercase text-black hover:bg-gray-50"
                 >
                   O kameni
-                </a>
+                </Link>
                 <Link
                   to="/blog"
                   onClick={() => setMobileMenuOpen(false)}
@@ -444,13 +484,6 @@ export const EshopNavbar: React.FC = () => {
                 >
                   Blog
                 </Link>
-                <a
-                  href="https://marketing.orostone.sk"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block px-6 py-4 text-[13px] tracking-[0.1em] uppercase text-black hover:bg-gray-50"
-                >
-                  O značke
-                </a>
                 <Link
                   to="/kontakt"
                   onClick={() => setMobileMenuOpen(false)}
@@ -560,13 +593,6 @@ export const EshopNavbar: React.FC = () => {
                 >
                   Blog
                 </Link>
-                <a
-                  href="https://marketing.orostone.sk"
-                  onClick={() => setOffCanvasOpen(false)}
-                  className="flex items-center px-8 py-5 text-[14px] tracking-[0.15em] uppercase font-bold text-black hover:bg-gray-50 transition-colors border-b border-gray-100"
-                >
-                  O značke
-                </a>
                 <Link
                   to="/kontakt"
                   onClick={() => setOffCanvasOpen(false)}
