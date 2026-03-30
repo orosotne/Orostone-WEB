@@ -22,6 +22,8 @@ interface SEOHeadProps {
   noindex?: boolean;
   /** JSON-LD structured data */
   structuredData?: Record<string, unknown>;
+  /** max-video-preview robots directive. Set to 0 to prevent Google from indexing background/decorative videos. */
+  maxVideoPreview?: number;
 }
 
 /**
@@ -36,6 +38,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   ogType = 'website',
   noindex = false,
   structuredData,
+  maxVideoPreview,
 }) => {
   useEffect(() => {
     // Title
@@ -59,7 +62,11 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
 
     // Standard meta
     setMeta('description', description);
-    setMeta('robots', noindex ? 'noindex, nofollow' : 'index, follow');
+    const robotsValue = [
+      noindex ? 'noindex, nofollow' : 'index, follow',
+      ...(maxVideoPreview !== undefined ? [`max-video-preview:${maxVideoPreview}`] : []),
+    ].join(', ');
+    setMeta('robots', robotsValue);
 
     const absoluteOg = toAbsoluteOgImage(ogImage);
     const isDefaultOg =
@@ -118,7 +125,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       const scriptEl = document.querySelector('script[data-seo-ld]');
       if (scriptEl) scriptEl.remove();
     };
-  }, [title, description, canonical, ogImage, ogType, noindex, structuredData]);
+  }, [title, description, canonical, ogImage, ogType, noindex, structuredData, maxVideoPreview]);
 
   return null;
 };

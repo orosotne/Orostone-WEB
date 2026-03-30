@@ -345,6 +345,7 @@ export const SinterovanyKamen = () => {
         description="Sinterovaný kameň je prémiový povrch z prírodných minerálov. Odolný teplu, škvrnám aj UV. Zistite, prečo je ideálny na kuchynské dosky a interiéry."
         canonical="https://orostone.sk/sinterovany-kamen"
         structuredData={faqStructuredData}
+        maxVideoPreview={0}
       />
 
       {/* ========================================================
@@ -355,16 +356,11 @@ export const SinterovanyKamen = () => {
         className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden pt-20"
       >
         <div className="absolute inset-0 z-0 sk-hero-image">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
+          <img
+            src="/images/home/hero-1.webp"
+            alt=""
             className="w-full h-full object-cover brightness-[0.35]"
-            poster="/images/home/hero-1.webp"
-          >
-            <source src="/videos/hero-stone-shatter.mp4" type="video/mp4" />
-          </video>
+          />
         </div>
         <div className="relative z-10 container mx-auto px-6 text-center text-white">
           <span className="sk-hero-text font-sans text-xs font-bold tracking-widest uppercase text-brand-gold mb-6 block">

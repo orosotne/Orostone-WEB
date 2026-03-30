@@ -108,6 +108,7 @@ const HERO_SLIDES = [
     title: 'Krása kameňa.',
     titleAccent: 'Bez kompromisov.',
     subtitle: 'Prémiové sinterované platne pre náročné interiéry',
+    priceFrom: 'od 302 €/m²',
     cta: 'Objavte dekory',
     ctaTo: '/kategoria/sintered-stone',
   },
@@ -226,9 +227,14 @@ export const Shop = () => {
       { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 0.7 }
     );
 
+    gsap.fromTo('.hero-price',
+      { y: 16, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.65, ease: 'power3.out', delay: 0.8 }
+    );
+
     gsap.fromTo('.hero-cta',
       { y: 15, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out', delay: 0.9 }
+      { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out', delay: 0.92 }
     );
 
     gsap.fromTo('.hero-nav-arrows',
@@ -529,6 +535,7 @@ export const Shop = () => {
         canonical="https://orostone.sk/"
         ogType="website"
         structuredData={OROSTONE_ORGANIZATION_LD}
+        maxVideoPreview={0}
       />
 
       {/* ItemList JSON-LD for product listing rich results */}
@@ -669,11 +676,27 @@ export const Shop = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.4, delay: 0.15 }}
-              className="hero-subtitle font-sans font-light text-sm md:text-base text-white/50 max-w-md mx-auto mb-8 md:mb-10"
+              className="hero-subtitle font-sans font-light text-sm md:text-base text-white/50 max-w-md mx-auto mb-4 md:mb-5"
             >
               {HERO_SLIDES[activeSlide].subtitle}
             </motion.p>
           </AnimatePresence>
+
+          {/* Price from */}
+          {HERO_SLIDES[activeSlide].priceFrom != null && HERO_SLIDES[activeSlide].priceFrom !== '' && (
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={`price-${activeSlide}`}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.35, delay: 0.18 }}
+                className="hero-price font-sans text-sm md:text-base font-bold tracking-wide text-brand-gold mb-8 md:mb-10"
+              >
+                {HERO_SLIDES[activeSlide].priceFrom}
+              </motion.p>
+            </AnimatePresence>
+          )}
 
           {/* CTA Button */}
           <AnimatePresence mode="wait">
@@ -1274,10 +1297,10 @@ export const Shop = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
-                to="/kontakt"
+                to="/vzorky"
                 className="inline-flex items-center justify-center gap-2 bg-brand-dark text-white px-8 py-4 rounded-full text-sm font-bold uppercase tracking-wider hover:bg-brand-gold hover:text-brand-dark transition-all duration-300"
               >
-                Kontaktovať predajcu
+                Objednať vzorky
                 <ArrowRight size={16} />
               </Link>
             </div>
