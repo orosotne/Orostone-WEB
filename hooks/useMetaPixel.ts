@@ -12,6 +12,12 @@ declare global {
 const PIXEL_ID = import.meta.env.VITE_META_PIXEL_ID as string | undefined;
 const FBQ_SRC = 'https://connect.facebook.net/en_US/fbevents.js';
 
+function getInternalMember(): string | null {
+  const match = document.cookie.match(/orostone_internal=([^;]+)/);
+  return match ? match[1] : null;
+}
+const internalMember = getInternalMember();
+
 /**
  * Loads Meta Pixel only when:
  * - VITE_META_PIXEL_ID is set
@@ -39,8 +45,12 @@ export function useMetaPixel(): void {
       window._fbq = stub as typeof window.fbq;
     }
 
-    window.fbq!('init', PIXEL_ID);
-    window.fbq!('track', 'PageView');
+    if (internalMember) {
+      window.fbq!('init', PIXEL_ID, { external_id: `internal_${internalMember}` });
+    } else {
+      window.fbq!('init', PIXEL_ID);
+    }
+    window.fbq!('track', 'PageView', internalMember ? { internal_traffic: internalMember } : undefined);
 
     const script = document.createElement('script');
     script.async = true;
@@ -56,7 +66,7 @@ export function useMetaPixel(): void {
       return;
     }
     if (!preferences.marketing || typeof window.fbq !== 'function') return;
-    window.fbq('track', 'PageView');
+    window.fbq('track', 'PageView', internalMember ? { internal_traffic: internalMember } : undefined);
   }, [location.pathname, preferences.marketing]);
 }
 
