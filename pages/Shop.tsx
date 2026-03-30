@@ -184,6 +184,17 @@ export const Shop = () => {
     };
   }, []);
 
+  // Scroll to hash target (e.g. /#vzorka from StickySampleCTA)
+  useEffect(() => {
+    const hash = window.location.hash.replace('#', '');
+    if (!hash) return;
+    const timer = setTimeout(() => {
+      const el = document.getElementById(hash);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+    return () => clearTimeout(timer);
+  }, []);
+
   // Refresh ScrollTrigger when product data arrives (changes page height)
   useEffect(() => {
     if (!productsLoading) {

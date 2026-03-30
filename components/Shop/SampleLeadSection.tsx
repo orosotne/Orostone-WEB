@@ -3,6 +3,7 @@ import { CheckCircle, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useShopifyProducts } from '../../hooks/useShopifyProducts';
 import { submitSampleLead } from '../../services/quotes.service';
+import { trackMetaEvent } from '../../hooks/useMetaPixel';
 import { subscribeToNewsletter } from '../../services/newsletter.service';
 import { RotatingBadge } from '../UI/RotatingBadge';
 import { useHoneypot } from '../../hooks/useHoneypot';
@@ -61,6 +62,10 @@ export const SampleLeadSection: React.FC = () => {
     });
 
     if (result.success) {
+      trackMetaEvent('Lead', {
+        content_name: dekor,
+        content_category: 'Sample Request',
+      });
       if (newsletterConsent) {
         await subscribeToNewsletter({ email, name, source: 'sample_lead' });
       }
@@ -76,7 +81,7 @@ export const SampleLeadSection: React.FC = () => {
   };
 
   return (
-    <section className="relative overflow-x-hidden bg-[#ECD488]">
+    <section id="vzorka" className="relative overflow-x-hidden bg-[#ECD488]">
 
       {/* Top wave — animated by horizontal translate */}
       <div className="absolute top-0 left-0 w-full leading-none pointer-events-none" style={{ height: '80px', overflow: 'clip' }}>

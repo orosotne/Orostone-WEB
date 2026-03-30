@@ -8,6 +8,7 @@ import { CartDrawer } from '../Cart/CartDrawer';
 import { NoiseOverlay } from '../UI/NoiseOverlay';
 import { CookieBanner } from '../UI/CookieBanner';
 import { CookieSettings } from '../UI/CookieSettings';
+import { StickySampleCTA } from '../UI/StickySampleCTA';
 import { SHOW_ANNOUNCEMENT_BAR } from '../../constants';
 
 // ===========================================
@@ -48,6 +49,9 @@ export const EshopLayout: React.FC<EshopLayoutProps> = ({ children }) => {
       {/* Footer */}
       <Footer categories={getVisibleCategories()} />
       
+      {/* Sticky Sample CTA */}
+      <StickySampleCTA />
+
       {/* Cookie Banner & Settings */}
       <CookieBanner />
       <CookieSettings />

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Search, User, ShoppingBag, Menu, X, ChevronDown, Heart, ArrowLeft, Diamond
+import {
+  Search, User, ShoppingBag, Menu, X, ChevronDown, Heart, ArrowLeft, Diamond, Phone
 } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 
@@ -128,6 +128,18 @@ export const EshopNavbar: React.FC = () => {
               >
                 O kameni
               </Link>
+
+              {/* Phone — desktop */}
+              <a
+                href="tel:+421917588738"
+                className={cn(
+                  "hidden lg:flex items-center gap-1.5 ml-5 text-[11px] tracking-[0.08em] font-normal transition-colors",
+                  isTransparent ? "text-white/70 hover:text-white" : "text-gray-500 hover:text-black"
+                )}
+              >
+                <Phone size={13} strokeWidth={1.5} />
+                +421 917 588 738
+              </a>
             </div>
 
             {/* Center: Logo */}
@@ -524,11 +536,16 @@ export const EshopNavbar: React.FC = () => {
               </div>
               </div>
 
-              {/* Footer — was position:absolute and overlapped scrollable links */}
-              <div className="flex-shrink-0 border-t border-gray-100 bg-white px-6 py-6">
-                <p className="text-center text-[10px] uppercase tracking-[0.15em] text-gray-400">
-                  OROSTONE E-SHOP
-                </p>
+              {/* Phone — mobile menu */}
+              <div className="flex-shrink-0 border-t border-gray-100 bg-white px-6 py-4">
+                <a
+                  href="tel:+421917588738"
+                  className="flex items-center justify-center gap-2 text-[13px] tracking-[0.1em] text-brand-dark font-medium"
+                >
+                  <Phone size={16} strokeWidth={1.5} className="text-brand-gold" />
+                  +421 917 588 738
+                </a>
+                <p className="text-center text-[10px] text-gray-400 mt-1">Po–Pia 8:00 – 17:00</p>
               </div>
             </motion.div>
           </>
