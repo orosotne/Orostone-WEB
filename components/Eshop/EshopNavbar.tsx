@@ -129,17 +129,6 @@ export const EshopNavbar: React.FC = () => {
                 O kameni
               </Link>
 
-              {/* Phone — desktop */}
-              <a
-                href="tel:+421917588738"
-                className={cn(
-                  "hidden lg:flex items-center gap-1.5 ml-5 text-[11px] tracking-[0.08em] font-normal transition-colors",
-                  isTransparent ? "text-white/70 hover:text-white" : "text-gray-500 hover:text-black"
-                )}
-              >
-                <Phone size={13} strokeWidth={1.5} />
-                +421 917 588 738
-              </a>
             </div>
 
             {/* Center: Logo */}
@@ -156,6 +145,18 @@ export const EshopNavbar: React.FC = () => {
 
             {/* Right: Actions */}
             <div className="flex items-center gap-1 min-w-[100px] lg:min-w-[180px] justify-end">
+              {/* Phone — header (mobile + desktop) */}
+              <a
+                href="tel:+421917588738"
+                className={cn(
+                  "flex items-center gap-1 p-2 text-[10px] tracking-[0.05em] transition-colors",
+                  isTransparent ? "text-white/60 hover:text-white" : "text-gray-400 hover:text-black"
+                )}
+              >
+                <Phone size={14} strokeWidth={1.5} />
+                <span className="hidden sm:inline">+421 917 588 738</span>
+              </a>
+
               {/* Search */}
               <button
                 onClick={() => { if (!searchOpen) setSearchEverOpened(true); setSearchOpen(!searchOpen); }}
