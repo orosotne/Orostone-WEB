@@ -4,6 +4,24 @@ import { useCookies } from '../context/CookieContext';
 const GA_ID = (window as any)._GA_ESHOP_ID as string | undefined;
 
 /**
+ * Set a persistent cookie to mark this browser as internal traffic.
+ * Visit any page with ?internal=true to activate.
+ * Visit with ?internal=false to deactivate.
+ * Cookie lasts 1 year.
+ */
+function checkInternalFlag() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('internal') === 'true') {
+    document.cookie = 'orostone_internal=1;path=/;max-age=31536000;SameSite=Lax';
+  } else if (params.get('internal') === 'false') {
+    document.cookie = 'orostone_internal=;path=/;max-age=0';
+  }
+  return document.cookie.includes('orostone_internal=1');
+}
+
+const isInternalTraffic = checkInternalFlag();
+
+/**
  * GDPR/ePrivacy compliant GA4 loader.
  *
  * gtag.js is NOT loaded from HTML — it is dynamically injected here ONLY after
@@ -41,7 +59,10 @@ export const useAnalytics = () => {
       script.async = true;
       script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
       script.onload = () => {
-        window.gtag('config', GA_ID, { send_page_view: true });
+        window.gtag('config', GA_ID, {
+          send_page_view: true,
+          ...(isInternalTraffic && { traffic_type: 'internal' }),
+        });
       };
       document.head.appendChild(script);
       return;
@@ -52,7 +73,10 @@ export const useAnalytics = () => {
 
     if (preferences.analytics) {
       window.gtag('consent', 'update', { analytics_storage: 'granted' });
-      if (GA_ID) window.gtag('config', GA_ID, { send_page_view: true });
+      if (GA_ID) window.gtag('config', GA_ID, {
+        send_page_view: true,
+        ...(isInternalTraffic && { traffic_type: 'internal' }),
+      });
     } else {
       window.gtag('consent', 'update', { analytics_storage: 'denied' });
     }
