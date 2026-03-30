@@ -61,7 +61,7 @@ export const ARTICLE_01: BlogArticle = {
   <li><strong>Half-bullnose (polguľatina)</strong> — najodolnejší, ideálny pre kuchynské dosky s vysokým zaťažením</li>
   <li><strong>Skosená hrana (bevel)</strong> — elegantný kompromis medzi estetikou a odolnosťou</li>
   <li><strong>Ceruzková hrana (pencil)</strong> — jemné zaoblenie, minimálna ochrana, ale výrazne lepšia ako ostrá hrana</li>
-  <li><strong>Ostrá 90° hrana</strong> — <em>neodporúčame</em> pre kuchynské pracovné dosky, prijateľné len pre obklady</li>
+  <li><strong>Ostrá 90° hrana</strong> — najobľúbenejšia voľba pre moderný dizajn, pri kuchynských doskách odporúčame jemný 2 mm chamfer pre dlhšiu životnosť</li>
 </ul>
 
 <div class="article-tip">
@@ -96,7 +96,8 @@ export const ARTICLE_01: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>Pozor na toto</strong></p>
-  <p>Nikdy nerobíme <em>plunge cut</em> (ponorný rez) do sinterovaného kameňa. Pred výrezom vždy najprv vyvŕtame pilotné otvory v rohoch diamantovým vrtákom. Ponorný rez generuje príliš veľké napätie a takmer vždy vedie k praskleniu.</p>
+  <p>Nikdy nerobíme <em>plunge cut</em> (ponorný rez*) do sinterovaného kameňa. Pred výrezom vždy najprv vyvŕtame pilotné otvory v rohoch diamantovým vrtákom. Ponorný rez generuje príliš veľké napätie a takmer vždy vedie k praskleniu.</p>
+  <p class="text-sm text-gray-400 mt-3 italic">* Ponorný rez (plunge cut) — technika, pri ktorej sa rezný kotúč zasekne priamo do stredu materiálu bez predvŕtaného otvoru. Na rozdiel od klasického rezu, kde kotúč vstupuje z okraja, tu celé napätie smeruje do jedného bodu.</p>
 </div>
 
 <h2 id="zlyhania-tenkych-dosiek">Kedy je tenká doska chybou?</h2>
@@ -204,7 +205,7 @@ export const ARTICLE_01: BlogArticle = {
 <div class="article-case-study">
   <span class="case-study-label">Z praxe</span>
   <h3>Klientka z Bratislavy a jej kuchynský ostrov</h3>
-  <p>Predstav si situáciu: klientka z Bratislavy si nechala spraviť kuchynský ostrov zo sinterovaného kameňa u iného dodávateľa. Vybrala si krásny mramorový dezén, 12 mm hrúbku a ostrú 90° hranu — pretože <em>"vyzerá modernejšie."</em></p>
+  <p>Predstav si situáciu: klientka z Bratislavy si nechala spraviť kuchynský ostrov zo sinterovaného kameňa u iného dodávateľa. Vybrala si krásny mramorový dizajn, 12 mm hrúbku a ostrú 90° hranu — pretože <em>"vyzerá modernejšie."</em></p>
   <p>Po troch mesiacoch spadol na hranu ťažký liatinový hrniec. Výsledok? <strong class="gold">Chip dlhý 15 mm</strong> na najviditeľnejšom mieste ostrova.</p>
   <p>Oprava stála <strong>280 €</strong> a aj po nej zostala viditeľná stopa. Keby mala od začiatku aspoň 2 mm chamfer, hrniec by sa odrazil bez stopy.</p>
 </div>
@@ -275,7 +276,7 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Aký profil hrany je najlepší pre kuchynskú dosku?',
-        answer: 'Pre kuchynské dosky odporúčame half-bullnose alebo skosenú hranu (bevel). Výrazne znižujú riziko chipovania pri náhodnom náraze. Ostrá 90° hrana vyzerá moderne, ale pri sinterovanom kameni nie je vhodná pre povrchy s vysokým zaťažením.',
+        answer: 'Ostrá 90° hrana je jednoznačne najkrajšia a takmer všetci zákazníci si ju vyberajú. Pre maximálnu životnosť odporúčame jemný 2 mm chamfer, ktorý vizuálne zachová ostrý vzhľad a zároveň chráni hranu. Pre náročnejšie prostredie sú vhodné aj half-bullnose alebo skosená hrana.',
       },
       {
         question: 'Môžem použiť 12 mm dosku na kuchynský ostrov?',
