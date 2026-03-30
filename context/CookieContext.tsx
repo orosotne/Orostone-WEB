@@ -22,8 +22,8 @@ const STORAGE_KEY = 'orostone-cookies';
 
 const defaultPreferences: CookiePreferences = {
   necessary: true,
-  analytics: false,
-  marketing: false,
+  analytics: true,
+  marketing: true,
 };
 
 const CookieContext = createContext<CookieContextType | undefined>(undefined);

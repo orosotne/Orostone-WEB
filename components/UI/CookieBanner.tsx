@@ -16,7 +16,7 @@ export const CookieBanner: React.FC = () => {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 60, opacity: 0 }}
         transition={{ type: 'spring', damping: 30, stiffness: 180, delay: 1.5 }}
-        className="fixed bottom-0 left-0 right-0 z-[9999] p-4 md:p-6 print:hidden"
+        className="fixed bottom-0 left-0 right-0 z-[10002] p-4 md:p-6 print:hidden"
       >
         <div className="container mx-auto max-w-5xl">
           <div className="bg-[#1a1a1a]/95 backdrop-blur-xl border border-gray-800/60 shadow-2xl shadow-black/40 rounded-2xl p-6 md:p-8">
