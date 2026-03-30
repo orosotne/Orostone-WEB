@@ -4,22 +4,38 @@ import { useCookies } from '../context/CookieContext';
 const GA_ID = (window as any)._GA_ESHOP_ID as string | undefined;
 
 /**
- * Set a persistent cookie to mark this browser as internal traffic.
- * Visit any page with ?internal=true to activate.
- * Visit with ?internal=false to deactivate.
- * Cookie lasts 1 year.
+ * Mark this browser as internal traffic with a team member identifier.
+ *
+ * Usage:
+ *   ?internal=martin    — sets cookie, marks as "internal" + team_member "martin"
+ *   ?internal=peter     — sets cookie, marks as "internal" + team_member "peter"
+ *   ?internal=agency    — sets cookie, marks as "internal" + team_member "agency"
+ *   ?internal=false     — removes the cookie
+ *
+ * Cookie lasts 1 year. Works across all networks (WiFi, 5G, etc.).
  */
-function checkInternalFlag() {
+function checkInternalFlag(): { isInternal: boolean; teamMember: string | null } {
   const params = new URLSearchParams(window.location.search);
-  if (params.get('internal') === 'true') {
-    document.cookie = 'orostone_internal=1;path=/;max-age=31536000;SameSite=Lax';
-  } else if (params.get('internal') === 'false') {
-    document.cookie = 'orostone_internal=;path=/;max-age=0';
+  const param = params.get('internal');
+
+  if (param && param !== 'false') {
+    const member = param === 'true' ? 'unknown' : param;
+    document.cookie = `orostone_internal=${member};path=/;max-age=31536000;SameSite=Lax`;
+    return { isInternal: true, teamMember: member };
   }
-  return document.cookie.includes('orostone_internal=1');
+  if (param === 'false') {
+    document.cookie = 'orostone_internal=;path=/;max-age=0';
+    return { isInternal: false, teamMember: null };
+  }
+
+  const match = document.cookie.match(/orostone_internal=([^;]+)/);
+  if (match) {
+    return { isInternal: true, teamMember: match[1] };
+  }
+  return { isInternal: false, teamMember: null };
 }
 
-const isInternalTraffic = checkInternalFlag();
+const { isInternal: isInternalTraffic, teamMember } = checkInternalFlag();
 
 /**
  * GA4 loader — opt-out model (same as Meta Pixel).
@@ -55,7 +71,7 @@ export const useAnalytics = () => {
       script.onload = () => {
         window.gtag('config', GA_ID, {
           send_page_view: true,
-          ...(isInternalTraffic && { traffic_type: 'internal' }),
+          ...(isInternalTraffic && { traffic_type: 'internal', team_member: teamMember }),
         });
       };
       document.head.appendChild(script);
@@ -69,7 +85,7 @@ export const useAnalytics = () => {
       window.gtag('consent', 'update', { analytics_storage: 'granted' });
       if (GA_ID) window.gtag('config', GA_ID, {
         send_page_view: true,
-        ...(isInternalTraffic && { traffic_type: 'internal' }),
+        ...(isInternalTraffic && { traffic_type: 'internal', team_member: teamMember }),
       });
     } else {
       window.gtag('consent', 'update', { analytics_storage: 'denied' });
