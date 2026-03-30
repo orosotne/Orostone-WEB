@@ -22,26 +22,20 @@ function checkInternalFlag() {
 const isInternalTraffic = checkInternalFlag();
 
 /**
- * GDPR/ePrivacy compliant GA4 loader.
+ * GA4 loader — opt-out model (same as Meta Pixel).
  *
- * gtag.js is NOT loaded from HTML — it is dynamically injected here ONLY after
- * the user grants analytics consent. Before consent no network request is made
- * to Google servers (no IP/URL transfer to a US third party without consent).
- *
- * Pattern mirrors useMetaPixel.ts.
+ * Loads immediately by default. Stops tracking only if the user
+ * explicitly disables analytics in cookie settings.
  */
 export const useAnalytics = () => {
-  const { preferences, hasConsented } = useCookies();
+  const { preferences } = useCookies();
   const scriptInjected = useRef(false);
 
   useEffect(() => {
-    if (!hasConsented) return;
-
     if (preferences.analytics && GA_ID && !scriptInjected.current) {
-      // Inject gtag.js script dynamically — first analytics consent
+      // Inject gtag.js script dynamically
       scriptInjected.current = true;
 
-      // Initialise dataLayer + consent defaults BEFORE the script loads
       window.dataLayer = (window as any).dataLayer || [];
       if (typeof window.gtag !== 'function') {
         (window as any).gtag = function () {
@@ -68,7 +62,7 @@ export const useAnalytics = () => {
       return;
     }
 
-    // Script already injected — just update consent
+    // Script already injected — update consent based on user choice
     if (!scriptInjected.current || typeof window.gtag !== 'function') return;
 
     if (preferences.analytics) {
@@ -86,5 +80,5 @@ export const useAnalytics = () => {
       ad_user_data: preferences.marketing ? 'granted' : 'denied',
       ad_personalization: preferences.marketing ? 'granted' : 'denied',
     });
-  }, [preferences.analytics, preferences.marketing, hasConsented]);
+  }, [preferences.analytics, preferences.marketing]);
 };
