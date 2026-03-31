@@ -294,7 +294,7 @@ function prerenderProduct(product: any): void {
         <h2>Technické parametre</h2>
         ${specsHtml}
         ${appsHtml}
-        <p><a href="/kontakt">Objednať bezplatnú konzultáciu</a></p>
+        <p><a href="/vzorky">Objednať vzorky</a></p>
       </article>`,
     jsonLd: [
       {
@@ -402,6 +402,35 @@ function prerenderCategoryListing(): void {
 }
 
 // ---------------------------------------------------------------------------
+// Vzorky (samples) — same URL as SPA route /vzorky
+// ---------------------------------------------------------------------------
+
+function prerenderVzorky(): void {
+  writePage({
+    route: '/vzorky',
+    title: 'Vzorky materiálu | OROSTONE — Prémiový sinterovaný kameň',
+    description:
+      'Objednajte si vzorky sinterovaného kameňa OROSTONE. Vyberte dekor, nechajte kontakt a doručíme vám materiál na rozhodnutie.',
+    canonical: `${BASE_URL}/vzorky`,
+    rootContent: `
+      <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Vzorky</nav>
+      <h1>Vzorky materiálu</h1>
+      <p>Objednajte si vzorky sinterovaného kameňa — vyberte dekor a vyplňte formulár. Po načítaní stránky v prehliadači sa zobrazí celý obsah a objednávkový formulár.</p>
+      <p><a href="/kategoria/sintered-stone">Prehliadať všetky dekory</a> &middot; <a href="/kontakt">Kontakt</a></p>`,
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'OROSTONE', item: `${BASE_URL}/` },
+          { '@type': 'ListItem', position: 2, name: 'Vzorky', item: `${BASE_URL}/vzorky` },
+        ],
+      },
+    ],
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
@@ -431,5 +460,10 @@ for (const product of products) {
 console.log('\nCategory pages:');
 prerenderCategoryListing();
 console.log('  ✓ /kategoria/sintered-stone');
+
+// Vzorky
+console.log('\nVzorky:');
+prerenderVzorky();
+console.log('  ✓ /vzorky');
 
 console.log(`\n✅ Prerendered ${count} pages.\n`);

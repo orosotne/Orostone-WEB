@@ -29,6 +29,7 @@ const DopravaAPlatba = lazyWithRetry(() => import('./pages/DopravaAPlatba').then
 const ReklamacieAVratenie = lazyWithRetry(() => import('./pages/ReklamacieAVratenie').then(m => ({ default: m.ReklamacieAVratenie })));
 const SinterovanyKamen = lazyWithRetry(() => import('./pages/SinterovanyKamen').then(m => ({ default: m.SinterovanyKamen })));
 const OdstupeniOdZmluvy = lazyWithRetry(() => import('./pages/OdstupeniOdZmluvy').then(m => ({ default: m.OdstupeniOdZmluvy })));
+const Vzorky = lazyWithRetry(() => import('./pages/Vzorky').then(m => ({ default: m.Vzorky })));
 
 // Stagger prefetch of lazy chunks — high-intent routes first, lower-priority later
 if (typeof window !== 'undefined') {
@@ -209,6 +210,11 @@ const EshopAppContent = () => {
           <Route path="/kontakt" element={
             <Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}>
               <EshopContact />
+            </Suspense>
+          } />
+          <Route path="/vzorky" element={
+            <Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}>
+              <Vzorky />
             </Suspense>
           } />
           <Route path="/objednavky" element={<ExternalRedirect to="https://shopify.com/101386420570/account" />} />
