@@ -111,6 +111,23 @@ export const Vzorky: React.FC = () => {
     return () => clearTimeout(t);
   }, [scrollToIndex]);
 
+  /* Preload first 3 visible images */
+  useEffect(() => {
+    const preloadUrls = SAMPLE_TILES.slice(0, 3).map((t) => t.image);
+    const links: HTMLLinkElement[] = [];
+    preloadUrls.forEach((url, i) => {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'image';
+      link.type = 'image/webp';
+      link.href = url;
+      if (i === 0) (link as any).fetchPriority = 'high';
+      document.head.appendChild(link);
+      links.push(link);
+    });
+    return () => links.forEach((l) => l.remove());
+  }, []);
+
   const goLeft = () => {
     const next = Math.max(0, activeIndex - 1);
     scrollToIndex(next);
@@ -159,6 +176,11 @@ export const Vzorky: React.FC = () => {
           <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 md:w-28 z-10 bg-gradient-to-r from-[#FAFAFA] to-transparent" />
           <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 md:w-28 z-10 bg-gradient-to-l from-[#FAFAFA] to-transparent" />
 
+          {/* Counter above center tile */}
+          <div className="pointer-events-none absolute top-2 left-1/2 -translate-x-1/2 z-20 text-[10px] font-mono text-gray-400 tracking-widest select-none">
+            {activeIndex + 1}&thinsp;/&thinsp;{SAMPLE_TILES.length}
+          </div>
+
           {/* Scrollable track */}
           <div
             ref={scrollRef}
@@ -189,7 +211,12 @@ export const Vzorky: React.FC = () => {
                   <img
                     src={tile.image}
                     alt={tile.name}
+                    width={400}
+                    height={400}
                     draggable={false}
+                    loading={i < 3 ? 'eager' : 'lazy'}
+                    decoding="async"
+                    {...(i === 0 ? { fetchPriority: 'high' } : {})}
                     className="w-full h-full object-cover select-none pointer-events-none"
                   />
                 </div>
