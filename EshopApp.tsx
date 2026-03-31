@@ -1,11 +1,8 @@
 import React, { useEffect, useRef, Suspense } from 'react';
-import { inject } from '@vercel/analytics';
+import { Analytics } from '@vercel/analytics/react';
 import { SEOHead } from './components/UI/SEOHead';
 import { useAnalytics } from './hooks/useAnalytics';
 import { useMetaPixel } from './hooks/useMetaPixel';
-
-// Vercel Analytics — first-party, not blocked by Safari ITP
-inject();
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { EshopLayout } from './components/Eshop/EshopLayout';
 import { LoadingSpinner } from './components/UI/LoadingSpinner';
@@ -265,6 +262,7 @@ const EshopApp = () => {
         <CartProvider>
           <Router>
             <EshopAppContent />
+            <Analytics />
           </Router>
         </CartProvider>
       </CookieProvider>
