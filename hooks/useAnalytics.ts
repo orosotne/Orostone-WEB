@@ -65,6 +65,8 @@ export const useAnalytics = () => {
         ad_personalization: preferences.marketing ? 'granted' : 'denied',
       });
 
+      window.gtag('js', new Date());
+
       const script = document.createElement('script');
       script.async = true;
       script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
