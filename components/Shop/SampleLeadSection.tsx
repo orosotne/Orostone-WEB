@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import { CheckCircle, Loader2 } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { CheckCircle, Loader2, Mail, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useShopifyProducts } from '../../hooks/useShopifyProducts';
 import { submitSampleLead } from '../../services/quotes.service';
@@ -20,15 +20,41 @@ const LIFESTYLE_IMAGE = '/images/sample-lead-hero.png';
 
 type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 
-export const SampleLeadSection: React.FC = () => {
+interface SampleLeadSectionProps {
+  preselectedDekor?: string;
+}
+
+export const SampleLeadSection: React.FC<SampleLeadSectionProps> = ({ preselectedDekor = '' }) => {
   const formRef = useRef<HTMLFormElement>(null);
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errorMsg, setErrorMsg] = useState('');
   const [agreedToVOP, setAgreedToVOP] = useState(false);
   const [newsletterConsent, setNewsletterConsent] = useState(false);
+  const [dekorValue, setDekorValue] = useState('');
   const { products } = useShopifyProducts();
+
+  useEffect(() => {
+    if (preselectedDekor) setDekorValue(preselectedDekor);
+  }, [preselectedDekor]);
   const { honeypotValue, setHoneypotValue, isBot } = useHoneypot();
   const { turnstileRef, turnstileToken, setTurnstileToken, verifyToken, reset: resetTurnstile } = useTurnstile();
+  const [showPin, setShowPin] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const pinRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowPin(true), 600);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (!expanded) return;
+    const handleClick = (e: MouseEvent) => {
+      if (pinRef.current && !pinRef.current.contains(e.target as Node)) setExpanded(false);
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [expanded]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -138,7 +164,7 @@ export const SampleLeadSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 
           {/* Left — photo shifted up; testimonial half on image, half on yellow (#ECD488) */}
-          <div className="relative z-10 -mt-3 lg:-mt-14">
+          <div className="relative z-10 -mt-3 lg:-mt-14 order-2 lg:order-1">
             <div className="relative">
               <div
                 className="badge-blink-delay-1 absolute z-30 pointer-events-none
@@ -177,10 +203,65 @@ export const SampleLeadSection: React.FC = () => {
             </div>
             {/* Reserve space so the bottom half of the card sits on section yellow, not under the form */}
             <div className="h-32 sm:h-36 lg:h-44" aria-hidden />
+
+            {/* Expert pin */}
+            <div
+              ref={pinRef}
+              className="flex flex-col items-center transition-all duration-700 ease-out"
+              style={{
+                opacity: showPin ? 1 : 0,
+                transform: showPin ? 'translateY(0) scale(1)' : 'translateY(12px) scale(0.95)',
+              }}
+            >
+              <button
+                onClick={() => setExpanded((v) => !v)}
+                className="inline-flex items-center gap-4 bg-white rounded-full pl-1.5 pr-6 py-1.5 shadow-lg ring-1 ring-black/5 hover:shadow-xl hover:ring-brand-gold/30 transition-all duration-300 cursor-pointer"
+              >
+                <img
+                  src="/images/marian-brazdil.png"
+                  alt="Marián Brázdil"
+                  className="w-12 h-12 rounded-full object-cover ring-2 ring-brand-gold/30"
+                />
+                <div className="text-left">
+                  <p className="text-sm font-bold text-brand-dark leading-tight">Marián Brázdil</p>
+                  <p className="text-xs text-gray-400 font-light">Expert na kuchynské povrchy — rád vám poradí</p>
+                </div>
+                <span className="flex h-2.5 w-2.5 relative ml-1">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500" />
+                </span>
+              </button>
+
+              {/* Contact options */}
+              <div
+                className="flex gap-3 pt-3 transition-all duration-300 ease-out"
+                style={{
+                  opacity: expanded ? 1 : 0,
+                  visibility: expanded ? 'visible' : 'hidden',
+                  transform: expanded ? 'translateY(0)' : 'translateY(-6px)',
+                  pointerEvents: expanded ? 'auto' : 'none',
+                }}
+              >
+                <a
+                  href="mailto:info@orostone.sk?subject=Otázka k vzorkám"
+                  className="inline-flex items-center gap-2 bg-white rounded-full px-5 py-2.5 text-sm font-semibold text-brand-dark shadow-md ring-1 ring-black/8 hover:ring-brand-gold/40 hover:shadow-lg transition-all duration-200"
+                >
+                  <Mail size={15} className="text-brand-gold" />
+                  Napísať email
+                </a>
+                <a
+                  href="tel:+421917588738"
+                  className="inline-flex items-center gap-2 bg-brand-dark rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-brand-gold hover:text-brand-dark transition-all duration-200"
+                >
+                  <Phone size={15} />
+                  Zavolať
+                </a>
+              </div>
+            </div>
           </div>
 
           {/* Right — form */}
-          <div className="bg-white rounded-2xl shadow-sm p-8 lg:p-10">
+          <div className="bg-white rounded-2xl shadow-sm p-8 lg:p-10 order-1 lg:order-2">
             {status === 'success' ? (
               <div className="flex flex-col items-center justify-center text-center py-12 gap-4">
                 <CheckCircle className="w-14 h-14 text-brand-gold" strokeWidth={1.5} />
@@ -247,7 +328,8 @@ export const SampleLeadSection: React.FC = () => {
                     <select
                       name="dekor"
                       required
-                      defaultValue=""
+                      value={dekorValue}
+                      onChange={(e) => setDekorValue(e.target.value)}
                       className="w-full border border-gray-200 rounded-xl px-4 py-3 text-base text-brand-dark focus:outline-none focus:border-brand-gold transition-colors appearance-none bg-white"
                     >
                       <option value="" disabled>Vyberte dekor...</option>
