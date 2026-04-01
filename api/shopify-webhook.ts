@@ -26,11 +26,9 @@ export const config = {
 
 function verifyShopifyHmac(rawBody: Buffer, hmacHeader: string, secret: string): boolean {
   const hash = createHmac('sha256', secret).update(rawBody).digest('base64');
-  console.log(`HMAC match=${hash === hmacHeader} len=${rawBody.length}`);
-  console.log(`HMAC expected: ${hmacHeader}`);
-  console.log(`HMAC computed: ${hash}`);
-  console.log(`Secret first8: ${secret.substring(0, 8)}`);
-  return hash === hmacHeader;
+  const ok = hash === hmacHeader;
+  console.log(JSON.stringify({ ok, len: rawBody.length, exp: hmacHeader?.slice(0, 12), got: hash.slice(0, 12), sec: secret.slice(0, 8) }));
+  return ok;
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
