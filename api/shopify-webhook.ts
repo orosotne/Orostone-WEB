@@ -26,6 +26,7 @@ export const config = {
 
 function verifyShopifyHmac(rawBody: Buffer, hmacHeader: string, secret: string): boolean {
   const hash = createHmac('sha256', secret).update(rawBody).digest('base64');
+  console.log(`HMAC debug: bodyLen=${rawBody.length}, expected=${hmacHeader}, computed=${hash}, match=${hash === hmacHeader}`);
   return hash === hmacHeader;
 }
 
