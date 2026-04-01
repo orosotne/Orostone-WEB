@@ -154,7 +154,7 @@ export const Vzorky: React.FC = () => {
         ])}
       />
 
-      <section className="pt-32 pb-10 bg-[#FAFAFA]">
+      <section className="pt-8 sm:pt-12 md:pt-20 lg:pt-28 xl:pt-32 pb-8 sm:pb-10 bg-[#FAFAFA]">
         <div className="container mx-auto px-6 text-center">
           <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
             Bezplatné vzorky
