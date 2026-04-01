@@ -19,6 +19,7 @@ async function main() {
 }
 
 main().catch((e) => {
-  console.error(e instanceof Error ? e.message : e);
-  process.exit(1);
+  console.warn(`⚠ sync-shop-fallback: ${e instanceof Error ? e.message : e}`);
+  console.warn('Pokracujem s existujucim fallback suborm.');
+  // Do NOT process.exit(1) during build — stale fallback is better than no build
 });

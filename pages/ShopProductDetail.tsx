@@ -2043,7 +2043,7 @@ const ResistanceParameters: React.FC<ResistanceParametersProps> = ({ product }) 
     },
     {
       title: 'Hygiena a bezpečnosť potravín',
-      value: 'Certifikovaný',
+      value: 'Hygienický',
       description: 'Povrch je hygienický, nepórovitý a bezpečný pre kontakt s potravinami',
       image: '/images/resistance/food-safety.webp',
       icon: Apple,

@@ -29,6 +29,28 @@ const ALL_IMAGES = [
   '/images/inspiration/inspiration-7.webp',
 ];
 
+// 440px-wide thumbnails for the marquee (8–13 KB each, vs 400–970 KB originals)
+const ALL_THUMBS = [
+  '/images/inspiration/thumb-inspiration-1.webp',
+  '/images/inspiration/thumb-inspiration-2.webp',
+  '/images/inspiration/thumb-inspiration-3.webp',
+  '/images/inspiration/thumb-inspiration-4.webp',
+  '/images/inspiration/thumb-inspiration-5.webp',
+  '/images/inspiration/thumb-inspiration-6.webp',
+  '/images/inspiration/thumb-inspiration-7.webp',
+];
+
+// First-frame poster images for video cards (9–13 KB each)
+const ALL_POSTERS = [
+  '/images/inspiration/poster-inspiration-1.webp',
+  '/images/inspiration/poster-inspiration-2.webp',
+  '/images/inspiration/poster-inspiration-3.webp',
+  '/images/inspiration/poster-inspiration-4.webp',
+  '/images/inspiration/poster-inspiration-5.webp',
+  '/images/inspiration/poster-inspiration-6.webp',
+  '/images/inspiration/poster-inspiration-7.webp',
+];
+
 // All 7 videos available in /public/videos/inspiration/
 const ALL_VIDEOS = [
   '/videos/inspiration/inspiration-1.mp4',
@@ -45,6 +67,8 @@ const UNIQUE_COLS = Math.max(ALL_IMAGES.length, ALL_VIDEOS.length); // 7
 // Build 7 unique columns cycling both arrays
 const UNIQUE_COLUMNS = Array.from({ length: UNIQUE_COLS }, (_, i) => ({
   image: ALL_IMAGES[i % ALL_IMAGES.length],
+  thumb: ALL_THUMBS[i % ALL_THUMBS.length],
+  poster: ALL_POSTERS[i % ALL_POSTERS.length],
   video: ALL_VIDEOS[i % ALL_VIDEOS.length],
   imageIdx: i % ALL_IMAGES.length,
   videoIdx: i % ALL_VIDEOS.length,
@@ -184,7 +208,7 @@ const InspirationLightbox: React.FC<LightboxProps> = ({ items, index, onClose, o
 // ──────────────────────────────────────────
 // Image card
 // ──────────────────────────────────────────
-const ImageCard = ({ src, idx, onOpen }: { src: string; idx: number; onOpen: () => void; key?: React.Key }) => (
+const ImageCard = ({ src, thumb, idx, onOpen }: { src: string; thumb: string; idx: number; onOpen: () => void; key?: React.Key }) => (
   <button
     type="button"
     onClick={onOpen}
@@ -193,9 +217,8 @@ const ImageCard = ({ src, idx, onOpen }: { src: string; idx: number; onOpen: () 
     aria-label={`Otvoriť inšpiráciu ${idx + 1}`}
   >
     <img
-      src={src}
+      src={thumb}
       alt={`Inšpirácia ${idx + 1}`}
-      loading="lazy"
       decoding="async"
       className="absolute inset-0 w-full h-full object-cover"
     />
@@ -205,7 +228,7 @@ const ImageCard = ({ src, idx, onOpen }: { src: string; idx: number; onOpen: () 
 // ──────────────────────────────────────────
 // Video card
 // ──────────────────────────────────────────
-const VideoCard = ({ src, idx, onOpen }: { src: string; idx: number; onOpen: () => void; key?: React.Key }) => {
+const VideoCard = ({ src, poster, idx, onOpen }: { src: string; poster: string; idx: number; onOpen: () => void; key?: React.Key }) => {
   const [muted, setMuted] = useState(true);
   const [visible, setVisible] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -270,7 +293,15 @@ const VideoCard = ({ src, idx, onOpen }: { src: string; idx: number; onOpen: () 
       style={{ aspectRatio: '9 / 16' }}
       aria-label={`Otvoriť video ${idx + 1}`}
     >
-      {visible ? (
+      {/* Poster image shows instantly — video overlays it once loaded */}
+      <img
+        src={poster}
+        alt=""
+        aria-hidden="true"
+        decoding="async"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      {visible && (
         <video
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
@@ -278,11 +309,10 @@ const VideoCard = ({ src, idx, onOpen }: { src: string; idx: number; onOpen: () 
           loop
           playsInline
           preload="none"
+          poster={poster}
         >
           <source src={src} type="video/mp4" />
         </video>
-      ) : (
-        <div className="absolute inset-0 w-full h-full bg-gray-900" />
       )}
       <button
         type="button"
@@ -302,6 +332,8 @@ const VideoCard = ({ src, idx, onOpen }: { src: string; idx: number; onOpen: () 
 // ──────────────────────────────────────────
 const ColumnCard = ({
   image,
+  thumb,
+  poster,
   video,
   imageIdx,
   videoIdx,
@@ -310,6 +342,8 @@ const ColumnCard = ({
   onOpenVideo,
 }: {
   image: string;
+  thumb: string;
+  poster: string;
   video: string;
   imageIdx: number;
   videoIdx: number;
@@ -318,8 +352,8 @@ const ColumnCard = ({
   onOpenVideo: () => void;
   key?: React.Key;
 }) => {
-  const imageEl = <ImageCard src={image} idx={imageIdx} onOpen={onOpenImage} />;
-  const videoEl = <VideoCard src={video} idx={videoIdx} onOpen={onOpenVideo} />;
+  const imageEl = <ImageCard src={image} thumb={thumb} idx={imageIdx} onOpen={onOpenImage} />;
+  const videoEl = <VideoCard src={video} poster={poster} idx={videoIdx} onOpen={onOpenVideo} />;
   return (
     <div className="insp-col flex-shrink-0 flex flex-col" style={{ gap: '10px' }}>
       {reversed ? videoEl : imageEl}
@@ -374,6 +408,8 @@ export const InspirationSection: React.FC<Props> = () => {
               <ColumnCard
                 key={stripIdx}
                 image={col.image}
+                thumb={col.thumb}
+                poster={col.poster}
                 video={col.video}
                 imageIdx={col.imageIdx}
                 videoIdx={col.videoIdx}

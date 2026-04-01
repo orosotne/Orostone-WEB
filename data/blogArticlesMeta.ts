@@ -108,26 +108,6 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
     },
   },
   {
-    id: 'certifications-sintered-stone',
-    slug: 'certifikacie-sinterovany-kamen',
-    category: 'trust-builders',
-    publishDate: '2026-03-27',
-    readTimeMinutes: 10,
-    heroImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200',
-    author: BLOG_AUTHOR_OROSTONE,
-    tags: ['certifikácie', 'sinterovaný kameň', 'ISO normy', 'bezpečnosť potravín', 'NSF', 'CE označenie'],
-    sk: {
-      title: 'Certifikácie sinterovaného kameňa: čo znamenajú a prečo na nich záleží',
-      subtitle: 'Kompletný sprievodca normami ISO, CE, NSF/ANSI 51 a Greenguard Gold — ako čítať technický list',
-      excerpt: 'CE označenie, ISO 10545, NSF/ANSI 51, Greenguard Gold — čo tieto certifikácie skutočne zaručujú a ako sa nenechať oklamať "proprietárnym testovaním".',
-    },
-    en: {
-      title: 'Sintered Stone Certifications: What They Mean and Why They Matter',
-      subtitle: 'Complete guide to ISO standards, CE marking, NSF/ANSI 51 and Greenguard Gold',
-      excerpt: 'CE marking, ISO 10545, NSF/ANSI 51, Greenguard Gold — what these certifications actually guarantee and how to spot "proprietary testing" for what it is.',
-    },
-  },
-  {
     id: 'sintered-vs-quartz-vs-ceramic-vs-porcelain',
     slug: 'sinterovany-kamen-vs-kvarcit-vs-keramika-vs-porcelan',
     category: 'trust-builders',

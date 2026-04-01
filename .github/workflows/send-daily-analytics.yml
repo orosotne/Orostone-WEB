@@ -1,0 +1,46 @@
+name: Send Daily Analytics Report
+
+on:
+  # Každý deň o 19:00 UTC = 20:00 CET (zimný čas) / 21:00 CEST (letný čas)
+  schedule:
+    - cron: '0 19 * * *'
+
+  # Manuálne spustenie pre testovanie (GitHub Actions UI → Run workflow)
+  workflow_dispatch:
+
+jobs:
+  send-report:
+    name: Send daily GA4 analytics email
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call Supabase Edge Function
+        run: |
+          RESPONSE=$(curl -s -o /tmp/analytics_response.json -w "%{http_code}" \
+            -X POST \
+            "https://xfkznvqufhnrphpdhfnc.supabase.co/functions/v1/send-daily-analytics" \
+            -H "Authorization: Bearer ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{}')
+
+          echo "HTTP status: $RESPONSE"
+          echo "Response:"
+          cat /tmp/analytics_response.json
+
+          if [ "$RESPONSE" != "200" ]; then
+            echo "❌ Report zlyhal so statusom $RESPONSE"
+            exit 1
+          fi
+
+          SUCCESS=$(cat /tmp/analytics_response.json | python3 -c \
+            "import sys,json; d=json.load(sys.stdin); print(d.get('success','false'))")
+          if [ "$SUCCESS" != "True" ]; then
+            echo "❌ Report vrátil success=false"
+            exit 1
+          fi
+
+          USERS=$(cat /tmp/analytics_response.json | python3 -c \
+            "import sys,json; d=json.load(sys.stdin); print(d.get('metrics',{}).get('users','?'))")
+          DATE=$(cat /tmp/analytics_response.json | python3 -c \
+            "import sys,json; d=json.load(sys.stdin); print(d.get('reportDate','?'))")
+          echo "✅ Report odoslaný — $DATE | $USERS návštevníkov"

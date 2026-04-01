@@ -69,7 +69,7 @@ export const ARTICLE_03: BlogArticle = {
 <p>Čistenie: vlhká handrička po každom teste. Bez špeciálnych čistiacich prostriedkov — iba bežná voda.</p>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1583338426880-9e5e5e64a6d1?w=1200" alt="Škvrny od kávy, vína a kurkumy na povrchu sinterovaného kameňa pred čistením" loading="lazy" />
+  <img src="/images/blog/article-03-stains.webp" alt="Škvrny od kávy, vína a kurkumy na povrchu sinterovaného kameňa pred čistením" loading="lazy" />
   <figcaption>Škvrnotvorné látky po 24 hodinách — vizuálne vyzerajú hrozivo, ale je to len povrchový film</figcaption>
 </figure>
 
@@ -148,7 +148,7 @@ export const ARTICLE_03: BlogArticle = {
 <p><strong>Matný povrch:</strong> Škvrny sú menej viditeľné, ale kurkuma a červené víno na ňom môžu byť mierne menej ľahko viditeľné aj po čistení (ilúzia zvyškovej farby v mikroreliéfe). V reálnych testoch: rovnaký výsledok čistenia, ale vizuálne hodnotenie pred čistením je miernejšie pre matný.</p>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200" alt="Čistenie sinterovaného kameňa vlhkou handrou — škvrna od červeného vína zmizne v sekundách" loading="lazy" />
+  <img src="/images/blog/article-03-cleaning.webp" alt="Čistenie sinterovaného kameňa vlhkou handrou — škvrna od červeného vína zmizne v sekundách" loading="lazy" />
   <figcaption>Čistenie sinterovaného kameňa: vlhká handrička, žiadna špeciálna chémia</figcaption>
 </figure>
 
@@ -277,7 +277,7 @@ export const ARTICLE_03: BlogArticle = {
 <p>Cleaning: damp cloth after each test. No special cleaning products — just tap water.</p>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1583338426880-9e5e5e64a6d1?w=1200" alt="Coffee, wine and turmeric stains on sintered stone surface before cleaning" loading="lazy" />
+  <img src="/images/blog/article-03-stains.webp" alt="Coffee, wine and turmeric stains on sintered stone surface before cleaning" loading="lazy" />
   <figcaption>Staining agents after 24 hours — they look alarming, but it's just a surface film</figcaption>
 </figure>
 
@@ -356,7 +356,7 @@ export const ARTICLE_03: BlogArticle = {
 <p><strong>Matte surface:</strong> Stains are less visible, but turmeric and red wine may appear slightly less easy to see even after cleaning (visual illusion of residual color in micro-texture). In real tests: same cleaning result, but visual impression before cleaning is kinder to matte.</p>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200" alt="Cleaning sintered stone with a damp cloth — red wine stain disappears in seconds" loading="lazy" />
+  <img src="/images/blog/article-03-cleaning.webp" alt="Cleaning sintered stone with a damp cloth — red wine stain disappears in seconds" loading="lazy" />
   <figcaption>Cleaning sintered stone: a damp cloth, no special chemistry required</figcaption>
 </figure>
 

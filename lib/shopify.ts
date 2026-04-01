@@ -20,7 +20,7 @@ function readViteShopifyEnv(key: 'VITE_SHOPIFY_STORE_DOMAIN' | 'VITE_SHOPIFY_STO
 
 const SHOPIFY_STORE_DOMAIN = readViteShopifyEnv('VITE_SHOPIFY_STORE_DOMAIN');
 const SHOPIFY_STOREFRONT_TOKEN = readViteShopifyEnv('VITE_SHOPIFY_STOREFRONT_TOKEN');
-const STOREFRONT_API_VERSION = '2024-10';
+const STOREFRONT_API_VERSION = '2025-01';
 
 // ===========================================
 // HELPERS

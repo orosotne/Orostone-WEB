@@ -139,22 +139,29 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       try {
         // Skus nacitat existujuci cart z localStorage
         const savedCartId = localStorage.getItem(CART_ID_KEY);
-        
+
         if (savedCartId) {
-          const existingCart = await shopifyGetCart(savedCartId);
-          if (existingCart) {
-            setCart(existingCart);
-            return;
+          try {
+            const existingCart = await shopifyGetCart(savedCartId);
+            // Cart exists and is valid — check if it hasn't been completed (checkout finished)
+            if (existingCart && existingCart.lines) {
+              setCart(existingCart);
+              return;
+            }
+          } catch {
+            // Cart expired or invalid — remove stale ID and create new
+            localStorage.removeItem(CART_ID_KEY);
           }
         }
 
-        // Ak neexistuje, vytvor novy
+        // Ak neexistuje alebo expiroval, vytvor novy
         const newCart = await shopifyCreateCart();
         setCart(newCart);
         localStorage.setItem(CART_ID_KEY, newCart.id);
       } catch (error) {
         console.error('Chyba pri inicializacii kosika:', error);
         // Vytvor novy cart ak sa nieco pokazilo
+        localStorage.removeItem(CART_ID_KEY);
         try {
           const newCart = await shopifyCreateCart();
           setCart(newCart);
@@ -181,16 +188,32 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   // ACTIONS
   // ------------------------------------------
 
+  /** Recover from expired/invalid cart by creating a new one */
+  const recoverCart = useCallback(async (): Promise<ShopifyCart> => {
+    localStorage.removeItem(CART_ID_KEY);
+    const newCart = await shopifyCreateCart();
+    setCart(newCart);
+    localStorage.setItem(CART_ID_KEY, newCart.id);
+    return newCart;
+  }, []);
+
   const addItem = useCallback(async (variantId: string, quantity: number = 1) => {
     if (!cart) {
       setError('Košík nie je inicializovaný. Skúste obnoviť stránku.');
       return;
     }
-    
+
     setIsLoading(true);
     setError(null);
     try {
-      const updatedCart = await withTimeout(shopifyAddToCart(cart.id, variantId, quantity));
+      let updatedCart: ShopifyCart;
+      try {
+        updatedCart = await withTimeout(shopifyAddToCart(cart.id, variantId, quantity));
+      } catch {
+        // Cart may have expired — recover and retry once
+        const freshCart = await recoverCart();
+        updatedCart = await withTimeout(shopifyAddToCart(freshCart.id, variantId, quantity));
+      }
       setCart(updatedCart);
       setIsOpen(true); // Otvor drawer po pridani
       // Meta Pixel AddToCart
@@ -212,7 +235,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     } finally {
       setIsLoading(false);
     }
-  }, [cart]);
+  }, [cart, recoverCart]);
 
   const removeItem = useCallback(async (lineId: string) => {
     if (!cart) return;

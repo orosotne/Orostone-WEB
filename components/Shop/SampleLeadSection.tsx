@@ -202,7 +202,7 @@ export const SampleLeadSection: React.FC<SampleLeadSectionProps> = ({ preselecte
               </div>
             </div>
             {/* Reserve space so the bottom half of the card sits on section yellow, not under the form */}
-            <div className="h-32 sm:h-36 lg:h-44" aria-hidden />
+            <div className="h-44 sm:h-56 lg:h-56" aria-hidden />
 
             {/* Expert pin */}
             <div

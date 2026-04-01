@@ -10,6 +10,7 @@
  *
  * Usage:
  *   node scripts/generate-inspiration-videos.mjs
+ *   node scripts/generate-inspiration-videos.mjs --only inspiration-3.webp --force
  */
 
 import { GoogleGenAI } from '@google/genai';
@@ -47,12 +48,12 @@ const IMAGES = [
   {
     file: 'inspiration-2.webp',
     prompt:
-      'Slow close-in shot focusing on the sintered stone slab surface, camera steadily moving closer to reveal the stone texture and material details, ignoring the surroundings, cinematic shallow depth of field, 5 seconds',
+      'Slow elegant move across the sintered stone countertop; the stone must look perfectly smooth and uniform like high-end matte or polished sintered stone — no grooves, pits, heavy grain, scratches, or veins; only soft even tone and gentle light reflections; shallow depth of field; premium kitchen lighting; 5 seconds',
   },
   {
     file: 'inspiration-3.webp',
     prompt:
-      'Slow close-in shot, camera steadily moving closer to reveal the stone surface texture and details, cinematic shallow depth of field, 5 seconds',
+      'Slow gentle camera push-in on the same kitchen composition; all sintered stone surfaces must read as flawlessly smooth and continuous, no visible streaks, grooves, pitting, or exaggerated texture; clean modern finish; soft natural light; cinematic steady motion; 5 seconds',
   },
   {
     file: 'inspiration-4.webp',
@@ -79,6 +80,21 @@ const IMAGES = [
 const INPUT_DIR = path.join(ROOT, 'public', 'images', 'inspiration');
 const OUTPUT_DIR = path.join(ROOT, 'public', 'videos', 'inspiration');
 
+function parseCliArgs() {
+  const argv = process.argv.slice(2);
+  let force = false;
+  /** @type {string[] | null} */
+  let only = null;
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === '--force' || a === '-f') force = true;
+    else if ((a === '--only' || a === '-o') && argv[i + 1]) {
+      only = argv[++i].split(',').map((s) => s.trim()).filter(Boolean);
+    }
+  }
+  return { force, only };
+}
+
 // Ensure output directory exists
 if (!fs.existsSync(OUTPUT_DIR)) {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
@@ -88,33 +104,52 @@ if (!fs.existsSync(OUTPUT_DIR)) {
 // Main
 // ---------------------------------------------------------------------------
 async function main() {
+  const { force, only } = parseCliArgs();
   const ai = new GoogleGenAI({ apiKey: API_KEY });
+
+  let toRun = [...IMAGES];
+  if (only?.length) {
+    const set = new Set(only);
+    toRun = IMAGES.filter((img) => set.has(img.file));
+    if (toRun.length === 0) {
+      console.error('❌  --only: žiadny zhodný súbor. Dostupné:', IMAGES.map((x) => x.file).join(', '));
+      process.exit(1);
+    }
+  }
 
   console.log('');
   console.log('='.repeat(60));
   console.log('  VEO 3.1 — Inspiration Video Generator');
   console.log('='.repeat(60));
+  if (force) console.log('  Mode: --force (prepíše existujúce MP4)');
+  if (only?.length) console.log(`  Len: ${only.join(', ')}`);
   console.log('');
 
-  for (let i = 0; i < IMAGES.length; i++) {
-    const { file: filename, prompt } = IMAGES[i];
+  const total = toRun.length;
+  for (let i = 0; i < total; i++) {
+    const { file: filename, prompt } = toRun[i];
     const inputPath = path.join(INPUT_DIR, filename);
     const outputFilename = filename.replace('.webp', '.mp4');
     const outputPath = path.join(OUTPUT_DIR, outputFilename);
 
     // Skip if output already exists
-    if (fs.existsSync(outputPath)) {
-      console.log(`⏭  [${i + 1}/${IMAGES.length}] ${outputFilename} already exists, skipping.`);
+    if (fs.existsSync(outputPath) && !force) {
+      console.log(`⏭  [${i + 1}/${total}] ${outputFilename} already exists, skipping. (use --force to replace)`);
       continue;
     }
 
     // Check input exists
     if (!fs.existsSync(inputPath)) {
-      console.error(`❌  [${i + 1}/${IMAGES.length}] Input image not found: ${inputPath}`);
+      console.error(`❌  [${i + 1}/${total}] Input image not found: ${inputPath}`);
       continue;
     }
 
-    console.log(`📤  [${i + 1}/${IMAGES.length}] Uploading ${filename}...`);
+    if (fs.existsSync(outputPath) && force) {
+      fs.unlinkSync(outputPath);
+      console.log(`🗑  Removed previous ${outputFilename}`);
+    }
+
+    console.log(`📤  [${i + 1}/${total}] Uploading ${filename}...`);
 
     // 1. Upload image to Gemini Files API
     const uploadedFile = await ai.files.upload({
@@ -123,7 +158,7 @@ async function main() {
     });
 
     console.log(`   Uploaded as: ${uploadedFile.name}`);
-    console.log(`🎬  [${i + 1}/${IMAGES.length}] Generating video with prompt:`);
+    console.log(`🎬  [${i + 1}/${total}] Generating video with prompt:`);
     console.log(`   "${prompt}"`);
 
     // 2. Generate video (returns an async operation)
@@ -156,21 +191,21 @@ async function main() {
 
     // Check for errors
     if (operation.error) {
-      console.error(`   ❌ Error:`, JSON.stringify(operation.error, null, 2));
+      console.error('   ❌ Error:', JSON.stringify(operation.error, null, 2));
       continue;
     }
 
     // 4. Download the generated video
     const generatedVideos = operation.response?.generatedVideos;
     if (!generatedVideos || generatedVideos.length === 0) {
-      console.error(`   ❌ No videos in the response.`);
+      console.error('   ❌ No videos in the response.');
       if (operation.response?.raiMediaFilteredReasons?.length) {
         console.error(`   Filtered reasons:`, operation.response.raiMediaFilteredReasons);
       }
       continue;
     }
 
-    console.log(`💾  [${i + 1}/${IMAGES.length}] Downloading to ${outputFilename}...`);
+    console.log(`💾  [${i + 1}/${total}] Downloading to ${outputFilename}...`);
 
     const generatedVideo = generatedVideos[0];
     await ai.files.download({
