@@ -1,5 +1,5 @@
 // E-Shop Components
-// Used only on eshop.orostone.sk
+// E-shop layout components
 
 export { EshopLayout } from './EshopLayout';
 export { EshopAnnouncementBar } from './EshopAnnouncementBar';

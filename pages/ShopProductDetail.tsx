@@ -53,6 +53,7 @@ import {
   Droplet,
   Loader2,
   Mail,
+  Phone,
   CheckCircle,
 } from 'lucide-react';
 import { ShopProduct, MAX_SAMPLES, resolveCountryOfOrigin } from '../constants';
@@ -2357,17 +2358,29 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
 
             {/* Contact CTA */}
             <div className="p-5 lg:p-8 bg-gray-50 border-t border-gray-200">
-              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-                <div>
-                  <h4 className="font-medium text-brand-dark mb-1">Potrebujete konzultáciu?</h4>
-                  <p className="text-sm text-gray-600">Poradíme s výberom materiálu pre váš projekt.</p>
+              <div className="flex flex-col gap-4">
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                  <div>
+                    <h4 className="font-medium text-brand-dark mb-1">Potrebujete konzultáciu?</h4>
+                    <p className="text-sm text-gray-600">Poradíme s výberom materiálu pre váš projekt. Odpoveď do 24h.</p>
+                  </div>
+                  <Link to="/kontakt">
+                    <button className="flex items-center gap-2 px-6 py-3 border border-gray-300 text-brand-dark text-sm font-semibold tracking-wider uppercase hover:border-brand-gold hover:text-brand-gold transition-colors">
+                      <MessageSquare size={16} />
+                      Kontaktovať
+                    </button>
+                  </Link>
                 </div>
-                <Link to="/kontakt">
-                  <button className="flex items-center gap-2 px-6 py-3 border border-gray-300 text-brand-dark text-sm font-semibold tracking-wider uppercase hover:border-brand-gold hover:text-brand-gold transition-colors">
-                    <MessageSquare size={16} />
-                    Kontaktovať
-                  </button>
-                </Link>
+                <div className="flex flex-wrap gap-4 text-sm">
+                  <a href="tel:+421917588738" className="flex items-center gap-2 text-gray-600 hover:text-brand-gold transition-colors">
+                    <Phone size={14} />
+                    +421 917 588 738
+                  </a>
+                  <a href="mailto:info@orostone.sk" className="flex items-center gap-2 text-gray-600 hover:text-brand-gold transition-colors">
+                    <Mail size={14} />
+                    info@orostone.sk
+                  </a>
+                </div>
               </div>
             </div>
           </div>

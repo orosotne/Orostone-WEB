@@ -714,8 +714,8 @@ function buildEmail(data: ReportData): { subject: string; html: string } {
                 <a href="mailto:info@orostone.sk" class="footer-link"
                    style="color:#1A1A1A;text-decoration:none;font-weight:600;">info@orostone.sk</a>
                 &nbsp;·&nbsp;
-                <a href="https://eshop.orostone.sk" class="footer-link"
-                   style="color:#1A1A1A;text-decoration:none;font-weight:600;">eshop.orostone.sk</a>
+                <a href="https://orostone.sk" class="footer-link"
+                   style="color:#1A1A1A;text-decoration:none;font-weight:600;">orostone.sk</a>
               </p>
               <p class="footer-small" style="margin:10px 0 0 0;font-size:11px;color:#bbbbbb;font-weight:300;">
                 Orostone s.r.o. &nbsp;·&nbsp; Landererova 8, 811 09 Bratislava

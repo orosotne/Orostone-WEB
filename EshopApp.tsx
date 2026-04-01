@@ -32,6 +32,7 @@ const ReklamacieAVratenie = lazyWithRetry(() => import('./pages/ReklamacieAVrate
 const SinterovanyKamen = lazyWithRetry(() => import('./pages/SinterovanyKamen').then(m => ({ default: m.SinterovanyKamen })));
 const OdstupeniOdZmluvy = lazyWithRetry(() => import('./pages/OdstupeniOdZmluvy').then(m => ({ default: m.OdstupeniOdZmluvy })));
 const Vzorky = lazyWithRetry(() => import('./pages/Vzorky').then(m => ({ default: m.Vzorky })));
+const Vyhody = lazyWithRetry(() => import('./pages/Vyhody').then(m => ({ default: m.Vyhody })));
 
 // Stagger prefetch of lazy chunks — high-intent routes first, lower-priority later
 if (typeof window !== 'undefined') {
@@ -224,6 +225,11 @@ const EshopAppContent = () => {
           <Route path="/sinterovany-kamen" element={
             <Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}>
               <SinterovanyKamen />
+            </Suspense>
+          } />
+          <Route path="/vyhody" element={
+            <Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}>
+              <Vyhody />
             </Suspense>
           } />
           

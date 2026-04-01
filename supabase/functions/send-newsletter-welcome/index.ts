@@ -142,7 +142,7 @@ serve(async (req) => {
                   </span>
                 </div>
                 <p class="email-subtext" style="margin: 12px 0 0 0; font-size: 13px; font-weight: 300; color: #888888;">
-                  Platí na prvý nákup v e-shope eshop.orostone.sk
+                  Platí na prvý nákup v e-shope orostone.sk
                 </p>
               </td>
             </tr>
@@ -161,7 +161,7 @@ serve(async (req) => {
                                       text-align: center; line-height: 24px; font-size: 11px; font-weight: 700; color: #1A1A1A;">1</div>
                         </td>
                         <td class="email-step-text" style="padding-left: 12px; font-size: 14px; font-weight: 300; color: #444444; line-height: 1.5;">
-                          Prezrite si naše <strong style="font-weight: 600;">prémiové kolekcie</strong> na eshop.orostone.sk
+                          Prezrite si naše <strong style="font-weight: 600;">prémiové kolekcie</strong> na orostone.sk
                         </td>
                       </tr></table>
                     </td>
@@ -199,7 +199,7 @@ serve(async (req) => {
             <!-- CTA TLAČIDLO -->
             <tr>
               <td class="email-body" style="background-color: #ffffff; padding: 0 40px 44px 40px; text-align: center;">
-                <a href="https://eshop.orostone.sk" class="cta-btn"
+                <a href="https://orostone.sk" class="cta-btn"
                    style="display: inline-block; background-color: #1A1A1A; color: #ffffff; padding: 14px 36px;
                           text-decoration: none; font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
                           text-transform: uppercase; border-radius: 3px;">

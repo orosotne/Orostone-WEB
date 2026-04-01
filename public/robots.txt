@@ -9,6 +9,7 @@ Disallow: /login
 Disallow: /register
 Disallow: /ucet
 Disallow: /objednavky
+Disallow: /moj-ucet
 
 # AI Crawlers - explicitly allowed
 User-agent: GPTBot
