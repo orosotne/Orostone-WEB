@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createHmac } from 'crypto';
+import { buffer } from 'micro';
 
 /**
  * Shopify Webhook Handler
@@ -16,8 +17,15 @@ import { createHmac } from 'crypto';
  *   VERCEL_DEPLOY_HOOK_URL — Vercel Deploy Hook URL (triggers redeploy)
  */
 
-function verifyShopifyHmac(body: string, hmacHeader: string, secret: string): boolean {
-  const hash = createHmac('sha256', secret).update(body, 'utf8').digest('base64');
+// Disable Vercel's default body parser so we can read raw bytes for HMAC
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
+function verifyShopifyHmac(rawBody: Buffer, hmacHeader: string, secret: string): boolean {
+  const hash = createHmac('sha256', secret).update(rawBody).digest('base64');
   return hash === hmacHeader;
 }
 
@@ -40,7 +48,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(401).json({ error: 'Missing HMAC header' });
   }
 
-  const rawBody = typeof req.body === 'string' ? req.body : JSON.stringify(req.body);
+  // Read raw body bytes for accurate HMAC verification
+  const rawBody = await buffer(req);
   if (!verifyShopifyHmac(rawBody, hmac, secret)) {
     return res.status(401).json({ error: 'Invalid HMAC signature' });
   }
