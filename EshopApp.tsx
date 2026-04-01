@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, Suspense } from 'react';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { SEOHead } from './components/UI/SEOHead';
 import { useAnalytics } from './hooks/useAnalytics';
 import { useMetaPixel } from './hooks/useMetaPixel';
@@ -263,6 +264,7 @@ const EshopApp = () => {
           <Router>
             <EshopAppContent />
             <Analytics />
+            <SpeedInsights />
           </Router>
         </CartProvider>
       </CookieProvider>
