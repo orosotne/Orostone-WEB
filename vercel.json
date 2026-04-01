@@ -33,6 +33,17 @@
     { "source": "/pages-sitemap.xml", "destination": "/sitemap-eshop.xml" },
     { "source": "/sitemap-index.xml", "destination": "/sitemap-eshop.xml" },
     { "source": "/api/:path*", "destination": "/api/:path*" },
+    {
+      "source": "/produkt/:slug",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(facebookexternalhit|Facebot|Twitterbot|LinkedInBot|Slackbot|WhatsApp|TelegramBot|Discordbot|Pinterestbot|vkShare|Viber|Skype|redditbot|Applebot).*"
+        }
+      ],
+      "destination": "/api/product-meta?slug=:slug"
+    },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
