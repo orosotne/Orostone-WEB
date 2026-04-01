@@ -259,6 +259,20 @@ const EshopAppContent = () => {
 };
 
 // ===========================================
+// SPEED INSIGHTS WITH ROUTE PATTERN
+// ===========================================
+
+const SpeedInsightsWithRoute = () => {
+  const { pathname } = useLocation();
+  const route = pathname
+    .replace(/^\/produkt\/[^/]+$/, '/produkt/:id')
+    .replace(/^\/kategoria\/[^/]+\/[^/]+$/, '/kategoria/:slug/:subCategory')
+    .replace(/^\/kategoria\/[^/]+$/, '/kategoria/:slug')
+    .replace(/^\/blog\/[^/]+$/, '/blog/:slug');
+  return <SpeedInsights route={route} />;
+};
+
+// ===========================================
 // ESHOP APP (with Providers)
 // ===========================================
 
@@ -270,7 +284,7 @@ const EshopApp = () => {
           <Router>
             <EshopAppContent />
             <Analytics />
-            <SpeedInsights />
+            <SpeedInsightsWithRoute />
           </Router>
         </CartProvider>
       </CookieProvider>
