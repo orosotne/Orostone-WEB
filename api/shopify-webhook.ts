@@ -26,9 +26,7 @@ export const config = {
 
 function verifyShopifyHmac(rawBody: Buffer, hmacHeader: string, secret: string): boolean {
   const hash = createHmac('sha256', secret).update(rawBody).digest('base64');
-  const ok = hash === hmacHeader;
-  console.log(JSON.stringify({ ok, len: rawBody.length, exp: hmacHeader?.slice(0, 12), got: hash.slice(0, 12), sec: secret.slice(0, 8) }));
-  return ok;
+  return hash === hmacHeader;
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -36,8 +34,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const secret = process.env.SHOPIFY_WEBHOOK_SECRET;
-  const deployHookUrl = process.env.VERCEL_DEPLOY_HOOK_URL;
+  const secret = process.env.SHOPIFY_WEBHOOK_SECRET?.trim();
+  const deployHookUrl = process.env.VERCEL_DEPLOY_HOOK_URL?.trim();
 
   if (!secret || !deployHookUrl) {
     console.error('Missing SHOPIFY_WEBHOOK_SECRET or VERCEL_DEPLOY_HOOK_URL');
@@ -53,18 +51,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Read raw body bytes for accurate HMAC verification
   const rawBody = await buffer(req);
   if (!verifyShopifyHmac(rawBody, hmac, secret)) {
-    // Temporary debug: return partial hashes to diagnose mismatch
-    const computed = createHmac('sha256', secret).update(rawBody).digest('base64');
-    return res.status(401).json({
-      error: 'Invalid HMAC signature',
-      debug: {
-        bodyLen: rawBody.length,
-        expectedPrefix: hmac?.slice(0, 16),
-        computedPrefix: computed.slice(0, 16),
-        secretPrefix: secret.slice(0, 8),
-        bodyFirst50: rawBody.toString('utf8').slice(0, 50),
-      },
-    });
+    return res.status(401).json({ error: 'Invalid HMAC signature' });
   }
 
   const topic = req.headers['x-shopify-topic'] as string;
