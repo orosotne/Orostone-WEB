@@ -49,6 +49,14 @@ function absoluteImage(url: string): string {
   return `${BASE_URL}${url.startsWith('/') ? '' : '/'}${url}`;
 }
 
+function optimizeOgImage(url: string): string {
+  const abs = absoluteImage(url);
+  if (abs.includes('cdn.shopify.com') && !abs.includes('width=')) {
+    return abs + (abs.includes('?') ? '&' : '?') + 'width=1200';
+  }
+  return abs;
+}
+
 // ---------------------------------------------------------------------------
 // Page writer
 // ---------------------------------------------------------------------------
@@ -85,6 +93,12 @@ function writePage(page: Page): void {
   if (page.ogImage) {
     html = html.replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${page.ogImage}$2`);
     html = html.replace(/(<meta property="og:image:alt" content=")[^"]*(")/, `$1${esc(page.title)}$2`);
+    // Remove misleading og:image dimensions for custom images
+    // (actual dimensions of Shopify/external images differ from the 1200x630 default)
+    if (!page.ogImage.includes('og-orostone.png')) {
+      html = html.replace(/\s*<meta property="og:image:width"[^>]*\/?>\n?/g, '\n');
+      html = html.replace(/\s*<meta property="og:image:height"[^>]*\/?>\n?/g, '');
+    }
   }
 
   // Twitter Card
@@ -129,7 +143,7 @@ function writePage(page: Page): void {
 function prerenderBlogArticle(article: any): void {
   const c = article.sk;
   const canonical = `${BASE_URL}/blog/${article.slug}`;
-  const ogImage = absoluteImage(article.heroImage);
+  const ogImage = optimizeOgImage(article.heroImage);
 
   const faqHtml = c.faqs?.length
     ? `<section><h2>Často kladené otázky</h2>${c.faqs
@@ -253,6 +267,7 @@ function prerenderBlogListing(): void {
 
 function prerenderProduct(product: any): void {
   const canonical = `${BASE_URL}/produkt/${product.id}`;
+  const ogImage = optimizeOgImage(product.image);
 
   const specs = [
     ['Rozmer', product.dimensions],
@@ -281,7 +296,7 @@ function prerenderProduct(product: any): void {
     title: product.metaTitle || `${product.name} | OROSTONE`,
     description: (product.metaDescription || stripHtml(product.description)).slice(0, 300),
     canonical,
-    ogImage: product.image,
+    ogImage,
     ogType: 'product',
     rootContent: `
       <article>
