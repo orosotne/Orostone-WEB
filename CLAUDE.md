@@ -2,10 +2,10 @@
 
 ## Project Overview
 
-Premium e-commerce website for Orostone (sintered stone / veľkoformátové platne). Dual-app SPA architecture: main marketing site + separate e-shop bundle.
+Premium e-commerce website for Orostone (sintered stone / veľkoformátové platne). Single e-shop SPA. Marketing site will be a separate independent project.
 
 - **Brand:** Orostone — Slovak market, content in Slovak/Czech
-- **Domain:** orostone.sk / eshop.orostone.sk
+- **Domain:** eshop.orostone.sk
 
 ## Tech Stack
 
@@ -18,10 +18,9 @@ Premium e-commerce website for Orostone (sintered stone / veľkoformátové plat
 
 ## Architecture
 
-### Dual-App Pattern
-- `index.tsx` → `App.tsx` — main marketing site
-- `eshop.tsx` → `EshopApp.tsx` — separate e-shop SPA
-- Each has its own HTML entry (`index.html`, `eshop.html`)
+### Single E-shop App
+- `index.tsx` → `EshopApp.tsx` — e-shop SPA (single entry point)
+- Entry HTML: `index.html`
 
 ### Key Directories
 ```
