@@ -279,10 +279,10 @@ export const Shop = () => {
         },
       });
 
-      // Phase 1 (0–10%): Gold frame expands from inset+rounded to full-bleed (content lives inside frame)
+      // Phase 1 (0–10%): Gold frame expands from inset+rounded to full-bleed (clip-path avoids layout shifts / CLS)
       stoneTl.fromTo('.stone-bg-frame',
-        { marginTop: '80px', marginBottom: '80px', marginLeft: '120px', marginRight: '120px', borderRadius: '32px' },
-        { marginTop: '0px', marginBottom: '0px', marginLeft: '0px', marginRight: '0px', borderRadius: '0px', ease: 'power2.out', duration: 0.06 },
+        { clipPath: 'inset(80px 120px 80px 120px round 32px)' },
+        { clipPath: 'inset(0px 0px 0px 0px round 0px)', ease: 'power2.out', duration: 0.06 },
         0
       );
 
@@ -354,11 +354,11 @@ export const Shop = () => {
     // --- Stone Experience: Mobile scroll-triggered reveals (no pinning) ---
     const stoneMobile = document.querySelector('.stone-mobile-section');
     if (stoneMobile && !reducedMotion) {
-      // Background: inset + rounded → full-bleed (one-shot, no scrub for INP)
+      // Background: inset + rounded → full-bleed (clip-path avoids CLS)
       gsap.fromTo('.stone-bg-mobile',
-        { margin: '40px 24px', borderRadius: '24px' },
+        { clipPath: 'inset(40px 24px 40px 24px round 24px)' },
         {
-          margin: '0px 0px', borderRadius: '0px',
+          clipPath: 'inset(0px 0px 0px 0px round 0px)',
           ease: 'power2.out', duration: 0.8,
           scrollTrigger: {
             trigger: '.stone-mobile-section',
@@ -414,7 +414,7 @@ export const Shop = () => {
 
     // Mobile reduced-motion fallback
     if (stoneMobile && reducedMotion) {
-      gsap.set('.stone-bg-mobile', { margin: '0', borderRadius: '0' });
+      gsap.set('.stone-bg-mobile', { clipPath: 'inset(0px 0px 0px 0px round 0px)' });
       gsap.set('.stone-slab-carousel', { opacity: 1, y: 0, scale: 1 });
       gsap.set('.stone-card-mobile', { opacity: 1, y: 0 });
       gsap.set('.stone-cta-mobile', { opacity: 1, y: 0 });
@@ -609,6 +609,8 @@ export const Shop = () => {
             <img
               src={slide.poster}
               alt=""
+              width={1920}
+              height={1080}
               fetchPriority="high"
               decoding="async"
               className="hero-img absolute inset-0 w-full h-full object-cover"
@@ -764,7 +766,7 @@ export const Shop = () => {
         {/* Frame = same inset as gold so copy + grid stay inside yellow; GSAP expands frame to full-bleed */}
         <div
           className="stone-bg-frame relative z-0 flex flex-1 min-h-0 flex-col overflow-hidden"
-          style={{ marginTop: '80px', marginBottom: '80px', marginLeft: '120px', marginRight: '120px', borderRadius: '32px' }}
+          style={{ clipPath: 'inset(80px 120px 80px 120px round 32px)' }}
         >
           <div className="stone-bg pointer-events-none absolute inset-0 bg-brand-gold" />
 
@@ -931,7 +933,7 @@ export const Shop = () => {
         {/* Animated background — starts inset + rounded, expands on scroll */}
         <div
           className="stone-bg-mobile pointer-events-none absolute inset-0 bg-brand-gold"
-          style={{ margin: '40px 24px', borderRadius: '24px' }}
+          style={{ clipPath: 'inset(40px 24px 40px 24px round 24px)' }}
         />
 
         <div className="relative z-10 container mx-auto px-4">
