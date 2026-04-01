@@ -53,7 +53,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Read raw body bytes for accurate HMAC verification
   const rawBody = await buffer(req);
   if (!verifyShopifyHmac(rawBody, hmac, secret)) {
-    return res.status(401).json({ error: 'Invalid HMAC signature' });
+    // Temporary debug: return partial hashes to diagnose mismatch
+    const computed = createHmac('sha256', secret).update(rawBody).digest('base64');
+    return res.status(401).json({
+      error: 'Invalid HMAC signature',
+      debug: {
+        bodyLen: rawBody.length,
+        expectedPrefix: hmac?.slice(0, 16),
+        computedPrefix: computed.slice(0, 16),
+        secretPrefix: secret.slice(0, 8),
+        bodyFirst50: rawBody.toString('utf8').slice(0, 50),
+      },
+    });
   }
 
   const topic = req.headers['x-shopify-topic'] as string;
