@@ -1,6 +1,17 @@
 /* Self-hosted Montserrat — GDPR compliant (no Google Fonts CDN) */
 /* Source: fonts.gstatic.com/s/montserrat/v31/, downloaded 2026-03-24 */
 
+/* Metric-adjusted fallback: matches Montserrat's metrics using Arial
+   so font-display:swap causes near-zero layout shift */
+@font-face {
+  font-family: 'Montserrat Fallback';
+  src: local('Arial');
+  size-adjust: 113.2%;
+  ascent-override: 85%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
 /* cyrillic-ext */
 @font-face {
   font-family: 'Montserrat';

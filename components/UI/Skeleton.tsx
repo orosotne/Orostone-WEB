@@ -55,12 +55,7 @@ export const ProductGridSkeleton: React.FC<ProductGridSkeletonProps> = ({
   count = 6, 
   compact = false 
 }) => (
-  <div className={cn(
-    'grid gap-6',
-    compact
-      ? 'grid-cols-2 sm:grid-cols-3 xl:grid-cols-4'
-      : 'grid-cols-1 sm:grid-cols-2 xl:grid-cols-3'
-  )}>
+  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
     {Array.from({ length: count }).map((_, i) => (
       <ProductCardSkeleton key={i} compact={compact} />
     ))}
@@ -72,35 +67,97 @@ export const ProductGridSkeleton: React.FC<ProductGridSkeletonProps> = ({
 // ===========================================
 
 export const ProductDetailSkeleton: React.FC = () => (
-  <div className="container mx-auto px-4 lg:px-8 py-8">
-    <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
-      {/* Image Gallery */}
-      <div className="lg:w-1/2">
-        <Skeleton className="aspect-square w-full rounded-2xl" />
-        <div className="flex gap-3 mt-4">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <Skeleton key={i} className="w-20 h-20 rounded-lg" />
-          ))}
+  <section className="pt-6 pb-8 lg:pt-8 lg:pb-16 bg-gradient-to-br from-white via-[#FAFAF8] to-[#F5F5F0]">
+    <div className="container mx-auto px-6">
+      {/* Breadcrumb */}
+      <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center gap-2">
+          <Skeleton className="h-3 w-12" />
+          <Skeleton className="h-3 w-2" />
+          <Skeleton className="h-3 w-32" />
         </div>
+        <Skeleton className="h-8 w-8 rounded-lg" />
       </div>
-      {/* Product Info */}
-      <div className="lg:w-1/2 space-y-4">
-        <Skeleton className="h-3 w-24" />
-        <Skeleton className="h-8 w-3/4" />
-        <Skeleton className="h-4 w-full" />
-        <Skeleton className="h-4 w-5/6" />
-        <div className="pt-4 space-y-3">
-          <Skeleton className="h-10 w-32" />
-          <Skeleton className="h-12 w-full rounded-xl" />
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        {/* Desktop Image Gallery — col-span-7 */}
+        <div className="hidden lg:block lg:col-span-7 space-y-4">
+          <Skeleton className="aspect-square w-full rounded-xl" />
+          <div className="flex gap-3">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <Skeleton key={i} className="w-20 h-20 rounded-lg" />
+            ))}
+          </div>
         </div>
-        <div className="pt-6 space-y-2">
-          <Skeleton className="h-3 w-28" />
-          <Skeleton className="h-3 w-40" />
-          <Skeleton className="h-3 w-36" />
+
+        {/* Mobile Image — 3:4 aspect */}
+        <div className="lg:hidden">
+          <Skeleton className="aspect-[3/4] w-full rounded-lg" />
+        </div>
+
+        {/* Product Info — col-span-5 */}
+        <div className="lg:col-span-5 space-y-4">
+          <Skeleton className="h-3 w-24" />
+          <Skeleton className="h-8 w-3/4" />
+          <div className="flex gap-2 mt-2">
+            <Skeleton className="h-8 w-20 rounded-full" />
+            <Skeleton className="h-8 w-24 rounded-full" />
+            <Skeleton className="h-8 w-20 rounded-full" />
+          </div>
+          <Skeleton className="h-4 w-full mt-4" />
+          <Skeleton className="h-4 w-5/6" />
+          <div className="pt-4 space-y-3">
+            <Skeleton className="h-10 w-32" />
+            <Skeleton className="h-12 w-full rounded-xl" />
+          </div>
+          <div className="pt-6 space-y-2">
+            <Skeleton className="h-3 w-28" />
+            <Skeleton className="h-3 w-40" />
+            <Skeleton className="h-3 w-36" />
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
+);
+
+// ===========================================
+// CATEGORY PAGE SKELETON (matches CategoryPage hero + grid)
+// ===========================================
+
+export const CategoryPageSkeleton: React.FC = () => (
+  <>
+    {/* Hero — matches h-[320px] md:h-[400px] with gold gradient */}
+    <section
+      className="relative h-[320px] md:h-[400px] overflow-hidden"
+      style={{ background: 'linear-gradient(135deg, #F5E9B8 0%, #ECD488 50%, #C9A85C 100%)' }}
+    >
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+      <div className="relative h-full container mx-auto px-6 lg:px-8 flex flex-col justify-end pb-10 md:pb-14">
+        {/* Breadcrumb */}
+        <div className="flex items-center gap-2 mb-4">
+          <Skeleton className="h-3 w-12 bg-white/20" />
+          <Skeleton className="h-3 w-2 bg-white/20" />
+          <Skeleton className="h-3 w-28 bg-white/20" />
+        </div>
+        {/* Title */}
+        <Skeleton className="h-10 md:h-14 w-64 md:w-96 bg-white/20 rounded-lg mb-3" />
+        {/* Description */}
+        <Skeleton className="h-5 w-80 max-w-xl bg-white/20 rounded mb-3" />
+        {/* Product count */}
+        <Skeleton className="h-3 w-24 bg-white/20 rounded mt-1" />
+      </div>
+    </section>
+
+    {/* Product Grid */}
+    <section className="container mx-auto px-6 lg:px-8 py-12 md:py-16">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <ProductCardSkeleton key={i} compact={false} />
+        ))}
+      </div>
+    </section>
+  </>
 );
 
 // ===========================================

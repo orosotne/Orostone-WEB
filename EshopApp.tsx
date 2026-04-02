@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'r
 import { EshopLayout } from './components/Eshop/EshopLayout';
 import { LoadingSpinner } from './components/UI/LoadingSpinner';
 import { ErrorBoundary } from './components/UI/ErrorBoundary';
-import { ProductGridSkeleton, ProductDetailSkeleton, CheckoutSkeleton } from './components/UI/Skeleton';
+import { ProductGridSkeleton, ProductDetailSkeleton, CheckoutSkeleton, CategoryPageSkeleton } from './components/UI/Skeleton';
 import { lazyWithRetry } from './lib/utils';
 
 // Core page — landing page must never show a loading spinner
@@ -160,12 +160,12 @@ const EshopAppContent = () => {
           
           {/* Categories */}
           <Route path="/kategoria/:slug" element={
-            <Suspense fallback={<ProductGridSkeleton />}>
+            <Suspense fallback={<CategoryPageSkeleton />}>
               <CategoryPage />
             </Suspense>
           } />
           <Route path="/kategoria/:slug/:subCategory" element={
-            <Suspense fallback={<ProductGridSkeleton />}>
+            <Suspense fallback={<CategoryPageSkeleton />}>
               <CategoryPage />
             </Suspense>
           } />

@@ -11,10 +11,12 @@ export default {
   		fontFamily: {
   			sans: [
   				'Montserrat',
+  				'Montserrat Fallback',
   				'sans-serif'
   			],
   			serif: [
   				'Montserrat',
+  				'Montserrat Fallback',
   				'sans-serif'
   			]
   		},
