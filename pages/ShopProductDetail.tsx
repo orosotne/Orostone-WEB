@@ -1629,36 +1629,44 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                     </>
                   )}
                 </button>
-                <button
-                  onClick={onAddSample}
-                  className={cn(
-                    "w-full py-4 px-8 text-sm font-semibold tracking-widest uppercase border transition-all flex items-center justify-center gap-3",
-                    isSampleInCart
-                      ? "border-emerald-300 bg-emerald-50 text-emerald-700 cursor-default"
-                      : !product.sampleShopifyVariantId
-                        ? "border-gray-200 text-gray-400 cursor-not-allowed opacity-60"
+                {!product.sampleShopifyVariantId ? (
+                  <Link
+                    to="/vzorky"
+                    className="w-full py-4 px-8 text-sm font-semibold tracking-widest uppercase border border-gray-300 text-brand-dark hover:border-brand-gold hover:text-brand-gold transition-all flex items-center justify-center gap-3"
+                  >
+                    <Package size={18} />
+                    Objednať vzorku zadarmo
+                  </Link>
+                ) : (
+                  <button
+                    onClick={onAddSample}
+                    className={cn(
+                      "w-full py-4 px-8 text-sm font-semibold tracking-widest uppercase border transition-all flex items-center justify-center gap-3",
+                      isSampleInCart
+                        ? "border-emerald-300 bg-emerald-50 text-emerald-700 cursor-default"
                         : sampleCount >= MAX_SAMPLES
                           ? "border-gray-200 text-gray-400 cursor-not-allowed"
                           : "border-gray-300 text-brand-dark hover:border-brand-gold hover:text-brand-gold"
-                  )}
-                >
-                  {isSampleInCart ? (
-                    <>
-                      <Check size={18} />
-                      Vzorka v košíku
-                    </>
-                  ) : sampleCount >= MAX_SAMPLES ? (
-                    <>
-                      <Package size={18} />
-                      Maximum vzoriek ({MAX_SAMPLES})
-                    </>
-                  ) : (
-                    <>
-                      <Package size={18} />
-                      Pridať vzorku
-                    </>
-                  )}
-                </button>
+                    )}
+                  >
+                    {isSampleInCart ? (
+                      <>
+                        <Check size={18} />
+                        Vzorka v košíku
+                      </>
+                    ) : sampleCount >= MAX_SAMPLES ? (
+                      <>
+                        <Package size={18} />
+                        Maximum vzoriek ({MAX_SAMPLES})
+                      </>
+                    ) : (
+                      <>
+                        <Package size={18} />
+                        Pridať vzorku
+                      </>
+                    )}
+                  </button>
+                )}
               </div>
 
               {/* ===== 13. Trust indicators ===== */}
@@ -3018,37 +3026,45 @@ export const ShopProductDetail: React.FC = () => {
             </button>
           </div>
           {/* Bottom row: Sample button */}
-          <button
-            onClick={handleAddSample}
-            disabled={!product.sampleShopifyVariantId || (sampleCount >= MAX_SAMPLES && !isSampleInCart(product.id))}
-            className={cn(
-              "w-full h-11 text-xs font-semibold tracking-wider uppercase transition-all flex items-center justify-center gap-2 rounded-lg border",
-              isSampleInCart(product.id)
-                ? "border-emerald-300 bg-emerald-50 text-emerald-700"
-                : !product.sampleShopifyVariantId
-                  ? "border-gray-200 text-gray-400 opacity-60"
+          {!product.sampleShopifyVariantId ? (
+            <Link
+              to="/vzorky"
+              className="w-full h-11 text-xs font-semibold tracking-wider uppercase transition-all flex items-center justify-center gap-2 rounded-lg border border-gray-300 text-brand-dark active:border-brand-gold active:text-brand-gold"
+            >
+              <Package size={14} />
+              Objednať vzorku zadarmo
+            </Link>
+          ) : (
+            <button
+              onClick={handleAddSample}
+              disabled={sampleCount >= MAX_SAMPLES && !isSampleInCart(product.id)}
+              className={cn(
+                "w-full h-11 text-xs font-semibold tracking-wider uppercase transition-all flex items-center justify-center gap-2 rounded-lg border",
+                isSampleInCart(product.id)
+                  ? "border-emerald-300 bg-emerald-50 text-emerald-700"
                   : sampleCount >= MAX_SAMPLES
                     ? "border-gray-200 text-gray-400"
                     : "border-gray-300 text-brand-dark active:border-brand-gold active:text-brand-gold"
-            )}
-          >
-            {isSampleInCart(product.id) ? (
-              <>
-                <Check size={14} />
-                Vzorka v košíku
-              </>
-            ) : sampleCount >= MAX_SAMPLES ? (
-              <>
-                <Package size={14} />
-                Maximum vzoriek ({MAX_SAMPLES})
-              </>
-            ) : (
-              <>
-                <Package size={14} />
-                Objednať vzorku zadarmo
-              </>
-            )}
-          </button>
+              )}
+            >
+              {isSampleInCart(product.id) ? (
+                <>
+                  <Check size={14} />
+                  Vzorka v košíku
+                </>
+              ) : sampleCount >= MAX_SAMPLES ? (
+                <>
+                  <Package size={14} />
+                  Maximum vzoriek ({MAX_SAMPLES})
+                </>
+              ) : (
+                <>
+                  <Package size={14} />
+                  Objednať vzorku zadarmo
+                </>
+              )}
+            </button>
+          )}
         </div>
       </div>
     </div>
