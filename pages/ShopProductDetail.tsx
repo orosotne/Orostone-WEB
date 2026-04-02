@@ -897,25 +897,21 @@ const ProductLightbox: React.FC<ProductLightboxProps> = ({
           )}
 
           {/* Image */}
-          <motion.div
+          <motion.img
             key={currentIndex}
-            initial={{ opacity: 0, scale: 0.9 }}
+            src={shopifyImageUrl(images[currentIndex], 1600)}
+            srcSet={shopifySrcSet(images[currentIndex])}
+            sizes="100vw"
+            alt={`${productName} - ${currentIndex + 1}`}
+            className="max-w-[calc(100%-2rem)] md:max-w-[calc(100%-8rem)] max-h-[85vh] object-contain"
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.3 }}
-            className="max-w-7xl max-h-[90vh] px-4 md:px-16"
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.25 }}
             onClick={(e) => e.stopPropagation()}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
-          >
-            <img
-              src={shopifyImageUrl(images[currentIndex], 1600)}
-              srcSet={shopifySrcSet(images[currentIndex])}
-              sizes="100vw"
-              alt={`${productName} - ${currentIndex + 1}`}
-              className="max-w-full max-h-[90vh] object-contain rounded-lg"
-            />
-          </motion.div>
+          />
         </motion.div>
       )}
     </AnimatePresence>
