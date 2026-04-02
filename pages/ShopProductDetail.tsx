@@ -125,14 +125,17 @@ const calculateSlabPrice = (pricePerM2: number, dimensions: string): number => {
 
 // ===========================================
 // HELPER: Generate srcset for Shopify CDN images
+const shopifyImageUrl = (url: string, width: number): string => {
+  // Use Shopify's modern URL param API — automatic WebP + better compression
+  const base = url.replace(/(\?.*)?$/, '');
+  return `${base}?width=${width}&quality=80`;
+};
+
 const shopifySrcSet = (url: string): string | undefined => {
   if (!url || !url.includes('cdn.shopify.com')) return undefined;
   const widths = [400, 600, 800, 1200, 1600];
   return widths
-    .map(w => {
-      const resized = url.replace(/(\.\w+)(\?.*)?$/, `_${w}x$1$2`);
-      return `${resized} ${w}w`;
-    })
+    .map(w => `${shopifyImageUrl(url, w)} ${w}w`)
     .join(', ');
 };
 
@@ -800,6 +803,8 @@ const ProductLightbox: React.FC<ProductLightboxProps> = ({
   onNext,
   productName,
 }) => {
+  const touchStartX = useRef<number | null>(null);
+
   // Keyboard navigation
   React.useEffect(() => {
     if (!isOpen) return;
@@ -814,12 +819,35 @@ const ProductLightbox: React.FC<ProductLightboxProps> = ({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose, onPrevious, onNext]);
 
+  // Preload adjacent images
+  React.useEffect(() => {
+    if (!isOpen) return;
+    const toPreload = [images[currentIndex - 1], images[currentIndex + 1]].filter(Boolean);
+    toPreload.forEach((src) => {
+      const img = new Image();
+      img.src = shopifyImageUrl(src, 1600);
+    });
+  }, [isOpen, currentIndex, images]);
+
   useScrollLock(isOpen);
 
   if (!isOpen || !images[currentIndex]) return null;
 
   const hasPrevious = currentIndex > 0;
   const hasNext = currentIndex < images.length - 1;
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    touchStartX.current = null;
+    if (Math.abs(diff) < 50) return;
+    if (diff > 0 && hasNext) onNext();
+    else if (diff < 0 && hasPrevious) onPrevious();
+  };
 
   return (
     <AnimatePresence>
@@ -829,20 +857,20 @@ const ProductLightbox: React.FC<ProductLightboxProps> = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95"
+          className="fixed inset-0 z-[70] flex items-center justify-center bg-black/95"
           onClick={onClose}
         >
           {/* Close button */}
           <button
             onClick={onClose}
-            className="absolute top-6 right-6 z-50 text-white hover:text-brand-gold transition-colors p-2"
+            className="absolute top-6 right-6 z-[71] w-11 h-11 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:text-brand-gold transition-colors"
             aria-label="Zatvoriť"
           >
-            <X size={32} />
+            <X size={24} />
           </button>
 
           {/* Image counter */}
-          <div className="absolute top-6 left-6 z-50 text-white text-sm font-light">
+          <div className="absolute top-6 left-6 z-[71] bg-black/50 backdrop-blur-sm rounded-full px-3.5 py-1.5 text-white text-sm font-light">
             {currentIndex + 1} / {images.length}
           </div>
 
@@ -850,10 +878,10 @@ const ProductLightbox: React.FC<ProductLightboxProps> = ({
           {hasPrevious && (
             <button
               onClick={(e) => { e.stopPropagation(); onPrevious(); }}
-              className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-50 w-12 h-12 md:w-auto md:h-auto flex items-center justify-center text-white hover:text-brand-gold active:text-brand-gold transition-colors p-2"
+              className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 z-[71] w-12 h-12 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:text-brand-gold active:text-brand-gold transition-colors"
               aria-label="Predchádzajúci obrázok"
             >
-              <ChevronLeft size={48} className="w-9 h-9 md:w-12 md:h-12" />
+              <ChevronLeft size={28} />
             </button>
           )}
 
@@ -861,10 +889,10 @@ const ProductLightbox: React.FC<ProductLightboxProps> = ({
           {hasNext && (
             <button
               onClick={(e) => { e.stopPropagation(); onNext(); }}
-              className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-50 w-12 h-12 md:w-auto md:h-auto flex items-center justify-center text-white hover:text-brand-gold active:text-brand-gold transition-colors p-2"
+              className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-[71] w-12 h-12 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:text-brand-gold active:text-brand-gold transition-colors"
               aria-label="Ďalší obrázok"
             >
-              <ChevronRight size={48} className="w-9 h-9 md:w-12 md:h-12" />
+              <ChevronRight size={28} />
             </button>
           )}
 
@@ -877,9 +905,13 @@ const ProductLightbox: React.FC<ProductLightboxProps> = ({
             transition={{ duration: 0.3 }}
             className="max-w-7xl max-h-[90vh] px-4 md:px-16"
             onClick={(e) => e.stopPropagation()}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
           >
             <img
-              src={images[currentIndex]}
+              src={shopifyImageUrl(images[currentIndex], 1600)}
+              srcSet={shopifySrcSet(images[currentIndex])}
+              sizes="100vw"
               alt={`${productName} - ${currentIndex + 1}`}
               className="max-w-full max-h-[90vh] object-contain rounded-lg"
             />
@@ -1152,6 +1184,7 @@ interface HeroSectionProps {
   onAddSample: () => void;
   isSampleInCart: boolean;
   sampleCount: number;
+  onLightboxChange?: (isOpen: boolean) => void;
 }
 
 const HeroSection: React.FC<HeroSectionProps> = ({ 
@@ -1168,14 +1201,16 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   onAddSample,
   isSampleInCart,
   sampleCount,
+  onLightboxChange,
 }) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [showAllImages, setShowAllImages] = useState(false);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [descExpanded, setDescExpanded] = useState(false);
+  const mobileGalleryRef = useRef<HTMLDivElement>(null);
 
-  const images = product.gallery && product.gallery.length > 0 
-    ? product.gallery 
+  const images = product.gallery && product.gallery.length > 0
+    ? product.gallery
     : [product.image];
 
   const currentImage = images[selectedImageIndex];
@@ -1185,8 +1220,12 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   const openLightbox = (index?: number) => {
     if (index !== undefined) setSelectedImageIndex(index);
     setIsLightboxOpen(true);
+    onLightboxChange?.(true);
   };
-  const closeLightbox = () => setIsLightboxOpen(false);
+  const closeLightbox = () => {
+    setIsLightboxOpen(false);
+    onLightboxChange?.(false);
+  };
   const goToPreviousLightbox = () => setSelectedImageIndex((prev) => Math.max(0, prev - 1));
   const goToNextLightbox = () => setSelectedImageIndex((prev) => Math.min(images.length - 1, prev + 1));
 
@@ -1234,7 +1273,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 <AnimatePresence mode="sync">
                   <motion.img
                     key={selectedImageIndex}
-                    src={currentImage}
+                    src={shopifyImageUrl(currentImage, 1200)}
                     alt={productImageAlt(product, selectedImageIndex)}
                     width={1200}
                     height={1200}
@@ -1312,10 +1351,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                             : "ring-1 ring-gray-200 hover:ring-gray-400"
                         )}
                       >
-                        <img 
-                          src={img} 
+                        <img
+                          src={shopifyImageUrl(img, 400)}
                           alt={productImageAlt(product, actualIndex)}
                           className="w-full h-full object-cover"
+                          loading="lazy"
                         />
                       </button>
                     );
@@ -1459,70 +1499,65 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
               </div>
 
-              {/* ===== 4. Mobile Image Gallery — full-width, swipe-optimized ===== */}
+              {/* ===== 4. Mobile Image Gallery — horizontal scroll carousel ===== */}
               <div className="order-4 lg:hidden mb-6">
-                {/* Main Image with navigation */}
-                <div 
-                  className="aspect-[3/4] bg-[#F5F5F3] overflow-hidden relative cursor-pointer rounded-lg"
-                  onClick={() => openLightbox()}
-                >
-                  <AnimatePresence mode="sync">
-                    <motion.img
-                      key={selectedImageIndex}
-                      src={currentImage}
-                      alt={productImageAlt(product, selectedImageIndex)}
-                      width={900}
-                      height={1200}
-                      className="w-full h-full object-cover"
-                      srcSet={shopifySrcSet(currentImage)}
-                      sizes="100vw"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    />
-                  </AnimatePresence>
-
-                  {/* Always-visible navigation arrows — 48px touch targets */}
-                  {images.length > 1 && (
-                    <>
-                      <button
-                        onClick={(e) => { e.stopPropagation(); goToPrevious(); }}
-                        className="absolute left-3 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-dark active:bg-white active:scale-95 transition-all shadow-sm"
-                        aria-label="Predchádzajúci obrázok"
+                <div className="relative">
+                  {/* Scrollable image strip */}
+                  <div
+                    ref={mobileGalleryRef}
+                    className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide [touch-action:pan-x_pan-y]"
+                    style={{ WebkitOverflowScrolling: 'touch' }}
+                    onScroll={(e) => {
+                      const el = e.currentTarget;
+                      const index = Math.round(el.scrollLeft / el.clientWidth);
+                      if (index >= 0 && index < images.length && index !== selectedImageIndex) {
+                        setSelectedImageIndex(index);
+                      }
+                    }}
+                  >
+                    {images.map((img, index) => (
+                      <div
+                        key={index}
+                        className="w-full flex-shrink-0 snap-center aspect-[3/4] bg-[#F5F5F3] relative rounded-lg overflow-hidden"
+                        onClick={() => openLightbox(index)}
                       >
-                        <ChevronRight size={22} className="rotate-180" />
-                      </button>
-                      <button
-                        onClick={(e) => { e.stopPropagation(); goToNext(); }}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-dark active:bg-white active:scale-95 transition-all shadow-sm"
-                        aria-label="Ďalší obrázok"
-                      >
-                        <ChevronRight size={22} />
-                      </button>
-                    </>
-                  )}
+                        <img
+                          src={shopifyImageUrl(img, 800)}
+                          alt={productImageAlt(product, index)}
+                          width={900}
+                          height={1200}
+                          className="w-full h-full object-cover"
+                          srcSet={shopifySrcSet(img)}
+                          sizes="100vw"
+                          loading={index === 0 ? 'eager' : 'lazy'}
+                        />
 
-                  {/* Stock badge */}
-                  {product.inStock && (
-                    <div className="absolute top-3 left-3 bg-emerald-600 text-white px-3 py-1.5 rounded-md text-xs uppercase tracking-widest font-medium">
-                      Skladom
-                    </div>
-                  )}
+                        {/* Stock badge — only on first image */}
+                        {index === 0 && product.inStock && (
+                          <div className="absolute top-3 left-3 bg-emerald-600 text-white px-3 py-1.5 rounded-md text-xs uppercase tracking-widest font-medium">
+                            Skladom
+                          </div>
+                        )}
 
-                  {/* Zoom hint */}
-                  <div className="absolute bottom-3 right-3 w-11 h-11 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-dark shadow-sm">
-                    <ZoomIn size={18} />
+                        {/* Zoom hint */}
+                        <div className="absolute bottom-3 right-3 w-11 h-11 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-brand-dark shadow-sm">
+                          <ZoomIn size={18} />
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
-                {/* Dot indicators — replaces thumbnails for cleaner mobile UX */}
+                {/* Dot indicators */}
                 {images.length > 1 && (
                   <div className="flex items-center justify-center gap-2 pt-3 px-6">
                     {images.map((_, index) => (
                       <button
                         key={index}
-                        onClick={() => setSelectedImageIndex(index)}
+                        onClick={() => {
+                          setSelectedImageIndex(index);
+                          mobileGalleryRef.current?.scrollTo({ left: index * (mobileGalleryRef.current?.clientWidth ?? 0), behavior: 'smooth' });
+                        }}
                         className={cn(
                           "rounded-full transition-all duration-300",
                           selectedImageIndex === index
@@ -2741,6 +2776,8 @@ export const ShopProductDetail: React.FC = () => {
   const [selectedBundle, setSelectedBundle] = useState<BundleOption>(BUNDLE_OPTIONS[1]);
   const [cartError, setCartError] = useState<string | null>(null);
 
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+
   // Installation service state
   const [installationSelected, setInstallationSelected] = useState(false);
   const [installationAreaM2, setInstallationAreaM2] = useState<number | null>(null);
@@ -2897,6 +2934,7 @@ export const ShopProductDetail: React.FC = () => {
         onAddSample={handleAddSample}
         isSampleInCart={isSampleInCart(product.id)}
         sampleCount={sampleCount}
+        onLightboxChange={setIsLightboxOpen}
       />
 
       {/* Section 2: Product Story (Rich Description) */}
@@ -2937,7 +2975,7 @@ export const ShopProductDetail: React.FC = () => {
       {/* ===== Sticky Add-to-Cart Bottom Bar — mobile only ===== */}
       <div className={cn(
         "fixed left-0 right-0 z-[60] lg:hidden bg-white border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 bottom-0",
-        isCartOpen && "hidden"
+        (isCartOpen || isLightboxOpen) && "hidden"
       )}
         style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
       >
