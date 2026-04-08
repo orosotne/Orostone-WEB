@@ -4,19 +4,14 @@ import { useGSAP } from '@gsap/react';
 import { ChevronDown } from 'lucide-react';
 
 export function TextKnockoutSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  // Outer wrapper provides the scroll distance; inner section uses `position: sticky`
+  // so GSAP drives the animation via scrub without creating a `.pin-spacer`
+  // (native pin-spacer would cause full-viewport CLS every ScrollTrigger.refresh()).
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const svgRef = useRef<SVGSVGElement>(null);
   const goldSvgRef = useRef<HTMLDivElement>(null);
-
-  const stylePinSpacer = (self: any) => {
-    const spacer = self.spacer || self.pin?.parentElement;
-    if (spacer) {
-      spacer.style.backgroundColor = 'black';
-      spacer.style.overflow = 'hidden';
-      spacer.style.overflowX = 'clip';
-    }
-  };
 
   // Start video playback when near viewport
   useEffect(() => {
@@ -40,25 +35,21 @@ export function TextKnockoutSection() {
 
   // Responsive GSAP animations via matchMedia
   useGSAP(() => {
-    if (!containerRef.current || !svgRef.current || !goldSvgRef.current) return;
+    if (!wrapperRef.current || !svgRef.current || !goldSvgRef.current) return;
 
     const mm = gsap.matchMedia();
 
-    // ── Desktop: pin + scale 700 zoom ──────────────────────────────────────
+    // ── Desktop: sticky-driven scrub, scale 700 zoom ───────────────────────
     mm.add('(min-width: 1024px)', () => {
       gsap.set(svgRef.current!, { scale: 700 });
       gsap.set(goldSvgRef.current!, { opacity: 0 });
 
       gsap.timeline({
         scrollTrigger: {
-          trigger: containerRef.current!,
+          trigger: wrapperRef.current!,
           start: 'top top',
-          end: '+=130%',
+          end: 'bottom bottom',
           scrub: 0.5,
-          pin: true,
-          pinSpacing: true,
-          refreshPriority: -1,
-          onRefresh: stylePinSpacer,
         },
       })
       .to(svgRef.current!, { scale: 1, duration: 0.35, ease: 'power4.out' }, 0)
@@ -66,21 +57,17 @@ export function TextKnockoutSection() {
       .to(goldSvgRef.current!, { opacity: 0, duration: 0.25, ease: 'power2.inOut' }, 0.85);
     });
 
-    // ── Mobile: lighter animation — reduced scale, shorter pin, less CPU ────
+    // ── Mobile: lighter animation — reduced scale, shorter wrap ────────────
     mm.add('(max-width: 1023px)', () => {
       gsap.set(svgRef.current!, { scale: 230, willChange: 'transform' });
       gsap.set(goldSvgRef.current!, { opacity: 0 });
 
       gsap.timeline({
         scrollTrigger: {
-          trigger: containerRef.current!,
+          trigger: wrapperRef.current!,
           start: 'top top',
-          end: '+=60%',
+          end: 'bottom bottom',
           scrub: true,
-          pin: true,
-          pinSpacing: true,
-          refreshPriority: -1,
-          onRefresh: stylePinSpacer,
         },
       })
       .to(svgRef.current!, { scale: 1, duration: 0.3, ease: 'power2.out', clearProps: 'willChange' }, 0.1)
@@ -90,12 +77,17 @@ export function TextKnockoutSection() {
 
     return () => mm.revert();
 
-  }, { scope: containerRef });
+  }, { scope: wrapperRef });
 
   return (
+    // Outer wrapper reserves scroll distance: 100vh (sticky) + 60% (mobile) / 130% (desktop)
+    <div
+      ref={wrapperRef}
+      className="relative w-full h-[160vh] lg:h-[230vh] bg-black"
+    >
     <section
       ref={containerRef}
-      className="relative isolate h-screen w-full overflow-x-clip overflow-hidden bg-black"
+      className="sticky top-0 isolate h-screen w-full overflow-x-clip overflow-hidden bg-black"
     >
       {/* Layer 1: Background video */}
       <video
@@ -147,5 +139,6 @@ export function TextKnockoutSection() {
         </div>
       </div>
     </section>
+    </div>
   );
 }

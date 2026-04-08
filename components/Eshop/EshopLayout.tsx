@@ -47,7 +47,9 @@ export const EshopLayout: React.FC<EshopLayoutProps> = ({ children }) => {
       <CartDrawer />
 
       {/* Main Content — homepage has no top padding (hero goes behind transparent navbar) */}
-      <main className={`min-w-0 w-full flex-grow ${isHomepage ? '' : SHOW_ANNOUNCEMENT_BAR ? 'pt-[92px] lg:pt-[148px]' : 'pt-[56px] lg:pt-[112px]'}`}>
+      {/* min-h-screen reserves viewport height so the footer starts below the fold during initial
+          render / Suspense fallback — prevents footer-jump CLS when lazy chunks load and expand main. */}
+      <main className={`min-w-0 w-full flex-grow min-h-screen ${isHomepage ? '' : SHOW_ANNOUNCEMENT_BAR ? 'pt-[92px] lg:pt-[148px]' : 'pt-[56px] lg:pt-[112px]'}`}>
         {children}
       </main>
 

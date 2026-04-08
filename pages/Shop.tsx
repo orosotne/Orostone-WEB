@@ -263,19 +263,18 @@ export const Shop = () => {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const stonePinned = document.querySelector('.stone-experience-pinned');
 
-    // Pin only at lg+ — section is `hidden lg:flex`; pin on display:none broke mobile scroll
+    // Pin only at lg+ — section is inside `hidden lg:block` wrapper with h-[368vh]
+    // Uses CSS `position: sticky` instead of GSAP `pin: true` to avoid pin-spacer CLS.
     const stonePinMedia = gsap.matchMedia();
     stonePinMedia.add('(min-width: 1024px)', () => {
-      if (reducedMotion || !document.querySelector('.stone-experience-pinned')) return;
+      if (reducedMotion || !document.querySelector('.stone-experience-wrap')) return;
 
       const stoneTl = gsap.timeline({
         scrollTrigger: {
-          trigger: '.stone-experience-pinned',
+          trigger: '.stone-experience-wrap',
           start: 'top top',
-          end: '+=250%',
+          end: 'bottom bottom',
           scrub: 0.3,
-          pin: true,
-          anticipatePin: 1,
         },
       });
 
@@ -528,7 +527,7 @@ export const Shop = () => {
   const sinteredProducts = SHOP_PRODUCTS.filter(p => p.category === 'sintered-stone');
 
   return (
-    <main ref={containerRef} className="w-full overflow-x-hidden overflow-y-visible">
+    <main ref={containerRef} className="w-full overflow-x-clip">
       <SEOHead
         title="OROSTONE E-Shop | Prémiový sinterovaný kameň"
         description="Prémiové sinterované platne 3200×1600mm skladom. Odolnosť kameňa a luxusný dizajn. Bezplatná vzorka, expedícia do 5 dní. Bratislava."
@@ -761,8 +760,12 @@ export const Shop = () => {
       </section>
 
 
-      {/* ==================== STONE EXPERIENCE — Pin-and-reveal scroll animation ==================== */}
-      <section className="stone-experience-pinned relative hidden lg:flex lg:flex-col h-[118vh] overflow-hidden w-full">
+      {/* ==================== STONE EXPERIENCE — Sticky scroll animation (desktop only) ==================== */}
+      {/* Outer wrapper reserves scroll distance: 118vh (section) + 250vh (scrub range).
+          `position: sticky` on the inner section replaces GSAP `pin: true` to avoid
+          pin-spacer DOM manipulation which was causing full-viewport CLS on refresh. */}
+      <div className="stone-experience-wrap hidden lg:block relative h-[368vh] w-full">
+      <section className="stone-experience-pinned sticky top-0 flex flex-col h-[118vh] overflow-hidden w-full">
         {/* Frame = same inset as gold so copy + grid stay inside yellow; GSAP expands frame to full-bleed */}
         <div
           className="stone-bg-frame relative z-0 flex flex-1 min-h-0 flex-col overflow-hidden"
@@ -921,9 +924,10 @@ export const Shop = () => {
           </div>
         </div>
       </section>
+      </div>
 
       {/* Order wrapper: mobile: stone(1) → products(2) → TextKnockout(3); desktop: TextKnockout(1) → stone(2) → products(3) */}
-      <div className="flex flex-col w-full overflow-x-hidden">
+      <div className="flex flex-col w-full overflow-x-clip">
         <div className="order-3 lg:order-1">
           <TextKnockoutSection />
         </div>
