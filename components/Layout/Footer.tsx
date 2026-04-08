@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   Facebook, Instagram, Youtube, Mail, Phone, MapPin,
   CreditCard, Truck, Shield, Clock, CheckCircle, Loader2
@@ -160,11 +160,10 @@ const EshopColumns: React.FC<FooterEshopColumnsProps> = ({ categories = [] }) =>
 
 interface FooterProps {
   categories?: EshopCategory[];
+  isProductDetail?: boolean;
 }
 
-export const Footer: React.FC<FooterProps> = ({ categories }) => {
-  const { pathname } = useLocation();
-  const isProductDetail = pathname.startsWith('/produkt/');
+const FooterComponent: React.FC<FooterProps> = ({ categories, isProductDetail = false }) => {
   const { openSettings } = useCookies();
 
   return (
@@ -355,3 +354,8 @@ export const Footer: React.FC<FooterProps> = ({ categories }) => {
     </footer>
   );
 };
+
+// Memoized export — Footer dostáva `categories` (stabilná referencia z module-level cache)
+// a `isProductDetail` (boolean z layoutu), takže sa re-renderuje len keď sa skutočne
+// zmení identita kategórií alebo prepne sa na/z detail produktu.
+export const Footer = React.memo(FooterComponent);

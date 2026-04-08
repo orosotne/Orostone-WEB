@@ -76,15 +76,25 @@ export const EshopNavbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close menus on route change
+  // Close menus on route change — skip the first commit after mount (nothing is open),
+  // and avoid doing any work if every menu is already closed. React bails out on equal
+  // primitives, but this also prevents an unnecessary effect run in the click→paint path.
+  const didMountRef = useRef(false);
   useEffect(() => {
-    setMobileMenuOpen(false);
-    setOffCanvasOpen(false);
-    setCollectionsExpanded(false);
-    setActiveCategory(null);
-    setSearchOpen(false);
-    setSearchQuery('');
-  }, [location]);
+    if (!didMountRef.current) {
+      didMountRef.current = true;
+      return;
+    }
+    if (mobileMenuOpen) setMobileMenuOpen(false);
+    if (offCanvasOpen) setOffCanvasOpen(false);
+    if (collectionsExpanded) setCollectionsExpanded(false);
+    if (activeCategory !== null) setActiveCategory(null);
+    if (searchOpen) setSearchOpen(false);
+    if (searchQuery !== '') setSearchQuery('');
+    // Intentionally only depend on pathname — we don't want to re-run on state changes,
+    // and comparing pathname (string) is cheaper than comparing the location object.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname]);
 
   return (
     <>
@@ -136,6 +146,8 @@ export const EshopNavbar: React.FC = () => {
               <img
                 src="/images/orostone-logo.svg"
                 alt="OROSTONE"
+                width={214}
+                height={42}
                 className={cn(
                   "h-6 lg:h-10 w-auto max-w-[min(52vw,280px)] object-contain object-center transition-all duration-500",
                   isTransparent && "brightness-0 invert"
@@ -272,6 +284,8 @@ export const EshopNavbar: React.FC = () => {
                             <img
                               src={product.image}
                               alt={product.name}
+                              width={48}
+                              height={48}
                               className="w-12 h-12 object-cover rounded-lg flex-shrink-0"
                             />
                             <div className="flex-1 min-w-0">

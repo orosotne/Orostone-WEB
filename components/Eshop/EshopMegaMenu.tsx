@@ -107,12 +107,14 @@ export const MEGA_MENU_CATEGORIES: MegaMenuCategory[] = [
 
 /**
  * Vráti len viditeľné kategórie podľa konfigurácie v config/features.ts
+ * Kategórie aj konfig sú statické, takže výsledok sa počíta len raz na úrovni modulu.
+ * Tým sa predíde opakovanému filter()+alokácii poľa pri každom re-rendri navbaru/footera.
  */
-export const getVisibleCategories = (): MegaMenuCategory[] => {
-  return MEGA_MENU_CATEGORIES.filter(
-    category => VISIBLE_CATEGORIES[category.id as keyof typeof VISIBLE_CATEGORIES] !== false
-  );
-};
+const VISIBLE_CATEGORY_LIST: MegaMenuCategory[] = MEGA_MENU_CATEGORIES.filter(
+  category => VISIBLE_CATEGORIES[category.id as keyof typeof VISIBLE_CATEGORIES] !== false
+);
+
+export const getVisibleCategories = (): MegaMenuCategory[] => VISIBLE_CATEGORY_LIST;
 
 /**
  * Farebné zatriedenie z `ShopProduct.colorCategory` (po mapovaní v shopify.service):
