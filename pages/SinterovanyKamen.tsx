@@ -374,7 +374,7 @@ export const SinterovanyKamen = () => {
             Povrch, ktorý prekoná prírodný kameň aj quartz.
           </p>
           <div className="sk-hero-text flex flex-col sm:flex-row gap-4 w-fit mx-auto">
-            <Link to="/kolekcie" className="w-full sm:w-auto">
+            <Link to="/kategoria/sintered-stone" className="w-full sm:w-auto">
               <Button
                 size="lg"
                 className="w-full bg-brand-gold text-brand-dark px-10 py-6 text-base rounded-full hover:bg-white hover:text-brand-dark transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1"
@@ -1054,7 +1054,7 @@ export const SinterovanyKamen = () => {
                 Vytvoriť cenovú ponuku
               </Button>
             </Link>
-            <Link to="/kolekcie">
+            <Link to="/kategoria/sintered-stone">
               <Button
                 variant="outline"
                 size="lg"
