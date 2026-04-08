@@ -1584,12 +1584,15 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 
               {/* ===== 10. Bundle Selector ===== */}
               <div className="order-[10] lg:order-[9]">
-                <BundleSelector 
+                <BundleSelector
                   pricePerSlab={singleSlabPrice}
                   pricePerM2={product.pricePerM2}
                   selectedBundle={selectedBundle}
                   onBundleChange={onBundleChange}
                 />
+                <p className="text-[11px] text-gray-500 -mt-4 mb-6 leading-relaxed">
+                  <span className="text-emerald-700 font-medium">Tip:</span> Zľava sa automaticky uplatní v košíku pri 2+ platniach — platí aj pre rôzne vzory.
+                </p>
               </div>
 
               {/* ===== 11. Installation Selector ===== */}

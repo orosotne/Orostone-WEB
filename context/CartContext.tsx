@@ -23,7 +23,9 @@ export interface CartItem {
   productId: string;     // Product handle
   name: string;
   image: string;
-  price: number;         // cena za kus
+  price: number;         // jednotková cena PO line-level zľave
+  originalPrice: number; // jednotková cena PRED zľavou
+  lineDiscount: number;  // celková line-level zľava v EUR pre túto položku
   quantity: number;
   variant: string;       // variant title (napr. "12mm / 3200x1600")
 }
@@ -50,6 +52,12 @@ interface CartContextType {
   itemCount: number;
   subtotal: number;
   total: number;
+  /** Celková aplikovaná zľava (kladné číslo, EUR). 0 ak žiadna. */
+  totalDiscount: number;
+  /** Medzisúčet pred aplikáciou zliav (sum amountPerQuantity * quantity). */
+  subtotalBeforeDiscount: number;
+  /** Tituly aplikovaných zliav (napr. ["Bundle 2+ platne −20%"]). */
+  appliedDiscountTitles: string[];
   isInCart: (productHandle: string) => boolean;
   getItemQuantity: (productHandle: string) => number;
   
@@ -96,13 +104,24 @@ function mapShopifyCartLines(cart: ShopifyCart): CartItem[] {
         fetch('http://127.0.0.1:7731/ingest/fe10e622-0fa2-40d2-8709-73e6a557fd3f',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'686860'},body:JSON.stringify({sessionId:'686860',location:'CartContext.tsx:mapShopifyCartLines',message:'mapping cart line',data:{lineId:line.id,merchandiseTitle:line.merchandise?.title,productTitle:line.merchandise?.product?.title,imageUrl:line.merchandise?.image?.url,edgesLen:line.merchandise?.product?.images?.edges?.length,nodeUrl:line.merchandise?.product?.images?.edges?.[0]?.node?.url},timestamp:Date.now(),hypothesisId:'H2'})}).catch(()=>{});
       }
       // #endregion
+      // Storefront API: CartLineCost.subtotalAmount = line total PRED line-level
+      // discountami, CartLineCost.totalAmount = PO nich. Rozdiel = line discount.
+      const lineSubtotalBefore = parseFloat(line.cost?.subtotalAmount?.amount ?? '0');
+      const lineTotalAfter = parseFloat(line.cost?.totalAmount?.amount ?? '0');
+      const lineDiscount = Math.max(0, lineSubtotalBefore - lineTotalAfter);
+      const qty = line.quantity || 1;
+      const originalPrice = lineSubtotalBefore / qty;
+      const effectivePrice = lineTotalAfter / qty;
+
       return {
         id: line.id,
         variantId: line.merchandise.id,
         productId: line.merchandise.product?.handle ?? '',
         name: line.merchandise.product?.title ?? '',
         image: line.merchandise.image?.url || line.merchandise.product?.images?.edges?.[0]?.node?.url || PLACEHOLDER_IMAGE,
-        price: parseFloat(line.cost?.amountPerQuantity?.amount ?? '0'),
+        price: effectivePrice,
+        originalPrice,
+        lineDiscount,
         quantity: line.quantity,
         variant: (line.merchandise.title ?? '') !== 'Default Title' ? (line.merchandise.title ?? '') : '',
       };
@@ -302,6 +321,36 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const itemCount = cart?.totalQuantity || 0;
   const subtotal = cart ? parseFloat(cart.cost.subtotalAmount.amount) : 0;
   const total = cart ? parseFloat(cart.cost.totalAmount.amount) : 0;
+
+  // Medzisúčet pred zľavami = suma line.cost.subtotalAmount všetkých liniek.
+  // Storefront API: CartLineCost.subtotalAmount je line total PRED line-level
+  // discountami (robustnejšie ako amountPerQuantity × quantity, ktoré v niektorých
+  // kontextoch môže vracať už discounted hodnotu).
+  // Cart.cost.subtotalAmount je UŽ po aplikácii zliav → rozdiel = totalDiscount.
+  const subtotalBeforeDiscount = cart
+    ? cart.lines.edges.reduce((sum, { node }) => {
+        return sum + parseFloat(node.cost?.subtotalAmount?.amount ?? '0');
+      }, 0)
+    : 0;
+  const totalDiscount = Math.max(0, subtotalBeforeDiscount - subtotal);
+
+  const appliedDiscountTitles = cart
+    ? Array.from(
+        new Set([
+          // cart-level (napr. Order discount alebo code)
+          ...(cart.discountAllocations ?? [])
+            .map((a) => a.title || a.code)
+            .filter((x): x is string => !!x),
+          // line-level (Amount off products automatic discount ide sem)
+          ...cart.lines.edges.flatMap(({ node }) =>
+            (node.discountAllocations ?? [])
+              .map((a) => a.title || a.code)
+              .filter((x): x is string => !!x)
+          ),
+        ])
+      )
+    : [];
+
   const checkoutUrl = cart?.checkoutUrl
     ? `${cart.checkoutUrl}${cart.checkoutUrl.includes('?') ? '&' : '?'}return_to=${encodeURIComponent('https://orostone.sk/objednavka-dokoncena')}`
     : null;
@@ -360,6 +409,9 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     itemCount,
     subtotal,
     total,
+    totalDiscount,
+    subtotalBeforeDiscount,
+    appliedDiscountTitles,
     isInCart,
     getItemQuantity,
     // Sample helpers

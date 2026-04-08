@@ -72,6 +72,14 @@ interface ShopifyCollection {
 }
 
 // Cart types
+export interface ShopifyDiscountAllocation {
+  discountedAmount: ShopifyPrice;
+  /** Present for CartAutomaticDiscountAllocation and CartCustomDiscountAllocation */
+  title?: string;
+  /** Present for CartCodeDiscountAllocation */
+  code?: string;
+}
+
 export interface ShopifyCartLine {
   id: string;
   quantity: number;
@@ -91,8 +99,11 @@ export interface ShopifyCartLine {
   };
   cost: {
     totalAmount: ShopifyPrice;
+    /** Line total BEFORE line-level discounts (amountPerQuantity * quantity) */
+    subtotalAmount: ShopifyPrice;
     amountPerQuantity: ShopifyPrice;
   };
+  discountAllocations: ShopifyDiscountAllocation[];
 }
 
 export interface ShopifyCart {
@@ -104,6 +115,8 @@ export interface ShopifyCart {
     totalAmount: ShopifyPrice;
     totalTaxAmount: ShopifyPrice | null;
   };
+  discountCodes: Array<{ applicable: boolean; code: string }>;
+  discountAllocations: ShopifyDiscountAllocation[];
   lines: {
     edges: { node: ShopifyCartLine }[];
   };
@@ -376,6 +389,25 @@ const CART_FRAGMENT = `
         currencyCode
       }
     }
+    discountCodes {
+      applicable
+      code
+    }
+    discountAllocations {
+      discountedAmount {
+        amount
+        currencyCode
+      }
+      ... on CartAutomaticDiscountAllocation {
+        title
+      }
+      ... on CartCodeDiscountAllocation {
+        code
+      }
+      ... on CartCustomDiscountAllocation {
+        title
+      }
+    }
     lines(first: 100) {
       edges {
         node {
@@ -422,9 +454,28 @@ const CART_FRAGMENT = `
               amount
               currencyCode
             }
+            subtotalAmount {
+              amount
+              currencyCode
+            }
             amountPerQuantity {
               amount
               currencyCode
+            }
+          }
+          discountAllocations {
+            discountedAmount {
+              amount
+              currencyCode
+            }
+            ... on CartAutomaticDiscountAllocation {
+              title
+            }
+            ... on CartCodeDiscountAllocation {
+              code
+            }
+            ... on CartCustomDiscountAllocation {
+              title
             }
           }
         }

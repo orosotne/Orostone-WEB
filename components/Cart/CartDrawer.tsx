@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Minus, Plus, ShoppingBag, Trash2, ArrowRight, ExternalLink, Wrench, Package, Info } from 'lucide-react';
+import { X, Minus, Plus, ShoppingBag, Trash2, ArrowRight, ExternalLink, Wrench, Package, Info, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCart, formatPrice } from '../../context/CartContext';
 import { useCookies } from '../../context/CookieContext';
@@ -21,7 +21,7 @@ interface InstallationData {
 }
 
 export const CartDrawer: React.FC = () => {
-  const { items, isOpen, closeCart, removeItem, updateQuantity, itemCount, subtotal, total, checkoutUrl, isLoading, error, clearError, productItems, sampleItems } = useCart();
+  const { items, isOpen, closeCart, removeItem, updateQuantity, itemCount, subtotal, total, totalDiscount, subtotalBeforeDiscount, appliedDiscountTitles, checkoutUrl, isLoading, error, clearError, productItems, sampleItems } = useCart();
   const { preferences } = useCookies();
 
   // Load installation data from localStorage
@@ -184,9 +184,23 @@ export const CartDrawer: React.FC = () => {
                                   {item.variant}
                                 </p>
                               )}
-                              <p className="text-sm font-medium text-brand-gold mt-1">
-                                {formatPrice(item.price)}
-                              </p>
+                              {item.lineDiscount > 0 && item.originalPrice > 0 ? (
+                                <div className="flex items-center gap-2 mt-1 flex-wrap">
+                                  <span className="text-xs line-through text-gray-400">
+                                    {formatPrice(item.originalPrice)}
+                                  </span>
+                                  <span className="text-sm font-semibold text-emerald-700">
+                                    {formatPrice(item.price)}
+                                  </span>
+                                  <span className="text-[10px] font-bold tracking-wider uppercase text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded">
+                                    −{Math.round((item.lineDiscount / (item.originalPrice * item.quantity)) * 100)}%
+                                  </span>
+                                </div>
+                              ) : (
+                                <p className="text-sm font-medium text-brand-gold mt-1">
+                                  {formatPrice(item.price)}
+                                </p>
+                              )}
 
                               {/* Quantity controls */}
                               <div className="flex items-center justify-between mt-3">
@@ -382,10 +396,37 @@ export const CartDrawer: React.FC = () => {
                 )}
 
                 {/* Subtotal (when only one type, or as combined total) */}
+                {/* Note: shows PRE-discount value so the following Zľava row can subtract correctly. */}
                 {!(productItems.length > 0 && sampleItems.length > 0) && (
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-600">Medzisúčet</span>
-                    <span className="font-medium">{formatPrice(subtotal)}</span>
+                    <span className="font-medium">
+                      {formatPrice(totalDiscount > 0 ? subtotalBeforeDiscount : subtotal)}
+                    </span>
+                  </div>
+                )}
+
+                {/* Bundle discount banner — applied automatically by Shopify (2+ platne = -20%, 3+ = -30%) */}
+                {totalDiscount > 0 && subtotalBeforeDiscount > 0 && (
+                  <div className="rounded-xl bg-emerald-50 border border-emerald-200 px-4 py-3 flex items-start gap-3">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center">
+                      <Check size={16} strokeWidth={3} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-baseline justify-between gap-2">
+                        <span className="text-sm font-bold text-emerald-900">
+                          Ušetríte {Math.round((totalDiscount / subtotalBeforeDiscount) * 100)}%
+                        </span>
+                        <span className="text-base font-bold text-emerald-700">
+                          −{formatPrice(totalDiscount)}
+                        </span>
+                      </div>
+                      {appliedDiscountTitles[0] && (
+                        <p className="text-[11px] text-emerald-700/80 mt-0.5 truncate">
+                          {appliedDiscountTitles[0]}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 )}
 
@@ -406,9 +447,16 @@ export const CartDrawer: React.FC = () => {
                 </p>
 
                 {/* Total */}
-                <div className="flex justify-between text-lg font-bold pt-4 border-t border-gray-200">
+                <div className="flex justify-between items-baseline text-lg font-bold pt-4 border-t border-gray-200">
                   <span>Celkom</span>
-                  <span className="text-brand-gold">{formatPrice(total)}</span>
+                  <span className="flex items-baseline gap-2">
+                    {totalDiscount > 0 && (
+                      <span className="text-sm line-through text-gray-400 font-normal">
+                        {formatPrice(subtotalBeforeDiscount)}
+                      </span>
+                    )}
+                    <span className="text-brand-gold">{formatPrice(total)}</span>
+                  </span>
                 </div>
 
                 {/* Return cost notice — required by § 3 ods. 1 písm. i) zákona č. 108/2024 Z.z. */}
