@@ -2859,6 +2859,11 @@ export const ShopProductDetail: React.FC = () => {
   if (!product) {
     return (
       <div className="min-h-screen flex items-center justify-center">
+        <SEOHead
+          title="Produkt nenájdený | OROSTONE"
+          description="Požadovaný produkt neexistuje alebo bol odstránený."
+          noindex={true}
+        />
         <div className="text-center">
           <h1 className="text-2xl font-bold text-brand-dark mb-4">Produkt nenájdený</h1>
           <p className="text-gray-600 mb-8">Požadovaný produkt neexistuje alebo bol odstránený.</p>

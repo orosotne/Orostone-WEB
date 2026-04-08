@@ -37,6 +37,12 @@ export const CategoryPage: React.FC = () => {
     return sub?.name || null;
   }, [category, subCategory]);
 
+  // Validuj, že subkategória je platná (predíde indexovaniu /kategoria/:slug/:nahodny-string)
+  const isValidSubCategory = useMemo(() => {
+    if (!category || !subCategory) return true;
+    return category.subcategories.some(s => s.slug.endsWith(subCategory));
+  }, [category, subCategory]);
+
   // Filter products by category slug a voliteľne podľa farebnej podkategórie
   const filteredProducts = useMemo(() => {
     // Filter by main category
@@ -60,10 +66,15 @@ export const CategoryPage: React.FC = () => {
     return result;
   }, [products, mainCategory, subCategory]);
 
-  // Category not found
-  if (!category) {
+  // Category not found (neznámy slug, skrytá kategória, neplatná subkategória)
+  if (!category || !isValidSubCategory) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
+        <SEOHead
+          title="Kategória nenájdená | OROSTONE E-Shop"
+          description="Kategória s týmto názvom neexistuje alebo bola presunutá."
+          noindex={true}
+        />
         <div className="text-center px-6">
           <h1 className="text-2xl font-bold text-brand-dark mb-3">
             Kategória nenájdená
@@ -91,6 +102,7 @@ export const CategoryPage: React.FC = () => {
         title={`${category.name} | OROSTONE E-Shop`}
         description={category.description || `${category.name} — prémiové produkty od OROSTONE.`}
         canonical={`https://orostone.sk/kategoria/${slug}${subCategory ? '/' + subCategory : ''}`}
+        noindex={!isLoading && !hasProducts}
         structuredData={{
           '@context': 'https://schema.org',
           '@type': 'BreadcrumbList',

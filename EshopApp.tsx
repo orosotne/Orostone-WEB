@@ -4,7 +4,7 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import { SEOHead } from './components/UI/SEOHead';
 import { useAnalytics } from './hooks/useAnalytics';
 import { useMetaPixel } from './hooks/useMetaPixel';
-import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { EshopLayout } from './components/Eshop/EshopLayout';
 import { LoadingSpinner } from './components/UI/LoadingSpinner';
 import { ErrorBoundary } from './components/UI/ErrorBoundary';
@@ -98,18 +98,6 @@ const ScrollToTop = () => {
 // PLACEHOLDER PAGES
 // ===========================================
 
-const ExternalRedirect: React.FC<{ to: string }> = ({ to }) => {
-  useEffect(() => { window.location.href = to; }, [to]);
-  return <LoadingSpinner text="Presmerovanie..." fullScreen={false} />;
-};
-
-const PlaceholderPage: React.FC<{ title: string }> = ({ title }) => (
-  <div className="container mx-auto px-6 py-24 text-center">
-    <h1 className="text-3xl font-bold text-brand-dark mb-4">{title}</h1>
-    <p className="text-gray-500">Táto stránka je v príprave.</p>
-  </div>
-);
-
 const NotFoundPage: React.FC = () => {
   return (
     <div className="min-h-[60vh] flex items-center justify-center px-6">
@@ -153,11 +141,9 @@ const EshopAppContent = () => {
       <Suspense fallback={null}><NewsletterPopup /></Suspense>
       <ErrorBoundary level="page">
         <Routes>
-          {/* Main Shop */}
+          {/* Main Shop — /shop and /vsetky-produkty are handled by server redirects in vercel.json */}
           <Route path="/" element={<Shop />} />
-          <Route path="/shop" element={<Navigate to="/" replace />} />
-          <Route path="/vsetky-produkty" element={<Navigate to="/kategoria/sintered-stone" replace />} />
-          
+
           {/* Categories */}
           <Route path="/kategoria/:slug" element={
             <Suspense fallback={<CategoryPageSkeleton />}>
@@ -189,11 +175,8 @@ const EshopAppContent = () => {
             </Suspense>
           } />
           
-          {/* Auth — redirect to Shopify Customer Accounts */}
-          <Route path="/login" element={<ExternalRedirect to="https://shopify.com/101386420570/account" />} />
-          <Route path="/register" element={<ExternalRedirect to="https://shopify.com/101386420570/account" />} />
-          <Route path="/ucet" element={<ExternalRedirect to="https://shopify.com/101386420570/account" />} />
-          
+          {/* Auth — /login, /register, /ucet and /objednavky are handled by server redirects in vercel.json (→ Shopify Customer Accounts) */}
+
           {/* Blog */}
           <Route path="/blog" element={
             <Suspense fallback={<div className="min-h-screen" aria-hidden />}>
@@ -220,8 +203,6 @@ const EshopAppContent = () => {
               <Vzorky />
             </Suspense>
           } />
-          <Route path="/objednavky" element={<ExternalRedirect to="https://shopify.com/101386420570/account" />} />
-
           <Route path="/sinterovany-kamen" element={
             <Suspense fallback={<div className="min-h-screen" aria-hidden />}>
               <SinterovanyKamen />

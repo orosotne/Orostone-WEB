@@ -1,8 +1,13 @@
 import { useEffect } from 'react';
 
-const SITE_ORIGIN = typeof window !== 'undefined'
-  ? window.location.origin
-  : ((import.meta.env.VITE_PUBLIC_SITE_URL as string | undefined)?.replace(/\/$/, '') || 'https://orostone.sk');
+// Produkčný origin — preferovaný pre canonical/og:url aj na preview/staging buildoch.
+// Ak `VITE_PUBLIC_SITE_URL` nie je nastavený, fallbackujeme na aktuálny origin, aby dev
+// prostredie (napr. http://localhost:3000) nezavádzalo nesprávny canonical.
+const PRODUCTION_ORIGIN = (import.meta.env.VITE_PUBLIC_SITE_URL as string | undefined)
+  ?.replace(/\/$/, '');
+
+const SITE_ORIGIN = PRODUCTION_ORIGIN
+  || (typeof window !== 'undefined' ? window.location.origin : 'https://orostone.sk');
 
 const DEFAULT_OG_PATH = '/images/og-orostone.png';
 

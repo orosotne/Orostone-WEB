@@ -248,6 +248,7 @@ export const BlogArticle: React.FC = () => {
         <SEOHead
           title="Článok nebol nájdený | OROSTONE Blog"
           description="Článok, ktorý hľadáte, neexistuje."
+          noindex={true}
         />
         <div className="text-center max-w-md">
           <span className="text-6xl font-bold text-brand-gold/30 block mb-4">404</span>
