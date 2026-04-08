@@ -26,13 +26,34 @@ gsap.registerPlugin(ScrollTrigger);
 // ===========================================
 // PREFETCH: Preload product detail chunk + images on hover
 // ===========================================
+// Dedupe per session: each product only triggers prefetch once. The dynamic import
+// is cached after first call anyway, but the new Image() preloads were running on
+// every onTouchStart event — and on mobile, scrolling fingers fire many touchstart
+// events as they pass over cards, contributing to INP.
+const prefetchedProductIds = new Set<string>();
+let chunkPrefetched = false;
+
 const prefetchProduct = (product: ShopProduct) => {
-  // Prefetch the lazy-loaded ShopProductDetail chunk
-  import('./ShopProductDetail');
-  // Preload hero + first gallery images into browser cache
-  [product.image, ...(product.gallery || []).slice(0, 2)].forEach(url => {
-    if (url) { const img = new Image(); img.src = url; }
-  });
+  if (prefetchedProductIds.has(product.id)) return;
+  prefetchedProductIds.add(product.id);
+
+  const run = () => {
+    if (!chunkPrefetched) {
+      chunkPrefetched = true;
+      import('./ShopProductDetail');
+    }
+    // Preload hero + first gallery images into browser cache
+    [product.image, ...(product.gallery || []).slice(0, 2)].forEach(url => {
+      if (url) { const img = new Image(); img.src = url; }
+    });
+  };
+
+  // Off the input event task to keep INP low
+  if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+    (window as any).requestIdleCallback(run, { timeout: 500 });
+  } else {
+    setTimeout(run, 0);
+  }
 };
 
 // ===========================================

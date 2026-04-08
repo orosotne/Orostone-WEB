@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, startTransition } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -835,7 +835,14 @@ export const SinterovanyKamen = () => {
 
           <div className="mt-12 flex justify-center">
             <button
-              onClick={() => { setGalleryIndex(0); setGalleryOpen(true); }}
+              onClick={() => {
+                // Defer Lightbox mount off the click → next paint path. The Lightbox
+                // is heavy (image gallery + framer-motion entry animations).
+                startTransition(() => {
+                  setGalleryIndex(0);
+                  setGalleryOpen(true);
+                });
+              }}
               className="inline-flex items-center gap-2 border border-white/30 text-white px-6 py-3 rounded-full hover:bg-white hover:text-black transition-all font-sans text-sm font-semibold tracking-widest uppercase"
             >
               <Images className="w-4 h-4" /> Ukážky realizácií
@@ -1014,7 +1021,13 @@ export const SinterovanyKamen = () => {
                 question={item.question}
                 answer={item.answer}
                 isOpen={openFAQ === idx}
-                onClick={() => setOpenFAQ(openFAQ === idx ? null : idx)}
+                onClick={() => {
+                  // Defer the AnimatePresence height/opacity transition cost off the
+                  // click → next paint path. The FAQ section re-renders are mostly
+                  // expensive due to framer-motion measuring the answer block.
+                  const next = openFAQ === idx ? null : idx;
+                  startTransition(() => setOpenFAQ(next));
+                }}
               />
             ))}
           </div>

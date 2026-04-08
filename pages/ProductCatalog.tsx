@@ -27,7 +27,7 @@ export interface ProductCardProps {
 
 const prefetchProductDetail = () => { import('./ShopProductDetail'); };
 
-export const ProductCard: React.FC<ProductCardProps> = ({
+const ProductCardImpl: React.FC<ProductCardProps> = ({
   product,
   compact = false,
   onAddToCart,
@@ -147,6 +147,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     </div>
   );
 };
+
+// React.memo with custom comparator: skips onAddToCart from comparison.
+// Parents pass an inline thunk like `() => addItem(variantId, 1)` which is a fresh
+// function reference every render. Because addItem from CartContext is now identity-
+// stable (cartRef pattern), every fresh thunk is functionally equivalent — safe to
+// reuse the memoized render. Comparing only product/compact/inCart/quantity (all
+// stable references or primitives) lets the grid skip re-rendering all cards when
+// only an unrelated cart slice (e.g. isLoading) changes.
+export const ProductCard = React.memo(ProductCardImpl, (prev, next) =>
+  prev.product === next.product &&
+  prev.compact === next.compact &&
+  prev.inCart === next.inCart &&
+  prev.quantity === next.quantity
+);
 
 // ===========================================
 // MAIN CATALOG COMPONENT

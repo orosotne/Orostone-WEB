@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useRef } from 'react';
+import React, { useState, useMemo, useEffect, useRef, useDeferredValue, startTransition } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -510,6 +510,20 @@ const InstallationSelector: React.FC<InstallationSelectorProps> = ({
   const [showInfo, setShowInfo] = useState(false);
   const [showAreaTooltip, setShowAreaTooltip] = useState(false);
 
+  // Local mirror state for immediate input feedback. Without this, every keystroke
+  // would propagate up to ShopProductDetail's setInstallationAreaM2 → re-render the
+  // entire product detail tree (Hero + 9 sections) before the input could repaint.
+  // We mirror locally for instant typing UX, then defer the parent update via
+  // startTransition so the heavy tree re-render is interruptible.
+  const [localArea, setLocalArea] = useState<string>(
+    installationAreaM2 != null ? String(installationAreaM2) : ''
+  );
+
+  // Sync from parent when prop changes externally (e.g. product change / reset)
+  useEffect(() => {
+    setLocalArea(installationAreaM2 != null ? String(installationAreaM2) : '');
+  }, [installationAreaM2]);
+
   const installationPrice =
     installationSelected && installationAreaM2 && installationAreaM2 >= 0.1
       ? Math.round(installationAreaM2 * INSTALLATION_RATE_PER_M2)
@@ -672,15 +686,21 @@ const InstallationSelector: React.FC<InstallationSelectorProps> = ({
                     type="number"
                     min={0.1}
                     step={0.1}
-                    value={installationAreaM2 ?? ''}
+                    value={localArea}
                     onChange={(e) => {
                       const val = e.target.value;
-                      if (val === '') {
-                        onAreaChange(null);
-                      } else {
-                        const num = parseFloat(val);
-                        onAreaChange(isNaN(num) ? null : num);
-                      }
+                      // Urgent: input shows latest character immediately
+                      setLocalArea(val);
+                      // Deferred: parent state update triggers heavy tree re-render —
+                      // React 19 will interrupt it if user keeps typing fast.
+                      startTransition(() => {
+                        if (val === '') {
+                          onAreaChange(null);
+                        } else {
+                          const num = parseFloat(val);
+                          onAreaChange(isNaN(num) ? null : num);
+                        }
+                      });
                     }}
                     placeholder="napr. 2.5"
                     className="w-full px-4 py-2.5 border border-gray-200 text-base text-brand-dark bg-white focus:ring-1 focus:ring-brand-gold focus:border-brand-gold outline-none transition-all placeholder:text-gray-300"
@@ -2855,25 +2875,39 @@ export const ShopProductDetail: React.FC = () => {
 
   const handleAddToCart = () => {
     if (product.shopifyVariantId) {
-      setCartError(null);
-      addItem(product.shopifyVariantId, selectedBundle.quantity);
+      // Defer all side effects (cart mutation kickoff, localStorage write, error reset)
+      // off the click → next paint path. The button itself reacts immediately because
+      // its visual state derives from `isInCart` which only flips after Shopify resolves.
+      // Without startTransition, setCartError + addItem's internal setIsLoading + the
+      // sync localStorage JSON.stringify all run on the click event task, blocking INP.
+      const variantId = product.shopifyVariantId;
+      const bundleQty = selectedBundle.quantity;
+      const installSelected = installationSelected;
+      const installArea = installationAreaM2;
+      const productId = product.id;
+      const productName = product.name;
 
-      // Save or clear installation data in localStorage
-      if (installationSelected) {
-        const hasArea = installationAreaM2 !== null && installationAreaM2 >= 0.1;
-        const installationPrice = hasArea ? Math.round(installationAreaM2! * INSTALLATION_RATE_PER_M2) : 0;
-        saveInstallationToStorage({
-          installation_selected: true,
-          installation_area_m2: hasArea ? installationAreaM2! : 0,
-          installation_price_estimate_vat: installationPrice,
-          installation_pricing_basis: hasArea ? '279 EUR per m2 VAT incl' : 'to be confirmed after site visit',
-          installation_disclaimer: 'estimated; confirmed after site visit; brokerage only',
-          product_id: product.id,
-          product_name: product.name,
-        });
-      } else {
-        saveInstallationToStorage(null);
-      }
+      startTransition(() => {
+        setCartError(null);
+        addItem(variantId, bundleQty);
+
+        // Save or clear installation data in localStorage
+        if (installSelected) {
+          const hasArea = installArea !== null && installArea >= 0.1;
+          const installationPrice = hasArea ? Math.round(installArea! * INSTALLATION_RATE_PER_M2) : 0;
+          saveInstallationToStorage({
+            installation_selected: true,
+            installation_area_m2: hasArea ? installArea! : 0,
+            installation_price_estimate_vat: installationPrice,
+            installation_pricing_basis: hasArea ? '279 EUR per m2 VAT incl' : 'to be confirmed after site visit',
+            installation_disclaimer: 'estimated; confirmed after site visit; brokerage only',
+            product_id: productId,
+            product_name: productName,
+          });
+        } else {
+          saveInstallationToStorage(null);
+        }
+      });
     } else {
       console.warn('Produkt nemá shopifyVariantId, nie je možné pridať do košíka:', product.id);
       setCartError('Tento produkt momentálne nie je možné pridať do košíka. Skúste to prosím neskôr.');

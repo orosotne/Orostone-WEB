@@ -48,6 +48,12 @@ export const Vzorky: React.FC = () => {
   const formRef = useRef<HTMLDivElement>(null);
   const tileRefs = useRef<(HTMLDivElement | null)[]>([]);
   const rafRef = useRef<number>(0);
+  // Debounce React state commit so scroll-driven RAF only updates DOM (cheap)
+  // and lets the activeIndex re-render fire ONCE when scrolling settles. Without
+  // this, every RAF tick during a smooth-scroll triggered a full Vzorky re-render
+  // which cascaded to re-rendering 12 tile JSX nodes + dots + form Suspense — that
+  // was the dominant INP cost on this page (1.6s).
+  const settleTimerRef = useRef<number | null>(null);
 
   /* ── Scroll-driven transforms ── */
   const updateTransforms = useCallback(() => {
@@ -74,7 +80,14 @@ export const Vzorky: React.FC = () => {
       if (pxDist < closestDist) { closestDist = pxDist; closestIdx = i; }
     });
 
-    setActiveIndex(closestIdx);
+    // Defer state commit to settle — keeps scroll-driven frames render-free.
+    if (settleTimerRef.current !== null) {
+      clearTimeout(settleTimerRef.current);
+    }
+    settleTimerRef.current = window.setTimeout(() => {
+      settleTimerRef.current = null;
+      setActiveIndex(prev => (prev === closestIdx ? prev : closestIdx));
+    }, 90);
   }, []);
 
   useEffect(() => {
@@ -93,6 +106,10 @@ export const Vzorky: React.FC = () => {
       container.removeEventListener('scroll', onScroll);
       cancelAnimationFrame(rafRef.current);
       clearTimeout(t);
+      if (settleTimerRef.current !== null) {
+        clearTimeout(settleTimerRef.current);
+        settleTimerRef.current = null;
+      }
     };
   }, [updateTransforms]);
 

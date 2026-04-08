@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useCallback, useMemo, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useMemo, useRef, ReactNode } from 'react';
 import { isShopifyConfigured } from '../lib/shopify';
 import { SAMPLE_VARIANT_KEYWORD } from '../constants';
 import {
@@ -142,6 +142,12 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Ref to latest cart so action callbacks can have stable identity (empty deps)
+  // — without this, every cart state change recreates addItem/removeItem/updateQuantity
+  // and forces all useCart() consumers to re-render even when they only need actions.
+  const cartRef = useRef<ShopifyCart | null>(null);
+  useEffect(() => { cartRef.current = cart; }, [cart]);
+
   // ------------------------------------------
   // Inicializacia kosika
   // ------------------------------------------
@@ -165,6 +171,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
             // Cart exists and is valid — check if it hasn't been completed (checkout finished)
             if (existingCart && existingCart.lines) {
               setCart(existingCart);
+              cartRef.current = existingCart;
               return;
             }
           } catch {
@@ -176,6 +183,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         // Ak neexistuje alebo expiroval, vytvor novy
         const newCart = await shopifyCreateCart();
         setCart(newCart);
+        cartRef.current = newCart;
         localStorage.setItem(CART_ID_KEY, newCart.id);
       } catch (error) {
         console.error('Chyba pri inicializacii kosika:', error);
@@ -184,6 +192,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         try {
           const newCart = await shopifyCreateCart();
           setCart(newCart);
+          cartRef.current = newCart;
           localStorage.setItem(CART_ID_KEY, newCart.id);
         } catch (retryError) {
           console.error('Nepodarilo sa vytvorit kosik:', retryError);
@@ -212,12 +221,14 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     localStorage.removeItem(CART_ID_KEY);
     const newCart = await shopifyCreateCart();
     setCart(newCart);
+    cartRef.current = newCart;
     localStorage.setItem(CART_ID_KEY, newCart.id);
     return newCart;
   }, []);
 
   const addItem = useCallback(async (variantId: string, quantity: number = 1) => {
-    if (!cart) {
+    const currentCart = cartRef.current;
+    if (!currentCart) {
       setError('Košík nie je inicializovaný. Skúste obnoviť stránku.');
       return;
     }
@@ -227,13 +238,14 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     try {
       let updatedCart: ShopifyCart;
       try {
-        updatedCart = await withTimeout(shopifyAddToCart(cart.id, variantId, quantity));
+        updatedCart = await withTimeout(shopifyAddToCart(currentCart.id, variantId, quantity));
       } catch {
         // Cart may have expired — recover and retry once
         const freshCart = await recoverCart();
         updatedCart = await withTimeout(shopifyAddToCart(freshCart.id, variantId, quantity));
       }
       setCart(updatedCart);
+      cartRef.current = updatedCart;
       setIsOpen(true); // Otvor drawer po pridani
       // Meta Pixel AddToCart
       const line = updatedCart.lines.edges.find(({ node }) => node.merchandise.id === variantId);
@@ -254,36 +266,41 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     } finally {
       setIsLoading(false);
     }
-  }, [cart, recoverCart]);
+  }, [recoverCart]);
 
   const removeItem = useCallback(async (lineId: string) => {
-    if (!cart) return;
-    
+    const currentCart = cartRef.current;
+    if (!currentCart) return;
+
     setIsLoading(true);
     setError(null);
     try {
-      const updatedCart = await withTimeout(shopifyRemoveFromCart(cart.id, lineId));
+      const updatedCart = await withTimeout(shopifyRemoveFromCart(currentCart.id, lineId));
       setCart(updatedCart);
+      cartRef.current = updatedCart;
     } catch (err) {
       console.error('Chyba pri odstraneni z kosika:', err);
       setError('Nepodarilo sa odstrániť produkt z košíka.');
     } finally {
       setIsLoading(false);
     }
-  }, [cart]);
+  }, []);
 
   const updateQuantity = useCallback(async (lineId: string, quantity: number) => {
-    if (!cart) return;
-    
+    const currentCart = cartRef.current;
+    if (!currentCart) return;
+
     setIsLoading(true);
     setError(null);
     try {
       if (quantity <= 0) {
-        const updatedCart = await withTimeout(shopifyRemoveFromCart(cart.id, lineId));
+        const updatedCart = await withTimeout(shopifyRemoveFromCart(currentCart.id, lineId));
         setCart(updatedCart);
+        cartRef.current = updatedCart;
       } else {
-        const updatedCart = await withTimeout(shopifyUpdateCartItem(cart.id, lineId, quantity));
+        const updatedCart = await withTimeout(shopifyUpdateCartItem(currentCart.id, lineId, quantity));
         setCart(updatedCart);
+        cartRef.current = updatedCart;
       }
     } catch (err) {
       console.error('Chyba pri aktualizacii mnozstva:', err);
@@ -291,7 +308,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     } finally {
       setIsLoading(false);
     }
-  }, [cart]);
+  }, []);
 
   const clearCart = useCallback(async () => {
     setIsLoading(true);
@@ -299,6 +316,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     try {
       const newCart = await shopifyCreateCart();
       setCart(newCart);
+      cartRef.current = newCart;
       localStorage.setItem(CART_ID_KEY, newCart.id);
     } catch (err) {
       console.error('Chyba pri vyprazdneni kosika:', err);
@@ -317,7 +335,14 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   // COMPUTED VALUES
   // ------------------------------------------
 
-  const items = cart ? mapShopifyCartLines(cart) : [];
+  // Items: memoized on cart reference — without this, every render created a new
+  // array which broke downstream useMemo (productItems/sampleItems) and forced all
+  // useCart() consumers to re-render even when nothing relevant changed.
+  const items = useMemo<CartItem[]>(
+    () => (cart ? mapShopifyCartLines(cart) : []),
+    [cart]
+  );
+
   const itemCount = cart?.totalQuantity || 0;
   const subtotal = cart ? parseFloat(cart.cost.subtotalAmount.amount) : 0;
   const total = cart ? parseFloat(cart.cost.totalAmount.amount) : 0;
@@ -327,33 +352,43 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   // discountami (robustnejšie ako amountPerQuantity × quantity, ktoré v niektorých
   // kontextoch môže vracať už discounted hodnotu).
   // Cart.cost.subtotalAmount je UŽ po aplikácii zliav → rozdiel = totalDiscount.
-  const subtotalBeforeDiscount = cart
-    ? cart.lines.edges.reduce((sum, { node }) => {
-        return sum + parseFloat(node.cost?.subtotalAmount?.amount ?? '0');
-      }, 0)
-    : 0;
+  const subtotalBeforeDiscount = useMemo(
+    () => cart
+      ? cart.lines.edges.reduce(
+          (sum, { node }) => sum + parseFloat(node.cost?.subtotalAmount?.amount ?? '0'),
+          0
+        )
+      : 0,
+    [cart]
+  );
   const totalDiscount = Math.max(0, subtotalBeforeDiscount - subtotal);
 
-  const appliedDiscountTitles = cart
-    ? Array.from(
-        new Set([
-          // cart-level (napr. Order discount alebo code)
-          ...(cart.discountAllocations ?? [])
-            .map((a) => a.title || a.code)
-            .filter((x): x is string => !!x),
-          // line-level (Amount off products automatic discount ide sem)
-          ...cart.lines.edges.flatMap(({ node }) =>
-            (node.discountAllocations ?? [])
+  const appliedDiscountTitles = useMemo(
+    () => cart
+      ? Array.from(
+          new Set([
+            // cart-level (napr. Order discount alebo code)
+            ...(cart.discountAllocations ?? [])
               .map((a) => a.title || a.code)
-              .filter((x): x is string => !!x)
-          ),
-        ])
-      )
-    : [];
+              .filter((x): x is string => !!x),
+            // line-level (Amount off products automatic discount ide sem)
+            ...cart.lines.edges.flatMap(({ node }) =>
+              (node.discountAllocations ?? [])
+                .map((a) => a.title || a.code)
+                .filter((x): x is string => !!x)
+            ),
+          ])
+        )
+      : [],
+    [cart]
+  );
 
-  const checkoutUrl = cart?.checkoutUrl
-    ? `${cart.checkoutUrl}${cart.checkoutUrl.includes('?') ? '&' : '?'}return_to=${encodeURIComponent('https://orostone.sk/objednavka-dokoncena')}`
-    : null;
+  const checkoutUrl = useMemo(
+    () => cart?.checkoutUrl
+      ? `${cart.checkoutUrl}${cart.checkoutUrl.includes('?') ? '&' : '?'}return_to=${encodeURIComponent('https://orostone.sk/objednavka-dokoncena')}`
+      : null,
+    [cart]
+  );
 
   const isInCart = useCallback((productHandle: string) => {
     return items.some(item => item.productId === productHandle);
@@ -389,10 +424,13 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   }, [sampleItems]);
 
   // ------------------------------------------
-  // CONTEXT VALUE
+  // CONTEXT VALUE (memoized — without this, every render of CartProvider creates a
+  // new value object reference, forcing every useCart() consumer to re-render even
+  // when their relevant slice didn't change. With memoization, the value reference
+  // only changes when one of the listed deps actually changes.)
   // ------------------------------------------
 
-  const value: CartContextType = {
+  const value = useMemo<CartContextType>(() => ({
     items,
     isOpen,
     isLoading,
@@ -419,7 +457,33 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     isSampleInCart,
     productItems,
     sampleItems,
-  };
+  }), [
+    items,
+    isOpen,
+    isLoading,
+    error,
+    checkoutUrl,
+    addItem,
+    removeItem,
+    updateQuantity,
+    clearCart,
+    openCart,
+    closeCart,
+    toggleCart,
+    clearError,
+    itemCount,
+    subtotal,
+    total,
+    totalDiscount,
+    subtotalBeforeDiscount,
+    appliedDiscountTitles,
+    isInCart,
+    getItemQuantity,
+    sampleCount,
+    isSampleInCart,
+    productItems,
+    sampleItems,
+  ]);
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };
