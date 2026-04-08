@@ -196,56 +196,56 @@ const EshopAppContent = () => {
           
           {/* Blog */}
           <Route path="/blog" element={
-            <Suspense fallback={<LoadingSpinner text="Načítavam blog..." fullScreen={false} />}>
+            <Suspense fallback={<div className="min-h-screen" aria-hidden />}>
               <BlogPage />
             </Suspense>
           } />
           <Route path="/blog/:slug" element={
-            <Suspense fallback={<LoadingSpinner text="Načítavam článok..." fullScreen={false} />}>
+            <Suspense fallback={<div className="min-h-screen" aria-hidden />}>
               <BlogArticlePage />
             </Suspense>
           } />
 
           {/* Info Pages */}
-          <Route path="/doprava" element={<Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}><DopravaAPlatba /></Suspense>} />
-          <Route path="/reklamacie" element={<Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}><ReklamacieAVratenie /></Suspense>} />
-          <Route path="/odstupenie-od-zmluvy" element={<Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}><OdstupeniOdZmluvy /></Suspense>} />
+          <Route path="/doprava" element={<Suspense fallback={<div className="min-h-screen" aria-hidden />}><DopravaAPlatba /></Suspense>} />
+          <Route path="/reklamacie" element={<Suspense fallback={<div className="min-h-screen" aria-hidden />}><ReklamacieAVratenie /></Suspense>} />
+          <Route path="/odstupenie-od-zmluvy" element={<Suspense fallback={<div className="min-h-screen" aria-hidden />}><OdstupeniOdZmluvy /></Suspense>} />
           <Route path="/kontakt" element={
-            <Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}>
+            <Suspense fallback={<div className="min-h-screen" aria-hidden />}>
               <EshopContact />
             </Suspense>
           } />
           <Route path="/vzorky" element={
-            <Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}>
+            <Suspense fallback={<div className="min-h-screen" aria-hidden />}>
               <Vzorky />
             </Suspense>
           } />
           <Route path="/objednavky" element={<ExternalRedirect to="https://shopify.com/101386420570/account" />} />
 
           <Route path="/sinterovany-kamen" element={
-            <Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}>
+            <Suspense fallback={<div className="min-h-screen" aria-hidden />}>
               <SinterovanyKamen />
             </Suspense>
           } />
           <Route path="/vyhody" element={
-            <Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}>
+            <Suspense fallback={<div className="min-h-screen" aria-hidden />}>
               <Vyhody />
             </Suspense>
           } />
           
           {/* Legal */}
           <Route path="/vop" element={
-            <Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}>
+            <Suspense fallback={<div className="min-h-screen" aria-hidden />}>
               <VOP />
             </Suspense>
           } />
           <Route path="/ochrana-sukromia" element={
-            <Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}>
+            <Suspense fallback={<div className="min-h-screen" aria-hidden />}>
               <PrivacyPolicy />
             </Suspense>
           } />
           <Route path="/cookies" element={
-            <Suspense fallback={<LoadingSpinner text="Načítavam..." fullScreen={false} />}>
+            <Suspense fallback={<div className="min-h-screen" aria-hidden />}>
               <CookiesPolicy />
             </Suspense>
           } />

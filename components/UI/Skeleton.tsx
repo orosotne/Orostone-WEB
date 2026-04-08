@@ -67,58 +67,102 @@ export const ProductGridSkeleton: React.FC<ProductGridSkeletonProps> = ({
 // ===========================================
 
 export const ProductDetailSkeleton: React.FC = () => (
-  <section className="pt-6 pb-8 lg:pt-8 lg:pb-16 bg-gradient-to-br from-white via-[#FAFAF8] to-[#F5F5F0]">
-    <div className="container mx-auto px-6">
-      {/* Breadcrumb */}
-      <div className="flex items-center justify-between mb-8">
-        <div className="flex items-center gap-2">
-          <Skeleton className="h-3 w-12" />
-          <Skeleton className="h-3 w-2" />
-          <Skeleton className="h-3 w-32" />
+  <>
+    <section className="pt-6 pb-8 lg:pt-8 lg:pb-16 bg-gradient-to-br from-white via-[#FAFAF8] to-[#F5F5F0]">
+      <div className="container mx-auto px-6">
+        {/* Breadcrumb */}
+        <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center gap-2">
+            <Skeleton className="h-3 w-12" />
+            <Skeleton className="h-3 w-2" />
+            <Skeleton className="h-3 w-32" />
+          </div>
+          <Skeleton className="h-8 w-8 rounded-lg" />
         </div>
-        <Skeleton className="h-8 w-8 rounded-lg" />
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+          {/* Desktop Image Gallery — col-span-7 */}
+          <div className="hidden lg:block lg:col-span-7 space-y-4">
+            <Skeleton className="aspect-square w-full rounded-xl" />
+            <div className="flex gap-3">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <Skeleton key={i} className="w-20 h-20 rounded-lg" />
+              ))}
+            </div>
+          </div>
+
+          {/* Mobile Image — 3:4 aspect */}
+          <div className="lg:hidden">
+            <Skeleton className="aspect-[3/4] w-full rounded-lg" />
+          </div>
+
+          {/* Product Info — col-span-5 */}
+          <div className="lg:col-span-5 space-y-4">
+            <Skeleton className="h-3 w-24" />
+            <Skeleton className="h-8 w-3/4" />
+            <div className="flex gap-2 mt-2">
+              <Skeleton className="h-8 w-20 rounded-full" />
+              <Skeleton className="h-8 w-24 rounded-full" />
+              <Skeleton className="h-8 w-20 rounded-full" />
+            </div>
+            <Skeleton className="h-4 w-full mt-4" />
+            <Skeleton className="h-4 w-5/6" />
+            <div className="pt-4 space-y-3">
+              <Skeleton className="h-10 w-32" />
+              <Skeleton className="h-12 w-full rounded-xl" />
+            </div>
+            <div className="pt-6 space-y-2">
+              <Skeleton className="h-3 w-28" />
+              <Skeleton className="h-3 w-40" />
+              <Skeleton className="h-3 w-36" />
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-        {/* Desktop Image Gallery — col-span-7 */}
-        <div className="hidden lg:block lg:col-span-7 space-y-4">
-          <Skeleton className="aspect-square w-full rounded-xl" />
-          <div className="flex gap-3">
-            {Array.from({ length: 4 }).map((_, i) => (
-              <Skeleton key={i} className="w-20 h-20 rounded-lg" />
-            ))}
+    {/* Features/highlights placeholder */}
+    <section className="py-12 lg:py-20 bg-brand-dark">
+      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+        {Array.from({ length: 3 }).map((_, i) => (
+          <div key={i} className="space-y-3">
+            <Skeleton className="h-10 w-10 rounded-full bg-white/10" />
+            <Skeleton className="h-5 w-32 bg-white/10" />
+            <Skeleton className="h-3 w-full bg-white/10" />
+            <Skeleton className="h-3 w-5/6 bg-white/10" />
           </div>
-        </div>
-
-        {/* Mobile Image — 3:4 aspect */}
-        <div className="lg:hidden">
-          <Skeleton className="aspect-[3/4] w-full rounded-lg" />
-        </div>
-
-        {/* Product Info — col-span-5 */}
-        <div className="lg:col-span-5 space-y-4">
-          <Skeleton className="h-3 w-24" />
-          <Skeleton className="h-8 w-3/4" />
-          <div className="flex gap-2 mt-2">
-            <Skeleton className="h-8 w-20 rounded-full" />
-            <Skeleton className="h-8 w-24 rounded-full" />
-            <Skeleton className="h-8 w-20 rounded-full" />
-          </div>
-          <Skeleton className="h-4 w-full mt-4" />
-          <Skeleton className="h-4 w-5/6" />
-          <div className="pt-4 space-y-3">
-            <Skeleton className="h-10 w-32" />
-            <Skeleton className="h-12 w-full rounded-xl" />
-          </div>
-          <div className="pt-6 space-y-2">
-            <Skeleton className="h-3 w-28" />
-            <Skeleton className="h-3 w-40" />
-            <Skeleton className="h-3 w-36" />
-          </div>
-        </div>
+        ))}
       </div>
-    </div>
-  </section>
+    </section>
+
+    {/* Specifications placeholder */}
+    <section className="py-10 lg:py-16 bg-[#F9F9F7]">
+      <div className="container mx-auto px-6 max-w-4xl space-y-3">
+        <Skeleton className="h-6 w-48 mb-6" />
+        {Array.from({ length: 6 }).map((_, i) => (
+          <Skeleton key={i} className="h-4 w-full" />
+        ))}
+      </div>
+    </section>
+
+    {/* Related products placeholder */}
+    <section className="py-10 lg:py-16 bg-white">
+      <div className="container mx-auto px-6">
+        <Skeleton className="h-6 w-40 mb-8" />
+        <ProductGridSkeleton count={4} compact />
+      </div>
+    </section>
+
+    {/* FAQ placeholder */}
+    <section className="py-10 lg:py-16 bg-[#F9F9F7]">
+      <div className="container mx-auto px-6 max-w-3xl space-y-4">
+        <Skeleton className="h-6 w-32 mb-6" />
+        {Array.from({ length: 4 }).map((_, i) => (
+          <Skeleton key={i} className="h-14 w-full rounded-lg" />
+        ))}
+      </div>
+    </section>
+  </>
 );
 
 // ===========================================
@@ -149,13 +193,28 @@ export const CategoryPageSkeleton: React.FC = () => (
       </div>
     </section>
 
+    {/* Filter bar placeholder */}
+    <div className="container mx-auto px-6 lg:px-8 pt-6 pb-2 flex gap-3 flex-wrap">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Skeleton key={i} className="h-9 w-24 rounded-full" />
+      ))}
+    </div>
+
     {/* Product Grid */}
-    <section className="container mx-auto px-6 lg:px-8 py-12 md:py-16">
+    <section className="container mx-auto px-6 lg:px-8 py-8 md:py-12">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-        {Array.from({ length: 8 }).map((_, i) => (
+        {Array.from({ length: 12 }).map((_, i) => (
           <ProductCardSkeleton key={i} compact={false} />
         ))}
       </div>
+    </section>
+
+    {/* SEO content placeholder */}
+    <section className="container mx-auto px-6 lg:px-8 py-12 md:py-16 max-w-4xl space-y-4">
+      <Skeleton className="h-8 w-64 mb-6" />
+      {Array.from({ length: 8 }).map((_, i) => (
+        <Skeleton key={i} className={`h-4 ${i === 7 ? 'w-2/3' : 'w-full'}`} />
+      ))}
     </section>
   </>
 );

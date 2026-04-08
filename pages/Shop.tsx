@@ -1143,7 +1143,7 @@ export const Shop = () => {
       <InspirationSection items={INSPIRATION_IMAGES} />
 
       {/* ==================== SAMPLE LEAD SECTION ==================== */}
-      <React.Suspense fallback={null}>
+      <React.Suspense fallback={<div className="min-h-[1400px] lg:min-h-[1100px]" aria-hidden />}>
         <SampleLeadSection />
       </React.Suspense>
 

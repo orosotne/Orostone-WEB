@@ -176,9 +176,9 @@ export const CategoryPage: React.FC = () => {
       {/* ==================== PRODUCT GRID or EMPTY STATE ==================== */}
       <section className="container mx-auto px-6 lg:px-8 py-12 md:py-16">
         {isLoading ? (
-          /* Loading skeleton */
+          /* Loading skeleton — 8 tiles to approximate real grid height (reduces CLS vs 4 placeholders) */
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            {Array.from({ length: 4 }).map((_, i) => (
+            {Array.from({ length: 8 }).map((_, i) => (
               <div key={i} className="bg-gray-100 rounded-2xl animate-pulse">
                 <div className="aspect-[4/5]" />
                 <div className="p-4 space-y-3">
@@ -192,9 +192,9 @@ export const CategoryPage: React.FC = () => {
         ) : hasProducts ? (
           /* Product Grid */
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.35, delay: 0.05 }}
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
           >
             {filteredProducts.map((product) => {

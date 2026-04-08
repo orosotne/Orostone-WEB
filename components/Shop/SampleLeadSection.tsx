@@ -179,6 +179,8 @@ export const SampleLeadSection: React.FC<SampleLeadSectionProps> = ({ preselecte
                 <img
                   src={LIFESTYLE_IMAGE}
                   alt="Prémiové vzorky sinterovaného kameňa OROSTONE v elegantnom balení"
+                  width={800}
+                  height={1000}
                   className="w-full h-full object-cover lg:object-[50%_30%]"
                 />
               </div>
@@ -220,6 +222,8 @@ export const SampleLeadSection: React.FC<SampleLeadSectionProps> = ({ preselecte
                 <img
                   src="/images/marian-brazdil.png"
                   alt="Marián Brázdil"
+                  width={48}
+                  height={48}
                   className="w-12 h-12 rounded-full object-cover ring-2 ring-brand-gold/30"
                 />
                 <div className="text-left">
