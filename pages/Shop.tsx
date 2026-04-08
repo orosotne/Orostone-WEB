@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useCallback } from 'react';
+import React, { useRef, useState, useEffect, useCallback, useMemo } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -129,7 +129,6 @@ const HERO_SLIDES = [
     title: 'Krása kameňa.',
     titleAccent: 'Bez kompromisov.',
     subtitle: 'Prémiové sinterované platne pre náročné interiéry',
-    priceFrom: 'od 302 €/m²',
     cta: 'Objavte dekory',
     ctaTo: '/kategoria/sintered-stone',
   },
@@ -144,6 +143,18 @@ export const Shop = () => {
   const heroAutoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const { products: SHOP_PRODUCTS, isLoading: productsLoading } = useShopifyProducts();
 
+  // Derive "from" price dynamically so it stays in sync with the Shopify catalog.
+  // Falls back to a safe literal if the catalog is empty or prices are missing.
+  const heroPriceFrom = useMemo(() => {
+    const FALLBACK = 'od 332 €/m²';
+    if (!SHOP_PRODUCTS || SHOP_PRODUCTS.length === 0) return FALLBACK;
+    const prices = SHOP_PRODUCTS
+      .filter((p) => p.category === 'sintered-stone' && typeof p.pricePerM2 === 'number' && p.pricePerM2 > 0)
+      .map((p) => p.pricePerM2);
+    if (prices.length === 0) return FALLBACK;
+    // Floor to whole euro so "od X" is always ≤ real minimum (never overstated).
+    return `od ${Math.floor(Math.min(...prices))} €/m²`;
+  }, [SHOP_PRODUCTS]);
 
   const [activeSlide, setActiveSlide] = useState(0);
 
@@ -705,7 +716,7 @@ export const Shop = () => {
           </AnimatePresence>
 
           {/* Price from */}
-          {HERO_SLIDES[activeSlide].priceFrom != null && HERO_SLIDES[activeSlide].priceFrom !== '' && (
+          {heroPriceFrom && (
             <AnimatePresence mode="wait">
               <motion.p
                 key={`price-${activeSlide}`}
@@ -715,7 +726,7 @@ export const Shop = () => {
                 transition={{ duration: 0.35, delay: 0.18 }}
                 className="hero-price font-sans text-sm md:text-base font-bold tracking-wide text-brand-gold mb-8 md:mb-10"
               >
-                {HERO_SLIDES[activeSlide].priceFrom}
+                {heroPriceFrom}
               </motion.p>
             </AnimatePresence>
           )}
