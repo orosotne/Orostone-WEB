@@ -373,10 +373,8 @@ function prerenderProduct(product: any): void {
 // Category listing
 // ---------------------------------------------------------------------------
 
-function prerenderCategoryListing(): void {
-  const sintered = products.filter((p) => p.category === 'sintered-stone');
-
-  const listHtml = sintered
+function productListHtml(list: any[]): string {
+  return list
     .map(
       (p) => `
       <article>
@@ -386,6 +384,10 @@ function prerenderCategoryListing(): void {
       </article>`,
     )
     .join('');
+}
+
+function prerenderCategoryListing(): void {
+  const sintered = products.filter((p) => p.category === 'sintered-stone');
 
   writePage({
     route: '/kategoria/sintered-stone',
@@ -397,7 +399,7 @@ function prerenderCategoryListing(): void {
       <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Sinterovaný kameň</nav>
       <h1>Sinterovaný kameň — Všetky dekory</h1>
       <p>Prémiové sinterované platne 3200×1600 mm. ${sintered.length} dekorov na výber.</p>
-      ${listHtml}`,
+      ${productListHtml(sintered)}`,
     jsonLd: [
       {
         '@context': 'https://schema.org',
@@ -411,6 +413,271 @@ function prerenderCategoryListing(): void {
             item: `${BASE_URL}/kategoria/sintered-stone`,
           },
         ],
+      },
+    ],
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Color subcategories (/kategoria/sintered-stone/{biele,bezove,sede,cierne})
+// ---------------------------------------------------------------------------
+
+interface ColorSubcategory {
+  slug: 'biele' | 'bezove' | 'sede' | 'cierne';
+  name: string; // nominative plural (e.g. „Biele")
+}
+
+const COLOR_SUBCATEGORIES: ColorSubcategory[] = [
+  { slug: 'biele', name: 'Biele' },
+  { slug: 'bezove', name: 'Béžové' },
+  { slug: 'sede', name: 'Šedé' },
+  { slug: 'cierne', name: 'Čierne' },
+];
+
+/** Slovak plural rules for „dekor": 1 → dekor, 2–4 → dekory, 5+ → dekorov */
+function dekorNoun(n: number): string {
+  if (n === 1) return 'dekor';
+  if (n >= 2 && n <= 4) return 'dekory';
+  return 'dekorov';
+}
+
+function prerenderColorSubcategory(sub: ColorSubcategory): void {
+  const filtered = products.filter(
+    (p) => p.category === 'sintered-stone' && p.colorCategory === sub.slug,
+  );
+  // Sorted by name
+  filtered.sort((a, b) => a.name.localeCompare(b.name, 'sk', { sensitivity: 'base' }));
+
+  const route = `/kategoria/sintered-stone/${sub.slug}`;
+  const canonical = `${BASE_URL}${route}`;
+  const countPhrase = `${filtered.length} ${dekorNoun(filtered.length)}`;
+
+  writePage({
+    route,
+    title: `Sinterovaný kameň — ${sub.name} dekory | OROSTONE`,
+    description: `Kolekcia ${sub.name} — prémiový sinterovaný kameň OROSTONE. ${countPhrase} na výber pre kuchynské dosky, obklady a architektonické projekty.`,
+    canonical,
+    rootContent: `
+      <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; <a href="/kategoria/sintered-stone">Sinterovaný kameň</a> &rsaquo; ${esc(sub.name)}</nav>
+      <h1>Sinterovaný kameň — ${esc(sub.name)} dekory</h1>
+      <p>Kolekcia ${esc(sub.name)} — ${countPhrase} sinterovaného kameňa v rozmere 3200×1600 mm.</p>
+      ${productListHtml(filtered)}`,
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'OROSTONE', item: `${BASE_URL}/` },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Sinterovaný kameň',
+            item: `${BASE_URL}/kategoria/sintered-stone`,
+          },
+          { '@type': 'ListItem', position: 3, name: sub.name, item: canonical },
+        ],
+      },
+    ],
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Static info pages (/kontakt, /doprava, /reklamacie, ...)
+// ---------------------------------------------------------------------------
+
+interface InfoPage {
+  route: string;
+  title: string;
+  description: string;
+  h1: string;
+  intro: string;
+  extraLinks?: { label: string; href: string }[];
+}
+
+const INFO_PAGES: InfoPage[] = [
+  {
+    route: '/kontakt',
+    title: 'Kontakt | OROSTONE — Prémiový sinterovaný kameň',
+    description:
+      'Kontaktujte OROSTONE pre cenovú ponuku alebo odbornú konzultáciu. Sídlo v Bratislave — Landererova 8. Email: info@orostone.sk, Tel: +421 917 588 738.',
+    h1: 'Kontakt',
+    intro:
+      'OROSTONE — slovenský dodávateľ prémiového sinterovaného kameňa. Sídlo: Landererova 8, 811 09 Bratislava. Telefón: +421 917 588 738. E-mail: info@orostone.sk. Radi pre vás pripravíme bezplatnú konzultáciu a cenovú ponuku.',
+    extraLinks: [
+      { label: 'Objednať vzorky', href: '/vzorky' },
+      { label: 'Prehliadnuť produkty', href: '/kategoria/sintered-stone' },
+    ],
+  },
+  {
+    route: '/doprava',
+    title: 'Doprava a platba | OROSTONE E-Shop',
+    description:
+      'Informácie o doprave, platobných metódach a časoch expedície. Špeciálna preprava veľkoformátových platní po celom Slovensku.',
+    h1: 'Doprava a platba',
+    intro:
+      'OROSTONE zabezpečuje špeciálnu prepravu veľkoformátových sinterovaných platní 3200×1600 mm po celom Slovensku. Platba bankovým prevodom alebo kartou. Expedícia do 1–5 pracovných dní od potvrdenia objednávky.',
+  },
+  {
+    route: '/reklamacie',
+    title: 'Reklamácie a vrátenie tovaru | OROSTONE E-Shop',
+    description:
+      'Reklamačný poriadok, podmienky vrátenia tovaru a postup pri reklamácii. Zákonná zodpovednosť za vady 24 mesiacov. Vzorový formulár na odstúpenie od zmluvy.',
+    h1: 'Reklamácie a vrátenie tovaru',
+    intro:
+      'Reklamačný poriadok a postup pri reklamácii tovaru zakúpeného v e-shope OROSTONE. Zákonná zodpovednosť za vady trvá 24 mesiacov. Spotrebiteľ má právo odstúpiť od kúpnej zmluvy uzavretej na diaľku do 14 dní bez uvedenia dôvodu.',
+    extraLinks: [
+      { label: 'Formulár na odstúpenie od zmluvy', href: '/odstupenie-od-zmluvy' },
+      { label: 'Všeobecné obchodné podmienky', href: '/vop' },
+    ],
+  },
+  {
+    route: '/odstupenie-od-zmluvy',
+    title: 'Formulár na odstúpenie od zmluvy | OROSTONE',
+    description:
+      'Vzorový formulár na odstúpenie od kúpnej zmluvy uzavretej na diaľku podľa zákona č. 108/2024 Z.z. o ochrane spotrebiteľa. OROSTONE e-shop.',
+    h1: 'Formulár na odstúpenie od zmluvy',
+    intro:
+      'Vzorový formulár na odstúpenie od kúpnej zmluvy uzavretej na diaľku podľa zákona č. 108/2024 Z.z. o ochrane spotrebiteľa. Spotrebiteľ má právo odstúpiť od zmluvy do 14 dní bez uvedenia dôvodu.',
+  },
+  {
+    route: '/sinterovany-kamen',
+    title: 'Sinterovaný kameň | Čo to je a prečo ho chcete | Orostone',
+    description:
+      'Sinterovaný kameň je prémiový povrch z prírodných minerálov. Odolný teplu, škvrnám aj UV. Zistite, prečo je ideálny na kuchynské dosky a interiéry.',
+    h1: 'Sinterovaný kameň — čo to je a prečo ho chcete',
+    intro:
+      'Sinterovaný kameň je prémiový povrch vyrobený z prírodných minerálov pod extrémnym tlakom a teplotou. Odolá teplotám nad 300 °C, škvrnám, UV žiareniu aj škrabancom. Je ideálnym materiálom na kuchynské dosky, obklady kúpeľní a architektonické projekty. Nevyžaduje impregnáciu ani zvláštnu údržbu.',
+    extraLinks: [
+      { label: 'Výhody sinterovaného kameňa', href: '/vyhody' },
+      { label: 'Všetky dekory', href: '/kategoria/sintered-stone' },
+    ],
+  },
+  {
+    route: '/vyhody',
+    title: 'Výhody sinterovaného kameňa | Neviditeľná varná doska | Orostone',
+    description:
+      'Sinterovaný kameň odolá 300 °C, nepotrebuje údržbu a umožňuje integráciu neviditeľnej indukčnej varnej dosky. Porovnanie s žulou, quartzom a mramorom.',
+    h1: 'Výhody sinterovaného kameňa',
+    intro:
+      'Sinterovaný kameň odolá teplotám nad 300 °C, nepotrebuje impregnáciu ani zvláštnu údržbu a umožňuje integráciu neviditeľnej indukčnej varnej dosky priamo v kuchynskej doske. V porovnaní so žulou, quartzovým kompozitom a mramorom má lepšiu tepelnú aj mechanickú odolnosť.',
+    extraLinks: [
+      { label: 'Čo je sinterovaný kameň', href: '/sinterovany-kamen' },
+      { label: 'Prehliadnuť dekory', href: '/kategoria/sintered-stone' },
+    ],
+  },
+  {
+    route: '/vop',
+    title: 'Všeobecné obchodné podmienky | OROSTONE E-Shop',
+    description:
+      'Všeobecné obchodné podmienky e-shopu OROSTONE. Informácie o objednávke, platbe, doprave, reklamáciách a právach spotrebiteľa podľa zákona č. 108/2024 Z.z.',
+    h1: 'Všeobecné obchodné podmienky',
+    intro:
+      'Všeobecné obchodné podmienky e-shopu OROSTONE upravujú vzťah medzi predávajúcim (OROSTONE) a kupujúcim pri uzatváraní kúpnych zmlúv uzatvorených na diaľku. Podmienky sú v súlade so zákonom č. 108/2024 Z.z. o ochrane spotrebiteľa.',
+  },
+  {
+    route: '/ochrana-sukromia',
+    title: 'Ochrana osobných údajov | OROSTONE',
+    description:
+      'Zásady ochrany osobných údajov spoločnosti OROSTONE s.r.o. Spracúvanie údajov v súlade s GDPR — účely, právny základ a vaše práva.',
+    h1: 'Ochrana osobných údajov',
+    intro:
+      'OROSTONE spracúva vaše osobné údaje v súlade s Nariadením GDPR a zákonom o ochrane osobných údajov. Na tejto stránke nájdete informácie o účeloch spracúvania, právnom základe, dobe uchovávania a o vašich právach dotknutej osoby.',
+  },
+  {
+    route: '/cookies',
+    title: 'Zásady používania cookies a podobných technológií | OROSTONE',
+    description:
+      'Informácie o cookies a podobných technológiách na webe OROSTONE. Typy technológií, účely spracovania a nastavenie vlastných preferencií.',
+    h1: 'Zásady používania cookies',
+    intro:
+      'OROSTONE používa cookies a podobné technológie na zabezpečenie funkčnosti stránky, analýzu návštevnosti a cielenú reklamu. Na tejto stránke nájdete informácie o jednotlivých typoch cookies, účeloch spracovania a ako si môžete nastaviť vlastné preferencie.',
+  },
+];
+
+function prerenderInfoPage(p: InfoPage): void {
+  const canonical = `${BASE_URL}${p.route}`;
+  const extraLinksHtml = p.extraLinks?.length
+    ? `<p>${p.extraLinks.map((l) => `<a href="${l.href}">${esc(l.label)}</a>`).join(' &middot; ')}</p>`
+    : '';
+
+  writePage({
+    route: p.route,
+    title: p.title,
+    description: p.description,
+    canonical,
+    rootContent: `
+      <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; ${esc(p.h1)}</nav>
+      <h1>${esc(p.h1)}</h1>
+      <p>${esc(p.intro)}</p>
+      ${extraLinksHtml}`,
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'OROSTONE', item: `${BASE_URL}/` },
+          { '@type': 'ListItem', position: 2, name: p.h1, item: canonical },
+        ],
+      },
+    ],
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Homepage (/) — inject semantic content into empty root div
+// ---------------------------------------------------------------------------
+
+function prerenderHome(): void {
+  const topProducts = products.slice(0, 6);
+  const productLinksHtml = topProducts
+    .map((p) => `<li><a href="/produkt/${p.id}">${esc(p.name)}</a></li>`)
+    .join('');
+
+  writePage({
+    route: '/',
+    title:
+      'OROSTONE — Prémiový Sinterovaný Kameň | Kuchynské Dosky, Obklady, Architektonické Projekty',
+    description:
+      'OROSTONE je slovenský dodávateľ prémiového sinterovaného kameňa. Kuchynské dosky, kúpeľňové povrchy a architektonické riešenia. Bezplatná konzultácia, digitálne laserové zameranie, CNC fabrikácia a profesionálna inštalácia.',
+    canonical: `${BASE_URL}/`,
+    rootContent: `
+      <header>
+        <h1>OROSTONE — Prémiový sinterovaný kameň</h1>
+        <p>Slovenský dodávateľ veľkoformátových sinterovaných platní 3200×1600 mm pre kuchynské dosky, kúpeľne a architektonické projekty. Bezplatná konzultácia, laserové zameranie, CNC fabrikácia a profesionálna inštalácia.</p>
+      </header>
+      <section>
+        <h2>Hlavné sekcie</h2>
+        <ul>
+          <li><a href="/kategoria/sintered-stone">Všetky dekory sinterovaného kameňa</a></li>
+          <li><a href="/vzorky">Objednať vzorky materiálu</a></li>
+          <li><a href="/sinterovany-kamen">Čo je sinterovaný kameň</a></li>
+          <li><a href="/vyhody">Výhody sinterovaného kameňa</a></li>
+          <li><a href="/blog">Blog o sinterovanom kameni</a></li>
+          <li><a href="/kontakt">Kontakt</a></li>
+          <li><a href="/doprava">Doprava a platba</a></li>
+          <li><a href="/reklamacie">Reklamácie a vrátenie</a></li>
+        </ul>
+      </section>
+      <section>
+        <h2>Prémiové dekory sinterovaného kameňa</h2>
+        <ul>${productLinksHtml}</ul>
+      </section>
+      <section>
+        <h2>Farebné kolekcie</h2>
+        <ul>
+          <li><a href="/kategoria/sintered-stone/biele">Biele dekory</a></li>
+          <li><a href="/kategoria/sintered-stone/bezove">Béžové dekory</a></li>
+          <li><a href="/kategoria/sintered-stone/sede">Šedé dekory</a></li>
+          <li><a href="/kategoria/sintered-stone/cierne">Čierne dekory</a></li>
+        </ul>
+      </section>`,
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'OROSTONE',
+        url: `${BASE_URL}/`,
+        inLanguage: 'sk-SK',
       },
     ],
   });
@@ -475,10 +742,26 @@ for (const product of products) {
 console.log('\nCategory pages:');
 prerenderCategoryListing();
 console.log('  ✓ /kategoria/sintered-stone');
+for (const sub of COLOR_SUBCATEGORIES) {
+  prerenderColorSubcategory(sub);
+  console.log(`  ✓ /kategoria/sintered-stone/${sub.slug}`);
+}
+
+// Info pages
+console.log(`\nInfo pages (${INFO_PAGES.length}):`);
+for (const page of INFO_PAGES) {
+  prerenderInfoPage(page);
+  console.log(`  ✓ ${page.route}`);
+}
 
 // Vzorky
 console.log('\nVzorky:');
 prerenderVzorky();
 console.log('  ✓ /vzorky');
+
+// Homepage
+console.log('\nHomepage:');
+prerenderHome();
+console.log('  ✓ /');
 
 console.log(`\n✅ Prerendered ${count} pages.\n`);
