@@ -128,16 +128,6 @@ export const EshopNavbar: React.FC = () => {
                 {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
               </button>
 
-              {/* O kameni — interná stránka */}
-              <Link
-                to="/sinterovany-kamen"
-                className={cn(
-                  "hidden lg:block text-[11px] tracking-[0.15em] uppercase font-normal transition-colors",
-                  isTransparent ? "text-white/70 hover:text-white" : "text-gray-500 hover:text-black"
-                )}
-              >
-                O kameni
-              </Link>
 
             </div>
 
