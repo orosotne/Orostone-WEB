@@ -1370,6 +1370,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                         <img
                           src={shopifyImageUrl(img, 400)}
                           alt={productImageAlt(product, actualIndex)}
+                          width={400}
+                          height={400}
                           className="w-full h-full object-cover"
                           loading="lazy"
                         />
@@ -2159,6 +2161,8 @@ const ResistanceParameters: React.FC<ResistanceParametersProps> = ({ product }) 
                   <img
                     src={param.image}
                     alt={param.title}
+                    width={400}
+                    height={400}
                     className="w-full h-full object-cover"
                   />
                   {/* Icon badge */}

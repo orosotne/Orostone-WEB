@@ -27,7 +27,7 @@ export const RotatingBadge: React.FC<RotatingBadgeProps> = ({
       <svg
         viewBox="0 0 120 120"
         className="absolute inset-0 w-full h-full"
-        style={{ animation: 'spin 10s linear infinite' }}
+        style={{ animation: 'spin 10s linear infinite', willChange: 'transform', transformOrigin: 'center center', contain: 'layout paint' }}
         aria-hidden="true"
       >
         <defs>

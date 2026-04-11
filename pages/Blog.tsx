@@ -69,12 +69,11 @@ export const Blog: React.FC = () => {
     () => {
       if (!containerRef.current) return;
 
-      // Page header reveal
+      // Page header reveal (opacity only — y transforms cause CLS)
       gsap.fromTo(
         '.blog-page-header',
-        { y: 40, opacity: 0 },
+        { opacity: 0 },
         {
-          y: 0,
           opacity: 1,
           duration: 0.8,
           ease: 'power3.out',
@@ -85,9 +84,8 @@ export const Blog: React.FC = () => {
       // Filter tabs reveal
       gsap.fromTo(
         '.blog-filter-tab',
-        { y: 20, opacity: 0 },
+        { opacity: 0 },
         {
-          y: 0,
           opacity: 1,
           duration: 0.5,
           ease: 'power3.out',
@@ -99,9 +97,8 @@ export const Blog: React.FC = () => {
       // Cards reveal
       gsap.fromTo(
         '.blog-grid-card',
-        { y: 50, opacity: 0 },
+        { opacity: 0 },
         {
-          y: 0,
           opacity: 1,
           duration: 0.6,
           ease: 'power3.out',
@@ -124,9 +121,8 @@ export const Blog: React.FC = () => {
 
     gsap.fromTo(
       cards,
-      { y: 30, opacity: 0 },
+      { opacity: 0 },
       {
-        y: 0,
         opacity: 1,
         duration: 0.4,
         ease: 'power3.out',
@@ -199,20 +195,23 @@ export const Blog: React.FC = () => {
       </section>
 
       {/* ==================== ACTIVE TAG BADGE ==================== */}
-      {activeTag && (
+      {/* Always render container to avoid CLS when tag badge appears/disappears */}
+      <div className="overflow-hidden transition-all duration-200" style={{ maxHeight: activeTag ? '60px' : '0px' }}>
         <div className="container mx-auto px-4 lg:px-8 pt-6">
           <div className="flex items-center gap-2">
             <span className="text-sm text-gray-400 font-light">Filtrované podľa tagu:</span>
-            <Link
-              to="/blog"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-dark bg-brand-gold/15 px-3 py-1 rounded-full hover:bg-brand-gold/25 transition-colors duration-200"
-            >
-              {activeTag}
-              <X size={13} strokeWidth={2} />
-            </Link>
+            {activeTag && (
+              <Link
+                to="/blog"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-dark bg-brand-gold/15 px-3 py-1 rounded-full hover:bg-brand-gold/25 transition-colors duration-200"
+              >
+                {activeTag}
+                <X size={13} strokeWidth={2} />
+              </Link>
+            )}
           </div>
         </div>
-      )}
+      </div>
 
       {/* ==================== ARTICLES GRID ==================== */}
       <section className="py-12 lg:py-20">
@@ -239,6 +238,8 @@ export const Blog: React.FC = () => {
                       <img
                         src={article.heroImage}
                         alt={article.sk.title}
+                        width={1200}
+                        height={750}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         loading="lazy"
                       />

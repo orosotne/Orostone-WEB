@@ -298,7 +298,7 @@ export const Vzorky: React.FC = () => {
       </div>
 
       <div ref={formRef}>
-        <Suspense fallback={null}>
+        <Suspense fallback={<div className="min-h-[600px] lg:min-h-[700px]" aria-hidden />}>
           <SampleLeadSection preselectedDekor={selectedDekor} />
         </Suspense>
       </div>

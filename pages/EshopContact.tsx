@@ -131,6 +131,8 @@ export const EshopContact: React.FC = () => {
                 <img
                   src="/images/marian-brazdil.png"
                   alt="Marián Brázdil"
+                  width={56}
+                  height={56}
                   className="w-full h-full object-cover object-top"
                 />
               </div>
