@@ -23,7 +23,16 @@ export const StickySampleCTA: React.FC = () => {
   const isHomepage = location.pathname === '/';
 
   useEffect(() => {
-    const handleScroll = () => setVisible(window.scrollY > 400);
+    let ticking = false;
+    const handleScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(() => {
+          setVisible(window.scrollY > 400);
+          ticking = false;
+        });
+      }
+    };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);

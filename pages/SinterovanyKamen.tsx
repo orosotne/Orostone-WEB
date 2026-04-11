@@ -259,80 +259,81 @@ export const SinterovanyKamen = () => {
         },
       });
 
-      // Process Steps Reveal
-      gsap.utils.toArray('.sk-process-step').forEach((step: any, i) => {
+      // Process Steps Reveal — single trigger per group (reduces ScrollTrigger count for INP)
+      const processSteps = gsap.utils.toArray('.sk-process-step');
+      if (processSteps.length) {
         gsap.fromTo(
-          step,
-          { opacity: 0, y: 60 },
+          processSteps,
+          { opacity: 0 },
           {
             opacity: 1,
-            y: 0,
             duration: 0.8,
-            delay: i * 0.15,
+            stagger: 0.15,
             scrollTrigger: {
-              trigger: step,
+              trigger: processSteps[0] as Element,
               start: 'top 85%',
-              toggleActions: 'play none none reverse',
+              toggleActions: 'play none none none',
             },
           }
         );
-      });
+      }
 
       // Feature Cards Reveal
-      gsap.utils.toArray('.sk-feature-card').forEach((card: any, i) => {
+      const featureCards = gsap.utils.toArray('.sk-feature-card');
+      if (featureCards.length) {
         gsap.fromTo(
-          card,
-          { opacity: 0, y: 50 },
+          featureCards,
+          { opacity: 0 },
           {
             opacity: 1,
-            y: 0,
             duration: 0.8,
-            delay: i * 0.1,
+            stagger: 0.1,
             scrollTrigger: {
-              trigger: card,
+              trigger: featureCards[0] as Element,
               start: 'top 85%',
-              toggleActions: 'play none none reverse',
+              toggleActions: 'play none none none',
             },
           }
         );
-      });
+      }
 
       // Application Cards Reveal
-      gsap.utils.toArray('.sk-app-card').forEach((card: any, i) => {
+      const appCards = gsap.utils.toArray('.sk-app-card');
+      if (appCards.length) {
         gsap.fromTo(
-          card,
-          { opacity: 0, scale: 0.95 },
+          appCards,
+          { opacity: 0 },
           {
             opacity: 1,
-            scale: 1,
             duration: 0.7,
-            delay: i * 0.1,
+            stagger: 0.1,
             scrollTrigger: {
-              trigger: card,
+              trigger: appCards[0] as Element,
               start: 'top 88%',
-              toggleActions: 'play none none reverse',
+              toggleActions: 'play none none none',
             },
           }
         );
-      });
+      }
 
       // Section headings reveal
-      gsap.utils.toArray('.sk-section-heading').forEach((heading: any) => {
+      const headings = gsap.utils.toArray('.sk-section-heading');
+      if (headings.length) {
         gsap.fromTo(
-          heading,
-          { opacity: 0, y: 40 },
+          headings,
+          { opacity: 0 },
           {
             opacity: 1,
-            y: 0,
             duration: 0.8,
+            stagger: 0.15,
             scrollTrigger: {
-              trigger: heading,
+              trigger: headings[0] as Element,
               start: 'top 85%',
-              toggleActions: 'play none none reverse',
+              toggleActions: 'play none none none',
             },
           }
         );
-      });
+      }
     },
     { scope: containerRef }
   );

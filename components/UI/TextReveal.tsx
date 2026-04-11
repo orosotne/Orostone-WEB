@@ -32,15 +32,14 @@ export const TextReveal: React.FC<TextRevealProps> = ({
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
-        duration: 0.8
+        type: "tween",
+        ease: "easeOut",
+        duration: 0.5
       },
     },
     hidden: {
       opacity: 0,
-      y: "100%", // Posunuté dole mimo viditeľnú oblasť
+      y: "100%",
     },
   };
 
@@ -56,7 +55,7 @@ export const TextReveal: React.FC<TextRevealProps> = ({
         className="flex flex-wrap"
       >
         {words.map((word, index) => (
-          <span key={index} className="inline-block overflow-hidden mr-[0.25em] align-bottom pb-12 -mb-12">
+          <span key={index} className="inline-block overflow-hidden mr-[0.25em] align-bottom pb-[0.15em] -mb-[0.15em]">
             <motion.span variants={child} className="inline-block">
               {word}
             </motion.span>
