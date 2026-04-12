@@ -6,7 +6,7 @@ export const ARTICLE_22: BlogArticle = {
   category: 'identity-aesthetics',
   publishDate: '2026-04-12',
   readTimeMinutes: 11,
-  heroImage: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200',
+  heroImage: '/images/blog/article-22/hero.webp',
   author: BLOG_AUTHOR_OROSTONE,
   tags: ['neviditeľná varná doska', 'sinterovaný kameň', 'indukcia', 'kuchyňa', 'Bora', 'integrovaná varná doska', 'dizajn kuchyne'],
 
@@ -29,6 +29,11 @@ export const ARTICLE_22: BlogArticle = {
 
 <p>To je <strong class="gold">neviditeľná varná doska</strong> — technológia, ktorá kombinuje indukčné varenie so sinterovaným kameňom ako jediným viditeľným povrchom.</p>
 
+<figure class="article-figure">
+  <img src="/images/blog/article-22/induction-detail.webp" alt="Hrniec na hladkej sinterovanej doske bez viditeľných horákov — neviditeľná varná doska v akcii" width="1408" height="792" loading="lazy" />
+  <figcaption>Hrniec na sinterovanom kameni — pod povrchom pracuje indukčná cievka, ale zvonku nič nenaznačuje prítomnosť varnej dosky.</figcaption>
+</figure>
+
 <div class="article-quote">
   <p>Kuchyňa bez viditeľnej varnej dosky nie je kompromis — je to upgrade. Varenie funguje rovnako, ale priestor sa zmení na dizajnový statement.</p>
 </div>
@@ -47,6 +52,11 @@ export const ARTICLE_22: BlogArticle = {
     <li><strong>Plynový varič pod kameňom:</strong> NEMOŽNÉ — plameň nemá ako preniesť teplo cez kameň</li>
   </ul>
 </div>
+
+<figure class="article-figure">
+  <img src="/images/blog/article-22/comparison.webp" alt="Porovnanie klasickej indukčnej dosky s čiernym sklom a neviditeľnej varnej dosky pod sinterovaným kameňom" width="1408" height="792" loading="lazy" />
+  <figcaption>Vľavo klasická indukcia so sklom a viditeľnými zónami. Vpravo neviditeľná indukcia — rovnaký výkon, ale povrch je čistá kamenná plocha.</figcaption>
+</figure>
 
 <h2 id="preco-sinterovany-kamen">Prečo práve sinterovaný kameň?</h2>
 
@@ -82,6 +92,11 @@ export const ARTICLE_22: BlogArticle = {
   </ul>
 </div>
 
+<figure class="article-figure">
+  <img src="/images/blog/article-22/material-closeup.webp" alt="Makro záber na hranu sinterovaného kameňa s posuvným meradlom ukazujúcim 12 mm hrúbku" width="1408" height="792" loading="lazy" />
+  <figcaption>Presne 12 mm — optimálna hrúbka pre prenos elektromagnetického poľa pri zachovaní mechanickej pevnosti.</figcaption>
+</figure>
+
 <p>To znamená, že ak plánujete neviditeľnú varnú dosku, <strong>zóna varenia musí mať 12 mm platňu</strong>. Zvyšok pracovnej dosky môže byť štandardných 20 mm. Prechod medzi hrúbkami rieši fabrikácia so skosenou hranou alebo zapusteným lemom — vizuálne neviditeľný, technicky nevyhnutný.</p>
 
 <h2 id="kompatibilne-systemy">Kompatibilné systémy neviditeľnej indukcie</h2>
@@ -106,11 +121,16 @@ export const ARTICLE_22: BlogArticle = {
 
 <ol>
   <li><strong>Fabrikácia platne:</strong> sinterovaný kameň sa nareže na presný rozmer s 12 mm zónou varenia. Výrezy pre odsávanie (ak je Bora), drez a batériu sa robia CNC strojom.</li>
-  <li><strong>Montáž indukčného modulu:</strong> cievky sa lepia zdola na platňu špeciálnym tepelne vodivým lepidlom. Elektrikár pripraví napájanie (16A alebo 32A podľa počtu zón).</li>
+  <li><strong>Montáž indukčného modulu:</strong> modul sa pomocou oceľových skôb uchytí k spodnej (nepohľadovej) strane platne podľa inštalačného manuálu. Kontaktné výstupky induktorov musia priliehať priamo ku kameňu — to zaručuje maximálnu prestupnosť elektromagnetického poľa. Elektrikár pripraví napájanie (16A alebo 32A podľa počtu zón).</li>
   <li><strong>Osadenie dosky:</strong> platňa sa uloží na kuchynskú linku, pripoja sa indukčné moduly a systém sa nakalibruje. Kalibrácia zahŕňa nastavenie výkonu pre konkrétnu hrúbku kameňa.</li>
 </ol>
 
 <p>Celý proces od objednávky po funkčnú kuchyňu trvá zvyčajne <strong>4–6 týždňov</strong>.</p>
+
+<figure class="article-figure">
+  <img src="/images/blog/article-22/installation.webp" alt="Montáž indukčných cievok na spodnú stranu sinterovanej platne v dielni" width="1408" height="792" loading="lazy" />
+  <figcaption>Indukčný modul sa pomocou oceľových skôb uchytáva podľa inštalačného manuálu k spodnej (nepohľadovej) strane sinterovanej platne. Induktory v kontaktných výstupkoch priliehajú priamo ku kameňu — to zabezpečuje maximálnu prestupnosť elektromagnetického poľa do hrnca a mechanickú stabilitu celej zostavy.</figcaption>
+</figure>
 
 <h2 id="cena">Koľko to stojí?</h2>
 
@@ -138,6 +158,11 @@ export const ARTICLE_22: BlogArticle = {
   <li><strong>Minimalistické interiéry</strong> — pre klientov, kde estetika má rovnakú váhu ako funkcia</li>
   <li><strong>Showroomy a modelové byty</strong> — wow efekt pre návštevníkov</li>
 </ul>
+
+<figure class="article-figure">
+  <img src="/images/blog/article-22/lifestyle-island.webp" alt="Otvorená kuchyňa s ostrovčekom zo sinterovaného kameňa — varenie na neviditeľnej doske" width="1408" height="792" loading="lazy" />
+  <figcaption>Kuchynský ostrovček z Calacatta sinterovaného kameňa — varenie prebieha priamo na kameni, priestor pôsobí ako dizajnový nábytok.</figcaption>
+</figure>
 
 <h2 id="obmedzenia">Aké sú obmedzenia?</h2>
 

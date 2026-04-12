@@ -197,7 +197,7 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
     category: 'identity-aesthetics',
     publishDate: '2026-04-12',
     readTimeMinutes: 11,
-    heroImage: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200',
+    heroImage: '/images/blog/article-22/hero.webp',
     author: BLOG_AUTHOR_OROSTONE,
     tags: ['neviditeľná varná doska', 'sinterovaný kameň', 'indukcia', 'kuchyňa', 'Bora', 'integrovaná varná doska', 'dizajn kuchyne'],
     sk: {

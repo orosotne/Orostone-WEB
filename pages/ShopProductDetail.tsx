@@ -383,14 +383,16 @@ const BundleSelector: React.FC<BundleSelectorProps> = ({
               onClick={() => onBundleChange(bundle)}
               className={cn(
                 "w-full p-3 sm:p-4 border transition-all text-left relative",
-                isSelected 
-                  ? "border-brand-dark bg-white ring-1 ring-brand-dark" 
-                  : "border-gray-200 bg-white hover:border-gray-400"
+                isSelected
+                  ? "border-brand-dark bg-white ring-1 ring-brand-dark"
+                  : bundle.isBestValue
+                    ? "border-brand-gold/50 bg-brand-gold/5 hover:border-brand-gold"
+                    : "border-gray-200 bg-white hover:border-gray-400"
               )}
             >
               {/* Best Value Badge — inline on mobile, absolute on desktop */}
               {bundle.isBestValue && (
-                <span className="hidden sm:block absolute -top-2.5 right-4 bg-brand-gold text-brand-dark text-[9px] font-bold tracking-wider uppercase px-2 py-0.5">
+                <span className="absolute -top-2.5 right-4 bg-brand-gold text-brand-dark text-[9px] font-bold tracking-wider uppercase px-2 py-0.5">
                   Najlepšia hodnota
                 </span>
               )}
@@ -1423,6 +1425,21 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 {product.name}
               </h1>
 
+              {/* ===== Price Preview — desktop only, above fold ===== */}
+              <div className="order-4 lg:order-4 hidden lg:flex items-baseline gap-3 mb-4">
+                <span className="text-2xl font-bold text-brand-dark">
+                  {formatPrice(Math.round(product.pricePerM2 * (1 - selectedBundle.discountPercent / 100) * 100) / 100)}
+                </span>
+                <span className="text-sm text-gray-400">/ m² s DPH</span>
+                {selectedBundle.discountPercent > 0 && (
+                  <span className="text-sm text-gray-400 line-through">{formatPrice(product.pricePerM2)}</span>
+                )}
+                {selectedBundle.discountPercent > 0 && (
+                  <span className="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
+                    -{selectedBundle.discountPercent}%
+                  </span>
+                )}
+              </div>
 
               {/* ===== Spec Badges — mobile: horizontal scroll (pan-x+pan-y touch-action, no snap); lg: wrap ===== */}
               <div
@@ -1443,8 +1460,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                 </span>
               </div>
 
-              {/* ===== 5. Short Description — mobile: after gallery, desktop: after title ===== */}
-              <div className="order-5 lg:order-4 mb-6 lg:mb-8">
+              {/* ===== 5. Short Description — mobile: after gallery, desktop: after price preview ===== */}
+              <div className="order-5 lg:order-5 mb-6 lg:mb-8">
                 <div className="relative">
                   {product.descriptionHtml ? (
                     <div 
@@ -1590,7 +1607,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
 
               {/* ===== 6. Product Switcher — mobile: after description ===== */}
-              <div className="order-6 lg:order-5">
+              <div className="order-6 lg:order-6">
                 <ProductSwitcher 
                   currentProductId={product.id} 
                   products={allProducts} 

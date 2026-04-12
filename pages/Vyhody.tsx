@@ -242,24 +242,32 @@ export const Vyhody = () => {
                   </li>
                 ))}
               </ul>
-              <Link
-                to="/kontakt"
-                className="inline-flex items-center gap-2 bg-brand-dark text-white px-8 py-4 text-sm font-semibold tracking-wider uppercase hover:bg-brand-gold hover:text-brand-dark transition-all"
-              >
-                Konzultácia zdarma
-                <ArrowRight size={16} />
-              </Link>
-            </div>
-            <div className="bg-white p-8 rounded-3xl">
-              <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl flex items-center justify-center">
-                <div className="text-center px-8">
-                  <CookingPot size={48} className="text-brand-gold mx-auto mb-4" />
-                  <p className="text-lg font-bold text-brand-dark mb-2">Neviditeľná indukčná doska</p>
-                  <p className="text-sm text-gray-500 font-light">
-                    Varná technológia integrovaná pod sinterovaný kameň — žiadne viditeľné varné zóny
-                  </p>
-                </div>
+              <div className="flex flex-wrap items-center gap-4">
+                <Link
+                  to="/kontakt"
+                  className="inline-flex items-center gap-2 bg-brand-dark text-white px-8 py-4 text-sm font-semibold tracking-wider uppercase hover:bg-brand-gold hover:text-brand-dark transition-all"
+                >
+                  Konzultácia zdarma
+                  <ArrowRight size={16} />
+                </Link>
+                <Link
+                  to="/blog/neviditelna-varna-doska-v-sinterovanom-kamene"
+                  className="inline-flex items-center gap-2 text-brand-gold hover:text-brand-dark text-sm font-semibold transition-colors"
+                >
+                  Kompletný sprievodca
+                  <ArrowRight size={14} />
+                </Link>
               </div>
+            </div>
+            <div className="bg-white p-4 rounded-3xl">
+              <img
+                src="/images/blog/article-22/hero.webp"
+                alt="Neviditeľná indukčná varná doska zabudovaná v sinterovanom kameni"
+                width={800}
+                height={600}
+                className="w-full aspect-[4/3] object-cover rounded-2xl"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
@@ -303,6 +311,62 @@ export const Vyhody = () => {
                 ))}
               </tbody>
             </table>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── BLOG REFERENCES ─── */}
+      <section className="py-24 md:py-32">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
+              Čítajte na blogu
+            </span>
+            <h2 className="text-3xl md:text-4xl font-sans font-bold">
+              Dozviete sa viac
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <Link to="/blog/neviditelna-varna-doska-v-sinterovanom-kamene" className="group">
+              <div className="bg-[#F9F9F7] rounded-3xl overflow-hidden">
+                <img
+                  src="/images/blog/article-22/hero.webp"
+                  alt="Neviditeľná varná doska v sinterovanom kameni"
+                  width={600}
+                  height={400}
+                  className="w-full aspect-[3/2] object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <div className="p-6">
+                  <h3 className="font-bold text-brand-dark group-hover:text-brand-gold transition-colors mb-2">
+                    Neviditeľná varná doska v sinterovanom kameni
+                  </h3>
+                  <p className="text-sm text-gray-500 font-light">
+                    Kompletný sprievodca — ako funguje, koľko stojí, aký kameň vybrať.
+                  </p>
+                </div>
+              </div>
+            </Link>
+            <Link to="/blog/kuchynsky-ostrovcek-zo-sinterovaneho-kamena" className="group">
+              <div className="bg-[#F9F9F7] rounded-3xl overflow-hidden">
+                <img
+                  src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=600"
+                  alt="Kuchynský ostrovček zo sinterovaného kameňa"
+                  width={600}
+                  height={400}
+                  className="w-full aspect-[3/2] object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+                <div className="p-6">
+                  <h3 className="font-bold text-brand-dark group-hover:text-brand-gold transition-colors mb-2">
+                    Kuchynský ostrovček zo sinterovaného kameňa
+                  </h3>
+                  <p className="text-sm text-gray-500 font-light">
+                    Dizajn, materiál, rozmery — všetko, čo potrebujete vedieť.
+                  </p>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -359,6 +423,12 @@ export const Vyhody = () => {
               className="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-8 py-4 text-sm font-semibold tracking-wider uppercase hover:border-brand-gold hover:text-brand-gold transition-colors"
             >
               Kontaktovať nás
+            </Link>
+            <Link
+              to="/kategoria/sintered-stone"
+              className="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-8 py-4 text-sm font-semibold tracking-wider uppercase hover:border-brand-gold hover:text-brand-gold transition-colors"
+            >
+              Katalóg dekórov
             </Link>
           </div>
           <div className="flex flex-col sm:flex-row gap-6 justify-center mt-8 text-sm">
