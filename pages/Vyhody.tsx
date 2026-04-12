@@ -29,7 +29,7 @@ const FAQ_ITEMS = [
   {
     question: 'Ako funguje neviditeľná varná doska v sinterovanom kameni?',
     answer:
-      'Indukčný modul sa nainštaluje priamo pod sinterovanú dosku. Kameň je nekovový a nepórovitý, takže elektromagnetické pole prechádza bez strát. Výsledkom je hladký, súvislý povrch bez viditeľných varných zón — varná doska je „neviditeľná".',
+      'Indukčný modul sa nainštaluje priamo pod sinterovanú dosku s hrúbkou presne 12 mm. Kameň je nekovový a nepórovitý, takže elektromagnetické pole prechádza bez strát. Dôležité: platne s hrúbkou 20 mm sú príliš hrubé — elektromagnetické pole nimi neprejde dostatočne. Výsledkom je hladký, súvislý povrch bez viditeľných varných zón — varná doska je „neviditeľná".',
   },
   {
     question: 'Je sinterovaný kameň bezúdržbový?',
@@ -230,7 +230,7 @@ export const Vyhody = () => {
               </p>
               <ul className="space-y-4 mb-8">
                 {[
-                  'Indukčný modul pod 12 mm alebo 20 mm doskou',
+                  'Indukčný modul pod dosku s hrúbkou presne 12 mm',
                   'Žiadne viditeľné ovládacie prvky na povrchu',
                   'Ovládanie cez dotykový panel alebo mobilnú aplikáciu',
                   'Plná integrácia s dizajnom kuchyne',
@@ -242,6 +242,9 @@ export const Vyhody = () => {
                   </li>
                 ))}
               </ul>
+              <p className="text-sm text-amber-700 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mb-8">
+                <strong>Dôležité:</strong> Neviditeľná varná doska funguje výhradne s platňami hrúbky 12 mm. Platne s hrúbkou 20 mm sú príliš hrubé na prenos elektromagnetického poľa.
+              </p>
               <div className="flex flex-wrap items-center gap-4">
                 <Link
                   to="/kontakt"
