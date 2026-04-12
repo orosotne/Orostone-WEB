@@ -47,6 +47,9 @@ icon-v2-*
 # Local skill files
 skill/
 
+# Shopify notification templates (managed in Shopify Admin, kept local only)
+shopify/
+
 # Supabase CLI cache
 supabase/.temp/
 .vercel
