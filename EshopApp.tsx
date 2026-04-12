@@ -33,6 +33,8 @@ const SinterovanyKamen = lazyWithRetry(() => import('./pages/SinterovanyKamen').
 const OdstupeniOdZmluvy = lazyWithRetry(() => import('./pages/OdstupeniOdZmluvy').then(m => ({ default: m.OdstupeniOdZmluvy })));
 const Vzorky = lazyWithRetry(() => import('./pages/Vzorky').then(m => ({ default: m.Vzorky })));
 const Vyhody = lazyWithRetry(() => import('./pages/Vyhody').then(m => ({ default: m.Vyhody })));
+const Kuchyne = lazyWithRetry(() => import('./pages/Kuchyne').then(m => ({ default: m.Kuchyne })));
+const Realizacie = lazyWithRetry(() => import('./pages/Realizacie').then(m => ({ default: m.Realizacie })));
 
 // Stagger prefetch of lazy chunks — high-intent routes first, lower-priority later
 if (typeof window !== 'undefined') {
@@ -211,6 +213,16 @@ const EshopAppContent = () => {
           <Route path="/vyhody" element={
             <Suspense fallback={<div className="min-h-screen" aria-hidden />}>
               <Vyhody />
+            </Suspense>
+          } />
+          <Route path="/kuchyne" element={
+            <Suspense fallback={<div className="min-h-screen" aria-hidden />}>
+              <Kuchyne />
+            </Suspense>
+          } />
+          <Route path="/realizacie" element={
+            <Suspense fallback={<div className="min-h-screen" aria-hidden />}>
+              <Realizacie />
             </Suspense>
           } />
           

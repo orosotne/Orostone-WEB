@@ -13,6 +13,8 @@ import { ARTICLE_07 } from './articles/article-07-certifications';
 import { ARTICLE_10 } from './articles/article-10-matte-vs-polished';
 import { ARTICLE_13 } from './articles/article-13-process';
 import { ARTICLE_16 } from './articles/article-16-worth-it';
+import { ARTICLE_22 } from './articles/article-22-invisible-cooktop';
+import { ARTICLE_23 } from './articles/article-23-kitchen-island';
 
 // ---------------------------------------------------------------------------
 // Stub articles (content coming soon)
@@ -434,6 +436,8 @@ const ALL_ARTICLES: BlogArticle[] = [
   ARTICLE_10,
   ARTICLE_13,
   ARTICLE_16,
+  ARTICLE_22,
+  ARTICLE_23,
   ...STUB_ARTICLES,
 ].sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
 

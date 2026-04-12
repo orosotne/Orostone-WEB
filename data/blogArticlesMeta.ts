@@ -191,6 +191,46 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
       excerpt: 'Complete financial breakdown of sintered stone vs quartz, granite and laminate. Three real scenarios (family home, Bratislava flat, Airbnb), 25-year cost of ownership and an honest answer on when the investment pays off — and when it doesn\'t.',
     },
   },
+  {
+    id: 'invisible-cooktop-sintered-stone',
+    slug: 'neviditelna-varna-doska-v-sinterovanom-kamene',
+    category: 'identity-aesthetics',
+    publishDate: '2026-04-12',
+    readTimeMinutes: 11,
+    heroImage: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200',
+    author: BLOG_AUTHOR_OROSTONE,
+    tags: ['neviditeľná varná doska', 'sinterovaný kameň', 'indukcia', 'kuchyňa', 'Bora', 'integrovaná varná doska', 'dizajn kuchyne'],
+    sk: {
+      title: 'Neviditeľná varná doska v sinterovanom kameni — kompletný sprievodca',
+      subtitle: 'Ako funguje indukčné varenie integrované priamo pod sinterovaný kameň a prečo je to budúcnosť kuchýň',
+      excerpt: 'Neviditeľná varná doska skrytá pod sinterovaným kameňom vytvára dokonale čistú pracovnú plochu. Vysvetľujeme technológiu, požiadavky na hrúbku platne, kompatibilné systémy a reálne skúsenosti.',
+    },
+    en: {
+      title: 'Invisible Cooktop in Sintered Stone — Complete Guide',
+      subtitle: 'How induction cooking integrated under sintered stone works and why it\'s the future of kitchens',
+      excerpt: 'An invisible cooktop hidden under sintered stone creates a perfectly clean work surface. We explain the technology, slab thickness requirements, compatible systems and real experiences.',
+    },
+  },
+  {
+    id: 'kitchen-island-sintered-stone',
+    slug: 'kuchynsky-ostrovcek-zo-sinterovaneho-kamena',
+    category: 'identity-aesthetics',
+    publishDate: '2026-04-12',
+    readTimeMinutes: 10,
+    heroImage: 'https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1200',
+    author: BLOG_AUTHOR_OROSTONE,
+    tags: ['kuchynský ostrovček', 'sinterovaný kameň', 'kuchyňa', 'dizajn', 'ostrov', 'pracovná doska', 'waterfall'],
+    sk: {
+      title: 'Kuchynský ostrovček zo sinterovaného kameňa — kompletný sprievodca',
+      subtitle: 'Od rozmeru cez hrúbku po waterfall hrany: všetko, čo potrebujete vedieť pred objednaním',
+      excerpt: 'Kuchynský ostrovček zo sinterovaného kameňa je vizuálne dominanta modernej kuchyne. Poradíme s rozmermi, hrúbkou platne, profilom hrán a waterfall prevedením.',
+    },
+    en: {
+      title: 'Kitchen Island in Sintered Stone — Complete Guide',
+      subtitle: 'From dimensions to thickness to waterfall edges: everything you need to know before ordering',
+      excerpt: 'A sintered stone kitchen island is the visual centerpiece of a modern kitchen. We advise on dimensions, slab thickness, edge profiles and waterfall execution.',
+    },
+  },
 ];
 
 /** Published articles only (same filter as blogArticles.ts) */
