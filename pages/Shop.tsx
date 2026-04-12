@@ -741,13 +741,21 @@ export const Shop = () => {
               transition={{ duration: 0.4, delay: 0.2 }}
               className="hero-cta"
             >
-              <Link
-                to={HERO_SLIDES[activeSlide].ctaTo}
-                className="group inline-flex items-center gap-2 border border-white/40 hover:border-white text-white/90 hover:text-white px-6 py-2.5 text-xs md:text-sm tracking-[0.15em] uppercase transition-all duration-300"
-              >
-                {HERO_SLIDES[activeSlide].cta}
-                <ChevronRight size={14} className="group-hover:translate-x-0.5 transition-transform duration-300" />
-              </Link>
+              <div className="flex items-center gap-4">
+                <Link
+                  to={HERO_SLIDES[activeSlide].ctaTo}
+                  className="group inline-flex items-center gap-2 border border-white/40 hover:border-white text-white/90 hover:text-white px-6 py-2.5 text-xs md:text-sm tracking-[0.15em] uppercase transition-all duration-300"
+                >
+                  {HERO_SLIDES[activeSlide].cta}
+                  <ChevronRight size={14} className="group-hover:translate-x-0.5 transition-transform duration-300" />
+                </Link>
+                <Link
+                  to="/vzorky"
+                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white px-6 py-2.5 text-xs md:text-sm tracking-[0.15em] uppercase transition-all duration-300"
+                >
+                  Vzorky zadarmo
+                </Link>
+              </div>
             </motion.div>
           </AnimatePresence>
         </div>

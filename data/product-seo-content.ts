@@ -48,7 +48,7 @@ export const GENERIC_PRODUCT_FAQS: ProductFAQ[] = [
 export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
   'statuario-diamante': {
     metaTitle: 'STATUARIO DIAMANTE | Luxusné veľkoformátové platne',
-    metaDescription: 'Biely mramor s diamantovými žilkami. Veľkoformátové platne pre luxusné interiéry v Bratislave. Objednajte Statuario Diamante ešte dnes.',
+    metaDescription: 'Biely mramor s diamantovými žilkami. Veľkoformátové platne pre luxusné interiéry v Bratislave. Skladom, doprava po celom SR. Vzorky zadarmo.',
     keywords: [
       'statuario diamante',
       'biely mramor obklad',
@@ -73,7 +73,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
 
   'calacatta-top': {
     metaTitle: 'Calacatta Top | Prémiový mramorový obklad',
-    metaDescription: 'Originálny Calacatta vzor pre vaše interiéry. Teplé zlaté žilky na bielom pozadí. Ideálny na kuchyne a kúpeľne v Bratislave. Zvýšte hodnotu domova.',
+    metaDescription: 'Originálny Calacatta vzor pre vaše interiéry. Teplé zlaté žilky na bielom pozadí. Ideálny na kuchyne a kúpeľne. Skladom, objednajte vzorky zadarmo.',
     keywords: [
       'calacatta obklad',
       'calacatta mramor platne',
@@ -98,7 +98,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
 
   'givenchy-gold': {
     metaTitle: 'Givenchy Gold | Zlatý mramor pre luxusné interiéry',
-    metaDescription: 'Teplé zlaté mramorové platne Givenchy Gold. Luxusné obklady pre kúpeľne a obývacie izby v Bratislave. Zvýšte hodnotu vašej nehnuteľnosti.',
+    metaDescription: 'Teplé zlaté mramorové platne Givenchy Gold. Luxusné obklady pre kúpeľne a obývacie izby v Bratislave. Skladom, doprava po celom Slovensku.',
     keywords: [
       'givenchy gold obklad',
       'zlaté mramorové platne',
@@ -123,7 +123,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
 
   'roman-travertine': {
     metaTitle: 'Roman Travertine | Klasický travertín pre domov',
-    metaDescription: 'Teplý travertínový dizajn pre podlahy aj obklady. Roman Travertine – stredomorská elegancia bez kompromisov. Doprava po Bratislave dostupná.',
+    metaDescription: 'Teplý travertínový dizajn pre podlahy aj obklady. Roman Travertine – stredomorská elegancia bez kompromisov. Skladom, doprava po celom SR.',
     keywords: [
       'travertín obklad',
       'travertínové platne bratislava',
@@ -148,7 +148,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
 
   'taj-mahal': {
     metaTitle: 'TAJ MAHAL | Krémový mramor pre luxusné kúpeľne',
-    metaDescription: 'Krémovo-biela elegancia Taj Mahal. Veľkoformátové mramorové platne pre vaše kúpeľne a interiéry. Exkluzívne dizajny pre bratislavské domovy.',
+    metaDescription: 'Krémovo-biela elegancia Taj Mahal. Veľkoformátové mramorové platne pre kúpeľne a interiéry. Skladom, doprava po celom SR. Vzorky zadarmo.',
     keywords: [
       'taj mahal obklad',
       'krémový mramor',
@@ -173,7 +173,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
 
   'appennino': {
     metaTitle: 'Appennino | Prírodný kameň pre moderné interiéry',
-    metaDescription: 'Dynamický kamenný dizajn Appennino. Veľkoformátové platne pre akcentové steny aj podlahy. Objavte prémiové obklady inšpirované talianskymi horami.',
+    metaDescription: 'Dynamický kamenný dizajn Appennino. Veľkoformátové platne pre akcentové steny aj podlahy. Skladom, objednajte online. Doprava po celom Slovensku.',
     keywords: [
       'appennino obklad',
       'prírodný kameň dizajn',
@@ -198,7 +198,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
 
   'astrana-grey': {
     metaTitle: 'Astrana Grey | Moderné sivé mramorové platne',
-    metaDescription: 'Sivé mramorové platne Astrana Grey pre moderné interiéry. Škandinávska elegancia pre vaše podlahy a obklady. Prémiové platne pre bratislavské domovy.',
+    metaDescription: 'Sivé mramorové platne Astrana Grey pre moderné interiéry. Škandinávska elegancia pre podlahy a obklady. Skladom, doprava po celom SR.',
     keywords: [
       'sivé mramorové platne',
       'astrana grey',
@@ -223,7 +223,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
 
   'super-white-extra': {
     metaTitle: 'Super White Extra | Biele veľkoformátové platne',
-    metaDescription: 'Dokonale biele obklady Super White Extra. Zväčšite priestor svetlom. Prémiové porcelánové platne pre moderné kúpeľne a kuchyne v Bratislave.',
+    metaDescription: 'Dokonale biele obklady Super White Extra. Zväčšite priestor svetlom. Prémiové porcelánové platne pre kúpeľne a kuchyne. Skladom, vzorky zadarmo.',
     keywords: [
       'biele mramorové platne',
       'super white obklad',
@@ -248,7 +248,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
 
   'gothic-gold': {
     metaTitle: 'Gothic Gold | Tmavé luxusné obklady so zlatými žilkami',
-    metaDescription: 'Dramatický Gothic Gold – tmavý mramor so zlatými žilkami. Luxusné platne pre odvážnych. Vytvorte interiér, ktorý zanechá dojem navždy.',
+    metaDescription: 'Dramatický Gothic Gold – tmavý mramor so zlatými žilkami. Luxusné platne pre odvážnych. Skladom, objednajte online. Doprava po celom Slovensku.',
     keywords: [
       'gothic gold obklad',
       'tmavé mramorové platne',
@@ -273,7 +273,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
 
   'wild-forest': {
     metaTitle: 'Wild Forest | Prírodný kamenný dizajn pre domov',
-    metaDescription: 'Divá krása prírody vo vašom interiéri. Wild Forest – expresívny kamenný vzor pre moderné bratislavské domovy. Objavte silu prírody doma.',
+    metaDescription: 'Divá krása prírody vo vašom interiéri. Wild Forest – expresívny kamenný vzor pre moderné domovy. Skladom, doprava po celom SR. Vzorky zadarmo.',
     keywords: [
       'prírodný kameň obklad',
       'wild forest platne',
@@ -298,7 +298,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
 
   'nero-margiua': {
     metaTitle: 'Nero Margiua | Čierny mramor pre exkluzívne interiéry',
-    metaDescription: 'Čierne mramorové platne Nero Margiua pre luxury interiéry. Sofistikovaná čierna so striebornými žilkami. Prémiové obklady pre Bratislavu.',
+    metaDescription: 'Čierne mramorové platne Nero Margiua pre luxury interiéry. Sofistikovaná čierna so striebornými žilkami. Skladom, doprava po celom Slovensku.',
     keywords: [
       'čierny mramor obklad',
       'nero margiua',
@@ -323,7 +323,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
 
   'yabo-white': {
     metaTitle: 'YABO WHITE | Teplé biele obklady pre každý priestor',
-    metaDescription: 'Nadčasovo biely Yabo White pre vaše kúpeľne a kuchyne. Teplá, vzdušná biela vhodná pre celý byt. Prémiové keramické platne v Bratislave.',
+    metaDescription: 'Nadčasovo biely Yabo White pre kúpeľne a kuchyne. Teplá, vzdušná biela vhodná pre celý byt. Skladom, doprava po celom SR. Objednajte online.',
     keywords: [
       'biele obklady bratislava',
       'yabo white',

@@ -333,7 +333,7 @@ export const Vyhody = () => {
             <Link to="/blog/neviditelna-varna-doska-v-sinterovanom-kamene" className="group">
               <div className="bg-[#F9F9F7] rounded-3xl overflow-hidden">
                 <img
-                  src="/images/blog/article-22/hero.webp"
+                  src="/images/blog/article-22/hero-original.webp"
                   alt="Neviditeľná varná doska v sinterovanom kameni"
                   width={600}
                   height={400}
@@ -353,7 +353,7 @@ export const Vyhody = () => {
             <Link to="/blog/kuchynsky-ostrovcek-zo-sinterovaneho-kamena" className="group">
               <div className="bg-[#F9F9F7] rounded-3xl overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=600"
+                  src="/images/blog/article-23/hero.webp"
                   alt="Kuchynský ostrovček zo sinterovaného kameňa"
                   width={600}
                   height={400}
