@@ -165,11 +165,11 @@ async function sendAdminNotification(quote: QuoteData, customer: CustomerData, i
   <!-- OUTER: zlaté PNG pozadie -->
   <table width="100%" cellpadding="0" cellspacing="0"
          style="background-color: #ECD488;
-                background-image: url('https://www.orostone.sk/images/email-gold-bg.png');
+                background-image: url('https://orostone.sk/images/email-gold-bg.png');
                 background-repeat: repeat; border-collapse: collapse;">
     <tr>
       <td style="background-color: #ECD488;
-                 background-image: url('https://www.orostone.sk/images/email-gold-bg.png');
+                 background-image: url('https://orostone.sk/images/email-gold-bg.png');
                  background-repeat: repeat; padding: 36px 16px 40px 16px;">
 
         <!-- LOGO: čierne, vycentrované nad kartou -->
@@ -355,12 +355,12 @@ async function sendSampleLeadConfirmation(quote: QuoteData, customer: CustomerDa
   <!-- OUTER: zlaté pozadie — background-image zabraňuje konverzii v dark mode -->
   <table class="email-outer" width="100%" cellpadding="0" cellspacing="0"
          style="background-color: #ECD488;
-                background-image: url('https://www.orostone.sk/images/email-gold-bg.png');
+                background-image: url('https://orostone.sk/images/email-gold-bg.png');
                 background-repeat: repeat;
                 border-collapse: collapse;">
     <tr>
       <td class="email-outer" style="background-color: #ECD488;
-                background-image: url('https://www.orostone.sk/images/email-gold-bg.png');
+                background-image: url('https://orostone.sk/images/email-gold-bg.png');
                 background-repeat: repeat;
                 padding: 36px 16px 40px 16px;">
 

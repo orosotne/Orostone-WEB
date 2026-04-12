@@ -23,6 +23,7 @@
     { "source": "/o-kameni", "destination": "/sinterovany-kamen", "permanent": true },
     { "source": "/kuchyne", "destination": "/kategoria/sintered-stone", "permanent": true },
     { "source": "/onas", "destination": "/kontakt", "permanent": true },
+    { "source": "/contact", "destination": "/kontakt", "permanent": true },
     { "source": "/kamen/:slug*", "destination": "/kategoria/sintered-stone", "permanent": true },
     { "source": "/post/:slug*", "destination": "/blog", "permanent": true },
     { "source": "/blank", "destination": "/", "permanent": true },

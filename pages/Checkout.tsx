@@ -46,15 +46,13 @@ export const Checkout = () => {
       const ga4Items = items.map(i => ({ item_id: i.variantId, item_name: i.name, price: i.price, quantity: i.quantity }));
       trackMetaEvent('InitiateCheckout', { value: subtotal, currency: 'EUR', num_items: itemCount });
       trackGA4BeginCheckout({ value: subtotal, items: ga4Items });
-      if (preferences.marketing) {
-        savePendingPurchase({
-          value: total,
-          currency: 'EUR',
-          num_items: itemCount,
-          content_ids: items.map(i => i.variantId),
-          items: ga4Items,
-        });
-      }
+      savePendingPurchase({
+        value: total,
+        currency: 'EUR',
+        num_items: itemCount,
+        content_ids: items.map(i => i.variantId),
+        items: ga4Items,
+      });
       window.location.href = checkoutUrl;
     }
   };
