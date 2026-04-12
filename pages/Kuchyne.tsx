@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Ruler, Palette, Shield, Phone } from 'lucide-react';
-import { SEOHead, createBreadcrumbLD } from '@/components/UI/SEOHead';
+import { ArrowRight, Ruler, Palette, Shield, Phone, ChevronDown } from 'lucide-react';
+import { SEOHead } from '@/components/UI/SEOHead';
 
 const GALLERY_ITEMS = [
   {
@@ -60,10 +60,68 @@ const FEATURES = [
   },
 ];
 
-const breadcrumbLD = createBreadcrumbLD([
-  { name: 'Domov', url: 'https://orostone.sk/' },
-  { name: 'Kuchyne', url: 'https://orostone.sk/kuchyne' },
-]);
+const PROCESS_STEPS = [
+  {
+    title: 'Výber dekóru',
+    description: 'Objednajte si vzorky zadarmo a vyberte dekór, ktorý ladí s vašou kuchyňou.',
+  },
+  {
+    title: 'Zameranie',
+    description: 'Náš technik príde k vám domov a presne zameria rozmery kuchyne.',
+  },
+  {
+    title: 'CNC výroba',
+    description: 'Platne sa režú na CNC stroji presne na mieru — vrátane výrezov pre drez a varič.',
+  },
+  {
+    title: 'Inštalácia',
+    description: 'Profesionálna montáž do 2-3 hodín. Kuchyňu môžete používať ihneď.',
+  },
+];
+
+const KITCHEN_FAQS = [
+  {
+    q: 'Koľko stojí kuchynská doska zo sinterovaného kameňa?',
+    a: 'Cena závisí od dekóru, rozmerov a počtu výrezov. Orientačne od 180 €/m² vrátane DPH. Objednajte si nezáväznú cenovú ponuku.',
+  },
+  {
+    q: 'Ako dlho trvá výroba a montáž?',
+    a: 'Od zamerania po inštaláciu zvyčajne 2-3 týždne. Samotná montáž trvá 2-3 hodiny.',
+  },
+  {
+    q: 'Znečistí sa sinterovaný kameň od jedla alebo vína?',
+    a: 'Nie. Sinterovaný kameň má prakticky nulovú nasiakavosť (< 0,1 %), takže škvrny od vína, kávy ani oleja neprenikajú do povrchu. Stačí utrieť vlhkou utierkou.',
+  },
+  {
+    q: 'Môžem položiť horúci hrniec priamo na dosku?',
+    a: 'Áno. Sinterovaný kameň odoláva teplotám nad 1 200 °C a nenechá stopy od horúcich hrncov ani panvíc.',
+  },
+  {
+    q: 'Aká hrúbka platne je lepšia — 12 mm alebo 20 mm?',
+    a: 'Pre kuchynské dosky odporúčame 20 mm — pôsobí masívnejšie a umožňuje profilované hrany. 12 mm je vhodná pre obklady a zásteny.',
+  },
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Domov', item: 'https://orostone.sk/' },
+        { '@type': 'ListItem', position: 2, name: 'Kuchyne', item: 'https://orostone.sk/kuchyne' },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: KITCHEN_FAQS.map((faq) => ({
+        '@type': 'Question',
+        name: faq.q,
+        acceptedAnswer: { '@type': 'Answer', text: faq.a },
+      })),
+    },
+  ],
+};
 
 export const Kuchyne = () => {
   return (
@@ -73,7 +131,7 @@ export const Kuchyne = () => {
         description="Prémiové kuchynské dosky zo sinterovaného kameňa — odolné voči teplu, škvrnám a škrabancom. Pozrite si realizácie a objednajte vzorky zadarmo."
         canonical="https://orostone.sk/kuchyne"
         keywords={['kuchyne sinterovaný kameň', 'kuchynská doska', 'pracovná doska kuchyňa', 'sinterovaný kameň kuchyňa', 'prémiová kuchyňa']}
-        structuredData={breadcrumbLD}
+        structuredData={structuredData}
       />
 
       {/* Hero */}
@@ -123,8 +181,33 @@ export const Kuchyne = () => {
         </div>
       </section>
 
-      {/* Gallery */}
+      {/* Process */}
       <section className="py-20 bg-[#F9F9F7]">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
+              Ako to funguje
+            </span>
+            <h2 className="text-3xl md:text-4xl font-sans font-bold text-brand-dark">
+              Od výberu po inštaláciu
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+            {PROCESS_STEPS.map((step, i) => (
+              <div key={step.title} className="text-center">
+                <div className="w-12 h-12 bg-brand-gold text-brand-dark rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">
+                  {i + 1}
+                </div>
+                <h3 className="font-bold text-brand-dark mb-2">{step.title}</h3>
+                <p className="text-sm text-gray-500 font-light">{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery */}
+      <section className="py-20">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
@@ -188,6 +271,28 @@ export const Kuchyne = () => {
               <Phone size={18} />
               Kontaktovať nás
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20">
+        <div className="container mx-auto px-6 max-w-3xl">
+          <h2 className="text-2xl md:text-3xl font-bold text-brand-dark text-center mb-12">
+            Často kladené otázky
+          </h2>
+          <div className="space-y-4">
+            {KITCHEN_FAQS.map((faq) => (
+              <details key={faq.q} className="group bg-[#F9F9F7] rounded-2xl">
+                <summary className="flex items-center justify-between p-6 cursor-pointer font-semibold text-brand-dark">
+                  {faq.q}
+                  <ChevronDown size={20} className="text-gray-400 group-open:rotate-180 transition-transform" />
+                </summary>
+                <div className="px-6 pb-6 text-gray-500 font-light text-sm leading-relaxed">
+                  {faq.a}
+                </div>
+              </details>
+            ))}
           </div>
         </div>
       </section>

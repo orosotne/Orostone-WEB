@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Search, User, ShoppingBag, Menu, X, ChevronDown, Heart, ArrowLeft, Diamond, Phone
+  Search, User, ShoppingBag, Menu, X, ChevronDown, Heart, ArrowLeft, Diamond, Phone, Package
 } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 
@@ -389,6 +389,20 @@ export const EshopNavbar: React.FC = () => {
             </li>
             <li onMouseEnter={() => setActiveCategory(null)}>
               <NavLink
+                to="/vzorky"
+                className={({ isActive }) => cn(
+                  "flex items-center gap-1.5 px-6 py-4 text-[11px] font-normal tracking-[0.2em] uppercase transition-all duration-200",
+                  isTransparent
+                    ? isActive ? "text-brand-gold" : "text-brand-gold/80 hover:text-brand-gold"
+                    : isActive ? "text-brand-gold" : "text-brand-gold/70 hover:text-brand-gold"
+                )}
+              >
+                <Package size={13} strokeWidth={1.5} />
+                Vzorky zadarmo
+              </NavLink>
+            </li>
+            <li onMouseEnter={() => setActiveCategory(null)}>
+              <NavLink
                 to="/blog"
                 className={({ isActive }) => cn(
                   "flex items-center px-6 py-4 text-[11px] font-normal tracking-[0.2em] uppercase transition-all duration-200",
@@ -487,6 +501,14 @@ export const EshopNavbar: React.FC = () => {
 
                 <div className="h-px bg-gray-100 my-2" />
 
+                <Link
+                  to="/vzorky"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-2 px-6 py-4 text-[13px] tracking-[0.1em] uppercase text-brand-gold hover:bg-brand-gold/5"
+                >
+                  <Package size={16} strokeWidth={1.5} />
+                  Vzorky zadarmo
+                </Link>
                 <Link
                   to="/sinterovany-kamen"
                   onClick={() => setMobileMenuOpen(false)}
@@ -608,6 +630,14 @@ export const EshopNavbar: React.FC = () => {
                     {category.name}
                   </Link>
                 ))}
+                <Link
+                  to="/vzorky"
+                  onClick={() => setOffCanvasOpen(false)}
+                  className="flex items-center gap-2 px-8 py-5 text-[14px] tracking-[0.15em] uppercase font-bold text-brand-gold hover:bg-brand-gold/5 transition-colors border-b border-gray-100"
+                >
+                  <Package size={16} strokeWidth={1.5} />
+                  Vzorky zadarmo
+                </Link>
                 <Link
                   to="/blog"
                   onClick={() => setOffCanvasOpen(false)}

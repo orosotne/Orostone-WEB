@@ -4,6 +4,7 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import { SEOHead } from './components/UI/SEOHead';
 import { useAnalytics } from './hooks/useAnalytics';
 import { useMetaPixel } from './hooks/useMetaPixel';
+import { captureUTM } from './hooks/useUTMTracking';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { EshopLayout } from './components/Eshop/EshopLayout';
 import { LoadingSpinner } from './components/UI/LoadingSpinner';
@@ -35,6 +36,9 @@ const Vzorky = lazyWithRetry(() => import('./pages/Vzorky').then(m => ({ default
 const Vyhody = lazyWithRetry(() => import('./pages/Vyhody').then(m => ({ default: m.Vyhody })));
 const Kuchyne = lazyWithRetry(() => import('./pages/Kuchyne').then(m => ({ default: m.Kuchyne })));
 const Realizacie = lazyWithRetry(() => import('./pages/Realizacie').then(m => ({ default: m.Realizacie })));
+
+// Capture UTM params from URL before React Router mounts (sync, runs once)
+captureUTM();
 
 // Stagger prefetch of lazy chunks — high-intent routes first, lower-priority later
 if (typeof window !== 'undefined') {

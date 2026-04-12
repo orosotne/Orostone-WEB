@@ -6,7 +6,7 @@ export const ARTICLE_23: BlogArticle = {
   category: 'identity-aesthetics',
   publishDate: '2026-04-12',
   readTimeMinutes: 10,
-  heroImage: 'https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1200',
+  heroImage: '/images/blog/article-23/hero.webp',
   author: BLOG_AUTHOR_OROSTONE,
   tags: ['kuchynský ostrovček', 'sinterovaný kameň', 'kuchyňa', 'dizajn', 'ostrov', 'pracovná doska', 'waterfall'],
 
@@ -56,6 +56,11 @@ export const ARTICLE_23: BlogArticle = {
   </ul>
 </div>
 
+<figure class="article-figure">
+  <img src="/images/blog/article-23/island-overview.webp" alt="Pohľad zhora na kuchynský ostrovček zo sinterovaného kameňa s prípravou jedla na čistej kamennej ploche" width="1408" height="792" loading="lazy" />
+  <figcaption>Veľkoformátová platňa bez jediného spoja — celá pracovná plocha ostrovčeka z jedného kusu sinterovaného kameňa.</figcaption>
+</figure>
+
 <h2 id="rozmery">Aké rozmery zvoliť?</h2>
 
 <p>Správne rozmery ostrovčeka závisia od veľkosti kuchyne a plánovaného využitia:</p>
@@ -72,6 +77,11 @@ export const ARTICLE_23: BlogArticle = {
 </div>
 
 <p>Pri sinterovanom kameni máte výhodu veľkoformátových platní. Ostrovček do 3 200 × 1 600 mm sa dá vyrobiť z jedného kusu — <strong>bez jediného spoja na hornej ploche</strong>. Pre väčšie ostrovčeky sa platne spájajú s presnosťou na desatiny milimetra.</p>
+
+<figure class="article-figure">
+  <img src="/images/blog/article-23/dimensions.webp" alt="Kuchynský ostrovček s barovým sedením — barové stoličky pod previsom sinterovanej dosky" width="1408" height="792" loading="lazy" />
+  <figcaption>Barový previs 350 mm s 20 mm platňou — optimálne proporcie pre pohodlné sedenie a bezpečnú nosnosť.</figcaption>
+</figure>
 
 <h2 id="hrubka">12 mm alebo 20 mm?</h2>
 
@@ -108,6 +118,11 @@ export const ARTICLE_23: BlogArticle = {
   </ul>
 </div>
 
+<figure class="article-figure">
+  <img src="/images/blog/article-23/waterfall-detail.webp" alt="Detail waterfall hrany na kuchynskom ostrovčeku — spoj pod 45° s plynulým prechodom žíl cez roh" width="1408" height="792" loading="lazy" />
+  <figcaption>Waterfall hrana zblízka — žily prechádzajú plynulo z hornej plochy cez 45° spoj na vertikálnu stenu. Spoj je po vybrúsení takmer neviditeľný.</figcaption>
+</figure>
+
 <h2 id="profily-hran">Profily hrán pre ostrovček</h2>
 
 <p>Okrem waterfall efektu si pri ostrovčeku volíte aj profil samotnej hrany. Pre ostrovček odporúčame:</p>
@@ -140,6 +155,11 @@ export const ARTICLE_23: BlogArticle = {
 
 <p>Celý proces od objednávky po hotový ostrovček trvá <strong>10–15 pracovných dní</strong>. Viac o procese v našom <a href="/blog/od-merania-po-instalaciu-proces-orostone">10-krokovom sprievodcovi</a>.</p>
 
+<figure class="article-figure">
+  <img src="/images/blog/article-23/installation.webp" alt="Dvaja technici osádzajú sinterovanú kamennú dosku na kuchynský ostrovček pomocou prísaviek" width="1408" height="792" loading="lazy" />
+  <figcaption>Montáž ostrovčeka — technici ukladajú kamennú platňu na korpus pomocou vákuových prísaviek. Na doske vodováha a silikón pre presné osadenie.</figcaption>
+</figure>
+
 <h2 id="cena">Koľko stojí ostrovček zo sinterovaného kameňa?</h2>
 
 <div class="article-highlight">
@@ -166,6 +186,11 @@ export const ARTICLE_23: BlogArticle = {
 </ul>
 
 <p>Nie ste si istí dekórom? <a href="/vzorky">Objednajte si vzorky</a> zadarmo — pošleme vám kusy v reálnej veľkosti, aby ste materiál videli vo svojom priestore.</p>
+
+<figure class="article-figure">
+  <img src="/images/blog/article-23/decor-lifestyle.webp" alt="Luxusný Calacatta ostrovček s waterfall hranami vo večernej atmosfére — pár s vínom pri barovom sedení" width="1408" height="792" loading="lazy" />
+  <figcaption>Calacatta ostrovček s waterfall hranami — sinterovaný kameň je centerpiece celého obytného priestoru.</figcaption>
+</figure>
 
 <div class="article-quote">
   <p>Kuchynský ostrovček zo sinterovaného kameňa nie je len pracovná plocha. Je to centerpiece celého obytného priestoru — investícia do každodenného zážitku.</p>

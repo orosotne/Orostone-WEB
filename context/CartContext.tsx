@@ -12,6 +12,7 @@ import {
 } from '../services/shopify.service';
 import { trackMetaEvent } from '../hooks/useMetaPixel';
 import { trackGA4AddToCart } from '../hooks/useGA4Ecommerce';
+import { getUTMForCheckout } from '../hooks/useUTMTracking';
 
 // ===========================================
 // TYPES
@@ -384,9 +385,12 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   );
 
   const checkoutUrl = useMemo(
-    () => cart?.checkoutUrl
-      ? `${cart.checkoutUrl}${cart.checkoutUrl.includes('?') ? '&' : '?'}return_to=${encodeURIComponent('https://orostone.sk/objednavka-dokoncena')}`
-      : null,
+    () => {
+      if (!cart?.checkoutUrl) return null;
+      const sep = cart.checkoutUrl.includes('?') ? '&' : '?';
+      const utmQS = getUTMForCheckout();
+      return `${cart.checkoutUrl}${sep}return_to=${encodeURIComponent('https://orostone.sk/objednavka-dokoncena')}${utmQS ? `&${utmQS}` : ''}`;
+    },
     [cart]
   );
 

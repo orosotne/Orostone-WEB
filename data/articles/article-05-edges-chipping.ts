@@ -6,7 +6,7 @@ export const ARTICLE_05: BlogArticle = {
   category: 'risk-killers',
   publishDate: '2026-03-26',
   readTimeMinutes: 8,
-  heroImage: 'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=1200',
+  heroImage: '/images/blog/article-05/hero.webp',
   author: BLOG_AUTHOR_OROSTONE,
   tags: ['sinterovaný kameň', 'hrany', 'profily', 'chipovanie', 'odolnosť', 'kuchyňa'],
 
@@ -35,7 +35,7 @@ export const ARTICLE_05: BlogArticle = {
 </div>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=1200" alt="Porovnanie profilov hrán sinterovaného kameňa — ostrá hrana vs half-bullnose" loading="lazy" />
+  <img src="/images/blog/article-05/hero.webp" alt="Porovnanie profilov hrán sinterovaného kameňa — ostrá hrana vs half-bullnose" width="1408" height="792" loading="lazy" />
   <figcaption>Štyri profily hrán — každý s iným pomerom estetiky, odolnosti a ceny</figcaption>
 </figure>
 
@@ -77,8 +77,8 @@ export const ARTICLE_05: BlogArticle = {
 <p>Celá hrana je zaoblená do plného polkruhu. Rádiusom = celá hrúbka dosky (pri 20mm je to r=10mm a doska vyzerá zaoblená zvrchu aj zdola). Maximálna odolnosť, ale vizuálne robustný profil — nie vždy zodpovedá modernému dizajnu.</p>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=1200" alt="Detail profilu half-bullnose hrany sinterovaného kameňa — zaoblená hrana bez chippingu" loading="lazy" />
-  <figcaption>Half-bullnose profil — zaoblenie absorbuje nárazy a chráni hranu pred odštiepením</figcaption>
+  <img src="/images/blog/article-05/edge-comparison.webp" alt="Porovnanie profilov hrán sinterovaného kameňa — chamfer, pencil, bevel, half-bullnose" width="1408" height="792" loading="lazy" />
+  <figcaption>Porovnanie profilov — od ostrého chamferu po zaoblený half-bullnose, každý s inou mierou ochrany</figcaption>
 </figure>
 
 <div class="article-cta">
@@ -113,6 +113,11 @@ export const ARTICLE_05: BlogArticle = {
 
 <p><strong>Hrany pri ostrove:</strong> Ostrovčeky sú vystavené nájazdom od stoličiek, dotyku detí a bežnému mechanickému zaťaženiu. <strong class="gold">Half-bullnose na ostrove je odporúčaný štandard</strong>.</p>
 
+<figure class="article-figure">
+  <img src="/images/blog/article-05/chip-closeup.webp" alt="Detail chipovania na hrane sinterovaného kameňa — odštiepený kúsok na 90° hrane" width="1408" height="792" loading="lazy" />
+  <figcaption>Detail chipovania — odštiepnutý materiál na ostrej 90° hrane kuchynskej dosky</figcaption>
+</figure>
+
 <div class="article-highlight">
   <p><strong>Pravidlo piatich milimetrov:</strong></p>
   <p>Minimálny rádius zaoblenia <strong>vnútorných rohov výrezov</strong> (pre drezy, varné dosky) je <strong>5mm</strong>. Pre drezy odporúčame <strong>10mm</strong>. Ostrý vnútorný roh (0mm) pri výreze je <strong>takmer zárukou budúcej praskliny</strong> — nie otázka či, ale kedy.</p>
@@ -133,6 +138,11 @@ export const ARTICLE_05: BlogArticle = {
   <p>Každú hranu opracovávame v dvoch krokoch: hrubý rez + jemné dokončenie. Medzi krokmi vizuálna kontrola pod bočným svetlom. Akékoľvek chipovanie z fabrikácie opravujeme pred expedíciou — zákazník nikdy neprijme dosku s fabrikačným chipom.</p>
 </div>
 
+<figure class="article-figure">
+  <img src="/images/blog/article-05/cnc-fabrication.webp" alt="CNC obrábanie profilu hrany sinterovaného kameňa — diamantový kotúč s vodným chladením" width="1408" height="792" loading="lazy" />
+  <figcaption>CNC fabrikácia profilu hrany — diamantový kotúč s vodným chladením pre čistý a bezpečný rez</figcaption>
+</figure>
+
 <h2 id="oprava-chipu">Oprava existujúceho chipu: čo je možné</h2>
 
 <p>Ak chip nastane, nie je to automaticky koniec dosky. Závisí od:</p>
@@ -142,6 +152,11 @@ export const ARTICLE_05: BlogArticle = {
 <p><strong>Miesto chipu:</strong> Chip na exponovanej prednej hrane (v zornom poli) je viac problematický ako chip na bočnej hrane v rohu pod skrinkami.</p>
 
 <p><strong>Farba a dezén:</strong> Na jednofarebných dekoroch je oprava jednoduchšia. Na žilkovaných dekoroch (mramor) je takmer nemožné presne napodobnúť vzor — oprava bude viditeľná.</p>
+
+<figure class="article-figure">
+  <img src="/images/blog/article-05/chip-repair.webp" alt="Oprava chipu na hrane sinterovaného kameňa — kamenársky tmel aplikovaný špachtľou" width="1408" height="792" loading="lazy" />
+  <figcaption>Oprava chipu kamenárskym tmelom — pri mikro-chipovaní na jednofarebnom dekore je výsledok takmer neviditeľný</figcaption>
+</figure>
 
 <div class="article-case-study">
   <span class="case-study-label">Z praxe</span>
@@ -162,8 +177,8 @@ export const ARTICLE_05: BlogArticle = {
 <p><strong>Svetlo a tiene:</strong> Lesklé povrchy s half-bullnose vytvárajú zaoblený svetelný reflex na hrane — typický pre prírodný kameň. Matný povrch s chamfer pôsobí diskrétnejšie.</p>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200" alt="Detail kuchynskej dosky — full-body žilkovanie viditeľné na hrane" loading="lazy" />
-  <figcaption>Full-body dezén — žilkovanie prechádza celou hrúbkou dosky a je krásne viditeľné na hrane</figcaption>
+  <img src="/images/blog/article-05/visual-profiles.webp" alt="Detail Calacatta sinterovanej dosky — full-body žilkovanie viditeľné na zaoblenéj hrane" width="1408" height="792" loading="lazy" />
+  <figcaption>Full-body dezén — žilkovanie prechádza celou hrúbkou dosky a je krásne viditeľné na zaoblenéj hrane</figcaption>
 </figure>
 
 <h2 id="zaver">Záver: ktorý profil vybrať</h2>
@@ -255,7 +270,7 @@ export const ARTICLE_05: BlogArticle = {
 </div>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=1200" alt="Comparison of sintered stone edge profiles — sharp edge vs half-bullnose" loading="lazy" />
+  <img src="/images/blog/article-05/hero.webp" alt="Comparison of sintered stone edge profiles — sharp edge vs half-bullnose" width="1408" height="792" loading="lazy" />
   <figcaption>Four edge profiles — each with a different balance of aesthetics, durability, and price</figcaption>
 </figure>
 
@@ -294,7 +309,7 @@ export const ARTICLE_05: BlogArticle = {
 <p>The entire edge is rounded into a full semicircle. Maximum durability, but visually robust — not always compatible with modern design.</p>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=1200" alt="Detail of half-bullnose edge profile on sintered stone — rounded edge without chipping" loading="lazy" />
+  <img src="/images/blog/article-05/edge-comparison.webp" alt="Comparison of sintered stone edge profiles — chamfer, pencil, bevel, half-bullnose" width="1408" height="792" loading="lazy" />
   <figcaption>Half-bullnose profile — the rounded shape absorbs impacts and protects the edge from chipping</figcaption>
 </figure>
 
@@ -377,7 +392,7 @@ export const ARTICLE_05: BlogArticle = {
 <p><strong>Full-body effect:</strong> On veined décors (Calacatta, Statuario), the edge reveals the interior — the pattern continues through the full thickness. A rounded edge beautifully highlights this full-body effect.</p>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200" alt="Kitchen countertop detail — full-body veining visible at the edge" loading="lazy" />
+  <img src="/images/blog/article-05/visual-profiles.webp" alt="Calacatta sintered stone countertop detail — full-body veining visible on the rounded edge" width="1408" height="792" loading="lazy" />
   <figcaption>Full-body décor — veining runs through the entire slab thickness and is beautifully visible at the edge</figcaption>
 </figure>
 

@@ -6,7 +6,7 @@ export const ARTICLE_04: BlogArticle = {
   category: 'risk-killers',
   publishDate: '2026-03-25',
   readTimeMinutes: 9,
-  heroImage: 'https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1200',
+  heroImage: '/images/blog/article-04/hero.webp',
   author: BLOG_AUTHOR_OROSTONE,
   tags: ['sinterovaný kameň', 'hrúbka', '12mm', '20mm', 'kuchynská doska', 'ostrovček'],
 
@@ -29,7 +29,7 @@ export const ARTICLE_04: BlogArticle = {
 <p>V Orostone pracujeme <strong class="gold">výhradne s 12mm sinterovaným kameňom</strong>. Nie je to obmedzenie — je to zámerné rozhodnutie. A v tomto článku ti vysvetlíme, prečo 12mm pri správnom prístupe stačí na všetko, čo robíme.</p>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1200" alt="Hrúbka sinterovaného kameňa — pohľad na hranu dosky 12mm" loading="lazy" />
+  <img src="/images/blog/article-04/hero.webp" alt="Hrúbka sinterovaného kameňa — pohľad na hranu dosky 12mm" width="1408" height="792" loading="lazy" />
   <figcaption>Hrana 12mm dosky — pohľad, ktorý odhalí hrúbku materiálu. Na pracovnej ploche zhora rozdiel nie je viditeľný.</figcaption>
 </figure>
 
@@ -53,6 +53,11 @@ export const ARTICLE_04: BlogArticle = {
 </ul>
 
 <p>Pre montáž na stenu a stropné aplikácie je 12mm výhodnejšia — ľahšia, jednoduchšia manipulácia, menšie požiadavky na kotvenie.</p>
+
+<figure class="article-figure">
+  <img src="/images/blog/article-04/12mm-profile.webp" alt="Profil 12mm sinterovanej dosky — pohľad na hranu s viditeľnou tenkou hrúbkou" width="1408" height="792" loading="lazy" />
+  <figcaption>Profil 12mm dosky — tenká, ale pri správnom podklade plne postačujúca na všetky bežné aplikácie</figcaption>
+</figure>
 
 <h2 id="preco-12mm">Prečo v Orostone pracujeme s 12mm</h2>
 
@@ -80,8 +85,8 @@ export const ARTICLE_04: BlogArticle = {
 <p>Pre tieto aplikácie je 12mm nielen dostačujúca, ale ideálna — ľahšia hmotnosť uľahčuje montáž a znižuje požiadavky na kotvenie.</p>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200" alt="Kuchynská doska 12mm zo sinterovaného kameňa — pohľad zhora na pracovnú plochu" loading="lazy" />
-  <figcaption>Správne inštalovaná 12mm kuchynská doska — vizuálne aj štrukturálne neodlíšiteľná od hrubšej alternatívy.</figcaption>
+  <img src="/images/blog/article-04/support-brackets.webp" alt="Konzoly pod previsom 12mm sinterovanej dosky — kovová podpera barového výsunu" width="1408" height="792" loading="lazy" />
+  <figcaption>Kovové konzoly pod previsom — správne konštrukčné riešenie pre 12mm dosku s barovým sedením.</figcaption>
 </figure>
 
 <h2 id="kde-je-20mm-lepsia">Kde je 20mm technicky lepšia</h2>
@@ -99,6 +104,11 @@ export const ARTICLE_04: BlogArticle = {
 </div>
 
 <p>V Orostone tieto situácie riešime konzultáciou — ak projekt presahuje možnosti 12mm bez kompromisnú podkladovú konštrukciu, povieme to otvorene.</p>
+
+<figure class="article-figure">
+  <img src="/images/blog/article-04/20mm-overhang.webp" alt="20mm sinterovaná doska s dlhým previsom — masívna hrana bez konzoly" width="1408" height="792" loading="lazy" />
+  <figcaption>20mm doska s dlhým previsom — hrubšia platňa umožňuje väčší previs bez konzoly</figcaption>
+</figure>
 
 <div class="article-cta">
   <p>Nie ste si istí, či 12mm je pre váš projekt správna voľba? Poraďte sa s nami — zdarma a bez záväzkov posúdime váš projekt.</p>
@@ -124,6 +134,11 @@ export const ARTICLE_04: BlogArticle = {
   <strong>Konzola nie je kompromis</strong> — je to správne konštrukčné riešenie. Kuchyne s barovým výsunom a konzolami sú bežný, overený štandard. Konzola z nerezovej ocele alebo čierneho kovu môže byť aj estetický prvok.
 </div>
 
+<figure class="article-figure">
+  <img src="/images/blog/article-04/cnc-fabrication.webp" alt="CNC obrábanie sinterovaného kameňa — presný rez diamantovým kotúčom s chladením vodou" width="1408" height="792" loading="lazy" />
+  <figcaption>CNC fabrikácia sinterovaného kameňa — presný rez s vodným chladením zaručuje čistý výrez bez prasklín</figcaption>
+</figure>
+
 <h2 id="case-study">Z praxe: ostrov 12mm s dlhým previsom</h2>
 
 <div class="article-case-study">
@@ -135,6 +150,11 @@ export const ARTICLE_04: BlogArticle = {
     <p><strong class="gold">Záver: správne naplánovaná 12mm doska zvládla projekt, ktorý mnohí považujú za "20mm territory".</strong></p>
   </div>
 </div>
+
+<figure class="article-figure">
+  <img src="/images/blog/article-04/case-study-island.webp" alt="Kuchynský ostrovček zo sinterovaného kameňa 12mm s barovým sedením a kovovými konzolami" width="1408" height="792" loading="lazy" />
+  <figcaption>Kuchynský ostrov v 12mm so 400mm previsom a kovovými konzolami — funkčné a estetické riešenie</figcaption>
+</figure>
 
 <h2 id="zaver">Záver: hrúbka je len jedna časť rovnice</h2>
 
@@ -210,7 +230,7 @@ export const ARTICLE_04: BlogArticle = {
 <p>At Orostone we work <strong class="gold">exclusively with 12mm sintered stone</strong>. This is not a limitation — it is a deliberate specialisation. And in this article we explain why 12mm, installed correctly, is sufficient for everything we do.</p>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1200" alt="Sintered stone thickness — view of the 12mm slab edge" loading="lazy" />
+  <img src="/images/blog/article-04/hero.webp" alt="Sintered stone thickness — view of the 12mm slab edge" width="1408" height="792" loading="lazy" />
   <figcaption>The edge of a 12mm slab — the view that reveals the material thickness. From above on a worktop, the difference is invisible.</figcaption>
 </figure>
 
@@ -234,6 +254,11 @@ export const ARTICLE_04: BlogArticle = {
 </ul>
 
 <p>For wall and ceiling applications, 12mm is preferable — lighter, easier to handle, lower fixing requirements.</p>
+
+<figure class="article-figure">
+  <img src="/images/blog/article-04/12mm-profile.webp" alt="12mm sintered stone slab profile — view of the thin edge" width="1408" height="792" loading="lazy" />
+  <figcaption>12mm slab profile — thin but fully sufficient for all standard applications with the right substrate</figcaption>
+</figure>
 
 <h2 id="why-12mm-en">Why Orostone Works with 12mm</h2>
 
@@ -261,8 +286,8 @@ export const ARTICLE_04: BlogArticle = {
 <p>For these applications 12mm is not just sufficient but ideal — the lighter weight simplifies installation and reduces fixing requirements.</p>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200" alt="12mm sintered stone kitchen worktop — top view of working surface" loading="lazy" />
-  <figcaption>A correctly installed 12mm kitchen worktop — visually and structurally indistinguishable from a thicker alternative.</figcaption>
+  <img src="/images/blog/article-04/support-brackets.webp" alt="Support brackets under 12mm sintered stone overhang — steel bracket for bar extension" width="1408" height="792" loading="lazy" />
+  <figcaption>Steel brackets under the overhang — the correct structural solution for a 12mm slab with bar seating.</figcaption>
 </figure>
 
 <h2 id="where-20mm-wins-en">Where 20mm Has a Technical Advantage</h2>
@@ -280,6 +305,11 @@ export const ARTICLE_04: BlogArticle = {
 </div>
 
 <p>At Orostone we address these situations through consultation — if a project exceeds what 12mm can achieve without compromising the substrate, we say so openly.</p>
+
+<figure class="article-figure">
+  <img src="/images/blog/article-04/20mm-overhang.webp" alt="20mm sintered stone slab with long overhang — massive edge without bracket" width="1408" height="792" loading="lazy" />
+  <figcaption>20mm slab with long overhang — thicker slab allows a larger overhang without a bracket</figcaption>
+</figure>
 
 <div class="article-cta">
   <p>Not sure whether 12mm is the right choice for your project? Consult with us — we'll assess your project free of charge and without obligation.</p>
@@ -305,6 +335,11 @@ export const ARTICLE_04: BlogArticle = {
   <strong>A bracket is not a compromise</strong> — it is the correct engineering solution. Kitchens with bar extensions and brackets are a standard, proven approach. A stainless steel or black steel bracket can also be a design feature.
 </div>
 
+<figure class="article-figure">
+  <img src="/images/blog/article-04/cnc-fabrication.webp" alt="CNC machining of sintered stone — precision diamond cut with water cooling" width="1408" height="792" loading="lazy" />
+  <figcaption>CNC fabrication of sintered stone — precision cutting with water cooling ensures clean cutouts without cracks</figcaption>
+</figure>
+
 <h2 id="case-study-en">From Practice: 12mm Island with Long Overhang</h2>
 
 <div class="article-case-study">
@@ -316,6 +351,11 @@ export const ARTICLE_04: BlogArticle = {
     <p><strong class="gold">Conclusion: a correctly planned 12mm slab handled a project that many consider "20mm territory".</strong></p>
   </div>
 </div>
+
+<figure class="article-figure">
+  <img src="/images/blog/article-04/case-study-island.webp" alt="12mm sintered stone kitchen island with bar seating and steel brackets" width="1408" height="792" loading="lazy" />
+  <figcaption>Kitchen island in 12mm with 400mm overhang and steel brackets — functional and aesthetic solution</figcaption>
+</figure>
 
 <h2 id="conclusion-en">Conclusion: Thickness Is Only One Part of the Equation</h2>
 

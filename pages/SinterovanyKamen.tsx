@@ -627,6 +627,16 @@ export const SinterovanyKamen = () => {
               </Card>
             ))}
           </div>
+
+          <div className="text-center mt-14">
+            <Link
+              to="/vyhody"
+              className="inline-flex items-center gap-2 px-8 py-3.5 bg-brand-dark text-white font-sans font-semibold text-sm tracking-wide rounded-full hover:bg-black transition-colors duration-300"
+            >
+              Zistiť viac o výhodách
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -1080,16 +1090,16 @@ export const SinterovanyKamen = () => {
           </div>
           <div className="mt-12 flex flex-wrap justify-center gap-8 text-sm text-gray-500">
             <Link
+              to="/vzorky"
+              className="text-brand-gold font-semibold hover:text-brand-dark transition-colors"
+            >
+              Objednať vzorky zadarmo
+            </Link>
+            <Link
               to="/kategoria/sintered-stone"
               className="hover:text-brand-gold transition-colors"
             >
               Pozrieť dekory
-            </Link>
-            <Link
-              to="/online-kalkulacka"
-              className="hover:text-brand-gold transition-colors"
-            >
-              Vypočítajte si cenu
             </Link>
             <Link
               to="/realizacie"
@@ -1098,10 +1108,10 @@ export const SinterovanyKamen = () => {
               Pozrieť realizácie
             </Link>
             <Link
-              to="/key-facts"
+              to="/kontakt"
               className="hover:text-brand-gold transition-colors"
             >
-              Technické detaily (Key Facts)
+              Kontaktujte nás
             </Link>
           </div>
         </div>

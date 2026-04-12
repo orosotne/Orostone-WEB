@@ -6,7 +6,7 @@ export const ARTICLE_02: BlogArticle = {
   category: 'risk-killers',
   publishDate: '2026-03-23',
   readTimeMinutes: 8,
-  heroImage: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200',
+  heroImage: '/images/blog/article-02/hero.webp',
   author: BLOG_AUTHOR_OROSTONE,
   tags: ['sinterovaný kameň', 'tepelná odolnosť', 'horúce hrnce', 'kuchyňa', 'termický šok'],
 
@@ -35,7 +35,7 @@ export const ARTICLE_02: BlogArticle = {
 </div>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200" alt="Horúca panvica položená priamo na sinterovanú kamennú kuchynskú dosku" loading="lazy" />
+  <img src="/images/blog/article-02/hero.webp" alt="Horúca panvica položená priamo na sinterovanú kamennú kuchynskú dosku" width="1408" height="792" loading="lazy" />
   <figcaption>Sinterovaný kameň v kuchyni — priamy kontakt s horúcimi predmetmi bez obáv</figcaption>
 </figure>
 
@@ -56,6 +56,11 @@ export const ARTICLE_02: BlogArticle = {
     <li><strong>Prírodný granit:</strong> 200–250°C (závisí od konkrétneho kameňa a povrchového spracovania)</li>
   </ul>
 </div>
+
+<figure class="article-figure">
+  <img src="/images/blog/article-02/heat-comparison.webp" alt="Porovnanie tepelnej odolnosti materiálov — sinterovaný kameň vs kvarcit vs laminát" width="1408" height="792" loading="lazy" />
+  <figcaption>Porovnanie tepelnej odolnosti — sinterovaný kameň odolá 300°C+, kvarcit len ~150°C</figcaption>
+</figure>
 
 <h2 id="co-sa-stane-kvarcit">Čo sa stane s kvarcitom pri horúcom hrnci?</h2>
 
@@ -87,8 +92,8 @@ export const ARTICLE_02: BlogArticle = {
 </div>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=1200" alt="Varenie na indukčnej varnej doske zabudovanej v sinterovanom kameni" loading="lazy" />
-  <figcaption>Indukčné varenie v sinterovanom kameni — teplo z hrnca sa neprenáša do dosky nebezpečným spôsobom</figcaption>
+  <img src="/images/blog/article-02/thermal-shock.webp" alt="Termický šok na sinterovanom kameni — kontrast horúceho a studeného" width="1408" height="792" loading="lazy" />
+  <figcaption>Termický šok — náhla zmena teploty je jediné reálne riziko pre sinterovaný kameň</figcaption>
 </figure>
 
 <div class="article-cta">
@@ -117,6 +122,11 @@ export const ARTICLE_02: BlogArticle = {
   <p>Záver: sinterovaný kameň v bežnej kuchyňa<strong> nevyžaduje žiadne špeciálne opatrenia pri tepelnom zaťažení</strong>. Podložky pod hrnce môžete použiť, ak chcete zachovať povrch pred mechanickými škrabancami — nie kvôli teplu.</p>
 </div>
 
+<figure class="article-figure">
+  <img src="/images/blog/article-02/practical-test.webp" alt="Praktický test tepelnej odolnosti sinterovaného kameňa — horúci hrniec na doske" width="1408" height="792" loading="lazy" />
+  <figcaption>Praktický test — horúci hrniec priamo na sinterovanom kameni bez akéhokoľvek poškodenia</figcaption>
+</figure>
+
 <h2 id="ine-materialy-porovnanie">Porovnanie: kde iné materiály zlyhávajú</h2>
 
 <p>Aby ste mali úplný obraz, tu je prehľad toho, ako sa pri tepelnom zaťažení správajú bežné alternatívy:</p>
@@ -134,11 +144,21 @@ export const ARTICLE_02: BlogArticle = {
   <p>Zo všetkých bežných materiálov pre kuchynské dosky je sinterovaný kameň pri tepelnom zaťažení <strong>najodolnejší</strong> — a jedinou kategóriou, ktorú môžete používať bez akýchkoľvek obmedzení pri bežnom varení.</p>
 </div>
 
+<figure class="article-figure">
+  <img src="/images/blog/article-02/materials-comparison.webp" alt="Porovnanie materiálov kuchynských dosiek — sinterovaný kameň, kvarcit, laminát, granit" width="1408" height="792" loading="lazy" />
+  <figcaption>Materiálové porovnanie — sinterovaný kameň je jediný materiál bez živíc, ktoré teplo degraduje</figcaption>
+</figure>
+
 <h2 id="zaver">Záverečné odporúčanie</h2>
 
 <p>Sinterovaný kameň pri horúcich hrncoch <strong class="gold">nevyžaduje podložky</strong>. To je jeho komparatívna výhoda oproti väčšine iných materiálov. Môžete variť, piecť, grilovať — a doska to zvládne.</p>
 
 <p>Jediné, čo odporúčame pre zachovanie estetiky: podložky nie kvôli teplu, ale kvôli <strong>mechanickým poškriabaniam</strong> od hrubého spodku liatinových pánvíc. Tepelne ste bez starostí. Mechanicky — záleží na type povrchu.</p>
+
+<figure class="article-figure">
+  <img src="/images/blog/article-02/lifestyle-cooking.webp" alt="Varenie v modernej kuchyni so sinterovanou kamennou doskou — horúce nádoby na pracovnej ploche" width="1408" height="792" loading="lazy" />
+  <figcaption>Každodenné varenie na sinterovanom kameni — bez podložiek, bez obáv</figcaption>
+</figure>
 
 <div class="article-tip">
   <p><strong>Alebo nás jednoducho kontaktuj v Orostone</strong></p>
@@ -223,7 +243,7 @@ export const ARTICLE_02: BlogArticle = {
 </div>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200" alt="Hot pan placed directly on a sintered stone kitchen countertop" loading="lazy" />
+  <img src="/images/blog/article-02/hero.webp" alt="Hot pan placed directly on a sintered stone kitchen countertop" width="1408" height="792" loading="lazy" />
   <figcaption>Sintered stone in the kitchen — direct contact with hot items, no worries</figcaption>
 </figure>
 
@@ -244,6 +264,11 @@ export const ARTICLE_02: BlogArticle = {
     <li><strong>Natural granite:</strong> 200–250°C (depending on specific stone and surface treatment)</li>
   </ul>
 </div>
+
+<figure class="article-figure">
+  <img src="/images/blog/article-02/heat-comparison.webp" alt="Heat resistance comparison of countertop materials — sintered stone vs quartz vs laminate" width="1408" height="792" loading="lazy" />
+  <figcaption>Heat resistance comparison — sintered stone withstands 300°C+, quartz only ~150°C</figcaption>
+</figure>
 
 <h2 id="quartz-failure">What Happens to Quartz with a Hot Pan?</h2>
 
@@ -275,8 +300,8 @@ export const ARTICLE_02: BlogArticle = {
 </div>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=1200" alt="Cooking on an induction hob built into sintered stone" loading="lazy" />
-  <figcaption>Induction cooking integrated in sintered stone — heat from the pan doesn't transfer dangerously to the surface</figcaption>
+  <img src="/images/blog/article-02/thermal-shock.webp" alt="Thermal shock on sintered stone — contrast of hot and cold" width="1408" height="792" loading="lazy" />
+  <figcaption>Thermal shock — sudden temperature change is the only real risk for sintered stone</figcaption>
 </figure>
 
 <div class="article-cta">
@@ -305,6 +330,11 @@ export const ARTICLE_02: BlogArticle = {
   <p>Conclusion: sintered stone in a standard kitchen <strong>requires no special precautions for heat exposure</strong>. Trivets can be used if you want to protect the surface from mechanical scratches — not because of heat.</p>
 </div>
 
+<figure class="article-figure">
+  <img src="/images/blog/article-02/practical-test.webp" alt="Practical heat resistance test of sintered stone — hot pan on countertop" width="1408" height="792" loading="lazy" />
+  <figcaption>Practical test — hot pan directly on sintered stone without any damage</figcaption>
+</figure>
+
 <h2 id="other-materials">Comparison: Where Other Materials Fail</h2>
 
 <p>For the complete picture, here's how common alternatives behave under heat:</p>
@@ -322,11 +352,21 @@ export const ARTICLE_02: BlogArticle = {
   <p>Of all common kitchen countertop materials, sintered stone is <strong>the most heat resistant</strong> — and the only category you can use without any restrictions during normal cooking.</p>
 </div>
 
+<figure class="article-figure">
+  <img src="/images/blog/article-02/materials-comparison.webp" alt="Kitchen countertop materials comparison — sintered stone, quartz, laminate, granite" width="1408" height="792" loading="lazy" />
+  <figcaption>Material comparison — sintered stone is the only material without resins that degrade under heat</figcaption>
+</figure>
+
 <h2 id="conclusion">Final Recommendation</h2>
 
 <p>With sintered stone and hot pans, <strong class="gold">trivets are not required</strong>. That's its comparative advantage over most other materials. You can cook, bake, grill — and the countertop handles it.</p>
 
 <p>The only recommendation to preserve aesthetics: use trivets not because of heat, but to protect against <strong>mechanical scratches</strong> from rough cast iron bases. Thermally, you're worry-free. Mechanically — it depends on the surface finish.</p>
+
+<figure class="article-figure">
+  <img src="/images/blog/article-02/lifestyle-cooking.webp" alt="Everyday cooking in a modern kitchen with sintered stone countertop — hot pots on work surface" width="1408" height="792" loading="lazy" />
+  <figcaption>Everyday cooking on sintered stone — no trivets, no worries</figcaption>
+</figure>
 
 <div class="article-tip">
   <p><strong>Or simply contact us at Orostone</strong></p>

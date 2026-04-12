@@ -71,6 +71,11 @@ export const useAnalytics = () => {
       script.async = true;
       script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
       script.onload = () => {
+        // Exclude Shopify checkout domain from referral tracking so
+        // returning users don't start a new session after payment.
+        window.gtag('set', { referral_exclusion_conditions: [
+          { source: 'jtshug-bn.myshopify.com' },
+        ]});
         window.gtag('config', GA_ID, {
           send_page_view: true,
           ...(isInternalTraffic && { traffic_type: 'internal', team_member: teamMember }),

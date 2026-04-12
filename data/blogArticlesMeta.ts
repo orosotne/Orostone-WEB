@@ -33,7 +33,7 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
     category: 'risk-killers',
     publishDate: '2026-03-23',
     readTimeMinutes: 8,
-    heroImage: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200',
+    heroImage: '/images/blog/article-02/hero.webp',
     author: BLOG_AUTHOR_OROSTONE,
     tags: ['sinterovaný kameň', 'tepelná odolnosť', 'horúce hrnce', 'kuchyňa', 'termický šok'],
     sk: {
@@ -73,7 +73,7 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
     category: 'risk-killers',
     publishDate: '2026-03-25',
     readTimeMinutes: 10,
-    heroImage: 'https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1200',
+    heroImage: '/images/blog/article-04/hero.webp',
     author: BLOG_AUTHOR_OROSTONE,
     tags: ['sinterovaný kameň', 'hrúbka', '12mm', '20mm', 'kuchyňa', 'kuchynská doska'],
     sk: {
@@ -93,7 +93,7 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
     category: 'risk-killers',
     publishDate: '2026-03-26',
     readTimeMinutes: 8,
-    heroImage: 'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=1200',
+    heroImage: '/images/blog/article-05/hero.webp',
     author: BLOG_AUTHOR_OROSTONE,
     tags: ['sinterovaný kameň', 'hrany', 'profily', 'chipovanie', 'odolnosť', 'half-bullnose', 'chamfer'],
     sk: {
@@ -217,7 +217,7 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
     category: 'identity-aesthetics',
     publishDate: '2026-04-12',
     readTimeMinutes: 10,
-    heroImage: 'https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1200',
+    heroImage: '/images/blog/article-23/hero.webp',
     author: BLOG_AUTHOR_OROSTONE,
     tags: ['kuchynský ostrovček', 'sinterovaný kameň', 'kuchyňa', 'dizajn', 'ostrov', 'pracovná doska', 'waterfall'],
     sk: {
