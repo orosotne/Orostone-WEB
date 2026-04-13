@@ -28,7 +28,8 @@ export const StickySampleCTA: React.FC = () => {
       if (!ticking) {
         ticking = true;
         requestAnimationFrame(() => {
-          setVisible(window.scrollY > 400);
+          const y = window.scrollY;
+          setVisible(prev => (prev ? y > 350 : y > 400));
           ticking = false;
         });
       }

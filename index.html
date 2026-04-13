@@ -61,6 +61,19 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
+      /* Prerendered SEO content — visible to crawlers, hidden from users
+         until React replaces #root contents */
+      .prerender-seo {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+      }
       .scrollbar-hide::-webkit-scrollbar {
           display: none;
       }

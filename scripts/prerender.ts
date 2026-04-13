@@ -121,9 +121,11 @@ function writePage(page: Page): void {
   }
 
   // Insert semantic content into <div id="root">
+  // Wrapped in .prerender-seo (sr-only) so users never see the unstyled flash
+  // — crawlers still index the content; React replaces everything on mount.
   html = html.replace(
     /<div id="root">[\s\S]*?<\/div>/,
-    `<div id="root">${page.rootContent}</div>`,
+    `<div id="root"><div class="prerender-seo">${page.rootContent}</div></div>`,
   );
 
   // Remove <noscript> homepage fallback — prerendered content is already in #root
