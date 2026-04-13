@@ -101,8 +101,8 @@ const PROJECTS: Project[] = [
   },
   {
     id: 'calacatta-oro-lustre',
-    title: 'Calacatta Oro — lustre',
-    material: 'Calacatta Oro',
+    title: 'Arden Gold — lustre',
+    material: 'Arden Gold',
     hero: '/images/realizacie/calacatta-oro-lustre-hero.webp',
     gallery: [
       '/images/realizacie/calacatta-oro-lustre-hero.webp',
@@ -154,8 +154,8 @@ const PROJECTS: Project[] = [
   },
   {
     id: 'zlatobiely-mramor',
-    title: 'Zlatobiely mramor',
-    material: 'Calacatta Gold',
+    title: 'Arden Gold',
+    material: 'Arden Gold',
     hero: '/images/realizacie/zlatobiely-mramor-hero.webp',
     gallery: [
       '/images/realizacie/zlatobiely-mramor-hero.webp',
@@ -216,8 +216,8 @@ const PROJECTS: Project[] = [
   },
   {
     id: 'calacatta-gold-hex',
-    title: 'Calacatta Gold — hex',
-    material: 'Calacatta Gold',
+    title: 'Arden Gold — hex',
+    material: 'Arden Gold',
     hero: '/images/realizacie/calacatta-gold-hex-hero.webp',
     gallery: [
       '/images/realizacie/calacatta-gold-hex-hero.webp',
