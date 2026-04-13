@@ -325,6 +325,16 @@ const PROJECTS: Project[] = [
       '/images/realizacie/biely-calacatta-chevron-2.webp',
     ],
   },
+  {
+    id: 'arden-gold-kuchyna',
+    title: 'Arden Gold — kuchyňa',
+    material: 'Arden Gold',
+    hero: '/images/realizacie/arden-gold-kuchyna-hero.webp',
+    gallery: [
+      '/images/realizacie/arden-gold-kuchyna-hero.webp',
+      '/images/realizacie/arden-gold-kuchyna-1.webp',
+    ],
+  },
 ];
 
 const FEATURED = PROJECTS.find((p) => p.featured)!;

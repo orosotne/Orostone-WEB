@@ -427,11 +427,6 @@ const BundleSelector: React.FC<BundleSelectorProps> = ({
                             — {bundle.label}
                           </span>
                         )}
-                        {bundle.isBestValue && (
-                          <span className="sm:hidden bg-brand-gold text-brand-dark text-[9px] font-bold tracking-wider uppercase px-1.5 py-0.5 leading-none">
-                            Najlepšia hodnota
-                          </span>
-                        )}
                       </div>
                       <div className="text-[11px] sm:text-xs text-gray-500">
                         {formatPrice(bundlePricePerM2)} / m² • {totalAreaM2.toFixed(2)} m²

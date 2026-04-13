@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Minus, Plus, ShoppingBag, Trash2, ArrowRight, ExternalLink, Wrench, Package, Info, Check } from 'lucide-react';
+import { X, Minus, Plus, ShoppingBag, Trash2, ArrowRight, ExternalLink, Wrench, Package, Info, Check, ChevronUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCart, formatPrice } from '../../context/CartContext';
 import { useCookies } from '../../context/CookieContext';
@@ -26,6 +26,7 @@ export const CartDrawer: React.FC = () => {
 
   // Load installation data from localStorage
   const [installationData, setInstallationData] = useState<InstallationData | null>(null);
+  const [isSummaryExpanded, setIsSummaryExpanded] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -35,6 +36,8 @@ export const CartDrawer: React.FC = () => {
       } catch {
         setInstallationData(null);
       }
+    } else {
+      setIsSummaryExpanded(false);
     }
   }, [isOpen]);
 
@@ -370,135 +373,181 @@ export const CartDrawer: React.FC = () => {
               )}
             </div>
 
-            {/* Footer - Summary */}
+            {/* Footer - Collapsible Summary */}
             {items.length > 0 && (
-              <div className="border-t border-gray-100 p-6 space-y-4 bg-[#F9F9F7]">
-                {/* Product subtotal (shown when both products and samples exist) */}
-                {productItems.length > 0 && sampleItems.length > 0 && (
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Produkty</span>
-                    <span className="font-medium">
-                      {formatPrice(productItems.reduce((sum, item) => sum + item.price * item.quantity, 0))}
-                    </span>
-                  </div>
-                )}
+              <div className="border-t border-gray-100 bg-[#F9F9F7]">
 
-                {/* Sample subtotal (shown when both products and samples exist) */}
-                {productItems.length > 0 && sampleItems.length > 0 && (
-                  <div className="flex justify-between text-sm">
-                    <span className="text-amber-700">Vzorky (záloha)</span>
-                    <span className="font-medium text-amber-700">
-                      {formatPrice(sampleItems.reduce((sum, item) => sum + item.price * item.quantity, 0))}
-                    </span>
+                {/* Toggle handle */}
+                <button
+                  onClick={() => setIsSummaryExpanded(prev => !prev)}
+                  aria-expanded={isSummaryExpanded}
+                  aria-controls="cart-summary-details"
+                  className="w-full px-6 pt-4 pb-2 flex flex-col items-center gap-1.5"
+                >
+                  <div className="w-8 h-1 bg-gray-300 rounded-full" />
+                  <div className="flex items-center gap-1.5 text-xs text-gray-500 tracking-wide">
+                    <motion.span
+                      animate={{ rotate: isSummaryExpanded ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="inline-flex"
+                    >
+                      <ChevronUp size={16} />
+                    </motion.span>
+                    {isSummaryExpanded ? 'Skryť detail' : 'Zobraziť detail objednávky'}
                   </div>
-                )}
+                </button>
 
-                {/* Subtotal (when only one type, or as combined total) */}
-                {/* Note: shows PRE-discount value so the following Zľava row can subtract correctly. */}
-                {!(productItems.length > 0 && sampleItems.length > 0) && (
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-600">Medzisúčet</span>
-                    <span className="font-medium">
-                      {formatPrice(totalDiscount > 0 ? subtotalBeforeDiscount : subtotal)}
-                    </span>
-                  </div>
-                )}
+                {/* Expandable details */}
+                <AnimatePresence initial={false}>
+                  {isSummaryExpanded && (
+                    <motion.div
+                      id="cart-summary-details"
+                      key="summary-details"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.25, ease: 'easeInOut' }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 space-y-4 pb-3">
+                        {/* Product subtotal (shown when both products and samples exist) */}
+                        {productItems.length > 0 && sampleItems.length > 0 && (
+                          <div className="flex justify-between text-sm">
+                            <span className="text-gray-600">Produkty</span>
+                            <span className="font-medium">
+                              {formatPrice(productItems.reduce((sum, item) => sum + item.price * item.quantity, 0))}
+                            </span>
+                          </div>
+                        )}
 
-                {/* Bundle discount banner — applied automatically by Shopify (2+ platne = -20%, 3+ = -30%) */}
-                {totalDiscount > 0 && subtotalBeforeDiscount > 0 && (
-                  <div className="rounded-xl bg-emerald-50 border border-emerald-200 px-4 py-3 flex items-start gap-3">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center">
-                      <Check size={16} strokeWidth={3} />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-baseline justify-between gap-2">
-                        <span className="text-sm font-bold text-emerald-900">
-                          Ušetríte {Math.round((totalDiscount / subtotalBeforeDiscount) * 100)}%
+                        {/* Sample subtotal (shown when both products and samples exist) */}
+                        {productItems.length > 0 && sampleItems.length > 0 && (
+                          <div className="flex justify-between text-sm">
+                            <span className="text-amber-700">Vzorky (záloha)</span>
+                            <span className="font-medium text-amber-700">
+                              {formatPrice(sampleItems.reduce((sum, item) => sum + item.price * item.quantity, 0))}
+                            </span>
+                          </div>
+                        )}
+
+                        {/* Subtotal (when only one type) */}
+                        {!(productItems.length > 0 && sampleItems.length > 0) && (
+                          <div className="flex justify-between text-sm">
+                            <span className="text-gray-600">Medzisúčet</span>
+                            <span className="font-medium">
+                              {formatPrice(totalDiscount > 0 ? subtotalBeforeDiscount : subtotal)}
+                            </span>
+                          </div>
+                        )}
+
+                        {/* Bundle discount banner */}
+                        {totalDiscount > 0 && subtotalBeforeDiscount > 0 && (
+                          <div className="rounded-xl bg-emerald-50 border border-emerald-200 px-4 py-3 flex items-start gap-3">
+                            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center">
+                              <Check size={16} strokeWidth={3} />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-baseline justify-between gap-2">
+                                <span className="text-sm font-bold text-emerald-900">
+                                  Ušetríte {Math.round((totalDiscount / subtotalBeforeDiscount) * 100)}%
+                                </span>
+                                <span className="text-base font-bold text-emerald-700">
+                                  −{formatPrice(totalDiscount)}
+                                </span>
+                              </div>
+                              {appliedDiscountTitles[0] && (
+                                <p className="text-[11px] text-emerald-700/80 mt-0.5 truncate">
+                                  {appliedDiscountTitles[0]}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Shipping info */}
+                        <div className="flex justify-between text-sm">
+                          <span className="text-gray-600">Doprava</span>
+                          <span className="text-xs text-gray-500 text-right">
+                            od 150 EUR s DPH
+                            <br />
+                            <span className="text-gray-400">pri 3 a viac platniach zadarmo</span>
+                          </span>
+                        </div>
+                        <p className="text-[11px] text-gray-400">
+                          Presná cena sa potvrdí v pokladni podľa adresy a počtu platní.{' '}
+                          <Link to="/doprava" onClick={closeCart} className="text-brand-gold hover:underline">
+                            Viac o doprave
+                          </Link>
+                        </p>
+
+                        {/* Return cost notice — required by § 3 ods. 1 písm. i) zákona č. 108/2024 Z.z. */}
+                        <div className="flex items-start gap-2 rounded-lg bg-amber-50 border border-amber-200 px-3 py-2.5">
+                          <Info size={13} className="text-amber-600 mt-0.5 flex-shrink-0" />
+                          <p className="text-[11px] text-amber-800 leading-relaxed">
+                            <span className="font-semibold">Náklady na vrátenie tovaru</span> pri odstúpení od zmluvy znáša kupujúci.
+                            Orientačná cena spätného odvozu: <span className="font-semibold">od 150 EUR</span> (Bratislava) / <span className="font-semibold">od 350 EUR</span> (SR).{' '}
+                            <Link to="/reklamacie" onClick={closeCart} className="text-amber-700 hover:underline">
+                              Viac info
+                            </Link>
+                          </p>
+                        </div>
+
+                        <p className="text-xs text-gray-400 text-center">
+                          Budete presmerovaný do zabezpečenej pokladne. Záväzná objednávka s povinnosťou platby vznikne až v poslednom kroku po jej odoslaní.
+                        </p>
+
+                        {/* Continue shopping */}
+                        <button
+                          onClick={closeCart}
+                          className="w-full text-center text-sm text-gray-500 hover:text-brand-dark transition-colors"
+                        >
+                          Pokračovať v nákupe
+                        </button>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Always-visible bar: Total + Checkout CTA */}
+                <div className="px-6 pb-6 pt-3 space-y-3">
+                  {/* Total */}
+                  <div className="flex justify-between items-baseline text-lg font-bold">
+                    <span>Celkom</span>
+                    <span className="flex items-baseline gap-2">
+                      {totalDiscount > 0 && (
+                        <span className="text-sm line-through text-gray-400 font-normal">
+                          {formatPrice(subtotalBeforeDiscount)}
                         </span>
-                        <span className="text-base font-bold text-emerald-700">
+                      )}
+                      <span className="text-brand-gold">{formatPrice(total)}</span>
+                      {/* Compact discount badge when collapsed */}
+                      {!isSummaryExpanded && totalDiscount > 0 && (
+                        <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded ml-1">
                           −{formatPrice(totalDiscount)}
                         </span>
-                      </div>
-                      {appliedDiscountTitles[0] && (
-                        <p className="text-[11px] text-emerald-700/80 mt-0.5 truncate">
-                          {appliedDiscountTitles[0]}
-                        </p>
                       )}
-                    </div>
+                    </span>
                   </div>
-                )}
 
-                {/* Shipping info */}
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Doprava</span>
-                  <span className="text-xs text-gray-500 text-right">
-                    od 150 EUR s DPH
-                    <br />
-                    <span className="text-gray-400">pri 3 a viac platniach zadarmo</span>
-                  </span>
-                </div>
-                <p className="text-[11px] text-gray-400">
-                  Presná cena sa potvrdí v pokladni podľa adresy a počtu platní.{' '}
-                  <Link to="/doprava" onClick={closeCart} className="text-brand-gold hover:underline">
-                    Viac o doprave
-                  </Link>
-                </p>
-
-                {/* Total */}
-                <div className="flex justify-between items-baseline text-lg font-bold pt-4 border-t border-gray-200">
-                  <span>Celkom</span>
-                  <span className="flex items-baseline gap-2">
-                    {totalDiscount > 0 && (
-                      <span className="text-sm line-through text-gray-400 font-normal">
-                        {formatPrice(subtotalBeforeDiscount)}
-                      </span>
+                  {/* CTA - Shopify Checkout */}
+                  <button
+                    onClick={handleCheckout}
+                    disabled={!checkoutUrl || isLoading}
+                    className="w-full bg-brand-dark text-white hover:bg-brand-gold hover:text-brand-dark py-4 text-base rounded-full font-semibold transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                  >
+                    {isLoading ? (
+                      <>
+                        <span className="animate-spin w-5 h-5 border-2 border-white border-t-transparent rounded-full" />
+                        Načítavam...
+                      </>
+                    ) : (
+                      <>
+                        Prejsť do pokladne
+                        <ExternalLink size={18} />
+                      </>
                     )}
-                    <span className="text-brand-gold">{formatPrice(total)}</span>
-                  </span>
+                  </button>
                 </div>
-
-                {/* Return cost notice — required by § 3 ods. 1 písm. i) zákona č. 108/2024 Z.z. */}
-                <div className="flex items-start gap-2 rounded-lg bg-amber-50 border border-amber-200 px-3 py-2.5">
-                  <Info size={13} className="text-amber-600 mt-0.5 flex-shrink-0" />
-                  <p className="text-[11px] text-amber-800 leading-relaxed">
-                    <span className="font-semibold">Náklady na vrátenie tovaru</span> pri odstúpení od zmluvy znáša kupujúci.
-                    Orientačná cena spätného odvozu: <span className="font-semibold">od 150 EUR</span> (Bratislava) / <span className="font-semibold">od 350 EUR</span> (SR).{' '}
-                    <Link to="/reklamacie" onClick={closeCart} className="text-amber-700 hover:underline">
-                      Viac info
-                    </Link>
-                  </p>
-                </div>
-
-                {/* CTA - Shopify Checkout */}
-                <button
-                  onClick={handleCheckout}
-                  disabled={!checkoutUrl || isLoading}
-                  className="w-full bg-brand-dark text-white hover:bg-brand-gold hover:text-brand-dark py-4 text-base rounded-full font-semibold transition-all flex items-center justify-center gap-2 disabled:opacity-50"
-                >
-                  {isLoading ? (
-                    <>
-                      <span className="animate-spin w-5 h-5 border-2 border-white border-t-transparent rounded-full" />
-                      Načítavam...
-                    </>
-                  ) : (
-                    <>
-                      Prejsť do pokladne
-                      <ExternalLink size={18} />
-                    </>
-                  )}
-                </button>
-
-                <p className="text-xs text-gray-400 text-center">
-                  Budete presmerovaný do zabezpečenej pokladne. Záväzná objednávka s povinnosťou platby vznikne až v poslednom kroku po jej odoslaní.
-                </p>
-
-                {/* Continue shopping */}
-                <button
-                  onClick={closeCart}
-                  className="w-full text-center text-sm text-gray-500 hover:text-brand-dark transition-colors"
-                >
-                  Pokračovať v nákupe
-                </button>
               </div>
             )}
           </motion.div>
