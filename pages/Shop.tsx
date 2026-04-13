@@ -242,32 +242,9 @@ export const Shop = () => {
   useGSAP(() => {
     if (!containerRef.current) return;
 
-    // --- Hero text reveal ---
-    gsap.fromTo('.hero-text-line', 
-      { y: 60, opacity: 0 },
-      { 
-        y: 0, opacity: 1,
-        duration: 1,
-        ease: 'power4.out',
-        stagger: 0.12,
-        delay: 0.3,
-      }
-    );
-
-    gsap.fromTo('.hero-subtitle',
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 0.7 }
-    );
-
-    gsap.fromTo('.hero-price',
-      { y: 16, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.65, ease: 'power3.out', delay: 0.8 }
-    );
-
-    gsap.fromTo('.hero-cta',
-      { y: 15, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out', delay: 0.92 }
-    );
+    // Hero text reveal is handled by Framer Motion (AnimatePresence)
+    // — no GSAP duplicate needed; it caused a flash where FM animated
+    //   text visible, then GSAP reset it to opacity:0 after 0.3s delay.
 
     gsap.fromTo('.hero-nav-arrows',
       { opacity: 0 },
