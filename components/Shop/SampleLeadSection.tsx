@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useShopifyProducts } from '../../hooks/useShopifyProducts';
 import { submitSampleLead } from '../../services/quotes.service';
 import { trackMetaEvent } from '../../hooks/useMetaPixel';
+import { trackGA4Event } from '../../hooks/useGA4Ecommerce';
 import { subscribeToNewsletter } from '../../services/newsletter.service';
 import { RotatingBadge } from '../UI/RotatingBadge';
 import { useHoneypot } from '../../hooks/useHoneypot';
@@ -91,6 +92,12 @@ export const SampleLeadSection: React.FC<SampleLeadSectionProps> = ({ preselecte
       trackMetaEvent('Lead', {
         content_name: dekor,
         content_category: 'Sample Request',
+      });
+      trackGA4Event('generate_lead', {
+        currency: 'EUR',
+        value: 20,
+        lead_source: 'sample_request',
+        item_name: dekor,
       });
       if (newsletterConsent) {
         await subscribeToNewsletter({ email, name, source: 'sample_lead' });

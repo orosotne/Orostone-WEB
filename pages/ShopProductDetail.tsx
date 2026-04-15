@@ -66,7 +66,7 @@ import { ShareButton } from '../components/UI/ShareButton';
 import { ProductDetailSkeleton } from '../components/UI/Skeleton';
 import { useCookies } from '../context/CookieContext';
 import { trackMetaEvent } from '../hooks/useMetaPixel';
-import { trackGA4ViewItem } from '../hooks/useGA4Ecommerce';
+import { trackGA4ViewItem, trackGA4Event } from '../hooks/useGA4Ecommerce';
 import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
 import { getProductSEOContent, GENERIC_PRODUCT_FAQS } from '../data/product-seo-content';
 import { useScrollLock } from '../hooks/useScrollLock';
@@ -2333,6 +2333,12 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
       email: bimEmail,
       description: `Záujem o BIM / CAD High-Res Textúry — produkt: ${product.name}`,
       files: [],
+    });
+    trackGA4Event('generate_lead', {
+      currency: 'EUR',
+      value: 30,
+      lead_source: 'bim_cad_request',
+      item_name: product.name,
     });
     setBimSubmitting(false);
     setBimSubmitted(true);

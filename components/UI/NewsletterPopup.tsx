@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Loader2, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { subscribeToNewsletter } from '../../services/newsletter.service';
+import { trackGA4Event } from '../../hooks/useGA4Ecommerce';
 
 const LS_KEY = 'orostone-newsletter-popup';
 const DELAY_MS = 8000;
@@ -41,6 +42,7 @@ export const NewsletterPopup: React.FC = () => {
     const result = await subscribeToNewsletter({ email, source: 'popup' });
 
     if (result.success) {
+      trackGA4Event('sign_up', { method: 'newsletter_popup' });
       setStatus('success');
       setPopupState('done');
     } else {
