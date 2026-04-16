@@ -53,3 +53,8 @@ shopify/
 # Supabase CLI cache
 supabase/.temp/
 .vercel
+
+# Local research / planning (not for public repo)
+.firecrawl/
+.google-ads/
+CONTEXT.md
