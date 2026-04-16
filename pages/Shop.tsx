@@ -202,7 +202,7 @@ export const Shop = () => {
     if (heroAutoplayRef.current) clearInterval(heroAutoplayRef.current);
     heroAutoplayRef.current = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 8000);
+    }, 6000);
   }, []);
 
   const goToNextSlide = useCallback(() => {
@@ -217,7 +217,7 @@ export const Shop = () => {
   useEffect(() => {
     heroAutoplayRef.current = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 8000);
+    }, 6000);
     return () => {
       if (heroAutoplayRef.current) clearInterval(heroAutoplayRef.current);
     };
