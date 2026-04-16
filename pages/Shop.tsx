@@ -134,7 +134,6 @@ const HERO_SLIDES = [
   { id: 1, poster: '/images/home/hero-1.webp', ...HERO_SHARED_COPY },
   { id: 2, poster: '/images/inspiration/inspiration-1.webp', ...HERO_SHARED_COPY },
   { id: 3, poster: '/images/inspiration/inspiration-2.webp', ...HERO_SHARED_COPY },
-  { id: 4, poster: '/images/inspiration/inspiration-3.webp', ...HERO_SHARED_COPY },
   { id: 5, poster: '/images/inspiration/inspiration-4.webp', ...HERO_SHARED_COPY },
   { id: 6, poster: '/images/inspiration/inspiration-5.webp', ...HERO_SHARED_COPY },
   { id: 7, poster: '/images/inspiration/inspiration-6.webp', ...HERO_SHARED_COPY },
