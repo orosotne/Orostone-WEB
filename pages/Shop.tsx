@@ -121,17 +121,24 @@ const INSPIRATION_IMAGES = [
 // ===========================================
 // HERO VIDEO SLIDES DATA
 // ===========================================
+const HERO_SHARED_COPY = {
+  label: 'Prémiový sinterovaný kameň',
+  title: 'Krása kameňa.',
+  titleAccent: 'Bez kompromisov.',
+  subtitle: 'Prémiové sinterované platne pre náročné interiéry',
+  cta: 'Objavte dekory',
+  ctaTo: '/kategoria/sintered-stone',
+} as const;
+
 const HERO_SLIDES = [
-  {
-    id: 1,
-    poster: '/images/home/hero-1.webp',
-    label: 'Prémiový sinterovaný kameň',
-    title: 'Krása kameňa.',
-    titleAccent: 'Bez kompromisov.',
-    subtitle: 'Prémiové sinterované platne pre náročné interiéry',
-    cta: 'Objavte dekory',
-    ctaTo: '/kategoria/sintered-stone',
-  },
+  { id: 1, poster: '/images/home/hero-1.webp', ...HERO_SHARED_COPY },
+  { id: 2, poster: '/images/inspiration/inspiration-1.webp', ...HERO_SHARED_COPY },
+  { id: 3, poster: '/images/inspiration/inspiration-2.webp', ...HERO_SHARED_COPY },
+  { id: 4, poster: '/images/inspiration/inspiration-3.webp', ...HERO_SHARED_COPY },
+  { id: 5, poster: '/images/inspiration/inspiration-4.webp', ...HERO_SHARED_COPY },
+  { id: 6, poster: '/images/inspiration/inspiration-5.webp', ...HERO_SHARED_COPY },
+  { id: 7, poster: '/images/inspiration/inspiration-6.webp', ...HERO_SHARED_COPY },
+  { id: 8, poster: '/images/inspiration/inspiration-7.webp', ...HERO_SHARED_COPY },
 ];
 
 // ===========================================
@@ -619,7 +626,8 @@ export const Shop = () => {
               alt=""
               width={1920}
               height={1080}
-              fetchPriority="high"
+              fetchPriority={idx === 0 ? 'high' : 'low'}
+              loading={idx === 0 ? 'eager' : 'lazy'}
               decoding="async"
               className="hero-img absolute inset-0 w-full h-full object-cover"
             />
@@ -635,7 +643,7 @@ export const Shop = () => {
           {/* Small Category Label */}
           <AnimatePresence mode="wait">
             <motion.p
-              key={`label-${activeSlide}`}
+              key="label"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
@@ -649,7 +657,7 @@ export const Shop = () => {
           {/* Title */}
           <AnimatePresence mode="wait">
             <motion.div
-              key={`title-${activeSlide}`}
+              key="title"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
@@ -665,7 +673,7 @@ export const Shop = () => {
           {/* Title Accent */}
           <AnimatePresence mode="wait">
             <motion.div
-              key={`accent-${activeSlide}`}
+              key="accent"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
@@ -681,7 +689,7 @@ export const Shop = () => {
           {/* Subtitle */}
           <AnimatePresence mode="wait">
             <motion.p
-              key={`sub-${activeSlide}`}
+              key="sub"
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
@@ -696,7 +704,7 @@ export const Shop = () => {
           {heroPriceFrom && (
             <AnimatePresence mode="wait">
               <motion.p
-                key={`price-${activeSlide}`}
+                key="price"
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
@@ -711,7 +719,7 @@ export const Shop = () => {
           {/* CTA Button */}
           <AnimatePresence mode="wait">
             <motion.div
-              key={`cta-${activeSlide}`}
+              key="cta"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
