@@ -170,6 +170,47 @@ export const Kuchyne = () => {
         </div>
       </section>
 
+      {/* Gallery */}
+      <section className="py-20">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
+              Inšpirácie
+            </span>
+            <h2 className="text-3xl md:text-4xl font-sans font-bold text-brand-dark mb-4">
+              Kuchyne našich klientov
+            </h2>
+            <p className="text-gray-500 text-lg font-light max-w-2xl mx-auto">
+              Pozrite sa, ako sinterovaný kameň Orostone vyzerá v reálnych kuchyniach.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {GALLERY_ITEMS.map((item) => (
+              <Link
+                key={item.title}
+                to={item.product}
+                className="group relative overflow-hidden rounded-2xl aspect-[4/3] bg-gray-100"
+              >
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  width={800}
+                  height={600}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <h3 className="text-white font-bold text-lg">{item.title}</h3>
+                  <p className="text-white/80 text-sm font-light">{item.description}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Features */}
       <section className="py-20">
         <div className="container mx-auto px-6">
@@ -207,47 +248,6 @@ export const Kuchyne = () => {
                 <h3 className="font-bold text-brand-dark mb-2">{step.title}</h3>
                 <p className="text-sm text-gray-500 font-light">{step.description}</p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Gallery */}
-      <section className="py-20">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
-              Inšpirácie
-            </span>
-            <h2 className="text-3xl md:text-4xl font-sans font-bold text-brand-dark mb-4">
-              Kuchyne našich klientov
-            </h2>
-            <p className="text-gray-500 text-lg font-light max-w-2xl mx-auto">
-              Pozrite sa, ako sinterovaný kameň Orostone vyzerá v reálnych kuchyniach.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {GALLERY_ITEMS.map((item) => (
-              <Link
-                key={item.title}
-                to={item.product}
-                className="group relative overflow-hidden rounded-2xl aspect-[4/3] bg-gray-100"
-              >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                  width={800}
-                  height={600}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h3 className="text-white font-bold text-lg">{item.title}</h3>
-                  <p className="text-white/80 text-sm font-light">{item.description}</p>
-                </div>
-              </Link>
             ))}
           </div>
         </div>
