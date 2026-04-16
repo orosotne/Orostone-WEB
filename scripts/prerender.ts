@@ -715,6 +715,35 @@ function prerenderVzorky(): void {
 }
 
 // ---------------------------------------------------------------------------
+// Kuchyne (kitchens) — same URL as SPA route /kuchyne
+// ---------------------------------------------------------------------------
+
+function prerenderKuchyne(): void {
+  writePage({
+    route: '/kuchyne',
+    title: 'Kuchyne zo sinterovaného kameňa | Orostone',
+    description:
+      'Prémiové kuchynské dosky zo sinterovaného kameňa — odolné voči teplu, škvrnám a škrabancom. Pozrite si realizácie a objednajte vzorky zadarmo.',
+    canonical: `${BASE_URL}/kuchyne`,
+    rootContent: `
+      <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Kuchyne</nav>
+      <h1>Kuchyne zo sinterovaného kameňa</h1>
+      <p>Prémiové kuchynské dosky zo sinterovaného kameňa OROSTONE — odolné voči teplu nad 300 °C, škvrnám, škrabancom a UV žiareniu. Bezplatná konzultácia, digitálne laserové zameranie, CNC fabrikácia a profesionálna inštalácia.</p>
+      <p><a href="/kategoria/sintered-stone">Prehliadnuť všetky dekory</a> &middot; <a href="/vzorky">Objednať vzorky</a> &middot; <a href="/realizacie">Realizácie</a> &middot; <a href="/kontakt">Kontakt</a></p>`,
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'OROSTONE', item: `${BASE_URL}/` },
+          { '@type': 'ListItem', position: 2, name: 'Kuchyne', item: `${BASE_URL}/kuchyne` },
+        ],
+      },
+    ],
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
@@ -760,6 +789,11 @@ for (const page of INFO_PAGES) {
 console.log('\nVzorky:');
 prerenderVzorky();
 console.log('  ✓ /vzorky');
+
+// Kuchyne
+console.log('\nKuchyne:');
+prerenderKuchyne();
+console.log('  ✓ /kuchyne');
 
 // Homepage
 console.log('\nHomepage:');

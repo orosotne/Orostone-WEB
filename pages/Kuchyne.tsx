@@ -5,40 +5,46 @@ import { SEOHead } from '@/components/UI/SEOHead';
 
 const GALLERY_ITEMS = [
   {
-    image: 'https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=800',
-    title: 'Moderná biela kuchyňa',
-    description: 'Calacatta Top — ostrovček s waterfall hranou',
+    image: '/images/inspiration/inspiration-1.webp',
+    title: 'Bianco Statuario',
+    description: 'Mramorová zástena + pracovná doska',
+    product: '/produkt/statuario-diamante',
+  },
+  {
+    image: '/images/inspiration/inspiration-2.webp',
+    title: 'Calacatta White',
+    description: 'Pracovná doska + zástena',
     product: '/produkt/calacatta-top',
   },
   {
-    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800',
-    title: 'Minimalistický dizajn',
-    description: 'Super White Extra — čisté línie, matný povrch',
-    product: '/produkt/super-white-extra',
+    image: '/images/inspiration/inspiration-3.webp',
+    title: 'Roman Travertine',
+    description: 'Ostrovček s varičom',
+    product: '/produkt/roman-travertine',
   },
   {
-    image: 'https://images.unsplash.com/photo-1600585154363-67eb9e2e2099?w=800',
-    title: 'Tmavý kontrast',
-    description: 'Nero Margiua — dramatická pracovná doska',
-    product: '/produkt/nero-margiua',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800',
-    title: 'Teplé tóny',
-    description: 'Taj Mahal — krémovo-zlaté žily na bielom podklade',
-    product: '/produkt/taj-mahal',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800',
-    title: 'Kuchynský ostrovček',
-    description: 'Wild Forest — veľkoformátová platňa bez spojov',
-    product: '/produkt/wild-forest',
-  },
-  {
-    image: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800',
-    title: 'Klasická elegancia',
-    description: 'Statuario Diamante — nadčasový mramorový vzor',
+    image: '/images/inspiration/inspiration-4.webp',
+    title: 'Bianco Statuario',
+    description: 'Ostrovček a zástena',
     product: '/produkt/statuario-diamante',
+  },
+  {
+    image: '/images/inspiration/inspiration-5.webp',
+    title: 'Arden Gold',
+    description: 'Waterfall ostrovček',
+    product: '/kategoria/sintered-stone',
+  },
+  {
+    image: '/images/inspiration/inspiration-6.webp',
+    title: 'Yabo White',
+    description: 'Kuchynská zástena',
+    product: '/produkt/yabo-white',
+  },
+  {
+    image: '/images/inspiration/inspiration-7.webp',
+    title: 'Roman Travertine',
+    description: 'Travertínový ostrov',
+    product: '/produkt/roman-travertine',
   },
 ];
 
