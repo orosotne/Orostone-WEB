@@ -138,6 +138,7 @@ const HERO_SLIDES = [
   { id: 6, poster: '/images/inspiration/inspiration-5.webp', ...HERO_SHARED_COPY },
   { id: 7, poster: '/images/inspiration/inspiration-6.webp', ...HERO_SHARED_COPY },
   { id: 8, poster: '/images/inspiration/inspiration-7.webp', ...HERO_SHARED_COPY },
+  { id: 9, poster: '/images/inspiration/inspiration-8.webp', ...HERO_SHARED_COPY },
 ];
 
 // ===========================================
