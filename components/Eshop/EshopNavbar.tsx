@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Search, User, ShoppingBag, Menu, X, ChevronDown, Heart, ArrowLeft, Diamond, Phone
+  Search, User, ShoppingBag, Menu, X, ChevronDown, ArrowLeft, Diamond, Phone
 } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 
@@ -186,17 +186,6 @@ export const EshopNavbar: React.FC = () => {
               >
                 <User size={20} strokeWidth={1.5} className="transition-all duration-200" />
               </a>
-
-              {/* Wishlist */}
-              <button
-                className={cn(
-                  "hidden lg:block p-2 transition-all duration-200 hover:[&_svg]:stroke-[2]",
-                  isTransparent ? "text-white/80 hover:text-white" : "text-gray-600 hover:text-brand-gold"
-                )}
-                aria-label="Obľúbené"
-              >
-                <Heart size={20} strokeWidth={1.5} className="transition-all duration-200" />
-              </button>
 
               {/* Cart */}
               <button
@@ -551,13 +540,6 @@ export const EshopNavbar: React.FC = () => {
                   <ShoppingBag size={18} strokeWidth={1.5} />
                   Moje objednávky
                 </a>
-                <button
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-3 px-6 py-4 text-[13px] tracking-[0.1em] uppercase text-black hover:bg-gray-50 w-full"
-                >
-                  <Heart size={18} strokeWidth={1.5} />
-                  Obľúbené
-                </button>
               </div>
               </div>
 
