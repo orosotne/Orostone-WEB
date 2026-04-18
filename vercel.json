@@ -7,7 +7,7 @@
       "permanent": true
     },
     {
-      "source": "/(.*)",
+      "source": "/((?!favicon.*|apple-touch-icon.*).*)",
       "has": [{ "type": "host", "value": "eshop.orostone.sk" }],
       "destination": "https://orostone.sk/$1",
       "permanent": true
