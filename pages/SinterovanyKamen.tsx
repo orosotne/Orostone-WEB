@@ -234,106 +234,110 @@ export const SinterovanyKamen = () => {
 
   useGSAP(
     () => {
-      // Hero Animation
-      const tl = gsap.timeline();
-      tl.fromTo(
-        '.sk-hero-text',
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 1, stagger: 0.2, ease: 'power3.out' }
-      ).fromTo(
-        '.sk-hero-image',
-        { scale: 1.2, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 1.5, ease: 'power2.out' },
-        '-=0.8'
-      );
+      const mm = gsap.matchMedia();
 
-      // Parallax Effect for Hero
-      gsap.to('.sk-hero-image video', {
-        y: 100,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: heroRef.current,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true,
-        },
+      mm.add('(min-width: 1024px)', () => {
+        // Hero Animation — desktop only
+        const tl = gsap.timeline();
+        tl.fromTo(
+          '.sk-hero-text',
+          { opacity: 0, y: 50 },
+          { opacity: 1, y: 0, duration: 1, stagger: 0.2, ease: 'power3.out' }
+        ).fromTo(
+          '.sk-hero-image',
+          { scale: 1.2, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 1.5, ease: 'power2.out' },
+          '-=0.8'
+        );
+
+        // Parallax Effect for Hero — desktop only (prevents scroll-linked main-thread work on mobile)
+        gsap.to('.sk-hero-image video', {
+          y: 100,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: heroRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
+          },
+        });
+
+        // Process Steps Reveal
+        const processSteps = gsap.utils.toArray('.sk-process-step');
+        if (processSteps.length) {
+          gsap.fromTo(
+            processSteps,
+            { opacity: 0 },
+            {
+              opacity: 1,
+              duration: 0.8,
+              stagger: 0.15,
+              scrollTrigger: {
+                trigger: processSteps[0] as Element,
+                start: 'top 85%',
+                toggleActions: 'play none none none',
+              },
+            }
+          );
+        }
+
+        // Feature Cards Reveal
+        const featureCards = gsap.utils.toArray('.sk-feature-card');
+        if (featureCards.length) {
+          gsap.fromTo(
+            featureCards,
+            { opacity: 0 },
+            {
+              opacity: 1,
+              duration: 0.8,
+              stagger: 0.1,
+              scrollTrigger: {
+                trigger: featureCards[0] as Element,
+                start: 'top 85%',
+                toggleActions: 'play none none none',
+              },
+            }
+          );
+        }
+
+        // Application Cards Reveal
+        const appCards = gsap.utils.toArray('.sk-app-card');
+        if (appCards.length) {
+          gsap.fromTo(
+            appCards,
+            { opacity: 0 },
+            {
+              opacity: 1,
+              duration: 0.7,
+              stagger: 0.1,
+              scrollTrigger: {
+                trigger: appCards[0] as Element,
+                start: 'top 88%',
+                toggleActions: 'play none none none',
+              },
+            }
+          );
+        }
+
+        // Section headings reveal
+        const headings = gsap.utils.toArray('.sk-section-heading');
+        if (headings.length) {
+          gsap.fromTo(
+            headings,
+            { opacity: 0 },
+            {
+              opacity: 1,
+              duration: 0.8,
+              stagger: 0.15,
+              scrollTrigger: {
+                trigger: headings[0] as Element,
+                start: 'top 85%',
+                toggleActions: 'play none none none',
+              },
+            }
+          );
+        }
       });
-
-      // Process Steps Reveal — single trigger per group (reduces ScrollTrigger count for INP)
-      const processSteps = gsap.utils.toArray('.sk-process-step');
-      if (processSteps.length) {
-        gsap.fromTo(
-          processSteps,
-          { opacity: 0 },
-          {
-            opacity: 1,
-            duration: 0.8,
-            stagger: 0.15,
-            scrollTrigger: {
-              trigger: processSteps[0] as Element,
-              start: 'top 85%',
-              toggleActions: 'play none none none',
-            },
-          }
-        );
-      }
-
-      // Feature Cards Reveal
-      const featureCards = gsap.utils.toArray('.sk-feature-card');
-      if (featureCards.length) {
-        gsap.fromTo(
-          featureCards,
-          { opacity: 0 },
-          {
-            opacity: 1,
-            duration: 0.8,
-            stagger: 0.1,
-            scrollTrigger: {
-              trigger: featureCards[0] as Element,
-              start: 'top 85%',
-              toggleActions: 'play none none none',
-            },
-          }
-        );
-      }
-
-      // Application Cards Reveal
-      const appCards = gsap.utils.toArray('.sk-app-card');
-      if (appCards.length) {
-        gsap.fromTo(
-          appCards,
-          { opacity: 0 },
-          {
-            opacity: 1,
-            duration: 0.7,
-            stagger: 0.1,
-            scrollTrigger: {
-              trigger: appCards[0] as Element,
-              start: 'top 88%',
-              toggleActions: 'play none none none',
-            },
-          }
-        );
-      }
-
-      // Section headings reveal
-      const headings = gsap.utils.toArray('.sk-section-heading');
-      if (headings.length) {
-        gsap.fromTo(
-          headings,
-          { opacity: 0 },
-          {
-            opacity: 1,
-            duration: 0.8,
-            stagger: 0.15,
-            scrollTrigger: {
-              trigger: headings[0] as Element,
-              start: 'top 85%',
-              toggleActions: 'play none none none',
-            },
-          }
-        );
-      }
     },
     { scope: containerRef }
   );
@@ -457,6 +461,8 @@ export const SinterovanyKamen = () => {
                 src="/images/yabo-white-application.jpg"
                 className="w-full h-full object-cover"
                 alt="Sinterovaný kameň Yabo White — aplikácia v interiéri"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
             </div>
@@ -521,6 +527,8 @@ export const SinterovanyKamen = () => {
                     src={item.img}
                     alt={item.imgAlt}
                     className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute top-4 left-4 bg-brand-gold text-brand-dark w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm">
                     {item.step}
@@ -831,6 +839,8 @@ export const SinterovanyKamen = () => {
                   src={item.img}
                   alt={item.imgAlt}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-8">
@@ -910,6 +920,8 @@ export const SinterovanyKamen = () => {
                     src={item.img}
                     alt={item.imgAlt}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <div className="p-8">

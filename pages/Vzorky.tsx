@@ -1,6 +1,7 @@
 import React, { Suspense, useCallback, useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 const SampleLeadSection = React.lazy(() =>
   import('../components/Shop/SampleLeadSection').then((m) => ({ default: m.SampleLeadSection })),
@@ -44,6 +45,7 @@ function getOpacity(dist: number): number {
 export const Vzorky: React.FC = () => {
   const [selectedDekor, setSelectedDekor] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
+  const isMobile = useIsMobile();
   const scrollRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
   const tileRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -67,15 +69,15 @@ export const Vzorky: React.FC = () => {
     tileRefs.current.forEach((el, i) => {
       if (!el) return;
       const tileMid = el.offsetLeft + el.offsetWidth / 2;
-      // Distance in "tile units" (1 = one tile width + gap away)
       const pxDist = Math.abs(tileMid - centerX);
-      const unitDist = pxDist / (TILE_BASE + GAP);
 
-      const scale = getScale(unitDist);
-      const opacity = getOpacity(unitDist);
-
-      el.style.transform = `scale(${scale})`;
-      el.style.opacity = String(opacity);
+      // Skip scale/opacity writes on mobile — CSS scroll-snap handles layout and
+      // avoiding ~12 transform/opacity style writes per frame drops INP dramatically.
+      if (!isMobile) {
+        const unitDist = pxDist / (TILE_BASE + GAP);
+        el.style.transform = `scale(${getScale(unitDist)})`;
+        el.style.opacity = String(getOpacity(unitDist));
+      }
 
       if (pxDist < closestDist) { closestDist = pxDist; closestIdx = i; }
     });
@@ -87,12 +89,21 @@ export const Vzorky: React.FC = () => {
     settleTimerRef.current = window.setTimeout(() => {
       settleTimerRef.current = null;
       setActiveIndex(prev => (prev === closestIdx ? prev : closestIdx));
-    }, 90);
-  }, []);
+    }, 150);
+  }, [isMobile]);
 
   useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
+
+    // When switching to mobile, clear any leftover transform/opacity from desktop render
+    if (isMobile) {
+      tileRefs.current.forEach((el) => {
+        if (!el) return;
+        el.style.transform = '';
+        el.style.opacity = '';
+      });
+    }
 
     const onScroll = () => {
       cancelAnimationFrame(rafRef.current);
@@ -111,7 +122,7 @@ export const Vzorky: React.FC = () => {
         settleTimerRef.current = null;
       }
     };
-  }, [updateTransforms]);
+  }, [updateTransforms, isMobile]);
 
   /* ── Scroll to index ── */
   const scrollToIndex = useCallback((idx: number) => {

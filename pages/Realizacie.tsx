@@ -5,6 +5,7 @@ import { ArrowRight, Palette, X, ChevronLeft, ChevronRight, Eye } from 'lucide-r
 import { SEOHead, createBreadcrumbLD } from '@/components/UI/SEOHead';
 import { ImageReveal } from '@/components/UI/ImageReveal';
 import { useScrollLock } from '@/hooks/useScrollLock';
+import { useIsMobile } from '@/hooks/useIsMobile';
 
 /* ─── PROJECT DATA ───────────────────────────────────── */
 
@@ -443,10 +444,11 @@ const Lightbox: React.FC<{
 
 export const Realizacie = () => {
   const [lightbox, setLightbox] = useState<{ images: string[]; index: number } | null>(null);
+  const isMobile = useIsMobile();
 
-  const openLightbox = (project: Project, startIndex = 0) => {
+  const openLightbox = useCallback((project: Project, startIndex = 0) => {
     setLightbox({ images: project.gallery, index: startIndex });
-  };
+  }, []);
 
   return (
     <div className="bg-white">
@@ -610,24 +612,18 @@ export const Realizacie = () => {
           <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
             {GRID_PROJECTS.map((project, i) => {
               const isWide = i % 5 === 2; // every 5th card goes full width for visual rhythm
-              return (
-                <motion.div
-                  key={project.id}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-5%' }}
-                  transition={{ duration: 0.6, delay: (i % 2) * 0.15 }}
-                  className={`bg-[#F9F9F7] rounded-3xl overflow-hidden cursor-pointer group ${
-                    isWide ? 'md:col-span-2' : ''
-                  }`}
-                  onClick={() => openLightbox(project)}
-                >
+              const cardClassName = `bg-[#F9F9F7] rounded-3xl overflow-hidden cursor-pointer group ${
+                isWide ? 'md:col-span-2' : ''
+              }`;
+              const cardInner = (
+                <>
                   <div className={`relative overflow-hidden ${isWide ? 'aspect-[21/9]' : 'aspect-[16/10]'}`}>
                     <img
                       src={project.hero}
                       alt={project.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       loading="lazy"
+                      decoding="async"
                       width={isWide ? 1200 : 800}
                       height={isWide ? 514 : 500}
                     />
@@ -646,6 +642,34 @@ export const Realizacie = () => {
                       <span className="text-gray-500 font-light">{project.material}</span>
                     </div>
                   </div>
+                </>
+              );
+
+              // On mobile, render plain div — skip 28× Framer Motion subscribers +
+              // whileInView IntersectionObservers that compound INP during scroll.
+              if (isMobile) {
+                return (
+                  <div
+                    key={project.id}
+                    className={cardClassName}
+                    onClick={() => openLightbox(project)}
+                  >
+                    {cardInner}
+                  </div>
+                );
+              }
+
+              return (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-5%' }}
+                  transition={{ duration: 0.6, delay: (i % 2) * 0.15 }}
+                  className={cardClassName}
+                  onClick={() => openLightbox(project)}
+                >
+                  {cardInner}
                 </motion.div>
               );
             })}

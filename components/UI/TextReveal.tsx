@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useIsMobile } from '../../hooks/useIsMobile';
 
 interface TextRevealProps {
   children: string;
@@ -14,10 +15,15 @@ export const TextReveal: React.FC<TextRevealProps> = ({
   delay = 0,
   variant = 'p'
 }) => {
-  // Rozdelenie textu na slová
+  const isMobile = useIsMobile();
+  const Tag = variant === 'h1' ? 'h1' : variant === 'h2' ? 'h2' : 'p';
+
+  if (isMobile) {
+    return <Tag className={className}>{children}</Tag>;
+  }
+
   const words = children.split(" ");
 
-  // Varian pre kontajner (orchestrátor)
   const container = {
     hidden: { opacity: 0 },
     visible: (i: number = 1) => ({
@@ -26,7 +32,6 @@ export const TextReveal: React.FC<TextRevealProps> = ({
     }),
   };
 
-  // Varian pre jednotlivé slová (vysunutie z masky)
   const child = {
     visible: {
       opacity: 1,
@@ -42,8 +47,6 @@ export const TextReveal: React.FC<TextRevealProps> = ({
       y: "100%",
     },
   };
-
-  const Tag = variant === 'h1' ? 'h1' : variant === 'h2' ? 'h2' : 'p';
 
   return (
     <Tag className={`flex flex-wrap ${className}`}>

@@ -12,6 +12,7 @@ import { BlogPreviewSection } from '../components/Eshop/BlogPreviewSection';
 import { getLatestArticlesMeta } from '../data/blogArticlesMeta';
 import { useShopifyProducts } from '../hooks/useShopifyProducts';
 import { useInstagramFeed, getPostImageUrl } from '../hooks/useInstagramFeed';
+import { useIsMobile } from '../hooks/useIsMobile';
 
 import { TextKnockoutSection } from '../components/TextKnockoutSection';
 import { SEOHead, OROSTONE_ORGANIZATION_LD } from '../components/UI/SEOHead';
@@ -149,6 +150,14 @@ export const Shop = () => {
   const heroRef = useRef<HTMLElement>(null);
   const heroAutoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const { products: SHOP_PRODUCTS, isLoading: productsLoading } = useShopifyProducts();
+  const isMobile = useIsMobile();
+
+  // Hero carousel: reduce slide count on mobile to cut image preloading + interval-driven
+  // re-renders that contribute to INP on low-end devices. Shared copy means any subset works.
+  const heroSlides = useMemo(
+    () => (isMobile ? HERO_SLIDES.slice(0, 4) : HERO_SLIDES),
+    [isMobile]
+  );
 
   // Derive "from" price dynamically so it stays in sync with the Shopify catalog.
   // Falls back to a safe literal if the catalog is empty or prices are missing.
@@ -198,31 +207,37 @@ export const Shop = () => {
   // ===========================================
   // HERO SLIDE NAVIGATION
   // ===========================================
+  const slidesLen = heroSlides.length;
   const goToSlide = useCallback((index: number) => {
     setActiveSlide(index);
     if (heroAutoplayRef.current) clearInterval(heroAutoplayRef.current);
     heroAutoplayRef.current = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+      setActiveSlide((prev) => (prev + 1) % slidesLen);
     }, 6000);
-  }, []);
+  }, [slidesLen]);
 
   const goToNextSlide = useCallback(() => {
-    goToSlide((activeSlide + 1) % HERO_SLIDES.length);
-  }, [activeSlide, goToSlide]);
+    goToSlide((activeSlide + 1) % slidesLen);
+  }, [activeSlide, goToSlide, slidesLen]);
 
   const goToPrevSlide = useCallback(() => {
-    goToSlide((activeSlide - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
-  }, [activeSlide, goToSlide]);
+    goToSlide((activeSlide - 1 + slidesLen) % slidesLen);
+  }, [activeSlide, goToSlide, slidesLen]);
+
+  // Clamp activeSlide if heroSlides shrinks (e.g. desktop→mobile resize)
+  useEffect(() => {
+    if (activeSlide >= slidesLen) setActiveSlide(0);
+  }, [slidesLen, activeSlide]);
 
   // Auto-advance hero slides
   useEffect(() => {
     heroAutoplayRef.current = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+      setActiveSlide((prev) => (prev + 1) % slidesLen);
     }, 6000);
     return () => {
       if (heroAutoplayRef.current) clearInterval(heroAutoplayRef.current);
     };
-  }, []);
+  }, [slidesLen]);
 
   // Scroll to hash target (e.g. /#vzorka from StickySampleCTA)
   useEffect(() => {
@@ -613,7 +628,7 @@ export const Shop = () => {
         className="relative h-[80vh] min-h-[600px] w-full flex items-center justify-center overflow-hidden bg-black"
       >
         {/* Video Slides */}
-        {HERO_SLIDES.map((slide, idx) => (
+        {heroSlides.map((slide, idx) => (
           <div
             key={slide.id}
             className={`pointer-events-none absolute inset-0 transition-opacity duration-1000 ease-in-out ${
@@ -765,7 +780,7 @@ export const Shop = () => {
 
         {/* Bottom Slide Indicators */}
         <div className="hero-indicators absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
-          {HERO_SLIDES.map((slide, idx) => (
+          {heroSlides.map((slide, idx) => (
             <button
               key={slide.id}
               onClick={() => goToSlide(idx)}
@@ -1091,7 +1106,6 @@ export const Shop = () => {
                     key={product.id}
                     to={`/produkt/${product.id}`}
                     onMouseEnter={() => prefetchProduct(product)}
-                    onTouchStart={() => prefetchProduct(product)}
                     className="product-card group flex-shrink-0 w-[280px] lg:w-[300px] snap-start"
                   >
                     <div className="bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300">
