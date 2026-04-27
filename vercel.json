@@ -7,7 +7,7 @@
       "permanent": true
     },
     {
-      "source": "/((?!favicon.*|apple-touch-icon.*).*)",
+      "source": "/((?!favicon.*|apple-touch-icon.*|robots\\.txt).*)",
       "has": [{ "type": "host", "value": "eshop.orostone.sk" }],
       "destination": "https://orostone.sk/$1",
       "permanent": true
@@ -39,6 +39,11 @@
     { "source": "/objednavky", "destination": "https://shopify.com/101386420570/account", "permanent": false }
   ],
   "rewrites": [
+    {
+      "source": "/robots.txt",
+      "has": [{ "type": "host", "value": "eshop.orostone.sk" }],
+      "destination": "/robots-noindex.txt"
+    },
     { "source": "/sitemap.xml", "destination": "/sitemap-eshop.xml" },
     { "source": "/sitemap-eshop.xml", "destination": "/sitemap-eshop.xml" },
     { "source": "/robots.txt", "destination": "/robots.txt" },

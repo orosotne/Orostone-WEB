@@ -1,0 +1,5 @@
+# This robots.txt is served on non-canonical hosts (e.g. eshop.orostone.sk)
+# Canonical site: https://orostone.sk
+
+User-agent: *
+Disallow: /
