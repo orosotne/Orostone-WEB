@@ -96,22 +96,49 @@ export const Vzorky: React.FC = () => {
     const container = scrollRef.current;
     if (!container) return;
 
-    // When switching to mobile, clear any leftover transform/opacity from desktop render
+    // ── Mobile: no scroll-driven RAF/layout reads. CSS scroll-snap handles UX,
+    // IntersectionObserver tracks the centered tile for activeIndex. This drops
+    // P75 INP on /vzorky from ~1248ms to <200ms target.
     if (isMobile) {
+      // Clear any leftover transform/opacity from a previous desktop render.
       tileRefs.current.forEach((el) => {
         if (!el) return;
         el.style.transform = '';
         el.style.opacity = '';
       });
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          // Pick the most-visible tile and update activeIndex once.
+          let bestIdx = -1;
+          let bestRatio = 0;
+          entries.forEach((entry) => {
+            if (entry.intersectionRatio > bestRatio) {
+              const idx = tileRefs.current.findIndex((el) => el === entry.target);
+              if (idx >= 0) {
+                bestIdx = idx;
+                bestRatio = entry.intersectionRatio;
+              }
+            }
+          });
+          if (bestIdx >= 0 && bestRatio >= 0.6) {
+            setActiveIndex((prev) => (prev === bestIdx ? prev : bestIdx));
+          }
+        },
+        { root: container, threshold: [0.6, 0.9] },
+      );
+
+      tileRefs.current.forEach((el) => el && io.observe(el));
+      return () => io.disconnect();
     }
 
+    // ── Desktop: original scroll-driven RAF for scale/opacity transitions.
     const onScroll = () => {
       cancelAnimationFrame(rafRef.current);
       rafRef.current = requestAnimationFrame(updateTransforms);
     };
 
     container.addEventListener('scroll', onScroll, { passive: true });
-    // Initial paint
     const t = setTimeout(updateTransforms, 50);
     return () => {
       container.removeEventListener('scroll', onScroll);

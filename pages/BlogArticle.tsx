@@ -91,6 +91,17 @@ export const BlogArticle: React.FC = () => {
     return extractHeadings(article[lang].content);
   }, [article, lang]);
 
+  // Inject loading="lazy" + decoding="async" into inline <img> tags BEFORE first paint.
+  // Previously this was done post-mount in a useEffect, which forced an extra layout
+  // pass and downloaded above-the-fold images eagerly on mobile (LCP regression).
+  const articleHtml = useMemo(() => {
+    if (!article) return '';
+    return article[lang].content.replace(
+      /<img\s+(?![^>]*\bloading=)/gi,
+      '<img loading="lazy" decoding="async" ',
+    );
+  }, [article, lang]);
+
   // Labels
   const labels = {
     backToBlog: lang === 'sk' ? 'Späť na blog' : 'Back to blog',
@@ -226,17 +237,8 @@ export const BlogArticle: React.FC = () => {
     return () => observer.disconnect();
   }, [headings]);
 
-  // ===========================================
-  // ASYNC DECODE FOR ARTICLE IMAGES
-  // ===========================================
-
-  useEffect(() => {
-    if (!articleBodyRef.current) return;
-    const imgs = articleBodyRef.current.querySelectorAll('img');
-    imgs.forEach((img) => {
-      img.decoding = 'async';
-    });
-  }, [lang]);
+  // Article images get loading="lazy" + decoding="async" via the articleHtml useMemo
+  // regex above (applied before first paint, so no post-mount layout pass).
 
   // ===========================================
   // 404 STATE
@@ -302,6 +304,9 @@ export const BlogArticle: React.FC = () => {
         <img
           src={article.heroImage}
           alt={content.title}
+          fetchPriority="high"
+          decoding="async"
+          loading="eager"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
@@ -592,7 +597,7 @@ export const BlogArticle: React.FC = () => {
                   [&_.article-tldr-label]:text-[10px] [&_.article-tldr-label]:tracking-[0.2em] [&_.article-tldr-label]:uppercase
                   [&_.article-tldr-label]:text-brand-gold [&_.article-tldr-label]:font-bold [&_.article-tldr-label]:mb-3 [&_.article-tldr-label]:block
                 "
-                dangerouslySetInnerHTML={{ __html: content.content }}
+                dangerouslySetInnerHTML={{ __html: articleHtml }}
               />
 
               {/* ==================== TAGS ==================== */}
