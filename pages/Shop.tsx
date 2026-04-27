@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useRef, useState, useEffect, useCallback, useMemo, startTransition } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -200,8 +200,19 @@ export const Shop = () => {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(nextTestimonial, 6000);
-    return () => clearInterval(interval);
+    let interval: ReturnType<typeof setInterval> | null = setInterval(nextTestimonial, 6000);
+    const onVisibility = () => {
+      if (document.hidden) {
+        if (interval) { clearInterval(interval); interval = null; }
+      } else if (!interval) {
+        interval = setInterval(nextTestimonial, 6000);
+      }
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => {
+      document.removeEventListener('visibilitychange', onVisibility);
+      if (interval) clearInterval(interval);
+    };
   }, [nextTestimonial]);
 
   // ===========================================
@@ -209,7 +220,9 @@ export const Shop = () => {
   // ===========================================
   const slidesLen = heroSlides.length;
   const goToSlide = useCallback((index: number) => {
-    setActiveSlide(index);
+    // Defer the re-render so the click handler returns and the next paint
+    // can land before React reconciles all hero slides.
+    startTransition(() => setActiveSlide(index));
     if (heroAutoplayRef.current) clearInterval(heroAutoplayRef.current);
     heroAutoplayRef.current = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % slidesLen);
@@ -229,13 +242,25 @@ export const Shop = () => {
     if (activeSlide >= slidesLen) setActiveSlide(0);
   }, [slidesLen, activeSlide]);
 
-  // Auto-advance hero slides
+  // Auto-advance hero slides — pause when tab is hidden to avoid contention.
   useEffect(() => {
-    heroAutoplayRef.current = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % slidesLen);
-    }, 6000);
+    const start = () => {
+      heroAutoplayRef.current = setInterval(() => {
+        setActiveSlide((prev) => (prev + 1) % slidesLen);
+      }, 6000);
+    };
+    const stop = () => {
+      if (heroAutoplayRef.current) {
+        clearInterval(heroAutoplayRef.current);
+        heroAutoplayRef.current = null;
+      }
+    };
+    start();
+    const onVisibility = () => { document.hidden ? stop() : (heroAutoplayRef.current ? null : start()); };
+    document.addEventListener('visibilitychange', onVisibility);
     return () => {
-      if (heroAutoplayRef.current) clearInterval(heroAutoplayRef.current);
+      document.removeEventListener('visibilitychange', onVisibility);
+      stop();
     };
   }, [slidesLen]);
 
