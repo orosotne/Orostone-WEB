@@ -212,6 +212,21 @@ const PRODUCT_LIST_FRAGMENT = `
       value
       namespace
     }
+    color_name_for_cursor: metafield(namespace: "custom", key: "color_name_for_cursor") {
+      key
+      value
+      namespace
+    }
+    color_name: metafield(namespace: "custom", key: "color_name") {
+      key
+      value
+      namespace
+    }
+    color_for_cursor: metafield(namespace: "custom", key: "color_for_cursor") {
+      key
+      value
+      namespace
+    }
     shopify_color: metafield(namespace: "shopify", key: "color") {
       key
       value

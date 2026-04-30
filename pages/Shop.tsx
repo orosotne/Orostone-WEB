@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useRef, useState, useEffect, useCallback, useMemo, startTransition } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -200,8 +200,19 @@ export const Shop = () => {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(nextTestimonial, 6000);
-    return () => clearInterval(interval);
+    let interval: ReturnType<typeof setInterval> | null = setInterval(nextTestimonial, 6000);
+    const onVisibility = () => {
+      if (document.hidden) {
+        if (interval) { clearInterval(interval); interval = null; }
+      } else if (!interval) {
+        interval = setInterval(nextTestimonial, 6000);
+      }
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => {
+      document.removeEventListener('visibilitychange', onVisibility);
+      if (interval) clearInterval(interval);
+    };
   }, [nextTestimonial]);
 
   // ===========================================
@@ -209,7 +220,9 @@ export const Shop = () => {
   // ===========================================
   const slidesLen = heroSlides.length;
   const goToSlide = useCallback((index: number) => {
-    setActiveSlide(index);
+    // Defer the re-render so the click handler returns and the next paint
+    // can land before React reconciles all hero slides.
+    startTransition(() => setActiveSlide(index));
     if (heroAutoplayRef.current) clearInterval(heroAutoplayRef.current);
     heroAutoplayRef.current = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % slidesLen);
@@ -229,13 +242,25 @@ export const Shop = () => {
     if (activeSlide >= slidesLen) setActiveSlide(0);
   }, [slidesLen, activeSlide]);
 
-  // Auto-advance hero slides
+  // Auto-advance hero slides — pause when tab is hidden to avoid contention.
   useEffect(() => {
-    heroAutoplayRef.current = setInterval(() => {
-      setActiveSlide((prev) => (prev + 1) % slidesLen);
-    }, 6000);
+    const start = () => {
+      heroAutoplayRef.current = setInterval(() => {
+        setActiveSlide((prev) => (prev + 1) % slidesLen);
+      }, 6000);
+    };
+    const stop = () => {
+      if (heroAutoplayRef.current) {
+        clearInterval(heroAutoplayRef.current);
+        heroAutoplayRef.current = null;
+      }
+    };
+    start();
+    const onVisibility = () => { document.hidden ? stop() : (heroAutoplayRef.current ? null : start()); };
+    document.addEventListener('visibilitychange', onVisibility);
     return () => {
-      if (heroAutoplayRef.current) clearInterval(heroAutoplayRef.current);
+      document.removeEventListener('visibilitychange', onVisibility);
+      stop();
     };
   }, [slidesLen]);
 
@@ -450,105 +475,112 @@ export const Shop = () => {
       gsap.set('.stone-cta-mobile', { opacity: 1, y: 0 });
     }
 
-    // --- Section headers fade-in ---
-    gsap.utils.toArray<HTMLElement>('.section-reveal').forEach((el) => {
-      gsap.fromTo(el,
+    // --- Generic fade-in-on-scroll reveals — desktop only.
+    // On mobile each ScrollTrigger added long-task INP cost during scroll without
+    // meaningful UX gain; these sections render visible immediately on small viewports.
+    const revealsMedia = gsap.matchMedia();
+    revealsMedia.add('(min-width: 1024px)', () => {
+      // Section headers fade-in
+      gsap.utils.toArray<HTMLElement>('.section-reveal').forEach((el) => {
+        gsap.fromTo(el,
+          { y: 40, opacity: 0 },
+          {
+            y: 0, opacity: 1,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 85%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      });
+
+      // Products carousel cards
+      gsap.fromTo('.product-card',
+        { y: 40, opacity: 0 },
+        {
+          y: 0, opacity: 1,
+          duration: 0.6,
+          ease: 'power3.out',
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: '.products-section',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
+
+      // Inspiration carousel entrance
+      const inspirationContainer = document.querySelector('.inspiration-section .overflow-hidden');
+      if (inspirationContainer) {
+        gsap.fromTo(inspirationContainer,
+          { y: 50, opacity: 0 },
+          {
+            y: 0, opacity: 1,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: '.inspiration-section',
+              start: 'top 80%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      }
+
+      // Testimonials
+      gsap.fromTo('.testimonials-section .testimonial-inner',
         { y: 40, opacity: 0 },
         {
           y: 0, opacity: 1,
           duration: 0.8,
           ease: 'power3.out',
           scrollTrigger: {
-            trigger: el,
+            trigger: '.testimonials-section',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
+
+      // Instagram grid
+      gsap.fromTo('.ig-item',
+        { scale: 0.9, opacity: 0 },
+        {
+          scale: 1, opacity: 1,
+          duration: 0.5,
+          ease: 'power3.out',
+          stagger: 0.08,
+          scrollTrigger: {
+            trigger: '.instagram-section',
             start: 'top 85%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
+
+      // CTA section
+      gsap.fromTo('.cta-content',
+        { y: 40, opacity: 0 },
+        {
+          y: 0, opacity: 1,
+          duration: 0.8,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.cta-section',
+            start: 'top 80%',
             toggleActions: 'play none none reverse',
           },
         }
       );
     });
 
-    // --- Products carousel cards ---
-    gsap.fromTo('.product-card',
-      { y: 40, opacity: 0 },
-      {
-        y: 0, opacity: 1,
-        duration: 0.6,
-        ease: 'power3.out',
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: '.products-section',
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
-        },
-      }
-    );
-
-    // --- Inspiration carousel entrance ---
-    const inspirationContainer = document.querySelector('.inspiration-section .overflow-hidden');
-    if (inspirationContainer) {
-      gsap.fromTo(inspirationContainer,
-        { y: 50, opacity: 0 },
-        {
-          y: 0, opacity: 1,
-          duration: 1,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.inspiration-section',
-            start: 'top 80%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
-    }
-
-    // --- Testimonials ---
-    gsap.fromTo('.testimonials-section .testimonial-inner',
-      { y: 40, opacity: 0 },
-      {
-        y: 0, opacity: 1,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.testimonials-section',
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
-        },
-      }
-    );
-
-    // --- Instagram grid ---
-    gsap.fromTo('.ig-item',
-      { scale: 0.9, opacity: 0 },
-      {
-        scale: 1, opacity: 1,
-        duration: 0.5,
-        ease: 'power3.out',
-        stagger: 0.08,
-        scrollTrigger: {
-          trigger: '.instagram-section',
-          start: 'top 85%',
-          toggleActions: 'play none none reverse',
-        },
-      }
-    );
-
-    // --- CTA section ---
-    gsap.fromTo('.cta-content',
-      { y: 40, opacity: 0 },
-      {
-        y: 0, opacity: 1,
-        duration: 0.8,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: '.cta-section',
-          start: 'top 80%',
-          toggleActions: 'play none none reverse',
-        },
-      }
-    );
-
     return () => {
       stonePinMedia.revert();
+      revealsMedia.revert();
     };
   }, { scope: containerRef });
 

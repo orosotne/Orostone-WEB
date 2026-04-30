@@ -1,4 +1,4 @@
-import React, { useRef, useState, startTransition } from 'react';
+import React, { useRef, useState, startTransition, Suspense, lazy } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -31,7 +31,13 @@ import { Button } from '@/components/UI/Button';
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@/components/UI/Card';
 import { SEOHead } from '@/components/UI/SEOHead';
-import { Lightbox } from '@/components/UI/Lightbox';
+
+// Lightbox is heavy (framer-motion enter/exit + image gallery). Loading it lazily
+// keeps it out of the initial chunk so the click that opens it doesn't compete
+// with the chunk parse — biggest INP suspect on /sinterovany-kamen.
+const Lightbox = lazy(() =>
+  import('@/components/UI/Lightbox').then((m) => ({ default: m.Lightbox })),
+);
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -1131,14 +1137,16 @@ export const SinterovanyKamen = () => {
 
       <AnimatePresence>
         {galleryOpen && (
-          <Lightbox
-            images={INSPIRATION_GALLERY}
-            currentIndex={galleryIndex}
-            isOpen={galleryOpen}
-            onClose={() => setGalleryOpen(false)}
-            onPrevious={() => setGalleryIndex(i => Math.max(0, i - 1))}
-            onNext={() => setGalleryIndex(i => Math.min(INSPIRATION_GALLERY.length - 1, i + 1))}
-          />
+          <Suspense fallback={null}>
+            <Lightbox
+              images={INSPIRATION_GALLERY}
+              currentIndex={galleryIndex}
+              isOpen={galleryOpen}
+              onClose={() => setGalleryOpen(false)}
+              onPrevious={() => setGalleryIndex(i => Math.max(0, i - 1))}
+              onNext={() => setGalleryIndex(i => Math.min(INSPIRATION_GALLERY.length - 1, i + 1))}
+            />
+          </Suspense>
         )}
       </AnimatePresence>
     </main>

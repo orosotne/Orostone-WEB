@@ -15,12 +15,30 @@
       function gtag(){dataLayer.push(arguments);}
       window._GA_ESHOP_ID = 'G-W3ZPVYZ9HQ';
     </script>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WVQWKLMZ');</script>
+    <!-- Google Tag Manager — deferred to avoid blocking main thread (mobile INP fix) -->
+    <script>
+    (function(){
+      var GTM_ID = 'GTM-WVQWKLMZ';
+      var loaded = false;
+      function loadGTM(){
+        if (loaded) return;
+        loaded = true;
+        window.dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
+        var f = document.getElementsByTagName('script')[0];
+        var j = document.createElement('script');
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + GTM_ID;
+        f.parentNode.insertBefore(j, f);
+      }
+      // Load GTM whichever comes first: 2s after window load, or first user interaction
+      function scheduleIdle(){ setTimeout(loadGTM, 2000); }
+      if (document.readyState === 'complete') { scheduleIdle(); }
+      else { window.addEventListener('load', scheduleIdle, { once: true }); }
+      ['pointerdown','keydown','touchstart','scroll'].forEach(function(ev){
+        window.addEventListener(ev, loadGTM, { once: true, passive: true, capture: true });
+      });
+    })();
+    </script>
     <!-- End Google Tag Manager -->
     <!-- Preload critical fonts to prevent font-swap CLS (Slovak text needs both latin-ext + latin) -->
     <link rel="preload" as="font" type="font/woff2" href="/fonts/montserrat/montserrat-latin-ext.woff2" crossorigin />

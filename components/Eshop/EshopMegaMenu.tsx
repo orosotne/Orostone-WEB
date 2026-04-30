@@ -187,7 +187,7 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
   isOpen,
   onClose,
 }) => {
-  const { products, isLoading } = useShopifyProducts(50, { shopifyOnly: true });
+  const { products, isLoading } = useShopifyProducts(50);
   const scrollRef = useRef<HTMLDivElement>(null);
   const [activeFilter, setActiveFilter] = useState<ColorCategory | null>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);

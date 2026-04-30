@@ -1029,7 +1029,7 @@ const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProps> = ({
           return (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
+              onClick={() => startTransition(() => setActiveTab(tab.id))}
               className={cn(
                 "flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium transition-all",
                 isActive 
@@ -1045,9 +1045,9 @@ const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProps> = ({
       </div>
 
       {/* Image Display */}
-      <div 
+      <div
         className="relative rounded-xl overflow-hidden bg-gray-900 cursor-pointer group"
-        onClick={() => setIsLightboxOpen(true)}
+        onClick={() => startTransition(() => setIsLightboxOpen(true))}
       >
         <AnimatePresence mode="wait">
           <motion.div
@@ -1076,7 +1076,7 @@ const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProps> = ({
                 className="w-10 h-10 bg-white/90 backdrop-blur rounded-full flex items-center justify-center text-brand-dark hover:bg-white transition-colors"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setIsLightboxOpen(true);
+                  startTransition(() => setIsLightboxOpen(true));
                 }}
               >
                 <ZoomIn size={18} />
@@ -1096,7 +1096,7 @@ const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProps> = ({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="absolute inset-0 bg-black/90 backdrop-blur-sm"
-              onClick={() => setIsLightboxOpen(false)}
+              onClick={() => startTransition(() => setIsLightboxOpen(false))}
             />
 
             {/* Modal Content */}
@@ -1109,7 +1109,7 @@ const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProps> = ({
             >
               {/* Close button */}
               <button
-                onClick={() => setIsLightboxOpen(false)}
+                onClick={() => startTransition(() => setIsLightboxOpen(false))}
                 className="absolute -top-12 right-0 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors"
               >
                 <X size={20} />
@@ -1150,7 +1150,7 @@ const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProps> = ({
                   return (
                     <button
                       key={tab.id}
-                      onClick={() => setActiveTab(tab.id)}
+                      onClick={() => startTransition(() => setActiveTab(tab.id))}
                       className={cn(
                         "flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium transition-all",
                         isActive 
@@ -1229,26 +1229,31 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   const currentImage = images[selectedImageIndex];
   const singleSlabPrice = calculateSlabPrice(product.pricePerM2, product.dimensions);
 
-  // Lightbox handlers
+  // Lightbox handlers — wrap heavy state updates in startTransition so React 19
+  // can yield between the click and the next paint (mobile INP win).
   const openLightbox = (index?: number) => {
-    if (index !== undefined) setSelectedImageIndex(index);
-    setIsLightboxOpen(true);
+    startTransition(() => {
+      if (index !== undefined) setSelectedImageIndex(index);
+      setIsLightboxOpen(true);
+    });
     onLightboxChange?.(true);
   };
   const closeLightbox = () => {
-    setIsLightboxOpen(false);
+    startTransition(() => setIsLightboxOpen(false));
     onLightboxChange?.(false);
   };
-  const goToPreviousLightbox = () => setSelectedImageIndex((prev) => Math.max(0, prev - 1));
-  const goToNextLightbox = () => setSelectedImageIndex((prev) => Math.min(images.length - 1, prev + 1));
+  const goToPreviousLightbox = () =>
+    startTransition(() => setSelectedImageIndex((prev) => Math.max(0, prev - 1)));
+  const goToNextLightbox = () =>
+    startTransition(() => setSelectedImageIndex((prev) => Math.min(images.length - 1, prev + 1)));
 
   // Carousel navigation
   const goToPrevious = () => {
-    setSelectedImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    startTransition(() => setSelectedImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1)));
   };
 
   const goToNext = () => {
-    setSelectedImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    startTransition(() => setSelectedImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1)));
   };
 
   // Show only first 2 thumbnails unless "Show more" is clicked

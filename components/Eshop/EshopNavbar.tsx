@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useCallback, startTransition } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -118,7 +118,7 @@ export const EshopNavbar: React.FC = () => {
             <div className="flex items-center min-w-[100px] lg:min-w-[180px]">
               {/* Mobile Menu Button */}
               <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                onClick={() => startTransition(() => setMobileMenuOpen(v => !v))}
                 className={cn(
                   "lg:hidden p-2 -ml-2 transition-colors",
                   isTransparent ? "text-white hover:text-white/70" : "text-black hover:text-gray-600"
@@ -161,7 +161,10 @@ export const EshopNavbar: React.FC = () => {
 
               {/* Search */}
               <button
-                onClick={() => { if (!searchOpen) setSearchEverOpened(true); setSearchOpen(!searchOpen); }}
+                onClick={() => {
+                  if (!searchOpen) setSearchEverOpened(true);
+                  startTransition(() => setSearchOpen(v => !v));
+                }}
                 className={cn(
                   "p-2 transition-all duration-200 hover:[&_svg]:stroke-[2]",
                   searchOpen 
@@ -323,7 +326,7 @@ export const EshopNavbar: React.FC = () => {
         <div className="container mx-auto px-8 relative">
           {/* Menu Button */}
           <button
-            onClick={() => setOffCanvasOpen(true)}
+            onClick={() => startTransition(() => setOffCanvasOpen(true))}
             className={cn(
               "absolute left-8 top-1/2 -translate-y-1/2 text-[11px] font-medium tracking-[0.2em] uppercase transition-all duration-200",
               isTransparent ? "text-white/70 hover:text-white" : "text-gray-600 hover:text-brand-gold"
@@ -458,7 +461,7 @@ export const EshopNavbar: React.FC = () => {
               initial={{ x: '-100%' }}
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
-              transition={{ type: 'tween', duration: 0.3 }}
+              transition={{ type: 'tween', duration: 0.2, ease: 'easeOut' }}
               className="fixed top-0 left-0 bottom-0 z-50 flex h-[100dvh] max-h-[100dvh] w-full max-w-[320px] flex-col bg-white lg:hidden"
             >
               {/* Header */}
