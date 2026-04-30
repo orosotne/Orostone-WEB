@@ -1,9 +1,9 @@
 import { useSyncExternalStore } from 'react';
 
-// Single matchMedia subscription per breakpoint, shared across all
-// useIsMobile() callers. With many <Button> instances on a page this
-// avoids N duplicate matchMedia listeners + N setState re-renders on
-// viewport / orientation changes.
+// Single matchMedia subscription per query, shared across all callers.
+// With many <Button> instances on a page this avoids N duplicate
+// matchMedia listeners + N setState re-renders on viewport / orientation
+// / pointer-capability changes.
 
 type Store = {
   matches: boolean;
@@ -12,14 +12,14 @@ type Store = {
   handler: (e: MediaQueryListEvent) => void;
 };
 
-const stores = new Map<number, Store>();
+const stores = new Map<string, Store>();
 
-function getStore(breakpoint: number): Store | null {
+function getStore(query: string): Store | null {
   if (typeof window === 'undefined') return null;
-  let s = stores.get(breakpoint);
+  let s = stores.get(query);
   if (s) return s;
 
-  const mql = window.matchMedia(`(max-width: ${breakpoint - 1}px)`);
+  const mql = window.matchMedia(query);
   const store: Store = {
     matches: mql.matches,
     mql,
@@ -30,19 +30,31 @@ function getStore(breakpoint: number): Store | null {
     },
   };
   mql.addEventListener('change', store.handler);
-  stores.set(breakpoint, store);
+  stores.set(query, store);
   return store;
 }
 
-export function useIsMobile(breakpoint = 1024) {
+function useMediaQuery(query: string, ssrFallback: boolean): boolean {
   return useSyncExternalStore(
     (onChange) => {
-      const store = getStore(breakpoint);
+      const store = getStore(query);
       if (!store) return () => {};
       store.listeners.add(onChange);
       return () => { store.listeners.delete(onChange); };
     },
-    () => stores.get(breakpoint)?.matches ?? false,
-    () => false,
+    () => stores.get(query)?.matches ?? ssrFallback,
+    () => ssrFallback,
   );
+}
+
+export function useIsMobile(breakpoint = 1024) {
+  return useMediaQuery(`(max-width: ${breakpoint - 1}px)`, false);
+}
+
+// True when the device exposes a hoverable, fine-grained pointer
+// (mouse / trackpad). Independent of viewport width so desktop split-screen
+// or tablets with attached mice keep getting hover/tap feedback even when
+// useIsMobile() returns true.
+export function useHasFinePointer() {
+  return useMediaQuery('(hover: hover) and (pointer: fine)', true);
 }
