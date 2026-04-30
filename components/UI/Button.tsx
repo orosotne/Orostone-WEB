@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useIsMobile } from '../../hooks/useIsMobile';
+import { useHasFinePointer } from '../../hooks/useIsMobile';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'outline' | 'ghost';
@@ -15,7 +15,7 @@ export const Button: React.FC<ButtonProps> = ({
   icon,
   ...props
 }) => {
-  const isMobile = useIsMobile();
+  const hasFinePointer = useHasFinePointer();
 
   const baseClasses = "relative overflow-hidden px-8 py-4 text-sm font-semibold tracking-widest uppercase transition-all duration-300 flex items-center justify-center gap-3";
 
@@ -27,8 +27,8 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <motion.button
-      whileHover={isMobile ? undefined : { scale: 1.02 }}
-      whileTap={isMobile ? undefined : { scale: 0.98 }}
+      whileHover={hasFinePointer ? { scale: 1.02 } : undefined}
+      whileTap={hasFinePointer ? { scale: 0.98 } : undefined}
       className={`${baseClasses} ${variants[variant]} ${className}`}
       style={{ borderRadius: 'var(--radius-button)' }}
       {...props}
