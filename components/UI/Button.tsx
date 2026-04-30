@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useIsMobile } from '../../hooks/useIsMobile';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'outline' | 'ghost';
@@ -14,6 +15,8 @@ export const Button: React.FC<ButtonProps> = ({
   icon,
   ...props
 }) => {
+  const isMobile = useIsMobile();
+
   const baseClasses = "relative overflow-hidden px-8 py-4 text-sm font-semibold tracking-widest uppercase transition-all duration-300 flex items-center justify-center gap-3";
 
   const variants = {
@@ -24,8 +27,8 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <motion.button
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+      whileHover={isMobile ? undefined : { scale: 1.02 }}
+      whileTap={isMobile ? undefined : { scale: 0.98 }}
       className={`${baseClasses} ${variants[variant]} ${className}`}
       style={{ borderRadius: 'var(--radius-button)' }}
       {...props}
