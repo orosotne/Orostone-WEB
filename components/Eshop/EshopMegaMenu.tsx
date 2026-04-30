@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useRef, useCallback, useEffect } from 'react';
+import React, { useMemo, useState, useRef, useCallback, useEffect, startTransition } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -312,7 +312,7 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
               {COLOR_FILTERS.map((filter) => (
                 <li key={filter.id}>
                   <button
-                    onClick={() => setActiveFilter(prev => prev === filter.id ? null : filter.id)}
+                    onClick={() => startTransition(() => setActiveFilter(prev => prev === filter.id ? null : filter.id))}
                     className={`block w-full text-left py-2 text-[13px] tracking-[0.03em] transition-all duration-200 ${
                       activeFilter === filter.id
                         ? 'text-black font-semibold'
