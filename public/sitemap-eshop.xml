@@ -260,6 +260,12 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://orostone.sk/podmienky-rezervacie-ceny</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://orostone.sk/ochrana-sukromia</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>yearly</changefreq>

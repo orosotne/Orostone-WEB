@@ -28,6 +28,7 @@ const BlogArticlePage = lazyWithRetry(() => import('./pages/BlogArticle').then(m
 const PrivacyPolicy = lazyWithRetry(() => import('./pages/PrivacyPolicy').then(m => ({ default: m.PrivacyPolicy })));
 const CookiesPolicy = lazyWithRetry(() => import('./pages/CookiesPolicy').then(m => ({ default: m.CookiesPolicy })));
 const VOP = lazyWithRetry(() => import('./pages/VOP').then(m => ({ default: m.VOP })));
+const PodmienkyRezervaceCeny = lazyWithRetry(() => import('./pages/PodmienkyRezervaceCeny').then(m => ({ default: m.PodmienkyRezervaceCeny })));
 const DopravaAPlatba = lazyWithRetry(() => import('./pages/DopravaAPlatba').then(m => ({ default: m.DopravaAPlatba })));
 const ReklamacieAVratenie = lazyWithRetry(() => import('./pages/ReklamacieAVratenie').then(m => ({ default: m.ReklamacieAVratenie })));
 const SinterovanyKamen = lazyWithRetry(() => import('./pages/SinterovanyKamen').then(m => ({ default: m.SinterovanyKamen })));
@@ -234,6 +235,11 @@ const EshopAppContent = () => {
           <Route path="/vop" element={
             <Suspense fallback={<div className="min-h-screen" aria-hidden />}>
               <VOP />
+            </Suspense>
+          } />
+          <Route path="/podmienky-rezervacie-ceny" element={
+            <Suspense fallback={<div className="min-h-screen" aria-hidden />}>
+              <PodmienkyRezervaceCeny />
             </Suspense>
           } />
           <Route path="/ochrana-sukromia" element={
