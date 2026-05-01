@@ -323,6 +323,8 @@ const FooterComponent: React.FC<FooterProps> = ({ categories, isProductDetail = 
                 <span>•</span>
                 <Link to="/vop" className="hover:text-white transition-colors">Obchodné podmienky</Link>
                 <span>•</span>
+                <Link to="/podmienky-rezervacie-ceny" className="hover:text-white transition-colors">Rezervačný poplatok</Link>
+                <span>•</span>
                 <Link to="/ochrana-sukromia" className="hover:text-white transition-colors">Ochrana súkromia</Link>
                 <span>•</span>
                 <Link to="/cookies" className="hover:text-white transition-colors">Cookies</Link>

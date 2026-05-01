@@ -577,6 +577,19 @@ const INFO_PAGES: InfoPage[] = [
       'Všeobecné obchodné podmienky e-shopu OROSTONE upravujú vzťah medzi predávajúcim (OROSTONE) a kupujúcim pri uzatváraní kúpnych zmlúv uzatvorených na diaľku. Podmienky sú v súlade so zákonom č. 108/2024 Z.z. o ochrane spotrebiteľa.',
   },
   {
+    route: '/podmienky-rezervacie-ceny',
+    title: 'Podmienky rezervačného poplatku Orostone – 99 € | OROSTONE',
+    description:
+      'Podmienky úhrady a použitia rezervačného poplatku 99 € za garanciu ceny produktov Orostone na 6 mesiacov. Informácie o nevratnosti poplatku a súhlase so začatím poskytovania služby.',
+    h1: 'Podmienky rezervačného poplatku Orostone – 99 €',
+    intro:
+      'Rezervačný poplatok 99 € (vrátane DPH) je poplatkom za službu rezervácie a garantovania aktuálnej ceny produktov Orostone na obdobie 6 mesiacov. Na tejto stránke nájdete podmienky uplatnenia, informáciu o nevratnosti poplatku a poučenie spotrebiteľa o súhlase so začatím poskytovania služby pred uplynutím lehoty na odstúpenie od zmluvy podľa zákona č. 108/2024 Z.z.',
+    extraLinks: [
+      { label: 'Všeobecné obchodné podmienky', href: '/vop' },
+      { label: 'Odstúpenie od zmluvy', href: '/odstupenie-od-zmluvy' },
+    ],
+  },
+  {
     route: '/ochrana-sukromia',
     title: 'Ochrana osobných údajov | OROSTONE',
     description:
