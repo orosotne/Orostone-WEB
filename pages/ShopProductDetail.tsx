@@ -1583,25 +1583,51 @@ const HeroSection: React.FC<HeroSectionProps> = ({
                   </div>
                 </div>
 
-                {/* Dot indicators */}
+                {/* Mobile thumbnails — grid below hero, mirrors desktop pattern */}
                 {images.length > 1 && (
-                  <div className="flex items-center justify-center gap-2 pt-3 px-6">
-                    {images.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => {
-                          setSelectedImageIndex(index);
-                          mobileGalleryRef.current?.scrollTo({ left: index * (mobileGalleryRef.current?.clientWidth ?? 0), behavior: 'smooth' });
-                        }}
-                        className={cn(
-                          "rounded-full transition-all duration-300",
-                          selectedImageIndex === index
-                            ? "w-7 h-2.5 bg-brand-dark"
-                            : "w-2.5 h-2.5 bg-gray-300 active:bg-gray-400"
-                        )}
-                        aria-label={`Obrázok ${index + 1}`}
-                      />
-                    ))}
+                  <div className="grid grid-cols-4 gap-2 pt-3">
+                    {(showAllImages ? images : images.slice(0, 4)).map((img, idx) => {
+                      const actualIndex = showAllImages ? idx : idx;
+                      const isOverflowTile = !showAllImages && images.length > 4 && idx === 3;
+                      const overflowCount = images.length - 3;
+                      return (
+                        <button
+                          key={actualIndex}
+                          onClick={() => {
+                            if (isOverflowTile) {
+                              setShowAllImages(true);
+                              return;
+                            }
+                            setSelectedImageIndex(actualIndex);
+                            mobileGalleryRef.current?.scrollTo({
+                              left: actualIndex * (mobileGalleryRef.current?.clientWidth ?? 0),
+                              behavior: 'smooth',
+                            });
+                          }}
+                          className={cn(
+                            "relative aspect-square bg-[#F5F5F3] overflow-hidden transition-all rounded-lg",
+                            !isOverflowTile && selectedImageIndex === actualIndex
+                              ? "ring-2 ring-brand-dark"
+                              : "ring-1 ring-gray-200 active:ring-gray-400"
+                          )}
+                          aria-label={isOverflowTile ? `Zobraziť ďalších ${overflowCount} obrázkov` : `Obrázok ${actualIndex + 1}`}
+                        >
+                          <img
+                            src={shopifyImageUrl(img, 200)}
+                            alt={productImageAlt(product, actualIndex)}
+                            width={200}
+                            height={200}
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                          />
+                          {isOverflowTile && (
+                            <div className="absolute inset-0 bg-black/45 flex items-center justify-center text-white text-base font-medium">
+                              +{overflowCount}
+                            </div>
+                          )}
+                        </button>
+                      );
+                    })}
                   </div>
                 )}
               </div>
