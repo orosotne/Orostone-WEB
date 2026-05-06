@@ -687,6 +687,7 @@ Use this checklist before publishing or updating any article. Every item must be
 | Article | File | Status | Notes |
 |---|---|---|---|
 | 01 — Problémy so sinterovaným kameňom | `data/articles/article-01-problems.ts` | **COMPLETE** | All patterns applied. Use as reference for all other articles. |
+| 24 — Technický kameň: pracovná doska, cena, typy a nevýhody | `data/articles/article-24-technicky-kamen.ts` | **COMPLETE** | Umbrella SEO sprievodca, value-comparisons. |
 
 ### Articles Needing Updates
 

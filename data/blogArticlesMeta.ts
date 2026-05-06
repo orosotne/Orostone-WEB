@@ -231,6 +231,27 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
       excerpt: 'A sintered stone kitchen island is the visual centerpiece of a modern kitchen. We advise on dimensions, slab thickness, edge profiles and waterfall execution.',
     },
   },
+  {
+    id: 'technicky-kamen-pracovna-doska',
+    slug: 'technicky-kamen-pracovna-doska',
+    category: 'value-comparisons',
+    publishDate: '2026-05-06',
+    lastModified: '2026-05-06',
+    readTimeMinutes: 11,
+    heroImage: '/images/blog/technicky-kamen-pracovna-doska.webp',
+    author: BLOG_AUTHOR_OROSTONE,
+    tags: ['technický kameň', 'sinterovaný kameň', 'kuchynská doska', 'cena', 'porovnanie', 'materiál'],
+    sk: {
+      title: 'Technický kameň: cena, použitie a nevýhody (2026)',
+      subtitle: 'Úprimný umbrella sprievodca technickým kameňom — typy, ceny a kedy dáva zmysel pre kuchyňu',
+      excerpt: 'Technický kameň zahŕňa viac materiálov a každý sa správa inak. Pozrite sa, ktorý dáva zmysel pre kuchyňu, čo stojí za bežný meter a aké sú jeho reálne nevýhody.',
+    },
+    en: {
+      title: 'Technical Stone: Price, Uses, and Drawbacks (2026)',
+      subtitle: 'An honest umbrella guide to technical stone — types, prices and when it makes sense for the kitchen',
+      excerpt: 'Technical stone covers several materials and each behaves differently. See which one makes sense for the kitchen, what it costs per linear meter and what its real drawbacks are.',
+    },
+  },
 ];
 
 /** Published articles only (same filter as blogArticles.ts) */
