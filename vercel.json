@@ -31,6 +31,7 @@
     { "source": "/kamen/calacatta-bianco", "destination": "/produkt/calacatta-top", "permanent": true },
     { "source": "/kamen/calacatta-gold", "destination": "/produkt/givenchy-gold", "permanent": true },
     { "source": "/kamen/:slug*", "destination": "/kategoria/sintered-stone", "permanent": true },
+    { "source": "/blog/technicky-kamen-pracovna-doska", "destination": "/blog/technicky-kamen-cena-pracovna-doska", "permanent": true },
     { "source": "/post/:slug*", "destination": "/blog", "permanent": true },
     { "source": "/blank", "destination": "/", "permanent": true },
     { "source": "/login", "destination": "https://shopify.com/101386420570/account", "permanent": false },
