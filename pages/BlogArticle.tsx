@@ -559,6 +559,7 @@ export const BlogArticle: React.FC = () => {
 
                   [&_.article-quote]:border-l-4 [&_.article-quote]:border-brand-gold [&_.article-quote]:pl-6 [&_.article-quote]:pr-2
                   [&_.article-quote]:py-4 [&_.article-quote]:my-12 [&_.article-quote]:bg-transparent
+                  [&_.article-quote]:text-center [&_.article-quote]:max-w-3xl [&_.article-quote]:mx-auto
                   [&_.article-quote_p]:text-brand-dark [&_.article-quote_p]:text-lg [&_.article-quote_p]:lg:text-xl
                   [&_.article-quote_p]:font-medium [&_.article-quote_p]:italic [&_.article-quote_p]:leading-relaxed [&_.article-quote_p]:mb-0
 
