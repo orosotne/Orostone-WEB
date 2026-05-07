@@ -52,7 +52,7 @@ const FEATURES = [
   {
     icon: Ruler,
     title: 'Na mieru',
-    description: 'Každá kuchyňa je unikátna. Platne režeme CNC na presné rozmery vašej kuchyne — vrátane výrezov pre drez, varič a batériu.',
+    description: 'Každá kuchyňa je unikátna. Dosky sú rezané CNC technológiou na presné rozmery vašej kuchyne — vrátane výrezov pre drez, varič a batériu.',
   },
   {
     icon: Palette,
@@ -68,20 +68,20 @@ const FEATURES = [
 
 const PROCESS_STEPS = [
   {
-    title: 'Výber dekóru',
-    description: 'Objednajte si vzorky zadarmo a vyberte dekór, ktorý ladí s vašou kuchyňou.',
+    title: 'Pôdorys a konzultácia',
+    description: 'Prinesiete pôdorys, my prejdeme cez ostrovček, zástenu, plochy a riešenia bez kompromisu.',
   },
   {
-    title: 'Zameranie',
-    description: 'Náš technik príde k vám domov a presne zameria rozmery kuchyne.',
+    title: 'Výber dekoru v Bošanoch',
+    description: 'V showroome v Bošanoch porovnáte celé platne pri dennom svetle a vyberiete kompozíciu.',
   },
   {
-    title: 'CNC výroba',
-    description: 'Platne sa režú na CNC stroji presne na mieru — vrátane výrezov pre drez a varič.',
+    title: 'Príprava projektu',
+    description: 'Pripravíme špecifikáciu, prepojíme vás s kamenárom, ktorý zameria a spracuje dosky.',
   },
   {
-    title: 'Inštalácia',
-    description: 'Profesionálna montáž do 2-3 hodín. Kuchyňu môžete používať ihneď.',
+    title: 'Inštalácia kamenárom',
+    description: 'Kamenár dosky osadí u vás doma. My koordinujeme termín a kontrolujeme výsledok.',
   },
 ];
 
@@ -91,8 +91,8 @@ const KITCHEN_FAQS = [
     a: 'Cena závisí od dekóru, rozmerov a počtu výrezov. Orientačne od 180 €/m² vrátane DPH. Objednajte si nezáväznú cenovú ponuku.',
   },
   {
-    q: 'Ako dlho trvá výroba a montáž?',
-    a: 'Od zamerania po inštaláciu zvyčajne 2-3 týždne. Samotná montáž trvá 2-3 hodiny.',
+    q: 'Aký je termín dodania a inštalácie?',
+    a: 'Od konzultácie po inštaláciu kamenárom zvyčajne 2-3 týždne. Samotná inštalácia kamenárom trvá 2-3 hodiny.',
   },
   {
     q: 'Znečistí sa sinterovaný kameň od jedla alebo vína?',
@@ -134,9 +134,9 @@ export const Kuchyne = () => {
     <div className="bg-white">
       <SEOHead
         title="Kuchyne zo sinterovaného kameňa | Orostone"
-        description="Prémiové kuchynské dosky zo sinterovaného kameňa — odolné voči teplu, škvrnám a škrabancom. Pozrite si realizácie a objednajte vzorky zadarmo."
+        description="Kuchynské dosky zo sinterovaného kameňa — odolné voči teplu, škvrnám a škrabancom. Pozrite si realizácie a objednajte vzorky zadarmo."
         canonical="https://orostone.sk/kuchyne"
-        keywords={['kuchyne sinterovaný kameň', 'kuchynská doska', 'pracovná doska kuchyňa', 'sinterovaný kameň kuchyňa', 'prémiová kuchyňa']}
+        keywords={['kuchyne sinterovaný kameň', 'kuchynská doska', 'pracovná doska kuchyňa', 'sinterovaný kameň kuchyňa']}
         structuredData={structuredData}
       />
 

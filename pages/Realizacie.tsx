@@ -694,13 +694,13 @@ export const Realizacie = () => {
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-brand-gold rounded-full flex items-center justify-center mx-auto mb-4 text-brand-dark font-bold">2</div>
-              <h3 className="font-bold text-brand-dark mb-2">Zameranie a výroba</h3>
-              <p className="text-sm text-gray-500 font-light">Technik zameria priestor. CNC výroba na presné rozmery.</p>
+              <h3 className="font-bold text-brand-dark mb-2">Zameranie a príprava</h3>
+              <p className="text-sm text-gray-500 font-light">Kamenár zameria priestor. Platne sú rezané CNC technológiou na presné rozmery.</p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-brand-gold rounded-full flex items-center justify-center mx-auto mb-4 text-brand-dark font-bold">3</div>
               <h3 className="font-bold text-brand-dark mb-2">Montáž</h3>
-              <p className="text-sm text-gray-500 font-light">Profesionálna inštalácia do 15 pracovných dní od objednávky.</p>
+              <p className="text-sm text-gray-500 font-light">Termín dodania a inštalácie do 15 pracovných dní.</p>
             </div>
           </div>
           <Link

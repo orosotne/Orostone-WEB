@@ -222,7 +222,7 @@ export const OROSTONE_ORGANIZATION_LD = {
   name: 'OROSTONE',
   url: 'https://orostone.sk',
   logo: 'https://orostone.sk/images/brand/orostone-circle.png',
-  description: 'Prémiový sinterovaný kameň pre kuchyne, kúpeľne a architektonické projekty.',
+  description: 'Sinterovaný kameň pre kuchyne, kúpeľne a architektonické projekty.',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Landererova 8',

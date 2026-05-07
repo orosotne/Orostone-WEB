@@ -199,7 +199,7 @@ export const ProductCatalog = () => {
     <main ref={containerRef} className="bg-white min-h-screen">
       <SEOHead
         title="Všetky produkty | OROSTONE E-Shop"
-        description="Kompletná ponuka prémiových sinterovaných kameňov. Veľkoformátové dosky 3200x1600mm s dopravou po celom Slovensku."
+        description="Kompletná ponuka sinterovaných kameňov. Veľkoformátové dosky 3200x1600mm s dopravou po celom Slovensku."
         canonical="https://orostone.sk/vsetky-produkty"
         structuredData={createBreadcrumbLD([
           { name: 'E-Shop', url: 'https://orostone.sk/' },
@@ -253,7 +253,7 @@ export const ProductCatalog = () => {
             transition={{ duration: 0.6, delay: 0.35 }}
             className="text-base md:text-lg text-white/80 max-w-xl"
           >
-            Kompletná ponuka prémiových sinterovaných kameňov a povrchov
+            Kompletná ponuka sinterovaných kameňov a povrchov
           </m.p>
 
           {/* Product count */}
