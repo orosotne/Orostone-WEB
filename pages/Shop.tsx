@@ -297,15 +297,9 @@ export const Shop = () => {
   useGSAP(() => {
     if (!containerRef.current) return;
 
-    // Register ScrollTrigger lazily on mount (was at module top — moving to
-    // component scope keeps the plugin's setup off the synchronous module-load
-    // critical path that runs at app boot for the eagerly-imported home).
-    gsap.registerPlugin(ScrollTrigger);
-
-    // Hero text reveal is handled by Framer Motion (AnimatePresence)
-    // — no GSAP duplicate needed; it caused a flash where FM animated
-    //   text visible, then GSAP reset it to opacity:0 after 0.3s delay.
-
+    // Hero opacity fades — work on every viewport, no ScrollTrigger needed.
+    // Run these BEFORE the mobile early-return so the hero nav/indicators
+    // still appear on small screens.
     gsap.fromTo('.hero-nav-arrows',
       { opacity: 0 },
       { opacity: 1, duration: 0.8, delay: 1.2 }
@@ -315,6 +309,28 @@ export const Shop = () => {
       { opacity: 0 },
       { opacity: 1, duration: 0.8, delay: 1.3 }
     );
+
+    // --- Mobile early-return: skip ScrollTrigger plugin entirely ---
+    // Registering the ScrollTrigger plugin (and any gsap.matchMedia setup)
+    // triggers o.enable() — a ~54ms forced reflow at cold start that
+    // contributes to mobile scroll jank. None of the desktop-only animations
+    // below would run on mobile anyway (they're all gated min-width:1024px),
+    // so we skip the plugin init and leave the section in its final state.
+    if (window.innerWidth < 1024) {
+      const stoneMobile = document.querySelector('.stone-mobile-section');
+      if (stoneMobile) {
+        gsap.set('.stone-bg-mobile', { clipPath: 'inset(0px 0px 0px 0px round 0px)' });
+        gsap.set('.stone-slab-carousel', { opacity: 1, y: 0, scale: 1 });
+        gsap.set('.stone-card-mobile', { opacity: 1, y: 0 });
+        gsap.set('.stone-cta-mobile', { opacity: 1, y: 0 });
+      }
+      return;
+    }
+
+    // Register ScrollTrigger lazily on mount (was at module top — moving to
+    // component scope keeps the plugin's setup off the synchronous module-load
+    // critical path that runs at app boot for the eagerly-imported home).
+    gsap.registerPlugin(ScrollTrigger);
 
     // --- Parallax effect on hero image (desktop only — saves INP on mobile) ---
     if (heroRef.current && window.innerWidth >= 1024) {
