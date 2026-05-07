@@ -364,7 +364,7 @@ export const SinterovanyKamen = () => {
           ======================================================== */}
       <section
         ref={heroRef}
-        className="relative h-screen min-h-[800px] flex items-center justify-center overflow-hidden pt-20"
+        className="relative h-dvh min-h-[800px] flex items-center justify-center overflow-hidden pt-20"
       >
         <div className="absolute inset-0 z-0 sk-hero-image">
           <img

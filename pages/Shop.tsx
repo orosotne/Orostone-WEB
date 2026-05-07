@@ -1011,7 +1011,7 @@ export const Shop = () => {
       {/* Order wrapper: mobile: stone(1) → products(2) → TextKnockout(3); desktop: TextKnockout(1) → stone(2) → products(3) */}
       <div className="flex flex-col w-full overflow-x-clip">
         <div className="order-3 lg:order-1">
-          <React.Suspense fallback={<div className="min-h-screen" aria-hidden />}>
+          <React.Suspense fallback={<div className="min-h-dvh" aria-hidden />}>
             <TextKnockoutSection />
           </React.Suspense>
         </div>
