@@ -75,7 +75,6 @@
     <link rel="help" href="/llms-full.txt" type="text/plain" title="LLM full content guide" />
     <link rel="dns-prefetch" href="https://cdn.shopify.com" />
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin />
-    <link rel="preconnect" href="https://xfkznvqufhnrphpdhfnc.supabase.co" crossorigin />
     <!-- Montserrat je self-hostovaný (GDPR) — @font-face v index.css -->
     <style>
       body {
@@ -107,33 +106,6 @@
       .scrollbar-hide {
           -ms-overflow-style: none;
           scrollbar-width: none;
-      }
-      /* Hydration skeleton — visible before React mounts so mobile users on
-         slow networks don't stare at a pure white screen. React replaces
-         #root contents on first render, which removes this automatically. */
-      #pre-hydration-loader {
-          position: fixed;
-          inset: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: #FFFFFF;
-          z-index: 0;
-      }
-      #pre-hydration-loader::after {
-          content: '';
-          width: 36px;
-          height: 36px;
-          border-radius: 50%;
-          border: 2px solid rgba(26, 26, 26, 0.12);
-          border-top-color: #ECD488;
-          animation: orostone-spin 0.9s linear infinite;
-      }
-      @keyframes orostone-spin {
-          to { transform: rotate(360deg); }
-      }
-      @media (prefers-reduced-motion: reduce) {
-          #pre-hydration-loader::after { animation: none; }
       }
     </style>
     <!-- LocalBusiness JSON-LD for local SEO -->
@@ -202,7 +174,7 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVQWKLMZ"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <div id="root"><div id="pre-hydration-loader" aria-hidden="true"></div></div>
+    <div id="root"></div>
     <noscript>
       <div style="max-width:900px;margin:0 auto;padding:40px 20px;font-family:Montserrat,sans-serif;color:#1A1A1A">
         <h1>OROSTONE — Sinterovaný Kameň</h1>
