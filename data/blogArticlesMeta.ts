@@ -252,6 +252,27 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
       excerpt: 'A practical guide: what engineered stone is, which type fits a kitchen countertop, how much it costs (€250–600/rm) and what its real drawbacks are.',
     },
   },
+  {
+    id: 'umely-kamen-pracovna-doska',
+    slug: 'umely-kamen-pracovna-doska',
+    category: 'value-comparisons',
+    publishDate: '2026-05-06',
+    lastModified: '2026-05-06',
+    readTimeMinutes: 12,
+    heroImage: '/images/blog/umely-kamen-pracovna-doska.webp',
+    author: BLOG_AUTHOR_OROSTONE,
+    tags: ['umelý kameň', 'pracovná doska', 'kuchynská doska', 'cena', 'výber materiálu', 'sprievodca'],
+    sk: {
+      title: 'Umelý kameň na pracovnú dosku: poctivý sprievodca pred kúpou',
+      subtitle: 'Rozhodovací proces, cenové hladiny a 7 chýb, ktorým sa vyhnúť pri výbere kuchynskej pracovnej dosky',
+      excerpt: 'Buyer\'s guide pre prvonákupcov: ako vybrať pracovnú dosku z umelého kameňa, čo reálne dostanete za €280, €400 a €550 €/bm a aké sú najčastejšie chyby pri výbere.',
+    },
+    en: {
+      title: 'Engineered Stone Countertop: An Honest Pre-Purchase Guide',
+      subtitle: 'Decision process, price tiers and 7 mistakes to avoid when choosing a kitchen countertop',
+      excerpt: 'A buyer\'s guide for first-time buyers: how to choose an engineered stone countertop, what you actually get for €280, €400 and €550 per running meter, and the most common mistakes.',
+    },
+  },
 ];
 
 /** Published articles only (same filter as blogArticles.ts) */
