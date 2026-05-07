@@ -90,6 +90,8 @@ function writePage(page: Page): void {
   html = html.replace(/(<meta property="og:title" content=")[^"]*(")/, `$1${esc(page.title)}$2`);
   html = html.replace(/(<meta property="og:description" content=")[^"]*(")/, `$1${esc(page.description)}$2`);
   html = html.replace(/(<meta property="og:type" content=")[^"]*(")/, `$1${page.ogType || 'website'}$2`);
+  // og:url — self-referencing per-page (matches canonical for consistent social sharing)
+  html = html.replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${page.canonical}$2`);
   if (page.ogImage) {
     html = html.replace(/(<meta property="og:image" content=")[^"]*(")/, `$1${page.ogImage}$2`);
     html = html.replace(/(<meta property="og:image:alt" content=")[^"]*(")/, `$1${esc(page.title)}$2`);
@@ -104,6 +106,8 @@ function writePage(page: Page): void {
   // Twitter Card
   html = html.replace(/(<meta name="twitter:title" content=")[^"]*(")/, `$1${esc(page.title)}$2`);
   html = html.replace(/(<meta name="twitter:description" content=")[^"]*(")/, `$1${esc(page.description)}$2`);
+  // twitter:url — self-referencing per-page (parallel to og:url for Twitter Card spec)
+  html = html.replace(/(<meta name="twitter:url" content=")[^"]*(")/, `$1${page.canonical}$2`);
   if (page.ogImage) {
     html = html.replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1${page.ogImage}$2`);
   }
@@ -757,6 +761,47 @@ function prerenderKuchyne(): void {
 }
 
 // ---------------------------------------------------------------------------
+// Realizacie (case studies / project gallery) — same URL as SPA route /realizacie
+// ---------------------------------------------------------------------------
+
+function prerenderRealizacie(): void {
+  writePage({
+    route: '/realizacie',
+    title: 'Realizácie kuchynských dosiek | OROSTONE',
+    description:
+      'Pozrite, ako sinterovaný kameň vyzerá v reálnych kuchyniach a ostrovčekoch. Veľké plochy, kde dekor rozhoduje výsledok celej miestnosti.',
+    canonical: `${BASE_URL}/realizacie`,
+    rootContent: `
+      <header>
+        <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Realizácie</nav>
+        <h1>Realizácie zo sinterovaného kameňa</h1>
+        <p>Pozrite, ako sinterovaný kameň vyzerá v reálnych kuchyniach a ostrovčekoch. Veľké plochy, kde dekor rozhoduje výsledok celej miestnosti.</p>
+        <p><a href="/kategoria/sintered-stone">Prehliadnuť všetky dekory</a> &middot; <a href="/vzorky">Objednať vzorky</a> &middot; <a href="/kontakt">Konzultácia zadarmo</a></p>
+      </header>`,
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: 'Realizácie zo sinterovaného kameňa OROSTONE',
+        description:
+          'Pozrite, ako sinterovaný kameň vyzerá v reálnych kuchyniach a ostrovčekoch. Veľké plochy, kde dekor rozhoduje výsledok celej miestnosti.',
+        url: `${BASE_URL}/realizacie`,
+        inLanguage: 'sk-SK',
+        isPartOf: { '@type': 'WebSite', name: 'OROSTONE', url: BASE_URL },
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'OROSTONE', item: `${BASE_URL}/` },
+          { '@type': 'ListItem', position: 2, name: 'Realizácie', item: `${BASE_URL}/realizacie` },
+        ],
+      },
+    ],
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
@@ -807,6 +852,11 @@ console.log('  ✓ /vzorky');
 console.log('\nKuchyne:');
 prerenderKuchyne();
 console.log('  ✓ /kuchyne');
+
+// Realizacie
+console.log('\nRealizacie:');
+prerenderRealizacie();
+console.log('  ✓ /realizacie');
 
 // Homepage
 console.log('\nHomepage:');
