@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 export const CustomCursor = () => {
   const [mousePos, setMousePos] = useState({ x: -100, y: -100 });
@@ -53,7 +53,7 @@ export const CustomCursor = () => {
   };
 
   return (
-    <motion.div
+    <m.div
       className="fixed top-0 left-0 rounded-full pointer-events-none z-[9999] hidden md:block mix-blend-difference"
       variants={variants}
       animate={cursorVariant}

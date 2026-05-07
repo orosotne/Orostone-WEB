@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Palette, X, ChevronLeft, ChevronRight, Eye } from 'lucide-react';
 import { SEOHead, createBreadcrumbLD } from '@/components/UI/SEOHead';
 import { ImageReveal } from '@/components/UI/ImageReveal';
@@ -378,7 +378,7 @@ const Lightbox: React.FC<{
   }, [handleKey]);
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -425,7 +425,7 @@ const Lightbox: React.FC<{
       )}
 
       {/* Image */}
-      <motion.img
+      <m.img
         key={images[index]}
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -436,7 +436,7 @@ const Lightbox: React.FC<{
         className="max-w-[92vw] max-h-[88vh] object-contain rounded-lg"
         onClick={(e) => e.stopPropagation()}
       />
-    </motion.div>
+    </m.div>
   );
 };
 
@@ -463,30 +463,30 @@ export const Realizacie = () => {
       {/* ── Hero ──────────────────────────────────────── */}
       <section className="pt-32 pb-20 bg-[#F9F9F7]">
         <div className="container mx-auto px-6 text-center">
-          <motion.span
+          <m.span
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block"
           >
             Portfólio
-          </motion.span>
-          <motion.h1
+          </m.span>
+          <m.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl font-sans font-bold text-brand-dark mb-6"
           >
             Naše realizácie
-          </motion.h1>
-          <motion.p
+          </m.h1>
+          <m.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-gray-500 text-lg font-light max-w-2xl mx-auto"
           >
             Každý projekt je unikátny — od kompaktných bytov po rozľahlé vily. Pozrite sa, ako sinterovaný kameň Orostone mení reálne priestory.
-          </motion.p>
+          </m.p>
         </div>
       </section>
 
@@ -495,7 +495,7 @@ export const Realizacie = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto text-center">
             {STATS.map((s, i) => (
-              <motion.div
+              <m.div
                 key={s.label}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -504,7 +504,7 @@ export const Realizacie = () => {
               >
                 <div className="text-3xl md:text-4xl font-bold text-brand-gold">{s.value}</div>
                 <div className="text-sm text-gray-500 font-light mt-1">{s.label}</div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
@@ -515,7 +515,7 @@ export const Realizacie = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             {/* Badge */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -525,7 +525,7 @@ export const Realizacie = () => {
               <span className="text-xs font-bold text-brand-gold tracking-widest uppercase">
                 Odporúčaný projekt
               </span>
-            </motion.div>
+            </m.div>
 
             {/* Hero image */}
             <div
@@ -560,7 +560,7 @@ export const Realizacie = () => {
             {FEATURED.gallery.length > 1 && (
               <div className="grid grid-cols-3 gap-3 mt-3">
                 {FEATURED.gallery.slice(1, 4).map((img, i) => (
-                  <motion.div
+                  <m.div
                     key={img}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -577,7 +577,7 @@ export const Realizacie = () => {
                       width={400}
                       height={250}
                     />
-                  </motion.div>
+                  </m.div>
                 ))}
               </div>
             )}
@@ -589,7 +589,7 @@ export const Realizacie = () => {
       <section className="py-20 md:py-28">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
-            <motion.h2
+            <m.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -597,8 +597,8 @@ export const Realizacie = () => {
               className="text-3xl md:text-4xl font-bold text-brand-dark mb-4"
             >
               Ďalšie projekty
-            </motion.h2>
-            <motion.p
+            </m.h2>
+            <m.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -606,7 +606,7 @@ export const Realizacie = () => {
               className="text-gray-500 font-light max-w-xl mx-auto"
             >
               Kuchyne, krby a interiéry z celého Slovenska
-            </motion.p>
+            </m.p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
@@ -660,7 +660,7 @@ export const Realizacie = () => {
               }
 
               return (
-                <motion.div
+                <m.div
                   key={project.id}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -670,7 +670,7 @@ export const Realizacie = () => {
                   onClick={() => openLightbox(project)}
                 >
                   {cardInner}
-                </motion.div>
+                </m.div>
               );
             })}
           </div>

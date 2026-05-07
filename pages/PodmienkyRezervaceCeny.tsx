@@ -1,10 +1,10 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { SEOHead } from '../components/UI/SEOHead';
 
 const Section = ({ id, number, title, children }: { id: string; number: string; title: string; children: React.ReactNode }) => (
-  <motion.section
+  <m.section
     id={id}
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -21,7 +21,7 @@ const Section = ({ id, number, title, children }: { id: string; number: string; 
     <div className="text-gray-600 leading-relaxed space-y-4 pl-[52px]">
       {children}
     </div>
-  </motion.section>
+  </m.section>
 );
 
 const SubSection = ({ number, children, highlight = false }: { number: string; children: React.ReactNode; highlight?: boolean }) => (
@@ -48,7 +48,7 @@ export const PodmienkyRezervaceCeny = () => {
       />
       <div className="container mx-auto px-6 max-w-4xl">
         {/* Header */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -64,10 +64,10 @@ export const PodmienkyRezervaceCeny = () => {
             Tieto podmienky upravujú úhradu a použitie rezervačného poplatku za garantovanie ceny produktov Orostone. Tvoria neoddeliteľnú súčasť zmluvy o poskytnutí služby <em>Rezervácia ceny Orostone</em>, ktorá vzniká úhradou rezervačného poplatku.
           </p>
           <p className="font-sans text-sm text-gray-400 mt-4">Účinné od: 1. 5. 2026</p>
-        </motion.div>
+        </m.div>
 
         {/* Quick Navigation */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -99,7 +99,7 @@ export const PodmienkyRezervaceCeny = () => {
               </button>
             ))}
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Content */}
         <div className="space-y-8">
@@ -248,7 +248,7 @@ export const PodmienkyRezervaceCeny = () => {
         </div>
 
         {/* Footer note */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -260,7 +260,7 @@ export const PodmienkyRezervaceCeny = () => {
           <p className="text-sm text-gray-500 mt-3">
             Orostone s.r.o. • Landererova 8, 811 09 Bratislava • IČO: 55 254 772 • DIČ: 2121930580
           </p>
-        </motion.div>
+        </m.div>
 
       </div>
     </div>

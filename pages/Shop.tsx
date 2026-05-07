@@ -2,27 +2,32 @@ import React, { useRef, useState, useEffect, useCallback, useMemo, startTransiti
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { 
   ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, Star,
   Instagram, ShieldCheck, Flame, Droplets, Sparkles, Sun
 } from 'lucide-react';
 import { ShopProduct, TESTIMONIALS, REALIZATIONS } from '../constants';
-import { BlogPreviewSection } from '../components/Eshop/BlogPreviewSection';
 import { getLatestArticlesMeta } from '../data/blogArticlesMeta';
 import { useShopifyProducts } from '../hooks/useShopifyProducts';
 import { useInstagramFeed, getPostImageUrl } from '../hooks/useInstagramFeed';
 import { useIsMobile } from '../hooks/useIsMobile';
+import { lazyWithRetry } from '../lib/utils';
 
-import { TextKnockoutSection } from '../components/TextKnockoutSection';
 import { SEOHead, OROSTONE_ORGANIZATION_LD } from '../components/UI/SEOHead';
+// Eager: InspirationSection has its entrance animation registered from Shop's `useGSAP`
+// at mount via `document.querySelector('.inspiration-section …')`. Lazy-loading would
+// leave only the Suspense placeholder in the DOM at that moment, the selector returns
+// null, the guard skips registration, and the carousel snaps in instead of fading.
 import { InspirationSection } from '../components/Shop/InspirationSection';
 
-const SampleLeadSection = React.lazy(() => import('../components/Shop/SampleLeadSection').then(m => ({ default: m.SampleLeadSection })));
+// Below-the-fold sections — lazy-loaded to keep home initial JS bundle small (better
+// INP on first nav tap). LCP element is the hero image, preloaded in index.html.
+const TextKnockoutSection = lazyWithRetry(() => import('../components/TextKnockoutSection').then(mod => ({ default: mod.TextKnockoutSection })));
+const BlogPreviewSection = lazyWithRetry(() => import('../components/Eshop/BlogPreviewSection').then(mod => ({ default: mod.BlogPreviewSection })));
+const SampleLeadSection = lazyWithRetry(() => import('../components/Shop/SampleLeadSection').then(mod => ({ default: mod.SampleLeadSection })));
 import { RotatingBadge } from '../components/UI/RotatingBadge';
 import { Link } from 'react-router-dom';
-
-gsap.registerPlugin(ScrollTrigger);
 
 // ===========================================
 // PREFETCH: Preload product detail chunk + images on hover
@@ -288,6 +293,11 @@ export const Shop = () => {
   // ===========================================
   useGSAP(() => {
     if (!containerRef.current) return;
+
+    // Register ScrollTrigger lazily on mount (was at module top — moving to
+    // component scope keeps the plugin's setup off the synchronous module-load
+    // critical path that runs at app boot for the eagerly-imported home).
+    gsap.registerPlugin(ScrollTrigger);
 
     // Hero text reveal is handled by Framer Motion (AnimatePresence)
     // — no GSAP duplicate needed; it caused a flash where FM animated
@@ -689,7 +699,7 @@ export const Shop = () => {
         <div className="relative z-10 text-center text-white px-6 max-w-3xl mx-auto pointer-events-auto" style={{ zIndex: 3 }}>
           {/* Small Category Label */}
           <AnimatePresence mode="wait">
-            <motion.p
+            <m.p
               key="label"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -698,12 +708,12 @@ export const Shop = () => {
               className="hero-text-line text-xs md:text-xs tracking-[0.3em] uppercase text-white/60 font-light mb-6"
             >
               {HERO_SLIDES[activeSlide].label}
-            </motion.p>
+            </m.p>
           </AnimatePresence>
 
           {/* Title */}
           <AnimatePresence mode="wait">
-            <motion.div
+            <m.div
               key="title"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -714,12 +724,12 @@ export const Shop = () => {
               <h1 className="hero-text-line text-3xl md:text-4xl lg:text-5xl font-sans font-bold tracking-tight leading-[1.1] text-white uppercase">
                 {HERO_SLIDES[activeSlide].title}
               </h1>
-            </motion.div>
+            </m.div>
           </AnimatePresence>
 
           {/* Title Accent */}
           <AnimatePresence mode="wait">
-            <motion.div
+            <m.div
               key="accent"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -730,12 +740,12 @@ export const Shop = () => {
               <span className="hero-text-line text-3xl md:text-4xl lg:text-5xl font-sans font-light italic text-brand-gold tracking-tight leading-[1.1]">
                 {HERO_SLIDES[activeSlide].titleAccent}
               </span>
-            </motion.div>
+            </m.div>
           </AnimatePresence>
 
           {/* Subtitle */}
           <AnimatePresence mode="wait">
-            <motion.p
+            <m.p
               key="sub"
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
@@ -744,13 +754,13 @@ export const Shop = () => {
               className="hero-subtitle font-sans font-light text-sm md:text-base text-white/50 max-w-md mx-auto mb-4 md:mb-5"
             >
               {HERO_SLIDES[activeSlide].subtitle}
-            </motion.p>
+            </m.p>
           </AnimatePresence>
 
           {/* Price from */}
           {heroPriceFrom && (
             <AnimatePresence mode="wait">
-              <motion.p
+              <m.p
                 key="price"
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -759,13 +769,13 @@ export const Shop = () => {
                 className="hero-price font-sans text-sm md:text-base font-bold tracking-wide text-brand-gold mb-8 md:mb-10"
               >
                 {heroPriceFrom}
-              </motion.p>
+              </m.p>
             </AnimatePresence>
           )}
 
           {/* CTA Button */}
           <AnimatePresence mode="wait">
-            <motion.div
+            <m.div
               key="cta"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -788,7 +798,7 @@ export const Shop = () => {
                   Vzorky zadarmo
                 </Link>
               </div>
-            </motion.div>
+            </m.div>
           </AnimatePresence>
         </div>
 
@@ -1001,7 +1011,9 @@ export const Shop = () => {
       {/* Order wrapper: mobile: stone(1) → products(2) → TextKnockout(3); desktop: TextKnockout(1) → stone(2) → products(3) */}
       <div className="flex flex-col w-full overflow-x-clip">
         <div className="order-3 lg:order-1">
-          <TextKnockoutSection />
+          <React.Suspense fallback={<div className="min-h-screen" aria-hidden />}>
+            <TextKnockoutSection />
+          </React.Suspense>
         </div>
 
         {/* Mobile / Tablet — scroll-triggered reveal animations (no pinning) */}
@@ -1190,6 +1202,8 @@ export const Shop = () => {
       </div>
 
       {/* ==================== INSPIRUJTE SA — Inspiration Slider ==================== */}
+      {/* Not lazy — see import comment: Shop's useGSAP entrance animation depends on
+          `.inspiration-section` being in the DOM at mount. */}
       <InspirationSection items={INSPIRATION_IMAGES} />
 
       {/* ==================== SAMPLE LEAD SECTION ==================== */}
@@ -1198,7 +1212,9 @@ export const Shop = () => {
       </React.Suspense>
 
       {/* ==================== BLOG PREVIEW SECTION ==================== */}
-      <BlogPreviewSection articles={getLatestArticlesMeta(5)} />
+      <React.Suspense fallback={<div className="min-h-[600px]" aria-hidden />}>
+        <BlogPreviewSection articles={getLatestArticlesMeta(5)} />
+      </React.Suspense>
 
       {/* ==================== TESTIMONIALS ==================== */}
       <section className="testimonials-section relative py-20 lg:py-28 bg-white overflow-hidden">
@@ -1218,7 +1234,7 @@ export const Shop = () => {
             <div className="relative min-h-[280px] flex items-center justify-center">
               <AnimatePresence mode="wait">
                 {TESTIMONIALS[currentTestimonial] && (
-                  <motion.div
+                  <m.div
                     key={currentTestimonial}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -1261,7 +1277,7 @@ export const Shop = () => {
                         <Star key={i} size={14} fill="#ECD488" className="text-brand-gold" />
                       ))}
                     </div>
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
             </div>

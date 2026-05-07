@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, m } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { RotatingBadge } from '../UI/RotatingBadge';
 import { useScrollLock } from '../../hooks/useScrollLock';
@@ -129,7 +129,7 @@ const InspirationLightbox: React.FC<LightboxProps> = ({ items, index, onClose, o
   if (!item) return null;
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -174,7 +174,7 @@ const InspirationLightbox: React.FC<LightboxProps> = ({ items, index, onClose, o
       )}
 
       {/* Media */}
-      <motion.div
+      <m.div
         key={index}
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -200,8 +200,8 @@ const InspirationLightbox: React.FC<LightboxProps> = ({ items, index, onClose, o
             <source src={item.src} type="video/mp4" />
           </video>
         )}
-      </motion.div>
-    </motion.div>
+      </m.div>
+    </m.div>
   );
 };
 

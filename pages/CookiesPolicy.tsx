@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useCookies } from '../context/CookieContext';
 import { SEOHead } from '../components/UI/SEOHead';
@@ -23,7 +23,7 @@ export const CookiesPolicy = () => {
       />
       <div className="container mx-auto px-6 max-w-4xl">
         {/* Header */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -41,10 +41,10 @@ export const CookiesPolicy = () => {
             Nevyhnutné technológie používame na zabezpečenie základného fungovania webu;
             analytické a marketingové technológie aktivujeme až po vašom predchádzajúcom súhlase.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Prevádzkovateľ */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.05 }}
@@ -60,10 +60,10 @@ export const CookiesPolicy = () => {
             <p>Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B</p>
             <p className="text-brand-gold">info@orostone.sk</p>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Quick Navigation */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -91,10 +91,10 @@ export const CookiesPolicy = () => {
               </button>
             ))}
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Current Status Banner */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15 }}
@@ -133,12 +133,12 @@ export const CookiesPolicy = () => {
               Zmeniť nastavenia
             </button>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Content */}
         <div className="space-y-12">
           {/* 1. Čo sú cookies */}
-          <motion.section
+          <m.section
             id="co-su-cookies"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -173,10 +173,10 @@ export const CookiesPolicy = () => {
                 </p>
               </div>
             </div>
-          </motion.section>
+          </m.section>
 
           {/* 2. Typy technológií */}
-          <motion.section
+          <m.section
             id="typy-technologii"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -262,10 +262,10 @@ export const CookiesPolicy = () => {
                 </p>
               </div>
             </div>
-          </motion.section>
+          </m.section>
 
           {/* 3. Prehľad používaných cookies */}
-          <motion.section
+          <m.section
             id="prehlad-cookies"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -366,10 +366,10 @@ export const CookiesPolicy = () => {
                 </table>
               </div>
             </div>
-          </motion.section>
+          </m.section>
 
           {/* 4. Právny základ */}
-          <motion.section
+          <m.section
             id="pravny-zaklad"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -402,10 +402,10 @@ export const CookiesPolicy = () => {
                 Odvolanie súhlasu nemá vplyv na zákonnosť spracúvania vykonaného pred jeho odvolaním.
               </p>
             </div>
-          </motion.section>
+          </m.section>
 
           {/* 5. Správa nastavení */}
-          <motion.section
+          <m.section
             id="sprava-cookies"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -468,10 +468,10 @@ export const CookiesPolicy = () => {
                 </div>
               </div>
             </div>
-          </motion.section>
+          </m.section>
 
           {/* 6. Tretie strany */}
-          <motion.section
+          <m.section
             id="tretie-strany"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -511,10 +511,10 @@ export const CookiesPolicy = () => {
                 </Link>.
               </p>
             </div>
-          </motion.section>
+          </m.section>
 
           {/* 7. Upozornenie */}
-          <motion.section
+          <m.section
             id="upozornenie"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -539,11 +539,11 @@ export const CookiesPolicy = () => {
                 </p>
               </div>
             </div>
-          </motion.section>
+          </m.section>
         </div>
 
         {/* Footer Info */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -564,7 +564,7 @@ export const CookiesPolicy = () => {
               </button>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </div>
   );

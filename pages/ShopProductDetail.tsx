@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect, useRef, useDeferredValue, startTransition } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { 
   ArrowLeft, 
   Check, 
@@ -579,7 +579,7 @@ const InstallationSelector: React.FC<InstallationSelectorProps> = ({
         {/* Expanded content */}
         <AnimatePresence>
           {installationSelected && (
-            <motion.div
+            <m.div
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
@@ -630,7 +630,7 @@ const InstallationSelector: React.FC<InstallationSelectorProps> = ({
                   {/* Area tooltip */}
                   <AnimatePresence>
                     {showAreaTooltip && (
-                      <motion.div
+                      <m.div
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
@@ -675,7 +675,7 @@ const InstallationSelector: React.FC<InstallationSelectorProps> = ({
                             Nie ste si istí? Nevadí — nechajte pole prázdne, zakliknite montáž a my vás budeme kontaktovať o ďalšom postupe.
                           </p>
                         </div>
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
 
@@ -742,7 +742,7 @@ const InstallationSelector: React.FC<InstallationSelectorProps> = ({
                 {/* Info panel */}
                 <AnimatePresence>
                   {showInfo && (
-                    <motion.div
+                    <m.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
@@ -781,7 +781,7 @@ const InstallationSelector: React.FC<InstallationSelectorProps> = ({
                           <p>Montáž nepredávame priamo cez e-shop – službu iba sprostredkujeme. Cenu montáže hradíte priamo dodávateľovi služby. Finálnu ponuku a termín potvrdí montážny partner po zameraní.</p>
                         </div>
                       </div>
-                    </motion.div>
+                    </m.div>
                   )}
                 </AnimatePresence>
 
@@ -790,7 +790,7 @@ const InstallationSelector: React.FC<InstallationSelectorProps> = ({
                   Orientačná cena – potvrdí sa po zameraní. Cenu montáže hradíte priamo dodávateľovi služby, nie cez e-shop. Montáž sprostredkujeme cez montážneho partnera.
                 </p>
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </div>
@@ -869,7 +869,7 @@ const ProductLightbox: React.FC<ProductLightboxProps> = ({
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -914,7 +914,7 @@ const ProductLightbox: React.FC<ProductLightboxProps> = ({
           )}
 
           {/* Image */}
-          <motion.img
+          <m.img
             key={currentIndex}
             src={shopifyImageUrl(images[currentIndex], 1600)}
             srcSet={shopifySrcSet(images[currentIndex])}
@@ -929,7 +929,7 @@ const ProductLightbox: React.FC<ProductLightboxProps> = ({
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
           />
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );
@@ -1005,7 +1005,7 @@ const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProps> = ({
   const activePerspective = perspectives.find(p => p.id === activeTab) || perspectives[0];
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.4 }}
@@ -1050,7 +1050,7 @@ const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProps> = ({
         onClick={() => startTransition(() => setIsLightboxOpen(true))}
       >
         <AnimatePresence mode="wait">
-          <motion.div
+          <m.div
             key={activeTab}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -1082,7 +1082,7 @@ const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProps> = ({
                 <ZoomIn size={18} />
               </button>
             </div>
-          </motion.div>
+          </m.div>
         </AnimatePresence>
       </div>
 
@@ -1091,7 +1091,7 @@ const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProps> = ({
         {isLightboxOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center">
             {/* Backdrop */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -1100,7 +1100,7 @@ const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProps> = ({
             />
 
             {/* Modal Content */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
@@ -1118,7 +1118,7 @@ const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProps> = ({
               {/* Image */}
               <div className="relative rounded-xl overflow-hidden bg-gray-900">
                 <AnimatePresence mode="wait">
-                  <motion.div
+                  <m.div
                     key={activeTab}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -1138,7 +1138,7 @@ const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProps> = ({
                         {activePerspective.badge}
                       </span>
                     </div>
-                  </motion.div>
+                  </m.div>
                 </AnimatePresence>
               </div>
 
@@ -1171,11 +1171,11 @@ const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProps> = ({
                   {activePerspective.description}
                 </p>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </m.div>
   );
 };
 
@@ -1289,7 +1289,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               >
                 {/* Main Image */}
                 <AnimatePresence mode="sync">
-                  <motion.img
+                  <m.img
                     key={selectedImageIndex}
                     src={shopifyImageUrl(currentImage, 1200)}
                     alt={productImageAlt(product, selectedImageIndex)}
@@ -1787,7 +1787,7 @@ const ProductStorySection: React.FC<ProductStorySectionProps> = ({ product }) =>
       </div>
 
       {/* Decorative stone slab — top-right accent, rendered above content */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0, x: 30, y: -20 }}
         whileInView={{ opacity: 0.55, x: 0, y: 0 }}
         viewport={{ once: true }}
@@ -1799,7 +1799,7 @@ const ProductStorySection: React.FC<ProductStorySectionProps> = ({ product }) =>
           alt={`${product.name} — povrch sinterovaného kameňa`}
           className="w-full h-full object-cover rounded-2xl shadow-2xl"
         />
-      </motion.div>
+      </m.div>
     </section>
   );
 
@@ -1807,7 +1807,7 @@ const ProductStorySection: React.FC<ProductStorySectionProps> = ({ product }) =>
   if (!rd && product.designInsight) {
     return (
       <StoryWrapper>
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -1816,9 +1816,9 @@ const ProductStorySection: React.FC<ProductStorySectionProps> = ({ product }) =>
           <h2 className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-brand-dark/60 mb-8">
             Štýl & Inšpirácia
           </h2>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -1837,7 +1837,7 @@ const ProductStorySection: React.FC<ProductStorySectionProps> = ({ product }) =>
   return (
     <StoryWrapper>
       {/* Section Label */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -1846,10 +1846,10 @@ const ProductStorySection: React.FC<ProductStorySectionProps> = ({ product }) =>
         <h2 className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-brand-dark/60 mb-8">
           O produkte
         </h2>
-      </motion.div>
+      </m.div>
 
       {/* Intro Paragraph */}
-      <motion.p
+      <m.p
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -1857,10 +1857,10 @@ const ProductStorySection: React.FC<ProductStorySectionProps> = ({ product }) =>
         className="text-lg md:text-xl text-brand-dark/80 leading-relaxed mb-12 border-l-2 border-brand-dark/20 pl-6"
       >
         {rd.intro}
-      </motion.p>
+      </m.p>
 
       {/* Highlights */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -1872,7 +1872,7 @@ const ProductStorySection: React.FC<ProductStorySectionProps> = ({ product }) =>
         </h3>
         <ul className="space-y-3">
           {rd.highlights.map((highlight, index) => (
-            <motion.li
+            <m.li
               key={index}
               initial={{ opacity: 0, x: -10 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -1884,13 +1884,13 @@ const ProductStorySection: React.FC<ProductStorySectionProps> = ({ product }) =>
                 <Check size={12} className="text-brand-dark" />
               </div>
               <span className="text-brand-dark/80 leading-relaxed">{highlight}</span>
-            </motion.li>
+            </m.li>
           ))}
         </ul>
-      </motion.div>
+      </m.div>
 
       {/* Closing Paragraph */}
-      <motion.p
+      <m.p
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -1898,7 +1898,7 @@ const ProductStorySection: React.FC<ProductStorySectionProps> = ({ product }) =>
         className="text-base md:text-lg text-brand-dark/60 leading-relaxed italic"
       >
         {rd.closing}
-      </motion.p>
+      </m.p>
     </StoryWrapper>
   );
 };
@@ -1917,7 +1917,7 @@ const KeyBenefitsSection: React.FC<KeyBenefitsSectionProps> = ({ product }) => {
   return (
     <section className="py-12 lg:py-16 bg-white">
       <div className="container mx-auto px-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -1930,7 +1930,7 @@ const KeyBenefitsSection: React.FC<KeyBenefitsSectionProps> = ({ product }) => {
 
           <ul className="space-y-4">
             {benefits.map((benefit, index) => (
-              <motion.li
+              <m.li
                 key={index}
                 initial={{ opacity: 0, x: -12 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -1944,10 +1944,10 @@ const KeyBenefitsSection: React.FC<KeyBenefitsSectionProps> = ({ product }) => {
                 <span className="text-base lg:text-lg text-gray-700 leading-relaxed font-light">
                   {benefit}
                 </span>
-              </motion.li>
+              </m.li>
             ))}
           </ul>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );
@@ -1994,7 +1994,7 @@ const TechnicalOverview: React.FC<TechnicalOverviewProps> = ({ product }) => {
   return (
     <section className="py-10 lg:py-16 bg-[#F9F9F7]">
       <div className="container mx-auto px-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -2017,7 +2017,7 @@ const TechnicalOverview: React.FC<TechnicalOverviewProps> = ({ product }) => {
                 )} 
               />
             </button>
-            <motion.div
+            <m.div
               initial={false}
               animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
@@ -2026,7 +2026,7 @@ const TechnicalOverview: React.FC<TechnicalOverviewProps> = ({ product }) => {
               <div className="pt-4">
                 {specGrid}
               </div>
-            </motion.div>
+            </m.div>
           </div>
 
           {/* Desktop: always visible */}
@@ -2036,7 +2036,7 @@ const TechnicalOverview: React.FC<TechnicalOverviewProps> = ({ product }) => {
             </h2>
             {specGrid}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );
@@ -2078,7 +2078,7 @@ const ApplicationSection: React.FC<ApplicationSectionProps> = ({ product }) => {
   return (
     <section className="py-10 lg:py-16">
       <div className="container mx-auto px-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -2093,7 +2093,7 @@ const ApplicationSection: React.FC<ApplicationSectionProps> = ({ product }) => {
               const isSupported = productApplications.includes(app);
               const Icon = applicationIcons[app] || Layers;
               return (
-                <motion.div 
+                <m.div 
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -2127,11 +2127,11 @@ const ApplicationSection: React.FC<ApplicationSectionProps> = ({ product }) => {
                   )}>
                     {app}
                   </span>
-                </motion.div>
+                </m.div>
               );
             })}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );
@@ -2179,7 +2179,7 @@ const ResistanceParameters: React.FC<ResistanceParametersProps> = ({ product }) 
   return (
     <section className="py-10 lg:py-16 bg-brand-dark text-white">
       <div className="container mx-auto px-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -2191,7 +2191,7 @@ const ResistanceParameters: React.FC<ResistanceParametersProps> = ({ product }) 
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {parameters.map((param, index) => (
-              <motion.div
+              <m.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -2223,10 +2223,10 @@ const ResistanceParameters: React.FC<ResistanceParametersProps> = ({ product }) 
                   <h3 className="text-sm font-medium text-white/60 mb-1">{param.title}</h3>
                   <p className="text-sm text-white/50">{param.description}</p>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );
@@ -2268,7 +2268,7 @@ const LogisticsSection: React.FC<LogisticsSectionProps> = ({ product }) => {
   return (
     <section className="py-10 lg:py-16 bg-[#F9F9F7]">
       <div className="container mx-auto px-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -2318,7 +2318,7 @@ const LogisticsSection: React.FC<LogisticsSectionProps> = ({ product }) => {
               <strong>Upozornenie:</strong> {product.handlingNotes}
             </div>
           )}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );
@@ -2396,7 +2396,7 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
   return (
     <section className="py-10 lg:py-16">
       <div className="container mx-auto px-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -2503,21 +2503,21 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
               </div>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
 
       {/* BIM/CAD Email Gate Modal */}
       <AnimatePresence>
         {isBimModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center px-4 max-h-[100dvh] overflow-y-auto overscroll-contain">
-            <motion.div
+            <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="absolute inset-0 bg-black/60 backdrop-blur-sm touch-none overscroll-none"
               onClick={handleBimModalClose}
             />
-            <motion.div
+            <m.div
               initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
@@ -2599,7 +2599,7 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
                   </div>
                 )}
               </div>
-            </motion.div>
+            </m.div>
           </div>
         )}
       </AnimatePresence>
@@ -2639,7 +2639,7 @@ const ProductFAQSection: React.FC<ProductFAQSectionProps> = ({ product }) => {
     <section className="py-12 lg:py-16 bg-white">
       <div className="container mx-auto px-6">
         <div className="max-w-3xl mx-auto">
-          <motion.h2
+          <m.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -2647,11 +2647,11 @@ const ProductFAQSection: React.FC<ProductFAQSectionProps> = ({ product }) => {
             className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-gray-400 mb-8"
           >
             Časté otázky
-          </motion.h2>
+          </m.h2>
 
           <div className="divide-y divide-gray-200">
             {allFaqs.map((faq, index) => (
-              <motion.div
+              <m.div
                 key={index}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -2675,7 +2675,7 @@ const ProductFAQSection: React.FC<ProductFAQSectionProps> = ({ product }) => {
                 </button>
                 <AnimatePresence>
                   {openIndex === index && (
-                    <motion.div
+                    <m.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
@@ -2685,10 +2685,10 @@ const ProductFAQSection: React.FC<ProductFAQSectionProps> = ({ product }) => {
                       <p className="pb-5 text-gray-600 font-light leading-relaxed">
                         {faq.answer}
                       </p>
-                    </motion.div>
+                    </m.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
@@ -3006,14 +3006,14 @@ export const ShopProductDetail: React.FC = () => {
       {/* Cart Error Toast */}
       <AnimatePresence>
         {cartError && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             className="fixed top-4 left-4 right-4 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 z-50 bg-red-600 text-white px-6 py-3 rounded-lg shadow-xl text-sm font-medium sm:max-w-md text-center"
           >
             {cartError}
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 

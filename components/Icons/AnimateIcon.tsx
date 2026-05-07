@@ -1,5 +1,5 @@
 import * as React from "react";
-import { motion, type Variants } from "framer-motion";
+import { m, type Variants } from "framer-motion";
 
 interface AnimateIconProps {
   children: React.ReactElement;
@@ -85,7 +85,7 @@ export const AnimateIcon: React.FC<AnimateIconProps> = ({
   const isContinuous = animatePulse || animateSpin;
 
   return (
-    <motion.span
+    <m.span
       className={className}
       style={{ display: "inline-flex", alignItems: "center", justifyContent: "center" }}
       variants={variants}
@@ -95,6 +95,6 @@ export const AnimateIcon: React.FC<AnimateIconProps> = ({
       whileTap={animateOnTap ? "tap" : undefined}
     >
       {children}
-    </motion.span>
+    </m.span>
   );
 };

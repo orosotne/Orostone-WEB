@@ -1,10 +1,10 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { SEOHead } from '../components/UI/SEOHead';
 
 const Section = ({ id, number, title, children }: { id: string; number: string; title: string; children: React.ReactNode }) => (
-  <motion.section
+  <m.section
     id={id}
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -21,7 +21,7 @@ const Section = ({ id, number, title, children }: { id: string; number: string; 
     <div className="text-gray-600 leading-relaxed space-y-4 pl-[52px]">
       {children}
     </div>
-  </motion.section>
+  </m.section>
 );
 
 const SubSection = ({ number, children, highlight = false }: { number: string; children: React.ReactNode; highlight?: boolean }) => (
@@ -48,7 +48,7 @@ export const VOP = () => {
       />
       <div className="container mx-auto px-6 max-w-4xl">
         {/* Header */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -64,10 +64,10 @@ export const VOP = () => {
             Tieto všeobecné obchodné podmienky upravujú vzťahy medzi spoločnosťou Orostone s.r.o. a jej zákazníkmi pri predaji tovaru prostredníctvom webového sídla <a href="https://orostone.sk" className="text-brand-gold hover:underline">www.orostone.sk</a>, ako aj pri individuálnych objednávkach realizovaných mimo e-shopu.
           </p>
           <p className="font-sans text-sm text-gray-400 mt-4">Účinné od: 24. 3. 2026</p>
-        </motion.div>
+        </m.div>
 
         {/* Quick Navigation */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -104,7 +104,7 @@ export const VOP = () => {
               </button>
             ))}
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Content */}
         <div className="space-y-8">
@@ -541,7 +541,7 @@ export const VOP = () => {
         </div>
 
         {/* Footer note */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -553,7 +553,7 @@ export const VOP = () => {
           <p className="text-xs text-gray-400 mt-2">
             V Bratislave, 24. 3. 2026 — JUDr. Martin Miškeje, konateľ Orostone s.r.o.
           </p>
-        </motion.div>
+        </m.div>
 
       </div>
     </div>

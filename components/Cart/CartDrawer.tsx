@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { X, Minus, Plus, ShoppingBag, Trash2, ArrowRight, ExternalLink, Wrench, Package, Info, Check, ChevronUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCart, formatPrice } from '../../context/CartContext';
@@ -67,7 +67,7 @@ export const CartDrawer: React.FC = () => {
       {isOpen && (
         <>
           {/* Overlay */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -77,7 +77,7 @@ export const CartDrawer: React.FC = () => {
           />
 
           {/* Drawer */}
-          <motion.div
+          <m.div
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
@@ -386,13 +386,13 @@ export const CartDrawer: React.FC = () => {
                 >
                   <div className="w-8 h-1 bg-gray-300 rounded-full" />
                   <div className="flex items-center gap-1.5 text-xs text-gray-500 tracking-wide">
-                    <motion.span
+                    <m.span
                       animate={{ rotate: isSummaryExpanded ? 180 : 0 }}
                       transition={{ duration: 0.2 }}
                       className="inline-flex"
                     >
                       <ChevronUp size={16} />
-                    </motion.span>
+                    </m.span>
                     {isSummaryExpanded ? 'Skryť detail' : 'Zobraziť detail objednávky'}
                   </div>
                 </button>
@@ -400,7 +400,7 @@ export const CartDrawer: React.FC = () => {
                 {/* Expandable details */}
                 <AnimatePresence initial={false}>
                   {isSummaryExpanded && (
-                    <motion.div
+                    <m.div
                       id="cart-summary-details"
                       key="summary-details"
                       initial={{ height: 0, opacity: 0 }}
@@ -504,7 +504,7 @@ export const CartDrawer: React.FC = () => {
                           Pokračovať v nákupe
                         </button>
                       </div>
-                    </motion.div>
+                    </m.div>
                   )}
                 </AnimatePresence>
 
@@ -550,7 +550,7 @@ export const CartDrawer: React.FC = () => {
                 </div>
               </div>
             )}
-          </motion.div>
+          </m.div>
         </>
       )}
     </AnimatePresence>

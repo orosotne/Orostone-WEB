@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { ChevronRight, ArrowRight, Package } from 'lucide-react';
 import {
   getVisibleCategories,
@@ -128,12 +127,7 @@ export const CategoryPage: React.FC = () => {
         {/* Content */}
         <div className="relative h-full container mx-auto px-6 lg:px-8 flex flex-col justify-end pb-10 md:pb-14">
           {/* Breadcrumb */}
-          <motion.nav
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex items-center gap-2 text-[11px] tracking-[0.15em] uppercase text-white/60 mb-4"
-          >
+          <nav className="flex items-center gap-2 text-[11px] tracking-[0.15em] uppercase text-white/60 mb-4 animate-in fade-in slide-in-from-bottom-1 duration-500">
             <Link to="/" className="hover:text-white transition-colors">
               E-Shop
             </Link>
@@ -147,40 +141,25 @@ export const CategoryPage: React.FC = () => {
                 <span className="text-white">{subCategoryName}</span>
               </>
             )}
-          </motion.nav>
+          </nav>
 
           {/* Title */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-3"
-          >
+          <h1 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-3 animate-in fade-in slide-in-from-bottom-2 duration-500 delay-100 fill-mode-both">
             {subCategoryName ? `${category.name} — ${subCategoryName}` : category.name}
-          </motion.h1>
+          </h1>
 
           {/* Description */}
           {category.description && (
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-              className="text-base md:text-lg text-white/80 max-w-xl"
-            >
+            <p className="text-base md:text-lg text-white/80 max-w-xl animate-in fade-in slide-in-from-bottom-2 duration-500 delay-200 fill-mode-both">
               {category.description}
-            </motion.p>
+            </p>
           )}
 
           {/* Product count */}
           {hasProducts && (
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="mt-3 text-[11px] tracking-[0.15em] uppercase text-white/50"
-            >
+            <p className="mt-3 text-[11px] tracking-[0.15em] uppercase text-white/50 animate-in fade-in duration-500 delay-300 fill-mode-both">
               {filteredProducts.length} {filteredProducts.length === 1 ? 'produkt' : filteredProducts.length < 5 ? 'produkty' : 'produktov'}
-            </motion.p>
+            </p>
           )}
         </div>
       </section>
@@ -202,13 +181,8 @@ export const CategoryPage: React.FC = () => {
             ))}
           </div>
         ) : hasProducts ? (
-          /* Product Grid */
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.35, delay: 0.05 }}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
-          >
+          /* Product Grid — plain div (no framer-motion wrap to avoid 50-card reconciliation cost on INP) */
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 animate-in fade-in duration-300">
             {filteredProducts.map((product) => {
               const inCart = isInCart(product.id);
               return (
@@ -225,15 +199,10 @@ export const CategoryPage: React.FC = () => {
                 />
               );
             })}
-          </motion.div>
+          </div>
         ) : (
           /* Empty State */
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-col items-center justify-center py-16 md:py-24 text-center"
-          >
+          <div className="flex flex-col items-center justify-center py-16 md:py-24 text-center animate-in fade-in slide-in-from-bottom-2 duration-500 delay-100 fill-mode-both">
             <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mb-6">
               <Package size={36} strokeWidth={1.2} className="text-gray-400" />
             </div>
@@ -259,7 +228,7 @@ export const CategoryPage: React.FC = () => {
                 Späť na e-shop
               </Link>
             </div>
-          </motion.div>
+          </div>
         )}
       </section>
     </>

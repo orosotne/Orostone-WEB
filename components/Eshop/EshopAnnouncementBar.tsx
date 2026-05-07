@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 
 // ===========================================
 // TYPES
@@ -70,7 +70,7 @@ export const EshopAnnouncementBar: React.FC<EshopAnnouncementBarProps> = ({
           {/* Center - Rotating announcements */}
           <div className="flex-1 lg:flex-none text-center min-h-[20px] relative" aria-live="polite" aria-atomic="true">
             <AnimatePresence mode="wait">
-              <motion.div
+              <m.div
                 key={currentIndex}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -84,7 +84,7 @@ export const EshopAnnouncementBar: React.FC<EshopAnnouncementBarProps> = ({
                     {announcements[currentIndex].highlight}
                   </span>
                 )}
-              </motion.div>
+              </m.div>
             </AnimatePresence>
           </div>
 

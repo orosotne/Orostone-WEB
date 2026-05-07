@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, Suspense } from 'react';
+import { LazyMotion, domMax } from 'framer-motion';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { SEOHead } from './components/UI/SEOHead';
@@ -69,6 +70,15 @@ if (typeof window !== 'undefined') {
     import('./pages/Blog');
     import('./pages/BlogArticle');
   }, 8000);
+
+  // Batch 4: legal pages (footer-linked from every page; reduces INP on
+  // tap-to-navigate especially on /kontakt where they're prominent)
+  schedule(() => {
+    import('./pages/VOP');
+    import('./pages/PrivacyPolicy');
+    import('./pages/ReklamacieAVratenie');
+    import('./pages/CookiesPolicy');
+  }, 12000);
 }
 
 // Contexts
@@ -284,11 +294,18 @@ const EshopApp = () => {
     <ThemeProvider>
       <CookieProvider>
         <CartProvider>
-          <Router>
-            <EshopAppContent />
-            <Analytics />
-            <SpeedInsightsWithRoute />
-          </Router>
+          {/* LazyMotion + domMax: tree-shake framer-motion. `domMax` (not `domAnimation`)
+              because EshopNavbar, EshopMegaMenu, and Checkout use `layout` / `layoutId` /
+              AnimatePresence `popLayout` — those features live only in `domMax`. Using
+              `domAnimation` would silently no-op them. `strict` throws if a future
+              component reverts to `motion.X` (regression guard). */}
+          <LazyMotion features={domMax} strict>
+            <Router>
+              <EshopAppContent />
+              <Analytics />
+              <SpeedInsightsWithRoute />
+            </Router>
+          </LazyMotion>
         </CartProvider>
       </CookieProvider>
     </ThemeProvider>

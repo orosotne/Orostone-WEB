@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { X, Loader2, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { subscribeToNewsletter } from '../../services/newsletter.service';
@@ -56,7 +56,7 @@ export const NewsletterPopup: React.FC = () => {
       {visible && (
         <>
           {/* Backdrop */}
-          <motion.div
+          <m.div
             key="backdrop"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -66,7 +66,7 @@ export const NewsletterPopup: React.FC = () => {
           />
 
           {/* Modal */}
-          <motion.div
+          <m.div
             key="popup"
             initial={{ opacity: 0, scale: 0.92, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -158,7 +158,7 @@ export const NewsletterPopup: React.FC = () => {
               </div>
 
             </div>
-          </motion.div>
+          </m.div>
         </>
       )}
     </AnimatePresence>

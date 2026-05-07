@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Diamond } from 'lucide-react';
 
 /**
@@ -56,7 +56,7 @@ export const StickySampleCTA: React.FC = () => {
   return (
     <AnimatePresence>
       {visible && (
-        <motion.button
+        <m.button
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
@@ -77,7 +77,7 @@ export const StickySampleCTA: React.FC = () => {
           <span className="text-xs font-bold tracking-wider uppercase whitespace-nowrap">
             Vzorka zadarmo
           </span>
-        </motion.button>
+        </m.button>
       )}
     </AnimatePresence>
   );

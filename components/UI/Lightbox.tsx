@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { CollectionGalleryImage } from '../../types';
 import { useScrollLock } from '../../hooks/useScrollLock';
@@ -50,7 +50,7 @@ export const Lightbox: React.FC<LightboxProps> = ({
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -112,7 +112,7 @@ export const Lightbox: React.FC<LightboxProps> = ({
           )}
 
           {/* Obrázok */}
-          <motion.div
+          <m.div
             key={currentIndex}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -126,8 +126,8 @@ export const Lightbox: React.FC<LightboxProps> = ({
               alt={currentImage.name}
               className="max-w-[95vw] max-h-[95vh] object-contain"
             />
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       )}
     </AnimatePresence>
   );
