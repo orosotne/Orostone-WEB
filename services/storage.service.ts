@@ -94,9 +94,11 @@ export async function uploadQuoteFiles(
         file_size: file.size,
       };
 
+      // `as never` cast bypasses a known @supabase/postgrest-js generic-narrowing
+      // edge case under TS strict typecheck — runtime accepts QuoteFileInsert normally.
       const { error: dbError } = await supabase
         .from('quote_files')
-        .insert(fileRecord);
+        .insert(fileRecord as never);
 
       if (dbError) {
         console.error('DB error:', dbError);

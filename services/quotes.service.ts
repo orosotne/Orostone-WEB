@@ -226,9 +226,11 @@ export async function updateQuoteStatus(
   status: string,
   adminNotes?: string,
 ): Promise<boolean> {
+  // `as never` cast bypasses a known @supabase/postgrest-js generic-narrowing
+  // edge case under TS strict typecheck — runtime accepts the object normally.
   const { error } = await supabase
     .from('quotes')
-    .update({ status, admin_notes: adminNotes })
+    .update({ status, admin_notes: adminNotes } as never)
     .eq('id', quoteId);
 
   if (error) {

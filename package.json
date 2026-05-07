@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsx scripts/sync-shop-fallback.ts && vite build && tsx scripts/prerender.ts",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit && tsx scripts/sync-shop-fallback.ts && vite build && tsx scripts/prerender.ts",
     "preview": "vite preview",
     "sync:shop-fallback": "tsx scripts/sync-shop-fallback.ts",
     "gen:inspiration-thumbs": "node scripts/generate-inspiration-thumbnails.mjs"
@@ -39,6 +40,9 @@
   "devDependencies": {
     "@google/genai": "^1.47.0",
     "@types/node": "^22.14.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vercel/node": "^5.7.15",
     "@vitejs/plugin-react": "^5.0.0",
     "autoprefixer": "^10.4.24",
     "dotenv": "^17.3.1",
