@@ -21,8 +21,8 @@ export const EshopContact: React.FC = () => {
   return (
     <main className="bg-white">
       <SEOHead
-        title="Kontakt | OROSTONE — Sinterovaný kameň"
-        description="Kontaktujte OROSTONE pre cenovú ponuku alebo odbornú konzultáciu. Sídlo v Bratislave — Landererova 8. Email: info@orostone.sk, Tel: +421 917 588 738."
+        title="Kontakt | OROSTONE — sinterovaný kameň"
+        description="Cenová ponuka, vzorky alebo konzultácia k pracovnej doske zo sinterovaného kameňa. Showroom Bošany, dodanie po celom Slovensku."
         canonical="https://orostone.sk/kontakt"
         structuredData={createBreadcrumbLD([
           { name: 'OROSTONE', url: 'https://orostone.sk/' },

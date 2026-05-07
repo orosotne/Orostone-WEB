@@ -133,8 +133,8 @@ export const Kuchyne = () => {
   return (
     <div className="bg-white">
       <SEOHead
-        title="Kuchyne zo sinterovaného kameňa | Orostone"
-        description="Kuchynské dosky zo sinterovaného kameňa — odolné voči teplu, škvrnám a škrabancom. Pozrite si realizácie a objednajte vzorky zadarmo."
+        title="Kamenné pracovné dosky do kuchyne | OROSTONE"
+        description="Pracovné dosky zo sinterovaného kameňa na mieru. Odolný povrch, nízka nasiakavosť, bez impregnácie. Pošlite pôdorys, vyrátame orientačnú cenu."
         canonical="https://orostone.sk/kuchyne"
         keywords={['kuchyne sinterovaný kameň', 'kuchynská doska', 'pracovná doska kuchyňa', 'sinterovaný kameň kuchyňa']}
         structuredData={structuredData}

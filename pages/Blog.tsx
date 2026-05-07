@@ -134,8 +134,8 @@ export const Blog: React.FC = () => {
   return (
     <div ref={containerRef} className="min-h-dvh bg-[#FAFAFA]">
       <SEOHead
-        title="Blog | OROSTONE — Odborné rady pre váš projekt"
-        description="Odborné rady, porovnania a tipy pre váš projekt so sinterovaným kameňom. Čítajte náš blog."
+        title="Blog o sinterovanom kameni | OROSTONE"
+        description="Články o sinterovanom kameni — cena, údržba, hrúbka, porovnania s keramikou a technickým kameňom. Pre tých, kto si vyberá dlhodobé riešenie."
         ogType="website"
         canonical="https://orostone.sk/blog"
         structuredData={createBreadcrumbLD([

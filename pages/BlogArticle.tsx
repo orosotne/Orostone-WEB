@@ -276,9 +276,12 @@ export const BlogArticle: React.FC = () => {
   return (
     <div ref={containerRef} className="min-h-dvh bg-white">
       {/* ==================== SEO HEAD ==================== */}
+      {/* Prefer per-article Vera FINAL meta (Phase 2/3 metaTitle/metaDescription
+          fields on each article SK locale) with safe fallback to legacy shape
+          for any article that does not yet have them populated. */}
       <SEOHead
-        title={`${content.title} | OROSTONE Blog`}
-        description={content.directAnswer || content.excerpt}
+        title={content.metaTitle || `${content.title} | OROSTONE`}
+        description={content.metaDescription || content.directAnswer || content.excerpt}
         ogType="article"
         ogImage={article.heroImage}
         canonical={canonicalUrl}

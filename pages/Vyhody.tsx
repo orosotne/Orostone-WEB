@@ -151,8 +151,8 @@ export const Vyhody = () => {
   return (
     <div className="bg-white">
       <SEOHead
-        title="Výhody sinterovaného kameňa | Neviditeľná varná doska | Orostone"
-        description="Sinterovaný kameň odolá 300 °C, nepotrebuje údržbu a umožňuje integráciu neviditeľnej indukčnej varnej dosky. Porovnanie s žulou, quartzom a mramorom."
+        title="Výhody sinterovaného kameňa | OROSTONE"
+        description="Sinterovaný kameň odoláva teplu, škvrnám a poškriabaniu. Pozrite porovnanie s technickým kameňom, žulou a mramorom — rozdiely, ktoré reálne rozhodujú."
         canonical="https://orostone.sk/vyhody"
         keywords={['výhody sinterovaného kameňa', 'neviditeľná varná doska', 'neviditeľná indukčná doska', 'sinterovaný kameň vs žula', 'sinterovaný kameň údržba', 'odolnosť sinterovaného kameňa']}
       />
