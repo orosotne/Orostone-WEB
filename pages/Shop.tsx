@@ -281,8 +281,11 @@ export const Shop = () => {
   }, []);
 
   // Refresh ScrollTrigger when product data arrives (changes page height)
+  // Skip on mobile — no active ScrollTriggers there (all reveals are gated
+  // (min-width: 1024px)), and ScrollTrigger.refresh() triggers a 57ms
+  // forced reflow via o.enable() that contributes to mobile scroll jank.
   useEffect(() => {
-    if (!productsLoading) {
+    if (!productsLoading && window.innerWidth >= 1024) {
       const id = requestAnimationFrame(() => ScrollTrigger.refresh());
       return () => cancelAnimationFrame(id);
     }
@@ -294,15 +297,18 @@ export const Shop = () => {
   useGSAP(() => {
     if (!containerRef.current) return;
 
-    // Register ScrollTrigger lazily on mount (was at module top — moving to
-    // component scope keeps the plugin's setup off the synchronous module-load
-    // critical path that runs at app boot for the eagerly-imported home).
-    gsap.registerPlugin(ScrollTrigger);
+    // --- Mobile: zero GSAP work ---
+    // None of this page's animations target mobile (all desktop-gated via
+    // matchMedia('(min-width: 1024px)') or window.innerWidth checks).
+    // Running gsap.fromTo / gsap.set / matchMedia at mount still costs
+    // ~58ms of forced reflow in the cold-start critical path. Mobile JSX
+    // now uses lg:opacity-0 so the stone-mobile elements are visible by
+    // default, hero nav/indicators have no entrance animation (opacity 1
+    // by default in CSS) — both are acceptable trade-offs for smooth
+    // scroll on mid-range phones.
+    if (window.innerWidth < 1024) return;
 
-    // Hero text reveal is handled by Framer Motion (AnimatePresence)
-    // — no GSAP duplicate needed; it caused a flash where FM animated
-    //   text visible, then GSAP reset it to opacity:0 after 0.3s delay.
-
+    // Hero opacity fades — desktop polish only.
     gsap.fromTo('.hero-nav-arrows',
       { opacity: 0 },
       { opacity: 1, duration: 0.8, delay: 1.2 }
@@ -312,6 +318,11 @@ export const Shop = () => {
       { opacity: 0 },
       { opacity: 1, duration: 0.8, delay: 1.3 }
     );
+
+    // Register ScrollTrigger lazily on mount (was at module top — moving to
+    // component scope keeps the plugin's setup off the synchronous module-load
+    // critical path that runs at app boot for the eagerly-imported home).
+    gsap.registerPlugin(ScrollTrigger);
 
     // --- Parallax effect on hero image (desktop only — saves INP on mobile) ---
     if (heroRef.current && window.innerWidth >= 1024) {
@@ -416,69 +427,15 @@ export const Shop = () => {
       gsap.set('.stone-experience-pinned .stone-cta', { opacity: 1, y: 0 });
     }
 
-    // --- Stone Experience: Mobile scroll-triggered reveals (no pinning) ---
+    // --- Stone Experience: Mobile static reveal (no GSAP ScrollTriggers) ---
+    // Previously this block created 4 ScrollTriggers running on mobile, which
+    // caused 57ms forced reflow at setup (o.enable) and ongoing layout queries
+    // during scroll, producing visible scroll jank. Mobile users now see the
+    // section in its final state without entrance animations — same approach
+    // as the prefers-reduced-motion fallback. Desktop pinning timeline above
+    // (gsap.matchMedia '(min-width: 1024px)') is unaffected.
     const stoneMobile = document.querySelector('.stone-mobile-section');
-    if (stoneMobile && !reducedMotion) {
-      // Background: inset + rounded → full-bleed (clip-path avoids CLS)
-      gsap.fromTo('.stone-bg-mobile',
-        { clipPath: 'inset(40px 24px 40px 24px round 24px)' },
-        {
-          clipPath: 'inset(0px 0px 0px 0px round 0px)',
-          ease: 'power2.out', duration: 0.8,
-          scrollTrigger: {
-            trigger: '.stone-mobile-section',
-            start: 'top 70%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-
-      // Slab carousel: fade-in + scale
-      gsap.fromTo('.stone-slab-carousel',
-        { opacity: 0, y: 40, scale: 0.95 },
-        {
-          opacity: 1, y: 0, scale: 1,
-          duration: 0.8, ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.stone-slab-carousel',
-            start: 'top 80%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-
-      // Cards: staggered fade-in
-      gsap.fromTo('.stone-card-mobile',
-        { opacity: 0, y: 25 },
-        {
-          opacity: 1, y: 0,
-          duration: 0.6, ease: 'power2.out',
-          stagger: 0.12,
-          scrollTrigger: {
-            trigger: '.stone-cards-mobile',
-            start: 'top 80%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-
-      // CTA: fade-in
-      gsap.fromTo('.stone-cta-mobile',
-        { opacity: 0, y: 15 },
-        {
-          opacity: 1, y: 0,
-          duration: 0.6, ease: 'power2.out',
-          scrollTrigger: {
-            trigger: '.stone-cta-mobile',
-            start: 'top 90%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-    }
-
-    // Mobile reduced-motion fallback
-    if (stoneMobile && reducedMotion) {
+    if (stoneMobile) {
       gsap.set('.stone-bg-mobile', { clipPath: 'inset(0px 0px 0px 0px round 0px)' });
       gsap.set('.stone-slab-carousel', { opacity: 1, y: 0, scale: 1 });
       gsap.set('.stone-card-mobile', { opacity: 1, y: 0 });
@@ -910,6 +867,7 @@ export const Shop = () => {
                         src={sinteredProducts[activeStoneIdx]?.image ?? '/images/yabo-white-slab.jpg'}
                         alt={`${sinteredProducts[activeStoneIdx]?.name ?? 'YABO WHITE'} platňa`}
                         className="w-full h-full object-cover transition-all duration-500"
+                        decoding="async"
                       />
                     </div>
 
@@ -1037,7 +995,7 @@ export const Shop = () => {
             </p>
           </div>
           <div
-            className="stone-slab-carousel flex [touch-action:pan-x_pan-y] gap-4 overflow-x-auto overscroll-x-contain snap-x snap-proximity pb-2 mb-6 opacity-0"
+            className="stone-slab-carousel flex [touch-action:pan-x_pan-y] gap-4 overflow-x-auto overscroll-x-contain snap-x snap-proximity pb-2 mb-6 lg:opacity-0"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', paddingLeft: 'calc(50% - 130px)', paddingRight: 'calc(50% - 130px)' }}
           >
             <style>{`.stone-slab-carousel::-webkit-scrollbar { display: none; }`}</style>
@@ -1054,6 +1012,7 @@ export const Shop = () => {
                       alt={`${product.name} platňa`}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       loading="lazy"
+                      decoding="async"
                     />
                   </div>
                 </div>
@@ -1067,7 +1026,7 @@ export const Shop = () => {
             {STONE_EXPERIENCE_POINTS.map((point, index) => {
               const Icon = STONE_POINT_ICONS[point.id];
               return (
-                <article key={point.id} className="stone-card-mobile bg-white/80 backdrop-blur-sm border border-white/70 rounded-xl p-4 opacity-0">
+                <article key={point.id} className="stone-card-mobile bg-white/80 backdrop-blur-sm border border-white/70 rounded-xl p-4 lg:opacity-0">
                   <div className="flex items-center gap-3">
                     {Icon && (
                       <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-dark/8 flex items-center justify-center">
@@ -1084,7 +1043,7 @@ export const Shop = () => {
               );
             })}
           </div>
-          <div className="stone-cta-mobile text-center mt-10 opacity-0">
+          <div className="stone-cta-mobile text-center mt-10 lg:opacity-0">
             <Link
               to="/kategoria/sintered-stone"
               className="inline-flex items-center gap-2 bg-brand-dark text-white px-8 py-3.5 rounded-full text-xs tracking-[0.16em] uppercase font-semibold hover:bg-white hover:text-brand-dark transition-all duration-300"
@@ -1154,10 +1113,12 @@ export const Shop = () => {
                   >
                     <div className="bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300">
                       <div className="aspect-square overflow-hidden">
-                        <img 
+                        <img
                           src={product.image}
                           alt={product.name}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          loading="lazy"
+                          decoding="async"
                         />
                       </div>
                       <div className="p-4">
@@ -1257,6 +1218,8 @@ export const Shop = () => {
                           src={TESTIMONIALS[currentTestimonial].avatar}
                           alt={TESTIMONIALS[currentTestimonial].name}
                           className="w-10 h-10 rounded-full object-cover border-2 border-brand-gold/30"
+                          loading="lazy"
+                          decoding="async"
                         />
                       )}
                       <div className="text-left">
