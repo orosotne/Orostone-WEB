@@ -29,7 +29,7 @@ export const ThankYou: React.FC = () => {
   }, []);
 
   return (
-    <main className="min-h-screen bg-[#F9F9F7] flex items-center justify-center px-6">
+    <main className="min-h-dvh bg-[#F9F9F7] flex items-center justify-center px-6">
       <SEOHead title="Objednávka dokončená | OROSTONE" description="Ďakujeme za vašu objednávku." noindex={true} />
       <div className="text-center max-w-md">
         <CheckCircle size={64} className="mx-auto text-green-500 mb-6" />

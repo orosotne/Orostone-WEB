@@ -87,7 +87,7 @@ export function TextKnockoutSection() {
     >
     <section
       ref={containerRef}
-      className="sticky top-0 isolate h-screen w-full overflow-x-clip overflow-hidden bg-black"
+      className="sticky top-0 isolate h-dvh w-full overflow-x-clip overflow-hidden bg-black"
     >
       {/* Layer 1: Background video */}
       <video

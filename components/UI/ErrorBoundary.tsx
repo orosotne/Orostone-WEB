@@ -63,7 +63,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
       const isPage = this.props.level === 'page';
 
       return (
-        <div className={`flex items-center justify-center ${isPage ? 'min-h-screen' : 'min-h-[300px]'} bg-[#F9F9F7]`}>
+        <div className={`flex items-center justify-center ${isPage ? 'min-h-dvh' : 'min-h-[300px]'} bg-[#F9F9F7]`}>
           <div className="max-w-md mx-auto px-6 py-12 text-center">
             <div className="w-16 h-16 mx-auto mb-6 bg-red-50 rounded-full flex items-center justify-center">
               <AlertTriangle size={32} className="text-red-500" />

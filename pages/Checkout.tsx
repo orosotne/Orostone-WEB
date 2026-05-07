@@ -25,7 +25,7 @@ export const Checkout = () => {
   // Redirect if cart is empty
   if (itemCount === 0 && !isLoading) {
     return (
-      <main className="min-h-screen bg-[#F9F9F7] pt-32 pb-24">
+      <main className="min-h-dvh bg-[#F9F9F7] pt-32 pb-24">
         <SEOHead title="Košík | OROSTONE" description="Váš nákupný košík." noindex={true} />
         <div className="container mx-auto px-6 text-center">
           <ShoppingBag size={64} className="mx-auto text-gray-300 mb-6" />
@@ -58,7 +58,7 @@ export const Checkout = () => {
   };
 
   return (
-    <main className="min-h-screen bg-[#F9F9F7] pt-32 pb-24">
+    <main className="min-h-dvh bg-[#F9F9F7] pt-32 pb-24">
       <SEOHead title="Pokladňa | OROSTONE" description="Dokončite vašu objednávku." noindex={true} />
       <div className="container mx-auto px-6">
         

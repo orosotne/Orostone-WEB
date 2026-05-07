@@ -15,7 +15,7 @@ export const CookiesPolicy = () => {
   };
 
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-[#F9F9F7]">
+    <div className="pt-32 pb-24 min-h-dvh bg-[#F9F9F7]">
       <SEOHead
         title="Zásady používania cookies a podobných technológií | OROSTONE"
         description="Informácie o cookies a podobných technológiách na webe OROSTONE. Typy technológií, účely spracovania a nastavenie vlastných preferencií."

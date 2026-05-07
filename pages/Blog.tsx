@@ -132,7 +132,7 @@ export const Blog: React.FC = () => {
   }, [activeCategory]);
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-[#FAFAFA]">
+    <div ref={containerRef} className="min-h-dvh bg-[#FAFAFA]">
       <SEOHead
         title="Blog | OROSTONE — Odborné rady pre váš projekt"
         description="Odborné rady, porovnania a tipy pre váš projekt so sinterovaným kameňom. Čítajte náš blog."
