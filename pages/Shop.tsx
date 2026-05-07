@@ -297,9 +297,18 @@ export const Shop = () => {
   useGSAP(() => {
     if (!containerRef.current) return;
 
-    // Hero opacity fades — work on every viewport, no ScrollTrigger needed.
-    // Run these BEFORE the mobile early-return so the hero nav/indicators
-    // still appear on small screens.
+    // --- Mobile: zero GSAP work ---
+    // None of this page's animations target mobile (all desktop-gated via
+    // matchMedia('(min-width: 1024px)') or window.innerWidth checks).
+    // Running gsap.fromTo / gsap.set / matchMedia at mount still costs
+    // ~58ms of forced reflow in the cold-start critical path. Mobile JSX
+    // now uses lg:opacity-0 so the stone-mobile elements are visible by
+    // default, hero nav/indicators have no entrance animation (opacity 1
+    // by default in CSS) — both are acceptable trade-offs for smooth
+    // scroll on mid-range phones.
+    if (window.innerWidth < 1024) return;
+
+    // Hero opacity fades — desktop polish only.
     gsap.fromTo('.hero-nav-arrows',
       { opacity: 0 },
       { opacity: 1, duration: 0.8, delay: 1.2 }
@@ -309,23 +318,6 @@ export const Shop = () => {
       { opacity: 0 },
       { opacity: 1, duration: 0.8, delay: 1.3 }
     );
-
-    // --- Mobile early-return: skip ScrollTrigger plugin entirely ---
-    // Registering the ScrollTrigger plugin (and any gsap.matchMedia setup)
-    // triggers o.enable() — a ~54ms forced reflow at cold start that
-    // contributes to mobile scroll jank. None of the desktop-only animations
-    // below would run on mobile anyway (they're all gated min-width:1024px),
-    // so we skip the plugin init and leave the section in its final state.
-    if (window.innerWidth < 1024) {
-      const stoneMobile = document.querySelector('.stone-mobile-section');
-      if (stoneMobile) {
-        gsap.set('.stone-bg-mobile', { clipPath: 'inset(0px 0px 0px 0px round 0px)' });
-        gsap.set('.stone-slab-carousel', { opacity: 1, y: 0, scale: 1 });
-        gsap.set('.stone-card-mobile', { opacity: 1, y: 0 });
-        gsap.set('.stone-cta-mobile', { opacity: 1, y: 0 });
-      }
-      return;
-    }
 
     // Register ScrollTrigger lazily on mount (was at module top — moving to
     // component scope keeps the plugin's setup off the synchronous module-load
@@ -1003,7 +995,7 @@ export const Shop = () => {
             </p>
           </div>
           <div
-            className="stone-slab-carousel flex [touch-action:pan-x_pan-y] gap-4 overflow-x-auto overscroll-x-contain snap-x snap-proximity pb-2 mb-6 opacity-0"
+            className="stone-slab-carousel flex [touch-action:pan-x_pan-y] gap-4 overflow-x-auto overscroll-x-contain snap-x snap-proximity pb-2 mb-6 lg:opacity-0"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', paddingLeft: 'calc(50% - 130px)', paddingRight: 'calc(50% - 130px)' }}
           >
             <style>{`.stone-slab-carousel::-webkit-scrollbar { display: none; }`}</style>
@@ -1034,7 +1026,7 @@ export const Shop = () => {
             {STONE_EXPERIENCE_POINTS.map((point, index) => {
               const Icon = STONE_POINT_ICONS[point.id];
               return (
-                <article key={point.id} className="stone-card-mobile bg-white/80 backdrop-blur-sm border border-white/70 rounded-xl p-4 opacity-0">
+                <article key={point.id} className="stone-card-mobile bg-white/80 backdrop-blur-sm border border-white/70 rounded-xl p-4 lg:opacity-0">
                   <div className="flex items-center gap-3">
                     {Icon && (
                       <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-dark/8 flex items-center justify-center">
@@ -1051,7 +1043,7 @@ export const Shop = () => {
               );
             })}
           </div>
-          <div className="stone-cta-mobile text-center mt-10 opacity-0">
+          <div className="stone-cta-mobile text-center mt-10 lg:opacity-0">
             <Link
               to="/kategoria/sintered-stone"
               className="inline-flex items-center gap-2 bg-brand-dark text-white px-8 py-3.5 rounded-full text-xs tracking-[0.16em] uppercase font-semibold hover:bg-white hover:text-brand-dark transition-all duration-300"
