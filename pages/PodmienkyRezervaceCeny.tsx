@@ -40,7 +40,7 @@ export const PodmienkyRezervaceCeny = () => {
   };
 
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-[#F9F9F7]">
+    <div className="pt-32 pb-24 min-h-dvh bg-[#F9F9F7]">
       <SEOHead
         title="Podmienky rezervačného poplatku Orostone – 99 € | OROSTONE"
         description="Podmienky úhrady a použitia rezervačného poplatku 99 € za garanciu ceny produktov Orostone na 6 mesiacov. Informácie o nevratnosti poplatku a súhlase so začatím poskytovania služby."

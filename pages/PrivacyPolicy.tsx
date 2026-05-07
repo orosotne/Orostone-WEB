@@ -12,7 +12,7 @@ export const PrivacyPolicy = () => {
   };
 
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-[#F9F9F7]">
+    <div className="pt-32 pb-24 min-h-dvh bg-[#F9F9F7]">
       <SEOHead
         title="Ochrana osobných údajov | OROSTONE"
         description="Zásady ochrany osobných údajov spoločnosti OROSTONE s.r.o. Spracúvanie údajov v súlade s GDPR — účely, právny základ a vaše práva."

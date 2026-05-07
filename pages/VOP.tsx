@@ -40,7 +40,7 @@ export const VOP = () => {
   };
 
   return (
-    <div className="pt-32 pb-24 min-h-screen bg-[#F9F9F7]">
+    <div className="pt-32 pb-24 min-h-dvh bg-[#F9F9F7]">
       <SEOHead
         title="Všeobecné obchodné podmienky | OROSTONE E-Shop"
         description="Všeobecné obchodné podmienky e-shopu OROSTONE. Informácie o objednávke, platbe, doprave, reklamáciách a právach spotrebiteľa podľa zákona č. 108/2024 Z.z."

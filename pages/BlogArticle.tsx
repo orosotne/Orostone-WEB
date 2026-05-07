@@ -246,7 +246,7 @@ export const BlogArticle: React.FC = () => {
 
   if (!article) {
     return (
-      <div className="min-h-screen bg-[#FAFAFA] flex items-center justify-center px-4">
+      <div className="min-h-dvh bg-[#FAFAFA] flex items-center justify-center px-4">
         <SEOHead
           title="Článok nebol nájdený | OROSTONE Blog"
           description="Článok, ktorý hľadáte, neexistuje."
@@ -274,7 +274,7 @@ export const BlogArticle: React.FC = () => {
   const canonicalUrl = `https://orostone.sk/blog/${article.slug}`;
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-white">
+    <div ref={containerRef} className="min-h-dvh bg-white">
       {/* ==================== SEO HEAD ==================== */}
       <SEOHead
         title={`${content.title} | OROSTONE Blog`}

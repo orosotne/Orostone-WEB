@@ -196,7 +196,7 @@ export const ProductCatalog = () => {
   }, { scope: containerRef, dependencies: [sortedProducts] });
 
   return (
-    <main ref={containerRef} className="bg-white min-h-screen">
+    <main ref={containerRef} className="bg-white min-h-dvh">
       <SEOHead
         title="Všetky produkty | OROSTONE E-Shop"
         description="Kompletná ponuka prémiových sinterovaných kameňov. Veľkoformátové dosky 3200x1600mm s dopravou po celom Slovensku."
