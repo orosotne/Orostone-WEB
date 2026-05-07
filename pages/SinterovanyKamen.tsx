@@ -39,8 +39,6 @@ const Lightbox = lazy(() =>
   import('@/components/UI/Lightbox').then((m) => ({ default: m.Lightbox })),
 );
 
-gsap.registerPlugin(ScrollTrigger);
-
 /* =============================================================
    FAQ DATA — pripravené na JSON-LD FAQ Schema
    ============================================================= */
@@ -240,6 +238,11 @@ export const SinterovanyKamen = () => {
 
   useGSAP(
     () => {
+      // Register ScrollTrigger only when this page actually mounts on desktop —
+      // avoids paying the listener-setup cost on mobile where matchMedia skips
+      // every scroll-driven timeline below.
+      if (!window.matchMedia('(min-width: 1024px)').matches) return;
+      gsap.registerPlugin(ScrollTrigger);
       const mm = gsap.matchMedia();
 
       mm.add('(min-width: 1024px)', () => {
@@ -503,7 +506,7 @@ export const SinterovanyKamen = () => {
                 title: 'Výber minerálov',
                 desc: 'Starostlivo vybraný kremeň, živec, íl a kovové oxidy — výlučne prírodné suroviny bez syntetických prímesí.',
                 icon: <FlaskConical className="w-8 h-8" />,
-                img: '/images/process-minerals.png',
+                img: '/images/process-minerals.webp',
                 imgAlt:
                   'Prírodné minerály použité pri výrobe sinterovaného kameňa',
               },
@@ -512,7 +515,7 @@ export const SinterovanyKamen = () => {
                 title: 'Extrémna kompakcia',
                 desc: 'Minerálna zmes sa zlisuje pod tlakom 10 000 – 25 000 ton. To je ekvivalent hmotnosti dvoch a pol Eiffelových veží na jednej doske.',
                 icon: <Scaling className="w-8 h-8" />,
-                img: '/images/process-compaction.png',
+                img: '/images/process-compaction.webp',
                 imgAlt: 'Kompakcia minerálov pod tlakom 25 000 ton',
               },
               {
@@ -520,7 +523,7 @@ export const SinterovanyKamen = () => {
                 title: 'Sintrovanie',
                 desc: 'Doska sa vypáli pri teplote nad 1 200 °C. Častice sa spoja na molekulárnej úrovni — vzniká monolitický, nepórovitý povrch.',
                 icon: <Flame className="w-8 h-8" />,
-                img: '/images/process-sintering.png',
+                img: '/images/process-sintering.webp',
                 imgAlt: 'Sintrovanie pri teplote 1200 stupňov Celzia',
               },
             ].map((item) => (
@@ -798,42 +801,42 @@ export const SinterovanyKamen = () => {
                 icon: <CookingPot className="w-7 h-7" />,
                 title: 'Kuchynské dosky a ostrovčeky',
                 desc: 'Odolnosť voči teplu, škvrnám a nožom robí zo sinterovaného kameňa ideálnu pracovnú plochu. Dosky bez spojov vďaka veľkým formátom.',
-                img: '/images/app-kitchen.png',
+                img: '/images/app-kitchen.webp',
                 imgAlt: 'Kuchynská pracovná doska zo sinterovaného kameňa',
               },
               {
                 icon: <Bath className="w-7 h-7" />,
                 title: 'Kúpeľne',
                 desc: 'Nulová nasiakavosť zabraňuje rastu plesní a baktérií. Ideálne na obklady, podlahy, vaničky aj umývadlá.',
-                img: '/images/app-bathroom.png',
+                img: '/images/app-bathroom.webp',
                 imgAlt: 'Sinterovaný kameň v modernej kúpeľni',
               },
               {
                 icon: <Blocks className="w-7 h-7" />,
                 title: 'Obklady a zásteny',
                 desc: 'Bezšvové riešenia vďaka veľkým formátom dosiek. Jednoduché čistenie a elegantný vzhľad.',
-                img: '/images/app-backsplash.png',
+                img: '/images/app-backsplash.webp',
                 imgAlt: 'Kuchynská zástena zo sinterovaného kameňa',
               },
               {
                 icon: <Building2 className="w-7 h-7" />,
                 title: 'Fasády',
                 desc: 'UV stabilita, mrazuvzdornosť a nízka hmotnosť (od 3 mm). Farba sa nemení ani po rokoch na priamom slnku.',
-                img: '/images/app-facade.png',
+                img: '/images/app-facade.webp',
                 imgAlt: 'Fasáda zo sinterovaného kameňa',
               },
               {
                 icon: <Landmark className="w-7 h-7" />,
                 title: 'Krbové obklady',
                 desc: 'Materiál vzniká pri 1 200 °C — teplo z krbu mu neublíži. Bezpečná a estetická voľba.',
-                img: '/images/app-fireplace.png',
+                img: '/images/app-fireplace.webp',
                 imgAlt: 'Krbový obklad zo sinterovaného kameňa',
               },
               {
                 icon: <Sofa className="w-7 h-7" />,
                 title: 'Nábytok',
                 desc: 'Stolové dosky, police, kúpeľňové konzoly. Tenké formáty (6 mm) pre ľahkú a modernú konštrukciu.',
-                img: '/images/app-furniture.png',
+                img: '/images/app-furniture.webp',
                 imgAlt: 'Nábytok zo sinterovaného kameňa',
               },
             ].map((item) => (
@@ -901,19 +904,19 @@ export const SinterovanyKamen = () => {
               {
                 title: 'Matný (Matt)',
                 desc: 'Jemný, hladký povrch bez odleskov. Minimalizuje viditeľnosť odtlačkov prstov a poskytuje elegantný, moderný vzhľad. Odolnosť voči škvrnám triedy 5 podľa ISO 10545-14.',
-                img: '/images/finish-matte.png',
+                img: '/images/finish-matte.webp',
                 imgAlt: 'Matný povrch sinterovaného kameňa',
               },
               {
                 title: 'Leštený (Polished)',
                 desc: 'Vysoko lesklý, zrkadlový povrch, ktorý zvýrazňuje hĺbku a kresbu materiálu. Ideálny pre luxusné interiéry. Vyžaduje pravidelné utieranie do sucha.',
-                img: '/images/finish-polished.png',
+                img: '/images/finish-polished.webp',
                 imgAlt: 'Leštený povrch sinterovaného kameňa',
               },
               {
                 title: 'Štruktúrovaný (Textured)',
                 desc: 'Hmatateľná textúra, ktorá napodobňuje prírodný kameň, drevo alebo betón. Technológia VeinTouch vytvára realistický dotykový zážitok pri zachovaní všetkých technických vlastností.',
-                img: '/images/finish-textured.png',
+                img: '/images/finish-textured.webp',
                 imgAlt: 'Štruktúrovaný povrch sinterovaného kameňa',
               },
             ].map((item) => (
