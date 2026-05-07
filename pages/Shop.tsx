@@ -281,8 +281,11 @@ export const Shop = () => {
   }, []);
 
   // Refresh ScrollTrigger when product data arrives (changes page height)
+  // Skip on mobile — no active ScrollTriggers there (all reveals are gated
+  // (min-width: 1024px)), and ScrollTrigger.refresh() triggers a 57ms
+  // forced reflow via o.enable() that contributes to mobile scroll jank.
   useEffect(() => {
-    if (!productsLoading) {
+    if (!productsLoading && window.innerWidth >= 1024) {
       const id = requestAnimationFrame(() => ScrollTrigger.refresh());
       return () => cancelAnimationFrame(id);
     }
@@ -416,69 +419,15 @@ export const Shop = () => {
       gsap.set('.stone-experience-pinned .stone-cta', { opacity: 1, y: 0 });
     }
 
-    // --- Stone Experience: Mobile scroll-triggered reveals (no pinning) ---
+    // --- Stone Experience: Mobile static reveal (no GSAP ScrollTriggers) ---
+    // Previously this block created 4 ScrollTriggers running on mobile, which
+    // caused 57ms forced reflow at setup (o.enable) and ongoing layout queries
+    // during scroll, producing visible scroll jank. Mobile users now see the
+    // section in its final state without entrance animations — same approach
+    // as the prefers-reduced-motion fallback. Desktop pinning timeline above
+    // (gsap.matchMedia '(min-width: 1024px)') is unaffected.
     const stoneMobile = document.querySelector('.stone-mobile-section');
-    if (stoneMobile && !reducedMotion) {
-      // Background: inset + rounded → full-bleed (clip-path avoids CLS)
-      gsap.fromTo('.stone-bg-mobile',
-        { clipPath: 'inset(40px 24px 40px 24px round 24px)' },
-        {
-          clipPath: 'inset(0px 0px 0px 0px round 0px)',
-          ease: 'power2.out', duration: 0.8,
-          scrollTrigger: {
-            trigger: '.stone-mobile-section',
-            start: 'top 70%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-
-      // Slab carousel: fade-in + scale
-      gsap.fromTo('.stone-slab-carousel',
-        { opacity: 0, y: 40, scale: 0.95 },
-        {
-          opacity: 1, y: 0, scale: 1,
-          duration: 0.8, ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.stone-slab-carousel',
-            start: 'top 80%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-
-      // Cards: staggered fade-in
-      gsap.fromTo('.stone-card-mobile',
-        { opacity: 0, y: 25 },
-        {
-          opacity: 1, y: 0,
-          duration: 0.6, ease: 'power2.out',
-          stagger: 0.12,
-          scrollTrigger: {
-            trigger: '.stone-cards-mobile',
-            start: 'top 80%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-
-      // CTA: fade-in
-      gsap.fromTo('.stone-cta-mobile',
-        { opacity: 0, y: 15 },
-        {
-          opacity: 1, y: 0,
-          duration: 0.6, ease: 'power2.out',
-          scrollTrigger: {
-            trigger: '.stone-cta-mobile',
-            start: 'top 90%',
-            toggleActions: 'play none none none',
-          },
-        }
-      );
-    }
-
-    // Mobile reduced-motion fallback
-    if (stoneMobile && reducedMotion) {
+    if (stoneMobile) {
       gsap.set('.stone-bg-mobile', { clipPath: 'inset(0px 0px 0px 0px round 0px)' });
       gsap.set('.stone-slab-carousel', { opacity: 1, y: 0, scale: 1 });
       gsap.set('.stone-card-mobile', { opacity: 1, y: 0 });
@@ -910,6 +859,7 @@ export const Shop = () => {
                         src={sinteredProducts[activeStoneIdx]?.image ?? '/images/yabo-white-slab.jpg'}
                         alt={`${sinteredProducts[activeStoneIdx]?.name ?? 'YABO WHITE'} platňa`}
                         className="w-full h-full object-cover transition-all duration-500"
+                        decoding="async"
                       />
                     </div>
 
@@ -1054,6 +1004,7 @@ export const Shop = () => {
                       alt={`${product.name} platňa`}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       loading="lazy"
+                      decoding="async"
                     />
                   </div>
                 </div>
@@ -1154,10 +1105,12 @@ export const Shop = () => {
                   >
                     <div className="bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300">
                       <div className="aspect-square overflow-hidden">
-                        <img 
+                        <img
                           src={product.image}
                           alt={product.name}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          loading="lazy"
+                          decoding="async"
                         />
                       </div>
                       <div className="p-4">
@@ -1257,6 +1210,8 @@ export const Shop = () => {
                           src={TESTIMONIALS[currentTestimonial].avatar}
                           alt={TESTIMONIALS[currentTestimonial].name}
                           className="w-10 h-10 rounded-full object-cover border-2 border-brand-gold/30"
+                          loading="lazy"
+                          decoding="async"
                         />
                       )}
                       <div className="text-left">
