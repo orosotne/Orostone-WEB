@@ -37,9 +37,9 @@ export interface BlogArticle {
     directAnswer: string; // 2-3 line direct answer for AI snippets
     content: string; // Full HTML content
     faqs: BlogFAQ[];
-    /** SEO override — used by prerender for <title>; falls back to title + brand suffix */
+    /** Optional SEO meta override (different from title for richer search snippets) */
     metaTitle?: string;
-    /** SEO override — used by prerender for <meta description>; falls back to directAnswer/excerpt */
+    /** Optional SEO meta description override */
     metaDescription?: string;
   };
   en: {

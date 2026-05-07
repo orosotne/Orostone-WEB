@@ -1,6 +1,13 @@
 import { useEffect, useRef } from 'react';
 import { useCookies } from '../context/CookieContext';
 
+// Window globals injected by GTM / GA4 (declarations merge with index.tsx)
+declare global {
+  interface Window {
+    dataLayer?: unknown[];
+  }
+}
+
 const GA_ID = (window as any)._GA_ESHOP_ID as string | undefined;
 
 /**

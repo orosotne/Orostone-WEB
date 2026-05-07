@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, Suspense } from 'react';
-import { LazyMotion, domMax } from 'framer-motion';
+import { LazyMotion, domMax, MotionConfig } from 'framer-motion';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { SEOHead } from './components/UI/SEOHead';
@@ -294,18 +294,26 @@ const EshopApp = () => {
     <ThemeProvider>
       <CookieProvider>
         <CartProvider>
-          {/* LazyMotion + domMax: tree-shake framer-motion. `domMax` (not `domAnimation`)
-              because EshopNavbar, EshopMegaMenu, and Checkout use `layout` / `layoutId` /
-              AnimatePresence `popLayout` — those features live only in `domMax`. Using
-              `domAnimation` would silently no-op them. `strict` throws if a future
-              component reverts to `motion.X` (regression guard). */}
-          <LazyMotion features={domMax} strict>
-            <Router>
-              <EshopAppContent />
-              <Analytics />
-              <SpeedInsightsWithRoute />
-            </Router>
-          </LazyMotion>
+          {/* MotionConfig reducedMotion="user": framer-motion automatically respects
+              the user's OS-level "Reduce Motion" preference (prefers-reduced-motion:
+              reduce) for every `m.X` and AnimatePresence in the app. Required by
+              WCAG 2.3.3 (Animation from Interactions, Level AAA) and EU EAA 2025
+              for vestibular-disorder accessibility. Without this, GSAP/ScrollTrigger
+              animations stay live but framer-motion ones now obey user preference. */}
+          <MotionConfig reducedMotion="user">
+            {/* LazyMotion + domMax: tree-shake framer-motion. `domMax` (not `domAnimation`)
+                because EshopNavbar, EshopMegaMenu, and Checkout use `layout` / `layoutId` /
+                AnimatePresence `popLayout` — those features live only in `domMax`. Using
+                `domAnimation` would silently no-op them. `strict` throws if a future
+                component reverts to `motion.X` (regression guard). */}
+            <LazyMotion features={domMax} strict>
+              <Router>
+                <EshopAppContent />
+                <Analytics />
+                <SpeedInsightsWithRoute />
+              </Router>
+            </LazyMotion>
+          </MotionConfig>
         </CartProvider>
       </CookieProvider>
     </ThemeProvider>

@@ -29,6 +29,8 @@ interface SEOHeadProps {
   structuredData?: Record<string, unknown>;
   /** max-video-preview robots directive. Set to 0 to prevent Google from indexing background/decorative videos. */
   maxVideoPreview?: number;
+  /** Optional list of SEO keywords (rendered as `<meta name="keywords">`). Modern engines mostly ignore this, but it's harmless and used by some Bing/Yandex flows. */
+  keywords?: string[];
 }
 
 /**
@@ -44,6 +46,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   noindex = false,
   structuredData,
   maxVideoPreview,
+  keywords,
 }) => {
   useEffect(() => {
     // Title
@@ -67,6 +70,9 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
 
     // Standard meta
     setMeta('description', description);
+    if (keywords && keywords.length > 0) {
+      setMeta('keywords', keywords.join(', '));
+    }
     const robotsValue = [
       noindex ? 'noindex, nofollow' : 'index, follow',
       ...(maxVideoPreview !== undefined ? [`max-video-preview:${maxVideoPreview}`] : []),
@@ -130,7 +136,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       const scriptEl = document.querySelector('script[data-seo-ld]');
       if (scriptEl) scriptEl.remove();
     };
-  }, [title, description, canonical, ogImage, ogType, noindex, structuredData, maxVideoPreview]);
+  }, [title, description, canonical, ogImage, ogType, noindex, structuredData, maxVideoPreview, keywords]);
 
   return null;
 };

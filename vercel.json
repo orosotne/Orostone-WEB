@@ -79,6 +79,30 @@
       ]
     },
     {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/fonts/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=2592000, stale-while-revalidate=86400" }
+      ]
+    },
+    {
+      "source": "/(favicon.ico|favicon-16x16.png|favicon-32x32.png|apple-touch-icon.png|robots.txt|robots-noindex.txt|llms.txt|llms-full.txt|sitemap.xml|sitemap-eshop.xml)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=43200" }
+      ]
+    },
+    {
       "source": "/(.*)",
       "missing": [{ "type": "host", "value": "orostone.sk" }],
       "headers": [
