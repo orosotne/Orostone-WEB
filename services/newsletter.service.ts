@@ -1,7 +1,24 @@
-import { supabase, isSupabaseConfigured } from '../lib/supabase';
+import { isSupabaseConfigured } from '../lib/supabase';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
+
+// ===========================================
+// NEWSLETTER SERVICE
+// ===========================================
+//
+// SECURITY NOTE (P0-1 fix, 2026-05-07):
+//   Newsletter subscription no longer reads/updates `newsletter_subscribers`
+//   directly from the browser. The previous flow used anonymous RLS SELECT/UPDATE
+//   policies which let any visitor enumerate and modify the entire subscriber list.
+//
+//   The new flow POSTs to the `subscribe-newsletter` Edge Function, which uses
+//   SUPABASE_SERVICE_ROLE_KEY server-side. The welcome email dispatch is also
+//   moved server-side.
+//
+//   See: supabase/functions/subscribe-newsletter/index.ts
+//        supabase/migrations/20260507_fix_rls_pii_leak.sql
+// ===========================================
 
 export interface NewsletterSubscribeData {
   email: string;
@@ -13,17 +30,6 @@ export interface NewsletterSubscribeResult {
   success: boolean;
   alreadySubscribed?: boolean;
   error?: string;
-}
-
-function sendWelcomeEmail(email: string, name?: string) {
-  fetch(`${SUPABASE_URL}/functions/v1/send-newsletter-welcome`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
-    },
-    body: JSON.stringify({ email, name }),
-  }).catch((err) => console.warn('[newsletter] Welcome email zlyhal:', err));
 }
 
 export async function subscribeToNewsletter(
@@ -38,39 +44,46 @@ export async function subscribeToNewsletter(
     return { success: false, error: 'Služba momentálne nie je dostupná.' };
   }
 
-  const { email, name, source } = data;
-  const normalizedEmail = email.toLowerCase().trim();
+  try {
+    const res = await fetch(`${SUPABASE_URL}/functions/v1/subscribe-newsletter`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+        apikey: SUPABASE_ANON_KEY,
+      },
+      body: JSON.stringify({
+        email: data.email,
+        name: data.name,
+        source: data.source,
+      }),
+    });
 
-  // Skontroluj či už existuje
-  const { data: existing } = await supabase
-    .from('newsletter_subscribers')
-    .select('id, is_active')
-    .eq('email', normalizedEmail)
-    .maybeSingle();
-
-  if (existing) {
-    if (existing.is_active) {
-      return { success: true, alreadySubscribed: true };
+    let body: { success?: boolean; alreadySubscribed?: boolean; error?: string };
+    try {
+      body = await res.json();
+    } catch {
+      return { success: false, error: `HTTP ${res.status}` };
     }
-    // Reaktivuj — pošli welcome email znova
-    const { error } = await supabase
-      .from('newsletter_subscribers')
-      .update({ is_active: true, unsubscribed_at: null, subscribed_at: new Date().toISOString() })
-      .eq('id', existing.id);
 
-    if (error) return { success: false, error: error.message };
-    sendWelcomeEmail(normalizedEmail, name);
-    return { success: true };
+    if (!res.ok || !body.success) {
+      return {
+        success: false,
+        error: body.error || `Nepodarilo sa prihlásiť na odber (HTTP ${res.status})`,
+      };
+    }
+
+    return {
+      success: true,
+      alreadySubscribed: body.alreadySubscribed,
+    };
+  } catch (error) {
+    if (import.meta.env.DEV) {
+      console.error('[newsletter] Network error:', error);
+    }
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Neočakávaná chyba',
+    };
   }
-
-  // Nový subscriber
-  const { error } = await supabase.from('newsletter_subscribers').insert({
-    email: normalizedEmail,
-    name: name || null,
-    source,
-  });
-
-  if (error) return { success: false, error: error.message };
-  sendWelcomeEmail(normalizedEmail, name);
-  return { success: true };
 }
