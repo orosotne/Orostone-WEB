@@ -1243,7 +1243,7 @@ export const Shop = () => {
                     className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center"
                   >
                     {/* Gold quote mark */}
-                    <span className="text-6xl lg:text-7xl font-serif text-brand-gold/30 leading-none mb-4 select-none">
+                    <span className="text-6xl lg:text-7xl font-sans text-brand-gold/30 leading-none mb-4 select-none">
                       &ldquo;
                     </span>
 
