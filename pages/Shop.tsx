@@ -205,6 +205,11 @@ export const Shop = () => {
   }, []);
 
   useEffect(() => {
+    // Mobile: skip testimonial autoplay. Interval ticks were colliding with
+    // user touch events and pushing INP P75 toward ~8s on /. Mobile users
+    // see the first testimonial only — acceptable trade-off vs interactivity.
+    if (window.innerWidth < 1024) return;
+
     let interval: ReturnType<typeof setInterval> | null = setInterval(nextTestimonial, 6000);
     const onVisibility = () => {
       if (document.hidden) {
@@ -228,6 +233,9 @@ export const Shop = () => {
     // Defer the re-render so the click handler returns and the next paint
     // can land before React reconciles all hero slides.
     startTransition(() => setActiveSlide(index));
+    // Mobile: don't restart autoplay on click — autoplay is disabled there
+    // so a click would otherwise re-introduce the interval that we just killed.
+    if (window.innerWidth < 1024) return;
     if (heroAutoplayRef.current) clearInterval(heroAutoplayRef.current);
     heroAutoplayRef.current = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % slidesLen);
@@ -248,7 +256,13 @@ export const Shop = () => {
   }, [slidesLen, activeSlide]);
 
   // Auto-advance hero slides — pause when tab is hidden to avoid contention.
+  // Mobile: skip autoplay entirely. The 6s interval tick was the dominant
+  // cause of mobile INP P75 ≈ 9.8s on / — every tick triggered a full
+  // Shop.tsx (1370-line) rerender that collided with user touch events.
+  // Manual nav via arrows/indicators still works.
   useEffect(() => {
+    if (window.innerWidth < 1024) return;
+
     const start = () => {
       heroAutoplayRef.current = setInterval(() => {
         setActiveSlide((prev) => (prev + 1) % slidesLen);
