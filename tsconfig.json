@@ -11,7 +11,8 @@
     ],
     "skipLibCheck": true,
     "types": [
-      "node"
+      "node",
+      "vite/client"
     ],
     "moduleResolution": "bundler",
     "isolatedModules": true,
@@ -26,5 +27,30 @@
     "allowImportingTsExtensions": true,
     "noEmit": true,
     "resolveJsonModule": true
-  }
+  },
+  "include": [
+    "EshopApp.tsx",
+    "index.tsx",
+    "constants.ts",
+    "types.ts",
+    "vite.config.ts",
+    "api/**/*.ts",
+    "components/**/*.{ts,tsx}",
+    "context/**/*.{ts,tsx}",
+    "data/**/*.{ts,tsx}",
+    "hooks/**/*.{ts,tsx}",
+    "lib/**/*.{ts,tsx}",
+    "pages/**/*.{ts,tsx}",
+    "scripts/**/*.{ts,tsx}",
+    "services/**/*.{ts,tsx}",
+    "types/**/*.{ts,tsx}"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "chrome-devtools-mcp",
+    ".firecrawl",
+    "supabase",
+    ".vercel"
+  ]
 }

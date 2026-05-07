@@ -37,9 +37,9 @@ export const TextReveal: React.FC<TextRevealProps> = ({
       opacity: 1,
       y: 0,
       transition: {
-        type: "tween",
-        ease: "easeOut",
-        duration: 0.5
+        type: "tween" as const,
+        ease: "easeOut" as const,
+        duration: 0.5,
       },
     },
     hidden: {

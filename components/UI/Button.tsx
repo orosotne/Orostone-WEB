@@ -2,14 +2,30 @@ import React from 'react';
 import { m } from 'framer-motion';
 import { useHasFinePointer } from '../../hooks/useIsMobile';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+// Omit props whose handler signatures collide with framer-motion's
+// own `onAnimation*` / `onDrag*` / `onTransitionEnd` overrides.
+type NativeButtonProps = Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  | 'onAnimationStart'
+  | 'onAnimationEnd'
+  | 'onAnimationIteration'
+  | 'onDragStart'
+  | 'onDragEnd'
+  | 'onDrag'
+  | 'onTransitionEnd'
+>;
+
+interface ButtonProps extends NativeButtonProps {
   variant?: 'primary' | 'outline' | 'ghost';
+  /** Size preset (default = standard, lg = larger CTA-style padding/text) */
+  size?: 'default' | 'sm' | 'lg';
   children: React.ReactNode;
   icon?: React.ReactNode;
 }
 
 export const Button: React.FC<ButtonProps> = ({
   variant = 'primary',
+  size = 'default',
   children,
   className = '',
   icon,
@@ -17,7 +33,13 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   const hasFinePointer = useHasFinePointer();
 
-  const baseClasses = "relative overflow-hidden px-8 py-4 text-sm font-semibold tracking-widest uppercase transition-all duration-300 flex items-center justify-center gap-3";
+  const sizeClasses: Record<NonNullable<ButtonProps['size']>, string> = {
+    sm: 'px-5 py-2.5 text-xs',
+    default: 'px-8 py-4 text-sm',
+    lg: 'px-10 py-5 text-base',
+  };
+
+  const baseClasses = `relative overflow-hidden font-semibold tracking-widest uppercase transition-all duration-300 flex items-center justify-center gap-3 ${sizeClasses[size]}`;
 
   const variants = {
     primary: "bg-brand-dark text-white hover:bg-black border border-transparent hover:border-brand-gold/30",
