@@ -602,8 +602,8 @@ export const Shop = () => {
   return (
     <main ref={containerRef} className="w-full overflow-x-clip">
       <SEOHead
-        title="OROSTONE E-Shop | Sinterovaný kameň"
-        description="Sinterované platne 3200×1600mm skladom. Odolnosť kameňa a luxusný dizajn. Vzorka zadarmo, expedícia do 5 dní. Bratislava."
+        title="Sinterovaný kameň pre kuchyne | OROSTONE"
+        description="Sinterovaný kameň pre kuchyne, ostrovčeky a interiéry. Pomôžeme vybrať dekor, ktorý funguje aj vo veľkej ploche. Showroom Bošany, dodanie po SR."
         canonical="https://orostone.sk/"
         ogType="website"
         structuredData={OROSTONE_ORGANIZATION_LD}
