@@ -1,5 +1,6 @@
 import React from 'react';
 import { m } from 'framer-motion';
+import { useIsMobile } from '../../hooks/useIsMobile';
 
 interface ImageRevealProps {
   src: string;
@@ -9,6 +10,18 @@ interface ImageRevealProps {
 }
 
 export const ImageReveal: React.FC<ImageRevealProps> = ({ src, alt, className = "", aspectRatio = "aspect-[4/3]" }) => {
+  const isMobile = useIsMobile();
+
+  // Mobile: skip the reveal animation entirely. The curtain overlay (bg-[#F9F9F7])
+  // would otherwise prolong perceived white-screen time during slow hydration.
+  if (isMobile) {
+    return (
+      <div className={`relative overflow-hidden ${aspectRatio} ${className}`}>
+        <img src={src} alt={alt} loading="lazy" decoding="async" className="w-full h-full object-cover" />
+      </div>
+    );
+  }
+
   return (
     <div className={`relative overflow-hidden ${aspectRatio} ${className}`}>
       <m.div
@@ -20,7 +33,7 @@ export const ImageReveal: React.FC<ImageRevealProps> = ({ src, alt, className = 
       >
         <img src={src} alt={alt} className="w-full h-full object-cover" />
       </m.div>
-      
+
       {/* The Curtain/Shutter */}
       <m.div
         initial={{ scaleY: 1 }}

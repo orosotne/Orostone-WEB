@@ -42,43 +42,54 @@ const Realizacie = lazyWithRetry(() => import('./pages/Realizacie').then(m => ({
 // Capture UTM params from URL before React Router mounts (sync, runs once)
 captureUTM();
 
-// Stagger prefetch of lazy chunks — high-intent routes first, lower-priority later
+// Stagger prefetch of lazy chunks — high-intent routes first, lower-priority later.
+// All batches run inside requestIdleCallback so they yield to user interaction
+// and React renders. On slow connections (2g/slow-2g/save-data) we skip prefetch
+// entirely — every prefetched chunk competes with the hero image and main bundle.
 if (typeof window !== 'undefined') {
-  const schedule = (fn: () => void, delay: number) => setTimeout(fn, delay);
+  const conn = (navigator as any).connection;
+  const slowNetwork =
+    conn && (conn.saveData || /(^|\W)(2g|slow-2g)(\W|$)/i.test(conn.effectiveType || ''));
+
   const idle = (fn: () => void, timeout: number) => {
+    if (slowNetwork) return;
     if ('requestIdleCallback' in window) {
       (window as any).requestIdleCallback(fn, { timeout });
     } else {
       setTimeout(fn, timeout);
     }
   };
+  const idleAfter = (fn: () => void, delay: number, timeout: number) => {
+    if (slowNetwork) return;
+    setTimeout(() => idle(fn, timeout), delay);
+  };
 
-  // Batch 1: most likely next pages (after 2s idle)
+  // Batch 1: most likely next pages (after 3s idle)
   idle(() => {
     import('./pages/CategoryPage');
     import('./pages/ProductCatalog');
   }, 3000);
 
-  // Batch 2: product detail + checkout (after 5s)
-  schedule(() => {
+  // Batch 2: product detail + checkout (after 5s, idle-gated)
+  idleAfter(() => {
     import('./pages/ShopProductDetail');
     import('./pages/Checkout');
-  }, 5000);
+  }, 5000, 3000);
 
-  // Batch 3: blog (lowest priority, after 8s)
-  schedule(() => {
+  // Batch 3: blog (lowest priority, after 8s, idle-gated)
+  idleAfter(() => {
     import('./pages/Blog');
     import('./pages/BlogArticle');
-  }, 8000);
+  }, 8000, 3000);
 
   // Batch 4: legal pages (footer-linked from every page; reduces INP on
   // tap-to-navigate especially on /kontakt where they're prominent)
-  schedule(() => {
+  idleAfter(() => {
     import('./pages/VOP');
     import('./pages/PrivacyPolicy');
     import('./pages/ReklamacieAVratenie');
     import('./pages/CookiesPolicy');
-  }, 12000);
+  }, 12000, 3000);
 }
 
 // Contexts
