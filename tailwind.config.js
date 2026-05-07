@@ -13,11 +13,6 @@ export default {
   				'Montserrat',
   				'Montserrat Fallback',
   				'sans-serif'
-  			],
-  			serif: [
-  				'Montserrat',
-  				'Montserrat Fallback',
-  				'sans-serif'
   			]
   		},
   		colors: {
