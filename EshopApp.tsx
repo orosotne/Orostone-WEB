@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, Suspense } from 'react';
-import { LazyMotion, domAnimation } from 'framer-motion';
+import { LazyMotion, domMax } from 'framer-motion';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { SEOHead } from './components/UI/SEOHead';
@@ -294,10 +294,12 @@ const EshopApp = () => {
     <ThemeProvider>
       <CookieProvider>
         <CartProvider>
-          {/* LazyMotion + domAnimation: tree-shake framer-motion (~60 KB → ~15 KB).
-              All components use `m.X` (not `motion.X`) so animation features are loaded
-              once on demand. `strict` throws if a future component reverts to `motion.X`. */}
-          <LazyMotion features={domAnimation} strict>
+          {/* LazyMotion + domMax: tree-shake framer-motion. `domMax` (not `domAnimation`)
+              because EshopNavbar, EshopMegaMenu, and Checkout use `layout` / `layoutId` /
+              AnimatePresence `popLayout` — those features live only in `domMax`. Using
+              `domAnimation` would silently no-op them. `strict` throws if a future
+              component reverts to `motion.X` (regression guard). */}
+          <LazyMotion features={domMax} strict>
             <Router>
               <EshopAppContent />
               <Analytics />

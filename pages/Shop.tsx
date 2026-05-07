@@ -15,11 +15,15 @@ import { useIsMobile } from '../hooks/useIsMobile';
 import { lazyWithRetry } from '../lib/utils';
 
 import { SEOHead, OROSTONE_ORGANIZATION_LD } from '../components/UI/SEOHead';
+// Eager: InspirationSection has its entrance animation registered from Shop's `useGSAP`
+// at mount via `document.querySelector('.inspiration-section …')`. Lazy-loading would
+// leave only the Suspense placeholder in the DOM at that moment, the selector returns
+// null, the guard skips registration, and the carousel snaps in instead of fading.
+import { InspirationSection } from '../components/Shop/InspirationSection';
 
 // Below-the-fold sections — lazy-loaded to keep home initial JS bundle small (better
 // INP on first nav tap). LCP element is the hero image, preloaded in index.html.
 const TextKnockoutSection = lazyWithRetry(() => import('../components/TextKnockoutSection').then(mod => ({ default: mod.TextKnockoutSection })));
-const InspirationSection = lazyWithRetry(() => import('../components/Shop/InspirationSection').then(mod => ({ default: mod.InspirationSection })));
 const BlogPreviewSection = lazyWithRetry(() => import('../components/Eshop/BlogPreviewSection').then(mod => ({ default: mod.BlogPreviewSection })));
 const SampleLeadSection = lazyWithRetry(() => import('../components/Shop/SampleLeadSection').then(mod => ({ default: mod.SampleLeadSection })));
 import { RotatingBadge } from '../components/UI/RotatingBadge';
@@ -1198,9 +1202,9 @@ export const Shop = () => {
       </div>
 
       {/* ==================== INSPIRUJTE SA — Inspiration Slider ==================== */}
-      <React.Suspense fallback={<div className="min-h-[700px]" aria-hidden />}>
-        <InspirationSection items={INSPIRATION_IMAGES} />
-      </React.Suspense>
+      {/* Not lazy — see import comment: Shop's useGSAP entrance animation depends on
+          `.inspiration-section` being in the DOM at mount. */}
+      <InspirationSection items={INSPIRATION_IMAGES} />
 
       {/* ==================== SAMPLE LEAD SECTION ==================== */}
       <React.Suspense fallback={<div className="min-h-[1400px] lg:min-h-[1100px]" aria-hidden />}>
