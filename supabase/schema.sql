@@ -117,20 +117,13 @@ ALTER TABLE quotes ENABLE ROW LEVEL SECURITY;
 ALTER TABLE quote_files ENABLE ROW LEVEL SECURITY;
 
 -- CUSTOMERS policies
--- Anonymous môže vytvárať nových zákazníkov (cez formulár)
+-- POZOR: anonymous SELECT/UPDATE BOLI ODSTRÁNENÉ v migrácii 20260507_fix_rls_pii_leak.sql
+--        (audit P0-1 — verejný anon key umožňoval čítať všetky PII).
+-- Anonymous môže LEN vkladať. Reads/upserts s RETURNING idú cez Edge Function
+-- supabase/functions/submit-quote/index.ts (service-role key).
 CREATE POLICY "Allow anonymous insert" ON customers
     FOR INSERT
     WITH CHECK (true);
-
--- Anonymous môže čítať zákazníkov (potrebné pre findOrCreateCustomer a RETURNING po INSERT/UPSERT)
-CREATE POLICY "Allow anonymous select" ON customers
-    FOR SELECT
-    USING (true);
-
--- Anonymous môže aktualizovať zákazníkov (potrebné pre upsert vracajúcich sa zákazníkov)
-CREATE POLICY "Allow anonymous update" ON customers
-    FOR UPDATE
-    USING (true);
 
 -- Authenticated (admin) má plný prístup
 CREATE POLICY "Allow authenticated full access" ON customers
@@ -138,15 +131,11 @@ CREATE POLICY "Allow authenticated full access" ON customers
     USING (auth.role() = 'authenticated');
 
 -- QUOTES policies
--- Anonymous môže vytvárať dopyty
+-- POZOR: anonymous SELECT BOLO ODSTRÁNENÉ v migrácii 20260507_fix_rls_pii_leak.sql.
+-- Inserts s RETURNING idú cez Edge Function submit-quote (service-role).
 CREATE POLICY "Allow anonymous insert" ON quotes
     FOR INSERT
     WITH CHECK (true);
-
--- Anonymous môže čítať quotes (potrebné pre RETURNING po INSERT)
-CREATE POLICY "Allow anonymous select" ON quotes
-    FOR SELECT
-    USING (true);
 
 -- Authenticated (admin) má plný prístup
 CREATE POLICY "Allow authenticated full access" ON quotes
@@ -156,20 +145,11 @@ CREATE POLICY "Allow authenticated full access" ON quotes
 -- NEWSLETTER_SUBSCRIBERS policies
 ALTER TABLE newsletter_subscribers ENABLE ROW LEVEL SECURITY;
 
--- Anonymous môže vkladať (subscribe)
+-- POZOR: anonymous SELECT/UPDATE BOLI ODSTRÁNENÉ v migrácii 20260507_fix_rls_pii_leak.sql.
+-- Subscribe/reactivate logika je v Edge Function subscribe-newsletter (service-role).
 CREATE POLICY "Allow anonymous insert" ON newsletter_subscribers
     FOR INSERT
     WITH CHECK (true);
-
--- Anonymous môže čítať vlastný záznam (upsert)
-CREATE POLICY "Allow anonymous select" ON newsletter_subscribers
-    FOR SELECT
-    USING (true);
-
--- Anonymous môže updatovať (reaktivácia)
-CREATE POLICY "Allow anonymous update" ON newsletter_subscribers
-    FOR UPDATE
-    USING (true);
 
 -- Authenticated (admin) má plný prístup
 CREATE POLICY "Allow authenticated full access" ON newsletter_subscribers
@@ -269,12 +249,12 @@ CREATE TABLE instagram_tokens (
 
 ALTER TABLE instagram_tokens ENABLE ROW LEVEL SECURITY;
 
--- Anon môže čítať token (frontend ho potrebuje na načítanie feedu)
-CREATE POLICY "Allow anon read instagram token" ON instagram_tokens
-    FOR SELECT
-    USING (true);
+-- POZOR: anonymous SELECT BOLO ODSTRÁNENÉ v migrácii 20260507_fix_rls_pii_leak.sql.
+-- Token sa NIKDY nesmie posielať do prehliadača. Frontend načítava IG feed cez
+-- Edge Function supabase/functions/instagram-feed/index.ts, ktorá používa
+-- SUPABASE_SERVICE_ROLE_KEY a obchádza RLS.
 
--- Len service_role môže meniť (Edge Function)
+-- Len service_role môže čítať aj meniť (Edge Functions)
 CREATE POLICY "Allow service_role write instagram token" ON instagram_tokens
     FOR ALL
     USING (auth.role() = 'service_role');

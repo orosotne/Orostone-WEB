@@ -3,16 +3,25 @@ import { uploadQuoteFiles } from './storage.service';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
-import type { 
-  CustomerInsert, 
-  QuoteInsert, 
-  QuoteFormData,
-  Customer,
-  Quote 
-} from '../types/database.types';
+
+import type { QuoteFormData, Quote } from '../types/database.types';
 
 // ===========================================
 // QUOTE SERVICE
+// ===========================================
+//
+// SECURITY NOTE (P0-1 fix, 2026-05-07):
+//   Customer + quote inserts no longer touch supabase.from(...) directly.
+//   The previous flow relied on anonymous RLS SELECT/UPDATE policies on
+//   `customers` and `quotes`, which exposed all PII via the public anon key
+//   (anyone could `supabase.from('customers').select('*')`).
+//
+//   The new flow POSTs to the `submit-quote` Edge Function, which uses
+//   SUPABASE_SERVICE_ROLE_KEY server-side to upsert customer + insert quote
+//   atomically and return the new quote_id.
+//
+//   See: supabase/functions/submit-quote/index.ts
+//        supabase/migrations/20260507_fix_rls_pii_leak.sql
 // ===========================================
 
 export interface SubmitQuoteResult {
@@ -21,17 +30,70 @@ export interface SubmitQuoteResult {
   error?: string;
 }
 
+interface SubmitQuotePayload {
+  email: string;
+  name: string;
+  phone?: string;
+  city?: string;
+  project_type: string;
+  item_needed?: string;
+  dimensions?: string;
+  decor?: string;
+}
+
 /**
- * Odošle kompletný dopyt do Supabase
- * 1. Vytvorí/nájde zákazníka
- * 2. Vytvorí dopyt
- * 3. Nahrá súbory (ak existujú)
+ * Calls the `submit-quote` Edge Function.
+ * Returns { success, quote_id?, customer_id?, error? }.
+ */
+async function callSubmitQuote(payload: SubmitQuotePayload): Promise<{
+  success: boolean;
+  quote_id?: string;
+  customer_id?: string;
+  error?: string;
+}> {
+  const res = await fetch(`${SUPABASE_URL}/functions/v1/submit-quote`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+      apikey: SUPABASE_ANON_KEY,
+    },
+    body: JSON.stringify(payload),
+  });
+
+  // Edge Function always returns JSON
+  let body: { success?: boolean; quote_id?: string; customer_id?: string; error?: string };
+  try {
+    body = await res.json();
+  } catch {
+    return { success: false, error: `HTTP ${res.status}` };
+  }
+
+  if (!res.ok || !body.success) {
+    return { success: false, error: body.error || `HTTP ${res.status}` };
+  }
+  return {
+    success: true,
+    quote_id: body.quote_id,
+    customer_id: body.customer_id,
+  };
+}
+
+/**
+ * Odošle kompletný dopyt do Supabase (cez Edge Function submit-quote).
+ *
+ * Flow:
+ *   1. POST to submit-quote → server upserts customer + inserts quote
+ *   2. If files present, upload to storage with returned quote_id
+ *
+ * Note: file upload still goes through anonymous storage policy (UUID-gated;
+ * see supabase/schema.sql storage section). That path was not affected by P0-1.
  */
 export async function submitQuote(formData: QuoteFormData): Promise<SubmitQuoteResult> {
-  // Kontrola či je Supabase nakonfigurovaný
   if (!isSupabaseConfigured()) {
-    console.warn('Supabase nie je nakonfigurovaný - simulujem odoslanie');
-    // Simulácia pre development bez Supabase
+    if (import.meta.env.DEV) {
+      console.warn('Supabase nie je nakonfigurovaný - simulujem odoslanie');
+    }
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve({ success: true, quoteId: 'demo-' + Date.now() });
@@ -40,51 +102,34 @@ export async function submitQuote(formData: QuoteFormData): Promise<SubmitQuoteR
   }
 
   try {
-    // 1. Vytvor alebo nájdi zákazníka
-    const customer = await findOrCreateCustomer({
+    const result = await callSubmitQuote({
       email: formData.email,
       name: formData.name,
       phone: formData.phone || undefined,
-    });
-
-    if (!customer) {
-      return { success: false, error: 'Nepodarilo sa vytvoriť zákazníka' };
-    }
-
-    // 2. Vytvor dopyt
-    const quoteData: QuoteInsert = {
-      customer_id: customer.id,
       project_type: 'Dopyt z webu',
       dimensions: formData.description || undefined,
-    };
+    });
 
-    const { data: quote, error: quoteError } = await supabase
-      .from('quotes')
-      .insert(quoteData)
-      .select()
-      .single();
-
-    if (quoteError || !quote) {
-      console.error('Error creating quote:', quoteError);
-      return { success: false, error: 'Nepodarilo sa vytvoriť dopyt' };
+    if (!result.success || !result.quote_id) {
+      return { success: false, error: result.error || 'Nepodarilo sa vytvoriť dopyt' };
     }
 
-    // 3. Nahraj súbory (ak existujú)
+    // Upload files (if any) — quote_files anonymous insert policy is unchanged
     if (formData.files && formData.files.length > 0) {
-      const uploadResult = await uploadQuoteFiles(quote.id, formData.files);
-      if (!uploadResult.success) {
+      const uploadResult = await uploadQuoteFiles(result.quote_id, formData.files);
+      if (!uploadResult.success && import.meta.env.DEV) {
         console.warn('Niektoré súbory sa nepodarilo nahrať:', uploadResult.errors);
-        // Pokračujeme aj keď upload zlyhal - dopyt je už vytvorený
       }
     }
 
-    return { success: true, quoteId: quote.id };
-
+    return { success: true, quoteId: result.quote_id };
   } catch (error) {
-    console.error('Unexpected error in submitQuote:', error);
-    return { 
-      success: false, 
-      error: error instanceof Error ? error.message : 'Neočakávaná chyba' 
+    if (import.meta.env.DEV) {
+      console.error('Unexpected error in submitQuote:', error);
+    }
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Neočakávaná chyba',
     };
   }
 }
@@ -98,10 +143,15 @@ export interface SampleLeadFormData {
 
 /**
  * Žiadosť o fyzickú vzorku zo Shop stránky — customers + quotes (decor).
+ *
+ * Email notification dispatch is now handled inside the Edge Function;
+ * the client no longer fires a separate fetch to send-quote-notification.
  */
 export async function submitSampleLead(data: SampleLeadFormData): Promise<SubmitQuoteResult> {
   if (!isSupabaseConfigured()) {
-    console.warn('Supabase nie je nakonfigurovaný - simulujem odoslanie (vzorka)');
+    if (import.meta.env.DEV) {
+      console.warn('Supabase nie je nakonfigurovaný - simulujem odoslanie (vzorka)');
+    }
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve({ success: true, quoteId: 'demo-sample-' + Date.now() });
@@ -110,47 +160,23 @@ export async function submitSampleLead(data: SampleLeadFormData): Promise<Submit
   }
 
   try {
-    const customer = await findOrCreateCustomer({
+    const result = await callSubmitQuote({
       email: data.email.trim(),
       name: data.name.trim(),
       phone: data.phone?.trim() || undefined,
-    });
-
-    if (!customer) {
-      return { success: false, error: 'Nepodarilo sa vytvoriť zákazníka' };
-    }
-
-    const quoteData: QuoteInsert = {
-      customer_id: customer.id,
       project_type: 'Vzorka zadarmo (Shop)',
       decor: data.dekor,
-    };
+    });
 
-    const { data: quote, error: quoteError } = await supabase
-      .from('quotes')
-      .insert(quoteData)
-      .select()
-      .single();
-
-    if (quoteError || !quote) {
-      console.error('Error creating sample lead quote:', quoteError);
-      return { success: false, error: 'Nepodarilo sa odoslať žiadosť' };
+    if (!result.success || !result.quote_id) {
+      return { success: false, error: result.error || 'Nepodarilo sa odoslať žiadosť' };
     }
 
-    // Pošli email notifikácie (nezablokuje success ak zlyhá)
-    fetch(`${SUPABASE_URL}/functions/v1/send-quote-notification`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-        'apikey': SUPABASE_ANON_KEY,
-      },
-      body: JSON.stringify({ quote_id: quote.id }),
-    }).catch((err) => console.warn('[submitSampleLead] Email notification failed:', err));
-
-    return { success: true, quoteId: quote.id };
+    return { success: true, quoteId: result.quote_id };
   } catch (error) {
-    console.error('Unexpected error in submitSampleLead:', error);
+    if (import.meta.env.DEV) {
+      console.error('Unexpected error in submitSampleLead:', error);
+    }
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Neočakávaná chyba',
@@ -158,38 +184,15 @@ export async function submitSampleLead(data: SampleLeadFormData): Promise<Submit
   }
 }
 
-/**
- * Nájde existujúceho zákazníka podľa emailu alebo vytvorí nového (upsert)
- */
-async function findOrCreateCustomer(data: CustomerInsert): Promise<Customer | null> {
-  const { data: customer, error } = await supabase
-    .from('customers')
-    .upsert(
-      {
-        email: data.email,
-        name: data.name,
-        phone: data.phone,
-        city: data.city,
-      },
-      { onConflict: 'email' }
-    )
-    .select()
-    .single();
-
-  if (error) {
-    console.error('Error upserting customer:', error);
-    return null;
-  }
-
-  return customer;
-}
-
 // ===========================================
-// ADMIN FUNCTIONS (pre budúci admin panel)
+// ADMIN FUNCTIONS (require authenticated session)
 // ===========================================
+// These functions are only callable from authenticated admin contexts.
+// The "Allow authenticated full access" policies on customers/quotes still
+// permit reads under an authenticated session (auth.role() = 'authenticated').
 
 /**
- * Získa všetky dopyty (vyžaduje autentifikáciu)
+ * Získa všetky dopyty (vyžaduje autentifikáciu).
  */
 export async function getQuotes(status?: string): Promise<Quote[]> {
   let query = supabase
@@ -204,7 +207,9 @@ export async function getQuotes(status?: string): Promise<Quote[]> {
   const { data, error } = await query;
 
   if (error) {
-    console.error('Error fetching quotes:', error);
+    if (import.meta.env.DEV) {
+      console.error('Error fetching quotes:', error);
+    }
     return [];
   }
 
@@ -212,26 +217,24 @@ export async function getQuotes(status?: string): Promise<Quote[]> {
 }
 
 /**
- * Aktualizuje status dopytu
+ * Aktualizuje status dopytu (vyžaduje autentifikáciu).
  */
 export async function updateQuoteStatus(
-  quoteId: string, 
-  status: string, 
-  adminNotes?: string
+  quoteId: string,
+  status: string,
+  adminNotes?: string,
 ): Promise<boolean> {
   const { error } = await supabase
     .from('quotes')
-    .update({ 
-      status, 
-      admin_notes: adminNotes 
-    })
+    .update({ status, admin_notes: adminNotes })
     .eq('id', quoteId);
 
   if (error) {
-    console.error('Error updating quote:', error);
+    if (import.meta.env.DEV) {
+      console.error('Error updating quote:', error);
+    }
     return false;
   }
 
   return true;
 }
-
