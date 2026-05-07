@@ -33,9 +33,13 @@ const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 
 export function useInstagramFeed(limit: number = 8, enabled: boolean = true) {
   const [posts, setPosts] = useState<InstagramPost[]>(FALLBACK_POSTS.slice(0, limit));
-  const [isLoading, setIsLoading] = useState(true);
+  // Štart s isLoading=false — fallback posts sú dostupné ihneď, takže grid môže
+  // renderovať fallback bez skeleton flickeru. setIsLoading(true) sa nastaví v
+  // fetchPosts() po IO triggeri, ale grid môže medzitým ukázať fallback (lepšie
+  // UX než nekonečný skeleton ak IO nezatriguje, napr. keď user nikdy nedoscrolluje).
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [isUsingFallback, setIsUsingFallback] = useState(false);
+  const [isUsingFallback, setIsUsingFallback] = useState(true);
 
   useEffect(() => {
     if (!enabled) return;
