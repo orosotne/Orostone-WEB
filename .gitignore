@@ -58,3 +58,6 @@ supabase/.temp/
 .firecrawl/
 .google-ads/
 CONTEXT.md
+
+# Chrome DevTools MCP scaffold — kept locally for AI tooling, not part of the app
+chrome-devtools-mcp/
