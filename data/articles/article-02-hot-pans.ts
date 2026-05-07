@@ -14,6 +14,8 @@ export const ARTICLE_02: BlogArticle = {
     title: 'Môžete položiť horúci hrniec na sinterovaný kameň? Úprimná odpoveď',
     subtitle: 'Test tepelnej odolnosti sinterovaného kameňa v praxi — čo skutočne vydrží a kde sú limity',
     excerpt: 'Sinterovaný kameň odolá teplotám do 300°C a horúce hrnce ho nepoškodí. Ale je tu jeden scenár, na ktorý si treba dávať pozor — termický šok.',
+    metaTitle: 'Horúci hrniec na sinterovanom kameni | OROSTONE',
+    metaDescription: 'Môžete položiť horúci hrniec priamo na pracovnú dosku? Vysvetlenie tepelnej odolnosti sinterovaného kameňa a hraníc, kde to už neplatí.',
     directAnswer: 'Áno, na sinterovaný kameň môžete položiť horúci hrniec priamo z plameňa alebo rúry. Materiál odolá teplotám nad 300°C bez poškodenia, zmeny farby ani deformácie. Výrobný proces spekania pri 1 200°C mu dáva tepelnú odolnosť, ktorú plastické živice v iných materiáloch nemajú.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>

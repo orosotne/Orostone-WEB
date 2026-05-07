@@ -14,6 +14,8 @@ export const ARTICLE_03: BlogArticle = {
     title: 'Zafarbí sa sinterovaný kameň? Reálny test s kávou, vínom a kurkumou',
     subtitle: 'Testovali sme odolnosť sinterovaného kameňa voči najčastejším škvrnotvorným látkam v kuchyni — výsledky vás možno prekvapia',
     excerpt: 'Sinterovaný kameň má pórovitosť pod 0,1% — káva, víno ani kurkuma doň neprenikajú. Ale testovali sme to a výsledky zaznamenali.',
+    metaTitle: 'Škvrny na sinterovanom kameni | OROSTONE',
+    metaDescription: 'Káva, červené víno, kurkuma, olej. Zafarbí sa sinterovaný kameň po každodennom používaní? Nasiakavosť, čistenie a kde sú reálne hranice.',
     directAnswer: 'Sinterovaný kameň má takmer nulovú pórovitosť (absorpcia vody pod 0,1%), čo znamená, že žiadna bežná kuchynská tekutina doň neprenikne. Škvrny od kávy, vína, kurkumy ani citrónovej šťavy sa nevstrebú do povrchu — stačí ich zotriete vlhkou handrou. Impregnácia nie je potrebná.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>

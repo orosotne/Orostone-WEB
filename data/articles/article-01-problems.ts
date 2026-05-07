@@ -15,6 +15,8 @@ export const ARTICLE_01: BlogArticle = {
     title: 'Problémy so sinterovaným kameňom, o ktorých ti nikto nepovie (a ako im predchádzame)',
     subtitle: 'Úprimný sprievodca rizikami sinterovaného kameňa — od chipovania po praskanie pri výrezoch',
     excerpt: 'Sinterovaný kameň je vynikajúci materiál, ale nie je nezničiteľný. Pozri sa na reálne problémy, konkrétne čísla a overené riešenia, ktoré v Orostone denne používame.',
+    metaTitle: 'Riziká pri sinterovanom kameni | OROSTONE',
+    metaDescription: 'Sinterovaný kameň má svoje riziká — pri výrezoch, hranách aj počas osádzania. Ako sa im dá predísť správnym zameraním a skúseným kamenárom.',
     directAnswer: 'Sinterovaný kameň môže prasknúť pri výrezoch, odštiepiť sa na hranách a poškodiť sa pri preprave — ak sa nedodržia presné technické postupy. Kľúčom je kvalitná fabrikácia, správna hrúbka materiálu, minimálny rádius rohov 5 mm a profesionálna inštalácia.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>

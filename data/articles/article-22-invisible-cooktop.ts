@@ -14,6 +14,8 @@ export const ARTICLE_22: BlogArticle = {
     title: 'Neviditeľná varná doska v sinterovanom kameni — kompletný sprievodca',
     subtitle: 'Ako funguje indukčné varenie integrované priamo pod sinterovaný kameň a prečo je to budúcnosť kuchýň',
     excerpt: 'Neviditeľná varná doska skrytá pod sinterovaným kameňom vytvára dokonale čistú pracovnú plochu. Vysvetľujeme technológiu, požiadavky na hrúbku platne, kompatibilné systémy a reálne skúsenosti.',
+    metaTitle: 'Neviditeľná varná doska v sinterovanom kameni | OROSTONE',
+    metaDescription: 'Indukcia priamo pod sinterovaným kameňom — bez viditeľnej platne. Ako to funguje, čo to ponúka v kuchyni a kde sú technické limity.',
     directAnswer: 'Neviditeľná varná doska je indukčný systém inštalovaný pod sinterovaný kameň hrúbky 12 mm. Elektromagnetické pole prechádza cez kameň a ohrieva priamo hrniec. Výsledok: úplne hladká pracovná doska bez viditeľných horákov, ľahko čistiteľná, s plným výkonom indukcie.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>

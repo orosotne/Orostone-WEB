@@ -159,8 +159,8 @@ function prerenderBlogArticle(article: any): void {
 
   writePage({
     route: `/blog/${article.slug}`,
-    title: `${c.title} | OROSTONE Blog`,
-    description: (c.directAnswer || c.excerpt).slice(0, 300),
+    title: c.metaTitle || `${c.title} | OROSTONE`,
+    description: (c.metaDescription || c.directAnswer || c.excerpt).slice(0, 300),
     canonical,
     ogImage,
     ogType: 'article',
@@ -245,9 +245,9 @@ function prerenderBlogListing(): void {
 
   writePage({
     route: '/blog',
-    title: 'Blog | OROSTONE — Sinterovaný kameň',
+    title: 'Blog o sinterovanom kameni | OROSTONE',
     description:
-      'Odborné články o sinterovanom kameni — porovnania, údržba, inštalácia, certifikácie a praktické rady.',
+      'Články o sinterovanom kameni — cena, údržba, hrúbka, porovnania s keramikou a technickým kameňom. Pre tých, kto si vyberá dlhodobé riešenie.',
     canonical: `${BASE_URL}/blog`,
     rootContent: `
       <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Blog</nav>
@@ -270,6 +270,81 @@ function prerenderBlogListing(): void {
 // ---------------------------------------------------------------------------
 // Product pages
 // ---------------------------------------------------------------------------
+
+/**
+ * Per-slug SEO override for product pages.
+ * Single source of truth for Vera's production-ready product meta copy
+ * — independent of `data/shop-products-fallback.json`, which is regenerated
+ * from Shopify by `scripts/sync-shop-fallback.ts` at the start of every build.
+ *
+ * Without this override, every build would silently revert product meta to
+ * whatever Shopify currently has in its `metaTitle` / `metaDescription` fields.
+ *
+ * To update: edit the entry below. Do NOT edit shop-products-fallback.json —
+ * those edits are erased on the next build.
+ */
+const PRODUCT_META_OVERRIDE: Record<string, { title: string; description: string }> = {
+  appennino: {
+    title: 'Appennino — svetlý sinterovaný kameň | OROSTONE',
+    description:
+      'Pokojný svetlý dekor pre kuchyne, kde má plocha pôsobiť čisto a vyvážene. Bez agresívnej kresby a bez impregnácie. Vzorka Appennino na vyžiadanie.',
+  },
+  'astrana-grey': {
+    title: 'Astrana Grey — sivý sinterovaný kameň | OROSTONE',
+    description:
+      'Astrana Grey je vyrovnaný sivý dekor s jemnou kresbou. Funguje v kuchyniach, kde má pracovná doska držať pokojnú líniu interiéru. Vzorka aj poradenstvo bez záväzku.',
+  },
+  'calacatta-top': {
+    title: 'Calacatta Top — biely mramorový dekor | OROSTONE',
+    description:
+      'Biely mramorový dekor so zlatistými žilkami. Pre kuchyne a kúpeľne, kde má plocha pôsobiť reprezentatívne, ale nie efektne. Pošlite pôdorys, vyrátame cenu.',
+  },
+  'givenchy-gold': {
+    title: 'Givenchy Gold — zlatistý mramorový dekor | OROSTONE',
+    description:
+      'Teplý dekor so zlatistou kresbou v béžovo-hnedom poli. Pre interiéry, kde má dekor niesť vlastnú váhu — kúpeľne, akcentové steny, ostrovčeky. Veľká platňa v showroome Bošany.',
+  },
+  'gothic-gold': {
+    title: 'Gothic Gold — tmavý dekor so zlatistou kresbou | OROSTONE',
+    description:
+      'Gothic Gold je tmavý dekor so zlatistými žilkami. Pre kuchyne, kde má pracovná doska niesť dramatickejšiu líniu. Pozrite veľkú platňu v showroome Bošany.',
+  },
+  'nero-margiua': {
+    title: 'Nero Margiua — čierny sinterovaný kameň | OROSTONE',
+    description:
+      'Čierny mramorový dekor s bielou žilkovou kresbou. Pre kuchyne, kde má pracovná doska byť kontrastom proti svetlým frontom. Veľká platňa v showroome Bošany.',
+  },
+  'roman-travertine': {
+    title: 'Roman Travertine — travertínový dekor | OROSTONE',
+    description:
+      'Roman Travertine prináša prirodzenú textúru travertínu — bez nasiakavosti, bez impregnácie a bez údržby, ktorú by si reálny travertín vyžadoval.',
+  },
+  'statuario-diamante': {
+    title: 'Statuario Diamante — biely mramorový dekor | OROSTONE',
+    description:
+      'Biely sinterovaný kameň s jemným šedým žilkovaním. Pre kuchyne, kde má plocha priniesť svetlo bez toho, aby zaťažila výraz. Vzorka na vyžiadanie.',
+  },
+  'super-white-extra': {
+    title: 'Super White Extra — čistý biely dekor | OROSTONE',
+    description:
+      'Čistý biely sinterovaný kameň bez žilkovania. Pre minimalistické kuchyne, kde má plocha úplne ustúpiť v prospech kompozície. Vzorka na vyžiadanie.',
+  },
+  'taj-mahal': {
+    title: 'Taj Mahal — krémový sinterovaný kameň | OROSTONE',
+    description:
+      'Krémový mramorový dekor s mäkkou kresbou. Pre kuchyne s teplými drevenými frontami a interiéry, kde má povrch hriať, nie chladiť. Vzorka aj poradenstvo bez záväzku.',
+  },
+  'wild-forest': {
+    title: 'Wild Forest — výrazný dekor pre veľké plochy | OROSTONE',
+    description:
+      'Wild Forest je výrazný dekor s veľkoplošnou kresbou. Vzorka 10×10 cm ho nezachytí — odporúčame pozrieť veľkú platňu v showroome Bošany.',
+  },
+  'yabo-white': {
+    title: 'Yabo White — teplý biely sinterovaný kameň | OROSTONE',
+    description:
+      'Yabo White je teplý biely dekor s mäkkou textúrou. Pre kuchyne, kde má svetlá plocha pôsobiť obytne, nie sterilne. Vzorka Yabo White na vyžiadanie.',
+  },
+};
 
 function prerenderProduct(product: any): void {
   const canonical = `${BASE_URL}/produkt/${product.id}`;
@@ -297,10 +372,14 @@ function prerenderProduct(product: any): void {
     ? `<p><strong>Použitie:</strong> ${product.applications.join(', ')}</p>`
     : '';
 
+  const override = PRODUCT_META_OVERRIDE[product.id];
+
   writePage({
     route: `/produkt/${product.id}`,
-    title: product.metaTitle || `${product.name} | OROSTONE`,
-    description: (product.metaDescription || stripHtml(product.description)).slice(0, 300),
+    title: override?.title || product.metaTitle || `${product.name} | OROSTONE`,
+    description: (
+      override?.description || product.metaDescription || stripHtml(product.description)
+    ).slice(0, 300),
     canonical,
     ogImage,
     ogType: 'product',
@@ -397,9 +476,9 @@ function prerenderCategoryListing(): void {
 
   writePage({
     route: '/kategoria/sintered-stone',
-    title: 'Sinterovaný kameň — Všetky dekory | OROSTONE',
+    title: 'Sinterovaný kameň — dekory a platne | OROSTONE',
     description:
-      'Kompletná kolekcia prémiového sinterovaného kameňa. Kuchynské dosky, obklady a architektonické platne 3200×1600 mm.',
+      'Sinterovaný kameň pre kuchyne a interiéry. Veľkoformátové platne 3200×1600 mm, dekory s pokojnou aj výraznou kresbou. Showroom Bošany.',
     canonical: `${BASE_URL}/kategoria/sintered-stone`,
     rootContent: `
       <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Sinterovaný kameň</nav>
@@ -431,13 +510,41 @@ function prerenderCategoryListing(): void {
 interface ColorSubcategory {
   slug: 'biele' | 'bezove' | 'sede' | 'cierne';
   name: string; // nominative plural (e.g. „Biele")
+  /** SEO title override — fixed per-subcategory for stable indexing */
+  metaTitle: string;
+  /** SEO description override — fixed per-subcategory for stable indexing */
+  metaDescription: string;
 }
 
 const COLOR_SUBCATEGORIES: ColorSubcategory[] = [
-  { slug: 'biele', name: 'Biele' },
-  { slug: 'bezove', name: 'Béžové' },
-  { slug: 'sede', name: 'Šedé' },
-  { slug: 'cierne', name: 'Čierne' },
+  {
+    slug: 'biele',
+    name: 'Biele',
+    metaTitle: 'Biely sinterovaný kameň | OROSTONE',
+    metaDescription:
+      'Biele dekory sinterovaného kameňa pre svetlé kuchyne a kúpeľne. Od čistých plôch po jemné mramorové žilkovanie. Veľké platne až 3200×1600 mm.',
+  },
+  {
+    slug: 'bezove',
+    name: 'Béžové',
+    metaTitle: 'Béžový sinterovaný kameň | OROSTONE',
+    metaDescription:
+      'Béžové dekory sinterovaného kameňa pre kuchyne, kúpeľne a interiéry. Teplé prírodné odtiene, ktoré priestor zjemnia bez toho, aby ho zaťažili.',
+  },
+  {
+    slug: 'sede',
+    name: 'Šedé',
+    metaTitle: 'Sivý sinterovaný kameň | OROSTONE',
+    metaDescription:
+      'Sivé dekory sinterovaného kameňa pre kuchyne, kde má plocha fungovať pokojne a nepretiahnuť pozornosť na seba. Od svetlej cementovej až po antracit.',
+  },
+  {
+    slug: 'cierne',
+    name: 'Čierne',
+    metaTitle: 'Čierny sinterovaný kameň | OROSTONE',
+    metaDescription:
+      'Čierne dekory sinterovaného kameňa pre kuchyne a ostrovčeky, kde má povrch niesť váhu priestoru. Veľkoformátové platne 3200×1600 mm.',
+  },
 ];
 
 /** Slovak plural rules for „dekor": 1 → dekor, 2–4 → dekory, 5+ → dekorov */
@@ -460,8 +567,8 @@ function prerenderColorSubcategory(sub: ColorSubcategory): void {
 
   writePage({
     route,
-    title: `Sinterovaný kameň — ${sub.name} dekory | OROSTONE`,
-    description: `Kolekcia ${sub.name} — prémiový sinterovaný kameň OROSTONE. ${countPhrase} na výber pre kuchynské dosky, obklady a architektonické projekty.`,
+    title: sub.metaTitle,
+    description: sub.metaDescription,
     canonical,
     rootContent: `
       <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; <a href="/kategoria/sintered-stone">Sinterovaný kameň</a> &rsaquo; ${esc(sub.name)}</nav>
@@ -503,9 +610,9 @@ interface InfoPage {
 const INFO_PAGES: InfoPage[] = [
   {
     route: '/kontakt',
-    title: 'Kontakt | OROSTONE — Prémiový sinterovaný kameň',
+    title: 'Kontakt | OROSTONE — sinterovaný kameň',
     description:
-      'Kontaktujte OROSTONE pre cenovú ponuku alebo odbornú konzultáciu. Sídlo v Bratislave — Landererova 8. Email: info@orostone.sk, Tel: +421 917 588 738.',
+      'Cenová ponuka, vzorky alebo konzultácia k pracovnej doske zo sinterovaného kameňa. Showroom Bošany, dodanie po celom Slovensku.',
     h1: 'Kontakt',
     intro:
       'OROSTONE — slovenský dodávateľ prémiového sinterovaného kameňa. Sídlo: Landererova 8, 811 09 Bratislava. Telefón: +421 917 588 738. E-mail: info@orostone.sk. Radi pre vás pripravíme bezplatnú konzultáciu a cenovú ponuku.',
@@ -516,18 +623,18 @@ const INFO_PAGES: InfoPage[] = [
   },
   {
     route: '/doprava',
-    title: 'Doprava a platba | OROSTONE E-Shop',
+    title: 'Doprava veľkoformátových platní | OROSTONE',
     description:
-      'Informácie o doprave, platobných metódach a časoch expedície. Špeciálna preprava veľkoformátových platní po celom Slovensku.',
+      'Informácie o doprave, platbe a špeciálnej preprave veľkoformátových platní a vzoriek sinterovaného kameňa po celom Slovensku.',
     h1: 'Doprava a platba',
     intro:
       'OROSTONE zabezpečuje špeciálnu prepravu veľkoformátových sinterovaných platní 3200×1600 mm po celom Slovensku. Platba bankovým prevodom alebo kartou. Expedícia do 1–5 pracovných dní od potvrdenia objednávky.',
   },
   {
     route: '/reklamacie',
-    title: 'Reklamácie a vrátenie tovaru | OROSTONE E-Shop',
+    title: 'Reklamácie a vrátenie tovaru | OROSTONE',
     description:
-      'Reklamačný poriadok, podmienky vrátenia tovaru a postup pri reklamácii. Zákonná zodpovednosť za vady 24 mesiacov. Vzorový formulár na odstúpenie od zmluvy.',
+      'Reklamačný poriadok OROSTONE, postup pri reklamácii, vrátenie tovaru a zákonná zodpovednosť za vady pri nákupe cez e-shop.',
     h1: 'Reklamácie a vrátenie tovaru',
     intro:
       'Reklamačný poriadok a postup pri reklamácii tovaru zakúpeného v e-shope OROSTONE. Zákonná zodpovednosť za vady trvá 24 mesiacov. Spotrebiteľ má právo odstúpiť od kúpnej zmluvy uzavretej na diaľku do 14 dní bez uvedenia dôvodu.',
@@ -538,18 +645,18 @@ const INFO_PAGES: InfoPage[] = [
   },
   {
     route: '/odstupenie-od-zmluvy',
-    title: 'Formulár na odstúpenie od zmluvy | OROSTONE',
+    title: 'Odstúpenie od zmluvy | OROSTONE',
     description:
-      'Vzorový formulár na odstúpenie od kúpnej zmluvy uzavretej na diaľku podľa zákona č. 108/2024 Z.z. o ochrane spotrebiteľa. OROSTONE e-shop.',
+      'Formuláre a informácie k odstúpeniu od zmluvy pri nákupe cez OROSTONE e-shop podľa platnej spotrebiteľskej legislatívy.',
     h1: 'Formulár na odstúpenie od zmluvy',
     intro:
       'Vzorový formulár na odstúpenie od kúpnej zmluvy uzavretej na diaľku podľa zákona č. 108/2024 Z.z. o ochrane spotrebiteľa. Spotrebiteľ má právo odstúpiť od zmluvy do 14 dní bez uvedenia dôvodu.',
   },
   {
     route: '/sinterovany-kamen',
-    title: 'Sinterovaný kameň | Čo to je a prečo ho chcete | Orostone',
+    title: 'Sinterovaný kameň: cena, výhody, použitie | OROSTONE',
     description:
-      'Sinterovaný kameň je prémiový povrch z prírodných minerálov. Odolný teplu, škvrnám aj UV. Zistite, prečo je ideálny na kuchynské dosky a interiéry.',
+      'Čo je sinterovaný kameň, koľko stojí a kedy dáva zmysel ako pracovná doska. Praktický sprievodca pre kuchyňu, kde nechcete robiť kompromis.',
     h1: 'Sinterovaný kameň — čo to je a prečo ho chcete',
     intro:
       'Sinterovaný kameň je prémiový povrch vyrobený z prírodných minerálov pod extrémnym tlakom a teplotou. Odolá teplotám nad 300 °C, škvrnám, UV žiareniu aj škrabancom. Je ideálnym materiálom na kuchynské dosky, obklady kúpeľní a architektonické projekty. Nevyžaduje impregnáciu ani zvláštnu údržbu.',
@@ -560,9 +667,9 @@ const INFO_PAGES: InfoPage[] = [
   },
   {
     route: '/vyhody',
-    title: 'Výhody sinterovaného kameňa | Neviditeľná varná doska | Orostone',
+    title: 'Výhody sinterovaného kameňa | OROSTONE',
     description:
-      'Sinterovaný kameň odolá 300 °C, nepotrebuje údržbu a umožňuje integráciu neviditeľnej indukčnej varnej dosky. Porovnanie s žulou, quartzom a mramorom.',
+      'Sinterovaný kameň odoláva teplu, škvrnám a poškriabaniu. Pozrite porovnanie s technickým kameňom, žulou a mramorom — rozdiely, ktoré reálne rozhodujú.',
     h1: 'Výhody sinterovaného kameňa',
     intro:
       'Sinterovaný kameň odolá teplotám nad 300 °C, nepotrebuje impregnáciu ani zvláštnu údržbu a umožňuje integráciu neviditeľnej indukčnej varnej dosky priamo v kuchynskej doske. V porovnaní so žulou, quartzovým kompozitom a mramorom má lepšiu tepelnú aj mechanickú odolnosť.',
@@ -654,15 +761,14 @@ function prerenderHome(): void {
 
   writePage({
     route: '/',
-    title:
-      'OROSTONE — Prémiový Sinterovaný Kameň | Kuchynské Dosky, Obklady, Architektonické Projekty',
+    title: 'Sinterovaný kameň pre kuchyne | OROSTONE',
     description:
-      'OROSTONE je slovenský dodávateľ prémiového sinterovaného kameňa. Kuchynské dosky, kúpeľňové povrchy a architektonické riešenia. Bezplatná konzultácia, digitálne laserové zameranie, CNC fabrikácia a profesionálna inštalácia.',
+      'Sinterovaný kameň pre kuchyne, ostrovčeky a interiéry. Pomôžeme vybrať dekor, ktorý funguje aj vo veľkej ploche. Showroom Bošany, dodanie po SR.',
     canonical: `${BASE_URL}/`,
     rootContent: `
       <header>
-        <h1>OROSTONE — Prémiový sinterovaný kameň</h1>
-        <p>Slovenský dodávateľ veľkoformátových sinterovaných platní 3200×1600 mm pre kuchynské dosky, kúpeľne a architektonické projekty. Bezplatná konzultácia, laserové zameranie, CNC fabrikácia a profesionálna inštalácia.</p>
+        <h1>OROSTONE — sinterovaný kameň pre kuchyne, ktoré nechcú robiť kompromis</h1>
+        <p>Sinterovaný kameň pre kuchyne, ostrovčeky a interiéry. Pomôžeme vybrať dekor, ktorý funguje aj vo veľkej ploche. Showroom Bošany, dodanie po SR.</p>
       </header>
       <section>
         <h2>Hlavné sekcie</h2>
@@ -709,9 +815,9 @@ function prerenderHome(): void {
 function prerenderVzorky(): void {
   writePage({
     route: '/vzorky',
-    title: 'Vzorky materiálu | OROSTONE — Prémiový sinterovaný kameň',
+    title: 'Vzorky sinterovaného kameňa | OROSTONE',
     description:
-      'Objednajte si vzorky sinterovaného kameňa OROSTONE. Vyberte dekor, nechajte kontakt a doručíme vám materiál na rozhodnutie.',
+      'Objednajte si vzorku dekoru, ktorý vás zaujal, alebo viac vzoriek na porovnanie. Pri väčších plochách odporúčame návštevu showroomu Bošany.',
     canonical: `${BASE_URL}/vzorky`,
     rootContent: `
       <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Vzorky</nav>
@@ -738,9 +844,9 @@ function prerenderVzorky(): void {
 function prerenderKuchyne(): void {
   writePage({
     route: '/kuchyne',
-    title: 'Kuchyne zo sinterovaného kameňa | Orostone',
+    title: 'Kamenné pracovné dosky do kuchyne | OROSTONE',
     description:
-      'Prémiové kuchynské dosky zo sinterovaného kameňa — odolné voči teplu, škvrnám a škrabancom. Pozrite si realizácie a objednajte vzorky zadarmo.',
+      'Pracovné dosky zo sinterovaného kameňa na mieru. Odolný povrch, nízka nasiakavosť, bez impregnácie. Pošlite pôdorys, vyrátame orientačnú cenu.',
     canonical: `${BASE_URL}/kuchyne`,
     rootContent: `
       <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Kuchyne</nav>
