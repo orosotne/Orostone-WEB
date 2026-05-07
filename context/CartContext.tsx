@@ -100,6 +100,11 @@ function mapShopifyCartLines(cart: ShopifyCart): CartItem[] {
   return cart.lines.edges
     .filter(({ node: line }) => line.merchandise?.product != null)
     .map(({ node: line }) => {
+      // #region agent log
+      if (import.meta.env.DEV) {
+        fetch('http://127.0.0.1:7731/ingest/fe10e622-0fa2-40d2-8709-73e6a557fd3f',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'686860'},body:JSON.stringify({sessionId:'686860',location:'CartContext.tsx:mapShopifyCartLines',message:'mapping cart line',data:{lineId:line.id,merchandiseTitle:line.merchandise?.title,productTitle:line.merchandise?.product?.title,imageUrl:line.merchandise?.image?.url,edgesLen:line.merchandise?.product?.images?.edges?.length,nodeUrl:line.merchandise?.product?.images?.edges?.[0]?.node?.url},timestamp:Date.now(),hypothesisId:'H2'})}).catch(()=>{});
+      }
+      // #endregion
       // Storefront API: CartLineCost.subtotalAmount = line total PRED line-level
       // discountami, CartLineCost.totalAmount = PO nich. Rozdiel = line discount.
       const lineSubtotalBefore = parseFloat(line.cost?.subtotalAmount?.amount ?? '0');
@@ -152,6 +157,11 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
     const initCart = async () => {
       setIsLoading(true);
+      // #region agent log
+      if (import.meta.env.DEV) {
+        fetch('http://127.0.0.1:7731/ingest/fe10e622-0fa2-40d2-8709-73e6a557fd3f',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'686860'},body:JSON.stringify({sessionId:'686860',location:'CartContext.tsx:initCart',message:'cart init start',data:{shopifyConfigured:true},timestamp:Date.now(),hypothesisId:'H2'})}).catch(()=>{});
+      }
+      // #endregion
       try {
         // Skus nacitat existujuci cart z localStorage
         const savedCartId = localStorage.getItem(CART_ID_KEY);
