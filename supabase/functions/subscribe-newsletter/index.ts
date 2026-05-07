@@ -88,30 +88,57 @@ serve(async (req) => {
       auth: { persistSession: false },
     });
 
-    // 1. Check if subscriber exists (service-role bypasses RLS)
-    const { data: existing, error: lookupError } = await supabase
+    // Race-safe subscribe pattern (fixes /ultrareview bug_008).
+    //
+    // Previous SELECT-then-INSERT/UPDATE flow had a TOCTOU race: two concurrent
+    // submits for the same brand-new email both observed "no row" and both
+    // INSERTed; the second hit the unique constraint on `email` and surfaced
+    // a 500 to the user even though they were now subscribed.
+    //
+    // New flow:
+    //   1. Try INSERT.
+    //   2. On 23505 (unique violation) → row already exists. Re-fetch and
+    //      decide whether to reactivate or return idempotent success.
+    //   3. On any other error → real failure.
+    //
+    // Atomicity comes from the UNIQUE(email) constraint (schema.sql:54): only
+    // ONE concurrent INSERT can win, the other gets 23505 deterministically.
+
+    const insertResult = await supabase
       .from('newsletter_subscribers')
-      .select('id, is_active')
-      .eq('email', email)
-      .maybeSingle();
+      .insert({ email, name: name ?? null, source });
 
-    if (lookupError) {
-      console.error('[subscribe-newsletter] Lookup failed:', lookupError);
-      return new Response(
-        JSON.stringify({ success: false, error: 'Nepodarilo sa overiť odber' }),
-        { status: 500, headers: corsHeaders },
-      );
-    }
+    let isNewSubscriber = false;
+    let isReactivated = false;
 
-    if (existing) {
+    if (!insertResult.error) {
+      // 1a. Brand-new subscriber — INSERT succeeded.
+      isNewSubscriber = true;
+    } else if (insertResult.error.code === '23505') {
+      // 1b. Row already exists. Re-fetch and decide.
+      const { data: existing, error: lookupError } = await supabase
+        .from('newsletter_subscribers')
+        .select('id, is_active')
+        .eq('email', email)
+        .single();
+
+      if (lookupError || !existing) {
+        console.error('[subscribe-newsletter] Lookup after 23505 failed:', lookupError);
+        return new Response(
+          JSON.stringify({ success: false, error: 'Nepodarilo sa overiť odber' }),
+          { status: 500, headers: corsHeaders },
+        );
+      }
+
       if (existing.is_active) {
-        // Already active — idempotent success, no welcome email re-send
+        // Already active — idempotent success, no welcome email re-send.
         return new Response(
           JSON.stringify({ success: true, alreadySubscribed: true }),
           { status: 200, headers: corsHeaders },
         );
       }
-      // Reactivate
+
+      // Reactivate inactive row.
       const { error: updateError } = await supabase
         .from('newsletter_subscribers')
         .update({
@@ -128,30 +155,27 @@ serve(async (req) => {
           { status: 500, headers: corsHeaders },
         );
       }
+      isReactivated = true;
     } else {
-      // New subscriber
-      const { error: insertError } = await supabase
-        .from('newsletter_subscribers')
-        .insert({ email, name: name ?? null, source });
-
-      if (insertError) {
-        console.error('[subscribe-newsletter] Insert failed:', insertError);
-        return new Response(
-          JSON.stringify({ success: false, error: 'Nepodarilo sa prihlásiť na odber' }),
-          { status: 500, headers: corsHeaders },
-        );
-      }
+      console.error('[subscribe-newsletter] Insert failed:', insertResult.error);
+      return new Response(
+        JSON.stringify({ success: false, error: 'Nepodarilo sa prihlásiť na odber' }),
+        { status: 500, headers: corsHeaders },
+      );
     }
 
-    // 2. Send welcome email (fire-and-forget)
-    fetch(`${SUPABASE_URL}/functions/v1/send-newsletter-welcome`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
-      },
-      body: JSON.stringify({ email, name }),
-    }).catch((err) => console.warn('[subscribe-newsletter] Welcome email dispatch failed:', err));
+    // 2. Send welcome email (fire-and-forget) only for new subscribers and
+    //    reactivated unsubscribers — NOT when alreadySubscribed.
+    if (isNewSubscriber || isReactivated) {
+      fetch(`${SUPABASE_URL}/functions/v1/send-newsletter-welcome`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
+        },
+        body: JSON.stringify({ email, name }),
+      }).catch((err) => console.warn('[subscribe-newsletter] Welcome email dispatch failed:', err));
+    }
 
     return new Response(
       JSON.stringify({ success: true }),

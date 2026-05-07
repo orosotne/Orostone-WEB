@@ -117,13 +117,10 @@ ALTER TABLE quotes ENABLE ROW LEVEL SECURITY;
 ALTER TABLE quote_files ENABLE ROW LEVEL SECURITY;
 
 -- CUSTOMERS policies
--- POZOR: anonymous SELECT/UPDATE BOLI ODSTRÁNENÉ v migrácii 20260507_fix_rls_pii_leak.sql
---        (audit P0-1 — verejný anon key umožňoval čítať všetky PII).
--- Anonymous môže LEN vkladať. Reads/upserts s RETURNING idú cez Edge Function
--- supabase/functions/submit-quote/index.ts (service-role key).
-CREATE POLICY "Allow anonymous insert" ON customers
-    FOR INSERT
-    WITH CHECK (true);
+-- POZOR: VŠETKY anonymous policies (SELECT/UPDATE/INSERT) BOLI ODSTRÁNENÉ
+-- v migrácii 20260507_fix_rls_pii_leak.sql (audit P0-1 + /ultrareview bug_021).
+-- Všetky writes idú cez Edge Function submit-quote (service-role key);
+-- anonymous nemá žiadny priamy prístup k tejto tabuľke.
 
 -- Authenticated (admin) má plný prístup
 CREATE POLICY "Allow authenticated full access" ON customers
@@ -131,11 +128,8 @@ CREATE POLICY "Allow authenticated full access" ON customers
     USING (auth.role() = 'authenticated');
 
 -- QUOTES policies
--- POZOR: anonymous SELECT BOLO ODSTRÁNENÉ v migrácii 20260507_fix_rls_pii_leak.sql.
--- Inserts s RETURNING idú cez Edge Function submit-quote (service-role).
-CREATE POLICY "Allow anonymous insert" ON quotes
-    FOR INSERT
-    WITH CHECK (true);
+-- POZOR: VŠETKY anonymous policies BOLI ODSTRÁNENÉ.
+-- Writes idú cez Edge Function submit-quote (service-role).
 
 -- Authenticated (admin) má plný prístup
 CREATE POLICY "Allow authenticated full access" ON quotes
@@ -145,11 +139,8 @@ CREATE POLICY "Allow authenticated full access" ON quotes
 -- NEWSLETTER_SUBSCRIBERS policies
 ALTER TABLE newsletter_subscribers ENABLE ROW LEVEL SECURITY;
 
--- POZOR: anonymous SELECT/UPDATE BOLI ODSTRÁNENÉ v migrácii 20260507_fix_rls_pii_leak.sql.
+-- POZOR: VŠETKY anonymous policies BOLI ODSTRÁNENÉ.
 -- Subscribe/reactivate logika je v Edge Function subscribe-newsletter (service-role).
-CREATE POLICY "Allow anonymous insert" ON newsletter_subscribers
-    FOR INSERT
-    WITH CHECK (true);
 
 -- Authenticated (admin) má plný prístup
 CREATE POLICY "Allow authenticated full access" ON newsletter_subscribers

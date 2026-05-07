@@ -86,8 +86,10 @@ async function callSubmitQuote(payload: SubmitQuotePayload): Promise<{
  *   1. POST to submit-quote → server upserts customer + inserts quote
  *   2. If files present, upload to storage with returned quote_id
  *
- * Note: file upload still goes through anonymous storage policy (UUID-gated;
- * see supabase/schema.sql storage section). That path was not affected by P0-1.
+ * Note: file upload still uses the anonymous storage INSERT policy
+ * (bucket-scoped only — `WITH CHECK (bucket_id = 'quote-files')`, no
+ * path/UUID enforcement; see supabase/schema.sql storage section).
+ * Tightening that policy is a separate hardening item (bug_022 follow-up).
  */
 export async function submitQuote(formData: QuoteFormData): Promise<SubmitQuoteResult> {
   if (!isSupabaseConfigured()) {

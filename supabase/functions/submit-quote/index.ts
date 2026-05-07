@@ -119,13 +119,22 @@ serve(async (req) => {
       auth: { persistSession: false },
     });
 
-    // 1. Upsert customer (service-role bypasses RLS)
+    // 1. Upsert customer (service-role bypasses RLS).
+    //
+    // IMPORTANT: spread phone/city conditionally rather than coalescing to null.
+    // Postgres `INSERT ... ON CONFLICT DO UPDATE` updates every column present
+    // in the payload using EXCLUDED values, so sending `phone: null` for a
+    // returning customer who omits the optional field would overwrite their
+    // previously-stored phone with NULL. By only including the keys when a real
+    // value is provided, omitted fields are left untouched on UPDATE.
+    // (Reported by /ultrareview as bug_001 — silent CRM data loss regression.)
+    const upsertPayload: Record<string, string> = { email, name };
+    if (phone) upsertPayload.phone = phone;
+    if (city) upsertPayload.city = city;
+
     const { data: customer, error: customerError } = await supabase
       .from('customers')
-      .upsert(
-        { email, name, phone: phone ?? null, city: city ?? null },
-        { onConflict: 'email' },
-      )
+      .upsert(upsertPayload, { onConflict: 'email' })
       .select('id, email, name, phone, city')
       .single();
 
