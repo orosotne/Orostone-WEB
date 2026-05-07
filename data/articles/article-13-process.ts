@@ -15,6 +15,8 @@ export const ARTICLE_13: BlogArticle = {
     title: 'Od merania po inštaláciu: proces Orostone v 10 krokoch',
     subtitle: 'Kompletný sprievodca celým procesom — od prvej konzultácie po odovzdanie hotovej kuchyne',
     excerpt: 'Presne budeš vedieť, čo sa deje v každej fáze. 10 krokov, konkrétne termíny, jasné zodpovednosti. Celý proces od konzultácie po hotovú kuchyňu trvá 10–15 pracovných dní.',
+    metaTitle: 'Od pôdorysu po hotovú kuchyňu — proces | OROSTONE',
+    metaDescription: 'Od pôdorysu cez výber dekoru a zameranie po finálnu kuchyňu. Celý proces zastrešíme so skúsenými kamenármi — čo má klient na oboch stranách očakávať.',
     directAnswer: 'Celý proces od prvej konzultácie po hotovú kuchyňu trvá 10–15 pracovných dní. Zahŕňa: konzultáciu, výber materiálu, digitálne zameranie (presnosť ±0.05mm), CNC fabrikáciu, kontrolu kvality, transport na A-ráme, prípravu podkladu, montáž, inštaláciu spotrebičov a finálnu kontrolu.',
     content: `
 <ul class="article-tldr">

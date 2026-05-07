@@ -14,6 +14,8 @@ export const ARTICLE_07: BlogArticle = {
     title: 'Certifikácie sinterovaného kameňa: čo znamenajú a prečo na nich záleží',
     subtitle: 'Kompletný sprievodca normami ISO, CE, NSF/ANSI 51 a Greenguard Gold — ako čítať technický list a odlíšiť skutočnú kvalitu od marketingu',
     excerpt: 'CE označenie, ISO 10545, NSF/ANSI 51, Greenguard Gold — čo tieto certifikácie skutočne zaručujú a ako sa nenechať oklamať "proprietárnym testovaním".',
+    metaTitle: 'Certifikácie sinterovaného kameňa | OROSTONE',
+    metaDescription: 'CE, ISO 10545, NSF/ANSI 51 a Greenguard Gold. Ktoré certifikáty pri sinterovanom kameni reálne niečo znamenajú a na ktoré sa pri výbere oplatí pýtať.',
     directAnswer: 'Kľúčové certifikácie pre sinterovaný kameň sú: CE označenie (povinné v EÚ), séria ISO 10545 (mechanické a chemické vlastnosti), NSF/ANSI 51 (kontakt s potravinami) a Greenguard Gold (emisia VOC). Tieto certifikáty vydávajú nezávislé akreditované laboratóriá — nie výrobca sám. Pri výbere materiálu sa pýtajte na tieto konkrétne normy, nie na "interné testy kvality".',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>

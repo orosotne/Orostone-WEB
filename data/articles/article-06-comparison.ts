@@ -15,6 +15,8 @@ export const ARTICLE_06: BlogArticle = {
     title: 'Sinterovaný kameň vs kvarcit vs keramika vs porcelán: v čom je skutočný rozdiel?',
     subtitle: 'Technické porovnanie materiálov pre prémiové kuchynské dosky — bez marketingových klišé',
     excerpt: 'Komplexné porovnanie sinterovaného kameňa, kvarcitu, porcelánových dosiek a keramiky. Reálne čísla, certifikácie, cenové rozpätia a rozhodovací strom pre tvoj projekt.',
+    metaTitle: 'Sinterovaný kameň, keramika, porcelán, kvarcit | OROSTONE',
+    metaDescription: 'Rozdiel medzi sinterovaným kameňom, keramikou, porcelánom a kvarcitom. Z čoho sa vyrábajú, ako reagujú na teplo, UV a každodennú prácu v kuchyni.',
     directAnswer: 'Sinterovaný kameň je 100% minerálny materiál spečený pri 1 200°C bez živíc — odolný voči teplu do 300°C, UV žiareniu a škvrnám. Kvarcitový kompozit obsahuje 7–10% polyesterových živíc, čo obmedzuje jeho tepelnú odolnosť na ~150°C a vylučuje ho z exteriérových aplikácií. Porcelánové dosky sú sinterovanému kameňu technicky najbližšie — bez živíc, s nízkou pórovitosťou.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>

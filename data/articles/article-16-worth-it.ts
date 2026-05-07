@@ -15,6 +15,8 @@ export const ARTICLE_16: BlogArticle = {
     title: 'Oplatí sa sinterovaný kameň? Cena vs životnosť vs údržba',
     subtitle: 'Reálna matematika — nie marketingové sľuby. Tri scenáre, konkrétne čísla v eurách a brutálne úprimná odpoveď.',
     excerpt: 'Kompletný finančný rozbor sinterovaného kameňa vs kvarcitu, žuly a laminátu. Tri reálne scenáre (rodinný dom, byt v Bratislave, Airbnb), 25-ročné náklady vlastníctva a úprimná odpoveď, kedy sa investícia oplatí — a kedy nie.',
+    metaTitle: 'Oplatí sa sinterovaný kameň? Cena a životnosť | OROSTONE',
+    metaDescription: 'Cena, životnosť, údržba, odolnosť. Sinterovaný kameň proti žule a technickému kameňu — kde sa rozdiel reálne ukáže za 5–10 rokov používania.',
     directAnswer: 'Pre kuchyňu, ktorú plánuješ používať 15+ rokov, sa sinterovaný kameň jednoznačne oplatí. Pri 25-ročnom horizonte vyjde lacnejšie ako žula (ušetríš €2 000–4 000 na údržbe) a porovnateľne s kvarcom — ale s výrazne lepšou odolnosťou voči teplu, UV a škvrnám. Neoplatí sa pri krátkodobom bývaní alebo prenájme.',
     content: `
 <ul class="article-tldr">

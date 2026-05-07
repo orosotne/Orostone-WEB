@@ -14,6 +14,8 @@ export const ARTICLE_23: BlogArticle = {
     title: 'Kuchynský ostrovček zo sinterovaného kameňa — kompletný sprievodca',
     subtitle: 'Od rozmeru cez hrúbku po waterfall hrany: všetko, čo potrebujete vedieť pred objednaním',
     excerpt: 'Kuchynský ostrovček zo sinterovaného kameňa je vizuálne dominanta modernej kuchyne. Poradíme s rozmermi, hrúbkou platne, profilom hrán a waterfall prevedením.',
+    metaTitle: 'Kuchynský ostrovček zo sinterovaného kameňa | OROSTONE',
+    metaDescription: 'Hrúbka platne, waterfall efekt, podpery, technika osadenia a orientačná cena. Praktický sprievodca, kým podpíšete projekt ostrovčeka.',
     directAnswer: 'Kuchynský ostrovček zo sinterovaného kameňa vyžaduje 20 mm platňu pri previsoch nad 300 mm, podpernú konštrukciu z nerezovej ocele a presné CNC výrezy. Pre waterfall efekt sa používa spojenie pod 45° uhlom s farebne zladeným lepidlom. Typická cena kompletného ostrovčeka: 2 500 – 6 000 € vrátane fabrikácie a montáže.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>
