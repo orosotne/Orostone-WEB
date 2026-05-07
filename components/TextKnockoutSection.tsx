@@ -57,22 +57,31 @@ export function TextKnockoutSection() {
       .to(goldSvgRef.current!, { opacity: 0, duration: 0.25, ease: 'power2.inOut' }, 0.85);
     });
 
-    // ── Mobile: lighter animation — reduced scale, shorter wrap ────────────
+    // ── Mobile: IntersectionObserver-driven one-shot reveal ───────────────
+    // Previously this used scrollTrigger with scrub:true, which caused a
+    // ~54ms forced reflow at o.enable() and continuous layout queries during
+    // scroll → visible scroll jank on mid-range phones. IO is a native API
+    // that runs off the main thread; one-shot timeline keeps the zoom-out
+    // effect without any scroll-position-tied DOM queries.
     mm.add('(max-width: 1023px)', () => {
       gsap.set(svgRef.current!, { scale: 230, willChange: 'transform' });
       gsap.set(goldSvgRef.current!, { opacity: 0 });
 
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: wrapperRef.current!,
-          start: 'top top',
-          end: 'bottom bottom',
-          scrub: true,
+      let played = false;
+      const io = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry.isIntersecting || played) return;
+          played = true;
+          io.disconnect();
+          gsap.timeline()
+            .to(svgRef.current!, { scale: 1, duration: 1.6, ease: 'power3.out', clearProps: 'willChange' }, 0)
+            .to(goldSvgRef.current!, { opacity: 1, duration: 0.4, ease: 'power2.inOut' }, '-=0.5')
+            .to(goldSvgRef.current!, { opacity: 0, duration: 0.5, ease: 'power2.inOut' }, '+=0.6');
         },
-      })
-      .to(svgRef.current!, { scale: 1, duration: 0.3, ease: 'power2.out', clearProps: 'willChange' }, 0.1)
-      .to(goldSvgRef.current!, { opacity: 1, duration: 0.1, ease: 'power2.inOut' }, 0.4)
-      .to(goldSvgRef.current!, { opacity: 0, duration: 0.25, ease: 'power2.inOut' }, 0.7);
+        { threshold: 0.25 }
+      );
+      io.observe(wrapperRef.current!);
+      return () => io.disconnect();
     });
 
     return () => mm.revert();
