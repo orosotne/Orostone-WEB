@@ -241,7 +241,7 @@ const FooterComponent: React.FC<FooterProps> = ({ categories, isProductDetail = 
               <img src="/images/orostone-logo.svg" alt="OROSTONE" className="h-10 brightness-0 invert mb-4" />
             </Link>
             <p className="text-gray-400 text-sm mb-6 max-w-sm">
-              Prémiové sinterované platne pre náročných zákazníkov.
+              Sinterované platne pre náročných zákazníkov.
               Spájame odolnosť kameňa s precíznosťou moderných technológií.
             </p>
             {/* Newsletter */}

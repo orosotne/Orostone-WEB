@@ -99,7 +99,7 @@ export const CategoryPage: React.FC = () => {
     <>
       <SEOHead
         title={`${category.name} | OROSTONE E-Shop`}
-        description={category.description || `${category.name} — prémiové produkty od OROSTONE.`}
+        description={category.description || `${category.name} — produkty od OROSTONE.`}
         canonical={`https://orostone.sk/kategoria/${slug}${subCategory ? '/' + subCategory : ''}`}
         noindex={!isLoading && !hasProducts}
         structuredData={{

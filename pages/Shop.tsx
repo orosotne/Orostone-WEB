@@ -69,7 +69,7 @@ const STONE_EXPERIENCE_POINTS = [
   {
     id: 'scratch',
     title: 'Odolnosť voči poškriabaniu',
-    description: 'Povrch si zachováva prémiový vzhľad aj pri každodennom používaní.',
+    description: 'Povrch si zachováva pôvodný vzhľad aj pri každodennom používaní.',
     side: 'left',
     markerTop: '38%',
   },
@@ -118,7 +118,7 @@ const INSPIRATION_IMAGES = [
   { src: '/images/inspiration/inspiration-1.webp', video: '/videos/inspiration/inspiration-1.mp4', label: 'Kuchyňa', title: 'Moderná kuchyňa', subtitle: 'Elegantný sinterovaný kameň' },
   { src: '/images/inspiration/inspiration-2.webp', video: '/videos/inspiration/inspiration-2.mp4', label: 'Kuchyňa', title: 'Minimalistický dizajn', subtitle: 'Čisté línie a nadčasový štýl' },
   { src: '/images/inspiration/inspiration-3.webp', video: '/videos/inspiration/inspiration-3.mp4', label: 'Kuchyňa', title: 'Prírodná elegancia', subtitle: 'Inšpirované prírodou' },
-  { src: '/images/inspiration/inspiration-4.webp', video: '/videos/inspiration/inspiration-4.mp4', label: 'Kuchyňa', title: 'Luxusný priestor', subtitle: 'Prémiové materiály' },
+  { src: '/images/inspiration/inspiration-4.webp', video: '/videos/inspiration/inspiration-4.mp4', label: 'Kuchyňa', title: 'Luxusný priestor', subtitle: 'Sinterované materiály' },
   { src: '/images/inspiration/inspiration-5.webp', video: '/videos/inspiration/inspiration-5.mp4', label: 'Kuchyňa', title: 'Funkčná krása', subtitle: 'Praktickosť a estetika' },
 ];
 
@@ -128,10 +128,10 @@ const INSPIRATION_IMAGES = [
 // HERO VIDEO SLIDES DATA
 // ===========================================
 const HERO_SHARED_COPY = {
-  label: 'Prémiový sinterovaný kameň',
+  label: 'Sinterovaný kameň',
   title: 'Krása kameňa.',
   titleAccent: 'Bez kompromisov.',
-  subtitle: 'Prémiové sinterované platne pre náročné interiéry',
+  subtitle: 'Sinterované platne pre náročné interiéry',
   cta: 'Objavte dekory',
   ctaTo: '/kategoria/sintered-stone',
 } as const;
@@ -602,8 +602,8 @@ export const Shop = () => {
   return (
     <main ref={containerRef} className="w-full overflow-x-clip">
       <SEOHead
-        title="OROSTONE E-Shop | Prémiový sinterovaný kameň"
-        description="Prémiové sinterované platne 3200×1600mm skladom. Odolnosť kameňa a luxusný dizajn. Bezplatná vzorka, expedícia do 5 dní. Bratislava."
+        title="Sinterovaný kameň pre kuchyne | OROSTONE"
+        description="Sinterovaný kameň pre kuchyne, ostrovčeky a interiéry. Pomôžeme vybrať dekor, ktorý funguje aj vo veľkej ploche. Showroom Bošany, dodanie po SR."
         canonical="https://orostone.sk/"
         ogType="website"
         structuredData={OROSTONE_ORGANIZATION_LD}
@@ -625,7 +625,7 @@ export const Shop = () => {
               "item": {
                 "@type": "Product",
                 "name": p.name,
-                "description": p.metaDescription || p.seoDescription || `${p.name} — prémiový sinterovaný kameň od OROSTONE.`,
+                "description": p.metaDescription || p.seoDescription || `${p.name} — sinterovaný kameň od OROSTONE.`,
                 "url": `https://orostone.sk/produkt/${p.id}`,
                 "image": p.image,
                 "brand": { "@type": "Brand", "name": p.vendor || "OROSTONE" },

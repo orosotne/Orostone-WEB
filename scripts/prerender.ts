@@ -132,8 +132,9 @@ function writePage(page: Page): void {
     `<div id="root"><div class="prerender-seo">${page.rootContent}</div></div>`,
   );
 
-  // Remove <noscript> homepage fallback — prerendered content is already in #root
-  html = html.replace(/<noscript>[\s\S]*?<\/noscript>/, '');
+  // Remove ALL <noscript> blocks — prerendered content is already in #root
+  // (homepage SEO fallback noscript would otherwise duplicate content for crawlers)
+  html = html.replace(/<noscript>[\s\S]*?<\/noscript>/g, '');
 
   // Write file
   const filePath = resolve(DIST, page.route.replace(/^\//, ''), 'index.html');
@@ -483,7 +484,7 @@ function prerenderCategoryListing(): void {
     rootContent: `
       <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Sinterovaný kameň</nav>
       <h1>Sinterovaný kameň — Všetky dekory</h1>
-      <p>Prémiové sinterované platne 3200×1600 mm. ${sintered.length} dekorov na výber.</p>
+      <p>Sinterované platne 3200×1600 mm. ${sintered.length} dekorov na výber.</p>
       ${productListHtml(sintered)}`,
     jsonLd: [
       {
@@ -615,7 +616,7 @@ const INFO_PAGES: InfoPage[] = [
       'Cenová ponuka, vzorky alebo konzultácia k pracovnej doske zo sinterovaného kameňa. Showroom Bošany, dodanie po celom Slovensku.',
     h1: 'Kontakt',
     intro:
-      'OROSTONE — slovenský dodávateľ prémiového sinterovaného kameňa. Sídlo: Landererova 8, 811 09 Bratislava. Telefón: +421 917 588 738. E-mail: info@orostone.sk. Radi pre vás pripravíme bezplatnú konzultáciu a cenovú ponuku.',
+      'OROSTONE — slovenský dodávateľ sinterovaného kameňa. Sídlo: Landererova 8, 811 09 Bratislava. Telefón: +421 917 588 738. E-mail: info@orostone.sk. Radi pre vás pripravíme konzultáciu a cenovú ponuku.',
     extraLinks: [
       { label: 'Objednať vzorky', href: '/vzorky' },
       { label: 'Prehliadnuť produkty', href: '/kategoria/sintered-stone' },
@@ -659,7 +660,7 @@ const INFO_PAGES: InfoPage[] = [
       'Čo je sinterovaný kameň, koľko stojí a kedy dáva zmysel ako pracovná doska. Praktický sprievodca pre kuchyňu, kde nechcete robiť kompromis.',
     h1: 'Sinterovaný kameň — čo to je a prečo ho chcete',
     intro:
-      'Sinterovaný kameň je prémiový povrch vyrobený z prírodných minerálov pod extrémnym tlakom a teplotou. Odolá teplotám nad 300 °C, škvrnám, UV žiareniu aj škrabancom. Je ideálnym materiálom na kuchynské dosky, obklady kúpeľní a architektonické projekty. Nevyžaduje impregnáciu ani zvláštnu údržbu.',
+      'Sinterovaný kameň je povrch vyrobený z prírodných minerálov pod extrémnym tlakom a teplotou. Odolá teplotám nad 300 °C, škvrnám, UV žiareniu aj škrabancom. Je ideálnym materiálom na kuchynské dosky, obklady kúpeľní a architektonické projekty. Nevyžaduje impregnáciu ani zvláštnu údržbu.',
     extraLinks: [
       { label: 'Výhody sinterovaného kameňa', href: '/vyhody' },
       { label: 'Všetky dekory', href: '/kategoria/sintered-stone' },
@@ -784,7 +785,7 @@ function prerenderHome(): void {
         </ul>
       </section>
       <section>
-        <h2>Prémiové dekory sinterovaného kameňa</h2>
+        <h2>Dekory sinterovaného kameňa</h2>
         <ul>${productLinksHtml}</ul>
       </section>
       <section>
@@ -851,7 +852,7 @@ function prerenderKuchyne(): void {
     rootContent: `
       <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Kuchyne</nav>
       <h1>Kuchyne zo sinterovaného kameňa</h1>
-      <p>Prémiové kuchynské dosky zo sinterovaného kameňa OROSTONE — odolné voči teplu nad 300 °C, škvrnám, škrabancom a UV žiareniu. Bezplatná konzultácia, digitálne laserové zameranie, CNC fabrikácia a profesionálna inštalácia.</p>
+      <p>Sinterovaný kameň pre kuchyňu — pracovné dosky, ostrovčeky a zásteny v dekoroch, ktoré obstoja pri dennom svetle. V showroome v Bošanoch porovnáte celé platne, prejdeme cez váš pôdorys a pripravíme projekt. Inštaláciu vykonáva kamenár. Bez impregnácie, s nízkou nasiakavosťou — pre kuchyne, kde nechcete kompromis.</p>
       <p><a href="/kategoria/sintered-stone">Prehliadnuť všetky dekory</a> &middot; <a href="/vzorky">Objednať vzorky</a> &middot; <a href="/realizacie">Realizácie</a> &middot; <a href="/kontakt">Kontakt</a></p>`,
     jsonLd: [
       {

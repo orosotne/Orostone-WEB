@@ -185,7 +185,7 @@ export const SampleLeadSection: React.FC<SampleLeadSectionProps> = ({ preselecte
               <div className="relative rounded-2xl overflow-hidden aspect-[4/5] lg:aspect-auto lg:h-[580px]">
                 <img
                   src={LIFESTYLE_IMAGE}
-                  alt="Prémiové vzorky sinterovaného kameňa OROSTONE v elegantnom balení"
+                  alt="Vzorky sinterovaného kameňa OROSTONE v elegantnom balení"
                   width={800}
                   height={1000}
                   className="w-full h-full object-cover lg:object-[50%_30%]"

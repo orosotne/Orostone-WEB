@@ -53,7 +53,7 @@ export const MEGA_MENU_CATEGORIES: MegaMenuCategory[] = [
     id: 'sintered-stone',
     name: 'Sinterovaný kameň',
     slug: 'sintered-stone',
-    description: 'Prémiové sinterované platne 3200×1600 mm',
+    description: 'Sinterované platne 3200×1600 mm',
     heroImage: '/images/app-kitchen.png',
     subcategories: [
       { id: 'all-sintered', name: 'Všetky dekory', slug: 'sintered-stone' },

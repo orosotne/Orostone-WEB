@@ -22,7 +22,7 @@ interface EshopAnnouncementBarProps {
 // ===========================================
 
 const DEFAULT_ANNOUNCEMENTS: Announcement[] = [
-  { id: '1', text: 'PRÉMIOVÝ SINTEROVANÝ KAMEŇ', highlight: 'SKLADOM' },
+  { id: '1', text: 'SINTEROVANÝ KAMEŇ', highlight: 'SKLADOM' },
   { id: '2', text: 'EXPEDÍCIA', highlight: 'DO 5 PRACOVNÝCH DNÍ' },
   { id: '3', text: 'GARANCIA VRÁTENIA', highlight: '14 DNÍ' },
 ];
