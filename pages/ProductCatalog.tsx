@@ -198,12 +198,12 @@ export const ProductCatalog = () => {
   return (
     <main ref={containerRef} className="bg-white min-h-dvh">
       <SEOHead
-        title="Všetky produkty | OROSTONE E-Shop"
-        description="Kompletná ponuka sinterovaných kameňov. Veľkoformátové dosky 3200x1600mm s dopravou po celom Slovensku."
-        canonical="https://orostone.sk/vsetky-produkty"
+        title="Sinterovaný kameň — dekory a platne | OROSTONE"
+        description="Sinterovaný kameň pre kuchyne a interiéry. Veľkoformátové platne 3200×1600 mm, dekory s pokojnou aj výraznou kresbou. Showroom Bošany."
+        canonical="https://orostone.sk/kategoria/sintered-stone"
         structuredData={createBreadcrumbLD([
-          { name: 'E-Shop', url: 'https://orostone.sk/' },
-          { name: 'Všetky produkty', url: 'https://orostone.sk/vsetky-produkty' },
+          { name: 'OROSTONE', url: 'https://orostone.sk/' },
+          { name: 'Sinterovaný kameň', url: 'https://orostone.sk/kategoria/sintered-stone' },
         ])}
       />
 

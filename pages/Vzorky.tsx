@@ -200,8 +200,8 @@ export const Vzorky: React.FC = () => {
   return (
     <main className="min-h-dvh">
       <SEOHead
-        title="Vzorky materiálu | OROSTONE — Sinterovaný kameň"
-        description="Objednajte si vzorky sinterovaného kameňa OROSTONE. Vyberte dekor, nechajte kontakt a doručíme vám materiál na rozhodnutie."
+        title="Vzorky sinterovaného kameňa | OROSTONE"
+        description="Objednajte si vzorku dekoru, ktorý vás zaujal, alebo viac vzoriek na porovnanie. Pri väčších plochách odporúčame návštevu showroomu Bošany."
         canonical="https://orostone.sk/vzorky"
         structuredData={createBreadcrumbLD([
           { name: 'OROSTONE', url: 'https://orostone.sk/' },

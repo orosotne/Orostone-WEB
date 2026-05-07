@@ -453,8 +453,8 @@ export const Realizacie = () => {
   return (
     <div className="bg-white">
       <SEOHead
-        title="Realizácie | Kuchyne a interiéry zo sinterovaného kameňa | Orostone"
-        description="Pozrite si naše reálne realizácie kuchýň, krbov a interiérov zo sinterovaného kameňa. Calacatta Gold, Statuario, onyx a ďalšie dekóry v skutočných projektoch."
+        title="Realizácie kuchynských dosiek | OROSTONE"
+        description="Pozrite, ako sinterovaný kameň vyzerá v reálnych kuchyniach a ostrovčekoch. Veľké plochy, kde dekor rozhoduje výsledok celej miestnosti."
         canonical="https://orostone.sk/realizacie"
         keywords={['realizácie sinterovaný kameň', 'kuchyne sinterovaný kameň', 'kuchynská doska realizácie', 'sinterovaný kameň portfólio']}
         structuredData={breadcrumbLD}
