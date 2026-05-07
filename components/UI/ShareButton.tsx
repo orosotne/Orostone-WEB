@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Share2, Link2, Facebook, Mail, Check } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 
 interface ShareButtonProps {
   title: string;
@@ -122,7 +122,7 @@ export const ShareButton: React.FC<ShareButtonProps> = ({
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: -4, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -4, scale: 0.95 }}
@@ -142,7 +142,7 @@ export const ShareButton: React.FC<ShareButtonProps> = ({
                 </button>
               );
             })}
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { SEOHead } from '../components/UI/SEOHead';
 import { FileText, ArrowLeft, Printer, Mail } from 'lucide-react';
@@ -65,7 +65,7 @@ export const OdstupeniOdZmluvy: React.FC = () => {
       />
       <div className="container mx-auto px-6 max-w-3xl">
         {/* Header */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -82,10 +82,10 @@ export const OdstupeniOdZmluvy: React.FC = () => {
             <a href="mailto:info@orostone.sk" className="text-brand-gold hover:underline font-medium">info@orostone.sk</a>{' '}
             alebo poštou na adresu sídla spoločnosti.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Info box */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
@@ -94,10 +94,10 @@ export const OdstupeniOdZmluvy: React.FC = () => {
           <p className="text-sm text-gray-700 leading-relaxed">
             <strong className="text-brand-dark">Ako postupovať:</strong> 1. Vyplňte všetky polia nižšie. 2. Kliknite na „Vytlačiť formulár". 3. Vytlačený formulár podpíšte. 4. Podpísaný formulár nám zašlite e-mailom (naskenovaný/odfotený) alebo poštou pred uplynutím 14-dňovej lehoty od prevzatia tovaru.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Formulár */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -239,10 +239,10 @@ export const OdstupeniOdZmluvy: React.FC = () => {
             </a>
           </div>
 
-        </motion.div>
+        </m.div>
 
         {/* Info o lehote */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
@@ -265,7 +265,7 @@ export const OdstupeniOdZmluvy: React.FC = () => {
             Informácie o spracúvaní vašich osobných údajov nájdete v{' '}
             <Link to="/ochrana-sukromia" className="text-brand-gold hover:underline">Ochrane osobných údajov</Link>.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Späť */}
         <div className="mt-8 flex gap-4 print:hidden" aria-label="Navigácia">

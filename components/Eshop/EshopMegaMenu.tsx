@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useRef, useCallback, useEffect, startTransition } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { VISIBLE_CATEGORIES } from '../../config/features';
 import { useShopifyProducts } from '../../hooks/useShopifyProducts';
@@ -248,7 +248,7 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
   // For non-sintered-stone categories, use a simple fallback layout
   if (category.id !== 'sintered-stone') {
     return (
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -10 }}
@@ -275,12 +275,12 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
             </Link>
           </div>
         </div>
-      </motion.div>
+      </m.div>
     );
   }
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
@@ -397,7 +397,7 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
               ) : (
               <AnimatePresence mode="popLayout">
                 {displayProducts.map((product) => (
-                  <motion.div
+                  <m.div
                     key={product.id}
                     layout
                     initial={{ opacity: 0, scale: 0.95 }}
@@ -425,7 +425,7 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
                         {product.pricePerM2} €/m²
                       </p>
                     </Link>
-                  </motion.div>
+                  </m.div>
                 ))}
               </AnimatePresence>
               )}
@@ -439,6 +439,6 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
           </div>
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 };

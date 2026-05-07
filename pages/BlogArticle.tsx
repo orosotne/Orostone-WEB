@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import {
   ArrowLeft,
   ArrowRight,
@@ -435,7 +435,7 @@ export const BlogArticle: React.FC = () => {
                   </button>
                   <AnimatePresence initial={false}>
                     {directAnswerOpen && (
-                      <motion.div
+                      <m.div
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
@@ -445,7 +445,7 @@ export const BlogArticle: React.FC = () => {
                         <p className="text-brand-dark text-base lg:text-lg font-medium leading-relaxed px-5 lg:px-6 pb-5 lg:pb-6">
                           {content.directAnswer}
                         </p>
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
                 </div>
@@ -470,7 +470,7 @@ export const BlogArticle: React.FC = () => {
                   </button>
                   <AnimatePresence initial={false}>
                     {mobileTocOpen && (
-                      <motion.nav
+                      <m.nav
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
@@ -503,7 +503,7 @@ export const BlogArticle: React.FC = () => {
                             </a>
                           ))}
                         </div>
-                      </motion.nav>
+                      </m.nav>
                     )}
                   </AnimatePresence>
                 </div>
@@ -742,7 +742,7 @@ export const BlogArticle: React.FC = () => {
       {/* ==================== BACK TO TOP BUTTON ==================== */}
       <AnimatePresence>
         {showBackToTop && (
-          <motion.button
+          <m.button
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
@@ -752,7 +752,7 @@ export const BlogArticle: React.FC = () => {
             aria-label="Back to top"
           >
             <ArrowUp size={18} />
-          </motion.button>
+          </m.button>
         )}
       </AnimatePresence>
 

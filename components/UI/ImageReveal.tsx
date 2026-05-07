@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 
 interface ImageRevealProps {
   src: string;
@@ -11,7 +11,7 @@ interface ImageRevealProps {
 export const ImageReveal: React.FC<ImageRevealProps> = ({ src, alt, className = "", aspectRatio = "aspect-[4/3]" }) => {
   return (
     <div className={`relative overflow-hidden ${aspectRatio} ${className}`}>
-      <motion.div
+      <m.div
         initial={{ scale: 1.2 }}
         whileInView={{ scale: 1 }}
         transition={{ duration: 1.5, ease: [0.25, 1, 0.5, 1] }}
@@ -19,10 +19,10 @@ export const ImageReveal: React.FC<ImageRevealProps> = ({ src, alt, className = 
         className="w-full h-full"
       >
         <img src={src} alt={alt} className="w-full h-full object-cover" />
-      </motion.div>
+      </m.div>
       
       {/* The Curtain/Shutter */}
-      <motion.div
+      <m.div
         initial={{ scaleY: 1 }}
         whileInView={{ scaleY: 0 }}
         viewport={{ once: true }}

@@ -9,7 +9,7 @@ import { sortShopCatalogProducts } from '../components/Eshop/EshopMegaMenu';
 import { cn } from '@/lib/utils';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -223,7 +223,7 @@ export const ProductCatalog = () => {
         {/* Content */}
         <div className="relative h-full container mx-auto px-6 lg:px-8 flex flex-col justify-end pb-10 md:pb-14">
           {/* Breadcrumb */}
-          <motion.nav
+          <m.nav
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -234,31 +234,31 @@ export const ProductCatalog = () => {
             </Link>
             <ChevronRight size={12} />
             <span className="text-white">Všetky produkty</span>
-          </motion.nav>
+          </m.nav>
 
           {/* Title */}
-          <motion.h1
+          <m.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-3"
           >
             Všetky produkty
-          </motion.h1>
+          </m.h1>
 
           {/* Description */}
-          <motion.p
+          <m.p
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.35 }}
             className="text-base md:text-lg text-white/80 max-w-xl"
           >
             Kompletná ponuka prémiových sinterovaných kameňov a povrchov
-          </motion.p>
+          </m.p>
 
           {/* Product count */}
           {sortedProducts.length > 0 && (
-            <motion.p
+            <m.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
@@ -266,7 +266,7 @@ export const ProductCatalog = () => {
             >
               {sortedProducts.length}{' '}
               {sortedProducts.length === 1 ? 'produkt' : sortedProducts.length < 5 ? 'produkty' : 'produktov'}
-            </motion.p>
+            </m.p>
           )}
         </div>
       </section>
@@ -288,7 +288,7 @@ export const ProductCatalog = () => {
             ))}
           </div>
         ) : (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -310,7 +310,7 @@ export const ProductCatalog = () => {
                 />
               );
             })}
-          </motion.div>
+          </m.div>
         )}
       </section>
     </main>

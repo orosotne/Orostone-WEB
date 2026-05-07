@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Mail, Lock, Eye, EyeOff, ArrowRight, AlertCircle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/UI/Button';
@@ -66,7 +66,7 @@ export const Login = () => {
 
   return (
     <main className="min-h-screen bg-[#F9F9F7] flex items-center justify-center py-32 px-6">
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="w-full max-w-md"
@@ -87,14 +87,14 @@ export const Login = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Error Message */}
             {error && (
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="flex items-center gap-3 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm"
               >
                 <AlertCircle size={20} className="flex-shrink-0" />
                 {error}
-              </motion.div>
+              </m.div>
             )}
 
             {/* Email */}
@@ -211,7 +211,7 @@ export const Login = () => {
             <span className="flex items-center gap-1">✓ Uložené adresy</span>
           </div>
         </div>
-      </motion.div>
+      </m.div>
     </main>
   );
 };

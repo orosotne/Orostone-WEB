@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import {
   ArrowLeft, ArrowRight, ShoppingBag, Lock, Truck,
   Minus, Plus, Trash2, Package, ExternalLink, Check
@@ -81,7 +81,7 @@ export const Checkout = () => {
             
             <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
               {items.map((item) => (
-                <motion.div
+                <m.div
                   key={item.id}
                   layout
                   initial={{ opacity: 0 }}
@@ -150,7 +150,7 @@ export const Checkout = () => {
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>

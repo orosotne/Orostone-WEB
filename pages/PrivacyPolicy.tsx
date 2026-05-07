@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { SEOHead } from '../components/UI/SEOHead';
 
@@ -20,7 +20,7 @@ export const PrivacyPolicy = () => {
       />
       <div className="container mx-auto px-6 max-w-4xl">
         {/* Header */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -37,10 +37,10 @@ export const PrivacyPolicy = () => {
             primerané technické a organizačné opatrenia
             na ochranu vašich osobných údajov.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Quick Navigation */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
@@ -71,12 +71,12 @@ export const PrivacyPolicy = () => {
               </button>
             ))}
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Content */}
         <div className="space-y-12">
           {/* 1. Prevádzkovateľ */}
-          <motion.section
+          <m.section
             id="prevadzkovatel"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -108,10 +108,10 @@ export const PrivacyPolicy = () => {
                 <p className="mt-4 text-brand-gold">info@orostone.sk</p>
               </div>
             </div>
-          </motion.section>
+          </m.section>
 
           {/* 2. Účel spracovania */}
-          <motion.section
+          <m.section
             id="ucel"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -184,10 +184,10 @@ export const PrivacyPolicy = () => {
                 Automatizované rozhodovanie ani profilovanie v zmysle čl. 22 GDPR <strong>nevykonávame</strong>.
               </p>
             </div>
-          </motion.section>
+          </m.section>
 
           {/* 3. Dôsledky neposkytnutia údajov */}
-          <motion.section
+          <m.section
             id="neposkytnutie"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -234,10 +234,10 @@ export const PrivacyPolicy = () => {
                 </div>
               </div>
             </div>
-          </motion.section>
+          </m.section>
 
           {/* 4. Tretie strany a sprostredkovatelia */}
-          <motion.section
+          <m.section
             id="tretie-strany"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -345,10 +345,10 @@ export const PrivacyPolicy = () => {
               </div>
 
             </div>
-          </motion.section>
+          </m.section>
 
           {/* 5. Rozsah údajov */}
-          <motion.section
+          <m.section
             id="rozsah"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -403,10 +403,10 @@ export const PrivacyPolicy = () => {
                 </div>
               </div>
             </div>
-          </motion.section>
+          </m.section>
 
           {/* 6. Doba uchovávania */}
-          <motion.section
+          <m.section
             id="doba"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -482,10 +482,10 @@ export const PrivacyPolicy = () => {
                 Po uplynutí príslušných lehôt sú údaje bezpečne vymazané.
               </p>
             </div>
-          </motion.section>
+          </m.section>
 
           {/* 7. Medzinárodný prenos údajov */}
-          <motion.section
+          <m.section
             id="medzinarodny-prenos"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -562,10 +562,10 @@ export const PrivacyPolicy = () => {
                 </p>
               </div>
             </div>
-          </motion.section>
+          </m.section>
 
           {/* 8. Vaše práva */}
-          <motion.section
+          <m.section
             id="prava"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -613,10 +613,10 @@ export const PrivacyPolicy = () => {
                 </p>
               </div>
             </div>
-          </motion.section>
+          </m.section>
 
           {/* 9. Cookies */}
-          <motion.section
+          <m.section
             id="cookies"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -660,10 +660,10 @@ export const PrivacyPolicy = () => {
                 <span>→</span>
               </Link>
             </div>
-          </motion.section>
+          </m.section>
 
           {/* 10. Kontakt */}
-          <motion.section
+          <m.section
             id="kontakt"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -700,11 +700,11 @@ export const PrivacyPolicy = () => {
                 <a href="https://dataprotection.gov.sk" target="_blank" rel="noopener noreferrer" className="text-brand-gold hover:underline">dataprotection.gov.sk</a>).
               </p>
             </div>
-          </motion.section>
+          </m.section>
         </div>
 
         {/* Footer Info */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -724,7 +724,7 @@ export const PrivacyPolicy = () => {
               <span>→</span>
             </Link>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </div>
   );

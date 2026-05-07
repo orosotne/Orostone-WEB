@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, AlertTriangle } from 'lucide-react';
 import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
 
 export const EshopContact: React.FC = () => {
+  // Prefetch legal-page chunks at idle — they are the typical next click from
+  // /kontakt (footer Links) and otherwise trigger a chunk download on tap that
+  // shows up as 700+ ms INP in Vercel Speed Insights.
+  useEffect(() => {
+    const w = window as Window & { requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => void };
+    const idle = (fn: () => void) =>
+      w.requestIdleCallback ? w.requestIdleCallback(fn, { timeout: 1500 }) : setTimeout(fn, 200);
+    idle(() => {
+      void import('./VOP');
+      void import('./PrivacyPolicy');
+      void import('./ReklamacieAVratenie');
+    });
+  }, []);
+
   return (
     <main className="bg-white">
       <SEOHead

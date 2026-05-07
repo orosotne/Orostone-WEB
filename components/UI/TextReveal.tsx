@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useIsMobile } from '../../hooks/useIsMobile';
 
 interface TextRevealProps {
@@ -50,7 +50,7 @@ export const TextReveal: React.FC<TextRevealProps> = ({
 
   return (
     <Tag className={`flex flex-wrap ${className}`}>
-      <motion.div
+      <m.div
         variants={container}
         initial="hidden"
         whileInView="visible"
@@ -59,12 +59,12 @@ export const TextReveal: React.FC<TextRevealProps> = ({
       >
         {words.map((word, index) => (
           <span key={index} className="inline-block overflow-hidden mr-[0.25em] align-bottom pb-[0.15em] -mb-[0.15em]">
-            <motion.span variants={child} className="inline-block">
+            <m.span variants={child} className="inline-block">
               {word}
-            </motion.span>
+            </m.span>
           </span>
         ))}
-      </motion.div>
+      </m.div>
     </Tag>
   );
 };

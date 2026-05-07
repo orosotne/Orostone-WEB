@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTheme } from '../../context/ThemeContext';
 import { Palette, X } from 'lucide-react';
 import { Button } from '../UI/Button';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 
 export const DesignSwitcher = () => {
     const { theme, toggleTheme } = useTheme();

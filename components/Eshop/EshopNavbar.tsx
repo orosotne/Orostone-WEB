@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef, useCallback, startTransition } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import {
   Search, User, ShoppingBag, Menu, X, ChevronDown, ArrowLeft, Diamond, Phone
 } from 'lucide-react';
@@ -221,7 +221,7 @@ export const EshopNavbar: React.FC = () => {
         {/* Search Bar (Expandable) with Results */}
         <AnimatePresence>
           {searchOpen && (
-            <motion.div
+            <m.div
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
@@ -308,7 +308,7 @@ export const EshopNavbar: React.FC = () => {
                   </div>
                 )}
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </div>
@@ -423,7 +423,7 @@ export const EshopNavbar: React.FC = () => {
 
         {/* Active category underline */}
         {activeCategory && (
-          <motion.div
+          <m.div
             layoutId="nav-underline"
             className={cn("absolute bottom-0 left-0 right-0 h-0.5", isTransparent ? "bg-white" : "bg-black")}
             initial={false}
@@ -448,7 +448,7 @@ export const EshopNavbar: React.FC = () => {
         {mobileMenuOpen && (
           <>
             {/* Backdrop */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -457,7 +457,7 @@ export const EshopNavbar: React.FC = () => {
             />
 
             {/* Menu Panel */}
-            <motion.div
+            <m.div
               initial={{ x: '-100%' }}
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
@@ -557,7 +557,7 @@ export const EshopNavbar: React.FC = () => {
                 </a>
                 <p className="text-center text-[10px] text-gray-400 mt-1">Po–Pia 8:00 – 17:00</p>
               </div>
-            </motion.div>
+            </m.div>
           </>
         )}
       </AnimatePresence>
@@ -568,7 +568,7 @@ export const EshopNavbar: React.FC = () => {
         {offCanvasOpen && (
           <>
             {/* Backdrop */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -580,7 +580,7 @@ export const EshopNavbar: React.FC = () => {
             />
 
             {/* Off-Canvas Panel */}
-            <motion.div
+            <m.div
               initial={{ x: '-100%' }}
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
@@ -665,7 +665,7 @@ export const EshopNavbar: React.FC = () => {
                   OROSTONE E-SHOP
                 </p>
               </div>
-            </motion.div>
+            </m.div>
           </>
         )}
       </AnimatePresence>

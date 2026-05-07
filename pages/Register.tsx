@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Mail, Lock, Eye, EyeOff, ArrowRight, AlertCircle, User, CheckCircle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/UI/Button';
@@ -90,7 +90,7 @@ export const Register = () => {
   if (isSuccess) {
     return (
       <main className="min-h-screen bg-[#F9F9F7] flex items-center justify-center py-32 px-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           className="w-full max-w-md text-center"
@@ -112,14 +112,14 @@ export const Register = () => {
               </Button>
             </Link>
           </div>
-        </motion.div>
+        </m.div>
       </main>
     );
   }
 
   return (
     <main className="min-h-screen bg-[#F9F9F7] flex items-center justify-center py-32 px-6">
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="w-full max-w-md"
@@ -140,14 +140,14 @@ export const Register = () => {
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Error Message */}
             {error && (
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="flex items-center gap-3 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm"
               >
                 <AlertCircle size={20} className="flex-shrink-0" />
                 {error}
-              </motion.div>
+              </m.div>
             )}
 
             {/* Name */}
@@ -314,7 +314,7 @@ export const Register = () => {
             </Button>
           </form>
         </div>
-      </motion.div>
+      </m.div>
     </main>
   );
 };

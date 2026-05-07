@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { X, Cookie, BarChart3, Megaphone, Shield, Layers } from 'lucide-react';
 import { useCookies, CookiePreferences } from '../../context/CookieContext';
 import { Link } from 'react-router-dom';
@@ -98,7 +98,7 @@ export const CookieSettings: React.FC = () => {
       {isSettingsOpen && (
         <>
           {/* Backdrop */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -107,7 +107,7 @@ export const CookieSettings: React.FC = () => {
           />
 
           {/* Modal */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -207,7 +207,7 @@ export const CookieSettings: React.FC = () => {
               </div>
 
             </div>
-          </motion.div>
+          </m.div>
         </>
       )}
     </AnimatePresence>

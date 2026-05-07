@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import {
   User, Package, MapPin, Settings, LogOut, ChevronRight,
   Clock, CheckCircle, Truck, XCircle, Edit2, Plus, Trash2,
@@ -299,7 +299,7 @@ export const Account = () => {
           const StatusIcon = status.icon;
           
           return (
-            <motion.div
+            <m.div
               key={order.id}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -339,7 +339,7 @@ export const Account = () => {
                   </Button>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           );
         })
       )}
@@ -422,14 +422,14 @@ export const Account = () => {
       <AnimatePresence>
         {addressModalOpen && (
           <>
-            <motion.div
+            <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 bg-black/50 z-50"
               onClick={() => setAddressModalOpen(false)}
             />
-            <motion.div
+            <m.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -554,7 +554,7 @@ export const Account = () => {
                   {isSavingAddress ? 'Ukladám...' : (editingAddress ? 'Uložiť zmeny' : 'Pridať adresu')}
                 </button>
               </div>
-            </motion.div>
+            </m.div>
           </>
         )}
       </AnimatePresence>

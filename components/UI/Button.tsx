@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useHasFinePointer } from '../../hooks/useIsMobile';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -26,7 +26,7 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   return (
-    <motion.button
+    <m.button
       whileHover={hasFinePointer ? { scale: 1.02 } : undefined}
       whileTap={hasFinePointer ? { scale: 0.98 } : undefined}
       className={`${baseClasses} ${variants[variant]} ${className}`}
@@ -37,6 +37,6 @@ export const Button: React.FC<ButtonProps> = ({
         {children}
         {icon && <span className="text-brand-gold">{icon}</span>}
       </span>
-    </motion.button>
+    </m.button>
   );
 };
