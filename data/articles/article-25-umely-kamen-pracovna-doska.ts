@@ -5,16 +5,16 @@ export const ARTICLE_25: BlogArticle = {
   slug: 'umely-kamen-pracovna-doska',
   category: 'value-comparisons',
   publishDate: '2026-05-06',
-  lastModified: '2026-05-06',
+  lastModified: '2026-05-07',
   readTimeMinutes: 12,
   heroImage: '/images/blog/umely-kamen-pracovna-doska.webp',
   author: BLOG_AUTHOR_OROSTONE,
   tags: ['umelý kameň', 'pracovná doska', 'kuchynská doska', 'cena', 'výber materiálu', 'sprievodca'],
 
   sk: {
-    title: 'Umelý kameň na pracovnú dosku: poctivý sprievodca pred kúpou',
+    title: 'Umelý kameň na pracovnú dosku: cena, typy a výber do kuchyne',
     subtitle: 'Rozhodovací proces, cenové hladiny a 7 chýb, ktorým sa vyhnúť pri výbere kuchynskej pracovnej dosky',
-    excerpt: 'Buyer\'s guide pre prvonákupcov: ako vybrať pracovnú dosku z umelého kameňa, čo reálne dostanete za €280, €400 a €550 €/bm a aké sú najčastejšie chyby pri výbere.',
+    excerpt: 'Zistite, koľko stojí pracovná doska z umelého kameňa, aké typy existujú a kedy sa oplatí quartz, sinterovaný kameň alebo keramická kuchynská doska.',
     directAnswer: 'Umelý kameň je laický pojem pre kompozitné kuchynské povrchy — typicky kremenný kompozit, sinterovaný kameň, solid surface alebo keramiku. Pred kúpou si vyjasnite použitie kuchyne, rozpočet a typ materiálu. Cena pracovnej dosky sa pohybuje od 280 do 600 €/bm vrátane fabrikácie a montáže.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>
@@ -52,7 +52,7 @@ export const ARTICLE_25: BlogArticle = {
   <ul>
     <li><strong>Vyberte umelý kameň</strong>, ak: kuchyňu používate aktívne (varíte denne), máte malé deti, kuchyňa je pri veľkom okne s priamym slnkom, nechcete sa starať o pravidelnú impregnáciu, alebo plánujete jednotný dekor cez ostrov + zástenu + linku.</li>
     <li><strong>Zvážte prírodný kameň</strong>, ak: chcete jedinečnú prírodnú kresbu, používate kuchyňu menej intenzívne, ste ochotný impregnovať raz za rok a páči sa vám patina, ktorá vznikne časom.</li>
-    <li><strong>Skombinujte oba</strong>, ak: chcete prírodný mramor na ostrov ako vizuálny accent + odolný umelý kameň na pracovnú zónu okolo varnej dosky a drezu.</li>
+    <li><strong>Skombinujte oba</strong>, ak: chcete prírodný mramor na ostrov ako vizuálny akcent + odolný umelý kameň na pracovnú zónu okolo varnej dosky a drezu.</li>
   </ul>
 </div>
 
@@ -88,7 +88,7 @@ export const ARTICLE_25: BlogArticle = {
 
 <h3>2. Koľko v kuchyni reálne varíte?</h3>
 
-<p>Rozdiel medzi „varíme každý deň pre 4-člennú rodinu" a „raz za týždeň prídu hostia" je pri výbere materiálu zásadný. Pri intenzívnom dennom používaní má sinterovaný kameň jasnú výhodu — neimpregnuje sa, neženie, znesie horúci hrniec priamo z dosky. Pri menšej záťaži môže byť kvalitný kremenný kompozit ekonomickejší.</p>
+<p>Rozdiel medzi „varíme každý deň pre 4-člennú rodinu" a „raz za týždeň prídu hostia" je pri výbere materiálu zásadný. Pri intenzívnom dennom používaní má sinterovaný kameň jasnú výhodu — neimpregnuje sa, nežltne, znesie horúci hrniec priamo z dosky. Pri menšej záťaži môže byť kvalitný kremenný kompozit ekonomickejší.</p>
 
 <h3>3. Koľko priameho slnka dostáva pracovná zóna?</h3>
 
@@ -102,9 +102,15 @@ export const ARTICLE_25: BlogArticle = {
 
 <p>Výrazné mramorové imitácie s hlbokou kresbou pôsobia úchvatne na vzorke 30 × 30 cm. V plnej veľkosti 3-metrového ostrova môžu prevážiť celý interiér. Pred rozhodnutím si vždy vyžiadajte väčšiu vzorku (60 × 60 cm minimum) a pozrite si materiál v dennom svetle, nie iba v showroome pod LED.</p>
 
-<h2 id="cenove-hladiny">Cenové hladiny: čo dostanete za €280, €400 a €550 €/bm</h2>
+<h2 id="pre-koho-je-vhodna">Kuchynská pracovná doska z umelého kameňa: pre koho je vhodná?</h2>
+
+<p>Kuchynská pracovná doska z umelého kameňa dáva najväčší zmysel v domácnostiach, kde sa varí denne a kde má doska zvládnuť vodu, škvrny, čistenie aj dlhodobé používanie bez impregnácie. Oproti laminátu pôsobí hodnotnejšie, oproti prírodnému kameňu je predvídateľnejšia na údržbu a pri správnom výbere materiálu vydrží 15 rokov aj viac.</p>
+
+<h2 id="cenove-hladiny">Pracovná doska z umelého kameňa: cena podľa materiálu a montáže</h2>
 
 <p>Toto je sekcia, ktorú vám väčšina článkov nenapíše konkrétne. Nasledujúce čísla sú orientačné rozsahy pre rok 2026 vrátane základnej fabrikácie a montáže — nie cenníkový marketing.</p>
+
+<p>Pri výbere neporovnávajte len samotný materiál. Kuchynské dosky z umelého kameňa sa líšia aj hrúbkou, typom výrezov, hranou, počtom spojov a kvalitou montáže — to všetko sa premieta do finálnej ceny rovnako ako značka kameňa.</p>
 
 <div class="article-highlight">
   <p><strong>€280 €/bm — vstupná hladina (kremenný kompozit, jednoduchý dekor)</strong></p>
@@ -114,7 +120,7 @@ export const ARTICLE_25: BlogArticle = {
     <li>2 výrezy (drez + varná doska), bez ostrova alebo s malým ostrovom do 1,8 m</li>
     <li>Štandardná montáž v jednom dni, doprava do 30 km</li>
   </ul>
-  <p><strong>Kde sa šetrí:</strong> značka materiálu (menej známe brandy), jednoduchý dekor, rovná hrana, malý objem. <strong>Pre koho:</strong> menšie kuchyne v byte, prenájom, druhá kuchyňa.</p>
+  <p><strong>Kde sa šetrí:</strong> značka materiálu (menej známe značky), jednoduchý dekor, rovná hrana, malý objem. <strong>Pre koho:</strong> menšie kuchyne v byte, prenájom, druhá kuchyňa.</p>
 </div>
 
 <div class="article-highlight">
@@ -182,7 +188,7 @@ export const ARTICLE_25: BlogArticle = {
 
 <h3>7. Voľba dekoru bez zladenia s kuchynskou linkou</h3>
 
-<p>Doska a kuchynská linka idú do interiéru spolu. Vzorka dosky sama nestačí — vyžiadajte si fotomontáž alebo aspoň fyzické priložení vzorky dosky k vzorke dvierok. Najčastejšia frustrácia po roku používania nie je samotná doska, ale že sa vizuálne nehodí k linke.</p>
+<p>Doska a kuchynská linka idú do interiéru spolu. Vzorka dosky sama nestačí — vyžiadajte si fotomontáž alebo aspoň fyzické priloženie vzorky dosky k vzorke dvierok. Najčastejšia frustrácia po roku používania nie je samotná doska, ale že sa vizuálne nehodí k linke.</p>
 
 <figure class="article-figure">
   <img src="/images/blog/article-25/chyba-instalacia.webp" alt="Pracovna doska umely kamen cena a inštalačné chyby — detail výrezu pri kuchynskom drez" loading="lazy" />
@@ -198,7 +204,7 @@ export const ARTICLE_25: BlogArticle = {
   <li><strong>Flush undermount drez</strong> — drez vsadený do dosky bez viditeľných švov sa čistí o 30 % rýchlejšie a vyzerá čistejšie aj po piatich rokoch.</li>
   <li><strong>Zrazená hrana</strong> namiesto úplne ostrej — vyzerá takmer rovnako, ale neodštiepi sa, keď do nej v rýchlosti udriete hrncom.</li>
   <li><strong>Zástena z toho istého materiálu</strong> — bez špár medzi doskou a obkladom, žiadny silikón, ktorý žltne, žiadne miesta pre špinu.</li>
-  <li><strong>Matný povrch</strong> namiesto leštěného pri tmavých dekoroch — odtlačky prstov a vodné kvapky sú na lesklom povrchu viditeľné z druhého konca miestnosti.</li>
+  <li><strong>Matný povrch</strong> namiesto lešteného pri tmavých dekoroch — odtlačky prstov a vodné kvapky sú na lesklom povrchu viditeľné z druhého konca miestnosti.</li>
 </ul>
 
 <p><strong>Čo by ľudia urobili inak:</strong></p>
@@ -229,7 +235,7 @@ export const ARTICLE_25: BlogArticle = {
   <li><strong>Obsahuje materiál živicu?</strong> Áno = quartz kompozit, nie = sinterovaný kameň alebo keramika.</li>
   <li><strong>Aký je odporúčaný interval impregnácie?</strong> Pri kvalitnom kompozite odpoveď znie „nepotrebuje".</li>
   <li><strong>Ukážete mi platnu, z ktorej bude rezaná moja kuchyňa?</strong> Vyžiadajte si fotografiu alebo fyzickú obhliadku.</li>
-  <li><strong>Aká je šírka spoja a aký lepidlo používate?</strong> Šírka 1–2 mm, farebne zladené epoxidové lepidlo.</li>
+  <li><strong>Aká je šírka spoja a aké lepidlo používate?</strong> Šírka 1–2 mm, farebne zladené epoxidové lepidlo.</li>
   <li><strong>Aká je geometria hrany a prečo?</strong> Rovná, zrazená alebo mitered — každá má dôvod.</li>
   <li><strong>Robíte zameranie sami alebo cez subdodávateľa?</strong> Vlastné zameranie znamená vlastnú zodpovednosť za chyby.</li>
   <li><strong>Aké sú podmienky reklamácie pri prasknutí v prvom roku?</strong> Žiadajte písomné podmienky, nie ústne.</li>
@@ -267,56 +273,56 @@ export const ARTICLE_25: BlogArticle = {
         answer: 'Cena pracovnej dosky z umelého kameňa sa orientačne pohybuje od 280 do 600 €/bm vrátane fabrikácie a montáže. Vstupný quartz kompozit začína okolo 280 €/bm, prémiový sinterovaný kameň je v rozsahu 450–600 €/bm. Pri ponukách pod 250 €/bm spozornite — niečo v procese (montáž, doprava, hrana) sa pravdepodobne neúčtuje.',
       },
       {
-        question: 'Pracovna doska umely kamen cena: čo všetko ovplyvňuje výslednú sumu?',
+        question: 'Pracovná doska z umelého kameňa: čo ovplyvňuje cenu?',
         answer: 'Cenu ovplyvňuje typ materiálu, značka, dekor, hrúbka, počet výrezov, profil hrany, počet spojov, doprava, výnos do vyšších poschodí a zložitosť montáže. Dve doskové ponuky z toho istého materiálu sa môžu líšiť o 30–40 %, pretože jedna obsahuje iba materiál a druhá kompletný proces.',
       },
       {
-        question: 'Umely kamen pracovna doska cena: prečo sa nedá povedať jedna suma?',
+        question: 'Prečo nemá pracovná doska z umelého kameňa jednu univerzálnu cenu?',
         answer: 'Pretože každá kuchyňa má iné parametre. Rovnaký materiál pri kuchyni s 3 výrezmi a ostrovom vyjde inak ako pri rovnej linke s jedným drezom. Seriózny dodávateľ vám dá cenu až po základnom zameraní alebo aspoň pôdorysu, nie pred ním.',
       },
       {
-        question: 'Pracovna doska technicky kamen vs umely kamen: aký je rozdiel?',
-        answer: 'V slovenskom marketingu žiadny — oba pojmy sa používajú zameniteľne pre kompozitné materiály. Technicky to však sú štyri rôzne kategórie: kremenný kompozit, sinterovaný kameň, keramika a solid surface. Pýtajte sa na konkrétny typ, nie na umbrella nálepku.',
+        question: 'Aký je rozdiel medzi technickým a umelým kameňom?',
+        answer: 'V slovenskom marketingu žiadny — oba pojmy sa používajú zameniteľne pre kompozitné materiály. Technicky to však sú štyri rôzne kategórie: kremenný kompozit, sinterovaný kameň, keramika a solid surface. Pýtajte sa na konkrétny typ, nie na všeobecnú nálepku.',
       },
       {
-        question: 'Kuchynska doska umely kamen cena: koľko si pripraviť?',
+        question: 'Koľko stojí kuchynská doska z umelého kameňa?',
         answer: 'Pre štandardnú slovenskú kuchyňu so 4–6 bm a malým ostrovom počítajte 2 000–4 500 € v závislosti od materiálu a fabrikácie. Vstupný quartz kompozit s rovnou hranou a dvoma výrezmi je v dolnej časti tohto rozsahu, prémiový sinterovaný kameň s waterfall ostrovom v hornej.',
       },
       {
-        question: 'Umely kamen pracovna doska: oplatí sa investícia oproti laminátu?',
+        question: 'Oplatí sa pracovná doska z umelého kameňa oproti laminátu?',
         answer: 'Pri aktívnej kuchyni áno. Laminát je lacnejší, ale po 5–7 rokoch sa pri intenzívnom používaní opotrebuje — odvalí sa hrana, voda sa dostane pod povrch. Umelý kameň pri rozumnej cenovej hladine vydrží 15+ rokov. Rozdiel v ročnej amortizácii je menší, ako väčšina ľudí čaká.',
       },
       {
-        question: 'Umely kamen do kuchyne: ktorý typ vybrať?',
+        question: 'Umelý kameň do kuchyne: ktorý typ vybrať?',
         answer: 'Závisí od použitia. Pri intenzívnom dennom varení a kuchyni s veľkým oknom odporúčame sinterovaný kameň. Pri menšom byte s občasným varením postačí kvalitný kremenný kompozit. Solid surface je vhodnejší na dizajnové detaily ako hlavná pracovná doska.',
       },
       {
-        question: 'Umely kamen kuchyna: aké sú jeho slabosti?',
+        question: 'Aké sú slabosti umelého kameňa v kuchyni?',
         answer: 'Pri kremennom kompozite je to citlivosť živice na UV žiarenie a vysokú teplotu. Pri sinterovanom kameni je to krehkosť v ohybe pri zle navrhnutých výrezoch a vyššia cena. Pri keramike je dôležitá kvalita fabrikácie — tenké formáty praskajú pri zlej manipulácii.',
       },
       {
-        question: 'Kuchynská pracovná doska z umelého kameňa cena: aký je realny rozsah?',
+        question: 'Aký je reálny cenový rozsah kuchynskej pracovnej dosky z umelého kameňa?',
         answer: 'Pre kompletnú zákazku (materiál + fabrikácia + montáž) počítajte 280–600 €/bm. Vstupný kremenný kompozit s rovnou hranou a 2 výrezmi je v dolnej časti, prémiový sinterovaný kameň s mitered hranami a book-match dekorom v hornej časti rozsahu.',
       },
       {
-        question: 'Kuchynska pracovna doska umely kamen: ako sa rozhodnúť medzi kompozitom a sinterovaným kameňom?',
+        question: 'Kuchynská pracovná doska z umelého kameňa: ako sa rozhodnúť medzi kompozitom a sinterovaným kameňom?',
         answer: 'Tri otázky: koľko slnka má kuchyňa (viac slnka = sinterovaný), koľko v nej varíte (viac = sinterovaný) a aký je rozpočet (do €350 €/bm = kompozit, nad €450 €/bm = sinterovaný). Pri stredne veľkom rozpočte sa oplatí radšej zvoliť menší formát sinterovaného kameňa než maximálny formát kompozitu.',
       },
       {
-        question: 'Umely kamen kuchynska doska: ako dlho vydrží?',
+        question: 'Ako dlho vydrží kuchynská doska z umelého kameňa?',
         answer: 'Pri kvalitnej fabrikácii a montáži 15–20 rokov bez výrazného opotrebovania. Sinterovaný kameň môže fungovať aj 25+ rokov. Kremenný kompozit sa pri intenzívnom UV po 10–12 rokoch začne meniť (žltnutie). Životnosť je ovplyvnená najmä kvalitou montáže, nie iba materiálom.',
       },
       {
-        question: 'Pracovna doska z umeleho kamena: ako sa stará?',
-        answer: 'Sinterovaný kameň a väčšina kremenných kompozitov nepotrebuje impregnáciu. Stačí denné čistenie vlhkou handričkou s neutrálnym saponátom. Pri zaschnutých škvrnách (káva, víno, ovocná šťava) izopropylalkohol. Vyhnite sa abrazívnym pradníkom a kyslým čistiacim prostriedkom.',
+        question: 'Pracovná doska z umelého kameňa: ako sa o ňu starať?',
+        answer: 'Sinterovaný kameň a väčšina kremenných kompozitov nepotrebuje impregnáciu. Stačí denné čistenie vlhkou handričkou s neutrálnym saponátom. Pri zaschnutých škvrnách (káva, víno, ovocná šťava) izopropylalkohol. Vyhnite sa abrazívnym prostriedkom a drôtenkám a kyslým čistiacim prípravkom.',
       },
     ],
   },
 
   en: {
-    title: 'Engineered Stone Countertop: An Honest Pre-Purchase Guide',
+    title: 'Engineered Stone Countertop: Price, Types and Kitchen Selection Guide',
     subtitle: 'Decision process, price tiers and 7 mistakes to avoid when choosing a kitchen countertop',
-    excerpt: 'A buyer\'s guide for first-time buyers: how to choose an engineered stone countertop, what you actually get for €280, €400 and €550 per running meter, and the most common mistakes.',
+    excerpt: 'Find out how much an engineered stone countertop costs, what types exist, and when quartz, sintered stone or ceramic makes sense for your kitchen.',
     directAnswer: 'Engineered stone is a layperson term for composite kitchen surfaces — typically quartz composite, sintered stone, solid surface or ceramic. Before buying, clarify how you use the kitchen, your budget and the material type. A countertop typically runs from €280 to €600 per running meter including fabrication and installation.',
     content: `
 <p class="article-tldr-label">Key takeaways</p>
@@ -404,9 +410,15 @@ export const ARTICLE_25: BlogArticle = {
 
 <p>Bold marble imitations with deep veining look stunning on a 30 × 30 cm sample. At full size on a 3-meter island, they can dominate the entire interior. Before deciding, always request a larger sample (60 × 60 cm minimum) and view the material in daylight, not just under showroom LED.</p>
 
-<h2 id="price-tiers">Price tiers: what you get for €280, €400 and €550 per running meter</h2>
+<h2 id="who-is-it-for">Engineered stone kitchen countertop: who is it for?</h2>
+
+<p>An engineered stone countertop makes the most sense in households where someone cooks daily and the surface needs to handle water, stains, cleaning and years of use without sealing. It feels more valuable than laminate, is more predictable to maintain than natural stone, and with the right material choice it lasts 15 years or more.</p>
+
+<h2 id="price-tiers">Engineered stone countertop: pricing by material and installation</h2>
 
 <p>This is the section most articles will not write concretely. The numbers below are indicative ranges for 2026 including basic fabrication and installation — not catalogue marketing.</p>
+
+<p>When choosing, do not compare only the material itself. Engineered stone countertops differ also by thickness, cutout types, edge profiles, number of seams and installation quality — all of which affect the final price as much as the brand of stone.</p>
 
 <div class="article-highlight">
   <p><strong>€280/rm — entry tier (quartz composite, simple décor)</strong></p>

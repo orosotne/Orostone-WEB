@@ -263,14 +263,14 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
     author: BLOG_AUTHOR_OROSTONE,
     tags: ['umelý kameň', 'pracovná doska', 'kuchynská doska', 'cena', 'výber materiálu', 'sprievodca'],
     sk: {
-      title: 'Umelý kameň na pracovnú dosku: poctivý sprievodca pred kúpou',
+      title: 'Umelý kameň na pracovnú dosku: cena, typy a výber do kuchyne',
       subtitle: 'Rozhodovací proces, cenové hladiny a 7 chýb, ktorým sa vyhnúť pri výbere kuchynskej pracovnej dosky',
-      excerpt: 'Buyer\'s guide pre prvonákupcov: ako vybrať pracovnú dosku z umelého kameňa, čo reálne dostanete za €280, €400 a €550 €/bm a aké sú najčastejšie chyby pri výbere.',
+      excerpt: 'Zistite, koľko stojí pracovná doska z umelého kameňa, aké typy existujú a kedy sa oplatí quartz, sinterovaný kameň alebo keramická kuchynská doska.',
     },
     en: {
-      title: 'Engineered Stone Countertop: An Honest Pre-Purchase Guide',
+      title: 'Engineered Stone Countertop: Price, Types and Kitchen Selection Guide',
       subtitle: 'Decision process, price tiers and 7 mistakes to avoid when choosing a kitchen countertop',
-      excerpt: 'A buyer\'s guide for first-time buyers: how to choose an engineered stone countertop, what you actually get for €280, €400 and €550 per running meter, and the most common mistakes.',
+      excerpt: 'Find out how much an engineered stone countertop costs, what types exist, and when quartz, sintered stone or ceramic makes sense for your kitchen.',
     },
   },
 ];
