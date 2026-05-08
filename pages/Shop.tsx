@@ -966,9 +966,17 @@ export const Shop = () => {
       </section>
       </div>
 
-      {/* Order wrapper: mobile: stone(1) → products(2) → TextKnockout(3); desktop: TextKnockout(1) → stone(2) → products(3) */}
+      {/* Order wrapper: desktop: TextKnockout(1) → stone(2) → products(3)
+          On mobile, TextKnockoutSection is HIDDEN — its scroll-driven knockout
+          animation is desktop-only by design (sticky-pinned, GSAP scrub) and
+          duplicates the content of `.stone-mobile-section` below. On mobile
+          users see the gold-themed `.stone-mobile-section` (which is already
+          mobile-native: gold panel, horizontal slab carousel, feature list).
+          Without this guard, mobile renders an empty ~1500px black section
+          with a black-on-black "orostone" text and a paused video — visually
+          broken (autoplay restrictions on iOS Safari). */}
       <div className="flex flex-col w-full overflow-x-clip">
-        <div className="order-3 lg:order-1">
+        <div className="hidden lg:block lg:order-1">
           <React.Suspense fallback={<div className="min-h-dvh" aria-hidden />}>
             <TextKnockoutSection />
           </React.Suspense>
