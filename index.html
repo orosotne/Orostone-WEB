@@ -43,6 +43,10 @@
     <!-- Preload critical fonts to prevent font-swap CLS (Slovak text needs both latin-ext + latin) -->
     <link rel="preload" as="font" type="font/woff2" href="/fonts/montserrat/montserrat-latin-ext.woff2" crossorigin />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/montserrat/montserrat-latin.woff2" crossorigin />
+    <!-- Preload LCP hero image — AVIF first (95%+ browser support in 2026, ~21% smaller than WebP).
+         Older Safari < 16 / very old Firefox automatically fall back via <picture> in Shop.tsx.
+         Both formats preloaded so the browser picks whichever it accepts. -->
+    <link rel="preload" as="image" href="/images/home/hero-1.avif" type="image/avif" fetchpriority="high" />
     <link rel="preload" as="image" href="/images/home/hero-1.webp" type="image/webp" fetchpriority="high" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

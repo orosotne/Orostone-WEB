@@ -664,17 +664,25 @@ export const Shop = () => {
               idx === activeSlide ? 'opacity-100 z-[1]' : 'opacity-0 z-0'
             }`}
           >
-            {/* Hero Image */}
-            <img
-              src={slide.poster}
-              alt=""
-              width={1920}
-              height={1080}
-              fetchPriority={idx === 0 ? 'high' : 'low'}
-              loading={idx === 0 ? 'eager' : 'lazy'}
-              decoding="async"
-              className="hero-img absolute inset-0 w-full h-full object-cover"
-            />
+            {/* Hero image — AVIF first (avg ~50-80% smaller than WebP), WebP fallback for
+                browsers without AVIF support (Safari < 16, old Firefox).
+                Browser support for AVIF: 95%+ globally as of 2026. */}
+            <picture>
+              <source
+                srcSet={slide.poster.replace(/\.webp$/, '.avif')}
+                type="image/avif"
+              />
+              <img
+                src={slide.poster}
+                alt=""
+                width={1920}
+                height={1080}
+                fetchPriority={idx === 0 ? 'high' : 'low'}
+                loading={idx === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+                className="hero-img absolute inset-0 w-full h-full object-cover"
+              />
+            </picture>
           </div>
         ))}
 
