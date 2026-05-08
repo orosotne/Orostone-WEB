@@ -1028,10 +1028,10 @@ export const Shop = () => {
 
         {/* Mobile / Tablet — scroll-triggered reveal animations (no pinning) */}
         <section className="stone-mobile-section order-1 lg:order-2 relative py-16 lg:hidden overflow-hidden">
-        {/* Animated background — starts inset + rounded, expands on scroll */}
+        {/* Full-width yellow background — section's py-16 already provides breathing room
+            from outer content, so no clip-path / rounded panel inset is needed. */}
         <div
           className="stone-bg-mobile pointer-events-none absolute inset-0 bg-brand-gold"
-          style={{ clipPath: 'inset(40px 24px 40px 24px round 24px)' }}
         />
 
         <div className="relative z-10 container mx-auto px-4">
