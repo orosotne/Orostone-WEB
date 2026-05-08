@@ -382,6 +382,7 @@ const ColumnCard = ({
 // Main component
 // ──────────────────────────────────────────
 export const InspirationSection: React.FC<Props> = () => {
+  const isMobile = useIsMobile();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   // Map each unique column to its lightbox indices
@@ -389,8 +390,13 @@ export const InspirationSection: React.FC<Props> = () => {
   const getMediaIndex = (colIdx: number, position: 'top' | 'bottom') =>
     colIdx * 2 + (position === 'top' ? 0 : 1);
 
-  // 2 copies for the seamless -50% loop (reduced from 4 to lower DOM video count)
-  const strip = [...UNIQUE_COLUMNS, ...UNIQUE_COLUMNS];
+  // Desktop: 2 copies of UNIQUE_COLUMNS for the seamless -50% marquee loop
+  // (28 columns total, animated horizontal scroll).
+  //
+  // Mobile: just 1 copy (14 columns). Mobile already overflows horizontally
+  // and users scroll-swipe naturally — the marquee animation isn't visible
+  // and only doubles the IntersectionObserver count + DOM size for nothing.
+  const strip = isMobile ? UNIQUE_COLUMNS : [...UNIQUE_COLUMNS, ...UNIQUE_COLUMNS];
 
   const isOpen = lightboxIndex !== null;
 
@@ -488,6 +494,25 @@ export const InspirationSection: React.FC<Props> = () => {
         @media (prefers-reduced-motion: reduce) {
           .insp-marquee {
             animation: none !important;
+          }
+        }
+
+        /* Mobile (<lg): no marquee animation, native horizontal swipe scroll
+           on the wrapper (overflow-x: auto). Single strip means we only render
+           14 columns instead of 28 — half the IntersectionObservers, half the
+           DOM nodes. The user's natural finger-swipe is the navigation. */
+        @media (max-width: 1023px) {
+          .insp-marquee-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x proximity;
+          }
+          .insp-marquee {
+            animation: none !important;
+            width: max-content;
+          }
+          .insp-col {
+            scroll-snap-align: start;
           }
         }
 
