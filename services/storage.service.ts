@@ -1,4 +1,5 @@
-import { supabase, isSupabaseConfigured } from '../lib/supabase';
+import { getSupabase } from '../lib/supabase';
+import { isSupabaseConfigured } from '../lib/supabaseEnv';
 import type { FileType, QuoteFileInsert } from '../types/database.types';
 
 // ===========================================
@@ -71,7 +72,8 @@ export async function uploadQuoteFiles(
       const sanitizedName = sanitizeFileName(file.name);
       const filePath = `quotes/${quoteId}/${timestamp}-${sanitizedName}`;
 
-      // Nahraj do Storage
+      // Nahraj do Storage (lazy-init SDK on first upload — not on page load)
+      const supabase = await getSupabase();
       const { error: uploadError } = await supabase.storage
         .from(BUCKET_NAME)
         .upload(filePath, file, {
@@ -124,6 +126,7 @@ export async function uploadQuoteFiles(
 export async function getFileUrl(filePath: string): Promise<string | null> {
   if (!isSupabaseConfigured()) return null;
 
+  const supabase = await getSupabase();
   const { data } = await supabase.storage
     .from(BUCKET_NAME)
     .createSignedUrl(filePath, 3600); // 1 hodina platnosti
@@ -137,6 +140,7 @@ export async function getFileUrl(filePath: string): Promise<string | null> {
 export async function getQuoteFiles(quoteId: string) {
   if (!isSupabaseConfigured()) return [];
 
+  const supabase = await getSupabase();
   const { data, error } = await supabase
     .from('quote_files')
     .select('*')

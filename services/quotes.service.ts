@@ -1,4 +1,5 @@
-import { supabase, isSupabaseConfigured } from '../lib/supabase';
+import { getSupabase } from '../lib/supabase';
+import { isSupabaseConfigured } from '../lib/supabaseEnv';
 import { uploadQuoteFiles } from './storage.service';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
@@ -197,6 +198,8 @@ export async function submitSampleLead(data: SampleLeadFormData): Promise<Submit
  * Získa všetky dopyty (vyžaduje autentifikáciu).
  */
 export async function getQuotes(status?: string): Promise<Quote[]> {
+  // Admin function — Supabase SDK lazy-loaded on first admin call.
+  const supabase = await getSupabase();
   let query = supabase
     .from('quotes')
     .select('*, customers(*)')
@@ -226,6 +229,8 @@ export async function updateQuoteStatus(
   status: string,
   adminNotes?: string,
 ): Promise<boolean> {
+  // Admin function — Supabase SDK lazy-loaded.
+  const supabase = await getSupabase();
   // `as never` cast bypasses a known @supabase/postgrest-js generic-narrowing
   // edge case under TS strict typecheck — runtime accepts the object normally.
   const { error } = await supabase
