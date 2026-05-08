@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useCookies } from '../context/CookieContext';
+import { useFirstInteraction } from './useFirstInteraction';
 
 declare global {
   interface Window {
@@ -29,9 +30,15 @@ export function useMetaPixel(): void {
   const { preferences } = useCookies();
   const location = useLocation();
   const loadedRef = useRef(false);
+  // Defer Pixel script injection until first user interaction (or 5s timeout).
+  // fbevents.js is ~113 KB raw and blocks the main thread on parse — same INP
+  // hit as gtag.js. Same idea as useAnalytics: real users see PageView fired
+  // within ~5s, bots/abandoners still get tracked via the timeout fallback.
+  const interacted = useFirstInteraction();
 
   // Load the pixel script once when marketing consent is granted
   useEffect(() => {
+    if (!interacted) return;
     if (!PIXEL_ID || !preferences.marketing || loadedRef.current) return;
     loadedRef.current = true;
 
@@ -56,7 +63,7 @@ export function useMetaPixel(): void {
     script.async = true;
     script.src = FBQ_SRC;
     document.head.appendChild(script);
-  }, [preferences.marketing]);
+  }, [preferences.marketing, interacted]);
 
   // Track PageView on every SPA route change (skip the very first render — already tracked above)
   const isFirstRender = useRef(true);

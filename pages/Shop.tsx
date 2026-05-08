@@ -275,9 +275,13 @@ export const Shop = () => {
     if (activeSlide >= slidesLen) setActiveSlide(0);
   }, [slidesLen, activeSlide]);
 
-  // Auto-advance hero slides — pause when tab is hidden to avoid contention.
+  // Auto-advance hero slides — pause when tab is hidden OR when hero scrolls
+  // out of view. Otherwise the carousel keeps advancing & re-rendering while
+  // the user is reading mid-page content, wasting CPU/battery on mobile and
+  // contributing to scroll-jank INP.
   useEffect(() => {
     const start = () => {
+      if (heroAutoplayRef.current) return;
       heroAutoplayRef.current = setInterval(() => {
         setActiveSlide((prev) => (prev + 1) % slidesLen);
       }, 6000);
@@ -288,11 +292,42 @@ export const Shop = () => {
         heroAutoplayRef.current = null;
       }
     };
-    start();
-    const onVisibility = () => { document.hidden ? stop() : (heroAutoplayRef.current ? null : start()); };
+
+    // Track both signals: tab visibility AND hero in-viewport. Both must be
+    // satisfied for autoplay to run.
+    let tabVisible = !document.hidden;
+    let heroInView = true; // assume in view at first paint
+    const apply = () => {
+      if (tabVisible && heroInView) start();
+      else stop();
+    };
+
+    apply();
+
+    const onVisibility = () => {
+      tabVisible = !document.hidden;
+      apply();
+    };
     document.addEventListener('visibilitychange', onVisibility);
+
+    // Pause when hero scrolls out of viewport (with 200 px slack so brief
+    // overscrolls don't toggle autoplay).
+    const heroEl = heroRef.current;
+    let io: IntersectionObserver | null = null;
+    if (heroEl && typeof IntersectionObserver !== 'undefined') {
+      io = new IntersectionObserver(
+        (entries) => {
+          heroInView = entries.some((e) => e.isIntersecting);
+          apply();
+        },
+        { rootMargin: '200px' },
+      );
+      io.observe(heroEl);
+    }
+
     return () => {
       document.removeEventListener('visibilitychange', onVisibility);
+      io?.disconnect();
       stop();
     };
   }, [slidesLen]);
