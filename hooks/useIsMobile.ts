@@ -42,7 +42,21 @@ function useMediaQuery(query: string, ssrFallback: boolean): boolean {
       store.listeners.add(onChange);
       return () => { store.listeners.delete(onChange); };
     },
-    () => stores.get(query)?.matches ?? ssrFallback,
+    () => {
+      // The first getSnapshot call happens BEFORE subscribe runs, so the
+      // shared `stores` map may not have the entry yet. Without a synchronous
+      // peek at window.matchMedia, the initial render falls back to
+      // `ssrFallback` (false) → mobile users briefly render desktop-only
+      // components (e.g. <TextKnockoutSection />), triggering their lazy
+      // import() before the second render unmounts them. Peek synchronously
+      // so the very first paint already knows the correct value.
+      const existing = stores.get(query);
+      if (existing) return existing.matches;
+      if (typeof window !== 'undefined') {
+        return window.matchMedia(query).matches;
+      }
+      return ssrFallback;
+    },
     () => ssrFallback,
   );
 }
