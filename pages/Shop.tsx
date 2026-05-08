@@ -427,19 +427,57 @@ export const Shop = () => {
       gsap.set('.stone-experience-pinned .stone-cta', { opacity: 1, y: 0 });
     }
 
-    // --- Stone Experience: Mobile static reveal (no GSAP ScrollTriggers) ---
-    // Previously this block created 4 ScrollTriggers running on mobile, which
-    // caused 57ms forced reflow at setup (o.enable) and ongoing layout queries
-    // during scroll, producing visible scroll jank. Mobile users now see the
-    // section in its final state without entrance animations — same approach
-    // as the prefers-reduced-motion fallback. Desktop pinning timeline above
-    // (gsap.matchMedia '(min-width: 1024px)') is unaffected.
+    // --- Stone Experience: Mobile reveal — IntersectionObserver instead of GSAP ScrollTrigger ---
+    // Previous incarnation (pre-91ab3c8) used 4 GSAP ScrollTriggers which cost
+    // ~57ms forced reflow at setup + ongoing layout queries during scroll.
+    // The first attempt to remove them (commit 91ab3c8) overshot: it called
+    // `gsap.set('.stone-bg-mobile', { clipPath: 'inset(0) round 0' })` which
+    // OVERRODE the rounded inline-style clipPath on the element with the
+    // FINAL state of the old animation — full-bleed, no rounded panel — and
+    // dropped the gentle fade-in entrance for the cards.
+    //
+    // This rewrite restores both:
+    //   1. The rounded gold panel (default inline-style preserved — no `gsap.set`
+    //      overriding it).
+    //   2. A subtle staggered fade-in for cards / CTA via IntersectionObserver.
+    //      IO runs off the main thread and does not query layout, so it has
+    //      zero scroll-INP cost — the original perf concern is preserved.
     const stoneMobile = document.querySelector('.stone-mobile-section');
     if (stoneMobile) {
-      gsap.set('.stone-bg-mobile', { clipPath: 'inset(0px 0px 0px 0px round 0px)' });
+      // Carousel and slab containers: visible immediately, no entrance anim
+      // (the carousel is horizontally scrollable — entrance anim conflicts with
+      // user's swipe interactions).
       gsap.set('.stone-slab-carousel', { opacity: 1, y: 0, scale: 1 });
-      gsap.set('.stone-card-mobile', { opacity: 1, y: 0 });
-      gsap.set('.stone-cta-mobile', { opacity: 1, y: 0 });
+
+      // Subtle entrance fade-in for cards (01-05) + CTA on mobile.
+      // CSS transition-driven — composited, no main-thread layout cost.
+      const animateOnEnter = (selector: string) => {
+        document.querySelectorAll<HTMLElement>(selector).forEach((el, i) => {
+          // Initial state: invisible + slightly translated
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(16px)';
+          el.style.transition =
+            `opacity 600ms cubic-bezier(0.16, 1, 0.3, 1) ${i * 80}ms, ` +
+            `transform 600ms cubic-bezier(0.16, 1, 0.3, 1) ${i * 80}ms`;
+          el.style.willChange = 'opacity, transform';
+
+          const io = new IntersectionObserver(
+            ([entry]) => {
+              if (!entry.isIntersecting) return;
+              el.style.opacity = '1';
+              el.style.transform = 'translateY(0)';
+              // Cleanup will-change after animation finishes (~600ms + max delay)
+              window.setTimeout(() => { el.style.willChange = ''; }, 1300);
+              io.disconnect();
+            },
+            { threshold: 0.15, rootMargin: '0px 0px -40px 0px' },
+          );
+          io.observe(el);
+        });
+      };
+
+      animateOnEnter('.stone-card-mobile');
+      animateOnEnter('.stone-cta-mobile');
     }
 
     // --- Generic fade-in-on-scroll reveals — desktop only.
