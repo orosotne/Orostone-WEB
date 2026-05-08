@@ -427,20 +427,9 @@ export const Shop = () => {
       gsap.set('.stone-experience-pinned .stone-cta', { opacity: 1, y: 0 });
     }
 
-    // --- Stone Experience: Mobile static reveal (no GSAP ScrollTriggers) ---
-    // Previously this block created 4 ScrollTriggers running on mobile, which
-    // caused 57ms forced reflow at setup (o.enable) and ongoing layout queries
-    // during scroll, producing visible scroll jank. Mobile users now see the
-    // section in its final state without entrance animations — same approach
-    // as the prefers-reduced-motion fallback. Desktop pinning timeline above
-    // (gsap.matchMedia '(min-width: 1024px)') is unaffected.
-    const stoneMobile = document.querySelector('.stone-mobile-section');
-    if (stoneMobile) {
-      gsap.set('.stone-bg-mobile', { clipPath: 'inset(0px 0px 0px 0px round 0px)' });
-      gsap.set('.stone-slab-carousel', { opacity: 1, y: 0, scale: 1 });
-      gsap.set('.stone-card-mobile', { opacity: 1, y: 0 });
-      gsap.set('.stone-cta-mobile', { opacity: 1, y: 0 });
-    }
+    // (Mobile fade-in for stone-mobile-section moved to its own useEffect below —
+    // useGSAP early-returns on mobile via line 309 `if (window.innerWidth < 1024) return`,
+    // so any code here would never run on phones.)
 
     // --- Generic fade-in-on-scroll reveals — desktop only.
     // On mobile each ScrollTrigger added long-task INP cost during scroll without
@@ -550,6 +539,47 @@ export const Shop = () => {
       revealsMedia.revert();
     };
   }, { scope: containerRef });
+
+  // Mobile-only: subtle staggered fade-in for stone-mobile-section cards + CTA.
+  // Lives in its own useEffect because the page's main `useGSAP` block early-returns
+  // for mobile (`if (window.innerWidth < 1024) return` on line 309). IntersectionObserver
+  // runs off the main thread and queries no layout, so it has zero scroll-INP cost.
+  useEffect(() => {
+    if (window.innerWidth >= 1024) return;
+    if (!containerRef.current) return;
+
+    const observers: IntersectionObserver[] = [];
+    const animateOnEnter = (selector: string) => {
+      const elements = document.querySelectorAll<HTMLElement>(selector);
+      elements.forEach((el, i) => {
+        // Initial state: invisible + slightly translated
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(16px)';
+        el.style.transition =
+          `opacity 600ms cubic-bezier(0.16, 1, 0.3, 1) ${i * 80}ms, ` +
+          `transform 600ms cubic-bezier(0.16, 1, 0.3, 1) ${i * 80}ms`;
+        el.style.willChange = 'opacity, transform';
+
+        const io = new IntersectionObserver(
+          ([entry]) => {
+            if (!entry.isIntersecting) return;
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+            window.setTimeout(() => { el.style.willChange = ''; }, 1300);
+            io.disconnect();
+          },
+          { threshold: 0.15, rootMargin: '0px 0px -40px 0px' },
+        );
+        io.observe(el);
+        observers.push(io);
+      });
+    };
+
+    animateOnEnter('.stone-card-mobile');
+    animateOnEnter('.stone-cta-mobile');
+
+    return () => observers.forEach((io) => io.disconnect());
+  }, []);
 
   // Get featured/spotlight product
   const spotlightProduct = SHOP_PRODUCTS[0];
