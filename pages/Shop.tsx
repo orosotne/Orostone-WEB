@@ -427,58 +427,9 @@ export const Shop = () => {
       gsap.set('.stone-experience-pinned .stone-cta', { opacity: 1, y: 0 });
     }
 
-    // --- Stone Experience: Mobile reveal — IntersectionObserver instead of GSAP ScrollTrigger ---
-    // Previous incarnation (pre-91ab3c8) used 4 GSAP ScrollTriggers which cost
-    // ~57ms forced reflow at setup + ongoing layout queries during scroll.
-    // The first attempt to remove them (commit 91ab3c8) overshot: it called
-    // `gsap.set('.stone-bg-mobile', { clipPath: 'inset(0) round 0' })` which
-    // OVERRODE the rounded inline-style clipPath on the element with the
-    // FINAL state of the old animation — full-bleed, no rounded panel — and
-    // dropped the gentle fade-in entrance for the cards.
-    //
-    // This rewrite restores both:
-    //   1. The rounded gold panel (default inline-style preserved — no `gsap.set`
-    //      overriding it).
-    //   2. A subtle staggered fade-in for cards / CTA via IntersectionObserver.
-    //      IO runs off the main thread and does not query layout, so it has
-    //      zero scroll-INP cost — the original perf concern is preserved.
-    const stoneMobile = document.querySelector('.stone-mobile-section');
-    if (stoneMobile) {
-      // Carousel and slab containers: visible immediately, no entrance anim
-      // (the carousel is horizontally scrollable — entrance anim conflicts with
-      // user's swipe interactions).
-      gsap.set('.stone-slab-carousel', { opacity: 1, y: 0, scale: 1 });
-
-      // Subtle entrance fade-in for cards (01-05) + CTA on mobile.
-      // CSS transition-driven — composited, no main-thread layout cost.
-      const animateOnEnter = (selector: string) => {
-        document.querySelectorAll<HTMLElement>(selector).forEach((el, i) => {
-          // Initial state: invisible + slightly translated
-          el.style.opacity = '0';
-          el.style.transform = 'translateY(16px)';
-          el.style.transition =
-            `opacity 600ms cubic-bezier(0.16, 1, 0.3, 1) ${i * 80}ms, ` +
-            `transform 600ms cubic-bezier(0.16, 1, 0.3, 1) ${i * 80}ms`;
-          el.style.willChange = 'opacity, transform';
-
-          const io = new IntersectionObserver(
-            ([entry]) => {
-              if (!entry.isIntersecting) return;
-              el.style.opacity = '1';
-              el.style.transform = 'translateY(0)';
-              // Cleanup will-change after animation finishes (~600ms + max delay)
-              window.setTimeout(() => { el.style.willChange = ''; }, 1300);
-              io.disconnect();
-            },
-            { threshold: 0.15, rootMargin: '0px 0px -40px 0px' },
-          );
-          io.observe(el);
-        });
-      };
-
-      animateOnEnter('.stone-card-mobile');
-      animateOnEnter('.stone-cta-mobile');
-    }
+    // (Mobile fade-in for stone-mobile-section moved to its own useEffect below —
+    // useGSAP early-returns on mobile via line 309 `if (window.innerWidth < 1024) return`,
+    // so any code here would never run on phones.)
 
     // --- Generic fade-in-on-scroll reveals — desktop only.
     // On mobile each ScrollTrigger added long-task INP cost during scroll without
@@ -588,6 +539,47 @@ export const Shop = () => {
       revealsMedia.revert();
     };
   }, { scope: containerRef });
+
+  // Mobile-only: subtle staggered fade-in for stone-mobile-section cards + CTA.
+  // Lives in its own useEffect because the page's main `useGSAP` block early-returns
+  // for mobile (`if (window.innerWidth < 1024) return` on line 309). IntersectionObserver
+  // runs off the main thread and queries no layout, so it has zero scroll-INP cost.
+  useEffect(() => {
+    if (window.innerWidth >= 1024) return;
+    if (!containerRef.current) return;
+
+    const observers: IntersectionObserver[] = [];
+    const animateOnEnter = (selector: string) => {
+      const elements = document.querySelectorAll<HTMLElement>(selector);
+      elements.forEach((el, i) => {
+        // Initial state: invisible + slightly translated
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(16px)';
+        el.style.transition =
+          `opacity 600ms cubic-bezier(0.16, 1, 0.3, 1) ${i * 80}ms, ` +
+          `transform 600ms cubic-bezier(0.16, 1, 0.3, 1) ${i * 80}ms`;
+        el.style.willChange = 'opacity, transform';
+
+        const io = new IntersectionObserver(
+          ([entry]) => {
+            if (!entry.isIntersecting) return;
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+            window.setTimeout(() => { el.style.willChange = ''; }, 1300);
+            io.disconnect();
+          },
+          { threshold: 0.15, rootMargin: '0px 0px -40px 0px' },
+        );
+        io.observe(el);
+        observers.push(io);
+      });
+    };
+
+    animateOnEnter('.stone-card-mobile');
+    animateOnEnter('.stone-cta-mobile');
+
+    return () => observers.forEach((io) => io.disconnect());
+  }, []);
 
   // Get featured/spotlight product
   const spotlightProduct = SHOP_PRODUCTS[0];
