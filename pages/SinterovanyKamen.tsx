@@ -367,11 +367,14 @@ export const SinterovanyKamen = () => {
         className="relative h-dvh min-h-[800px] flex items-center justify-center overflow-hidden pt-20"
       >
         <div className="absolute inset-0 z-0 sk-hero-image">
-          <img
-            src="/images/home/hero-1.webp"
-            alt=""
-            className="w-full h-full object-cover brightness-[0.35]"
-          />
+          <picture>
+            <source srcSet="/images/home/hero-1.avif" type="image/avif" />
+            <img
+              src="/images/home/hero-1.webp"
+              alt=""
+              className="w-full h-full object-cover brightness-[0.35]"
+            />
+          </picture>
         </div>
         <div className="relative z-10 container mx-auto px-6 text-center text-white">
           <span className="sk-hero-text font-sans text-xs font-bold tracking-widest uppercase text-brand-gold mb-6 block">
