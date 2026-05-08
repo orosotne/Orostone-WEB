@@ -3,6 +3,7 @@ import { AnimatePresence, m } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { RotatingBadge } from '../UI/RotatingBadge';
 import { useScrollLock } from '../../hooks/useScrollLock';
+import { useIsMobile } from '../../hooks/useIsMobile';
 
 interface InspirationItem {
   src: string;
@@ -228,14 +229,25 @@ const ImageCard = ({ src, thumb, idx, onOpen }: { src: string; thumb: string; id
 // ──────────────────────────────────────────
 // Video card
 // ──────────────────────────────────────────
+// On mobile we render ONLY the poster image — autoplaying multiple <video>
+// elements at once was causing iOS Safari memory pressure (paint buffer
+// eviction = white flash on fast scroll back). User can still tap a card
+// to open the lightbox, which plays the full video at native quality.
+//
+// On desktop the inline autoplay video stays (good performance there, no
+// memory pressure on a real GPU).
+// ──────────────────────────────────────────
 const VideoCard = ({ src, poster, idx, onOpen }: { src: string; poster: string; idx: number; onOpen: () => void; key?: React.Key }) => {
+  const isMobile = useIsMobile();
   const [muted, setMuted] = useState(true);
   const [visible, setVisible] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const cardRef = useRef<HTMLButtonElement>(null);
 
-  // Mount <video> element only when card enters extended viewport (400px margin)
+  // Mount <video> element only when card enters extended viewport (400px margin).
+  // Skipped entirely on mobile — VideoCard becomes a poster-only card.
   useEffect(() => {
+    if (isMobile) return;
     const el = cardRef.current;
     if (!el) return;
 
@@ -250,10 +262,11 @@ const VideoCard = ({ src, poster, idx, onOpen }: { src: string; poster: string; 
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [isMobile]);
 
-  // Play/pause based on visibility
+  // Play/pause based on visibility (desktop only — no <video> exists on mobile).
   useEffect(() => {
+    if (isMobile) return;
     const el = cardRef.current;
     const video = videoRef.current;
     if (!el || !video) return;
@@ -273,7 +286,7 @@ const VideoCard = ({ src, poster, idx, onOpen }: { src: string; poster: string; 
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [visible]);
+  }, [visible, isMobile]);
 
   const toggleMute = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -293,7 +306,7 @@ const VideoCard = ({ src, poster, idx, onOpen }: { src: string; poster: string; 
       style={{ aspectRatio: '9 / 16' }}
       aria-label={`Otvoriť video ${idx + 1}`}
     >
-      {/* Poster image shows instantly — video overlays it once loaded */}
+      {/* Poster image shows instantly — video (desktop only) overlays it once loaded */}
       <img
         src={poster}
         alt=""
@@ -301,7 +314,7 @@ const VideoCard = ({ src, poster, idx, onOpen }: { src: string; poster: string; 
         decoding="async"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      {visible && (
+      {!isMobile && visible && (
         <video
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
@@ -314,15 +327,18 @@ const VideoCard = ({ src, poster, idx, onOpen }: { src: string; poster: string; 
           <source src={src} type="video/mp4" />
         </video>
       )}
-      <button
-        type="button"
-        aria-label="Toggle volume"
-        data-state={muted ? 'muted' : 'unmuted'}
-        onClick={toggleMute}
-        className="absolute top-2 right-2 z-10 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/60 transition-colors"
-      >
-        {muted ? <MuteIcon /> : <UnmuteIcon />}
-      </button>
+      {/* Mute toggle hidden on mobile (no inline video to mute) */}
+      {!isMobile && (
+        <button
+          type="button"
+          aria-label="Toggle volume"
+          data-state={muted ? 'muted' : 'unmuted'}
+          onClick={toggleMute}
+          className="absolute top-2 right-2 z-10 w-8 h-8 rounded-full bg-black/40 backdrop-blur-sm flex items-center justify-center text-white hover:bg-black/60 transition-colors"
+        >
+          {muted ? <MuteIcon /> : <UnmuteIcon />}
+        </button>
+      )}
     </button>
   );
 };

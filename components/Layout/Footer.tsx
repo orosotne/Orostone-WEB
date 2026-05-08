@@ -238,7 +238,13 @@ const FooterComponent: React.FC<FooterProps> = ({ categories, isProductDetail = 
           {/* Logo & About */}
           <div className="lg:col-span-2">
             <Link to="/">
-              <img src="/images/orostone-logo.svg" alt="OROSTONE" className="h-10 brightness-0 invert mb-4" />
+              <img
+                src="/images/orostone-logo.svg"
+                alt="OROSTONE"
+                width={203}
+                height={40}
+                className="h-10 w-auto brightness-0 invert mb-4"
+              />
             </Link>
             <p className="text-gray-400 text-sm mb-6 max-w-sm">
               Sinterované platne pre náročných zákazníkov.
