@@ -158,6 +158,33 @@ export const Shop = () => {
   const { products: SHOP_PRODUCTS, isLoading: productsLoading } = useShopifyProducts();
   const isMobile = useIsMobile();
 
+  // ===========================================
+  // PREWARM CACHE: pre-fetch deferred below-fold chunks during idle time
+  // ===========================================
+  // DeferUntilVisible doesn't render the lazy children until IO fires near
+  // the section. On slow mobile networks the resulting chunk download (even
+  // 4 KB) can show a brief Suspense placeholder gap. Triggering the dynamic
+  // import here at idle time warms the browser cache so the lazy() wrapper
+  // resolves synchronously when DeferUntilVisible eventually mounts.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const idle = (fn: () => void, timeout: number) => {
+      if ('requestIdleCallback' in window) {
+        (window as { requestIdleCallback?: (cb: () => void, opts: { timeout: number }) => void })
+          .requestIdleCallback?.(fn, { timeout });
+      } else {
+        setTimeout(fn, timeout);
+      }
+    };
+    // 4s after first paint is conservative — past LCP and any first-interaction
+    // window. Loading these here costs ~23 KB raw / ~8 KB gzip, paid only on
+    // the home route (this useEffect lives inside Shop component).
+    idle(() => {
+      import('../components/Shop/SampleLeadSection');
+      import('../components/Eshop/BlogPreviewSection');
+    }, 4000);
+  }, []);
+
   // Hero carousel: reduce slide count on mobile to cut image preloading + interval-driven
   // re-renders that contribute to INP on low-end devices. Shared copy means any subset works.
   const heroSlides = useMemo(

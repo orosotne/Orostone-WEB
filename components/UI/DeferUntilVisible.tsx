@@ -9,9 +9,12 @@ interface DeferUntilVisibleProps {
    */
   fallback: ReactNode;
   /**
-   * IntersectionObserver rootMargin. Defaults to "600px 0px" so the chunk
-   * starts loading ~600px before the section enters the viewport — enough
-   * runway to parse + execute before the user actually sees it.
+   * IntersectionObserver rootMargin. Defaults to "1200px 0px" so the chunk
+   * starts loading ~1200px before the section enters the viewport. On a
+   * 5–6 Mbps mobile link this is the difference between the user seeing
+   * the Suspense fallback gap or the section already mounted. Combined
+   * with the page-level idle prefetch in pages/Shop.tsx this usually
+   * means the chunk is cache-warm by the time IO actually fires.
    */
   rootMargin?: string;
   /**
@@ -36,7 +39,7 @@ interface DeferUntilVisibleProps {
 export function DeferUntilVisible({
   children,
   fallback,
-  rootMargin = '600px 0px 600px 0px',
+  rootMargin = '1200px 0px 1200px 0px',
   forceRender = false,
 }: DeferUntilVisibleProps) {
   const sentinelRef = useRef<HTMLDivElement | null>(null);
