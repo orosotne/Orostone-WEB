@@ -997,20 +997,25 @@ export const Shop = () => {
       </div>
 
       {/* Order wrapper: desktop: TextKnockout(1) → stone(2) → products(3)
-          On mobile, TextKnockoutSection is HIDDEN — its scroll-driven knockout
-          animation is desktop-only by design (sticky-pinned, GSAP scrub) and
-          duplicates the content of `.stone-mobile-section` below. On mobile
-          users see the gold-themed `.stone-mobile-section` (which is already
-          mobile-native: gold panel, horizontal slab carousel, feature list).
-          Without this guard, mobile renders an empty ~1500px black section
-          with a black-on-black "orostone" text and a paused video — visually
-          broken (autoplay restrictions on iOS Safari). */}
+          TextKnockoutSection is desktop-only by design (sticky-pinned, GSAP scrub,
+          background video). Mobile renders only the gold-themed
+          `.stone-mobile-section` below.
+
+          Render conditionally (not just `hidden lg:block`) so the lazy chunk
+          + GSAP work is **not even fetched** on phones — saves ~20-50 KB JS
+          parse/compile on mobile, plus avoids loading the background video
+          on a connection that won't display it.
+
+          `useIsMobile` is already used elsewhere in this file; same hook,
+          single source of truth. */}
       <div className="flex flex-col w-full overflow-x-clip">
-        <div className="hidden lg:block lg:order-1">
-          <React.Suspense fallback={<div className="min-h-dvh" aria-hidden />}>
-            <TextKnockoutSection />
-          </React.Suspense>
-        </div>
+        {!isMobile && (
+          <div className="lg:order-1">
+            <React.Suspense fallback={<div className="min-h-dvh" aria-hidden />}>
+              <TextKnockoutSection />
+            </React.Suspense>
+          </div>
+        )}
 
         {/* Mobile / Tablet — scroll-triggered reveal animations (no pinning) */}
         <section className="stone-mobile-section order-1 lg:order-2 relative py-16 lg:hidden overflow-hidden">
