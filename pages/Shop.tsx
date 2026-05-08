@@ -13,6 +13,7 @@ import { useShopifyProducts } from '../hooks/useShopifyProducts';
 import { useInstagramFeed, getPostImageUrl } from '../hooks/useInstagramFeed';
 import { useIsMobile } from '../hooks/useIsMobile';
 import { lazyWithRetry } from '../lib/utils';
+import { DeferUntilVisible } from '../components/UI/DeferUntilVisible';
 
 import { SEOHead, OROSTONE_ORGANIZATION_LD } from '../components/UI/SEOHead';
 // Eager: InspirationSection has its entrance animation registered from Shop's `useGSAP`
@@ -1219,14 +1220,22 @@ export const Shop = () => {
       <InspirationSection items={INSPIRATION_IMAGES} />
 
       {/* ==================== SAMPLE LEAD SECTION ==================== */}
-      <React.Suspense fallback={<div className="min-h-[1400px] lg:min-h-[1100px]" aria-hidden />}>
-        <SampleLeadSection />
-      </React.Suspense>
+      {/* DeferUntilVisible prevents the lazy chunk from being requested until
+          ~600px before it scrolls into view. Reserves height to keep CLS=0. */}
+      <DeferUntilVisible
+        fallback={<div className="min-h-[1400px] lg:min-h-[1100px]" aria-hidden />}
+      >
+        <React.Suspense fallback={<div className="min-h-[1400px] lg:min-h-[1100px]" aria-hidden />}>
+          <SampleLeadSection />
+        </React.Suspense>
+      </DeferUntilVisible>
 
       {/* ==================== BLOG PREVIEW SECTION ==================== */}
-      <React.Suspense fallback={<div className="min-h-[600px]" aria-hidden />}>
-        <BlogPreviewSection articles={getLatestArticlesMeta(5)} />
-      </React.Suspense>
+      <DeferUntilVisible fallback={<div className="min-h-[600px]" aria-hidden />}>
+        <React.Suspense fallback={<div className="min-h-[600px]" aria-hidden />}>
+          <BlogPreviewSection articles={getLatestArticlesMeta(5)} />
+        </React.Suspense>
+      </DeferUntilVisible>
 
       {/* ==================== TESTIMONIALS ==================== */}
       <section className="testimonials-section relative py-20 lg:py-28 bg-white overflow-hidden">
