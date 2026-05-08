@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useCookies } from '../context/CookieContext';
+import { useFirstInteraction } from './useFirstInteraction';
 
 // Window globals injected by GTM / GA4 (declarations merge with index.tsx)
 declare global {
@@ -53,8 +54,15 @@ const { isInternal: isInternalTraffic, teamMember } = checkInternalFlag();
 export const useAnalytics = () => {
   const { preferences } = useCookies();
   const scriptInjected = useRef(false);
+  // Defer GTM script injection until first user interaction (or 5s timeout).
+  // gtag.js is ~140 KB raw and blocks the main thread on parse — running it
+  // during the initial paint window directly hurts INP/FID. Real users see
+  // page-view tracked within 5 s; abandoning users / bots still get tracked
+  // via the timeout fallback.
+  const interacted = useFirstInteraction();
 
   useEffect(() => {
+    if (!interacted) return;
     if (preferences.analytics && GA_ID && !scriptInjected.current) {
       // Inject gtag.js script dynamically
       scriptInjected.current = true;
@@ -110,5 +118,5 @@ export const useAnalytics = () => {
       ad_user_data: preferences.marketing ? 'granted' : 'denied',
       ad_personalization: preferences.marketing ? 'granted' : 'denied',
     });
-  }, [preferences.analytics, preferences.marketing]);
+  }, [preferences.analytics, preferences.marketing, interacted]);
 };
