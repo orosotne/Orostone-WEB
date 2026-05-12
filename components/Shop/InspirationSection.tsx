@@ -1,9 +1,10 @@
-import React, { useRef, useState, useCallback, useEffect } from 'react';
+import React, { useRef, useState, useCallback, useEffect, useId } from 'react';
 import { AnimatePresence, m } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { RotatingBadge } from '../UI/RotatingBadge';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { useIsMobile } from '../../hooks/useIsMobile';
+import { inspirationVideoCoordinator } from './inspirationVideoCoordinator';
 
 interface InspirationItem {
   src: string;
@@ -229,23 +230,25 @@ const ImageCard = ({ src, thumb, idx, onOpen }: { src: string; thumb: string; id
 // ──────────────────────────────────────────
 // Video card
 // ──────────────────────────────────────────
-// On mobile we render ONLY the poster image — autoplaying multiple <video>
-// elements at once was causing iOS Safari memory pressure (paint buffer
-// eviction = white flash on fast scroll back). User can still tap a card
-// to open the lightbox, which plays the full video at native quality.
+// Desktop: every card mounts its <video> when within 400 px of the viewport
+// and autoplays — solid performance on a real GPU.
 //
-// On desktop the inline autoplay video stays (good performance there, no
-// memory pressure on a real GPU).
+// Mobile: at most TWO videos mount simultaneously, picked by IntersectionRatio
+// via inspirationVideoCoordinator. The two currently-most-visible cards play;
+// every other card stays poster-only. As the user swipes through the strip,
+// the active pair shifts. This keeps iOS Safari's video decoder pool well
+// under the memory-pressure threshold that previously caused white flashes.
 // ──────────────────────────────────────────
 const VideoCard = ({ src, poster, idx, onOpen }: { src: string; poster: string; idx: number; onOpen: () => void; key?: React.Key }) => {
   const isMobile = useIsMobile();
+  const cardId = useId();
   const [muted, setMuted] = useState(true);
   const [visible, setVisible] = useState(false);
+  const [mobileActive, setMobileActive] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const cardRef = useRef<HTMLButtonElement>(null);
 
-  // Mount <video> element only when card enters extended viewport (400px margin).
-  // Skipped entirely on mobile — VideoCard becomes a poster-only card.
+  // Desktop only: mount <video> when card enters extended viewport (400 px).
   useEffect(() => {
     if (isMobile) return;
     const el = cardRef.current;
@@ -264,7 +267,7 @@ const VideoCard = ({ src, poster, idx, onOpen }: { src: string; poster: string; 
     return () => observer.disconnect();
   }, [isMobile]);
 
-  // Play/pause based on visibility (desktop only — no <video> exists on mobile).
+  // Desktop only: play/pause based on visibility.
   useEffect(() => {
     if (isMobile) return;
     const el = cardRef.current;
@@ -288,6 +291,50 @@ const VideoCard = ({ src, poster, idx, onOpen }: { src: string; poster: string; 
     return () => observer.disconnect();
   }, [visible, isMobile]);
 
+  // Mobile: report intersection ratio to the shared coordinator and subscribe
+  // to the "active 2" set. Only the two most-visible cards mount their video.
+  useEffect(() => {
+    if (!isMobile) return;
+    const el = cardRef.current;
+    if (!el) return;
+
+    // Multiple thresholds give the coordinator smooth ratio updates as the
+    // card slides through the swipeable strip.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (!entry) return;
+        inspirationVideoCoordinator.registerRatio(cardId, entry.intersectionRatio);
+      },
+      { threshold: [0, 0.1, 0.25, 0.5, 0.75, 1.0] },
+    );
+    observer.observe(el);
+
+    const unsubscribe = inspirationVideoCoordinator.subscribe((activeIds) => {
+      setMobileActive(activeIds.has(cardId));
+    });
+
+    return () => {
+      observer.disconnect();
+      inspirationVideoCoordinator.unregister(cardId);
+      unsubscribe();
+    };
+  }, [isMobile, cardId]);
+
+  // Mobile: drive play/pause on active toggle. Pause when leaving active set
+  // — this lets the browser release decoder buffers and avoids stale playhead
+  // when the card later re-enters the active pair.
+  useEffect(() => {
+    if (!isMobile) return;
+    const video = videoRef.current;
+    if (!video) return;
+    if (mobileActive) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  }, [isMobile, mobileActive]);
+
   const toggleMute = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -296,6 +343,11 @@ const VideoCard = ({ src, poster, idx, onOpen }: { src: string; poster: string; 
       setMuted(videoRef.current.muted);
     }
   }, []);
+
+  // Render the <video> when EITHER:
+  //   - desktop has mounted it (visible=true after IO trigger)
+  //   - mobile coordinator marked us as one of the active 2
+  const renderVideo = (!isMobile && visible) || (isMobile && mobileActive);
 
   return (
     <button
@@ -306,7 +358,7 @@ const VideoCard = ({ src, poster, idx, onOpen }: { src: string; poster: string; 
       style={{ aspectRatio: '9 / 16' }}
       aria-label={`Otvoriť video ${idx + 1}`}
     >
-      {/* Poster image shows instantly — video (desktop only) overlays it once loaded */}
+      {/* Poster image shows instantly — video overlays it once mounted */}
       <img
         src={poster}
         alt=""
@@ -314,7 +366,7 @@ const VideoCard = ({ src, poster, idx, onOpen }: { src: string; poster: string; 
         decoding="async"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      {!isMobile && visible && (
+      {renderVideo && (
         <video
           ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
@@ -327,7 +379,9 @@ const VideoCard = ({ src, poster, idx, onOpen }: { src: string; poster: string; 
           <source src={src} type="video/mp4" />
         </video>
       )}
-      {/* Mute toggle hidden on mobile (no inline video to mute) */}
+      {/* Mute toggle hidden on mobile — the active pair swaps as the user
+          swipes, which would make a per-card mute toggle confusing. Lightbox
+          tap still gives them the full-sound experience. */}
       {!isMobile && (
         <button
           type="button"
