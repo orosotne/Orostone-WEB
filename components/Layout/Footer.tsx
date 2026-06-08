@@ -303,9 +303,16 @@ const FooterComponent: React.FC<FooterProps> = ({ categories, isProductDetail = 
               </li>
               <li className="flex items-start gap-3">
                 <Mail size={18} className="text-brand-gold flex-shrink-0 mt-0.5" />
-                <a href="mailto:info@orostone.sk" className="text-white hover:text-brand-gold transition-colors">
-                  info@orostone.sk
-                </a>
+                <div className="flex flex-col gap-2">
+                  <a href="mailto:dopyt@orostone.sk" className="group">
+                    <span className="block text-white group-hover:text-brand-gold transition-colors">dopyt@orostone.sk</span>
+                    <span className="block text-gray-400 text-xs">Cenové ponuky a dopyty</span>
+                  </a>
+                  <a href="mailto:info@orostone.sk" className="group">
+                    <span className="block text-white group-hover:text-brand-gold transition-colors">info@orostone.sk</span>
+                    <span className="block text-gray-400 text-xs">Administratíva a faktúry</span>
+                  </a>
+                </div>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-brand-gold flex-shrink-0 mt-0.5" />

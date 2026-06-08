@@ -121,7 +121,7 @@ export const VOP = () => {
                 <p>DIČ: 2121930580</p>
                 <p>IČ DPH: SK2121930580</p>
                 <p className="text-sm text-gray-500 mt-2">Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka č. 167404/B</p>
-                <p className="mt-2">E-mail: <a href="mailto:info@orostone.sk" className="text-brand-gold hover:underline">info@orostone.sk</a></p>
+                <p className="mt-2">E-mail: <a href="mailto:dopyt@orostone.sk" className="text-brand-gold hover:underline">dopyt@orostone.sk</a></p>
                 <p>Telefón: <a href="tel:+421917588738" className="text-brand-gold hover:underline">+421 917 588 738</a></p>
                 <p>Web: <a href="https://orostone.sk" className="text-brand-gold hover:underline">www.orostone.sk</a></p>
               </div>
@@ -371,7 +371,7 @@ export const VOP = () => {
             </SubSection>
             <SubSection number="9.2">
               Spotrebiteľ môže odstúpenie od zmluvy zaslať:
-              <br />a) e-mailom na adresu <a href="mailto:info@orostone.sk" className="text-brand-gold hover:underline">info@orostone.sk</a>,
+              <br />a) e-mailom na adresu <a href="mailto:dopyt@orostone.sk" className="text-brand-gold hover:underline">dopyt@orostone.sk</a>,
               <br />b) poštou na adresu sídla predávajúceho,
               <br />c) použitím vzorového formulára na odstúpenie od zmluvy zverejneného na webovom sídle predávajúceho — <Link to="/odstupenie-od-zmluvy" className="text-brand-gold hover:underline">Formulár na odstúpenie od zmluvy</Link>.
             </SubSection>
@@ -422,7 +422,7 @@ export const VOP = () => {
               Klient je povinný vadu vytknúť bez zbytočného odkladu po jej zistení. Klient – podnikateľ je povinný prezrieť Tovar s odbornou starostlivosťou bezodkladne po jeho prevzatí a zjavné vady vytknúť bezodkladne, najneskôr pri prevzatí Tovaru alebo bezprostredne po ňom; skryté vady je povinný vytknúť bez zbytočného odkladu po ich zistení. Pri Spotrebiteľovi sa práva zo zodpovednosti za vady spravujú kogentnými ustanoveniami právnych predpisov; tým nie je dotknutá povinnosť Spotrebiteľa vytknúť vadu bez zbytočného odkladu po jej zistení.
             </SubSection>
             <SubSection number="10.4">
-              Reklamáciu vady je potrebné uplatniť písomne, najmä e-mailom na <a href="mailto:info@orostone.sk" className="text-brand-gold hover:underline">info@orostone.sk</a>, a uviesť:
+              Reklamáciu vady je potrebné uplatniť písomne, najmä e-mailom na <a href="mailto:dopyt@orostone.sk" className="text-brand-gold hover:underline">dopyt@orostone.sk</a>, a uviesť:
               <br />a) identifikáciu objednávky alebo faktúry,
               <br />b) popis vady,
               <br />c) dátum zistenia vady,

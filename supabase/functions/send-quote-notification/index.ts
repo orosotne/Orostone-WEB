@@ -17,7 +17,7 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 
 const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
-const ADMIN_EMAIL = 'info@orostone.sk';
+const ADMIN_EMAIL = 'dopyt@orostone.sk';
 const FROM_EMAIL = 'Orostone <noreply@orostone.sk>';
 const SUPABASE_URL = Deno.env.get('SUPABASE_URL')!;
 const SUPABASE_SERVICE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
@@ -479,8 +479,8 @@ async function sendSampleLeadConfirmation(quote: QuoteData, customer: CustomerDa
                   V prípade otázok nás kontaktujte:
                 </p>
                 <p style="margin: 0; font-size: 12px;">
-                  <a href="mailto:info@orostone.sk" class="footer-link"
-                     style="color: #1A1A1A; text-decoration: none; font-weight: 600;">info@orostone.sk</a>
+                  <a href="mailto:dopyt@orostone.sk" class="footer-link"
+                     style="color: #1A1A1A; text-decoration: none; font-weight: 600;">dopyt@orostone.sk</a>
                   &nbsp;·&nbsp;
                   <a href="tel:+421917588738" class="footer-link"
                      style="color: #1A1A1A; text-decoration: none; font-weight: 600;">+421 917 588 738</a>
@@ -549,7 +549,7 @@ async function sendCustomerConfirmation(quote: QuoteData, customer: CustomerData
 
       <hr style="border: none; border-top: 1px solid #eee; margin: 32px 0 20px 0;">
       <p style="color: #999; font-size: 12px; font-weight: 300; margin: 0;">
-        V prípade otázok: <a href="mailto:info@orostone.sk" style="color: #1A1A1A;">info@orostone.sk</a>
+        V prípade otázok: <a href="mailto:dopyt@orostone.sk" style="color: #1A1A1A;">dopyt@orostone.sk</a>
         &nbsp;·&nbsp; <a href="tel:+421917588738" style="color: #1A1A1A;">+421 917 588 738</a><br>
         Orostone s.r.o. &nbsp;·&nbsp; Landererova 8, 811 09 Bratislava
       </p>

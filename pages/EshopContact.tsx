@@ -98,6 +98,16 @@ export const EshopContact: React.FC = () => {
                 <p>Platiteľ DPH podľa §4 od 11. 4. 2023</p>
                 <p>Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B</p>
               </div>
+              <div className="mt-4 pt-4 border-t border-gray-100">
+                <p className="text-sm text-gray-500 mb-1">Administratíva, faktúry a kancelária</p>
+                <a
+                  href="mailto:info@orostone.sk"
+                  className="inline-flex items-center gap-2 text-sm text-brand-dark font-semibold hover:text-brand-gold transition-colors"
+                >
+                  <Mail size={16} />
+                  info@orostone.sk
+                </a>
+              </div>
               <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3">
                 <p className="text-sm text-amber-900 flex items-start gap-2">
                   <AlertTriangle size={16} className="mt-0.5 flex-shrink-0" />
@@ -110,16 +120,16 @@ export const EshopContact: React.FC = () => {
               <div className="w-12 h-12 rounded-full bg-brand-gold/15 flex items-center justify-center mb-5">
                 <Mail className="text-brand-dark" size={20} />
               </div>
-              <h2 className="text-xl font-bold text-brand-dark mb-3">Cenová ponuka</h2>
+              <h2 className="text-xl font-bold text-brand-dark mb-3">Cenové ponuky a dopyty</h2>
               <p className="text-gray-600 leading-relaxed mb-5">
-                Pre vyžiadanie cenovej ponuky nám neváhajte zaslať email.
+                Chcete cenovú ponuku alebo máte otázku k zákazke? Napíšte nám priamo na <strong className="text-brand-dark font-semibold">dopyt@orostone.sk</strong> — všetky cenové ponuky a dopyty zákazníkov vybavujeme práve tu.
               </p>
               <a
-                href="mailto:info@orostone.sk"
+                href="mailto:dopyt@orostone.sk?subject=Žiadosť o cenovú ponuku"
                 className="inline-flex items-center gap-2 text-brand-dark font-semibold hover:text-brand-gold transition-colors"
               >
                 <Mail size={16} />
-                info@orostone.sk
+                dopyt@orostone.sk
               </a>
             </article>
 
@@ -202,7 +212,7 @@ export const EshopContact: React.FC = () => {
                 Zavolať
               </a>
               <a
-                href="mailto:info@orostone.sk"
+                href="mailto:dopyt@orostone.sk?subject=Dopyt z webu"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-white/40 text-white px-6 py-3 text-sm font-bold uppercase tracking-wider hover:bg-white hover:text-brand-dark transition-colors"
               >
                 <Mail size={16} />

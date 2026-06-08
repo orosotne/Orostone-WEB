@@ -2453,7 +2453,7 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
                 <h3 className="font-bold text-brand-dark mb-4">Technická dokumentácia</h3>
                 <div className="space-y-3">
                   <a
-                    href={`mailto:info@orostone.sk?subject=Technický list (TDS) — ${encodeURIComponent(product.name)}&body=Dobrý deň,%0A%0Aprosíme o zaslanie technického listu (TDS) pre produkt: ${encodeURIComponent(product.name)}.%0A%0AĎakujeme.`}
+                    href={`mailto:dopyt@orostone.sk?subject=Technický list (TDS) — ${encodeURIComponent(product.name)}&body=Dobrý deň,%0A%0Aprosíme o zaslanie technického listu (TDS) pre produkt: ${encodeURIComponent(product.name)}.%0A%0AĎakujeme.`}
                     className="w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 transition-colors group"
                   >
                     <span className="flex items-center gap-3 text-sm text-brand-dark">
@@ -2496,9 +2496,9 @@ const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
                     <Phone size={14} />
                     +421 917 588 738
                   </a>
-                  <a href="mailto:info@orostone.sk" className="flex items-center gap-2 text-gray-600 hover:text-brand-gold transition-colors">
+                  <a href="mailto:dopyt@orostone.sk" className="flex items-center gap-2 text-gray-600 hover:text-brand-gold transition-colors">
                     <Mail size={14} />
-                    info@orostone.sk
+                    dopyt@orostone.sk
                   </a>
                 </div>
               </div>

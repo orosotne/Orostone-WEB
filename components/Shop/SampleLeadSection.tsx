@@ -107,8 +107,8 @@ export const SampleLeadSection: React.FC<SampleLeadSectionProps> = ({ preselecte
       setStatus('error');
       setErrorMsg(
         result.error
-          ? `${result.error} Skúste nás kontaktovať priamo na info@orostone.sk`
-          : 'Niečo sa nepodarilo. Skúste nás kontaktovať priamo na info@orostone.sk',
+          ? `${result.error} Skúste nás kontaktovať priamo na dopyt@orostone.sk`
+          : 'Niečo sa nepodarilo. Skúste nás kontaktovať priamo na dopyt@orostone.sk',
       );
     }
   };
@@ -254,7 +254,7 @@ export const SampleLeadSection: React.FC<SampleLeadSectionProps> = ({ preselecte
                 }}
               >
                 <a
-                  href="mailto:info@orostone.sk?subject=Otázka k vzorkám"
+                  href="mailto:dopyt@orostone.sk?subject=Otázka k vzorkám"
                   className="inline-flex items-center gap-2 bg-white rounded-full px-5 py-2.5 text-sm font-semibold text-brand-dark shadow-md ring-1 ring-black/8 hover:ring-brand-gold/40 hover:shadow-lg transition-all duration-200"
                 >
                   <Mail size={15} className="text-brand-gold" />
