@@ -4,7 +4,7 @@ import { m, AnimatePresence } from 'framer-motion';
 import {
   Search, User, ShoppingBag, Menu, X, ChevronDown, ArrowLeft, Diamond, Phone
 } from 'lucide-react';
-import { useCart } from '../../context/CartContext';
+import { useCartUI, useCartState } from '../../context/CartContext';
 
 import { EshopMegaMenu, MEGA_MENU_CATEGORIES, MegaMenuCategory, getVisibleCategories } from './EshopMegaMenu';
 import { cn } from '../../lib/utils';
@@ -20,7 +20,8 @@ const SHOPIFY_ACCOUNT_URL = 'https://shopify.com/101386420570/account';
 export const EshopNavbar: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { openCart, itemCount } = useCart();
+  const { openCart } = useCartUI();
+  const { itemCount } = useCartState();
 
   const searchInputRef = useRef<HTMLInputElement>(null);
 

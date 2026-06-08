@@ -6,6 +6,36 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+export const formatPrice = (price: number): string =>
+  new Intl.NumberFormat('sk-SK', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: 2,
+  }).format(price);
+
+export function onIdle(fn: () => void, timeout: number): () => void {
+  if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+    const id = (window as any).requestIdleCallback(fn, { timeout });
+    return () => (window as any).cancelIdleCallback(id);
+  }
+  const id = setTimeout(fn, timeout);
+  return () => clearTimeout(id);
+}
+
+export async function withRetry<T>(
+  fn: () => Promise<T>,
+  retries = 2,
+  backoffMs = 500,
+): Promise<T> {
+  try {
+    return await fn();
+  } catch (err) {
+    if (retries === 0) throw err;
+    await new Promise(r => setTimeout(r, backoffMs));
+    return withRetry(fn, retries - 1, backoffMs * 2);
+  }
+}
+
 /**
  * Wrapper around React.lazy that retries failed dynamic imports.
  * After a deployment, old chunk URLs become 404. React.lazy caches the

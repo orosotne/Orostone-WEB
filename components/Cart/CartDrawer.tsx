@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
 import { X, Minus, Plus, ShoppingBag, Trash2, ArrowRight, ExternalLink, Wrench, Package, Info, Check, ChevronUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useCart, formatPrice } from '../../context/CartContext';
+import { useCart } from '../../context/CartContext';
+import { formatPrice } from '../../lib/utils';
 import { useCookies } from '../../context/CookieContext';
 import { trackMetaEvent, savePendingPurchase } from '../../hooks/useMetaPixel';
-import { trackGA4BeginCheckout } from '../../hooks/useGA4Ecommerce';
+import { trackGA4BeginCheckout } from '../../services/analytics';
 import { Button } from '../UI/Button';
 
 const INSTALLATION_STORAGE_KEY = 'orostone_installation_data';

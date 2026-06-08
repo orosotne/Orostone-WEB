@@ -11,7 +11,7 @@ import { EshopLayout } from './components/Eshop/EshopLayout';
 import { LoadingSpinner } from './components/UI/LoadingSpinner';
 import { ErrorBoundary } from './components/UI/ErrorBoundary';
 import { ProductGridSkeleton, ProductDetailSkeleton, CheckoutSkeleton, CategoryPageSkeleton } from './components/UI/Skeleton';
-import { lazyWithRetry } from './lib/utils';
+import { lazyWithRetry, onIdle } from './lib/utils';
 
 // Core page — landing page must never show a loading spinner
 import { Shop } from './pages/Shop';
@@ -53,17 +53,6 @@ captureUTM();
 // 622 KB BlogArticle chunk in particular is no longer downloaded for users who
 // never read a blog post.
 if (typeof window !== 'undefined') {
-  const idle = (fn: () => void, timeout: number) => {
-    if ('requestIdleCallback' in window) {
-      (window as { requestIdleCallback?: (cb: () => void, opts: { timeout: number }) => void })
-        .requestIdleCallback?.(fn, { timeout });
-    } else {
-      setTimeout(fn, timeout);
-    }
-  };
-
-  // Skip prefetch entirely on slow connections or save-data mode — those users
-  // pay real money per byte and almost never bounce back to navigate.
   const conn = (navigator as { connection?: { saveData?: boolean; effectiveType?: string } })
     .connection;
   const slowNetwork =
@@ -72,14 +61,12 @@ if (typeof window !== 'undefined') {
     conn?.effectiveType === '2g';
 
   if (!slowNetwork) {
-    // Batch 1: catalog browsing (after ~3s idle window — most-likely next click)
-    idle(() => {
+    onIdle(() => {
       import('./pages/CategoryPage');
       import('./pages/ProductCatalog');
     }, 3000);
 
-    // Batch 2: product detail + checkout (after ~6s — second most likely)
-    idle(() => {
+    onIdle(() => {
       import('./pages/ShopProductDetail');
       import('./pages/Checkout');
     }, 6000);

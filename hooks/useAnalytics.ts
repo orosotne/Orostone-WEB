@@ -2,14 +2,11 @@ import { useEffect, useRef } from 'react';
 import { useCookies } from '../context/CookieContext';
 import { useFirstInteraction } from './useFirstInteraction';
 
-// Window globals injected by GTM / GA4 (declarations merge with index.tsx)
 declare global {
   interface Window {
     dataLayer?: unknown[];
   }
 }
-
-const GA_ID = (window as any)._GA_ESHOP_ID as string | undefined;
 
 /**
  * Mark this browser as internal traffic with a team member identifier.
@@ -62,6 +59,7 @@ export const useAnalytics = () => {
   const interacted = useFirstInteraction();
 
   useEffect(() => {
+    const GA_ID = typeof window !== 'undefined' ? (window as any)._GA_ESHOP_ID as string | undefined : undefined;
     if (!interacted) return;
     if (preferences.analytics && GA_ID && !scriptInjected.current) {
       // Inject gtag.js script dynamically
