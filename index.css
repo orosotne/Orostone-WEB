@@ -209,14 +209,18 @@ html.lenis, html.lenis body {
   }
   /* Zmenšenie najštedrejších vnútorných medzier. */
   .stone-experience-pinned .stone-heading { padding-top: 0; margin-bottom: 0.85rem; }
-  .stone-experience-pinned .stone-slab-wrap { padding-bottom: 2.25rem; }
-  .stone-experience-pinned .stone-cta { margin-top: 1.5rem; }
+  /* pb rezervuje miesto pre absolútny popis + 1/12 navigáciu POD platňou,
+     inak by prekrývali CTA. Kompaktnejší meta blok = menšia potrebná rezerva. */
+  .stone-experience-pinned .stone-slab-wrap { padding-bottom: 4.75rem; }
+  .stone-experience-pinned .stone-slab-meta { margin-top: 0.5rem; gap: 0.75rem; }
+  /* Jasná medzera medzi 1/12 šípkami a CTA tlačidlom. */
+  .stone-experience-pinned .stone-cta { margin-top: 1.75rem; }
 
   /* Kľúč k čitateľnosti: na nízkych obrazovkách zmenšujeme hlavne PLATŇU
      (najvyšší prvok) podľa výšky viewportu — text kariet a nadpisu ostáva
-     v natívnej, dobre čitateľnej veľkosti. Platňa je 9/16, takže šírka 26vh
-     ≈ výška 46vh. Stred grid stĺpca sa zmrští na šírku platne automaticky. */
-  .stone-experience-pinned .stone-slab-frame { max-width: 24vh; }
+     v natívnej, dobre čitateľnej veľkosti. Platňa je 9/16, takže šírka 22vh
+     ≈ výška 39vh. Stred grid stĺpca sa zmrští na šírku platne automaticky. */
+  .stone-experience-pinned .stone-slab-frame { max-width: 22vh; }
 }
 
 /* Nižšie obrazovky: jemný uniform scale ako poistka, keď menšia platňa +

@@ -994,7 +994,7 @@ export const Shop = () => {
                       </div>
                     ))}
                   </Link>
-                  <div className="absolute left-0 right-0 top-full mt-3 flex flex-col items-center gap-5 pointer-events-none">
+                  <div className="stone-slab-meta absolute left-0 right-0 top-full mt-3 flex flex-col items-center gap-5 pointer-events-none">
                     <p className="text-center text-[11px] tracking-[0.25em] uppercase font-semibold text-brand-dark/75 pointer-events-auto">
                       {sinteredProducts[activeStoneIdx]?.name ?? 'Yabo White'}
                     </p>
