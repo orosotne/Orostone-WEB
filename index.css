@@ -185,6 +185,54 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 
+/* ---------------------------------------------------------------------------
+   Short-viewport fit pre desktop "Stone Experience" pinned sekciu.
+
+   Pin rezervuje pevných 118vh a vertikálne centruje vysokú kompozíciu
+   (portrétová platňa + nadpis + CTA) DOVNÚTRA tej 118vh sekcie. Na nízkych
+   obrazovkách (malé/13" MacBooky, ~660–940px) je kompozícia vyššia než
+   viditeľných 100vh, takže sa nadpis orezával zhora a CTA padalo pod záhyb.
+
+   Fix: obsah centrujeme do VIDITEĽNÝCH 100vh a na nízkych obrazovkách ho
+   proporčne zmenšíme, aby celá kompozícia (nadpis → platňa → CTA) zostala na
+   obrazovke. Uniform scale zachová geometriu pinov/konektorov 1:1. Len desktop;
+   mobil má samostatnú `.stone-mobile-section`. */
+@media (min-width: 1024px) and (max-height: 940px) {
+  .stone-experience-pinned .stone-content {
+    flex: none;
+    height: 100vh;
+    /* Top-align: nadpis sedí na pevnej pozícii tesne pod fixným navbarom
+       (115px) namiesto centrovania v 118vh pine. Zvyšok kompozície sa škáluje
+       nadol. padding-top ≈ navbar + vzduch. */
+    align-items: flex-start;
+    padding-top: 9.75rem;
+    padding-bottom: 1.5rem;
+  }
+  /* Zmenšenie najštedrejších vnútorných medzier → menej potrebného zmenšenia. */
+  .stone-experience-pinned .stone-heading { padding-top: 0; margin-bottom: 1rem; }
+  .stone-experience-pinned .stone-slab-wrap { padding-bottom: 2.5rem; }
+  .stone-experience-pinned .stone-cta { margin-top: 1.75rem; }
+
+  /* Uniform scale od vrchu nadol — nadpis ostáva ukotvený, geometria
+     pinov/konektorov ostáva 1:1. Krokované podľa výšky viewportu. */
+  .stone-experience-pinned .stone-fit {
+    transform: scale(0.86);
+    transform-origin: center top;
+  }
+}
+@media (min-width: 1024px) and (max-height: 860px) {
+  .stone-experience-pinned .stone-fit { transform: scale(0.78); }
+}
+@media (min-width: 1024px) and (max-height: 790px) {
+  .stone-experience-pinned .stone-fit { transform: scale(0.70); }
+}
+@media (min-width: 1024px) and (max-height: 720px) {
+  .stone-experience-pinned .stone-fit { transform: scale(0.62); }
+}
+@media (min-width: 1024px) and (max-height: 670px) {
+  .stone-experience-pinned .stone-fit { transform: scale(0.56); }
+}
+
 /* Desktop-only: fix pre dvojitý scrollbar; mobil sa nemení */
 @media (min-width: 1024px) {
   #root {

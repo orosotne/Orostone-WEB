@@ -914,7 +914,7 @@ export const Shop = () => {
           <div className="stone-bg pointer-events-none absolute inset-0 bg-brand-gold" />
 
           <div className="stone-content relative z-10 flex min-h-0 flex-1 items-center justify-center overflow-hidden px-4 pt-32 pb-24 lg:px-6 lg:pt-52 lg:pb-40">
-            <div className="relative w-full max-w-[1200px] min-w-0 mx-auto">
+            <div className="stone-fit relative w-full max-w-[1200px] min-w-0 mx-auto">
             {/* Decorative glow */}
             <div className="stone-glow pointer-events-none absolute inset-x-1/4 -top-8 h-40 rounded-full bg-white/30 blur-3xl opacity-70" />
 
