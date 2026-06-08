@@ -5,10 +5,11 @@ import {
   ArrowLeft, ArrowRight, ShoppingBag, Lock, Truck,
   Minus, Plus, Trash2, Package, ExternalLink, Check
 } from 'lucide-react';
-import { useCart, formatPrice } from '../context/CartContext';
+import { useCart } from '../context/CartContext';
+import { formatPrice } from '../lib/utils';
 import { useCookies } from '../context/CookieContext';
 import { trackMetaEvent, savePendingPurchase } from '../hooks/useMetaPixel';
-import { trackGA4BeginCheckout } from '../hooks/useGA4Ecommerce';
+import { trackGA4BeginCheckout } from '../services/analytics';
 import { SEOHead } from '../components/UI/SEOHead';
 import { Button } from '../components/UI/Button';
 

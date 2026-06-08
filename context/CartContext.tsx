@@ -11,8 +11,9 @@ import {
   type ShopifyCartLine,
 } from '../services/shopify.service';
 import { trackMetaEvent } from '../hooks/useMetaPixel';
-import { trackGA4AddToCart } from '../hooks/useGA4Ecommerce';
+import { trackGA4AddToCart } from '../services/analytics';
 import { getUTMForCheckout } from '../hooks/useUTMTracking';
+import { onIdle, withRetry } from '../lib/utils';
 
 // ===========================================
 // TYPES
@@ -75,6 +76,7 @@ interface CartContextType {
 
 const CART_ID_KEY = 'orostone_shopify_cart_id';
 const CART_OP_TIMEOUT_MS = 15000;
+const SITE_URL = import.meta.env.VITE_PUBLIC_SITE_URL ?? 'https://orostone.sk';
 
 function withTimeout<T>(promise: Promise<T>, ms: number = CART_OP_TIMEOUT_MS): Promise<T> {
   let timeoutId: ReturnType<typeof setTimeout>;
@@ -84,10 +86,35 @@ function withTimeout<T>(promise: Promise<T>, ms: number = CART_OP_TIMEOUT_MS): P
   return Promise.race([promise, timeout]).finally(() => clearTimeout(timeoutId));
 }
 
+function withCartTimeout<T>(fn: () => Promise<T>): Promise<T> {
+  return withRetry(() => withTimeout(fn()));
+}
+
 // ===========================================
-// CONTEXT
+// SPLIT CONTEXTS
+// Three contexts to enable selective subscriptions:
+//   - CartUIContext: isOpen + open/close/toggle (stable, cheap to subscribe)
+//   - CartActionsContext: addItem, removeItem, etc. (stable refs via cartRef/useCallback)
+//   - CartStateContext: items, totals, discounts (re-renders on every API op)
+// useCart() merges all three for backward compat.
 // ===========================================
 
+type CartState = Omit<CartContextType,
+  | 'addItem' | 'removeItem' | 'updateQuantity' | 'clearCart' | 'clearError'
+  | 'isInCart' | 'getItemQuantity' | 'isSampleInCart'
+  | 'isOpen' | 'openCart' | 'closeCart' | 'toggleCart'
+>;
+type CartActions = Pick<CartContextType,
+  | 'addItem' | 'removeItem' | 'updateQuantity' | 'clearCart' | 'clearError'
+  | 'isInCart' | 'getItemQuantity' | 'isSampleInCart'
+>;
+type CartUI = Pick<CartContextType, 'isOpen' | 'openCart' | 'closeCart' | 'toggleCart'>;
+
+const CartStateContext = createContext<CartState | undefined>(undefined);
+const CartActionsContext = createContext<CartActions | undefined>(undefined);
+const CartUIContext = createContext<CartUI | undefined>(undefined);
+
+// Legacy merged context (kept for backward compat)
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 // ===========================================
@@ -100,11 +127,6 @@ function mapShopifyCartLines(cart: ShopifyCart): CartItem[] {
   return cart.lines.edges
     .filter(({ node: line }) => line.merchandise?.product != null)
     .map(({ node: line }) => {
-      // #region agent log
-      if (import.meta.env.DEV) {
-        fetch('http://127.0.0.1:7731/ingest/fe10e622-0fa2-40d2-8709-73e6a557fd3f',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'686860'},body:JSON.stringify({sessionId:'686860',location:'CartContext.tsx:mapShopifyCartLines',message:'mapping cart line',data:{lineId:line.id,merchandiseTitle:line.merchandise?.title,productTitle:line.merchandise?.product?.title,imageUrl:line.merchandise?.image?.url,edgesLen:line.merchandise?.product?.images?.edges?.length,nodeUrl:line.merchandise?.product?.images?.edges?.[0]?.node?.url},timestamp:Date.now(),hypothesisId:'H2'})}).catch(()=>{});
-      }
-      // #endregion
       // Storefront API: CartLineCost.subtotalAmount = line total PRED line-level
       // discountami, CartLineCost.totalAmount = PO nich. Rozdiel = line discount.
       const lineSubtotalBefore = parseFloat(line.cost?.subtotalAmount?.amount ?? '0');
@@ -157,11 +179,6 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
     const initCart = async () => {
       setIsLoading(true);
-      // #region agent log
-      if (import.meta.env.DEV) {
-        fetch('http://127.0.0.1:7731/ingest/fe10e622-0fa2-40d2-8709-73e6a557fd3f',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'686860'},body:JSON.stringify({sessionId:'686860',location:'CartContext.tsx:initCart',message:'cart init start',data:{shopifyConfigured:true},timestamp:Date.now(),hypothesisId:'H2'})}).catch(()=>{});
-      }
-      // #endregion
       try {
         // Skus nacitat existujuci cart z localStorage
         const savedCartId = localStorage.getItem(CART_ID_KEY);
@@ -204,13 +221,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     };
 
     // Defer cart init to avoid competing with LCP resources
-    if ('requestIdleCallback' in window) {
-      const id = (window as any).requestIdleCallback(() => initCart(), { timeout: 3000 });
-      return () => (window as any).cancelIdleCallback(id);
-    } else {
-      const id = setTimeout(() => initCart(), 2000);
-      return () => clearTimeout(id);
-    }
+    return onIdle(initCart, 3000);
   }, []);
 
   // ------------------------------------------
@@ -239,11 +250,11 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     try {
       let updatedCart: ShopifyCart;
       try {
-        updatedCart = await withTimeout(shopifyAddToCart(currentCart.id, variantId, quantity));
+        updatedCart = await withCartTimeout(() => shopifyAddToCart(currentCart.id, variantId, quantity));
       } catch {
         // Cart may have expired — recover and retry once
         const freshCart = await recoverCart();
-        updatedCart = await withTimeout(shopifyAddToCart(freshCart.id, variantId, quantity));
+        updatedCart = await withCartTimeout(() => shopifyAddToCart(freshCart.id, variantId, quantity));
       }
       setCart(updatedCart);
       cartRef.current = updatedCart;
@@ -276,7 +287,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     setIsLoading(true);
     setError(null);
     try {
-      const updatedCart = await withTimeout(shopifyRemoveFromCart(currentCart.id, lineId));
+      const updatedCart = await withCartTimeout(() => shopifyRemoveFromCart(currentCart.id, lineId));
       setCart(updatedCart);
       cartRef.current = updatedCart;
     } catch (err) {
@@ -295,11 +306,11 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     setError(null);
     try {
       if (quantity <= 0) {
-        const updatedCart = await withTimeout(shopifyRemoveFromCart(currentCart.id, lineId));
+        const updatedCart = await withCartTimeout(() => shopifyRemoveFromCart(currentCart.id, lineId));
         setCart(updatedCart);
         cartRef.current = updatedCart;
       } else {
-        const updatedCart = await withTimeout(shopifyUpdateCartItem(currentCart.id, lineId, quantity));
+        const updatedCart = await withCartTimeout(() => shopifyUpdateCartItem(currentCart.id, lineId, quantity));
         setCart(updatedCart);
         cartRef.current = updatedCart;
       }
@@ -389,7 +400,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       if (!cart?.checkoutUrl) return null;
       const sep = cart.checkoutUrl.includes('?') ? '&' : '?';
       const utmQS = getUTMForCheckout();
-      return `${cart.checkoutUrl}${sep}return_to=${encodeURIComponent('https://orostone.sk/objednavka-dokoncena')}${utmQS ? `&${utmQS}` : ''}`;
+      return `${cart.checkoutUrl}${sep}return_to=${encodeURIComponent(`${SITE_URL}/objednavka-dokoncena`)}${utmQS ? `&${utmQS}` : ''}`;
     },
     [cart]
   );
@@ -428,68 +439,70 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   }, [sampleItems]);
 
   // ------------------------------------------
-  // CONTEXT VALUE (memoized — without this, every render of CartProvider creates a
-  // new value object reference, forcing every useCart() consumer to re-render even
-  // when their relevant slice didn't change. With memoization, the value reference
-  // only changes when one of the listed deps actually changes.)
+  // SPLIT CONTEXT VALUES
+  // Three separate memos so each context only re-renders its own subscribers.
   // ------------------------------------------
 
-  const value = useMemo<CartContextType>(() => ({
-    items,
-    isOpen,
-    isLoading,
-    error,
-    checkoutUrl,
-    addItem,
-    removeItem,
-    updateQuantity,
-    clearCart,
-    openCart,
-    closeCart,
-    toggleCart,
-    clearError,
-    itemCount,
-    subtotal,
-    total,
-    totalDiscount,
-    subtotalBeforeDiscount,
-    appliedDiscountTitles,
-    isInCart,
-    getItemQuantity,
-    // Sample helpers
-    sampleCount,
-    isSampleInCart,
-    productItems,
-    sampleItems,
-  }), [
-    items,
-    isOpen,
-    isLoading,
-    error,
-    checkoutUrl,
-    addItem,
-    removeItem,
-    updateQuantity,
-    clearCart,
-    openCart,
-    closeCart,
-    toggleCart,
-    clearError,
-    itemCount,
-    subtotal,
-    total,
-    totalDiscount,
-    subtotalBeforeDiscount,
-    appliedDiscountTitles,
-    isInCart,
-    getItemQuantity,
-    sampleCount,
-    isSampleInCart,
-    productItems,
-    sampleItems,
-  ]);
+  const uiValue = useMemo<CartUI>(
+    () => ({ isOpen, openCart, closeCart, toggleCart }),
+    [isOpen, openCart, closeCart, toggleCart]
+  );
 
-  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+  const actionsValue = useMemo<CartActions>(
+    () => ({ addItem, removeItem, updateQuantity, clearCart, clearError, isInCart, getItemQuantity, isSampleInCart }),
+    [addItem, removeItem, updateQuantity, clearCart, clearError, isInCart, getItemQuantity, isSampleInCart]
+  );
+
+  const stateValue = useMemo<CartState>(
+    () => ({
+      items,
+      isLoading,
+      error,
+      checkoutUrl,
+      itemCount,
+      subtotal,
+      total,
+      totalDiscount,
+      subtotalBeforeDiscount,
+      appliedDiscountTitles,
+      sampleCount,
+      productItems,
+      sampleItems,
+    }),
+    [
+      items,
+      isLoading,
+      error,
+      checkoutUrl,
+      itemCount,
+      subtotal,
+      total,
+      totalDiscount,
+      subtotalBeforeDiscount,
+      appliedDiscountTitles,
+      sampleCount,
+      productItems,
+      sampleItems,
+    ]
+  );
+
+  // Legacy merged value — keeps existing useCart() consumers working without changes.
+  const value = useMemo<CartContextType>(
+    () => ({ ...stateValue, ...actionsValue, ...uiValue }),
+    [stateValue, actionsValue, uiValue]
+  );
+
+  return (
+    <CartUIContext.Provider value={uiValue}>
+      <CartActionsContext.Provider value={actionsValue}>
+        <CartStateContext.Provider value={stateValue}>
+          <CartContext.Provider value={value}>
+            {children}
+          </CartContext.Provider>
+        </CartStateContext.Provider>
+      </CartActionsContext.Provider>
+    </CartUIContext.Provider>
+  );
 };
 
 // ===========================================
@@ -504,16 +517,31 @@ export const useCart = (): CartContextType => {
   return context;
 };
 
-// ===========================================
-// UTILITY EXPORTS
-// ===========================================
+/** Subscribe only to cart open/close state. Re-renders only when drawer opens or closes. */
+export const useCartUI = (): CartUI => {
+  const context = useContext(CartUIContext);
+  if (context === undefined) {
+    throw new Error('useCartUI must be used within a CartProvider');
+  }
+  return context;
+};
 
-export const formatPrice = (price: number): string => {
-  return new Intl.NumberFormat('sk-SK', {
-    style: 'currency',
-    currency: 'EUR',
-    minimumFractionDigits: 2,
-  }).format(price);
+/** Subscribe only to cart actions. Callbacks have stable identity — never re-renders on state changes. */
+export const useCartActions = (): CartActions => {
+  const context = useContext(CartActionsContext);
+  if (context === undefined) {
+    throw new Error('useCartActions must be used within a CartProvider');
+  }
+  return context;
+};
+
+/** Subscribe only to cart data/state. Re-renders when items, totals, or loading state change. */
+export const useCartState = (): CartState => {
+  const context = useContext(CartStateContext);
+  if (context === undefined) {
+    throw new Error('useCartState must be used within a CartProvider');
+  }
+  return context;
 };
 
 /** Identifies whether a cart item is a sample (vzorka) by its variant title */

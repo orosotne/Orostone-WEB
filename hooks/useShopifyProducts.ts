@@ -22,6 +22,8 @@ let catalogState: CatalogState = {
 };
 let listeners: Set<() => void> = new Set();
 let catalogFetchPromise: Promise<void> | null = null;
+let catalogFetchedAt: number | null = null;
+const CATALOG_TTL_MS = 10 * 60 * 1000;
 
 function emitChange() {
   listeners.forEach(fn => fn());
@@ -36,14 +38,20 @@ function getCatalogSnapshot() {
   return catalogState;
 }
 
+function isCatalogStale(): boolean {
+  return catalogFetchedAt === null || performance.now() - catalogFetchedAt > CATALOG_TTL_MS;
+}
+
 function ensureCatalogFetch(count: number) {
-  if (catalogFetchPromise || catalogState.products.length > 0) return;
+  if (catalogFetchPromise) return;
+  if (catalogState.products.length > 0 && !isCatalogStale()) return;
   if (!isShopifyConfigured()) {
     catalogState = { products: [], isLoading: false, error: null };
     emitChange();
     return;
   }
 
+  catalogFetchedAt = performance.now();
   catalogState = { ...catalogState, isLoading: true, error: null };
   emitChange();
 
@@ -56,6 +64,7 @@ function ensureCatalogFetch(count: number) {
       };
     })
     .catch(err => {
+      catalogFetchedAt = null; // allow retry on error
       catalogState = {
         products: [],
         isLoading: false,

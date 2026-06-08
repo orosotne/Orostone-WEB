@@ -60,41 +60,18 @@ import { ShopProduct, MAX_SAMPLES, resolveCountryOfOrigin } from '../constants';
 import { submitQuote } from '../services/quotes.service';
 import { useShopifyProducts, useShopifyProduct } from '../hooks/useShopifyProducts';
 import { Button } from '../components/UI/Button';
-import { useCart, formatPrice } from '../context/CartContext';
-import { cn } from '@/lib/utils';
+import { useCart } from '../context/CartContext';
+import { cn, formatPrice } from '../lib/utils';
 import { ShareButton } from '../components/UI/ShareButton';
 import { ProductDetailSkeleton } from '../components/UI/Skeleton';
 import { useCookies } from '../context/CookieContext';
 import { trackMetaEvent } from '../hooks/useMetaPixel';
-import { trackGA4ViewItem, trackGA4Event } from '../hooks/useGA4Ecommerce';
+import { trackGA4ViewItem, trackGA4Event } from '../services/analytics';
 import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
 import { getProductSEOContent, GENERIC_PRODUCT_FAQS } from '../data/product-seo-content';
 import { PRODUCT_META_OVERRIDE } from '../data/productMetaOverride';
 import { useScrollLock } from '../hooks/useScrollLock';
 
-// #region agent log
-const debugLog = (
-  location: string,
-  message: string,
-  data: Record<string, unknown>,
-  hypothesisId: string,
-) => {
-  if (!import.meta.env.DEV) return;
-  console.debug('[orostone-debug]', { location, message, data, hypothesisId, t: Date.now() });
-  void fetch('http://127.0.0.1:7731/ingest/fe10e622-0fa2-40d2-8709-73e6a557fd3f', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': '0e45ef' },
-    body: JSON.stringify({
-      sessionId: '0e45ef',
-      location,
-      message,
-      data,
-      timestamp: Date.now(),
-      hypothesisId,
-    }),
-  }).catch(() => {});
-};
-// #endregion
 
 // ===========================================
 // Custom thickness icon (from layers-icon.svg)
@@ -200,14 +177,6 @@ const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProductId, pro
   });
 
   const handleProductClick = (productId: string) => {
-    // #region agent log
-    debugLog(
-      'ProductSwitcher:handleProductClick',
-      'navigate',
-      { fromId: currentProductId, toId: productId, scrollY: window.scrollY },
-      'H2',
-    );
-    // #endregion
     navigate(`/produkt/${productId}`);
   };
 
@@ -238,48 +207,13 @@ const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProductId, pro
         className="grid grid-rows-2 grid-flow-col gap-2 overflow-x-auto overflow-y-hidden overscroll-x-contain scroll-px-6 -mx-6 px-6 py-1 scrollbar-hide [touch-action:pan-x_pan-y] lg:grid-rows-none lg:grid-flow-row lg:grid-cols-4 lg:gap-2 lg:overflow-visible lg:m-0 lg:scroll-p-0 lg:p-0 lg:touch-auto"
         style={{ WebkitOverflowScrolling: 'touch' }}
         onTouchStart={() => {
-          // #region agent log
           touchStartRef.current = {
             scrollY: window.scrollY,
             railLeft: railRef.current?.scrollLeft ?? 0,
           };
-          debugLog(
-            'ProductSwitcher:rail',
-            'touchstart',
-            {
-              scrollY: window.scrollY,
-              railScrollLeft: railRef.current?.scrollLeft ?? 0,
-            },
-            'H1',
-          );
-          // #endregion
         }}
         onTouchEnd={() => {
-          // #region agent log
-          const start = touchStartRef.current;
-          const endY = window.scrollY;
-          const endLeft = railRef.current?.scrollLeft ?? 0;
-          debugLog(
-            'ProductSwitcher:rail',
-            'touchend',
-            {
-              scrollY: endY,
-              deltaScrollY: start === null ? null : endY - start.scrollY,
-              railScrollLeft: endLeft,
-              deltaRail: start === null ? null : endLeft - start.railLeft,
-            },
-            'H4',
-          );
           touchStartRef.current = null;
-          requestAnimationFrame(() => {
-            debugLog(
-              'ProductSwitcher:rail',
-              'afterRAF',
-              { scrollY: window.scrollY },
-              'H5',
-            );
-          });
-          // #endregion
         }}
       >
         {filteredProducts.map((product) => {
@@ -2830,16 +2764,6 @@ const ProductSchema: React.FC<ProductSchemaProps> = ({ product, totalPrice }) =>
 // ===========================================
 export const ShopProductDetail: React.FC = () => {
   const { id } = useParams();
-  useEffect(() => {
-    // #region agent log
-    debugLog(
-      'ShopProductDetail',
-      'route id effect',
-      { id: id ?? null, scrollY: window.scrollY },
-      'H3',
-    );
-    // #endregion
-  }, [id]);
   const { addItem, isInCart, sampleCount, isSampleInCart, isOpen: isCartOpen } = useCart();
   const { hasConsented } = useCookies();
   const { products: allProducts, isLoading: productsLoading } = useShopifyProducts();

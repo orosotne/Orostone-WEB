@@ -11,42 +11,7 @@ import { useShopifyProducts } from '../hooks/useShopifyProducts';
 import { useCart } from '../context/CartContext';
 import { ProductCard } from './ProductCatalog';
 import { SEOHead } from '../components/UI/SEOHead';
-
-// ===========================================
-// CATEGORY SEO COPY — Vera FINAL (sec 3 of orostone-seo-meta-FINAL.md)
-// Keyed by `${slug}` for parent category and `${slug}/${subCategory}` for
-// color subcategories. Single source of truth for the React-rendered
-// SEOHead — keeps Ahrefs / browser tab title / og:* aligned with the
-// prerender HTML (which is generated independently in scripts/prerender.ts).
-// ===========================================
-
-const CATEGORY_SEO_OVERRIDE: Record<string, { title: string; description: string }> = {
-  'sintered-stone': {
-    title: 'Sinterovaný kameň — dekory a platne | OROSTONE',
-    description:
-      'Sinterovaný kameň pre kuchyne a interiéry. Veľkoformátové platne 3200×1600 mm, dekory s pokojnou aj výraznou kresbou. Showroom Bošany.',
-  },
-  'sintered-stone/bezove': {
-    title: 'Béžový sinterovaný kameň | OROSTONE',
-    description:
-      'Béžové dekory sinterovaného kameňa pre kuchyne, kúpeľne a interiéry. Teplé prírodné odtiene, ktoré priestor zjemnia bez toho, aby ho zaťažili.',
-  },
-  'sintered-stone/biele': {
-    title: 'Biely sinterovaný kameň | OROSTONE',
-    description:
-      'Biele dekory sinterovaného kameňa pre svetlé kuchyne a kúpeľne. Od čistých plôch po jemné mramorové žilkovanie. Veľké platne až 3200×1600 mm.',
-  },
-  'sintered-stone/cierne': {
-    title: 'Čierny sinterovaný kameň | OROSTONE',
-    description:
-      'Čierne dekory sinterovaného kameňa pre kuchyne a ostrovčeky, kde má povrch niesť váhu priestoru. Veľkoformátové platne 3200×1600 mm.',
-  },
-  'sintered-stone/sede': {
-    title: 'Sivý sinterovaný kameň | OROSTONE',
-    description:
-      'Sivé dekory sinterovaného kameňa pre kuchyne, kde má plocha fungovať pokojne a nepretiahnuť pozornosť na seba. Od svetlej cementovej až po antracit.',
-  },
-};
+import { CATEGORY_SEO } from '../data/seo';
 
 // ===========================================
 // CATEGORY PAGE
@@ -135,7 +100,7 @@ export const CategoryPage: React.FC = () => {
   // generated copy for any slug that isn't yet in the override table (keeps
   // the page safe if a new category lands before the SEO copy does).
   const seoLookupKey = subCategory ? `${slug}/${subCategory}` : (slug || '');
-  const seoOverride = CATEGORY_SEO_OVERRIDE[seoLookupKey];
+  const seoOverride = CATEGORY_SEO[seoLookupKey];
   const seoTitle = seoOverride?.title || `${category.name} | OROSTONE`;
   const seoDescription =
     seoOverride?.description ||

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useShopifyProducts } from '../../hooks/useShopifyProducts';
 import { submitSampleLead } from '../../services/quotes.service';
 import { trackMetaEvent } from '../../hooks/useMetaPixel';
-import { trackGA4Event } from '../../hooks/useGA4Ecommerce';
+import { trackGA4Event } from '../../services/analytics';
 import { subscribeToNewsletter } from '../../services/newsletter.service';
 import { RotatingBadge } from '../UI/RotatingBadge';
 import { useHoneypot } from '../../hooks/useHoneypot';
