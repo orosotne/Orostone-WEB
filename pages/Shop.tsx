@@ -958,7 +958,7 @@ export const Shop = () => {
 
               {/* Center slab — in-flow height = slab only; caption/nav absolute + pb reserves space for grid */}
               <div className="stone-slab-wrap relative z-0 flex flex-col items-center opacity-0 pb-24">
-                <div className="relative w-full max-w-[300px]">
+                <div className="stone-slab-frame relative w-full max-w-[300px]">
                   <Link
                     to={`/produkt/${sinteredProducts[activeStoneIdx]?.id ?? 'yabo-white'}`}
                     className="stone-slab group relative block w-full aspect-[9/16] cursor-pointer"
