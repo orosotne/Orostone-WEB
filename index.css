@@ -202,35 +202,34 @@ html.lenis, html.lenis body {
     flex: none;
     height: 100vh;
     /* Top-align: nadpis sedí na pevnej pozícii tesne pod fixným navbarom
-       (115px) namiesto centrovania v 118vh pine. Zvyšok kompozície sa škáluje
-       nadol. padding-top ≈ navbar + vzduch. */
+       (115px) namiesto centrovania v 118vh pine. padding-top ≈ navbar + vzduch. */
     align-items: flex-start;
-    padding-top: 9.75rem;
-    padding-bottom: 1.5rem;
+    padding-top: 8rem;
+    padding-bottom: 1.25rem;
   }
-  /* Zmenšenie najštedrejších vnútorných medzier → menej potrebného zmenšenia. */
-  .stone-experience-pinned .stone-heading { padding-top: 0; margin-bottom: 1rem; }
-  .stone-experience-pinned .stone-slab-wrap { padding-bottom: 2.5rem; }
-  .stone-experience-pinned .stone-cta { margin-top: 1.75rem; }
+  /* Zmenšenie najštedrejších vnútorných medzier. */
+  .stone-experience-pinned .stone-heading { padding-top: 0; margin-bottom: 0.85rem; }
+  .stone-experience-pinned .stone-slab-wrap { padding-bottom: 2.25rem; }
+  .stone-experience-pinned .stone-cta { margin-top: 1.5rem; }
 
-  /* Uniform scale od vrchu nadol — nadpis ostáva ukotvený, geometria
-     pinov/konektorov ostáva 1:1. Krokované podľa výšky viewportu. */
-  .stone-experience-pinned .stone-fit {
-    transform: scale(0.86);
-    transform-origin: center top;
-  }
+  /* Kľúč k čitateľnosti: na nízkych obrazovkách zmenšujeme hlavne PLATŇU
+     (najvyšší prvok) podľa výšky viewportu — text kariet a nadpisu ostáva
+     v natívnej, dobre čitateľnej veľkosti. Platňa je 9/16, takže šírka 26vh
+     ≈ výška 46vh. Stred grid stĺpca sa zmrští na šírku platne automaticky. */
+  .stone-experience-pinned .stone-slab-frame { max-width: 24vh; }
 }
-@media (min-width: 1024px) and (max-height: 860px) {
-  .stone-experience-pinned .stone-fit { transform: scale(0.78); }
+
+/* Nižšie obrazovky: jemný uniform scale ako poistka, keď menšia platňa +
+   natívny text nezmestia. Scale ostáva mierny (≥0.8) → text čitateľný.
+   Natívna veľkosť textu platí nad ~730px (väčšina MacBookov). */
+@media (min-width: 1024px) and (max-height: 730px) {
+  .stone-experience-pinned .stone-fit { transform: scale(0.95); transform-origin: center top; }
 }
-@media (min-width: 1024px) and (max-height: 790px) {
-  .stone-experience-pinned .stone-fit { transform: scale(0.70); }
+@media (min-width: 1024px) and (max-height: 660px) {
+  .stone-experience-pinned .stone-fit { transform: scale(0.88); transform-origin: center top; }
 }
-@media (min-width: 1024px) and (max-height: 720px) {
-  .stone-experience-pinned .stone-fit { transform: scale(0.62); }
-}
-@media (min-width: 1024px) and (max-height: 670px) {
-  .stone-experience-pinned .stone-fit { transform: scale(0.56); }
+@media (min-width: 1024px) and (max-height: 600px) {
+  .stone-experience-pinned .stone-fit { transform: scale(0.80); transform-origin: center top; }
 }
 
 /* Desktop-only: fix pre dvojitý scrollbar; mobil sa nemení */
