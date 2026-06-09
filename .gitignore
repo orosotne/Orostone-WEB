@@ -48,7 +48,8 @@ icon-v2-*
 skill/
 
 # Shopify notification templates (managed in Shopify Admin, kept local only)
-shopify/
+# Anchored to repo root so it does NOT also ignore services/shopify/ (app source).
+/shopify/
 
 # Supabase CLI cache
 supabase/.temp/

@@ -17,7 +17,10 @@ type CatalogState = {
 
 let catalogState: CatalogState = {
   products: [],
-  isLoading: false,
+  // Start loading when a live fetch will actually happen, so the first paint
+  // shows the skeleton — not a one-frame flash of fallback data + offline notice
+  // — before the catalog settles. Unconfigured envs render the fallback at once.
+  isLoading: isShopifyConfigured(),
   error: null,
 };
 let listeners: Set<() => void> = new Set();
@@ -57,14 +60,18 @@ function ensureCatalogFetch(count: number) {
 
   catalogFetchPromise = fetchProductsForListing(count)
     .then(data => {
-      catalogState = {
-        products: data.length > 0 ? data : [],
-        isLoading: false,
-        error: null,
-      };
+      if (data.length === 0) {
+        // 200 OK but zero products — almost always a Storefront sales-channel /
+        // publication or access-token-scope misconfig. Log loudly; consumers
+        // degrade to the bundled snapshot instead of rendering a blank store.
+        console.error('[catalog] Storefront returned 0 products — serving fallback snapshot.');
+        catalogFetchedAt = null; // treat empty like a miss so the next mount retries
+      }
+      catalogState = { products: data, isLoading: false, error: null };
     })
     .catch(err => {
       catalogFetchedAt = null; // allow retry on error
+      console.error('[catalog] Storefront fetch failed — serving fallback snapshot:', err);
       catalogState = {
         products: [],
         isLoading: false,
@@ -81,13 +88,11 @@ function ensureCatalogFetch(count: number) {
 // Hook: useShopifyProducts
 // ===========================================
 export interface UseShopifyProductsOptions {
-  shopifyOnly?: boolean;
   /** Skip fetching until enabled (default: true). Useful for deferring load until user interaction. */
   enabled?: boolean;
 }
 
 export function useShopifyProducts(count: number = 50, options?: UseShopifyProductsOptions) {
-  const shopifyOnly = options?.shopifyOnly === true;
   const enabled = options?.enabled !== false;
 
   useEffect(() => {
@@ -96,14 +101,20 @@ export function useShopifyProducts(count: number = 50, options?: UseShopifyProdu
 
   const state = useSyncExternalStore(subscribeCatalog, getCatalogSnapshot, getCatalogSnapshot);
 
-  const products = state.products.length > 0
-    ? state.products
-    : shopifyOnly ? [] : SHOP_PRODUCTS;
+  // Live Storefront data is the source of truth. When it is empty (e.g. a 200 OK
+  // with no products published to the Storefront channel) or the fetch failed,
+  // degrade to the bundled snapshot (data/shop-products-fallback.json) so the
+  // storefront is NEVER blank — a stale-but-complete catalog beats an empty page
+  // or a misleading "coming soon", and avoids transient SEO de-indexing.
+  // `usingFallback` lets pages surface a soft "offline data" notice.
+  const hasLiveProducts = state.products.length > 0;
+  const products = hasLiveProducts ? state.products : SHOP_PRODUCTS;
 
   return {
     products,
     isLoading: state.isLoading,
     error: state.error,
+    usingFallback: !hasLiveProducts && !state.isLoading,
   };
 }
 

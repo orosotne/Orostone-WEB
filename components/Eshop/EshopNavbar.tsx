@@ -35,7 +35,7 @@ export const EshopNavbar: React.FC = () => {
   const [searchEverOpened, setSearchEverOpened] = useState(false);
 
   // Defer product catalog fetch until search is actually opened (saves ~50 product fetch on first load)
-  const { products: shopProducts } = useShopifyProducts(50, { shopifyOnly: true, enabled: searchEverOpened });
+  const { products: shopProducts } = useShopifyProducts(50, { enabled: searchEverOpened });
 
   // Transparent mode for homepage hero overlay
   const isHomepage = location.pathname === '/';

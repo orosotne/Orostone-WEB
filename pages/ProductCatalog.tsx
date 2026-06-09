@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { m } from 'framer-motion';
 import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
+import { CatalogOfflineNotice } from '../components/UI/CatalogOfflineNotice';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -168,7 +169,7 @@ export const ProductCard = React.memo(ProductCardImpl, (prev, next) =>
 export const ProductCatalog = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { addItem, isInCart, getItemQuantity } = useCart();
-  const { products, isLoading } = useShopifyProducts(50, { shopifyOnly: true });
+  const { products, isLoading, usingFallback } = useShopifyProducts(50);
   const sortedProducts = useMemo(() => sortShopCatalogProducts(products), [products]);
 
   useEffect(() => {
@@ -287,30 +288,40 @@ export const ProductCatalog = () => {
               </div>
             ))}
           </div>
+        ) : sortedProducts.length === 0 ? (
+          /* Defense-in-depth: only reachable if even the bundled fallback is empty */
+          <div className="flex flex-col items-center justify-center py-16 md:py-24 text-center">
+            <p className="text-lg font-light text-gray-500 max-w-md">
+              Ponuku sa momentálne nepodarilo načítať. Skúste obnoviť stránku alebo nás kontaktujte.
+            </p>
+          </div>
         ) : (
-          <m.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
-          >
-            {sortedProducts.map((product) => {
-              const inCart = isInCart(product.id);
-              return (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  onAddToCart={() => {
-                    if (product.shopifyVariantId) {
-                      addItem(product.shopifyVariantId, 1);
-                    }
-                  }}
-                  inCart={inCart}
-                  quantity={getItemQuantity(product.id)}
-                />
-              );
-            })}
-          </m.div>
+          <>
+            {usingFallback && <CatalogOfflineNotice />}
+            <m.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
+            >
+              {sortedProducts.map((product) => {
+                const inCart = isInCart(product.id);
+                return (
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    onAddToCart={() => {
+                      if (product.shopifyVariantId) {
+                        addItem(product.shopifyVariantId, 1);
+                      }
+                    }}
+                    inCart={inCart}
+                    quantity={getItemQuantity(product.id)}
+                  />
+                );
+              })}
+            </m.div>
+          </>
         )}
       </section>
     </main>

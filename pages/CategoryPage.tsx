@@ -11,6 +11,7 @@ import { useShopifyProducts } from '../hooks/useShopifyProducts';
 import { useCart } from '../context/CartContext';
 import { ProductCard } from './ProductCatalog';
 import { SEOHead } from '../components/UI/SEOHead';
+import { CatalogOfflineNotice } from '../components/UI/CatalogOfflineNotice';
 import { CATEGORY_SEO } from '../data/seo';
 
 // ===========================================
@@ -19,7 +20,7 @@ import { CATEGORY_SEO } from '../data/seo';
 
 export const CategoryPage: React.FC = () => {
   const { slug, subCategory } = useParams<{ slug: string; subCategory?: string }>();
-  const { products, isLoading } = useShopifyProducts(50, { shopifyOnly: true });
+  const { products, isLoading, usingFallback } = useShopifyProducts(50);
   const { addItem, isInCart, getItemQuantity } = useCart();
 
   const mainCategory = slug || '';
@@ -193,25 +194,28 @@ export const CategoryPage: React.FC = () => {
             ))}
           </div>
         ) : hasProducts ? (
-          /* Product Grid — plain div (no framer-motion wrap to avoid 50-card reconciliation cost on INP) */
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 animate-in fade-in duration-300">
-            {filteredProducts.map((product) => {
-              const inCart = isInCart(product.id);
-              return (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  onAddToCart={() => {
-                    if (product.shopifyVariantId) {
-                      addItem(product.shopifyVariantId, 1);
-                    }
-                  }}
-                  inCart={inCart}
-                  quantity={getItemQuantity(product.id)}
-                />
-              );
-            })}
-          </div>
+          <>
+            {usingFallback && <CatalogOfflineNotice />}
+            {/* Product Grid — plain div (no framer-motion wrap to avoid 50-card reconciliation cost on INP) */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 animate-in fade-in duration-300">
+              {filteredProducts.map((product) => {
+                const inCart = isInCart(product.id);
+                return (
+                  <ProductCard
+                    key={product.id}
+                    product={product}
+                    onAddToCart={() => {
+                      if (product.shopifyVariantId) {
+                        addItem(product.shopifyVariantId, 1);
+                      }
+                    }}
+                    inCart={inCart}
+                    quantity={getItemQuantity(product.id)}
+                  />
+                );
+              })}
+            </div>
+          </>
         ) : (
           /* Empty State */
           <div className="flex flex-col items-center justify-center py-16 md:py-24 text-center animate-in fade-in slide-in-from-bottom-2 duration-500 delay-100 fill-mode-both">

@@ -7,6 +7,7 @@ import {
   addToCart as shopifyAddToCart,
   removeFromCart as shopifyRemoveFromCart,
   updateCartItem as shopifyUpdateCartItem,
+  CartNotFoundError,
   type ShopifyCart,
   type ShopifyCartLine,
 } from '../services/shopify.service';
@@ -251,8 +252,12 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       let updatedCart: ShopifyCart;
       try {
         updatedCart = await withCartTimeout(() => shopifyAddToCart(currentCart.id, variantId, quantity));
-      } catch {
-        // Cart may have expired — recover and retry once
+      } catch (addErr) {
+        // Only a genuinely expired/invalid cart (null cart from Shopify) should be
+        // recreated. Transient errors and line-level userErrors (e.g. a sold-out
+        // variant) must NOT discard the customer's existing cart — rethrow and
+        // keep it intact so the outer handler just surfaces the error.
+        if (!(addErr instanceof CartNotFoundError)) throw addErr;
         const freshCart = await recoverCart();
         updatedCart = await withCartTimeout(() => shopifyAddToCart(freshCart.id, variantId, quantity));
       }
