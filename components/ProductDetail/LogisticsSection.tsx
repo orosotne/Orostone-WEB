@@ -71,7 +71,6 @@ export const LogisticsSection: React.FC<LogisticsSectionProps> = ({ product }) =
               </p>
               <p className="text-xs text-gray-500">
                 Presná cena sa potvrdí v pokladni podľa adresy a počtu platní.
-                Pri 3 a viac platniach doprava zadarmo.
               </p>
             </div>
             <Link

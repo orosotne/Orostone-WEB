@@ -201,7 +201,6 @@ export const Checkout = () => {
                 </div>
                 <p className="text-[11px] text-gray-400 leading-relaxed">
                   Presná cena dopravy závisí od adresy a počtu platní.
-                  Pri 3 a viac platniach doprava zadarmo.
                   Montáž nie je súčasťou objednávky.{' '}
                   <Link to="/doprava" className="text-brand-gold hover:underline">
                     Viac o doprave

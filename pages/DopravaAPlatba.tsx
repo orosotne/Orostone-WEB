@@ -109,20 +109,13 @@ export const DopravaAPlatba: React.FC = () => {
                       <td className="py-3 pr-6 text-gray-700">Ostatné územie Slovenskej republiky</td>
                       <td className="py-3 pr-6 font-medium text-brand-dark">od 350 EUR</td>
                     </tr>
-                    <tr className="bg-amber-50">
-                      <td className="py-3 pr-6 font-semibold text-brand-dark">Pri 3 a viac platniach</td>
-                      <td className="py-3 pr-6 font-bold text-emerald-700">Doprava zadarmo*</td>
-                    </tr>
                   </tbody>
                 </table>
               </div>
               <p className="text-xs text-gray-500 mt-4 leading-relaxed">
                 Konečná cena dopravy sa určuje podľa adresy doručenia, počtu platní, hmotnosti zásielky a prípadných osobitných požiadaviek na manipuláciu. Presná cena dopravy bude zobrazená alebo potvrdená pred odoslaním záväznej objednávky. Doručujeme výlučne na území Slovenskej republiky.
               </p>
-              <p className="text-xs text-gray-400 mt-2">
-                * Doprava zadarmo pri 3 a viac platniach, ak nie je pri konkrétnej objednávke uvedené inak.
-              </p>
-              <p className="text-xs text-gray-400 mt-2">
+<p className="text-xs text-gray-400 mt-2">
                 Úplné obchodné podmienky vrátane podmienok dodania nájdete v{' '}
                 <Link to="/vop" className="text-brand-gold hover:underline">Všeobecných obchodných podmienkach</Link>.
               </p>

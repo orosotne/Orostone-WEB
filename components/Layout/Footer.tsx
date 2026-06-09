@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Facebook, Instagram, Youtube, Mail, Phone, MapPin,
-  CreditCard, Truck, Shield, Clock, CheckCircle, Loader2
+  CreditCard, Shield, Clock, CheckCircle, Loader2
 } from 'lucide-react';
 import { RotatingBadge } from '../UI/RotatingBadge';
 import { useCookies } from '../../context/CookieContext';
@@ -188,17 +188,7 @@ const FooterComponent: React.FC<FooterProps> = ({ categories, isProductDetail = 
       <div className="border-b border-white/10">
         <div className="container mx-auto px-6 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
-                <Truck size={24} className="text-brand-gold" />
-              </div>
-              <div>
-                <h4 className="font-semibold text-sm">Doprava zadarmo</h4>
-                <p className="text-xs text-gray-400">Pri 3 a viac platniach</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4">
+<div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
                 <Shield size={24} className="text-brand-gold" />
               </div>

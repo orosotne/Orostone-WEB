@@ -470,8 +470,6 @@ export const CartDrawer: React.FC = () => {
                           <span className="text-gray-600">Doprava</span>
                           <span className="text-xs text-gray-500 text-right">
                             od 150 EUR s DPH
-                            <br />
-                            <span className="text-gray-400">pri 3 a viac platniach zadarmo</span>
                           </span>
                         </div>
                         <p className="text-[11px] text-gray-400">
