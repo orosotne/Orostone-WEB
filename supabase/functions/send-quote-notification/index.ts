@@ -16,6 +16,18 @@
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 
+// Escapes user-controlled strings before inserting into HTML email bodies.
+// Prevents HTML injection / layout breakage from malicious name/description values.
+function h(str: string | null | undefined): string {
+  if (!str) return '';
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
 const ADMIN_EMAIL = 'dopyt@orostone.sk';
 const FROM_EMAIL = 'Orostone <noreply@orostone.sk>';
@@ -54,6 +66,17 @@ serve(async (req) => {
     return new Response(null, { status: 204, headers: corsHeaders });
   }
 
+  // Require service-role key so arbitrary callers cannot trigger email spam.
+  // submit-quote already passes it via Authorization header.
+  const authHeader = req.headers.get('authorization') ?? '';
+  const bearerToken = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : '';
+  if (!SUPABASE_SERVICE_KEY || bearerToken !== SUPABASE_SERVICE_KEY) {
+    return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+      status: 401,
+      headers: corsHeaders,
+    });
+  }
+
   try {
     const payload = await req.json();
 
@@ -62,11 +85,9 @@ serve(async (req) => {
 
     // --- DIRECT CALL: { quote_id } ---
     if (payload.quote_id) {
-      const [quoteRes, ] = await Promise.all([
-        fetch(`${SUPABASE_URL}/rest/v1/quotes?id=eq.${payload.quote_id}&select=*`, {
-          headers: { apikey: SUPABASE_SERVICE_KEY, Authorization: `Bearer ${SUPABASE_SERVICE_KEY}` },
-        }),
-      ]);
+      const quoteRes = await fetch(`${SUPABASE_URL}/rest/v1/quotes?id=eq.${payload.quote_id}&select=*`, {
+        headers: { apikey: SUPABASE_SERVICE_KEY, Authorization: `Bearer ${SUPABASE_SERVICE_KEY}` },
+      });
       const quotes: QuoteData[] = await quoteRes.json();
       if (!quotes[0]) throw new Error(`Quote not found: ${payload.quote_id}`);
       quote = quotes[0];
@@ -192,7 +213,7 @@ async function sendAdminNotification(quote: QuoteData, customer: CustomerData, i
                   ${isSampleLead ? 'Žiadosť o vzorku' : 'Dopyt z webu'}
                 </p>
                 <h2 class="email-text" style="margin: 0 0 6px 0; font-size: 22px; font-weight: 700; color: #1A1A1A;">
-                  ${customer.name}
+                  ${h(customer.name)}
                 </h2>
                 <p style="margin: 0; font-size: 12px; color: #999999; font-weight: 300;">
                   ${new Date(quote.created_at).toLocaleString('sk-SK')}
@@ -210,8 +231,8 @@ async function sendAdminNotification(quote: QuoteData, customer: CustomerData, i
                                 font-size: 12px; color: #999999; width: 35%; font-weight: 400;">Email</td>
                     <td class="data-value" style="padding: 10px 0; border-bottom: 1px solid #eeeeee;
                                 font-size: 14px; font-weight: 600; color: #1A1A1A;">
-                      <a href="mailto:${customer.email}" class="data-link"
-                         style="color: #1A1A1A; text-decoration: none;">${customer.email}</a>
+                      <a href="mailto:${h(customer.email)}" class="data-link"
+                         style="color: #1A1A1A; text-decoration: none;">${h(customer.email)}</a>
                     </td>
                   </tr>
 
@@ -221,8 +242,8 @@ async function sendAdminNotification(quote: QuoteData, customer: CustomerData, i
                                 font-size: 12px; color: #999999; font-weight: 400;">Telefón</td>
                     <td class="data-value" style="padding: 10px 0; border-bottom: 1px solid #eeeeee;
                                 font-size: 14px; font-weight: 600; color: #1A1A1A;">
-                      <a href="tel:${customer.phone}" class="data-link"
-                         style="color: #1A1A1A; text-decoration: none;">${customer.phone}</a>
+                      <a href="tel:${h(customer.phone)}" class="data-link"
+                         style="color: #1A1A1A; text-decoration: none;">${h(customer.phone)}</a>
                     </td>
                   </tr>` : ''}
 
@@ -231,7 +252,7 @@ async function sendAdminNotification(quote: QuoteData, customer: CustomerData, i
                     <td class="data-label" style="padding: 10px 0; border-bottom: 1px solid #eeeeee;
                                 font-size: 12px; color: #999999; font-weight: 400;">Dekor</td>
                     <td class="data-value" style="padding: 10px 0; border-bottom: 1px solid #eeeeee;
-                                font-size: 14px; font-weight: 700; color: #1A1A1A;">${quote.decor}</td>
+                                font-size: 14px; font-weight: 700; color: #1A1A1A;">${h(quote.decor)}</td>
                   </tr>` : ''}
 
                   ${quote.project_type && !isSampleLead ? `
@@ -239,7 +260,7 @@ async function sendAdminNotification(quote: QuoteData, customer: CustomerData, i
                     <td class="data-label" style="padding: 10px 0; border-bottom: 1px solid #eeeeee;
                                 font-size: 12px; color: #999999; font-weight: 400;">Typ projektu</td>
                     <td class="data-value" style="padding: 10px 0; border-bottom: 1px solid #eeeeee;
-                                font-size: 14px; font-weight: 600; color: #1A1A1A;">${quote.project_type}</td>
+                                font-size: 14px; font-weight: 600; color: #1A1A1A;">${h(quote.project_type)}</td>
                   </tr>` : ''}
 
                   ${quote.item_needed ? `
@@ -247,7 +268,7 @@ async function sendAdminNotification(quote: QuoteData, customer: CustomerData, i
                     <td class="data-label" style="padding: 10px 0; border-bottom: 1px solid #eeeeee;
                                 font-size: 12px; color: #999999; font-weight: 400;">Predmet</td>
                     <td class="data-value" style="padding: 10px 0; border-bottom: 1px solid #eeeeee;
-                                font-size: 14px; font-weight: 600; color: #1A1A1A;">${quote.item_needed}</td>
+                                font-size: 14px; font-weight: 600; color: #1A1A1A;">${h(quote.item_needed)}</td>
                   </tr>` : ''}
 
                   ${quote.dimensions ? `
@@ -255,7 +276,7 @@ async function sendAdminNotification(quote: QuoteData, customer: CustomerData, i
                     <td class="data-label" style="padding: 10px 0; font-size: 12px; color: #999999; font-weight: 400;">
                       Popis</td>
                     <td class="data-value" style="padding: 10px 0; font-size: 14px; font-weight: 400;
-                                color: #1A1A1A; line-height: 1.5;">${quote.dimensions}</td>
+                                color: #1A1A1A; line-height: 1.5;">${h(quote.dimensions)}</td>
                   </tr>` : ''}
 
                 </table>
@@ -265,7 +286,7 @@ async function sendAdminNotification(quote: QuoteData, customer: CustomerData, i
             <!-- CTA -->
             <tr>
               <td class="email-body" style="background-color: #ffffff; padding: 28px 40px 32px 40px;">
-                <a href="mailto:${customer.email}?subject=Re: ${isSampleLead ? 'Vzorka Orostone' : 'Váš dopyt — Orostone'}"
+                <a href="mailto:${h(customer.email)}?subject=Re: ${isSampleLead ? 'Vzorka Orostone' : 'Váš dopyt — Orostone'}"
                    class="cta-btn"
                    style="display: inline-block; background-color: #1A1A1A; color: #ffffff;
                           padding: 12px 28px; text-decoration: none; font-size: 11px; font-weight: 700;
@@ -379,7 +400,7 @@ async function sendSampleLeadConfirmation(quote: QuoteData, customer: CustomerDa
             <tr>
               <td class="email-body" style="background-color: #ffffff; padding: 44px 40px 28px 40px; text-align: center;">
                 <h1 class="email-text" style="margin: 0 0 8px 0; font-size: 26px; font-weight: 700; color: #1A1A1A; letter-spacing: -0.02em;">
-                  Ďakujeme, ${firstName}!
+                  Ďakujeme, ${h(firstName)}!
                 </h1>
                 <p class="email-subtext" style="margin: 0; font-size: 16px; font-weight: 300; color: #666666; line-height: 1.6;">
                   Vaša žiadosť o vzorku bola úspešne prijatá.
@@ -402,7 +423,7 @@ async function sendSampleLeadConfirmation(quote: QuoteData, customer: CustomerDa
                   <p class="dekor-label" style="margin: 0 0 4px 0; font-size: 10px; font-weight: 700;
                             letter-spacing: 0.25em; text-transform: uppercase; color: #B8960C;">Váš vybraný dekor</p>
                   <p class="email-text" style="margin: 0; font-size: 18px; font-weight: 700; color: #1A1A1A;">
-                    ${quote.decor ?? '—'}
+                    ${h(quote.decor ?? '—')}
                   </p>
                 </div>
               </td>
@@ -422,7 +443,7 @@ async function sendSampleLeadConfirmation(quote: QuoteData, customer: CustomerDa
                                       text-align: center; line-height: 24px; font-size: 11px; font-weight: 700; color: #1A1A1A;">1</div>
                         </td>
                         <td class="email-step-text" style="padding-left: 12px; font-size: 14px; font-weight: 300; color: #444444; line-height: 1.5;">
-                          Overíme dostupnosť vzorky dekoru <strong style="font-weight: 600;">${quote.decor ?? ''}</strong>
+                          Overíme dostupnosť vzorky dekoru <strong style="font-weight: 600;">${h(quote.decor ?? '')}</strong>
                         </td>
                       </tr></table>
                     </td>
@@ -522,8 +543,8 @@ async function sendCustomerConfirmation(quote: QuoteData, customer: CustomerData
 
       <h2 style="font-weight: 700; font-size: 22px; color: #1A1A1A; margin: 0 0 8px 0;">Ďakujeme za Váš dopyt</h2>
       <p style="color: #444; font-weight: 300; line-height: 1.6; margin: 0 0 24px 0;">
-        Vážený/á ${customer.name},<br><br>
-        Váš dopyt na <strong>${quote.project_type.toLowerCase()}</strong> sme úspešne prijali.
+        Vážený/á ${h(customer.name)},<br><br>
+        Váš dopyt na <strong>${h(quote.project_type.toLowerCase())}</strong> sme úspešne prijali.
         Náš špecialista Vás bude kontaktovať do 24 hodín s predbežnou kalkuláciou.
       </p>
 
@@ -531,11 +552,11 @@ async function sendCustomerConfirmation(quote: QuoteData, customer: CustomerData
                   color: #1A1A1A; margin: 0 0 12px 0;">Súhrn dopytu</h3>
       <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
         <tr><td style="padding: 8px 0; border-bottom: 1px solid #eee; color: #666; width: 40%;">Typ projektu</td>
-            <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${quote.project_type}</td></tr>
+            <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${h(quote.project_type)}</td></tr>
         ${quote.item_needed ? `<tr><td style="padding: 8px 0; border-bottom: 1px solid #eee; color: #666;">Predmet</td>
-            <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${quote.item_needed}</td></tr>` : ''}
+            <td style="padding: 8px 0; border-bottom: 1px solid #eee;">${h(quote.item_needed)}</td></tr>` : ''}
         ${quote.decor ? `<tr><td style="padding: 8px 0; color: #666;">Dekor</td>
-            <td style="padding: 8px 0;">${quote.decor}</td></tr>` : ''}
+            <td style="padding: 8px 0;">${h(quote.decor)}</td></tr>` : ''}
       </table>
 
       <div style="margin: 32px 0;">

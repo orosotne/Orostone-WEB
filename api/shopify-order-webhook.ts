@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { createHmac } from 'crypto';
+import { createHmac, timingSafeEqual } from 'crypto';
 import { buffer } from 'micro';
 
 /**
@@ -23,7 +23,12 @@ export const config = {
 };
 
 function verifyHmac(raw: Buffer, hmac: string, secret: string): boolean {
-  return createHmac('sha256', secret).update(raw).digest('base64') === hmac;
+  const hash = createHmac('sha256', secret).update(raw).digest('base64');
+  try {
+    return timingSafeEqual(Buffer.from(hash), Buffer.from(hmac));
+  } catch {
+    return false;
+  }
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {

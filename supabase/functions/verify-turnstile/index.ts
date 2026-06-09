@@ -25,6 +25,9 @@ serve(async (req) => {
     const formData = new FormData();
     formData.append('secret', TURNSTILE_SECRET);
     formData.append('response', token);
+    // Pass visitor IP so Cloudflare can use it as a risk signal (improves bot detection).
+    const clientIp = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim();
+    if (clientIp) formData.append('remoteip', clientIp);
 
     const result = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
       method: 'POST',

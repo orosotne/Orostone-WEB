@@ -20,6 +20,8 @@ import { submitQuote } from '../../services/quotes.service';
 import { useCart } from '../../context/CartContext';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { trackGA4Event } from '../../services/analytics';
+import { useTurnstile } from '../../hooks/useTurnstile';
+import { Turnstile } from '@marsidev/react-turnstile';
 
 interface ArchitectBlockProps {
   product: ShopProduct;
@@ -27,11 +29,13 @@ interface ArchitectBlockProps {
 
 export const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
   const { addItem, sampleCount, isSampleInCart } = useCart();
+  const { turnstileRef, turnstileToken, setTurnstileToken, verifyToken, reset: resetTurnstile } = useTurnstile();
   const [sampleError, setSampleError] = useState<string | null>(null);
   const [isBimModalOpen, setIsBimModalOpen] = useState(false);
   const [bimEmail, setBimEmail] = useState('');
   const [bimSubmitted, setBimSubmitted] = useState(false);
   const [bimSubmitting, setBimSubmitting] = useState(false);
+  const [bimError, setBimError] = useState<string | null>(null);
 
   const handleBimModalClose = () => {
     (document.activeElement as HTMLElement)?.blur();
@@ -50,6 +54,19 @@ export const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
 
   const handleBimSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setBimError(null);
+
+    if (!turnstileToken) {
+      setBimError('Prosím, dokončite overenie (CAPTCHA).');
+      return;
+    }
+    const isHuman = await verifyToken(turnstileToken);
+    if (!isHuman) {
+      resetTurnstile();
+      setBimError('Overenie zlyhalo. Skúste to znova.');
+      return;
+    }
+
     setBimSubmitting(true);
     await submitQuote({
       name: 'BIM/CAD Request',
@@ -249,9 +266,19 @@ export const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
                           />
                         </div>
                       </div>
+                      <Turnstile
+                        ref={turnstileRef}
+                        siteKey={import.meta.env.VITE_TURNSTILE_SITEKEY}
+                        onSuccess={setTurnstileToken}
+                        onExpire={() => setTurnstileToken(null)}
+                        options={{ size: 'flexible' }}
+                      />
+                      {bimError && (
+                        <p className="text-red-500 text-xs">{bimError}</p>
+                      )}
                       <button
                         type="submit"
-                        disabled={bimSubmitting}
+                        disabled={bimSubmitting || !turnstileToken}
                         className="w-full bg-brand-dark hover:bg-brand-dark/90 text-brand-gold font-semibold text-sm py-3 rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-60"
                       >
                         {bimSubmitting ? (

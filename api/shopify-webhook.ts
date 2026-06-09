@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { createHmac } from 'crypto';
+import { createHmac, timingSafeEqual } from 'crypto';
 import { buffer } from 'micro';
 
 /**
@@ -26,7 +26,14 @@ export const config = {
 
 function verifyShopifyHmac(rawBody: Buffer, hmacHeader: string, secret: string): boolean {
   const hash = createHmac('sha256', secret).update(rawBody).digest('base64');
-  return hash === hmacHeader;
+  // timingSafeEqual prevents timing-based HMAC forgery attacks.
+  // Both buffers must be the same length; if the header is a different length
+  // the signature is invalid — return false without leaking timing info.
+  try {
+    return timingSafeEqual(Buffer.from(hash), Buffer.from(hmacHeader));
+  } catch {
+    return false;
+  }
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
