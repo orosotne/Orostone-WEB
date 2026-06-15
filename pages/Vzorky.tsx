@@ -96,9 +96,17 @@ export const Vzorky: React.FC = () => {
     const container = scrollRef.current;
     if (!container) return;
 
-    // ── Mobile: no scroll-driven RAF/layout reads. CSS scroll-snap handles UX,
-    // IntersectionObserver tracks the centered tile for activeIndex. This drops
-    // P75 INP on /vzorky from ~1248ms to <200ms target.
+    // ── Mobile: no scroll-driven RAF/layout reads or style writes. CSS
+    // scroll-snap handles the UX; we only need to know which tile is centered
+    // to label it. Deriving that from scroll geometry (same as desktop) and
+    // committing once on scroll-settle keeps P75 INP on /vzorky low (~1248ms →
+    // <200ms target) while staying correct.
+    //
+    // Previously this used an IntersectionObserver that picked the "most
+    // visible" tile among only the entries that crossed a threshold per
+    // callback. The already-centered tile is usually absent from those entries
+    // (it crossed its threshold earlier), so the adjacent tile just entering
+    // view hijacked activeIndex — the name was consistently off by one.
     if (isMobile) {
       // Clear any leftover transform/opacity from a previous desktop render.
       tileRefs.current.forEach((el) => {
@@ -107,29 +115,34 @@ export const Vzorky: React.FC = () => {
         el.style.opacity = '';
       });
 
-      const io = new IntersectionObserver(
-        (entries) => {
-          // Pick the most-visible tile and update activeIndex once.
-          let bestIdx = -1;
-          let bestRatio = 0;
-          entries.forEach((entry) => {
-            if (entry.intersectionRatio > bestRatio) {
-              const idx = tileRefs.current.findIndex((el) => el === entry.target);
-              if (idx >= 0) {
-                bestIdx = idx;
-                bestRatio = entry.intersectionRatio;
-              }
-            }
-          });
-          if (bestIdx >= 0 && bestRatio >= 0.6) {
-            setActiveIndex((prev) => (prev === bestIdx ? prev : bestIdx));
-          }
-        },
-        { root: container, threshold: [0.6, 0.9] },
-      );
+      let settle: number | null = null;
+      const commitCentered = () => {
+        settle = null;
+        const centerX = container.scrollLeft + container.offsetWidth / 2;
+        let closestIdx = 0;
+        let closestDist = Infinity;
+        tileRefs.current.forEach((el, i) => {
+          if (!el) return;
+          const tileMid = el.offsetLeft + el.offsetWidth / 2;
+          const pxDist = Math.abs(tileMid - centerX);
+          if (pxDist < closestDist) { closestDist = pxDist; closestIdx = i; }
+        });
+        setActiveIndex((prev) => (prev === closestIdx ? prev : closestIdx));
+      };
 
-      tileRefs.current.forEach((el) => el && io.observe(el));
-      return () => io.disconnect();
+      // Per-frame work is only a timer reset (no layout/style writes); the
+      // single geometry pass + state commit runs once, after motion stops.
+      const onScroll = () => {
+        if (settle !== null) clearTimeout(settle);
+        settle = window.setTimeout(commitCentered, 150);
+      };
+
+      container.addEventListener('scroll', onScroll, { passive: true });
+      commitCentered(); // sync activeIndex to the initial centered tile
+      return () => {
+        container.removeEventListener('scroll', onScroll);
+        if (settle !== null) clearTimeout(settle);
+      };
     }
 
     // ── Desktop: original scroll-driven RAF for scale/opacity transitions.
