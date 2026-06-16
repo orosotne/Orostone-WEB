@@ -23,7 +23,7 @@ import { ProductSwitcher } from './ProductSwitcher';
 import { BundleSelector } from './BundleSelector';
 import { InstallationSelector } from './InstallationSelector';
 import { ProductLightbox } from './ProductLightbox';
-import { MaterialPerspectivesViewer } from './MaterialPerspectivesViewer';
+// Dočasne skryté: import { MaterialPerspectivesViewer } from './MaterialPerspectivesViewer';
 import { ThicknessIcon, shopifyImageUrl, shopifySrcSet, productImageAlt, shortFinish, getFinishIcon, calculateSlabPrice } from './utils';
 import type { BundleOption } from './types';
 
@@ -226,7 +226,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
             )}
 
-            <MaterialPerspectivesViewer product={product} />
+            {/* Dočasne skryté (desktop + mobil) – sekcia „Objavte krásu z každého uhla" */}
+            {/* <MaterialPerspectivesViewer product={product} /> */}
           </div>
 
           {/* Right: Product Info */}
