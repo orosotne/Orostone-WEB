@@ -13,6 +13,20 @@
       "destination": "https://orostone.sk/$1",
       "permanent": true
     },
+
+    { "source": "/q/OR-NM-:partner",  "destination": "/produkt/nero-margiua?utm_source=qr&utm_medium=offline_sample&utm_campaign=samples_2026_sk&utm_content=OR-NM-:partner",         "permanent": false },
+    { "source": "/q/OR-AP-:partner",  "destination": "/produkt/appennino?utm_source=qr&utm_medium=offline_sample&utm_campaign=samples_2026_sk&utm_content=OR-AP-:partner",            "permanent": false },
+    { "source": "/q/OR-GG-:partner",  "destination": "/produkt/givenchy-gold?utm_source=qr&utm_medium=offline_sample&utm_campaign=samples_2026_sk&utm_content=OR-GG-:partner",        "permanent": false },
+    { "source": "/q/OR-WF-:partner",  "destination": "/produkt/wild-forest?utm_source=qr&utm_medium=offline_sample&utm_campaign=samples_2026_sk&utm_content=OR-WF-:partner",          "permanent": false },
+    { "source": "/q/OR-SWE-:partner", "destination": "/produkt/super-white-extra?utm_source=qr&utm_medium=offline_sample&utm_campaign=samples_2026_sk&utm_content=OR-SWE-:partner",   "permanent": false },
+    { "source": "/q/OR-AG-:partner",  "destination": "/produkt/astrana-grey?utm_source=qr&utm_medium=offline_sample&utm_campaign=samples_2026_sk&utm_content=OR-AG-:partner",         "permanent": false },
+    { "source": "/q/OR-CT-:partner",  "destination": "/produkt/calacatta-top?utm_source=qr&utm_medium=offline_sample&utm_campaign=samples_2026_sk&utm_content=OR-CT-:partner",        "permanent": false },
+    { "source": "/q/OR-SD-:partner",  "destination": "/produkt/statuario-diamante?utm_source=qr&utm_medium=offline_sample&utm_campaign=samples_2026_sk&utm_content=OR-SD-:partner",   "permanent": false },
+    { "source": "/q/OR-TM-:partner",  "destination": "/produkt/taj-mahal?utm_source=qr&utm_medium=offline_sample&utm_campaign=samples_2026_sk&utm_content=OR-TM-:partner",            "permanent": false },
+    { "source": "/q/OR-RT-:partner",  "destination": "/produkt/roman-travertine?utm_source=qr&utm_medium=offline_sample&utm_campaign=samples_2026_sk&utm_content=OR-RT-:partner",     "permanent": false },
+    { "source": "/q/OR-GOG-:partner", "destination": "/produkt/gothic-gold?utm_source=qr&utm_medium=offline_sample&utm_campaign=samples_2026_sk&utm_content=OR-GOG-:partner",         "permanent": false },
+    { "source": "/q/OR-YW-:partner",  "destination": "/produkt/yabo-white?utm_source=qr&utm_medium=offline_sample&utm_campaign=samples_2026_sk&utm_content=OR-YW-:partner",           "permanent": false },
+
     { "source": "/kolekcie/:path*", "destination": "/kategoria/sintered-stone", "permanent": true },
     { "source": "/kolekcie", "destination": "/kategoria/sintered-stone", "permanent": true },
     { "source": "/vsetky-produkty", "destination": "/kategoria/sintered-stone", "permanent": true },
