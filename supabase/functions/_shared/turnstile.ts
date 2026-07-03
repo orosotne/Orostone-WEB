@@ -8,10 +8,9 @@
 // directly and bypass both Turnstile and the honeypot. This module moves the
 // trust boundary to the server: callers verify the token BEFORE any DB write.
 //
-// ENV: TURNSTILE_SECRET_KEY (Cloudflare dashboard → Turnstile → secret key).
-// Fold verify-turnstile/index.ts into this and delete the standalone function
-// (also drops the ~168 KB supabase-js SDK that useTurnstile's functions.invoke
-// pulled into the client bundle). Keep the client-side check as UX only.
+// ENV: CLOUDFLARE_TURNSTILE_SECRET — the SAME secret the existing verify-turnstile
+// function already uses successfully in production, so there is no new secret to
+// provision and no "missing secret" failure mode. Keep the client widget as UX.
 
 const SITEVERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 
@@ -27,9 +26,9 @@ export interface TurnstileResult {
  * because Cloudflare was briefly unreachable.
  */
 export async function verifyTurnstile(token: unknown, remoteIp?: string | null): Promise<TurnstileResult> {
-  const secret = Deno.env.get('TURNSTILE_SECRET_KEY');
+  const secret = Deno.env.get('CLOUDFLARE_TURNSTILE_SECRET');
   if (!secret) {
-    console.error('[turnstile] TURNSTILE_SECRET_KEY not set — rejecting');
+    console.error('[turnstile] CLOUDFLARE_TURNSTILE_SECRET not set — rejecting');
     return { success: false, errorCodes: ['missing-secret'] };
   }
   if (typeof token !== 'string' || !token) {

@@ -29,7 +29,7 @@ interface ArchitectBlockProps {
 
 export const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
   const { addItem, sampleCount, isSampleInCart } = useCart();
-  const { turnstileRef, turnstileToken, setTurnstileToken, verifyToken, reset: resetTurnstile } = useTurnstile();
+  const { turnstileRef, turnstileToken, setTurnstileToken } = useTurnstile();
   const [sampleError, setSampleError] = useState<string | null>(null);
   const [isBimModalOpen, setIsBimModalOpen] = useState(false);
   const [bimEmail, setBimEmail] = useState('');
@@ -60,13 +60,9 @@ export const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
       setBimError('Prosím, dokončite overenie (CAPTCHA).');
       return;
     }
-    const isHuman = await verifyToken(turnstileToken);
-    if (!isHuman) {
-      resetTurnstile();
-      setBimError('Overenie zlyhalo. Skúste to znova.');
-      return;
-    }
-
+    // Turnstile verified SERVER-SIDE in submit-quote (finding f02); forward the
+    // single-use token instead of redeeming it here. Presence gate above still
+    // blocks submit until the widget is solved.
     setBimSubmitting(true);
     await submitQuote({
       name: 'BIM/CAD Request',
@@ -74,7 +70,7 @@ export const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
       email: bimEmail,
       description: `Záujem o BIM / CAD High-Res Textúry — produkt: ${product.name}`,
       files: [],
-    });
+    }, turnstileToken);
     trackGA4Event('generate_lead', {
       currency: 'EUR',
       value: 30,
