@@ -26,6 +26,7 @@
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { verifyTurnstile, clientIp } from '../_shared/turnstile.ts';
 
 const corsHeaders = {
   'Content-Type': 'application/json',
@@ -102,6 +103,26 @@ serve(async (req) => {
 
   try {
     const json = await req.json().catch(() => null);
+
+    // --- Anti-bot gate (finding f02). ROLLOUT-SAFE ---
+    // Only ENFORCED when TURNSTILE_ENFORCE === 'true'. Default/unset = soft mode:
+    // the whole block is skipped, so behaviour is byte-identical to today and this
+    // function can deploy in any order relative to the token-sending client without
+    // ever breaking the sample form. Flip TURNSTILE_ENFORCE=true (and set
+    // TURNSTILE_SECRET_KEY) only after the new client is live and a real submission
+    // passes on a preview deployment.
+    if (Deno.env.get('TURNSTILE_ENFORCE') === 'true') {
+      const token = (json as Record<string, unknown> | null)?.turnstileToken;
+      const ts = await verifyTurnstile(token, clientIp(req));
+      if (!ts.success) {
+        console.warn('[submit-quote] turnstile rejected', { codes: ts.errorCodes });
+        return new Response(
+          JSON.stringify({ success: false, error: 'Overenie proti robotom zlyhalo.' }),
+          { status: 403, headers: corsHeaders },
+        );
+      }
+    }
+
     const validated = validate(json);
     if (!validated.ok) {
       return new Response(JSON.stringify({ success: false, error: validated.error }), {

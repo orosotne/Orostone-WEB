@@ -40,6 +40,10 @@ interface SubmitQuotePayload {
   item_needed?: string;
   dimensions?: string;
   decor?: string;
+  // Cloudflare Turnstile token — verified SERVER-SIDE in submit-quote when
+  // TURNSTILE_ENFORCE=true (finding f02). Sent on every lead so the switch can be
+  // flipped without a client redeploy.
+  turnstileToken?: string;
 }
 
 /**
@@ -92,7 +96,7 @@ async function callSubmitQuote(payload: SubmitQuotePayload): Promise<{
  * path/UUID enforcement; see supabase/schema.sql storage section).
  * Tightening that policy is a separate hardening item (bug_022 follow-up).
  */
-export async function submitQuote(formData: QuoteFormData): Promise<SubmitQuoteResult> {
+export async function submitQuote(formData: QuoteFormData, turnstileToken?: string): Promise<SubmitQuoteResult> {
   if (!isSupabaseConfigured()) {
     if (import.meta.env.DEV) {
       console.warn('Supabase nie je nakonfigurovaný - simulujem odoslanie');
@@ -111,6 +115,7 @@ export async function submitQuote(formData: QuoteFormData): Promise<SubmitQuoteR
       phone: formData.phone || undefined,
       project_type: 'Dopyt z webu',
       dimensions: formData.description || undefined,
+      turnstileToken,
     });
 
     if (!result.success || !result.quote_id) {
@@ -150,7 +155,7 @@ export interface SampleLeadFormData {
  * Email notification dispatch is now handled inside the Edge Function;
  * the client no longer fires a separate fetch to send-quote-notification.
  */
-export async function submitSampleLead(data: SampleLeadFormData): Promise<SubmitQuoteResult> {
+export async function submitSampleLead(data: SampleLeadFormData, turnstileToken?: string): Promise<SubmitQuoteResult> {
   if (!isSupabaseConfigured()) {
     if (import.meta.env.DEV) {
       console.warn('Supabase nie je nakonfigurovaný - simulujem odoslanie (vzorka)');
@@ -169,6 +174,7 @@ export async function submitSampleLead(data: SampleLeadFormData): Promise<Submit
       phone: data.phone?.trim() || undefined,
       project_type: 'Vzorka zadarmo (Shop)',
       decor: data.dekor,
+      turnstileToken,
     });
 
     if (!result.success || !result.quote_id) {

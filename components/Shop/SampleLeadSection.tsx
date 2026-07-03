@@ -38,7 +38,7 @@ export const SampleLeadSection: React.FC<SampleLeadSectionProps> = ({ preselecte
     if (preselectedDekor) setDekorValue(preselectedDekor);
   }, [preselectedDekor]);
   const { honeypotValue, setHoneypotValue, isBot } = useHoneypot();
-  const { turnstileRef, turnstileToken, setTurnstileToken, verifyToken, reset: resetTurnstile } = useTurnstile();
+  const { turnstileRef, turnstileToken, setTurnstileToken, reset: resetTurnstile } = useTurnstile();
   const [showPin, setShowPin] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const pinRef = useRef<HTMLDivElement>(null);
@@ -78,15 +78,16 @@ export const SampleLeadSection: React.FC<SampleLeadSectionProps> = ({ preselecte
       return;
     }
 
-    const valid = await verifyToken(turnstileToken);
-    if (!valid) { setStatus('error'); setErrorMsg('Overenie zlyhalo, skúste znova.'); resetTurnstile(); return; }
-
+    // Turnstile is now verified SERVER-SIDE in submit-quote (finding f02); the
+    // token is single-use, so we no longer redeem it here — we forward it. The
+    // presence gate above (turnstileToken) still blocks submit until the widget
+    // is solved (UX).
     const result = await submitSampleLead({
       name,
       email,
       phone: phone || undefined,
       dekor,
-    });
+    }, turnstileToken);
 
     if (result.success) {
       trackMetaEvent('Lead', {
@@ -104,6 +105,8 @@ export const SampleLeadSection: React.FC<SampleLeadSectionProps> = ({ preselecte
       }
       setStatus('success');
     } else {
+      // Token is single-use — reset the widget so a retry gets a fresh one.
+      resetTurnstile();
       setStatus('error');
       setErrorMsg(
         result.error
