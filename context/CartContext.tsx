@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useCallback, useMemo, useRef, ReactNode } from 'react';
-import { isShopifyConfigured } from '../lib/shopify';
+import { isShopifyConfigured, ShopifyTimeoutError } from '../lib/shopify';
 import { SAMPLE_VARIANT_KEYWORD } from '../constants';
 import {
   createCart as shopifyCreateCart,
@@ -14,7 +14,7 @@ import {
 import { trackMetaEvent } from '../hooks/useMetaPixel';
 import { trackGA4AddToCart } from '../services/analytics';
 import { getUTMForCheckout } from '../hooks/useUTMTracking';
-import { onIdle, withRetry } from '../lib/utils';
+import { onIdle } from '../lib/utils';
 
 // ===========================================
 // TYPES
@@ -87,8 +87,21 @@ function withTimeout<T>(promise: Promise<T>, ms: number = CART_OP_TIMEOUT_MS): P
   return Promise.race([promise, timeout]).finally(() => clearTimeout(timeoutId));
 }
 
+// Single attempt for cart MUTATIONS (add/remove/update/create). cartLinesAdd and
+// cartCreate are non-idempotent, and the real network deadline now aborts inside
+// shopifyFetch (AbortSignal.timeout). The previous `withRetry` re-sent a
+// timed-out-but-server-successful add and silently doubled the quantity of a
+// ~€1,900 slab. withTimeout stays as a client-side backstop deadline; a transient
+// failure now surfaces the existing error toast (user can tap again) instead of a
+// silent 2–3× multiplier. Reads are not retried here because every current caller
+// is a mutation.
 function withCartTimeout<T>(fn: () => Promise<T>): Promise<T> {
-  return withRetry(() => withTimeout(fn()));
+  return withTimeout(fn()).catch((err) => {
+    if (err instanceof ShopifyTimeoutError) {
+      throw new Error('Požiadavka vypršala. Skúste to znova.');
+    }
+    throw err;
+  });
 }
 
 // ===========================================

@@ -3,6 +3,7 @@ import { type ShopProduct, type ProductCategory } from '../../constants';
 import { getProductSEOContent } from '../../data/product-seo-content';
 import type { ShopifyProduct, ShopifyProductVariant } from './types';
 import { getMetafieldValue, resolveColorCategoryFromShopifyProduct } from './color';
+import { slabAreaM2 } from '../../lib/slab';
 
 // ===========================================
 // PARSER: Extract tech specs from descriptionHtml
@@ -245,10 +246,7 @@ export function shopifyProductToShopProduct(product: ShopifyProduct): ShopProduc
     || '3200 x 1600 mm';
 
   const slabPrice = firstVariant ? parseFloat(firstVariant.price.amount) : 0;
-  const dimMatch = dims.match(/(\d+)\s*[×x]\s*(\d+)/i);
-  const slabArea = dimMatch
-    ? (parseInt(dimMatch[1]) / 1000) * (parseInt(dimMatch[2]) / 1000)
-    : 5.12;
+  const slabArea = slabAreaM2(dims);
   const pricePerM2 = slabArea > 0 ? Math.round((slabPrice / slabArea) * 100) / 100 : slabPrice;
 
   const metafieldWeight = getMetafieldValue(product, 'weight');

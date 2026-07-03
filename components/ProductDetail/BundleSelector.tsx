@@ -1,5 +1,6 @@
 import React from 'react';
 import { cn, formatPrice } from '../../lib/utils';
+import { slabAreaFromPrices } from '../../lib/slab';
 import type { BundleOption } from './types';
 import { BUNDLE_OPTIONS } from './types';
 
@@ -16,7 +17,7 @@ export const BundleSelector: React.FC<BundleSelectorProps> = ({
   selectedBundle,
   onBundleChange,
 }) => {
-  const slabAreaM2 = pricePerM2 > 0 ? Math.round((pricePerSlab / pricePerM2) * 100) / 100 : 5.12;
+  const slabAreaM2 = slabAreaFromPrices(pricePerSlab, pricePerM2);
 
   const calculateBundlePrice = (bundle: BundleOption) => {
     const basePrice = pricePerSlab * bundle.quantity;

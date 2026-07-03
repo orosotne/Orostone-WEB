@@ -23,15 +23,10 @@ export const ThicknessIcon: React.FC<{ size?: number; className?: string }> = ({
   )
 );
 
-export const calculateSlabPrice = (pricePerM2: number, dimensions: string): number => {
-  const match = dimensions.match(/(\d+)\s*x\s*(\d+)/i);
-  if (match) {
-    const width = parseInt(match[1]) / 1000;
-    const height = parseInt(match[2]) / 1000;
-    return Math.round(pricePerM2 * width * height * 100) / 100;
-  }
-  return Math.round(pricePerM2 * 5.12 * 100) / 100;
-};
+// Slab pricing now lives in lib/slab.ts — the single source of truth, tolerant of
+// both '×' and 'x' dimension strings. Re-exported here so existing importers of
+// './utils' (HeroSection, ShopProductDetail, index.ts) are unaffected.
+export { calculateSlabPrice } from '../../lib/slab';
 
 export const shopifyImageUrl = (url: string, width: number): string => {
   const base = url.replace(/(\?.*)?$/, '');
