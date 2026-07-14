@@ -132,7 +132,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <p>Sinterovaný kameň je paradox: odolá nárazu guľou, ale môže prasknúť pri nesprávnej preprave. Preto sa pri jeho preprave dbá na správny postup.</p>
 
-<p><strong>Ako prepravujeme:</strong></p>
+<p><strong>Ako prebieha preprava:</strong></p>
 <ul>
   <li><strong>A-rámové vozidlá</strong> — dosky sa prepravujú vertikálne (na stojato) v špeciálnych A-rámoch, nie naplocho. Vertikálna pozícia eliminuje riziko prasknutia od vlastnej váhy pri vibráciách</li>
   <li><strong>Polstrovaná ochrana</strong> — medzi jednotlivými doskami sú penové vložky, hrany sú chránené rohovými profilmi</li>
@@ -152,13 +152,13 @@ export const ARTICLE_13: BlogArticle = {
 
 <p>Ešte pred položením prvej dosky musí byť podklad perfektný. Sinterovaný kameň je rigidný materiál — akákoľvek nerovnosť pod ním sa prenesie do napätia v doske.</p>
 
-<p><strong>Čo robíme pri príprave:</strong></p>
+<p><strong>Čo zahŕňa príprava podkladu:</strong></p>
 <ul>
-  <li><strong>Kontrola roviny</strong> — horná plocha skriniek musí byť v rovine s toleranciou <strong>max 3 mm na rozpätí 3 metrov</strong>. Meriame vodováhou a laserovým nivelačným prístrojom</li>
-  <li><strong>Podloženie (shimovanie)</strong> — ak sú odchýlky väčšie, vyrovnávame skrinky kalibrovanými podložkami</li>
+  <li><strong>Kontrola roviny</strong> — horná plocha skriniek musí byť v rovine s toleranciou <strong>max 3 mm na rozpätí 3 metrov</strong>. Meria sa vodováhou a laserovým nivelačným prístrojom</li>
+  <li><strong>Podloženie (shimovanie)</strong> — ak sú odchýlky väčšie, skrinky sa vyrovnajú kalibrovanými podložkami</li>
   <li><strong>Čistota povrchu</strong> — skrinky musia byť suché, čisté a bez prachu. Lepidlo drží len na čistom povrchu</li>
   <li><strong>Montáž podporných konzol</strong> — pre previsy nad 200 mm sa osádzajú oceľové konzoly alebo podporné nosníky</li>
-  <li><strong>Ochrana okolia</strong> — zakryjeme podlahu, spotrebiče a blízke povrchy pred prachom a lepidlom</li>
+  <li><strong>Ochrana okolia</strong> — podlaha, spotrebiče a blízke povrchy sa zakryjú pred prachom a lepidlom</li>
 </ul>
 
 <p>Tento krok trvá 30–60 minút, ale je absolútne kritický. Správna príprava znamená stabilnú, beznapäťovú inštaláciu na celé desaťročia.</p>
@@ -411,7 +411,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <p>Sintered stone is a paradox: it can withstand a ball impact, yet may crack during improper transport. That's why the transport method matters so much.</p>
 
-<p><strong>How we transport:</strong></p>
+<p><strong>How transport works:</strong></p>
 <ul>
   <li><strong>A-frame vehicles</strong> — slabs are transported vertically (upright) in specialised A-frames, not laid flat. The vertical position eliminates the risk of cracking from the slab's own weight during vibrations</li>
   <li><strong>Padded protection</strong> — foam inserts separate individual slabs, edges are protected with corner profiles</li>
@@ -431,13 +431,13 @@ export const ARTICLE_13: BlogArticle = {
 
 <p>Before laying the first slab, the substrate must be perfect. Sintered stone is a rigid material — any unevenness beneath it translates into stress within the slab.</p>
 
-<p><strong>What we do during preparation:</strong></p>
+<p><strong>What substrate preparation involves:</strong></p>
 <ul>
-  <li><strong>Level check</strong> — the top surface of the cabinets must be level within a tolerance of <strong>max 3 mm over a 3-metre span</strong>. We measure with a spirit level and laser levelling instrument</li>
-  <li><strong>Shimming</strong> — if deviations are greater, we level the cabinets with calibrated shims</li>
+  <li><strong>Level check</strong> — the top surface of the cabinets must be level within a tolerance of <strong>max 3 mm over a 3-metre span</strong>. Measured with a spirit level and laser levelling instrument</li>
+  <li><strong>Shimming</strong> — if deviations are greater, the cabinets are levelled with calibrated shims</li>
   <li><strong>Surface cleanliness</strong> — cabinets must be dry, clean, and dust-free. Adhesive only bonds properly to a clean surface</li>
   <li><strong>Support bracket installation</strong> — for overhangs exceeding 200 mm, steel brackets or support beams are installed</li>
-  <li><strong>Surrounding protection</strong> — we cover the floor, appliances, and nearby surfaces against dust and adhesive</li>
+  <li><strong>Surrounding protection</strong> — the floor, appliances, and nearby surfaces are covered against dust and adhesive</li>
 </ul>
 
 <p>This step takes 30–60 minutes but is absolutely critical. Proper preparation means a stable, stress-free installation that lasts decades.</p>
