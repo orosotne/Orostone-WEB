@@ -258,7 +258,7 @@ export const ARTICLE_06: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>Čo robíme v Orostone</strong></p>
-  <p>Každému zákazníkovi poskytneme technický list s nameranými hodnotami pre konkrétny dekór, ktorý si vyberá. Nezakladáme sa na všeobecných certifikátoch — ukážeme ti čísla pre presne tú dosku, ktorú nainštalujeme.</p>
+  <p>Každému zákazníkovi poskytneme technický list s nameranými hodnotami pre konkrétny dekór, ktorý si vyberá. Nezakladáme sa na všeobecných certifikátoch — ukážeme ti čísla pre presne tú dosku, ktorú dostaneš.</p>
 </div>
 
 <h2 id="zaver">Záver: úprimné odporúčanie</h2>
@@ -580,7 +580,7 @@ export const ARTICLE_06: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>What we do at Orostone</strong></p>
-  <p>We provide every customer with a technical datasheet with measured values for the specific décor they're choosing. We don't rely on generic certificates — we show you the numbers for the exact slab we'll install.</p>
+  <p>We provide every customer with a technical datasheet with measured values for the specific décor they're choosing. We don't rely on generic certificates — we show you the numbers for the exact slab you'll receive.</p>
 </div>
 
 <h2 id="conclusion">Conclusion: An Honest Recommendation</h2>

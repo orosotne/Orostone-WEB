@@ -194,12 +194,12 @@ export const ARTICLE_01: BlogArticle = {
 
 <figure class="article-figure">
   <img src="/images/blog/article-01/installation.webp" alt="Profesionálna inštalácia kuchynskej dosky zo sinterovaného kameňa" loading="lazy" />
-  <figcaption>Naši technici pracujú s laserovým nivelačným prístrojom — presnosť na milimeter</figcaption>
+  <figcaption>Kamenár pracuje s laserovým nivelačným prístrojom — presnosť na milimeter</figcaption>
 </figure>
 
 <div class="article-tip">
   <p><strong>Čo robíme v Orostone</strong></p>
-  <p>Spolupracujeme výlučne s certifikovanými inštalatérmi, ktorí prešli školením pre prácu so sinterovaným kameňom. Pred každou inštaláciou vykonávame meranie na mieste a kontrolu podkladu. Počas inštalácie je prítomný náš technik.</p>
+  <p>Spolupracujeme výlučne s certifikovanými kamenármi, ktorí prešli školením pre prácu so sinterovaným kameňom. Pred každou inštaláciou prebehne meranie na mieste a kontrola podkladu.</p>
 </div>
 
 <h2 id="priklad-z-praxe">Príklad z praxe: keď 90° hrana stojí 800 €</h2>
@@ -237,18 +237,18 @@ export const ARTICLE_01: BlogArticle = {
 </ul>
 
 <h3>3. Kontrolovaná preprava</h3>
-<p>Dosky prepravujeme vo vlastných vozidlách — žiadne externé logistické firmy.</p>
+<p>Prepravu platní zabezpečujeme vo vertikálnych A-rámoch — nie bežnou paletovou prepravou.</p>
 <ul>
-  <li>Vozidlá sú vybavené profesionálnymi A-rámami</li>
+  <li>Dosky sa vezú vertikálne (na stojato) v profesionálnych A-rámoch</li>
   <li>Každá doska je individuálne zabalená s penou a ochrannou fóliou</li>
-  <li>Nikdy sa nespoliehame na tretie strany pre hotové dosky</li>
+  <li>Krehké veľkoformátové platne sa nevozia bežnou kuriérskou prepravou</li>
 </ul>
 
 <h3>4. Profesionálna inštalácia</h3>
-<p>Pred každou inštaláciou vykonávame meranie na mieste s laserovým nivelačným prístrojom.</p>
+<p>Pred každou inštaláciou prebehne meranie na mieste s laserovým nivelačným prístrojom.</p>
 <ul>
-  <li>Kontrolujeme rovnosť podkladu a prípadne korigujeme</li>
-  <li>Inštaláciu vykonávajú naši vlastní certifikovaní technici</li>
+  <li>Rovnosť podkladu sa skontroluje a v prípade potreby koriguje</li>
+  <li>Inštaláciu vykonávajú certifikovaní kamenári vyškolení na sinterovaný kameň, s ktorými spolupracujeme</li>
   <li>Po inštalácii prebieha vizuálna a funkčná kontrola vrátane fotodokumentácie</li>
 </ul>
 
@@ -523,12 +523,12 @@ export const ARTICLE_01: BlogArticle = {
 
 <figure class="article-figure">
   <img src="/images/blog/article-01/installation.webp" alt="Professional sintered stone countertop installation with laser level" loading="lazy" />
-  <figcaption>Our technicians work with laser levels — millimeter precision guaranteed</figcaption>
+  <figcaption>The stonemason works with laser levels — millimeter precision</figcaption>
 </figure>
 
 <div class="article-tip">
   <p><strong>What we do at Orostone</strong></p>
-  <p>We work exclusively with certified installers trained for sintered stone. Before every installation, we measure on-site and inspect the substrate. Our technician is present throughout installation.</p>
+  <p>We work exclusively with certified stonemasons trained for sintered stone. Before every installation, the site is measured and the substrate inspected.</p>
 </div>
 
 <h2 id="real-world-example">Real-world example: when a 90° edge costs €800</h2>
@@ -566,18 +566,18 @@ export const ARTICLE_01: BlogArticle = {
 </ul>
 
 <h3>3. Controlled transport</h3>
-<p>We transport slabs in our own vehicles — no third-party logistics companies involved.</p>
+<p>Slab transport is arranged in vertical A-frames — not by standard pallet courier.</p>
 <ul>
-  <li>Vehicles are equipped with professional A-frames</li>
+  <li>Slabs travel upright in professional A-frames</li>
   <li>Each slab is individually wrapped with foam and protective film</li>
-  <li>We never rely on third parties for finished slabs</li>
+  <li>Fragile large-format slabs are not shipped by ordinary courier</li>
 </ul>
 
 <h3>4. Professional installation</h3>
-<p>Before every installation, we measure on-site with a laser level.</p>
+<p>Before every installation, the site is measured with a laser level.</p>
 <ul>
-  <li>We check substrate flatness and correct any issues</li>
-  <li>Installation is carried out by our own certified technicians</li>
+  <li>Substrate flatness is checked and corrected if needed</li>
+  <li>Installation is carried out by certified stonemasons trained for sintered stone, whom we work with</li>
   <li>After installation, visual and functional inspection with photo documentation</li>
 </ul>
 
@@ -647,7 +647,7 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Can I have the slab shipped by a regular courier?',
-        answer: 'You can, but we strongly advise against it. Standard logistics companies don\'t have A-frames or experience with fragile material, and most exclude fragile goods liability in their terms. At Orostone, we transport slabs in our own vehicles — it\'s part of the service.',
+        answer: 'You can, but we strongly advise against it. Standard logistics companies don\'t have A-frames or experience with fragile material, and most exclude fragile goods liability in their terms. Orostone arranges slab transport in proper A-frames — it\'s part of the service.',
       },
       {
         question: 'What is an expansion gap and why does it matter?',
