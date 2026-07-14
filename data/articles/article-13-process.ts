@@ -23,7 +23,7 @@ export const ARTICLE_13: BlogArticle = {
   <li>Celý proces od konzultácie po hotovú kuchyňu trvá 10–15 pracovných dní</li>
   <li>Digitálne laserové zameranie s presnosťou ±0,05 mm — nie meter, nie pásmo</li>
   <li>CNC fabrikácia diamantovými nástrojmi — žiadne ručné rezanie</li>
-  <li>Transport vo vlastných A-rámových vozidlách — nikdy cez tretiu stranu</li>
+  <li>Transport vo vertikálnych A-rámoch — dosky sa vždy vezú na stojato, nie naplocho</li>
 </ul>
 
 <p>Investícia do sinterovaného kameňa je rozhodnutie, ktoré ovplyvní tvoj priestor na desaťročia. Je úplne prirodzené, že chceš presne vedieť, čo sa bude diať, kedy a kto za čo zodpovedá.</p>
@@ -126,18 +126,18 @@ export const ARTICLE_13: BlogArticle = {
   <li><strong>Rozmerová kontrola</strong> — každý diel porovnáme s digitálnym výkresom. Tolerancia: ±0,5 mm</li>
 </ul>
 
-<p>Ak ktorýkoľvek diel neprejde kontrolou, vyrába sa znova. Nekompromisne. Radšej posunieme termín o pár dní, než ti nainštalujeme niečo, s čím nebudeš spokojný roky.</p>
+<p>Ak ktorýkoľvek diel neprejde kontrolou, vyrába sa znova. Nekompromisne. Radšej sa termín posunie o pár dní, než by sa osadilo niečo, s čím nebudeš spokojný roky.</p>
 
-<h2 id="krok-6-transport">Krok 6 — Prečo transport nikdy nezverujeme tretej strane?</h2>
+<h2 id="krok-6-transport">Krok 6 — Prečo na spôsobe prepravy záleží?</h2>
 
-<p>Sinterovaný kameň je paradox: odolá nárazu guľou, ale môže prasknúť pri nesprávnej preprave. Preto transport nikdy nezveríme tretej strane.</p>
+<p>Sinterovaný kameň je paradox: odolá nárazu guľou, ale môže prasknúť pri nesprávnej preprave. Preto sa pri jeho preprave dbá na správny postup.</p>
 
-<p><strong>Ako prepravujeme:</strong></p>
+<p><strong>Ako prebieha preprava:</strong></p>
 <ul>
   <li><strong>A-rámové vozidlá</strong> — dosky sa prepravujú vertikálne (na stojato) v špeciálnych A-rámoch, nie naplocho. Vertikálna pozícia eliminuje riziko prasknutia od vlastnej váhy pri vibráciách</li>
   <li><strong>Polstrovaná ochrana</strong> — medzi jednotlivými doskami sú penové vložky, hrany sú chránené rohovými profilmi</li>
   <li><strong>Vybavenie s kapacitou min. 3 500 kg</strong> — manipulácia s veľkoformátovými doskami vyžaduje profesionálne zdvíhacie zariadenia</li>
-  <li><strong>Priamy transport</strong> — z dielne priamo k tebe domov. Žiadne medzisklady, žiadni sprostredkovatelia, žiadne zbytočné prekladanie</li>
+  <li><strong>Priamy transport</strong> — z dielne priamo k tebe domov, bez zbytočného prekladania a medziskladov</li>
 </ul>
 
 <p><strong>Koordinácia doručenia:</strong> Pred dňom dodania s tebou preberieme:</p>
@@ -152,13 +152,13 @@ export const ARTICLE_13: BlogArticle = {
 
 <p>Ešte pred položením prvej dosky musí byť podklad perfektný. Sinterovaný kameň je rigidný materiál — akákoľvek nerovnosť pod ním sa prenesie do napätia v doske.</p>
 
-<p><strong>Čo robíme pri príprave:</strong></p>
+<p><strong>Čo zahŕňa príprava podkladu:</strong></p>
 <ul>
-  <li><strong>Kontrola roviny</strong> — horná plocha skriniek musí byť v rovine s toleranciou <strong>max 3 mm na rozpätí 3 metrov</strong>. Meriame vodováhou a laserovým nivelačným prístrojom</li>
-  <li><strong>Podloženie (shimovanie)</strong> — ak sú odchýlky väčšie, vyrovnávame skrinky kalibrovanými podložkami</li>
+  <li><strong>Kontrola roviny</strong> — horná plocha skriniek musí byť v rovine s toleranciou <strong>max 3 mm na rozpätí 3 metrov</strong>. Meria sa vodováhou a laserovým nivelačným prístrojom</li>
+  <li><strong>Podloženie (shimovanie)</strong> — ak sú odchýlky väčšie, skrinky sa vyrovnajú kalibrovanými podložkami</li>
   <li><strong>Čistota povrchu</strong> — skrinky musia byť suché, čisté a bez prachu. Lepidlo drží len na čistom povrchu</li>
-  <li><strong>Montáž podporných konzol</strong> — pre previsy nad 200 mm inštalujeme oceľové konzoly alebo podporné nosníky</li>
-  <li><strong>Ochrana okolia</strong> — zakryjeme podlahu, spotrebiče a blízke povrchy pred prachom a lepidlom</li>
+  <li><strong>Montáž podporných konzol</strong> — pre previsy nad 200 mm sa osádzajú oceľové konzoly alebo podporné nosníky</li>
+  <li><strong>Ochrana okolia</strong> — podlaha, spotrebiče a blízke povrchy sa zakryjú pred prachom a lepidlom</li>
 </ul>
 
 <p>Tento krok trvá 30–60 minút, ale je absolútne kritický. Správna príprava znamená stabilnú, beznapäťovú inštaláciu na celé desaťročia.</p>
@@ -204,7 +204,7 @@ export const ARTICLE_13: BlogArticle = {
   <li>Montáž dávkovača mydla, filtrácie alebo ďalšieho príslušenstva</li>
 </ul>
 
-<p>Všetky spotrebiče inštalujeme my — nie kuchynské štúdio, nie inštalatér tretej strany. Zodpovedáme za celok, nie za jednotlivé časti.</p>
+<p>Spotrebiče súvisiace s pracovnou doskou — drez, varnú dosku aj batériu — osádza kamenár priamo pri montáži dosky, takže osadenie dosky a spotrebičov na seba nadväzuje.</p>
 
 <h2 id="krok-10-finalna-kontrola-a-odovzdanie">Krok 10 — Ako prebieha finálna kontrola a odovzdanie?</h2>
 
@@ -261,7 +261,7 @@ export const ARTICLE_13: BlogArticle = {
       },
       {
         question: 'Čo ak moje steny nie sú v pravom uhle?',
-        answer: 'To je bežná situácia — v bytoch sú steny zriedka v dokonalom 90° uhle. Práve preto používame laserové zameranie. Dosky vyrobíme presne podľa reálnych uhlov vašich stien, takže do priestoru sadnú dokonale.'
+        answer: 'To je bežná situácia — v bytoch sú steny zriedka v dokonalom 90° uhle. Práve preto sa robí laserové zameranie. Dosky sa vyrobia presne podľa reálnych uhlov vašich stien, takže do priestoru sadnú dokonale.'
       },
       {
         question: 'Robíte aj demontáž starej kuchynskej dosky?',
@@ -284,12 +284,12 @@ export const ARTICLE_13: BlogArticle = {
         answer: 'Odporúčame 24 hodín po inštalácii nepoužívať dosku v plnom zaťažení. Lepidlá a epoxidové tmely potrebujú čas na úplné vytvrdnutie. Po 24 hodinách môžeš kuchyňu používať bez akýchkoľvek obmedzení.'
       },
       {
-        question: 'Inštalujete aj spotrebiče, alebo to musím riešiť sám?',
-        answer: 'Všetky spotrebiče súvisiace s pracovnou doskou inštalujeme my — drez, varná doska, batéria, dávkovač mydla. Zodpovedáme za celok. Elektrickú prípojku varnej dosky a pripojenie plynu musí zabezpečiť kvalifikovaný elektrikár/plynár.'
+        question: 'Osadia sa aj spotrebiče, alebo to musím riešiť sám?',
+        answer: 'Spotrebiče súvisiace s pracovnou doskou — drez, varná doska, batéria, dávkovač mydla — osádza kamenár priamo pri montáži dosky. Elektrickú prípojku varnej dosky a pripojenie plynu musí zabezpečiť kvalifikovaný elektrikár/plynár.'
       },
       {
         question: 'Aká je záruka na inštaláciu a materiál?',
-        answer: 'Na naše práce (fabrikácia a inštalácia) poskytujeme záruku. Na materiál platí záruka výrobcu. Presné podmienky záruky sú súčasťou záručného certifikátu, ktorý dostaneš pri odovzdaní projektu. V prípade akéhokoľvek problému nás kontaktuj — riešime promptne.'
+        answer: 'Na fabrikáciu a montáž poskytuje záruku kamenár, ktorý ich realizuje. Na materiál platí záruka výrobcu. Presné podmienky záruky sú súčasťou záručného certifikátu, ktorý dostaneš pri odovzdaní projektu. V prípade akéhokoľvek problému nás kontaktuj — pomôžeme to doriešiť.'
       }
     ]
   },
@@ -304,7 +304,7 @@ export const ARTICLE_13: BlogArticle = {
   <li>The entire process from consultation to finished kitchen takes 10–15 business days</li>
   <li>Digital laser templating with ±0.05 mm precision — no tape measures, no guesswork</li>
   <li>CNC fabrication with diamond tools — no hand cutting</li>
-  <li>Transport in our own A-frame vehicles — never through a third party</li>
+  <li>Transport in vertical A-frames — slabs always carried upright, never laid flat</li>
 </ul>
 
 <p>Investing in sintered stone is a decision that will shape your space for decades. It's perfectly natural to want to know exactly what will happen, when, and who is responsible for what. Uncertainty breeds stress — and that's precisely why we're showing you the entire Orostone process step by step, with specific timelines, measurements, and responsibilities.</p>
@@ -405,18 +405,18 @@ export const ARTICLE_13: BlogArticle = {
   <li><strong>Dimensional verification</strong> — every piece is compared against the digital drawing. Tolerance: ±0.5 mm</li>
 </ul>
 
-<p>If any piece fails inspection, it is fabricated again. Without compromise. We would rather shift the timeline by a few days than install something you won't be satisfied with for years.</p>
+<p>If any piece fails inspection, it is fabricated again. Without compromise. Better to shift the timeline by a few days than fit something you won't be satisfied with for years.</p>
 
-<h2 id="step-6-transport">Step 6 — Why do we never outsource transport?</h2>
+<h2 id="step-6-transport">Step 6 — Why does the method of transport matter?</h2>
 
-<p>Sintered stone is a paradox: it can withstand a ball impact, yet may crack during improper transport. That's why we never entrust delivery to third parties.</p>
+<p>Sintered stone is a paradox: it can withstand a ball impact, yet may crack during improper transport. That's why the transport method matters so much.</p>
 
-<p><strong>How we transport:</strong></p>
+<p><strong>How transport works:</strong></p>
 <ul>
   <li><strong>A-frame vehicles</strong> — slabs are transported vertically (upright) in specialised A-frames, not laid flat. The vertical position eliminates the risk of cracking from the slab's own weight during vibrations</li>
   <li><strong>Padded protection</strong> — foam inserts separate individual slabs, edges are protected with corner profiles</li>
   <li><strong>Equipment with min. 3,500 kg capacity</strong> — handling large-format slabs requires professional lifting equipment</li>
-  <li><strong>Direct transport</strong> — from workshop directly to your home. No intermediate storage, no middlemen, no unnecessary reloading</li>
+  <li><strong>Direct transport</strong> — from the workshop directly to your home, without unnecessary reloading or intermediate storage</li>
 </ul>
 
 <p><strong>Delivery coordination:</strong> Before the delivery day, we discuss with you:</p>
@@ -431,13 +431,13 @@ export const ARTICLE_13: BlogArticle = {
 
 <p>Before laying the first slab, the substrate must be perfect. Sintered stone is a rigid material — any unevenness beneath it translates into stress within the slab.</p>
 
-<p><strong>What we do during preparation:</strong></p>
+<p><strong>What substrate preparation involves:</strong></p>
 <ul>
-  <li><strong>Level check</strong> — the top surface of the cabinets must be level within a tolerance of <strong>max 3 mm over a 3-metre span</strong>. We measure with a spirit level and laser levelling instrument</li>
-  <li><strong>Shimming</strong> — if deviations are greater, we level the cabinets with calibrated shims</li>
+  <li><strong>Level check</strong> — the top surface of the cabinets must be level within a tolerance of <strong>max 3 mm over a 3-metre span</strong>. Measured with a spirit level and laser levelling instrument</li>
+  <li><strong>Shimming</strong> — if deviations are greater, the cabinets are levelled with calibrated shims</li>
   <li><strong>Surface cleanliness</strong> — cabinets must be dry, clean, and dust-free. Adhesive only bonds properly to a clean surface</li>
-  <li><strong>Support bracket installation</strong> — for overhangs exceeding 200 mm, we install steel brackets or support beams</li>
-  <li><strong>Surrounding protection</strong> — we cover the floor, appliances, and nearby surfaces against dust and adhesive</li>
+  <li><strong>Support bracket installation</strong> — for overhangs exceeding 200 mm, steel brackets or support beams are installed</li>
+  <li><strong>Surrounding protection</strong> — the floor, appliances, and nearby surfaces are covered against dust and adhesive</li>
 </ul>
 
 <p>This step takes 30–60 minutes but is absolutely critical. Proper preparation means a stable, stress-free installation that lasts decades.</p>
@@ -483,7 +483,7 @@ export const ARTICLE_13: BlogArticle = {
   <li>Soap dispenser, filtration, or other accessories fitted</li>
 </ul>
 
-<p>We install all appliances ourselves — not the kitchen studio, not a third-party plumber. We take responsibility for the whole, not individual parts.</p>
+<p>The worktop-related appliances — sink, cooktop, and tap — are fitted by the stonemason during the slab installation, so the slab and appliances come together as one job.</p>
 
 <h2 id="step-10-final-inspection-and-handover">Step 10 — How does final inspection and handover work?</h2>
 
@@ -540,7 +540,7 @@ export const ARTICLE_13: BlogArticle = {
       },
       {
         question: 'What if my walls aren\'t at right angles?',
-        answer: 'That\'s a common situation — walls in apartments are rarely at a perfect 90° angle. This is precisely why we use laser templating. We fabricate the slabs to match the actual angles of your walls, so they fit the space perfectly.'
+        answer: 'That\'s a common situation — walls in apartments are rarely at a perfect 90° angle. This is precisely why laser templating is used. The slabs are fabricated to match the actual angles of your walls, so they fit the space perfectly.'
       },
       {
         question: 'Do you also remove the old countertop?',
@@ -563,12 +563,12 @@ export const ARTICLE_13: BlogArticle = {
         answer: 'We recommend not using the worktop at full load for 24 hours after installation. Adhesives and epoxy sealants need time to fully cure. After 24 hours, you can use your kitchen without any restrictions.'
       },
       {
-        question: 'Do you install appliances too, or do I need to arrange that myself?',
-        answer: 'We install all worktop-related appliances ourselves — sink, cooktop, tap, soap dispenser. We take responsibility for the whole project. Electrical connection of the cooktop and gas hookup must be handled by a qualified electrician/gas fitter.'
+        question: 'Are the appliances fitted too, or do I need to arrange that myself?',
+        answer: 'The worktop-related appliances — sink, cooktop, tap, soap dispenser — are fitted by the stonemason during the slab installation. Electrical connection of the cooktop and gas hookup must be handled by a qualified electrician/gas fitter.'
       },
       {
         question: 'What warranty do you provide on installation and material?',
-        answer: 'We provide a warranty on our workmanship (fabrication and installation). The material carries the manufacturer\'s warranty. Exact warranty terms are included in the warranty certificate you receive at project handover. In case of any issue, contact us — we respond promptly.'
+        answer: 'Fabrication and installation are warranted by the stonemason who carries them out. The material carries the manufacturer\'s warranty. Exact warranty terms are included in the warranty certificate you receive at project handover. In case of any issue, contact us — we\'ll help get it resolved.'
       }
     ]
   }
