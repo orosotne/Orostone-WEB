@@ -450,6 +450,13 @@ export const BLOG_ARTICLES: BlogArticle[] = ALL_ARTICLES.filter(
   (a) => new Date(a.publishDate) <= new Date() && a.sk.content.trim().length > 100
 );
 
+/**
+ * Published articles — the ONE publish filter shared by the SPA, the
+ * prerender and the sitemap/llms generator (BLOG_ARTICLES is already
+ * date- and content-filtered; this named accessor is the shared contract).
+ */
+export const getPublishedArticles = (): BlogArticle[] => BLOG_ARTICLES;
+
 // ---------------------------------------------------------------------------
 // Helper functions
 // ---------------------------------------------------------------------------

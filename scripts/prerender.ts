@@ -20,8 +20,15 @@ const BASE_URL = 'https://orostone.sk';
 const baseHtml = readFileSync(resolve(DIST, 'index.html'), 'utf-8');
 
 // Blog articles (full content — TypeScript dynamic import via tsx)
-const { BLOG_ARTICLES } = await import('../data/blogArticles.js');
+const { getPublishedArticles } = await import('../data/blogArticles.js');
 const { BLOG_ARTICLES_LISTING } = await import('../data/blogArticlesMeta.js');
+
+// Shared route data (INFO_PAGES, COLOR_SUBCATEGORIES) — one definition for
+// prerender + sitemap/llms generator + validate-dist.
+const { INFO_PAGES, COLOR_SUBCATEGORIES } = await import('../data/prerenderPages.js');
+const { CATEGORY_SEO } = await import('../data/seo/categories.js');
+type InfoPage = import('../data/prerenderPages.js').InfoPage;
+type ColorSubcategory = import('../data/prerenderPages.js').ColorSubcategory;
 
 // Product SEO meta override (Vera FINAL — single source of truth, shared
 // with React side via pages/ShopProductDetail.tsx so SPA route changes also
@@ -418,9 +425,8 @@ function prerenderCategoryListing(): void {
 
   writePage({
     route: '/kategoria/sintered-stone',
-    title: 'Sinterovaný kameň — dekory a platne | OROSTONE',
-    description:
-      'Sinterovaný kameň pre kuchyne a interiéry. Veľkoformátové platne 3200×1600 mm, dekory s pokojnou aj výraznou kresbou. Showroom Bošany.',
+    title: CATEGORY_SEO['sintered-stone'].title,
+    description: CATEGORY_SEO['sintered-stone'].description,
     canonical: `${BASE_URL}/kategoria/sintered-stone`,
     rootContent: `
       <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Sinterovaný kameň</nav>
@@ -448,46 +454,6 @@ function prerenderCategoryListing(): void {
 // ---------------------------------------------------------------------------
 // Color subcategories (/kategoria/sintered-stone/{biele,bezove,sede,cierne})
 // ---------------------------------------------------------------------------
-
-interface ColorSubcategory {
-  slug: 'biele' | 'bezove' | 'sede' | 'cierne';
-  name: string; // nominative plural (e.g. „Biele")
-  /** SEO title override — fixed per-subcategory for stable indexing */
-  metaTitle: string;
-  /** SEO description override — fixed per-subcategory for stable indexing */
-  metaDescription: string;
-}
-
-const COLOR_SUBCATEGORIES: ColorSubcategory[] = [
-  {
-    slug: 'biele',
-    name: 'Biele',
-    metaTitle: 'Biely sinterovaný kameň | OROSTONE',
-    metaDescription:
-      'Biele dekory sinterovaného kameňa pre svetlé kuchyne a kúpeľne. Od čistých plôch po jemné mramorové žilkovanie. Veľké platne až 3200×1600 mm.',
-  },
-  {
-    slug: 'bezove',
-    name: 'Béžové',
-    metaTitle: 'Béžový sinterovaný kameň | OROSTONE',
-    metaDescription:
-      'Béžové dekory sinterovaného kameňa pre kuchyne, kúpeľne a interiéry. Teplé prírodné odtiene, ktoré priestor zjemnia bez toho, aby ho zaťažili.',
-  },
-  {
-    slug: 'sede',
-    name: 'Šedé',
-    metaTitle: 'Sivý sinterovaný kameň | OROSTONE',
-    metaDescription:
-      'Sivé dekory sinterovaného kameňa pre kuchyne, kde má plocha fungovať pokojne a nepretiahnuť pozornosť na seba. Od svetlej cementovej až po antracit.',
-  },
-  {
-    slug: 'cierne',
-    name: 'Čierne',
-    metaTitle: 'Čierny sinterovaný kameň | OROSTONE',
-    metaDescription:
-      'Čierne dekory sinterovaného kameňa pre kuchyne a ostrovčeky, kde má povrch niesť váhu priestoru. Veľkoformátové platne 3200×1600 mm.',
-  },
-];
 
 /** Slovak plural rules for „dekor": 1 → dekor, 2–4 → dekory, 5+ → dekorov */
 function dekorNoun(n: number): string {
@@ -539,128 +505,6 @@ function prerenderColorSubcategory(sub: ColorSubcategory): void {
 // ---------------------------------------------------------------------------
 // Static info pages (/kontakt, /doprava, /reklamacie, ...)
 // ---------------------------------------------------------------------------
-
-interface InfoPage {
-  route: string;
-  title: string;
-  description: string;
-  h1: string;
-  intro: string;
-  extraLinks?: { label: string; href: string }[];
-}
-
-const INFO_PAGES: InfoPage[] = [
-  {
-    route: '/kontakt',
-    title: 'Kontakt | OROSTONE — sinterovaný kameň',
-    description:
-      'Cenová ponuka, vzorky alebo konzultácia k pracovnej doske zo sinterovaného kameňa. Showroom Bošany, dodanie po celom Slovensku.',
-    h1: 'Kontakt',
-    intro:
-      'OROSTONE — slovenský dodávateľ sinterovaného kameňa. Sídlo: Landererova 8, 811 09 Bratislava. Telefón: +421 917 588 738. E-mail: info@orostone.sk. Radi pre vás pripravíme konzultáciu a cenovú ponuku.',
-    extraLinks: [
-      { label: 'Objednať vzorky', href: '/vzorky' },
-      { label: 'Prehliadnuť produkty', href: '/kategoria/sintered-stone' },
-    ],
-  },
-  {
-    route: '/doprava',
-    title: 'Doprava veľkoformátových platní | OROSTONE',
-    description:
-      'Informácie o doprave, platbe a špeciálnej preprave veľkoformátových platní a vzoriek sinterovaného kameňa po celom Slovensku.',
-    h1: 'Doprava a platba',
-    intro:
-      'OROSTONE zabezpečuje špeciálnu prepravu veľkoformátových sinterovaných platní 3200×1600 mm po celom Slovensku. Platba bankovým prevodom alebo kartou. Expedícia do 1–5 pracovných dní od potvrdenia objednávky.',
-  },
-  {
-    route: '/reklamacie',
-    title: 'Reklamácie a vrátenie tovaru | OROSTONE',
-    description:
-      'Reklamačný poriadok OROSTONE, postup pri reklamácii, vrátenie tovaru a zákonná zodpovednosť za vady pri nákupe cez e-shop.',
-    h1: 'Reklamácie a vrátenie tovaru',
-    intro:
-      'Reklamačný poriadok a postup pri reklamácii tovaru zakúpeného v e-shope OROSTONE. Zákonná zodpovednosť za vady trvá 24 mesiacov. Spotrebiteľ má právo odstúpiť od kúpnej zmluvy uzavretej na diaľku do 14 dní bez uvedenia dôvodu.',
-    extraLinks: [
-      { label: 'Formulár na odstúpenie od zmluvy', href: '/odstupenie-od-zmluvy' },
-      { label: 'Všeobecné obchodné podmienky', href: '/vop' },
-    ],
-  },
-  {
-    route: '/odstupenie-od-zmluvy',
-    title: 'Odstúpenie od zmluvy | OROSTONE',
-    description:
-      'Formuláre a informácie k odstúpeniu od zmluvy pri nákupe cez OROSTONE e-shop podľa platnej spotrebiteľskej legislatívy.',
-    h1: 'Formulár na odstúpenie od zmluvy',
-    intro:
-      'Vzorový formulár na odstúpenie od kúpnej zmluvy uzavretej na diaľku podľa zákona č. 108/2024 Z.z. o ochrane spotrebiteľa. Spotrebiteľ má právo odstúpiť od zmluvy do 14 dní bez uvedenia dôvodu.',
-  },
-  {
-    route: '/sinterovany-kamen',
-    title: 'Sinterovaný kameň: cena, výhody, použitie | OROSTONE',
-    description:
-      'Čo je sinterovaný kameň, koľko stojí a kedy dáva zmysel ako pracovná doska. Praktický sprievodca pre kuchyňu, kde nechcete robiť kompromis.',
-    h1: 'Sinterovaný kameň — čo to je a prečo ho chcete',
-    intro:
-      'Sinterovaný kameň je povrch vyrobený z prírodných minerálov pod extrémnym tlakom a teplotou. Odolá teplotám nad 300 °C, škvrnám, UV žiareniu aj škrabancom. Je ideálnym materiálom na kuchynské dosky, obklady kúpeľní a architektonické projekty. Nevyžaduje impregnáciu ani zvláštnu údržbu.',
-    extraLinks: [
-      { label: 'Výhody sinterovaného kameňa', href: '/vyhody' },
-      { label: 'Všetky dekory', href: '/kategoria/sintered-stone' },
-    ],
-  },
-  {
-    route: '/vyhody',
-    title: 'Výhody sinterovaného kameňa | OROSTONE',
-    description:
-      'Sinterovaný kameň odoláva teplu, škvrnám a poškriabaniu. Pozrite porovnanie s technickým kameňom, žulou a mramorom — rozdiely, ktoré reálne rozhodujú.',
-    h1: 'Výhody sinterovaného kameňa',
-    intro:
-      'Sinterovaný kameň odolá teplotám nad 300 °C, nepotrebuje impregnáciu ani zvláštnu údržbu a umožňuje integráciu neviditeľnej indukčnej varnej dosky priamo v kuchynskej doske. V porovnaní so žulou, quartzovým kompozitom a mramorom má lepšiu tepelnú aj mechanickú odolnosť.',
-    extraLinks: [
-      { label: 'Čo je sinterovaný kameň', href: '/sinterovany-kamen' },
-      { label: 'Prehliadnuť dekory', href: '/kategoria/sintered-stone' },
-    ],
-  },
-  {
-    route: '/vop',
-    title: 'Všeobecné obchodné podmienky | OROSTONE E-Shop',
-    description:
-      'Všeobecné obchodné podmienky e-shopu OROSTONE. Informácie o objednávke, platbe, doprave, reklamáciách a právach spotrebiteľa podľa zákona č. 108/2024 Z.z.',
-    h1: 'Všeobecné obchodné podmienky',
-    intro:
-      'Všeobecné obchodné podmienky e-shopu OROSTONE upravujú vzťah medzi predávajúcim (OROSTONE) a kupujúcim pri uzatváraní kúpnych zmlúv uzatvorených na diaľku. Podmienky sú v súlade so zákonom č. 108/2024 Z.z. o ochrane spotrebiteľa.',
-  },
-  {
-    route: '/podmienky-rezervacie-ceny',
-    title: 'Podmienky rezervačného poplatku Orostone – 99 € | OROSTONE',
-    description:
-      'Podmienky úhrady a použitia rezervačného poplatku 99 € za garanciu ceny produktov Orostone na 6 mesiacov. Informácie o nevratnosti poplatku a súhlase so začatím poskytovania služby.',
-    h1: 'Podmienky rezervačného poplatku Orostone – 99 €',
-    intro:
-      'Rezervačný poplatok 99 € (vrátane DPH) je poplatkom za službu rezervácie a garantovania aktuálnej ceny produktov Orostone na obdobie 6 mesiacov. Na tejto stránke nájdete podmienky uplatnenia, informáciu o nevratnosti poplatku a poučenie spotrebiteľa o súhlase so začatím poskytovania služby pred uplynutím lehoty na odstúpenie od zmluvy podľa zákona č. 108/2024 Z.z.',
-    extraLinks: [
-      { label: 'Všeobecné obchodné podmienky', href: '/vop' },
-      { label: 'Odstúpenie od zmluvy', href: '/odstupenie-od-zmluvy' },
-    ],
-  },
-  {
-    route: '/ochrana-sukromia',
-    title: 'Ochrana osobných údajov | OROSTONE',
-    description:
-      'Zásady ochrany osobných údajov spoločnosti OROSTONE s.r.o. Spracúvanie údajov v súlade s GDPR — účely, právny základ a vaše práva.',
-    h1: 'Ochrana osobných údajov',
-    intro:
-      'OROSTONE spracúva vaše osobné údaje v súlade s Nariadením GDPR a zákonom o ochrane osobných údajov. Na tejto stránke nájdete informácie o účeloch spracúvania, právnom základe, dobe uchovávania a o vašich právach dotknutej osoby.',
-  },
-  {
-    route: '/cookies',
-    title: 'Zásady používania cookies a podobných technológií | OROSTONE',
-    description:
-      'Informácie o cookies a podobných technológiách na webe OROSTONE. Typy technológií, účely spracovania a nastavenie vlastných preferencií.',
-    h1: 'Zásady používania cookies',
-    intro:
-      'OROSTONE používa cookies a podobné technológie na zabezpečenie funkčnosti stránky, analýzu návštevnosti a cielenú reklamu. Na tejto stránke nájdete informácie o jednotlivých typoch cookies, účeloch spracovania a ako si môžete nastaviť vlastné preferencie.',
-  },
-];
 
 function prerenderInfoPage(p: InfoPage): void {
   const canonical = `${BASE_URL}${p.route}`;
@@ -856,7 +700,7 @@ function prerenderRealizacie(): void {
 console.log('\n🔨 Prerendering static pages...\n');
 
 // Blog articles (only published)
-const published = (BLOG_ARTICLES as any[]).filter((a) => new Date(a.publishDate) <= new Date());
+const published = getPublishedArticles() as any[];
 console.log(`Blog articles (${published.length}):`);
 for (const article of published) {
   prerenderBlogArticle(article);
