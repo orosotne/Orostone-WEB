@@ -1,3 +1,5 @@
+import { INSTALLATION_RATE_PER_M2 } from './pricing';
+
 export interface ProductFAQ {
   question: string;
   answer: string;
@@ -36,7 +38,7 @@ export const GENERIC_PRODUCT_FAQS: ProductFAQ[] = [
   },
   {
     question: 'Zabezpečujete aj montáž?',
-    answer: 'OROSTONE je dodávateľom materiálu – montáž nezabezpečujeme priamo. Na požiadanie vám radi odporučíme overených externých realizátorov, ktorí sa špecializujú na veľkoformátové platne.',
+    answer: `Áno. Zabezpečíme kompletnú realizáciu — zameranie, dopravu, opracovanie hrán, leštenie a montáž — za ${INSTALLATION_RATE_PER_M2} €/m² s DPH. Výrobu a montáž realizujú partnerskí kamenári so skúsenosťou s veľkoformátovými platňami zo sinterovaného kameňa.`,
   },
 ];
 

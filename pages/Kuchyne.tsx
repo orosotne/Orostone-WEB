@@ -2,6 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Ruler, Palette, Shield, Phone, ChevronDown } from 'lucide-react';
 import { SEOHead } from '@/components/UI/SEOHead';
+import {
+  COUNTERTOP_PER_BM,
+  SLAB_PRICE_MIN,
+  HEAT_RESISTANCE_C,
+  MAX_SLAB_FORMAT,
+  SLAB_THICKNESS_MM,
+  formatEur,
+} from '@/data/pricing';
 
 const GALLERY_ITEMS = [
   {
@@ -88,7 +96,7 @@ const PROCESS_STEPS = [
 const KITCHEN_FAQS = [
   {
     q: 'Koľko stojí kuchynská doska zo sinterovaného kameňa?',
-    a: 'Cena závisí od dekóru, rozmerov a počtu výrezov. Orientačne od 180 €/m² vrátane DPH. Objednajte si nezáväznú cenovú ponuku.',
+    a: `Kompletná pracovná doska vrátane fabrikácie a montáže vychádza orientačne od ${COUNTERTOP_PER_BM.min} do ${COUNTERTOP_PER_BM.max} €/bm. Samotný materiál stojí od ${formatEur(SLAB_PRICE_MIN)}/m² s DPH podľa dekoru. Presnú cenu pripravíme z pôdorysu — pošlite nám rozmery a počet výrezov.`,
   },
   {
     q: 'Aký je termín dodania a inštalácie?',
@@ -100,11 +108,11 @@ const KITCHEN_FAQS = [
   },
   {
     q: 'Môžem položiť horúci hrniec priamo na dosku?',
-    a: 'Áno. Sinterovaný kameň odoláva teplotám nad 1 200 °C a nenechá stopy od horúcich hrncov ani panvíc.',
+    a: `Áno. Sinterovaný kameň odoláva teplotám nad ${HEAT_RESISTANCE_C} °C a horúce hrnce ani panvice na ňom nezanechajú stopy. Jediné riziko je prudký teplotný šok — extrémne lokálne zohriatie a okamžité schladenie toho istého miesta.`,
   },
   {
     q: 'Aká hrúbka platne je lepšia — 12 mm alebo 20 mm?',
-    a: 'Pre kuchynské dosky odporúčame 20 mm — pôsobí masívnejšie a umožňuje profilované hrany. 12 mm je vhodná pre obklady a zásteny.',
+    a: `V ponuke Orostone sú platne s hrúbkou ${SLAB_THICKNESS_MM} mm vo formáte ${MAX_SLAB_FORMAT}. Pre kuchynské dosky je pri správnom podložení plne dostatočná a ako jediná umožňuje integráciu neviditeľnej varnej dosky. Masívnejší vzhľad hrany sa rieši podlepením hrany pri fabrikácii, nie hrubšou platňou.`,
   },
 ];
 
