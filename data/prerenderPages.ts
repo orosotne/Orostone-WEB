@@ -50,7 +50,7 @@ export const INFO_PAGES: InfoPage[] = [
       'Cenová ponuka, vzorky alebo konzultácia k pracovnej doske zo sinterovaného kameňa. Showroom Bošany, dodanie po celom Slovensku.',
     h1: 'Kontakt',
     intro:
-      'OROSTONE — slovenský dodávateľ sinterovaného kameňa. Sídlo: Landererova 8, 811 09 Bratislava. Telefón: +421 917 588 738. E-mail: info@orostone.sk. Radi pre vás pripravíme konzultáciu a cenovú ponuku.',
+      'OROSTONE — slovenský dodávateľ sinterovaného kameňa. Showroom Bošany: SNP 113/1, 956 18 Bošany — otvorené po–pia 9:00–17:00, cez víkend po dohode. Sídlo: Landererova 8, 811 09 Bratislava (nejde o showroom). Telefón: +421 917 588 738. E-mail: info@orostone.sk. Radi pre vás pripravíme konzultáciu a cenovú ponuku.',
     extraLinks: [
       { label: 'Objednať vzorky', href: '/vzorky' },
       { label: 'Prehliadnuť produkty', href: '/kategoria/sintered-stone' },
