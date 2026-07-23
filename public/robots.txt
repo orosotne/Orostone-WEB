@@ -1,5 +1,8 @@
 # Orostone - Premium Sintered Stone
 # https://orostone.sk
+#
+# NOTE: a named User-agent block REPLACES the * block for that bot,
+# so the private-path Disallows are repeated in every named block.
 
 User-agent: *
 Allow: /
@@ -11,35 +14,165 @@ Disallow: /ucet
 Disallow: /objednavky
 Disallow: /moj-ucet
 
-# AI Crawlers - explicitly allowed
+# AI Crawlers - explicitly allowed (same private-path exclusions)
 User-agent: GPTBot
 Allow: /
+Disallow: /checkout
+Disallow: /objednavka-dokoncena
+Disallow: /login
+Disallow: /register
+Disallow: /ucet
+Disallow: /objednavky
+Disallow: /moj-ucet
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /checkout
+Disallow: /objednavka-dokoncena
+Disallow: /login
+Disallow: /register
+Disallow: /ucet
+Disallow: /objednavky
+Disallow: /moj-ucet
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /checkout
+Disallow: /objednavka-dokoncena
+Disallow: /login
+Disallow: /register
+Disallow: /ucet
+Disallow: /objednavky
+Disallow: /moj-ucet
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /checkout
+Disallow: /objednavka-dokoncena
+Disallow: /login
+Disallow: /register
+Disallow: /ucet
+Disallow: /objednavky
+Disallow: /moj-ucet
+
+User-agent: Claude-User
+Allow: /
+Disallow: /checkout
+Disallow: /objednavka-dokoncena
+Disallow: /login
+Disallow: /register
+Disallow: /ucet
+Disallow: /objednavky
+Disallow: /moj-ucet
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /checkout
+Disallow: /objednavka-dokoncena
+Disallow: /login
+Disallow: /register
+Disallow: /ucet
+Disallow: /objednavky
+Disallow: /moj-ucet
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /checkout
+Disallow: /objednavka-dokoncena
+Disallow: /login
+Disallow: /register
+Disallow: /ucet
+Disallow: /objednavky
+Disallow: /moj-ucet
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /checkout
+Disallow: /objednavka-dokoncena
+Disallow: /login
+Disallow: /register
+Disallow: /ucet
+Disallow: /objednavky
+Disallow: /moj-ucet
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /checkout
+Disallow: /objednavka-dokoncena
+Disallow: /login
+Disallow: /register
+Disallow: /ucet
+Disallow: /objednavky
+Disallow: /moj-ucet
+
+User-agent: CCBot
+Allow: /
+Disallow: /checkout
+Disallow: /objednavka-dokoncena
+Disallow: /login
+Disallow: /register
+Disallow: /ucet
+Disallow: /objednavky
+Disallow: /moj-ucet
+
+User-agent: Meta-ExternalAgent
+Allow: /
+Disallow: /checkout
+Disallow: /objednavka-dokoncena
+Disallow: /login
+Disallow: /register
+Disallow: /ucet
+Disallow: /objednavky
+Disallow: /moj-ucet
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+Disallow: /checkout
+Disallow: /objednavka-dokoncena
+Disallow: /login
+Disallow: /register
+Disallow: /ucet
+Disallow: /objednavky
+Disallow: /moj-ucet
 
 User-agent: Amazonbot
 Allow: /
+Disallow: /checkout
+Disallow: /objednavka-dokoncena
+Disallow: /login
+Disallow: /register
+Disallow: /ucet
+Disallow: /objednavky
+Disallow: /moj-ucet
 
 User-agent: Bytespider
 Allow: /
+Disallow: /checkout
+Disallow: /objednavka-dokoncena
+Disallow: /login
+Disallow: /register
+Disallow: /ucet
+Disallow: /objednavky
+Disallow: /moj-ucet
 
 User-agent: FacebookBot
 Allow: /
+Disallow: /checkout
+Disallow: /objednavka-dokoncena
+Disallow: /login
+Disallow: /register
+Disallow: /ucet
+Disallow: /objednavky
+Disallow: /moj-ucet
 
 User-agent: Applebot
 Allow: /
+Disallow: /checkout
+Disallow: /objednavka-dokoncena
+Disallow: /login
+Disallow: /register
+Disallow: /ucet
+Disallow: /objednavky
+Disallow: /moj-ucet
 
 Sitemap: https://orostone.sk/sitemap-eshop.xml
