@@ -11,13 +11,13 @@
  *
  * Run: tsx scripts/generate-seo-artifacts.ts (called by `npm run build`)
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { buildRouteRegistry, loadFallbackProducts, BASE_URL, type RouteEntry } from './lib/routes';
 import { getPublishedArticles } from '../data/blogArticles';
 import { LLMS_PRODUCT_CONTENT } from '../data/llmsProductBlurbs';
 import { SLAB_PRICE_MIN, SLAB_PRICE_MAX } from '../data/pricing';
-import { calculateSlabPrice } from '../lib/slab';
+import { calculateSlabPrice, slabAreaM2 } from '../lib/slab';
 
 const ROOT = resolve(process.cwd());
 const DIST = resolve(ROOT, 'dist');
@@ -114,6 +114,70 @@ function blogInsights(): string {
     .join('\n\n');
 }
 
+// ---------------------------------------------------------------------------
+// Google Merchant feed (RSS 2.0 + g: namespace)
+// ---------------------------------------------------------------------------
+// g:price is the transactable slab total (matches on-page Offer.price from
+// lib/productSchema.ts); the per-m² rate is expressed via unit pricing.
+// External setup (outside code): Google Merchant Center account + scheduled
+// fetch of https://orostone.sk/feeds/google-merchant.xml.
+
+const xmlEsc = (s: string): string =>
+  s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+
+const stripHtml = (html: string): string =>
+  html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+
+function generateMerchantFeed(products: any[]): string {
+  const items = products
+    .map((p) => {
+      const slabTotal = calculateSlabPrice(p.pricePerM2, p.dimensions);
+      const gallery: string[] = (p.gallery || []).slice(1, 11);
+      const additionalImages = gallery
+        .map((img) => `      <g:additional_image_link>${xmlEsc(absUrl(img))}</g:additional_image_link>`)
+        .join('\n');
+      return `    <item>
+      <g:id>${xmlEsc(p.sku || p.id)}</g:id>
+      <g:title>${xmlEsc(`${p.name} — sinterovaný kameň ${p.dimensions}`)}</g:title>
+      <g:description>${xmlEsc(stripHtml(p.description || '').slice(0, 4990))}</g:description>
+      <g:link>${BASE_URL}/produkt/${p.id}</g:link>
+      <g:image_link>${xmlEsc(absUrl(p.image))}</g:image_link>
+${additionalImages ? additionalImages + '\n' : ''}      <g:availability>${p.inStock ? 'in_stock' : 'backorder'}</g:availability>
+      <g:price>${slabTotal.toFixed(2)} EUR</g:price>
+      <g:unit_pricing_measure>${slabAreaM2(p.dimensions)}sqm</g:unit_pricing_measure>
+      <g:unit_pricing_base_measure>1sqm</g:unit_pricing_base_measure>
+      <g:brand>OROSTONE</g:brand>
+      <g:condition>new</g:condition>
+      <g:identifier_exists>false</g:identifier_exists>
+      <g:shipping>
+        <g:country>SK</g:country>
+        <g:price>150.00 EUR</g:price>
+      </g:shipping>
+    </item>`;
+    })
+    .join('\n');
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
+  <channel>
+    <title>OROSTONE — sinterovaný kameň</title>
+    <link>${BASE_URL}</link>
+    <description>Veľkoformátové platne sinterovaného kameňa OROSTONE — kompletný katalóg s cenami.</description>
+${items}
+  </channel>
+</rss>
+`;
+}
+
+function absUrl(url: string): string {
+  if (/^https?:\/\//i.test(url)) return url;
+  return `${BASE_URL}${url.startsWith('/') ? '' : '/'}${url}`;
+}
+
 function fillTemplate(templateFile: string, replacements: Record<string, string>): string {
   let out = readFileSync(resolve(TEMPLATES, templateFile), 'utf-8');
   for (const [marker, value] of Object.entries(replacements)) {
@@ -158,3 +222,7 @@ writeFileSync(
   'utf-8',
 );
 console.log('✅ dist/llms-full.txt');
+
+mkdirSync(resolve(DIST, 'feeds'), { recursive: true });
+writeFileSync(resolve(DIST, 'feeds/google-merchant.xml'), generateMerchantFeed(products), 'utf-8');
+console.log(`✅ dist/feeds/google-merchant.xml — ${products.length} items`);
