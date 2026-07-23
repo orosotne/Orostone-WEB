@@ -51,104 +51,9 @@ Sintered stone (sinterovaný kameň) is a premium surface material made from 100
 
 ## Product Catalog — Complete Specifications
 
-All products are large-format sintered stone slabs (veľkoformátové platne). Standard size 3200×1600mm. Available in 3mm, 12mm, 20mm thicknesses unless noted.
+All products are large-format sintered stone slabs (veľkoformátové platne). Orostone catalog: 12 mm thickness, 3200 × 1600 mm format. Prices are live from the e-shop catalog, incl. VAT.
 
-### 01. STATUARIO DIAMANTE
-- URL: https://orostone.sk/produkt/statuario-diamante
-- Style: White base, dramatic silver-grey veining, Italian marble inspiration
-- Best for: Luxury bathrooms, living rooms, entrance halls, kitchen backsplashes
-- Finishes: Matte, Polished
-- Price range: Mid-premium (€€€)
-- SEO keywords: statuario diamante, biely mramor obklad, veľkoformátové platne bratislava, luxusné obklady, porcelánové platne
-
-### 02. CALACATTA TOP
-- URL: https://orostone.sk/produkt/calacatta-top
-- Style: Brilliant white base, warm golden-brown veining, Calacatta marble pattern
-- Best for: Kitchen islands, bathroom walls, floors, statement pieces
-- Finishes: Polished (most popular), Matte
-- Price range: Premium (€€€€)
-- SEO keywords: calacatta obklad, calacatta mramor platne, luxusné dlažby bratislava, kuchynský obklad calacatta
-
-### 03. GIVENCHY GOLD
-- URL: https://orostone.sk/produkt/givenchy-gold
-- Style: Warm gold-ochre tones, delicate veining, haute couture inspiration
-- Best for: Feature walls, bathroom cladding, kitchen islands, hospitality interiors
-- Finishes: Matte, Polished
-- Price range: Premium (€€€€)
-- SEO keywords: givenchy gold obklad, zlaté mramorové platne, luxusné interiéry bratislava, zlatý dizajn podlahy
-
-### 04. ROMAN TRAVERTINE
-- URL: https://orostone.sk/produkt/roman-travertine
-- Style: Warm cream-to-beige, authentic travertine texture, Mediterranean feel
-- Best for: Indoor/outdoor (terraces, balconies, pools), villas, apartments
-- Finishes: Leather/Textured, Matte
-- Special: Frost-resistant, suitable for exterior
-- Price range: Mid-premium (€€€)
-- SEO keywords: travertín obklad, travertínové platne bratislava, béžové dlažby, stredomorský interiér
-
-### 05. TAJ MAHAL
-- URL: https://orostone.sk/produkt/taj-mahal
-- Style: Creamy-white base, delicate golden veining, spa-like serenity
-- Best for: Master bathrooms, wellness spaces, bedroom feature walls
-- Finishes: Matte, Polished
-- Price range: Premium (€€€€)
-- SEO keywords: taj mahal obklad, krémový mramor, spa kúpeľňa obklad, mramorové platne bratislava
-
-### 06. APPENNINO
-- URL: https://orostone.sk/produkt/appennino
-- Style: Dynamic grey-brown veining, natural Italian mountain stone inspiration
-- Best for: Accent walls, full bathrooms, lofts, industrial-style spaces
-- Finishes: Matte, Leather/Textured
-- Price range: Mid-premium (€€€)
-- SEO keywords: appennino obklad, prírodný kameň dizajn, akcentová stena obklad, veľkoformátové platne
-
-### 07. ASTRANA GREY
-- URL: https://orostone.sk/produkt/astrana-grey
-- Style: Subtle grey tones, discreet veining, Scandinavian-Italian minimalism
-- Best for: Open-plan apartments, entire floor-to-ceiling applications, family homes
-- Finishes: Matte, Polished
-- Price range: Mid-premium (€€€)
-- SEO keywords: sivé mramorové platne, astrana grey, moderné obklady bratislava, šedý mramor, sivé dlažby
-
-### 08. SUPER WHITE EXTRA
-- URL: https://orostone.sk/produkt/super-white-extra
-- Style: Pure dazzling white, minimal veining, absolute minimalism
-- Best for: Small spaces (optical enlargement), modern kitchens, minimalist interiors
-- Finishes: Polished (most popular), Matte
-- Price range: Mid-premium (€€€)
-- SEO keywords: biele mramorové platne, super white obklad, biele dlažby, minimalistický interiér platne
-
-### 09. GOTHIC GOLD
-- URL: https://orostone.sk/produkt/gothic-gold
-- Style: Deep dark base, fiery golden veining, dramatic luxury
-- Best for: Feature walls, VIP bathrooms, penthouses, hotel lobbies
-- Finishes: Polished, Leather/Textured
-- Price range: Premium (€€€€)
-- SEO keywords: gothic gold obklad, tmavé mramorové platne, zlaté žilky obklad, dark luxury interiér
-
-### 10. WILD FOREST
-- URL: https://orostone.sk/produkt/wild-forest
-- Style: Grey-brown and earthy tones, biophilic forest stone inspiration
-- Best for: Wellness spaces, saunas, panoramic-window apartments, nature-inspired interiors
-- Finishes: Leather/Textured, Matte
-- Price range: Mid-premium (€€€)
-- SEO keywords: prírodný kameň obklad, wild forest platne, organický dizajn interiér, kamenné obklady bratislava
-
-### 11. NERO MARGIUA
-- URL: https://orostone.sk/produkt/nero-margiua
-- Style: Deep black, subtle silver-white veining, ultimate sophistication
-- Best for: Penthouses, premium bathrooms, accent walls, contrast with light elements
-- Finishes: Polished, Leather/Textured
-- Price range: Premium (€€€€)
-- SEO keywords: čierny mramor obklad, nero margiua, čierne mramorové platne, luxury čierna kúpeľňa
-
-### 12. YABO WHITE
-- URL: https://orostone.sk/produkt/yabo-white
-- Style: Warm white with creamy undertones, universal elegance
-- Best for: Bathrooms, hallways, kitchens — universal application
-- Finishes: Matte, Polished
-- Price range: Mid-premium (€€€)
-- SEO keywords: biele obklady bratislava, yabo white, teplé biele dlažby, krémová biela kúpeľňa
+{{PRODUCT_CATALOG_FULL}}
 
 ---
 
@@ -172,7 +77,7 @@ A: Stock slabs are typically delivered within 5 working days after payment confi
 A: Yes. OROSTONE arranges complete realization — templating, transport, edge fabrication, polishing and installation — at €279/m² incl. VAT. Fabrication and installation are carried out by partner stonemasons experienced with large-format sintered stone slabs.
 
 **Q: What is the price per m²?**
-A: Slab material (12 mm, 3200 × 1600 mm) ranges from €332.81 to €429.49/m² incl. VAT depending on the decor — full price list at https://orostone.sk/cennik. A finished countertop including fabrication and installation is typically €280–600 per running meter. Send us a floor plan for a precise quote.
+A: Slab material (12 mm, 3200 × 1600 mm) ranges from €{{SLAB_PRICE_MIN}} to €{{SLAB_PRICE_MAX}}/m² incl. VAT depending on the decor — full price list at https://orostone.sk/cennik. A finished countertop including fabrication and installation is typically €280–600 per running meter. Send us a floor plan for a precise quote.
 
 **Q: Is sintered stone the same as Dekton or Neolith?**
 A: Dekton (Cosentino) and Neolith are brand names for sintered stone — the same technology with different branding and proprietary formulations. OROSTONE sources from European producers offering equivalent technical performance.
@@ -223,21 +128,7 @@ Total project timeline: 10–15 working days from approved template to completed
 
 ## Blog — Key Insights
 
-### Sintered Stone Problems Nobody Tells You
-URL: https://orostone.sk/blog/problemy-so-sinterovanym-kamenom
-Key takeaways: Sintered stone is hard but brittle at unsupported edges. Minimum 5mm corner radius for all cutouts (sinks, hobs). Use two-pass cutting technique — never single-pass. 90° edges are more vulnerable than half-bullnose profiles. Transport must be vertical (A-frame) — horizontal transport causes flexion cracks. All installation issues stem from inadequate substrate or unsupported overhangs.
-
-### Matte vs Polished Surface
-URL: https://orostone.sk/blog/matny-vs-leskly-povrch
-Key takeaways: Polished shows dramatic veining but shows fingerprints and micro-scratches more. Matte is more forgiving in daily use, hides water marks, feels silky. Photogenic preference: polished looks better in daylight photography, matte looks more luxurious in warm evening light. Recommendation: matte for family kitchens, polished for feature walls and low-traffic bathrooms.
-
-### From Measurement to Installation
-URL: https://orostone.sk/blog/od-merania-po-instalaciu-proces-orostone
-Key takeaways: Digital templating is non-negotiable for large-format slabs — manual measurement error causes irreversible waste. Substrate preparation (levelling, waterproofing membrane) is 80% of installation quality. Expansion joints prevent cracking under thermal movement. Full project in 10–15 working days.
-
-### Is Sintered Stone Worth It?
-URL: https://orostone.sk/blog/oplati-sa-sinterovany-kamen
-Key takeaways: 25-year total cost of ownership analysis shows sintered stone has a lower long-term cost than laminate (needs replacement) or granite (sealing costs). ROI on property value: premium kitchen/bathroom finish returns 80–120% of material cost at resale. Best value scenario: Airbnb/rental property — durability eliminates replacement cycles.
+{{BLOG_INSIGHTS}}
 
 ---
 
