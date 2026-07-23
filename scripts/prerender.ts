@@ -39,6 +39,9 @@ const {
   formatEur,
 } = await import('../data/pricing.js');
 const { calculateSlabPrice } = await import('../lib/slab.js');
+const { buildProductJsonLd } = await import('../lib/productSchema.js');
+const { resolveCountryOfOrigin } = await import('../constants.js');
+const { getProductSEOContent, GENERIC_PRODUCT_FAQS } = await import('../data/product-seo-content.js');
 type InfoPage = import('../data/prerenderPages.js').InfoPage;
 type ColorSubcategory = import('../data/prerenderPages.js').ColorSubcategory;
 
@@ -335,6 +338,12 @@ function prerenderProduct(product: any): void {
 
   const override = PRODUCT_META_OVERRIDE[product.id];
 
+  // Product FAQ — same merge as components/ProductDetail/ProductFAQSection.tsx
+  const seoContent = getProductSEOContent(product.id);
+  const productFaqs = [...(seoContent?.faqs || []), ...GENERIC_PRODUCT_FAQS];
+
+  const slabTotal = calculateSlabPrice(product.pricePerM2, product.dimensions);
+
   writePage({
     route: `/produkt/${product.id}`,
     title: override?.title || product.metaTitle || `${product.name} | OROSTONE`,
@@ -348,55 +357,20 @@ function prerenderProduct(product: any): void {
       <article>
         <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; <a href="/kategoria/sintered-stone">Produkty</a> &rsaquo; ${esc(product.name)}</nav>
         <h1>${esc(product.name)}</h1>
-        <p><strong>${product.pricePerM2.toFixed(2)} &euro; / m²</strong></p>
+        <p><strong>${product.pricePerM2.toFixed(2)} &euro; / m² s DPH</strong> (platňa ${esc(product.dimensions)} ≈ ${slabTotal.toFixed(2)} &euro; s DPH)</p>
         <img src="${product.image}" alt="${esc(product.name)}" width="800" loading="lazy" />
         <div>${product.descriptionHtml || esc(product.description)}</div>
         ${benefitsHtml}
         <h2>Technické parametre</h2>
         ${specsHtml}
         ${appsHtml}
-        <p><a href="/vzorky">Objednať vzorky</a></p>
+        ${faqSectionHtml(productFaqs)}
+        <p><a href="/vzorky">Objednať vzorky</a> &middot; <a href="/cennik">Cenník</a></p>
       </article>`,
     jsonLd: [
-      {
-        '@context': 'https://schema.org',
-        '@type': 'Product',
-        name: product.name,
-        description: product.metaDescription || stripHtml(product.description).slice(0, 300),
-        image: product.gallery || [product.image],
-        sku: product.sku,
-        brand: { '@type': 'Brand', name: 'OROSTONE' },
-        manufacturer: { '@type': 'Organization', name: 'OROSTONE', url: BASE_URL },
-        offers: {
-          '@type': 'Offer',
-          price: product.pricePerM2.toFixed(2),
-          priceCurrency: 'EUR',
-          availability: product.inStock
-            ? 'https://schema.org/InStock'
-            : 'https://schema.org/OutOfStock',
-          url: canonical,
-          seller: { '@type': 'Organization', name: 'OROSTONE' },
-          shippingDetails: {
-            '@type': 'OfferShippingDetails',
-            shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'SK' },
-            deliveryTime: {
-              '@type': 'ShippingDeliveryTime',
-              handlingTime: {
-                '@type': 'QuantitativeValue',
-                minValue: 1,
-                maxValue: 5,
-                unitCode: 'd',
-              },
-            },
-          },
-          hasMerchantReturnPolicy: {
-            '@type': 'MerchantReturnPolicy',
-            applicableCountry: 'SK',
-            returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
-            merchantReturnDays: 14,
-          },
-        },
-      },
+      buildProductJsonLd(product, {
+        countryOfOrigin: resolveCountryOfOrigin(product, 'slovakia'),
+      }),
       {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
@@ -411,6 +385,7 @@ function prerenderProduct(product: any): void {
           { '@type': 'ListItem', position: 3, name: product.name, item: canonical },
         ],
       },
+      faqPageJsonLd(productFaqs),
     ],
   });
 }
@@ -430,6 +405,22 @@ function productListHtml(list: any[]): string {
       </article>`,
     )
     .join('');
+}
+
+/** Product listing → ItemList JSON-LD (category + color subcategory pages). */
+function itemListJsonLd(list: any[], listName: string): object {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: listName,
+    numberOfItems: list.length,
+    itemListElement: list.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: p.name,
+      url: `${BASE_URL}/produkt/${p.id}`,
+    })),
+  };
 }
 
 function prerenderCategoryListing(): void {
@@ -459,6 +450,7 @@ function prerenderCategoryListing(): void {
           },
         ],
       },
+      itemListJsonLd(sintered, 'Sinterovaný kameň — všetky dekory'),
     ],
   });
 }
@@ -510,6 +502,7 @@ function prerenderColorSubcategory(sub: ColorSubcategory): void {
           { '@type': 'ListItem', position: 3, name: sub.name, item: canonical },
         ],
       },
+      itemListJsonLd(filtered, `Sinterovaný kameň — ${sub.name} dekory`),
     ],
   });
 }

@@ -15,13 +15,11 @@ import { BLOG_ARTICLES_LISTING } from '../data/blogArticlesMeta';
 const DIST = resolve(process.cwd(), 'dist');
 
 /**
- * Minimum acceptable Offer.price on product pages. Slab totals are ~1700–2200 €;
- * per-m² rates are ~330–430 €. Until the shared Product JSON-LD builder ships
- * (Offer.price = slab total), the prerender emits per-m² — keep this at 100 to
- * catch zero/garbage prices, then raise to 500 once the builder lands so an
- * accidental per-m² regression fails the build.
+ * Minimum acceptable Offer.price on product pages. Offer.price is the slab
+ * total (~1700–2200 €) from lib/productSchema.ts; a value under 500 would
+ * mean an accidental regression to the per-m² rate (~330–430 €).
  */
-const MIN_PRODUCT_OFFER_PRICE = 100;
+const MIN_PRODUCT_OFFER_PRICE = 500;
 
 const errors: string[] = [];
 const fail = (msg: string): void => {
@@ -100,6 +98,10 @@ for (const route of routes) {
       if (!product.image || (Array.isArray(product.image) && product.image.length === 0)) {
         fail(`${route.path}: Product.image missing`);
       }
+      if (!product.offers?.priceValidUntil) fail(`${route.path}: Offer.priceValidUntil missing`);
+    }
+    if (!blocks.find((b) => b['@type'] === 'FAQPage')) {
+      fail(`${route.path}: product page missing FAQPage JSON-LD`);
     }
   }
 
