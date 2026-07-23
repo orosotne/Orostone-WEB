@@ -125,6 +125,19 @@ for (const route of routes) {
     if (!html.includes('<details>')) fail(`${route.path}: missing FAQ <details> in HTML`);
   }
 
+  // /cennik must serve the full price table statically
+  if (route.path === '/cennik') {
+    if (!blocks.find((b) => b['@type'] === 'FAQPage')) {
+      fail(`${route.path}: missing FAQPage JSON-LD`);
+    }
+    if (!html.includes('<table>')) fail(`${route.path}: missing price <table> in HTML`);
+    for (const p of loadFallbackProducts()) {
+      if (!html.includes(`/produkt/${p.id}`)) {
+        fail(`${route.path}: price table missing product ${p.id}`);
+      }
+    }
+  }
+
   // Article pages: BlogPosting + FAQPage when the article has FAQs
   if (route.kind === 'article') {
     if (!blocks.find((b) => b['@type'] === 'BlogPosting')) {

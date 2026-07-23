@@ -28,6 +28,17 @@ const { BLOG_ARTICLES_LISTING } = await import('../data/blogArticlesMeta.js');
 const { INFO_PAGES, COLOR_SUBCATEGORIES } = await import('../data/prerenderPages.js');
 const { CATEGORY_SEO } = await import('../data/seo/categories.js');
 const { KITCHEN_FAQS, KUCHYNE_PROCESS_STEPS } = await import('../data/pillars/kuchyne.js');
+const { CENNIK_DIRECT_ANSWER, CENNIK_FAQS, CENNIK_PRICE_FACTORS, CENNIK_SCENARIOS } =
+  await import('../data/pillars/cennik.js');
+const {
+  PRICING_LAST_UPDATED,
+  INSTALLATION_RATE_PER_M2,
+  INSTALLATION_INCLUDES,
+  BUNDLE_OPTIONS,
+  COUNTERTOP_PER_BM,
+  formatEur,
+} = await import('../data/pricing.js');
+const { calculateSlabPrice } = await import('../lib/slab.js');
 type InfoPage = import('../data/prerenderPages.js').InfoPage;
 type ColorSubcategory = import('../data/prerenderPages.js').ColorSubcategory;
 
@@ -745,6 +756,83 @@ function prerenderRealizacie(): void {
 }
 
 // ---------------------------------------------------------------------------
+// Cennik (price list) — same URL as SPA route /cennik
+// ---------------------------------------------------------------------------
+
+function prerenderCennik(): void {
+  const canonical = `${BASE_URL}/cennik`;
+  const slabs = [...products]
+    .filter((p) => p.category === 'sintered-stone')
+    .sort((a, b) => a.pricePerM2 - b.pricePerM2);
+
+  const tableRows = slabs
+    .map(
+      (p) =>
+        `<tr><td><a href="/produkt/${p.id}">${esc(p.name)}</a></td><td>${esc(formatEur(p.pricePerM2))}</td><td>≈ ${esc(
+          formatEur(calculateSlabPrice(p.pricePerM2, p.dimensions)),
+        )}</td></tr>`,
+    )
+    .join('');
+
+  const scenariosHtml = CENNIK_SCENARIOS.map(
+    (s: any) => `<li>${esc(s.label)}: ${s.min.toLocaleString('sk-SK')}–${s.max.toLocaleString('sk-SK')} €</li>`,
+  ).join('');
+
+  const bundlesHtml = BUNDLE_OPTIONS.map(
+    (b: any) =>
+      `<li>${b.quantity} ${b.quantity === 1 ? 'platňa' : 'platne'}: ${
+        b.discountPercent > 0 ? `−${b.discountPercent} % z ceny platní` : 'štandardná cena'
+      }</li>`,
+  ).join('');
+
+  writePage({
+    route: '/cennik',
+    title: 'Cenník sinterovaného kameňa | OROSTONE',
+    description:
+      'Aktuálne ceny všetkých dekorov sinterovaného kameňa v €/m² s DPH, cena kompletnej realizácie a orientačná cena hotovej pracovnej dosky v €/bm.',
+    canonical,
+    rootContent: `
+      <article>
+        <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Cenník</nav>
+        <h1>Cenník sinterovaného kameňa</h1>
+        <p><strong>${esc(CENNIK_DIRECT_ANSWER)}</strong></p>
+        <p>Aktualizované: <time datetime="${PRICING_LAST_UPDATED}">${PRICING_LAST_UPDATED}</time>. Ceny sa synchronizujú s e-shopom.</p>
+        <section>
+          <h2>Ceny dekorov (12 mm, 3200 × 1600 mm, s DPH)</h2>
+          <table><thead><tr><th>Dekor</th><th>Cena €/m² s DPH</th><th>Cena za platňu</th></tr></thead><tbody>${tableRows}</tbody></table>
+        </section>
+        <section>
+          <h2>Kompletná realizácia ${INSTALLATION_RATE_PER_M2} €/m² s DPH</h2>
+          <p>V cene: ${INSTALLATION_INCLUDES.join(', ')}. Výrobu a montáž realizujú partnerskí kamenári so skúsenosťou so sinterovaným kameňom.</p>
+          <ul>${bundlesHtml}</ul>
+        </section>
+        <section>
+          <h2>Orientačná cena hotovej pracovnej dosky</h2>
+          <p>Vrátane fabrikácie a montáže: <strong>${COUNTERTOP_PER_BM.min}–${COUNTERTOP_PER_BM.max} €/bm</strong>.</p>
+          <ul>${scenariosHtml}</ul>
+        </section>
+        <section>
+          <h2>Čo ovplyvňuje finálnu cenu</h2>
+          <ul>${CENNIK_PRICE_FACTORS.map((f: string) => `<li>${esc(f)}</li>`).join('')}</ul>
+        </section>
+        ${faqSectionHtml(CENNIK_FAQS)}
+        <p><a href="/vzorky">Objednať vzorku zadarmo</a> &middot; <a href="/kontakt">Poslať pôdorys</a> &middot; <a href="/podmienky-rezervacie-ceny">Podmienky rezervácie ceny</a></p>
+      </article>`,
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'OROSTONE', item: `${BASE_URL}/` },
+          { '@type': 'ListItem', position: 2, name: 'Cenník', item: canonical },
+        ],
+      },
+      faqPageJsonLd(CENNIK_FAQS),
+    ],
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
@@ -790,6 +878,11 @@ for (const page of INFO_PAGES) {
 console.log('\nVzorky:');
 prerenderVzorky();
 console.log('  ✓ /vzorky');
+
+// Cennik
+console.log('\nCennik:');
+prerenderCennik();
+console.log('  ✓ /cennik');
 
 // Kuchyne
 console.log('\nKuchyne:');
