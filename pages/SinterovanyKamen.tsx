@@ -31,6 +31,10 @@ import { Button } from '@/components/UI/Button';
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@/components/UI/Card';
 import { SEOHead } from '@/components/UI/SEOHead';
+import {
+  SINTEROVANY_KAMEN_FAQ as FAQ_ITEMS,
+  SINTEROVANY_KAMEN_COMPARISON as COMPARISON_DATA,
+} from '@/data/pillars/sinterovanyKamen';
 
 // Lightbox is heavy (framer-motion enter/exit + image gallery). Loading it lazily
 // keeps it out of the initial chunk so the click that opens it doesn't compete
@@ -44,59 +48,6 @@ gsap.registerPlugin(ScrollTrigger);
 /* =============================================================
    FAQ DATA — pripravené na JSON-LD FAQ Schema
    ============================================================= */
-const FAQ_ITEMS: { question: string; answer: string }[] = [
-  {
-    question: 'Čo je sinterovaný kameň?',
-    answer:
-      'Sinterovaný kameň je pokročilý povrchový materiál vyrobený zo 100 % prírodných minerálov (kremeň, živec, íl, kovové oxidy). Minerály sú zlisované pod tlakom až 25 000 ton a následne vypálené pri teplote nad 1 200 °C. Výsledkom je plne vitrifikovaný, nepórovitý povrch bez živíc a syntetických spojív.',
-  },
-  {
-    question: 'Je sinterovaný kameň rovnaký ako keramika alebo porcelán?',
-    answer:
-      'Nie. Hoci sa občas zaraďujú do rovnakej skupiny, sinterovaný kameň sa vyrába pod výrazne vyšším tlakom a dosahuje nasiakavosť pod 0,1 % (keramika 3–10 %). To mu dáva vyššiu pevnosť, odolnosť voči nárazom a vhodnosť na exteriérové aplikácie.',
-  },
-  {
-    question: 'Môžem na sinterovaný kameň položiť horúci hrniec?',
-    answer:
-      'Áno. Sinterovaný kameň odolá teplotám nad 300 °C bez zmeny farby alebo poškodenia povrchu. Na rozdiel od quartzového kompozitu (max. ~150 °C) nepotrebujete podložku pod horúci riad.',
-  },
-  {
-    question: 'Poškriabe sa sinterovaný kameň?',
-    answer:
-      'Pri bežnom používaní nie. Tvrdosť sinterovaného kameňa dosahuje 6–8 na Mohsovej stupnici — je tvrdší ako väčšina kuchynského náradia. Pre dlhodobú krásu povrchu však odporúčame používať krájaciu dosku.',
-  },
-  {
-    question: 'Musím sinterovaný kameň impregnovat?',
-    answer:
-      'Nie. Vďaka nulovej pórovitosti nepotrebuje žiadnu impregnáciu ani špeciálne ošetrenie — na rozdiel od prírodného kameňa (žula, mramor), ktorý vyžaduje pravidelnú impregnáciu.',
-  },
-  {
-    question: 'Ako sa o sinterovaný kameň starať?',
-    answer:
-      'Jednoducho. Na denné čistenie stačí vlhká utierka s pH neutrálnym čistiacim prostriedkom alebo saponátom. Nepoužívajte bielidlo, amoniak ani brúsne hubky. Tvrdšie nečistoty odstránite neabrazívnym čistiacim prípravkom.',
-  },
-  {
-    question: 'Hodí sa sinterovaný kameň do kúpeľne?',
-    answer:
-      'Áno, výborne. Nasiakavosť pod 0,1 % znamená odolnosť voči vlhkosti, plesniam a baktériám. Materiál je ideálny na vaničky, obklady, umývadlá aj podlahy v mokrých zónach.',
-  },
-  {
-    question: 'Dá sa sinterovaný kameň použiť na fasádu?',
-    answer:
-      'Áno. UV stabilita (bez zmeny farby podľa DIN 51094), mrazuvzdornosť, odolnosť voči chemikáliám a nízka hmotnosť (tenké formáty od 3 mm) robia zo sinterovaného kameňa ideálny fasádny materiál.',
-  },
-  {
-    question: 'Aké hrúbky a rozmery sú dostupné?',
-    answer:
-      'Dosky sú štandardne dostupné v rozmeroch až 3 200 × 1 600 mm v hrúbkach 6 mm, 12 mm a 20 mm. Tenké 3mm formáty sa používajú na obklady a fasády, 20mm na kuchynské pracovné dosky.',
-  },
-  {
-    question: 'Je sinterovaný kameň ekologický?',
-    answer:
-      'Áno. Obsahuje len prírodné minerály, pri výrobe sa nepoužívajú živice ani VOC látky. Materiál je recyklovateľný, neemituje škodlivé chemikálie a výrobný proces využíva rekuperáciu tepla.',
-  },
-];
-
 /* =============================================================
    FAQ Schema JSON-LD
    ============================================================= */
@@ -116,72 +67,6 @@ const faqStructuredData = {
 /* =============================================================
    POROVNÁVACIA TABUĽKA
    ============================================================= */
-const COMPARISON_DATA = [
-  {
-    property: 'Odolnosť teplu',
-    sintered: '> 300 °C',
-    natural: '~ 200 °C',
-    quartz: '~ 150 °C',
-    ceramic: '~ 200 °C',
-    laminate: '~ 80 °C',
-  },
-  {
-    property: 'Nasiakavosť',
-    sintered: '< 0,1 %',
-    natural: '0,1–3 %',
-    quartz: '< 0,1 %',
-    ceramic: '3–10 %',
-    laminate: 'Vysoká',
-  },
-  {
-    property: 'Tvrdosť (Mohs)',
-    sintered: '6–8',
-    natural: '3–7',
-    quartz: '6–7',
-    ceramic: '5–6',
-    laminate: '2–3',
-  },
-  {
-    property: 'UV stabilita',
-    sintered: 'Áno',
-    natural: 'Čiastočne',
-    quartz: 'Nie',
-    ceramic: 'Čiastočne',
-    laminate: 'Nie',
-  },
-  {
-    property: 'Odolnosť škvrnám',
-    sintered: 'Výborná',
-    natural: 'Slabá – stredná',
-    quartz: 'Výborná',
-    ceramic: 'Stredná',
-    laminate: 'Slabá',
-  },
-  {
-    property: 'Impregnácia',
-    sintered: 'Nepotrebuje',
-    natural: 'Pravidelne',
-    quartz: 'Nepotrebuje',
-    ceramic: 'Podľa typu',
-    laminate: 'Nepotrebuje',
-  },
-  {
-    property: 'Údržba',
-    sintered: 'Minimálna',
-    natural: 'Náročná',
-    quartz: 'Nízka',
-    ceramic: 'Stredná',
-    laminate: 'Nízka',
-  },
-  {
-    property: 'Exteriér / fasády',
-    sintered: 'Áno',
-    natural: 'Obmedzene',
-    quartz: 'Nie',
-    ceramic: 'Obmedzene',
-    laminate: 'Nie',
-  },
-];
 
 /* =============================================================
    FAQ ACCORDION ITEM

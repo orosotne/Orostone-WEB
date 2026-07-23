@@ -27,6 +27,7 @@ const { BLOG_ARTICLES_LISTING } = await import('../data/blogArticlesMeta.js');
 // prerender + sitemap/llms generator + validate-dist.
 const { INFO_PAGES, COLOR_SUBCATEGORIES } = await import('../data/prerenderPages.js');
 const { CATEGORY_SEO } = await import('../data/seo/categories.js');
+const { KITCHEN_FAQS, KUCHYNE_PROCESS_STEPS } = await import('../data/pillars/kuchyne.js');
 type InfoPage = import('../data/prerenderPages.js').InfoPage;
 type ColorSubcategory = import('../data/prerenderPages.js').ColorSubcategory;
 
@@ -506,11 +507,50 @@ function prerenderColorSubcategory(sub: ColorSubcategory): void {
 // Static info pages (/kontakt, /doprava, /reklamacie, ...)
 // ---------------------------------------------------------------------------
 
+/** Pillar FAQ list → <details> HTML (same pattern as prerenderBlogArticle). */
+function faqSectionHtml(faqs: { question: string; answer: string }[]): string {
+  return `<section><h2>Často kladené otázky</h2>${faqs
+    .map((f) => `<details><summary>${esc(f.question)}</summary><p>${esc(f.answer)}</p></details>`)
+    .join('')}</section>`;
+}
+
+/** Pillar FAQ list → FAQPage JSON-LD (same shape as the blog one). */
+function faqPageJsonLd(faqs: { question: string; answer: string }[]): object {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+    })),
+  };
+}
+
+/** Comparison data → real <table> markup with <thead>. */
+function comparisonTableHtml(c: {
+  heading: string;
+  columnLabels: string[];
+  rows: string[][];
+}): string {
+  const head = c.columnLabels.map((l) => `<th>${esc(l)}</th>`).join('');
+  const body = c.rows
+    .map((row) => `<tr>${row.map((cell) => `<td>${esc(cell)}</td>`).join('')}</tr>`)
+    .join('');
+  return `<section><h2>${esc(c.heading)}</h2><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></section>`;
+}
+
 function prerenderInfoPage(p: InfoPage): void {
   const canonical = `${BASE_URL}${p.route}`;
   const extraLinksHtml = p.extraLinks?.length
     ? `<p>${p.extraLinks.map((l) => `<a href="${l.href}">${esc(l.label)}</a>`).join(' &middot; ')}</p>`
     : '';
+
+  const comparisonHtml = p.comparison ? comparisonTableHtml(p.comparison) : '';
+  const sectionsHtml = p.sections?.length
+    ? p.sections.map((s) => `<section><h2>${esc(s.heading)}</h2>${s.html}</section>`).join('')
+    : '';
+  const faqHtml = p.faqs?.length ? faqSectionHtml(p.faqs) : '';
 
   writePage({
     route: p.route,
@@ -521,6 +561,9 @@ function prerenderInfoPage(p: InfoPage): void {
       <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; ${esc(p.h1)}</nav>
       <h1>${esc(p.h1)}</h1>
       <p>${esc(p.intro)}</p>
+      ${comparisonHtml}
+      ${sectionsHtml}
+      ${faqHtml}
       ${extraLinksHtml}`,
     jsonLd: [
       {
@@ -531,6 +574,7 @@ function prerenderInfoPage(p: InfoPage): void {
           { '@type': 'ListItem', position: 2, name: p.h1, item: canonical },
         ],
       },
+      ...(p.faqs?.length ? [faqPageJsonLd(p.faqs)] : []),
     ],
   });
 }
@@ -628,6 +672,10 @@ function prerenderVzorky(): void {
 // ---------------------------------------------------------------------------
 
 function prerenderKuchyne(): void {
+  const processHtml = `<section><h2>Od výberu po inštaláciu</h2><ol>${KUCHYNE_PROCESS_STEPS.map(
+    (s) => `<li><strong>${esc(s.title)}</strong> — ${esc(s.description)}</li>`,
+  ).join('')}</ol></section>`;
+
   writePage({
     route: '/kuchyne',
     title: 'Kamenné pracovné dosky do kuchyne | OROSTONE',
@@ -638,7 +686,9 @@ function prerenderKuchyne(): void {
       <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Kuchyne</nav>
       <h1>Kuchyne zo sinterovaného kameňa</h1>
       <p>Sinterovaný kameň pre kuchyňu — pracovné dosky, ostrovčeky a zásteny v dekoroch, ktoré obstoja pri dennom svetle. V showroome v Bošanoch porovnáte celé platne, prejdeme cez váš pôdorys a pripravíme projekt. Inštaláciu vykonáva kamenár. Bez impregnácie, s nízkou nasiakavosťou — pre kuchyne, kde nechcete kompromis.</p>
-      <p><a href="/kategoria/sintered-stone">Prehliadnuť všetky dekory</a> &middot; <a href="/vzorky">Objednať vzorky</a> &middot; <a href="/realizacie">Realizácie</a> &middot; <a href="/kontakt">Kontakt</a></p>`,
+      ${processHtml}
+      ${faqSectionHtml(KITCHEN_FAQS)}
+      <p><a href="/kategoria/sintered-stone">Prehliadnuť všetky dekory</a> &middot; <a href="/vzorky">Objednať vzorky</a> &middot; <a href="/cennik">Cenník</a> &middot; <a href="/realizacie">Realizácie</a> &middot; <a href="/kontakt">Kontakt</a></p>`,
     jsonLd: [
       {
         '@context': 'https://schema.org',
@@ -648,6 +698,7 @@ function prerenderKuchyne(): void {
           { '@type': 'ListItem', position: 2, name: 'Kuchyne', item: `${BASE_URL}/kuchyne` },
         ],
       },
+      faqPageJsonLd(KITCHEN_FAQS),
     ],
   });
 }

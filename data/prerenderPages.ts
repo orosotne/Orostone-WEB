@@ -6,6 +6,25 @@
 // (scripts/validate-dist.ts) all consume ONE definition of the static routes.
 // Keep this module free of React imports — it is loaded by tsx build scripts.
 import { CATEGORY_SEO } from './seo/categories';
+import {
+  VYHODY_FAQ,
+  COMPARISON_DATA,
+  VYHODY_COMPARISON_COLUMNS,
+  VYHODY_VERDICTS,
+  VYHODY_RELATED_LINKS,
+  type PillarFaq,
+} from './pillars/vyhody';
+import {
+  SINTEROVANY_KAMEN_FAQ,
+  SINTEROVANY_KAMEN_COMPARISON,
+  SK_COMPARISON_COLUMNS,
+} from './pillars/sinterovanyKamen';
+
+export interface PrerenderComparison {
+  heading: string;
+  columnLabels: string[];
+  rows: string[][];
+}
 
 export interface InfoPage {
   route: string;
@@ -17,6 +36,10 @@ export interface InfoPage {
   /** Sitemap hints (carried over from the previously hand-maintained sitemap). */
   changefreq: string;
   priority: string;
+  /** Optional pillar content rendered into the prerendered HTML + FAQPage JSON-LD. */
+  faqs?: PillarFaq[];
+  comparison?: PrerenderComparison;
+  sections?: { heading: string; html: string }[];
 }
 
 export const INFO_PAGES: InfoPage[] = [
@@ -86,6 +109,19 @@ export const INFO_PAGES: InfoPage[] = [
     ],
     changefreq: 'monthly',
     priority: '0.9',
+    faqs: SINTEROVANY_KAMEN_FAQ,
+    comparison: {
+      heading: 'Porovnanie materiálov',
+      columnLabels: ['Vlastnosť', ...Object.values(SK_COMPARISON_COLUMNS)],
+      rows: SINTEROVANY_KAMEN_COMPARISON.map((r) => [
+        r.property,
+        r.sintered,
+        r.natural,
+        r.quartz,
+        r.ceramic,
+        r.laminate,
+      ]),
+    },
   },
   {
     route: '/vyhody',
@@ -98,9 +134,24 @@ export const INFO_PAGES: InfoPage[] = [
     extraLinks: [
       { label: 'Čo je sinterovaný kameň', href: '/sinterovany-kamen' },
       { label: 'Prehliadnuť dekory', href: '/kategoria/sintered-stone' },
+      ...VYHODY_RELATED_LINKS,
     ],
     changefreq: 'monthly',
     priority: '0.8',
+    faqs: VYHODY_FAQ,
+    comparison: {
+      heading: 'Sinterovaný kameň vs. ostatné materiály',
+      columnLabels: ['Vlastnosť', ...Object.values(VYHODY_COMPARISON_COLUMNS)],
+      rows: COMPARISON_DATA.map((r) => [r.property, r.sintered, r.granite, r.quartz, r.marble]),
+    },
+    sections: [
+      {
+        heading: 'Kedy zvoliť ktorý materiál',
+        html: VYHODY_VERDICTS.map(
+          (v) => `<h3>${v.material}</h3><p>${v.verdict}</p>`,
+        ).join(''),
+      },
+    ],
   },
   {
     route: '/vop',

@@ -103,6 +103,28 @@ for (const route of routes) {
     }
   }
 
+  // Pillar/info pages with FAQ or comparison data must serve them statically
+  if (route.kind === 'info') {
+    const info = route.ref as any;
+    if (info?.faqs?.length && !blocks.find((b) => b['@type'] === 'FAQPage')) {
+      fail(`${route.path}: pillar page has FAQs but no FAQPage JSON-LD`);
+    }
+    if (info?.faqs?.length && !html.includes('<details>')) {
+      fail(`${route.path}: pillar page has FAQs but no <details> in HTML`);
+    }
+    if (info?.comparison && !html.includes('<table>')) {
+      fail(`${route.path}: pillar page has comparison data but no <table> in HTML`);
+    }
+  }
+
+  // /kuchyne is prerendered by its own function — enforce its FAQ coverage too
+  if (route.path === '/kuchyne') {
+    if (!blocks.find((b) => b['@type'] === 'FAQPage')) {
+      fail(`${route.path}: missing FAQPage JSON-LD`);
+    }
+    if (!html.includes('<details>')) fail(`${route.path}: missing FAQ <details> in HTML`);
+  }
+
   // Article pages: BlogPosting + FAQPage when the article has FAQs
   if (route.kind === 'article') {
     if (!blocks.find((b) => b['@type'] === 'BlogPosting')) {
