@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "vite",
     "typecheck": "tsc --noEmit",
-    "build": "tsc --noEmit && tsx scripts/sync-shop-fallback.ts && vite build && tsx scripts/prerender.ts",
+    "build": "tsc --noEmit && tsx scripts/sync-shop-fallback.ts && vite build && tsx scripts/prerender.ts && tsx scripts/generate-seo-artifacts.ts && tsx scripts/validate-dist.ts",
+    "indexnow": "tsx scripts/indexnow-ping.ts",
     "preview": "vite preview",
     "sync:shop-fallback": "tsx scripts/sync-shop-fallback.ts",
     "gen:inspiration-thumbs": "node scripts/generate-inspiration-thumbnails.mjs"
@@ -18,7 +19,6 @@
     "@gsap/react": "^2.1.2",
     "@marsidev/react-turnstile": "^1.4.2",
     "@radix-ui/react-separator": "^1.1.8",
-    "@shopify/hydrogen-react": "^2025.10.0",
     "@supabase/supabase-js": "^2.90.0",
     "@tailwindcss/typography": "^0.5.19",
     "@vercel/analytics": "^2.0.1",

@@ -1,3 +1,6 @@
+import { INSTALLATION_RATE_PER_M2, SLAB_PRICES, formatEur } from './pricing';
+import { calculateSlabPrice } from '../lib/slab';
+
 export interface ProductFAQ {
   question: string;
   answer: string;
@@ -36,7 +39,7 @@ export const GENERIC_PRODUCT_FAQS: ProductFAQ[] = [
   },
   {
     question: 'Zabezpečujete aj montáž?',
-    answer: 'OROSTONE je dodávateľom materiálu – montáž nezabezpečujeme priamo. Na požiadanie vám radi odporučíme overených externých realizátorov, ktorí sa špecializujú na veľkoformátové platne.',
+    answer: `Áno. Zabezpečíme kompletnú realizáciu — zameranie, dopravu, opracovanie hrán, leštenie a montáž — za ${INSTALLATION_RATE_PER_M2} €/m² s DPH. Výrobu a montáž realizujú partnerskí kamenári so skúsenosťou s veľkoformátovými platňami zo sinterovaného kameňa.`,
   },
 ];
 
@@ -352,10 +355,287 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
  * Covers cases where Shopify handle differs slightly from local id.
  */
 export function getProductSEOContent(handle: string): ProductSEOContent | undefined {
-  if (PRODUCT_SEO_CONTENT[handle]) return PRODUCT_SEO_CONTENT[handle];
-  const normalized = handle.toLowerCase().replace(/[\s_]+/g, '-');
-  return PRODUCT_SEO_CONTENT[normalized];
+  const key = PRODUCT_SEO_CONTENT[handle] ? handle : handle.toLowerCase().replace(/[\s_]+/g, '-');
+  const entry = PRODUCT_SEO_CONTENT[key];
+  if (!entry) return undefined;
+  const faqs = entry.faqs ?? PRODUCT_FAQS[key];
+  return faqs ? { ...entry, faqs } : entry;
 }
+
+// ===========================================
+// PRODUCT-SPECIFIC FAQs (dekor-špecifické otázky)
+// ===========================================
+// 3 curated Q&A per decor + a generated price Q&A with live numbers from
+// data/pricing.ts (never hardcoded — synced from Shopify on every build).
+// Merged into getProductSEOContent(), so both ProductFAQSection (client)
+// and prerenderProduct (static HTML + FAQPage JSON-LD) serve them.
+
+/** Generated price FAQ — live price from the catalog snapshot. */
+function priceFaq(id: string, name: string): ProductFAQ {
+  const p = SLAB_PRICES.find((s) => s.id === id);
+  if (!p) {
+    return {
+      question: `Koľko stojí ${name}?`,
+      answer: 'Aktuálnu cenu nájdete v cenníku na stránke /cennik alebo priamo pri produkte.',
+    };
+  }
+  return {
+    question: `Koľko stojí ${name}?`,
+    answer: `Aktuálna cena je ${formatEur(p.pricePerM2)}/m² s DPH; platňa ${p.dimensions} (hrúbka ${p.thickness}) vychádza ≈ ${formatEur(
+      calculateSlabPrice(p.pricePerM2, p.dimensions),
+    )} s DPH. Kompletná realizácia — zameranie, doprava, opracovanie hrán, leštenie a montáž — sa počíta sadzbou ${INSTALLATION_RATE_PER_M2} €/m². Ceny všetkých dekorov nájdete na stránke /cennik.`,
+  };
+}
+
+const CUSTOM_PRODUCT_FAQS: Record<string, { name: string; faqs: ProductFAQ[] }> = {
+  'statuario-diamante': {
+    name: 'STATUARIO DIAMANTE',
+    faqs: [
+      {
+        question: 'Hodí sa STATUARIO DIAMANTE do bielej kuchyne?',
+        answer:
+          'Áno. Biely základ s výrazným strieborno-sivým žilkovaním funguje so svetlými skrinkami ako pokojný celok — kontrast dodáva kresba, nie farba. Vo veľkej ploche kresba vynikne, preto odporúčame pozrieť si celú platňu v showroome, nie len vzorku.',
+      },
+      {
+        question: 'Ako pôsobí žilkovanie STATUARIO DIAMANTE vo veľkej ploche?',
+        answer:
+          'Kresba je vedená naprieč platňou 3200 × 1600 mm, takže doska aj ostrovček ostávajú vizuálne súvislé s minimom spojov. Pri ostrovčeku sa dá kresba napájať (book-match) — spomeňte to pri dopyte, ovplyvňuje počet potrebných platní.',
+      },
+      {
+        question: 'Môžem mať z dekoru STATUARIO DIAMANTE aj zástenu?',
+        answer:
+          'Áno, dekor je určený na pracovné dosky, zásteny aj obklad stien. Zástena z rovnakého dekoru opticky spojí líniu s doskou; pri návrhu počítame s formátom platne tak, aby sa minimalizoval odpad.',
+      },
+    ],
+  },
+  'calacatta-top': {
+    name: 'CALACATTA TOP',
+    faqs: [
+      {
+        question: 'Čím je kresba CALACATTA TOP výnimočná?',
+        answer:
+          'Teplé zlatohnedé žilkovanie na žiarivo bielom základe patrí k najžiadanejším mramorovým vzorom. Na rozdiel od prírodného mramoru nevyžaduje impregnáciu a odoláva kyselinám aj škvrnám — kresbu mramoru dostanete bez jeho starostí.',
+      },
+      {
+        question: 'Je lesklý povrch CALACATTA TOP praktický v kuchyni?',
+        answer:
+          'Nanotech leštený povrch zvýrazní kresbu a hĺbku dekoru. V dennej prevádzke počítajte s viditeľnejšími odtlačkami než pri matnom povrchu — stačí ich zotrieť vlhkou utierkou, povrch je nenasiakavý.',
+      },
+      {
+        question: 'Kam sa CALACATTA TOP hodí najviac?',
+        answer:
+          'Na ostrovčeky a zásteny, kde kresba pôsobí ako dominanta kuchyne; funguje aj na stenách kúpeľne. Pri väčších plochách odporúčame vybrať konkrétne platne osobne kvôli nadväznosti kresby.',
+      },
+    ],
+  },
+  'givenchy-gold': {
+    name: 'GIVENCHY GOLD',
+    faqs: [
+      {
+        question: 'Ako pôsobí GIVENCHY GOLD v kombinácii s drevom?',
+        answer:
+          'Teplé zlato-okrové žilkovanie prirodzene ladí s dubom a orechom; kontrast vytvorí matná čierna batéria alebo úchytky. Dekor nesie priestor — okolie nechajte jednoduchšie, aby kresba dostala miesto.',
+      },
+      {
+        question: 'Je GIVENCHY GOLD vhodný do kuchyne aj kúpeľne?',
+        answer:
+          'Áno. Nasiakavosť pod 0,1 % a odolnosť voči kyselinám znamenajú, že povrch funguje na pracovnej doske, umývadlovej doske aj obklade steny — bez impregnácie.',
+      },
+      {
+        question: 'Čo znamená povrch 4D Marble pri GIVENCHY GOLD?',
+        answer:
+          'Označenie 4D Marble odkazuje na technológiu kresby s vysokou belosťou základu (72°). Ako dekor reaguje na svetlo si najlepšie overíte na vzorke alebo na celej platni v showroome v Bošanoch.',
+      },
+    ],
+  },
+  'roman-travertine': {
+    name: 'ROMAN TRAVERTINE',
+    faqs: [
+      {
+        question: 'Je ROMAN TRAVERTINE vhodný aj do exteriéru?',
+        answer:
+          'Áno. Na rozdiel od prírodného travertínu je mrazuvzdorný, UV stabilný a nevyžaduje impregnáciu — vhodný na terasy, fasády aj vonkajšie kuchyne.',
+      },
+      {
+        question: 'Ako pôsobí travertínová textúra vo veľkej ploche?',
+        answer:
+          'Vrstvená kresba dodáva ploche prirodzený stredomorský charakter — bez pórovitosti prírodného travertínu, takže škvrny sa nevpíjajú a údržba je jednoduchá.',
+      },
+      {
+        question: 'S čím ROMAN TRAVERTINE kombinovať?',
+        answer:
+          'So svetlým drevom, bielymi stenami a prírodnými textíliami. Dekor funguje na pracovných doskách, ostrovčekoch (aj s varičom), obkladoch stien a v kúpeľniach.',
+      },
+    ],
+  },
+  'taj-mahal': {
+    name: 'TAJ MAHAL',
+    faqs: [
+      {
+        question: 'Ako pôsobí TAJ MAHAL v kúpeľni?',
+        answer:
+          'Krémový základ s jemným zlatým žilkovaním vytvára pokojnú, kúpeľovú atmosféru. Nasiakavosť pod 0,1 % znamená odolnosť voči vlhkosti a plesniam bez impregnácie.',
+      },
+      {
+        question: 'S akými farbami TAJ MAHAL ladí?',
+        answer:
+          'S teplými tónmi — krémová, béžová, svetlé drevo, mosadzné detaily. Vhodný tam, kde chcete mäkší dojem než pri čisto bielych dekoroch.',
+      },
+      {
+        question: 'Aký je povrch Silk na dotyk?',
+        answer:
+          'Jemne zamatový, medzi matom a leskom. Je príjemný na dotyk, zhovievavý k odtlačkom a na údržbu stačí vlhká utierka s bežným saponátom.',
+      },
+    ],
+  },
+  appennino: {
+    name: 'APPENNINO',
+    faqs: [
+      {
+        question: 'Je APPENNINO vhodný ako výrazný akcent kuchyne?',
+        answer:
+          'Áno. Dynamická kresba robí z dosky alebo ostrovčeka prirodzený stred priestoru. Ak chcete pokojnejší celok, kombinujte ho s jednofarebnými skrinkami bez výrazného dekoru.',
+      },
+      {
+        question: 'Ako vyzerá kresba APPENNINO vo veľkej ploche?',
+        answer:
+          'Každá platňa má prirodzene jedinečnú kresbu. Vo formáte 3200 × 1600 mm vynikne kontinuita žilkovania — preto odporúčame vybrať si konkrétnu platňu v showroome v Bošanoch.',
+      },
+      {
+        question: 'Hodí sa APPENNINO do industriálneho interiéru?',
+        answer:
+          'Áno, prirodzená kresba funguje s betónom, kovom aj tmavším drevom. Dekor je určený na pracovné dosky, ostrovčeky, kúpeľne aj obklad stien.',
+      },
+    ],
+  },
+  'astrana-grey': {
+    name: 'ASTRANA GREY',
+    faqs: [
+      {
+        question: 'Hodí sa ASTRANA GREY do škandinávskeho interiéru?',
+        answer:
+          'Áno. Jemná sivá s decentným žilkovaním je preň typická voľba a funguje aj v talianskom minimalizme. Plocha pôsobí pokojne a nepreťahuje pozornosť na seba.',
+      },
+      {
+        question: 'Je ASTRANA GREY vhodná pre rodinnú kuchyňu?',
+        answer:
+          'Áno. Nenáročná údržba (vlhká utierka s bežným saponátom), odolnosť voči škvrnám a škrabancom — vlastnosti, ktoré v dennej prevádzke rozhodujú viac než dizajn.',
+      },
+      {
+        question: 'Môže jedna plocha ASTRANA GREY prechádzať z kuchyne do obývačky?',
+        answer:
+          'Áno. Veľkoformátové platne 3200 × 1600 mm umožňujú súvislé plochy v open-plan dispozíciách s minimom viditeľných spojov.',
+      },
+    ],
+  },
+  'super-white-extra': {
+    name: 'SUPER WHITE EXTRA',
+    faqs: [
+      {
+        question: 'Je SUPER WHITE EXTRA úplne biely alebo má kresbu?',
+        answer:
+          'Je to čistá biela s minimálnou kresbou — neutrálny základ, ktorý opticky zväčší menšie alebo tmavšie priestory a nechá vyniknúť zvyšok interiéru.',
+      },
+      {
+        question: 'Nezažltne biely povrch časom?',
+        answer:
+          'Nie. Sinterovaný kameň je UV stabilný (certifikované podľa DIN 51094) — farba sa nemení ani pri celoročnom dennom svetle, na rozdiel od bielych quartzových kompozitov pri oknách.',
+      },
+      {
+        question: 'Aký je povrch Silk (Velvet) na dotyk?',
+        answer:
+          'Jemne zamatový, medzi matom a leskom. Nezvýrazňuje odtlačky a dobre znáša každodenné čistenie bežným saponátom.',
+      },
+    ],
+  },
+  'gothic-gold': {
+    name: 'GOTHIC GOLD',
+    faqs: [
+      {
+        question: 'Kam sa hodí dramatický GOTHIC GOLD?',
+        answer:
+          'Na plochy, ktoré majú niesť priestor: ostrovček, zástena alebo stena. V kombinácii so svetlým okolím pôsobí ako prirodzený stred kuchyne.',
+      },
+      {
+        question: 'Ako reagujú zlaté žilky GOTHIC GOLD na svetlo?',
+        answer:
+          'Pod bodovým svetlom kresba vystúpi, pri tlmenom osvetlení pôsobí povrch pokojnejšie. Odporúčame pozrieť si platňu pri rôznom osvetlení v showroome v Bošanoch.',
+      },
+      {
+        question: 'Je tmavý matný povrch náročný na údržbu?',
+        answer:
+          'Nie. Matný povrch s Microtech úpravou nezvýrazňuje odtlačky a vďaka nasiakavosti pod 0,1 % sa škvrny nevpíjajú — stačí vlhká utierka.',
+      },
+    ],
+  },
+  'wild-forest': {
+    name: 'WILD FOREST',
+    faqs: [
+      {
+        question: 'Do akého interiéru sa WILD FOREST hodí?',
+        answer:
+          'K biofilnému dizajnu — dub, zeleň, textúrované textílie. Zemité tóny fungujú v novostavbách s veľkými oknami aj vo wellness zónach a kúpeľniach s voľne stojacou vaňou.',
+      },
+      {
+        question: 'Je matný povrch WILD FOREST praktický v kuchyni?',
+        answer:
+          'Áno. Matný povrch s Microtech úpravou je príjemný na dotyk, nezvýrazňuje odtlačky a škvrny sa vďaka nasiakavosti pod 0,1 % nevpíjajú.',
+      },
+      {
+        question: 'Funguje WILD FOREST aj v kúpeľni alebo saune?',
+        answer:
+          'Áno — odolnosť voči vlhkosti a plesniam robí z dekoru vhodnú voľbu na obklady, umývadlové dosky aj wellness priestory.',
+      },
+    ],
+  },
+  'nero-margiua': {
+    name: 'NERO MARGIUA',
+    faqs: [
+      {
+        question: 'Hodí sa čierny NERO MARGIUA aj do menšej kuchyne?',
+        answer:
+          'Áno, s rozvahou. Tmavý povrch pohlcuje svetlo, preto ho v menších priestoroch odporúčame kombinovať so svetlými skrinkami, alebo použiť len na ostrovček či zástenu ako akcent. V showroome si overíte, ako dekor reaguje na denné svetlo.',
+      },
+      {
+        question: 'Vidno na čiernom matnom povrchu odtlačky a škvrny?',
+        answer:
+          'Matný povrch Diamondglass je k odtlačkom zhovievavejší než lesk a nasiakavosť pod 0,1 % znamená, že škvrny sa nevpíjajú. Na dennú údržbu stačí vlhká utierka s neutrálnym saponátom.',
+      },
+      {
+        question: 'S čím NERO MARGIUA kombinovať?',
+        answer:
+          'So svetlým drevom, bielymi skrinkami a mosadznými alebo zlatými detailmi. Jemné strieborno-biele žilky prepoja čiernu dosku so svetlejším okolím, takže priestor nepôsobí ťažko.',
+      },
+    ],
+  },
+  'yabo-white': {
+    name: 'YABO WHITE',
+    faqs: [
+      {
+        question: 'Čím sa YABO WHITE líši od čisto bielych dekorov?',
+        answer:
+          'Teplý biely základ s krémovým podtónom pôsobí mäkšie než studená biela — univerzálny základ, ktorý funguje v kuchyni, chodbe aj kúpeľni.',
+      },
+      {
+        question: 'Je YABO WHITE vhodný ako prvý sinterovaný kameň do bytu?',
+        answer:
+          'Áno. Je to cenovo najdostupnejší dekor v ponuke a jeho neutrálna kresba ladí s väčšinou interiérov — rozumný vstup do kategórie bez kompromisu vo vlastnostiach materiálu.',
+      },
+      {
+        question: 'Ako sa povrch YABO WHITE čistí?',
+        answer:
+          'Vlhkou utierkou s bežným saponátom. Bez impregnácie a špeciálnych prípravkov — povrch Diamondglass je nenasiakavý a hygienický.',
+      },
+    ],
+  },
+};
+
+export const PRODUCT_FAQS: Record<string, ProductFAQ[]> = Object.fromEntries(
+  Object.entries(CUSTOM_PRODUCT_FAQS).map(([id, { name, faqs }]) => [
+    id,
+    [...faqs, priceFaq(id, name)],
+  ]),
+);
 
 /**
  * All product handles that have SEO content (used by sitemap, llms.txt generation).

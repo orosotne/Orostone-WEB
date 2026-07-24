@@ -56,7 +56,28 @@ export const EshopContact: React.FC = () => {
           },
           "priceRange": "€€€",
           "currenciesAccepted": "EUR",
-          "paymentAccepted": "Bankový prevod, Platba kartou, Apple Pay, Google Pay"
+          "paymentAccepted": "Bankový prevod, Platba kartou, Apple Pay, Google Pay",
+          "department": {
+            "@type": "LocalBusiness",
+            "name": "OROSTONE Showroom Bošany",
+            "description": "Showroom sinterovaného kameňa v renesančnom kaštieli — porovnanie celých platní 3200 × 1600 mm pri dennom svetle. Cez víkend po dohode.",
+            "telephone": "+421917588738",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "SNP 113/1",
+              "addressLocality": "Bošany",
+              "postalCode": "956 18",
+              "addressCountry": "SK"
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "09:00",
+                "closes": "17:00"
+              }
+            ]
+          }
         }) }}
       />
       <section className="py-16 lg:py-24 bg-white">
@@ -112,6 +133,15 @@ export const EshopContact: React.FC = () => {
                 <p className="text-sm text-amber-900 flex items-start gap-2">
                   <AlertTriangle size={16} className="mt-0.5 flex-shrink-0" />
                   <span>Pozor: nejedná sa o adresu showroomu.</span>
+                </p>
+              </div>
+              <div className="mt-4 pt-4 border-t border-gray-100">
+                <p className="text-sm text-gray-500 mb-1">Showroom Bošany</p>
+                <p className="text-gray-700 leading-relaxed">
+                  SNP 113/1, 956 18 Bošany
+                </p>
+                <p className="text-sm text-gray-600 mt-1">
+                  Otvorené po–pia 9:00–17:00, cez víkend po dohode.
                 </p>
               </div>
             </article>

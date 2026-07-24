@@ -1,0 +1,40 @@
+# OROSTONE — Premium Sintered Stone Surfaces
+
+> OROSTONE is a Slovak premium supplier of sintered stone (sinterovaný kameň) for kitchen countertops, bathroom vanities, wall cladding, and architectural projects. Based in Bratislava, Slovakia. We provide end-to-end service: expert consultation, digital laser templating (±0.05mm precision), CNC diamond fabrication, A-frame transport, and professional installation carried out by partner stonemasons experienced with large-format slabs. All projects completed in 10–15 working days.
+
+> For the full, detailed version of this document (product specs, FAQs, legal details), see: https://orostone.sk/llms-full.txt
+
+## Key Facts
+
+- Sintered stone is 100% mineral material sintered at 1,200°C without resins
+- Withstands temperatures up to 300°C, UV radiation, acids, and scratches
+- Near-zero porosity (under 0.1%) — stain-proof without sealing
+- Orostone catalog: 12 mm slabs in 3200 × 1600 mm format (the material itself also exists in 3 mm and 20 mm variants)
+- Mohs hardness 6–7, breaking force up to 16,000N for 20mm slabs
+- Popular finishes: matte, polished, leather/textured
+
+{{PRODUCT_CATALOG}}
+
+## Expert Blog Articles
+
+{{BLOG_ARTICLES}}
+
+## Services
+
+- Free no-obligation consultation and showroom visits
+- Digital laser templating with ±0.05mm precision
+- CNC diamond-tool fabrication (two-pass cutting standard)
+- In-house transport in custom A-frame vehicles
+- Professional installation by partner stonemasons experienced with sintered stone
+- Extended warranty and after-sales repair service
+
+## Contact
+
+- Website: https://orostone.sk
+- E-shop: https://orostone.sk
+- Email: info@orostone.sk
+- Phone: +421 917 588 738
+- Showroom: SNP 113/1, 956 18 Bošany, Slovakia — Mon–Fri 9:00–17:00, weekends by appointment
+- Registered office: Landererova 8, 811 09 Bratislava, Slovakia (not a showroom)
+- Languages: Slovak, English
+- Instagram: https://www.instagram.com/orostone.sk/

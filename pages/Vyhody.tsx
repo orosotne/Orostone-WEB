@@ -16,87 +16,21 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SEOHead } from '@/components/UI/SEOHead';
+import {
+  VYHODY_FAQ,
+  COMPARISON_DATA,
+  VYHODY_BENEFITS,
+  VYHODY_VERDICTS,
+  VYHODY_RELATED_LINKS,
+} from '@/data/pillars/vyhody';
 
 /* =============================================================
-   FAQ DATA
+   DATA — zdieľané s prerenderom cez data/pillars/vyhody.ts
    ============================================================= */
-const FAQ_ITEMS = [
-  {
-    question: 'Môžem na sinterovaný kameň položiť horúci hrniec?',
-    answer:
-      'Áno. Sinterovaný kameň odolá teplotám nad 300 °C bez zmeny farby alebo poškodenia. Na rozdiel od quartzového kompozitu (max ~150 °C) nepotrebujete podložku pod horúci riad.',
-  },
-  {
-    question: 'Ako funguje neviditeľná varná doska v sinterovanom kameni?',
-    answer:
-      'Indukčný modul sa nainštaluje priamo pod sinterovanú dosku s hrúbkou presne 12 mm. Kameň je nekovový a nepórovitý, takže elektromagnetické pole prechádza bez strát. Dôležité: platne s hrúbkou 20 mm sú príliš hrubé — elektromagnetické pole nimi neprejde dostatočne. Výsledkom je hladký, súvislý povrch bez viditeľných varných zón — varná doska je „neviditeľná".',
-  },
-  {
-    question: 'Je sinterovaný kameň bezúdržbový?',
-    answer:
-      'Takmer áno. Nasiakavosť pod 0,1 % znamená, že nepotrebuje impregnáciu ani špeciálne čistiace prostriedky. Na denné čistenie stačí vlhká utierka s pH neutrálnym saponátom.',
-  },
-  {
-    question: 'Hodí sa sinterovaný kameň na exteriér?',
-    answer:
-      'Áno. UV stabilita, mrazuvzdornosť a odolnosť voči chemikáliám robia zo sinterovaného kameňa ideálny materiál na fasády, terasy aj vonkajšie kuchyne.',
-  },
-  {
-    question: 'Aký je rozdiel oproti prírodnej žule alebo mramoru?',
-    answer:
-      'Sinterovaný kameň má nulovú pórovitosť (žula 0,1–3 %), nepotrebuje impregnáciu, je odolnejší voči škvrnám a kyselinám, a je dostupný vo veľkoformátových doskách až 3 200 × 1 600 mm bez viditeľných spojov.',
-  },
-];
+const FAQ_ITEMS = VYHODY_FAQ;
 
-/* =============================================================
-   POROVNÁVACIA TABUĽKA
-   ============================================================= */
-const COMPARISON_DATA = [
-  { property: 'Odolnosť teplu', sintered: '> 300 °C', granite: '~ 200 °C', quartz: '~ 150 °C', marble: '~ 200 °C' },
-  { property: 'Nasiakavosť', sintered: '< 0,1 %', granite: '0,1–3 %', quartz: '< 0,1 %', marble: '0,5–2 %' },
-  { property: 'Odolnosť škvrnám', sintered: 'Výborná', granite: 'Stredná', quartz: 'Výborná', marble: 'Slabá' },
-  { property: 'Impregnácia', sintered: 'Nepotrebuje', granite: 'Pravidelne', quartz: 'Nepotrebuje', marble: 'Pravidelne' },
-  { property: 'UV stabilita', sintered: 'Áno', granite: 'Čiastočne', quartz: 'Nie', marble: 'Čiastočne' },
-  { property: 'Údržba', sintered: 'Minimálna', granite: 'Stredná', quartz: 'Nízka', marble: 'Náročná' },
-  { property: 'Neviditeľná varná doska', sintered: 'Áno', granite: 'Nie', quartz: 'Nie', marble: 'Nie' },
-  { property: 'Max. rozmer dosky', sintered: '3 200 × 1 600 mm', granite: '~ 3 000 × 1 500 mm', quartz: '~ 3 050 × 1 440 mm', marble: '~ 2 400 × 1 200 mm' },
-];
-
-/* =============================================================
-   VÝHODY GRID DATA
-   ============================================================= */
-const BENEFITS = [
-  {
-    icon: Flame,
-    title: 'Odolnosť voči teplu',
-    description: 'Znáša teploty nad 300 °C. Horúci hrniec môžete položiť priamo na povrch bez poškodenia.',
-  },
-  {
-    icon: Droplets,
-    title: 'Nulová nasiakavosť',
-    description: 'Nasiakavosť pod 0,1 % — odolný voči vlhkosti, plesniam a baktériám. Ideálny do kuchyne aj kúpeľne.',
-  },
-  {
-    icon: Sparkles,
-    title: 'Odolnosť voči škvrnám',
-    description: 'Víno, káva, citrónovú šťavu — jednoducho utriete. Nepórovitý povrch nenasiakne žiadne tekutiny.',
-  },
-  {
-    icon: Sun,
-    title: 'UV stabilita',
-    description: 'Farba sa nemení ani pri celoročnom vystavení slnku. Certifikované podľa DIN 51094.',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Bez údržby',
-    description: 'Nepotrebuje impregnáciu ani špeciálne ošetrenie. Stačí vlhká utierka a bežný saponát.',
-  },
-  {
-    icon: CookingPot,
-    title: 'Neviditeľná varná doska',
-    description: 'Indukčný modul sa zabuduje priamo pod dosku. Žiadne viditeľné varné zóny — čistý, súvislý povrch.',
-  },
-];
+const BENEFIT_ICONS = [Flame, Droplets, Sparkles, Sun, ShieldCheck, CookingPot];
+const BENEFITS = VYHODY_BENEFITS.map((b, i) => ({ ...b, icon: BENEFIT_ICONS[i] }));
 
 /* =============================================================
    FAQ SCHEMA JSON-LD
@@ -316,6 +250,31 @@ export const Vyhody = () => {
             </table>
           </div>
         </div>
+
+          {/* Kedy zvoliť ktorý materiál */}
+          <div className="max-w-4xl mx-auto mt-16">
+            <h3 className="text-2xl md:text-3xl font-sans font-bold mb-8 text-center">
+              Kedy zvoliť ktorý materiál
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {VYHODY_VERDICTS.map((v) => (
+                <div key={v.material} className="p-6 bg-[#F9F9F7] rounded-3xl">
+                  <h4 className="font-bold text-brand-dark mb-2">{v.material}</h4>
+                  <p className="text-gray-600 font-light leading-relaxed">{v.verdict}</p>
+                </div>
+              ))}
+            </div>
+            <p className="text-center mt-8 text-sm text-gray-500">
+              {VYHODY_RELATED_LINKS.map((l, i) => (
+                <React.Fragment key={l.href}>
+                  {i > 0 && ' · '}
+                  <Link to={l.href} className="text-brand-gold hover:text-brand-dark transition-colors">
+                    {l.label}
+                  </Link>
+                </React.Fragment>
+              ))}
+            </p>
+          </div>
       </section>
 
       {/* ─── BLOG REFERENCES ─── */}

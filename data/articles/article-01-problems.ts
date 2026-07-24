@@ -5,7 +5,7 @@ export const ARTICLE_01: BlogArticle = {
   slug: 'problemy-so-sinterovanym-kamenom',
   category: 'risk-killers',
   publishDate: '2026-02-10',
-  lastModified: '2026-02-13',
+  lastModified: '2026-07-22',
   readTimeMinutes: 12,
   heroImage: '/images/blog/sintered-stone-problems.webp',
   author: BLOG_AUTHOR_OROSTONE,
@@ -21,13 +21,13 @@ export const ARTICLE_01: BlogArticle = {
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>
 <ul class="article-tldr">
-  <li>Sinterovaný kameň odolá teplotám do 1 200 °C — ale nie je nezničiteľný</li>
+  <li>Sinterovaný kameň odolá teplotám do 300 °C — ale nie je nezničiteľný</li>
   <li>90° hrany sú najčastejšie miesto chipovania — riešením je 2 mm chamfer</li>
   <li>Kľúčový je minimálny rádius 5 mm pri výrezoch pre drezy a varné dosky</li>
   <li>Väčšina problémov nevzniká z materiálu, ale zo zlého spracovania a inštalácie</li>
 </ul>
 
-<p>Povedzme si to na rovinu: sinterovaný kameň <strong class="gold">nie je nezničiteľný</strong>. Odolá UV žiareniu, kyselinám, teplotám do <strong>1 200 °C</strong> a škrabancom lepšie ako granit či kremeň. Ale ak ho zle spracuješ alebo nainštaluješ, <strong class="gold">praskne ti ako čokoláda</strong>.</p>
+<p>Povedzme si to na rovinu: sinterovaný kameň <strong class="gold">nie je nezničiteľný</strong>. Odolá UV žiareniu, kyselinám, teplotám do <strong>300 °C</strong> a škrabancom lepšie ako granit či kremeň. Ale ak ho zle spracuješ alebo nainštaluješ, <strong class="gold">praskne ti ako čokoláda</strong>.</p>
 
 <p>V Orostone s ním pracujeme denne. Videli sme dokonalé realizácie aj katastrofálne zlyhania. A <strong class="gold">rozdiel nie je nikdy v materiáli</strong> — vždy je v spracovaní, inštalácii a výbere správnej hrúbky.</p>
 
@@ -343,13 +343,13 @@ export const ARTICLE_01: BlogArticle = {
     content: `
 <p class="article-tldr-label">Key takeaways</p>
 <ul class="article-tldr">
-  <li>Sintered stone withstands temperatures up to 1,200 °C — but it's not indestructible</li>
+  <li>Sintered stone withstands temperatures up to 300 °C — but it's not indestructible</li>
   <li>90° edges are the most common chipping spot — a 2 mm chamfer prevents most damage</li>
   <li>Minimum 5 mm corner radius on cutouts for sinks and cooktops is critical</li>
   <li>Most problems come from bad fabrication and installation, not the material itself</li>
 </ul>
 
-<p>Let's be honest: sintered stone is <strong class="gold">not indestructible</strong>. It withstands UV radiation, acids, temperatures up to <strong>1,200 °C</strong>, and scratches better than granite or quartz. But if it's fabricated or installed incorrectly, <strong class="gold">it'll crack like chocolate</strong>.</p>
+<p>Let's be honest: sintered stone is <strong class="gold">not indestructible</strong>. It withstands UV radiation, acids, temperatures up to <strong>300 °C</strong>, and scratches better than granite or quartz. But if it's fabricated or installed incorrectly, <strong class="gold">it'll crack like chocolate</strong>.</p>
 
 <p>At Orostone, we work with sintered stone daily. We've seen flawless installations and catastrophic failures. <strong class="gold">The difference is never the material</strong> — it's always about fabrication, installation, and choosing the right thickness.</p>
 

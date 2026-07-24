@@ -237,6 +237,28 @@ export const OROSTONE_ORGANIZATION_LD = {
     availableLanguage: ['Slovak', 'English'],
     email: 'info@orostone.sk',
   },
+  department: {
+    '@type': 'LocalBusiness',
+    name: 'OROSTONE Showroom Bošany',
+    description:
+      'Showroom sinterovaného kameňa v renesančnom kaštieli — porovnanie celých platní 3200 × 1600 mm pri dennom svetle. Cez víkend po dohode.',
+    telephone: '+421917588738',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'SNP 113/1',
+      addressLocality: 'Bošany',
+      postalCode: '956 18',
+      addressCountry: 'SK',
+    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '17:00',
+      },
+    ],
+  },
   sameAs: ['https://www.instagram.com/orostone.sk/'],
 };
 

@@ -11,7 +11,7 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
     slug: 'problemy-so-sinterovanym-kamenom',
     category: 'risk-killers',
     publishDate: '2026-02-10',
-    lastModified: '2026-02-13',
+    lastModified: '2026-07-22',
     readTimeMinutes: 12,
     heroImage: '/images/blog/sintered-stone-problems.webp',
     author: BLOG_AUTHOR_OROSTONE,
@@ -105,6 +105,26 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
       title: 'Sintered Stone Edges: Complete Guide to Profiles and Durability',
       subtitle: 'From 90° sharp edge to full bullnose — physics of chipping, comparison table and repairs',
       excerpt: 'Why 90° edges chip and rounded profiles last 3× longer. Complete overview of 6 edge profiles with prices, recommendations, and a case study of a kitchen island with 3 chips.',
+    },
+  },
+  {
+    id: 'certifications-sintered-stone',
+    slug: 'certifikacie-sinterovany-kamen',
+    category: 'trust-builders',
+    publishDate: '2026-03-27',
+    readTimeMinutes: 10,
+    heroImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200',
+    author: BLOG_AUTHOR_OROSTONE,
+    tags: ['certifikácie', 'sinterovaný kameň', 'ISO normy', 'bezpečnosť potravín', 'NSF', 'CE označenie'],
+    sk: {
+      title: 'Certifikácie sinterovaného kameňa: čo znamenajú a prečo na nich záleží',
+      subtitle: 'Kompletný sprievodca normami ISO, CE, NSF/ANSI 51 a Greenguard Gold — ako čítať technický list a odlíšiť skutočnú kvalitu od marketingu',
+      excerpt: 'CE označenie, ISO 10545, NSF/ANSI 51, Greenguard Gold — čo tieto certifikácie skutočne zaručujú a ako sa nenechať oklamať "proprietárnym testovaním".',
+    },
+    en: {
+      title: 'Sintered Stone Certifications: What They Mean and Why They Matter',
+      subtitle: 'Complete guide to ISO standards, CE marking, NSF/ANSI 51 and Greenguard Gold — how to read a technical data sheet and distinguish real quality from marketing',
+      excerpt: 'CE marking, ISO 10545, NSF/ANSI 51, Greenguard Gold — what these certifications actually guarantee and how to spot "proprietary testing" for what it is.',
     },
   },
   {
@@ -236,7 +256,7 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
     slug: 'technicky-kamen-cena-pracovna-doska',
     category: 'value-comparisons',
     publishDate: '2026-05-06',
-    lastModified: '2026-05-06',
+    lastModified: '2026-07-22',
     readTimeMinutes: 12,
     heroImage: '/images/blog/technicky-kamen-pracovna-doska.webp',
     author: BLOG_AUTHOR_OROSTONE,
@@ -250,6 +270,52 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
       title: 'Engineered Stone: Price, Drawbacks and Kitchen Countertop Guide',
       subtitle: 'A guide to price, drawbacks and material choice — sintered stone, quartz composite, ceramic and solid surface',
       excerpt: 'A practical guide: what engineered stone is, which type fits a kitchen countertop, how much it costs (€250–600/rm) and what its real drawbacks are.',
+    },
+  },
+  {
+    id: 'transparent-pricing-quote',
+    slug: 'transparentne-ceny-cenova-ponuka',
+    category: 'trust-builders',
+    publishDate: '2026-07-24',
+    lastModified: '2026-07-24',
+    readTimeMinutes: 8,
+    heroImage: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200',
+    author: BLOG_AUTHOR_OROSTONE,
+    tags: ['sinterovaný kameň', 'ceny', 'cenová ponuka', 'transparentnosť', 'cena za bežný meter'],
+    sk: {
+      title: 'Transparentné ceny: čo musí obsahovať tvoja cenová ponuka',
+      subtitle: 'Sprievodca cenovou ponukou na sinterovaný kameň — bez skrytých poplatkov a prekvapení na faktúre',
+      excerpt:
+        'Dve ponuky na tú istú kuchyňu sa môžu líšiť o stovky eur — a lacnejšia môže byť v skutočnosti drahšia. Zisti, čo musí férová ponuka obsahovať a na čo si dať pozor.',
+    },
+    en: {
+      title: 'Transparent Pricing: What Your Quote Must Include',
+      subtitle: 'A guide to sintered stone quotes — no hidden fees, no surprises on the invoice',
+      excerpt:
+        'Two quotes for the same kitchen can differ by hundreds of euros — and the cheaper one may actually cost more. Learn what a fair quote must include and what to watch out for.',
+    },
+  },
+  {
+    id: 'how-to-clean-sintered-stone',
+    slug: 'ako-cistit-sinterovany-kamen',
+    category: 'control-care',
+    publishDate: '2026-07-24',
+    lastModified: '2026-07-24',
+    readTimeMinutes: 7,
+    heroImage: 'https://images.unsplash.com/photo-1563453392212-326f5e854473?w=1200',
+    author: BLOG_AUTHOR_OROSTONE,
+    tags: ['sinterovaný kameň', 'čistenie', 'údržba', 'starostlivosť', 'škvrny'],
+    sk: {
+      title: 'Ako čistiť sinterovaný kameň (jediná rutina, ktorú potrebuješ)',
+      subtitle: 'Jednoduchý návod na každodennú aj hĺbkovú údržbu — vrátane zoznamu, čo na povrch nikdy nepatrí',
+      excerpt:
+        'Najodolnejší povrch v kuchyni má paradoxne najjednoduchšiu údržbu. Vlhká utierka, saponát, hotovo. Tu je celá rutina aj postupy na zaschnuté škvrny.',
+    },
+    en: {
+      title: 'How to Clean Sintered Stone (The Only Routine You Need)',
+      subtitle: 'A simple guide to daily and deep cleaning — including the short list of what must never touch the surface',
+      excerpt:
+        "The most durable surface in your kitchen paradoxically needs the simplest care. Damp cloth, mild soap, done. Here's the full routine plus fixes for dried stains.",
     },
   },
   {

@@ -5,7 +5,7 @@ export const ARTICLE_24: BlogArticle = {
   slug: 'technicky-kamen-cena-pracovna-doska',
   category: 'value-comparisons',
   publishDate: '2026-05-06',
-  lastModified: '2026-05-06',
+  lastModified: '2026-07-22',
   readTimeMinutes: 12,
   heroImage: '/images/blog/technicky-kamen-pracovna-doska.webp',
   author: BLOG_AUTHOR_OROSTONE,
@@ -14,14 +14,14 @@ export const ARTICLE_24: BlogArticle = {
   sk: {
     title: 'Technický kameň: cena, nevýhody a pracovná doska do kuchyne',
     subtitle: 'Sprievodca cenou, nevýhodami a výberom materiálu — sinterovaný kameň, quartz kompozit, keramika a solid surface',
-    excerpt: 'Praktický sprievodca: čo je technický kameň, ktorý typ sa hodí na kuchynskú dosku, koľko stojí (250–600 €/bm) a aké má reálne nevýhody.',
-    directAnswer: 'Technický kameň je trhový pojem pre umelo vyrábané materiály — sinterovaný kameň, kremenný kompozit, keramika alebo solid surface. Cena pracovnej dosky sa orientačne pohybuje od 250 do 600 €/bm vrátane základného opracovania a montáže.',
+    excerpt: 'Praktický sprievodca: čo je technický kameň, ktorý typ sa hodí na kuchynskú dosku, koľko stojí (280–600 €/bm) a aké má reálne nevýhody.',
+    directAnswer: 'Technický kameň je trhový pojem pre umelo vyrábané materiály — sinterovaný kameň, kremenný kompozit, keramika alebo solid surface. Cena pracovnej dosky sa orientačne pohybuje od 280 do 600 €/bm vrátane základného opracovania a montáže.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>
 <ul class="article-tldr">
   <li>Technický kameň nie je jeden konkrétny materiál. Je to širší trhový názov, pod ktorým sa miešajú rôzne typy moderných povrchov.</li>
   <li>Najčastejšie sa stretnete so štyrmi kategóriami: sinterovaný kameň, kremenný kompozit, solid surface a veľkoformátový porcelán / keramika.</li>
-  <li>Cena technického kameňa na pracovnú dosku sa najčastejšie pohybuje približne od 250 do 600 €/bm vrátane základnej fabrikácie a montáže.</li>
+  <li>Cena technického kameňa na pracovnú dosku sa najčastejšie pohybuje približne od 280 do 600 €/bm vrátane základnej fabrikácie a montáže.</li>
   <li>Do kuchyne sa najčastejšie vyberá sinterovaný kameň alebo kremenný kompozit. Oba materiály majú svoje výhody, ale správajú sa inak.</li>
   <li>Najväčšie riziko nie je vždy samotný materiál. Často rozhoduje fabrikácia a montáž. Aj kvalitný materiál môže prasknúť, ak ho reže alebo montuje človek bez skúseností.</li>
 </ul>
@@ -150,7 +150,7 @@ export const ARTICLE_24: BlogArticle = {
 
 <h2 id="cena-technickeho-kamena">Cena technického kameňa: koľko stojí pracovná doska?</h2>
 
-<p>Cena technického kameňa sa nedá povedať jedným číslom. Závisí od typu materiálu, dekoru, hrúbky, výrezov, hrán, dopravy a montáže. Pri kuchynskej pracovnej doske dáva najväčší zmysel hovoriť o cene za bežný meter vrátane základného opracovania a montáže. Orientačne počítajte <strong class="gold">od 250 do 600 €/bm</strong>.</p>
+<p>Cena technického kameňa sa nedá povedať jedným číslom. Závisí od typu materiálu, dekoru, hrúbky, výrezov, hrán, dopravy a montáže. Pri kuchynskej pracovnej doske dáva najväčší zmysel hovoriť o cene za bežný meter vrátane základného opracovania a montáže. Orientačne počítajte <strong class="gold">od 280 do 600 €/bm</strong>.</p>
 
 <div class="article-highlight">
   <p><strong>Orientačné ceny pracovnej dosky pre rok 2026:</strong></p>
@@ -159,7 +159,7 @@ export const ARTICLE_24: BlogArticle = {
       <tr><th>Materiál</th><th>Orientačná cena</th><th>Charakteristika</th></tr>
     </thead>
     <tbody>
-      <tr><td>Solid surface</td><td>250 – 400 €/bm</td><td>Mäkkší materiál, vhodný skôr na kúpeľne a tvarované riešenia</td></tr>
+      <tr><td>Solid surface</td><td>280 – 400 €/bm</td><td>Mäkkší materiál, vhodný skôr na kúpeľne a tvarované riešenia</td></tr>
       <tr><td>Kremenný / quartz kompozit</td><td>280 – 480 €/bm</td><td>Rozšírený materiál, dobrý pomer ceny a výkonu</td></tr>
       <tr><td>Veľkoformátový porcelán / keramika</td><td>300 – 500 €/bm</td><td>Elegantný vzhľad, vyžaduje kvalitnú montáž</td></tr>
       <tr><td>Sinterovaný kameň</td><td>400 – 600 €/bm</td><td>Vysoká odolnosť voči teplu, UV žiareniu a škvrnám</td></tr>
@@ -283,7 +283,7 @@ export const ARTICLE_24: BlogArticle = {
     faqs: [
       {
         question: 'Koľko stojí technický kameň?',
-        answer: 'Cena technického kameňa na pracovnú dosku sa najčastejšie pohybuje približne od 250 do 600 €/bm vrátane základného opracovania a montáže. Finálna cena závisí od typu materiálu, dekoru, hrúbky, výrezov, hrán, dopravy a náročnosti montáže.',
+        answer: 'Cena technického kameňa na pracovnú dosku sa najčastejšie pohybuje približne od 280 do 600 €/bm vrátane základného opracovania a montáže. Finálna cena závisí od typu materiálu, dekoru, hrúbky, výrezov, hrán, dopravy a náročnosti montáže.',
       },
       {
         question: 'Technický kameň cena: prečo sú medzi ponukami také rozdiely?',
@@ -291,11 +291,11 @@ export const ARTICLE_24: BlogArticle = {
       },
       {
         question: 'Aká je cena technického kameňa na kuchynskú dosku?',
-        answer: 'Cena technického kameňa na kuchynskú pracovnú dosku sa orientačne pohybuje od 250 do 600 €/bm. Pri prémiových dekoroch, veľkých ostrovoch alebo book-match riešeniach môže byť cena vyššia.',
+        answer: 'Cena technického kameňa na kuchynskú pracovnú dosku sa orientačne pohybuje od 280 do 600 €/bm. Pri prémiových dekoroch, veľkých ostrovoch alebo book-match riešeniach môže byť cena vyššia.',
       },
       {
         question: 'Technicky kamen cena: aké je orientačné rozpätie?',
-        answer: 'Pri hľadaní frázy technicky kamen cena počítajte orientačne s rozpätím 250 až 600 €/bm. Lacnejšie riešenia bývajú solid surface alebo základné quartz kompozity, drahšie riešenia sú sinterovaný kameň a prémiové dekory.',
+        answer: 'Pri hľadaní frázy technicky kamen cena počítajte orientačne s rozpätím 280 až 600 €/bm. Lacnejšie riešenia bývajú solid surface alebo základné quartz kompozity, drahšie riešenia sú sinterovaný kameň a prémiové dekory.',
       },
       {
         question: 'Technicky kamen pracovna doska: je to dobrá voľba?',
@@ -303,7 +303,7 @@ export const ARTICLE_24: BlogArticle = {
       },
       {
         question: 'Technicky kamen pracovna doska cena: koľko si pripraviť?',
-        answer: 'Pri fráze technicky kamen pracovna doska cena počítajte s orientačným rozpätím 250 až 600 €/bm. Presnú cenu určí až pôdorys kuchyne, počet výrezov, dekor, hrúbka a montáž.',
+        answer: 'Pri fráze technicky kamen pracovna doska cena počítajte s orientačným rozpätím 280 až 600 €/bm. Presnú cenu určí až pôdorys kuchyne, počet výrezov, dekor, hrúbka a montáž.',
       },
       {
         question: 'Pracovna doska technicky kamen: čo je najdôležitejšie?',
@@ -339,14 +339,14 @@ export const ARTICLE_24: BlogArticle = {
   en: {
     title: 'Engineered Stone: Price, Drawbacks and Kitchen Countertop Guide',
     subtitle: 'A guide to price, drawbacks and material choice — sintered stone, quartz composite, ceramic and solid surface',
-    excerpt: 'A practical guide: what engineered stone is, which type fits a kitchen countertop, how much it costs (€250–600/rm) and what its real drawbacks are.',
-    directAnswer: 'Engineered stone is a market term for man-made materials — sintered stone, quartz composite, ceramic or solid surface. A countertop typically runs from €250 to €600 per running meter including basic fabrication and installation.',
+    excerpt: 'A practical guide: what engineered stone is, which type fits a kitchen countertop, how much it costs (€280–600/rm) and what its real drawbacks are.',
+    directAnswer: 'Engineered stone is a market term for man-made materials — sintered stone, quartz composite, ceramic or solid surface. A countertop typically runs from €280 to €600 per running meter including basic fabrication and installation.',
     content: `
 <p class="article-tldr-label">Key takeaways</p>
 <ul class="article-tldr">
   <li>Engineered stone is not one specific material. It is a broader market term that covers several different modern surfaces.</li>
   <li>You will encounter four main categories: sintered stone, quartz composite, solid surface and large-format porcelain / ceramic.</li>
-  <li>The price of engineered stone for a countertop typically ranges from €250 to €600 per running meter, including basic fabrication and installation.</li>
+  <li>The price of engineered stone for a countertop typically ranges from €280 to €600 per running meter, including basic fabrication and installation.</li>
   <li>Sintered stone or quartz composite are the most common kitchen choices. Both have advantages, but they behave differently.</li>
   <li>The biggest risk is not always the material itself. Often it is the fabrication and installation. Even high-quality material can crack if cut or installed by someone without experience.</li>
 </ul>
@@ -473,7 +473,7 @@ export const ARTICLE_24: BlogArticle = {
 
 <h2 id="engineered-stone-cost">How much does engineered stone cost?</h2>
 
-<p>The price of engineered stone cannot be expressed as a single number. It depends on material type, décor, thickness, cutouts, edges, transport and installation. For a kitchen countertop, the most useful way to think about price is per running meter, including basic fabrication and installation. Plan for <strong class="gold">from €250 to €600 per running meter</strong>.</p>
+<p>The price of engineered stone cannot be expressed as a single number. It depends on material type, décor, thickness, cutouts, edges, transport and installation. For a kitchen countertop, the most useful way to think about price is per running meter, including basic fabrication and installation. Plan for <strong class="gold">from €280 to €600 per running meter</strong>.</p>
 
 <div class="article-highlight">
   <p><strong>Indicative countertop prices for 2026:</strong></p>
@@ -482,7 +482,7 @@ export const ARTICLE_24: BlogArticle = {
       <tr><th>Material</th><th>Indicative price</th><th>Character</th></tr>
     </thead>
     <tbody>
-      <tr><td>Solid surface</td><td>€250 – 400/rm</td><td>Softer material, better suited to bathrooms and shaped solutions</td></tr>
+      <tr><td>Solid surface</td><td>€280 – 400/rm</td><td>Softer material, better suited to bathrooms and shaped solutions</td></tr>
       <tr><td>Quartz composite</td><td>€280 – 480/rm</td><td>Widely used material with a good price-to-performance ratio</td></tr>
       <tr><td>Large-format porcelain / ceramic</td><td>€300 – 500/rm</td><td>Elegant look, requires high-quality fabrication</td></tr>
       <tr><td>Sintered stone</td><td>€400 – 600/rm</td><td>High resistance to heat, UV and stains</td></tr>
@@ -606,7 +606,7 @@ export const ARTICLE_24: BlogArticle = {
     faqs: [
       {
         question: 'How much does engineered stone cost?',
-        answer: 'The price of engineered stone for a countertop typically ranges from about €250 to €600 per running meter, including basic fabrication and installation. The final price depends on material type, décor, thickness, cutouts, edges, transport and installation complexity.',
+        answer: 'The price of engineered stone for a countertop typically ranges from about €280 to €600 per running meter, including basic fabrication and installation. The final price depends on material type, décor, thickness, cutouts, edges, transport and installation complexity.',
       },
       {
         question: 'Engineered stone price: why such big differences between offers?',
@@ -614,11 +614,11 @@ export const ARTICLE_24: BlogArticle = {
       },
       {
         question: 'What is the price of engineered stone for a kitchen countertop?',
-        answer: 'For a kitchen countertop, engineered stone typically runs from €250 to €600 per running meter. With premium décors, large islands or book-match solutions, the price can be higher.',
+        answer: 'For a kitchen countertop, engineered stone typically runs from €280 to €600 per running meter. With premium décors, large islands or book-match solutions, the price can be higher.',
       },
       {
         question: 'Engineered stone price: what is the indicative range?',
-        answer: 'For an engineered stone countertop, plan for an indicative range of €250 to €600 per running meter. Cheaper solutions tend to be solid surface or entry-level quartz composite; more expensive solutions are sintered stone and premium décors.',
+        answer: 'For an engineered stone countertop, plan for an indicative range of €280 to €600 per running meter. Cheaper solutions tend to be solid surface or entry-level quartz composite; more expensive solutions are sintered stone and premium décors.',
       },
       {
         question: 'Engineered stone countertop: is it a good choice?',
@@ -626,7 +626,7 @@ export const ARTICLE_24: BlogArticle = {
       },
       {
         question: 'Engineered stone countertop price: what budget should I plan for?',
-        answer: 'For an engineered stone countertop, plan for an indicative range of €250 to €600 per running meter. The exact price depends on the kitchen floor plan, number of cutouts, décor, thickness and installation.',
+        answer: 'For an engineered stone countertop, plan for an indicative range of €280 to €600 per running meter. The exact price depends on the kitchen floor plan, number of cutouts, décor, thickness and installation.',
       },
       {
         question: 'Engineered stone countertop: what matters most?',

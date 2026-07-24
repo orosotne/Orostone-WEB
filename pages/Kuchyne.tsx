@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Ruler, Palette, Shield, Phone, ChevronDown } from 'lucide-react';
 import { SEOHead } from '@/components/UI/SEOHead';
+import { KITCHEN_FAQS, KUCHYNE_FEATURES, KUCHYNE_PROCESS_STEPS } from '@/data/pillars/kuchyne';
 
 const GALLERY_ITEMS = [
   {
@@ -48,65 +49,10 @@ const GALLERY_ITEMS = [
   },
 ];
 
-const FEATURES = [
-  {
-    icon: Ruler,
-    title: 'Na mieru',
-    description: 'Každá kuchyňa je unikátna. Dosky sú rezané CNC technológiou na presné rozmery vašej kuchyne — vrátane výrezov pre drez, varič a batériu.',
-  },
-  {
-    icon: Palette,
-    title: '12 dekórov',
-    description: 'Od klasického bieleho mramoru po dramatickú čiernu — nájdite dekór, ktorý ladí s vašou kuchyňou.',
-  },
-  {
-    icon: Shield,
-    title: 'Bez údržby',
-    description: 'Nepotrebuje impregnáciu ani špeciálne čistenie. Stačí vlhká utierka — každý deň, celé roky.',
-  },
-];
+const FEATURE_ICONS = [Ruler, Palette, Shield];
+const FEATURES = KUCHYNE_FEATURES.map((f, i) => ({ ...f, icon: FEATURE_ICONS[i] }));
 
-const PROCESS_STEPS = [
-  {
-    title: 'Pôdorys a konzultácia',
-    description: 'Prinesiete pôdorys, my prejdeme cez ostrovček, zástenu, plochy a riešenia bez kompromisu.',
-  },
-  {
-    title: 'Výber dekoru v Bošanoch',
-    description: 'V showroome v Bošanoch porovnáte celé platne pri dennom svetle a vyberiete kompozíciu.',
-  },
-  {
-    title: 'Príprava projektu',
-    description: 'Pripravíme špecifikáciu, prepojíme vás s kamenárom, ktorý zameria a spracuje dosky.',
-  },
-  {
-    title: 'Inštalácia kamenárom',
-    description: 'Kamenár dosky osadí u vás doma. My koordinujeme termín a kontrolujeme výsledok.',
-  },
-];
-
-const KITCHEN_FAQS = [
-  {
-    q: 'Koľko stojí kuchynská doska zo sinterovaného kameňa?',
-    a: 'Cena závisí od dekóru, rozmerov a počtu výrezov. Orientačne od 180 €/m² vrátane DPH. Objednajte si nezáväznú cenovú ponuku.',
-  },
-  {
-    q: 'Aký je termín dodania a inštalácie?',
-    a: 'Od konzultácie po inštaláciu kamenárom zvyčajne 2-3 týždne. Samotná inštalácia kamenárom trvá 2-3 hodiny.',
-  },
-  {
-    q: 'Znečistí sa sinterovaný kameň od jedla alebo vína?',
-    a: 'Nie. Sinterovaný kameň má prakticky nulovú nasiakavosť (< 0,1 %), takže škvrny od vína, kávy ani oleja neprenikajú do povrchu. Stačí utrieť vlhkou utierkou.',
-  },
-  {
-    q: 'Môžem položiť horúci hrniec priamo na dosku?',
-    a: 'Áno. Sinterovaný kameň odoláva teplotám nad 1 200 °C a nenechá stopy od horúcich hrncov ani panvíc.',
-  },
-  {
-    q: 'Aká hrúbka platne je lepšia — 12 mm alebo 20 mm?',
-    a: 'Pre kuchynské dosky odporúčame 20 mm — pôsobí masívnejšie a umožňuje profilované hrany. 12 mm je vhodná pre obklady a zásteny.',
-  },
-];
+const PROCESS_STEPS = KUCHYNE_PROCESS_STEPS;
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -122,8 +68,8 @@ const structuredData = {
       '@type': 'FAQPage',
       mainEntity: KITCHEN_FAQS.map((faq) => ({
         '@type': 'Question',
-        name: faq.q,
-        acceptedAnswer: { '@type': 'Answer', text: faq.a },
+        name: faq.question,
+        acceptedAnswer: { '@type': 'Answer', text: faq.answer },
       })),
     },
   ],
@@ -289,13 +235,13 @@ export const Kuchyne = () => {
           </h2>
           <div className="space-y-4">
             {KITCHEN_FAQS.map((faq) => (
-              <details key={faq.q} className="group bg-[#F9F9F7] rounded-2xl">
+              <details key={faq.question} className="group bg-[#F9F9F7] rounded-2xl">
                 <summary className="flex items-center justify-between p-6 cursor-pointer font-semibold text-brand-dark">
-                  {faq.q}
+                  {faq.question}
                   <ChevronDown size={20} className="text-gray-400 group-open:rotate-180 transition-transform" />
                 </summary>
                 <div className="px-6 pb-6 text-gray-500 font-light text-sm leading-relaxed">
-                  {faq.a}
+                  {faq.answer}
                 </div>
               </details>
             ))}

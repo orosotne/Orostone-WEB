@@ -20,8 +20,30 @@ const BASE_URL = 'https://orostone.sk';
 const baseHtml = readFileSync(resolve(DIST, 'index.html'), 'utf-8');
 
 // Blog articles (full content — TypeScript dynamic import via tsx)
-const { BLOG_ARTICLES } = await import('../data/blogArticles.js');
+const { getPublishedArticles } = await import('../data/blogArticles.js');
 const { BLOG_ARTICLES_LISTING } = await import('../data/blogArticlesMeta.js');
+
+// Shared route data (INFO_PAGES, COLOR_SUBCATEGORIES) — one definition for
+// prerender + sitemap/llms generator + validate-dist.
+const { INFO_PAGES, COLOR_SUBCATEGORIES } = await import('../data/prerenderPages.js');
+const { CATEGORY_SEO } = await import('../data/seo/categories.js');
+const { KITCHEN_FAQS, KUCHYNE_PROCESS_STEPS } = await import('../data/pillars/kuchyne.js');
+const { CENNIK_DIRECT_ANSWER, CENNIK_FAQS, CENNIK_PRICE_FACTORS, CENNIK_SCENARIOS } =
+  await import('../data/pillars/cennik.js');
+const {
+  PRICING_LAST_UPDATED,
+  INSTALLATION_RATE_PER_M2,
+  INSTALLATION_INCLUDES,
+  BUNDLE_OPTIONS,
+  COUNTERTOP_PER_BM,
+  formatEur,
+} = await import('../data/pricing.js');
+const { calculateSlabPrice } = await import('../lib/slab.js');
+const { buildProductJsonLd } = await import('../lib/productSchema.js');
+const { resolveCountryOfOrigin } = await import('../constants.js');
+const { getProductSEOContent, GENERIC_PRODUCT_FAQS } = await import('../data/product-seo-content.js');
+type InfoPage = import('../data/prerenderPages.js').InfoPage;
+type ColorSubcategory = import('../data/prerenderPages.js').ColorSubcategory;
 
 // Product SEO meta override (Vera FINAL — single source of truth, shared
 // with React side via pages/ShopProductDetail.tsx so SPA route changes also
@@ -316,6 +338,12 @@ function prerenderProduct(product: any): void {
 
   const override = PRODUCT_META_OVERRIDE[product.id];
 
+  // Product FAQ — same merge as components/ProductDetail/ProductFAQSection.tsx
+  const seoContent = getProductSEOContent(product.id);
+  const productFaqs = [...(seoContent?.faqs || []), ...GENERIC_PRODUCT_FAQS];
+
+  const slabTotal = calculateSlabPrice(product.pricePerM2, product.dimensions);
+
   writePage({
     route: `/produkt/${product.id}`,
     title: override?.title || product.metaTitle || `${product.name} | OROSTONE`,
@@ -329,55 +357,20 @@ function prerenderProduct(product: any): void {
       <article>
         <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; <a href="/kategoria/sintered-stone">Produkty</a> &rsaquo; ${esc(product.name)}</nav>
         <h1>${esc(product.name)}</h1>
-        <p><strong>${product.pricePerM2.toFixed(2)} &euro; / m²</strong></p>
+        <p><strong>${product.pricePerM2.toFixed(2)} &euro; / m² s DPH</strong> (platňa ${esc(product.dimensions)} ≈ ${slabTotal.toFixed(2)} &euro; s DPH)</p>
         <img src="${product.image}" alt="${esc(product.name)}" width="800" loading="lazy" />
         <div>${product.descriptionHtml || esc(product.description)}</div>
         ${benefitsHtml}
         <h2>Technické parametre</h2>
         ${specsHtml}
         ${appsHtml}
-        <p><a href="/vzorky">Objednať vzorky</a></p>
+        ${faqSectionHtml(productFaqs)}
+        <p><a href="/vzorky">Objednať vzorky</a> &middot; <a href="/cennik">Cenník</a></p>
       </article>`,
     jsonLd: [
-      {
-        '@context': 'https://schema.org',
-        '@type': 'Product',
-        name: product.name,
-        description: product.metaDescription || stripHtml(product.description).slice(0, 300),
-        image: product.gallery || [product.image],
-        sku: product.sku,
-        brand: { '@type': 'Brand', name: 'OROSTONE' },
-        manufacturer: { '@type': 'Organization', name: 'OROSTONE', url: BASE_URL },
-        offers: {
-          '@type': 'Offer',
-          price: product.pricePerM2.toFixed(2),
-          priceCurrency: 'EUR',
-          availability: product.inStock
-            ? 'https://schema.org/InStock'
-            : 'https://schema.org/OutOfStock',
-          url: canonical,
-          seller: { '@type': 'Organization', name: 'OROSTONE' },
-          shippingDetails: {
-            '@type': 'OfferShippingDetails',
-            shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'SK' },
-            deliveryTime: {
-              '@type': 'ShippingDeliveryTime',
-              handlingTime: {
-                '@type': 'QuantitativeValue',
-                minValue: 1,
-                maxValue: 5,
-                unitCode: 'd',
-              },
-            },
-          },
-          hasMerchantReturnPolicy: {
-            '@type': 'MerchantReturnPolicy',
-            applicableCountry: 'SK',
-            returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
-            merchantReturnDays: 14,
-          },
-        },
-      },
+      buildProductJsonLd(product, {
+        countryOfOrigin: resolveCountryOfOrigin(product, 'slovakia'),
+      }),
       {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
@@ -392,6 +385,7 @@ function prerenderProduct(product: any): void {
           { '@type': 'ListItem', position: 3, name: product.name, item: canonical },
         ],
       },
+      faqPageJsonLd(productFaqs),
     ],
   });
 }
@@ -413,14 +407,29 @@ function productListHtml(list: any[]): string {
     .join('');
 }
 
+/** Product listing → ItemList JSON-LD (category + color subcategory pages). */
+function itemListJsonLd(list: any[], listName: string): object {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: listName,
+    numberOfItems: list.length,
+    itemListElement: list.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: p.name,
+      url: `${BASE_URL}/produkt/${p.id}`,
+    })),
+  };
+}
+
 function prerenderCategoryListing(): void {
   const sintered = products.filter((p) => p.category === 'sintered-stone');
 
   writePage({
     route: '/kategoria/sintered-stone',
-    title: 'Sinterovaný kameň — dekory a platne | OROSTONE',
-    description:
-      'Sinterovaný kameň pre kuchyne a interiéry. Veľkoformátové platne 3200×1600 mm, dekory s pokojnou aj výraznou kresbou. Showroom Bošany.',
+    title: CATEGORY_SEO['sintered-stone'].title,
+    description: CATEGORY_SEO['sintered-stone'].description,
     canonical: `${BASE_URL}/kategoria/sintered-stone`,
     rootContent: `
       <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Sinterovaný kameň</nav>
@@ -441,6 +450,7 @@ function prerenderCategoryListing(): void {
           },
         ],
       },
+      itemListJsonLd(sintered, 'Sinterovaný kameň — všetky dekory'),
     ],
   });
 }
@@ -448,46 +458,6 @@ function prerenderCategoryListing(): void {
 // ---------------------------------------------------------------------------
 // Color subcategories (/kategoria/sintered-stone/{biele,bezove,sede,cierne})
 // ---------------------------------------------------------------------------
-
-interface ColorSubcategory {
-  slug: 'biele' | 'bezove' | 'sede' | 'cierne';
-  name: string; // nominative plural (e.g. „Biele")
-  /** SEO title override — fixed per-subcategory for stable indexing */
-  metaTitle: string;
-  /** SEO description override — fixed per-subcategory for stable indexing */
-  metaDescription: string;
-}
-
-const COLOR_SUBCATEGORIES: ColorSubcategory[] = [
-  {
-    slug: 'biele',
-    name: 'Biele',
-    metaTitle: 'Biely sinterovaný kameň | OROSTONE',
-    metaDescription:
-      'Biele dekory sinterovaného kameňa pre svetlé kuchyne a kúpeľne. Od čistých plôch po jemné mramorové žilkovanie. Veľké platne až 3200×1600 mm.',
-  },
-  {
-    slug: 'bezove',
-    name: 'Béžové',
-    metaTitle: 'Béžový sinterovaný kameň | OROSTONE',
-    metaDescription:
-      'Béžové dekory sinterovaného kameňa pre kuchyne, kúpeľne a interiéry. Teplé prírodné odtiene, ktoré priestor zjemnia bez toho, aby ho zaťažili.',
-  },
-  {
-    slug: 'sede',
-    name: 'Šedé',
-    metaTitle: 'Sivý sinterovaný kameň | OROSTONE',
-    metaDescription:
-      'Sivé dekory sinterovaného kameňa pre kuchyne, kde má plocha fungovať pokojne a nepretiahnuť pozornosť na seba. Od svetlej cementovej až po antracit.',
-  },
-  {
-    slug: 'cierne',
-    name: 'Čierne',
-    metaTitle: 'Čierny sinterovaný kameň | OROSTONE',
-    metaDescription:
-      'Čierne dekory sinterovaného kameňa pre kuchyne a ostrovčeky, kde má povrch niesť váhu priestoru. Veľkoformátové platne 3200×1600 mm.',
-  },
-];
 
 /** Slovak plural rules for „dekor": 1 → dekor, 2–4 → dekory, 5+ → dekorov */
 function dekorNoun(n: number): string {
@@ -532,6 +502,7 @@ function prerenderColorSubcategory(sub: ColorSubcategory): void {
           { '@type': 'ListItem', position: 3, name: sub.name, item: canonical },
         ],
       },
+      itemListJsonLd(filtered, `Sinterovaný kameň — ${sub.name} dekory`),
     ],
   });
 }
@@ -540,133 +511,50 @@ function prerenderColorSubcategory(sub: ColorSubcategory): void {
 // Static info pages (/kontakt, /doprava, /reklamacie, ...)
 // ---------------------------------------------------------------------------
 
-interface InfoPage {
-  route: string;
-  title: string;
-  description: string;
-  h1: string;
-  intro: string;
-  extraLinks?: { label: string; href: string }[];
+/** Pillar FAQ list → <details> HTML (same pattern as prerenderBlogArticle). */
+function faqSectionHtml(faqs: { question: string; answer: string }[]): string {
+  return `<section><h2>Často kladené otázky</h2>${faqs
+    .map((f) => `<details><summary>${esc(f.question)}</summary><p>${esc(f.answer)}</p></details>`)
+    .join('')}</section>`;
 }
 
-const INFO_PAGES: InfoPage[] = [
-  {
-    route: '/kontakt',
-    title: 'Kontakt | OROSTONE — sinterovaný kameň',
-    description:
-      'Cenová ponuka, vzorky alebo konzultácia k pracovnej doske zo sinterovaného kameňa. Showroom Bošany, dodanie po celom Slovensku.',
-    h1: 'Kontakt',
-    intro:
-      'OROSTONE — slovenský dodávateľ sinterovaného kameňa. Sídlo: Landererova 8, 811 09 Bratislava. Telefón: +421 917 588 738. E-mail: info@orostone.sk. Radi pre vás pripravíme konzultáciu a cenovú ponuku.',
-    extraLinks: [
-      { label: 'Objednať vzorky', href: '/vzorky' },
-      { label: 'Prehliadnuť produkty', href: '/kategoria/sintered-stone' },
-    ],
-  },
-  {
-    route: '/doprava',
-    title: 'Doprava veľkoformátových platní | OROSTONE',
-    description:
-      'Informácie o doprave, platbe a špeciálnej preprave veľkoformátových platní a vzoriek sinterovaného kameňa po celom Slovensku.',
-    h1: 'Doprava a platba',
-    intro:
-      'OROSTONE zabezpečuje špeciálnu prepravu veľkoformátových sinterovaných platní 3200×1600 mm po celom Slovensku. Platba bankovým prevodom alebo kartou. Expedícia do 1–5 pracovných dní od potvrdenia objednávky.',
-  },
-  {
-    route: '/reklamacie',
-    title: 'Reklamácie a vrátenie tovaru | OROSTONE',
-    description:
-      'Reklamačný poriadok OROSTONE, postup pri reklamácii, vrátenie tovaru a zákonná zodpovednosť za vady pri nákupe cez e-shop.',
-    h1: 'Reklamácie a vrátenie tovaru',
-    intro:
-      'Reklamačný poriadok a postup pri reklamácii tovaru zakúpeného v e-shope OROSTONE. Zákonná zodpovednosť za vady trvá 24 mesiacov. Spotrebiteľ má právo odstúpiť od kúpnej zmluvy uzavretej na diaľku do 14 dní bez uvedenia dôvodu.',
-    extraLinks: [
-      { label: 'Formulár na odstúpenie od zmluvy', href: '/odstupenie-od-zmluvy' },
-      { label: 'Všeobecné obchodné podmienky', href: '/vop' },
-    ],
-  },
-  {
-    route: '/odstupenie-od-zmluvy',
-    title: 'Odstúpenie od zmluvy | OROSTONE',
-    description:
-      'Formuláre a informácie k odstúpeniu od zmluvy pri nákupe cez OROSTONE e-shop podľa platnej spotrebiteľskej legislatívy.',
-    h1: 'Formulár na odstúpenie od zmluvy',
-    intro:
-      'Vzorový formulár na odstúpenie od kúpnej zmluvy uzavretej na diaľku podľa zákona č. 108/2024 Z.z. o ochrane spotrebiteľa. Spotrebiteľ má právo odstúpiť od zmluvy do 14 dní bez uvedenia dôvodu.',
-  },
-  {
-    route: '/sinterovany-kamen',
-    title: 'Sinterovaný kameň: cena, výhody, použitie | OROSTONE',
-    description:
-      'Čo je sinterovaný kameň, koľko stojí a kedy dáva zmysel ako pracovná doska. Praktický sprievodca pre kuchyňu, kde nechcete robiť kompromis.',
-    h1: 'Sinterovaný kameň — čo to je a prečo ho chcete',
-    intro:
-      'Sinterovaný kameň je povrch vyrobený z prírodných minerálov pod extrémnym tlakom a teplotou. Odolá teplotám nad 300 °C, škvrnám, UV žiareniu aj škrabancom. Je ideálnym materiálom na kuchynské dosky, obklady kúpeľní a architektonické projekty. Nevyžaduje impregnáciu ani zvláštnu údržbu.',
-    extraLinks: [
-      { label: 'Výhody sinterovaného kameňa', href: '/vyhody' },
-      { label: 'Všetky dekory', href: '/kategoria/sintered-stone' },
-    ],
-  },
-  {
-    route: '/vyhody',
-    title: 'Výhody sinterovaného kameňa | OROSTONE',
-    description:
-      'Sinterovaný kameň odoláva teplu, škvrnám a poškriabaniu. Pozrite porovnanie s technickým kameňom, žulou a mramorom — rozdiely, ktoré reálne rozhodujú.',
-    h1: 'Výhody sinterovaného kameňa',
-    intro:
-      'Sinterovaný kameň odolá teplotám nad 300 °C, nepotrebuje impregnáciu ani zvláštnu údržbu a umožňuje integráciu neviditeľnej indukčnej varnej dosky priamo v kuchynskej doske. V porovnaní so žulou, quartzovým kompozitom a mramorom má lepšiu tepelnú aj mechanickú odolnosť.',
-    extraLinks: [
-      { label: 'Čo je sinterovaný kameň', href: '/sinterovany-kamen' },
-      { label: 'Prehliadnuť dekory', href: '/kategoria/sintered-stone' },
-    ],
-  },
-  {
-    route: '/vop',
-    title: 'Všeobecné obchodné podmienky | OROSTONE E-Shop',
-    description:
-      'Všeobecné obchodné podmienky e-shopu OROSTONE. Informácie o objednávke, platbe, doprave, reklamáciách a právach spotrebiteľa podľa zákona č. 108/2024 Z.z.',
-    h1: 'Všeobecné obchodné podmienky',
-    intro:
-      'Všeobecné obchodné podmienky e-shopu OROSTONE upravujú vzťah medzi predávajúcim (OROSTONE) a kupujúcim pri uzatváraní kúpnych zmlúv uzatvorených na diaľku. Podmienky sú v súlade so zákonom č. 108/2024 Z.z. o ochrane spotrebiteľa.',
-  },
-  {
-    route: '/podmienky-rezervacie-ceny',
-    title: 'Podmienky rezervačného poplatku Orostone – 99 € | OROSTONE',
-    description:
-      'Podmienky úhrady a použitia rezervačného poplatku 99 € za garanciu ceny produktov Orostone na 6 mesiacov. Informácie o nevratnosti poplatku a súhlase so začatím poskytovania služby.',
-    h1: 'Podmienky rezervačného poplatku Orostone – 99 €',
-    intro:
-      'Rezervačný poplatok 99 € (vrátane DPH) je poplatkom za službu rezervácie a garantovania aktuálnej ceny produktov Orostone na obdobie 6 mesiacov. Na tejto stránke nájdete podmienky uplatnenia, informáciu o nevratnosti poplatku a poučenie spotrebiteľa o súhlase so začatím poskytovania služby pred uplynutím lehoty na odstúpenie od zmluvy podľa zákona č. 108/2024 Z.z.',
-    extraLinks: [
-      { label: 'Všeobecné obchodné podmienky', href: '/vop' },
-      { label: 'Odstúpenie od zmluvy', href: '/odstupenie-od-zmluvy' },
-    ],
-  },
-  {
-    route: '/ochrana-sukromia',
-    title: 'Ochrana osobných údajov | OROSTONE',
-    description:
-      'Zásady ochrany osobných údajov spoločnosti OROSTONE s.r.o. Spracúvanie údajov v súlade s GDPR — účely, právny základ a vaše práva.',
-    h1: 'Ochrana osobných údajov',
-    intro:
-      'OROSTONE spracúva vaše osobné údaje v súlade s Nariadením GDPR a zákonom o ochrane osobných údajov. Na tejto stránke nájdete informácie o účeloch spracúvania, právnom základe, dobe uchovávania a o vašich právach dotknutej osoby.',
-  },
-  {
-    route: '/cookies',
-    title: 'Zásady používania cookies a podobných technológií | OROSTONE',
-    description:
-      'Informácie o cookies a podobných technológiách na webe OROSTONE. Typy technológií, účely spracovania a nastavenie vlastných preferencií.',
-    h1: 'Zásady používania cookies',
-    intro:
-      'OROSTONE používa cookies a podobné technológie na zabezpečenie funkčnosti stránky, analýzu návštevnosti a cielenú reklamu. Na tejto stránke nájdete informácie o jednotlivých typoch cookies, účeloch spracovania a ako si môžete nastaviť vlastné preferencie.',
-  },
-];
+/** Pillar FAQ list → FAQPage JSON-LD (same shape as the blog one). */
+function faqPageJsonLd(faqs: { question: string; answer: string }[]): object {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+    })),
+  };
+}
+
+/** Comparison data → real <table> markup with <thead>. */
+function comparisonTableHtml(c: {
+  heading: string;
+  columnLabels: string[];
+  rows: string[][];
+}): string {
+  const head = c.columnLabels.map((l) => `<th>${esc(l)}</th>`).join('');
+  const body = c.rows
+    .map((row) => `<tr>${row.map((cell) => `<td>${esc(cell)}</td>`).join('')}</tr>`)
+    .join('');
+  return `<section><h2>${esc(c.heading)}</h2><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></section>`;
+}
 
 function prerenderInfoPage(p: InfoPage): void {
   const canonical = `${BASE_URL}${p.route}`;
   const extraLinksHtml = p.extraLinks?.length
     ? `<p>${p.extraLinks.map((l) => `<a href="${l.href}">${esc(l.label)}</a>`).join(' &middot; ')}</p>`
     : '';
+
+  const comparisonHtml = p.comparison ? comparisonTableHtml(p.comparison) : '';
+  const sectionsHtml = p.sections?.length
+    ? p.sections.map((s) => `<section><h2>${esc(s.heading)}</h2>${s.html}</section>`).join('')
+    : '';
+  const faqHtml = p.faqs?.length ? faqSectionHtml(p.faqs) : '';
 
   writePage({
     route: p.route,
@@ -677,6 +565,9 @@ function prerenderInfoPage(p: InfoPage): void {
       <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; ${esc(p.h1)}</nav>
       <h1>${esc(p.h1)}</h1>
       <p>${esc(p.intro)}</p>
+      ${comparisonHtml}
+      ${sectionsHtml}
+      ${faqHtml}
       ${extraLinksHtml}`,
     jsonLd: [
       {
@@ -687,6 +578,7 @@ function prerenderInfoPage(p: InfoPage): void {
           { '@type': 'ListItem', position: 2, name: p.h1, item: canonical },
         ],
       },
+      ...(p.faqs?.length ? [faqPageJsonLd(p.faqs)] : []),
     ],
   });
 }
@@ -784,6 +676,10 @@ function prerenderVzorky(): void {
 // ---------------------------------------------------------------------------
 
 function prerenderKuchyne(): void {
+  const processHtml = `<section><h2>Od výberu po inštaláciu</h2><ol>${KUCHYNE_PROCESS_STEPS.map(
+    (s) => `<li><strong>${esc(s.title)}</strong> — ${esc(s.description)}</li>`,
+  ).join('')}</ol></section>`;
+
   writePage({
     route: '/kuchyne',
     title: 'Kamenné pracovné dosky do kuchyne | OROSTONE',
@@ -794,7 +690,9 @@ function prerenderKuchyne(): void {
       <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Kuchyne</nav>
       <h1>Kuchyne zo sinterovaného kameňa</h1>
       <p>Sinterovaný kameň pre kuchyňu — pracovné dosky, ostrovčeky a zásteny v dekoroch, ktoré obstoja pri dennom svetle. V showroome v Bošanoch porovnáte celé platne, prejdeme cez váš pôdorys a pripravíme projekt. Inštaláciu vykonáva kamenár. Bez impregnácie, s nízkou nasiakavosťou — pre kuchyne, kde nechcete kompromis.</p>
-      <p><a href="/kategoria/sintered-stone">Prehliadnuť všetky dekory</a> &middot; <a href="/vzorky">Objednať vzorky</a> &middot; <a href="/realizacie">Realizácie</a> &middot; <a href="/kontakt">Kontakt</a></p>`,
+      ${processHtml}
+      ${faqSectionHtml(KITCHEN_FAQS)}
+      <p><a href="/kategoria/sintered-stone">Prehliadnuť všetky dekory</a> &middot; <a href="/vzorky">Objednať vzorky</a> &middot; <a href="/cennik">Cenník</a> &middot; <a href="/realizacie">Realizácie</a> &middot; <a href="/kontakt">Kontakt</a></p>`,
     jsonLd: [
       {
         '@context': 'https://schema.org',
@@ -804,6 +702,7 @@ function prerenderKuchyne(): void {
           { '@type': 'ListItem', position: 2, name: 'Kuchyne', item: `${BASE_URL}/kuchyne` },
         ],
       },
+      faqPageJsonLd(KITCHEN_FAQS),
     ],
   });
 }
@@ -850,13 +749,90 @@ function prerenderRealizacie(): void {
 }
 
 // ---------------------------------------------------------------------------
+// Cennik (price list) — same URL as SPA route /cennik
+// ---------------------------------------------------------------------------
+
+function prerenderCennik(): void {
+  const canonical = `${BASE_URL}/cennik`;
+  const slabs = [...products]
+    .filter((p) => p.category === 'sintered-stone')
+    .sort((a, b) => a.pricePerM2 - b.pricePerM2);
+
+  const tableRows = slabs
+    .map(
+      (p) =>
+        `<tr><td><a href="/produkt/${p.id}">${esc(p.name)}</a></td><td>${esc(formatEur(p.pricePerM2))}</td><td>≈ ${esc(
+          formatEur(calculateSlabPrice(p.pricePerM2, p.dimensions)),
+        )}</td></tr>`,
+    )
+    .join('');
+
+  const scenariosHtml = CENNIK_SCENARIOS.map(
+    (s: any) => `<li>${esc(s.label)}: ${s.min.toLocaleString('sk-SK')}–${s.max.toLocaleString('sk-SK')} €</li>`,
+  ).join('');
+
+  const bundlesHtml = BUNDLE_OPTIONS.map(
+    (b: any) =>
+      `<li>${b.quantity} ${b.quantity === 1 ? 'platňa' : 'platne'}: ${
+        b.discountPercent > 0 ? `−${b.discountPercent} % z ceny platní` : 'štandardná cena'
+      }</li>`,
+  ).join('');
+
+  writePage({
+    route: '/cennik',
+    title: 'Cenník sinterovaného kameňa | OROSTONE',
+    description:
+      'Aktuálne ceny všetkých dekorov sinterovaného kameňa v €/m² s DPH, cena kompletnej realizácie a orientačná cena hotovej pracovnej dosky v €/bm.',
+    canonical,
+    rootContent: `
+      <article>
+        <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Cenník</nav>
+        <h1>Cenník sinterovaného kameňa</h1>
+        <p><strong>${esc(CENNIK_DIRECT_ANSWER)}</strong></p>
+        <p>Aktualizované: <time datetime="${PRICING_LAST_UPDATED}">${PRICING_LAST_UPDATED}</time>. Ceny sa synchronizujú s e-shopom.</p>
+        <section>
+          <h2>Ceny dekorov (12 mm, 3200 × 1600 mm, s DPH)</h2>
+          <table><thead><tr><th>Dekor</th><th>Cena €/m² s DPH</th><th>Cena za platňu</th></tr></thead><tbody>${tableRows}</tbody></table>
+        </section>
+        <section>
+          <h2>Kompletná realizácia ${INSTALLATION_RATE_PER_M2} €/m² s DPH</h2>
+          <p>V cene: ${INSTALLATION_INCLUDES.join(', ')}. Výrobu a montáž realizujú partnerskí kamenári so skúsenosťou so sinterovaným kameňom.</p>
+          <ul>${bundlesHtml}</ul>
+        </section>
+        <section>
+          <h2>Orientačná cena hotovej pracovnej dosky</h2>
+          <p>Vrátane fabrikácie a montáže: <strong>${COUNTERTOP_PER_BM.min}–${COUNTERTOP_PER_BM.max} €/bm</strong>.</p>
+          <ul>${scenariosHtml}</ul>
+        </section>
+        <section>
+          <h2>Čo ovplyvňuje finálnu cenu</h2>
+          <ul>${CENNIK_PRICE_FACTORS.map((f: string) => `<li>${esc(f)}</li>`).join('')}</ul>
+        </section>
+        ${faqSectionHtml(CENNIK_FAQS)}
+        <p><a href="/vzorky">Objednať vzorku zadarmo</a> &middot; <a href="/kontakt">Poslať pôdorys</a> &middot; <a href="/podmienky-rezervacie-ceny">Podmienky rezervácie ceny</a></p>
+      </article>`,
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'OROSTONE', item: `${BASE_URL}/` },
+          { '@type': 'ListItem', position: 2, name: 'Cenník', item: canonical },
+        ],
+      },
+      faqPageJsonLd(CENNIK_FAQS),
+    ],
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
 console.log('\n🔨 Prerendering static pages...\n');
 
 // Blog articles (only published)
-const published = (BLOG_ARTICLES as any[]).filter((a) => new Date(a.publishDate) <= new Date());
+const published = getPublishedArticles() as any[];
 console.log(`Blog articles (${published.length}):`);
 for (const article of published) {
   prerenderBlogArticle(article);
@@ -895,6 +871,11 @@ for (const page of INFO_PAGES) {
 console.log('\nVzorky:');
 prerenderVzorky();
 console.log('  ✓ /vzorky');
+
+// Cennik
+console.log('\nCennik:');
+prerenderCennik();
+console.log('  ✓ /cennik');
 
 // Kuchyne
 console.log('\nKuchyne:');

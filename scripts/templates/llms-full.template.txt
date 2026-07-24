@@ -1,0 +1,146 @@
+# OROSTONE — Full LLM Reference Document
+
+> This is the complete, detailed reference for OROSTONE. For a concise summary, see: https://orostone.sk/llms.txt
+
+## Company Overview
+
+OROSTONE s.r.o. is a Slovak premium supplier of large-format sintered stone (veľkoformátové sinterované platne) for residential and commercial interiors. Founded and operating in Bratislava, Slovakia. We supply, cut, and deliver premium sintered stone slabs. We are not a manufacturer — we source from leading European producers and provide complete turnkey service.
+
+**Legal details:**
+- Company: OROSTONE s.r.o.
+- Address: Landererova 8, 811 09 Bratislava, mestská časť Staré Mesto (note: registered office, not showroom)
+- Showroom: SNP 113/1, 956 18 Bošany (Renaissance mansion) — Mon–Fri 9:00–17:00, weekends by appointment
+- IČO: 55 254 772
+- DIČ: 2121930580
+- IČ DPH: SK2121930580 (VAT registered since 11 April 2023, §4)
+- Registered: Obchodný register Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B
+- Email: info@orostone.sk
+- Phone: +421 917 588 738
+- Website: https://orostone.sk
+- Instagram: https://www.instagram.com/orostone.sk/
+
+---
+
+## What Is Sintered Stone?
+
+Sintered stone (sinterovaný kameň) is a premium surface material made from 100% natural minerals — clay, feldspar, silica, and natural pigments — compressed under 15,000 tonnes of pressure and fired at 1,200°C for 45 minutes. No resins, no artificial binders. The result is an ultra-dense, ultra-hard surface that mimics the appearance of natural stone (marble, travertine, concrete) while dramatically outperforming it in durability.
+
+**Technical properties:**
+- Porosity: < 0.1% (near-zero — stain-proof without sealing)
+- Mohs hardness: 6–7 (diamond is 10, granite is 6–7)
+- Heat resistance: up to 300°C continuous, 500°C short-term
+- UV resistance: no fading outdoors or in bright light
+- Flexural strength: up to 16,000N for 20mm slabs
+- Chemical resistance: resistant to acids (lemon, vinegar), alkalis, solvents
+- Frost resistance: suitable for exterior applications
+- Food safety: certified for direct food contact
+
+**Available thicknesses:**
+- 3mm: wall cladding, furniture fronts, overlay
+- 6mm: lightweight applications, furniture
+- 12mm: standard countertops, floors, walls
+- 20mm: premium worktops, outdoor, high-load floors
+
+**Standard slab sizes:** 3200×1600mm, 3200×1440mm (varies by design)
+
+**Finishes available:**
+- Matte (matný): softer appearance, hides fingerprints, feels silky
+- Polished (leštený): mirror-like, dramatic veining, shows fingerprints more
+- Leather/Textured (štruktúrovaný): tactile surface, non-slip
+
+---
+
+## Product Catalog — Complete Specifications
+
+All products are large-format sintered stone slabs (veľkoformátové platne). Orostone catalog: 12 mm thickness, 3200 × 1600 mm format. Prices are live from the e-shop catalog, incl. VAT.
+
+{{PRODUCT_CATALOG_FULL}}
+
+---
+
+## Frequently Asked Questions
+
+### General Product FAQs
+
+**Q: Is sintered stone suitable for bathrooms?**
+A: Yes. Porcelain large-format slabs have near-zero porosity (< 0.1%), making them ideal for bathrooms, showers, and wellness spaces. No sealing required. They withstand permanent water contact without damage.
+
+**Q: How do I care for the surface?**
+A: Maintenance is minimal — warm water and mild soap is sufficient. The material is non-porous, requires no sealing or waxing. It resists common cleaning products including mild acids (lemon, vinegar).
+
+**Q: Can I place a hot pot directly on the surface?**
+A: Yes. Sintered stone withstands temperatures up to 300°C. You can place hot pots or pans directly on the surface without risk of damage or discolouration.
+
+**Q: What is the delivery time?**
+A: Stock slabs are typically delivered within 5 working days after payment confirmation. Custom projects (with cutting and edge profiling) are completed within 15 working days.
+
+**Q: Do you provide installation?**
+A: Yes. OROSTONE arranges complete realization — templating, transport, edge fabrication, polishing and installation — at €279/m² incl. VAT. Fabrication and installation are carried out by partner stonemasons experienced with large-format sintered stone slabs.
+
+**Q: What is the price per m²?**
+A: Slab material (12 mm, 3200 × 1600 mm) ranges from €{{SLAB_PRICE_MIN}} to €{{SLAB_PRICE_MAX}}/m² incl. VAT depending on the decor — full price list at https://orostone.sk/cennik. A finished countertop including fabrication and installation is typically €280–600 per running meter. Send us a floor plan for a precise quote.
+
+**Q: Is sintered stone the same as Dekton or Neolith?**
+A: Dekton (Cosentino) and Neolith are brand names for sintered stone — the same technology with different branding and proprietary formulations. OROSTONE sources from European producers offering equivalent technical performance.
+
+**Q: Can sintered stone be used outdoors?**
+A: Yes, some designs (e.g. Roman Travertine) are frost-resistant and rated for exterior use — terraces, balconies, pool surrounds. Confirm with us which specific design suits your outdoor project.
+
+---
+
+## The Orostone Process — 10 Steps
+
+1. **Consultation** — Free initial call or showroom visit. We assess your project, space, and style preferences. Duration: 30–60 minutes.
+2. **Material selection** — We bring physical samples of your shortlisted designs. You see and touch the actual material in your space.
+3. **Digital laser templating** — Our technician visits your site with a Leica laser scanner. Precision: ±0.05mm. No room for measurement error.
+4. **CNC design** — The digital template is imported into our CAD software. We design every cut, edge profile, and cutout (sink, hob, etc.) digitally.
+5. **Material ordering** — We order your specific slab batch from the manufacturer. Typically 5–10 working days lead time.
+6. **CNC fabrication** — Professional two-pass diamond-tool cutting on precision CNC machines. All edge profiles (half-bullnose, mitre, pencil) finished in our facility.
+7. **Quality control** — Every piece inspected for chips, micro-cracks, colour consistency. Any issue caught before delivery.
+8. **Transport** — In-house delivery in custom A-frame vehicles. Slabs travel vertically to prevent flexion damage. Crew of 2 minimum for handling.
+9. **Installation** — Certified technicians handle substrate preparation, adhesive selection, levelling, and placement. Expansion joints where required.
+10. **Final inspection** — Post-installation walkthrough with client. Minor adjustments, sealant application to joints where specified. Warranty documentation provided.
+
+Total project timeline: 10–15 working days from approved template to completed installation.
+
+---
+
+## Shipping and Payment Information
+
+- **Delivery area:** Slovak Republic (primary), Czech Republic (available on request)
+- **Delivery method:** In-house A-frame vehicle transport — not courier/pallet delivery
+- **Payment:** Bank transfer (IBAN provided on invoice), card payment available
+- **Currency:** EUR
+- **VAT:** 23% Slovak DPH included in all prices (IČ DPH: SK2121930580)
+- **Minimum order:** No formal minimum — single slab orders accepted
+- **Shipping cost:** Calculated individually based on project size and location
+
+---
+
+## Returns and Complaints (Reklamácie)
+
+- **Return window:** 14 days for uncut/unmodified standard goods
+- **Custom-cut material:** Cannot be returned (made-to-measure)
+- **Damaged goods:** Report within 24 hours of delivery with photographic evidence
+- **Warranty:** 24 months on material defects; installation warranty per contractor
+- **Complaint process:** Email info@orostone.sk with order number, photos, and description
+
+---
+
+## Blog — Key Insights
+
+{{BLOG_INSIGHTS}}
+
+---
+
+## Contact
+
+- Website: https://orostone.sk
+- Email: info@orostone.sk
+- Phone: +421 917 588 738
+- Address: Landererova 8, 811 09 Bratislava (registered office — not showroom; consultations by appointment)
+- Showroom: by appointment only — contact via email or phone
+- Business hours: Mon–Fri 8:00–17:00 (CET)
+- Languages: Slovak, English
+- Instagram: https://www.instagram.com/orostone.sk/
+- Response time: Within 1 business day for email inquiries
