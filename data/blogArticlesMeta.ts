@@ -273,6 +273,52 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
     },
   },
   {
+    id: 'transparent-pricing-quote',
+    slug: 'transparentne-ceny-cenova-ponuka',
+    category: 'trust-builders',
+    publishDate: '2026-07-24',
+    lastModified: '2026-07-24',
+    readTimeMinutes: 8,
+    heroImage: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200',
+    author: BLOG_AUTHOR_OROSTONE,
+    tags: ['sinterovaný kameň', 'ceny', 'cenová ponuka', 'transparentnosť', 'cena za bežný meter'],
+    sk: {
+      title: 'Transparentné ceny: čo musí obsahovať tvoja cenová ponuka',
+      subtitle: 'Sprievodca cenovou ponukou na sinterovaný kameň — bez skrytých poplatkov a prekvapení na faktúre',
+      excerpt:
+        'Dve ponuky na tú istú kuchyňu sa môžu líšiť o stovky eur — a lacnejšia môže byť v skutočnosti drahšia. Zisti, čo musí férová ponuka obsahovať a na čo si dať pozor.',
+    },
+    en: {
+      title: 'Transparent Pricing: What Your Quote Must Include',
+      subtitle: 'A guide to sintered stone quotes — no hidden fees, no surprises on the invoice',
+      excerpt:
+        'Two quotes for the same kitchen can differ by hundreds of euros — and the cheaper one may actually cost more. Learn what a fair quote must include and what to watch out for.',
+    },
+  },
+  {
+    id: 'how-to-clean-sintered-stone',
+    slug: 'ako-cistit-sinterovany-kamen',
+    category: 'control-care',
+    publishDate: '2026-07-24',
+    lastModified: '2026-07-24',
+    readTimeMinutes: 7,
+    heroImage: 'https://images.unsplash.com/photo-1563453392212-326f5e854473?w=1200',
+    author: BLOG_AUTHOR_OROSTONE,
+    tags: ['sinterovaný kameň', 'čistenie', 'údržba', 'starostlivosť', 'škvrny'],
+    sk: {
+      title: 'Ako čistiť sinterovaný kameň (jediná rutina, ktorú potrebuješ)',
+      subtitle: 'Jednoduchý návod na každodennú aj hĺbkovú údržbu — vrátane zoznamu, čo na povrch nikdy nepatrí',
+      excerpt:
+        'Najodolnejší povrch v kuchyni má paradoxne najjednoduchšiu údržbu. Vlhká utierka, saponát, hotovo. Tu je celá rutina aj postupy na zaschnuté škvrny.',
+    },
+    en: {
+      title: 'How to Clean Sintered Stone (The Only Routine You Need)',
+      subtitle: 'A simple guide to daily and deep cleaning — including the short list of what must never touch the surface',
+      excerpt:
+        "The most durable surface in your kitchen paradoxically needs the simplest care. Damp cloth, mild soap, done. Here's the full routine plus fixes for dried stains.",
+    },
+  },
+  {
     id: 'umely-kamen-pracovna-doska',
     slug: 'umely-kamen-pracovna-doska',
     category: 'value-comparisons',

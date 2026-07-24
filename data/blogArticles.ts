@@ -17,6 +17,8 @@ import { ARTICLE_22 } from './articles/article-22-invisible-cooktop';
 import { ARTICLE_23 } from './articles/article-23-kitchen-island';
 import { ARTICLE_24 } from './articles/article-24-technicky-kamen';
 import { ARTICLE_25 } from './articles/article-25-umely-kamen-pracovna-doska';
+import { ARTICLE_09 } from './articles/article-09-transparentne-ceny';
+import { ARTICLE_19 } from './articles/article-19-ako-cistit';
 
 // ---------------------------------------------------------------------------
 // Stub articles (content coming soon)
@@ -53,41 +55,6 @@ const ARTICLE_08: BlogArticle = {
       { question: 'How do I spot low-quality sintered stone?', answer: 'Article coming soon...' },
       { question: 'What should a technical data sheet include?', answer: 'Article coming soon...' },
       { question: 'Is a low price always a warning sign?', answer: 'Article coming soon...' },
-    ],
-  },
-};
-
-const ARTICLE_09: BlogArticle = {
-  id: 'transparent-pricing-quote',
-  slug: 'transparentne-ceny-cenova-ponuka',
-  category: 'trust-builders',
-  publishDate: '2026-04-21',
-  readTimeMinutes: 7,
-  heroImage: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200',
-  author: BLOG_AUTHOR_OROSTONE,
-  tags: ['sinterovaný kameň', 'ceny', 'cenová ponuka', 'transparentnosť'],
-  sk: {
-    title: 'Transparentné ceny: čo musí obsahovať tvoja cenová ponuka',
-    subtitle: 'Sprievodca cenovou ponukou na sinterovaný kameň — bez skrytých poplatkov',
-    excerpt: 'Zisti, čo by mala obsahovať férová cenová ponuka a na čo si dať pozor.',
-    directAnswer: 'Kvalitná cenová ponuka musí obsahovať cenu materiálu, fabrikáciu, dopravu, inštaláciu a DPH. Skryté náklady ako výrezy, profily hrán a waste factor by mali byť uvedené zvlášť.',
-    content: '<p>Článok sa pripravuje...</p>',
-    faqs: [
-      { question: 'Čo by mala obsahovať cenová ponuka?', answer: 'Článok sa pripravuje...' },
-      { question: 'Aké skryté náklady hľadať?', answer: 'Článok sa pripravuje...' },
-      { question: 'Prečo sa ceny medzi dodávateľmi líšia?', answer: 'Článok sa pripravuje...' },
-    ],
-  },
-  en: {
-    title: 'Transparent Pricing: What Your Quote Must Include',
-    subtitle: 'A guide to sintered stone quotes — no hidden fees',
-    excerpt: 'Find out what a fair quote should include and what to watch out for.',
-    directAnswer: 'A quality quote must include material cost, fabrication, delivery, installation, and VAT. Hidden costs like cutouts, edge profiles, and waste factor should be listed separately.',
-    content: '<p>Article coming soon...</p>',
-    faqs: [
-      { question: 'What should a sintered stone quote include?', answer: 'Article coming soon...' },
-      { question: 'What hidden costs should I look for?', answer: 'Article coming soon...' },
-      { question: 'Why do prices vary between suppliers?', answer: 'Article coming soon...' },
     ],
   },
 };
@@ -302,41 +269,6 @@ const ARTICLE_18: BlogArticle = {
   },
 };
 
-const ARTICLE_19: BlogArticle = {
-  id: 'how-to-clean-sintered-stone',
-  slug: 'ako-cistit-sinterovany-kamen',
-  category: 'control-care',
-  publishDate: '2026-07-07',
-  readTimeMinutes: 6,
-  heroImage: 'https://images.unsplash.com/photo-1563453392212-326f5e854473?w=1200',
-  author: BLOG_AUTHOR_OROSTONE,
-  tags: ['sinterovaný kameň', 'čistenie', 'údržba', 'starostlivosť'],
-  sk: {
-    title: 'Ako čistiť sinterovaný kameň (jediná rutina, ktorú potrebuješ)',
-    subtitle: 'Jednoduchý návod na každodennú aj hĺbkovú údržbu sinterovaného kameňa',
-    excerpt: 'Čistenie sinterovaného kameňa je jednoduchšie, než si myslíš. Stačí dodržiavať jednu rutinu.',
-    directAnswer: 'Na denné čistenie stačí vlhká handrička s neutrálnym saponátom. Sinterovaný kameň nepotrebuje impregnáciu ani špeciálne prípravky. Na odolné škvrny použi izopropylalkohol.',
-    content: '<p>Článok sa pripravuje...</p>',
-    faqs: [
-      { question: 'Aký čistiaci prostriedok použiť?', answer: 'Článok sa pripravuje...' },
-      { question: 'Potrebuje sinterovaný kameň impregnáciu?', answer: 'Článok sa pripravuje...' },
-      { question: 'Ako odstrániť zaschnuté škvrny?', answer: 'Článok sa pripravuje...' },
-    ],
-  },
-  en: {
-    title: 'How to Clean Sintered Stone (The Only Routine You Need)',
-    subtitle: 'A simple guide to daily and deep cleaning of sintered stone',
-    excerpt: 'Cleaning sintered stone is easier than you think. Just follow one routine.',
-    directAnswer: 'For daily cleaning, a damp cloth with neutral soap is all you need. Sintered stone requires no sealing or special products. For stubborn stains, use isopropyl alcohol.',
-    content: '<p>Article coming soon...</p>',
-    faqs: [
-      { question: 'What cleaning product should I use?', answer: 'Article coming soon...' },
-      { question: 'Does sintered stone need sealing?', answer: 'Article coming soon...' },
-      { question: 'How do I remove dried stains?', answer: 'Article coming soon...' },
-    ],
-  },
-};
-
 const ARTICLE_20: BlogArticle = {
   id: 'what-damages-sintered-stone',
   slug: 'co-poskodzuje-sinterovany-kamen',
@@ -412,14 +344,12 @@ const ARTICLE_21: BlogArticle = {
 // ---------------------------------------------------------------------------
 const STUB_ARTICLES: BlogArticle[] = [
   ARTICLE_08,
-  ARTICLE_09,
   ARTICLE_11,
   ARTICLE_12,
   ARTICLE_14,
   ARTICLE_15,
   ARTICLE_17,
   ARTICLE_18,
-  ARTICLE_19,
   ARTICLE_20,
   ARTICLE_21,
 ];
@@ -435,9 +365,11 @@ const ALL_ARTICLES: BlogArticle[] = [
   ARTICLE_05,
   ARTICLE_06,
   ARTICLE_07,
+  ARTICLE_09,
   ARTICLE_10,
   ARTICLE_13,
   ARTICLE_16,
+  ARTICLE_19,
   ARTICLE_22,
   ARTICLE_23,
   ARTICLE_24,
