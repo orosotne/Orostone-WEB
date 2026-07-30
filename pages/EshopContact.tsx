@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, AlertTriangle } from 'lucide-react';
+import { Mail, Phone, MapPin, AlertTriangle, Building2, Clock } from 'lucide-react';
 import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
 
 export const EshopContact: React.FC = () => {
@@ -100,11 +100,58 @@ export const EshopContact: React.FC = () => {
       <section className="pb-16 lg:pb-24 bg-white">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-            <article className="rounded-2xl border border-gray-200 p-6 sm:p-8 bg-white shadow-sm">
-              <div className="w-12 h-12 rounded-full bg-brand-gold/15 flex items-center justify-center mb-5">
-                <MapPin className="text-brand-dark" size={20} />
+            {/* Showroom = jediná adresa, kam majú klienti chodiť. Ide prvý a cez celú šírku,
+                aby si ho nikto nepomýlil so sídlom v Bratislave. */}
+            <article className="md:col-span-2 rounded-2xl border-2 border-brand-gold/50 p-6 sm:p-8 bg-brand-gold/10 shadow-sm">
+              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-brand-gold/25 flex items-center justify-center flex-shrink-0">
+                      <MapPin className="text-brand-dark" size={20} />
+                    </div>
+                    <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-dark/70">
+                      Tu nás nájdete
+                    </span>
+                  </div>
+                  <h2 className="text-xl sm:text-2xl font-bold text-brand-dark mb-2">Showroom Bošany</h2>
+                  <p className="text-lg font-semibold text-brand-dark">SNP 113/1, 956 18 Bošany</p>
+                  <p className="text-gray-600">Renesančný kaštieľ</p>
+                  <p className="text-sm text-gray-700 flex items-center gap-2 mt-3">
+                    <Clock size={16} className="flex-shrink-0" />
+                    Po–pia 9:00–17:00, cez víkend po dohode
+                  </p>
+                  <p className="text-gray-600 leading-relaxed mt-4 max-w-xl">
+                    Celé platne 3200 × 1600 mm si tu pozriete pri dennom svetle a porovnáte dekory
+                    vo veľkej ploche. Na malej vzorke sa kresba ani mierka posúdiť nedajú.
+                  </p>
+                </div>
+                <div className="flex flex-col gap-3 lg:w-64 lg:flex-shrink-0">
+                  <a
+                    href="https://www.google.com/maps?q=SNP+113%2F1%2C+956+18+Bo%C5%A1any"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-brand-dark text-white px-5 py-3 text-sm font-bold uppercase tracking-wider hover:bg-brand-gold hover:text-brand-dark transition-colors"
+                  >
+                    <MapPin size={16} />
+                    Zobraziť na mape
+                  </a>
+                  <a
+                    href="tel:+421917588738"
+                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-brand-dark/30 text-brand-dark px-5 py-3 text-sm font-bold uppercase tracking-wider hover:bg-brand-dark hover:text-white transition-colors"
+                  >
+                    <Phone size={16} />
+                    Dohodnúť návštevu
+                  </a>
+                </div>
               </div>
-              <h2 className="text-xl font-bold text-brand-dark mb-3">Adresa</h2>
+            </article>
+
+            <article className="rounded-2xl border border-gray-200 p-6 sm:p-8 bg-white shadow-sm">
+              <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mb-5">
+                <Building2 className="text-gray-500" size={20} />
+              </div>
+              <h2 className="text-xl font-bold text-brand-dark mb-1">Sídlo a fakturačné údaje</h2>
+              <p className="text-sm text-gray-500 mb-4">Adresa pre faktúry a poštu, nie pre návštevu.</p>
               <p className="text-gray-700 leading-relaxed">
                 Orostone s.r.o.
                 <br />
@@ -112,6 +159,15 @@ export const EshopContact: React.FC = () => {
                 <br />
                 mestská časť Staré Mesto
               </p>
+              <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3">
+                <p className="text-sm text-amber-900 flex items-start gap-2">
+                  <AlertTriangle size={16} className="mt-0.5 flex-shrink-0" />
+                  <span>
+                    Na tejto adrese nie je showroom ani predajňa. Platne si pozriete
+                    v <strong className="font-semibold">Bošanoch, SNP 113/1</strong>.
+                  </span>
+                </p>
+              </div>
               <div className="mt-4 space-y-1 text-sm text-gray-600">
                 <p>IČO: 55 254 772</p>
                 <p>DIČ: 2121930580</p>
@@ -128,21 +184,6 @@ export const EshopContact: React.FC = () => {
                   <Mail size={16} />
                   info@orostone.sk
                 </a>
-              </div>
-              <div className="mt-5 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3">
-                <p className="text-sm text-amber-900 flex items-start gap-2">
-                  <AlertTriangle size={16} className="mt-0.5 flex-shrink-0" />
-                  <span>Pozor: nejedná sa o adresu showroomu.</span>
-                </p>
-              </div>
-              <div className="mt-4 pt-4 border-t border-gray-100">
-                <p className="text-sm text-gray-500 mb-1">Showroom Bošany</p>
-                <p className="text-gray-700 leading-relaxed">
-                  SNP 113/1, 956 18 Bošany
-                </p>
-                <p className="text-sm text-gray-600 mt-1">
-                  Otvorené po–pia 9:00–17:00, cez víkend po dohode.
-                </p>
               </div>
             </article>
 
