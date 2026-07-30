@@ -316,10 +316,17 @@ const FooterComponent: React.FC<FooterProps> = ({ categories, isProductDetail = 
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-brand-gold flex-shrink-0 mt-0.5" />
-                <a href="https://www.google.com/maps?q=Landererova+8,+811+09+Bratislava" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white text-sm transition-colors">
-                  Landererova 8<br />
-                  811 09 Bratislava
-                </a>
+                <div className="flex flex-col gap-2">
+                  <a href="https://www.google.com/maps?q=SNP+113%2F1%2C+956+18+Bo%C5%A1any" target="_blank" rel="noopener noreferrer" className="group">
+                    <span className="block text-white group-hover:text-brand-gold transition-colors text-sm">SNP 113/1, 956 18 Bošany</span>
+                    <span className="block text-gray-400 text-xs">Showroom — tu nás nájdete</span>
+                  </a>
+                  {/* Zámerne bez odkazu na mapu — klienti si sídlo mýlili so showroomom. */}
+                  <div>
+                    <span className="block text-gray-400 text-sm">Landererova 8, 811 09 Bratislava</span>
+                    <span className="block text-gray-500 text-xs">Sídlo a fakturačná adresa, nie showroom</span>
+                  </div>
+                </div>
               </li>
             </ul>
           </div>
