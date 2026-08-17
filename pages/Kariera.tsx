@@ -38,14 +38,14 @@ const JOB_ICONS: Record<string, LucideIcon> = {
 };
 
 /**
- * Základná zložka mzdy v tvare, ktorý vyžaduje § 62 ods. 2 zákona
- * č. 5/2004 Z. z. — vždy hrubá mzda, aby bolo jasné, o aké číslo ide.
+ * Rozloží mzdu na časti, aby sa dala vysádzať so zvýraznenou sumou.
+ * Vždy hrubá mzda — § 62 ods. 2 zákona č. 5/2004 Z. z. žiada uviesť
+ * sumu základnej zložky mzdy a musí byť zrejmé, o aké číslo ide.
  */
-const formatSalary = (salary: NonNullable<JobOpening['salary']>): string => {
-  const amount = salary.min.toLocaleString('sk-SK');
-  const period = salary.unit === 'MONTH' ? 'mesiac' : 'hodinu';
-  return `Základná zložka mzdy od ${amount} € brutto / ${period}`;
-};
+const salaryParts = (salary: NonNullable<JobOpening['salary']>) => ({
+  amount: `${salary.min.toLocaleString('sk-SK')} €`,
+  period: salary.unit === 'MONTH' ? 'mesiac' : 'hodinu',
+});
 
 /** Slovenské skloňovanie po číslovke: 1 pozícia · 2–4 pozície · 5+ pozícií. */
 const openingsHeading = (count: number): string => {
@@ -128,13 +128,25 @@ const JobCard: React.FC<{
                 <Briefcase size={13} className="text-brand-gold mt-0.5 flex-shrink-0" />
                 {job.employmentType}
               </span>
-              {job.salary && (
-                <span className="inline-flex items-start gap-1.5 font-semibold text-brand-dark">
-                  <Wallet size={13} className="text-brand-gold mt-0.5 flex-shrink-0" />
-                  {formatSalary(job.salary)}
-                </span>
-              )}
             </span>
+
+            {/* Mzda — vyňatá z drobného meta riadku, je to hlavné kritérium,
+                podľa ktorého ľudia ponuky porovnávajú. */}
+            {job.salary && (
+              <span className="mt-3 inline-flex items-center gap-2.5 rounded-full bg-brand-gold/15 pl-3 pr-4 py-2">
+                <Wallet size={16} className="text-brand-gold flex-shrink-0" />
+                <span className="flex items-baseline gap-1.5 flex-wrap">
+                  <span className="text-xs text-gray-500">od</span>
+                  <span className="text-lg sm:text-xl font-bold text-brand-dark leading-none">
+                    {salaryParts(job.salary).amount}
+                  </span>
+                  <span className="text-xs text-gray-500">
+                    brutto / {salaryParts(job.salary).period}
+                  </span>
+                </span>
+              </span>
+            )}
+
             <span className="mt-3 block text-sm text-gray-600 font-light leading-relaxed">
               {job.summary}
             </span>
@@ -153,10 +165,20 @@ const JobCard: React.FC<{
         <div id={panelId} className="px-6 sm:px-8 pb-8 -mt-1">
           {job.salary && (
             <div className="border-t border-gray-100 pt-6">
-              <div className="rounded-2xl bg-[#F9F9F7] px-5 py-4">
-                <p className="text-sm font-semibold text-brand-dark">{formatSalary(job.salary)}</p>
+              <div className="rounded-2xl border border-brand-gold/40 bg-brand-gold/10 px-6 py-5 sm:px-7 sm:py-6">
+                <p className="text-xs font-bold tracking-[0.18em] uppercase text-brand-gold mb-3">
+                  Základná zložka mzdy
+                </p>
+                <p className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <span className="text-3xl sm:text-4xl font-bold text-brand-dark leading-none">
+                    od {salaryParts(job.salary).amount}
+                  </span>
+                  <span className="text-sm text-gray-600">
+                    brutto / {salaryParts(job.salary).period}
+                  </span>
+                </p>
                 {job.salary.note && (
-                  <p className="mt-1 text-xs text-gray-500 leading-relaxed">{job.salary.note}</p>
+                  <p className="mt-3 text-xs text-gray-500 leading-relaxed">{job.salary.note}</p>
                 )}
               </div>
             </div>
