@@ -13,6 +13,14 @@ import { useShopifyProducts } from '../../hooks/useShopifyProducts';
 
 const SHOPIFY_ACCOUNT_URL = 'https://shopify.com/101386420570/account';
 
+/**
+ * Zlatý bod pri odkaze na kariéru — tichý signál, že nábor práve beží.
+ * Dekoratívny, obsah nesie samotný text odkazu.
+ */
+const HiringDot: React.FC = () => (
+  <span className="inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-gold" aria-hidden="true" />
+);
+
 // ===========================================
 // ZARA-STYLE ESHOP NAVBAR
 // ===========================================
@@ -336,6 +344,22 @@ export const EshopNavbar: React.FC = () => {
             Menu
           </button>
 
+          {/* Kariéra — sekundárny odkaz, zrkadlí „Menu" na opačnej strane lišty.
+              Zámerne mimo centrálnej skupiny, aby neriedil obchodnú navigáciu. */}
+          <NavLink
+            to="/kariera"
+            onMouseEnter={() => setActiveCategory(null)}
+            className={({ isActive }) => cn(
+              "absolute right-8 top-1/2 -translate-y-1/2 flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase transition-all duration-200",
+              isTransparent
+                ? isActive ? "text-white" : "text-white/70 hover:text-white"
+                : isActive ? "text-black" : "text-gray-600 hover:text-brand-gold"
+            )}
+          >
+            <HiringDot />
+            Kariéra
+          </NavLink>
+
           <ul className="flex items-center justify-center">
             {getVisibleCategories().map((category) => (
               <li
@@ -521,6 +545,14 @@ export const EshopNavbar: React.FC = () => {
                 >
                   Kontakt
                 </Link>
+                <Link
+                  to="/kariera"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-2.5 px-6 py-4 text-[13px] tracking-[0.1em] uppercase text-black hover:bg-gray-50"
+                >
+                  Kariéra
+                  <HiringDot />
+                </Link>
               </div>
 
               {/* Account Section — Shopify Customer Accounts */}
@@ -634,6 +666,14 @@ export const EshopNavbar: React.FC = () => {
                   className="flex items-center px-8 py-5 text-[14px] tracking-[0.15em] uppercase font-bold text-black hover:bg-gray-50 transition-colors border-b border-gray-100"
                 >
                   Kontakt
+                </Link>
+                <Link
+                  to="/kariera"
+                  onClick={() => setOffCanvasOpen(false)}
+                  className="flex items-center gap-3 px-8 py-5 text-[14px] tracking-[0.15em] uppercase font-bold text-black hover:bg-gray-50 transition-colors border-b border-gray-100"
+                >
+                  Kariéra
+                  <HiringDot />
                 </Link>
               </div>
 
