@@ -50,6 +50,9 @@ type ColorSubcategory = import('../data/prerenderPages.js').ColorSubcategory;
 // reflect the FINAL copy).
 const { PRODUCT_META_OVERRIDE } = await import('../data/productMetaOverride.js');
 
+// Otvorené pozície — zdieľané s React stránkou pages/Kariera.tsx
+const { JOB_OPENINGS, CAREERS_EMAIL, createJobPostingLD } = await import('../data/careers.js');
+
 // Product fallback data
 const products: any[] = JSON.parse(
   readFileSync(resolve(ROOT, 'data/shop-products-fallback.json'), 'utf-8'),
@@ -749,6 +752,61 @@ function prerenderRealizacie(): void {
 }
 
 // ---------------------------------------------------------------------------
+// Kariera (otvorené pozície) — same URL as SPA route /kariera
+// ---------------------------------------------------------------------------
+
+function prerenderKariera(): void {
+  const jobsHtml = (JOB_OPENINGS as any[])
+    .map(
+      (job) => `
+        <article id="${esc(job.id)}">
+          <h2>${esc(job.title)}</h2>
+          <p>${esc(job.summary)}</p>
+          <p>Miesto výkonu práce: ${esc(job.location)} &middot; Forma spolupráce: ${esc(job.employmentType)}</p>
+          <h3>Čo budete robiť</h3>
+          <ul>${job.responsibilities.map((i: string) => `<li>${esc(i)}</li>`).join('')}</ul>
+          <h3>Koho hľadáme</h3>
+          <ul>${job.requirements.map((i: string) => `<li>${esc(i)}</li>`).join('')}</ul>
+          <h3>Výhodou</h3>
+          <ul>${job.niceToHave.map((i: string) => `<li>${esc(i)}</li>`).join('')}</ul>
+          <p><a href="mailto:${CAREERS_EMAIL}">Poslať životopis na ${CAREERS_EMAIL}</a></p>
+        </article>`,
+    )
+    .join('');
+
+  writePage({
+    route: '/kariera',
+    title: 'Kariéra v Orostone — otvorené pozície | OROSTONE',
+    description:
+      'Hľadáme kamenára, CNC špecialistu na vodný lúč a pílu, obkladača na veľké formáty a PPC špecialistu. Životopis posielajte na info@orostone.sk.',
+    canonical: `${BASE_URL}/kariera`,
+    rootContent: `
+      <header>
+        <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Kariéra</nav>
+        <h1>Hľadáme kolegov do tímu</h1>
+        <p>Orostone privádza na slovenský trh sinterovaný kameň — materiál na pracovné dosky, ostrovčeky, zásteny a obklady. Rozširujeme tím o ľudí, ktorí robia svoju prácu presne a vedia, prečo ju robia práve tak.</p>
+        <p>Životopis posielajte na <a href="mailto:${CAREERS_EMAIL}">${CAREERS_EMAIL}</a>. Do predmetu uveďte názov pozície.</p>
+      </header>
+      <section>
+        <h2>Otvorené pozície</h2>
+        ${jobsHtml}
+      </section>
+      <p><a href="/kontakt">Kontakt</a> &middot; <a href="/realizacie">Realizácie</a> &middot; <a href="/sinterovany-kamen">Čo je sinterovaný kameň</a></p>`,
+    jsonLd: [
+      ...(JOB_OPENINGS as any[]).map((job) => createJobPostingLD(job)),
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'OROSTONE', item: `${BASE_URL}/` },
+          { '@type': 'ListItem', position: 2, name: 'Kariéra', item: `${BASE_URL}/kariera` },
+        ],
+      },
+    ],
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Cennik (price list) — same URL as SPA route /cennik
 // ---------------------------------------------------------------------------
 
@@ -886,6 +944,12 @@ console.log('  ✓ /kuchyne');
 console.log('\nRealizacie:');
 prerenderRealizacie();
 console.log('  ✓ /realizacie');
+
+// Kariera
+console.log('\nKariera:');
+prerenderKariera();
+const jobCount = (JOB_OPENINGS as any[]).length;
+console.log(`  ✓ /kariera (${jobCount} ${jobCount === 1 ? 'pozícia' : jobCount < 5 ? 'pozície' : 'pozícií'})`);
 
 // Homepage
 console.log('\nHomepage:');
