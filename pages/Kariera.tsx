@@ -4,6 +4,7 @@ import {
   Mail,
   MapPin,
   Briefcase,
+  Wallet,
   ChevronDown,
   ArrowRight,
   Check,
@@ -34,6 +35,16 @@ const JOB_ICONS: Record<string, LucideIcon> = {
   kamenar: Hammer,
   'cnc-specialista': Cpu,
   obkladac: LayoutGrid,
+};
+
+/**
+ * Základná zložka mzdy v tvare, ktorý vyžaduje § 62 ods. 2 zákona
+ * č. 5/2004 Z. z. — vždy hrubá mzda, aby bolo jasné, o aké číslo ide.
+ */
+const formatSalary = (salary: NonNullable<JobOpening['salary']>): string => {
+  const amount = salary.min.toLocaleString('sk-SK');
+  const period = salary.unit === 'MONTH' ? 'mesiac' : 'hodinu';
+  return `Základná zložka mzdy od ${amount} € brutto / ${period}`;
 };
 
 /** Slovenské skloňovanie po číslovke: 1 pozícia · 2–4 pozície · 5+ pozícií. */
@@ -119,8 +130,8 @@ const JobCard: React.FC<{
               </span>
               {job.salary && (
                 <span className="inline-flex items-start gap-1.5 font-semibold text-brand-dark">
-                  Základná zložka mzdy od {job.salary.min} €
-                  {job.salary.unit === 'MONTH' ? ' / mesiac' : ' / hodina'}
+                  <Wallet size={13} className="text-brand-gold mt-0.5 flex-shrink-0" />
+                  {formatSalary(job.salary)}
                 </span>
               )}
             </span>
@@ -140,7 +151,17 @@ const JobCard: React.FC<{
 
       {isOpen && (
         <div id={panelId} className="px-6 sm:px-8 pb-8 -mt-1">
-          <div className="border-t border-gray-100 pt-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {job.salary && (
+            <div className="border-t border-gray-100 pt-6">
+              <div className="rounded-2xl bg-[#F9F9F7] px-5 py-4">
+                <p className="text-sm font-semibold text-brand-dark">{formatSalary(job.salary)}</p>
+                {job.salary.note && (
+                  <p className="mt-1 text-xs text-gray-500 leading-relaxed">{job.salary.note}</p>
+                )}
+              </div>
+            </div>
+          )}
+          <div className={`${job.salary ? '' : 'border-t border-gray-100 '}pt-6 grid grid-cols-1 lg:grid-cols-2 gap-8`}>
             <div>
               <h4 className="text-xs font-bold tracking-[0.18em] uppercase text-brand-gold mb-4">
                 Čo budete robiť

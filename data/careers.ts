@@ -36,12 +36,13 @@ export interface JobOpening {
   requirements: string[];
   niceToHave: string[];
   /**
-   * ⚠️ DOPLNIŤ PRED ZVEREJNENÍM PRACOVNEJ PONUKY NA TPP.
+   * Základná zložka mzdy — povinný údaj podľa § 62 ods. 2 zákona
+   * č. 5/2004 Z. z. o službách zamestnanosti: ponuka zamestnania
+   * v pracovnom pomere musí uvádzať sumu základnej zložky mzdy.
    *
-   * Slovenská legislatíva (§ 62 ods. 2 zákona č. 5/2004 Z. z. o službách
-   * zamestnanosti) vyžaduje, aby ponuka zamestnania v pracovnom pomere
-   * uvádzala sumu základnej zložky mzdy. Pri spolupráci na živnosť
-   * / subdodávku sa povinnosť neuplatňuje — tam môže zostať `null`.
+   * Sumy sú odvodené z prieskumu Platy.sk (viď SALARY_BENCHMARK nižšie)
+   * — vždy mediánová mzda po 5 rokoch praxe, zaokrúhlená nadol na 50 €,
+   * pretože všetky pozície vyžadujú 2–3 roky praxe.
    *
    * Kým je hodnota `null`, riadok so mzdou sa na stránke nezobrazí
    * a do JSON-LD sa `baseSalary` nezapíše.
@@ -51,6 +52,23 @@ export interface JobOpening {
 
 /** Adresa, na ktorú chodia životopisy. */
 export const CAREERS_EMAIL = 'info@orostone.sk';
+
+/**
+ * Podklad k mzdám — prieskum Platy.sk, stiahnuté 2026-08-17.
+ * Uvádzané sumy sú hrubá mesačná mzda pri plnom úväzku.
+ *
+ * pozícia na Platy.sk        80 % ľudí        po 5 rokoch   respondentov
+ * ─────────────────────────────────────────────────────────────────────
+ * PPC špecialista            1 270 – 2 601 €      2 159 €        104
+ * Kamenár                    1 161 – 2 175 €      1 677 €         35
+ * Nastavovač CNC strojov     1 284 – 2 338 €      1 851 €        509
+ * CNC programátor            1 388 – 2 605 €      2 072 €        341
+ * Podlahár, dláždič          1 181 – 3 072 €      2 082 €         37
+ *
+ * Naša CNC pozícia spája obsluhu aj programovanie, preto je jej kotva
+ * priemerom nastavovača a programátora (1 961 €).
+ */
+export const SALARY_BENCHMARK_SOURCE = 'Platy.sk, 2026-08';
 
 /** Dátum zverejnenia ponúk (ISO). Aktualizovať pri väčšej revízii. */
 export const JOB_POSTED_DATE = '2026-08-17';
@@ -91,7 +109,13 @@ export const JOB_OPENINGS: JobOpening[] = [
       'Napojenie reklamy na CRM a prácu s obchodnými dátami.',
       'Reporting v Looker Studio alebo obdobnom nástroji.',
     ],
-    salary: null,
+    // Platy.sk „PPC špecialista": po 5 rokoch 2 159 € → 2 100 €
+    salary: {
+      min: 2100,
+      unit: 'MONTH',
+      currency: 'EUR',
+      note: 'Pri plnom úväzku. Konečná suma podľa skúseností a výsledkov kampaní.',
+    },
   },
   {
     id: 'kamenar',
@@ -122,7 +146,13 @@ export const JOB_OPENINGS: JobOpening[] = [
       'Skúsenosť s mitrovanými spojmi a podlepovaním.',
       'Osvedčenie na prácu vo výškach alebo na obsluhu manipulačnej techniky.',
     ],
-    salary: null,
+    // Platy.sk „Kamenár": po 5 rokoch 1 677 € → 1 650 €
+    salary: {
+      min: 1650,
+      unit: 'MONTH',
+      currency: 'EUR',
+      note: 'Pri pracovnom pomere a plnom úväzku. Konečná suma podľa praxe so sinterovaným kameňom.',
+    },
   },
   {
     id: 'cnc-specialista',
@@ -154,7 +184,14 @@ export const JOB_OPENINGS: JobOpening[] = [
       'Práca v CAM softvéri pre vodný lúč — napríklad IGEMS, AlphaCAM alebo obdobnom.',
       'Základy mechanickej a hydraulickej údržby.',
     ],
-    salary: null,
+    // Platy.sk, priemer „Nastavovač CNC" (1 851 €) a „CNC programátor"
+    // (2 072 €) po 5 rokoch = 1 961 € → 1 950 €
+    salary: {
+      min: 1950,
+      unit: 'MONTH',
+      currency: 'EUR',
+      note: 'Pri plnom úväzku. Konečná suma podľa skúseností s vodným lúčom a CAM softvérom.',
+    },
   },
   {
     id: 'obkladac',
@@ -185,7 +222,13 @@ export const JOB_OPENINGS: JobOpening[] = [
       'Skúsenosť s bezškárovým kladením a mitrovanými rohmi.',
       'Vlastné náradie, prípadne zohratý tím.',
     ],
-    salary: null,
+    // Platy.sk „Podlahár, dláždič": po 5 rokoch 2 082 € → 2 050 €
+    salary: {
+      min: 2050,
+      unit: 'MONTH',
+      currency: 'EUR',
+      note: 'Pri pracovnom pomere a plnom úväzku. Konečná suma podľa praxe s veľkými formátmi.',
+    },
   },
 ];
 

@@ -763,6 +763,13 @@ function prerenderKariera(): void {
           <h2>${esc(job.title)}</h2>
           <p>${esc(job.summary)}</p>
           <p>Miesto výkonu práce: ${esc(job.location)} &middot; Forma spolupráce: ${esc(job.employmentType)}</p>
+          ${
+            job.salary
+              ? `<p>Základná zložka mzdy od ${job.salary.min.toLocaleString('sk-SK')} € brutto / ${
+                  job.salary.unit === 'MONTH' ? 'mesiac' : 'hodinu'
+                }${job.salary.note ? ` — ${esc(job.salary.note)}` : ''}</p>`
+              : ''
+          }
           <h3>Čo budete robiť</h3>
           <ul>${job.responsibilities.map((i: string) => `<li>${esc(i)}</li>`).join('')}</ul>
           <h3>Koho hľadáme</h3>
