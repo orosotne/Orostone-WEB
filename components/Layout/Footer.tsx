@@ -163,6 +163,11 @@ const EshopColumns: React.FC<FooterEshopColumnsProps> = ({ categories = [] }) =>
               Kontakt
             </Link>
           </li>
+          <li>
+            <Link to="/kariera" className="text-brand-gold hover:text-white text-sm transition-colors font-medium">
+              Kariéra — hľadáme kolegov
+            </Link>
+          </li>
         </ul>
       </div>
     </>

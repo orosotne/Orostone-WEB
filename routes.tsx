@@ -28,6 +28,7 @@ const Vyhody = lazyWithRetry(() => import('./pages/Vyhody').then(m => ({ default
 const Kuchyne = lazyWithRetry(() => import('./pages/Kuchyne').then(m => ({ default: m.Kuchyne })));
 const Realizacie = lazyWithRetry(() => import('./pages/Realizacie').then(m => ({ default: m.Realizacie })));
 const Cennik = lazyWithRetry(() => import('./pages/Cennik').then(m => ({ default: m.Cennik })));
+const Kariera = lazyWithRetry(() => import('./pages/Kariera').then(m => ({ default: m.Kariera })));
 
 const minH = <div className="min-h-screen" aria-hidden />;
 
@@ -99,6 +100,7 @@ export const appRoutes = (
     <Route path="/kuchyne" element={<Suspense fallback={minH}><Kuchyne /></Suspense>} />
     <Route path="/realizacie" element={<Suspense fallback={minH}><Realizacie /></Suspense>} />
     <Route path="/cennik" element={<Suspense fallback={minH}><Cennik /></Suspense>} />
+    <Route path="/kariera" element={<Suspense fallback={minH}><Kariera /></Suspense>} />
 
     {/* Legal */}
     <Route path="/vop" element={<Suspense fallback={minH}><VOP /></Suspense>} />

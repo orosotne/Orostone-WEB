@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, AlertTriangle, Building2, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, AlertTriangle, Building2, Clock, Briefcase } from 'lucide-react';
 import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
 
 export const EshopContact: React.FC = () => {
@@ -251,6 +251,26 @@ export const EshopContact: React.FC = () => {
                 </a>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="pb-10 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-5xl mx-auto rounded-2xl border border-brand-gold/40 bg-brand-gold/10 px-6 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <p className="text-brand-dark font-semibold">Hľadáme kolegov</p>
+              <p className="text-sm text-gray-600">
+                Kamenár, CNC špecialista, obkladač a PPC špecialista. Životopis posielajte na info@orostone.sk.
+              </p>
+            </div>
+            <Link
+              to="/kariera"
+              className="inline-flex items-center gap-2 self-start sm:self-auto flex-shrink-0 rounded-full bg-brand-dark text-white px-6 py-3 text-sm font-bold uppercase tracking-wider hover:bg-brand-gold hover:text-brand-dark transition-colors"
+            >
+              <Briefcase size={16} />
+              Otvorené pozície
+            </Link>
           </div>
         </div>
       </section>
