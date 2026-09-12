@@ -23,11 +23,11 @@ export interface ProductSEOContent {
 export const GENERIC_PRODUCT_FAQS: ProductFAQ[] = [
   {
     question: 'Je tento materiál vhodný do kúpeľne?',
-    answer: 'Áno. Porcelánové veľkoformátové platne majú takmer nulovú nasiakavosť (porozita < 0,1 %), takže sú ideálne do kúpeľní, sprchových kútov aj wellness priestorov. Nevyžadujú impregnaciu a odolajú trvalému kontaktu s vodou.',
+    answer: 'Áno. Sinterovaný kameň má takmer nulovú nasiakavosť (porozita < 0,1 %), takže je vhodný do kúpeľní, sprchových kútov aj wellness priestorov. Nevyžaduje impregnáciu a odolá trvalému kontaktu s vodou.',
   },
   {
     question: 'Ako sa o platne starať?',
-    answer: 'Údržba je minimálna – stačí teplá voda a jemný saponát. Materiál je nenasiakavý, nepotrebuje impregnaciu ani špeciálne vosky. Odolá bežným čistiacim prostriedkom vrátane kyselín.',
+    answer: 'Údržba je minimálna – stačí teplá voda a jemný saponát. Materiál je nenasiakavý, nepotrebuje impregnáciu ani špeciálne vosky. Odolá bežným čistiacim prostriedkom vrátane kyselín.',
   },
   {
     question: 'Môžem položiť horúci hrniec priamo na povrch?',
@@ -50,8 +50,8 @@ export const GENERIC_PRODUCT_FAQS: ProductFAQ[] = [
  */
 export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
   'statuario-diamante': {
-    metaTitle: 'STATUARIO DIAMANTE | Luxusné veľkoformátové platne',
-    metaDescription: 'Biely mramor s diamantovými žilkami. Veľkoformátové platne pre luxusné interiéry v Bratislave. Skladom, doprava po celom SR. Vzorky zadarmo.',
+    metaTitle: 'Statuario Diamante — biely mramorový dekor | OROSTONE',
+    metaDescription: 'Biely sinterovaný kameň s jemným šedým žilkovaním. Pre kuchyne, kde má plocha priniesť svetlo bez toho, aby zaťažila výraz. Vzorka na vyžiadanie.',
     keywords: [
       'statuario diamante',
       'biely mramor obklad',
@@ -60,23 +60,23 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
       'porcelánové platne',
     ],
     shortDescription:
-      'Statuario Diamante – čistá biela elegancia s dramatickými strieborno-sivými žilkami typickými pre prémiový taliansky mramor. Táto veľkoformátová platňa prináša do vášho domova dokonalú sofistikovanosť. Ideálna pre luxusné kúpeľne, salóny alebo obývacie izby v Bratislave – všade tam, kde chcete vytvoriť priestor, ktorý zanechá nezabudnuteľný dojem.',
+      'Biely dekor so strieborno-sivým žilkovaním v duchu talianskeho mramoru Statuario. Kresba je čitateľná, ale vedená pokojne, takže plocha pridá svetlo a výraz priestoru nezaťaží. Hodí sa na pracovné dosky, ostrovčeky, zásteny, obklad stien aj podlahy — v kuchyni, kúpeľni, obývačke aj vstupnej hale.',
     longDescription:
-      '<p>Inšpirovaný legendárnym talianskym mramorom Statuario, dizajn STATUARIO DIAMANTE uchváti každého na prvý pohľad. Žiarivá biela základňa s kontrastnými strieborno-sivými žilkami evokuje najexkluzívnejšie priestory – od milánských galérií po penthousy v bratislavskom Starom Meste.</p>' +
-      '<p>Veľkoformátové platne eliminujú škáry a vytvárajú dojem neprerušenej luxusnej plochy, aká bola až donedávna dostupná iba v najdrahších projektoch. Porcelánová technológia zaručuje výnimočnú odolnosť proti poškriabaniu, vlhkosti a škvrnám.</p>' +
-      '<p>Tento dizajn transformuje každý priestor – obývacia izba, kúpeľňa, kuchyňa alebo vstupná hala – v skutočné umelecké dielo. V Bratislave čoraz viac interiérových dizajnérov siaha po Statuario Diamante ako po prvej voľbe pre klientov, ktorí chcú skutočnú luxusnú nehnuteľnosť.</p>',
+      '<p>STATUARIO DIAMANTE vychádza z talianskeho mramoru Statuario — biely základ, cez ktorý prechádzajú strieborno-sivé žilky. Kontrast tvorí kresba, nie farba, takže plocha ostáva svetlá a prehľadná. Povrch 4D Marble s belosťou 72° drží biely tón čistý a kresbu presnú aj na veľkej ploche.</p>' +
+      '<p>Vo svetlej kuchyni dekor funguje s bielymi aj drevenými frontmi — pridá plochu s vlastným charakterom, ktorá neprebíja zvyšok zostavy. Platňa 3200 × 1600 mm pokryje dosku aj ostrovček s minimom spojov a kresbu je možné napájať (book-match). Zástena aj obklad steny sa dajú urobiť z rovnakého dekoru, takže línia ostane súvislá.</p>' +
+      '<p>Ako sinterovaný kameň má nasiakavosť pod 0,1 % — víno, olej ani káva sa do povrchu nevpijú a impregnácia nie je potrebná. Znesie horúci hrniec, odolá poškriabaniu aj vlhkosti a je UV stabilný, takže nebledne ani na presvetlenej terase. Na dennú údržbu stačí vlhká utierka s neutrálnym saponátom.</p>',
     keyBenefits: [
-      'Žiarivá biela základňa s dramatickými strieborno-sivými žilkami',
-      'Bezšvová optika vďaka veľkému formátu – žiadne rušivé škáry',
-      'Výnimočná odolnosť voči vlhkosti, škvrnam a poškriabaniu',
-      'Ľahká údržba – stačí vlhká utierka',
-      'Vhodný na podlahy aj obklady stien',
+      'Biely základ so strieborno-sivým žilkovaním v duchu mramoru Statuario',
+      'Povrch 4D Marble 72° drží biely tón čistý a kresbu presnú',
+      'Nasiakavosť pod 0,1 % — škvrny sa nevpíjajú, impregnáciu netreba',
+      'Odolný voči teplu, poškriabaniu, vlhkosti aj UV — nebledne vnútri ani vonku',
+      'Platňa 3200 × 1600 mm pokryje dosku aj ostrovček s minimom spojov',
     ],
   },
 
   'calacatta-top': {
-    metaTitle: 'Calacatta Top | Prémiový mramorový obklad',
-    metaDescription: 'Originálny Calacatta vzor pre vaše interiéry. Teplé zlaté žilky na bielom pozadí. Ideálny na kuchyne a kúpeľne. Skladom, objednajte vzorky zadarmo.',
+    metaTitle: 'Calacatta Top — biely mramorový dekor | OROSTONE',
+    metaDescription: 'Biely mramorový dekor so zlatistými žilkami. Pre kuchyne a kúpeľne, kde má plocha pôsobiť reprezentatívne, ale nie efektne. Pošlite pôdorys, vyrátame cenu.',
     keywords: [
       'calacatta obklad',
       'calacatta mramor platne',
@@ -85,23 +85,23 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
       'prémiové obklady',
     ],
     shortDescription:
-      'Calacatta Top je synonymom absolútneho luxusu. Biela základňa ozdobená teplými zlatohnedými žilkami predstavuje vrchol talianskeho kameňárskeho umenia. Pre majiteľov nehnuteľností v Bratislave, ktorí nechcú robiť kompromisy – toto je voľba, ktorá zvýši hodnotu vašej nehnuteľnosti aj vášho každodenného zážitku z bývania.',
+      'Biely mramorový dekor s teplými zlatohnedými žilkami, ktorým lesklý povrch dodáva hĺbku. Hodí sa na kuchynské dosky, ostrovčeky, zásteny aj steny kúpeľne, kde má plocha pôsobiť reprezentatívne. Sinterovaný kameň, ktorý nepotrebuje impregnáciu.',
     longDescription:
-      '<p>Calacatta mramor bol od pradávna symbolom moci a bohatstva – zdobil paláce rímskych cisárov a dnes zdobí najhonosnejšie rezidencie sveta. CALACATTA TOP prináša túto legendárnu estetiku do vášho domova bez kompromisov v kvalite.</p>' +
-      '<p>Teplé zlatohnedé žilky na žiarivom bielom pozadí vytvárajú jedinečný vizuálny efekt, ktorý s rôznym osvetlením neustále mení svoju podobu – ranné slnko ho rozžiari inak ako večerné teplé svetlo.</p>' +
-      '<p>Ideálny pre majiteľov novostavieb v bratislavských prémiových projektoch, ktorí chcú zvýšiť hodnotu svojej nehnuteľnosti. Porcelánová platňa odolá každodennému používaniu, pritom si zachováva krásu prírodného kameňa bez nutnosti impregnácie alebo špeciálnej starostlivosti. Skvele sa kombinuje s bronzovými prvkami, bielymi kuchyňami a prírodným drevom.</p>',
+      '<p>CALACATTA TOP je biely mramorový dekor s teplými zlatohnedými žilkami. Lesklá úprava Nanotech Polished kresbe dodáva hĺbku a jej vyznenie sa mení so svetlom — ráno pôsobí inak než pri večernom teplom svetle. Kresbu mramoru tak dostanete bez starostí, ktoré pravý mramor prináša.</p>' +
+      '<p>Hodí sa na pracovné dosky a ostrovčeky, kde má byť doska dominantou kuchyne, rovnako na zásteny, umývadlové dosky, steny kúpeľne aj podlahy. Ladí s bielymi kuchynskými frontmi, prírodným drevom a bronzovými detailmi. Pri väčších plochách si platne pozrite osobne v showroome v Bošanoch — záleží, ako na sebe kresba nadväzuje.</p>' +
+      '<p>Sinterovaný kameň má nasiakavosť pod 0,1 %, takže víno, káva ani citrón sa do povrchu nevpijú a doska nepotrebuje impregnáciu. Odoláva teplu aj UV žiareniu — horúci hrniec plochu nepoškodí a odtieň pri okne nevybledne. Lesklý povrch ukáže odtlačky skôr než matný, zotriete ich vlhkou utierkou.</p>',
     keyBenefits: [
-      'Calacatta vzor – jeden z najexkluzívnejších mramorových dizajnov na svete',
-      'Teplé zlatohnedé žilky dodávajú priestoru hrejivosť a sofistikovanosť',
-      'Preukázateľne zvyšuje trhovú hodnotu nehnuteľnosti',
-      'Ľahká údržba bez nutnosti impregnácie',
-      'Vhodný na kuchynské ostrovy, kúpeľňové steny aj podlahy',
+      'Biely mramorový dekor s teplými zlatohnedými žilkami',
+      'Lesklý povrch Nanotech zvýrazňuje kresbu a jej hĺbku',
+      'Nasiakavosť pod 0,1 % — škvrny sa nevpíjajú, bez impregnácie',
+      'Odolný voči teplu aj UV, odtieň pri okne nevybledne',
+      'Na dosky, ostrovčeky, zásteny, steny kúpeľne aj podlahy',
     ],
   },
 
   'givenchy-gold': {
-    metaTitle: 'Givenchy Gold | Zlatý mramor pre luxusné interiéry',
-    metaDescription: 'Teplé zlaté mramorové platne Givenchy Gold. Luxusné obklady pre kúpeľne a obývacie izby v Bratislave. Skladom, doprava po celom Slovensku.',
+    metaTitle: 'Givenchy Gold — zlatistý mramorový dekor | OROSTONE',
+    metaDescription: 'Teplý dekor so zlatistou kresbou v béžovo-hnedom poli. Pre interiéry, kde má dekor niesť vlastnú váhu — kúpeľne, akcentové steny, ostrovčeky. Veľká platňa v showroome Bošany.',
     keywords: [
       'givenchy gold obklad',
       'zlaté mramorové platne',
@@ -110,23 +110,23 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
       'prémiové platne',
     ],
     shortDescription:
-      'Inšpirovaný svetom haute couture, GIVENCHY GOLD prináša do vašich priestorov výzvu zlatej éry luxusu. Teplé zlaté tóny s jemnými žilkami vytvárajú atmosféru exkluzívnych hotelov a penthousy. Pre tých, pre ktorých bývanie nie je len funkcia – je to prejav osobnosti.',
+      'Teplý dekor s jemným zlato-okrovým žilkovaním v béžovo-hnedom poli. Hodí sa tam, kde má mať plocha vlastnú váhu — na kuchynskú dosku, ostrovček, umývadlovú dosku alebo obklad steny. Kresba nesie priestor sama, preto okolie znesie pokojnejšie riešenie.',
     longDescription:
-      '<p>Keď francúzsky módny dom Givenchy definoval dokonalý vkus, tento dizajn to zachytil v kamennom materiáli. GIVENCHY GOLD s teplými zlatookrovými odtieňmi a delikátnymi žilkami prináša do každého priestoru luxus, ktorý je cítiť na prvý pohľad.</p>' +
-      '<p>Ideálny pre tie bratislavské interiéry, kde chcete vytvoriť atmosféru päťhviezdičkového hotela. Zlaté tóny harmonujú s matným čiernym kovaním, luxusnými textíliami a akcentovým osvetlením.</p>' +
-      '<p>Veľkoformátové platne eliminujú prerušenia, čím vytvárajú plynulú zlatú plochu, ktorá opticky zväčšuje priestor. Certifikovaná porcelánová technológia zaručuje odolnosť a dlhovekosť. Toto nie je len obklad – je to investícia do životného štýlu.</p>',
+      '<p>GIVENCHY GOLD je teplý dekor — béžovo-hnedé pole s jemným zlato-okrovým žilkovaním, ktoré prechádza plochou v čitateľných, no nie krikľavých líniách. Povrch 4D Marble kreslí vzor na základni s vysokou belosťou (72°), takže zlaté tóny ostávajú čisté. Ako dekor reaguje na svetlo, si najlepšie overíte na vzorke alebo na celej platni.</p>' +
+      '<p>Zlato-okrové tóny ladia s dubom a orechom; kontrast dodá matná čierna batéria alebo úchytky a k zlatu sadne aj akcentové osvetlenie. Dekor funguje na kuchynskej doske a ostrovčeku, na umývadlovej doske aj na obklade steny. Keďže kresba nesie priestor sama, okolie nechajte jednoduchšie, aby dostala miesto.</p>' +
+      '<p>Ako sinterovaný kameň má nasiakavosť pod 0,1 % — káva, víno ani citrónová šťava sa do povrchu nevpijú a stačí ich zotrieť. Povrch znesie horúci hrniec zo sporáka, odolá bežnému poškriabaniu od riadu aj kuchynským kyselinám. Impregnáciu nepotrebuje; na údržbu stačí vlhká utierka a neutrálny saponát.</p>',
     keyBenefits: [
-      'Teplé zlaté tóny pre okamžitú elegantnú atmosféru',
-      'Bezšvový efekt veľkoformátových platní zväčšuje priestor',
-      'Perfektná kombinácia s tmavými kovaním a prírodnými drevami',
-      'Odolný voči kyselinám a škvrnám',
-      'Exkluzívny dizajn inšpirovaný svetom haute couture',
+      'Teplé zlato-okrové žilkovanie v béžovo-hnedom poli',
+      'Veľký formát drží súvislú kresbu na doske aj obklade',
+      'Nasiakavosť pod 0,1 % — škvrny sa do povrchu nevpíjajú',
+      'Odolný voči teplu, poškriabaniu aj kuchynským kyselinám',
+      'Bez impregnácie — stačí vlhká utierka a neutrálny saponát',
     ],
   },
 
   'roman-travertine': {
-    metaTitle: 'Roman Travertine | Klasický travertín pre domov',
-    metaDescription: 'Teplý travertínový dizajn pre podlahy aj obklady. Roman Travertine – stredomorská elegancia bez kompromisov. Skladom, doprava po celom SR.',
+    metaTitle: 'Roman Travertine — travertínový dekor | OROSTONE',
+    metaDescription: 'Roman Travertine prináša prirodzenú textúru travertínu — bez nasiakavosti, bez impregnácie a bez údržby, ktorú by si reálny travertín vyžadoval.',
     keywords: [
       'travertín obklad',
       'travertínové platne bratislava',
@@ -135,23 +135,23 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
       'rímsky travertín',
     ],
     shortDescription:
-      'ROMAN TRAVERTINE evokuje nadčasovú krásu rímskej architektúry. Teplé béžové odtiene s charakteristickou travertínovou štruktúrou prinášajú do vášho domova stredomorskú elegáciu a nádych histórie. Keď vstúpite domov, máte pocit, že ste dorazili niekam špeciálnym.',
+      'Teplé krémové až béžové odtiene s vrstvenou kresbou travertínu a jemným reliéfom. Plocha pôsobí prirodzene a hrejivo, bez ostrých kontrastov. Hodí sa na pracovné dosky, obklady, podlahy aj terasy a ako sinterovaný kameň nepotrebuje impregnáciu, akú si žiada pravý travertín.',
     longDescription:
-      '<p>Travertín zdobil Kolosseum, rímske kúpele a tisíce palácov po celej Európe tisíce rokov. ROMAN TRAVERTINE zachytáva túto prírodnú dokonalosť v keramickej platni, ktorá prekoná prírodný materiál v praktičnosti.</p>' +
-      '<p>Teplé krémové až béžové odtiene s jemným reliéfom vytvárajú hrejivú atmosféru vhodnú do moderných aj klasicky zariadených bratislavských domácností. Na rozdiel od pravého travertínu nevyžaduje impregnaciu, odolá vlhkosti a je ľahko udržiavateľný.</p>' +
-      '<p>Perfektný výber pre podlahy v obývacích izbách, vstupných halách alebo vonkajších terasách. Bratislavskí architekti ho čoraz viac využívajú v projektoch víl a väčších bytov, kde chcú dosiahnuť autentický stredomorský feeling. Kombinácia s bielymi stenami, ľanovými textíliami a drevenými detailmi vytvára nadčasový interiér.</p>',
+      '<p>ROMAN TRAVERTINE má teplé krémové až béžové odtiene a vrstvenú kresbu travertínu. Jemný reliéf dáva ploche hĺbku, kresba je pritom pokojná — vo formáte 3200 × 1600 mm pôsobí plocha celistvo, s minimom spojov. Matný povrch Ultrasoft je mäkký na dotyk a svetlo skôr rozptyľuje, než aby ho vracal v ostrých odleskoch.</p>' +
+      '<p>Dekor funguje na kuchynských pracovných doskách a ostrovčekoch vrátane plôch so vstavaným varičom, aj na obkladoch stien, podlahách a v kúpeľniach. Ako sinterovaný kameň je mrazuvzdorný a UV stabilný, takže obstojí aj na terase, fasáde či vo vonkajšej kuchyni. Ladí so svetlým drevom, bielymi stenami a ľanovými textíliami.</p>' +
+      '<p>Nasiakavosť pod 0,1 % znamená, že škvrny sa nevpíjajú — olej či víno ostanú na povrchu a zotriete ich vlhkou utierkou. Pravý travertín je pórovitý a treba ho pravidelne impregnovať; tu impregnácia odpadá. Povrch odolá teplu odloženého hrnca aj bežnému poškriabaniu a na priamom slnku nebledne.</p>',
     keyBenefits: [
-      'Autentická travertínová štruktúra s hĺbkou a charakterom',
-      'Teplé béžové tóny pre hrejivú a pohostinnú atmosféru',
-      'Vhodný do interiéru aj exteriéru (terasy, balkóny)',
-      'Nevyžaduje impregnaciu na rozdiel od prírodného travertínu',
-      'Stredomorský štýl vhodný do rôznych interiérových konceptov',
+      'Teplé krémové až béžové odtiene s vrstvenou kresbou travertínu',
+      'Matný povrch Ultrasoft, mäkký na dotyk a bez ostrých odleskov',
+      'Nasiakavosť pod 0,1 % — škvrny sa nevpíjajú, stačí vlhká utierka',
+      'Bez impregnácie — pravý travertín ju potrebuje pravidelne',
+      'Mrazuvzdorný a UV stabilný — vhodný na terasy aj vonkajšie kuchyne',
     ],
   },
 
   'taj-mahal': {
-    metaTitle: 'TAJ MAHAL | Krémový mramor pre luxusné kúpeľne',
-    metaDescription: 'Krémovo-biela elegancia Taj Mahal. Veľkoformátové mramorové platne pre kúpeľne a interiéry. Skladom, doprava po celom SR. Vzorky zadarmo.',
+    metaTitle: 'Taj Mahal — krémový sinterovaný kameň | OROSTONE',
+    metaDescription: 'Krémový mramorový dekor s mäkkou kresbou. Pre kuchyne s teplými drevenými frontami a interiéry, kde má povrch hriať, nie chladiť. Vzorka aj poradenstvo bez záväzku.',
     keywords: [
       'taj mahal obklad',
       'krémový mramor',
@@ -160,23 +160,23 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
       'krémové obklady bratislava',
     ],
     shortDescription:
-      'Inšpirovaný jedným z divov sveta, TAJ MAHAL je ikonou čistoty a elegancie. Krémovo-biela základňa s jemnými zlatistými žilkami prináša pokojný luxus, ktorý nikdy nevyjde z módy. Pre kúpeľne, kde sa chcete každé ráno cítiť ako v luxusnom spa.',
+      'Krémovo-biely dekor s mäkkým zlatistým žilkovaním. Pôsobí teplejšie než studená biela a kresba plochu nerozbíja. Hodí sa do kúpeľní, predsiení aj kuchýň s drevenými frontami — tam, kde má povrch hriať, nie chladiť.',
     longDescription:
-      '<p>Taj Mahal bol postavený z najjemnejšieho indického mramoru ako symbol večnej krásy. TAJ MAHAL – dizajn, ktorý nesie toto dedičstvo – prináša rovnaký pocit pokoja a luxusu do vášho domova.</p>' +
-      '<p>Krémovo-biela paleta s delikátnymi zlatistými žilkami pôsobí upokojujúco a zároveň sofistikovane. Tento dizajn je perfektný pre kúpeľne, kde chcete vytvoriť spa atmosféru, alebo pre predsiene, kde má zaujať na prvý pohľad.</p>' +
-      '<p>V Bratislave sa stal obľúbenou voľbou architektov pracujúcich na high-end rezidenciálnych projektoch – v kombinácii so zlatými batériami, drevenými príslušenstvami a mäkkým osvetlením vytvára priestor, do ktorého sa budete vracať s radosťou. Odolná porcelánová platňa vydrží desiatky rokov bez straty pôvodnej krásy.</p>',
+      '<p>TAJ MAHAL vychádza z kresby jemného svetlého mramoru. Krémovo-biely základ nesie delikátne zlatisté žilkovanie, ktoré sa po ploche rozbieha pomaly a bez ostrých kontrastov. Na veľkoformátovej platni tak vzniká pokojná plocha — kresba je čitateľná zblízka, z odstupu splynie do jednoliateho teplého tónu.</p>' +
+      '<p>Teplý podtón určuje, s čím dekor ladí: krémová, béžová, svetlé drevo, mosadzné a zlaté detaily. V kúpeľni funguje ako celoplošný obklad okolo vane aj za umývadlom — pokojnú, kúpeľovú atmosféru udrží aj na veľkej ploche. V kuchyni je to doska k dreveným frontám, v predsieni prvá plocha, ktorú vidíte po vstupe. Pri mäkkom osvetlení pôsobia žilky jemnejšie než pri ostrom svetle.</p>' +
+      '<p>Ako sinterovaný kameň má nasiakavosť pod 0,1 % — povrch je nepórovitý a hygienický, vlhkosť ani škvrny sa doň nevpíjajú a plesne nemajú kde rásť, takže impregnácia nie je potrebná. Povrch Silk je jemne zamatový, medzi matom a leskom: príjemný na dotyk a zhovievavý k odtlačkom prstov. Odolá teplu aj poškriabaniu a na údržbu stačí vlhká utierka s bežným saponátom.</p>',
     keyBenefits: [
-      'Krémovo-biela farba pre upokojujúcu, harmonickú atmosféru',
-      'Jemné zlatisté žilky dodávajú priestoru sofistikovanosť',
-      'Ideálny pre kúpeľne so spa atmosférou',
-      'Odolné porcelánové prevedenie na desiatky rokov',
-      'Obľúbená voľba bratislavských architektov pre high-end projekty',
+      'Krémovo-biely základ s mäkkým zlatistým žilkovaním',
+      'Teplý tón — ladí s drevom, béžovou a mosadznými detailmi',
+      'Povrch Silk: jemne zamatový, zhovievavý k odtlačkom prstov',
+      'Nasiakavosť pod 0,1 % — nepórovitý, hygienický povrch bez impregnácie',
+      'Odolný voči teplu a poškriabaniu, údržba vlhkou utierkou',
     ],
   },
 
   'appennino': {
-    metaTitle: 'Appennino | Prírodný kameň pre moderné interiéry',
-    metaDescription: 'Dynamický kamenný dizajn Appennino. Veľkoformátové platne pre akcentové steny aj podlahy. Skladom, objednajte online. Doprava po celom Slovensku.',
+    metaTitle: 'Appennino — svetlý sinterovaný kameň | OROSTONE',
+    metaDescription: 'Pokojný svetlý dekor pre kuchyne, kde má plocha pôsobiť čisto a vyvážene. Bez agresívnej kresby a bez impregnácie. Vzorka Appennino na vyžiadanie.',
     keywords: [
       'appennino obklad',
       'prírodný kameň dizajn',
@@ -185,23 +185,23 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
       'talianske kamenné platne',
     ],
     shortDescription:
-      'APPENNINO prináša živú krásu talianskych hôr priamo do vášho interiéru. Dynamické žilkovanie a prirodzená farebnosť vytvárajú autentický kamenný vzhľad, ktorý okamžite pritiahne zrak a stane sa ústredným bodom každej miestnosti.',
+      'Svetlý, takmer biely dekor s hustou, ale jemnou zlatobéžovou kresbou. Žilkovanie je detailné a pritom nízkokontrastné, takže plocha pôsobí čisto a vyvážene a nesúperí so zvyškom kuchyne. Určený na pracovné dosky, ostrovčeky, obklad stien, podlahy aj kúpeľne.',
     longDescription:
-      '<p>Apeninský polostrov je domovom niektorých z najkrajších prírodných kameňov na svete. APPENNINO zachytáva tento divoký, ale sofistikovaný charakter – dynamické vzory, živé žilkovanie a prírodná farebnosť, ktorá každý kúsok robí vizuálne jedinečným.</p>' +
-      '<p>Tento dizajn je ideálny pre tie interiéry, kde chcete vytvoriť výrazné vizuálne centrum miestnosti. Akcentová stena v obývacej izbe, celá kúpeľňa alebo exkluzívny kuchynský ostrov – všade tam APPENNINO zaujme a vyvolá obdiv hostí.</p>' +
-      '<p>Veľkoformátové platne zdôrazňujú kontinuitu vzoru, ako keby ste mali priamo v izbe kus živej horniny. Výborná voľba pre bratislavské lofty, moderné byty s vysokými stropmi a priestory s industriálnymi prvkami.</p>',
+      '<p>APPENNINO je svetlý, takmer biely sinterovaný kameň s hustou sieťou jemných zlatobéžových žiliek. Kresba je detailná, no vedená v nízkom kontraste, takže z odstupu plocha pôsobí pokojne a celistvo. Každá platňa má vlastný priebeh žilkovania — dve rovnaké dosky neexistujú, konkrétnu platňu si viete vybrať v showroome v Bošanoch.</p>' +
+      '<p>Hodí sa do kuchýň, kde má plocha priniesť svetlo a nie pozornosť. Jemná kresba znesie jednofarebné aj drevené fronty a funguje rovnako v industriálnom interiéri — s betónom, kovom a tmavším drevom. Určený je na pracovné dosky, ostrovčeky, obklad stien, podlahy aj kúpeľne; veľkoformátové platne udržia kresbu súvislú s minimom spojov.</p>' +
+      '<p>Nasiakavosť pod 0,1 % znamená, že škvrny od vína, oleja či kávy sa nemajú kam vpiť — stačí vlhká utierka s bežným saponátom, bez impregnácie a voskov. Doska znesie teplo do 300 °C, takže odložený horúci hrniec jej neublíži, a tvrdosť Mohs 7+ ju chráni pred bežnými škrabancami. Povrch s úpravou Gluetech je UV stabilný, odtieň nebledne ani pri veľkom okne.</p>',
     keyBenefits: [
-      'Dynamický prírodný kamenný vzor s výrazným charakterom',
-      'Vizuálne výrazný – ideálny pre akcentové steny',
-      'Autentický vzhľad prírodného kameňa',
-      'Skvelá kombinácia s industriálnymi a loftovými interiérmi',
-      'Každý záber vzoru pôsobí ako originálne umelecké dielo',
+      'Svetlý takmer biely základ s jemnou zlatobéžovou kresbou',
+      'Každá platňa má vlastnú kresbu — dve rovnaké dosky neexistujú',
+      'Nasiakavosť pod 0,1 %, škvrny sa nevpíjajú a netreba impregnáciu',
+      'Odolnosť voči teplu do 300 °C, tvrdosť Mohs 7+ a UV stabilita',
+      'Na pracovné dosky, ostrovčeky, obklad stien, podlahy aj kúpeľne',
     ],
   },
 
   'astrana-grey': {
-    metaTitle: 'Astrana Grey | Moderné sivé mramorové platne',
-    metaDescription: 'Sivé mramorové platne Astrana Grey pre moderné interiéry. Škandinávska elegancia pre podlahy a obklady. Skladom, doprava po celom SR.',
+    metaTitle: 'Astrana Grey — sivý sinterovaný kameň | OROSTONE',
+    metaDescription: 'Astrana Grey je vyrovnaný sivý dekor s jemnou kresbou. Funguje v kuchyniach, kde má pracovná doska držať pokojnú líniu interiéru. Vzorka aj poradenstvo bez záväzku.',
     keywords: [
       'sivé mramorové platne',
       'astrana grey',
@@ -210,23 +210,23 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
       'sivé dlažby',
     ],
     shortDescription:
-      'ASTRANA GREY je definíciou modernej elegancie. Jemné sivé odtiene s diskrétnymi žilkami vytvárajú súčasný, nadčasový priestor, ktorý sa hodí k akémukoľvek štýlu zariadenia. Pre tých, ktorí vedia, že menej je viac – a chcú to najlepšie z menej.',
+      'Vyrovnaná sivá s jemným gradovaním odtieňov a diskrétnym svetlejším žilkovaním. Plocha drží pokojnú líniu a nepreťahuje pozornosť na seba. Hodí sa na pracovné dosky, ostrovčeky aj zásteny v interiéroch, kde má byť tichým podkladom, nie hlavnou témou.',
     longDescription:
-      '<p>Sivá farba je v súčasnom interiérovom dizajne kráľom palety – flexibilná, sofistikovaná a neomylne moderná. ASTRANA GREY prináša túto estetiku na najvyššiu úroveň.</p>' +
-      '<p>Jemné gradovanie sivých odtieňov s diskrétnymi svetlejšími žilkami vytvára priestor, ktorý pôsobí upokojujúco a zároveň exkluzívne. Perfektný pre otvorené dispozície bratislavských novostavieb, kde jedna plocha prechádza cez obývačku, jedáleň aj kuchyňu.</p>' +
-      '<p>Interiéroví dizajnéri ho radi kombinujú s bielym lacobel sklom, matným čiernym kovaním a prírodnou dubovou dyhou – kombinácia, ktorá definuje moderný škandinávsko-taliansky štýl. Ľahko udržiavateľný, odolný a vizuálne nepresýtený – ideálny pre rodiny s deťmi.</p>',
+      '<p>ASTRANA GREY je stredne sivý dekor bez ostrých kontrastov. Jemné gradovanie odtieňov a diskrétne svetlejšie žilkovanie sú čitateľné zblízka, z odstupu sa plocha číta ako jeden pokojný tón. Dekor nemá dominantné žily, takže neurčuje charakter miestnosti — necháva ho na nábytku, svetle a materiáloch okolo.</p>' +
+      '<p>Sivá znesie teplé aj studené okolie. Dobre sadne k dubu, bielemu lakovanému sklu aj matnému čiernemu kovaniu a funguje v škandinávskom rovnako ako v talianskom minimalizme. V otvorenej dispozícii, kde kuchyňu vidno z obývačky, plocha nerobí vizuálny zlom — z veľkoformátových platní vyjde doska, ostrovček aj zástena z jedného dekoru s minimom viditeľných spojov.</p>' +
+      '<p>Sinterovaný kameň s povrchom Gluetech má nasiakavosť pod 0,1 %: káva, víno ani olej sa doň nevpijú a impregnácia nie je potrebná. Tvrdosť Mohs 7+ znamená, že doska odolá bežnej práci s riadom a náradím, a teplotná odolnosť do 300 °C znesie aj hrniec odložený priamo na plochu. UV stabilita drží odtieň aj pri okne. V rodinnej kuchyni v dennej prevádzke tak na údržbu stačí vlhká utierka s neutrálnym saponátom.</p>',
     keyBenefits: [
-      'Neutrálna sivá základňa vhodná do každého interiérového štýlu',
-      'Moderný škandinávsky/minimalistický vzhľad',
-      'Ideálny pre otvorené dispozície – prechod z izby do izby',
-      'Skvelá kombinácia s dubovým drevom a matným čiernym kovaním',
-      'Dlhá životnosť a nenáročná údržba',
+      'Vyrovnaná sivá bez výraznej kresby, plocha nepreťahuje pozornosť',
+      'Ladí s dubom, bielym sklom aj matným čiernym kovaním',
+      'Nasiakavosť pod 0,1 % — škvrny sa nevpíjajú, netreba impregnáciu',
+      'Odolá teplu do 300 °C aj poškriabaniu — tvrdosť Mohs 7+',
+      'Platne 3200 × 1600 mm pre súvislú plochu s minimom spojov',
     ],
   },
 
   'super-white-extra': {
-    metaTitle: 'Super White Extra | Biele veľkoformátové platne',
-    metaDescription: 'Dokonale biele obklady Super White Extra. Zväčšite priestor svetlom. Prémiové porcelánové platne pre kúpeľne a kuchyne. Skladom, vzorky zadarmo.',
+    metaTitle: 'Super White Extra — čistý biely dekor | OROSTONE',
+    metaDescription: 'Čistý biely sinterovaný kameň bez žilkovania. Pre minimalistické kuchyne, kde má plocha úplne ustúpiť v prospech kompozície. Vzorka na vyžiadanie.',
     keywords: [
       'biele mramorové platne',
       'super white obklad',
@@ -235,23 +235,23 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
       'biele obklady bratislava',
     ],
     shortDescription:
-      'SUPER WHITE EXTRA je ultimátna odpoveď na minimalizmus. Oslnivá bielota prináša do každého priestoru čistotu, svetlo a absolútnu modernosť. V bratislavských bytoch, kde každý meter štvorcový svitu počíta, je toto strategická voľba.',
+      'Čistá biela s takmer neviditeľnou kresbou. Neutrálny základ pre minimalistické kuchyne a kúpeľne, kde má plocha ustúpiť a nechať vyniknúť zvyšok interiéru. Menšie a tmavšie miestnosti pôsobia vďaka svetlej ploche opticky väčšie.',
     longDescription:
-      '<p>Biela je viac než farba – je to filozofia. SUPER WHITE EXTRA prináša do každého priestoru nekonečné svetlo a čistotu, ktorá opticky zväčšuje miestnosť a vytvára pocit slobody.</p>' +
-      '<p>V Bratislave, kde mnohé bytové dispozície nedostávajú dostatok prirodzeného svetla, je Super White Extra strategickým nástrojom interiérového dizajnéra. Maximálne biela základňa s minimálnym, takmer neviditeľným vzorovaním je ideálna na dlažby aj obklady – od predsiene po kúpeľňu.</p>' +
-      '<p>Poskytuje skvelé plátno pre farebné akcentové prvky, umenie, rastliny alebo výrazný nábytok. Technologicky: porcelánová platňa s maximálnou odolnosťou voči znečisteniu a jednoduchým každodenným čistením.</p>',
+      '<p>SUPER WHITE EXTRA je čistá biela bez žilkovania — kresba je taká jemná, že plocha pôsobí ako jeden súvislý tón. Povrch Silk (Velvet) leží medzi matom a leskom: svetlo neláme do ostrých odleskov, ale ani ho nepohltí. Vo formáte 3200 × 1600 mm to znamená pokojnú plochu s minimom škár.</p>' +
+      '<p>Hodí sa do kuchýň a kúpeľní, kde má vyniknúť celok a nie samotná doska. Ako pokojné pozadie znesie farebné akcenty, umenie, rastliny aj výrazný nábytok — vymeníte textílie či obrazy a plocha ostane rovnaká. Použiť sa dá na kuchynskú dosku, obklad aj dlažbu, od predsiene po kúpeľňu.</p>' +
+      '<p>Nasiakavosť pod 0,1 % znamená, že káva, víno ani olej sa do bielej plochy nevpijú — povrch je nepórovitý a hygienický, stačí vlhká utierka a impregnácia nie je potrebná. Sinterovaný kameň je UV stabilný podľa DIN 51094, takže biela nezažltne ani pri celoročnom dennom svetle. Odolá poškriabaniu a zamatový Silk nezvýrazňuje odtlačky prstov.</p>',
     keyBenefits: [
-      'Oslnivá biela pre maximálne prirodzené aj umelé svetlo',
-      'Opticky zväčšuje každý priestor – ideálne pre menšie byty',
-      'Perfektné plátno pre akékoľvek dekoračné prvky',
-      'Maximálna odolnosť voči škvrnám a ľahké čistenie',
-      'Vhodný pre celý byt – od predsiene po kúpeľňu',
+      'Čistá biela bez žilkovania — takmer neviditeľná kresba',
+      'Povrch Silk (Velvet): zamatový, nezvýrazňuje odtlačky prstov',
+      'Nasiakavosť pod 0,1 % — škvrny sa nevpíjajú, bez impregnácie',
+      'UV stabilný podľa DIN 51094, biela nezažltne pri dennom svetle',
+      'Opticky zväčšuje menšie a tmavšie miestnosti, na obklad aj dlažbu',
     ],
   },
 
   'gothic-gold': {
-    metaTitle: 'Gothic Gold | Tmavé luxusné obklady so zlatými žilkami',
-    metaDescription: 'Dramatický Gothic Gold – tmavý mramor so zlatými žilkami. Luxusné platne pre odvážnych. Skladom, objednajte online. Doprava po celom Slovensku.',
+    metaTitle: 'Gothic Gold — tmavý dekor so zlatistou kresbou | OROSTONE',
+    metaDescription: 'Gothic Gold je tmavý dekor so zlatistými žilkami. Pre kuchyne, kde má pracovná doska niesť dramatickejšiu líniu. Pozrite veľkú platňu v showroome Bošany.',
     keywords: [
       'gothic gold obklad',
       'tmavé mramorové platne',
@@ -260,23 +260,23 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
       'dramatické obklady',
     ],
     shortDescription:
-      'GOTHIC GOLD je pre tých, ktorí sa neboja mať interiér s charakterom. Dramatická tmavá základňa s okázalými zlatými žilkami vytvára priestor, ktorý nikto nezabudne. Jeden pohľad a vaši hostia budú vedieť, že ste si nešetrili.',
+      'GOTHIC GOLD je tmavý dekor so zlatistou kresbou, ktorá sa cez plochu tiahne v nepravidelných žilkách. Hodí sa tam, kde má mať priestor jasný stred — na ostrovček, pracovnú dosku, zástenu aj obklad steny. Povrch je matný, s úpravou Microtech.',
     longDescription:
-      '<p>Niektoré interiéry majú byť svetlom a vzduchom – ale iné majú byť príbehom. GOTHIC GOLD patrí do druhej kategórie. Hlboká tmavá základňa s ohnivými zlatými žilkami vytvára dramatickú krásu, akú nájdete v päťhviezdičkových hoteloch alebo súkromných bratislavských vilách.</p>' +
-      '<p>Akcentová stena za postelkou, exkluzívna kúpeľňa alebo barový pult – kdekoľvek Gothic Gold umiestnite, stane sa nepopierateľným stredobodom priestoru.</p>' +
-      '<p>Zlaté žilky reagujú na osvetlenie fascinujúcim spôsobom – sviečkové svetlo vytvára romantickú atmosféru, zatiaľ čo spotové svetlá zvýraznia dynamiku vzoru. Odvážna voľba pre odvážnych ľudí, ktorí chcú mať domov, nie len byt.</p>',
+      '<p>GOTHIC GOLD má hlboký tmavý podklad, cez ktorý sa ťahajú zlatisté žilky. Kresba je nepravidelná a výraznejšia než pri svetlých dekoroch s jemným žilkovaním, takže plocha nepôsobí neutrálne. Pod bodovým svetlom žilky vystúpia, pri tlmenom osvetlení sa povrch upokojí a prevládne tmavý tón.</p>' +
+      '<p>Najlepšie funguje tam, kde má jedna plocha niesť priestor: kuchynský ostrovček, pracovná doska, zástena za varnou doskou, obklad steny alebo kúpeľňa. Okolie nechajte pokojnejšie — so svetlým okolím pôsobí dekor ako prirodzený stred miestnosti. Vo veľkoformátovej platni kresba pokračuje bez prerušenia, takže doska a zástena držia jednu líniu.</p>' +
+      '<p>Sinterovaný kameň má nasiakavosť pod 0,1 %, takže víno, olej ani káva sa do plochy nevpijú a škvrnu stačí zotrieť vlhkou utierkou. Povrch je odolný voči teplu aj poškriabaniu, znesie horúci hrniec a nepotrebuje impregnáciu. Matný povrch s úpravou Microtech je príjemný na dotyk a nezvýrazňuje odtlačky prstov, čo je pri tmavom dekore podstatné.</p>',
     keyBenefits: [
-      'Dramatický kontrast tmavej základne a zlatých žiliek',
-      'Stáva sa vizuálnym centrom každej izby',
-      'Fascinujúca hra s rôznymi typmi osvetlenia',
-      'Ideálny pre akcentové steny, luxury kúpeľne a barové pulty',
-      'Premium look rezervovaný pre najexkluzívnejšie rezidencie',
+      'Tmavý podklad so zlatistými žilkami a výraznou kresbou',
+      'Matný povrch s úpravou Microtech, nezvýrazňuje odtlačky',
+      'Nasiakavosť pod 0,1 % — škvrny sa do plochy nevpíjajú',
+      'Odolný voči teplu a poškriabaniu, bez impregnácie',
+      'Vhodný na ostrovček, dosku, zástenu aj obklad steny',
     ],
   },
 
   'wild-forest': {
-    metaTitle: 'Wild Forest | Prírodný kamenný dizajn pre domov',
-    metaDescription: 'Divá krása prírody vo vašom interiéri. Wild Forest – expresívny kamenný vzor pre moderné domovy. Skladom, doprava po celom SR. Vzorky zadarmo.',
+    metaTitle: 'Wild Forest — výrazný dekor pre veľké plochy | OROSTONE',
+    metaDescription: 'Wild Forest je výrazný dekor s veľkoplošnou kresbou. Vzorka 10×10 cm ho nezachytí — odporúčame pozrieť veľkú platňu v showroome Bošany.',
     keywords: [
       'prírodný kameň obklad',
       'wild forest platne',
@@ -285,23 +285,23 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
       'wellness obklady',
     ],
     shortDescription:
-      'WILD FOREST prináša silu a krásu divej prírody do vášho domova. Sivohnedé tóny s expresívnymi kamenistými vzormi evokujú horskú krajinu a prírodný charakter. Pre tých, ktorí milujú prírodu aj moderný dizajn – a nechcú si vyberať.',
+      'WILD FOREST je výrazný dekor v sivohnedých a zemitých tónoch s kresbou, ktorá pripomína kamenné plochy v lese. Vzor je veľkoplošný, preto vynikne na väčšej súvislej ploche — na ostrovčeku, celoplošnom obklade steny aj v kúpeľni a wellness zóne.',
     longDescription:
-      '<p>V dobe, keď ľudia túžia po autentickosti a prírode, WILD FOREST ponúka dokonalý most medzi biofíliou a moderným dizajnom. Expresívne vzory v sivohnedých a teplých zemitých odtieňoch evokujú kamenné plochy v hlbokom lese – autentické, divoké a dokonale krásne.</p>' +
-      '<p>Tento dizajn je mimoriadne populárny v bratislavských novostavbách s veľkými panoramatickými oknami a výhľadom do zelene, kde chcete, aby interiér a exteriér splývali do jedného celku.</p>' +
-      '<p>Kombinuje sa skvele s dubovým drevom, zelenými rastlinami a textúrovanými tkaninami. Rovnako doma je vo wellness priestoroch, saunách alebo kúpeľniach s voľne stojacu vaňou.</p>',
+      '<p>WILD FOREST je dekor v sivohnedej a zemitej palete s výraznou, nepravidelnou kresbou, ktorá pripomína kamenné plochy v lese. Vzor je veľkoplošný — celý jeho priebeh sa rozvinie až na platni vo formáte 3200 × 1600 mm. Povrch je matný, s úpravou Microtech: je príjemný na dotyk, neleskne sa a necháva vyniknúť textúru.</p>' +
+      '<p>Najviac vynikne na väčšej súvislej ploche: na ostrovčeku, na pracovnej doske s nadväzujúcim obkladom steny alebo na obklade kúpeľne. Ladí s dubovým drevom, zeleňou a textúrovanými tkaninami, doma je aj vo wellness priestoroch a saunách. Vzorka 10×10 cm ukáže farbu a povrch, celý priebeh kresby uvidíte na veľkej platni v showroome v Bošanoch.</p>' +
+      '<p>Ide o sinterovaný kameň s nasiakavosťou pod 0,1 % — olej, víno ani káva sa doň nevpijú a povrch nepotrebuje impregnáciu, stačí bežné čistenie. Odolá teplu aj poškriabaniu, takže horúci hrniec môžete odložiť priamo na dosku. Vďaka odolnosti voči vlhkosti a plesniam sa hodí aj na obklad kúpeľne či umývadlovú dosku.</p>',
     keyBenefits: [
-      'Prírodný, organický kamenný vzor plný života a pohybu',
-      'Zemité tóny pre biofíliálny dizajn blízky prírode',
-      'Skvelý do wellness priestorov, saún a relaxačných kúpeľní',
-      'Harmonická kombinácia s drevom a prírodnými materiálmi',
-      'Spája interiér s vonkajšou prírodou – ideálny pre domy s výhľadom',
+      'Sivohnedé zemité tóny s výraznou, nepravidelnou kresbou',
+      'Veľkoplošný vzor vynikne na ostrovčeku aj celoplošnom obklade',
+      'Matný povrch Microtech — príjemný na dotyk, nezvýrazňuje odtlačky',
+      'Nasiakavosť pod 0,1 % — škvrny sa nevpíjajú, bez impregnácie',
+      'Odolný voči vlhkosti a plesniam — vhodný do kúpeľne aj sauny',
     ],
   },
 
   'nero-margiua': {
-    metaTitle: 'Nero Margiua | Čierny mramor pre exkluzívne interiéry',
-    metaDescription: 'Čierne mramorové platne Nero Margiua pre luxury interiéry. Sofistikovaná čierna so striebornými žilkami. Skladom, doprava po celom Slovensku.',
+    metaTitle: 'Nero Margiua — čierny sinterovaný kameň | OROSTONE',
+    metaDescription: 'Čierny mramorový dekor s bielou žilkovou kresbou. Pre kuchyne, kde má pracovná doska byť kontrastom proti svetlým frontom. Veľká platňa v showroome Bošany.',
     keywords: [
       'čierny mramor obklad',
       'nero margiua',
@@ -310,23 +310,23 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
       'tmavé obklady',
     ],
     shortDescription:
-      'NERO MARGIUA je pre tých, ktorí chápu luxus inak. Hlboká čierna so subtilnými striebornobelými žilkami je absolútnou výpoveďou sofistikovaného vkusu. Keď vstúpite do priestoru s Nero Margiua, je jasné – toto je domov niekoho, kto vie, čo chce.',
+      'Hlboká čierna so strieborno-bielymi žilkami, ktoré kresbu len jemne rozjasnia. Plocha pôsobí pokojne aj vo veľkom formáte. Funguje ako kuchynská doska či ostrovček, akcentová stena aj celoplošný obklad kúpeľne — všade tam, kde má tmavá plocha tvoriť kontrast voči svetlému okoliu.',
     longDescription:
-      '<p>Čierna farba v interiéri nikdy nevyšla z módy – práve naopak, stala sa synonymom dospelého, sebavedomého a nadčasového štýlu. NERO MARGIUA s hlbokou čiernou základňou a jemnými striebornobelými žilkami je výsledkom dlhoročnej skúsenosti v luxusnom dizajne.</p>' +
-      '<p>V bratislavských penthousoch, vilách a prémiových kúpeľniach tento dizajn vytvára nezameniteľnú atmosféru exkluzivity.</p>' +
-      '<p>Rovnako impresívny ako akcentová stena aj ako celoplošný obklad celej kúpeľne. Kontrastuje perfektne s bielymi sanitárnymi zariadeniami, zlatými batériami alebo drevenými prvkami. Pre tých, ktorí nechcú byť priemerní.</p>',
+      '<p>NERO MARGIUA je čierny mramorový dekor s hlbokou, sýtou základňou a jemnými strieborno-bielymi žilkami. Kresba je tichá — nepýta si pozornosť, len rozbíja súvislú čiernu a dáva ploche hĺbku. Matný povrch Diamondglass svetlo skôr pohlcuje než odráža, takže čierna pôsobí hlboko a bez ostrých odleskov.</p>' +
+      '<p>Najlepšie funguje ako kontrast: proti bielym alebo svetlým frontom, svetlému drevu a mosadzným či zlatým detailom, v kúpeľni proti bielej sanite a zlatým batériám. Strieborno-biele žilky prepoja čiernu plochu so svetlejším okolím, takže priestor nepôsobí ťažko. V menšej kuchyni ho odporúčame skôr na ostrovček alebo zástenu než na všetky plochy — tmavý povrch pohlcuje svetlo.</p>' +
+      '<p>Sinterovaný kameň má nasiakavosť pod 0,1 %, takže olej, víno ani citrón sa do povrchu nevpijú a doska nepotrebuje impregnáciu. Znesie odloženie horúceho hrnca, odoláva poškriabaniu aj UV žiareniu. Matný povrch je navyše k odtlačkom zhovievavejší než lesk — a pri čiernej ploche to rozhoduje o tom, ako často ju budete utierať.</p>',
     keyBenefits: [
-      'Hlboká čierna základňa pre absolútnu sofistikovanosť',
-      'Striebristá žilkovanie vytvára dynamiku a hĺbku',
-      'Ideálny pre luxury kúpeľne, šatníky a akcentové steny',
-      'Nezameniteľná atmosféra exkluzivity a prestíže',
-      'Dokonalý kontrast s bielymi prvkami a zlatými kovaniami',
+      'Hlboká čierna s jemným strieborno-bielym žilkovaním',
+      'Matný povrch Diamondglass zvýrazňuje odtlačky menej než lesk',
+      'Nasiakavosť pod 0,1 % — škvrny sa nevpíjajú, bez impregnácie',
+      'Odolný voči teplu, poškriabaniu aj UV, čierna nevybledne',
+      'Kontrast k svetlým frontom, svetlému drevu a mosadzným detailom',
     ],
   },
 
   'yabo-white': {
-    metaTitle: 'YABO WHITE | Teplé biele obklady pre každý priestor',
-    metaDescription: 'Nadčasovo biely Yabo White pre kúpeľne a kuchyne. Teplá, vzdušná biela vhodná pre celý byt. Skladom, doprava po celom SR. Objednajte online.',
+    metaTitle: 'Yabo White — teplý biely sinterovaný kameň | OROSTONE',
+    metaDescription: 'Yabo White je teplý biely dekor s mäkkou textúrou. Pre kuchyne, kde má svetlá plocha pôsobiť obytne, nie sterilne. Vzorka Yabo White na vyžiadanie.',
     keywords: [
       'biele obklady bratislava',
       'yabo white',
@@ -335,17 +335,17 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
       'moderné biele platne',
     ],
     shortDescription:
-      'YABO WHITE je čistota v jej najdokonalejšej forme. Jemná biela textúra s teplými krémovými odtieňmi prináša do každého priestoru sviežosť, pokoj a nadčasový šarm. Dizajn, ktorý nikdy nezastará – a vždy bude správny.',
+      'YABO WHITE je teplá biela s krémovým podtónom a jemnou textúrou. Pôsobí mäkšie než studená čistá biela a priestor pritom ostáva svetlý a vzdušný. Neutrálna kresba z neho robí základ, ktorý funguje v kuchyni, kúpeľni aj v chodbe.',
     longDescription:
-      '<p>YABO WHITE je odpoveďou na jednu z najčastejších otázok interiérového dizajnu: ako vytvoriť priestor, ktorý bude vždy aktuálny? Jemná biela s krémovými odtieňmi a subtílnymi textúrami prináša teplejší pocit ako studená čistá biela, ale zachováva všetku svielosť a vzdušnosť.</p>' +
-      '<p>Ideálny pre bratislavské byty, kde chcete dlhodobo funkčný základ, na ktorom môžete meniť dekor, farby a textílie bez nutnosti meniť obklady.</p>' +
-      '<p>Kúpeľňa, predsieň, kuchyňa – Yabo White funguje všade bez výnimky. Porcelánová technológia zaručuje maximálnu hygienu, odolnosť a ľahké čistenie. Investícia do obkladu raz a navždy – pretože dobrý vkus nestarne.</p>',
+      '<p>Základom je teplá biela s krémovým podtónom. Namiesto výraznej kresby má plocha jemnú textúru, ktorá sa ukáže až zblízka — z odstupu pôsobí pokojne a celistvo. Oproti studenej čistej bielej je mäkšia a obytnejšia, svetlosť a vzdušnosť si však zachováva. Povrchová úprava Matt (Diamondglass) je matná, bez lesku.</p>' +
+      '<p>Ako svetlá pokojná plocha sa hodí na pracovnú dosku, zástenu aj celoplošný obklad — v kuchyni, kúpeľni či v chodbe. Neutrálna kresba ladí s väčšinou interiérov, takže farby, textílie a doplnky okolo nej môžete časom meniť bez toho, aby ste menili obklad alebo dosku.</p>' +
+      '<p>Ako sinterovaný kameň má nasiakavosť pod 0,1 % — káva, víno ani olej sa doň nevpíjajú a povrch nepotrebuje impregnáciu. Tvrdosť Mohs 7+ a tepelná odolnosť do 300 °C znamenajú, že odložený horúci hrniec ani denná prevádzka mu neuškodia. Matný povrch nezvýrazňuje odtlačky a na údržbu stačí vlhká utierka s neutrálnym saponátom.</p>',
     keyBenefits: [
-      'Teplá biela pre sviežu, vzdušnú a pritom hrejivú atmosféru',
-      'Nadčasový dizajn – nikdy nevyjde z módy',
-      'Flexibilný základ pre meniace sa dekorácie a trendy',
-      'Maximálna hygiena a ľahká každodenná údržba',
-      'Vhodný pre celý byt – predsieň, kuchyňa, kúpeľňa',
+      'Teplá biela s krémovým podtónom, mäkšia než studená čistá biela',
+      'Jemná textúra bez výraznej kresby — plocha pôsobí pokojne a celistvo',
+      'Neutrálny základ do kuchyne, kúpeľne aj chodby, ladí s väčšinou interiérov',
+      'Nasiakavosť pod 0,1 % — škvrny sa nevpíjajú, bez impregnácie',
+      'Tvrdosť Mohs 7+ a teplo do 300 °C, matný povrch nezvýrazňuje odtlačky',
     ],
   },
 };
