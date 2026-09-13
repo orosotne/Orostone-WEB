@@ -33,7 +33,10 @@ export function parseShopifyDescription(descriptionHtml: string): ParsedDescript
     return { marketingHtml: '', specs };
   }
 
-  const headingPattern = /<(?:h[2-6]|p)>\s*(?:<(?:strong|b)>\s*)?Technick[eéẽ]\s+parametre:?\s*(?:<\/(?:strong|b)>\s*)?<\/(?:h[2-6]|p)>/i;
+  // „parametre" aj „údaje" — copy v Shopify sa prepisuje ručne a nadpis sa mení.
+  // Keď sem sekcia nespadne, špecifikácie prepadnú na defaulty (povrch = Leštený)
+  // a zároveň ostanú vypísané v marketingovom texte — stránka si potom protirečí.
+  const headingPattern = /<(?:h[2-6]|p)>\s*(?:<(?:strong|b)>\s*)?Technick[eéẽ]\s+(?:parametre|[uú]daje):?\s*(?:<\/(?:strong|b)>\s*)?<\/(?:h[2-6]|p)>/i;
   const headingMatch = marketingHtml.match(headingPattern);
 
   if (headingMatch && headingMatch.index !== undefined) {
@@ -104,11 +107,11 @@ export function parseShopifyDescription(descriptionHtml: string): ParsedDescript
 
   // Fallback: scan whole HTML for specs not under a "Technické parametre" heading
   if (!specs.finish) {
-    const finishMatch = descriptionHtml.match(/Povrchov[aá]\s+[uú]prava\s*:\s*([^<\n]+)/i);
+    const finishMatch = descriptionHtml.match(/Povrchov[aá]\s+[uú]prava\s*:(?:\s|&nbsp;|<[^>]*>)*([^<\n]+)/i);
     if (finishMatch) specs.finish = finishMatch[1].trim();
   }
   if (!specs.dimensions) {
-    const dimsMatch = descriptionHtml.match(/Rozmer\s*:\s*([^<\n]+)/i);
+    const dimsMatch = descriptionHtml.match(/Rozmer(?:\s+platne)?\s*:(?:\s|&nbsp;|<[^>]*>)*([^<\n]+)/i);
     if (dimsMatch) {
       const val = dimsMatch[1].trim();
       const threeDims = val.match(/(\d+)\s*[×x]\s*(\d+)\s*[×x]\s*(\d+)\s*mm/i);
@@ -128,7 +131,7 @@ export function parseShopifyDescription(descriptionHtml: string): ParsedDescript
     }
   }
   if (!specs.thickness) {
-    const thickMatch = descriptionHtml.match(/Hr[uú]bka\s*:\s*([^<\n]+)/i);
+    const thickMatch = descriptionHtml.match(/Hr[uú]bka\s*:(?:\s|&nbsp;|<[^>]*>)*([^<\n]+)/i);
     if (thickMatch) {
       const m = thickMatch[1].match(/(\d+)\s*mm/i);
       specs.thickness = m ? `${m[1]}mm` : thickMatch[1].trim();

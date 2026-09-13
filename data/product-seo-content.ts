@@ -226,7 +226,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
 
   'super-white-extra': {
     metaTitle: 'Super White Extra — čistý biely dekor | OROSTONE',
-    metaDescription: 'Čistý biely sinterovaný kameň bez žilkovania. Pre minimalistické kuchyne, kde má plocha úplne ustúpiť v prospech kompozície. Vzorka na vyžiadanie.',
+    metaDescription: 'Svetlý biely sinterovaný kameň s jemným sivým žilkovaním. Pre kuchyne, kde má plocha zostať svetlá a pritom si udržať mramorový výraz. Vzorka na vyžiadanie.',
     keywords: [
       'biele mramorové platne',
       'super white obklad',
@@ -235,13 +235,13 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
       'biele obklady bratislava',
     ],
     shortDescription:
-      'Čistá biela s takmer neviditeľnou kresbou. Neutrálny základ pre minimalistické kuchyne a kúpeľne, kde má plocha ustúpiť a nechať vyniknúť zvyšok interiéru. Menšie a tmavšie miestnosti pôsobia vďaka svetlej ploche opticky väčšie.',
+      'Svetlý biely základ pretkaný sivými žilami — niektoré tenké a nenápadné, iné výraznejšie. Doska si tak udrží mramorový výraz aj v kuchyni, kde prevláda biela, a svetlá plocha zároveň opticky zväčší menšiu či tmavšiu miestnosť.',
     longDescription:
-      '<p>SUPER WHITE EXTRA je čistá biela bez žilkovania — kresba je taká jemná, že plocha pôsobí ako jeden súvislý tón. Povrch Silk (Velvet) leží medzi matom a leskom: svetlo neláme do ostrých odleskov, ale ani ho nepohltí. Vo formáte 3200 × 1600 mm to znamená pokojnú plochu s minimom škár.</p>' +
-      '<p>Hodí sa do kuchýň a kúpeľní, kde má vyniknúť celok a nie samotná doska. Ako pokojné pozadie znesie farebné akcenty, umenie, rastliny aj výrazný nábytok — vymeníte textílie či obrazy a plocha ostane rovnaká. Použiť sa dá na kuchynskú dosku, obklad aj dlažbu, od predsiene po kúpeľňu.</p>' +
+      '<p>SUPER WHITE EXTRA je svetlá biela pretkaná sivými žilami — niektoré sú tenké a nenápadné, iné výraznejšie, takže plocha si drží mramorový výraz a nepôsobí ako jednoliaty tón. Povrch Silk (Velvet) leží medzi matom a leskom: svetlo neláme do ostrých odleskov, ale ani ho nepohltí. Vo formáte 3200 × 1600 mm to znamená plochu s minimom škár.</p>' +
+      '<p>Hodí sa do kuchýň a kúpeľní, kde má byť plocha svetlá, ale nie prázdna. So sivými skrinkami ladí farebne, dubové drevo jej dodá teplejší nádych, a znesie aj farebné akcenty, umenie či rastliny — vymeníte textílie či obrazy a plocha ostane rovnaká. Použiť sa dá na kuchynskú dosku, obklad aj dlažbu, od predsiene po kúpeľňu.</p>' +
       '<p>Nasiakavosť pod 0,1 % znamená, že káva, víno ani olej sa do bielej plochy nevpijú — povrch je nepórovitý a hygienický, stačí vlhká utierka a impregnácia nie je potrebná. Sinterovaný kameň je UV stabilný podľa DIN 51094, takže biela nezažltne ani pri celoročnom dennom svetle. Odolá poškriabaniu a zamatový Silk nezvýrazňuje odtlačky prstov.</p>',
     keyBenefits: [
-      'Čistá biela bez žilkovania — takmer neviditeľná kresba',
+      'Svetlá biela so sivým žilkovaním — drží mramorový výraz',
       'Povrch Silk (Velvet): zamatový, nezvýrazňuje odtlačky prstov',
       'Nasiakavosť pod 0,1 % — škvrny sa nevpíjajú, bez impregnácie',
       'UV stabilný podľa DIN 51094, biela nezažltne pri dennom svetle',
@@ -534,7 +534,7 @@ const CUSTOM_PRODUCT_FAQS: Record<string, { name: string; faqs: ProductFAQ[] }> 
       {
         question: 'Je SUPER WHITE EXTRA úplne biely alebo má kresbu?',
         answer:
-          'Je to čistá biela s minimálnou kresbou — neutrálny základ, ktorý opticky zväčší menšie alebo tmavšie priestory a nechá vyniknúť zvyšok interiéru.',
+          'Kresbu má — svetlý biely základ pretkaný sivými žilami, niektoré tenké a nenápadné, iné výraznejšie. Plocha ostáva svetlá a opticky zväčší menšie alebo tmavšie priestory, no drží mramorový výraz.',
       },
       {
         question: 'Nezažltne biely povrch časom?',

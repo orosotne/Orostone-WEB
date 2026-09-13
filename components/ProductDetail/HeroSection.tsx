@@ -466,9 +466,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 {BUNDLE_OPTIONS.find((b) => b.discountPercent > 0) && (
                   <p className="text-[11px] text-gray-500 -mt-4 mb-6 leading-relaxed">
                     <span className="text-emerald-700 font-medium">Tip:</span> Zľava sa automaticky
-                    uplatní v košíku pri{' '}
-                    {BUNDLE_OPTIONS.find((b) => b.discountPercent > 0)!.quantity}+ platniach — platí
-                    aj pre rôzne vzory.
+                    uplatní v košíku od{' '}
+                    {BUNDLE_OPTIONS.find((b) => b.discountPercent > 0)!.quantity} platní — aj keď
+                    skombinujete rôzne dekory.
                   </p>
                 )}
               </div>

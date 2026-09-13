@@ -69,7 +69,7 @@ export const PRODUCT_META_OVERRIDE: Record<string, ProductMetaOverrideEntry> = {
   'super-white-extra': {
     title: 'Super White Extra — čistý biely dekor | OROSTONE',
     description:
-      'Čistý biely sinterovaný kameň bez žilkovania. Pre minimalistické kuchyne, kde má plocha úplne ustúpiť v prospech kompozície. Vzorka na vyžiadanie.',
+      'Svetlý biely sinterovaný kameň s jemným sivým žilkovaním. Pre kuchyne, kde má plocha zostať svetlá a pritom si udržať mramorový výraz. Vzorka na vyžiadanie.',
   },
   'taj-mahal': {
     title: 'Taj Mahal — krémový sinterovaný kameň | OROSTONE',
