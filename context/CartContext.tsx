@@ -59,7 +59,7 @@ interface CartContextType {
   totalDiscount: number;
   /** Medzisúčet pred aplikáciou zliav (sum amountPerQuantity * quantity). */
   subtotalBeforeDiscount: number;
-  /** Tituly aplikovaných zliav (napr. ["Bundle 2+ platne −20%"]). */
+  /** Tituly aplikovaných zliav (napr. ["Bundle 3+ platne −20%"]). */
   appliedDiscountTitles: string[];
   isInCart: (productHandle: string) => boolean;
   getItemQuantity: (productHandle: string) => number;

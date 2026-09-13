@@ -26,6 +26,7 @@ import { ProductLightbox } from './ProductLightbox';
 // Dočasne skryté: import { MaterialPerspectivesViewer } from './MaterialPerspectivesViewer';
 import { ThicknessIcon, shopifyImageUrl, shopifySrcSet, productImageAlt, shortFinish, getFinishIcon, calculateSlabPrice } from './utils';
 import type { BundleOption } from './types';
+import { BUNDLE_OPTIONS } from './types';
 
 interface HeroSectionProps {
   product: ShopProduct;
@@ -462,9 +463,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   selectedBundle={selectedBundle}
                   onBundleChange={onBundleChange}
                 />
-                <p className="text-[11px] text-gray-500 -mt-4 mb-6 leading-relaxed">
-                  <span className="text-emerald-700 font-medium">Tip:</span> Zľava sa automaticky uplatní v košíku pri 2+ platniach — platí aj pre rôzne vzory.
-                </p>
+                {BUNDLE_OPTIONS.find((b) => b.discountPercent > 0) && (
+                  <p className="text-[11px] text-gray-500 -mt-4 mb-6 leading-relaxed">
+                    <span className="text-emerald-700 font-medium">Tip:</span> Zľava sa automaticky
+                    uplatní v košíku pri{' '}
+                    {BUNDLE_OPTIONS.find((b) => b.discountPercent > 0)!.quantity}+ platniach — platí
+                    aj pre rôzne vzory.
+                  </p>
+                )}
               </div>
 
               <div className="order-[11] lg:order-[10]">

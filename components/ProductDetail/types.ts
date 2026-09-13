@@ -7,8 +7,8 @@ export interface BundleOption {
 
 export const BUNDLE_OPTIONS: BundleOption[] = [
   { quantity: 1, discountPercent: 0, label: 'štandard' },
-  { quantity: 2, discountPercent: 20, label: '-20%' },
-  { quantity: 3, discountPercent: 30, label: '-30%', isBestValue: true },
+  { quantity: 2, discountPercent: 0, label: 'štandard' },
+  { quantity: 3, discountPercent: 20, label: '-20%', isBestValue: true },
 ];
 
 export const INSTALLATION_RATE_PER_M2 = 279; // EUR per m² VAT incl.

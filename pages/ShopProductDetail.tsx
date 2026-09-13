@@ -44,7 +44,7 @@ export const ShopProductDetail: React.FC = () => {
   );
 
   const { product: shopifyProduct, isLoading: productLoading } = useShopifyProduct(id, cachedProduct);
-  const [selectedBundle, setSelectedBundle] = useState<BundleOption>(BUNDLE_OPTIONS[1]);
+  const [selectedBundle, setSelectedBundle] = useState<BundleOption>(BUNDLE_OPTIONS[0]);
   const [cartError, setCartError] = useState<string | null>(null);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [installationSelected, setInstallationSelected] = useState(false);
