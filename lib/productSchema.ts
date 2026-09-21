@@ -10,7 +10,7 @@
 //
 // Plain, dependency-free TS (same contract as lib/slab.ts): browser,
 // tsx build scripts and Vercel functions can all import it.
-import { calculateSlabPrice } from './slab';
+import { calculateSlabPrice, slabAreaM2 } from './slab';
 
 const BASE_URL = 'https://orostone.sk';
 
@@ -96,6 +96,25 @@ export function buildProductJsonLd(
       url: canonical,
       priceCurrency: 'EUR',
       price: totalPrice.toFixed(2),
+      // Transakčná cena je celá platňa (to si zákazník kúpi), ale web aj Merchant
+      // feed komunikujú sadzbu za m² — tú nesie unit pricing, rovnako ako
+      // g:unit_pricing_* vo feede. Google tak môže zobraziť €/m² bez toho, aby
+      // sa cena v markupe rozišla s cenou v košíku.
+      priceSpecification: {
+        '@type': 'UnitPriceSpecification',
+        price: product.pricePerM2.toFixed(2),
+        priceCurrency: 'EUR',
+        referenceQuantity: {
+          '@type': 'QuantitativeValue',
+          value: 1,
+          unitCode: 'MTK',
+        },
+      },
+      eligibleQuantity: {
+        '@type': 'QuantitativeValue',
+        value: slabAreaM2(product.dimensions),
+        unitCode: 'MTK',
+      },
       validFrom: OFFER_VALID_FROM,
       priceValidUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 1))
         .toISOString()
@@ -109,7 +128,7 @@ export function buildProductJsonLd(
         shippingRate: { '@type': 'MonetaryAmount', value: '150', currency: 'EUR' },
         deliveryTime: {
           '@type': 'ShippingDeliveryTime',
-          handlingTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 5, unitCode: 'd' },
+          handlingTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 3, unitCode: 'd' },
           transitTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 2, unitCode: 'd' },
         },
       },

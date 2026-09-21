@@ -14,6 +14,7 @@ import { useInstagramFeed, getPostImageUrl } from '../hooks/useInstagramFeed';
 import { useIsMobile } from '../hooks/useIsMobile';
 import { lazyWithRetry } from '../lib/utils';
 import { OFFER_VALID_FROM } from '../lib/productSchema';
+import { calculateSlabPrice } from '../lib/slab';
 import { DeferUntilVisible } from '../components/UI/DeferUntilVisible';
 
 import { SEOHead, OROSTONE_ORGANIZATION_LD } from '../components/UI/SEOHead';
@@ -685,7 +686,13 @@ export const Shop = () => {
                   "@type": "Offer",
                   "url": `https://orostone.sk/produkt/${p.id}`,
                   "priceCurrency": "EUR",
-                  "price": p.pricePerM2.toFixed(2),
+                  "price": calculateSlabPrice(p.pricePerM2, p.dimensions).toFixed(2),
+                  "priceSpecification": {
+                    "@type": "UnitPriceSpecification",
+                    "price": p.pricePerM2.toFixed(2),
+                    "priceCurrency": "EUR",
+                    "referenceQuantity": { "@type": "QuantitativeValue", "value": 1, "unitCode": "MTK" }
+                  },
                   "validFrom": OFFER_VALID_FROM,
                   "availability": p.inStock
                     ? "https://schema.org/InStock"
@@ -698,7 +705,7 @@ export const Shop = () => {
                     "shippingRate": { "@type": "MonetaryAmount", "value": "150", "currency": "EUR" },
                     "deliveryTime": {
                       "@type": "ShippingDeliveryTime",
-                      "handlingTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 5, "unitCode": "d" },
+                      "handlingTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 3, "unitCode": "d" },
                       "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 2, "unitCode": "d" }
                     }
                   },
