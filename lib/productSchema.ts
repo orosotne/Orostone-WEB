@@ -1,10 +1,11 @@
 // ===========================================
 // PRODUCT JSON-LD — single source of truth
 // ===========================================
-// One builder for the Product + Offer schema, used by BOTH the prerender
-// (scripts/prerender.ts) and the client (components/ProductDetail/
-// ProductSchema.tsx), so crawlers and hydrated pages always emit the SAME
-// structured data. Offer.price is the TRANSACTABLE amount — the total slab
+// One builder for the Product + Offer schema, used by the prerender
+// (scripts/prerender.ts), which is the single emitter of Product JSON-LD on
+// /produkt/<slug>. The client used to render an identical copy on top of it,
+// which made Google see every item twice — that copy is gone; crawlers read
+// the prerendered <head>. Offer.price is the TRANSACTABLE amount — the total slab
 // price (what the Shopify variant actually sells), not the per-m² rate;
 // the per-m² rate is exposed as an additionalProperty.
 //

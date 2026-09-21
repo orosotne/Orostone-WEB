@@ -12,7 +12,6 @@ export { ResistanceParameters } from './ResistanceParameters';
 export { LogisticsSection } from './LogisticsSection';
 export { ArchitectBlock } from './ArchitectBlock';
 export { ProductFAQSection } from './ProductFAQSection';
-export { ProductSchema } from './ProductSchema';
 export type { BundleOption } from './types';
 export { BUNDLE_OPTIONS, INSTALLATION_RATE_PER_M2, INSTALLATION_STORAGE_KEY, saveInstallationToStorage, loadInstallationFromStorage } from './types';
 export { calculateSlabPrice, shopifyImageUrl, shopifySrcSet, productImageAlt, shortFinish, getFinishIcon, ThicknessIcon } from './utils';

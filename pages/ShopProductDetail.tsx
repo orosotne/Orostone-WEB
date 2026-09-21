@@ -11,7 +11,7 @@ import { ProductDetailSkeleton } from '../components/UI/Skeleton';
 import { useCookies } from '../context/CookieContext';
 import { trackMetaEvent } from '../hooks/useMetaPixel';
 import { trackGA4ViewItem } from '../services/analytics';
-import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
+import { SEOHead } from '../components/UI/SEOHead';
 import { PRODUCT_META_OVERRIDE } from '../data/productMetaOverride';
 import {
   HeroSection,
@@ -23,7 +23,6 @@ import {
   LogisticsSection,
   ArchitectBlock,
   ProductFAQSection,
-  ProductSchema,
   BUNDLE_OPTIONS,
   INSTALLATION_RATE_PER_M2,
   saveInstallationToStorage,
@@ -219,16 +218,6 @@ export const ShopProductDetail: React.FC = () => {
       <LogisticsSection product={product} />
       <ArchitectBlock product={product} />
       <ProductFAQSection product={product} />
-
-      <ProductSchema product={product} totalPrice={calculateSlabPrice(product.pricePerM2, product.dimensions)} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(createBreadcrumbLD([
-          { name: 'OROSTONE', url: 'https://orostone.sk/' },
-          { name: 'E-Shop', url: 'https://orostone.sk/' },
-          { name: product.name, url: `https://orostone.sk/produkt/${product.id}` },
-        ])) }}
-      />
 
       {/* Sticky Add-to-Cart Bottom Bar — mobile only */}
       <div className={cn(

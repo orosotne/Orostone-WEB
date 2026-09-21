@@ -17,19 +17,6 @@ export const ProductFAQSection: React.FC<ProductFAQSectionProps> = ({ product })
 
   if (allFaqs.length === 0) return null;
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": allFaqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer,
-      },
-    })),
-  };
-
   return (
     <section className="py-12 lg:py-16 bg-white">
       <div className="container mx-auto px-6">
@@ -88,10 +75,6 @@ export const ProductFAQSection: React.FC<ProductFAQSectionProps> = ({ product })
           </div>
         </div>
       </div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
     </section>
   );
 };
