@@ -14,6 +14,13 @@ import { calculateSlabPrice } from './slab';
 
 const BASE_URL = 'https://orostone.sk';
 
+/**
+ * Offer.validFrom — odkedy platí aktuálna cenníková ponuka. Pevný dátum zámerne:
+ * `new Date()` by sa menil pri každom builde a Google by videl ponuku ako "od dnes",
+ * hoci ceny platia dlhšie. Pri zmene cenníka prepíš na dátum jeho účinnosti.
+ */
+export const OFFER_VALID_FROM = '2026-01-01';
+
 /** Minimal product shape the builder needs (subset of ShopProduct / fallback JSON). */
 export interface ProductSchemaSource {
   id: string;
@@ -89,6 +96,7 @@ export function buildProductJsonLd(
       url: canonical,
       priceCurrency: 'EUR',
       price: totalPrice.toFixed(2),
+      validFrom: OFFER_VALID_FROM,
       priceValidUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 1))
         .toISOString()
         .split('T')[0],
@@ -102,6 +110,7 @@ export function buildProductJsonLd(
         deliveryTime: {
           '@type': 'ShippingDeliveryTime',
           handlingTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 5, unitCode: 'd' },
+          transitTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 2, unitCode: 'd' },
         },
       },
       hasMerchantReturnPolicy: {

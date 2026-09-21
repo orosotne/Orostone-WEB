@@ -13,6 +13,7 @@ import { useShopifyProducts } from '../hooks/useShopifyProducts';
 import { useInstagramFeed, getPostImageUrl } from '../hooks/useInstagramFeed';
 import { useIsMobile } from '../hooks/useIsMobile';
 import { lazyWithRetry } from '../lib/utils';
+import { OFFER_VALID_FROM } from '../lib/productSchema';
 import { DeferUntilVisible } from '../components/UI/DeferUntilVisible';
 
 import { SEOHead, OROSTONE_ORGANIZATION_LD } from '../components/UI/SEOHead';
@@ -685,6 +686,7 @@ export const Shop = () => {
                   "url": `https://orostone.sk/produkt/${p.id}`,
                   "priceCurrency": "EUR",
                   "price": p.pricePerM2.toFixed(2),
+                  "validFrom": OFFER_VALID_FROM,
                   "availability": p.inStock
                     ? "https://schema.org/InStock"
                     : "https://schema.org/PreOrder",
@@ -696,7 +698,8 @@ export const Shop = () => {
                     "shippingRate": { "@type": "MonetaryAmount", "value": "150", "currency": "EUR" },
                     "deliveryTime": {
                       "@type": "ShippingDeliveryTime",
-                      "handlingTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 5, "unitCode": "d" }
+                      "handlingTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 5, "unitCode": "d" },
+                      "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 2, "unitCode": "d" }
                     }
                   },
                   "hasMerchantReturnPolicy": {
