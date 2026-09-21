@@ -99,6 +99,14 @@ for (const route of routes) {
         fail(`${route.path}: Product.image missing`);
       }
       if (!product.offers?.priceValidUntil) fail(`${route.path}: Offer.priceValidUntil missing`);
+      // Merchant listing fields GSC flags when absent (doplnené 21.9.2026)
+      if (!product.offers?.validFrom) fail(`${route.path}: Offer.validFrom missing`);
+      const delivery = product.offers?.shippingDetails?.deliveryTime;
+      if (!delivery?.handlingTime) fail(`${route.path}: Offer.shippingDetails.deliveryTime.handlingTime missing`);
+      if (!delivery?.transitTime) fail(`${route.path}: Offer.shippingDetails.deliveryTime.transitTime missing`);
+      if (!product.offers?.hasMerchantReturnPolicy) {
+        fail(`${route.path}: Offer.hasMerchantReturnPolicy missing`);
+      }
     }
     if (!blocks.find((b) => b['@type'] === 'FAQPage')) {
       fail(`${route.path}: product page missing FAQPage JSON-LD`);
