@@ -13,10 +13,15 @@ import {
   formatEur,
 } from '@/data/pricing';
 import {
+  CENNIK_COMPARISON,
+  CENNIK_DESCRIPTION,
   CENNIK_DIRECT_ANSWER,
   CENNIK_FAQS,
+  CENNIK_H1,
   CENNIK_PRICE_FACTORS,
+  CENNIK_RELATED_LINKS,
   CENNIK_SCENARIOS,
+  CENNIK_TITLE,
 } from '@/data/pillars/cennik';
 
 const structuredData = {
@@ -49,10 +54,10 @@ export const Cennik = () => {
   return (
     <div className="bg-white">
       <SEOHead
-        title="Cenník sinterovaného kameňa | OROSTONE"
-        description="Aktuálne ceny všetkých dekorov sinterovaného kameňa v €/m² s DPH, cena kompletnej realizácie a orientačná cena hotovej pracovnej dosky v €/bm."
+        title={CENNIK_TITLE}
+        description={CENNIK_DESCRIPTION}
         canonical="https://orostone.sk/cennik"
-        keywords={['cenník sinterovaný kameň', 'sinterovaný kameň cena', 'pracovná doska cena', 'kuchynská doska cena za meter', 'cena za bežný meter']}
+        keywords={['kamenná pracovná doska cena', 'cena kamennej pracovnej dosky', 'sinterovaný kameň cena', 'cena za m2', 'cena za bežný meter']}
         structuredData={structuredData}
       />
 
@@ -61,10 +66,10 @@ export const Cennik = () => {
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
-              Transparentné ceny
+              Cenník sinterovaného kameňa
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-sans font-bold text-brand-dark mb-6">
-              Cenník sinterovaného kameňa
+              {CENNIK_H1}
             </h1>
             <p className="text-gray-600 text-lg font-light leading-relaxed mb-4">{CENNIK_DIRECT_ANSWER}</p>
             <p className="text-sm text-gray-400">
@@ -115,6 +120,70 @@ export const Cennik = () => {
                 ))}
               </tbody>
             </table>
+          </div>
+
+          {/* Porovnanie materiálov */}
+          <div className="mt-20">
+            <div className="text-center mb-12">
+              <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
+                Porovnanie
+              </span>
+              <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4">{CENNIK_COMPARISON.heading}</h2>
+              <p className="text-gray-500 text-lg font-light max-w-2xl mx-auto">{CENNIK_COMPARISON.intro}</p>
+            </div>
+
+            <div className="overflow-x-auto -mx-6 px-6 max-w-4xl lg:mx-auto">
+              <table className="w-full min-w-[640px] text-sm">
+                <thead>
+                  <tr className="border-b-2 border-brand-dark">
+                    {CENNIK_COMPARISON.columnLabels.map((label, i) => (
+                      <th
+                        key={label}
+                        className={
+                          i === 0
+                            ? 'text-left py-4 pr-4 font-bold text-brand-dark'
+                            : i === 1
+                              ? 'text-left py-4 px-3 font-bold text-brand-gold bg-brand-gold/5'
+                              : 'text-left py-4 px-3 font-semibold text-gray-600'
+                        }
+                      >
+                        {label}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {CENNIK_COMPARISON.rows.map(([property, ...values]) => (
+                    <tr key={property} className="border-b border-gray-100">
+                      <td className="py-4 pr-4 font-medium text-brand-dark">{property}</td>
+                      {values.map((value, i) => (
+                        <td
+                          key={i}
+                          className={
+                            i === 0
+                              ? 'py-4 px-3 font-medium text-brand-dark bg-brand-gold/5'
+                              : 'py-4 px-3 text-gray-600 font-light'
+                          }
+                        >
+                          {value}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <p className="text-center mt-8 text-sm text-gray-500">
+              {CENNIK_RELATED_LINKS.map((link, i) => (
+                <React.Fragment key={link.href}>
+                  {i > 0 && ' · '}
+                  <Link to={link.href} className="text-brand-gold hover:text-brand-dark transition-colors">
+                    {link.label}
+                  </Link>
+                </React.Fragment>
+              ))}
+            </p>
           </div>
         </div>
       </section>

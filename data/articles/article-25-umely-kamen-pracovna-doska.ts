@@ -62,7 +62,7 @@ export const ARTICLE_25: BlogArticle = {
 
 <p><strong>Kremenný (quartz) kompozit</strong> — najčastejšia interpretácia. Drvený kremeň, živica a pigmenty. Značky Technistone, Silestone, Caesarstone. <strong class="gold">90 % kremeňa, 10 % živice</strong> — z toho vyplýva aj jeho hlavná slabina: živica nezvláda dlhodobo vysokú teplotu a UV žiarenie. Pri intenzívnom slnku môže kompozit po pár rokoch žltnúť.</p>
 
-<p><strong>Sinterovaný kameň</strong> — minerálny povrch lisovaný a spekaný pri teplote nad 1 200 °C. Bez živice. Značky Dekton, Lapitec, Neolith, Laminam. Drahší ako kremenný kompozit, ale UV-stabilný a tepelne odolnejší. Detailne ho rozoberáme v <a href="/sinterovany-kamen">sekcii Sinterovaný kameň</a>.</p>
+<p><strong>Sinterovaný kameň</strong> — minerálny povrch lisovaný a spekaný pri teplote nad 1 200 °C. Bez živice. Značky Dekton, Lapitec, Neolith, Laminam. Drahší ako kremenný kompozit, ale UV-stabilný a tepelne odolnejší. Detailne ho rozoberáme v <a href="/sinterovany-kamen">sekcii Sinterovaný kameň</a>. Dekory, ktoré dodávame, nájdete v <a href="/kategoria/sintered-stone">prehľade dekorov</a>.</p>
 
 <p><strong>Keramická doska / veľkoformátový porcelán</strong> — vypálená keramická zmes, často v hrúbkach 6–12 mm. Vyzerá výborne, ale tenké formáty vyžadujú presnejšiu fabrikáciu — pri zlej manipulácii praskne pri výreze pre drez.</p>
 
@@ -146,6 +146,8 @@ export const ARTICLE_25: BlogArticle = {
 </div>
 
 <p>Pod €280 €/bm pri sinterovanom kameni alebo prémiovom dekore sa väčšinou škrtá v fabrikácii — slabšie podlepenie, jednoduchšia hrana, prípadne nezahrnutá doprava alebo výnos. <strong class="gold">Najdrahší kompromis</strong> je dobre vyzerajúca platňa, ktorá po dvoch rokoch praskne pri zle navrhnutom výreze.</p>
+
+<p>Ceny konkrétnych dekorov sinterovaného kameňa za m² s DPH nájdete v <a href="/cennik">cenníku kamenných pracovných dosiek</a>. Ak si chcete dekor najprv pozrieť pri dennom svetle, <a href="/vzorky">objednajte si vzorku</a>.</p>
 
 <div class="article-cta">
   <p>Máte rozmery alebo pôdorys kuchyne?</p>
@@ -370,7 +372,7 @@ export const ARTICLE_25: BlogArticle = {
 
 <p><strong>Quartz composite</strong> — the most common interpretation. Crushed quartz, resin and pigments. Brands include Technistone, Silestone, Caesarstone. <strong class="gold">90% quartz, 10% resin</strong> — and that is also its main weakness: resin does not handle prolonged high temperature and UV exposure. Under intense sun, the composite can yellow over a few years.</p>
 
-<p><strong>Sintered stone</strong> — a mineral surface pressed and sintered at temperatures above 1,200 °C. No resin. Brands include Dekton, Lapitec, Neolith, Laminam. More expensive than quartz composite, but UV-stable and more thermally resistant. We cover it in detail in our <a href="/sinterovany-kamen">Sintered Stone</a> section.</p>
+<p><strong>Sintered stone</strong> — a mineral surface pressed and sintered at temperatures above 1,200 °C. No resin. Brands include Dekton, Lapitec, Neolith, Laminam. More expensive than quartz composite, but UV-stable and more thermally resistant. We cover it in detail in our <a href="/sinterovany-kamen">Sintered Stone</a> section. The décors we supply are in our <a href="/kategoria/sintered-stone">décor overview</a>.</p>
 
 <p><strong>Ceramic slab / large-format porcelain</strong> — fired ceramic mixture, often in 6–12 mm thicknesses. It looks excellent, but thin formats require more precise fabrication — with poor handling, it can crack at a sink cutout.</p>
 
@@ -454,6 +456,8 @@ export const ARTICLE_25: BlogArticle = {
 </div>
 
 <p>Below €280/rm with sintered stone or premium décor, fabrication is usually being cut — weaker substrate bonding, simpler edge, possibly excluded transport or lift-up access. <strong class="gold">The most expensive compromise</strong> is a good-looking slab that cracks after two years at a poorly designed cutout.</p>
+
+<p>Per-m² prices of specific sintered stone décors (VAT included) are in our <a href="/cennik">stone countertop price list</a>. If you want to see a décor in daylight first, <a href="/vzorky">order a sample</a>.</p>
 
 <div class="article-cta">
   <p>Have measurements or a kitchen floor plan?</p>

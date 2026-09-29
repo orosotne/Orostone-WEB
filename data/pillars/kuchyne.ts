@@ -13,6 +13,9 @@ import {
 } from '../pricing';
 import type { PillarFaq } from './vyhody';
 
+/** H1 matches the page title („Kamenné pracovné dosky do kuchyne | OROSTONE") — one identity per page. */
+export const KUCHYNE_H1 = 'Kamenné pracovné dosky do kuchyne';
+
 export const KITCHEN_FAQS: PillarFaq[] = [
   {
     question: 'Koľko stojí kuchynská doska zo sinterovaného kameňa?',
