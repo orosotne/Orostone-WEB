@@ -1,4 +1,4 @@
-import { INSTALLATION_RATE_PER_M2, SLAB_PRICES, formatEur } from './pricing';
+import { BULK_DISCOUNT, INSTALLATION_RATE_PER_M2, SLAB_PRICES, formatEur, formatEurWhole } from './pricing';
 import { calculateSlabPrice } from '../lib/slab';
 
 export interface ProductFAQ {
@@ -39,7 +39,7 @@ export const GENERIC_PRODUCT_FAQS: ProductFAQ[] = [
   },
   {
     question: 'Zabezpečujete aj montáž?',
-    answer: `Áno. Zabezpečíme kompletnú realizáciu — zameranie, dopravu, opracovanie hrán, leštenie a montáž — za ${INSTALLATION_RATE_PER_M2} €/m² s DPH. Výrobu a montáž realizujú partnerskí kamenári so skúsenosťou s veľkoformátovými platňami zo sinterovaného kameňa.`,
+    answer: `Montáž nepredávame, sprostredkujeme ju. Zameranie, výrobu a montáž robí overený partnerský kamenár so skúsenosťou s veľkoformátovými platňami zo sinterovaného kameňa, orientačne za ${INSTALLATION_RATE_PER_M2} €/m² s DPH. Cenu montáže platíte priamo kamenárovi; od nás kupujete materiál.`,
   },
 ];
 
@@ -381,9 +381,9 @@ function priceFaq(id: string, name: string): ProductFAQ {
   }
   return {
     question: `Koľko stojí ${name}?`,
-    answer: `Aktuálna cena je ${formatEur(p.pricePerM2)}/m² s DPH; platňa ${p.dimensions} (hrúbka ${p.thickness}) vychádza ≈ ${formatEur(
+    answer: `Aktuálna cena je ${formatEur(p.pricePerM2)}/m² s DPH; celá platňa ${p.dimensions} (hrúbka ${p.thickness}) stojí ≈ ${formatEurWhole(
       calculateSlabPrice(p.pricePerM2, p.dimensions),
-    )} s DPH. Kompletná realizácia — zameranie, doprava, opracovanie hrán, leštenie a montáž — sa počíta sadzbou ${INSTALLATION_RATE_PER_M2} €/m². Ceny všetkých dekorov nájdete na stránke /cennik.`,
+    )} s DPH, od ${BULK_DISCOUNT.quantity} platní so zľavou ${BULK_DISCOUNT.discountPercent} %. Predávame materiál — výrobu a montáž robí a fakturuje partnerský kamenár. Ceny všetkých dekorov nájdete na stránke /cennik.`,
   };
 }
 
