@@ -112,6 +112,16 @@ const EshopColumns: React.FC<FooterEshopColumnsProps> = ({ categories = [] }) =>
             </Link>
           </li>
           <li>
+            <Link to="/cennik" className="text-gray-400 hover:text-white text-sm transition-colors">
+              Cenník
+            </Link>
+          </li>
+          <li>
+            <Link to="/vzorky" className="text-gray-400 hover:text-white text-sm transition-colors">
+              Vzorky
+            </Link>
+          </li>
+          <li>
             <Link to="/vyhody" className="text-gray-400 hover:text-white text-sm transition-colors">
               Výhody
             </Link>

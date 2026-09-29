@@ -11,6 +11,7 @@
     "typecheck": "tsc --noEmit",
     "build": "tsc --noEmit && tsx scripts/sync-shop-fallback.ts && vite build && tsx scripts/prerender.ts && tsx scripts/generate-seo-artifacts.ts && tsx scripts/validate-dist.ts",
     "indexnow": "tsx scripts/indexnow-ping.ts",
+    "seo:diff": "tsx scripts/seo-diff.ts",
     "preview": "vite preview",
     "sync:shop-fallback": "tsx scripts/sync-shop-fallback.ts",
     "gen:inspiration-thumbs": "node scripts/generate-inspiration-thumbnails.mjs"

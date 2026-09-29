@@ -4,7 +4,7 @@
 // Shared by pages/Vyhody.tsx (React) AND scripts/prerender.ts, so the FAQ,
 // comparison table and verdicts served to AI crawlers are always identical
 // to what users see. Icons stay in the page component (zip by index).
-import { SLAB_PRICE_MIN, SLAB_PRICE_MAX, COUNTERTOP_PER_BM, formatEur } from '../pricing';
+import { SLAB_PRICE_MIN, SLAB_PRICE_MAX, SLAB_TOTAL_MIN, SLAB_TOTAL_MAX, formatEur, formatEurWhole } from '../pricing';
 
 export interface PillarFaq {
   question: string;
@@ -39,7 +39,7 @@ export const VYHODY_FAQ: PillarFaq[] = [
   },
   {
     question: 'Koľko stojí sinterovaný kameň v porovnaní s ostatnými materiálmi?',
-    answer: `Materiál stojí ${formatEur(SLAB_PRICE_MIN)}–${formatEur(SLAB_PRICE_MAX)}/m² s DPH podľa dekoru; kompletná pracovná doska vrátane fabrikácie a montáže vychádza orientačne ${COUNTERTOP_PER_BM.min}–${COUNTERTOP_PER_BM.max} €/bm. Žula sa pohybuje okolo 180–500 €/m² a quartzový kompozit 150–450 €/m² za materiál — no na rozdiel od nich sinterovaný kameň nevyžaduje impregnáciu ani údržbové náklady počas životnosti. Kompletný cenník nájdete na stránke /cennik.`,
+    answer: `Materiál stojí ${formatEur(SLAB_PRICE_MIN)}–${formatEur(SLAB_PRICE_MAX)}/m² s DPH podľa dekoru, celá platňa ${formatEurWhole(SLAB_TOTAL_MIN)}–${formatEurWhole(SLAB_TOTAL_MAX)}. Žula sa pohybuje okolo 180–500 €/m² a quartzový kompozit 150–450 €/m² za materiál — no na rozdiel od nich sinterovaný kameň nevyžaduje impregnáciu ani údržbové náklady počas životnosti. Kompletný cenník nájdete na stránke /cennik.`,
   },
 ];
 
@@ -62,7 +62,7 @@ export const COMPARISON_DATA: VyhodyComparisonRow[] = [
   { property: 'Max. rozmer dosky', sintered: '3 200 × 1 600 mm', granite: '~ 3 000 × 1 500 mm', quartz: '~ 3 050 × 1 440 mm', marble: '~ 2 400 × 1 200 mm' },
   {
     property: 'Orientačná cena materiálu',
-    sintered: `${formatEur(SLAB_PRICE_MIN)}–${formatEur(SLAB_PRICE_MAX)}/m² s DPH (komplet ${COUNTERTOP_PER_BM.min}–${COUNTERTOP_PER_BM.max} €/bm)`,
+    sintered: `${formatEur(SLAB_PRICE_MIN)}–${formatEur(SLAB_PRICE_MAX)}/m² s DPH (platňa ${formatEurWhole(SLAB_TOTAL_MIN)}–${formatEurWhole(SLAB_TOTAL_MAX)})`,
     granite: '~180–500 €/m²',
     quartz: '~150–450 €/m²',
     marble: 'Individuálne podľa bloku',

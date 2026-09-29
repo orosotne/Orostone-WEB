@@ -1,0 +1,79 @@
+name: SEO diff
+
+# Pri každom PR do main postaví main aj PR a porovná SEO prvky všetkých
+# predgenerovaných stránok (title, meta, H1/H2, #kotvy, tabuľky, JSON-LD,
+# interné odkazy, dĺžka textu). Výsledok zapíše do komentára v PR.
+# Ak niečo ZMIZLO, kontrola skončí červeno — odstránenie treba vedome
+# schváliť alebo vrátiť (skript: scripts/seo-diff.ts).
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: seo-diff-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  seo-diff:
+    name: SEO diff (main → PR)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v4
+        with:
+          path: head
+
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          path: base
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            head/package-lock.json
+            base/package-lock.json
+
+      # Bez Shopify tajomstiev použijú oba buildy commitnutý
+      # data/shop-products-fallback.json — porovnanie je deterministické.
+      - name: Build main
+        working-directory: base
+        run: npm ci --no-audit --no-fund && npm run build
+
+      - name: Build PR
+        working-directory: head
+        run: npm ci --no-audit --no-fund && npm run build
+
+      - name: Compare
+        id: diff
+        working-directory: head
+        run: |
+          set +e
+          npx tsx scripts/seo-diff.ts ../base/dist dist --md "$RUNNER_TEMP/seo-diff.md"
+          echo "exit_code=$?" >> "$GITHUB_OUTPUT"
+          cat "$RUNNER_TEMP/seo-diff.md" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Comment on PR
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --edit-last --body-file "$RUNNER_TEMP/seo-diff.md" \
+            || gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body-file "$RUNNER_TEMP/seo-diff.md"
+
+      - name: Fail on removals
+        if: steps.diff.outputs.exit_code != '0'
+        run: |
+          echo "::error::SEO diff našiel odstránené prvky — pozri komentár v PR. Schváľ vedome alebo vráť."
+          exit 1

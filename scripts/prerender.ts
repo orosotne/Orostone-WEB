@@ -27,16 +27,26 @@ const { BLOG_ARTICLES_LISTING } = await import('../data/blogArticlesMeta.js');
 // prerender + sitemap/llms generator + validate-dist.
 const { INFO_PAGES, COLOR_SUBCATEGORIES } = await import('../data/prerenderPages.js');
 const { CATEGORY_SEO } = await import('../data/seo/categories.js');
-const { KITCHEN_FAQS, KUCHYNE_PROCESS_STEPS } = await import('../data/pillars/kuchyne.js');
-const { CENNIK_DIRECT_ANSWER, CENNIK_FAQS, CENNIK_PRICE_FACTORS, CENNIK_SCENARIOS } =
-  await import('../data/pillars/cennik.js');
+const { KITCHEN_FAQS, KUCHYNE_H1, KUCHYNE_PROCESS_STEPS } = await import('../data/pillars/kuchyne.js');
+const {
+  CENNIK_TITLE,
+  CENNIK_DESCRIPTION,
+  CENNIK_H1,
+  CENNIK_DIRECT_ANSWER,
+  CENNIK_FAQS,
+  CENNIK_PRICE_FACTORS,
+  CENNIK_SCENARIOS,
+  CENNIK_COMPARISON,
+  CENNIK_RELATED_LINKS,
+  scenarioSlabsText,
+} = await import('../data/pillars/cennik.js');
 const {
   PRICING_LAST_UPDATED,
   INSTALLATION_RATE_PER_M2,
   INSTALLATION_INCLUDES,
   BUNDLE_OPTIONS,
-  COUNTERTOP_PER_BM,
   formatEur,
+  formatEurWhole,
 } = await import('../data/pricing.js');
 const { calculateSlabPrice } = await import('../lib/slab.js');
 const { buildProductJsonLd } = await import('../lib/productSchema.js');
@@ -104,6 +114,23 @@ interface Page {
 
 let count = 0;
 
+// Site navigation for crawlers that don't execute JS (most AI crawlers see
+// only this prerendered HTML — header/footer come from React). Labels mirror
+// the visible header menu, so crawlers and users get the same links.
+const SITE_NAV_HTML = `<nav aria-label="Hlavná navigácia"><ul>${[
+  ['/', 'OROSTONE'],
+  ['/kategoria/sintered-stone', 'Sinterovaný kameň'],
+  ['/sinterovany-kamen', 'O kameni'],
+  ['/kuchyne', 'Kuchyne'],
+  ['/cennik', 'Cenník'],
+  ['/vzorky', 'Vzorky'],
+  ['/realizacie', 'Realizácie'],
+  ['/blog', 'Blog'],
+  ['/kontakt', 'Kontakt'],
+]
+  .map(([href, label]) => `<li><a href="${href}">${esc(label)}</a></li>`)
+  .join('')}</ul></nav>`;
+
 function writePage(page: Page): void {
   let html = baseHtml;
 
@@ -159,7 +186,7 @@ function writePage(page: Page): void {
   // — crawlers still index the content; React replaces everything on mount.
   html = html.replace(
     /<div id="root">[\s\S]*?<\/div>/,
-    `<div id="root"><div class="prerender-seo">${page.rootContent}</div></div>`,
+    `<div id="root"><div class="prerender-seo">${SITE_NAV_HTML}${page.rootContent}</div></div>`,
   );
 
   // Remove ALL <noscript> blocks — prerendered content is already in #root
@@ -537,6 +564,7 @@ function faqPageJsonLd(faqs: { question: string; answer: string }[]): object {
 /** Comparison data → real <table> markup with <thead>. */
 function comparisonTableHtml(c: {
   heading: string;
+  intro?: string;
   columnLabels: string[];
   rows: string[][];
 }): string {
@@ -544,7 +572,8 @@ function comparisonTableHtml(c: {
   const body = c.rows
     .map((row) => `<tr>${row.map((cell) => `<td>${esc(cell)}</td>`).join('')}</tr>`)
     .join('');
-  return `<section><h2>${esc(c.heading)}</h2><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></section>`;
+  const intro = c.intro ? `<p>${esc(c.intro)}</p>` : '';
+  return `<section><h2>${esc(c.heading)}</h2>${intro}<table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></section>`;
 }
 
 function prerenderInfoPage(p: InfoPage): void {
@@ -691,7 +720,7 @@ function prerenderKuchyne(): void {
     canonical: `${BASE_URL}/kuchyne`,
     rootContent: `
       <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Kuchyne</nav>
-      <h1>Kuchyne zo sinterovaného kameňa</h1>
+      <h1>${esc(KUCHYNE_H1)}</h1>
       <p>Sinterovaný kameň pre kuchyňu — pracovné dosky, ostrovčeky a zásteny v dekoroch, ktoré obstoja pri dennom svetle. V showroome v Bošanoch porovnáte celé platne, prejdeme cez váš pôdorys a pripravíme projekt. Inštaláciu vykonáva kamenár. Bez impregnácie, s nízkou nasiakavosťou — pre kuchyne, kde nechcete kompromis.</p>
       ${processHtml}
       ${faqSectionHtml(KITCHEN_FAQS)}
@@ -827,13 +856,14 @@ function prerenderCennik(): void {
     .map(
       (p) =>
         `<tr><td><a href="/produkt/${p.id}">${esc(p.name)}</a></td><td>${esc(formatEur(p.pricePerM2))}</td><td>≈ ${esc(
-          formatEur(calculateSlabPrice(p.pricePerM2, p.dimensions)),
+          formatEurWhole(calculateSlabPrice(p.pricePerM2, p.dimensions)),
         )}</td></tr>`,
     )
     .join('');
 
   const scenariosHtml = CENNIK_SCENARIOS.map(
-    (s: any) => `<li>${esc(s.label)}: ${s.min.toLocaleString('sk-SK')}–${s.max.toLocaleString('sk-SK')} €</li>`,
+    (s: any) =>
+      `<li>${esc(s.label)} (${esc(scenarioSlabsText(s))}): ${esc(formatEurWhole(s.min))} – ${esc(formatEurWhole(s.max))}</li>`,
   ).join('');
 
   const bundlesHtml = BUNDLE_OPTIONS.map(
@@ -843,31 +873,36 @@ function prerenderCennik(): void {
       }</li>`,
   ).join('');
 
+  const relatedLinksHtml = CENNIK_RELATED_LINKS.map(
+    (l: { label: string; href: string }) => `<a href="${l.href}">${esc(l.label)}</a>`,
+  ).join(' &middot; ');
+
   writePage({
     route: '/cennik',
-    title: 'Cenník sinterovaného kameňa | OROSTONE',
-    description:
-      'Aktuálne ceny všetkých dekorov sinterovaného kameňa v €/m² s DPH, cena kompletnej realizácie a orientačná cena hotovej pracovnej dosky v €/bm.',
+    title: CENNIK_TITLE,
+    description: CENNIK_DESCRIPTION,
     canonical,
     rootContent: `
       <article>
         <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Cenník</nav>
-        <h1>Cenník sinterovaného kameňa</h1>
+        <h1>${esc(CENNIK_H1)}</h1>
         <p><strong>${esc(CENNIK_DIRECT_ANSWER)}</strong></p>
         <p>Aktualizované: <time datetime="${PRICING_LAST_UPDATED}">${PRICING_LAST_UPDATED}</time>. Ceny sa synchronizujú s e-shopom.</p>
         <section>
           <h2>Ceny dekorov (12 mm, 3200 × 1600 mm, s DPH)</h2>
           <table><thead><tr><th>Dekor</th><th>Cena €/m² s DPH</th><th>Cena za platňu</th></tr></thead><tbody>${tableRows}</tbody></table>
         </section>
+        ${comparisonTableHtml(CENNIK_COMPARISON)}
+        <p>${relatedLinksHtml}</p>
         <section>
-          <h2>Kompletná realizácia ${INSTALLATION_RATE_PER_M2} €/m² s DPH</h2>
-          <p>V cene: ${INSTALLATION_INCLUDES.join(', ')}. Výrobu a montáž realizujú partnerskí kamenári so skúsenosťou so sinterovaným kameňom.</p>
+          <h2>Koľko materiálu potrebuje kuchyňa</h2>
+          <p>Orientačná cena materiálu s DPH, od najlacnejšieho po najdrahší dekor. Presný počet platní určíme z pôdorysu.</p>
+          <ul>${scenariosHtml}</ul>
           <ul>${bundlesHtml}</ul>
         </section>
         <section>
-          <h2>Orientačná cena hotovej pracovnej dosky</h2>
-          <p>Vrátane fabrikácie a montáže: <strong>${COUNTERTOP_PER_BM.min}–${COUNTERTOP_PER_BM.max} €/bm</strong>.</p>
-          <ul>${scenariosHtml}</ul>
+          <h2>Výroba a montáž u partnerského kamenára</h2>
+          <p>Orostone predáva materiál — celé platne. Zameranie, výrobu a montáž robí partnerský kamenár so skúsenosťou so sinterovaným kameňom, orientačne za ${INSTALLATION_RATE_PER_M2} €/m² s DPH (${INSTALLATION_INCLUDES.join(', ')}). Tieto práce fakturuje kamenár, nie sú súčasťou ceny materiálu.</p>
         </section>
         <section>
           <h2>Čo ovplyvňuje finálnu cenu</h2>

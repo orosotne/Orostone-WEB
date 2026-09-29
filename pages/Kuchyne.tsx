@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Ruler, Palette, Shield, Phone, ChevronDown } from 'lucide-react';
 import { SEOHead } from '@/components/UI/SEOHead';
-import { KITCHEN_FAQS, KUCHYNE_FEATURES, KUCHYNE_PROCESS_STEPS } from '@/data/pillars/kuchyne';
+import { KITCHEN_FAQS, KUCHYNE_FEATURES, KUCHYNE_H1, KUCHYNE_PROCESS_STEPS } from '@/data/pillars/kuchyne';
 
 const GALLERY_ITEMS = [
   {
@@ -90,10 +90,10 @@ export const Kuchyne = () => {
       <section className="pt-32 pb-20 bg-[#F9F9F7]">
         <div className="container mx-auto px-6 text-center">
           <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
-            Kuchyne
+            Kuchyne zo sinterovaného kameňa
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-sans font-bold text-brand-dark mb-6">
-            Kuchyne zo sinterovaného kameňa
+            {KUCHYNE_H1}
           </h1>
           <p className="text-gray-500 text-lg font-light max-w-2xl mx-auto mb-10">
             Pracovné dosky, ostrovčeky a obklady, ktoré vydržia desaťročia bez údržby. Odolné voči teplu, škvrnám, škrabancom a UV žiareniu.

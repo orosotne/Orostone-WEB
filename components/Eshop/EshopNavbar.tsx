@@ -406,6 +406,19 @@ export const EshopNavbar: React.FC = () => {
             </li>
             <li onMouseEnter={() => setActiveCategory(null)}>
               <NavLink
+                to="/cennik"
+                className={({ isActive }) => cn(
+                  "flex items-center px-6 py-4 text-[11px] font-normal tracking-[0.2em] uppercase transition-all duration-200",
+                  isTransparent
+                    ? isActive ? "text-white" : "text-white/60 hover:text-white"
+                    : isActive ? "text-black" : "text-gray-600 hover:text-black"
+                )}
+              >
+                Cenník
+              </NavLink>
+            </li>
+            <li onMouseEnter={() => setActiveCategory(null)}>
+              <NavLink
                 to="/realizacie"
                 className={({ isActive }) => cn(
                   "flex items-center px-6 py-4 text-[11px] font-normal tracking-[0.2em] uppercase transition-all duration-200",
@@ -523,6 +536,20 @@ export const EshopNavbar: React.FC = () => {
                   className="block px-6 py-4 text-[13px] tracking-[0.1em] uppercase text-black hover:bg-gray-50"
                 >
                   O kameni
+                </Link>
+                <Link
+                  to="/kuchyne"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block px-6 py-4 text-[13px] tracking-[0.1em] uppercase text-black hover:bg-gray-50"
+                >
+                  Kuchyne
+                </Link>
+                <Link
+                  to="/cennik"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block px-6 py-4 text-[13px] tracking-[0.1em] uppercase text-black hover:bg-gray-50"
+                >
+                  Cenník
                 </Link>
                 <Link
                   to="/realizacie"
@@ -646,6 +673,20 @@ export const EshopNavbar: React.FC = () => {
                     {category.name}
                   </Link>
                 ))}
+                <Link
+                  to="/kuchyne"
+                  onClick={() => setOffCanvasOpen(false)}
+                  className="flex items-center px-8 py-5 text-[14px] tracking-[0.15em] uppercase font-bold text-black hover:bg-gray-50 transition-colors border-b border-gray-100"
+                >
+                  Kuchyne
+                </Link>
+                <Link
+                  to="/cennik"
+                  onClick={() => setOffCanvasOpen(false)}
+                  className="flex items-center px-8 py-5 text-[14px] tracking-[0.15em] uppercase font-bold text-black hover:bg-gray-50 transition-colors border-b border-gray-100"
+                >
+                  Cenník
+                </Link>
                 <Link
                   to="/realizacie"
                   onClick={() => setOffCanvasOpen(false)}

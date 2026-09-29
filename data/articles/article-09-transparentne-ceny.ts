@@ -3,15 +3,22 @@ import {
   SLAB_PRICES,
   SLAB_PRICE_MIN,
   SLAB_PRICE_MAX,
+  SLAB_TOTAL_MIN,
+  SLAB_TOTAL_MAX,
+  BULK_DISCOUNT,
   INSTALLATION_RATE_PER_M2,
-  COUNTERTOP_PER_BM,
+  MARKET_SINTERED_PER_BM,
   formatEur,
+  formatEurWhole,
 } from '../pricing';
 
 // Live prices — interpolated at build time from the Shopify-synced catalog,
 // so the article can never contradict the e-shop or /cennik.
+// Orostone sells material only (whole slabs); €/bm figures are MARKET ranges.
 const skEur = (n: number): string => formatEur(n);
 const enEur = (n: number): string => `€${n.toFixed(2)}`;
+const enEurWhole = (n: number): string => `€${Math.round(n).toLocaleString('en-US')}`;
+const MARKET = MARKET_SINTERED_PER_BM;
 
 const skPriceRows = [...SLAB_PRICES]
   .sort((a, b) => a.pricePerM2 - b.pricePerM2)
@@ -40,13 +47,13 @@ export const ARTICLE_09: BlogArticle = {
     excerpt:
       'Dve ponuky na tú istú kuchyňu sa môžu líšiť o stovky eur — a lacnejšia môže byť v skutočnosti drahšia. Zisti, čo musí férová ponuka obsahovať a na čo si dať pozor.',
     metaTitle: 'Cenová ponuka na sinterovaný kameň: čo musí obsahovať | OROSTONE',
-    metaDescription: `Čo musí obsahovať férová cenová ponuka na pracovnú dosku zo sinterovaného kameňa. Reálne ceny ${Math.round(COUNTERTOP_PER_BM.min)}–${Math.round(COUNTERTOP_PER_BM.max)} €/bm, rozpis položiek a skryté náklady, na ktoré si dať pozor.`,
-    directAnswer: `Férová cenová ponuka na pracovnú dosku zo sinterovaného kameňa musí obsahovať rozpis: materiál, fabrikáciu (výrezy, hrany), dopravu, montáž a DPH. Kompletná doska vychádza orientačne ${COUNTERTOP_PER_BM.min}–${COUNTERTOP_PER_BM.max} €/bm vrátane fabrikácie a montáže. Pri ponuke bez rozpisu položiek porovnávaš jablká s hruškami.`,
+    metaDescription: `Čo musí obsahovať férová cenová ponuka na pracovnú dosku zo sinterovaného kameňa. Ceny platní ${formatEurWhole(SLAB_TOTAL_MIN)}–${formatEurWhole(SLAB_TOTAL_MAX)}, rozpis položiek a skryté náklady, na ktoré si dať pozor.`,
+    directAnswer: `Férová cenová ponuka na pracovnú dosku zo sinterovaného kameňa musí obsahovať rozpis: materiál, fabrikáciu (výrezy, hrany), dopravu, montáž a DPH. Na trhu vychádza hotová doska orientačne ${MARKET.min}–${MARKET.max} €/bm vrátane výroby a montáže. Pri ponuke bez rozpisu položiek porovnávaš jablká s hruškami.`,
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>
 <ul class="article-tldr">
-  <li>Kompletná pracovná doska vychádza orientačne <strong>${COUNTERTOP_PER_BM.min}–${COUNTERTOP_PER_BM.max} €/bm</strong> vrátane fabrikácie a montáže</li>
-  <li>Materiál (platňa 3200 × 1600 × 12 mm) stojí <strong>${skEur(SLAB_PRICE_MIN)}–${skEur(SLAB_PRICE_MAX)}/m² s DPH</strong> podľa dekoru</li>
+  <li>Hotová doska zo sinterovaného kameňa vychádza na trhu orientačne <strong>${MARKET.min}–${MARKET.max} €/bm</strong> vrátane výroby a montáže</li>
+  <li>Materiál (platňa 3200 × 1600 × 12 mm) stojí <strong>${skEur(SLAB_PRICE_MIN)}–${skEur(SLAB_PRICE_MAX)}/m² s DPH</strong> podľa dekoru, teda ${formatEurWhole(SLAB_TOTAL_MIN)}–${formatEurWhole(SLAB_TOTAL_MAX)} za celú platňu</li>
   <li>Férová ponuka má rozpis: materiál, výrezy, hrana, doprava, montáž — každá položka zvlášť</li>
   <li>Najčastejšie skryté náklady: výrezy, opracovanie hrán, výnos do bytu a využitie platne</li>
 </ul>
@@ -74,15 +81,9 @@ export const ARTICLE_09: BlogArticle = {
 
 <p>Bežný meter je meter dĺžky hotovej dosky v štandardnej hĺbke kuchynskej linky (~60 cm) — vrátane rezania, výrezov, hrán, dopravy a montáže. Je to jediná jednotka, v ktorej sa dajú ponuky medzi dodávateľmi férovo porovnať.</p>
 
-<p>Pri sinterovanom kameni a kvalitnej fabrikácii počítaj orientačne:</p>
+<p>Pri sinterovanom kameni počítaj na trhu orientačne s <strong>${MARKET.min}–${MARKET.max} €/bm</strong> vrátane výroby a montáže. Pri malej kuchyni býva cena za meter vyššia, pretože platne sa kupujú celé a aj kratšia linka potrebuje celú platňu.</p>
 
-<ul>
-  <li><strong>okolo ${COUNTERTOP_PER_BM.min} €/bm</strong> — vstupná hladina: jednoduchá rovná linka, základný dekor, rovná hrana, málo výrezov</li>
-  <li><strong>okolo 400 €/bm</strong> — stredná hladina: prémiový dekor alebo viac výrezov a náročnejšia hrana</li>
-  <li><strong>${COUNTERTOP_PER_BM.max} €/bm a viac</strong> — prémiová hladina: výrazný dekor, ostrovček, book-match, mitrované hrany</li>
-</ul>
-
-<p><strong>Ponuka výrazne pod ${COUNTERTOP_PER_BM.min} €/bm by ťa mala zaujímať, nie potešiť.</strong> Niečo v procese sa pravdepodobne škrtá — slabšie podlepenie, jednoduchšia hrana, alebo doprava a montáž „prekvapivo" nie sú v cene. Viac o cenových hladinách sme písali v článku o <a href="/blog/umely-kamen-pracovna-doska">umelom kameni na pracovnú dosku</a>.</p>
+<p><strong>Ponuka výrazne pod ${MARKET.min} €/bm by ťa mala zaujímať, nie potešiť.</strong> Niečo v procese sa pravdepodobne škrtá — slabšie podlepenie, jednoduchšia hrana, alebo doprava a montáž „prekvapivo" nie sú v cene. Viac o cenových hladinách sme písali v článku o <a href="/blog/umely-kamen-pracovna-doska">umelom kameni na pracovnú dosku</a>.</p>
 
 <h2 id="co-musi-obsahovat">Čo musí obsahovať férová cenová ponuka</h2>
 
@@ -126,8 +127,9 @@ export const ARTICLE_09: BlogArticle = {
 
 <ul>
   <li><strong>Ceny dekorov</strong> sú verejné na <a href="/cennik">/cennik</a> aj pri každom produkte, synchronizované s e-shopom.</li>
-  <li><strong>Kompletná realizácia</strong> — zameranie, doprava, opracovanie hrán, leštenie a montáž — sa počíta sadzbou <strong>${INSTALLATION_RATE_PER_M2} €/m² s DPH</strong>. Výrobu a montáž realizujú partnerskí kamenári so skúsenosťou so sinterovaným kameňom.</li>
-  <li><strong>Ponuka s rozpisom</strong> — materiál, fabrikácia, doprava a montáž zvlášť. Žiadne „všetko v cene" bez detailov.</li>
+  <li><strong>Predávame materiál</strong> — celé platne za ${formatEurWhole(SLAB_TOTAL_MIN)}–${formatEurWhole(SLAB_TOTAL_MAX)} s DPH, od ${BULK_DISCOUNT.quantity} platní so zľavou ${BULK_DISCOUNT.discountPercent} %.</li>
+  <li><strong>Výrobu a montáž</strong> — zameranie, opracovanie hrán, leštenie a montáž — robí a fakturuje partnerský kamenár so skúsenosťou so sinterovaným kameňom, orientačne za <strong>${INSTALLATION_RATE_PER_M2} €/m² s DPH</strong>.</li>
+  <li><strong>Ponuka s rozpisom</strong> — od nás materiál (dekor, počet platní, cena za platňu), od kamenára výroba a montáž. Žiadne „všetko v cene" bez detailov.</li>
   <li><strong>Garancia ceny</strong> — rezervačný poplatok 99 € ti <a href="/podmienky-rezervacie-ceny">garantuje aktuálnu cenu na 6 mesiacov</a>, ak sa rozhoduješ dlhšie.</li>
 </ul>
 
@@ -147,11 +149,11 @@ export const ARTICLE_09: BlogArticle = {
       },
       {
         question: 'Koľko stojí kompletná pracovná doska zo sinterovaného kameňa?',
-        answer: `Orientačne ${COUNTERTOP_PER_BM.min}–${COUNTERTOP_PER_BM.max} €/bm vrátane fabrikácie a montáže. Vstupná hladina okolo ${COUNTERTOP_PER_BM.min} €/bm je jednoduchá linka so základným dekorom; horná hranica patrí prémiovým dekorom, ostrovčekom a mitrovaným hranám.`,
+        answer: `Na trhu orientačne ${MARKET.min}–${MARKET.max} €/bm vrátane výroby a montáže; pri malých kuchyniach vychádza meter drahšie, lebo platne sa kupujú celé. V Orostone kupuješ materiál — celú platňu za ${formatEurWhole(SLAB_TOTAL_MIN)}–${formatEurWhole(SLAB_TOTAL_MAX)} s DPH — a výrobu s montážou ti nacení partnerský kamenár.`,
       },
       {
         question: 'Koľko stojí samotný materiál?',
-        answer: `Platňa sinterovaného kameňa 3200 × 1600 × 12 mm stojí ${skEur(SLAB_PRICE_MIN)}–${skEur(SLAB_PRICE_MAX)}/m² s DPH podľa dekoru. Aktuálne ceny všetkých dekorov sú verejné na stránke /cennik a synchronizujú sa s e-shopom.`,
+        answer: `Platňa sinterovaného kameňa 3200 × 1600 × 12 mm stojí ${skEur(SLAB_PRICE_MIN)}–${skEur(SLAB_PRICE_MAX)}/m² s DPH podľa dekoru, teda ${formatEurWhole(SLAB_TOTAL_MIN)}–${formatEurWhole(SLAB_TOTAL_MAX)} za celú platňu. Aktuálne ceny všetkých dekorov sú verejné na stránke /cennik a synchronizujú sa s e-shopom.`,
       },
       {
         question: 'Aké skryté náklady mám v ponuke hľadať?',
@@ -187,13 +189,13 @@ export const ARTICLE_09: BlogArticle = {
     excerpt:
       'Two quotes for the same kitchen can differ by hundreds of euros — and the cheaper one may actually cost more. Learn what a fair quote must include and what to watch out for.',
     metaTitle: 'Sintered Stone Quote: What It Must Include | OROSTONE',
-    metaDescription: `What a fair quote for a sintered stone countertop must include. Real prices €${COUNTERTOP_PER_BM.min}–${COUNTERTOP_PER_BM.max} per running meter, itemized breakdown, and the hidden costs to watch for.`,
-    directAnswer: `A fair sintered stone countertop quote must itemize: material, fabrication (cutouts, edges), transport, installation and VAT. A complete countertop runs roughly €${COUNTERTOP_PER_BM.min}–${COUNTERTOP_PER_BM.max} per running meter including fabrication and installation. A quote without an itemized breakdown means you are comparing apples to oranges.`,
+    metaDescription: `What a fair quote for a sintered stone countertop must include. Slab prices ${enEurWhole(SLAB_TOTAL_MIN)}–${enEurWhole(SLAB_TOTAL_MAX)}, itemized breakdown, and the hidden costs to watch for.`,
+    directAnswer: `A fair sintered stone countertop quote must itemize: material, fabrication (cutouts, edges), transport, installation and VAT. On the market, a finished countertop runs roughly €${MARKET.min}–${MARKET.max} per running meter including fabrication and installation. A quote without an itemized breakdown means you are comparing apples to oranges.`,
     content: `
 <p class="article-tldr-label">Article Summary</p>
 <ul class="article-tldr">
-  <li>A complete countertop runs roughly <strong>€${COUNTERTOP_PER_BM.min}–${COUNTERTOP_PER_BM.max} per running meter</strong> including fabrication and installation</li>
-  <li>Material (3200 × 1600 × 12 mm slab) costs <strong>${enEur(SLAB_PRICE_MIN)}–${enEur(SLAB_PRICE_MAX)}/m² incl. VAT</strong> depending on the decor</li>
+  <li>On the market, a finished sintered stone countertop runs roughly <strong>€${MARKET.min}–${MARKET.max} per running meter</strong> including fabrication and installation</li>
+  <li>Material (3200 × 1600 × 12 mm slab) costs <strong>${enEur(SLAB_PRICE_MIN)}–${enEur(SLAB_PRICE_MAX)}/m² incl. VAT</strong> depending on the decor, i.e. ${enEurWhole(SLAB_TOTAL_MIN)}–${enEurWhole(SLAB_TOTAL_MAX)} per whole slab</li>
   <li>A fair quote itemizes material, cutouts, edges, transport and installation separately</li>
   <li>Most common hidden costs: cutouts, edge profiling, carry-up delivery and slab utilization</li>
 </ul>
@@ -221,15 +223,9 @@ export const ARTICLE_09: BlogArticle = {
 
 <p>A running meter is one meter of finished countertop length at standard kitchen depth (~60 cm) — including cutting, cutouts, edges, transport and installation. It is the only unit in which quotes from different suppliers can be fairly compared.</p>
 
-<p>For sintered stone with quality fabrication, expect roughly:</p>
+<p>For sintered stone, expect roughly <strong>€${MARKET.min}–${MARKET.max} per running meter</strong> on the market, including fabrication and installation. Small kitchens come out higher per meter, because slabs are sold whole and even a short run needs a full slab.</p>
 
-<ul>
-  <li><strong>around €${COUNTERTOP_PER_BM.min}/rm</strong> — entry tier: simple straight run, entry decor, flat edge, few cutouts</li>
-  <li><strong>around €400/rm</strong> — mid tier: premium decor or more cutouts and a more demanding edge</li>
-  <li><strong>€${COUNTERTOP_PER_BM.max}/rm and up</strong> — premium tier: statement decor, island, book-match, mitered edges</li>
-</ul>
-
-<p><strong>A quote well below €${COUNTERTOP_PER_BM.min}/rm should make you curious, not happy.</strong> Something in the process is probably being cut — weaker substrate bonding, a simpler edge, or transport and installation that "surprisingly" aren't included. More on price tiers in our guide to <a href="/blog/umely-kamen-pracovna-doska">engineered stone countertops</a>.</p>
+<p><strong>A quote well below €${MARKET.min}/rm should make you curious, not happy.</strong> Something in the process is probably being cut — weaker substrate bonding, a simpler edge, or transport and installation that "surprisingly" aren't included. More on price tiers in our guide to <a href="/blog/umely-kamen-pracovna-doska">engineered stone countertops</a>.</p>
 
 <h2 id="what-to-include">What a fair quote must include</h2>
 
@@ -269,8 +265,9 @@ export const ARTICLE_09: BlogArticle = {
 
 <ul>
   <li><strong>Decor prices</strong> are public on <a href="/cennik">/cennik</a> and on every product page, synced with the e-shop.</li>
-  <li><strong>Complete realization</strong> — templating, transport, edge fabrication, polishing and installation — is priced at <strong>€${INSTALLATION_RATE_PER_M2}/m² incl. VAT</strong>. Fabrication and installation are carried out by partner stonemasons experienced with sintered stone.</li>
-  <li><strong>Itemized quotes</strong> — material, fabrication, transport and installation listed separately. No "all inclusive" without details.</li>
+  <li><strong>We sell the material</strong> — whole slabs at ${enEurWhole(SLAB_TOTAL_MIN)}–${enEurWhole(SLAB_TOTAL_MAX)} incl. VAT, with ${BULK_DISCOUNT.discountPercent}% off from ${BULK_DISCOUNT.quantity} slabs.</li>
+  <li><strong>Fabrication and installation</strong> — templating, edge fabrication, polishing and installation — are done and invoiced by a partner stonemason experienced with sintered stone, at roughly <strong>€${INSTALLATION_RATE_PER_M2}/m² incl. VAT</strong>.</li>
+  <li><strong>Itemized quotes</strong> — material from us, fabrication and installation from the stonemason. No "all inclusive" without details.</li>
   <li><strong>Price guarantee</strong> — a €99 reservation fee <a href="/podmienky-rezervacie-ceny">locks the current price for 6 months</a> if you need more time to decide.</li>
 </ul>
 
@@ -290,11 +287,11 @@ export const ARTICLE_09: BlogArticle = {
       },
       {
         question: 'How much does a complete sintered stone countertop cost?',
-        answer: `Roughly €${COUNTERTOP_PER_BM.min}–${COUNTERTOP_PER_BM.max} per running meter including fabrication and installation. The entry tier around €${COUNTERTOP_PER_BM.min}/rm is a simple run with an entry decor; the upper end covers premium decors, islands and mitered edges.`,
+        answer: `On the market, roughly €${MARKET.min}–${MARKET.max} per running meter including fabrication and installation; small kitchens cost more per meter because slabs are sold whole. At Orostone you buy the material — a whole slab for ${enEurWhole(SLAB_TOTAL_MIN)}–${enEurWhole(SLAB_TOTAL_MAX)} incl. VAT — and a partner stonemason quotes fabrication and installation.`,
       },
       {
         question: 'How much does the material itself cost?',
-        answer: `A 3200 × 1600 × 12 mm sintered stone slab costs ${enEur(SLAB_PRICE_MIN)}–${enEur(SLAB_PRICE_MAX)}/m² incl. VAT depending on the decor. Current prices for every decor are public at /cennik and synced with the e-shop.`,
+        answer: `A 3200 × 1600 × 12 mm sintered stone slab costs ${enEur(SLAB_PRICE_MIN)}–${enEur(SLAB_PRICE_MAX)}/m² incl. VAT depending on the decor, i.e. ${enEurWhole(SLAB_TOTAL_MIN)}–${enEurWhole(SLAB_TOTAL_MAX)} per whole slab. Current prices for every decor are public at /cennik and synced with the e-shop.`,
       },
       {
         question: 'What hidden costs should I look for?',

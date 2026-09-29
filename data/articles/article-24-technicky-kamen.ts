@@ -168,6 +168,8 @@ export const ARTICLE_24: BlogArticle = {
   <p>Tieto ceny sú orientačné. Nezahŕňajú špeciálne stavebné úpravy, demontáž starej dosky, extrémne náročnú dopravu ani nadštandardné dizajnové riešenia. Pri book-match dekoroch, veľkých ostrovoch alebo komplikovaných detailoch môže cena ísť vyššie.</p>
 </div>
 
+<p>Aktuálne ceny jednotlivých dekorov sinterovaného kameňa za m² s DPH a sadzbu za kompletnú realizáciu uvádzame v <a href="/cennik">cenníku kamenných pracovných dosiek</a>.</p>
+
 <h3>Čo ovplyvňuje výslednú sumu</h3>
 
 <p>Pri fráze technický kameň cena je dôležité pochopiť, že cena nie je len o samotnej platni. Výslednú cenu ovplyvňuje typ materiálu, značka a kolekcia, dekor, hrúbka, počet výrezov, typ hrany, zameranie, opracovanie, doprava, výnos, montáž, rizikovosť manipulácie, počet spojov, veľkosť ostrova a požiadavka na book-match kresbu. Preto je lacný meter v cenníku často zavádzajúci. Klient nakoniec neplatí za meter v tabuľke. Platí za hotovú pracovnú dosku vo svojej kuchyni.</p>
@@ -490,6 +492,8 @@ export const ARTICLE_24: BlogArticle = {
   </table>
   <p>These prices are indicative. They do not include special construction work, removal of an old countertop, exceptionally complex transport or non-standard design solutions. With book-match décors, large islands or complex details, the price can go higher.</p>
 </div>
+
+<p>Current per-m² prices of each sintered stone décor (VAT included) and the complete installation rate are listed in our <a href="/cennik">stone countertop price list</a>.</p>
 
 <h3>What drives the final price</h3>
 

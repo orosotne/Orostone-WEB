@@ -77,7 +77,7 @@ export const FAQS: FAQItem[] = [
   { question: "Je sinterovaný kameň odolný voči teplu?", answer: "Áno, materiál odoláva teplotám až do 300°C. Horúci hrniec môžete položiť priamo na dosku bez obáv z poškodenia alebo zmeny farby." },
   { question: "Môže sa doska poškriabať nožom?", answer: "Sinterovaný kameň má tvrdosť blízku diamantu. Pri bežnom krájaní dosku nepoškriabete, odporúčame však používať dosku na krájanie pre ochranu ostria vašich nožov." },
   { question: "Ako prebieha údržba?", answer: "Materiál je nenasiakavý (porozita < 0.1%). Stačí teplá voda a jemný saponát. Nepotrebuje impregnáciu ani špeciálne vosky." },
-  { question: "Zabezpečujete aj montáž?", answer: `Áno. Zabezpečíme kompletnú realizáciu — zameranie, dopravu, opracovanie hrán, leštenie a montáž — za ${INSTALLATION_RATE_PER_M2} €/m² s DPH. Výrobu a montáž realizujú partnerskí kamenári so skúsenosťou so sinterovaným kameňom.` },
+  { question: "Zabezpečujete aj montáž?", answer: `Montáž nepredávame, sprostredkujeme ju. Zameranie, výrobu a montáž robí overený partnerský kamenár so skúsenosťou so sinterovaným kameňom, orientačne za ${INSTALLATION_RATE_PER_M2} €/m² s DPH. Cenu montáže platíte priamo kamenárovi; od nás kupujete materiál.` },
   { question: "Aká je dodacia lehota?", answer: "E-shop (skladové platne): spravidla 5 pracovných dní po úhrade. Projekty na mieru: spravidla 15 pracovných dní (20 pri atypoch) po potvrdení a úhrade zálohy." },
   { question: "Aké sú možnosti platby?", answer: "Bankový prevod alebo platba kartou online. Platbu v hotovosti ani dobierku neakceptujeme." },
   { question: "Aká je záručná doba?", answer: "24 mesiacov na materiál. Záruka sa nevzťahuje na vady vzniknuté montážou, rezaním alebo nesprávnym používaním." },
