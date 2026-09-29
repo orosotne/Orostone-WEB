@@ -9,8 +9,8 @@ import {
   INSTALLATION_RATE_PER_M2,
   INSTALLATION_INCLUDES,
   BUNDLE_OPTIONS,
-  COUNTERTOP_PER_BM,
   formatEur,
+  formatEurWhole,
 } from '@/data/pricing';
 import {
   CENNIK_COMPARISON,
@@ -22,6 +22,7 @@ import {
   CENNIK_RELATED_LINKS,
   CENNIK_SCENARIOS,
   CENNIK_TITLE,
+  scenarioSlabsText,
 } from '@/data/pillars/cennik';
 
 const structuredData = {
@@ -114,7 +115,7 @@ export const Cennik = () => {
                       {formatEur(p.pricePerM2)}
                     </td>
                     <td className="py-4 px-3 text-right text-gray-600 font-light">
-                      ≈ {formatEur(calculateSlabPrice(p.pricePerM2, p.dimensions))}
+                      ≈ {formatEurWhole(calculateSlabPrice(p.pricePerM2, p.dimensions))}
                     </td>
                   </tr>
                 ))}
@@ -188,20 +189,21 @@ export const Cennik = () => {
         </div>
       </section>
 
-      {/* Realizácia */}
+      {/* Výroba a montáž — partnerský kamenár, nie súčasť ceny materiálu */}
       <section className="py-20 bg-[#F9F9F7]">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
             <div>
               <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
-                Realizácia
+                Výroba a montáž
               </span>
               <h2 className="text-3xl md:text-4xl font-sans font-bold mb-6">
-                Kompletná realizácia {INSTALLATION_RATE_PER_M2} €/m²
+                Výroba a montáž u partnerského kamenára
               </h2>
               <p className="text-gray-600 font-light leading-relaxed mb-6">
-                Jedna orientačná sadzba s DPH, v ktorej je zahrnuté všetko od zamerania po montáž. Výrobu a
-                montáž realizujú partnerskí kamenári so skúsenosťou so sinterovaným kameňom.
+                Orostone predáva materiál — celé platne. Zameranie, výrobu a montáž robí partnerský kamenár so
+                skúsenosťou so sinterovaným kameňom, orientačne za {INSTALLATION_RATE_PER_M2} €/m² s DPH. Tieto
+                práce fakturuje kamenár, nie sú súčasťou ceny materiálu.
               </p>
               <ul className="space-y-3">
                 {INSTALLATION_INCLUDES.map((item) => (
@@ -226,21 +228,24 @@ export const Cennik = () => {
                   </li>
                 ))}
               </ul>
-              <h3 className="font-bold text-brand-dark text-lg mb-4">Orientačná cena projektu</h3>
+              <h3 className="font-bold text-brand-dark text-lg mb-4">Koľko materiálu potrebuje kuchyňa</h3>
               <p className="text-gray-600 font-light mb-4">
-                Hotová pracovná doska vrátane fabrikácie a montáže: {COUNTERTOP_PER_BM.min}–
-                {COUNTERTOP_PER_BM.max} €/bm.
+                Orientačná cena materiálu s DPH, od najlacnejšieho po najdrahší dekor:
               </p>
               <ul className="space-y-3">
                 {CENNIK_SCENARIOS.map((s) => (
-                  <li key={s.label} className="flex items-center justify-between border-b border-gray-100 pb-3">
-                    <span className="text-gray-700 font-light">{s.label}</span>
+                  <li key={s.label} className="flex items-start justify-between gap-4 border-b border-gray-100 pb-3">
+                    <span className="text-gray-700 font-light">
+                      {s.label}
+                      <span className="block text-xs text-gray-400">{scenarioSlabsText(s)}</span>
+                    </span>
                     <span className="font-semibold text-brand-dark whitespace-nowrap">
-                      {s.min.toLocaleString('sk-SK')}–{s.max.toLocaleString('sk-SK')} €
+                      {formatEurWhole(s.min)} – {formatEurWhole(s.max)}
                     </span>
                   </li>
                 ))}
               </ul>
+              <p className="text-sm text-gray-400 font-light mt-4">Presný počet platní určíme z pôdorysu.</p>
             </div>
           </div>
         </div>

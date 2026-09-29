@@ -4,12 +4,16 @@
 // Shared by pages/Kuchyne.tsx (React) AND scripts/prerender.ts.
 // Icons stay in the page component (zip by index).
 import {
-  COUNTERTOP_PER_BM,
+  BULK_DISCOUNT,
   SLAB_PRICE_MIN,
+  SLAB_PRICE_MAX,
+  SLAB_TOTAL_MIN,
+  SLAB_TOTAL_MAX,
   HEAT_RESISTANCE_C,
   MAX_SLAB_FORMAT,
   SLAB_THICKNESS_MM,
   formatEur,
+  formatEurWhole,
 } from '../pricing';
 import type { PillarFaq } from './vyhody';
 
@@ -19,7 +23,7 @@ export const KUCHYNE_H1 = 'Kamenné pracovné dosky do kuchyne';
 export const KITCHEN_FAQS: PillarFaq[] = [
   {
     question: 'Koľko stojí kuchynská doska zo sinterovaného kameňa?',
-    answer: `Kompletná pracovná doska vrátane fabrikácie a montáže vychádza orientačne od ${COUNTERTOP_PER_BM.min} do ${COUNTERTOP_PER_BM.max} €/bm. Samotný materiál stojí od ${formatEur(SLAB_PRICE_MIN)}/m² s DPH podľa dekoru. Presnú cenu pripravíme z pôdorysu — pošlite nám rozmery a počet výrezov.`,
+    answer: `Materiál stojí ${formatEur(SLAB_PRICE_MIN)}–${formatEur(SLAB_PRICE_MAX)}/m² s DPH podľa dekoru, celá platňa 3200 × 1600 mm ${formatEurWhole(SLAB_TOTAL_MIN)}–${formatEurWhole(SLAB_TOTAL_MAX)}. Na bežnú kuchyňu stačia 1 – 2 platne, od ${BULK_DISCOUNT.quantity} platní je zľava ${BULK_DISCOUNT.discountPercent} %. Výrobu a montáž robí a fakturuje partnerský kamenár. Koľko platní potrebujete, určíme z pôdorysu — pošlite nám rozmery a počet výrezov.`,
   },
   {
     question: 'Aký je termín dodania a inštalácie?',
