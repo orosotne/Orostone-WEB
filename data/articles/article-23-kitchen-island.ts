@@ -1,10 +1,17 @@
 import { BlogArticle, BLOG_AUTHOR_OROSTONE } from '../blogTypes';
+import { INSTALLATION_RATE_PER_M2, SLAB_TOTAL_MIN, SLAB_TOTAL_MAX, formatEurWhole } from '../pricing';
+
+// Orostone sells material only (whole slabs, live Shopify prices); fabrication
+// and installation are done and invoiced by the partner stonemason.
+const ONE_SLAB = `${formatEurWhole(SLAB_TOTAL_MIN)} – ${formatEurWhole(SLAB_TOTAL_MAX)}`;
+const TWO_SLABS = `${formatEurWhole(2 * SLAB_TOTAL_MIN)} – ${formatEurWhole(2 * SLAB_TOTAL_MAX)}`;
 
 export const ARTICLE_23: BlogArticle = {
   id: 'kitchen-island-sintered-stone',
   slug: 'kuchynsky-ostrovcek-zo-sinterovaneho-kamena',
   category: 'identity-aesthetics',
   publishDate: '2026-04-12',
+  lastModified: '2026-09-29',
   readTimeMinutes: 10,
   heroImage: '/images/blog/article-23/hero.webp',
   author: BLOG_AUTHOR_OROSTONE,
@@ -14,8 +21,8 @@ export const ARTICLE_23: BlogArticle = {
     title: 'Kuchynský ostrovček zo sinterovaného kameňa — kompletný sprievodca',
     subtitle: 'Od rozmeru cez hrúbku po waterfall hrany: všetko, čo potrebujete vedieť pred objednaním',
     excerpt: 'Kuchynský ostrovček zo sinterovaného kameňa je vizuálne dominanta modernej kuchyne. Poradíme s rozmermi, hrúbkou platne, profilom hrán a waterfall prevedením.',
-    metaTitle: 'Kuchynský ostrovček zo sinterovaného kameňa | OROSTONE',
-    metaDescription: 'Hrúbka platne, waterfall efekt, podpery, technika osadenia a orientačná cena. Praktický sprievodca, kým podpíšete projekt ostrovčeka.',
+    metaTitle: 'Ostrovček so sedením zo sinterovaného kameňa | OROSTONE',
+    metaDescription: 'Koľko miesta potrebuje ostrovček so sedením, aký previs a hrúbku zvoliť, waterfall hrany, podpera a cena materiálu. Praktický sprievodca pred objednaním.',
     directAnswer: 'Kuchynský ostrovček zo sinterovaného kameňa vyžaduje 20 mm platňu pri previsoch nad 300 mm, podpernú konštrukciu z nerezovej ocele a presné CNC výrezy. Pre waterfall efekt sa používa spojenie pod 45° uhlom s farebne zladeným lepidlom. Typická cena kompletného ostrovčeka: 2 500 – 6 000 € vrátane fabrikácie a montáže.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>
@@ -84,6 +91,19 @@ export const ARTICLE_23: BlogArticle = {
   <img src="/images/blog/article-23/dimensions.webp" alt="Kuchynský ostrovček s barovým sedením — barové stoličky pod previsom sinterovanej dosky" width="1408" height="792" loading="lazy" />
   <figcaption>Barový previs 350 mm s 20 mm platňou — optimálne proporcie pre pohodlné sedenie a bezpečnú nosnosť.</figcaption>
 </figure>
+
+<h2 id="ostrovcek-so-sedenim">Kuchynský ostrovček so sedením: koľko miesta a aký previs</h2>
+
+<p>Ak má ostrovček slúžiť aj na raňajky alebo posedenie s návštevou, rozhodujú štyri čísla. Keď ich zanedbáte, pri ostrovčeku sa sedí bokom a obsadené stoličky zablokujú priechod.</p>
+
+<ul>
+  <li><strong>Dĺžka na osobu:</strong> počítajte 600 mm — pre 2 osoby aspoň 1 200 mm, pre 4 osoby 2 400 mm.</li>
+  <li><strong>Previs pre kolená:</strong> 300 – 400 mm, optimum je 350 mm.</li>
+  <li><strong>Výška plochy a stoličky:</strong> pri štandardnej výške 900 mm sa hodia stoličky so sedákom okolo 650 mm, pri barovej výške 1 050 mm okolo 750 mm.</li>
+  <li><strong>Priestor za stoličkami:</strong> aspoň 900 mm, ideálne 1 200 mm, aby sa dalo prejsť aj pri obsadených miestach.</li>
+</ul>
+
+<p>Previs pre sedenie kladie nároky na hrúbku platne a jej podporu. Čo platí pri 12 mm a 20 mm platni a kedy sú potrebné konzoly, rozoberáme v častiach <a href="#hrubka">12 mm alebo 20 mm?</a> a <a href="#podpera">Podperná konštrukcia</a>. Riešenie pre vašu kuchyňu navrhne kamenár podľa dĺžky previsu.</p>
 
 <h2 id="hrubka">12 mm alebo 20 mm?</h2>
 
@@ -165,13 +185,12 @@ export const ARTICLE_23: BlogArticle = {
 <h2 id="cena">Koľko stojí ostrovček zo sinterovaného kameňa?</h2>
 
 <div class="article-highlight">
-  <p><strong>Orientačné ceny (2026, vrátane DPH):</strong></p>
+  <p><strong>Materiál na ostrovček (s DPH, podľa dekoru):</strong></p>
   <ul>
-    <li><strong>Malý ostrovček (1 200 × 600 mm, bez waterfall):</strong> 1 200 – 2 000 €</li>
-    <li><strong>Stredný ostrovček (2 000 × 900 mm, 2× waterfall):</strong> 2 500 – 4 000 €</li>
-    <li><strong>Veľký ostrovček (3 000 × 1 200 mm, 2× waterfall, barový previs):</strong> 4 000 – 6 000 €</li>
+    <li><strong>Ostrovček do 3 200 × 1 600 mm bez waterfall hrán:</strong> 1 platňa — ${ONE_SLAB}</li>
+    <li><strong>Ostrovček s waterfall hranami alebo väčší ostrov:</strong> podľa rozmerov 1 – 2 platne, pri 2 platniach ${TWO_SLABS}</li>
   </ul>
-  <p>Ceny zahŕňajú materiál, fabrikáciu, dopravu a montáž v rámci Bratislavy. Mimo BA +150–300 € za dopravu.</p>
+  <p>Orostone predáva materiál — celé platne. Výrobu (rezy, výrezy, waterfall hrany) a montáž robí a fakturuje partnerský kamenár, orientačne za ${INSTALLATION_RATE_PER_M2} €/m² s DPH. Ceny všetkých dekorov nájdete v <a href="/cennik">cenníku</a>.</p>
 </div>
 
 <p>Cena závisí predovšetkým od dekóru (niektoré vzory sú drahšie), počtu waterfall hrán a zložitosti výrezov. <a href="/kontakt">Kontaktujte nás</a> pre nezáväznú cenovú ponuku na mieru.</p>
@@ -200,12 +219,16 @@ export const ARTICLE_23: BlogArticle = {
 `,
     faqs: [
       {
+        question: 'Koľko miesta potrebuje kuchynský ostrovček so sedením?',
+        answer: 'Na jednu osobu počítajte 600 mm dĺžky ostrovčeka, previs pre kolená 300 – 400 mm (optimum 350 mm) a za stoličkami aspoň 900 mm voľného priestoru. Pri výške plochy 900 mm sa hodia stoličky so sedákom okolo 650 mm, pri barovej výške 1 050 mm okolo 750 mm.',
+      },
+      {
         question: 'Aká hrúbka sinterovaného kameňa je vhodná pre kuchynský ostrovček?',
         answer: 'Pre ostrovčeky s previsom (barové sedenie) je povinná 20 mm platňa — má 3× vyššiu pevnosť v ohybe ako 12 mm. Platňa 12 mm je vhodná len ak je celá doska podopretá korpusom, napríklad pre integrovanú neviditeľnú varnú dosku.',
       },
       {
         question: 'Koľko stojí kuchynský ostrovček zo sinterovaného kameňa?',
-        answer: 'Stredne veľký ostrovček (2 000 × 900 mm) s dvoma waterfall hranami stojí 2 500 – 4 000 € vrátane materiálu, fabrikácie, dopravy a montáže. Cena závisí od dekóru, počtu waterfall hrán a zložitosti výrezov.',
+        answer: `Materiál na ostrovček je podľa rozmerov a waterfall hrán 1 – 2 celé platne: jedna platňa u Orostone stojí ${ONE_SLAB} s DPH podľa dekoru. Výrobu a montáž robí a fakturuje partnerský kamenár, orientačne za ${INSTALLATION_RATE_PER_M2} €/m². Cena závisí od dekóru, počtu waterfall hrán a zložitosti výrezov.`,
       },
       {
         question: 'Čo je waterfall hrana na ostrovčeku?',
