@@ -149,7 +149,9 @@ export const SiteHeader: React.FC = () => {
 
   return (
     <header
-      className={`fixed inset-x-0 z-50 pt-[env(safe-area-inset-top,0px)] text-brand-dark transition-[background-color,box-shadow] duration-300 ${SHOW_ANNOUNCEMENT_BAR ? 'top-[36px]' : 'top-0'} ${isTransparent ? 'bg-transparent' : 'bg-brand-light shadow-[0_1px_0_theme(colors.brand.line)]'}`}
+      // While transparent over the homepage hero, a soft chalk veil (::before) keeps the dark nav, logo and icons
+      // readable where the photo turns to dark wood (≥4.5:1 instead of ~2:1).
+      className={`fixed inset-x-0 z-50 pt-[env(safe-area-inset-top,0px)] text-brand-dark transition-[background-color,box-shadow] duration-300 before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:-z-10 before:h-[calc(100%+48px)] before:bg-gradient-to-b before:from-brand-light/65 before:via-brand-light/50 before:via-45% before:to-brand-light/0 before:transition-opacity before:duration-300 ${SHOW_ANNOUNCEMENT_BAR ? 'top-[36px]' : 'top-0'} ${isTransparent ? 'bg-transparent before:opacity-100' : 'bg-brand-light shadow-[0_1px_0_theme(colors.brand.line)] before:opacity-0'}`}
       onMouseLeave={() => setMegaOpen(null)}
     >
       <Container className="flex h-16 items-center gap-6 lg:h-20 min-[1360px]:gap-9">
