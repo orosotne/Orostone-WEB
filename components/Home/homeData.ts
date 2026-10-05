@@ -67,9 +67,5 @@ export const HOME_GUIDES: Array<{ slug: string; title: string; titleEm: string }
   { slug: 'technicky-kamen-cena-pracovna-doska', title: 'Technický kameň: cena a', titleEm: 'nevýhody' },
 ];
 
-export const ORO_KLIENT = (od: string, dekor?: string) =>
-  `https://oro-klient.orostone.sk/?od=${od}${dekor ? `&dekor=${dekor}` : ''}`;
-
-export const PHONE_HREF = 'tel:+421917588738';
-export const PHONE_LABEL = '+421 917 588 738';
+export { oroKlientUrl as ORO_KLIENT, PHONE_HREF, PHONE_LABEL } from '../Design/links';
 export const MAPS_URL = 'https://www.google.com/maps?q=SNP+113%2F1%2C+956+18+Bo%C5%A1any';

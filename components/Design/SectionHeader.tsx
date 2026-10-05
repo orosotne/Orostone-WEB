@@ -22,7 +22,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   onDark = false,
   className = '',
 }) => (
-  <div className={`grid max-w-[640px] gap-4 ${className}`}>
+  <div className={`grid max-w-[640px] content-start gap-4 ${className}`}>
     {eyebrow && <Eyebrow gold={onDark}>{eyebrow}</Eyebrow>}
     <Heading id={id} className={`${Heading === 'h1' ? 'text-os-h1' : 'text-os-h2'} [text-wrap:balance]`}>
       {title}
