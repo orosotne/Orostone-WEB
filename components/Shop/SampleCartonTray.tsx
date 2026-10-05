@@ -3,6 +3,7 @@ import type { RefObject } from 'react';
 import { applyStoneExposure, cartonLeft, freezeFrame, loadMotionAssets, makeCartonData, MOTION_TIMING as timing, SCENE_VIEW } from './sampleCartonMotion';
 import type { LottieAnimation, SampleDecor, SampleQuantity } from './sampleCartonMotion';
 import { createSampleFlight, siteHeaderBottom } from './sampleCartonFlight';
+import { formatSamplePrice, quoteSampleOrder } from '../../services/shopify/samples';
 import './SampleCartonTray.css';
 export type { SampleDecor, SampleQuantity } from './sampleCartonMotion';
 export interface SampleCartonTrayHandle {
@@ -47,12 +48,15 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     const home = homeRef.current, tray = trayRef.current, browser = callbacks.current.browserRef.current, button = callbacks.current.carouselButtonRef.current;
     if (!home || !tray || !browser || !button) return;
     const browserRect = browser.getBoundingClientRect(), buttonRect = button.getBoundingClientRect(), homeRect = home.getBoundingClientRect();
-    const viewport = window.visualViewport?.height || innerHeight, header = siteHeaderBottom();
-    const width = Math.max(0, Math.min(home.clientWidth, innerWidth > 640 && innerWidth <= 1100 ? 310 : 480, innerWidth - (isMobile() ? 48 : 80)));
-    const trayHeight = width * 315 / 720 + 140, minimum = innerWidth > 640 && isMobile() ? 240 : innerWidth <= 350 ? 320 : 360;
-    const room = viewport - header >= trayHeight + (isMobile() ? minimum + 16 : 120);
+    const viewport = window.visualViewport?.height || innerHeight, header = siteHeaderBottom(), mobile = isMobile();
+    // Keep the fixed tray beside the actual carousel control, including its
+    // right inset, padding and border, rather than covering its click target.
+    const desktopSpace = innerWidth - buttonRect.right - 16 - 24 - 32 - 2;
+    const width = Math.max(0, Math.min(home.clientWidth, innerWidth > 640 && innerWidth <= 1100 ? 310 : 480, innerWidth - (mobile ? 48 : 80), mobile ? Infinity : desktopSpace));
+    const trayHeight = width * 315 / 720 + 140, minimum = innerWidth > 640 && mobile ? 240 : 420;
+    const room = (mobile || width >= 240) && viewport - header >= trayHeight + (mobile ? minimum + 16 : 120);
     browser.style.setProperty('--mobile-browser-height', Math.max(minimum, viewport - header - (room ? trayHeight + 16 : 0)) + 'px'); browser.style.setProperty('--mobile-header-bottom', header + 'px');
-    const inBrowser = browserRect.top < viewport - trayHeight - 16 && buttonRect.bottom > header;
+    const inBrowser = browserRect.top <= header + 20 && buttonRect.bottom > header;
     const homeVisible = homeRect.top < viewport - Math.min(homeHeight.current || 360, 360) && homeRect.bottom > header;
     const next = inBrowser && !homeVisible && !editingField() && room;
     if (!isDocked.current) homeHeight.current = tray.getBoundingClientRect().height;
@@ -175,7 +179,9 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     alive.current = true;
     const media = matchMedia('(prefers-reduced-motion: reduce)'); reduced.current = media.matches;
     const change = () => { reduced.current = media.matches; if (media.matches) { flight.current.cancel('reduced-motion'); if (animation.current && segmentEnd.current !== null) freezeFrame(animation.current, segmentEnd.current); segmentDone.current?.(); } }; media.addEventListener('change', change);
-    const resize = new ResizeObserver(scheduleDock); if (homeRef.current) resize.observe(homeRef.current);
+    const resize = new ResizeObserver(scheduleDock);
+    for (const element of [homeRef.current, trayRef.current, props.carouselButtonRef.current, props.browserRef.current]) if (element) resize.observe(element);
+    void document.fonts.ready.then(scheduleDock);
     addEventListener('scroll', scheduleDock, { passive: true }); addEventListener('resize', scheduleDock); document.addEventListener('focusin', scheduleDock); document.addEventListener('focusout', scheduleDock); window.visualViewport?.addEventListener('resize', scheduleDock);
     const observer = new IntersectionObserver(entries => { if (entries.some(entry => entry.isIntersecting)) { observer.disconnect(); if (!model.current.busy && !animation.current) { const expectedVersion = mountVersion.current + 1; void renderMotion().catch(() => { if (alive.current && expectedVersion === mountVersion.current) motionFallback(); }); } } }, { rootMargin: '220px' });
     if (homeRef.current) observer.observe(homeRef.current); if (props.browserRef.current) observer.observe(props.browserRef.current); scheduleDock();
@@ -193,7 +199,7 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
   const labelLeft = (i: number) => ((cartonLeft(ids.length, view.packed) + (view.packed ? 180 : 235) * ids.indexOf(i) + 90 - 104) / 720 * 100) + '%';
   return <div ref={homeRef} className={'sample-carton-home ' + (props.className ?? '')}>
     <section ref={trayRef} className={'sample-carton-tray' + (docked ? ' is-docked' : '')} aria-label="Váš výber vzoriek" aria-busy={view.busy || props.locked} data-quantity={view.quantity} data-packed={view.packed}>
-      <div className="sample-carton-heading"><div><p>Váš výber <strong>{view.slots.filter(Boolean).length} / {view.quantity}</strong></p><span>{complete ? 'Každá vzorka vo vlastnom obale' : 'Vyberte ešte ' + (view.quantity - view.slots.filter(Boolean).length) + ' ' + (view.quantity - view.slots.filter(Boolean).length === 1 ? 'dekor' : 'dekory')}</span></div><button type="button" className="sample-carton-continue" disabled={view.busy || props.locked || !complete} onClick={props.onContinue}>Pokračovať <span aria-hidden="true">→</span></button></div>
+      <div className="sample-carton-heading"><div><p>Váš výber <strong>{view.slots.filter(Boolean).length} / {view.quantity}</strong></p><span>Spolu {formatSamplePrice(quoteSampleOrder(view.quantity).totalCents)} s&nbsp;dopravou</span></div><button type="button" className="sample-carton-continue" disabled={view.busy || props.locked || !complete} onClick={props.onContinue}>Skontrolovať <span aria-hidden="true">→</span></button></div>
       <div ref={graphicRef} className="sample-carton-graphic" aria-hidden="true">
         {view.fallback && <svg className="sample-carton-fallback" viewBox={SCENE_VIEW}>{view.visible.map((i, rank) => <g key={i} transform={'translate(' + (cartonLeft(view.visible.length) + 235 * rank) + ',310)'}>
           {!view.slots[i] && <><path d="M22 -14 L202 -14 L180 -62 L0 -62 Z" fill="#252920"/><path d="M0 0 L22 -14 L-5 -30 L-22 -16 Z" fill="#30362b"/><path d="M180 0 L202 -14 L220 -30 L196 -10 Z" fill="#30362b"/></>}

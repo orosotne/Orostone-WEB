@@ -21,7 +21,7 @@ interface SampleOrderSectionProps {
 
 /** Customer ordering: contact details and payment are collected only by Shopify. */
 export const SampleOrderSection = forwardRef<SampleOrderSectionHandle, SampleOrderSectionProps>(function SampleOrderSection(
-  { quantity, onQuantityChange, onSelectionChange, onBusyChange, quantityFeedback, browserRef, carouselButtonRef }, ref,
+  { quantity, onQuantityChange, quantityFeedback, onSelectionChange, onBusyChange, browserRef, carouselButtonRef }, ref,
 ) {
   const trayRef = useRef<SampleCartonTrayHandle>(null);
   const checkoutButtonRef = useRef<HTMLButtonElement>(null);
@@ -93,40 +93,51 @@ export const SampleOrderSection = forwardRef<SampleOrderSectionHandle, SampleOrd
     }
   };
 
+
   return (
-    <section id="vzorka" className="bg-[#FAFAFA] px-6 py-10 md:py-14">
-      <div className="mx-auto max-w-5xl rounded-2xl bg-white p-5 ring-1 ring-black/5 md:p-8">
-        <h2 className="mb-1 text-xl font-bold text-brand-dark">Váš výber vzoriek</h2>
-        <p className="mb-6 text-sm font-light text-gray-600">Každú vzorku 10 × 10 cm zabalíme do vlastnej krabičky. Výber môžete kedykoľvek zmeniť.</p>
-        <SampleQuantityPicker id="sample-quantity-order" value={quantity} onChange={onQuantityChange} disabled={busy} feedback={quantityFeedback} />
-        <div className="mx-auto my-5 max-w-[580px]">
-          <label htmlFor="sample-order-decor" className="mb-2 block text-xs font-semibold uppercase tracking-wider text-gray-600">Pridať dekor do výberu</label>
-          <select id="sample-order-decor" value="" disabled={busy || complete} onChange={(event) => {
-            const decor = SAMPLE_DECORS.find((item) => item.id === event.target.value);
-            if (decor) void trayRef.current?.insert(decor);
-          }} className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-base text-brand-dark disabled:bg-gray-50 disabled:text-gray-500">
-            <option value="">{complete ? 'Vybraný počet je kompletný' : 'Vyberte dekor…'}</option>
-            {SAMPLE_DECORS.map((decor) => <option key={decor.id} value={decor.id} disabled={selection.some((item) => item.id === decor.id)}>{decor.name}</option>)}
-          </select>
+    <section id="vzorka" className="sample-order" aria-labelledby="sample-order-title">
+      <div className="sample-order-inner">
+        <div className="sample-order-heading">
+          <div><h2 id="sample-order-title">Skontrolujte svoj výber</h2><p>Každá vzorka má vlastnú krabičku. Dekor môžete odstrániť a nahradiť iným.</p></div>
+          <a className="sample-order-change" href="#sample-quantity-order" aria-label="Zmeniť počet vzoriek">{quantity} {quantity === 1 ? 'vzorka' : 'vzorky'} · Zmeniť počet</a>
         </div>
-        <SampleCartonTray ref={trayRef} quantity={quantity} locked={checkoutBusy} onSelectionChange={updateSelection} onBusyChange={setTrayBusy} onContinue={() => {
-          checkoutButtonRef.current?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'center' });
-          checkoutButtonRef.current?.focus({ preventScroll: true });
-        }} browserRef={browserRef} carouselButtonRef={carouselButtonRef} />
-        <div className="mx-auto mt-5 max-w-[580px] border-t border-gray-200 pt-5">
-          <dl className="space-y-2 text-sm text-gray-600 [&_dd]:shrink-0 [&_dd]:whitespace-nowrap">
-            <div className="flex justify-between gap-4"><dt>Prvá vzorka — zadarmo</dt><dd>0,00 €</dd></div>
-            {quantity > 1 ? <div className="flex justify-between gap-4"><dt>{quantity - 1} × ďalšia vzorka</dt><dd>{formatSamplePrice(quote.samplesCents)}</dd></div> : null}
-            <div className="flex justify-between gap-4"><dt>Doprava za celé balenie na Slovensko</dt><dd>2,50 €</dd></div>
-            <div className="flex justify-between gap-4 pt-1 text-base font-bold text-brand-dark"><dt>Spolu s dopravou</dt><dd>{formatSamplePrice(quote.totalCents)}</dd></div>
-          </dl>
-          {error ? <div role="alert" className="mt-4 text-sm leading-relaxed text-red-700"><p>{error}</p>{!ready ? <button type="button" onClick={() => void checkAvailability()} disabled={availabilityLoading} className="mt-2 underline underline-offset-4">Overiť dostupnosť znova</button> : null}</div> : null}
-          {bundle && !ready ? <p role="status" className="mt-4 text-sm text-gray-600">Balenie pre tento počet vzoriek teraz nie je dostupné.</p> : null}
-          <button ref={checkoutButtonRef} type="button" onClick={() => void proceedToCheckout()} disabled={busy || !complete || !ready} className="mt-5 flex w-full items-center justify-center gap-3 rounded-full bg-brand-dark px-5 py-4 text-sm font-bold text-white transition-colors hover:bg-brand-gold hover:text-brand-dark disabled:cursor-not-allowed disabled:opacity-50">
-            {checkoutBusy || availabilityLoading ? <Loader2 size={17} className="animate-spin" /> : <ArrowRight size={17} />}
-            {checkoutBusy ? 'Pripravujeme pokladňu…' : availabilityLoading ? 'Overujeme dostupnosť…' : 'Pokračovať k doručeniu a platbe'}
-          </button>
-          <p className="mt-3 text-center text-xs leading-relaxed text-gray-500">Doručovaciu adresu a spôsob platby doplníte v pokladni Shopify. Objednávku dokončíte až tam.</p>
+        <div className="sample-order-layout">
+          <div className="sample-order-materials">
+            <SampleQuantityPicker id="sample-quantity-order" value={quantity} onChange={onQuantityChange} disabled={busy} feedback={quantityFeedback} />
+            <SampleCartonTray ref={trayRef} quantity={quantity} locked={checkoutBusy} onSelectionChange={updateSelection} onBusyChange={setTrayBusy} onContinue={() => {
+              checkoutButtonRef.current?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'center' });
+              checkoutButtonRef.current?.focus({ preventScroll: true });
+            }} browserRef={browserRef} carouselButtonRef={carouselButtonRef} />
+            <details className="sample-list-picker">
+              <summary>Vybrať dekor zo zoznamu</summary>
+              <label htmlFor="sample-order-decor">Pridať dekor do výberu</label>
+              <select id="sample-order-decor" value="" disabled={busy || complete} onChange={(event) => {
+                const decor = SAMPLE_DECORS.find((item) => item.id === event.target.value);
+                if (decor) void trayRef.current?.insert(decor);
+              }}>
+                <option value="">{complete ? 'Výber je kompletný' : 'Vyberte dekor…'}</option>
+                {SAMPLE_DECORS.map((decor) => <option key={decor.id} value={decor.id} disabled={selection.some((item) => item.id === decor.id)}>{decor.name}</option>)}
+              </select>
+              {complete ? <p>Ak chcete iný dekor, najprv ho odstráňte z krabičky.</p> : null}
+            </details>
+          </div>
+          <aside className="sample-order-summary" aria-labelledby="sample-summary-title">
+            <h3 id="sample-summary-title">Cena vášho balenia</h3>
+            <dl className="sample-order-prices">
+              <div><dt>Prvá vzorka · zadarmo</dt><dd>0,00 €</dd></div>
+              {quantity > 1 ? <div><dt>{quantity - 1} × ďalšia vzorka</dt><dd>{formatSamplePrice(quote.samplesCents)}</dd></div> : null}
+              <div><dt>Doprava na Slovensko</dt><dd>2,50 €</dd></div>
+              <div className="sample-order-total"><dt>Spolu s dopravou</dt><dd>{formatSamplePrice(quote.totalCents)}</dd></div>
+            </dl>
+            {!complete ? <p className="sample-order-incomplete">Vyberte ešte {quantity - selection.length} {quantity - selection.length === 1 ? 'dekor' : 'dekory'} a pokračujte k doručeniu.</p> : null}
+            {error ? <div role="alert" className="mt-4 text-sm leading-relaxed text-red-700"><p>{error}</p>{!ready ? <button type="button" onClick={() => void checkAvailability()} disabled={availabilityLoading} className="mt-2 min-h-11 underline underline-offset-4">Overiť dostupnosť znova</button> : null}</div> : null}
+            {bundle && !ready ? <p role="status" className="mt-4 text-sm text-gray-600">Balenie pre tento počet vzoriek teraz nie je dostupné.</p> : null}
+            <button ref={checkoutButtonRef} type="button" onClick={() => void proceedToCheckout()} disabled={busy || !complete || !ready} className="sample-order-checkout">
+              {checkoutBusy || availabilityLoading ? <Loader2 size={17} className="animate-spin" /> : <ArrowRight size={17} />}
+              {checkoutBusy ? 'Pripravujeme pokladňu…' : availabilityLoading ? 'Overujeme dostupnosť…' : 'Pokračovať k doručeniu a platbe'}
+            </button>
+            <p className="sample-order-next">Adresu a spôsob platby doplníte v ďalšom kroku.</p>
+          </aside>
         </div>
       </div>
     </section>

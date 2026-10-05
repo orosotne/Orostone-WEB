@@ -3,10 +3,11 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
 import { useIsMobile } from '../hooks/useIsMobile';
 import { SAMPLE_DECORS } from '../data/sample-decors';
-import { SampleQuantityPicker } from '../components/Shop/SampleQuantityPicker';
 import type { SampleOrderSectionHandle } from '../components/Shop/SampleOrderSection';
 import type { SampleDecor } from '../components/Shop/SampleCartonTray';
 import type { SampleQuantity } from '../services/shopify/samples';
+import '../components/Shop/SampleQuantityPicker.css';
+import './Vzorky.css';
 
 const SampleOrderSection = React.lazy(() =>
   import('../components/Shop/SampleOrderSection').then((m) => ({ default: m.SampleOrderSection })),
@@ -167,7 +168,7 @@ export const Vzorky: React.FC = () => {
     if (!el || !scrollRef.current) return;
     const container = scrollRef.current;
     const left = el.offsetLeft - container.offsetWidth / 2 + el.offsetWidth / 2;
-    container.scrollTo({ left, behavior: 'smooth' });
+    container.scrollTo({ left, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
   }, []);
 
   /* Center first tile on mount */
@@ -203,6 +204,10 @@ export const Vzorky: React.FC = () => {
   };
 
   const handleSelectDekor = () => {
+    if (selectionComplete) {
+      document.getElementById('vzorka')?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
+      return;
+    }
     const container = scrollRef.current;
     if (!container) return;
     // Resolve from the visible tile now; the label state commits after scroll settles.
@@ -232,7 +237,7 @@ export const Vzorky: React.FC = () => {
   const selectionComplete = selection.length === quantity;
 
   return (
-    <main className="min-h-dvh">
+    <main className="sample-page min-h-dvh">
       <SEOHead
         title="Vzorky sinterovaného kameňa | OROSTONE"
         description="Objednajte si vzorku dekoru, ktorý vás zaujal, alebo viac vzoriek na porovnanie. Pri väčších plochách odporúčame návštevu showroomu Bošany."
@@ -247,27 +252,22 @@ export const Vzorky: React.FC = () => {
         <div className="sample-intro-layout">
           <div className="sample-intro-copy">
             <span className="sample-intro-eyebrow">Vzorky kameňa</span>
-            <h1>Rozhodujte sa <span>s istotou</span></h1>
-            <p className="sample-intro-description">Porovnajte farbu a povrch kameňa priamo u vás doma.</p>
+            <h1>Rozhodujte sa s istotou</h1>
+            <p className="sample-intro-description">Porovnajte kameň priamo u vás doma.</p>
             <p className="sample-intro-offer"><strong>Prvá vzorka je zadarmo.</strong><span>Platíte iba dopravu 2,50 €.</span></p>
-          </div>
-          <div className="sample-intro-choice">
-            <SampleQuantityPicker id="sample-quantity-carousel" value={quantity} onChange={changeQuantity} disabled={sampleBusy} feedback={quantityFeedback} />
           </div>
         </div>
       </section>
 
       {/* ── Sample carousel ── */}
-      <div ref={browserRef} className="sample-decor-browser bg-[#FAFAFA] pb-12">
+      <section ref={browserRef} className="sample-decor-browser" aria-labelledby="sample-decor-title">
+        <div className="sample-decor-heading"><h2 id="sample-decor-title">Vyberte si dekor</h2><p>Vzorka 10 × 10 cm</p></div>
         {/* Edge fade masks */}
-        <div className="relative overflow-hidden">
+        <div className="sample-carousel-window relative overflow-hidden">
           <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 md:w-28 z-10 bg-gradient-to-r from-[#FAFAFA] to-transparent" />
           <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 md:w-28 z-10 bg-gradient-to-l from-[#FAFAFA] to-transparent" />
 
           {/* Counter above center tile */}
-          <div className="pointer-events-none absolute top-2 left-1/2 -translate-x-1/2 z-20 text-[10px] font-mono text-gray-400 tracking-widest select-none">
-            {activeIndex + 1}&thinsp;/&thinsp;{SAMPLE_TILES.length}
-          </div>
 
           {/* Scrollable track */}
           <div
@@ -277,9 +277,9 @@ export const Vzorky: React.FC = () => {
             style={{
               scrollbarWidth: 'none',
               WebkitOverflowScrolling: 'touch',
-              gap: `${GAP}px`,
-              paddingLeft: `calc(50% - ${TILE_BASE / 2}px)`,
-              paddingRight: `calc(50% - ${TILE_BASE / 2}px)`,
+              gap: `${isMobile ? 24 : GAP}px`,
+              paddingLeft: isMobile ? 'calc(50% - min(31vw, 120px))' : `calc(50% - ${TILE_BASE / 2}px)`,
+              paddingRight: isMobile ? 'calc(50% - min(31vw, 120px))' : `calc(50% - ${TILE_BASE / 2}px)`,
               paddingTop: '40px',
               paddingBottom: '40px',
             }}
@@ -293,10 +293,10 @@ export const Vzorky: React.FC = () => {
                 aria-pressed={i === activeIndex}
                 onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); scrollToIndex(i); } }}
                 ref={(el) => { tileRefs.current[i] = el; }}
-                className="flex-shrink-0 snap-center will-change-transform"
+                className="sample-carousel-tile flex-shrink-0 snap-center will-change-transform"
                 style={{
-                  width: `${TILE_BASE}px`,
-                  height: `${TILE_BASE}px`,
+                  width: isMobile ? 'min(62vw, 240px)' : `${TILE_BASE}px`,
+                  height: isMobile ? 'min(62vw, 240px)' : `${TILE_BASE}px`,
                   transition: 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1)',
                 }}
                 onClick={() => scrollToIndex(i)}
@@ -323,26 +323,24 @@ export const Vzorky: React.FC = () => {
         </div>
 
         {/* Name + arrows + CTA */}
-        <div className="text-center mt-2 flex flex-col items-center gap-3">
-          <p className="font-sans text-sm font-bold text-brand-dark tracking-widest uppercase h-5">
-            {SAMPLE_TILES[activeIndex].name}
-          </p>
-
-          {/* Desktop arrows — under the name */}
-          <div className="hidden md:flex items-center gap-3">
+        <div className="sample-decor-controls">
+          <div className="sample-decor-navigation">
             <button
               type="button"
               onClick={goLeft}
+              disabled={activeIndex === 0}
               aria-label="Predchádzajúca vzorka"
-              className="w-9 h-9 flex items-center justify-center rounded-full bg-white shadow ring-1 ring-black/5 hover:ring-brand-gold/40 hover:shadow-md transition-all duration-200"
+              className="sample-decor-arrow"
             >
               <ChevronLeft size={18} className="text-brand-dark" />
             </button>
+            <div className="sample-decor-name"><p aria-live="polite">{SAMPLE_TILES[activeIndex].name}</p><span>{activeIndex + 1} / {SAMPLE_TILES.length} dekorov</span></div>
             <button
               type="button"
               onClick={goRight}
+              disabled={activeIndex === SAMPLE_TILES.length - 1}
               aria-label="Nasledujúca vzorka"
-              className="w-9 h-9 flex items-center justify-center rounded-full bg-white shadow ring-1 ring-black/5 hover:ring-brand-gold/40 hover:shadow-md transition-all duration-200"
+              className="sample-decor-arrow"
             >
               <ChevronRight size={18} className="text-brand-dark" />
             </button>
@@ -352,35 +350,19 @@ export const Vzorky: React.FC = () => {
             type="button"
             ref={carouselButtonRef}
             onClick={handleSelectDekor}
-            disabled={sampleBusy || alreadySelected || selectionComplete}
-            className="inline-flex items-center gap-2 bg-brand-dark text-white px-7 py-3 rounded-full text-sm font-bold uppercase tracking-wider hover:bg-brand-gold hover:text-brand-dark transition-all duration-300 mt-1 disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={sampleBusy || (alreadySelected && !selectionComplete)}
+            className="sample-decor-add"
           >
-            {sampleBusy ? 'Ukladáme vzorku…' : alreadySelected ? 'Vo vašom výbere ✓' : selectionComplete ? 'Výber je kompletný' : 'Pridať do výberu'}
+            {sampleBusy ? 'Ukladáme vzorku…' : selectionComplete ? 'Skontrolovať výber →' : alreadySelected ? 'Vo vašom výbere ✓' : 'Pridať do výberu'}
           </button>
 
-          {/* Dot indicators */}
-          <div className="flex justify-center gap-1.5 mt-2">
-            {SAMPLE_TILES.map((tile, i) => (
-              <button
-                key={tile.id}
-                type="button"
-                aria-label={tile.name}
-                onClick={() => scrollToIndex(i)}
-                className={[
-                  'h-1.5 rounded-full transition-all duration-300',
-                  activeIndex === i ? 'w-5 bg-brand-gold' : 'w-1.5 bg-gray-300 hover:bg-gray-400',
-                ].join(' ')}
-              />
-            ))}
-          </div>
         </div>
-      </div>
+      </section>
 
       <Suspense fallback={<div className="min-h-[600px]" aria-hidden />}>
         <SampleOrderSection ref={orderRef} quantity={quantity} onQuantityChange={changeQuantity} quantityFeedback={quantityFeedback} onSelectionChange={handleSelectionChange} onBusyChange={setSampleBusy} browserRef={browserRef} carouselButtonRef={carouselButtonRef} />
       </Suspense>
 
-      <div className="h-24 bg-[#FAFAFA]" aria-hidden />
     </main>
   );
 };
