@@ -1,11 +1,19 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
 import { m, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Palette, X, ChevronLeft, ChevronRight, Eye } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { SEOHead, createBreadcrumbLD } from '@/components/UI/SEOHead';
-import { ImageReveal } from '@/components/UI/ImageReveal';
+import {
+  ActionButton,
+  Container,
+  Eyebrow,
+  GoldBand,
+  PageHero,
+  Section,
+  SectionHeader,
+  StepList,
+  TextLink,
+} from '@/components/Design';
 import { useScrollLock } from '@/hooks/useScrollLock';
-import { useIsMobile } from '@/hooks/useIsMobile';
 
 /* ─── PROJECT DATA ───────────────────────────────────── */
 
@@ -348,19 +356,29 @@ const STATS = [
   { value: '24', label: 'Mesiacov záruka' },
 ];
 
+const STEPS = [
+  { title: 'Konzultácia', text: 'Pomôžeme s výberom dekóru a hrúbky. Pošleme vzorky zadarmo.' },
+  { title: 'Zameranie a príprava', text: 'Kamenár zameria priestor. Platne sú rezané CNC technológiou na presné rozmery.' },
+  { title: 'Montáž', text: 'Termín dodania a inštalácie do 15 pracovných dní.' },
+];
+
 const breadcrumbLD = createBreadcrumbLD([
   { name: 'Domov', url: 'https://orostone.sk/' },
   { name: 'Realizácie', url: 'https://orostone.sk/realizacie' },
 ]);
 
+/** "1 fotka" · "2–4 fotky" · "5+ fotiek" */
+const photoCount = (n: number) => `${n} ${n === 1 ? 'fotka' : n < 5 ? 'fotky' : 'fotiek'}`;
+
 /* ─── LIGHTBOX ───────────────────────────────────────── */
 
 const Lightbox: React.FC<{
   images: string[];
+  title: string;
   index: number;
   onClose: () => void;
   onNav: (i: number) => void;
-}> = ({ images, index, onClose, onNav }) => {
+}> = ({ images, title, index, onClose, onNav }) => {
   useScrollLock(true);
 
   const handleKey = useCallback(
@@ -383,33 +401,39 @@ const Lightbox: React.FC<{
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.25 }}
-      className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-brand-dark/95"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={title}
     >
       {/* Close */}
       <button
         onClick={onClose}
-        className="absolute top-4 right-4 z-10 text-white/70 hover:text-white transition-colors p-2"
+        className="absolute right-4 top-4 z-10 grid h-11 w-11 place-items-center text-brand-light/70 transition-colors hover:text-brand-light"
         aria-label="Zavrieť"
       >
-        <X size={28} />
+        <X size={26} strokeWidth={1.5} />
       </button>
 
-      {/* Counter */}
-      {images.length > 1 && (
-        <div className="absolute top-5 left-1/2 -translate-x-1/2 text-white/50 text-sm font-light tracking-wider">
-          {index + 1} / {images.length}
-        </div>
-      )}
+      {/* Title + counter */}
+      <div className="absolute left-1/2 top-5 grid -translate-x-1/2 justify-items-center gap-1 text-center text-brand-light/70">
+        <span className="text-[0.92rem] font-medium text-brand-light">{title}</span>
+        {images.length > 1 && (
+          <span className="text-[0.8rem] font-normal tabular-nums tracking-[0.12em]">
+            {index + 1} / {images.length}
+          </span>
+        )}
+      </div>
 
       {/* Prev */}
       {index > 0 && (
         <button
           onClick={(e) => { e.stopPropagation(); onNav(index - 1); }}
-          className="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-2"
+          className="absolute left-3 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center text-brand-light/60 transition-colors hover:text-brand-light"
           aria-label="Predchádzajúca"
         >
-          <ChevronLeft size={36} />
+          <ChevronLeft size={34} strokeWidth={1.25} />
         </button>
       )}
 
@@ -417,23 +441,23 @@ const Lightbox: React.FC<{
       {index < images.length - 1 && (
         <button
           onClick={(e) => { e.stopPropagation(); onNav(index + 1); }}
-          className="absolute right-4 top-1/2 -translate-y-1/2 text-white/50 hover:text-white transition-colors p-2"
+          className="absolute right-3 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center text-brand-light/60 transition-colors hover:text-brand-light"
           aria-label="Nasledujúca"
         >
-          <ChevronRight size={36} />
+          <ChevronRight size={34} strokeWidth={1.25} />
         </button>
       )}
 
       {/* Image */}
       <m.img
         key={images[index]}
-        initial={{ opacity: 0, scale: 0.95 }}
+        initial={{ opacity: 0, scale: 0.97 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
         src={images[index]}
-        alt=""
-        className="max-w-[92vw] max-h-[88vh] object-contain rounded-lg"
+        alt={`${title} — fotka ${index + 1}`}
+        className="max-h-[82vh] max-w-[90vw] rounded-[3px] object-contain"
         onClick={(e) => e.stopPropagation()}
       />
     </m.div>
@@ -443,15 +467,14 @@ const Lightbox: React.FC<{
 /* ─── PAGE ───────────────────────────────────────────── */
 
 export const Realizacie = () => {
-  const [lightbox, setLightbox] = useState<{ images: string[]; index: number } | null>(null);
-  const isMobile = useIsMobile();
+  const [lightbox, setLightbox] = useState<{ images: string[]; title: string; index: number } | null>(null);
 
   const openLightbox = useCallback((project: Project, startIndex = 0) => {
-    setLightbox({ images: project.gallery, index: startIndex });
+    setLightbox({ images: project.gallery, title: project.title, index: startIndex });
   }, []);
 
   return (
-    <div className="bg-white">
+    <div>
       <SEOHead
         title="Realizácie kuchynských dosiek | OROSTONE"
         description="Pozrite, ako sinterovaný kameň vyzerá v reálnych kuchyniach a ostrovčekoch. Veľké plochy, kde dekor rozhoduje výsledok celej miestnosti."
@@ -460,294 +483,156 @@ export const Realizacie = () => {
         structuredData={breadcrumbLD}
       />
 
-      {/* ── Hero ──────────────────────────────────────── */}
-      <section className="pt-32 pb-20 bg-[#F9F9F7]">
-        <div className="container mx-auto px-6 text-center">
-          <m.span
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block"
-          >
-            Portfólio
-          </m.span>
-          <m.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-sans font-bold text-brand-dark mb-6"
-          >
-            Naše realizácie
-          </m.h1>
-          <m.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-gray-500 text-lg font-light max-w-2xl mx-auto"
-          >
-            Každý projekt je unikátny — od kompaktných bytov po rozľahlé vily. Pozrite sa, ako sinterovaný kameň Orostone mení reálne priestory.
-          </m.p>
-        </div>
-      </section>
-
-      {/* ── Stats ─────────────────────────────────────── */}
-      <section className="py-12 border-b border-gray-100">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto text-center">
-            {STATS.map((s, i) => (
-              <m.div
-                key={s.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
-                <div className="text-3xl md:text-4xl font-bold text-brand-gold">{s.value}</div>
-                <div className="text-sm text-gray-500 font-light mt-1">{s.label}</div>
-              </m.div>
+      <PageHero
+        eyebrow="Portfólio"
+        title="Naše realizácie"
+        lead="Každý projekt je unikátny — od kompaktných bytov po rozľahlé vily. Pozrite sa, ako sinterovaný kameň Orostone mení reálne priestory."
+        media={
+          <dl className="m-0 grid grid-cols-2 gap-x-[clamp(24px,3vw,48px)] gap-y-8">
+            {STATS.map((s) => (
+              <div key={s.label} className="grid content-start gap-2 border-t border-brand-dark pt-5">
+                <dt className="order-2 text-[0.92rem] font-normal text-brand-muted">{s.label}</dt>
+                <dd className="order-1 m-0 text-[clamp(1.8rem,2.8vw,2.6rem)] font-semibold leading-none tracking-[-0.02em] tabular-nums">
+                  {s.value}
+                </dd>
+              </div>
             ))}
-          </div>
-        </div>
-      </section>
+          </dl>
+        }
+      />
 
       {/* ── Featured Project ──────────────────────────── */}
-      <section className="py-20 md:py-28 bg-brand-dark">
-        <div className="container mx-auto px-6">
-          <div className="max-w-6xl mx-auto">
-            {/* Badge */}
-            <m.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="mb-8"
-            >
-              <span className="text-xs font-bold text-brand-gold tracking-widest uppercase">
-                Odporúčaný projekt
-              </span>
-            </m.div>
-
-            {/* Hero image */}
-            <div
-              className="relative rounded-2xl overflow-hidden cursor-pointer group"
-              onClick={() => openLightbox(FEATURED, 0)}
-            >
-              <ImageReveal
-                src={FEATURED.hero}
-                alt={FEATURED.title}
-                aspectRatio="aspect-[16/9]"
-              />
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
-              {/* Text overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-                <h2 className="text-2xl md:text-4xl font-bold text-white mb-2">
-                  {FEATURED.title}
-                </h2>
-                <p className="text-white/70 font-light flex items-center gap-2">
-                  <Palette size={16} className="text-brand-gold" />
-                  {FEATURED.material}
-                </p>
-              </div>
-              {/* Hover hint */}
-              <div className="absolute top-4 right-4 bg-black/40 backdrop-blur-sm text-white/80 text-xs px-3 py-1.5 rounded-full flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
-                <Eye size={14} />
-                Zobraziť galériu
-              </div>
+      <Section tone="graphite">
+        <Container className="grid gap-6">
+          <Eyebrow gold>Odporúčaný projekt</Eyebrow>
+          <button
+            type="button"
+            onClick={() => openLightbox(FEATURED, 0)}
+            className="group block overflow-hidden rounded-[3px]"
+            aria-label={`Zobraziť galériu: ${FEATURED.title}`}
+          >
+            <img
+              src={FEATURED.hero}
+              alt={FEATURED.title}
+              width={1200}
+              height={900}
+              loading="lazy"
+              decoding="async"
+              className="aspect-[16/9] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+            />
+          </button>
+          <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-3">
+            <div className="grid gap-2">
+              <h2 className="text-os-h2">{FEATURED.title}</h2>
+              <p className="font-light text-brand-light/75">
+                {FEATURED.material} · {photoCount(FEATURED.gallery.length)}
+              </p>
             </div>
-
-            {/* Gallery thumbnails */}
-            {FEATURED.gallery.length > 1 && (
-              <div className="grid grid-cols-3 gap-3 mt-3">
-                {FEATURED.gallery.slice(1, 4).map((img, i) => (
-                  <m.div
-                    key={img}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.1 + i * 0.1 }}
-                    className="aspect-[16/10] rounded-xl overflow-hidden cursor-pointer group/thumb"
-                    onClick={() => openLightbox(FEATURED, i + 1)}
-                  >
-                    <img
-                      src={img}
-                      alt={`${FEATURED.title} — detail ${i + 1}`}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover/thumb:scale-105"
-                      loading="lazy"
-                      width={400}
-                      height={250}
-                    />
-                  </m.div>
-                ))}
-              </div>
-            )}
           </div>
-        </div>
-      </section>
+          {FEATURED.gallery.length > 1 && (
+            <div className="grid grid-cols-3 gap-3">
+              {FEATURED.gallery.slice(1, 4).map((img, i) => (
+                <button
+                  key={img}
+                  type="button"
+                  onClick={() => openLightbox(FEATURED, i + 1)}
+                  className="group/thumb block overflow-hidden rounded-[3px]"
+                  aria-label={`${FEATURED.title} — fotka ${i + 2}`}
+                >
+                  <img
+                    src={img}
+                    alt={`${FEATURED.title} — detail ${i + 1}`}
+                    className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover/thumb:scale-105"
+                    loading="lazy"
+                    decoding="async"
+                    width={400}
+                    height={250}
+                  />
+                </button>
+              ))}
+            </div>
+          )}
+        </Container>
+      </Section>
 
       {/* ── Projects Grid ─────────────────────────────── */}
-      <section className="py-20 md:py-28">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <m.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-3xl md:text-4xl font-bold text-brand-dark mb-4"
-            >
-              Ďalšie projekty
-            </m.h2>
-            <m.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-gray-500 font-light max-w-xl mx-auto"
-            >
-              Kuchyne, krby a interiéry z celého Slovenska
-            </m.p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-            {GRID_PROJECTS.map((project, i) => {
-              const isWide = i % 5 === 2; // every 5th card goes full width for visual rhythm
-              const cardClassName = `bg-[#F9F9F7] rounded-3xl overflow-hidden cursor-pointer group ${
-                isWide ? 'md:col-span-2' : ''
-              }`;
-              const cardInner = (
-                <>
-                  <div className={`relative overflow-hidden ${isWide ? 'aspect-[21/9]' : 'aspect-[16/10]'}`}>
+      <Section tone="chalk">
+        <Container>
+          <SectionHeader title="Ďalšie projekty" lead="Kuchyne, krby a interiéry z celého Slovenska" />
+          <ul className="mt-[clamp(40px,5vw,64px)] grid gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+            {GRID_PROJECTS.map((project) => (
+              <li key={project.id}>
+                <article className="grid gap-3">
+                  <button
+                    type="button"
+                    onClick={() => openLightbox(project)}
+                    className="group block overflow-hidden rounded-[3px] bg-brand-sand"
+                    aria-label={`Zobraziť galériu: ${project.title}`}
+                  >
                     <img
                       src={project.hero}
                       alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                       loading="lazy"
                       decoding="async"
-                      width={isWide ? 1200 : 800}
-                      height={isWide ? 514 : 500}
+                      width={800}
+                      height={600}
                     />
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
-                      <span className="text-white text-sm font-semibold tracking-wide flex items-center gap-2 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
-                        <Eye size={16} />
-                        Zobraziť galériu
-                      </span>
-                    </div>
+                  </button>
+                  <div className="grid gap-0.5">
+                    <h3 className="text-[1.08rem] font-semibold leading-snug">{project.title}</h3>
+                    <p className="text-[0.9rem] font-normal text-brand-muted">
+                      {project.material} · {photoCount(project.gallery.length)}
+                    </p>
                   </div>
-                  <div className="p-6">
-                    <h3 className="font-bold text-brand-dark text-lg mb-1">{project.title}</h3>
-                    <div className="flex items-center gap-2 text-sm">
-                      <Palette size={14} className="text-brand-gold flex-shrink-0" />
-                      <span className="text-gray-500 font-light">{project.material}</span>
-                    </div>
-                  </div>
-                </>
-              );
-
-              // On mobile, render plain div — skip 28× Framer Motion subscribers +
-              // whileInView IntersectionObservers that compound INP during scroll.
-              if (isMobile) {
-                return (
-                  <div
-                    key={project.id}
-                    className={cardClassName}
-                    onClick={() => openLightbox(project)}
-                  >
-                    {cardInner}
-                  </div>
-                );
-              }
-
-              return (
-                <m.div
-                  key={project.id}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-5%' }}
-                  transition={{ duration: 0.6, delay: (i % 2) * 0.15 }}
-                  className={cardClassName}
-                  onClick={() => openLightbox(project)}
-                >
-                  {cardInner}
-                </m.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+                </article>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-10 text-[0.84rem] font-normal text-brand-muted">
+            Fotky sú z montáží u klientov. Názvy dekorov sú z čias realizácie.
+          </p>
+        </Container>
+      </Section>
 
       {/* ── Process ───────────────────────────────────── */}
-      <section className="py-20 bg-[#F9F9F7]">
-        <div className="container mx-auto px-6 text-center max-w-3xl">
-          <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
-            Ako to funguje
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-12">
-            Od konzultácie po hotovú kuchyňu
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-12 h-12 bg-brand-gold rounded-full flex items-center justify-center mx-auto mb-4 text-brand-dark font-bold">1</div>
-              <h3 className="font-bold text-brand-dark mb-2">Konzultácia</h3>
-              <p className="text-sm text-gray-500 font-light">Pomôžeme s výberom dekóru a hrúbky. Pošleme vzorky zadarmo.</p>
-            </div>
-            <div className="text-center">
-              <div className="w-12 h-12 bg-brand-gold rounded-full flex items-center justify-center mx-auto mb-4 text-brand-dark font-bold">2</div>
-              <h3 className="font-bold text-brand-dark mb-2">Zameranie a príprava</h3>
-              <p className="text-sm text-gray-500 font-light">Kamenár zameria priestor. Platne sú rezané CNC technológiou na presné rozmery.</p>
-            </div>
-            <div className="text-center">
-              <div className="w-12 h-12 bg-brand-gold rounded-full flex items-center justify-center mx-auto mb-4 text-brand-dark font-bold">3</div>
-              <h3 className="font-bold text-brand-dark mb-2">Montáž</h3>
-              <p className="text-sm text-gray-500 font-light">Termín dodania a inštalácie do 15 pracovných dní.</p>
-            </div>
+      <Section tone="sand">
+        <Container>
+          <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-5">
+            <SectionHeader eyebrow="Ako to funguje" title="Od konzultácie po hotovú kuchyňu" />
+            <TextLink to="/blog/od-merania-po-instalaciu-proces-orostone">Podrobný popis procesu</TextLink>
           </div>
-          <Link
-            to="/blog/od-merania-po-instalaciu-proces-orostone"
-            className="inline-flex items-center gap-2 text-brand-gold font-semibold hover:text-brand-dark transition-colors mt-10"
-          >
-            Podrobný popis procesu
-            <ArrowRight size={16} />
-          </Link>
-        </div>
-      </section>
+          <StepList steps={STEPS} className="mt-[clamp(40px,5vw,64px)]" />
+        </Container>
+      </Section>
 
       {/* ── CTA ───────────────────────────────────────── */}
-      <section className="py-24">
-        <div className="container mx-auto px-6 text-center max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-6">
-            Chcete podobný výsledok?
-          </h2>
-          <p className="text-gray-500 text-lg font-light mb-10">
-            Kontaktujte nás pre nezáväznú konzultáciu. Poradíme s materiálom, pripravíme cenovú ponuku a zrealizujeme projekt od A po Z.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              to="/kontakt"
-              className="inline-flex items-center gap-2 bg-brand-gold text-brand-dark px-8 py-4 rounded-full font-semibold hover:bg-brand-dark hover:text-white transition-all"
-            >
+      <Section tone="chalk">
+        <Container className="grid items-end gap-8 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
+          <SectionHeader
+            title="Chcete podobný výsledok?"
+            lead="Kontaktujte nás pre nezáväznú konzultáciu. Poradíme s materiálom, pripravíme cenovú ponuku a zrealizujeme projekt od A po Z."
+          />
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-4 lg:justify-end">
+            <ActionButton variant="dark" to="/kontakt" arrow>
               Nezáväzná konzultácia
-              <ArrowRight size={18} />
-            </Link>
-            <Link
-              to="/vzorky"
-              className="inline-flex items-center gap-2 border-2 border-brand-dark text-brand-dark px-8 py-4 rounded-full font-semibold hover:bg-brand-dark hover:text-white transition-all"
-            >
-              Objednať vzorky zadarmo
-            </Link>
+            </ActionButton>
+            <TextLink to="/vzorky">Objednať vzorky zadarmo</TextLink>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
+
+      <GoldBand od="realizacie-stranka" />
 
       {/* ── Lightbox ──────────────────────────────────── */}
       <AnimatePresence>
         {lightbox && (
           <Lightbox
             images={lightbox.images}
+            title={lightbox.title}
             index={lightbox.index}
             onClose={() => setLightbox(null)}
-            onNav={(i) => setLightbox((prev) => prev ? { ...prev, index: i } : null)}
+            onNav={(i) => setLightbox((prev) => (prev ? { ...prev, index: i } : null))}
           />
         )}
       </AnimatePresence>
