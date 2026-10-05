@@ -21,7 +21,12 @@ export default {
   				dark: '#1A1A1A',
   				light: '#F9F9F7',
   				gray: '#F5F5F0',
-  				stone: '#2A2A2A'
+  				stone: '#2A2A2A',
+  				// New design system (2026-10)
+  				sand: '#EFEDE6',
+  				muted: '#5F5E5A',
+  				line: '#E2E0D8',
+  				'gold-hover': '#F3E2A6'
   			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -69,6 +74,17 @@ export default {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)',
   			orostone: '1rem'
+  		},
+  		// New design system (2026-10): content grid and type scale, see STYLE_GUIDE.md
+  		maxWidth: {
+  			os: '1800px'
+  		},
+  		fontSize: {
+  			'os-h1': ['clamp(1.95rem, 2.7vw, 3.1rem)', { lineHeight: '1.12', letterSpacing: '-0.02em', fontWeight: '600' }],
+  			'os-h2': ['clamp(1.7rem, 2.2vw, 2.3rem)', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '600' }],
+  			'os-h3': ['clamp(1.2rem, 1.6vw, 1.45rem)', { lineHeight: '1.3', letterSpacing: '-0.01em', fontWeight: '600' }],
+  			'os-lead': ['clamp(1rem, 1.2vw, 1.13rem)', { lineHeight: '1.6' }],
+  			'os-eyebrow': ['0.74rem', { lineHeight: '1.2', letterSpacing: '0.2em', fontWeight: '700' }]
   		},
   		backgroundImage: {
   			noise: "url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.05%22/%3E%3C/svg%3E')",

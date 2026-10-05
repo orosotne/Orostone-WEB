@@ -30,6 +30,11 @@ const Realizacie = lazyWithRetry(() => import('./pages/Realizacie').then(m => ({
 const Cennik = lazyWithRetry(() => import('./pages/Cennik').then(m => ({ default: m.Cennik })));
 const Kariera = lazyWithRetry(() => import('./pages/Kariera').then(m => ({ default: m.Kariera })));
 
+// Dev-only reference sheet of the new design system — not part of production builds
+const DesignPreview = import.meta.env.DEV
+  ? lazyWithRetry(() => import('./pages/DesignPreview').then(m => ({ default: m.DesignPreview })))
+  : null;
+
 const minH = <div className="min-h-screen" aria-hidden />;
 
 // ===========================================
@@ -107,6 +112,8 @@ export const appRoutes = (
     <Route path="/podmienky-rezervacie-ceny" element={<Suspense fallback={minH}><PodmienkyRezervaceCeny /></Suspense>} />
     <Route path="/ochrana-sukromia" element={<Suspense fallback={minH}><PrivacyPolicy /></Suspense>} />
     <Route path="/cookies" element={<Suspense fallback={minH}><CookiesPolicy /></Suspense>} />
+
+    {DesignPreview && <Route path="/_dizajn" element={<Suspense fallback={minH}><DesignPreview /></Suspense>} />}
 
     {/* 404 */}
     <Route path="*" element={<NotFoundPage />} />
