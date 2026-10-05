@@ -688,7 +688,8 @@ function prerenderVzorky(): void {
     rootContent: `
       <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Vzorky</nav>
       <h1>Vzorky materiálu</h1>
-      <p>Objednajte si vzorky sinterovaného kameňa — vyberte dekor a vyplňte formulár. Po načítaní stránky v prehliadači sa zobrazí celý obsah a objednávkový formulár.</p>
+      <p>Porovnajte až tri dekory sinterovaného kameňa priamo u vás doma. Prvá vzorka je zadarmo, každá ďalšia stojí 4,90 €. Dopravu na Slovensko 2,50 € platíte iba raz.</p>
+      <p>Vyberte si počet vzoriek a konkrétne dekory. Doručovaciu adresu a platbu doplníte v zabezpečenej pokladni Shopify.</p>
       <p><a href="/kategoria/sintered-stone">Prehliadať všetky dekory</a> &middot; <a href="/kontakt">Kontakt</a></p>`,
     jsonLd: [
       {

@@ -8,7 +8,7 @@ Prepíš stĺpce **Nový title** a **Nový materiál** podľa potreby. Čo nech�
 | 2 | Biely Statuario | Polaris Statuario White | | |
 | 3 | Krb — zelený mramor | Prada Green | | |
 | 4 | Taj Mahal — dlhý ostrovček s drezom | Taj Mahal | | |
-| 5 | Sivý kameň — kuchyňa | Sivý kameň | | |
+| 5 | Sivý kameň — kuchyňa | Sivý kameň | Taj Mahal — kuchyňa | Taj Mahal |
 | 6 | Biely mramor — sivé žilky | Biely mramor | | |
 | 7 | Biela doska — ružová kuchyňa | Super White | | |
 | 8 | Arden Gold — lustre | Arden Gold | | |

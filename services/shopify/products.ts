@@ -3,6 +3,7 @@ import { type ShopProduct } from '../../constants';
 import type { ShopifyProduct, ShopifyCollection } from './types';
 import { PRODUCT_LIST_FRAGMENT, PRODUCT_FRAGMENT } from './fragments';
 import { shopifyProductToShopProduct } from './adapter';
+import { isSampleOrderProduct } from './samples';
 
 export async function fetchProducts(first: number = 50): Promise<ShopProduct[]> {
   const query = `
@@ -22,7 +23,7 @@ export async function fetchProducts(first: number = 50): Promise<ShopProduct[]> 
     products: { edges: { node: ShopifyProduct }[] };
   }>({ query, variables: { first } });
 
-  return data.products.edges.map(({ node }) => shopifyProductToShopProduct(node));
+  return data.products.edges.filter(({ node }) => !isSampleOrderProduct(node)).map(({ node }) => shopifyProductToShopProduct(node));
 }
 
 // Lightweight listing fetch — fewer images, variants, metafields (~70% smaller response)
@@ -44,7 +45,7 @@ export async function fetchProductsForListing(first: number = 50): Promise<ShopP
     products: { edges: { node: ShopifyProduct }[] };
   }>({ query, variables: { first } });
 
-  return data.products.edges.map(({ node }) => shopifyProductToShopProduct(node));
+  return data.products.edges.filter(({ node }) => !isSampleOrderProduct(node)).map(({ node }) => shopifyProductToShopProduct(node));
 }
 
 // In-memory cache for product-by-handle — avoids redundant API calls when revisiting
@@ -71,7 +72,7 @@ export async function fetchProductByHandle(handle: string): Promise<ShopProduct 
     productByHandle: ShopifyProduct | null;
   }>({ query, variables: { handle } });
 
-  if (!data.productByHandle) return null;
+  if (!data.productByHandle || isSampleOrderProduct(data.productByHandle)) return null;
 
   const result = shopifyProductToShopProduct(data.productByHandle);
   productByHandleCache.set(handle, { data: result, timestamp: Date.now() });

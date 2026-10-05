@@ -69,8 +69,8 @@ const PROJECTS: Project[] = [
   },
   {
     id: 'sivy-kamen-kuchyna',
-    title: 'Sivý kameň — kuchyňa',
-    material: 'Sivý kameň',
+    title: 'Taj Mahal — kuchyňa',
+    material: 'Taj Mahal',
     hero: '/images/realizacie/sivy-kamen-kuchyna-hero.webp',
     gallery: [
       '/images/realizacie/sivy-kamen-kuchyna-hero.webp',
