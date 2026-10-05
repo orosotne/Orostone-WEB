@@ -1,16 +1,16 @@
 /* Orostone sample introduction: the material stays the main visual. */
-.sample-intro{--sample-ink:#1a1a1a;--sample-muted:#62665d;--sample-line:#dbddd6;background:#fafafa;color:var(--sample-ink);padding:48px 24px 24px;font-family:Montserrat,sans-serif}
+.sample-intro{--sample-ink:#1a1a1a;--sample-muted:#5f5e5a;--sample-line:#e2e0d8;background:#f9f9f7;color:var(--sample-ink);padding:48px 24px 24px;font-family:Montserrat,sans-serif}
 .sample-intro-layout{display:grid;grid-template-columns:minmax(0,1fr) 400px;align-items:center;gap:72px;max-width:1040px;margin:0 auto}
 .sample-intro-copy{min-width:0}
-.sample-intro-eyebrow{display:block;font-size:10px;line-height:1.5;font-weight:600;letter-spacing:.17em;text-transform:uppercase;color:var(--sample-muted);margin-bottom:14px}
-.sample-intro h1{font-size:clamp(32px,3.5vw,44px);font-weight:700;line-height:1.12;letter-spacing:-.045em;margin:0 0 16px}
+.sample-intro-eyebrow{display:flex;align-items:center;gap:14px;font-size:.74rem;line-height:1.5;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--sample-ink);margin-bottom:16px}.sample-intro-eyebrow::before{content:'';width:28px;height:1px;background:currentColor;opacity:.75}
+.sample-intro h1{font-size:clamp(1.95rem,2.7vw,3.1rem);font-weight:600;line-height:1.12;letter-spacing:-.02em;margin:0 0 16px}
 .sample-intro h1 span{display:block}
 .sample-intro-description{max-width:390px;font-size:14px;font-weight:400;line-height:1.75;color:var(--sample-muted);margin:0 0 18px}
 .sample-intro-offer{font-size:14px;line-height:1.65;margin:0}
 .sample-intro-offer strong{display:block;font-weight:600}
 .sample-intro-offer span{color:var(--sample-muted)}
 .sample-intro-choice{min-width:0}
-.sample-quantity{--sample-ink:#1a1a1a;--sample-muted:#62665d;--sample-line:#dbddd6;width:100%;max-width:580px;margin:0 auto;border:0;padding:0;min-width:0;color:var(--sample-ink);font-family:Montserrat,sans-serif;font-weight:400}
+.sample-quantity{--sample-ink:#1a1a1a;--sample-muted:#5f5e5a;--sample-line:#e2e0d8;width:100%;max-width:580px;margin:0 auto;border:0;padding:0;min-width:0;color:var(--sample-ink);font-family:Montserrat,sans-serif;font-weight:400}
 .sample-quantity legend{font-size:14px;font-weight:600;line-height:1.5;padding:0;margin-bottom:6px}
 .sample-quantity-rule{font-size:12px;font-weight:400;line-height:1.65;color:var(--sample-muted);margin:0 0 14px}
 .sample-quantity-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:4px;border:1px solid var(--sample-line);border-radius:11px}

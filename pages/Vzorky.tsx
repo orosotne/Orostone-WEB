@@ -232,7 +232,7 @@ export const Vzorky: React.FC = () => {
   const selectionComplete = selection.length === quantity;
 
   return (
-    <main className="min-h-dvh">
+    <div className="min-h-dvh">
       <SEOHead
         title="Vzorky sinterovaného kameňa | OROSTONE"
         description="Objednajte si vzorku dekoru, ktorý vás zaujal, alebo viac vzoriek na porovnanie. Pri väčších plochách odporúčame návštevu showroomu Bošany."
@@ -258,14 +258,14 @@ export const Vzorky: React.FC = () => {
       </section>
 
       {/* ── Sample carousel ── */}
-      <div ref={browserRef} className="sample-decor-browser bg-[#FAFAFA] pb-12">
+      <div ref={browserRef} className="sample-decor-browser bg-brand-light pb-12">
         {/* Edge fade masks */}
         <div className="relative overflow-hidden">
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 md:w-28 z-10 bg-gradient-to-r from-[#FAFAFA] to-transparent" />
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 md:w-28 z-10 bg-gradient-to-l from-[#FAFAFA] to-transparent" />
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 md:w-28 z-10 bg-gradient-to-r from-brand-light to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 md:w-28 z-10 bg-gradient-to-l from-brand-light to-transparent" />
 
           {/* Counter above center tile */}
-          <div className="pointer-events-none absolute top-2 left-1/2 -translate-x-1/2 z-20 text-[10px] font-mono text-gray-400 tracking-widest select-none">
+          <div className="pointer-events-none absolute top-2 left-1/2 -translate-x-1/2 z-20 text-[0.72rem] font-medium tabular-nums text-brand-muted tracking-[0.16em] select-none">
             {activeIndex + 1}&thinsp;/&thinsp;{SAMPLE_TILES.length}
           </div>
 
@@ -324,7 +324,7 @@ export const Vzorky: React.FC = () => {
 
         {/* Name + arrows + CTA */}
         <div className="text-center mt-2 flex flex-col items-center gap-3">
-          <p className="font-sans text-sm font-bold text-brand-dark tracking-widest uppercase h-5">
+          <p className="h-5 text-[0.82rem] font-bold uppercase tracking-[0.16em] text-brand-dark">
             {SAMPLE_TILES[activeIndex].name}
           </p>
 
@@ -334,7 +334,7 @@ export const Vzorky: React.FC = () => {
               type="button"
               onClick={goLeft}
               aria-label="Predchádzajúca vzorka"
-              className="w-9 h-9 flex items-center justify-center rounded-full bg-white shadow ring-1 ring-black/5 hover:ring-brand-gold/40 hover:shadow-md transition-all duration-200"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-brand-line bg-brand-light transition-colors duration-200 hover:border-brand-dark"
             >
               <ChevronLeft size={18} className="text-brand-dark" />
             </button>
@@ -342,7 +342,7 @@ export const Vzorky: React.FC = () => {
               type="button"
               onClick={goRight}
               aria-label="Nasledujúca vzorka"
-              className="w-9 h-9 flex items-center justify-center rounded-full bg-white shadow ring-1 ring-black/5 hover:ring-brand-gold/40 hover:shadow-md transition-all duration-200"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-brand-line bg-brand-light transition-colors duration-200 hover:border-brand-dark"
             >
               <ChevronRight size={18} className="text-brand-dark" />
             </button>
@@ -353,7 +353,7 @@ export const Vzorky: React.FC = () => {
             ref={carouselButtonRef}
             onClick={handleSelectDekor}
             disabled={sampleBusy || alreadySelected || selectionComplete}
-            className="inline-flex items-center gap-2 bg-brand-dark text-white px-7 py-3 rounded-full text-sm font-bold uppercase tracking-wider hover:bg-brand-gold hover:text-brand-dark transition-all duration-300 mt-1 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="mt-1 inline-flex min-h-[50px] items-center gap-2 px-7 rounded-[10px] bg-brand-dark text-[0.78rem] font-bold uppercase tracking-[0.12em] text-brand-light transition-colors hover:bg-[#333331] disabled:cursor-not-allowed disabled:opacity-50"
           >
             {sampleBusy ? 'Ukladáme vzorku…' : alreadySelected ? 'Vo vašom výbere ✓' : selectionComplete ? 'Výber je kompletný' : 'Pridať do výberu'}
           </button>
@@ -368,7 +368,7 @@ export const Vzorky: React.FC = () => {
                 onClick={() => scrollToIndex(i)}
                 className={[
                   'h-1.5 rounded-full transition-all duration-300',
-                  activeIndex === i ? 'w-5 bg-brand-gold' : 'w-1.5 bg-gray-300 hover:bg-gray-400',
+                  activeIndex === i ? 'w-5 bg-brand-dark' : 'w-1.5 bg-brand-line hover:bg-brand-muted',
                 ].join(' ')}
               />
             ))}
@@ -380,7 +380,7 @@ export const Vzorky: React.FC = () => {
         <SampleOrderSection ref={orderRef} quantity={quantity} onQuantityChange={changeQuantity} quantityFeedback={quantityFeedback} onSelectionChange={handleSelectionChange} onBusyChange={setSampleBusy} browserRef={browserRef} carouselButtonRef={carouselButtonRef} />
       </Suspense>
 
-      <div className="h-24 bg-[#FAFAFA]" aria-hidden />
-    </main>
+      <div className="h-24 bg-brand-light" aria-hidden />
+    </div>
   );
 };
