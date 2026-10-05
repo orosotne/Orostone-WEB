@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import { ArrowIcon } from './ArrowIcon';
 import { isPlainHref, newTabProps } from './href';
 
-export type ActionButtonVariant = 'gold' | 'dark' | 'outline' | 'light-outline';
+export type ActionButtonVariant = 'gold' | 'dark' | 'light' | 'outline' | 'light-outline';
 
 // CTA levels: 1 gold (only header, gold band, mobile bar) · 2 dark · 3 TextLink
 const VARIANT_CLASSES: Record<ActionButtonVariant, string> = {
   gold: 'bg-brand-gold text-brand-dark hover:bg-brand-gold-hover',
   dark: 'bg-brand-dark text-brand-light hover:bg-[#333331]',
+  /** level 2 on a graphite section */
+  light: 'bg-brand-light text-brand-dark hover:bg-white',
   outline: 'border border-brand-dark text-brand-dark hover:bg-brand-dark/5',
   'light-outline': 'border border-brand-light/70 text-brand-light hover:bg-brand-light/15',
 };

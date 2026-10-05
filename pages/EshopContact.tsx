@@ -1,7 +1,12 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, AlertTriangle, Building2, Clock, Briefcase } from 'lucide-react';
 import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
+import { ActionButton, Container, Eyebrow, PageHero, Section, TextLink } from '../components/Design';
+
+const MAPS_URL = 'https://www.google.com/maps?q=SNP+113%2F1%2C+956+18+Bo%C5%A1any';
+
+const card = 'grid content-start justify-items-start gap-4 border-t border-brand-dark pt-7';
+const cardTitle = 'text-[1.3rem] font-semibold leading-snug';
+const contactLink = 'font-medium tabular-nums underline decoration-brand-line underline-offset-[5px] transition-colors hover:decoration-current';
 
 export const EshopContact: React.FC = () => {
   // Prefetch legal-page chunks at idle — they are the typical next click from
@@ -19,7 +24,7 @@ export const EshopContact: React.FC = () => {
   }, []);
 
   return (
-    <main className="bg-white">
+    <div>
       <SEOHead
         title="Kontakt | OROSTONE — sinterovaný kameň"
         description="Cenová ponuka, vzorky alebo konzultácia k pracovnej doske zo sinterovaného kameňa. Showroom Bošany, dodanie po celom Slovensku."
@@ -80,239 +85,203 @@ export const EshopContact: React.FC = () => {
           }
         }) }}
       />
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center">
-            <span className="inline-block text-xs font-bold tracking-[0.18em] uppercase text-brand-gold mb-4">
-              Kontakt
-            </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-dark mb-6">
-              Sme tu pre vás
-            </h1>
-            <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
-              Pre cenovú ponuku alebo konzultáciu nás kontaktujte emailom alebo telefonicky.
-              Odpovedáme čo najskôr.
+
+      <PageHero
+        eyebrow="Kontakt"
+        title="Sme tu pre vás"
+        lead="Pre cenovú ponuku alebo konzultáciu nás kontaktujte emailom alebo telefonicky. Odpovedáme čo najskôr."
+        media={
+          <dl className="m-0 grid gap-8 lg:justify-self-end">
+            <div className="grid gap-1.5">
+              <dt className="text-os-eyebrow uppercase text-brand-muted">Telefón</dt>
+              <dd className="m-0 grid gap-1">
+                <a href="tel:+421917588738" className="text-[clamp(1.6rem,2.6vw,2.4rem)] font-semibold tabular-nums tracking-[-0.01em] no-underline hover:underline">
+                  +421 917 588 738
+                </a>
+                <span className="text-[0.92rem] font-normal text-brand-muted">Po–Pia 8:00 – 17:00</span>
+              </dd>
+            </div>
+            <div className="grid gap-1.5">
+              <dt className="text-os-eyebrow uppercase text-brand-muted">E-mail</dt>
+              <dd className="m-0 grid gap-1">
+                <a href="mailto:dopyt@orostone.sk" className="text-[clamp(1.3rem,2vw,1.8rem)] font-semibold tracking-[-0.01em] no-underline hover:underline">
+                  dopyt@orostone.sk
+                </a>
+                <span className="text-[0.92rem] font-normal text-brand-muted">Cenové ponuky a dopyty</span>
+              </dd>
+            </div>
+          </dl>
+        }
+      />
+
+      {/* Showroom = jediná adresa, kam majú klienti chodiť. Ide prvý a cez celú šírku,
+          aby si ho nikto nepomýlil so sídlom v Bratislave. */}
+      <Section tone="sand">
+        <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-[clamp(48px,6vw,104px)]">
+          <figure className="m-0">
+            <img
+              src="/images/home/showroom-kastiel.webp"
+              alt="Renesančný kaštieľ v Bošanoch, showroom Orostone"
+              width={1448}
+              height={1086}
+              loading="lazy"
+              decoding="async"
+              className="aspect-[4/3] w-full rounded-[3px] object-cover"
+            />
+          </figure>
+          <div className="grid justify-items-start gap-6">
+            <Eyebrow>Tu nás nájdete</Eyebrow>
+            <h2 className="text-os-h2">Showroom Bošany</h2>
+            <div className="grid gap-1">
+              <p className="text-[1.15rem] font-semibold">SNP 113/1, 956 18 Bošany</p>
+              <p className="font-light text-brand-muted">Renesančný kaštieľ</p>
+            </div>
+            <dl className="m-0 grid w-full max-w-[460px] border-t border-brand-line">
+              <div className="grid grid-cols-[110px_1fr] gap-4 border-b border-brand-line py-3.5">
+                <dt className="pt-0.5 text-os-eyebrow uppercase text-brand-muted">Otvorené</dt>
+                <dd className="m-0 font-normal">Po–pia 9:00–17:00, cez víkend po dohode</dd>
+              </div>
+            </dl>
+            <p className="max-w-[54ch] font-light text-brand-muted">
+              Celé platne 3200 × 1600 mm si tu pozriete pri dennom svetle a porovnáte dekory vo veľkej ploche. Na malej
+              vzorke sa kresba ani mierka posúdiť nedajú.
             </p>
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+              <ActionButton variant="dark" to="tel:+421917588738">
+                Dohodnúť návštevu
+              </ActionButton>
+              <TextLink to={MAPS_URL}>Zobraziť na mape</TextLink>
+            </div>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      <section className="pb-16 lg:pb-24 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Showroom = jediná adresa, kam majú klienti chodiť. Ide prvý a cez celú šírku,
-                aby si ho nikto nepomýlil so sídlom v Bratislave. */}
-            <article className="md:col-span-2 rounded-2xl border-2 border-brand-gold/50 p-6 sm:p-8 bg-brand-gold/10 shadow-sm">
-              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-12 h-12 rounded-full bg-brand-gold/25 flex items-center justify-center flex-shrink-0">
-                      <MapPin className="text-brand-dark" size={20} />
-                    </div>
-                    <span className="text-xs font-bold tracking-[0.18em] uppercase text-brand-dark/70">
-                      Tu nás nájdete
-                    </span>
-                  </div>
-                  <h2 className="text-xl sm:text-2xl font-bold text-brand-dark mb-2">Showroom Bošany</h2>
-                  <p className="text-lg font-semibold text-brand-dark">SNP 113/1, 956 18 Bošany</p>
-                  <p className="text-gray-600">Renesančný kaštieľ</p>
-                  <p className="text-sm text-gray-700 flex items-center gap-2 mt-3">
-                    <Clock size={16} className="flex-shrink-0" />
-                    Po–pia 9:00–17:00, cez víkend po dohode
-                  </p>
-                  <p className="text-gray-600 leading-relaxed mt-4 max-w-xl">
-                    Celé platne 3200 × 1600 mm si tu pozriete pri dennom svetle a porovnáte dekory
-                    vo veľkej ploche. Na malej vzorke sa kresba ani mierka posúdiť nedajú.
-                  </p>
-                </div>
-                <div className="flex flex-col gap-3 lg:w-64 lg:flex-shrink-0">
-                  <a
-                    href="https://www.google.com/maps?q=SNP+113%2F1%2C+956+18+Bo%C5%A1any"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-brand-dark text-white px-5 py-3 text-sm font-bold uppercase tracking-wider hover:bg-brand-gold hover:text-brand-dark transition-colors"
-                  >
-                    <MapPin size={16} />
-                    Zobraziť na mape
-                  </a>
-                  <a
-                    href="tel:+421917588738"
-                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-brand-dark/30 text-brand-dark px-5 py-3 text-sm font-bold uppercase tracking-wider hover:bg-brand-dark hover:text-white transition-colors"
-                  >
-                    <Phone size={16} />
-                    Dohodnúť návštevu
-                  </a>
-                </div>
-              </div>
-            </article>
-
-            <article className="rounded-2xl border border-gray-200 p-6 sm:p-8 bg-white shadow-sm">
-              <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mb-5">
-                <Building2 className="text-gray-500" size={20} />
-              </div>
-              <h2 className="text-xl font-bold text-brand-dark mb-1">Sídlo a fakturačné údaje</h2>
-              <p className="text-sm text-gray-500 mb-4">Adresa pre faktúry a poštu, nie pre návštevu.</p>
-              <p className="text-gray-700 leading-relaxed">
-                Orostone s.r.o.
-                <br />
-                Landererova 8, 811 09 Bratislava
-                <br />
-                mestská časť Staré Mesto
-              </p>
-              <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3">
-                <p className="text-sm text-amber-900 flex items-start gap-2">
-                  <AlertTriangle size={16} className="mt-0.5 flex-shrink-0" />
-                  <span>
-                    Na tejto adrese nie je showroom ani predajňa. Platne si pozriete
-                    v <strong className="font-semibold">Bošanoch, SNP 113/1</strong>.
-                  </span>
-                </p>
-              </div>
-              <div className="mt-4 space-y-1 text-sm text-gray-600">
-                <p>IČO: 55 254 772</p>
-                <p>DIČ: 2121930580</p>
-                <p>IČ DPH: SK2121930580</p>
-                <p>Platiteľ DPH podľa §4 od 11. 4. 2023</p>
-                <p>Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B</p>
-              </div>
-              <div className="mt-4 pt-4 border-t border-gray-100">
-                <p className="text-sm text-gray-500 mb-1">Administratíva, faktúry a kancelária</p>
-                <a
-                  href="mailto:info@orostone.sk"
-                  className="inline-flex items-center gap-2 text-sm text-brand-dark font-semibold hover:text-brand-gold transition-colors"
-                >
-                  <Mail size={16} />
-                  info@orostone.sk
-                </a>
-              </div>
-            </article>
-
-            <article className="rounded-2xl border border-gray-200 p-6 sm:p-8 bg-white shadow-sm">
-              <div className="w-12 h-12 rounded-full bg-brand-gold/15 flex items-center justify-center mb-5">
-                <Mail className="text-brand-dark" size={20} />
-              </div>
-              <h2 className="text-xl font-bold text-brand-dark mb-3">Cenové ponuky a dopyty</h2>
-              <p className="text-gray-600 leading-relaxed mb-5">
-                Chcete cenovú ponuku alebo máte otázku k zákazke? Napíšte nám priamo na <strong className="text-brand-dark font-semibold">dopyt@orostone.sk</strong> — všetky cenové ponuky a dopyty zákazníkov vybavujeme práve tu.
-              </p>
-              <a
-                href="mailto:dopyt@orostone.sk?subject=Žiadosť o cenovú ponuku"
-                className="inline-flex items-center gap-2 text-brand-dark font-semibold hover:text-brand-gold transition-colors"
-              >
-                <Mail size={16} />
-                dopyt@orostone.sk
+      <Section tone="chalk">
+        <Container className="grid gap-x-[clamp(32px,5vw,80px)] gap-y-14 md:grid-cols-2">
+          <article className={card}>
+            <h2 className={cardTitle}>Sídlo a fakturačné údaje</h2>
+            <p className="text-[0.92rem] font-normal text-brand-muted">Adresa pre faktúry a poštu, nie pre návštevu.</p>
+            <p className="leading-relaxed">
+              Orostone s.r.o.
+              <br />
+              Landererova 8, 811 09 Bratislava
+              <br />
+              mestská časť Staré Mesto
+            </p>
+            <p className="w-full max-w-[520px] border-l-2 border-brand-dark bg-brand-sand px-4 py-3 text-[0.92rem] font-normal">
+              Na tejto adrese nie je showroom ani predajňa. Platne si pozriete v{' '}
+              <strong className="font-semibold">Bošanoch, SNP 113/1</strong>.
+            </p>
+            <div className="grid gap-1 text-[0.9rem] font-normal text-brand-muted">
+              <p>IČO: 55 254 772</p>
+              <p>DIČ: 2121930580</p>
+              <p>IČ DPH: SK2121930580</p>
+              <p>Platiteľ DPH podľa §4 od 11. 4. 2023</p>
+              <p>Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B</p>
+            </div>
+            <div className="grid gap-1 border-t border-brand-line pt-4">
+              <p className="text-[0.9rem] font-normal text-brand-muted">Administratíva, faktúry a kancelária</p>
+              <a href="mailto:info@orostone.sk" className={contactLink}>
+                info@orostone.sk
               </a>
-            </article>
+            </div>
+          </article>
 
-            <article className="rounded-2xl border border-gray-200 p-6 sm:p-8 bg-white shadow-sm">
-              <div className="w-12 h-12 rounded-full bg-brand-gold/15 flex items-center justify-center mb-5">
-                <Phone className="text-brand-dark" size={20} />
+          <article className={card}>
+            <h2 className={cardTitle}>Cenové ponuky a dopyty</h2>
+            <p className="max-w-[54ch] font-light leading-relaxed text-brand-muted">
+              Chcete cenovú ponuku alebo máte otázku k zákazke? Napíšte nám priamo na{' '}
+              <strong className="font-semibold text-brand-dark">dopyt@orostone.sk</strong> — všetky cenové ponuky a dopyty
+              zákazníkov vybavujeme práve tu.
+            </p>
+            <a href="mailto:dopyt@orostone.sk?subject=Žiadosť o cenovú ponuku" className={contactLink}>
+              dopyt@orostone.sk
+            </a>
+          </article>
+
+          <article className={card}>
+            <h2 className={cardTitle}>Konzultácie</h2>
+            <p className="max-w-[54ch] font-light leading-relaxed text-brand-muted">
+              Máte otázky k výberu materiálu, realizácii alebo objednávke? Kontaktujte nás a člen nášho tímu sa vám v krátkom
+              čase ozve s odborným odporúčaním.
+            </p>
+            <a href="tel:+421917588738" className={contactLink}>
+              +421 917 588 738
+            </a>
+          </article>
+
+          <article className={card}>
+            <h2 className={cardTitle}>Kto odpovedá na vašu správu</h2>
+            <div className="flex items-center gap-4">
+              <img
+                src="/images/marian-brazdil.png"
+                alt="Marián Brázdil"
+                width={64}
+                height={64}
+                loading="lazy"
+                className="h-16 w-16 flex-none rounded-full object-cover object-top"
+              />
+              <div>
+                <p className="font-semibold">Marián Brázdil</p>
+                <p className="text-[0.92rem] font-normal text-brand-muted">Špecialista na sinterovaný kameň</p>
               </div>
-              <h2 className="text-xl font-bold text-brand-dark mb-3">Konzultácie</h2>
-              <p className="text-gray-600 leading-relaxed mb-5">
-                Máte otázky k výberu materiálu, realizácii alebo objednávke? Kontaktujte nás a člen nášho tímu sa vám v krátkom čase ozve s odborným odporúčaním.
-              </p>
-              <a
-                href="tel:+421917588738"
-                className="inline-flex items-center gap-2 text-brand-dark font-semibold hover:text-brand-gold transition-colors"
-              >
-                <Phone size={16} />
-                +421 917 588 738
+            </div>
+            <div className="grid gap-1.5">
+              <a href="mailto:marian.brazdil@orostone.sk" className={contactLink}>
+                marian.brazdil@orostone.sk
               </a>
-            </article>
+              <a href="tel:+421911891875" className={contactLink}>
+                0911 891 875
+              </a>
+            </div>
+          </article>
+        </Container>
+      </Section>
 
-            <article className="rounded-2xl border border-brand-gold/40 p-6 sm:p-8 bg-brand-gold/10">
-              <div className="w-14 h-14 rounded-full overflow-hidden mb-5">
-                <img
-                  src="/images/marian-brazdil.png"
-                  alt="Marián Brázdil"
-                  width={56}
-                  height={56}
-                  className="w-full h-full object-cover object-top"
-                />
-              </div>
-              <h2 className="text-xl font-bold text-brand-dark mb-1">Kto odpovedá na vašu správu</h2>
-              <p className="text-brand-dark font-semibold">Marián Brázdil</p>
-              <p className="text-gray-600 text-sm mb-5">Špecialista na sinterovaný kameň</p>
-              <div className="flex flex-col gap-2">
-                <a
-                  href="mailto:marian.brazdil@orostone.sk"
-                  className="inline-flex items-center gap-2 text-brand-dark hover:text-brand-gold transition-colors"
-                >
-                  <Mail size={16} />
-                  marian.brazdil@orostone.sk
-                </a>
-                <a
-                  href="tel:+421911891875"
-                  className="inline-flex items-center gap-2 text-brand-dark hover:text-brand-gold transition-colors"
-                >
-                  <Phone size={16} />
-                  0911 891 875
-                </a>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section className="pb-10 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto rounded-2xl border border-brand-gold/40 bg-brand-gold/10 px-6 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div>
-              <p className="text-brand-dark font-semibold">Hľadáme kolegov</p>
-              <p className="text-sm text-gray-600">
+      <Section tone="chalk" band={false} className="pb-[clamp(40px,5vw,72px)]">
+        <Container className="grid gap-8">
+          <div className="flex flex-wrap items-center justify-between gap-x-10 gap-y-4 border-y border-brand-line py-6">
+            <div className="grid gap-1">
+              <p className="font-semibold">
+                <span className="mr-2 inline-block h-2 w-2 rounded-full bg-brand-gold align-middle" aria-hidden="true" />
+                Hľadáme kolegov
+              </p>
+              <p className="text-[0.92rem] font-normal text-brand-muted">
                 Kamenár, CNC špecialista, obkladač a PPC špecialista. Životopis posielajte na info@orostone.sk.
               </p>
             </div>
-            <Link
-              to="/kariera"
-              className="inline-flex items-center gap-2 self-start sm:self-auto flex-shrink-0 rounded-full bg-brand-dark text-white px-6 py-3 text-sm font-bold uppercase tracking-wider hover:bg-brand-gold hover:text-brand-dark transition-colors"
-            >
-              <Briefcase size={16} />
-              Otvorené pozície
-            </Link>
+            <TextLink to="/kariera">Otvorené pozície</TextLink>
           </div>
-        </div>
-      </section>
+          <p className="flex flex-wrap gap-x-6 gap-y-2 text-[0.84rem] font-normal text-brand-muted">
+            <TextLink to="/vop" arrow={false}>
+              Všeobecné obchodné podmienky
+            </TextLink>
+            <TextLink to="/ochrana-sukromia" arrow={false}>
+              Ochrana osobných údajov
+            </TextLink>
+            <TextLink to="/reklamacie" arrow={false}>
+              Reklamácie a vrátenie
+            </TextLink>
+          </p>
+        </Container>
+      </Section>
 
-      <section className="pb-4 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto text-center text-xs text-gray-400 flex flex-wrap justify-center gap-x-4 gap-y-1">
-            <Link to="/vop" className="hover:text-brand-gold transition-colors">Všeobecné obchodné podmienky</Link>
-            <span>·</span>
-            <Link to="/ochrana-sukromia" className="hover:text-brand-gold transition-colors">Ochrana osobných údajov</Link>
-            <span>·</span>
-            <Link to="/reklamacie" className="hover:text-brand-gold transition-colors">Reklamácie a vrátenie</Link>
+      <Section tone="sand">
+        <Container className="flex flex-wrap items-center justify-between gap-x-12 gap-y-7">
+          <div className="grid gap-3">
+            <h3 className="text-os-h2">Potrebujete rýchlu odpoveď?</h3>
+            <p className="font-light text-brand-muted">Kontaktujte nás emailom alebo telefonicky.</p>
           </div>
-        </div>
-      </section>
-
-      <section className="pb-16 lg:pb-24 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto rounded-2xl bg-brand-dark text-white px-6 py-8 sm:px-10 sm:py-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
-            <div>
-              <h3 className="text-2xl font-bold mb-2">Potrebujete rýchlu odpoveď?</h3>
-              <p className="text-gray-300">Kontaktujte nás emailom alebo telefonicky.</p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <a
-                href="tel:+421917588738"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-gold text-brand-dark px-6 py-3 text-sm font-bold uppercase tracking-wider hover:bg-white transition-colors"
-              >
-                <Phone size={16} />
-                Zavolať
-              </a>
-              <a
-                href="mailto:dopyt@orostone.sk?subject=Dopyt z webu"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/40 text-white px-6 py-3 text-sm font-bold uppercase tracking-wider hover:bg-white hover:text-brand-dark transition-colors"
-              >
-                <Mail size={16} />
-                Napísať email
-              </a>
-            </div>
+          <div className="flex flex-wrap items-center gap-4">
+            <ActionButton variant="dark" to="tel:+421917588738">
+              Zavolať
+            </ActionButton>
+            <ActionButton variant="outline" to="mailto:dopyt@orostone.sk?subject=Dopyt z webu">
+              Napísať email
+            </ActionButton>
           </div>
-        </div>
-      </section>
-    </main>
+        </Container>
+      </Section>
+    </div>
   );
 };
