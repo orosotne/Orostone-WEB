@@ -724,6 +724,7 @@ function prerenderKuchyne(): void {
       <h1>${esc(KUCHYNE_H1)}</h1>
       <p>Sinterovaný kameň pre kuchyňu — pracovné dosky, ostrovčeky a zásteny v dekoroch, ktoré obstoja pri dennom svetle. V showroome v Bošanoch porovnáte celé platne, prejdeme cez váš pôdorys a pripravíme projekt. Inštaláciu vykonáva kamenár. Bez impregnácie, s nízkou nasiakavosťou — pre kuchyne, kde nechcete kompromis.</p>
       ${processHtml}
+      <section><h2>Navrhnite si pracovnú dosku v 3D</h2><p>Malá vzorka neukáže, ako bude dekor pôsobiť na celej doske. V konfigurátore zadáte tvar kuchyne, rozmery, dekor aj otvory pre drez a varnú dosku a návrh uvidíte v 3D. Netreba sa registrovať — kontakt zadáte až pri odoslaní. Návrh posúdi náš obchodný zástupca a ozve sa vám.</p><p><a href="https://crm.orostone.sk/konfigurator">Otvoriť 3D konfigurátor</a></p></section>
       ${faqSectionHtml(KITCHEN_FAQS)}
       <p><a href="/kategoria/sintered-stone">Prehliadnuť všetky dekory</a> &middot; <a href="/vzorky">Objednať vzorky</a> &middot; <a href="/cennik">Cenník</a> &middot; <a href="/realizacie">Realizácie</a> &middot; <a href="/kontakt">Kontakt</a></p>`,
     jsonLd: [
