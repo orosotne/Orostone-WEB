@@ -46,7 +46,7 @@ const PROJECTS: Project[] = [
   {
     id: 'krb-zeleny-mramor',
     title: 'Krb — zelený mramor',
-    material: 'Verde Alpi',
+    material: 'Prada Green',
     hero: '/images/realizacie/krb-zeleny-mramor-hero.webp',
     gallery: [
       '/images/realizacie/krb-zeleny-mramor-hero.webp',
@@ -57,8 +57,8 @@ const PROJECTS: Project[] = [
   },
   {
     id: 'svetly-onyx-showroom',
-    title: 'Svetlý onyx — showroom',
-    material: 'Svetlý Onyx',
+    title: 'Taj Mahal — dlhý ostrovček s drezom',
+    material: 'Taj Mahal',
     hero: '/images/realizacie/svetly-onyx-showroom-hero.webp',
     gallery: [
       '/images/realizacie/svetly-onyx-showroom-hero.webp',

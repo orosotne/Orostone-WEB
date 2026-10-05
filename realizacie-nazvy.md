@@ -6,8 +6,8 @@ Prepíš stĺpce **Nový title** a **Nový materiál** podľa potreby. Čo nech�
 |---|---------------|------------------|------------|---------------|
 | 1 | Calacatta Gold — kamenná stena | Calacatta Gold | | |
 | 2 | Biely Statuario | Polaris Statuario White | | |
-| 3 | Krb — zelený mramor | Verde Alpi | | |
-| 4 | Svetlý onyx — showroom | Svetlý Onyx | | |
+| 3 | Krb — zelený mramor | Prada Green | | |
+| 4 | Taj Mahal — dlhý ostrovček s drezom | Taj Mahal | | |
 | 5 | Sivý kameň — kuchyňa | Sivý kameň | | |
 | 6 | Biely mramor — sivé žilky | Biely mramor | | |
 | 7 | Biela doska — ružová kuchyňa | Super White | | |
