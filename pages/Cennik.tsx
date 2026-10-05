@@ -125,19 +125,19 @@ export const Cennik = () => {
             lead="Všetky platne majú formát 3200 × 1600 mm a hrúbku 12 mm. Ceny sú vrátane DPH."
           />
           <div className={tableWrap}>
-            <table className="w-full min-w-[560px] border-collapse text-[0.98rem]">
+            <table className="w-full border-collapse text-[0.92rem] sm:text-[0.98rem]">
               <thead>
                 <tr className="border-b border-brand-dark">
                   <th className={th}>Dekor</th>
-                  <th className={`${th} bg-brand-light px-4 text-right text-brand-dark`}>Cena €/m² s DPH</th>
-                  <th className={`${th} pl-4 text-right`}>Cena za platňu</th>
+                  <th className={`${th} bg-brand-light px-2 text-right text-brand-dark sm:px-4`}>Cena €/m² s DPH</th>
+                  <th className={`${th} pl-2 text-right sm:pl-4`}>Cena za platňu</th>
                 </tr>
               </thead>
               <tbody>
                 {slabs.map((p) => (
                   <tr key={p.id} className="border-b border-brand-line">
                     <td className={td}>
-                      <Link to={`/produkt/${p.id}`} className="group inline-flex items-center gap-4 font-medium no-underline">
+                      <Link to={`/produkt/${p.id}`} className="group inline-flex items-center gap-3 font-medium no-underline sm:gap-4">
                         {DECOR_NAMES.has(p.id) && (
                           <img
                             src={decorImage(p.id)}
@@ -146,16 +146,16 @@ export const Cennik = () => {
                             height={931}
                             loading="lazy"
                             decoding="async"
-                            className="h-12 w-6 flex-none rounded-[1px] object-cover shadow-[0_0_0_1px_rgba(26,26,26,0.08)]"
+                            className="hidden h-12 w-6 flex-none rounded-[1px] object-cover shadow-[0_0_0_1px_rgba(26,26,26,0.08)] min-[380px]:block"
                           />
                         )}
                         <span className="group-hover:underline">{DECOR_NAMES.get(p.id) ?? p.name}</span>
                       </Link>
                     </td>
-                    <td className={`${td} bg-brand-light px-4 text-right align-middle font-semibold tabular-nums`}>
+                    <td className={`${td} whitespace-nowrap bg-brand-light px-2 text-right align-middle font-semibold tabular-nums sm:px-4`}>
                       {formatEur(p.pricePerM2)}
                     </td>
-                    <td className={`${td} pl-4 text-right align-middle font-light tabular-nums text-brand-muted`}>
+                    <td className={`${td} whitespace-nowrap pl-2 text-right align-middle font-light tabular-nums text-brand-muted sm:pl-4`}>
                       ≈ {formatEurWhole(calculateSlabPrice(p.pricePerM2, p.dimensions))}
                     </td>
                   </tr>

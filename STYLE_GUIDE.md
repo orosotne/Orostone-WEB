@@ -15,6 +15,13 @@ Since October 2026 the site is moving to a new design system, taken from the app
 | `TextLink` | CTA level 3: underlined link with an arrow |
 | `ActionButton` | CTA levels 1 (`gold`) and 2 (`dark`), plus `outline` and `light-outline` |
 | `ArrowIcon` | The arrow used by links and buttons |
+| `PageHero` + `PageHeroImage` | Opening band of a subpage: eyebrow, H1, lead, actions; photo (square source, 4:3 on phones) or any block in `media`; full-width content as children |
+| `FeatureGrid` | Benefits or facts: hairline on top, optional line icon (draws itself in), H3 and a sentence |
+| `StepList` | A real sequence: numbered steps with a graphite rule |
+| `FaqList` | Questions as native `<details>` (answers stay in the DOM); `asHeadings` keeps questions as H3 where a page had them |
+| `ArticleLinks` | Related blog articles as hairline cards |
+| `GoldBand` | The gold end-of-page band: orientačná cena on oro-klient with `?od=<page>` and the phone number |
+| `ResponsiveImage` | AVIF + WebP in two widths for images made by `temp_redizajn/page-assets.mjs` (`public/images/stranky/`) |
 
 Reference sheet while developing: `npm run dev` → http://localhost:3000/_dizajn (not in production builds).
 
@@ -26,6 +33,10 @@ Reference sheet while developing: `npm run dev` → http://localhost:3000/_dizaj
   </Container>
 </Section>
 ```
+
+### Subpage pattern
+
+`PageHero` → content sections alternating sand and chalk (at most one graphite) → a section call to action (one dark `ActionButton` + `TextLink`s) → `GoldBand`. FAQ sections put the `SectionHeader` left and the `FaqList` right from 1024 px. Tables: graphite rule under the header row, hairlines between rows, the Orostone column on a contrasting light background, never gold text.
 
 ---
 
