@@ -4,6 +4,10 @@ import { ArrowRight, Ruler, Palette, Shield, Phone, ChevronDown } from 'lucide-r
 import { SEOHead } from '@/components/UI/SEOHead';
 import { KITCHEN_FAQS, KUCHYNE_FEATURES, KUCHYNE_H1, KUCHYNE_PROCESS_STEPS } from '@/data/pillars/kuchyne';
 
+// Verejný 3D konfigurátor beží v CRM (orosotne/orostone-crm, /konfigurator). Je informačný:
+// návrh posúdi obchodný zástupca, cenu ani termín nesľubuje.
+const CONFIGURATOR_URL = 'https://crm.orostone.sk/konfigurator';
+
 const GALLERY_ITEMS = [
   {
     image: '/images/inspiration/inspiration-1.webp',
@@ -195,6 +199,32 @@ export const Kuchyne = () => {
                 <p className="text-sm text-gray-500 font-light">{step.description}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3D konfigurátor */}
+      <section className="pt-24">
+        <div className="container mx-auto px-6 max-w-4xl">
+          <div className="p-6 md:p-12 bg-[#F9F9F7] rounded-3xl text-center">
+            <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
+              3D konfigurátor
+            </span>
+            <h2 className="text-3xl md:text-4xl font-sans font-bold text-brand-dark mb-6">
+              Navrhnite si pracovnú dosku v 3D
+            </h2>
+            <p className="text-gray-500 text-lg font-light max-w-2xl mx-auto mb-10">
+              Malá vzorka neukáže, ako bude dekor pôsobiť na celej doske. V konfigurátore zadáte tvar kuchyne,
+              rozmery, dekor aj otvory pre drez a varnú dosku a návrh uvidíte v 3D. Netreba sa registrovať —
+              kontakt zadáte až pri odoslaní. Návrh posúdi náš obchodný zástupca a ozve sa vám.
+            </p>
+            <a
+              href={CONFIGURATOR_URL}
+              className="inline-flex items-center gap-2 bg-brand-dark text-white px-8 py-4 rounded-full font-semibold hover:bg-brand-gold hover:text-brand-dark transition-all"
+            >
+              Otvoriť 3D konfigurátor
+              <ArrowRight size={18} />
+            </a>
           </div>
         </div>
       </section>
