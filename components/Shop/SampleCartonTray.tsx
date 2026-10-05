@@ -37,7 +37,7 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
   const animation = useRef<LottieAnimation | null>(null), mountVersion = useRef(0), operationVersion = useRef(0), alive = useRef(false);
   const segmentDone = useRef<(() => void) | null>(null), segmentEnd = useRef<number | null>(null), reduced = useRef(false), flight = useRef(createSampleFlight());
   const pendingMounts = useRef(new Map<LottieAnimation, () => void>()), pendingQuantityProp = useRef<SampleQuantity | null>(null);
-  const transferring = useRef(false), dockRaf = useRef(0), isDocked = useRef(false), homeHeight = useRef(0), scrollDone = useRef<(() => void) | null>(null);
+  const transferring = useRef(false), dockRaf = useRef(0), isDocked = useRef(false), dockFits = useRef(false), homeHeight = useRef(0), scrollDone = useRef<(() => void) | null>(null);
   const count = () => model.current.slots.filter(Boolean).length;
   const refresh = () => { if (alive.current) setView({ ...model.current, slots: [...model.current.slots], visible: [...model.current.visible] }); };
   const notifySelection = () => callbacks.current.onSelectionChange(model.current.visible.map(i => model.current.slots[i]).filter((p): p is SampleDecor => !!p));
@@ -55,6 +55,7 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     const width = Math.max(0, Math.min(home.clientWidth, innerWidth > 640 && innerWidth <= 1100 ? 310 : 480, innerWidth - (mobile ? 48 : 80), mobile ? Infinity : desktopSpace));
     const trayHeight = width * 315 / 720 + 140, minimum = innerWidth > 640 && mobile ? 240 : 420;
     const room = (mobile || width >= 240) && viewport - header >= trayHeight + (mobile ? minimum + 16 : 120);
+    dockFits.current = room;
     browser.style.setProperty('--mobile-browser-height', Math.max(minimum, viewport - header - (room ? trayHeight + 16 : 0)) + 'px'); browser.style.setProperty('--mobile-header-bottom', header + 'px');
     const inBrowser = browserRect.top <= header + 20 && buttonRect.bottom > header;
     const homeVisible = homeRect.top < viewport - Math.min(homeHeight.current || 360, 360) && homeRect.bottom > header;
@@ -70,7 +71,9 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     await new Promise<void>(resolve => requestAnimationFrame(() => {
       if (!alive.current) { resolve(); return; } syncDock();
       const rect = browser.getBoundingClientRect(), top = siteHeaderBottom(), bottom = isDocked.current ? (trayRef.current?.getBoundingClientRect().top ?? innerHeight) - 12 : (window.visualViewport?.height || innerHeight);
-      const distance = rect.height > bottom - top + 24 ? rect.top - top - 12 : rect.top + rect.height / 2 - (top + bottom) / 2;
+      // When both panels fit, align the carousel below the header so docking
+      // can show the flight's source and destination together on mobile.
+      const distance = dockFits.current || rect.height > bottom - top + 24 ? rect.top - top - 12 : rect.top + rect.height / 2 - (top + bottom) / 2;
       if (Math.abs(distance) <= 2) { resolve(); return; }
       let timer: ReturnType<typeof setTimeout>;
       const done = () => { clearTimeout(timer); removeEventListener('scrollend', done); if (scrollDone.current === done) scrollDone.current = null; resolve(); };
