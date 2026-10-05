@@ -191,16 +191,17 @@ const EshopColumns: React.FC<FooterEshopColumnsProps> = ({ categories = [] }) =>
 interface FooterProps {
   categories?: EshopCategory[];
   isProductDetail?: boolean;
+  compactOrder?: boolean;
 }
 
-const FooterComponent: React.FC<FooterProps> = ({ categories, isProductDetail = false }) => {
+const FooterComponent: React.FC<FooterProps> = ({ categories, isProductDetail = false, compactOrder = false }) => {
   const { openSettings } = useCookies();
 
   return (
     <footer className={`bg-brand-dark text-white${isProductDetail ? ' pb-32 lg:pb-0' : ''}`}>
 
       {/* Trust Badges */}
-      <div className="border-b border-white/10">
+      {!compactOrder && <div className="border-b border-white/10">
         <div className="container mx-auto px-6 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
 <div className="flex items-center gap-4">
@@ -244,7 +245,7 @@ const FooterComponent: React.FC<FooterProps> = ({ categories, isProductDetail = 
             </div>
           </div>
         </div>
-      </div>
+      </div>}
 
       {/* Main Footer */}
       <div className="container mx-auto px-6 py-12">
@@ -266,10 +267,10 @@ const FooterComponent: React.FC<FooterProps> = ({ categories, isProductDetail = 
               Spájame odolnosť kameňa s precíznosťou moderných technológií.
             </p>
             {/* Newsletter */}
-            <div className="mb-6">
+            {!compactOrder && <div className="mb-6">
               <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Odoberajte novinky</p>
               <NewsletterWidget />
-            </div>
+            </div>}
 
             <div className="flex items-center gap-4">
               <a
