@@ -8,6 +8,7 @@ export { TextLink } from './TextLink';
 export { ActionButton } from './ActionButton';
 export type { ActionButtonVariant } from './ActionButton';
 export { PageHero, PageHeroImage } from './PageHero';
+export { ResponsiveImage } from './ResponsiveImage';
 export { FeatureGrid } from './FeatureGrid';
 export type { FeatureItem } from './FeatureGrid';
 export { StepList } from './StepList';

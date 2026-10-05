@@ -10,6 +10,7 @@ import {
   GoldBand,
   PageHero,
   PageHeroImage,
+  ResponsiveImage,
   Section,
   SectionHeader,
   TextLink,
@@ -161,24 +162,14 @@ export const Vyhody = () => {
           <ul className={`${below} grid gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-3`}>
             {BENEFITS.map((b) => (
               <li key={b.title} className="grid content-start gap-3">
-                <picture>
-                  <source
-                    type="image/avif"
-                    srcSet={`/images/stranky/${b.image.base}-640.avif 640w, /images/stranky/${b.image.base}-1200.avif 1200w`}
-                    sizes="(min-width: 1024px) 30vw, (min-width: 640px) 46vw, 100vw"
-                  />
-                  <img
-                    src={`/images/stranky/${b.image.base}-640.webp`}
-                    srcSet={`/images/stranky/${b.image.base}-640.webp 640w, /images/stranky/${b.image.base}-1200.webp 1200w`}
-                    sizes="(min-width: 1024px) 30vw, (min-width: 640px) 46vw, 100vw"
-                    alt={b.image.alt}
-                    width={1200}
-                    height={1200}
-                    loading="lazy"
-                    decoding="async"
-                    className="mb-2 aspect-square w-full rounded-[3px] object-cover"
-                  />
-                </picture>
+                <ResponsiveImage
+                  base={`/images/stranky/${b.image.base}`}
+                  widths={[640, 1200]}
+                  ratio={1}
+                  alt={b.image.alt}
+                  sizes="(min-width: 1024px) 30vw, (min-width: 640px) 46vw, 100vw"
+                  className="mb-2 aspect-square w-full rounded-[3px] object-cover"
+                />
                 <h3 className="text-[1.2rem] font-semibold leading-snug">{b.title}</h3>
                 <p className="max-w-[46ch] font-light text-brand-muted">{b.description}</p>
               </li>
