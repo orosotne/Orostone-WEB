@@ -49,31 +49,38 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     if (!home || !tray || !browser || !button) return;
     const browserRect = browser.getBoundingClientRect(), buttonRect = button.getBoundingClientRect(), homeRect = home.getBoundingClientRect();
     const viewport = window.visualViewport?.height || innerHeight, header = siteHeaderBottom(), mobile = isMobile();
-    // Keep the fixed tray beside the actual carousel control, including its
-    // right inset, padding and border, rather than covering its click target.
-    const desktopSpace = innerWidth - buttonRect.right - 16 - 24 - 32 - 2;
-    const width = Math.max(0, Math.min(home.clientWidth, innerWidth > 640 && innerWidth <= 1100 ? 310 : 480, innerWidth - (mobile ? 48 : 80), mobile ? Infinity : desktopSpace));
+    const desktopWidth = viewport <= 800 ? 290 : innerWidth <= 1100 ? 310 : 480;
+    const width = Math.max(0, Math.min(home.clientWidth, mobile ? innerWidth > 640 ? 310 : 480 : desktopWidth, innerWidth - (mobile ? 48 : 80)));
     const trayHeight = width * 315 / 720 + 140, minimum = innerWidth > 640 && mobile ? 240 : 420;
     const room = (mobile || width >= 240) && viewport - header >= trayHeight + (mobile ? minimum + 16 : 120);
     dockFits.current = room;
     browser.style.setProperty('--mobile-browser-height', Math.max(minimum, viewport - header - (room ? trayHeight + 16 : 0)) + 'px'); browser.style.setProperty('--mobile-header-bottom', header + 'px');
-    const inBrowser = browserRect.top <= header + 20 && buttonRect.bottom > header;
+    const inBrowser = (mobile ? browserRect.top <= header + 20 : browserRect.top < viewport - trayHeight - 16) && buttonRect.bottom > header;
     const homeVisible = homeRect.top < viewport - Math.min(homeHeight.current || 360, 360) && homeRect.bottom > header;
-    const next = inBrowser && !homeVisible && !editingField() && room;
+    // A centered desktop tray must sit below the carousel's click target.
+    // Keep its scale fixed while scrolling; only dock when both fit.
+    const clearsButton = mobile || viewport - 12 - 16 - buttonRect.bottom >= trayHeight;
+    const next = inBrowser && !homeVisible && !editingField() && room && clearsButton;
     if (!isDocked.current) homeHeight.current = tray.getBoundingClientRect().height;
-    tray.style.setProperty('--tray-width', width + 'px'); home.style.minHeight = next ? homeHeight.current + 'px' : '';
+    tray.style.setProperty('--tray-width', width + 'px');
+    tray.style.setProperty('--tray-center-x', browserRect.left + browserRect.width / 2 + 'px');
+    home.style.minHeight = next ? homeHeight.current + 'px' : '';
     if (next !== isDocked.current) { isDocked.current = next; setDocked(next); }
   };
   const scheduleDock = () => { if (alive.current && !dockRaf.current) dockRaf.current = requestAnimationFrame(syncDock); };
   const centerBrowser = async () => {
     const browser = callbacks.current.browserRef.current;
-    if (!browser || !isMobile() || editingField() || reduced.current) { syncDock(); return; }
+    if (!browser || editingField() || reduced.current) { syncDock(); return; }
     await new Promise<void>(resolve => requestAnimationFrame(() => {
       if (!alive.current) { resolve(); return; } syncDock();
       const rect = browser.getBoundingClientRect(), top = siteHeaderBottom(), bottom = isDocked.current ? (trayRef.current?.getBoundingClientRect().top ?? innerHeight) - 12 : (window.visualViewport?.height || innerHeight);
       // When both panels fit, align the carousel below the header so docking
       // can show the flight's source and destination together on mobile.
-      const distance = dockFits.current || rect.height > bottom - top + 24 ? rect.top - top - 12 : rect.top + rect.height / 2 - (top + bottom) / 2;
+      const button = callbacks.current.carouselButtonRef.current, tray = trayRef.current;
+      const trayHeight = parseFloat(tray?.style.getPropertyValue('--tray-width') || '0') * 315 / 720 + 140;
+      let distance = 0;
+      if (isMobile()) distance = dockFits.current || rect.height > bottom - top + 24 ? rect.top - top - 12 : rect.top + rect.height / 2 - (top + bottom) / 2;
+      else if (dockFits.current && button) distance = button.getBoundingClientRect().bottom - ((window.visualViewport?.height || innerHeight) - 32 - trayHeight);
       if (Math.abs(distance) <= 2) { resolve(); return; }
       let timer: ReturnType<typeof setTimeout>;
       const done = () => { clearTimeout(timer); removeEventListener('scrollend', done); if (scrollDone.current === done) scrollDone.current = null; resolve(); };
