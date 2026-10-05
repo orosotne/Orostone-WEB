@@ -2,25 +2,17 @@ import React, { Suspense, useCallback, useEffect, useRef, useState } from 'react
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
 import { useIsMobile } from '../hooks/useIsMobile';
+import { SAMPLE_DECORS } from '../data/sample-decors';
+import { SampleQuantityPicker } from '../components/Shop/SampleQuantityPicker';
+import type { SampleOrderSectionHandle } from '../components/Shop/SampleOrderSection';
+import type { SampleDecor } from '../components/Shop/SampleCartonTray';
+import type { SampleQuantity } from '../services/shopify/samples';
 
-const SampleLeadSection = React.lazy(() =>
-  import('../components/Shop/SampleLeadSection').then((m) => ({ default: m.SampleLeadSection })),
+const SampleOrderSection = React.lazy(() =>
+  import('../components/Shop/SampleOrderSection').then((m) => ({ default: m.SampleOrderSection })),
 );
 
-const SAMPLE_TILES = [
-  { id: 'nero-margiua',       name: 'NERO MARGIUA',       image: '/images/vzorky/nero-margiua.webp' },
-  { id: 'wild-forest',        name: 'WILD FOREST',        image: '/images/vzorky/wild-forest.webp' },
-  { id: 'super-white-extra',  name: 'SUPER WHITE EXTRA',  image: '/images/vzorky/super-white-extra.webp' },
-  { id: 'astrana-grey',       name: 'ASTRANA GREY',       image: '/images/vzorky/astrana-grey.webp' },
-  { id: 'appennino',          name: 'APPENNINO',          image: '/images/vzorky/appennino.webp' },
-  { id: 'calacatta-top',      name: 'CALACATTA TOP',      image: '/images/vzorky/calacatta-top.webp' },
-  { id: 'statuario-diamante', name: 'STATUARIO DIAMANTE', image: '/images/vzorky/statuario-diamante.webp' },
-  { id: 'givenchy-gold',      name: 'GIVENCHY GOLD',      image: '/images/vzorky/givenchy-gold.webp' },
-  { id: 'taj-mahal',          name: 'TAJ MAHAL',          image: '/images/vzorky/taj-mahal.webp' },
-  { id: 'roman-travertine',   name: 'ROMAN TRAVERTINE',   image: '/images/vzorky/roman-travertine.webp' },
-  { id: 'gothic-gold',        name: 'GOTHIC GOLD',        image: '/images/vzorky/gothic-gold.webp' },
-  { id: 'yabo-white',         name: 'YABO WHITE',         image: '/images/vzorky/yabo-white.webp' },
-];
+const SAMPLE_TILES = SAMPLE_DECORS;
 
 const TILE_BASE = 150; // base size in px
 const GAP = 16;
@@ -43,11 +35,16 @@ function getOpacity(dist: number): number {
 }
 
 export const Vzorky: React.FC = () => {
-  const [selectedDekor, setSelectedDekor] = useState('');
+  const [quantity, setQuantity] = useState<SampleQuantity>(1);
+  const [selection, setSelection] = useState<SampleDecor[]>([]);
+  const [sampleBusy, setSampleBusy] = useState(true);
+  const [quantityFeedback, setQuantityFeedback] = useState('');
+  const orderRef = useRef<SampleOrderSectionHandle>(null);
+  const browserRef = useRef<HTMLDivElement>(null);
+  const carouselButtonRef = useRef<HTMLButtonElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const isMobile = useIsMobile();
   const scrollRef = useRef<HTMLDivElement>(null);
-  const formRef = useRef<HTMLDivElement>(null);
   const tileRefs = useRef<(HTMLDivElement | null)[]>([]);
   const rafRef = useRef<number>(0);
   // Debounce React state commit so scroll-driven RAF only updates DOM (cheap)
@@ -206,9 +203,33 @@ export const Vzorky: React.FC = () => {
   };
 
   const handleSelectDekor = () => {
-    setSelectedDekor(SAMPLE_TILES[activeIndex].name);
-    formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const container = scrollRef.current;
+    if (!container) return;
+    // Resolve from the visible tile now; the label state commits after scroll settles.
+    const centerX = container.scrollLeft + container.offsetWidth / 2;
+    let centeredIndex = activeIndex;
+    let closestDistance = Infinity;
+    tileRefs.current.forEach((tile, index) => {
+      if (!tile) return;
+      const distance = Math.abs(tile.offsetLeft + tile.offsetWidth / 2 - centerX);
+      if (distance < closestDistance) { closestDistance = distance; centeredIndex = index; }
+    });
+    setActiveIndex(centeredIndex);
+    const image = tileRefs.current[centeredIndex]?.querySelector('img') ?? undefined;
+    void orderRef.current?.addSample(SAMPLE_TILES[centeredIndex], image);
   };
+  const changeQuantity = (next: SampleQuantity) => {
+    if (sampleBusy) return;
+    if (selection.length > next) {
+      setQuantityFeedback('Najprv odstráňte ' + (selection.length - next) + ' ' + (selection.length - next === 1 ? 'dekor' : 'dekory') + ' z výberu.');
+      return;
+    }
+    setQuantityFeedback('');
+    setQuantity(next);
+  };
+  const handleSelectionChange = useCallback((next: SampleDecor[]) => { setSelection(next); setQuantityFeedback(''); }, []);
+  const alreadySelected = selection.some((decor) => decor.id === SAMPLE_TILES[activeIndex].id);
+  const selectionComplete = selection.length === quantity;
 
   return (
     <main className="min-h-dvh">
@@ -222,23 +243,22 @@ export const Vzorky: React.FC = () => {
         ])}
       />
 
-      <section className="pt-8 sm:pt-12 md:pt-20 lg:pt-28 xl:pt-32 pb-8 sm:pb-10 bg-[#FAFAFA]">
-        <div className="container mx-auto px-6 text-center">
-          <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
-            Bezplatné vzorky
-          </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-sans font-bold text-brand-dark mb-6 leading-tight">
-            Rozhodujte sa s istotou
-          </h1>
-          <p className="text-gray-500 text-lg font-light max-w-2xl mx-auto leading-relaxed">
-            Vyplňte formulár nižšie a vzorku doručíme priamo k vám — zadarmo, bez záväzkov.
-            Presvedčte sa o kvalite a farbe na vlastné oči ešte pred kúpou.
-          </p>
+      <section id="sample-intro" className="sample-intro">
+        <div className="sample-intro-layout">
+          <div className="sample-intro-copy">
+            <span className="sample-intro-eyebrow">Vzorky kameňa</span>
+            <h1>Rozhodujte sa <span>s istotou</span></h1>
+            <p className="sample-intro-description">Porovnajte farbu a povrch kameňa priamo u vás doma.</p>
+            <p className="sample-intro-offer"><strong>Prvá vzorka je zadarmo.</strong><span>Platíte iba dopravu 2,50 €.</span></p>
+          </div>
+          <div className="sample-intro-choice">
+            <SampleQuantityPicker id="sample-quantity-carousel" value={quantity} onChange={changeQuantity} disabled={sampleBusy} feedback={quantityFeedback} />
+          </div>
         </div>
       </section>
 
       {/* ── Sample carousel ── */}
-      <div className="bg-[#FAFAFA] pb-12">
+      <div ref={browserRef} className="sample-decor-browser bg-[#FAFAFA] pb-12">
         {/* Edge fade masks */}
         <div className="relative overflow-hidden">
           <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 md:w-28 z-10 bg-gradient-to-r from-[#FAFAFA] to-transparent" />
@@ -252,7 +272,8 @@ export const Vzorky: React.FC = () => {
           {/* Scrollable track */}
           <div
             ref={scrollRef}
-            className="flex items-center overflow-x-auto snap-x snap-mandatory"
+            id="decor-carousel"
+            className="vzorky-hide-sb flex items-center overflow-x-auto snap-x snap-mandatory"
             style={{
               scrollbarWidth: 'none',
               WebkitOverflowScrolling: 'touch',
@@ -266,6 +287,11 @@ export const Vzorky: React.FC = () => {
             {SAMPLE_TILES.map((tile, i) => (
               <div
                 key={tile.id}
+                role="button"
+                tabIndex={0}
+                aria-label={"Zobraziť " + tile.name}
+                aria-pressed={i === activeIndex}
+                onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); scrollToIndex(i); } }}
                 ref={(el) => { tileRefs.current[i] = el; }}
                 className="flex-shrink-0 snap-center will-change-transform"
                 style={{
@@ -324,10 +350,12 @@ export const Vzorky: React.FC = () => {
 
           <button
             type="button"
+            ref={carouselButtonRef}
             onClick={handleSelectDekor}
-            className="inline-flex items-center gap-2 bg-brand-dark text-white px-7 py-3 rounded-full text-sm font-bold uppercase tracking-wider hover:bg-brand-gold hover:text-brand-dark transition-all duration-300 mt-1"
+            disabled={sampleBusy || alreadySelected || selectionComplete}
+            className="inline-flex items-center gap-2 bg-brand-dark text-white px-7 py-3 rounded-full text-sm font-bold uppercase tracking-wider hover:bg-brand-gold hover:text-brand-dark transition-all duration-300 mt-1 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Vybrať dekor
+            {sampleBusy ? 'Ukladáme vzorku…' : alreadySelected ? 'Vo vašom výbere ✓' : selectionComplete ? 'Výber je kompletný' : 'Pridať do výberu'}
           </button>
 
           {/* Dot indicators */}
@@ -348,11 +376,9 @@ export const Vzorky: React.FC = () => {
         </div>
       </div>
 
-      <div ref={formRef}>
-        <Suspense fallback={<div className="min-h-[600px] lg:min-h-[700px]" aria-hidden />}>
-          <SampleLeadSection preselectedDekor={selectedDekor} />
-        </Suspense>
-      </div>
+      <Suspense fallback={<div className="min-h-[600px]" aria-hidden />}>
+        <SampleOrderSection ref={orderRef} quantity={quantity} onQuantityChange={changeQuantity} quantityFeedback={quantityFeedback} onSelectionChange={handleSelectionChange} onBusyChange={setSampleBusy} browserRef={browserRef} carouselButtonRef={carouselButtonRef} />
+      </Suspense>
 
       <div className="h-24 bg-[#FAFAFA]" aria-hidden />
     </main>

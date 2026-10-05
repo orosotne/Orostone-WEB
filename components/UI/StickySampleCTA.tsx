@@ -17,7 +17,7 @@ export const StickySampleCTA: React.FC = () => {
   const navigate = useNavigate();
 
   // Pages where CTA should NOT appear
-  const hiddenPaths = ['/checkout', '/objednavka-dokoncena', '/vop', '/ochrana-sukromia', '/cookies', '/odstupenie-od-zmluvy', '/reklamacie', '/doprava'];
+  const hiddenPaths = ['/vzorky', '/checkout', '/objednavka-dokoncena', '/vop', '/ochrana-sukromia', '/cookies', '/odstupenie-od-zmluvy', '/reklamacie', '/doprava'];
   const isHidden = hiddenPaths.some(p => location.pathname.startsWith(p));
   const isProductPage = location.pathname.startsWith('/produkt/');
   const isHomepage = location.pathname === '/';

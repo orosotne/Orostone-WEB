@@ -8,11 +8,15 @@ import 'dotenv/config';
 import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fetchProducts } from '../services/shopify.service';
+import { SAMPLE_PRODUCT_HANDLE } from '../services/shopify/samples';
 
 const FIRST = Math.min(Number(process.env.SHOPIFY_FALLBACK_PRODUCT_LIMIT) || 250, 250);
 
 async function main() {
-  const products = await fetchProducts(FIRST);
+  // fetchProducts excludes samples by handle/tag/type before adaptation. Keep a
+  // final handle guard so a sample bundle can never become an offline slab/SEO item.
+  const products = (await fetchProducts(FIRST)).filter(product => product.id !== SAMPLE_PRODUCT_HANDLE);
+  if (!products.length) throw new Error('Shopify nevrátil katalóg platní. Ponechávam existujúci fallback.');
   const out = resolve(process.cwd(), 'data/shop-products-fallback.json');
   writeFileSync(out, `${JSON.stringify(products, null, 2)}\n`, 'utf-8');
   console.log(`OK: ${products.length} produktov → ${out}`);
