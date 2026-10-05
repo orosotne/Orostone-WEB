@@ -57,10 +57,14 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     browser.style.setProperty('--mobile-browser-height', Math.max(minimum, viewport - header - (room ? trayHeight + 16 : 0)) + 'px'); browser.style.setProperty('--mobile-header-bottom', header + 'px');
     const inBrowser = (mobile ? browserRect.top <= header + 20 : browserRect.top < viewport - trayHeight - 16) && buttonRect.bottom > header;
     const homeVisible = homeRect.top < viewport - Math.min(homeHeight.current || 360, 360) && homeRect.bottom > header;
+    const orderRect = home.closest('.sample-order')?.getBoundingClientRect();
+    // Release the floating panel as the order enters the reading area, so
+    // the quantity control and its price breakdown remain accessible.
+    const readingOrder = orderRect && orderRect.top < header + (viewport - header) / 2;
     // A centered desktop tray must sit below the carousel's click target.
     // Keep its scale fixed while scrolling; only dock when both fit.
     const clearsButton = mobile || viewport - 12 - 16 - buttonRect.bottom >= trayHeight;
-    const next = inBrowser && !homeVisible && !editingField() && room && clearsButton;
+    const next = inBrowser && !homeVisible && !readingOrder && !editingField() && room && clearsButton;
     if (!isDocked.current) homeHeight.current = tray.getBoundingClientRect().height;
     tray.style.setProperty('--tray-width', width + 'px');
     tray.style.setProperty('--tray-center-x', browserRect.left + browserRect.width / 2 + 'px');

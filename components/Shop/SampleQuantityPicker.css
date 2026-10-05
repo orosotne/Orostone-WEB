@@ -1,4 +1,4 @@
-/* Shared Orostone quantity control: prices are the complete cost, not a surprise at checkout. */
+/* Sample prices and the single delivery charge stay distinct at every quantity. */
 .sample-intro{--sample-ink:#1a1a1a;--sample-muted:#62665d;--sample-line:#dbddd6;background:#fafafa;color:var(--sample-ink);padding:44px 24px 36px;font-family:Montserrat,sans-serif}
 .sample-intro-layout{max-width:1040px;margin:0 auto}
 .sample-intro-copy{min-width:0;max-width:860px;margin:0 auto;text-align:center}
@@ -11,20 +11,30 @@
 .sample-quantity{--sample-ink:#1a1a1a;--sample-muted:#62665d;--sample-line:#dbddd6;width:100%;max-width:580px;margin:0 auto;border:0;padding:0;min-width:0;color:var(--sample-ink);font-family:Montserrat,sans-serif;font-weight:400}
 .sample-quantity legend{width:100%;font-size:14px;font-weight:600;line-height:1.5;padding:0;margin-bottom:4px}
 .sample-quantity-rule{font-size:13px;font-weight:400;line-height:1.5;color:var(--sample-muted);margin:0 0 12px}
+.sample-quantity-rule strong{font-weight:500;color:var(--sample-ink)}
 .sample-quantity-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:4px;border:1px solid var(--sample-line);border-radius:12px}
 .sample-quantity-options label{position:relative;min-width:0;cursor:pointer}
 .sample-quantity-options input{position:absolute;width:1px;height:1px;opacity:0;clip-path:inset(50%)}
-.sample-quantity-options label>span{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:72px;padding:8px 4px;border-radius:8px;background:transparent;transition:background-color .16s ease,color .16s ease}
+.sample-quantity-options label>span{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:96px;padding:8px 4px;border-radius:8px;background:transparent;transition:background-color .16s ease,color .16s ease}
 .sample-quantity-count{display:flex;align-items:baseline;gap:5px}
 .sample-quantity-count strong{font-size:22px;font-weight:600;line-height:1.3;font-variant-numeric:tabular-nums}
 .sample-quantity-count small{font-size:12px;font-weight:500;line-height:1.4;white-space:nowrap}
-.sample-quantity-option-price{font-size:13px;line-height:1.5;font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sample-quantity-option-price{font-size:17px;line-height:1.5;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.sample-quantity-option-note{font-size:11px;line-height:1.5;font-weight:400;color:var(--sample-muted);white-space:nowrap}
 .sample-quantity-options label:hover>span{background:#efefeb}
 .sample-quantity-options input:checked+span{background:var(--sample-ink);color:#fff}
 .sample-quantity-options input:checked+span .sample-quantity-option-price{color:#ecd488}
+.sample-quantity-options input:checked+span .sample-quantity-option-note{color:#d8dad4}
 .sample-quantity-options input:focus-visible+span{outline:2px solid var(--sample-ink);outline-offset:3px}
 .sample-quantity-options input:disabled+span{cursor:wait;opacity:.6}
-.sample-quantity-caption{font-size:12px;line-height:1.5;color:var(--sample-muted);margin:10px 0 0}
+.sample-quantity-quote{margin:14px 0 0;font-size:13px;line-height:1.5}
+.sample-quantity-quote>div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px}
+.sample-quantity-quote dt{color:var(--sample-muted)}
+.sample-quantity-quote dt>span{font-size:12px}
+.sample-quantity-quote dd{margin:0;flex:none;font-weight:500;white-space:nowrap;font-variant-numeric:tabular-nums}
+.sample-quantity-quote .sample-quantity-total{margin:12px 0 0;padding-top:12px;border-top:1px solid var(--sample-line)}
+.sample-quantity-total dt{font-weight:500;color:var(--sample-ink)}
+.sample-quantity-total dd{font-size:20px;font-weight:600;line-height:1.3}
 .sample-quantity-feedback{font-size:13px;line-height:1.6;color:#9b443c;margin:12px 0 0}
 .sample-quantity-feedback:empty{display:none}
 @media(max-width:720px){
@@ -34,8 +44,8 @@
  .sample-intro-description{font-size:16px;line-height:1.5;margin-bottom:12px}
  .sample-intro-offer{font-size:14px;line-height:1.5}
  .sample-intro-offer strong{font-size:15px}
- .sample-quantity-options label>span{min-height:68px}
+ .sample-quantity-options label>span{min-height:92px}
  .sample-quantity-count strong{font-size:20px}
 }
-@media(max-width:350px){.sample-quantity-count{gap:4px}}
+@media(max-width:350px){.sample-quantity-count{gap:4px}.sample-quantity-option-price{font-size:16px}}
 @media(prefers-reduced-motion:reduce){.sample-quantity-options label>span{transition:none}}
