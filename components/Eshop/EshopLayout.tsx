@@ -1,14 +1,13 @@
 import React, { ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 import { EshopAnnouncementBar } from './EshopAnnouncementBar';
-import { EshopNavbar } from './EshopNavbar';
 import { Footer } from '../Layout/Footer';
+import { SiteHeader } from '../Layout/SiteHeader';
+import { MobileCtaBar } from '../Layout/MobileCtaBar';
 import { getVisibleCategories } from './EshopMegaMenu';
 import { CartDrawer } from '../Cart/CartDrawer';
-import { NoiseOverlay } from '../UI/NoiseOverlay';
 import { CookieBanner } from '../UI/CookieBanner';
 import { CookieSettings } from '../UI/CookieSettings';
-import { StickySampleCTA } from '../UI/StickySampleCTA';
 import { SHOW_ANNOUNCEMENT_BAR } from '../../constants';
 
 // ===========================================
@@ -48,14 +47,11 @@ export const EshopLayout: React.FC<EshopLayoutProps> = ({ children }) => {
         Preskočiť na hlavný obsah
       </a>
 
-      {/* Noise Overlay for texture */}
-      <NoiseOverlay />
-
       {/* Announcement Bar — controlled by SHOW_ANNOUNCEMENT_BAR constant */}
       {SHOW_ANNOUNCEMENT_BAR && <EshopAnnouncementBar />}
 
-      {/* Navbar with Mega Menu */}
-      <EshopNavbar />
+      {/* Header with mega menu, search and drawer */}
+      <SiteHeader />
 
       {/* Cart Drawer (slide-in panel) */}
       <CartDrawer />
@@ -66,7 +62,7 @@ export const EshopLayout: React.FC<EshopLayoutProps> = ({ children }) => {
       <main
         id="main"
         tabIndex={-1}
-        className={`min-w-0 w-full flex-grow min-h-dvh focus:outline-none ${isHomepage ? '' : SHOW_ANNOUNCEMENT_BAR ? 'pt-[92px] lg:pt-[148px]' : 'pt-[56px] lg:pt-[112px]'}`}
+        className={`min-w-0 w-full flex-grow min-h-dvh focus:outline-none ${isHomepage ? '' : SHOW_ANNOUNCEMENT_BAR ? 'pt-[100px] lg:pt-[116px]' : 'pt-16 lg:pt-20'}`}
       >
         {children}
       </main>
@@ -74,8 +70,8 @@ export const EshopLayout: React.FC<EshopLayoutProps> = ({ children }) => {
       {/* Footer */}
       <Footer categories={VISIBLE_CATEGORIES} isProductDetail={isProductDetail} />
 
-      {/* Sticky Sample CTA */}
-      <StickySampleCTA />
+      {/* Mobile bottom bar: price CTA + phone */}
+      <MobileCtaBar />
 
       {/* Cookie Banner & Settings */}
       <CookieBanner />
@@ -89,5 +85,4 @@ export const EshopLayout: React.FC<EshopLayoutProps> = ({ children }) => {
 // ===========================================
 
 export { EshopAnnouncementBar } from './EshopAnnouncementBar';
-export { EshopNavbar } from './EshopNavbar';
 export { EshopMegaMenu, MEGA_MENU_CATEGORIES } from './EshopMegaMenu';

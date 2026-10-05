@@ -1,5 +1,36 @@
 import React from 'react';
-import { ActionButton, Container, Eyebrow, Section, SectionHeader, TextLink } from '../components/Design';
+import {
+  ActionButton,
+  Container,
+  Eyebrow,
+  Section,
+  SectionHeader,
+  TextLink,
+  useDrawIn,
+  IconCastle,
+  IconSlabs,
+  IconPriceClock,
+  IconFabrication,
+  IconWarranty,
+  IconDispatch,
+  IconDelivery,
+  IconSecurePay,
+} from '../components/Design';
+
+const ICONS = [IconCastle, IconSlabs, IconPriceClock, IconFabrication, IconWarranty, IconDispatch, IconDelivery, IconSecurePay];
+
+const IconRow: React.FC<{ onDark?: boolean }> = ({ onDark = false }) => {
+  const draw = useDrawIn<HTMLDivElement>();
+  return (
+    <div ref={draw.ref} className={`flex flex-wrap gap-8 ${onDark ? 'os-on-dark' : ''} ${draw.className}`}>
+      {ICONS.map((Icon, i) => (
+        <div key={i} className="os-ico-item grid justify-items-center" style={{ '--d': `${i * 0.12}s` } as React.CSSProperties}>
+          <Icon className="h-12 w-12" />
+        </div>
+      ))}
+    </div>
+  );
+};
 
 const SWATCHES: Array<[name: string, cls: string, hex: string]> = [
   ['brand.dark', 'bg-brand-dark', '#1A1A1A'],
@@ -38,6 +69,7 @@ export const DesignPreview: React.FC = () => (
           <p className="text-os-lead font-light text-brand-muted">Úvodný text · text-os-lead</p>
           <Eyebrow>Eyebrow · text-os-eyebrow</Eyebrow>
         </div>
+        <IconRow />
         <div className="flex flex-wrap items-center gap-6">
           <ActionButton variant="gold" to="https://oro-klient.orostone.sk/?od=dizajn">Orientačná cena</ActionButton>
           <ActionButton variant="dark" to="/vzorky">Objednať vzorku zadarmo</ActionButton>
@@ -63,6 +95,7 @@ export const DesignPreview: React.FC = () => (
           title="Kameň, ktorý netreba impregnovať."
           lead="Na tmavej sekcii je eyebrow zlatý a úvodný text svetlejší."
         />
+        <IconRow onDark />
         <div className="flex flex-wrap items-center gap-6">
           <ActionButton variant="light-outline">Svetlý obrys</ActionButton>
           <TextLink to="/sinterovany-kamen">Viac o materiáli</TextLink>

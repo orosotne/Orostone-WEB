@@ -19,7 +19,7 @@ export const CookieBanner: React.FC = () => {
         className="fixed bottom-0 left-0 right-0 z-[10002] p-4 md:p-6 print:hidden"
       >
         <div className="container mx-auto max-w-5xl">
-          <div className="bg-[#1a1a1a]/95 backdrop-blur-xl border border-gray-800/60 shadow-2xl shadow-black/40 rounded-2xl p-6 md:p-8">
+          <div className="bg-[#1a1a1a]/95 backdrop-blur-xl border border-gray-800/60 shadow-2xl shadow-black/40 rounded-xl p-6 md:p-8">
             <div className="flex flex-col lg:flex-row gap-6 lg:items-center">
 
               {/* Icon & Text */}
@@ -55,13 +55,13 @@ export const CookieBanner: React.FC = () => {
                 <div className="flex gap-3">
                   <button
                     onClick={rejectAll}
-                    className="flex-1 lg:flex-none px-6 py-3.5 border border-gray-600 text-gray-300 rounded-full text-sm font-bold uppercase tracking-wider hover:bg-gray-800 hover:text-white transition-all duration-300"
+                    className="flex-1 lg:flex-none px-6 py-3.5 border border-gray-600 text-gray-300 rounded-[10px] text-sm font-bold uppercase tracking-wider hover:bg-gray-800 hover:text-white transition-all duration-300"
                   >
                     Odmietnuť všetko
                   </button>
                   <button
                     onClick={acceptAll}
-                    className="flex-1 lg:flex-none px-6 py-3.5 bg-brand-gold text-brand-dark rounded-full text-sm font-bold uppercase tracking-wider shadow-lg shadow-brand-gold/25 hover:bg-white hover:shadow-xl transition-all duration-300"
+                    className="flex-1 lg:flex-none px-6 py-3.5 bg-brand-gold text-brand-dark rounded-[10px] text-sm font-bold uppercase tracking-wider shadow-lg shadow-brand-gold/25 hover:bg-white hover:shadow-xl transition-all duration-300"
                   >
                     Prijať všetko
                   </button>

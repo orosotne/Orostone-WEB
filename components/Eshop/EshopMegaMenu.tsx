@@ -253,22 +253,22 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -10 }}
         transition={{ duration: 0.25, ease: 'easeOut' }}
-        className="absolute left-0 right-0 top-full bg-white shadow-2xl z-50 border-t border-gray-100"
+        className="absolute left-0 right-0 top-full z-50 border-t border-brand-line bg-brand-light shadow-[0_24px_40px_-24px_rgba(26,26,26,0.25)]"
       >
-        <div className="container mx-auto px-8 py-10">
+        <div className="mx-auto max-w-os px-[var(--os-edge)] py-10">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-[10px] tracking-[0.25em] uppercase text-gray-400 mb-3">
+              <h3 className="mb-3 text-os-eyebrow uppercase text-brand-muted">
                 {category.name}
               </h3>
               {category.description && (
-                <p className="text-[13px] text-gray-600 max-w-md">{category.description}</p>
+                <p className="max-w-md text-[0.92rem] text-brand-muted">{category.description}</p>
               )}
             </div>
             <Link
               to={`/kategoria/${category.slug}`}
               onClick={onClose}
-              className="inline-flex items-center gap-2 text-[11px] tracking-[0.15em] uppercase text-black hover:text-gray-600 transition-colors group"
+              className="group inline-flex items-center gap-2 text-[0.95rem] font-medium underline decoration-1 underline-offset-[6px] transition-opacity hover:opacity-70"
             >
               Zobraziť všetky
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
@@ -285,14 +285,14 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
       transition={{ duration: 0.25, ease: 'easeOut' }}
-      className="absolute left-0 right-0 top-full bg-white shadow-2xl z-50 border-t border-gray-100"
+      className="absolute left-0 right-0 top-full z-50 border-t border-brand-line bg-brand-light shadow-[0_24px_40px_-24px_rgba(26,26,26,0.25)]"
     >
-      <div className="container mx-auto px-6 lg:px-8">
+      <div className="mx-auto max-w-os px-[var(--os-edge)]">
         <div className="flex min-h-[340px]">
 
           {/* ==================== LEFT: Filters Sidebar ==================== */}
-          <div className="w-[200px] flex-shrink-0 py-8 pr-8 border-r border-gray-100">
-            <h3 className="text-[10px] tracking-[0.25em] uppercase text-gray-400 mb-5">
+          <div className="w-[200px] flex-shrink-0 border-r border-brand-line py-8 pr-8">
+            <h3 className="mb-5 text-os-eyebrow uppercase text-brand-muted">
               {category.name}
             </h3>
 
@@ -302,7 +302,7 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
                 <Link
                   to={`/kategoria/${category.slug}`}
                   onClick={onClose}
-                  className="block py-2 text-[13px] tracking-[0.03em] text-gray-600 hover:text-black transition-colors"
+                  className="block py-2 text-[0.92rem] text-brand-muted transition-colors hover:text-brand-dark"
                 >
                   Všetky dekory
                 </Link>
@@ -313,10 +313,10 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
                 <li key={filter.id}>
                   <button
                     onClick={() => startTransition(() => setActiveFilter(prev => prev === filter.id ? null : filter.id))}
-                    className={`block w-full text-left py-2 text-[13px] tracking-[0.03em] transition-all duration-200 ${
+                    className={`block w-full py-2 text-left text-[0.92rem] transition-colors ${
                       activeFilter === filter.id
-                        ? 'text-black font-semibold'
-                        : 'text-gray-600 hover:text-black'
+                        ? 'font-semibold text-brand-dark'
+                        : 'text-brand-muted hover:text-brand-dark'
                     }`}
                   >
                     {filter.name}
@@ -332,7 +332,7 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
             <Link
               to={`/kategoria/${category.slug}`}
               onClick={onClose}
-              className="inline-flex items-center gap-2 mt-8 text-[11px] tracking-[0.15em] uppercase text-black hover:text-gray-600 transition-colors group"
+              className="group mt-8 inline-flex items-center gap-2 text-[0.95rem] font-medium underline decoration-1 underline-offset-[6px] transition-opacity hover:opacity-70"
             >
               Zobraziť všetky
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
@@ -343,9 +343,9 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
           <div className="flex-1 py-8 pl-8 min-w-0">
             {/* Header with filter label + arrows */}
             <div className="flex items-center justify-between mb-5">
-              <h3 className="text-[10px] tracking-[0.25em] uppercase text-gray-400">
+              <h3 className="text-os-eyebrow uppercase text-brand-muted">
                 {filterLabel}
-                <span className="ml-2 text-gray-300">({displayProducts.length})</span>
+                <span className="ml-2 text-brand-muted/60">({displayProducts.length})</span>
               </h3>
 
               {/* Desktop navigation arrows */}
@@ -355,8 +355,8 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
                   disabled={!canScrollLeft}
                   className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-200 ${
                     canScrollLeft
-                      ? 'border-gray-300 text-gray-600 hover:border-black hover:text-black'
-                      : 'border-gray-100 text-gray-200 cursor-default'
+                      ? 'border-brand-line text-brand-dark hover:border-brand-dark'
+                      : 'cursor-default border-brand-line/60 text-brand-line'
                   }`}
                   aria-label="Predchádzajúce"
                 >
@@ -367,8 +367,8 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
                   disabled={!canScrollRight}
                   className={`w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-200 ${
                     canScrollRight
-                      ? 'border-gray-300 text-gray-600 hover:border-black hover:text-black'
-                      : 'border-gray-100 text-gray-200 cursor-default'
+                      ? 'border-brand-line text-brand-dark hover:border-brand-dark'
+                      : 'cursor-default border-brand-line/60 text-brand-line'
                   }`}
                   aria-label="Nasledujúce"
                 >
@@ -388,9 +388,9 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
                 <>
                   {[0, 1, 2, 3].map((i) => (
                     <div key={`skeleton-${i}`} className="flex-shrink-0 w-[180px] lg:w-[200px] snap-start animate-pulse">
-                      <div className="aspect-[4/5] bg-gray-100 rounded-lg mb-3" />
-                      <div className="h-3 bg-gray-100 rounded w-3/4 mb-2" />
-                      <div className="h-2.5 bg-gray-100 rounded w-1/2" />
+                      <div className="mb-3 aspect-[4/5] rounded-[6px] bg-brand-gray" />
+                      <div className="mb-2 h-3 w-3/4 rounded bg-brand-gray" />
+                      <div className="h-2.5 w-1/2 rounded bg-brand-gray" />
                     </div>
                   ))}
                 </>
@@ -411,17 +411,17 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
                       onClick={onClose}
                       className="group block"
                     >
-                      <div className="relative aspect-[4/5] bg-gray-50 overflow-hidden rounded-lg mb-3">
+                      <div className="relative mb-3 aspect-[4/5] overflow-hidden rounded-[6px] bg-brand-gray">
                         <img
                           src={product.image}
                           alt={product.name}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                       </div>
-                      <h4 className="text-[12px] tracking-[0.03em] text-black font-medium truncate">
+                      <h4 className="truncate text-[0.88rem] font-medium text-brand-dark">
                         {product.name}
                       </h4>
-                      <p className="text-[11px] text-gray-500 mt-0.5">
+                      <p className="mt-0.5 text-[0.8rem] font-normal text-brand-muted">
                         {product.pricePerM2} €/m²
                       </p>
                     </Link>
@@ -432,7 +432,7 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
 
               {!isLoading && displayProducts.length === 0 && (
                 <div className="flex items-center justify-center w-full py-12">
-                  <p className="text-[12px] text-gray-400">Žiadne produkty v tejto kategórii</p>
+                  <p className="text-[0.88rem] text-brand-muted">Žiadne produkty v tejto kategórii</p>
                 </div>
               )}
             </div>

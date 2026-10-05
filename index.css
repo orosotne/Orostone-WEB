@@ -151,6 +151,61 @@
   }
 }
 
+/* ===== New design system: line icons that draw themselves in (components/Design/LineIcon.tsx) ===== */
+.os-ico { overflow: visible; transition: transform .45s cubic-bezier(.2, .7, .2, 1); }
+.os-ico .ln { fill: none; stroke: theme('colors.brand.dark'); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+.os-ico .ln .fill { fill: theme('colors.brand.light'); }
+.os-ico .au,
+.os-ico .au circle { fill: theme('colors.brand.gold'); stroke: theme('colors.brand.dark'); stroke-width: 1.3; stroke-linejoin: round; }
+.os-ico .vein { fill: none; stroke: theme('colors.brand.light'); stroke-width: 1.4; stroke-linecap: round; }
+.os-ico .hand { fill: none; stroke: theme('colors.brand.dark'); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+.os-ico .bubble { fill: theme('colors.brand.light'); stroke: theme('colors.brand.dark'); stroke-width: .8; }
+.os-on-dark .os-ico .ln { stroke: theme('colors.brand.light'); }
+.os-on-dark .os-ico .ln .fill { fill: theme('colors.brand.dark'); }
+.os-on-dark .os-ico .au,
+.os-on-dark .os-ico .au circle { stroke: theme('colors.brand.light'); }
+.os-ico .ln > :nth-child(2) { --k: 1; }
+.os-ico .ln > :nth-child(3) { --k: 2; }
+.os-ico .ln > :nth-child(4) { --k: 3; }
+.os-ico .ln > :nth-child(5) { --k: 4; }
+.os-ico .ln > :nth-child(n+6) { --k: 5; }
+.os-ico .au,
+.os-ico .vein,
+.os-ico .hand,
+.os-ico .bubble { transform-box: fill-box; transform-origin: center; }
+.os-will-draw .os-ico .ln > * { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.os-will-draw .os-ico .au,
+.os-will-draw .os-ico .vein,
+.os-will-draw .os-ico .hand,
+.os-will-draw .os-ico .bubble { opacity: 0; transform: scale(.55); }
+.os-is-in .os-ico .ln > * { stroke-dashoffset: 0; transition: stroke-dashoffset 1.3s cubic-bezier(.65, 0, .35, 1) calc(var(--d, 0s) + var(--k, 0) * 110ms); }
+.os-is-in .os-ico .au,
+.os-is-in .os-ico .vein,
+.os-is-in .os-ico .hand,
+.os-is-in .os-ico .bubble {
+  opacity: 1;
+  transform: none;
+  transition: opacity .5s ease calc(var(--d, 0s) + .8s + var(--j, 0) * 90ms), transform .8s cubic-bezier(.2, 1.5, .4, 1) calc(var(--d, 0s) + .8s + var(--j, 0) * 90ms);
+}
+/* small hover motion on the item that holds the icon */
+.os-ico-item:hover .os-ico { transform: translateY(-3px); }
+.os-ico .slab-front,
+.os-ico .truck { transition: transform .5s cubic-bezier(.2, .7, .2, 1); }
+.os-ico .badge { transform-box: fill-box; transform-origin: 50% 35%; transition: transform .7s cubic-bezier(.2, 1.5, .4, 1); }
+.os-ico-item:hover .slab-front { transform: translateX(2.5px); }
+.os-ico-item:hover .truck { transform: translateX(3px); }
+.os-ico-item:hover .badge { transform: rotate(-9deg); }
+.os-ico-item:hover .min { transform-box: view-box; transform-origin: 33.5px 34.5px; animation: os-tick 1.2s cubic-bezier(.65, 0, .35, 1); }
+.os-ico-item:hover .bubble { animation: os-level 1.3s cubic-bezier(.3, .7, .3, 1); }
+.os-ico-item:hover .days .au { animation: os-pop .55s cubic-bezier(.2, 1.5, .4, 1) calc(var(--j, 0) * 80ms); }
+@keyframes os-tick { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+@keyframes os-level { 0% { transform: translateX(0); } 25% { transform: translateX(2.6px); } 55% { transform: translateX(-1.6px); } 80% { transform: translateX(.6px); } 100% { transform: none; } }
+@keyframes os-pop { 0% { transform: scale(1); } 45% { transform: scale(.55); } 100% { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .os-ico,
+  .os-ico * { transition: none !important; animation: none !important; }
+}
+
 /* GSAP pin-spacer intercepts mouse events by default — pass through to pinned content */
 .pin-spacer {
   pointer-events: none !important;

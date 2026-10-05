@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Facebook, Instagram, Youtube, Mail, Phone, MapPin,
-  CreditCard, Shield, Clock, CheckCircle, Loader2, Truck
-} from 'lucide-react';
-import { RotatingBadge } from '../UI/RotatingBadge';
+import { Facebook, Instagram, Youtube, CheckCircle, Loader2 } from 'lucide-react';
 import { useCookies } from '../../context/CookieContext';
+import { Container, useDrawIn, IconWarranty, IconSecurePay, IconDispatch, IconDelivery } from '../Design';
 // Dynamic import — keeps supabase out of the initial bundle
 const loadNewsletter = () => import('../../services/newsletter.service');
 
@@ -15,6 +12,18 @@ const PAYMENT_MARKS = [
   { src: '/images/payments/apple-pay.svg', alt: 'Apple Pay' },
   { src: '/images/payments/google-pay.svg', alt: 'Google Pay' },
 ] as const;
+
+const TRUST = [
+  { Icon: IconWarranty, title: 'Záruka 24 mesiacov', text: 'Na všetky produkty' },
+  { Icon: IconSecurePay, title: 'Bezpečná platba', text: 'Platobnou kartou' },
+  { Icon: IconDispatch, title: 'Expedícia do 5 pracovných dní', text: 'Po prijatí platby' },
+  { Icon: IconDelivery, title: 'Doručenie po celom Slovensku', text: 'Špeciálna preprava platní' },
+] as const;
+
+const SHOPIFY_ACCOUNT_URL = 'https://shopify.com/101386420570/account';
+
+const colTitle = 'mb-1.5 text-[0.7rem] font-bold uppercase tracking-[0.18em] text-brand-gold';
+const colLink = 'text-brand-light/[0.84] no-underline transition-colors hover:text-brand-light hover:underline hover:underline-offset-4';
 
 // ===========================================
 // NEWSLETTER WIDGET
@@ -50,35 +59,37 @@ const NewsletterWidget: React.FC = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-2">
-      <div className="flex flex-col sm:flex-row gap-2">
+    <form onSubmit={handleSubmit} className="grid gap-2">
+      <div className="flex flex-col gap-2 sm:flex-row">
+        <label htmlFor="footer-newsletter" className="sr-only">Váš e-mail</label>
         <input
+          id="footer-newsletter"
           type="email"
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="vas@email.sk"
-          className="flex-1 bg-white/10 text-white placeholder-gray-500 text-sm px-4 py-2.5 rounded-full border border-white/20 focus:outline-none focus:border-brand-gold transition-colors"
+          className="min-h-[46px] flex-1 rounded-[10px] border border-brand-light/20 bg-brand-light/5 px-4 text-sm text-brand-light placeholder:text-brand-light/40 transition-colors focus:border-brand-gold focus:outline-none"
         />
         <button
           type="submit"
           disabled={status === 'loading'}
-          className="w-full sm:w-auto px-4 py-2.5 bg-brand-gold text-brand-dark text-sm font-bold rounded-full hover:bg-white transition-colors disabled:opacity-60 flex-shrink-0"
+          className="inline-flex min-h-[46px] flex-shrink-0 items-center justify-center rounded-[10px] bg-brand-light px-5 text-[0.72rem] font-bold uppercase tracking-[0.12em] text-brand-dark transition-colors hover:bg-white disabled:opacity-60"
         >
           {status === 'loading' ? <Loader2 size={16} className="animate-spin" /> : 'Odoberať'}
         </button>
       </div>
-      {status === 'error' && <p className="text-red-400 text-xs">{msg}</p>}
-      <p className="text-[11px] text-gray-500 leading-relaxed">
+      {status === 'error' && <p className="text-xs text-red-300">{msg}</p>}
+      <p className="text-[0.78rem] leading-relaxed text-brand-light/50">
         Prihlásením súhlasíte so zasielaním noviniek. Odhlásiť sa môžete kedykoľvek.{' '}
-        <Link to="/ochrana-sukromia" target="_blank" className="underline hover:text-gray-300">Ochrana súkromia</Link>
+        <Link to="/ochrana-sukromia" target="_blank" className="underline hover:text-brand-light">Ochrana súkromia</Link>
       </p>
     </form>
   );
 };
 
 // ===========================================
-// ESHOP COLUMNS
+// FOOTER COMPONENT
 // ===========================================
 
 interface EshopCategory {
@@ -87,322 +98,156 @@ interface EshopCategory {
   name: string;
 }
 
-interface FooterEshopColumnsProps {
-  categories?: EshopCategory[];
-}
-
-const EshopColumns: React.FC<FooterEshopColumnsProps> = ({ categories = [] }) => {
-
-  return (
-    <>
-      {/* Obchod */}
-      <div>
-        <h4 className="font-bold text-sm uppercase tracking-wider mb-4">Obchod</h4>
-        <ul className="space-y-3">
-          {categories.map((cat) => (
-            <li key={cat.id}>
-              <Link to={`/kategoria/${cat.slug}`} className="text-gray-400 hover:text-white text-sm transition-colors">
-                {cat.name}
-              </Link>
-            </li>
-          ))}
-          <li>
-            <Link to="/kuchyne" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Kuchyne
-            </Link>
-          </li>
-          <li>
-            <Link to="/cennik" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Cenník
-            </Link>
-          </li>
-          <li>
-            <Link to="/vzorky" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Vzorky
-            </Link>
-          </li>
-          <li>
-            <Link to="/vyhody" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Výhody
-            </Link>
-          </li>
-          <li>
-            <Link to="/realizacie" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Realizácie
-            </Link>
-          </li>
-          <li>
-            <Link to="/blog" className="text-brand-gold hover:text-white text-sm transition-colors font-medium">
-              Blog
-            </Link>
-          </li>
-        </ul>
-      </div>
-
-      {/* Zákaznícky servis */}
-      <div>
-        <h4 className="font-bold text-sm uppercase tracking-wider mb-4">Zákaznícky servis</h4>
-        <ul className="space-y-3">
-          <li>
-            <a href="https://shopify.com/101386420570/account" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Môj účet
-            </a>
-          </li>
-          <li>
-            <a href="https://shopify.com/101386420570/account" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Sledovanie objednávky
-            </a>
-          </li>
-          <li>
-            <Link to="/doprava" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Doprava a platba
-            </Link>
-          </li>
-          <li>
-            <Link to="/reklamacie" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Reklamácie a vrátenie
-            </Link>
-          </li>
-          <li>
-            <Link to="/odstupenie-od-zmluvy" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Odstúpenie od zmluvy
-            </Link>
-          </li>
-          <li>
-            <Link to="/kontakt" className="text-gray-400 hover:text-white text-sm transition-colors">
-              Kontakt
-            </Link>
-          </li>
-          <li>
-            <Link to="/kariera" className="text-brand-gold hover:text-white text-sm transition-colors font-medium">
-              Kariéra — hľadáme kolegov
-            </Link>
-          </li>
-        </ul>
-      </div>
-    </>
-  );
-};
-
-// ===========================================
-// FOOTER COMPONENT
-// ===========================================
-
 interface FooterProps {
   categories?: EshopCategory[];
   isProductDetail?: boolean;
 }
 
-const FooterComponent: React.FC<FooterProps> = ({ categories, isProductDetail = false }) => {
+const FooterComponent: React.FC<FooterProps> = ({ categories = [], isProductDetail = false }) => {
   const { openSettings } = useCookies();
+  const draw = useDrawIn<HTMLDivElement>();
 
   return (
-    <footer className={`bg-brand-dark text-white${isProductDetail ? ' pb-32 lg:pb-0' : ''}`}>
-
-      {/* Trust Badges */}
-      <div className="border-b border-white/10">
-        <div className="container mx-auto px-6 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-<div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
-                <Shield size={24} className="text-brand-gold" />
-              </div>
-              <div>
-                <h4 className="font-semibold text-sm">Záruka 24 mesiacov</h4>
-                <p className="text-xs text-gray-400">Na všetky produkty</p>
-              </div>
+    <footer
+      className={`os-on-dark relative overflow-hidden bg-brand-dark bg-noise pt-[clamp(56px,7vw,88px)] text-brand-light ${isProductDetail ? 'pb-32 lg:pb-8' : 'pb-8'}`}
+    >
+      {/* Trust strip */}
+      <Container>
+        <div
+          ref={draw.ref}
+          className={`mb-12 grid grid-cols-1 gap-9 border-b border-brand-light/15 pb-[clamp(56px,7vw,88px)] sm:grid-cols-2 lg:grid-cols-4 lg:gap-5 ${draw.className}`}
+        >
+          {TRUST.map(({ Icon, title, text }, i) => (
+            <div key={title} className="os-ico-item grid justify-items-center gap-1 text-center" style={{ '--d': `${i * 0.14}s` } as React.CSSProperties}>
+              <Icon className="mb-3.5 h-12 w-12" />
+              <h4 className="text-[0.92rem] font-semibold">{title}</h4>
+              <p className="text-[0.82rem] font-normal text-brand-light/60">{text}</p>
             </div>
+          ))}
+        </div>
+      </Container>
 
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
-                <CreditCard size={24} className="text-brand-gold" />
-              </div>
-              <div>
-                <h4 className="font-semibold text-sm">Bezpečná platba</h4>
-                <p className="text-xs text-gray-400">Platobnou kartou</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
-                <Clock size={24} className="text-brand-gold" />
-              </div>
-              <div>
-                <h4 className="font-semibold text-sm">Expedícia do 5 pracovných dní</h4>
-                <p className="text-xs text-gray-400">Po prijatí platby</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
-                <Truck size={24} className="text-brand-gold" />
-              </div>
-              <div>
-                <h4 className="font-semibold text-sm">Doručenie po celom Slovensku</h4>
-                <p className="text-xs text-gray-400">Špeciálna preprava platní</p>
-              </div>
-            </div>
+      {/* Main footer */}
+      <Container className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.6fr)_repeat(3,minmax(0,1fr))] lg:gap-8">
+        <div className="grid content-start gap-5">
+          <Link to="/" aria-label="OROSTONE, hlavná stránka">
+            <img src="/images/orostone-logo.svg" alt="OROSTONE" width={136} height={27} className="h-auto w-[136px] brightness-0 invert" />
+          </Link>
+          <p className="max-w-[32ch] text-[0.92rem] text-brand-light/60">
+            Sinterované platne pre náročných zákazníkov. Spájame odolnosť kameňa s precíznosťou moderných technológií.
+          </p>
+          <div className="grid max-w-sm gap-2">
+            <p className="text-[0.7rem] font-bold uppercase tracking-[0.18em] text-brand-light/60">Odoberajte novinky</p>
+            <NewsletterWidget />
+          </div>
+          <div className="flex items-center gap-3">
+            {[
+              { href: 'https://www.facebook.com/orostone.sk', label: 'Orostone na Facebooku', Icon: Facebook },
+              { href: 'https://www.instagram.com/orostone_', label: 'Orostone na Instagrame', Icon: Instagram },
+              { href: 'https://www.youtube.com/@orostone', label: 'Orostone na YouTube', Icon: Youtube },
+            ].map(({ href, label, Icon }) => (
+              <a
+                key={href}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="grid h-11 w-11 place-items-center rounded-full border border-brand-light/20 text-brand-light/80 transition-colors hover:border-brand-gold hover:text-brand-gold"
+              >
+                <Icon size={17} strokeWidth={1.6} />
+              </a>
+            ))}
           </div>
         </div>
-      </div>
 
-      {/* Main Footer */}
-      <div className="container mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <nav aria-label="Obchod" className="grid content-start gap-2.5 text-[0.92rem]">
+          <h3 className={colTitle}>Obchod</h3>
+          {categories.map((cat) => (
+            <Link key={cat.id} to={`/kategoria/${cat.slug}`} className={colLink}>{cat.name}</Link>
+          ))}
+          <Link to="/kuchyne" className={colLink}>Kuchyne</Link>
+          <Link to="/cennik" className={colLink}>Cenník</Link>
+          <Link to="/vzorky" className={colLink}>Vzorky</Link>
+          <Link to="/vyhody" className={colLink}>Výhody</Link>
+          <Link to="/realizacie" className={colLink}>Realizácie</Link>
+          <Link to="/blog" className={colLink}>Blog</Link>
+        </nav>
 
-          {/* Logo & About */}
-          <div className="lg:col-span-2">
-            <Link to="/">
-              <img
-                src="/images/orostone-logo.svg"
-                alt="OROSTONE"
-                width={203}
-                height={40}
-                className="h-10 w-auto brightness-0 invert mb-4"
-              />
-            </Link>
-            <p className="text-gray-400 text-sm mb-6 max-w-sm">
-              Sinterované platne pre náročných zákazníkov.
-              Spájame odolnosť kameňa s precíznosťou moderných technológií.
+        <nav aria-label="Zákaznícky servis" className="grid content-start gap-2.5 text-[0.92rem]">
+          <h3 className={colTitle}>Zákaznícky servis</h3>
+          <a href={SHOPIFY_ACCOUNT_URL} className={colLink}>Môj účet</a>
+          <a href={SHOPIFY_ACCOUNT_URL} className={colLink}>Sledovanie objednávky</a>
+          <Link to="/doprava" className={colLink}>Doprava a platba</Link>
+          <Link to="/reklamacie" className={colLink}>Reklamácie a vrátenie</Link>
+          <Link to="/odstupenie-od-zmluvy" className={colLink}>Odstúpenie od zmluvy</Link>
+          <Link to="/kontakt" className={colLink}>Kontakt</Link>
+          <Link to="/kariera" className={`${colLink} inline-flex items-center gap-2`}>
+            <span className="inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-gold" aria-hidden="true" />
+            Kariéra — hľadáme kolegov
+          </Link>
+        </nav>
+
+        <div className="grid content-start gap-4 text-[0.92rem]">
+          <h3 className={colTitle}>Kontakt</h3>
+          <a href="tel:+421917588738" className="group grid gap-0.5 no-underline">
+            <span className="font-medium tabular-nums text-brand-light group-hover:underline group-hover:underline-offset-4">+421 917 588 738</span>
+            <span className="text-[0.8rem] text-brand-light/60">Po–Pia 8:00 – 17:00</span>
+          </a>
+          <a href="mailto:dopyt@orostone.sk" className="group grid gap-0.5 no-underline">
+            <span className="text-brand-light group-hover:underline group-hover:underline-offset-4">dopyt@orostone.sk</span>
+            <span className="text-[0.8rem] text-brand-light/60">Cenové ponuky a dopyty</span>
+          </a>
+          <a href="mailto:info@orostone.sk" className="group grid gap-0.5 no-underline">
+            <span className="text-brand-light group-hover:underline group-hover:underline-offset-4">info@orostone.sk</span>
+            <span className="text-[0.8rem] text-brand-light/60">Administratíva a faktúry</span>
+          </a>
+          <a href="https://www.google.com/maps?q=SNP+113%2F1%2C+956+18+Bo%C5%A1any" target="_blank" rel="noopener noreferrer" className="group grid gap-0.5 no-underline">
+            <span className="text-brand-light group-hover:underline group-hover:underline-offset-4">SNP 113/1, 956 18 Bošany</span>
+            <span className="text-[0.8rem] text-brand-light/60">Showroom — tu nás nájdete</span>
+          </a>
+          {/* Zámerne bez odkazu na mapu — klienti si sídlo mýlili so showroomom. */}
+          <div className="grid gap-0.5">
+            <span className="text-brand-light/60">Landererova 8, 811 09 Bratislava</span>
+            <span className="text-[0.8rem] text-brand-light/45">Sídlo a fakturačná adresa, nie showroom</span>
+          </div>
+        </div>
+      </Container>
+
+      {/* Legal bar */}
+      <Container>
+        <div className="mt-14 flex flex-col gap-6 border-t border-brand-light/15 pt-6 text-[0.8rem] text-brand-light/60 lg:flex-row lg:items-start lg:justify-between">
+          <div className="grid gap-2">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+              <span>© {new Date().getFullYear()} Orostone</span>
+              <Link to="/vop" className="hover:text-brand-light hover:underline">Obchodné podmienky</Link>
+              <Link to="/podmienky-rezervacie-ceny" className="hover:text-brand-light hover:underline">Rezervačný poplatok</Link>
+              <Link to="/ochrana-sukromia" className="hover:text-brand-light hover:underline">Ochrana súkromia</Link>
+              <Link to="/cookies" className="hover:text-brand-light hover:underline">Cookies</Link>
+              <button onClick={openSettings} className="hover:text-brand-light hover:underline">Nastavenia cookies</button>
+            </div>
+            <p className="max-w-2xl text-[0.74rem] leading-relaxed text-brand-light/45">
+              Orostone s.r.o., Landererova 8, 811 09 Bratislava - mestská časť Staré Mesto, IČO: 55 254 772, DIČ: 2121930580, IČ DPH: SK2121930580. Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B.
             </p>
-            {/* Newsletter */}
-            <div className="mb-6">
-              <p className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2">Odoberajte novinky</p>
-              <NewsletterWidget />
-            </div>
-
-            <div className="flex items-center gap-4">
-              <a
-                href="https://www.facebook.com/orostone.sk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-colors"
-                aria-label="Orostone na Facebooku"
-              >
-                <Facebook size={18} />
-              </a>
-              <a
-                href="https://www.instagram.com/orostone_"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-colors"
-                aria-label="Orostone na Instagrame"
-              >
-                <Instagram size={18} />
-              </a>
-              <a
-                href="https://www.youtube.com/@orostone"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-brand-gold hover:text-brand-dark transition-colors"
-                aria-label="Orostone na YouTube"
-              >
-                <Youtube size={18} />
-              </a>
-            </div>
+            <p className="text-[0.74rem] text-brand-light/45">
+              Alternatívne riešenie sporov:{' '}
+              <a href="https://www.soi.sk" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-brand-light/80">Slovenská obchodná inšpekcia (SOI)</a>
+            </p>
           </div>
-
-          {/* Eshop columns */}
-          <EshopColumns categories={categories} />
-
-          {/* Contact */}
-          <div>
-            <h4 className="font-bold text-sm uppercase tracking-wider mb-4">Kontakt</h4>
-            <ul className="space-y-4">
-              <li className="flex items-start gap-3">
-                <Phone size={18} className="text-brand-gold flex-shrink-0 mt-0.5" />
-                <a href="tel:+421917588738" className="group">
-                  <p className="text-white font-medium group-hover:text-brand-gold transition-colors">+421 917 588 738</p>
-                  <p className="text-gray-400 text-xs">Po-Pia 8:00 – 17:00</p>
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <Mail size={18} className="text-brand-gold flex-shrink-0 mt-0.5" />
-                <div className="flex flex-col gap-2">
-                  <a href="mailto:dopyt@orostone.sk" className="group">
-                    <span className="block text-white group-hover:text-brand-gold transition-colors">dopyt@orostone.sk</span>
-                    <span className="block text-gray-400 text-xs">Cenové ponuky a dopyty</span>
-                  </a>
-                  <a href="mailto:info@orostone.sk" className="group">
-                    <span className="block text-white group-hover:text-brand-gold transition-colors">info@orostone.sk</span>
-                    <span className="block text-gray-400 text-xs">Administratíva a faktúry</span>
-                  </a>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin size={18} className="text-brand-gold flex-shrink-0 mt-0.5" />
-                <div className="flex flex-col gap-2">
-                  <a href="https://www.google.com/maps?q=SNP+113%2F1%2C+956+18+Bo%C5%A1any" target="_blank" rel="noopener noreferrer" className="group">
-                    <span className="block text-white group-hover:text-brand-gold transition-colors text-sm">SNP 113/1, 956 18 Bošany</span>
-                    <span className="block text-gray-400 text-xs">Showroom — tu nás nájdete</span>
-                  </a>
-                  {/* Zámerne bez odkazu na mapu — klienti si sídlo mýlili so showroomom. */}
-                  <div>
-                    <span className="block text-gray-400 text-sm">Landererova 8, 811 09 Bratislava</span>
-                    <span className="block text-gray-500 text-xs">Sídlo a fakturačná adresa, nie showroom</span>
-                  </div>
-                </div>
-              </li>
-            </ul>
+          <div className="flex flex-wrap items-center gap-2" aria-label="Podporované platobné metódy">
+            <span className="text-[0.74rem] text-brand-light/45">Platobné metódy:</span>
+            {PAYMENT_MARKS.map(({ src, alt }) => (
+              <span key={src} className="flex h-7 min-w-[1.75rem] max-w-[3.5rem] items-center justify-center rounded-sm bg-white/95 px-1 py-0.5">
+                <img src={src} alt={alt} width={52} height={16} className="h-4 w-auto max-w-[3rem] object-contain opacity-[0.88]" loading="lazy" decoding="async" />
+              </span>
+            ))}
           </div>
         </div>
-      </div>
+      </Container>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/10">
-        <div className="container mx-auto px-6 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex flex-col items-center md:items-start gap-2 text-center md:text-left">
-              <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-gray-400">
-                <span>© {new Date().getFullYear()} Orostone</span>
-                <span>•</span>
-                <Link to="/vop" className="hover:text-white transition-colors">Obchodné podmienky</Link>
-                <span>•</span>
-                <Link to="/podmienky-rezervacie-ceny" className="hover:text-white transition-colors">Rezervačný poplatok</Link>
-                <span>•</span>
-                <Link to="/ochrana-sukromia" className="hover:text-white transition-colors">Ochrana súkromia</Link>
-                <span>•</span>
-                <Link to="/cookies" className="hover:text-white transition-colors">Cookies</Link>
-                <span>•</span>
-                <button onClick={openSettings} className="hover:text-white transition-colors">
-                  Nastavenia cookies
-                </button>
-              </div>
-              <div className="text-[11px] leading-relaxed text-gray-500 max-w-2xl">
-                Orostone s.r.o., Landererova 8, 811 09 Bratislava - mestská časť Staré Mesto, IČO: 55 254 772, DIČ: 2121930580, IČ DPH: SK2121930580. Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B.
-              </div>
-              <div className="text-[11px] text-gray-500/80">
-                Alternatívne riešenie sporov: <a href="https://www.soi.sk" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 underline underline-offset-2">Slovenská obchodná inšpekcia (SOI)</a>
-              </div>
-            </div>
-
-            {/* Payment marks */}
-            <div className="flex flex-wrap items-center gap-2 justify-center md:justify-end" aria-label="Podporované platobné metódy">
-              <span className="text-[10px] sm:text-[11px] text-gray-500/90 shrink-0">Platobné metódy:</span>
-              <div className="flex flex-wrap items-center gap-1 justify-center md:justify-end max-w-[min(100%,22rem)] md:max-w-none">
-                {PAYMENT_MARKS.map(({ src, alt }) => (
-                  <div
-                    key={src}
-                    className="bg-white/95 rounded-sm px-1 py-0.5 flex items-center justify-center h-7 min-w-[1.75rem] max-w-[3.5rem]"
-                  >
-                    <img
-                      src={src}
-                      alt={alt}
-                      width={52}
-                      height={16}
-                      className="h-4 w-auto max-w-[3rem] object-contain object-center opacity-[0.88]"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <RotatingBadge onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
-          </div>
-        </div>
-      </div>
+      {/* Large logo watermark */}
+      <Container className="mt-14 opacity-[0.07]" aria-hidden="true">
+        <img src="/images/orostone-logo.svg" alt="" width={1168} height={230} loading="lazy" className="h-auto w-full brightness-0 invert" />
+      </Container>
     </footer>
   );
 };

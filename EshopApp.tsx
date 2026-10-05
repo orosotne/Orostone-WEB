@@ -101,7 +101,7 @@ const EshopApp = () => {
               animations stay live but framer-motion ones now obey user preference. */}
           <MotionConfig reducedMotion="user">
             {/* LazyMotion + domMax: tree-shake framer-motion. `domMax` (not `domAnimation`)
-                because EshopNavbar, EshopMegaMenu, and Checkout use `layout` / `layoutId` /
+                because EshopMegaMenu and Checkout use `layout` / `layoutId` /
                 AnimatePresence `popLayout` — those features live only in `domMax`. Using
                 `domAnimation` would silently no-op them. `strict` throws if a future
                 component reverts to `motion.X` (regression guard). */}

@@ -7,3 +7,14 @@ export { ArrowIcon } from './ArrowIcon';
 export { TextLink } from './TextLink';
 export { ActionButton } from './ActionButton';
 export type { ActionButtonVariant } from './ActionButton';
+export {
+  useDrawIn,
+  IconCastle,
+  IconSlabs,
+  IconPriceClock,
+  IconFabrication,
+  IconWarranty,
+  IconDispatch,
+  IconDelivery,
+  IconSecurePay,
+} from './LineIcon';
