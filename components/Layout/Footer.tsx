@@ -101,9 +101,11 @@ interface EshopCategory {
 interface FooterProps {
   categories?: EshopCategory[];
   isProductDetail?: boolean;
+  /** /vzorky: shorter footer without the trust strip and the newsletter, so the order stays the focus */
+  compactOrder?: boolean;
 }
 
-const FooterComponent: React.FC<FooterProps> = ({ categories = [], isProductDetail = false }) => {
+const FooterComponent: React.FC<FooterProps> = ({ categories = [], isProductDetail = false, compactOrder = false }) => {
   const { openSettings } = useCookies();
   const draw = useDrawIn<HTMLDivElement>();
 
@@ -112,7 +114,7 @@ const FooterComponent: React.FC<FooterProps> = ({ categories = [], isProductDeta
       className={`os-on-dark relative overflow-hidden bg-brand-dark bg-noise pt-[clamp(56px,7vw,88px)] text-brand-light ${isProductDetail ? 'pb-32 lg:pb-8' : 'pb-8'}`}
     >
       {/* Trust strip */}
-      <Container>
+      {!compactOrder && <Container>
         <div
           ref={draw.ref}
           className={`mb-12 grid grid-cols-1 gap-9 border-b border-brand-light/15 pb-[clamp(56px,7vw,88px)] sm:grid-cols-2 lg:grid-cols-4 lg:gap-5 ${draw.className}`}
@@ -125,7 +127,7 @@ const FooterComponent: React.FC<FooterProps> = ({ categories = [], isProductDeta
             </div>
           ))}
         </div>
-      </Container>
+      </Container>}
 
       {/* Main footer */}
       <Container className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.6fr)_repeat(3,minmax(0,1fr))] lg:gap-8">
@@ -136,10 +138,12 @@ const FooterComponent: React.FC<FooterProps> = ({ categories = [], isProductDeta
           <p className="max-w-[32ch] text-[0.92rem] text-brand-light/60">
             Sinterované platne pre náročných zákazníkov. Spájame odolnosť kameňa s precíznosťou moderných technológií.
           </p>
-          <div className="grid max-w-sm gap-2">
-            <p className="text-[0.7rem] font-bold uppercase tracking-[0.18em] text-brand-light/60">Odoberajte novinky</p>
-            <NewsletterWidget />
-          </div>
+          {!compactOrder && (
+            <div className="grid max-w-sm gap-2">
+              <p className="text-[0.7rem] font-bold uppercase tracking-[0.18em] text-brand-light/60">Odoberajte novinky</p>
+              <NewsletterWidget />
+            </div>
+          )}
           <div className="flex items-center gap-3">
             {[
               { href: 'https://www.facebook.com/orostone.sk', label: 'Orostone na Facebooku', Icon: Facebook },
@@ -253,6 +257,6 @@ const FooterComponent: React.FC<FooterProps> = ({ categories = [], isProductDeta
 };
 
 // Memoized export — Footer dostáva `categories` (stabilná referencia z module-level cache)
-// a `isProductDetail` (boolean z layoutu), takže sa re-renderuje len keď sa skutočne
-// zmení identita kategórií alebo prepne sa na/z detail produktu.
+// a booleany `isProductDetail` a `compactOrder` z layoutu, takže sa re-renderuje len keď sa
+// skutočne zmení identita kategórií alebo sa prepne na/z detail produktu či /vzorky.
 export const Footer = React.memo(FooterComponent);

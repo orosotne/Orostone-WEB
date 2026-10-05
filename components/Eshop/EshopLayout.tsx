@@ -68,7 +68,7 @@ export const EshopLayout: React.FC<EshopLayoutProps> = ({ children }) => {
       </main>
 
       {/* Footer */}
-      <Footer categories={VISIBLE_CATEGORIES} isProductDetail={isProductDetail} />
+      <Footer categories={VISIBLE_CATEGORIES} isProductDetail={isProductDetail} compactOrder={pathname === '/vzorky'} />
 
       {/* Mobile bottom bar: price CTA + phone */}
       <MobileCtaBar />
