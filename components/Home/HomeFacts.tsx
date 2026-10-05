@@ -1,0 +1,29 @@
+import React from 'react';
+import { Container, useDrawIn, IconCastle, IconSlabs, IconPriceClock, IconFabrication } from '../Design';
+
+const FACTS = [
+  { Icon: IconCastle, title: 'Showroom v kaštieli', text: 'Celé platne pri dennom svetle, Bošany' },
+  { Icon: IconSlabs, title: '12 dekorov skladom', text: 'Platne 3200 × 1600 mm, hrúbka 12 mm' },
+  { Icon: IconPriceClock, title: 'Orientačná cena do druhého dňa', text: 'Štyri krátke otázky, vyplníte ich za minútu' },
+  { Icon: IconFabrication, title: 'Výroba a montáž', text: 'Cez skúsených partnerských kamenárov' },
+] as const;
+
+/** Four answers a client looks for first: where to see it, what is in stock, when the price comes, who builds it. */
+export const HomeFacts: React.FC = () => {
+  const draw = useDrawIn<HTMLDivElement>();
+  return (
+    <section className="hp-facts" aria-label="Prečo Orostone">
+      <Container>
+        <div ref={draw.ref} className={`hp-facts-in ${draw.className}`}>
+          {FACTS.map(({ Icon, title, text }, i) => (
+            <div key={title} className="hp-fact os-ico-item" style={{ '--d': `${i * 0.14}s` } as React.CSSProperties}>
+              <Icon className="hp-fact-ico" />
+              <b>{title}</b>
+              <span>{text}</span>
+            </div>
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+};

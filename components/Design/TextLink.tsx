@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowIcon } from './ArrowIcon';
-import { isExternalHref, newTabProps } from './href';
+import { isPlainHref, newTabProps } from './href';
 
 interface TextLinkProps {
-  /** Internal path ("/vzorky") or absolute URL / tel: / mailto:. */
+  /** Internal path ("/vzorky"), #anchor, or absolute URL / tel: / mailto:. */
   to: string;
   children: React.ReactNode;
   arrow?: boolean;
@@ -21,7 +21,7 @@ export const TextLink: React.FC<TextLinkProps> = ({ to, children, arrow = true, 
       {arrow && <ArrowIcon />}
     </>
   );
-  if (isExternalHref(to)) {
+  if (isPlainHref(to)) {
     return <a href={to} className={cls} onClick={onClick} {...newTabProps(to)}>{content}</a>;
   }
   return <Link to={to} className={cls} onClick={onClick}>{content}</Link>;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowIcon } from './ArrowIcon';
-import { isExternalHref, newTabProps } from './href';
+import { isPlainHref, newTabProps } from './href';
 
 export type ActionButtonVariant = 'gold' | 'dark' | 'outline' | 'light-outline';
 
@@ -22,7 +22,7 @@ interface ActionButtonProps {
   children: React.ReactNode;
   variant?: ActionButtonVariant;
   size?: keyof typeof SIZE_CLASSES;
-  /** Internal path or absolute URL / tel: / mailto:. Without it the component renders a <button>. */
+  /** Internal path, #anchor, or absolute URL / tel: / mailto:. Without it the component renders a <button>. */
   to?: string;
   arrow?: boolean;
   type?: 'button' | 'submit';
@@ -49,7 +49,7 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
       {arrow && <ArrowIcon className="h-4 w-4" />}
     </>
   );
-  if (to && isExternalHref(to)) {
+  if (to && isPlainHref(to)) {
     return <a href={to} className={cls} onClick={onClick} {...newTabProps(to)}>{content}</a>;
   }
   if (to) return <Link to={to} className={cls} onClick={onClick}>{content}</Link>;

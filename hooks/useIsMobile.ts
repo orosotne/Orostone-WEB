@@ -47,7 +47,7 @@ function useMediaQuery(query: string, ssrFallback: boolean): boolean {
       // shared `stores` map may not have the entry yet. Without a synchronous
       // peek at window.matchMedia, the initial render falls back to
       // `ssrFallback` (false) → mobile users briefly render desktop-only
-      // components (e.g. <TextKnockoutSection />), triggering their lazy
+      // components, triggering their lazy
       // import() before the second render unmounts them. Peek synchronously
       // so the very first paint already knows the correct value.
       const existing = stores.get(query);

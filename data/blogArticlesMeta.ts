@@ -1,5 +1,5 @@
 // Lightweight blog article metadata — no content, directAnswer, or faqs.
-// Used on homepage (BlogPreviewSection) to avoid bundling full article HTML
+// Used on the homepage („Poradňa“, components/Home/HomeGuides.tsx) to avoid bundling full article HTML
 // into the main EshopApp chunk.
 import type { BlogArticleMeta } from './blogTypes';
 import { BLOG_AUTHOR_OROSTONE } from './blogTypes';
