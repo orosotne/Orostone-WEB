@@ -26,8 +26,8 @@ import { KITCHEN_FAQS, KUCHYNE_FEATURES, KUCHYNE_H1, KUCHYNE_PROCESS_STEPS } fro
 // návrh posúdi obchodný zástupca, cenu ani termín nesľubuje.
 const CONFIGURATOR_URL = 'https://crm.orostone.sk/konfigurator';
 
-// Real client kitchens (decor names from the time of installation). "Sivý kameň" stays out until its decor is confirmed.
-const GALLERY = HOME_REALIZATIONS.filter((r) => r.image !== 'sivy-kamen-kniznica');
+// Real client kitchens (decor names from the time of installation); six different decors, so the second Taj Mahal stays on the homepage only.
+const GALLERY = HOME_REALIZATIONS.filter((r) => r.image !== 'svetly-onyx');
 
 const FEATURE_ICONS = [IconFabrication, IconSlabs, IconWarranty];
 const FEATURES = KUCHYNE_FEATURES.map((f, i) => ({ title: f.title, text: f.description, icon: FEATURE_ICONS[i] }));
