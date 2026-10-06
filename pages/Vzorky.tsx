@@ -278,8 +278,8 @@ export const Vzorky: React.FC = () => {
               scrollbarWidth: 'none',
               WebkitOverflowScrolling: 'touch',
               gap: `${isMobile ? 24 : GAP}px`,
-              paddingLeft: isMobile ? 'calc(50% - min(31vw, 120px))' : `calc(50% - ${TILE_BASE / 2}px)`,
-              paddingRight: isMobile ? 'calc(50% - min(31vw, 120px))' : `calc(50% - ${TILE_BASE / 2}px)`,
+              paddingLeft: isMobile ? 'calc(50% - var(--sample-tile-size, min(62vw, 240px)) * .5)' : `calc(50% - ${TILE_BASE / 2}px)`,
+              paddingRight: isMobile ? 'calc(50% - var(--sample-tile-size, min(62vw, 240px)) * .5)' : `calc(50% - ${TILE_BASE / 2}px)`,
               paddingTop: '40px',
               paddingBottom: '40px',
             }}
@@ -295,8 +295,8 @@ export const Vzorky: React.FC = () => {
                 ref={(el) => { tileRefs.current[i] = el; }}
                 className="sample-carousel-tile flex-shrink-0 snap-center will-change-transform"
                 style={{
-                  width: isMobile ? 'min(62vw, 240px)' : `${TILE_BASE}px`,
-                  height: isMobile ? 'min(62vw, 240px)' : `${TILE_BASE}px`,
+                  width: isMobile ? 'var(--sample-tile-size, min(62vw, 240px))' : `${TILE_BASE}px`,
+                  height: isMobile ? 'var(--sample-tile-size, min(62vw, 240px))' : `${TILE_BASE}px`,
                   transition: 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1)',
                 }}
                 onClick={() => scrollToIndex(i)}
