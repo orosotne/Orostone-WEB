@@ -53,7 +53,7 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
     category: 'risk-killers',
     publishDate: '2026-03-24',
     readTimeMinutes: 9,
-    heroImage: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200',
+    heroImage: '/images/blog/article-03/hero.webp',
     author: BLOG_AUTHOR_OROSTONE,
     tags: ['sinterovaný kameň', 'škvrny', 'káva', 'víno', 'kurkuma', 'test', 'pórovitosť'],
     sk: {
@@ -113,7 +113,7 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
     category: 'trust-builders',
     publishDate: '2026-03-27',
     readTimeMinutes: 10,
-    heroImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200',
+    heroImage: '/images/blog/article-07/hero.webp',
     author: BLOG_AUTHOR_OROSTONE,
     tags: ['certifikácie', 'sinterovaný kameň', 'ISO normy', 'bezpečnosť potravín', 'NSF', 'CE označenie'],
     sk: {
@@ -279,7 +279,7 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
     publishDate: '2026-07-24',
     lastModified: '2026-07-24',
     readTimeMinutes: 8,
-    heroImage: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200',
+    heroImage: '/images/blog/article-09/hero.webp',
     author: BLOG_AUTHOR_OROSTONE,
     tags: ['sinterovaný kameň', 'ceny', 'cenová ponuka', 'transparentnosť', 'cena za bežný meter'],
     sk: {
@@ -302,7 +302,7 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
     publishDate: '2026-07-24',
     lastModified: '2026-07-24',
     readTimeMinutes: 7,
-    heroImage: 'https://images.unsplash.com/photo-1563453392212-326f5e854473?w=1200',
+    heroImage: '/images/blog/article-19/hero.webp',
     author: BLOG_AUTHOR_OROSTONE,
     tags: ['sinterovaný kameň', 'čistenie', 'údržba', 'starostlivosť', 'škvrny'],
     sk: {

@@ -244,8 +244,8 @@ const PROJECTS: Project[] = [
   },
   {
     id: 'sivy-kamen-stolicky',
-    title: 'Sivý kameň — stoličky',
-    material: 'Sivý kameň',
+    title: 'Yabo White — stoličky',
+    material: 'Yabo White',
     hero: '/images/realizacie/sivy-kamen-stolicky-hero.webp',
     gallery: [
       '/images/realizacie/sivy-kamen-stolicky-hero.webp',

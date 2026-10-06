@@ -37,13 +37,15 @@ export const ARTICLE_09: BlogArticle = {
   publishDate: '2026-07-24',
   lastModified: '2026-07-24',
   readTimeMinutes: 8,
-  heroImage: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200',
+  heroImage: '/images/blog/article-09/hero.webp',
   author: BLOG_AUTHOR_OROSTONE,
   tags: ['sinterovaný kameň', 'ceny', 'cenová ponuka', 'transparentnosť', 'cena za bežný meter'],
 
   sk: {
     title: 'Transparentné ceny: čo musí obsahovať tvoja cenová ponuka',
     subtitle: 'Sprievodca cenovou ponukou na sinterovaný kameň — bez skrytých poplatkov a prekvapení na faktúre',
+    heroAlt: 'Pôdorys kuchyne, zvinovací meter, ceruzka a vzorky dekorov Calacatta Top a Roman Travertine na dubovom stole, pohľad zhora',
+    heroCaption: 'Vizualizácia so vzorkami dekorov Calacatta Top a Roman Travertine',
     excerpt:
       'Dve ponuky na tú istú kuchyňu sa môžu líšiť o stovky eur — a lacnejšia môže byť v skutočnosti drahšia. Zisti, čo musí férová ponuka obsahovať a na čo si dať pozor.',
     metaTitle: 'Cenová ponuka na sinterovaný kameň: čo musí obsahovať | OROSTONE',
@@ -186,6 +188,8 @@ export const ARTICLE_09: BlogArticle = {
   en: {
     title: 'Transparent Pricing: What Your Quote Must Include',
     subtitle: 'A guide to sintered stone quotes — no hidden fees, no surprises on the invoice',
+    heroAlt: 'Kitchen floor plan, tape measure, pencil and Calacatta Top and Roman Travertine samples on an oak table, top view',
+    heroCaption: 'Visualization with Calacatta Top and Roman Travertine samples',
     excerpt:
       'Two quotes for the same kitchen can differ by hundreds of euros — and the cheaper one may actually cost more. Learn what a fair quote must include and what to watch out for.',
     metaTitle: 'Sintered Stone Quote: What It Must Include | OROSTONE',

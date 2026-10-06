@@ -392,7 +392,7 @@ export const BlogArticle: React.FC = () => {
             <figure className="m-0 mt-[clamp(32px,4vw,56px)] xl:col-span-2">
               <img
                 src={article.heroImage}
-                alt={heroAlt || content.title}
+                alt={heroAlt || content.heroAlt || content.title}
                 width={1376}
                 height={768}
                 fetchPriority="high"
@@ -400,7 +400,9 @@ export const BlogArticle: React.FC = () => {
                 loading="eager"
                 className="aspect-[16/9] w-full rounded-[3px] bg-brand-sand object-cover"
               />
-              {heroCaption && <figcaption className="mt-3 text-[0.84rem] font-normal text-brand-muted">{heroCaption}</figcaption>}
+              {(heroCaption || content.heroCaption) && (
+                <figcaption className="mt-3 text-[0.84rem] font-normal text-brand-muted">{heroCaption || content.heroCaption}</figcaption>
+              )}
             </figure>
           </Container>
         </header>

@@ -6,13 +6,15 @@ export const ARTICLE_07: BlogArticle = {
   category: 'trust-builders',
   publishDate: '2026-03-27',
   readTimeMinutes: 10,
-  heroImage: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200',
+  heroImage: '/images/blog/article-07/hero.webp',
   author: BLOG_AUTHOR_OROSTONE,
   tags: ['certifikácie', 'sinterovaný kameň', 'ISO normy', 'bezpečnosť potravín', 'NSF', 'CE označenie'],
 
   sk: {
     title: 'Certifikácie sinterovaného kameňa: čo znamenajú a prečo na nich záleží',
     subtitle: 'Kompletný sprievodca normami ISO, CE, NSF/ANSI 51 a Greenguard Gold — ako čítať technický list a odlíšiť skutočnú kvalitu od marketingu',
+    heroAlt: 'Tri vzorky sinterovaného kameňa Gothic Gold s lupou, kvapkami vody a posuvným meradlom, pohľad zhora',
+    heroCaption: 'Vizualizácia s dekorom Gothic Gold',
     excerpt: 'CE označenie, ISO 10545, NSF/ANSI 51, Greenguard Gold — čo tieto certifikácie skutočne zaručujú a ako sa nenechať oklamať "proprietárnym testovaním".',
     metaTitle: 'Certifikácie sinterovaného kameňa | OROSTONE',
     metaDescription: 'CE, ISO 10545, NSF/ANSI 51 a Greenguard Gold. Ktoré certifikáty pri sinterovanom kameni reálne niečo znamenajú a na ktoré sa pri výbere oplatí pýtať.',
@@ -159,8 +161,8 @@ export const ARTICLE_07: BlogArticle = {
 </ul>
 
 <div class="article-cta">
-  <p>Chcete vidieť technický list s certifikáciami pre konkrétny materiál? Navštívte showroom Orostone v Bratislave — ukážeme vám kompletné certifikáty aj výsledky testov pre každú dosku.</p>
-  <a href="/kontakt" class="cta-button">Dohodnúť konzultáciu zadarmo</a>
+  <p>Chcete vidieť technický list s certifikáciami pre konkrétny materiál? Navštívte showroom Orostone v Bošanoch — ukážeme vám kompletné certifikáty aj výsledky testov pre každú dosku.</p>
+  <a href="/kontakt" class="cta-btn">Dohodnúť konzultáciu zadarmo</a>
 </div>
 
 <h2 id="poziarny-odolnost">5. Požiarna odolnosť — triedy reakcie na oheň</h2>
@@ -331,7 +333,7 @@ export const ARTICLE_07: BlogArticle = {
       },
       {
         question: 'Kde nájdem technický list pre konkrétny materiál Orostone?',
-        answer: 'Technické listy a certifikáty pre všetky materiály v ponuke Orostone vám poskytneme na požiadanie počas konzultácie alebo návštevy showroomu v Bratislave. Radi vysvetlíme konkrétne čísla a pomôžeme vybrať materiál, ktorý spĺňa vaše technické požiadavky.'
+        answer: 'Technické listy a certifikáty pre všetky materiály v ponuke Orostone vám poskytneme na požiadanie počas konzultácie alebo návštevy showroomu v Bošanoch. Radi vysvetlíme konkrétne čísla a pomôžeme vybrať materiál, ktorý spĺňa vaše technické požiadavky.'
       },
       {
         question: 'Má sinterovaný kameň certifikát pre použitie v komerčných prevádzkach (reštaurácie, hotely)?',
@@ -343,6 +345,8 @@ export const ARTICLE_07: BlogArticle = {
   en: {
     title: 'Sintered Stone Certifications: What They Mean and Why They Matter',
     subtitle: 'Complete guide to ISO standards, CE marking, NSF/ANSI 51 and Greenguard Gold — how to read a technical data sheet and distinguish real quality from marketing',
+    heroAlt: 'Three Gothic Gold sintered stone samples with a magnifying glass, water drops and a caliper, top view',
+    heroCaption: 'Visualization with the Gothic Gold decor',
     excerpt: 'CE marking, ISO 10545, NSF/ANSI 51, Greenguard Gold — what these certifications actually guarantee and how to spot "proprietary testing" for what it is.',
     directAnswer: 'The key certifications for sintered stone are: CE marking (mandatory in the EU), ISO 10545 series (mechanical and chemical properties), NSF/ANSI 51 (food contact safety) and Greenguard Gold (VOC emissions). These certificates are issued by independent accredited laboratories — not the manufacturer. When selecting a material, ask for these specific standards, not "internal quality testing".',
     content: `
@@ -487,8 +491,8 @@ export const ARTICLE_07: BlogArticle = {
 </ul>
 
 <div class="article-cta">
-  <p>Want to see a technical data sheet with certifications for a specific material? Visit the Orostone showroom in Bratislava — we'll show you complete certificates and test results for every slab.</p>
-  <a href="/contact" class="cta-button">Book a Free Consultation</a>
+  <p>Want to see a technical data sheet with certifications for a specific material? Visit the Orostone showroom in Bošany — we'll show you complete certificates and test results for every slab.</p>
+  <a href="/kontakt" class="cta-btn">Book a Free Consultation</a>
 </div>
 
 <h2 id="fire-rating-en">5. Fire Performance — Reaction to Fire Classes</h2>
@@ -657,7 +661,7 @@ export const ARTICLE_07: BlogArticle = {
       },
       {
         question: 'Where can I find the technical data sheet for a specific Orostone material?',
-        answer: 'Technical data sheets and certificates for all materials in the Orostone range are available on request during a consultation or showroom visit in Bratislava. We are happy to explain specific figures and help you select a material that meets your technical requirements.'
+        answer: 'Technical data sheets and certificates for all materials in the Orostone range are available on request during a consultation or showroom visit in Bošany. We are happy to explain specific figures and help you select a material that meets your technical requirements.'
       },
       {
         question: 'Does sintered stone have certification for use in commercial premises (restaurants, hotels)?',

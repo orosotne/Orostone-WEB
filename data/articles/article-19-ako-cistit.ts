@@ -7,13 +7,15 @@ export const ARTICLE_19: BlogArticle = {
   publishDate: '2026-07-24',
   lastModified: '2026-07-24',
   readTimeMinutes: 7,
-  heroImage: 'https://images.unsplash.com/photo-1563453392212-326f5e854473?w=1200',
+  heroImage: '/images/blog/article-19/hero.webp',
   author: BLOG_AUTHOR_OROSTONE,
   tags: ['sinterovaný kameň', 'čistenie', 'údržba', 'starostlivosť', 'škvrny'],
 
   sk: {
     title: 'Ako čistiť sinterovaný kameň (jediná rutina, ktorú potrebuješ)',
     subtitle: 'Jednoduchý návod na každodennú aj hĺbkovú údržbu — vrátane zoznamu, čo na povrch nikdy nepatrí',
+    heroAlt: 'Ruka utiera pracovnú dosku Statuario Diamante mikrovláknovou utierkou, vedľa stojí fľaša s rozprašovačom',
+    heroCaption: 'Vizualizácia s dekorom Statuario Diamante',
     excerpt:
       'Najodolnejší povrch v kuchyni má paradoxne najjednoduchšiu údržbu. Vlhká utierka, saponát, hotovo. Tu je celá rutina aj postupy na zaschnuté škvrny.',
     metaTitle: 'Ako čistiť sinterovaný kameň: denná rutina aj zaschnuté škvrny | OROSTONE',
@@ -152,6 +154,8 @@ export const ARTICLE_19: BlogArticle = {
   en: {
     title: 'How to Clean Sintered Stone (The Only Routine You Need)',
     subtitle: 'A simple guide to daily and deep cleaning — including the short list of what must never touch the surface',
+    heroAlt: 'A hand wiping a Statuario Diamante worktop with a microfibre cloth next to a spray bottle',
+    heroCaption: 'Visualization with the Statuario Diamante decor',
     excerpt:
       "The most durable surface in your kitchen paradoxically needs the simplest care. Damp cloth, mild soap, done. Here's the full routine plus fixes for dried stains.",
     metaTitle: 'How to Clean Sintered Stone: Daily Routine & Dried Stains | OROSTONE',
