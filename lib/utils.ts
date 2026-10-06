@@ -73,3 +73,7 @@ async function retryImport<T extends ComponentType<unknown>>(
   }
   throw new Error('Unreachable');
 }
+
+/** Keeps a number and its unit on one line in headings: "20 mm", "300 °C", "20 %", "1 704 €". */
+export const keepUnits = (text: string): string =>
+  text.replace(/(\d) (mm|cm|m²|m|°C|%|€)(?=[\s,.:;!?)]|$)/g, '$1\u00A0$2');

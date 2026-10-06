@@ -1,17 +1,14 @@
-import React, { useState, useRef, useEffect, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
-import { ArrowRight, Clock, Calendar, Tag, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import {
   BlogCategory,
   BLOG_CATEGORY_LABELS,
 } from '../data/blogTypes';
 import { BLOG_ARTICLES_LISTING } from '../data/blogArticlesMeta';
 import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
-
-gsap.registerPlugin(ScrollTrigger);
+import { Container, GoldBand, PageHero, Section } from '../components/Design';
+import { BlogCard } from '../components/Blog/BlogCard';
 
 // ===========================================
 // CONSTANTS
@@ -26,12 +23,24 @@ const ALL_CATEGORIES: BlogCategory[] = [
   'control-care',
 ];
 
+const chip = (active: boolean) =>
+  `min-h-[44px] flex-none rounded-full border px-4 text-[0.84rem] font-medium transition-colors duration-200 ${
+    active ? 'border-brand-dark bg-brand-dark text-brand-light' : 'border-brand-line text-brand-dark hover:border-brand-dark'
+  }`;
+
+// Format date helper
+const formatDate = (dateStr: string) =>
+  new Date(dateStr).toLocaleDateString('sk-SK', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+
 // ===========================================
 // COMPONENT
 // ===========================================
 
 export const Blog: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const [activeCategory, setActiveCategory] = useState<BlogCategory | 'all'>('all');
 
@@ -51,88 +60,8 @@ export const Blog: React.FC = () => {
     return articles;
   }, [activeCategory, activeTag]);
 
-  // Format date helper
-  const formatDate = (dateStr: string) => {
-    const d = new Date(dateStr);
-    return d.toLocaleDateString('sk-SK', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric',
-    });
-  };
-
-  // ===========================================
-  // GSAP ANIMATIONS
-  // ===========================================
-
-  useGSAP(
-    () => {
-      if (!containerRef.current) return;
-
-      // Page header reveal (opacity only — y transforms cause CLS)
-      gsap.fromTo(
-        '.blog-page-header',
-        { opacity: 0 },
-        {
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power3.out',
-          delay: 0.1,
-        },
-      );
-
-      // Filter tabs reveal
-      gsap.fromTo(
-        '.blog-filter-tab',
-        { opacity: 0 },
-        {
-          opacity: 1,
-          duration: 0.5,
-          ease: 'power3.out',
-          stagger: 0.06,
-          delay: 0.3,
-        },
-      );
-
-      // Cards reveal
-      gsap.fromTo(
-        '.blog-grid-card',
-        { opacity: 0 },
-        {
-          opacity: 1,
-          duration: 0.6,
-          ease: 'power3.out',
-          stagger: 0.1,
-          scrollTrigger: {
-            trigger: '.blog-grid',
-            start: 'top 85%',
-            toggleActions: 'play none none reverse',
-          },
-        },
-      );
-    },
-    { scope: containerRef },
-  );
-
-  // Re-animate cards when filter changes
-  useEffect(() => {
-    const cards = containerRef.current?.querySelectorAll('.blog-grid-card');
-    if (!cards || cards.length === 0) return;
-
-    gsap.fromTo(
-      cards,
-      { opacity: 0 },
-      {
-        opacity: 1,
-        duration: 0.4,
-        ease: 'power3.out',
-        stagger: 0.06,
-      },
-    );
-  }, [activeCategory]);
-
   return (
-    <div ref={containerRef} className="min-h-dvh bg-[#FAFAFA]">
+    <div>
       <SEOHead
         title="Blog o sinterovanom kameni | OROSTONE"
         description="Články o sinterovanom kameni — cena, údržba, hrúbka, porovnania s keramikou a technickým kameňom. Pre tých, kto si vyberá dlhodobé riešenie."
@@ -144,162 +73,81 @@ export const Blog: React.FC = () => {
         ])}
       />
 
-      {/* ==================== PAGE HEADER ==================== */}
-      <section className="bg-white border-b border-gray-100">
-        <div className="container mx-auto px-4 lg:px-8 py-16 lg:py-24">
-          <div className="blog-page-header max-w-2xl mx-auto text-center">
-            <span className="text-[11px] tracking-[0.3em] uppercase text-brand-gold font-bold mb-3 block">
-              Blog
-            </span>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-sans font-bold text-brand-dark mb-4">
-              Blog
-            </h1>
-            <p className="text-gray-400 text-base lg:text-lg font-light leading-relaxed">
-              Odborné rady, porovnania a tipy pre váš projekt
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero eyebrow="Poradňa" title="Blog" lead="Odborné rady, porovnania a tipy pre váš projekt" />
 
       {/* ==================== CATEGORY FILTERS ==================== */}
-      <section className="bg-white border-b border-gray-100 sticky top-16 lg:top-20 z-30">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex [touch-action:manipulation] items-center gap-2 overflow-x-auto overscroll-x-contain py-4 scrollbar-hide" style={{ scrollbarWidth: 'none' }}>
-            {/* All tab */}
-            <button
-              onClick={() => setActiveCategory('all')}
-              className={`blog-filter-tab flex-shrink-0 px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.1em] transition-all duration-300 ${
-                activeCategory === 'all'
-                  ? 'bg-brand-dark text-white'
-                  : 'bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-brand-dark'
-              }`}
-            >
+      <div className="sticky top-16 z-30 border-y border-brand-line bg-brand-light lg:top-20">
+        <Container>
+          <div
+            className="-mx-[var(--os-edge)] flex items-center gap-2 overflow-x-auto overscroll-x-contain px-[var(--os-edge)] py-3 [scrollbar-width:none] [touch-action:manipulation]"
+            role="group"
+            aria-label="Kategórie článkov"
+          >
+            <button type="button" onClick={() => setActiveCategory('all')} className={chip(activeCategory === 'all')} aria-pressed={activeCategory === 'all'}>
               Všetko
             </button>
-
             {ALL_CATEGORIES.map((cat) => (
               <button
                 key={cat}
+                type="button"
                 onClick={() => setActiveCategory(cat)}
-                className={`blog-filter-tab flex-shrink-0 px-5 py-2 rounded-full text-xs font-bold uppercase tracking-[0.1em] transition-all duration-300 ${
-                  activeCategory === cat
-                    ? 'bg-brand-dark text-white'
-                    : 'bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-brand-dark'
-                }`}
+                className={chip(activeCategory === cat)}
+                aria-pressed={activeCategory === cat}
               >
                 {BLOG_CATEGORY_LABELS[cat]?.sk ?? cat}
               </button>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ==================== ACTIVE TAG BADGE ==================== */}
-      {/* Always render container to avoid CLS when tag badge appears/disappears */}
-      <div className="overflow-hidden transition-all duration-200" style={{ maxHeight: activeTag ? '60px' : '0px' }}>
-        <div className="container mx-auto px-4 lg:px-8 pt-6">
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-400 font-light">Filtrované podľa tagu:</span>
-            {activeTag && (
-              <Link
-                to="/blog"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-dark bg-brand-gold/15 px-3 py-1 rounded-full hover:bg-brand-gold/25 transition-colors duration-200"
-              >
-                {activeTag}
-                <X size={13} strokeWidth={2} />
-              </Link>
-            )}
-          </div>
-        </div>
+        </Container>
       </div>
 
       {/* ==================== ARTICLES GRID ==================== */}
-      <section className="py-12 lg:py-20">
-        <div className="container mx-auto px-4 lg:px-8">
-          {filteredArticles.length === 0 ? (
-            <div className="text-center py-20">
-              <p className="text-gray-400 text-lg font-light">
-                {activeTag
-                  ? `Žiadne články s tagom "${activeTag}".`
-                  : 'Zatiaľ žiadne články v tejto kategórii.'}
-              </p>
-            </div>
-          ) : (
-            <div className="blog-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-              {filteredArticles.map((article) => (
+      <Section tone="chalk" className="!pt-[clamp(32px,4vw,56px)]">
+        <Container>
+          {/* Always render container to avoid CLS when tag badge appears/disappears */}
+          <div className="overflow-hidden transition-all duration-200" style={{ maxHeight: activeTag ? '72px' : '0px' }}>
+            <div className="flex items-center gap-3 pb-8">
+              <span className="text-[0.9rem] font-normal text-brand-muted">Filtrované podľa tagu:</span>
+              {activeTag && (
                 <Link
-                  key={article.id}
-                  to={`/blog/${article.slug}`}
-                  className="blog-grid-card group"
+                  to="/blog"
+                  className="inline-flex min-h-[40px] items-center gap-1.5 rounded-full border border-brand-dark px-4 text-[0.88rem] font-medium no-underline"
                 >
-                  <article className="bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-500 h-full flex flex-col">
-                    {/* Hero Image */}
-                    <div className="relative aspect-[16/10] overflow-hidden">
-                      <img
-                        src={article.heroImage}
-                        alt={article.sk.title}
-                        width={1200}
-                        height={750}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                      {/* Category Badge */}
-                      <span className="absolute top-4 left-4 inline-block text-[10px] tracking-[0.15em] uppercase font-bold text-brand-dark bg-brand-gold/90 px-3 py-1 rounded-full">
-                        {BLOG_CATEGORY_LABELS[article.category]?.sk ?? article.category}
-                      </span>
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-5 lg:p-6 flex flex-col flex-grow">
-                      <h3 className="text-lg font-bold text-brand-dark font-sans mb-2 leading-snug group-hover:text-brand-gold transition-colors duration-300">
-                        {article.sk.title}
-                      </h3>
-                      <p className="text-gray-400 text-sm font-light leading-relaxed line-clamp-2 mb-4 flex-grow">
-                        {article.sk.excerpt}
-                      </p>
-
-                      {/* Meta Row */}
-                      <div className="flex items-center gap-4 text-xs text-gray-400 mb-4">
-                        <span className="flex items-center gap-1.5">
-                          <Calendar size={12} strokeWidth={1.5} />
-                          {formatDate(article.publishDate)}
-                        </span>
-                        <span className="flex items-center gap-1.5">
-                          <Clock size={12} strokeWidth={1.5} />
-                          {article.readTimeMinutes} min
-                        </span>
-                      </div>
-
-                      {/* Tags */}
-                      {article.tags.length > 0 && (
-                        <div className="flex items-center gap-2 flex-wrap mb-4">
-                          {article.tags.slice(0, 3).map((tag) => (
-                            <span
-                              key={tag}
-                              className="inline-flex items-center gap-1 text-[10px] text-gray-400 bg-gray-50 px-2.5 py-1 rounded-full"
-                            >
-                              <Tag size={9} strokeWidth={1.5} />
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-
-                      {/* Read More */}
-                      <div className="flex items-center gap-1.5 text-brand-gold text-xs font-bold uppercase tracking-[0.15em] group-hover:gap-2.5 transition-all duration-300 mt-auto">
-                        Čítať viac
-                        <ArrowRight size={13} />
-                      </div>
-                    </div>
-                  </article>
+                  {activeTag}
+                  <X size={14} strokeWidth={1.75} aria-hidden="true" />
+                  <span className="sr-only">zrušiť filter</span>
                 </Link>
-              ))}
+              )}
             </div>
+          </div>
+
+          {filteredArticles.length === 0 ? (
+            <p className="py-16 text-os-lead font-light text-brand-muted">
+              {activeTag
+                ? `Žiadne články s tagom "${activeTag}".`
+                : 'Zatiaľ žiadne články v tejto kategórii.'}
+            </p>
+          ) : (
+            <ul className="grid gap-x-5 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+              {filteredArticles.map((article) => (
+                <li key={article.id}>
+                  <BlogCard
+                    slug={article.slug}
+                    image={article.heroImage}
+                    title={article.sk.title}
+                    excerpt={article.sk.excerpt}
+                    category={BLOG_CATEGORY_LABELS[article.category]?.sk ?? article.category}
+                    date={formatDate(article.publishDate)}
+                    minutes={article.readTimeMinutes}
+                  />
+                </li>
+              ))}
+            </ul>
           )}
-        </div>
-      </section>
+        </Container>
+      </Section>
+
+      <GoldBand od="blog" />
     </div>
   );
 };
