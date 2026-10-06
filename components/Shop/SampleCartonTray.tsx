@@ -54,7 +54,10 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     const trayHeight = width * 315 / 720 + 140, minimum = innerWidth > 640 && mobile ? 240 : 420;
     const room = (mobile || width >= 240) && viewport - header >= trayHeight + (mobile ? minimum + 16 : 120);
     dockFits.current = room;
-    browser.style.setProperty('--mobile-browser-height', Math.max(minimum, viewport - header - (room ? trayHeight + 16 : 0)) + 'px'); browser.style.setProperty('--mobile-header-bottom', header + 'px');
+    // Reserve a balanced stage when the dock fits; shorter screens follow the
+    // content instead of stretching the carousel to the full viewport height.
+    const browserHeight = room ? Math.max(minimum, viewport - header - trayHeight - 16) : minimum;
+    browser.style.setProperty('--mobile-browser-height', browserHeight + 'px'); browser.style.setProperty('--mobile-header-bottom', header + 'px');
     const inBrowser = (mobile ? browserRect.top <= header + 20 : browserRect.top < viewport - trayHeight - 16) && buttonRect.bottom > header;
     const homeVisible = homeRect.top < viewport - Math.min(homeHeight.current || 360, 360) && homeRect.bottom > header;
     const orderRect = home.closest('.sample-order')?.getBoundingClientRect();

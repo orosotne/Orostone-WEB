@@ -38,9 +38,9 @@
 .sample-quantity-feedback{font-size:13px;line-height:1.6;color:#9b443c;margin:12px 0 0}
 .sample-quantity-feedback:empty{display:none}
 @media(max-width:720px){
- .sample-intro{padding:28px 20px 28px}
+ .sample-intro{padding:24px 20px 16px}
  .sample-intro-eyebrow{margin-bottom:8px}
- .sample-intro h1{font-size:32px;margin-bottom:10px}
+ .sample-intro h1{font-size:clamp(28px,7.6vw,32px);margin-bottom:10px;text-wrap:balance}
  .sample-intro-description{font-size:16px;line-height:1.5;margin-bottom:12px}
  .sample-intro-offer{font-size:14px;line-height:1.5}
  .sample-intro-offer strong{font-size:15px}
