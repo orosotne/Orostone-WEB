@@ -77,7 +77,7 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
       // On short phones, the photo may sit partly above the sticky header.
       // Keep the visible product, CTA and dock together instead of sending the
       // customer to the separate order summary to see the insertion.
-      minimum = Math.min(tile * .88, 144) + chrome;
+      minimum = Math.min(tile * .88, 96) + chrome;
     }
     const trayHeight = dockedTrayHeight(width, mobile);
     const room = width >= (mobile ? 260 : 240) && viewport - header >= trayHeight + (mobile ? minimum + bottomInset + 12 : 120);
@@ -94,7 +94,9 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     const readingOrder = orderRect && orderRect.top < header + (mobile ? 120 : (viewport - header) / 2);
     // A centered desktop tray must sit below the carousel's click target.
     // Keep its scale fixed while scrolling; only dock when both fit.
-    const clearsButton = viewport - bottomInset - 12 - buttonRect.bottom >= trayHeight;
+    // Match centerBrowser's 2px settling tolerance: fractional mobile scroll
+    // positions must not reject a dock that already has the intended gap.
+    const clearsButton = viewport - bottomInset - 12 - buttonRect.bottom >= trayHeight - 2;
     const next = (insertingFromGallery.current && isDocked.current && !editingField()) ||
       (inBrowser && !homeVisible && !readingOrder && !editingField() && room && clearsButton);
     if (!isDocked.current) homeHeight.current = tray.getBoundingClientRect().height;
