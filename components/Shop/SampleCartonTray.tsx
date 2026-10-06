@@ -11,6 +11,7 @@ export interface SampleCartonTrayHandle {
   remove(id: string): Promise<boolean>;
   setQuantity(quantity: SampleQuantity): Promise<boolean>;
   packageSelection(): Promise<void>;
+  showGallery(): void;
 }
 export interface SampleCartonTrayProps {
   quantity: SampleQuantity;
@@ -145,6 +146,20 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
       scrollDone.current = done; timer = setTimeout(done, 550); addEventListener('scrollend', done, { once: true }); window.scrollBy({ top: distance, behavior: 'smooth' });
     }));
   };
+  const showGallery = () => {
+    const focusGallery = () => {
+      const button = callbacks.current.carouselButtonRef.current;
+      const target = button && !button.disabled ? button : callbacks.current.browserRef.current?.querySelector<HTMLElement>('.sample-carousel-tile[aria-pressed="true"]');
+      target?.focus({ preventScroll: true });
+    };
+    if (isMobile()) {
+      const source = callbacks.current.browserRef.current?.querySelector<HTMLImageElement>('.sample-carousel-tile[aria-pressed="true"] img');
+      void centerBrowser(source ?? undefined).then(() => { if (alive.current) { syncDock(); focusGallery(); } });
+    } else {
+      callbacks.current.browserRef.current?.scrollIntoView({ behavior: reduced.current ? 'instant' : 'smooth', block: 'center' });
+      focusGallery();
+    }
+  };
   const playSegment = (start: number, end: number, speed = 1) => {
     const anim = animation.current; if (!anim) return Promise.resolve(); segmentDone.current?.();
     segmentEnd.current = end;
@@ -259,7 +274,7 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     catch { if (alive.current && run === operationVersion.current) motionFallback(); }
     finally { if (alive.current && run === operationVersion.current) setBusy(false); }
   };
-  useImperativeHandle(ref, () => ({ insert, remove, setQuantity, packageSelection }));
+  useImperativeHandle(ref, () => ({ insert, remove, setQuantity, packageSelection, showGallery }));
   useEffect(() => {
     alive.current = true;
     const media = matchMedia('(prefers-reduced-motion: reduce)'); reduced.current = media.matches;
@@ -298,12 +313,7 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
       <div className="sample-carton-labels">{view.visible.map((i, rank) => <div key={i} className={'sample-carton-label' + (view.slots[i] ? ' is-filled' : '')} style={{ left: labelLeft(i) }}>
         <span>{view.slots[i]?.name ?? 'Krabička ' + (rank + 1)}</span><button type="button" disabled={view.busy || props.locked || (!view.slots[i] && complete)} aria-label={view.slots[i] ? 'Odstrániť ' + view.slots[i]!.name : 'Vybrať dekor do krabičky ' + (rank + 1)} onClick={() => {
           const decor = model.current.slots[i]; if (decor) { void remove(decor.id); return; } preferredSlot.current = i;
-          if (isMobile()) {
-            const source = callbacks.current.browserRef.current?.querySelector<HTMLImageElement>('.sample-carousel-tile[aria-pressed="true"] img');
-            void centerBrowser(source ?? undefined).then(() => { if (alive.current) { syncDock(); callbacks.current.carouselButtonRef.current?.focus({ preventScroll: true }); } });
-          } else {
-            callbacks.current.browserRef.current?.scrollIntoView({ behavior: reduced.current ? 'instant' : 'smooth', block: 'center' }); callbacks.current.carouselButtonRef.current?.focus({ preventScroll: true });
-          }
+          showGallery();
         }}><span className="sample-carton-action-text">{view.slots[i] ? 'Odstrániť' : 'Vybrať dekor'}</span><span className="sample-carton-slot-name" aria-hidden="true">{view.slots[i]?.name ?? 'Vybrať dekor'}</span><span className="sample-carton-action-icon" aria-hidden="true">{view.slots[i] ? '×' : '+'}</span></button>
       </div>)}</div>
       <p className="sample-carton-live" role="status" aria-live="polite">{view.message}</p>{view.motionFailed && <p className="sample-carton-fallback-note">Výber je uložený. V objednávke môžete pokračovať.</p>}

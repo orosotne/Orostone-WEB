@@ -1,8 +1,7 @@
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useState } from 'react';
-import { ArrowRight, Loader2 } from 'lucide-react';
+import { ArrowRight, ArrowUp, Loader2 } from 'lucide-react';
 import SampleCartonTray, { type SampleCartonTrayHandle, type SampleDecor } from './SampleCartonTray';
 import { SampleQuantityPicker } from './SampleQuantityPicker';
-import { SAMPLE_DECORS } from '../../data/sample-decors';
 import { createSampleCheckout, fetchSampleBundle, formatSamplePrice, quoteSampleOrder, type SampleQuantity } from '../../services/shopify/samples';
 
 export interface SampleOrderSectionHandle {
@@ -108,18 +107,9 @@ export const SampleOrderSection = forwardRef<SampleOrderSectionHandle, SampleOrd
               checkoutButtonRef.current?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'center' });
               checkoutButtonRef.current?.focus({ preventScroll: true });
             }} browserRef={browserRef} carouselButtonRef={carouselButtonRef} />
-            <details className="sample-list-picker">
-              <summary>Vybrať dekor zo zoznamu</summary>
-              <label htmlFor="sample-order-decor">Pridať dekor do výberu</label>
-              <select id="sample-order-decor" value="" disabled={busy || complete} onChange={(event) => {
-                const decor = SAMPLE_DECORS.find((item) => item.id === event.target.value);
-                if (decor) void trayRef.current?.insert(decor);
-              }}>
-                <option value="">{complete ? 'Výber je kompletný' : 'Vyberte dekor…'}</option>
-                {SAMPLE_DECORS.map((decor) => <option key={decor.id} value={decor.id} disabled={selection.some((item) => item.id === decor.id)}>{decor.name}</option>)}
-              </select>
-              {complete ? <p>Ak chcete iný dekor, najprv ho odstráňte z krabičky.</p> : null}
-            </details>
+            <button type="button" className="sample-gallery-return" disabled={checkoutBusy} aria-controls="decor-carousel" onClick={() => trayRef.current?.showGallery()}>
+              Vybrať dekor <ArrowUp size={16} aria-hidden="true" />
+            </button>
           </div>
           <aside className="sample-order-summary" aria-labelledby="sample-summary-title">
             <h3 id="sample-summary-title">Cena vášho balenia</h3>
