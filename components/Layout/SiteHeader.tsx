@@ -7,6 +7,7 @@ import { EshopMegaMenu, MegaMenuCategory, getVisibleCategories } from '../Eshop/
 import { ShopProduct, SHOW_ANNOUNCEMENT_BAR } from '../../constants';
 import { useShopifyProducts } from '../../hooks/useShopifyProducts';
 import { ActionButton, Container } from '../Design';
+import { shopifySized } from '../../lib/shopifyImage';
 
 const SHOPIFY_ACCOUNT_URL = 'https://shopify.com/101386420570/account';
 const PHONE_HREF = 'tel:+421917588738';
@@ -251,7 +252,7 @@ export const SiteHeader: React.FC = () => {
                         onClick={() => handleSearchSelect(product)}
                         className="flex w-full items-center gap-4 px-4 py-3 text-left transition-colors hover:bg-brand-light"
                       >
-                        <img src={product.image} alt="" width={48} height={48} className="h-12 w-12 flex-shrink-0 rounded-[6px] object-cover" />
+                        <img src={shopifySized(product.image, 120)} alt="" width={48} height={48} className="h-12 w-12 flex-shrink-0 rounded-[6px] object-cover" />
                         <span className="min-w-0 flex-1">
                           <span className="block truncate text-sm font-medium">{product.name}</span>
                           <span className="block truncate text-xs text-brand-muted">

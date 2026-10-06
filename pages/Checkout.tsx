@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { formatPrice } from '../lib/utils';
+import { shopifySized } from '../lib/shopifyImage';
 import { useCookies } from '../context/CookieContext';
 import { trackMetaEvent, savePendingPurchase } from '../hooks/useMetaPixel';
 import { trackGA4BeginCheckout } from '../services/analytics';
@@ -97,7 +98,7 @@ export const Checkout = () => {
                   className="flex gap-5 py-6"
                 >
                   <div className="h-[126px] w-[72px] flex-none overflow-hidden rounded-[2px] bg-brand-sand shadow-[0_0_0_1px_rgba(26,26,26,0.07)]">
-                    <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
+                    <img src={shopifySized(item.image, 200)} alt={item.name} className="h-full w-full object-cover" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <h3 className="font-semibold tracking-[0.04em]">{item.name}</h3>

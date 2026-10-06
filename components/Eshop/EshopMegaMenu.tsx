@@ -5,6 +5,7 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { VISIBLE_CATEGORIES } from '../../config/features';
 import { useShopifyProducts } from '../../hooks/useShopifyProducts';
 import type { ProductColorTone, ShopProduct } from '../../constants';
+import { shopifySized, shopifySrcSet } from '../../lib/shopifyImage';
 
 // ===========================================
 // TYPES
@@ -413,8 +414,11 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
                     >
                       <div className="relative mb-3 aspect-[4/5] overflow-hidden rounded-[6px] bg-brand-gray">
                         <img
-                          src={product.image}
+                          src={shopifySized(product.image, 400)}
+                          srcSet={shopifySrcSet(product.image)}
+                          sizes="200px"
                           alt={product.name}
+                          decoding="async"
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                       </div>

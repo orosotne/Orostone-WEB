@@ -19,7 +19,7 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   };
 
   const containerClasses = fullScreen 
-    ? 'fixed inset-0 flex items-center justify-center bg-white/80 backdrop-blur-sm z-50'
+    ? 'fixed inset-0 flex items-center justify-center bg-brand-light/80 backdrop-blur-sm z-50'
     : 'flex items-center justify-center py-12';
 
   return (
@@ -34,14 +34,14 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
         >
           {/* Outer ring */}
           <m.div
-            className="absolute inset-0 border-2 border-brand-gold/30 rounded-full"
+            className="absolute inset-0 border-2 border-brand-line rounded-full"
             animate={{ scale: [1, 1.1, 1] }}
             transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           />
           
           {/* Spinning arc */}
           <m.div
-            className="absolute inset-0 border-2 border-transparent border-t-brand-gold rounded-full"
+            className="absolute inset-0 border-2 border-transparent border-t-brand-dark rounded-full"
             animate={{ rotate: 360 }}
             transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
           />
@@ -52,14 +52,14 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
             animate={{ scale: [0.8, 1, 0.8] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
           >
-            <div className="w-2 h-2 bg-brand-gold rounded-full" />
+            <div className="w-2 h-2 bg-brand-dark rounded-full" />
           </m.div>
         </m.div>
 
         {/* Loading text */}
         {text && (
           <m.p
-            className="text-sm font-light tracking-widest uppercase text-gray-500"
+            className="text-os-eyebrow uppercase text-brand-muted"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.3 }}

@@ -4,7 +4,7 @@ import type { ShopProduct } from '../../constants';
 import { formatPrice } from '../../lib/utils';
 import { calculateSlabPrice } from '../../lib/slab';
 import { HOME_DECORS } from '../Home/homeData';
-import { shopifyImageUrl, shopifySrcSet } from '../ProductDetail/utils';
+import { shopifySized, shopifySrcSet } from '../../lib/shopifyImage';
 
 export interface ProductCardProps {
   product: ShopProduct;
@@ -25,7 +25,6 @@ const SIZES = '(min-width: 1800px) 400px, (min-width: 1024px) 23vw, (min-width: 
 
 /** Catalog card: the whole slab in its true proportion, tone and thickness, price per m² and per slab, add to cart. */
 const ProductCardImpl: React.FC<ProductCardProps> = ({ product, onAddToCart, inCart, quantity, priority = false }) => {
-  const shopify = product.image.includes('cdn.shopify.com');
   // Tone · thickness · stock; the stock note shows from 640 px, phones get it on the product page
   const meta = [
     ...[TONE_LABEL.get(product.id), product.thickness.replace(/(\d)\s*mm/i, '$1 mm')]
@@ -39,9 +38,9 @@ const ProductCardImpl: React.FC<ProductCardProps> = ({ product, onAddToCart, inC
       <Link to={`/produkt/${product.id}`} className="block no-underline">
         <span className="block overflow-hidden rounded-[2px] bg-brand-sand shadow-[0_26px_38px_-26px_rgba(26,26,26,0.55),0_0_0_1px_rgba(26,26,26,0.07)] transition-transform duration-500 [transition-timing-function:cubic-bezier(0.2,0.7,0.2,1)] motion-safe:group-hover:-translate-y-2">
           <img
-            src={shopify ? shopifyImageUrl(product.image, 600) : product.image}
+            src={shopifySized(product.image, 600)}
             srcSet={shopifySrcSet(product.image)}
-            sizes={shopify ? SIZES : undefined}
+            sizes={SIZES}
             alt={product.name}
             width={1536}
             height={2752}

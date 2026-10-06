@@ -4,6 +4,7 @@ import { X, Minus, Plus, ShoppingBag, Trash2, ExternalLink, Wrench, Info, Chevro
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { formatPrice } from '../../lib/utils';
+import { shopifySized } from '../../lib/shopifyImage';
 import { useCookies } from '../../context/CookieContext';
 import { trackMetaEvent, savePendingPurchase } from '../../hooks/useMetaPixel';
 import { trackGA4BeginCheckout } from '../../services/analytics';
@@ -182,7 +183,7 @@ export const CartDrawer: React.FC = () => {
                             {/* Image: the slab stands upright, as in the catalog */}
                             <div className="h-[112px] w-16 flex-none overflow-hidden rounded-[2px] bg-brand-sand shadow-[0_0_0_1px_rgba(26,26,26,0.07)]">
                               <img
-                                src={item.image}
+                                src={shopifySized(item.image, 200)}
                                 alt={item.name}
                                 className="h-full w-full object-cover"
                               />
@@ -280,7 +281,7 @@ export const CartDrawer: React.FC = () => {
                               {/* Small image */}
                               <div className="h-14 w-14 flex-none overflow-hidden rounded-[2px] bg-brand-sand">
                                 <img
-                                  src={item.image}
+                                  src={shopifySized(item.image, 160)}
                                   alt={item.name}
                                   className="h-full w-full object-cover"
                                 />
