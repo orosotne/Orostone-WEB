@@ -5,6 +5,9 @@ export type SampleQuantity = 1 | 2 | 3;
 // Native Creator exports contain nested, type-specific keyframe structures.
 export type NativeMotionData = Record<string, any>;
 export interface LottieAnimation {
+  /** Lottie SVG can report DOMLoaded while its raster images are still loading. */
+  isLoaded?: boolean;
+  imagePreloader?: { loadedImages(): boolean };
   addEventListener(name: string, listener: () => void): void;
   removeEventListener(name: string, listener: () => void): void;
   resetSegments(force: boolean): void;
@@ -21,6 +24,100 @@ export const cartonLeft = (n: number, packed = false) => 464 - (202 + (n - 1) * 
 export { MOTION_TIMING };
 let assetsPromise: Promise<MotionAssets> | undefined;
 let exposureSequence = 0;
+const decodedMotionImages = new Map<string, Promise<void>>();
+interface MotionReadyOptions { signal?: AbortSignal; timeoutMs?: number }
+const motionAbortReason = (signal: AbortSignal) => signal.reason ?? new DOMException('Motion preparation aborted', 'AbortError');
+
+function decodeMotionImage(url: string, timeoutMs: number): Promise<void> {
+  const cached = decodedMotionImages.get(url);
+  if (cached) return cached;
+  const pending = new Promise<void>((resolve, reject) => {
+    const image = new Image(); image.decoding = 'async';
+    let settled = false, decoding = false;
+    const finish = (error?: Error) => {
+      if (settled) return; settled = true; clearTimeout(timer); image.onload = null; image.onerror = null;
+      if (error) reject(error); else resolve();
+    };
+    const loaded = () => {
+      if (decoding || settled) return; decoding = true;
+      if (!image.naturalWidth || !image.naturalHeight) { finish(new Error('Motion image unavailable')); return; }
+      // onload alone does not guarantee that an asynchronously decoded image
+      // can be painted into the first frame of a new SVG or its flight clone.
+      const decoded = typeof image.decode === 'function' ? image.decode() : Promise.resolve();
+      void decoded.then(() => finish(), () => finish(new Error('Motion image failed to decode')));
+    };
+    image.onload = loaded; image.onerror = () => finish(new Error('Motion image failed to load'));
+    const timer = setTimeout(() => finish(new Error('Motion image timeout')), timeoutMs);
+    image.src = url;
+    if (image.complete && image.naturalWidth > 0) loaded();
+  });
+  decodedMotionImages.set(url, pending);
+  // A failed or timed-out URL must be retried on a later selection. Successful
+  // promises remain cached, and concurrent mounts share the same preparation.
+  void pending.catch(() => { if (decodedMotionImages.get(url) === pending) decodedMotionImages.delete(url); });
+  return pending;
+}
+
+/** Warm an authentic model photograph without creating or changing a selection. */
+export function preloadSampleTexture(decor: SampleDecor): Promise<void> {
+  const name = decor.id + '.webp';
+  const path = name in STONE_PHOTOS ? ASSET_ROOT + 'textures-hd/' + name : decor.image;
+  return decodeMotionImage(new URL(path, document.baseURI).href, 12000);
+}
+
+/** Prepare only the raster assets reachable in the already-pruned motion data. */
+export function waitForMotionImages(data: NativeMotionData, { signal, timeoutMs = 12000 }: MotionReadyOptions = {}): Promise<void> {
+  if (signal?.aborted) return Promise.reject(motionAbortReason(signal));
+  const urls = new Set<string>();
+  for (const asset of data.assets ?? []) {
+    if (typeof asset.p !== 'string' || !asset.p) continue;
+    const path = (asset.e ? '' : asset.u ?? '') + asset.p;
+    urls.add(new URL(path, document.baseURI).href);
+  }
+  const prepared = Promise.all(Array.from(urls, url => decodeMotionImage(url, timeoutMs))).then(() => undefined);
+  if (!signal) return prepared;
+  return new Promise<void>((resolve, reject) => {
+    let settled = false;
+    const finish = (error?: unknown) => {
+      if (settled) return; settled = true; signal.removeEventListener('abort', aborted);
+      if (error !== undefined) reject(error); else resolve();
+    };
+    const aborted = () => finish(motionAbortReason(signal));
+    signal.addEventListener('abort', aborted, { once: true });
+    void prepared.then(() => finish(), error => finish(error));
+  });
+}
+
+/** DOMLoaded and loaded_images are independent readiness gates for SVG Lottie. */
+export function awaitLottieReady(animation: LottieAnimation, { signal, timeoutMs = 12000 }: MotionReadyOptions = {}): Promise<void> {
+  if (signal?.aborted) return Promise.reject(motionAbortReason(signal));
+  return new Promise<void>((resolve, reject) => {
+    let settled = false, domReady = animation.isLoaded === true, imagesReady = false;
+    const cleanup = () => {
+      clearTimeout(timer); signal?.removeEventListener('abort', aborted);
+      animation.removeEventListener('DOMLoaded', domLoaded); animation.removeEventListener('loaded_images', imagesLoaded);
+      animation.removeEventListener('data_failed', failed); animation.removeEventListener('error', failed); animation.removeEventListener('destroy', destroyed);
+    };
+    const finish = (error?: unknown) => { if (settled) return; settled = true; cleanup(); if (error !== undefined) reject(error); else resolve(); };
+    const check = () => {
+      domReady ||= animation.isLoaded === true;
+      // Before configuration, the preloader has zero assets and reports true.
+      // That empty snapshot must not count as readiness for later raster URLs.
+      imagesReady ||= domReady && animation.imagePreloader?.loadedImages() === true;
+      if (domReady && imagesReady) finish();
+    };
+    const domLoaded = () => { domReady = true; check(); }, imagesLoaded = () => { imagesReady = true; check(); };
+    const failed = () => finish(new Error('Motion rendering failed')), destroyed = () => finish(new Error('Motion animation destroyed'));
+    const aborted = () => finish(signal ? motionAbortReason(signal) : new DOMException('Motion preparation aborted', 'AbortError'));
+    const timer = setTimeout(() => finish(new Error('Motion readiness timeout')), timeoutMs);
+    animation.addEventListener('DOMLoaded', domLoaded); animation.addEventListener('loaded_images', imagesLoaded);
+    animation.addEventListener('data_failed', failed); animation.addEventListener('error', failed); animation.addEventListener('destroy', destroyed);
+    signal?.addEventListener('abort', aborted, { once: true });
+    // Both events may have fired before this helper was attached on a cached
+    // fast mount; the runtime state closes that gap without adding a delay.
+    check();
+  });
+}
 
 export function loadMotionAssets(): Promise<MotionAssets> {
   if (assetsPromise) return assetsPromise;
@@ -81,7 +178,7 @@ export function makeCartonData(assets: MotionAssets, slots: (SampleDecor | null)
     } else box.ks.p = { a: 0, k: [startX, 250] };
     if (!decor) continue;
     // Match the authentic slab photograph by model, independent of carousel URL.
-    const photoName = decor.name.toLowerCase().replace(/\s+/g, '-') + '.webp';
+    const photoName = decor.id + '.webp';
     const selectedAsset = byId.get('selected-' + i);
     if (selectedAsset) {
       selectedAsset.p = photoName in STONE_PHOTOS ? photoName : decor.image;

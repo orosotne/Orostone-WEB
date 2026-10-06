@@ -6,6 +6,7 @@ import { SAMPLE_DECORS } from '../data/sample-decors';
 import type { SampleOrderSectionHandle } from '../components/Shop/SampleOrderSection';
 import type { SampleDecor } from '../components/Shop/SampleCartonTray';
 import type { SampleQuantity } from '../services/shopify/samples';
+import { preloadSampleTexture } from '../components/Shop/sampleCartonMotion';
 import '../components/Shop/SampleQuantityPicker.css';
 import './Vzorky.css';
 
@@ -44,6 +45,7 @@ export const Vzorky: React.FC = () => {
   const browserRef = useRef<HTMLDivElement>(null);
   const carouselButtonRef = useRef<HTMLButtonElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [carouselMoving, setCarouselMoving] = useState(false);
   const isMobile = useIsMobile();
   const scrollRef = useRef<HTMLDivElement>(null);
   const tileRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -87,6 +89,7 @@ export const Vzorky: React.FC = () => {
     settleTimerRef.current = window.setTimeout(() => {
       settleTimerRef.current = null;
       setActiveIndex(prev => (prev === closestIdx ? prev : closestIdx));
+      setCarouselMoving(false);
     }, 150);
   }, [isMobile]);
 
@@ -126,11 +129,13 @@ export const Vzorky: React.FC = () => {
           if (pxDist < closestDist) { closestDist = pxDist; closestIdx = i; }
         });
         setActiveIndex((prev) => (prev === closestIdx ? prev : closestIdx));
+        setCarouselMoving(false);
       };
 
       // Per-frame work is only a timer reset (no layout/style writes); the
       // single geometry pass + state commit runs once, after motion stops.
       const onScroll = () => {
+        setCarouselMoving(true);
         if (settle !== null) clearTimeout(settle);
         settle = window.setTimeout(commitCentered, 150);
       };
@@ -145,6 +150,7 @@ export const Vzorky: React.FC = () => {
 
     // ── Desktop: original scroll-driven RAF for scale/opacity transitions.
     const onScroll = () => {
+      setCarouselMoving(true);
       cancelAnimationFrame(rafRef.current);
       rafRef.current = requestAnimationFrame(updateTransforms);
     };
@@ -168,8 +174,12 @@ export const Vzorky: React.FC = () => {
     if (!el || !scrollRef.current) return;
     const container = scrollRef.current;
     const left = el.offsetLeft - container.offsetWidth / 2 + el.offsetWidth / 2;
+    if (Math.abs(container.scrollLeft - left) > 1) setCarouselMoving(true);
     container.scrollTo({ left, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
   }, []);
+
+  // Decode the displayed material before it is needed by the box animation.
+  useEffect(() => { void preloadSampleTexture(SAMPLE_TILES[activeIndex]).catch(() => {}); }, [activeIndex]);
 
   /* Center first tile on mount */
   useEffect(() => {
@@ -204,13 +214,15 @@ export const Vzorky: React.FC = () => {
   };
 
   const handleSelectDekor = () => {
+    if (carouselMoving || sampleBusy) return;
     if (selectionComplete) {
       document.getElementById('vzorka')?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
       return;
     }
     const container = scrollRef.current;
     if (!container) return;
-    // Resolve from the visible tile now; the label state commits after scroll settles.
+    // The action is enabled only after snapping settles. Keep the name, source
+    // image and immutable decor object together for the entire transfer.
     const centerX = container.scrollLeft + container.offsetWidth / 2;
     let centeredIndex = activeIndex;
     let closestDistance = Infinity;
@@ -237,7 +249,7 @@ export const Vzorky: React.FC = () => {
   const selectionComplete = selection.length === quantity;
 
   return (
-    <main className="sample-page min-h-dvh">
+    <main className="sample-page min-h-svh">
       <SEOHead
         title="Vzorky sinterovaného kameňa | OROSTONE"
         description="Objednajte si vzorku dekoru, ktorý vás zaujal, alebo viac vzoriek na porovnanie. Pri väčších plochách odporúčame návštevu showroomu Bošany."
@@ -276,10 +288,11 @@ export const Vzorky: React.FC = () => {
             className="vzorky-hide-sb flex items-center overflow-x-auto snap-x snap-mandatory"
             style={{
               scrollbarWidth: 'none',
+              pointerEvents: sampleBusy ? 'none' : undefined,
               WebkitOverflowScrolling: 'touch',
               gap: `${isMobile ? 24 : GAP}px`,
-              paddingLeft: isMobile ? 'calc(50% - var(--sample-tile-size, min(62vw, 240px)) * .5)' : `calc(50% - ${TILE_BASE / 2}px)`,
-              paddingRight: isMobile ? 'calc(50% - var(--sample-tile-size, min(62vw, 240px)) * .5)' : `calc(50% - ${TILE_BASE / 2}px)`,
+              paddingLeft: isMobile ? 'calc(50% - min(70vw, 280px) * .5)' : `calc(50% - ${TILE_BASE / 2}px)`,
+              paddingRight: isMobile ? 'calc(50% - min(70vw, 280px) * .5)' : `calc(50% - ${TILE_BASE / 2}px)`,
               paddingTop: '40px',
               paddingBottom: '40px',
             }}
@@ -288,18 +301,19 @@ export const Vzorky: React.FC = () => {
               <div
                 key={tile.id}
                 role="button"
-                tabIndex={0}
+                tabIndex={sampleBusy ? -1 : 0}
+                aria-disabled={sampleBusy}
                 aria-label={"Zobraziť " + tile.name}
                 aria-pressed={i === activeIndex}
-                onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); scrollToIndex(i); } }}
+                onKeyDown={(event) => { if (!sampleBusy && (event.key === 'Enter' || event.key === ' ')) { event.preventDefault(); scrollToIndex(i); } }}
                 ref={(el) => { tileRefs.current[i] = el; }}
                 className="sample-carousel-tile flex-shrink-0 snap-center will-change-transform"
                 style={{
-                  width: isMobile ? 'var(--sample-tile-size, min(62vw, 240px))' : `${TILE_BASE}px`,
-                  height: isMobile ? 'var(--sample-tile-size, min(62vw, 240px))' : `${TILE_BASE}px`,
+                  width: isMobile ? 'min(70vw, 280px)' : `${TILE_BASE}px`,
+                  height: isMobile ? 'min(70vw, 280px)' : `${TILE_BASE}px`,
                   transition: 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1)',
                 }}
-                onClick={() => scrollToIndex(i)}
+                onClick={() => { if (!sampleBusy) scrollToIndex(i); }}
               >
                 <div className="w-full h-full rounded-2xl overflow-hidden cursor-pointer">
                   <img
@@ -328,7 +342,7 @@ export const Vzorky: React.FC = () => {
             <button
               type="button"
               onClick={goLeft}
-              disabled={activeIndex === 0}
+              disabled={sampleBusy || activeIndex === 0}
               aria-label="Predchádzajúca vzorka"
               className="sample-decor-arrow"
             >
@@ -338,7 +352,7 @@ export const Vzorky: React.FC = () => {
             <button
               type="button"
               onClick={goRight}
-              disabled={activeIndex === SAMPLE_TILES.length - 1}
+              disabled={sampleBusy || activeIndex === SAMPLE_TILES.length - 1}
               aria-label="Nasledujúca vzorka"
               className="sample-decor-arrow"
             >
@@ -350,7 +364,7 @@ export const Vzorky: React.FC = () => {
             type="button"
             ref={carouselButtonRef}
             onClick={handleSelectDekor}
-            disabled={sampleBusy || (alreadySelected && !selectionComplete)}
+            disabled={sampleBusy || carouselMoving || (alreadySelected && !selectionComplete)}
             className="sample-decor-add"
           >
             {sampleBusy ? 'Ukladáme vzorku…' : selectionComplete ? 'Skontrolovať výber →' : alreadySelected ? 'Vo vašom výbere ✓' : 'Pridať do výberu'}
