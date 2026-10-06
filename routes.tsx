@@ -7,7 +7,6 @@ import { SEOHead } from './components/UI/SEOHead';
 import { lazyWithRetry } from './lib/utils';
 
 // Lazy loaded pages — lazyWithRetry retries failed chunk loads (e.g. after deployment)
-const ProductCatalog = lazyWithRetry(() => import('./pages/ProductCatalog').then(m => ({ default: m.ProductCatalog })));
 const EshopContact = lazyWithRetry(() => import('./pages/EshopContact').then(m => ({ default: m.EshopContact })));
 const CategoryPage = lazyWithRetry(() => import('./pages/CategoryPage').then(m => ({ default: m.CategoryPage })));
 const Checkout = lazyWithRetry(() => import('./pages/Checkout').then(m => ({ default: m.Checkout })));

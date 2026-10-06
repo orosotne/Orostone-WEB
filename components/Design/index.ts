@@ -8,6 +8,7 @@ export { TextLink } from './TextLink';
 export { ActionButton } from './ActionButton';
 export type { ActionButtonVariant } from './ActionButton';
 export { PageHero, PageHeroImage } from './PageHero';
+export type { BreadcrumbItem } from './PageHero';
 export { ResponsiveImage } from './ResponsiveImage';
 export { FeatureGrid } from './FeatureGrid';
 export type { FeatureItem } from './FeatureGrid';
@@ -18,6 +19,7 @@ export type { FaqItem } from './FaqList';
 export { ArticleLinks } from './ArticleLinks';
 export type { ArticleLinkItem } from './ArticleLinks';
 export { GoldBand } from './GoldBand';
+export { chipClass } from './chip';
 export { oroKlientUrl, PHONE_HREF, PHONE_LABEL } from './links';
 export {
   useDrawIn,

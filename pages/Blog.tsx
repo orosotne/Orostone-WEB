@@ -7,7 +7,7 @@ import {
 } from '../data/blogTypes';
 import { BLOG_ARTICLES_LISTING } from '../data/blogArticlesMeta';
 import { SEOHead, createBreadcrumbLD } from '../components/UI/SEOHead';
-import { Container, GoldBand, PageHero, Section } from '../components/Design';
+import { chipClass as chip, Container, GoldBand, PageHero, Section } from '../components/Design';
 import { BlogCard } from '../components/Blog/BlogCard';
 
 // ===========================================
@@ -22,11 +22,6 @@ const ALL_CATEGORIES: BlogCategory[] = [
   'value-comparisons',
   'control-care',
 ];
-
-const chip = (active: boolean) =>
-  `min-h-[44px] flex-none rounded-full border px-4 text-[0.84rem] font-medium transition-colors duration-200 ${
-    active ? 'border-brand-dark bg-brand-dark text-brand-light' : 'border-brand-line text-brand-dark hover:border-brand-dark'
-  }`;
 
 // Format date helper
 const formatDate = (dateStr: string) =>

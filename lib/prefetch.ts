@@ -23,7 +23,6 @@ export function scheduleChunkPrefetch(): void {
 
   onIdle(() => {
     import('../pages/CategoryPage');
-    import('../pages/ProductCatalog');
   }, 3000);
 
   onIdle(() => {

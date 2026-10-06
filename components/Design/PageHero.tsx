@@ -1,12 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Container } from './Container';
 import { Eyebrow } from './Eyebrow';
 import { Section, type SectionTone } from './Section';
+
+export interface BreadcrumbItem {
+  label: string;
+  /** Omitted for the current page (the last item) */
+  to?: string;
+}
 
 interface PageHeroProps {
   /** The page H1 */
   title: React.ReactNode;
   eyebrow?: React.ReactNode;
+  /** Shown in place of the eyebrow; mirrors the page's BreadcrumbList JSON-LD */
+  breadcrumb?: BreadcrumbItem[];
   lead?: React.ReactNode;
   /** One dark ActionButton and/or TextLinks */
   actions?: React.ReactNode;
@@ -18,7 +27,7 @@ interface PageHeroProps {
 }
 
 /** Opening band of a subpage: eyebrow, H1, lead and actions on the left edge, optional photo beside them. */
-export const PageHero: React.FC<PageHeroProps> = ({ title, eyebrow, lead, actions, media, tone = 'chalk', children }) => (
+export const PageHero: React.FC<PageHeroProps> = ({ title, eyebrow, breadcrumb, lead, actions, media, tone = 'chalk', children }) => (
   <Section tone={tone} band={false} className="pb-[var(--os-band)] pt-[clamp(40px,5vw,88px)]">
     <Container>
       <div
@@ -27,7 +36,26 @@ export const PageHero: React.FC<PageHeroProps> = ({ title, eyebrow, lead, action
         }
       >
         <div className="grid max-w-[660px] justify-items-start gap-5">
-          {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+          {breadcrumb ? (
+            <nav aria-label="Navigačná cesta">
+              <ol className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-os-eyebrow uppercase before:mr-1 before:h-px before:w-7 before:bg-current before:opacity-75 before:content-['']">
+                {breadcrumb.map((item, i) => (
+                  <li key={item.label} className="flex items-center gap-2.5">
+                    {i > 0 && <span aria-hidden="true" className="font-normal text-brand-muted">/</span>}
+                    {item.to ? (
+                      <Link to={item.to} className="text-brand-muted no-underline transition-colors hover:text-brand-dark">
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <span aria-current="page">{item.label}</span>
+                    )}
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          ) : (
+            eyebrow && <Eyebrow>{eyebrow}</Eyebrow>
+          )}
           <h1 className="text-os-h1 [text-wrap:balance]">{title}</h1>
           {lead && <p className="max-w-[54ch] text-os-lead font-light text-brand-muted">{lead}</p>}
           {actions && <div className="mt-3 flex flex-wrap items-center gap-x-8 gap-y-4">{actions}</div>}
