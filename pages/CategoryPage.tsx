@@ -216,6 +216,7 @@ export const CategoryPage: React.FC = () => {
             <CatalogGridSkeleton />
           ) : hasProducts ? (
             <>
+              <h2 className="sr-only">{subCategoryName ? `${subCategoryName} dekory` : isSintered ? 'Všetky dekory' : category.name}</h2>
               {usingFallback && <CatalogOfflineNotice />}
               {/* Product Grid — plain div (no framer-motion wrap to avoid 50-card reconciliation cost on INP) */}
               <div className={CATALOG_GRID}>

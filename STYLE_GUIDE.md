@@ -1,6 +1,6 @@
 # Orostone Style Guide
 
-Since October 2026 the site is moving to a new design system, taken from the approved homepage proposal. New and rewritten sections must use it. Pages that are not migrated yet still use the legacy patterns listed at the end of this file. When you make a small edit in such a page, match the surrounding style instead of mixing the two systems.
+Since October 2026 the site uses a new design system, taken from the approved homepage proposal. Every page has been migrated except the product detail (`/produkt/:id`, `pages/ShopProductDetail.tsx` + `components/ProductDetail/`), which keeps its own look until the owner approves a proposal. New and rewritten sections must use the system below; the legacy patterns at the end of this file only survive on the product detail.
 
 ---
 
@@ -22,6 +22,9 @@ Since October 2026 the site is moving to a new design system, taken from the app
 | `ArticleLinks` | Related blog articles as hairline cards |
 | `GoldBand` | The gold end-of-page band: orientačná cena on oro-klient with `?od=<page>` and the phone number |
 | `ResponsiveImage` | AVIF + WebP in two widths for images made by `temp_redizajn/page-assets.mjs` (`public/images/stranky/`) |
+| `PageHero` `breadcrumb` | Visible breadcrumb in place of the eyebrow; mirror the page's BreadcrumbList JSON-LD |
+| `chipClass(active)` | 44 px filter pill (blog categories, decor colours); graphite when active. Use buttons for in-page filters, links for indexable URLs |
+| `LegalLayout` · `LegalSection` · `LegalClause` | Legal and policy documents: table of contents beside the text from 1280 px (sticky, marks the section in view), numbered articles, clauses with an optional `highlight`; `LEGAL_LINK` and `LEGAL_BOX` for links and set-apart blocks |
 
 Reference sheet while developing: `npm run dev` → http://localhost:3000/_dizajn (not in production builds).
 
@@ -40,6 +43,18 @@ Reference sheet while developing: `npm run dev` → http://localhost:3000/_dizaj
 - Article typography lives in the `PROSE` constant in `pages/BlogArticle.tsx`. It styles the HTML in `data/articles` and its blocks: `.article-tldr`, `-highlight`, `-tip`, `-quote`, `-figure`, `-case-study`, `-cta`.
 - `.gold` in an article is graphite text on a gold marker, never gold text.
 - Keep `keepUnits()` on headings so "20 mm" does not break.
+
+### E-shop
+
+- `components/Shop/ProductCard` is the catalog card: the whole slab in its true proportion (Shopify images are 1536 × 2752 px), tone label · thickness · stock, price per m² and per slab, and an outline „Do košíka" button outside the link. The grid class lives in `components/Shop/catalogGrid.ts` so the skeletons match.
+- Load Shopify images through `lib/shopifyImage.ts` (`shopifySized`, `shopifySrcSet`): the CDN resizes on `?width=`, the originals are ~250 KB each.
+- Slab prices are whole euros in Shopify and `pricePerM2` is derived from them; round `calculateSlabPrice()` before showing it so it matches the cart.
+- Cart drawer, checkout, thank-you page and cookie dialogs use chalk surfaces, graphite primary buttons and outline secondary ones; no gold buttons there. Every icon-only button has an `aria-label`; dialogs close with Escape.
+- Short utility pages (404, empty cart, thank-you) fill the viewport: `min-h-[calc(100dvh-4rem)] lg:min-h-[calc(100dvh-5rem)]`.
+
+### Legal and info pages
+
+`PageHero` → `LegalLayout` with the page's „Rýchla navigácia" items → `LegalSection`s. Keep the lawyer's wording, ids, numbering and tables exactly; restyle only. Notices are sand blocks with a graphite left rule (`border-l-2 border-brand-dark`), never amber, blue or green. No `GoldBand` on legal documents.
 
 ### Subpage pattern
 
@@ -128,7 +143,7 @@ Links to oro-klient.orostone.sk carry `?od=<miesto>`, never UTM parameters.
 
 ## Legacy patterns (being phased out)
 
-These are still in pages that have not been migrated. Don't use them in new or rewritten sections.
+These remain only on the product detail page. Don't use them anywhere else.
 
 | Legacy | Replace with |
 |---|---|

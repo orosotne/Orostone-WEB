@@ -32,6 +32,8 @@ export const MobileCtaBar: React.FC = () => {
     <div
       className={`fixed inset-x-0 bottom-0 z-[60] flex gap-2.5 border-t border-brand-line bg-brand-light px-4 pb-[calc(10px+env(safe-area-inset-bottom,0px))] pt-2.5 transition-transform duration-300 [transition-timing-function:cubic-bezier(.2,.7,.2,1)] motion-reduce:transition-none lg:hidden ${visible ? 'translate-y-0' : 'translate-y-[110%]'}`}
       aria-hidden={!visible}
+      // inert while slid away: its links must not be reachable by Tab or a screen reader
+      inert={!visible}
     >
       <ActionButton variant="gold" to="https://oro-klient.orostone.sk/?od=mobil-lista" className="min-h-[50px] flex-1">
         Získať orientačnú cenu
@@ -39,7 +41,6 @@ export const MobileCtaBar: React.FC = () => {
       <a
         href="tel:+421917588738"
         aria-label="Zavolať +421 917 588 738"
-        tabIndex={visible ? undefined : -1}
         className="grid h-[50px] w-[50px] flex-none place-items-center rounded-[10px] bg-brand-dark text-brand-light"
       >
         <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">

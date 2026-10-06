@@ -29,7 +29,7 @@ export const CookieBanner: React.FC = () => {
 
             {/* Text */}
             <div className="flex-1">
-              <h3 className="mb-2 text-[1.05rem] font-semibold">Používame cookies a podobné technológie</h3>
+              <h2 className="mb-2 text-[1.05rem] font-semibold">Používame cookies a podobné technológie</h2>
               <p className="text-[0.88rem] font-light leading-relaxed text-brand-muted">
                 Na našom webe používame nevyhnutné cookies a podobné technológie
                 na zabezpečenie správneho fungovania, bezpečnosti a uloženia vašich nastavení.

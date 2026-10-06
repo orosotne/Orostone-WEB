@@ -11,7 +11,7 @@ Premium e-commerce website for Orostone (sintered stone / veľkoformátové plat
 
 - **Framework:** React 19 + TypeScript + Vite 6
 - **Styling:** Tailwind CSS 3 (custom brand colors/theme)
-- **Animations:** Framer Motion, GSAP, Lenis (smooth scroll)
+- **Animations:** Framer Motion (LazyMotion, `m.*`); GSAP and Lenis are no longer imported anywhere
 - **E-commerce:** Shopify Storefront API via Hydrogen React
 - **Backend/Auth:** Supabase (PostgreSQL + auth)
 - **AI:** Google Gemini API (visualizer feature)
@@ -60,7 +60,7 @@ See `.env.example`. Required:
 
 ## Styling Conventions (see STYLE_GUIDE.md)
 
-The site is moving to a new design system (October 2026). New and rewritten sections use the building blocks in `components/Design/` (`Container`, `Section`, `SectionHeader`, `Eyebrow`, `TextLink`, `ActionButton`) and these tokens: colours `brand-light`, `brand-sand`, `brand-dark`, `brand-muted`, `brand-line`, `brand-gold` (accent only); type `text-os-h1`, `text-os-h2`, `text-os-h3`, `text-os-lead`, `text-os-eyebrow`. Pages that are not migrated yet still use the legacy patterns listed in STYLE_GUIDE.md; for small edits there, match the surrounding style. Reference sheet while developing: `/_dizajn`.
+The site uses a new design system (October 2026). New and rewritten sections use the building blocks in `components/Design/` (`Container`, `Section`, `SectionHeader`, `Eyebrow`, `TextLink`, `ActionButton`, `PageHero`, `GoldBand`, `FeatureGrid`, `StepList`, `FaqList`, `LegalLayout` …; full list in STYLE_GUIDE.md) and these tokens: colours `brand-light`, `brand-sand`, `brand-dark`, `brand-muted`, `brand-line`, `brand-gold` (accent only); type `text-os-h1`, `text-os-h2`, `text-os-h3`, `text-os-lead`, `text-os-eyebrow`. Only the product detail (`ShopProductDetail` + `components/ProductDetail/`) still uses the legacy patterns listed in STYLE_GUIDE.md; change its look only after the owner approves a proposal. Reference sheet while developing: `/_dizajn`.
 
 - Font: **Montserrat** only (`font-sans`); headings weight 600, body 300.
 - Gold #ECD488 only as an accent (gold CTA in the header, the gold band and the mobile bar), never as text on a light background.

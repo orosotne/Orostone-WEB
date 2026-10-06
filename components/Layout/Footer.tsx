@@ -122,7 +122,7 @@ const FooterComponent: React.FC<FooterProps> = ({ categories = [], isProductDeta
           {TRUST.map(({ Icon, title, text }, i) => (
             <div key={title} className="os-ico-item grid justify-items-center gap-1 text-center" style={{ '--d': `${i * 0.14}s` } as React.CSSProperties}>
               <Icon className="mb-3.5 h-12 w-12" />
-              <h4 className="text-[0.92rem] font-semibold">{title}</h4>
+              <p className="text-[0.92rem] font-semibold">{title}</p>
               <p className="text-[0.82rem] font-normal text-brand-light/60">{text}</p>
             </div>
           ))}
@@ -221,7 +221,7 @@ const FooterComponent: React.FC<FooterProps> = ({ categories = [], isProductDeta
       <Container>
         <div className="mt-14 flex flex-col gap-6 border-t border-brand-light/15 pt-6 text-[0.8rem] text-brand-light/60 lg:flex-row lg:items-start lg:justify-between">
           <div className="grid gap-2">
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-0.5 [&>a]:py-1.5 [&>button]:py-1.5">
               <span>© {new Date().getFullYear()} Orostone</span>
               <Link to="/vop" className="hover:text-brand-light hover:underline">Obchodné podmienky</Link>
               <Link to="/podmienky-rezervacie-ceny" className="hover:text-brand-light hover:underline">Rezervačný poplatok</Link>

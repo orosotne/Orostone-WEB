@@ -27,6 +27,16 @@ export const Checkout = () => {
   const { items, removeItem, updateQuantity, subtotal, total, totalDiscount, subtotalBeforeDiscount, appliedDiscountTitles, itemCount, checkoutUrl, isLoading } = useCart();
   const { preferences } = useCookies();
 
+  // Cart still loading and nothing in it yet: hold the empty-state height, so the page does not jump
+  // from a zero-item checkout layout to the empty state (CLS)
+  if (itemCount === 0 && isLoading) {
+    return (
+      <Section tone="chalk" className="min-h-[calc(100dvh-4rem)] lg:min-h-[calc(100dvh-5rem)]" aria-busy="true">
+        <SEOHead title="Pokladňa | OROSTONE" description="Dokončite vašu objednávku." noindex={true} />
+      </Section>
+    );
+  }
+
   // Redirect if cart is empty
   if (itemCount === 0 && !isLoading) {
     return (

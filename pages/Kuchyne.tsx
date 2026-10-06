@@ -134,6 +134,7 @@ export const Kuchyne = () => {
           />
         }
       >
+        <h2 className="sr-only">Kuchyne zo sinterovaného kameňa v skratke</h2>
         <FeatureGrid items={FEATURES} className="mt-[clamp(56px,7vw,104px)]" />
       </PageHero>
 

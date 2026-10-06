@@ -193,6 +193,12 @@ function writePage(page: Page): void {
   // (homepage SEO fallback noscript would otherwise duplicate content for crawlers)
   html = html.replace(/<noscript>[\s\S]*?<\/noscript>/g, '');
 
+  // The homepage hero preload in index.html only helps "/"; on other pages it would
+  // compete with the page's own LCP image, so keep it on the homepage only
+  if (page.route !== '/') {
+    html = html.replace(/\n?[ \t]*<link rel="preload" as="image"[^>]*\/images\/home\/hero-[^>]*>/g, '');
+  }
+
   // Write file
   const filePath = resolve(DIST, page.route.replace(/^\//, ''), 'index.html');
   mkdirSync(dirname(filePath), { recursive: true });

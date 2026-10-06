@@ -13,8 +13,7 @@
     "indexnow": "tsx scripts/indexnow-ping.ts",
     "seo:diff": "tsx scripts/seo-diff.ts",
     "preview": "vite preview",
-    "sync:shop-fallback": "tsx scripts/sync-shop-fallback.ts",
-    "gen:inspiration-thumbs": "node scripts/generate-inspiration-thumbnails.mjs"
+    "sync:shop-fallback": "tsx scripts/sync-shop-fallback.ts"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

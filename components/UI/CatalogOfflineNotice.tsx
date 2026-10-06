@@ -10,7 +10,7 @@ import { WifiOff } from 'lucide-react';
 export const CatalogOfflineNotice = () => (
   <div
     role="status"
-    className="mb-6 flex items-center gap-3 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900"
+    className="mb-8 flex items-center gap-3 rounded-r-[3px] border-l-2 border-brand-dark bg-brand-sand px-4 py-3 text-sm text-brand-dark"
   >
     <WifiOff size={16} className="shrink-0" aria-hidden />
     <span className="font-light">
