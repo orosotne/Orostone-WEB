@@ -219,38 +219,30 @@ export const CategoryPageSkeleton: React.FC = () => (
 // ===========================================
 
 export const CheckoutSkeleton: React.FC = () => (
-  <div className="container mx-auto px-4 lg:px-8 py-8">
-    <div className="flex flex-col lg:flex-row gap-8">
-      {/* Form */}
-      <div className="lg:w-2/3 space-y-6">
-        <Skeleton className="h-6 w-48" />
-        {Array.from({ length: 4 }).map((_, i) => (
-          <div key={i} className="space-y-2">
-            <Skeleton className="h-3 w-24" />
-            <Skeleton className="h-12 w-full rounded-lg" />
-          </div>
-        ))}
+  <Section tone="chalk" className="!pt-[clamp(40px,5vw,72px)]">
+    <Container>
+      <div className="mb-[clamp(32px,4vw,56px)] grid gap-4">
+        <div className="h-4 w-32 animate-pulse rounded-sm bg-brand-sand" />
+        <div className="h-[clamp(2.2rem,3vw,3.5rem)] w-56 animate-pulse rounded-sm bg-brand-sand" />
       </div>
-      {/* Summary */}
-      <div className="lg:w-1/3">
-        <div className="bg-gray-50 rounded-xl p-6 space-y-4">
-          <Skeleton className="h-5 w-32" />
-          <Skeleton className="h-16 w-full rounded-lg" />
-          <Skeleton className="h-16 w-full rounded-lg" />
-          <div className="pt-4 border-t border-gray-200 space-y-2">
-            <div className="flex justify-between">
-              <Skeleton className="h-3 w-20" />
-              <Skeleton className="h-3 w-16" />
+      <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_400px] lg:gap-16">
+        <div className="space-y-6">
+          <div className="h-6 w-48 animate-pulse rounded-sm bg-brand-sand" />
+          {Array.from({ length: 2 }).map((_, i) => (
+            <div key={i} className="flex gap-5 border-t border-brand-line pt-6">
+              <div className="h-[126px] w-[72px] flex-none animate-pulse rounded-[2px] bg-brand-sand" />
+              <div className="flex-1 space-y-3">
+                <div className="h-4 w-1/2 animate-pulse rounded-sm bg-brand-sand" />
+                <div className="h-4 w-1/4 animate-pulse rounded-sm bg-brand-sand" />
+                <div className="h-10 w-32 animate-pulse rounded-[10px] bg-brand-sand" />
+              </div>
             </div>
-            <div className="flex justify-between">
-              <Skeleton className="h-4 w-16" />
-              <Skeleton className="h-5 w-20" />
-            </div>
-          </div>
+          ))}
         </div>
+        <div className="h-[420px] animate-pulse rounded-[3px] bg-brand-sand" />
       </div>
-    </div>
-  </div>
+    </Container>
+  </Section>
 );
 
 // ===========================================

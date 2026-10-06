@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
-import { X, Minus, Plus, ShoppingBag, Trash2, ArrowRight, ExternalLink, Wrench, Package, Info, Check, ChevronUp } from 'lucide-react';
+import { X, Minus, Plus, ShoppingBag, Trash2, ExternalLink, Wrench, Info, ChevronUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
 import { formatPrice } from '../../lib/utils';
 import { useCookies } from '../../context/CookieContext';
 import { trackMetaEvent, savePendingPurchase } from '../../hooks/useMetaPixel';
 import { trackGA4BeginCheckout } from '../../services/analytics';
-import { Button } from '../UI/Button';
+import { ActionButton, chipClass } from '../Design';
 
 const INSTALLATION_STORAGE_KEY = 'orostone_installation_data';
 
@@ -21,9 +21,15 @@ interface InstallationData {
   product_name: string;
 }
 
+const ICON_BUTTON =
+  'grid h-11 w-11 flex-none place-items-center rounded-full text-brand-muted transition-colors hover:bg-brand-sand hover:text-brand-dark disabled:opacity-40';
+const SMALL_PRINT = 'text-[0.78rem] font-light leading-relaxed text-brand-muted';
+const NOTE_BOX = 'flex items-start gap-2.5 rounded-[3px] bg-brand-sand px-3.5 py-3';
+
 export const CartDrawer: React.FC = () => {
   const { items, isOpen, closeCart, removeItem, updateQuantity, itemCount, subtotal, total, totalDiscount, subtotalBeforeDiscount, appliedDiscountTitles, checkoutUrl, isLoading, error, clearError, productItems, sampleItems } = useCart();
   const { preferences } = useCookies();
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   // Load installation data from localStorage
   const [installationData, setInstallationData] = useState<InstallationData | null>(null);
@@ -41,6 +47,21 @@ export const CartDrawer: React.FC = () => {
       setIsSummaryExpanded(false);
     }
   }, [isOpen]);
+
+  // Keyboard: focus lands on the close button, Escape closes the cart, focus then returns to what opened it
+  useEffect(() => {
+    if (!isOpen) return;
+    const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    closeButtonRef.current?.focus({ preventScroll: true });
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeCart();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      if (opener?.isConnected) opener.focus({ preventScroll: true });
+    };
+  }, [isOpen, closeCart]);
 
   const removeInstallation = () => {
     localStorage.removeItem(INSTALLATION_STORAGE_KEY);
@@ -73,7 +94,7 @@ export const CartDrawer: React.FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black/50 z-[70]"
+            className="fixed inset-0 z-[70] bg-brand-dark/45"
             onClick={closeCart}
           />
 
@@ -83,36 +104,35 @@ export const CartDrawer: React.FC = () => {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.2, ease: 'easeOut' }}
-            className="fixed top-0 right-0 h-full w-full max-w-md bg-white shadow-2xl z-[80] flex flex-col"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="cart-title"
+            className="fixed right-0 top-0 z-[80] flex h-full w-full max-w-[440px] flex-col bg-brand-light text-brand-dark shadow-[-24px_0_60px_-30px_rgba(26,26,26,0.45)]"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-100">
-              <div className="flex items-center gap-3">
-                <ShoppingBag size={24} className="text-brand-gold" />
-                <h2 className="text-xl font-bold text-brand-dark">
-                  Košík
-                  {itemCount > 0 && (
-                    <span className="ml-2 text-sm font-normal text-gray-500">
-                      ({itemCount} {itemCount === 1 ? 'položka' : itemCount < 5 ? 'položky' : 'položiek'})
-                    </span>
-                  )}
-                </h2>
-              </div>
-              <button
-                onClick={closeCart}
-                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-              >
-                <X size={24} />
+            <div className="flex items-center justify-between gap-4 border-b border-brand-line py-3 pl-6 pr-3">
+              <h2 id="cart-title" className="text-[1.3rem] font-semibold">
+                Košík
+                {itemCount > 0 && (
+                  <span className="ml-2 text-[0.88rem] font-light tabular-nums text-brand-muted">
+                    {itemCount} {itemCount === 1 ? 'položka' : itemCount < 5 ? 'položky' : 'položiek'}
+                  </span>
+                )}
+              </h2>
+              <button ref={closeButtonRef} type="button" onClick={closeCart} className={ICON_BUTTON} aria-label="Zavrieť košík">
+                <X size={22} strokeWidth={1.5} />
               </button>
             </div>
 
             {/* Error Banner */}
             {error && (
-              <div className="mx-4 mt-3 p-3 bg-red-50 border border-red-200 rounded-lg flex items-start justify-between gap-2">
-                <p className="text-sm text-red-700">{error}</p>
+              <div role="alert" className="mx-4 mt-3 flex items-start justify-between gap-2 rounded-[3px] border border-[#B42318]/25 bg-[#FEF3F2] py-2 pl-3.5 pr-1">
+                <p className="py-1 text-[0.88rem] text-[#B42318]">{error}</p>
                 <button
+                  type="button"
                   onClick={clearError}
-                  className="text-red-400 hover:text-red-600 flex-shrink-0 p-0.5"
+                  className="grid h-8 w-8 flex-none place-items-center rounded-full text-[#B42318]/70 hover:text-[#B42318]"
+                  aria-label="Zavrieť chybovú správu"
                 >
                   <X size={16} />
                 </button>
@@ -120,39 +140,31 @@ export const CartDrawer: React.FC = () => {
             )}
 
             {/* Content */}
-            <div className="flex-1 overflow-y-auto">
+            <div className="flex-1 overflow-y-auto overscroll-contain">
               {items.length === 0 ? (
-                <div className="flex flex-col items-center justify-center h-full p-8 text-center">
-                  <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mb-6">
-                    <ShoppingBag size={32} className="text-gray-400" />
+                <div className="flex h-full flex-col items-center justify-center p-8 text-center">
+                  <div className="mb-6 grid h-20 w-20 place-items-center rounded-full bg-brand-sand">
+                    <ShoppingBag size={30} strokeWidth={1.3} className="text-brand-muted" />
                   </div>
-                  <h3 className="text-xl font-semibold text-brand-dark mb-2">
+                  <h3 className="mb-2 text-os-h3">
                     Váš košík je prázdny
                   </h3>
-                  <p className="text-gray-500 mb-6">
+                  <p className="mb-7 font-light text-brand-muted">
                     Prezrite si naše skladové platne a pridajte ich do košíka.
                   </p>
-                  <Link to="/kategoria/sintered-stone" onClick={closeCart}>
-                    <Button className="bg-brand-gold text-brand-dark hover:bg-brand-dark hover:text-white">
-                      Prezrieť produkty
-                      <ArrowRight size={18} className="ml-2" />
-                    </Button>
-                  </Link>
-                  <div className="mt-8 w-full">
-                    <p className="text-[10px] tracking-widest uppercase text-gray-400 mb-3">Populárne kategórie</p>
-                    <div className="grid grid-cols-2 gap-2">
+                  <ActionButton to="/kategoria/sintered-stone" onClick={closeCart} arrow>
+                    Prezrieť produkty
+                  </ActionButton>
+                  <div className="mt-10 w-full">
+                    <p className="mb-3 text-os-eyebrow uppercase text-brand-muted">Populárne kategórie</p>
+                    <div className="flex flex-wrap justify-center gap-2">
                       {[
                         { label: 'Biele dekory', to: '/kategoria/sintered-stone/biele' },
                         { label: 'Šedé dekory', to: '/kategoria/sintered-stone/sede' },
                         { label: 'Béžové dekory', to: '/kategoria/sintered-stone/bezove' },
                         { label: 'Čierne dekory', to: '/kategoria/sintered-stone/cierne' },
                       ].map(({ label, to }) => (
-                        <Link
-                          key={to}
-                          to={to}
-                          onClick={closeCart}
-                          className="py-2.5 px-3 bg-[#F9F9F7] rounded-lg text-xs font-medium text-brand-dark hover:bg-brand-gold/20 transition-colors text-center"
-                        >
+                        <Link key={to} to={to} onClick={closeCart} className={chipClass(false)}>
                           {label}
                         </Link>
                       ))}
@@ -163,75 +175,81 @@ export const CartDrawer: React.FC = () => {
                 <>
                   {/* ---- Products Section ---- */}
                   {productItems.length > 0 && (
-                    <ul className="divide-y divide-gray-100">
+                    <ul className="divide-y divide-brand-line">
                       {productItems.map((item) => (
-                        <li key={item.id} className="p-4">
+                        <li key={item.id} className="px-6 py-5">
                           <div className="flex gap-4">
-                            {/* Image */}
-                            <div className="w-24 h-24 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+                            {/* Image: the slab stands upright, as in the catalog */}
+                            <div className="h-[112px] w-16 flex-none overflow-hidden rounded-[2px] bg-brand-sand shadow-[0_0_0_1px_rgba(26,26,26,0.07)]">
                               <img
                                 src={item.image}
                                 alt={item.name}
-                                className="w-full h-full object-cover"
+                                className="h-full w-full object-cover"
                               />
                             </div>
 
                             {/* Info */}
-                            <div className="flex-1 min-w-0">
-                              <h4 className="font-semibold text-brand-dark truncate">
+                            <div className="min-w-0 flex-1">
+                              <h3 className="truncate text-[0.95rem] font-semibold tracking-[0.04em]">
                                 {item.name}
-                              </h4>
+                              </h3>
                               {item.variant && (
-                                <p className="text-sm text-gray-500 mt-1">
+                                <p className="mt-0.5 text-[0.84rem] font-light text-brand-muted">
                                   {item.variant}
                                 </p>
                               )}
                               {item.lineDiscount > 0 && item.originalPrice > 0 ? (
-                                <div className="flex items-center gap-2 mt-1 flex-wrap">
-                                  <span className="text-xs line-through text-gray-400">
+                                <div className="mt-1.5 flex flex-wrap items-center gap-2 tabular-nums">
+                                  <span className="text-[0.8rem] text-brand-muted line-through">
                                     {formatPrice(item.originalPrice)}
                                   </span>
-                                  <span className="text-sm font-semibold text-emerald-700">
+                                  <span className="font-semibold">
                                     {formatPrice(item.price)}
                                   </span>
-                                  <span className="text-[10px] font-bold tracking-wider uppercase text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded">
+                                  <span className="rounded-[3px] bg-brand-dark px-1.5 py-0.5 text-[0.66rem] font-bold tracking-[0.08em] text-brand-light">
                                     −{Math.round((item.lineDiscount / (item.originalPrice * item.quantity)) * 100)}%
                                   </span>
                                 </div>
                               ) : (
-                                <p className="text-sm font-medium text-brand-gold mt-1">
+                                <p className="mt-1.5 font-semibold tabular-nums">
                                   {formatPrice(item.price)}
                                 </p>
                               )}
 
                               {/* Quantity controls */}
-                              <div className="flex items-center justify-between mt-3">
-                                <div className="flex items-center border border-gray-200 rounded-lg">
+                              <div className="mt-3 flex items-center justify-between">
+                                <div className="flex items-center rounded-[10px] border border-brand-line bg-white/60">
                                   <button
+                                    type="button"
                                     onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                    className="p-2 hover:bg-gray-100 transition-colors"
+                                    className="grid h-10 w-10 place-items-center rounded-l-[10px] transition-colors hover:bg-brand-sand disabled:opacity-40"
                                     disabled={isLoading}
+                                    aria-label={`Znížiť počet: ${item.name}`}
                                   >
-                                    <Minus size={16} />
+                                    <Minus size={15} />
                                   </button>
-                                  <span className="px-4 py-2 text-sm font-medium min-w-[3rem] text-center">
+                                  <span className="min-w-[2.5rem] text-center text-[0.9rem] font-medium tabular-nums" aria-live="polite">
                                     {item.quantity}
                                   </span>
                                   <button
+                                    type="button"
                                     onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                                    className="p-2 hover:bg-gray-100 transition-colors"
+                                    className="grid h-10 w-10 place-items-center rounded-r-[10px] transition-colors hover:bg-brand-sand disabled:opacity-40"
                                     disabled={isLoading}
+                                    aria-label={`Zvýšiť počet: ${item.name}`}
                                   >
-                                    <Plus size={16} />
+                                    <Plus size={15} />
                                   </button>
                                 </div>
 
                                 <button
+                                  type="button"
                                   onClick={() => removeItem(item.id)}
-                                  className="p-2 text-gray-400 hover:text-red-500 transition-colors"
+                                  className={ICON_BUTTON}
                                   disabled={isLoading}
+                                  aria-label={`Odstrániť z košíka: ${item.name}`}
                                 >
-                                  <Trash2 size={18} />
+                                  <Trash2 size={17} strokeWidth={1.5} />
                                 </button>
                               </div>
                             </div>
@@ -243,52 +261,53 @@ export const CartDrawer: React.FC = () => {
 
                   {/* ---- Samples (Vzorky) Section ---- */}
                   {sampleItems.length > 0 && (
-                    <div className="border-t border-gray-200">
+                    <div className="border-t border-brand-line">
                       {/* Section Header */}
-                      <div className="flex items-center gap-2 px-4 pt-4 pb-2">
-                        <Package size={16} className="text-amber-600" />
-                        <h3 className="text-xs font-bold tracking-[0.15em] uppercase text-amber-700">
+                      <div className="flex items-center gap-2 px-6 pb-1 pt-5">
+                        <h3 className="text-os-eyebrow uppercase text-brand-muted">
                           Vzorky materiálu
                         </h3>
-                        <span className="text-[9px] font-bold tracking-wider uppercase text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded">
-                          {sampleItems.length}x
+                        <span className="text-[0.78rem] font-medium tabular-nums text-brand-muted">
+                          {sampleItems.length}×
                         </span>
                       </div>
 
                       {/* Sample Items (compact, no quantity controls) */}
-                      <ul className="divide-y divide-gray-50">
+                      <ul className="divide-y divide-brand-line/70">
                         {sampleItems.map((item) => (
-                          <li key={item.id} className="px-4 py-3 bg-amber-50/30">
-                            <div className="flex gap-3 items-center">
+                          <li key={item.id} className="px-6 py-3">
+                            <div className="flex items-center gap-3">
                               {/* Small image */}
-                              <div className="w-14 h-14 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+                              <div className="h-14 w-14 flex-none overflow-hidden rounded-[2px] bg-brand-sand">
                                 <img
                                   src={item.image}
                                   alt={item.name}
-                                  className="w-full h-full object-cover"
+                                  className="h-full w-full object-cover"
                                 />
                               </div>
 
                               {/* Info */}
-                              <div className="flex-1 min-w-0">
-                                <h4 className="font-medium text-brand-dark text-sm truncate">
+                              <div className="min-w-0 flex-1">
+                                <h4 className="truncate text-[0.9rem] font-medium">
                                   {item.name}
                                 </h4>
-                                <p className="text-xs text-gray-500 mt-0.5">
+                                <p className="mt-0.5 text-[0.78rem] font-light text-brand-muted">
                                   {item.variant}
                                 </p>
-                                <p className="text-xs font-medium text-amber-700 mt-0.5">
+                                <p className="mt-0.5 text-[0.78rem] font-medium tabular-nums">
                                   Záloha {formatPrice(item.price)}
                                 </p>
                               </div>
 
                               {/* Remove */}
                               <button
+                                type="button"
                                 onClick={() => removeItem(item.id)}
-                                className="p-1.5 text-gray-400 hover:text-red-500 transition-colors flex-shrink-0"
+                                className={ICON_BUTTON}
                                 disabled={isLoading}
+                                aria-label={`Odstrániť vzorku: ${item.name}`}
                               >
-                                <Trash2 size={16} />
+                                <Trash2 size={16} strokeWidth={1.5} />
                               </button>
                             </div>
                           </li>
@@ -296,9 +315,9 @@ export const CartDrawer: React.FC = () => {
                       </ul>
 
                       {/* Deposit info */}
-                      <div className="px-4 py-3 flex items-start gap-2">
-                        <Info size={14} className="text-amber-600 mt-0.5 flex-shrink-0" />
-                        <p className="text-[11px] text-amber-700 leading-relaxed">
+                      <div className="flex items-start gap-2 px-6 pb-4 pt-2">
+                        <Info size={14} className="mt-0.5 flex-none text-brand-muted" />
+                        <p className={SMALL_PRINT}>
                           Zálohu za vzorku vám vrátime po objednávke plného produktu.
                         </p>
                       </div>
@@ -307,64 +326,66 @@ export const CartDrawer: React.FC = () => {
 
                   {/* Installation service addon (visual-only, not a Shopify item) */}
                   {installationData && installationData.installation_selected && (
-                    <div className="border-t border-gray-100">
-                      <div className="p-4">
+                    <div className="border-t border-brand-line">
+                      <div className="px-6 py-5">
                         <div className="flex gap-4">
                           {/* Icon */}
-                          <div className="w-24 h-24 bg-brand-gold/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <Wrench size={28} className="text-brand-gold" />
+                          <div className="grid h-16 w-16 flex-none place-items-center rounded-[3px] bg-brand-sand">
+                            <Wrench size={24} strokeWidth={1.4} className="text-brand-dark" />
                           </div>
 
                           {/* Info */}
-                          <div className="flex-1 min-w-0">
+                          <div className="min-w-0 flex-1">
                             <div className="flex items-center gap-2">
-                              <h4 className="font-semibold text-brand-dark text-sm truncate">
+                              <h3 className="truncate text-[0.95rem] font-semibold">
                                 Montáž & inštalácia
-                              </h4>
-                              <span className="text-[9px] font-bold tracking-wider uppercase text-brand-gold bg-brand-gold/10 px-1.5 py-0.5 rounded flex-shrink-0">
+                              </h3>
+                              <span className="flex-none rounded-[3px] border border-brand-line px-1.5 py-0.5 text-[0.62rem] font-bold uppercase tracking-[0.12em] text-brand-muted">
                                 Služba
                               </span>
                             </div>
                             {installationData.installation_area_m2 > 0 ? (
                               <>
-                                <p className="text-xs text-gray-500 mt-1">
+                                <p className="mt-1 text-[0.84rem] font-light text-brand-muted">
                                   Sprostredkovaná služba • {installationData.installation_area_m2} m²
                                 </p>
-                                <p className="text-sm font-medium text-brand-gold mt-1">
+                                <p className="mt-1 font-semibold tabular-nums">
                                   {formatPrice(installationData.installation_price_estimate_vat)}
-                                  <span className="text-[10px] font-normal text-gray-400 ml-1">s DPH</span>
+                                  <span className="ml-1 text-[0.78rem] font-light text-brand-muted">s DPH</span>
                                 </p>
-                                <p className="text-[10px] text-gray-400 mt-1">
+                                <p className="mt-1 text-[0.78rem] font-light text-brand-muted">
                                   Orientačná cena – potvrdí sa po zameraní
                                 </p>
                               </>
                             ) : (
                               <>
-                                <p className="text-xs text-gray-500 mt-1">
+                                <p className="mt-1 text-[0.84rem] font-light text-brand-muted">
                                   Sprostredkovaná služba • plocha na dohodnutie
                                 </p>
-                                <p className="text-[10px] text-gray-400 mt-1">
+                                <p className="mt-1 text-[0.78rem] font-light text-brand-muted">
                                   Budeme vás kontaktovať o ďalšom postupe
                                 </p>
                               </>
                             )}
 
-                            <div className="flex items-center justify-end mt-2">
+                            <div className="mt-1 flex items-center justify-end">
                               <button
+                                type="button"
                                 onClick={removeInstallation}
-                                className="p-2 text-gray-400 hover:text-red-500 transition-colors"
+                                className={ICON_BUTTON}
+                                aria-label="Odstrániť montáž z košíka"
                               >
-                                <Trash2 size={18} />
+                                <Trash2 size={17} strokeWidth={1.5} />
                               </button>
                             </div>
                           </div>
                         </div>
 
                         {/* Important notice: installation is not included in Shopify checkout */}
-                        <div className="mt-3 flex items-start gap-2 rounded-lg bg-brand-gold/10 border border-brand-gold/30 px-3 py-2.5">
-                          <Info size={13} className="text-brand-dark/50 mt-0.5 flex-shrink-0" />
-                          <p className="text-[11px] text-brand-dark/70 leading-relaxed">
-                            <span className="font-semibold">Upozornenie:</span> Montáž nie je súčasťou Shopify objednávky. Po prijatí platby vás náš tím kontaktuje a dohodne detaily montáže.
+                        <div className={`mt-3 ${NOTE_BOX}`}>
+                          <Info size={14} className="mt-0.5 flex-none text-brand-muted" />
+                          <p className={SMALL_PRINT}>
+                            <span className="font-semibold text-brand-dark">Upozornenie:</span> Montáž nie je súčasťou Shopify objednávky. Po prijatí platby vás náš tím kontaktuje a dohodne detaily montáže.
                           </p>
                         </div>
                       </div>
@@ -376,26 +397,24 @@ export const CartDrawer: React.FC = () => {
 
             {/* Footer - Collapsible Summary */}
             {items.length > 0 && (
-              <div className="border-t border-gray-100 bg-[#F9F9F7]">
+              <div className="border-t border-brand-line bg-brand-light pb-[env(safe-area-inset-bottom,0px)]">
 
                 {/* Toggle handle */}
                 <button
+                  type="button"
                   onClick={() => setIsSummaryExpanded(prev => !prev)}
                   aria-expanded={isSummaryExpanded}
                   aria-controls="cart-summary-details"
-                  className="w-full px-6 pt-4 pb-2 flex flex-col items-center gap-1.5"
+                  className="flex min-h-[44px] w-full items-center justify-center gap-1.5 px-6 pt-2 text-[0.8rem] font-medium text-brand-muted transition-colors hover:text-brand-dark"
                 >
-                  <div className="w-8 h-1 bg-gray-300 rounded-full" />
-                  <div className="flex items-center gap-1.5 text-xs text-gray-500 tracking-wide">
-                    <m.span
-                      animate={{ rotate: isSummaryExpanded ? 180 : 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="inline-flex"
-                    >
-                      <ChevronUp size={16} />
-                    </m.span>
-                    {isSummaryExpanded ? 'Skryť detail' : 'Zobraziť detail objednávky'}
-                  </div>
+                  <m.span
+                    animate={{ rotate: isSummaryExpanded ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="inline-flex"
+                  >
+                    <ChevronUp size={16} />
+                  </m.span>
+                  {isSummaryExpanded ? 'Skryť detail' : 'Zobraziť detail objednávky'}
                 </button>
 
                 {/* Expandable details */}
@@ -410,12 +429,12 @@ export const CartDrawer: React.FC = () => {
                       transition={{ duration: 0.25, ease: 'easeInOut' }}
                       className="overflow-hidden"
                     >
-                      <div className="px-6 space-y-4 pb-3">
+                      <div className="space-y-4 px-6 pb-3 pt-2">
                         {/* Product subtotal (shown when both products and samples exist) */}
                         {productItems.length > 0 && sampleItems.length > 0 && (
-                          <div className="flex justify-between text-sm">
-                            <span className="text-gray-600">Produkty</span>
-                            <span className="font-medium">
+                          <div className="flex justify-between text-[0.9rem]">
+                            <span className="font-light text-brand-muted">Produkty</span>
+                            <span className="font-medium tabular-nums">
                               {formatPrice(productItems.reduce((sum, item) => sum + item.price * item.quantity, 0))}
                             </span>
                           </div>
@@ -423,9 +442,9 @@ export const CartDrawer: React.FC = () => {
 
                         {/* Sample subtotal (shown when both products and samples exist) */}
                         {productItems.length > 0 && sampleItems.length > 0 && (
-                          <div className="flex justify-between text-sm">
-                            <span className="text-amber-700">Vzorky (záloha)</span>
-                            <span className="font-medium text-amber-700">
+                          <div className="flex justify-between text-[0.9rem]">
+                            <span className="font-light text-brand-muted">Vzorky (záloha)</span>
+                            <span className="font-medium tabular-nums">
                               {formatPrice(sampleItems.reduce((sum, item) => sum + item.price * item.quantity, 0))}
                             </span>
                           </div>
@@ -433,72 +452,68 @@ export const CartDrawer: React.FC = () => {
 
                         {/* Subtotal (when only one type) */}
                         {!(productItems.length > 0 && sampleItems.length > 0) && (
-                          <div className="flex justify-between text-sm">
-                            <span className="text-gray-600">Medzisúčet</span>
-                            <span className="font-medium">
+                          <div className="flex justify-between text-[0.9rem]">
+                            <span className="font-light text-brand-muted">Medzisúčet</span>
+                            <span className="font-medium tabular-nums">
                               {formatPrice(totalDiscount > 0 ? subtotalBeforeDiscount : subtotal)}
                             </span>
                           </div>
                         )}
 
-                        {/* Bundle discount banner */}
+                        {/* Bundle discount */}
                         {totalDiscount > 0 && subtotalBeforeDiscount > 0 && (
-                          <div className="rounded-xl bg-emerald-50 border border-emerald-200 px-4 py-3 flex items-start gap-3">
-                            <div className="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center">
-                              <Check size={16} strokeWidth={3} />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <div className="flex items-baseline justify-between gap-2">
-                                <span className="text-sm font-bold text-emerald-900">
-                                  Ušetríte {Math.round((totalDiscount / subtotalBeforeDiscount) * 100)}%
-                                </span>
-                                <span className="text-base font-bold text-emerald-700">
-                                  −{formatPrice(totalDiscount)}
-                                </span>
-                              </div>
+                          <div className="flex items-baseline justify-between gap-3 border-y border-brand-line py-3">
+                            <div className="min-w-0">
+                              <span className="font-semibold">
+                                Ušetríte {Math.round((totalDiscount / subtotalBeforeDiscount) * 100)}%
+                              </span>
                               {appliedDiscountTitles[0] && (
-                                <p className="text-[11px] text-emerald-700/80 mt-0.5 truncate">
+                                <p className="mt-0.5 truncate text-[0.78rem] font-light text-brand-muted">
                                   {appliedDiscountTitles[0]}
                                 </p>
                               )}
                             </div>
+                            <span className="font-semibold tabular-nums">
+                              −{formatPrice(totalDiscount)}
+                            </span>
                           </div>
                         )}
 
                         {/* Shipping info */}
-                        <div className="flex justify-between text-sm">
-                          <span className="text-gray-600">Doprava</span>
-                          <span className="text-xs text-gray-500 text-right">
+                        <div className="flex justify-between text-[0.9rem]">
+                          <span className="font-light text-brand-muted">Doprava</span>
+                          <span className="text-right text-[0.84rem]">
                             od 150 EUR s DPH
                           </span>
                         </div>
-                        <p className="text-[11px] text-gray-400">
+                        <p className={SMALL_PRINT}>
                           Presná cena sa potvrdí v pokladni podľa adresy a počtu platní.{' '}
-                          <Link to="/doprava" onClick={closeCart} className="text-brand-gold hover:underline">
+                          <Link to="/doprava" onClick={closeCart} className="font-medium text-brand-dark underline underline-offset-4">
                             Viac o doprave
                           </Link>
                         </p>
 
                         {/* Return cost notice — required by § 3 ods. 1 písm. i) zákona č. 108/2024 Z.z. */}
-                        <div className="flex items-start gap-2 rounded-lg bg-amber-50 border border-amber-200 px-3 py-2.5">
-                          <Info size={13} className="text-amber-600 mt-0.5 flex-shrink-0" />
-                          <p className="text-[11px] text-amber-800 leading-relaxed">
-                            <span className="font-semibold">Náklady na vrátenie tovaru</span> pri odstúpení od zmluvy znáša kupujúci.
-                            Orientačná cena spätného odvozu: <span className="font-semibold">od 150 EUR</span> (Bratislava) / <span className="font-semibold">od 350 EUR</span> (SR).{' '}
-                            <Link to="/reklamacie" onClick={closeCart} className="text-amber-700 hover:underline">
+                        <div className={NOTE_BOX}>
+                          <Info size={14} className="mt-0.5 flex-none text-brand-muted" />
+                          <p className={SMALL_PRINT}>
+                            <span className="font-semibold text-brand-dark">Náklady na vrátenie tovaru</span> pri odstúpení od zmluvy znáša kupujúci.
+                            Orientačná cena spätného odvozu: <span className="font-semibold text-brand-dark">od 150 EUR</span> (Bratislava) / <span className="font-semibold text-brand-dark">od 350 EUR</span> (SR).{' '}
+                            <Link to="/reklamacie" onClick={closeCart} className="font-medium text-brand-dark underline underline-offset-4">
                               Viac info
                             </Link>
                           </p>
                         </div>
 
-                        <p className="text-xs text-gray-400 text-center">
+                        <p className={`${SMALL_PRINT} text-center`}>
                           Budete presmerovaný do zabezpečenej pokladne. Záväzná objednávka s povinnosťou platby vznikne až v poslednom kroku po jej odoslaní.
                         </p>
 
                         {/* Continue shopping */}
                         <button
+                          type="button"
                           onClick={closeCart}
-                          className="w-full text-center text-sm text-gray-500 hover:text-brand-dark transition-colors"
+                          className="mx-auto block min-h-[44px] text-[0.9rem] font-medium underline decoration-1 underline-offset-[6px] transition-opacity hover:opacity-70"
                         >
                           Pokračovať v nákupe
                         </button>
@@ -508,20 +523,20 @@ export const CartDrawer: React.FC = () => {
                 </AnimatePresence>
 
                 {/* Always-visible bar: Total + Checkout CTA */}
-                <div className="px-6 pb-6 pt-3 space-y-3">
+                <div className="space-y-3.5 px-6 pb-6 pt-3">
                   {/* Total */}
-                  <div className="flex justify-between items-baseline text-lg font-bold">
+                  <div className="flex items-baseline justify-between text-[1.15rem] font-semibold">
                     <span>Celkom</span>
-                    <span className="flex items-baseline gap-2">
+                    <span className="flex items-baseline gap-2 tabular-nums">
                       {totalDiscount > 0 && (
-                        <span className="text-sm line-through text-gray-400 font-normal">
+                        <span className="text-[0.84rem] font-light text-brand-muted line-through">
                           {formatPrice(subtotalBeforeDiscount)}
                         </span>
                       )}
-                      <span className="text-brand-gold">{formatPrice(total)}</span>
+                      <span>{formatPrice(total)}</span>
                       {/* Compact discount badge when collapsed */}
                       {!isSummaryExpanded && totalDiscount > 0 && (
-                        <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded ml-1">
+                        <span className="ml-1 rounded-[3px] bg-brand-dark px-1.5 py-0.5 text-[0.66rem] font-bold text-brand-light">
                           −{formatPrice(totalDiscount)}
                         </span>
                       )}
@@ -530,19 +545,20 @@ export const CartDrawer: React.FC = () => {
 
                   {/* CTA - Shopify Checkout */}
                   <button
+                    type="button"
                     onClick={handleCheckout}
                     disabled={!checkoutUrl || isLoading}
-                    className="w-full bg-brand-dark text-white hover:bg-brand-gold hover:text-brand-dark py-4 text-base rounded-full font-semibold transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                    className="flex min-h-[54px] w-full items-center justify-center gap-3 rounded-[10px] bg-brand-dark px-6 text-[0.78rem] font-bold uppercase tracking-[0.12em] text-brand-light transition-colors hover:bg-[#333331] disabled:opacity-50"
                   >
                     {isLoading ? (
                       <>
-                        <span className="animate-spin w-5 h-5 border-2 border-white border-t-transparent rounded-full" />
+                        <span className="h-4 w-4 animate-spin rounded-full border-2 border-brand-light border-t-transparent" />
                         Načítavam...
                       </>
                     ) : (
                       <>
                         Prejsť do pokladne
-                        <ExternalLink size={18} />
+                        <ExternalLink size={16} />
                       </>
                     )}
                   </button>

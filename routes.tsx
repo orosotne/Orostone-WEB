@@ -5,6 +5,7 @@ import { LoadingSpinner } from './components/UI/LoadingSpinner';
 import { ProductGridSkeleton, ProductDetailSkeleton, CheckoutSkeleton, CategoryPageSkeleton } from './components/UI/Skeleton';
 import { SEOHead } from './components/UI/SEOHead';
 import { lazyWithRetry } from './lib/utils';
+import { ActionButton, Container, Eyebrow, Section, TextLink } from './components/Design';
 
 // Lazy loaded pages — lazyWithRetry retries failed chunk loads (e.g. after deployment)
 const EshopContact = lazyWithRetry(() => import('./pages/EshopContact').then(m => ({ default: m.EshopContact })));
@@ -41,30 +42,22 @@ const minH = <div className="min-h-screen" aria-hidden />;
 // ===========================================
 
 const NotFoundPage: React.FC = () => (
-  <div className="min-h-[60vh] flex items-center justify-center px-6">
+  <Section tone="chalk" className="flex min-h-[calc(100dvh-4rem)] items-center lg:min-h-[calc(100dvh-5rem)]">
     <SEOHead title="Stránka nenájdená | OROSTONE" description="Hľadaná stránka neexistuje alebo bola presunutá." noindex={true} />
-    <div className="text-center max-w-lg">
-      <p className="text-7xl font-bold text-brand-gold mb-4">404</p>
-      <h1 className="text-2xl font-bold text-brand-dark mb-3">Stránka nenájdená</h1>
-      <p className="text-gray-500 mb-8 leading-relaxed">
+    <Container className="grid justify-items-start gap-5">
+      <Eyebrow>Chyba 404</Eyebrow>
+      <h1 className="text-os-h1">Stránka nenájdená</h1>
+      <p className="max-w-[54ch] text-os-lead font-light text-brand-muted">
         Hľadaná stránka neexistuje alebo bola presunutá. Skúste sa pozrieť na naše produkty alebo sa vráťte na hlavnú stránku.
       </p>
-      <div className="flex flex-col sm:flex-row gap-3 justify-center">
-        <a
-          href="/"
-          className="inline-flex items-center justify-center gap-2 bg-brand-dark text-white px-6 py-3 rounded-lg text-sm tracking-wider uppercase font-semibold hover:bg-brand-gold hover:text-brand-dark transition-all"
-        >
-          Hlavná stránka
-        </a>
-        <a
-          href="/kategoria/sintered-stone"
-          className="inline-flex items-center justify-center gap-2 border border-gray-300 text-brand-dark px-6 py-3 rounded-lg text-sm tracking-wider uppercase font-semibold hover:border-brand-dark transition-all"
-        >
+      <div className="mt-3 flex flex-wrap items-center gap-x-8 gap-y-4">
+        <ActionButton to="/kategoria/sintered-stone" arrow>
           Všetky produkty
-        </a>
+        </ActionButton>
+        <TextLink to="/">Hlavná stránka</TextLink>
       </div>
-    </div>
-  </div>
+    </Container>
+  </Section>
 );
 
 // ===========================================
