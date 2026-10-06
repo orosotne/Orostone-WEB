@@ -216,8 +216,8 @@ const PROJECTS: Project[] = [
   },
   {
     id: 'sivy-kamen-kniznica',
-    title: 'Sivý kameň — knižnica',
-    material: 'Sivý kameň',
+    title: 'Yabo White — knižnica',
+    material: 'Yabo White',
     hero: '/images/realizacie/sivy-kamen-kniznica-hero.webp',
     gallery: [
       '/images/realizacie/sivy-kamen-kniznica-hero.webp',
