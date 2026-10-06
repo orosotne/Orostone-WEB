@@ -1,6 +1,6 @@
 import React, { forwardRef, useEffect, useId, useImperativeHandle, useRef, useState } from 'react';
 import type { RefObject } from 'react';
-import { applyStoneExposure, cartonLeft, freezeFrame, loadMotionAssets, makeCartonData, MOTION_TIMING as timing, SCENE_VIEW } from './sampleCartonMotion';
+import { applyStoneExposure, awaitLottieReady, cartonLeft, freezeFrame, loadMotionAssets, makeCartonData, waitForMotionImages, MOTION_TIMING as timing, SCENE_VIEW } from './sampleCartonMotion';
 import type { LottieAnimation, SampleDecor, SampleQuantity } from './sampleCartonMotion';
 import { createSampleFlight, siteHeaderBottom } from './sampleCartonFlight';
 import { formatSamplePrice, quoteSampleOrder } from '../../services/shopify/samples';
@@ -25,7 +25,7 @@ export interface SampleCartonTrayProps {
 }
 interface TrayView { slots: (SampleDecor | null)[]; visible: number[]; quantity: SampleQuantity; busy: boolean; packed: boolean; fallback: boolean; motionFailed: boolean; message: string }
 const isMobile = () => innerWidth <= 640 || (innerWidth <= 950 && innerHeight <= 500);
-const dockedTrayHeight = (width: number, mobile: boolean) => width * 315 / 720 + (mobile ? width < 300 ? 164 : 144 : 140);
+const dockedTrayHeight = (width: number, mobile: boolean) => width * 315 / 720 + (mobile ? 144 : 140);
 const setLayoutProperty = (element: HTMLElement, name: string, value: string) => {
   if (element.style.getPropertyValue(name) !== value) element.style.setProperty(name, value);
 };
@@ -42,6 +42,9 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
   const segmentDone = useRef<(() => void) | null>(null), segmentEnd = useRef<number | null>(null), reduced = useRef(false), flight = useRef(createSampleFlight());
   const pendingMounts = useRef(new Map<LottieAnimation, () => void>()), pendingQuantityProp = useRef<SampleQuantity | null>(null);
   const transferring = useRef(false), dockRaf = useRef(0), isDocked = useRef(false), dockFits = useRef(false), homeHeight = useRef(0), scrollDone = useRef<(() => void) | null>(null);
+  // Browser chrome changes height during scrolling in Safari and social webviews.
+  // Only a new width/orientation may change the scene's responsive dimensions.
+  const mobileLayout = useRef({ width: 0, height: 0 });
   const count = () => model.current.slots.filter(Boolean).length;
   const refresh = () => { if (alive.current) setView({ ...model.current, slots: [...model.current.slots], visible: [...model.current.visible] }); };
   const notifySelection = () => callbacks.current.onSelectionChange(model.current.visible.map(i => model.current.slots[i]).filter((p): p is SampleDecor => !!p));
@@ -52,35 +55,31 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     const home = homeRef.current, tray = trayRef.current, browser = callbacks.current.browserRef.current, button = callbacks.current.carouselButtonRef.current;
     if (!home || !tray || !browser || !button) return;
     const viewport = window.visualViewport?.height || innerHeight, header = siteHeaderBottom(), mobile = isMobile();
+    if (mobileLayout.current.width !== innerWidth) mobileLayout.current = { width: innerWidth, height: viewport };
+    const layoutHeight = mobile ? mobileLayout.current.height : viewport;
     const desktopWidth = viewport <= 800 ? 290 : innerWidth <= 1100 ? 310 : 480;
     let width = Math.max(0, Math.min(home.clientWidth, mobile ? innerWidth > 640 ? 310 : 480 : desktopWidth, innerWidth - (mobile ? 48 : 80)));
     const bottomInset = mobile ? Math.max(8, parseFloat(getComputedStyle(tray).scrollMarginBottom) || 0) : 12;
     let minimum = innerWidth > 640 && mobile ? 240 : 420;
-    let browserHeight = minimum;
     if (mobile && innerWidth <= 640) {
       const track = browser.querySelector<HTMLElement>('#decor-carousel'), controls = browser.querySelector<HTMLElement>('.sample-decor-controls');
       const browserStyle = getComputedStyle(browser), trackStyle = track && getComputedStyle(track);
       const chrome = (controls?.getBoundingClientRect().height ?? 122) + (parseFloat(trackStyle?.paddingTop || '0') || 0) + (parseFloat(trackStyle?.paddingBottom || '0') || 0) + (parseFloat(browserStyle.paddingBottom) || 0);
-      const headingHeight = browser.querySelector('.sample-decor-heading')?.getBoundingClientRect().height ?? 59;
-      // Fit the visible material, thumb controls and carton together. The
-      // section heading can scroll above the header; the material cannot.
-      const maxWidth = (viewport - header - bottomInset - 12 - chrome - 120 - 164) * 720 / 315;
+      const tile = browser.querySelector<HTMLElement>('.sample-carousel-tile')?.offsetWidth ?? Math.min(innerWidth * .7, 280);
+      // The stone keeps its large, width-based CSS size. Fit the carton around
+      // it, using a stable height budget; never resize the stone on scroll.
+      const maxWidth = (layoutHeight - header - bottomInset - 12 - chrome - tile - 144) * 720 / 315;
       width = Math.min(width, Math.max(260, Math.floor(maxWidth)));
-      const available = viewport - header - bottomInset - 12 - dockedTrayHeight(width, true);
-      const tile = Math.max(120, Math.min(innerWidth * .62, 240, Math.floor(available - chrome)));
-      setLayoutProperty(browser, '--sample-tile-size', tile + 'px');
       minimum = tile + chrome;
-      browserHeight = minimum + headingHeight + (parseFloat(browserStyle.paddingTop) || 0);
-    } else browser.style.removeProperty('--sample-tile-size');
+    }
     const trayHeight = dockedTrayHeight(width, mobile);
     const room = width >= (mobile ? 260 : 240) && viewport - header >= trayHeight + (mobile ? minimum + bottomInset + 12 : 120);
     dockFits.current = room;
-    if (!(mobile && innerWidth <= 640)) browserHeight = room ? Math.max(minimum, viewport - header - trayHeight - 16) : minimum;
-    setLayoutProperty(browser, '--mobile-browser-height', browserHeight + 'px'); setLayoutProperty(browser, '--mobile-header-bottom', header + 'px');
+    setLayoutProperty(browser, '--mobile-header-bottom', header + 'px');
     setLayoutProperty(tray, '--tray-width', width + 'px');
     // Re-read after setting responsive sizes, before deciding whether to pin.
     const browserRect = browser.getBoundingClientRect(), buttonRect = button.getBoundingClientRect(), homeRect = home.getBoundingClientRect();
-    const inBrowser = (mobile ? browserRect.top <= header + 20 : browserRect.top < viewport - trayHeight - 16) && buttonRect.bottom > header;
+    const inBrowser = browserRect.top < viewport - trayHeight - 16 && buttonRect.bottom > header;
     const homeVisible = homeRect.top < viewport - Math.min(homeHeight.current || 360, 360) && homeRect.bottom > header;
     const orderRect = home.closest('.sample-order')?.getBoundingClientRect();
     // Release the floating panel as the order enters the reading area, so
@@ -97,7 +96,7 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     if (next !== isDocked.current) { isDocked.current = next; setDocked(next); }
   };
   const scheduleDock = () => { if (alive.current && !dockRaf.current) dockRaf.current = requestAnimationFrame(syncDock); };
-  const centerBrowser = async () => {
+  const centerBrowser = async (source?: HTMLImageElement) => {
     const browser = callbacks.current.browserRef.current;
     if (!browser || editingField() || reduced.current) { syncDock(); return; }
     await new Promise<void>(resolve => requestAnimationFrame(() => {
@@ -109,7 +108,14 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
       const trayHeight = dockedTrayHeight(parseFloat(tray?.style.getPropertyValue('--tray-width') || '0'), isMobile());
       const bottomInset = isMobile() ? Math.max(8, parseFloat(tray ? getComputedStyle(tray).scrollMarginBottom : '0') || 0) : 12;
       let distance = 0;
-      if (isMobile() && dockFits.current && button) distance = Math.max(button.getBoundingClientRect().bottom - ((window.visualViewport?.height || innerHeight) - bottomInset - 24 - trayHeight), browser.getBoundingClientRect().top - top - 12);
+      if (isMobile() && dockFits.current && button) {
+        const bottom = (window.visualViewport?.height || innerHeight) - bottomInset - 12 - trayHeight;
+        const lower = button.getBoundingClientRect().bottom - bottom;
+        const upper = source ? source.getBoundingClientRect().top - top - 4 : Infinity;
+        // Keep an already-visible composition still, and restore a clipped
+        // source above the button if the customer has scrolled farther down.
+        distance = lower <= upper ? Math.min(Math.max(0, lower), upper) : lower;
+      }
       else if (isMobile() && tray) distance = tray.getBoundingClientRect().top - top - 24;
       else if (dockFits.current && button) distance = button.getBoundingClientRect().bottom - ((window.visualViewport?.height || innerHeight) - 32 - trayHeight);
       if (Math.abs(distance) <= 2) { resolve(); return; }
@@ -133,15 +139,16 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     const version = ++mountVersion.current, host = graphicRef.current; flight.current.cancel('mount');
     const assets = await loadMotionAssets(); if (!alive.current || version !== mountVersion.current || !host) return;
     const data = makeCartonData(assets, model.current.slots, model.current.visible, mode, activeIndex);
+    // Keep the previous, complete scene on screen while the new material decodes.
+    await waitForMotionImages(data);
+    if (!alive.current || version !== mountVersion.current) return;
     const layer = document.createElement('div'); layer.className = 'sample-carton-player'; layer.style.visibility = 'hidden'; host.append(layer);
     const anim = assets.runtime.loadAnimation({ container: layer, renderer: 'svg', loop: false, autoplay: false, animationData: data, rendererSettings: { preserveAspectRatio: 'xMidYMid meet', progressiveLoad: false } });
-    try { await new Promise<void>((resolve, reject) => {
-      let timer: ReturnType<typeof setTimeout>;
-      const cleanup = () => { clearTimeout(timer); pendingMounts.current.delete(anim); anim.removeEventListener('DOMLoaded', loaded); anim.removeEventListener('data_failed', failed); anim.removeEventListener('error', failed); };
-      const loaded = () => { cleanup(); resolve(); }, failed = () => { cleanup(); reject(new Error('Motion rendering failed')); };
-      pendingMounts.current.set(anim, failed);
-      timer = setTimeout(failed, 8000); anim.addEventListener('DOMLoaded', loaded); anim.addEventListener('data_failed', failed); anim.addEventListener('error', failed);
-    }); } catch (error) { anim.destroy(); layer.remove(); throw error; }
+    const readyController = new AbortController();
+    pendingMounts.current.set(anim, () => readyController.abort());
+    try { await awaitLottieReady(anim, { signal: readyController.signal }); }
+    catch (error) { anim.destroy(); layer.remove(); throw error; }
+    finally { pendingMounts.current.delete(anim); }
     if (!alive.current || version !== mountVersion.current) { anim.destroy(); layer.remove(); return; }
     segmentDone.current?.(); animation.current?.destroy(); host.querySelectorAll('.sample-carton-player').forEach(node => { if (node !== layer) node.remove(); });
     const svg = layer.querySelector('svg'); if (!svg) { anim.destroy(); layer.remove(); throw new Error('Motion SVG unavailable'); }
@@ -153,7 +160,22 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     let insertionStart = captured ? 20 : 16;
     freezeFrame(anim, mode === 'insert' ? insertionStart : mode === 'package' ? timing.join - 2 : 0); layer.style.visibility = 'visible';
     if (mode === 'insert') {
-      if (captured) { const result = await flight.current.run(svg, activeIndex, captured); if (!result.started) { insertionStart = 16; freezeFrame(anim, 16); } }
+      if (captured) {
+        const tray = trayRef.current, locked = tray && isDocked.current;
+        if (locked) { tray.style.top = tray.getBoundingClientRect().top + 'px'; tray.style.bottom = 'auto'; }
+        try { const result = await flight.current.run(svg, activeIndex, captured); if (!result.started) { insertionStart = 16; freezeFrame(anim, 16); } }
+        finally {
+          if (locked) {
+            const before = tray.getBoundingClientRect().top;
+            tray.style.removeProperty('top'); tray.style.removeProperty('bottom');
+            const shift = before - tray.getBoundingClientRect().top;
+            // Rejoin the browser's new safe area gently after the flight.
+            if (Math.abs(shift) > 1 && !reduced.current) tray.animate([
+              { transform: `translateX(-50%) translateY(${shift}px)` }, { transform: 'translateX(-50%)' },
+            ], { duration: 240, easing: 'cubic-bezier(.2,0,0,1)' });
+          }
+        }
+      }
       transferring.current = false; scheduleDock();
       for (const [start, end] of [[insertionStart, timing.stone_seated], [timing.stone_seated, timing.tuck_guide], [timing.tuck_guide, timing.lid_start], [timing.lid_start, timing.lid_lowered], [timing.lid_lowered, timing.lid_closed], [timing.lid_closed, timing.seal_done], [timing.seal_done, timing.box]]) {
         await playSegment(start, end); if (!alive.current || version !== mountVersion.current) return; if (end === timing.stone_seated) host.classList.remove('is-inserting');
@@ -181,7 +203,7 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     if (index === undefined) return false;
     setBusy(true); model.current.slots[index] = { ...decor }; preferredSlot.current = null; notifySelection(); refresh();
     try {
-      if (source && !reduced.current) await centerBrowser(); if (!alive.current || run !== operationVersion.current) return false;
+      if (source && !reduced.current) await centerBrowser(source); if (!alive.current || run !== operationVersion.current) return false;
       syncDock(); transferring.current = !!source && !reduced.current;
       if (wasPacked) await playSegment(timing.wrapped, timing.join, 2); await renderMotion('insert', index, source);
     } catch { if (alive.current && run === operationVersion.current) motionFallback(); }
@@ -240,7 +262,7 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
   const labelLeft = (i: number) => ((cartonLeft(ids.length, view.packed) + (view.packed ? 180 : 235) * ids.indexOf(i) + 90 - 104) / 720 * 100) + '%';
   return <div ref={homeRef} className={'sample-carton-home ' + (props.className ?? '')}>
     <section ref={trayRef} className={'sample-carton-tray' + (docked ? ' is-docked' : '')} aria-label="Váš výber vzoriek" aria-busy={view.busy || props.locked} data-quantity={view.quantity} data-packed={view.packed}>
-      <div className="sample-carton-heading"><div><p>Váš výber <strong>{view.slots.filter(Boolean).length} / {view.quantity}</strong></p><span>Spolu {formatSamplePrice(quoteSampleOrder(view.quantity).totalCents)} s&nbsp;dopravou</span></div><button type="button" className="sample-carton-continue" disabled={view.busy || props.locked || !complete} onClick={props.onContinue}>Skontrolovať <span aria-hidden="true">→</span></button></div>
+      <div className="sample-carton-heading"><div><p>Váš výber <strong>{view.slots.filter(Boolean).length} / {view.quantity}</strong></p><span>Spolu {formatSamplePrice(quoteSampleOrder(view.quantity).totalCents)}<span className="sample-carton-delivery-label"> s&nbsp;dopravou</span></span></div><button type="button" className="sample-carton-continue" disabled={view.busy || props.locked || !complete} onClick={props.onContinue}>Skontrolovať <span aria-hidden="true">→</span></button></div>
       <div ref={graphicRef} className="sample-carton-graphic" aria-hidden="true">
         {view.fallback && <svg className="sample-carton-fallback" viewBox={SCENE_VIEW}>{view.visible.map((i, rank) => <g key={i} transform={'translate(' + (cartonLeft(view.visible.length) + 235 * rank) + ',310)'}>
           {!view.slots[i] && <><path d="M22 -14 L202 -14 L180 -62 L0 -62 Z" fill="#252920"/><path d="M0 0 L22 -14 L-5 -30 L-22 -16 Z" fill="#30362b"/><path d="M180 0 L202 -14 L220 -30 L196 -10 Z" fill="#30362b"/></>}
