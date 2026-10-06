@@ -1,77 +1,69 @@
 import React from 'react';
-import { ShieldCheck, RotateCcw, AlertTriangle, Clock, Mail, Phone, FileText, Package, CheckCircle } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SEOHead } from '../components/UI/SEOHead';
+import { ActionButton, Container, LEGAL_LINK, PageHero, Section } from '../components/Design';
 
 export const ReklamacieAVratenie: React.FC = () => {
   return (
-    <main className="bg-white">
+    <div>
       <SEOHead
         title="Reklamácie a vrátenie tovaru | OROSTONE"
         description="Reklamačný poriadok OROSTONE, postup pri reklamácii, vrátenie tovaru a zákonná zodpovednosť za vady pri nákupe cez e-shop."
         canonical="https://orostone.sk/reklamacie"
       />
 
-      {/* Header */}
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center">
-            <span className="inline-block text-xs font-bold tracking-[0.18em] uppercase text-brand-gold mb-4">
-              Zákaznícky servis
-            </span>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-brand-dark mb-6">
-              Reklamácie a vrátenie tovaru
-            </h1>
-            <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
-              Ak máte otázky k dodanému tovaru, kontaktujte nás na{' '}
-              <a href="mailto:info@orostone.sk" className="text-brand-dark font-semibold hover:text-brand-gold transition-colors">info@orostone.sk</a>.
-              Reklamácie vybavujeme a právo na odstúpenie od zmluvy uplatňujeme v súlade s platnými právnymi predpismi Slovenskej republiky.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Zákaznícky servis"
+        title="Reklamácie a vrátenie tovaru"
+        lead={
+          <>
+            Ak máte otázky k dodanému tovaru, kontaktujte nás na{' '}
+            <a href="mailto:info@orostone.sk" className={LEGAL_LINK}>info@orostone.sk</a>.
+            Reklamácie vybavujeme a právo na odstúpenie od zmluvy uplatňujeme v súlade s platnými právnymi predpismi Slovenskej republiky.
+          </>
+        }
+      />
 
       {/* Zodpovednosť za vady */}
-      <section className="pb-12 lg:pb-16 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
+      <Section tone="chalk" className="!pt-0">
+        <Container>
+          <div className="max-w-[1040px]">
 
-            <h2 className="text-2xl font-bold text-brand-dark mb-8 flex items-center gap-3">
-              <ShieldCheck className="text-brand-gold" size={28} />
+            <h2 className="mb-10 text-os-h2">
               Zodpovednosť za vady
             </h2>
 
-            <div className="rounded-2xl border border-gray-200 p-6 bg-white shadow-sm mb-6">
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+            <div className="mb-6 rounded-[3px] border border-brand-line bg-white/60 p-6 sm:p-8">
+              <p className="mb-4 text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
                 Pri spotrebiteľskom predaji spoločnosť Orostone zodpovedá za vady, ktoré má tovar v čase dodania a ktoré sa prejavia do <strong className="text-brand-dark">24 mesiacov</strong> od dodania tovaru. Nejde o dobrovoľnú obchodnú záruku navyše, ale o zákonnú zodpovednosť za vady.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <div className="rounded-2xl border border-gray-200 p-6 bg-white shadow-sm">
-                <h3 className="font-bold text-brand-dark mb-3">Čo sa za vadu nepovažuje</h3>
-                <ul className="space-y-2 text-sm text-gray-600">
+              <div className="rounded-[3px] border border-brand-line bg-white/60 p-6 sm:p-8">
+                <h3 className="mb-3 text-[1.1rem] font-semibold text-brand-dark">Čo sa za vadu nepovažuje</h3>
+                <ul className="space-y-2 text-[0.95rem] font-light text-brand-dark/85">
                   <li className="flex items-start gap-2">
-                    <span className="text-gray-400 mt-0.5">—</span>
+                    <span className="mt-0.5 text-brand-muted">—</span>
                     Bežné, prirodzené a technologicky podmienené rozdiely vo farbe, kresbe, žilovaní, štruktúre alebo povrchu sinterovaného kameňa
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-gray-400 mt-0.5">—</span>
+                    <span className="mt-0.5 text-brand-muted">—</span>
                     Rozdiely medzi vzorkou a celou platňou
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-gray-400 mt-0.5">—</span>
+                    <span className="mt-0.5 text-brand-muted">—</span>
                     Rozdiely spôsobené zobrazením na monitore alebo mobilnom zariadení
                   </li>
                 </ul>
               </div>
 
-              <div className="rounded-2xl border border-amber-200 bg-amber-50 p-6">
+              <div className="rounded-r-[3px] border-l-2 border-brand-dark bg-brand-sand p-6 sm:p-8">
                 <div className="flex items-start gap-3">
-                  <AlertTriangle size={20} className="text-amber-600 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="font-bold text-amber-900 mb-2">Zodpovednosť sa nevzťahuje na</h3>
-                    <ul className="space-y-1 text-sm text-amber-800">
+                    <h3 className="mb-2 text-[1.1rem] font-semibold text-brand-dark">Zodpovednosť sa nevzťahuje na</h3>
+                    <ul className="space-y-1 text-[0.95rem] font-light text-brand-dark/85">
                       <li>• Neodborná manipulácia, rezanie, opracovanie alebo montáž</li>
                       <li>• Nevhodné montážne postupy, podklady, lepidlá, náradie alebo technológie</li>
                       <li>• Mechanické poškodenie po prevzatí tovaru</li>
@@ -83,12 +75,11 @@ export const ReklamacieAVratenie: React.FC = () => {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-blue-200 bg-blue-50 p-6 mb-6">
+            <div className="mb-6 rounded-r-[3px] border-l-2 border-brand-dark bg-brand-sand p-6 sm:p-8">
               <div className="flex items-start gap-3">
-                <CheckCircle size={20} className="text-blue-600 mt-0.5 flex-shrink-0" />
                 <div>
-                  <h3 className="font-bold text-blue-900 mb-2">Kontrola pred spracovaním</h3>
-                  <p className="text-sm text-blue-800 leading-relaxed">
+                  <h3 className="mb-2 text-[1.1rem] font-semibold text-brand-dark">Kontrola pred spracovaním</h3>
+                  <p className="text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
                     Kupujúci je povinný <strong>pred akýmkoľvek rezaním, opracovaním alebo montážou</strong> dôkladne skontrolovať najmä rozmer, dekor, odtieň, povrch a zjavné vady tovaru. Po spracovaní tovaru nemožno úspešne uplatňovať tie vady alebo vlastnosti, ktoré boli zjavné alebo zistiteľné pred spracovaním.
                   </p>
                 </div>
@@ -96,41 +87,40 @@ export const ReklamacieAVratenie: React.FC = () => {
             </div>
 
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
       {/* Uplatnenie reklamácie */}
-      <section className="pb-12 lg:pb-16 bg-[#F9F9F7]">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto pt-12">
+      <Section tone="sand">
+        <Container>
+          <div className="max-w-[1040px]">
 
-            <h2 className="text-2xl font-bold text-brand-dark mb-8 flex items-center gap-3">
-              <Mail className="text-brand-gold" size={28} />
+            <h2 className="mb-10 text-os-h2">
               Uplatnenie reklamácie
             </h2>
 
-            <div className="rounded-2xl border border-gray-200 p-6 bg-white shadow-sm mb-6">
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+            <div className="mb-6 rounded-[3px] border border-brand-line bg-white/60 p-6 sm:p-8">
+              <p className="mb-4 text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
                 Reklamáciu alebo vytknutie vady môžete uplatniť e-mailom na{' '}
-                <a href="mailto:info@orostone.sk" className="text-brand-dark font-semibold hover:text-brand-gold transition-colors">info@orostone.sk</a>.
+                <a href="mailto:info@orostone.sk" className={LEGAL_LINK}>info@orostone.sk</a>.
                 Pre rýchlejšie vybavenie odporúčame uviesť:
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 mb-6">
+              <ul className="mb-6 space-y-2 text-[0.95rem] font-light text-brand-dark/85">
                 <li className="flex items-start gap-2">
-                  <span className="text-brand-gold mt-0.5">✦</span>
+                  <span className="mt-0.5 text-brand-dark/40">✦</span>
                   Číslo objednávky alebo faktúry
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-brand-gold mt-0.5">✦</span>
+                  <span className="mt-0.5 text-brand-dark/40">✦</span>
                   Popis vady a dátum zistenia
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-brand-gold mt-0.5">✦</span>
+                  <span className="mt-0.5 text-brand-dark/40">✦</span>
                   Fotodokumentáciu vady (detail + celkový pohľad), ak je to vzhľadom na povahu vady možné
                 </li>
               </ul>
 
-              <div className="rounded-xl bg-gray-50 p-5 text-sm text-gray-700 leading-relaxed space-y-3">
+              <div className="space-y-3 rounded-[3px] bg-brand-sand p-5 text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
                 <p>
                   Po vytknutí vady vám spoločnosť Orostone <strong className="text-brand-dark">bezodkladne zašle písomné potvrdenie o vytknutí vady</strong> a uvedie lehotu, v ktorej vadu odstráni alebo vybaví uplatnené právo zo zodpovednosti za vady.
                 </p>
@@ -144,100 +134,96 @@ export const ReklamacieAVratenie: React.FC = () => {
             </div>
 
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
       {/* Odstúpenie od zmluvy */}
-      <section className="pb-12 lg:pb-16 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto pt-12">
+      <Section tone="chalk">
+        <Container>
+          <div className="max-w-[1040px]">
 
-            <h2 className="text-2xl font-bold text-brand-dark mb-8 flex items-center gap-3">
-              <RotateCcw className="text-brand-gold" size={28} />
+            <h2 className="mb-10 text-os-h2">
               Odstúpenie od zmluvy pri nákupe na diaľku
             </h2>
 
-            <div className="rounded-2xl border border-gray-200 p-6 bg-white shadow-sm mb-6">
+            <div className="mb-6 rounded-[3px] border border-brand-line bg-white/60 p-6 sm:p-8">
               <div className="flex items-start gap-3 mb-4">
-                <Clock size={20} className="text-brand-gold mt-0.5 flex-shrink-0" />
-                <h3 className="font-bold text-brand-dark">14-dňová lehota na odstúpenie</h3>
+                <h3 className="text-[1.1rem] font-semibold text-brand-dark">14-dňová lehota na odstúpenie</h3>
               </div>
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+              <p className="mb-4 text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
                 Ak ste spotrebiteľ a nakúpili ste cez internet, máte právo odstúpiť od zmluvy <strong className="text-brand-dark">bez uvedenia dôvodu do 14 dní</strong> od prevzatia tovaru.
               </p>
-              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+              <p className="mb-4 text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
                 Odstúpenie môžete zaslať:
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 mb-4">
+              <ul className="mb-4 space-y-2 text-[0.95rem] font-light text-brand-dark/85">
                 <li className="flex items-start gap-2">
-                  <span className="text-brand-gold mt-0.5">✦</span>
-                  E-mailom na <a href="mailto:info@orostone.sk" className="text-brand-dark font-semibold hover:text-brand-gold transition-colors">info@orostone.sk</a>
+                  <span className="mt-0.5 text-brand-dark/40">✦</span>
+                  E-mailom na <a href="mailto:info@orostone.sk" className={LEGAL_LINK}>info@orostone.sk</a>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-brand-gold mt-0.5">✦</span>
+                  <span className="mt-0.5 text-brand-dark/40">✦</span>
                   Poštou na adresu sídla spoločnosti
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-brand-gold mt-0.5">✦</span>
+                  <span className="mt-0.5 text-brand-dark/40">✦</span>
                   Prostredníctvom{' '}
-                  <Link to="/odstupenie-od-zmluvy" className="text-brand-gold hover:underline font-semibold">
+                  <Link to="/odstupenie-od-zmluvy" className={LEGAL_LINK}>
                     vzorového formulára na odstúpenie od zmluvy
                   </Link>
                 </li>
               </ul>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
                 Spotrebiteľ je povinný najneskôr do 14 dní odo dňa odstúpenia zaslať tovar späť alebo ho odovzdať spoločnosti Orostone, ak spoločnosť Orostone nenavrhne iný spôsob prevzatia.
               </p>
             </div>
 
             {/* Náklady na vrátenie */}
-            <div className="rounded-2xl border border-amber-200 bg-amber-50 p-6 mb-6">
-              <h3 className="font-bold text-brand-dark mb-3 flex items-center gap-2">
-                <Package size={18} className="text-amber-600" />
+            <div className="mb-6 rounded-r-[3px] border-l-2 border-brand-dark bg-brand-sand p-6 sm:p-8">
+              <h3 className="mb-3 text-[1.1rem] font-semibold text-brand-dark">
                 Náklady na vrátenie tovaru
               </h3>
-              <p className="text-sm text-gray-700 leading-relaxed mb-3">
+              <p className="mb-3 text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
                 <strong>Náklady na vrátenie tovaru znáša spotrebiteľ.</strong> Keďže veľkoformátové platne vzhľadom na svoju povahu, hmotnosť a rozmery nemožno spravidla vrátiť bežnou poštovou službou, vracajú sa primeranou prepravou.
               </p>
-              <p className="text-sm text-gray-700 leading-relaxed mb-3">
+              <p className="mb-3 text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
                 Priame náklady na vrátenie sa spravidla pohybujú v rozmedzí <strong className="text-brand-dark">150 € až 350 € s DPH</strong> v závislosti od miesta vyzdvihnutia, počtu kusov a spôsobu dopravy.
               </p>
             </div>
 
             {/* Stav vráteného tovaru */}
-            <div className="rounded-2xl border border-gray-200 p-6 bg-white shadow-sm mb-6">
-              <h3 className="font-bold text-brand-dark mb-3">Stav vráteného tovaru</h3>
-              <p className="text-gray-600 text-sm leading-relaxed mb-3">
+            <div className="mb-6 rounded-[3px] border border-brand-line bg-white/60 p-6 sm:p-8">
+              <h3 className="mb-3 text-[1.1rem] font-semibold text-brand-dark">Stav vráteného tovaru</h3>
+              <p className="mb-3 text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
                 Spotrebiteľ zodpovedá len za zníženie hodnoty tovaru, ktoré vzniklo v dôsledku takého zaobchádzania s tovarom, ktoré je nad rámec potrebný na zistenie vlastností a funkčnosti tovaru.
               </p>
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
                 Z dôvodu bezpečnej spätnej prepravy odporúčame tovar vrátiť v pôvodnom obale alebo v rovnocennom ochrannom balení. Absencia pôvodného obalu sama osebe nevylučuje platné odstúpenie od zmluvy, môže však mať vplyv na posúdenie zodpovednosti za poškodenie vzniknuté pri spätnom transporte.
               </p>
             </div>
 
             {/* Vrátenie platieb */}
-            <div className="rounded-2xl border border-gray-200 p-6 bg-white shadow-sm mb-6">
-              <h3 className="font-bold text-brand-dark mb-3">Vrátenie platieb</h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
+            <div className="mb-6 rounded-[3px] border border-brand-line bg-white/60 p-6 sm:p-8">
+              <h3 className="mb-3 text-[1.1rem] font-semibold text-brand-dark">Vrátenie platieb</h3>
+              <p className="text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
                 Spoločnosť Orostone vráti spotrebiteľovi všetky platby, ktoré od neho prijala na základe alebo v súvislosti so zmluvou, vrátane nákladov na dodanie v rozsahu najlacnejšieho bežného spôsobu dodania ponúkaného spoločnosťou Orostone, a to <strong className="text-brand-dark">do 14 dní</strong> od doručenia oznámenia o odstúpení od zmluvy. Spoločnosť Orostone nie je povinná vrátiť platby skôr, ako jej bude tovar doručený späť alebo kým spotrebiteľ nepreukáže jeho odoslanie späť, podľa toho, čo nastane skôr.
               </p>
             </div>
 
             {/* Formulár CTA */}
-            <div className="rounded-2xl border-2 border-brand-gold/30 bg-brand-gold/5 p-6 mb-6">
+            <div className="mb-6 rounded-[3px] border border-brand-dark p-6 sm:p-8">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div className="flex items-start gap-3">
-                  <FileText size={22} className="text-brand-gold mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="font-bold text-brand-dark mb-1">Vzorový formulár na odstúpenie od zmluvy</h3>
-                    <p className="text-sm text-gray-600">
+                    <h3 className="mb-1 text-[1.1rem] font-semibold text-brand-dark">Vzorový formulár na odstúpenie od zmluvy</h3>
+                    <p className="text-sm font-light text-brand-muted">
                       Podľa zákona č. 108/2024 Z.z. o ochrane spotrebiteľa
                     </p>
                   </div>
                 </div>
                 <Link
                   to="/odstupenie-od-zmluvy"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-gold text-brand-dark px-6 py-3 text-sm font-bold uppercase tracking-wider hover:bg-brand-dark hover:text-white transition-colors flex-shrink-0"
+                  className="inline-flex min-h-[50px] flex-shrink-0 items-center justify-center gap-2 rounded-[10px] bg-brand-dark px-6 text-[0.74rem] font-bold uppercase tracking-[0.12em] text-brand-light no-underline transition-colors hover:bg-[#333331]"
                 >
                   Otvoriť formulár
                 </Link>
@@ -245,75 +231,68 @@ export const ReklamacieAVratenie: React.FC = () => {
             </div>
 
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
       {/* Dôležité pri prevzatí */}
-      <section className="pb-12 lg:pb-16 bg-[#F9F9F7]">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto pt-12">
-            <div className="rounded-2xl border border-amber-200 bg-amber-50 p-6">
+      <Section tone="sand">
+        <Container>
+          <div className="max-w-[1040px]">
+            <div className="rounded-r-[3px] border-l-2 border-brand-dark bg-brand-light p-6 sm:p-8">
               <div className="flex items-start gap-3">
-                <AlertTriangle size={20} className="text-amber-600 mt-0.5 flex-shrink-0" />
                 <div>
-                  <h3 className="font-bold text-amber-900 mb-2">Dôležité — skontrolujte tovar pri prevzatí</h3>
-                  <p className="text-sm text-amber-800 leading-relaxed">
+                  <h3 className="mb-2 text-[1.1rem] font-semibold text-brand-dark">Dôležité — skontrolujte tovar pri prevzatí</h3>
+                  <p className="text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
                     Pri prevzatí zásielky si dôkladne skontrolujte stav balenia aj samotného tovaru. Viditeľné poškodenie je potrebné <strong>bezodkladne zaznamenať v dodacom liste</strong> alebo inom prepravnom doklade dopravcu a zdokumentovať fotografiami. Poškodenie pri doprave, ktoré nebolo zaznamenané pri prevzatí, môže byť následne podstatne ťažšie preukázateľné.
                   </p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
       {/* Súvisiace dokumenty */}
-      <section className="pb-8 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <div className="rounded-2xl border border-gray-200 p-5 bg-[#F9F9F7]">
-              <p className="text-sm text-gray-500 mb-3 font-medium">Súvisiace dokumenty</p>
+      <Section tone="chalk" className="!pb-0">
+        <Container>
+          <div className="max-w-[1040px]">
+            <div className="border-y border-brand-line py-5">
+              <p className="mb-3 text-os-eyebrow uppercase text-brand-muted">Súvisiace dokumenty</p>
               <div className="flex flex-wrap gap-4 text-sm">
-                <Link to="/vop" className="text-brand-gold hover:underline">Všeobecné obchodné podmienky</Link>
-                <span className="text-gray-300">|</span>
-                <Link to="/doprava" className="text-brand-gold hover:underline">Doprava a platba</Link>
-                <span className="text-gray-300">|</span>
-                <Link to="/odstupenie-od-zmluvy" className="text-brand-gold hover:underline">Formulár na odstúpenie od zmluvy</Link>
+                <Link to="/vop" className={LEGAL_LINK}>Všeobecné obchodné podmienky</Link>
+                <span className="text-brand-line">|</span>
+                <Link to="/doprava" className={LEGAL_LINK}>Doprava a platba</Link>
+                <span className="text-brand-line">|</span>
+                <Link to="/odstupenie-od-zmluvy" className={LEGAL_LINK}>Formulár na odstúpenie od zmluvy</Link>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
       {/* CTA */}
-      <section className="pb-16 lg:pb-24 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <div className="rounded-2xl bg-brand-dark text-white px-6 py-8 sm:px-10 sm:py-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
+      <Section tone="chalk" className="!pt-10">
+        <Container>
+          <div className="max-w-[1040px]">
+            <div className="flex flex-col gap-6 rounded-[3px] bg-brand-sand px-6 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-10 sm:py-10">
               <div>
-                <h3 className="text-2xl font-bold mb-2">Máte otázku k reklamácii?</h3>
-                <p className="text-gray-300">Sme tu pre vás.</p>
+                <h3 className="mb-2 text-os-h3">Máte otázku k reklamácii?</h3>
+                <p className="font-light text-brand-muted">Sme tu pre vás.</p>
               </div>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <a
-                  href="tel:+421917588738"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-gold text-brand-dark px-6 py-3 text-sm font-bold uppercase tracking-wider hover:bg-white transition-colors"
-                >
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <ActionButton to="tel:+421917588738">
                   <Phone size={16} />
                   Zavolať
-                </a>
-                <a
-                  href="mailto:info@orostone.sk"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/40 text-white px-6 py-3 text-sm font-bold uppercase tracking-wider hover:bg-white hover:text-brand-dark transition-colors"
-                >
+                </ActionButton>
+                <ActionButton to="mailto:info@orostone.sk" variant="outline">
                   <Mail size={16} />
                   Napísať email
-                </a>
+                </ActionButton>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </Container>
+      </Section>
+    </div>
   );
 };
