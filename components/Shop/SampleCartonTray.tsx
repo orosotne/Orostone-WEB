@@ -25,6 +25,10 @@ export interface SampleCartonTrayProps {
 }
 interface TrayView { slots: (SampleDecor | null)[]; visible: number[]; quantity: SampleQuantity; busy: boolean; packed: boolean; fallback: boolean; motionFailed: boolean; message: string }
 const isMobile = () => innerWidth <= 640 || (innerWidth <= 950 && innerHeight <= 500);
+const dockedTrayHeight = (width: number, mobile: boolean) => width * 315 / 720 + (mobile ? width < 300 ? 164 : 144 : 140);
+const setLayoutProperty = (element: HTMLElement, name: string, value: string) => {
+  if (element.style.getPropertyValue(name) !== value) element.style.setProperty(name, value);
+};
 const editingField = () => document.activeElement?.matches('input:not([type="radio"]):not([type="checkbox"]),select,textarea') ?? false;
 const initialView = (quantity: SampleQuantity): TrayView => ({ slots: [null, null, null], visible: Array.from({ length: quantity }, (_, i) => i), quantity, busy: false, packed: false, fallback: true, motionFailed: false, message: '' });
 
@@ -47,31 +51,49 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     dockRaf.current = 0; if (!alive.current || transferring.current) return;
     const home = homeRef.current, tray = trayRef.current, browser = callbacks.current.browserRef.current, button = callbacks.current.carouselButtonRef.current;
     if (!home || !tray || !browser || !button) return;
-    const browserRect = browser.getBoundingClientRect(), buttonRect = button.getBoundingClientRect(), homeRect = home.getBoundingClientRect();
     const viewport = window.visualViewport?.height || innerHeight, header = siteHeaderBottom(), mobile = isMobile();
     const desktopWidth = viewport <= 800 ? 290 : innerWidth <= 1100 ? 310 : 480;
-    const width = Math.max(0, Math.min(home.clientWidth, mobile ? innerWidth > 640 ? 310 : 480 : desktopWidth, innerWidth - (mobile ? 48 : 80)));
-    const trayHeight = width * 315 / 720 + 140, minimum = innerWidth > 640 && mobile ? 240 : 420;
-    const room = (mobile || width >= 240) && viewport - header >= trayHeight + (mobile ? minimum + 16 : 120);
+    let width = Math.max(0, Math.min(home.clientWidth, mobile ? innerWidth > 640 ? 310 : 480 : desktopWidth, innerWidth - (mobile ? 48 : 80)));
+    const bottomInset = mobile ? Math.max(8, parseFloat(getComputedStyle(tray).scrollMarginBottom) || 0) : 12;
+    let minimum = innerWidth > 640 && mobile ? 240 : 420;
+    let browserHeight = minimum;
+    if (mobile && innerWidth <= 640) {
+      const track = browser.querySelector<HTMLElement>('#decor-carousel'), controls = browser.querySelector<HTMLElement>('.sample-decor-controls');
+      const browserStyle = getComputedStyle(browser), trackStyle = track && getComputedStyle(track);
+      const chrome = (controls?.getBoundingClientRect().height ?? 122) + (parseFloat(trackStyle?.paddingTop || '0') || 0) + (parseFloat(trackStyle?.paddingBottom || '0') || 0) + (parseFloat(browserStyle.paddingBottom) || 0);
+      const headingHeight = browser.querySelector('.sample-decor-heading')?.getBoundingClientRect().height ?? 59;
+      // Fit the visible material, thumb controls and carton together. The
+      // section heading can scroll above the header; the material cannot.
+      const maxWidth = (viewport - header - bottomInset - 12 - chrome - 120 - 164) * 720 / 315;
+      width = Math.min(width, Math.max(260, Math.floor(maxWidth)));
+      const available = viewport - header - bottomInset - 12 - dockedTrayHeight(width, true);
+      const tile = Math.max(120, Math.min(innerWidth * .62, 240, Math.floor(available - chrome)));
+      setLayoutProperty(browser, '--sample-tile-size', tile + 'px');
+      minimum = tile + chrome;
+      browserHeight = minimum + headingHeight + (parseFloat(browserStyle.paddingTop) || 0);
+    } else browser.style.removeProperty('--sample-tile-size');
+    const trayHeight = dockedTrayHeight(width, mobile);
+    const room = width >= (mobile ? 260 : 240) && viewport - header >= trayHeight + (mobile ? minimum + bottomInset + 12 : 120);
     dockFits.current = room;
-    // Reserve a balanced stage when the dock fits; shorter screens follow the
-    // content instead of stretching the carousel to the full viewport height.
-    const browserHeight = room ? Math.max(minimum, viewport - header - trayHeight - 16) : minimum;
-    browser.style.setProperty('--mobile-browser-height', browserHeight + 'px'); browser.style.setProperty('--mobile-header-bottom', header + 'px');
+    if (!(mobile && innerWidth <= 640)) browserHeight = room ? Math.max(minimum, viewport - header - trayHeight - 16) : minimum;
+    setLayoutProperty(browser, '--mobile-browser-height', browserHeight + 'px'); setLayoutProperty(browser, '--mobile-header-bottom', header + 'px');
+    setLayoutProperty(tray, '--tray-width', width + 'px');
+    // Re-read after setting responsive sizes, before deciding whether to pin.
+    const browserRect = browser.getBoundingClientRect(), buttonRect = button.getBoundingClientRect(), homeRect = home.getBoundingClientRect();
     const inBrowser = (mobile ? browserRect.top <= header + 20 : browserRect.top < viewport - trayHeight - 16) && buttonRect.bottom > header;
     const homeVisible = homeRect.top < viewport - Math.min(homeHeight.current || 360, 360) && homeRect.bottom > header;
     const orderRect = home.closest('.sample-order')?.getBoundingClientRect();
     // Release the floating panel as the order enters the reading area, so
     // the quantity control and its price breakdown remain accessible.
-    const readingOrder = orderRect && orderRect.top < header + (viewport - header) / 2;
+    const readingOrder = orderRect && orderRect.top < header + (mobile ? 120 : (viewport - header) / 2);
     // A centered desktop tray must sit below the carousel's click target.
     // Keep its scale fixed while scrolling; only dock when both fit.
-    const clearsButton = mobile || viewport - 12 - 16 - buttonRect.bottom >= trayHeight;
+    const clearsButton = viewport - bottomInset - 12 - buttonRect.bottom >= trayHeight;
     const next = inBrowser && !homeVisible && !readingOrder && !editingField() && room && clearsButton;
     if (!isDocked.current) homeHeight.current = tray.getBoundingClientRect().height;
-    tray.style.setProperty('--tray-width', width + 'px');
-    tray.style.setProperty('--tray-center-x', browserRect.left + browserRect.width / 2 + 'px');
-    home.style.minHeight = next ? homeHeight.current + 'px' : '';
+    setLayoutProperty(tray, '--tray-center-x', browserRect.left + browserRect.width / 2 + 'px');
+    const homeMinHeight = next ? homeHeight.current + 'px' : '';
+    if (home.style.minHeight !== homeMinHeight) home.style.minHeight = homeMinHeight;
     if (next !== isDocked.current) { isDocked.current = next; setDocked(next); }
   };
   const scheduleDock = () => { if (alive.current && !dockRaf.current) dockRaf.current = requestAnimationFrame(syncDock); };
@@ -80,13 +102,15 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     if (!browser || editingField() || reduced.current) { syncDock(); return; }
     await new Promise<void>(resolve => requestAnimationFrame(() => {
       if (!alive.current) { resolve(); return; } syncDock();
-      const rect = browser.getBoundingClientRect(), top = siteHeaderBottom(), bottom = isDocked.current ? (trayRef.current?.getBoundingClientRect().top ?? innerHeight) - 12 : (window.visualViewport?.height || innerHeight);
-      // When both panels fit, align the carousel below the header so docking
-      // can show the flight's source and destination together on mobile.
+      const top = siteHeaderBottom();
+      // Align the add button above the dock, keeping the complete material
+      // visible. Very short screens show the carton's insertion in place.
       const button = callbacks.current.carouselButtonRef.current, tray = trayRef.current;
-      const trayHeight = parseFloat(tray?.style.getPropertyValue('--tray-width') || '0') * 315 / 720 + 140;
+      const trayHeight = dockedTrayHeight(parseFloat(tray?.style.getPropertyValue('--tray-width') || '0'), isMobile());
+      const bottomInset = isMobile() ? Math.max(8, parseFloat(tray ? getComputedStyle(tray).scrollMarginBottom : '0') || 0) : 12;
       let distance = 0;
-      if (isMobile()) distance = dockFits.current || rect.height > bottom - top + 24 ? rect.top - top - 12 : rect.top + rect.height / 2 - (top + bottom) / 2;
+      if (isMobile() && dockFits.current && button) distance = Math.max(button.getBoundingClientRect().bottom - ((window.visualViewport?.height || innerHeight) - bottomInset - 24 - trayHeight), browser.getBoundingClientRect().top - top - 12);
+      else if (isMobile() && tray) distance = tray.getBoundingClientRect().top - top - 24;
       else if (dockFits.current && button) distance = button.getBoundingClientRect().bottom - ((window.visualViewport?.height || innerHeight) - 32 - trayHeight);
       if (Math.abs(distance) <= 2) { resolve(); return; }
       let timer: ReturnType<typeof setTimeout>;
@@ -206,7 +230,7 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
       alive.current = false; ++mountVersion.current; ++operationVersion.current; observer.disconnect(); resize.disconnect(); cancelAnimationFrame(dockRaf.current); dockRaf.current = 0;
       media.removeEventListener('change', change); removeEventListener('scroll', scheduleDock); removeEventListener('resize', scheduleDock); document.removeEventListener('focusin', scheduleDock); document.removeEventListener('focusout', scheduleDock); window.visualViewport?.removeEventListener('resize', scheduleDock);
       scrollDone.current?.(); segmentDone.current?.(); flight.current.destroy(); for (const cancel of pendingMounts.current.values()) cancel(); pendingMounts.current.clear(); animation.current?.destroy(); animation.current = null;
-      props.browserRef.current?.style.removeProperty('--mobile-browser-height'); props.browserRef.current?.style.removeProperty('--mobile-header-bottom'); if (model.current.busy) callbacks.current.onBusyChange?.(false);
+      props.browserRef.current?.style.removeProperty('--mobile-browser-height'); props.browserRef.current?.style.removeProperty('--mobile-header-bottom'); props.browserRef.current?.style.removeProperty('--sample-tile-size'); if (model.current.busy) callbacks.current.onBusyChange?.(false);
     };
   }, []);
   useEffect(() => { if (props.quantity !== model.current.quantity) { if (model.current.busy || props.locked) pendingQuantityProp.current = props.quantity; else void setQuantity(props.quantity); } }, [props.quantity]);
