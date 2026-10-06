@@ -53,7 +53,7 @@ export interface HomeRealization {
 export const HOME_REALIZATIONS: HomeRealization[] = [
   { image: 'taj-mahal-kosice', width: 1600, height: 1200, pos: '52% 55%', decor: 'Taj Mahal', decorSlug: 'taj-mahal', text: 'Ostrovček s jedálenským stolom, Košice', alt: 'Ostrovček so zástenou v dekore Taj Mahal a orechovým jedálenským stolom, Košice' },
   { image: 'arden-gold', width: 893, height: 904, pos: '50% 62%', decor: 'Arden Gold', text: 'Ostrovček a zástena', alt: 'Ostrovček a zástena v dekore Arden Gold so zlatými žilkami, dubová podlaha' },
-  { image: 'sivy-kamen-kniznica', width: 1200, height: 900, pos: '56% 60%', decor: 'Sivý kameň', text: 'Ostrovček pri knižnici', alt: 'Ostrovček so sivou kamennou doskou pred knižnicou a bielou kuchynskou linkou' },
+  { image: 'sivy-kamen-kniznica', width: 1200, height: 900, pos: '56% 60%', decor: 'Yabo White', decorSlug: 'yabo-white', text: 'Ostrovček pri knižnici', alt: 'Ostrovček s doskou Yabo White pred knižnicou a bielou kuchynskou linkou' },
   { image: 'super-white-extra-dub', width: 1600, height: 893, pos: '44% 50%', decor: 'Super White Extra', decorSlug: 'super-white-extra', text: 'Kuchyňa v dube · upravená fotografia realizácie', alt: 'Kuchyňa v dube s pracovnou doskou a zástenou Super White Extra, čelný pohľad' },
   { image: 'polaris-statuario', width: 768, height: 1024, pos: '55% 56%', decor: 'Polaris Statuario White', text: 'Doska na orechovom ostrovčeku', alt: 'Biela kamenná doska so sivými žilkami na ostrovčeku z orechového dreva' },
   { image: 'calacatta-gold', width: 1014, height: 900, pos: '30% 62%', decor: 'Calacatta Gold', text: 'Ostrovček s bočnicou', alt: 'Ostrovček s kamennou bočnicou v dekore Calacatta Gold so zlatými žilkami' },
