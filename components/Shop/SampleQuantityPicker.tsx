@@ -10,7 +10,6 @@ interface SampleQuantityPickerProps {
 }
 
 export function SampleQuantityPicker({ value, onChange, disabled = false, id, feedback = '' }: SampleQuantityPickerProps) {
-  const quote = quoteSampleOrder(value);
   return (
     <fieldset id={id} disabled={disabled} className="sample-quantity">
       <legend>Koľko vzoriek si želáte?</legend>
@@ -28,11 +27,6 @@ export function SampleQuantityPicker({ value, onChange, disabled = false, id, fe
           </label>;
         })}
       </div>
-      <dl id={`${id}-quote`} className="sample-quantity-quote" aria-live="polite" aria-atomic="true">
-        <div><dt>Vzorky{value > 1 && <span> · prvá zadarmo</span>}</dt><dd>{value === 1 ? 'Zadarmo' : formatSamplePrice(quote.samplesCents)}</dd></div>
-        <div><dt>Doprava za celé balenie</dt><dd>{formatSamplePrice(quote.shippingCents)}</dd></div>
-        <div className="sample-quantity-total"><dt>Spolu s dopravou</dt><dd>{formatSamplePrice(quote.totalCents)}</dd></div>
-      </dl>
       <p role="status" aria-live="polite" className="sample-quantity-feedback">{feedback}</p>
     </fieldset>
   );
