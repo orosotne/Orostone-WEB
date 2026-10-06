@@ -34,6 +34,13 @@ Reference sheet while developing: `npm run dev` → http://localhost:3000/_dizaj
 </Section>
 ```
 
+### Blog
+
+- `components/Blog/BlogCard` is the article card for the blog list and related articles.
+- Article typography lives in the `PROSE` constant in `pages/BlogArticle.tsx`. It styles the HTML in `data/articles` and its blocks: `.article-tldr`, `-highlight`, `-tip`, `-quote`, `-figure`, `-case-study`, `-cta`.
+- `.gold` in an article is graphite text on a gold marker, never gold text.
+- Keep `keepUnits()` on headings so "20 mm" does not break.
+
 ### Subpage pattern
 
 `PageHero` → content sections alternating sand and chalk (at most one graphite) → a section call to action (one dark `ActionButton` + `TextLink`s) → `GoldBand`. FAQ sections put the `SectionHeader` left and the `FaqList` right from 1024 px. Tables: graphite rule under the header row, hairlines between rows, the Orostone column on a contrasting light background, never gold text.
