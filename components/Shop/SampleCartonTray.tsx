@@ -53,10 +53,21 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
   const setBusy = (busy: boolean) => { const changed = model.current.busy !== busy; model.current.busy = busy; refresh(); if (changed) callbacks.current.onBusyChange?.(busy); };
   const setMessage = (message: string) => { model.current.message = message; refresh(); };
   const syncDock = () => {
-    dockRaf.current = 0; if (!alive.current || transferring.current) return;
+    dockRaf.current = 0; if (!alive.current) return;
     const home = homeRef.current, tray = trayRef.current, browser = callbacks.current.browserRef.current, button = callbacks.current.carouselButtonRef.current;
     if (!home || !tray || !browser || !button) return;
     const viewport = window.visualViewport?.height || innerHeight, header = siteHeaderBottom(), mobile = isMobile();
+    const homeRect = home.getBoundingClientRect(), orderRect = home.closest('.sample-order')?.getBoundingClientRect();
+    const homeVisible = homeRect.top < viewport - Math.min(homeHeight.current || 360, 360) && homeRect.bottom > header;
+    // Release at the order even while images load or the sample is in flight.
+    // Otherwise keep the flight's destination geometry frozen.
+    const readingOrder = orderRect && orderRect.top < header + (mobile ? 120 : (viewport - header) / 2);
+    if (transferring.current) {
+      if (!homeVisible && !readingOrder && !editingField()) return;
+      flight.current.cancel('return-to-order');
+      tray.style.removeProperty('top'); tray.style.removeProperty('bottom');
+      transferring.current = false; insertingFromGallery.current = false;
+    }
     if (mobileLayout.current.width !== innerWidth) mobileLayout.current = { width: innerWidth, height: viewport };
     const layoutHeight = mobile ? mobileLayout.current.height : viewport;
     const desktopWidth = viewport <= 800 ? 290 : innerWidth <= 1100 ? 310 : 480;
@@ -85,20 +96,18 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     setLayoutProperty(browser, '--mobile-header-bottom', header + 'px');
     setLayoutProperty(tray, '--tray-width', width + 'px');
     // Re-read after setting responsive sizes, before deciding whether to pin.
-    const browserRect = browser.getBoundingClientRect(), buttonRect = button.getBoundingClientRect(), homeRect = home.getBoundingClientRect();
+    const browserRect = browser.getBoundingClientRect(), buttonRect = button.getBoundingClientRect();
     const inBrowser = browserRect.top < viewport - trayHeight - 16 && buttonRect.bottom > header;
-    const homeVisible = homeRect.top < viewport - Math.min(homeHeight.current || 360, 360) && homeRect.bottom > header;
-    const orderRect = home.closest('.sample-order')?.getBoundingClientRect();
-    // Release the floating panel as the order enters the reading area, so
-    // the quantity control and its price breakdown remain accessible.
-    const readingOrder = orderRect && orderRect.top < header + (mobile ? 120 : (viewport - header) / 2);
     // A centered desktop tray must sit below the carousel's click target.
     // Keep its scale fixed while scrolling; only dock when both fit.
     // Match centerBrowser's 2px settling tolerance: fractional mobile scroll
     // positions must not reject a dock that already has the intended gap.
     const clearsButton = viewport - bottomInset - 12 - buttonRect.bottom >= trayHeight - 2;
-    const next = (insertingFromGallery.current && isDocked.current && !editingField()) ||
-      (inBrowser && !homeVisible && !readingOrder && !editingField() && room && clearsButton);
+    // Keep insertion stable only while the customer stays in the gallery.
+    // Scrolling to the order always returns the same player to its inline home,
+    // even if the carton is still closing.
+    const staysInGallery = inBrowser && !homeVisible && !readingOrder && !editingField();
+    const next = staysInGallery && ((insertingFromGallery.current && isDocked.current) || (room && clearsButton));
     if (!isDocked.current) homeHeight.current = tray.getBoundingClientRect().height;
     setLayoutProperty(tray, '--tray-center-x', browserRect.left + browserRect.width / 2 + 'px');
     const homeMinHeight = next ? homeHeight.current + 'px' : '';
@@ -182,7 +191,7 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
             tray.style.removeProperty('top'); tray.style.removeProperty('bottom');
             const shift = before - tray.getBoundingClientRect().top;
             // Rejoin the browser's new safe area gently after the flight.
-            if (Math.abs(shift) > 1 && !reduced.current) tray.animate([
+            if (isDocked.current && Math.abs(shift) > 1 && !reduced.current) tray.animate([
               { transform: `translateX(-50%) translateY(${shift}px)` }, { transform: 'translateX(-50%)' },
             ], { duration: 240, easing: 'cubic-bezier(.2,0,0,1)' });
           }
