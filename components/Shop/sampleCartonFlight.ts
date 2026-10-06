@@ -22,7 +22,7 @@ export function createSampleFlight() {
     cancel('replaced');
     if (!source || document.hidden) return Promise.resolve({ started: false });
     const { img, product } = source, now = img.getBoundingClientRect(), world = svg.getScreenCTM();
-    if (!img.isConnected || !world || now.right <= 0 || now.left >= innerWidth || source.width !== innerWidth || source.height !== innerHeight || Math.abs(source.scrollY - scrollY) > 3 || Math.abs(source.rect.top - now.top) > 4) return Promise.resolve({ started: false });
+    if (!img.isConnected || !world || now.right <= 0 || now.left >= innerWidth || source.width !== innerWidth || Math.abs(source.scrollY - scrollY) > 3 || Math.abs(source.rect.top - now.top) > 4) return Promise.resolve({ started: false });
     const groups = Array.from(svg.querySelectorAll<SVGGraphicsElement>('.sample-stone-' + index));
     if (groups.length !== 3) return Promise.resolve({ started: false });
     const inverse = world.inverse(); let x = Infinity, y = Infinity, right = -Infinity, bottom = -Infinity;
@@ -58,7 +58,7 @@ export function createSampleFlight() {
     const from = { x: now.left + now.width * crop[0] / 400, y: now.top + now.height * crop[1] / 400, width: now.width * (crop[2] - crop[0]) / 400, height: now.height * (crop[3] - crop[1]) / 400 };
     const screen = document.createElement('div'); screen.className = 'sample-carton-flight-screen'; screen.setAttribute('aria-hidden', 'true'); screen.style.clipPath = `inset(${header}px 0 0)`;
     const overlay = document.createElement('div'); overlay.className = 'sample-carton-flight'; overlay.style.width = target.width + 'px'; overlay.style.height = target.height + 'px';
-    const photo = img.cloneNode(false) as HTMLImageElement; photo.removeAttribute('id'); photo.removeAttribute('class'); photo.alt = '';
+    const photo = img.cloneNode(false) as HTMLImageElement; photo.removeAttribute('id'); photo.removeAttribute('class'); photo.alt = ''; photo.loading = 'eager'; photo.decoding = 'sync';
     photo.style.cssText = `left:${-crop[0] / (crop[2] - crop[0]) * 100}%;top:${-crop[1] / (crop[3] - crop[1]) * 100}%;width:${400 / (crop[2] - crop[0]) * 100}%;height:${400 / (crop[3] - crop[1]) * 100}%`;
     overlay.append(photo, copy); screen.append(overlay); document.body.append(screen);
     const visibility = groups.map(g => g.style.visibility); groups.forEach(g => g.style.visibility = 'hidden');
@@ -68,21 +68,40 @@ export function createSampleFlight() {
     const c1 = { x: start.x + (end.x - start.x) * .42, y: start.y - lift }, c2 = { x: end.x, y: end.y - approach };
     let raf = 0, startTime: number | undefined, settled = false;
     return new Promise(resolve => {
-      const stop = () => finish('viewport-change'), hidden = () => { if (document.hidden) finish('hidden'); };
+      const orientation = matchMedia('(orientation: portrait)'), startedPortrait = orientation.matches;
+      const startedScale = window.visualViewport?.scale ?? 1, startedScroll = { x: scrollX, y: scrollY };
+      const sameGeometry = (current: { x: number; y: number; width: number; height: number }, expected: { x: number; y: number; width: number; height: number }) =>
+        Math.abs(current.x - expected.x) <= 1 && Math.abs(current.y - expected.y) <= 1 && Math.abs(current.width - expected.width) <= 1 && Math.abs(current.height - expected.height) <= 1;
+      const viewportChanged = () => {
+        const matrix = svg.isConnected ? svg.getScreenCTM() : null, currentSource = img.getBoundingClientRect();
+        if (!matrix || !img.isConnected || innerWidth !== source.width || orientation.matches !== startedPortrait || (window.visualViewport?.scale ?? 1) !== startedScale || !sameGeometry(currentSource, now)) { finish('viewport-change'); return; }
+        const topLeft = point(bounds.x, bounds.y, matrix), bottomRight = point(bounds.x + bounds.width, bounds.y + bounds.height, matrix);
+        const currentTarget = { x: topLeft.x, y: topLeft.y, width: bottomRight.x - topLeft.x, height: bottomRight.y - topLeft.y };
+        const viewport = window.visualViewport, visibleLeft = viewport?.offsetLeft ?? 0, visibleTop = viewport?.offsetTop ?? 0, currentHeader = siteHeaderBottom();
+        const visibleRight = visibleLeft + (viewport?.width ?? innerWidth), visibleBottom = visibleTop + (viewport?.height ?? innerHeight);
+        if (!sameGeometry(currentTarget, target) || currentTarget.x < visibleLeft || currentTarget.x + currentTarget.width > visibleRight || currentTarget.y < Math.max(currentHeader, visibleTop) || currentTarget.y + currentTarget.height > visibleBottom) { finish('viewport-change'); return; }
+        // Mobile browser chrome changes height while the frozen tray and source
+        // remain still. Keep that flight alive and update only its header clip.
+        screen.style.clipPath = `inset(${currentHeader}px 0 0)`;
+      };
+      const scrolled = () => { if (Math.abs(scrollX - startedScroll.x) > 1 || Math.abs(scrollY - startedScroll.y) > 1) finish('scroll'); };
+      const hidden = () => { if (document.hidden) finish('hidden'); };
       const finish = (_reason: string) => {
         if (settled) return; settled = true; cancelAnimationFrame(raf);
         groups.forEach((g, i) => g.style.visibility = visibility[i]); img.style.opacity = imageOpacity; screen.remove();
-        removeEventListener('resize', stop); removeEventListener('scroll', stop); document.removeEventListener('visibilitychange', hidden); window.visualViewport?.removeEventListener('resize', stop);
+        removeEventListener('resize', viewportChanged); removeEventListener('scroll', scrolled); orientation.removeEventListener('change', viewportChanged); document.removeEventListener('visibilitychange', hidden); window.visualViewport?.removeEventListener('resize', viewportChanged);
         if (finishActive === finish) finishActive = undefined; resolve({ started: true });
       };
       finishActive = finish;
-      addEventListener('resize', stop); addEventListener('scroll', stop, { passive: true }); document.addEventListener('visibilitychange', hidden); window.visualViewport?.addEventListener('resize', stop);
+      addEventListener('resize', viewportChanged); addEventListener('scroll', scrolled, { passive: true }); orientation.addEventListener('change', viewportChanged); document.addEventListener('visibilitychange', hidden); window.visualViewport?.addEventListener('resize', viewportChanged);
       const render = (progress: number) => {
         const t = smooth(progress), u = 1 - t;
         const px = u * u * u * start.x + 3 * u * u * t * c1.x + 3 * u * t * t * c2.x + t * t * t * end.x;
         const py = u * u * u * start.y + 3 * u * u * t * c1.y + 3 * u * t * t * c2.y + t * t * t * end.y;
         overlay.style.transform = `translate3d(${px - target.width / 2}px,${py - target.height / 2}px,0) rotate(${-3 * Math.sin(Math.PI * t)}deg) scale(${(from.width + (target.width - from.width) * t) / target.width},${(from.height + (target.height - from.height) * t) / target.height})`;
-        const blend = smooth(clamp((progress - .08) / .36)); photo.style.opacity = String(1 - blend); copy.style.opacity = String(blend);
+        // Retain the photographed sample while it is largest. Change to the
+        // carton perspective close to arrival, avoiding two pale overlapping faces.
+        const blend = smooth(clamp((progress - .55) / .2)); photo.style.opacity = String(1 - blend); copy.style.opacity = String(blend);
         overlay.style.filter = `drop-shadow(0 ${6 * (1 - t)}px ${8 * (1 - t)}px #161b161c)`;
       };
       const tick = (time: number) => { if (settled) return; startTime ??= time; const progress = clamp((time - startTime) / duration); render(progress); if (progress === 1) finish('landed'); else raf = requestAnimationFrame(tick); };

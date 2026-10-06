@@ -2,10 +2,10 @@
 export const SAMPLE_DECORS = [
   { id: 'nero-margiua', name: 'NERO MARGIUA', image: '/images/vzorky/nero-margiua.webp' },
   { id: 'wild-forest', name: 'WILD FOREST', image: '/images/vzorky/wild-forest.webp' },
-  { id: 'super-white-extra', name: 'SUPER WHITE EXTRA', image: '/images/vzorky/super-white-extra.webp' },
+  { id: 'super-white-extra', name: 'SUPER WHITE EXTRA', image: '/images/vzorky/super-white-extra.webp?v=decor-map-20261006' },
   { id: 'astrana-grey', name: 'ASTRANA GREY', image: '/images/vzorky/astrana-grey.webp' },
   { id: 'appennino', name: 'APPENNINO', image: '/images/vzorky/appennino.webp' },
-  { id: 'calacatta-top', name: 'CALACATTA TOP', image: '/images/vzorky/calacatta-top.webp' },
+  { id: 'calacatta-top', name: 'CALACATTA TOP', image: '/images/vzorky/calacatta-top.webp?v=decor-map-20261006' },
   { id: 'statuario-diamante', name: 'STATUARIO DIAMANTE', image: '/images/vzorky/statuario-diamante.webp' },
   { id: 'givenchy-gold', name: 'GIVENCHY GOLD', image: '/images/vzorky/givenchy-gold.webp' },
   { id: 'taj-mahal', name: 'TAJ MAHAL', image: '/images/vzorky/taj-mahal.webp' },
