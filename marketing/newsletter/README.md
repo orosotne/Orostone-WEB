@@ -47,14 +47,14 @@ python3 marketing/newsletter/nastroje/extract_copy.py   # texty/
 
 | # | E-mail | Kam patrí | Predmet | Stav |
 |---|---|---|---|---|
-| 01 | Vitajte | Welcome 1/4 – hneď po prihlásení | Vitajte v Orostone. Toto vám budeme posielať | čaká na kontrolu |
-| 02 | List od Mariána | Welcome 2/4 – o 2 dni | Krátky list namiesto reklamy | čaká na kontrolu, potom ho prepíše Marián |
-| 07 | Ako vybrať dekor | Welcome 3/4 – o 5 dní | Tri otázky pred výberom dekoru | čaká na kontrolu |
-| 05 | Vzorka je doma | Vzorky 2/3 – 2 dni po doručení | Vzorka je doma. Skúste s ňou 4 veci | čaká na kontrolu |
-| 08 | Hotovo | Po realizácii 1/4 – deň montáže | Hotovo: fotky z vašej montáže | čaká na kontrolu |
-| 06 | Ako sa vám žije | Po realizácii 3/4 – 30 dní po montáži | Ako sa vám žije s novou doskou? | čaká na kontrolu |
-| 03 | Realizácia mesiaca | Kampaň, 1× mesačne | Taj Mahal na dlhom ostrovčeku s drezom | čaká na kontrolu a fakty [ ] |
-| 04 | Dekor v detaile | Kampaň, 1× mesačne | Roman Travertine: travertín bez impregnácie | čaká na kontrolu |
+| 01 | Vitajte | Welcome 1/4 – hneď po prihlásení | Vitajte v Orostone. Toto vám budeme posielať | skontrolované |
+| 02 | List od Mariána | Welcome 2/4 – o 2 dni | Krátky list namiesto reklamy | skontrolované, čaká na Mariána |
+| 07 | Ako vybrať dekor | Welcome 3/4 – o 5 dní | Tri otázky pred výberom dekoru | skontrolované |
+| 05 | Vzorka je doma | Vzorky 2/3 – 2 dni po doručení | Vzorka je doma. Skúste s ňou 4 veci | skontrolované |
+| 08 | Hotovo | Po realizácii 1/4 – deň montáže | Hotovo: fotky z vašej montáže | skontrolované |
+| 06 | Ako sa vám žije | Po realizácii 3/4 – 30 dní po montáži | Ako sa vám žije s novou doskou? | skontrolované, chýba odkaz na Google recenzie |
+| 03 | Realizácia mesiaca | Kampaň, 1× mesačne | Taj Mahal na dlhom ostrovčeku s drezom | skontrolované, čaká na fakty [ ] |
+| 04 | Dekor v detaile | Kampaň, 1× mesačne | Roman Travertine: travertín bez impregnácie | skontrolované |
 
 Program newslettera, typy e-mailov a kalendár sú v skille `orostone-newsletter` (`references/program-a-typy.md`).
 Vizuálne pravidlá e-mailu sú v skille `orostone-kreativy` (`references/newsletter-vizual.md`).
