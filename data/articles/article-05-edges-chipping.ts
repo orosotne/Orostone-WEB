@@ -137,7 +137,7 @@ export const ARTICLE_05: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>Čo robíme v Orostone</strong></p>
-  <p>Od partnerských kamenárov vyžadujeme, aby každú hranu opracovali v dvoch krokoch: hrubý rez + jemné dokončenie. Medzi krokmi nasleduje vizuálna kontrola pod bočným svetlom. Akékoľvek chipovanie z fabrikácie sa opraví pred expedíciou — zákazník nedostane dosku s fabrikačným chipom.</p>
+  <p>Od partnerských kamenárov vyžadujeme opracovanie hrán v dvoch krokoch — hrubý rez a jemné dokončenie, medzi nimi vizuálnu kontrolu pod bočným svetlom. Ak sa pri kontrole nájde chip z fabrikácie, opraví sa ešte pred expedíciou.</p>
 </div>
 
 <figure class="article-figure">
@@ -364,7 +364,7 @@ export const ARTICLE_05: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>What we do at Orostone</strong></p>
-  <p>Every edge is processed in two passes: rough cut + fine finishing. Between passes, visual inspection under raking light. Any fabrication chipping is repaired before dispatch — customers never receive a slab with a fabrication chip.</p>
+  <p>We require our partner stonemasons to process edges in two passes — a rough cut and fine finishing — with a visual inspection under raking light in between. If the inspection finds a fabrication chip, it is repaired before dispatch.</p>
 </div>
 
 <h2 id="repair">Repairing an Existing Chip: What's Possible</h2>

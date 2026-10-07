@@ -17,11 +17,11 @@ export const ARTICLE_13: BlogArticle = {
     excerpt: 'Presne budete vedieť, čo sa deje v každej fáze. 10 krokov, konkrétne termíny, jasné zodpovednosti. Celý proces od konzultácie po hotovú kuchyňu trvá 10–15 pracovných dní.',
     metaTitle: 'Od pôdorysu po hotovú kuchyňu — proces | OROSTONE',
     metaDescription: 'Od pôdorysu cez výber dekoru a zameranie po finálnu kuchyňu. Celý proces zastrešíme so skúsenými kamenármi — čo má klient na oboch stranách očakávať.',
-    directAnswer: 'Celý proces od prvej konzultácie po hotovú kuchyňu trvá 10–15 pracovných dní. Zahŕňa: konzultáciu, výber materiálu, digitálne zameranie (presnosť ±0.05mm), CNC fabrikáciu, kontrolu kvality, transport na A-ráme, prípravu podkladu, montáž, inštaláciu spotrebičov a finálnu kontrolu.',
+    directAnswer: 'Celý proces od prvej konzultácie po hotovú kuchyňu trvá 10–15 pracovných dní. Zahŕňa: konzultáciu, výber materiálu, zameranie na mieste, CNC fabrikáciu, kontrolu kvality, transport na A-ráme, prípravu podkladu, montáž, inštaláciu spotrebičov a finálnu kontrolu.',
     content: `
 <ul class="article-tldr">
   <li>Celý proces od konzultácie po hotovú kuchyňu trvá 10–15 pracovných dní</li>
-  <li>Digitálne laserové zameranie s presnosťou ±0,05 mm — nie meter, nie pásmo</li>
+  <li>Zameranie robí ručne priamo u vás partnerský kamenár, ktorý dosku aj vyrobí</li>
   <li>CNC fabrikácia diamantovými nástrojmi — žiadne ručné rezanie</li>
   <li>Transport vo vertikálnych A-rámoch — dosky sa vždy vezú na stojato, nie naplocho</li>
 </ul>
@@ -32,7 +32,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <p>Či už plánujete novú kuchyňu, kúpeľňový obklad alebo ostrov do otvoreného priestoru, proces je vždy rovnaký: <strong>10 jasných krokov, 10–15 pracovných dní, jasné zodpovednosti</strong>. Poďme na to.</p>
 
-<p><strong>Kto čo robí:</strong> Orostone vám poradí s výberom, dodá materiál — celé platne — a koordinuje termíny. Zameranie, výrobu, dopravu a montáž robí a fakturuje partnerský kamenár so skúsenosťou so sinterovaným kameňom. Výsledok kontrolujeme aj my.</p>
+<p><strong>Kto čo robí:</strong> Orostone vám poradí s výberom, dodá materiál — celé platne — a koordinuje termíny. Zameranie, výrobu, dopravu a montáž robí a fakturuje partnerský kamenár so skúsenosťami so sinterovaným kameňom. Výsledok kontrolujeme aj my.</p>
 
 <h2 id="krok-1-konzultacia-a-vyber-materialu">Krok 1 — Čo sa deje na konzultácii?</h2>
 
@@ -58,7 +58,7 @@ export const ARTICLE_13: BlogArticle = {
 <p><strong>Čo obsahuje cenová ponuka:</strong></p>
 <ul>
   <li><strong>Materiál</strong> — presný typ, hrúbka, povrchová úprava, cena za m²</li>
-  <li><strong>Digitálne zameranie</strong> — cena laserového merania na mieste</li>
+  <li><strong>Zameranie</strong> — ručné zameranie priamo na mieste, robí ho partnerský kamenár</li>
   <li><strong>CNC fabrikácia</strong> — rezanie, tvarovanie, opracovanie</li>
   <li><strong>Výrezy</strong> — drez, varná doska, batéria, zásuvky — každý výrez samostatne</li>
   <li><strong>Profily hrán</strong> — typ profilu a metráž</li>
@@ -70,16 +70,16 @@ export const ARTICLE_13: BlogArticle = {
 
 <p><strong>Platnosť ponuky:</strong> 30 dní. Ceny materiálov sa môžu meniť podľa dostupnosti od výrobcov, preto ponuku garantujeme na mesiac.</p>
 
-<h2 id="krok-3-digitalne-zameranie">Krok 3 — Prečo je digitálne zameranie najdôležitejší krok?</h2>
+<h2 id="krok-3-digitalne-zameranie">Krok 3 — Prečo je zameranie najdôležitejší krok?</h2>
 
-<p>Po schválení ponuky a úhrade zálohy prichádza najdôležitejší technický krok celého procesu: digitálne zameranie priamo u vás doma. Tu sa rozhoduje o presnosti celej realizácie.</p>
+<p>Po schválení ponuky a úhrade zálohy prichádza najdôležitejší technický krok celého procesu: zameranie priamo u vás doma. Tu sa rozhoduje o presnosti celej realizácie.</p>
 
-<p><strong>Technológia:</strong> Partnerský kamenár používa laserové zameriavacie systémy s presnosťou <strong>±0,05\u00A0mm</strong>. Nie meter, nie pásmo — laser, ktorý zachytí každý milimeter vašej kuchyne.</p>
+<p><strong>Kto meria:</strong> Kuchyňu ručne zameria priamo na mieste partnerský kamenár, ktorý bude dosku aj vyrábať. Zodpovednosť za rozmery je tak na jednom mieste.</p>
 
 <p><strong>Čo sa meria:</strong></p>
 <ul>
   <li><strong>Rozmery skriniek</strong> — šírka, hĺbka, výška každej skrinky</li>
-  <li><strong>Uhly stien</strong> — steny v bytoch nikdy nie sú v dokonalom 90° uhle. Laser zachytí odchýlky, na ktoré by ste okom nikdy neprišli</li>
+  <li><strong>Uhly stien</strong> — steny v bytoch nikdy nie sú v dokonalom 90° uhle. Pri zameraní sa zachytia aj odchýlky, na ktoré by ste okom neprišli</li>
   <li><strong>Polohy spotrebičov</strong> — presná pozícia drezu, varnej dosky, batérie, dávkovača mydla, zásuviek</li>
   <li><strong>Inštalatérske vývody</strong> — voda, odpad, plyn — všetko musí sadnúť na milimeter</li>
   <li><strong>Nerovnosti a previsy</strong> — kontroluje sa rovina hornej plochy skriniek a prípadné požiadavky na previs</li>
@@ -89,7 +89,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <p><strong>Trvanie:</strong> 1–2 hodiny na mieste, v závislosti od komplexnosti kuchyne.</p>
 
-<p><strong>Schválenie výkresov:</strong> Na základe merania kamenár pripraví digitálne výkresy s presným tvarom, rozmermi, pozíciami výrezov a profilmi hrán. Výkresy dostanete na schválenie — <strong>fabrikácia sa nespustí, kým ich neodsúhlasíte</strong>. Toto je vaša posledná príležitosť na zmeny bez dodatočných nákladov.</p>
+<p><strong>Schválenie výkresov:</strong> Na základe merania kamenár pripraví výkresy s presným tvarom, rozmermi, pozíciami výrezov a profilmi hrán. Výkresy dostanete na schválenie — <strong>fabrikácia sa nespustí, kým ich neodsúhlasíte</strong>. Toto je vaša posledná príležitosť na zmeny bez dodatočných nákladov.</p>
 
 <h2 id="krok-4-cnc-fabrikacia">Krok 4 — Ako prebieha CNC fabrikácia?</h2>
 
@@ -125,7 +125,7 @@ export const ARTICLE_13: BlogArticle = {
   <li><strong>Povrchová inšpekcia</strong> — kontrola pod šikmým svetlom na mikroškrabance, odštiepky alebo povrchové defekty</li>
   <li><strong>Inšpekcia hrán</strong> — profil hrany musí byť rovnomerný, bez chipov a s hladkým prechodom</li>
   <li><strong>Farebné a vzorové párovanie</strong> — pri viacerých dieloch sa kontroluje, či kresba a odtieň na spojoch plynule nadväzujú</li>
-  <li><strong>Rozmerová kontrola</strong> — každý diel sa porovná s digitálnym výkresom. Tolerancia: ±0,5 mm</li>
+  <li><strong>Rozmerová kontrola</strong> — každý diel sa porovná s výkresom. Tolerancia: ±0,5 mm</li>
 </ul>
 
 <p>Ak ktorýkoľvek diel neprejde kontrolou, vyrába sa znova. Nekompromisne. Radšej sa termín posunie o pár dní, než by sa osadilo niečo, s čím nebudete spokojní roky.</p>
@@ -156,7 +156,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <p><strong>Čo zahŕňa príprava podkladu:</strong></p>
 <ul>
-  <li><strong>Kontrola roviny</strong> — horná plocha skriniek musí byť v rovine s toleranciou <strong>max 3 mm na rozpätí 3 metrov</strong>. Meria sa vodováhou a laserovým nivelačným prístrojom</li>
+  <li><strong>Kontrola roviny</strong> — horná plocha skriniek musí byť v rovine s toleranciou <strong>max 3 mm na rozpätí 3 metrov</strong>. Meria sa vodováhou</li>
   <li><strong>Podloženie (shimovanie)</strong> — ak sú odchýlky väčšie, skrinky sa vyrovnajú kalibrovanými podložkami</li>
   <li><strong>Čistota povrchu</strong> — skrinky musia byť suché, čisté a bez prachu. Lepidlo drží len na čistom povrchu</li>
   <li><strong>Montáž podporných konzol</strong> — pre previsy nad 200 mm sa osádzajú oceľové konzoly alebo podporné nosníky</li>
@@ -167,7 +167,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <h2 id="krok-8-montaz-dosiek">Krok 8 — Ako prebieha samotná montáž?</h2>
 
-<p>Samotná montáž je moment, kedy sa všetko predchádzajúce plánovanie, meranie a výroba spojí do jedného celku. Tento krok vyžaduje maximálnu presnosť a skúsenosti, preto ho robí partnerský kamenár so skúsenosťou so sinterovaným kameňom.</p>
+<p>Samotná montáž je moment, kedy sa všetko predchádzajúce plánovanie, meranie a výroba spojí do jedného celku. Tento krok vyžaduje maximálnu presnosť a skúsenosti, preto ho robí partnerský kamenár so skúsenosťami so sinterovaným kameňom.</p>
 
 <p><strong>Postup montáže:</strong></p>
 <ul>
@@ -224,7 +224,7 @@ export const ARTICLE_13: BlogArticle = {
 <p><strong>Odovzdanie klientovi:</strong></p>
 <ul>
   <li><strong>Protokol o čistení a údržbe</strong> — vysvetlíme vám, ako sa o sinterovaný kameň starať (spoiler: je to veľmi jednoduché)</li>
-  <li><strong>Záruka</strong> — na materiál platí záruka výrobcu, na výrobu a montáž dáva záruku kamenár. Podmienky dostanete v záručnom certifikáte pri odovzdaní</li>
+  <li><strong>Záruka</strong> — na materiál platí záruka 24\u00A0mesiacov, na výrobu a montáž dáva záruku kamenár. Podmienky dostanete v záručnom certifikáte pri odovzdaní</li>
   <li><strong>Čas na vytvrdnutie</strong> — <strong>24 hodín</strong> po inštalácii nepoužívajte dosku v plnom zaťažení. Lepidlá a tmely potrebujú čas na úplné vytvrdnutie</li>
   <li><strong>Kontakt pre budúcnosť</strong> — ak kedykoľvek v budúcnosti budete potrebovať poradiť, opraviť alebo rozšíriť, sme tu pre vás</li>
 </ul>
@@ -255,7 +255,7 @@ export const ARTICLE_13: BlogArticle = {
       },
       {
         question: 'Prečo potrebujete hotové skrinky pred zameraním?',
-        answer: 'Digitálne meranie zachytáva skutočný stav s presnosťou ±0,05 mm. Ak sa po zameraní zmení čokoľvek — pozícia skrinky, výška, uhol — meranie prestáva platiť. Dosky vyrobené na základe neaktuálneho merania nebudú sedieť.'
+        answer: 'Zameranie zachytáva skutočný stav skriniek. Ak sa po zameraní zmení čokoľvek — pozícia skrinky, výška, uhol — meranie prestáva platiť. Dosky vyrobené na základe neaktuálneho merania nebudú sedieť.'
       },
       {
         question: 'Môžem si zmeniť výber materiálu po zameraní?',
@@ -263,7 +263,7 @@ export const ARTICLE_13: BlogArticle = {
       },
       {
         question: 'Čo ak moje steny nie sú v pravom uhle?',
-        answer: 'To je bežná situácia — v bytoch sú steny zriedka v dokonalom 90° uhle. Práve preto sa robí laserové zameranie. Dosky sa vyrobia presne podľa reálnych uhlov vašich stien, takže do priestoru presne sadnú.'
+        answer: 'To je bežná situácia — v bytoch sú steny zriedka v dokonalom 90° uhle. Práve preto sa meria priamo na mieste. Dosky sa vyrobia presne podľa reálnych uhlov vašich stien, takže do priestoru presne sadnú.'
       },
       {
         question: 'Robíte aj demontáž starej kuchynskej dosky?',
@@ -291,7 +291,7 @@ export const ARTICLE_13: BlogArticle = {
       },
       {
         question: 'Aká je záruka na inštaláciu a materiál?',
-        answer: 'Na fabrikáciu a montáž poskytuje záruku kamenár, ktorý ich realizuje. Na materiál platí záruka výrobcu. Presné podmienky záruky sú súčasťou záručného certifikátu, ktorý dostanete pri odovzdaní projektu. V prípade akéhokoľvek problému nás kontaktujte — pomôžeme to doriešiť.'
+        answer: 'Na fabrikáciu a montáž poskytuje záruku kamenár, ktorý ich realizuje. Na materiál platí záruka 24\u00A0mesiacov. Presné podmienky záruky sú súčasťou záručného certifikátu, ktorý dostanete pri odovzdaní projektu. V prípade akéhokoľvek problému nás kontaktujte — pomôžeme to doriešiť.'
       }
     ]
   },
@@ -300,18 +300,20 @@ export const ARTICLE_13: BlogArticle = {
     title: 'From Measurement to Installation: The Orostone Process in 10 Steps',
     subtitle: 'A complete guide to every phase — from first consultation to finished kitchen handover',
     excerpt: 'Know exactly what happens at every stage. 10 steps, specific timelines, clear responsibilities. The entire process from consultation to finished kitchen takes 10–15 business days.',
-    directAnswer: 'The entire process from first consultation to finished kitchen takes 10-15 business days. It includes: consultation, material selection, digital templating (±0.05mm precision), CNC fabrication, quality control, A-frame transport, substrate preparation, installation, appliance fitting, and final inspection.',
+    directAnswer: 'The entire process from first consultation to finished kitchen takes 10-15 business days. It includes: consultation, material selection, on-site measurement, CNC fabrication, quality control, A-frame transport, substrate preparation, installation, appliance fitting, and final inspection.',
     content: `
 <ul class="article-tldr">
   <li>The entire process from consultation to finished kitchen takes 10–15 business days</li>
-  <li>Digital laser templating with ±0.05 mm precision — no tape measures, no guesswork</li>
+  <li>Measurement is done by hand at your home by the partner stonemason who also fabricates the worktop</li>
   <li>CNC fabrication with diamond tools — no hand cutting</li>
   <li>Transport in vertical A-frames — slabs always carried upright, never laid flat</li>
 </ul>
 
 <p>Investing in sintered stone is a decision that will shape your space for decades. It's perfectly natural to want to know exactly what will happen, when, and who is responsible for what. Uncertainty breeds stress — and that's precisely why we're showing you the entire Orostone process step by step, with specific timelines, measurements, and responsibilities.</p>
 
-<p>Whether you're planning a new kitchen, bathroom cladding, or an island for an open-plan living space, the process is always the same: <strong>10 clear steps, 10–15 business days, no surprises</strong>. Let's begin.</p>
+<p>Whether you're planning a new kitchen, bathroom cladding, or an island for an open-plan living space, the process is always the same: <strong>10 clear steps, 10–15 business days, clear responsibilities</strong>. Let's begin.</p>
+
+<p><strong>Who does what:</strong> Orostone advises you on the selection, supplies the material — whole slabs — and coordinates the schedule. Measurement, fabrication, transport and installation are carried out and invoiced by a partner stonemason experienced with sintered stone. We check the result as well.</p>
 
 <h2 id="step-1-consultation-and-material-selection">Step 1 — What happens at the consultation?</h2>
 
@@ -332,12 +334,12 @@ export const ARTICLE_13: BlogArticle = {
 
 <h2 id="step-2-quote">Step 2 — What does the quote include?</h2>
 
-<p>Within 48 hours of the consultation, you'll receive a detailed quote. Not an estimate, not a "from–to" range — a specific figure broken down into individual line items.</p>
+<p>Within 48 hours of the consultation, you'll receive a detailed quote. Not a single figure, but an itemised breakdown — the material from us, measurement, fabrication, transport and installation from the partner stonemason.</p>
 
 <p><strong>What the quote includes:</strong></p>
 <ul>
   <li><strong>Material</strong> — exact type, thickness, surface finish, price per m²</li>
-  <li><strong>Digital templating</strong> — cost of on-site laser measurement</li>
+  <li><strong>Measurement</strong> — manual on-site measurement by the partner stonemason</li>
   <li><strong>CNC fabrication</strong> — cutting, shaping, processing</li>
   <li><strong>Cutouts</strong> — sink, cooktop, tap, sockets — each cutout listed separately</li>
   <li><strong>Edge profiles</strong> — profile type and linear metres</li>
@@ -345,34 +347,34 @@ export const ARTICLE_13: BlogArticle = {
   <li><strong>Installation</strong> — complete fitting including adhesive and sealant materials</li>
 </ul>
 
-<p><strong>No hidden costs.</strong> The price you see is the price you pay. The only exception: if during templating we discover the cabinets are not level and require adjustment — we inform you in advance.</p>
+<p><strong>Transparent pricing.</strong> Every item is listed separately in the quote, so you know what you are paying for. If the measurement shows that the cabinets are not level and need adjustment, you will know in advance.</p>
 
 <p><strong>Quote validity:</strong> 30 days. Material prices may change depending on manufacturer availability, so we guarantee the quote for one month.</p>
 
-<h2 id="step-3-digital-templating">Step 3 — Why is digital templating the most critical step?</h2>
+<h2 id="step-3-digital-templating">Step 3 — Why is measurement the most critical step?</h2>
 
-<p>After quote approval and deposit payment, the most important technical step of the entire process begins: digital templating directly at your home. This is where the precision of the entire project is determined.</p>
+<p>After quote approval and deposit payment, the most important technical step of the entire process begins: measurement directly at your home. This is where the precision of the entire project is determined.</p>
 
-<p><strong>Technology:</strong> We use laser measurement systems with a precision of <strong>±0.05 mm</strong>. Not a tape measure, not a ruler — a laser that captures every millimetre of your kitchen.</p>
+<p><strong>Who measures:</strong> The partner stonemason who will fabricate the worktop measures your kitchen by hand on site. Responsibility for the dimensions stays in one place.</p>
 
-<p><strong>What we measure:</strong></p>
+<p><strong>What is measured:</strong></p>
 <ul>
   <li><strong>Cabinet dimensions</strong> — width, depth, and height of every cabinet</li>
-  <li><strong>Wall angles</strong> — walls in apartments are never at a perfect 90° angle. The laser captures deviations you would never notice by eye</li>
+  <li><strong>Wall angles</strong> — walls in apartments are never at a perfect 90° angle. The measurement also captures deviations you would not notice by eye</li>
   <li><strong>Appliance positions</strong> — exact location of sink, cooktop, tap, soap dispenser, and sockets</li>
   <li><strong>Plumbing outlets</strong> — water supply, drainage, gas — everything must align to the millimetre</li>
-  <li><strong>Irregularities and overhangs</strong> — we check the level of the cabinet top surfaces and any overhang requirements</li>
+  <li><strong>Irregularities and overhangs</strong> — the level of the cabinet top surfaces and any overhang requirements are checked</li>
 </ul>
 
-<p><strong>Requirement:</strong> Your cabinets must be <strong>fully installed and levelled</strong> before our visit. We measure the final state — any change after templating means a new measurement is required.</p>
+<p><strong>Requirement:</strong> Your cabinets must be <strong>fully installed and levelled</strong> before the stonemason's visit. The final state is measured — any change after measurement means a new measurement is required.</p>
 
 <p><strong>Duration:</strong> 1–2 hours on-site, depending on kitchen complexity.</p>
 
-<p><strong>Drawing approval:</strong> Based on the measurements, we create digital drawings with the exact shape, dimensions, cutout positions, and edge profiles. We send these drawings for your approval — <strong>fabrication does not begin until you sign off</strong>. This is your last opportunity for changes without additional costs.</p>
+<p><strong>Drawing approval:</strong> Based on the measurements, the stonemason prepares drawings with the exact shape, dimensions, cutout positions, and edge profiles. You receive the drawings for approval — <strong>fabrication does not begin until you sign off</strong>. This is your last opportunity for changes without additional costs.</p>
 
 <h2 id="step-4-cnc-fabrication">Step 4 — How does CNC fabrication work?</h2>
 
-<p>Once the drawings are approved, your project moves to production. This is where the raw sintered stone slab is transformed into the precisely shaped pieces of your kitchen.</p>
+<p>Once the drawings are approved, your project moves to production at the partner stonemason's workshop. This is where the raw sintered stone slab is transformed into the precisely shaped pieces of your kitchen.</p>
 
 <p><strong>Bridge saw CNC cutting:</strong></p>
 <ul>
@@ -390,7 +392,7 @@ export const ARTICLE_13: BlogArticle = {
   <li>Minimum distance from cutout to slab edge: <strong>50 mm</strong></li>
 </ul>
 
-<p><strong>Edge profiling:</strong> The CNC machine mills the chosen edge profile with a precision unattainable by hand. The result is smooth, uniform, and visually flawless along the entire length.</p>
+<p><strong>Edge profiling:</strong> The CNC machine mills the chosen edge profile with a precision unattainable by hand. The result is smooth and uniform along the entire length.</p>
 
 <p><strong>Duration:</strong> 7–10 business days from drawing approval. More complex projects with multiple pieces may take longer — we confirm the exact timeline at approval.</p>
 
@@ -398,13 +400,13 @@ export const ARTICLE_13: BlogArticle = {
 
 <p>Before any piece leaves the workshop, it undergoes a four-stage quality inspection. A defect found during manufacturing costs hours — a defect discovered during installation costs days and thousands of euros.</p>
 
-<p><strong>What we inspect:</strong></p>
+<p><strong>What the stonemason inspects:</strong></p>
 <ul>
   <li><strong>Thickness consistency</strong> — measured at multiple points across each piece, maximum deviation ±0.3 mm</li>
   <li><strong>Surface inspection</strong> — checked under angled lighting for micro-scratches, chips, or surface defects</li>
   <li><strong>Edge inspection</strong> — the edge profile must be uniform, chip-free, and with a smooth transition</li>
-  <li><strong>Colour and pattern matching</strong> — for multi-piece projects, we verify that the pattern and tone flow seamlessly across seams</li>
-  <li><strong>Dimensional verification</strong> — every piece is compared against the digital drawing. Tolerance: ±0.5 mm</li>
+  <li><strong>Colour and pattern matching</strong> — for multi-piece projects, the pattern and tone are checked to flow seamlessly across seams</li>
+  <li><strong>Dimensional verification</strong> — every piece is compared against the drawing. Tolerance: ±0.5 mm</li>
 </ul>
 
 <p>If any piece fails inspection, it is fabricated again. Without compromise. Better to shift the timeline by a few days than fit something you won't be satisfied with for years.</p>
@@ -413,7 +415,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <p>Sintered stone is a paradox: it can withstand a ball impact, yet may crack during improper transport. That's why the transport method matters so much.</p>
 
-<p><strong>How transport works:</strong></p>
+<p><strong>How the stonemason transports the finished worktops:</strong></p>
 <ul>
   <li><strong>A-frame vehicles</strong> — slabs are transported vertically (upright) in specialised A-frames, not laid flat. The vertical position eliminates the risk of cracking from the slab's own weight during vibrations</li>
   <li><strong>Padded protection</strong> — foam inserts separate individual slabs, edges are protected with corner profiles</li>
@@ -423,9 +425,9 @@ export const ARTICLE_13: BlogArticle = {
 
 <p><strong>Delivery coordination:</strong> Before the delivery day, we discuss with you:</p>
 <ul>
-  <li>Parking for the delivery vehicle — we need a spot as close to the entrance as possible</li>
+  <li>Parking for the delivery vehicle — a spot as close to the entrance as possible is needed</li>
   <li>Access route — width of doors, corridors, staircases, and lifts</li>
-  <li>Stairs — if there's no lift, we need to know the number of floors and staircase width</li>
+  <li>Stairs — if there's no lift, the number of floors and the staircase width must be known</li>
   <li>Floor and wall protection along the carrying route</li>
 </ul>
 
@@ -435,7 +437,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <p><strong>What substrate preparation involves:</strong></p>
 <ul>
-  <li><strong>Level check</strong> — the top surface of the cabinets must be level within a tolerance of <strong>max 3 mm over a 3-metre span</strong>. Measured with a spirit level and laser levelling instrument</li>
+  <li><strong>Level check</strong> — the top surface of the cabinets must be level within a tolerance of <strong>max 3 mm over a 3-metre span</strong>. Measured with a spirit level</li>
   <li><strong>Shimming</strong> — if deviations are greater, the cabinets are levelled with calibrated shims</li>
   <li><strong>Surface cleanliness</strong> — cabinets must be dry, clean, and dust-free. Adhesive only bonds properly to a clean surface</li>
   <li><strong>Support bracket installation</strong> — for overhangs exceeding 200 mm, steel brackets or support beams are installed</li>
@@ -446,14 +448,14 @@ export const ARTICLE_13: BlogArticle = {
 
 <h2 id="step-8-slab-installation">Step 8 — How does the actual installation work?</h2>
 
-<p>The installation itself is the moment when all the preceding planning, measuring, and fabrication comes together as one. This step demands maximum precision and experience.</p>
+<p>The installation itself is the moment when all the preceding planning, measuring, and fabrication comes together as one. This step demands maximum precision and experience, which is why it is carried out by a partner stonemason experienced with sintered stone.</p>
 
 <p><strong>Installation procedure:</strong></p>
 <ul>
   <li><strong>Adhesive application</strong> — professional polyurethane or silicone adhesive is applied to the cabinet top surfaces in a precisely defined pattern. The adhesive creates a flexible bond that absorbs micro-expansion</li>
   <li><strong>Slab positioning</strong> — slabs are lifted and placed using vacuum suction cups. Manual sliding is not possible — sintered stone weighs 25–50 kg/m² depending on thickness</li>
   <li><strong>Seams and joints</strong> — joints between slabs are filled with colour-matched epoxy. A properly created seam is nearly invisible — the joint width is less than 1 mm</li>
-  <li><strong>Level verification</strong> — after placing each piece, we check the level with a spirit level and correct the position if needed before the adhesive cures</li>
+  <li><strong>Level verification</strong> — after placing each piece, the level is checked with a spirit level and the position is corrected if needed before the adhesive cures</li>
   <li><strong>Securing</strong> — slabs are weighted or clamped during adhesive curing</li>
 </ul>
 
@@ -489,21 +491,21 @@ export const ARTICLE_13: BlogArticle = {
 
 <h2 id="step-10-final-inspection-and-handover">Step 10 — How does final inspection and handover work?</h2>
 
-<p>The final step is just as important as the first. We don't finish with installation — we finish only when everything is perfect.</p>
+<p>The final step is just as important as the first. The stonemason doesn't stop at installation — the work is handed over only when everything is right, and we check the result as well.</p>
 
 <p><strong>Final inspection includes:</strong></p>
 <ul>
-  <li><strong>Joint check under inspection lighting</strong> — angled lighting reveals even the smallest imperfections in seams. If anything isn't right, we correct it on the spot</li>
+  <li><strong>Joint check under inspection lighting</strong> — angled lighting reveals even the smallest imperfections in seams. If anything isn't right, the stonemason corrects it on the spot</li>
   <li><strong>Level verification</strong> — final spirit level measurement across the entire surface</li>
-  <li><strong>Leak test</strong> — we fill the sink and check joints during drainage</li>
+  <li><strong>Leak test</strong> — the sink is filled and the joints are checked during drainage</li>
   <li><strong>Appliance functionality check</strong> — every appliance is tested</li>
-  <li><strong>Cleaning</strong> — we clean the entire worktop and demonstrate the correct care procedure</li>
+  <li><strong>Cleaning</strong> — the stonemason cleans the entire worktop and shows you the correct care procedure</li>
 </ul>
 
 <p><strong>Client handover:</strong></p>
 <ul>
   <li><strong>Cleaning and care guide</strong> — we explain how to maintain sintered stone (spoiler: it's very straightforward)</li>
-  <li><strong>Warranty registration</strong> — we register your project and you receive a warranty certificate</li>
+  <li><strong>Warranty</strong> — the material carries a 24-month warranty, fabrication and installation are warranted by the stonemason. You receive the terms in the warranty certificate at handover</li>
   <li><strong>Curing time</strong> — <strong>24 hours</strong> after installation, avoid full load on the worktop. Adhesives and sealants need time to fully cure</li>
   <li><strong>Future contact</strong> — whenever you need advice, repair, or expansion in the future, we're here for you</li>
 </ul>
@@ -513,52 +515,52 @@ export const ARTICLE_13: BlogArticle = {
 <p>For the entire process to run smoothly and without unnecessary delays, we need a few things from you. Here is the complete checklist:</p>
 
 <ul>
-  <li><strong>Cabinets installed and levelled</strong> — this is requirement number one. Without finished cabinets, we cannot template, and without templating, we cannot fabricate. Cabinets must be in their final position, anchored to the wall, and levelled</li>
-  <li><strong>Clear access path for delivery</strong> — slabs are large and heavy. We need a clear passage from the building entrance to the kitchen. Remove furniture, rugs, and obstacles along the route</li>
+  <li><strong>Cabinets installed and levelled</strong> — this is requirement number one. Without finished cabinets, measurement is not possible, and without measurement, fabrication is not possible. Cabinets must be in their final position, anchored to the wall, and levelled</li>
+  <li><strong>Clear access path for delivery</strong> — slabs are large and heavy. A clear passage from the building entrance to the kitchen is needed. Remove furniture, rugs, and obstacles along the route</li>
   <li><strong>Parking for the delivery vehicle</strong> — ideally as close to the entrance as possible. If you live in the city centre, arrange a parking space in advance</li>
   <li><strong>Plumbing roughed in</strong> — water supply, drainage, and gas must be routed to the correct positions. These positions are defined by the kitchen project</li>
-  <li><strong>Old countertop removed</strong> — if you're replacing an existing worktop, it must be removed before our arrival. If you need us to handle the removal, let us know when ordering — we can arrange it</li>
-  <li><strong>Electrical sockets and lighting functional</strong> — during installation we need access to electricity for tools and lighting for quality inspection</li>
+  <li><strong>Old countertop removed</strong> — if you're replacing an existing worktop, it must be removed before the stonemason arrives. If you need it removed, let us know when ordering — we can arrange it with the stonemason</li>
+  <li><strong>Electrical sockets and lighting functional</strong> — during installation, access to electricity for tools and lighting for quality inspection is needed</li>
 </ul>
 
-<p><strong>One final tip:</strong> If you're unsure whether everything is ready, simply call us or send photos. We'd rather check and confirm than arrive on-site and discover something is missing. We value your time as much as ours.</p>
+<p><strong>One final tip:</strong> If you're unsure whether everything is ready, simply call us or send photos. We'd rather check and confirm than have the stonemason arrive on site and discover something is missing. We value your time as much as ours.</p>
 `,
     faqs: [
       {
         question: 'How long does the entire process take from consultation to finished kitchen?',
-        answer: 'The entire process takes 10–15 business days. The longest phase is CNC fabrication (7–10 days). Consultation, templating, and installation are a matter of hours, not days.'
+        answer: 'The entire process takes 10–15 business days. The longest phase is CNC fabrication (7–10 days). Consultation, measurement, and installation are a matter of hours, not days.'
       },
       {
         question: 'How much does the showroom consultation cost?',
         answer: 'The consultation at our Bošany showroom is completely free and without obligation. It lasts 1–2 hours and includes a materials tour, discussion of your project, and a preliminary estimate.'
       },
       {
-        question: 'Why do you need finished cabinets before templating?',
-        answer: 'Digital measurement captures the actual state with ±0.05 mm precision. If anything changes after templating — cabinet position, height, angle — the measurement becomes invalid. Slabs fabricated from outdated measurements simply won\'t fit.'
+        question: 'Why do you need finished cabinets before measurement?',
+        answer: 'The measurement captures the actual state of the cabinets. If anything changes after measurement — cabinet position, height, angle — the measurement becomes invalid. Slabs fabricated from outdated measurements simply won\'t fit.'
       },
       {
-        question: 'Can I change my material selection after templating?',
-        answer: 'You can change the material any time before fabrication starts. After templating, you\'re only changing the material — the dimensions remain the same. Once CNC cutting begins, changes are not possible because the slabs are already cut precisely for your project.'
+        question: 'Can I change my material selection after measurement?',
+        answer: 'You can change the material any time before fabrication starts. After measurement, you\'re only changing the material — the dimensions remain the same. Once CNC cutting begins, changes are not possible because the slabs are already cut precisely for your project.'
       },
       {
         question: 'What if my walls aren\'t at right angles?',
-        answer: 'That\'s a common situation — walls in apartments are rarely at a perfect 90° angle. This is precisely why laser templating is used. The slabs are fabricated to match the actual angles of your walls, so they fit the space perfectly.'
+        answer: 'That\'s a common situation — walls in apartments are rarely at a perfect 90° angle. This is precisely why the kitchen is measured on site. The slabs are fabricated to match the actual angles of your walls, so they fit the space precisely.'
       },
       {
         question: 'Do you also remove the old countertop?',
-        answer: 'Yes, we can arrange old countertop removal. Let us know when placing your order so we can include it in the schedule and quote. By default, we assume the old worktop has already been removed.'
+        answer: 'Yes, we can arrange old countertop removal with the partner stonemason. Let us know when placing your order so we can include it in the schedule and quote. By default, we assume the old worktop has already been removed.'
       },
       {
         question: 'How does transport work for upper-floor apartments?',
-        answer: 'Before delivery, we map out the access route including lifts and staircases. Slabs are transported vertically on A-frames and carried into the apartment with professional equipment. If the lift is too small, we carry them via stairs — please ensure the staircase is wide enough.'
+        answer: 'Before delivery, we go through the access route with you, including lifts and staircases. The stonemason transports the slabs vertically on A-frames and carries them into the apartment with professional equipment. If the lift is too small, the slabs are carried via the stairs — please ensure the staircase is wide enough.'
       },
       {
         question: 'What if a substrate problem is found during installation?',
-        answer: 'We check the substrate before laying any slabs. If cabinets aren\'t level (tolerance max 3 mm over 3 m), we level them with shims. In extreme cases, we contact you and agree on a solution before proceeding with installation.'
+        answer: 'The stonemason checks the substrate before laying any slabs. If cabinets aren\'t level (tolerance max 3 mm over 3 m), they are levelled with shims. In extreme cases, we contact you and agree on a solution before proceeding with installation.'
       },
       {
         question: 'Are the seams between slabs visible?',
-        answer: 'A properly created seam is nearly invisible. We use colour-matched epoxy that fills a joint narrower than 1 mm. With quality material and precise fabrication, the seam is only noticeable when deliberately looking for it under angled lighting.'
+        answer: 'A properly created seam is nearly invisible. Colour-matched epoxy is used to fill a joint narrower than 1 mm. With quality material and precise fabrication, the seam is only noticeable when deliberately looking for it under angled lighting.'
       },
       {
         question: 'When can I start using the kitchen at full capacity?',
@@ -570,7 +572,7 @@ export const ARTICLE_13: BlogArticle = {
       },
       {
         question: 'What warranty do you provide on installation and material?',
-        answer: 'Fabrication and installation are warranted by the stonemason who carries them out. The material carries the manufacturer\'s warranty. Exact warranty terms are included in the warranty certificate you receive at project handover. In case of any issue, contact us — we\'ll help get it resolved.'
+        answer: 'Fabrication and installation are warranted by the stonemason who carries them out. The material carries a 24-month warranty. Exact warranty terms are included in the warranty certificate you receive at project handover. In case of any issue, contact us — we\'ll help get it resolved.'
       }
     ]
   }

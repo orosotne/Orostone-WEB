@@ -98,7 +98,7 @@ export const ARTICLE_01: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>Pozor na toto</strong></p>
-  <p>Partnerskí kamenári, s ktorými spolupracujeme, nikdy nerobia <em>plunge cut</em> (ponorný rez*) do sinterovaného kameňa. Pred výrezom vždy najprv vyvŕtajú pilotné otvory v rohoch diamantovým vrtákom. Ponorný rez generuje príliš veľké napätie a takmer vždy vedie k praskleniu.</p>
+  <p>Do sinterovaného kameňa sa nemá robiť <em>plunge cut</em> (ponorný rez*). Od partnerských kamenárov preto vyžadujeme, aby pred výrezom najprv vyvŕtali pilotné otvory v rohoch diamantovým vrtákom. Ponorný rez vytvára veľké napätie a výrazne zvyšuje riziko prasknutia.</p>
   <p class="text-sm text-gray-400 mt-3 italic">* Ponorný rez (plunge cut) — technika, pri ktorej sa rezný kotúč zasekne priamo do stredu materiálu bez predvŕtaného otvoru. Na rozdiel od klasického rezu, kde kotúč vstupuje z okraja, tu celé napätie smeruje do jedného bodu.</p>
 </div>
 
@@ -194,7 +194,7 @@ export const ARTICLE_01: BlogArticle = {
 
 <figure class="article-figure">
   <img src="/images/blog/article-01/installation.webp" alt="Profesionálna inštalácia kuchynskej dosky zo sinterovaného kameňa" loading="lazy" />
-  <figcaption>Kamenár pracuje s laserovým nivelačným prístrojom — presnosť na milimeter</figcaption>
+  <figcaption>Kamenár pri inštalácii kontroluje rovinu podkladu</figcaption>
 </figure>
 
 <div class="article-tip">
@@ -207,7 +207,7 @@ export const ARTICLE_01: BlogArticle = {
 <div class="article-case-study">
   <span class="case-study-label">Z praxe</span>
   <h3>Klientka z Bratislavy a jej kuchynský ostrov</h3>
-  <p>Predstavte si situáciu: klientka z Bratislavy si nechala spraviť kuchynský ostrov zo sinterovaného kameňa u iného dodávateľa. Vybrala si krásny mramorový dizajn, 12 mm hrúbku a ostrú 90° hranu — pretože <em>"vyzerá modernejšie."</em></p>
+  <p>Predstavte si situáciu: klientka z Bratislavy si nechala spraviť kuchynský ostrov zo sinterovaného kameňa u iného dodávateľa. Vybrala si krásny mramorový dizajn, 12 mm hrúbku a ostrú 90° hranu — pretože <em>„vyzerá modernejšie.“</em></p>
   <p>Po troch mesiacoch spadol na hranu ťažký liatinový hrniec. Výsledok? <strong class="gold">Chip dlhý 15 mm</strong> na najviditeľnejšom mieste ostrova.</p>
   <p>Oprava stála <strong>280 €</strong> a aj po nej zostala viditeľná stopa. Keby mala od začiatku aspoň 2 mm chamfer, hrniec by sa odrazil bez stopy.</p>
 </div>
@@ -245,7 +245,7 @@ export const ARTICLE_01: BlogArticle = {
 </ul>
 
 <h3>4. Profesionálna inštalácia</h3>
-<p>Pred každou inštaláciou prebehne meranie na mieste s laserovým nivelačným prístrojom.</p>
+<p>Pred každou inštaláciou prebehne meranie na mieste.</p>
 <ul>
   <li>Rovnosť podkladu sa skontroluje a v prípade potreby koriguje</li>
   <li>Inštaláciu vykonávajú certifikovaní kamenári vyškolení na sinterovaný kameň, s ktorými spolupracujeme</li>
@@ -255,7 +255,7 @@ export const ARTICLE_01: BlogArticle = {
 <h3>5. Záruka a popredajný servis</h3>
 <p>Naša starostlivosť nekončí inštaláciou — ostávame vaším kontaktom aj po nej.</p>
 <ul>
-  <li>Na materiál platí záruka, na výrobu a montáž dáva záruku kamenár, ktorý ich realizoval</li>
+  <li>Na materiál platí záruka 24\u00A0mesiacov, na výrobu a montáž dáva záruku kamenár, ktorý ich realizoval</li>
   <li>V prípade akéhokoľvek problému reagujeme do 48 hodín</li>
   <li>Menšie odštiepky vie partnerský kamenár opraviť priamo na mieste špeciálnym epoxidovým tmelom</li>
 </ul>
@@ -295,7 +295,7 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Prečo sa nedá robiť ponorný rez?',
-        answer: 'Ponorný rez generuje extrémne namáhanie v bode, kde kotúč vstupuje do materiálu. Sinterovaný kameň nemá kryštálovú štruktúru ako granit — je to vysoko komprimovaná keramika. Bodové napätie spôsobuje mikrotrhliny, ktoré sa rozšíria na plnú prasklinu. Preto sa vždy najprv vŕtajú pilotné otvory.',
+        answer: 'Ponorný rez generuje extrémne namáhanie v bode, kde kotúč vstupuje do materiálu. Sinterovaný kameň nemá kryštálovú štruktúru ako granit — je to vysoko komprimovaná keramika. Bodové napätie spôsobuje mikrotrhliny, ktoré sa môžu rozšíriť na plnú prasklinu. Preto sa pred výrezom najprv vŕtajú pilotné otvory.',
       },
       {
         question: 'Aký je rozdiel medzi sinterovaným kameňom a kremeňom pri chipovaní?',
@@ -311,7 +311,7 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Ako spoznám, že inštalatér nemá skúsenosti so sinterovaným kameňom?',
-        answer: 'Varovné signály: používa segmentovaný diamantový kotúč namiesto kontinuálneho, robí ponorné rezy, nechladí vodou, neoveruje rovnosť podkladu laserom, alebo tvrdí, že sinterovaný kameň sa spracúva rovnako ako granit. Každý z týchto bodov znamená vyššie riziko poškodenia.',
+        answer: 'Varovné signály: používa segmentovaný diamantový kotúč namiesto kontinuálneho, robí ponorné rezy, nechladí vodou, neoveruje rovnosť podkladu, alebo tvrdí, že sinterovaný kameň sa spracúva rovnako ako granit. Každý z týchto bodov znamená vyššie riziko poškodenia.',
       },
       {
         question: 'Aký maximálny previs môže mať doska bez podpery?',
@@ -331,7 +331,7 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Vzťahuje sa záruka na chipovanie spôsobené používaním?',
-        answer: 'Štandardná záruka výrobcu pokrýva výrobné chyby, nie mechanické poškodenie. Drobné odštiepky však vie opraviť partnerský kamenár a opravu vám pomôžeme dohodnúť. A správnym výberom profilu hrán minimalizujeme pravdepodobnosť chipovania od začiatku.',
+        answer: 'Záruka 24\u00A0mesiacov na materiál pokrýva výrobné chyby, nie mechanické poškodenie. Drobné odštiepky však vie opraviť partnerský kamenár a opravu vám pomôžeme dohodnúť. A správnym výberom profilu hrán minimalizujeme pravdepodobnosť chipovania od začiatku.',
       },
     ],
   },
@@ -391,7 +391,7 @@ export const ARTICLE_01: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>What we do at Orostone</strong></p>
-  <p>For every project, we recommend a minimum <strong>2 mm chamfer</strong>. For family kitchens with children, we opt for half-bullnose. It costs a few euros more. Repairing a chip costs hundreds.</p>
+  <p>For every project, we recommend a minimum <strong>2 mm chamfer</strong>. For family kitchens with children, we advise half-bullnose. It costs a few euros more. Repairing a chip costs hundreds.</p>
 </div>
 
 <h2 id="cracks-at-cutouts">What causes cracks at cutouts?</h2>
@@ -421,7 +421,7 @@ export const ARTICLE_01: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>Watch out for this</strong></p>
-  <p>We never perform a <em>plunge cut</em> into sintered stone. We always drill pilot holes at the corners first with a diamond bit. Plunge cutting generates excessive stress and almost always leads to cracking.</p>
+  <p>A <em>plunge cut</em> should not be made into sintered stone. That is why we require our partner stonemasons to drill pilot holes at the corners with a diamond bit before making a cutout. A plunge cut creates high stress and significantly increases the risk of cracking.</p>
 </div>
 
 <h2 id="thin-slab-failures">When is a thin slab the wrong choice?</h2>
@@ -442,27 +442,19 @@ export const ARTICLE_01: BlogArticle = {
 
 <h3>12 mm slabs</h3>
 <ul>
-  <li>Suitable for kitchen countertops, but with <strong>limited overhang</strong></li>
+  <li>Our <strong>standard for all applications</strong> — kitchen countertops, cladding, bathrooms</li>
   <li>Maximum unsupported overhang: <strong>200 mm</strong> (approximately 1/3 of slab depth)</li>
-  <li>Breaking force: approximately <strong>5,000 N</strong> — adequate for standard use, not for large islands</li>
-  <li><strong>When 12 mm is a mistake:</strong> large islands without corbels, breakfast bars, slabs with multiple nearby cutouts</li>
-</ul>
-
-<h3>20 mm slabs</h3>
-<ul>
-  <li>Our <strong>standard for kitchen countertops</strong> and islands</li>
-  <li>Maximum unsupported overhang: still recommend max <strong>200 mm</strong>, but structural margin is significantly greater</li>
-  <li>Breaking force: approximately <strong>16,000 N</strong> — three times that of 12 mm</li>
-  <li>Allows better edge profiling and more resilient cutouts</li>
+  <li>Breaking force: approximately <strong>5,000 N</strong> — fully sufficient with the right support and cutout planning</li>
+  <li><strong>When extra care is needed:</strong> large islands without corbels, breakfast bars over 200 mm, slabs with multiple nearby cutouts</li>
 </ul>
 
 <div class="article-highlight">
-  <p><strong>Breaking force comparison:</strong> A 20 mm slab has approximately <strong>16,000 N</strong> versus <strong>5,000 N</strong> for 12 mm — that's a threefold difference in resilience. For kitchen islands, the choice is clear.</p>
+  <p><strong>20 mm slabs are also on the market</strong>, with a breaking force of ~16,000 N — three times that of 12 mm. At Orostone we work exclusively with 12 mm, which covers all common applications including kitchen countertops when planned and installed correctly. The key is the right support structure and following the rules for cutouts and overhangs.</p>
 </div>
 
 <div class="article-tip">
   <p><strong>What we do at Orostone</strong></p>
-  <p>For kitchen islands, we always recommend 20 mm. For standard L-shaped kitchens with full support, 12 mm is acceptable, but we always inform you about the differences. Any overhang exceeding 200 mm must have structural support — no exceptions.</p>
+  <p>Before every order, we assess the cutout layout, overhang length and support structure. If a project needs a special approach — such as a long breakfast bar — we propose a solution with brackets. Any overhang exceeding 200 mm must have structural support — no exceptions.</p>
 </div>
 
 <div class="article-cta">
@@ -523,8 +515,8 @@ export const ARTICLE_01: BlogArticle = {
 </ul>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-01/installation.webp" alt="Professional sintered stone countertop installation with laser level" loading="lazy" />
-  <figcaption>The stonemason works with laser levels — millimeter precision</figcaption>
+  <img src="/images/blog/article-01/installation.webp" alt="Professional sintered stone countertop installation" loading="lazy" />
+  <figcaption>The stonemason checks the substrate level during installation</figcaption>
 </figure>
 
 <div class="article-tip">
@@ -548,7 +540,7 @@ export const ARTICLE_01: BlogArticle = {
 
 <h2 id="how-orostone-prevents-these">How do we prevent these problems at Orostone?</h2>
 
-<p>Every problem described above has one thing in common: <strong class="gold">it can be prevented</strong>. At Orostone, we've built a quality control system that covers the entire lifecycle of the slab.</p>
+<p>Every problem described above has one thing in common: <strong class="gold">it can be prevented</strong>. At Orostone, together with our partner stonemasons, we've built a quality control system that covers the entire lifecycle of the slab.</p>
 
 <h3>1. Consultation and design</h3>
 <p>Every project starts with an expert technical assessment — not a sales pitch.</p>
@@ -562,12 +554,12 @@ export const ARTICLE_01: BlogArticle = {
 <p>We work exclusively with fabricators equipped with CNC machines built for sintered stone.</p>
 <ul>
   <li>Every cutout has a controlled corner radius — minimum 5 mm, standard 10 mm</li>
-  <li>Two-pass cutting is our standard, not an exception</li>
+  <li>Two-pass cutting is standard practice at our partners, not an exception</li>
   <li>Edges are always at least chamfered — even when you request a "sharp" look</li>
 </ul>
 
 <h3>3. Controlled transport</h3>
-<p>Slab transport is arranged in vertical A-frames — not by standard pallet courier.</p>
+<p>Slabs and finished worktops are transported in vertical A-frames — not by standard pallet courier.</p>
 <ul>
   <li>Slabs travel upright in professional A-frames</li>
   <li>Each slab is individually wrapped with foam and protective film</li>
@@ -575,7 +567,7 @@ export const ARTICLE_01: BlogArticle = {
 </ul>
 
 <h3>4. Professional installation</h3>
-<p>Before every installation, the site is measured with a laser level.</p>
+<p>Before every installation, the site is measured.</p>
 <ul>
   <li>Substrate flatness is checked and corrected if needed</li>
   <li>Installation is carried out by certified stonemasons trained for sintered stone, whom we work with</li>
@@ -583,10 +575,11 @@ export const ARTICLE_01: BlogArticle = {
 </ul>
 
 <h3>5. Warranty and after-sales</h3>
-<p>Our care doesn't end at installation — we provide extended warranty and fast service.</p>
+<p>Our care doesn't end at installation — we remain your point of contact afterwards.</p>
 <ul>
+  <li>The material carries a 24-month warranty; fabrication and installation are warranted by the stonemason who carried them out</li>
   <li>Our team responds within 48 hours for any issue</li>
-  <li>Minor chips repaired on-site with color-matched epoxy filler</li>
+  <li>Minor chips can be repaired on-site by the partner stonemason with color-matched epoxy filler</li>
 </ul>
 
 <h2 id="conclusion">What should you take away from this?</h2>
@@ -612,11 +605,11 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Can I use 12 mm for a kitchen island?',
-        answer: 'Depends on the size. For smaller islands (up to 1,800 mm) with full-length support, 12 mm works. For larger islands, bar overhangs, or slabs with multiple nearby cutouts, go with 20 mm. The breaking force of 20 mm is approximately 16,000 N versus 5,000 N for 12 mm — a threefold difference.',
+        answer: 'Yes, with proper planning. The key is sufficient support (a full substrate or a cabinet frame without gaps), a maximum overhang of 200 mm and correctly planned cutouts. At Orostone we work exclusively with 12 mm — for islands we always assess the project individually.',
       },
       {
         question: 'What if a pot falls on the countertop edge?',
-        answer: 'With a rounded profile (half-bullnose, bevel), the risk is low — sintered stone has a Mohs hardness of 6–7. With a sharp 90° edge, a minor chip may occur. We can repair such damage with color-matched epoxy directly on-site.',
+        answer: 'With a rounded profile (half-bullnose, bevel), the risk is low — sintered stone has a Mohs hardness of 6–7. With a sharp 90° edge, a minor chip may occur. The partner stonemason can repair such damage with color-matched epoxy directly on-site.',
       },
       {
         question: 'Can chipping be repaired?',
@@ -624,7 +617,7 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Why can\'t you do a plunge cut?',
-        answer: 'A plunge cut generates extreme stress where the blade enters the material. Sintered stone is highly compressed ceramic without granite\'s crystal structure. Point stress creates micro-cracks that propagate into full fractures. We always drill pilot holes first.',
+        answer: 'A plunge cut generates extreme stress where the blade enters the material. Sintered stone is highly compressed ceramic without granite\'s crystal structure. Point stress creates micro-cracks that can propagate into full fractures. That is why pilot holes are drilled first.',
       },
       {
         question: 'How does sintered stone compare to quartz for chipping?',
@@ -636,19 +629,19 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Is 3 mm sintered stone suitable for a countertop?',
-        answer: 'Absolutely not. 3 mm slabs are for wall cladding, facades, doors, and decorative applications only. The minimum for kitchen countertops is 12 mm, with 20 mm recommended for islands and larger surfaces.',
+        answer: 'Absolutely not. 3 mm slabs are for wall cladding, facades, doors, and decorative applications only. They lack the structural strength needed for kitchen work surfaces. The minimum for kitchen countertops is 12 mm.',
       },
       {
         question: 'How can I tell if an installer lacks sintered stone experience?',
-        answer: 'Warning signs: using a segmented diamond blade instead of continuous rim, making plunge cuts, no water cooling, not checking substrate flatness with a laser, or claiming sintered stone is fabricated like granite. Each of these means higher damage risk.',
+        answer: 'Warning signs: using a segmented diamond blade instead of continuous rim, making plunge cuts, no water cooling, not checking substrate flatness, or claiming sintered stone is fabricated like granite. Each of these means higher damage risk.',
       },
       {
         question: 'What\'s the maximum unsupported overhang?',
-        answer: 'For both 12 mm and 20 mm slabs, we recommend max 200 mm (about 1/3 of slab depth). The 20 mm has greater structural margin, but we maintain the same standard for safety. Larger overhangs (e.g., for bar seating) require structural support.',
+        answer: 'For 12 mm slabs, we recommend max 200 mm (about 1/3 of slab depth). If you need a larger overhang — for example for bar seating — structural support (a steel bracket) is required. We follow this rule without exception.',
       },
       {
         question: 'Can I have the slab shipped by a regular courier?',
-        answer: 'You can, but we strongly advise against it. Standard logistics companies don\'t have A-frames or experience with fragile material, and most exclude fragile goods liability in their terms. Orostone arranges slab transport in proper A-frames — it\'s part of the service.',
+        answer: 'You can, but we strongly advise against it. Standard logistics companies don\'t have A-frames or experience with fragile material, and most exclude fragile goods liability in their terms. The finished worktops are therefore transported by the partner stonemason, who also installs them.',
       },
       {
         question: 'What is an expansion gap and why does it matter?',
@@ -656,11 +649,11 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'What adhesive is used for installation?',
-        answer: 'We use flexible polyurethane or epoxy adhesives. Regular silicone lacks adhesion and cement-based mortars are too rigid. Flexible adhesive absorbs minor movements and thermal expansion, protecting the slab from bond-line stress.',
+        answer: 'Flexible polyurethane or epoxy adhesives are used. Regular silicone lacks adhesion and cement-based mortars are too rigid. Flexible adhesive absorbs minor movements and thermal expansion, protecting the slab from bond-line stress.',
       },
       {
         question: 'Does the warranty cover chipping from normal use?',
-        answer: 'The manufacturer\'s warranty covers manufacturing defects, not mechanical damage from use. At Orostone, we provide extended after-sales care — we repair minor chips as part of our service. And by choosing the right edge profile, we minimize chipping probability from the start.',
+        answer: 'The 24-month material warranty covers manufacturing defects, not mechanical damage from use. Minor chips can, however, be repaired by the partner stonemason, and we will help you arrange the repair. And by choosing the right edge profile, we minimize chipping probability from the start.',
       },
     ],
   },

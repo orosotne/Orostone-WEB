@@ -13,7 +13,7 @@ export const ARTICLE_04: BlogArticle = {
   sk: {
     title: '12 mm vs 20 mm sinterovaný kameň: aký je skutočný rozdiel?',
     subtitle: 'Edukačný prehľad — čo obe hrúbky technicky môžu a kde sú ich limity. V Orostone pracujeme s 12 mm.',
-    excerpt: 'Na trhu existujú dosky v hrúbke 12 mm aj 20 mm. Vysvetlíme vám technické rozdiely a povieme, prečo v Orostone pracujeme výhradne s 12\u00A0mm — a kedy to stačí.',
+    excerpt: 'Na trhu existujú dosky v hrúbke 12\u00A0mm aj 20\u00A0mm. Vysvetlíme vám technické rozdiely a povieme, prečo v Orostone pracujeme výhradne s 12\u00A0mm — a kedy to stačí.',
     metaTitle: '12 mm alebo 20 mm? Sinterovaný kameň | OROSTONE',
     metaDescription: 'Kedy stačí 12 mm a kedy má zmysel ísť do 20 mm. Praktický rozdiel pri kuchynskej doske, ostrovčeku a pri cene celého projektu.',
     directAnswer: 'Sinterovaný kameň sa vyrába v hrúbkach 3mm, 12mm aj 20mm. V Orostone pracujeme výhradne s 12mm. Pri správnej podkladovej konštrukcii, plánovaní výrezov a dodržaní pravidiel previsu (max. 200mm) 12mm pokrýva všetky bežné aplikácie — kuchynské dosky, kúpeľne, obklady aj ostrovy.',
@@ -28,7 +28,7 @@ export const ARTICLE_04: BlogArticle = {
 
 <p>Keď si zákazníci prezerajú ponuky sinterovaného kameňa, často narazia na dve hrúbky: 12mm a 20mm. Prirodzene sa pýtajú — <em>ktorá je správna?</em> A prečo niektorí dodávatelia predávajú len jednu hrúbku?</p>
 
-<p>V Orostone pracujeme <strong class="gold">výhradne s 12mm sinterovaným kameňom</strong>. Nie je to obmedzenie — je to zámerné rozhodnutie. A v tomto článku vám vysvetlíme, prečo 12\u00A0mm pri správnom prístupe stačí na všetko, čo robíme.</p>
+<p>V Orostone pracujeme <strong class="gold">výhradne s 12\u00A0mm sinterovaným kameňom</strong>. Nie je to obmedzenie — je to zámerné rozhodnutie. A v tomto článku vám vysvetlíme, prečo 12\u00A0mm pri správnom prístupe stačí na všetko, čo robíme.</p>
 
 <figure class="article-figure">
   <img src="/images/blog/article-04/hero.webp" alt="Hrúbka sinterovaného kameňa — pohľad na hranu dosky 12mm" width="1408" height="792" loading="lazy" />
@@ -162,7 +162,7 @@ export const ARTICLE_04: BlogArticle = {
 
 <p>Hrúbka dosky je dôležitý parameter — ale nie jediný. <strong class="gold">Podkladová konštrukcia, správne výrezy a dodržanie pravidiel previsu rozhodujú viac</strong> ako samotná hrúbka materiálu.</p>
 
-<p>V Orostone sme sa rozhodli špecializovať na 12\u00A0mm a robiť to správne — s dôsledným posúdením každého projektu a so skúsenými partnerskými kamenármi pri fabrikácii aj inštalácii. Výsledok je rovnaký, ako by ste dostali s 20mm, za predpokladu jednej veci: dôslednej prípravy.</p>
+<p>V Orostone sme sa rozhodli špecializovať na 12\u00A0mm a robiť to správne — s dôsledným posúdením každého projektu a so skúsenými partnerskými kamenármi pri fabrikácii aj inštalácii. Výsledok je rovnaký, ako by ste dostali s 20\u00A0mm, za predpokladu jednej veci: dôslednej prípravy.</p>
 
 <div class="article-tip tip-btn">
   <strong>Záverečný tip:</strong> Pred akýmkoľvek rozhodnutím o hrúbke sa porozprávajte s montážnym tímom o podkladovej konštrukcii a rozmiestnení výrezov. Toto je rozhodnutie, ktoré by malo byť urobené na základe projektu — nie na základe marketingu.
@@ -172,7 +172,7 @@ export const ARTICLE_04: BlogArticle = {
     faqs: [
       {
         question: 'Prečo Orostone predáva len 12mm sinterovaný kameň?',
-        answer: 'Je to zámerná špecializácia. 12mm pri správnej podkladovej konštrukcii, plánovaní výrezov a dodržaní pravidiel previsu pokrýva všetky bežné aplikácie. Sústredením sa na jednu hrúbku vedia naši partnerskí kamenári udržať konzistentne vysokú kvalitu fabrikácie a inštalácie.',
+        answer: 'Je to zámerná špecializácia. 12\u00A0mm pri správnej podkladovej konštrukcii, plánovaní výrezov a dodržaní pravidiel previsu pokrýva všetky bežné aplikácie. Sústredením sa na jednu hrúbku vedia naši partnerskí kamenári udržať konzistentne vysokú kvalitu fabrikácie a inštalácie.',
       },
       {
         question: 'Stačí 12mm na kuchynskú pracovnú plochu s výrezmi?',
@@ -180,7 +180,7 @@ export const ARTICLE_04: BlogArticle = {
       },
       {
         question: 'Čo ak chcem previs dlhší ako 200mm — napr. barový výsun?',
-        answer: 'Pri previse nad 200\u00A0mm sa použije kovová konzola. Konzola je správne konštrukčné riešenie, nie kompromis. Z nerezovej ocele alebo čierneho kovu môže byť aj estetický prvok. Previs s konzolou môže byť aj 400mm a viac.',
+        answer: 'Pri previse nad 200\u00A0mm sa použije kovová konzola. Konzola je správne konštrukčné riešenie, nie kompromis. Z nerezovej ocele alebo čierneho kovu môže byť aj estetický prvok. Previs s konzolou môže byť aj 400\u00A0mm a viac.',
       },
       {
         question: 'Je 12mm vhodná aj pre kuchynský ostrovček?',
@@ -196,7 +196,7 @@ export const ARTICLE_04: BlogArticle = {
       },
       {
         question: 'Je 12mm doska ľahšie poškoditeľná pri výrezoch ako 20mm?',
-        answer: 'Riziko poškodenia pri výrezoch závisí predovšetkým od techniky fabrikácie, nie len od hrúbky. Správne vyvŕtané pilotné otvory, kontinuálny diamantový kotúč, chladenie vodou a rádius rohov min. 5mm — toto rozhoduje viac ako hrúbka. Partnerskí kamenári, s ktorými spolupracujeme, tieto štandardy dodržiavajú.',
+        answer: 'Riziko poškodenia pri výrezoch závisí predovšetkým od techniky fabrikácie, nie len od hrúbky. Správne vyvŕtané pilotné otvory, kontinuálny diamantový kotúč, chladenie vodou a rádius rohov min. 5\u00A0mm — toto rozhoduje viac ako hrúbka. Partnerskí kamenári, s ktorými spolupracujeme, tieto štandardy dodržiavajú.',
       },
       {
         question: 'Ovplyvňuje hrúbka tepelnú odolnosť alebo odolnosť voči škvrnám?',
@@ -363,7 +363,7 @@ export const ARTICLE_04: BlogArticle = {
 
 <p>Slab thickness is an important parameter — but not the only one. <strong class="gold">Substrate structure, correct cutouts, and respecting overhang rules matter more</strong> than the material thickness alone.</p>
 
-<p>At Orostone we chose to specialise in 12mm and do it correctly — with thorough assessment of every project, precise fabrication, and professional installation. The result is equivalent to what you would get with 20mm, given one thing: thorough preparation.</p>
+<p>At Orostone we chose to specialise in 12mm and do it correctly — with thorough assessment of every project and experienced partner stonemasons for fabrication and installation. The result is equivalent to what you would get with 20mm, given one thing: thorough preparation.</p>
 
 <div class="article-tip tip-btn">
   <strong>Final tip:</strong> Before any decision about thickness, discuss substrate structure and cutout placement with the installation team. This is a decision that should be made based on the project — not based on marketing.
@@ -373,7 +373,7 @@ export const ARTICLE_04: BlogArticle = {
     faqs: [
       {
         question: 'Why does Orostone only sell 12mm sintered stone?',
-        answer: 'It\'s a deliberate specialisation. 12mm with correct substrate, planned cutouts, and respected overhang limits covers all standard applications. By focusing on one thickness, we ensure consistently high fabrication and installation quality.',
+        answer: 'It\'s a deliberate specialisation. 12mm with correct substrate, planned cutouts, and respected overhang limits covers all standard applications. By focusing on one thickness, our partner stonemasons maintain consistently high fabrication and installation quality.',
       },
       {
         question: 'Is 12mm sufficient for a kitchen worktop with cutouts?',
@@ -381,7 +381,7 @@ export const ARTICLE_04: BlogArticle = {
       },
       {
         question: 'What if I need an overhang longer than 200mm — e.g. a bar extension?',
-        answer: 'For overhangs above 200mm we use a steel bracket. A bracket is the correct engineering solution, not a compromise. In stainless steel or black steel it can also be a design element. With a bracket, the overhang can be 400mm or more.',
+        answer: 'For overhangs above 200mm, a steel bracket is used. A bracket is the correct engineering solution, not a compromise. In stainless steel or black steel it can also be a design element. With a bracket, the overhang can be 400mm or more.',
       },
       {
         question: 'Is 12mm suitable for a kitchen island?',
@@ -397,7 +397,7 @@ export const ARTICLE_04: BlogArticle = {
       },
       {
         question: 'Is a 12mm slab more susceptible to damage at cutouts than 20mm?',
-        answer: 'Cutout damage risk depends primarily on fabrication technique, not just thickness. Correctly pre-drilled pilot holes, continuous diamond blade, water cooling, and corner radius min. 5mm — these matter more than thickness. Our fabrication meets these standards as standard.',
+        answer: 'Cutout damage risk depends primarily on fabrication technique, not just thickness. Correctly pre-drilled pilot holes, continuous diamond blade, water cooling, and corner radius min. 5mm — these matter more than thickness. The partner stonemasons we work with meet these standards.',
       },
       {
         question: 'Does thickness affect heat resistance or stain resistance?',
