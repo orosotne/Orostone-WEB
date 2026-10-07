@@ -1,34 +1,34 @@
-# 03 – Realizácia mesiaca: Taj Mahal
+# 20 – Biela doska a tmavé drevo
 
 - **Typ:** Kampaň · séria Realizácia mesiaca (1× mesačne)
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
 - **Komu:** Všetci odberatelia; mimo zákazníkov po realizácii
-- **Predmet:** Taj Mahal na dlhom ostrovčeku s drezom
-- **Preheader:** V realizácii mesiaca ukážeme, prečo padla voľba na krémový dekor a ako pôsobí vo veľkej ploche.
-- **Šablóna:** `sablony/03-kampan-realizacia-mesiaca.html`
+- **Predmet:** Biela doska a tmavé drevo
+- **Preheader:** V realizácii mesiaca ukážeme ostrovček, kde kontrast drží celý priestor pokope.
+- **Šablóna:** `sablony/20-kampan-realizacia-december.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí
 
 ### Hlavička
-Realizácia mesiaca · október 2026
+Realizácia mesiaca · december 2026
 
 ### Séria (pill) a veta pod ňou
 Realizácia mesiaca
 Raz mesačne jedna skutočná kuchyňa: zadanie, dekor a výsledok.
 
 ### Nadpis
-Taj Mahal
-na dlhom ostrovčeku.
+Biela doska
+a tmavé drevo.
 
 ### Hlavná fotka (popis na fotke)
-[alt fotky: Dlhý ostrovček s drezom v dekore Taj Mahal]
-● Taj Mahal
+[alt fotky: Biely ostrovček zo sinterovaného kameňa s orechovými bokmi]
+● [Dekor]
 
 ### Fakty
 Dekor
-Taj Mahal
+[doplniť]
 Aplikácia
-Ostrovček s drezom
+ostrovček a zástena
 Lokalita
 [doplniť]
 Montáž
@@ -36,37 +36,33 @@ Montáž
 
 ### Text
 Dobrý deň,
-tentoraz ukazujeme kuchyňu, v ktorej celému priestoru dominuje jeden prvok: dlhý ostrovček s drezom v dekore Taj Mahal.
+v decembri ukazujeme kuchyňu, kde sa stretávajú biela doska s výraznou kresbou a tmavé orechové drevo. Kontrast drží celý priestor pokope.
 
 ### Číslovaný zoznam
 01
 Zadanie
 [1–2 vety: čo klient riešil – priestor, štýl, čo nechcel.]
 02
-Prečo Taj Mahal
-Teplý krémový základ s jemným žilkovaním. Na veľkej ploche pôsobí pokojne a ladí so svetlými frontami aj teplým drevom.
+Prečo tento dekor
+Biely základ s jemnými sivými žilami vyvažuje tmavé drevo ostrovčeka aj skriniek. Kresba je výrazná, no na veľkej ploche nepôsobí nepokojne.
 03
 Výsledok
 [1–2 vety: ako sa s doskou žije po pár mesiacoch používania.]
 
 ### Dvojica fotiek (popis)
-[alt fotky: Ostrovček Taj Mahal – pohľad od drezu]
-[alt fotky: Ostrovček Taj Mahal – pracovná plocha]
-Jedna kresba po celej dĺžke ostrovčeka
+[alt fotky: Ostrovček s varnou doskou a orechovými bokmi]
+[alt fotky: Biela doska ostrovčeka a zástena za linkou]
+Ostrovček a zástena v jednom dekore
 
 ### Citát / dôležitá myšlienka
 Slovami klienta
 „[Citát klienta – jedna konkrétna veta o tom, ako sa s doskou žije.]“
 [Meno, mesto]
 
-### Produktová karta
-[alt fotky: Dekor Taj Mahal – detail ostrovčeka]
-Dekor v e-shope
-TAJ MAHAL
-Krémové a béžové odtiene, jemné žilky a vrstvená kresba. Povrch Silk.
-3200 × 1600 mm · 12 mm
+### Tlačidlo (CTA)
 Objednať vzorku
-Pozrieť dekor
+Prvá vzorka je zadarmo, platíte iba dopravu 2,50 €.
+Pozrieť ďalšie realizácie
 
 ### P. S.
 P. S. · Marián, Orostone

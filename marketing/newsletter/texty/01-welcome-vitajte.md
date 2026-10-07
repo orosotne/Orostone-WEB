@@ -3,7 +3,7 @@
 - **Typ:** Automatizácia · Welcome séria 1/4
 - **Kedy sa posiela:** Hneď po prihlásení na odber (popup, pätička, sekcia vzoriek)
 - **Predmet:** Vitajte v Orostone. Toto vám budeme posielať
-- **Preheader:** Dvakrát do mesiaca jedna vec, ktorá pomôže pri výbere pracovnej dosky. Bez výpredajov.
+- **Preheader:** Dvakrát do mesiaca vám pošleme jednu vec, ktorá pomôže pri výbere pracovnej dosky. Výpredaje neposielame.
 - **Šablóna:** `sablony/01-welcome-vitajte.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí
@@ -50,7 +50,7 @@ Sľúbený uvítací kód: WELCOME5 – 5 % na prvý nákup v e-shope orostone.s
 
 ### P. S.
 P. S. · Marián, Orostone
-Ak už máte pôdorys kuchyne, pošlite ho odpoveďou na tento e-mail. Pripravíme orientačné cenové rozpätie pre váš projekt – nezáväzne.
+Ak už máte pôdorys kuchyne, pošlite nám ho v odpovedi na tento e-mail. Pripravíme orientačné cenové rozpätie pre váš projekt – nezáväzne.
 
 ### Podpis značky
 Krása kameňa.

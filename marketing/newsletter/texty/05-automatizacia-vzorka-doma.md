@@ -1,9 +1,9 @@
 # 05 – Vzorka je doma
 
-- **Typ:** Automatizácia · Vzorky 2/3
+- **Typ:** Automatizácia · Vzorky 2/4
 - **Kedy sa posiela:** 2 dni po doručení vzorky (Shopify fulfillment / Packeta delivered)
 - **Predmet:** Vzorka je doma. Skúste s ňou 4 veci
-- **Preheader:** Víno, citrón, hrnček horúcej vody a vaše svetlo. Desať minút, ktoré povedia viac než katalóg.
+- **Preheader:** Stačí víno, citrón, hrnček horúcej vody a vaše svetlo. Za desať minút zistíte viac než z katalógu.
 - **Šablóna:** `sablony/05-automatizacia-vzorka-doma.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

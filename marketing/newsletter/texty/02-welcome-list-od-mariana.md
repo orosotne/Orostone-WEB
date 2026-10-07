@@ -3,7 +3,7 @@
 - **Typ:** Automatizácia · Welcome séria 2/4
 - **Kedy sa posiela:** 2 dni po e-maile 1/4
 - **Predmet:** Krátky list namiesto reklamy
-- **Preheader:** Prečo pri pracovnej doske nestačí malá vzorka a cena za meter – a čo s tým robíme.
+- **Preheader:** Vysvetlím, prečo pri pracovnej doske nestačí malá vzorka a cena za meter – a čo s tým robíme.
 - **Šablóna:** `sablony/02-welcome-list-od-mariana.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

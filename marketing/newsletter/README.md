@@ -45,16 +45,33 @@ python3 marketing/newsletter/nastroje/extract_copy.py   # texty/
 
 ## E-maily
 
+Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole** = napísané, čaká na Codex a výber fotiek.
+
 | # | E-mail | Kam patrí | Predmet | Stav |
 |---|---|---|---|---|
 | 01 | Vitajte | Welcome 1/4 – hneď po prihlásení | Vitajte v Orostone. Toto vám budeme posielať | skontrolované |
 | 02 | List od Mariána | Welcome 2/4 – o 2 dni | Krátky list namiesto reklamy | skontrolované, čaká na Mariána |
 | 07 | Ako vybrať dekor | Welcome 3/4 – o 5 dní | Tri otázky pred výberom dekoru | skontrolované |
-| 05 | Vzorka je doma | Vzorky 2/3 – 2 dni po doručení | Vzorka je doma. Skúste s ňou 4 veci | skontrolované |
+| 09 | Tri kuchyne | Welcome 4/4 – o 9 dní | Tri kuchyne, tri rôzne rozhodnutia | na kontrole, fotky na schválenie |
+| 05 | Vzorka je doma | Vzorky 2/4 – 2 dni po doručení | Vzorka je doma. Skúste s ňou 4 veci | skontrolované |
+| 10 | Veľká plocha | Vzorky 3/4 – 7 dní po doručení | Ako váš dekor vyzerá vo veľkej ploche | na kontrole |
+| 11 | Marián (čistý text) | Vzorky 4/4 – 14 dní po doručení | Pomôžem vám s výberom? | na kontrole |
+| 12 | Ako čítať ponuku | Dopyt → ponuka 2/4 – deň po ponuke | Ako čítať cenovú ponuku | na kontrole |
+| 13 | Showroom | Dopyt → ponuka 3/4 – 5 dní po ponuke | Pozrite si platne naživo | na kontrole, chýba fotka showroomu |
+| 14 | Marián (čistý text) | Dopyt → ponuka 4/4 – 14 dní po ponuke | Je niečo, čo vám bráni rozhodnúť sa? | na kontrole |
+| 15 | Košík | Opustený košík 1/2 – o hodinu | Vaša vzorka zostala v košíku | na kontrole |
+| 16 | Marián (čistý text) | Opustený košík 2/2 – o deň | Váhate medzi dekormi? | na kontrole |
 | 08 | Hotovo | Po realizácii 1/4 – deň montáže | Hotovo: fotky z vašej montáže | skontrolované |
+| 17 | Starostlivosť | Po realizácii 2/4 – 7 dní po montáži | Starostlivosť o dosku v skratke | na kontrole |
 | 06 | Ako sa vám žije | Po realizácii 3/4 – 30 dní po montáži | Ako sa vám žije s novou doskou? | skontrolované, chýba odkaz na Google recenzie |
-| 03 | Realizácia mesiaca | Kampaň, 1× mesačne | Taj Mahal na dlhom ostrovčeku s drezom | skontrolované, čaká na fakty [ ] |
-| 04 | Dekor v detaile | Kampaň, 1× mesačne | Roman Travertine: travertín bez impregnácie | skontrolované |
+| 03 | Realizácia mesiaca | Kampaň október | Taj Mahal na dlhom ostrovčeku s drezom | skontrolované, čaká na fakty [ ] |
+| 04 | Dekor v detaile | Kampaň október | Roman Travertine: travertín bez impregnácie | skontrolované |
+| 18 | Zo zákulisia | Kampaň november | Ako vzniká sinterovaný kameň | na kontrole |
+| 19 | Sprievodca | Kampaň november | Čo je v cene pracovnej dosky | na kontrole |
+| 20 | Realizácia mesiaca | Kampaň december | Biela doska a tmavé drevo | na kontrole, čaká na fakty [ ] a výber realizácie |
+| 21 | Poďakovanie | Kampaň december | Ďakujeme za rok 2026 | na kontrole, chýbajú otváracie hodiny |
+
+**Ešte nenapísané (plán na rok 2027):** Po realizácii 4/4 (tip po 6 mesiacoch), Výročie, Reaktivácia (3 e-maily), B2B (3 e-maily), kampane január – marec (6 e-mailov). Potvrdenie objednávky vzorky posiela Shopify a potvrdenie dopytu web, tie netreba písať.
 
 Program newslettera, typy e-mailov a kalendár sú v skille `orostone-newsletter` (`references/program-a-typy.md`).
 Vizuálne pravidlá e-mailu sú v skille `orostone-kreativy` (`references/newsletter-vizual.md`).

@@ -16,7 +16,8 @@ NAMES = {
  'MOODBOARD + KOMBINÁCIE':'Kombinácie','KOMBINÁCIE (swatche)':'Kombinácie','PONUKA (biela karta)':'Ponuka',
  'PRODUKTOVÁ KARTA':'Produktová karta','CTA':'Tlačidlo (CTA)','LIST (osobný tón, bez dekorácií)':'List',
  'P.S.':'P. S.','PODPIS ZNAČKY':'Podpis značky','FOOTER':None,'LEGAL / UNSUB':'Pätička — dôvod a odhlásenie',
- 'VOĽBA (preferencia / segmentácia klikom)':'Voľba (tlačidlá)'}
+ 'VOĽBA (preferencia / segmentácia klikom)':'Voľba (tlačidlá)',
+ 'REALIZÁCIA (karta)':'Karta (fotka, štítok, nadpis, veta)','POZNÁMKA':'Poznámka'}
 
 class Blocks(HTMLParser):
     def __init__(s):
@@ -30,7 +31,7 @@ class Blocks(HTMLParser):
         if t in ('p','div','td','tr','br','center') and s.cur: s.cur[1].append('\n')
         if t=='img' and s.cur:
             alt=dict(a).get('alt','')
-            if alt and s.cur[0] in ('HERO IMAGE','DVOJICA FOTIEK','OBRÁZOK S POPISOM','TMAVÝ PÁS','PRODUKTOVÁ KARTA','MOODBOARD + KOMBINÁCIE'):
+            if alt and s.cur[0] in ('HERO IMAGE','DVOJICA FOTIEK','OBRÁZOK S POPISOM','TMAVÝ PÁS','PRODUKTOVÁ KARTA','MOODBOARD + KOMBINÁCIE','REALIZÁCIA (karta)'):
                 s.cur[1].append(f'\n[alt fotky: {alt}]\n')
     def handle_endtag(s,t):
         if t in ('style','title'): s.skip-=1

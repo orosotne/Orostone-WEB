@@ -47,4 +47,66 @@ Codex našiel 9 chýb (všetky P1). Všetky sú prijaté. Pri troch Claude použ
 | 8 | 06 | ako ste spokojní | ako ste s doskou spokojní | gramatika | „Spokojný“ sa viaže s predložkou „s“. | zapracované |
 | 9 | 07 | ktoré pred výberom dekoru prejdeme s každým klientom | ktoré si pred výberom dekoru prejdeme s každým klientom | gramatika | Väzba „prejsť si niečo s niekým“. | zapracované |
 
+## Kolo 2 – Codex review v PR #77 (7. 10. 2026, e-maily 09–21)
+
+Codex našiel 14 chýb (všetky P1). Všetky sú prijaté. Pri piatich Claude použil iné znenie, než Codex navrhol, a dôvod je pri nich uvedený.
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 09 | Pokojná plocha, tmavý kontrast a výrazná kresba. Čo rozhodlo pri každej z nich. | Pri jednej rozhodla pokojná plocha, pri druhej tmavý kontrast a pri tretej výrazná kresba. | štylistika | Preheader má byť celá veta (slovník, sekcia 6). Kratšie než návrh Codexu (106 znakov). | zapracované s úpravou |
+| 2 | 09 | Zlaté žily … nesú celú kuchyňu. | Zlaté žily … sú hlavným prvkom celej kuchyne. | štylistika | Metafora „niesť kuchyňu“ je neprirodzená. Nové znenie nadväzuje na citát „Každá kuchyňa má jeden hlavný prvok“. | zapracované |
+| 3 | 09 | Ktorá z troch kuchýň je vám najbližšie? | Ktorá z troch kuchýň je vám najbližšia? | gramatika | Prísudkové prídavné meno sa zhoduje s podmetom „ktorá“. | zapracované |
+| 4 | 09 | dekory, ktoré k nej fungujú najlepšie | dekory, ktoré sa k nej hodia najlepšie | spisovnosť | „Fungovať k niečomu“ je kalk. | zapracované |
+| 5 | 12 | Čo je v cene, čo porovnávať a na čo sa pýtať… | Vysvetlíme, čo je v cene, čo porovnávať a na čo sa pýtať… | štylistika | Preheader ako celá veta. | zapracované |
+| 6 | 12 | Prečítať celý sprievodca | Prečítať celého sprievodcu | gramatika | Akuzatív, *sprievodca* sa skloňuje podľa vzoru hrdina. Tlačidlo je širšie, aby sa text v Outlooku nezalomil. | zapracované |
+| 7 | 16 | Pošlite mi odpoveďou fotku kuchyne… | V odpovedi mi pošlite fotku kuchyne… | štylistika | Ustálená väzba je „v odpovedi“. | zapracované |
+| 7b | 01 | pošlite ho odpoveďou na tento e-mail | pošlite nám ho v odpovedi na tento e-mail | štylistika | Rovnaká chyba, doplnil Claude. | zapracované |
+| 8 | 17 | Jediná bežná chémia, ktorá povrch poškodí. Býva v niektorých odstraňovačoch hrdze… | Sú to jediné bežne dostupné prostriedky, ktoré povrch poškodia. Patria k nim niektoré odstraňovače hrdze… | spisovnosť | „Chémia“ je odbor, nie látka, a vete chýbal prísudok. Návrh „bežne používaná chemikália“ by vecne nesedel: kyselina fluorovodíková sa bežne nepoužíva, len býva v niektorých prípravkoch. „Bežne dostupné“ zodpovedá článku na webe. | zapracované s úpravou |
+| 9 | 18 | Minerály, tlak do 25 000 ton a teplota nad 1 200 °C. Prečo potom doska nepotrebuje impregnáciu. | Minerály sa lisujú a potom spekajú pri teplote nad 1 200 °C. Preto doska nepotrebuje impregnáciu. | štylistika | Preheader ako celá veta. Návrh Codexu mal vyše 110 znakov. | zapracované s úpravou |
+| 10 | 18 | prírodnému kameňu trvá vznik milióny rokov | prírodný kameň sa tvorí milióny rokov | štylistika | Neprirodzená datívna väzba. Návrh „vznik prírodného kameňa trvá“ by opakoval *vznik – vzniká* v nasledujúcej vete. | zapracované s úpravou |
+| 11 | 19 | Materiál, opracovanie, doprava a montáž. A prečo dve ponuky … nemusia byť porovnateľné. | Cenu tvorí materiál, opracovanie, doprava a montáž. Ukážeme, ako porovnať dve ponuky. | štylistika | Preheader ako celá veta. Návrh Codexu opakoval predmet („cena pracovnej dosky“), čo sekcia 6 nepovoľuje. | zapracované s úpravou |
+| 12 | 19 | Rozdiel medzi spodnou a hornou hranicou robia tieto tri položky. | O tom, či bude cena pri spodnej alebo hornej hranici, rozhodujú tieto tri položky. | spisovnosť | „Robiť rozdiel“ je kalk. | zapracované |
+| 13 | 19 | Prečítať celý sprievodca | Prečítať celého sprievodcu | gramatika | Ako č. 6. | zapracované |
+| 14 | 21 | objednať vzorky, poslať pôdorys a mať dekor vybraný v pokoji | objednať si vzorky, poslať pôdorys a v pokoji si vybrať dekor | štylistika | Jednotná stavba výpočtu a zvratné *si*. | zapracované |
+
+### Doplnil Claude: preheader ako celá veta vo všetkých e-mailoch
+
+Pripomienky 1, 5, 9 a 11 vychádzajú zo sekcie 6 slovníka. Rovnaké pravidlo Claude uplatnil aj na ostatné preheadery, aby ho Codex nemusel hlásiť po jednom.
+
+| E-mail | Pôvodný preheader | Nový preheader |
+|---|---|---|
+| 01 | Dvakrát do mesiaca jedna vec, ktorá pomôže pri výbere pracovnej dosky. Bez výpredajov. | Dvakrát do mesiaca vám pošleme jednu vec, ktorá pomôže pri výbere pracovnej dosky. Výpredaje neposielame. |
+| 02 | Prečo pri pracovnej doske nestačí malá vzorka a cena za meter – a čo s tým robíme. | Vysvetlím, prečo pri pracovnej doske nestačí malá vzorka a cena za meter – a čo s tým robíme. |
+| 03 | Realizácia mesiaca: prečo krémový dekor a ako pôsobí vo veľkej ploche. | V realizácii mesiaca ukážeme, prečo padla voľba na krémový dekor a ako pôsobí vo veľkej ploche. |
+| 04 | Ako dekor vyzerá na celej platni, s čím ho kombinovať a na čo myslieť pri smere kresby. | Ukážeme, ako dekor vyzerá na celej platni, s čím ho kombinovať a na čo myslieť pri smere kresby. |
+| 05 | Víno, citrón, hrnček horúcej vody a vaše svetlo. Desať minút, ktoré povedia viac než katalóg. | Stačí víno, citrón, hrnček horúcej vody a vaše svetlo. Za desať minút zistíte viac než z katalógu. |
+| 06 | Dve minúty, ktoré pomôžu ďalším pri výbere. A prosba o jednu fotku. | Hodnotenie vám zaberie dve minúty a pomôže ďalším pri výbere. Budeme radi aj za jednu fotku. |
+| 07 | Svetlo, skrinky a veľkosť plochy. A jedna otázka pre nás. | Týkajú sa svetla, skriniek a veľkosti plochy. Na konci sa vás opýtame, kedy plánujete novú kuchyňu. |
+| 10 | Celá platňa, realizácie a showroom. Tri spôsoby, ako vidieť kresbu v mierke kuchyne. | Kresbu v mierke kuchyne uvidíte na fotke celej platne, v realizáciách alebo v showroome. |
+| 13 | Realizácia s podobným riešením a pozvanie do showroomu v Bošanoch, kde vám pripravíme celé platne. | Ukážeme realizáciu s podobným riešením. V showroome v Bošanoch vám pripravíme celé platne. |
+| 14 | Žiadny tlak, len otázka. | Nechcem na vás tlačiť, len sa pýtam. |
+| 17 | Utierka, saponát a štyri veci, ktorým sa vyhnúť. Viac vaša doska nepotrebuje. | Doske stačí utierka a saponát. Pozor si dajte len na štyri veci. |
+| 20 | Realizácia mesiaca: ostrovček, kde kontrast drží celý priestor pokope. | V realizácii mesiaca ukážeme ostrovček, kde kontrast drží celý priestor pokope. |
+| 21 | Otváracie hodiny cez sviatky a jedna rada, ak plánujete kuchyňu na jar. | Posielame otváracie hodiny cez sviatky a jednu radu, ak plánujete kuchyňu na jar. |
+
+## Kolo 3 – Codex review v PR #77 (7. 10. 2026, po opravách kola 2)
+
+Codex skontroloval opravy z kola 2 a všetky preheadery bez pripomienok. Našiel 4 nové chyby (P1), všetky sú prijaté.
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 12 | či sú všetky ceny s DPH, alebo bez nej | či sú všetky ceny s DPH alebo bez nej | interpunkcia | *Alebo* tu spája dva vetné členy, nie vety. | zapracované |
+| 2 | 17 | Celý návod na čistenie (tlačidlo) | Prečítať celý návod | slovník | Tlačidlo je neurčitok (sekcia 5). Kratšie než návrh „Prečítať celý návod na čistenie“, aby sa tlačidlo na mobile nezalomilo. Že ide o čistenie, hovorí poznámka pod tlačidlom. | zapracované s úpravou |
+| 3 | 18 | Sinterovaný kameň vzniká podobne, z minerálov, tlaku a teploty. | Sinterovaný kameň vzniká podobne – pôsobením tlaku a teploty na minerály. | význam | Tlak a teplota nie sú suroviny. Namiesto „podobným procesom“ je „podobne“, aby sa slovo *proces* neopakovalo v nasledujúcej vete. | zapracované s úpravou |
+| 4 | 18 | Viac o sinterovanom kameni (odkaz) | Prečítať viac o sinterovanom kameni | slovník | Aj textový odkaz pod tlačidlom je neurčitok (sekcia 5). | zapracované |
+
+## Kolo 4 – Codex review v PR #77 (7. 10. 2026, po opravách kola 3)
+
+Codex našiel 2 chyby (P1), obe sú prijaté. Iné výskyty rovnakých chýb v e-mailoch nie sú.
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 12 | Prejdeme ju spolu položku po položke. | Prejdeme si ju spolu položku po položke. | gramatika | Väzba *prejsť si niečo* (slovník, sekcia 8). | zapracované |
+| 2 | 20 | kde sa stretáva biela doska … a tmavé orechové drevo | kde sa stretávajú biela doska … a tmavé orechové drevo | gramatika | Dva podmety spojené spojkou *a* → prísudok v množnom čísle. | zapracované |
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
