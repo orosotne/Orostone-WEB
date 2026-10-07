@@ -8,9 +8,6 @@
 
 ## Text e-mailu v poradí, ako sa zobrazí
 
-### Hlavička
-Vitajte · 1 / 4
-
 ### Tmavý pás (úvod)
 Vitajte v Orostone
 Pracovná doska

@@ -8,9 +8,6 @@
 
 ## Text e-mailu v poradí, ako sa zobrazí
 
-### Hlavička
-Vaša vzorka · košík
-
 ### Nadpis
 Vzorka čaká
 v košíku.

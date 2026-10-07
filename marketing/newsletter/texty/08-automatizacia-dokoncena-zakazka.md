@@ -8,9 +8,6 @@
 
 ## Text e-mailu v poradí, ako sa zobrazí
 
-### Hlavička
-Vaša kuchyňa · deň montáže
-
 ### Tmavý pás (úvod)
 Hotovo
 Vaša doska
@@ -38,17 +35,9 @@ Kamenár
 [meno]
 
 ### Nadpis sekcie
-Čo bude nasledovať
+Kedykoľvek nám napíšte
 
-### Číslovaný zoznam
-01
-O týždeň: starostlivosť v skratke
-Krátky návod, ako dosku čistiť a čomu sa vyhnúť.
-02
-O mesiac: ako sa vám žije s doskou
-Jedna otázka a prosba o hodnotenie, ak budete spokojní.
-03
-Kedykoľvek: napíšte nám
+### Text
 Ak by čokoľvek nesedelo, odpovedzte na tento e-mail. Vyriešime to s kamenárom.
 
 ### Voľba (tlačidlá)

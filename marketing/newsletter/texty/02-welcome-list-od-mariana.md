@@ -1,22 +1,19 @@
-# 02 – Krátky list namiesto reklamy
+# 02 – Dve chyby, ktoré vidím pri výbere dosky
 
 - **Typ:** Automatizácia · Welcome séria 2/4
 - **Kedy sa posiela:** 2 dni po e-maile 1/4
-- **Predmet:** Krátky list namiesto reklamy
+- **Predmet:** Dve chyby, ktoré vidím pri výbere dosky
 - **Preheader:** Vysvetlím, prečo pri pracovnej doske nestačí malá vzorka a cena za meter – a čo s tým robíme.
 - **Šablóna:** `sablony/02-welcome-list-od-mariana.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí
 
-### Hlavička
-Vitajte · 2 / 4
-
 ### Séria (pill) a veta pod ňou
 List od Mariána
 
 ### Nadpis
-Krátky list
-namiesto reklamy.
+Dve chyby
+pri výbere dosky.
 
 ### List
 Dobrý deň,

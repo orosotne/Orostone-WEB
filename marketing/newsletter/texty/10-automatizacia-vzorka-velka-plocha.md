@@ -8,9 +8,6 @@
 
 ## Text e-mailu v poradí, ako sa zobrazí
 
-### Hlavička
-Vaša vzorka · 7 dní
-
 ### Séria (pill) a veta pod ňou
 Vzorka doma
 

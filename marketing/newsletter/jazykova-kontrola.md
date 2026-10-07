@@ -180,4 +180,14 @@ Marián list 02 schválil. Martin chce ešte samostatnú jazykovú kontrolu cel�
 
 Na žiadosť o kontrolu celého textu e-mailu 02 (predmet, preheader, list, P. S. a pätička) Codex na `4637728` nenašiel žiadne pripomienky. List 02 je jazykovo skontrolovaný a Marián ho schválil.
 
+### Nový obsah (7. 10. 2026, Martin)
+
+Čitateľ nemá vidieť, ako sú nastavené automatizácie. Pravidlo je v `slovnik.md` (sekcia 1). Na kontrolu:
+
+- **hlavička** – automatizácie (01, 02, 05–10, 12, 13, 15, 17) majú v hlavičke len logo, bez štítkov ako *Vitajte · 1 / 4* alebo *Vaša vzorka · 7 dní*. V 21 je namiesto *Sezónne* štítok *Koniec roka*.
+- **02** – nový predmet a nadpis: *Dve chyby, ktoré vidím pri výbere dosky* a *Dve chyby pri výbere dosky.* Pôvodný *Krátky list namiesto reklamy* pôsobil čudne. Text listu sa nemení.
+- **08** – namiesto sekcie *Čo bude nasledovať* (o týždeň…, o mesiac…) je krátka sekcia *Kedykoľvek nám napíšte*.
+- **09** – bez vety *Posledný e-mail uvítacej série* a bez odkazu *v predchádzajúcom e-maile sme písali*. Úvod dáva zmysel aj samostatne.
+- **17** – bez úvodu *Ako sme sľúbili v deň montáže*.
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
