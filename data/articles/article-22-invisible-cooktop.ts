@@ -23,7 +23,7 @@ export const ARTICLE_22: BlogArticle = {
   <li>Neviditeľná varná doska = indukčný modul pod sinterovaným kameňom (12 mm hrúbka)</li>
   <li>Elektromagnetické pole prechádza cez kameň — výkon 90–95 % štandardnej indukcie</li>
   <li>Kompatibilné systémy: Invisacook, TPIC Invisible Cooking, Miele TempControl (vybrané modely)</li>
-  <li>Sinterovaný kameň je ideálny vďaka nulovej pórovitosti a rovnomernému prenosu tepla</li>
+  <li>Sinterovaný kameň je ideálny vďaka takmer nulovej pórovitosti a rovnomernému prenosu tepla</li>
   <li>Hrúbka platne musí byť presne 12 mm — 20 mm platne sú príliš hrubé pre prenos poľa</li>
 </ul>
 
@@ -158,7 +158,7 @@ export const ARTICLE_22: BlogArticle = {
   <li><strong>Otvorené kuchyne prepojené s obývačkou</strong> — varná doska zmizne, kuchyňa vyzerá ako nábytok</li>
   <li><strong>Kuchynské ostrovčeky</strong> — čistá plocha z každého uhla, žiadna viditeľná technika (<a href="/blog/kuchynsky-ostrovcek-zo-sinterovaneho-kamena">čítajte viac o ostrovčekoch</a>)</li>
   <li><strong>Minimalistické interiéry</strong> — pre klientov, kde estetika má rovnakú váhu ako funkcia</li>
-  <li><strong>Showroomy a modelové byty</strong> — wow efekt pre návštevníkov</li>
+  <li><strong>Showroomy a modelové byty</strong> — výrazný prvý dojem pre návštevníkov</li>
 </ul>
 
 <figure class="article-figure">

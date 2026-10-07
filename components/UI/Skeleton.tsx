@@ -1,5 +1,7 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
+import { Container, Section } from '../Design';
+import { CATALOG_GRID } from '../Shop/catalogGrid';
 
 // ===========================================
 // BASE SKELETON
@@ -166,56 +168,49 @@ export const ProductDetailSkeleton: React.FC = () => (
 );
 
 // ===========================================
-// CATEGORY PAGE SKELETON (matches CategoryPage hero + grid)
+// CATALOG GRID SKELETON (matches components/Shop/ProductCard)
+// ===========================================
+
+export const CatalogGridSkeleton: React.FC<{ count?: number }> = ({ count = 8 }) => (
+  <div className={CATALOG_GRID} aria-hidden="true">
+    {Array.from({ length: count }).map((_, i) => (
+      <div key={i}>
+        <div className="aspect-[1536/2752] w-full animate-pulse rounded-[2px] bg-brand-sand" />
+        <div className="mt-5 h-2.5 w-2/3 animate-pulse rounded-sm bg-brand-sand" />
+        <div className="mt-3 h-4 w-3/4 animate-pulse rounded-sm bg-brand-sand" />
+        <div className="mt-4 h-4 w-1/2 animate-pulse rounded-sm bg-brand-sand" />
+        <div className="mt-2 h-3.5 w-2/5 animate-pulse rounded-sm bg-brand-sand" />
+        <div className="mt-5 h-11 w-full animate-pulse rounded-[10px] bg-brand-sand" />
+      </div>
+    ))}
+  </div>
+);
+
+// ===========================================
+// CATEGORY PAGE SKELETON (matches CategoryPage: PageHero, colour chips, grid)
 // ===========================================
 
 export const CategoryPageSkeleton: React.FC = () => (
   <>
-    {/* Hero — matches h-[320px] md:h-[400px] with gold gradient */}
-    <section
-      className="relative h-[320px] md:h-[400px] overflow-hidden"
-      style={{ background: 'linear-gradient(135deg, #F5E9B8 0%, #ECD488 50%, #C9A85C 100%)' }}
-    >
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-      <div className="relative h-full container mx-auto px-6 lg:px-8 flex flex-col justify-end pb-10 md:pb-14">
-        {/* Breadcrumb */}
-        <div className="flex items-center gap-2 mb-4">
-          <Skeleton className="h-3 w-12 bg-white/20" />
-          <Skeleton className="h-3 w-2 bg-white/20" />
-          <Skeleton className="h-3 w-28 bg-white/20" />
-        </div>
-        {/* Title */}
-        <Skeleton className="h-10 md:h-14 w-64 md:w-96 bg-white/20 rounded-lg mb-3" />
-        {/* Description */}
-        <Skeleton className="h-5 w-80 max-w-xl bg-white/20 rounded mb-3" />
-        {/* Product count */}
-        <Skeleton className="h-3 w-24 bg-white/20 rounded mt-1" />
-      </div>
-    </section>
-
-    {/* Filter bar placeholder */}
-    <div className="container mx-auto px-6 lg:px-8 pt-6 pb-2 flex gap-3 flex-wrap">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <Skeleton key={i} className="h-9 w-24 rounded-full" />
-      ))}
-    </div>
-
-    {/* Product Grid */}
-    <section className="container mx-auto px-6 lg:px-8 py-8 md:py-12">
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-        {Array.from({ length: 12 }).map((_, i) => (
-          <ProductCardSkeleton key={i} compact={false} />
+    <Section tone="chalk" band={false} className="pb-[var(--os-band)] pt-[clamp(40px,5vw,88px)]">
+      <Container className="grid gap-5">
+        <div className="h-3.5 w-24 animate-pulse rounded-sm bg-brand-sand" />
+        <div className="h-[clamp(2.2rem,3vw,3.5rem)] w-[min(520px,80%)] animate-pulse rounded-sm bg-brand-sand" />
+        <div className="h-5 w-[min(560px,90%)] animate-pulse rounded-sm bg-brand-sand" />
+      </Container>
+    </Section>
+    <div className="border-y border-brand-line bg-brand-light">
+      <Container className="flex gap-2 overflow-hidden py-3">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <div key={i} className="h-11 w-24 flex-none animate-pulse rounded-full bg-brand-sand" />
         ))}
-      </div>
-    </section>
-
-    {/* SEO content placeholder */}
-    <section className="container mx-auto px-6 lg:px-8 py-12 md:py-16 max-w-4xl space-y-4">
-      <Skeleton className="h-8 w-64 mb-6" />
-      {Array.from({ length: 8 }).map((_, i) => (
-        <Skeleton key={i} className={`h-4 ${i === 7 ? 'w-2/3' : 'w-full'}`} />
-      ))}
-    </section>
+      </Container>
+    </div>
+    <Section tone="chalk" className="!pt-[clamp(40px,5vw,72px)]">
+      <Container>
+        <CatalogGridSkeleton />
+      </Container>
+    </Section>
   </>
 );
 
@@ -224,38 +219,30 @@ export const CategoryPageSkeleton: React.FC = () => (
 // ===========================================
 
 export const CheckoutSkeleton: React.FC = () => (
-  <div className="container mx-auto px-4 lg:px-8 py-8">
-    <div className="flex flex-col lg:flex-row gap-8">
-      {/* Form */}
-      <div className="lg:w-2/3 space-y-6">
-        <Skeleton className="h-6 w-48" />
-        {Array.from({ length: 4 }).map((_, i) => (
-          <div key={i} className="space-y-2">
-            <Skeleton className="h-3 w-24" />
-            <Skeleton className="h-12 w-full rounded-lg" />
-          </div>
-        ))}
+  <Section tone="chalk" className="!pt-[clamp(40px,5vw,72px)]">
+    <Container>
+      <div className="mb-[clamp(32px,4vw,56px)] grid gap-4">
+        <div className="h-4 w-32 animate-pulse rounded-sm bg-brand-sand" />
+        <div className="h-[clamp(2.2rem,3vw,3.5rem)] w-56 animate-pulse rounded-sm bg-brand-sand" />
       </div>
-      {/* Summary */}
-      <div className="lg:w-1/3">
-        <div className="bg-gray-50 rounded-xl p-6 space-y-4">
-          <Skeleton className="h-5 w-32" />
-          <Skeleton className="h-16 w-full rounded-lg" />
-          <Skeleton className="h-16 w-full rounded-lg" />
-          <div className="pt-4 border-t border-gray-200 space-y-2">
-            <div className="flex justify-between">
-              <Skeleton className="h-3 w-20" />
-              <Skeleton className="h-3 w-16" />
+      <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_400px] lg:gap-16">
+        <div className="space-y-6">
+          <div className="h-6 w-48 animate-pulse rounded-sm bg-brand-sand" />
+          {Array.from({ length: 2 }).map((_, i) => (
+            <div key={i} className="flex gap-5 border-t border-brand-line pt-6">
+              <div className="h-[126px] w-[72px] flex-none animate-pulse rounded-[2px] bg-brand-sand" />
+              <div className="flex-1 space-y-3">
+                <div className="h-4 w-1/2 animate-pulse rounded-sm bg-brand-sand" />
+                <div className="h-4 w-1/4 animate-pulse rounded-sm bg-brand-sand" />
+                <div className="h-10 w-32 animate-pulse rounded-[10px] bg-brand-sand" />
+              </div>
             </div>
-            <div className="flex justify-between">
-              <Skeleton className="h-4 w-16" />
-              <Skeleton className="h-5 w-20" />
-            </div>
-          </div>
+          ))}
         </div>
+        <div className="h-[420px] animate-pulse rounded-[3px] bg-brand-sand" />
       </div>
-    </div>
-  </div>
+    </Container>
+  </Section>
 );
 
 // ===========================================

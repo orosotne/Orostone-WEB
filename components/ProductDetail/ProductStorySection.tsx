@@ -2,6 +2,7 @@ import React from 'react';
 import { m } from 'framer-motion';
 import { Check } from 'lucide-react';
 import type { ShopProduct } from '../../constants';
+import { shopifySized } from '../../lib/shopifyImage';
 
 interface ProductStorySectionProps {
   product: ShopProduct;
@@ -13,7 +14,7 @@ export const ProductStorySection: React.FC<ProductStorySectionProps> = ({ produc
   if (!rd && !product.designInsight) return null;
 
   const StoryWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-    <section className="py-12 lg:py-20 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #ECD488 0%, #f5e6b8 40%, #ECD488 100%)' }}>
+    <section className="py-12 lg:py-20 relative overflow-hidden bg-brand-sand">
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-3xl mx-auto">
           {children}
@@ -28,9 +29,9 @@ export const ProductStorySection: React.FC<ProductStorySectionProps> = ({ produc
         className="absolute top-0 right-0 translate-x-[25%] -translate-y-[15%] w-[280px] h-[360px] rotate-[10deg] pointer-events-none hidden lg:block z-0"
       >
         <img
-          src={product.image}
+          src={shopifySized(product.image, 640)}
           alt={`${product.name} — povrch sinterovaného kameňa`}
-          className="w-full h-full object-cover rounded-2xl shadow-2xl"
+          className="w-full h-full object-cover rounded-[3px]"
         />
       </m.div>
     </section>
@@ -45,7 +46,7 @@ export const ProductStorySection: React.FC<ProductStorySectionProps> = ({ produc
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-brand-dark/60 mb-8">
+          <h2 className="flex items-center gap-3.5 text-os-eyebrow uppercase text-brand-dark before:h-px before:w-7 before:bg-current before:opacity-75 before:content-[''] mb-8">
             Štýl & Inšpirácia
           </h2>
         </m.div>
@@ -73,7 +74,7 @@ export const ProductStorySection: React.FC<ProductStorySectionProps> = ({ produc
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-brand-dark/60 mb-8">
+        <h2 className="flex items-center gap-3.5 text-os-eyebrow uppercase text-brand-dark before:h-px before:w-7 before:bg-current before:opacity-75 before:content-[''] mb-8">
           O produkte
         </h2>
       </m.div>

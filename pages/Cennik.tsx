@@ -1,14 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Check } from 'lucide-react';
 import { SEOHead } from '@/components/UI/SEOHead';
 import { useShopifyProducts } from '@/hooks/useShopifyProducts';
 import { calculateSlabPrice } from '@/lib/slab';
+import {
+  ActionButton,
+  Container,
+  Eyebrow,
+  FaqList,
+  GoldBand,
+  PageHero,
+  Section,
+  SectionHeader,
+  TextLink,
+} from '@/components/Design';
+import { HOME_DECORS, decorImage } from '@/components/Home/homeData';
 import {
   PRICING_LAST_UPDATED,
   INSTALLATION_RATE_PER_M2,
   INSTALLATION_INCLUDES,
   BUNDLE_OPTIONS,
+  BULK_DISCOUNT,
+  SLAB_PRICE_MIN,
+  SLAB_TOTAL_MIN,
   formatEur,
   formatEurWhole,
 } from '@/data/pricing';
@@ -46,6 +60,22 @@ const structuredData = {
   ],
 };
 
+/** The four numbers the page answers, set large: same constants as the direct answer above them. */
+const PRICE_FACTS = [
+  { value: `od ${formatEur(SLAB_PRICE_MIN)}`, label: 'za m² materiálu s DPH' },
+  { value: `od ${formatEurWhole(SLAB_TOTAL_MIN)}`, label: 'celá platňa 3\u00A0200\u00A0×\u00A01\u00A0600\u00A0mm' },
+  { value: `−${BULK_DISCOUNT.discountPercent} %`, label: `pri ${BULK_DISCOUNT.quantity} a viac platniach` },
+  { value: `≈ ${INSTALLATION_RATE_PER_M2} €/m²`, label: 'výroba a montáž u partnerského kamenára' },
+];
+
+// Swatch and the same decor names as on the homepage (Shopify titles are upper case)
+const DECOR_NAMES = new Map(HOME_DECORS.map((d) => [d.slug, d.name]));
+
+const below = 'mt-[clamp(40px,5vw,64px)]';
+const tableWrap = '-mx-[var(--os-edge)] overflow-x-auto px-[var(--os-edge)] sm:mx-0 sm:px-0';
+const th = 'py-4 pr-4 text-left text-[0.82rem] font-semibold text-brand-muted';
+const td = 'py-4 pr-4 align-top';
+
 export const Cennik = () => {
   const { products } = useShopifyProducts(50);
   const slabs = products
@@ -53,7 +83,7 @@ export const Cennik = () => {
     .sort((a, b) => a.pricePerM2 - b.pricePerM2);
 
   return (
-    <div className="bg-white">
+    <div>
       <SEOHead
         title={CENNIK_TITLE}
         description={CENNIK_DESCRIPTION}
@@ -62,59 +92,70 @@ export const Cennik = () => {
         structuredData={structuredData}
       />
 
-      {/* Hero + direct answer */}
-      <section className="pt-32 pb-16 bg-[#F9F9F7]">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto text-center">
-            <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
-              Cenník sinterovaného kameňa
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-sans font-bold text-brand-dark mb-6">
-              {CENNIK_H1}
-            </h1>
-            <p className="text-gray-600 text-lg font-light leading-relaxed mb-4">{CENNIK_DIRECT_ANSWER}</p>
-            <p className="text-sm text-gray-400">
-              Aktualizované: <time dateTime={PRICING_LAST_UPDATED}>{PRICING_LAST_UPDATED}</time> · ceny sa
-              synchronizujú s e-shopom
+      <PageHero
+        eyebrow="Cenník sinterovaného kameňa"
+        title={CENNIK_H1}
+        media={
+          <div className="grid max-w-[62ch] gap-4 lg:pt-10">
+            <p className="text-os-lead font-light text-brand-muted">{CENNIK_DIRECT_ANSWER}</p>
+            <p className="text-[0.82rem] font-normal text-brand-muted">
+              Aktualizované: <time dateTime={PRICING_LAST_UPDATED}>{PRICING_LAST_UPDATED}</time> · ceny sa synchronizujú s
+              e-shopom
             </p>
           </div>
-        </div>
-      </section>
+        }
+      >
+        <dl className={`${below} grid gap-x-[clamp(24px,3vw,48px)] gap-y-8 sm:grid-cols-2 lg:grid-cols-4`}>
+          {PRICE_FACTS.map((f) => (
+            <div key={f.label} className="grid content-start gap-2 border-t border-brand-dark pt-5">
+              <dt className="order-2 text-[0.92rem] font-normal text-brand-muted">{f.label}</dt>
+              <dd className="order-1 m-0 whitespace-nowrap text-[clamp(1.6rem,2.4vw,2.2rem)] font-semibold leading-none tracking-[-0.02em] tabular-nums">
+                {f.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </PageHero>
 
-      {/* Tabuľka dekorov */}
-      <section className="py-20">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
-              Materiál
-            </span>
-            <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4">Ceny dekorov</h2>
-            <p className="text-gray-500 text-lg font-light max-w-2xl mx-auto">
-              Všetky platne majú formát 3200 × 1600 mm a hrúbku 12 mm. Ceny sú vrátane DPH.
-            </p>
-          </div>
-
-          <div className="overflow-x-auto -mx-6 px-6 max-w-4xl lg:mx-auto">
-            <table className="w-full min-w-[560px] text-sm">
+      <Section tone="sand">
+        <Container className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-[clamp(48px,6vw,104px)]">
+          <SectionHeader
+            eyebrow="Materiál"
+            title="Ceny dekorov"
+            lead={'Všetky platne majú formát 3\u00A0200\u00A0×\u00A01\u00A0600\u00A0mm a hrúbku 12\u00A0mm. Ceny sú vrátane DPH.'}
+          />
+          <div className={tableWrap}>
+            <table className="w-full border-collapse text-[0.92rem] sm:text-[0.98rem]">
               <thead>
-                <tr className="border-b-2 border-brand-dark">
-                  <th className="text-left py-4 pr-4 font-bold text-brand-dark">Dekor</th>
-                  <th className="text-right py-4 px-3 font-bold text-brand-gold bg-brand-gold/5">Cena €/m² s DPH</th>
-                  <th className="text-right py-4 px-3 font-semibold text-gray-600">Cena za platňu</th>
+                <tr className="border-b border-brand-dark">
+                  <th className={th}>Dekor</th>
+                  <th className={`${th} bg-brand-light px-2 text-right text-brand-dark sm:px-4`}>Cena €/m² s DPH</th>
+                  <th className={`${th} pl-2 text-right sm:pl-4`}>Cena za platňu</th>
                 </tr>
               </thead>
               <tbody>
                 {slabs.map((p) => (
-                  <tr key={p.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-                    <td className="py-4 pr-4 font-medium text-brand-dark">
-                      <Link to={`/produkt/${p.id}`} className="hover:text-brand-gold transition-colors">
-                        {p.name}
+                  <tr key={p.id} className="border-b border-brand-line">
+                    <td className={td}>
+                      <Link to={`/produkt/${p.id}`} className="group inline-flex items-center gap-3 font-medium no-underline sm:gap-4">
+                        {DECOR_NAMES.has(p.id) && (
+                          <img
+                            src={decorImage(p.id)}
+                            alt=""
+                            width={520}
+                            height={931}
+                            loading="lazy"
+                            decoding="async"
+                            className="hidden h-12 w-6 flex-none rounded-[1px] object-cover shadow-[0_0_0_1px_rgba(26,26,26,0.08)] min-[380px]:block"
+                          />
+                        )}
+                        <span className="group-hover:underline">{DECOR_NAMES.get(p.id) ?? p.name}</span>
                       </Link>
                     </td>
-                    <td className="py-4 px-3 text-right font-medium text-brand-dark bg-brand-gold/5">
+                    <td className={`${td} whitespace-nowrap bg-brand-light px-2 text-right align-middle font-semibold tabular-nums sm:px-4`}>
                       {formatEur(p.pricePerM2)}
                     </td>
-                    <td className="py-4 px-3 text-right text-gray-600 font-light">
+                    <td className={`${td} whitespace-nowrap pl-2 text-right align-middle font-light tabular-nums text-brand-muted sm:pl-4`}>
                       ≈ {formatEurWhole(calculateSlabPrice(p.pricePerM2, p.dimensions))}
                     </td>
                   </tr>
@@ -122,215 +163,154 @@ export const Cennik = () => {
               </tbody>
             </table>
           </div>
+        </Container>
+      </Section>
 
-          {/* Porovnanie materiálov */}
-          <div className="mt-20">
-            <div className="text-center mb-12">
-              <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
-                Porovnanie
-              </span>
-              <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4">{CENNIK_COMPARISON.heading}</h2>
-              <p className="text-gray-500 text-lg font-light max-w-2xl mx-auto">{CENNIK_COMPARISON.intro}</p>
-            </div>
-
-            <div className="overflow-x-auto -mx-6 px-6 max-w-4xl lg:mx-auto">
-              <table className="w-full min-w-[640px] text-sm">
-                <thead>
-                  <tr className="border-b-2 border-brand-dark">
-                    {CENNIK_COMPARISON.columnLabels.map((label, i) => (
-                      <th
-                        key={label}
-                        className={
-                          i === 0
-                            ? 'text-left py-4 pr-4 font-bold text-brand-dark'
-                            : i === 1
-                              ? 'text-left py-4 px-3 font-bold text-brand-gold bg-brand-gold/5'
-                              : 'text-left py-4 px-3 font-semibold text-gray-600'
-                        }
+      <Section tone="chalk">
+        <Container>
+          <SectionHeader eyebrow="Porovnanie" title={CENNIK_COMPARISON.heading} lead={CENNIK_COMPARISON.intro} />
+          <div className={`${below} ${tableWrap}`}>
+            <table className="w-full min-w-[640px] border-collapse text-[0.95rem]">
+              <thead>
+                <tr className="border-b border-brand-dark">
+                  {CENNIK_COMPARISON.columnLabels.map((label, i) => (
+                    <th key={label} className={`${th} ${i === 1 ? 'bg-brand-sand px-4 text-brand-dark' : i > 1 ? 'pl-4' : ''}`}>
+                      {label}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {CENNIK_COMPARISON.rows.map(([property, ...values]) => (
+                  <tr key={property} className="border-b border-brand-line">
+                    <td className={`${td} font-medium`}>{property}</td>
+                    {values.map((value, i) => (
+                      <td
+                        key={i}
+                        className={`${td} ${i === 0 ? 'bg-brand-sand px-4 font-medium' : 'pl-4 font-light text-brand-muted'}`}
                       >
-                        {label}
-                      </th>
+                        {value}
+                      </td>
                     ))}
                   </tr>
-                </thead>
-                <tbody>
-                  {CENNIK_COMPARISON.rows.map(([property, ...values]) => (
-                    <tr key={property} className="border-b border-gray-100">
-                      <td className="py-4 pr-4 font-medium text-brand-dark">{property}</td>
-                      {values.map((value, i) => (
-                        <td
-                          key={i}
-                          className={
-                            i === 0
-                              ? 'py-4 px-3 font-medium text-brand-dark bg-brand-gold/5'
-                              : 'py-4 px-3 text-gray-600 font-light'
-                          }
-                        >
-                          {value}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <p className="text-center mt-8 text-sm text-gray-500">
-              {CENNIK_RELATED_LINKS.map((link, i) => (
-                <React.Fragment key={link.href}>
-                  {i > 0 && ' · '}
-                  <Link to={link.href} className="text-brand-gold hover:text-brand-dark transition-colors">
-                    {link.label}
-                  </Link>
-                </React.Fragment>
-              ))}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Výroba a montáž — partnerský kamenár, nie súčasť ceny materiálu */}
-      <section className="py-20 bg-[#F9F9F7]">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-            <div>
-              <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
-                Výroba a montáž
-              </span>
-              <h2 className="text-3xl md:text-4xl font-sans font-bold mb-6">
-                Výroba a montáž u partnerského kamenára
-              </h2>
-              <p className="text-gray-600 font-light leading-relaxed mb-6">
-                Orostone predáva materiál — celé platne. Zameranie, výrobu a montáž robí partnerský kamenár so
-                skúsenosťou so sinterovaným kameňom, orientačne za {INSTALLATION_RATE_PER_M2} €/m² s DPH. Tieto
-                práce fakturuje kamenár, nie sú súčasťou ceny materiálu.
-              </p>
-              <ul className="space-y-3">
-                {INSTALLATION_INCLUDES.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <Check size={18} className="text-brand-gold mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700 font-light capitalize">{item}</span>
-                  </li>
                 ))}
-              </ul>
-            </div>
-            <div className="p-8 bg-white rounded-3xl">
-              <h3 className="font-bold text-brand-dark text-lg mb-4">Zľavy pri viacerých platniach</h3>
-              <ul className="space-y-3 mb-8">
+              </tbody>
+            </table>
+          </div>
+          <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
+            {CENNIK_RELATED_LINKS.map((link) => (
+              <TextLink key={link.href} to={link.href}>
+                {link.label}
+              </TextLink>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section tone="sand">
+        <Container className="grid items-start gap-12 lg:grid-cols-2 lg:gap-[clamp(48px,6vw,104px)]">
+          <div className="grid justify-items-start gap-6">
+            <SectionHeader eyebrow="Výroba a montáž" title="Výroba a montáž u partnerského kamenára" />
+            <p className="max-w-[54ch] font-light text-brand-muted">
+              Orostone predáva materiál — celé platne. Zameranie, výrobu a montáž robí partnerský kamenár so skúsenosťami so
+              spracovaním sinterovaného kameňa, orientačne za {INSTALLATION_RATE_PER_M2} €/m² s DPH. Tieto práce fakturuje kamenár, nie sú
+              súčasťou ceny materiálu.
+            </p>
+            <ul className="grid w-full max-w-[460px] border-t border-brand-line">
+              {INSTALLATION_INCLUDES.map((item) => (
+                <li key={item} className="border-b border-brand-line py-3 first-letter:uppercase">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="grid gap-10 rounded-[3px] bg-brand-light p-[clamp(28px,3vw,44px)]">
+            <div className="grid gap-4">
+              <h3 className="text-os-h3">Zľavy pri viacerých platniach</h3>
+              <ul className="border-t border-brand-line">
                 {BUNDLE_OPTIONS.map((b) => (
-                  <li key={b.quantity} className="flex items-center justify-between border-b border-gray-100 pb-3">
-                    <span className="text-gray-700 font-light">
+                  <li key={b.quantity} className="flex items-center justify-between gap-4 border-b border-brand-line py-3">
+                    <span className="font-light">
                       {b.quantity} {b.quantity === 1 ? 'platňa' : b.quantity < 5 ? 'platne' : 'platní'}
                     </span>
-                    <span className="font-semibold text-brand-dark">
+                    <span className="font-semibold">
                       {b.discountPercent > 0 ? `−${b.discountPercent} % z ceny platní` : 'štandardná cena'}
                     </span>
                   </li>
                 ))}
               </ul>
-              <h3 className="font-bold text-brand-dark text-lg mb-4">Koľko materiálu potrebuje kuchyňa</h3>
-              <p className="text-gray-600 font-light mb-4">
-                Orientačná cena materiálu s DPH, od najlacnejšieho po najdrahší dekor:
-              </p>
-              <ul className="space-y-3">
+            </div>
+            <div className="grid gap-4">
+              <h3 className="text-os-h3">Koľko materiálu potrebuje kuchyňa</h3>
+              <p className="font-light text-brand-muted">Orientačná cena materiálu s DPH, od najlacnejšieho po najdrahší dekor:</p>
+              <ul className="border-t border-brand-line">
                 {CENNIK_SCENARIOS.map((s) => (
-                  <li key={s.label} className="flex items-start justify-between gap-4 border-b border-gray-100 pb-3">
-                    <span className="text-gray-700 font-light">
+                  <li key={s.label} className="flex items-start justify-between gap-4 border-b border-brand-line py-3">
+                    <span className="font-light">
                       {s.label}
-                      <span className="block text-xs text-gray-400">{scenarioSlabsText(s)}</span>
+                      <span className="block text-[0.82rem] font-normal text-brand-muted">{scenarioSlabsText(s)}</span>
                     </span>
-                    <span className="font-semibold text-brand-dark whitespace-nowrap">
+                    <span className="whitespace-nowrap font-semibold tabular-nums">
                       {formatEurWhole(s.min)} – {formatEurWhole(s.max)}
                     </span>
                   </li>
                 ))}
               </ul>
-              <p className="text-sm text-gray-400 font-light mt-4">Presný počet platní určíme z pôdorysu.</p>
+              <p className="text-[0.88rem] font-normal text-brand-muted">Presný počet platní určíme z pôdorysu.</p>
             </div>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      {/* Faktory ceny */}
-      <section className="py-20">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
-              <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
-                Prehľadná kalkulácia
-              </span>
-              <h2 className="text-3xl md:text-4xl font-sans font-bold mb-4">Čo ovplyvňuje finálnu cenu</h2>
-              <p className="text-gray-500 text-lg font-light">
-                Najdrahší kompromis pri pracovnej doske býva často ten, ktorý na začiatku vyzeral ako úspora.
-                Preto v ponuke rozpisujeme každú položku zvlášť.
-              </p>
-            </div>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {CENNIK_PRICE_FACTORS.map((f) => (
-                <li key={f} className="flex items-start gap-3 p-5 bg-[#F9F9F7] rounded-2xl">
-                  <Check size={18} className="text-brand-gold mt-0.5 flex-shrink-0" />
-                  <span className="text-gray-700 font-light">{f}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-20 bg-[#F9F9F7]">
-        <div className="container mx-auto px-6 max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-sans font-bold text-brand-dark text-center mb-12">
-            Často kladené otázky o cenách
-          </h2>
-          <div className="space-y-4">
-            {CENNIK_FAQS.map((faq) => (
-              <details key={faq.question} className="group bg-white rounded-2xl">
-                <summary className="flex items-center justify-between p-6 cursor-pointer font-semibold text-brand-dark">
-                  {faq.question}
-                </summary>
-                <div className="px-6 pb-6 text-gray-500 font-light text-sm leading-relaxed">{faq.answer}</div>
-              </details>
+      <Section tone="chalk">
+        <Container>
+          <SectionHeader
+            eyebrow="Prehľadná kalkulácia"
+            title="Čo ovplyvňuje finálnu cenu"
+            lead="Najdrahší kompromis pri pracovnej doske býva často ten, ktorý na začiatku vyzeral ako úspora. Preto v ponuke rozpisujeme každú položku zvlášť."
+          />
+          <ul className={`${below} grid gap-x-[clamp(24px,3vw,48px)] sm:grid-cols-2 lg:grid-cols-3`}>
+            {CENNIK_PRICE_FACTORS.map((f) => (
+              <li key={f} className="border-t border-brand-line py-5 font-light">
+                {f}
+              </li>
             ))}
-          </div>
-          <p className="text-center mt-8 text-sm text-gray-500">
-            <Link to="/podmienky-rezervacie-ceny" className="text-brand-gold hover:text-brand-dark transition-colors">
-              Podmienky rezervácie ceny (99 €)
-            </Link>
-            {' · '}
-            <Link to="/blog/technicky-kamen-cena-pracovna-doska" className="text-brand-gold hover:text-brand-dark transition-colors">
-              Sprievodca cenami technického kameňa
-            </Link>
-          </p>
-        </div>
-      </section>
+          </ul>
+        </Container>
+      </Section>
 
-      {/* CTA */}
-      <section className="py-20 bg-brand-dark text-white">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-sans font-bold mb-6 max-w-2xl mx-auto">
-            Pošlite pôdorys, pripravíme presnú ponuku
-          </h2>
-          <p className="text-gray-400 text-lg font-light max-w-xl mx-auto mb-10">
-            Alebo si najprv objednajte vzorku dekoru zadarmo a potvrďte si výber pri dennom svetle.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/kontakt"
-              className="inline-flex items-center justify-center gap-2 bg-white text-brand-dark px-8 py-4 text-sm font-semibold tracking-wider uppercase hover:bg-brand-gold transition-colors"
-            >
-              Poslať pôdorys
-              <ArrowRight size={16} />
-            </Link>
-            <Link
-              to="/vzorky"
-              className="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-8 py-4 text-sm font-semibold tracking-wider uppercase hover:border-brand-gold hover:text-brand-gold transition-colors"
-            >
-              Objednať vzorku
-            </Link>
+      <Section tone="sand">
+        <Container className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-[clamp(48px,6vw,104px)]">
+          <SectionHeader eyebrow="Otázky" title="Často kladené otázky o cenách" />
+          <div className="grid gap-8">
+            <FaqList items={CENNIK_FAQS} />
+            <div className="flex flex-wrap gap-x-8 gap-y-3">
+              <TextLink to="/podmienky-rezervacie-ceny">Podmienky rezervácie ceny (99 €)</TextLink>
+              <TextLink to="/blog/technicky-kamen-cena-pracovna-doska">Sprievodca cenami technického kameňa</TextLink>
+            </div>
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
+
+      <Section tone="chalk">
+        <Container className="grid items-end gap-8 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
+          <div className="grid gap-4">
+            <Eyebrow>Presná ponuka</Eyebrow>
+            <h2 className="text-os-h2 [text-wrap:balance]">Pošlite pôdorys, pripravíme presnú ponuku</h2>
+            <p className="max-w-[54ch] text-os-lead font-light text-brand-muted">
+              Alebo si najprv objednajte vzorku dekoru zadarmo a potvrďte si výber pri dennom svetle.
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-4 lg:justify-end">
+            <ActionButton variant="dark" to="/kontakt" arrow>
+              Poslať pôdorys
+            </ActionButton>
+            <TextLink to="/vzorky">Objednať vzorku</TextLink>
+          </div>
+        </Container>
+      </Section>
+
+      <GoldBand od="cennik" />
     </div>
   );
 };

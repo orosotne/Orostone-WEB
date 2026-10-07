@@ -1,25 +1,26 @@
-import React, { useState } from 'react';
-import {
-  Flame,
-  Droplets,
-  Sun,
-  ShieldCheck,
-  Sparkles,
-  ChevronDown,
-  ChevronUp,
-  ArrowRight,
-  Phone,
-  Mail,
-  CookingPot,
-  Check,
-  X,
-} from 'lucide-react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { SEOHead } from '@/components/UI/SEOHead';
+import {
+  ActionButton,
+  ArrowIcon,
+  Container,
+  Eyebrow,
+  FaqList,
+  GoldBand,
+  PageHero,
+  PageHeroImage,
+  ResponsiveImage,
+  Section,
+  SectionHeader,
+  TextLink,
+  useDrawIn,
+} from '@/components/Design';
 import {
   VYHODY_FAQ,
   COMPARISON_DATA,
   VYHODY_BENEFITS,
+  VYHODY_COMPARISON_COLUMNS,
   VYHODY_VERDICTS,
   VYHODY_RELATED_LINKS,
 } from '@/data/pillars/vyhody';
@@ -29,8 +30,43 @@ import {
    ============================================================= */
 const FAQ_ITEMS = VYHODY_FAQ;
 
-const BENEFIT_ICONS = [Flame, Droplets, Sparkles, Sun, ShieldCheck, CookingPot];
-const BENEFITS = VYHODY_BENEFITS.map((b, i) => ({ ...b, icon: BENEFIT_ICONS[i] }));
+// One visualization per benefit (zip by index with VYHODY_BENEFITS): the property shown, not described.
+const BENEFIT_IMAGES = [
+  { base: 'vyhody-teplo', alt: 'Hrniec z nehrdzavejúcej ocele priamo na pracovnej doske Gothic Gold' },
+  { base: 'vyhody-nasiakavost', alt: 'Sprchový kút obložený veľkoformátovými platňami Statuario Diamante' },
+  { base: 'vyhody-skvrny', alt: 'Pohár červeného vína, káva a citrón na doske Calacatta Top, pohľad zhora' },
+  { base: 'vyhody-uv', alt: 'Ostrovček Calacatta Top pri veľkom okne v slnečnom svetle' },
+  { base: 'vyhody-udrzba', alt: 'Ruka utiera rozliatu tekutinu a omrvinky z dosky Calacatta Top vlhkou utierkou' },
+  { base: 'vyhody-varna-doska', alt: 'Ruka kladie hrniec priamo na súvislú dosku Gothic Gold bez viditeľných varných zón, pohľad zhora' },
+];
+const BENEFITS = VYHODY_BENEFITS.map((b, i) => ({ ...b, image: BENEFIT_IMAGES[i] }));
+
+const HOB_POINTS = [
+  'Indukčný modul pod dosku s hrúbkou presne 12 mm',
+  'Žiadne viditeľné ovládacie prvky na povrchu',
+  'Ovládanie cez dotykový panel alebo mobilnú aplikáciu',
+  'Plná integrácia s dizajnom kuchyne',
+  'Jednoduché čistenie — celý povrch je hladký',
+];
+
+const BLOG_CARDS = [
+  {
+    to: '/blog/neviditelna-varna-doska-v-sinterovanom-kamene',
+    image: '/images/blog/article-22/hero-original.webp',
+    alt: 'Neviditeľná varná doska v sinterovanom kameni',
+    title: 'Neviditeľná varná doska v sinterovanom kameni',
+    text: 'Kompletný sprievodca — ako funguje, koľko stojí, aký kameň vybrať.',
+  },
+  {
+    to: '/blog/kuchynsky-ostrovcek-zo-sinterovaneho-kamena',
+    image: '/images/blog/article-23/hero.webp',
+    alt: 'Kuchynský ostrovček zo sinterovaného kameňa',
+    title: 'Kuchynský ostrovček zo sinterovaného kameňa',
+    text: 'Dizajn, materiál, rozmery — všetko, čo potrebujete vedieť.',
+  },
+];
+
+const COMPARISON_KEYS = Object.keys(VYHODY_COMPARISON_COLUMNS) as Array<keyof typeof VYHODY_COMPARISON_COLUMNS>;
 
 /* =============================================================
    FAQ SCHEMA JSON-LD
@@ -48,42 +84,50 @@ const faqStructuredData = {
   })),
 };
 
-/* =============================================================
-   FAQ ACCORDION
-   ============================================================= */
-const FAQItem: React.FC<{
-  question: string;
-  answer: string;
-  isOpen: boolean;
-  onClick: () => void;
-}> = ({ question, answer, isOpen, onClick }) => (
-  <div className="border-b border-gray-200 last:border-b-0">
-    <button
-      onClick={onClick}
-      className="w-full flex items-center justify-between py-6 text-left group"
-      aria-expanded={isOpen}
-    >
-      <h3 className="text-base md:text-lg font-semibold text-brand-dark pr-8 group-hover:text-brand-gold transition-colors">
-        {question}
-      </h3>
-      <span className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-100 group-hover:bg-brand-gold/10 flex items-center justify-center transition-colors">
-        {isOpen ? <ChevronUp size={18} className="text-brand-dark" /> : <ChevronDown size={18} className="text-gray-400" />}
-      </span>
-    </button>
-    <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 pb-6' : 'max-h-0'}`}>
-      <p className="text-gray-600 font-light leading-relaxed text-base pr-12">{answer}</p>
-    </div>
-  </div>
-);
+const below = 'mt-[clamp(40px,5vw,64px)]';
+const th = 'py-4 pr-4 text-left text-[0.82rem] font-semibold text-brand-muted';
+const td = 'py-4 pr-4 align-top';
+
+/** Cross-section of an invisible hob: pot on the 12 mm slab, induction coil under it, field through the stone. */
+const HobSectionDrawing: React.FC = () => {
+  const draw = useDrawIn<HTMLElement>(0.3);
+  const coils = Array.from({ length: 12 }, (_, i) => 176 + i * 17);
+  return (
+    <figure ref={draw.ref} className={`m-0 grid gap-6 rounded-[3px] bg-brand-sand p-[clamp(24px,4vw,56px)] ${draw.className}`}>
+      <svg className="os-ico h-auto w-full" viewBox="24 46 560 192" aria-hidden="true">
+        <g className="ln">
+          <rect className="fill" pathLength={1} x="40" y="150" width="460" height="36" rx="1.5" />
+          <path pathLength={1} d="M200 66V140Q200 150 210 150H330Q340 150 340 140V66M194 66H346M258 66C258 56 282 56 282 66" />
+          <path pathLength={1} d="M200 84H182V96H200M340 84H358V96H340" />
+          <rect pathLength={1} x="160" y="194" width="220" height="34" rx="3" />
+          {coils.map((cx) => (
+            <circle key={cx} pathLength={1} cx={cx} cy="211" r="5" />
+          ))}
+          <path pathLength={1} d="M516 150V186M510 150H522M510 186H522" />
+        </g>
+        <g className="ln" style={{ stroke: '#1A1A1A', strokeOpacity: 0.28, strokeWidth: 1 }}>
+          <path pathLength={1} d="M58 172C118 160 178 182 238 168S358 160 418 176S478 170 492 162" />
+        </g>
+        <g className="ln" style={{ stroke: '#C9A94F', strokeWidth: 1.4 }}>
+          <path pathLength={1} d="M222 194C214 180 230 164 222 150M252 194C244 180 260 164 252 150M288 194C280 180 296 164 288 150M318 194C310 180 326 164 318 150" />
+        </g>
+        <text x="530" y="173" fill="#5F5E5A" fontSize="13" fontWeight="600" fontFamily="inherit">
+          12 mm
+        </text>
+      </svg>
+      <figcaption className="text-[0.84rem] font-normal text-brand-muted">
+        Rez doskou: indukčný modul je pod 12 mm platňou a ohrieva hrniec priamo cez kameň.
+      </figcaption>
+    </figure>
+  );
+};
 
 /* =============================================================
    HLAVNÝ KOMPONENT
    ============================================================= */
 export const Vyhody = () => {
-  const [openFAQ, setOpenFAQ] = useState<number | null>(0);
-
   return (
-    <div className="bg-white">
+    <div>
       <SEOHead
         title="Výhody sinterovaného kameňa | OROSTONE"
         description="Sinterovaný kameň odoláva teplu, škvrnám a poškriabaniu. Pozrite porovnanie s technickým kameňom, žulou a mramorom — rozdiely, ktoré reálne rozhodujú."
@@ -94,317 +138,205 @@ export const Vyhody = () => {
       {/* FAQ Schema */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqStructuredData) }} />
 
-      {/* ─── HERO ─── */}
-      <section className="relative bg-brand-dark text-white py-24 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand-dark/95 to-brand-dark/80" />
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-3xl">
-            <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
-              Prečo sinterovaný kameň
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-sans font-bold mb-6 leading-tight">
-              Výhody sinterovaného kameňa
-            </h1>
-            <p className="text-lg md:text-xl font-light text-gray-300 leading-relaxed max-w-2xl">
-              Materiál, ktorý odolá horúcim hrncom, nepotrebuje impregnáciu a umožňuje integráciu
-              neviditeľnej indukčnej varnej dosky priamo do pracovnej plochy.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Prečo sinterovaný kameň"
+        title="Výhody sinterovaného kameňa"
+        lead="Materiál, ktorý odolá horúcim hrncom, nepotrebuje impregnáciu a umožňuje integráciu neviditeľnej indukčnej varnej dosky priamo do pracovnej plochy."
+        media={
+          <PageHeroImage
+            base="/images/stranky/vyhody-gothic-gold"
+            alt="Pracovná doska Gothic Gold s mosadzným drezom a batériou, pohľad zhora"
+            caption="Vizualizácia s dekorom Gothic Gold"
+            position="50% 20%"
+          />
+        }
+      />
 
-      {/* ─── VÝHODY GRID ─── */}
-      <section className="py-24 md:py-32">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
-              Kľúčové vlastnosti
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-sans font-bold mb-6">
-              6 dôvodov, prečo si vybrať sinterovaný kameň
-            </h2>
-            <p className="text-gray-500 text-lg font-light max-w-2xl mx-auto">
-              Každá vlastnosť je overená nezávislými certifikáciami a laboratórnymi testami.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {BENEFITS.map((benefit, i) => (
-              <div key={i} className="p-8 bg-[#F9F9F7] rounded-3xl group hover:bg-brand-dark transition-colors duration-300">
-                <div className="w-12 h-12 rounded-2xl bg-brand-gold/10 group-hover:bg-brand-gold/20 flex items-center justify-center mb-6 transition-colors">
-                  <benefit.icon size={24} className="text-brand-gold" />
-                </div>
-                <h3 className="text-lg font-bold text-brand-dark group-hover:text-white mb-3 transition-colors">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-600 group-hover:text-gray-300 font-light leading-relaxed transition-colors">
-                  {benefit.description}
-                </p>
-              </div>
+      <Section tone="sand">
+        <Container>
+          <SectionHeader
+            eyebrow="Kľúčové vlastnosti"
+            title="6 dôvodov, prečo si vybrať sinterovaný kameň"
+            lead="Každá vlastnosť je overená nezávislými certifikáciami a laboratórnymi testami."
+          />
+          <ul className={`${below} grid gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-3`}>
+            {BENEFITS.map((b) => (
+              <li key={b.title} className="grid content-start gap-3">
+                <ResponsiveImage
+                  base={`/images/stranky/${b.image.base}`}
+                  widths={[640, 1200]}
+                  ratio={1}
+                  alt={b.image.alt}
+                  sizes="(min-width: 1024px) 30vw, (min-width: 640px) 46vw, 100vw"
+                  className="mb-2 aspect-square w-full rounded-[3px] object-cover"
+                />
+                <h3 className="text-[1.2rem] font-semibold leading-snug">{b.title}</h3>
+                <p className="max-w-[46ch] font-light text-brand-muted">{b.description}</p>
+              </li>
             ))}
-          </div>
-        </div>
-      </section>
+          </ul>
+          <p className="mt-10 text-[0.84rem] font-normal text-brand-muted">
+            Ilustračné vizualizácie. Kameň na nich je skutočný dekor Orostone: Gothic Gold, Statuario Diamante a Calacatta Top.
+          </p>
+        </Container>
+      </Section>
 
       {/* ─── NEVIDITEĽNÁ VARNÁ DOSKA — SEO SEKCIA ─── */}
-      <section className="py-24 md:py-32 bg-[#F9F9F7]">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
-                Inovatívne riešenie
-              </span>
-              <h2 className="text-3xl md:text-4xl font-sans font-bold mb-6">
-                Neviditeľná varná doska
-              </h2>
-              <p className="text-gray-600 font-light leading-relaxed mb-6">
-                Indukčná technológia zabudovaná priamo pod sinterovanú dosku vytvára plne hladký,
-                súvislý povrch bez viditeľných varných zón. Kuchynský ostrovček sa premení na
-                elegantnú pracovnú plochu, kde varíte priamo na kameni.
-              </p>
-              <ul className="space-y-4 mb-8">
-                {[
-                  'Indukčný modul pod dosku s hrúbkou presne 12 mm',
-                  'Žiadne viditeľné ovládacie prvky na povrchu',
-                  'Ovládanie cez dotykový panel alebo mobilnú aplikáciu',
-                  'Plná integrácia s dizajnom kuchyne',
-                  'Jednoduché čistenie — celý povrch je hladký',
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <Check size={18} className="text-brand-gold mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700 font-light">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="text-sm text-amber-700 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mb-8">
-                <strong>Dôležité:</strong> Neviditeľná varná doska funguje výhradne s platňami hrúbky 12 mm. Platne s hrúbkou 20 mm sú príliš hrubé na prenos elektromagnetického poľa.
-              </p>
-              <div className="flex flex-wrap items-center gap-4">
-                <Link
-                  to="/kontakt"
-                  className="inline-flex items-center gap-2 bg-brand-dark text-white px-8 py-4 text-sm font-semibold tracking-wider uppercase hover:bg-brand-gold hover:text-brand-dark transition-all"
-                >
-                  Konzultácia zdarma
-                  <ArrowRight size={16} />
-                </Link>
-                <Link
-                  to="/blog/neviditelna-varna-doska-v-sinterovanom-kamene"
-                  className="inline-flex items-center gap-2 text-brand-gold hover:text-brand-dark text-sm font-semibold transition-colors"
-                >
-                  Kompletný sprievodca
-                  <ArrowRight size={14} />
-                </Link>
-              </div>
-            </div>
-            <div className="bg-white p-4 rounded-3xl">
-              <img
-                src="/images/blog/article-22/hero.webp"
-                alt="Neviditeľná indukčná varná doska zabudovaná v sinterovanom kameni"
-                width={800}
-                height={600}
-                className="w-full aspect-[4/3] object-cover rounded-2xl"
-                loading="lazy"
-              />
+      <Section tone="chalk">
+        <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-[clamp(48px,6vw,104px)]">
+          <div className="grid justify-items-start gap-6">
+            <Eyebrow>Inovatívne riešenie</Eyebrow>
+            <h2 className="text-os-h2">Neviditeľná varná doska</h2>
+            <p className="max-w-[54ch] font-light text-brand-muted">
+              Indukčná technológia zabudovaná priamo pod sinterovanú dosku vytvára plne hladký, súvislý povrch bez viditeľných
+              varných zón. Kuchynský ostrovček sa premení na elegantnú pracovnú plochu, kde varíte priamo na kameni.
+            </p>
+            <ul className="grid w-full max-w-[520px] border-t border-brand-line">
+              {HOB_POINTS.map((item) => (
+                <li key={item} className="border-b border-brand-line py-3 font-light">
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="max-w-[54ch] border-l-2 border-brand-dark bg-brand-sand px-4 py-3 text-[0.92rem] font-normal">
+              <strong className="font-semibold">Dôležité:</strong> Neviditeľná varná doska funguje výhradne s platňami hrúbky
+              12 mm. Platne s hrúbkou 20 mm sú príliš hrubé na prenos elektromagnetického poľa.
+            </p>
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+              <ActionButton variant="dark" to="/kontakt" arrow>
+                Konzultácia zadarmo
+              </ActionButton>
+              <TextLink to="/blog/neviditelna-varna-doska-v-sinterovanom-kamene">Kompletný sprievodca</TextLink>
             </div>
           </div>
-        </div>
-      </section>
+          <HobSectionDrawing />
+        </Container>
+      </Section>
 
       {/* ─── POROVNANIE MATERIÁLOV ─── */}
-      <section className="py-24 md:py-32">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
-              Porovnanie
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-sans font-bold mb-6">
-              Sinterovaný kameň vs. ostatné materiály
-            </h2>
-            <p className="text-gray-500 text-lg font-light max-w-2xl mx-auto">
-              Objektívne porovnanie kľúčových vlastností pre informované rozhodnutie.
-            </p>
-          </div>
-
-          <div className="overflow-x-auto -mx-6 px-6">
-            <table className="w-full min-w-[640px] text-sm">
+      <Section tone="sand">
+        <Container>
+          <SectionHeader
+            eyebrow="Porovnanie"
+            title="Sinterovaný kameň vs. ostatné materiály"
+            lead="Objektívne porovnanie kľúčových vlastností pre informované rozhodnutie."
+          />
+          <div className={`${below} -mx-[var(--os-edge)] overflow-x-auto px-[var(--os-edge)] sm:mx-0 sm:px-0`}>
+            <table className="w-full min-w-[640px] border-collapse text-[0.95rem]">
               <thead>
-                <tr className="border-b-2 border-brand-dark">
-                  <th className="text-left py-4 pr-4 font-bold text-brand-dark">Vlastnosť</th>
-                  <th className="text-center py-4 px-3 font-bold text-brand-gold bg-brand-gold/5">Sinterovaný kameň</th>
-                  <th className="text-center py-4 px-3 font-semibold text-gray-600">Žula</th>
-                  <th className="text-center py-4 px-3 font-semibold text-gray-600">Quartz</th>
-                  <th className="text-center py-4 px-3 font-semibold text-gray-600">Mramor</th>
+                <tr className="border-b border-brand-dark">
+                  <th className={th}>Vlastnosť</th>
+                  {COMPARISON_KEYS.map((key, i) => (
+                    <th key={key} className={`${th} ${i === 0 ? 'bg-brand-light px-4 text-brand-dark' : 'pl-4'}`}>
+                      {VYHODY_COMPARISON_COLUMNS[key]}
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody>
-                {COMPARISON_DATA.map((row, i) => (
-                  <tr key={i} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
-                    <td className="py-4 pr-4 font-medium text-brand-dark">{row.property}</td>
-                    <td className="py-4 px-3 text-center font-medium text-brand-dark bg-brand-gold/5">{row.sintered}</td>
-                    <td className="py-4 px-3 text-center text-gray-600 font-light">{row.granite}</td>
-                    <td className="py-4 px-3 text-center text-gray-600 font-light">{row.quartz}</td>
-                    <td className="py-4 px-3 text-center text-gray-600 font-light">{row.marble}</td>
+                {COMPARISON_DATA.map((row) => (
+                  <tr key={row.property} className="border-b border-brand-line">
+                    <td className={`${td} font-medium`}>{row.property}</td>
+                    {COMPARISON_KEYS.map((key, i) => (
+                      <td key={key} className={`${td} ${i === 0 ? 'bg-brand-light px-4 font-semibold' : 'pl-4 font-light text-brand-muted'}`}>
+                        {row[key]}
+                      </td>
+                    ))}
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-        </div>
 
           {/* Kedy zvoliť ktorý materiál */}
-          <div className="max-w-4xl mx-auto mt-16">
-            <h3 className="text-2xl md:text-3xl font-sans font-bold mb-8 text-center">
-              Kedy zvoliť ktorý materiál
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {VYHODY_VERDICTS.map((v) => (
-                <div key={v.material} className="p-6 bg-[#F9F9F7] rounded-3xl">
-                  <h4 className="font-bold text-brand-dark mb-2">{v.material}</h4>
-                  <p className="text-gray-600 font-light leading-relaxed">{v.verdict}</p>
-                </div>
-              ))}
-            </div>
-            <p className="text-center mt-8 text-sm text-gray-500">
-              {VYHODY_RELATED_LINKS.map((l, i) => (
-                <React.Fragment key={l.href}>
-                  {i > 0 && ' · '}
-                  <Link to={l.href} className="text-brand-gold hover:text-brand-dark transition-colors">
-                    {l.label}
-                  </Link>
-                </React.Fragment>
-              ))}
-            </p>
+          <h3 className={`${below} text-os-h3`}>Kedy zvoliť ktorý materiál</h3>
+          <div className="mt-6 grid gap-x-[clamp(24px,3vw,48px)] gap-y-8 md:grid-cols-2">
+            {VYHODY_VERDICTS.map((v) => (
+              <div key={v.material} className="grid content-start gap-2 border-t border-brand-line pt-5">
+                <h4 className="font-semibold">{v.material}</h4>
+                <p className="max-w-[60ch] font-light text-brand-muted">{v.verdict}</p>
+              </div>
+            ))}
           </div>
-      </section>
+          <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
+            {VYHODY_RELATED_LINKS.map((l) => (
+              <TextLink key={l.href} to={l.href}>
+                {l.label}
+              </TextLink>
+            ))}
+          </div>
+        </Container>
+      </Section>
 
       {/* ─── BLOG REFERENCES ─── */}
-      <section className="py-24 md:py-32">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
-              Čítajte na blogu
-            </span>
-            <h2 className="text-3xl md:text-4xl font-sans font-bold">
-              Dozviete sa viac
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Link to="/blog/neviditelna-varna-doska-v-sinterovanom-kamene" className="group">
-              <div className="bg-[#F9F9F7] rounded-3xl overflow-hidden">
-                <img
-                  src="/images/blog/article-22/hero-original.webp"
-                  alt="Neviditeľná varná doska v sinterovanom kameni"
-                  width={600}
-                  height={400}
-                  className="w-full aspect-[3/2] object-cover group-hover:scale-105 transition-transform duration-300"
-                  loading="lazy"
-                />
-                <div className="p-6">
-                  <h3 className="font-bold text-brand-dark group-hover:text-brand-gold transition-colors mb-2">
-                    Neviditeľná varná doska v sinterovanom kameni
-                  </h3>
-                  <p className="text-sm text-gray-500 font-light">
-                    Kompletný sprievodca — ako funguje, koľko stojí, aký kameň vybrať.
-                  </p>
-                </div>
-              </div>
-            </Link>
-            <Link to="/blog/kuchynsky-ostrovcek-zo-sinterovaneho-kamena" className="group">
-              <div className="bg-[#F9F9F7] rounded-3xl overflow-hidden">
-                <img
-                  src="/images/blog/article-23/hero.webp"
-                  alt="Kuchynský ostrovček zo sinterovaného kameňa"
-                  width={600}
-                  height={400}
-                  className="w-full aspect-[3/2] object-cover group-hover:scale-105 transition-transform duration-300"
-                  loading="lazy"
-                />
-                <div className="p-6">
-                  <h3 className="font-bold text-brand-dark group-hover:text-brand-gold transition-colors mb-2">
-                    Kuchynský ostrovček zo sinterovaného kameňa
-                  </h3>
-                  <p className="text-sm text-gray-500 font-light">
-                    Dizajn, materiál, rozmery — všetko, čo potrebujete vedieť.
-                  </p>
-                </div>
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <Section tone="chalk">
+        <Container>
+          <SectionHeader eyebrow="Čítajte na blogu" title="Dozviete sa viac" />
+          <ul className={`${below} grid gap-5 md:grid-cols-2`}>
+            {BLOG_CARDS.map((c) => (
+              <li key={c.to}>
+                <Link to={c.to} className="group grid gap-4 no-underline">
+                  <span className="block overflow-hidden rounded-[3px]">
+                    <img
+                      src={c.image}
+                      alt={c.alt}
+                      width={1376}
+                      height={768}
+                      loading="lazy"
+                      decoding="async"
+                      className="aspect-[3/2] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                  </span>
+                  <h3 className="text-[1.2rem] font-semibold leading-snug">{c.title}</h3>
+                  <p className="font-light text-brand-muted">{c.text}</p>
+                  <span className="inline-flex items-center gap-2 text-[0.92rem] font-medium">
+                    Čítať článok
+                    <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </Section>
 
       {/* ─── FAQ ─── */}
-      <section className="py-24 md:py-32 bg-[#F9F9F7]">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-16">
-              <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
-                Časté otázky
-              </span>
-              <h2 className="text-3xl md:text-4xl font-sans font-bold">
-                Odpovede na vaše otázky
-              </h2>
-            </div>
-            <div className="bg-white rounded-3xl p-6 md:p-10">
-              {FAQ_ITEMS.map((item, i) => (
-                <FAQItem
-                  key={i}
-                  question={item.question}
-                  answer={item.answer}
-                  isOpen={openFAQ === i}
-                  onClick={() => setOpenFAQ(openFAQ === i ? null : i)}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <Section tone="sand">
+        <Container className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-[clamp(48px,6vw,104px)]">
+          <SectionHeader eyebrow="Časté otázky" title="Odpovede na vaše otázky" />
+          <FaqList items={FAQ_ITEMS} asHeadings />
+        </Container>
+      </Section>
 
       {/* ─── CTA ─── */}
-      <section className="py-24 md:py-32 bg-brand-dark text-white">
-        <div className="container mx-auto px-6 text-center">
-          <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
-            Začnite svoj projekt
-          </span>
-          <h2 className="text-3xl md:text-4xl font-sans font-bold mb-6 max-w-2xl mx-auto">
-            Poradíme vám s výberom materiálu
-          </h2>
-          <p className="text-gray-400 text-lg font-light max-w-xl mx-auto mb-10">
-            Objednajte si bezplatnú vzorku alebo nás kontaktujte pre cenovú ponuku na mieru.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to="/vzorky"
-              className="inline-flex items-center justify-center gap-2 bg-white text-brand-dark px-8 py-4 text-sm font-semibold tracking-wider uppercase hover:bg-brand-gold transition-colors"
-            >
-              Objednať vzorku
-              <ArrowRight size={16} />
-            </Link>
-            <Link
-              to="/kontakt"
-              className="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-8 py-4 text-sm font-semibold tracking-wider uppercase hover:border-brand-gold hover:text-brand-gold transition-colors"
-            >
-              Kontaktovať nás
-            </Link>
-            <Link
-              to="/kategoria/sintered-stone"
-              className="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-8 py-4 text-sm font-semibold tracking-wider uppercase hover:border-brand-gold hover:text-brand-gold transition-colors"
-            >
-              Katalóg dekórov
-            </Link>
+      <Section tone="chalk">
+        <Container className="grid items-end gap-8 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
+          <SectionHeader
+            eyebrow="Začnite svoj projekt"
+            title="Poradíme vám s výberom materiálu"
+            lead="Objednajte si bezplatnú vzorku alebo nás kontaktujte pre cenovú ponuku na mieru."
+          />
+          <div className="grid gap-5 lg:justify-items-end">
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-4 lg:justify-end">
+              <ActionButton variant="dark" to="/vzorky" arrow>
+                Objednať vzorku
+              </ActionButton>
+              <TextLink to="/kontakt">Kontaktovať nás</TextLink>
+              <TextLink to="/kategoria/sintered-stone">Katalóg dekórov</TextLink>
+            </div>
+            <p className="flex flex-wrap gap-x-6 gap-y-1 text-[0.92rem] font-normal text-brand-muted">
+              <a href="tel:+421917588738" className="tabular-nums hover:text-brand-dark">
+                +421 917 588 738
+              </a>
+              <a href="mailto:info@orostone.sk" className="hover:text-brand-dark">
+                info@orostone.sk
+              </a>
+            </p>
           </div>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mt-8 text-sm">
-            <a href="tel:+421917588738" className="flex items-center justify-center gap-2 text-gray-400 hover:text-brand-gold transition-colors">
-              <Phone size={16} />
-              +421 917 588 738
-            </a>
-            <a href="mailto:info@orostone.sk" className="flex items-center justify-center gap-2 text-gray-400 hover:text-brand-gold transition-colors">
-              <Mail size={16} />
-              info@orostone.sk
-            </a>
-          </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
+
+      <GoldBand od="vyhody" />
     </div>
   );
 };

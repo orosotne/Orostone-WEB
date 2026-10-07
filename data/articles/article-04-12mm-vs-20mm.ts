@@ -315,7 +315,7 @@ export const ARTICLE_04: BlogArticle = {
 
 <div class="article-cta">
   <p>Not sure whether 12mm is the right choice for your project? Consult with us — we'll assess your project free of charge and without obligation.</p>
-  <a href="/contact" class="cta-btn">Free Consultation →</a>
+  <a href="/kontakt" class="cta-btn">Free Consultation →</a>
 </div>
 
 <h2 id="overhang-rules-en">Overhang Rules: Maximum Without a Bracket</h2>
@@ -367,7 +367,7 @@ export const ARTICLE_04: BlogArticle = {
 
 <div class="article-tip tip-btn">
   <strong>Final tip:</strong> Before any decision about thickness, discuss substrate structure and cutout placement with the installation team. This is a decision that should be made based on the project — not based on marketing.
-  <a href="/contact" class="tip-btn">Free Consultation →</a>
+  <a href="/kontakt" class="tip-btn">Free Consultation →</a>
 </div>
 `,
     faqs: [

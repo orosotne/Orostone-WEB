@@ -34,7 +34,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <h2 id="krok-1-konzultacia-a-vyber-materialu">Krok 1 — Čo sa deje na konzultácii?</h2>
 
-<p>Všetko začína osobnou konzultáciou v našom showroome v Bratislave. Nie je to predajný telefonát ani e-mail s katalógom — je to stretnutie, kde vidíš a dotýkaš sa reálnych materiálov v plnej veľkosti.</p>
+<p>Všetko začína osobnou konzultáciou v našom showroome v Bošanoch. Nie je to predajný telefonát ani e-mail s katalógom — je to stretnutie, kde vidíš a dotýkaš sa reálnych materiálov v plnej veľkosti.</p>
 
 <p><strong>Čo sa deje počas konzultácie:</strong></p>
 <ul>
@@ -249,7 +249,7 @@ export const ARTICLE_13: BlogArticle = {
       },
       {
         question: 'Koľko stojí konzultácia v showroome?',
-        answer: 'Konzultácia v našom showroome v Bratislave je úplne bezplatná a nezáväzná. Trvá 1–2 hodiny a zahŕňa prehliadku materiálov, diskusiu o vašom projekte a predbežnú kalkuláciu.'
+        answer: 'Konzultácia v našom showroome v Bošanoch je úplne bezplatná a nezáväzná. Trvá 1–2 hodiny a zahŕňa prehliadku materiálov, diskusiu o vašom projekte a predbežnú kalkuláciu.'
       },
       {
         question: 'Prečo potrebuješ hotové skrinky pred zameraním?',
@@ -313,7 +313,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <h2 id="step-1-consultation-and-material-selection">Step 1 — What happens at the consultation?</h2>
 
-<p>Everything starts with a personal consultation in our Bratislava showroom. This isn't a sales call or an email with a catalogue — it's a meeting where you see and touch real materials at full scale.</p>
+<p>Everything starts with a personal consultation in our Bošany showroom. This isn't a sales call or an email with a catalogue — it's a meeting where you see and touch real materials at full scale.</p>
 
 <p><strong>What happens during the consultation:</strong></p>
 <ul>
@@ -528,7 +528,7 @@ export const ARTICLE_13: BlogArticle = {
       },
       {
         question: 'How much does the showroom consultation cost?',
-        answer: 'The consultation at our Bratislava showroom is completely free and without obligation. It lasts 1–2 hours and includes a materials tour, discussion of your project, and a preliminary estimate.'
+        answer: 'The consultation at our Bošany showroom is completely free and without obligation. It lasts 1–2 hours and includes a materials tour, discussion of your project, and a preliminary estimate.'
       },
       {
         question: 'Why do you need finished cabinets before templating?',

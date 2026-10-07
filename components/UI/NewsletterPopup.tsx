@@ -100,7 +100,7 @@ export const NewsletterPopup: React.FC = () => {
                     <CheckCircle className="w-12 h-12 text-brand-gold mx-auto mb-3" strokeWidth={1.5} />
                     <p className="font-bold text-brand-dark text-lg mb-1">Výborne!</p>
                     <p className="text-gray-500 text-sm leading-relaxed">
-                      Skontrolujte email — váš kód <strong className="text-brand-dark">WELCOME5</strong> je na ceste.
+                      Skontrolujte e-mail — váš kód <strong className="text-brand-dark">WELCOME5</strong> je na ceste.
                     </p>
                     <button
                       onClick={dismiss}

@@ -219,7 +219,7 @@ export const ARTICLE_10: BlogArticle = {
 <p>Pre luxusnú bratislavskú kuchyňu s denným používaním — rodina, varenie, hostenie — odporúčame <strong class="gold">matný alebo leather finish</strong>. Nie preto, že by lesklý nebol krásny. Je. Ale krása, ktorá vyžaduje 5-krát denne údržbu, nie je luxus — je to záväzok. <strong class="gold">Skutočný luxus je povrch, ktorý vyzerá bezchybne</strong>, keď sa na neho pozriete kedykoľvek počas dňa, bez toho, aby ste museli robiť čokoľvek navyše.</p>
 
 <div class="article-tip">
-  <p><strong>Navštívte náš showroom v Bratislave</strong></p>
+  <p><strong>Navštívte náš showroom v Bošanoch</strong></p>
   <p>Porovnajte všetky povrchové úpravy naživo. Prineste si teplý hrniec, pohár vody a lepkavé prsty — presne tak vyzerá reálny život. A my vám ukážeme, ako si každý povrch s tým poradí.</p>
   <a href="/kontakt" class="tip-btn">Dohodnúť návštevu →</a>
 </div>
@@ -480,7 +480,7 @@ export const ARTICLE_10: BlogArticle = {
 <p>For a luxury Bratislava kitchen with daily use — family, cooking, entertaining — we recommend <strong class="gold">matte or leather finish</strong>. Not because polished isn't beautiful. It is. But beauty that requires 5 times daily maintenance isn't luxury — it's an obligation. <strong class="gold">True luxury is a surface that looks flawless</strong> whenever you glance at it throughout the day, without having to do anything extra.</p>
 
 <div class="article-tip">
-  <p><strong>Visit our showroom in Bratislava</strong></p>
+  <p><strong>Visit our showroom in Bošany</strong></p>
   <p>Compare all surface finishes in person. Bring a hot pot, a glass of water, and sticky fingers — because that's exactly what real life looks like. And we'll show you how each finish handles it.</p>
   <a href="/kontakt" class="tip-btn">Schedule a visit →</a>
 </div>

@@ -11,7 +11,7 @@ Premium e-commerce website for Orostone (sintered stone / veľkoformátové plat
 
 - **Framework:** React 19 + TypeScript + Vite 6
 - **Styling:** Tailwind CSS 3 (custom brand colors/theme)
-- **Animations:** Framer Motion, GSAP, Lenis (smooth scroll)
+- **Animations:** Framer Motion (LazyMotion, `m.*`); GSAP and Lenis are no longer imported anywhere
 - **E-commerce:** Shopify Storefront API via Hydrogen React
 - **Backend/Auth:** Supabase (PostgreSQL + auth)
 - **AI:** Google Gemini API (visualizer feature)
@@ -58,37 +58,13 @@ See `.env.example`. Required:
 - `VITE_PUBLIC_SITE_URL`
 - `GEMINI_API_KEY`
 
-## Styling Conventions (from STYLE_GUIDE.md)
+## Styling Conventions (see STYLE_GUIDE.md)
 
-### Brand Colors
-| Token | Hex | Use |
-|-------|-----|-----|
-| `text-brand-gold` | #ECD488 | Accents, labels, CTAs |
-| `text-brand-dark` | #1A1A1A | Primary text on light |
-| `text-brand-light` | #F9F9F7 | Backgrounds |
+The site uses a new design system (October 2026). New and rewritten sections use the building blocks in `components/Design/` (`Container`, `Section`, `SectionHeader`, `Eyebrow`, `TextLink`, `ActionButton`, `PageHero`, `GoldBand`, `FeatureGrid`, `StepList`, `FaqList`, `LegalLayout` …; full list in STYLE_GUIDE.md) and these tokens: colours `brand-light`, `brand-sand`, `brand-dark`, `brand-muted`, `brand-line`, `brand-gold` (accent only); type `text-os-h1`, `text-os-h2`, `text-os-h3`, `text-os-lead`, `text-os-eyebrow`. The product detail (`ShopProductDetail` + `components/ProductDetail/`) moved to the new design in October 2026 (proposal A, approved by the owner); its sections still use the legacy `container mx-auto px-6` instead of `<Container>` and a few pixel font sizes (`text-[10px]`, `text-[11px]`) — move them to the design system together, after the owner approves the wider layout. Reference sheet while developing: `/_dizajn`.
 
-### Typography
-- Font: **Montserrat** (`font-sans`). Do NOT use `font-serif` (deprecated alias).
-- Headings: `font-bold`, Body: `font-light`
-- Responsive sizing always: `text-5xl md:text-6xl lg:text-7xl`
-
-### Standard Patterns
-```tsx
-// Section header
-<div className="text-center mb-20">
-  <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">Label</span>
-  <h2 className="text-3xl md:text-4xl lg:text-5xl font-sans font-bold mb-6">Heading</h2>
-  <p className="text-gray-500 text-lg font-light max-w-2xl mx-auto">Description</p>
-</div>
-
-// Section padding
-<section className="py-32">
-  <div className="container mx-auto px-6">...</div>
-</section>
-
-// Card
-<div className="p-8 bg-[#F9F9F7] rounded-3xl">...</div>
-```
+- Font: **Montserrat** only (`font-sans`); headings weight 600, body 300.
+- Gold #ECD488 only as an accent (gold CTA in the header, the gold band and the mobile bar), never as text on a light background.
+- Restyling must keep URLs, meta, JSON-LD, H1/H2, `id` anchors, tables, internal links and every tracking call (`trackMetaEvent`, `trackGA4*`) intact; the seo-diff check blocks removals.
 
 ## State Management
 

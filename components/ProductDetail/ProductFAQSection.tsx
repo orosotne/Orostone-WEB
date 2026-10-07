@@ -26,7 +26,7 @@ export const ProductFAQSection: React.FC<ProductFAQSectionProps> = ({ product })
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-gray-400 mb-8"
+            className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-brand-muted mb-8"
           >
             Časté otázky
           </m.h2>
@@ -50,7 +50,7 @@ export const ProductFAQSection: React.FC<ProductFAQSectionProps> = ({ product })
                   <ChevronDown
                     size={18}
                     className={cn(
-                      "flex-shrink-0 text-gray-400 transition-transform duration-200",
+                      "flex-shrink-0 text-brand-muted transition-transform duration-200",
                       openIndex === index && "rotate-180"
                     )}
                   />
@@ -64,7 +64,7 @@ export const ProductFAQSection: React.FC<ProductFAQSectionProps> = ({ product })
                       transition={{ duration: 0.2 }}
                       className="overflow-hidden"
                     >
-                      <p className="pb-5 text-gray-600 font-light leading-relaxed">
+                      <p className="pb-5 text-brand-muted font-light leading-relaxed">
                         {faq.answer}
                       </p>
                     </m.div>

@@ -1,18 +1,8 @@
 import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
-import { m, AnimatePresence } from 'framer-motion';
 import {
   ArrowLeft,
-  ArrowRight,
   ArrowUp,
-  Clock,
-  Calendar,
-  ChevronDown,
-  Globe,
-  Share2,
   Linkedin,
   Facebook,
   Twitter,
@@ -23,8 +13,9 @@ import type { BlogLanguage } from '../data/blogTypes';
 import { BLOG_CATEGORY_LABELS } from '../data/blogTypes';
 import { BLOG_ARTICLES } from '../data/blogArticles';
 import { SEOHead } from '../components/UI/SEOHead';
-
-gsap.registerPlugin(ScrollTrigger);
+import { ActionButton, Container, Eyebrow, FaqList, GoldBand, Section, SectionHeader, TextLink } from '../components/Design';
+import { BlogCard } from '../components/Blog/BlogCard';
+import { keepUnits } from '../lib/utils';
 
 // ===========================================
 // HELPERS
@@ -54,21 +45,119 @@ const formatDate = (dateStr: string, lang: BlogLanguage) => {
   });
 };
 
+/**
+ * Several articles open their content with the hero photo again. The head already shows it, so that first
+ * figure is taken out of the body and its alt text and caption move to the head image (no text is lost).
+ */
+const FIRST_FIGURE = /<figure class="article-figure">\s*<img([^>]*)>([\s\S]*?)<\/figure>/;
+const splitHeroFigure = (html: string, heroImage: string) => {
+  const m = FIRST_FIGURE.exec(html);
+  const src = m?.[1].match(/src="([^"]+)"/)?.[1];
+  if (!m || src !== heroImage) return { html, alt: undefined, caption: undefined };
+  return {
+    html: html.slice(0, m.index) + html.slice(m.index + m[0].length),
+    alt: m[1].match(/alt="([^"]*)"/)?.[1],
+    caption: m[2].match(/<figcaption>([\s\S]*?)<\/figcaption>/)?.[1].replace(/<[^>]*>/g, '').trim(),
+  };
+};
+
+/** Header grid shared by the article head and body, so the H1 and the text start on the same line from 1280 px. */
+const ARTICLE_GRID = 'xl:grid xl:grid-cols-[220px_minmax(0,760px)] xl:justify-center xl:gap-x-20';
+
+const label = 'text-os-eyebrow uppercase text-brand-muted';
+
+/**
+ * Typography of the article HTML (data/articles): body text, headings, links, tables and the
+ * content blocks the articles use (.article-tldr, -highlight, -tip, -quote, -figure, -case-study, -cta).
+ * Gold stays an accent: the .gold emphasis is graphite text on a gold marker, never gold text on white.
+ */
+const PROSE = `
+  prose prose-lg max-w-none
+  prose-headings:font-sans prose-headings:font-semibold prose-headings:text-brand-dark prose-headings:tracking-[-0.01em]
+  prose-h2:text-[clamp(1.45rem,2vw,1.85rem)] prose-h2:mt-16 prose-h2:mb-6 prose-h2:leading-tight prose-h2:scroll-mt-28
+  prose-h3:text-[1.22rem] prose-h3:mt-10 prose-h3:mb-4 prose-h3:leading-snug prose-h3:scroll-mt-28
+  prose-p:text-brand-dark/85 prose-p:font-light prose-p:leading-[1.8] prose-p:mb-7 prose-p:text-[1.06rem]
+  prose-a:font-medium prose-a:text-brand-dark prose-a:underline prose-a:decoration-brand-gold prose-a:decoration-2 prose-a:underline-offset-4 hover:prose-a:decoration-brand-dark
+  prose-strong:text-brand-dark prose-strong:font-semibold
+  [&_.gold]:font-semibold [&_.gold]:text-brand-dark [&_.gold]:[background:linear-gradient(transparent_62%,rgba(236,212,136,0.65)_0)]
+  prose-ul:my-6 prose-ul:space-y-2 prose-ol:my-6 prose-li:text-brand-dark/85 prose-li:font-light prose-li:leading-relaxed prose-li:text-[1.04rem] prose-li:marker:text-brand-muted
+  prose-img:rounded-[3px] prose-img:my-12 prose-img:aspect-[16/10] prose-img:object-cover prose-img:bg-brand-sand
+  prose-blockquote:border-l-2 prose-blockquote:border-brand-dark prose-blockquote:text-brand-dark/80 prose-blockquote:font-light prose-blockquote:italic prose-blockquote:my-12
+  prose-table:text-[0.95rem] prose-thead:border-b prose-thead:border-brand-dark prose-th:py-3 prose-th:px-3 prose-th:font-semibold prose-th:text-left
+  prose-tr:border-brand-line prose-td:py-3 prose-td:px-3 prose-td:font-light
+
+  [&_.article-tldr-label]:mb-3 [&_.article-tldr-label]:block [&_.article-tldr-label]:text-[0.74rem] [&_.article-tldr-label]:font-bold
+  [&_.article-tldr-label]:uppercase [&_.article-tldr-label]:tracking-[0.2em] [&_.article-tldr-label]:text-brand-muted
+
+  [&_.article-tldr]:my-0 [&_.article-tldr]:mb-12 [&_.article-tldr]:list-none [&_.article-tldr]:rounded-[3px] [&_.article-tldr]:bg-brand-sand
+  [&_.article-tldr]:px-7 [&_.article-tldr]:py-6 [&_.article-tldr]:pl-7
+  [&_.article-tldr>li]:mb-2 [&_.article-tldr>li:last-child]:mb-0 [&_.article-tldr>li]:pl-0 [&_.article-tldr>li]:text-base
+  [&_.article-tldr>li]:font-medium [&_.article-tldr>li]:text-brand-dark
+  [&_.article-tldr>li]:before:mr-3 [&_.article-tldr>li]:before:text-brand-gold [&_.article-tldr>li]:before:content-['◆']
+
+  [&_.article-highlight]:not-prose [&_.article-highlight]:my-10 [&_.article-highlight]:rounded-r-[3px] [&_.article-highlight]:border-l-2
+  [&_.article-highlight]:border-brand-dark [&_.article-highlight]:bg-brand-sand [&_.article-highlight]:px-6 [&_.article-highlight]:py-5
+  [&_.article-highlight_p]:mb-3 [&_.article-highlight_p:last-child]:mb-0 [&_.article-highlight_p]:text-[1.04rem]
+  [&_.article-highlight_p]:font-medium [&_.article-highlight_p]:leading-relaxed [&_.article-highlight_p]:text-brand-dark
+  [&_.article-highlight_strong]:font-semibold [&_.article-highlight_strong]:text-brand-dark
+  [&_.article-highlight_ul]:mb-0 [&_.article-highlight_ul]:mt-3 [&_.article-highlight_ul]:list-disc [&_.article-highlight_ul]:space-y-1.5 [&_.article-highlight_ul]:pl-5
+  [&_.article-highlight_li]:text-[1rem] [&_.article-highlight_li]:font-medium [&_.article-highlight_li]:leading-relaxed [&_.article-highlight_li]:text-brand-dark
+
+  [&_.article-tip]:not-prose [&_.article-tip]:my-12 [&_.article-tip]:rounded-[3px] [&_.article-tip]:bg-brand-dark [&_.article-tip]:px-7
+  [&_.article-tip]:py-7 [&_.article-tip]:text-brand-light
+  [&_.article-tip_p]:mb-3 [&_.article-tip_p:last-of-type]:mb-0 [&_.article-tip_p]:text-[0.98rem] [&_.article-tip_p]:font-light
+  [&_.article-tip_p]:leading-relaxed [&_.article-tip_p]:text-brand-light/80
+  [&_.article-tip_strong]:font-semibold [&_.article-tip_strong]:text-brand-gold
+  [&_.article-tip_ul]:mb-0 [&_.article-tip_ul]:mt-3 [&_.article-tip_ul]:space-y-1
+  [&_.article-tip_li]:text-[0.98rem] [&_.article-tip_li]:font-light [&_.article-tip_li]:text-brand-light/80
+  [&_.article-tip_a]:text-brand-light [&_.article-tip_a]:underline [&_.article-tip_a]:decoration-brand-gold [&_.article-tip_a]:underline-offset-4
+  [&_.article-tip_a.tip-btn]:mt-4 [&_.article-tip_a.tip-btn]:inline-flex [&_.article-tip_a.tip-btn]:min-h-[48px] [&_.article-tip_a.tip-btn]:items-center
+  [&_.article-tip_a.tip-btn]:gap-2 [&_.article-tip_a.tip-btn]:rounded-[10px] [&_.article-tip_a.tip-btn]:bg-brand-light [&_.article-tip_a.tip-btn]:px-6
+  [&_.article-tip_a.tip-btn]:text-[0.78rem] [&_.article-tip_a.tip-btn]:font-bold [&_.article-tip_a.tip-btn]:uppercase [&_.article-tip_a.tip-btn]:tracking-[0.12em]
+  [&_.article-tip_a.tip-btn]:text-brand-dark [&_.article-tip_a.tip-btn]:no-underline [&_.article-tip_a.tip-btn]:transition-colors hover:[&_.article-tip_a.tip-btn]:bg-white
+
+  [&_.article-quote]:my-12 [&_.article-quote]:border-l-2 [&_.article-quote]:border-brand-dark [&_.article-quote]:bg-transparent [&_.article-quote]:py-2 [&_.article-quote]:pl-6
+  [&_.article-quote_p]:mb-0 [&_.article-quote_p]:text-[1.2rem] [&_.article-quote_p]:font-light [&_.article-quote_p]:italic
+  [&_.article-quote_p]:leading-relaxed [&_.article-quote_p]:text-brand-dark
+
+  [&_.article-figure]:not-prose [&_.article-figure]:my-12 [&_.article-figure]:lg:my-14
+  [&_.article-figure_img]:mb-3 [&_.article-figure_img]:aspect-[16/10] [&_.article-figure_img]:w-full [&_.article-figure_img]:rounded-[3px]
+  [&_.article-figure_img]:bg-brand-sand [&_.article-figure_img]:object-cover
+  [&_.article-figure_figcaption]:text-[0.84rem] [&_.article-figure_figcaption]:font-normal [&_.article-figure_figcaption]:text-brand-muted
+
+  [&_.article-case-study]:not-prose [&_.article-case-study]:my-12 [&_.article-case-study]:rounded-r-[3px] [&_.article-case-study]:border-l-2
+  [&_.article-case-study]:border-brand-dark [&_.article-case-study]:bg-brand-sand [&_.article-case-study]:px-7 [&_.article-case-study]:py-6
+  [&_.article-case-study_.case-study-label]:mb-3 [&_.article-case-study_.case-study-label]:block [&_.article-case-study_.case-study-label]:text-[0.74rem]
+  [&_.article-case-study_.case-study-label]:font-bold [&_.article-case-study_.case-study-label]:uppercase [&_.article-case-study_.case-study-label]:tracking-[0.2em]
+  [&_.article-case-study_.case-study-label]:text-brand-muted
+  [&_.article-case-study_h3]:mb-3 [&_.article-case-study_h3]:mt-0 [&_.article-case-study_h3]:text-[1.22rem] [&_.article-case-study_h3]:font-semibold
+  [&_.article-case-study_p]:mb-3 [&_.article-case-study_p:last-child]:mb-0 [&_.article-case-study_p]:text-[1.04rem] [&_.article-case-study_p]:font-light
+  [&_.article-case-study_p]:leading-relaxed [&_.article-case-study_p]:text-brand-dark/85
+  [&_.article-case-study_strong]:font-semibold [&_.article-case-study_strong]:text-brand-dark
+  [&_.article-case-study_ul]:mb-0 [&_.article-case-study_ul]:mt-2 [&_.article-case-study_ul]:space-y-1
+  [&_.article-case-study_li]:text-[0.98rem] [&_.article-case-study_li]:font-light [&_.article-case-study_li]:text-brand-dark/85
+
+  [&_.article-cta]:not-prose [&_.article-cta]:my-12 [&_.article-cta]:rounded-[3px] [&_.article-cta]:border [&_.article-cta]:border-brand-line
+  [&_.article-cta]:bg-brand-sand [&_.article-cta]:px-7 [&_.article-cta]:py-8
+  [&_.article-cta_p]:mb-4 [&_.article-cta_p:last-child]:mb-0 [&_.article-cta_p]:text-[1.1rem] [&_.article-cta_p]:font-medium
+  [&_.article-cta_p]:leading-relaxed [&_.article-cta_p]:text-brand-dark
+  [&_.article-cta_a.cta-btn]:inline-flex [&_.article-cta_a.cta-btn]:min-h-[52px] [&_.article-cta_a.cta-btn]:items-center [&_.article-cta_a.cta-btn]:gap-2
+  [&_.article-cta_a.cta-btn]:rounded-[10px] [&_.article-cta_a.cta-btn]:bg-brand-dark [&_.article-cta_a.cta-btn]:px-7 [&_.article-cta_a.cta-btn]:text-[0.78rem]
+  [&_.article-cta_a.cta-btn]:font-bold [&_.article-cta_a.cta-btn]:uppercase [&_.article-cta_a.cta-btn]:tracking-[0.12em] [&_.article-cta_a.cta-btn]:text-brand-light
+  [&_.article-cta_a.cta-btn]:no-underline [&_.article-cta_a.cta-btn]:transition-colors hover:[&_.article-cta_a.cta-btn]:bg-[#333331]
+`;
+
 // ===========================================
 // COMPONENT
 // ===========================================
 
 export const BlogArticle: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
-  const containerRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
-  const articleBodyRef = useRef<HTMLDivElement>(null);
   const showBackToTopRef = useRef(false);
   const [lang, setLang] = useState<BlogLanguage>('sk');
   const [activeHeading, setActiveHeading] = useState<string>('');
-  const [directAnswerOpen, setDirectAnswerOpen] = useState(true);
   const [showBackToTop, setShowBackToTop] = useState(false);
-  const [mobileTocOpen, setMobileTocOpen] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
 
   // Find article
@@ -94,12 +183,14 @@ export const BlogArticle: React.FC = () => {
   // Inject loading="lazy" + decoding="async" into inline <img> tags BEFORE first paint.
   // Previously this was done post-mount in a useEffect, which forced an extra layout
   // pass and downloaded above-the-fold images eagerly on mobile (LCP regression).
-  const articleHtml = useMemo(() => {
-    if (!article) return '';
-    return article[lang].content.replace(
-      /<img\s+(?![^>]*\bloading=)/gi,
-      '<img loading="lazy" decoding="async" ',
-    );
+  const { articleHtml, heroAlt, heroCaption } = useMemo(() => {
+    if (!article) return { articleHtml: '', heroAlt: undefined, heroCaption: undefined };
+    const { html, alt, caption } = splitHeroFigure(article[lang].content, article.heroImage);
+    return {
+      articleHtml: html.replace(/<img\s+(?![^>]*\bloading=)/gi, '<img loading="lazy" decoding="async" '),
+      heroAlt: alt,
+      heroCaption: caption,
+    };
   }, [article, lang]);
 
   // Labels
@@ -109,7 +200,6 @@ export const BlogArticle: React.FC = () => {
     directAnswer: lang === 'sk' ? 'Rýchla odpoveď' : 'Quick answer',
     toc: lang === 'sk' ? 'Obsah článku' : 'Table of contents',
     related: lang === 'sk' ? 'Súvisiace články' : 'Related articles',
-    readMore: lang === 'sk' ? 'Čítať viac' : 'Read more',
     notFoundTitle: lang === 'sk' ? 'Článok nebol nájdený' : 'Article not found',
     notFoundText:
       lang === 'sk'
@@ -163,55 +253,6 @@ export const BlogArticle: React.FC = () => {
   const shareTitle = article ? article[lang].title : '';
 
   // ===========================================
-  // GSAP ANIMATIONS
-  // ===========================================
-
-  useGSAP(
-    () => {
-      if (!containerRef.current || !article) return;
-
-      gsap.fromTo(
-        '.article-hero-content',
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', delay: 0.1 },
-      );
-
-      gsap.fromTo(
-        '.article-body',
-        { y: 20, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.article-body',
-            start: 'top 90%',
-            once: true,
-          },
-        },
-      );
-
-      gsap.fromTo(
-        '.related-section',
-        { y: 20, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: '.related-section',
-            start: 'top 90%',
-            once: true,
-          },
-        },
-      );
-    },
-    { scope: containerRef, dependencies: [article, lang] },
-  );
-
-  // ===========================================
   // INTERSECTION OBSERVER FOR TOC
   // ===========================================
 
@@ -237,8 +278,10 @@ export const BlogArticle: React.FC = () => {
     return () => observer.disconnect();
   }, [headings]);
 
-  // Article images get loading="lazy" + decoding="async" via the articleHtml useMemo
-  // regex above (applied before first paint, so no post-mount layout pass).
+  const goToHeading = (id: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   // ===========================================
   // 404 STATE
@@ -246,25 +289,21 @@ export const BlogArticle: React.FC = () => {
 
   if (!article) {
     return (
-      <div className="min-h-dvh bg-[#FAFAFA] flex items-center justify-center px-4">
+      <Section tone="chalk" className="min-h-[60dvh]">
         <SEOHead
           title="Článok nebol nájdený | OROSTONE Blog"
           description="Článok, ktorý hľadáte, neexistuje."
           noindex={true}
         />
-        <div className="text-center max-w-md">
-          <span className="text-6xl font-bold text-brand-gold/30 block mb-4">404</span>
-          <h1 className="text-2xl font-bold text-brand-dark mb-3">{labels.notFoundTitle}</h1>
-          <p className="text-gray-400 font-light mb-8">{labels.notFoundText}</p>
-          <Link
-            to="/blog"
-            className="inline-flex items-center gap-2 bg-brand-dark text-white px-6 py-3 rounded-full text-sm font-bold uppercase tracking-wider hover:bg-brand-gold hover:text-brand-dark transition-all duration-300"
-          >
-            <ArrowLeft size={16} />
+        <Container className="grid justify-items-start gap-5">
+          <Eyebrow>404</Eyebrow>
+          <h1 className="text-os-h1">{labels.notFoundTitle}</h1>
+          <p className="max-w-[54ch] text-os-lead font-light text-brand-muted">{labels.notFoundText}</p>
+          <ActionButton variant="dark" to="/blog">
             {labels.goBack}
-          </Link>
-        </div>
-      </div>
+          </ActionButton>
+        </Container>
+      </Section>
     );
   }
 
@@ -274,7 +313,7 @@ export const BlogArticle: React.FC = () => {
   const canonicalUrl = `https://orostone.sk/blog/${article.slug}`;
 
   return (
-    <div ref={containerRef} className="min-h-dvh bg-white">
+    <div>
       {/* ==================== SEO HEAD ==================== */}
       {/* Prefer per-article Vera FINAL meta (Phase 2/3 metaTitle/metaDescription
           fields on each article SK locale) with safe fallback to legacy shape
@@ -295,118 +334,99 @@ export const BlogArticle: React.FC = () => {
       {/* ==================== READING PROGRESS BAR ==================== */}
       <div
         ref={progressBarRef}
-        className="fixed top-0 left-0 h-[3px] bg-brand-gold z-[100] will-change-[width]"
+        className="fixed left-0 top-0 z-[100] h-[2px] bg-brand-gold will-change-[width]"
         style={{ width: '0%' }}
+        aria-hidden="true"
       />
 
       {/* ==================== SEMANTIC ARTICLE WRAPPER ==================== */}
       <article itemScope itemType="https://schema.org/BlogPosting">
-
-      {/* ==================== HERO ==================== */}
-      <header className="relative h-[50vh] min-h-[50dvh] min-h-[400px] lg:h-[60vh] overflow-hidden">
-        <img
-          src={article.heroImage}
-          alt={content.title}
-          fetchPriority="high"
-          decoding="async"
-          loading="eager"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
-
-        {/* Back Link */}
-        <div className="absolute top-6 left-6 z-20">
-          <Link
-            to="/blog"
-            className="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm font-medium transition-colors duration-300"
-          >
-            <ArrowLeft size={16} />
-            {labels.backToBlog}
-          </Link>
-        </div>
-
-        {/* Language Toggle */}
-        <div className="absolute top-6 right-6 z-20">
-          <button
-            onClick={() => setLang((prev) => (prev === 'sk' ? 'en' : 'sk'))}
-            className="inline-flex items-center gap-2 text-white/70 hover:text-white text-sm font-medium transition-colors duration-300 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full"
-          >
-            <Globe size={14} />
-            {lang === 'sk' ? 'EN' : 'SK'}
-          </button>
-        </div>
-
-        {/* Hero Content */}
-        <div className="article-hero-content absolute bottom-0 left-0 right-0 p-6 lg:p-12">
-          <div className="max-w-3xl mx-auto">
-            <span className="inline-block text-[10px] tracking-[0.2em] uppercase text-brand-gold font-bold mb-3">
-              {BLOG_CATEGORY_LABELS[article.category]?.[lang] ?? article.category}
-            </span>
-            <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white font-sans mb-4 leading-tight">
-              {content.title}
-            </h1>
-            {content.subtitle && (
-              <p className="text-white/60 text-base lg:text-lg font-light mb-4 max-w-2xl">
-                {content.subtitle}
-              </p>
-            )}
-            <div className="flex items-center gap-4 text-white/40 text-sm">
-              <time dateTime={article.publishDate} itemProp="datePublished" className="flex items-center gap-1.5">
-                <Calendar size={14} strokeWidth={1.5} />
-                {formatDate(article.publishDate, lang)}
-              </time>
-              {article.lastModified && article.lastModified !== article.publishDate && (
-                <time dateTime={article.lastModified} itemProp="dateModified" className="hidden" />
-              )}
-              <span className="flex items-center gap-1.5">
-                <Clock size={14} strokeWidth={1.5} />
-                {article.readTimeMinutes} {labels.readTime}
-              </span>
-              {article.author && (
-                <span className="hidden sm:flex items-center gap-2" itemProp="author" itemScope itemType="https://schema.org/Person">
-                  {article.author.avatar && (
-                    <img
-                      src={article.author.avatar}
-                      alt={article.author.name}
-                      className="w-6 h-6 rounded-full object-cover border border-white/20"
-                    />
-                  )}
-                  <span itemProp="name">{article.author.name}</span>
-                </span>
-              )}
+        {/* ==================== HEAD ==================== */}
+        <header className="bg-brand-light pt-[clamp(28px,4vw,56px)]">
+          <Container className={ARTICLE_GRID}>
+            <div className="mb-8 flex items-center justify-between gap-6 xl:col-span-2">
+              <Link
+                to="/blog"
+                className="inline-flex min-h-[44px] items-center gap-2 text-[0.9rem] font-medium no-underline hover:underline"
+              >
+                <ArrowLeft size={16} strokeWidth={1.75} aria-hidden="true" />
+                {labels.backToBlog}
+              </Link>
+              <button
+                type="button"
+                onClick={() => setLang((prev) => (prev === 'sk' ? 'en' : 'sk'))}
+                className="min-h-[44px] rounded-full border border-brand-line px-4 text-[0.82rem] font-semibold tracking-[0.08em] transition-colors hover:border-brand-dark"
+                aria-label={lang === 'sk' ? 'Read in English' : 'Čítať po slovensky'}
+              >
+                {lang === 'sk' ? 'EN' : 'SK'}
+              </button>
             </div>
-          </div>
-        </div>
-      </header>
+            <div className="xl:col-start-2">
+              <div className="grid justify-items-start gap-5">
+                <Eyebrow>{BLOG_CATEGORY_LABELS[article.category]?.[lang] ?? article.category}</Eyebrow>
+                <h1 className="max-w-[24ch] text-[clamp(1.95rem,3.1vw,3.2rem)] font-semibold leading-[1.1] tracking-[-0.02em] [text-wrap:balance]">
+                  {keepUnits(content.title)}
+                </h1>
+                {content.subtitle && <p className="max-w-[58ch] text-os-lead font-light text-brand-muted">{content.subtitle}</p>}
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[0.88rem] font-normal text-brand-muted">
+                  <time dateTime={article.publishDate} itemProp="datePublished">
+                    {formatDate(article.publishDate, lang)}
+                  </time>
+                  {article.lastModified && article.lastModified !== article.publishDate && (
+                    <time dateTime={article.lastModified} itemProp="dateModified" className="hidden" />
+                  )}
+                  <span className="tabular-nums">
+                    {article.readTimeMinutes} {labels.readTime}
+                  </span>
+                  {article.author && (
+                    <span className="flex items-center gap-2" itemProp="author" itemScope itemType="https://schema.org/Person">
+                      {article.author.avatar && (
+                        <img src={article.author.avatar} alt={article.author.name} width={24} height={24} className="h-6 w-6 rounded-full object-cover" />
+                      )}
+                      <span itemProp="name">{article.author.name}</span>
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+            <figure className="m-0 mt-[clamp(32px,4vw,56px)] xl:col-span-2">
+              <img
+                src={article.heroImage}
+                alt={heroAlt || content.heroAlt || content.title}
+                width={1376}
+                height={768}
+                fetchPriority="high"
+                decoding="async"
+                loading="eager"
+                className="aspect-[16/9] w-full rounded-[3px] bg-brand-sand object-cover"
+              />
+              {(heroCaption || content.heroCaption) && (
+                <figcaption className="mt-3 text-[0.84rem] font-normal text-brand-muted">{heroCaption || content.heroCaption}</figcaption>
+              )}
+            </figure>
+          </Container>
+        </header>
 
-      {/* ==================== ARTICLE BODY ==================== */}
-      <section className="article-body py-12 lg:py-20">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="flex gap-12 lg:gap-16 relative">
+        {/* ==================== ARTICLE BODY ==================== */}
+        <Section tone="chalk" className="!pt-[clamp(40px,5vw,72px)]">
+          <Container className={ARTICLE_GRID}>
             {/* Sticky Table of Contents — Desktop Only */}
-            {headings.length > 0 && (
-              <aside className="hidden xl:block w-56 flex-shrink-0">
-                <div className="sticky top-32">
-                  <p className="text-[10px] tracking-[0.2em] uppercase text-brand-gold font-bold mb-4">
-                    {labels.toc}
-                  </p>
-                  <nav className="flex flex-col gap-1">
+            <aside className="hidden xl:block">
+              {headings.length > 0 && (
+                <div className="sticky top-28">
+                  <p className={`${label} mb-4`}>{labels.toc}</p>
+                  <nav className="flex flex-col border-l border-brand-line" aria-label={labels.toc}>
                     {headings.map((h) => (
                       <a
                         key={h.id}
                         href={`#${h.id}`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          document
-                            .getElementById(h.id)
-                            ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        }}
-                        className={`text-sm font-light transition-colors duration-200 py-1 border-l-2 ${
-                          h.level === 3 ? 'pl-6' : 'pl-4'
+                        onClick={goToHeading(h.id)}
+                        className={`-ml-px border-l-2 py-1.5 text-[0.88rem] leading-snug no-underline transition-colors duration-200 ${
+                          h.level === 3 ? 'pl-7' : 'pl-4'
                         } ${
                           activeHeading === h.id
-                            ? 'border-brand-gold text-brand-dark font-medium'
-                            : 'border-transparent text-gray-400 hover:text-brand-dark hover:border-gray-300'
+                            ? 'border-brand-dark font-medium text-brand-dark'
+                            : 'border-transparent font-normal text-brand-muted hover:text-brand-dark'
                         }`}
                       >
                         {h.text}
@@ -414,207 +434,68 @@ export const BlogArticle: React.FC = () => {
                     ))}
                   </nav>
                 </div>
-              </aside>
-            )}
+              )}
+            </aside>
 
             {/* Main Content */}
-            <div className="flex-1 max-w-3xl mx-auto min-w-0">
-              {/* Direct Answer Box */}
+            <div className="min-w-0 max-w-[760px]">
+              {/* Direct Answer — native details: the answer stays in the DOM even when folded */}
               {content.directAnswer && (
-                <div className="mb-10 border-l-4 border-brand-gold bg-brand-gold/5 rounded-r-2xl overflow-hidden">
-                  <button
-                    onClick={() => setDirectAnswerOpen(!directAnswerOpen)}
-                    className="w-full flex items-center justify-between p-5 lg:p-6 text-left group"
-                  >
-                    <p className="text-[10px] tracking-[0.2em] uppercase text-brand-gold font-bold">
-                      {labels.directAnswer}
-                    </p>
-                    <ChevronDown
-                      size={18}
-                      className={`flex-shrink-0 text-brand-gold transition-transform duration-300 ${
-                        directAnswerOpen ? 'rotate-180' : ''
-                      }`}
+                <details open className="group mb-10 rounded-[3px] bg-brand-sand">
+                  <summary className="flex min-h-[48px] cursor-pointer list-none items-center justify-between gap-4 px-6 pt-5 [&::-webkit-details-marker]:hidden">
+                    <span className={label}>{labels.directAnswer}</span>
+                    <span
+                      aria-hidden="true"
+                      className="relative h-3 w-3 flex-none before:absolute before:left-0 before:top-1/2 before:h-px before:w-full before:bg-current after:absolute after:left-1/2 after:top-0 after:h-full after:w-px after:bg-current after:transition-transform group-open:after:scale-y-0"
                     />
-                  </button>
-                  <AnimatePresence initial={false}>
-                    {directAnswerOpen && (
-                      <m.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: 'easeInOut' }}
-                        className="overflow-hidden"
-                      >
-                        <p className="text-brand-dark text-base lg:text-lg font-medium leading-relaxed px-5 lg:px-6 pb-5 lg:pb-6">
-                          {content.directAnswer}
-                        </p>
-                      </m.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+                  </summary>
+                  <p className="px-6 pb-6 pt-2 text-[1.08rem] font-medium leading-relaxed text-brand-dark">{content.directAnswer}</p>
+                </details>
               )}
 
               {/* Mobile Table of Contents */}
               {headings.length > 0 && (
-                <div className="xl:hidden mb-10">
-                  <button
-                    onClick={() => setMobileTocOpen(!mobileTocOpen)}
-                    className="w-full flex items-center justify-between py-4 px-5 bg-[#FAFAFA] rounded-2xl text-left group"
-                  >
-                    <span className="text-[10px] tracking-[0.2em] uppercase text-brand-gold font-bold">
-                      {labels.toc}
-                    </span>
-                    <ChevronDown
-                      size={16}
-                      className={`text-brand-gold transition-transform duration-300 ${
-                        mobileTocOpen ? 'rotate-180' : ''
-                      }`}
+                <details className="group mb-10 border-y border-brand-line xl:hidden">
+                  <summary className="flex min-h-[52px] cursor-pointer list-none items-center justify-between gap-4 [&::-webkit-details-marker]:hidden">
+                    <span className={label}>{labels.toc}</span>
+                    <span
+                      aria-hidden="true"
+                      className="relative h-3 w-3 flex-none before:absolute before:left-0 before:top-1/2 before:h-px before:w-full before:bg-current after:absolute after:left-1/2 after:top-0 after:h-full after:w-px after:bg-current after:transition-transform group-open:after:scale-y-0"
                     />
-                  </button>
-                  <AnimatePresence initial={false}>
-                    {mobileTocOpen && (
-                      <m.nav
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: 'easeInOut' }}
-                        className="overflow-hidden bg-[#FAFAFA] rounded-b-2xl -mt-2 px-5 pb-4"
+                  </summary>
+                  <nav className="flex flex-col pb-4" aria-label={labels.toc}>
+                    {headings.map((h) => (
+                      <a
+                        key={h.id}
+                        href={`#${h.id}`}
+                        onClick={(e) => {
+                          (e.currentTarget.closest('details') as HTMLDetailsElement | null)?.removeAttribute('open');
+                          goToHeading(h.id)(e);
+                        }}
+                        className={`py-2 text-[0.95rem] leading-snug no-underline ${h.level === 3 ? 'pl-5' : ''} ${
+                          activeHeading === h.id ? 'font-medium text-brand-dark' : 'font-normal text-brand-muted'
+                        }`}
                       >
-                        <div className="flex flex-col gap-1 pt-2 border-t border-gray-200/50">
-                          {headings.map((h) => (
-                            <a
-                              key={h.id}
-                              href={`#${h.id}`}
-                              onClick={(e) => {
-                                e.preventDefault();
-                                setMobileTocOpen(false);
-                                setTimeout(() => {
-                                  document
-                                    .getElementById(h.id)
-                                    ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                                }, 300);
-                              }}
-                              className={`text-sm font-light transition-colors duration-200 py-1.5 ${
-                                h.level === 3 ? 'pl-5' : 'pl-1'
-                              } ${
-                                activeHeading === h.id
-                                  ? 'text-brand-dark font-medium'
-                                  : 'text-gray-400 hover:text-brand-dark'
-                              }`}
-                            >
-                              {h.text}
-                            </a>
-                          ))}
-                        </div>
-                      </m.nav>
-                    )}
-                  </AnimatePresence>
-                </div>
+                        {h.text}
+                      </a>
+                    ))}
+                  </nav>
+                </details>
               )}
 
               {/* HTML Content */}
-              <div
-                ref={articleBodyRef}
-                className="
-                  prose prose-lg max-w-none
-
-                  prose-headings:font-sans prose-headings:font-bold prose-headings:text-brand-dark
-                  prose-h2:text-[1.65rem] prose-h2:lg:text-[2rem] prose-h2:mt-20 prose-h2:lg:mt-24 prose-h2:mb-10 prose-h2:leading-tight prose-h2:font-bold
-                  prose-h3:text-xl prose-h3:lg:text-[1.35rem] prose-h3:mt-12 prose-h3:mb-6 prose-h3:leading-snug
-                  prose-p:text-gray-600 prose-p:font-light prose-p:leading-[1.9] prose-p:mb-8 prose-p:text-[1.05rem] prose-p:lg:text-[1.1rem]
-                  prose-a:text-brand-gold prose-a:no-underline hover:prose-a:underline prose-a:font-medium
-                  prose-strong:text-brand-dark prose-strong:font-semibold
-                  [&_.gold]:text-brand-gold [&_.gold]:font-bold
-                  prose-ul:my-6 prose-ul:space-y-2 prose-li:text-gray-600 prose-li:font-light prose-li:leading-relaxed prose-li:text-[1.05rem]
-                  prose-img:rounded-2xl prose-img:my-12 prose-img:shadow-lg prose-img:aspect-[16/10] prose-img:object-cover prose-img:bg-gray-100
-                  prose-blockquote:border-brand-gold prose-blockquote:text-gray-500 prose-blockquote:font-light prose-blockquote:italic prose-blockquote:my-12
-                  prose-table:text-sm prose-th:bg-gray-50 prose-th:py-3 prose-th:px-4 prose-td:py-3 prose-td:px-4
-
-                  [&_.article-tldr]:list-none [&_.article-tldr]:pl-0 [&_.article-tldr]:my-0 [&_.article-tldr]:mb-12
-                  [&_.article-tldr]:rounded-2xl [&_.article-tldr]:py-5 [&_.article-tldr]:px-6
-                  [&_.article-tldr>li]:text-brand-dark [&_.article-tldr>li]:font-bold [&_.article-tldr>li]:text-base
-                  [&_.article-tldr>li]:pl-0 [&_.article-tldr>li]:mb-1.5 [&_.article-tldr>li:last-child]:mb-0
-                  [&_.article-tldr>li]:before:content-['◆'] [&_.article-tldr>li]:before:text-brand-gold
-                  [&_.article-tldr>li]:before:text-lg [&_.article-tldr>li]:before:mr-3
-
-                  [&_.article-highlight]:bg-brand-gold/[0.08] [&_.article-highlight]:border-l-4 [&_.article-highlight]:border-brand-gold
-                  [&_.article-highlight]:rounded-r-2xl [&_.article-highlight]:py-5 [&_.article-highlight]:px-6 [&_.article-highlight]:my-10
-                  [&_.article-highlight]:not-prose
-                  [&_.article-highlight_p]:text-brand-dark [&_.article-highlight_p]:font-medium [&_.article-highlight_p]:text-[1.05rem]
-                  [&_.article-highlight_p]:leading-relaxed [&_.article-highlight_p]:mb-3 [&_.article-highlight_p:last-child]:mb-0
-                  [&_.article-highlight_strong]:text-brand-dark [&_.article-highlight_strong]:font-bold
-                  [&_.article-highlight_ul]:mt-3 [&_.article-highlight_ul]:mb-0 [&_.article-highlight_ul]:space-y-1.5 [&_.article-highlight_ul]:list-disc [&_.article-highlight_ul]:pl-5
-                  [&_.article-highlight_li]:text-brand-dark [&_.article-highlight_li]:font-medium [&_.article-highlight_li]:text-[1rem] [&_.article-highlight_li]:leading-relaxed
-
-                  [&_.article-tip]:bg-brand-dark [&_.article-tip]:text-white [&_.article-tip]:rounded-2xl
-                  [&_.article-tip]:py-7 [&_.article-tip]:px-7 [&_.article-tip]:my-12
-                  [&_.article-tip]:not-prose
-                  [&_.article-tip_p]:text-white/80 [&_.article-tip_p]:font-light [&_.article-tip_p]:text-[0.95rem]
-                  [&_.article-tip_p]:leading-relaxed [&_.article-tip_p]:mb-3 [&_.article-tip_p:last-of-type]:mb-0
-                  [&_.article-tip_strong]:text-brand-gold [&_.article-tip_strong]:font-bold [&_.article-tip_strong]:text-base
-                  [&_.article-tip_ul]:mt-3 [&_.article-tip_ul]:mb-0 [&_.article-tip_ul]:space-y-1
-                  [&_.article-tip_li]:text-white/80 [&_.article-tip_li]:font-light [&_.article-tip_li]:text-[0.95rem]
-                  [&_.article-tip_a.tip-btn]:inline-flex [&_.article-tip_a.tip-btn]:items-center [&_.article-tip_a.tip-btn]:gap-2
-                  [&_.article-tip_a.tip-btn]:bg-brand-gold [&_.article-tip_a.tip-btn]:text-brand-dark [&_.article-tip_a.tip-btn]:no-underline
-                  [&_.article-tip_a.tip-btn]:px-6 [&_.article-tip_a.tip-btn]:py-3 [&_.article-tip_a.tip-btn]:rounded-full
-                  [&_.article-tip_a.tip-btn]:text-sm [&_.article-tip_a.tip-btn]:font-bold [&_.article-tip_a.tip-btn]:uppercase [&_.article-tip_a.tip-btn]:tracking-wider
-                  [&_.article-tip_a.tip-btn]:mt-4 hover:[&_.article-tip_a.tip-btn]:bg-white [&_.article-tip_a.tip-btn]:transition-all [&_.article-tip_a.tip-btn]:duration-300
-
-                  [&_.article-quote]:border-l-4 [&_.article-quote]:border-brand-gold [&_.article-quote]:pl-6 [&_.article-quote]:pr-2
-                  [&_.article-quote]:py-4 [&_.article-quote]:my-12 [&_.article-quote]:bg-transparent
-                  [&_.article-quote_p]:text-brand-dark [&_.article-quote_p]:text-lg [&_.article-quote_p]:lg:text-xl
-                  [&_.article-quote_p]:font-medium [&_.article-quote_p]:italic [&_.article-quote_p]:leading-relaxed [&_.article-quote_p]:mb-0
-
-                  [&_.article-figure]:my-12 [&_.article-figure]:lg:my-16 [&_.article-figure]:not-prose
-                  [&_.article-figure_img]:w-full [&_.article-figure_img]:rounded-2xl [&_.article-figure_img]:shadow-lg [&_.article-figure_img]:mb-3
-                  [&_.article-figure_img]:aspect-[16/10] [&_.article-figure_img]:object-cover [&_.article-figure_img]:bg-gray-100
-                  [&_.article-figure_figcaption]:text-center [&_.article-figure_figcaption]:text-gray-400
-                  [&_.article-figure_figcaption]:text-sm [&_.article-figure_figcaption]:font-light [&_.article-figure_figcaption]:italic
-
-                  [&_.article-case-study]:bg-[#FAFAFA] [&_.article-case-study]:border-l-4 [&_.article-case-study]:border-brand-gold
-                  [&_.article-case-study]:rounded-r-2xl [&_.article-case-study]:py-6 [&_.article-case-study]:px-7 [&_.article-case-study]:my-12
-                  [&_.article-case-study]:not-prose
-                  [&_.article-case-study_.case-study-label]:text-[10px] [&_.article-case-study_.case-study-label]:tracking-[0.2em]
-                  [&_.article-case-study_.case-study-label]:uppercase [&_.article-case-study_.case-study-label]:text-brand-gold
-                  [&_.article-case-study_.case-study-label]:font-bold [&_.article-case-study_.case-study-label]:mb-3 [&_.article-case-study_.case-study-label]:block
-                  [&_.article-case-study_h3]:text-xl [&_.article-case-study_h3]:font-bold [&_.article-case-study_h3]:text-brand-dark
-                  [&_.article-case-study_h3]:mb-3 [&_.article-case-study_h3]:mt-0
-                  [&_.article-case-study_p]:text-gray-600 [&_.article-case-study_p]:font-light [&_.article-case-study_p]:text-[1.05rem]
-                  [&_.article-case-study_p]:leading-relaxed [&_.article-case-study_p]:mb-3 [&_.article-case-study_p:last-child]:mb-0
-                  [&_.article-case-study_strong]:text-brand-dark [&_.article-case-study_strong]:font-semibold
-                  [&_.article-case-study_ul]:mt-2 [&_.article-case-study_ul]:mb-0 [&_.article-case-study_ul]:space-y-1
-                  [&_.article-case-study_li]:text-gray-600 [&_.article-case-study_li]:font-light [&_.article-case-study_li]:text-[0.95rem]
-
-                  [&_.article-cta]:bg-brand-gold/10 [&_.article-cta]:border [&_.article-cta]:border-brand-gold/20
-                  [&_.article-cta]:rounded-2xl [&_.article-cta]:py-8 [&_.article-cta]:px-7 [&_.article-cta]:my-12 [&_.article-cta]:text-center
-                  [&_.article-cta]:not-prose
-                  [&_.article-cta_p]:text-brand-dark [&_.article-cta_p]:text-lg [&_.article-cta_p]:font-medium
-                  [&_.article-cta_p]:leading-relaxed [&_.article-cta_p]:mb-4 [&_.article-cta_p:last-child]:mb-0
-                  [&_.article-cta_a.cta-btn]:inline-flex [&_.article-cta_a.cta-btn]:items-center [&_.article-cta_a.cta-btn]:gap-2
-                  [&_.article-cta_a.cta-btn]:bg-brand-dark [&_.article-cta_a.cta-btn]:text-white [&_.article-cta_a.cta-btn]:no-underline
-                  [&_.article-cta_a.cta-btn]:px-7 [&_.article-cta_a.cta-btn]:py-3.5 [&_.article-cta_a.cta-btn]:rounded-full
-                  [&_.article-cta_a.cta-btn]:text-sm [&_.article-cta_a.cta-btn]:font-bold [&_.article-cta_a.cta-btn]:uppercase [&_.article-cta_a.cta-btn]:tracking-wider
-                  hover:[&_.article-cta_a.cta-btn]:bg-brand-gold hover:[&_.article-cta_a.cta-btn]:text-brand-dark
-                  [&_.article-cta_a.cta-btn]:transition-all [&_.article-cta_a.cta-btn]:duration-300
-
-                  [&_.article-tldr-label]:text-[10px] [&_.article-tldr-label]:tracking-[0.2em] [&_.article-tldr-label]:uppercase
-                  [&_.article-tldr-label]:text-brand-gold [&_.article-tldr-label]:font-bold [&_.article-tldr-label]:mb-3 [&_.article-tldr-label]:block
-                "
-                dangerouslySetInnerHTML={{ __html: articleHtml }}
-              />
+              <div className={PROSE} dangerouslySetInnerHTML={{ __html: articleHtml }} />
 
               {/* ==================== TAGS ==================== */}
               {article.tags && article.tags.length > 0 && (
-                <div className="mt-14 pt-8 border-t border-gray-100">
-                  <p className="text-[10px] tracking-[0.2em] uppercase text-brand-gold font-bold mb-4">
-                    {lang === 'sk' ? 'Štítky' : 'Tags'}
-                  </p>
+                <div className="mt-14 border-t border-brand-line pt-8">
+                  <p className={`${label} mb-4`}>{lang === 'sk' ? 'Štítky' : 'Tags'}</p>
                   <div className="flex flex-wrap gap-2">
                     {article.tags.map((tag) => (
                       <Link
                         key={tag}
                         to={`/blog?tag=${encodeURIComponent(tag)}`}
-                        className="inline-block text-sm font-light text-gray-500 bg-[#FAFAFA] hover:bg-brand-gold/10 hover:text-brand-dark px-4 py-1.5 rounded-full transition-all duration-300"
+                        className="inline-flex min-h-[40px] items-center rounded-full border border-brand-line px-4 text-[0.88rem] font-normal no-underline transition-colors hover:border-brand-dark"
                       >
                         {tag}
                       </Link>
@@ -625,193 +506,115 @@ export const BlogArticle: React.FC = () => {
 
               {/* ==================== FAQ SECTION ==================== */}
               {content.faqs && content.faqs.length > 0 && (
-                <div className="mt-14 pt-8 border-t border-gray-100">
-                  <p className="text-[10px] tracking-[0.2em] uppercase text-brand-gold font-bold mb-6">
-                    {lang === 'sk' ? 'Časté otázky' : 'Frequently Asked Questions'}
-                  </p>
-                  <div className="space-y-4">
-                    {content.faqs.map((faq, idx) => (
-                      <details
-                        key={idx}
-                        className="group bg-[#FAFAFA] rounded-2xl overflow-hidden"
-                      >
-                        <summary className="flex items-center justify-between cursor-pointer p-5 lg:p-6 text-brand-dark font-semibold text-[1.05rem] leading-snug list-none [&::-webkit-details-marker]:hidden">
-                          <span className="pr-4">{faq.question}</span>
-                          <ChevronDown
-                            size={18}
-                            className="flex-shrink-0 text-brand-gold transition-transform duration-300 group-open:rotate-180"
-                          />
-                        </summary>
-                        <div className="px-5 lg:px-6 pb-5 lg:pb-6 -mt-1">
-                          <p className="text-gray-600 font-light text-[1.05rem] leading-relaxed">
-                            {faq.answer}
-                          </p>
-                        </div>
-                      </details>
-                    ))}
-                  </div>
+                <div className="mt-14">
+                  <p className={`${label} mb-2`}>{lang === 'sk' ? 'Časté otázky' : 'Frequently Asked Questions'}</p>
+                  <FaqList items={content.faqs} />
                 </div>
               )}
 
               {/* ==================== SOCIAL SHARE ==================== */}
-              <div className="mt-10 pt-8 border-t border-gray-100">
-                <p className="text-[10px] tracking-[0.2em] uppercase text-brand-gold font-bold mb-4">
-                  {lang === 'sk' ? 'Zdieľať článok' : 'Share article'}
-                </p>
-                <div className="flex items-center gap-3">
-                  <a
-                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-[#FAFAFA] hover:bg-[#0077B5] hover:text-white flex items-center justify-center text-gray-400 transition-all duration-300"
-                    aria-label="Share on LinkedIn"
-                  >
-                    <Linkedin size={18} />
-                  </a>
-                  <a
-                    href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-[#FAFAFA] hover:bg-[#1877F2] hover:text-white flex items-center justify-center text-gray-400 transition-all duration-300"
-                    aria-label="Share on Facebook"
-                  >
-                    <Facebook size={18} />
-                  </a>
-                  <a
-                    href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareTitle)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-[#FAFAFA] hover:bg-black hover:text-white flex items-center justify-center text-gray-400 transition-all duration-300"
-                    aria-label="Share on X"
-                  >
-                    <Twitter size={18} />
-                  </a>
+              <div className="mt-12 flex flex-wrap items-center justify-between gap-5 border-t border-brand-line pt-8">
+                <p className={label}>{lang === 'sk' ? 'Zdieľať článok' : 'Share article'}</p>
+                <div className="flex items-center gap-2">
+                  {[
+                    { href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`, label: 'Share on LinkedIn', Icon: Linkedin },
+                    { href: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, label: 'Share on Facebook', Icon: Facebook },
+                    { href: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareTitle)}`, label: 'Share on X', Icon: Twitter },
+                  ].map(({ href, label: aria, Icon }) => (
+                    <a
+                      key={aria}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="grid h-11 w-11 place-items-center rounded-full border border-brand-line transition-colors hover:border-brand-dark"
+                      aria-label={aria}
+                    >
+                      <Icon size={17} strokeWidth={1.6} />
+                    </a>
+                  ))}
                   <button
+                    type="button"
                     onClick={copyLink}
-                    className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
-                      linkCopied
-                        ? 'bg-green-500 text-white'
-                        : 'bg-[#FAFAFA] text-gray-400 hover:bg-brand-gold hover:text-brand-dark'
+                    className={`grid h-11 w-11 place-items-center rounded-full border transition-colors ${
+                      linkCopied ? 'border-brand-dark bg-brand-dark text-brand-light' : 'border-brand-line hover:border-brand-dark'
                     }`}
                     aria-label={linkCopied ? 'Link copied!' : 'Copy link'}
                   >
-                    {linkCopied ? <Check size={18} /> : <LinkIcon size={18} />}
+                    {linkCopied ? <Check size={17} strokeWidth={1.75} /> : <LinkIcon size={17} strokeWidth={1.6} />}
                   </button>
                 </div>
               </div>
 
               {/* ==================== AUTHOR BIO ==================== */}
               {article.author && (
-                <div className="mt-10 pt-8 border-t border-gray-100">
-                  <div className="bg-[#FAFAFA] rounded-2xl p-6 lg:p-8 flex flex-col sm:flex-row gap-5 items-start">
-                    {article.author.avatar && (
-                      <img
-                        src={article.author.avatar}
-                        alt={article.author.name}
-                        className="w-16 h-16 rounded-full object-cover flex-shrink-0 border-2 border-brand-gold/20"
-                      />
-                    )}
-                    <div>
-                      <p className="text-[10px] tracking-[0.2em] uppercase text-brand-gold font-bold mb-1">
-                        {lang === 'sk' ? 'Autor článku' : 'Written by'}
-                      </p>
-                      <p className="text-lg font-bold text-brand-dark mb-2">
-                        {article.author.name}
-                      </p>
-                      <p className="text-gray-500 text-sm font-light leading-relaxed mb-3">
-                        {lang === 'sk'
-                          ? 'Tím OROSTONE sa špecializuje na sinterovaný kameň a povrchové materiály prémiového segmentu. S dlhoročnými skúsenosťami v oblasti interiérového dizajnu a materiálového inžinierstva vám pomôžeme nájsť ideálne riešenie.'
-                          : 'The OROSTONE team specializes in sintered stone and premium surface materials. With years of experience in interior design and material engineering, we help you find the ideal solution.'}
-                      </p>
-                      <Link
-                        to="/kontakt"
-                        className="inline-flex items-center gap-2 text-brand-gold text-sm font-bold hover:underline"
-                      >
-                        {lang === 'sk' ? 'Kontaktovať nás' : 'Contact us'}
-                        <ArrowRight size={14} />
-                      </Link>
-                    </div>
+                <div className="mt-10 flex flex-col items-start gap-5 rounded-[3px] bg-brand-sand p-[clamp(24px,3vw,36px)] sm:flex-row">
+                  {article.author.avatar && (
+                    <img
+                      src={article.author.avatar}
+                      alt={article.author.name}
+                      width={64}
+                      height={64}
+                      loading="lazy"
+                      className="h-16 w-16 flex-none rounded-full object-cover"
+                    />
+                  )}
+                  <div className="grid justify-items-start gap-2">
+                    <p className={label}>{lang === 'sk' ? 'Autor článku' : 'Written by'}</p>
+                    <p className="text-[1.15rem] font-semibold">{article.author.name}</p>
+                    <p className="max-w-[60ch] text-[0.96rem] font-light leading-relaxed text-brand-muted">
+                      {lang === 'sk'
+                        ? 'Tím OROSTONE sa špecializuje na sinterovaný kameň a povrchové materiály prémiového segmentu. S dlhoročnými skúsenosťami v oblasti interiérového dizajnu a materiálového inžinierstva vám pomôžeme nájsť ideálne riešenie.'
+                        : 'The OROSTONE team specializes in sintered stone and premium surface materials. With years of experience in interior design and material engineering, we help you find the ideal solution.'}
+                    </p>
+                    <TextLink to="/kontakt">{lang === 'sk' ? 'Kontaktovať nás' : 'Contact us'}</TextLink>
                   </div>
                 </div>
               )}
             </div>
-          </div>
-        </div>
-      </section>
-
+          </Container>
+        </Section>
       </article>
       {/* End semantic article wrapper */}
 
       {/* ==================== BACK TO TOP BUTTON ==================== */}
-      <AnimatePresence>
-        {showBackToTop && (
-          <m.button
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.2 }}
-            onClick={scrollToTop}
-            className="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full bg-brand-dark text-white shadow-lg hover:bg-brand-gold hover:text-brand-dark transition-all duration-300 flex items-center justify-center"
-            aria-label="Back to top"
-          >
-            <ArrowUp size={18} />
-          </m.button>
-        )}
-      </AnimatePresence>
+      <button
+        type="button"
+        onClick={scrollToTop}
+        className={`fixed bottom-[calc(84px+env(safe-area-inset-bottom,0px))] right-5 z-50 grid h-11 w-11 lg:bottom-6 lg:right-6 place-items-center rounded-full bg-brand-dark text-brand-light shadow-[0_8px_24px_rgba(26,26,26,0.18)] transition-[opacity,transform] duration-200 hover:bg-[#333331] ${
+          showBackToTop ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-2 opacity-0'
+        }`}
+        aria-label="Back to top"
+        tabIndex={showBackToTop ? 0 : -1}
+      >
+        <ArrowUp size={18} strokeWidth={1.75} />
+      </button>
 
       {/* ==================== RELATED ARTICLES ==================== */}
       {relatedArticles.length > 0 && (
-        <section className="related-section py-16 lg:py-24 bg-[#FAFAFA] border-t border-gray-100">
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="text-center mb-10 lg:mb-14">
-              <span className="text-[11px] tracking-[0.3em] uppercase text-brand-gold font-bold mb-3 block">
-                {labels.related}
-              </span>
-              <h2 className="text-2xl lg:text-3xl font-sans font-bold text-brand-dark">
-                {labels.related}
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <Section tone="sand">
+          <Container>
+            <SectionHeader eyebrow="Blog" title={labels.related} />
+            <ul className="mt-[clamp(40px,5vw,64px)] grid gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
               {relatedArticles.map((rel) => (
-                <Link
-                  key={rel.id}
-                  to={`/blog/${rel.slug}`}
-                  className="group"
-                >
-                  <article className="bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-500 h-full flex flex-col">
-                    <div className="relative aspect-[16/10] overflow-hidden">
-                      <img
-                        src={rel.heroImage}
-                        alt={rel[lang].title}
-                        width={1200}
-                        height={750}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        loading="lazy"
-                      />
-                      <span className="absolute top-4 left-4 inline-block text-[10px] tracking-[0.15em] uppercase font-bold text-brand-dark bg-brand-gold/90 px-3 py-1 rounded-full">
-                        {BLOG_CATEGORY_LABELS[rel.category]?.[lang] ?? rel.category}
-                      </span>
-                    </div>
-                    <div className="p-5 lg:p-6 flex flex-col flex-grow">
-                      <h3 className="text-lg font-bold text-brand-dark font-sans mb-2 leading-snug group-hover:text-brand-gold transition-colors duration-300">
-                        {rel[lang].title}
-                      </h3>
-                      <p className="text-gray-400 text-sm font-light leading-relaxed line-clamp-2 mb-4 flex-grow">
-                        {rel[lang].excerpt}
-                      </p>
-                      <div className="flex items-center gap-1.5 text-brand-gold text-xs font-bold uppercase tracking-[0.15em] group-hover:gap-2.5 transition-all duration-300 mt-auto">
-                        {labels.readMore}
-                        <ArrowRight size={13} />
-                      </div>
-                    </div>
-                  </article>
-                </Link>
+                <li key={rel.id}>
+                  <BlogCard
+                    slug={rel.slug}
+                    image={rel.heroImage}
+                    title={rel[lang].title}
+                    excerpt={rel[lang].excerpt}
+                    category={BLOG_CATEGORY_LABELS[rel.category]?.[lang] ?? rel.category}
+                    date={formatDate(rel.publishDate, lang)}
+                    minutes={rel.readTimeMinutes}
+                    minutesLabel={labels.readTime}
+                  />
+                </li>
               ))}
-            </div>
-          </div>
-        </section>
+            </ul>
+          </Container>
+        </Section>
       )}
+
+      <GoldBand od="blog-clanok" />
     </div>
   );
 };

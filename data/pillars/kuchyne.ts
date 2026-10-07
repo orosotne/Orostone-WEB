@@ -28,7 +28,7 @@ export const KITCHEN_FAQS: PillarFaq[] = [
   {
     question: 'Aký je termín dodania a inštalácie?',
     answer:
-      'Od konzultácie po inštaláciu kamenárom zvyčajne 2-3 týždne. Samotná inštalácia kamenárom trvá 2-3 hodiny.',
+      'Od konzultácie po inštaláciu kamenárom zvyčajne 2–3 týždne (10–15 pracovných dní). Samotná inštalácia kamenárom trvá 2–3 hodiny.',
   },
   {
     question: 'Znečistí sa sinterovaný kameň od jedla alebo vína?',
@@ -53,14 +53,14 @@ export const KUCHYNE_FEATURES: { title: string; description: string }[] = [
       'Každá kuchyňa je unikátna. Dosky sú rezané CNC technológiou na presné rozmery vašej kuchyne — vrátane výrezov pre drez, varič a batériu.',
   },
   {
-    title: '12 dekórov',
+    title: '12 dekorov',
     description:
-      'Od klasického bieleho mramoru po dramatickú čiernu — nájdite dekór, ktorý ladí s vašou kuchyňou.',
+      'Od klasického bieleho mramoru po výraznú čiernu — vyberte si dekor, ktorý ladí s vašou kuchyňou.',
   },
   {
-    title: 'Bez údržby',
+    title: 'Jednoduchá údržba',
     description:
-      'Nepotrebuje impregnáciu ani špeciálne čistenie. Stačí vlhká utierka — každý deň, celé roky.',
+      'Nepotrebuje impregnáciu ani špeciálne čistiace prostriedky. Na každodenné čistenie stačí vlhká utierka.',
   },
 ];
 

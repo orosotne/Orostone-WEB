@@ -1,0 +1,99 @@
+// Curated content of the homepage sections (new design, 2026-10).
+
+export type DecorGroup = 'biele' | 'teple' | 'tmave';
+
+export interface HomeDecor {
+  /** Product id = URL slug of /produkt/:id */
+  slug: string;
+  name: string;
+  /** Short tone label under the slab */
+  label: string;
+  group: DecorGroup;
+}
+
+/** All 12 decors in rack order. Grouping agreed with the owner (Givenchy Gold → biele, Wild Forest → teplé). */
+export const HOME_DECORS: HomeDecor[] = [
+  { slug: 'super-white-extra', name: 'Super White Extra', label: 'Čistá biela', group: 'biele' },
+  { slug: 'yabo-white', name: 'Yabo White', label: 'Jemná biela', group: 'biele' },
+  { slug: 'statuario-diamante', name: 'Statuario Diamante', label: 'Biely mramor', group: 'biele' },
+  { slug: 'calacatta-top', name: 'Calacatta Top', label: 'Biely mramor', group: 'biele' },
+  { slug: 'givenchy-gold', name: 'Givenchy Gold', label: 'Biela so zlatom', group: 'biele' },
+  { slug: 'appennino', name: 'Appennino', label: 'Jemný mramor', group: 'biele' },
+  { slug: 'taj-mahal', name: 'Taj Mahal', label: 'Krémový mramor', group: 'teple' },
+  { slug: 'roman-travertine', name: 'Roman Travertine', label: 'Teplý travertín', group: 'teple' },
+  { slug: 'wild-forest', name: 'Wild Forest', label: 'Zemité tóny', group: 'teple' },
+  { slug: 'astrana-grey', name: 'Astrana Grey', label: 'Sivý kameň', group: 'tmave' },
+  { slug: 'gothic-gold', name: 'Gothic Gold', label: 'Tmavá so zlatom', group: 'tmave' },
+  { slug: 'nero-margiua', name: 'Nero Margiua', label: 'Čierny mramor', group: 'tmave' },
+];
+
+export const DECOR_FILTERS: Array<{ id: 'all' | DecorGroup; label: string }> = [
+  { id: 'all', label: 'Všetky' },
+  { id: 'biele', label: 'Biele' },
+  { id: 'teple', label: 'Teplé' },
+  { id: 'tmave', label: 'Sivé a tmavé' },
+];
+
+export const decorImage = (slug: string) => `/images/home/dekory/${slug}.webp`;
+
+export interface HomeRealization {
+  image: string;
+  width: number;
+  height: number;
+  /** object-position of the photo inside the rack slot */
+  pos: string;
+  decor: string;
+  /** Decor slug for ?dekor= when it is one of today's decors */
+  decorSlug?: string;
+  text: string;
+  alt: string;
+}
+
+/** Photos from clients' installations (Košice: client's consent confirmed 2026-10-05). Decor names are from the time of installation. */
+export const HOME_REALIZATIONS: HomeRealization[] = [
+  { image: 'taj-mahal-kosice', width: 1600, height: 1200, pos: '52% 55%', decor: 'Taj Mahal', decorSlug: 'taj-mahal', text: 'Ostrovček s jedálenským stolom, Košice', alt: 'Ostrovček so zástenou v dekore Taj Mahal a orechovým jedálenským stolom, Košice' },
+  { image: 'arden-gold', width: 893, height: 904, pos: '50% 62%', decor: 'Arden Gold', text: 'Ostrovček a zástena', alt: 'Ostrovček a zástena v dekore Arden Gold so zlatými žilkami, dubová podlaha' },
+  { image: 'sivy-kamen-kniznica', width: 1200, height: 900, pos: '56% 60%', decor: 'Yabo White', decorSlug: 'yabo-white', text: 'Ostrovček pri knižnici', alt: 'Ostrovček s doskou Yabo White pred knižnicou a bielou kuchynskou linkou' },
+  { image: 'super-white-extra-dub', width: 1600, height: 893, pos: '44% 50%', decor: 'Super White Extra', decorSlug: 'super-white-extra', text: 'Kuchyňa v dube · upravená fotografia realizácie', alt: 'Kuchyňa v dube s pracovnou doskou a zástenou Super White Extra, čelný pohľad' },
+  { image: 'polaris-statuario', width: 768, height: 1024, pos: '55% 56%', decor: 'Polaris Statuario White', text: 'Doska na orechovom ostrovčeku', alt: 'Biela kamenná doska so sivými žilkami na ostrovčeku z orechového dreva' },
+  { image: 'calacatta-gold', width: 1014, height: 900, pos: '30% 62%', decor: 'Calacatta Gold', text: 'Ostrovček s bočnicou', alt: 'Ostrovček s kamennou bočnicou v dekore Calacatta Gold so zlatými žilkami' },
+  { image: 'svetly-onyx', width: 1200, height: 1600, pos: '50% 64%', decor: 'Taj Mahal', decorSlug: 'taj-mahal', text: 'Dlhý ostrovček s drezom', alt: 'Dlhý ostrovček s doskou Taj Mahal a zapusteným drezom' },
+];
+
+/** Blog articles shown in „Poradňa“: slug + a short teaser title (the last words are set in gold italics). */
+export const HOME_GUIDES: Array<{ slug: string; title: string; titleEm: string }> = [
+  { slug: 'transparentne-ceny-cenova-ponuka', title: 'Čo musí obsahovať', titleEm: 'cenová ponuka?' },
+  { slug: 'ako-cistit-sinterovany-kamen', title: 'Ako čistiť sinterovaný', titleEm: 'kameň?' },
+  { slug: 'technicky-kamen-cena-pracovna-doska', title: 'Technický kameň: cena a', titleEm: 'nevýhody' },
+];
+
+export { oroKlientUrl as ORO_KLIENT, PHONE_HREF, PHONE_LABEL } from '../Design/links';
+export const MAPS_URL = 'https://www.google.com/maps?q=SNP+113%2F1%2C+956+18+Bo%C5%A1any';
+
+/** Orostone on Google Maps, opened on the reviews tab. */
+export const GOOGLE_REVIEWS_URL =
+  'https://www.google.com/maps/place/Orostone/@48.1424061,17.1268597,17z/data=!4m8!3m7!1s0x4714cbd6d2121cad:0xa6f69681af7eecf4!8m2!3d48.1424061!4d17.1268597!9m1!1b1!16s%2Fg%2F11xkf9m7y8';
+
+/** Rating as shown on Google Maps when last checked — update together with the reviews below. */
+export const GOOGLE_RATING = { value: '5,0', count: 5, checked: '2026-10-07' };
+
+export interface HomeReview {
+  /** First name and initial of the surname, as published on Google */
+  name: string;
+  /** Verbatim review text from Google Maps */
+  quote: string;
+}
+
+/** Real client reviews from the Orostone Google Maps profile (checked 7. 10. 2026), quoted verbatim. */
+export const HOME_REVIEWS: HomeReview[] = [
+  {
+    name: 'Peter Č.',
+    quote:
+      'Orostone kamene môžem vrelo odporučiť. Pri výbere pracovnej dosky do kuchyne sme mali spočiatku veľký zmätok, no veľmi nám pomohlo, že nám ochotne a zrozumiteľne vysvetlili rozdiely medzi technickým kameňom, prírodným kameňom aj sinterovaným materiálom. Veľkým plusom bolo aj to, že sme si všetky materiály mohli pozrieť naživo. Výsledok je naozaj krásny a kuchyňa konečne pôsobí dokonale.',
+  },
+  {
+    name: 'Zuzana L.',
+    quote:
+      'S Orostone máme veľmi dobrú skúsenosť. Riešili sme pracovnú dosku do kuchyne a od začiatku bolo vidieť, že sa v materiáloch vyznajú. Všetko, čo sme si dohodli, platilo a pri výbere nám vedeli normálne poradiť, nie len niečo predať. Najviac oceňujem prístup, detaily a výsledok. Kuchyňa s touto doskou pôsobí úplne inak',
+  },
+];

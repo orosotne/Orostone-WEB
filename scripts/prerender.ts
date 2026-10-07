@@ -193,6 +193,12 @@ function writePage(page: Page): void {
   // (homepage SEO fallback noscript would otherwise duplicate content for crawlers)
   html = html.replace(/<noscript>[\s\S]*?<\/noscript>/g, '');
 
+  // The homepage hero preload in index.html only helps "/"; on other pages it would
+  // compete with the page's own LCP image, so keep it on the homepage only
+  if (page.route !== '/') {
+    html = html.replace(/\n?[ \t]*<link rel="preload" as="image"[^>]*\/images\/home\/hero-[^>]*>/g, '');
+  }
+
   // Write file
   const filePath = resolve(DIST, page.route.replace(/^\//, ''), 'index.html');
   mkdirSync(dirname(filePath), { recursive: true });
@@ -388,7 +394,7 @@ function prerenderProduct(product: any): void {
         <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; <a href="/kategoria/sintered-stone">Produkty</a> &rsaquo; ${esc(product.name)}</nav>
         <h1>${esc(product.name)}</h1>
         <p><strong>${product.pricePerM2.toFixed(2)} &euro; / m² s DPH</strong> (platňa ${esc(product.dimensions)} ≈ ${slabTotal.toFixed(2)} &euro; s DPH)</p>
-        <img src="${product.image}" alt="${esc(product.name)}" width="800" loading="lazy" />
+        <img src="${product.image.includes('cdn.shopify.com') ? product.image.replace(/(\?.*)?$/, '') + '?width=800&quality=80' : product.image}" alt="${esc(product.name)}" width="800" loading="lazy" />
         <div>${product.descriptionHtml || esc(product.description)}</div>
         ${benefitsHtml}
         <h2>Technické parametre</h2>

@@ -23,10 +23,10 @@ export const TechnicalOverview: React.FC<TechnicalOverviewProps> = ({ product })
   ];
 
   const specGrid = (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-200">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-px bg-brand-line">
       {specs.map((spec, index) => (
         <div key={index} className="bg-white p-4 lg:p-6">
-          <span className="text-xs lg:text-[10px] font-bold tracking-[0.15em] uppercase text-gray-400 block mb-2">
+          <span className="text-xs lg:text-[10px] font-bold tracking-[0.15em] uppercase text-brand-muted block mb-2">
             {spec.label}
           </span>
           <span className="text-base sm:text-lg font-medium text-brand-dark">
@@ -51,13 +51,13 @@ export const TechnicalOverview: React.FC<TechnicalOverviewProps> = ({ product })
               onClick={() => setIsOpen(!isOpen)}
               className="w-full flex items-center justify-between py-2"
             >
-              <h2 className="text-xs font-bold tracking-[0.2em] uppercase text-brand-gold">
+              <h2 className="flex items-center gap-3.5 text-os-eyebrow uppercase text-brand-dark before:h-px before:w-7 before:bg-current before:opacity-75 before:content-['']">
                 Technické parametre
               </h2>
               <ChevronDown
                 size={20}
                 className={cn(
-                  "text-brand-gold transition-transform duration-300",
+                  "text-brand-dark transition-transform duration-300",
                   isOpen && "rotate-180"
                 )}
               />
@@ -75,7 +75,7 @@ export const TechnicalOverview: React.FC<TechnicalOverviewProps> = ({ product })
           </div>
 
           <div className="hidden lg:block">
-            <h2 className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-brand-gold mb-8">
+            <h2 className="flex items-center gap-3.5 text-os-eyebrow uppercase text-brand-dark before:h-px before:w-7 before:bg-current before:opacity-75 before:content-[''] mb-8">
               Technické parametre
             </h2>
             {specGrid}

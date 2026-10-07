@@ -21,7 +21,7 @@ export const KeyBenefitsSection: React.FC<KeyBenefitsSectionProps> = ({ product 
           transition={{ duration: 0.6 }}
           className="max-w-3xl mx-auto"
         >
-          <h2 className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-gray-400 mb-8">
+          <h2 className="flex items-center gap-3.5 text-os-eyebrow uppercase text-brand-dark before:h-px before:w-7 before:bg-current before:opacity-75 before:content-[''] mb-8">
             Kľúčové výhody
           </h2>
 
@@ -35,10 +35,10 @@ export const KeyBenefitsSection: React.FC<KeyBenefitsSectionProps> = ({ product 
                 transition={{ duration: 0.4, delay: 0.1 + index * 0.08 }}
                 className="flex items-start gap-4"
               >
-                <div className="w-7 h-7 rounded-full bg-brand-gold/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Check size={14} className="text-brand-gold" />
+                <div className="w-7 h-7 rounded-full bg-brand-sand flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <Check size={14} className="text-brand-dark" />
                 </div>
-                <span className="text-base lg:text-lg text-gray-700 leading-relaxed font-light">
+                <span className="text-base lg:text-lg text-brand-dark/85 leading-relaxed font-light">
                   {benefit}
                 </span>
               </m.li>

@@ -155,7 +155,13 @@ ${additionalImages ? additionalImages + '\n' : ''}      <g:availability>${p.inSt
       <g:identifier_exists>false</g:identifier_exists>
       <g:shipping>
         <g:country>SK</g:country>
+        <g:service>Dovoz Bratislava a okolie</g:service>
         <g:price>150.00 EUR</g:price>
+      </g:shipping>
+      <g:shipping>
+        <g:country>SK</g:country>
+        <g:service>Územie SR</g:service>
+        <g:price>350.00 EUR</g:price>
       </g:shipping>
     </item>`;
     })

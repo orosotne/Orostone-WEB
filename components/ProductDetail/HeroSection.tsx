@@ -15,7 +15,7 @@ import {
   Package,
   ChevronDown,
 } from 'lucide-react';
-import { cn, formatPrice } from '../../lib/utils';
+import { cn, formatPrice, titleCase } from '../../lib/utils';
 import { MAX_SAMPLES } from '../../constants';
 import type { ShopProduct } from '../../constants';
 import { ShareButton } from '../UI/ShareButton';
@@ -110,7 +110,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     <section className="pt-6 pb-8 lg:pt-8 lg:pb-16 bg-gradient-to-br from-white via-[#FAFAF8] to-[#F5F5F0]">
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between mb-8">
-          <nav className="flex items-center gap-2 text-xs text-gray-500">
+          <nav className="flex items-center gap-2 text-xs text-brand-muted">
             <Link to="/" className="hover:text-brand-dark transition-colors">E-Shop</Link>
             <ChevronRight size={12} />
             <span className="text-brand-dark font-medium">{product.name}</span>
@@ -123,13 +123,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <div className="hidden lg:block lg:order-1 lg:col-span-7 space-y-4">
             <div>
               <div
-                className="aspect-square bg-[#F5F5F3] overflow-hidden relative group rounded-xl cursor-pointer"
+                className="aspect-square bg-[#F5F5F3] overflow-hidden relative group rounded-[3px] cursor-pointer"
                 onClick={() => openLightbox()}
               >
-                <AnimatePresence mode="sync">
+                <AnimatePresence mode="sync" initial={false}>
                   <m.img
                     key={selectedImageIndex}
                     src={shopifyImageUrl(currentImage, 1200)}
+                    fetchPriority={selectedImageIndex === 0 ? 'high' : 'auto'}
                     alt={productImageAlt(product, selectedImageIndex)}
                     width={1200}
                     height={1200}
@@ -143,7 +144,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   />
                 </AnimatePresence>
 
-                <div className="absolute bottom-4 right-4 w-10 h-10 bg-white/90 backdrop-blur rounded-lg flex items-center justify-center text-brand-dark opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="absolute bottom-4 right-4 w-10 h-10 bg-white/90 backdrop-blur rounded-[3px] flex items-center justify-center text-brand-dark opacity-0 group-hover:opacity-100 transition-opacity">
                   <ZoomIn size={18} />
                 </div>
 
@@ -151,26 +152,26 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   <>
                     <button
                       onClick={(e) => { e.stopPropagation(); goToPrevious(); }}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur rounded-lg flex items-center justify-center text-brand-dark hover:bg-white transition-colors opacity-0 group-hover:opacity-100"
+                      className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur rounded-[3px] flex items-center justify-center text-brand-dark hover:bg-white transition-colors opacity-0 group-hover:opacity-100"
                       aria-label="Predchádzajúci obrázok"
                     >
                       <ChevronRight size={20} className="rotate-180" />
                     </button>
                     <button
                       onClick={(e) => { e.stopPropagation(); goToNext(); }}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur rounded-lg flex items-center justify-center text-brand-dark hover:bg-white transition-colors opacity-0 group-hover:opacity-100"
+                      className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 backdrop-blur rounded-[3px] flex items-center justify-center text-brand-dark hover:bg-white transition-colors opacity-0 group-hover:opacity-100"
                       aria-label="Ďalší obrázok"
                     >
                       <ChevronRight size={20} />
                     </button>
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur px-3 py-1.5 rounded-lg text-[11px] tracking-wider text-brand-dark font-medium">
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur px-3 py-1.5 rounded-[3px] text-[11px] tracking-wider text-brand-dark font-medium">
                       {selectedImageIndex + 1} / {images.length}
                     </div>
                   </>
                 )}
 
                 {product.inStock && (
-                  <div className="absolute top-4 left-4 bg-emerald-600 text-white px-3 py-1 rounded-md text-[10px] uppercase tracking-widest font-medium">
+                  <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 bg-brand-light text-brand-dark px-3 py-1 rounded-[3px] text-[10px] uppercase tracking-widest font-semibold before:h-[7px] before:w-[7px] before:rounded-full before:bg-[#2F8F5B] before:content-['']">
                     Skladom
                   </div>
                 )}
@@ -187,10 +188,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                         key={actualIndex}
                         onClick={() => setSelectedImageIndex(actualIndex)}
                         className={cn(
-                          "aspect-square bg-[#F5F5F3] overflow-hidden transition-all rounded-lg",
+                          "aspect-square bg-[#F5F5F3] overflow-hidden transition-all rounded-[3px]",
                           selectedImageIndex === actualIndex
                             ? "ring-2 ring-brand-dark"
-                            : "ring-1 ring-gray-200 hover:ring-gray-400"
+                            : "ring-1 ring-brand-line hover:ring-gray-400"
                         )}
                       >
                         <img
@@ -209,7 +210,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 {images.length > 4 && (
                   <button
                     onClick={() => setShowAllImages(!showAllImages)}
-                    className="w-full py-3 border border-gray-300 rounded-lg text-sm font-medium text-brand-dark hover:border-brand-dark transition-colors flex items-center justify-center gap-2"
+                    className="w-full py-3 border border-brand-dark rounded-[10px] text-sm font-medium text-brand-dark hover:border-brand-dark transition-colors flex items-center justify-center gap-2"
                   >
                     {showAllImages ? (
                       <>
@@ -236,26 +237,26 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <div className="flex flex-col">
               {product.vendor && (
                 <div className="order-1 mb-2 lg:mb-4">
-                  <span className="text-xs lg:text-[10px] font-bold tracking-[0.2em] uppercase text-brand-gold">
+                  <span className="text-xs lg:text-[10px] font-bold tracking-[0.2em] uppercase text-brand-dark">
                     {product.vendor}
                   </span>
                 </div>
               )}
 
-              <h1 className="order-3 lg:order-3 text-3xl md:text-4xl lg:text-5xl font-sans font-bold text-brand-dark leading-tight mb-2 lg:mb-4">
-                {product.name}
+              <h1 className="order-3 lg:order-3 text-3xl md:text-4xl lg:text-5xl font-semibold tracking-[-0.02em] text-brand-dark leading-tight mb-2 lg:mb-4">
+                {titleCase(product.name)}
               </h1>
 
               <div className="order-4 lg:order-4 hidden lg:flex items-baseline gap-3 mb-4">
                 <span className="text-2xl font-bold text-brand-dark">
                   {formatPrice(Math.round(product.pricePerM2 * (1 - selectedBundle.discountPercent / 100) * 100) / 100)}
                 </span>
-                <span className="text-sm text-gray-400">/ m² s DPH</span>
+                <span className="text-sm text-brand-muted">/ m² s DPH</span>
                 {selectedBundle.discountPercent > 0 && (
-                  <span className="text-sm text-gray-400 line-through">{formatPrice(product.pricePerM2)}</span>
+                  <span className="text-sm text-brand-muted line-through">{formatPrice(product.pricePerM2)}</span>
                 )}
                 {selectedBundle.discountPercent > 0 && (
-                  <span className="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">
+                  <span className="rounded-[3px] bg-brand-dark px-2 py-0.5 text-xs font-bold text-brand-light">
                     -{selectedBundle.discountPercent}%
                   </span>
                 )}
@@ -265,15 +266,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 className="order-2 lg:order-2 mb-4 flex w-full min-w-0 flex-nowrap gap-2 overflow-x-auto overflow-y-hidden overscroll-x-contain [touch-action:pan-x_pan-y] scrollbar-hide lg:flex-wrap lg:overflow-visible"
                 style={{ WebkitOverflowScrolling: 'touch' }}
               >
-                <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-brand-dark px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-brand-gold lg:text-[11px]">
+                <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#D8D5CB] px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-brand-dark lg:text-[11px]">
                   <ThicknessIcon size={14} />
                   {product.thickness}
                 </span>
-                <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-brand-dark px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-brand-gold lg:text-[11px]">
+                <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#D8D5CB] px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-brand-dark lg:text-[11px]">
                   <Maximize2 size={14} />
                   {product.dimensions}
                 </span>
-                <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-brand-dark px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-brand-gold lg:text-[11px]">
+                <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#D8D5CB] px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-brand-dark lg:text-[11px]">
                   <FinishIcon size={14} />
                   {shortFinish(product.finish)}
                 </span>
@@ -284,14 +285,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   {product.descriptionHtml ? (
                     <div
                       className={cn(
-                        "prose prose-sm prose-gray max-w-none font-light leading-relaxed text-lg border-l-2 border-brand-gold pl-6 [&>p]:text-gray-600 [&>p]:mb-3 [&>ul]:text-gray-600 [&>ol]:text-gray-600 [&>p:last-child]:mb-0 [&_strong]:text-brand-gold [&_strong]:font-semibold transition-all duration-300",
+                        "prose prose-sm prose-gray max-w-none font-light leading-relaxed text-lg border-l-2 border-brand-dark pl-6 [&>p]:text-brand-muted [&>p]:mb-3 [&>ul]:text-brand-muted [&>ol]:text-brand-muted [&>p:last-child]:mb-0 [&_strong]:text-brand-dark [&_strong]:font-semibold transition-all duration-300",
                         !descExpanded && "max-h-[6.5rem] overflow-hidden"
                       )}
                       dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
                     />
                   ) : (
                     <p className={cn(
-                      "text-gray-600 font-light leading-relaxed text-lg transition-all duration-300",
+                      "text-brand-muted font-light leading-relaxed text-lg transition-all duration-300",
                       !descExpanded && "max-h-[6.5rem] overflow-hidden"
                     )}>
                       {product.description}
@@ -303,7 +304,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 </div>
                 <button
                   onClick={() => setDescExpanded(!descExpanded)}
-                  className="mt-3 min-h-[44px] text-sm font-semibold text-brand-gold hover:text-brand-dark active:text-brand-dark transition-colors flex items-center gap-1.5"
+                  className="mt-3 min-h-[44px] text-sm font-semibold text-brand-dark hover:text-brand-dark active:text-brand-dark transition-colors flex items-center gap-1.5"
                 >
                   {descExpanded ? (
                     <>
@@ -320,10 +321,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
 
               <div className="order-[8] lg:order-[7]">
-                <h3 className="text-xs lg:text-[10px] font-bold tracking-[0.15em] uppercase text-gray-400 mb-4 pt-8 border-t border-gray-200">
+                <h3 className="flex items-center gap-3.5 text-os-eyebrow uppercase text-brand-dark before:h-px before:w-7 before:bg-current before:opacity-75 before:content-[''] mb-4 pt-8 border-t border-brand-line">
                   Technické parametre
                 </h3>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 pb-8 border-b border-gray-200">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 pb-8 border-b border-brand-line">
                   {[
                     { label: 'Rozmery', value: product.dimensions, icon: Maximize2 },
                     { label: 'Hrúbka', value: product.thickness, icon: ThicknessIcon },
@@ -334,11 +335,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     const isMaterial = spec.label === 'Materiál';
                     const inner = (
                       <div key={spec.label} className={`flex flex-col items-center text-center p-2 ${isMaterial ? 'group cursor-pointer' : ''}`}>
-                        <Icon size={40} className={`text-brand-dark mb-2 ${isMaterial ? 'group-hover:text-brand-gold transition-colors' : ''}`} />
-                        <span className="text-xs lg:text-[10px] font-bold tracking-[0.15em] uppercase text-gray-400 block mb-1">
+                        <Icon size={40} className={`text-brand-dark mb-2 ${isMaterial ? 'group-hover:text-brand-muted transition-colors' : ''}`} />
+                        <span className="text-xs lg:text-[10px] font-bold tracking-[0.15em] uppercase text-brand-muted block mb-1">
                           {spec.label}
                         </span>
-                        <span className={`text-brand-dark font-medium text-xs ${isMaterial ? 'group-hover:text-brand-gold underline underline-offset-2 decoration-brand-gold/30 transition-colors' : ''}`}>
+                        <span className={`text-brand-dark font-medium text-xs ${isMaterial ? 'group-hover:text-brand-muted underline underline-offset-2 decoration-brand-dark/30 transition-colors' : ''}`}>
                           {spec.value}
                         </span>
                       </div>
@@ -369,7 +370,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     {images.map((img, index) => (
                       <div
                         key={index}
-                        className="w-full flex-shrink-0 snap-center aspect-[3/4] bg-[#F5F5F3] relative rounded-lg overflow-hidden"
+                        className="w-full flex-shrink-0 snap-center aspect-[3/4] bg-[#F5F5F3] relative rounded-[3px] overflow-hidden"
                         onClick={() => openLightbox(index)}
                       >
                         <img
@@ -381,9 +382,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                           srcSet={shopifySrcSet(img)}
                           sizes="100vw"
                           loading={index === 0 ? 'eager' : 'lazy'}
+                          fetchPriority={index === 0 ? 'high' : 'auto'}
                         />
                         {index === 0 && product.inStock && (
-                          <div className="absolute top-3 left-3 bg-emerald-600 text-white px-3 py-1.5 rounded-md text-xs uppercase tracking-widest font-medium">
+                          <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 bg-brand-light text-brand-dark px-3 py-1.5 rounded-[3px] text-xs uppercase tracking-widest font-semibold before:h-[7px] before:w-[7px] before:rounded-full before:bg-[#2F8F5B] before:content-['']">
                             Skladom
                           </div>
                         )}
@@ -416,10 +418,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                             });
                           }}
                           className={cn(
-                            "relative aspect-square bg-[#F5F5F3] overflow-hidden transition-all rounded-lg",
+                            "relative aspect-square bg-[#F5F5F3] overflow-hidden transition-all rounded-[3px]",
                             !isOverflowTile && selectedImageIndex === actualIndex
                               ? "ring-2 ring-brand-dark"
-                              : "ring-1 ring-gray-200 active:ring-gray-400"
+                              : "ring-1 ring-brand-line active:ring-gray-400"
                           )}
                           aria-label={isOverflowTile ? `Zobraziť ďalších ${overflowCount} obrázkov` : `Obrázok ${actualIndex + 1}`}
                         >
@@ -451,7 +453,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               </div>
 
               {product.stockQuantity > 0 && (
-                <div className="order-[9] lg:order-[8] text-sm text-gray-500 mb-4">
+                <div className="order-[9] lg:order-[8] text-sm text-brand-muted mb-4">
                   {product.stockQuantity} ks skladom
                 </div>
               )}
@@ -464,8 +466,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   onBundleChange={onBundleChange}
                 />
                 {BUNDLE_OPTIONS.find((b) => b.discountPercent > 0) && (
-                  <p className="text-[11px] text-gray-500 -mt-4 mb-6 leading-relaxed">
-                    <span className="text-emerald-700 font-medium">Tip:</span> Zľava sa automaticky
+                  <p className="text-[11px] text-brand-muted -mt-4 mb-6 leading-relaxed">
+                    <span className="text-brand-dark font-medium">Tip:</span> Zľava sa automaticky
                     uplatní v košíku od{' '}
                     {BUNDLE_OPTIONS.find((b) => b.discountPercent > 0)!.quantity} platní — aj keď
                     skombinujete rôzne dekory.
@@ -486,9 +488,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <button
                   onClick={onAddToCart}
                   className={cn(
-                    "w-full py-4 px-8 text-sm font-semibold tracking-widest uppercase transition-all flex items-center justify-center gap-3",
+                    "w-full rounded-[10px] py-4 px-8 text-sm font-semibold tracking-widest uppercase transition-all flex items-center justify-center gap-3",
                     isInCart
-                      ? "bg-emerald-600 text-white hover:bg-emerald-700"
+                      ? "border border-brand-dark bg-brand-sand text-brand-dark hover:bg-[#E6E3DA]"
                       : "bg-brand-dark text-white hover:bg-black"
                   )}
                 >
@@ -507,7 +509,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 {!product.sampleShopifyVariantId ? (
                   <Link
                     to="/vzorky"
-                    className="w-full py-4 px-8 text-sm font-semibold tracking-widest uppercase border border-gray-300 text-brand-dark hover:border-brand-gold hover:text-brand-gold transition-all flex items-center justify-center gap-3"
+                    className="w-full rounded-[10px] py-4 px-8 text-sm font-semibold tracking-widest uppercase border border-brand-dark text-brand-dark hover:border-brand-dark hover:text-brand-muted transition-all flex items-center justify-center gap-3"
                   >
                     <Package size={18} />
                     Objednať vzorku zadarmo
@@ -516,12 +518,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                   <button
                     onClick={onAddSample}
                     className={cn(
-                      "w-full py-4 px-8 text-sm font-semibold tracking-widest uppercase border transition-all flex items-center justify-center gap-3",
+                      "w-full rounded-[10px] py-4 px-8 text-sm font-semibold tracking-widest uppercase border transition-all flex items-center justify-center gap-3",
                       isSampleInCart
-                        ? "border-emerald-300 bg-emerald-50 text-emerald-700 cursor-default"
+                        ? "border-brand-dark bg-brand-sand text-brand-dark cursor-default"
                         : sampleCount >= MAX_SAMPLES
-                          ? "border-gray-200 text-gray-400 cursor-not-allowed"
-                          : "border-gray-300 text-brand-dark hover:border-brand-gold hover:text-brand-gold"
+                          ? "border-brand-line text-brand-muted cursor-not-allowed"
+                          : "border-brand-dark text-brand-dark hover:border-brand-dark hover:text-brand-muted"
                     )}
                   >
                     {isSampleInCart ? (
@@ -544,13 +546,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 )}
               </div>
 
-              <div className="order-[13] lg:order-[12] space-y-3 text-sm text-gray-600">
+              <div className="order-[13] lg:order-[12] space-y-3 text-sm text-brand-muted">
                 <div className="flex items-center gap-3">
-                  <Truck size={16} className="text-brand-gold" />
+                  <Truck size={16} className="text-brand-dark" />
                   <span>Expedícia do {product.deliveryTimeframe || '5 pracovných dní'}</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Shield size={16} className="text-brand-gold" />
+                  <Shield size={16} className="text-brand-dark" />
                   <span>Záruka 24 mesiacov na materiál</span>
                 </div>
               </div>

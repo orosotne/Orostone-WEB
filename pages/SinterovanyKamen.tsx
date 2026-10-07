@@ -1,53 +1,25 @@
-import React, { useRef, useState, startTransition, Suspense, lazy } from 'react';
-import { AnimatePresence } from 'framer-motion';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
-import {
-  ShieldCheck,
-  Flame,
-  Droplets,
-  Sun,
-  Sparkles,
-  ArrowRight,
-  ChevronDown,
-  ChevronUp,
-  Layers,
-  FlaskConical,
-  Scaling,
-  Paintbrush,
-  Check,
-  X,
-  CookingPot,
-  Bath,
-  Building2,
-  Blocks,
-  Sofa,
-  Landmark,
-  Images,
-} from 'lucide-react';
-import { TextReveal } from '@/components/UI/TextReveal';
-import { Button } from '@/components/UI/Button';
-import { Link } from 'react-router-dom';
-import { Card, CardContent } from '@/components/UI/Card';
+import React from 'react';
+import { Check, X } from 'lucide-react';
 import { SEOHead } from '@/components/UI/SEOHead';
+import {
+  ActionButton,
+  Container,
+  Eyebrow,
+  FaqList,
+  FeatureGrid,
+  GoldBand,
+  PageHero,
+  PageHeroImage,
+  ResponsiveImage,
+  Section,
+  SectionHeader,
+  TextLink,
+} from '@/components/Design';
 import {
   SINTEROVANY_KAMEN_FAQ as FAQ_ITEMS,
   SINTEROVANY_KAMEN_COMPARISON as COMPARISON_DATA,
 } from '@/data/pillars/sinterovanyKamen';
 
-// Lightbox is heavy (framer-motion enter/exit + image gallery). Loading it lazily
-// keeps it out of the initial chunk so the click that opens it doesn't compete
-// with the chunk parse — biggest INP suspect on /sinterovany-kamen.
-const Lightbox = lazy(() =>
-  import('@/components/UI/Lightbox').then((m) => ({ default: m.Lightbox })),
-);
-
-gsap.registerPlugin(ScrollTrigger);
-
-/* =============================================================
-   FAQ DATA — pripravené na JSON-LD FAQ Schema
-   ============================================================= */
 /* =============================================================
    FAQ Schema JSON-LD
    ============================================================= */
@@ -65,177 +37,145 @@ const faqStructuredData = {
 };
 
 /* =============================================================
-   POROVNÁVACIA TABUĽKA
+   OBSAH SEKCIÍ
    ============================================================= */
+const IMG = '/images/stranky';
 
-/* =============================================================
-   FAQ ACCORDION ITEM
-   ============================================================= */
-const FAQItem: React.FC<{
-  question: string;
-  answer: string;
-  isOpen: boolean;
-  onClick: () => void;
-}> = ({ question, answer, isOpen, onClick }) => (
-  <div className="border-b border-gray-200 last:border-b-0">
-    <button
-      onClick={onClick}
-      className="w-full flex items-center justify-between py-6 text-left group"
-      aria-expanded={isOpen}
-    >
-      <h3 className="text-base md:text-lg font-semibold text-brand-dark pr-8 group-hover:text-brand-gold transition-colors">
-        {question}
-      </h3>
-      <span className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-100 group-hover:bg-brand-gold/10 flex items-center justify-center transition-colors">
-        {isOpen ? (
-          <ChevronUp size={18} className="text-brand-dark" />
-        ) : (
-          <ChevronDown size={18} className="text-gray-400" />
-        )}
-      </span>
-    </button>
-    <div
-      className={`overflow-hidden transition-all duration-300 ease-in-out ${
-        isOpen ? 'max-h-96 pb-6' : 'max-h-0'
-      }`}
-    >
-      <p className="text-gray-600 font-light leading-relaxed text-base pr-12">
-        {answer}
-      </p>
-    </div>
-  </div>
-);
+const STATS = [
+  { label: 'Nasiakavosť', value: '< 0,1 %' },
+  { label: 'Tvrdosť (Mohs)', value: '6–8' },
+  { label: 'Tepelná odolnosť', value: '> 300 °C' },
+  { label: 'Zloženie', value: '100 % minerály' },
+];
+
+const PROCESS = [
+  {
+    title: 'Výber minerálov',
+    desc: 'Starostlivo vybraný kremeň, živec, íl a kovové oxidy — výlučne prírodné suroviny bez syntetických prímesí.',
+    img: 'sk-vyroba-mineraly',
+    imgAlt: 'Prírodné minerály použité pri výrobe sinterovaného kameňa',
+  },
+  {
+    title: 'Extrémna kompakcia',
+    desc: 'Minerálna zmes sa zlisuje pod tlakom 10 000 – 25 000 ton. To je ekvivalent hmotnosti dvoch a pol Eiffelových veží na jednej doske.',
+    img: 'sk-vyroba-lisovanie',
+    imgAlt: 'Kompakcia minerálov pod tlakom 25 000 ton',
+  },
+  {
+    title: 'Sintrovanie',
+    desc: 'Doska sa vypáli pri teplote nad 1 200 °C. Častice sa spoja na molekulárnej úrovni — vzniká monolitický, nepórovitý povrch.',
+    img: 'sk-vyroba-vypal',
+    imgAlt: 'Sintrovanie pri teplote 1\u00A0200\u00A0°C',
+  },
+];
+
+const FEATURES = [
+  { title: 'Odolnosť teplu', text: 'Odolá teplotám nad 300 °C. Horúci hrniec priamo na dosku — bez strachu.' },
+  { title: 'Odolnosť voči poškriabaniu', text: 'Tvrdosť 6–8 na Mohsovej stupnici. Tvrdší ako žula (6) a väčšina kuchynského náradia.' },
+  { title: 'Nasiakavosť pod 0,1 %', text: 'Víno, káva ani olej sa nevsiaknu. Na hladkom, nepórovitom povrchu sa baktérie a plesne nemajú kde uchytiť.' },
+  { title: 'UV stabilita', text: 'Farba sa nemení ani na priamom slnku. Ideálne aj pre exteriéry a fasády.' },
+  { title: 'Chemická odolnosť', text: 'Trieda A podľa ISO 10545-13. Odolný voči kyselinám, zásadám aj bazénovej chémii.' },
+  { title: 'Bez impregnácie', text: 'Nepórovitý povrch netreba tesniť ani impregnovať. Na bežné čistenie stačí vlhká utierka a saponát.' },
+  { title: 'Veľké formáty', text: 'Dosky až 3 200 × 1 600 mm. Menej spojov, čistejší dizajn, jednoduchšia montáž.' },
+  { title: 'Dizajnová variabilita', text: 'Matný, saténový aj leštený povrch. Dekory s kresbou mramoru, travertínu a kameňa, od bielej po čiernu.' },
+];
+
+// Kitchen, bathroom, backsplash, fireplace and furniture are visualizations with real Orostone decors.
+const APPLICATIONS = [
+  {
+    title: 'Kuchynské dosky a ostrovčeky',
+    desc: 'Odolnosť voči teplu, škvrnám a nožom robí zo sinterovaného kameňa ideálnu pracovnú plochu. Dosky bez spojov vďaka veľkým formátom.',
+    img: 'sk-kuchyna',
+    imgAlt: 'Kuchyňa s ostrovčekom zo Statuario Diamante a dubovými skrinkami',
+  },
+  {
+    title: 'Kúpeľne',
+    desc: 'Nasiakavosť pod 0,1 % bráni rastu plesní a baktérií. Vhodné na obklady, podlahy, vaničky aj umývadlá.',
+    img: 'sk-kupelna',
+    imgAlt: 'Kúpeľňa s umývadlom a obkladom steny v dekore Taj Mahal',
+  },
+  {
+    title: 'Obklady a zásteny',
+    desc: 'Bezšvové riešenia vďaka veľkým formátom dosiek. Jednoduché čistenie a elegantný vzhľad.',
+    img: 'sk-zastena',
+    imgAlt: 'Kuchynská zástena a pracovná doska v dekore Wild Forest',
+  },
+  {
+    title: 'Fasády',
+    desc: 'UV stabilita, mrazuvzdornosť a nízka hmotnosť (od 3 mm). Farba sa nemení ani po rokoch na priamom slnku.',
+    img: 'sk-fasada',
+    imgAlt: 'Fasáda z veľkoformátových platní sinterovaného kameňa v dekore Astrana Grey (vizualizácia)',
+  },
+  {
+    title: 'Krbové obklady',
+    desc: 'Materiál vzniká pri 1 200 °C — teplo z krbu mu neublíži. Bezpečná a estetická voľba.',
+    img: 'sk-krb',
+    imgAlt: 'Krbová stena obložená dekorom Gothic Gold v obývačke',
+  },
+  {
+    title: 'Nábytok',
+    desc: 'Stolové dosky, police, kúpeľňové konzoly. Tenké formáty (6 mm) pre ľahkú a modernú konštrukciu.',
+    img: 'sk-nabytok',
+    imgAlt: 'Jedálenský stôl s doskou Roman Travertine a čalúnenými stoličkami',
+  },
+];
+
+const FINISHES = [
+  {
+    title: 'Matný (Matt)',
+    desc: 'Jemný, hladký povrch bez odleskov. Minimalizuje viditeľnosť odtlačkov prstov a poskytuje elegantný, moderný vzhľad. Odolnosť voči škvrnám triedy 5 podľa ISO 10545-14.',
+    img: 'sk-povrch-matny',
+    imgAlt: 'Matný povrch sinterovaného kameňa v dekore Gothic Gold',
+  },
+  {
+    title: 'Leštený (Polished)',
+    desc: 'Vysoko lesklý, zrkadlový povrch, ktorý zvýrazňuje hĺbku a kresbu materiálu. Ideálny pre luxusné interiéry. Vyžaduje pravidelné utieranie do sucha.',
+    img: 'sk-povrch-lesteny',
+    imgAlt: 'Leštený povrch sinterovaného kameňa v dekore Calacatta Top s odrazom okna',
+  },
+  {
+    title: 'Saténový (Silk)',
+    desc: 'Jemne zamatový povrch medzi matným a lešteným. Svetlo odráža mäkko a je zhovievavý k odtlačkom prstov. V ponuke ho majú napríklad dekory Taj Mahal a Super White Extra.',
+    img: 'sk-povrch-saten',
+    imgAlt: 'Saténový povrch Silk v dekore Taj Mahal',
+  },
+];
+
+const CARE_YES = [
+  'Vlhká mäkká utierka alebo špongia',
+  'pH neutrálny čistiaci prostriedok',
+  'Bežný saponát s vodou',
+  'Utretie do sucha po čistení',
+  'Neabrazívny prípravok na tvrdšie nečistoty',
+  'Ihneď utierať rozliaty olej alebo víno',
+];
+
+const CARE_NO = [
+  'Bielidlo a chlórové prípravky',
+  'Amoniak a agresívne chemikálie',
+  'Brúsne hubky a oceľovú vlnu',
+  'Kyselinu fluorovodíkovú',
+  'Čističe s voskom, olejom alebo leštenkou',
+  'Vysokotlakový čistič na tesniace škáry',
+];
+
+const below = 'mt-[clamp(40px,5vw,64px)]';
+const th = 'py-4 pr-4 text-left text-[0.82rem] font-semibold text-brand-muted';
+const td = 'py-4 pr-4 align-top';
+const COLUMNS = [
+  { key: 'sintered', label: 'Sinterovaný kameň' },
+  { key: 'natural', label: 'Prírodný kameň' },
+  { key: 'quartz', label: 'Quartz kompozit' },
+  { key: 'ceramic', label: 'Keramika' },
+  { key: 'laminate', label: 'Laminát' },
+] as const;
 
 /* =============================================================
    HLAVNÝ KOMPONENT
    ============================================================= */
-const INSPIRATION_GALLERY = Array.from({ length: 7 }, (_, i) => ({
-  name: `Inšpirácia ${i + 1}`,
-  url: `/images/inspiration/inspiration-${i + 1}.webp`,
-  publicUrl: `/images/inspiration/inspiration-${i + 1}.webp`,
-  category: 'inspiration' as const,
-}));
-
 export const SinterovanyKamen = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const heroRef = useRef<HTMLDivElement>(null);
-  const [openFAQ, setOpenFAQ] = useState<number | null>(0);
-  const [galleryOpen, setGalleryOpen] = useState(false);
-  const [galleryIndex, setGalleryIndex] = useState(0);
-
-  useGSAP(
-    () => {
-      const mm = gsap.matchMedia();
-
-      mm.add('(min-width: 1024px)', () => {
-        // Hero Animation — desktop only
-        const tl = gsap.timeline();
-        tl.fromTo(
-          '.sk-hero-text',
-          { opacity: 0, y: 50 },
-          { opacity: 1, y: 0, duration: 1, stagger: 0.2, ease: 'power3.out' }
-        ).fromTo(
-          '.sk-hero-image',
-          { scale: 1.2, opacity: 0 },
-          { scale: 1, opacity: 1, duration: 1.5, ease: 'power2.out' },
-          '-=0.8'
-        );
-
-        // Parallax Effect for Hero — desktop only (prevents scroll-linked main-thread work on mobile)
-        gsap.to('.sk-hero-image video', {
-          y: 100,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: heroRef.current,
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true,
-          },
-        });
-
-        // Process Steps Reveal
-        const processSteps = gsap.utils.toArray('.sk-process-step');
-        if (processSteps.length) {
-          gsap.fromTo(
-            processSteps,
-            { opacity: 0 },
-            {
-              opacity: 1,
-              duration: 0.8,
-              stagger: 0.15,
-              scrollTrigger: {
-                trigger: processSteps[0] as Element,
-                start: 'top 85%',
-                toggleActions: 'play none none none',
-              },
-            }
-          );
-        }
-
-        // Feature Cards Reveal
-        const featureCards = gsap.utils.toArray('.sk-feature-card');
-        if (featureCards.length) {
-          gsap.fromTo(
-            featureCards,
-            { opacity: 0 },
-            {
-              opacity: 1,
-              duration: 0.8,
-              stagger: 0.1,
-              scrollTrigger: {
-                trigger: featureCards[0] as Element,
-                start: 'top 85%',
-                toggleActions: 'play none none none',
-              },
-            }
-          );
-        }
-
-        // Application Cards Reveal
-        const appCards = gsap.utils.toArray('.sk-app-card');
-        if (appCards.length) {
-          gsap.fromTo(
-            appCards,
-            { opacity: 0 },
-            {
-              opacity: 1,
-              duration: 0.7,
-              stagger: 0.1,
-              scrollTrigger: {
-                trigger: appCards[0] as Element,
-                start: 'top 88%',
-                toggleActions: 'play none none none',
-              },
-            }
-          );
-        }
-
-        // Section headings reveal
-        const headings = gsap.utils.toArray('.sk-section-heading');
-        if (headings.length) {
-          gsap.fromTo(
-            headings,
-            { opacity: 0 },
-            {
-              opacity: 1,
-              duration: 0.8,
-              stagger: 0.15,
-              scrollTrigger: {
-                trigger: headings[0] as Element,
-                start: 'top 85%',
-                toggleActions: 'play none none none',
-              },
-            }
-          );
-        }
-      });
-    },
-    { scope: containerRef }
-  );
-
   return (
-    <main ref={containerRef} className="overflow-hidden w-full bg-white">
-      {/* SEO Head */}
+    <div>
       <SEOHead
         title="Sinterovaný kameň: cena, výhody, použitie | OROSTONE"
         description="Čo je sinterovaný kameň, koľko stojí a kedy dáva zmysel ako pracovná doska. Praktický sprievodca pre kuchyňu, kde nechcete robiť kompromis."
@@ -244,800 +184,290 @@ export const SinterovanyKamen = () => {
         maxVideoPreview={0}
       />
 
-      {/* ========================================================
-          1. HERO SECTION
-          ======================================================== */}
-      <section
-        ref={heroRef}
-        className="relative h-dvh min-h-[800px] flex items-center justify-center overflow-hidden pt-20"
-      >
-        <div className="absolute inset-0 z-0 sk-hero-image">
-          <picture>
-            <source srcSet="/images/home/hero-1.avif" type="image/avif" />
-            <img
-              src="/images/home/hero-1.webp"
-              alt=""
-              className="w-full h-full object-cover brightness-[0.35]"
+      {/* 1. HERO */}
+      <PageHero
+        eyebrow="O materiáli"
+        title="Sinterovaný kameň"
+        lead="Prírodné minerály spečené pri vysokej teplote a tlaku. Výsledkom je hustý povrch, ktorý odolá teplu, škvrnám aj poškriabaniu a nepotrebuje impregnáciu."
+        actions={
+          <>
+            <ActionButton variant="dark" to="/kategoria/sintered-stone" arrow>
+              Pozrieť kolekcie
+            </ActionButton>
+            <TextLink to="/vzorky">Vyžiadať vzorku</TextLink>
+          </>
+        }
+        media={
+          <PageHeroImage
+            base={`${IMG}/sk-calacatta-top`}
+            alt="Pracovná doska Calacatta Top so zapusteným drezom, keramickou miskou a ľanovou utierkou, pohľad zhora"
+            caption="Vizualizácia s dekorom Calacatta Top"
+            position="50% 40%"
+          />
+        }
+      />
+
+      {/* 2. ČO JE SINTEROVANÝ KAMEŇ */}
+      <Section tone="sand">
+        <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-[clamp(48px,6vw,104px)]">
+          <div className="grid justify-items-start gap-6">
+            <Eyebrow>Definícia</Eyebrow>
+            <h2 className="text-os-h2">Čo je sinterovaný kameň</h2>
+            <p className="max-w-[58ch] text-os-lead font-light text-brand-muted">
+              Sinterovaný kameň je pokročilý povrchový materiál vyrobený výhradne z prírodných minerálov — kremenca, živca, ílu a
+              kovových oxidov. Výrobný proces napodobňuje geologické formovanie hornín v zemskej kôre, no namiesto miliónov rokov
+              trvá len niekoľko hodín.
+            </p>
+            <p className="max-w-[58ch] text-os-lead font-light text-brand-muted">
+              Na rozdiel od quartzových kompozitov neobsahuje žiadne živice ani syntetické spojivá. Výsledkom je plne
+              vitrifikovaný, nepórovitý povrch s výnimočnou odolnosťou voči teplu, škvrnám, poškriabaniu a UV žiareniu.
+            </p>
+            <dl className="mt-2 grid w-full grid-cols-2 gap-x-[clamp(24px,3vw,48px)] gap-y-7">
+              {STATS.map((s) => (
+                <div key={s.label} className="grid content-start gap-2 border-t border-brand-dark pt-5">
+                  <dt className="order-2 text-[0.88rem] font-normal text-brand-muted">{s.label}</dt>
+                  <dd className="order-1 m-0 text-[clamp(1.5rem,2.2vw,2rem)] font-semibold leading-none tracking-[-0.02em] tabular-nums">
+                    {s.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+          <figure className="m-0 grid gap-3">
+            <ResponsiveImage
+              base={`${IMG}/sk-platne`}
+              widths={[640, 1200]}
+              ratio={0.8}
+              alt="Tri veľkoformátové platne sinterovaného kameňa opreté o stenu na dubovom podstavci"
+              sizes="(min-width: 1024px) 46vw, 100vw"
+              className="aspect-[4/5] w-full rounded-[3px] object-cover"
             />
-          </picture>
-        </div>
-        <div className="relative z-10 container mx-auto px-6 text-center text-white">
-          <span className="sk-hero-text font-sans text-xs font-bold tracking-widest uppercase text-brand-gold mb-6 block">
-            Materiál budúcnosti
-          </span>
-          <h1 className="sk-hero-text text-4xl md:text-5xl lg:text-7xl font-sans font-bold tracking-normal leading-[1.05] mb-8">
-            Sinterovaný kameň
-          </h1>
-          <p className="sk-hero-text font-sans font-light text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed mb-12">
-            100 % prírodné minerály. Extrémna odolnosť. Nulová údržba.
-            Povrch, ktorý prekoná prírodný kameň aj quartz.
-          </p>
-          <div className="sk-hero-text flex flex-col sm:flex-row gap-4 w-fit mx-auto">
-            <Link to="/kategoria/sintered-stone" className="w-full sm:w-auto">
-              <Button
-                size="lg"
-                className="w-full bg-brand-gold text-brand-dark px-10 py-6 text-base rounded-full hover:bg-white hover:text-brand-dark transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1"
-              >
-                Pozrieť kolekcie
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
-            <Link to="/kontakt" className="w-full sm:w-auto">
-              <Button
-                variant="outline"
-                size="lg"
-                className="w-full border-white/40 text-white px-10 py-6 text-base rounded-full hover:bg-white hover:text-brand-dark transition-all"
-              >
-                Vyžiadať vzorku
-              </Button>
-            </Link>
-          </div>
-        </div>
+            <figcaption className="text-[0.8rem] font-normal text-brand-muted">Vizualizácia veľkoformátových platní Orostone</figcaption>
+          </figure>
+        </Container>
+      </Section>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 z-10">
-          <div className="flex flex-col items-center gap-2 animate-bounce">
-            <ChevronDown size={28} />
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
-          2. ČO JE SINTEROVANÝ KAMEŇ
-          ======================================================== */}
-      <section className="py-24 md:py-32 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="sk-section-heading">
-                <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/10 text-brand-gold text-xs font-bold tracking-widest uppercase mb-6">
-                  <Layers size={14} />
-                  Definícia
+      {/* 3. AKO SA VYRÁBA */}
+      <Section tone="graphite">
+        <Container>
+          <SectionHeader
+            onDark
+            eyebrow="Výrobný proces"
+            title="Ako sa sinterovaný kameň vyrába"
+            lead="Tri kroky, v ktorých sa z prírodných minerálov stane hustý a odolný povrch."
+          />
+          <ol className={`${below} grid gap-x-[clamp(24px,3vw,40px)] gap-y-12 md:grid-cols-3`}>
+            {PROCESS.map((item, i) => (
+              <li key={item.title} className="grid content-start gap-3">
+                <ResponsiveImage
+                  base={`${IMG}/${item.img}`}
+                  widths={[640, 1200]}
+                  ratio={1.5}
+                  alt={item.imgAlt}
+                  sizes="(min-width: 768px) 30vw, 100vw"
+                  className="mb-3 aspect-[3/2] w-full rounded-[3px] object-cover"
+                />
+                <span className="border-t border-brand-light/20 pt-5 text-[clamp(1.5rem,1.9vw,1.9rem)] font-semibold leading-none tracking-[-0.02em]" aria-hidden="true">
+                  {i + 1}
                 </span>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-sans font-bold text-brand-dark mb-8 leading-tight">
-                  Čo je sinterovaný kameň
-                </h2>
-              </div>
-              <p className="text-lg text-gray-600 font-light leading-relaxed mb-6">
-                Sinterovaný kameň je pokročilý povrchový materiál vyrobený výhradne z
-                prírodných minerálov — kremenca, živca, ílu a kovových oxidov. Výrobný
-                proces napodobňuje geologické formovanie hornín v zemskej kôre, no namiesto
-                miliónov rokov trvá len niekoľko hodín.
-              </p>
-              <p className="text-lg text-gray-600 font-light leading-relaxed mb-8">
-                Na rozdiel od quartzových kompozitov neobsahuje žiadne živice ani
-                syntetické spojivá. Výsledkom je plne vitrifikovaný, nepórovitý povrch
-                s výnimočnou odolnosťou voči teplu, škvrnám, poškriabaniu a UV žiareniu.
-              </p>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { label: 'Nasiakavosť', value: '< 0,1 %' },
-                  { label: 'Tvrdosť (Mohs)', value: '6–8' },
-                  { label: 'Tepelná odolnosť', value: '> 300 °C' },
-                  { label: 'Zloženie', value: '100 % minerály' },
-                ].map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="bg-[#F9F9F7] rounded-2xl p-5 text-center"
-                  >
-                    <p className="text-2xl md:text-3xl font-bold text-brand-dark mb-1">
-                      {stat.value}
-                    </p>
-                    <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold">
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="relative h-[500px] lg:h-[600px] w-full rounded-[2rem] overflow-hidden shadow-2xl">
-              <img
-                src="/images/yabo-white-application.jpg"
-                className="w-full h-full object-cover"
-                alt="Sinterovaný kameň Yabo White — aplikácia v interiéri"
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
-          3. AKO SA VYRÁBA
-          ======================================================== */}
-      <section className="py-24 md:py-32 bg-brand-dark text-white overflow-hidden">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-20 sk-section-heading">
-            <span className="text-brand-gold text-xs font-bold tracking-widest uppercase mb-4 block">
-              Výrobný proces
-            </span>
-            <TextReveal
-              variant="h2"
-              className="text-3xl md:text-4xl lg:text-5xl font-sans font-bold mb-6 justify-center"
-            >
-              Ako sa sinterovaný kameň vyrába
-            </TextReveal>
-            <p className="text-gray-400 text-lg font-light max-w-2xl mx-auto">
-              Tri kroky, ktoré premenia prírodné minerály na nezničiteľný povrch.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                step: '01',
-                title: 'Výber minerálov',
-                desc: 'Starostlivo vybraný kremeň, živec, íl a kovové oxidy — výlučne prírodné suroviny bez syntetických prímesí.',
-                icon: <FlaskConical className="w-8 h-8" />,
-                img: '/images/process-minerals.png',
-                imgAlt:
-                  'Prírodné minerály použité pri výrobe sinterovaného kameňa',
-              },
-              {
-                step: '02',
-                title: 'Extrémna kompakcia',
-                desc: 'Minerálna zmes sa zlisuje pod tlakom 10 000 – 25 000 ton. To je ekvivalent hmotnosti dvoch a pol Eiffelových veží na jednej doske.',
-                icon: <Scaling className="w-8 h-8" />,
-                img: '/images/process-compaction.png',
-                imgAlt: 'Kompakcia minerálov pod tlakom 25 000 ton',
-              },
-              {
-                step: '03',
-                title: 'Sintrovanie',
-                desc: 'Doska sa vypáli pri teplote nad 1 200 °C. Častice sa spoja na molekulárnej úrovni — vzniká monolitický, nepórovitý povrch.',
-                icon: <Flame className="w-8 h-8" />,
-                img: '/images/process-sintering.png',
-                imgAlt: 'Sintrovanie pri teplote 1200 stupňov Celzia',
-              },
-            ].map((item) => (
-              <div
-                key={item.step}
-                className="sk-process-step group relative rounded-[2rem] overflow-hidden bg-white/5 border border-white/10 hover:border-brand-gold/30 transition-all duration-500"
-              >
-                <div className="h-56 overflow-hidden">
-                  <img
-                    src={item.img}
-                    alt={item.imgAlt}
-                    className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-700"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <div className="absolute top-4 left-4 bg-brand-gold text-brand-dark w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm">
-                    {item.step}
-                  </div>
-                </div>
-                <div className="p-8">
-                  <div className="text-brand-gold mb-4">{item.icon}</div>
-                  <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                  <p className="text-gray-400 font-light leading-relaxed text-base">
-                    {item.desc}
-                  </p>
-                </div>
-              </div>
+                <h3 className="mt-2 text-[1.2rem] font-medium leading-snug">{item.title}</h3>
+                <p className="max-w-[44ch] font-light text-brand-light/75">{item.desc}</p>
+              </li>
             ))}
-          </div>
-        </div>
-      </section>
+          </ol>
+        </Container>
+      </Section>
 
-      {/* ========================================================
-          4. VÝHODY
-          ======================================================== */}
-      <section className="py-24 md:py-32 bg-[#F9F9F7]">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-20 sk-section-heading">
-            <TextReveal
-              variant="h2"
-              className="text-3xl md:text-4xl lg:text-5xl font-sans font-bold text-brand-dark mb-6 justify-center"
-            >
-              Výhody sinterovaného kameňa
-            </TextReveal>
-            <p className="text-gray-500 text-lg font-light max-w-2xl mx-auto">
-              Prečo si ho vyberajú architekti, kuchynské štúdiá aj nároční majitelia domov.
-            </p>
+      {/* 4. VÝHODY */}
+      <Section tone="chalk">
+        <Container>
+          <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-5">
+            <SectionHeader
+              title="Výhody sinterovaného kameňa"
+              lead="Prečo si ho vyberajú architekti, kuchynské štúdiá aj nároční majitelia domov."
+            />
+            <TextLink to="/vyhody">Zistiť viac o výhodách</TextLink>
           </div>
+          <FeatureGrid items={FEATURES} columns={4} className={below} />
+        </Container>
+      </Section>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                icon: <Flame className="w-8 h-8" />,
-                title: 'Odolnosť teplu',
-                desc: 'Odolá teplotám nad 300 °C. Horúci hrniec priamo na dosku — bez strachu.',
-                color: 'text-black',
-              },
-              {
-                icon: <ShieldCheck className="w-8 h-8" />,
-                title: 'Nepoškriabateľný',
-                desc: 'Tvrdosť 6–8 na Mohsovej stupnici. Tvrdší ako žula (6) a väčšina kuchynského náradia.',
-                color: 'text-black',
-              },
-              {
-                icon: <Droplets className="w-8 h-8" />,
-                title: 'Nulová nasiakavosť',
-                desc: 'Pod 0,1 %. Víno, káva, olej — nič sa nevsiakne. Baktérie a plesne nemajú šancu.',
-                color: 'text-black',
-              },
-              {
-                icon: <Sun className="w-8 h-8" />,
-                title: 'UV stabilita',
-                desc: 'Farba sa nemení ani na priamom slnku. Ideálne aj pre exteriéry a fasády.',
-                color: 'text-black',
-              },
-              {
-                icon: <FlaskConical className="w-8 h-8" />,
-                title: 'Chemická odolnosť',
-                desc: 'Trieda A podľa ISO 10545-13. Odolný voči kyselinám, zásadám aj bazénovej chémii.',
-                color: 'text-black',
-              },
-              {
-                icon: <Sparkles className="w-8 h-8" />,
-                title: 'Bez impregnácie',
-                desc: 'Nepórovitý povrch nevyžaduje žiadne tesnenie ani pravidelnú údržbu.',
-                color: 'text-black',
-              },
-              {
-                icon: <Scaling className="w-8 h-8" />,
-                title: 'Veľké formáty',
-                desc: 'Dosky až 3 200 × 1 600 mm. Menej spojov, čistejší dizajn, jednoduchšia montáž.',
-                color: 'text-black',
-              },
-              {
-                icon: <Paintbrush className="w-8 h-8" />,
-                title: 'Dizajnová variabilita',
-                desc: 'Matný, leštený, štruktúrovaný povrch. Vzhľad mramoru, betónu, kovu či dreva.',
-                color: 'text-black',
-              },
-            ].map((item) => (
-              <Card
-                key={item.title}
-                className="sk-feature-card border-0 shadow-sm hover:shadow-xl bg-white rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1 group"
-              >
-                <CardContent className="p-0">
-                  <div
-                    className={`${item.color} mb-5 group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    {item.icon}
-                  </div>
-                  <h3 className="text-lg font-bold text-brand-dark mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-500 font-light text-sm leading-relaxed">
-                    {item.desc}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center mt-14">
-            <Link
-              to="/vyhody"
-              className="inline-flex items-center gap-2 px-8 py-3.5 bg-brand-dark text-white font-sans font-semibold text-sm tracking-wide rounded-full hover:bg-black transition-colors duration-300"
-            >
-              Zistiť viac o výhodách
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
-          5. POROVNANIE S ALTERNATÍVAMI
-          ======================================================== */}
-      <section className="py-24 md:py-32 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16 sk-section-heading">
-            <TextReveal
-              variant="h2"
-              className="text-3xl md:text-4xl lg:text-5xl font-sans font-bold text-brand-dark mb-6 justify-center"
-            >
-              Porovnanie s inými materiálmi
-            </TextReveal>
-            <p className="text-gray-500 text-lg font-light max-w-2xl mx-auto">
-              Objektívne porovnanie kľúčových parametrov. Bez marketingových
-              fráz — len overené fakty.
-            </p>
-          </div>
-
+      {/* 5. POROVNANIE S ALTERNATÍVAMI */}
+      <Section tone="sand">
+        <Container>
+          <SectionHeader
+            title="Porovnanie s inými materiálmi"
+            lead="Objektívne porovnanie kľúčových parametrov. Bez marketingových fráz — len overené fakty."
+          />
           {/* Desktop Table */}
-          <div className="hidden lg:block overflow-x-auto">
-            <table className="w-full border-collapse">
+          <div className={`${below} hidden lg:block`}>
+            <table className="w-full border-collapse text-[0.95rem]">
               <thead>
-                <tr className="border-b-2 border-brand-dark">
-                  <th className="text-left py-4 px-4 text-sm font-bold uppercase tracking-wider text-gray-500">
-                    Vlastnosť
-                  </th>
-                  <th className="text-center py-4 px-4 text-sm font-bold uppercase tracking-wider text-brand-gold bg-brand-dark/5 rounded-t-xl">
-                    Sinterovaný kameň
-                  </th>
-                  <th className="text-center py-4 px-4 text-sm font-bold uppercase tracking-wider text-gray-500">
-                    Prírodný kameň
-                  </th>
-                  <th className="text-center py-4 px-4 text-sm font-bold uppercase tracking-wider text-gray-500">
-                    Quartz kompozit
-                  </th>
-                  <th className="text-center py-4 px-4 text-sm font-bold uppercase tracking-wider text-gray-500">
-                    Keramika
-                  </th>
-                  <th className="text-center py-4 px-4 text-sm font-bold uppercase tracking-wider text-gray-500">
-                    Laminát
-                  </th>
+                <tr className="border-b border-brand-dark">
+                  <th className={th}>Vlastnosť</th>
+                  {COLUMNS.map((c, i) => (
+                    <th key={c.key} className={`${th} ${i === 0 ? 'bg-brand-light px-4 text-brand-dark' : 'pl-4'}`}>
+                      {c.label}
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody>
-                {COMPARISON_DATA.map((row, idx) => (
-                  <tr
-                    key={row.property}
-                    className={`border-b border-gray-100 ${
-                      idx % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'
-                    }`}
-                  >
-                    <td className="py-4 px-4 text-sm font-semibold text-brand-dark">
-                      {row.property}
-                    </td>
-                    <td className="py-4 px-4 text-sm text-center font-semibold text-brand-dark bg-brand-gold/5">
-                      {row.sintered}
-                    </td>
-                    <td className="py-4 px-4 text-sm text-center text-gray-600">
-                      {row.natural}
-                    </td>
-                    <td className="py-4 px-4 text-sm text-center text-gray-600">
-                      {row.quartz}
-                    </td>
-                    <td className="py-4 px-4 text-sm text-center text-gray-600">
-                      {row.ceramic}
-                    </td>
-                    <td className="py-4 px-4 text-sm text-center text-gray-600">
-                      {row.laminate}
-                    </td>
+                {COMPARISON_DATA.map((row) => (
+                  <tr key={row.property} className="border-b border-brand-line">
+                    <td className={`${td} font-medium`}>{row.property}</td>
+                    {COLUMNS.map((c, i) => (
+                      <td key={c.key} className={`${td} ${i === 0 ? 'bg-brand-light px-4 font-semibold' : 'pl-4 font-light text-brand-muted'}`}>
+                        {row[c.key]}
+                      </td>
+                    ))}
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-
           {/* Mobile Cards */}
-          <div className="lg:hidden space-y-4">
+          <div className={`${below} grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:hidden`}>
             {COMPARISON_DATA.map((row) => (
-              <div
-                key={row.property}
-                className="bg-[#F9F9F7] rounded-2xl p-5"
-              >
-                <h4 className="text-sm font-bold text-brand-dark mb-3 uppercase tracking-wider">
-                  {row.property}
-                </h4>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-brand-gold font-semibold">
-                      Sinterovaný kameň
-                    </span>
-                    <span className="text-sm font-bold text-brand-dark">
-                      {row.sintered}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-500">Prírodný kameň</span>
-                    <span className="text-sm text-gray-600">{row.natural}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-500">Quartz kompozit</span>
-                    <span className="text-sm text-gray-600">{row.quartz}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-500">Keramika</span>
-                    <span className="text-sm text-gray-600">{row.ceramic}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-500">Laminát</span>
-                    <span className="text-sm text-gray-600">{row.laminate}</span>
-                  </div>
-                </div>
+              <div key={row.property} className="border-t border-brand-dark pt-4">
+                <h4 className="mb-3 font-semibold">{row.property}</h4>
+                <dl className="m-0 grid gap-1.5 text-[0.92rem]">
+                  {COLUMNS.map((c, i) => (
+                    <div key={c.key} className="flex items-baseline justify-between gap-4">
+                      <dt className={i === 0 ? 'font-semibold' : 'font-normal text-brand-muted'}>{c.label}</dt>
+                      <dd className={`m-0 text-right ${i === 0 ? 'font-semibold' : 'font-light text-brand-muted'}`}>{row[c.key]}</dd>
+                    </div>
+                  ))}
+                </dl>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
-      {/* ========================================================
-          6. POUŽITIE V INTERIÉRI
-          ======================================================== */}
-      <section className="py-24 md:py-32 bg-black text-white">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16 sk-section-heading">
-            <span className="text-brand-gold text-xs font-bold tracking-widest uppercase mb-4 block">
-              Aplikácie
-            </span>
-            <TextReveal
-              variant="h2"
-              className="text-3xl md:text-4xl lg:text-5xl font-sans font-bold mb-6 justify-center"
-            >
-              Kde sa sinterovaný kameň používa
-            </TextReveal>
-            <p className="text-gray-400 text-lg font-light max-w-2xl mx-auto">
-              Od kuchynských dosiek až po fasády. Jeden materiál, nekonečné
-              možnosti.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                icon: <CookingPot className="w-7 h-7" />,
-                title: 'Kuchynské dosky a ostrovčeky',
-                desc: 'Odolnosť voči teplu, škvrnám a nožom robí zo sinterovaného kameňa ideálnu pracovnú plochu. Dosky bez spojov vďaka veľkým formátom.',
-                img: '/images/app-kitchen.png',
-                imgAlt: 'Kuchynská pracovná doska zo sinterovaného kameňa',
-              },
-              {
-                icon: <Bath className="w-7 h-7" />,
-                title: 'Kúpeľne',
-                desc: 'Nulová nasiakavosť zabraňuje rastu plesní a baktérií. Ideálne na obklady, podlahy, vaničky aj umývadlá.',
-                img: '/images/app-bathroom.png',
-                imgAlt: 'Sinterovaný kameň v modernej kúpeľni',
-              },
-              {
-                icon: <Blocks className="w-7 h-7" />,
-                title: 'Obklady a zásteny',
-                desc: 'Bezšvové riešenia vďaka veľkým formátom dosiek. Jednoduché čistenie a elegantný vzhľad.',
-                img: '/images/app-backsplash.png',
-                imgAlt: 'Kuchynská zástena zo sinterovaného kameňa',
-              },
-              {
-                icon: <Building2 className="w-7 h-7" />,
-                title: 'Fasády',
-                desc: 'UV stabilita, mrazuvzdornosť a nízka hmotnosť (od 3 mm). Farba sa nemení ani po rokoch na priamom slnku.',
-                img: '/images/app-facade.png',
-                imgAlt: 'Fasáda zo sinterovaného kameňa',
-              },
-              {
-                icon: <Landmark className="w-7 h-7" />,
-                title: 'Krbové obklady',
-                desc: 'Materiál vzniká pri 1 200 °C — teplo z krbu mu neublíži. Bezpečná a estetická voľba.',
-                img: '/images/app-fireplace.png',
-                imgAlt: 'Krbový obklad zo sinterovaného kameňa',
-              },
-              {
-                icon: <Sofa className="w-7 h-7" />,
-                title: 'Nábytok',
-                desc: 'Stolové dosky, police, kúpeľňové konzoly. Tenké formáty (6 mm) pre ľahkú a modernú konštrukciu.',
-                img: '/images/app-furniture.png',
-                imgAlt: 'Nábytok zo sinterovaného kameňa',
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="sk-app-card group relative h-[400px] rounded-3xl overflow-hidden cursor-pointer"
-              >
-                <img
-                  src={item.img}
-                  alt={item.imgAlt}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-8">
-                  <div className="text-brand-gold mb-3">{item.icon}</div>
-                  <h3 className="text-lg font-bold mb-2">{item.title}</h3>
-                  <p className="text-gray-400 font-light text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    {item.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 flex justify-center">
-            <button
-              onClick={() => {
-                // Defer Lightbox mount off the click → next paint path. The Lightbox
-                // is heavy (image gallery + framer-motion entry animations).
-                startTransition(() => {
-                  setGalleryIndex(0);
-                  setGalleryOpen(true);
-                });
-              }}
-              className="inline-flex items-center gap-2 border border-white/30 text-white px-6 py-3 rounded-full hover:bg-white hover:text-black transition-all font-sans text-sm font-semibold tracking-widest uppercase"
-            >
-              <Images className="w-4 h-4" /> Ukážky realizácií
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
-          7. POVRCHY A VZHĽADY
-          ======================================================== */}
-      <section className="py-24 md:py-32 bg-[#F9F9F7]">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16 sk-section-heading">
-            <TextReveal
-              variant="h2"
-              className="text-3xl md:text-4xl lg:text-5xl font-sans font-bold text-brand-dark mb-6 justify-center"
-            >
-              Povrchové úpravy
-            </TextReveal>
-            <p className="text-gray-500 text-lg font-light max-w-2xl mx-auto">
-              Každý povrch mení charakter materiálu. Vyberte si ten, ktorý
-              najlepšie ladí s vaším interiérom.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'Matný (Matt)',
-                desc: 'Jemný, hladký povrch bez odleskov. Minimalizuje viditeľnosť odtlačkov prstov a poskytuje elegantný, moderný vzhľad. Odolnosť voči škvrnám triedy 5 podľa ISO 10545-14.',
-                img: '/images/finish-matte.png',
-                imgAlt: 'Matný povrch sinterovaného kameňa',
-              },
-              {
-                title: 'Leštený (Polished)',
-                desc: 'Vysoko lesklý, zrkadlový povrch, ktorý zvýrazňuje hĺbku a kresbu materiálu. Ideálny pre luxusné interiéry. Vyžaduje pravidelné utieranie do sucha.',
-                img: '/images/finish-polished.png',
-                imgAlt: 'Leštený povrch sinterovaného kameňa',
-              },
-              {
-                title: 'Štruktúrovaný (Textured)',
-                desc: 'Hmatateľná textúra, ktorá napodobňuje prírodný kameň, drevo alebo betón. Technológia VeinTouch vytvára realistický dotykový zážitok pri zachovaní všetkých technických vlastností.',
-                img: '/images/finish-textured.png',
-                imgAlt: 'Štruktúrovaný povrch sinterovaného kameňa',
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="sk-feature-card group bg-white rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
-              >
-                <div className="h-64 overflow-hidden">
-                  <img
-                    src={item.img}
-                    alt={item.imgAlt}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                <div className="p-8">
-                  <h3 className="text-xl font-bold text-brand-dark mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-500 font-light leading-relaxed text-base">
-                    {item.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
-          8. ÚDRŽBA A ČISTENIE
-          ======================================================== */}
-      <section className="py-24 md:py-32 bg-white">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16 sk-section-heading">
-            <TextReveal
-              variant="h2"
-              className="text-3xl md:text-4xl lg:text-5xl font-sans font-bold text-brand-dark mb-6 justify-center"
-            >
-              Údržba a čistenie
-            </TextReveal>
-            <p className="text-gray-500 text-lg font-light max-w-2xl mx-auto">
-              Minimálna starostlivosť, maximálny výsledok. Žiadna impregnácia,
-              žiadne špeciálne prípravky.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* ÁNO */}
-            <div className="bg-emerald-50 rounded-[2rem] p-8 md:p-10">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center">
-                  <Check className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-brand-dark">
-                  Odporúčame
-                </h3>
-              </div>
-              <ul className="space-y-4">
-                {[
-                  'Vlhká mäkká utierka alebo špongia',
-                  'pH neutrálny čistiaci prostriedok',
-                  'Bežný saponát s vodou',
-                  'Utretie do sucha po čistení',
-                  'Neabrazívny prípravok na tvrdšie nečistoty',
-                  'Ihneď utierať rozliaty olej alebo víno',
-                ].map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-3 text-gray-700"
-                  >
-                    <Check className="w-4 h-4 text-emerald-500 mt-1 flex-shrink-0" />
-                    <span className="font-light text-base">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* NIE */}
-            <div className="bg-red-50 rounded-[2rem] p-8 md:p-10">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded-full bg-red-500 flex items-center justify-center">
-                  <X className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-brand-dark">
-                  Nepoužívajte
-                </h3>
-              </div>
-              <ul className="space-y-4">
-                {[
-                  'Bielidlo a chlórové prípravky',
-                  'Amoniak a agresívne chemikálie',
-                  'Brúsne hubky a oceľovú vlnu',
-                  'Kyselinu fluorovodíkovú',
-                  'Čističe s voskom, olejom alebo leštenkou',
-                  'Vysokotlakový čistič na tesniace škáry',
-                ].map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-3 text-gray-700"
-                  >
-                    <X className="w-4 h-4 text-red-500 mt-1 flex-shrink-0" />
-                    <span className="font-light text-base">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
-          9. FAQ
-          ======================================================== */}
-      <section className="py-24 md:py-32 bg-[#F9F9F7]">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16 sk-section-heading">
-            <TextReveal
-              variant="h2"
-              className="text-3xl md:text-4xl lg:text-5xl font-sans font-bold text-brand-dark mb-6 justify-center"
-            >
-              Často kladené otázky
-            </TextReveal>
-            <p className="text-gray-500 text-lg font-light max-w-2xl mx-auto">
-              Odpovede na najčastejšie otázky o sinterovanom kameni.
-            </p>
-          </div>
-
-          <div className="max-w-3xl mx-auto bg-white rounded-[2rem] shadow-sm p-6 md:p-10">
-            {FAQ_ITEMS.map((item, idx) => (
-              <FAQItem
-                key={idx}
-                question={item.question}
-                answer={item.answer}
-                isOpen={openFAQ === idx}
-                onClick={() => {
-                  // Defer the AnimatePresence height/opacity transition cost off the
-                  // click → next paint path. The FAQ section re-renders are mostly
-                  // expensive due to framer-motion measuring the answer block.
-                  const next = openFAQ === idx ? null : idx;
-                  startTransition(() => setOpenFAQ(next));
-                }}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========================================================
-          10. ZÁVER + CTA
-          ======================================================== */}
-      <section className="py-32 md:py-40 bg-brand-dark text-center text-white relative overflow-hidden">
-        {/* Subtle background pattern */}
-        <div
-          className="absolute inset-0 opacity-5 pointer-events-none"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 50% 50%, #ECD488 1px, transparent 1px)',
-            backgroundSize: '40px 40px',
-          }}
-        />
-        <div className="container mx-auto px-6 relative z-10">
-          <TextReveal
-            variant="h2"
-            className="text-3xl md:text-4xl lg:text-5xl font-sans font-bold mb-8 justify-center tracking-tight"
-          >
-            Pripravený na sinterovaný kameň?
-          </TextReveal>
-          <p className="text-lg text-gray-400 font-light mb-12 max-w-2xl mx-auto">
-            Dotknite sa materiálu budúcnosti. Vyžiadajte si vzorku alebo
-            nezáväznú cenovú ponuku ešte dnes.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link to="/kontakt?openWizard=true">
-              <Button
-                size="lg"
-                className="bg-brand-gold text-brand-dark px-10 py-8 text-lg rounded-full hover:bg-white hover:text-brand-dark transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1"
-              >
-                Vytvoriť cenovú ponuku
-              </Button>
-            </Link>
-            <Link to="/kategoria/sintered-stone">
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-white/30 text-white px-10 py-8 text-lg rounded-full hover:bg-white hover:text-brand-dark transition-all"
-              >
-                Prezrieť kolekcie
-              </Button>
-            </Link>
-          </div>
-          <div className="mt-12 flex flex-wrap justify-center gap-8 text-sm text-gray-500">
-            <Link
-              to="/vzorky"
-              className="text-brand-gold font-semibold hover:text-brand-dark transition-colors"
-            >
-              Objednať vzorky zadarmo
-            </Link>
-            <Link
-              to="/kategoria/sintered-stone"
-              className="hover:text-brand-gold transition-colors"
-            >
-              Pozrieť dekory
-            </Link>
-            <Link
-              to="/realizacie"
-              className="hover:text-brand-gold transition-colors"
-            >
-              Pozrieť realizácie
-            </Link>
-            <Link
-              to="/kontakt"
-              className="hover:text-brand-gold transition-colors"
-            >
-              Kontaktujte nás
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <AnimatePresence>
-        {galleryOpen && (
-          <Suspense fallback={null}>
-            <Lightbox
-              images={INSPIRATION_GALLERY}
-              currentIndex={galleryIndex}
-              isOpen={galleryOpen}
-              onClose={() => setGalleryOpen(false)}
-              onPrevious={() => setGalleryIndex(i => Math.max(0, i - 1))}
-              onNext={() => setGalleryIndex(i => Math.min(INSPIRATION_GALLERY.length - 1, i + 1))}
+      {/* 6. POUŽITIE V INTERIÉRI */}
+      <Section tone="chalk">
+        <Container>
+          <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-5">
+            <SectionHeader
+              eyebrow="Aplikácie"
+              title="Kde sa sinterovaný kameň používa"
+              lead="Od kuchynských dosiek až po fasády. Jeden materiál, nekonečné možnosti."
             />
-          </Suspense>
-        )}
-      </AnimatePresence>
-    </main>
+            <TextLink to="/realizacie">Pozrieť realizácie</TextLink>
+          </div>
+          <ul className={`${below} grid gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-3`}>
+            {APPLICATIONS.map((item) => (
+              <li key={item.title} className="grid content-start gap-3">
+                <ResponsiveImage
+                  base={`${IMG}/${item.img}`}
+                  widths={[640, 1200]}
+                  ratio={4 / 3}
+                  alt={item.imgAlt}
+                  sizes="(min-width: 1024px) 30vw, (min-width: 640px) 46vw, 100vw"
+                  className="mb-2 aspect-[4/3] w-full rounded-[3px] object-cover"
+                />
+                <h3 className="text-[1.2rem] font-semibold leading-snug">{item.title}</h3>
+                <p className="max-w-[48ch] font-light text-brand-muted">{item.desc}</p>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-10 text-[0.84rem] font-normal text-brand-muted">
+            Ilustračné vizualizácie. V kuchyni, kúpeľni, na zástene, fasáde, krbe a stole je skutočný dekor Orostone: Statuario Diamante,
+            Taj Mahal, Wild Forest, Astrana Grey, Gothic Gold a Roman Travertine.
+          </p>
+        </Container>
+      </Section>
+
+      {/* 7. POVRCHY A VZHĽADY */}
+      <Section tone="sand">
+        <Container>
+          <SectionHeader
+            title="Povrchové úpravy"
+            lead="Každý povrch mení charakter materiálu. Vyberte si ten, ktorý najlepšie ladí s vaším interiérom."
+          />
+          <ul className={`${below} grid gap-x-5 gap-y-12 md:grid-cols-3`}>
+            {FINISHES.map((item) => (
+              <li key={item.title} className="grid content-start gap-3">
+                <ResponsiveImage
+                  base={`${IMG}/${item.img}`}
+                  widths={[640, 1200]}
+                  ratio={4 / 3}
+                  alt={item.imgAlt}
+                  sizes="(min-width: 768px) 30vw, 100vw"
+                  className="mb-2 aspect-[4/3] w-full rounded-[3px] object-cover"
+                />
+                <h3 className="text-[1.2rem] font-semibold leading-snug">{item.title}</h3>
+                <p className="max-w-[48ch] font-light text-brand-muted">{item.desc}</p>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </Section>
+
+      {/* 8. ÚDRŽBA A ČISTENIE */}
+      <Section tone="chalk">
+        <Container>
+          <SectionHeader
+            title="Údržba a čistenie"
+            lead="Minimálna starostlivosť, maximálny výsledok. Žiadna impregnácia, žiadne špeciálne prípravky."
+          />
+          <div className={`${below} grid gap-x-[clamp(32px,5vw,80px)] gap-y-12 md:grid-cols-2`}>
+            {[
+              { title: 'Odporúčame', items: CARE_YES, Icon: Check },
+              { title: 'Nepoužívajte', items: CARE_NO, Icon: X },
+            ].map(({ title, items, Icon }) => (
+              <div key={title} className="grid content-start gap-4">
+                <h3 className="flex items-center gap-3 text-os-h3">
+                  <span className="grid h-9 w-9 place-items-center rounded-full border border-brand-dark" aria-hidden="true">
+                    <Icon size={17} strokeWidth={1.75} />
+                  </span>
+                  {title}
+                </h3>
+                <ul className="border-t border-brand-line">
+                  {items.map((item) => (
+                    <li key={item} className="flex items-start gap-3 border-b border-brand-line py-3 font-light">
+                      <Icon size={15} strokeWidth={1.75} className="mt-1 flex-none text-brand-muted" aria-hidden="true" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* 9. FAQ */}
+      <Section tone="sand">
+        <Container className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-[clamp(48px,6vw,104px)]">
+          <SectionHeader title="Často kladené otázky" lead="Odpovede na najčastejšie otázky o sinterovanom kameni." />
+          <FaqList items={FAQ_ITEMS} asHeadings />
+        </Container>
+      </Section>
+
+      {/* 10. ZÁVER + CTA */}
+      <Section tone="chalk">
+        <Container className="grid items-end gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
+          <SectionHeader
+            title="Pripravený na sinterovaný kameň?"
+            lead="Pozrite si materiál zblízka: objednajte si vzorku, alebo pošlite pôdorys a získajte orientačnú cenu."
+          />
+          <div className="grid gap-5 lg:justify-items-end">
+            <ActionButton variant="dark" to="/vzorky" arrow>
+              Objednať vzorku zadarmo
+            </ActionButton>
+            <div className="flex flex-wrap gap-x-8 gap-y-3 lg:justify-end">
+              <TextLink to="/kategoria/sintered-stone">Prezrieť kolekcie</TextLink>
+              <TextLink to="/realizacie">Pozrieť realizácie</TextLink>
+              <TextLink to="/kontakt">Kontaktujte nás</TextLink>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      <GoldBand od="sinterovany-kamen" />
+    </div>
   );
 };
 

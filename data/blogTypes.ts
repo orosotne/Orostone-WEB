@@ -36,6 +36,10 @@ export interface BlogArticle {
     excerpt: string;
     directAnswer: string; // 2-3 line direct answer for AI snippets
     content: string; // Full HTML content
+    /** Alt text of the hero image (default: the title) */
+    heroAlt?: string;
+    /** Caption under the hero image, e.g. "Vizualizácia s dekorom X" */
+    heroCaption?: string;
     faqs: BlogFAQ[];
     /** Optional SEO meta override (different from title for richer search snippets) */
     metaTitle?: string;
@@ -48,6 +52,8 @@ export interface BlogArticle {
     excerpt: string;
     directAnswer: string;
     content: string;
+    heroAlt?: string;
+    heroCaption?: string;
     faqs: BlogFAQ[];
     metaTitle?: string;
     metaDescription?: string;

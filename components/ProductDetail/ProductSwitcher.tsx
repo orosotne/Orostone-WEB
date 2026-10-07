@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { ShopProduct } from '../../constants';
 import { cn } from '../../lib/utils';
+import { shopifyImageUrl, shopifySized } from '../../lib/shopifyImage';
 
 interface ProductSwitcherProps {
   currentProductId: string;
@@ -22,24 +23,22 @@ export const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProduct
     navigate(`/produkt/${productId}`);
   };
 
-  // Preload only hero images for related products (not full galleries — saves bandwidth & CPU)
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      filteredProducts.forEach(p => {
-        if (p.id !== currentProductId && p.image) {
-          const img = new Image();
-          img.src = p.image;
-        }
-      });
-    }, 1500);
-    return () => clearTimeout(timeout);
-  }, [filteredProducts, currentProductId]);
+  // Warm the next product's main photo only when the visitor points at (or focuses) its tile, at the size
+  // HeroSection requests. Preloading all originals up front cost ~6 MB per page and used other URLs.
+  const warmed = useRef(new Set<string>());
+  const warmHeroImage = (p: ShopProduct) => {
+    const first = p.gallery && p.gallery.length > 0 ? p.gallery[0] : p.image;
+    if (!first || p.id === currentProductId || warmed.current.has(p.id)) return;
+    warmed.current.add(p.id);
+    const img = new Image();
+    img.src = shopifyImageUrl(first, 1200);
+  };
 
   if (filteredProducts.length <= 1) return null;
 
   return (
     <div className="mb-8">
-      <h3 className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-brand-gold mb-4">
+      <h3 className="flex items-center gap-3.5 text-os-eyebrow uppercase text-brand-dark before:h-px before:w-7 before:bg-current before:opacity-75 before:content-[''] mb-4">
         Ďalšie produkty
       </h3>
       <div
@@ -62,16 +61,18 @@ export const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProduct
             <button
               key={product.id}
               onClick={() => handleProductClick(product.id)}
+              onPointerEnter={() => warmHeroImage(product)}
+              onFocus={() => warmHeroImage(product)}
               className={cn(
-                "group w-[90px] lg:w-auto touch-manipulation flex flex-col items-center p-1.5 lg:p-2 transition-all rounded-lg",
+                "group w-[90px] lg:w-auto touch-manipulation flex flex-col items-center p-1.5 lg:p-2 transition-all rounded-[3px]",
                 isActive
-                  ? "ring-2 ring-brand-gold bg-brand-gold/5"
-                  : "ring-1 ring-gray-200 hover:ring-brand-gold/50 bg-white"
+                  ? "ring-2 ring-brand-dark bg-brand-sand"
+                  : "ring-1 ring-brand-line hover:ring-brand-dark/40 bg-white"
               )}
             >
-              <div className="aspect-square w-full overflow-hidden bg-gray-100 mb-1 lg:mb-2 rounded-md">
+              <div className="aspect-square w-full overflow-hidden bg-brand-sand mb-1 lg:mb-2 rounded-[3px]">
                 <img
-                  src={product.image}
+                  src={shopifySized(product.image, 240)}
                   alt={product.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   decoding="async"
@@ -79,7 +80,7 @@ export const ProductSwitcher: React.FC<ProductSwitcherProps> = ({ currentProduct
               </div>
               <span className={cn(
                 "text-[10px] lg:text-[10px] font-medium text-center leading-tight line-clamp-2",
-                isActive ? "text-brand-dark" : "text-gray-600 group-hover:text-brand-dark"
+                isActive ? "text-brand-dark" : "text-brand-muted group-hover:text-brand-dark"
               )}>
                 {product.name}
               </span>

@@ -28,16 +28,8 @@ export const ThicknessIcon: React.FC<{ size?: number; className?: string }> = ({
 // './utils' (HeroSection, ShopProductDetail, index.ts) are unaffected.
 export { calculateSlabPrice } from '../../lib/slab';
 
-export const shopifyImageUrl = (url: string, width: number): string => {
-  const base = url.replace(/(\?.*)?$/, '');
-  return `${base}?width=${width}&quality=80`;
-};
-
-export const shopifySrcSet = (url: string): string | undefined => {
-  if (!url || !url.includes('cdn.shopify.com')) return undefined;
-  const widths = [400, 600, 800, 1200, 1600];
-  return widths.map(w => `${shopifyImageUrl(url, w)} ${w}w`).join(', ');
-};
+// Moved to lib/shopifyImage.ts (shared with the catalog and the mega menu); re-exported for existing importers.
+export { shopifyImageUrl, shopifySrcSet } from '../../lib/shopifyImage';
 
 export const productImageAlt = (product: ShopProduct, index?: number): string => {
   const base = `${product.name} veľkoformátová platňa`;

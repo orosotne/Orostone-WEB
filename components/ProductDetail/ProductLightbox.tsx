@@ -78,7 +78,7 @@ export const ProductLightbox: React.FC<ProductLightboxProps> = ({
         >
           <button
             onClick={onClose}
-            className="absolute top-6 right-6 z-[71] w-11 h-11 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:text-brand-gold transition-colors"
+            className="absolute top-6 right-6 z-[71] w-11 h-11 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/75 transition-colors"
             aria-label="Zatvoriť"
           >
             <X size={24} />
@@ -91,7 +91,7 @@ export const ProductLightbox: React.FC<ProductLightboxProps> = ({
           {hasPrevious && (
             <button
               onClick={(e) => { e.stopPropagation(); onPrevious(); }}
-              className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 z-[71] w-12 h-12 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:text-brand-gold active:text-brand-gold transition-colors"
+              className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 z-[71] w-12 h-12 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/75 active:bg-black/90 transition-colors"
               aria-label="Predchádzajúci obrázok"
             >
               <ChevronLeft size={28} />
@@ -101,7 +101,7 @@ export const ProductLightbox: React.FC<ProductLightboxProps> = ({
           {hasNext && (
             <button
               onClick={(e) => { e.stopPropagation(); onNext(); }}
-              className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-[71] w-12 h-12 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:text-brand-gold active:text-brand-gold transition-colors"
+              className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-[71] w-12 h-12 bg-black/50 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-black/75 active:bg-black/90 transition-colors"
               aria-label="Ďalší obrázok"
             >
               <ChevronRight size={28} />

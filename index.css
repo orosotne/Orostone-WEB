@@ -62,6 +62,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* New design system (2026-10): one content grid and one section rhythm for the whole site */
+:root {
+  --os-edge: clamp(20px, 5.5vw, 104px);
+  --os-band: clamp(72px, 8vw, 120px);
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -145,95 +151,64 @@
   }
 }
 
-/* Custom Cursor & Scrollbar styles below... */
-html.lenis, html.lenis body {
-  height: auto;
+/* ===== New design system: line icons that draw themselves in (components/Design/LineIcon.tsx) ===== */
+.os-ico { overflow: visible; transition: transform .45s cubic-bezier(.2, .7, .2, 1); }
+.os-ico .ln { fill: none; stroke: theme('colors.brand.dark'); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+.os-ico .ln .fill { fill: theme('colors.brand.light'); }
+.os-ico .au,
+.os-ico .au circle { fill: theme('colors.brand.gold'); stroke: theme('colors.brand.dark'); stroke-width: 1.3; stroke-linejoin: round; }
+.os-ico .vein { fill: none; stroke: theme('colors.brand.light'); stroke-width: 1.4; stroke-linecap: round; }
+.os-ico .hand { fill: none; stroke: theme('colors.brand.dark'); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; }
+.os-ico .bubble { fill: theme('colors.brand.light'); stroke: theme('colors.brand.dark'); stroke-width: .8; }
+.os-on-dark .os-ico .ln { stroke: theme('colors.brand.light'); }
+.os-on-dark .os-ico .ln .fill { fill: theme('colors.brand.dark'); }
+.os-on-dark .os-ico .au,
+.os-on-dark .os-ico .au circle { stroke: theme('colors.brand.light'); }
+.os-ico .ln > :nth-child(2) { --k: 1; }
+.os-ico .ln > :nth-child(3) { --k: 2; }
+.os-ico .ln > :nth-child(4) { --k: 3; }
+.os-ico .ln > :nth-child(5) { --k: 4; }
+.os-ico .ln > :nth-child(n+6) { --k: 5; }
+.os-ico .au,
+.os-ico .vein,
+.os-ico .hand,
+.os-ico .bubble { transform-box: fill-box; transform-origin: center; }
+.os-will-draw .os-ico .ln > * { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.os-will-draw .os-ico .au,
+.os-will-draw .os-ico .vein,
+.os-will-draw .os-ico .hand,
+.os-will-draw .os-ico .bubble { opacity: 0; transform: scale(.55); }
+.os-is-in .os-ico .ln > * { stroke-dashoffset: 0; transition: stroke-dashoffset 1.3s cubic-bezier(.65, 0, .35, 1) calc(var(--d, 0s) + var(--k, 0) * 110ms); }
+.os-is-in .os-ico .au,
+.os-is-in .os-ico .vein,
+.os-is-in .os-ico .hand,
+.os-is-in .os-ico .bubble {
+  opacity: 1;
+  transform: none;
+  transition: opacity .5s ease calc(var(--d, 0s) + .8s + var(--j, 0) * 90ms), transform .8s cubic-bezier(.2, 1.5, .4, 1) calc(var(--d, 0s) + .8s + var(--j, 0) * 90ms);
 }
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
+/* small hover motion on the item that holds the icon */
+.os-ico-item:hover .os-ico { transform: translateY(-3px); }
+.os-ico .slab-front,
+.os-ico .truck { transition: transform .5s cubic-bezier(.2, .7, .2, 1); }
+.os-ico .badge { transform-box: fill-box; transform-origin: 50% 35%; transition: transform .7s cubic-bezier(.2, 1.5, .4, 1); }
+.os-ico-item:hover .slab-front { transform: translateX(2.5px); }
+.os-ico-item:hover .truck { transform: translateX(3px); }
+.os-ico-item:hover .badge { transform: rotate(-9deg); }
+.os-ico-item:hover .min { transform-box: view-box; transform-origin: 33.5px 34.5px; animation: os-tick 1.2s cubic-bezier(.65, 0, .35, 1); }
+.os-ico-item:hover .bubble { animation: os-level 1.3s cubic-bezier(.3, .7, .3, 1); }
+.os-ico-item:hover .days .au { animation: os-pop .55s cubic-bezier(.2, 1.5, .4, 1) calc(var(--j, 0) * 80ms); }
+@keyframes os-tick { from { transform: rotate(0); } to { transform: rotate(360deg); } }
+@keyframes os-level { 0% { transform: translateX(0); } 25% { transform: translateX(2.6px); } 55% { transform: translateX(-1.6px); } 80% { transform: translateX(.6px); } 100% { transform: none; } }
+@keyframes os-pop { 0% { transform: scale(1); } 45% { transform: scale(.55); } 100% { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .os-ico,
+  .os-ico * { transition: none !important; animation: none !important; }
 }
 
 /* GSAP pin-spacer intercepts mouse events by default — pass through to pinned content */
 .pin-spacer {
   pointer-events: none !important;
-}
-
-/* Restore pointer events for all interactive content inside the pinned stone section */
-.stone-experience-pinned,
-.stone-experience-pinned * {
-  pointer-events: auto;
-}
-
-/* Decorative/overlay elements that must not intercept clicks */
-.stone-experience-pinned .stone-bg,
-.stone-experience-pinned .stone-glow,
-.stone-experience-pinned .stone-connector,
-.stone-experience-pinned .stone-pin-pulse {
-  pointer-events: none;
-}
-
-/* ---------------------------------------------------------------------------
-   Short-viewport fit pre desktop "Stone Experience" pinned sekciu.
-
-   Pin rezervuje pevných 118vh a vertikálne centruje vysokú kompozíciu
-   (portrétová platňa + nadpis + CTA) DOVNÚTRA tej 118vh sekcie. Na nízkych
-   obrazovkách (malé/13" MacBooky, ~660–940px) je kompozícia vyššia než
-   viditeľných 100vh, takže sa nadpis orezával zhora a CTA padalo pod záhyb.
-
-   Fix: obsah centrujeme do VIDITEĽNÝCH 100vh a na nízkych obrazovkách ho
-   proporčne zmenšíme, aby celá kompozícia (nadpis → platňa → CTA) zostala na
-   obrazovke. Uniform scale zachová geometriu pinov/konektorov 1:1. Len desktop;
-   mobil má samostatnú `.stone-mobile-section`. */
-@media (min-width: 1024px) and (max-height: 940px) {
-  .stone-experience-pinned .stone-content {
-    flex: none;
-    height: 100vh;
-    /* Top-align: nadpis sedí na pevnej pozícii tesne pod fixným navbarom
-       (115px) namiesto centrovania v 118vh pine. padding-top ≈ navbar + vzduch. */
-    align-items: flex-start;
-    padding-top: 8rem;
-    padding-bottom: 1.25rem;
-  }
-  /* Zmenšenie najštedrejších vnútorných medzier. */
-  .stone-experience-pinned .stone-heading { padding-top: 0; margin-bottom: 0.85rem; }
-  /* pb rezervuje miesto pre absolútny popis + 1/12 navigáciu POD platňou,
-     inak by prekrývali CTA. Kompaktnejší meta blok = menšia potrebná rezerva. */
-  .stone-experience-pinned .stone-slab-wrap { padding-bottom: 4.75rem; }
-  .stone-experience-pinned .stone-slab-meta { margin-top: 0.5rem; gap: 0.75rem; }
-  /* Jasná medzera medzi 1/12 šípkami a CTA tlačidlom. */
-  .stone-experience-pinned .stone-cta { margin-top: 1.75rem; }
-
-  /* Kľúč k čitateľnosti: na nízkych obrazovkách zmenšujeme hlavne PLATŇU
-     (najvyšší prvok) podľa výšky viewportu — text kariet a nadpisu ostáva
-     v natívnej, dobre čitateľnej veľkosti. Platňa je 9/16, takže šírka 22vh
-     ≈ výška 39vh. Stred grid stĺpca sa zmrští na šírku platne automaticky. */
-  .stone-experience-pinned .stone-slab-frame { max-width: 22vh; }
-}
-
-/* Nižšie obrazovky: jemný uniform scale ako poistka, keď menšia platňa +
-   natívny text nezmestia. Scale ostáva mierny (≥0.8) → text čitateľný.
-   Natívna veľkosť textu platí nad ~730px (väčšina MacBookov). */
-@media (min-width: 1024px) and (max-height: 730px) {
-  .stone-experience-pinned .stone-fit { transform: scale(0.95); transform-origin: center top; }
-}
-@media (min-width: 1024px) and (max-height: 660px) {
-  .stone-experience-pinned .stone-fit { transform: scale(0.88); transform-origin: center top; }
-}
-@media (min-width: 1024px) and (max-height: 600px) {
-  .stone-experience-pinned .stone-fit { transform: scale(0.80); transform-origin: center top; }
 }
 
 /* Desktop-only: fix pre dvojitý scrollbar; mobil sa nemení */
@@ -255,24 +230,6 @@ html.lenis, html.lenis body {
     -webkit-user-select: text;
     user-select: text;
   }
-}
-
-/* ===== ROTATING BADGE BLINK ===== */
-@keyframes badge-blink {
-  0%, 100%  { transform: scale(0); opacity: 0; }
-  10%       { transform: scale(1); opacity: 1; }
-  70%       { transform: scale(1); opacity: 1; }
-  85%       { transform: scale(0); opacity: 0; }
-}
-
-.badge-blink {
-  animation: badge-blink 5s ease-in-out infinite;
-}
-.badge-blink-delay-1 {
-  animation: badge-blink 5s ease-in-out infinite 1.5s;
-}
-.badge-blink-delay-2 {
-  animation: badge-blink 5s ease-in-out infinite 3s;
 }
 
 /* ===== Print styles (withdrawal form, etc.) ===== */

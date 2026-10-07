@@ -1,41 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Mail,
-  MapPin,
-  Briefcase,
-  Wallet,
-  ChevronDown,
-  ArrowRight,
-  Check,
-  Sparkles,
-  Users,
-  Gem,
-  Megaphone,
-  Hammer,
-  Cpu,
-  LayoutGrid,
-  Send,
-  FileText,
-  type LucideIcon,
-} from 'lucide-react';
 import { SEOHead, createBreadcrumbLD } from '@/components/UI/SEOHead';
+import {
+  ActionButton,
+  ArrowIcon,
+  Container,
+  FeatureGrid,
+  IconCastle,
+  IconFabrication,
+  IconPriceClock,
+  IconSlabs,
+  PageHero,
+  Section,
+  SectionHeader,
+  TextLink,
+  type FeatureItem,
+} from '@/components/Design';
 import {
   JOB_OPENINGS,
   CAREERS_EMAIL,
   createJobPostingLD,
   type JobOpening,
 } from '@/data/careers';
-
-/* =============================================================
-   IKONY K POZÍCIÁM
-   ============================================================= */
-const JOB_ICONS: Record<string, LucideIcon> = {
-  'ppc-specialista': Megaphone,
-  kamenar: Hammer,
-  'cnc-specialista': Cpu,
-  obkladac: LayoutGrid,
-};
 
 /**
  * Rozloží mzdu na časti, aby sa dala vysádzať so zvýraznenou sumou.
@@ -54,35 +40,46 @@ const openingsHeading = (count: number): string => {
   return `${count} pozícií, ktoré práve obsadzujeme`;
 };
 
+/** "Kamenár — výroba pracovných dosiek…" → "Kamenár" for the short list in the hero. */
+const shortTitle = (title: string) => title.split(' — ')[0];
+
+const cvMailto = (subject: string) => `mailto:${CAREERS_EMAIL}?subject=${encodeURIComponent(subject)}`;
+
 /* =============================================================
    PREČO OROSTONE
    ============================================================= */
-const REASONS: { icon: LucideIcon; title: string; description: string }[] = [
+const REASONS: FeatureItem[] = [
   {
-    icon: Gem,
+    icon: IconSlabs,
     title: 'Materiál, ktorý má na Slovensku ešte len nabehnúť',
-    description:
-      'Sinterovaný kameň je u nás mladá kategória. Kto sa v ňom naučí robiť teraz, bude o pár rokov medzi tými, ktorí to vedia najlepšie.',
+    text: 'Sinterovaný kameň je u nás mladá kategória. Kto sa v ňom naučí robiť teraz, bude o pár rokov medzi tými, ktorí to vedia najlepšie.',
   },
   {
-    icon: Users,
+    icon: IconPriceClock,
     title: 'Malý tím, priamy vplyv',
-    description:
-      'Rozhodnutia u nás netrvajú týždne. Vidíte, čo vaša práca spravila — na zákazke aj v číslach.',
+    text: 'Rozhodnutia u nás netrvajú týždne. Vidíte, čo vaša práca spravila — na zákazke aj v číslach.',
   },
   {
-    icon: Sparkles,
+    icon: IconCastle,
     title: 'Showroom v renesančnom kaštieli',
-    description:
-      'Naše platne si zákazníci pozerajú v Bošanoch, v priestore, ktorý sám o sebe niečo hovorí. Pracujete s materiálom vo veľkých formátoch, nie s katalógom.',
+    text: 'Naše platne si zákazníci pozerajú v Bošanoch, v priestore, ktorý sám o sebe niečo hovorí. Pracujete s materiálom vo veľkých formátoch, nie s katalógom.',
   },
   {
-    icon: Check,
+    icon: IconFabrication,
     title: 'Zaškolenie na materiál',
-    description:
-      'Sinterovaný kameň sa reže, vŕta aj lepí inak než žula. Kto s ním ešte nerobil, dostane čas a vedenie — nie hodenie do vody.',
+    text: 'Sinterovaný kameň sa reže, vŕta aj lepí inak než žula. Kto s ním ešte nerobil, dostane čas a vedenie — nie hodenie do vody.',
   },
 ];
+
+const APPLY_TIPS = [
+  'Životopis alebo aspoň prehľad toho, čo ste robili posledné roky.',
+  'Odkedy môžete nastúpiť a v akej forme spolupráce (TPP alebo živnosť).',
+  'Pri remeselných pozíciách fotky vašej práce, ak nejaké máte. Povedia viac než odsek textu.',
+  'Pri PPC pozícii odkazy na kampane alebo výsledky, ktoré môžete ukázať.',
+];
+
+const listItem = 'border-b border-brand-line py-3 text-[0.96rem] font-light';
+const listHead = 'mb-3 text-os-eyebrow uppercase';
 
 /* =============================================================
    KARTA POZÍCIE
@@ -92,154 +89,95 @@ const JobCard: React.FC<{
   isOpen: boolean;
   onToggle: () => void;
 }> = ({ job, isOpen, onToggle }) => {
-  const Icon = JOB_ICONS[job.id] ?? Briefcase;
   const panelId = `job-panel-${job.id}`;
-  const mailto = `mailto:${CAREERS_EMAIL}?subject=${encodeURIComponent(
-    `Prihláška — ${job.title}`,
-  )}`;
 
   return (
-    <article
-      id={job.id}
-      className="scroll-mt-28 rounded-3xl border border-gray-200 bg-white overflow-hidden transition-colors hover:border-brand-gold/50"
-    >
+    <article id={job.id} className="scroll-mt-28 border-b border-brand-line">
       <h3>
         <button
           type="button"
           onClick={onToggle}
           aria-expanded={isOpen}
           aria-controls={panelId}
-          className="w-full text-left p-6 sm:p-8 flex items-start gap-4 sm:gap-6 group"
+          className="group grid w-full grid-cols-[minmax(0,1fr)_auto] items-start gap-6 py-8 text-left"
         >
-          <span className="w-12 h-12 flex-shrink-0 rounded-2xl bg-brand-gold/10 flex items-center justify-center">
-            <Icon size={22} className="text-brand-gold" />
-          </span>
-
-          <span className="flex-1 min-w-0">
-            <span className="block text-lg sm:text-xl font-bold text-brand-dark group-hover:text-brand-gold transition-colors">
+          <span className="grid gap-3">
+            <span className="text-os-h3 group-hover:underline group-hover:decoration-1 group-hover:underline-offset-4">
               {job.title}
             </span>
-            <span className="mt-2 flex flex-wrap items-start gap-x-4 gap-y-1 text-xs text-gray-500">
-              <span className="inline-flex items-start gap-1.5">
-                <MapPin size={13} className="text-brand-gold mt-0.5 flex-shrink-0" />
-                {job.location}
-              </span>
-              <span className="inline-flex items-start gap-1.5">
-                <Briefcase size={13} className="text-brand-gold mt-0.5 flex-shrink-0" />
-                {job.employmentType}
-              </span>
+            <span className="text-[0.88rem] font-normal text-brand-muted">
+              {job.location} · {job.employmentType}
             </span>
-
             {/* Mzda — vyňatá z drobného meta riadku, je to hlavné kritérium,
                 podľa ktorého ľudia ponuky porovnávajú. */}
             {job.salary && (
-              <span className="mt-3 inline-flex items-center gap-2.5 rounded-full bg-brand-gold/15 pl-3 pr-4 py-2">
-                <Wallet size={16} className="text-brand-gold flex-shrink-0" />
-                <span className="flex items-baseline gap-1.5 flex-wrap">
-                  <span className="text-xs text-gray-500">od</span>
-                  <span className="text-lg sm:text-xl font-bold text-brand-dark leading-none">
-                    {salaryParts(job.salary).amount}
-                  </span>
-                  <span className="text-xs text-gray-500">
-                    brutto / {salaryParts(job.salary).period}
-                  </span>
-                </span>
+              <span className="flex flex-wrap items-baseline gap-x-1.5">
+                <span className="text-[0.88rem] font-normal text-brand-muted">od</span>
+                <span className="text-[1.3rem] font-semibold leading-none tabular-nums">{salaryParts(job.salary).amount}</span>
+                <span className="text-[0.88rem] font-normal text-brand-muted">brutto / {salaryParts(job.salary).period}</span>
               </span>
             )}
-
-            <span className="mt-3 block text-sm text-gray-600 font-light leading-relaxed">
-              {job.summary}
-            </span>
+            <span className="max-w-[72ch] text-[0.96rem] font-light leading-relaxed text-brand-muted">{job.summary}</span>
           </span>
-
-          <span className="flex-shrink-0 w-9 h-9 rounded-full bg-gray-100 group-hover:bg-brand-gold/15 flex items-center justify-center transition-colors">
-            <ChevronDown
-              size={18}
-              className={`text-brand-dark transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
-            />
-          </span>
+          <span
+            aria-hidden="true"
+            className={`relative mt-2 h-4 w-4 flex-none before:absolute before:left-0 before:top-1/2 before:h-px before:w-full before:bg-current after:absolute after:left-1/2 after:top-0 after:h-full after:w-px after:bg-current after:transition-transform after:duration-300 ${isOpen ? 'after:scale-y-0' : ''}`}
+          />
         </button>
       </h3>
 
       {isOpen && (
-        <div id={panelId} className="px-6 sm:px-8 pb-8 -mt-1">
+        <div id={panelId} className="grid gap-10 pb-12">
           {job.salary && (
-            <div className="border-t border-gray-100 pt-6">
-              <div className="rounded-2xl border border-brand-gold/40 bg-brand-gold/10 px-6 py-5 sm:px-7 sm:py-6">
-                <p className="text-xs font-bold tracking-[0.18em] uppercase text-brand-gold mb-3">
-                  Základná zložka mzdy
-                </p>
-                <p className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                  <span className="text-3xl sm:text-4xl font-bold text-brand-dark leading-none">
-                    od {salaryParts(job.salary).amount}
-                  </span>
-                  <span className="text-sm text-gray-600">
-                    brutto / {salaryParts(job.salary).period}
-                  </span>
-                </p>
-                {job.salary.note && (
-                  <p className="mt-3 text-xs text-gray-500 leading-relaxed">{job.salary.note}</p>
-                )}
-              </div>
+            <div className="max-w-[640px] rounded-[3px] bg-brand-sand px-6 py-5">
+              <p className={listHead}>Základná zložka mzdy</p>
+              <p className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <span className="text-[clamp(1.6rem,2.4vw,2.2rem)] font-semibold leading-none tabular-nums">
+                  od {salaryParts(job.salary).amount}
+                </span>
+                <span className="text-[0.92rem] font-normal text-brand-muted">brutto / {salaryParts(job.salary).period}</span>
+              </p>
+              {job.salary.note && <p className="mt-3 text-[0.84rem] font-normal text-brand-muted">{job.salary.note}</p>}
             </div>
           )}
-          <div className={`${job.salary ? '' : 'border-t border-gray-100 '}pt-6 grid grid-cols-1 lg:grid-cols-2 gap-8`}>
+          <div className="grid gap-10 lg:grid-cols-3">
             <div>
-              <h4 className="text-xs font-bold tracking-[0.18em] uppercase text-brand-gold mb-4">
-                Čo budete robiť
-              </h4>
-              <ul className="space-y-3">
+              <h4 className={listHead}>Čo budete robiť</h4>
+              <ul className="border-t border-brand-line">
                 {job.responsibilities.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <Check size={16} className="text-brand-gold mt-1 flex-shrink-0" />
-                    <span className="text-gray-700 font-light leading-relaxed text-sm">{item}</span>
+                  <li key={i} className={listItem}>
+                    {item}
                   </li>
                 ))}
               </ul>
             </div>
-
-            <div className="space-y-8">
-              <div>
-                <h4 className="text-xs font-bold tracking-[0.18em] uppercase text-brand-gold mb-4">
-                  Koho hľadáme
-                </h4>
-                <ul className="space-y-3">
-                  {job.requirements.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <Check size={16} className="text-brand-gold mt-1 flex-shrink-0" />
-                      <span className="text-gray-700 font-light leading-relaxed text-sm">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <h4 className="text-xs font-bold tracking-[0.18em] uppercase text-gray-400 mb-4">
-                  Výhodou
-                </h4>
-                <ul className="space-y-3">
-                  {job.niceToHave.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-gray-300 flex-shrink-0" />
-                      <span className="text-gray-500 font-light leading-relaxed text-sm">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <div>
+              <h4 className={listHead}>Koho hľadáme</h4>
+              <ul className="border-t border-brand-line">
+                {job.requirements.map((item, i) => (
+                  <li key={i} className={listItem}>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h4 className={`${listHead} text-brand-muted`}>Výhodou</h4>
+              <ul className="border-t border-brand-line">
+                {job.niceToHave.map((item, i) => (
+                  <li key={i} className={`${listItem} text-brand-muted`}>
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
-
-          <div className="mt-8 pt-6 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center gap-4">
-            <a
-              href={mailto}
-              className="inline-flex items-center justify-center gap-2 bg-brand-dark text-white px-6 py-3.5 rounded-full text-sm font-semibold tracking-wider uppercase hover:bg-brand-gold hover:text-brand-dark transition-colors"
-            >
-              <Send size={16} />
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+            <ActionButton variant="dark" to={cvMailto(`Prihláška — ${job.title}`)} arrow>
               Poslať životopis
-            </a>
-            <p className="text-xs text-gray-500 leading-relaxed">
-              Do predmetu emailu uveďte názov pozície. Píšte na{' '}
-              <span className="font-semibold text-brand-dark">{CAREERS_EMAIL}</span>.
+            </ActionButton>
+            <p className="text-[0.88rem] font-normal text-brand-muted">
+              Do predmetu emailu uveďte názov pozície. Píšte na <span className="font-semibold text-brand-dark">{CAREERS_EMAIL}</span>.
             </p>
           </div>
         </div>
@@ -286,7 +224,7 @@ export const Kariera: React.FC = () => {
   };
 
   return (
-    <main className="bg-white">
+    <div>
       <SEOHead
         title="Kariéra v Orostone — otvorené pozície | OROSTONE"
         description="Hľadáme kamenára, CNC špecialistu na vodný lúč a pílu, obkladača na veľké formáty a PPC špecialistu. Životopis posielajte na info@orostone.sk."
@@ -309,85 +247,60 @@ export const Kariera: React.FC = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPostingsLD) }}
       />
 
-      {/* ─── HERO ─── */}
-      <section className="relative bg-brand-dark text-white py-24 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-dark via-brand-dark/95 to-brand-dark/80" />
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-3xl">
-            <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
-              Kariéra
-            </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-sans font-bold mb-6 leading-tight">
-              Hľadáme kolegov do tímu
-            </h1>
-            <p className="text-lg md:text-xl font-light text-gray-300 leading-relaxed max-w-2xl">
-              Orostone privádza na slovenský trh sinterovaný kameň — materiál na pracovné dosky,
-              ostrovčeky, zásteny a obklady. Rozširujeme tím o ľudí, ktorí robia svoju prácu presne
-              a vedia, prečo ju robia práve tak.
-            </p>
-            <div className="mt-10 flex flex-col sm:flex-row gap-4">
-              <a
-                href="#otvorene-pozicie"
-                className="inline-flex items-center justify-center gap-2 bg-brand-gold text-brand-dark px-8 py-4 text-sm font-semibold tracking-wider uppercase hover:bg-white transition-colors"
-              >
-                Otvorené pozície ({JOB_OPENINGS.length})
-                <ArrowRight size={16} />
-              </a>
-              <a
-                href={`mailto:${CAREERS_EMAIL}?subject=${encodeURIComponent('Životopis — Orostone')}`}
-                className="inline-flex items-center justify-center gap-2 border border-white/30 text-white px-8 py-4 text-sm font-semibold tracking-wider uppercase hover:border-brand-gold hover:text-brand-gold transition-colors"
-              >
-                <Mail size={16} />
-                Poslať životopis
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Kariéra"
+        title="Hľadáme kolegov do tímu"
+        lead="Orostone privádza na slovenský trh sinterovaný kameň — materiál na pracovné dosky, ostrovčeky, zásteny a obklady. Rozširujeme tím o ľudí, ktorí robia svoju prácu presne a vedia, prečo ju robia práve tak."
+        actions={
+          <>
+            <ActionButton variant="dark" to="#otvorene-pozicie" arrow>
+              Otvorené pozície ({JOB_OPENINGS.length})
+            </ActionButton>
+            <TextLink to={cvMailto('Životopis — Orostone')}>Poslať životopis</TextLink>
+          </>
+        }
+        media={
+          <nav aria-label="Otvorené pozície" className="grid gap-3 lg:pt-8">
+            <p className="text-os-eyebrow uppercase text-brand-muted">Otvorené pozície</p>
+            <ul className="border-t border-brand-dark">
+              {JOB_OPENINGS.map((job) => (
+                <li key={job.id} className="border-b border-brand-line">
+                  <a
+                    href={`#${job.id}`}
+                    className="group grid grid-cols-[minmax(0,1fr)_auto_auto] items-baseline gap-x-5 py-4 no-underline"
+                  >
+                    <span className="text-[1.08rem] font-semibold group-hover:underline">{shortTitle(job.title)}</span>
+                    {job.salary && (
+                      <span className="text-[0.92rem] font-normal tabular-nums text-brand-muted">
+                        od {salaryParts(job.salary).amount}
+                      </span>
+                    )}
+                    <ArrowIcon className="h-4 w-4 self-center transition-transform duration-300 group-hover:translate-x-1" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        }
+      />
 
       {/* ─── PREČO OROSTONE ─── */}
-      <section className="py-20 md:py-28">
-        <div className="container mx-auto px-6">
-          <div className="max-w-2xl mb-14">
-            <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
-              Prečo práve tu
-            </span>
-            <h2 className="text-3xl md:text-4xl font-sans font-bold text-brand-dark">
-              Čo u nás dostanete
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {REASONS.map((reason, i) => (
-              <div key={i} className="p-8 bg-[#F9F9F7] rounded-3xl">
-                <div className="w-12 h-12 rounded-2xl bg-brand-gold/10 flex items-center justify-center mb-6">
-                  <reason.icon size={22} className="text-brand-gold" />
-                </div>
-                <h3 className="text-lg font-bold text-brand-dark mb-3">{reason.title}</h3>
-                <p className="text-gray-600 font-light leading-relaxed">{reason.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Section tone="sand">
+        <Container>
+          <SectionHeader eyebrow="Prečo práve tu" title="Čo u nás dostanete" />
+          <FeatureGrid items={REASONS} columns={4} className="mt-[clamp(40px,5vw,64px)]" />
+        </Container>
+      </Section>
 
       {/* ─── OTVORENÉ POZÍCIE ─── */}
-      <section id="otvorene-pozicie" className="scroll-mt-24 py-20 md:py-28 bg-[#F9F9F7]">
-        <div className="container mx-auto px-6">
-          <div className="max-w-2xl mb-14">
-            <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
-              Otvorené pozície
-            </span>
-            <h2 className="text-3xl md:text-4xl font-sans font-bold text-brand-dark mb-5">
-              {openingsHeading(JOB_OPENINGS.length)}
-            </h2>
-            <p className="text-gray-500 font-light leading-relaxed">
-              Kliknutím na pozíciu si otvoríte celý popis. Ak vám sedí viac ako jedna, napíšte to
-              do emailu — nie je to problém.
-            </p>
-          </div>
-
-          <div className="space-y-4 max-w-5xl">
+      <Section tone="chalk" id="otvorene-pozicie" className="scroll-mt-16 lg:scroll-mt-20">
+        <Container className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-[clamp(48px,6vw,104px)]">
+          <SectionHeader
+            eyebrow="Otvorené pozície"
+            title={openingsHeading(JOB_OPENINGS.length)}
+            lead="Kliknutím na pozíciu si otvoríte celý popis. Ak vám sedí viac ako jedna, napíšte to do e-mailu — nie je to problém."
+          />
+          <div className="border-t border-brand-dark">
             {JOB_OPENINGS.map((job) => (
               <JobCard
                 key={job.id}
@@ -397,95 +310,64 @@ export const Kariera: React.FC = () => {
               />
             ))}
           </div>
-        </div>
-      </section>
+        </Container>
+      </Section>
 
       {/* ─── AKO SA PRIHLÁSIŤ ─── */}
-      <section className="py-20 md:py-28">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start max-w-5xl">
-            <div>
-              <span className="font-sans text-xs font-bold text-brand-gold tracking-widest uppercase mb-4 block">
-                Ako sa prihlásiť
-              </span>
-              <h2 className="text-3xl md:text-4xl font-sans font-bold text-brand-dark mb-6">
-                Stačí email a životopis
-              </h2>
-              <p className="text-gray-600 font-light leading-relaxed mb-8">
-                Životopis posielajte na <strong className="text-brand-dark font-semibold">{CAREERS_EMAIL}</strong>.
-                Do predmetu uveďte názov pozície, o ktorú máte záujem. Prihlášky čítame priebežne
-                — ak vaša skúsenosť sedí, ozveme sa vám s termínom stretnutia.
-              </p>
-              <a
-                href={`mailto:${CAREERS_EMAIL}?subject=${encodeURIComponent('Životopis — Orostone')}`}
-                className="inline-flex items-center gap-2 bg-brand-dark text-white px-8 py-4 rounded-full text-sm font-semibold tracking-wider uppercase hover:bg-brand-gold hover:text-brand-dark transition-colors"
-              >
-                <Mail size={16} />
-                {CAREERS_EMAIL}
-              </a>
-            </div>
-
-            <div className="rounded-3xl border border-gray-200 p-8 bg-white">
-              <div className="w-12 h-12 rounded-2xl bg-brand-gold/10 flex items-center justify-center mb-6">
-                <FileText size={22} className="text-brand-gold" />
-              </div>
-              <h3 className="text-lg font-bold text-brand-dark mb-5">Čo do emailu pridať</h3>
-              <ul className="space-y-4">
-                {[
-                  'Životopis alebo aspoň prehľad toho, čo ste robili posledné roky.',
-                  'Odkedy môžete nastúpiť a v akej forme spolupráce (TPP alebo živnosť).',
-                  'Pri remeselných pozíciách fotky vašej práce, ak nejaké máte. Povedia viac než odsek textu.',
-                  'Pri PPC pozícii odkazy na kampane alebo výsledky, ktoré môžete ukázať.',
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <Check size={16} className="text-brand-gold mt-1 flex-shrink-0" />
-                    <span className="text-gray-700 font-light leading-relaxed text-sm">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+      <Section tone="sand">
+        <Container className="grid items-start gap-12 lg:grid-cols-2 lg:gap-[clamp(48px,6vw,104px)]">
+          <div className="grid justify-items-start gap-6">
+            <SectionHeader eyebrow="Ako sa prihlásiť" title="Stačí e-mail a životopis" />
+            <p className="max-w-[54ch] font-light text-brand-muted">
+              Životopis posielajte na <strong className="font-semibold text-brand-dark">{CAREERS_EMAIL}</strong>. Do
+              predmetu uveďte názov pozície, o ktorú máte záujem. Prihlášky čítame priebežne — ak vaša skúsenosť sedí, ozveme
+              sa vám s termínom stretnutia.
+            </p>
+            <ActionButton variant="dark" to={cvMailto('Životopis — Orostone')} arrow>
+              Poslať životopis
+            </ActionButton>
           </div>
-        </div>
-      </section>
+          <div className="grid gap-5 rounded-[3px] bg-brand-light p-[clamp(28px,3vw,44px)]">
+            <h3 className="text-os-h3">Čo do e-mailu pridať</h3>
+            <ul className="border-t border-brand-line">
+              {APPLY_TIPS.map((item) => (
+                <li key={item} className={listItem}>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Container>
+      </Section>
 
       {/* ─── OTVORENÁ PRIHLÁŠKA + GDPR ─── */}
-      <section className="pb-20 md:pb-28">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl rounded-3xl bg-brand-dark text-white px-8 py-10 sm:px-12 sm:py-12">
-            <h2 className="text-2xl md:text-3xl font-sans font-bold mb-4">
-              Nenašli ste svoju pozíciu?
-            </h2>
-            <p className="text-gray-300 font-light leading-relaxed max-w-2xl mb-8">
-              Zoznam vyššie nie je úplný obraz toho, čo hľadáme. Ak robíte niečo, čo by nám podľa
-              vás pomohlo, napíšte nám a povedzte, čo viete. Otvorené prihlášky čítame rovnako
-              ako tie na konkrétnu pozíciu.
-            </p>
-            <a
-              href={`mailto:${CAREERS_EMAIL}?subject=${encodeURIComponent('Otvorená prihláška — Orostone')}`}
-              className="inline-flex items-center gap-2 bg-brand-gold text-brand-dark px-8 py-4 rounded-full text-sm font-bold tracking-wider uppercase hover:bg-white transition-colors"
-            >
-              <Mail size={16} />
+      <section className="bg-brand-gold py-[clamp(64px,8vw,108px)] text-brand-dark" aria-label="Otvorená prihláška">
+        <Container className="grid gap-8">
+          <div className="flex flex-wrap items-center justify-between gap-x-12 gap-y-7">
+            <div className="grid gap-3.5">
+              <h2 className="text-os-h2">Nenašli ste svoju pozíciu?</h2>
+              <p className="max-w-[60ch] text-[1.05rem] font-normal">
+                Zoznam vyššie nie je úplný obraz toho, čo hľadáme. Ak robíte niečo, čo by nám podľa vás pomohlo, napíšte nám a
+                povedzte, čo viete. Otvorené prihlášky čítame rovnako ako tie na konkrétnu pozíciu.
+              </p>
+            </div>
+            <ActionButton variant="dark" to={cvMailto('Otvorená prihláška — Orostone')} arrow>
               Napísať nám
-            </a>
-
-            <p className="mt-10 pt-8 border-t border-white/10 text-xs text-gray-400 leading-relaxed max-w-3xl">
-              <strong className="text-gray-300 font-semibold">Spracúvanie osobných údajov:</strong>{' '}
-              Zaslaním životopisu súhlasíte so spracúvaním osobných údajov, ktoré v ňom uvediete,
-              na účel výberového konania na pozíciu, o ktorú sa uchádzate. Údaje spracúva
-              Orostone s.r.o. a po ukončení výberového konania ich vymaže. Ak si vaše podklady
-              môžeme ponechať aj pre budúce pozície, uveďte to prosím priamo v emaile — bez
-              vášho výslovného súhlasu ich neuchovávame. Viac v{' '}
-              <Link
-                to="/ochrana-sukromia"
-                className="underline underline-offset-2 hover:text-brand-gold transition-colors"
-              >
-                Ochrane osobných údajov
-              </Link>
-              .
-            </p>
+            </ActionButton>
           </div>
-        </div>
+          <p className="max-w-[90ch] border-t border-brand-dark/20 pt-6 text-[0.84rem] font-normal leading-relaxed text-brand-dark/80">
+            <strong className="font-semibold text-brand-dark">Spracúvanie osobných údajov:</strong> Zaslaním životopisu
+            súhlasíte so spracúvaním osobných údajov, ktoré v ňom uvediete, na účel výberového konania na pozíciu, o ktorú sa
+            uchádzate. Údaje spracúva Orostone s.r.o. a po ukončení výberového konania ich vymaže. Ak si vaše podklady môžeme
+            ponechať aj pre budúce pozície, uveďte to prosím priamo v e-maile — bez vášho výslovného súhlasu ich neuchovávame. Viac
+            v{' '}
+            <Link to="/ochrana-sukromia" className="underline underline-offset-2">
+              Ochrane osobných údajov
+            </Link>
+            .
+          </p>
+        </Container>
       </section>
-    </main>
+    </div>
   );
 };

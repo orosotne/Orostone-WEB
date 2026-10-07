@@ -62,7 +62,7 @@ export const CENNIK_FAQS: PillarFaq[] = [
   {
     question: 'Koľko stojí vzorka dekoru?',
     answer:
-      'Vzorky dekorov posielame zadarmo. Vyberte si dekor na stránke Vzorky a vyplňte formulár — vzorku doručíme kuriérom.',
+      'Prvá vzorka je zadarmo, každá ďalšia stojí 4,90 € a doprava 2,50 €. V jednej objednávke môžu byť najviac tri vzorky. Dekor si vyberiete na stránke Vzorky, objednávku dokončíte v pokladni a vzorky doručíme kuriérom.',
   },
   {
     question: 'Ako získam presnú cenovú ponuku?',

@@ -63,16 +63,16 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
       const isPage = this.props.level === 'page';
 
       return (
-        <div className={`flex items-center justify-center ${isPage ? 'min-h-dvh' : 'min-h-[300px]'} bg-[#F9F9F7]`}>
+        <div className={`flex items-center justify-center ${isPage ? 'min-h-dvh' : 'min-h-[300px]'} bg-brand-light text-brand-dark`}>
           <div className="max-w-md mx-auto px-6 py-12 text-center">
-            <div className="w-16 h-16 mx-auto mb-6 bg-red-50 rounded-full flex items-center justify-center">
-              <AlertTriangle size={32} className="text-red-500" />
+            <div className="w-16 h-16 mx-auto mb-6 bg-brand-sand rounded-full flex items-center justify-center">
+              <AlertTriangle size={28} strokeWidth={1.5} className="text-brand-dark" />
             </div>
             
-            <h2 className="text-xl font-bold text-brand-dark mb-3">
+            <h2 className="text-os-h3 mb-3">
               Niečo sa pokazilo
             </h2>
-            <p className="text-gray-500 mb-6 text-sm leading-relaxed">
+            <p className="text-brand-muted mb-7 font-light leading-relaxed">
               Ospravedlňujeme sa za komplikácie. Skúste obnoviť stránku alebo sa vráťte na hlavnú stránku.
             </p>
 
@@ -88,14 +88,14 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
             <div className="flex items-center justify-center gap-3">
               <button
                 onClick={this.handleReset}
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-dark text-white text-sm font-medium rounded-lg hover:bg-brand-gold hover:text-brand-dark transition-colors"
+                className="inline-flex min-h-[46px] items-center gap-2 rounded-[10px] bg-brand-dark px-5 text-[0.72rem] font-bold uppercase tracking-[0.12em] text-brand-light transition-colors hover:bg-[#333331]"
               >
                 <RefreshCw size={16} />
                 Skúsiť znova
               </button>
               <button
                 onClick={this.handleGoHome}
-                className="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-200 text-gray-600 text-sm font-medium rounded-lg hover:bg-gray-50 transition-colors"
+                className="inline-flex min-h-[46px] items-center gap-2 rounded-[10px] border border-brand-dark px-5 text-[0.72rem] font-bold uppercase tracking-[0.12em] text-brand-dark transition-colors hover:bg-brand-dark/5"
               >
                 <Home size={16} />
                 Domov

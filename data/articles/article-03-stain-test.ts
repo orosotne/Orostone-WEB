@@ -6,7 +6,7 @@ export const ARTICLE_03: BlogArticle = {
   category: 'risk-killers',
   publishDate: '2026-03-24',
   readTimeMinutes: 9,
-  heroImage: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200',
+  heroImage: '/images/blog/article-03/hero.webp',
   author: BLOG_AUTHOR_OROSTONE,
   tags: ['sinterovaný kameň', 'škvrny', 'káva', 'víno', 'kurkuma', 'čistenie', 'pórovitosť'],
 
@@ -37,8 +37,8 @@ export const ARTICLE_03: BlogArticle = {
 </div>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200" alt="Testovanie odolnosti sinterovaného kameňa voči škvrnám — káva, víno a kurkuma na povrchu" loading="lazy" />
-  <figcaption>Test škvrnotvorných látok na sinterovanom kameni — výsledky po 24 hodinách expozície</figcaption>
+  <img src="/images/blog/article-03/hero.webp" alt="Červené víno, káva, olivový olej a citrón na pracovnej doske Calacatta Top, pohľad zhora" loading="lazy" />
+  <figcaption>Vizualizácia s dekorom Calacatta Top: víno, káva, olej a citrón priamo na doske</figcaption>
 </figure>
 
 <h2 id="preco-nevsiakne">Prečo tekutiny neprenikajú do sinterovaného kameňa?</h2>
@@ -215,7 +215,7 @@ export const ARTICLE_03: BlogArticle = {
       },
       {
         question: 'Môžem použiť sinterovaný kameň v kuchyni s deťmi?',
-        answer: 'Áno — a je to jedna z jeho predností. Nulová pórovitosť znamená, že farby, šťavy, oleje ani iné škvrnotvorné látky, s ktorými pracujú deti, neprenikajú do povrchu. Čistenie je jednoduché a rýchle. Materiál nevyžaduje špeciálnu starostlivosť ani impregnáciu.',
+        answer: 'Áno — a je to jedna z jeho predností. Takmer nulová pórovitosť znamená, že farby, šťavy, oleje ani iné škvrnotvorné látky, s ktorými pracujú deti, neprenikajú do povrchu. Čistenie je jednoduché a rýchle. Materiál nevyžaduje špeciálnu starostlivosť ani impregnáciu.',
       },
     ],
   },
@@ -245,8 +245,8 @@ export const ARTICLE_03: BlogArticle = {
 </div>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200" alt="Testing stain resistance of sintered stone — coffee, wine and turmeric on the surface" loading="lazy" />
-  <figcaption>Staining agents test on sintered stone — results after 24 hours of exposure</figcaption>
+  <img src="/images/blog/article-03/hero.webp" alt="Red wine, coffee, olive oil and lemon on a Calacatta Top worktop, top view" loading="lazy" />
+  <figcaption>Visualization with the Calacatta Top decor: wine, coffee, oil and lemon right on the surface</figcaption>
 </figure>
 
 <h2 id="why-no-absorption">Why Liquids Don't Penetrate Sintered Stone</h2>

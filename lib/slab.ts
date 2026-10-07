@@ -46,12 +46,17 @@ export function slabAreaM2(dimensions: string | null | undefined): number {
 }
 
 /**
- * Total price of one slab = pricePerM2 × slab area (m²). Rounded to 2 decimals.
- * Replaces the old calculateSlabPrice() verbatim (same rounding, same fallback),
- * only with the shared '×'/'x'-tolerant parser.
+ * Total price of one slab = what the Shopify cart charges.
+ * The adapter derives pricePerM2 = round2(slabPrice / area), which loses up to half a cent per m²
+ * (386.52 €/m² × 5.12 m² = 1 978.98 € while the slab costs 1 979.00 €). Slab prices are set in whole
+ * euros, so when a whole-euro total is consistent with pricePerM2 within that rounding, return it;
+ * otherwise fall back to pricePerM2 × area rounded to cents.
  */
 export function calculateSlabPrice(pricePerM2: number, dimensions: string): number {
-  return round2(pricePerM2 * slabAreaM2(dimensions));
+  const area = slabAreaM2(dimensions);
+  const raw = pricePerM2 * area;
+  const whole = Math.round(raw);
+  return Math.abs(whole - raw) <= area * 0.005 + 1e-9 ? whole : round2(raw);
 }
 
 /**

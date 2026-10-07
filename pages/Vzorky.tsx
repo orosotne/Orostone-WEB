@@ -249,7 +249,7 @@ export const Vzorky: React.FC = () => {
   const selectionComplete = selection.length === quantity;
 
   return (
-    <main className="sample-page min-h-svh">
+    <div className="sample-page min-h-svh">
       <SEOHead
         title="Vzorky sinterovaného kameňa | OROSTONE"
         description="Objednajte si vzorku dekoru, ktorý vás zaujal, alebo viac vzoriek na porovnanie. Pri väčších plochách odporúčame návštevu showroomu Bošany."
@@ -377,6 +377,6 @@ export const Vzorky: React.FC = () => {
         <SampleOrderSection ref={orderRef} quantity={quantity} onQuantityChange={changeQuantity} quantityFeedback={quantityFeedback} onSelectionChange={handleSelectionChange} onBusyChange={setSampleBusy} browserRef={browserRef} carouselButtonRef={carouselButtonRef} />
       </Suspense>
 
-    </main>
+    </div>
   );
 };

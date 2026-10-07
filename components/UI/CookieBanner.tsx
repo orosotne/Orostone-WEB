@@ -1,13 +1,20 @@
 import React from 'react';
 import { m, AnimatePresence } from 'framer-motion';
-import { Cookie, Settings } from 'lucide-react';
+import { Settings } from 'lucide-react';
 import { useCookies } from '../../context/CookieContext';
+import { useCartUI } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
 
-export const CookieBanner: React.FC = () => {
-  const { hasConsented, acceptAll, rejectAll, openSettings } = useCookies();
+const BUTTON =
+  'inline-flex min-h-[44px] sm:min-h-[48px] items-center justify-center rounded-[10px] px-3 text-center text-[0.7rem] font-bold uppercase leading-tight tracking-[0.1em] transition-colors duration-200';
 
-  if (hasConsented) return null;
+export const CookieBanner: React.FC = () => {
+  const { hasConsented, isSettingsOpen, acceptAll, rejectAll, openSettings } = useCookies();
+  const { isOpen: isCartOpen } = useCartUI();
+
+  // The settings dialog and the cart drawer sit below this bar's z-index, so step aside while either is open
+  // (on a first visit the bar would otherwise cover the drawer's "Prejsť do pokladne" button)
+  if (hasConsented || isSettingsOpen || isCartOpen) return null;
 
   return (
     <AnimatePresence>
@@ -16,68 +23,66 @@ export const CookieBanner: React.FC = () => {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 60, opacity: 0 }}
         transition={{ type: 'spring', damping: 30, stiffness: 180, delay: 1.5 }}
-        className="fixed bottom-0 left-0 right-0 z-[10002] p-4 md:p-6 print:hidden"
+        className="fixed bottom-0 left-0 right-0 z-[10002] p-2.5 pb-[calc(10px+env(safe-area-inset-bottom,0px))] sm:p-4 md:p-6 print:hidden"
+        role="region"
+        aria-label="Súhlas s cookies"
       >
-        <div className="container mx-auto max-w-5xl">
-          <div className="bg-[#1a1a1a]/95 backdrop-blur-xl border border-gray-800/60 shadow-2xl shadow-black/40 rounded-2xl p-6 md:p-8">
-            <div className="flex flex-col lg:flex-row gap-6 lg:items-center">
+        <div className="mx-auto max-w-[1080px] rounded-[3px] border border-brand-line bg-brand-light p-4 text-brand-dark shadow-[0_28px_70px_-24px_rgba(26,26,26,0.4)] sm:p-5 md:p-7">
+          <div className="flex flex-col gap-3.5 sm:gap-5 lg:flex-row lg:items-center lg:gap-10">
 
-              {/* Icon & Text */}
-              <div className="flex-1">
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 bg-brand-gold/10 rounded-xl flex items-center justify-center">
-                    <Cookie className="w-5 h-5 text-brand-gold" />
-                  </div>
-                  <h3 className="text-white font-medium text-lg">Používame cookies a podobné technológie</h3>
-                </div>
-                <p className="text-gray-400 text-sm leading-relaxed">
-                  Na našom webe používame nevyhnutné cookies a podobné technológie
-                  na zabezpečenie správneho fungovania, bezpečnosti a uloženia vašich nastavení.
-                  Analytické a marketingové technológie používame iba s vaším súhlasom.
-                  Svoje nastavenia môžete kedykoľvek zmeniť.
-                </p>
-                <p className="text-gray-500 text-xs mt-2 leading-relaxed">
-                  Nevyhnutné technológie sú vždy aktívne, pretože sú potrebné na základné fungovanie webu.
-                  Viac informácií v{' '}
-                  <Link to="/cookies" className="text-brand-gold hover:underline">
-                    zásadách cookies
-                  </Link>
-                  {' '}a{' '}
-                  <Link to="/ochrana-sukromia" className="text-brand-gold hover:underline">
-                    ochrane osobných údajov
-                  </Link>.
-                </p>
-              </div>
+            {/* Text */}
+            <div className="flex-1">
+              <h2 className="mb-1.5 text-[0.98rem] font-semibold sm:mb-2 sm:text-[1.05rem]">Používame cookies a podobné technológie</h2>
+              <p className="text-[0.8rem] font-light leading-snug text-brand-muted sm:text-[0.88rem] sm:leading-relaxed">
+                Na našom webe používame nevyhnutné cookies a podobné technológie
+                na zabezpečenie správneho fungovania, bezpečnosti a uloženia vašich nastavení.
+                Analytické a marketingové technológie používame iba s vaším súhlasom.
+                Svoje nastavenia môžete kedykoľvek zmeniť.
+              </p>
+              <p className="mt-1.5 text-[0.74rem] font-light leading-snug text-brand-muted sm:mt-2 sm:text-[0.78rem] sm:leading-relaxed">
+                Nevyhnutné technológie sú vždy aktívne, pretože sú potrebné na základné fungovanie webu.
+                Viac informácií v{' '}
+                <Link to="/cookies" className="font-medium text-brand-dark underline underline-offset-4">
+                  zásadách cookies
+                </Link>
+                {' '}a{' '}
+                <Link to="/ochrana-sukromia" className="font-medium text-brand-dark underline underline-offset-4">
+                  ochrane osobných údajov
+                </Link>.
+              </p>
+            </div>
 
-              {/* Buttons */}
-              <div className="flex flex-col gap-3 lg:flex-shrink-0">
-                {/* Primary actions — Reject + Accept side by side */}
-                <div className="flex gap-3">
-                  <button
-                    onClick={rejectAll}
-                    className="flex-1 lg:flex-none px-6 py-3.5 border border-gray-600 text-gray-300 rounded-full text-sm font-bold uppercase tracking-wider hover:bg-gray-800 hover:text-white transition-all duration-300"
-                  >
-                    Odmietnuť všetko
-                  </button>
-                  <button
-                    onClick={acceptAll}
-                    className="flex-1 lg:flex-none px-6 py-3.5 bg-brand-gold text-brand-dark rounded-full text-sm font-bold uppercase tracking-wider shadow-lg shadow-brand-gold/25 hover:bg-white hover:shadow-xl transition-all duration-300"
-                  >
-                    Prijať všetko
-                  </button>
-                </div>
-
-                {/* Settings link */}
+            {/* Buttons */}
+            <div className="flex flex-col gap-1 sm:gap-2 lg:w-[380px] lg:flex-none">
+              {/* Primary actions — Reject + Accept side by side, same size */}
+              <div className="grid grid-cols-2 gap-2.5">
                 <button
-                  onClick={openSettings}
-                  className="group flex items-center justify-center gap-1.5 text-gray-400 hover:text-white transition-colors text-sm font-medium"
+                  type="button"
+                  onClick={rejectAll}
+                  className={`${BUTTON} border border-brand-dark text-brand-dark hover:bg-brand-dark/5`}
                 >
-                  <Settings className="w-3.5 h-3.5 group-hover:rotate-45 transition-transform" />
-                  Prispôsobiť nastavenia
+                  Odmietnuť všetko
+                </button>
+                <button
+                  type="button"
+                  onClick={acceptAll}
+                  className={`${BUTTON} bg-brand-dark text-brand-light hover:bg-[#333331]`}
+                >
+                  Prijať všetko
                 </button>
               </div>
 
+              {/* Settings link */}
+              <button
+                type="button"
+                onClick={openSettings}
+                className="group inline-flex min-h-[44px] items-center justify-center gap-1.5 text-[0.88rem] font-medium text-brand-muted transition-colors hover:text-brand-dark"
+              >
+                <Settings className="h-3.5 w-3.5 transition-transform group-hover:rotate-45" />
+                Prispôsobiť nastavenia
+              </button>
             </div>
+
           </div>
         </div>
       </m.div>

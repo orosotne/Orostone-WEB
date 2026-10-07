@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ChevronRight, ArrowRight, Package } from 'lucide-react';
 import {
   getVisibleCategories,
   getProductColorCategory,
@@ -9,10 +8,41 @@ import {
 } from '../components/Eshop/EshopMegaMenu';
 import { useShopifyProducts } from '../hooks/useShopifyProducts';
 import { useCart } from '../context/CartContext';
-import { ProductCard } from './ProductCatalog';
+import { ProductCard } from '../components/Shop/ProductCard';
+import { CATALOG_GRID } from '../components/Shop/catalogGrid';
 import { SEOHead } from '../components/UI/SEOHead';
 import { CatalogOfflineNotice } from '../components/UI/CatalogOfflineNotice';
+import { CatalogGridSkeleton } from '../components/UI/Skeleton';
 import { CATEGORY_SEO } from '../data/seo';
+import { BULK_DISCOUNT } from '../data/pricing';
+import {
+  ActionButton,
+  chipClass,
+  Container,
+  GoldBand,
+  PageHero,
+  Section,
+  SectionHeader,
+  TextLink,
+} from '../components/Design';
+
+const HELP = [
+  {
+    title: 'Vzorka domov',
+    text: 'Dekor posúďte pri svojom svetle a vedľa dvierok kuchyne. Prvú vzorku máte zadarmo.',
+    link: { to: '/vzorky', label: 'Objednať vzorku' },
+  },
+  {
+    title: 'Dekory v kuchyniach',
+    text: 'Malý výrez nestačí. V realizáciách vidíte, ako kresba pôsobí na celej doske a ostrovčeku.',
+    link: { to: '/realizacie', label: 'Pozrieť realizácie' },
+  },
+  {
+    title: 'Celé platne v Bošanoch',
+    text: 'V showroome v renesančnom kaštieli si platne pozriete naživo a poradíme vám s výberom.',
+    link: { to: '/kontakt', label: 'Dohodnúť návštevu' },
+  },
+];
 
 // ===========================================
 // CATEGORY PAGE
@@ -44,11 +74,15 @@ export const CategoryPage: React.FC = () => {
     return category.subcategories.some(s => s.slug.endsWith(subCategory));
   }, [category, subCategory]);
 
+  const categoryProducts = useMemo(
+    () => products.filter((p) => p.category === mainCategory),
+    [products, mainCategory]
+  );
+
   // Filter products by category slug a voliteľne podľa farebnej podkategórie
   const filteredProducts = useMemo(() => {
-    // Filter by main category
-    let result = products.filter((p) => p.category === mainCategory);
-    
+    let result = categoryProducts;
+
     // Ak je podkategória farby, filtruj podľa farby
     if (mainCategory === 'sintered-stone' && subCategory) {
       const colorCat = subCategory as ColorCategory;
@@ -65,33 +99,35 @@ export const CategoryPage: React.FC = () => {
     }
 
     return result;
-  }, [products, mainCategory, subCategory]);
+  }, [categoryProducts, mainCategory, subCategory]);
+
+  // Number of products behind each colour chip ("Biele 5")
+  const countFor = (subSlug: string): number | null => {
+    if (isLoading) return null;
+    const color = subSlug.split('/')[1];
+    if (!color) return categoryProducts.length;
+    return mainCategory === 'sintered-stone'
+      ? categoryProducts.filter((p) => getProductColorCategory(p) === color).length
+      : null;
+  };
 
   // Category not found (neznámy slug, skrytá kategória, neplatná subkategória)
   if (!category || !isValidSubCategory) {
     return (
-      <div className="min-h-[60vh] flex items-center justify-center">
+      <Section tone="chalk" className="flex min-h-[calc(100dvh-4rem)] items-center lg:min-h-[calc(100dvh-5rem)]">
         <SEOHead
           title="Kategória nenájdená | OROSTONE E-Shop"
           description="Kategória s týmto názvom neexistuje alebo bola presunutá."
           noindex={true}
         />
-        <div className="text-center px-6">
-          <h1 className="text-2xl font-bold text-brand-dark mb-3">
-            Kategória nenájdená
-          </h1>
-          <p className="text-gray-500 mb-6">
-            Kategória s týmto názvom neexistuje.
-          </p>
-          <Link
-            to="/kategoria/sintered-stone"
-            className="inline-flex items-center gap-2 bg-brand-dark text-white px-6 py-3 rounded-lg text-sm tracking-wider uppercase font-semibold hover:bg-brand-gold hover:text-brand-dark transition-all"
-          >
+        <Container className="grid justify-items-start gap-5">
+          <h1 className="text-os-h1">Kategória nenájdená</h1>
+          <p className="text-os-lead font-light text-brand-muted">Kategória s týmto názvom neexistuje.</p>
+          <ActionButton to="/kategoria/sintered-stone" arrow className="mt-3">
             Všetky produkty
-            <ArrowRight size={16} />
-          </Link>
-        </div>
-      </div>
+          </ActionButton>
+        </Container>
+      </Section>
     );
   }
 
@@ -107,6 +143,13 @@ export const CategoryPage: React.FC = () => {
     seoOverride?.description ||
     category.description ||
     `${category.name} — produkty od OROSTONE.`;
+
+  const isSintered = mainCategory === 'sintered-stone';
+  const lead =
+    isSintered && !subCategory
+      ? 'Celé platne 3 200 × 1 600 mm. Pri každom dekore vidíte cenu za m² aj cenu celej platne.'
+      : seoDescription;
+  const activeSlug = subCategory ? `${mainCategory}/${subCategory}` : mainCategory;
 
   return (
     <>
@@ -126,127 +169,128 @@ export const CategoryPage: React.FC = () => {
         }}
       />
 
-      {/* ==================== HERO ==================== */}
-      <section
-        className="relative h-[320px] md:h-[400px] overflow-hidden"
-        style={{ background: 'linear-gradient(135deg, #F5E9B8 0%, #ECD488 50%, #C9A85C 100%)' }}
-      >
-        {/* Dark overlay at bottom for text readability */}
-        <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"
-          aria-hidden
-        />
+      <PageHero
+        breadcrumb={[
+          { label: 'E-shop', to: '/' },
+          subCategoryName ? { label: category.name, to: `/kategoria/${slug}` } : { label: category.name },
+          ...(subCategoryName ? [{ label: subCategoryName }] : []),
+        ]}
+        title={subCategoryName ? `${category.name} — ${subCategoryName}` : category.name}
+        lead={lead}
+      />
 
-        {/* Content */}
-        <div className="relative h-full container mx-auto px-6 lg:px-8 flex flex-col justify-end pb-10 md:pb-14">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-[11px] tracking-[0.15em] uppercase text-white/60 mb-4 animate-in fade-in slide-in-from-bottom-1 duration-500">
-            <Link to="/" className="hover:text-white transition-colors">
-              E-Shop
-            </Link>
-            <ChevronRight size={12} />
-            <Link to={`/kategoria/${category.slug}`} className="hover:text-white transition-colors">
-              {category.name}
-            </Link>
-            {subCategoryName && (
-              <>
-                <ChevronRight size={12} />
-                <span className="text-white">{subCategoryName}</span>
-              </>
-            )}
-          </nav>
-
-          {/* Title */}
-          <h1 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-3 animate-in fade-in slide-in-from-bottom-2 duration-500 delay-100 fill-mode-both">
-            {subCategoryName ? `${category.name} — ${subCategoryName}` : category.name}
-          </h1>
-
-          {/* Description */}
-          {category.description && (
-            <p className="text-base md:text-lg text-white/80 max-w-xl animate-in fade-in slide-in-from-bottom-2 duration-500 delay-200 fill-mode-both">
-              {category.description}
-            </p>
-          )}
-
-          {/* Product count */}
-          {hasProducts && (
-            <p className="mt-3 text-[11px] tracking-[0.15em] uppercase text-white/50 animate-in fade-in duration-500 delay-300 fill-mode-both">
-              {filteredProducts.length} {filteredProducts.length === 1 ? 'produkt' : filteredProducts.length < 5 ? 'produkty' : 'produktov'}
-            </p>
-          )}
+      {/* ==================== COLOUR FILTER (links to the indexable subcategory URLs) ==================== */}
+      {category.subcategories.length > 1 && (
+        <div className="sticky top-16 z-30 border-y border-brand-line bg-brand-light lg:top-20">
+          <Container>
+            <nav
+              className="-mx-[var(--os-edge)] flex items-center gap-2 overflow-x-auto overscroll-x-contain px-[var(--os-edge)] py-3 [scrollbar-width:none]"
+              aria-label={isSintered ? 'Farby dekorov' : 'Podkategórie'}
+            >
+              {category.subcategories.map((sub) => {
+                const active = sub.slug === activeSlug;
+                const count = countFor(sub.slug);
+                return (
+                  <Link
+                    key={sub.id}
+                    to={`/kategoria/${sub.slug}`}
+                    className={chipClass(active)}
+                    aria-current={active ? 'page' : undefined}
+                  >
+                    {sub.name}
+                    {count !== null && (
+                      <span className={`tabular-nums ${active ? 'text-brand-light/60' : 'text-brand-muted'}`}>{count}</span>
+                    )}
+                  </Link>
+                );
+              })}
+            </nav>
+          </Container>
         </div>
-      </section>
+      )}
 
       {/* ==================== PRODUCT GRID or EMPTY STATE ==================== */}
-      <section className="container mx-auto px-6 lg:px-8 py-12 md:py-16">
-        {isLoading ? (
-          /* Loading skeleton — 8 tiles to approximate real grid height (reduces CLS vs 4 placeholders) */
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="bg-gray-100 rounded-2xl animate-pulse">
-                <div className="aspect-[4/5]" />
-                <div className="p-4 space-y-3">
-                  <div className="h-4 bg-gray-200 rounded w-3/4" />
-                  <div className="h-3 bg-gray-200 rounded w-1/2" />
-                  <div className="h-10 bg-gray-200 rounded" />
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : hasProducts ? (
-          <>
-            {usingFallback && <CatalogOfflineNotice />}
-            {/* Product Grid — plain div (no framer-motion wrap to avoid 50-card reconciliation cost on INP) */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 animate-in fade-in duration-300">
-              {filteredProducts.map((product) => {
-                const inCart = isInCart(product.id);
-                return (
+      <Section tone="chalk" className="!pt-[clamp(40px,5vw,72px)]">
+        <Container>
+          {isLoading ? (
+            <CatalogGridSkeleton />
+          ) : hasProducts ? (
+            <>
+              <h2 className="sr-only">{subCategoryName ? `${subCategoryName} dekory` : isSintered ? 'Všetky dekory' : category.name}</h2>
+              {usingFallback && <CatalogOfflineNotice />}
+              {/* Product Grid — plain div (no framer-motion wrap to avoid 50-card reconciliation cost on INP) */}
+              <div className={CATALOG_GRID}>
+                {filteredProducts.map((product, i) => (
                   <ProductCard
                     key={product.id}
                     product={product}
+                    priority={i < 4}
                     onAddToCart={() => {
                       if (product.shopifyVariantId) {
                         addItem(product.shopifyVariantId, 1);
                       }
                     }}
-                    inCart={inCart}
+                    inCart={isInCart(product.id)}
                     quantity={getItemQuantity(product.id)}
                   />
-                );
-              })}
+                ))}
+              </div>
+
+              {isSintered && (
+                <div className="mt-[clamp(56px,6vw,88px)] flex flex-wrap items-center justify-between gap-x-10 gap-y-4 border-t border-brand-line pt-7">
+                  <p className="font-light">
+                    Ceny sú s DPH. Predávame celé platne, od {BULK_DISCOUNT.quantity} platní so zľavou{' '}
+                    {BULK_DISCOUNT.discountPercent}&nbsp;%.
+                  </p>
+                  <div className="flex flex-wrap gap-x-8 gap-y-3">
+                    <TextLink to="/cennik">Celý cenník</TextLink>
+                    <TextLink to="/doprava">Doprava a platba</TextLink>
+                  </div>
+                </div>
+              )}
+            </>
+          ) : (
+            /* Empty State */
+            <div className="grid max-w-[640px] justify-items-start gap-5 py-6">
+              <h2 className="text-os-h2">Pripravujeme pre vás</h2>
+              <p className="text-os-lead font-light text-brand-muted">
+                Produkty v kategórii <strong className="font-semibold text-brand-dark">{category.name}</strong> budú čoskoro dostupné.
+                Pracujeme na rozšírení našej ponuky — sledujte novinky.
+              </p>
+              <div className="mt-3 flex flex-wrap items-center gap-x-8 gap-y-4">
+                <ActionButton to="/kategoria/sintered-stone" arrow>
+                  Prehliadnuť produkty
+                </ActionButton>
+                <TextLink to="/">Späť na e-shop</TextLink>
+              </div>
             </div>
-          </>
-        ) : (
-          /* Empty State */
-          <div className="flex flex-col items-center justify-center py-16 md:py-24 text-center animate-in fade-in slide-in-from-bottom-2 duration-500 delay-100 fill-mode-both">
-            <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mb-6">
-              <Package size={36} strokeWidth={1.2} className="text-gray-400" />
-            </div>
-            <h2 className="text-2xl font-bold text-brand-dark mb-3">
-              Pripravujeme pre vás
-            </h2>
-            <p className="text-gray-500 max-w-md mb-8 leading-relaxed">
-              Produkty v kategórii <strong>{category.name}</strong> budú čoskoro dostupné.
-              Pracujeme na rozšírení našej ponuky — sledujte novinky.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link
-                to="/kategoria/sintered-stone"
-                className="inline-flex items-center justify-center gap-2 bg-brand-dark text-white px-6 py-3 rounded-lg text-[11px] tracking-wider uppercase font-semibold hover:bg-brand-gold hover:text-brand-dark transition-all"
-              >
-                Prehliadnuť produkty
-                <ArrowRight size={16} />
-              </Link>
-              <Link
-                to="/"
-                className="inline-flex items-center justify-center gap-2 border border-gray-300 text-brand-dark px-6 py-3 rounded-lg text-[11px] tracking-wider uppercase font-semibold hover:border-brand-dark transition-all"
-              >
-                Späť na e-shop
-              </Link>
-            </div>
-          </div>
-        )}
-      </section>
+          )}
+        </Container>
+      </Section>
+
+      {/* ==================== HELP WITH THE CHOICE ==================== */}
+      {isSintered && (
+        <Section tone="sand">
+          <Container>
+            <SectionHeader
+              eyebrow="Výber dekoru"
+              title="Neviete sa rozhodnúť?"
+              lead="Pri pracovnej doske rozhoduje kresba vo veľkej ploche a svetlo vo vašej kuchyni. Toto vám pomôže vybrať."
+            />
+            <ul className="mt-[clamp(40px,5vw,64px)] grid gap-10 border-t border-brand-line pt-10 md:grid-cols-3 md:gap-12">
+              {HELP.map((item) => (
+                <li key={item.title} className="grid content-start justify-items-start gap-3">
+                  <h3 className="text-os-h3">{item.title}</h3>
+                  <p className="font-light text-brand-muted">{item.text}</p>
+                  <TextLink to={item.link.to} className="mt-1">{item.link.label}</TextLink>
+                </li>
+              ))}
+            </ul>
+          </Container>
+        </Section>
+      )}
+
+      <GoldBand od="kategoria" />
     </>
   );
 };
