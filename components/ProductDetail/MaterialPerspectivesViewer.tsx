@@ -162,7 +162,7 @@ export const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProp
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="relative z-10 w-full max-w-6xl mx-4 max-h-[90vh] flex flex-col"
+              className="relative z-10 w-full max-w-6xl mx-4 max-h-[90dvh] flex flex-col"
             >
               <button
                 onClick={() => startTransition(() => setIsLightboxOpen(false))}
@@ -184,7 +184,7 @@ export const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProp
                     <img
                       src={activePerspective.image.replace('w=1200', 'w=2000')}
                       alt={activePerspective.label}
-                      className="w-full h-auto max-h-[60vh] object-contain"
+                      className="w-full h-auto max-h-[60dvh] object-contain"
                     />
                     <div className="absolute top-4 left-4">
                       <span className="bg-white/90 backdrop-blur text-brand-dark text-xs lg:text-[10px] font-bold uppercase tracking-wider px-4 py-2 rounded">

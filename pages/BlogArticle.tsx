@@ -83,7 +83,7 @@ const PROSE = `
   prose-ul:my-6 prose-ul:space-y-2 prose-ol:my-6 prose-li:text-brand-dark/85 prose-li:font-light prose-li:leading-relaxed prose-li:text-[1.04rem] prose-li:marker:text-brand-muted
   prose-img:rounded-[3px] prose-img:my-12 prose-img:aspect-[16/10] prose-img:object-cover prose-img:bg-brand-sand
   prose-blockquote:border-l-2 prose-blockquote:border-brand-dark prose-blockquote:text-brand-dark/80 prose-blockquote:font-light prose-blockquote:italic prose-blockquote:my-12
-  prose-table:text-[0.95rem] prose-thead:border-b prose-thead:border-brand-dark prose-th:py-3 prose-th:px-3 prose-th:font-semibold prose-th:text-left
+  prose-table:text-[0.95rem] max-md:prose-table:block max-md:prose-table:overflow-x-auto prose-thead:border-b prose-thead:border-brand-dark prose-th:py-3 prose-th:px-3 prose-th:font-semibold prose-th:text-left
   prose-tr:border-brand-line prose-td:py-3 prose-td:px-3 prose-td:font-light
 
   [&_.article-tldr-label]:mb-3 [&_.article-tldr-label]:block [&_.article-tldr-label]:text-[0.74rem] [&_.article-tldr-label]:font-bold
@@ -289,7 +289,7 @@ export const BlogArticle: React.FC = () => {
 
   if (!article) {
     return (
-      <Section tone="chalk" className="min-h-[60dvh]">
+      <Section tone="chalk" className="min-h-[60svh]">
         <SEOHead
           title="Článok nebol nájdený | OROSTONE Blog"
           description="Článok, ktorý hľadáte, neexistuje."

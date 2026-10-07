@@ -457,7 +457,7 @@ const Lightbox: React.FC<{
         transition={{ duration: 0.2 }}
         src={images[index]}
         alt={`${title} — fotka ${index + 1}`}
-        className="max-h-[82vh] max-w-[90vw] rounded-[3px] object-contain"
+        className="max-h-[82dvh] max-w-[90vw] rounded-[3px] object-contain"
         onClick={(e) => e.stopPropagation()}
       />
     </m.div>
