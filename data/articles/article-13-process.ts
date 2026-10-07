@@ -14,7 +14,7 @@ export const ARTICLE_13: BlogArticle = {
   sk: {
     title: 'Od merania po inštaláciu: proces Orostone v 10 krokoch',
     subtitle: 'Kompletný sprievodca celým procesom — od prvej konzultácie po odovzdanie hotovej kuchyne',
-    excerpt: 'Presne budeš vedieť, čo sa deje v každej fáze. 10 krokov, konkrétne termíny, jasné zodpovednosti. Celý proces od konzultácie po hotovú kuchyňu trvá 10–15 pracovných dní.',
+    excerpt: 'Presne budete vedieť, čo sa deje v každej fáze. 10 krokov, konkrétne termíny, jasné zodpovednosti. Celý proces od konzultácie po hotovú kuchyňu trvá 10–15 pracovných dní.',
     metaTitle: 'Od pôdorysu po hotovú kuchyňu — proces | OROSTONE',
     metaDescription: 'Od pôdorysu cez výber dekoru a zameranie po finálnu kuchyňu. Celý proces zastrešíme so skúsenými kamenármi — čo má klient na oboch stranách očakávať.',
     directAnswer: 'Celý proces od prvej konzultácie po hotovú kuchyňu trvá 10–15 pracovných dní. Zahŕňa: konzultáciu, výber materiálu, digitálne zameranie (presnosť ±0.05mm), CNC fabrikáciu, kontrolu kvality, transport na A-ráme, prípravu podkladu, montáž, inštaláciu spotrebičov a finálnu kontrolu.',
@@ -26,32 +26,32 @@ export const ARTICLE_13: BlogArticle = {
   <li>Transport vo vertikálnych A-rámoch — dosky sa vždy vezú na stojato, nie naplocho</li>
 </ul>
 
-<p>Investícia do sinterovaného kameňa je rozhodnutie, ktoré ovplyvní tvoj priestor na desaťročia. Je úplne prirodzené, že chceš presne vedieť, čo sa bude diať, kedy a kto za čo zodpovedá.</p>
+<p>Investícia do sinterovaného kameňa je rozhodnutie, ktoré ovplyvní váš priestor na desaťročia. Je úplne prirodzené, že chcete presne vedieť, čo sa bude diať, kedy a kto za čo zodpovedá.</p>
 
-<p>Neistota plodí stres — a práve preto ti v tomto článku ukážeme celý proces Orostone krok za krokom, s konkrétnymi termínmi, meraniami a zodpovednosťami.</p>
+<p>Neistota plodí stres — a práve preto vám v tomto článku ukážeme celý proces Orostone krok za krokom, s konkrétnymi termínmi, meraniami a zodpovednosťami.</p>
 
-<p>Či už plánuješ novú kuchyňu, kúpeľňový obklad alebo ostrov do otvoreného priestoru, proces je vždy rovnaký: <strong>10 jasných krokov, 10–15 pracovných dní, žiadne prekvapenia</strong>. Poďme na to.</p>
+<p>Či už plánujete novú kuchyňu, kúpeľňový obklad alebo ostrov do otvoreného priestoru, proces je vždy rovnaký: <strong>10 jasných krokov, 10–15 pracovných dní, žiadne prekvapenia</strong>. Poďme na to.</p>
 
 <h2 id="krok-1-konzultacia-a-vyber-materialu">Krok 1 — Čo sa deje na konzultácii?</h2>
 
-<p>Všetko začína osobnou konzultáciou v našom showroome v Bošanoch. Nie je to predajný telefonát ani e-mail s katalógom — je to stretnutie, kde vidíš a dotýkaš sa reálnych materiálov v plnej veľkosti.</p>
+<p>Všetko začína osobnou konzultáciou v našom showroome v Bošanoch. Nie je to predajný telefonát ani e-mail s katalógom — je to stretnutie, kde vidíte a dotýkate sa reálnych materiálov v plnej veľkosti.</p>
 
 <p><strong>Čo sa deje počas konzultácie:</strong></p>
 <ul>
-  <li><strong>Prehliadka vzoriek v plnej veľkosti</strong> — nepozeráš sa na malé vzorky 10×10 cm. V showroome máme celé slab-y (dosky), kde vidíš skutočnú kresbu, žilkovanie a farebnosť materiálu tak, ako bude vyzerať v tvojej kuchyni</li>
+  <li><strong>Prehliadka vzoriek v plnej veľkosti</strong> — nepozeráte sa na malé vzorky 10\u00A0×\u00A010\u00A0cm. V showroome máme celé slab-y (dosky), kde vidíte skutočnú kresbu, žilkovanie a farebnosť materiálu tak, ako bude vyzerať vo vašej kuchyni</li>
   <li><strong>Diskusia o hrúbke materiálu</strong> — vysvetlíme rozdiely medzi 12 mm a 20 mm hrúbkou, ich štrukturálne vlastnosti a kedy ktorú odporúčame</li>
   <li><strong>Výber povrchovej úpravy</strong> — leštený, matný, satinovaný alebo štruktúrovaný povrch. Každý má iný vizuálny efekt a praktické vlastnosti</li>
-  <li><strong>Profily hrán</strong> — od minimalistickej skosenej hrany po elegantný half-bullnose. Ukážeme ti vzorky na reálnom materiáli</li>
-  <li><strong>Rozpočet a očakávania</strong> — otvorene diskutujeme o cene, aby si vedel, čo za svoj rozpočet dostaneš</li>
+  <li><strong>Profily hrán</strong> — od minimalistickej skosenej hrany po elegantný half-bullnose. Ukážeme vám vzorky na reálnom materiáli</li>
+  <li><strong>Rozpočet a očakávania</strong> — otvorene diskutujeme o cene, aby ste vedeli, čo za svoj rozpočet dostanete</li>
 </ul>
 
 <p><strong>Trvanie:</strong> 1–2 hodiny. Konzultácia je bezplatná a nezáväzná.</p>
 
-<p><strong>Tip pre klientov:</strong> Prines si pôdorys kuchyne, fotky inšpirácie a — ak máš — výkres od kuchynského štúdia. Čím viac informácií máme od začiatku, tým presnejšie ti poradíme.</p>
+<p><strong>Tip pre klientov:</strong> Prineste si pôdorys kuchyne, fotky inšpirácie a — ak máte — výkres od kuchynského štúdia. Čím viac informácií máme od začiatku, tým presnejšie vám poradíme.</p>
 
 <h2 id="krok-2-cenova-ponuka">Krok 2 — Čo obsahuje cenová ponuka?</h2>
 
-<p>Do 48 hodín po konzultácii dostaneš detailnú cenovú ponuku. Nie odhad, nie „od–do" rozsah — konkrétnu sumu rozdelenú na jednotlivé položky.</p>
+<p>Do 48 hodín po konzultácii dostanete detailnú cenovú ponuku. Nie odhad, nie „od–do" rozsah — konkrétnu sumu rozdelenú na jednotlivé položky.</p>
 
 <p><strong>Čo obsahuje cenová ponuka:</strong></p>
 <ul>
@@ -64,15 +64,15 @@ export const ARTICLE_13: BlogArticle = {
   <li><strong>Inštalácia</strong> — kompletná montáž vrátane materiálu na lepenie a tesnenie</li>
 </ul>
 
-<p><strong>Žiadne skryté náklady.</strong> Cena, ktorú vidíš, je cena, ktorú zaplatíš. Jediná výnimka: ak sa počas zamerania zistí, že skrinky nie sú v rovine a vyžadujú úpravu — o tom ťa informujeme vopred.</p>
+<p><strong>Žiadne skryté náklady.</strong> Cena, ktorú vidíte, je cena, ktorú zaplatíte. Jediná výnimka: ak sa počas zamerania zistí, že skrinky nie sú v rovine a vyžadujú úpravu — o tom vás informujeme vopred.</p>
 
 <p><strong>Platnosť ponuky:</strong> 30 dní. Ceny materiálov sa môžu meniť podľa dostupnosti od výrobcov, preto ponuku garantujeme na mesiac.</p>
 
 <h2 id="krok-3-digitalne-zameranie">Krok 3 — Prečo je digitálne zameranie najdôležitejší krok?</h2>
 
-<p>Po schválení ponuky a úhrade zálohy prichádza najdôležitejší technický krok celého procesu: digitálne zameranie priamo u teba doma. Tu sa rozhoduje o presnosti celej realizácie.</p>
+<p>Po schválení ponuky a úhrade zálohy prichádza najdôležitejší technický krok celého procesu: digitálne zameranie priamo u vás doma. Tu sa rozhoduje o presnosti celej realizácie.</p>
 
-<p><strong>Technológia:</strong> Používame laserové zameriavacie systémy s presnosťou <strong>±0,05 mm</strong>. Nie meter, nie pásmo — laser, ktorý zachytí každý milimeter tvojej kuchyne.</p>
+<p><strong>Technológia:</strong> Používame laserové zameriavacie systémy s presnosťou <strong>±0,05 mm</strong>. Nie meter, nie pásmo — laser, ktorý zachytí každý milimeter vašej kuchyne.</p>
 
 <p><strong>Čo meriame:</strong></p>
 <ul>
@@ -87,11 +87,11 @@ export const ARTICLE_13: BlogArticle = {
 
 <p><strong>Trvanie:</strong> 1–2 hodiny na mieste, v závislosti od komplexnosti kuchyne.</p>
 
-<p><strong>Schválenie výkresov:</strong> Na základe merania vytvoríme digitálne výkresy s presným tvarom, rozmermi, pozíciami výrezov a profilmi hrán. Tieto výkresy ti pošleme na schválenie — <strong>fabrikácia sa nespustí, kým ich neodsúhlasíš</strong>. Toto je tvoja posledná príležitosť na zmeny bez dodatočných nákladov.</p>
+<p><strong>Schválenie výkresov:</strong> Na základe merania vytvoríme digitálne výkresy s presným tvarom, rozmermi, pozíciami výrezov a profilmi hrán. Tieto výkresy vám pošleme na schválenie — <strong>fabrikácia sa nespustí, kým ich neodsúhlasíte</strong>. Toto je vaša posledná príležitosť na zmeny bez dodatočných nákladov.</p>
 
 <h2 id="krok-4-cnc-fabrikacia">Krok 4 — Ako prebieha CNC fabrikácia?</h2>
 
-<p>Po schválení výkresov sa tvoj projekt presúva do výroby. Tu sa surový slab sinterovaného kameňa mení na presne tvarované diely tvojej kuchyne.</p>
+<p>Po schválení výkresov sa váš projekt presúva do výroby. Tu sa surový slab sinterovaného kameňa mení na presne tvarované diely vašej kuchyne.</p>
 
 <p><strong>Rezanie mostovým CNC strojom:</strong></p>
 <ul>
@@ -111,7 +111,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <p><strong>Profilovanie hrán:</strong> CNC stroj vyfrézuje zvolený profil hrany s presnosťou, ktorá nie je dosiahnuteľná ručným opracovaním. Výsledok je hladký, rovnomerný a vizuálne bezchybný po celej dĺžke.</p>
 
-<p><strong>Trvanie:</strong> 7–10 pracovných dní od schválenia výkresov. Komplexnejšie projekty s viacerými kusmi môžu trvať dlhšie — o presnom termíne ťa informujeme pri schválení.</p>
+<p><strong>Trvanie:</strong> 7–10 pracovných dní od schválenia výkresov. Komplexnejšie projekty s viacerými kusmi môžu trvať dlhšie — o presnom termíne vás informujeme pri schválení.</p>
 
 <h2 id="krok-5-kontrola-kvality">Krok 5 — Ako kontrolujeme kvalitu?</h2>
 
@@ -126,7 +126,7 @@ export const ARTICLE_13: BlogArticle = {
   <li><strong>Rozmerová kontrola</strong> — každý diel porovnáme s digitálnym výkresom. Tolerancia: ±0,5 mm</li>
 </ul>
 
-<p>Ak ktorýkoľvek diel neprejde kontrolou, vyrába sa znova. Nekompromisne. Radšej sa termín posunie o pár dní, než by sa osadilo niečo, s čím nebudeš spokojný roky.</p>
+<p>Ak ktorýkoľvek diel neprejde kontrolou, vyrába sa znova. Nekompromisne. Radšej sa termín posunie o pár dní, než by sa osadilo niečo, s čím nebudete spokojní roky.</p>
 
 <h2 id="krok-6-transport">Krok 6 — Prečo na spôsobe prepravy záleží?</h2>
 
@@ -137,10 +137,10 @@ export const ARTICLE_13: BlogArticle = {
   <li><strong>A-rámové vozidlá</strong> — dosky sa prepravujú vertikálne (na stojato) v špeciálnych A-rámoch, nie naplocho. Vertikálna pozícia eliminuje riziko prasknutia od vlastnej váhy pri vibráciách</li>
   <li><strong>Polstrovaná ochrana</strong> — medzi jednotlivými doskami sú penové vložky, hrany sú chránené rohovými profilmi</li>
   <li><strong>Vybavenie s kapacitou min. 3 500 kg</strong> — manipulácia s veľkoformátovými doskami vyžaduje profesionálne zdvíhacie zariadenia</li>
-  <li><strong>Priamy transport</strong> — z dielne priamo k tebe domov, bez zbytočného prekladania a medziskladov</li>
+  <li><strong>Priamy transport</strong> — z dielne priamo k vám domov, bez zbytočného prekladania a medziskladov</li>
 </ul>
 
-<p><strong>Koordinácia doručenia:</strong> Pred dňom dodania s tebou preberieme:</p>
+<p><strong>Koordinácia doručenia:</strong> Pred dňom dodania s vami preberieme:</p>
 <ul>
   <li>Parkovanie pre dodávkové vozidlo — potrebujeme miesto čo najbližšie k vchodu</li>
   <li>Prístupová cesta — šírka dverí, chodieb, schodísk a výťahov</li>
@@ -216,27 +216,27 @@ export const ARTICLE_13: BlogArticle = {
   <li><strong>Verifikácia roviny</strong> — záverečné meranie vodováhou na celej ploche</li>
   <li><strong>Kontrola tesnosti</strong> — napustíme drez, kontrolujeme spoje pri odtoku</li>
   <li><strong>Kontrola funkčnosti spotrebičov</strong> — každý spotrebič otestujeme</li>
-  <li><strong>Čistenie</strong> — celú pracovnú dosku vyčistíme a predvedieme ti správny postup údržby</li>
+  <li><strong>Čistenie</strong> — celú pracovnú dosku vyčistíme a predvedieme vám správny postup údržby</li>
 </ul>
 
 <p><strong>Odovzdanie klientovi:</strong></p>
 <ul>
-  <li><strong>Protokol o čistení a údržbe</strong> — vysvetlíme ti, ako sa o sinterovaný kameň starať (spoiler: je to veľmi jednoduché)</li>
-  <li><strong>Registrácia záruky</strong> — zaregistrujeme tvoj projekt a dostaneš záručný certifikát</li>
+  <li><strong>Protokol o čistení a údržbe</strong> — vysvetlíme vám, ako sa o sinterovaný kameň starať (spoiler: je to veľmi jednoduché)</li>
+  <li><strong>Registrácia záruky</strong> — zaregistrujeme váš projekt a dostanete záručný certifikát</li>
   <li><strong>Čas na vytvrdnutie</strong> — <strong>24 hodín</strong> po inštalácii nepoužívajte dosku v plnom zaťažení. Lepidlá a tmely potrebujú čas na úplné vytvrdnutie</li>
-  <li><strong>Kontakt pre budúcnosť</strong> — ak kedykoľvek v budúcnosti budeš potrebovať poradiť, opraviť alebo rozšíriť, sme tu pre teba</li>
+  <li><strong>Kontakt pre budúcnosť</strong> — ak kedykoľvek v budúcnosti budete potrebovať poradiť, opraviť alebo rozšíriť, sme tu pre vás</li>
 </ul>
 
-<h2 id="co-musite-pripravit-vy">Čo musíš pripraviť ty?</h2>
+<h2 id="co-musite-pripravit-vy">Čo musíte pripraviť vy?</h2>
 
-<p>Aby celý proces prebehol hladko a bez zbytočných zdržaní, potrebujeme od teba niekoľko vecí. Tu je kompletný zoznam:</p>
+<p>Aby celý proces prebehol hladko a bez zbytočných zdržaní, potrebujeme od vás niekoľko vecí. Tu je kompletný zoznam:</p>
 
 <ul>
   <li><strong>Skrinky nainštalované a vyrovnané</strong> — toto je podmienka číslo jeden. Bez hotových skriniek nemôžeme merať a bez merania nemôžeme vyrábať. Skrinky musia byť v konečnej pozícii, ukotvené k stene a vyrovnané do roviny</li>
   <li><strong>Voľná prístupová cesta pre doručenie</strong> — dosky sú veľké a ťažké. Potrebujeme voľný priechod od vchodu do budovy až po kuchyňu. Odstráňte nábytok, koberčeky a prekážky na trase</li>
   <li><strong>Parkovanie pre dodávkové vozidlo</strong> — ideálne čo najbližšie k vchodu. Ak bývate v centre, zabezpečte parkovacie miesto vopred</li>
   <li><strong>Inštalatérske prípojky pripravené</strong> — voda, odpad a plyn musia byť vyvedené na správnych pozíciách. Tieto pozície definuje projekt kuchyne</li>
-  <li><strong>Stará kuchynská doska odstránená</strong> — ak meníš existujúcu dosku, musí byť pred naším príchodom demontovaná. Ak potrebuješ, demontáž starej dosky vieme zabezpečiť — daj nám vedieť pri objednávke</li>
+  <li><strong>Stará kuchynská doska odstránená</strong> — ak meníte existujúcu dosku, musí byť pred naším príchodom demontovaná. Ak potrebujete, demontáž starej dosky vieme zabezpečiť — dajte nám vedieť pri objednávke</li>
   <li><strong>Elektrické zásuvky a osvetlenie funkčné</strong> — pri inštalácii potrebujeme prístup k elektrike pre nástroje a osvetlenie pre kontrolu kvality</li>
 </ul>
 
@@ -252,12 +252,12 @@ export const ARTICLE_13: BlogArticle = {
         answer: 'Konzultácia v našom showroome v Bošanoch je úplne bezplatná a nezáväzná. Trvá 1–2 hodiny a zahŕňa prehliadku materiálov, diskusiu o vašom projekte a predbežnú kalkuláciu.'
       },
       {
-        question: 'Prečo potrebuješ hotové skrinky pred zameraním?',
+        question: 'Prečo potrebujete hotové skrinky pred zameraním?',
         answer: 'Digitálne meranie zachytáva skutočný stav s presnosťou ±0,05 mm. Ak sa po zameraní zmení čokoľvek — pozícia skrinky, výška, uhol — meranie prestáva platiť. Dosky vyrobené na základe neaktuálneho merania nebudú sedieť.'
       },
       {
         question: 'Môžem si zmeniť výber materiálu po zameraní?',
-        answer: 'Materiál môžeš zmeniť kedykoľvek pred spustením fabrikácie. Po zameraní meníš len materiál — rozmery zostávajú rovnaké. Po spustení CNC rezania zmena nie je možná, pretože dosky sú už vyrezané presne pre tvoj projekt.'
+        answer: 'Materiál môžete zmeniť kedykoľvek pred spustením fabrikácie. Po zameraní meníte len materiál — rozmery zostávajú rovnaké. Po spustení CNC rezania zmena nie je možná, pretože dosky sú už vyrezané presne pre váš projekt.'
       },
       {
         question: 'Čo ak moje steny nie sú v pravom uhle?',
@@ -273,7 +273,7 @@ export const ARTICLE_13: BlogArticle = {
       },
       {
         question: 'Čo ak sa pri inštalácii zistí problém s podkladom?',
-        answer: 'Podklad kontrolujeme ešte pred položením dosiek. Ak skrinky nie sú v rovine (tolerancia max 3 mm na 3 m), vyrovnáme ich podložkami. V extrémnych prípadoch ťa kontaktujeme a dohodneme sa na riešení ešte pred montážou.'
+        answer: 'Podklad kontrolujeme ešte pred položením dosiek. Ak skrinky nie sú v rovine (tolerancia max 3 mm na 3 m), vyrovnáme ich podložkami. V extrémnych prípadoch vás kontaktujeme a dohodneme sa na riešení ešte pred montážou.'
       },
       {
         question: 'Sú spoje medzi doskami viditeľné?',
@@ -281,7 +281,7 @@ export const ARTICLE_13: BlogArticle = {
       },
       {
         question: 'Kedy môžem kuchyňu začať plne používať?',
-        answer: 'Odporúčame 24 hodín po inštalácii nepoužívať dosku v plnom zaťažení. Lepidlá a epoxidové tmely potrebujú čas na úplné vytvrdnutie. Po 24 hodinách môžeš kuchyňu používať bez akýchkoľvek obmedzení.'
+        answer: 'Odporúčame 24 hodín po inštalácii nepoužívať dosku v plnom zaťažení. Lepidlá a epoxidové tmely potrebujú čas na úplné vytvrdnutie. Po 24 hodinách môžete kuchyňu používať bez akýchkoľvek obmedzení.'
       },
       {
         question: 'Osadia sa aj spotrebiče, alebo to musím riešiť sám?',
@@ -289,7 +289,7 @@ export const ARTICLE_13: BlogArticle = {
       },
       {
         question: 'Aká je záruka na inštaláciu a materiál?',
-        answer: 'Na fabrikáciu a montáž poskytuje záruku kamenár, ktorý ich realizuje. Na materiál platí záruka výrobcu. Presné podmienky záruky sú súčasťou záručného certifikátu, ktorý dostaneš pri odovzdaní projektu. V prípade akéhokoľvek problému nás kontaktuj — pomôžeme to doriešiť.'
+        answer: 'Na fabrikáciu a montáž poskytuje záruku kamenár, ktorý ich realizuje. Na materiál platí záruka výrobcu. Presné podmienky záruky sú súčasťou záručného certifikátu, ktorý dostanete pri odovzdaní projektu. V prípade akéhokoľvek problému nás kontaktujte — pomôžeme to doriešiť.'
       }
     ]
   },

@@ -13,7 +13,7 @@ export const ARTICLE_05: BlogArticle = {
   sk: {
     title: 'Hrany sinterovaného kameňa: kompletný sprievodca profilmi a odolnosťou',
     subtitle: 'Ako si vybrať správny profil hrany — estetika, odolnosť a cena. Buyer\'s guide bez marketingových klišé',
-    excerpt: 'Profil hrany rozhoduje o odolnosti dosky voči chipovaniu viac ako samotný materiál. Tento sprievodca ti pomôže vybrať správny.',
+    excerpt: 'Profil hrany rozhoduje o odolnosti dosky voči chipovaniu viac ako samotný materiál. Tento sprievodca vám pomôže vybrať správny.',
     metaTitle: 'Hrany pracovnej dosky zo sinterovaného kameňa | OROSTONE',
     metaDescription: 'Profily hrán, radiusy a riziko odštiepenia. Ako vybrať hrany kuchynskej dosky tak, aby vydržali roky každodenného používania.',
     directAnswer: 'Zaoblené profily hrán (half-bullnose, bevel, chamfer) znižujú riziko chipovania sinterovaného kameňa až 3× oproti ostrým 90° hranám. Pre kuchynské dosky odporúčame minimálne 2mm chamfer, ideálne half-bullnose. 90° profil je vhodný len pre obklady stien, nie pre pracovné plochy.',
@@ -198,8 +198,8 @@ export const ARTICLE_05: BlogArticle = {
 <p>A ešte raz: <strong class="gold">cena za správny profil je vždy nižšia ako cena za opravu chipu</strong>. Nie je to o šetrení.</p>
 
 <div class="article-tip">
-  <p><strong>Alebo nás jednoducho kontaktuj v Orostone</strong></p>
-  <p>Ukážeme ti profily na fyzických vzorkách — oveľa lepšie rozhodnutie ako podľa fotografie. Konzultácia je zadarmo.</p>
+  <p><strong>Alebo nás jednoducho kontaktujte v Orostone</strong></p>
+  <p>Ukážeme vám profily na fyzických vzorkách — oveľa lepšie rozhodnutie ako podľa fotografie. Konzultácia je zadarmo.</p>
   <a href="/kontakt" class="tip-btn">Kontaktovať nás →</a>
 </div>
 `,

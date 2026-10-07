@@ -13,7 +13,7 @@ export const ARTICLE_04: BlogArticle = {
   sk: {
     title: '12 mm vs 20 mm sinterovaný kameň: aký je skutočný rozdiel?',
     subtitle: 'Edukačný prehľad — čo obe hrúbky technicky môžu a kde sú ich limity. V Orostone pracujeme s 12 mm.',
-    excerpt: 'Na trhu existujú dosky v hrúbke 12 mm aj 20 mm. Vysvetlíme ti technické rozdiely a povieme, prečo v Orostone pracujeme výhradne s 12 mm — a kedy to stačí.',
+    excerpt: 'Na trhu existujú dosky v hrúbke 12 mm aj 20 mm. Vysvetlíme vám technické rozdiely a povieme, prečo v Orostone pracujeme výhradne s 12\u00A0mm — a kedy to stačí.',
     metaTitle: '12 mm alebo 20 mm? Sinterovaný kameň | OROSTONE',
     metaDescription: 'Kedy stačí 12 mm a kedy má zmysel ísť do 20 mm. Praktický rozdiel pri kuchynskej doske, ostrovčeku a pri cene celého projektu.',
     directAnswer: 'Sinterovaný kameň sa vyrába v hrúbkach 3mm, 12mm aj 20mm. V Orostone pracujeme výhradne s 12mm. Pri správnej podkladovej konštrukcii, plánovaní výrezov a dodržaní pravidiel previsu (max. 200mm) 12mm pokrýva všetky bežné aplikácie — kuchynské dosky, kúpeľne, obklady aj ostrovy.',
@@ -28,7 +28,7 @@ export const ARTICLE_04: BlogArticle = {
 
 <p>Keď si zákazníci prezerajú ponuky sinterovaného kameňa, často narazia na dve hrúbky: 12mm a 20mm. Prirodzene sa pýtajú — <em>ktorá je správna?</em> A prečo niektorí dodávatelia predávajú len jednu hrúbku?</p>
 
-<p>V Orostone pracujeme <strong class="gold">výhradne s 12mm sinterovaným kameňom</strong>. Nie je to obmedzenie — je to zámerné rozhodnutie. A v tomto článku ti vysvetlíme, prečo 12mm pri správnom prístupe stačí na všetko, čo robíme.</p>
+<p>V Orostone pracujeme <strong class="gold">výhradne s 12mm sinterovaným kameňom</strong>. Nie je to obmedzenie — je to zámerné rozhodnutie. A v tomto článku vám vysvetlíme, prečo 12\u00A0mm pri správnom prístupe stačí na všetko, čo robíme.</p>
 
 <figure class="article-figure">
   <img src="/images/blog/article-04/hero.webp" alt="Hrúbka sinterovaného kameňa — pohľad na hranu dosky 12mm" width="1408" height="792" loading="lazy" />
@@ -192,7 +192,7 @@ export const ARTICLE_04: BlogArticle = {
       },
       {
         question: 'Kedy by som mal zvážiť 20mm od iného dodávateľa?',
-        answer: 'Ak máš projekt s obzvlášť veľkým ostrovom bez možnosti plného podkladu, s previsom nad 400mm bez konzoly, alebo ak esteticky preferuješ veľmi hrubú hranu. V týchto prípadoch ti to otvorene povieme a poradíme, kde 20mm zohnať.',
+        answer: 'Ak máte projekt s obzvlášť veľkým ostrovom bez možnosti plného podkladu, s previsom nad 400\u00A0mm bez konzoly, alebo ak esteticky preferujete veľmi hrubú hranu. V týchto prípadoch vám to otvorene povieme a poradíme, kde 20\u00A0mm zohnať.',
       },
       {
         question: 'Je 12mm doska ľahšie poškoditeľná pri výrezoch ako 20mm?',

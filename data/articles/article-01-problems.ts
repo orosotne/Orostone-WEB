@@ -12,9 +12,9 @@ export const ARTICLE_01: BlogArticle = {
   tags: ['sinterovaný kameň', 'problémy', 'prevencia', 'inštalácia', 'chipovanie'],
 
   sk: {
-    title: 'Problémy so sinterovaným kameňom, o ktorých ti nikto nepovie (a ako im predchádzame)',
+    title: 'Problémy so sinterovaným kameňom, o ktorých vám nikto nepovie (a ako im predchádzame)',
     subtitle: 'Úprimný sprievodca rizikami sinterovaného kameňa — od chipovania po praskanie pri výrezoch',
-    excerpt: 'Sinterovaný kameň je vynikajúci materiál, ale nie je nezničiteľný. Pozri sa na reálne problémy, konkrétne čísla a overené riešenia, ktoré v Orostone denne používame.',
+    excerpt: 'Sinterovaný kameň je vynikajúci materiál, ale nie je nezničiteľný. Pozrite sa na reálne problémy, konkrétne čísla a overené riešenia, ktoré v Orostone denne používame.',
     metaTitle: 'Riziká pri sinterovanom kameni | OROSTONE',
     metaDescription: 'Sinterovaný kameň má svoje riziká — pri výrezoch, hranách aj počas osádzania. Ako sa im dá predísť správnym zameraním a skúseným kamenárom.',
     directAnswer: 'Sinterovaný kameň môže prasknúť pri výrezoch, odštiepiť sa na hranách a poškodiť sa pri preprave — ak sa nedodržia presné technické postupy. Kľúčom je kvalitná fabrikácia, správna hrúbka materiálu, minimálny rádius rohov 5 mm a profesionálna inštalácia.',
@@ -27,7 +27,7 @@ export const ARTICLE_01: BlogArticle = {
   <li>Väčšina problémov nevzniká z materiálu, ale zo zlého spracovania a inštalácie</li>
 </ul>
 
-<p>Povedzme si to na rovinu: sinterovaný kameň <strong class="gold">nie je nezničiteľný</strong>. Odolá UV žiareniu, kyselinám, teplotám do <strong>300 °C</strong> a škrabancom lepšie ako granit či kremeň. Ale ak ho zle spracuješ alebo nainštaluješ, <strong class="gold">praskne ti ako čokoláda</strong>.</p>
+<p>Povedzme si to na rovinu: sinterovaný kameň <strong class="gold">nie je nezničiteľný</strong>. Odolá UV žiareniu, kyselinám, teplotám do <strong>300 °C</strong> a škrabancom lepšie ako granit či kremeň. Ale ak ho zle spracujete alebo nainštalujete, <strong class="gold">praskne vám ako čokoláda</strong>.</p>
 
 <p>V Orostone s ním pracujeme denne. Videli sme dokonalé realizácie aj katastrofálne zlyhania. A <strong class="gold">rozdiel nie je nikdy v materiáli</strong> — vždy je v spracovaní, inštalácii a výbere správnej hrúbky.</p>
 
@@ -114,7 +114,7 @@ export const ARTICLE_01: BlogArticle = {
 <h3>3 mm dosky</h3>
 <ul>
   <li>Sú určené <strong>výlučne na dekoratívne účely</strong> — obklady stien, dvere, nábytok</li>
-  <li><strong>Nikdy</strong> ich nepoužívaj na kuchynské pracovné dosky</li>
+  <li><strong>Nikdy</strong> ich nepoužívajte na kuchynské pracovné dosky</li>
   <li>Nemajú dostatočnú štrukturálnu pevnosť na nesenie záťaže</li>
 </ul>
 
@@ -143,7 +143,7 @@ export const ARTICLE_01: BlogArticle = {
 
 <h2 id="poskodenie-pri-preprave">Prečo doska prežije náraz, ale nie prepravu?</h2>
 
-<p>Vieš, čo je paradox? Sinterovaný kameň <strong class="gold">odolá nárazu guľou, ale môže prasknúť pri nesprávnej preprave</strong>. Jeho krehkosť pri ohybe znamená, že preprava vyžaduje špecifické postupy, ktoré bežné logistické firmy nepoznajú.</p>
+<p>Viete, čo je paradox? Sinterovaný kameň <strong class="gold">odolá nárazu guľou, ale môže prasknúť pri nesprávnej preprave</strong>. Jeho krehkosť pri ohybe znamená, že preprava vyžaduje špecifické postupy, ktoré bežné logistické firmy nepoznajú.</p>
 
 <h3>Hlavné riziká</h3>
 <ul>
@@ -168,7 +168,7 @@ export const ARTICLE_01: BlogArticle = {
 </ul>
 
 <div class="article-highlight">
-  <p><strong>Dôležité upozornenie:</strong> Väčšina logistických spoločností v podmienkach <strong>explicitne vylučuje zodpovednosť za poškodenie krehkého tovaru</strong>. Ak si vyberieš lacnú prepravu a doska príde prasknutá, nemáš nárok na náhradu. Toto je oblasť, kde šetrenie stojí tisíce eur.</p>
+  <p><strong>Dôležité upozornenie:</strong> Väčšina logistických spoločností v podmienkach <strong>explicitne vylučuje zodpovednosť za poškodenie krehkého tovaru</strong>. Ak si vyberiete lacnú prepravu a doska príde prasknutá, nemáte nárok na náhradu. Toto je oblasť, kde šetrenie stojí tisíce eur.</p>
 </div>
 
 <h2 id="chyby-pri-instalacii">Aké chyby robia inštalatéri najčastejšie?</h2>
@@ -207,7 +207,7 @@ export const ARTICLE_01: BlogArticle = {
 <div class="article-case-study">
   <span class="case-study-label">Z praxe</span>
   <h3>Klientka z Bratislavy a jej kuchynský ostrov</h3>
-  <p>Predstav si situáciu: klientka z Bratislavy si nechala spraviť kuchynský ostrov zo sinterovaného kameňa u iného dodávateľa. Vybrala si krásny mramorový dizajn, 12 mm hrúbku a ostrú 90° hranu — pretože <em>"vyzerá modernejšie."</em></p>
+  <p>Predstavte si situáciu: klientka z Bratislavy si nechala spraviť kuchynský ostrov zo sinterovaného kameňa u iného dodávateľa. Vybrala si krásny mramorový dizajn, 12 mm hrúbku a ostrú 90° hranu — pretože <em>"vyzerá modernejšie."</em></p>
   <p>Po troch mesiacoch spadol na hranu ťažký liatinový hrniec. Výsledok? <strong class="gold">Chip dlhý 15 mm</strong> na najviditeľnejšom mieste ostrova.</p>
   <p>Oprava stála <strong>280 €</strong> a aj po nej zostala viditeľná stopa. Keby mala od začiatku aspoň 2 mm chamfer, hrniec by sa odrazil bez stopy.</p>
 </div>
@@ -225,7 +225,7 @@ export const ARTICLE_01: BlogArticle = {
 <ul>
   <li>Odporúčame správnu hrúbku na základe veľkosti dosky, počtu výrezov a typu použitia</li>
   <li>Navrhujeme profily hrán, ktoré kombinujú estetiku s odolnosťou</li>
-  <li>Otvorene ti povieme, keď tvoja predstava nie je technicky bezpečná</li>
+  <li>Otvorene vám povieme, keď vaša predstava nie je technicky bezpečná</li>
 </ul>
 
 <h3>2. Profesionálna fabrikácia</h3>
@@ -233,7 +233,7 @@ export const ARTICLE_01: BlogArticle = {
 <ul>
   <li>Každý výrez má kontrolovaný rádius rohov — minimum 5 mm, štandardne 10 mm</li>
   <li>Rezanie v dvoch prechodoch je náš štandard, nie výnimka</li>
-  <li>Hrany sú vždy minimálne skosené — aj keď chceš "ostrý" vzhľad</li>
+  <li>Hrany sú vždy minimálne skosené — aj keď chcete „ostrý“ vzhľad</li>
 </ul>
 
 <h3>3. Kontrolovaná preprava</h3>
@@ -263,11 +263,11 @@ export const ARTICLE_01: BlogArticle = {
 
 <p>Sinterovaný kameň je vynikajúci materiál — ale len vtedy, keď sa s ním pracuje správne. Väčšina problémov, o ktorých sme písali, <strong class="gold">nie je dôsledkom zlého materiálu</strong>. Je to zlé spracovanie, nesprávna hrúbka alebo neprofesionálna inštalácia.</p>
 
-<p>Ak zvažuješ sinterovaný kameň pre svoju kuchyňu alebo kúpeľňu, <strong class="gold">nerozhoduj sa len podľa ceny vzorky</strong>. Pýtaj sa na presné postupy spracovania, profily hrán, spôsob prepravy a skúsenosti inštalatérov.</p>
+<p>Ak zvažujete sinterovaný kameň pre svoju kuchyňu alebo kúpeľňu, <strong class="gold">nerozhodujte sa len podľa ceny vzorky</strong>. Pýtajte sa na presné postupy spracovania, profily hrán, spôsob prepravy a skúsenosti inštalatérov.</p>
 
 <div class="article-tip">
-  <p><strong>Alebo nás jednoducho kontaktuj v Orostone</strong></p>
-  <p>Radi ti všetko vysvetlíme a ukážeme priamo v našom showroome. Nezáväzná konzultácia je zadarmo.</p>
+  <p><strong>Alebo nás jednoducho kontaktujte v Orostone</strong></p>
+  <p>Radi vám všetko vysvetlíme a ukážeme priamo v našom showroome. Nezáväzná konzultácia je zadarmo.</p>
   <a href="/kontakt" class="tip-btn">Kontaktovať nás →</a>
 </div>
 `,
@@ -290,7 +290,7 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Dá sa chipovanie opraviť?',
-        answer: 'Áno, drobné odštiepky (do 3–4 mm) opravíme špeciálnym farebným epoxidovým tmelom. Oprava je viditeľná pri detailnom pohľade, ale pri bežnom používaní ju nepostrehneš. Väčšie poškodenia môžu vyžadovať prebrúsenie alebo výmenu segmentu dosky.',
+        answer: 'Áno, drobné odštiepky (do 3–4 mm) opravíme špeciálnym farebným epoxidovým tmelom. Oprava je viditeľná pri detailnom pohľade, ale pri bežnom používaní ju nepostrehnete. Väčšie poškodenia môžu vyžadovať prebrúsenie alebo výmenu segmentu dosky.',
       },
       {
         question: 'Prečo sa nedá robiť ponorný rez?',
@@ -314,11 +314,11 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Aký maximálny previs môže mať doska bez podpery?',
-        answer: 'Pre 12 mm dosky odporúčame max 200 mm (cca 1/3 hĺbky dosky). Ak potrebuješ väčší previs — napríklad pre barové sedenie — je nutná konštrukčná podpera (kovová konzola). Toto pravidlo dodržiavame bez výnimiek.',
+        answer: 'Pre 12 mm dosky odporúčame max 200 mm (cca 1/3 hĺbky dosky). Ak potrebujete väčší previs — napríklad pre barové sedenie — je nutná konštrukčná podpera (kovová konzola). Toto pravidlo dodržiavame bez výnimiek.',
       },
       {
         question: 'Môžem si nechať dosku prepraviť bežnou firmou?',
-        answer: 'Technicky môžeš, ale neodporúčame to. Bežné logistické firmy nemajú A-rámy, správne vozidlá ani skúsenosti s krehkým materiálom. Navyše väčšina z nich v podmienkach vylučuje zodpovednosť za poškodenie krehkého tovaru. V Orostone prepravujeme dosky vlastnými vozidlami.',
+        answer: 'Technicky môžete, ale neodporúčame to. Bežné logistické firmy nemajú A-rámy, správne vozidlá ani skúsenosti s krehkým materiálom. Navyše väčšina z nich v podmienkach vylučuje zodpovednosť za poškodenie krehkého tovaru. V Orostone prepravujeme dosky vlastnými vozidlami.',
       },
       {
         question: 'Čo je dilatačná medzera a prečo je dôležitá?',

@@ -264,7 +264,7 @@ export const ARTICLE_25: BlogArticle = {
 <p>Pretočené naopak — keď vyberáte podľa dekoru a ceny a až nakoniec myslíte na použitie — končíte s pracovnou doskou, ktorá vyzerá ako z časopisu, ale po roku ju ľutujete. Aj keby ste mali kúpiť drahší materiál, robte to vedome. Dobre vybraná pracovná doska nerieši samú seba — rieši kuchyňu, v ktorej budete žiť ďalších 15 rokov. Pre kontext o všetkých kompozitných materiáloch si pozrite <a href="/blog/oplati-sa-sinterovany-kamen">Oplatí sa sinterovaný kameň?</a> — komplementárny článok o dlhodobej hodnote.</p>
 
 <div class="article-tip">
-  <p><strong>Alebo nás jednoducho kontaktuj v Orostone</strong></p>
+  <p><strong>Alebo nás jednoducho kontaktujte v Orostone</strong></p>
   <p>Ak máte pôdorys kuchyne, fotografiu existujúcej linky alebo iba rozmery, pošlite nám ich. Pripravíme vám konkrétny návrh — nie generický cenník, ale rozsah cien podľa skutočnej kuchyne. Konzultácia je nezáväzná a zadarmo. Inšpiráciu z realizácií nájdete v sekcii <a href="/kuchyne">Kuchyne</a>.</p>
   <a href="/kontakt" class="tip-btn">Kontaktovať nás →</a>
 </div>

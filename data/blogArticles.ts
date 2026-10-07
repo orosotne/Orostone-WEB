@@ -36,8 +36,8 @@ const ARTICLE_08: BlogArticle = {
   sk: {
     title: 'Ako rozpoznať nekvalitné dosky pred kúpou',
     subtitle: 'Na čo sa pozerať pri výbere sinterovaného kameňa — vizuálne aj technicky',
-    excerpt: 'Nauč sa identifikovať nekvalitné dosky skôr, než za ne zaplatíš.',
-    directAnswer: 'Nekvalitné dosky spoznáš podľa nerovnomernej hrúbky, viditeľných dutín, nestabilného povrchového dekóru a chýbajúcej dokumentácie. Vždy si vyžiadaj technický list a fyzickú vzorku.',
+    excerpt: 'Naučte sa identifikovať nekvalitné dosky skôr, než za ne zaplatíte.',
+    directAnswer: 'Nekvalitné dosky spoznáte podľa nerovnomernej hrúbky, viditeľných dutín, nestabilného povrchového dekóru a chýbajúcej dokumentácie. Vždy si vyžiadajte technický list a fyzickú vzorku.',
     content: '<p>Článok sa pripravuje...</p>',
     faqs: [
       { question: 'Ako spoznám nekvalitný sinterovaný kameň?', answer: 'Článok sa pripravuje...' },
@@ -69,9 +69,9 @@ const ARTICLE_11: BlogArticle = {
   author: BLOG_AUTHOR_OROSTONE,
   tags: ['sinterovaný kameň', 'spoje', 'švy', 'inštalácia', 'estetika'],
   sk: {
-    title: 'Spoje: koľko ich budeš mať a ako ich urobiť neviditeľné',
+    title: 'Spoje: koľko ich budete mať a ako ich urobiť neviditeľné',
     subtitle: 'Všetko o spojoch na sinterovanom kameni — od plánovania po dokonalé prevedenie',
-    excerpt: 'Spoje sú nevyhnutné, ale nemusia byť viditeľné. Nauč sa, ako ich minimalizovať a skryť.',
+    excerpt: 'Spoje sú nevyhnutné, ale nemusia byť viditeľné. Naučte sa, ako ich minimalizovať a skryť.',
     directAnswer: 'Počet spojov závisí od rozmerov kuchyne a veľkosti dosiek. Pri správnom plánovaní a kvalitnom lepení môžu byť spoje takmer neviditeľné. Kľúčom je presný rez, farebne zladené lepidlo a profesionálna montáž.',
     content: '<p>Článok sa pripravuje...</p>',
     faqs: [
@@ -106,7 +106,7 @@ const ARTICLE_12: BlogArticle = {
   sk: {
     title: 'Top 10 štýlov dosiek, ktoré vyzerajú luxusne',
     subtitle: 'Najkrajšie dekóry sinterovaného kameňa pre moderné aj klasické interiéry',
-    excerpt: 'Inšpiruj sa 10 najluxusnejšie vyzerajúcimi štýlmi dosiek, ktoré dodajú tvojmu priestoru prémiový vzhľad.',
+    excerpt: 'Inšpirujte sa 10 najluxusnejšie vyzerajúcimi štýlmi dosiek, ktoré dodajú vášmu priestoru prémiový vzhľad.',
     directAnswer: 'Medzi najluxusnejšie štýly patria mramorové imitácie (Calacatta, Statuario), tmavé kamenné dekóry, betónové povrchy a jednofarebné ultra-matné dosky. Sinterovaný kameň dokáže reprodukovať tieto vzory s väčšou odolnosťou ako originál.',
     content: '<p>Článok sa pripravuje...</p>',
     faqs: [
@@ -141,7 +141,7 @@ const ARTICLE_14: BlogArticle = {
   sk: {
     title: 'Koordinačný checklist rekonštrukcie kuchyne',
     subtitle: 'Krok za krokom — od plánovania po hotovú kuchyňu so sinterovaným kameňom',
-    excerpt: 'Kompletný checklist, ktorý ti pomôže zkoordinovať rekonštrukciu kuchyne bez stresu.',
+    excerpt: 'Kompletný checklist, ktorý vám pomôže skoordinovať rekonštrukciu kuchyne bez stresu.',
     directAnswer: 'Rekonštrukcia kuchyne vyžaduje koordináciu minimálne 5 remesiel. Kľúčové je správne poradie: najprv inštalatér a elektrikár, potom kuchynská linka, a na záver zameranie a inštalácia kamennej dosky.',
     content: '<p>Článok sa pripravuje...</p>',
     faqs: [
@@ -176,7 +176,7 @@ const ARTICLE_15: BlogArticle = {
   sk: {
     title: 'Sprievodca dňom inštalácie (aby nič nezlyhalo)',
     subtitle: 'Čo pripraviť, na čo sa opýtať a čo očakávať v deň montáže kamennej dosky',
-    excerpt: 'Deň inštalácie nemusí byť stresujúci. Priprav sa s naším sprievodcom krok za krokom.',
+    excerpt: 'Deň inštalácie nemusí byť stresujúci. Pripravte sa s naším sprievodcom krok za krokom.',
     directAnswer: 'Pred inštaláciou zabezpečte prístup, vyprázdnite kuchyňu a overte finálne rozmery. Inštalácia trvá typicky 2–4 hodiny. Po montáži nechajte lepidlo vytvrdnúť minimálne 24 hodín.',
     content: '<p>Článok sa pripravuje...</p>',
     faqs: [
@@ -209,9 +209,9 @@ const ARTICLE_17: BlogArticle = {
   author: BLOG_AUTHOR_OROSTONE,
   tags: ['sinterovaný kameň', 'kvarcit', 'porovnanie', 'kuchyňa', 'materiál'],
   sk: {
-    title: 'Kvarcit vs sinterovaný kameň: čo sedí tvojmu životnému štýlu?',
+    title: 'Kvarcit vs sinterovaný kameň: čo sedí vášmu životnému štýlu?',
     subtitle: 'Objektívne porovnanie dvoch prémiových materiálov — odolnosť, cena, údržba a estetika',
-    excerpt: 'Kvarcit aj sinterovaný kameň sú prémiové materiály. Zisti, ktorý lepšie vyhovuje tvojmu životnému štýlu.',
+    excerpt: 'Kvarcit aj sinterovaný kameň sú prémiové materiály. Zistite, ktorý lepšie vyhovuje vášmu životnému štýlu.',
     directAnswer: 'Kvarcit (kremeňový kompozit) je cenovo dostupnejší a jednoduchší na opracovanie, ale neodolá UV žiareniu ani vysokým teplotám. Sinterovaný kameň je drahší, ale ponúka vyššiu odolnosť voči teplu, UV, škrabancom a chemikáliám.',
     content: '<p>Článok sa pripravuje...</p>',
     faqs: [
@@ -245,8 +245,8 @@ const ARTICLE_18: BlogArticle = {
   tags: ['sinterovaný kameň', 'alternatívy', 'cena', 'rozpočet', 'porovnanie'],
   sk: {
     title: 'Lacnejšie alternatívy k prémiovým doskám (úprimný sprievodca)',
-    subtitle: 'Keď je rozpočet obmedzený — čo získaš a čo stratíš pri lacnejších materiáloch',
-    excerpt: 'Nie každý rozpočet počíta s prémiovým kameňom. Pozri sa, aké sú reálne alternatívy a ich kompromisy.',
+    subtitle: 'Keď je rozpočet obmedzený — čo získate a čo stratíte pri lacnejších materiáloch',
+    excerpt: 'Nie každý rozpočet počíta s prémiovým kameňom. Pozrite sa, aké sú reálne alternatívy a ich kompromisy.',
     directAnswer: 'Lacnejšie alternatívy zahŕňajú laminát (od 50 €/m²), kvarcit (od 150 €/m²) a žulu (od 120 €/m²). Každá má kompromisy v odolnosti, estetike alebo údržbe. Sinterovaný kameň vychádza dlhodobo najvýhodnejšie.',
     content: '<p>Článok sa pripravuje...</p>',
     faqs: [
@@ -281,7 +281,7 @@ const ARTICLE_20: BlogArticle = {
   sk: {
     title: 'Čo poškodzuje sinterovaný kameň (a ako sa tomu vyhnúť)',
     subtitle: 'Najčastejšie príčiny poškodenia a overené spôsoby prevencie',
-    excerpt: 'Sinterovaný kameň je odolný, ale nie nezničiteľný. Zisti, čomu sa vyhnúť.',
+    excerpt: 'Sinterovaný kameň je odolný, ale nie nezničiteľný. Zistite, čomu sa vyhnúť.',
     directAnswer: 'Hlavné príčiny poškodenia sú silný bodový náraz (spadnutá fľaša), nesprávna inštalácia a zlá manipulácia pri preprave. Bežné kuchynské používanie sinterovaný kameň nepoškodí.',
     content: '<p>Článok sa pripravuje...</p>',
     faqs: [

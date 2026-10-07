@@ -16,7 +16,7 @@ export const ARTICLE_03: BlogArticle = {
     excerpt: 'Sinterovaný kameň má pórovitosť pod 0,1% — káva, víno ani kurkuma doň neprenikajú. Ale testovali sme to a výsledky zaznamenali.',
     metaTitle: 'Škvrny na sinterovanom kameni | OROSTONE',
     metaDescription: 'Káva, červené víno, kurkuma, olej. Zafarbí sa sinterovaný kameň po každodennom používaní? Nasiakavosť, čistenie a kde sú reálne hranice.',
-    directAnswer: 'Sinterovaný kameň má takmer nulovú pórovitosť (absorpcia vody pod 0,1%), čo znamená, že žiadna bežná kuchynská tekutina doň neprenikne. Škvrny od kávy, vína, kurkumy ani citrónovej šťavy sa nevstrebú do povrchu — stačí ich zotriete vlhkou handrou. Impregnácia nie je potrebná.',
+    directAnswer: 'Sinterovaný kameň má takmer nulovú pórovitosť (absorpcia vody pod 0,1%), čo znamená, že žiadna bežná kuchynská tekutina doň neprenikne. Škvrny od kávy, vína, kurkumy ani citrónovej šťavy sa nevstrebú do povrchu — stačí ich zotrieť vlhkou handrou. Impregnácia nie je potrebná.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>
 <ul class="article-tldr">
@@ -163,8 +163,8 @@ export const ARTICLE_03: BlogArticle = {
 <p>Toto je jeden z dôvodov, prečo je sinterovaný kameň ideálny pre rušné kuchyne a domácnosti s deťmi.</p>
 
 <div class="article-tip">
-  <p><strong>Alebo nás jednoducho kontaktuj v Orostone</strong></p>
-  <p>Radi ti ukážeme sinterovaný kameň v praxi a zodpovieme všetky otázky. Nezáväzná konzultácia je zadarmo — príď sa pozrieť.</p>
+  <p><strong>Alebo nás jednoducho kontaktujte v Orostone</strong></p>
+  <p>Radi vám ukážeme sinterovaný kameň v praxi a zodpovieme všetky otázky. Nezáväzná konzultácia je zadarmo — príďte sa pozrieť.</p>
   <a href="/kontakt" class="tip-btn">Kontaktovať nás →</a>
 </div>
 `,

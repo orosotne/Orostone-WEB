@@ -277,7 +277,7 @@ export const ARTICLE_24: BlogArticle = {
 <p>Najlepšia pracovná doska nie je vždy tá najdrahšia. Je to tá, ktorá dáva zmysel pre vašu kuchyňu, váš rozpočet a spôsob používania. Kľúč je <strong class="gold">rozumieť tomu, čo kupujete</strong>.</p>
 
 <div class="article-tip">
-  <p><strong>Alebo nás jednoducho kontaktuj v Orostone</strong></p>
+  <p><strong>Alebo nás jednoducho kontaktujte v Orostone</strong></p>
   <p>Ak máte pôdorys kuchyne alebo rozmery pracovnej dosky, pošlite nám ich. Pripravíme vám orientačné cenové rozpätie podľa typu materiálu, dekoru a náročnosti realizácie. Nezáväzná konzultácia je zadarmo.</p>
   <a href="/kontakt" class="tip-btn">Kontaktovať nás →</a>
 </div>
