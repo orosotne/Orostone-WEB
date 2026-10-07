@@ -22,7 +22,7 @@ za pár hodín.
 
 ### Text
 Dobrý deň,
-prírodný kameň sa tvorí milióny rokov. Sinterovaný kameň vzniká podobne, z minerálov, tlaku a teploty. Celý proces však trvá len pár hodín. Takto prebieha.
+prírodný kameň sa tvorí milióny rokov. Sinterovaný kameň vzniká podobne – pôsobením tlaku a teploty na minerály. Celý proces však trvá len pár hodín. Takto prebieha.
 
 ### Karta (fotka, štítok, nadpis, veta)
 [alt fotky: Prírodné minerály: kremeň, živec, íl a kovové oxidy]
@@ -65,7 +65,7 @@ Bez živíc a bez pórov nemá škvrna kam vniknúť a teplo nemá čo roztaviť
 ### Tlačidlo (CTA)
 Objednať vzorku
 Prvá vzorka je zadarmo, platíte iba dopravu 2,50 €.
-Viac o sinterovanom kameni
+Prečítať viac o sinterovanom kameni
 
 ### P. S.
 P. S. · Marián, Orostone

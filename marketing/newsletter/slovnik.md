@@ -81,6 +81,8 @@ Objednať vzorku · Získať orientačnú cenu · Poslať pôdorys · Pozrieť d
 
 Nie: ~~Kliknite sem~~ · ~~Zistiť viac~~ · ~~Neváhajte~~
 
+Platí to aj pre textový odkaz pod tlačidlom (*Pozrieť cenník*, nie ~~Cenník~~). Text tlačidla nech má do ~25 znakov, dlhší sa na úzkom mobile zalomí do dvoch riadkov.
+
 ## 6. Predmet a preheader
 
 - Predmet má približne do 50 znakov, bez výkričníka, bez emoji, bez VEĽKÝCH PÍSMEN a bez bodky na konci.
@@ -103,6 +105,9 @@ Pravidlá, ktoré vznikli pri kontrole a platia ďalej. Najnovšie hore.
 
 | Dátum | Pravidlo | Príklad |
 |---|---|---|
+| 7. 10. 2026 | Tlačidlo aj textový odkaz pod ním je neurčitok (sekcia 5) | Prečítať celý návod · Prečítať viac o sinterovanom kameni |
+| 7. 10. 2026 | Medzi dvoma vetnými členmi spojenými jednoduchým *alebo* čiarku nepíšeme | či sú všetky ceny s DPH alebo bez nej |
+| 7. 10. 2026 | Podmienky spracovania nie sú suroviny: výpočet nesmie miešať, z čoho vec je a ako vzniká | vzniká pôsobením tlaku a teploty na minerály |
 | 7. 10. 2026 | Preheader je celá veta. Výpočet alebo nepriama otázka s bodkou nestačí (sekcia 6). | Vysvetlíme, čo je v cene, čo porovnávať a na čo sa pýtať… |
 | 7. 10. 2026 | Prísudkové prídavné meno sa zhoduje s podmetom | Ktorá z troch kuchýň je vám najbližšia? |
 | 7. 10. 2026 | *sprievodca* sa skloňuje podľa vzoru hrdina | Prečítať celého sprievodcu |

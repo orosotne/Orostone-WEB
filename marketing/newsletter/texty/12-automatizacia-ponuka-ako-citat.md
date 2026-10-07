@@ -42,7 +42,7 @@ Doprava a montáž
 Výnos na miesto, osadenie a lepenie spojov. Montáž robia kamenári, s ktorými spolupracujeme.
 04
 DPH
-Pri porovnávaní si overte, či sú všetky ceny s DPH, alebo bez nej.
+Pri porovnávaní si overte, či sú všetky ceny s DPH alebo bez nej.
 
 ### Nadpis sekcie
 02 – Keď porovnávate s inou ponukou

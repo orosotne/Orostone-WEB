@@ -64,7 +64,7 @@ Krájanie priamo na doske
 Povrchu neublíži, ale nože sa rýchlo otupia. Krájajte na doštičke.
 
 ### Tlačidlo (CTA)
-Celý návod na čistenie
+Prečítať celý návod
 Postupy na konkrétne škvrny: káva, mastnota, vodný kameň aj fixka.
 
 ### P. S.

@@ -89,4 +89,15 @@ Pripomienky 1, 5, 9 a 11 vychádzajú zo sekcie 6 slovníka. Rovnaké pravidlo C
 | 20 | Realizácia mesiaca: ostrovček, kde kontrast drží celý priestor pokope. | V realizácii mesiaca ukážeme ostrovček, kde kontrast drží celý priestor pokope. |
 | 21 | Otváracie hodiny cez sviatky a jedna rada, ak plánujete kuchyňu na jar. | Posielame otváracie hodiny cez sviatky a jednu radu, ak plánujete kuchyňu na jar. |
 
+## Kolo 3 – Codex review v PR #77 (7. 10. 2026, po opravách kola 2)
+
+Codex skontroloval opravy z kola 2 a všetky preheadery bez pripomienok. Našiel 4 nové chyby (P1), všetky sú prijaté.
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 12 | či sú všetky ceny s DPH, alebo bez nej | či sú všetky ceny s DPH alebo bez nej | interpunkcia | *Alebo* tu spája dva vetné členy, nie vety. | zapracované |
+| 2 | 17 | Celý návod na čistenie (tlačidlo) | Prečítať celý návod | slovník | Tlačidlo je neurčitok (sekcia 5). Kratšie než návrh „Prečítať celý návod na čistenie“, aby sa tlačidlo na mobile nezalomilo. Že ide o čistenie, hovorí poznámka pod tlačidlom. | zapracované s úpravou |
+| 3 | 18 | Sinterovaný kameň vzniká podobne, z minerálov, tlaku a teploty. | Sinterovaný kameň vzniká podobne – pôsobením tlaku a teploty na minerály. | význam | Tlak a teplota nie sú suroviny. Namiesto „podobným procesom“ je „podobne“, aby sa slovo *proces* neopakovalo v nasledujúcej vete. | zapracované s úpravou |
+| 4 | 18 | Viac o sinterovanom kameni (odkaz) | Prečítať viac o sinterovanom kameni | slovník | Aj textový odkaz pod tlačidlom je neurčitok (sekcia 5). | zapracované |
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
