@@ -8,9 +8,6 @@
 
 ## Text e-mailu v poradí, ako sa zobrazí
 
-### Hlavička
-Po realizácii
-
 ### Tmavý pás (úvod)
 Mesiac po montáži
 Ako sa vám žije

@@ -8,9 +8,6 @@
 
 ## Text e-mailu v poradí, ako sa zobrazí
 
-### Hlavička
-Vaša ponuka · sprievodca
-
 ### Séria (pill) a veta pod ňou
 Cenová ponuka
 Krátky sprievodca k ponuke, ktorú ste od nás dostali.

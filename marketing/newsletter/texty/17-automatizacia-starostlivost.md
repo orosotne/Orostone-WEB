@@ -8,12 +8,9 @@
 
 ## Text e-mailu v poradí, ako sa zobrazí
 
-### Hlavička
-Vaša kuchyňa · týždeň po montáži
-
 ### Séria (pill) a veta pod ňou
 Starostlivosť
-Ako sme sľúbili v deň montáže: krátky návod, ako dosku čistiť a čomu sa vyhnúť.
+Krátky návod, ako dosku čistiť a čomu sa vyhnúť.
 
 ### Nadpis
 Utierka a saponát.

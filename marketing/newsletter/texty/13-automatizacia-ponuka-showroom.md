@@ -8,9 +8,6 @@
 
 ## Text e-mailu v poradí, ako sa zobrazí
 
-### Hlavička
-Vaša ponuka · showroom
-
 ### Séria (pill) a veta pod ňou
 Pozvanie do showroomu
 Celé platne vášho dekoru uvidíte v renesančnom kaštieli v Bošanoch.

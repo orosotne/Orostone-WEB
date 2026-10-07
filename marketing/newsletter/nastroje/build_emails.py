@@ -134,8 +134,15 @@ def doc(meta, title, preheader, rows):
 """
 
 
-def header(series, date=""):
-    right = f"{series}" + (f' <span style="color:{GOLD_INK};">· {date}</span>' if date else "")
+def header(series="", date=""):
+    """Vpravo názov série kampane a mesiac. Automatizácie majú len logo: čitateľovi neprezrádzame poradie ani časovanie e-mailov."""
+    right = ""
+    if series:
+        label = f"{series}" + (f' <span style="color:{GOLD_INK};">· {date}</span>' if date else "")
+        right = f"""
+                <td class="meta-right" align="right" valign="middle" style="font-family:{F}; font-size:10px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:{GRAY};">
+                  {label}
+                </td>"""
     return f"""
         <!-- HEADER -->
         <tr>
@@ -144,10 +151,7 @@ def header(series, date=""):
               <tr>
                 <td align="left" valign="middle">
                   <a href="{SITE}" target="_blank"><img class="header-logo" src="{SITE}/images/orostone-logo-hd.png" alt="Orostone" height="28" style="display:block; height:28px; width:auto; border:0;" /></a>
-                </td>
-                <td class="meta-right" align="right" valign="middle" style="font-family:{F}; font-size:10px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:{GRAY};">
-                  {right}
-                </td>
+                </td>{right}
               </tr>
             </table>
           </td>
@@ -857,7 +861,7 @@ write("01-welcome-vitajte.html", doc(
     "Vitajte v Orostone",
     "Dvakrát do mesiaca vám pošleme jednu vec, ktorá pomôže pri výbere pracovnej dosky. Výpredaje neposielame.",
     [
-        header("Vitajte", "1 / 4"),
+        header(),
         dark_band("Vitajte v Orostone",
                   "Pracovná doska<br />" + accent_dark("sa vyberá raz."),
                   sub="Preto vám budeme posielať len to, čo pri tom rozhodnutí naozaj pomôže."),
@@ -886,18 +890,18 @@ write("02-welcome-list-od-mariana.html", doc(
     {
         "TYP:": "Automatizácia · Welcome séria 2/4",
         "SPÚŠŤAČ:": "2 dni po e-maile 1/4",
-        "PREDMET:": "Krátky list namiesto reklamy",
+        "PREDMET:": "Dve chyby, ktoré vidím pri výbere dosky",
         "PREHEADER:": "Vysvetlím, prečo pri pracovnej doske nestačí malá vzorka a cena za meter – a čo s tým robíme.",
         "CIEĽ:": "Dôvera + odpoveď (reply). Vizuálne čo najjednoduchší – má pôsobiť ako osobný e-mail.",
-        "POZNÁMKA:": "List je napísaný v Mariánovom mene a v prvej osobe. Pred spustením ho Marián prečíta a schváli.",
+        "POZNÁMKA:": "List je napísaný v Mariánovom mene a v prvej osobe. Marián ho schválil 7. 10. 2026.",
     },
-    "Krátky list namiesto reklamy",
+    "Dve chyby, ktoré vidím pri výbere dosky",
     "Vysvetlím, prečo pri pracovnej doske nestačí malá vzorka a cena za meter – a čo s tým robíme.",
     [
-        header("Vitajte", "2 / 4"),
+        header(),
         strip(IMG + "pas-givenchy-gold.jpg", "Detail kresby sinterovaného kameňa Givenchy Gold"),
         eyebrow("List od Mariána", top=30),
-        headline("Krátky list<br />" + accent_light("namiesto reklamy."), top=18, bottom=0),
+        headline("Dve chyby<br />" + accent_light("pri výbere dosky."), top=18, bottom=0),
         letter([
             "Dobrý deň,",
             "volám sa Marián Brázdil a v Orostone pomáham ľuďom vybrať sinterovaný kameň do kuchyne.",
@@ -1006,7 +1010,7 @@ write("05-automatizacia-vzorka-doma.html", doc(
     "Vzorka je doma",
     "Stačí víno, citrón, hrnček horúcej vody a vaše svetlo. Za desať minút zistíte viac než z katalógu.",
     [
-        header("Vaša vzorka", "tip"),
+        header(),
         eyebrow("Vzorka doma"),
         headline("Vzorka nie je suvenír.<br />" + accent_light("Vyskúšajte ju.")),
         hero(IMG + "vzorka-balicek.jpg", "Balíček so vzorkou sinterovaného kameňa Orostone", capsule="Vzorka 12 mm", top=14),
@@ -1039,7 +1043,7 @@ write("06-automatizacia-po-realizacii.html", doc(
     "Ako sa vám žije s novou doskou?",
     "Hodnotenie vám zaberie dve minúty a pomôže ďalším pri výbere. Budeme radi aj za jednu fotku.",
     [
-        header("Po realizácii"),
+        header(),
         dark_band("Mesiac po montáži",
                   "Ako sa vám žije<br />" + accent_dark("s novou doskou?"),
                   image=(IMG + "po-realizacii-zlatobiely.jpg", "Ostrovček a zástena zo sinterovaného kameňa po montáži")),
@@ -1078,7 +1082,7 @@ write("07-welcome-ako-vybrat-dekor.html", doc(
     "Tri otázky pred výberom dekoru",
     "Týkajú sa svetla, skriniek a veľkosti plochy. Na konci sa vás opýtame, kedy plánujete novú kuchyňu.",
     [
-        header("Vitajte", "3 / 4"),
+        header(),
         eyebrow("Ako vybrať dekor", note="Tri otázky, ktoré si pred výberom dekoru prejdeme s každým klientom."),
         headline("Tri otázky<br />" + accent_light("pred výberom dekoru.")),
         hero(shop_img("mockup-TAJ-MAHAL.webp", "1773771257"), "Celá platňa Taj Mahal vedľa človeka pre mierku", capsule="Taj Mahal · 3200 × 1600 mm", top=14),
@@ -1116,7 +1120,7 @@ write("08-automatizacia-dokoncena-zakazka.html", doc(
     "Hotovo: fotky z vašej montáže",
     "Ďakujeme za dôveru. Posielame fotky z prvého dňa a prehľad toho, čo bude nasledovať.",
     [
-        header("Vaša kuchyňa", "deň montáže"),
+        header(),
         dark_band("Hotovo",
                   "Vaša doska<br />" + accent_dark("je na svojom mieste."),
                   sub="Posielame fotky z dnešnej montáže. Ďakujeme, že ste si vybrali Orostone.",
@@ -1128,12 +1132,8 @@ write("08-automatizacia-dokoncena-zakazka.html", doc(
              (IMG + "zakazka-hotovo-2.jpg", "Pracovná doska s drezom po montáži"),
              caption="Prvý deň po montáži", top=8),
         facts([("Dekor", "[Calacatta Gold]"), ("Aplikácia", "[ostrovček + stena]"), ("Montáž", "[dátum]"), ("Kamenár", "[meno]")], top=16),
-        section_title(None, "Čo bude nasledovať"),
-        numbered([
-            ("O týždeň: starostlivosť v skratke", "Krátky návod, ako dosku čistiť a čomu sa vyhnúť."),
-            ("O mesiac: ako sa vám žije s doskou", "Jedna otázka a prosba o hodnotenie, ak budete spokojní."),
-            ("Kedykoľvek: napíšte nám", "Ak by čokoľvek nesedelo, odpovedzte na tento e-mail. Vyriešime to s kamenárom."),
-        ], top=8),
+        section_title(None, "Kedykoľvek nám napíšte"),
+        text(["Ak by čokoľvek nesedelo, odpovedzte na tento e-mail. Vyriešime to s&nbsp;kamenárom."], greeting=None, top=8),
         choices("Môžeme vašu kuchyňu ukázať ďalším?",
                 "Fotky by sme zverejnili na Instagrame a v newsletteri – bez adresy a bez mien. Stačí jedno kliknutie.",
                 [("Áno, môžete ich zverejniť", SITE + "/realizacie?suhlas=ano"),
@@ -1169,11 +1169,11 @@ write("09-welcome-tri-kuchyne.html", doc(
     "Tri kuchyne, tri rôzne rozhodnutia",
     "Pri jednej rozhodla pokojná plocha, pri druhej tmavý kontrast a pri tretej výrazná kresba.",
     [
-        header("Vitajte", "4 / 4"),
-        eyebrow("Tri realizácie", note="Posledný e-mail uvítacej série: tri skutočné kuchyne a jedno rozhodnutie v každej z nich."),
+        header(),
+        eyebrow("Tri realizácie", note="Tri skutočné kuchyne a&nbsp;jedno rozhodnutie v&nbsp;každej z&nbsp;nich."),
         headline("Tri kuchyne,<br />" + accent_light("tri rôzne rozhodnutia.")),
         text([
-            "v predchádzajúcom e-maile sme písali, že dekor sa vyberá k frontom, svetlu a veľkosti plochy. Takto to vyzerá v praxi – v troch kuchyniach, do ktorých sme dodali sinterovaný kameň.",
+            "dekor sa nevyberá sám osebe, ale k&nbsp;frontom, svetlu a&nbsp;veľkosti plochy. Takto to vyzerá v praxi – v troch kuchyniach, do ktorých sme dodali sinterovaný kameň.",
         ], top=20),
         case_card(IMG + "realizacia-kniznica.jpg", "Veľký ostrovček zo svetlého sinterovaného kameňa v otvorenom priestore",
                   "01 · Yabo White", "Pokojná kresba na veľkej ploche",
@@ -1204,7 +1204,7 @@ write("10-automatizacia-vzorka-velka-plocha.html", doc(
     "Ako váš dekor vyzerá vo veľkej ploche",
     "Kresbu v mierke kuchyne uvidíte na fotke celej platne, v realizáciách alebo v showroome.",
     [
-        header("Vaša vzorka", "7 dní"),
+        header(),
         eyebrow("Vzorka doma"),
         headline("Malá vzorka,<br />" + accent_light("veľká plocha.")),
         hero(shop_img("mockup-TAJ-MAHAL.webp", "1773771257"), "Celá platňa Taj Mahal vedľa človeka pre mierku", capsule="Taj Mahal · 3200 × 1600 mm", top=14),
@@ -1255,7 +1255,7 @@ write("12-automatizacia-ponuka-ako-citat.html", doc(
     "Ako čítať cenovú ponuku",
     "Vysvetlíme, čo je v cene, čo porovnávať a na čo sa pýtať, keď máte na stole viac ponúk.",
     [
-        header("Vaša ponuka", "sprievodca"),
+        header(),
         eyebrow("Cenová ponuka", note="Krátky sprievodca k ponuke, ktorú ste od nás dostali."),
         headline("Cena za meter<br />" + accent_light("nepovie všetko.")),
         hero(IMG + "podorys-vzorka.jpg", "Ručne kreslený pôdorys kuchyne, vzorka sinterovaného kameňa a skladací meter", capsule="Pôdorys a vzorka", top=14),
@@ -1291,7 +1291,7 @@ write("13-automatizacia-ponuka-showroom.html", doc(
     "Pozrite si platne naživo",
     "V showroome v Bošanoch vám pripravíme celé platne. Uvidíte kresbu v skutočnej veľkosti.",
     [
-        header("Vaša ponuka", "showroom"),
+        header(),
         eyebrow("Pozvanie do showroomu", note="Celé platne vášho dekoru uvidíte v renesančnom kaštieli v Bošanoch."),
         headline("Rozhodnite sa<br />" + accent_light("pri celej platni.")),
         hero(IMG + "showroom-kastiel.jpg", "Renesančný kaštieľ v Bošanoch, v ktorom je showroom Orostone", capsule="Showroom v Bošanoch", top=14),
@@ -1342,7 +1342,7 @@ write("15-automatizacia-kosik-vzorka.html", doc(
     "Vaša vzorka zostala v košíku",
     "Objednávku dokončíte jedným kliknutím. Prvá vzorka je zadarmo, platíte iba dopravu.",
     [
-        header("Vaša vzorka", "košík"),
+        header(),
         headline("Vzorka čaká<br />" + accent_light("v košíku."), top=30),
         hero(IMG + "vzorky-tri.jpg", "Tri vzorky sinterovaného kameňa vedľa seba: Calacatta Top, Astrana Grey a Gothic Gold", top=14),
         text([
@@ -1386,8 +1386,8 @@ write("17-automatizacia-starostlivost.html", doc(
     "Starostlivosť o dosku v skratke",
     "Doske stačí utierka a saponát. Pozor si dajte len na štyri veci.",
     [
-        header("Vaša kuchyňa", "týždeň po montáži"),
-        eyebrow("Starostlivosť", note="Ako sme sľúbili v deň montáže: krátky návod, ako dosku čistiť a čomu sa vyhnúť."),
+        header(),
+        eyebrow("Starostlivosť", note="Krátky návod, ako dosku čistiť a&nbsp;čomu sa vyhnúť."),
         headline("Utierka a saponát.<br />" + accent_light("Viac netreba.")),
         hero(IMG + "starostlivost-utierka.jpg", "Ruka utiera pracovnú dosku zo sinterovaného kameňa utierkou z mikrovlákna", capsule="Denné čistenie", top=14),
         text([
@@ -1494,7 +1494,7 @@ write("20-kampan-realizacia-december.html", doc(
         "PREDMET:": "Biela doska a tmavé drevo",
         "PREHEADER:": "V realizácii mesiaca ukážeme ostrovček, kde kontrast drží celý priestor pokope.",
         "CIEĽ:": "Dôkaz z reálnej kuchyne → vzorka dekoru alebo pôdorys",
-        "POZNÁMKA:": "Realizácia „Biely Statuario“ zo stránky Realizácie (dekor Polaris Statuario White). Fakty sú z fotiek. Lokalitu, kamenára a citát klienta (len so súhlasom) doplň, keď ich Marián potvrdí.",
+        "POZNÁMKA:": "Realizácia „Biely Statuario“ zo stránky Realizácie (dekor Polaris Statuario White). Klient so zverejnením súhlasí (7. 10. 2026). Fakty sú z fotiek. Lokalitu, kamenára a citát klienta doplň, keď ich Marián potvrdí.",
     },
     "Biela doska a tmavé drevo",
     "V realizácii mesiaca ukážeme ostrovček, kde kontrast drží celý priestor pokope.",
@@ -1535,7 +1535,7 @@ write("21-kampan-december-podakovanie.html", doc(
     "Ďakujeme za rok 2026",
     "Posielame otváracie hodiny cez sviatky a jednu radu, ak plánujete kuchyňu na jar.",
     [
-        header("Sezónne", "december 2026"),
+        header("Koniec roka", "december 2026"),
         dark_band("Ďakujeme",
                   "Ďakujeme<br />" + accent_dark("za rok 2026."),
                   sub="Za otázky, vzorky aj fotky hotových kuchýň. Pekné sviatky z Bošian.",

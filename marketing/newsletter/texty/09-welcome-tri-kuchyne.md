@@ -8,12 +8,9 @@
 
 ## Text e-mailu v poradí, ako sa zobrazí
 
-### Hlavička
-Vitajte · 4 / 4
-
 ### Séria (pill) a veta pod ňou
 Tri realizácie
-Posledný e-mail uvítacej série: tri skutočné kuchyne a jedno rozhodnutie v každej z nich.
+Tri skutočné kuchyne a jedno rozhodnutie v každej z nich.
 
 ### Nadpis
 Tri kuchyne,
@@ -21,7 +18,7 @@ tri rôzne rozhodnutia.
 
 ### Text
 Dobrý deň,
-v predchádzajúcom e-maile sme písali, že dekor sa vyberá k frontom, svetlu a veľkosti plochy. Takto to vyzerá v praxi – v troch kuchyniach, do ktorých sme dodali sinterovaný kameň.
+dekor sa nevyberá sám osebe, ale k frontom, svetlu a veľkosti plochy. Takto to vyzerá v praxi – v troch kuchyniach, do ktorých sme dodali sinterovaný kameň.
 
 ### Karta (fotka, štítok, nadpis, veta)
 [alt fotky: Veľký ostrovček zo svetlého sinterovaného kameňa v otvorenom priestore]

@@ -8,9 +8,6 @@
 
 ## Text e-mailu v poradí, ako sa zobrazí
 
-### Hlavička
-Vitajte · 3 / 4
-
 ### Séria (pill) a veta pod ňou
 Ako vybrať dekor
 Tri otázky, ktoré si pred výberom dekoru prejdeme s každým klientom.

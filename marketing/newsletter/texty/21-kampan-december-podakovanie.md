@@ -10,7 +10,7 @@
 ## Text e-mailu v poradí, ako sa zobrazí
 
 ### Hlavička
-Sezónne · december 2026
+Koniec roka · december 2026
 
 ### Tmavý pás (úvod)
 Ďakujeme
