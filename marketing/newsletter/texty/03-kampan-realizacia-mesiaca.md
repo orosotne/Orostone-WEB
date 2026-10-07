@@ -36,7 +36,7 @@ Montáž
 
 ### Text
 Dobrý deň,
-tentoraz ukazujeme kuchyňu, v ktorej celý priestor nesie jeden prvok: dlhý ostrovček s drezom v dekore Taj Mahal.
+tentoraz ukazujeme kuchyňu, v ktorej celému priestoru dominuje jeden prvok: dlhý ostrovček s drezom v dekore Taj Mahal.
 
 ### Číslovaný zoznam
 01

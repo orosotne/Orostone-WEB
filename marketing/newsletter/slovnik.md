@@ -101,6 +101,11 @@ Pravidlá, ktoré vznikli pri kontrole a platia ďalej. Najnovšie hore.
 
 | Dátum | Pravidlo | Príklad |
 |---|---|---|
+| 7. 10. 2026 | Výpočet má jednotnú stavbu: buď samé menné spojenia, alebo samé vety | zadanie, zvolený dekor a výsledok vo veľkej ploche |
+| 7. 10. 2026 | Namiesto „dávať zmysel v…“ a úradného „z hľadiska…“ radšej slovesá | aby výsledok dobre vyzeral, bol praktický v každodennom používaní a mal rozumnú cenu |
+| 7. 10. 2026 | Väzby *spokojný s niečím* a *prejsť si niečo s niekým* | ako ste s doskou spokojní · otázky, ktoré si prejdeme s každým klientom |
+| 7. 10. 2026 | Nie „materiálový pocit“, ale „dojem prírodného materiálu“ | priniesť textúru a dojem prírodného materiálu |
+| 7. 10. 2026 | Pri slovese v rozkaze nevynechávajte predmet | Pár kvapiek dajte na vzorku… Potom vzorku utrite. |
 | 7. 10. 2026 | Pomlčka vo vete je krátka (–) s medzerami | Orostone je sinterovaný kameň pre kuchyne a interiéry – pracovné dosky, ostrovčeky a zásteny. |
 | 7. 10. 2026 | *svoj*, ak je vlastník podmetom | Vzorku si preto pozrite pri svojom svetle. |
 | 7. 10. 2026 | Doska na krájanie = *doštička* | Krájajte na doštičke. |

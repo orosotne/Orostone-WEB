@@ -785,8 +785,8 @@ write("01-welcome-vitajte.html", doc(
         ]),
         section_title(None, "Čo vám budeme posielať", top=16),
         numbered([
-            ("Realizácie", "Skutočné kuchyne: zadanie, zvolený dekor a ako výsledok vyzerá vo veľkej ploche."),
-            ("Dekory v detaile", "Jeden dekor bez prikrášľovania – kresba, kombinácie so skrinkami a kde funguje najlepšie."),
+            ("Realizácie", "Skutočné kuchyne: zadanie, zvolený dekor a výsledok vo veľkej ploche."),
+            ("Dekory v detaile", "Jeden dekor bez prikrášľovania – kresba, kombinácie so skrinkami a miesta, kde funguje najlepšie."),
             ("Sprievodcovia", "Hrúbka, hrany, údržba aj cena. Vecne a bez technického žargónu."),
         ], note="Približne dvakrát do mesiaca. Odhlásiť sa dá jedným kliknutím v pätičke."),
         card_offer("Prvý krok", "Vzorka na stôl",
@@ -820,10 +820,10 @@ write("02-welcome-list-od-mariana.html", doc(
             "volám sa Marián Brázdil a v Orostone pomáham ľuďom vybrať sinterovaný kameň do kuchyne.",
             "Pri pracovných doskách vidíme dookola dve chyby. Prvá: rozhodnutie podľa vzorky veľkej ako dlaň. Kresba, ktorá na vzorke pôsobí pokojne, môže byť na troch metroch výrazná – a naopak. Druhá: porovnávanie ceny za meter bez ohľadu na to, čo cena zahŕňa a čo nie.",
             "Preto vám pred rozhodnutím ukážeme celé platne. V showroome v Bošanoch, v renesančnom kaštieli, ich uvidíte vo formáte 3200 × 1600&nbsp;mm – tak, ako budú pôsobiť vo vašej kuchyni.",
-            "Výrobu a montáž robia kamenári, s ktorými spolupracujeme a ktorí so sinterovaným kameňom vedia pracovať. Vy riešite jedno: aby výsledok dával zmysel vo vzhľade, používaní aj cene.",
+            "Výrobu a montáž robia kamenári, s ktorými spolupracujeme a ktorí so sinterovaným kameňom vedia pracovať. Vy riešite jedno: aby výsledok dobre vyzeral, bol praktický v každodennom používaní a mal rozumnú cenu.",
             'Ak sa chcete na niečo spýtať, odpovedzte na tento e-mail. Číta ho človek. Medzitým si môžete <a href="' + SITE + '/realizacie" target="_blank" style="color:#1A1A1A; font-weight:500; text-decoration:underline;">pozrieť realizácie</a>.',
         ], "S pozdravom", "Marián Brázdil", "Orostone · sinterovaný kameň", SITE + "/images/marian-brazdil.png"),
-        ps("Ak plánujete návštevu showroomu, napíšte nám vopred, ktoré dekory vás zaujímajú. Pripravíme vám ich platne.", who="Marián", top=28, avatar=False),
+        ps("Ak plánujete návštevu showroomu, napíšte nám vopred, ktoré dekory vás zaujímajú. Pripravíme vám platne s týmito dekormi.", who="Marián", top=28, avatar=False),
         signature(top=0),
         footer(),
     ]))
@@ -847,7 +847,7 @@ write("03-kampan-realizacia-mesiaca.html", doc(
         hero(IMG + "realizacia-taj-mahal-hero.jpg", "Dlhý ostrovček s drezom v dekore Taj Mahal", capsule="Taj Mahal", top=14),
         facts([("Dekor", "Taj Mahal"), ("Aplikácia", "Ostrovček s drezom"), ("Lokalita", "[doplniť]"), ("Montáž", "[partner kamenár]")]),
         text([
-            "tentoraz ukazujeme kuchyňu, v ktorej celý priestor nesie jeden prvok: dlhý ostrovček s drezom v dekore Taj Mahal.",
+            "tentoraz ukazujeme kuchyňu, v ktorej celému priestoru dominuje jeden prvok: dlhý ostrovček s drezom v dekore Taj Mahal.",
         ], top=22),
         numbered([
             ("Zadanie", "[1–2 vety: čo klient riešil – priestor, štýl, čo nechcel.]"),
@@ -886,7 +886,7 @@ write("04-kampan-dekor-v-detaile.html", doc(
                   image=(shop_img("Roman_Travertine_1.png", "1776676498"), "Kuchyňa s ostrovčekom a pracovnou doskou Roman Travertine")),
         text([
             "Roman Travertine je dekor s architektonickým charakterom. Pripomína vrstvenie travertínu, no na rozdiel od pravého travertínu nepotrebuje impregnáciu.",
-            "Funguje tam, kde má povrch priniesť textúru a materiálový pocit bez prehnane efektného dojmu.",
+            "Funguje tam, kde má povrch priniesť textúru a dojem prírodného materiálu bez prehnaného efektu.",
         ], top=28),
         section_title("01", "Vo veľkej ploche", top=8),
         figure(shop_img("mockup-ROMAN-TRAVERTINE.webp", "1773771257"), "Celá platňa Roman Travertine vedľa človeka pre mierku",
@@ -905,7 +905,7 @@ write("04-kampan-dekor-v-detaile.html", doc(
         ]),
         facts([("Rozmer", "3200 × 1600 mm"), ("Hrúbka", "12 mm"), ("Povrch", "Matt Ultrasoft"), ("Nasiakavosť", "&lt; 0,1 %")], top=26),
         cta("Objednať vzorku", SITE + "/vzorky", link=("Pozrieť dekor v e-shope", SITE + "/produkt/roman-travertine"), top=26),
-        ps('Kresbu travertínu na veľkej ploche najlepšie posúdite podľa pôdorysu. Pošlite ho – <strong style="font-weight:700; color:#1A1A1A;">pripravíme orientačné cenové rozpätie</strong> aj odporúčanie, koľko platní budete potrebovať.'),
+        ps('Rozloženie kresby travertínu na veľkej ploche najlepšie naplánujete podľa pôdorysu. Pošlite ho – <strong style="font-weight:700; color:#1A1A1A;">pripravíme orientačné cenové rozpätie</strong> aj odporúčanie, koľko platní budete potrebovať.'),
         signature(top=0),
         footer(),
     ]))
@@ -931,7 +931,7 @@ write("05-automatizacia-vzorka-doma.html", doc(
             "vzorka by už mala byť u vás. Skôr než ju niekam odložíte, venujte jej desať minút. Tieto štyri skúšky vám o doske povedia viac než katalóg.",
         ], top=24),
         numbered([
-            ("Červené víno alebo káva", "Kvapnite na vzorku a nechajte hodinu pôsobiť. Potom utrite vlhkou utierkou. Pri nasiakavosti pod 0,1&nbsp;% sa škvrna do povrchu nevpije."),
+            ("Červené víno alebo káva", "Pár kvapiek dajte na vzorku a nechajte ich hodinu pôsobiť. Potom vzorku utrite vlhkou utierkou. Pri nasiakavosti pod 0,1&nbsp;% sa škvrna do povrchu nevpije."),
             ("Citrón", "Položte polovicu citróna reznou stranou na vzorku. Po utretí sa pozrite na povrch proti svetlu."),
             ("Hrnček horúcej vody", "Postavte na vzorku hrnček s vriacou vodou. V kuchyni to znamená menej starostí pri varení."),
             ("Vaše svetlo", "Pozrite sa na vzorku ráno aj večer, vedľa dvierok skriniek a podlahy. Dekor pôsobí inak pri dennom a inak pri teplom umelom svetle."),
@@ -962,7 +962,7 @@ write("06-automatizacia-po-realizacii.html", doc(
                   image=(IMG + "po-realizacii-zlatobiely.jpg", "Ostrovček a zástena zo sinterovaného kameňa po montáži")),
         text([
             "od montáže uplynul približne mesiac – dosť na to, aby ste dosku poznali v každodennom používaní.",
-            "Budeme radi, ak nám napíšete, ako ste spokojní. Ľuďom, ktorí sa práve rozhodujú, pomôže skúsenosť skutočného zákazníka viac než čokoľvek, čo napíšeme my.",
+            "Budeme radi, ak nám napíšete, ako ste s doskou spokojní. Ľuďom, ktorí sa práve rozhodujú, pomôže skúsenosť skutočného zákazníka viac než čokoľvek, čo napíšeme my.",
         ], top=28),
         card_offer("Dve minúty", "Napíšte hodnotenie",
                    "Pár viet na Google: aký dekor ste vybrali, ako prebehla montáž a ako sa doska správa v kuchyni.",
@@ -996,7 +996,7 @@ write("07-welcome-ako-vybrat-dekor.html", doc(
     "Svetlo, skrinky a veľkosť plochy. A jedna otázka pre nás.",
     [
         header("Vitajte", "3 / 4"),
-        eyebrow("Ako vybrať dekor", note="Tri otázky, ktoré pred výberom dekoru prejdeme s každým klientom."),
+        eyebrow("Ako vybrať dekor", note="Tri otázky, ktoré si pred výberom dekoru prejdeme s každým klientom."),
         headline("Tri otázky<br />" + accent_light("pred výberom dekoru.")),
         hero(shop_img("mockup-TAJ-MAHAL.webp", "1773771257"), "Celá platňa Taj Mahal vedľa človeka pre mierku", capsule="Taj Mahal · 3200 × 1600 mm", top=14),
         text([

@@ -13,7 +13,7 @@ Vitajte · 3 / 4
 
 ### Séria (pill) a veta pod ňou
 Ako vybrať dekor
-Tri otázky, ktoré pred výberom dekoru prejdeme s každým klientom.
+Tri otázky, ktoré si pred výberom dekoru prejdeme s každým klientom.
 
 ### Nadpis
 Tri otázky

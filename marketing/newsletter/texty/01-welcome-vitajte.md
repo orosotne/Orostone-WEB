@@ -32,10 +32,10 @@ Newsletter píšeme pre ľudí, ktorí dosku práve vyberajú alebo ju budú vyb
 ### Číslovaný zoznam
 01
 Realizácie
-Skutočné kuchyne: zadanie, zvolený dekor a ako výsledok vyzerá vo veľkej ploche.
+Skutočné kuchyne: zadanie, zvolený dekor a výsledok vo veľkej ploche.
 02
 Dekory v detaile
-Jeden dekor bez prikrášľovania – kresba, kombinácie so skrinkami a kde funguje najlepšie.
+Jeden dekor bez prikrášľovania – kresba, kombinácie so skrinkami a miesta, kde funguje najlepšie.
 03
 Sprievodcovia
 Hrúbka, hrany, údržba aj cena. Vecne a bez technického žargónu.

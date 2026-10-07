@@ -29,7 +29,7 @@ vzorka by už mala byť u vás. Skôr než ju niekam odložíte, venujte jej des
 ### Číslovaný zoznam
 01
 Červené víno alebo káva
-Kvapnite na vzorku a nechajte hodinu pôsobiť. Potom utrite vlhkou utierkou. Pri nasiakavosti pod 0,1 % sa škvrna do povrchu nevpije.
+Pár kvapiek dajte na vzorku a nechajte ich hodinu pôsobiť. Potom vzorku utrite vlhkou utierkou. Pri nasiakavosti pod 0,1 % sa škvrna do povrchu nevpije.
 02
 Citrón
 Položte polovicu citróna reznou stranou na vzorku. Po utretí sa pozrite na povrch proti svetlu.

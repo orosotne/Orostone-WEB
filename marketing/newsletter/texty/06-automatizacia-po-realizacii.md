@@ -20,7 +20,7 @@ s novou doskou?
 ### Text
 Dobrý deň,
 od montáže uplynul približne mesiac – dosť na to, aby ste dosku poznali v každodennom používaní.
-Budeme radi, ak nám napíšete, ako ste spokojní. Ľuďom, ktorí sa práve rozhodujú, pomôže skúsenosť skutočného zákazníka viac než čokoľvek, čo napíšeme my.
+Budeme radi, ak nám napíšete, ako ste s doskou spokojní. Ľuďom, ktorí sa práve rozhodujú, pomôže skúsenosť skutočného zákazníka viac než čokoľvek, čo napíšeme my.
 
 ### Ponuka
 Dve minúty

@@ -21,7 +21,7 @@ Teplé krémové odtiene a pozdĺžna kresba travertínu – na povrchu s nasiak
 ### Text
 Dobrý deň,
 Roman Travertine je dekor s architektonickým charakterom. Pripomína vrstvenie travertínu, no na rozdiel od pravého travertínu nepotrebuje impregnáciu.
-Funguje tam, kde má povrch priniesť textúru a materiálový pocit bez prehnane efektného dojmu.
+Funguje tam, kde má povrch priniesť textúru a dojem prírodného materiálu bez prehnaného efektu.
 
 ### Nadpis sekcie
 01 – Vo veľkej ploche
@@ -75,7 +75,7 @@ Pozrieť dekor v e-shope
 
 ### P. S.
 P. S. · Marián, Orostone
-Kresbu travertínu na veľkej ploche najlepšie posúdite podľa pôdorysu. Pošlite ho – pripravíme orientačné cenové rozpätie aj odporúčanie, koľko platní budete potrebovať.
+Rozloženie kresby travertínu na veľkej ploche najlepšie naplánujete podľa pôdorysu. Pošlite ho – pripravíme orientačné cenové rozpätie aj odporúčanie, koľko platní budete potrebovať.
 
 ### Podpis značky
 Krása kameňa.

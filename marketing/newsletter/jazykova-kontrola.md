@@ -30,9 +30,21 @@ Pred odovzdaním Codexu. Pravopis a gramatiku predtým kontroloval aj LanguageTo
 | 12 | všetky | dlhá pomlčka — | krátka pomlčka – s medzerami | typografia | Slovenská typografia. Dlhá pomlčka je anglická. | zapracované |
 | 13 | 06 | Typ: Po realizácii 2/3 | Typ: Po realizácii 3/4 | otázka | Zosúladené s programom: 08 → starostlivosť → 06 → po 6 mesiacoch. | zapracované |
 
-## Kolo 1 – Codex
+## Kolo 1 – Codex review v PR #74 (7. 10. 2026)
 
-*(doplní Codex)*
+Codex našiel 9 chýb (všetky P1). Všetky sú prijaté. Pri troch Claude použil iné znenie, než Codex navrhol, a dôvod je pri nich uvedený.
 
-| # | E-mail | Pôvodný text | Návrh | Typ | Prečo | Stav |
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
 |---|---|---|---|---|---|---|
+| 1 | 01 | zadanie, zvolený dekor a ako výsledok vyzerá vo veľkej ploche | zadanie, zvolený dekor a výsledok vo veľkej ploche | štylistika | Výpočet miešal menné spojenia s vedľajšou vetou. Kratšie než návrh „ukážka toho, ako…“. | zapracované s úpravou |
+| 1b | 01 | kombinácie so skrinkami a kde funguje najlepšie | … a miesta, kde funguje najlepšie | štylistika | Rovnaká chyba o riadok nižšie, doplnil Claude. | zapracované |
+| 2 | 02 | aby výsledok dával zmysel vo vzhľade, používaní aj cene | aby výsledok dobre vyzeral, bol praktický v každodennom používaní a mal rozumnú cenu | štylistika | „Dávať zmysel vo…“ je neprirodzené. Návrh „z hľadiska vzhľadu…“ je úradný, preto slovesá. Rovnaká veta je aj v manuáli copy-orostone. | zapracované s úpravou |
+| 3 | 02 | Pripravíme vám ich platne. | Pripravíme vám platne s týmito dekormi. | štylistika | Zámeno „ich“ sa nejasne vzťahovalo na dekory. | zapracované |
+| 4 | 03 | v ktorej celý priestor nesie jeden prvok | v ktorej celému priestoru dominuje jeden prvok | štylistika | Pri voľnom slovoslede sa dalo čítať, že priestor nesie prvok. | zapracované |
+| 5 | 04 | textúru a materiálový pocit bez prehnane efektného dojmu | textúru a dojem prírodného materiálu bez prehnaného efektu | spisovnosť | „Materiálový pocit“ je kalk. Rovnaké spojenie je aj v manuáli copy-orostone (decors.md). | zapracované |
+| 6 | 04 | Kresbu travertínu na veľkej ploche najlepšie posúdite podľa pôdorysu. | Rozloženie kresby travertínu na veľkej ploche najlepšie naplánujete podľa pôdorysu. | význam | Pôdorys slúži na plánovanie rozloženia, nie na posúdenie vzhľadu. | zapracované |
+| 7 | 05 | Kvapnite na vzorku a nechajte hodinu pôsobiť. Potom utrite… | Pár kvapiek dajte na vzorku a nechajte ich hodinu pôsobiť. Potom vzorku utrite… | gramatika | Chýbal predmet. Nová veta neopakuje nadpis „Červené víno alebo káva“. Predmet chýbal aj pri „utrite“. | zapracované s úpravou |
+| 8 | 06 | ako ste spokojní | ako ste s doskou spokojní | gramatika | „Spokojný“ sa viaže s predložkou „s“. | zapracované |
+| 9 | 07 | ktoré pred výberom dekoru prejdeme s každým klientom | ktoré si pred výberom dekoru prejdeme s každým klientom | gramatika | Väzba „prejsť si niečo s niekým“. | zapracované |
+
+Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
