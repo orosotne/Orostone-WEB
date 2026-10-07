@@ -223,7 +223,7 @@ export const ARTICLE_13: BlogArticle = {
 <p><strong>Odovzdanie klientovi:</strong></p>
 <ul>
   <li><strong>Protokol o čistení a údržbe</strong> — vysvetlíme vám, ako sa o sinterovaný kameň starať (spoiler: je to veľmi jednoduché)</li>
-  <li><strong>Záruka</strong> — na materiál platí záruka 24 mesiacov, na výrobu a montáž dáva záruku kamenár. Podmienky dostanete v záručnom certifikáte pri odovzdaní</li>
+  <li><strong>Záruka</strong> — na materiál platí záruka 24\u00A0mesiacov, na výrobu a montáž dáva záruku kamenár. Podmienky dostanete v záručnom certifikáte pri odovzdaní</li>
   <li><strong>Čas na vytvrdnutie</strong> — <strong>24 hodín</strong> po inštalácii nepoužívajte dosku v plnom zaťažení. Lepidlá a tmely potrebujú čas na úplné vytvrdnutie</li>
   <li><strong>Kontakt pre budúcnosť</strong> — ak kedykoľvek v budúcnosti budete potrebovať poradiť, opraviť alebo rozšíriť, sme tu pre vás</li>
 </ul>
@@ -290,7 +290,7 @@ export const ARTICLE_13: BlogArticle = {
       },
       {
         question: 'Aká je záruka na inštaláciu a materiál?',
-        answer: 'Na fabrikáciu a montáž poskytuje záruku kamenár, ktorý ich realizuje. Na materiál platí záruka 24 mesiacov. Presné podmienky záruky sú súčasťou záručného certifikátu, ktorý dostanete pri odovzdaní projektu. V prípade akéhokoľvek problému nás kontaktujte — pomôžeme to doriešiť.'
+        answer: 'Na fabrikáciu a montáž poskytuje záruku kamenár, ktorý ich realizuje. Na materiál platí záruka 24\u00A0mesiacov. Presné podmienky záruky sú súčasťou záručného certifikátu, ktorý dostanete pri odovzdaní projektu. V prípade akéhokoľvek problému nás kontaktujte — pomôžeme to doriešiť.'
       }
     ]
   },

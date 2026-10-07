@@ -255,7 +255,7 @@ export const ARTICLE_01: BlogArticle = {
 <h3>5. Záruka a popredajný servis</h3>
 <p>Naša starostlivosť nekončí inštaláciou — ostávame vaším kontaktom aj po nej.</p>
 <ul>
-  <li>Na materiál platí záruka 24 mesiacov, na výrobu a montáž dáva záruku kamenár, ktorý ich realizoval</li>
+  <li>Na materiál platí záruka 24\u00A0mesiacov, na výrobu a montáž dáva záruku kamenár, ktorý ich realizoval</li>
   <li>V prípade akéhokoľvek problému reagujeme do 48 hodín</li>
   <li>Menšie odštiepky vie partnerský kamenár opraviť priamo na mieste špeciálnym epoxidovým tmelom</li>
 </ul>
@@ -331,7 +331,7 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Vzťahuje sa záruka na chipovanie spôsobené používaním?',
-        answer: 'Záruka 24 mesiacov na materiál pokrýva výrobné chyby, nie mechanické poškodenie. Drobné odštiepky však vie opraviť partnerský kamenár a opravu vám pomôžeme dohodnúť. A správnym výberom profilu hrán minimalizujeme pravdepodobnosť chipovania od začiatku.',
+        answer: 'Záruka 24\u00A0mesiacov na materiál pokrýva výrobné chyby, nie mechanické poškodenie. Drobné odštiepky však vie opraviť partnerský kamenár a opravu vám pomôžeme dohodnúť. A správnym výberom profilu hrán minimalizujeme pravdepodobnosť chipovania od začiatku.',
       },
     ],
   },
