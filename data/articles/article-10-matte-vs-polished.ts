@@ -13,28 +13,28 @@ export const ARTICLE_10: BlogArticle = {
 
   sk: {
     title: 'Matný vs lesklý povrch: čo vyzerá luxusnejšie v reálnych kuchyniach?',
-    subtitle: 'Praktický sprievodca povrchmi sinterovaného kameňa — od odtlačkov prstov po fotogenickosť',
-    excerpt: 'Objektívne porovnanie matného a lesklého povrchu sinterovaného kameňa. Odtlačky prstov, mikro-škrabance, fotogenickosť, praktickosť a odporúčanie pre luxusné bratislavské kuchyne.',
+    subtitle: 'Praktický sprievodca povrchmi sinterovaného kameňa – od odtlačkov prstov po fotogenickosť',
+    excerpt: 'Objektívne porovnanie matného a lesklého povrchu sinterovaného kameňa. Odtlačky prstov, mikroškrabance, fotogenickosť, praktickosť a odporúčanie pre luxusné bratislavské kuchyne.',
     metaTitle: 'Matný alebo lesklý povrch? Kuchynská doska | OROSTONE',
-    metaDescription: 'Matný alebo lesklý povrch? Rozdiel vo vzhľade, údržbe, odtlačkoch prstov a tom, ako sa doska v kuchyni dlhodobo „nosí".',
-    directAnswer: 'Matný povrch vyzerá v reálnych kuchyniach sofistikovanejšie a je praktickejší — nezobrazuje odtlačky prstov, mikro-škrabance ani šmuhy. Lesklý povrch vyzerá dramatickejšie na fotkách, ale vyžaduje neustále utieranie. Pre luxusné bratislavské kuchyne s denným používaním odporúčame matný alebo leather finish.',
+    metaDescription: 'Matný alebo lesklý povrch? Rozdiel vo vzhľade, údržbe, odtlačkoch prstov a tom, ako sa doska v kuchyni dlhodobo „nosí“.',
+    directAnswer: 'Matný povrch vyzerá v reálnych kuchyniach sofistikovanejšie a je praktickejší – nezobrazuje odtlačky prstov, mikroškrabance ani šmuhy. Lesklý povrch vyzerá dramatickejšie na fotkách, ale vyžaduje neustále utieranie. Pre luxusné bratislavské kuchyne s denným používaním odporúčame matný alebo leather finish.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>
 <ul class="article-tldr">
   <li>Matný povrch nevyžaduje neustále utieranie odtlačkov prstov</li>
-  <li>Lesklý vyzerá dramaticky na fotkách, ale v praxi frustuje</li>
+  <li>Lesklý vyzerá dramaticky na fotkách, ale v praxi frustruje</li>
   <li>Pre bratislavské kuchyne s denným používaním odporúčame matný alebo leather</li>
-  <li>74% našich klientov z luxusného segmentu si volí matný alebo leather finish</li>
+  <li>74\u00A0% našich klientov z luxusného segmentu si volí matný alebo leather finish</li>
 </ul>
 
-<p>Vybrať si materiál na kuchynskú dosku je iba polovica rozhodnutia. Druhá polovica — a mnohí tvrdia, že dôležitejšia — je povrchová úprava. Rovnaký sinterovaný kameň v rovnakej farbe vyzerá, cíti sa a správa sa úplne inak v matnom, lesklom alebo leather variante.</p>
+<p>Vybrať si materiál na kuchynskú dosku je iba polovica rozhodnutia. Druhá polovica – a mnohí tvrdia, že dôležitejšia – je povrchová úprava. Rovnaký sinterovaný kameň v rovnakej farbe vyzerá, pôsobí na dotyk a správa sa úplne inak v matnom, lesklom alebo leather variante.</p>
 
 <p>A ten rozdiel sa neprejaví v showroome pod ideálnym svetlom, ale vo vašej kuchyni o 7:00 ráno, keď deti odídu do školy a vy zbadáte stôl plný odtlačkov.</p>
 
-<p>Tento článok nie je o tom, čo vyzerá lepšie na Instagrame. Je o tom, čo vyzerá lepšie <strong class="gold">po šiestich mesiacoch reálneho používania</strong> — s varením, deťmi, hosťami a ranným slnkom, ktoré osvetlí každú šmuhu.</p>
+<p>Tento článok nie je o tom, čo vyzerá lepšie na Instagrame. Je o tom, čo vyzerá lepšie <strong class="gold">po šiestich mesiacoch reálneho používania</strong> – s varením, deťmi, hosťami a ranným slnkom, ktoré osvetlí každú šmuhu.</p>
 
 <div class="article-quote">
-  <p>Rovnaký kameň, rovnaká farba — ale úplne iný zážitok. Povrchová úprava je tichý hrdina alebo tichý nepriateľ vašej kuchyne.</p>
+  <p>Rovnaký kameň, rovnaká farba – ale úplne iný zážitok. Povrchová úprava je tichý hrdina alebo tichý nepriateľ vašej kuchyne.</p>
 </div>
 
 <figure class="article-figure">
@@ -44,79 +44,79 @@ export const ARTICLE_10: BlogArticle = {
 
 <h2 id="odtlacky-prstov-a-smuhy">Odtlačky prstov a šmuhy: prečo je to najväčší praktický rozdiel?</h2>
 
-<p>Ak existuje jediná vec, ktorú by ste mali vedieť pred výberom povrchu, je to táto: <strong class="gold">lesklý povrch ukazuje každý dotyk</strong>. A nemyslíme tým iba odtlačky prstov. Ukazuje šmuhy od utierky, stopy po kvapkách vody, miesta, kde ste položili pohárik — prakticky každú interakciu medzi rukou a povrchom.</p>
+<p>Ak existuje jediná vec, ktorú by ste mali vedieť pred výberom povrchu, je to táto: <strong class="gold">lesklý povrch ukazuje každý dotyk</strong>. A nemyslíme tým iba odtlačky prstov. Ukazuje šmuhy od utierky, stopy po kvapkách vody, miesta, kde ste položili pohárik – prakticky každú interakciu medzi rukou a povrchom.</p>
 
-<p>Matný povrch je v tomto ohľade diametrálne odlišný. Mikro-textúra matného finiša rozptyľuje svetlo tak, že odtlačky prstov sú <strong class="gold">prakticky neviditeľné</strong>. Rovnaký odtlačok, ktorý na lesklom povrchu svietí pod uhlom svetla ako neonová reklama, na matnom povrchu jednoducho nevidíte.</p>
+<p>Matný povrch je v tomto ohľade diametrálne odlišný. Mikrotextúra matnej povrchovej úpravy rozptyľuje svetlo tak, že odtlačky prstov sú <strong class="gold">prakticky neviditeľné</strong>. Rovnaký odtlačok, ktorý na lesklom povrchu svietí pod uhlom svetla ako neonová reklama, na matnom povrchu jednoducho nevidíte.</p>
 
 <figure class="article-figure">
   <img src="/images/blog/article-10/fingerprints-polished.webp" alt="Odtlačky prstov a šmuhy viditeľné na tmavom lesklom sinterovanom kameni pod LED osvetlením" loading="lazy" />
-  <figcaption>Realita lesklého povrchu — každý dotyk, každý pohár, každá utierka zanechá viditeľnú stopu</figcaption>
+  <figcaption>Realita lesklého povrchu – každý dotyk, každý pohár, každá utierka zanechá viditeľnú stopu</figcaption>
 </figure>
 
 <div class="article-case-study">
   <span class="case-study-label">Z praxe</span>
   <h3>Rodina s deťmi a Nero Marquina v polished variante</h3>
-  <p>Máme klientov, ktorí si pôvodne zvolili lesklý čierny sinterovaný kameň — Nero Marquina v polished variante. Vyzeralo to úžasne v showroome. Po troch mesiacoch nám zavolali s frustrujúcim problémom: <strong class="gold">dosku utierali 5–8-krát denne</strong>. Každé dieťa, ktoré sa oprelo o dosku, zanechalo viditeľnú stopu. Každý pohár zanechal kruhovú šmuhu. Stôl nikdy nevyzeral čistý dlhšie ako 20 minút.</p>
-  <p>Riešenie? Dohodli sme výmenu a partnerský kamenár im dosku vymenil za rovnaký dekor v matnom variante. Rovnaká farba, rovnaký kameň — ale úplne iný zážitok. Teraz utierajú dosku raz denne a vždy vyzerá čisto. Ako sami povedali: <em>„Je to ako keby sme dostali úplne inú kuchyňu.“</em></p>
+  <p>Máme klientov, ktorí si pôvodne zvolili lesklý čierny sinterovaný kameň – Nero Marquina v polished variante. Vyzeralo to úžasne v showroome. Po troch mesiacoch nám zavolali s frustrujúcim problémom: <strong class="gold">dosku utierali 5–8-krát denne</strong>. Každé dieťa, ktoré sa oprelo o dosku, zanechalo viditeľnú stopu. Každý pohár zanechal kruhovú šmuhu. Stôl nikdy nevyzeral čistý dlhšie ako 20 minút.</p>
+  <p>Riešenie? Dohodli sme výmenu a partnerský kamenár im dosku vymenil za rovnaký dekor v matnom variante. Rovnaká farba, rovnaký kameň – ale úplne iný zážitok. Teraz utierajú dosku raz denne a vždy vyzerá čisto. Ako sami povedali: <em>„Je to, ako keby sme dostali úplne inú kuchyňu.“</em></p>
 </div>
 
-<h3>Leather a honed — zlatá stredná cesta</h3>
-<p>Okrem čisto matného a lesklého povrchu existuje ešte <strong>leather finish</strong> (koženková textúra) a <strong>honed finish</strong> (jemne brúsený povrch). Leather finish má jemnú, hmatateľnú textúru, ktorá maskuje odtlačky ešte lepšie ako matný povrch a zároveň dodáva doske hĺbku a charakter. Honed finish je niečo medzi matným a lesklým — hladký, ale nereflektívny. Oba sú pre každodenné používanie vynikajúce.</p>
+<h3>Leather a honed – zlatá stredná cesta</h3>
+<p>Okrem čisto matného a lesklého povrchu existuje ešte <strong>leather finish</strong> (koženková textúra) a <strong>honed finish</strong> (jemne brúsený povrch). Leather finish má jemnú, hmatateľnú textúru, ktorá maskuje odtlačky ešte lepšie ako matný povrch a zároveň dodáva doske hĺbku a charakter. Honed finish je niečo medzi matným a lesklým – hladký, ale nereflektívny. Oba sú pre každodenné používanie vynikajúce.</p>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-10/leather-finish-detail.webp" alt="Detail leather-finish sinterovaného kameňa Sahara Noir — jemná koženková textúra pod teplým svetlom" loading="lazy" />
-  <figcaption>Leather finish na Sahara Noir — hmatateľná textúra, ktorá maskuje odtlačky a dodáva kameni charakter</figcaption>
+  <img src="/images/blog/article-10/leather-finish-detail.webp" alt="Detail leather-finish sinterovaného kameňa Sahara Noir – jemná koženková textúra pod teplým svetlom" loading="lazy" />
+  <figcaption>Leather finish na Sahara Noir – hmatateľná textúra, ktorá maskuje odtlačky a dodáva kameni charakter</figcaption>
 </figure>
 
 <div class="article-tip">
   <p><strong>Čo odporúčame v Orostone</strong></p>
-  <p>Pre rodiny s deťmi volíme vždy matný alebo leather finish. Nie kvôli cene — kvôli spokojnosti. Klienti, ktorí sa na nás počúvali, nám po roku ďakujú. Tí, čo trvali na lesku, nám po troch mesiacoch volajú.</p>
+  <p>Pre rodiny s deťmi volíme vždy matný alebo leather finish. Nie kvôli cene – kvôli spokojnosti. Klienti, ktorí dali na našu radu, nám po roku ďakujú. Tí, čo trvali na lesku, nám po troch mesiacoch volajú.</p>
 </div>
 
-<h2 id="mikro-skrabance-a-opotrebenie">Ako vyzerajú mikro-škrabance po rokoch používania?</h2>
+<h2 id="mikro-skrabance-a-opotrebenie">Ako vyzerajú mikroškrabance po rokoch používania?</h2>
 
-<p>Sinterovaný kameň je extrémne tvrdý materiál (7–8 na Mohsovej stupnici). Bežné kuchynské nože ho nepoškriabu. Ale mikro-škrabance — tie neviditeľné, vláskové stopy, ktoré vznikajú posúvaním tanierov, hrncov a príborov — sú nevyhnutnou súčasťou života každej kuchynskej dosky. A tu je kľúčový rozdiel medzi povrchmi.</p>
+<p>Sinterovaný kameň je extrémne tvrdý materiál (7–8 na Mohsovej stupnici). Bežné kuchynské nože ho nepoškriabu. Ale mikroškrabance – tie neviditeľné, vláskové stopy, ktoré vznikajú posúvaním tanierov, hrncov a príborov – sú nevyhnutnou súčasťou života každej kuchynskej dosky. A tu je kľúčový rozdiel medzi povrchmi.</p>
 
 <h3>Lesklý povrch: zrkadlo, ktoré zradí každý škrabanec</h3>
-<p>Lesklý povrch funguje ako zrkadlo. Keď svetlo dopadne na dokonale hladkú plochu, odráža sa rovnomerne a vytvára ten charakteristický lesk. Lenže <strong class="gold">aj najmenší mikro-škrabanec naruší túto rovnomernosť</strong>. Svetlo sa na mieste škrabanca odrazí pod iným uhlom a škrabanec je okamžite viditeľný — najmä pri bočnom osvetlení.</p>
+<p>Lesklý povrch funguje ako zrkadlo. Keď svetlo dopadne na dokonale hladkú plochu, odráža sa rovnomerne a vytvára ten charakteristický lesk. Lenže <strong class="gold">aj najmenší mikroškrabanec naruší túto rovnomernosť</strong>. Svetlo sa na mieste škrabanca odrazí pod iným uhlom a škrabanec je okamžite viditeľný – najmä pri bočnom osvetlení.</p>
 
-<p>Po roku intenzívneho používania vzniká na lesklom povrchu jemná sieť mikro-škrabancov, ktorú odborníci nazývajú <strong class="gold">„spider web effect"</strong> — pavučinový efekt. Povrch stráca pôvodný dramatický lesk a začína vyzerať matne, ale nie tým elegantným spôsobom. Skôr opotrebovane.</p>
+<p>Po roku intenzívneho používania vzniká na lesklom povrchu jemná sieť mikroškrabancov, ktorú odborníci nazývajú <strong class="gold">„spider web effect“</strong> – pavučinový efekt. Povrch stráca pôvodný dramatický lesk a začína vyzerať matne, ale nie tým elegantným spôsobom. Skôr opotrebovane.</p>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-10/micro-scratches-spider-web.webp" alt="Makro záber pavučinového efektu mikro-škrabancov na lesklom tmavom sinterovanom kameni" loading="lazy" />
-  <figcaption>„Spider web effect" — sieť mikro-škrabancov, ktorá postupne kradne lesk z polished povrchu</figcaption>
+  <img src="/images/blog/article-10/micro-scratches-spider-web.webp" alt="Makrozáber pavučinového efektu mikroškrabancov na lesklom tmavom sinterovanom kameni" loading="lazy" />
+  <figcaption>„Spider web effect“ – sieť mikroškrabancov, ktorá postupne kradne lesk z polished povrchu</figcaption>
 </figure>
 
 <h3>Matný povrch: rovnaký vzhľad aj po rokoch</h3>
-<p>Matný povrch nemá čo stratiť v zmysle odrazivosti. Mikro-škrabance na matnom povrchu sú <strong class="gold">prakticky nerozoznateľné od pôvodnej textúry</strong>. Nemenia vzhľad, nemenia hmatový pocit, nemenia celkový dojem z dosky. Päťročná matná doska vyzerá takmer identicky ako nová — za predpokladu bežnej údržby.</p>
+<p>Matný povrch nemá čo stratiť v zmysle odrazivosti. Mikroškrabance na matnom povrchu sú <strong class="gold">prakticky nerozoznateľné od pôvodnej textúry</strong>. Nemenia vzhľad, nemenia hmatový pocit, nemenia celkový dojem z dosky. Päťročná matná doska vyzerá takmer identicky ako nová – za predpokladu bežnej údržby.</p>
 
 <h3>Reálne porovnanie: 2-ročný polished vs 5-ročný matte</h3>
-<p>V našom showroome máme obe vzorky na porovnanie. Dvojročná lesklá doska s denným používaním už má viditeľné mikro-škrabance — najmä v okolí drezu a varnej dosky, kde je pohyb hrncov najintenzívnejší. Päťročná matná doska, ktorá prešla rovnakým zaťažením, vyzerá prakticky ako nová. <strong>Tento kontrast hovorí viac ako akákoľvek tabuľka parametrov.</strong></p>
+<p>V našom showroome máme obe vzorky na porovnanie. Dvojročná lesklá doska s denným používaním už má viditeľné mikroškrabance – najmä v okolí drezu a varnej dosky, kde je pohyb hrncov najintenzívnejší. Päťročná matná doska, ktorá prešla rovnakým zaťažením, vyzerá prakticky ako nová. <strong>Tento kontrast hovorí viac ako akákoľvek tabuľka parametrov.</strong></p>
 
 <div class="article-highlight">
-  <p><strong>Kľúčové porovnanie:</strong> Dvojročný lesklý povrch už vykazuje viditeľné mikro-škrabance a stratu lesku. Päťročný matný povrch vyzerá prakticky ako nový. <strong>Tento rozdiel je najlepším argumentom pre matný finish.</strong></p>
+  <p><strong>Kľúčové porovnanie:</strong> Dvojročný lesklý povrch už vykazuje viditeľné mikroškrabance a stratu lesku. Päťročný matný povrch vyzerá prakticky ako nový. <strong>Tento rozdiel je najlepším argumentom pre matný finish.</strong></p>
 </div>
 
-<p>Dôležitá poznámka: mikro-škrabance na lesklom povrchu sú kozmetický problém, nie štrukturálny. Kameň pod povrchom je rovnako tvrdý a odolný. Ale ak ste si zvolili lesklý povrch kvôli jeho dramatickému lesku, strata tohto lesku je viac než len kozmetická záležitosť — mení to celý dôvod, prečo ste si ho vybrali.</p>
+<p>Dôležitá poznámka: mikroškrabance na lesklom povrchu sú kozmetický problém, nie štrukturálny. Kameň pod povrchom je rovnako tvrdý a odolný. Ale ak ste si zvolili lesklý povrch kvôli jeho dramatickému lesku, strata tohto lesku je viac než len kozmetická záležitosť – mení to celý dôvod, prečo ste si ho vybrali.</p>
 
 <h2 id="ako-vyzeraju-na-fotkach">Prečo fotografie klamú?</h2>
 
-<p>Tu musíme byť úprimní, aj keď to nie je v náš prospech: <strong class="gold">lesklý povrch na profesionálnych fotkách vyzerá absolútne neuveriteľne</strong>. A presne preto je tak populárny na Instagrame, Pinterestu a v dizajnérskych časopisoch.</p>
+<p>Tu musíme byť úprimní, aj keď to nie je v náš prospech: <strong class="gold">lesklý povrch na profesionálnych fotkách vyzerá absolútne neuveriteľne</strong>. A presne preto je taký populárny na Instagrame, Pintereste a v dizajnérskych časopisoch.</p>
 
 <h3>Prečo fotografie klamú</h3>
-<p>Profesionálny interiérový fotograf ovláda svetlo. Vie presne, ako nasmerovať blesk a reflektory, aby lesklý povrch vytvoril dramatické odrazy, hĺbku a kontrast. Na fotkách lesklý sinterovaný kameň vyzerá ako tekutý mramor — hlboký, živý, takmer trojrozmerný. Matný povrch na rovnakej fotke vyzerá plochejšie a menej dramaticky.</p>
+<p>Profesionálny interiérový fotograf ovláda svetlo. Vie presne, ako nasmerovať blesk a reflektory, aby lesklý povrch vytvoril dramatické odrazy, hĺbku a kontrast. Na fotkách lesklý sinterovaný kameň vyzerá ako tekutý mramor – hlboký, živý, takmer trojrozmerný. Matný povrch na rovnakej fotke vyzerá plochšie a menej dramaticky.</p>
 
-<p>Problém? <strong class="gold">Vaša kuchyňa nemá profesionálne osvetlenie.</strong> Má LED bodové svetlá v strope, ranné slnko z okna a večerné ambient svetlo z lustrov. Pod týmito svetlami lesklý povrch nevyzerá ako na profesionálnych fotkách — vyzerá ako lesklá plocha pokrytá odtlačkami prstov a šmuhami od utierky. Fotografia zaznamenáva ideálny moment. Realita je celý zvyšok dňa.</p>
+<p>Problém? <strong class="gold">Vaša kuchyňa nemá profesionálne osvetlenie.</strong> Má LED bodové svetlá v strope, ranné slnko z okna a večerné ambient svetlo z lustrov. Pod týmito svetlami lesklý povrch nevyzerá ako na profesionálnych fotkách – vyzerá ako lesklá plocha pokrytá odtlačkami prstov a šmuhami od utierky. Fotografia zaznamenáva ideálny moment. Realita je celý zvyšok dňa.</p>
 
 <h3>Realitné fotografie: výnimka z pravidla</h3>
-<p>Existuje jedna situácia, kde lesklý povrch jednoznačne vyhráva: <strong>realitné fotografie pri predaji nehnuteľnosti</strong>. Ak plánujete byt predať v horizonte 3–5 rokov, lesklá kuchynská doska fotografuje výrazne lepšie na inzerátne fotky. Kupujúci reagujú na dramatický lesk, pretože podvedome asociujú lesk s luxusom a novotou. V tomto špecifickom kontexte môže lesklý povrch zvýšiť vnímanú hodnotu kuchyne.</p>
+<p>Existuje jedna situácia, kde lesklý povrch jednoznačne vyhráva: <strong>realitné fotografie pri predaji nehnuteľnosti</strong>. Ak plánujete byt predať v horizonte 3–5 rokov, lesklá kuchynská doska vyzerá na inzerátnych fotkách výrazne lepšie. Kupujúci reagujú na dramatický lesk, pretože podvedome asociujú lesk s luxusom a novotou. V tomto špecifickom kontexte môže lesklý povrch zvýšiť vnímanú hodnotu kuchyne.</p>
 
 <h3>Matný povrch: to, čo vidíte, je to, čo dostanete</h3>
-<p>Matný povrch je v tomto smere čestnejší. Ako vyzerá v showroome, tak vyzerá doma. Ako vyzerá na fotke, tak vyzerá naživo. Žiadne sklamanie, žiadny rozdiel medzi očakávaním a realitou. Pre klientov, ktorí si robia informované rozhodnutia na základe dlhodobej skúsenosti — nie krátkodobého prvého dojmu — je to obrovská výhoda.</p>
+<p>Matný povrch je v tomto smere čestnejší. Ako vyzerá v showroome, tak vyzerá doma. Ako vyzerá na fotke, tak vyzerá naživo. Žiadne sklamanie, žiadny rozdiel medzi očakávaním a realitou. Pre klientov, ktorí si robia informované rozhodnutia na základe dlhodobej skúsenosti – nie krátkodobého prvého dojmu – je to obrovská výhoda.</p>
 
 <div class="article-cta">
   <p>Chcete porovnať povrchy naživo?</p>
-  <p>Navštívte náš showroom — máme všetky varianty na dotyk.</p>
+  <p>Navštívte náš showroom – máme všetky varianty na dotyk.</p>
   <a href="/kontakt" class="cta-btn">Dohodnúť návštevu →</a>
 </div>
 
@@ -127,42 +127,42 @@ export const ARTICLE_10: BlogArticle = {
 <h3>Lesklý povrch: zrkadlový efekt</h3>
 <p>Lesklý sinterovaný kameň odráža svetlo a okolité predmety. V praxi to znamená:</p>
 <ul>
-<li><strong>Vizuálne zväčšenie priestoru</strong> — odrazená svetelná plocha vytvára ilúziu väčšieho priestoru, podobne ako zrkadlo na stene.</li>
-<li><strong>Rozjasnenie tmavých kuchýň</strong> — ak máte kuchyňu so severne orientovanými oknami a obmedzeným prirodzeným svetlom, lesklý povrch odrazí a rozptýli dostupné svetlo efektívnejšie.</li>
-<li><strong>Dramatický efekt pri umelom osvetlení</strong> — bodové LED svetlá vytvárajú na lesklom povrchu efektné odlesky, ktoré dodávajú kuchyni dynamiku.</li>
+<li><strong>Vizuálne zväčšenie priestoru</strong> – odrazená svetelná plocha vytvára ilúziu väčšieho priestoru, podobne ako zrkadlo na stene.</li>
+<li><strong>Rozjasnenie tmavých kuchýň</strong> – ak máte kuchyňu so severne orientovanými oknami a obmedzeným prirodzeným svetlom, lesklý povrch odrazí a rozptýli dostupné svetlo efektívnejšie.</li>
+<li><strong>Dramatický efekt pri umelom osvetlení</strong> – bodové LED svetlá vytvárajú na lesklom povrchu efektné odlesky, ktoré dodávajú kuchyni dynamiku.</li>
 </ul>
 
 <h3>Matný povrch: teplá elegancia</h3>
 <p>Matný povrch svetlo pohlcuje a rozptyľuje. Výsledný efekt je iný, ale nie menej hodnotný:</p>
 <ul>
-<li><strong>Teplejšia atmosféra</strong> — bez ostrých odleskov pôsobí priestor pokojnejšie a útulnejšie. Ak je vaša kuchyňa zároveň hlavným obytným priestorom (čo je v bratislavských bytoch bežné), matný povrch prispieva k celkovému pocitu domova.</li>
-<li><strong>Eliminácia oslnenia</strong> — v kuchyniach s južnou alebo západnou orientáciou a veľkými oknami môže lesklý povrch pri priamom slnku doslova oslňovať. Matný povrch tento problém úplne eliminuje.</li>
-<li><strong>Vizuálna konzistencia</strong> — matný povrch vyzerá rovnako za akýchkoľvek svetelných podmienok. Ráno, napoludnie, večer — vždy rovnaký dojem.</li>
+<li><strong>Teplejšia atmosféra</strong> – bez ostrých odleskov pôsobí priestor pokojnejšie a útulnejšie. Ak je vaša kuchyňa zároveň hlavným obytným priestorom (čo je v bratislavských bytoch bežné), matný povrch prispieva k celkovému pocitu domova.</li>
+<li><strong>Eliminácia oslnenia</strong> – v kuchyniach s južnou alebo západnou orientáciou a veľkými oknami môže lesklý povrch pri priamom slnku doslova oslňovať. Matný povrch tento problém úplne eliminuje.</li>
+<li><strong>Vizuálna konzistencia</strong> – matný povrch vyzerá rovnako za akýchkoľvek svetelných podmienok. Ráno, napoludnie, večer – vždy rovnaký dojem.</li>
 </ul>
 
 <div class="article-highlight">
   <p><strong>Odporúčanie podľa orientácie kuchyne:</strong></p>
   <ul>
-    <li><strong>Severná orientácia</strong> (menej svetla) — lesklý alebo honed, ale počítajte so zvýšenou údržbou</li>
-    <li><strong>Južná / západná orientácia</strong> (priame slnko) — matný je takmer povinnosťou, lesklý oslňuje</li>
-    <li><strong>Východná orientácia</strong> (ranné svetlo) — oboje funguje, záleží na preferencii</li>
+    <li><strong>Severná orientácia</strong> (menej svetla) – lesklý alebo honed, ale počítajte so zvýšenou údržbou</li>
+    <li><strong>Južná / západná orientácia</strong> (priame slnko) – matný je takmer povinnosťou, lesklý oslňuje</li>
+    <li><strong>Východná orientácia</strong> (ranné svetlo) – oboje funguje, záleží na preferencii</li>
   </ul>
 </div>
 
 <h2 id="prakticke-denne-pouzivanie">Kto vyhrá vo vašej kuchyni pri dennom používaní?</h2>
 
-<p>Teraz odložme estetiku a hovorme čisto o praktickom živote. Vaša kuchynská doska nie je výstavný exponát — je to pracovná plocha, na ktorej sa odohráva život. Varenie, servírovanie, domáce úlohy detí, sobotné raňajky pre osem ľudí.</p>
+<p>Teraz odložme estetiku a hovorme čisto o praktickom živote. Vaša kuchynská doska nie je výstavný exponát – je to pracovná plocha, na ktorej sa odohráva život. Varenie, servírovanie, domáce úlohy detí, sobotné raňajky pre osem ľudí.</p>
 
 <h3>Varenie a príprava jedla</h3>
-<p>Pri varení na doske pristáva všetko: kvapky oleja, omrvinky, odrezky zeleniny, stopy po pohárikoch vína. Na matnom povrchu toto <strong>vidíte, keď sa pozriete zblízka</strong> — a raz za deň utriete. Na lesklom povrchu to vidíte <strong>z druhého konca miestnosti</strong>, pod akýmkoľvek uhlom svetla. Pocit „špinavej kuchyne" vzniká pri lesklom povrchu oveľa rýchlejšie, aj keď je objektívne rovnako čistá.</p>
+<p>Pri varení na doske pristáva všetko: kvapky oleja, omrvinky, odrezky zeleniny, stopy po pohárikoch vína. Na matnom povrchu toto <strong>vidíte, keď sa pozriete zblízka</strong> – a raz za deň utriete. Na lesklom povrchu to vidíte <strong>z druhého konca miestnosti</strong>, pod akýmkoľvek uhlom svetla. Pocit „špinavej kuchyne“ vzniká pri lesklom povrchu oveľa rýchlejšie, aj keď je objektívne rovnako čistá.</p>
 
 <h3>Rodina s deťmi</h3>
-<p>Deti sa dotýkajú všetkého. Lepkavé prsty po jedle, dlane opretné o dosku pri písaní domácich úloh, poháriky odložené bez podtácok. Ak máte deti do 12 rokov, <strong class="gold">lesklý povrch vám spôsobí chronickú frustráciu</strong>. To nie je preháňanie — je to konzistentná spätná väzba od našich klientov s rodinami.</p>
+<p>Deti sa dotýkajú všetkého. Lepkavé prsty po jedle, dlane opreté o dosku pri písaní domácich úloh, poháriky odložené bez podtácok. Ak máte deti do 12 rokov, <strong class="gold">lesklý povrch vám spôsobí chronickú frustráciu</strong>. To nie je preháňanie – je to konzistentná spätná väzba od našich klientov s rodinami.</p>
 
 <h3>Hostenie a spoločenské udalosti</h3>
-<p>Paradoxne, práve pri spoločenských udalostiach, keď chcete, aby kuchyňa vyzerala najlepšie, lesklý povrch vyzerá najhoršie — pretože sa ho dotýka najviac ľudí. Cocktail party pre 15 hostí na lesklej doske = 15 párov rúk zanechávajúcich odtlačky. Na matnom povrchu po tej istej party rýchlo pretriete utierkou a hotovo.</p>
+<p>Paradoxne, práve pri spoločenských udalostiach, keď chcete, aby kuchyňa vyzerala najlepšie, lesklý povrch vyzerá najhoršie – pretože sa ho dotýka najviac ľudí. Koktailová párty pre 15 hostí na lesklej doske = 15 párov rúk zanechávajúcich odtlačky. Na matnom povrchu po tej istej párty rýchlo pretriete utierkou a hotovo.</p>
 
-<h3>Frekvencia čistenia — tvrdé čísla</h3>
+<h3>Frekvencia čistenia – tvrdé čísla</h3>
 <p>Na základe spätnej väzby od našich klientov:</p>
 <ul>
 <li><strong>Matný povrch:</strong> 1× denne bežné utretie vlhkou utierkou stačí na udržanie čistého vzhľadu.</li>
@@ -176,11 +176,11 @@ export const ARTICLE_10: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>Tip na čistenie</strong></p>
-  <p>Matný povrch čistite bežnou vlhkou utierkou — žiadne špeciálne prostriedky. Pre lesklý povrch investujte do kvalitnej mikrovláknovej utierky a čističa na sklo. Nikdy nepoužívajte abrazívne špongie — ani na matnom povrchu nie sú potrebné.</p>
+  <p>Matný povrch čistite bežnou vlhkou utierkou – žiadne špeciálne prostriedky. Pre lesklý povrch investujte do kvalitnej mikrovláknovej utierky a čističa na sklo. Nikdy nepoužívajte abrazívne špongie – ani na matnom povrchu nie sú potrebné.</p>
 </div>
 
 <h3>Kedy lesklý povrch funguje</h3>
-<p>Lesklý povrch má svoje miesto — ale v špecifických situáciách:</p>
+<p>Lesklý povrch má svoje miesto – ale v špecifických situáciách:</p>
 <ul>
 <li><strong>Reprezentatívna kuchyňa v kancelárii</strong>, ktorá sa používa zriedka a má pravidelný upratovací servis.</li>
 <li><strong>Bar alebo ostrov v obývačke</strong>, ktorý slúži skôr na servírovanie než na varenie.</li>
@@ -190,44 +190,44 @@ export const ARTICLE_10: BlogArticle = {
 
 <h2 id="co-odporucame-pre-bratislavu">Čo odporúčame pre bratislavské luxusné kuchyne?</h2>
 
-<p>Po stovkách realizácií v bratislavských bytoch a domoch máme jasnú štatistiku: <strong class="gold">74% našich klientov z luxusného segmentu si zvolí matný alebo leather finish</strong>. A väčšina z tých 26%, ktorí si zvolia lesklý, ho volí pre špecifický účel — obklad steny za kuchynskou linkou alebo ostrov v representatívnej časti bytu.</p>
+<p>Po stovkách realizácií v bratislavských bytoch a domoch máme jasnú štatistiku: <strong class="gold">74\u00A0% našich klientov z luxusného segmentu si zvolí matný alebo leather finish</strong>. A väčšina z tých 26\u00A0%, ktorí si zvolia lesklý, ho volí pre špecifický účel – obklad steny za kuchynskou linkou alebo ostrov v reprezentatívnej časti bytu.</p>
 
 <figure class="article-figure">
   <img src="/images/blog/article-10/matte-modern-kitchen.webp" alt="Luxusná moderná kuchyňa v Bratislave s matným Calacatta Gold sinterovaným kameňom a ranným svetlom" loading="lazy" />
-  <figcaption>Matný Calacatta Gold v modernej bratislavskej kuchyni — žiadne odlesky, len čistá elegancia</figcaption>
+  <figcaption>Matný Calacatta Gold v modernej bratislavskej kuchyni – žiadne odlesky, len čistá elegancia</figcaption>
 </figure>
 
 <h3>Najpopulárnejšie povrchové úpravy z našej kolekcie</h3>
-<p>Na základe predajných dát za posledné dva roky, toto sú najžiadanejšie kombinácie dekor + povrch u bratislavskej klientely:</p>
+<p>Na základe predajných dát za posledné dva roky toto sú najžiadanejšie kombinácie dekor + povrch u bratislavskej klientely:</p>
 <ul>
-<li><strong>Calacatta Gold v matnom variante</strong> — biely mramorový dekor so zlatými žilkami. Najobľúbenejšia voľba pre moderné minimalistické kuchyne. Matný povrch dodáva mramoru sofistikovaný, understatement charakter namiesto „kričiaceho" lesku.</li>
-<li><strong>Sahara Noir v leather variante</strong> — čierny mramor so zlatými žilkami. Leather textúra na tmavom kameni vytvára unikátny haptický zážitok a maskuje akékoľvek stopy používania.</li>
-<li><strong>Statuario v honed variante</strong> — klasický biely mramor so sivými žilkami. Honed povrch ponúka jemný, hodvábny lesk bez problémov s odtlačkami.</li>
-<li><strong>Pietra Grey v matnom variante</strong> — tmavosivý kameň, ideálny pre industriálne a loft kuchyne. V matnom variante vyzerá ako prírodná bridlica, ale s výkonom sinterovaného kameňa.</li>
+<li><strong>Calacatta Gold v matnom variante</strong> – biely mramorový dekor so zlatými žilkami. Najobľúbenejšia voľba pre moderné minimalistické kuchyne. Matný povrch dodáva mramoru sofistikovaný, zdržanlivý charakter namiesto „kričiaceho“ lesku.</li>
+<li><strong>Sahara Noir v leather variante</strong> – čierny mramor so zlatými žilkami. Leather textúra na tmavom kameni vytvára unikátny haptický zážitok a maskuje akékoľvek stopy používania.</li>
+<li><strong>Statuario v honed variante</strong> – klasický biely mramor so sivými žilkami. Honed povrch ponúka jemný, hodvábny lesk bez problémov s odtlačkami.</li>
+<li><strong>Pietra Grey v matnom variante</strong> – tmavosivý kameň, ideálny pre industriálne a loft kuchyne. V matnom variante vyzerá ako prírodná bridlica, ale s výkonom sinterovaného kameňa.</li>
 </ul>
 
 <h3>Párovanie s obľúbenými kuchynskými štýlmi v Bratislave</h3>
-<p>Bratislavské luxusné kuchyne majú niekoľko dominantných štýlov, a každý si žiada iný povrch:</p>
+<p>Bratislavské luxusné kuchyne majú niekoľko dominantných štýlov a každý si žiada iný povrch:</p>
 <ul>
 <li><strong>Moderný minimalizmus</strong> (bezúchytkové skrinky, čisté línie): matný povrch je vizuálne konzistentný s hladkým, nereflektívnym dizajnom skriniek. Matný kameň + matné skrinky = harmonická, upokojujúca estetika.</li>
 <li><strong>Teplý luxus</strong> (drevené prvky, mosadzné detaily): leather finish na kamennej doske krásne ladí s textúrou dreva a hrejivým kovovým akcentom. Vytvára hapticky bohatý priestor.</li>
-<li><strong>Glamour / Art Deco</strong> (kontrasty, výrazné prvky): tu môže lesklý povrch fungovať — ale odporúčame ho skôr na menšie plochy (barový pult, obklad) než na celú pracovnú dosku.</li>
+<li><strong>Glamour / Art Deco</strong> (kontrasty, výrazné prvky): tu môže lesklý povrch fungovať – ale odporúčame ho skôr na menšie plochy (barový pult, obklad) než na celú pracovnú dosku.</li>
 <li><strong>Industriálny loft</strong> (betón, kov, tmavé tóny): matný alebo honed povrch v tmavých odtieňoch. Lesklý povrch by narušil surovú estetiku industriálneho štýlu.</li>
 </ul>
 
 <h3>Naše konečné odporúčanie</h3>
-<p>Pre luxusnú bratislavskú kuchyňu s denným používaním — rodina, varenie, hostenie — odporúčame <strong class="gold">matný alebo leather finish</strong>. Nie preto, že by lesklý nebol krásny. Je. Ale krása, ktorá vyžaduje 5-krát denne údržbu, nie je luxus — je to záväzok. <strong class="gold">Skutočný luxus je povrch, ktorý vyzerá dobre</strong>, keď sa naň pozriete kedykoľvek počas dňa, bez toho, aby ste ho museli neustále utierať.</p>
+<p>Pre luxusnú bratislavskú kuchyňu s denným používaním – rodina, varenie, hostenie – odporúčame <strong class="gold">matný alebo leather finish</strong>. Nie preto, že by lesklý nebol krásny. Je. Ale krása, ktorá vyžaduje 5-krát denne údržbu, nie je luxus – je to záväzok. <strong class="gold">Skutočný luxus je povrch, ktorý vyzerá dobre</strong>, keď sa naň pozriete kedykoľvek počas dňa, bez toho, aby ste ho museli neustále utierať.</p>
 
 <div class="article-tip">
   <p><strong>Navštívte náš showroom v Bošanoch</strong></p>
-  <p>Porovnajte všetky povrchové úpravy naživo. Prineste si teplý hrniec, pohár vody a lepkavé prsty — presne tak vyzerá reálny život. A my vám ukážeme, ako si každý povrch s tým poradí.</p>
+  <p>Porovnajte všetky povrchové úpravy naživo. Prineste si teplý hrniec, pohár vody a lepkavé prsty – presne tak vyzerá reálny život. A my vám ukážeme, ako si každý povrch s tým poradí.</p>
   <a href="/kontakt" class="tip-btn">Dohodnúť návštevu →</a>
 </div>
 `,
     faqs: [
       {
         question: 'Aký je hlavný rozdiel medzi matným a lesklým povrchom sinterovaného kameňa?',
-        answer: 'Hlavný rozdiel je v tom, ako povrch interaguje so svetlom. Lesklý povrch odráža svetlo a vytvára zrkadlový efekt — dramatický, ale náchylný na viditeľné odtlačky prstov a mikro-škrabance. Matný povrch svetlo rozptyľuje, čím maskuje odtlačky aj opotrebenie. Oba varianty majú rovnakú tvrdosť a odolnosť — rozdiel je čisto vizuálny a praktický.'
+        answer: 'Hlavný rozdiel je v tom, ako povrch interaguje so svetlom. Lesklý povrch odráža svetlo a vytvára zrkadlový efekt – dramatický, ale náchylný na viditeľné odtlačky prstov a mikroškrabance. Matný povrch svetlo rozptyľuje, čím maskuje odtlačky aj opotrebenie. Oba varianty majú rovnakú tvrdosť a odolnosť – rozdiel je čisto vizuálny a praktický.'
       },
       {
         question: 'Je matný povrch ťažšie čistiteľný ako lesklý?',
@@ -235,7 +235,7 @@ export const ARTICLE_10: BlogArticle = {
       },
       {
         question: 'Vyzerá matný povrch lacnejšie ako lesklý?',
-        answer: 'Nie — v skutočnosti je trend presne opačný. V súčasnom interiérovom dizajne sa matné povrchy vnímajú ako sofistikovanejšie a modernejšie. Lesklý povrch asociuje showroom a komerčné priestory. Väčšina prémiových interiérových dizajnérov v Bratislave dnes preferuje matný alebo leather finish pre rezidenčné projekty.'
+        answer: 'Nie – v skutočnosti je trend presne opačný. V súčasnom interiérovom dizajne sa matné povrchy vnímajú ako sofistikovanejšie a modernejšie. Lesklý povrch evokuje showroom a komerčné priestory. Väčšina prémiových interiérových dizajnérov v Bratislave dnes preferuje matný alebo leather finish pre rezidenčné projekty.'
       },
       {
         question: 'Čo je leather finish a pre koho je vhodný?',
@@ -243,15 +243,15 @@ export const ARTICLE_10: BlogArticle = {
       },
       {
         question: 'Môžem mať v kuchyni kombináciu matného a lesklého povrchu?',
-        answer: 'Áno, a je to dokonca sofistikovaný dizajnérsky prístup. Typická kombinácia: matný povrch na pracovnú dosku (kde prebieha varenie a každodenný kontakt) a lesklý povrch na obklad steny za kuchynskou linkou (kde sa doska nedotýka a dramatický lesk vynikne). Rovnaký dekor v dvoch povrchoch vytvára zaujímavú hru textúr.'
+        answer: 'Áno, a je to dokonca sofistikovaný dizajnérsky prístup. Typická kombinácia: matný povrch na pracovnú dosku (kde prebieha varenie a každodenný kontakt) a lesklý povrch na obklad steny za kuchynskou linkou (kde sa dosky nikto nedotýka a dramatický lesk vynikne). Rovnaký dekor v dvoch povrchoch vytvára zaujímavú hru textúr.'
       },
       {
         question: 'Ako dlho vydrží lesk na lesklom sinterovanom kameni?',
-        answer: 'Sinterovaný kameň je tvrdší ako väčšina materiálov, s ktorými prichádza do kontaktu (Mohs 7–8), takže sa fyzicky neošúcha. Ale mikro-škrabance z posúvania hrncov a tanierov postupne vytvárajú pavučinový efekt, ktorý znižuje intenzitu lesku. Pri bežnom používaní sa prvé zmeny objavia po 1–2 rokoch, výraznejšie po 3–5 rokoch.'
+        answer: 'Sinterovaný kameň je tvrdší ako väčšina materiálov, s ktorými prichádza do kontaktu (Mohs 7–8), takže sa fyzicky neošúcha. Ale mikroškrabance z posúvania hrncov a tanierov postupne vytvárajú pavučinový efekt, ktorý znižuje intenzitu lesku. Pri bežnom používaní sa prvé zmeny objavia po 1–2 rokoch, výraznejšie po 3–5 rokoch.'
       },
       {
         question: 'Dá sa lesklý povrch opätovne vyleštiť?',
-        answer: 'Teoreticky áno — profesionálne leštenie diamantovými pastami dokáže obnoviť pôvodný lesk. Prakticky je to nákladné (200–400 € za celú dosku), vyžaduje špecialistu a efekt trvá len do ďalšieho opotrebenia. Nie je to realistické riešenie na pravidelnú bázu. U matného povrchu tento problém jednoducho neexistuje.'
+        answer: 'Teoreticky áno – profesionálne leštenie diamantovými pastami dokáže obnoviť pôvodný lesk. Prakticky je to nákladné (200–400\u00A0€ za celú dosku), vyžaduje špecialistu a efekt trvá len do ďalšieho opotrebenia. Nie je to realistické riešenie na pravidelnú bázu. Pri matnom povrchu tento problém jednoducho neexistuje.'
       },
       {
         question: 'Aký povrch je lepší pre tmavú kuchyňu so slabým osvetlením?',
@@ -259,19 +259,19 @@ export const ARTICLE_10: BlogArticle = {
       },
       {
         question: 'Ovplyvňuje povrchová úprava cenu sinterovaného kameňa?',
-        answer: 'Minimálne. Cenový rozdiel medzi matným a lesklým variantom rovnakého dekoru je zvyčajne 5–15%. Niektoré špeciálne úpravy (leather, naturale) môžu byť o 10–20% drahšie ako štandardný matný. Povrch by ste mali vyberať podľa praktických a estetických kritérií, nie podľa ceny — rozdiel je v kontexte celkovej investície zanedbateľný.'
+        answer: 'Minimálne. Cenový rozdiel medzi matným a lesklým variantom rovnakého dekoru je zvyčajne 5–15\u00A0%. Niektoré špeciálne úpravy (leather, naturale) môžu byť o 10–20\u00A0% drahšie ako štandardný matný. Povrch by ste mali vyberať podľa praktických a estetických kritérií, nie podľa ceny – rozdiel je v kontexte celkovej investície zanedbateľný.'
       },
       {
         question: 'Aký povrch odporúčate na kuchynský ostrov?',
-        answer: 'Pre kuchynský ostrov, ktorý slúži aj ako jedálenský stôl a pracovná plocha, jednoznačne matný alebo leather finish. Ostrov je najdotýkanejšia plocha v kuchyni — ľudia sa oň opierajú, deti na ňom robia úlohy, hostia pri ňom sedia s nápojmi. Lesklý povrch na ostrove je recept na neustále utieranie.'
+        answer: 'Pre kuchynský ostrov, ktorý slúži aj ako jedálenský stôl a pracovná plocha, jednoznačne matný alebo leather finish. Ostrov je najdotýkanejšia plocha v kuchyni – ľudia sa oň opierajú, deti na ňom robia úlohy, hostia pri ňom sedia s nápojmi. Lesklý povrch na ostrove je recept na neustále utieranie.'
       },
       {
         question: 'Má povrchová úprava vplyv na hygienické vlastnosti kameňa?',
-        answer: 'Nie. Sinterovaný kameň má absorpciu vody pod 0,1% bez ohľadu na povrchový finish — matný aj lesklý sú rovnako nepriepustné pre baktérie a tekutiny. Povrchová úprava je čisto mechanická úprava vrchnej vrstvy, nemení vnútornú štruktúru materiálu. Všetky varianty spĺňajú certifikáciu NSF pre kontakt s potravinami.'
+        answer: 'Nie. Sinterovaný kameň má absorpciu vody pod 0,1\u00A0% bez ohľadu na povrchový finish – matný aj lesklý sú rovnako nepriepustné pre baktérie a tekutiny. Povrchová úprava je čisto mechanická úprava vrchnej vrstvy, nemení vnútornú štruktúru materiálu. Všetky varianty spĺňajú certifikáciu NSF pre kontakt s potravinami.'
       },
       {
         question: 'Čo ak si vyberiem lesklý povrch a po čase ho budem chcieť zmeniť na matný?',
-        answer: 'Zmena z lesklého na matný je technicky možná — profesionálne prebrúsenie povrchu dokáže vytvoriť matný alebo honed efekt. Je to však zásah, ktorý vyžaduje špecialistu, stojí 300–600 € za dosku a nie je reverzibilný. Opačná zmena (z matného na lesklý) je náročnejšia a drahšia. Preto odporúčame vybrať správny povrch hneď na začiatku — ideálne po návšteve showroomu, kde si oba varianty ohmatáte a porovnáte v reálnom svetle.'
+        answer: 'Zmena z lesklého na matný je technicky možná – profesionálne prebrúsenie povrchu dokáže vytvoriť matný alebo honed efekt. Je to však zásah, ktorý vyžaduje špecialistu, stojí 300–600\u00A0€ za dosku a nie je reverzibilný. Opačná zmena (z matného na lesklý) je náročnejšia a drahšia. Preto odporúčame vybrať správny povrch hneď na začiatku – ideálne po návšteve showroomu, kde si oba varianty ohmatáte a porovnáte v reálnom svetle.'
       }
     ]
   },

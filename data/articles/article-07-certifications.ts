@@ -12,79 +12,79 @@ export const ARTICLE_07: BlogArticle = {
 
   sk: {
     title: 'Certifikácie sinterovaného kameňa: čo znamenajú a prečo na nich záleží',
-    subtitle: 'Kompletný sprievodca normami ISO, CE, NSF/ANSI 51 a Greenguard Gold — ako čítať technický list a odlíšiť skutočnú kvalitu od marketingu',
+    subtitle: 'Kompletný sprievodca normami ISO, CE, NSF/ANSI 51 a Greenguard Gold – ako čítať technický list a odlíšiť skutočnú kvalitu od marketingu',
     heroAlt: 'Tri vzorky sinterovaného kameňa Gothic Gold s lupou, kvapkami vody a posuvným meradlom, pohľad zhora',
     heroCaption: 'Vizualizácia s dekorom Gothic Gold',
-    excerpt: 'CE označenie, ISO 10545, NSF/ANSI 51, Greenguard Gold — čo tieto certifikácie skutočne zaručujú a ako sa nenechať oklamať "proprietárnym testovaním".',
+    excerpt: 'CE označenie, ISO 10545, NSF/ANSI 51, Greenguard Gold – čo tieto certifikácie skutočne zaručujú a ako sa nenechať oklamať „proprietárnym testovaním“.',
     metaTitle: 'Certifikácie sinterovaného kameňa | OROSTONE',
     metaDescription: 'CE, ISO 10545, NSF/ANSI 51 a Greenguard Gold. Ktoré certifikáty pri sinterovanom kameni reálne niečo znamenajú a na ktoré sa pri výbere oplatí pýtať.',
-    directAnswer: 'Kľúčové certifikácie pre sinterovaný kameň sú: CE označenie (povinné v EÚ), séria ISO 10545 (mechanické a chemické vlastnosti), NSF/ANSI 51 (kontakt s potravinami) a Greenguard Gold (emisia VOC). Tieto certifikáty vydávajú nezávislé akreditované laboratóriá — nie výrobca sám. Pri výbere materiálu sa pýtajte na tieto konkrétne normy, nie na "interné testy kvality".',
+    directAnswer: 'Kľúčové certifikácie pre sinterovaný kameň sú: CE označenie (povinné v EÚ), séria ISO 10545 (mechanické a chemické vlastnosti), NSF/ANSI 51 (kontakt s potravinami) a Greenguard Gold (emisia VOC). Tieto certifikáty vydávajú nezávislé akreditované laboratóriá – nie výrobca sám. Pri výbere materiálu sa pýtajte na tieto konkrétne normy, nie na „interné testy kvality“.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>
 <ul class="article-tldr">
-  <li>CE označenie je povinné pre stavebné výrobky v EÚ — minimálny štandard, nie záruka luxusu</li>
-  <li>ISO 10545 série (3, 4, 6, 7, 13, 14) definujú všetky kľúčové vlastnosti: nasiakavosť, odolnosť, tvrdosť</li>
-  <li>NSF/ANSI 51 = certifikát bezpečnosti pre kontakt s potravinami — dôležité pre kuchynské dosky</li>
+  <li>CE označenie je povinné pre stavebné výrobky v EÚ – minimálny štandard, nie záruka luxusu</li>
+  <li>Časti série ISO 10545 (3, 4, 6, 7, 13, 14) definujú všetky kľúčové vlastnosti: nasiakavosť, odolnosť, tvrdosť</li>
+  <li>NSF/ANSI 51 = certifikát bezpečnosti pre kontakt s potravinami – dôležité pre kuchynské dosky</li>
   <li>Greenguard Gold = nízka emisia VOC, bezpečné pre domácnosti s deťmi a alergikmi</li>
-  <li>"Proprietárne testovanie" bez tretej strany = marketingové tvrdenie, nie certifikácia</li>
-  <li>Každý technický list musí uvádzať číslo normy aj výsledok testu — nie len "odolný" alebo "certifikovaný"</li>
+  <li>„Proprietárne testovanie“ bez tretej strany = marketingové tvrdenie, nie certifikácia</li>
+  <li>Každý technický list musí uvádzať číslo normy aj výsledok testu – nielen „odolný“ alebo „certifikovaný“</li>
 </ul>
 
-<p>Keď si vyberáte materiál na kuchynskú dosku alebo kúpeľňu, narazíte na desiatky tvrdení: <em>„hygienický"</em>, <em>„certifikovaný"</em>, <em>„testovaný"</em>. Ale bez konkrétnych čísel noriem tieto slová nič neznamenajú.</p>
+<p>Keď si vyberáte materiál na kuchynskú dosku alebo kúpeľňu, narazíte na desiatky tvrdení: <em>„hygienický“</em>, <em>„certifikovaný“</em>, <em>„testovaný“</em>. Ale bez konkrétnych čísel noriem tieto slová nič neznamenajú.</p>
 
-<p>V tomto článku si rozložíme každú relevantnú certifikáciu — čo testuje, kto ju vydáva, čo zaručuje a ako ju nájsť v technickom liste materiálu.</p>
+<p>V tomto článku si rozložíme každú relevantnú certifikáciu – čo testuje, kto ju vydáva, čo zaručuje a ako ju nájsť v technickom liste materiálu.</p>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-07/vzorka-vo-vode-astrana-grey.webp" alt="Vzorka sinterovaného kameňa Astrana Grey ponorená do vody vedľa suchej vzorky — princíp skúšky nasiakavosti" loading="lazy" />
-  <figcaption>Laboratórne testovanie podľa ISO noriem. Každý výsledok musí byť zdokladovaný číselnou hodnotou, nie len slovným popisom.</figcaption>
+  <img src="/images/blog/article-07/vzorka-vo-vode-astrana-grey.webp" alt="Vzorka sinterovaného kameňa Astrana Grey ponorená do vody vedľa suchej vzorky – princíp skúšky nasiakavosti" loading="lazy" />
+  <figcaption>Laboratórne testovanie podľa ISO noriem. Každý výsledok musí byť zdokladovaný číselnou hodnotou, nielen slovným popisom.</figcaption>
 </figure>
 
-<h2 id="ce-oznacenie">1. CE označenie — minimálny štandard pre EÚ trh</h2>
+<h2 id="ce-oznacenie">1. CE označenie – minimálny štandard pre EÚ trh</h2>
 
 <p>CE označenie (Conformité Européenne) je <strong class="gold">povinné pre všetky stavebné výrobky</strong> predávané v Európskej únii vrátane Slovenska. Reguluje ho nariadenie EÚ č. 305/2011 o stavebných výrobkoch (CPR).</p>
 
 <div class="article-highlight">
-  <strong>Čo CE zaručuje:</strong> Výrobok bol testovaný a spĺňa základné bezpečnostné požiadavky — mechanická pevnosť, požiarna odolnosť, uvoľňovanie nebezpečných látok. Výrobca nesie zodpovednosť za súlad s deklarovanými vlastnosťami.
+  <strong>Čo CE zaručuje:</strong> Výrobok bol testovaný a spĺňa základné bezpečnostné požiadavky – mechanická pevnosť, požiarna odolnosť, uvoľňovanie nebezpečných látok. Výrobca nesie zodpovednosť za súlad s deklarovanými vlastnosťami.
 </div>
 
-<p>Čo CE <strong>nezaručuje</strong>: prémiové vlastnosti, luxus ani najvyššiu úroveň výkonu. Je to vstupná brána na trh, nie výkonnostný certifikát. Každý materiál predávaný v EÚ ho musí mať — ak ho nemá, predaj je nelegálny.</p>
+<p>Čo CE <strong>nezaručuje</strong>: prémiové vlastnosti, luxus ani najvyššiu úroveň výkonu. Je to vstupná brána na trh, nie výkonnostný certifikát. Každý materiál predávaný v EÚ ho musí mať – ak ho nemá, predaj je nelegálny.</p>
 
 <div class="article-tip">
-  <strong>Ako to overiť:</strong> Každý výrobok s CE označením musí mať Vyhlásenie o vlastnostiach (DoP — Declaration of Performance). Pýtajte sa predajcu na číslo DoP dokumentu. Ak ho nevie poskytnúť, je to varovný signál.
+  <strong>Ako to overiť:</strong> Každý výrobok s CE označením musí mať Vyhlásenie o vlastnostiach (DoP – Declaration of Performance). Pýtajte sa predajcu na číslo DoP dokumentu. Ak ho nevie poskytnúť, je to varovný signál.
 </div>
 
-<h2 id="iso-10545">2. Séria ISO 10545 — základná technická biblia keramiky</h2>
+<h2 id="iso-10545">2. Séria ISO 10545 – základná technická biblia keramiky</h2>
 
-<p>ISO 10545 je medzinárodná norma, ktorá definuje <strong class="gold">štandardizované testovacie metódy</strong> pre keramické dlaždice a platne. Obsahuje 16 častí — každá testuje iný parameter. Pre sinterovaný kameň sú kľúčové tieto časti:</p>
+<p>ISO 10545 je medzinárodná norma, ktorá definuje <strong class="gold">štandardizované testovacie metódy</strong> pre keramické dlaždice a platne. Obsahuje 16 častí – každá testuje iný parameter. Pre sinterovaný kameň sú kľúčové tieto časti:</p>
 
 <figure class="article-figure">
   <img src="/images/blog/article-07/kvapky-calacatta-top.webp" alt="Kvapky vody na hrane pracovnej dosky zo sinterovaného kameňa v dekore Calacatta Top" loading="lazy" />
-  <figcaption>ISO 10545-3 meria nasiakavosť. Sinterovaný kameň dosahuje hodnoty pod 0,05% — z praktického hľadiska nulová pórovitosť.</figcaption>
+  <figcaption>ISO 10545-3 meria nasiakavosť. Sinterovaný kameň dosahuje hodnoty pod 0,05\u00A0% – z praktického hľadiska nulová pórovitosť.</figcaption>
 </figure>
 
 <h3 id="iso-3">ISO 10545-3: Nasiakavosť vody</h3>
 <p>Toto je <strong class="gold">najdôležitejší test pre kuchynské dosky</strong>. Meria percentuálne množstvo vody absorbovanej materiálom za štandardizovaných podmienok.</p>
 
 <ul>
-  <li><strong>Výsledok sinterovaného kameňa:</strong> &lt; 0,05% (trieda BIa — ultra-nízka nasiakavosť)</li>
-  <li><strong>Praktický dopad:</strong> Baktérie, pliesne, škvrny ani čistiace prostriedky neprenikajú do materiálu</li>
-  <li><strong>Porovnanie:</strong> Prírodný granit 0,2–2%, mramor 0,5–4%, drevenná doska 15–20%</li>
+  <li><strong>Výsledok sinterovaného kameňa:</strong> &lt; 0,05\u00A0% (trieda BIa – ultranízka nasiakavosť)</li>
+  <li><strong>Praktický dopad:</strong> Baktérie, plesne, škvrny ani čistiace prostriedky neprenikajú do materiálu</li>
+  <li><strong>Porovnanie:</strong> Prírodný granit 0,2–2\u00A0%, mramor 0,5–4\u00A0%, drevená doska 15–20\u00A0%</li>
 </ul>
 
 <div class="article-highlight">
-  <strong>Čo hľadať v technickom liste:</strong> Konkrétna číselná hodnota (napr. "0,03%") s odkazom na ISO 10545-3. Samo tvrdenie "nízka nasiakavosť" alebo "nepriepustný" bez čísla nestačí.
+  <strong>Čo hľadať v technickom liste:</strong> Konkrétna číselná hodnota (napr. „0,03\u00A0%“) s odkazom na ISO 10545-3. Samo tvrdenie „nízka nasiakavosť“ alebo „nepriepustný“ bez čísla nestačí.
 </div>
 
 <h3 id="iso-4">ISO 10545-4: Ohybová pevnosť a sila pri porušení</h3>
-<p>Meria, akú silu vydrží platňa pred zlomením. Pre sinterovaný kameň sa toto priamo premietá do odolnosti pri montáži výrezov (umývadlá, drez, varič).</p>
+<p>Meria, akú silu vydrží platňa pred zlomením. Pre sinterovaný kameň sa toto priamo premieta do odolnosti pri montáži výrezov (umývadlá, drez, varič).</p>
 
 <ul>
-  <li><strong>20 mm sinterovaný kameň:</strong> Sila pri porušení typicky 16 000–20 000 N</li>
-  <li><strong>12 mm sinterovaný kameň:</strong> Sila pri porušení typicky 5 000–8 000 N</li>
+  <li><strong>20\u00A0mm sinterovaný kameň:</strong> Sila pri porušení typicky 16\u00A0000–20\u00A0000\u00A0N</li>
+  <li><strong>12\u00A0mm sinterovaný kameň:</strong> Sila pri porušení typicky 5\u00A0000–8\u00A0000\u00A0N</li>
   <li><strong>Prečo dôležité:</strong> Slabý výsledok = vyššie riziko prasknutia pri výrezoch a prevísajúcich častiach</li>
 </ul>
 
-<h3 id="iso-6">ISO 10545-6: Odolnosť voči abrázia (brúseniu)</h3>
+<h3 id="iso-6">ISO 10545-6: Odolnosť voči abrázii (brúseniu)</h3>
 <p>Meria odolnosť povrchu voči opotrebeniu. Výsledky sa uvádzajú v PEI triedach (0–5) alebo ako počet otáčok pred viditeľným poškodením.</p>
 
 <div class="article-tip">
@@ -92,39 +92,39 @@ export const ARTICLE_07: BlogArticle = {
 </div>
 
 <h3 id="iso-7">ISO 10545-7: Odolnosť voči tepelnej rozťažnosti</h3>
-<p>Testuje správanie materiálu pri teplotných cykloch. Materiál sa ohreje na 105°C, potom schladí na 15°C — a tento cyklus sa opakuje. <strong class="gold">Sinterovaný kameň má koeficient tepelnej rozťažnosti podobný oceli</strong> — výsledok je dlhodobá rozmerová stabilita.</p>
+<p>Testuje správanie materiálu pri teplotných cykloch. Materiál sa ohreje na 105\u00A0°C, potom schladí na 15\u00A0°C – a tento cyklus sa opakuje. <strong class="gold">Sinterovaný kameň má koeficient tepelnej rozťažnosti podobný oceli</strong> – výsledok je dlhodobá rozmerová stabilita.</p>
 
 <h3 id="iso-13">ISO 10545-13: Chemická odolnosť</h3>
 <p>Testuje odolnosť voči kyselinám, zásadám a chemickým čistiacim prostriedkom. Výsledky sa uvádzajú v triedach:</p>
 
 <ul>
-  <li><strong>Trieda A:</strong> Bez viditeľnej zmeny — najvyššia odolnosť</li>
+  <li><strong>Trieda A:</strong> Bez viditeľnej zmeny – najvyššia odolnosť</li>
   <li><strong>Trieda B:</strong> Mierne zmeny viditeľné len pri špeciálnom osvetlení</li>
   <li><strong>Trieda C:</strong> Viditeľné zmeny povrchu</li>
 </ul>
 
-<p>Sinterovaný kameň dosahuje triedu A pre kyseliny (citrónovú, chlorovodíkovú) aj zásady. <strong class="gold">Toto z neho robí ideálny materiál pre kuchyne</strong>, kde denno-denne prichádzajú do styku káva, víno, paradajková omáčka a čistiace prostriedky.</p>
+<p>Sinterovaný kameň dosahuje triedu A pre kyseliny (citrónovú, chlorovodíkovú) aj zásady. <strong class="gold">Toto z neho robí ideálny materiál pre kuchyne</strong>, kde dennodenne prichádzajú do styku káva, víno, paradajková omáčka a čistiace prostriedky.</p>
 
 <h3 id="iso-14">ISO 10545-14: Odolnosť voči škvrnám</h3>
-<p>Štandardizovaný protokol testovania 15 rôznych farebných látok — od kávy po červené víno a motorový olej. Výsledky v škále 1–5:</p>
+<p>Štandardizovaný protokol testovania 15 rôznych farebných látok – od kávy po červené víno a motorový olej. Výsledky v škále 1–5:</p>
 
 <ul>
-  <li><strong>Trieda 5:</strong> Škvrna sa odstráni bežnou vodou — maximálna odolnosť</li>
+  <li><strong>Trieda 5:</strong> Škvrna sa odstráni bežnou vodou – maximálna odolnosť</li>
   <li><strong>Trieda 4:</strong> Škvrna sa odstráni bežným čistiacim prostriedkom</li>
   <li><strong>Trieda 3:</strong> Vyžaduje špeciálny čistiaci prostriedok</li>
 </ul>
 
 <div class="article-highlight">
-  <strong>Sinterovaný kameň dosiahuje triedu 4–5</strong> pre väčšinu látok vrátane kávy, vína a olejov. Výnimka: niekoľko farbív s vysokou penetračnou silou (ako kurkumín) môže vyžadovať špecifický čistiaci postup — ale vždy len povrchovo.
+  <strong>Sinterovaný kameň dosahuje triedu 4–5</strong> pre väčšinu látok vrátane kávy, vína a olejov. Výnimka: niekoľko farbív s vysokou penetračnou silou (ako kurkumín) môže vyžadovať špecifický čistiaci postup – ale vždy len povrchovo.
 </div>
 
-<h2 id="nsf-ansi-51">3. NSF/ANSI 51 — certifikát bezpečnosti pre kontakt s potravinami</h2>
+<h2 id="nsf-ansi-51">3. NSF/ANSI 51 – certifikát bezpečnosti pre kontakt s potravinami</h2>
 
-<p>NSF/ANSI 51 je americká norma, ktorú vydáva <strong class="gold">NSF International</strong> — nezávislá nezisková organizácia akreditovaná ANSI (American National Standards Institute). Certifikát zaručuje, že materiál je bezpečný pre priamy kontakt s potravinami.</p>
+<p>NSF/ANSI 51 je americká norma, ktorú vydáva <strong class="gold">NSF International</strong> – nezávislá nezisková organizácia akreditovaná ANSI (American National Standards Institute). Certifikát zaručuje, že materiál je bezpečný pre priamy kontakt s potravinami.</p>
 
 <figure class="article-figure">
   <img src="/images/blog/article-07/potraviny-yabo-white.webp" alt="Chlieb, paradajky a bazalka priamo na pracovnej doske zo sinterovaného kameňa v dekore Yabo White" loading="lazy" />
-  <figcaption>NSF/ANSI 51 certifikovaný materiál je bezpečný pre priamy kontakt s potravinami — vrátane surového mäsa, zeleniny a pečiva.</figcaption>
+  <figcaption>NSF/ANSI 51 certifikovaný materiál je bezpečný pre priamy kontakt s potravinami – vrátane surového mäsa, zeleniny a pečiva.</figcaption>
 </figure>
 
 <p>Čo certifikácia testuje:</p>
@@ -136,20 +136,20 @@ export const ARTICLE_07: BlogArticle = {
 </ul>
 
 <div class="article-tip">
-  <strong>Pre kuchynské dosky v kontakte s potravinami</strong> (príprava jedla, chlebníky, krájanie) je NSF/ANSI 51 certifikácia priamo relevantná. Pýtajte sa výrobcu alebo predajcu na číslo certifikátu — každý vydaný certifikát má overiteľné číslo v databáze NSF.
+  <strong>Pre kuchynské dosky v kontakte s potravinami</strong> (príprava jedla, chlebníky, krájanie) je NSF/ANSI 51 certifikácia priamo relevantná. Pýtajte sa výrobcu alebo predajcu na číslo certifikátu – každý vydaný certifikát má overiteľné číslo v databáze NSF.
 </div>
 
 <p>Európska alternatíva: certifikácia podľa <strong>EN 12418</strong> alebo zhoda s nariadením <strong>EU 10/2011</strong> o plastových materiáloch v kontakte s potravinami. Tieto normy pokrývajú podobné požiadavky pre európsky trh.</p>
 
-<h2 id="greenguard-gold">4. Greenguard Gold — emisia VOC a bezpečnosť interiéru</h2>
+<h2 id="greenguard-gold">4. Greenguard Gold – emisia VOC a bezpečnosť interiéru</h2>
 
 <p>Greenguard Gold (predtým Greenguard Children &amp; Schools) je certifikácia organizácie <strong>UL (Underwriters Laboratories)</strong>. Testuje emisiu prchavých organických zlúčenín (VOC) z materiálov v interiérových aplikáciách.</p>
 
 <div class="article-highlight">
-  <strong>Prečo je to dôležité:</strong> VOC z nábytku, podláh a povrchov sú jednou z hlavných príčin horšej kvality vzduchu v interiéroch. Greenguard Gold má <strong class="gold">najprísnejšie limity emisií</strong> — 10–11× prísnejšie ako základná Greenguard certifikácia.
+  <strong>Prečo je to dôležité:</strong> VOC z nábytku, podláh a povrchov sú jednou z hlavných príčin horšej kvality vzduchu v interiéroch. Greenguard Gold má <strong class="gold">najprísnejšie limity emisií</strong> – 10–11× prísnejšie ako základná Greenguard certifikácia.
 </div>
 
-<p>Sinterovaný kameň je <strong class="gold">anorganický minerálny materiál</strong> — neobsahuje živice, lepidlá ani plastifikátory, ktoré by emitovali VOC. Toto je jeden z jeho kľúčových zdravotných benefitov oproti materiálom s organickými pojivami.</p>
+<p>Sinterovaný kameň je <strong class="gold">anorganický minerálny materiál</strong> – neobsahuje živice, lepidlá ani plastifikátory, ktoré by emitovali VOC. Toto je jeden z jeho kľúčových zdravotných benefitov oproti materiálom s organickými pojivami.</p>
 
 <p>Greenguard Gold je obzvlášť relevantný pre:</p>
 
@@ -157,25 +157,25 @@ export const ARTICLE_07: BlogArticle = {
   <li>Domácnosti s malými deťmi (norma bola pôvodne navrhnutá pre školy)</li>
   <li>Ľudí s alergiami alebo astmou</li>
   <li>Intenzívne uzavreté priestory s obmedzenou ventiláciou</li>
-  <li>LEED certifikované budovy (certifikát počíta do bodov)</li>
+  <li>LEED certifikované budovy (certifikát sa počíta do bodov)</li>
 </ul>
 
 <div class="article-cta">
-  <p>Chcete vidieť technický list s certifikáciami pre konkrétny materiál? Navštívte showroom Orostone v Bošanoch — ukážeme vám kompletné certifikáty aj výsledky testov pre každú dosku.</p>
+  <p>Chcete vidieť technický list s certifikáciami pre konkrétny materiál? Navštívte showroom Orostone v Bošanoch – ukážeme vám kompletné certifikáty aj výsledky testov pre každú dosku.</p>
   <a href="/kontakt" class="cta-btn">Dohodnúť konzultáciu zadarmo</a>
 </div>
 
-<h2 id="poziarny-odolnost">5. Požiarna odolnosť — triedy reakcie na oheň</h2>
+<h2 id="poziarny-odolnost">5. Požiarna odolnosť – triedy reakcie na oheň</h2>
 
 <p>Pre stavebné povrchy v EÚ platí klasifikácia reakcie na oheň podľa normy <strong>EN 13501-1</strong>. Triedy sú označené písmenami A až F, kde A1 je najlepší výsledok.</p>
 
 <figure class="article-figure">
   <img src="/images/blog/article-07/panvica-gothic-gold.webp" alt="Horúca liatinová panvica priamo na pracovnej doske zo sinterovaného kameňa v dekore Gothic Gold" loading="lazy" />
-  <figcaption>Sinterovaný kameň dosahuje triedu reakcie na oheň A1 — nehorí a neprispieva k šíreniu požiaru.</figcaption>
+  <figcaption>Sinterovaný kameň dosahuje triedu reakcie na oheň A1 – nehorí a neprispieva k šíreniu požiaru.</figcaption>
 </figure>
 
 <ul>
-  <li><strong>Trieda A1:</strong> Nehorľavý, neprispieva k požiaru, bez emisií dymu — <em>sinterovaný kameň</em></li>
+  <li><strong>Trieda A1:</strong> Nehorľavý, neprispieva k požiaru, bez emisií dymu – <em>sinterovaný kameň</em></li>
   <li><strong>Trieda A2:</strong> Prakticky nehorľavý, minimálne emisie</li>
   <li><strong>Trieda B–C:</strong> Obmedzene horľavý</li>
   <li><strong>Trieda D–F:</strong> Rôzne stupne horľavosti</li>
@@ -185,74 +185,74 @@ export const ARTICLE_07: BlogArticle = {
   <strong>Praktický dopad triedy A1:</strong> Sinterovaný kameň sa používa ako obklad na fasádach výškových budov, kde požiarne predpisy vyžadujú triedu A1 alebo A2. Je to rovnaká norma, ktorú musia spĺňať napríklad kovové fasádne panely.
 </div>
 
-<h2 id="proprietarne-testovanie">6. "Proprietárne testovanie" — ako rozoznať marketing od certifikácie</h2>
+<h2 id="proprietarne-testovanie">6. „Proprietárne testovanie“ – ako rozoznať marketing od certifikácie</h2>
 
-<p>Mnoho výrobcov uvádza v marketingových materiáloch frázy ako <em>"testovaný v našich laboratóriách"</em>, <em>"overený interným QC procesom"</em> alebo <em>"spĺňa naše vlastné štandardy"</em>. Toto <strong class="gold">nie sú certifikácie</strong>.</p>
+<p>Mnoho výrobcov uvádza v marketingových materiáloch frázy ako <em>„testovaný v našich laboratóriách“</em>, <em>„overený interným QC procesom“</em> alebo <em>„spĺňa naše vlastné štandardy“</em>. Toto <strong class="gold">nie sú certifikácie</strong>.</p>
 
 <p>Rozdiel medzi certifikáciou a interným testovaním:</p>
 
 <div class="article-case-study">
-  <h3 class="case-study-title">Skutočná certifikácia vs. interné testovanie — porovnanie</h3>
+  <h3 class="case-study-title">Skutočná certifikácia vs. interné testovanie – porovnanie</h3>
   <div class="case-study-content">
     <p><strong>Skutočná certifikácia (napr. NSF, ISO, Greenguard):</strong></p>
     <ul>
       <li>Vydáva ju nezávislá akreditovaná tretia strana</li>
-      <li>Výsledky sú overiteľné v verejnej databáze certifikačného orgánu</li>
-      <li>Obsahuje konkrétne číselné výsledky testov, nie len "vyhovel/nevyhovel"</li>
-      <li>Certifikát sa obnovuje — výrobca musí pravidelne preukazovať súlad</li>
+      <li>Výsledky sú overiteľné vo verejnej databáze certifikačného orgánu</li>
+      <li>Obsahuje konkrétne číselné výsledky testov, nielen „vyhovel/nevyhovel“</li>
+      <li>Certifikát sa obnovuje – výrobca musí pravidelne preukazovať súlad</li>
       <li>Nesmie byť vydaný pre materiál, ktorý nespĺňa normu</li>
     </ul>
     <p><strong>Interné testovanie:</strong></p>
     <ul>
       <li>Vykonáva ho samotný výrobca alebo ním platené laboratórium</li>
       <li>Výsledky nie sú overiteľné externou stranou</li>
-      <li>Metodológia testu nie je štandardizovaná — výrobca si ju navrhol sám</li>
+      <li>Metodológia testu nie je štandardizovaná – výrobca si ju navrhol sám</li>
       <li>Zákazník nemá možnosť porovnania s iným materiálom na rovnakom základe</li>
     </ul>
-    <p><strong>Záver:</strong> Interné testovanie môže byť legitímne ako doplnok ku skutočným certifikáciám. Samo o sebe je však marketingová komunikácia, nie technický dôkaz.</p>
+    <p><strong>Záver:</strong> Interné testovanie môže byť legitímne ako doplnok ku skutočným certifikáciám. Samo osebe je však marketingová komunikácia, nie technický dôkaz.</p>
   </div>
 </div>
 
-<h2 id="ako-citat-technicky-list">7. Ako čítať technický list — krok za krokom</h2>
+<h2 id="ako-citat-technicky-list">7. Ako čítať technický list – krok za krokom</h2>
 
-<p>Každý seriózny výrobca sinterovaného kameňa poskytuje <strong class="gold">technický dátový list (TDS — Technical Data Sheet)</strong>. Tu je čo hľadať:</p>
+<p>Každý seriózny výrobca sinterovaného kameňa poskytuje <strong class="gold">technický dátový list (TDS – Technical Data Sheet)</strong>. Tu je, čo hľadať:</p>
 
 <div class="article-tip">
-  <strong>Krok 1 — Základná identifikácia:</strong> Overíte materiál (sinterovaný kameň, nie keramika alebo kompozit), hrúbku, rozmery formátov a dostupné povrchové úpravy (mat, lešt, leather).
+  <strong>Krok 1 – Základná identifikácia:</strong> Overíte materiál (sinterovaný kameň, nie keramika alebo kompozit), hrúbku, rozmery formátov a dostupné povrchové úpravy (mat, lesk, leather).
 </div>
 
 <div class="article-tip">
-  <strong>Krok 2 — Normy a certifikáty:</strong> Hľadajte konkrétne čísla noriem (ISO 10545-3, NSF/ANSI 51, EN 13501-1). Každá norma musí mať vedľa seba <strong>číselnú hodnotu výsledku</strong>, nie len "áno" alebo "certifikovaný".
+  <strong>Krok 2 – Normy a certifikáty:</strong> Hľadajte konkrétne čísla noriem (ISO 10545-3, NSF/ANSI 51, EN 13501-1). Každá norma musí mať vedľa seba <strong>číselnú hodnotu výsledku</strong>, nielen „áno“ alebo „certifikovaný“.
 </div>
 
-<p><strong>Krok 3 — Výsledky testov:</strong> Toto je jadro dokumentu. Príklad správne uvedených hodnôt:</p>
+<p><strong>Krok 3 – Výsledky testov:</strong> Toto je jadro dokumentu. Príklad správne uvedených hodnôt:</p>
 
 <ul>
-  <li>Nasiakavosť (ISO 10545-3): 0,03% → <em>správne</em></li>
-  <li>Nasiakavosť: "ultra-nízka, trieda BIa" → <em>nedostatočné bez čísla</em></li>
-  <li>Ohybová pevnosť (ISO 10545-4): 18 500 N (20 mm) → <em>správne</em></li>
-  <li>Ohybová pevnosť: "vysoká odolnosť" → <em>nedostatočné</em></li>
+  <li>Nasiakavosť (ISO 10545-3): 0,03\u00A0% → <em>správne</em></li>
+  <li>Nasiakavosť: „ultranízka, trieda BIa“ → <em>nedostatočné bez čísla</em></li>
+  <li>Ohybová pevnosť (ISO 10545-4): 18\u00A0500\u00A0N (20\u00A0mm) → <em>správne</em></li>
+  <li>Ohybová pevnosť: „vysoká odolnosť“ → <em>nedostatočné</em></li>
 </ul>
 
 <div class="article-highlight">
-  <strong>Krok 4 — Vydávateľ certifikátov:</strong> Overte, kto vydal certifikát. Meno akreditovaného laboratória musí byť uvedené. Pre NSF: overíte na nsf.org/certified-products. Pre Greenguard: na ul.com/resources/greenguard-certification.
+  <strong>Krok 4 – Vydavateľ certifikátov:</strong> Overte, kto vydal certifikát. Meno akreditovaného laboratória musí byť uvedené. Pre NSF: overíte na nsf.org/certified-products. Pre Greenguard: na ul.com/resources/greenguard-certification.
 </div>
 
-<p><strong>Krok 5 — Dátum vydania a platnosť:</strong> Certifikáty majú obmedzenú platnosť (typicky 1–3 roky). Starý certifikát môže byť zastaraný, ak výrobca menil výrobný proces.</p>
+<p><strong>Krok 5 – Dátum vydania a platnosť:</strong> Certifikáty majú obmedzenú platnosť (typicky 1–3 roky). Starý certifikát môže byť zastaraný, ak výrobca menil výrobný proces.</p>
 
 <h2 id="certifikacie-pre-architektonicky-trh">8. Certifikácie pre architektonické projekty</h2>
 
-<p>Pre väčšie projekty — komerčné interiéry, verejné budovy, hotelové projekty — sú relevantné aj ďalšie štandardy:</p>
+<p>Pre väčšie projekty – komerčné interiéry, verejné budovy, hotelové projekty – sú relevantné aj ďalšie štandardy:</p>
 
 <ul>
   <li><strong>LEED (Leadership in Energy and Environmental Design):</strong> Americká norma pre ekologické budovy. Sinterovaný kameň s nízkou nasiakavosťou a nulovou poréznosťou prispieva k bodom v kategóriách indoor air quality a materials.</li>
   <li><strong>BREEAM:</strong> Britský ekvivalent LEED, rozšírený aj v SR pre komerčné projekty.</li>
-  <li><strong>EPD (Environmental Product Declaration):</strong> Vyhlásenie o environmentálnych dopadoch podľa ISO 14025 — uhlíková stopa materiálu od ťažby po inštaláciu.</li>
-  <li><strong>DIN 68861-1:</strong> Nemecká norma odolnosti povrchov nábytku — testuje odolnosť voči chemikáliám, vlhkosti a mechanickému poškodeniu.</li>
+  <li><strong>EPD (Environmental Product Declaration):</strong> Vyhlásenie o environmentálnych dopadoch podľa ISO 14025 – uhlíková stopa materiálu od ťažby po inštaláciu.</li>
+  <li><strong>DIN 68861-1:</strong> Nemecká norma odolnosti povrchov nábytku – testuje odolnosť voči chemikáliám, vlhkosti a mechanickému poškodeniu.</li>
 </ul>
 
 <div class="article-tip">
-  <strong>Pre LEED projekty:</strong> Pýtajte sa dodávateľa na EPD dokument a Recycled Content Statement. Sinterovaný kameň sa vyrába z prírodných minerálov bez ropných produktov — EPD hodnoty sú typicky priaznivé.
+  <strong>Pre LEED projekty:</strong> Pýtajte sa dodávateľa na EPD dokument a Recycled Content Statement. Sinterovaný kameň sa vyrába z prírodných minerálov bez ropných produktov – EPD hodnoty sú typicky priaznivé.
 </div>
 
 <figure class="article-figure">
@@ -270,19 +270,19 @@ export const ARTICLE_07: BlogArticle = {
   <li>☐ NSF/ANSI 51 certifikát (pre kuchynské dosky v kontakte s potravinami)</li>
   <li>☐ Greenguard Gold certifikát (pre interiéry s deťmi alebo alergikmi)</li>
   <li>☐ Trieda reakcie na oheň podľa EN 13501-1 (minimum A1 pre sinterovaný kameň)</li>
-  <li>☐ Nasiakavosť (ISO 10545-3) — hľadajte hodnotu pod 0,1%</li>
-  <li>☐ Ohybová pevnosť (ISO 10545-4) — minimum 5 000 N pre 12 mm, 16 000 N pre 20 mm</li>
-  <li>☐ Dátum vydania certifikátov — nesmú byť staršie ako 3 roky</li>
+  <li>☐ Nasiakavosť (ISO 10545-3) – hľadajte hodnotu pod 0,1\u00A0%</li>
+  <li>☐ Ohybová pevnosť (ISO 10545-4) – minimum 5\u00A0000\u00A0N pre 12\u00A0mm, 16\u00A0000\u00A0N pre 20\u00A0mm</li>
+  <li>☐ Dátum vydania certifikátov – nesmú byť staršie ako 3 roky</li>
 </ul>
 
 <div class="article-highlight">
-  <strong>Ak dodávateľ nevie poskytnúť tieto dokumenty</strong> alebo sa odvoláva len na "naše interné štandardy", zvážte, či je to správny partner pre projekt, kde kvalita a bezpečnosť povrchu sú kľúčové.
+  <strong>Ak dodávateľ nevie poskytnúť tieto dokumenty</strong> alebo sa odvoláva len na „naše interné štandardy“, zvážte, či je to správny partner pre projekt, kde kvalita a bezpečnosť povrchu sú kľúčové.
 </div>
 
 <div class="article-quote">
   <blockquote>
-    <p>„Certifikácia nie je byrokracia — je to merací prístroj, ktorý vám umožňuje porovnávať neporovnateľné. Bez nej nakupujete príbeh, nie materiál."</p>
-    <cite>— Technický tím Orostone</cite>
+    <p>„Certifikácia nie je byrokracia – je to merací prístroj, ktorý vám umožňuje porovnávať neporovnateľné. Bez nej nakupujete príbeh, nie materiál.“</p>
+    <cite>– Technický tím Orostone</cite>
   </blockquote>
 </div>
 
@@ -296,12 +296,12 @@ export const ARTICLE_07: BlogArticle = {
         answer: 'CE označenie je povinný minimálny štandard pre predaj v EÚ, nie indikátor prémiových vlastností. Pre kuchynské dosky by ste mali vyžadovať aj konkrétne výsledky ISO 10545 testov a ideálne NSF/ANSI 51 certifikát pre kontakt s potravinami.'
       },
       {
-        question: 'Čo znamená nasiakavosť pod 0,1%?',
-        answer: 'Nasiakavosť pod 0,1% (meraná podľa ISO 10545-3) znamená, že materiál prakticky neabsorbuje vodu. Pre sinterovaný kameň sú typické hodnoty pod 0,05%. To zabraňuje penetrácii baktérií, plesní a škvŕn — material nie je potrebné imprégnovať.'
+        question: 'Čo znamená nasiakavosť pod 0,1\u00A0%?',
+        answer: 'Nasiakavosť pod 0,1\u00A0% (meraná podľa ISO 10545-3) znamená, že materiál prakticky neabsorbuje vodu. Pre sinterovaný kameň sú typické hodnoty pod 0,05\u00A0%. To zabraňuje penetrácii baktérií, plesní a škvŕn – materiál nie je potrebné impregnovať.'
       },
       {
         question: 'Musím vyžadovať NSF/ANSI 51 certifikát pre kuchynskú dosku?',
-        answer: 'Pre plochy v priamom kontakte s potravinami (prípravná kuchyňa, reštaurácia, komerčná prevádzka) je NSF/ANSI 51 odporúčaný. Pre domáce kuchyne v EÚ je alternatívou súlad s nariadením EU 10/2011. V praxi väčšina sinterovaných kameňov tieto požiadavky spĺňa — ale je dobré mať to zdokumentované.'
+        answer: 'Pre plochy v priamom kontakte s potravinami (prípravná kuchyňa, reštaurácia, komerčná prevádzka) je NSF/ANSI 51 odporúčaný. Pre domáce kuchyne v EÚ je alternatívou súlad s nariadením EU 10/2011. V praxi väčšina sinterovaných kameňov tieto požiadavky spĺňa – ale je dobré mať to zdokumentované.'
       },
       {
         question: 'Čo je Greenguard Gold a pre koho je relevantný?',
@@ -313,23 +313,23 @@ export const ARTICLE_07: BlogArticle = {
       },
       {
         question: 'Čo je ISO 10545 a prečo je dôležitá?',
-        answer: 'ISO 10545 je medzinárodná séria noriem, ktorá definuje štandardizované testovacie metódy pre keramické platne a dlaždice. Pre sinterovaný kameň sú kľúčové časti -3 (nasiakavosť), -4 (ohybová pevnosť), -6 (abrazia), -7 (tepelná odolnosť), -13 (chemická odolnosť) a -14 (odolnosť voči škvrnám). Bez týchto testov nie je možné objektívne porovnávať rôzne materiály.'
+        answer: 'ISO 10545 je medzinárodná séria noriem, ktorá definuje štandardizované testovacie metódy pre keramické platne a dlaždice. Pre sinterovaný kameň sú kľúčové časti -3 (nasiakavosť), -4 (ohybová pevnosť), -6 (abrázia), -7 (tepelná odolnosť), -13 (chemická odolnosť) a -14 (odolnosť voči škvrnám). Bez týchto testov nie je možné objektívne porovnávať rôzne materiály.'
       },
       {
         question: 'Akú triedu reakcie na oheň má sinterovaný kameň?',
-        answer: 'Sinterovaný kameň dosahuje triedu A1 podľa EN 13501-1 — najvyššiu možnú triedu. Materiál nehorí a neprispieva k šíreniu požiaru. Táto trieda je požadovaná napríklad pre fasádne obklady výškových budov a komerčné interiéry s prísnymi požiarnymi predpismi.'
+        answer: 'Sinterovaný kameň dosahuje triedu A1 podľa EN 13501-1 – najvyššiu možnú triedu. Materiál nehorí a neprispieva k šíreniu požiaru. Táto trieda je požadovaná napríklad pre fasádne obklady výškových budov a komerčné interiéry s prísnymi požiarnymi predpismi.'
       },
       {
         question: 'Čo je EPD dokument a kedy ho potrebujem?',
-        answer: 'EPD (Environmental Product Declaration) je dokument, ktorý popisuje environmentálne dopady materiálu od ťažby po inštaláciu — vrátane uhlíkovej stopy. Je povinný alebo odporúčaný pre projekty uchádzajúce sa o LEED, BREEAM alebo iné ekologické certifikácie budov. Pre bežné rezidenčné projekty nie je povinný, ale je indikátorom transparentnosti výrobcu.'
+        answer: 'EPD (Environmental Product Declaration) je dokument, ktorý popisuje environmentálne dopady materiálu od ťažby po inštaláciu – vrátane uhlíkovej stopy. Je povinný alebo odporúčaný pre projekty uchádzajúce sa o LEED, BREEAM alebo iné ekologické certifikácie budov. Pre bežné rezidenčné projekty nie je povinný, ale je indikátorom transparentnosti výrobcu.'
       },
       {
-        question: 'Prečo "proprietárne testovanie" nestačí ako dôkaz kvality?',
-        answer: 'Interné testovanie robí alebo objednáva samotný výrobca — nie je nezávislé. Výsledky nie sú overiteľné v externej databáze a testovacia metodológia nie je štandardizovaná. To neznamená, že výsledky sú nepravdivé, ale zákazník nemá možnosť ich overiť ani porovnať s inými materiálmi na rovnakom základe. Skutočné certifikácie vydáva tretia strana podľa medzinárodne uznaných metodík.'
+        question: 'Prečo „proprietárne testovanie“ nestačí ako dôkaz kvality?',
+        answer: 'Interné testovanie robí alebo objednáva samotný výrobca – nie je nezávislé. Výsledky nie sú overiteľné v externej databáze a testovacia metodológia nie je štandardizovaná. To neznamená, že výsledky sú nepravdivé, ale zákazník nemá možnosť ich overiť ani porovnať s inými materiálmi na rovnakom základe. Skutočné certifikácie vydáva tretia strana podľa medzinárodne uznaných metodík.'
       },
       {
         question: 'Platia certifikácie navždy alebo treba ich obnovovať?',
-        answer: 'Väčšina certifikácií má obmedzenú platnosť — typicky 1 až 3 roky. Výrobca musí pravidelne preukazovať súlad s normami. Preto je dôležité skontrolovať dátum vydania certifikátu. Ak je starší ako 3 roky, pýtajte sa na jeho obnovu — mohol sa meniť výrobný proces alebo sa aktualizovala norma.'
+        answer: 'Väčšina certifikácií má obmedzenú platnosť – typicky 1 až 3 roky. Výrobca musí pravidelne preukazovať súlad s normami. Preto je dôležité skontrolovať dátum vydania certifikátu. Ak je starší ako 3 roky, pýtajte sa na jeho obnovu – mohol sa meniť výrobný proces alebo sa aktualizovala norma.'
       },
       {
         question: 'Kde nájdem technický list pre konkrétny materiál Orostone?',
@@ -337,7 +337,7 @@ export const ARTICLE_07: BlogArticle = {
       },
       {
         question: 'Má sinterovaný kameň certifikát pre použitie v komerčných prevádzkach (reštaurácie, hotely)?',
-        answer: 'Áno. Sinterovaný kameň spĺňa požiadavky pre komerčné využitie — NSF/ANSI 51 pre kontakt s potravinami, trieda A1 pre požiarnu odolnosť a ISO 10545 normy pre chemickú a mechanickú odolnosť. Pre konkrétny projekt vám poskytneme kompletný balík dokumentácie.'
+        answer: 'Áno. Sinterovaný kameň spĺňa požiadavky pre komerčné využitie – NSF/ANSI 51 pre kontakt s potravinami, trieda A1 pre požiarnu odolnosť a ISO 10545 normy pre chemickú a mechanickú odolnosť. Pre konkrétny projekt vám poskytneme kompletný balík dokumentácie.'
       }
     ]
   },

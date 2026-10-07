@@ -12,210 +12,210 @@ export const ARTICLE_02: BlogArticle = {
 
   sk: {
     title: 'Môžete položiť horúci hrniec na sinterovaný kameň? Úprimná odpoveď',
-    subtitle: 'Test tepelnej odolnosti sinterovaného kameňa v praxi — čo skutočne vydrží a kde sú limity',
-    excerpt: 'Sinterovaný kameň odolá teplotám do 300°C a horúce hrnce ho nepoškodí. Ale je tu jeden scenár, na ktorý si treba dávať pozor — termický šok.',
+    subtitle: 'Test tepelnej odolnosti sinterovaného kameňa v praxi – čo skutočne vydrží a kde sú limity',
+    excerpt: 'Sinterovaný kameň odolá teplotám do 300\u00A0°C a horúce hrnce ho nepoškodia. Ale je tu jeden scenár, na ktorý si treba dávať pozor – termický šok.',
     metaTitle: 'Horúci hrniec na sinterovanom kameni | OROSTONE',
     metaDescription: 'Môžete položiť horúci hrniec priamo na pracovnú dosku? Vysvetlenie tepelnej odolnosti sinterovaného kameňa a hraníc, kde to už neplatí.',
-    directAnswer: 'Áno, na sinterovaný kameň môžete položiť horúci hrniec priamo z plameňa alebo rúry. Materiál odolá teplotám nad 300°C bez poškodenia, zmeny farby ani deformácie. Výrobný proces spekania pri 1 200°C mu dáva tepelnú odolnosť, ktorú plastické živice v iných materiáloch nemajú.',
+    directAnswer: 'Áno, na sinterovaný kameň môžete položiť horúci hrniec priamo z plameňa alebo rúry. Materiál odolá teplotám nad 300\u00A0°C bez poškodenia, zmeny farby ani deformácie. Výrobný proces spekania pri 1\u00A0200\u00A0°C mu dáva tepelnú odolnosť, ktorú plastické živice v iných materiáloch nemajú.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>
 <ul class="article-tldr">
-  <li>Sinterovaný kameň odolá teplotám nad 300°C — horúce hrnce ho nepoškodí</li>
+  <li>Sinterovaný kameň odolá teplotám nad 300\u00A0°C – horúce hrnce ho nepoškodia</li>
   <li>Žiadne živice = žiadne žltnutie, žiadne popraskanie pri tepelnom zaťažení</li>
   <li>Jediné reálne riziko: náhly termický šok (ľad na horúcu dosku a naopak)</li>
   <li>Výhodou oproti kvarcitu: môžete nechať na doske varič s panvicou bez podložky</li>
 </ul>
 
-<p>Jedna z prvých otázok, ktorú zákazníci kladú pri výbere kuchynskej dosky: <em>„Môžem naň položiť horúci hrniec?"</em> Odpoveď závisí od materiálu. A pri sinterovanom kameni je odpoveď <strong class="gold">jednoznačne áno</strong>.</p>
+<p>Jedna z prvých otázok, ktorú zákazníci kladú pri výbere kuchynskej dosky: <em>„Môžem naň položiť horúci hrniec?“</em> Odpoveď závisí od materiálu. A pri sinterovanom kameni je odpoveď <strong class="gold">jednoznačne áno</strong>.</p>
 
-<p>Ale povedzme si to precízne. Pretože „áno" nestačí — chcete vedieť prečo to platí, kde sú hranice a čo sa stane, ak tie hranice prekročíte.</p>
+<p>Ale povedzme si to precízne. Pretože „áno“ nestačí – chcete vedieť, prečo to platí, kde sú hranice a čo sa stane, ak tie hranice prekročíte.</p>
 
 <p>Pracujeme so sinterovaným kameňom každý deň. Testovali sme ho so všetkým, čo normálna kuchyňa dokáže produkovať. Tieto výsledky sú reálne.</p>
 
 <div class="article-quote">
-  <p>Materiál, ktorý bol stvorený pri 1 200°C, sa nebojí hrnca z 200°C rúry.</p>
+  <p>Materiál, ktorý bol stvorený pri 1\u00A0200\u00A0°C, sa nebojí hrnca z 200\u00A0°C rúry.</p>
 </div>
 
 <figure class="article-figure">
   <img src="/images/blog/article-02/hero.webp" alt="Horúca panvica položená priamo na sinterovanú kamennú kuchynskú dosku" width="1408" height="792" loading="lazy" />
-  <figcaption>Sinterovaný kameň v kuchyni — priamy kontakt s horúcimi predmetmi bez obáv</figcaption>
+  <figcaption>Sinterovaný kameň v kuchyni – priamy kontakt s horúcimi predmetmi bez obáv</figcaption>
 </figure>
 
 <h2 id="preco-vydrzí-teplo">Prečo sinterovaný kameň vydrží teplo?</h2>
 
-<p>Odpoveď je v technológii výroby. Sinterovaný kameň sa vyrába spečením prírodných minerálov — kremeňa, živca a ílu — pri teplotách <strong>nad 1 200°C</strong> a tlaku <strong>až 25 000 ton</strong>. Tento proces odstraňuje z materiálu všetku volatilnú organickú hmotu.</p>
+<p>Odpoveď je v technológii výroby. Sinterovaný kameň sa vyrába spečením prírodných minerálov – kremeňa, živca a ílu – pri teplotách <strong>nad 1\u00A0200\u00A0°C</strong> a tlaku <strong>až 25\u00A0000\u00A0ton</strong>. Tento proces odstraňuje z materiálu všetku volatilnú organickú hmotu.</p>
 
-<p>Výsledok: <strong class="gold">žiadne polyesterové živice, žiadne spojivá na organickej báze</strong>. Práve tieto živice sú dôvodom, prečo sa iné materiály pri tepelnom zaťažení deformujú, žltnú alebo pôrujú.</p>
+<p>Výsledok: <strong class="gold">žiadne polyesterové živice, žiadne spojivá na organickej báze</strong>. Práve tieto živice sú dôvodom, prečo sa iné materiály pri tepelnom zaťažení deformujú, žltnú alebo sa na nich tvoria pľuzgiere.</p>
 
-<p>Sinterovaný kameň sa pri teplotách do 300°C správa rovnako ako pri izbovej teplote. Žiadna zmena farby, žiadne deformácie, žiadne popraskanie.</p>
+<p>Sinterovaný kameň sa pri teplotách do 300\u00A0°C správa rovnako ako pri izbovej teplote. Žiadna zmena farby, žiadne deformácie, žiadne popraskanie.</p>
 
 <div class="article-highlight">
   <p><strong>Porovnanie tepelnej odolnosti materiálov:</strong></p>
   <ul>
-    <li><strong>Sinterovaný kameň:</strong> 300°C+ bez poškodenia (bez živíc)</li>
-    <li><strong>Kvarcitový kompozit:</strong> ~150°C — polyesterové živice sa začínajú rozkladať, žltnúť</li>
-    <li><strong>Laminát:</strong> ~80°C — deformácia, trvalo viditeľné poškodenie</li>
-    <li><strong>Prírodný granit:</strong> 200–250°C (závisí od konkrétneho kameňa a povrchového spracovania)</li>
+    <li><strong>Sinterovaný kameň:</strong> 300\u00A0°C+ bez poškodenia (bez živíc)</li>
+    <li><strong>Kvarcitový kompozit:</strong> ~150\u00A0°C – polyesterové živice sa začínajú rozkladať, žltnúť</li>
+    <li><strong>Laminát:</strong> ~80\u00A0°C – deformácia, trvalo viditeľné poškodenie</li>
+    <li><strong>Prírodný granit:</strong> 200–250\u00A0°C (závisí od konkrétneho kameňa a povrchového spracovania)</li>
   </ul>
 </div>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-02/heat-comparison.webp" alt="Porovnanie tepelnej odolnosti materiálov — sinterovaný kameň vs kvarcit vs laminát" width="1408" height="792" loading="lazy" />
-  <figcaption>Porovnanie tepelnej odolnosti — sinterovaný kameň odolá 300°C+, kvarcit len ~150°C</figcaption>
+  <img src="/images/blog/article-02/heat-comparison.webp" alt="Porovnanie tepelnej odolnosti materiálov – sinterovaný kameň vs kvarcit vs laminát" width="1408" height="792" loading="lazy" />
+  <figcaption>Porovnanie tepelnej odolnosti – sinterovaný kameň odolá 300\u00A0°C+, kvarcit len ~150\u00A0°C</figcaption>
 </figure>
 
 <h2 id="co-sa-stane-kvarcit">Čo sa stane s kvarcitom pri horúcom hrnci?</h2>
 
-<p>Kvarcitový kompozit obsahuje 7–10% polyesterových živíc. Pri dlhodobom kontakte s predmetmi nad 150°C sa tieto živice začínajú tepelne degradovať. <strong class="gold">Výsledkom je trvalé poškodenie</strong> — najčastejšie žlté alebo biele škvrny v tvare spodiny hrnca.</p>
+<p>Kvarcitový kompozit obsahuje 7–10\u00A0% polyesterových živíc. Pri dlhodobom kontakte s predmetmi nad 150\u00A0°C sa tieto živice začínajú tepelne degradovať. <strong class="gold">Výsledkom je trvalé poškodenie</strong> – najčastejšie žlté alebo biele škvrny v tvare spodku hrnca.</p>
 
 <p>Toto poškodenie je nereverzibilné. Oprava si vyžaduje výmenu celej dosky. A nie je to lacná záležitosť.</p>
 
 <div class="article-tip">
   <p><strong>Čo robíme v Orostone</strong></p>
-  <p>Zákazníkom, ktorí si vyberú sinterovaný kameň, výslovne hovoríme: podložky pod hrnce nie sú nutné. Nie je to len marketing — je to technická realita. Sinterovaný kameň odolá bežnému tepelnému zaťaženiu kuchyne bez obmedzení.</p>
+  <p>Zákazníkom, ktorí si vyberú sinterovaný kameň, výslovne hovoríme: podložky pod hrnce nie sú nutné. Nie je to len marketing – je to technická realita. Sinterovaný kameň odolá bežnému tepelnému zaťaženiu kuchyne bez obmedzení.</p>
 </div>
 
-<h2 id="termicky-sok">Termický šok — jediné skutočné riziko</h2>
+<h2 id="termicky-sok">Termický šok – jediné skutočné riziko</h2>
 
-<p>Pri všetkých silných stránkach má sinterovaný kameň jedno slabé miesto: <strong class="gold">náhla zmena teploty</strong>. Nie teplo samotné — ale rýchlosť teplotnej zmeny.</p>
+<p>Pri všetkých silných stránkach má sinterovaný kameň jedno slabé miesto: <strong class="gold">náhla zmena teploty</strong>. Nie teplo samotné – ale rýchlosť teplotnej zmeny.</p>
 
 <p>Termický šok nastane napríklad vtedy, keď dáte ľad priamo na mimoriadne horúcu dosku (napr. po intenzívnom varení). Alebo keď umyjete dosku studenou vodou okamžite po tom, ako ste na nej mali hrniec.</p>
 
-<p>V každodennej kuchyni je toto riziko <strong>minimálne</strong> — bežné varenie takéto teplotné rozdiely nevytvára. Ale pre správnosť informácie to uvádzame.</p>
+<p>V každodennej kuchyni je toto riziko <strong>minimálne</strong> – bežné varenie takéto teplotné rozdiely nevytvára. Ale pre správnosť informácie to uvádzame.</p>
 
 <div class="article-highlight">
   <p><strong>Kedy termický šok reálne hrozí:</strong></p>
   <ul>
-    <li>Prikladanie mrazeného mäsa na veľmi horúcu dosku (nad 250°C, čo je neobvyklé)</li>
+    <li>Prikladanie mrazeného mäsa na veľmi horúcu dosku (nad 250\u00A0°C, čo je neobvyklé)</li>
     <li>Chladenie dosky ľadom po intenzívnom priamom zahriatí plameňom</li>
-    <li>Rýchle polievanie studenom vodou po dlhom priamom tepelnom zaťažení</li>
+    <li>Rýchle polievanie studenou vodou po dlhom priamom tepelnom zaťažení</li>
   </ul>
   <p>V štandardnom kuchárskom procese sa <strong>žiaden z týchto scenárov bežne nevyskytuje</strong>.</p>
 </div>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-02/thermal-shock.webp" alt="Termický šok na sinterovanom kameni — kontrast horúceho a studeného" width="1408" height="792" loading="lazy" />
-  <figcaption>Termický šok — náhla zmena teploty je jediné reálne riziko pre sinterovaný kameň</figcaption>
+  <img src="/images/blog/article-02/thermal-shock.webp" alt="Termický šok na sinterovanom kameni – kontrast horúceho a studeného" width="1408" height="792" loading="lazy" />
+  <figcaption>Termický šok – náhla zmena teploty je jediné reálne riziko pre sinterovaný kameň</figcaption>
 </figure>
 
 <div class="article-cta">
   <p>Hľadáte kuchynskú dosku, ktorá vydrží každodenné varenie bez obmedzení?</p>
-  <p>Poraďte sa s nami — nezáväzne a zadarmo. Ukážeme vám vzorky a zodpovieme všetky otázky.</p>
+  <p>Poraďte sa s nami – nezáväzne a zadarmo. Ukážeme vám vzorky a zodpovieme všetky otázky.</p>
   <a href="/kontakt" class="cta-btn">Nezáväzná konzultácia →</a>
 </div>
 
 <h2 id="priamy-plamen">Čo ak naň zameriam priamy plameň?</h2>
 
-<p>Testovali sme to. Sinterovaný kameň vydrží priamy kontakt s kuchynským horákom — horáky produkujú teploty okolo 1 500–2 000°C, ale kontaktná plocha je malá a trvanie krátkodobé.</p>
+<p>Testovali sme to. Sinterovaný kameň vydrží priamy kontakt s kuchynským horákom – horáky produkujú teploty okolo 1\u00A0500–2\u00A0000\u00A0°C, ale kontaktná plocha je malá a trvanie krátkodobé.</p>
 
-<p>Pri priamom plameňovom zahriatí jedného miesta počas 10–15 sekúnd nenastal žiadny viditeľný efekt — bez stopy, bez zmeny farby, bez deformácie. Pre porovnanie: na kvarcite by sa pri rovnakom teste objavila biela škvrna od degradovanej živice.</p>
+<p>Pri priamom plameňovom zahriatí jedného miesta počas 10–15 sekúnd nenastal žiadny viditeľný efekt – bez stopy, bez zmeny farby, bez deformácie. Pre porovnanie: na kvarcite by sa pri rovnakom teste objavila biela škvrna od degradovanej živice.</p>
 
-<p>Dôvod: sinterovaný kameň sa v podstate <strong class="gold">prehriať nedá pri teplotách, ktoré kuchyňa produkuje</strong>. Jeho výrobná teplota (1 200°C) je vyššia ako teplota akéhokoľvek kuchynského zariadenia.</p>
+<p>Dôvod: sinterovaný kameň sa v podstate <strong class="gold">prehriať nedá pri teplotách, ktoré kuchyňa produkuje</strong>. Jeho výrobná teplota (1\u00A0200\u00A0°C) je vyššia ako teplota akéhokoľvek kuchynského zariadenia.</p>
 
-<h2 id="prakticky-test">Praktické testovanie — čo sme zistili</h2>
+<h2 id="prakticky-test">Praktické testovanie – čo sme zistili</h2>
 
 <div class="article-case-study">
   <span class="case-study-label">Z praxe</span>
-  <h3>Séria testov v našom showroome — záznamy z 6 mesiacov</h3>
+  <h3>Séria testov v našom showroome – záznamy z 6 mesiacov</h3>
   <p>Počas pol roka sme systematicky testovali tepelné zaťaženie sinterovaného kameňa v reálnych kuchynských podmienkach. Vzorky dekórov Statuario Diamante a Calacatta Top sme vystavili sérii testov.</p>
-  <p><strong>Test 1 — hrniec z rúry (220°C):</strong> Prikladaný priamo na sinterovaný kameň na 2 hodiny. Výsledok: <strong class="gold">žiadne poškodenie</strong>, žiadna zmena farby, povrch identický pred aj po.</p>
-  <p><strong>Test 2 — liatinová panvica z plameňa (~280°C):</strong> Prikladaná 15 minút. Výsledok: žiadne stopy. Pod panvicou vznikla kondenzácia, ktorá sa po ochladení vyparila. Povrch bez zmeny.</p>
-  <p><strong>Test 3 — priamy plameň (kuchynský horák, 10 sekúnd):</strong> Výsledok: žiadna škvrna ani zmena. Pre porovnanie rovnaký test na vzorovom kvarcite zanechal biely odtlačok.</p>
-  <p>Záver: sinterovaný kameň v bežnej kuchyňa<strong> nevyžaduje žiadne špeciálne opatrenia pri tepelnom zaťažení</strong>. Podložky pod hrnce môžete použiť, ak chcete zachovať povrch pred mechanickými škrabancami — nie kvôli teplu.</p>
+  <p><strong>Test 1 – hrniec z rúry (220\u00A0°C):</strong> Prikladaný priamo na sinterovaný kameň na 2 hodiny. Výsledok: <strong class="gold">žiadne poškodenie</strong>, žiadna zmena farby, povrch identický pred aj po.</p>
+  <p><strong>Test 2 – liatinová panvica z plameňa (~280\u00A0°C):</strong> Prikladaná 15 minút. Výsledok: žiadne stopy. Pod panvicou vznikla kondenzácia, ktorá sa po ochladení vyparila. Povrch bez zmeny.</p>
+  <p><strong>Test 3 – priamy plameň (kuchynský horák, 10 sekúnd):</strong> Výsledok: žiadna škvrna ani zmena. Pre porovnanie rovnaký test na vzorovom kvarcite zanechal biely odtlačok.</p>
+  <p>Záver: sinterovaný kameň v bežnej kuchyni<strong> nevyžaduje žiadne špeciálne opatrenia pri tepelnom zaťažení</strong>. Podložky pod hrnce môžete použiť, ak chcete chrániť povrch pred mechanickými škrabancami – nie kvôli teplu.</p>
 </div>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-02/practical-test.webp" alt="Praktický test tepelnej odolnosti sinterovaného kameňa — horúci hrniec na doske" width="1408" height="792" loading="lazy" />
-  <figcaption>Praktický test — horúci hrniec priamo na sinterovanom kameni bez akéhokoľvek poškodenia</figcaption>
+  <img src="/images/blog/article-02/practical-test.webp" alt="Praktický test tepelnej odolnosti sinterovaného kameňa – horúci hrniec na doske" width="1408" height="792" loading="lazy" />
+  <figcaption>Praktický test – horúci hrniec priamo na sinterovanom kameni bez akéhokoľvek poškodenia</figcaption>
 </figure>
 
 <h2 id="ine-materialy-porovnanie">Porovnanie: kde iné materiály zlyhávajú</h2>
 
 <p>Aby ste mali úplný obraz, tu je prehľad toho, ako sa pri tepelnom zaťažení správajú bežné alternatívy:</p>
 
-<p><strong>Kvarcitový kompozit (engineered quartz):</strong> Limit ~150°C — bežný hrniec priamo z plameňa prekračuje túto teplotu. Živice degradujú, vznikajú biele alebo žlté škvrny. Oprava nie je možná — iba výmena dosky.</p>
+<p><strong>Kvarcitový kompozit (engineered quartz):</strong> Limit ~150\u00A0°C – bežný hrniec priamo z plameňa prekračuje túto teplotu. Živice sa degradujú, vznikajú biele alebo žlté škvrny. Oprava nie je možná – iba výmena dosky.</p>
 
-<p><strong>Laminát (HPL):</strong> Limit ~80°C. Deformuje sa viditeľne, farba sa mení, povrch sa oddeľuje od podkladu. Horúci hrniec zanechá trvalý odtlačok.</p>
+<p><strong>Laminát (HPL):</strong> Limit ~80\u00A0°C. Deformuje sa viditeľne, farba sa mení, povrch sa oddeľuje od podkladu. Horúci hrniec zanechá trvalý odtlačok.</p>
 
 <p><strong>Prírodný mramor:</strong> Tepelne relatívne odolný, ale <strong class="gold">impregnácia sa zničí tepelným šokom</strong>. Po opakovanom tepelnom zaťažení sa stáva pórovitým a nasáva škvrny.</p>
 
-<p><strong>Prírodný granit:</strong> Dobrá tepelná odolnosť (200–250°C), ale závisí od konkrétneho kameňa a spôsobu povrchovej úpravy. Pri mikroprasklinkách môže teplo urýchliť ich šírenie.</p>
+<p><strong>Prírodný granit:</strong> Dobrá tepelná odolnosť (200–250\u00A0°C), ale závisí od konkrétneho kameňa a spôsobu povrchovej úpravy. Pri mikroprasklinkách môže teplo urýchliť ich šírenie.</p>
 
 <div class="article-tip">
   <p><strong>Záver v jednej vete</strong></p>
-  <p>Zo všetkých bežných materiálov pre kuchynské dosky je sinterovaný kameň pri tepelnom zaťažení <strong>najodolnejší</strong> — a jedinou kategóriou, ktorú môžete používať bez akýchkoľvek obmedzení pri bežnom varení.</p>
+  <p>Zo všetkých bežných materiálov pre kuchynské dosky je sinterovaný kameň pri tepelnom zaťažení <strong>najodolnejší</strong> – a jedinou kategóriou, ktorú môžete používať bez akýchkoľvek obmedzení pri bežnom varení.</p>
 </div>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-02/materials-comparison.webp" alt="Porovnanie materiálov kuchynských dosiek — sinterovaný kameň, kvarcit, laminát, granit" width="1408" height="792" loading="lazy" />
-  <figcaption>Materiálové porovnanie — sinterovaný kameň je jediný materiál bez živíc, ktoré teplo degraduje</figcaption>
+  <img src="/images/blog/article-02/materials-comparison.webp" alt="Porovnanie materiálov kuchynských dosiek – sinterovaný kameň, kvarcit, laminát, granit" width="1408" height="792" loading="lazy" />
+  <figcaption>Materiálové porovnanie – sinterovaný kameň je jediný materiál bez živíc, ktoré teplo degraduje</figcaption>
 </figure>
 
 <h2 id="zaver">Záverečné odporúčanie</h2>
 
-<p>Sinterovaný kameň pri horúcich hrncoch <strong class="gold">nevyžaduje podložky</strong>. To je jeho komparatívna výhoda oproti väčšine iných materiálov. Môžete variť, piecť, grilovať — a doska to zvládne.</p>
+<p>Sinterovaný kameň pri horúcich hrncoch <strong class="gold">nevyžaduje podložky</strong>. To je jeho komparatívna výhoda oproti väčšine iných materiálov. Môžete variť, piecť, grilovať – a doska to zvládne.</p>
 
-<p>Jediné, čo odporúčame pre zachovanie estetiky: podložky nie kvôli teplu, ale kvôli <strong>mechanickým poškriabaniam</strong> od hrubého spodku liatinových pánvíc. Tepelne ste bez starostí. Mechanicky — záleží na type povrchu.</p>
+<p>Jediné, čo odporúčame pre zachovanie estetiky: podložky nie kvôli teplu, ale kvôli <strong>mechanickým poškriabaniam</strong> od hrubého spodku liatinových panvíc. Tepelne ste bez starostí. Mechanicky – záleží na type povrchu.</p>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-02/lifestyle-cooking.webp" alt="Varenie v modernej kuchyni so sinterovanou kamennou doskou — horúce nádoby na pracovnej ploche" width="1408" height="792" loading="lazy" />
-  <figcaption>Každodenné varenie na sinterovanom kameni — bez podložiek, bez obáv</figcaption>
+  <img src="/images/blog/article-02/lifestyle-cooking.webp" alt="Varenie v modernej kuchyni so sinterovanou kamennou doskou – horúce nádoby na pracovnej ploche" width="1408" height="792" loading="lazy" />
+  <figcaption>Každodenné varenie na sinterovanom kameni – bez podložiek, bez obáv</figcaption>
 </figure>
 
 <div class="article-tip">
   <p><strong>Alebo nás jednoducho kontaktujte v Orostone</strong></p>
-  <p>Radi vám ukážeme sinterovaný kameň v showroome a zodpovieme všetky otázky. Nezáväzná konzultácia je zadarmo — príďte sa pozrieť, siahnite si na vzorky.</p>
+  <p>Radi vám ukážeme sinterovaný kameň v showroome a zodpovieme všetky otázky. Nezáväzná konzultácia je zadarmo – príďte sa pozrieť, siahnite si na vzorky.</p>
   <a href="/kontakt" class="tip-btn">Kontaktovať nás →</a>
 </div>
 `,
     faqs: [
       {
         question: 'Môžem položiť horúci hrniec priamo na sinterovaný kameň?',
-        answer: 'Áno. Sinterovaný kameň odolá teplotám nad 300°C bez poškodenia. Výrobný proces spekania pri 1 200°C mu dáva tepelnú odolnosť, ktorú žiadne iné bežné materiály na kuchynské dosky nedosahujú.',
+        answer: 'Áno. Sinterovaný kameň odolá teplotám nad 300\u00A0°C bez poškodenia. Výrobný proces spekania pri 1\u00A0200\u00A0°C mu dáva tepelnú odolnosť, ktorú žiadne iné bežné materiály na kuchynské dosky nedosahujú.',
       },
       {
-        question: 'Čo je tepelná odolnosť sinterovaného kameňa v stupňoch?',
-        answer: 'Sinterovaný kameň odolá teplotám nad 300°C bez viditeľného poškodenia. Pri krátkodobom priamom kontakte s horákom (do 15 sekúnd) nenastávajú žiadne zmeny. Pre porovnanie: laminát sa poškodí pri 80°C, kvarcitový kompozit pri ~150°C.',
+        question: 'Aká je tepelná odolnosť sinterovaného kameňa v stupňoch?',
+        answer: 'Sinterovaný kameň odolá teplotám nad 300\u00A0°C bez viditeľného poškodenia. Pri krátkodobom priamom kontakte s horákom (do 15 sekúnd) nenastávajú žiadne zmeny. Pre porovnanie: laminát sa poškodí pri 80\u00A0°C, kvarcitový kompozit pri ~150\u00A0°C.',
       },
       {
         question: 'Je potrebná podložka pod hrnce pri sinterovanom kameni?',
-        answer: 'Z tepelného hľadiska nie — nie je to potrebné. Podložky odporúčame pre ochranu pred mechanickými škrabancami od hrubých kovových spodkov, nie kvôli teplu. Sinterovaný kameň tepelné zaťaženie bežnej kuchyne bez problémov zvláda.',
+        answer: 'Z tepelného hľadiska nie – nie je to potrebné. Podložky odporúčame pre ochranu pred mechanickými škrabancami od hrubých kovových spodkov, nie kvôli teplu. Sinterovaný kameň tepelné zaťaženie bežnej kuchyne bez problémov zvláda.',
       },
       {
         question: 'Čo je termický šok a hrozí pri sinterovanom kameni?',
-        answer: 'Termický šok je náhla zmena teploty materiálu. Pri sinterovanom kameni hrozí len pri extrémnych scenároch — napríklad kladenie veľkého množstva ľadu na mimoriadne horúcu dosku. V bežnom kuchárskom procese k termickému šoku nedochádza.',
+        answer: 'Termický šok je náhla zmena teploty materiálu. Pri sinterovanom kameni hrozí len pri extrémnych scenároch – napríklad pri kladení veľkého množstva ľadu na mimoriadne horúcu dosku. V bežnom kuchárskom procese k termickému šoku nedochádza.',
       },
       {
-        question: 'Prečo kvarcit nesnesie horúce hrnce a sinterovaný kameň áno?',
-        answer: 'Kvarcitový kompozit obsahuje 7–10% polyesterových živíc, ktoré sa tepelne degradujú pri ~150°C. Sinterovaný kameň je 100% minerálny bez živíc — výrobný proces pri 1 200°C odstraňuje všetku organickú hmotu. Výsledkom je materiál, ktorý tepelné zaťaženie bežnej kuchyne zvládne bez obmedzení.',
+        question: 'Prečo kvarcit neznesie horúce hrnce a sinterovaný kameň áno?',
+        answer: 'Kvarcitový kompozit obsahuje 7–10\u00A0% polyesterových živíc, ktoré sa tepelne degradujú pri ~150\u00A0°C. Sinterovaný kameň je 100\u00A0% minerálny bez živíc – výrobný proces pri 1\u00A0200\u00A0°C odstraňuje všetku organickú hmotu. Výsledkom je materiál, ktorý tepelné zaťaženie bežnej kuchyne zvládne bez obmedzení.',
       },
       {
         question: 'Poškodí horúci hrniec povrch sinterovaného kameňa?',
-        answer: 'Nie. Tepelné zaťaženie do 300°C nespôsobí žiadnu zmenu farby, deformáciu ani popraskanie. Povrch zostane identický. Jediné poškodenie, ku ktorému môže dôjsť, je mechanické poškriabanie od hrubého kovového spodku nádoby — nie tepelné.',
+        answer: 'Nie. Tepelné zaťaženie do 300\u00A0°C nespôsobí žiadnu zmenu farby, deformáciu ani popraskanie. Povrch zostane identický. Jediné poškodenie, ku ktorému môže dôjsť, je mechanické poškriabanie od hrubého kovového spodku nádoby – nie tepelné.',
       },
       {
         question: 'Môžem na sinterovaný kameň položiť pekáč priamo z rúry?',
-        answer: 'Áno. Pekáče z rúry pri 220–250°C môžete pokojne uložiť priamo na sinterovaný kameň. Materiál tento teplotný rozsah zvláda bez akýchkoľvek obmedzení.',
+        answer: 'Áno. Pekáče z rúry pri 220–250\u00A0°C môžete pokojne uložiť priamo na sinterovaný kameň. Materiál tento teplotný rozsah zvláda bez akýchkoľvek obmedzení.',
       },
       {
         question: 'Je sinterovaný kameň vhodný na kuchynský ostrov pri sporáku?',
-        answer: 'Áno, a práve tu sa naplno prejavuje jeho tepelná odolnosť. Ostrov pri sporáku je miesto s najvyšším tepelným zaťažením — a sinterovaný kameň je na túto aplikáciu ideálny. Rovnako ako pre priľahlú pracovnú plochu vedľa varnej dosky.',
+        answer: 'Áno, a práve tu sa naplno prejavuje jeho tepelná odolnosť. Ostrov pri sporáku je miesto s najvyšším tepelným zaťažením – a sinterovaný kameň je na túto aplikáciu ideálny. Rovnako ako pre priľahlú pracovnú plochu vedľa varnej dosky.',
       },
       {
         question: 'Ovplyvňuje teplo lesklý povrch sinterovaného kameňa inak ako matný?',
-        answer: 'Tepelná odolnosť je rovnaká pre oba povrchy — závisí od materiálu, nie od povrchového spracovania. Lesklý povrch je len leštený, nie impregovaný odlišnou látkou. Oba povrchy vydržia rovnaké tepelné zaťaženie.',
+        answer: 'Tepelná odolnosť je rovnaká pre oba povrchy – závisí od materiálu, nie od povrchového spracovania. Lesklý povrch je len leštený, nie impregnovaný odlišnou látkou. Oba povrchy vydržia rovnaké tepelné zaťaženie.',
       },
       {
         question: 'Čo sa stane, ak zabudnem hrniec na sinterovanom kameni celý deň?',
         answer: 'Nič. Hrniec ochladne na izbovú teplotu a doska zostane nepoškodená. Na rozdiel od laminátu, kde by dlhodobý kontakt aj s vlažným dnom nádoby mohol zanechať stopy.',
       },
       {
-        question: 'Je rozdiel v tepelnej odolnosti medzi 12mm a 20mm doskami?',
-        answer: 'Tepelná odolnosť nie je priamo závislá od hrúbky — závisí od materiálovej kategórie. Obe hrúbky sinterovaného kameňa majú rovnakú tepelnú odolnosť (300°C+). Hrúbka ovplyvňuje štrukturálnu pevnosť a vhodnosť aplikácie, nie tepelné vlastnosti.',
+        question: 'Je rozdiel v tepelnej odolnosti medzi 12\u00A0mm a 20\u00A0mm doskami?',
+        answer: 'Tepelná odolnosť nie je priamo závislá od hrúbky – závisí od materiálovej kategórie. Obe hrúbky sinterovaného kameňa majú rovnakú tepelnú odolnosť (300\u00A0°C+). Hrúbka ovplyvňuje štrukturálnu pevnosť a vhodnosť aplikácie, nie tepelné vlastnosti.',
       },
       {
         question: 'Ako testujú výrobcovia tepelnú odolnosť?',
-        answer: 'Podľa normy ISO 10545-9 sa testuje odolnosť voči tepelnému šoku: vzorky sa ponárajú do vriacej vody a ľadovej vody striedavo. Sinterovaný kameň triedy 5 tieto testy zvláda bez prasklín ani zmeny vzhľadu. Vždy si pýtajte konkrétne testované hodnoty, nie len odkaz na normu.',
+        answer: 'Podľa normy ISO 10545-9 sa testuje odolnosť voči tepelnému šoku: vzorky sa ponárajú do vriacej vody a ľadovej vody striedavo. Sinterovaný kameň triedy 5 tieto testy zvláda bez prasklín ani zmeny vzhľadu. Vždy si pýtajte konkrétne testované hodnoty, nielen odkaz na normu.',
       },
     ],
   },

@@ -43,30 +43,30 @@ export const ARTICLE_09: BlogArticle = {
 
   sk: {
     title: 'Transparentné ceny: čo musí obsahovať vaša cenová ponuka',
-    subtitle: 'Sprievodca cenovou ponukou na sinterovaný kameň — bez skrytých poplatkov a prekvapení na faktúre',
+    subtitle: 'Sprievodca cenovou ponukou na sinterovaný kameň – bez skrytých poplatkov a prekvapení na faktúre',
     heroAlt: 'Pôdorys kuchyne, zvinovací meter, ceruzka a vzorky dekorov Calacatta Top a Roman Travertine na dubovom stole, pohľad zhora',
     heroCaption: 'Vizualizácia so vzorkami dekorov Calacatta Top a Roman Travertine',
     excerpt:
-      'Dve ponuky na tú istú kuchyňu sa môžu líšiť o stovky eur — a lacnejšia môže byť v skutočnosti drahšia. Zistite, čo musí férová ponuka obsahovať a na čo si dať pozor.',
+      'Dve ponuky na tú istú kuchyňu sa môžu líšiť o stovky eur – a lacnejšia môže byť v skutočnosti drahšia. Zistite, čo musí férová ponuka obsahovať a na čo si dať pozor.',
     metaTitle: 'Cenová ponuka na sinterovaný kameň: čo musí obsahovať | OROSTONE',
     metaDescription: `Čo musí obsahovať férová cenová ponuka na pracovnú dosku zo sinterovaného kameňa. Ceny platní ${formatEurWhole(SLAB_TOTAL_MIN)}–${formatEurWhole(SLAB_TOTAL_MAX)}, rozpis položiek a skryté náklady, na ktoré si dať pozor.`,
-    directAnswer: `Férová cenová ponuka na pracovnú dosku zo sinterovaného kameňa musí obsahovať rozpis: materiál, fabrikáciu (výrezy, hrany), dopravu, montáž a DPH. Na trhu vychádza hotová doska orientačne ${MARKET.min}–${MARKET.max} €/bm vrátane výroby a montáže. Pri ponuke bez rozpisu položiek porovnávate jablká s hruškami.`,
+    directAnswer: `Férová cenová ponuka na pracovnú dosku zo sinterovaného kameňa musí obsahovať rozpis: materiál, fabrikáciu (výrezy, hrany), dopravu, montáž a DPH. Na trhu vychádza hotová doska orientačne ${MARKET.min}–${MARKET.max}\u00A0€/bm vrátane výroby a montáže. Pri ponuke bez rozpisu položiek porovnávate jablká s hruškami.`,
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>
 <ul class="article-tldr">
-  <li>Hotová doska zo sinterovaného kameňa vychádza na trhu orientačne <strong>${MARKET.min}–${MARKET.max} €/bm</strong> vrátane výroby a montáže</li>
-  <li>Materiál (platňa 3200 × 1600 × 12 mm) stojí <strong>${skEur(SLAB_PRICE_MIN)}–${skEur(SLAB_PRICE_MAX)}/m² s DPH</strong> podľa dekoru, teda ${formatEurWhole(SLAB_TOTAL_MIN)}–${formatEurWhole(SLAB_TOTAL_MAX)} za celú platňu</li>
-  <li>Férová ponuka má rozpis: materiál, výrezy, hrana, doprava, montáž — každá položka zvlášť</li>
+  <li>Hotová doska zo sinterovaného kameňa vychádza na trhu orientačne <strong>${MARKET.min}–${MARKET.max}\u00A0€/bm</strong> vrátane výroby a montáže</li>
+  <li>Materiál (platňa 3\u00A0200\u00A0×\u00A01\u00A0600\u00A0×\u00A012\u00A0mm) stojí <strong>${skEur(SLAB_PRICE_MIN)}–${skEur(SLAB_PRICE_MAX)}/m² s DPH</strong> podľa dekoru, teda ${formatEurWhole(SLAB_TOTAL_MIN)}–${formatEurWhole(SLAB_TOTAL_MAX)} za celú platňu</li>
+  <li>Férová ponuka má rozpis: materiál, výrezy, hrana, doprava, montáž – každá položka zvlášť</li>
   <li>Najčastejšie skryté náklady: výrezy, opracovanie hrán, výnos do bytu a využitie platne</li>
 </ul>
 
-<p>Povedzme si to na rovinu: väčšina dodávateľov kameňa ceny nezverejňuje. „Napíšte nám a pripravíme ponuku na mieru.“ Znie to ústretovo, ale v praxi to znamená jedno — nemáte sa čoho chytiť a dve ponuky neviete porovnať.</p>
+<p>Povedzme si to na rovinu: väčšina dodávateľov kameňa ceny nezverejňuje. „Napíšte nám a pripravíme ponuku na mieru.“ Znie to ústretovo, ale v praxi to znamená jedno – nemáte sa čoho chytiť a dve ponuky neviete porovnať.</p>
 
-<p>V Orostone sme sa rozhodli ísť opačnou cestou. Ceny všetkých dekorov máte na webe, sadzbu za realizáciu tiež. V tomto článku vám ukážem, ako sa cena pracovnej dosky reálne skladá — aby ste každú ponuku, aj od konkurencie, vedeli prečítať ako profík.</p>
+<p>V Orostone sme sa rozhodli ísť opačnou cestou. Ceny všetkých dekorov máte na webe, sadzbu za realizáciu tiež. V tomto článku vám ukážem, ako sa cena pracovnej dosky reálne skladá – aby ste každú ponuku, aj od konkurencie, vedeli prečítať ako profík.</p>
 
 <h2 id="kolko-stoji">Koľko stojí sinterovaný kameň? Reálne čísla</h2>
 
-<p>Začnime materiálom. Platňa sinterovaného kameňa má formát <strong>3200 × 1600 mm</strong> a hrúbku <strong>12 mm</strong>. Toto sú aktuálne ceny všetkých dekorov v našej ponuke (synchronizované s e-shopom):</p>
+<p>Začnime materiálom. Platňa sinterovaného kameňa má formát <strong>3\u00A0200\u00A0×\u00A01\u00A0600\u00A0mm</strong> a hrúbku <strong>12\u00A0mm</strong>. Toto sú aktuálne ceny všetkých dekorov v našej ponuke (synchronizované s e-shopom):</p>
 
 <table>
   <thead><tr><th>Dekor</th><th>Cena za m² s DPH</th></tr></thead>
@@ -76,27 +76,27 @@ export const ARTICLE_09: BlogArticle = {
 <p>Kompletný prehľad vrátane cien za celú platňu nájdete v <a href="/cennik">cenníku</a>.</p>
 
 <div class="article-highlight">
-  <strong>Pozor na jednotky.</strong> Cena materiálu sa uvádza za m². Cena hotovej dosky sa uvádza za bežný meter (€/bm) — a práve tá vás zaujíma, lebo obsahuje aj prácu.
+  <strong>Pozor na jednotky.</strong> Cena materiálu sa uvádza za m². Cena hotovej dosky sa uvádza za bežný meter (€/bm) – a práve tá vás zaujíma, lebo obsahuje aj prácu.
 </div>
 
 <h2 id="cena-za-bezny-meter">Čo znamená cena za bežný meter (€/bm)?</h2>
 
-<p>Bežný meter je meter dĺžky hotovej dosky v štandardnej hĺbke kuchynskej linky (~60 cm) — vrátane rezania, výrezov, hrán, dopravy a montáže. Je to jediná jednotka, v ktorej sa dajú ponuky medzi dodávateľmi férovo porovnať.</p>
+<p>Bežný meter je meter dĺžky hotovej dosky v štandardnej hĺbke kuchynskej linky (~60\u00A0cm) – vrátane rezania, výrezov, hrán, dopravy a montáže. Je to jediná jednotka, v ktorej sa dajú ponuky medzi dodávateľmi férovo porovnať.</p>
 
 <p>Pri sinterovanom kameni počítajte na trhu orientačne s <strong>${MARKET.min}–${MARKET.max}\u00A0€/bm</strong> vrátane výroby a montáže. Pri malej kuchyni býva cena za meter vyššia, pretože platne sa kupujú celé a aj kratšia linka potrebuje celú platňu.</p>
 
-<p><strong>Ponuka výrazne pod ${MARKET.min}\u00A0€/bm by vás mala zaujímať, nie potešiť.</strong> Niečo v procese sa pravdepodobne škrtá — slabšie podlepenie, jednoduchšia hrana, alebo doprava a montáž „prekvapivo“ nie sú v cene. Viac o cenových hladinách sme písali v článku o <a href="/blog/umely-kamen-pracovna-doska">umelom kameni na pracovnú dosku</a>.</p>
+<p><strong>Ponuka výrazne pod ${MARKET.min}\u00A0€/bm by vás mala zaujímať, nie potešiť.</strong> Niečo v procese sa pravdepodobne škrtá – slabšie podlepenie, jednoduchšia hrana alebo doprava a montáž „prekvapivo“ nie sú v cene. Viac o cenových hladinách sme písali v článku o <a href="/blog/umely-kamen-pracovna-doska">umelom kameni na pracovnú dosku</a>.</p>
 
 <h2 id="co-musi-obsahovat">Čo musí obsahovať férová cenová ponuka</h2>
 
-<p>Toto je kľúčové. Ak ponuka obsahuje len jedno číslo, neviete, čo v ňom je — a čo vám prídu doúčtovať pri montáži. Žiadajte rozpis týchto položiek:</p>
+<p>Toto je kľúčové. Ak ponuka obsahuje len jedno číslo, neviete, čo v ňom je – a čo vám prídu doúčtovať pri montáži. Žiadajte rozpis týchto položiek:</p>
 
 <ul>
-  <li><strong>Materiál</strong> — dekor, počet platní a cena za platňu alebo m²</li>
-  <li><strong>Fabrikácia</strong> — rezanie, výrezy (drez, varná doska, batéria), opracovanie hrán, leštenie</li>
-  <li><strong>Doprava</strong> — vrátane výnosu na miesto montáže (poschodie bez výťahu je iná cena než prízemie)</li>
-  <li><strong>Montáž</strong> — osadenie, lepenie spojov, škárovanie</li>
-  <li><strong>DPH</strong> — jasne uvedené, či sú ceny s DPH alebo bez</li>
+  <li><strong>Materiál</strong> – dekor, počet platní a cena za platňu alebo m²</li>
+  <li><strong>Fabrikácia</strong> – rezanie, výrezy (drez, varná doska, batéria), opracovanie hrán, leštenie</li>
+  <li><strong>Doprava</strong> – vrátane výnosu na miesto montáže (poschodie bez výťahu je iná cena než prízemie)</li>
+  <li><strong>Montáž</strong> – osadenie, lepenie spojov, škárovanie</li>
+  <li><strong>DPH</strong> – jasne uvedené, či sú ceny s DPH alebo bez</li>
 </ul>
 
 <div class="article-tip">
@@ -105,13 +105,13 @@ export const ARTICLE_09: BlogArticle = {
 
 <h2 id="skryte-naklady">Skryté náklady, na ktoré si dajte pozor</h2>
 
-<p>A teraz to dôležité — položky, ktoré v lacných ponukách „chýbajú" najčastejšie:</p>
+<p>A teraz to dôležité – položky, ktoré v lacných ponukách „chýbajú“ najčastejšie:</p>
 
 <ul>
   <li><strong>Výrezy.</strong> Drez, varná doska a batéria sú tri výrezy. Pri cene 40–80\u00A0€ za výrez je to rozdiel, ktorý v ponuke vidieť musíte.</li>
   <li><strong>Opracovanie hrán.</strong> Rovná hrana je základ; skosená, zaoblená alebo mitrovaná hrana stojí viac. Ktorá je v cene?</li>
-  <li><strong>Využitie platne.</strong> Platíte za celé platne, nie za výslednú dosku. Dobrý dodávateľ navrhne rozloženie tak, aby odpad bol čo najmenší — a povie vám, koľko platní projekt potrebuje.</li>
-  <li><strong>Doprava a výnos.</strong> Platňa váži okolo 148 kg. Výnos na 3. poschodie bez výťahu nie je detail.</li>
+  <li><strong>Využitie platne.</strong> Platíte za celé platne, nie za výslednú dosku. Dobrý dodávateľ navrhne rozloženie tak, aby odpad bol čo najmenší – a povie vám, koľko platní projekt potrebuje.</li>
+  <li><strong>Doprava a výnos.</strong> Platňa váži okolo 148\u00A0kg. Výnos na 3. poschodie bez výťahu nie je detail.</li>
   <li><strong>Spoje.</strong> Počet spojov ovplyvňuje prácnosť aj vzhľad. Kde budú a koľko ich bude?</li>
 </ul>
 
@@ -119,27 +119,27 @@ export const ARTICLE_09: BlogArticle = {
 
 <p>Predstavte si, že máte na kuchyňu s ostrovčekom dve ponuky: <strong>350\u00A0€/bm</strong> a <strong>420\u00A0€/bm</strong>. Prvá vyzerá jasne výhodnejšie.</p>
 
-<p>Potom si vyžiadate rozpis. Prvá ponuka: materiál + rezanie. Výrezy 3 × 60 €, mitrovaná hrana ostrovčeka 180 €, doprava s výnosom 120 € a montáž 250 € — „podľa skutočnosti“. Druhá ponuka: všetko v cene.</p>
+<p>Potom si vyžiadate rozpis. Prvá ponuka: materiál + rezanie. Výrezy 3\u00A0×\u00A060\u00A0€, mitrovaná hrana ostrovčeka 180\u00A0€, doprava s výnosom 120\u00A0€ a montáž 250\u00A0€ – „podľa skutočnosti“. Druhá ponuka: všetko v cene.</p>
 
-<p><strong>Pri 5\u00A0bm je prvá ponuka po doúčtovaní drahšia o viac ako 300\u00A0€</strong> — a to ste sa to dozvedeli až pri montáži. Presne preto je rozpis položiek dôležitejší než výsledné číslo.</p>
+<p><strong>Pri 5\u00A0bm je prvá ponuka po doúčtovaní drahšia o viac ako 300\u00A0€</strong> – a to ste sa to dozvedeli až pri montáži. Presne preto je rozpis položiek dôležitejší než výsledné číslo.</p>
 
 <h2 id="ako-to-robime">Ako to robíme v Orostone</h2>
 
-<p>Jednoducho — čísla máte vopred:</p>
+<p>Jednoducho – čísla máte vopred:</p>
 
 <ul>
   <li><strong>Ceny dekorov</strong> sú verejné na <a href="/cennik">/cennik</a> aj pri každom produkte, synchronizované s e-shopom.</li>
-  <li><strong>Predávame materiál</strong> — celé platne za ${formatEurWhole(SLAB_TOTAL_MIN)}–${formatEurWhole(SLAB_TOTAL_MAX)} s DPH, od ${BULK_DISCOUNT.quantity} platní so zľavou ${BULK_DISCOUNT.discountPercent} %.</li>
-  <li><strong>Výrobu a montáž</strong> — zameranie, opracovanie hrán, leštenie a montáž — robí a fakturuje partnerský kamenár so skúsenosťou so sinterovaným kameňom, orientačne za <strong>${INSTALLATION_RATE_PER_M2} €/m² s DPH</strong>.</li>
-  <li><strong>Ponuka s rozpisom</strong> — od nás materiál (dekor, počet platní, cena za platňu), od kamenára výroba a montáž. Žiadne „všetko v cene" bez detailov.</li>
-  <li><strong>Garancia ceny</strong> — rezervačný poplatok 99\u00A0€ vám <a href="/podmienky-rezervacie-ceny">garantuje aktuálnu cenu na 6 mesiacov</a>, ak sa rozhodujete dlhšie.</li>
+  <li><strong>Predávame materiál</strong> – celé platne za ${formatEurWhole(SLAB_TOTAL_MIN)}–${formatEurWhole(SLAB_TOTAL_MAX)} s DPH, od ${BULK_DISCOUNT.quantity} platní so zľavou ${BULK_DISCOUNT.discountPercent}\u00A0%.</li>
+  <li><strong>Výrobu a montáž</strong> – zameranie, opracovanie hrán, leštenie a montáž – robí a fakturuje partnerský kamenár so skúsenosťou so sinterovaným kameňom, orientačne za <strong>${INSTALLATION_RATE_PER_M2}\u00A0€/m² s DPH</strong>.</li>
+  <li><strong>Ponuka s rozpisom</strong> – od nás materiál (dekor, počet platní, cena za platňu), od kamenára výroba a montáž. Žiadne „všetko v cene“ bez detailov.</li>
+  <li><strong>Garancia ceny</strong> – rezervačný poplatok 99\u00A0€ vám <a href="/podmienky-rezervacie-ceny">garantuje aktuálnu cenu na 6 mesiacov</a>, ak sa rozhodujete dlhšie.</li>
 </ul>
 
-<p>Či sa sinterovaný kameň oplatí aj z pohľadu dlhodobých nákladov, sme rozobrali v článku <a href="/blog/oplati-sa-sinterovany-kamen">Oplatí sa sinterovaný kameň?</a> — spoiler: pri 25-ročnom horizonte vychádza lacnejšie ako žula.</p>
+<p>Či sa sinterovaný kameň oplatí aj z pohľadu dlhodobých nákladov, sme rozobrali v článku <a href="/blog/oplati-sa-sinterovany-kamen">Oplatí sa sinterovaný kameň?</a> – spoiler: pri 25-ročnom horizonte vychádza lacnejšie ako žula.</p>
 
 <h2 id="ako-ziskat-ponuku">Ako získať presnú ponuku</h2>
 
-<p>Stačia dve veci: <strong>pôdorys alebo základné rozmery</strong> a <strong>počet výrezov</strong> (drez, varná doska, batéria). Pošlite nám ich cez <a href="/kontakt">kontaktný formulár</a> — pripravíme rozpis, ktorý viete položka po položke porovnať s čímkoľvek na trhu.</p>
+<p>Stačia dve veci: <strong>pôdorys alebo základné rozmery</strong> a <strong>počet výrezov</strong> (drez, varná doska, batéria). Pošlite nám ich cez <a href="/kontakt">kontaktný formulár</a> – pripravíme rozpis, ktorý viete položka po položke porovnať s čímkoľvek na trhu.</p>
 
 <p>A ak si najprv chcete dekor potvrdiť naživo, <a href="/vzorky">objednajte si vzorku zadarmo</a> alebo príďte do showroomu v Bošanoch porovnať celé platne pri dennom svetle.</p>
 `,
@@ -151,36 +151,36 @@ export const ARTICLE_09: BlogArticle = {
       },
       {
         question: 'Koľko stojí kompletná pracovná doska zo sinterovaného kameňa?',
-        answer: `Na trhu orientačne ${MARKET.min}–${MARKET.max} €/bm vrátane výroby a montáže; pri malých kuchyniach vychádza meter drahšie, lebo platne sa kupujú celé. V Orostone kupujete materiál — celú platňu za ${formatEurWhole(SLAB_TOTAL_MIN)}–${formatEurWhole(SLAB_TOTAL_MAX)} s DPH — a výrobu s montážou vám nacení partnerský kamenár.`,
+        answer: `Na trhu orientačne ${MARKET.min}–${MARKET.max}\u00A0€/bm vrátane výroby a montáže; pri malých kuchyniach vychádza meter drahšie, lebo platne sa kupujú celé. V Orostone kupujete materiál – celú platňu za ${formatEurWhole(SLAB_TOTAL_MIN)}–${formatEurWhole(SLAB_TOTAL_MAX)} s DPH – a výrobu s montážou vám nacení partnerský kamenár.`,
       },
       {
         question: 'Koľko stojí samotný materiál?',
-        answer: `Platňa sinterovaného kameňa 3200 × 1600 × 12 mm stojí ${skEur(SLAB_PRICE_MIN)}–${skEur(SLAB_PRICE_MAX)}/m² s DPH podľa dekoru, teda ${formatEurWhole(SLAB_TOTAL_MIN)}–${formatEurWhole(SLAB_TOTAL_MAX)} za celú platňu. Aktuálne ceny všetkých dekorov sú verejné na stránke /cennik a synchronizujú sa s e-shopom.`,
+        answer: `Platňa sinterovaného kameňa 3\u00A0200\u00A0×\u00A01\u00A0600\u00A0×\u00A012\u00A0mm stojí ${skEur(SLAB_PRICE_MIN)}–${skEur(SLAB_PRICE_MAX)}/m² s DPH podľa dekoru, teda ${formatEurWhole(SLAB_TOTAL_MIN)}–${formatEurWhole(SLAB_TOTAL_MAX)} za celú platňu. Aktuálne ceny všetkých dekorov sú verejné na stránke /cennik a synchronizujú sa s e-shopom.`,
       },
       {
         question: 'Aké skryté náklady mám v ponuke hľadať?',
         answer:
-          'Najčastejšie chýbajú: výrezy (drez, varná doska, batéria — 40–80\u00A0€ za kus), opracovanie hrán nad rámec rovnej hrany, výnos pri doprave a počet potrebných platní (platíte za celé platne, nie za výslednú dosku). Žiadajte ich v rozpise zvlášť.',
+          'Najčastejšie chýbajú: výrezy (drez, varná doska, batéria – 40–80\u00A0€ za kus), opracovanie hrán nad rámec rovnej hrany, výnos pri doprave a počet potrebných platní (platíte za celé platne, nie za výslednú dosku). Žiadajte ich v rozpise zvlášť.',
       },
       {
         question: 'Prečo sa ceny medzi dodávateľmi tak líšia?',
         answer:
-          'Lebo každý do „ceny" zahŕňa niečo iné. Jedna ponuka za 350 €/bm môže byť len materiál s rezaním, iná za 420 €/bm komplet vrátane montáže. Líši sa aj kvalita fabrikácie — podlepenie hrán, počet spojov a presnosť výrezov vidno až pri používaní.',
+          'Lebo každý do „ceny“ zahŕňa niečo iné. Jedna ponuka za 350\u00A0€/bm môže byť len materiál s rezaním, iná za 420\u00A0€/bm komplet vrátane montáže. Líši sa aj kvalita fabrikácie – podlepenie hrán, počet spojov a presnosť výrezov vidno až pri používaní.',
       },
       {
         question: 'Je cena uvedená na webe konečná?',
         answer:
-          'Ceny dekorov na webe sú konečné ceny materiálu s DPH. Finálna cena projektu závisí od rozmerov, počtu výrezov, typu hrany a dopravy — preto presnú ponuku pripravujeme z pôdorysu, s rozpisom položiek.',
+          'Ceny dekorov na webe sú konečné ceny materiálu s DPH. Finálna cena projektu závisí od rozmerov, počtu výrezov, typu hrany a dopravy – preto presnú ponuku pripravujeme z pôdorysu, s rozpisom položiek.',
       },
       {
         question: 'Viem si aktuálnu cenu garantovať, ak sa ešte rozhodujem?',
         answer:
-          'Áno. Rezervačný poplatok 99 € garantuje aktuálnu cenu produktov Orostone na 6 mesiacov. Podmienky nájdete na stránke Podmienky rezervácie ceny.',
+          'Áno. Rezervačný poplatok 99\u00A0€ garantuje aktuálnu cenu produktov Orostone na 6 mesiacov. Podmienky nájdete na stránke Podmienky rezervácie ceny.',
       },
       {
         question: 'Čo potrebujete na prípravu presnej ponuky?',
         answer:
-          'Pôdorys alebo základné rozmery dosky a počet výrezov (drez, varná doska, batéria). Z toho pripravíme rozpis: materiál, fabrikácia, doprava a montáž — každá položka zvlášť.',
+          'Pôdorys alebo základné rozmery dosky a počet výrezov (drez, varná doska, batéria). Z toho pripravíme rozpis: materiál, fabrikácia, doprava a montáž – každá položka zvlášť.',
       },
     ],
   },

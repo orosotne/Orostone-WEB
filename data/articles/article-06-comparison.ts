@@ -13,65 +13,65 @@ export const ARTICLE_06: BlogArticle = {
 
   sk: {
     title: 'Sinterovaný kameň vs kvarcit vs keramika vs porcelán: v čom je skutočný rozdiel?',
-    subtitle: 'Technické porovnanie materiálov pre prémiové kuchynské dosky — bez marketingových klišé',
+    subtitle: 'Technické porovnanie materiálov pre prémiové kuchynské dosky – bez marketingových klišé',
     excerpt: 'Komplexné porovnanie sinterovaného kameňa, kvarcitu, porcelánových dosiek a keramiky. Reálne čísla, certifikácie, cenové rozpätia a rozhodovací strom pre váš projekt.',
     metaTitle: 'Sinterovaný kameň, keramika, porcelán, kvarcit | OROSTONE',
     metaDescription: 'Rozdiel medzi sinterovaným kameňom, keramikou, porcelánom a kvarcitom. Z čoho sa vyrábajú, ako reagujú na teplo, UV a každodennú prácu v kuchyni.',
-    directAnswer: 'Sinterovaný kameň je 100% minerálny materiál spečený pri 1 200°C bez živíc — odolný voči teplu do 300°C, UV žiareniu a škvrnám. Kvarcitový kompozit obsahuje 7–10% polyesterových živíc, čo obmedzuje jeho tepelnú odolnosť na ~150°C a vylučuje ho z exteriérových aplikácií. Porcelánové dosky sú sinterovanému kameňu technicky najbližšie — bez živíc, s nízkou pórovitosťou.',
+    directAnswer: 'Sinterovaný kameň je 100\u00A0% minerálny materiál spečený pri 1\u00A0200\u00A0°C bez živíc – odolný voči teplu do 300\u00A0°C, UV žiareniu a škvrnám. Kvarcitový kompozit obsahuje 7–10\u00A0% polyesterových živíc, čo obmedzuje jeho tepelnú odolnosť na ~150\u00A0°C a vylučuje ho z exteriérových aplikácií. Porcelánové dosky sú sinterovanému kameňu technicky najbližšie – bez živíc, s nízkou pórovitosťou.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>
 <ul class="article-tldr">
-  <li>Sinterovaný kameň = 100% minerály, bez živíc, odolá 300°C a UV žiareniu</li>
-  <li>Kvarcitový kompozit obsahuje 7–10% polyesterových živíc — nad 150°C sa začínajú rozkladať</li>
-  <li>Porcelánové dosky sú sinterovanému kameňu technicky najbližšie — ideálne ako alternatíva</li>
-  <li>Neexistuje „najlepší“ materiál — existuje najvhodnejší pre váš konkrétny projekt</li>
+  <li>Sinterovaný kameň = 100\u00A0% minerály, bez živíc, odolá 300\u00A0°C a UV žiareniu</li>
+  <li>Kvarcitový kompozit obsahuje 7–10\u00A0% polyesterových živíc – nad 150\u00A0°C sa začínajú rozkladať</li>
+  <li>Porcelánové dosky sú sinterovanému kameňu technicky najbližšie – ideálne ako alternatíva</li>
+  <li>Neexistuje „najlepší“ materiál – existuje najvhodnejší pre váš konkrétny projekt</li>
 </ul>
 
 <p>Ak ste začali hľadať prémiový materiál na kuchynskú dosku, pravdepodobne ste narazili na lavínu termínov: sinterovaný kameň, kvarcit, kvarcitový kompozit, porcelánové dosky, keramické obklady... A pravdepodobne ste stále zmätení.</p>
 
-<p>Nie je to vaša chyba. Problém je, že výrobcovia, predajcovia a inštalatéri používajú tieto termíny <strong class="gold">nekonzistentne — niekedy zámerne</strong>.</p>
+<p>Nie je to vaša chyba. Problém je, že výrobcovia, predajcovia a inštalatéri používajú tieto termíny <strong class="gold">nekonzistentne – niekedy zámerne</strong>.</p>
 
-<p>Tento článok existuje preto, aby ste po jeho prečítaní vedeli presne, čo kupujete, prečo to kupujete a koľko by ste za to mali platiť. Žiadne vágne slogany. Len fakty, čísla a brutálna úprimnosť — aj keď to pre sinterovaný kameň nie je vždy lichotivé.</p>
+<p>Tento článok existuje preto, aby ste po jeho prečítaní vedeli presne, čo kupujete, prečo to kupujete a koľko by ste za to mali platiť. Žiadne vágne slogany. Len fakty, čísla a brutálna úprimnosť – aj keď to pre sinterovaný kameň nie je vždy lichotivé.</p>
 
 <div class="article-quote">
-  <p>Každý materiál má svoje silné stránky aj limity. Správna voľba závisí od vášho projektu — nie od marketingu.</p>
+  <p>Každý materiál má svoje silné stránky aj limity. Správna voľba závisí od vášho projektu – nie od marketingu.</p>
 </div>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-06/vzorky-tri-dekory.webp" alt="Tri vzorky sinterovaného kameňa vedľa seba — Calacatta Top, Astrana Grey a Gothic Gold" loading="lazy" />
+  <img src="/images/blog/article-06/vzorky-tri-dekory.webp" alt="Tri vzorky sinterovaného kameňa vedľa seba – Calacatta Top, Astrana Grey a Gothic Gold" loading="lazy" />
   <figcaption>Pri porovnávaní rozhodujú skutočné vzorky. Na fotke tri dekory sinterovaného kameňa: Calacatta Top, Astrana Grey a Gothic Gold.</figcaption>
 </figure>
 
-<h2 id="co-je-co">Čo je čo — definitívne vysvetlenie</h2>
+<h2 id="co-je-co">Čo je čo – definitívne vysvetlenie</h2>
 
 <h3>Sinterovaný kameň (sintered stone)</h3>
-<p>Sinterovaný kameň je materiál vyrobený zo 100% prírodných minerálov — predovšetkým kremeňa, živca a ílu. Tieto suroviny sa rozdrvia na jemný prášok, zhutnia pod tlakom <strong>až 25 000 ton</strong> a následne spečú pri teplotách <strong>nad 1 200°C</strong>.</p>
+<p>Sinterovaný kameň je materiál vyrobený zo 100\u00A0% prírodných minerálov – predovšetkým kremeňa, živca a ílu. Tieto suroviny sa rozdrvia na jemný prášok, zhutnia pod tlakom <strong>až 25\u00A0000\u00A0ton</strong> a následne spečú pri teplotách <strong>nad 1\u00A0200\u00A0°C</strong>.</p>
 
-<p>Proces napodobňuje to, čo príroda robí s kameňom počas miliónov rokov pod zemským povrchom — len za hodiny. Kľúčový fakt: v sinterovanom kameni <strong class="gold">nie sú žiadne polyesterové živice, lepidlá ani umelé spojivá</strong>. Spájanie minerálov nastáva čisto fyzikálnym procesom — výsledkom je materiál s takmer nulovou pórovitosťou.</p>
+<p>Proces napodobňuje to, čo príroda robí s kameňom počas miliónov rokov pod zemským povrchom – len za hodiny. Kľúčový fakt: v sinterovanom kameni <strong class="gold">nie sú žiadne polyesterové živice, lepidlá ani umelé spojivá</strong>. Spájanie minerálov nastáva čisto fyzikálnym procesom – výsledkom je materiál s takmer nulovou pórovitosťou.</p>
 
 <h3>Kvarcitový kompozit (engineered quartz)</h3>
-<p>Pozor na terminológiu: „kvarcit" v kontexte kuchynských dosiek neznamená prírodný kameň, ale <em>engineered quartz</em> — umelý kompozit. Zloženie: <strong>90–93% drveného kremeňa + 7–10% polyesterových živíc</strong> + pigmenty.</p>
+<p>Pozor na terminológiu: „kvarcit“ v kontexte kuchynských dosiek neznamená prírodný kameň, ale <em>engineered quartz</em> – umelý kompozit. Zloženie: <strong>90–93\u00A0% drveného kremeňa + 7–10\u00A0% polyesterových živíc</strong> + pigmenty.</p>
 
-<p>Živice sú Achillovou pätou kvarcitu. Pri teplotách <strong>nad 150°C sa polyester začína rozkladať</strong> — vznikajú žlté škvrny, popraskanie alebo trvalé zmeny farby. UV žiarenie degraduje živice v priebehu mesiacov — kvarcit <strong class="gold">nie je vhodný do exteriéru</strong>.</p>
+<p>Živice sú Achillovou pätou kvarcitu. Pri teplotách <strong>nad 150\u00A0°C sa polyester začína rozkladať</strong> – vznikajú žlté škvrny, popraskanie alebo trvalé zmeny farby. UV žiarenie degraduje živice v priebehu mesiacov – kvarcit <strong class="gold">nie je vhodný do exteriéru</strong>.</p>
 
 <p>Na druhej strane: kvarcit ponúka obrovský výber farieb a vzorov, vynikajúcu mechanickú pevnosť a pri bežnom interiérovom použití výbornú trvanlivosť.</p>
 
 <h3>Porcelánové dosky (large-format porcelain slabs)</h3>
-<p>Porcelánové dosky sú veľkoformátové „platne" z kaolínového ílu, živca a ďalších minerálov. Lisujú sa pod tlakom <strong>4 000–8 000 ton</strong> a vypaľujú pri <strong>1 200°C+</strong>. Nemajú živice — podobne ako sinterovaný kameň.</p>
+<p>Porcelánové dosky sú veľkoformátové „platne“ z kaolínového ílu, živca a ďalších minerálov. Lisujú sa pod tlakom <strong>4\u00A0000–8\u00A0000\u00A0ton</strong> a vypaľujú pri <strong>1\u00A0200\u00A0°C+</strong>. Nemajú živice – podobne ako sinterovaný kameň.</p>
 
-<p>V čom sa líšia? Predovšetkým v <strong>sile lisovania</strong> (sinterovaný kameň: až 25 000 ton vs. porcelán: max 8 000 ton). Prémiové porcelánové dosky sú technicky veľmi blízke sinterovanému kameňu z hľadiska výkonu — <strong class="gold">a za nižšiu cenu</strong>.</p>
+<p>V čom sa líšia? Predovšetkým v <strong>sile lisovania</strong> (sinterovaný kameň: až 25\u00A0000\u00A0ton vs. porcelán: max. 8\u00A0000\u00A0ton). Prémiové porcelánové dosky sú technicky veľmi blízke sinterovanému kameňu z hľadiska výkonu – <strong class="gold">a za nižšiu cenu</strong>.</p>
 
 <h3>Keramické obklady a dlaždice</h3>
-<p>Keramika sa vypaľuje pri nižšej teplote (<strong>1 000–1 100°C</strong>) z menej rafinovaného ílu. Výsledkom je pórovitejší materiál s absorpciou vody <strong>3–7%</strong>. Pre kuchynské pracovné dosky je <strong class="gold">nevhodná</strong>.</p>
+<p>Keramika sa vypaľuje pri nižšej teplote (<strong>1\u00A0000–1\u00A0100\u00A0°C</strong>) z menej rafinovaného ílu. Výsledkom je pórovitejší materiál s absorpciou vody <strong>3–7\u00A0%</strong>. Pre kuchynské pracovné dosky je <strong class="gold">nevhodná</strong>.</p>
 
 <h3>Obchodné značky vs. materiálové kategórie</h3>
-<p>Toto je najčastejšie nedorozumenie na trhu. Mnoho obchodných názvov, s ktorými sa stretnete pri hľadaní, nie sú nové materiály — sú to len komerčné označenia pre jednu z vyššie popísaných kategórií od rôznych európskych a svetových výrobcov.</p>
+<p>Toto je najčastejšie nedorozumenie na trhu. Mnohé obchodné názvy, s ktorými sa stretnete pri hľadaní, nie sú nové materiály – sú to len komerčné označenia pre jednu z vyššie popísaných kategórií od rôznych európskych a svetových výrobcov.</p>
 
-<p>Preto sa vždy pýtajte: <strong>„Z akej materiálovej kategórie je tento produkt?“</strong> — nie len na obchodný názov. Odpoveď vám prezradí oveľa viac o reálnych vlastnostiach.</p>
+<p>Preto sa vždy pýtajte: <strong>„Z akej materiálovej kategórie je tento produkt?“</strong> – nielen na obchodný názov. Odpoveď vám prezradí oveľa viac o reálnych vlastnostiach.</p>
 
 <div class="article-highlight">
   <p><strong>Pravidlo číslo 1 pri výbere:</strong></p>
-  <p>Obchodný názov produktu je marketingové rozhodnutie. <strong>Materiálová kategória</strong> (sinterovaný kameň / kvarcit / porcelán / keramika) je technická realita. Vždy posudzujte kategóriu — nie značku.</p>
+  <p>Obchodný názov produktu je marketingové rozhodnutie. <strong>Materiálová kategória</strong> (sinterovaný kameň / kvarcit / porcelán / keramika) je technická realita. Vždy posudzujte kategóriu – nie značku.</p>
 </div>
 
 <h2 id="porovnanie-vykonu">Aké sú reálne čísla?</h2>
@@ -84,58 +84,58 @@ export const ARTICLE_06: BlogArticle = {
 </thead>
 <tbody>
 <tr><td><strong>Tvrdosť (Mohs)</strong></td><td>7–8</td><td>6–7</td><td>8–9</td><td>4–6</td></tr>
-<tr><td><strong>Tepelná odolnosť</strong></td><td>300°C+ (bez poškodenia)</td><td>~150°C (živica sa rozkladá)</td><td>300°C+ (bez živíc)</td><td>200°C+</td></tr>
-<tr><td><strong>Absorpcia vody</strong></td><td>&lt;0,1%</td><td>&lt;0,1%</td><td>&lt;0,05%</td><td>3–7%</td></tr>
-<tr><td><strong>UV odolnosť</strong></td><td>Vynikajúca (bez živíc)</td><td>Slabá (živice degradujú)</td><td>Vynikajúca</td><td>Dobrá (glazúra chráni)</td></tr>
-<tr><td><strong>Ohybová pevnosť</strong></td><td>45–50 N/mm²</td><td>35–50 MPa</td><td>35+ N/mm²</td><td>15–25 N/mm²</td></tr>
+<tr><td><strong>Tepelná odolnosť</strong></td><td>300\u00A0°C+ (bez poškodenia)</td><td>~150\u00A0°C (živica sa rozkladá)</td><td>300\u00A0°C+ (bez živíc)</td><td>200\u00A0°C+</td></tr>
+<tr><td><strong>Absorpcia vody</strong></td><td>&lt;0,1\u00A0%</td><td>&lt;0,1\u00A0%</td><td>&lt;0,05\u00A0%</td><td>3–7\u00A0%</td></tr>
+<tr><td><strong>UV odolnosť</strong></td><td>Vynikajúca (bez živíc)</td><td>Slabá (živice sa degradujú)</td><td>Vynikajúca</td><td>Dobrá (glazúra chráni)</td></tr>
+<tr><td><strong>Ohybová pevnosť</strong></td><td>45–50\u00A0N/mm²</td><td>35–50\u00A0MPa</td><td>35+\u00A0N/mm²</td><td>15–25\u00A0N/mm²</td></tr>
 <tr><td><strong>Chemická odolnosť</strong></td><td>Trieda 5 (ISO 10545-13)</td><td>Dobrá (živica zraniteľná)</td><td>Trieda 4–5</td><td>Trieda 2–3</td></tr>
 <tr><td><strong>Odolnosť voči škvrnám</strong></td><td>Trieda 5 (ISO 10545-14)</td><td>Dobrá</td><td>Trieda 4–5</td><td>Slabá bez glazúry</td></tr>
-<tr><td><strong>Hmotnosť (12mm doska)</strong></td><td>~30 kg/m²</td><td>~30 kg/m²</td><td>~25 kg/m²</td><td>~20 kg/m²</td></tr>
+<tr><td><strong>Hmotnosť (12\u00A0mm doska)</strong></td><td>~30\u00A0kg/m²</td><td>~30\u00A0kg/m²</td><td>~25\u00A0kg/m²</td><td>~20\u00A0kg/m²</td></tr>
 </tbody>
 </table>
 
 <h3>Čo tie čísla skutočne znamenajú pre vás</h3>
 
-<p><strong>Tvrdosť 7–8 Mohs</strong> znamená, že sinterovaný kameň je tvrdší ako väčšina kuchynských nožov (5,5–6 Mohs). Porcelán je paradoxne ešte tvrdší (8–9), ale tá extra tvrdosť znamená aj vyššiu krehkosť — porcelánové dosky sa ľahšie odštiepia pri nárazoch.</p>
+<p><strong>Tvrdosť 7–8 Mohs</strong> znamená, že sinterovaný kameň je tvrdší ako väčšina kuchynských nožov (5,5–6 Mohs). Porcelán je paradoxne ešte tvrdší (8–9), ale tá extra tvrdosť znamená aj vyššiu krehkosť – porcelánové dosky sa ľahšie odštiepia pri nárazoch.</p>
 
-<p><strong>Tepelná odolnosť 300°C+</strong> u sinterovaného kameňa je reálna výhoda. Môžete naň položiť horúci hrniec priamo z plameňa bez obáv. U kvarcitu toto robte len s podložkou — 150\u00A0°C je teplota, ktorú bežný hrniec po 5 minútach na sporáku ľahko prekročí.</p>
+<p><strong>Tepelná odolnosť 300\u00A0°C+</strong> pri sinterovanom kameni je reálna výhoda. Môžete naň položiť horúci hrniec priamo z plameňa bez obáv. Pri kvarcite toto robte len s podložkou – 150\u00A0°C je teplota, ktorú bežný hrniec po 5 minútach na sporáku ľahko prekročí.</p>
 
 <p><strong>UV odolnosť</strong> je rozhodujúca pre exteriérové použitie a miestnosti s veľkými oknami. <strong class="gold">Kvarcit pri celodennom slnku stráca farbu v priebehu 6–18 mesiacov.</strong> Ak máte kuchynskú dosku vedľa francúzskeho okna s južnou orientáciou, kvarcit nie je správna voľba.</p>
 
 <div class="article-highlight">
-  <p><strong>Absorpcia vody — kľúčové číslo:</strong></p>
-  <p>Sinterovaný kameň a kvarcit majú absorpciu vody <strong>&lt;0,1%</strong> — oba sú prakticky nepriepustné. Keramika s <strong>3–7%</strong> je úplne iná liga — bez impregnácie nasáva tekutiny a škvrny sa trvale zachytia v póroch.</p>
+  <p><strong>Absorpcia vody – kľúčové číslo:</strong></p>
+  <p>Sinterovaný kameň a kvarcit majú absorpciu vody <strong>&lt;0,1\u00A0%</strong> – oba sú prakticky nepriepustné. Keramika s <strong>3–7\u00A0%</strong> je úplne iná liga – bez impregnácie nasáva tekutiny a škvrny sa trvale zachytia v póroch.</p>
 </div>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-06/kvapky-nero-margiua.webp" alt="Kvapky vody na povrchu sinterovaného kameňa v dekore Nero Margiua — voda sa nevpíja" loading="lazy" />
-  <figcaption>Nasiakavosť pod 0,1 % — kvapky ostanú na povrchu a utrú sa bez stopy.</figcaption>
+  <img src="/images/blog/article-06/kvapky-nero-margiua.webp" alt="Kvapky vody na povrchu sinterovaného kameňa v dekore Nero Margiua – voda sa nevpíja" loading="lazy" />
+  <figcaption>Nasiakavosť pod 0,1\u00A0% – kvapky ostanú na povrchu a utrú sa bez stopy.</figcaption>
 </figure>
 
 <h2 id="certifikacie">Ktoré certifikácie majú zmysel a ktoré sú len marketing?</h2>
 
 <p>Svet certifikácií je džungľa. Niektoré majú reálnu výpovednú hodnotu. Iné sú iba povinné minimum alebo marketingový trik.</p>
 
-<h3>CE značka — povinnosť, nie kvalita</h3>
-<p>CE značka je zo zákona povinná pre stavebné materiály v EU. Ak vám predajca zdôrazňuje CE značku ako dôkaz kvality, je to rovnaké, ako keby reštaurácia zdôrazňovala, že má tekúcu vodu.</p>
+<h3>CE značka – povinnosť, nie kvalita</h3>
+<p>CE značka je zo zákona povinná pre stavebné materiály v EÚ. Ak vám predajca zdôrazňuje CE značku ako dôkaz kvality, je to rovnaké, ako keby reštaurácia zdôrazňovala, že má tekúcu vodu.</p>
 
-<h3>NSF/ANSI 51 — skutočne zmysluplná</h3>
+<h3>NSF/ANSI 51 – skutočne zmysluplná</h3>
 <p>Certifikácia NSF/ANSI 51 potvrdzuje, že materiál je bezpečný pre kontakt s potravinami. Na rozdiel od CE ide o <strong>dobrovoľnú certifikáciu s prísnymi požiadavkami</strong>. Overenie: <strong>info.nsf.org/Certified/Food/</strong>.</p>
 
-<h3>Greenguard Gold — overiteľná a relevantná</h3>
-<p>Greenguard Gold certifikuje nízke emisie VOC do vnútorného vzduchu. Pre kvarcit je to dôležitejšie — niektoré lacnejšie kvarcity emitujú styrén z polyesterových živíc. Overenie: <strong>greenguard.org/certified-products</strong>.</p>
+<h3>Greenguard Gold – overiteľná a relevantná</h3>
+<p>Greenguard Gold certifikuje nízke emisie VOC do vnútorného vzduchu. Pre kvarcit je to dôležitejšie – niektoré lacnejšie kvarcity emitujú styrén z polyesterových živíc. Overenie: <strong>greenguard.org/certified-products</strong>.</p>
 
-<h3>ISO 10545 séria — metodika, nie záruka</h3>
-<p>Keď výrobca uvádza „testované podľa ISO 10545-14“, hovorí vám, <em>ako</em> testoval, nie <em>aký výsledok dosiahol</em>. Vždy sa pýtajte na <strong class="gold">konkrétnu dosiahnutú triedu</strong> — Trieda 5 je najvyššia, Trieda 1 najnižšia.</p>
+<h3>ISO 10545 séria – metodika, nie záruka</h3>
+<p>Keď výrobca uvádza „testované podľa ISO 10545-14“, hovorí vám, <em>ako</em> testoval, nie <em>aký výsledok dosiahol</em>. Vždy sa pýtajte na <strong class="gold">konkrétnu dosiahnutú triedu</strong> – trieda 5 je najvyššia, trieda 1 najnižšia.</p>
 
 <div class="article-tip">
   <p><strong>Ako preveriť certifikácie za 5 minút</strong></p>
-  <p>NSF: info.nsf.org — vyhľadanie podľa výrobcu. Greenguard: greenguard.org — vyhľadanie certifikovaných produktov. CE: preverte číslo notifikovaného orgánu na ec.europa.eu. Ak predajca nedokáže poskytnúť overiteľný certifikát do 48 hodín, je to varovný signál.</p>
+  <p>NSF: info.nsf.org – vyhľadanie podľa výrobcu. Greenguard: greenguard.org – vyhľadanie certifikovaných produktov. CE: preverte číslo notifikovaného orgánu na ec.europa.eu. Ak predajca nedokáže poskytnúť overiteľný certifikát do 48 hodín, je to varovný signál.</p>
 </div>
 
 <div class="article-cta">
   <p>Neviete sa rozhodnúť medzi materiálmi?</p>
-  <p>Poraďte sa s nami — nezáväzne a zadarmo. Ukážeme vám vzorky a vysvetlíme rozdiely priamo v showroome.</p>
+  <p>Poraďte sa s nami – nezáväzne a zadarmo. Ukážeme vám vzorky a vysvetlíme rozdiely priamo v showroome.</p>
   <a href="/kontakt" class="cta-btn">Nezáväzná konzultácia →</a>
 </div>
 
@@ -143,21 +143,21 @@ export const ARTICLE_06: BlogArticle = {
 
 <p>Ani najlepší materiál nie je imúnny voči výrobným chybám. Tu je kontrolný zoznam, ktorý by ste mali zvládnuť <strong class="gold">pred každou kúpou</strong>:</p>
 
-<p><strong>1. Rovinnosť:</strong> Položte rovnú latu (2\u00A0m) na povrch. Maximálna odchýlka má byť <strong>max 1,5 mm na 3 m dosku</strong>. Ak vidíte svetlo väčšie ako 2\u00A0mm, doska nie je v tolerancii.</p>
+<p><strong>1. Rovinnosť:</strong> Položte rovnú latu (2\u00A0m) na povrch. Maximálna odchýlka má byť <strong>max. 1,5\u00A0mm na 3\u00A0m dosku</strong>. Ak vidíte svetlo väčšie ako 2\u00A0mm, doska nie je v tolerancii.</p>
 
 <p><strong>2. Opakovanie vzoru:</strong> Skontrolujte aspoň 3–5 dosiek vedľa seba. Ak vidíte identické žilky v rovnakej pozícii, ide o lacnú digitálnu potlač. Prémiové dosky používajú <strong>30–80+ unikátnych vzorov</strong>.</p>
 
-<p><strong>3. Povrchové defekty:</strong> Prezrite povrch pri bočnom osvetlení — hľadajte dierky (pinholes), vlásočnicové trhliny (crazing) a zvlnenie glazúry (crawling).</p>
+<p><strong>3. Povrchové defekty:</strong> Prezrite povrch pri bočnom osvetlení – hľadajte dierky (pinholes), vlasové trhliny (crazing) a zvlnenie glazúry (crawling).</p>
 
-<p><strong>4. Tolerancia hrúbky:</strong> Zmerajte hrúbku na 5+ miestach. Pre 12 mm dosku je akceptovateľná odchýlka <strong>±0,5 mm</strong>.</p>
+<p><strong>4. Tolerancia hrúbky:</strong> Zmerajte hrúbku na 5+ miestach. Pre 12\u00A0mm dosku je akceptovateľná odchýlka <strong>±0,5\u00A0mm</strong>.</p>
 
-<p><strong>5. Kvalita hrán:</strong> Prejdite prstom po hranách — mali by byť hladké, bez dutín a výlomov. U full-body veining by farba na hrane mala zodpovedať povrchu.</p>
+<p><strong>5. Kvalita hrán:</strong> Prejdite prstom po hranách – mali by byť hladké, bez dutín a výlomov. Pri full-body veining by farba na hrane mala zodpovedať povrchu.</p>
 
 <p><strong>6. Farebná konzistencia (delta E):</strong> Pri viacerých doskách rovnakého dekóru požiadajte o meranie delta E. Pre prémiové materiály by mala byť <strong>pod 1,0</strong>.</p>
 
 <div class="article-highlight">
-  <p><strong>Certifikát šarže — podceňovaný dokument:</strong></p>
-  <p>Seriózny výrobca dokáže poskytnúť testovací certifikát <strong>konkrétnej výrobnej šarže</strong>, nie len všeobecný firemný certifikát. Šaržový certifikát potvrdzuje, že presne tá doska, ktorú kupujete, prešla testom. Bez neho kupujete mačku vo vreci.</p>
+  <p><strong>Certifikát šarže – podceňovaný dokument:</strong></p>
+  <p>Seriózny výrobca dokáže poskytnúť testovací certifikát <strong>konkrétnej výrobnej šarže</strong>, nielen všeobecný firemný certifikát. Šaržový certifikát potvrdzuje, že presne tá doska, ktorú kupujete, prešla testom. Bez neho kupujete mačku vo vreci.</p>
 </div>
 
 <h2 id="cenove-porovnanie">Koľko to skutočne stojí?</h2>
@@ -178,31 +178,31 @@ export const ARTICLE_06: BlogArticle = {
 
 <h3>Prečo cena nie je celý príbeh</h3>
 
-<p>Keramika vyzerá lákavo pri €100–240/m². Ale <strong class="gold">zvážme 25-ročný horizont:</strong></p>
+<p>Keramika vyzerá lákavo pri 100–240\u00A0€/m². Ale <strong class="gold">zvážme 25-ročný horizont:</strong></p>
 <ul>
-<li><strong>Keramická dlaždica:</strong> impregnácia každé 1–2 roky (~€30–50/úkon), spárové škvrny, výmena poškodených dlaždíc — celkovo <strong>€2 000–3 000 navyše</strong> za 25 rokov</li>
+<li><strong>Keramická dlaždica:</strong> impregnácia každé 1–2 roky (~30–50\u00A0€/úkon), spárové škvrny, výmena poškodených dlaždíc – celkovo <strong>2\u00A0000–3\u00A0000\u00A0€ navyše</strong> za 25 rokov</li>
 <li><strong>Kvarcitový kompozit:</strong> nenáročný na údržbu v interiéri, ale ak ho vystavíte UV alebo tepelnému šoku, oprava = výmena celej dosky</li>
 <li><strong>Sinterovaný kameň:</strong> minimálna údržba bez impregnácie, vysoká odolnosť pri bežnom používaní; citlivý je najmä na silné bodové nárazy</li>
 <li><strong>Porcelánové dosky:</strong> veľmi podobný nákladový profil ako sinterovaný kameň, nižšia vstupná cena</li>
 </ul>
 
-<p>Pri 25-ročnom horizonte sa celkové náklady vyrovnávajú: sinterovaný kameň za €500/m² bez ďalších nákladov vs. keramika za €150/m² + €80–120/m² údržba.</p>
+<p>Pri 25-ročnom horizonte sa celkové náklady vyrovnávajú: sinterovaný kameň za 500\u00A0€/m² bez ďalších nákladov vs. keramika za 150\u00A0€/m² + 80–120\u00A0€/m² údržba.</p>
 
 <figure class="article-figure">
   <img src="/images/blog/article-06/kuchyna-statuario-diamante.webp" alt="Kuchyňa so zástenou zo sinterovaného kameňa v dekore Statuario Diamante (vizualizácia)" loading="lazy" />
-  <figcaption>Sinterovaný kameň: vyššia vstupná cena, no počas životnosti takmer žiadne náklady na údržbu — netreba ho impregnovať.</figcaption>
+  <figcaption>Sinterovaný kameň: vyššia vstupná cena, no počas životnosti takmer žiadne náklady na údržbu – netreba ho impregnovať.</figcaption>
 </figure>
 
 <h2 id="priklad-z-praxe">Príklad z praxe: rovnaká kuchyňa, tri materiály</h2>
 
 <div class="article-case-study">
   <span class="case-study-label">Z praxe</span>
-  <h3>L-tvarová kuchyňa v bratislavskom byte — tri rôzne rozhodnutia</h3>
+  <h3>L-tvarová kuchyňa v bratislavskom byte – tri rôzne rozhodnutia</h3>
   <p>Predstavte si L-tvarovú kuchyňu s rozlohou 3,2\u00A0m², jedným výrezom pre drez a jedným pre varnú dosku. Južné francúzske okná, priame slnko 4 hodiny denne.</p>
-  <p><strong>Variant A — kvarcitový kompozit:</strong> €1 800 vrátane inštalácie. Krásny Calacatta dezén. Po 14 mesiacoch viditeľné žltnutie pri okne — UV degradácia živice. Výmena celej dosky: ďalších €1 800. Celkové náklady za 3 roky: <strong class="gold">€3 600</strong>.</p>
-  <p><strong>Variant B — sinterovaný kameň:</strong> €2 400 vrátane inštalácie. Rovnaký Calacatta look. Po 3 rokoch nulové zmeny — UV, teplo, škvrny, nič. Celkové náklady za 25 rokov: stále <strong class="gold">€2 400</strong>.</p>
-  <p><strong>Variant C — keramická dlaždica:</strong> €650 vrátane inštalácie. Po 5 rokoch: tmavé spáry, 2 popraskané dlaždice (dekór už nie je v predaji), impregnácie za €200. Celkové náklady za 10 rokov: <strong>€1 200+</strong>. A potreba kompletnej výmeny.</p>
-  <p>Poučenie: pri južnej orientácii okien kvarcit nie je správna voľba — nie preto, že je nekvalitný, ale preto, že živice <strong>nemajú šancu voči UV</strong>. Sinterovaný kameň stojí viac na začiatku, ale je to posledná doska, ktorú si kúpite.</p>
+  <p><strong>Variant A – kvarcitový kompozit:</strong> 1\u00A0800\u00A0€ vrátane inštalácie. Krásny Calacatta dezén. Po 14 mesiacoch viditeľné žltnutie pri okne – UV degradácia živice. Výmena celej dosky: ďalších 1\u00A0800\u00A0€. Celkové náklady za 3 roky: <strong class="gold">3\u00A0600\u00A0€</strong>.</p>
+  <p><strong>Variant B – sinterovaný kameň:</strong> 2\u00A0400\u00A0€ vrátane inštalácie. Rovnaký Calacatta look. Po 3 rokoch nulové zmeny – UV, teplo, škvrny, nič. Celkové náklady za 25 rokov: stále <strong class="gold">2\u00A0400\u00A0€</strong>.</p>
+  <p><strong>Variant C – keramická dlaždica:</strong> 650\u00A0€ vrátane inštalácie. Po 5 rokoch: tmavé spáry, 2 popraskané dlaždice (dekór už nie je v predaji), impregnácie za 200\u00A0€. Celkové náklady za 10 rokov: <strong>1\u00A0200+\u00A0€</strong>. A potreba kompletnej výmeny.</p>
+  <p>Poučenie: pri južnej orientácii okien kvarcit nie je správna voľba – nie preto, že je nekvalitný, ale preto, že živice <strong>nemajú šancu voči UV</strong>. Sinterovaný kameň stojí viac na začiatku, ale je to posledná doska, ktorú si kúpite.</p>
 </div>
 
 <h2 id="kedy-zvolit-ktory">Kedy zvoliť ktorý materiál?</h2>
@@ -213,7 +213,7 @@ export const ARTICLE_06: BlogArticle = {
 <ul>
 <li>Doska bude v <strong>exteriéri</strong> alebo vystavená priamemu slnku</li>
 <li>Očakávate <strong>priamy kontakt s horúcimi predmetmi</strong> bez podložky</li>
-<li>Chcete <strong>minimálnu údržbu</strong> — žiadnu impregnáciu, žiadne špeciálne čistenie</li>
+<li>Chcete <strong>minimálnu údržbu</strong> – žiadnu impregnáciu, žiadne špeciálne čistenie</li>
 <li>Máte rozpočet nad <strong>350\u00A0€/m²</strong></li>
 <li>Chcete materiál s <strong>najdlhšou životnosťou</strong></li>
 </ul>
@@ -235,106 +235,106 @@ export const ARTICLE_06: BlogArticle = {
 
 <h3>Keramiku neodporúčame pre:</h3>
 <ul>
-<li>Kuchynské pracovné dosky — <strong>príliš vysoká pórovitosť</strong></li>
-<li>Akékoľvek aplikácie s výrezmi — mechanicky slabá pri frézovaní</li>
+<li>Kuchynské pracovné dosky – <strong>príliš vysoká pórovitosť</strong></li>
+<li>Akékoľvek aplikácie s výrezmi – mechanicky slabá pri frézovaní</li>
 </ul>
 
 <figure class="article-figure">
   <img src="/images/blog/article-06/vzorka-appennino.webp" alt="Vzorka dekoru Appennino priložená k dubovým dvierkam kuchyne" loading="lazy" />
-  <figcaption>Fyzická vzorka prezradí viac ako akýkoľvek katalóg — vždy si ju vyžiadajte pred rozhodnutím</figcaption>
+  <figcaption>Fyzická vzorka prezradí viac ako akýkoľvek katalóg – vždy si ju vyžiadajte pred rozhodnutím</figcaption>
 </figure>
 
 <h2 id="najcastejsie-omyly">5 najčastejších omylov pri výbere materiálu</h2>
 
-<p><strong>Omyl 1: „Draho = kvalitne."</strong> Cena závisí od veľkosti vzoru, hrúbky dosky a finálnej úpravy povrchu — nie nevyhnutne od materiálovej kvality. Existujú priemerné dosky za prémiové ceny aj vynikajúce dosky za rozumné ceny.</p>
+<p><strong>Omyl 1: „Draho = kvalitne.“</strong> Cena závisí od veľkosti vzoru, hrúbky dosky a finálnej úpravy povrchu – nie nevyhnutne od materiálovej kvality. Existujú priemerné dosky za prémiové ceny aj vynikajúce dosky za rozumné ceny.</p>
 
 <p><strong>Omyl 2: „Stačí mi vzorka.“</strong> Malá vzorka neodhalí variabilitu vzoru, rovinnosť ani konzistenciu medzi šaržami. Vždy si pozrite <strong class="gold">aspoň 3–5 dosiek vedľa seba</strong>.</p>
 
 <p><strong>Omyl 3: „Inštalatér odporučí ten správny materiál.“</strong> Inštalatér odporučí to, s čím má skúsenosti a čo mu prináša najväčší zisk. Nie nevyhnutne to, čo je najlepšie pre váš projekt.</p>
 
-<p><strong>Omyl 4: „Nízka cena znamená nízku kvalitu."</strong> Nie vždy. Nižšia cena môže znamenať menší vzor (lacnejší na výrobu), bežnú hrúbku alebo matný povrch. Tieto faktory nemajú vplyv na výkon materiálu.</p>
+<p><strong>Omyl 4: „Nízka cena znamená nízku kvalitu.“</strong> Nie vždy. Nižšia cena môže znamenať menší vzor (lacnejší na výrobu), bežnú hrúbku alebo matný povrch. Tieto faktory nemajú vplyv na výkon materiálu.</p>
 
-<p><strong>Omyl 5: „Všetky sinterované kamene sú rovnaké.“</strong> Technológia výroby určuje kategóriu. Kvalita konkrétneho výrobku závisí od presnosti lisovania, teploty spekania a kontroly kvality. <strong class="gold">Vždy vyžadujte technický list s nameranými hodnotami</strong> — nie len s názvami testovacích noriem.</p>
+<p><strong>Omyl 5: „Všetky sinterované kamene sú rovnaké.“</strong> Technológia výroby určuje kategóriu. Kvalita konkrétneho výrobku závisí od presnosti lisovania, teploty spekania a kontroly kvality. <strong class="gold">Vždy vyžadujte technický list s nameranými hodnotami</strong> – nielen s názvami testovacích noriem.</p>
 
 <div class="article-tip">
   <p><strong>Čo robíme v Orostone</strong></p>
-  <p>Každému zákazníkovi poskytneme technický list s nameranými hodnotami pre konkrétny dekór, ktorý si vyberá. Nezakladáme sa na všeobecných certifikátoch — ukážeme vám čísla pre presne tú dosku, ktorú dostanete.</p>
+  <p>Každému zákazníkovi poskytneme technický list s nameranými hodnotami pre konkrétny dekór, ktorý si vyberá. Nespoliehame sa na všeobecné certifikáty – ukážeme vám čísla pre presne tú dosku, ktorú dostanete.</p>
 </div>
 
 <h2 id="zaver">Záver: úprimné odporúčanie</h2>
 
-<p>Sinterovaný kameň je v Orostone náš materiál číslo jedna — ale nie preto, že ho predávame. Preto, že <strong class="gold">technicky nevyžaduje kompromisy</strong> tam, kde ostatné materiály áno: UV odolnosť, tepelná odolnosť, údržba bez impregnácie.</p>
+<p>Sinterovaný kameň je v Orostone náš materiál číslo jedna – ale nie preto, že ho predávame. Preto, že <strong class="gold">technicky nevyžaduje kompromisy</strong> tam, kde ostatné materiály áno: UV odolnosť, tepelná odolnosť, údržba bez impregnácie.</p>
 
-<p>Ak máte kuchyňu v interiéri bez priameho slnka a vždy používate podložky pod hrnce — kvarcitový kompozit je legitímna voľba za rozumnú cenu. Ak chcete porcelánové dosky za nižšiu cenu s podobným výkonom — aj to je rozumná voľba.</p>
+<p>Ak máte kuchyňu v interiéri bez priameho slnka a vždy používate podložky pod hrnce – kvarcitový kompozit je legitímna voľba za rozumnú cenu. Ak chcete porcelánové dosky za nižšiu cenu s podobným výkonom – aj to je rozumná voľba.</p>
 
 <p>Čo nie je rozumná voľba: vybrať materiál na základe obchodného názvu bez toho, aby ste poznali materiálovú kategóriu a jej limitácie.</p>
 
 <div class="article-tip">
   <p><strong>Alebo nás jednoducho kontaktujte v Orostone</strong></p>
-  <p>Radi vám ukážeme vzorky všetkých materiálových kategórií a na základe vášho projektu — orientácia okien, typ použitia, rozpočet — odporučíme konkrétne riešenie. Nezáväzná konzultácia je zadarmo.</p>
+  <p>Radi vám ukážeme vzorky všetkých materiálových kategórií a na základe vášho projektu – orientácia okien, typ použitia, rozpočet – odporučíme konkrétne riešenie. Nezáväzná konzultácia je zadarmo.</p>
   <a href="/kontakt" class="tip-btn">Kontaktovať nás →</a>
 </div>
 `,
     faqs: [
       {
         question: 'Aký je hlavný rozdiel medzi sinterovaným kameňom a kvarcitovým kompozitom?',
-        answer: 'Sinterovaný kameň je 100% minerálny, bez živíc — spečený pri 1 200°C. Kvarcitový kompozit obsahuje 7–10% polyesterových živíc, čo obmedzuje jeho tepelnú odolnosť (~150°C) a vylučuje ho z exteriérových aplikácií kvôli UV degradácii. V interiéri bez priameho slnka sú oba materiály výborné.',
+        answer: 'Sinterovaný kameň je 100\u00A0% minerálny, bez živíc – spečený pri 1\u00A0200\u00A0°C. Kvarcitový kompozit obsahuje 7–10\u00A0% polyesterových živíc, čo obmedzuje jeho tepelnú odolnosť (~150\u00A0°C) a vylučuje ho z exteriérových aplikácií kvôli UV degradácii. V interiéri bez priameho slnka sú oba materiály výborné.',
       },
       {
         question: 'Sú porcelánové dosky rovnaké ako sinterovaný kameň?',
-        answer: 'Technologicky sú si blízke — oba bez živíc, oba vypaľované pri vysokých teplotách. Rozdiel je v tlaku lisovania: sinterovaný kameň až 25 000 ton, porcelán max 8 000 ton. To sa prejavuje v ohybovej pevnosti a odolnosti voči rázovým záťažiam. Pre väčšinu aplikácií sú porcelánové dosky vynikajúcou a ekonomickejšou alternatívou.',
+        answer: 'Technologicky sú si blízke – oba bez živíc, oba vypaľované pri vysokých teplotách. Rozdiel je v tlaku lisovania: sinterovaný kameň až 25\u00A0000\u00A0ton, porcelán max. 8\u00A0000\u00A0ton. To sa prejavuje v ohybovej pevnosti a odolnosti voči rázovým záťažiam. Pre väčšinu aplikácií sú porcelánové dosky vynikajúcou a ekonomickejšou alternatívou.',
       },
       {
         question: 'Je keramika vhodná na kuchynské pracovné dosky?',
-        answer: 'Nie. Keramické dlaždice majú absorpciu vody 3–7% (vs. <0,1% u sinterovaného kameňa), čo znamená, že nasávajú tekutiny a škvrny. Navyše, mechanické spracovanie (výrezy pre drezy a varné dosky) keramika nezvláda dobre — ľahko praská. Keramika je výborná pre obklady stien, nie pre pracovné plochy.',
+        answer: 'Nie. Keramické dlaždice majú absorpciu vody 3–7\u00A0% (vs. <0,1\u00A0% pri sinterovanom kameni), čo znamená, že nasávajú tekutiny a škvrny. Navyše, mechanické spracovanie (výrezy pre drezy a varné dosky) keramika nezvláda dobre – ľahko praská. Keramika je výborná pre obklady stien, nie pre pracovné plochy.',
       },
       {
         question: 'Môžem kvarcitový kompozit použiť v exteriéri?',
-        answer: 'Nie. UV žiarenie rozkladá polyesterové živice v kvarcite — viditeľné žltnutie a farebné zmeny nastanú v priebehu 6–18 mesiacov. Pre exteriérové aplikácie (terasa, vonkajší jedálenský stôl, bazénový lem) vždy volíme sinterovaný kameň alebo porcelánové dosky.',
+        answer: 'Nie. UV žiarenie rozkladá polyesterové živice v kvarcite – viditeľné žltnutie a farebné zmeny nastanú v priebehu 6–18 mesiacov. Pre exteriérové aplikácie (terasa, vonkajší jedálenský stôl, bazénový lem) vždy volíme sinterovaný kameň alebo porcelánové dosky.',
       },
       {
         question: 'Prečo sú sinterované kamene drahšie ako kvarcit?',
-        answer: 'Výroba sinterovaného kameňa vyžaduje extrémy: tlak 25 000 ton a teplotu nad 1 200°C — to je energeticky a kapitálovo náročnejšia technológia. Navyše, prémiové sinterované kamene majú zložitejšie full-body vzory (žilkovanie prechádza celou hrúbkou). Cena odráža aj dlhšiu životnosť a údržbu bez impregnácie.',
+        answer: 'Výroba sinterovaného kameňa vyžaduje extrémy: tlak 25\u00A0000\u00A0ton a teplotu nad 1\u00A0200\u00A0°C – to je energeticky a kapitálovo náročnejšia technológia. Navyše, prémiové sinterované kamene majú zložitejšie full-body vzory (žilkovanie prechádza celou hrúbkou). Cena odráža aj dlhšiu životnosť a údržbu bez impregnácie.',
       },
       {
         question: 'Čo je to absorpcia vody a prečo je dôležitá?',
-        answer: 'Absorpcia vody vyjadruje, aké percento svojej hmotnosti materiál nasaje pri ponorení do vody (ISO 10545-3). Sinterovaný kameň má <0,1% — tekutiny nevnikajú do štruktúry, škvrny sa nevsávajú, impregnácia nie je potrebná. Keramika s 3–7% je ako hubka v porovnaní.',
+        answer: 'Absorpcia vody vyjadruje, aké percento svojej hmotnosti materiál nasaje pri ponorení do vody (ISO 10545-3). Sinterovaný kameň má <0,1\u00A0% – tekutiny nevnikajú do štruktúry, škvrny sa nevsávajú, impregnácia nie je potrebná. Keramika s 3–7\u00A0% je ako hubka v porovnaní.',
       },
       {
         question: 'Ako spoznám, že doska je naozaj sinterovaný kameň a nie iba keramika?',
-        answer: 'Požiadajte o technický list s nameranými hodnotami: absorpcia vody (ISO 10545-3), ohybová pevnosť (ISO 10545-4) a chemická odolnosť (ISO 10545-13). Pre sinterovaný kameň: absorpcia <0,1%, ohybová pevnosť 45+ N/mm². Full-body veining — vzor by mal byť viditeľný aj na hrane rezu, nie len na povrchu.',
+        answer: 'Požiadajte o technický list s nameranými hodnotami: absorpcia vody (ISO 10545-3), ohybová pevnosť (ISO 10545-4) a chemická odolnosť (ISO 10545-13). Pre sinterovaný kameň: absorpcia <0,1\u00A0%, ohybová pevnosť 45+\u00A0N/mm². Full-body veining – vzor by mal byť viditeľný aj na hrane rezu, nielen na povrchu.',
       },
       {
-        question: 'Čo znamená Trieda 5 v certifikácii ISO 10545?',
-        answer: 'ISO 10545 je séria noriem pre keramické dlaždice a príbuzné materiály. Trieda 5 je najvyššia úroveň odolnosti — napr. pri teste odolnosti voči škvrnám (ISO 10545-14) Trieda 5 znamená, že škvrna sa odstráni bez špeciálnych prostriedkov. Vždy si pýtajte konkrétnu triedu, nie len zoznam noriem.',
+        question: 'Čo znamená trieda 5 v certifikácii ISO 10545?',
+        answer: 'ISO 10545 je séria noriem pre keramické dlaždice a príbuzné materiály. Trieda 5 je najvyššia úroveň odolnosti – napr. pri teste odolnosti voči škvrnám (ISO 10545-14) trieda 5 znamená, že škvrna sa odstráni bez špeciálnych prostriedkov. Vždy si pýtajte konkrétnu triedu, nielen zoznam noriem.',
       },
       {
         question: 'Oplatí sa platiť prémium za sinterovaný kameň oproti kvarcitu?',
-        answer: 'Záleží na aplikácii. Pri južnej orientácii okien, exteriérovom použití alebo ak kladiete hrnce priamo bez podložky — áno, definitívne. Pri kuchyni v tieni bez UV a s disciplinovaným používaním podložiek je kvarcit výborná ekonomickejšia voľba. Kľúčové je poznať podmienky projektu.',
+        answer: 'Záleží na aplikácii. Pri južnej orientácii okien, exteriérovom použití alebo ak kladiete hrnce priamo bez podložky – áno, definitívne. Pri kuchyni v tieni bez UV a s disciplinovaným používaním podložiek je kvarcit výborná ekonomickejšia voľba. Kľúčové je poznať podmienky projektu.',
       },
       {
         question: 'Je možné kombinovať rôzne materiály v jednej kuchyni?',
-        answer: 'Áno. Napríklad: sinterovaný kameň na pracovnej doske (pri sporáku a dreze) a kvarcit alebo porcelán na bočnom pulte a ostrove. Kombinovanie materiálov je bežné — dôležité je zvoliť správny materiál pre každú funkčnú zónu podľa jej zaťaženia.',
+        answer: 'Áno. Napríklad: sinterovaný kameň na pracovnej doske (pri sporáku a dreze) a kvarcit alebo porcelán na bočnom pulte a ostrove. Kombinovanie materiálov je bežné – dôležité je zvoliť správny materiál pre každú funkčnú zónu podľa jej zaťaženia.',
       },
       {
         question: 'Potrebuje sinterovaný kameň impregnáciu?',
-        answer: 'Nie. Absorpcia vody pod 0,1% znamená, že tekutiny nevnikajú do štruktúry — impregnácia nemá čo tesneniť. Toto je jedna z kľúčových výhod oproti prírodným kameňom (granit, mramor) a keramike, ktoré impregnáciu vyžadujú pravidelne.',
+        answer: 'Nie. Absorpcia vody pod 0,1\u00A0% znamená, že tekutiny nevnikajú do štruktúry – impregnácia nemá čo tesniť. Toto je jedna z kľúčových výhod oproti prírodným kameňom (granit, mramor) a keramike, ktoré impregnáciu vyžadujú pravidelne.',
       },
       {
         question: 'Aký je rozdiel medzi full-body a surface-only povrchom?',
-        answer: 'Full-body znamená, že vzor (napr. žilkovanie mramoru) prechádza celou hrúbkou dosky — ak sa odštiepi hrana, vzor je viditeľný aj tam. Surface-only (povrchová potlač) má vzor len na povrchu — odštiepená hrana odhalí jednofarebné jadro. Prémiové sinterované kamene používajú full-body technológiu.',
+        answer: 'Full-body znamená, že vzor (napr. žilkovanie mramoru) prechádza celou hrúbkou dosky – ak sa odštiepi hrana, vzor je viditeľný aj tam. Surface-only (povrchová potlač) má vzor len na povrchu – odštiepená hrana odhalí jednofarebné jadro. Prémiové sinterované kamene používajú full-body technológiu.',
       },
       {
         question: 'Čo je delta E pri hodnotení farby dosiek?',
-        answer: 'Delta E je merná jednotka farebného rozdielu medzi dvoma vzorkami. Pre prémiové materiály by mal byť delta E medzi doskami rovnakého dekóru pod 1,0 — to je hranica, kde ľudské oko odlišnosť ťažko zaregistruje. Hodnoty nad 2,0 sú viditeľné voľným okom pri priamom porovnaní.',
+        answer: 'Delta E je merná jednotka farebného rozdielu medzi dvoma vzorkami. Pre prémiové materiály by mala byť delta E medzi doskami rovnakého dekóru pod 1,0 – to je hranica, kde ľudské oko odlišnosť ťažko zaregistruje. Hodnoty nad 2,0 sú viditeľné voľným okom pri priamom porovnaní.',
       },
       {
         question: 'Ako dlho trvá inštalácia kuchynskej dosky?',
         answer: 'Štandardná kuchynská doska (L-tvar, 2 výrezy) si vyžaduje 1 deň na meranie + výrobu (typicky 3–7 pracovných dní) + 1 deň na inštaláciu. Kuchyňu ručne zameria priamo na mieste partnerský kamenár, ktorý dosku aj vyrobí.',
       },
       {
-        question: 'Môžem si materál vyskúšať pred kúpou?',
-        answer: 'Áno — a odporúčame to. V našom showroome máme vzorky všetkých materiálových kategórií a viacero dekórov. Pozrite si ich pri prirodzenom svetle, preverte ručne kvalitu hrán a povrchu. Konzultácia a zapožičanie vzoriek domov je zadarmo.',
+        question: 'Môžem si materiál vyskúšať pred kúpou?',
+        answer: 'Áno – a odporúčame to. V našom showroome máme vzorky všetkých materiálových kategórií a viacero dekórov. Pozrite si ich pri prirodzenom svetle, preverte ručne kvalitu hrán a povrchu. Konzultácia a zapožičanie vzoriek domov sú zadarmo.',
       },
     ],
   },

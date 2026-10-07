@@ -11,204 +11,204 @@ export const ARTICLE_04: BlogArticle = {
   tags: ['sinterovaný kameň', 'hrúbka', '12mm', '20mm', 'kuchynská doska', 'ostrovček'],
 
   sk: {
-    title: '12 mm vs 20 mm sinterovaný kameň: aký je skutočný rozdiel?',
-    subtitle: 'Edukačný prehľad — čo obe hrúbky technicky môžu a kde sú ich limity. V Orostone pracujeme s 12 mm.',
-    excerpt: 'Na trhu existujú dosky v hrúbke 12\u00A0mm aj 20\u00A0mm. Vysvetlíme vám technické rozdiely a povieme, prečo v Orostone pracujeme výhradne s 12\u00A0mm — a kedy to stačí.',
-    metaTitle: '12 mm alebo 20 mm? Sinterovaný kameň | OROSTONE',
-    metaDescription: 'Kedy stačí 12 mm a kedy má zmysel ísť do 20 mm. Praktický rozdiel pri kuchynskej doske, ostrovčeku a pri cene celého projektu.',
-    directAnswer: 'Sinterovaný kameň sa vyrába v hrúbkach 3mm, 12mm aj 20mm. V Orostone pracujeme výhradne s 12mm. Pri správnej podkladovej konštrukcii, plánovaní výrezov a dodržaní pravidiel previsu (max. 200mm) 12mm pokrýva všetky bežné aplikácie — kuchynské dosky, kúpeľne, obklady aj ostrovy.',
+    title: '12\u00A0mm vs 20\u00A0mm sinterovaný kameň: aký je skutočný rozdiel?',
+    subtitle: 'Edukačný prehľad – čo obe hrúbky technicky môžu a kde sú ich limity. V Orostone pracujeme s 12\u00A0mm.',
+    excerpt: 'Na trhu existujú dosky v hrúbke 12\u00A0mm aj 20\u00A0mm. Vysvetlíme vám technické rozdiely a povieme, prečo v Orostone pracujeme výhradne s 12\u00A0mm – a kedy to stačí.',
+    metaTitle: '12\u00A0mm alebo 20\u00A0mm? Sinterovaný kameň | OROSTONE',
+    metaDescription: 'Kedy stačí 12\u00A0mm a kedy má zmysel ísť do 20\u00A0mm. Praktický rozdiel pri kuchynskej doske, ostrovčeku a pri cene celého projektu.',
+    directAnswer: 'Sinterovaný kameň sa vyrába v hrúbkach 3\u00A0mm, 12\u00A0mm aj 20\u00A0mm. V Orostone pracujeme výhradne s 12\u00A0mm. Pri správnej podkladovej konštrukcii, plánovaní výrezov a dodržaní pravidiel previsu (max. 200\u00A0mm) 12\u00A0mm pokrýva všetky bežné aplikácie – kuchynské dosky, kúpeľne, obklady aj ostrovy.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>
 <ul class="article-tldr">
-  <li>Na trhu existujú 12mm aj 20mm dosky — obe hrúbky majú svoje opodstatnenie</li>
-  <li>V Orostone pracujeme výhradne s 12mm — pri správnej inštalácii pokrýva všetky bežné aplikácie</li>
-  <li>Kľúč k úspešnej 12mm kuchynskej doske: správny podklad, výrezy s rádiusom min. 5mm, previs max. 200mm</li>
-  <li>20mm existuje na trhu a má vyššiu lomovú silu — ale vyžaduje aj iný prístup pri montáži a transporte</li>
+  <li>Na trhu existujú 12\u00A0mm aj 20\u00A0mm dosky – obe hrúbky majú svoje opodstatnenie</li>
+  <li>V Orostone pracujeme výhradne s 12\u00A0mm – pri správnej inštalácii pokrýva všetky bežné aplikácie</li>
+  <li>Kľúč k úspešnej 12\u00A0mm kuchynskej doske: správny podklad, výrezy s rádiusom min. 5\u00A0mm, previs max. 200\u00A0mm</li>
+  <li>20\u00A0mm existuje na trhu a má vyššiu lomovú silu – ale vyžaduje aj iný prístup pri montáži a transporte</li>
 </ul>
 
-<p>Keď si zákazníci prezerajú ponuky sinterovaného kameňa, často narazia na dve hrúbky: 12mm a 20mm. Prirodzene sa pýtajú — <em>ktorá je správna?</em> A prečo niektorí dodávatelia predávajú len jednu hrúbku?</p>
+<p>Keď si zákazníci prezerajú ponuky sinterovaného kameňa, často narazia na dve hrúbky: 12\u00A0mm a 20\u00A0mm. Prirodzene sa pýtajú – <em>ktorá je správna?</em> A prečo niektorí dodávatelia predávajú len jednu hrúbku?</p>
 
-<p>V Orostone pracujeme <strong class="gold">výhradne s 12\u00A0mm sinterovaným kameňom</strong>. Nie je to obmedzenie — je to zámerné rozhodnutie. A v tomto článku vám vysvetlíme, prečo 12\u00A0mm pri správnom prístupe stačí na všetko, čo robíme.</p>
+<p>V Orostone pracujeme <strong class="gold">výhradne s 12\u00A0mm sinterovaným kameňom</strong>. Nie je to obmedzenie – je to zámerné rozhodnutie. A v tomto článku vám vysvetlíme, prečo 12\u00A0mm pri správnom prístupe stačí na všetko, čo robíme.</p>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-04/hero.webp" alt="Hrúbka sinterovaného kameňa — pohľad na hranu dosky 12mm" width="1408" height="792" loading="lazy" />
-  <figcaption>Hrana 12mm dosky — pohľad, ktorý odhalí hrúbku materiálu. Na pracovnej ploche zhora rozdiel nie je viditeľný.</figcaption>
+  <img src="/images/blog/article-04/hero.webp" alt="Hrúbka sinterovaného kameňa – pohľad na hranu dosky 12\u00A0mm" width="1408" height="792" loading="lazy" />
+  <figcaption>Hrana 12\u00A0mm dosky – pohľad, ktorý odhalí hrúbku materiálu. Na pracovnej ploche zhora rozdiel nie je viditeľný.</figcaption>
 </figure>
 
 <h2 id="technicke-rozdiely">Technické rozdiely: čo čísla naozaj hovoria</h2>
 
-<p>Hlavný merateľný rozdiel medzi hrúbkami je <strong>lomová sila</strong> (ISO 10545-4) — sila, ktorú doska vydrží pred zlomením:</p>
+<p>Hlavný merateľný rozdiel medzi hrúbkami je <strong>lomová sila</strong> (ISO 10545-4) – sila, ktorú doska vydrží pred zlomením:</p>
 
 <div class="article-highlight">
   <p><strong>Lomová sila (ISO 10545-4):</strong></p>
   <ul>
-    <li><strong>12mm sinterovaný kameň:</strong> ~5 000 N (~510 kg)</li>
-    <li><strong>20mm sinterovaný kameň:</strong> ~16 000 N (~1 630 kg)</li>
+    <li><strong>12\u00A0mm sinterovaný kameň:</strong> ~5\u00A0000\u00A0N (~510\u00A0kg)</li>
+    <li><strong>20\u00A0mm sinterovaný kameň:</strong> ~16\u00A0000\u00A0N (~1\u00A0630\u00A0kg)</li>
   </ul>
-  <p>20mm má 3× vyššiu lomovú silu. Pri <em>voľne ložených doskách bez podkladu</em> je to dôležité. Ale pri 12mm s plným podkladom a správnou montážou táto sila nie je kritickým faktorom — záťaž prenáša predovšetkým podkladová konštrukcia, nie doska samotná.</p>
+  <p>20\u00A0mm má 3× vyššiu lomovú silu. Pri <em>voľne uložených doskách bez podkladu</em> je to dôležité. Ale pri 12\u00A0mm s plným podkladom a správnou montážou táto sila nie je kritickým faktorom – záťaž prenáša predovšetkým podkladová konštrukcia, nie doska samotná.</p>
 </div>
 
 <p>Ďalší rozdiel je <strong>hmotnosť</strong>:</p>
 <ul>
-  <li><strong>12mm:</strong> ~30 kg/m²</li>
-  <li><strong>20mm:</strong> ~50 kg/m²</li>
+  <li><strong>12\u00A0mm:</strong> ~30\u00A0kg/m²</li>
+  <li><strong>20\u00A0mm:</strong> ~50\u00A0kg/m²</li>
 </ul>
 
-<p>Pre montáž na stenu a stropné aplikácie je 12mm výhodnejšia — ľahšia, jednoduchšia manipulácia, menšie požiadavky na kotvenie.</p>
+<p>Pre montáž na stenu a stropné aplikácie je 12\u00A0mm výhodnejšia – ľahšia, jednoduchšia manipulácia, menšie požiadavky na kotvenie.</p>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-04/12mm-profile.webp" alt="Profil 12mm sinterovanej dosky — pohľad na hranu s viditeľnou tenkou hrúbkou" width="1408" height="792" loading="lazy" />
-  <figcaption>Profil 12mm dosky — tenká, ale pri správnom podklade plne postačujúca na všetky bežné aplikácie</figcaption>
+  <img src="/images/blog/article-04/12mm-profile.webp" alt="Profil 12\u00A0mm sinterovanej dosky – pohľad na hranu s viditeľnou tenkou hrúbkou" width="1408" height="792" loading="lazy" />
+  <figcaption>Profil 12\u00A0mm dosky – tenká, ale pri správnom podklade plne postačujúca na všetky bežné aplikácie</figcaption>
 </figure>
 
-<h2 id="preco-12mm">Prečo v Orostone pracujeme s 12mm</h2>
+<h2 id="preco-12mm">Prečo v Orostone pracujeme s 12\u00A0mm</h2>
 
-<p>Rozhodnutie pracovať výhradne s 12mm nie je kompromis — je to špecializácia. <strong class="gold">12mm sinterovaný kameň pri správnej inštalácii pokrýva všetky aplikácie, pre ktoré ho navrhujeme:</strong></p>
+<p>Rozhodnutie pracovať výhradne s 12\u00A0mm nie je kompromis – je to špecializácia. <strong class="gold">12\u00A0mm sinterovaný kameň pri správnej inštalácii pokrýva všetky aplikácie, pre ktoré ho navrhujeme:</strong></p>
 
 <h3>Kuchynské pracovné plochy</h3>
-<p>12mm kuchynská doska funguje spoľahlivo pri dodržaní troch podmienok:</p>
+<p>12\u00A0mm kuchynská doska funguje spoľahlivo pri dodržaní troch podmienok:</p>
 <ol>
-  <li><strong>Plný podklad</strong> — skrinky s dostatočnou hustotou priečok (max. 400mm medzi priečkami), ideálne s plnou podkladovou doskou</li>
-  <li><strong>Správne výrezy</strong> — rádius rohov min. 5mm, vzdialenosť od hrany min. 50mm, vyvŕtané pilotné otvory</li>
-  <li><strong>Previs max. 200mm</strong> — pre väčší previs (barový výsun, sedenie pri ostrove) konzola</li>
+  <li><strong>Plný podklad</strong> – skrinky s dostatočnou hustotou priečok (max. 400\u00A0mm medzi priečkami), ideálne s plnou podkladovou doskou</li>
+  <li><strong>Správne výrezy</strong> – rádius rohov min. 5\u00A0mm, vzdialenosť od hrany min. 50\u00A0mm, vyvŕtané pilotné otvory</li>
+  <li><strong>Previs max. 200\u00A0mm</strong> – pre väčší previs (barový výsun, sedenie pri ostrove) konzola</li>
 </ol>
 
 <div class="article-tip">
-  <strong>Čo robíme v Orostone pred každou zákazkou:</strong> Posúdime rozmiestnenie výrezov, dĺžku previsu a stav podkladovej konštrukcie. Ak niečo nevyhovuje, informujeme zákazníka ešte pred objednávkou — nie po inštalácii.
+  <strong>Čo robíme v Orostone pred každou zákazkou:</strong> Posúdime rozmiestnenie výrezov, dĺžku previsu a stav podkladovej konštrukcie. Ak niečo nevyhovuje, informujeme zákazníka ešte pred objednávkou – nie po inštalácii.
 </div>
 
 <h3>Kuchynské ostrovy</h3>
-<p>Ostrov v 12mm je bežná a funkčná voľba — s jednou podmienkou: <strong class="gold">podkladová konštrukcia musí byť súvislá</strong>, nie len bodové opory v rohoch. V praxi to znamená skrinky s priečkami alebo kovový rám. Previs do 200mm bez konzoly, väčší previs s konzolou.</p>
+<p>Ostrov v 12\u00A0mm je bežná a funkčná voľba – s jednou podmienkou: <strong class="gold">podkladová konštrukcia musí byť súvislá</strong>, nielen bodové opory v rohoch. V praxi to znamená skrinky s priečkami alebo kovový rám. Previs do 200\u00A0mm bez konzoly, väčší previs s konzolou.</p>
 
 <h3>Kúpeľňové dosky</h3>
-<p>Pre kúpeľňové dosky s umývadlovým výrezom platia rovnaké pravidlá ako pre kuchyňu — správny podklad, rádius rohov výrezu min. 5mm. 12mm tu funguje štandardne.</p>
+<p>Pre kúpeľňové dosky s umývadlovým výrezom platia rovnaké pravidlá ako pre kuchyňu – správny podklad, rádius rohov výrezu min. 5\u00A0mm. 12\u00A0mm tu funguje štandardne.</p>
 
 <h3>Obklady stien, zásterky, fasády</h3>
-<p>Pre tieto aplikácie je 12mm nielen dostačujúca, ale ideálna — ľahšia hmotnosť uľahčuje montáž a znižuje požiadavky na kotvenie.</p>
+<p>Pre tieto aplikácie je 12\u00A0mm nielen dostačujúca, ale ideálna – nižšia hmotnosť uľahčuje montáž a znižuje požiadavky na kotvenie.</p>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-04/support-brackets.webp" alt="Konzoly pod previsom 12mm sinterovanej dosky — kovová podpera barového výsunu" width="1408" height="792" loading="lazy" />
-  <figcaption>Kovové konzoly pod previsom — správne konštrukčné riešenie pre 12mm dosku s barovým sedením.</figcaption>
+  <img src="/images/blog/article-04/support-brackets.webp" alt="Konzoly pod previsom 12\u00A0mm sinterovanej dosky – kovová podpera barového výsunu" width="1408" height="792" loading="lazy" />
+  <figcaption>Kovové konzoly pod previsom – správne konštrukčné riešenie pre 12\u00A0mm dosku s barovým sedením.</figcaption>
 </figure>
 
-<h2 id="kde-je-20mm-lepsia">Kde je 20mm technicky lepšia</h2>
+<h2 id="kde-je-20mm-lepsia">Kde je 20\u00A0mm technicky lepšia</h2>
 
-<p>Férovosť si vyžaduje povedať aj toto: 20mm má v niektorých situáciách objektívnu výhodu. Nie preto, aby sme vás naviedli inam — ale aby ste mali kompletný obraz.</p>
+<p>Férovosť si vyžaduje povedať aj toto: 20\u00A0mm má v niektorých situáciách objektívnu výhodu. Nie preto, aby sme vás naviedli inam – ale aby ste mali kompletný obraz.</p>
 
 <div class="article-highlight">
-  <strong>20mm má výhodu pri:</strong>
+  <strong>20\u00A0mm má výhodu pri:</strong>
   <ul>
-    <li>Veľkých ostrovoch (nad 2 000mm) bez strednej podpery, kde zákazník odmieta podkladovú konštrukciu</li>
-    <li>Projektoch kde je previs nevyhnutne dlhší ako 200mm bez možnosti konzoly</li>
+    <li>Veľkých ostrovoch (nad 2\u00A0000\u00A0mm) bez strednej podpery, kde zákazník odmieta podkladovú konštrukciu</li>
+    <li>Projektoch, kde je previs nevyhnutne dlhší ako 200\u00A0mm bez možnosti konzoly</li>
     <li>Výrazne zaťažených plochách (napr. komerčné prevádzky s intenzívnym využitím)</li>
-    <li>Estetickej preferencii — hrubá hrana vyzerá robustnejšie, najmä pri half-bullnose profile</li>
+    <li>Estetickej preferencii – hrubá hrana vyzerá robustnejšie, najmä pri half-bullnose profile</li>
   </ul>
 </div>
 
-<p>V Orostone tieto situácie riešime konzultáciou — ak projekt presahuje možnosti 12mm bez kompromisnú podkladovú konštrukciu, povieme to otvorene.</p>
+<p>V Orostone tieto situácie riešime konzultáciou – ak projekt presahuje možnosti 12\u00A0mm bez kompromisov v podkladovej konštrukcii, povieme to otvorene.</p>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-04/20mm-overhang.webp" alt="20mm sinterovaná doska s dlhým previsom — masívna hrana bez konzoly" width="1408" height="792" loading="lazy" />
-  <figcaption>20mm doska s dlhým previsom — hrubšia platňa umožňuje väčší previs bez konzoly</figcaption>
+  <img src="/images/blog/article-04/20mm-overhang.webp" alt="20\u00A0mm sinterovaná doska s dlhým previsom – masívna hrana bez konzoly" width="1408" height="792" loading="lazy" />
+  <figcaption>20\u00A0mm doska s dlhým previsom – hrubšia platňa umožňuje väčší previs bez konzoly</figcaption>
 </figure>
 
 <div class="article-cta">
-  <p>Nie ste si istí, či 12mm je pre váš projekt správna voľba? Poraďte sa s nami — zdarma a bez záväzkov posúdime váš projekt.</p>
+  <p>Nie ste si istí, či 12\u00A0mm je pre váš projekt správna voľba? Poraďte sa s nami – zdarma a bez záväzkov posúdime váš projekt.</p>
   <a href="/kontakt" class="cta-btn">Nezáväzná konzultácia →</a>
 </div>
 
 <h2 id="pravidla-previsu">Pravidlá pre previs: maximum bez konzoly</h2>
 
-<p>Previs je časť dosky, ktorá presahuje za hranu podkladovej skrinky. Pre 12mm platí:</p>
+<p>Previs je časť dosky, ktorá presahuje za hranu podkladovej skrinky. Pre 12\u00A0mm platí:</p>
 
 <table>
 <thead>
 <tr><th>Situácia</th><th>Max. previs</th><th>Poznámka</th></tr>
 </thead>
 <tbody>
-<tr><td><strong>Bežná kuchynská linka</strong></td><td>150–200 mm</td><td>Bez konzoly, pri plnom podklade</td></tr>
-<tr><td><strong>Barový výsun / sedenie</strong></td><td>300–500 mm</td><td>Vždy s kovovou konzolou</td></tr>
-<tr><td><strong>Ostrov — bočný previs</strong></td><td>max. 200 mm</td><td>Bez konzoly pri súvislom podklade</td></tr>
+<tr><td><strong>Bežná kuchynská linka</strong></td><td>150–200\u00A0mm</td><td>Bez konzoly, pri plnom podklade</td></tr>
+<tr><td><strong>Barový výsun / sedenie</strong></td><td>300–500\u00A0mm</td><td>Vždy s kovovou konzolou</td></tr>
+<tr><td><strong>Ostrov – bočný previs</strong></td><td>max. 200\u00A0mm</td><td>Bez konzoly pri súvislom podklade</td></tr>
 </tbody>
 </table>
 
 <div class="article-tip">
-  <strong>Konzola nie je kompromis</strong> — je to správne konštrukčné riešenie. Kuchyne s barovým výsunom a konzolami sú bežný, overený štandard. Konzola z nerezovej ocele alebo čierneho kovu môže byť aj estetický prvok.
+  <strong>Konzola nie je kompromis</strong> – je to správne konštrukčné riešenie. Kuchyne s barovým výsunom a konzolami sú bežný, overený štandard. Konzola z nerezovej ocele alebo čierneho kovu môže byť aj estetický prvok.
 </div>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-04/cnc-fabrication.webp" alt="CNC obrábanie sinterovaného kameňa — presný rez diamantovým kotúčom s chladením vodou" width="1408" height="792" loading="lazy" />
-  <figcaption>CNC fabrikácia sinterovaného kameňa — presný rez s vodným chladením zaručuje čistý výrez bez prasklín</figcaption>
+  <img src="/images/blog/article-04/cnc-fabrication.webp" alt="CNC obrábanie sinterovaného kameňa – presný rez diamantovým kotúčom s chladením vodou" width="1408" height="792" loading="lazy" />
+  <figcaption>CNC fabrikácia sinterovaného kameňa – presný rez s vodným chladením zaručuje čistý výrez bez prasklín</figcaption>
 </figure>
 
-<h2 id="case-study">Z praxe: ostrov 12mm s dlhým previsom</h2>
+<h2 id="case-study">Z praxe: ostrov 12\u00A0mm s dlhým previsom</h2>
 
 <div class="article-case-study">
-  <h3 class="case-study-title">Kuchyňa v Bratislave — ostrov 2 400 mm s barovým sedením</h3>
+  <h3 class="case-study-title">Kuchyňa v Bratislave – ostrov 2\u00A0400\u00A0mm s barovým sedením</h3>
   <div class="case-study-content">
-    <p>Zákazník mal v pláne kuchynský ostrov 2 400 × 1 000 mm s barovým sedením na jednej strane — previs 400mm pre 4 barové stoličky.</p>
-    <p>Riešenie v 12mm: súvislá podkladová konštrukcia (skrinky s priečkami každých 350mm), 2 kovové konzoly z čiernej ocele pod barovým previsom (400mm), výrez pre varnú dosku s pilotovými otvormi a rádiusom 6mm v rohoch.</p>
-    <p>Výsledok: inštalácia prebehla v jeden deň, doska je po roku bez akýchkoľvek známok namáhania. Konzoly sa stali súčasťou dizajnu — zákazník ich pôvodne nechtiac a teraz ich považuje za detail, ktorý kuchyni dal charakter.</p>
-    <p><strong class="gold">Záver: správne naplánovaná 12mm doska zvládla projekt, ktorý mnohí považujú za "20mm territory".</strong></p>
+    <p>Zákazník mal v pláne kuchynský ostrov 2\u00A0400\u00A0×\u00A01\u00A0000\u00A0mm s barovým sedením na jednej strane – previs 400\u00A0mm pre 4 barové stoličky.</p>
+    <p>Riešenie v 12\u00A0mm: súvislá podkladová konštrukcia (skrinky s priečkami každých 350\u00A0mm), 2 kovové konzoly z čiernej ocele pod barovým previsom (400\u00A0mm), výrez pre varnú dosku s pilotnými otvormi a rádiusom 6\u00A0mm v rohoch.</p>
+    <p>Výsledok: inštalácia prebehla v jeden deň, doska je po roku bez akýchkoľvek známok namáhania. Konzoly sa stali súčasťou dizajnu – zákazník ich pôvodne nechcel a teraz ich považuje za detail, ktorý kuchyni dal charakter.</p>
+    <p><strong class="gold">Záver: správne naplánovaná 12\u00A0mm doska zvládla projekt, ktorý mnohí považujú za „doménu 20\u00A0mm dosiek“.</strong></p>
   </div>
 </div>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-04/case-study-island.webp" alt="Kuchynský ostrovček zo sinterovaného kameňa 12mm s barovým sedením a kovovými konzolami" width="1408" height="792" loading="lazy" />
-  <figcaption>Kuchynský ostrov v 12mm so 400mm previsom a kovovými konzolami — funkčné a estetické riešenie</figcaption>
+  <img src="/images/blog/article-04/case-study-island.webp" alt="Kuchynský ostrovček zo sinterovaného kameňa 12\u00A0mm s barovým sedením a kovovými konzolami" width="1408" height="792" loading="lazy" />
+  <figcaption>Kuchynský ostrov v 12\u00A0mm so 400\u00A0mm previsom a kovovými konzolami – funkčné a estetické riešenie</figcaption>
 </figure>
 
 <h2 id="zaver">Záver: hrúbka je len jedna časť rovnice</h2>
 
-<p>Hrúbka dosky je dôležitý parameter — ale nie jediný. <strong class="gold">Podkladová konštrukcia, správne výrezy a dodržanie pravidiel previsu rozhodujú viac</strong> ako samotná hrúbka materiálu.</p>
+<p>Hrúbka dosky je dôležitý parameter – ale nie jediný. <strong class="gold">Podkladová konštrukcia, správne výrezy a dodržanie pravidiel previsu rozhodujú viac</strong> ako samotná hrúbka materiálu.</p>
 
-<p>V Orostone sme sa rozhodli špecializovať na 12\u00A0mm a robiť to správne — s dôsledným posúdením každého projektu a so skúsenými partnerskými kamenármi pri fabrikácii aj inštalácii. Výsledok je rovnaký, ako by ste dostali s 20\u00A0mm, za predpokladu jednej veci: dôslednej prípravy.</p>
+<p>V Orostone sme sa rozhodli špecializovať na 12\u00A0mm a robiť to správne – s dôsledným posúdením každého projektu a so skúsenými partnerskými kamenármi pri fabrikácii aj inštalácii. Výsledok je rovnaký, ako by ste dostali s 20\u00A0mm, za predpokladu jednej veci: dôslednej prípravy.</p>
 
 <div class="article-tip tip-btn">
-  <strong>Záverečný tip:</strong> Pred akýmkoľvek rozhodnutím o hrúbke sa porozprávajte s montážnym tímom o podkladovej konštrukcii a rozmiestnení výrezov. Toto je rozhodnutie, ktoré by malo byť urobené na základe projektu — nie na základe marketingu.
+  <strong>Záverečný tip:</strong> Pred akýmkoľvek rozhodnutím o hrúbke sa porozprávajte s montážnym tímom o podkladovej konštrukcii a rozmiestnení výrezov. Toto je rozhodnutie, ktoré by malo byť urobené na základe projektu – nie na základe marketingu.
   <a href="/kontakt" class="tip-btn">Konzultácia zdarma →</a>
 </div>
 `,
     faqs: [
       {
-        question: 'Prečo Orostone predáva len 12mm sinterovaný kameň?',
+        question: 'Prečo Orostone predáva len 12\u00A0mm sinterovaný kameň?',
         answer: 'Je to zámerná špecializácia. 12\u00A0mm pri správnej podkladovej konštrukcii, plánovaní výrezov a dodržaní pravidiel previsu pokrýva všetky bežné aplikácie. Sústredením sa na jednu hrúbku vedia naši partnerskí kamenári udržať konzistentne vysokú kvalitu fabrikácie a inštalácie.',
       },
       {
-        question: 'Stačí 12mm na kuchynskú pracovnú plochu s výrezmi?',
-        answer: 'Áno, pri dodržaní troch podmienok: plný podklad (skrinky bez veľkých medzier), správne výrezy (rádius rohov min. 5mm, vzdialenosť od hrany min. 50mm) a previs max. 200mm. V Orostone tieto podmienky overujeme pred každou zákazkou.',
+        question: 'Stačí 12\u00A0mm na kuchynskú pracovnú plochu s výrezmi?',
+        answer: 'Áno, pri dodržaní troch podmienok: plný podklad (skrinky bez veľkých medzier), správne výrezy (rádius rohov min. 5\u00A0mm, vzdialenosť od hrany min. 50\u00A0mm) a previs max. 200\u00A0mm. V Orostone tieto podmienky overujeme pred každou zákazkou.',
       },
       {
-        question: 'Čo ak chcem previs dlhší ako 200mm — napr. barový výsun?',
+        question: 'Čo ak chcem previs dlhší ako 200\u00A0mm – napr. barový výsun?',
         answer: 'Pri previse nad 200\u00A0mm sa použije kovová konzola. Konzola je správne konštrukčné riešenie, nie kompromis. Z nerezovej ocele alebo čierneho kovu môže byť aj estetický prvok. Previs s konzolou môže byť aj 400\u00A0mm a viac.',
       },
       {
-        question: 'Je 12mm vhodná aj pre kuchynský ostrovček?',
-        answer: 'Áno. Podmienkou je súvislá podkladová konštrukcia — skrinky s priečkami alebo kovový rám. Pre bočný previs platí max. 200mm bez konzoly, väčší previs s konzolou. Správne naplánovaný ostrov v 12mm je štandardná a overená aplikácia.',
+        question: 'Je 12\u00A0mm vhodná aj pre kuchynský ostrovček?',
+        answer: 'Áno. Podmienkou je súvislá podkladová konštrukcia – skrinky s priečkami alebo kovový rám. Pre bočný previs platí max. 200\u00A0mm bez konzoly, väčší previs s konzolou. Správne naplánovaný ostrov v 12\u00A0mm je štandardná a overená aplikácia.',
       },
       {
-        question: 'Aký je maximálny previs 12mm dosky bez konzoly?',
-        answer: 'Pre bežnú kuchynskú linku odporúčame max. 150–200mm. Pre ostrov s bočným previsom max. 200mm. Akýkoľvek previs pre barové sedenie alebo dlhší výsun vyžaduje kovovú konzolu — bez ohľadu na hrúbku dosky.',
+        question: 'Aký je maximálny previs 12\u00A0mm dosky bez konzoly?',
+        answer: 'Pre bežnú kuchynskú linku odporúčame max. 150–200\u00A0mm. Pre ostrov s bočným previsom max. 200\u00A0mm. Akýkoľvek previs pre barové sedenie alebo dlhší výsun vyžaduje kovovú konzolu – bez ohľadu na hrúbku dosky.',
       },
       {
-        question: 'Kedy by som mal zvážiť 20mm od iného dodávateľa?',
+        question: 'Kedy by som mal zvážiť 20\u00A0mm od iného dodávateľa?',
         answer: 'Ak máte projekt s obzvlášť veľkým ostrovom bez možnosti plného podkladu, s previsom nad 400\u00A0mm bez konzoly, alebo ak esteticky preferujete veľmi hrubú hranu. V týchto prípadoch vám to otvorene povieme a poradíme, kde 20\u00A0mm zohnať.',
       },
       {
-        question: 'Je 12mm doska ľahšie poškoditeľná pri výrezoch ako 20mm?',
-        answer: 'Riziko poškodenia pri výrezoch závisí predovšetkým od techniky fabrikácie, nie len od hrúbky. Správne vyvŕtané pilotné otvory, kontinuálny diamantový kotúč, chladenie vodou a rádius rohov min. 5\u00A0mm — toto rozhoduje viac ako hrúbka. Partnerskí kamenári, s ktorými spolupracujeme, tieto štandardy dodržiavajú.',
+        question: 'Je 12\u00A0mm doska ľahšie poškoditeľná pri výrezoch ako 20\u00A0mm?',
+        answer: 'Riziko poškodenia pri výrezoch závisí predovšetkým od techniky fabrikácie, nielen od hrúbky. Správne vyvŕtané pilotné otvory, kontinuálny diamantový kotúč, chladenie vodou a rádius rohov min. 5\u00A0mm – toto rozhoduje viac ako hrúbka. Partnerskí kamenári, s ktorými spolupracujeme, tieto štandardy dodržiavajú.',
       },
       {
         question: 'Ovplyvňuje hrúbka tepelnú odolnosť alebo odolnosť voči škvrnám?',
-        answer: 'Nie. Tepelná odolnosť (300°C+), chemická odolnosť a odolnosť voči škvrnám závisia od materiálovej kategórie a výrobnej technológie — nie od hrúbky. 12mm aj 20mm sinterovaný kameň rovnakého výrobcu majú identické chemické a tepelné vlastnosti.',
+        answer: 'Nie. Tepelná odolnosť (300\u00A0°C+), chemická odolnosť a odolnosť voči škvrnám závisia od materiálovej kategórie a výrobnej technológie – nie od hrúbky. 12\u00A0mm aj 20\u00A0mm sinterovaný kameň rovnakého výrobcu majú identické chemické a tepelné vlastnosti.',
       },
       {
-        question: 'Aká je hmotnosť 12mm sinterovaného kameňa?',
-        answer: '12mm sinterovaný kameň váži ~30 kg/m². Štandardná L-kuchyňa (~4m² pracovnej plochy) = ~120 kg. Pre obklady stien je nižšia hmotnosť 12mm výhodou — menšie požiadavky na kotvenie a jednoduchšia manipulácia pri montáži.',
+        question: 'Aká je hmotnosť 12\u00A0mm sinterovaného kameňa?',
+        answer: '12\u00A0mm sinterovaný kameň váži ~30\u00A0kg/m². Štandardná L-kuchyňa (~4\u00A0m² pracovnej plochy) = ~120\u00A0kg. Pre obklady stien je nižšia hmotnosť 12\u00A0mm výhodou – menšie požiadavky na kotvenie a jednoduchšia manipulácia pri montáži.',
       },
       {
-        question: 'Môžem kombinovať 12mm pracovnú plochu s 12mm zásterkou?',
-        answer: 'Áno, a je to bežná kombinácia. Obe plochy sú v rovnakej hrúbke — vizuálna kontinuita materiálu (farba, textúra) je zachovaná. Hrany pracovnej plochy a zásterky môžu mať rôzne profily podľa preferencie.',
+        question: 'Môžem kombinovať 12\u00A0mm pracovnú plochu s 12\u00A0mm zásterkou?',
+        answer: 'Áno, a je to bežná kombinácia. Obe plochy sú v rovnakej hrúbke – vizuálna kontinuita materiálu (farba, textúra) je zachovaná. Hrany pracovnej plochy a zásterky môžu mať rôzne profily podľa preferencie.',
       },
     ],
   },

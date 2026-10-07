@@ -12,80 +12,80 @@ export const ARTICLE_05: BlogArticle = {
 
   sk: {
     title: 'Hrany sinterovaného kameňa: kompletný sprievodca profilmi a odolnosťou',
-    subtitle: 'Ako si vybrať správny profil hrany — estetika, odolnosť a cena. Buyer\'s guide bez marketingových klišé',
+    subtitle: 'Ako si vybrať správny profil hrany – estetika, odolnosť a cena. Buyer\'s guide bez marketingových klišé',
     excerpt: 'Profil hrany rozhoduje o odolnosti dosky voči chipovaniu viac ako samotný materiál. Tento sprievodca vám pomôže vybrať správny.',
     metaTitle: 'Hrany pracovnej dosky zo sinterovaného kameňa | OROSTONE',
-    metaDescription: 'Profily hrán, radiusy a riziko odštiepenia. Ako vybrať hrany kuchynskej dosky tak, aby vydržali roky každodenného používania.',
-    directAnswer: 'Zaoblené profily hrán (half-bullnose, bevel, chamfer) znižujú riziko chipovania sinterovaného kameňa až 3× oproti ostrým 90° hranám. Pre kuchynské dosky odporúčame minimálne 2mm chamfer, ideálne half-bullnose. 90° profil je vhodný len pre obklady stien, nie pre pracovné plochy.',
+    metaDescription: 'Profily hrán, rádiusy a riziko odštiepenia. Ako vybrať hrany kuchynskej dosky tak, aby vydržali roky každodenného používania.',
+    directAnswer: 'Zaoblené profily hrán (half-bullnose, bevel, chamfer) znižujú riziko chipovania sinterovaného kameňa až 3× oproti ostrým 90° hranám. Pre kuchynské dosky odporúčame minimálne 2\u00A0mm chamfer, ideálne half-bullnose. 90° profil je vhodný len pre obklady stien, nie pre pracovné plochy.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>
 <ul class="article-tldr">
-  <li>90° hrany chipujú 3× častejšie ako zaoblené profily — čísla hovoria jasne</li>
+  <li>90° hrany chipujú 3× častejšie ako zaoblené profily – čísla hovoria jasne</li>
   <li>Half-bullnose je zlatý štandard pre kuchynské dosky s vysokým zaťažením</li>
-  <li>Chamfer 2mm je cenovo dostupný kompromis s výrazne lepšou odolnosťou</li>
-  <li>Profil hrany ovplyvňuje aj vizuálnu mohutnosť dosky — nie je to len o odolnosti</li>
+  <li>Chamfer 2\u00A0mm je cenovo dostupný kompromis s výrazne lepšou odolnosťou</li>
+  <li>Profil hrany ovplyvňuje aj vizuálnu mohutnosť dosky – nie je to len o odolnosti</li>
 </ul>
 
-<p>Profil hrany na kuchynskej doske vyzerá ako detailu — drobná estetická voľba pri záverečnom výbere. V skutočnosti je to <strong class="gold">jedna z najdôležitejších technických rozhodnutí</strong> celého projektu.</p>
+<p>Profil hrany na kuchynskej doske vyzerá ako detail – drobná estetická voľba pri záverečnom výbere. V skutočnosti je to <strong class="gold">jedno z najdôležitejších technických rozhodnutí</strong> celého projektu.</p>
 
-<p>Chipovanie hrán je najpočastejší typ poškodenia kuchynských dosiek zo sinterovaného kameňa. A vo väčšine prípadov nie je príčinou materiál — je ňou profil hrany, ktorý bol zvolený nesprávne.</p>
+<p>Chipovanie hrán je najčastejší typ poškodenia kuchynských dosiek zo sinterovaného kameňa. A vo väčšine prípadov nie je príčinou materiál – je ňou profil hrany, ktorý bol zvolený nesprávne.</p>
 
-<p>Tento článok je buyer's guide — praktický sprievodca pre výber profilu hrany. Na základe fyzikálnych vlastností, nie marketingových sloganov.</p>
+<p>Tento článok je buyer's guide – praktický sprievodca pre výber profilu hrany. Na základe fyzikálnych vlastností, nie marketingových sloganov.</p>
 
 <div class="article-quote">
   <p>Správny profil hrany je lacnejší ako oprava čo i len jedného chipu. Raz. Navždy.</p>
 </div>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-05/hero.webp" alt="Porovnanie profilov hrán sinterovaného kameňa — ostrá hrana vs half-bullnose" width="1408" height="792" loading="lazy" />
-  <figcaption>Štyri profily hrán — každý s iným pomerom estetiky, odolnosti a ceny</figcaption>
+  <img src="/images/blog/article-05/hero.webp" alt="Porovnanie profilov hrán sinterovaného kameňa – ostrá hrana vs half-bullnose" width="1408" height="792" loading="lazy" />
+  <figcaption>Štyri profily hrán – každý s iným pomerom estetiky, odolnosti a ceny</figcaption>
 </figure>
 
-<h2 id="preco-chipuju">Prečo hrany chipujú — fyzikálne vysvetlenie</h2>
+<h2 id="preco-chipuju">Prečo hrany chipujú – fyzikálne vysvetlenie</h2>
 
-<p>Sinterovaný kameň je výnimočne tvrdý materiál (7–8 Mohs). Ale tvrdosť a krehkosť nie sú protiklady — sú to dve nezávislé vlastnosti. Diamant je tvrdý, ale pri správnom uhle nárazu sa rozlomí. Sinterovaný kameň je podobne.</p>
+<p>Sinterovaný kameň je výnimočne tvrdý materiál (7–8 Mohs). Ale tvrdosť a krehkosť nie sú protiklady – sú to dve nezávislé vlastnosti. Diamant je tvrdý, ale pri správnom uhle nárazu sa rozlomí. Sinterovaný kameň je na tom podobne.</p>
 
-<p>Na ostrých hranách sa mechanické napätie sústredí do jedného bodu — hrana je koncentrátor napätia. Keď na hrane nastane náraz (spadnutý hrniec, posúvaný tanier, úder kuchynskou pomôckou), energia nárazu nemá kam ísť — <strong class="gold">materiál sa odštiepi</strong>.</p>
+<p>Na ostrých hranách sa mechanické napätie sústredí do jedného bodu – hrana je koncentrátor napätia. Keď na hrane nastane náraz (spadnutý hrniec, posúvaný tanier, úder kuchynskou pomôckou), energia nárazu nemá kam ísť – <strong class="gold">materiál sa odštiepi</strong>.</p>
 
-<p>Zaoblená hrana rozkladá to isté napätie po väčšej ploche. Energia nárazu sa absorbuje postupne — a pravdepodobnosť odštiepenia výrazne klesá.</p>
+<p>Zaoblená hrana rozkladá to isté napätie po väčšej ploche. Energia nárazu sa absorbuje postupne – a pravdepodobnosť odštiepenia výrazne klesá.</p>
 
 <div class="article-highlight">
   <p><strong>Kvantitatívny rozdiel v praxi:</strong></p>
-  <p>Hrany so 90° profilom majú až <strong>3× vyššiu mieru chipovania</strong> oproti zaoblenému profilu (half-bullnose alebo bevel) — merané na rovnakých materiáloch v rovnakých podmienkach za rovnaké časové obdobie. Toto nie je odhad — je to výsledok dlhodobého sledovania realizácií.</p>
+  <p>Hrany s 90° profilom majú až <strong>3× vyššiu mieru chipovania</strong> oproti zaoblenému profilu (half-bullnose alebo bevel) – merané na rovnakých materiáloch v rovnakých podmienkach za rovnaké časové obdobie. Toto nie je odhad – je to výsledok dlhodobého sledovania realizácií.</p>
 </div>
 
 <h2 id="typy-profilov">Prehľad profilov hrán: čo každý znamená</h2>
 
 <h3>1. Ostrá hrana (90°, flat polished)</h3>
-<p>Hrana je dokonale ostrý uhol bez akéhokoľvek zaoblenia. Vizuálne je minimalistická a moderná — v architektonických renderoch vyzerá skvele. V reálnej kuchyni s každodenným zaťažením je <strong class="gold">najrizikovejšia</strong> voľba.</p>
+<p>Hrana je dokonale ostrý uhol bez akéhokoľvek zaoblenia. Vizuálne je minimalistická a moderná – v architektonických renderoch vyzerá skvele. V reálnej kuchyni s každodenným zaťažením je <strong class="gold">najrizikovejšia</strong> voľba.</p>
 
 <p>Odporúčanie: pre obklady stien a zásterky áno. Pre horizontálne pracovné plochy: <em>neodporúčame</em>.</p>
 
-<h3>2. Chamfer (skosenie 2mm alebo 5mm)</h3>
-<p>Hrana je drobne skosená — zvyčajne 2mm alebo 5mm pod 45°. Vizuálne je takmer neviditeľná, ale fyzkálne znižuje riziko chipovania o desiatky percent oproti 90°.</p>
+<h3>2. Chamfer (skosenie 2\u00A0mm alebo 5\u00A0mm)</h3>
+<p>Hrana je drobne skosená – zvyčajne 2\u00A0mm alebo 5\u00A0mm pod 45°. Vizuálne je takmer neviditeľná, ale fyzikálne znižuje riziko chipovania o desiatky percent oproti 90°.</p>
 
-<p>2mm chamfer je <strong>minimálny štandard pre pracovné plochy</strong> — je to lacná úprava s veľkým efektom na dlhodobú odolnosť. Stojí len zlomok ceny oproti oprave chipu.</p>
+<p>2\u00A0mm chamfer je <strong>minimálny štandard pre pracovné plochy</strong> – je to lacná úprava s veľkým efektom na dlhodobú odolnosť. Stojí len zlomok ceny oproti oprave chipu.</p>
 
-<h3>3. Pencil edge (zaoblenie 3mm)</h3>
-<p>Jemné zaoblenie hrany s rádiusom 3mm. Vizuálne subtílne, technicky výrazne lepšie ako chamfer pri niektorých typoch nárazov. Obľúbené v dizajne, kde nechceme výrazný profil.</p>
+<h3>3. Pencil edge (zaoblenie 3\u00A0mm)</h3>
+<p>Jemné zaoblenie hrany s rádiusom 3\u00A0mm. Vizuálne subtílne, technicky výrazne lepšie ako chamfer pri niektorých typoch nárazov. Obľúbené v dizajne, kde nechceme výrazný profil.</p>
 
-<h3>4. Bevel (skosenie pod väčším uhlom, 10–20mm)</h3>
-<p>Výraznejšie skosenie hrany, typicky pod 45° v šírke 10–20mm. Vytvára "sofistikovaný" vizuálny efekt — hrana dosky vyzerá opticky tenšia ako v skutočnosti. Dobrá odolnosť, obľúbený v moderných kuchyniach.</p>
+<h3>4. Bevel (skosenie pod väčším uhlom, 10–20\u00A0mm)</h3>
+<p>Výraznejšie skosenie hrany, typicky pod 45° v šírke 10–20\u00A0mm. Vytvára „sofistikovaný“ vizuálny efekt – hrana dosky vyzerá opticky tenšia ako v skutočnosti. Dobrá odolnosť, obľúbený v moderných kuchyniach.</p>
 
 <h3>5. Half-bullnose (polguľatina)</h3>
-<p>Hrana je zaoblená do tvaru polkruhu — rádiusom zodpovedajúcim polovici hrúbky dosky (pri 20mm je to r=10mm). <strong class="gold">Najodolnejší bežný profil</strong> pre pracovné plochy. Rozkladá mechanické napätie po najväčšej ploche zo všetkých profilov. Vizuálne je robustnejší — "klasický kameň".</p>
+<p>Hrana je zaoblená do tvaru polkruhu – rádiusom zodpovedajúcim polovici hrúbky dosky (pri 20\u00A0mm je to r=10\u00A0mm). <strong class="gold">Najodolnejší bežný profil</strong> pre pracovné plochy. Rozkladá mechanické napätie po najväčšej ploche zo všetkých profilov. Vizuálne je robustnejší – „klasický kameň“.</p>
 
 <h3>6. Full bullnose</h3>
-<p>Celá hrana je zaoblená do plného polkruhu. Rádiusom = celá hrúbka dosky (pri 20mm je to r=10mm a doska vyzerá zaoblená zvrchu aj zdola). Maximálna odolnosť, ale vizuálne robustný profil — nie vždy zodpovedá modernému dizajnu.</p>
+<p>Celá hrana je zaoblená do plného polkruhu. Rádiusom = celá hrúbka dosky (pri 20\u00A0mm je to r=10\u00A0mm a doska vyzerá zaoblená zvrchu aj zdola). Maximálna odolnosť, ale vizuálne robustný profil – nie vždy zodpovedá modernému dizajnu.</p>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-05/edge-comparison.webp" alt="Porovnanie profilov hrán sinterovaného kameňa — chamfer, pencil, bevel, half-bullnose" width="1408" height="792" loading="lazy" />
-  <figcaption>Porovnanie profilov — od ostrého chamferu po zaoblený half-bullnose, každý s inou mierou ochrany</figcaption>
+  <img src="/images/blog/article-05/edge-comparison.webp" alt="Porovnanie profilov hrán sinterovaného kameňa – chamfer, pencil, bevel, half-bullnose" width="1408" height="792" loading="lazy" />
+  <figcaption>Porovnanie profilov – od ostrého chamferu po zaoblený half-bullnose, každý s inou mierou ochrany</figcaption>
 </figure>
 
 <div class="article-cta">
   <p>Pomôžeme vám vybrať správny profil pre váš projekt.</p>
-  <p>Pozrite si profily naživo v showroome — s fyzickými vzorkami je rozhodnutie oveľa jednoduchšie.</p>
+  <p>Pozrite si profily naživo v showroome – s fyzickými vzorkami je rozhodnutie oveľa jednoduchšie.</p>
   <a href="/kontakt" class="cta-btn">Rezervovať návštevu →</a>
 </div>
 
@@ -96,33 +96,33 @@ export const ARTICLE_05: BlogArticle = {
 <tr><th>Profil</th><th>Odolnosť voči chipovaniu</th><th>Vizuálny efekt</th><th>Cena (príplatok)</th><th>Odporúčanie</th></tr>
 </thead>
 <tbody>
-<tr><td><strong>90° ostrá hrana</strong></td><td>Nízka</td><td>Minimalistická, moderná</td><td>0 €</td><td>Len pre obklady</td></tr>
-<tr><td><strong>Chamfer 2mm</strong></td><td>Stredná</td><td>Takmer neviditeľná</td><td>+5–15 €/bm</td><td>Minimum pre pracov. plochy</td></tr>
-<tr><td><strong>Pencil 3mm</strong></td><td>Stredná–vyššia</td><td>Subtílne zaoblenie</td><td>+10–20 €/bm</td><td>Dobrý kompromis</td></tr>
-<tr><td><strong>Bevel 10–20mm</strong></td><td>Vyššia</td><td>Opticky tenšia doska</td><td>+15–30 €/bm</td><td>Moderný dizajn</td></tr>
-<tr><td><strong>Half-bullnose</strong></td><td>Najvyššia</td><td>Klasická, robustná</td><td>+20–40 €/bm</td><td>Zlatý štandard</td></tr>
-<tr><td><strong>Full bullnose</strong></td><td>Najvyššia</td><td>Plné zaoblenie</td><td>+25–50 €/bm</td><td>Pre špecifický dizajn</td></tr>
+<tr><td><strong>90° ostrá hrana</strong></td><td>Nízka</td><td>Minimalistická, moderná</td><td>0\u00A0€</td><td>Len pre obklady</td></tr>
+<tr><td><strong>Chamfer 2\u00A0mm</strong></td><td>Stredná</td><td>Takmer neviditeľná</td><td>+5–15\u00A0€/bm</td><td>Minimum pre pracov. plochy</td></tr>
+<tr><td><strong>Pencil 3\u00A0mm</strong></td><td>Stredná–vyššia</td><td>Subtílne zaoblenie</td><td>+10–20\u00A0€/bm</td><td>Dobrý kompromis</td></tr>
+<tr><td><strong>Bevel 10–20\u00A0mm</strong></td><td>Vyššia</td><td>Opticky tenšia doska</td><td>+15–30\u00A0€/bm</td><td>Moderný dizajn</td></tr>
+<tr><td><strong>Half-bullnose</strong></td><td>Najvyššia</td><td>Klasická, robustná</td><td>+20–40\u00A0€/bm</td><td>Zlatý štandard</td></tr>
+<tr><td><strong>Full bullnose</strong></td><td>Najvyššia</td><td>Plné zaoblenie</td><td>+25–50\u00A0€/bm</td><td>Pre špecifický dizajn</td></tr>
 </tbody>
 </table>
 
 <h2 id="ako-sa-chipuva">Kde a prečo chipovanie najčastejšie nastáva</h2>
 
-<p>Chipovanie neúde rovnomerne po celej dĺžke hrany. Najrizikovejšie miesta:</p>
+<p>Chipovanie nenastáva rovnomerne po celej dĺžke hrany. Najrizikovejšie miesta:</p>
 
-<p><strong>Rohy dosky:</strong> Tu sa stretávajú dve hrany — mechanické napätie je maximálne. Každý náraz na roh dosky je potenciálny chip. Zaoblenie rohov (minimálne 5mm rádius) výrazne znižuje riziko.</p>
+<p><strong>Rohy dosky:</strong> Tu sa stretávajú dve hrany – mechanické napätie je maximálne. Každý náraz na roh dosky je potenciálny chip. Zaoblenie rohov (minimálne 5\u00A0mm rádius) výrazne znižuje riziko.</p>
 
 <p><strong>Hrany výrezov:</strong> Vnútorné hrany pri výrezoch pre drezy a varné dosky. Tieto hrany majú menší prístup k efektívnemu zaobleniu, ale chamfer alebo pencil edge na vnútorných hranách výrazne pomáha.</p>
 
-<p><strong>Hrany pri ostrove:</strong> Ostrovčeky sú vystavené nájazdom od stoličiek, dotyku detí a bežnému mechanickému zaťaženiu. <strong class="gold">Half-bullnose na ostrove je odporúčaný štandard</strong>.</p>
+<p><strong>Hrany pri ostrove:</strong> Ostrovčeky sú vystavené nárazom stoličiek, dotyku detí a bežnému mechanickému zaťaženiu. <strong class="gold">Half-bullnose na ostrove je odporúčaný štandard</strong>.</p>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-05/chip-closeup.webp" alt="Detail chipovania na hrane sinterovaného kameňa — odštiepený kúsok na 90° hrane" width="1408" height="792" loading="lazy" />
-  <figcaption>Detail chipovania — odštiepnutý materiál na ostrej 90° hrane kuchynskej dosky</figcaption>
+  <img src="/images/blog/article-05/chip-closeup.webp" alt="Detail chipovania na hrane sinterovaného kameňa – odštiepený kúsok na 90° hrane" width="1408" height="792" loading="lazy" />
+  <figcaption>Detail chipovania – odštiepený materiál na ostrej 90° hrane kuchynskej dosky</figcaption>
 </figure>
 
 <div class="article-highlight">
   <p><strong>Pravidlo piatich milimetrov:</strong></p>
-  <p>Minimálny rádius zaoblenia <strong>vnútorných rohov výrezov</strong> (pre drezy, varné dosky) je <strong>5mm</strong>. Pre drezy odporúčame <strong>10mm</strong>. Ostrý vnútorný roh (0mm) pri výreze je <strong>takmer zárukou budúcej praskliny</strong> — nie otázka či, ale kedy.</p>
+  <p>Minimálny rádius zaoblenia <strong>vnútorných rohov výrezov</strong> (pre drezy, varné dosky) je <strong>5\u00A0mm</strong>. Pre drezy odporúčame <strong>10\u00A0mm</strong>. Ostrý vnútorný roh (0\u00A0mm) pri výreze je <strong>takmer zárukou budúcej praskliny</strong> – nie otázka či, ale kedy.</p>
 </div>
 
 <h2 id="fabrikacia">Fabrikácia hrán: prečo záleží na technike spracovania</h2>
@@ -137,50 +137,50 @@ export const ARTICLE_05: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>Čo robíme v Orostone</strong></p>
-  <p>Od partnerských kamenárov vyžadujeme opracovanie hrán v dvoch krokoch — hrubý rez a jemné dokončenie, medzi nimi vizuálnu kontrolu pod bočným svetlom. Ak sa pri kontrole nájde chip z fabrikácie, opraví sa ešte pred expedíciou.</p>
+  <p>Od partnerských kamenárov vyžadujeme opracovanie hrán v dvoch krokoch – hrubý rez a jemné dokončenie, medzi nimi vizuálnu kontrolu pod bočným svetlom. Ak sa pri kontrole nájde chip z fabrikácie, opraví sa ešte pred expedíciou.</p>
 </div>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-05/cnc-fabrication.webp" alt="CNC obrábanie profilu hrany sinterovaného kameňa — diamantový kotúč s vodným chladením" width="1408" height="792" loading="lazy" />
-  <figcaption>CNC fabrikácia profilu hrany — diamantový kotúč s vodným chladením pre čistý a bezpečný rez</figcaption>
+  <img src="/images/blog/article-05/cnc-fabrication.webp" alt="CNC obrábanie profilu hrany sinterovaného kameňa – diamantový kotúč s vodným chladením" width="1408" height="792" loading="lazy" />
+  <figcaption>CNC fabrikácia profilu hrany – diamantový kotúč s vodným chladením pre čistý a bezpečný rez</figcaption>
 </figure>
 
 <h2 id="oprava-chipu">Oprava existujúceho chipu: čo je možné</h2>
 
 <p>Ak chip nastane, nie je to automaticky koniec dosky. Závisí od:</p>
 
-<p><strong>Veľkosť chipu:</strong> Mikro-chipovanie (pod 2mm) sa dá opraviť kamenárskym tmelom v zhodnej farbe — výsledok je takmer neviditeľný. Väčší chip (nad 5mm) je vizuálne viditeľný aj po oprave.</p>
+<p><strong>Veľkosť chipu:</strong> Mikro-chipovanie (pod 2\u00A0mm) sa dá opraviť kamenárskym tmelom v zhodnej farbe – výsledok je takmer neviditeľný. Väčší chip (nad 5\u00A0mm) je vizuálne viditeľný aj po oprave.</p>
 
 <p><strong>Miesto chipu:</strong> Chip na exponovanej prednej hrane (v zornom poli) je viac problematický ako chip na bočnej hrane v rohu pod skrinkami.</p>
 
-<p><strong>Farba a dezén:</strong> Na jednofarebných dekoroch je oprava jednoduchšia. Na žilkovaných dekoroch (mramor) je takmer nemožné presne napodobnúť vzor — oprava bude viditeľná.</p>
+<p><strong>Farba a dezén:</strong> Na jednofarebných dekoroch je oprava jednoduchšia. Na žilkovaných dekoroch (mramor) je takmer nemožné presne napodobniť vzor – oprava bude viditeľná.</p>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-05/chip-repair.webp" alt="Oprava chipu na hrane sinterovaného kameňa — kamenársky tmel aplikovaný špachtľou" width="1408" height="792" loading="lazy" />
-  <figcaption>Oprava chipu kamenárskym tmelom — pri mikro-chipovaní na jednofarebnom dekore je výsledok takmer neviditeľný</figcaption>
+  <img src="/images/blog/article-05/chip-repair.webp" alt="Oprava chipu na hrane sinterovaného kameňa – kamenársky tmel aplikovaný špachtľou" width="1408" height="792" loading="lazy" />
+  <figcaption>Oprava chipu kamenárskym tmelom – pri mikro-chipovaní na jednofarebnom dekore je výsledok takmer neviditeľný</figcaption>
 </figure>
 
 <div class="article-case-study">
   <span class="case-study-label">Z praxe</span>
-  <h3>Kuchynský ostrovček s 90° hranami — po dvoch rokoch</h3>
-  <p>Zákazník trvalom na 90° hranách pre ostrý minimalistický vzhľad. Projekt v bielom sinterovanom kameni. Inštalácia perfektná — doska bez jediného chipu.</p>
-  <p>Po 18 mesiacoch: 3 viditeľné chipy na prednej hrane ostrova (stoličky, každodenný dotyk). Na rohu ostrova: odštiepnutý kus ~8mm. Biele jadro pod povrchom kontrastuje s lesklým bielym povrchom.</p>
-  <p>Riešenie: kamenársky tmel na mikro-chipy (neviditeľné), roh bol opracovaný späť — half-bullnose na rohu. Poučenie zákazníka: <strong class="gold">pri ďalšej kuchyni bude chamfer minimálne</strong>. Vizuálny rozdiel voči 90° je minimálny. Technický rozdiel je zásadný.</p>
+  <h3>Kuchynský ostrovček s 90° hranami – po dvoch rokoch</h3>
+  <p>Zákazník trval na 90° hranách pre ostrý minimalistický vzhľad. Projekt v bielom sinterovanom kameni. Inštalácia perfektná – doska bez jediného chipu.</p>
+  <p>Po 18 mesiacoch: 3 viditeľné chipy na prednej hrane ostrova (stoličky, každodenný dotyk). Na rohu ostrova: odštiepený kus ~8\u00A0mm. Biele jadro pod povrchom kontrastuje s lesklým bielym povrchom.</p>
+  <p>Riešenie: kamenársky tmel na mikro-chipy (neviditeľné), roh bol opracovaný späť – half-bullnose na rohu. Poučenie zákazníka: <strong class="gold">pri ďalšej kuchyni bude chamfer minimálne</strong>. Vizuálny rozdiel voči 90° je minimálny. Technický rozdiel je zásadný.</p>
 </div>
 
 <h2 id="vizualne-aspekty">Vizuálne aspekty výberu profilu</h2>
 
-<p>Profil hrany ovplyvňuje nie len odolnosť, ale aj vizuálne vnímanie dosky:</p>
+<p>Profil hrany ovplyvňuje nielen odolnosť, ale aj vizuálne vnímanie dosky:</p>
 
-<p><strong>Optická hrúbka:</strong> 20mm doska s 90° hranou vyzerá masívne — "kamenná platňa". 20mm doska s bevel profilom vyzerá tenšie a eleganntejšie. Pre moderné minimalistické kuchyne je bevel populárna voľba, ktorá kombinuje elegantný look s dobrou odolnosťou.</p>
+<p><strong>Optická hrúbka:</strong> 20\u00A0mm doska s 90° hranou vyzerá masívne – „kamenná platňa“. 20\u00A0mm doska s bevel profilom vyzerá tenšie a elegantnejšie. Pre moderné minimalistické kuchyne je bevel populárna voľba, ktorá kombinuje elegantný vzhľad s dobrou odolnosťou.</p>
 
-<p><strong>Full-body efekt:</strong> Na žilkovaných dekoroch (Calacatta, Statuario) odhalí hrana vnútro materiálu — vzor pokračuje cez celú hrúbku. Zaoblená hrana tento "full-body efekt" krásne zvýrazňuje.</p>
+<p><strong>Full-body efekt:</strong> Na žilkovaných dekoroch (Calacatta, Statuario) odhalí hrana vnútro materiálu – vzor pokračuje cez celú hrúbku. Zaoblená hrana tento „full-body efekt“ krásne zvýrazňuje.</p>
 
-<p><strong>Svetlo a tiene:</strong> Lesklé povrchy s half-bullnose vytvárajú zaoblený svetelný reflex na hrane — typický pre prírodný kameň. Matný povrch s chamfer pôsobí diskrétnejšie.</p>
+<p><strong>Svetlo a tiene:</strong> Lesklé povrchy s half-bullnose vytvárajú zaoblený svetelný reflex na hrane – typický pre prírodný kameň. Matný povrch s chamferom pôsobí diskrétnejšie.</p>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-05/visual-profiles.webp" alt="Detail Calacatta sinterovanej dosky — full-body žilkovanie viditeľné na zaoblenéj hrane" width="1408" height="792" loading="lazy" />
-  <figcaption>Full-body dezén — žilkovanie prechádza celou hrúbkou dosky a je krásne viditeľné na zaoblenéj hrane</figcaption>
+  <img src="/images/blog/article-05/visual-profiles.webp" alt="Detail Calacatta sinterovanej dosky – full-body žilkovanie viditeľné na zaoblenej hrane" width="1408" height="792" loading="lazy" />
+  <figcaption>Full-body dezén – žilkovanie prechádza celou hrúbkou dosky a je krásne viditeľné na zaoblenej hrane</figcaption>
 </figure>
 
 <h2 id="zaver">Záver: ktorý profil vybrať</h2>
@@ -188,61 +188,61 @@ export const ARTICLE_05: BlogArticle = {
 <p>Pre väčšinu kuchynských dosiek je odpoveď jasná:</p>
 
 <ul>
-  <li><strong>Minimálny štandard:</strong> 2mm chamfer — výrazne lepší ako 90°, cenovo prijateľný</li>
-  <li><strong>Odporúčaný štandard:</strong> Half-bullnose — optimálny pomer odolnosti, estetiky a ceny</li>
-  <li><strong>Pre rodiny s deťmi:</strong> Half-bullnose alebo full bullnose — maximálna odolnosť</li>
-  <li><strong>Pre minimalistický dizajn:</strong> Bevel — moderný vzhľad s dobrou odolnosťou</li>
-  <li><strong>Pre obklady stien:</strong> 90° — plne v poriadku, nie je záťažová plocha</li>
+  <li><strong>Minimálny štandard:</strong> 2\u00A0mm chamfer – výrazne lepší ako 90°, cenovo prijateľný</li>
+  <li><strong>Odporúčaný štandard:</strong> Half-bullnose – optimálny pomer odolnosti, estetiky a ceny</li>
+  <li><strong>Pre rodiny s deťmi:</strong> Half-bullnose alebo full bullnose – maximálna odolnosť</li>
+  <li><strong>Pre minimalistický dizajn:</strong> Bevel – moderný vzhľad s dobrou odolnosťou</li>
+  <li><strong>Pre obklady stien:</strong> 90° – plne v poriadku, nie je záťažová plocha</li>
 </ul>
 
 <p>A ešte raz: <strong class="gold">cena za správny profil je vždy nižšia ako cena za opravu chipu</strong>. Nie je to o šetrení.</p>
 
 <div class="article-tip">
   <p><strong>Alebo nás jednoducho kontaktujte v Orostone</strong></p>
-  <p>Ukážeme vám profily na fyzických vzorkách — oveľa lepšie rozhodnutie ako podľa fotografie. Konzultácia je zadarmo.</p>
+  <p>Ukážeme vám profily na fyzických vzorkách – oveľa lepšie rozhodnutie ako podľa fotografie. Konzultácia je zadarmo.</p>
   <a href="/kontakt" class="tip-btn">Kontaktovať nás →</a>
 </div>
 `,
     faqs: [
       {
         question: 'Aký profil hrany je najodolnejší voči chipovaniu?',
-        answer: 'Half-bullnose je najodolnejší bežný profil — zaoblenie rozkladá mechanické napätie po najväčšej ploche a absorpuje nárazy najefektívnejšie. Full bullnose má podobnú odolnosť, ale je vizuálne robustnejší. Pre kuchynské dosky s vysokým zaťažením odporúčame half-bullnose.',
+        answer: 'Half-bullnose je najodolnejší bežný profil – zaoblenie rozkladá mechanické napätie po najväčšej ploche a absorbuje nárazy najefektívnejšie. Full bullnose má podobnú odolnosť, ale je vizuálne robustnejší. Pre kuchynské dosky s vysokým zaťažením odporúčame half-bullnose.',
       },
       {
         question: 'Prečo 90° hrana chipuje na sinterovanom kameni?',
-        answer: 'Na ostrých hranách sa mechanické napätie sústredí do jedného bodu. Keď nastane náraz (hrniec, tanier), energia sa sústredí na minimálnu plochu — materiál sa odštiepi. Zaoblená hrana rozkladá to isté napätie po väčšej ploche, čo výrazne znižuje pravdepodobnosť poškodenia.',
+        answer: 'Na ostrých hranách sa mechanické napätie sústredí do jedného bodu. Keď nastane náraz (hrniec, tanier), energia sa sústredí na minimálnu plochu – materiál sa odštiepi. Zaoblená hrana rozkladá to isté napätie po väčšej ploche, čo výrazne znižuje pravdepodobnosť poškodenia.',
       },
       {
         question: 'Koľko stojí úprava hrany na kuchynskej doske?',
-        answer: 'Chamfer 2mm: +5–15 €/bm. Pencil 3mm: +10–20 €/bm. Bevel: +15–30 €/bm. Half-bullnose: +20–40 €/bm. Pre štandardnú L-kuchyňu (cca 5 bm hrán) je rozdiel medzi 90° a half-bullnose typicky 100–200 €. Oprava jedného chpu stojí 50–200 € — bez záruky rovnakého výsledku.',
+        answer: 'Chamfer 2\u00A0mm: +5–15\u00A0€/bm. Pencil 3\u00A0mm: +10–20\u00A0€/bm. Bevel: +15–30\u00A0€/bm. Half-bullnose: +20–40\u00A0€/bm. Pre štandardnú L-kuchyňu (cca 5\u00A0bm hrán) je rozdiel medzi 90° a half-bullnose typicky 100–200\u00A0€. Oprava jedného chipu stojí 50–200\u00A0€ – bez záruky rovnakého výsledku.',
       },
       {
         question: 'Je možné zmeniť profil hrany po inštalácii?',
-        answer: 'Áno, ale iba v obmedzenej miere a za výrazný príplatok. Preprofilovanie hrany na mieste inštalácie je technicky možné, ale drahé (ručné obrábanie) a nemožné dosiahnuť rovnakú kvalitu ako fabrikáciou v dielni. Najlepšie je zvoliť správny profil pred inštaláciou.',
+        answer: 'Áno, ale iba v obmedzenej miere a za výrazný príplatok. Preprofilovanie hrany na mieste inštalácie je technicky možné, ale drahé (ručné obrábanie) a nedá sa ním dosiahnuť rovnaká kvalita ako pri fabrikácii v dielni. Najlepšie je zvoliť správny profil pred inštaláciou.',
       },
       {
         question: 'Aký profil hrany odporúčate pre kuchyňu s deťmi?',
-        answer: 'Pre kuchyne s deťmi odporúčame half-bullnose alebo bevel — minimálne chamfer 2mm. Deti generujú vyššie mechanické zaťaženie hrán (nárazy, hranie sa pri ostrove). Zaoblené profily sú aj bezpečnejšie — ostré hrany môžu spôsobiť drobné zranenia pri náhodnom kontakte.',
+        answer: 'Pre kuchyne s deťmi odporúčame half-bullnose alebo bevel – minimálne chamfer 2\u00A0mm. Deti generujú vyššie mechanické zaťaženie hrán (nárazy, hranie sa pri ostrove). Zaoblené profily sú aj bezpečnejšie – ostré hrany môžu spôsobiť drobné zranenia pri náhodnom kontakte.',
       },
       {
         question: 'Ktorý profil hrany je vhodný pre minimalistickú modernú kuchyňu?',
-        answer: 'Bevel (10–20mm) je obľúbená voľba pre moderný dizajn — opticky stenčí dosku a dodáva jej eleganciu, pričom zachováva dobrú odolnosť voči chipovaniu. Chamfer 2mm je takmer neviditeľný, ale s výrazne lepšou odolnosťou ako 90°.',
+        answer: 'Bevel (10–20\u00A0mm) je obľúbená voľba pre moderný dizajn – opticky stenčí dosku a dodáva jej eleganciu, pričom zachováva dobrú odolnosť voči chipovaniu. Chamfer 2\u00A0mm je takmer neviditeľný, ale s výrazne lepšou odolnosťou ako 90°.',
       },
       {
         question: 'Môžem mať rôzne profily na rôznych hranách dosky?',
-        answer: 'Áno. Bežná kombinácia: half-bullnose na prednej exponovanej hrane + chamfer na bočných hranách + 90° na hrane pri stene (nie je viditeľná). Každá hrana má iné zaťaženie a iný vizuálny efekt — kombinovanie profilov je rozumná prax.',
+        answer: 'Áno. Bežná kombinácia: half-bullnose na prednej exponovanej hrane + chamfer na bočných hranách + 90° na hrane pri stene (nie je viditeľná). Každá hrana má iné zaťaženie a iný vizuálny efekt – kombinovanie profilov je rozumná prax.',
       },
       {
         question: 'Dá sa chip na hrane opraviť tak, aby nebol viditeľný?',
-        answer: 'Mikro-chipovanie (pod 2mm): kamenársky tmel v zhodnej farbe — výsledok je takmer neviditeľný na jednofarebných dekoroch. Väčší chip (5mm+): tmel je viditeľný, obzvlášť na žilkovaných dekoroch. Najlepšia oprava chipu je prevencia správnym profilom.',
+        answer: 'Mikro-chipovanie (pod 2\u00A0mm): kamenársky tmel v zhodnej farbe – výsledok je takmer neviditeľný na jednofarebných dekoroch. Väčší chip (5\u00A0mm+): tmel je viditeľný, obzvlášť na žilkovaných dekoroch. Najlepšia oprava chipu je prevencia správnym profilom.',
       },
       {
         question: 'Platí rovnaké odporúčanie pre profily aj pri kúpeľňovej doske?',
-        answer: 'Áno. Kúpeľňové dosky sú vystavené podobnému mechanickému zaťaženiu ako kuchynské — nárazy od umývadla, kozmetiky, rôznych predmetov. Pre kúpeľňové dosky s výrezom pre umývadlo odporúčame chamfer minimálne, ideálne bevel alebo half-bullnose.',
+        answer: 'Áno. Kúpeľňové dosky sú vystavené podobnému mechanickému zaťaženiu ako kuchynské – nárazy od umývadla, kozmetiky, rôznych predmetov. Pre kúpeľňové dosky s výrezom pre umývadlo odporúčame chamfer minimálne, ideálne bevel alebo half-bullnose.',
       },
       {
         question: 'Ovplyvňuje profil hrany cenu fabrikácie?',
-        answer: 'Áno, profil ovplyvňuje čas obrábania a počet nástrojov. 90° hrana nevyžaduje žiadne extra opracovanie. Chamfer 2mm je rýchly a lacný. Half-bullnose a full bullnose vyžadujú viac prechodov a špecializovaný nástroj — preto príplatok 20–50 €/bm.',
+        answer: 'Áno, profil ovplyvňuje čas obrábania a počet nástrojov. 90° hrana nevyžaduje žiadne extra opracovanie. Chamfer 2\u00A0mm je rýchly a lacný. Half-bullnose a full bullnose vyžadujú viac prechodov a špecializovaný nástroj – preto príplatok 20–50\u00A0€/bm.',
       },
     ],
   },
