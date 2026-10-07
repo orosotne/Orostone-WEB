@@ -58,6 +58,7 @@ export const ARTICLE_13: BlogArticle = {
 <p><strong>Čo obsahuje cenová ponuka:</strong></p>
 <ul>
   <li><strong>Materiál</strong> — presný typ, hrúbka, povrchová úprava, cena za m²</li>
+  <li><strong>Zameranie</strong> — ručné zameranie priamo na mieste, robí ho partnerský kamenár</li>
   <li><strong>CNC fabrikácia</strong> — rezanie, tvarovanie, opracovanie</li>
   <li><strong>Výrezy</strong> — drez, varná doska, batéria, zásuvky — každý výrez samostatne</li>
   <li><strong>Profily hrán</strong> — typ profilu a metráž</li>
@@ -338,6 +339,7 @@ export const ARTICLE_13: BlogArticle = {
 <p><strong>What the quote includes:</strong></p>
 <ul>
   <li><strong>Material</strong> — exact type, thickness, surface finish, price per m²</li>
+  <li><strong>Measurement</strong> — manual on-site measurement by the partner stonemason</li>
   <li><strong>CNC fabrication</strong> — cutting, shaping, processing</li>
   <li><strong>Cutouts</strong> — sink, cooktop, tap, sockets — each cutout listed separately</li>
   <li><strong>Edge profiles</strong> — profile type and linear metres</li>
