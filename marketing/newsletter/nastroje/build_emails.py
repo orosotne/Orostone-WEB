@@ -94,7 +94,7 @@ def doc(meta, title, preheader, rows):
 <!--
   OROSTONE — e-mailová šablóna (skill orostone-newsletter)
 {meta_lines}
-  Obrázky z orostone.sk/images/email/ nahraj zo skillu: assets/email-images/
+  Obrázky: https://orostone.sk/images/email/ (v repozitári Orostone-WEB: public/images/email/)
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="sk">
 <head>
