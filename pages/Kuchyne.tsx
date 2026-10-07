@@ -4,6 +4,7 @@ import { SEOHead } from '@/components/UI/SEOHead';
 import {
   ActionButton,
   ArticleLinks,
+  CONFIGURATOR_URL,
   Container,
   FaqList,
   FeatureGrid,
@@ -21,10 +22,6 @@ import {
 } from '@/components/Design';
 import { HOME_DECORS, HOME_REALIZATIONS, decorImage } from '@/components/Home/homeData';
 import { KITCHEN_FAQS, KUCHYNE_FEATURES, KUCHYNE_H1, KUCHYNE_PROCESS_STEPS } from '@/data/pillars/kuchyne';
-
-// Verejný 3D konfigurátor beží v CRM (orosotne/orostone-crm, /konfigurator). Je informačný:
-// návrh posúdi obchodný zástupca, cenu ani termín nesľubuje.
-const CONFIGURATOR_URL = 'https://crm.orostone.sk/konfigurator';
 
 // Real client kitchens (decor names from the time of installation); six different decors, so the second Taj Mahal stays on the homepage only.
 const GALLERY = HOME_REALIZATIONS.filter((r) => r.image !== 'svetly-onyx');
