@@ -139,4 +139,18 @@ Popri kole 5 pribudol obsah, ktorý skontroluje ďalšie kolo:
 
 Codex skontroloval opravy z kola 5 aj nový obsah (01, 02, 03, 06, 20, 21) a nenašiel žiadne pripomienky (commit `c9a27df`). Jazyková kontrola e-mailov 01–21 je tým hotová. Čo ešte treba urobiť pred odoslaním, je v README v stĺpci Stav.
 
+## Kolo 7 – Codex review v PR #82 (7. 10. 2026, po označení PR ako pripraveného)
+
+Codex pri poslednej kontrole (commit `7d36a0b`) našiel jednu pripomienku. PR bol medzitým zlúčený, oprava je preto v novom PR.
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 21 | Cez víkend a sviatky po dohode na +421 917 588 738. | Cez víkend a sviatky po dohode na čísle +421 917 588 738. | štylistika | Bez slova *čísle* sa predložka *na* neprirodzene viaže priamo s telefónnym číslom. Pri slovese *volať* je väzba prirodzená, preto „zavolajte na +421…“ v 02 ostáva. | zapracované |
+
+## Kolo 8 – Codex review v PR #84 (7. 10. 2026, po oprave z kola 7)
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 21 | Cez víkend a sviatky po dohode na čísle +421 917 588 738. | Cez víkend a sviatky po dohode na telefónnom čísle +421 917 588 738. | štylistika | Spojenie *na čísle* pôsobí v informačnom texte elipticky, *na telefónnom čísle* jednoznačne pomenúva spôsob kontaktu. Pravidlo v `slovnik.md`, sekcia 8, je spresnené. | zapracované |
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.

@@ -29,7 +29,7 @@ Otváracie hodiny cez sviatky
 ### Číslovaný zoznam
 01
 Showroom v Bošanoch
-V pracovné dni 9:00–17:00. Cez víkend a sviatky po dohode na +421 917 588 738.
+V pracovné dni 9:00–17:00. Cez víkend a sviatky po dohode na telefónnom čísle +421 917 588 738.
 02
 E-shop a vzorky
 Objednávky prijímame aj cez sviatky. Vzorky odosielame do 2–3 pracovných dní, víkendy a sviatky sa do lehoty nerátajú.

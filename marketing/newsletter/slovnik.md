@@ -105,6 +105,7 @@ Pravidlá, ktoré vznikli pri kontrole a platia ďalej. Najnovšie hore.
 
 | Dátum | Pravidlo | Príklad |
 |---|---|---|
+| 7. 10. 2026 | Telefónne číslo za predložkou *na* uvádza spojenie *telefónne číslo*. Pri slovese *volať* stačí samotné číslo. | po dohode na telefónnom čísle +421 917 588 738 · zavolajte na +421 917 588 738 |
 | 7. 10. 2026 | Viacnásobný podmet: ak prísudok stojí **za** podmetom, je v množnom čísle. Ak stojí **pred** ním, môže sa zhodovať s najbližším členom (obe podoby sú správne). Pri *každý … a každý* je prísudok v jednotnom čísle. | Utierka a saponát stačia. · Stačí víno, citrón a vaše svetlo. · Každá otázka a každá fotka nám pomáha. |
 | 7. 10. 2026 | Tlačidlo aj textový odkaz pod ním je neurčitok (sekcia 5) | Prečítať celý návod · Prečítať viac o sinterovanom kameni |
 | 7. 10. 2026 | Medzi dvoma vetnými členmi spojenými jednoduchým *alebo* čiarku nepíšeme | či sú všetky ceny s DPH alebo bez nej |
