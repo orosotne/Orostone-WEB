@@ -30,7 +30,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <p>Neistota plodí stres – a práve preto vám v tomto článku ukážeme celý proces Orostone krok za krokom, s konkrétnymi termínmi, meraniami a zodpovednosťami.</p>
 
-<p>Či už plánujete novú kuchyňu, kúpeľňový obklad alebo ostrov do otvoreného priestoru, proces je vždy rovnaký: <strong>10 jasných krokov, 10 – 15 pracovných dní, jasné zodpovednosti</strong>. Poďme na to.</p>
+<p>Či už plánujete novú kuchyňu, kúpeľňový obklad alebo ostrovček do otvoreného priestoru, proces je vždy rovnaký: <strong>10 jasných krokov, 10 – 15 pracovných dní, jasné zodpovednosti</strong>. Poďme na to.</p>
 
 <p><strong>Kto čo robí:</strong> Orostone vám poradí s výberom, dodá materiál – celé platne – a koordinuje termíny. Zameranie, výrobu, dopravu a montáž robí a fakturuje partnerský kamenár so skúsenosťami so sinterovaným kameňom. Výsledok kontrolujeme aj my.</p>
 
@@ -178,7 +178,7 @@ export const ARTICLE_13: BlogArticle = {
   <li><strong>Upevnenie</strong> – dosky sa zaťažia alebo zafixujú svorkami počas vytvrdnutia lepidla</li>
 </ul>
 
-<p><strong>Trvanie:</strong> 4 – 8 hodín podľa rozsahu projektu. Jednoduchá L-kuchyňa: 4 hodiny. Veľký ostrov s viacerými dielmi: 6 – 8 hodín.</p>
+<p><strong>Trvanie:</strong> 4 – 8 hodín podľa rozsahu projektu. Jednoduchá L-kuchyňa: 4 hodiny. Veľký ostrovček s viacerými dielmi: 6 – 8 hodín.</p>
 
 <h2 id="krok-9-instalacia-spotrebicov">Krok 9 – Kto inštaluje spotrebiče?</h2>
 

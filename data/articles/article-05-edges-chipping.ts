@@ -59,7 +59,7 @@ export const ARTICLE_05: BlogArticle = {
 <h3>1. Ostrá hrana (90°, flat polished)</h3>
 <p>Hrana je dokonale ostrý uhol bez akéhokoľvek zaoblenia. Vizuálne je minimalistická a moderná – v architektonických renderoch vyzerá skvele. V reálnej kuchyni s každodenným zaťažením je <strong class="gold">najrizikovejšia</strong> voľba.</p>
 
-<p>Odporúčanie: pre obklady stien a zásterky áno. Pre horizontálne pracovné plochy: <em>neodporúčame</em>.</p>
+<p>Odporúčanie: pre obklady stien a zásteny áno. Pre horizontálne pracovné plochy: <em>neodporúčame</em>.</p>
 
 <h3>2. Chamfer (skosenie 2\u00A0mm alebo 5\u00A0mm)</h3>
 <p>Hrana je drobne skosená – zvyčajne 2\u00A0mm alebo 5\u00A0mm pod 45°. Vizuálne je takmer neviditeľná, ale fyzikálne znižuje riziko chipovania o desiatky percent oproti 90°.</p>
@@ -113,7 +113,7 @@ export const ARTICLE_05: BlogArticle = {
 
 <p><strong>Hrany výrezov:</strong> Vnútorné hrany pri výrezoch pre drezy a varné dosky. Tieto hrany majú menší prístup k efektívnemu zaobleniu, ale chamfer alebo pencil edge na vnútorných hranách výrazne pomáha.</p>
 
-<p><strong>Hrany pri ostrove:</strong> Ostrovčeky sú vystavené nárazom stoličiek, dotyku detí a bežnému mechanickému zaťaženiu. <strong class="gold">Half-bullnose na ostrove je odporúčaný štandard</strong>.</p>
+<p><strong>Hrany pri ostrovčeku:</strong> Ostrovčeky sú vystavené nárazom stoličiek, dotyku detí a bežnému mechanickému zaťaženiu. <strong class="gold">Half-bullnose na ostrovčeku je odporúčaný štandard</strong>.</p>
 
 <figure class="article-figure">
   <img src="/images/blog/article-05/chip-closeup.webp" alt="Detail chipovania na hrane sinterovaného kameňa – odštiepený kúsok na 90° hrane" width="1408" height="792" loading="lazy" />
@@ -164,7 +164,7 @@ export const ARTICLE_05: BlogArticle = {
   <span class="case-study-label">Z praxe</span>
   <h3>Kuchynský ostrovček s 90° hranami – po dvoch rokoch</h3>
   <p>Zákazník trval na 90° hranách pre ostrý minimalistický vzhľad. Projekt v bielom sinterovanom kameni. Inštalácia perfektná – doska bez jediného chipu.</p>
-  <p>Po 18 mesiacoch: 3 viditeľné chipy na prednej hrane ostrova (stoličky, každodenný dotyk). Na rohu ostrova: odštiepený kus ~8\u00A0mm. Biele jadro pod povrchom kontrastuje s lesklým bielym povrchom.</p>
+  <p>Po 18 mesiacoch: 3 viditeľné chipy na prednej hrane ostrovčeka (stoličky, každodenný dotyk). Na rohu ostrovčeka: odštiepený kus ~8\u00A0mm. Biele jadro pod povrchom kontrastuje s lesklým bielym povrchom.</p>
   <p>Riešenie: kamenársky tmel na mikro-chipy (neviditeľné), roh bol opracovaný späť – half-bullnose na rohu. Poučenie zákazníka: <strong class="gold">pri ďalšej kuchyni bude chamfer minimálne</strong>. Vizuálny rozdiel voči 90° je minimálny. Technický rozdiel je zásadný.</p>
 </div>
 
@@ -222,7 +222,7 @@ export const ARTICLE_05: BlogArticle = {
       },
       {
         question: 'Aký profil hrany odporúčate pre kuchyňu s deťmi?',
-        answer: 'Pre kuchyne s deťmi odporúčame half-bullnose alebo bevel – minimálne chamfer 2\u00A0mm. Deti generujú vyššie mechanické zaťaženie hrán (nárazy, hranie sa pri ostrove). Zaoblené profily sú aj bezpečnejšie – ostré hrany môžu spôsobiť drobné zranenia pri náhodnom kontakte.',
+        answer: 'Pre kuchyne s deťmi odporúčame half-bullnose alebo bevel – minimálne chamfer 2\u00A0mm. Deti generujú vyššie mechanické zaťaženie hrán (nárazy, hranie sa pri ostrovčeku). Zaoblené profily sú aj bezpečnejšie – ostré hrany môžu spôsobiť drobné zranenia pri náhodnom kontakte.',
       },
       {
         question: 'Ktorý profil hrany je vhodný pre minimalistickú modernú kuchyňu?',

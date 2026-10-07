@@ -188,7 +188,7 @@ export const ARTICLE_23: BlogArticle = {
   <p><strong>Materiál na ostrovček (s DPH, podľa dekoru):</strong></p>
   <ul>
     <li><strong>Ostrovček do 3\u00A0200\u00A0×\u00A01\u00A0600\u00A0mm bez waterfall hrán:</strong> 1 platňa – ${ONE_SLAB}</li>
-    <li><strong>Ostrovček s waterfall hranami alebo väčší ostrov:</strong> podľa rozmerov 1 – 2 platne, pri 2 platniach ${TWO_SLABS}</li>
+    <li><strong>Ostrovček s waterfall hranami alebo väčší ostrovček:</strong> podľa rozmerov 1 – 2 platne, pri 2 platniach ${TWO_SLABS}</li>
   </ul>
   <p>Orostone predáva materiál – celé platne. Výrobu (rezy, výrezy, waterfall hrany) a montáž robí a fakturuje partnerský kamenár, orientačne za ${INSTALLATION_RATE_PER_M2}\u00A0€/m² s DPH. Ceny všetkých dekorov nájdete v <a href="/cennik">cenníku</a>.</p>
 </div>

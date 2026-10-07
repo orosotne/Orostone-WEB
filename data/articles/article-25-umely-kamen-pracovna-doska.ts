@@ -50,9 +50,9 @@ export const ARTICLE_25: BlogArticle = {
 <div class="article-highlight">
   <p><strong>Rýchla rozhodovacia matica:</strong></p>
   <ul>
-    <li><strong>Vyberte umelý kameň</strong>, ak: kuchyňu používate aktívne (varíte denne), máte malé deti, kuchyňa je pri veľkom okne s priamym slnkom, nechcete sa starať o pravidelnú impregnáciu alebo plánujete jednotný dekor cez ostrov + zástenu + linku.</li>
+    <li><strong>Vyberte umelý kameň</strong>, ak: kuchyňu používate aktívne (varíte denne), máte malé deti, kuchyňa je pri veľkom okne s priamym slnkom, nechcete sa starať o pravidelnú impregnáciu alebo plánujete jednotný dekor cez ostrovček + zástenu + linku.</li>
     <li><strong>Zvážte prírodný kameň</strong>, ak: chcete jedinečnú prírodnú kresbu, používate kuchyňu menej intenzívne, ste ochotný impregnovať raz za rok a páči sa vám patina, ktorá vznikne časom.</li>
-    <li><strong>Skombinujte oba</strong>, ak: chcete prírodný mramor na ostrov ako vizuálny akcent + odolný umelý kameň na pracovnú zónu okolo varnej dosky a drezu.</li>
+    <li><strong>Skombinujte oba</strong>, ak: chcete prírodný mramor na ostrovček ako vizuálny akcent + odolný umelý kameň na pracovnú zónu okolo varnej dosky a drezu.</li>
   </ul>
 </div>
 
@@ -84,7 +84,7 @@ export const ARTICLE_25: BlogArticle = {
 
 <h3>1. Aké sú reálne rozmery vašej pracovnej dosky?</h3>
 
-<p>Bežne meraná dĺžka: <strong class="gold">3,5 až 6,5 bežného metra</strong> v štandardnej slovenskej kuchyni. Plus prípadný ostrov 2 – 3,5\u00A0m. Tieto čísla potrebujete poznať pred prvou ponukou – bez nich vám predajca dá iba „od X\u00A0€ za bežný meter“, čo nie je odpoveď.</p>
+<p>Bežne meraná dĺžka: <strong class="gold">3,5 až 6,5 bežného metra</strong> v štandardnej slovenskej kuchyni. Plus prípadný ostrovček 2 – 3,5\u00A0m. Tieto čísla potrebujete poznať pred prvou ponukou – bez nich vám predajca dá iba „od X\u00A0€ za bežný meter“, čo nie je odpoveď.</p>
 
 <h3>2. Koľko v kuchyni reálne varíte?</h3>
 
@@ -96,11 +96,11 @@ export const ARTICLE_25: BlogArticle = {
 
 <h3>4. Aký máte rozpočet – vrátane fabrikácie a montáže?</h3>
 
-<p>„Cena materiálu“ nie je „cena pracovnej dosky“. Cena, ktorá platí pre vašu kuchyňu, zahŕňa zameranie, výrobu (výrezy pre drez, varnú dosku, batériu), opracovanie hrán, dopravu, výnos do vyšších poschodí a montáž. Reálny rozpočet pre kuchyňu s 5\u00A0bm a jedným ostrovom začína okolo <strong class="gold">2\u00A0000 – 2\u00A0500\u00A0€</strong> pri kremennom kompozite a <strong class="gold">3\u00A0500 – 4\u00A0500\u00A0€</strong> pri sinterovanom kameni.</p>
+<p>„Cena materiálu“ nie je „cena pracovnej dosky“. Cena, ktorá platí pre vašu kuchyňu, zahŕňa zameranie, výrobu (výrezy pre drez, varnú dosku, batériu), opracovanie hrán, dopravu, výnos do vyšších poschodí a montáž. Reálny rozpočet pre kuchyňu s 5\u00A0bm a jedným ostrovčekom začína okolo <strong class="gold">2\u00A0000 – 2\u00A0500\u00A0€</strong> pri kremennom kompozite a <strong class="gold">3\u00A0500 – 4\u00A0500\u00A0€</strong> pri sinterovanom kameni.</p>
 
 <h3>5. Aký dekor sa vám páči – a aký zvládnete dlhodobo?</h3>
 
-<p>Výrazné mramorové imitácie s hlbokou kresbou pôsobia úchvatne na vzorke 30\u00A0×\u00A030\u00A0cm. V plnej veľkosti 3-metrového ostrova môžu prevážiť celý interiér. Pred rozhodnutím si vždy vyžiadajte väčšiu vzorku (60\u00A0×\u00A060\u00A0cm minimum) a pozrite si materiál v dennom svetle, nie iba v showroome pod LED.</p>
+<p>Výrazné mramorové imitácie s hlbokou kresbou pôsobia úchvatne na vzorke 30\u00A0×\u00A030\u00A0cm. V plnej veľkosti 3-metrového ostrovčeka môžu prevážiť celý interiér. Pred rozhodnutím si vždy vyžiadajte väčšiu vzorku (60\u00A0×\u00A060\u00A0cm minimum) a pozrite si materiál v dennom svetle, nie iba v showroome pod LED.</p>
 
 <h2 id="pre-koho-je-vhodna">Kuchynská pracovná doska z umelého kameňa: pre koho je vhodná?</h2>
 
@@ -117,7 +117,7 @@ export const ARTICLE_25: BlogArticle = {
   <ul>
     <li>Štandardný quartz kompozit, neutrálny dekor (béžová, šedá, biela so svetlou kresbou)</li>
     <li>Hrúbka 12\u00A0mm s rovnou hranou alebo jemným zrazením</li>
-    <li>2 výrezy (drez + varná doska), bez ostrova alebo s malým ostrovom do 1,8\u00A0m</li>
+    <li>2 výrezy (drez + varná doska), bez ostrovčeka alebo s malým ostrovčekom do 1,8\u00A0m</li>
     <li>Štandardná montáž v jednom dni, doprava do 30\u00A0km</li>
   </ul>
   <p><strong>Kde sa šetrí:</strong> značka materiálu (menej známe značky), jednoduchý dekor, rovná hrana, malý objem. <strong>Pre koho:</strong> menšie kuchyne v byte, prenájom, druhá kuchyňa.</p>
@@ -127,8 +127,8 @@ export const ARTICLE_25: BlogArticle = {
   <p><strong>400\u00A0€/bm – stredná hladina (prémiový kompozit alebo základný sinterovaný kameň)</strong></p>
   <ul>
     <li>Buď prémiový quartz s dekorom imitujúcim mramor, alebo vstupný sinterovaný kameň (Dekton, Laminam základné kolekcie)</li>
-    <li>Hrúbka 12\u00A0mm so zrazenou hranou alebo „mitered“ geometriou pri ostrove</li>
-    <li>3 – 4 výrezy, ostrov do 3\u00A0m, 1 zástena</li>
+    <li>Hrúbka 12\u00A0mm so zrazenou hranou alebo „mitered“ geometriou pri ostrovčeku</li>
+    <li>3 – 4 výrezy, ostrovček do 3\u00A0m, 1 zástena</li>
     <li>Profesionálne zameranie, montáž s flush undermount drezom</li>
   </ul>
   <p><strong>Kde sa šetrí:</strong> kompromis medzi materiálom a fabrikáciou. <strong>Pre koho:</strong> hlavná kuchyňa v rodinnom dome alebo väčšom byte, aktívni varitelia.</p>
@@ -138,11 +138,11 @@ export const ARTICLE_25: BlogArticle = {
   <p><strong>550\u00A0€/bm – prémiová hladina (prémiový sinterovaný kameň + komplexná fabrikácia)</strong></p>
   <ul>
     <li>Prémiový sinterovaný kameň (Lapitec, Neolith Calacatta, Laminam Statuario)</li>
-    <li>Hrúbka 12\u00A0mm alebo 20\u00A0mm, podľa dizajnu; mitered hrany s waterfall ostrovom; book-match kresba pri viacerých platniach</li>
-    <li>5+ výrezov, ostrov 3+\u00A0m, zástena až po strop, integrované sokle</li>
+    <li>Hrúbka 12\u00A0mm alebo 20\u00A0mm, podľa dizajnu; mitered hrany s waterfall ostrovčekom; book-match kresba pri viacerých platniach</li>
+    <li>5+ výrezov, ostrovček 3+\u00A0m, zástena až po strop, integrované sokle</li>
     <li>Detailné zameranie, montáž s návrhom skrytých spojov</li>
   </ul>
-  <p><strong>Kde sa nešetrí:</strong> všetko od dekoru po detail. <strong>Pre koho:</strong> reprezentačná kuchyňa, ostrov ako stredobod interiéru, dlhodobá investícia 15+ rokov.</p>
+  <p><strong>Kde sa nešetrí:</strong> všetko od dekoru po detail. <strong>Pre koho:</strong> reprezentačná kuchyňa, ostrovček ako stredobod interiéru, dlhodobá investícia 15+ rokov.</p>
 </div>
 
 <p>Pod 280\u00A0€/bm pri sinterovanom kameni alebo prémiovom dekore sa väčšinou škrtá vo fabrikácii – slabšie podlepenie, jednoduchšia hrana, prípadne nezahrnutá doprava alebo výnos. <strong class="gold">Najdrahší kompromis</strong> je dobre vyzerajúca platňa, ktorá po dvoch rokoch praskne pri zle navrhnutom výreze.</p>
@@ -166,7 +166,7 @@ export const ARTICLE_25: BlogArticle = {
 
 <h3>1. Rozhodovanie podľa malej vzorky</h3>
 
-<p>Vzorka 10\u00A0×\u00A010\u00A0cm v showroome a 3-metrová doska v kuchyni vyzerajú odlišne. Žiadajte väčšiu vzorku, ideálne kus z tej istej platne, ktorá vám pôjde do kuchyne. Pri výrazných dekoroch požiadajte o fotografiu celej platne – kresba sa pri rezaní rozdelí, a vy chcete vedieť, ktorá časť skončí na vašom ostrove.</p>
+<p>Vzorka 10\u00A0×\u00A010\u00A0cm v showroome a 3-metrová doska v kuchyni vyzerajú odlišne. Žiadajte väčšiu vzorku, ideálne kus z tej istej platne, ktorá vám pôjde do kuchyne. Pri výrazných dekoroch požiadajte o fotografiu celej platne – kresba sa pri rezaní rozdelí, a vy chcete vedieť, ktorá časť skončí na vašom ostrovčeku.</p>
 
 <h3>2. Pozeranie iba na cenu za bežný meter</h3>
 
@@ -174,7 +174,7 @@ export const ARTICLE_25: BlogArticle = {
 
 <h3>3. Ignorovanie smeru kresby</h3>
 
-<p>Pri výrazných dekoroch (Calacatta, Patagonia, Pietra Grey) má smer kresby vplyv na výsledok. Predajca by mal pred rezaním ukázať „layout“ – ako bude kresba prebiehať cez ostrov, ako sa stretne v rohu kuchyne, kde budú spoje. Ak vám túto vec nikto neukáže pred fabrikáciou, vyžiadajte si ju.</p>
+<p>Pri výrazných dekoroch (Calacatta, Patagonia, Pietra Grey) má smer kresby vplyv na výsledok. Predajca by mal pred rezaním ukázať „layout“ – ako bude kresba prebiehať cez ostrovček, ako sa stretne v rohu kuchyne, kde budú spoje. Ak vám túto vec nikto neukáže pred fabrikáciou, vyžiadajte si ju.</p>
 
 <h3>4. Podcenenie hrúbky pri výrezoch</h3>
 
@@ -212,7 +212,7 @@ export const ARTICLE_25: BlogArticle = {
 <p><strong>Čo by ľudia urobili inak:</strong></p>
 <ul>
   <li><strong>Investovali by viac do fabrikácie, menej do dekoru</strong> – výrazný dekor po roku zovšednie, ale zle urobený výrez sa vám pripomenie každý deň.</li>
-  <li><strong>Vyžiadali by si rozkres pred rezaním</strong> – kde budú spoje, ako bude kresba pretekať cez ostrov, kde budú výrezy.</li>
+  <li><strong>Vyžiadali by si rozkres pred rezaním</strong> – kde budú spoje, ako bude kresba pretekať cez ostrovček, kde budú výrezy.</li>
   <li><strong>Pýtali by sa na šírku silikónu</strong> okolo drezu a varnej dosky – 2\u00A0mm vs 4\u00A0mm vyzerajú rozdielne.</li>
   <li><strong>Nepoponáhľali by sa s rozhodnutím</strong> – väčšina nespokojných zákazníkov sa rozhodla pod časovým tlakom (rekonštrukcia, sťahovanie). Dva extra týždne plánovania ušetria roky frustrácie.</li>
 </ul>
@@ -280,7 +280,7 @@ export const ARTICLE_25: BlogArticle = {
       },
       {
         question: 'Prečo nemá pracovná doska z umelého kameňa jednu univerzálnu cenu?',
-        answer: 'Pretože každá kuchyňa má iné parametre. Rovnaký materiál pri kuchyni s 3 výrezmi a ostrovom vyjde inak ako pri rovnej linke s jedným drezom. Seriózny dodávateľ vám dá cenu až po základnom zameraní alebo aspoň podľa pôdorysu, nie pred ním.',
+        answer: 'Pretože každá kuchyňa má iné parametre. Rovnaký materiál pri kuchyni s 3 výrezmi a ostrovčekom vyjde inak ako pri rovnej linke s jedným drezom. Seriózny dodávateľ vám dá cenu až po základnom zameraní alebo aspoň podľa pôdorysu, nie pred ním.',
       },
       {
         question: 'Aký je rozdiel medzi technickým a umelým kameňom?',
@@ -288,7 +288,7 @@ export const ARTICLE_25: BlogArticle = {
       },
       {
         question: 'Koľko stojí kuchynská doska z umelého kameňa?',
-        answer: 'Pre štandardnú slovenskú kuchyňu so 4 – 6\u00A0bm a malým ostrovom počítajte 2\u00A0000 – 4\u00A0500\u00A0€ v závislosti od materiálu a fabrikácie. Vstupný quartz kompozit s rovnou hranou a dvoma výrezmi je v dolnej časti tohto rozsahu, prémiový sinterovaný kameň s waterfall ostrovom v hornej.',
+        answer: 'Pre štandardnú slovenskú kuchyňu so 4 – 6\u00A0bm a malým ostrovčekom počítajte 2\u00A0000 – 4\u00A0500\u00A0€ v závislosti od materiálu a fabrikácie. Vstupný quartz kompozit s rovnou hranou a dvoma výrezmi je v dolnej časti tohto rozsahu, prémiový sinterovaný kameň s waterfall ostrovčekom v hornej.',
       },
       {
         question: 'Oplatí sa pracovná doska z umelého kameňa oproti laminátu?',

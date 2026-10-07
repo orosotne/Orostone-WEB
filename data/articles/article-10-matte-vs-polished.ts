@@ -183,14 +183,14 @@ export const ARTICLE_10: BlogArticle = {
 <p>Lesklý povrch má svoje miesto – ale v špecifických situáciách:</p>
 <ul>
 <li><strong>Reprezentatívna kuchyňa v kancelárii</strong>, ktorá sa používa zriedka a má pravidelný upratovací servis.</li>
-<li><strong>Bar alebo ostrov v obývačke</strong>, ktorý slúži skôr na servírovanie než na varenie.</li>
+<li><strong>Bar alebo ostrovček v obývačke</strong>, ktorý slúži skôr na servírovanie než na varenie.</li>
 <li><strong>Showroom alebo vzorový byt</strong>, kde estetika má prednosť pred praktickosťou.</li>
 <li><strong>Bezdetná domácnosť s minimalistickým životným štýlom</strong>, kde čistenie povrchov nie je záťaž.</li>
 </ul>
 
 <h2 id="co-odporucame-pre-bratislavu">Čo odporúčame pre bratislavské luxusné kuchyne?</h2>
 
-<p>Po stovkách realizácií v bratislavských bytoch a domoch máme jasnú štatistiku: <strong class="gold">74\u00A0% našich klientov z luxusného segmentu si zvolí matný alebo leather finish</strong>. A väčšina z tých 26\u00A0%, ktorí si zvolia lesklý, ho volí pre špecifický účel – obklad steny za kuchynskou linkou alebo ostrov v reprezentatívnej časti bytu.</p>
+<p>Po stovkách realizácií v bratislavských bytoch a domoch máme jasnú štatistiku: <strong class="gold">74\u00A0% našich klientov z luxusného segmentu si zvolí matný alebo leather finish</strong>. A väčšina z tých 26\u00A0%, ktorí si zvolia lesklý, ho volí pre špecifický účel – obklad steny za kuchynskou linkou alebo ostrovček v reprezentatívnej časti bytu.</p>
 
 <figure class="article-figure">
   <img src="/images/blog/article-10/matte-modern-kitchen.webp" alt="Luxusná moderná kuchyňa v Bratislave s matným Calacatta Gold sinterovaným kameňom a ranným svetlom" loading="lazy" />
@@ -262,8 +262,8 @@ export const ARTICLE_10: BlogArticle = {
         answer: 'Minimálne. Cenový rozdiel medzi matným a lesklým variantom rovnakého dekoru je zvyčajne 5 – 15\u00A0%. Niektoré špeciálne úpravy (leather, naturale) môžu byť o 10 – 20\u00A0% drahšie ako štandardný matný. Povrch by ste mali vyberať podľa praktických a estetických kritérií, nie podľa ceny – rozdiel je v kontexte celkovej investície zanedbateľný.'
       },
       {
-        question: 'Aký povrch odporúčate na kuchynský ostrov?',
-        answer: 'Pre kuchynský ostrov, ktorý slúži aj ako jedálenský stôl a pracovná plocha, jednoznačne matný alebo leather finish. Ostrov je najdotýkanejšia plocha v kuchyni – ľudia sa oň opierajú, deti na ňom robia úlohy, hostia pri ňom sedia s nápojmi. Lesklý povrch na ostrove je recept na neustále utieranie.'
+        question: 'Aký povrch odporúčate na kuchynský ostrovček?',
+        answer: 'Pre kuchynský ostrovček, ktorý slúži aj ako jedálenský stôl a pracovná plocha, jednoznačne matný alebo leather finish. Ostrovček je najdotýkanejšia plocha v kuchyni – ľudia sa oň opierajú, deti na ňom robia úlohy, hostia pri ňom sedia s nápojmi. Lesklý povrch na ostrovčeku je recept na neustále utieranie.'
       },
       {
         question: 'Má povrchová úprava vplyv na hygienické vlastnosti kameňa?',
