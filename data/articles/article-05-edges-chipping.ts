@@ -364,7 +364,7 @@ export const ARTICLE_05: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>What we do at Orostone</strong></p>
-  <p>Every edge is processed in two passes: rough cut + fine finishing. Between passes, visual inspection under raking light. Any fabrication chipping is repaired before dispatch — customers never receive a slab with a fabrication chip.</p>
+  <p>We require our partner stonemasons to process every edge in two passes: rough cut + fine finishing. Between passes comes a visual inspection under raking light. Any fabrication chipping is repaired before dispatch — the customer does not receive a slab with a fabrication chip.</p>
 </div>
 
 <h2 id="repair">Repairing an Existing Chip: What's Possible</h2>

@@ -235,9 +235,9 @@ export const ARTICLE_19: BlogArticle = {
 
 <p>On sintered stone? The stain just sits on the surface all night, because there's nowhere for it to go. In the morning you wipe it off with soapy water; if a shadow remains, a non-abrasive cleaner removes it in a minute. <strong>That's the difference porosity below 0.1% makes.</strong></p>
 
-<h2 id="long-term">Long-term maintenance: there isn't any</h2>
+<h2 id="long-term">Long-term maintenance: the daily routine is enough</h2>
 
-<p>No annual treatment, no polishing, no sealing renewal. The surface you buy looks the same after year one and year fifteen — maintained by the exact same daily routine from the top of this article.</p>
+<p>No annual treatment, no polishing, no sealing renewal. With normal use, the surface you buy keeps its appearance for years — all it needs is the exact same daily routine from the top of this article.</p>
 
 <p>Hot pans won't hurt it (it withstands over 300 °C — <a href="/blog/horuce-hrnce-na-sinterovanom-kameni">full test here</a>), and we recommend a cutting board more for your knives than for the stone. Still choosing a decor? <a href="/vzorky">Order a free sample</a> and test the maintenance yourself — turmeric included.</p>
 `,

@@ -502,9 +502,9 @@ export const ARTICLE_16: BlogArticle = {
 
 <p><strong>Granite:</strong> Without regular sealing (which no tenant will do), it becomes stained within months. Not suitable for rentals.</p>
 
-<p><strong>Sintered stone:</strong> Withstands everything without maintenance — ideal from a durability standpoint. But the initial €2,800 investment returns very slowly in a rental. Higher nightly/monthly rate for a "premium kitchen" in an Airbnb listing? Perhaps €2–5/night extra. At 200 nights per year: €400–1,000/year. Return on investment: 3–7 years compared to quartz.</p>
+<p><strong>Sintered stone:</strong> Handles less careful use without sealing or special cleaners — ideal from a durability standpoint. But the initial €2,800 investment returns very slowly in a rental. Higher nightly/monthly rate for a "premium kitchen" in an Airbnb listing? Perhaps €2–5/night extra. At 200 nights per year: €400–1,000/year. Return on investment: 3–7 years compared to quartz.</p>
 
-<p><strong>Quartz (mid-range):</strong> Durable, maintenance-free, visually attractive. Typically the best performance-to-price ratio for rentals.</p>
+<p><strong>Quartz (mid-range):</strong> Durable, low-maintenance, visually attractive. Typically the best performance-to-price ratio for rentals.</p>
 
 <p><strong>Quality laminate with postforming:</strong> For rentals in lower price segments, it's perfectly adequate. If damaged, replacement is cheap.</p>
 
@@ -588,7 +588,7 @@ export const ARTICLE_16: BlogArticle = {
 <h3>Buyer psychology</h3>
 <p>During a property viewing, the average buyer spends <strong>more time in the kitchen than any other room</strong>. The first thing they touch is the countertop. That tactile experience — cold, smooth, solid stone — immediately communicates the quality of the entire apartment. Is it irrational? Perhaps. But it works.</p>
 
-<p>Sintered stone has one more advantage: when you tell a buyer "this is sintered stone — it requires zero maintenance, is resistant to heat and UV," you've just given them a <strong>rational justification</strong> for an emotional decision. And that's exactly what premium-segment buyers need.</p>
+<p>Sintered stone has one more advantage: when you tell a buyer "this is sintered stone — it needs no sealing, is resistant to heat and UV," you've just given them a <strong>rational justification</strong> for an emotional decision. And that's exactly what premium-segment buyers need.</p>
 
 <h3>Quantitative ROI estimate</h3>
 <p>For a premium property in Bratislava, we estimate that sintered stone versus quartz:</p>
@@ -604,7 +604,7 @@ export const ARTICLE_16: BlogArticle = {
     faqs: [
       {
         question: 'Is sintered stone more expensive than quartz?',
-        answer: 'Initially yes — by approximately 30–50%. An average sintered stone kitchen countertop costs €1,400–3,500 (4 m²), while quartz costs €1,060–2,640. But over 25 years of ownership, total costs are comparable because sintered stone requires zero maintenance.'
+        answer: 'Initially yes — by approximately 30–50%. An average sintered stone kitchen countertop costs €1,400–3,500 (4 m²), while quartz costs €1,060–2,640. But over 25 years of ownership, total costs are comparable because sintered stone needs no sealing or special maintenance.'
       },
       {
         question: 'How much does sintered stone cost per square meter?',
@@ -656,7 +656,7 @@ export const ARTICLE_16: BlogArticle = {
       },
       {
         question: 'How long does sintered stone last?',
-        answer: 'With normal kitchen use, practically indefinitely — manufacturers state a lifespan of 50+ years without degradation. Unlike quartz, it doesn\'t degrade from UV exposure; unlike granite, it doesn\'t require regular sealing to maintain its protective properties. The realistic limitation on lifespan is more likely changing design preferences than material wear.'
+        answer: 'With normal kitchen use, for decades — manufacturers state a lifespan of 50+ years without degradation. Unlike quartz, it doesn\'t degrade from UV exposure; unlike granite, it doesn\'t require regular sealing to maintain its protective properties. The realistic limitation on lifespan is more likely changing design preferences than material wear.'
       },
       {
         question: 'Can I install sintered stone myself?',

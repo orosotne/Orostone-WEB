@@ -306,7 +306,7 @@ export const ARTICLE_03: BlogArticle = {
 <p>Intense red juice. After 24 hours: visible color stain. After wiping with a damp cloth and small amount of standard kitchen cleaner: surface clean. No permanent marks.</p>
 
 <div class="article-cta">
-  <p>Looking for a countertop you don't have to worry about?</p>
+  <p>Looking for a countertop with easy maintenance?</p>
   <p>We'll show you samples and answer your questions about cleaning and care directly at our showroom.</p>
   <a href="/kontakt" class="cta-btn">Free consultation →</a>
 </div>
@@ -346,7 +346,7 @@ export const ARTICLE_03: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>What we do at Orostone</strong></p>
-  <p>With every installation, we provide customers with a simple one-page cleaning guide. Short version: a damp cloth handles 99% of situations. The remaining 1% is solved by a standard kitchen cleaner. No sealing, no special chemistry, no annual maintenance.</p>
+  <p>We give every customer a simple one-page cleaning guide. Short version: a damp cloth handles 99% of situations. The remaining 1% is solved by a standard kitchen cleaner. No sealing, no special chemistry, no annual maintenance.</p>
 </div>
 
 <h2 id="matte-vs-polished">Matte vs Polished — Stain Resistance Difference</h2>
@@ -411,7 +411,7 @@ export const ARTICLE_03: BlogArticle = {
       },
       {
         question: 'Is sintered stone good for kitchens with children?',
-        answer: 'Yes — and this is one of its key advantages. Zero porosity means paints, juices, oils, and other staining agents children work with don\'t penetrate the surface. Cleaning is simple and quick. The material requires no special care or sealing.',
+        answer: 'Yes — and this is one of its key advantages. Near-zero porosity means paints, juices, oils, and other staining agents children work with don\'t penetrate the surface. Cleaning is simple and quick. The material requires no special care or sealing.',
       },
       {
         question: 'Does the décor color affect stain resistance?',

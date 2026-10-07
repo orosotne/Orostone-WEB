@@ -363,7 +363,7 @@ export const ARTICLE_04: BlogArticle = {
 
 <p>Slab thickness is an important parameter — but not the only one. <strong class="gold">Substrate structure, correct cutouts, and respecting overhang rules matter more</strong> than the material thickness alone.</p>
 
-<p>At Orostone we chose to specialise in 12mm and do it correctly — with thorough assessment of every project, precise fabrication, and professional installation. The result is equivalent to what you would get with 20mm, given one thing: thorough preparation.</p>
+<p>At Orostone we chose to specialise in 12mm and do it correctly — with thorough assessment of every project and experienced partner stonemasons for fabrication and installation. The result is equivalent to what you would get with 20mm, given one thing: thorough preparation.</p>
 
 <div class="article-tip tip-btn">
   <strong>Final tip:</strong> Before any decision about thickness, discuss substrate structure and cutout placement with the installation team. This is a decision that should be made based on the project — not based on marketing.
@@ -373,7 +373,7 @@ export const ARTICLE_04: BlogArticle = {
     faqs: [
       {
         question: 'Why does Orostone only sell 12mm sintered stone?',
-        answer: 'It\'s a deliberate specialisation. 12mm with correct substrate, planned cutouts, and respected overhang limits covers all standard applications. By focusing on one thickness, we ensure consistently high fabrication and installation quality.',
+        answer: 'It\'s a deliberate specialisation. 12mm with correct substrate, planned cutouts, and respected overhang limits covers all standard applications. By focusing on one thickness, our partner stonemasons maintain consistently high fabrication and installation quality.',
       },
       {
         question: 'Is 12mm sufficient for a kitchen worktop with cutouts?',
@@ -381,7 +381,7 @@ export const ARTICLE_04: BlogArticle = {
       },
       {
         question: 'What if I need an overhang longer than 200mm — e.g. a bar extension?',
-        answer: 'For overhangs above 200mm we use a steel bracket. A bracket is the correct engineering solution, not a compromise. In stainless steel or black steel it can also be a design element. With a bracket, the overhang can be 400mm or more.',
+        answer: 'For overhangs above 200mm, a steel bracket is used. A bracket is the correct engineering solution, not a compromise. In stainless steel or black steel it can also be a design element. With a bracket, the overhang can be 400mm or more.',
       },
       {
         question: 'Is 12mm suitable for a kitchen island?',
@@ -397,7 +397,7 @@ export const ARTICLE_04: BlogArticle = {
       },
       {
         question: 'Is a 12mm slab more susceptible to damage at cutouts than 20mm?',
-        answer: 'Cutout damage risk depends primarily on fabrication technique, not just thickness. Correctly pre-drilled pilot holes, continuous diamond blade, water cooling, and corner radius min. 5mm — these matter more than thickness. Our fabrication meets these standards as standard.',
+        answer: 'Cutout damage risk depends primarily on fabrication technique, not just thickness. Correctly pre-drilled pilot holes, continuous diamond blade, water cooling, and corner radius min. 5mm — these matter more than thickness. The partner stonemasons we work with meet these standards.',
       },
       {
         question: 'Does thickness affect heat resistance or stain resistance?',
