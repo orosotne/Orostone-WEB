@@ -126,10 +126,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 className="aspect-square bg-[#F5F5F3] overflow-hidden relative group rounded-[3px] cursor-pointer"
                 onClick={() => openLightbox()}
               >
-                <AnimatePresence mode="sync">
+                <AnimatePresence mode="sync" initial={false}>
                   <m.img
                     key={selectedImageIndex}
                     src={shopifyImageUrl(currentImage, 1200)}
+                    fetchPriority={selectedImageIndex === 0 ? 'high' : 'auto'}
                     alt={productImageAlt(product, selectedImageIndex)}
                     width={1200}
                     height={1200}
@@ -381,6 +382,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                           srcSet={shopifySrcSet(img)}
                           sizes="100vw"
                           loading={index === 0 ? 'eager' : 'lazy'}
+                          fetchPriority={index === 0 ? 'high' : 'auto'}
                         />
                         {index === 0 && product.inStock && (
                           <div className="absolute top-3 left-3 inline-flex items-center gap-1.5 bg-brand-light text-brand-dark px-3 py-1.5 rounded-[3px] text-xs uppercase tracking-widest font-semibold before:h-[7px] before:w-[7px] before:rounded-full before:bg-[#2F8F5B] before:content-['']">

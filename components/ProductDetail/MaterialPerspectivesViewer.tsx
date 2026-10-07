@@ -109,7 +109,7 @@ export const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProp
       </div>
 
       <div
-        className="relative rounded-[3px] overflow-hidden bg-gray-900 cursor-pointer group"
+        className="relative rounded-[3px] overflow-hidden bg-brand-dark cursor-pointer group"
         onClick={() => startTransition(() => setIsLightboxOpen(true))}
       >
         <AnimatePresence mode="wait">
@@ -171,7 +171,7 @@ export const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProp
                 <X size={20} />
               </button>
 
-              <div className="relative rounded-[3px] overflow-hidden bg-gray-900">
+              <div className="relative rounded-[3px] overflow-hidden bg-brand-dark">
                 <AnimatePresence mode="wait">
                   <m.div
                     key={activeTab}

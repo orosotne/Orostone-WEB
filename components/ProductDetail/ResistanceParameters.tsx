@@ -48,7 +48,7 @@ export const ResistanceParameters: React.FC<ResistanceParametersProps> = ({ prod
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="flex items-center gap-3.5 text-os-eyebrow uppercase text-brand-gold before:h-px before:w-7 before:bg-current before:opacity-75 before:content-[''] mb-12">
+          <h2 className="flex items-center gap-3.5 text-os-eyebrow uppercase text-white/70 before:h-px before:w-7 before:bg-current before:opacity-75 before:content-[''] mb-12">
             Odolnosť materiálu
           </h2>
 
@@ -70,7 +70,7 @@ export const ResistanceParameters: React.FC<ResistanceParametersProps> = ({ prod
                     height={400}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute top-3 left-3 w-10 h-10 sm:w-14 sm:h-14 bg-brand-gold backdrop-blur rounded-full flex items-center justify-center">
+                  <div className="absolute top-3 left-3 w-10 h-10 sm:w-14 sm:h-14 bg-brand-light backdrop-blur rounded-full flex items-center justify-center">
                     <param.icon size={20} className="text-brand-dark sm:w-7 sm:h-7" />
                   </div>
                   <div className="absolute bottom-3 left-3 right-3">

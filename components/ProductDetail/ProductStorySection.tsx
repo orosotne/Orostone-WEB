@@ -31,7 +31,7 @@ export const ProductStorySection: React.FC<ProductStorySectionProps> = ({ produc
         <img
           src={shopifySized(product.image, 640)}
           alt={`${product.name} — povrch sinterovaného kameňa`}
-          className="w-full h-full object-cover rounded-[3px] shadow-2xl"
+          className="w-full h-full object-cover rounded-[3px]"
         />
       </m.div>
     </section>
