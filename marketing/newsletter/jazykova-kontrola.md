@@ -172,4 +172,8 @@ S novými fotkami sa zmenil aj text, ktorý skontroluje ďalšie kolo:
 
 Codex na `d7465f0` nenašiel žiadne pripomienky. Texty k novým fotkám v 09, 13, 18 a 21 sú skontrolované.
 
+### Na kontrolu: celý e-mail 02 (7. 10. 2026, Martin)
+
+Marián list 02 schválil. Martin chce ešte samostatnú jazykovú kontrolu celého textu `texty/02-welcome-list-od-mariana.md` vrátane riadkov, ktoré sa v tomto PR nemenia. Codex ho naposledy kontroloval v kole 6 bez pripomienok.
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.

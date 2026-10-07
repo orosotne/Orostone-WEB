@@ -50,7 +50,7 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 | # | E-mail | Kam patrí | Predmet | Stav |
 |---|---|---|---|---|
 | 01 | Vitajte | Welcome 1/4 – hneď po prihlásení | Vitajte v Orostone. Toto vám budeme posielať | skontrolované, v Shopify treba vytvoriť kód VITAJTE |
-| 02 | List od Mariána | Welcome 2/4 – o 2 dni | Krátky list namiesto reklamy | skontrolované, čaká na Mariánovo schválenie |
+| 02 | List od Mariána | Welcome 2/4 – o 2 dni | Krátky list namiesto reklamy | skontrolované, Marián list schválil |
 | 07 | Ako vybrať dekor | Welcome 3/4 – o 5 dní | Tri otázky pred výberom dekoru | skontrolované |
 | 09 | Tri kuchyne | Welcome 4/4 – o 9 dní | Tri kuchyne, tri rôzne rozhodnutia | skontrolované |
 | 05 | Vzorka je doma | Vzorky 2/4 – 2 dni po doručení | Vzorka je doma. Skúste s ňou 4 veci | skontrolované |
@@ -68,7 +68,7 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 | 04 | Dekor v detaile | Kampaň október | Roman Travertine: travertín bez impregnácie | skontrolované |
 | 18 | Zo zákulisia | Kampaň november | Ako vzniká sinterovaný kameň | skontrolované |
 | 19 | Sprievodca | Kampaň november | Čo je v cene pracovnej dosky | skontrolované |
-| 20 | Realizácia mesiaca | Kampaň december | Biela doska a tmavé drevo | skontrolované, čaká na súhlas klienta so zverejnením |
+| 20 | Realizácia mesiaca | Kampaň december | Biela doska a tmavé drevo | skontrolované, klient so zverejnením súhlasí |
 | 21 | Poďakovanie | Kampaň december | Ďakujeme za rok 2026 | skontrolované |
 
 **Ešte nenapísané (plán na rok 2027):** Po realizácii 4/4 (tip po 6 mesiacoch), Výročie, Reaktivácia (3 e-maily), B2B (3 e-maily), kampane január – marec (6 e-mailov). Potvrdenie objednávky vzorky posiela Shopify a potvrdenie dopytu web, tie netreba písať.
