@@ -36,7 +36,7 @@ Materiál
 Dekor, počet platní a ich cena. Platne 3200 × 1600 mm sa kupujú celé, preto rozhoduje aj to, ako dobre sa využijú.
 02
 Opracovanie
-Rezanie, výrezy pre drez, varnú dosku a batériu a profil hrany. Každý výrez má byť v ponuke zvlášť.
+Rezanie, profil hrany a výrezy pre drez, varnú dosku a batériu. Každý výrez má byť v ponuke zvlášť.
 03
 Doprava a montáž
 Výnos na miesto, osadenie a lepenie spojov. Montáž robia kamenári, s ktorými spolupracujeme.

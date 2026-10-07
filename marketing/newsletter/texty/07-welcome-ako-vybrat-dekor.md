@@ -56,7 +56,7 @@ Objednať vzorky
 
 ### P. S.
 P. S. · Marián, Orostone
-Ak si nie ste istí, pošlite fotku kuchyne alebo vizualizáciu. Poradíme, ktoré dva až tri dekory má zmysel objednať ako vzorky.
+Ak si nie ste istí, pošlite fotku kuchyne alebo vizualizáciu. Poradíme, ktoré dva až tri dekory má zmysel objednať si ako vzorky.
 
 ### Podpis značky
 Krása kameňa.

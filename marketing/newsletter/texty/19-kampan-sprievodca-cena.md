@@ -35,7 +35,7 @@ Materiál
 Platne 3200 × 1600 mm sa kupujú celé. Ceny všetkých dekorov nájdete v cenníku na webe.
 02
 Opracovanie
-Rezanie, výrezy pre drez, varnú dosku a batériu, profil hrany a leštenie.
+Rezanie, profil hrany, leštenie a výrezy pre drez, varnú dosku a batériu.
 03
 Doprava a montáž
 Výnos na miesto, osadenie a lepenie spojov.

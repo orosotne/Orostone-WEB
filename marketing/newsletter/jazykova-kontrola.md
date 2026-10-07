@@ -109,4 +109,30 @@ Codex našiel 2 chyby (P1), obe sú prijaté. Iné výskyty rovnakých chýb v e
 | 1 | 12 | Prejdeme ju spolu položku po položke. | Prejdeme si ju spolu položku po položke. | gramatika | Väzba *prejsť si niečo* (slovník, sekcia 8). | zapracované |
 | 2 | 20 | kde sa stretáva biela doska … a tmavé orechové drevo | kde sa stretávajú biela doska … a tmavé orechové drevo | gramatika | Dva podmety spojené spojkou *a* → prísudok v množnom čísle. | zapracované |
 
+## Kolo 5 – Codex review v PR #77 (7. 10. 2026, po opravách kola 4)
+
+Codex našiel 11 pripomienok (P1, jedna dvakrát). Šesť je prijatých, štyri zamietnuté s dôvodom. Zamietnuté vznikli z pravidla o zhode, ktoré Claude v kole 4 zapísal do slovníka príliš prísne. Pravidlo je teraz presnejšie (sekcia 8).
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 05 | Stačí víno, citrón, hrnček horúcej vody a vaše svetlo. | bez zmeny | gramatika | Prísudok stojí pred viacnásobným podmetom. Zhoda s najbližším členom je správna a znie prirodzenejšie než „Stačia víno…“. | zamietnuté |
+| 2 | 09 | Poslať pôdorys a získať orientačnú cenu (tlačidlo) | Získať orientačnú cenu | slovník | Tlačidlo do ~25 znakov (sekcia 5). Rovnako Claude skrátil tlačidlá v 10 (Pozrieť celú platňu) a 13 (Dohodnúť návštevu). | zapracované |
+| 3 | 16 | ktoré má zmysel objednať ako vzorky | ktoré má zmysel objednať si ako vzorky | gramatika | Zvratné *si* (sekcia 2). Rovnaká veta je aj v 07. | zapracované |
+| 4 | 17 | Doske stačí utierka a saponát. · Stačí bežný prostriedok na riad a mäkká utierka z mikrovlákna. | bez zmeny | gramatika | Ako č. 1 (dve pripomienky). | zamietnuté |
+| 5 | 18 | 100 % minerály | 100 % minerálov | gramatika | Po percentách nasleduje genitív. Codex to nahlásil dvakrát. | zapracované |
+| 6 | 19 | Cenu tvorí materiál, opracovanie, doprava a montáž. | bez zmeny | gramatika | Ako č. 1. | zamietnuté |
+| 7 | 20 | presne pre váš rozmer | presne pre vašu kuchyňu | význam | Pôdorys má viac rozmerov. Návrh „podľa vašich rozmerov“ by opakoval „s rozmermi“ z tej istej vety. Rovnaká veta je aj v 03. | zapracované s úpravou |
+| 8 | 21 | Každá otázka a každá fotka hotovej kuchyne nám pomáha… | bez zmeny | gramatika | Pri *každý … a každý* je prísudok v jednotnom čísle. | zamietnuté |
+| 9 | 12 | Rezanie, výrezy pre drez, varnú dosku a batériu a profil hrany. | Rezanie, profil hrany a výrezy pre drez, varnú dosku a batériu. | štylistika | Dve spojky *a* znejasňovali výpočet. Rovnako je upravený zoznam v 19. | zapracované |
+
+### Nový obsah (7. 10. 2026, Martin)
+
+Popri kole 5 pribudol obsah, ktorý skontroluje ďalšie kolo:
+
+- **01** – uvítacia odmena je vzorka bez poštovného (kód VITAJTE) namiesto 5 % (WELCOME5).
+- **02** – list je v prvej osobe (Marián), s telefónom.
+- **03, 20** – fakty z fotiek a zo stránky Realizácie namiesto zátvoriek [ ]; blok „Slovami klienta“ nahradila „Hlavná myšlienka“.
+- **06** – tlačidlo vedie priamo na napísanie recenzie na Google.
+- **21** – otváracie hodiny podľa stránky Kontakt a lehota odoslania vzoriek podľa webu.
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
