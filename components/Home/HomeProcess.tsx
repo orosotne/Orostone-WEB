@@ -16,8 +16,8 @@ const STEPS = [
   {
     img: '2-zameranie',
     alt: 'Ruka meria zvinovacím metrom hornú hranu dubových skriniek',
-    title: 'Bezplatné zameranie',
-    text: 'Zameranie u vás doma, nezáväzne a bez poplatku. Potom dostanete presnú ponuku, položku po položke.',
+    title: 'Zameranie',
+    text: 'Kamenár zameria kuchyňu u vás doma. Potom dostanete presnú ponuku, položku po položke.',
   },
   {
     img: '3-vyroba-a-montaz',
