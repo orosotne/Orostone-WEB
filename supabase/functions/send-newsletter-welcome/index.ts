@@ -2,13 +2,16 @@
 // EDGE FUNCTION: send-newsletter-welcome
 // ===========================================
 // Volanie: POST { email: string; name?: string }
+// Volá ju len subscribe-newsletter so service-role kľúčom v hlavičke Authorization.
 //
 // DEPLOYMENT:
 // supabase functions deploy send-newsletter-welcome --project-ref xfkznvqufhnrphpdhfnc
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
+import { escapeHtml } from '../_shared/escape.ts';
 
 const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
+const SUPABASE_SERVICE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
 const FROM_EMAIL = 'Orostone <noreply@orostone.sk>';
 const LOGO_URL = 'https://www.orostone.sk/images/orostone-logo-email.png';
 const LOGO_CIRCLE_URL = 'https://www.orostone.sk/images/logo-circle.png';
@@ -28,6 +31,17 @@ serve(async (req) => {
     return new Response('ok', { headers: corsHeaders });
   }
 
+  // Require service-role key so arbitrary callers cannot send orostone.sk-branded
+  // email to any address. subscribe-newsletter already passes it via Authorization header.
+  const authHeader = req.headers.get('authorization') ?? '';
+  const bearerToken = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : '';
+  if (!SUPABASE_SERVICE_KEY || bearerToken !== SUPABASE_SERVICE_KEY) {
+    return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+      status: 401,
+      headers: corsHeaders,
+    });
+  }
+
   try {
     const { email, name } = await req.json();
 
@@ -38,8 +52,9 @@ serve(async (req) => {
       });
     }
 
-    const firstName = name ? name.split(' ')[0] : null;
-    const greeting = firstName ? `Vitajte, ${firstName}!` : 'Vitajte v Orostone!';
+    // The name comes from the public signup form: escape it before it goes into the HTML (finding f10).
+    const firstName = typeof name === 'string' && name.trim() ? name.trim().split(/\s+/)[0] : null;
+    const greeting = firstName ? `Vitajte, ${escapeHtml(firstName)}!` : 'Vitajte v Orostone!';
 
     const html = `
 <!DOCTYPE html>
