@@ -29,7 +29,9 @@ const Seal: React.FC = () => {
   );
 };
 
-const REVIEWS = TESTIMONIALS.slice(0, 2);
+// Client quotes stay hidden until the owner confirms they are genuine (EU rules on consumer reviews);
+// to show them again, put the TESTIMONIALS you can verify here.
+const REVIEWS: typeof TESTIMONIALS = [];
 
 /** The strongest proof of the brand: the showroom in the castle, and what clients say. */
 export const HomeShowroom: React.FC = () => (
@@ -58,14 +60,14 @@ export const HomeShowroom: React.FC = () => (
 
     <Container className="hp-reviews">
       <h3 className="text-os-h3 mb-6">Čo hovoria klienti</h3>
-      <div className="hp-rev-in">
+      <div className={`hp-rev-in ${REVIEWS.length ? '' : 'hp-rev-solo'}`}>
         <div className="hp-rating hp-noise os-on-dark">
           <Eyebrow gold>Recenzie</Eyebrow>
           <span className="hp-rating-q" aria-hidden="true">“</span>
-          <p className="hp-rating-text">Skúsenosti klientov s výberom, zameraním aj montážou nájdete aj v recenziách na Google.</p>
+          <p className="hp-rating-text">Skúsenosti klientov s výberom, zameraním aj montážou nájdete v recenziách na Google.</p>
           <TextLink to="https://www.google.com/search?q=orostone">Prečítať na Google</TextLink>
         </div>
-        <div className="hp-quotes">
+        {REVIEWS.length > 0 && <div className="hp-quotes">
           {REVIEWS.map((t) => (
             <blockquote key={t.id}>
               <p>„{t.quote}“</p>
@@ -75,7 +77,7 @@ export const HomeShowroom: React.FC = () => (
               </footer>
             </blockquote>
           ))}
-        </div>
+        </div>}
       </div>
     </Container>
   </Section>

@@ -38,8 +38,8 @@ export const ARTICLE_06: BlogArticle = {
 </div>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200" alt="Porovnanie rôznych typov kuchynských dosiek — sinterovaný kameň, kvarcit, porcelán vedľa seba" loading="lazy" />
-  <figcaption>Štyri materiály, štyri príbehy — každý má svoju ideálnu aplikáciu</figcaption>
+  <img src="/images/blog/article-06/vzorky-tri-dekory.webp" alt="Tri vzorky sinterovaného kameňa vedľa seba — Calacatta Top, Astrana Grey a Gothic Gold" loading="lazy" />
+  <figcaption>Pri porovnávaní rozhodujú skutočné vzorky. Na fotke tri dekory sinterovaného kameňa: Calacatta Top, Astrana Grey a Gothic Gold.</figcaption>
 </figure>
 
 <h2 id="co-je-co">Čo je čo — definitívne vysvetlenie</h2>
@@ -108,8 +108,8 @@ export const ARTICLE_06: BlogArticle = {
 </div>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1200" alt="Kvapka vody na povrchu sinterovaného kameňa — efekt lotos, nulová absorpcia" loading="lazy" />
-  <figcaption>Absorpcia vody pod 0,1% — kvapky sa skotúľajú bez stopy</figcaption>
+  <img src="/images/blog/article-06/kvapky-nero-margiua.webp" alt="Kvapky vody na povrchu sinterovaného kameňa v dekore Nero Margiua — voda sa nevpíja" loading="lazy" />
+  <figcaption>Nasiakavosť pod 0,1 % — kvapky ostanú na povrchu a utrú sa bez stopy.</figcaption>
 </figure>
 
 <h2 id="certifikacie">Ktoré certifikácie majú zmysel a ktoré sú len marketing?</h2>
@@ -189,8 +189,8 @@ export const ARTICLE_06: BlogArticle = {
 <p>Pri 25-ročnom horizonte sa celkové náklady vyrovnávajú: sinterovaný kameň za €500/m² bez ďalších nákladov vs. keramika za €150/m² + €80–120/m² údržba.</p>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=1200" alt="Moderná kuchyňa so sinterovaným kameňom — investícia na desaťročia" loading="lazy" />
-  <figcaption>Sinterovaný kameň: vyššia vstupná cena, nulové náklady na údržbu počas celej životnosti</figcaption>
+  <img src="/images/blog/article-06/kuchyna-statuario-diamante.webp" alt="Kuchyňa so zástenou zo sinterovaného kameňa v dekore Statuario Diamante (vizualizácia)" loading="lazy" />
+  <figcaption>Sinterovaný kameň: vyššia vstupná cena, no počas životnosti takmer žiadne náklady na údržbu — netreba ho impregnovať.</figcaption>
 </figure>
 
 <h2 id="priklad-z-praxe">Príklad z praxe: rovnaká kuchyňa, tri materiály</h2>
@@ -240,7 +240,7 @@ export const ARTICLE_06: BlogArticle = {
 </ul>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200" alt="Rozhodovanie pri výbere materiálu — vzorky rôznych kameňov na stole" loading="lazy" />
+  <img src="/images/blog/article-06/vzorka-appennino.webp" alt="Vzorka dekoru Appennino priložená k dubovým dvierkam kuchyne" loading="lazy" />
   <figcaption>Fyzická vzorka prezradí viac ako akýkoľvek katalóg — vždy si ju vyžiadaj pred rozhodnutím</figcaption>
 </figure>
 
@@ -364,8 +364,8 @@ export const ARTICLE_06: BlogArticle = {
 </div>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200" alt="Comparison of different kitchen countertop types — sintered stone, quartz, porcelain side by side" loading="lazy" />
-  <figcaption>Four materials, four stories — each has its ideal application</figcaption>
+  <img src="/images/blog/article-06/vzorky-tri-dekory.webp" alt="Three sintered stone samples side by side — Calacatta Top, Astrana Grey and Gothic Gold" loading="lazy" />
+  <figcaption>Real samples matter when you compare materials. Shown: three sintered stone decors — Calacatta Top, Astrana Grey and Gothic Gold.</figcaption>
 </figure>
 
 <h2 id="what-is-what">What's What — The Definitive Explanation</h2>
@@ -434,8 +434,8 @@ export const ARTICLE_06: BlogArticle = {
 </div>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1200" alt="Water droplet on sintered stone surface — lotus effect, zero absorption" loading="lazy" />
-  <figcaption>Water absorption under 0.1% — droplets roll off without a trace</figcaption>
+  <img src="/images/blog/article-06/kvapky-nero-margiua.webp" alt="Water droplets on a sintered stone surface in the Nero Margiua decor — the water does not soak in" loading="lazy" />
+  <figcaption>Water absorption below 0.1% — droplets stay on the surface and wipe off without a trace.</figcaption>
 </figure>
 
 <h2 id="certifications">Which Certifications Matter and Which Are Just Marketing?</h2>
@@ -511,8 +511,8 @@ export const ARTICLE_06: BlogArticle = {
 </ul>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=1200" alt="Modern kitchen with sintered stone countertop — a decades-long investment" loading="lazy" />
-  <figcaption>Sintered stone: higher upfront cost, zero maintenance costs throughout its lifetime</figcaption>
+  <img src="/images/blog/article-06/kuchyna-statuario-diamante.webp" alt="Kitchen with a sintered stone backsplash in the Statuario Diamante decor (visualisation)" loading="lazy" />
+  <figcaption>Sintered stone: a higher upfront cost, but almost no maintenance costs over its lifetime — it never needs sealing.</figcaption>
 </figure>
 
 <h2 id="case-study">Case Study: Same Kitchen, Three Materials</h2>
@@ -562,7 +562,7 @@ export const ARTICLE_06: BlogArticle = {
 </ul>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200" alt="Choosing a countertop material — samples of different stones on a table" loading="lazy" />
+  <img src="/images/blog/article-06/vzorka-appennino.webp" alt="An Appennino sample held against oak kitchen cabinet doors" loading="lazy" />
   <figcaption>A physical sample tells you more than any catalogue — always request one before deciding</figcaption>
 </figure>
 

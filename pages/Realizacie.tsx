@@ -357,7 +357,7 @@ const STATS = [
 ];
 
 const STEPS = [
-  { title: 'Konzultácia', text: 'Pomôžeme s výberom dekóru a hrúbky. Pošleme vzorky zadarmo.' },
+  { title: 'Konzultácia', text: 'Pomôžeme s výberom dekoru a hrúbky. Prvú vzorku pošleme zadarmo.' },
   { title: 'Zameranie a príprava', text: 'Kamenár zameria priestor. Platne sú rezané CNC technológiou na presné rozmery.' },
   { title: 'Montáž', text: 'Termín dodania a inštalácie do 15 pracovných dní.' },
 ];
@@ -611,13 +611,13 @@ export const Realizacie = () => {
         <Container className="grid items-end gap-8 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
           <SectionHeader
             title="Chcete podobný výsledok?"
-            lead="Kontaktujte nás pre nezáväznú konzultáciu. Poradíme s materiálom, pripravíme cenovú ponuku a zrealizujeme projekt od A po Z."
+            lead="Kontaktujte nás pre nezáväznú konzultáciu. Poradíme s materiálom, pripravíme cenovú ponuku a výrobu aj montáž zabezpečíme cez overeného kamenára."
           />
           <div className="flex flex-wrap items-center gap-x-8 gap-y-4 lg:justify-end">
             <ActionButton variant="dark" to="/kontakt" arrow>
               Nezáväzná konzultácia
             </ActionButton>
-            <TextLink to="/vzorky">Objednať vzorky zadarmo</TextLink>
+            <TextLink to="/vzorky">Objednať vzorku zadarmo</TextLink>
           </div>
         </Container>
       </Section>

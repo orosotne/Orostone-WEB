@@ -43,7 +43,7 @@ export const LogisticsSection: React.FC<LogisticsSectionProps> = ({ product }) =
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-brand-gold mb-8">
+          <h2 className="flex items-center gap-3.5 text-os-eyebrow uppercase text-brand-dark before:h-px before:w-7 before:bg-current before:opacity-75 before:content-[''] mb-8">
             Dodanie a logistika
           </h2>
 
@@ -51,9 +51,9 @@ export const LogisticsSection: React.FC<LogisticsSectionProps> = ({ product }) =
             {logistics.map((item, index) => {
               const Icon = item.icon;
               return (
-                <div key={index} className="bg-white p-4 lg:p-6 border border-gray-200">
-                  <Icon size={20} className="text-brand-gold mb-4" />
-                  <span className="text-xs lg:text-[10px] font-bold tracking-[0.15em] uppercase text-gray-400 block mb-2">
+                <div key={index} className="bg-white p-4 lg:p-6 border border-brand-line">
+                  <Icon size={20} className="text-brand-dark mb-4" />
+                  <span className="text-xs lg:text-[10px] font-bold tracking-[0.15em] uppercase text-brand-muted block mb-2">
                     {item.label}
                   </span>
                   <span className="text-brand-dark font-medium">
@@ -64,18 +64,18 @@ export const LogisticsSection: React.FC<LogisticsSectionProps> = ({ product }) =
             })}
           </div>
 
-          <div className="mt-6 p-4 lg:p-5 bg-white border border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div className="mt-6 p-4 lg:p-5 bg-white border border-brand-line flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div className="space-y-1">
               <p className="text-sm font-semibold text-brand-dark">
                 Doprava od 150 EUR s DPH
               </p>
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-brand-muted">
                 Presná cena sa potvrdí v pokladni podľa adresy a počtu platní.
               </p>
             </div>
             <Link
               to="/doprava"
-              className="text-xs font-semibold text-brand-gold hover:text-brand-dark transition-colors uppercase tracking-wider whitespace-nowrap"
+              className="text-xs font-semibold text-brand-dark hover:text-brand-dark transition-colors uppercase tracking-wider whitespace-nowrap"
             >
               Viac o doprave →
             </Link>

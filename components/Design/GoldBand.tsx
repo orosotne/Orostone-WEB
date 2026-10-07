@@ -6,6 +6,8 @@ import { oroKlientUrl, PHONE_HREF, PHONE_LABEL } from './links';
 interface GoldBandProps {
   /** ?od= value of the oro-klient link, e.g. "kuchyne" */
   od: string;
+  /** Decor slug passed on as &dekor= (product pages) */
+  dekor?: string;
   title?: React.ReactNode;
   text?: React.ReactNode;
 }
@@ -13,6 +15,7 @@ interface GoldBandProps {
 /** The only gold surface of a page: the last call to action before the footer (orientačná cena on oro-klient). */
 export const GoldBand: React.FC<GoldBandProps> = ({
   od,
+  dekor,
   title = 'Koľko bude stáť vaša doska?',
   text = 'Štyri krátke otázky, vyplníte ich za minútu. Orientačnú cenu pošleme spravidla nasledujúci pracovný deň.',
 }) => (
@@ -23,7 +26,7 @@ export const GoldBand: React.FC<GoldBandProps> = ({
         <p className="mt-3.5 max-w-[48ch] text-[1.08rem] font-normal">{text}</p>
       </div>
       <div className="grid justify-items-start gap-3.5">
-        <ActionButton variant="dark" to={oroKlientUrl(od)} arrow>
+        <ActionButton variant="dark" to={oroKlientUrl(od, dekor)} arrow>
           Získať orientačnú cenu
         </ActionButton>
         <a className="text-[0.95rem] font-medium tabular-nums underline underline-offset-[5px]" href={PHONE_HREF}>

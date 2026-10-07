@@ -38,7 +38,7 @@ export const BundleSelector: React.FC<BundleSelectorProps> = ({
 
   return (
     <div className="mb-8">
-      <h3 className="text-xs lg:text-[10px] font-bold tracking-[0.15em] uppercase text-gray-400 mb-4">
+      <h3 className="flex items-center gap-3.5 text-os-eyebrow uppercase text-brand-dark before:h-px before:w-7 before:bg-current before:opacity-75 before:content-[''] mb-4">
         Počet platní
       </h3>
       <div className="space-y-3">
@@ -58,12 +58,12 @@ export const BundleSelector: React.FC<BundleSelectorProps> = ({
                 isSelected
                   ? "border-brand-dark bg-white ring-1 ring-brand-dark"
                   : bundle.isBestValue
-                    ? "border-brand-gold/50 bg-brand-gold/5 hover:border-brand-gold"
-                    : "border-gray-200 bg-white hover:border-gray-400"
+                    ? "border-brand-dark/40 bg-brand-sand hover:border-brand-dark"
+                    : "border-brand-line bg-white hover:border-gray-400"
               )}
             >
               {bundle.isBestValue && (
-                <span className="absolute -top-2.5 right-4 bg-brand-gold text-brand-dark text-[9px] font-bold tracking-wider uppercase px-2 py-0.5">
+                <span className="absolute -top-2.5 right-4 rounded-[3px] bg-brand-dark text-brand-light text-[9px] font-bold tracking-wider uppercase px-2 py-0.5">
                   Najlepšia hodnota
                 </span>
               )}
@@ -71,7 +71,7 @@ export const BundleSelector: React.FC<BundleSelectorProps> = ({
               <div className="flex items-start gap-3">
                 <div className={cn(
                   "w-6 h-6 lg:w-5 lg:h-5 rounded-full border-2 flex items-center justify-center mt-0.5 flex-shrink-0",
-                  isSelected ? "border-brand-dark" : "border-gray-300"
+                  isSelected ? "border-brand-dark" : "border-brand-dark"
                 )}>
                   {isSelected && (
                     <div className="w-3 h-3 lg:w-2.5 lg:h-2.5 rounded-full bg-brand-dark" />
@@ -86,30 +86,30 @@ export const BundleSelector: React.FC<BundleSelectorProps> = ({
                           {bundle.quantity} {bundle.quantity === 1 ? 'platňa' : bundle.quantity < 5 ? 'platne' : 'platní'}
                         </span>
                         {bundle.discountPercent > 0 && (
-                          <span className="text-emerald-600 text-xs sm:text-sm font-semibold">
+                          <span className="text-brand-dark text-xs sm:text-sm font-semibold">
                             {bundle.label}
                           </span>
                         )}
                         {bundle.discountPercent === 0 && (
-                          <span className="text-gray-400 text-xs sm:text-sm">
+                          <span className="text-brand-muted text-xs sm:text-sm">
                             — {bundle.label}
                           </span>
                         )}
                       </div>
-                      <div className="text-[11px] sm:text-xs text-gray-500">
+                      <div className="text-[11px] sm:text-xs text-brand-muted">
                         {formatPrice(bundlePricePerM2)} / m² • {totalAreaM2.toFixed(2)} m²
                       </div>
                     </div>
 
                     <div className="mt-1.5 sm:mt-0 sm:text-right flex-shrink-0">
                       <div className="font-bold text-brand-dark text-base sm:text-lg">
-                        {formatPrice(bundlePricePerM2)}<span className="text-xs sm:text-sm font-normal text-gray-400"> / m² s DPH</span>
+                        {formatPrice(bundlePricePerM2)}<span className="text-xs sm:text-sm font-normal text-brand-muted"> / m² s DPH</span>
                       </div>
-                      <div className="text-[11px] sm:text-xs text-gray-500">
+                      <div className="text-[11px] sm:text-xs text-brand-muted">
                         spolu {formatPrice(bundlePrice)}
                       </div>
                       {savings > 0 && (
-                        <div className="text-emerald-600 text-[11px] sm:text-xs font-medium">
+                        <div className="text-brand-dark text-[11px] sm:text-xs font-medium">
                           Ušetríš: {formatPrice(savings)}
                         </div>
                       )}

@@ -52,7 +52,7 @@ export const ApplicationSection: React.FC<ApplicationSectionProps> = ({ product 
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-brand-gold mb-12">
+          <h2 className="flex items-center gap-3.5 text-os-eyebrow uppercase text-brand-dark before:h-px before:w-7 before:bg-current before:opacity-75 before:content-[''] mb-12">
             Vhodné použitie
           </h2>
 
@@ -74,20 +74,20 @@ export const ApplicationSection: React.FC<ApplicationSectionProps> = ({ product 
                 >
                   <div className={cn(
                     "w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full flex items-center justify-center mb-3 sm:mb-4 transition-colors",
-                    isSupported ? "bg-gray-100" : "bg-gray-50"
+                    isSupported ? "bg-brand-sand" : "bg-[#F2F0EA]"
                   )}>
                     <Icon
                       size={36}
                       strokeWidth={1.5}
                       className={cn(
                         "transition-colors",
-                        isSupported ? "text-brand-dark" : "text-gray-300"
+                        isSupported ? "text-brand-dark" : "text-brand-muted/60"
                       )}
                     />
                   </div>
                   <span className={cn(
                     "text-xs sm:text-sm font-medium leading-tight",
-                    isSupported ? "text-brand-dark" : "text-gray-400"
+                    isSupported ? "text-brand-dark" : "text-brand-muted"
                   )}>
                     {app}
                   </span>

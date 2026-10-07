@@ -108,12 +108,12 @@ export const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="border border-gray-200 bg-white">
-            <div className="p-5 lg:p-8 border-b border-gray-200">
-              <h2 className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-brand-gold mb-2">
+          <div className="border border-brand-line bg-white">
+            <div className="p-5 lg:p-8 border-b border-brand-line">
+              <h2 className="flex items-center gap-3.5 text-os-eyebrow uppercase text-brand-dark before:h-px before:w-7 before:bg-current before:opacity-75 before:content-[''] mb-2">
                 Pre architektov a dizajnérov
               </h2>
-              <p className="text-gray-600">
+              <p className="text-brand-muted">
                 Materiály a podpora pre profesionálov
               </p>
             </div>
@@ -121,7 +121,7 @@ export const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
             <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200">
               <div className="p-5 lg:p-8">
                 <h3 className="font-bold text-brand-dark mb-4">Vzorky materiálu</h3>
-                <p className="text-sm text-gray-600 mb-6">
+                <p className="text-sm text-brand-muted mb-6">
                   Objednajte si fyzickú vzorku pre presné posúdenie farby, textúry a povrchu.
                 </p>
                 <button
@@ -129,9 +129,9 @@ export const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
                   className={cn(
                     "flex items-center gap-3 px-6 py-3 text-sm font-semibold tracking-wider uppercase transition-colors",
                     sampleInCart
-                      ? "bg-emerald-600 text-white cursor-default"
+                      ? "border border-brand-dark bg-brand-sand text-brand-dark cursor-default"
                       : !product.sampleShopifyVariantId
-                        ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                        ? "bg-[#C9C6BC] text-brand-muted cursor-not-allowed"
                         : "bg-brand-dark text-white hover:bg-black"
                   )}
                 >
@@ -160,48 +160,48 @@ export const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
                     download
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 transition-colors group"
+                    className="w-full flex items-center justify-between p-4 bg-[#F2F0EA] hover:bg-brand-sand transition-colors group"
                   >
                     <span className="flex items-center gap-3 text-sm text-brand-dark">
-                      <FileText size={16} className="text-brand-gold" />
+                      <FileText size={16} className="text-brand-dark" />
                       Technický list (TDS)
                     </span>
-                    <Download size={14} className="text-gray-400 group-hover:text-brand-dark" />
+                    <Download size={14} className="text-brand-muted group-hover:text-brand-dark" />
                   </a>
                   <button
                     onClick={() => { setIsBimModalOpen(true); setBimEmail(''); setBimSubmitted(false); }}
-                    className="w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 transition-colors group"
+                    className="w-full flex items-center justify-between p-4 bg-[#F2F0EA] hover:bg-brand-sand transition-colors group"
                   >
                     <span className="flex items-center gap-3 text-sm text-brand-dark">
-                      <FileText size={16} className="text-brand-gold" />
+                      <FileText size={16} className="text-brand-dark" />
                       BIM / CAD Textúry (High-Res)
                     </span>
-                    <Mail size={14} className="text-gray-400 group-hover:text-brand-dark" />
+                    <Mail size={14} className="text-brand-muted group-hover:text-brand-dark" />
                   </button>
                 </div>
               </div>
             </div>
 
-            <div className="p-5 lg:p-8 bg-gray-50 border-t border-gray-200">
+            <div className="p-5 lg:p-8 bg-[#F2F0EA] border-t border-brand-line">
               <div className="flex flex-col gap-4">
                 <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                   <div>
                     <h4 className="font-medium text-brand-dark mb-1">Potrebujete konzultáciu?</h4>
-                    <p className="text-sm text-gray-600">Poradíme s výberom materiálu pre váš projekt. Odpoveď do 24h.</p>
+                    <p className="text-sm text-brand-muted">Poradíme s výberom materiálu pre váš projekt. Odpoveď do 24h.</p>
                   </div>
                   <Link to="/kontakt">
-                    <button className="flex items-center gap-2 px-6 py-3 border border-gray-300 text-brand-dark text-sm font-semibold tracking-wider uppercase hover:border-brand-gold hover:text-brand-gold transition-colors">
+                    <button className="flex items-center gap-2 px-6 py-3 border border-brand-dark text-brand-dark text-sm font-semibold tracking-wider uppercase hover:border-brand-dark hover:text-brand-muted transition-colors">
                       <MessageSquare size={16} />
                       Kontaktovať
                     </button>
                   </Link>
                 </div>
                 <div className="flex flex-wrap gap-4 text-sm">
-                  <a href="tel:+421917588738" className="flex items-center gap-2 text-gray-600 hover:text-brand-gold transition-colors">
+                  <a href="tel:+421917588738" className="flex items-center gap-2 text-brand-muted hover:text-brand-muted transition-colors">
                     <Phone size={14} />
                     +421 917 588 738
                   </a>
-                  <a href="mailto:dopyt@orostone.sk" className="flex items-center gap-2 text-gray-600 hover:text-brand-gold transition-colors">
+                  <a href="mailto:dopyt@orostone.sk" className="flex items-center gap-2 text-brand-muted hover:text-brand-muted transition-colors">
                     <Mail size={14} />
                     dopyt@orostone.sk
                   </a>
@@ -227,7 +227,7 @@ export const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10 }}
               transition={{ duration: 0.2 }}
-              className="relative z-10 w-full max-w-md max-h-[90dvh] flex flex-col bg-white rounded-2xl shadow-2xl overflow-hidden"
+              className="relative z-10 w-full max-w-md max-h-[90dvh] flex flex-col bg-white rounded-[3px] shadow-2xl overflow-hidden"
             >
               <div className="bg-brand-dark px-6 py-5 flex items-start justify-between gap-4 flex-shrink-0">
                 <div>
@@ -245,7 +245,7 @@ export const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
               <div className="px-6 py-6 overflow-y-auto overscroll-contain flex-1 min-h-0">
                 {!bimSubmitted ? (
                   <>
-                    <p className="text-gray-600 text-sm mb-5">
+                    <p className="text-brand-muted text-sm mb-5">
                       Nechajte nám váš email a my vám BIM / CAD textúry v plnom rozlíšení zašleme obratom. Súbory sú dostupné pre registrovaných architektov a dizajnérov.
                     </p>
                     <form onSubmit={handleBimSubmit} className="space-y-4">
@@ -254,14 +254,14 @@ export const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
                           Váš email
                         </label>
                         <div className="relative">
-                          <Mail size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                          <Mail size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-muted" />
                           <input
                             type="email"
                             required
                             value={bimEmail}
                             onChange={e => setBimEmail(e.target.value)}
                             placeholder="vas@email.sk"
-                            className="w-full pl-9 pr-4 py-2.5 border border-gray-200 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold transition-colors"
+                            className="w-full pl-9 pr-4 py-2.5 border border-brand-line rounded-[3px] text-base focus:outline-none focus:ring-2 focus:ring-brand-dark/30 focus:border-brand-dark transition-colors"
                           />
                         </div>
                       </div>
@@ -278,7 +278,7 @@ export const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
                       <button
                         type="submit"
                         disabled={bimSubmitting || !turnstileToken}
-                        className="w-full bg-brand-dark hover:bg-brand-dark/90 text-brand-gold font-semibold text-sm py-3 rounded-lg transition-colors flex items-center justify-center gap-2 disabled:opacity-60"
+                        className="w-full bg-brand-dark hover:bg-brand-dark/90 text-brand-light font-semibold text-sm py-3 rounded-[10px] transition-colors flex items-center justify-center gap-2 disabled:opacity-60"
                       >
                         {bimSubmitting ? (
                           <>
@@ -300,12 +300,12 @@ export const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
                       <CheckCircle size={28} className="text-green-500" />
                     </div>
                     <h4 className="font-bold text-brand-dark text-lg mb-2">Ďakujeme!</h4>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-brand-muted text-sm">
                       Súbory vám zašleme na <span className="font-medium text-brand-dark">{bimEmail}</span> do 24 hodín.
                     </p>
                     <button
                       onClick={handleBimModalClose}
-                      className="mt-5 text-sm text-brand-gold hover:underline font-medium"
+                      className="mt-5 text-sm text-brand-dark hover:underline font-medium"
                     >
                       Zavrieť
                     </button>

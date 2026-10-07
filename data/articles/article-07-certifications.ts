@@ -35,7 +35,7 @@ export const ARTICLE_07: BlogArticle = {
 <p>V tomto článku si rozložíme každú relevantnú certifikáciu — čo testuje, kto ju vydáva, čo zaručuje a ako ju nájsť v technickom liste materiálu.</p>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900" alt="Laboratórne testovanie keramickej platne — meranie nasiakavosti podľa ISO 10545-3" loading="lazy" />
+  <img src="/images/blog/article-07/vzorka-vo-vode-astrana-grey.webp" alt="Vzorka sinterovaného kameňa Astrana Grey ponorená do vody vedľa suchej vzorky — princíp skúšky nasiakavosti" loading="lazy" />
   <figcaption>Laboratórne testovanie podľa ISO noriem. Každý výsledok musí byť zdokladovaný číselnou hodnotou, nie len slovným popisom.</figcaption>
 </figure>
 
@@ -58,7 +58,7 @@ export const ARTICLE_07: BlogArticle = {
 <p>ISO 10545 je medzinárodná norma, ktorá definuje <strong class="gold">štandardizované testovacie metódy</strong> pre keramické dlaždice a platne. Obsahuje 16 častí — každá testuje iný parameter. Pre sinterovaný kameň sú kľúčové tieto časti:</p>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?w=900" alt="Meranie nasiakavosti kamennej platne podľa ISO 10545-3 — vodnú absorpciu pod 0.1%" loading="lazy" />
+  <img src="/images/blog/article-07/kvapky-calacatta-top.webp" alt="Kvapky vody na hrane pracovnej dosky zo sinterovaného kameňa v dekore Calacatta Top" loading="lazy" />
   <figcaption>ISO 10545-3 meria nasiakavosť. Sinterovaný kameň dosahuje hodnoty pod 0,05% — z praktického hľadiska nulová pórovitosť.</figcaption>
 </figure>
 
@@ -123,7 +123,7 @@ export const ARTICLE_07: BlogArticle = {
 <p>NSF/ANSI 51 je americká norma, ktorú vydáva <strong class="gold">NSF International</strong> — nezávislá nezisková organizácia akreditovaná ANSI (American National Standards Institute). Certifikát zaručuje, že materiál je bezpečný pre priamy kontakt s potravinami.</p>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900" alt="Kuchynská doska zo sinterovaného kameňa v kontakte s potravinami — NSF/ANSI 51 certifikácia" loading="lazy" />
+  <img src="/images/blog/article-07/potraviny-yabo-white.webp" alt="Chlieb, paradajky a bazalka priamo na pracovnej doske zo sinterovaného kameňa v dekore Yabo White" loading="lazy" />
   <figcaption>NSF/ANSI 51 certifikovaný materiál je bezpečný pre priamy kontakt s potravinami — vrátane surového mäsa, zeleniny a pečiva.</figcaption>
 </figure>
 
@@ -170,8 +170,8 @@ export const ARTICLE_07: BlogArticle = {
 <p>Pre stavebné povrchy v EÚ platí klasifikácia reakcie na oheň podľa normy <strong>EN 13501-1</strong>. Triedy sú označené písmenami A až F, kde A1 je najlepší výsledok.</p>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900" alt="Testovanie reakcie na oheň keramického materiálu — trieda A1 podľa EN 13501-1" loading="lazy" />
-  <figcaption>Testovanie reakcie na oheň. Sinterovaný kameň dosahuje triedu A1 — nehorí a neprispieva k šíreniu požiaru.</figcaption>
+  <img src="/images/blog/article-07/panvica-gothic-gold.webp" alt="Horúca liatinová panvica priamo na pracovnej doske zo sinterovaného kameňa v dekore Gothic Gold" loading="lazy" />
+  <figcaption>Sinterovaný kameň dosahuje triedu reakcie na oheň A1 — nehorí a neprispieva k šíreniu požiaru.</figcaption>
 </figure>
 
 <ul>
@@ -256,8 +256,8 @@ export const ARTICLE_07: BlogArticle = {
 </div>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900" alt="Moderná komerčná budova s veľkoformátovými kamenými platňami na fasáde — LEED certifikovaný projekt" loading="lazy" />
-  <figcaption>Komerčné projekty s sinterovaným kameňom môžu prispieť k LEED a BREEAM certifikácii budovy vďaka nízkym emisiám VOC a dlhej životnosti materiálu.</figcaption>
+  <img src="/images/blog/article-07/fasada-roman-travertine.webp" alt="Fasáda budovy z veľkoformátových platní sinterovaného kameňa v dekore Roman Travertine (vizualizácia)" loading="lazy" />
+  <figcaption>Komerčné projekty so sinterovaným kameňom môžu prispieť k LEED a BREEAM certifikácii budovy vďaka nízkym emisiám VOC a dlhej životnosti materiálu.</figcaption>
 </figure>
 
 <h2 id="checklist">9. Checklist pri výbere materiálu</h2>
@@ -365,7 +365,7 @@ export const ARTICLE_07: BlogArticle = {
 <p>This article breaks down every relevant certification — what it tests, who issues it, what it guarantees, and how to find it in a material's technical data sheet.</p>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900" alt="Laboratory testing of a ceramic slab — water absorption measurement per ISO 10545-3" loading="lazy" />
+  <img src="/images/blog/article-07/vzorka-vo-vode-astrana-grey.webp" alt="An Astrana Grey sintered stone sample in water next to a dry sample — the principle of the water absorption test" loading="lazy" />
   <figcaption>Laboratory testing per ISO standards. Every result must be documented with a numerical value, not just a verbal description.</figcaption>
 </figure>
 
@@ -388,7 +388,7 @@ export const ARTICLE_07: BlogArticle = {
 <p>ISO 10545 is an international standard that defines <strong class="gold">standardized test methods</strong> for ceramic tiles and slabs. It contains 16 parts — each testing a different parameter. For sintered stone, the following parts are critical:</p>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?w=900" alt="Water absorption measurement of a stone slab per ISO 10545-3 — absorption below 0.1%" loading="lazy" />
+  <img src="/images/blog/article-07/kvapky-calacatta-top.webp" alt="Water droplets on the edge of a sintered stone worktop in the Calacatta Top decor" loading="lazy" />
   <figcaption>ISO 10545-3 measures water absorption. Sintered stone achieves values below 0.05% — virtually zero porosity in practical terms.</figcaption>
 </figure>
 
@@ -453,7 +453,7 @@ export const ARTICLE_07: BlogArticle = {
 <p>NSF/ANSI 51 is an American standard issued by <strong class="gold">NSF International</strong> — an independent non-profit organisation accredited by ANSI (American National Standards Institute). The certificate confirms that the material is safe for direct contact with food.</p>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900" alt="Sintered stone kitchen worktop in contact with food — NSF/ANSI 51 certification" loading="lazy" />
+  <img src="/images/blog/article-07/potraviny-yabo-white.webp" alt="Bread, tomatoes and basil directly on a sintered stone worktop in the Yabo White decor" loading="lazy" />
   <figcaption>NSF/ANSI 51 certified material is safe for direct food contact — including raw meat, vegetables, and baked goods.</figcaption>
 </figure>
 
@@ -500,8 +500,8 @@ export const ARTICLE_07: BlogArticle = {
 <p>For building surfaces in the EU, reaction to fire is classified per <strong>EN 13501-1</strong>. Classes are labelled A through F, where A1 is the best result.</p>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900" alt="Fire performance testing of ceramic material — class A1 per EN 13501-1" loading="lazy" />
-  <figcaption>Reaction to fire testing. Sintered stone achieves class A1 — it does not burn and does not contribute to fire spread.</figcaption>
+  <img src="/images/blog/article-07/panvica-gothic-gold.webp" alt="A hot cast-iron pan directly on a sintered stone worktop in the Gothic Gold decor" loading="lazy" />
+  <figcaption>Sintered stone achieves reaction-to-fire class A1 — it does not burn and does not contribute to fire spread.</figcaption>
 </figure>
 
 <ul>
@@ -584,7 +584,7 @@ export const ARTICLE_07: BlogArticle = {
 </div>
 
 <figure class="article-figure">
-  <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900" alt="Modern commercial building with large-format stone slabs on the facade — LEED certified project" loading="lazy" />
+  <img src="/images/blog/article-07/fasada-roman-travertine.webp" alt="Building facade clad in large-format sintered stone panels in the Roman Travertine decor (visualisation)" loading="lazy" />
   <figcaption>Commercial projects clad with sintered stone can contribute to LEED and BREEAM building certification thanks to low VOC emissions and long material lifespan.</figcaption>
 </figure>
 

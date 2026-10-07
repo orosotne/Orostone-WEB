@@ -75,8 +75,7 @@ const ProductCardImpl: React.FC<ProductCardProps> = ({ product, onAddToCart, inC
         <span className="text-[0.84rem] font-light text-brand-muted">za&nbsp;m² s&nbsp;DPH</span>
       </p>
       <p className="text-[0.84rem] font-light tabular-nums text-brand-muted">
-        {/* Shopify prices whole slabs in whole euros; the per-m² figure is derived from it, so round back */}
-        Celá platňa {formatPrice(Math.round(calculateSlabPrice(product.pricePerM2, product.dimensions)))}
+        Celá platňa {formatPrice(calculateSlabPrice(product.pricePerM2, product.dimensions))}
       </p>
 
       <div className="mt-auto pt-5">

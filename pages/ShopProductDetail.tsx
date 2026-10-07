@@ -30,6 +30,7 @@ import {
   type BundleOption,
 } from '../components/ProductDetail';
 import { MAX_SAMPLES } from '../constants';
+import { GoldBand } from '../components/Design';
 
 export const ShopProductDetail: React.FC = () => {
   const { id } = useParams();
@@ -100,7 +101,7 @@ export const ShopProductDetail: React.FC = () => {
         />
         <div className="text-center">
           <h1 className="text-2xl font-bold text-brand-dark mb-4">Produkt nenájdený</h1>
-          <p className="text-gray-600 mb-8">Požadovaný produkt neexistuje alebo bol odstránený.</p>
+          <p className="text-brand-muted mb-8">Požadovaný produkt neexistuje alebo bol odstránený.</p>
           <Link to="/">
             <Button variant="primary">
               <ArrowLeft size={16} />
@@ -185,7 +186,7 @@ export const ShopProductDetail: React.FC = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-4 left-4 right-4 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 z-50 bg-red-600 text-white px-6 py-3 rounded-lg shadow-xl text-sm font-medium sm:max-w-md text-center"
+            className="fixed top-4 left-4 right-4 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 z-50 bg-red-600 text-white px-6 py-3 rounded-[3px] shadow-xl text-sm font-medium sm:max-w-md text-center"
           >
             {cartError}
           </m.div>
@@ -218,10 +219,11 @@ export const ShopProductDetail: React.FC = () => {
       <LogisticsSection product={product} />
       <ArchitectBlock product={product} />
       <ProductFAQSection product={product} />
+      <GoldBand od="produkt" dekor={product.id} title="Potrebujete dosku na mieru?" />
 
       {/* Sticky Add-to-Cart Bottom Bar — mobile only */}
       <div className={cn(
-        "fixed left-0 right-0 z-[60] lg:hidden bg-white border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 bottom-0",
+        "fixed left-0 right-0 z-[60] lg:hidden bg-white border-t border-brand-line shadow-[0_-4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 bottom-0",
         (isCartOpen || isLightboxOpen) && "hidden"
       )}
         style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
@@ -229,22 +231,22 @@ export const ShopProductDetail: React.FC = () => {
         <div className="px-4 py-3 space-y-2">
           <div className="flex items-center gap-3">
             <div className="flex-1 min-w-0">
-              <p className="text-xs text-gray-500 truncate">{product.name} • {selectedBundle.quantity} {selectedBundle.quantity === 1 ? 'platňa' : selectedBundle.quantity < 5 ? 'platne' : 'platní'}</p>
+              <p className="text-xs text-brand-muted truncate">{product.name} • {selectedBundle.quantity} {selectedBundle.quantity === 1 ? 'platňa' : selectedBundle.quantity < 5 ? 'platne' : 'platní'}</p>
               <p className="text-lg font-bold text-brand-dark leading-tight">
                 {formatPrice(Math.round(product.pricePerM2 * (1 - selectedBundle.discountPercent / 100) * 100) / 100)}
-                <span className="text-xs font-normal text-gray-400 ml-1">/ m² s DPH</span>
+                <span className="text-xs font-normal text-brand-muted ml-1">/ m² s DPH</span>
                 {selectedBundle.discountPercent > 0 && (
-                  <span className="text-xs font-normal text-gray-400 ml-1 line-through">{formatPrice(product.pricePerM2)}</span>
+                  <span className="text-xs font-normal text-brand-muted ml-1 line-through">{formatPrice(product.pricePerM2)}</span>
                 )}
               </p>
-              <p className="text-[10px] text-gray-400 leading-tight">Doprava od 150 EUR s DPH</p>
+              <p className="text-[10px] text-brand-muted leading-tight">Doprava od 150 EUR s DPH</p>
             </div>
             <button
               onClick={handleAddToCart}
               className={cn(
-                "flex-shrink-0 h-12 px-5 text-sm font-semibold tracking-wider uppercase transition-all flex items-center justify-center gap-2 rounded-lg",
+                "flex-shrink-0 h-12 px-5 text-sm font-semibold tracking-wider uppercase transition-all flex items-center justify-center gap-2 rounded-[10px]",
                 isInCart(product.id)
-                  ? "bg-emerald-600 text-white"
+                  ? "border border-brand-dark bg-brand-sand text-brand-dark"
                   : "bg-brand-dark text-white active:bg-black"
               )}
             >
@@ -264,7 +266,7 @@ export const ShopProductDetail: React.FC = () => {
           {!product.sampleShopifyVariantId ? (
             <Link
               to="/vzorky"
-              className="w-full h-11 text-xs font-semibold tracking-wider uppercase transition-all flex items-center justify-center gap-2 rounded-lg border border-gray-300 text-brand-dark active:border-brand-gold active:text-brand-gold"
+              className="w-full h-11 text-xs font-semibold tracking-wider uppercase transition-all flex items-center justify-center gap-2 rounded-[10px] border border-brand-dark text-brand-dark active:border-brand-dark active:text-brand-muted"
             >
               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
               Objednať vzorku zadarmo
@@ -274,12 +276,12 @@ export const ShopProductDetail: React.FC = () => {
               onClick={handleAddSample}
               disabled={sampleCount >= MAX_SAMPLES && !isSampleInCart(product.id)}
               className={cn(
-                "w-full h-11 text-xs font-semibold tracking-wider uppercase transition-all flex items-center justify-center gap-2 rounded-lg border",
+                "w-full h-11 text-xs font-semibold tracking-wider uppercase transition-all flex items-center justify-center gap-2 rounded-[10px] border",
                 isSampleInCart(product.id)
-                  ? "border-emerald-300 bg-emerald-50 text-emerald-700"
+                  ? "border-brand-dark bg-brand-sand text-brand-dark"
                   : sampleCount >= MAX_SAMPLES
-                    ? "border-gray-200 text-gray-400"
-                    : "border-gray-300 text-brand-dark active:border-brand-gold active:text-brand-gold"
+                    ? "border-brand-line text-brand-muted"
+                    : "border-brand-dark text-brand-dark active:border-brand-dark active:text-brand-muted"
               )}
             >
               {isSampleInCart(product.id) ? (

@@ -95,7 +95,7 @@ export const VYHODY_BENEFITS: { title: string; description: string }[] = [
     description: 'Farba sa nemení ani pri celoročnom vystavení slnku. Certifikované podľa DIN 51094.',
   },
   {
-    title: 'Bez údržby',
+    title: 'Jednoduchá údržba',
     description: 'Nepotrebuje impregnáciu ani špeciálne ošetrenie. Stačí vlhká utierka a bežný saponát.',
   },
   {

@@ -204,7 +204,7 @@ export const Vyhody = () => {
             </p>
             <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
               <ActionButton variant="dark" to="/kontakt" arrow>
-                Konzultácia zdarma
+                Konzultácia zadarmo
               </ActionButton>
               <TextLink to="/blog/neviditelna-varna-doska-v-sinterovanom-kamene">Kompletný sprievodca</TextLink>
             </div>

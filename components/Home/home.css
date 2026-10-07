@@ -187,6 +187,13 @@
 .hp .hp-rating { background-color: var(--graphite); color: var(--chalk); border-radius: 3px; padding: clamp(28px, 3vw, 44px); display: grid; gap: 14px; align-content: start; justify-items: start; }
 .hp .hp-rating-q { font-size: clamp(4rem, 7vw, 5.6rem); font-weight: 700; line-height: 0.7; color: var(--gold); margin-top: 18px; }
 .hp .hp-rating-text { color: var(--chalk-80); font-size: 0.95rem; font-weight: 400; max-width: 30ch; }
+/* Without verified client quotes the Google card runs the full width as one band */
+.hp .hp-rev-solo { grid-template-columns: minmax(0, 1fr); }
+.hp .hp-rev-solo .hp-rating-q { display: none; }
+@media (min-width: 900px) {
+  .hp .hp-rev-solo .hp-rating { display: flex; flex-wrap: wrap; align-items: center; gap: 16px clamp(28px, 4vw, 64px); }
+  .hp .hp-rev-solo .hp-rating-text { flex: 1 1 32ch; max-width: 56ch; }
+}
 .hp .hp-quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 3vw, 44px); }
 .hp .hp-quotes blockquote { display: grid; gap: 20px; align-content: space-between; border-top: 1px solid var(--graphite); padding-top: 24px; margin: 0; }
 .hp .hp-quotes blockquote p { font-size: clamp(1.05rem, 1.4vw, 1.25rem); font-weight: 300; line-height: 1.55; }

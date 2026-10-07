@@ -71,13 +71,13 @@ const PROCESS = [
 
 const FEATURES = [
   { title: 'Odolnosť teplu', text: 'Odolá teplotám nad 300 °C. Horúci hrniec priamo na dosku — bez strachu.' },
-  { title: 'Nepoškriabateľný', text: 'Tvrdosť 6–8 na Mohsovej stupnici. Tvrdší ako žula (6) a väčšina kuchynského náradia.' },
-  { title: 'Nulová nasiakavosť', text: 'Pod 0,1 %. Víno, káva, olej — nič sa nevsiakne. Baktérie a plesne nemajú šancu.' },
+  { title: 'Odolnosť voči poškriabaniu', text: 'Tvrdosť 6–8 na Mohsovej stupnici. Tvrdší ako žula (6) a väčšina kuchynského náradia.' },
+  { title: 'Nasiakavosť pod 0,1 %', text: 'Víno, káva ani olej sa nevsiaknu. Na hladkom, nepórovitom povrchu sa baktérie a plesne nemajú kde uchytiť.' },
   { title: 'UV stabilita', text: 'Farba sa nemení ani na priamom slnku. Ideálne aj pre exteriéry a fasády.' },
   { title: 'Chemická odolnosť', text: 'Trieda A podľa ISO 10545-13. Odolný voči kyselinám, zásadám aj bazénovej chémii.' },
-  { title: 'Bez impregnácie', text: 'Nepórovitý povrch nevyžaduje žiadne tesnenie ani pravidelnú údržbu.' },
+  { title: 'Bez impregnácie', text: 'Nepórovitý povrch netreba tesniť ani impregnovať. Na bežné čistenie stačí vlhká utierka a saponát.' },
   { title: 'Veľké formáty', text: 'Dosky až 3 200 × 1 600 mm. Menej spojov, čistejší dizajn, jednoduchšia montáž.' },
-  { title: 'Dizajnová variabilita', text: 'Matný, leštený, štruktúrovaný povrch. Vzhľad mramoru, betónu, kovu či dreva.' },
+  { title: 'Dizajnová variabilita', text: 'Matný, saténový aj leštený povrch. Dekory s kresbou mramoru, travertínu a kameňa, od bielej po čiernu.' },
 ];
 
 // Kitchen, bathroom, backsplash, fireplace and furniture are visualizations with real Orostone decors.
@@ -90,7 +90,7 @@ const APPLICATIONS = [
   },
   {
     title: 'Kúpeľne',
-    desc: 'Nulová nasiakavosť zabraňuje rastu plesní a baktérií. Ideálne na obklady, podlahy, vaničky aj umývadlá.',
+    desc: 'Nasiakavosť pod 0,1 % bráni rastu plesní a baktérií. Vhodné na obklady, podlahy, vaničky aj umývadlá.',
     img: 'sk-kupelna',
     imgAlt: 'Kúpeľňa s umývadlom a obkladom steny v dekore Taj Mahal',
   },
@@ -104,7 +104,7 @@ const APPLICATIONS = [
     title: 'Fasády',
     desc: 'UV stabilita, mrazuvzdornosť a nízka hmotnosť (od 3 mm). Farba sa nemení ani po rokoch na priamom slnku.',
     img: 'sk-fasada',
-    imgAlt: 'Fasáda zo sinterovaného kameňa',
+    imgAlt: 'Fasáda z veľkoformátových platní sinterovaného kameňa v dekore Astrana Grey (vizualizácia)',
   },
   {
     title: 'Krbové obklady',
@@ -125,19 +125,19 @@ const FINISHES = [
     title: 'Matný (Matt)',
     desc: 'Jemný, hladký povrch bez odleskov. Minimalizuje viditeľnosť odtlačkov prstov a poskytuje elegantný, moderný vzhľad. Odolnosť voči škvrnám triedy 5 podľa ISO 10545-14.',
     img: 'sk-povrch-matny',
-    imgAlt: 'Matný povrch sinterovaného kameňa',
+    imgAlt: 'Matný povrch sinterovaného kameňa v dekore Gothic Gold',
   },
   {
     title: 'Leštený (Polished)',
     desc: 'Vysoko lesklý, zrkadlový povrch, ktorý zvýrazňuje hĺbku a kresbu materiálu. Ideálny pre luxusné interiéry. Vyžaduje pravidelné utieranie do sucha.',
     img: 'sk-povrch-lesteny',
-    imgAlt: 'Leštený povrch sinterovaného kameňa',
+    imgAlt: 'Leštený povrch sinterovaného kameňa v dekore Calacatta Top s odrazom okna',
   },
   {
-    title: 'Štruktúrovaný (Textured)',
-    desc: 'Hmatateľná textúra, ktorá napodobňuje prírodný kameň, drevo alebo betón. Technológia VeinTouch vytvára realistický dotykový zážitok pri zachovaní všetkých technických vlastností.',
-    img: 'sk-povrch-strukturovany',
-    imgAlt: 'Štruktúrovaný povrch sinterovaného kameňa',
+    title: 'Saténový (Silk)',
+    desc: 'Jemne zamatový povrch medzi matným a lešteným. Svetlo odráža mäkko a je zhovievavý k odtlačkom prstov. V ponuke ho majú napríklad dekory Taj Mahal a Super White Extra.',
+    img: 'sk-povrch-saten',
+    imgAlt: 'Saténový povrch Silk v dekore Taj Mahal',
   },
 ];
 
@@ -186,9 +186,9 @@ export const SinterovanyKamen = () => {
 
       {/* 1. HERO */}
       <PageHero
-        eyebrow="Materiál budúcnosti"
+        eyebrow="O materiáli"
         title="Sinterovaný kameň"
-        lead="100 % prírodné minerály. Extrémna odolnosť. Nulová údržba. Povrch, ktorý prekoná prírodný kameň aj quartz."
+        lead="Prírodné minerály spečené pri vysokej teplote a tlaku. Výsledkom je hustý povrch, ktorý odolá teplu, škvrnám aj poškriabaniu a nepotrebuje impregnáciu."
         actions={
           <>
             <ActionButton variant="dark" to="/kategoria/sintered-stone" arrow>
@@ -254,7 +254,7 @@ export const SinterovanyKamen = () => {
             onDark
             eyebrow="Výrobný proces"
             title="Ako sa sinterovaný kameň vyrába"
-            lead="Tri kroky, ktoré premenia prírodné minerály na nezničiteľný povrch."
+            lead="Tri kroky, v ktorých sa z prírodných minerálov stane hustý a odolný povrch."
           />
           <ol className={`${below} grid gap-x-[clamp(24px,3vw,40px)] gap-y-12 md:grid-cols-3`}>
             {PROCESS.map((item, i) => (
@@ -373,8 +373,8 @@ export const SinterovanyKamen = () => {
             ))}
           </ul>
           <p className="mt-10 text-[0.84rem] font-normal text-brand-muted">
-            Ilustračné vizualizácie. V kuchyni, kúpeľni, na zástene, krbe a stole je skutočný dekor Orostone: Statuario Diamante,
-            Taj Mahal, Wild Forest, Gothic Gold a Roman Travertine.
+            Ilustračné vizualizácie. V kuchyni, kúpeľni, na zástene, fasáde, krbe a stole je skutočný dekor Orostone: Statuario Diamante,
+            Taj Mahal, Wild Forest, Astrana Grey, Gothic Gold a Roman Travertine.
           </p>
         </Container>
       </Section>
@@ -451,11 +451,11 @@ export const SinterovanyKamen = () => {
         <Container className="grid items-end gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
           <SectionHeader
             title="Pripravený na sinterovaný kameň?"
-            lead="Dotknite sa materiálu budúcnosti. Vyžiadajte si vzorku alebo nezáväznú cenovú ponuku ešte dnes."
+            lead="Pozrite si materiál zblízka: objednajte si vzorku, alebo pošlite pôdorys a získajte orientačnú cenu."
           />
           <div className="grid gap-5 lg:justify-items-end">
             <ActionButton variant="dark" to="/vzorky" arrow>
-              Objednať vzorky zadarmo
+              Objednať vzorku zadarmo
             </ActionButton>
             <div className="flex flex-wrap gap-x-8 gap-y-3 lg:justify-end">
               <TextLink to="/kategoria/sintered-stone">Prezrieť kolekcie</TextLink>

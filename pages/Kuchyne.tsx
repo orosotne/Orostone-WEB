@@ -116,11 +116,11 @@ export const Kuchyne = () => {
       <PageHero
         eyebrow="Kuchyne zo sinterovaného kameňa"
         title={KUCHYNE_H1}
-        lead="Pracovné dosky, ostrovčeky a obklady, ktoré vydržia desaťročia bez údržby. Odolné voči teplu, škvrnám, škrabancom a UV žiareniu."
+        lead="Pracovné dosky, ostrovčeky a obklady na roky každodenného varenia. Odolajú teplu, škvrnám, poškriabaniu aj UV žiareniu a nepotrebujú impregnáciu."
         actions={
           <>
             <ActionButton variant="dark" to="/vzorky" arrow>
-              Objednať vzorky zadarmo
+              Objednať vzorku zadarmo
             </ActionButton>
             <TextLink to="/kategoria/sintered-stone">Pozrieť katalóg</TextLink>
           </>
@@ -182,7 +182,7 @@ export const Kuchyne = () => {
             <SectionHeader
               eyebrow="Dekory"
               title="Dekory na kuchynskú dosku"
-              lead="Celé platne 3200 × 1600 mm v hrúbke 12 mm. Pri každom dekore nájdete cenu, detail kresby aj vzorku zadarmo."
+              lead="Celé platne 3200 × 1600 mm v hrúbke 12 mm. Pri každom dekore nájdete cenu, detail kresby a vzorku, prvú posielame zadarmo."
             />
             <TextLink to="/kategoria/sintered-stone">Celý katalóg</TextLink>
           </div>
@@ -242,11 +242,11 @@ export const Kuchyne = () => {
         <Container className="grid items-end gap-8 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
           <SectionHeader
             title="Plánujete novú kuchyňu?"
-            lead="Pošleme vám vzorky materiálov zadarmo, poradíme s výberom dekóru a pripravíme nezáväznú cenovú ponuku na mieru."
+            lead="Prvú vzorku vám pošleme zadarmo, poradíme s výberom dekoru a pripravíme nezáväznú cenovú ponuku na mieru."
           />
           <div className="flex flex-wrap items-center gap-x-8 gap-y-4 lg:justify-end">
             <ActionButton variant="dark" to="/vzorky" arrow>
-              Objednať vzorky zadarmo
+              Objednať vzorku zadarmo
             </ActionButton>
             <TextLink to="/kontakt">Kontaktovať nás</TextLink>
           </div>

@@ -75,5 +75,9 @@ async function retryImport<T extends ComponentType<unknown>>(
 }
 
 /** Keeps a number and its unit on one line in headings: "20 mm", "300 °C", "20 %", "1 704 €". */
+/** "TAJ MAHAL" → "Taj Mahal": product names come uppercase from Shopify, headings use title case. */
+export const titleCase = (text: string): string =>
+  text.toLocaleLowerCase('sk').replace(/(^|[\s-])(\S)/g, (_, sep: string, ch: string) => sep + ch.toLocaleUpperCase('sk'));
+
 export const keepUnits = (text: string): string =>
   text.replace(/(\d) (mm|cm|m²|m|°C|%|€)(?=[\s,.:;!?)]|$)/g, '$1\u00A0$2');

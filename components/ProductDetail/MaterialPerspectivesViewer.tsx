@@ -81,7 +81,7 @@ export const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProp
         <h3 className="text-xl font-semibold text-brand-dark mb-2">
           Objavte krásu z každého uhla
         </h3>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-brand-muted">
           Buďte si istí svojou voľbou ešte pred nákupom.
         </p>
       </div>
@@ -98,7 +98,7 @@ export const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProp
                 "flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium transition-all",
                 isActive
                   ? "bg-brand-dark text-white"
-                  : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
+                  : "bg-white text-brand-muted hover:bg-brand-sand border border-brand-line"
               )}
             >
               <Icon size={16} />
@@ -109,7 +109,7 @@ export const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProp
       </div>
 
       <div
-        className="relative rounded-xl overflow-hidden bg-gray-900 cursor-pointer group"
+        className="relative rounded-[3px] overflow-hidden bg-gray-900 cursor-pointer group"
         onClick={() => startTransition(() => setIsLightboxOpen(true))}
       >
         <AnimatePresence mode="wait">
@@ -171,7 +171,7 @@ export const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProp
                 <X size={20} />
               </button>
 
-              <div className="relative rounded-xl overflow-hidden bg-gray-900">
+              <div className="relative rounded-[3px] overflow-hidden bg-gray-900">
                 <AnimatePresence mode="wait">
                   <m.div
                     key={activeTab}
