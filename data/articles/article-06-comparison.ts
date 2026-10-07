@@ -248,13 +248,13 @@ export const ARTICLE_06: BlogArticle = {
 
 <p><strong>Omyl 1: „Draho = kvalitne."</strong> Cena závisí od veľkosti vzoru, hrúbky dosky a finálnej úpravy povrchu — nie nevyhnutne od materiálovej kvality. Existujú priemerné dosky za prémiové ceny aj vynikajúce dosky za rozumné ceny.</p>
 
-<p><strong>Omyl 2: „Stačí mi vzorka."</strong> Malá vzorka neodhalí variabilitu vzoru, rovinnosť ani konzistenciu medzi šaržami. Vždy si pozrite <strong class="gold">aspoň 3–5 dosiek vedľa seba</strong>.</p>
+<p><strong>Omyl 2: „Stačí mi vzorka.“</strong> Malá vzorka neodhalí variabilitu vzoru, rovinnosť ani konzistenciu medzi šaržami. Vždy si pozrite <strong class="gold">aspoň 3–5 dosiek vedľa seba</strong>.</p>
 
-<p><strong>Omyl 3: „Instalatér odporučí ten správny materiál."</strong> Inštalatér odporučí to, s čím má skúsenosti a čo mu prináša najväčší zisk. Nie nevyhnutne to, čo je najlepšie pre váš projekt.</p>
+<p><strong>Omyl 3: „Inštalatér odporučí ten správny materiál.“</strong> Inštalatér odporučí to, s čím má skúsenosti a čo mu prináša najväčší zisk. Nie nevyhnutne to, čo je najlepšie pre váš projekt.</p>
 
 <p><strong>Omyl 4: „Nízka cena znamená nízku kvalitu."</strong> Nie vždy. Nižšia cena môže znamenať menší vzor (lacnejší na výrobu), bežnú hrúbku alebo matný povrch. Tieto faktory nemajú vplyv na výkon materiálu.</p>
 
-<p><strong>Omyl 5: „Všetky sinterované kamene sú rovnaké."</strong> Technológia výroby určuje kategóriu. Kvalita konkrétneho výrobku závisí od presnosti lisovania, teploty spekania a kontroly kvality. <strong class="gold">Vždy vyžadujte technický list s nameranými hodnotami</strong> — nie len s názvami testovacích noriem.</p>
+<p><strong>Omyl 5: „Všetky sinterované kamene sú rovnaké.“</strong> Technológia výroby určuje kategóriu. Kvalita konkrétneho výrobku závisí od presnosti lisovania, teploty spekania a kontroly kvality. <strong class="gold">Vždy vyžadujte technický list s nameranými hodnotami</strong> — nie len s názvami testovacích noriem.</p>
 
 <div class="article-tip">
   <p><strong>Čo robíme v Orostone</strong></p>
@@ -330,7 +330,7 @@ export const ARTICLE_06: BlogArticle = {
       },
       {
         question: 'Ako dlho trvá inštalácia kuchynskej dosky?',
-        answer: 'Štandardná kuchynská doska (L-tvar, 2 výrezy) si vyžaduje 1 deň na meranie + výrobu (typicky 3–7 pracovných dní) + 1 deň na inštaláciu. Partnerský kamenár zameriava digitálnym šablónovaním s odchýlkou pod 0,5\u00A0mm.',
+        answer: 'Štandardná kuchynská doska (L-tvar, 2 výrezy) si vyžaduje 1 deň na meranie + výrobu (typicky 3–7 pracovných dní) + 1 deň na inštaláciu. Kuchyňu ručne zameria priamo na mieste partnerský kamenár, ktorý dosku aj vyrobí.',
       },
       {
         question: 'Môžem si materál vyskúšať pred kúpou?',
@@ -505,8 +505,8 @@ export const ARTICLE_06: BlogArticle = {
 <p>Ceramic looks tempting at €100–240/m². But let's <strong class="gold">consider a 25-year horizon:</strong></p>
 <ul>
 <li><strong>Ceramic tile:</strong> sealing every 1–2 years (~€30–50/service), grout staining, replacing damaged tiles — totaling <strong>€2,000–3,000 extra</strong> over 25 years</li>
-<li><strong>Engineered quartz:</strong> virtually maintenance-free indoors, but UV or thermal shock = full slab replacement</li>
-<li><strong>Sintered stone:</strong> zero maintenance, no sealing, resistant to everything except extreme point impacts</li>
+<li><strong>Engineered quartz:</strong> low-maintenance indoors, but UV or thermal shock = full slab replacement</li>
+<li><strong>Sintered stone:</strong> minimal maintenance without sealing, high resistance in everyday use; mainly sensitive to strong point impacts</li>
 <li><strong>Porcelain slabs:</strong> very similar cost profile to sintered stone, lower entry price</li>
 </ul>
 
@@ -535,7 +535,7 @@ export const ARTICLE_06: BlogArticle = {
 <ul>
 <li>The countertop will be <strong>outdoors</strong> or exposed to direct sunlight</li>
 <li>You expect <strong>direct contact with hot items</strong> without trivets</li>
-<li>You want <strong>zero maintenance</strong> — no sealing, no special cleaning</li>
+<li>You want <strong>minimal maintenance</strong> — no sealing, no special cleaning</li>
 <li>Your budget is above <strong>€350/m²</strong></li>
 <li>You want the material with the <strong>longest lifespan</strong></li>
 </ul>
@@ -585,7 +585,7 @@ export const ARTICLE_06: BlogArticle = {
 
 <h2 id="conclusion">Conclusion: An Honest Recommendation</h2>
 
-<p>Sintered stone is our number one material at Orostone — but not because we sell it. Because it <strong class="gold">technically requires no compromises</strong> where other materials do: UV resistance, heat resistance, zero maintenance.</p>
+<p>Sintered stone is our number one material at Orostone — but not because we sell it. Because it <strong class="gold">technically requires no compromises</strong> where other materials do: UV resistance, heat resistance, maintenance without sealing.</p>
 
 <p>If you have a kitchen indoors without direct sunlight and always use trivets — engineered quartz is a legitimate choice at a reasonable price. If you want porcelain slabs at a lower price with similar performance — that's also a sensible choice.</p>
 
@@ -616,7 +616,7 @@ export const ARTICLE_06: BlogArticle = {
       },
       {
         question: 'Why is sintered stone more expensive than quartz?',
-        answer: 'Manufacturing sintered stone requires extremes: 25,000 tons of pressure and temperatures above 1,200°C — an energy and capital-intensive process. Premium sintered stone also features complex full-body patterns (veining runs through the entire thickness). The price also reflects longer lifespan and zero maintenance.',
+        answer: 'Manufacturing sintered stone requires extremes: 25,000 tons of pressure and temperatures above 1,200°C — an energy and capital-intensive process. Premium sintered stone also features complex full-body patterns (veining runs through the entire thickness). The price also reflects a longer lifespan and maintenance without sealing.',
       },
       {
         question: 'What is water absorption and why does it matter?',
@@ -652,7 +652,7 @@ export const ARTICLE_06: BlogArticle = {
       },
       {
         question: 'How long does kitchen countertop installation take?',
-        answer: 'A standard kitchen countertop (L-shape, 2 cutouts) requires 1 day for templating + fabrication (typically 3–7 working days) + 1 day for installation. Orostone guarantees precise measurements thanks to digital templating — deviation under 0.5mm.',
+        answer: 'A standard kitchen countertop (L-shape, 2 cutouts) requires 1 day for measurement + fabrication (typically 3–7 working days) + 1 day for installation. The kitchen is measured by hand on site by the partner stonemason who also fabricates the worktop.',
       },
       {
         question: 'Can I try a material before buying?',

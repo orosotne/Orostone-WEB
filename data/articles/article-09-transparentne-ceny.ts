@@ -60,7 +60,7 @@ export const ARTICLE_09: BlogArticle = {
   <li>Najčastejšie skryté náklady: výrezy, opracovanie hrán, výnos do bytu a využitie platne</li>
 </ul>
 
-<p>Povedzme si to na rovinu: väčšina dodávateľov kameňa ceny nezverejňuje. „Napíšte nám a pripravíme ponuku na mieru." Znie to ústretovo, ale v praxi to znamená jedno — nemáte sa čoho chytiť a dve ponuky neviete porovnať.</p>
+<p>Povedzme si to na rovinu: väčšina dodávateľov kameňa ceny nezverejňuje. „Napíšte nám a pripravíme ponuku na mieru.“ Znie to ústretovo, ale v praxi to znamená jedno — nemáte sa čoho chytiť a dve ponuky neviete porovnať.</p>
 
 <p>V Orostone sme sa rozhodli ísť opačnou cestou. Ceny všetkých dekorov máte na webe, sadzbu za realizáciu tiež. V tomto článku vám ukážem, ako sa cena pracovnej dosky reálne skladá — aby ste každú ponuku, aj od konkurencie, vedeli prečítať ako profík.</p>
 
@@ -85,7 +85,7 @@ export const ARTICLE_09: BlogArticle = {
 
 <p>Pri sinterovanom kameni počítajte na trhu orientačne s <strong>${MARKET.min}–${MARKET.max}\u00A0€/bm</strong> vrátane výroby a montáže. Pri malej kuchyni býva cena za meter vyššia, pretože platne sa kupujú celé a aj kratšia linka potrebuje celú platňu.</p>
 
-<p><strong>Ponuka výrazne pod ${MARKET.min}\u00A0€/bm by vás mala zaujímať, nie potešiť.</strong> Niečo v procese sa pravdepodobne škrtá — slabšie podlepenie, jednoduchšia hrana, alebo doprava a montáž „prekvapivo" nie sú v cene. Viac o cenových hladinách sme písali v článku o <a href="/blog/umely-kamen-pracovna-doska">umelom kameni na pracovnú dosku</a>.</p>
+<p><strong>Ponuka výrazne pod ${MARKET.min}\u00A0€/bm by vás mala zaujímať, nie potešiť.</strong> Niečo v procese sa pravdepodobne škrtá — slabšie podlepenie, jednoduchšia hrana, alebo doprava a montáž „prekvapivo“ nie sú v cene. Viac o cenových hladinách sme písali v článku o <a href="/blog/umely-kamen-pracovna-doska">umelom kameni na pracovnú dosku</a>.</p>
 
 <h2 id="co-musi-obsahovat">Čo musí obsahovať férová cenová ponuka</h2>
 
@@ -119,7 +119,7 @@ export const ARTICLE_09: BlogArticle = {
 
 <p>Predstavte si, že máte na kuchyňu s ostrovčekom dve ponuky: <strong>350\u00A0€/bm</strong> a <strong>420\u00A0€/bm</strong>. Prvá vyzerá jasne výhodnejšie.</p>
 
-<p>Potom si vyžiadate rozpis. Prvá ponuka: materiál + rezanie. Výrezy 3 × 60 €, mitrovaná hrana ostrovčeka 180 €, doprava s výnosom 120 € a montáž 250 € — „podľa skutočnosti". Druhá ponuka: všetko v cene.</p>
+<p>Potom si vyžiadate rozpis. Prvá ponuka: materiál + rezanie. Výrezy 3 × 60 €, mitrovaná hrana ostrovčeka 180 €, doprava s výnosom 120 € a montáž 250 € — „podľa skutočnosti“. Druhá ponuka: všetko v cene.</p>
 
 <p><strong>Pri 5\u00A0bm je prvá ponuka po doúčtovaní drahšia o viac ako 300\u00A0€</strong> — a to ste sa to dozvedeli až pri montáži. Presne preto je rozpis položiek dôležitejší než výsledné číslo.</p>
 
