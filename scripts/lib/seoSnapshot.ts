@@ -15,6 +15,11 @@ export interface PageSeo {
   robots: string;
   h1: string[];
   h2: string[];
+  /**
+   * Identity of each H2 (its #id, else the link it wraps) — tells a reworded heading from a removed one.
+   * Missing in snapshot JSON files saved before it existed.
+   */
+  h2Keys?: string[];
   /** id="…" anchors inside the page content — Google shows them as #jump links. */
   ids: string[];
   tables: number;
@@ -71,6 +76,14 @@ function internalPath(href: string): string | null {
   return clean.length > 1 ? clean.replace(/\/+$/, '') : '/';
 }
 
+/** #id of a heading, else the internal link it wraps (blog/product listings), else '' (text only). */
+function h2Key(attrs: string, inner: string): string {
+  const id = attrs.match(/\bid="([^"]+)"/)?.[1];
+  if (id) return `#${id}`;
+  const href = inner.match(/<a\b[^>]*\bhref="([^"]*)"/i)?.[1];
+  return (href && internalPath(href)) || '';
+}
+
 export function snapshotPage(html: string): PageSeo {
   const headEnd = html.indexOf('</head>');
   const head = headEnd >= 0 ? html.slice(0, headEnd) : html;
@@ -106,6 +119,7 @@ export function snapshotPage(html: string): PageSeo {
     robots: metaContent('robots'),
     h1: allMatches(body, /<h1\b[^>]*>([\s\S]*?)<\/h1>/gi).map(toText),
     h2: allMatches(body, /<h2\b[^>]*>([\s\S]*?)<\/h2>/gi).map(toText),
+    h2Keys: [...body.matchAll(/<h2\b([^>]*)>([\s\S]*?)<\/h2>/gi)].map((m) => h2Key(m[1], m[2])),
     ids: uniqueSorted(allMatches(body, /\bid="([^"]+)"/g).filter((id) => id !== 'root')),
     tables: (body.match(/<table\b/gi) ?? []).length,
     jsonLdTypes: uniqueSorted(types),
