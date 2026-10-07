@@ -194,4 +194,14 @@ Na žiadosť o kontrolu celého textu e-mailu 02 (predmet, preheader, list, P. S
 
 Codex na `f9aca8c` nenašiel žiadne pripomienky. Nový predmet a nadpis 02, sekcia v 08, úvod 09, veta v 17, hlavička 21 a nové pravidlo v `slovnik.md` sú skontrolované.
 
+### Nový obsah (7. 10. 2026, e-maily 22–33)
+
+Martin: tip po pol roku a Výročie neposielame. Na kontrolu je dvanásť nových e-mailov:
+
+- **22–24** – reaktivácia (Riešite ešte kuchyňu?, Tri realizácie, na ktoré sme hrdí, Máme vám ešte písať?).
+- **25–27** – B2B pre architektov, dizajnérov, kuchynské štúdiá a kamenárov (technický list, vzorky pre štúdio, showroom s klientom).
+- **28–33** – kampane január až marec 2027 (Kuchyňa na jar, Dekor v detaile: Appennino, Realizácia mesiaca, Pozvánka do showroomu, Dekor v detaile: Wild Forest, Spolupráca so štúdiom).
+
+Fakty sú z produktových dát, technického listu (TDS), dokumentu Key facts 2026 a článku Od merania po inštaláciu.
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.

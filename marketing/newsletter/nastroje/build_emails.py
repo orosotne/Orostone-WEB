@@ -1033,7 +1033,7 @@ write("05-automatizacia-vzorka-doma.html", doc(
 # 6 – Automatizácia: Po realizácii
 write("06-automatizacia-po-realizacii.html", doc(
     {
-        "TYP:": "Automatizácia · Po realizácii 3/4 (30 dní po montáži)",
+        "TYP:": "Automatizácia · Po realizácii 3/3 (30 dní po montáži)",
         "SPÚŠŤAČ:": "30 dní po montáži (dátum montáže z CRM)",
         "PREDMET:": "Ako sa vám žije s novou doskou?",
         "PREHEADER:": "Hodnotenie vám zaberie dve minúty a pomôže ďalším pri výbere. Budeme radi aj za jednu fotku.",
@@ -1109,7 +1109,7 @@ write("07-welcome-ako-vybrat-dekor.html", doc(
 # 8 – Automatizácia: Dokončená zákazka (deň montáže)
 write("08-automatizacia-dokoncena-zakazka.html", doc(
     {
-        "TYP:": "Automatizácia · Po realizácii 1/4 (deň montáže)",
+        "TYP:": "Automatizácia · Po realizácii 1/3 (deň montáže)",
         "SPÚŠŤAČ:": "Marián označí zákazku v CRM ako dokončenú a nahrá fotky z montáže",
         "PREDMET:": "Hotovo: fotky z vašej montáže",
         "PREHEADER:": "Ďakujeme za dôveru. Posielame fotky z prvého dňa a prehľad toho, čo bude nasledovať.",
@@ -1374,10 +1374,10 @@ write("16-automatizacia-kosik-marian.html", plain(
     REASON_KOSIK,
 ))
 
-# 17 – Po realizácii 2/4: Starostlivosť
+# 17 – Po realizácii 2/3: Starostlivosť
 write("17-automatizacia-starostlivost.html", doc(
     {
-        "TYP:": "Automatizácia · Po realizácii 2/4",
+        "TYP:": "Automatizácia · Po realizácii 2/3",
         "SPÚŠŤAČ:": "7 dní po dátume montáže",
         "PREDMET:": "Starostlivosť o dosku v skratke",
         "PREHEADER:": "Doske stačí utierka a saponát. Pozor si dajte len na štyri veci.",
@@ -1551,6 +1551,456 @@ write("21-kampan-december-podakovanie.html", doc(
         quote_dark("Rada na január", "Ak plánujete novú kuchyňu na jar, január je dobrý čas začať: objednať si vzorky, poslať pôdorys a v pokoji si vybrať dekor.", top=24),
         cta("Pozrieť realizácie", SITE + "/realizacie", width=240),
         ps("Ak máte novú kuchyňu a doska je cez sviatky v plnom nasadení, pošlite nám fotku. Potešíme sa."),
+        signature(top=0),
+        footer(),
+    ]))
+
+# ---------------------------------------------------------------------------
+# Šablóny 22–33: reaktivácia, B2B a kampane január – marec 2027
+# ---------------------------------------------------------------------------
+
+import re
+
+REASON_B2B = "Tento e-mail ste dostali, pretože ste nás kontaktovali ako architekt, dizajnér, kuchynské štúdio alebo kamenár."
+
+_NB_PROTECT = re.compile(r'(<!--\s*Preheader\s*-->\s*<div[^>]*>.*?</div>|<!--.*?-->|<style.*?</style>|<title>.*?</title>|<[^>]+>)', re.S)
+
+
+def nbsp(html_doc):
+    """Nezlomiteľná medzera za jednopísmenovou predložkou alebo spojkou (v, s, z, k, o, u, a, i) vo viditeľnom texte.
+    Preheader, komentáre, štýly a značky ostávajú bez zmeny (extract_copy číta preheader po prvé &nbsp;)."""
+    parts = _NB_PROTECT.split(html_doc)
+    for i, part in enumerate(parts):
+        if i % 2 == 0:
+            parts[i] = re.sub(r'(?<![^\s>])([vszkouaiVSZKOUAI]) (?=\S)', r'\1&nbsp;', part)
+    return "".join(parts)
+
+
+def write_nb(name, html_doc):
+    write(name, nbsp(html_doc))
+
+
+# 22 – Reaktivácia 1/3: Riešite ešte kuchyňu?
+write_nb("22-automatizacia-reaktivacia-otazka.html", doc(
+    {
+        "TYP:": "Automatizácia · Reaktivácia 1/3",
+        "SPÚŠŤAČ:": "90 dní bez otvorenia a kliknutia",
+        "PREDMET:": "Riešite ešte kuchyňu?",
+        "PREHEADER:": "Jedným kliknutím nám dáte vedieť, v akej fáze ste, a budeme písať len to, čo sa vám hodí.",
+        "CIEĽ:": "Zistiť horizont projektu a vrátiť odberateľa do komunikácie",
+        "POZNÁMKA:": "Tlačidlá nastavia horizont rovnako ako v 07 (do-3-mesiacov, 3-12-mesiacov, hotovo). S horizontom hotovo odberateľ nedostáva e-maily o výbere dosky. Kto neklikne ani neotvorí, o 30 dní dostane 23. Hero je ilustračný záber z Higgsfieldu v dekore Taj Mahal.",
+    },
+    "Riešite ešte kuchyňu?",
+    "Jedným kliknutím nám dáte vedieť, v akej fáze ste, a budeme písať len to, čo sa vám hodí.",
+    [
+        header(),
+        eyebrow("Vaša kuchyňa", top=32),
+        headline("Riešite ešte<br />" + accent_light("kuchyňu?")),
+        hero(IMG + "reaktivacia-kava.jpg", "Šálka kávy a zápisník na ostrovčeku zo sinterovaného kameňa Taj Mahal pri okne", capsule="Taj Mahal", top=14),
+        text([
+            "výber pracovnej dosky má svoje tempo. Niekto sa rozhodne za pár týždňov, iný sa ku kuchyni vráti až o rok.",
+            "Aby sme vám posielali len to, čo sa vám práve hodí, stačí nám jedno kliknutie.",
+        ], top=24),
+        choices("V akej fáze je vaša kuchyňa?",
+                "Podľa odpovede vám budeme posielať realizácie a rady, ktoré zodpovedajú vášmu plánu.",
+                [("Vyberám, do 3 mesiacov", SITE + "/realizacie?horizont=do-3-mesiacov"),
+                 ("Plánujem ju neskôr", SITE + "/realizacie?horizont=3-12-mesiacov"),
+                 ("Kuchyňu už mám hotovú", SITE + "/realizacie?horizont=hotovo")], top=8),
+        ps("Ak váhate medzi dvoma dekormi, odpovedzte na tento e-mail a pošlite fotku kuchyne. Odpíšem vám osobne, ktorý sa k nej podľa mňa hodí viac."),
+        signature(top=0),
+        footer(),
+    ]))
+
+# 23 – Reaktivácia 2/3: Tri realizácie, na ktoré sme hrdí
+write_nb("23-automatizacia-reaktivacia-realizacie.html", doc(
+    {
+        "TYP:": "Automatizácia · Reaktivácia 2/3",
+        "SPÚŠŤAČ:": "120 dní bez otvorenia a kliknutia",
+        "PREDMET:": "Tri realizácie, na ktoré sme hrdí",
+        "PREHEADER:": "Ukážeme kamenný krb, teplý travertín na tmavom ostrovčeku a svetlú dosku pri dreve.",
+        "CIEĽ:": "Vrátiť odberateľa obsahom, nie zľavou → realizácie alebo vzorka",
+        "POZNÁMKA:": "Realizácie zo stránky Realizácie: Krb – zelený mramor (Prada Green), Béžový travertín mix a Svetlý mramor – lamely. Fakty sú z fotiek. Pred odoslaním over súhlas klientov so zverejnením.",
+    },
+    "Tri realizácie, na ktoré sme hrdí",
+    "Ukážeme kamenný krb, teplý travertín na tmavom ostrovčeku a svetlú dosku pri dreve.",
+    [
+        header(),
+        eyebrow("Tri realizácie", note="Tri skutočné projekty, ku ktorým sa radi vraciame."),
+        headline("Tri realizácie,<br />" + accent_light("na ktoré sme hrdí.")),
+        text([
+            "vyberáme projekty, pri ktorých sa nám páči výsledok aj cesta k nemu. Každý ukazuje kameň v inej úlohe.",
+        ], top=20),
+        case_card(IMG + "realizacia-krb-zeleny.jpg", "Krbový stĺp obložený zeleným kameňom s bielymi žilami",
+                  "01 · Prada Green", "Krb ako stredobod izby",
+                  "Zelený kameň s bielymi žilami obkladá celý krbový stĺp. Kameň tu nie je pracovná doska, ale hlavný prvok miestnosti.", top=20),
+        case_card(IMG + "realizacia-travertin.jpg", "Ostrovček z tmavého dreva s béžovou doskou a LED osvetlením pri podlahe",
+                  "02 · Béžový travertín", "Teplý kameň na tmavom ostrovčeku",
+                  "Béžová doska leží na ostrovčeku z tmavého dreva, pri podlahe svieti LED pás. Svetlý kameň a tmavé drevo sa navzájom zvýrazňujú."),
+        case_card(IMG + "realizacia-lamely.jpg", "Biely ostrovček s jemnými sivými žilkami a čiernou varnou doskou pri stene z drevených lamiel",
+                  "03 · Svetlý mramor", "Biela doska pri drevených lamelách",
+                  "Svetlá doska s jemnými sivými žilkami a čierna varná doska. Drevené lamely na stene dodávajú bielej ploche teplo."),
+        quote_dark("Čo majú spoločné", "V každom projekte má kameň jasnú úlohu: stredobod izby, teplý akcent alebo pokojná plocha.", top=28),
+        cta("Pozrieť ďalšie realizácie", SITE + "/realizacie", link=("Objednať vzorku", SITE + "/vzorky"), width=280),
+        ps("Zaujal vás niektorý z projektov? Odpovedzte jedným číslom – 1, 2 alebo 3. Pošlem vám dekory s podobným charakterom."),
+        signature(top=0),
+        footer(),
+    ]))
+
+# 24 – Reaktivácia 3/3: Máme vám ešte písať?
+write_nb("24-automatizacia-reaktivacia-rozlucka.html", doc(
+    {
+        "TYP:": "Automatizácia · Reaktivácia 3/3",
+        "SPÚŠŤAČ:": "180 dní bez otvorenia a kliknutia",
+        "PREDMET:": "Máme vám ešte písať?",
+        "PREHEADER:": "Ak chcete e-maily od nás dostávať ďalej, stačí jedno kliknutie.",
+        "CIEĽ:": "Ponechať aktívnych, ostatných slušne vyradiť z kampaní (lepšia doručiteľnosť)",
+        "POZNÁMKA:": "Tlačidlo nastaví v Klaviyu vlastnosť profilu odber=ponechat. Kto do 14 dní neklikne, vyradí sa zo zoznamu kampaní (suppress), nie z e-mailov k objednávke. Pás je výrez zo skutočnej fotky platne Calacatta Top.",
+    },
+    "Máme vám ešte písať?",
+    "Ak chcete e-maily od nás dostávať ďalej, stačí jedno kliknutie.",
+    [
+        header(),
+        strip(IMG + "pas-calacatta-top.jpg", "Detail kresby sinterovaného kameňa Calacatta Top"),
+        eyebrow("Jedna otázka", top=30),
+        headline("Máme vám<br />" + accent_light("ešte písať?"), top=18, bottom=0),
+        text([
+            "posielame vám realizácie, dekory a rady k výberu pracovnej dosky. Ak to pre vás už nie je aktuálne, rozumieme – kuchyňa sa nerieši každý rok.",
+            "Ak chcete e-maily dostávať ďalej, kliknite na tlačidlo. Ak nekliknete, ďalšie e-maily vám už posielať nebudeme.",
+        ], top=22),
+        cta("Ostať v odbere", SITE + "/?odber=ponechat", sub="Ozvať sa nám môžete kedykoľvek – stačí odpovedať na tento e-mail.", top=12, width=240),
+        ps("Ak sa ku kuchyni vrátite neskôr, ozvite sa. Celé platne vám radi ukážeme v showroome v Bošanoch."),
+        signature(top=0),
+        footer(),
+    ]))
+
+# 25 – B2B 1/3: Technický list a textúry
+write_nb("25-automatizacia-b2b-podklady.html", doc(
+    {
+        "TYP:": "Automatizácia · B2B 1/3",
+        "SPÚŠŤAČ:": "Hneď po pridaní tagu B2B (architekt, dizajnér, kuchynské štúdio, kamenár)",
+        "PREDMET:": "Technický list a textúry pre váš projekt",
+        "PREHEADER:": "Posielame parametre podľa noriem EN, formáty, hrúbky a textúry dekorov na jednom mieste.",
+        "CIEĽ:": "Dať profesionálom podklady k návrhu → stiahnuť technický list, vyžiadať textúry",
+        "POZNÁMKA:": "Hodnoty sú z technického listu (TDS, vydanie 2025, v1.0) a z dokumentu Key facts 2026. E-shop predáva skladové platne 3200 × 1600 mm v hrúbke 12 mm; dostupnosť ďalších hrúbok potvrdí Marián. Obrázok je náhľad skutočného technického listu.",
+    },
+    "Technický list a textúry pre váš projekt",
+    "Posielame parametre podľa noriem EN, formáty, hrúbky a textúry dekorov na jednom mieste.",
+    [
+        header(),
+        eyebrow("Pre architektov a štúdiá", note="Podklady k sinterovanému kameňu Orostone na jednom mieste."),
+        headline("Technické podklady<br />" + accent_light("pre váš projekt.")),
+        text([
+            "ďakujeme za záujem o spoluprácu. Posielame podklady, ktoré pri návrhu so sinterovaným kameňom Orostone potrebujete najčastejšie.",
+        ], top=20),
+        figure(IMG + "b2b-technicky-list.jpg", "Dve strany technického listu Orostone s vlastnosťami materiálu a parametrami podľa noriem",
+               caption="Technický list (TDS) · parametre podľa noriem EN 14617", top=16),
+        facts([("Formát", "3200 × 1600 mm"), ("Hrúbky", "6–30 mm"), ("Nasiakavosť", "0,06 %"), ("Reakcia na oheň", "A1")], top=22),
+        section_title(None, "Čo ešte pre vás máme", top=28),
+        numbered([
+            ("Textúry v plnom rozlíšení", "BIM a CAD textúry dekorov pre vizualizácie. Odpovedzte na tento e-mail a pošleme ich obratom."),
+            ("Vzorky dekorov", "Fyzické vzorky 10 × 10 cm, na ktorých klient uvidí farbu, kresbu aj povrch."),
+            ("Konzultáciu k projektu", "Pomôžeme s výberom dekoru, hrúbky a s rozložením platní. Odpovedáme do 24 hodín."),
+        ], top=8),
+        section_title(None, "Na čo myslieť pri návrhu", top=24),
+        numbered([
+            ("Kresba sa môže medzi šaržami líšiť", "Ak je pre projekt dôležitá súvislá kresba cez viac platní, dohodnite ju vopred písomne."),
+            ("Spracovanie podľa technického listu", "Rezanie, výrezy aj montáž robí kamenár podľa technického listu a montážneho manuálu."),
+            ("Bezpečné spracovanie", "Obsah kryštalického kremíka nepresahuje 1 %. Pri rezaní a brúsení však vzniká prach, preto k práci patrí odsávanie alebo mokré rezanie."),
+        ], top=8),
+        cta("Stiahnuť technický list", SITE + "/documents/TDS_orostone.pdf", sub="PDF, 2 strany.", link=("Pozrieť všetky dekory", SITE + "/"), width=280),
+        ps("Pripravujete konkrétny projekt? Pošlite mi pôdorys alebo výkres. Vypočítam, koľko platní budete potrebovať, a pripravím orientačnú cenu materiálu."),
+        signature(top=0),
+        footer(reason=REASON_B2B),
+    ]))
+
+# 26 – B2B 2/3: Vzorky pre štúdio
+write_nb("26-automatizacia-b2b-vzorky.html", doc(
+    {
+        "TYP:": "Automatizácia · B2B 2/3",
+        "SPÚŠŤAČ:": "7 dní po pridaní tagu B2B",
+        "PREDMET:": "Vzorky dekorov pre vaše štúdio",
+        "PREHEADER:": "Pošleme vám vzorky, ktoré klient chytí do ruky a uvidí pri svojom svetle.",
+        "CIEĽ:": "Dostať vzorky dekorov do štúdií → výber dekorov, objednávka vzoriek",
+        "POZNÁMKA:": "Podmienky vzoriek pre štúdiá (počet, cena, doprava) potvrdí Marián – v texte nie sú sľúbené. Fotka je ilustračný vzorkovník z Higgsfieldu (Calacatta Top, Taj Mahal, Nero Margiua, Roman Travertine, Appennino, Astrana Grey).",
+    },
+    "Vzorky dekorov pre vaše štúdio",
+    "Pošleme vám vzorky, ktoré klient chytí do ruky a uvidí pri svojom svetle.",
+    [
+        header(),
+        eyebrow("Pre architektov a štúdiá", note="Vzorky dekorov, ktoré ukážete klientom pri stole."),
+        headline("Vzorky, ktoré<br />" + accent_light("ukážete klientovi.")),
+        hero(IMG + "b2b-vzorkovnik.jpg", "Šesť vzoriek sinterovaného kameňa Orostone na svetlom dubovom stole", top=14),
+        text([
+            "klient si dekor najlepšie predstaví, keď vzorku drží v ruke a vidí ju pri dennom svetle vedľa frontov skriniek. Obrazovka farbu ani povrch verne neukáže.",
+            "Preto vám radi pošleme vzorky dekorov, s ktorými pracujete najčastejšie.",
+        ], top=24),
+        facts([("Platňa", "3200 × 1600 mm"), ("Hrúbka", "12 mm"), ("Vzorka", "10 × 10 cm"), ("Dekory", "12")], top=22),
+        section_title(None, "Ako to funguje", top=28),
+        numbered([
+            ("Vyberte dekory", "Odpovedzte na tento e-mail a napíšte, ktoré dekory chcete mať v štúdiu. Prehľad všetkých dekorov nájdete v e-shope."),
+            ("Pošleme vzorky", "Vzorky ukážu farbu, kresbu aj povrch. Pripravíme ich a pošleme na adresu štúdia."),
+            ("Celé platne v showroome", "Priebeh kresby na celej platni ukážete klientovi v showroome v Bošanoch."),
+        ], top=8),
+        cta("Pozrieť dekory", SITE + "/vzorky", link=("Stiahnuť technický list", SITE + "/documents/TDS_orostone.pdf"), width=240),
+        ps("Chystáte stretnutie s klientom? Napíšte mi termín a dekory, ktoré zvažuje. Ozvem sa, kedy vám vzorky prídu."),
+        signature(top=0),
+        footer(reason=REASON_B2B),
+    ]))
+
+# 27 – B2B 3/3: Showroom s klientom
+write_nb("27-automatizacia-b2b-showroom.html", doc(
+    {
+        "TYP:": "Automatizácia · B2B 3/3",
+        "SPÚŠŤAČ:": "21 dní po pridaní tagu B2B",
+        "PREDMET:": "Príďte s klientom vybrať konkrétnu platňu",
+        "PREHEADER:": "V kaštieli v Bošanoch pripravíme celé platne dekorov, ktoré pre klienta zvažujete.",
+        "CIEĽ:": "Návšteva showroomu s klientom → výber platne a objednávka",
+        "POZNÁMKA:": "Fotka kaštieľa zvonka je z titulnej stránky webu. Hodiny podľa stránky Kontakt (po – pia 9:00 – 17:00, cez víkend po dohode).",
+    },
+    "Príďte s klientom vybrať konkrétnu platňu",
+    "V kaštieli v Bošanoch pripravíme celé platne dekorov, ktoré pre klienta zvažujete.",
+    [
+        header(),
+        dark_band("Showroom v Bošanoch",
+                  "Celé platne.<br />" + accent_dark("Konkrétna platňa."),
+                  sub="Každá platňa má vlastný priebeh kresby. V showroome si ju s klientom vyberiete priamo.",
+                  image=(IMG + "showroom-kastiel.jpg", "Renesančný kaštieľ v Bošanoch, v ktorom je showroom Orostone")),
+        text([
+            "na vzorke 10 × 10 cm vidno farbu a povrch. Priebeh kresby na celej doske však ukáže až platňa 3200 × 1600&nbsp;mm. Preto vás aj s klientom pozývame do showroomu v renesančnom kaštieli v Bošanoch.",
+        ], top=28),
+        section_title(None, "Čo pre vás pripravíme", top=12),
+        numbered([
+            ("Celé platne vybraných dekorov", "Napíšte vopred, ktoré dekory zvažujete. Pripravíme ich, aby ste videli, kde budú žily a kde rezy."),
+            ("Výber konkrétnej platne", "Klient si vyberie platňu, ktorej kresba sa mu páči najviac."),
+            ("Čas na technické otázky", "Prejdeme si s vami hrúbku, hrany, výrezy aj rozloženie platní na pôdoryse."),
+        ], top=8),
+        cta("Dohodnúť termín", SITE + "/kontakt", sub="SNP 113/1, Bošany. V pracovné dni 9:00–17:00, cez víkend po dohode.", link=("Stiahnuť technický list", SITE + "/documents/TDS_orostone.pdf"), width=240),
+        ps("Ak sa vám s klientom hodí iný termín, napíšte mi. Prispôsobíme sa."),
+        signature(top=0),
+        footer(reason=REASON_B2B),
+    ]))
+
+# 28 – Kampaň január: Kuchyňa na jar
+write_nb("28-kampan-kuchyna-na-jar.html", doc(
+    {
+        "TYP:": "Kampaň · Sezónne (január)",
+        "SEGMENT:": "Všetci odberatelia; mimo zákazníkov po realizácii a horizontu hotovo",
+        "PREDMET:": "Nová kuchyňa na jar: kedy začať",
+        "PREHEADER:": "Ukážeme, v akom poradí postupovať, aby doska nebola posledná vec, na ktorú čakáte.",
+        "CIEĽ:": "Začať výber teraz → vzorka, pôdorys",
+        "POZNÁMKA:": "Termíny sú z článku Od merania po inštaláciu (výroba 7–10 pracovných dní od schválenia výkresov, montáž v priebehu hodín). Hero je ilustračný záber z Higgsfieldu v dekore Appennino; druhá januárová kampaň je Dekor v detaile: Appennino (29).",
+    },
+    "Nová kuchyňa na jar: kedy začať",
+    "Ukážeme, v akom poradí postupovať, aby doska nebola posledná vec, na ktorú čakáte.",
+    [
+        header("Plánovanie", "január 2027"),
+        eyebrow("Poradie krokov", note="Kedy začať, aby bola doska hotová spolu so skrinkami."),
+        headline("Kuchyňa na jar<br />" + accent_light("sa začína v januári.")),
+        hero(IMG + "jar-appennino.jpg", "Ostrovček zo sinterovaného kameňa Appennino s tulipánmi a zrolovaným pôdorysom pri zimnom okne", capsule="Appennino", top=14),
+        text([
+            "pracovná doska prichádza na rad až na konci: kamenár ju zameria na hotových skrinkách a potom ju vyrobí. Dekor však patrí na začiatok, lebo ovplyvní fronty, zástenu aj celkový dojem z kuchyne.",
+        ], top=24),
+        section_title(None, "V akom poradí postupovať", top=12),
+        numbered([
+            ("Teraz: dekor", "Objednajte si vzorky a pozrite si celé platne v showroome. Podľa dekoru potom ľahšie vyberiete fronty aj zástenu."),
+            ("Pred objednaním skriniek: pôdorys", "Pošlite nám pôdorys. Pripravíme orientačné cenové rozpätie a zistíte, koľko platní budete potrebovať."),
+            ("Po osadení skriniek: zameranie", "Kamenár zameria dosku priamo u vás, keď sú skrinky osadené a vyrovnané."),
+            ("Výroba a montáž", "Výroba trvá 7–10 pracovných dní od schválenia výkresov. Samotná montáž je otázka hodín."),
+        ], top=8),
+        quote_dark("Dobré vedieť", "Termín výroby skriniek si overte vo svojom kuchynskom štúdiu. Dosku potom naplánujete podľa neho.", top=24),
+        cta("Objednať vzorku", SITE + "/vzorky", sub="Prvá vzorka je zadarmo, platíte iba dopravu 2,50 €.", link=("Prečítať celý postup", SITE + "/blog/od-merania-po-instalaciu-proces-orostone"), width=260),
+        ps("Neviete sa rozhodnúť medzi dvoma dekormi? Odpovedzte na tento e-mail a pošlite fotku frontov. Poradíme, ktorý sa k nim hodí viac."),
+        signature(top=0),
+        footer(),
+    ]))
+
+# 29 – Kampaň január: Dekor v detaile – Appennino
+write_nb("29-kampan-dekor-appennino.html", doc(
+    {
+        "TYP:": "Kampaň · séria Dekor v detaile (1× mesačne, strieda sa s Realizáciou)",
+        "PREDMET:": "Appennino: svetlá plocha s jemnou kresbou",
+        "PREHEADER:": "Ukážeme, ako dekor vyzerá na celej platni, s čím ho kombinovať a na čo myslieť pri výbere.",
+        "CIEĽ:": "Pomôcť rozhodnúť sa o jednom dekore → objednať vzorku",
+        "POZNÁMKA:": "Fakty berieme z produktových dát (rozmer, hrúbka, povrch, nasiakavosť). Obrázky sú z galérie produktu v Shopify (súbory Appeninno_1 až 5).",
+    },
+    "Dekor v detaile: Appennino",
+    "Ukážeme, ako dekor vyzerá na celej platni, s čím ho kombinovať a na čo myslieť pri výbere.",
+    [
+        header("Dekor v detaile", "január 2027"),
+        dark_band("Dekor v detaile",
+                  "Appennino.<br />" + accent_dark("Svetlá plocha, jemná kresba."),
+                  sub="Takmer biely základ s hustou sieťou jemných zlatobéžových žiliek – na povrchu s nasiakavosťou pod 0,1&nbsp;%.",
+                  image=(shop_img("Appeninno_1.png", "1776676869"), "Kuchyňa s ostrovčekom a pracovnou doskou Appennino")),
+        text([
+            "Appennino je svetlý dekor s detailnou, no nízkokontrastnou kresbou. Zblízka uvidíte jemné žilky, z odstupu plocha pôsobí pokojne a celistvo.",
+            "Hodí sa do kuchýň, kde má doska priniesť svetlo, nie pozornosť.",
+        ], top=28),
+        section_title("01", "Vo veľkej ploche", top=8),
+        figure(shop_img("mockup-Appennino.webp", "1773771257"), "Celá platňa Appennino vedľa človeka pre mierku",
+               caption="Celá platňa 3200 × 1600 mm · každá platňa má vlastný priebeh žiliek", top=16),
+        section_title("02", "Kde funguje a na čo myslieť"),
+        split(("Kde funguje", ["Pracovné dosky a ostrovčeky", "Obklad stien a zásteny", "Kúpeľne aj podlahy"]),
+              ("Na čo myslieť", ["Každá platňa má vlastnú kresbu. Konkrétnu si vyberiete v showroome v Bošanoch.", "Svetlo v kuchyni ovplyvní, ako bude svetlá plocha pôsobiť. Vzorku si pozrite ráno aj večer."])),
+        pair((shop_img("Appeninno_2.png", "1776676869", 520), "Bok ostrovčeka v dekore Appennino"),
+             (shop_img("Appeninno_3.png", "1776676869", 520), "Ostrovček Appennino zhora"),
+             caption="Bok a vrch ostrovčeka · kresba je jemná zblízka aj z odstupu", top=16),
+        section_title("03", "S čím ho kombinovať"),
+        media_row(shop_img("Appeninno_5.png", "1776676869", 420), "Moodboard: Appennino s tmavým drevom, čiernou a sivým kameňom", [
+            ("#5A3E2B", "Tmavšie drevo", "Orech alebo tmavý dub na frontoch či podlahe."),
+            ("#8C8A85", "Betón", "Matné sivé plochy v industriálnom interiéri."),
+            ("#2B2B2B", "Čierny kov", "Batéria, úchytky alebo svietidlá."),
+        ]),
+        facts([("Rozmer", "3200 × 1600 mm"), ("Hrúbka", "12 mm"), ("Povrch", "Gluetech"), ("Nasiakavosť", "&lt; 0,1 %")], top=26),
+        cta("Objednať vzorku", SITE + "/vzorky", link=("Pozrieť dekor v e-shope", SITE + "/produkt/appennino"), top=26),
+        ps('Konkrétnu platňu Appennino si môžete vybrať v showroome v Bošanoch. Napíšte nám vopred a <strong style="font-weight:700; color:#1A1A1A;">platne vám pripravíme</strong>.'),
+        signature(top=0),
+        footer(),
+    ]))
+
+# 30 – Kampaň február: Realizácia mesiaca
+write_nb("30-kampan-realizacia-februar.html", doc(
+    {
+        "TYP:": "Kampaň · séria Realizácia mesiaca (1× mesačne)",
+        "SEGMENT:": "Všetci odberatelia; mimo zákazníkov po realizácii",
+        "PREDMET:": "Biela doska v ružovej kuchyni",
+        "PREHEADER:": "V realizácii mesiaca ukážeme, ako biela doska upokojí výrazné ružové fronty.",
+        "CIEĽ:": "Dôkaz z reálnej kuchyne → vzorka dekoru alebo pôdorys",
+        "POZNÁMKA:": "Realizácia „Biela doska – ružová kuchyňa“ zo stránky Realizácie (dekor Super White). Fakty sú z fotiek. Pred odoslaním over súhlas klienta so zverejnením. Lokalitu, kamenára a citát klienta doplň, keď ich Marián potvrdí.",
+    },
+    "Biela doska v ružovej kuchyni",
+    "V realizácii mesiaca ukážeme, ako biela doska upokojí výrazné ružové fronty.",
+    [
+        header("Realizácia mesiaca", "február 2027"),
+        eyebrow("Realizácia mesiaca", note="Raz mesačne jedna skutočná kuchyňa a jej dekor vo veľkej ploche."),
+        headline("Biela doska<br />" + accent_light("v ružovej kuchyni.")),
+        hero(IMG + "realizacia-ruzova-hero.jpg", "Zaoblený ostrovček s bielou doskou a varnou doskou v kuchyni s ružovými frontami", capsule="Super White", top=14),
+        facts([("Dekor", "Super White"), ("Aplikácia", "Linka a ostrovček"), ("Ostrovček", "Zaoblený"), ("Kombinácia", "Ružové fronty")]),
+        text([
+            "vo februári ukazujeme kuchyňu, ktorá sa nebojí farby. Ružové fronty sú výrazné, preto doska ostala čisto biela a pokojná.",
+        ], top=24),
+        numbered([
+            ("Zaoblený ostrovček", "Ostrovček má zaoblený koniec a varnú dosku. Biela doska kopíruje jeho oblý tvar."),
+            ("Prečo biela doska", "Pri farebných frontoch drží biela plocha kuchyňu svetlú a nesúperí s farbou."),
+            ("Svetlo pod skrinkami", "Osvetlenie pod hornými skrinkami presvetľuje bielu dosku aj zástenu."),
+        ], top=4),
+        pair((IMG + "realizacia-ruzova-1.jpg", "Biela pracovná doska s drezom v rohu kuchyne s ružovými frontami"),
+             (IMG + "realizacia-ruzova-2.jpg", "Zaoblený ostrovček s bielou doskou pod lustrom"),
+             caption="Linka s drezom a ostrovček v jednom dekore"),
+        quote_dark("Hlavná myšlienka", "Keď sú fronty výrazné, doska môže ustúpiť. Biela plocha dá farbe priestor.", top=20),
+        cta("Objednať vzorku", SITE + "/vzorky", sub="Prvá vzorka je zadarmo, platíte iba dopravu 2,50 €.", link=("Pozrieť ďalšie realizácie", SITE + "/realizacie"), width=260),
+        ps('Plánujete farebné fronty? Pošlite nám ich odtieň alebo fotku vzorky. <strong style="font-weight:700; color:#1A1A1A;">Poradíme, ktoré dekory sa k nim hodia.</strong>'),
+        signature(top=0),
+        footer(),
+    ]))
+
+# 31 – Kampaň február: Pozvánka do showroomu
+write_nb("31-kampan-pozvanka-showroom.html", doc(
+    {
+        "TYP:": "Kampaň · séria Pozvánka (podľa potreby)",
+        "SEGMENT:": "Odberatelia s horizontom do 3 mesiacov alebo 3 až 12 mesiacov; mimo zákazníkov po realizácii",
+        "PREDMET:": "Celé platne naživo v kaštieli v Bošanoch",
+        "PREHEADER:": "Pripravíme dekory, ktoré vás zaujímajú, a vyberiete si konkrétnu platňu.",
+        "CIEĽ:": "Návšteva showroomu → výber platne",
+        "POZNÁMKA:": "Fotka kaštieľa zvonka je z titulnej stránky webu, mierka celej platne z produktových fotiek (Taj Mahal). Ak bude deň otvorených dverí, doplň do úvodu dátum a čas.",
+    },
+    "Celé platne naživo v kaštieli v Bošanoch",
+    "Pripravíme dekory, ktoré vás zaujímajú, a vyberiete si konkrétnu platňu.",
+    [
+        header("Pozvánka", "február 2027"),
+        dark_band("Showroom v Bošanoch",
+                  "Celé platne<br />" + accent_dark("naživo, v kaštieli."),
+                  sub="Každá platňa má vlastnú kresbu. V showroome si vyberiete tú svoju.",
+                  image=(IMG + "showroom-kastiel.jpg", "Renesančný kaštieľ v Bošanoch, v ktorom je showroom Orostone")),
+        text([
+            "vzorka ukáže farbu a povrch. Ako bude doska pôsobiť v celej kuchyni, uvidíte až na celej platni. Preto vás pozývame do showroomu v renesančnom kaštieli v Bošanoch.",
+        ], top=28),
+        figure(shop_img("mockup-TAJ-MAHAL.webp", "1773771257"), "Celá platňa Taj Mahal vedľa človeka pre mierku",
+               caption="Celá platňa 3200 × 1600 mm · takto veľkú plochu vzorka neukáže", top=16),
+        section_title(None, "Čo vás v showroome čaká", top=24),
+        numbered([
+            ("Celé platne vášho dekoru", "Napíšte vopred, ktoré dekory zvažujete. Pripravíme ich, aby ste videli, kde budú žily a kde rezy."),
+            ("Výber konkrétnej platne", "Každá platňa má vlastný priebeh kresby. Vyberiete si tú, ktorá sa vám páči najviac."),
+            ("Rady k vášmu pôdorysu", "Ak máte pôdorys, prineste ho. Ukážeme, ako sa platne rozrežú na dosku, ostrovček alebo zástenu."),
+        ], top=8),
+        cta("Dohodnúť návštevu", SITE + "/kontakt", sub="SNP 113/1, Bošany. Návšteva je bezplatná a nezáväzná.", link=("Pozrieť realizácie", SITE + "/realizacie"), width=260),
+        ps("Cesta do Bošian sa vám teraz nehodí? Odpovedzte na tento e-mail. Pošleme vám fotky celej platne vášho dekoru."),
+        signature(top=0),
+        footer(),
+    ]))
+
+# 32 – Kampaň marec: Dekor v detaile – Wild Forest
+write_nb("32-kampan-dekor-wild-forest.html", doc(
+    {
+        "TYP:": "Kampaň · séria Dekor v detaile (1× mesačne, strieda sa s Realizáciou)",
+        "PREDMET:": "Wild Forest: kresba pre veľké plochy",
+        "PREHEADER:": "Ukážeme, prečo tento dekor vynikne až na celej platni a s čím ho kombinovať.",
+        "CIEĽ:": "Pomôcť rozhodnúť sa o jednom dekore → vzorka alebo celá platňa v showroome",
+        "POZNÁMKA:": "Fakty berieme z produktových dát (rozmer, hrúbka, povrch, nasiakavosť). Obrázky sú z galérie produktu v Shopify (Wild_Forest_1, 3, 4 a 5).",
+    },
+    "Dekor v detaile: Wild Forest",
+    "Ukážeme, prečo tento dekor vynikne až na celej platni a s čím ho kombinovať.",
+    [
+        header("Dekor v detaile", "marec 2027"),
+        dark_band("Dekor v detaile",
+                  "Wild Forest.<br />" + accent_dark("Kresba pre veľké plochy."),
+                  sub="Zemité tóny a výrazná, nepravidelná kresba – na matnom povrchu, ktorý je príjemný na dotyk.",
+                  image=(shop_img("Wild_Forest_1.png", "1776677454"), "Ostrovček v dekore Wild Forest v kuchyni s tmavým drevom")),
+        text([
+            "Wild Forest je dekor v sivohnedých a zemitých tónoch s kresbou, ktorá pripomína kamenné plochy v lese.",
+            "Vzor je veľkoplošný, preto vynikne až na väčšej súvislej ploche – na ostrovčeku, obklade steny alebo v kúpeľni.",
+        ], top=28),
+        section_title("01", "Vo veľkej ploche", top=8),
+        figure(shop_img("mockup-WILD-FOREST.webp", "1773771468"), "Celá platňa Wild Forest vedľa človeka pre mierku",
+               caption="Celá platňa 3200 × 1600 mm · vzorka 10 × 10 cm celý priebeh kresby nezachytí", top=16),
+        section_title("02", "Kde funguje a na čo myslieť"),
+        split(("Kde funguje", ["Ostrovčeky a obklady stien", "Kúpeľne a wellness", "Interiéry s dubom a zeleňou"]),
+              ("Na čo myslieť", ["Vzorka ukáže farbu a povrch, celý priebeh kresby uvidíte až na platni.", "Rozloženie platní naplánujte s kamenárom, aby výrazné miesta kresby boli tam, kde ich chcete."])),
+        pair((shop_img("Wild_Forest_3.png", "1776677454", 520), "Ostrovček Wild Forest zhora"),
+             (shop_img("Wild_Forest_4.png", "1776677454", 520), "Pracovná doska Wild Forest s drezom"),
+             caption="Ostrovček a doska s drezom · matný povrch Microtech", top=16),
+        section_title("03", "S čím ho kombinovať"),
+        media_row(shop_img("Wild_Forest_5.png", "1776677454", 420), "Moodboard: Wild Forest s drevom, ratanom a ľanom", [
+            ("#6B4F3A", "Dubové drevo", "Teplé fronty alebo podlaha."),
+            ("#5E6B4E", "Zeleň", "Rastliny alebo zelené akcenty."),
+            ("#BFB3A2", "Textúrované tkaniny", "Ľan a vlna v prírodných tónoch."),
+        ]),
+        facts([("Rozmer", "3200 × 1600 mm"), ("Hrúbka", "12 mm"), ("Povrch", "Matt Microtech"), ("Nasiakavosť", "&lt; 0,1 %")], top=26),
+        cta("Objednať vzorku", SITE + "/vzorky", link=("Pozrieť dekor v e-shope", SITE + "/produkt/wild-forest"), top=26),
+        ps('Celý priebeh kresby Wild Forest uvidíte na platni v showroome v Bošanoch. Napíšte nám vopred a <strong style="font-weight:700; color:#1A1A1A;">platňu vám pripravíme</strong>.'),
+        signature(top=0),
+        footer(),
+    ]))
+
+# 33 – Kampaň marec: Spolupráca so štúdiom
+write_nb("33-kampan-spolupraca-studio.html", doc(
+    {
+        "TYP:": "Kampaň · séria Spolupráca (1× za štvrťrok)",
+        "SEGMENT:": "Všetci odberatelia; mimo zákazníkov po realizácii",
+        "PREDMET:": "Kuchynské štúdio a doska: ako ich zladiť",
+        "PREHEADER:": "Ukážeme, čo má štúdio o doske vedieť a kedy nás pribrať do návrhu.",
+        "CIEĽ:": "Dostať Orostone do návrhu kuchyne včas → kontakt na štúdio, vzorky, pôdorys",
+        "POZNÁMKA:": "Hero je ilustračný záber z Higgsfieldu (návrh kuchyne, vzorky frontov a kameňa). Keď bude spoločný projekt s konkrétnym štúdiom (so súhlasom), dá sa e-mail doplniť o jeho realizáciu.",
+    },
+    "Kuchynské štúdio a doska: ako ich zladiť",
+    "Ukážeme, čo má štúdio o doske vedieť a kedy nás pribrať do návrhu.",
+    [
+        header("Spolupráca", "marec 2027"),
+        eyebrow("Spolupráca so štúdiom", note="Ako pracujeme s kuchynskými štúdiami a architektmi."),
+        headline("Kuchyňa a doska<br />" + accent_light("z jedného návrhu.")),
+        hero(IMG + "studio-navrh.jpg", "Návrh kuchyne so vzorkami frontov, mosadznou úchytkou a vzorkami sinterovaného kameňa na dubovom stole", top=14),
+        text([
+            "väčšinu kuchýň navrhuje kuchynské štúdio alebo architekt. Doska pritom patrí do návrhu od začiatku: dekor ovplyvní fronty, úchytky aj zástenu.",
+            "Preto radi pracujeme priamo s vaším štúdiom.",
+        ], top=24),
+        section_title(None, "Čo štúdio od nás dostane", top=12),
+        numbered([
+            ("Vzorky dekorov", "Vzorky 10 × 10 cm, ktoré štúdio priloží k vzorkám frontov a úchytiek."),
+            ("Technický list", "Formát, hrúbka a parametre materiálu pre návrh a výkresy."),
+            ("Koordináciu s kamenárom", "Výrezy, presahy a rozloženie platní si prejdeme so štúdiom aj s kamenárom, ktorý dosku vyrobí."),
+        ], top=8),
+        quote_dark("Stačí jeden krok", "Pošlite nám kontakt na svoje štúdio alebo mu tento e-mail prepošlite. O ostatné sa postaráme.", top=24),
+        cta("Napísať nám", SITE + "/kontakt", link=("Objednať vzorky", SITE + "/vzorky"), width=220),
+        ps("Ste kuchynské štúdio alebo architekt? Napíšte mi. Pošlem vám technický list a vzorky dekorov pre vaše štúdio."),
         signature(top=0),
         footer(),
     ]))

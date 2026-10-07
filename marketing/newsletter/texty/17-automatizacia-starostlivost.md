@@ -1,6 +1,6 @@
 # 17 – Starostlivosť o dosku v skratke
 
-- **Typ:** Automatizácia · Po realizácii 2/4
+- **Typ:** Automatizácia · Po realizácii 2/3
 - **Kedy sa posiela:** 7 dní po dátume montáže
 - **Predmet:** Starostlivosť o dosku v skratke
 - **Preheader:** Doske stačí utierka a saponát. Pozor si dajte len na štyri veci.

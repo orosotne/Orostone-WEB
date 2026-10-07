@@ -1,6 +1,6 @@
 # 08 – Hotovo: fotky z vašej montáže
 
-- **Typ:** Automatizácia · Po realizácii 1/4 (deň montáže)
+- **Typ:** Automatizácia · Po realizácii 1/3 (deň montáže)
 - **Kedy sa posiela:** Marián označí zákazku v CRM ako dokončenú a nahrá fotky z montáže
 - **Predmet:** Hotovo: fotky z vašej montáže
 - **Preheader:** Ďakujeme za dôveru. Posielame fotky z prvého dňa a prehľad toho, čo bude nasledovať.
