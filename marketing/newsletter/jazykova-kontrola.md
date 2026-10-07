@@ -100,4 +100,13 @@ Codex skontroloval opravy z kola 2 a všetky preheadery bez pripomienok. Našiel
 | 3 | 18 | Sinterovaný kameň vzniká podobne, z minerálov, tlaku a teploty. | Sinterovaný kameň vzniká podobne – pôsobením tlaku a teploty na minerály. | význam | Tlak a teplota nie sú suroviny. Namiesto „podobným procesom“ je „podobne“, aby sa slovo *proces* neopakovalo v nasledujúcej vete. | zapracované s úpravou |
 | 4 | 18 | Viac o sinterovanom kameni (odkaz) | Prečítať viac o sinterovanom kameni | slovník | Aj textový odkaz pod tlačidlom je neurčitok (sekcia 5). | zapracované |
 
+## Kolo 4 – Codex review v PR #77 (7. 10. 2026, po opravách kola 3)
+
+Codex našiel 2 chyby (P1), obe sú prijaté. Iné výskyty rovnakých chýb v e-mailoch nie sú.
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 12 | Prejdeme ju spolu položku po položke. | Prejdeme si ju spolu položku po položke. | gramatika | Väzba *prejsť si niečo* (slovník, sekcia 8). | zapracované |
+| 2 | 20 | kde sa stretáva biela doska … a tmavé orechové drevo | kde sa stretávajú biela doska … a tmavé orechové drevo | gramatika | Dva podmety spojené spojkou *a* → prísudok v množnom čísle. | zapracované |
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.

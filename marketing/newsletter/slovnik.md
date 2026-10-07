@@ -105,6 +105,7 @@ Pravidlá, ktoré vznikli pri kontrole a platia ďalej. Najnovšie hore.
 
 | Dátum | Pravidlo | Príklad |
 |---|---|---|
+| 7. 10. 2026 | Viacnásobný podmet spojený spojkou *a* má prísudok v množnom čísle, aj keď prísudok stojí pred ním | kde sa stretávajú biela doska a tmavé drevo |
 | 7. 10. 2026 | Tlačidlo aj textový odkaz pod ním je neurčitok (sekcia 5) | Prečítať celý návod · Prečítať viac o sinterovanom kameni |
 | 7. 10. 2026 | Medzi dvoma vetnými členmi spojenými jednoduchým *alebo* čiarku nepíšeme | či sú všetky ceny s DPH alebo bez nej |
 | 7. 10. 2026 | Podmienky spracovania nie sú suroviny: výpočet nesmie miešať, z čoho vec je a ako vzniká | vzniká pôsobením tlaku a teploty na minerály |

@@ -63,7 +63,7 @@ Pozrieť cenník
 
 ### P. S.
 P. S. · Marián, Orostone
-Ak vám v ponuke čokoľvek nie je jasné, odpovedzte na tento e-mail alebo zavolajte. Prejdeme ju spolu položku po položke.
+Ak vám v ponuke čokoľvek nie je jasné, odpovedzte na tento e-mail alebo zavolajte. Prejdeme si ju spolu položku po položke.
 
 ### Podpis značky
 Krása kameňa.

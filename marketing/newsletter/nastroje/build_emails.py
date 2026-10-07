@@ -1273,7 +1273,7 @@ write("12-automatizacia-ponuka-ako-citat.html", doc(
         split(("Porovnávajte", ["rozpis položiek, nielen súčet", "počet platní a ich využitie", "profil hrany a počet výrezov"]),
               ("Pýtajte sa", ["Čo ak pribudne výrez?", "Je v cene výnos na poschodie?", "Kto robí zameranie a montáž?"]), top=14),
         cta("Prečítať celého sprievodcu", SITE + "/blog/transparentne-ceny-cenova-ponuka", link=("Pozrieť cenník", SITE + "/cennik"), width=320),
-        ps("Ak vám v ponuke čokoľvek nie je jasné, odpovedzte na tento e-mail alebo zavolajte. Prejdeme ju spolu položku po položke."),
+        ps("Ak vám v ponuke čokoľvek nie je jasné, odpovedzte na tento e-mail alebo zavolajte. Prejdeme si ju spolu položku po položke."),
         signature(top=0),
         footer(reason=REASON_PONUKA),
     ]))
@@ -1505,7 +1505,7 @@ write("20-kampan-realizacia-december.html", doc(
         hero(IMG + "realizacia-statuario.jpg", "Biely ostrovček zo sinterovaného kameňa s orechovými bokmi", capsule="[Dekor]", top=14),
         facts([("Dekor", "[doplniť]"), ("Aplikácia", "ostrovček a zástena"), ("Lokalita", "[doplniť]"), ("Montáž", "[partner kamenár]")]),
         text([
-            "v decembri ukazujeme kuchyňu, kde sa stretáva biela doska s výraznou kresbou a tmavé orechové drevo. Kontrast drží celý priestor pokope.",
+            "v decembri ukazujeme kuchyňu, kde sa stretávajú biela doska s výraznou kresbou a tmavé orechové drevo. Kontrast drží celý priestor pokope.",
         ], top=24),
         numbered([
             ("Zadanie", "[1–2 vety: čo klient riešil – priestor, štýl, čo nechcel.]"),

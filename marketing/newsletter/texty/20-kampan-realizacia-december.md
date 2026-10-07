@@ -36,7 +36,7 @@ Montáž
 
 ### Text
 Dobrý deň,
-v decembri ukazujeme kuchyňu, kde sa stretáva biela doska s výraznou kresbou a tmavé orechové drevo. Kontrast drží celý priestor pokope.
+v decembri ukazujeme kuchyňu, kde sa stretávajú biela doska s výraznou kresbou a tmavé orechové drevo. Kontrast drží celý priestor pokope.
 
 ### Číslovaný zoznam
 01
