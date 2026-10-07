@@ -101,9 +101,9 @@ export const ARTICLE_19: BlogArticle = {
 
 <p>Na sinterovanom kameni? Škvrna celú noc len leží na povrchu, lebo nemá kam vniknúť. Ráno ju zotriete vlhkou utierkou so saponátom; ak po nej ostal tieň, neabrazívny čistič ho odstráni za minútu. <strong>Presne toto je rozdiel medzi nasiakavosťou 0,1 % a pórovitým materiálom.</strong></p>
 
-<h2 id="dlhodoba-udrzba">Dlhodobá údržba: neexistuje (a to je celé)</h2>
+<h2 id="dlhodoba-udrzba">Dlhodobá údržba: stačí denná rutina</h2>
 
-<p>Žiadne každoročné ošetrenie, žiadne leštenie, žiadna obnova impregnácie. Povrch, ktorý si kúpite, vyzerá rovnako po roku aj po pätnástich — pri bežnom používaní ho udržiava presne tá istá denná rutina z úvodu.</p>
+<p>Žiadne každoročné ošetrenie, žiadne leštenie, žiadna obnova impregnácie. Povrch, ktorý si kúpite, si pri bežnom používaní zachová vzhľad aj po rokoch — stačí mu presne tá istá denná rutina z úvodu.</p>
 
 <p>Horúce hrnce povrchu neublížia (odolá teplotám nad 300 °C — <a href="/blog/horuce-hrnce-na-sinterovanom-kameni">tu je celý test</a>), krájať odporúčame na doske skôr kvôli nožom než kvôli kameňu. A ak si dekor ešte len vyberáte, <a href="/vzorky">objednajte si vzorku zadarmo</a> a vyskúšajte si údržbu na vlastnej vzorke — pokojne aj s kurkumou.</p>
 `,

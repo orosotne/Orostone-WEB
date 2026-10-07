@@ -137,7 +137,7 @@ export const ARTICLE_05: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>Čo robíme v Orostone</strong></p>
-  <p>Každú hranu opracovávame v dvoch krokoch: hrubý rez + jemné dokončenie. Medzi krokmi vizuálna kontrola pod bočným svetlom. Akékoľvek chipovanie z fabrikácie opravujeme pred expedíciou — zákazník nikdy neprijme dosku s fabrikačným chipom.</p>
+  <p>Od partnerských kamenárov vyžadujeme, aby každú hranu opracovali v dvoch krokoch: hrubý rez + jemné dokončenie. Medzi krokmi nasleduje vizuálna kontrola pod bočným svetlom. Akékoľvek chipovanie z fabrikácie sa opraví pred expedíciou — zákazník nedostane dosku s fabrikačným chipom.</p>
 </div>
 
 <figure class="article-figure">

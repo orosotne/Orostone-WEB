@@ -181,7 +181,7 @@ export const ARTICLE_06: BlogArticle = {
 <p>Keramika vyzerá lákavo pri €100–240/m². Ale <strong class="gold">zvážme 25-ročný horizont:</strong></p>
 <ul>
 <li><strong>Keramická dlaždica:</strong> impregnácia každé 1–2 roky (~€30–50/úkon), spárové škvrny, výmena poškodených dlaždíc — celkovo <strong>€2 000–3 000 navyše</strong> za 25 rokov</li>
-<li><strong>Kvarcitový kompozit:</strong> prakticky bezúdržbový v interiéri, ale ak ho vystavíte UV alebo tepelnému šoku, oprava = výmena celej dosky</li>
+<li><strong>Kvarcitový kompozit:</strong> nenáročný na údržbu v interiéri, ale ak ho vystavíte UV alebo tepelnému šoku, oprava = výmena celej dosky</li>
 <li><strong>Sinterovaný kameň:</strong> minimálna údržba bez impregnácie, vysoká odolnosť pri bežnom používaní; citlivý je najmä na silné bodové nárazy</li>
 <li><strong>Porcelánové dosky:</strong> veľmi podobný nákladový profil ako sinterovaný kameň, nižšia vstupná cena</li>
 </ul>
@@ -263,7 +263,7 @@ export const ARTICLE_06: BlogArticle = {
 
 <h2 id="zaver">Záver: úprimné odporúčanie</h2>
 
-<p>Sinterovaný kameň je v Orostone náš materiál číslo jedna — ale nie preto, že ho predávame. Preto, že <strong class="gold">technicky nevyžaduje kompromisy</strong> tam, kde ostatné materiály áno: UV odolnosť, tepelná odolnosť, nulová údržba.</p>
+<p>Sinterovaný kameň je v Orostone náš materiál číslo jedna — ale nie preto, že ho predávame. Preto, že <strong class="gold">technicky nevyžaduje kompromisy</strong> tam, kde ostatné materiály áno: UV odolnosť, tepelná odolnosť, údržba bez impregnácie.</p>
 
 <p>Ak máte kuchyňu v interiéri bez priameho slnka a vždy používate podložky pod hrnce — kvarcitový kompozit je legitímna voľba za rozumnú cenu. Ak chcete porcelánové dosky za nižšiu cenu s podobným výkonom — aj to je rozumná voľba.</p>
 
@@ -294,7 +294,7 @@ export const ARTICLE_06: BlogArticle = {
       },
       {
         question: 'Prečo sú sinterované kamene drahšie ako kvarcit?',
-        answer: 'Výroba sinterovaného kameňa vyžaduje extrémy: tlak 25 000 ton a teplotu nad 1 200°C — to je energeticky a kapitálovo náročnejšia technológia. Navyše, prémiové sinterované kamene majú zložitejšie full-body vzory (žilkovanie prechádza celou hrúbkou). Cena odráža aj dlhšiu životnosť a nulovú údržbu.',
+        answer: 'Výroba sinterovaného kameňa vyžaduje extrémy: tlak 25 000 ton a teplotu nad 1 200°C — to je energeticky a kapitálovo náročnejšia technológia. Navyše, prémiové sinterované kamene majú zložitejšie full-body vzory (žilkovanie prechádza celou hrúbkou). Cena odráža aj dlhšiu životnosť a údržbu bez impregnácie.',
       },
       {
         question: 'Čo je to absorpcia vody a prečo je dôležitá?',
@@ -330,7 +330,7 @@ export const ARTICLE_06: BlogArticle = {
       },
       {
         question: 'Ako dlho trvá inštalácia kuchynskej dosky?',
-        answer: 'Štandardná kuchynská doska (L-tvar, 2 výrezy) si vyžaduje 1 deň na meranie + výrobu (typicky 3–7 pracovných dní) + 1 deň na inštaláciu. Orostone garantuje presné miery vďaka digitálnemu šablónovaniu — odchýlka pod 0,5 mm.',
+        answer: 'Štandardná kuchynská doska (L-tvar, 2 výrezy) si vyžaduje 1 deň na meranie + výrobu (typicky 3–7 pracovných dní) + 1 deň na inštaláciu. Partnerský kamenár zameriava digitálnym šablónovaním s odchýlkou pod 0,5\u00A0mm.',
       },
       {
         question: 'Môžem si materál vyskúšať pred kúpou?',

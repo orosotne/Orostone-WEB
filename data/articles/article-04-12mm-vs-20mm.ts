@@ -162,7 +162,7 @@ export const ARTICLE_04: BlogArticle = {
 
 <p>Hrúbka dosky je dôležitý parameter — ale nie jediný. <strong class="gold">Podkladová konštrukcia, správne výrezy a dodržanie pravidiel previsu rozhodujú viac</strong> ako samotná hrúbka materiálu.</p>
 
-<p>V Orostone sme sa rozhodli špecializovať na 12mm a robiť to správne — s dôsledným posúdením každého projektu, správnou fabrikáciou a profesionálnou inštaláciou. Výsledok je rovnaký, ako by ste dostali s 20mm, za predpokladu jednej veci: dôslednej prípravy.</p>
+<p>V Orostone sme sa rozhodli špecializovať na 12\u00A0mm a robiť to správne — s dôsledným posúdením každého projektu a so skúsenými partnerskými kamenármi pri fabrikácii aj inštalácii. Výsledok je rovnaký, ako by ste dostali s 20mm, za predpokladu jednej veci: dôslednej prípravy.</p>
 
 <div class="article-tip tip-btn">
   <strong>Záverečný tip:</strong> Pred akýmkoľvek rozhodnutím o hrúbke sa porozprávajte s montážnym tímom o podkladovej konštrukcii a rozmiestnení výrezov. Toto je rozhodnutie, ktoré by malo byť urobené na základe projektu — nie na základe marketingu.
@@ -172,7 +172,7 @@ export const ARTICLE_04: BlogArticle = {
     faqs: [
       {
         question: 'Prečo Orostone predáva len 12mm sinterovaný kameň?',
-        answer: 'Je to zámerná špecializácia. 12mm pri správnej podkladovej konštrukcii, plánovaní výrezov a dodržaní pravidiel previsu pokrýva všetky bežné aplikácie. Sústredením sa na jednu hrúbku môžeme zabezpečiť konzistentne vysokú kvalitu fabrikácie a inštalácie.',
+        answer: 'Je to zámerná špecializácia. 12mm pri správnej podkladovej konštrukcii, plánovaní výrezov a dodržaní pravidiel previsu pokrýva všetky bežné aplikácie. Sústredením sa na jednu hrúbku vedia naši partnerskí kamenári udržať konzistentne vysokú kvalitu fabrikácie a inštalácie.',
       },
       {
         question: 'Stačí 12mm na kuchynskú pracovnú plochu s výrezmi?',
@@ -180,7 +180,7 @@ export const ARTICLE_04: BlogArticle = {
       },
       {
         question: 'Čo ak chcem previs dlhší ako 200mm — napr. barový výsun?',
-        answer: 'Pri previse nad 200mm použijeme kovovú konzolu. Konzola je správne konštrukčné riešenie, nie kompromis. Z nerezovej ocele alebo čierneho kovu môže byť aj estetický prvok. Previs s konzolou môže byť aj 400mm a viac.',
+        answer: 'Pri previse nad 200\u00A0mm sa použije kovová konzola. Konzola je správne konštrukčné riešenie, nie kompromis. Z nerezovej ocele alebo čierneho kovu môže byť aj estetický prvok. Previs s konzolou môže byť aj 400mm a viac.',
       },
       {
         question: 'Je 12mm vhodná aj pre kuchynský ostrovček?',
@@ -196,7 +196,7 @@ export const ARTICLE_04: BlogArticle = {
       },
       {
         question: 'Je 12mm doska ľahšie poškoditeľná pri výrezoch ako 20mm?',
-        answer: 'Riziko poškodenia pri výrezoch závisí predovšetkým od techniky fabrikácie, nie len od hrúbky. Správne vyvŕtané pilotné otvory, kontinuálny diamantový kotúč, chladenie vodou a rádius rohov min. 5mm — toto rozhoduje viac ako hrúbka. Naša fabrikácia tieto štandardy dodržuje štandardne.',
+        answer: 'Riziko poškodenia pri výrezoch závisí predovšetkým od techniky fabrikácie, nie len od hrúbky. Správne vyvŕtané pilotné otvory, kontinuálny diamantový kotúč, chladenie vodou a rádius rohov min. 5mm — toto rozhoduje viac ako hrúbka. Partnerskí kamenári, s ktorými spolupracujeme, tieto štandardy dodržiavajú.',
       },
       {
         question: 'Ovplyvňuje hrúbka tepelnú odolnosť alebo odolnosť voči škvrnám?',

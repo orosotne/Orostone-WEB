@@ -30,7 +30,9 @@ export const ARTICLE_13: BlogArticle = {
 
 <p>Neistota plodí stres — a práve preto vám v tomto článku ukážeme celý proces Orostone krok za krokom, s konkrétnymi termínmi, meraniami a zodpovednosťami.</p>
 
-<p>Či už plánujete novú kuchyňu, kúpeľňový obklad alebo ostrov do otvoreného priestoru, proces je vždy rovnaký: <strong>10 jasných krokov, 10–15 pracovných dní, žiadne prekvapenia</strong>. Poďme na to.</p>
+<p>Či už plánujete novú kuchyňu, kúpeľňový obklad alebo ostrov do otvoreného priestoru, proces je vždy rovnaký: <strong>10 jasných krokov, 10–15 pracovných dní, jasné zodpovednosti</strong>. Poďme na to.</p>
+
+<p><strong>Kto čo robí:</strong> Orostone vám poradí s výberom, dodá materiál — celé platne — a koordinuje termíny. Zameranie, výrobu, dopravu a montáž robí a fakturuje partnerský kamenár so skúsenosťou so sinterovaným kameňom. Výsledok kontrolujeme aj my.</p>
 
 <h2 id="krok-1-konzultacia-a-vyber-materialu">Krok 1 — Čo sa deje na konzultácii?</h2>
 
@@ -51,7 +53,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <h2 id="krok-2-cenova-ponuka">Krok 2 — Čo obsahuje cenová ponuka?</h2>
 
-<p>Do 48 hodín po konzultácii dostanete detailnú cenovú ponuku. Nie odhad, nie „od–do" rozsah — konkrétnu sumu rozdelenú na jednotlivé položky.</p>
+<p>Do 48 hodín po konzultácii dostanete detailnú cenovú ponuku. Nie jedno číslo, ale rozpis po položkách — od nás materiál, od partnerského kamenára zameranie, výroba, doprava a montáž.</p>
 
 <p><strong>Čo obsahuje cenová ponuka:</strong></p>
 <ul>
@@ -64,7 +66,7 @@ export const ARTICLE_13: BlogArticle = {
   <li><strong>Inštalácia</strong> — kompletná montáž vrátane materiálu na lepenie a tesnenie</li>
 </ul>
 
-<p><strong>Žiadne skryté náklady.</strong> Cena, ktorú vidíte, je cena, ktorú zaplatíte. Jediná výnimka: ak sa počas zamerania zistí, že skrinky nie sú v rovine a vyžadujú úpravu — o tom vás informujeme vopred.</p>
+<p><strong>Transparentná cena.</strong> Každá položka je v ponuke zvlášť, takže viete, za čo platíte. Ak sa počas zamerania zistí, že skrinky nie sú v rovine a vyžadujú úpravu, dozviete sa to vopred.</p>
 
 <p><strong>Platnosť ponuky:</strong> 30 dní. Ceny materiálov sa môžu meniť podľa dostupnosti od výrobcov, preto ponuku garantujeme na mesiac.</p>
 
@@ -72,26 +74,26 @@ export const ARTICLE_13: BlogArticle = {
 
 <p>Po schválení ponuky a úhrade zálohy prichádza najdôležitejší technický krok celého procesu: digitálne zameranie priamo u vás doma. Tu sa rozhoduje o presnosti celej realizácie.</p>
 
-<p><strong>Technológia:</strong> Používame laserové zameriavacie systémy s presnosťou <strong>±0,05 mm</strong>. Nie meter, nie pásmo — laser, ktorý zachytí každý milimeter vašej kuchyne.</p>
+<p><strong>Technológia:</strong> Partnerský kamenár používa laserové zameriavacie systémy s presnosťou <strong>±0,05\u00A0mm</strong>. Nie meter, nie pásmo — laser, ktorý zachytí každý milimeter vašej kuchyne.</p>
 
-<p><strong>Čo meriame:</strong></p>
+<p><strong>Čo sa meria:</strong></p>
 <ul>
   <li><strong>Rozmery skriniek</strong> — šírka, hĺbka, výška každej skrinky</li>
   <li><strong>Uhly stien</strong> — steny v bytoch nikdy nie sú v dokonalom 90° uhle. Laser zachytí odchýlky, na ktoré by ste okom nikdy neprišli</li>
   <li><strong>Polohy spotrebičov</strong> — presná pozícia drezu, varnej dosky, batérie, dávkovača mydla, zásuviek</li>
   <li><strong>Inštalatérske vývody</strong> — voda, odpad, plyn — všetko musí sadnúť na milimeter</li>
-  <li><strong>Nerovnosti a previsy</strong> — kontrolujeme rovinu hornej plochy skriniek, prípadné požiadavky na previs</li>
+  <li><strong>Nerovnosti a previsy</strong> — kontroluje sa rovina hornej plochy skriniek a prípadné požiadavky na previs</li>
 </ul>
 
-<p><strong>Podmienka:</strong> Vaše skrinky musia byť <strong>kompletne nainštalované a vyrovnané</strong> pred naším príchodom. Meriame finálny stav — akákoľvek zmena po zameraní znamená nové meranie.</p>
+<p><strong>Podmienka:</strong> Vaše skrinky musia byť <strong>kompletne nainštalované a vyrovnané</strong> pred príchodom kamenára. Meria sa finálny stav — akákoľvek zmena po zameraní znamená nové meranie.</p>
 
 <p><strong>Trvanie:</strong> 1–2 hodiny na mieste, v závislosti od komplexnosti kuchyne.</p>
 
-<p><strong>Schválenie výkresov:</strong> Na základe merania vytvoríme digitálne výkresy s presným tvarom, rozmermi, pozíciami výrezov a profilmi hrán. Tieto výkresy vám pošleme na schválenie — <strong>fabrikácia sa nespustí, kým ich neodsúhlasíte</strong>. Toto je vaša posledná príležitosť na zmeny bez dodatočných nákladov.</p>
+<p><strong>Schválenie výkresov:</strong> Na základe merania kamenár pripraví digitálne výkresy s presným tvarom, rozmermi, pozíciami výrezov a profilmi hrán. Výkresy dostanete na schválenie — <strong>fabrikácia sa nespustí, kým ich neodsúhlasíte</strong>. Toto je vaša posledná príležitosť na zmeny bez dodatočných nákladov.</p>
 
 <h2 id="krok-4-cnc-fabrikacia">Krok 4 — Ako prebieha CNC fabrikácia?</h2>
 
-<p>Po schválení výkresov sa váš projekt presúva do výroby. Tu sa surový slab sinterovaného kameňa mení na presne tvarované diely vašej kuchyne.</p>
+<p>Po schválení výkresov sa váš projekt presúva do výroby u partnerského kamenára. Tu sa surový slab sinterovaného kameňa mení na presne tvarované diely vašej kuchyne.</p>
 
 <p><strong>Rezanie mostovým CNC strojom:</strong></p>
 <ul>
@@ -109,7 +111,7 @@ export const ARTICLE_13: BlogArticle = {
   <li>Minimálna vzdialenosť výrezu od hrany dosky: <strong>50 mm</strong></li>
 </ul>
 
-<p><strong>Profilovanie hrán:</strong> CNC stroj vyfrézuje zvolený profil hrany s presnosťou, ktorá nie je dosiahnuteľná ručným opracovaním. Výsledok je hladký, rovnomerný a vizuálne bezchybný po celej dĺžke.</p>
+<p><strong>Profilovanie hrán:</strong> CNC stroj vyfrézuje zvolený profil hrany s presnosťou, ktorá nie je dosiahnuteľná ručným opracovaním. Výsledok je hladký a rovnomerný po celej dĺžke.</p>
 
 <p><strong>Trvanie:</strong> 7–10 pracovných dní od schválenia výkresov. Komplexnejšie projekty s viacerými kusmi môžu trvať dlhšie — o presnom termíne vás informujeme pri schválení.</p>
 
@@ -117,13 +119,13 @@ export const ARTICLE_13: BlogArticle = {
 
 <p>Pred tým, ako ktorýkoľvek diel opustí dielňu, prechádza štvorstupňovou kontrolou kvality. Chyba odhalená vo výrobe stojí hodiny — chyba odhalená pri inštalácii stojí dni a tisíce eur.</p>
 
-<p><strong>Čo kontrolujeme:</strong></p>
+<p><strong>Čo kamenár kontroluje:</strong></p>
 <ul>
   <li><strong>Konzistencia hrúbky</strong> — meranie v niekoľkých bodoch každého dielu, odchýlka max ±0,3 mm</li>
   <li><strong>Povrchová inšpekcia</strong> — kontrola pod šikmým svetlom na mikroškrabance, odštiepky alebo povrchové defekty</li>
   <li><strong>Inšpekcia hrán</strong> — profil hrany musí byť rovnomerný, bez chipov a s hladkým prechodom</li>
-  <li><strong>Farebné a vzorové párovanie</strong> — pri viacerých dieloch kontrolujeme, či kresba a odtieň na spojoch plynule nadväzujú</li>
-  <li><strong>Rozmerová kontrola</strong> — každý diel porovnáme s digitálnym výkresom. Tolerancia: ±0,5 mm</li>
+  <li><strong>Farebné a vzorové párovanie</strong> — pri viacerých dieloch sa kontroluje, či kresba a odtieň na spojoch plynule nadväzujú</li>
+  <li><strong>Rozmerová kontrola</strong> — každý diel sa porovná s digitálnym výkresom. Tolerancia: ±0,5 mm</li>
 </ul>
 
 <p>Ak ktorýkoľvek diel neprejde kontrolou, vyrába sa znova. Nekompromisne. Radšej sa termín posunie o pár dní, než by sa osadilo niečo, s čím nebudete spokojní roky.</p>
@@ -132,7 +134,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <p>Sinterovaný kameň je paradox: odolá nárazu guľou, ale môže prasknúť pri nesprávnej preprave. Preto sa pri jeho preprave dbá na správny postup.</p>
 
-<p><strong>Ako prebieha preprava:</strong></p>
+<p><strong>Ako kamenár prepravuje hotové dosky:</strong></p>
 <ul>
   <li><strong>A-rámové vozidlá</strong> — dosky sa prepravujú vertikálne (na stojato) v špeciálnych A-rámoch, nie naplocho. Vertikálna pozícia eliminuje riziko prasknutia od vlastnej váhy pri vibráciách</li>
   <li><strong>Polstrovaná ochrana</strong> — medzi jednotlivými doskami sú penové vložky, hrany sú chránené rohovými profilmi</li>
@@ -142,9 +144,9 @@ export const ARTICLE_13: BlogArticle = {
 
 <p><strong>Koordinácia doručenia:</strong> Pred dňom dodania s vami preberieme:</p>
 <ul>
-  <li>Parkovanie pre dodávkové vozidlo — potrebujeme miesto čo najbližšie k vchodu</li>
+  <li>Parkovanie pre dodávkové vozidlo — treba miesto čo najbližšie k vchodu</li>
   <li>Prístupová cesta — šírka dverí, chodieb, schodísk a výťahov</li>
-  <li>Schody — ak nie je výťah, potrebujeme vedieť počet poschodí a šírku schodiska</li>
+  <li>Schody — ak nie je výťah, treba vedieť počet poschodí a šírku schodiska</li>
   <li>Ochrana podláh a stien na trase vnášania</li>
 </ul>
 
@@ -165,14 +167,14 @@ export const ARTICLE_13: BlogArticle = {
 
 <h2 id="krok-8-montaz-dosiek">Krok 8 — Ako prebieha samotná montáž?</h2>
 
-<p>Samotná montáž je moment, kedy sa všetko predchádzajúce plánovanie, meranie a výroba spojí do jedného celku. Tento krok vyžaduje maximálnu presnosť a skúsenosti.</p>
+<p>Samotná montáž je moment, kedy sa všetko predchádzajúce plánovanie, meranie a výroba spojí do jedného celku. Tento krok vyžaduje maximálnu presnosť a skúsenosti, preto ho robí partnerský kamenár so skúsenosťou so sinterovaným kameňom.</p>
 
 <p><strong>Postup montáže:</strong></p>
 <ul>
   <li><strong>Aplikácia lepidla</strong> — profesionálne polyuretánové alebo silikónové lepidlo sa nanáša na hornú plochu skriniek v presne definovanom vzore. Lepidlo zabezpečuje pružné spojenie, ktoré absorbuje mikrodilatácie</li>
-  <li><strong>Osadenie dosiek</strong> — dosky zdvíhame a ukladáme pomocou vákuových prísaviek. Manuálne posúvanie nie je možné — sinterovaný kameň váži 25–50 kg/m² podľa hrúbky</li>
-  <li><strong>Spoje a škáry</strong> — spoje medzi doskami vypĺňame farebne ladeným epoxidovým tmelom. Správne vytvorený spoj je takmer neviditeľný — šírka škáry je menej ako 1 mm</li>
-  <li><strong>Kontrola roviny</strong> — po osadení každého dielu kontrolujeme rovinu vodováhou a v prípade potreby korigujeme pozíciu pred vytvrdnutím lepidla</li>
+  <li><strong>Osadenie dosiek</strong> — dosky sa zdvíhajú a ukladajú pomocou vákuových prísaviek. Manuálne posúvanie nie je možné — sinterovaný kameň váži 25–50 kg/m² podľa hrúbky</li>
+  <li><strong>Spoje a škáry</strong> — spoje medzi doskami sa vypĺňajú farebne ladeným epoxidovým tmelom. Správne vytvorený spoj je takmer neviditeľný — šírka škáry je menej ako 1 mm</li>
+  <li><strong>Kontrola roviny</strong> — po osadení každého dielu sa rovina skontroluje vodováhou a v prípade potreby sa pozícia skoriguje pred vytvrdnutím lepidla</li>
   <li><strong>Upevnenie</strong> — dosky sa zaťažia alebo zafixujú svorkami počas vytvrdnutia lepidla</li>
 </ul>
 
@@ -208,21 +210,21 @@ export const ARTICLE_13: BlogArticle = {
 
 <h2 id="krok-10-finalna-kontrola-a-odovzdanie">Krok 10 — Ako prebieha finálna kontrola a odovzdanie?</h2>
 
-<p>Posledný krok je rovnako dôležitý ako prvý. Nekončíme montážou — končíme až vtedy, keď je všetko perfektné.</p>
+<p>Posledný krok je rovnako dôležitý ako prvý. Kamenár nekončí montážou — prácu odovzdá, až keď je všetko v poriadku, a výsledok skontrolujeme aj my.</p>
 
 <p><strong>Finálna kontrola zahŕňa:</strong></p>
 <ul>
-  <li><strong>Kontrola spojov pod inšpekčným svetlom</strong> — šikmé osvetlenie odhalí aj najmenšie nedokonalosti v škárach. Ak niečo nie je v poriadku, opravíme to na mieste</li>
+  <li><strong>Kontrola spojov pod inšpekčným svetlom</strong> — šikmé osvetlenie odhalí aj najmenšie nedokonalosti v škárach. Ak niečo nie je v poriadku, kamenár to opraví na mieste</li>
   <li><strong>Verifikácia roviny</strong> — záverečné meranie vodováhou na celej ploche</li>
-  <li><strong>Kontrola tesnosti</strong> — napustíme drez, kontrolujeme spoje pri odtoku</li>
-  <li><strong>Kontrola funkčnosti spotrebičov</strong> — každý spotrebič otestujeme</li>
-  <li><strong>Čistenie</strong> — celú pracovnú dosku vyčistíme a predvedieme vám správny postup údržby</li>
+  <li><strong>Kontrola tesnosti</strong> — napustí sa drez a skontrolujú sa spoje pri odtoku</li>
+  <li><strong>Kontrola funkčnosti spotrebičov</strong> — každý spotrebič sa otestuje</li>
+  <li><strong>Čistenie</strong> — kamenár celú pracovnú dosku vyčistí a ukáže vám správny postup údržby</li>
 </ul>
 
 <p><strong>Odovzdanie klientovi:</strong></p>
 <ul>
   <li><strong>Protokol o čistení a údržbe</strong> — vysvetlíme vám, ako sa o sinterovaný kameň starať (spoiler: je to veľmi jednoduché)</li>
-  <li><strong>Registrácia záruky</strong> — zaregistrujeme váš projekt a dostanete záručný certifikát</li>
+  <li><strong>Záruka</strong> — na materiál platí záruka výrobcu, na výrobu a montáž dáva záruku kamenár. Podmienky dostanete v záručnom certifikáte pri odovzdaní</li>
   <li><strong>Čas na vytvrdnutie</strong> — <strong>24 hodín</strong> po inštalácii nepoužívajte dosku v plnom zaťažení. Lepidlá a tmely potrebujú čas na úplné vytvrdnutie</li>
   <li><strong>Kontakt pre budúcnosť</strong> — ak kedykoľvek v budúcnosti budete potrebovať poradiť, opraviť alebo rozšíriť, sme tu pre vás</li>
 </ul>
@@ -232,15 +234,15 @@ export const ARTICLE_13: BlogArticle = {
 <p>Aby celý proces prebehol hladko a bez zbytočných zdržaní, potrebujeme od vás niekoľko vecí. Tu je kompletný zoznam:</p>
 
 <ul>
-  <li><strong>Skrinky nainštalované a vyrovnané</strong> — toto je podmienka číslo jeden. Bez hotových skriniek nemôžeme merať a bez merania nemôžeme vyrábať. Skrinky musia byť v konečnej pozícii, ukotvené k stene a vyrovnané do roviny</li>
-  <li><strong>Voľná prístupová cesta pre doručenie</strong> — dosky sú veľké a ťažké. Potrebujeme voľný priechod od vchodu do budovy až po kuchyňu. Odstráňte nábytok, koberčeky a prekážky na trase</li>
+  <li><strong>Skrinky nainštalované a vyrovnané</strong> — toto je podmienka číslo jeden. Bez hotových skriniek sa nedá merať a bez merania sa nedá vyrábať. Skrinky musia byť v konečnej pozícii, ukotvené k stene a vyrovnané do roviny</li>
+  <li><strong>Voľná prístupová cesta pre doručenie</strong> — dosky sú veľké a ťažké. Treba voľný priechod od vchodu do budovy až po kuchyňu. Odstráňte nábytok, koberčeky a prekážky na trase</li>
   <li><strong>Parkovanie pre dodávkové vozidlo</strong> — ideálne čo najbližšie k vchodu. Ak bývate v centre, zabezpečte parkovacie miesto vopred</li>
   <li><strong>Inštalatérske prípojky pripravené</strong> — voda, odpad a plyn musia byť vyvedené na správnych pozíciách. Tieto pozície definuje projekt kuchyne</li>
-  <li><strong>Stará kuchynská doska odstránená</strong> — ak meníte existujúcu dosku, musí byť pred naším príchodom demontovaná. Ak potrebujete, demontáž starej dosky vieme zabezpečiť — dajte nám vedieť pri objednávke</li>
-  <li><strong>Elektrické zásuvky a osvetlenie funkčné</strong> — pri inštalácii potrebujeme prístup k elektrike pre nástroje a osvetlenie pre kontrolu kvality</li>
+  <li><strong>Stará kuchynská doska odstránená</strong> — ak meníte existujúcu dosku, musí byť pred príchodom kamenára demontovaná. Ak potrebujete, demontáž starej dosky vieme dohodnúť s kamenárom — dajte nám vedieť pri objednávke</li>
+  <li><strong>Elektrické zásuvky a osvetlenie funkčné</strong> — pri inštalácii treba prístup k elektrike pre nástroje a osvetlenie pre kontrolu kvality</li>
 </ul>
 
-<p><strong>Jeden tip na záver:</strong> Ak si nie ste istí, či je všetko pripravené, jednoducho nám zavolajte alebo pošlite fotky. Radšej skontrolujeme a potvrdíme, než aby sme prišli na miesto a zistili, že niečo chýba. Váš čas si vážime rovnako ako ten náš.</p>
+<p><strong>Jeden tip na záver:</strong> Ak si nie ste istí, či je všetko pripravené, jednoducho nám zavolajte alebo pošlite fotky. Radšej skontrolujeme a potvrdíme, než aby kamenár prišiel na miesto a zistil, že niečo chýba. Váš čas si vážime rovnako ako ten náš.</p>
 `,
     faqs: [
       {
@@ -261,23 +263,23 @@ export const ARTICLE_13: BlogArticle = {
       },
       {
         question: 'Čo ak moje steny nie sú v pravom uhle?',
-        answer: 'To je bežná situácia — v bytoch sú steny zriedka v dokonalom 90° uhle. Práve preto sa robí laserové zameranie. Dosky sa vyrobia presne podľa reálnych uhlov vašich stien, takže do priestoru sadnú dokonale.'
+        answer: 'To je bežná situácia — v bytoch sú steny zriedka v dokonalom 90° uhle. Práve preto sa robí laserové zameranie. Dosky sa vyrobia presne podľa reálnych uhlov vašich stien, takže do priestoru presne sadnú.'
       },
       {
         question: 'Robíte aj demontáž starej kuchynskej dosky?',
-        answer: 'Áno, demontáž starej dosky vieme zabezpečiť. Informujte nás o tom pri objednávke, aby sme to zahrnuli do harmonogramu a cenovej ponuky. Štandardne predpokladáme, že stará doska je už odstránená.'
+        answer: 'Áno, demontáž starej dosky vieme dohodnúť s partnerským kamenárom. Informujte nás o tom pri objednávke, aby sme to zahrnuli do harmonogramu a cenovej ponuky. Štandardne predpokladáme, že stará doska je už odstránená.'
       },
       {
         question: 'Ako prebieha transport dosiek do bytu vo vyšších poschodiach?',
-        answer: 'Pred doručením zmapujeme prístupovú cestu vrátane výťahov a schodísk. Dosky prepravujeme vertikálne na A-rámoch a do bytu ich vnášame s profesionálnym vybavením. Ak výťah nestačí, vnášame po schodoch — počítajte s tým, že potrebujeme dostatočnú šírku schodiska.'
+        answer: 'Pred doručením s vami prejdeme prístupovú cestu vrátane výťahov a schodísk. Kamenár prepravuje dosky vertikálne na A-rámoch a do bytu ich vnáša s profesionálnym vybavením. Ak výťah nestačí, dosky sa vnášajú po schodoch — počítajte s tým, že treba dostatočnú šírku schodiska.'
       },
       {
         question: 'Čo ak sa pri inštalácii zistí problém s podkladom?',
-        answer: 'Podklad kontrolujeme ešte pred položením dosiek. Ak skrinky nie sú v rovine (tolerancia max 3 mm na 3 m), vyrovnáme ich podložkami. V extrémnych prípadoch vás kontaktujeme a dohodneme sa na riešení ešte pred montážou.'
+        answer: 'Kamenár kontroluje podklad ešte pred položením dosiek. Ak skrinky nie sú v rovine (tolerancia max 3\u00A0mm na 3\u00A0m), vyrovná ich podložkami. V extrémnych prípadoch vás kontaktujeme a dohodneme sa na riešení ešte pred montážou.'
       },
       {
         question: 'Sú spoje medzi doskami viditeľné?',
-        answer: 'Správne vytvorený spoj je takmer neviditeľný. Používame farebne ladený epoxidový tmel, ktorý vyplní škáru užšiu ako 1 mm. Pri kvalitnom materiáli a precíznej fabrikácii je spoj viditeľný len pri veľmi pozornom hľadaní pod šikmým svetlom.'
+        answer: 'Správne vytvorený spoj je takmer neviditeľný. Používa sa farebne ladený epoxidový tmel, ktorý vyplní škáru užšiu ako 1\u00A0mm. Pri kvalitnom materiáli a precíznej fabrikácii je spoj viditeľný len pri veľmi pozornom hľadaní pod šikmým svetlom.'
       },
       {
         question: 'Kedy môžem kuchyňu začať plne používať?',

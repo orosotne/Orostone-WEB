@@ -37,7 +37,7 @@ export const ARTICLE_22: BlogArticle = {
 </figure>
 
 <div class="article-quote">
-  <p>Kuchyňa bez viditeľnej varnej dosky nie je kompromis — je to upgrade. Varenie funguje rovnako, ale priestor sa zmení na dizajnový statement.</p>
+  <p>Kuchyňa bez viditeľnej varnej dosky nie je kompromis — je to upgrade. Varenie funguje rovnako, ale priestor pôsobí čistejšie a pokojnejšie.</p>
 </div>
 
 <h2 id="ako-funguje">Ako neviditeľná varná doska funguje?</h2>
@@ -115,7 +115,7 @@ export const ARTICLE_22: BlogArticle = {
   </ul>
 </div>
 
-<p>V Orostone vám pomôžeme s výberom systému, fabrikáciou platne na presnú hrúbku a koordináciou s elektrikárom. <a href="/vzorky">Objednajte si vzorku</a> a vyskúšajte materiál na vlastné oči.</p>
+<p>V Orostone vám pomôžeme s výberom systému a koordináciou s elektrikárom. Platňu na presnú hrúbku vyrobí partnerský kamenár. <a href="/vzorky">Objednajte si vzorku</a> a vyskúšajte materiál na vlastné oči.</p>
 
 <h2 id="instalacia">Ako vyzerá inštalácia?</h2>
 
@@ -216,7 +216,7 @@ export const ARTICLE_22: BlogArticle = {
       },
       {
         question: 'Môžem použiť neviditeľnú varnú dosku s kvarcom alebo granitom?',
-        answer: 'Kvarcitový kompozit nie je vhodný — obsahuje polyesterové živice, ktoré sa pri varení degradujú. Prírodný granit má nerovnomernú štruktúru. Sinterovaný kameň je najvhodnejší materiál vďaka nulovej pórovitosti, tepelnej odolnosti a presnej fabrikácii.',
+        answer: 'Kvarcitový kompozit nie je vhodný — obsahuje polyesterové živice, ktoré sa pri varení degradujú. Prírodný granit má nerovnomernú štruktúru. Sinterovaný kameň je najvhodnejší materiál vďaka takmer nulovej pórovitosti, tepelnej odolnosti a presnej fabrikácii.',
       },
       {
         question: 'Aké značky neviditeľných varných dosiek existujú?',

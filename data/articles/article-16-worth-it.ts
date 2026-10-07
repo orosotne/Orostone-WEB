@@ -176,9 +176,9 @@ export const ARTICLE_16: BlogArticle = {
 
 <p><strong>Žula:</strong> Bez pravidelnej impregnácie (ktorú nájomník neurobí) sa stane škvrnitou behom mesiacov. Nie je vhodná pre prenájmy.</p>
 
-<p><strong>Sinterovaný kameň:</strong> Odolá všetkému bez údržby — ideálny z hľadiska trvanlivosti. Ale počiatočná investícia €2 800 sa pri prenájme vráti veľmi pomaly. Vyššia noc/mesačná cena za „prémiovú kuchyňu" v Airbnb inzeráte? Možno €2–5/noc navyše. Pri 200 nocách ročne: €400–1 000/rok. Návratnosť investície 3–7 rokov oproti kvarcitu.</p>
+<p><strong>Sinterovaný kameň:</strong> Zvládne aj menej šetrné zaobchádzanie bez impregnácie a špeciálnych čistidiel — ideálny z hľadiska trvanlivosti. Ale počiatočná investícia €2 800 sa pri prenájme vráti veľmi pomaly. Vyššia noc/mesačná cena za „prémiovú kuchyňu" v Airbnb inzeráte? Možno €2–5/noc navyše. Pri 200 nocách ročne: €400–1 000/rok. Návratnosť investície 3–7 rokov oproti kvarcitu.</p>
 
-<p><strong>Kvarcit (stredná trieda):</strong> Odolný, nevyžaduje údržbu, vizuálne atraktívny. Pre prenájmy typicky najlepší pomer výkon/cena.</p>
+<p><strong>Kvarcit (stredná trieda):</strong> Odolný, nenáročný na údržbu, vizuálne atraktívny. Pre prenájmy typicky najlepší pomer výkon/cena.</p>
 
 <p><strong>Kvalitný laminát s postformingom:</strong> Pre prenájmy v nižšom cenovom segmente úplne postačuje. Ak sa poškodí, výmena je lacná.</p>
 
@@ -262,7 +262,7 @@ export const ARTICLE_16: BlogArticle = {
 <h3>Psychológia kupujúceho</h3>
 <p>Pri prehliadke nehnuteľnosti venuje priemerný kupujúci kuchyni <strong>viac času ako akejkoľvek inej miestnosti</strong>. Prvé, čoho sa dotkne, je pracovná doska. Ten hmatový pocit — studený, hladký, masívny kameň — okamžite komunikuje kvalitu celého bytu. Je to iracionálne? Možno. Ale funguje to.</p>
 
-<p>Sinterovaný kameň má ešte jednu výhodu: keď poviete kupujúcemu „toto je sinterovaný kameň — nevyžaduje žiadnu údržbu, je odolný voči teplu aj UV“, práve ste mu dali <strong>racionálny dôvod</strong>, aby ospravedlnil emocionálne rozhodnutie. A to je presne to, čo kupujúci v prémiovom segmente potrebujú.</p>
+<p>Sinterovaný kameň má ešte jednu výhodu: keď poviete kupujúcemu „toto je sinterovaný kameň — nevyžaduje impregnáciu, je odolný voči teplu aj UV“, práve ste mu dali <strong>racionálny dôvod</strong>, aby ospravedlnil emocionálne rozhodnutie. A to je presne to, čo kupujúci v prémiovom segmente potrebujú.</p>
 
 <h3>Kvantitatívny odhad návratnosti</h3>
 <p>Pre prémiovú nehnuteľnosť v Bratislave odhadujeme, že sinterovaný kameň oproti kvarcitu:</p>
@@ -278,7 +278,7 @@ export const ARTICLE_16: BlogArticle = {
     faqs: [
       {
         question: 'Je sinterovaný kameň drahší ako kvarcit?',
-        answer: 'Počiatočne áno — o cca 30–50%. Priemerná kuchynská doska zo sinterovaného kameňa stojí €1 400–3 500 (4 m²), kým kvarcit €1 060–2 640. Ale pri 25-ročnom vlastníctve sú celkové náklady porovnateľné, pretože sinterovaný kameň nevyžaduje žiadnu údržbu.'
+        answer: 'Počiatočne áno — o cca 30–50%. Priemerná kuchynská doska zo sinterovaného kameňa stojí €1 400–3 500 (4 m²), kým kvarcit €1 060–2 640. Ale pri 25-ročnom vlastníctve sú celkové náklady porovnateľné, pretože sinterovaný kameň nevyžaduje impregnáciu ani špeciálnu údržbu.'
       },
       {
         question: 'Koľko stojí sinterovaný kameň na meter štvorcový?',
@@ -330,7 +330,7 @@ export const ARTICLE_16: BlogArticle = {
       },
       {
         question: 'Ako dlho vydrží sinterovaný kameň?',
-        answer: 'Pri bežnom kuchynskom použití prakticky neobmedzene — výrobcovia udávajú životnosť 50+ rokov bez degradácie. Na rozdiel od kvarcitu nedegraduje UV žiarením, na rozdiel od žuly nevyžaduje pravidelnú impregnáciu na udržanie ochranných vlastností. Reálne obmedzenie životnosti je skôr zmena dizajnových preferencií ako opotrebenie materiálu.'
+        answer: 'Pri bežnom kuchynskom použití desiatky rokov — výrobcovia udávajú životnosť 50+ rokov bez degradácie. Na rozdiel od kvarcitu nedegraduje UV žiarením, na rozdiel od žuly nevyžaduje pravidelnú impregnáciu na udržanie ochranných vlastností. Reálne obmedzenie životnosti je skôr zmena dizajnových preferencií ako opotrebenie materiálu.'
       },
       {
         question: 'Môžem si sinterovaný kameň nainštalovať sám?',

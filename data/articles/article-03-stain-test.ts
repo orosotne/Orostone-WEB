@@ -98,7 +98,7 @@ export const ARTICLE_03: BlogArticle = {
 <p>Intenzívna červená šťava. Po 24 hodinách: farebná škvrna viditeľná. Po zotretí vlhkou handrou s malým množstvom bežného čistiaceho prostriedku: povrch čistý. Bez trvalých stôp.</p>
 
 <div class="article-cta">
-  <p>Chcete sinterovaný kameň, o ktorý sa nemusíte starať?</p>
+  <p>Chcete sinterovaný kameň s jednoduchou údržbou?</p>
   <p>Ukážeme vám vzorky a zodpovieme vaše otázky o čistení a údržbe priamo v showroome.</p>
   <a href="/kontakt" class="cta-btn">Nezáväzná konzultácia →</a>
 </div>
@@ -138,7 +138,7 @@ export const ARTICLE_03: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>Čo robíme v Orostone</strong></p>
-  <p>Pri každej inštalácii zákazníkom poskytneme jednoduchú jednostranovú kartu s pokynmi na čistenie. Skrátená verzia: vlhká handrička stačí na 99% situácií. Zvyšok 1% rieši bežný kuchynský čistiaci prostriedok. Žiadna impregnácia, žiadna špeciálna chémia, žiadna ročná údržba.</p>
+  <p>Každému zákazníkovi poskytneme jednoduchú jednostranovú kartu s pokynmi na čistenie. Skrátená verzia: vlhká handrička stačí na 99% situácií. Zvyšok 1% rieši bežný kuchynský čistiaci prostriedok. Žiadna impregnácia, žiadna špeciálna chémia, žiadna ročná údržba.</p>
 </div>
 
 <h2 id="matny-vs-leskly">Matný vs lesklý povrch — rozdiel v odolnosti voči škvrnám</h2>
@@ -207,7 +207,7 @@ export const ARTICLE_03: BlogArticle = {
       },
       {
         question: 'Ako dlho vydrží povrch sinterovaného kameňa bez škŕs a usadenín?',
-        answer: 'Sinterovaný kameň nie je porézny, takže usadeniny sa nevtlačia do štruktúry. Povrch odolá bežnému každodennému zaťaženiu po celú životnosť kameňa (desiatky rokov) bez nutnosti akejkoľvek obnovy alebo opravy. Mechanické škrabance od ostrých predmetov sú možné, ale chemické usadeniny nie.',
+        answer: 'Sinterovaný kameň nie je porézny, takže usadeniny sa nevtlačia do štruktúry. Povrch odolá bežnému každodennému zaťaženiu po celú životnosť kameňa (desiatky rokov) bez impregnácie či renovácie. Mechanické škrabance od ostrých predmetov sú možné, ale chemické usadeniny nie.',
       },
       {
         question: 'Ovplyvňuje dezén (farba) odolnosť voči škvrnám?',

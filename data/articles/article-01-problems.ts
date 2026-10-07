@@ -68,7 +68,7 @@ export const ARTICLE_01: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>Čo robíme v Orostone</strong></p>
-  <p>Pri každom projekte odporúčame minimálne <strong>2 mm chamfer</strong>. Pre rodinné kuchyne s deťmi volíme half-bullnose. Stojí to pár eur navyše. Oprava chipu stojí pár stoviek.</p>
+  <p>Pri každom projekte odporúčame minimálne <strong>2 mm chamfer</strong>. Pre rodinné kuchyne s deťmi radíme half-bullnose. Stojí to pár eur navyše. Oprava chipu stojí pár stoviek.</p>
 </div>
 
 <h2 id="praskliny-pri-vyrezoch">Čo spôsobuje praskliny pri výrezoch?</h2>
@@ -98,7 +98,7 @@ export const ARTICLE_01: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>Pozor na toto</strong></p>
-  <p>Nikdy nerobíme <em>plunge cut</em> (ponorný rez*) do sinterovaného kameňa. Pred výrezom vždy najprv vyvŕtame pilotné otvory v rohoch diamantovým vrtákom. Ponorný rez generuje príliš veľké napätie a takmer vždy vedie k praskleniu.</p>
+  <p>Partnerskí kamenári, s ktorými spolupracujeme, nikdy nerobia <em>plunge cut</em> (ponorný rez*) do sinterovaného kameňa. Pred výrezom vždy najprv vyvŕtajú pilotné otvory v rohoch diamantovým vrtákom. Ponorný rez generuje príliš veľké napätie a takmer vždy vedie k praskleniu.</p>
   <p class="text-sm text-gray-400 mt-3 italic">* Ponorný rez (plunge cut) — technika, pri ktorej sa rezný kotúč zasekne priamo do stredu materiálu bez predvŕtaného otvoru. Na rozdiel od klasického rezu, kde kotúč vstupuje z okraja, tu celé napätie smeruje do jedného bodu.</p>
 </div>
 
@@ -218,7 +218,7 @@ export const ARTICLE_01: BlogArticle = {
 
 <h2 id="ako-v-orostone-predchadzame">Ako týmto problémom predchádzame v Orostone?</h2>
 
-<p>Každý problém opísaný vyššie má jedno spoločné: <strong class="gold">dá sa mu predísť</strong>. V Orostone sme vybudovali systém kontroly kvality, ktorý pokrýva celý životný cyklus dosky.</p>
+<p>Každý problém opísaný vyššie má jedno spoločné: <strong class="gold">dá sa mu predísť</strong>. V Orostone sme spolu s partnerskými kamenármi vybudovali systém kontroly kvality, ktorý pokrýva celý životný cyklus dosky.</p>
 
 <h3>1. Konzultácia a návrh</h3>
 <p>Každý projekt začíname odborným posúdením — nie predajným telefonátom.</p>
@@ -232,12 +232,12 @@ export const ARTICLE_01: BlogArticle = {
 <p>Spolupracujeme výlučne s fabrikantmi vybavenými CNC strojmi na sinterovaný kameň.</p>
 <ul>
   <li>Každý výrez má kontrolovaný rádius rohov — minimum 5 mm, štandardne 10 mm</li>
-  <li>Rezanie v dvoch prechodoch je náš štandard, nie výnimka</li>
+  <li>Rezanie v dvoch prechodoch je u našich partnerov štandard, nie výnimka</li>
   <li>Hrany sú vždy minimálne skosené — aj keď chcete „ostrý“ vzhľad</li>
 </ul>
 
 <h3>3. Kontrolovaná preprava</h3>
-<p>Prepravu platní zabezpečujeme vo vertikálnych A-rámoch — nie bežnou paletovou prepravou.</p>
+<p>Platne aj hotové dosky sa prepravujú vo vertikálnych A-rámoch — nie bežnou paletovou prepravou.</p>
 <ul>
   <li>Dosky sa vezú vertikálne (na stojato) v profesionálnych A-rámoch</li>
   <li>Každá doska je individuálne zabalená s penou a ochrannou fóliou</li>
@@ -253,10 +253,11 @@ export const ARTICLE_01: BlogArticle = {
 </ul>
 
 <h3>5. Záruka a popredajný servis</h3>
-<p>Naša starostlivosť nekončí inštaláciou — poskytujeme rozšírenú záruku a rýchly servis.</p>
+<p>Naša starostlivosť nekončí inštaláciou — ostávame vaším kontaktom aj po nej.</p>
 <ul>
+  <li>Na materiál platí záruka, na výrobu a montáž dáva záruku kamenár, ktorý ich realizoval</li>
   <li>V prípade akéhokoľvek problému reagujeme do 48 hodín</li>
-  <li>Menšie odštiepky dokážeme opraviť priamo na mieste špeciálnym epoxidovým tmelom</li>
+  <li>Menšie odštiepky vie partnerský kamenár opraviť priamo na mieste špeciálnym epoxidovým tmelom</li>
 </ul>
 
 <h2 id="zaver">Čo si z tohto odniesť?</h2>
@@ -286,15 +287,15 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Čo ak spadne hrniec na hranu dosky?',
-        answer: 'Pri zaoblenom profile (half-bullnose, bevel) je riziko nízke — sinterovaný kameň má tvrdosť 6–7 na Mohsovej stupnici. Pri ostrej 90° hrane môže vzniknúť drobný odštiepok. V Orostone dokážeme takéto poškodenie opraviť epoxidovým tmelom v farbe dosky priamo na mieste.',
+        answer: 'Pri zaoblenom profile (half-bullnose, bevel) je riziko nízke — sinterovaný kameň má tvrdosť 6–7 na Mohsovej stupnici. Pri ostrej 90° hrane môže vzniknúť drobný odštiepok. Takéto poškodenie vie partnerský kamenár opraviť epoxidovým tmelom vo farbe dosky priamo na mieste.',
       },
       {
         question: 'Dá sa chipovanie opraviť?',
-        answer: 'Áno, drobné odštiepky (do 3–4 mm) opravíme špeciálnym farebným epoxidovým tmelom. Oprava je viditeľná pri detailnom pohľade, ale pri bežnom používaní ju nepostrehnete. Väčšie poškodenia môžu vyžadovať prebrúsenie alebo výmenu segmentu dosky.',
+        answer: 'Áno, drobné odštiepky (do 3–4\u00A0mm) kamenár opraví špeciálnym farebným epoxidovým tmelom. Oprava je viditeľná pri detailnom pohľade, ale pri bežnom používaní ju nepostrehnete. Väčšie poškodenia môžu vyžadovať prebrúsenie alebo výmenu segmentu dosky.',
       },
       {
         question: 'Prečo sa nedá robiť ponorný rez?',
-        answer: 'Ponorný rez generuje extrémne namáhanie v bode, kde kotúč vstupuje do materiálu. Sinterovaný kameň nemá kryštálovú štruktúru ako granit — je to vysoko komprimovaná keramika. Bodové napätie spôsobuje mikrotrhliny, ktoré sa rozšíria na plnú prasklinu. Vždy najprv vyvŕtame pilotné otvory.',
+        answer: 'Ponorný rez generuje extrémne namáhanie v bode, kde kotúč vstupuje do materiálu. Sinterovaný kameň nemá kryštálovú štruktúru ako granit — je to vysoko komprimovaná keramika. Bodové napätie spôsobuje mikrotrhliny, ktoré sa rozšíria na plnú prasklinu. Preto sa vždy najprv vŕtajú pilotné otvory.',
       },
       {
         question: 'Aký je rozdiel medzi sinterovaným kameňom a kremeňom pri chipovaní?',
@@ -318,7 +319,7 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Môžem si nechať dosku prepraviť bežnou firmou?',
-        answer: 'Technicky môžete, ale neodporúčame to. Bežné logistické firmy nemajú A-rámy, správne vozidlá ani skúsenosti s krehkým materiálom. Navyše väčšina z nich v podmienkach vylučuje zodpovednosť za poškodenie krehkého tovaru. V Orostone prepravujeme dosky vlastnými vozidlami.',
+        answer: 'Technicky môžete, ale neodporúčame to. Bežné logistické firmy nemajú A-rámy, správne vozidlá ani skúsenosti s krehkým materiálom. Navyše väčšina z nich v podmienkach vylučuje zodpovednosť za poškodenie krehkého tovaru. Hotové dosky preto prevezie partnerský kamenár, ktorý ich aj osadí.',
       },
       {
         question: 'Čo je dilatačná medzera a prečo je dôležitá?',
@@ -326,11 +327,11 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Aké lepidlo sa používa na inštaláciu?',
-        answer: 'Používame flexibilné polyuretánové alebo epoxidové lepidlá. Bežný silikón nemá dostatočnú priľnavosť a cementové tmely sú príliš rigidné. Flexibilné lepidlo absorbuje drobné pohyby a tepelné rozťahovanie, čím chráni dosku pred napätím v spoji.',
+        answer: 'Používajú sa flexibilné polyuretánové alebo epoxidové lepidlá. Bežný silikón nemá dostatočnú priľnavosť a cementové tmely sú príliš rigidné. Flexibilné lepidlo absorbuje drobné pohyby a tepelné rozťahovanie, čím chráni dosku pred napätím v spoji.',
       },
       {
         question: 'Vzťahuje sa záruka na chipovanie spôsobené používaním?',
-        answer: 'Štandardná záruka výrobcu pokrýva výrobné chyby, nie mechanické poškodenie. V Orostone však poskytujeme rozšírený servis — drobné odštiepky opravíme v rámci popredajnej starostlivosti. A správnym výberom profilu hrán minimalizujeme pravdepodobnosť chipovania od začiatku.',
+        answer: 'Štandardná záruka výrobcu pokrýva výrobné chyby, nie mechanické poškodenie. Drobné odštiepky však vie opraviť partnerský kamenár a opravu vám pomôžeme dohodnúť. A správnym výberom profilu hrán minimalizujeme pravdepodobnosť chipovania od začiatku.',
       },
     ],
   },

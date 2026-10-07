@@ -57,7 +57,7 @@ export const ARTICLE_10: BlogArticle = {
   <span class="case-study-label">Z praxe</span>
   <h3>Rodina s deťmi a Nero Marquina v polished variante</h3>
   <p>Máme klientov, ktorí si pôvodne zvolili lesklý čierny sinterovaný kameň — Nero Marquina v polished variante. Vyzeralo to úžasne v showroome. Po troch mesiacoch nám zavolali s frustrujúcim problémom: <strong class="gold">dosku utierali 5–8-krát denne</strong>. Každé dieťa, ktoré sa oprelo o dosku, zanechalo viditeľnú stopu. Každý pohár zanechal kruhovú šmuhu. Stôl nikdy nevyzeral čistý dlhšie ako 20 minút.</p>
-  <p>Riešenie? Vymenili sme im dosku za rovnaký dekor v matnom variante. Rovnaká farba, rovnaký kameň — ale úplne iný zážitok. Teraz utierajú dosku raz denne a vždy vyzerá čisto. Ako sami povedali: <em>„Je to ako keby sme dostali úplne inú kuchyňu."</em></p>
+  <p>Riešenie? S partnerským kamenárom sme im dosku vymenili za rovnaký dekor v matnom variante. Rovnaká farba, rovnaký kameň — ale úplne iný zážitok. Teraz utierajú dosku raz denne a vždy vyzerá čisto. Ako sami povedali: <em>„Je to ako keby sme dostali úplne inú kuchyňu."</em></p>
 </div>
 
 <h3>Leather a honed — zlatá stredná cesta</h3>
@@ -112,7 +112,7 @@ export const ARTICLE_10: BlogArticle = {
 <p>Existuje jedna situácia, kde lesklý povrch jednoznačne vyhráva: <strong>realitné fotografie pri predaji nehnuteľnosti</strong>. Ak plánujete byt predať v horizonte 3–5 rokov, lesklá kuchynská doska fotografuje výrazne lepšie na inzerátne fotky. Kupujúci reagujú na dramatický lesk, pretože podvedome asociujú lesk s luxusom a novotou. V tomto špecifickom kontexte môže lesklý povrch zvýšiť vnímanú hodnotu kuchyne.</p>
 
 <h3>Matný povrch: to, čo vidíte, je to, čo dostanete</h3>
-<p>Matný povrch je v tomto smere čestnejší. Ako vyzerá v showroome, tak vyzerá doma. Ako vyzerá na fotke, tak vyzerá naživo. Žiadne sklamanie, žiadny rozdiel medzi očakávaním a realitou. Pre klientov, ktorí si robia informované rozhodnutia na základe dlhodobej skúsenosti — nie krátkodobého wow efektu — je to obrovská výhoda.</p>
+<p>Matný povrch je v tomto smere čestnejší. Ako vyzerá v showroome, tak vyzerá doma. Ako vyzerá na fotke, tak vyzerá naživo. Žiadne sklamanie, žiadny rozdiel medzi očakávaním a realitou. Pre klientov, ktorí si robia informované rozhodnutia na základe dlhodobej skúsenosti — nie krátkodobého prvého dojmu — je to obrovská výhoda.</p>
 
 <div class="article-cta">
   <p>Chcete porovnať povrchy naživo?</p>
@@ -165,7 +165,7 @@ export const ARTICLE_10: BlogArticle = {
 <h3>Frekvencia čistenia — tvrdé čísla</h3>
 <p>Na základe spätnej väzby od našich klientov:</p>
 <ul>
-<li><strong>Matný povrch:</strong> 1× denne bežné utretie vlhkou utierkou stačí na udržanie bezchybného vzhľadu.</li>
+<li><strong>Matný povrch:</strong> 1× denne bežné utretie vlhkou utierkou stačí na udržanie čistého vzhľadu.</li>
 <li><strong>Lesklý povrch:</strong> 3–5× denne utieranie, ideálne mikrovláknom s čistiacim prostriedkom na sklo, aby ste odstránili šmuhy bez zanechania nových. Pre tmavé lesklé povrchy (čierna, antracit) to môže byť aj 6–8×.</li>
 <li><strong>Leather finish:</strong> podobne ako matný, 1× denne. Textúra navyše maskuje aj drobné kvapky vody.</li>
 </ul>
@@ -216,7 +216,7 @@ export const ARTICLE_10: BlogArticle = {
 </ul>
 
 <h3>Naše konečné odporúčanie</h3>
-<p>Pre luxusnú bratislavskú kuchyňu s denným používaním — rodina, varenie, hostenie — odporúčame <strong class="gold">matný alebo leather finish</strong>. Nie preto, že by lesklý nebol krásny. Je. Ale krása, ktorá vyžaduje 5-krát denne údržbu, nie je luxus — je to záväzok. <strong class="gold">Skutočný luxus je povrch, ktorý vyzerá bezchybne</strong>, keď sa na neho pozriete kedykoľvek počas dňa, bez toho, aby ste museli robiť čokoľvek navyše.</p>
+<p>Pre luxusnú bratislavskú kuchyňu s denným používaním — rodina, varenie, hostenie — odporúčame <strong class="gold">matný alebo leather finish</strong>. Nie preto, že by lesklý nebol krásny. Je. Ale krása, ktorá vyžaduje 5-krát denne údržbu, nie je luxus — je to záväzok. <strong class="gold">Skutočný luxus je povrch, ktorý vyzerá dobre</strong>, keď sa naň pozriete kedykoľvek počas dňa, bez toho, aby ste ho museli neustále utierať.</p>
 
 <div class="article-tip">
   <p><strong>Navštívte náš showroom v Bošanoch</strong></p>
