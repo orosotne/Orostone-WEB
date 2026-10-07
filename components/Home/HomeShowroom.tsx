@@ -1,8 +1,7 @@
 import React from 'react';
 import { ActionButton, Container, Eyebrow, Section, SectionHeader, TextLink } from '../Design';
-import { TESTIMONIALS } from '../../constants';
 import { OrostoneMarkPaths } from './OrostoneMark';
-import { MAPS_URL, PHONE_HREF } from './homeData';
+import { GOOGLE_RATING, GOOGLE_REVIEWS_URL, HOME_REVIEWS, MAPS_URL, PHONE_HREF } from './homeData';
 import { useOffscreen } from './useOffscreen';
 
 /** Rotating seal over the castle photo: the text ring turns, the logo stays upright. */
@@ -29,9 +28,8 @@ const Seal: React.FC = () => {
   );
 };
 
-// Client quotes stay hidden until the owner confirms they are genuine (EU rules on consumer reviews);
-// to show them again, put the TESTIMONIALS you can verify here.
-const REVIEWS: typeof TESTIMONIALS = [];
+// Only real, verbatim reviews from the Google profile (EU rules on consumer reviews: say where they come from)
+const REVIEWS = HOME_REVIEWS;
 
 /** The strongest proof of the brand: the showroom in the castle, and what clients say. */
 export const HomeShowroom: React.FC = () => (
@@ -63,17 +61,23 @@ export const HomeShowroom: React.FC = () => (
       <div className={`hp-rev-in ${REVIEWS.length ? '' : 'hp-rev-solo'}`}>
         <div className="hp-rating hp-noise os-on-dark">
           <Eyebrow gold>Recenzie</Eyebrow>
-          <span className="hp-rating-q" aria-hidden="true">“</span>
-          <p className="hp-rating-text">Skúsenosti klientov s výberom, zameraním aj montážou nájdete v recenziách na Google.</p>
-          <TextLink to="https://www.google.com/search?q=orostone">Prečítať na Google</TextLink>
+          <p className="hp-rating-score">
+            <b>{GOOGLE_RATING.value}</b>
+            <span className="hp-rating-stars" aria-hidden="true">★★★★★</span>
+            <span className="sr-only">z 5 hviezdičiek</span>
+          </p>
+          <p className="hp-rating-text">
+            Hodnotenie z {GOOGLE_RATING.count} recenzií na Google. Klienti oceňujú hlavne vysvetlenie rozdielov medzi materiálmi a možnosť pozrieť si platne naživo.
+          </p>
+          <TextLink to={GOOGLE_REVIEWS_URL}>Všetky recenzie na Google</TextLink>
         </div>
         {REVIEWS.length > 0 && <div className="hp-quotes">
           {REVIEWS.map((t) => (
-            <blockquote key={t.id}>
+            <blockquote key={t.name}>
               <p>„{t.quote}“</p>
               <footer>
                 <b>{t.name}</b>
-                <span>{[t.role, t.company].filter(Boolean).join(', ')}</span>
+                <span>Recenzia na Google</span>
               </footer>
             </blockquote>
           ))}
