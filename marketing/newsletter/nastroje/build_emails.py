@@ -1539,7 +1539,7 @@ write("21-kampan-december-podakovanie.html", doc(
         dark_band("Ďakujeme",
                   "Ďakujeme<br />" + accent_dark("za rok 2026."),
                   sub="Za otázky, vzorky aj fotky hotových kuchýň. Pekné sviatky z Bošian.",
-                  image=(IMG + "december-pecenie.jpg", "Vianočné pečenie na ostrovčeku zo sinterovaného kameňa, v pozadí vianočný stromček")),
+                  image=(IMG + "december-pecenie.jpg", "Vianočné pečenie na ostrovčeku zo sinterovaného kameňa so stromčekom v pozadí")),
         text([
             "ďakujeme, že ste s nami tento rok premýšľali nad kuchyňou, vzorkami a dekormi. Každá otázka a každá fotka hotovej kuchyne nám pomáha robiť veci lepšie.",
         ], top=28),

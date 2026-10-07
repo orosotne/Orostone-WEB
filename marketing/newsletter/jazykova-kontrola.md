@@ -162,4 +162,10 @@ S novými fotkami sa zmenil aj text, ktorý skontroluje ďalšie kolo:
 - **18** – nové popisy fotiek surovín a pece.
 - **21** – nový popis fotky (vianočné pečenie).
 
+## Kolo 9 – Codex review v PR #88 (7. 10. 2026, výber fotiek)
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 21 | [alt] Vianočné pečenie na ostrovčeku zo sinterovaného kameňa, v pozadí vianočný stromček | [alt] Vianočné pečenie na ostrovčeku zo sinterovaného kameňa so stromčekom v pozadí | štylistika | Slovo *vianočný* sa opakovalo tesne po sebe a dodatok za čiarkou bol ťažkopádny. | zapracované |
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
