@@ -13,23 +13,23 @@ export const ARTICLE_01: BlogArticle = {
 
   sk: {
     title: 'Problémy so sinterovaným kameňom, o ktorých vám nikto nepovie (a ako im predchádzame)',
-    subtitle: 'Úprimný sprievodca rizikami sinterovaného kameňa — od chipovania po praskanie pri výrezoch',
+    subtitle: 'Úprimný sprievodca rizikami sinterovaného kameňa – od chipovania po praskanie pri výrezoch',
     excerpt: 'Sinterovaný kameň je vynikajúci materiál, ale nie je nezničiteľný. Pozrite sa na reálne problémy, konkrétne čísla a overené riešenia, ktoré v Orostone denne používame.',
     metaTitle: 'Riziká pri sinterovanom kameni | OROSTONE',
-    metaDescription: 'Sinterovaný kameň má svoje riziká — pri výrezoch, hranách aj počas osádzania. Ako sa im dá predísť správnym zameraním a skúseným kamenárom.',
-    directAnswer: 'Sinterovaný kameň môže prasknúť pri výrezoch, odštiepiť sa na hranách a poškodiť sa pri preprave — ak sa nedodržia presné technické postupy. Kľúčom je kvalitná fabrikácia, správna hrúbka materiálu, minimálny rádius rohov 5 mm a profesionálna inštalácia.',
+    metaDescription: 'Sinterovaný kameň má svoje riziká – pri výrezoch, hranách aj počas osádzania. Ako sa im dá predísť správnym zameraním a skúseným kamenárom.',
+    directAnswer: 'Sinterovaný kameň môže prasknúť pri výrezoch, odštiepiť sa na hranách a poškodiť sa pri preprave – ak sa nedodržia presné technické postupy. Kľúčom je kvalitná fabrikácia, správna hrúbka materiálu, minimálny rádius rohov 5\u00A0mm a profesionálna inštalácia.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>
 <ul class="article-tldr">
-  <li>Sinterovaný kameň odolá teplotám do 300 °C — ale nie je nezničiteľný</li>
-  <li>90° hrany sú najčastejšie miesto chipovania — riešením je 2 mm chamfer</li>
-  <li>Kľúčový je minimálny rádius 5 mm pri výrezoch pre drezy a varné dosky</li>
+  <li>Sinterovaný kameň odolá teplotám do 300\u00A0°C – ale nie je nezničiteľný</li>
+  <li>90° hrany sú najčastejšie miesto chipovania – riešením je 2\u00A0mm chamfer</li>
+  <li>Kľúčový je minimálny rádius 5\u00A0mm pri výrezoch pre drezy a varné dosky</li>
   <li>Väčšina problémov nevzniká z materiálu, ale zo zlého spracovania a inštalácie</li>
 </ul>
 
-<p>Povedzme si to na rovinu: sinterovaný kameň <strong class="gold">nie je nezničiteľný</strong>. Odolá UV žiareniu, kyselinám, teplotám do <strong>300 °C</strong> a škrabancom lepšie ako granit či kremeň. Ale ak ho zle spracujete alebo nainštalujete, <strong class="gold">praskne vám ako čokoláda</strong>.</p>
+<p>Povedzme si to na rovinu: sinterovaný kameň <strong class="gold">nie je nezničiteľný</strong>. Odolá UV žiareniu, kyselinám, teplotám do <strong>300\u00A0°C</strong> a škrabancom lepšie ako granit či kremeň. Ale ak ho zle spracujete alebo nainštalujete, <strong class="gold">praskne vám ako čokoláda</strong>.</p>
 
-<p>V Orostone s ním pracujeme denne. Videli sme dokonalé realizácie aj katastrofálne zlyhania. A <strong class="gold">rozdiel nie je nikdy v materiáli</strong> — vždy je v spracovaní, inštalácii a výbere správnej hrúbky.</p>
+<p>V Orostone s ním pracujeme denne. Videli sme dokonalé realizácie aj katastrofálne zlyhania. A <strong class="gold">rozdiel nie je nikdy v materiáli</strong> – vždy je v spracovaní, inštalácii a výbere správnej hrúbky.</p>
 
 <div class="article-quote">
   <p>Toto je náš úprimný sprievodca všetkým, čo sa môže pokaziť. Prečo sa to deje a ako tomu predchádzame.</p>
@@ -37,107 +37,107 @@ export const ARTICLE_01: BlogArticle = {
 
 <figure class="article-figure">
   <img src="/images/blog/article-01/hero-countertop.webp" alt="Luxusná kuchynská doska zo sinterovaného kameňa v modernej kuchyni" loading="lazy" />
-  <figcaption>Sinterovaný kameň v správnych rukách — materiál, ktorý definuje luxusné interiéry</figcaption>
+  <figcaption>Sinterovaný kameň v správnych rukách – materiál, ktorý definuje luxusné interiéry</figcaption>
 </figure>
 
 <h2 id="chipovanie-a-poskodenie-hran">Prečo väčšina chipov vzniká na hranách?</h2>
 
-<p>Chipovanie je <strong class="gold">najčastejší problém</strong>, na ktorý sa nás zákazníci pýtajú. A oprávnene — malý odštiepok na hrane kuchynskej dosky je vizuálne neprijateľný v priestore za desaťtisíce eur.</p>
+<p>Chipovanie je <strong class="gold">najčastejší problém</strong>, na ktorý sa nás zákazníci pýtajú. A oprávnene – malý odštiepok na hrane kuchynskej dosky je vizuálne neprijateľný v priestore za desaťtisíce eur.</p>
 
-<p>Sinterovaný kameň má mimoriadnu pevnosť v tlaku, ale jeho <strong class="gold">ohybová pevnosť je nižšia</strong> ako pri kremeňových kompozitoch. V praxi to znamená, že na ostrých hranách sa koncentruje napätie.</p>
+<p>Sinterovaný kameň má mimoriadnu pevnosť v tlaku, ale jeho <strong class="gold">ohybová pevnosť je nižšia</strong> ako pri kremenných kompozitoch. V praxi to znamená, že na ostrých hranách sa koncentruje napätie.</p>
 
-<p>Spadnutý hrniec, posúvaný tanier, náhodný úder — materiál na 90° hrane sa odštiepi oveľa ľahšie ako na zaoblenom profile.</p>
+<p>Spadnutý hrniec, posúvaný tanier, náhodný úder – materiál na 90° hrane sa odštiepi oveľa ľahšie ako na zaoblenom profile.</p>
 
 <div class="article-highlight">
-  <p><strong>A teraz to dôležité — čísla:</strong></p>
-  <p>Hrany so 90° profilom majú až <strong>3× vyššiu mieru chipovania</strong> oproti zaoblenému profilu. Minimálny rádius rohov pre výrezy je <strong>5 mm</strong> — pre drezy a varné dosky odporúčame <strong>10 mm</strong>. Fabrikanti, ktorí spracúvajú sinterovaný kameň denne, hlásia, že <strong>väčšina poškodení hrán vzniká na ostrých 90° profiloch</strong>.</p>
+  <p><strong>A teraz to dôležité – čísla:</strong></p>
+  <p>Hrany s 90° profilom majú až <strong>3× vyššiu mieru chipovania</strong> oproti zaoblenému profilu. Minimálny rádius rohov pre výrezy je <strong>5\u00A0mm</strong> – pre drezy a varné dosky odporúčame <strong>10\u00A0mm</strong>. Fabrikanti, ktorí spracúvajú sinterovaný kameň denne, hlásia, že <strong>väčšina poškodení hrán vzniká na ostrých 90° profiloch</strong>.</p>
 </div>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-01/edge-profile-comparison.webp" alt="Porovnanie profilu hrany — ostrá 90° hrana vs. zaoblený half-bullnose profil" loading="lazy" />
+  <img src="/images/blog/article-01/edge-profile-comparison.webp" alt="Porovnanie profilu hrany – ostrá 90° hrana vs. zaoblený half-bullnose profil" loading="lazy" />
   <figcaption>Vľavo: ostrá 90° hrana s viditeľným chipovaním. Vpravo: zaoblený half-bullnose profil bez poškodenia.</figcaption>
 </figure>
 
 <h3>Aké profily hrán fungujú najlepšie?</h3>
 <ul>
-  <li><strong>Half-bullnose (polguľatina)</strong> — najodolnejší, ideálny pre kuchynské dosky s vysokým zaťažením</li>
-  <li><strong>Skosená hrana (bevel)</strong> — elegantný kompromis medzi estetikou a odolnosťou</li>
-  <li><strong>Ceruzková hrana (pencil)</strong> — jemné zaoblenie, minimálna ochrana, ale výrazne lepšia ako ostrá hrana</li>
-  <li><strong>Ostrá 90° hrana</strong> — najobľúbenejšia voľba pre moderný dizajn, pri kuchynských doskách odporúčame jemný 2 mm chamfer pre dlhšiu životnosť</li>
+  <li><strong>Half-bullnose (polguľatina)</strong> – najodolnejší, ideálny pre kuchynské dosky s vysokým zaťažením</li>
+  <li><strong>Skosená hrana (bevel)</strong> – elegantný kompromis medzi estetikou a odolnosťou</li>
+  <li><strong>Ceruzková hrana (pencil)</strong> – jemné zaoblenie, minimálna ochrana, ale výrazne lepšia ako ostrá hrana</li>
+  <li><strong>Ostrá 90° hrana</strong> – najobľúbenejšia voľba pre moderný dizajn, pri kuchynských doskách odporúčame jemný 2\u00A0mm chamfer pre dlhšiu životnosť</li>
 </ul>
 
 <div class="article-tip">
   <p><strong>Čo robíme v Orostone</strong></p>
-  <p>Pri každom projekte odporúčame minimálne <strong>2 mm chamfer</strong>. Pre rodinné kuchyne s deťmi radíme half-bullnose. Stojí to pár eur navyše. Oprava chipu stojí pár stoviek.</p>
+  <p>Pri každom projekte odporúčame minimálne <strong>2\u00A0mm chamfer</strong>. Pre rodinné kuchyne s deťmi radíme half-bullnose. Stojí to pár eur navyše. Oprava chipu stojí pár stoviek.</p>
 </div>
 
 <h2 id="praskliny-pri-vyrezoch">Čo spôsobuje praskliny pri výrezoch?</h2>
 
 <p>Výrezy pre drezy, varné dosky a batérie sú <strong class="gold">najkritickejšie miesta</strong> na každej kuchynskej doske zo sinterovaného kameňa. Tu sa rozhoduje o úspechu alebo zlyhaní celej realizácie.</p>
 
-<p>Každý otvor v doske vytvára <em>koncentrátor napätia</em>. Ak má vnútorný roh ostrý uhol (90°), napätie sa znásobuje a materiál praskne — niekedy okamžite pri rezaní, niekedy až po inštalácii pri teplotných zmenách.</p>
+<p>Každý otvor v doske vytvára <em>koncentrátor napätia</em>. Ak má vnútorný roh ostrý uhol (90°), napätie sa znásobuje a materiál praskne – niekedy okamžite pri rezaní, niekedy až po inštalácii pri teplotných zmenách.</p>
 
 <div class="article-highlight">
   <p><strong>Pravidlá, ktoré nikdy neporušujeme:</strong></p>
   <ul>
-    <li><strong>Minimálny rádius vnútorných rohov: 5 mm</strong> — pri 90° rohoch je prasklina takmer zaručená</li>
-    <li><strong>Minimálna vzdialenosť medzi otvormi: 50 mm</strong> — menšia vzdialenosť vytvára slabé miesto</li>
-    <li><strong>Minimálna vzdialenosť otvoru od hrany dosky: 50 mm</strong> — inak hrozí prasklina smerujúca k okraju</li>
-    <li><strong>Medzera medzi varnou doskou a kameňom: min. 2 mm</strong> — nutná pre tepelnú expanziu</li>
+    <li><strong>Minimálny rádius vnútorných rohov: 5\u00A0mm</strong> – pri 90° rohoch je prasklina takmer zaručená</li>
+    <li><strong>Minimálna vzdialenosť medzi otvormi: 50\u00A0mm</strong> – menšia vzdialenosť vytvára slabé miesto</li>
+    <li><strong>Minimálna vzdialenosť otvoru od hrany dosky: 50\u00A0mm</strong> – inak hrozí prasklina smerujúca k okraju</li>
+    <li><strong>Medzera medzi varnou doskou a kameňom: min. 2\u00A0mm</strong> – nutná pre tepelnú expanziu</li>
   </ul>
 </div>
 
 <figure class="article-figure">
   <img src="/images/blog/article-01/cnc-cutting.webp" alt="Profesionálne CNC rezanie sinterovaného kameňa s vodným chladením" loading="lazy" />
-  <figcaption>CNC stroj s vodným lúčom — presné rezanie znižuje riziko mikrotrhlín na minimum</figcaption>
+  <figcaption>CNC stroj s vodným lúčom – presné rezanie znižuje riziko mikrotrhlín na minimum</figcaption>
 </figure>
 
 <h3>Technika dvoch prechodov</h3>
 
-<p>Profesionálni fabrikanti režú výrezy v <strong class="gold">dvoch krokoch</strong>. Prvý prechod ide len do čiastočnej hĺbky — pri 12 mm doske <strong>4–5 mm</strong>, pri 20 mm doske <strong>6–8 mm</strong>. Druhý prechod dokončí rez. Výrazne to znižuje vibrácie a riziko mikrotrhlín.</p>
+<p>Profesionálni fabrikanti režú výrezy v <strong class="gold">dvoch krokoch</strong>. Prvý prechod ide len do čiastočnej hĺbky – pri 12\u00A0mm doske <strong>4 – 5\u00A0mm</strong>, pri 20\u00A0mm doske <strong>6 – 8\u00A0mm</strong>. Druhý prechod dokončí rez. Výrazne to znižuje vibrácie a riziko mikrotrhlín.</p>
 
 <div class="article-tip">
   <p><strong>Pozor na toto</strong></p>
   <p>Do sinterovaného kameňa sa nemá robiť <em>plunge cut</em> (ponorný rez*). Od partnerských kamenárov preto vyžadujeme, aby pred výrezom najprv vyvŕtali pilotné otvory v rohoch diamantovým vrtákom. Ponorný rez vytvára veľké napätie a výrazne zvyšuje riziko prasknutia.</p>
-  <p class="text-sm text-gray-400 mt-3 italic">* Ponorný rez (plunge cut) — technika, pri ktorej sa rezný kotúč zasekne priamo do stredu materiálu bez predvŕtaného otvoru. Na rozdiel od klasického rezu, kde kotúč vstupuje z okraja, tu celé napätie smeruje do jedného bodu.</p>
+  <p class="text-sm text-gray-400 mt-3 italic">* Ponorný rez (plunge cut) – technika, pri ktorej sa rezný kotúč zasekne priamo do stredu materiálu bez predvŕtaného otvoru. Na rozdiel od klasického rezu, kde kotúč vstupuje z okraja, tu celé napätie smeruje do jedného bodu.</p>
 </div>
 
 <h2 id="zlyhania-tenkych-dosiek">Kedy je tenká doska chybou?</h2>
 
-<p>Sinterovaný kameň sa vyrába v hrúbkach od 3 mm do 20 mm. Každá hrúbka má svoje určenie — a <strong class="gold">zamieňať ich je recept na katastrofu</strong>.</p>
+<p>Sinterovaný kameň sa vyrába v hrúbkach od 3\u00A0mm do 20\u00A0mm. Každá hrúbka má svoje určenie – a <strong class="gold">zamieňať ich je recept na katastrofu</strong>.</p>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-01/thickness-comparison.webp" alt="Porovnanie hrúbok sinterovaného kameňa — 3 mm, 12 mm a 20 mm vedľa seba" loading="lazy" />
-  <figcaption>Tri hrúbky, tri rôzne použitia — správny výber je kľúčový</figcaption>
+  <img src="/images/blog/article-01/thickness-comparison.webp" alt="Porovnanie hrúbok sinterovaného kameňa – 3\u00A0mm, 12\u00A0mm a 20\u00A0mm vedľa seba" loading="lazy" />
+  <figcaption>Tri hrúbky, tri rôzne použitia – správny výber je kľúčový</figcaption>
 </figure>
 
-<h3>3 mm dosky</h3>
+<h3>3\u00A0mm dosky</h3>
 <ul>
-  <li>Sú určené <strong>výlučne na dekoratívne účely</strong> — obklady stien, dvere, nábytok</li>
+  <li>Sú určené <strong>výlučne na dekoratívne účely</strong> – obklady stien, dvere, nábytok</li>
   <li><strong>Nikdy</strong> ich nepoužívajte na kuchynské pracovné dosky</li>
   <li>Nemajú dostatočnú štrukturálnu pevnosť na nesenie záťaže</li>
 </ul>
 
-<h3>12 mm dosky</h3>
+<h3>12\u00A0mm dosky</h3>
 <ul>
-  <li>Náš <strong>štandard pre všetky aplikácie</strong> — kuchynské dosky, obklady, kúpeľne</li>
-  <li>Maximálny previs bez podpery: <strong>200 mm</strong> (cca 1/3 hĺbky dosky)</li>
-  <li>Lomová sila: približne <strong>5 000 N</strong> — pri správnom podklade a plánovaní výrezov plne dostačujúce</li>
-  <li><strong>Kedy treba zvýšenú pozornosť:</strong> veľké ostrovy bez konzol, barové výsuvy nad 200 mm, dosky s viacerými výrezmi blízko seba</li>
+  <li>Náš <strong>štandard pre všetky aplikácie</strong> – kuchynské dosky, obklady, kúpeľne</li>
+  <li>Maximálny previs bez podpery: <strong>200\u00A0mm</strong> (cca 1/3 hĺbky dosky)</li>
+  <li>Lomová sila: približne <strong>5\u00A0000\u00A0N</strong> – pri správnom podklade a plánovaní výrezov plne dostačujúca</li>
+  <li><strong>Kedy treba zvýšenú pozornosť:</strong> veľké ostrovy bez konzol, barové výsuvy nad 200\u00A0mm, dosky s viacerými výrezmi blízko seba</li>
 </ul>
 
 <div class="article-highlight">
-  <p><strong>Na trhu existujú aj 20 mm dosky</strong> s lomovou silou ~16 000 N — trojnásobok oproti 12 mm. V Orostone pracujeme výhradne s 12 mm, ktorá pri správnom plánovaní a inštalácii pokrýva všetky bežné aplikácie vrátane kuchynských dosiek. Kľúčom je správna podkladová konštrukcia a dodržanie pravidiel pre výrezy a previs.</p>
+  <p><strong>Na trhu existujú aj 20\u00A0mm dosky</strong> s lomovou silou ~16\u00A0000\u00A0N – trojnásobok oproti 12\u00A0mm. V Orostone pracujeme výhradne s 12\u00A0mm hrúbkou, ktorá pri správnom plánovaní a inštalácii pokrýva všetky bežné aplikácie vrátane kuchynských dosiek. Kľúčom je správna podkladová konštrukcia a dodržanie pravidiel pre výrezy a previs.</p>
 </div>
 
 <div class="article-tip">
   <p><strong>Čo robíme v Orostone</strong></p>
-  <p>Pred každou zákazkou posúdime rozmiestnenie výrezov, dĺžku previsu a podkladovú konštrukciu. Ak projekt vyžaduje špeciálny prístup — napríklad dlhý barový výsun — navrhneme riešenie s konzolami. Každý previs nad 200 mm musí mať konštrukčnú podperu — bez výnimiek.</p>
+  <p>Pred každou zákazkou posúdime rozmiestnenie výrezov, dĺžku previsu a podkladovú konštrukciu. Ak projekt vyžaduje špeciálny prístup – napríklad dlhý barový výsun – navrhneme riešenie s konzolami. Každý previs nad 200\u00A0mm musí mať konštrukčnú podperu – bez výnimiek.</p>
 </div>
 
 <div class="article-cta">
   <p>Máte otázky k hrúbke alebo profilu hrán?</p>
-  <p>Poraďte sa s nami — nezáväzne a zadarmo.</p>
+  <p>Poraďte sa s nami – nezáväzne a zadarmo.</p>
   <a href="/kontakt" class="cta-btn">Nezáväzná konzultácia →</a>
 </div>
 
@@ -147,24 +147,24 @@ export const ARTICLE_01: BlogArticle = {
 
 <h3>Hlavné riziká</h3>
 <ul>
-  <li><strong>Vibrácie počas jazdy</strong> — dosky uložené naplocho sa môžu rozlomiť vlastnou váhou pri rezonancii</li>
-  <li><strong>Nesprávne nakladanie</strong> — vysokozdvižný vozík s kapacitou pod 3 500 kg môže dosku poškodiť už pri dvíhaní</li>
-  <li><strong>Ploché uloženie</strong> — dosky musia stáť na hrane v A-ráme, nikdy ležať naplocho</li>
-  <li><strong>Nekvalitné balenie</strong> — bez drevenej debne a polstrovania sú poškodenia takmer nevyhnutné</li>
+  <li><strong>Vibrácie počas jazdy</strong> – dosky uložené naplocho sa môžu rozlomiť vlastnou váhou pri rezonancii</li>
+  <li><strong>Nesprávne nakladanie</strong> – vysokozdvižný vozík s kapacitou pod 3\u00A0500\u00A0kg môže dosku poškodiť už pri dvíhaní</li>
+  <li><strong>Ploché uloženie</strong> – dosky musia stáť na hrane v A-ráme, nikdy ležať naplocho</li>
+  <li><strong>Nekvalitné balenie</strong> – bez drevenej debny a polstrovania sú poškodenia takmer nevyhnutné</li>
 </ul>
 
 <figure class="article-figure">
   <img src="/images/blog/article-01/transport-a-frame.webp" alt="Profesionálna preprava sinterovaného kameňa v A-ráme" loading="lazy" />
-  <figcaption>Dosky stoja na hrane v A-ráme s penou medzi sebou — jediný bezpečný spôsob prepravy</figcaption>
+  <figcaption>Dosky stoja na hrane v A-ráme s penou medzi sebou – jediný bezpečný spôsob prepravy</figcaption>
 </figure>
 
 <h3>Správny postup</h3>
 <ul>
   <li>Dosky stoja na hrane v <strong>A-ráme</strong> (kovový stojan s mäkkým povrchom v tvare písmena A)</li>
-  <li>Medzi jednotlivé dosky sa vkladajú <strong>penové prekladky</strong></li>
-  <li>Minimálna kapacita vysokozdvižného vozíka: <strong>3 500 kg</strong></li>
-  <li>Drevená debňa s označením <strong>"krehké"</strong> a <strong>"neprevracať"</strong></li>
-  <li>Fixácia popruhmi — nie reťazami, ktoré by mohli spôsobiť bodový tlak</li>
+  <li>Medzi jednotlivé dosky sa vkladajú <strong>penové medzivrstvy</strong></li>
+  <li>Minimálna kapacita vysokozdvižného vozíka: <strong>3\u00A0500\u00A0kg</strong></li>
+  <li>Drevená debna s označením <strong>„krehké“</strong> a <strong>„neprevracať“</strong></li>
+  <li>Fixácia popruhmi – nie reťazami, ktoré by mohli spôsobiť bodový tlak</li>
 </ul>
 
 <div class="article-highlight">
@@ -173,23 +173,23 @@ export const ARTICLE_01: BlogArticle = {
 
 <h2 id="chyby-pri-instalacii">Aké chyby robia inštalatéri najčastejšie?</h2>
 
-<p>Aj dokonale vyrobená a prepravená doska sa môže zničiť pri inštalácii. Sinterovaný kameň vyžaduje <strong class="gold">odlišné techniky</strong> ako granit alebo kremeňový kompozit — a práve tu robia inštalatéri bez správnych skúseností najväčšie chyby.</p>
+<p>Aj dokonale vyrobená a prepravená doska sa môže zničiť pri inštalácii. Sinterovaný kameň vyžaduje <strong class="gold">odlišné techniky</strong> ako granit alebo kremenný kompozit – a práve tu robia inštalatéri bez správnych skúseností najväčšie chyby.</p>
 
 <h3>Kritické parametre rezania</h3>
 <ul>
-  <li><strong>Diamantový kotúč s kontinuálnym obvodom</strong> — segmentované kotúče spôsobujú chipovanie</li>
-  <li><strong>Otáčky: 1 600 – 2 200 RPM</strong> — príliš vysoké generujú teplo, príliš nízke vibrácie</li>
-  <li><strong>Konštantné vodné chladenie</strong> — suchý rez je absolútne zakázaný, vedie k prasknutiu</li>
-  <li><strong>Rovný rezný stôl</strong> — doska musí byť podopretá po celej ploche, nie len na okrajoch</li>
+  <li><strong>Diamantový kotúč s kontinuálnym obvodom</strong> – segmentované kotúče spôsobujú chipovanie</li>
+  <li><strong>Otáčky: 1\u00A0600 – 2\u00A0200\u00A0RPM</strong> – príliš vysoké generujú teplo, príliš nízke vibrácie</li>
+  <li><strong>Konštantné vodné chladenie</strong> – suchý rez je absolútne zakázaný, vedie k prasknutiu</li>
+  <li><strong>Rovný rezný stôl</strong> – doska musí byť podopretá po celej ploche, nielen na okrajoch</li>
 </ul>
 
 <h3>Najčastejšie chyby inštalatérov</h3>
 <ul>
-  <li><strong>Neodstránenie tenzných pásikov</strong> — výrobcovia dodávajú dosky s ochrannými pásikmi, ktoré treba odstrániť pred rezaním, inak zadržiavajú napätie</li>
-  <li><strong>Ponorný rez (plunge cut)</strong> — nikdy, za žiadnych okolností. Vždy najprv vyvŕtať pilotné otvory</li>
-  <li><strong>Nerovný podklad</strong> — podklad musí byť rovný s toleranciou <strong>max. 3 mm na 3 m</strong>. Nerovnosti vytvárajú bodové napätie</li>
-  <li><strong>Príliš tesné uloženie</strong> — medzi stenou a doskou musí byť <strong>min. 3 mm dilatačná medzera</strong></li>
-  <li><strong>Nesprávne lepidlo</strong> — nutné je flexibilné polyuretánové alebo epoxidové lepidlo, nie silikón ani cement</li>
+  <li><strong>Neodstránenie tenzných pásikov</strong> – výrobcovia dodávajú dosky s ochrannými pásikmi, ktoré treba odstrániť pred rezaním, inak zadržiavajú napätie</li>
+  <li><strong>Ponorný rez (plunge cut)</strong> – nikdy, za žiadnych okolností. Vždy najprv vyvŕtať pilotné otvory</li>
+  <li><strong>Nerovný podklad</strong> – podklad musí byť rovný s toleranciou <strong>max. 3\u00A0mm na 3\u00A0m</strong>. Nerovnosti vytvárajú bodové napätie</li>
+  <li><strong>Príliš tesné uloženie</strong> – medzi stenou a doskou musí byť <strong>min. 3\u00A0mm dilatačná medzera</strong></li>
+  <li><strong>Nesprávne lepidlo</strong> – nutné je flexibilné polyuretánové alebo epoxidové lepidlo, nie silikón ani cement</li>
 </ul>
 
 <figure class="article-figure">
@@ -202,18 +202,18 @@ export const ARTICLE_01: BlogArticle = {
   <p>Spolupracujeme výlučne s certifikovanými kamenármi, ktorí prešli školením pre prácu so sinterovaným kameňom. Pred každou inštaláciou prebehne meranie na mieste a kontrola podkladu.</p>
 </div>
 
-<h2 id="priklad-z-praxe">Príklad z praxe: keď 90° hrana stojí 800 €</h2>
+<h2 id="priklad-z-praxe">Príklad z praxe: keď 90° hrana stojí 800\u00A0€</h2>
 
 <div class="article-case-study">
   <span class="case-study-label">Z praxe</span>
   <h3>Klientka z Bratislavy a jej kuchynský ostrov</h3>
-  <p>Predstavte si situáciu: klientka z Bratislavy si nechala spraviť kuchynský ostrov zo sinterovaného kameňa u iného dodávateľa. Vybrala si krásny mramorový dizajn, 12 mm hrúbku a ostrú 90° hranu — pretože <em>„vyzerá modernejšie.“</em></p>
-  <p>Po troch mesiacoch spadol na hranu ťažký liatinový hrniec. Výsledok? <strong class="gold">Chip dlhý 15 mm</strong> na najviditeľnejšom mieste ostrova.</p>
-  <p>Oprava stála <strong>280 €</strong> a aj po nej zostala viditeľná stopa. Keby mala od začiatku aspoň 2 mm chamfer, hrniec by sa odrazil bez stopy.</p>
+  <p>Predstavte si situáciu: klientka z Bratislavy si nechala spraviť kuchynský ostrov zo sinterovaného kameňa u iného dodávateľa. Vybrala si krásny mramorový dizajn, 12\u00A0mm hrúbku a ostrú 90° hranu – pretože <em>„vyzerá modernejšie.“</em></p>
+  <p>Po troch mesiacoch spadol na hranu ťažký liatinový hrniec. Výsledok? <strong class="gold">Chip dlhý 15\u00A0mm</strong> na najviditeľnejšom mieste ostrova.</p>
+  <p>Oprava stála <strong>280\u00A0€</strong> a aj po nej zostala viditeľná stopa. Keby mala od začiatku aspoň 2\u00A0mm chamfer, hrniec by sa odrazil bez stopy.</p>
 </div>
 
 <div class="article-highlight">
-  <p><strong>Poučenie:</strong> Profil hrany stojí pri výrobe <strong>0 € navyše</strong>. Oprava chipu stojí stovky. Výmena celého segmentu tisíce.</p>
+  <p><strong>Poučenie:</strong> Profil hrany stojí pri výrobe <strong>0\u00A0€ navyše</strong>. Oprava chipu stojí stovky. Výmena celého segmentu tisíce.</p>
 </div>
 
 <h2 id="ako-v-orostone-predchadzame">Ako týmto problémom predchádzame v Orostone?</h2>
@@ -221,7 +221,7 @@ export const ARTICLE_01: BlogArticle = {
 <p>Každý problém opísaný vyššie má jedno spoločné: <strong class="gold">dá sa mu predísť</strong>. V Orostone sme spolu s partnerskými kamenármi vybudovali systém kontroly kvality, ktorý pokrýva celý životný cyklus dosky.</p>
 
 <h3>1. Konzultácia a návrh</h3>
-<p>Každý projekt začíname odborným posúdením — nie predajným telefonátom.</p>
+<p>Každý projekt začíname odborným posúdením – nie predajným telefonátom.</p>
 <ul>
   <li>Odporúčame správnu hrúbku na základe veľkosti dosky, počtu výrezov a typu použitia</li>
   <li>Navrhujeme profily hrán, ktoré kombinujú estetiku s odolnosťou</li>
@@ -231,13 +231,13 @@ export const ARTICLE_01: BlogArticle = {
 <h3>2. Profesionálna fabrikácia</h3>
 <p>Spolupracujeme výlučne s fabrikantmi vybavenými CNC strojmi na sinterovaný kameň.</p>
 <ul>
-  <li>Každý výrez má kontrolovaný rádius rohov — minimum 5 mm, štandardne 10 mm</li>
+  <li>Každý výrez má kontrolovaný rádius rohov – minimum 5\u00A0mm, štandardne 10\u00A0mm</li>
   <li>Rezanie v dvoch prechodoch je u našich partnerov štandard, nie výnimka</li>
-  <li>Hrany sú vždy minimálne skosené — aj keď chcete „ostrý“ vzhľad</li>
+  <li>Hrany sú vždy minimálne skosené – aj keď chcete „ostrý“ vzhľad</li>
 </ul>
 
 <h3>3. Kontrolovaná preprava</h3>
-<p>Platne aj hotové dosky sa prepravujú vo vertikálnych A-rámoch — nie bežnou paletovou prepravou.</p>
+<p>Platne aj hotové dosky sa prepravujú vo vertikálnych A-rámoch – nie bežnou paletovou prepravou.</p>
 <ul>
   <li>Dosky sa vezú vertikálne (na stojato) v profesionálnych A-rámoch</li>
   <li>Každá doska je individuálne zabalená s penou a ochrannou fóliou</li>
@@ -253,7 +253,7 @@ export const ARTICLE_01: BlogArticle = {
 </ul>
 
 <h3>5. Záruka a popredajný servis</h3>
-<p>Naša starostlivosť nekončí inštaláciou — ostávame vaším kontaktom aj po nej.</p>
+<p>Naša starostlivosť nekončí inštaláciou – ostávame vaším kontaktom aj po nej.</p>
 <ul>
   <li>Na materiál platí záruka 24\u00A0mesiacov, na výrobu a montáž dáva záruku kamenár, ktorý ich realizoval</li>
   <li>V prípade akéhokoľvek problému reagujeme do 48 hodín</li>
@@ -262,7 +262,7 @@ export const ARTICLE_01: BlogArticle = {
 
 <h2 id="zaver">Čo si z tohto odniesť?</h2>
 
-<p>Sinterovaný kameň je vynikajúci materiál — ale len vtedy, keď sa s ním pracuje správne. Väčšina problémov, o ktorých sme písali, <strong class="gold">nie je dôsledkom zlého materiálu</strong>. Je to zlé spracovanie, nesprávna hrúbka alebo neprofesionálna inštalácia.</p>
+<p>Sinterovaný kameň je vynikajúci materiál – ale len vtedy, keď sa s ním pracuje správne. Väčšina problémov, o ktorých sme písali, <strong class="gold">nie je dôsledkom zlého materiálu</strong>. Je to zlé spracovanie, nesprávna hrúbka alebo neprofesionálna inštalácia.</p>
 
 <p>Ak zvažujete sinterovaný kameň pre svoju kuchyňu alebo kúpeľňu, <strong class="gold">nerozhodujte sa len podľa ceny vzorky</strong>. Pýtajte sa na presné postupy spracovania, profily hrán, spôsob prepravy a skúsenosti inštalatérov.</p>
 
@@ -275,47 +275,47 @@ export const ARTICLE_01: BlogArticle = {
     faqs: [
       {
         question: 'Praskne sinterovaný kameň ľahko?',
-        answer: 'Nie, za normálnych podmienok nepraskne. Praskliny vznikajú takmer výlučne pri nesprávnych výrezoch (ostré 90° rohy), nedostatočnej vzdialenosti otvorov od hrán, alebo pri zlej inštalácii. Pri dodržaní technických noriem — rádius rohov min. 5 mm, vzdialenosti min. 50 mm — je riziko minimálne.',
+        answer: 'Nie, za normálnych podmienok nepraskne. Praskliny vznikajú takmer výlučne pri nesprávnych výrezoch (ostré 90° rohy), nedostatočnej vzdialenosti otvorov od hrán alebo pri zlej inštalácii. Pri dodržaní technických noriem – rádius rohov min. 5\u00A0mm, vzdialenosti min. 50\u00A0mm – je riziko minimálne.',
       },
       {
         question: 'Aký profil hrany je najlepší pre kuchynskú dosku?',
-        answer: 'Ostrá 90° hrana je jednoznačne najkrajšia a takmer všetci zákazníci si ju vyberajú. Pre maximálnu životnosť odporúčame jemný 2 mm chamfer, ktorý vizuálne zachová ostrý vzhľad a zároveň chráni hranu. Pre náročnejšie prostredie sú vhodné aj half-bullnose alebo skosená hrana.',
+        answer: 'Ostrá 90° hrana je jednoznačne najkrajšia a takmer všetci zákazníci si ju vyberajú. Pre maximálnu životnosť odporúčame jemný 2\u00A0mm chamfer, ktorý vizuálne zachová ostrý vzhľad a zároveň chráni hranu. Pre náročnejšie prostredie sú vhodné aj half-bullnose alebo skosená hrana.',
       },
       {
-        question: 'Môžem použiť 12 mm dosku na kuchynský ostrov?',
-        answer: 'Áno, pri správnom plánovaní. Kľúčové je zabezpečiť dostatočnú podkladovú konštrukciu (plný podklad alebo rám skriniek bez medzier), dodržať max. previs 200 mm a správne naplánovať výrezy. V Orostone pracujeme výhradne s 12 mm — pre ostrovy vždy posúdime projekt individuálne.',
+        question: 'Môžem použiť 12\u00A0mm dosku na kuchynský ostrov?',
+        answer: 'Áno, pri správnom plánovaní. Kľúčové je zabezpečiť dostatočnú podkladovú konštrukciu (plný podklad alebo rám skriniek bez medzier), dodržať max. previs 200\u00A0mm a správne naplánovať výrezy. V Orostone pracujeme výhradne s 12\u00A0mm – pre ostrovy vždy posúdime projekt individuálne.',
       },
       {
         question: 'Čo ak spadne hrniec na hranu dosky?',
-        answer: 'Pri zaoblenom profile (half-bullnose, bevel) je riziko nízke — sinterovaný kameň má tvrdosť 6–7 na Mohsovej stupnici. Pri ostrej 90° hrane môže vzniknúť drobný odštiepok. Takéto poškodenie vie partnerský kamenár opraviť epoxidovým tmelom vo farbe dosky priamo na mieste.',
+        answer: 'Pri zaoblenom profile (half-bullnose, bevel) je riziko nízke – sinterovaný kameň má tvrdosť 6 – 7 na Mohsovej stupnici. Pri ostrej 90° hrane môže vzniknúť drobný odštiepok. Takéto poškodenie vie partnerský kamenár opraviť epoxidovým tmelom vo farbe dosky priamo na mieste.',
       },
       {
         question: 'Dá sa chipovanie opraviť?',
-        answer: 'Áno, drobné odštiepky (do 3–4\u00A0mm) kamenár opraví špeciálnym farebným epoxidovým tmelom. Oprava je viditeľná pri detailnom pohľade, ale pri bežnom používaní ju nepostrehnete. Väčšie poškodenia môžu vyžadovať prebrúsenie alebo výmenu segmentu dosky.',
+        answer: 'Áno, drobné odštiepky (do 3 – 4\u00A0mm) kamenár opraví špeciálnym farebným epoxidovým tmelom. Oprava je viditeľná pri detailnom pohľade, ale pri bežnom používaní ju nepostrehnete. Väčšie poškodenia môžu vyžadovať prebrúsenie alebo výmenu segmentu dosky.',
       },
       {
         question: 'Prečo sa nedá robiť ponorný rez?',
-        answer: 'Ponorný rez generuje extrémne namáhanie v bode, kde kotúč vstupuje do materiálu. Sinterovaný kameň nemá kryštálovú štruktúru ako granit — je to vysoko komprimovaná keramika. Bodové napätie spôsobuje mikrotrhliny, ktoré sa môžu rozšíriť na plnú prasklinu. Preto sa pred výrezom najprv vŕtajú pilotné otvory.',
+        answer: 'Ponorný rez generuje extrémne namáhanie v bode, kde kotúč vstupuje do materiálu. Sinterovaný kameň nemá kryštálovú štruktúru ako granit – je to vysoko komprimovaná keramika. Bodové napätie spôsobuje mikrotrhliny, ktoré sa môžu rozšíriť na plnú prasklinu. Preto sa pred výrezom najprv vŕtajú pilotné otvory.',
       },
       {
         question: 'Aký je rozdiel medzi sinterovaným kameňom a kremeňom pri chipovaní?',
-        answer: 'Kremeňový kompozit obsahuje živicu, ktorá mu dáva pružnosť — preto je pri chipovaní odpúšťajúcejší. Sinterovaný kameň je čistá keramika bez živice, čo mu dáva lepšiu odolnosť voči teplu a škvrnám, ale nižšiu ohybovú pružnosť. Preto je správny profil hrán pri sinterovanom kameni dôležitejší.',
+        answer: 'Kremenný kompozit obsahuje živicu, ktorá mu dáva pružnosť – preto je voči chipovaniu odolnejší. Sinterovaný kameň je čistá keramika bez živice, čo mu dáva lepšiu odolnosť voči teplu a škvrnám, ale nižšiu ohybovú pružnosť. Preto je správny profil hrán pri sinterovanom kameni dôležitejší.',
       },
       {
         question: 'Koľko stojí oprava praskliny?',
-        answer: 'Malé praskliny sa dajú stabilizovať a vizuálne opraviť za 100–300 €. Ak prasklina prechádza celou doskou alebo zasahuje výrez, je nutná výmena segmentu, čo môže stáť od 500 € vrátane demontáže a novej inštalácie. Preto je prevencia vždy lacnejšia.',
+        answer: 'Malé praskliny sa dajú stabilizovať a vizuálne opraviť za 100 – 300\u00A0€. Ak prasklina prechádza celou doskou alebo zasahuje výrez, je nutná výmena segmentu, čo môže stáť od 500\u00A0€ vrátane demontáže a novej inštalácie. Preto je prevencia vždy lacnejšia.',
       },
       {
-        question: 'Je 3 mm sinterovaný kameň vhodný na kuchynskú dosku?',
-        answer: 'Rozhodne nie. 3 mm dosky sú určené výlučne na obklady stien, fasády, dvere a dekoratívne aplikácie. Nemajú dostatočnú štrukturálnu pevnosť pre kuchynské pracovné povrchy. Minimálna hrúbka pre kuchynskú dosku je 12 mm.',
+        question: 'Je 3\u00A0mm sinterovaný kameň vhodný na kuchynskú dosku?',
+        answer: 'Rozhodne nie. 3\u00A0mm dosky sú určené výlučne na obklady stien, fasády, dvere a dekoratívne aplikácie. Nemajú dostatočnú štrukturálnu pevnosť pre kuchynské pracovné povrchy. Minimálna hrúbka pre kuchynskú dosku je 12\u00A0mm.',
       },
       {
         question: 'Ako spoznám, že inštalatér nemá skúsenosti so sinterovaným kameňom?',
-        answer: 'Varovné signály: používa segmentovaný diamantový kotúč namiesto kontinuálneho, robí ponorné rezy, nechladí vodou, neoveruje rovnosť podkladu, alebo tvrdí, že sinterovaný kameň sa spracúva rovnako ako granit. Každý z týchto bodov znamená vyššie riziko poškodenia.',
+        answer: 'Varovné signály: používa segmentovaný diamantový kotúč namiesto kontinuálneho, robí ponorné rezy, nechladí vodou, neoveruje rovnosť podkladu alebo tvrdí, že sinterovaný kameň sa spracúva rovnako ako granit. Každý z týchto bodov znamená vyššie riziko poškodenia.',
       },
       {
         question: 'Aký maximálny previs môže mať doska bez podpery?',
-        answer: 'Pre 12 mm dosky odporúčame max 200 mm (cca 1/3 hĺbky dosky). Ak potrebujete väčší previs — napríklad pre barové sedenie — je nutná konštrukčná podpera (kovová konzola). Toto pravidlo dodržiavame bez výnimiek.',
+        answer: 'Pre 12\u00A0mm dosky odporúčame max. 200\u00A0mm (cca 1/3 hĺbky dosky). Ak potrebujete väčší previs – napríklad pre barové sedenie – je nutná konštrukčná podpera (kovová konzola). Toto pravidlo dodržiavame bez výnimiek.',
       },
       {
         question: 'Môžem si nechať dosku prepraviť bežnou firmou?',
@@ -323,7 +323,7 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Čo je dilatačná medzera a prečo je dôležitá?',
-        answer: 'Dilatačná medzera (min. 3 mm) je priestor medzi doskou a stenou. Sinterovaný kameň sa pri teplotných zmenách minimálne rozťahuje a sťahuje. Bez medzery by tlak od steny mohol spôsobiť prasknutie. Medzera sa po inštalácii zakryje silikónovým tmelom alebo lištou.',
+        answer: 'Dilatačná medzera (min. 3\u00A0mm) je priestor medzi doskou a stenou. Sinterovaný kameň sa pri teplotných zmenách minimálne rozťahuje a sťahuje. Bez medzery by tlak od steny mohol spôsobiť prasknutie. Medzera sa po inštalácii zakryje silikónovým tmelom alebo lištou.',
       },
       {
         question: 'Aké lepidlo sa používa na inštaláciu?',
