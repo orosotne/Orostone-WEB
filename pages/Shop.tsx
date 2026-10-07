@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useShopifyProducts } from '../hooks/useShopifyProducts';
-import { OFFER_VALID_FROM } from '../lib/productSchema';
+import { OFFER_VALID_FROM, SHIPPING_DETAILS_LD, RETURN_POLICY_LD } from '../lib/productSchema';
 import { calculateSlabPrice } from '../lib/slab';
 import { SEOHead, OROSTONE_ORGANIZATION_LD } from '../components/UI/SEOHead';
 import { HomeHero } from '../components/Home/HomeHero';
@@ -86,24 +86,8 @@ export const Shop = () => {
                     : "https://schema.org/PreOrder",
                   "itemCondition": "https://schema.org/NewCondition",
                   "seller": { "@type": "Organization", "name": "OROSTONE s.r.o." },
-                  "shippingDetails": {
-                    "@type": "OfferShippingDetails",
-                    "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "SK" },
-                    "shippingRate": { "@type": "MonetaryAmount", "value": "150", "currency": "EUR" },
-                    "deliveryTime": {
-                      "@type": "ShippingDeliveryTime",
-                      "handlingTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 3, "unitCode": "d" },
-                      "transitTime": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 2, "unitCode": "d" }
-                    }
-                  },
-                  "hasMerchantReturnPolicy": {
-                    "@type": "MerchantReturnPolicy",
-                    "applicableCountry": "SK",
-                    "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-                    "merchantReturnDays": 14,
-                    "returnMethod": "https://schema.org/ReturnByMail",
-                    "returnFees": "https://schema.org/ReturnFeesCustomerResponsibility"
-                  }
+                  "shippingDetails": SHIPPING_DETAILS_LD,
+                  "hasMerchantReturnPolicy": RETURN_POLICY_LD
                 },
               },
             })),

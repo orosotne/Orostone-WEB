@@ -22,6 +22,34 @@ const BASE_URL = 'https://orostone.sk';
  */
 export const OFFER_VALID_FROM = '2026-01-01';
 
+/** Shipping exactly as the Shopify checkout offers it (both options appear for any Slovak address); see /doprava. */
+const SHIPPING_OPTIONS = [
+  { name: 'Dovoz Bratislava a okolie', rate: '150' },
+  { name: 'Územie SR', rate: '350' },
+] as const;
+
+export const SHIPPING_DETAILS_LD = SHIPPING_OPTIONS.map(({ name, rate }) => ({
+  '@type': 'OfferShippingDetails',
+  name,
+  shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'SK' },
+  shippingRate: { '@type': 'MonetaryAmount', value: rate, currency: 'EUR' },
+  deliveryTime: {
+    '@type': 'ShippingDeliveryTime',
+    // stock slabs ship within 5 working days of payment (/doprava)
+    handlingTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 5, unitCode: 'd' },
+    transitTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 2, unitCode: 'd' },
+  },
+}));
+
+/** 14-day withdrawal, return paid by the customer. No returnMethod: slabs go back by carrier pickup, not by mail. */
+export const RETURN_POLICY_LD = {
+  '@type': 'MerchantReturnPolicy',
+  applicableCountry: 'SK',
+  returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+  merchantReturnDays: 14,
+  returnFees: 'https://schema.org/ReturnFeesCustomerResponsibility',
+};
+
 /** Minimal product shape the builder needs (subset of ShopProduct / fallback JSON). */
 export interface ProductSchemaSource {
   id: string;
@@ -123,24 +151,8 @@ export function buildProductJsonLd(
       availability: product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/PreOrder',
       itemCondition: 'https://schema.org/NewCondition',
       seller: { '@type': 'Organization', name: 'OROSTONE s.r.o.' },
-      shippingDetails: {
-        '@type': 'OfferShippingDetails',
-        shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'SK' },
-        shippingRate: { '@type': 'MonetaryAmount', value: '150', currency: 'EUR' },
-        deliveryTime: {
-          '@type': 'ShippingDeliveryTime',
-          handlingTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 3, unitCode: 'd' },
-          transitTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 2, unitCode: 'd' },
-        },
-      },
-      hasMerchantReturnPolicy: {
-        '@type': 'MerchantReturnPolicy',
-        applicableCountry: 'SK',
-        returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
-        merchantReturnDays: 14,
-        returnMethod: 'https://schema.org/ReturnByMail',
-        returnFees: 'https://schema.org/ReturnFeesCustomerResponsibility',
-      },
+      shippingDetails: SHIPPING_DETAILS_LD,
+      hasMerchantReturnPolicy: RETURN_POLICY_LD,
     },
     additionalProperty: [
       { '@type': 'PropertyValue', name: 'Hrúbka', value: product.thickness },

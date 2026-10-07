@@ -101,9 +101,12 @@ for (const route of routes) {
       if (!product.offers?.priceValidUntil) fail(`${route.path}: Offer.priceValidUntil missing`);
       // Merchant listing fields GSC flags when absent (doplnené 21.9.2026)
       if (!product.offers?.validFrom) fail(`${route.path}: Offer.validFrom missing`);
-      const delivery = product.offers?.shippingDetails?.deliveryTime;
-      if (!delivery?.handlingTime) fail(`${route.path}: Offer.shippingDetails.deliveryTime.handlingTime missing`);
-      if (!delivery?.transitTime) fail(`${route.path}: Offer.shippingDetails.deliveryTime.transitTime missing`);
+      const shipping = product.offers?.shippingDetails;
+      for (const option of Array.isArray(shipping) ? shipping : [shipping]) {
+        const delivery = option?.deliveryTime;
+        if (!delivery?.handlingTime) fail(`${route.path}: Offer.shippingDetails.deliveryTime.handlingTime missing`);
+        if (!delivery?.transitTime) fail(`${route.path}: Offer.shippingDetails.deliveryTime.transitTime missing`);
+      }
       if (!product.offers?.hasMerchantReturnPolicy) {
         fail(`${route.path}: Offer.hasMerchantReturnPolicy missing`);
       }
