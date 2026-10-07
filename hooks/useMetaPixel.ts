@@ -19,12 +19,17 @@ function getInternalMember(): string | null {
 }
 const internalMember = getInternalMember();
 
+// Purchase fires on /objednavka-dokoncena, a fresh page load after Shopify
+// checkout, so it usually runs before the pixel below exists (that waits for
+// the first interaction). trackMetaEvent holds it here until init.
+let heldPurchase: Record<string, unknown> | undefined;
+
 /**
  * Loads Meta Pixel only when:
  * - VITE_META_PIXEL_ID is set
  * - Cookie consent for marketing is granted
  *
- * Also tracks PageView on every SPA route change.
+ * Sends a held Purchase right after init. Also tracks PageView on every SPA route change.
  */
 export function useMetaPixel(): void {
   const { preferences } = useCookies();
@@ -58,6 +63,10 @@ export function useMetaPixel(): void {
       window.fbq!('init', PIXEL_ID);
     }
     window.fbq!('track', 'PageView', internalMember ? { internal_traffic: internalMember } : undefined);
+    if (heldPurchase) {
+      window.fbq!('track', 'Purchase', heldPurchase);
+      heldPurchase = undefined;
+    }
 
     const script = document.createElement('script');
     script.async = true;
@@ -78,7 +87,8 @@ export function useMetaPixel(): void {
 }
 
 /**
- * Track a Meta Pixel event. No-op if Pixel is not loaded.
+ * Track a Meta Pixel event. No-op if Pixel is not loaded — except Purchase,
+ * which useMetaPixel sends once the pixel initializes (with marketing consent).
  */
 export function trackMetaEvent(eventName: string, params?: Record<string, unknown>): void {
   if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
@@ -87,6 +97,8 @@ export function trackMetaEvent(eventName: string, params?: Record<string, unknow
     } else {
       window.fbq('track', eventName);
     }
+  } else if (eventName === 'Purchase') {
+    heldPurchase = params ?? {};
   }
 }
 
