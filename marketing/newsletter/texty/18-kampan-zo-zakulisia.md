@@ -25,7 +25,7 @@ Dobrý deň,
 prírodný kameň sa tvorí milióny rokov. Sinterovaný kameň vzniká podobne – pôsobením tlaku a teploty na minerály. Celý proces však trvá len pár hodín. Takto prebieha.
 
 ### Karta (fotka, štítok, nadpis, veta)
-[alt fotky: Prírodné minerály: kremeň, živec, íl a kovové oxidy]
+[alt fotky: Kopy surovín v hale: kremenný piesok, živec, kaolín a íl]
 01 · Suroviny
 Prírodné minerály
 Kremeň, živec, íl a kovové oxidy. Žiadne živice ani syntetické spojivá.
@@ -37,7 +37,7 @@ Tlak 10 000 až 25 000 ton
 Minerálna zmes sa zlisuje do veľkoformátovej platne.
 
 ### Karta (fotka, štítok, nadpis, veta)
-[alt fotky: Pec, v ktorej sa platne spekajú pri teplote nad 1 200 °C]
+[alt fotky: Platne vchádzajú na valčekoch do pece, v ktorej sa spekajú pri teplote nad 1 200 °C]
 03 · Spekanie
 Viac než 1 200 °C
 Častice sa spoja a vznikne celistvý povrch bez pórov.

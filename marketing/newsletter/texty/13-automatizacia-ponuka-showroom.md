@@ -3,7 +3,7 @@
 - **Typ:** Automatizácia · Dopyt → ponuka 3/4
 - **Kedy sa posiela:** 5 dní po odoslaní cenovej ponuky; zastaviť pri objednávke alebo odpovedi klienta
 - **Predmet:** Pozrite si platne naživo
-- **Preheader:** Ukážeme realizáciu s podobným riešením. V showroome v Bošanoch vám pripravíme celé platne.
+- **Preheader:** V showroome v Bošanoch vám pripravíme celé platne. Uvidíte kresbu v skutočnej veľkosti.
 - **Šablóna:** `sablony/13-automatizacia-ponuka-showroom.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí
@@ -20,8 +20,8 @@ Rozhodnite sa
 pri celej platni.
 
 ### Hlavná fotka (popis na fotke)
-[alt fotky: Kuchyňa v tvare U so svetlou pracovnou doskou zo sinterovaného kameňa]
-● Realizácia
+[alt fotky: Renesančný kaštieľ v Bošanoch, v ktorom je showroom Orostone]
+● Showroom v Bošanoch
 
 ### Text
 Dobrý deň,
@@ -44,7 +44,7 @@ Hrany, výrezy, údržba aj termíny. Bez ponáhľania.
 ### Tlačidlo (CTA)
 Dohodnúť návštevu
 SNP 113/1, Bošany. Návšteva je bezplatná a nezáväzná.
-Pozrieť ďalšie realizácie
+Pozrieť realizácie
 
 ### P. S.
 P. S. · Marián, Orostone

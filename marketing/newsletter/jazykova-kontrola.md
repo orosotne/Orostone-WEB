@@ -153,4 +153,13 @@ Codex pri poslednej kontrole (commit `7d36a0b`) našiel jednu pripomienku. PR bo
 |---|---|---|---|---|---|---|
 | 1 | 21 | Cez víkend a sviatky po dohode na čísle +421 917 588 738. | Cez víkend a sviatky po dohode na telefónnom čísle +421 917 588 738. | štylistika | Spojenie *na čísle* pôsobí v informačnom texte elipticky, *na telefónnom čísle* jednoznačne pomenúva spôsob kontaktu. Pravidlo v `slovnik.md`, sekcia 8, je spresnené. | zapracované |
 
+### Nový obsah (7. 10. 2026, výber fotiek)
+
+S novými fotkami sa zmenil aj text, ktorý skontroluje ďalšie kolo:
+
+- **09** – štítky kariet nesú názvy dekorov (Yabo White, Nero Margiua, Arden Gold); karta 2 má nový text a popis fotky čiernej dosky.
+- **13** – nový preheader, popis fotky kaštieľa, štítok „Showroom v Bošanoch“ a odkaz „Pozrieť realizácie“.
+- **18** – nové popisy fotiek surovín a pece.
+- **21** – nový popis fotky (vianočné pečenie).
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
