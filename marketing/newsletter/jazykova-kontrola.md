@@ -135,4 +135,8 @@ Popri kole 5 pribudol obsah, ktorý skontroluje ďalšie kolo:
 - **06** – tlačidlo vedie priamo na napísanie recenzie na Google.
 - **21** – otváracie hodiny podľa stránky Kontakt a lehota odoslania vzoriek podľa webu.
 
+## Kolo 6 – Codex review v PR #82 (7. 10. 2026, po opravách kola 5)
+
+Codex skontroloval opravy z kola 5 aj nový obsah (01, 02, 03, 06, 20, 21) a nenašiel žiadne pripomienky (commit `c9a27df`). Jazyková kontrola e-mailov 01–21 je tým hotová. Čo ešte treba urobiť pred odoslaním, je v README v stĺpci Stav.
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
