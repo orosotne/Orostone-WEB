@@ -14,7 +14,7 @@ const PAYMENT_MARKS = [
 ] as const;
 
 const TRUST = [
-  { Icon: IconWarranty, title: 'Záruka 24 mesiacov', text: 'Na všetky produkty' },
+  { Icon: IconWarranty, title: '24 mesiacov na reklamáciu', text: 'Zákonná zodpovednosť za vady' },
   { Icon: IconSecurePay, title: 'Bezpečná platba', text: 'Platobnou kartou' },
   { Icon: IconDispatch, title: 'Expedícia do 5 pracovných dní', text: 'Po prijatí platby' },
   { Icon: IconDelivery, title: 'Doručenie po celom Slovensku', text: 'Špeciálna preprava platní' },

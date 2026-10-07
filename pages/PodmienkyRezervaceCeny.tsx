@@ -67,7 +67,7 @@ export const PodmienkyRezervaceCeny = () => {
               </div>
             </SubSection>
             <SubSection number="1.2">
-              ďalej len „Orostone" alebo „obchodník".
+              ďalej len „Orostone“ alebo „obchodník“.
             </SubSection>
           </Section>
 

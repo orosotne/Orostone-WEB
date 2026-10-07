@@ -45,7 +45,7 @@ export const VOP = () => {
             Tieto všeobecné obchodné podmienky upravujú vzťahy medzi spoločnosťou Orostone s.r.o. a jej zákazníkmi pri predaji tovaru prostredníctvom webového sídla <a href="https://orostone.sk" className={LEGAL_LINK}>www.orostone.sk</a>, ako aj pri individuálnych objednávkach realizovaných mimo e-shopu.
           </>
         }
-        actions={<p className="text-[0.9rem] font-normal text-brand-muted">Účinné od: 24. 3. 2026</p>}
+        actions={<p className="text-[0.9rem] font-normal text-brand-muted">Účinné od: 7. 10. 2026</p>}
       />
 
       <LegalLayout toc={TOC}>
@@ -64,18 +64,18 @@ export const VOP = () => {
                 <p>DIČ: 2121930580</p>
                 <p>IČ DPH: SK2121930580</p>
                 <p className="mt-2 text-sm text-brand-muted">Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka č. 167404/B</p>
-                <p className="mt-2">E-mail: <a href="mailto:dopyt@orostone.sk" className={LEGAL_LINK}>dopyt@orostone.sk</a></p>
+                <p className="mt-2">E-mail: <a href="mailto:info@orostone.sk" className={LEGAL_LINK}>info@orostone.sk</a></p>
                 <p>Telefón: <a href="tel:+421917588738" className={LEGAL_LINK}>+421 917 588 738</a></p>
                 <p>Web: <a href="https://orostone.sk" className={LEGAL_LINK}>www.orostone.sk</a></p>
               </div>
             </SubSection>
             <SubSection number="1.2">
-              Tieto všeobecné obchodné podmienky (ďalej len „VOP") upravujú:
+              Tieto všeobecné obchodné podmienky (ďalej len „VOP“) upravujú:
               <br />a) predaj tovaru prostredníctvom e-shopu na webovom sídle <a href="https://orostone.sk" className={LEGAL_LINK}>www.orostone.sk</a>,
               <br />b) predaj tovaru na základe individuálnej písomnej objednávky, cenovej ponuky alebo objednávkového formulára.
             </SubSection>
             <SubSection number="1.3">
-              Kupujúcim je každá fyzická osoba alebo právnická osoba, ktorá uzatvorí s predávajúcim kúpnu zmluvu alebo odošle objednávku (ďalej len „Klient"). Klient, ktorý pri uzatváraní a plnení zmluvy nekoná v rámci predmetu svojej podnikateľskej činnosti, zamestnania alebo povolania, považuje sa za spotrebiteľa (ďalej len „Spotrebiteľ").
+              Kupujúcim je každá fyzická osoba alebo právnická osoba, ktorá uzatvorí s predávajúcim kúpnu zmluvu alebo odošle objednávku (ďalej len „Klient“). Klient, ktorý pri uzatváraní a plnení zmluvy nekoná v rámci predmetu svojej podnikateľskej činnosti, zamestnania alebo povolania, považuje sa za spotrebiteľa (ďalej len „Spotrebiteľ“).
             </SubSection>
             <SubSection number="1.4">
               Spotrebiteľom v zmysle týchto VOP je fyzická osoba, ktorá pri uzatváraní a plnení zmluvy nekoná v rámci predmetu svojej obchodnej činnosti alebo inej podnikateľskej činnosti, zamestnania alebo povolania.
@@ -97,7 +97,7 @@ export const VOP = () => {
           {/* 2. Tovar a jeho vlastnosti */}
           <Section id="tovar-vlastnosti" number="2" title="Tovar a jeho vlastnosti">
             <SubSection number="2.1">
-              Predmetom predaja sú najmä platne sinterovaného kameňa, dlaždice, obkladové materiály, ich vzorky a súvisiaci tovar ponúkaný predávajúcim (ďalej len „Tovar").
+              Predmetom predaja sú najmä platne sinterovaného kameňa, dlaždice, obkladové materiály, ich vzorky a súvisiaci tovar ponúkaný predávajúcim (ďalej len „Tovar“).
             </SubSection>
             <SubSection number="2.2" highlight>
               Klient berie na vedomie, že Tovar je materiál určený na <strong>ďalšie odborné spracovanie, manipuláciu a montáž</strong>, pričom vzhľadom na svoju povahu, hmotnosť, rozmery a spôsob použitia vyžaduje odbornú manipuláciu, odborné rezanie, odborné opracovanie a odbornú montáž.
@@ -283,7 +283,7 @@ export const VOP = () => {
           {/* 8. E-shop a zmluva uzatvorená na diaľku */}
           <Section id="eshop-zmluva" number="8" title="E-shop a zmluva uzatvorená na diaľku">
             <SubSection number="8.1">
-              Predaj prostredníctvom e-shopu sa uskutočňuje ako zmluva uzatvorená na diaľku v zmysle zákona č. 108/2024 Z.z. o ochrane spotrebiteľa.
+              Predaj prostredníctvom e-shopu sa uskutočňuje ako zmluva uzatvorená na diaľku v zmysle zákona č. 108/2024 Z.&nbsp;z. o ochrane spotrebiteľa.
             </SubSection>
             <SubSection number="8.2">
               Pred odoslaním objednávky je Klient povinný oboznámiť sa s obsahom objednávky, cenou, nákladmi na dopravu a týmito VOP.
@@ -300,7 +300,7 @@ export const VOP = () => {
               <br />e) skutočnosti, že Spotrebiteľ znáša náklady na vrátenie Tovaru.
             </SubSection>
             <SubSection number="8.5">
-              Predávajúci zašle Spotrebiteľovi potvrdenie o uzatvorení zmluvy najneskôr pri dodaní Tovaru. Toto potvrdenie obsahuje úplné informácie podľa § 17 zákona č. 108/2024 Z.z., vrátane odkazu na tieto VOP.
+              Predávajúci zašle Spotrebiteľovi potvrdenie o uzatvorení zmluvy najneskôr pri dodaní Tovaru. Toto potvrdenie obsahuje úplné informácie podľa § 17 zákona č. 108/2024 Z.&nbsp;z., vrátane odkazu na tieto VOP.
             </SubSection>
             <SubSection number="8.6">
               Predávajúci uchováva uzatvorenú zmluvu v elektronickej podobe. Zmluva nie je prístupná tretím osobám.
@@ -314,15 +314,15 @@ export const VOP = () => {
             </SubSection>
             <SubSection number="9.2">
               Spotrebiteľ môže odstúpenie od zmluvy zaslať:
-              <br />a) e-mailom na adresu <a href="mailto:dopyt@orostone.sk" className={LEGAL_LINK}>dopyt@orostone.sk</a>,
+              <br />a) e-mailom na adresu <a href="mailto:info@orostone.sk" className={LEGAL_LINK}>info@orostone.sk</a>,
               <br />b) poštou na adresu sídla predávajúceho,
-              <br />c) použitím vzorového formulára na odstúpenie od zmluvy zverejneného na webovom sídle predávajúceho — <Link to="/odstupenie-od-zmluvy" className={LEGAL_LINK}>Formulár na odstúpenie od zmluvy</Link>.
+              <br />c) použitím vzorového formulára na odstúpenie od zmluvy zverejneného na webovom sídle predávajúceho – <Link to="/odstupenie-od-zmluvy" className={LEGAL_LINK}>Formulár na odstúpenie od zmluvy</Link>.
             </SubSection>
             <SubSection number="9.3">
               Spotrebiteľ je povinný najneskôr do 14 dní odo dňa odstúpenia od zmluvy zaslať Tovar späť alebo ho odovzdať predávajúcemu, ak predávajúci nenavrhne jeho osobné vyzdvihnutie.
             </SubSection>
             <SubSection number="9.4" highlight>
-              <strong>Náklady na vrátenie Tovaru znáša Spotrebiteľ</strong>, vrátane priamych nákladov na vrátenie Tovaru. Keďže Tovar vzhľadom na svoju povahu, hmotnosť a rozmery nemožno spravidla vrátiť prostredníctvom bežnej poštovej služby, priame náklady na jeho vrátenie prepravou sa spravidla pohybujú v rozmedzí od <strong>150 € do 350 € s DPH</strong> v závislosti od miesta vyzdvihnutia, počtu kusov a spôsobu prepravy. Presná výška týchto nákladov bude Spotrebiteľovi zobrazená alebo oznámená najneskôr pred odoslaním záväznej objednávky, ak sa konkrétny Tovar vzhľadom na svoju povahu a spôsob dodania riadi individuálnym dopravným režimom.
+              <strong>Náklady na vrátenie Tovaru znáša Spotrebiteľ</strong>, vrátane priamych nákladov na vrátenie Tovaru. Keďže Tovar vzhľadom na svoju povahu, hmotnosť a rozmery nemožno spravidla vrátiť prostredníctvom bežnej poštovej služby, priame náklady na jeho vrátenie prepravou sú spravidla <strong>od 150&nbsp;€ s DPH</strong> v Bratislave a okolí (do 50&nbsp;km) a <strong>od 350&nbsp;€ s DPH</strong> na ostatnom území Slovenskej republiky, v závislosti od miesta vyzdvihnutia, počtu kusov a spôsobu prepravy. Presná výška týchto nákladov bude Spotrebiteľovi zobrazená alebo oznámená najneskôr pred odoslaním záväznej objednávky, ak sa konkrétny Tovar vzhľadom na svoju povahu a spôsob dodania riadi individuálnym dopravným režimom. Vzorky Tovaru možno vrátiť aj bežnou poštovou zásielkou; priame náklady na ich vrátenie znáša Spotrebiteľ.
             </SubSection>
             <SubSection number="9.5">
               Predávajúci vráti Spotrebiteľovi všetky platby, ktoré od neho prijal na základe zmluvy alebo v súvislosti s ňou, vrátane nákladov na dodanie v rozsahu najlacnejšieho bežného spôsobu dodania ponúkaného predávajúcim, a to bez zbytočného odkladu, najneskôr do 14 dní odo dňa doručenia oznámenia o odstúpení od zmluvy.
@@ -340,7 +340,7 @@ export const VOP = () => {
               <br />c) Tovar, ktorý bol po dodaní nenávratne zmiešaný s iným tovarom.
             </SubSection>
             <SubSection number="9.9">
-              Právo Spotrebiteľa na odstúpenie od zmluvy sa riadi zákonom č. 108/2024 Z.z. o ochrane spotrebiteľa.
+              Právo Spotrebiteľa na odstúpenie od zmluvy sa riadi zákonom č. 108/2024 Z.&nbsp;z. o ochrane spotrebiteľa.
             </SubSection>
           </Section>
 
@@ -365,7 +365,7 @@ export const VOP = () => {
               Klient je povinný vadu vytknúť bez zbytočného odkladu po jej zistení. Klient – podnikateľ je povinný prezrieť Tovar s odbornou starostlivosťou bezodkladne po jeho prevzatí a zjavné vady vytknúť bezodkladne, najneskôr pri prevzatí Tovaru alebo bezprostredne po ňom; skryté vady je povinný vytknúť bez zbytočného odkladu po ich zistení. Pri Spotrebiteľovi sa práva zo zodpovednosti za vady spravujú kogentnými ustanoveniami právnych predpisov; tým nie je dotknutá povinnosť Spotrebiteľa vytknúť vadu bez zbytočného odkladu po jej zistení.
             </SubSection>
             <SubSection number="10.4">
-              Reklamáciu vady je potrebné uplatniť písomne, najmä e-mailom na <a href="mailto:dopyt@orostone.sk" className={LEGAL_LINK}>dopyt@orostone.sk</a>, a uviesť:
+              Reklamáciu vady je potrebné uplatniť písomne, najmä e-mailom na <a href="mailto:info@orostone.sk" className={LEGAL_LINK}>info@orostone.sk</a>, a uviesť:
               <br />a) identifikáciu objednávky alebo faktúry,
               <br />b) popis vady,
               <br />c) dátum zistenia vady,
@@ -434,7 +434,7 @@ export const VOP = () => {
               Spotrebiteľ má právo obrátiť sa na predávajúceho so žiadosťou o nápravu, ak nie je spokojný so spôsobom, ktorým predávajúci vybavil jeho reklamáciu alebo ak sa domnieva, že predávajúci porušil jeho práva.
             </SubSection>
             <SubSection number="14.2">
-              Ak predávajúci na žiadosť Spotrebiteľa odpovie zamietavo alebo na ňu neodpovie do 30 dní odo dňa jej odoslania, Spotrebiteľ má právo podať návrh na začatie alternatívneho riešenia sporu (ďalej len „ARS") príslušnému subjektu ARS. Návrh na začatie ARS sa podáva písomne na adresu subjektu ARS alebo prostredníctvom jeho webového sídla.
+              Ak predávajúci na žiadosť Spotrebiteľa odpovie zamietavo alebo na ňu neodpovie do 30 dní odo dňa jej odoslania, Spotrebiteľ má právo podať návrh na začatie alternatívneho riešenia sporu (ďalej len „ARS“) príslušnému subjektu ARS. Návrh na začatie ARS sa podáva písomne na adresu subjektu ARS alebo prostredníctvom jeho webového sídla.
             </SubSection>
             <SubSection number="14.3">
               Subjektom alternatívneho riešenia sporov je najmä Slovenská obchodná inšpekcia alebo iný oprávnený subjekt zapísaný v zozname subjektov alternatívneho riešenia sporov.
@@ -477,7 +477,7 @@ export const VOP = () => {
               Predávajúci je oprávnený tieto VOP meniť alebo dopĺňať. Na zmluvný vzťah sa použije znenie VOP účinné v čase odoslania objednávky, ak kogentný právny predpis neustanovuje inak.
             </SubSection>
             <SubSection number="16.5">
-              Tieto VOP nadobúdajú platnosť a účinnosť dňa <strong>24. 3. 2026</strong>.
+              Tieto VOP nadobúdajú platnosť a účinnosť dňa <strong>7. 10. 2026</strong>.
             </SubSection>
           </Section>
 
@@ -489,7 +489,7 @@ export const VOP = () => {
             Orostone s.r.o. • Landererova 8, 811 09 Bratislava • IČO: 55 254 772 • DIČ: 2121930580
           </p>
           <p className="mt-2 text-xs text-brand-muted">
-            V Bratislave, 24. 3. 2026 — JUDr. Martin Miškeje, konateľ Orostone s.r.o.
+            V Bratislave, 7. 10. 2026 – JUDr. Martin Miškeje, konateľ Orostone s.r.o.
           </p>
         </div>
       </LegalLayout>

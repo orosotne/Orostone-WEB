@@ -353,7 +353,7 @@ const STATS = [
   { value: '150+', label: 'Realizácií' },
   { value: '12', label: 'Dekorov' },
   { value: '10–15', label: 'Pracovných dní' },
-  { value: '24', label: 'Mesiacov záruky' },
+  { value: '24', label: 'Mesiacov na reklamáciu' },
 ];
 
 const STEPS = [

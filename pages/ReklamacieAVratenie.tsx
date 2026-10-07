@@ -64,7 +64,7 @@ export const ReklamacieAVratenie: React.FC = () => {
                   <div>
                     <h3 className="mb-2 text-[1.1rem] font-semibold text-brand-dark">Zodpovednosť sa nevzťahuje na</h3>
                     <ul className="space-y-1 text-[0.95rem] font-light text-brand-dark/85">
-                      <li>• Neodborná manipulácia, rezanie, opracovanie alebo montáž</li>
+                      <li>• Neodbornú manipuláciu, rezanie, opracovanie alebo montáž</li>
                       <li>• Nevhodné montážne postupy, podklady, lepidlá, náradie alebo technológie</li>
                       <li>• Mechanické poškodenie po prevzatí tovaru</li>
                       <li>• Použitie nevhodných chemických prípravkov</li>
@@ -187,7 +187,7 @@ export const ReklamacieAVratenie: React.FC = () => {
                 <strong>Náklady na vrátenie tovaru znáša spotrebiteľ.</strong> Keďže veľkoformátové platne vzhľadom na svoju povahu, hmotnosť a rozmery nemožno spravidla vrátiť bežnou poštovou službou, vracajú sa primeranou prepravou.
               </p>
               <p className="mb-3 text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
-                Priame náklady na vrátenie sa spravidla pohybujú v rozmedzí <strong className="text-brand-dark">150 € až 350 € s DPH</strong> v závislosti od miesta vyzdvihnutia, počtu kusov a spôsobu dopravy.
+                Priame náklady na vrátenie platní sú spravidla <strong className="text-brand-dark">od 150&nbsp;€ s DPH</strong> v Bratislave a okolí (do 50&nbsp;km) a <strong className="text-brand-dark">od 350&nbsp;€ s DPH</strong> na ostatnom území Slovenska, v závislosti od miesta vyzdvihnutia, počtu kusov a spôsobu dopravy. Vzorky môžete vrátiť aj bežnou poštovou zásielkou.
               </p>
             </div>
 
@@ -217,7 +217,7 @@ export const ReklamacieAVratenie: React.FC = () => {
                   <div>
                     <h3 className="mb-1 text-[1.1rem] font-semibold text-brand-dark">Vzorový formulár na odstúpenie od zmluvy</h3>
                     <p className="text-sm font-light text-brand-muted">
-                      Podľa zákona č. 108/2024 Z.z. o ochrane spotrebiteľa
+                      Podľa zákona č. 108/2024 Z.&nbsp;z. o ochrane spotrebiteľa
                     </p>
                   </div>
                 </div>
@@ -241,7 +241,7 @@ export const ReklamacieAVratenie: React.FC = () => {
             <div className="rounded-r-[3px] border-l-2 border-brand-dark bg-brand-light p-6 sm:p-8">
               <div className="flex items-start gap-3">
                 <div>
-                  <h3 className="mb-2 text-[1.1rem] font-semibold text-brand-dark">Dôležité — skontrolujte tovar pri prevzatí</h3>
+                  <h3 className="mb-2 text-[1.1rem] font-semibold text-brand-dark">Dôležité – skontrolujte tovar pri prevzatí</h3>
                   <p className="text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
                     Pri prevzatí zásielky si dôkladne skontrolujte stav balenia aj samotného tovaru. Viditeľné poškodenie je potrebné <strong>bezodkladne zaznamenať v dodacom liste</strong> alebo inom prepravnom doklade dopravcu a zdokumentovať fotografiami. Poškodenie pri doprave, ktoré nebolo zaznamenané pri prevzatí, môže byť následne podstatne ťažšie preukázateľné.
                   </p>

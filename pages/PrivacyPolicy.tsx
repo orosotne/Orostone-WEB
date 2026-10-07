@@ -42,8 +42,8 @@ export const PrivacyPolicy = () => {
           {/* 1. Prevádzkovateľ */}
           <LegalSection id="prevadzkovatel" number="1" title="Prevádzkovateľ" subtitle="Kto spracováva vaše údaje">
               <p>
-                Prevádzkovateľom osobných údajov podľa § 5 písm. o) zákona č. 18/2018 Z.z.
-                o ochrane osobných údajov v znení neskorších predpisov (ďalej len „Zákon") je:
+                Prevádzkovateľom osobných údajov podľa § 5 písm. o) zákona č. 18/2018 Z.&nbsp;z.
+                o ochrane osobných údajov v znení neskorších predpisov (ďalej len „Zákon“) je:
               </p>
               <div className={`${LEGAL_BOX} p-6 font-normal`}>
                 <p className="text-brand-dark text-lg mb-2">Orostone s.r.o.</p>
@@ -72,39 +72,32 @@ export const PrivacyPolicy = () => {
                     <tr>
                       <td className="py-3 px-3 font-semibold text-brand-dark align-top">Vybavenie objednávky</td>
                       <td className="py-3 px-3 align-top">Spracovanie a doručenie objednaného tovaru</td>
-                      <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. b) — plnenie zmluvy</td>
+                      <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. b) – plnenie zmluvy</td>
                     </tr>
                     <tr>
                       <td className="py-3 px-3 font-semibold text-brand-dark align-top">Komunikácia</td>
                       <td className="py-3 px-3 align-top">Informovanie o stave objednávky, odpovede na dopyty a cenovú ponuku</td>
-                      <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. b) — plnenie zmluvy / čl. 6 ods. 1 písm. f) — oprávnený záujem (vybavenie dopytu zákazníka a poskytnutie cenovej ponuky)</td>
+                      <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. b) – plnenie zmluvy / čl. 6 ods. 1 písm. f) – oprávnený záujem (vybavenie dopytu zákazníka a poskytnutie cenovej ponuky)</td>
                     </tr>
                     <tr>
                       <td className="py-3 px-3 font-semibold text-brand-dark align-top">Zákonné povinnosti</td>
                       <td className="py-3 px-3 align-top">Vedenie účtovníctva, plnenie daňových a archivačných povinností</td>
-                      <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. c) — zákonná povinnosť</td>
+                      <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. c) – zákonná povinnosť</td>
                     </tr>
                     <tr>
                       <td className="py-3 px-3 font-semibold text-brand-dark align-top">Bezpečnosť</td>
                       <td className="py-3 px-3 align-top">Ochrana formulárov pred automatizovanými útokmi (Cloudflare Turnstile)</td>
-                      <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. f) — oprávnený záujem (ochrana webovej stránky a formulárov pred zneužitím)</td>
-                    </tr>
-                    <tr>
-                      <td className="py-3 px-3 font-semibold text-brand-dark align-top">AI vizualizácia</td>
-                      <td className="py-3 px-3 align-top">
-                        Spracovanie obrázkov cez AI vizualizér (len pri aktívnom spustení funkcie). Obrázok sa odosiela na servery Google (Gemini API) v USA na jednorazové spracovanie. Orostone obrázok neuchováva po skončení relácie.
-                      </td>
-                      <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. a) — súhlas (aktívnym kliknutím na funkciu)</td>
+                      <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. f) – oprávnený záujem (ochrana webovej stránky a formulárov pred zneužitím)</td>
                     </tr>
                     <tr>
                       <td className="py-3 px-3 font-semibold text-brand-dark align-top">Marketing</td>
-                      <td className="py-3 px-3 align-top">Newsletter a remarketingové ponuky (len s výslovným súhlasom)</td>
-                      <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. a) — súhlas</td>
+                      <td className="py-3 px-3 align-top">Newsletter, remarketingové ponuky a meranie účinnosti reklám v Google Ads a na Facebooku či Instagrame (len s výslovným súhlasom)</td>
+                      <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. a) – súhlas</td>
                     </tr>
                     <tr>
                       <td className="py-3 px-3 font-semibold text-brand-dark align-top">Analytika</td>
                       <td className="py-3 px-3 align-top">Meranie návštevnosti a správania na webe (Google Analytics 4) po udelení súhlasu</td>
-                      <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. a) — súhlas</td>
+                      <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. a) – súhlas</td>
                     </tr>
                   </tbody>
                 </table>
@@ -127,20 +120,14 @@ export const PrivacyPolicy = () => {
                 <div className={`${LEGAL_BOX} p-4`}>
                   <h4 className="mb-2 font-semibold text-brand-dark">Newsletter</h4>
                   <p className="text-sm">
-                    Prihlásenie na newsletter je <strong>dobrovoľné</strong>. Ak e-mailovú adresu neposkytne, odoberanie newsletteru nebude možné.
+                    Prihlásenie na newsletter je <strong>dobrovoľné</strong>. Ak e-mailovú adresu neposkytnete, odber newslettera nebude možný.
                     Súhlas možno kedykoľvek odvolať kliknutím na odkaz v e-maile.
-                  </p>
-                </div>
-                <div className={`${LEGAL_BOX} p-4`}>
-                  <h4 className="mb-2 font-semibold text-brand-dark">AI vizualizér</h4>
-                  <p className="text-sm">
-                    Použitie AI vizualizéra je <strong>dobrovoľné</strong>. Ak obrázok nenahrá, funkcia nebude dostupná, ostatné časti webu nie sú dotknuté.
                   </p>
                 </div>
                 <div className={`${LEGAL_BOX} p-4`}>
                   <h4 className="mb-2 font-semibold text-brand-dark">Analytické a marketingové cookies</h4>
                   <p className="text-sm">
-                    Súhlas s analytickými a marketingovými cookies je <strong>dobrovoľný</strong>. Web funguje aj bez nich — len nevyhnutné cookies sú aktívne vždy.
+                    Súhlas s analytickými a marketingovými cookies je <strong>dobrovoľný</strong>. Web funguje aj bez nich – len nevyhnutné cookies sú aktívne vždy.
                   </p>
                 </div>
               </div>
@@ -173,15 +160,15 @@ export const PrivacyPolicy = () => {
                     },
                     {
                       name: 'Resend Inc.',
-                      purpose: 'Odosielanie transakčných emailov — potvrdenia dopytov, notifikácie o objednávke',
+                      purpose: 'Odosielanie e-mailov – potvrdenia dopytov, notifikácie o objednávke a newsletter',
                       location: 'USA',
-                      note: 'Emailová adresa príjemcu je zdieľaná iba za účelom doručenia správy.',
+                      note: 'E-mailová adresa príjemcu sa zdieľa iba na doručenie správy.',
                     },
                     {
                       name: 'Vercel Inc.',
-                      purpose: 'Hosting a doručovanie webovej stránky orostone.sk',
+                      purpose: 'Hosting a doručovanie webovej stránky orostone.sk, anonymné meranie návštevnosti a rýchlosti stránok (Vercel Web Analytics, Speed Insights)',
                       location: 'USA',
-                      note: 'IP adresa a technické údaje návštevníka môžu byť dočasne spracované.',
+                      note: 'IP adresa a technické údaje návštevníka môžu byť dočasne spracované. Meranie návštevnosti a rýchlosti nepoužíva cookies.',
                     },
                   ].map((item) => (
                     <div key={item.name} className={`${LEGAL_BOX} p-4`}>
@@ -214,15 +201,15 @@ export const PrivacyPolicy = () => {
                     },
                     {
                       name: 'Meta Platforms, Inc. (Facebook / Instagram)',
-                      purpose: 'Remarketing a meranie konverzií cez Meta Pixel — zobrazovanie relevantných reklám',
+                      purpose: 'Remarketing a meranie konverzií cez Meta Pixel – zobrazovanie relevantných reklám; zobrazenie príspevkov z nášho Instagramu na webe',
                       location: 'USA',
-                      note: 'Aktivuje sa iba po vašom súhlase s marketingovými cookies. Meta spracúva údaje podľa vlastných zásad súkromia.',
+                      note: 'Meta Pixel sa aktivuje iba po vašom súhlase s marketingovými cookies. Obrázky príspevkov z Instagramu sa načítavajú zo serverov Meta, ktoré pri tom spracúvajú IP adresu návštevníka. Meta spracúva údaje podľa vlastných zásad súkromia.',
                     },
                     {
                       name: 'Google LLC',
-                      purpose: 'Analytika návštevnosti (Google Analytics 4) a AI vizualizér (Google Gemini API)',
+                      purpose: 'Analytika návštevnosti (Google Analytics 4), správa meracích kódov (Google Tag Manager), meranie konverzií a remarketing (Google Ads)',
                       location: 'USA',
-                      note: 'Google Analytics sa aktivuje iba po súhlase s analytickými cookies. Gemini API spracúva nahraný obrázok jednorazovo; Google môže spracúvať metadáta podľa svojich podmienok služby.',
+                      note: 'Google Analytics sa aktivuje iba po súhlase s analytickými cookies. Google Ads používa identifikátor kliknutia na reklamu (cookies _gcl_aw, _gcl_au) na priradenie dopytov a objednávok ku kampaniam. Google spracúva údaje podľa svojich zásad ochrany súkromia.',
                     },
                   ].map((item) => (
                     <div key={item.name} className={`${LEGAL_BOX} p-4`}>
@@ -272,7 +259,8 @@ export const PrivacyPolicy = () => {
                     <li>• Cookies (podľa súhlasu)</li>
                     <li>• Údaje o prehliadači</li>
                     <li>• Meta Pixel ID (len so súhlasom)</li>
-                    <li>• Nahrané obrázky (AI vizualizér, len na vašu žiadosť, neuchováva sa)</li>
+                    <li>• Identifikátor kliknutia na reklamu (Google Ads, Meta)</li>
+                    <li>• Zdroj návštevy z odkazu kampane (UTM)</li>
                   </ul>
                 </div>
               </div>
@@ -299,7 +287,7 @@ export const PrivacyPolicy = () => {
                   <span className="min-w-[2.5rem] text-center text-2xl font-light tabular-nums text-brand-dark">2</span>
                   <div>
                     <p className="font-semibold text-brand-dark">roky</p>
-                    <p className="text-sm">Záručná doba — údaje pre vybavenie reklamácií</p>
+                    <p className="text-sm">Zodpovednosť za vady – údaje na vybavenie reklamácií</p>
                   </div>
                 </div>
                 <div className={`${LEGAL_BOX} flex items-center gap-4 p-4`}>
@@ -313,7 +301,7 @@ export const PrivacyPolicy = () => {
                   <span className="min-w-[2.5rem] pt-1 text-center text-sm font-light text-brand-dark">∞ /</span>
                   <div>
                     <p className="font-semibold text-brand-dark">Do odvolania súhlasu</p>
-                    <p className="text-sm">Newsletter — e-mailová adresa sa uchováva do odvolania súhlasu. Po odvolaní súhlasu sú údaje vymazané do 30 dní.</p>
+                    <p className="text-sm">Newsletter – e-mailová adresa sa uchováva do odvolania súhlasu. Po odvolaní súhlasu sú údaje vymazané do 30 dní.</p>
                   </div>
                 </div>
                 <div className={`${LEGAL_BOX} flex items-start gap-4 p-4`}>
@@ -324,13 +312,6 @@ export const PrivacyPolicy = () => {
                       Doba platnosti cookies sa líši podľa typu. Podrobnosti nájdete v{' '}
                       <Link to="/cookies" className={LEGAL_LINK}>zásadách cookies</Link>.
                     </p>
-                  </div>
-                </div>
-                <div className={`${LEGAL_BOX} flex items-start gap-4 p-4`}>
-                  <span className="min-w-[2.5rem] pt-1 text-center text-sm font-light text-brand-dark">0</span>
-                  <div>
-                    <p className="font-semibold text-brand-dark">AI vizualizér</p>
-                    <p className="text-sm">Nahrané obrázky sa po skončení relácie neuchovávajú. Spracovanie prebieha jednorazovo cez Google Gemini API.</p>
                   </div>
                 </div>
               </div>
@@ -395,8 +376,8 @@ export const PrivacyPolicy = () => {
               </div>
               <div className="mt-4 rounded-r-[3px] border-l-2 border-brand-dark bg-brand-sand p-4">
                 <p className="text-sm">
-                  Supabase (databáza dopytov a objednávok) je prevádzkovaná výhradne na serveroch v <strong>Nemecku (EÚ)</strong>
-                  — vaše dáta z dopytov a objednávok zostávajú primárne v EHP.
+                  Supabase (databáza dopytov a objednávok) je prevádzkovaná výhradne na serveroch v <strong>Nemecku (EÚ)</strong>, takže vaše dáta
+                  z dopytov a objednávok zostávajú primárne v EHP.
                 </p>
               </div>
           </LegalSection>
@@ -411,7 +392,7 @@ export const PrivacyPolicy = () => {
                   { title: 'Právo na obmedzenie (čl. 18)', desc: 'Môžete žiadať o obmedzenie spracovania vašich údajov počas riešenia sporu' },
                   { title: 'Právo na prenosnosť (čl. 20)', desc: 'Môžete žiadať o prenos vašich údajov k inému prevádzkovateľovi v štruktúrovanom formáte' },
                   { title: 'Právo namietať (čl. 21)', desc: 'Môžete namietať voči spracovaniu na základe oprávneného záujmu alebo na účely priameho marketingu' },
-                  { title: 'Právo odvolať súhlas (čl. 7 ods. 3)', desc: 'Ak spracovanie prebieha na základe súhlasu, môžete ho kedykoľvek odvolať bez ujmy na zákonnosti spracovania pred odvolaním. Newsletter odber zrušíte kliknutím na odkaz v e-maile.' },
+                  { title: 'Právo odvolať súhlas (čl. 7 ods. 3)', desc: 'Ak spracovanie prebieha na základe súhlasu, môžete ho kedykoľvek odvolať bez ujmy na zákonnosti spracovania pred odvolaním. Odber newslettera zrušíte kliknutím na odkaz v e-maile.' },
                 ].map((item, index) => (
                   <div key={index} className={`${LEGAL_BOX} p-4`}>
                     <h4 className="mb-1 font-semibold text-brand-dark">{item.title}</h4>
@@ -443,15 +424,15 @@ export const PrivacyPolicy = () => {
               <div className="space-y-3">
                 <div className={`${LEGAL_BOX} p-4`}>
                   <h4 className="mb-1 font-semibold text-brand-dark">Nevyhnutné cookies</h4>
-                  <p className="text-sm">Technicky nutné pre fungovanie webu (napr. košík, súhlas s cookies). Aktívne vždy — nevyžadujú súhlas.</p>
+                  <p className="text-sm">Technicky nutné pre fungovanie webu (napr. košík, súhlas s cookies). Aktívne vždy – nevyžadujú súhlas.</p>
                 </div>
                 <div className={`${LEGAL_BOX} p-4`}>
                   <h4 className="mb-1 font-semibold text-brand-dark">Analytické cookies</h4>
-                  <p className="text-sm">Google Analytics 4 — meranie návštevnosti a správania na webe. Aktivujú sa iba po vašom súhlase.</p>
+                  <p className="text-sm">Google Analytics 4 – meranie návštevnosti a správania na webe. Aktivujú sa iba po vašom súhlase.</p>
                 </div>
                 <div className={`${LEGAL_BOX} p-4`}>
                   <h4 className="mb-1 font-semibold text-brand-dark">Marketingové cookies</h4>
-                  <p className="text-sm">Meta Pixel — remarketing a meranie konverzií. Aktivujú sa iba po vašom súhlase.</p>
+                  <p className="text-sm">Meta Pixel – remarketing a meranie konverzií. Aktivujú sa iba po vašom súhlase.</p>
                 </div>
               </div>
               <Link
@@ -490,7 +471,7 @@ export const PrivacyPolicy = () => {
         <div className="mt-6 flex flex-col items-start justify-between gap-6 border-t border-brand-line pt-8 md:flex-row md:items-center">
           <div>
             <p className="text-sm text-brand-muted">Posledná aktualizácia</p>
-            <p className="text-lg font-medium text-brand-dark">26.03.2026</p>
+            <p className="text-lg font-medium text-brand-dark">7.&nbsp;10.&nbsp;2026</p>
           </div>
           <ActionButton to="/kontakt" variant="outline" arrow>
             Kontaktujte nás

@@ -102,8 +102,22 @@ export const DopravaAPlatba: React.FC = () => {
                 Konečná cena dopravy sa určuje podľa adresy doručenia, počtu platní, hmotnosti zásielky a prípadných osobitných požiadaviek na manipuláciu. Presná cena dopravy bude zobrazená alebo potvrdená pred odoslaním záväznej objednávky. Doručujeme výlučne na území Slovenskej republiky.
               </p>
 <p className="mt-2 text-xs text-brand-muted">
-                Úplné obchodné podmienky vrátane podmienok dodania nájdete v{' '}
+                Úplné obchodné podmienky vrátane podmienok dodania nájdete vo{' '}
                 <Link to="/vop" className={LEGAL_LINK}>Všeobecných obchodných podmienkach</Link>.
+              </p>
+            </div>
+
+            {/* Vzorky */}
+            <div className="mb-6 rounded-[3px] border border-brand-line bg-white/60 p-6 sm:p-8">
+              <h3 className="mb-4 text-[1.1rem] font-semibold text-brand-dark">
+                Vzorky
+              </h3>
+              <p className="mb-3 text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
+                Vzorky dekorov s rozmerom 10&nbsp;×&nbsp;10&nbsp;cm posielame zásielkou na adresu na Slovensku. <strong className="text-brand-dark">Prvá vzorka je zadarmo</strong>, každá ďalšia stojí 4,90&nbsp;€ a doprava 2,50&nbsp;€ (ceny s DPH). Celkovú cenu vidíte pri výbere vzoriek a v pokladni pred zaplatením, platí sa rovnakými spôsobmi ako pri platniach.
+              </p>
+              <p className="text-xs leading-relaxed text-brand-muted">
+                Vzorky môžete v lehote na odstúpenie od zmluvy vrátiť bežnou poštovou zásielkou, náklady na vrátenie znáša kupujúci.{' '}
+                <Link to="/vzorky" className={LEGAL_LINK}>Vybrať vzorky</Link>
               </p>
             </div>
 
@@ -113,7 +127,7 @@ export const DopravaAPlatba: React.FC = () => {
                 Náklady na vrátenie tovaru
               </h3>
               <p className="mb-3 text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
-                Vzhľadom na povahu, hmotnosť a rozmery platní (3&nbsp;200&nbsp;×&nbsp;1&nbsp;600&nbsp;mm) <strong>nie je možné tovar vrátiť bežnou poštou</strong>. V prípade odstúpenia od zmluvy znáša náklady na vrátenie tovaru kupujúci.
+                Vzhľadom na povahu, hmotnosť a rozmery platní (3&nbsp;200&nbsp;×&nbsp;1&nbsp;600&nbsp;mm) <strong>nie je možné platne vrátiť bežnou poštou</strong>. V prípade odstúpenia od zmluvy znáša náklady na vrátenie tovaru kupujúci. Vzorky môžete vrátiť aj bežnou poštovou zásielkou.
               </p>
               <p className="mb-4 text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
                 Orientačné náklady na spätný zvoz tovaru:
@@ -139,7 +153,7 @@ export const DopravaAPlatba: React.FC = () => {
                 </table>
               </div>
               <p className="text-xs leading-relaxed text-brand-muted">
-                Presná výška nákladov na vrátenie závisí od miesta vyzdvihnutia, počtu kusov a spôsobu prepravy a bude potvrdená pred odoslaním záväznej objednávky. Táto informácia je poskytovaná v súlade s § 3 ods. 1 písm. i) zákona č. 108/2024 Z.z. o ochrane spotrebiteľa.
+                Presná výška nákladov na vrátenie závisí od miesta vyzdvihnutia, počtu kusov a spôsobu prepravy a bude potvrdená pred odoslaním záväznej objednávky. Táto informácia je poskytovaná v súlade s § 3 ods. 1 písm. i) zákona č. 108/2024 Z.&nbsp;z. o ochrane spotrebiteľa.
               </p>
               <p className="mt-3 text-xs leading-relaxed text-brand-muted">
                 Podrobný postup pri odstúpení od zmluvy nájdete na stránke{' '}

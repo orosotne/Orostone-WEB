@@ -198,14 +198,14 @@ export const CookiesPolicy = () => {
                       <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">orostone-cookies</td>
                       <td className="py-3 px-2 align-top">Orostone</td>
                       <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Nevyhnutné</span></td>
-                      <td className="py-3 px-2 align-top">localStorage — uloženie vašich nastavení cookies a záznamu o udelenom alebo odvolanom súhlase</td>
+                      <td className="py-3 px-2 align-top">localStorage – uloženie vašich nastavení cookies a záznamu o udelenom alebo odvolanom súhlase</td>
                       <td className="min-w-[8rem] py-3 px-2 align-top">Do zmeny nastavení alebo vymazania prehliadačom</td>
                     </tr>
                     <tr>
                       <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">orostone_shopify_cart_id</td>
                       <td className="py-3 px-2 align-top">Orostone / Shopify</td>
                       <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Nevyhnutné</span></td>
-                      <td className="py-3 px-2 align-top">localStorage — zachovanie obsahu nákupného košíka</td>
+                      <td className="py-3 px-2 align-top">localStorage – zachovanie obsahu nákupného košíka</td>
                       <td className="min-w-[8rem] py-3 px-2 align-top">Do vymazania košíka alebo prehliadačom</td>
                     </tr>
                     <tr>
@@ -219,38 +219,66 @@ export const CookiesPolicy = () => {
                       <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">orostone-theme</td>
                       <td className="py-3 px-2 align-top">Orostone</td>
                       <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Funkčné</span></td>
-                      <td className="py-3 px-2 align-top">localStorage — uloženie vami zvolenej preferencie zobrazenia stránky</td>
+                      <td className="py-3 px-2 align-top">localStorage – uloženie vami zvolenej preferencie zobrazenia stránky</td>
                       <td className="min-w-[8rem] py-3 px-2 align-top">Do zmeny nastavenia alebo vymazania prehliadačom</td>
                     </tr>
                     <tr>
                       <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">orostone-newsletter-popup</td>
                       <td className="py-3 px-2 align-top">Orostone</td>
                       <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Funkčné</span></td>
-                      <td className="py-3 px-2 align-top">localStorage — uloženie informácie o vašej interakcii s newsletter popupom</td>
+                      <td className="py-3 px-2 align-top">localStorage – uloženie informácie o vašej interakcii s newsletter popupom</td>
                       <td className="min-w-[8rem] py-3 px-2 align-top">Do vymazania prehliadačom alebo podľa nastavenia webu</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">orostone_installation_data</td>
+                      <td className="py-3 px-2 align-top">Orostone</td>
+                      <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Funkčné</span></td>
+                      <td className="py-3 px-2 align-top">localStorage – vami zadané údaje kalkulácie montáže, ktoré sa zobrazia v košíku</td>
+                      <td className="min-w-[8rem] py-3 px-2 align-top">Do odstránenia z košíka alebo vymazania prehliadačom</td>
                     </tr>
                     <tr>
                       <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">_ga</td>
                       <td className="py-3 px-2 align-top">Google</td>
                       <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Analytické</span></td>
                       <td className="py-3 px-2 align-top">
-                        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className={LEGAL_LINK}>Google Analytics</a> — rozlíšenie návštevníkov a meranie návštevnosti (len so súhlasom)
+                        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className={LEGAL_LINK}>Google Analytics</a> – rozlíšenie návštevníkov a meranie návštevnosti (len so súhlasom)
                       </td>
                       <td className="min-w-[8rem] py-3 px-2 align-top">2 roky</td>
                     </tr>
                     <tr>
-                      <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">_gid</td>
+                      <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">_ga_W3ZPVYZ9HQ, _ga_B7PV9X0X8X</td>
                       <td className="py-3 px-2 align-top">Google</td>
                       <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Analytické</span></td>
-                      <td className="py-3 px-2 align-top">Google Analytics — rozlíšenie relácií návštevníkov (len so súhlasom)</td>
-                      <td className="min-w-[8rem] py-3 px-2 align-top">24 hodín</td>
+                      <td className="py-3 px-2 align-top">Google Analytics – uchovanie stavu relácie</td>
+                      <td className="min-w-[8rem] py-3 px-2 align-top">2 roky</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">orostone_utm</td>
+                      <td className="py-3 px-2 align-top">Orostone</td>
+                      <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Analytické</span></td>
+                      <td className="py-3 px-2 align-top">sessionStorage – zdroj návštevy z odkazu kampane (UTM), ktorý sa odovzdá pokladni na priradenie objednávky</td>
+                      <td className="min-w-[8rem] py-3 px-2 align-top">Do zatvorenia okna prehliadača</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">orostone_pending_purchase</td>
+                      <td className="py-3 px-2 align-top">Orostone</td>
+                      <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Analytické</span></td>
+                      <td className="py-3 px-2 align-top">sessionStorage – súhrn objednávky pred presmerovaním do pokladne, aby sa po zaplatení dal zaznamenať nákup</td>
+                      <td className="min-w-[8rem] py-3 px-2 align-top">Do zobrazenia potvrdenia objednávky alebo zatvorenia okna</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">orostone_internal</td>
+                      <td className="py-3 px-2 align-top">Orostone</td>
+                      <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Analytické</span></td>
+                      <td className="py-3 px-2 align-top">cookie – označenie návštev nášho tímu, aby sa nezapočítavali do štatistík; nastaví sa len cez interný odkaz</td>
+                      <td className="min-w-[8rem] py-3 px-2 align-top">1 rok</td>
                     </tr>
                     <tr>
                       <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">_fbp</td>
                       <td className="py-3 px-2 align-top">Meta</td>
                       <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Marketingové</span></td>
                       <td className="py-3 px-2 align-top">
-                        <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer" className={LEGAL_LINK}>Meta Pixel</a> — meranie konverzií a remarketing (len so súhlasom)
+                        <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer" className={LEGAL_LINK}>Meta Pixel</a> – meranie konverzií a remarketing (len so súhlasom)
                       </td>
                       <td className="min-w-[8rem] py-3 px-2 align-top">3 mesiace</td>
                     </tr>
@@ -258,8 +286,15 @@ export const CookiesPolicy = () => {
                       <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">_fbc</td>
                       <td className="py-3 px-2 align-top">Meta</td>
                       <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Marketingové</span></td>
-                      <td className="py-3 px-2 align-top">Meta Pixel — identifikátor kliknutia z Meta reklamy (len so súhlasom)</td>
-                      <td className="min-w-[8rem] py-3 px-2 align-top">2 roky</td>
+                      <td className="py-3 px-2 align-top">Meta Pixel – identifikátor kliknutia z Meta reklamy (len so súhlasom)</td>
+                      <td className="min-w-[8rem] py-3 px-2 align-top">3 mesiace</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">_gcl_aw, _gcl_au</td>
+                      <td className="py-3 px-2 align-top">Google</td>
+                      <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Marketingové</span></td>
+                      <td className="py-3 px-2 align-top">Google Ads – uloženie identifikátora kliknutia na reklamu a meranie konverzií</td>
+                      <td className="min-w-[8rem] py-3 px-2 align-top">90 dní</td>
                     </tr>
                   </tbody>
                 </table>
@@ -292,7 +327,7 @@ export const CookiesPolicy = () => {
                   Svoje nastavenia cookies a podobných technológií môžete kedykoľvek zmeniť:
                 </p>
                 <ul className="text-sm space-y-1 mb-4">
-                  <li>• prostredníctvom odkazu „Nastavenia cookies" v pätičke webu,</li>
+                  <li>• prostredníctvom odkazu „Nastavenia cookies“ v pätičke webu,</li>
                   <li>• prostredníctvom cookie bannera alebo centra preferencií,</li>
                   <li>• vo vašom internetovom prehliadači.</li>
                 </ul>
@@ -336,12 +371,13 @@ export const CookiesPolicy = () => {
                 {[
                   { name: 'Shopify', desc: 'prevádzka e-shopu a košíka' },
                   { name: 'Cloudflare', desc: 'ochrana formulárov a webu' },
-                  { name: 'Google (Google Analytics 4)', desc: 'analytika návštevnosti' },
+                  { name: 'Google (Google Analytics 4, Google Tag Manager, Google Ads)', desc: 'analytika návštevnosti, meranie konverzií a remarketing' },
                   { name: 'Meta (Meta Pixel)', desc: 'remarketing a meranie konverzií' },
+                  { name: 'Vercel', desc: 'anonymné meranie návštevnosti a rýchlosti stránok bez cookies' },
                 ].map((item) => (
                   <div key={item.name} className={`${LEGAL_BOX} p-3`}>
                     <span className="font-semibold text-brand-dark">{item.name}</span>
-                    <span className="text-sm text-brand-muted"> — {item.desc}</span>
+                    <span className="text-sm text-brand-muted"> – {item.desc}</span>
                   </div>
                 ))}
               </div>
@@ -370,7 +406,7 @@ export const CookiesPolicy = () => {
         <div className="mt-6 flex flex-col items-start justify-between gap-6 border-t border-brand-line pt-8 md:flex-row md:items-center">
           <div>
             <p className="text-sm text-brand-muted">Posledná aktualizácia</p>
-            <p className="text-lg font-medium text-brand-dark">26.03.2026</p>
+            <p className="text-lg font-medium text-brand-dark">7.&nbsp;10.&nbsp;2026</p>
           </div>
           <div className="flex gap-4">
             <ActionButton variant="outline" onClick={openSettings}>

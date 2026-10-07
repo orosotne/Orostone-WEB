@@ -66,7 +66,7 @@ export const OdstupeniOdZmluvy: React.FC = () => {
       />
       <div className="print:hidden">
         <PageHero
-          eyebrow="Práva spotrebiteľa • Zákon č. 108/2024 Z.z."
+          eyebrow="Práva spotrebiteľa • Zákon č. 108/2024 Z. z."
           title="Formulár na odstúpenie od zmluvy"
           lead={
             <>
@@ -84,7 +84,7 @@ export const OdstupeniOdZmluvy: React.FC = () => {
         {/* Info box */}
         <div className="mb-8 rounded-r-[3px] border-l-2 border-brand-dark bg-brand-sand p-6 print:hidden">
           <p className="text-sm font-light leading-relaxed">
-            <strong className="text-brand-dark">Ako postupovať:</strong> 1. Vyplňte všetky polia nižšie. 2. Kliknite na „Vytlačiť formulár". 3. Vytlačený formulár podpíšte. 4. Podpísaný formulár nám zašlite e-mailom (naskenovaný/odfotený) alebo poštou pred uplynutím 14-dňovej lehoty od prevzatia tovaru.
+            <strong className="text-brand-dark">Ako postupovať:</strong> 1. Vyplňte všetky polia nižšie. 2. Kliknite na „Vytlačiť formulár“. 3. Vytlačený formulár podpíšte. 4. Podpísaný formulár nám zašlite e-mailom (naskenovaný/odfotený) alebo poštou pred uplynutím 14-dňovej lehoty od prevzatia tovaru.
           </p>
         </div>
 
@@ -100,7 +100,7 @@ export const OdstupeniOdZmluvy: React.FC = () => {
                 Oznámenie o odstúpení od zmluvy
               </h2>
               <p className="text-sm font-light text-brand-muted">
-                Vzorový formulár podľa zákona č. 108/2024 Z.z. o ochrane spotrebiteľa
+                Vzorový formulár podľa zákona č. 108/2024 Z.&nbsp;z. o ochrane spotrebiteľa
               </p>
             </div>
           </div>
@@ -236,12 +236,12 @@ export const OdstupeniOdZmluvy: React.FC = () => {
             <li>• Tovar je potrebné zaslať späť najneskôr do 14 dní odo dňa odstúpenia od zmluvy.</li>
             <li>• Náklady na vrátenie tovaru znáša spotrebiteľ.</li>
             <li>• Veľkoformátové platne vzhľadom na svoju povahu, hmotnosť a rozmery nemožno spravidla vrátiť bežnou poštovou službou; vracajú sa primeranou prepravou.</li>
-            <li>• Predpokladané priame náklady na vrátenie tovaru sa spravidla pohybujú v rozmedzí <strong>150 € až 350 € s DPH</strong> podľa miesta vyzdvihnutia, počtu kusov a spôsobu dopravy.</li>
+            <li>• Predpokladané priame náklady na vrátenie platní sú spravidla <strong>od 150&nbsp;€ s DPH</strong> v Bratislave a okolí (do 50&nbsp;km) a <strong>od 350&nbsp;€ s DPH</strong> na ostatnom území Slovenska podľa miesta vyzdvihnutia, počtu kusov a spôsobu dopravy. Vzorky možno vrátiť aj bežnou poštovou zásielkou.</li>
             <li>• Spoločnosť Orostone vráti spotrebiteľovi platby najneskôr do <strong>14 dní</strong> od doručenia oznámenia o odstúpení od zmluvy, nie však skôr, ako jej bude tovar doručený späť alebo ako spotrebiteľ preukáže jeho odoslanie späť.</li>
             <li>• Právo na odstúpenie sa nevzťahuje na tovar vyrobený podľa osobitných požiadaviek spotrebiteľa, tovar vyrobený na mieru alebo upravený pre konkrétneho spotrebiteľa.</li>
           </ul>
           <p className="mt-4 text-xs text-brand-muted">
-            Podľa zákona č. 108/2024 Z.z. o ochrane spotrebiteľa.
+            Podľa zákona č. 108/2024 Z.&nbsp;z. o ochrane spotrebiteľa.
           </p>
           <p className="mt-3 text-xs text-brand-muted">
             Informácie o spracúvaní vašich osobných údajov nájdete v{' '}
