@@ -5,7 +5,7 @@ import { useOffscreen } from './useOffscreen';
 
 const PROFILE = 'https://www.instagram.com/orostone_/';
 
-/** Latest Instagram posts as a slow marquee (pauses on hover, focus, off-screen and with reduced motion). */
+/** Latest Instagram posts as portrait 4:5 tiles (as on Instagram) in a slow right-to-left marquee (pauses on hover, focus, off-screen and with reduced motion). */
 export const HomeInstagram: React.FC = () => {
   const { ref, off } = useOffscreen<HTMLDivElement>();
   const [enabled, setEnabled] = useState(false);
@@ -44,7 +44,7 @@ export const HomeInstagram: React.FC = () => {
         aria-label={clone ? undefined : 'Príspevok Orostone na Instagrame'}
       >
         {/* eager: the strip moves sideways, so lazy images would come in blank; the feed itself loads only near the viewport */}
-        <img src={getPostImageUrl(post)} alt="" loading="eager" decoding="async" width={236} height={236} />
+        <img src={getPostImageUrl(post)} alt="" loading="eager" decoding="async" width={280} height={350} />
       </a>
     ));
 
