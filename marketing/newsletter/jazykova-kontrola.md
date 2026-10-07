@@ -220,4 +220,8 @@ Fakty sú z produktových dát, technického listu (TDS), dokumentu Key facts 20
 | 10 | 33 | [predmet] Kuchynské štúdio a doska: ako ich zladiť | [predmet] Návrh kuchyne a doska: ako ich zladiť | význam | Zladiť s doskou sa má návrh kuchyne, nie štúdio ako firma. | zapracované |
 | 11 | 33 | [preheader] …kedy nás pribrať do návrhu. | …kedy nás zapojiť do návrhu. | lexika | *Pribrať* je hovorové, *zapojiť do návrhu* je jednoznačné. | zapracované |
 
+## Kolo 14 – Codex review v PR #96 (7. 10. 2026, po oprave z kola 13)
+
+Codex na `f0dd6cb` nenašiel žiadne pripomienky. E-maily 22–33 sú jazykovo skontrolované vrátane opráv z kola 13, nových pravidiel v `slovnik.md` a popisov fotiek v 04, 07 a 10.
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.

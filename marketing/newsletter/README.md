@@ -64,24 +64,24 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 | 08 | Hotovo | Po realizácii 1/3 – deň montáže | Hotovo: fotky z vašej montáže | skontrolované |
 | 17 | Starostlivosť | Po realizácii 2/3 – 7 dní po montáži | Starostlivosť o dosku v skratke | skontrolované |
 | 06 | Ako sa vám žije | Po realizácii 3/3 – 30 dní po montáži | Ako sa vám žije s novou doskou? | skontrolované |
-| 22 | Riešite ešte kuchyňu? | Reaktivácia 1/3 – 90 dní bez aktivity | Riešite ešte kuchyňu? | na kontrole |
-| 23 | Tri realizácie | Reaktivácia 2/3 – 120 dní bez aktivity | Tri realizácie, na ktoré sme hrdí | na kontrole, pred odoslaním súhlas klientov so zverejnením |
-| 24 | Máme vám ešte písať? | Reaktivácia 3/3 – 180 dní bez aktivity | Máme vám ešte písať? | na kontrole |
-| 25 | Technické podklady | B2B 1/3 – hneď po pridaní tagu | Technický list a textúry pre váš projekt | na kontrole |
-| 26 | Vzorky pre štúdio | B2B 2/3 – o 7 dní | Vzorky dekorov pre vaše štúdio | na kontrole |
-| 27 | Showroom s klientom | B2B 3/3 – o 21 dní | Príďte s klientom vybrať konkrétnu platňu | na kontrole |
+| 22 | Riešite ešte kuchyňu? | Reaktivácia 1/3 – 90 dní bez aktivity | Riešite ešte kuchyňu? | skontrolované |
+| 23 | Tri realizácie | Reaktivácia 2/3 – 120 dní bez aktivity | Tri realizácie, na ktoré sme hrdí | skontrolované, pred odoslaním súhlas klientov so zverejnením |
+| 24 | Máme vám ešte písať? | Reaktivácia 3/3 – 180 dní bez aktivity | Máme vám ešte písať? | skontrolované |
+| 25 | Technické podklady | B2B 1/3 – hneď po pridaní tagu | Technický list a textúry pre váš projekt | skontrolované |
+| 26 | Vzorky pre štúdio | B2B 2/3 – o 7 dní | Vzorky dekorov pre vaše štúdio | skontrolované |
+| 27 | Showroom s klientom | B2B 3/3 – o 21 dní | Príďte s klientom vybrať konkrétnu platňu | skontrolované |
 | 03 | Realizácia mesiaca | Kampaň október | Taj Mahal na dlhom ostrovčeku s drezom | skontrolované |
 | 04 | Dekor v detaile | Kampaň október | Roman Travertine: travertín bez impregnácie | skontrolované |
 | 18 | Zo zákulisia | Kampaň november | Ako vzniká sinterovaný kameň | skontrolované |
 | 19 | Sprievodca | Kampaň november | Čo je v cene pracovnej dosky | skontrolované |
 | 20 | Realizácia mesiaca | Kampaň december | Biela doska a tmavé drevo | skontrolované, klient so zverejnením súhlasí |
 | 21 | Poďakovanie | Kampaň december | Ďakujeme za rok 2026 | skontrolované |
-| 28 | Kuchyňa na jar | Kampaň január 2027 | Nová kuchyňa na jar: kedy začať | na kontrole |
-| 29 | Dekor v detaile | Kampaň január 2027 | Appennino: svetlá plocha s jemnou kresbou | na kontrole |
-| 30 | Realizácia mesiaca | Kampaň február 2027 | Biela doska v ružovej kuchyni | na kontrole, pred odoslaním súhlas klienta so zverejnením |
-| 31 | Pozvánka do showroomu | Kampaň február 2027 | Celé platne naživo v kaštieli v Bošanoch | na kontrole |
-| 32 | Dekor v detaile | Kampaň marec 2027 | Wild Forest: kresba pre veľké plochy | na kontrole |
-| 33 | Spolupráca so štúdiom | Kampaň marec 2027 | Návrh kuchyne a doska: ako ich zladiť | na kontrole |
+| 28 | Kuchyňa na jar | Kampaň január 2027 | Nová kuchyňa na jar: kedy začať | skontrolované |
+| 29 | Dekor v detaile | Kampaň január 2027 | Appennino: svetlá plocha s jemnou kresbou | skontrolované |
+| 30 | Realizácia mesiaca | Kampaň február 2027 | Biela doska v ružovej kuchyni | skontrolované, pred odoslaním súhlas klienta so zverejnením |
+| 31 | Pozvánka do showroomu | Kampaň február 2027 | Celé platne naživo v kaštieli v Bošanoch | skontrolované |
+| 32 | Dekor v detaile | Kampaň marec 2027 | Wild Forest: kresba pre veľké plochy | skontrolované |
+| 33 | Spolupráca so štúdiom | Kampaň marec 2027 | Návrh kuchyne a doska: ako ich zladiť | skontrolované |
 
 **Neposielame:** tip šesť mesiacov po montáži a Výročie (rozhodnutie Martina zo 7. 10. 2026). Potvrdenie objednávky vzorky posiela Shopify a potvrdenie dopytu web, tie netreba písať.
 
