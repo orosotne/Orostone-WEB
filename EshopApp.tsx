@@ -18,7 +18,7 @@ import { CookieProvider } from './context/CookieContext';
 import { CartProvider } from './context/CartContext';
 
 // Global overlays (lazy — defers supabase from initial bundle)
-// Dočasne skryté – newsletter pop-up so zľavou 5 %. Pre obnovenie odkomentuj tento riadok aj jeho mount v EshopAppContent.
+// Dočasne skryté – newsletter pop-up (vzorka bez poštovného, kód VITAJTE). Pre obnovenie odkomentuj tento riadok aj jeho mount v EshopAppContent.
 // const NewsletterPopup = lazyWithRetry(() => import('./components/UI/NewsletterPopup').then(m => ({ default: m.NewsletterPopup })));
 
 // Capture UTM params from URL before React Router mounts (sync, runs once)
@@ -73,7 +73,7 @@ const EshopAppContent = () => {
   return (
     <EshopLayout>
       <ScrollToTop />
-      {/* Dočasne skryté – newsletter pop-up so zľavou 5 %. Pre obnovenie odkomentuj nasledujúci riadok. */}
+      {/* Dočasne skryté – newsletter pop-up (vzorka bez poštovného, kód VITAJTE). Pre obnovenie odkomentuj nasledujúci riadok. */}
       {/* <Suspense fallback={null}><NewsletterPopup /></Suspense> */}
       <ErrorBoundary level="page">
         <Routes>

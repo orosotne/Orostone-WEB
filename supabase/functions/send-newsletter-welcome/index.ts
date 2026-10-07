@@ -12,7 +12,9 @@ const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
 const FROM_EMAIL = 'Orostone <noreply@orostone.sk>';
 const LOGO_URL = 'https://www.orostone.sk/images/orostone-logo-email.png';
 const LOGO_CIRCLE_URL = 'https://www.orostone.sk/images/logo-circle.png';
-const DISCOUNT_CODE = 'WELCOME5';
+// Uvítacia odmena: prvá vzorka bez poštovného. Kód je v Shopify zľava na dopravu
+// (len doprava do 3 €, raz na zákazníka), aby neplatil na dopravu platní.
+const DISCOUNT_CODE = 'VITAJTE';
 
 const corsHeaders = {
   'Content-Type': 'application/json',
@@ -115,7 +117,7 @@ serve(async (req) => {
                   ${greeting}
                 </h1>
                 <p class="email-subtext" style="margin: 0; font-size: 16px; font-weight: 300; color: #666666; line-height: 1.6;">
-                  Ďakujeme za prihlásenie na odber noviniek Orostone.<br>Ako poďakovanie máte zľavu 5&nbsp;% na prvý nákup.
+                  Ďakujeme za prihlásenie na odber noviniek Orostone.<br>Ako poďakovanie vám prvú vzorku pošleme bez poštovného.
                 </p>
               </td>
             </tr>
@@ -132,7 +134,7 @@ serve(async (req) => {
               <td class="email-body" style="background-color: #ffffff; padding: 0 40px 36px 40px; text-align: center;">
                 <p class="email-text" style="margin: 0 0 12px 0; font-size: 12px; font-weight: 700;
                           letter-spacing: 0.2em; text-transform: uppercase; color: #1A1A1A;">
-                  Váš zľavový kód
+                  Váš kód na vzorku
                 </p>
                 <div class="code-box" style="display: inline-block; background-color: #FFFBEA;
                             border: 2px solid #ECD488; border-radius: 8px;
@@ -142,7 +144,7 @@ serve(async (req) => {
                   </span>
                 </div>
                 <p class="email-subtext" style="margin: 12px 0 0 0; font-size: 13px; font-weight: 300; color: #888888;">
-                  Platí na prvý nákup v e-shope orostone.sk
+                  Platí na jednu objednávku vzoriek na orostone.sk/vzorky
                 </p>
               </td>
             </tr>
@@ -161,7 +163,7 @@ serve(async (req) => {
                                       text-align: center; line-height: 24px; font-size: 11px; font-weight: 700; color: #1A1A1A;">1</div>
                         </td>
                         <td class="email-step-text" style="padding-left: 12px; font-size: 14px; font-weight: 300; color: #444444; line-height: 1.5;">
-                          Prezrite si naše <strong style="font-weight: 600;">prémiové kolekcie</strong> na orostone.sk
+                          Vyberte si dekory na <strong style="font-weight: 600;">orostone.sk/vzorky</strong>
                         </td>
                       </tr></table>
                     </td>
@@ -174,7 +176,7 @@ serve(async (req) => {
                                       text-align: center; line-height: 24px; font-size: 11px; font-weight: 700; color: #1A1A1A;">2</div>
                         </td>
                         <td class="email-step-text" style="padding-left: 12px; font-size: 14px; font-weight: 300; color: #444444; line-height: 1.5;">
-                          Pri objednávke zadajte kód <strong style="font-weight: 600;">${DISCOUNT_CODE}</strong> do poľa pre zľavový kód
+                          V pokladni zadajte kód <strong style="font-weight: 600;">${DISCOUNT_CODE}</strong> do poľa pre zľavový kód
                         </td>
                       </tr></table>
                     </td>
@@ -187,7 +189,7 @@ serve(async (req) => {
                                       text-align: center; line-height: 24px; font-size: 11px; font-weight: 700; color: #1A1A1A;">3</div>
                         </td>
                         <td class="email-step-text" style="padding-left: 12px; font-size: 14px; font-weight: 300; color: #444444; line-height: 1.5;">
-                          Užite si <strong style="font-weight: 600;">prémiový sinterovaný kameň</strong> so zľavou 5&nbsp;%
+                          Prvá vzorka je zadarmo a <strong style="font-weight: 600;">poštovné 2,50&nbsp;€ neplatíte</strong>
                         </td>
                       </tr></table>
                     </td>
@@ -199,11 +201,11 @@ serve(async (req) => {
             <!-- CTA TLAČIDLO -->
             <tr>
               <td class="email-body" style="background-color: #ffffff; padding: 0 40px 44px 40px; text-align: center;">
-                <a href="https://orostone.sk" class="cta-btn"
+                <a href="https://orostone.sk/vzorky" class="cta-btn"
                    style="display: inline-block; background-color: #1A1A1A; color: #ffffff; padding: 14px 36px;
                           text-decoration: none; font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
                           text-transform: uppercase; border-radius: 3px;">
-                  Nakupovať →
+                  Objednať vzorku →
                 </a>
               </td>
             </tr>
@@ -246,7 +248,7 @@ serve(async (req) => {
 </body>
 </html>`;
 
-    await sendEmail({ to: email, subject: 'Vitajte v Orostone — vaša 5% zľava je tu', html });
+    await sendEmail({ to: email, subject: 'Vitajte v Orostone – prvá vzorka bez poštovného', html });
 
     return new Response(JSON.stringify({ success: true }), { headers: corsHeaders });
   } catch (err) {
