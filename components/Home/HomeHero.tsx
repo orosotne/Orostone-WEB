@@ -1,9 +1,9 @@
 import React from 'react';
-import { TextLink } from '../Design';
+import { ActionButton, TextLink } from '../Design';
 
 const IMG = '/images/home/hero-nero';
 
-/** Quiet hero: one real-decor visualization, headline on the plaster wall, two text links. */
+/** Quiet hero: one real-decor visualization, headline on the plaster wall, free-sample button + decors link. */
 export const HomeHero: React.FC = () => (
   <section className="hp-hero" aria-label="Úvod">
     <picture>
@@ -27,10 +27,10 @@ export const HomeHero: React.FC = () => (
       </h1>
       <p className="hp-hero-lead">Pracovné dosky, ostrovčeky a zásteny.</p>
       <p className="hp-hero-links">
+        <ActionButton to="/vzorky" arrow>
+          Prvá vzorka zadarmo
+        </ActionButton>
         <TextLink to="#dekory">Pozrieť dekory</TextLink>
-        <TextLink to="#showroom" arrow={false} className="hp-hero-quiet">
-          Showroom v kaštieli
-        </TextLink>
       </p>
     </div>
     <p className="hp-hero-credit">Vizualizácia s dekorom Nero Margiua</p>

@@ -45,7 +45,6 @@
 .hp .hp-hero h1 em { font-weight: 300; font-style: italic; letter-spacing: -0.01em; }
 .hp .hp-hero-lead { font-size: clamp(1rem, 1.15vw, 1.1rem); font-weight: 300; max-width: 38ch; color: var(--g70); }
 .hp .hp-hero-links { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 30px; margin-top: 12px; }
-.hp .hp-hero-quiet { color: var(--g70); text-decoration-color: rgba(26, 26, 26, 0.28); }
 .hp .hp-hero-credit { position: absolute; right: var(--gutter); bottom: 18px; font-size: 0.7rem; font-weight: 500; color: var(--g70); }
 
 /* facts */
