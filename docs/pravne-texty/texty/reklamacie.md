@@ -32,7 +32,7 @@ Pri spotrebiteľskom predaji spoločnosť Orostone zodpovedá za vady, ktoré m�
 
 ### Kontrola pred spracovaním
 
-Kupujúci je povinný pred akýmkoľvek rezaním, opracovaním alebo montážou dôkladne skontrolovať najmä rozmer, dekor, odtieň, povrch a zjavné vady tovaru. Po spracovaní tovaru nemožno úspešne reklamovať vady alebo vlastnosti, ktoré boli zjavné alebo zistiteľné pred spracovaním.
+Kupujúci je povinný pred akýmkoľvek rezaním, opracovaním alebo montážou dôkladne skontrolovať najmä rozmer, dekor, odtieň, povrch a zjavné vady tovaru. Po spracovaní tovaru nemožno úspešne uplatniť reklamáciu založenú na vadách alebo vlastnostiach, ktoré boli zjavné alebo zistiteľné pred spracovaním.
 
 ## Uplatnenie reklamácie
 

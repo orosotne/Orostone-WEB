@@ -22,7 +22,7 @@ Pred odovzdaním Codexu, zapracované v PR #70.
 
 ## Kolo 1 – Codex review (7. 10. 2026)
 
-Codex v PR #80 (commit 5452a6a): 29 pripomienok. 25 je zapracovaných, z toho 5 s úpravou (dôvod je v stĺpci Stav), 4 menia právny význam a rozhoduje o nich majiteľ (nižšie).
+Codex v PR #80 (commit 5452a6a): 29 pripomienok. 25 je zapracovaných, z toho 4 s úpravou (dôvod je v stĺpci Stav), 4 menia právny význam a rozhoduje o nich majiteľ (nižšie). Druhé kolo nad opravami (commit b69aa0d) malo 1 pripomienku k č. 19 a je zapracovaná.
 
 | # | Dokument | Pôvodný text | Nový text | Typ | Stav |
 |---|---|---|---|---|---|
@@ -44,7 +44,7 @@ Codex v PR #80 (commit 5452a6a): 29 pripomienok. 25 je zapracovaných, z toho 5 
 | 16 | Rezervácia ceny 5.1 | rezervačný poplatok zaniká bez nároku na jeho vrátenie | – | význam | otázka (O4) |
 | 17 | Rezervácia ceny 11.1 | môže zákazník kontaktovať Orostone na: | môže zákazník kontaktovať Orostone: | gramatika | zapracované s úpravou: zoznam kontaktov pod vetou zostáva, aby zostali odkazy na e-mail a telefón |
 | 18 | Reklamácie – úvod | Reklamácie vybavujeme a právo na odstúpenie od zmluvy uplatňujeme v súlade… | Reklamácie vybavujeme a pri uplatnení práva na odstúpenie od zmluvy postupujeme v súlade… | štylistika | zapracované |
-| 19 | Reklamácie – kontrola pred spracovaním | nemožno úspešne uplatňovať tie vady alebo vlastnosti | nemožno úspešne reklamovať vady alebo vlastnosti | gramatika | zapracované s úpravou: kratšie, význam rovnaký ako v návrhu Codexu |
+| 19 | Reklamácie – kontrola pred spracovaním | nemožno úspešne uplatňovať tie vady alebo vlastnosti | nemožno úspešne uplatniť reklamáciu založenú na vadách alebo vlastnostiach | gramatika | zapracované podľa návrhu Codexu (kratšia verzia „reklamovať vlastnosti“ neprešla 2. kolom) |
 | 20 | Reklamácie – postup | Reklamáciu alebo vytknutie vady môžete uplatniť e-mailom | Reklamáciu môžete uplatniť alebo vadu vytknúť e-mailom | gramatika | zapracované |
 | 21 | Reklamácie – vrátenie platieb | na základe alebo v súvislosti so zmluvou | na základe zmluvy alebo v súvislosti s ňou | gramatika | zapracované |
 | 22 | VOP 1.3 | …povolania, považuje sa za spotrebiteľa | …povolania, sa považuje za spotrebiteľa | gramatika | zapracované |

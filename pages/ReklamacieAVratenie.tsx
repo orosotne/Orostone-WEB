@@ -80,7 +80,7 @@ export const ReklamacieAVratenie: React.FC = () => {
                 <div>
                   <h3 className="mb-2 text-[1.1rem] font-semibold text-brand-dark">Kontrola pred spracovaním</h3>
                   <p className="text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
-                    Kupujúci je povinný <strong>pred akýmkoľvek rezaním, opracovaním alebo montážou</strong> dôkladne skontrolovať najmä rozmer, dekor, odtieň, povrch a zjavné vady tovaru. Po spracovaní tovaru nemožno úspešne reklamovať vady alebo vlastnosti, ktoré boli zjavné alebo zistiteľné pred spracovaním.
+                    Kupujúci je povinný <strong>pred akýmkoľvek rezaním, opracovaním alebo montážou</strong> dôkladne skontrolovať najmä rozmer, dekor, odtieň, povrch a zjavné vady tovaru. Po spracovaní tovaru nemožno úspešne uplatniť reklamáciu založenú na vadách alebo vlastnostiach, ktoré boli zjavné alebo zistiteľné pred spracovaním.
                   </p>
                 </div>
               </div>
