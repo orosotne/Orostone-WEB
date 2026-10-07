@@ -153,4 +153,23 @@ Codex pri poslednej kontrole (commit `7d36a0b`) našiel jednu pripomienku. PR bo
 |---|---|---|---|---|---|---|
 | 1 | 21 | Cez víkend a sviatky po dohode na čísle +421 917 588 738. | Cez víkend a sviatky po dohode na telefónnom čísle +421 917 588 738. | štylistika | Spojenie *na čísle* pôsobí v informačnom texte elipticky, *na telefónnom čísle* jednoznačne pomenúva spôsob kontaktu. Pravidlo v `slovnik.md`, sekcia 8, je spresnené. | zapracované |
 
+### Nový obsah (7. 10. 2026, výber fotiek)
+
+S novými fotkami sa zmenil aj text, ktorý skontroluje ďalšie kolo:
+
+- **09** – štítky kariet nesú názvy dekorov (Yabo White, Nero Margiua, Arden Gold); karta 2 má nový text a popis fotky čiernej dosky.
+- **13** – nový preheader, popis fotky kaštieľa, štítok „Showroom v Bošanoch“ a odkaz „Pozrieť realizácie“.
+- **18** – nové popisy fotiek surovín a pece.
+- **21** – nový popis fotky (vianočné pečenie).
+
+## Kolo 9 – Codex review v PR #88 (7. 10. 2026, výber fotiek)
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 21 | [alt] Vianočné pečenie na ostrovčeku zo sinterovaného kameňa, v pozadí vianočný stromček | [alt] Vianočné pečenie na ostrovčeku zo sinterovaného kameňa so stromčekom v pozadí | štylistika | Slovo *vianočný* sa opakovalo tesne po sebe a dodatok za čiarkou bol ťažkopádny. | zapracované |
+
+## Kolo 10 – Codex review v PR #88 (7. 10. 2026, po oprave z kola 9)
+
+Codex na `d7465f0` nenašiel žiadne pripomienky. Texty k novým fotkám v 09, 13, 18 a 21 sú skontrolované.
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.

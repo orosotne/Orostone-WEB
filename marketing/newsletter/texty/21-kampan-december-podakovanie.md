@@ -17,7 +17,7 @@ Sezónne · december 2026
 Ďakujeme
 za rok 2026.
 Za otázky, vzorky aj fotky hotových kuchýň. Pekné sviatky z Bošian.
-[alt fotky: Zimný aranžmán na pracovnej doske zo sinterovaného kameňa: jedľové vetvičky, sviečky a mandarínky]
+[alt fotky: Vianočné pečenie na ostrovčeku zo sinterovaného kameňa so stromčekom v pozadí]
 
 ### Text
 Dobrý deň,

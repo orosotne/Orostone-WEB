@@ -25,19 +25,19 @@ v predchádzajúcom e-maile sme písali, že dekor sa vyberá k frontom, svetlu 
 
 ### Karta (fotka, štítok, nadpis, veta)
 [alt fotky: Veľký ostrovček zo svetlého sinterovaného kameňa v otvorenom priestore]
-01 · Ostrovček v otvorenom priestore
+01 · Yabo White
 Pokojná kresba na veľkej ploche
 Ostrovček je prvé, čo vidno z obývačky. Svetlý pokojný dekor drží priestor pokope a nesúperí s knižnicou ani s drevenou podlahou.
 
 ### Karta (fotka, štítok, nadpis, veta)
-[alt fotky: Tmavosivá pracovná doska v kuchyni s bielymi kazetovými skrinkami]
-02 · Klasická kuchyňa
+[alt fotky: Čierna pracovná doska a zástena s jemnými bielymi žilkami k bielym frontom a dubovým skrinkám]
+02 · Nero Margiua
 Tmavá doska k bielym frontom
-Tmavosivá matná doska vytvára jasný kontrast s bielymi kazetovými dvierkami. Pracovná plocha je zreteľne ohraničená a kuchyňa pôsobí pokojne.
+Čierna doska aj zástena s jemnými bielymi žilkami tvoria jasný kontrast s bielymi frontami. Dubové horné skrinky ho zjemňujú a pracovná plocha je zreteľne ohraničená.
 
 ### Karta (fotka, štítok, nadpis, veta)
 [alt fotky: Ostrovček a stena v dekore s výraznými zlatými žilami]
-03 · Ostrovček a stena
+03 · Arden Gold
 Výrazná kresba ako stredobod
 Zlaté žily na ostrovčeku aj na stene sú hlavným prvkom celej kuchyne. Ostatné povrchy preto ostali tiché – tmavé drevo a jednoduché fronty.
 
