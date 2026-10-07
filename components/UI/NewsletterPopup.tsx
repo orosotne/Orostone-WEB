@@ -89,7 +89,7 @@ export const NewsletterPopup: React.FC = () => {
                   Exkluzívna ponuka
                 </span>
                 <h2 className="text-2xl md:text-3xl font-bold text-brand-dark leading-tight">
-                  Zľava 5&nbsp;% na<br />prvý nákup
+                  Prvá vzorka<br />bez poštovného
                 </h2>
               </div>
 
@@ -100,7 +100,7 @@ export const NewsletterPopup: React.FC = () => {
                     <CheckCircle className="w-12 h-12 text-brand-gold mx-auto mb-3" strokeWidth={1.5} />
                     <p className="font-bold text-brand-dark text-lg mb-1">Výborne!</p>
                     <p className="text-gray-500 text-sm leading-relaxed">
-                      Skontrolujte e-mail — váš kód <strong className="text-brand-dark">WELCOME5</strong> je na ceste.
+                      Skontrolujte e-mail – kód <strong className="text-brand-dark">VITAJTE</strong> na vzorku bez poštovného je na ceste.
                     </p>
                     <button
                       onClick={dismiss}
@@ -112,7 +112,7 @@ export const NewsletterPopup: React.FC = () => {
                 ) : (
                   <>
                     <p className="text-gray-500 text-sm leading-relaxed mb-5">
-                      Prihláste sa na odber noviniek a získajte zľavový kód <strong className="text-brand-dark">WELCOME5</strong> na váš prvý nákup v e-shope.
+                      Prihláste sa na odber noviniek a prvú vzorku vám pošleme bez poštovného.
                     </p>
 
                     <form onSubmit={handleSubmit} className="space-y-3">
@@ -135,7 +135,7 @@ export const NewsletterPopup: React.FC = () => {
                         {status === 'loading' ? (
                           <><Loader2 size={16} className="animate-spin" /> Odosielam...</>
                         ) : (
-                          'Získať 5% zľavu'
+                          'Chcem vzorku bez poštovného'
                         )}
                       </button>
                     </form>
