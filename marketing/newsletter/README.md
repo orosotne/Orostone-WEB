@@ -81,7 +81,7 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 | 30 | Realizácia mesiaca | Kampaň február 2027 | Biela doska v ružovej kuchyni | na kontrole, pred odoslaním súhlas klienta so zverejnením |
 | 31 | Pozvánka do showroomu | Kampaň február 2027 | Celé platne naživo v kaštieli v Bošanoch | na kontrole |
 | 32 | Dekor v detaile | Kampaň marec 2027 | Wild Forest: kresba pre veľké plochy | na kontrole |
-| 33 | Spolupráca so štúdiom | Kampaň marec 2027 | Kuchynské štúdio a doska: ako ich zladiť | na kontrole |
+| 33 | Spolupráca so štúdiom | Kampaň marec 2027 | Návrh kuchyne a doska: ako ich zladiť | na kontrole |
 
 **Neposielame:** tip šesť mesiacov po montáži a Výročie (rozhodnutie Martina zo 7. 10. 2026). Potvrdenie objednávky vzorky posiela Shopify a potvrdenie dopytu web, tie netreba písať.
 

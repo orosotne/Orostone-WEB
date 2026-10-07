@@ -24,7 +24,7 @@ Dobrý deň,
 vzorka ukáže farbu a povrch. Ako bude doska pôsobiť v celej kuchyni, uvidíte až na celej platni. Preto vás pozývame do showroomu v renesančnom kaštieli v Bošanoch.
 
 ### Obrázok (popis)
-[alt fotky: Celá platňa Taj Mahal vedľa človeka pre mierku]
+[alt fotky: Celá platňa Taj Mahal vedľa človeka na porovnanie veľkosti]
 Celá platňa 3200 × 1600 mm · takto veľkú plochu vzorka neukáže
 
 ### Nadpis sekcie

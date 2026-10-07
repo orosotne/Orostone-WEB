@@ -17,7 +17,7 @@ Každá platňa má vlastný priebeh kresby. V showroome si ju s klientom vyberi
 
 ### Text
 Dobrý deň,
-na vzorke 10 × 10 cm vidno farbu a povrch. Priebeh kresby na celej doske však ukáže až platňa 3200 × 1600 mm. Preto vás aj s klientom pozývame do showroomu v renesančnom kaštieli v Bošanoch.
+na vzorke 10 × 10 cm vidno farbu a povrch. Celý priebeh kresby však uvidíte až na platni s rozmermi 3200 × 1600 mm. Preto vás aj s klientom pozývame do showroomu v renesančnom kaštieli v Bošanoch.
 
 ### Nadpis sekcie
 Čo pre vás pripravíme

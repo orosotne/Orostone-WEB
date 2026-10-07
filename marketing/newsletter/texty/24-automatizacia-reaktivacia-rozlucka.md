@@ -18,7 +18,7 @@ ešte písať?
 ### Text
 Dobrý deň,
 posielame vám realizácie, dekory a rady k výberu pracovnej dosky. Ak to pre vás už nie je aktuálne, rozumieme – kuchyňa sa nerieši každý rok.
-Ak chcete e-maily dostávať ďalej, kliknite na tlačidlo. Ak nekliknete, ďalšie e-maily vám už posielať nebudeme.
+Ak chcete e-maily dostávať ďalej, kliknite na tlačidlo.
 
 ### Tlačidlo (CTA)
 Ostať v odbere

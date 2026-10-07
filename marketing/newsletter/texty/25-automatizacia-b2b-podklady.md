@@ -60,7 +60,7 @@ Spracovanie podľa technického listu
 Rezanie, výrezy aj montáž robí kamenár podľa technického listu a montážneho manuálu.
 03
 Bezpečné spracovanie
-Obsah kryštalického kremíka nepresahuje 1 %. Pri rezaní a brúsení však vzniká prach, preto k práci patrí odsávanie alebo mokré rezanie.
+Obsah kryštalického oxidu kremičitého nepresahuje 1 %. Pri rezaní a brúsení však vzniká prach, preto k práci patrí odsávanie alebo mokré rezanie.
 
 ### Tlačidlo (CTA)
 Stiahnuť technický list

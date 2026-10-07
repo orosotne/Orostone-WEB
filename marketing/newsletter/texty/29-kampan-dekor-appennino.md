@@ -21,13 +21,13 @@ Takmer biely základ s hustou sieťou jemných zlatobéžových žiliek – na p
 ### Text
 Dobrý deň,
 Appennino je svetlý dekor s detailnou, no nízkokontrastnou kresbou. Zblízka uvidíte jemné žilky, z odstupu plocha pôsobí pokojne a celistvo.
-Hodí sa do kuchýň, kde má doska priniesť svetlo, nie pozornosť.
+Hodí sa do kuchýň, kde má doska priestor rozjasniť a nepútať na seba pozornosť.
 
 ### Nadpis sekcie
 01 – Vo veľkej ploche
 
 ### Obrázok (popis)
-[alt fotky: Celá platňa Appennino vedľa človeka pre mierku]
+[alt fotky: Celá platňa Appennino vedľa človeka na porovnanie veľkosti]
 Celá platňa 3200 × 1600 mm · každá platňa má vlastný priebeh žiliek
 
 ### Nadpis sekcie

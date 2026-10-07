@@ -204,4 +204,20 @@ Martin: tip po pol roku a Výročie neposielame. Na kontrolu je dvanásť novýc
 
 Fakty sú z produktových dát, technického listu (TDS), dokumentu Key facts 2026 a článku Od merania po inštaláciu.
 
+## Kolo 13 – Codex review v PR #96 (7. 10. 2026, e-maily 22–33)
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 22 | Vyberám, do 3 mesiacov | Riešim ju do 3 mesiacov | interpunkcia | Čiarka bezdôvodne oddeľovala prísudok od časového určenia. Zámeno *ju* zjednocuje voľbu s „Plánujem ju neskôr“. Namiesto navrhnutého *Vyberám ju* je *Riešim ju*, aby odpoveď nadväzovala na predmet „Riešite ešte kuchyňu?“. | zapracované |
+| 2 | 23 | Svetlá doska s jemnými sivými žilkami a čierna varná doska. | Svetlú dosku s jemnými sivými žilkami dopĺňa čierna varná doska. | gramatika | V opisnom odseku bola neúplná veta bez prísudku. | zapracované |
+| 3 | 24 | Ak chcete e-maily dostávať ďalej, kliknite na tlačidlo. Ak nekliknete, ďalšie e-maily vám už posielať nebudeme. | Ak chcete e-maily dostávať ďalej, kliknite na tlačidlo. | obsah | Druhá veta opisovala, čo automatizácia urobí po nekliknutí. Podľa sekcie 1 slovníka nastavenie automatizácie neprezrádzame. Pravidlo je spresnené. | zapracované |
+| 4 | 25 | Obsah kryštalického kremíka nepresahuje 1 %. | Obsah kryštalického oxidu kremičitého nepresahuje 1 %. | terminológia | V prachu z rezania je kryštalický oxid kremičitý, nie prvok kremík. | zapracované |
+| 5 | 26 | [preheader] …vzorky, ktoré klient chytí do ruky… | …vzorky, ktoré klient vezme do ruky… | lexika | *Chytiť do ruky* je hovorové a znamená skôr náhle uchopenie. | zapracované |
+| 6 | 27 | Priebeh kresby na celej doske však ukáže až platňa 3200 × 1600 mm. | Celý priebeh kresby však uvidíte až na platni s rozmermi 3200 × 1600 mm. | lexika | Veta miešala *dosku* (hotový výrobok) a *platňu* (celý formát materiálu), sekcia 4 slovníka. | zapracované |
+| 7 | 29 | Hodí sa do kuchýň, kde má doska priniesť svetlo, nie pozornosť. | Hodí sa do kuchýň, kde má doska priestor rozjasniť a nepútať na seba pozornosť. | štylistika | Protiklad *priniesť svetlo, nie pozornosť* je neprirodzený. Navrhnuté *pôsobiť svetlo* nie je väzba spisovnej slovenčiny, preto *priestor rozjasniť*. | zapracované |
+| 8 | 29, 31, 32 | [alt] Celá platňa … vedľa človeka pre mierku | [alt] Celá platňa … vedľa človeka na porovnanie veľkosti | kalk | *Pre mierku* je doslovný preklad anglického *for scale*. Rovnaký popis mali aj 04, 07 a 10, opravené sú tiež. | zapracované |
+| 9 | 30 | Pri farebných frontoch drží biela plocha kuchyňu svetlú a nesúperí s farbou. | Pri farebných frontoch zostáva kuchyňa vďaka bielej ploche svetlá a doska s farbou nesúperí. | kalk | Väzba *držať kuchyňu svetlú* je anglický kalk. | zapracované |
+| 10 | 33 | [predmet] Kuchynské štúdio a doska: ako ich zladiť | [predmet] Návrh kuchyne a doska: ako ich zladiť | význam | Zladiť s doskou sa má návrh kuchyne, nie štúdio ako firma. | zapracované |
+| 11 | 33 | [preheader] …kedy nás pribrať do návrhu. | …kedy nás zapojiť do návrhu. | lexika | *Pribrať* je hovorové, *zapojiť do návrhu* je jednoznačné. | zapracované |
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.

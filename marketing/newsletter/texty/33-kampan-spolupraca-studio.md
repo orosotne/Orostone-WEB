@@ -1,10 +1,10 @@
-# 33 – Kuchynské štúdio a doska: ako ich zladiť
+# 33 – Návrh kuchyne a doska: ako ich zladiť
 
 - **Typ:** Kampaň · séria Spolupráca (1× za štvrťrok)
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
 - **Komu:** Všetci odberatelia; mimo zákazníkov po realizácii
-- **Predmet:** Kuchynské štúdio a doska: ako ich zladiť
-- **Preheader:** Ukážeme, čo má štúdio o doske vedieť a kedy nás pribrať do návrhu.
+- **Predmet:** Návrh kuchyne a doska: ako ich zladiť
+- **Preheader:** Ukážeme, čo má štúdio o doske vedieť a kedy nás zapojiť do návrhu.
 - **Šablóna:** `sablony/33-kampan-spolupraca-studio.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

@@ -28,7 +28,7 @@ Aby sme vám posielali len to, čo sa vám práve hodí, stačí nám jedno klik
 Jedna otázka pre nás
 V akej fáze je vaša kuchyňa?
 Podľa odpovede vám budeme posielať realizácie a rady, ktoré zodpovedajú vášmu plánu.
-Vyberám, do 3 mesiacov
+Riešim ju do 3 mesiacov
 Plánujem ju neskôr
 Kuchyňu už mám hotovú
 

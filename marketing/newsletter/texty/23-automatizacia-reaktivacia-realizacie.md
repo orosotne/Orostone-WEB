@@ -36,7 +36,7 @@ Béžová doska leží na ostrovčeku z tmavého dreva, pri podlahe svieti LED p
 [alt fotky: Biely ostrovček s jemnými sivými žilkami a čiernou varnou doskou pri stene z drevených lamiel]
 03 · Svetlý mramor
 Biela doska pri drevených lamelách
-Svetlá doska s jemnými sivými žilkami a čierna varná doska. Drevené lamely na stene dodávajú bielej ploche teplo.
+Svetlú dosku s jemnými sivými žilkami dopĺňa čierna varná doska. Drevené lamely na stene dodávajú bielej ploche teplo.
 
 ### Citát / dôležitá myšlienka
 Čo majú spoločné

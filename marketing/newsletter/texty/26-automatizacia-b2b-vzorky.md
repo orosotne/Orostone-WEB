@@ -3,7 +3,7 @@
 - **Typ:** Automatizácia · B2B 2/3
 - **Kedy sa posiela:** 7 dní po pridaní tagu B2B
 - **Predmet:** Vzorky dekorov pre vaše štúdio
-- **Preheader:** Pošleme vám vzorky, ktoré klient chytí do ruky a uvidí pri svojom svetle.
+- **Preheader:** Pošleme vám vzorky, ktoré klient vezme do ruky a uvidí pri svojom svetle.
 - **Šablóna:** `sablony/26-automatizacia-b2b-vzorky.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

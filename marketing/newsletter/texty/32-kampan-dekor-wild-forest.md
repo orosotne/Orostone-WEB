@@ -27,7 +27,7 @@ Vzor je veľkoplošný, preto vynikne až na väčšej súvislej ploche – na o
 01 – Vo veľkej ploche
 
 ### Obrázok (popis)
-[alt fotky: Celá platňa Wild Forest vedľa človeka pre mierku]
+[alt fotky: Celá platňa Wild Forest vedľa človeka na porovnanie veľkosti]
 Celá platňa 3200 × 1600 mm · vzorka 10 × 10 cm celý priebeh kresby nezachytí
 
 ### Nadpis sekcie

@@ -44,7 +44,7 @@ Zaoblený ostrovček
 Ostrovček má zaoblený koniec a varnú dosku. Biela doska kopíruje jeho oblý tvar.
 02
 Prečo biela doska
-Pri farebných frontoch drží biela plocha kuchyňu svetlú a nesúperí s farbou.
+Pri farebných frontoch zostáva kuchyňa vďaka bielej ploche svetlá a doska s farbou nesúperí.
 03
 Svetlo pod skrinkami
 Osvetlenie pod hornými skrinkami presvetľuje bielu dosku aj zástenu.
