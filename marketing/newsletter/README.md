@@ -49,8 +49,8 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 
 | # | E-mail | Kam patrí | Predmet | Stav |
 |---|---|---|---|---|
-| 01 | Vitajte | Welcome 1/4 – hneď po prihlásení | Vitajte v Orostone. Toto vám budeme posielať | skontrolované |
-| 02 | List od Mariána | Welcome 2/4 – o 2 dni | Krátky list namiesto reklamy | skontrolované, čaká na Mariána |
+| 01 | Vitajte | Welcome 1/4 – hneď po prihlásení | Vitajte v Orostone. Toto vám budeme posielať | na kontrole – nová uvítacia odmena (kód VITAJTE) |
+| 02 | List od Mariána | Welcome 2/4 – o 2 dni | Krátky list namiesto reklamy | na kontrole – list v prvej osobe, Marián ho schváli |
 | 07 | Ako vybrať dekor | Welcome 3/4 – o 5 dní | Tri otázky pred výberom dekoru | skontrolované |
 | 09 | Tri kuchyne | Welcome 4/4 – o 9 dní | Tri kuchyne, tri rôzne rozhodnutia | na kontrole, fotky na schválenie |
 | 05 | Vzorka je doma | Vzorky 2/4 – 2 dni po doručení | Vzorka je doma. Skúste s ňou 4 veci | skontrolované |
@@ -63,13 +63,13 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 | 16 | Marián (čistý text) | Opustený košík 2/2 – o deň | Váhate medzi dekormi? | na kontrole |
 | 08 | Hotovo | Po realizácii 1/4 – deň montáže | Hotovo: fotky z vašej montáže | skontrolované |
 | 17 | Starostlivosť | Po realizácii 2/4 – 7 dní po montáži | Starostlivosť o dosku v skratke | na kontrole |
-| 06 | Ako sa vám žije | Po realizácii 3/4 – 30 dní po montáži | Ako sa vám žije s novou doskou? | skontrolované, chýba odkaz na Google recenzie |
-| 03 | Realizácia mesiaca | Kampaň október | Taj Mahal na dlhom ostrovčeku s drezom | skontrolované, čaká na fakty [ ] |
+| 06 | Ako sa vám žije | Po realizácii 3/4 – 30 dní po montáži | Ako sa vám žije s novou doskou? | skontrolované, odkaz na Google recenzie doplnený |
+| 03 | Realizácia mesiaca | Kampaň október | Taj Mahal na dlhom ostrovčeku s drezom | na kontrole – fakty z fotiek a webu |
 | 04 | Dekor v detaile | Kampaň október | Roman Travertine: travertín bez impregnácie | skontrolované |
 | 18 | Zo zákulisia | Kampaň november | Ako vzniká sinterovaný kameň | na kontrole |
 | 19 | Sprievodca | Kampaň november | Čo je v cene pracovnej dosky | na kontrole |
-| 20 | Realizácia mesiaca | Kampaň december | Biela doska a tmavé drevo | na kontrole, čaká na fakty [ ] a výber realizácie |
-| 21 | Poďakovanie | Kampaň december | Ďakujeme za rok 2026 | na kontrole, chýbajú otváracie hodiny |
+| 20 | Realizácia mesiaca | Kampaň december | Biela doska a tmavé drevo | na kontrole, čaká na výber realizácie (F5) |
+| 21 | Poďakovanie | Kampaň december | Ďakujeme za rok 2026 | na kontrole |
 
 **Ešte nenapísané (plán na rok 2027):** Po realizácii 4/4 (tip po 6 mesiacoch), Výročie, Reaktivácia (3 e-maily), B2B (3 e-maily), kampane január – marec (6 e-mailov). Potvrdenie objednávky vzorky posiela Shopify a potvrdenie dopytu web, tie netreba písať.
 
@@ -78,6 +78,8 @@ Vizuálne pravidlá e-mailu sú v skille `orostone-kreativy` (`references/newsle
 
 ## Zástupné texty
 
-- `[v hranatých zátvorkách]` – doplní Marián pred odoslaním (lokalita, citát klienta, dátum montáže…).
+- `[v hranatých zátvorkách]` – doplní sa pred odoslaním. Dnes ich má len e-mail 08 (meno, dátum montáže, dekor – pre každého zákazníka iné).
+- Realizácia mesiaca (03, 20) uvádza len fakty z fotiek a zo stránky Realizácie. Lokalitu, kamenára a citát klienta doplníme, keď ich Marián potvrdí (citát len so súhlasom klienta).
+- Uvítacia odmena je **prvá vzorka bez poštovného**, kód `VITAJTE` (rozhodnutie 7. 10. 2026, nahrádza WELCOME5). Kód musí v Shopify existovať skôr, než ho e-mail sľúbi.
 - Obrázky sú v `public/images/email/` a web ich zverejní na `https://orostone.sk/images/email/`. Nový obrázok pridajte do tohto priečinka (JPG, dvojnásobná šírka oproti zobrazeniu, najviac okolo 150 KB).
 - Odkaz na odhlásenie a ďalšie premenné doplní rozosielací nástroj.

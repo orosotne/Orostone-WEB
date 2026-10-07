@@ -11,7 +11,7 @@
 ### List
 Dobrý deň,
 včera ste si v e-shope vyberali vzorku, ale objednávka ostala nedokončená. Ak je dôvodom to, že neviete, ktorý dekor zvoliť, pomôžem vám.
-V odpovedi mi pošlite fotku kuchyne alebo vizualizáciu a napíšte, aké budú skrinky a podlaha. Odporučím vám dva až tri dekory, ktoré má zmysel objednať ako vzorky.
+V odpovedi mi pošlite fotku kuchyne alebo vizualizáciu a napíšte, aké budú skrinky a podlaha. Odporučím vám dva až tri dekory, ktoré má zmysel objednať si ako vzorky.
 Ak ste si už vybrali, objednávku dokončíte tu.
 S pozdravom
 Marián Brázdil

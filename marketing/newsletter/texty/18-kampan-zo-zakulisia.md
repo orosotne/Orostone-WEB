@@ -56,7 +56,7 @@ Tepelná odolnosť
 Tvrdosť
 6–8 Mohs
 Zloženie
-100 % minerály
+100 % minerálov
 
 ### Citát / dôležitá myšlienka
 Prečo na tom záleží

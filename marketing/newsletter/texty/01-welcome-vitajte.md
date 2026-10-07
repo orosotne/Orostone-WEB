@@ -42,11 +42,11 @@ Hrúbka, hrany, údržba aj cena. Vecne a bez technického žargónu.
 Približne dvakrát do mesiaca. Odhlásiť sa dá jedným kliknutím v pätičke.
 
 ### Ponuka
-Prvý krok
-Vzorka na stôl
-Kresbu kameňa najlepšie posúdite doma – pri svojom svetle a vedľa svojich skriniek. Vzorku vám pošleme, platíte iba poštovné 2,50 €.
+Uvítací darček
+Vzorka bez poštovného
+Kresbu kameňa najlepšie posúdite doma – pri svojom svetle a vedľa svojich skriniek. Prvá vzorka je zadarmo a ako odberateľ neplatíte ani poštovné.
 Objednať vzorku
-Sľúbený uvítací kód: WELCOME5 – 5 % na prvý nákup v e-shope orostone.sk.
+V pokladni zadajte kód VITAJTE. Platí na jednu objednávku vzoriek.
 
 ### P. S.
 P. S. · Marián, Orostone

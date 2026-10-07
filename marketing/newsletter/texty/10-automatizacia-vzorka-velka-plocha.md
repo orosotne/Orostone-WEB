@@ -45,7 +45,7 @@ V Bošanoch vám pripravíme platne vášho dekoru. Ak prinesiete vzorku frontu,
 Vzorka pri dvierkach skrinky · dekor Appennino
 
 ### Tlačidlo (CTA)
-Pozrieť dekor vo veľkej ploche
+Pozrieť celú platňu
 Na stránke dekoru je fotka celej platne aj cena.
 Objednať ďalšiu vzorku
 

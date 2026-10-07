@@ -14,50 +14,49 @@ Realizácia mesiaca · december 2026
 
 ### Séria (pill) a veta pod ňou
 Realizácia mesiaca
-Raz mesačne jedna skutočná kuchyňa: zadanie, dekor a výsledok.
+Raz mesačne jedna skutočná kuchyňa a jej dekor vo veľkej ploche.
 
 ### Nadpis
 Biela doska
 a tmavé drevo.
 
 ### Hlavná fotka (popis na fotke)
-[alt fotky: Biely ostrovček zo sinterovaného kameňa s orechovými bokmi]
-● [Dekor]
+[alt fotky: Biely ostrovček zo sinterovaného kameňa s drevenými bokmi]
+● Polaris Statuario White
 
 ### Fakty
 Dekor
-[doplniť]
+Polaris Statuario White
 Aplikácia
-ostrovček a zástena
-Lokalita
-[doplniť]
-Montáž
-[partner kamenár]
+Ostrovček a zástena
+Varná doska
+V ostrovčeku
+Kombinácia
+Tmavé drevo
 
 ### Text
 Dobrý deň,
-v decembri ukazujeme kuchyňu, kde sa stretávajú biela doska s výraznou kresbou a tmavé orechové drevo. Kontrast drží celý priestor pokope.
+v decembri ukazujeme kuchyňu, kde sa stretávajú biela doska s výraznou kresbou a tmavé drevo. Kontrast drží celý priestor pokope.
 
 ### Číslovaný zoznam
 01
-Zadanie
-[1–2 vety: čo klient riešil – priestor, štýl, čo nechcel.]
+Varenie na ostrovčeku
+Varná doska je v ostrovčeku, takže pri varení stojíte tvárou do miestnosti.
 02
 Prečo tento dekor
 Biely základ s jemnými sivými žilami vyvažuje tmavé drevo ostrovčeka aj skriniek. Kresba je výrazná, no na veľkej ploche nepôsobí nepokojne.
 03
-Výsledok
-[1–2 vety: ako sa s doskou žije po pár mesiacoch používania.]
+Zástena v rovnakom dekore
+Zástena za linkou je z rovnakého dekoru ako ostrovček, preto kuchyňa pôsobí ako jeden celok.
 
 ### Dvojica fotiek (popis)
-[alt fotky: Ostrovček s varnou doskou a orechovými bokmi]
+[alt fotky: Ostrovček s varnou doskou a drevenými bokmi]
 [alt fotky: Biela doska ostrovčeka a zástena za linkou]
 Ostrovček a zástena v jednom dekore
 
 ### Citát / dôležitá myšlienka
-Slovami klienta
-„[Citát klienta – jedna konkrétna veta o tom, ako sa s doskou žije.]“
-[Meno, mesto]
+Hlavná myšlienka
+Výrazná kresba potrebuje pokojné okolie. Tu ho tvorí tmavé drevo s jednoduchými frontami.
 
 ### Tlačidlo (CTA)
 Objednať vzorku
@@ -66,7 +65,7 @@ Pozrieť ďalšie realizácie
 
 ### P. S.
 P. S. · Marián, Orostone
-Zvažujete podobný ostrovček? Pošlite pôdorys s rozmermi – pripravíme orientačné cenové rozpätie presne pre váš rozmer.
+Zvažujete podobný ostrovček? Pošlite pôdorys s rozmermi – pripravíme orientačné cenové rozpätie presne pre vašu kuchyňu.
 
 ### Podpis značky
 Krása kameňa.

@@ -42,7 +42,7 @@ Ukážeme, ako sa platne rozrežú na dosku, ostrovček alebo zástenu.
 Hrany, výrezy, údržba aj termíny. Bez ponáhľania.
 
 ### Tlačidlo (CTA)
-Dohodnúť návštevu showroomu
+Dohodnúť návštevu
 SNP 113/1, Bošany. Návšteva je bezplatná a nezáväzná.
 Pozrieť ďalšie realizácie
 

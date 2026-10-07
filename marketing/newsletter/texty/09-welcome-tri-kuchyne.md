@@ -46,7 +46,7 @@ Zlaté žily na ostrovčeku aj na stene sú hlavným prvkom celej kuchyne. Ostat
 Každá kuchyňa má jeden hlavný prvok. Ak je kresba výrazná, okolie je tiché – a naopak.
 
 ### Tlačidlo (CTA)
-Poslať pôdorys a získať orientačnú cenu
+Získať orientačnú cenu
 Stačí náčrt alebo základné rozmery kuchyne.
 Pozrieť všetky realizácie
 
