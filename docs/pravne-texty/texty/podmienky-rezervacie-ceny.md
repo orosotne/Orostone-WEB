@@ -54,7 +54,7 @@ Táto služba zahŕňa:
 
 ## 5. Nevyužitie rezervácie
 
-**5.1** Ak zákazník v lehote 6 mesiacov od úhrady rezervačného poplatku neuskutoční objednávku produktu Orostone, rezervačný poplatok zaniká bez nároku na jeho vrátenie.
+**5.1** Ak zákazník v lehote 6 mesiacov od úhrady rezervačného poplatku neuskutoční objednávku produktu Orostone, právo uplatniť rezervačný poplatok ako kredit alebo zľavu zaniká a zákazník nemá nárok na jeho vrátenie.
 
 **5.2** Po uplynutí tejto lehoty už zákazník nemá nárok na odpočítanie rezervačného poplatku z budúcej objednávky.
 

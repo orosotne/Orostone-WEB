@@ -119,7 +119,7 @@ export const VOP = () => {
               Rozmery, hrúbka, povrch, hmotnosť a ostatné parametre Tovaru sa posudzujú v rámci obvyklých výrobných a technických tolerancií výrobcu.
             </SubSection>
             <SubSection number="2.7">
-              Predávajúci neposkytuje projektovú, architektonickú, statickú, stavebnú ani montážnu zodpovednosť za použitie Tovaru, pokiaľ takáto služba nebola osobitne písomne objednaná a písomne potvrdená.
+              Predávajúci neposkytuje projektové, architektonické, statické, stavebné ani montážne služby a za takéto riešenie použitia Tovaru nezodpovedá, pokiaľ takáto služba nebola osobitne písomne objednaná a písomne potvrdená.
             </SubSection>
             <SubSection number="2.8">
               Predávajúci nevykonáva montáž, rezanie ani opracovanie Tovaru, ak nie je písomne dohodnuté inak.
@@ -155,7 +155,7 @@ export const VOP = () => {
               Klient zodpovedá za správnosť a úplnosť údajov uvedených v objednávke. Predávajúci nezodpovedá za škodu, omeškanie alebo nemožnosť dodania spôsobenú nesprávnymi údajmi Klienta.
             </SubSection>
             <SubSection number="3.7">
-              Ak je objednávka individuálna, nadštandardná, neštandardných rozmerov, mimo bežného skladového sortimentu alebo viazaná na osobitné požiadavky Klienta, kúpna zmluva vzniká až okamihom výslovného písomného potvrdenia objednávky zo strany predávajúceho. Ak predávajúci požaduje zálohu, jej úhrada je podmienkou plnenia, ak nebolo písomne dohodnuté inak.
+              Ak je objednávka individuálna alebo nadštandardná, ak sa týka Tovaru neštandardných rozmerov či Tovaru mimo bežného skladového sortimentu alebo ak je viazaná na osobitné požiadavky Klienta, kúpna zmluva vzniká až okamihom výslovného písomného potvrdenia objednávky zo strany predávajúceho. Ak predávajúci požaduje zálohu, jej úhrada je podmienkou plnenia, ak nebolo písomne dohodnuté inak.
             </SubSection>
           </Section>
 
@@ -408,7 +408,7 @@ export const VOP = () => {
           {/* 12. Obmedzenie zodpovednosti */}
           <Section id="obmedzenie-zodpovednosti" number="12" title="Obmedzenie zodpovednosti">
             <SubSection number="12.1">
-              Predávajúci nezodpovedá za nepriame škody, následné škody, ušlý zisk, prestoje, stratu zákazky, náklady tretích osôb ani iné následné ekonomické ujmy, ak takáto zodpovednosť nemôže byť podľa kogentných právnych predpisov vylúčená.
+              Predávajúci v rozsahu, v akom to pripúšťajú kogentné právne predpisy, nezodpovedá za nepriame škody, následné škody, ušlý zisk, prestoje, stratu zákazky, náklady tretích osôb ani iné následné ekonomické ujmy.
             </SubSection>
             <SubSection number="12.2" highlight>
               Pri Klientovi – podnikateľovi sa celková zodpovednosť predávajúceho obmedzuje <strong>na výšku ceny realizovanej objednávky</strong>, z ktorej škoda vznikla.

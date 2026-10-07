@@ -22,7 +22,7 @@ Pred odovzdaním Codexu, zapracované v PR #70.
 
 ## Kolo 1 – Codex review (7. 10. 2026)
 
-Codex v PR #80 (commit 5452a6a): 29 pripomienok. 25 je zapracovaných, z toho 4 s úpravou (dôvod je v stĺpci Stav), 4 menia právny význam a rozhoduje o nich majiteľ (nižšie). Druhé kolo nad opravami (commit b69aa0d) malo 1 pripomienku k č. 19 a je zapracovaná.
+Codex v PR #80 (commit 5452a6a): 29 pripomienok. 25 je zapracovaných, z toho 4 s úpravou (dôvod je v stĺpci Stav). 4 menia právny význam; majiteľ 7. 10. 2026 schválil odporúčané znenia (nižšie) a sú zapracované. Druhé kolo nad opravami (commit b69aa0d) malo 1 pripomienku k č. 19 a je zapracovaná.
 
 | # | Dokument | Pôvodný text | Nový text | Typ | Stav |
 |---|---|---|---|---|---|
@@ -41,7 +41,7 @@ Codex v PR #80 (commit 5452a6a): 29 pripomienok. 25 je zapracovaných, z toho 4 
 | 13 | Ochrana súkromia – práva | prenos vašich údajov k inému prevádzkovateľovi | prenos vašich údajov inému prevádzkovateľovi | gramatika | zapracované |
 | 14 | Ochrana súkromia – práva | namietať voči spracovaniu | namietať proti spracovaniu | gramatika | zapracované s úpravou: podstatné meno „spracovanie“ zostáva, aby sa zhodovalo s ostatnými právami v zozname |
 | 15 | Formulár na odstúpenie | (naskenovaný/odfotený) | (naskenovaný alebo odfotografovaný) | spisovnosť | zapracované |
-| 16 | Rezervácia ceny 5.1 | rezervačný poplatok zaniká bez nároku na jeho vrátenie | – | význam | otázka (O4) |
+| 16 | Rezervácia ceny 5.1 | rezervačný poplatok zaniká bez nároku na jeho vrátenie | právo uplatniť rezervačný poplatok ako kredit alebo zľavu zaniká a zákazník nemá nárok na jeho vrátenie | význam | zapracované (O4, schválil majiteľ) |
 | 17 | Rezervácia ceny 11.1 | môže zákazník kontaktovať Orostone na: | môže zákazník kontaktovať Orostone: | gramatika | zapracované s úpravou: zoznam kontaktov pod vetou zostáva, aby zostali odkazy na e-mail a telefón |
 | 18 | Reklamácie – úvod | Reklamácie vybavujeme a právo na odstúpenie od zmluvy uplatňujeme v súlade… | Reklamácie vybavujeme a pri uplatnení práva na odstúpenie od zmluvy postupujeme v súlade… | štylistika | zapracované |
 | 19 | Reklamácie – kontrola pred spracovaním | nemožno úspešne uplatňovať tie vady alebo vlastnosti | nemožno úspešne uplatniť reklamáciu založenú na vadách alebo vlastnostiach | gramatika | zapracované podľa návrhu Codexu (kratšia verzia „reklamovať vlastnosti“ neprešla 2. kolom) |
@@ -49,10 +49,10 @@ Codex v PR #80 (commit 5452a6a): 29 pripomienok. 25 je zapracovaných, z toho 4 
 | 21 | Reklamácie – vrátenie platieb | na základe alebo v súvislosti so zmluvou | na základe zmluvy alebo v súvislosti s ňou | gramatika | zapracované |
 | 22 | VOP 1.3 | …povolania, považuje sa za spotrebiteľa | …povolania, sa považuje za spotrebiteľa | gramatika | zapracované |
 | 23 | VOP 2.4 | Vzorka vs. celá platňa | Vzorka a celá platňa | spisovnosť | zapracované |
-| 24 | VOP 2.7 | neposkytuje projektovú, … ani montážnu zodpovednosť…, pokiaľ takáto služba… | – | význam | otázka (O2) |
-| 25 | VOP 3.7 | individuálna, nadštandardná, neštandardných rozmerov, mimo bežného skladového sortimentu… | – | význam | otázka (O3) |
+| 24 | VOP 2.7 | neposkytuje projektovú, … ani montážnu zodpovednosť…, pokiaľ takáto služba… | neposkytuje projektové, … ani montážne služby a za takéto riešenie použitia Tovaru nezodpovedá, pokiaľ takáto služba… | význam | zapracované (O2, schválil majiteľ) |
+| 25 | VOP 3.7 | individuálna, nadštandardná, neštandardných rozmerov, mimo bežného skladového sortimentu… | individuálna alebo nadštandardná, ak sa týka Tovaru neštandardných rozmerov či Tovaru mimo bežného skladového sortimentu alebo ak je viazaná… | význam | zapracované (O3, schválil majiteľ) |
 | 26 | VOP 10.4 | popis vady | opis vady | spisovnosť | zapracované |
-| 27 | VOP 12.1 | …ak takáto zodpovednosť nemôže byť podľa kogentných právnych predpisov vylúčená | – | význam | otázka (O1) |
+| 27 | VOP 12.1 | Predávajúci nezodpovedá…, ak takáto zodpovednosť nemôže byť podľa kogentných právnych predpisov vylúčená | Predávajúci v rozsahu, v akom to pripúšťajú kogentné právne predpisy, nezodpovedá… | význam | zapracované (O1, schválil majiteľ) |
 | 28 | VOP 12.2 | obmedzuje najviac do výšky ceny | obmedzuje na výšku ceny | gramatika | zapracované (zvratné „sa“ vo vete už je) |
 | 29 | VOP 13.2 | Po dobu trvania okolností | Počas trvania okolností | spisovnosť | zapracované |
 
@@ -67,9 +67,9 @@ Codex v PR #80 (commit 5452a6a): 29 pripomienok. 25 je zapracovaných, z toho 4 
 | 34 | Reklamácie – postup | (detail + celkový pohľad) | (detail aj celkový pohľad) | štylistika | zapracované |
 | 35 | Cookies – tabuľka (Cloudflare) | Do 30 min / podľa konfigurácie služby | Do 30 minút alebo podľa konfigurácie služby | štylistika | zapracované |
 
-### Otázky pre majiteľa
+### Otázky pre majiteľa (rozhodnuté 7. 10. 2026)
 
-Tieto opravy by zmenili alebo spresnili právny význam, preto nie sú zapracované. Pri každej je odporúčané znenie.
+Tieto opravy menia alebo spresňujú právny význam. Majiteľ schválil všetky odporúčané znenia a sú zapracované. Bod 12.2 (strop zodpovednosti pri podnikateľoch) zostal bez vecnej zmeny; poznámka k § 386 ods. 1 Obchodného zákonníka pri O1 platí aj preň.
 
 - **O1 – VOP 12.1 (Codex P1).** Teraz: „Predávajúci nezodpovedá za nepriame škody, …, ak takáto zodpovednosť nemôže byť podľa kogentných právnych predpisov vylúčená.“ Doslova to znamená, že predávajúci nezodpovedá práve vtedy, keď zákon vylúčenie zodpovednosti zakazuje, teda podmienka je obrátená. Odporúčané: „Predávajúci v rozsahu, v akom to pripúšťajú kogentné právne predpisy, nezodpovedá za nepriame škody, následné škody, ušlý zisk, prestoje, stratu zákazky, náklady tretích osôb ani iné následné ekonomické ujmy.“ Pri 12.1 aj 12.2 treba zvážiť aj § 386 ods. 1 Obchodného zákonníka (nároku na náhradu škody sa nemožno vzdať vopred).
 - **O2 – VOP 2.7.** Teraz: „Predávajúci neposkytuje projektovú, architektonickú, statickú, stavebnú ani montážnu zodpovednosť za použitie Tovaru, pokiaľ takáto služba nebola…“ Zodpovednosť sa neposkytuje a veta ju potom nazýva službou. Odporúčané (pokrýva služby aj zodpovednosť): „Predávajúci neposkytuje projektové, architektonické, statické, stavebné ani montážne služby a za takéto riešenie použitia Tovaru nezodpovedá, pokiaľ takáto služba nebola osobitne písomne objednaná a písomne potvrdená.“

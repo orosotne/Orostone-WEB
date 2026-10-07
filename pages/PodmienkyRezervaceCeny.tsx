@@ -119,7 +119,7 @@ export const PodmienkyRezervaceCeny = () => {
           {/* 5. Nevyužitie rezervácie */}
           <Section id="nevyuzitie-rezervacie" number="5" title="Nevyužitie rezervácie">
             <SubSection number="5.1">
-              Ak zákazník v lehote <strong>6 mesiacov</strong> od úhrady rezervačného poplatku neuskutoční objednávku produktu Orostone, rezervačný poplatok zaniká bez nároku na jeho vrátenie.
+              Ak zákazník v lehote <strong>6 mesiacov</strong> od úhrady rezervačného poplatku neuskutoční objednávku produktu Orostone, právo uplatniť rezervačný poplatok ako kredit alebo zľavu zaniká a zákazník nemá nárok na jeho vrátenie.
             </SubSection>
             <SubSection number="5.2">
               Po uplynutí tejto lehoty už zákazník nemá nárok na odpočítanie rezervačného poplatku z budúcej objednávky.
