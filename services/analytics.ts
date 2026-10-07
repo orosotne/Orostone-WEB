@@ -56,6 +56,7 @@ export function trackGA4AddToCart(item: {
   name?: string;
   price: number;
   quantity: number;
+  category?: string;
 }): void {
   trackGA4Event('add_to_cart', {
     currency: 'EUR',
@@ -65,6 +66,7 @@ export function trackGA4AddToCart(item: {
       item_name: item.name,
       price: item.price,
       quantity: item.quantity,
+      item_category: item.category,
     }],
   });
 }
