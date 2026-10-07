@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, startTransition } from 'react';
+import React, { useState, useMemo, useEffect, useRef, startTransition } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { m, AnimatePresence } from 'framer-motion';
 import { ArrowLeft } from 'lucide-react';
@@ -77,8 +77,11 @@ export const ShopProductDetail: React.FC = () => {
 
   const isLoading = productLoading && !product;
 
+  // The product object is rebuilt when live Shopify data replaces the fallback, so track each product once.
+  const trackedProductId = useRef<string | null>(null);
   useEffect(() => {
-    if (!product) return;
+    if (!product || trackedProductId.current === product.id) return;
+    trackedProductId.current = product.id;
     const price = calculateSlabPrice(product.pricePerM2, product.dimensions);
     trackMetaEvent('ViewContent', {
       content_ids: [product.shopifyVariantId ?? product.id],

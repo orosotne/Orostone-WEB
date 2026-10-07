@@ -58,6 +58,7 @@ export function useMetaPixel(): void {
       window.fbq!('init', PIXEL_ID);
     }
     window.fbq!('track', 'PageView', internalMember ? { internal_traffic: internalMember } : undefined);
+    pendingEvents.splice(0).forEach(([name, params]) => trackMetaEvent(name, params));
 
     const script = document.createElement('script');
     script.async = true;
@@ -77,16 +78,23 @@ export function useMetaPixel(): void {
   }, [location.pathname, preferences.marketing]);
 }
 
+// Events tracked before the deferred Pixel loads (e.g. ViewContent on a product landing page) wait here and are
+// sent right after init. If the Pixel never loads (no marketing consent), they are never sent.
+const pendingEvents: Array<[string, Record<string, unknown> | undefined]> = [];
+
 /**
- * Track a Meta Pixel event. No-op if Pixel is not loaded.
+ * Track a Meta Pixel event; queued until the Pixel is loaded.
  */
 export function trackMetaEvent(eventName: string, params?: Record<string, unknown>): void {
-  if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+  if (typeof window === 'undefined') return;
+  if (typeof window.fbq === 'function') {
     if (params) {
       window.fbq('track', eventName, params);
     } else {
       window.fbq('track', eventName);
     }
+  } else if (PIXEL_ID && pendingEvents.length < 20) {
+    pendingEvents.push([eventName, params]);
   }
 }
 
