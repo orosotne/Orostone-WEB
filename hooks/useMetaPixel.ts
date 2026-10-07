@@ -35,6 +35,14 @@ export function useMetaPixel(): void {
   // hit as gtag.js. Same idea as useAnalytics: real users see PageView fired
   // within ~5s, bots/abandoners still get tracked via the timeout fallback.
   const interacted = useFirstInteraction();
+  // Path of the last PageView, so a consent change or the first interaction never sends a second one
+  const trackedPath = useRef<string | null>(null);
+
+  // Keep trackMetaEvent in step with the visitor's choice; a rejection also drops events waiting for the Pixel
+  useEffect(() => {
+    marketingAllowed = preferences.marketing;
+    if (!preferences.marketing) pendingEvents.length = 0;
+  }, [preferences.marketing]);
 
   // Load the pixel script once when marketing consent is granted
   useEffect(() => {
@@ -58,6 +66,8 @@ export function useMetaPixel(): void {
       window.fbq!('init', PIXEL_ID);
     }
     window.fbq!('track', 'PageView', internalMember ? { internal_traffic: internalMember } : undefined);
+    // The address bar can already show the next route when the first interaction is a link click; fbq reports that URL
+    trackedPath.current = window.location.pathname;
     pendingEvents.splice(0).forEach(([name, params]) => trackMetaEvent(name, params));
 
     const script = document.createElement('script');
@@ -66,27 +76,26 @@ export function useMetaPixel(): void {
     document.head.appendChild(script);
   }, [preferences.marketing, interacted]);
 
-  // Track PageView on every SPA route change (skip the very first render — already tracked above)
-  const isFirstRender = useRef(true);
+  // Track PageView on every SPA route change; the first one comes from the loader above
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
+    if (trackedPath.current === null || trackedPath.current === location.pathname) return;
     if (!preferences.marketing || typeof window.fbq !== 'function') return;
+    trackedPath.current = location.pathname;
     window.fbq('track', 'PageView', internalMember ? { internal_traffic: internalMember } : undefined);
   }, [location.pathname, preferences.marketing]);
 }
 
 // Events tracked before the deferred Pixel loads (e.g. ViewContent on a product landing page) wait here and are
-// sent right after init. If the Pixel never loads (no marketing consent), they are never sent.
+// sent right after init. Only while marketing is allowed: a rejection drops them, so nothing from before the
+// visitor's consent is sent later. useMetaPixel keeps marketingAllowed in step with the cookie preferences.
 const pendingEvents: Array<[string, Record<string, unknown> | undefined]> = [];
+let marketingAllowed = true;
 
 /**
- * Track a Meta Pixel event; queued until the Pixel is loaded.
+ * Track a Meta Pixel event; queued until the Pixel is loaded, dropped while marketing is not allowed.
  */
 export function trackMetaEvent(eventName: string, params?: Record<string, unknown>): void {
-  if (typeof window === 'undefined') return;
+  if (typeof window === 'undefined' || !marketingAllowed) return;
   if (typeof window.fbq === 'function') {
     if (params) {
       window.fbq('track', eventName, params);
