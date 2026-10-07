@@ -176,4 +176,8 @@ Codex na `d7465f0` nenašiel žiadne pripomienky. Texty k novým fotkám v 09, 1
 
 Marián list 02 schválil. Martin chce ešte samostatnú jazykovú kontrolu celého textu `texty/02-welcome-list-od-mariana.md` vrátane riadkov, ktoré sa v tomto PR nemenia. Codex ho naposledy kontroloval v kole 6 bez pripomienok.
 
+## Kolo 11 – Codex review v PR #89 (7. 10. 2026, celý e-mail 02)
+
+Na žiadosť o kontrolu celého textu e-mailu 02 (predmet, preheader, list, P. S. a pätička) Codex na `4637728` nenašiel žiadne pripomienky. List 02 je jazykovo skontrolovaný a Marián ho schválil.
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
