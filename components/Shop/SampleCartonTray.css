@@ -1,10 +1,10 @@
-.sample-carton-home{margin:18px 0;font-family:Montserrat,sans-serif}
+.sample-carton-home{margin:18px 0;font-family:Montserrat,sans-serif;overflow-anchor:none}
 .sample-carton-tray{position:relative;max-width:640px;margin:0 auto;padding:16px 0;border-top:1px solid #e9e9e6;border-bottom:1px solid #e9e9e6;background:#fff;isolation:isolate}
 .sample-carton-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:48px}
 .sample-carton-heading p{display:flex;align-items:baseline;gap:12px;font-size:12px;font-weight:400;color:#626b56;line-height:1.5;margin:0}
 .sample-carton-heading strong{font-size:14px;color:#121212;font-variant-numeric:tabular-nums;letter-spacing:.04em}.sample-carton-heading>div>span{display:block;font-size:12px;line-height:1.5;color:#626b56;margin-top:2px}
 .sample-carton-continue{font:600 11px Montserrat,sans-serif;letter-spacing:.02em;border:0;border-radius:30px;color:#fff;background:#191b18;padding:0 15px;min-height:44px;white-space:nowrap;cursor:pointer}.sample-carton-continue span{padding-left:5px}.sample-carton-continue:disabled{background:#f1f2ee;color:#84897f;cursor:default}
-.sample-carton-graphic{position:relative;width:100%;aspect-ratio:720 / 315;margin:6px 0 0;overflow:hidden;contain:layout paint}.sample-carton-player,.sample-carton-fallback{position:absolute;inset:0;width:100%;height:100%}.sample-carton-player svg{display:block;width:100%;height:100%}
+.sample-carton-graphic{position:relative;width:100%;aspect-ratio:720 / 315;margin:6px 0 0;overflow:hidden;contain:layout paint;transform-origin:0 0}.sample-carton-player,.sample-carton-fallback{position:absolute;inset:0;width:100%;height:100%}.sample-carton-player svg{display:block;width:100%;height:100%}
 .sample-carton-graphic.is-inserting,.sample-carton-graphic.is-removing{overflow:visible;contain:layout;z-index:2}.sample-carton-graphic.is-inserting .sample-carton-player>svg,.sample-carton-graphic.is-removing .sample-carton-player>svg{overflow:visible}
 .sample-carton-flight-screen{position:fixed;inset:0;z-index:1002;pointer-events:none;overflow:hidden}.sample-carton-flight{position:absolute;left:0;top:0;pointer-events:none;transform-origin:center;will-change:transform;isolation:isolate}.sample-carton-flight>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}.sample-carton-flight>img{position:absolute;max-width:none!important;max-height:none!important;object-fit:fill}
 .sample-carton-labels{position:relative;width:100%;min-height:84px}.sample-carton-label{position:absolute;top:0;transform:translateX(-50%);width:29%;min-width:0;text-align:center;padding:4px 0 0}.sample-carton-label>span{display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:400;line-height:1.45;min-height:34px;color:#626b56;overflow-wrap:anywhere;letter-spacing:.015em}.sample-carton-label.is-filled>span{font-weight:600;color:#242822}
@@ -31,5 +31,24 @@
 @media(max-width:640px){
  .sample-carton-tray.is-docked .sample-carton-heading>div>span{white-space:nowrap}
  .sample-carton-tray.is-docked .sample-carton-delivery-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
- .sample-carton-tray.is-docked .sample-carton-label>span{font-size:11px}
+.sample-carton-tray.is-docked .sample-carton-label>span{font-size:11px}
+}
+.sample-carton-slot-name,.sample-carton-action-icon{display:none}
+/* The floating phone tray stays with the gallery, including three samples.
+   One 44px slot action carries both the material name and remove/choose action. */
+@media(max-width:640px){
+ .sample-carton-tray.is-docked .sample-carton-heading{height:24px;min-height:24px}
+ .sample-carton-tray.is-docked .sample-carton-heading>div{display:flex;align-items:center;justify-content:space-between;width:100%;gap:8px}
+ .sample-carton-tray.is-docked .sample-carton-heading>div>span{margin:0;font-size:11px}
+ .sample-carton-tray.is-docked .sample-carton-heading p{font-size:11px;gap:8px}
+ .sample-carton-tray.is-docked .sample-carton-heading strong{font-size:14px}
+ .sample-carton-tray.is-docked .sample-carton-continue{display:none}
+ .sample-carton-tray.is-docked .sample-carton-labels{height:44px;min-height:44px}
+ .sample-carton-tray.is-docked .sample-carton-label{padding:0}
+ .sample-carton-tray.is-docked .sample-carton-label>span,
+ .sample-carton-tray.is-docked .sample-carton-action-text{display:none}
+ .sample-carton-tray.is-docked .sample-carton-label button{display:flex;align-items:center;justify-content:center;gap:3px;height:44px;min-height:44px;padding:3px 0;font-size:10px;line-height:12px;text-decoration:none}
+ .sample-carton-tray.is-docked .sample-carton-slot-name{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;overflow-wrap:anywhere}
+ .sample-carton-tray.is-docked .sample-carton-label.is-filled .sample-carton-slot-name{font-weight:600;color:#242822}
+ .sample-carton-tray.is-docked .sample-carton-action-icon{display:block;flex:none;font-size:18px;line-height:1;color:#62665d}
 }
