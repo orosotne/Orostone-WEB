@@ -22,7 +22,7 @@ export { GoldBand } from './GoldBand';
 export { chipClass } from './chip';
 export { LegalLayout, LegalSection, LegalClause, LEGAL_LINK, LEGAL_BOX } from './Legal';
 export type { LegalTocItem } from './Legal';
-export { oroKlientUrl, PHONE_HREF, PHONE_LABEL } from './links';
+export { CONFIGURATOR_URL, oroKlientUrl, PHONE_HREF, PHONE_LABEL } from './links';
 export {
   useDrawIn,
   IconCastle,
