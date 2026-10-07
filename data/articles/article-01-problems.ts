@@ -98,7 +98,7 @@ export const ARTICLE_01: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>Pozor na toto</strong></p>
-  <p>Partnerskí kamenári, s ktorými spolupracujeme, nikdy nerobia <em>plunge cut</em> (ponorný rez*) do sinterovaného kameňa. Pred výrezom vždy najprv vyvŕtajú pilotné otvory v rohoch diamantovým vrtákom. Ponorný rez generuje príliš veľké napätie a takmer vždy vedie k praskleniu.</p>
+  <p>Do sinterovaného kameňa sa nemá robiť <em>plunge cut</em> (ponorný rez*). Od partnerských kamenárov preto vyžadujeme, aby pred výrezom najprv vyvŕtali pilotné otvory v rohoch diamantovým vrtákom. Ponorný rez vytvára veľké napätie a výrazne zvyšuje riziko prasknutia.</p>
   <p class="text-sm text-gray-400 mt-3 italic">* Ponorný rez (plunge cut) — technika, pri ktorej sa rezný kotúč zasekne priamo do stredu materiálu bez predvŕtaného otvoru. Na rozdiel od klasického rezu, kde kotúč vstupuje z okraja, tu celé napätie smeruje do jedného bodu.</p>
 </div>
 
@@ -295,7 +295,7 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Prečo sa nedá robiť ponorný rez?',
-        answer: 'Ponorný rez generuje extrémne namáhanie v bode, kde kotúč vstupuje do materiálu. Sinterovaný kameň nemá kryštálovú štruktúru ako granit — je to vysoko komprimovaná keramika. Bodové napätie spôsobuje mikrotrhliny, ktoré sa rozšíria na plnú prasklinu. Preto sa vždy najprv vŕtajú pilotné otvory.',
+        answer: 'Ponorný rez generuje extrémne namáhanie v bode, kde kotúč vstupuje do materiálu. Sinterovaný kameň nemá kryštálovú štruktúru ako granit — je to vysoko komprimovaná keramika. Bodové napätie spôsobuje mikrotrhliny, ktoré sa môžu rozšíriť na plnú prasklinu. Preto sa pred výrezom najprv vŕtajú pilotné otvory.',
       },
       {
         question: 'Aký je rozdiel medzi sinterovaným kameňom a kremeňom pri chipovaní?',
@@ -421,7 +421,7 @@ export const ARTICLE_01: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>Watch out for this</strong></p>
-  <p>The partner stonemasons we work with never perform a <em>plunge cut</em> into sintered stone. They always drill pilot holes at the corners first with a diamond bit. Plunge cutting generates excessive stress and almost always leads to cracking.</p>
+  <p>A <em>plunge cut</em> should not be made into sintered stone. That is why we require our partner stonemasons to drill pilot holes at the corners with a diamond bit before making a cutout. A plunge cut creates high stress and significantly increases the risk of cracking.</p>
 </div>
 
 <h2 id="thin-slab-failures">When is a thin slab the wrong choice?</h2>
@@ -617,7 +617,7 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Why can\'t you do a plunge cut?',
-        answer: 'A plunge cut generates extreme stress where the blade enters the material. Sintered stone is highly compressed ceramic without granite\'s crystal structure. Point stress creates micro-cracks that propagate into full fractures. That is why pilot holes are always drilled first.',
+        answer: 'A plunge cut generates extreme stress where the blade enters the material. Sintered stone is highly compressed ceramic without granite\'s crystal structure. Point stress creates micro-cracks that can propagate into full fractures. That is why pilot holes are drilled first.',
       },
       {
         question: 'How does sintered stone compare to quartz for chipping?',

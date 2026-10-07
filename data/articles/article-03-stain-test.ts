@@ -207,7 +207,7 @@ export const ARTICLE_03: BlogArticle = {
       },
       {
         question: 'Ako dlho vydrží povrch sinterovaného kameňa bez škŕs a usadenín?',
-        answer: 'Sinterovaný kameň nie je porézny, takže usadeniny sa nevtlačia do štruktúry. Povrch odolá bežnému každodennému zaťaženiu po celú životnosť kameňa (desiatky rokov) bez impregnácie či renovácie. Mechanické škrabance od ostrých predmetov sú možné, ale chemické usadeniny nie.',
+        answer: 'Sinterovaný kameň má nasiakavosť pod 0,1\u00A0%, takže nečistoty a usadeniny ostávajú na povrchu a nevpíjajú sa do štruktúry. Pri bežnom používaní a obvyklej údržbe si povrch zachová vzhľad dlhé roky bez impregnácie. Mechanické škrabance od ostrých predmetov sú možné.',
       },
       {
         question: 'Ovplyvňuje dezén (farba) odolnosť voči škvrnám?',

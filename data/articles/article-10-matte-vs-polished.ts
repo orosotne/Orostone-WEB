@@ -57,7 +57,7 @@ export const ARTICLE_10: BlogArticle = {
   <span class="case-study-label">Z praxe</span>
   <h3>Rodina s deťmi a Nero Marquina v polished variante</h3>
   <p>Máme klientov, ktorí si pôvodne zvolili lesklý čierny sinterovaný kameň — Nero Marquina v polished variante. Vyzeralo to úžasne v showroome. Po troch mesiacoch nám zavolali s frustrujúcim problémom: <strong class="gold">dosku utierali 5–8-krát denne</strong>. Každé dieťa, ktoré sa oprelo o dosku, zanechalo viditeľnú stopu. Každý pohár zanechal kruhovú šmuhu. Stôl nikdy nevyzeral čistý dlhšie ako 20 minút.</p>
-  <p>Riešenie? S partnerským kamenárom sme im dosku vymenili za rovnaký dekor v matnom variante. Rovnaká farba, rovnaký kameň — ale úplne iný zážitok. Teraz utierajú dosku raz denne a vždy vyzerá čisto. Ako sami povedali: <em>„Je to ako keby sme dostali úplne inú kuchyňu."</em></p>
+  <p>Riešenie? Dohodli sme výmenu a partnerský kamenár im dosku vymenil za rovnaký dekor v matnom variante. Rovnaká farba, rovnaký kameň — ale úplne iný zážitok. Teraz utierajú dosku raz denne a vždy vyzerá čisto. Ako sami povedali: <em>„Je to ako keby sme dostali úplne inú kuchyňu."</em></p>
 </div>
 
 <h3>Leather a honed — zlatá stredná cesta</h3>
@@ -318,7 +318,7 @@ export const ARTICLE_10: BlogArticle = {
   <span class="case-study-label">Case study</span>
   <h3>A family with children and Nero Marquina in polished</h3>
   <p>We had clients who originally chose polished black sintered stone — Nero Marquina in a polished variant. It looked stunning in the showroom. After three months, they called with a frustrating problem: <strong class="gold">they were wiping the countertop 5–8 times a day</strong>. Every child who leaned against the counter left a visible mark. Every glass left a circular smudge. The surface never looked clean for more than 20 minutes at a time.</p>
-  <p>The solution? Together with the partner stonemason, we replaced it with the same decor in a matte variant. Same color, same stone — but a completely different experience. Now they wipe the counter once a day and it always looks clean. As they put it: <em>"It's like we got an entirely different kitchen."</em></p>
+  <p>The solution? We arranged a replacement, and the partner stonemason swapped it for the same decor in a matte variant. Same color, same stone — but a completely different experience. Now they wipe the counter once a day and it always looks clean. As they put it: <em>"It's like we got an entirely different kitchen."</em></p>
 </div>
 
 <h3>Leather and honed — the golden middle ground</h3>

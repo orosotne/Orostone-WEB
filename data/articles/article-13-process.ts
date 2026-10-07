@@ -32,7 +32,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <p>Či už plánujete novú kuchyňu, kúpeľňový obklad alebo ostrov do otvoreného priestoru, proces je vždy rovnaký: <strong>10 jasných krokov, 10–15 pracovných dní, jasné zodpovednosti</strong>. Poďme na to.</p>
 
-<p><strong>Kto čo robí:</strong> Orostone vám poradí s výberom, dodá materiál — celé platne — a koordinuje termíny. Zameranie, výrobu, dopravu a montáž robí a fakturuje partnerský kamenár so skúsenosťou so sinterovaným kameňom. Výsledok kontrolujeme aj my.</p>
+<p><strong>Kto čo robí:</strong> Orostone vám poradí s výberom, dodá materiál — celé platne — a koordinuje termíny. Zameranie, výrobu, dopravu a montáž robí a fakturuje partnerský kamenár so skúsenosťami so sinterovaným kameňom. Výsledok kontrolujeme aj my.</p>
 
 <h2 id="krok-1-konzultacia-a-vyber-materialu">Krok 1 — Čo sa deje na konzultácii?</h2>
 
@@ -166,7 +166,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <h2 id="krok-8-montaz-dosiek">Krok 8 — Ako prebieha samotná montáž?</h2>
 
-<p>Samotná montáž je moment, kedy sa všetko predchádzajúce plánovanie, meranie a výroba spojí do jedného celku. Tento krok vyžaduje maximálnu presnosť a skúsenosti, preto ho robí partnerský kamenár so skúsenosťou so sinterovaným kameňom.</p>
+<p>Samotná montáž je moment, kedy sa všetko predchádzajúce plánovanie, meranie a výroba spojí do jedného celku. Tento krok vyžaduje maximálnu presnosť a skúsenosti, preto ho robí partnerský kamenár so skúsenosťami so sinterovaným kameňom.</p>
 
 <p><strong>Postup montáže:</strong></p>
 <ul>
