@@ -1,6 +1,6 @@
 # 06 – Ako sa vám žije s novou doskou?
 
-- **Typ:** Automatizácia · Po realizácii 3/4 (30 dní po montáži)
+- **Typ:** Automatizácia · Po realizácii 3/3 (30 dní po montáži)
 - **Kedy sa posiela:** 30 dní po montáži (dátum montáže z CRM)
 - **Predmet:** Ako sa vám žije s novou doskou?
 - **Preheader:** Hodnotenie vám zaberie dve minúty a pomôže ďalším pri výbere. Budeme radi aj za jednu fotku.

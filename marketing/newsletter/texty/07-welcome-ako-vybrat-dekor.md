@@ -17,7 +17,7 @@ Tri otázky
 pred výberom dekoru.
 
 ### Hlavná fotka (popis na fotke)
-[alt fotky: Celá platňa Taj Mahal vedľa človeka pre mierku]
+[alt fotky: Celá platňa Taj Mahal vedľa človeka na porovnanie veľkosti]
 ● Taj Mahal · 3200 × 1600 mm
 
 ### Text

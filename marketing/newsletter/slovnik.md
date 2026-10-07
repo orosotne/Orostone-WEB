@@ -14,7 +14,7 @@ Podrobný manuál značky: skill `copy-orostone`. Tento súbor z neho preberá t
 - **Rozlúčka:** „S pozdravom“ bez čiarky, pod ňou meno.
 - **Tón:** pokojne, vecne, presne. Kratšie až stredne dlhé vety. Bez pátosu, bez výpredajového tónu, bez ospravedlňovania ceny.
 - Každé tvrdenie má dôvod: *vlastnosť → praktický dôsledok → význam pre klienta*.
-- **Nastavenie automatizácií neprezrádzame.** V hlavičke ani v texte nepíšeme poradie e-mailu v sérii (*1 / 4*), kedy príde ďalší e-mail (*o týždeň vám pošleme…*) ani odkazy na predchádzajúci e-mail. Každý e-mail musí dávať zmysel aj samostatne.
+- **Nastavenie automatizácií neprezrádzame.** V hlavičke ani v texte nepíšeme poradie e-mailu v sérii (*1 / 4*), kedy príde ďalší e-mail (*o týždeň vám pošleme…*), čo sa stane, keď čitateľ nezareaguje (*ak nekliknete, už vám nebudeme písať*), ani odkazy na predchádzajúci e-mail. Každý e-mail musí dávať zmysel aj samostatne.
 
 ## 2. Gramatika, na ktorú si dávame pozor
 
@@ -106,6 +106,9 @@ Pravidlá, ktoré vznikli pri kontrole a platia ďalej. Najnovšie hore.
 
 | Dátum | Pravidlo | Príklad |
 |---|---|---|
+| 7. 10. 2026 | Kalky z angličtiny: nie *pre mierku* (for scale), ale *na porovnanie veľkosti*; nie *držať kuchyňu svetlú*, ale *kuchyňa zostáva svetlá*. Vo výpočte s protikladom (*priniesť svetlo, nie pozornosť*) musí sloveso sedieť k obom členom. | Celá platňa vedľa človeka na porovnanie veľkosti. · Doska má priestor rozjasniť a nepútať na seba pozornosť. |
+| 7. 10. 2026 | Odborné termíny: *kryštalický oxid kremičitý* (nie *kremík*, to je prvok). Vzorku klient *vezme do ruky*, štúdio nás *zapojí do návrhu* (nie hovorové *chytiť*, *pribrať*). | Obsah kryštalického oxidu kremičitého nepresahuje 1 %. |
+| 7. 10. 2026 | Ani v rozlúčkovom e-maile nepíšeme, čo automatizácia urobí, keď čitateľ neklikne (sekcia 1). Stačí, čo má urobiť, ak chce e-maily dostávať. | Ak chcete e-maily dostávať ďalej, kliknite na tlačidlo. |
 | 7. 10. 2026 | Nastavenie automatizácií neprezrádzame (sekcia 1). Automatizácia má v hlavičke len logo. | Dekor sa nevyberá sám osebe, ale k frontom, svetlu a veľkosti plochy. (nie: *V predchádzajúcom e-maile sme písali…*) |
 | 7. 10. 2026 | Telefónne číslo za predložkou *na* uvádza spojenie *telefónne číslo*. Pri slovese *volať* stačí samotné číslo. | po dohode na telefónnom čísle +421 917 588 738 · zavolajte na +421 917 588 738 |
 | 7. 10. 2026 | Viacnásobný podmet: ak prísudok stojí **za** podmetom, je v množnom čísle. Ak stojí **pred** ním, môže sa zhodovať s najbližším členom (obe podoby sú správne). Pri *každý … a každý* je prísudok v jednotnom čísle. | Utierka a saponát stačia. · Stačí víno, citrón a vaše svetlo. · Každá otázka a každá fotka nám pomáha. |

@@ -27,7 +27,7 @@ Funguje tam, kde má povrch priniesť textúru a dojem prírodného materiálu b
 01 – Vo veľkej ploche
 
 ### Obrázok (popis)
-[alt fotky: Celá platňa Roman Travertine vedľa človeka pre mierku]
+[alt fotky: Celá platňa Roman Travertine vedľa človeka na porovnanie veľkosti]
 Celá platňa 3200 × 1600 mm · dlhé línie kresby na malej vzorke neuvidíte
 
 ### Nadpis sekcie
