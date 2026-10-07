@@ -49,7 +49,7 @@ export const ARTICLE_19: BlogArticle = {
 <p>To je celé. Ak vám to znie príliš jednoducho — presne tak to má byť. Všetko ostatné v tomto článku rieši len výnimočné situácie.</p>
 
 <div class="article-tip">
-  <strong>Tip pre matné povrchy:</strong> šmuhy po čistení najľahšie odstránite čistou vodou a utretím dosucha. Väčšina „škvŕn", ktoré klienti riešia, sú v skutočnosti len zaschnuté zvyšky saponátu.
+  <strong>Tip pre matné povrchy:</strong> šmuhy po čistení najľahšie odstránite čistou vodou a utretím dosucha. Väčšina „škvŕn“, ktoré klienti riešia, sú v skutočnosti len zaschnuté zvyšky saponátu.
 </div>
 
 <h2 id="preco-bez-impregnacie">Prečo nepotrebujete impregnáciu (a nikdy nebudete)</h2>
@@ -121,7 +121,7 @@ export const ARTICLE_19: BlogArticle = {
       {
         question: 'Ako odstránim zaschnuté škvrny?',
         answer:
-          'Neabrazívnym čistiacim prípravkom a mikrovláknom; zaschnuté zvyšky najprv odstráňte plastovou škrabkou. Na atrament a fixku použite izopropylalkohol. Škvrna nikdy nie je „v" materiáli, vždy len na povrchu — otázka je len rozpustiť ju.',
+          'Neabrazívnym čistiacim prípravkom a mikrovláknom; zaschnuté zvyšky najprv odstráňte plastovou škrabkou. Na atrament a fixku použite izopropylalkohol. Škvrna nikdy nie je „v“ materiáli, vždy len na povrchu — otázka je len rozpustiť ju.',
       },
       {
         question: 'Poškodí povrch citrón, ocot alebo víno?',

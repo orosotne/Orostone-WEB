@@ -26,7 +26,7 @@ export const ARTICLE_16: BlogArticle = {
   <li>Konkrétne čísla v eurách pre 3 scenáre: rodinný dom, byt, Airbnb</li>
 </ul>
 
-<p>Keď zákazník príde do nášho showroomu a opýta sa „Oplatí sa sinterovaný kameň?", neodpovedáme „Áno, samozrejme" — hoci predávame sinterovaný kameň. Odpovieme otázkou: <strong>Na koľko rokov plánujete túto kuchyňu?</strong></p>
+<p>Keď zákazník príde do nášho showroomu a opýta sa „Oplatí sa sinterovaný kameň?“, neodpovedáme „Áno, samozrejme“ — hoci predávame sinterovaný kameň. Odpovieme otázkou: <strong>Na koľko rokov plánujete túto kuchyňu?</strong></p>
 
 <p>Pretože odpoveď závisí od matematiky, nie od marketingu. A tá matematika je prekvapivo jednoduchá — len ju nikto nerobí. Väčšina článkov na internete porovnáva cenu za meter štvorcový a tým to končí. Ale cena za m² je len zlomok príbehu. Skutočné náklady sa ukážu až po 5, 10 alebo 25 rokoch používania.</p>
 
@@ -176,7 +176,7 @@ export const ARTICLE_16: BlogArticle = {
 
 <p><strong>Žula:</strong> Bez pravidelnej impregnácie (ktorú nájomník neurobí) sa stane škvrnitou behom mesiacov. Nie je vhodná pre prenájmy.</p>
 
-<p><strong>Sinterovaný kameň:</strong> Zvládne aj menej šetrné zaobchádzanie bez impregnácie a špeciálnych čistidiel — ideálny z hľadiska trvanlivosti. Ale počiatočná investícia €2 800 sa pri prenájme vráti veľmi pomaly. Vyššia noc/mesačná cena za „prémiovú kuchyňu" v Airbnb inzeráte? Možno €2–5/noc navyše. Pri 200 nocách ročne: €400–1 000/rok. Návratnosť investície 3–7 rokov oproti kvarcitu.</p>
+<p><strong>Sinterovaný kameň:</strong> Zvládne aj menej šetrné zaobchádzanie bez impregnácie a špeciálnych čistidiel — ideálny z hľadiska trvanlivosti. Ale počiatočná investícia €2 800 sa pri prenájme vráti veľmi pomaly. Vyššia noc/mesačná cena za „prémiovú kuchyňu“ v Airbnb inzeráte? Možno €2–5/noc navyše. Pri 200 nocách ročne: €400–1 000/rok. Návratnosť investície 3–7 rokov oproti kvarcitu.</p>
 
 <p><strong>Kvarcit (stredná trieda):</strong> Odolný, nenáročný na údržbu, vizuálne atraktívny. Pre prenájmy typicky najlepší pomer výkon/cena.</p>
 

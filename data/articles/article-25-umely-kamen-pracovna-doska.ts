@@ -219,7 +219,7 @@ export const ARTICLE_25: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>Čo robíme v Orostone</strong></p>
-  <p>Po každej montáži ostávame v kontakte. Pri sťažnosti je prvá otázka „čo presne nefunguje" — a v 80 % prípadov to nie je materiál, ale detail montáže (silikón, hrana, výška spoja). Niečo z toho vie kamenár dorobiť aj po roku, niečo nie. Preto je <strong>predmontážna konzultácia</strong> najlepšie investovaný čas. Detailný proces od merania po inštaláciu popisujeme v článku <a href="/blog/od-merania-po-instalaciu-proces-orostone">Od merania po inštaláciu</a>.</p>
+  <p>Po každej montáži ostávame v kontakte. Pri sťažnosti je prvá otázka „čo presne nefunguje“ — a v 80 % prípadov to nie je materiál, ale detail montáže (silikón, hrana, výška spoja). Niečo z toho vie kamenár dorobiť aj po roku, niečo nie. Preto je <strong>predmontážna konzultácia</strong> najlepšie investovaný čas. Detailný proces od merania po inštaláciu popisujeme v článku <a href="/blog/od-merania-po-instalaciu-proces-orostone">Od merania po inštaláciu</a>.</p>
 </div>
 
 <figure class="article-figure">

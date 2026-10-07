@@ -207,7 +207,7 @@ export const ARTICLE_01: BlogArticle = {
 <div class="article-case-study">
   <span class="case-study-label">Z praxe</span>
   <h3>Klientka z Bratislavy a jej kuchynský ostrov</h3>
-  <p>Predstavte si situáciu: klientka z Bratislavy si nechala spraviť kuchynský ostrov zo sinterovaného kameňa u iného dodávateľa. Vybrala si krásny mramorový dizajn, 12 mm hrúbku a ostrú 90° hranu — pretože <em>"vyzerá modernejšie."</em></p>
+  <p>Predstavte si situáciu: klientka z Bratislavy si nechala spraviť kuchynský ostrov zo sinterovaného kameňa u iného dodávateľa. Vybrala si krásny mramorový dizajn, 12 mm hrúbku a ostrú 90° hranu — pretože <em>„vyzerá modernejšie.“</em></p>
   <p>Po troch mesiacoch spadol na hranu ťažký liatinový hrniec. Výsledok? <strong class="gold">Chip dlhý 15 mm</strong> na najviditeľnejšom mieste ostrova.</p>
   <p>Oprava stála <strong>280 €</strong> a aj po nej zostala viditeľná stopa. Keby mala od začiatku aspoň 2 mm chamfer, hrniec by sa odrazil bez stopy.</p>
 </div>

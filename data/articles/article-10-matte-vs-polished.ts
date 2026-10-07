@@ -57,7 +57,7 @@ export const ARTICLE_10: BlogArticle = {
   <span class="case-study-label">Z praxe</span>
   <h3>Rodina s deťmi a Nero Marquina v polished variante</h3>
   <p>Máme klientov, ktorí si pôvodne zvolili lesklý čierny sinterovaný kameň — Nero Marquina v polished variante. Vyzeralo to úžasne v showroome. Po troch mesiacoch nám zavolali s frustrujúcim problémom: <strong class="gold">dosku utierali 5–8-krát denne</strong>. Každé dieťa, ktoré sa oprelo o dosku, zanechalo viditeľnú stopu. Každý pohár zanechal kruhovú šmuhu. Stôl nikdy nevyzeral čistý dlhšie ako 20 minút.</p>
-  <p>Riešenie? Dohodli sme výmenu a partnerský kamenár im dosku vymenil za rovnaký dekor v matnom variante. Rovnaká farba, rovnaký kameň — ale úplne iný zážitok. Teraz utierajú dosku raz denne a vždy vyzerá čisto. Ako sami povedali: <em>„Je to ako keby sme dostali úplne inú kuchyňu."</em></p>
+  <p>Riešenie? Dohodli sme výmenu a partnerský kamenár im dosku vymenil za rovnaký dekor v matnom variante. Rovnaká farba, rovnaký kameň — ale úplne iný zážitok. Teraz utierajú dosku raz denne a vždy vyzerá čisto. Ako sami povedali: <em>„Je to ako keby sme dostali úplne inú kuchyňu.“</em></p>
 </div>
 
 <h3>Leather a honed — zlatá stredná cesta</h3>

@@ -248,13 +248,13 @@ export const ARTICLE_06: BlogArticle = {
 
 <p><strong>Omyl 1: „Draho = kvalitne."</strong> Cena závisí od veľkosti vzoru, hrúbky dosky a finálnej úpravy povrchu — nie nevyhnutne od materiálovej kvality. Existujú priemerné dosky za prémiové ceny aj vynikajúce dosky za rozumné ceny.</p>
 
-<p><strong>Omyl 2: „Stačí mi vzorka."</strong> Malá vzorka neodhalí variabilitu vzoru, rovinnosť ani konzistenciu medzi šaržami. Vždy si pozrite <strong class="gold">aspoň 3–5 dosiek vedľa seba</strong>.</p>
+<p><strong>Omyl 2: „Stačí mi vzorka.“</strong> Malá vzorka neodhalí variabilitu vzoru, rovinnosť ani konzistenciu medzi šaržami. Vždy si pozrite <strong class="gold">aspoň 3–5 dosiek vedľa seba</strong>.</p>
 
-<p><strong>Omyl 3: „Instalatér odporučí ten správny materiál."</strong> Inštalatér odporučí to, s čím má skúsenosti a čo mu prináša najväčší zisk. Nie nevyhnutne to, čo je najlepšie pre váš projekt.</p>
+<p><strong>Omyl 3: „Inštalatér odporučí ten správny materiál.“</strong> Inštalatér odporučí to, s čím má skúsenosti a čo mu prináša najväčší zisk. Nie nevyhnutne to, čo je najlepšie pre váš projekt.</p>
 
 <p><strong>Omyl 4: „Nízka cena znamená nízku kvalitu."</strong> Nie vždy. Nižšia cena môže znamenať menší vzor (lacnejší na výrobu), bežnú hrúbku alebo matný povrch. Tieto faktory nemajú vplyv na výkon materiálu.</p>
 
-<p><strong>Omyl 5: „Všetky sinterované kamene sú rovnaké."</strong> Technológia výroby určuje kategóriu. Kvalita konkrétneho výrobku závisí od presnosti lisovania, teploty spekania a kontroly kvality. <strong class="gold">Vždy vyžadujte technický list s nameranými hodnotami</strong> — nie len s názvami testovacích noriem.</p>
+<p><strong>Omyl 5: „Všetky sinterované kamene sú rovnaké.“</strong> Technológia výroby určuje kategóriu. Kvalita konkrétneho výrobku závisí od presnosti lisovania, teploty spekania a kontroly kvality. <strong class="gold">Vždy vyžadujte technický list s nameranými hodnotami</strong> — nie len s názvami testovacích noriem.</p>
 
 <div class="article-tip">
   <p><strong>Čo robíme v Orostone</strong></p>
