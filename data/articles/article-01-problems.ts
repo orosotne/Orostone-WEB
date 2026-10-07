@@ -36,8 +36,8 @@ export const ARTICLE_01: BlogArticle = {
 </div>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-01/hero-countertop.webp" alt="Luxusná kuchynská doska zo sinterovaného kameňa v modernej kuchyni" loading="lazy" />
-  <figcaption>Sinterovaný kameň v správnych rukách – materiál, ktorý definuje luxusné interiéry</figcaption>
+  <img src="/images/blog/article-01/hero-countertop.webp" alt="Kuchynská doska zo sinterovaného kameňa v modernej kuchyni" loading="lazy" />
+  <figcaption>Sinterovaný kameň v správnych rukách – materiál, ktorý definuje moderné interiéry</figcaption>
 </figure>
 
 <h2 id="chipovanie-a-poskodenie-hran">Prečo väčšina chipov vzniká na hranách?</h2>
@@ -123,7 +123,7 @@ export const ARTICLE_01: BlogArticle = {
   <li>Náš <strong>štandard pre všetky aplikácie</strong> – kuchynské dosky, obklady, kúpeľne</li>
   <li>Maximálny previs bez podpery: <strong>200\u00A0mm</strong> (cca 1/3 hĺbky dosky)</li>
   <li>Lomová sila: približne <strong>5\u00A0000\u00A0N</strong> – pri správnom podklade a plánovaní výrezov plne dostačujúca</li>
-  <li><strong>Kedy treba zvýšenú pozornosť:</strong> veľké ostrovy bez konzol, barové výsuvy nad 200\u00A0mm, dosky s viacerými výrezmi blízko seba</li>
+  <li><strong>Kedy treba zvýšenú pozornosť:</strong> veľké ostrovčeky bez konzol, barové výsuvy nad 200\u00A0mm, dosky s viacerými výrezmi blízko seba</li>
 </ul>
 
 <div class="article-highlight">
@@ -206,9 +206,9 @@ export const ARTICLE_01: BlogArticle = {
 
 <div class="article-case-study">
   <span class="case-study-label">Z praxe</span>
-  <h3>Klientka z Bratislavy a jej kuchynský ostrov</h3>
-  <p>Predstavte si situáciu: klientka z Bratislavy si nechala spraviť kuchynský ostrov zo sinterovaného kameňa u iného dodávateľa. Vybrala si krásny mramorový dizajn, 12\u00A0mm hrúbku a ostrú 90° hranu – pretože <em>„vyzerá modernejšie.“</em></p>
-  <p>Po troch mesiacoch spadol na hranu ťažký liatinový hrniec. Výsledok? <strong class="gold">Chip dlhý 15\u00A0mm</strong> na najviditeľnejšom mieste ostrova.</p>
+  <h3>Klientka z Bratislavy a jej kuchynský ostrovček</h3>
+  <p>Predstavte si situáciu: klientka z Bratislavy si nechala spraviť kuchynský ostrovček zo sinterovaného kameňa u iného dodávateľa. Vybrala si krásny mramorový dizajn, 12\u00A0mm hrúbku a ostrú 90° hranu – pretože <em>„vyzerá modernejšie.“</em></p>
+  <p>Po troch mesiacoch spadol na hranu ťažký liatinový hrniec. Výsledok? <strong class="gold">Chip dlhý 15\u00A0mm</strong> na najviditeľnejšom mieste ostrovčeka.</p>
   <p>Oprava stála <strong>280\u00A0€</strong> a aj po nej zostala viditeľná stopa. Keby mala od začiatku aspoň 2\u00A0mm chamfer, hrniec by sa odrazil bez stopy.</p>
 </div>
 
@@ -282,8 +282,8 @@ export const ARTICLE_01: BlogArticle = {
         answer: 'Ostrá 90° hrana je jednoznačne najkrajšia a takmer všetci zákazníci si ju vyberajú. Pre maximálnu životnosť odporúčame jemný 2\u00A0mm chamfer, ktorý vizuálne zachová ostrý vzhľad a zároveň chráni hranu. Pre náročnejšie prostredie sú vhodné aj half-bullnose alebo skosená hrana.',
       },
       {
-        question: 'Môžem použiť 12\u00A0mm dosku na kuchynský ostrov?',
-        answer: 'Áno, pri správnom plánovaní. Kľúčové je zabezpečiť dostatočnú podkladovú konštrukciu (plný podklad alebo rám skriniek bez medzier), dodržať max. previs 200\u00A0mm a správne naplánovať výrezy. V Orostone pracujeme výhradne s 12\u00A0mm – pre ostrovy vždy posúdime projekt individuálne.',
+        question: 'Môžem použiť 12\u00A0mm dosku na kuchynský ostrovček?',
+        answer: 'Áno, pri správnom plánovaní. Kľúčové je zabezpečiť dostatočnú podkladovú konštrukciu (plný podklad alebo rám skriniek bez medzier), dodržať max. previs 200\u00A0mm a správne naplánovať výrezy. V Orostone pracujeme výhradne s 12\u00A0mm – pre ostrovčeky vždy posúdime projekt individuálne.',
       },
       {
         question: 'Čo ak spadne hrniec na hranu dosky?',

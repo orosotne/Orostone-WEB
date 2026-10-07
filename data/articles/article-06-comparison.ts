@@ -314,7 +314,7 @@ export const ARTICLE_06: BlogArticle = {
       },
       {
         question: 'Je možné kombinovať rôzne materiály v jednej kuchyni?',
-        answer: 'Áno. Napríklad: sinterovaný kameň na pracovnej doske (pri sporáku a dreze) a kvarcit alebo porcelán na bočnom pulte a ostrove. Kombinovanie materiálov je bežné – dôležité je zvoliť správny materiál pre každú funkčnú zónu podľa jej zaťaženia.',
+        answer: 'Áno. Napríklad: sinterovaný kameň na pracovnej doske (pri sporáku a dreze) a kvarcit alebo porcelán na bočnom pulte a ostrovčeku. Kombinovanie materiálov je bežné – dôležité je zvoliť správny materiál pre každú funkčnú zónu podľa jej zaťaženia.',
       },
       {
         question: 'Potrebuje sinterovaný kameň impregnáciu?',

@@ -138,13 +138,13 @@ export const ARTICLE_24: BlogArticle = {
 
 <h3>Slnko a UV žiarenie</h3>
 
-<p>Ak máte kuchyňu pri veľkom okne, ostrov pri presklenej stene alebo prechod na terasu, UV odolnosť je dôležitá. Sinterovaný kameň neobsahuje živicu, preto je pri slnku stabilnejší. Pri niektorých quartz kompozitoch môže byť dlhodobé UV žiarenie problém – postupne žltnú a tvrdnú.</p>
+<p>Ak máte kuchyňu pri veľkom okne, ostrovček pri presklenej stene alebo prechod na terasu, UV odolnosť je dôležitá. Sinterovaný kameň neobsahuje živicu, preto je pri slnku stabilnejší. Pri niektorých quartz kompozitoch môže byť dlhodobé UV žiarenie problém – postupne žltnú a tvrdnú.</p>
 
 <h3>Technický kameň na kuchynskú linku</h3>
 
-<p>Technický kameň na kuchynskú linku sa používa najmä ako pracovná doska, zástena za linkou alebo obklad kuchynského ostrova. Najväčšia výhoda je jednotný vzhľad. Rovnaký dekor môžete použiť na pracovnú dosku, zástenu aj bočné obklady ostrova. Kuchyňa potom pôsobí čistejšie, pokojnejšie a hodnotnejšie. Inšpiráciu nájdete v sekcii <a href="/kuchyne">Kuchyne</a>, kde ukazujeme reálne realizácie.</p>
+<p>Technický kameň na kuchynskú linku sa používa najmä ako pracovná doska, zástena za linkou alebo obklad kuchynského ostrovčeka. Najväčšia výhoda je jednotný vzhľad. Rovnaký dekor môžete použiť na pracovnú dosku, zástenu aj bočné obklady ostrovčeka. Kuchyňa potom pôsobí čistejšie, pokojnejšie a hodnotnejšie. Inšpiráciu nájdete v sekcii <a href="/kuchyne">Kuchyne</a>, kde ukazujeme reálne realizácie.</p>
 
-<p>Pri sinterovanom kameni je výhodou aj veľký formát platní. Vďaka tomu sa dajú robiť väčšie plochy s menším počtom spojov. To je dôležité hlavne pri ostrovoch a kuchyniach, kde je pracovná doska dominantou celého priestoru. Ak však niekto rieši iba malú, jednoduchú kuchyňu s nízkym rozpočtom, nemusí byť najdrahší materiál automaticky najlepšie riešenie. Správny výber závisí od priestoru, rozpočtu a spôsobu používania.</p>
+<p>Pri sinterovanom kameni je výhodou aj veľký formát platní. Vďaka tomu sa dajú robiť väčšie plochy s menším počtom spojov. To je dôležité hlavne pri ostrovčekoch a kuchyniach, kde je pracovná doska dominantou celého priestoru. Ak však niekto rieši iba malú, jednoduchú kuchyňu s nízkym rozpočtom, nemusí byť najdrahší materiál automaticky najlepšie riešenie. Správny výber závisí od priestoru, rozpočtu a spôsobu používania.</p>
 
 <p>Kompletný proces od merania po inštaláciu popisujeme v článku <a href="/blog/od-merania-po-instalaciu-proces-orostone">Od merania po inštaláciu: ako prebieha realizácia</a>.</p>
 
@@ -165,18 +165,18 @@ export const ARTICLE_24: BlogArticle = {
       <tr><td>Sinterovaný kameň</td><td>400 – 600\u00A0€/bm</td><td>Vysoká odolnosť voči teplu, UV žiareniu a škvrnám</td></tr>
     </tbody>
   </table>
-  <p>Tieto ceny sú orientačné. Nezahŕňajú špeciálne stavebné úpravy, demontáž starej dosky, extrémne náročnú dopravu ani nadštandardné dizajnové riešenia. Pri book-match dekoroch, veľkých ostrovoch alebo komplikovaných detailoch môže cena ísť vyššie.</p>
+  <p>Tieto ceny sú orientačné. Nezahŕňajú špeciálne stavebné úpravy, demontáž starej dosky, extrémne náročnú dopravu ani nadštandardné dizajnové riešenia. Pri book-match dekoroch, veľkých ostrovčekoch alebo komplikovaných detailoch môže cena ísť vyššie.</p>
 </div>
 
 <p>Aktuálne ceny jednotlivých dekorov sinterovaného kameňa za m² s DPH a sadzbu za kompletnú realizáciu uvádzame v <a href="/cennik">cenníku kamenných pracovných dosiek</a>.</p>
 
 <h3>Čo ovplyvňuje výslednú sumu</h3>
 
-<p>Pri fráze technický kameň cena je dôležité pochopiť, že cena nie je len o samotnej platni. Výslednú cenu ovplyvňuje typ materiálu, značka a kolekcia, dekor, hrúbka, počet výrezov, typ hrany, zameranie, opracovanie, doprava, výnos, montáž, rizikovosť manipulácie, počet spojov, veľkosť ostrova a požiadavka na book-match kresbu. Preto je lacný meter v cenníku často zavádzajúci. Klient nakoniec neplatí za meter v tabuľke. Platí za hotovú pracovnú dosku vo svojej kuchyni.</p>
+<p>Pri fráze technický kameň cena je dôležité pochopiť, že cena nie je len o samotnej platni. Výslednú cenu ovplyvňuje typ materiálu, značka a kolekcia, dekor, hrúbka, počet výrezov, typ hrany, zameranie, opracovanie, doprava, výnos, montáž, rizikovosť manipulácie, počet spojov, veľkosť ostrovčeka a požiadavka na book-match kresbu. Preto je lacný meter v cenníku často zavádzajúci. Klient nakoniec neplatí za meter v tabuľke. Platí za hotovú pracovnú dosku vo svojej kuchyni.</p>
 
 <h3>Pracovná doska technický kameň cena</h3>
 
-<p>Ak riešite frázu technicky kamen pracovna doska cena, najdôležitejšie je neporovnávať iba materiál. Dve pracovné dosky z rovnakého materiálu môžu mať úplne inú cenu. Jedna kuchyňa môže mať jednoduchý rovný tvar, jeden výrez na drez a jeden výrez na varnú dosku. Druhá môže mať veľký ostrov, zástenu, bočnice, book-match dekor, komplikovaný výnos a viac spojov. Na papieri je to stále „pracovná doska z technického kameňa“. V realite sú to dve úplne odlišné zákazky. Preto sa seriózna cena robí až podľa pôdorysu a technických detailov.</p>
+<p>Ak riešite frázu technicky kamen pracovna doska cena, najdôležitejšie je neporovnávať iba materiál. Dve pracovné dosky z rovnakého materiálu môžu mať úplne inú cenu. Jedna kuchyňa môže mať jednoduchý rovný tvar, jeden výrez na drez a jeden výrez na varnú dosku. Druhá môže mať veľký ostrovček, zástenu, bočnice, book-match dekor, komplikovaný výnos a viac spojov. Na papieri je to stále „pracovná doska z technického kameňa“. V realite sú to dve úplne odlišné zákazky. Preto sa seriózna cena robí až podľa pôdorysu a technických detailov.</p>
 
 <p>Pri hľadaní pracovna doska technicky kamen cena ľudia často očakávajú jednoduchú odpoveď. Lenže samotná cena za bežný meter môže klamať. Nízka cena môže znamenať lacnejší typ materiálu, tenšiu dosku, slabší dekor, jednoduchšiu hranu, menej kvalitné opracovanie, chýbajúce podlepenie, rizikovú montáž alebo skryté príplatky. Pracovná doska nie je produkt ako stolička z e-shopu. Je to materiál, výroba, doprava a montáž v jednom. <strong class="gold">Najdrahší kompromis</strong> často vyzerá na začiatku ako výhodná ponuka.</p>
 
@@ -214,7 +214,7 @@ export const ARTICLE_24: BlogArticle = {
 
 <h3>3. Prémiové dekory stoja viac</h3>
 
-<p>Najkrajšie dekory, výrazné kresby a book-match riešenia sú drahšie. To nie je trik dodávateľa. Je to kombinácia drahšieho materiálu, väčšieho odpadu a presnejšej práce. Ak chcete výrazný ostrov s kresbou, treba s tým počítať v rozpočte.</p>
+<p>Najkrajšie dekory, výrazné kresby a book-match riešenia sú drahšie. To nie je trik dodávateľa. Je to kombinácia drahšieho materiálu, väčšieho odpadu a presnejšej práce. Ak chcete výrazný ostrovček s kresbou, treba s tým počítať v rozpočte.</p>
 
 <h3>4. Montáž rozhoduje viac, než si ľudia myslia</h3>
 
@@ -222,11 +222,11 @@ export const ARTICLE_24: BlogArticle = {
 
 <h3>5. Veľké formáty sú ťažké</h3>
 
-<p>Veľká doska môže mať desiatky až stovky kilogramov. Pri väčších ostrovoch treba riešiť manipuláciu, výnos, schodisko, výťah alebo prístup do domu. Preto je dôležité riešiť logistiku ešte pred objednávkou, nie až v deň montáže.</p>
+<p>Veľká doska môže mať desiatky až stovky kilogramov. Pri väčších ostrovčekoch treba riešiť manipuláciu, výnos, schodisko, výťah alebo prístup do domu. Preto je dôležité riešiť logistiku ešte pred objednávkou, nie až v deň montáže.</p>
 
 <h3>6. Quartz kompozit môže byť citlivejší na UV a teplo</h3>
 
-<p>Kremenný kompozit obsahuje živicu. Tá môže byť pri dlhodobom UV žiarení alebo pri vysokej teplote citlivejšia ako čisto minerálne materiály. Pri intenzívnom UV časom <strong class="gold">žltne a tvrdne</strong>. Preto pri kuchyniach pri veľkých oknách, ostrovoch pri presklení alebo exteriérových plochách dáva sinterovaný kameň často väčší zmysel.</p>
+<p>Kremenný kompozit obsahuje živicu. Tá môže byť pri dlhodobom UV žiarení alebo pri vysokej teplote citlivejšia ako čisto minerálne materiály. Pri intenzívnom UV časom <strong class="gold">žltne a tvrdne</strong>. Preto pri kuchyniach pri veľkých oknách, ostrovčekoch pri presklení alebo exteriérových plochách dáva sinterovaný kameň často väčší zmysel.</p>
 
 <h3>Umelý kameň pracovná doska: je to to isté ako technický kameň?</h3>
 
@@ -258,16 +258,16 @@ export const ARTICLE_24: BlogArticle = {
 
 <div class="article-case-study">
   <span class="case-study-label">Z praxe</span>
-  <h3>Klient z Bratislavy: ostrov 3,2\u00A0m a južne orientované okno</h3>
-  <p>Klient riešil kuchynský ostrov s rozmerom približne 3,2\u00A0×\u00A01 meter. Na začiatku zvažoval kremenný kompozit. Páčil sa mu vzhľad, cena bola prijateľná a na malej vzorke pôsobil materiál veľmi dobre.</p>
-  <p>Pri konzultácii sa však ukázalo, že kuchyňa má veľké južne orientované okno. Na ostrov bude dopadať priame slnko niekoľko hodín denne. V takom prípade sme odporučili sinterovaný kameň. Nie preto, aby bola zákazka drahšia, ale preto, že pri danom priestore dával technicky väčší zmysel.</p>
+  <h3>Klient z Bratislavy: ostrovček 3,2\u00A0m a južne orientované okno</h3>
+  <p>Klient riešil kuchynský ostrovček s rozmerom približne 3,2\u00A0×\u00A01 meter. Na začiatku zvažoval kremenný kompozit. Páčil sa mu vzhľad, cena bola prijateľná a na malej vzorke pôsobil materiál veľmi dobre.</p>
+  <p>Pri konzultácii sa však ukázalo, že kuchyňa má veľké južne orientované okno. Na ostrovček bude dopadať priame slnko niekoľko hodín denne. V takom prípade sme odporučili sinterovaný kameň. Nie preto, aby bola zákazka drahšia, ale preto, že pri danom priestore dával technicky väčší zmysel.</p>
   <p>Cena bola <strong>približne o 15\u00A0% vyššia</strong> oproti pôvodnému návrhu. Klient si vybral matný dekor s jemnou kresbou. Doska bola navrhnutá s plnou podporou, správnymi výrezmi a bezpečným opracovaním hrán.</p>
   <p>Po roku používania: bez impregnácie, bez zafarbenia, bez viditeľných problémov. Toto je presne situácia, kde sa rozdiel medzi materiálmi neukáže v katalógu, ale až v reálnom živote.</p>
 </div>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-24/case-study-kuchyna.webp" alt="Realizácia: kuchynský ostrov so sinterovaným kameňom v matnom dekore" loading="lazy" />
-  <figcaption>Realizovaná kuchyňa: kuchynský ostrov so sinterovaným kameňom v matnom dekore – výsledok rozhodnutia z prípadovej štúdie.</figcaption>
+  <img src="/images/blog/article-24/case-study-kuchyna.webp" alt="Realizácia: kuchynský ostrovček so sinterovaným kameňom v matnom dekore" loading="lazy" />
+  <figcaption>Realizovaná kuchyňa: kuchynský ostrovček so sinterovaným kameňom v matnom dekore – výsledok rozhodnutia z prípadovej štúdie.</figcaption>
 </figure>
 
 <h2 id="zaver">Záver: technický kameň ako rozumný výber</h2>
@@ -293,7 +293,7 @@ export const ARTICLE_24: BlogArticle = {
       },
       {
         question: 'Aká je cena technického kameňa na kuchynskú dosku?',
-        answer: 'Cena technického kameňa na kuchynskú pracovnú dosku sa orientačne pohybuje od 280 do 600\u00A0€/bm. Pri prémiových dekoroch, veľkých ostrovoch alebo book-match riešeniach môže byť cena vyššia.',
+        answer: 'Cena technického kameňa na kuchynskú pracovnú dosku sa orientačne pohybuje od 280 do 600\u00A0€/bm. Pri prémiových dekoroch, veľkých ostrovčekoch alebo book-match riešeniach môže byť cena vyššia.',
       },
       {
         question: 'Technicky kamen cena: aké je orientačné rozpätie?',
@@ -321,7 +321,7 @@ export const ARTICLE_24: BlogArticle = {
       },
       {
         question: 'Technicky kamen na kuchynsku linku: čo odporúčame?',
-        answer: 'Technický kameň na kuchynskú linku môže byť vhodný ako pracovná doska, zástena aj obklad ostrova. Pri náročnejších kuchyniach odporúčame najmä sinterovaný kameň, pri jednoduchších projektoch môže dávať zmysel aj kvalitný kremenný kompozit.',
+        answer: 'Technický kameň na kuchynskú linku môže byť vhodný ako pracovná doska, zástena aj obklad ostrovčeka. Pri náročnejších kuchyniach odporúčame najmä sinterovaný kameň, pri jednoduchších projektoch môže dávať zmysel aj kvalitný kremenný kompozit.',
       },
       {
         question: 'Kuchynska doska technicky kamen: aký typ vybrať?',

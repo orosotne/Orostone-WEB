@@ -198,8 +198,8 @@ export const ARTICLE_02: BlogArticle = {
         answer: 'Áno. Pekáče z rúry pri 220 – 250\u00A0°C môžete pokojne uložiť priamo na sinterovaný kameň. Materiál tento teplotný rozsah zvláda bez akýchkoľvek obmedzení.',
       },
       {
-        question: 'Je sinterovaný kameň vhodný na kuchynský ostrov pri sporáku?',
-        answer: 'Áno, a práve tu sa naplno prejavuje jeho tepelná odolnosť. Ostrov pri sporáku je miesto s najvyšším tepelným zaťažením – a sinterovaný kameň je na túto aplikáciu ideálny. Rovnako ako pre priľahlú pracovnú plochu vedľa varnej dosky.',
+        question: 'Je sinterovaný kameň vhodný na kuchynský ostrovček pri sporáku?',
+        answer: 'Áno, a práve tu sa naplno prejavuje jeho tepelná odolnosť. Ostrovček pri sporáku je miesto s najvyšším tepelným zaťažením – a sinterovaný kameň je na túto aplikáciu ideálny. Rovnako ako pre priľahlú pracovnú plochu vedľa varnej dosky.',
       },
       {
         question: 'Ovplyvňuje teplo lesklý povrch sinterovaného kameňa inak ako matný?',
