@@ -2,6 +2,7 @@ import React from 'react';
 import { m, AnimatePresence } from 'framer-motion';
 import { Settings } from 'lucide-react';
 import { useCookies } from '../../context/CookieContext';
+import { useCartUI } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
 
 const BUTTON =
@@ -9,9 +10,11 @@ const BUTTON =
 
 export const CookieBanner: React.FC = () => {
   const { hasConsented, isSettingsOpen, acceptAll, rejectAll, openSettings } = useCookies();
+  const { isOpen: isCartOpen } = useCartUI();
 
-  // The settings dialog sits below this bar's z-index, so step aside while it is open
-  if (hasConsented || isSettingsOpen) return null;
+  // The settings dialog and the cart drawer sit below this bar's z-index, so step aside while either is open
+  // (on a first visit the bar would otherwise cover the drawer's "Prejsť do pokladne" button)
+  if (hasConsented || isSettingsOpen || isCartOpen) return null;
 
   return (
     <AnimatePresence>
