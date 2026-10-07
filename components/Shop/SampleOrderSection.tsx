@@ -3,6 +3,8 @@ import { ArrowRight, ArrowUp, Loader2 } from 'lucide-react';
 import SampleCartonTray, { type SampleCartonTrayHandle, type SampleDecor } from './SampleCartonTray';
 import { SampleQuantityPicker } from './SampleQuantityPicker';
 import { createSampleCheckout, fetchSampleBundle, formatSamplePrice, quoteSampleOrder, type SampleQuantity } from '../../services/shopify/samples';
+import { trackMetaEvent, savePendingPurchase } from '../../hooks/useMetaPixel';
+import { trackGA4AddToCart, trackGA4BeginCheckout } from '../../services/analytics';
 
 export interface SampleOrderSectionHandle {
   addSample: (decor: SampleDecor, source?: HTMLImageElement) => Promise<boolean>;
@@ -16,6 +18,12 @@ interface SampleOrderSectionProps {
   quantityFeedback: string;
   browserRef: React.RefObject<HTMLElement | null>;
   carouselButtonRef: React.RefObject<HTMLButtonElement | null>;
+}
+
+/** GA4/Meta item for the sample at 0-based `index` in the box: it costs what it adds to the quote, so the first is free. */
+function sampleItem(decor: SampleDecor, index: number) {
+  const cents = quoteSampleOrder(index + 1).samplesCents - (index ? quoteSampleOrder(index).samplesCents : 0);
+  return { item_id: decor.id, item_name: decor.name, item_category: 'Vzorka', price: cents / 100, quantity: 1 };
 }
 
 /** Customer ordering: contact details and payment are collected only by Shopify. */
@@ -61,9 +69,16 @@ export const SampleOrderSection = forwardRef<SampleOrderSectionHandle, SampleOrd
   useImperativeHandle(ref, () => ({
     addSample: async (decor, source) => {
       if (busy || !trayRef.current) return false;
-      return trayRef.current.insert(decor, source);
+      const filled = selection.length;
+      const added = await trayRef.current.insert(decor, source);
+      if (added) {
+        const { price } = sampleItem(decor, filled);
+        trackMetaEvent('AddToCart', { content_ids: [decor.id], content_name: decor.name, content_type: 'product', content_category: 'Sample', value: price, currency: 'EUR', num_items: 1 });
+        trackGA4AddToCart({ id: decor.id, name: decor.name, price, quantity: 1, category: 'Vzorka' });
+      }
+      return added;
     },
-  }), [busy]);
+  }), [busy, selection.length]);
 
   const updateSelection = useCallback((next: SampleDecor[]) => {
     setSelection(next);
@@ -81,6 +96,12 @@ export const SampleOrderSection = forwardRef<SampleOrderSectionHandle, SampleOrd
         trayRef.current?.packageSelection(),
       ]);
       if (!mounted.current) return;
+      const items = selection.map(sampleItem);
+      const value = quote.samplesCents / 100;
+      trackMetaEvent('InitiateCheckout', { value, currency: 'EUR', num_items: items.length, content_category: 'Sample' });
+      trackGA4BeginCheckout({ value, items });
+      // The purchase value read on /objednavka-dokoncena includes shipping.
+      savePendingPurchase({ value: quote.totalCents / 100, currency: 'EUR', num_items: items.length, content_ids: items.map((item) => item.item_id), items });
       // This creates a cart, never an order or a "paid" success state.
       window.location.assign(checkout.checkoutUrl);
     } catch (failure) {
