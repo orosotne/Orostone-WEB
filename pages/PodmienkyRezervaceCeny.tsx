@@ -81,7 +81,7 @@ export const PodmienkyRezervaceCeny = () => {
                 <ul className="list-disc pl-5 space-y-2">
                   <li>zaevidovanie zákazníka do systému rezervácie ceny,</li>
                   <li>garantovanie aktuálne platnej ceny produktov Orostone na obdobie <strong>6 mesiacov</strong> odo dňa úhrady rezervačného poplatku,</li>
-                  <li>možnosť uplatniť zaplatený rezervačný poplatok ako kredit/zľavu pri budúcej objednávke platne Orostone.</li>
+                  <li>možnosť uplatniť zaplatený rezervačný poplatok ako kredit alebo zľavu pri budúcej objednávke platne Orostone.</li>
                 </ul>
               </div>
             </SubSection>
@@ -179,7 +179,7 @@ export const PodmienkyRezervaceCeny = () => {
           {/* 11. Kontakt */}
           <Section id="kontakt" number="11" title="Kontakt">
             <SubSection number="11.1">
-              V prípade otázok k rezervácii ceny môže zákazník kontaktovať Orostone na:
+              V prípade otázok k rezervácii ceny môže zákazník kontaktovať Orostone:
               <div className={`${LEGAL_BOX} mt-3 p-4 font-normal`}>
                 <p>E-mail: <a href="mailto:info@orostone.sk" className={LEGAL_LINK}>info@orostone.sk</a></p>
                 <p>Telefón: <a href="tel:+421917588738" className={LEGAL_LINK}>+421 917 588 738</a></p>

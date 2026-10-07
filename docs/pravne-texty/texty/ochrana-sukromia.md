@@ -8,7 +8,7 @@ Snažíme sa o to, aby ste sa pri nás cítili v bezpečí, preto sme prijali pr
 
 ## 1. Prevádzkovateľ
 
-Kto spracováva vaše údaje
+Kto spracúva vaše údaje
 
 Prevádzkovateľom osobných údajov podľa § 5 písm. o) zákona č. 18/2018 Z. z. o ochrane osobných údajov v znení neskorších predpisov (ďalej len „Zákon“) je:
 
@@ -20,7 +20,7 @@ DIČ: 2121930580
 
 IČ DPH: SK2121930580
 
-Landererova 8, 811 09 Bratislava - mestská časť Staré Mesto
+Landererova 8, 811 09 Bratislava – mestská časť Staré Mesto
 
 Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B
 
@@ -28,14 +28,14 @@ info@orostone.sk
 
 ## 2. Účel spracovania osobných údajov
 
-Prečo spracovávame vaše údaje
+Prečo spracúvame vaše údaje
 
-Vaše osobné údaje spracovávame za týmito účelmi:
+Vaše osobné údaje spracúvame na tieto účely:
 
 | ÚČEL | OPIS | PRÁVNY ZÁKLAD (GDPR ČL. 6) |
 |---|---|---|
 | Vybavenie objednávky | Spracovanie a doručenie objednaného tovaru | čl. 6 ods. 1 písm. b) – plnenie zmluvy |
-| Komunikácia | Informovanie o stave objednávky, odpovede na dopyty a cenovú ponuku | čl. 6 ods. 1 písm. b) – plnenie zmluvy / čl. 6 ods. 1 písm. f) – oprávnený záujem (vybavenie dopytu zákazníka a poskytnutie cenovej ponuky) |
+| Komunikácia | Informovanie o stave objednávky, odpovedanie na dopyty a poskytovanie cenových ponúk | čl. 6 ods. 1 písm. b) – plnenie zmluvy / čl. 6 ods. 1 písm. f) – oprávnený záujem (vybavenie dopytu zákazníka a poskytnutie cenovej ponuky) |
 | Zákonné povinnosti | Vedenie účtovníctva, plnenie daňových a archivačných povinností | čl. 6 ods. 1 písm. c) – zákonná povinnosť |
 | Bezpečnosť | Ochrana formulárov pred automatizovanými útokmi (Cloudflare Turnstile) | čl. 6 ods. 1 písm. f) – oprávnený záujem (ochrana webovej stránky a formulárov pred zneužitím) |
 | Marketing | Newsletter, remarketingové ponuky a meranie účinnosti reklám v Google Ads a na Facebooku či Instagrame (len s výslovným súhlasom) | čl. 6 ods. 1 písm. a) – súhlas |
@@ -71,7 +71,7 @@ Nasledujúce subjekty spracúvajú osobné údaje v mene Orostone na základe p�
 
 Kanada / USA
 
-E-shop platforma, spracovanie objednávok a platieb pri nákupe cez e-shop
+E-shopová platforma, spracovanie objednávok a platieb pri nákupe cez e-shop
 
 Shopify je certifikovaný PCI DSS spracovateľ platieb. Vlastné zásady: privacy.shopify.com
 
@@ -109,7 +109,7 @@ USA
 
 Ochrana formulárov pred botmi a automatizovanými útokmi (Turnstile CAPTCHA)
 
-Spracúva technické signály zariadenia (IP adresu, fingerprint prehliadača). Cloudflare môže tieto údaje dočasne uchovávať na účely bezpečnostnej analýzy.
+Spracúva technické signály zariadenia (IP adresu, odtlačok prehliadača). Cloudflare môže tieto údaje dočasne uchovávať na účely bezpečnostnej analýzy.
 
 #### Meta Platforms, Inc. (Facebook / Instagram)
 
@@ -219,7 +219,7 @@ Práva dotknutej osoby podľa GDPR
 
 #### Právo na prístup (čl. 15)
 
-Máte právo vedieť, aké údaje o vás spracovávame, na aký účel a ako dlho
+Máte právo vedieť, aké údaje o vás spracúvame, na aký účel a ako dlho
 
 #### Právo na opravu (čl. 16)
 
@@ -227,7 +227,7 @@ Môžete požiadať o opravu nesprávnych alebo neúplných osobných údajov
 
 #### Právo na vymazanie (čl. 17)
 
-Za určitých podmienok môžete žiadať o výmaz svojich údajov (právo byť zabudnutý)
+Za určitých podmienok môžete žiadať o výmaz svojich údajov (právo na zabudnutie)
 
 #### Právo na obmedzenie (čl. 18)
 
@@ -235,11 +235,11 @@ Môžete žiadať o obmedzenie spracovania vašich údajov počas riešenia spor
 
 #### Právo na prenosnosť (čl. 20)
 
-Môžete žiadať o prenos vašich údajov k inému prevádzkovateľovi v štruktúrovanom formáte
+Môžete žiadať o prenos vašich údajov inému prevádzkovateľovi v štruktúrovanom formáte
 
 #### Právo namietať (čl. 21)
 
-Môžete namietať voči spracovaniu na základe oprávneného záujmu alebo na účely priameho marketingu
+Môžete namietať proti spracovaniu na základe oprávneného záujmu alebo na účely priameho marketingu
 
 #### Právo odvolať súhlas (čl. 7 ods. 3)
 
@@ -275,7 +275,7 @@ V prípade otázok nás kontaktujte
 
 Orostone s.r.o.
 
-📍 Landererova 8, 811 09 Bratislava - mestská časť Staré Mesto
+📍 Landererova 8, 811 09 Bratislava – mestská časť Staré Mesto
 
 IČO: 55 254 772
 

@@ -54,7 +54,7 @@ export const CookiesPolicy = () => {
               </h2>
               <div className="space-y-1 text-sm font-light leading-relaxed">
                 <p className="font-medium text-brand-dark">Orostone s.r.o.</p>
-                <p>Landererova 8, 811 09 Bratislava - mestská časť Staré Mesto</p>
+                <p>Landererova 8, 811 09 Bratislava – mestská časť Staré Mesto</p>
                 <p>IČO: 55 254 772 • DIČ: 2121930580 • IČ DPH: SK2121930580</p>
                 <p>Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B</p>
                 <p className="font-medium text-brand-dark">info@orostone.sk</p>
@@ -206,14 +206,14 @@ export const CookiesPolicy = () => {
                       <td className="py-3 px-2 align-top">Orostone / Shopify</td>
                       <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Nevyhnutné</span></td>
                       <td className="py-3 px-2 align-top">localStorage – zachovanie obsahu nákupného košíka</td>
-                      <td className="min-w-[8rem] py-3 px-2 align-top">Do vymazania košíka alebo prehliadačom</td>
+                      <td className="min-w-[8rem] py-3 px-2 align-top">Do vymazania košíka alebo údajov prehliadača</td>
                     </tr>
                     <tr>
                       <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">cf_clearance, __cf_bm</td>
                       <td className="py-3 px-2 align-top">Cloudflare</td>
                       <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Nevyhnutné</span></td>
-                      <td className="py-3 px-2 align-top">Ochrana formulárov a webu pred spamom, botmi a zneužitím; bezpečnostné a anti-abuse mechanizmy Cloudflare</td>
-                      <td className="min-w-[8rem] py-3 px-2 align-top">Do 30 min / podľa konfigurácie služby</td>
+                      <td className="py-3 px-2 align-top">Ochrana formulárov a webu pred spamom, botmi a zneužitím; bezpečnostné mechanizmy Cloudflare</td>
+                      <td className="min-w-[8rem] py-3 px-2 align-top">Do 30 minút alebo podľa konfigurácie služby</td>
                     </tr>
                     <tr>
                       <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">orostone-theme</td>
@@ -226,7 +226,7 @@ export const CookiesPolicy = () => {
                       <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">orostone-newsletter-popup</td>
                       <td className="py-3 px-2 align-top">Orostone</td>
                       <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Funkčné</span></td>
-                      <td className="py-3 px-2 align-top">localStorage – uloženie informácie o vašej interakcii s newsletter popupom</td>
+                      <td className="py-3 px-2 align-top">localStorage – uloženie informácie o vašej interakcii s vyskakovacím oknom newslettera</td>
                       <td className="min-w-[8rem] py-3 px-2 align-top">Do vymazania prehliadačom alebo podľa nastavenia webu</td>
                     </tr>
                     <tr>

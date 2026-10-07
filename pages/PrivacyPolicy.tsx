@@ -40,7 +40,7 @@ export const PrivacyPolicy = () => {
         {/* Content */}
         <div>
           {/* 1. Prevádzkovateľ */}
-          <LegalSection id="prevadzkovatel" number="1" title="Prevádzkovateľ" subtitle="Kto spracováva vaše údaje">
+          <LegalSection id="prevadzkovatel" number="1" title="Prevádzkovateľ" subtitle="Kto spracúva vaše údaje">
               <p>
                 Prevádzkovateľom osobných údajov podľa § 5 písm. o) zákona č. 18/2018 Z.&nbsp;z.
                 o ochrane osobných údajov v znení neskorších predpisov (ďalej len „Zákon“) je:
@@ -50,15 +50,15 @@ export const PrivacyPolicy = () => {
                 <p>IČO: 55 254 772</p>
                 <p>DIČ: 2121930580</p>
                 <p>IČ DPH: SK2121930580</p>
-                <p>Landererova 8, 811 09 Bratislava - mestská časť Staré Mesto</p>
+                <p>Landererova 8, 811 09 Bratislava – mestská časť Staré Mesto</p>
                 <p className="mt-2 text-sm text-brand-muted">Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B</p>
                 <p className="mt-4 font-medium text-brand-dark">info@orostone.sk</p>
               </div>
           </LegalSection>
 
           {/* 2. Účel spracovania */}
-          <LegalSection id="ucel" number="2" title="Účel spracovania osobných údajov" subtitle="Prečo spracovávame vaše údaje">
-              <p className="mb-4">Vaše osobné údaje spracovávame za týmito účelmi:</p>
+          <LegalSection id="ucel" number="2" title="Účel spracovania osobných údajov" subtitle="Prečo spracúvame vaše údaje">
+              <p className="mb-4">Vaše osobné údaje spracúvame na tieto účely:</p>
               <div className="overflow-x-auto -mx-2">
                 <table className="w-full text-sm border-collapse min-w-[500px]">
                   <thead>
@@ -76,7 +76,7 @@ export const PrivacyPolicy = () => {
                     </tr>
                     <tr>
                       <td className="py-3 px-3 font-semibold text-brand-dark align-top">Komunikácia</td>
-                      <td className="py-3 px-3 align-top">Informovanie o stave objednávky, odpovede na dopyty a cenovú ponuku</td>
+                      <td className="py-3 px-3 align-top">Informovanie o stave objednávky, odpovedanie na dopyty a poskytovanie cenových ponúk</td>
                       <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. b) – plnenie zmluvy / čl. 6 ods. 1 písm. f) – oprávnený záujem (vybavenie dopytu zákazníka a poskytnutie cenovej ponuky)</td>
                     </tr>
                     <tr>
@@ -148,7 +148,7 @@ export const PrivacyPolicy = () => {
                   {[
                     {
                       name: 'Shopify Inc.',
-                      purpose: 'E-shop platforma, spracovanie objednávok a platieb pri nákupe cez e-shop',
+                      purpose: 'E-shopová platforma, spracovanie objednávok a platieb pri nákupe cez e-shop',
                       location: 'Kanada / USA',
                       note: 'Shopify je certifikovaný PCI DSS spracovateľ platieb. Vlastné zásady: privacy.shopify.com',
                     },
@@ -197,7 +197,7 @@ export const PrivacyPolicy = () => {
                       name: 'Cloudflare, Inc.',
                       purpose: 'Ochrana formulárov pred botmi a automatizovanými útokmi (Turnstile CAPTCHA)',
                       location: 'USA',
-                      note: 'Spracúva technické signály zariadenia (IP adresu, fingerprint prehliadača). Cloudflare môže tieto údaje dočasne uchovávať na účely bezpečnostnej analýzy.',
+                      note: 'Spracúva technické signály zariadenia (IP adresu, odtlačok prehliadača). Cloudflare môže tieto údaje dočasne uchovávať na účely bezpečnostnej analýzy.',
                     },
                     {
                       name: 'Meta Platforms, Inc. (Facebook / Instagram)',
@@ -386,12 +386,12 @@ export const PrivacyPolicy = () => {
           <LegalSection id="prava" number="8" title="Vaše práva" subtitle="Práva dotknutej osoby podľa GDPR">
               <div className="grid md:grid-cols-2 gap-4">
                 {[
-                  { title: 'Právo na prístup (čl. 15)', desc: 'Máte právo vedieť, aké údaje o vás spracovávame, na aký účel a ako dlho' },
+                  { title: 'Právo na prístup (čl. 15)', desc: 'Máte právo vedieť, aké údaje o vás spracúvame, na aký účel a ako dlho' },
                   { title: 'Právo na opravu (čl. 16)', desc: 'Môžete požiadať o opravu nesprávnych alebo neúplných osobných údajov' },
-                  { title: 'Právo na vymazanie (čl. 17)', desc: 'Za určitých podmienok môžete žiadať o výmaz svojich údajov (právo byť zabudnutý)' },
+                  { title: 'Právo na vymazanie (čl. 17)', desc: 'Za určitých podmienok môžete žiadať o výmaz svojich údajov (právo na zabudnutie)' },
                   { title: 'Právo na obmedzenie (čl. 18)', desc: 'Môžete žiadať o obmedzenie spracovania vašich údajov počas riešenia sporu' },
-                  { title: 'Právo na prenosnosť (čl. 20)', desc: 'Môžete žiadať o prenos vašich údajov k inému prevádzkovateľovi v štruktúrovanom formáte' },
-                  { title: 'Právo namietať (čl. 21)', desc: 'Môžete namietať voči spracovaniu na základe oprávneného záujmu alebo na účely priameho marketingu' },
+                  { title: 'Právo na prenosnosť (čl. 20)', desc: 'Môžete žiadať o prenos vašich údajov inému prevádzkovateľovi v štruktúrovanom formáte' },
+                  { title: 'Právo namietať (čl. 21)', desc: 'Môžete namietať proti spracovaniu na základe oprávneného záujmu alebo na účely priameho marketingu' },
                   { title: 'Právo odvolať súhlas (čl. 7 ods. 3)', desc: 'Ak spracovanie prebieha na základe súhlasu, môžete ho kedykoľvek odvolať bez ujmy na zákonnosti spracovania pred odvolaním. Odber newslettera zrušíte kliknutím na odkaz v e-maile.' },
                 ].map((item, index) => (
                   <div key={index} className={`${LEGAL_BOX} p-4`}>
@@ -449,7 +449,7 @@ export const PrivacyPolicy = () => {
               <div className={`${LEGAL_BOX} p-6`}>
                 <p className="font-medium text-brand-dark text-lg mb-4">Orostone s.r.o.</p>
                 <div className="space-y-2">
-                  <p>📍 Landererova 8, 811 09 Bratislava - mestská časť Staré Mesto</p>
+                  <p>📍 Landererova 8, 811 09 Bratislava – mestská časť Staré Mesto</p>
                   <p>IČO: 55 254 772</p>
                   <p>DIČ: 2121930580</p>
                   <p>IČ DPH: SK2121930580</p>

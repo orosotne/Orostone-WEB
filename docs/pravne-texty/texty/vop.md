@@ -14,7 +14,7 @@ Tieto všeobecné obchodné podmienky upravujú vzťahy medzi spoločnosťou Oro
 
 **1.2** Tieto všeobecné obchodné podmienky (ďalej len „VOP“) upravujú: a) predaj tovaru prostredníctvom e-shopu na webovom sídle www.orostone.sk, b) predaj tovaru na základe individuálnej písomnej objednávky, cenovej ponuky alebo objednávkového formulára.
 
-**1.3** Kupujúcim je každá fyzická osoba alebo právnická osoba, ktorá uzatvorí s predávajúcim kúpnu zmluvu alebo odošle objednávku (ďalej len „Klient“). Klient, ktorý pri uzatváraní a plnení zmluvy nekoná v rámci predmetu svojej podnikateľskej činnosti, zamestnania alebo povolania, považuje sa za spotrebiteľa (ďalej len „Spotrebiteľ“).
+**1.3** Kupujúcim je každá fyzická osoba alebo právnická osoba, ktorá uzatvorí s predávajúcim kúpnu zmluvu alebo odošle objednávku (ďalej len „Klient“). Klient, ktorý pri uzatváraní a plnení zmluvy nekoná v rámci predmetu svojej podnikateľskej činnosti, zamestnania alebo povolania, sa považuje za spotrebiteľa (ďalej len „Spotrebiteľ“).
 
 **1.4** Spotrebiteľom v zmysle týchto VOP je fyzická osoba, ktorá pri uzatváraní a plnení zmluvy nekoná v rámci predmetu svojej obchodnej činnosti alebo inej podnikateľskej činnosti, zamestnania alebo povolania.
 
@@ -34,7 +34,7 @@ Tieto všeobecné obchodné podmienky upravujú vzťahy medzi spoločnosťou Oro
 
 **2.3** Vyobrazenie Tovaru na webovom sídle, v katalógoch, na sociálnych sieťach, v reklamných materiáloch alebo vo vzorkovníkoch je informatívne. Predávajúci nezodpovedá za drobné rozdiely vo farbe, kresbe, štruktúre povrchu, lesku alebo inom vizuálnom prejave Tovaru spôsobené: a) výrobným procesom, b) charakterom materiálu, c) rozdielnym zobrazením na monitoroch a mobilných zariadeniach, d) rozdielom medzi vzorkou a celou platňou.
 
-**2.4** Vzorka vs. celá platňa: Vzorka Tovaru slúži len na orientačné posúdenie farby, štruktúry a povrchu. Vzorka nemusí zobrazovať celý priebeh kresby, žilovania, opakovanie dekoru ani všetky vizuálne vlastnosti celej platne. Predávajúci nenesie zodpovednosť za rozdiely medzi vzorkou a dodanou platňou, ktoré sú dôsledkom prirodzenej variability materiálu.
+**2.4** Vzorka a celá platňa: Vzorka Tovaru slúži len na orientačné posúdenie farby, štruktúry a povrchu. Vzorka nemusí zobrazovať celý priebeh kresby, žilovania, opakovanie dekoru ani všetky vizuálne vlastnosti celej platne. Predávajúci nenesie zodpovednosť za rozdiely medzi vzorkou a dodanou platňou, ktoré sú dôsledkom prirodzenej variability materiálu.
 
 **2.5** Ak nie je osobitne písomne dohodnuté inak, predávajúci negarantuje zhodu kresby viacerých platní, nadväznosť dekoru, tzv. bookmatch efekt ani iné špecifické estetické vlastnosti.
 
@@ -54,7 +54,7 @@ Tieto všeobecné obchodné podmienky upravujú vzťahy medzi spoločnosťou Oro
 
 **3.4** Kúpna zmluva je uzatvorená až okamihom, keď predávajúci objednávku výslovne potvrdí. Automatické potvrdenie o prijatí objednávky do systému sa nepovažuje za akceptáciu objednávky.
 
-**3.5** Predávajúci je oprávnený objednávku neprijať alebo zrušiť, najmä ak: a) Tovar nie je dostupný, b) došlo k zjavnej chybe v cene, technickom údaji alebo popise Tovaru, c) Klient uviedol neúplné, nepravdivé alebo neoveriteľné údaje, d) Klient v minulosti porušil svoje povinnosti voči predávajúcemu, e) predávajúci má dôvodné pochybnosti o serióznosti objednávky.
+**3.5** Predávajúci je oprávnený objednávku neprijať alebo zrušiť, najmä ak: a) Tovar nie je dostupný, b) došlo k zjavnej chybe v cene, technickom údaji alebo opise Tovaru, c) Klient uviedol neúplné, nepravdivé alebo neoveriteľné údaje, d) Klient v minulosti porušil svoje povinnosti voči predávajúcemu, e) predávajúci má dôvodné pochybnosti o serióznosti objednávky.
 
 **3.6** Klient zodpovedá za správnosť a úplnosť údajov uvedených v objednávke. Predávajúci nezodpovedá za škodu, omeškanie alebo nemožnosť dodania spôsobenú nesprávnymi údajmi Klienta.
 
@@ -170,7 +170,7 @@ Tieto všeobecné obchodné podmienky upravujú vzťahy medzi spoločnosťou Oro
 
 **10.3** Klient je povinný vadu vytknúť bez zbytočného odkladu po jej zistení. Klient – podnikateľ je povinný prezrieť Tovar s odbornou starostlivosťou bezodkladne po jeho prevzatí a zjavné vady vytknúť bezodkladne, najneskôr pri prevzatí Tovaru alebo bezprostredne po ňom; skryté vady je povinný vytknúť bez zbytočného odkladu po ich zistení. Pri Spotrebiteľovi sa práva zo zodpovednosti za vady spravujú kogentnými ustanoveniami právnych predpisov; tým nie je dotknutá povinnosť Spotrebiteľa vytknúť vadu bez zbytočného odkladu po jej zistení.
 
-**10.4** Reklamáciu vady je potrebné uplatniť písomne, najmä e-mailom na info@orostone.sk, a uviesť: a) identifikáciu objednávky alebo faktúry, b) popis vady, c) dátum zistenia vady, d) fotodokumentáciu alebo inú primeranú dokumentáciu, ak je to vzhľadom na povahu vady možné.
+**10.4** Reklamáciu vady je potrebné uplatniť písomne, najmä e-mailom na info@orostone.sk, a uviesť: a) identifikáciu objednávky alebo faktúry, b) opis vady, c) dátum zistenia vady, d) fotodokumentáciu alebo inú primeranú dokumentáciu, ak je to vzhľadom na povahu vady možné.
 
 **10.5** Predávajúci je oprávnený požadovať doplnenie informácií, fotodokumentácie alebo obhliadku Tovaru, ak je to potrebné na posúdenie reklamácie.
 
@@ -196,7 +196,7 @@ Tieto všeobecné obchodné podmienky upravujú vzťahy medzi spoločnosťou Oro
 
 **12.1** Predávajúci nezodpovedá za nepriame škody, následné škody, ušlý zisk, prestoje, stratu zákazky, náklady tretích osôb ani iné následné ekonomické ujmy, ak takáto zodpovednosť nemôže byť podľa kogentných právnych predpisov vylúčená.
 
-**12.2** Pri Klientovi – podnikateľovi sa celková zodpovednosť predávajúceho obmedzuje najviac do výšky ceny realizovanej objednávky, z ktorej škoda vznikla.
+**12.2** Pri Klientovi – podnikateľovi sa celková zodpovednosť predávajúceho obmedzuje na výšku ceny realizovanej objednávky, z ktorej škoda vznikla.
 
 **12.3** Nič v týchto VOP nevylučuje ani neobmedzuje práva Spotrebiteľa podľa kogentných ustanovení právnych predpisov.
 
@@ -204,7 +204,7 @@ Tieto všeobecné obchodné podmienky upravujú vzťahy medzi spoločnosťou Oro
 
 **13.1** Predávajúci nezodpovedá za porušenie povinnosti, ak bolo spôsobené okolnosťami vylučujúcimi zodpovednosť, najmä vyššou mocou, vojnovým stavom, štrajkom, pandémiou, výpadkom dopravy, výpadkom dodávateľského reťazca, zásahom orgánov verejnej moci alebo inou nepredvídateľnou a neodvrátiteľnou okolnosťou.
 
-**13.2** Po dobu trvania okolností podľa bodu 13.1 sa primerane predlžujú lehoty na plnenie.
+**13.2** Počas trvania okolností podľa bodu 13.1 sa primerane predlžujú lehoty na plnenie.
 
 ## 14. Alternatívne riešenie sporov a orgán dozoru
 

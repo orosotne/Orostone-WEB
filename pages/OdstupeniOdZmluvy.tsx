@@ -84,7 +84,7 @@ export const OdstupeniOdZmluvy: React.FC = () => {
         {/* Info box */}
         <div className="mb-8 rounded-r-[3px] border-l-2 border-brand-dark bg-brand-sand p-6 print:hidden">
           <p className="text-sm font-light leading-relaxed">
-            <strong className="text-brand-dark">Ako postupovať:</strong> 1. Vyplňte všetky polia nižšie. 2. Kliknite na „Vytlačiť formulár“. 3. Vytlačený formulár podpíšte. 4. Podpísaný formulár nám zašlite e-mailom (naskenovaný/odfotený) alebo poštou pred uplynutím 14-dňovej lehoty od prevzatia tovaru.
+            <strong className="text-brand-dark">Ako postupovať:</strong> 1. Vyplňte všetky polia nižšie. 2. Kliknite na „Vytlačiť formulár“. 3. Vytlačený formulár podpíšte. 4. Podpísaný formulár nám zašlite e-mailom (naskenovaný alebo odfotografovaný) alebo poštou pred uplynutím 14-dňovej lehoty od prevzatia tovaru.
           </p>
         </div>
 

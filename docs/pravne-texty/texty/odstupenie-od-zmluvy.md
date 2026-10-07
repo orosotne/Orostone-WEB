@@ -6,7 +6,7 @@ PRÁVA SPOTREBITEĽA • ZÁKON Č. 108/2024 Z. Z.
 
 Vyplňte formulár priamo na tejto stránke, vytlačte ho, podpíšte a zašlite e-mailom na info@orostone.sk alebo poštou na adresu sídla spoločnosti.
 
-Ako postupovať: 1. Vyplňte všetky polia nižšie. 2. Kliknite na „Vytlačiť formulár“. 3. Vytlačený formulár podpíšte. 4. Podpísaný formulár nám zašlite e-mailom (naskenovaný/odfotený) alebo poštou pred uplynutím 14-dňovej lehoty od prevzatia tovaru.
+Ako postupovať: 1. Vyplňte všetky polia nižšie. 2. Kliknite na „Vytlačiť formulár“. 3. Vytlačený formulár podpíšte. 4. Podpísaný formulár nám zašlite e-mailom (naskenovaný alebo odfotografovaný) alebo poštou pred uplynutím 14-dňovej lehoty od prevzatia tovaru.
 
 ## Oznámenie o odstúpení od zmluvy
 

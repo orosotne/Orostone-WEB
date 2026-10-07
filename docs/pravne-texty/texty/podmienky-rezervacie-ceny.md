@@ -32,7 +32,7 @@ Táto služba zahŕňa:
 
 - garantovanie aktuálne platnej ceny produktov Orostone na obdobie 6 mesiacov odo dňa úhrady rezervačného poplatku,
 
-- možnosť uplatniť zaplatený rezervačný poplatok ako kredit/zľavu pri budúcej objednávke platne Orostone.
+- možnosť uplatniť zaplatený rezervačný poplatok ako kredit alebo zľavu pri budúcej objednávke platne Orostone.
 
 **2.2** Rezervačný poplatok nie je samostatnou objednávkou kamennej platne, kuchynskej pracovnej dosky, zásteny, ostrovčeka ani iného fyzického produktu.
 
@@ -86,7 +86,7 @@ Táto služba zahŕňa:
 
 ## 11. Kontakt
 
-**11.1** V prípade otázok k rezervácii ceny môže zákazník kontaktovať Orostone na: E-mail: info@orostone.sk Telefón: +421 917 588 738 Web: www.orostone.sk
+**11.1** V prípade otázok k rezervácii ceny môže zákazník kontaktovať Orostone: E-mail: info@orostone.sk Telefón: +421 917 588 738 Web: www.orostone.sk
 
 Tieto podmienky rezervačného poplatku sú účinné od 1. 5. 2026. Tvoria neoddeliteľnú súčasť zmluvy uzavretej úhradou rezervačného poplatku. V otázkach, ktoré tieto podmienky neupravujú, sa primerane uplatnia Všeobecné obchodné podmienky Orostone.
 

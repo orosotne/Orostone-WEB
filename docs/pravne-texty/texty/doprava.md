@@ -16,7 +16,7 @@ Platne majú veľkoformátový rozmer 3 200 × 1 600 mm a vysokú hmotnosť. Pre
 
 Súčasťou štandardnej dopravy nie je vnútorná manipulácia, vynáška, presun po schodoch, vykládka pomocou žeriava, vysokozdvižnej techniky ani iná nadštandardná manipulácia, ak nebolo písomne dohodnuté inak.
 
-Kupujúci je povinný zabezpečiť na mieste prevzatia primerané podmienky na bezpečné prevzatie tovaru, vrátane najmenej 2 osôb na asistenciu pri prevzatí.
+Kupujúci je povinný zabezpečiť na mieste prevzatia primerané podmienky na bezpečné prevzatie tovaru a najmenej dve osoby, ktoré pri prevzatí pomôžu.
 
 Ak kupujúci nezabezpečí prevzatie tovaru, prístup na miesto doručenia alebo potrebnú súčinnosť, spoločnosť Orostone je oprávnená požadovať náhradu nákladov márneho doručenia, opätovného doručenia a primeraných nákladov na skladovanie.
 
@@ -60,7 +60,7 @@ Orientačné náklady na spätný zvoz tovaru:
 
 Presná výška nákladov na vrátenie závisí od miesta vyzdvihnutia, počtu kusov a spôsobu prepravy a bude potvrdená pred odoslaním záväznej objednávky. Táto informácia je poskytovaná v súlade s § 3 ods. 1 písm. i) zákona č. 108/2024 Z. z. o ochrane spotrebiteľa.
 
-Podrobný postup pri odstúpení od zmluvy nájdete na stránke Reklamácie a vrátenie alebo vyplňte formulár na odstúpenie od zmluvy.
+Podrobný postup pri odstúpení od zmluvy nájdete na stránke Reklamácie a vrátenie; môžete tiež vyplniť formulár na odstúpenie od zmluvy.
 
 ## Platobné metódy
 

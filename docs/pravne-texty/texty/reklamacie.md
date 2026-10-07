@@ -4,7 +4,7 @@ ZÁKAZNÍCKY SERVIS
 
 # Reklamácie a vrátenie tovaru
 
-Ak máte otázky k dodanému tovaru, kontaktujte nás na info@orostone.sk. Reklamácie vybavujeme a právo na odstúpenie od zmluvy uplatňujeme v súlade s platnými právnymi predpismi Slovenskej republiky.
+Ak máte otázky k dodanému tovaru, kontaktujte nás na info@orostone.sk. Reklamácie vybavujeme a pri uplatnení práva na odstúpenie od zmluvy postupujeme v súlade s platnými právnymi predpismi Slovenskej republiky.
 
 ## Zodpovednosť za vady
 
@@ -32,17 +32,17 @@ Pri spotrebiteľskom predaji spoločnosť Orostone zodpovedá za vady, ktoré m�
 
 ### Kontrola pred spracovaním
 
-Kupujúci je povinný pred akýmkoľvek rezaním, opracovaním alebo montážou dôkladne skontrolovať najmä rozmer, dekor, odtieň, povrch a zjavné vady tovaru. Po spracovaní tovaru nemožno úspešne uplatňovať tie vady alebo vlastnosti, ktoré boli zjavné alebo zistiteľné pred spracovaním.
+Kupujúci je povinný pred akýmkoľvek rezaním, opracovaním alebo montážou dôkladne skontrolovať najmä rozmer, dekor, odtieň, povrch a zjavné vady tovaru. Po spracovaní tovaru nemožno úspešne reklamovať vady alebo vlastnosti, ktoré boli zjavné alebo zistiteľné pred spracovaním.
 
 ## Uplatnenie reklamácie
 
-Reklamáciu alebo vytknutie vady môžete uplatniť e-mailom na info@orostone.sk. Pre rýchlejšie vybavenie odporúčame uviesť:
+Reklamáciu môžete uplatniť alebo vadu vytknúť e-mailom na info@orostone.sk. Pre rýchlejšie vybavenie odporúčame uviesť:
 
 - Číslo objednávky alebo faktúry
 
-- Popis vady a dátum zistenia
+- Opis vady a dátum zistenia
 
-- Fotodokumentáciu vady (detail + celkový pohľad), ak je to vzhľadom na povahu vady možné
+- Fotodokumentáciu vady (detail aj celkový pohľad), ak je to vzhľadom na povahu vady možné
 
 Po vytknutí vady vám spoločnosť Orostone bezodkladne zašle písomné potvrdenie o vytknutí vady a uvedie lehotu, v ktorej vadu odstráni alebo vybaví uplatnené právo zo zodpovednosti za vady.
 
@@ -80,7 +80,7 @@ Z dôvodu bezpečnej spätnej prepravy odporúčame tovar vrátiť v pôvodnom o
 
 ### Vrátenie platieb
 
-Spoločnosť Orostone vráti spotrebiteľovi všetky platby, ktoré od neho prijala na základe alebo v súvislosti so zmluvou, vrátane nákladov na dodanie v rozsahu najlacnejšieho bežného spôsobu dodania ponúkaného spoločnosťou Orostone, a to do 14 dní od doručenia oznámenia o odstúpení od zmluvy. Spoločnosť Orostone nie je povinná vrátiť platby skôr, ako jej bude tovar doručený späť alebo kým spotrebiteľ nepreukáže jeho odoslanie späť, podľa toho, čo nastane skôr.
+Spoločnosť Orostone vráti spotrebiteľovi všetky platby, ktoré od neho prijala na základe zmluvy alebo v súvislosti s ňou, vrátane nákladov na dodanie v rozsahu najlacnejšieho bežného spôsobu dodania ponúkaného spoločnosťou Orostone, a to do 14 dní od doručenia oznámenia o odstúpení od zmluvy. Spoločnosť Orostone nie je povinná vrátiť platby skôr, ako jej bude tovar doručený späť alebo kým spotrebiteľ nepreukáže jeho odoslanie späť, podľa toho, čo nastane skôr.
 
 ### Vzorový formulár na odstúpenie od zmluvy
 

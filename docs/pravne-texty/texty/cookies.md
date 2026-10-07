@@ -10,7 +10,7 @@ Táto stránka vysvetľuje, ako používame cookies a podobné technológie na n
 
 Orostone s.r.o.
 
-Landererova 8, 811 09 Bratislava - mestská časť Staré Mesto
+Landererova 8, 811 09 Bratislava – mestská časť Staré Mesto
 
 IČO: 55 254 772 • DIČ: 2121930580 • IČ DPH: SK2121930580
 
@@ -69,10 +69,10 @@ Podrobný zoznam
 | NÁZOV | POSKYTOVATEĽ | TYP | ÚČEL | DOBA ULOŽENIA |
 |---|---|---|---|---|
 | orostone-cookies | Orostone | Nevyhnutné | localStorage – uloženie vašich nastavení cookies a záznamu o udelenom alebo odvolanom súhlase | Do zmeny nastavení alebo vymazania prehliadačom |
-| orostone_shopify_cart_id | Orostone / Shopify | Nevyhnutné | localStorage – zachovanie obsahu nákupného košíka | Do vymazania košíka alebo prehliadačom |
-| cf_clearance, __cf_bm | Cloudflare | Nevyhnutné | Ochrana formulárov a webu pred spamom, botmi a zneužitím; bezpečnostné a anti-abuse mechanizmy Cloudflare | Do 30 min / podľa konfigurácie služby |
+| orostone_shopify_cart_id | Orostone / Shopify | Nevyhnutné | localStorage – zachovanie obsahu nákupného košíka | Do vymazania košíka alebo údajov prehliadača |
+| cf_clearance, __cf_bm | Cloudflare | Nevyhnutné | Ochrana formulárov a webu pred spamom, botmi a zneužitím; bezpečnostné mechanizmy Cloudflare | Do 30 minút alebo podľa konfigurácie služby |
 | orostone-theme | Orostone | Funkčné | localStorage – uloženie vami zvolenej preferencie zobrazenia stránky | Do zmeny nastavenia alebo vymazania prehliadačom |
-| orostone-newsletter-popup | Orostone | Funkčné | localStorage – uloženie informácie o vašej interakcii s newsletter popupom | Do vymazania prehliadačom alebo podľa nastavenia webu |
+| orostone-newsletter-popup | Orostone | Funkčné | localStorage – uloženie informácie o vašej interakcii s vyskakovacím oknom newslettera | Do vymazania prehliadačom alebo podľa nastavenia webu |
 | orostone_installation_data | Orostone | Funkčné | localStorage – vami zadané údaje kalkulácie montáže, ktoré sa zobrazia v košíku | Do odstránenia z košíka alebo vymazania prehliadačom |
 | _ga | Google | Analytické | Google Analytics – rozlíšenie návštevníkov a meranie návštevnosti (len so súhlasom) | 2 roky |
 | _ga_W3ZPVYZ9HQ, _ga_B7PV9X0X8X | Google | Analytické | Google Analytics – uchovanie stavu relácie | 2 roky |
