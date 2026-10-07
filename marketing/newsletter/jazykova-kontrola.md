@@ -190,4 +190,8 @@ Na žiadosť o kontrolu celého textu e-mailu 02 (predmet, preheader, list, P. S
 - **09** – bez vety *Posledný e-mail uvítacej série* a bez odkazu *v predchádzajúcom e-maile sme písali*. Úvod dáva zmysel aj samostatne.
 - **17** – bez úvodu *Ako sme sľúbili v deň montáže*.
 
+## Kolo 12 – Codex review v PR #89 (7. 10. 2026, e-maily bez prezrádzania automatizácie)
+
+Codex na `f9aca8c` nenašiel žiadne pripomienky. Nový predmet a nadpis 02, sekcia v 08, úvod 09, veta v 17, hlavička 21 a nové pravidlo v `slovnik.md` sú skontrolované.
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
