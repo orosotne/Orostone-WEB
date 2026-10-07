@@ -63,7 +63,7 @@ const structuredData = {
 /** The four numbers the page answers, set large: same constants as the direct answer above them. */
 const PRICE_FACTS = [
   { value: `od ${formatEur(SLAB_PRICE_MIN)}`, label: 'za m² materiálu s DPH' },
-  { value: `od ${formatEurWhole(SLAB_TOTAL_MIN)}`, label: 'celá platňa 3200 × 1600 mm' },
+  { value: `od ${formatEurWhole(SLAB_TOTAL_MIN)}`, label: 'celá platňa 3\u00A0200\u00A0×\u00A01\u00A0600\u00A0mm' },
   { value: `−${BULK_DISCOUNT.discountPercent} %`, label: `pri ${BULK_DISCOUNT.quantity} a viac platniach` },
   { value: `≈ ${INSTALLATION_RATE_PER_M2} €/m²`, label: 'výroba a montáž u partnerského kamenára' },
 ];
@@ -122,7 +122,7 @@ export const Cennik = () => {
           <SectionHeader
             eyebrow="Materiál"
             title="Ceny dekorov"
-            lead="Všetky platne majú formát 3200 × 1600 mm a hrúbku 12 mm. Ceny sú vrátane DPH."
+            lead={'Všetky platne majú formát 3\u00A0200\u00A0×\u00A01\u00A0600\u00A0mm a hrúbku 12\u00A0mm. Ceny sú vrátane DPH.'}
           />
           <div className={tableWrap}>
             <table className="w-full border-collapse text-[0.92rem] sm:text-[0.98rem]">
@@ -212,8 +212,8 @@ export const Cennik = () => {
           <div className="grid justify-items-start gap-6">
             <SectionHeader eyebrow="Výroba a montáž" title="Výroba a montáž u partnerského kamenára" />
             <p className="max-w-[54ch] font-light text-brand-muted">
-              Orostone predáva materiál — celé platne. Zameranie, výrobu a montáž robí partnerský kamenár so skúsenosťou so
-              sinterovaným kameňom, orientačne za {INSTALLATION_RATE_PER_M2} €/m² s DPH. Tieto práce fakturuje kamenár, nie sú
+              Orostone predáva materiál — celé platne. Zameranie, výrobu a montáž robí partnerský kamenár so skúsenosťami so
+              spracovaním sinterovaného kameňa, orientačne za {INSTALLATION_RATE_PER_M2} €/m² s DPH. Tieto práce fakturuje kamenár, nie sú
               súčasťou ceny materiálu.
             </p>
             <ul className="grid w-full max-w-[460px] border-t border-brand-line">

@@ -65,7 +65,7 @@ const PROCESS = [
     title: 'Sintrovanie',
     desc: 'Doska sa vypáli pri teplote nad 1 200 °C. Častice sa spoja na molekulárnej úrovni — vzniká monolitický, nepórovitý povrch.',
     img: 'sk-vyroba-vypal',
-    imgAlt: 'Sintrovanie pri teplote 1200 stupňov Celzia',
+    imgAlt: 'Sintrovanie pri teplote 1\u00A0200\u00A0°C',
   },
 ];
 

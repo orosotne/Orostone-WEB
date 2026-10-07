@@ -246,12 +246,12 @@ export const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product }) => {
                 {!bimSubmitted ? (
                   <>
                     <p className="text-brand-muted text-sm mb-5">
-                      Nechajte nám váš email a my vám BIM / CAD textúry v plnom rozlíšení zašleme obratom. Súbory sú dostupné pre registrovaných architektov a dizajnérov.
+                      Nechajte nám svoj e-mail a my vám BIM / CAD textúry v plnom rozlíšení zašleme obratom. Súbory sú dostupné pre registrovaných architektov a dizajnérov.
                     </p>
                     <form onSubmit={handleBimSubmit} className="space-y-4">
                       <div>
                         <label className="block text-xs font-semibold text-brand-dark uppercase tracking-wide mb-1.5">
-                          Váš email
+                          Váš e-mail
                         </label>
                         <div className="relative">
                           <Mail size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-muted" />

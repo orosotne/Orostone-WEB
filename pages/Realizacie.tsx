@@ -351,15 +351,15 @@ const GRID_PROJECTS = PROJECTS.filter((p) => !p.featured);
 
 const STATS = [
   { value: '150+', label: 'Realizácií' },
-  { value: '12', label: 'Dekórov' },
+  { value: '12', label: 'Dekorov' },
   { value: '10–15', label: 'Pracovných dní' },
-  { value: '24', label: 'Mesiacov záruka' },
+  { value: '24', label: 'Mesiacov záruky' },
 ];
 
 const STEPS = [
-  { title: 'Konzultácia', text: 'Pomôžeme s výberom dekoru a hrúbky. Prvú vzorku pošleme zadarmo.' },
-  { title: 'Zameranie a príprava', text: 'Kamenár zameria priestor. Platne sú rezané CNC technológiou na presné rozmery.' },
-  { title: 'Montáž', text: 'Termín dodania a inštalácie do 15 pracovných dní.' },
+  { title: 'Konzultácia', text: 'Pomôžeme s výberom dekoru. Prvú vzorku pošleme zadarmo.' },
+  { title: 'Zameranie a príprava', text: 'Kamenár zameria priestor a platne nareže na CNC stroji na požadované rozmery.' },
+  { title: 'Montáž', text: 'Dodanie a montáž do 15 pracovných dní.' },
 ];
 
 const breadcrumbLD = createBreadcrumbLD([

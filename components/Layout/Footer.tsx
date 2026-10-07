@@ -42,7 +42,7 @@ const NewsletterWidget: React.FC = () => {
     const result = await subscribeToNewsletter({ email, source: 'footer' });
     if (result.success) {
       setStatus('success');
-      setMsg(result.alreadySubscribed ? 'Tento email je už prihlásený.' : 'Ďakujeme za prihlásenie!');
+      setMsg(result.alreadySubscribed ? 'Tento e-mail je už prihlásený.' : 'Ďakujeme za prihlásenie!');
     } else {
       setStatus('error');
       setMsg('Niečo sa nepodarilo. Skúste to znova.');

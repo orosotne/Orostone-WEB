@@ -1,6 +1,6 @@
 # Orostone Style Guide
 
-Since October 2026 the site uses a new design system, taken from the approved homepage proposal. Every page has been migrated except the product detail (`/produkt/:id`, `pages/ShopProductDetail.tsx` + `components/ProductDetail/`), which keeps its own look until the owner approves a proposal. New and rewritten sections must use the system below; the legacy patterns at the end of this file only survive on the product detail.
+Since October 2026 the site uses a new design system, taken from the approved homepage proposal. Every page uses it. The product detail (`/produkt/:id`, `pages/ShopProductDetail.tsx` + `components/ProductDetail/`) was migrated in October 2026 (proposal A) and still has a few legacy patterns, listed at the end of this file. New and rewritten sections must use the system below.
 
 ---
 
@@ -143,7 +143,7 @@ Links to oro-klient.orostone.sk carry `?od=<miesto>`, never UTM parameters.
 
 ## Legacy patterns (being phased out)
 
-These remain only on the product detail page. Don't use them anywhere else.
+A few remain on the product detail (`ProductLightbox`, `ResistanceParameters`, `MaterialPerspectivesViewer`, labels in `HeroSection`). Don't use them anywhere else; replace them when you touch those files.
 
 | Legacy | Replace with |
 |---|---|

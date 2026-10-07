@@ -101,7 +101,7 @@ export const SampleLeadForm: React.FC<SampleLeadFormProps> = ({ preselectedDekor
       <div className="flex w-full flex-col items-start gap-3 rounded-[10px] border border-brand-line bg-white p-8">
         <CheckCircle className="h-10 w-10 text-brand-dark" strokeWidth={1.5} />
         <h4 className="text-os-h3">Vzorka je na ceste.</h4>
-        <p className="font-light text-brand-muted">Vzorku odošleme do 2–3 pracovných dní. Potvrdenie pošleme emailom.</p>
+        <p className="font-light text-brand-muted">Vzorku odošleme do 2–3 pracovných dní. Potvrdenie pošleme e-mailom.</p>
       </div>
     );
   }
@@ -171,7 +171,7 @@ export const SampleLeadForm: React.FC<SampleLeadFormProps> = ({ preselectedDekor
           className="mt-0.5 h-4 w-4 flex-shrink-0 cursor-pointer rounded border-brand-line accent-brand-dark"
         />
         <span className="text-[0.8rem] font-normal text-brand-muted">
-          Súhlasím so zasielaním noviniek a marketingových ponúk na moju emailovú adresu (voliteľné)
+          Súhlasím so zasielaním noviniek a marketingových ponúk na moju e-mailovú adresu (voliteľné)
         </span>
       </label>
 

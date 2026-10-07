@@ -67,7 +67,7 @@ export const HomeMaterial: React.FC = () => {
             <div className="hp-viewer-name" aria-live="polite">
               <small>{d.label}</small>
               <b>{d.name}</b>
-              <span>{index + 1} / {HOME_DECORS.length} · 3200 × 1600 mm</span>
+              <span>{index + 1} / {HOME_DECORS.length} · 3&nbsp;200&nbsp;×&nbsp;1&nbsp;600&nbsp;mm</span>
               <Link className="hp-viewer-link" to={`/produkt/${d.slug}`}>Pozrieť dekor</Link>
             </div>
             <button type="button" className="hp-round hp-round-dark" aria-label="Ďalší dekor" onClick={() => step(1)}>

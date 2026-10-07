@@ -89,7 +89,7 @@ export const EshopContact: React.FC = () => {
       <PageHero
         eyebrow="Kontakt"
         title="Sme tu pre vás"
-        lead="Pre cenovú ponuku alebo konzultáciu nás kontaktujte emailom alebo telefonicky. Odpovedáme čo najskôr."
+        lead="Pre cenovú ponuku alebo konzultáciu nás kontaktujte e-mailom alebo telefonicky. Odpovedáme čo najskôr."
         media={
           <dl className="m-0 grid gap-8 lg:justify-self-end">
             <div className="grid gap-1.5">
@@ -143,7 +143,7 @@ export const EshopContact: React.FC = () => {
               </div>
             </dl>
             <p className="max-w-[54ch] font-light text-brand-muted">
-              Celé platne 3200 × 1600 mm si tu pozriete pri dennom svetle a porovnáte dekory vo veľkej ploche. Na malej
+              Celé platne 3&nbsp;200&nbsp;×&nbsp;1&nbsp;600&nbsp;mm si tu pozriete pri dennom svetle a porovnáte dekory vo veľkej ploche. Na malej
               vzorke sa kresba ani mierka posúdiť nedajú.
             </p>
             <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
@@ -176,7 +176,7 @@ export const EshopContact: React.FC = () => {
               <p>IČO: 55 254 772</p>
               <p>DIČ: 2121930580</p>
               <p>IČ DPH: SK2121930580</p>
-              <p>Platiteľ DPH podľa §4 od 11. 4. 2023</p>
+              <p>Platiteľ DPH podľa §&nbsp;4 od 11.&nbsp;4.&nbsp;2023</p>
               <p>Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B</p>
             </div>
             <div className="grid gap-1 border-t border-brand-line pt-4">
@@ -270,14 +270,14 @@ export const EshopContact: React.FC = () => {
         <Container className="flex flex-wrap items-center justify-between gap-x-12 gap-y-7">
           <div className="grid gap-3">
             <h3 className="text-os-h2">Potrebujete rýchlu odpoveď?</h3>
-            <p className="font-light text-brand-muted">Kontaktujte nás emailom alebo telefonicky.</p>
+            <p className="font-light text-brand-muted">Kontaktujte nás e-mailom alebo telefonicky.</p>
           </div>
           <div className="flex flex-wrap items-center gap-4">
             <ActionButton variant="dark" to="tel:+421917588738">
               Zavolať
             </ActionButton>
             <ActionButton variant="outline" to="mailto:dopyt@orostone.sk?subject=Dopyt z webu">
-              Napísať email
+              Napísať e-mail
             </ActionButton>
           </div>
         </Container>

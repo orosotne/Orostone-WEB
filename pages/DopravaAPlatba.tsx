@@ -209,7 +209,7 @@ export const DopravaAPlatba: React.FC = () => {
                 </ActionButton>
                 <ActionButton to="mailto:info@orostone.sk" variant="outline">
                   <Mail size={16} />
-                  Napísať email
+                  Napísať e-mail
                 </ActionButton>
               </div>
             </div>

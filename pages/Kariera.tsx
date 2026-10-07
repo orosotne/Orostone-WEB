@@ -298,7 +298,7 @@ export const Kariera: React.FC = () => {
           <SectionHeader
             eyebrow="Otvorené pozície"
             title={openingsHeading(JOB_OPENINGS.length)}
-            lead="Kliknutím na pozíciu si otvoríte celý popis. Ak vám sedí viac ako jedna, napíšte to do emailu — nie je to problém."
+            lead="Kliknutím na pozíciu si otvoríte celý popis. Ak vám sedí viac ako jedna, napíšte to do e-mailu — nie je to problém."
           />
           <div className="border-t border-brand-dark">
             {JOB_OPENINGS.map((job) => (
@@ -317,7 +317,7 @@ export const Kariera: React.FC = () => {
       <Section tone="sand">
         <Container className="grid items-start gap-12 lg:grid-cols-2 lg:gap-[clamp(48px,6vw,104px)]">
           <div className="grid justify-items-start gap-6">
-            <SectionHeader eyebrow="Ako sa prihlásiť" title="Stačí email a životopis" />
+            <SectionHeader eyebrow="Ako sa prihlásiť" title="Stačí e-mail a životopis" />
             <p className="max-w-[54ch] font-light text-brand-muted">
               Životopis posielajte na <strong className="font-semibold text-brand-dark">{CAREERS_EMAIL}</strong>. Do
               predmetu uveďte názov pozície, o ktorú máte záujem. Prihlášky čítame priebežne — ak vaša skúsenosť sedí, ozveme
@@ -328,7 +328,7 @@ export const Kariera: React.FC = () => {
             </ActionButton>
           </div>
           <div className="grid gap-5 rounded-[3px] bg-brand-light p-[clamp(28px,3vw,44px)]">
-            <h3 className="text-os-h3">Čo do emailu pridať</h3>
+            <h3 className="text-os-h3">Čo do e-mailu pridať</h3>
             <ul className="border-t border-brand-line">
               {APPLY_TIPS.map((item) => (
                 <li key={item} className={listItem}>
@@ -359,7 +359,7 @@ export const Kariera: React.FC = () => {
             <strong className="font-semibold text-brand-dark">Spracúvanie osobných údajov:</strong> Zaslaním životopisu
             súhlasíte so spracúvaním osobných údajov, ktoré v ňom uvediete, na účel výberového konania na pozíciu, o ktorú sa
             uchádzate. Údaje spracúva Orostone s.r.o. a po ukončení výberového konania ich vymaže. Ak si vaše podklady môžeme
-            ponechať aj pre budúce pozície, uveďte to prosím priamo v emaile — bez vášho výslovného súhlasu ich neuchovávame. Viac
+            ponechať aj pre budúce pozície, uveďte to prosím priamo v e-maile — bez vášho výslovného súhlasu ich neuchovávame. Viac
             v{' '}
             <Link to="/ochrana-sukromia" className="underline underline-offset-2">
               Ochrane osobných údajov

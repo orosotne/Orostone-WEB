@@ -17,13 +17,13 @@ export const HOME_DECORS: HomeDecor[] = [
   { slug: 'yabo-white', name: 'Yabo White', label: 'Jemná biela', group: 'biele' },
   { slug: 'statuario-diamante', name: 'Statuario Diamante', label: 'Biely mramor', group: 'biele' },
   { slug: 'calacatta-top', name: 'Calacatta Top', label: 'Biely mramor', group: 'biele' },
-  { slug: 'givenchy-gold', name: 'Givenchy Gold', label: 'Biely zlatý', group: 'biele' },
+  { slug: 'givenchy-gold', name: 'Givenchy Gold', label: 'Biela so zlatom', group: 'biele' },
   { slug: 'appennino', name: 'Appennino', label: 'Jemný mramor', group: 'biele' },
   { slug: 'taj-mahal', name: 'Taj Mahal', label: 'Krémový mramor', group: 'teple' },
   { slug: 'roman-travertine', name: 'Roman Travertine', label: 'Teplý travertín', group: 'teple' },
-  { slug: 'wild-forest', name: 'Wild Forest', label: 'Výrazný teplý', group: 'teple' },
+  { slug: 'wild-forest', name: 'Wild Forest', label: 'Zemité tóny', group: 'teple' },
   { slug: 'astrana-grey', name: 'Astrana Grey', label: 'Sivý kameň', group: 'tmave' },
-  { slug: 'gothic-gold', name: 'Gothic Gold', label: 'Tmavý zlatý', group: 'tmave' },
+  { slug: 'gothic-gold', name: 'Gothic Gold', label: 'Tmavá so zlatom', group: 'tmave' },
   { slug: 'nero-margiua', name: 'Nero Margiua', label: 'Čierny mramor', group: 'tmave' },
 ];
 
