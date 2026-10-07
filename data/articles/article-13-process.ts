@@ -13,64 +13,64 @@ export const ARTICLE_13: BlogArticle = {
 
   sk: {
     title: 'Od merania po inštaláciu: proces Orostone v 10 krokoch',
-    subtitle: 'Kompletný sprievodca celým procesom — od prvej konzultácie po odovzdanie hotovej kuchyne',
-    excerpt: 'Presne budete vedieť, čo sa deje v každej fáze. 10 krokov, konkrétne termíny, jasné zodpovednosti. Celý proces od konzultácie po hotovú kuchyňu trvá 10–15 pracovných dní.',
-    metaTitle: 'Od pôdorysu po hotovú kuchyňu — proces | OROSTONE',
-    metaDescription: 'Od pôdorysu cez výber dekoru a zameranie po finálnu kuchyňu. Celý proces zastrešíme so skúsenými kamenármi — čo má klient na oboch stranách očakávať.',
-    directAnswer: 'Celý proces od prvej konzultácie po hotovú kuchyňu trvá 10–15 pracovných dní. Zahŕňa: konzultáciu, výber materiálu, zameranie na mieste, CNC fabrikáciu, kontrolu kvality, transport na A-ráme, prípravu podkladu, montáž, inštaláciu spotrebičov a finálnu kontrolu.',
+    subtitle: 'Kompletný sprievodca celým procesom – od prvej konzultácie po odovzdanie hotovej kuchyne',
+    excerpt: 'Presne budete vedieť, čo sa deje v každej fáze. 10 krokov, konkrétne termíny, jasné zodpovednosti. Celý proces od konzultácie po hotovú kuchyňu trvá 10 – 15 pracovných dní.',
+    metaTitle: 'Od pôdorysu po hotovú kuchyňu – proces | OROSTONE',
+    metaDescription: 'Od pôdorysu cez výber dekoru a zameranie po finálnu kuchyňu. Celý proces zastrešíme so skúsenými kamenármi – čo má klient na oboch stranách očakávať.',
+    directAnswer: 'Celý proces od prvej konzultácie po hotovú kuchyňu trvá 10 – 15 pracovných dní. Zahŕňa: konzultáciu, výber materiálu, zameranie na mieste, CNC fabrikáciu, kontrolu kvality, transport na A-ráme, prípravu podkladu, montáž, inštaláciu spotrebičov a finálnu kontrolu.',
     content: `
 <ul class="article-tldr">
-  <li>Celý proces od konzultácie po hotovú kuchyňu trvá 10–15 pracovných dní</li>
+  <li>Celý proces od konzultácie po hotovú kuchyňu trvá 10 – 15 pracovných dní</li>
   <li>Zameranie robí ručne priamo u vás partnerský kamenár, ktorý dosku aj vyrobí</li>
-  <li>CNC fabrikácia diamantovými nástrojmi — žiadne ručné rezanie</li>
-  <li>Transport vo vertikálnych A-rámoch — dosky sa vždy vezú na stojato, nie naplocho</li>
+  <li>CNC fabrikácia diamantovými nástrojmi – žiadne ručné rezanie</li>
+  <li>Transport vo vertikálnych A-rámoch – dosky sa vždy vezú na stojato, nie naplocho</li>
 </ul>
 
 <p>Investícia do sinterovaného kameňa je rozhodnutie, ktoré ovplyvní váš priestor na desaťročia. Je úplne prirodzené, že chcete presne vedieť, čo sa bude diať, kedy a kto za čo zodpovedá.</p>
 
-<p>Neistota plodí stres — a práve preto vám v tomto článku ukážeme celý proces Orostone krok za krokom, s konkrétnymi termínmi, meraniami a zodpovednosťami.</p>
+<p>Neistota plodí stres – a práve preto vám v tomto článku ukážeme celý proces Orostone krok za krokom, s konkrétnymi termínmi, meraniami a zodpovednosťami.</p>
 
-<p>Či už plánujete novú kuchyňu, kúpeľňový obklad alebo ostrov do otvoreného priestoru, proces je vždy rovnaký: <strong>10 jasných krokov, 10–15 pracovných dní, jasné zodpovednosti</strong>. Poďme na to.</p>
+<p>Či už plánujete novú kuchyňu, kúpeľňový obklad alebo ostrovček do otvoreného priestoru, proces je vždy rovnaký: <strong>10 jasných krokov, 10 – 15 pracovných dní, jasné zodpovednosti</strong>. Poďme na to.</p>
 
-<p><strong>Kto čo robí:</strong> Orostone vám poradí s výberom, dodá materiál — celé platne — a koordinuje termíny. Zameranie, výrobu, dopravu a montáž robí a fakturuje partnerský kamenár so skúsenosťami so sinterovaným kameňom. Výsledok kontrolujeme aj my.</p>
+<p><strong>Kto čo robí:</strong> Orostone vám poradí s výberom, dodá materiál – celé platne – a koordinuje termíny. Zameranie, výrobu, dopravu a montáž robí a fakturuje partnerský kamenár so skúsenosťami so sinterovaným kameňom. Výsledok kontrolujeme aj my.</p>
 
-<h2 id="krok-1-konzultacia-a-vyber-materialu">Krok 1 — Čo sa deje na konzultácii?</h2>
+<h2 id="krok-1-konzultacia-a-vyber-materialu">Krok 1 – Čo sa deje na konzultácii?</h2>
 
-<p>Všetko začína osobnou konzultáciou v našom showroome v Bošanoch. Nie je to predajný telefonát ani e-mail s katalógom — je to stretnutie, kde vidíte a dotýkate sa reálnych materiálov v plnej veľkosti.</p>
+<p>Všetko začína osobnou konzultáciou v našom showroome v Bošanoch. Nie je to predajný telefonát ani e-mail s katalógom – je to stretnutie, kde vidíte reálne materiály v plnej veľkosti a dotýkate sa ich.</p>
 
 <p><strong>Čo sa deje počas konzultácie:</strong></p>
 <ul>
-  <li><strong>Prehliadka vzoriek v plnej veľkosti</strong> — nepozeráte sa na malé vzorky 10\u00A0×\u00A010\u00A0cm. V showroome máme celé slab-y (dosky), kde vidíte skutočnú kresbu, žilkovanie a farebnosť materiálu tak, ako bude vyzerať vo vašej kuchyni</li>
-  <li><strong>Diskusia o hrúbke materiálu</strong> — vysvetlíme rozdiely medzi 12 mm a 20 mm hrúbkou, ich štrukturálne vlastnosti a kedy ktorú odporúčame</li>
-  <li><strong>Výber povrchovej úpravy</strong> — leštený, matný, satinovaný alebo štruktúrovaný povrch. Každý má iný vizuálny efekt a praktické vlastnosti</li>
-  <li><strong>Profily hrán</strong> — od minimalistickej skosenej hrany po elegantný half-bullnose. Ukážeme vám vzorky na reálnom materiáli</li>
-  <li><strong>Rozpočet a očakávania</strong> — otvorene diskutujeme o cene, aby ste vedeli, čo za svoj rozpočet dostanete</li>
+  <li><strong>Prehliadka vzoriek v plnej veľkosti</strong> – nepozeráte sa na malé vzorky 10\u00A0×\u00A010\u00A0cm. V showroome máme celé platne, kde vidíte skutočnú kresbu, žilkovanie a farebnosť materiálu tak, ako bude vyzerať vo vašej kuchyni</li>
+  <li><strong>Diskusia o hrúbke materiálu</strong> – vysvetlíme rozdiely medzi 12\u00A0mm a 20\u00A0mm hrúbkou, ich štrukturálne vlastnosti a kedy ktorú odporúčame</li>
+  <li><strong>Výber povrchovej úpravy</strong> – leštený, matný, satinovaný alebo štruktúrovaný povrch. Každý má iný vizuálny efekt a praktické vlastnosti</li>
+  <li><strong>Profily hrán</strong> – od minimalistickej skosenej hrany po elegantný half-bullnose. Ukážeme vám vzorky na reálnom materiáli</li>
+  <li><strong>Rozpočet a očakávania</strong> – otvorene diskutujeme o cene, aby ste vedeli, čo za svoj rozpočet dostanete</li>
 </ul>
 
-<p><strong>Trvanie:</strong> 1–2 hodiny. Konzultácia je bezplatná a nezáväzná.</p>
+<p><strong>Trvanie:</strong> 1 – 2 hodiny. Konzultácia je bezplatná a nezáväzná.</p>
 
-<p><strong>Tip pre klientov:</strong> Prineste si pôdorys kuchyne, fotky inšpirácie a — ak máte — výkres od kuchynského štúdia. Čím viac informácií máme od začiatku, tým presnejšie vám poradíme.</p>
+<p><strong>Tip pre klientov:</strong> Prineste si pôdorys kuchyne, fotky inšpirácie a – ak máte – výkres od kuchynského štúdia. Čím viac informácií máme od začiatku, tým presnejšie vám poradíme.</p>
 
-<h2 id="krok-2-cenova-ponuka">Krok 2 — Čo obsahuje cenová ponuka?</h2>
+<h2 id="krok-2-cenova-ponuka">Krok 2 – Čo obsahuje cenová ponuka?</h2>
 
-<p>Do 48 hodín po konzultácii dostanete detailnú cenovú ponuku. Nie jedno číslo, ale rozpis po položkách — od nás materiál, od partnerského kamenára zameranie, výroba, doprava a montáž.</p>
+<p>Do 48 hodín po konzultácii dostanete detailnú cenovú ponuku. Nie jedno číslo, ale rozpis po položkách – od nás materiál, od partnerského kamenára zameranie, výroba, doprava a montáž.</p>
 
 <p><strong>Čo obsahuje cenová ponuka:</strong></p>
 <ul>
-  <li><strong>Materiál</strong> — presný typ, hrúbka, povrchová úprava, cena za m²</li>
-  <li><strong>Zameranie</strong> — ručné zameranie priamo na mieste, robí ho partnerský kamenár</li>
-  <li><strong>CNC fabrikácia</strong> — rezanie, tvarovanie, opracovanie</li>
-  <li><strong>Výrezy</strong> — drez, varná doska, batéria, zásuvky — každý výrez samostatne</li>
-  <li><strong>Profily hrán</strong> — typ profilu a metráž</li>
-  <li><strong>Transport</strong> — doprava na miesto inštalácie</li>
-  <li><strong>Inštalácia</strong> — kompletná montáž vrátane materiálu na lepenie a tesnenie</li>
+  <li><strong>Materiál</strong> – presný typ, hrúbka, povrchová úprava, cena za m²</li>
+  <li><strong>Zameranie</strong> – ručné zameranie priamo na mieste, robí ho partnerský kamenár</li>
+  <li><strong>CNC fabrikácia</strong> – rezanie, tvarovanie, opracovanie</li>
+  <li><strong>Výrezy</strong> – drez, varná doska, batéria, zásuvky – každý výrez samostatne</li>
+  <li><strong>Profily hrán</strong> – typ profilu a metráž</li>
+  <li><strong>Transport</strong> – doprava na miesto inštalácie</li>
+  <li><strong>Inštalácia</strong> – kompletná montáž vrátane materiálu na lepenie a tesnenie</li>
 </ul>
 
 <p><strong>Transparentná cena.</strong> Každá položka je v ponuke zvlášť, takže viete, za čo platíte. Ak sa počas zamerania zistí, že skrinky nie sú v rovine a vyžadujú úpravu, dozviete sa to vopred.</p>
 
 <p><strong>Platnosť ponuky:</strong> 30 dní. Ceny materiálov sa môžu meniť podľa dostupnosti od výrobcov, preto ponuku garantujeme na mesiac.</p>
 
-<h2 id="krok-3-digitalne-zameranie">Krok 3 — Prečo je zameranie najdôležitejší krok?</h2>
+<h2 id="krok-3-digitalne-zameranie">Krok 3 – Prečo je zameranie najdôležitejší krok?</h2>
 
 <p>Po schválení ponuky a úhrade zálohy prichádza najdôležitejší technický krok celého procesu: zameranie priamo u vás doma. Tu sa rozhoduje o presnosti celej realizácie.</p>
 
@@ -78,109 +78,109 @@ export const ARTICLE_13: BlogArticle = {
 
 <p><strong>Čo sa meria:</strong></p>
 <ul>
-  <li><strong>Rozmery skriniek</strong> — šírka, hĺbka, výška každej skrinky</li>
-  <li><strong>Uhly stien</strong> — steny v bytoch nikdy nie sú v dokonalom 90° uhle. Pri zameraní sa zachytia aj odchýlky, na ktoré by ste okom neprišli</li>
-  <li><strong>Polohy spotrebičov</strong> — presná pozícia drezu, varnej dosky, batérie, dávkovača mydla, zásuviek</li>
-  <li><strong>Inštalatérske vývody</strong> — voda, odpad, plyn — všetko musí sadnúť na milimeter</li>
-  <li><strong>Nerovnosti a previsy</strong> — kontroluje sa rovina hornej plochy skriniek a prípadné požiadavky na previs</li>
+  <li><strong>Rozmery skriniek</strong> – šírka, hĺbka, výška každej skrinky</li>
+  <li><strong>Uhly stien</strong> – steny v bytoch nikdy nie sú v dokonalom 90° uhle. Pri zameraní sa zachytia aj odchýlky, na ktoré by ste okom neprišli</li>
+  <li><strong>Polohy spotrebičov</strong> – presná pozícia drezu, varnej dosky, batérie, dávkovača mydla, zásuviek</li>
+  <li><strong>Inštalatérske vývody</strong> – voda, odpad, plyn – všetko musí sadnúť na milimeter</li>
+  <li><strong>Nerovnosti a previsy</strong> – kontroluje sa rovina hornej plochy skriniek a prípadné požiadavky na previs</li>
 </ul>
 
-<p><strong>Podmienka:</strong> Vaše skrinky musia byť <strong>kompletne nainštalované a vyrovnané</strong> pred príchodom kamenára. Meria sa finálny stav — akákoľvek zmena po zameraní znamená nové meranie.</p>
+<p><strong>Podmienka:</strong> Vaše skrinky musia byť <strong>kompletne nainštalované a vyrovnané</strong> pred príchodom kamenára. Meria sa finálny stav – akákoľvek zmena po zameraní znamená nové meranie.</p>
 
-<p><strong>Trvanie:</strong> 1–2 hodiny na mieste, v závislosti od komplexnosti kuchyne.</p>
+<p><strong>Trvanie:</strong> 1 – 2 hodiny na mieste, v závislosti od komplexnosti kuchyne.</p>
 
-<p><strong>Schválenie výkresov:</strong> Na základe merania kamenár pripraví výkresy s presným tvarom, rozmermi, pozíciami výrezov a profilmi hrán. Výkresy dostanete na schválenie — <strong>fabrikácia sa nespustí, kým ich neodsúhlasíte</strong>. Toto je vaša posledná príležitosť na zmeny bez dodatočných nákladov.</p>
+<p><strong>Schválenie výkresov:</strong> Na základe merania kamenár pripraví výkresy s presným tvarom, rozmermi, pozíciami výrezov a profilmi hrán. Výkresy dostanete na schválenie – <strong>fabrikácia sa nespustí, kým ich neodsúhlasíte</strong>. Toto je vaša posledná príležitosť na zmeny bez dodatočných nákladov.</p>
 
-<h2 id="krok-4-cnc-fabrikacia">Krok 4 — Ako prebieha CNC fabrikácia?</h2>
+<h2 id="krok-4-cnc-fabrikacia">Krok 4 – Ako prebieha CNC fabrikácia?</h2>
 
 <p>Po schválení výkresov sa váš projekt presúva do výroby u partnerského kamenára. Tu sa surový slab sinterovaného kameňa mení na presne tvarované diely vašej kuchyne.</p>
 
 <p><strong>Rezanie mostovým CNC strojom:</strong></p>
 <ul>
-  <li><strong>Diamantové pílové kotúče</strong> — jediný spôsob, ako čisto rezať sinterovaný kameň s tvrdosťou 7+ na Mohsovej stupnici</li>
-  <li><strong>Technika dvoch prechodov</strong> — pri 12 mm doske: prvý prechod 4–5 mm, druhý prechod dokončí rez. Pri 20 mm: prvý prechod 6–8 mm. Tento postup minimalizuje vibrácie a mikrotrhliny</li>
-  <li><strong>Vodné chladenie</strong> — nepretržitý prúd vody odvádza teplo a zabraňuje prehriatiu materiálu</li>
+  <li><strong>Diamantové pílové kotúče</strong> – jediný spôsob, ako čisto rezať sinterovaný kameň s tvrdosťou 7+ na Mohsovej stupnici</li>
+  <li><strong>Technika dvoch prechodov</strong> – pri 12\u00A0mm doske: prvý prechod 4 – 5\u00A0mm, druhý prechod dokončí rez. Pri 20\u00A0mm: prvý prechod 6 – 8\u00A0mm. Tento postup minimalizuje vibrácie a mikrotrhliny</li>
+  <li><strong>Vodné chladenie</strong> – nepretržitý prúd vody odvádza teplo a zabraňuje prehriatiu materiálu</li>
 </ul>
 
 <p><strong>Výrezy pre spotrebiče:</strong></p>
 <ul>
-  <li>Minimálny rádius vnútorných rohov: <strong>5 mm</strong> (pre drezy a varné dosky odporúčame <strong>10 mm</strong>)</li>
+  <li>Minimálny rádius vnútorných rohov: <strong>5\u00A0mm</strong> (pre drezy a varné dosky odporúčame <strong>10\u00A0mm</strong>)</li>
   <li>Najprv sa vyvŕtajú pilotné otvory diamantovým vrtákom v rohoch výrezu</li>
-  <li>Následne sa vedie pílový list medzi otvormi — <strong>nikdy sa nerobí ponorný rez</strong></li>
-  <li>Minimálna vzdialenosť medzi výrezmi: <strong>50 mm</strong></li>
-  <li>Minimálna vzdialenosť výrezu od hrany dosky: <strong>50 mm</strong></li>
+  <li>Následne sa vedie pílový list medzi otvormi – <strong>nikdy sa nerobí ponorný rez</strong></li>
+  <li>Minimálna vzdialenosť medzi výrezmi: <strong>50\u00A0mm</strong></li>
+  <li>Minimálna vzdialenosť výrezu od hrany dosky: <strong>50\u00A0mm</strong></li>
 </ul>
 
 <p><strong>Profilovanie hrán:</strong> CNC stroj vyfrézuje zvolený profil hrany s presnosťou, ktorá nie je dosiahnuteľná ručným opracovaním. Výsledok je hladký a rovnomerný po celej dĺžke.</p>
 
-<p><strong>Trvanie:</strong> 7–10 pracovných dní od schválenia výkresov. Komplexnejšie projekty s viacerými kusmi môžu trvať dlhšie — o presnom termíne vás informujeme pri schválení.</p>
+<p><strong>Trvanie:</strong> 7 – 10 pracovných dní od schválenia výkresov. Komplexnejšie projekty s viacerými kusmi môžu trvať dlhšie – o presnom termíne vás informujeme pri schválení.</p>
 
-<h2 id="krok-5-kontrola-kvality">Krok 5 — Ako kontrolujeme kvalitu?</h2>
+<h2 id="krok-5-kontrola-kvality">Krok 5 – Ako kontrolujeme kvalitu?</h2>
 
-<p>Pred tým, ako ktorýkoľvek diel opustí dielňu, prechádza štvorstupňovou kontrolou kvality. Chyba odhalená vo výrobe stojí hodiny — chyba odhalená pri inštalácii stojí dni a tisíce eur.</p>
+<p>Predtým, ako ktorýkoľvek diel opustí dielňu, prechádza štvorstupňovou kontrolou kvality. Chyba odhalená vo výrobe stojí hodiny – chyba odhalená pri inštalácii stojí dni a tisíce eur.</p>
 
 <p><strong>Čo kamenár kontroluje:</strong></p>
 <ul>
-  <li><strong>Konzistencia hrúbky</strong> — meranie v niekoľkých bodoch každého dielu, odchýlka max ±0,3 mm</li>
-  <li><strong>Povrchová inšpekcia</strong> — kontrola pod šikmým svetlom na mikroškrabance, odštiepky alebo povrchové defekty</li>
-  <li><strong>Inšpekcia hrán</strong> — profil hrany musí byť rovnomerný, bez chipov a s hladkým prechodom</li>
-  <li><strong>Farebné a vzorové párovanie</strong> — pri viacerých dieloch sa kontroluje, či kresba a odtieň na spojoch plynule nadväzujú</li>
-  <li><strong>Rozmerová kontrola</strong> — každý diel sa porovná s výkresom. Tolerancia: ±0,5 mm</li>
+  <li><strong>Konzistencia hrúbky</strong> – meranie v niekoľkých bodoch každého dielu, odchýlka max. ±0,3\u00A0mm</li>
+  <li><strong>Povrchová inšpekcia</strong> – kontrola pod šikmým svetlom na mikroškrabance, odštiepky alebo povrchové defekty</li>
+  <li><strong>Inšpekcia hrán</strong> – profil hrany musí byť rovnomerný, bez chipov a s hladkým prechodom</li>
+  <li><strong>Farebné a vzorové párovanie</strong> – pri viacerých dieloch sa kontroluje, či kresba a odtieň na spojoch plynule nadväzujú</li>
+  <li><strong>Rozmerová kontrola</strong> – každý diel sa porovná s výkresom. Tolerancia: ±0,5\u00A0mm</li>
 </ul>
 
 <p>Ak ktorýkoľvek diel neprejde kontrolou, vyrába sa znova. Nekompromisne. Radšej sa termín posunie o pár dní, než by sa osadilo niečo, s čím nebudete spokojní roky.</p>
 
-<h2 id="krok-6-transport">Krok 6 — Prečo na spôsobe prepravy záleží?</h2>
+<h2 id="krok-6-transport">Krok 6 – Prečo na spôsobe prepravy záleží?</h2>
 
 <p>Sinterovaný kameň je paradox: odolá nárazu guľou, ale môže prasknúť pri nesprávnej preprave. Preto sa pri jeho preprave dbá na správny postup.</p>
 
 <p><strong>Ako kamenár prepravuje hotové dosky:</strong></p>
 <ul>
-  <li><strong>A-rámové vozidlá</strong> — dosky sa prepravujú vertikálne (na stojato) v špeciálnych A-rámoch, nie naplocho. Vertikálna pozícia eliminuje riziko prasknutia od vlastnej váhy pri vibráciách</li>
-  <li><strong>Polstrovaná ochrana</strong> — medzi jednotlivými doskami sú penové vložky, hrany sú chránené rohovými profilmi</li>
-  <li><strong>Vybavenie s kapacitou min. 3 500 kg</strong> — manipulácia s veľkoformátovými doskami vyžaduje profesionálne zdvíhacie zariadenia</li>
-  <li><strong>Priamy transport</strong> — z dielne priamo k vám domov, bez zbytočného prekladania a medziskladov</li>
+  <li><strong>A-rámové vozidlá</strong> – dosky sa prepravujú vertikálne (na stojato) v špeciálnych A-rámoch, nie naplocho. Vertikálna pozícia eliminuje riziko prasknutia od vlastnej váhy pri vibráciách</li>
+  <li><strong>Polstrovaná ochrana</strong> – medzi jednotlivými doskami sú penové vložky, hrany sú chránené rohovými profilmi</li>
+  <li><strong>Vybavenie s kapacitou min. 3\u00A0500\u00A0kg</strong> – manipulácia s veľkoformátovými doskami vyžaduje profesionálne zdvíhacie zariadenia</li>
+  <li><strong>Priamy transport</strong> – z dielne priamo k vám domov, bez zbytočného prekladania a medziskladov</li>
 </ul>
 
 <p><strong>Koordinácia doručenia:</strong> Pred dňom dodania s vami preberieme:</p>
 <ul>
-  <li>Parkovanie pre dodávkové vozidlo — treba miesto čo najbližšie k vchodu</li>
-  <li>Prístupová cesta — šírka dverí, chodieb, schodísk a výťahov</li>
-  <li>Schody — ak nie je výťah, treba vedieť počet poschodí a šírku schodiska</li>
+  <li>Parkovanie pre dodávkové vozidlo – treba miesto čo najbližšie k vchodu</li>
+  <li>Prístupová cesta – šírka dverí, chodieb, schodísk a výťahov</li>
+  <li>Schody – ak nie je výťah, treba vedieť počet poschodí a šírku schodiska</li>
   <li>Ochrana podláh a stien na trase vnášania</li>
 </ul>
 
-<h2 id="krok-7-priprava-podkladu">Krok 7 — Prečo je príprava podkladu kritická?</h2>
+<h2 id="krok-7-priprava-podkladu">Krok 7 – Prečo je príprava podkladu kritická?</h2>
 
-<p>Ešte pred položením prvej dosky musí byť podklad perfektný. Sinterovaný kameň je rigidný materiál — akákoľvek nerovnosť pod ním sa prenesie do napätia v doske.</p>
+<p>Ešte pred položením prvej dosky musí byť podklad perfektný. Sinterovaný kameň je rigidný materiál – akákoľvek nerovnosť pod ním sa prenesie do napätia v doske.</p>
 
 <p><strong>Čo zahŕňa príprava podkladu:</strong></p>
 <ul>
-  <li><strong>Kontrola roviny</strong> — horná plocha skriniek musí byť v rovine s toleranciou <strong>max 3 mm na rozpätí 3 metrov</strong>. Meria sa vodováhou</li>
-  <li><strong>Podloženie (shimovanie)</strong> — ak sú odchýlky väčšie, skrinky sa vyrovnajú kalibrovanými podložkami</li>
-  <li><strong>Čistota povrchu</strong> — skrinky musia byť suché, čisté a bez prachu. Lepidlo drží len na čistom povrchu</li>
-  <li><strong>Montáž podporných konzol</strong> — pre previsy nad 200 mm sa osádzajú oceľové konzoly alebo podporné nosníky</li>
-  <li><strong>Ochrana okolia</strong> — podlaha, spotrebiče a blízke povrchy sa zakryjú pred prachom a lepidlom</li>
+  <li><strong>Kontrola roviny</strong> – horná plocha skriniek musí byť v rovine s toleranciou <strong>max. 3\u00A0mm na rozpätí 3 metrov</strong>. Meria sa vodováhou</li>
+  <li><strong>Podloženie (shimovanie)</strong> – ak sú odchýlky väčšie, skrinky sa vyrovnajú kalibrovanými podložkami</li>
+  <li><strong>Čistota povrchu</strong> – skrinky musia byť suché, čisté a bez prachu. Lepidlo drží len na čistom povrchu</li>
+  <li><strong>Montáž podporných konzol</strong> – pre previsy nad 200\u00A0mm sa osádzajú oceľové konzoly alebo podporné nosníky</li>
+  <li><strong>Ochrana okolia</strong> – podlaha, spotrebiče a blízke povrchy sa zakryjú pred prachom a lepidlom</li>
 </ul>
 
-<p>Tento krok trvá 30–60 minút, ale je absolútne kritický. Správna príprava znamená stabilnú, beznapäťovú inštaláciu na celé desaťročia.</p>
+<p>Tento krok trvá 30 – 60 minút, ale je absolútne kritický. Správna príprava znamená stabilnú, beznapäťovú inštaláciu na celé desaťročia.</p>
 
-<h2 id="krok-8-montaz-dosiek">Krok 8 — Ako prebieha samotná montáž?</h2>
+<h2 id="krok-8-montaz-dosiek">Krok 8 – Ako prebieha samotná montáž?</h2>
 
-<p>Samotná montáž je moment, kedy sa všetko predchádzajúce plánovanie, meranie a výroba spojí do jedného celku. Tento krok vyžaduje maximálnu presnosť a skúsenosti, preto ho robí partnerský kamenár so skúsenosťami so sinterovaným kameňom.</p>
+<p>Samotná montáž je moment, keď sa všetko predchádzajúce plánovanie, meranie a výroba spojí do jedného celku. Tento krok vyžaduje maximálnu presnosť a skúsenosti, preto ho robí partnerský kamenár so skúsenosťami so sinterovaným kameňom.</p>
 
 <p><strong>Postup montáže:</strong></p>
 <ul>
-  <li><strong>Aplikácia lepidla</strong> — profesionálne polyuretánové alebo silikónové lepidlo sa nanáša na hornú plochu skriniek v presne definovanom vzore. Lepidlo zabezpečuje pružné spojenie, ktoré absorbuje mikrodilatácie</li>
-  <li><strong>Osadenie dosiek</strong> — dosky sa zdvíhajú a ukladajú pomocou vákuových prísaviek. Manuálne posúvanie nie je možné — sinterovaný kameň váži 25–50 kg/m² podľa hrúbky</li>
-  <li><strong>Spoje a škáry</strong> — spoje medzi doskami sa vypĺňajú farebne ladeným epoxidovým tmelom. Správne vytvorený spoj je takmer neviditeľný — šírka škáry je menej ako 1 mm</li>
-  <li><strong>Kontrola roviny</strong> — po osadení každého dielu sa rovina skontroluje vodováhou a v prípade potreby sa pozícia skoriguje pred vytvrdnutím lepidla</li>
-  <li><strong>Upevnenie</strong> — dosky sa zaťažia alebo zafixujú svorkami počas vytvrdnutia lepidla</li>
+  <li><strong>Aplikácia lepidla</strong> – profesionálne polyuretánové alebo silikónové lepidlo sa nanáša na hornú plochu skriniek v presne definovanom vzore. Lepidlo zabezpečuje pružné spojenie, ktoré absorbuje mikrodilatácie</li>
+  <li><strong>Osadenie dosiek</strong> – dosky sa zdvíhajú a ukladajú pomocou vákuových prísaviek. Manuálne posúvanie nie je možné – sinterovaný kameň váži 25 – 50\u00A0kg/m² podľa hrúbky</li>
+  <li><strong>Spoje a škáry</strong> – spoje medzi doskami sa vypĺňajú farebne ladeným epoxidovým tmelom. Správne vytvorený spoj je takmer neviditeľný – šírka škáry je menej ako 1\u00A0mm</li>
+  <li><strong>Kontrola roviny</strong> – po osadení každého dielu sa rovina skontroluje vodováhou a v prípade potreby sa pozícia skoriguje pred vytvrdnutím lepidla</li>
+  <li><strong>Upevnenie</strong> – dosky sa zaťažia alebo zafixujú svorkami počas vytvrdnutia lepidla</li>
 </ul>
 
-<p><strong>Trvanie:</strong> 4–8 hodín podľa rozsahu projektu. Jednoduchá L-kuchyňa: 4 hodiny. Veľký ostrov s viacerými dielmi: 6–8 hodín.</p>
+<p><strong>Trvanie:</strong> 4 – 8 hodín podľa rozsahu projektu. Jednoduchá L-kuchyňa: 4 hodiny. Veľký ostrovček s viacerými dielmi: 6 – 8 hodín.</p>
 
-<h2 id="krok-9-instalacia-spotrebicov">Krok 9 — Kto inštaluje spotrebiče?</h2>
+<h2 id="krok-9-instalacia-spotrebicov">Krok 9 – Kto inštaluje spotrebiče?</h2>
 
 <p>Po osadení dosiek nasleduje inštalácia spotrebičov. Každý typ spotrebiča má špecifické požiadavky.</p>
 
@@ -188,13 +188,13 @@ export const ARTICLE_13: BlogArticle = {
 <ul>
   <li>Aplikácia silikónového tmelu po obvode výrezu</li>
   <li>Pripevnenie drezu pomocou montážnych konzol zdola</li>
-  <li>Utesnenie styku drez–kameň transparentným silikónom</li>
+  <li>Utesnenie styku drez – kameň transparentným silikónom</li>
   <li>Funkčná skúška tesnosti</li>
 </ul>
 
 <p><strong>Varná doska:</strong></p>
 <ul>
-  <li>Medzera medzi varnou doskou a kameňom: <strong>min. 2 mm</strong> pre tepelnú expanziu</li>
+  <li>Medzera medzi varnou doskou a kameňom: <strong>min. 2\u00A0mm</strong> pre tepelnú expanziu</li>
   <li>Tesniaca páska po obvode podľa pokynov výrobcu varnej dosky</li>
   <li>Kontrola stability a roviny osadenia</li>
 </ul>
@@ -206,27 +206,27 @@ export const ARTICLE_13: BlogArticle = {
   <li>Montáž dávkovača mydla, filtrácie alebo ďalšieho príslušenstva</li>
 </ul>
 
-<p>Spotrebiče súvisiace s pracovnou doskou — drez, varnú dosku aj batériu — osádza kamenár priamo pri montáži dosky, takže osadenie dosky a spotrebičov na seba nadväzuje.</p>
+<p>Spotrebiče súvisiace s pracovnou doskou – drez, varnú dosku aj batériu – osádza kamenár priamo pri montáži dosky, takže osadenie dosky a spotrebičov na seba nadväzuje.</p>
 
-<h2 id="krok-10-finalna-kontrola-a-odovzdanie">Krok 10 — Ako prebieha finálna kontrola a odovzdanie?</h2>
+<h2 id="krok-10-finalna-kontrola-a-odovzdanie">Krok 10 – Ako prebieha finálna kontrola a odovzdanie?</h2>
 
-<p>Posledný krok je rovnako dôležitý ako prvý. Kamenár nekončí montážou — prácu odovzdá, až keď je všetko v poriadku, a výsledok skontrolujeme aj my.</p>
+<p>Posledný krok je rovnako dôležitý ako prvý. Kamenár nekončí montážou – prácu odovzdá, až keď je všetko v poriadku, a výsledok skontrolujeme aj my.</p>
 
 <p><strong>Finálna kontrola zahŕňa:</strong></p>
 <ul>
-  <li><strong>Kontrola spojov pod inšpekčným svetlom</strong> — šikmé osvetlenie odhalí aj najmenšie nedokonalosti v škárach. Ak niečo nie je v poriadku, kamenár to opraví na mieste</li>
-  <li><strong>Verifikácia roviny</strong> — záverečné meranie vodováhou na celej ploche</li>
-  <li><strong>Kontrola tesnosti</strong> — napustí sa drez a skontrolujú sa spoje pri odtoku</li>
-  <li><strong>Kontrola funkčnosti spotrebičov</strong> — každý spotrebič sa otestuje</li>
-  <li><strong>Čistenie</strong> — kamenár celú pracovnú dosku vyčistí a ukáže vám správny postup údržby</li>
+  <li><strong>Kontrola spojov pod inšpekčným svetlom</strong> – šikmé osvetlenie odhalí aj najmenšie nedokonalosti v škárach. Ak niečo nie je v poriadku, kamenár to opraví na mieste</li>
+  <li><strong>Verifikácia roviny</strong> – záverečné meranie vodováhou na celej ploche</li>
+  <li><strong>Kontrola tesnosti</strong> – napustí sa drez a skontrolujú sa spoje pri odtoku</li>
+  <li><strong>Kontrola funkčnosti spotrebičov</strong> – každý spotrebič sa otestuje</li>
+  <li><strong>Čistenie</strong> – kamenár celú pracovnú dosku vyčistí a ukáže vám správny postup údržby</li>
 </ul>
 
 <p><strong>Odovzdanie klientovi:</strong></p>
 <ul>
-  <li><strong>Protokol o čistení a údržbe</strong> — vysvetlíme vám, ako sa o sinterovaný kameň starať (spoiler: je to veľmi jednoduché)</li>
-  <li><strong>Záruka</strong> — na materiál platí záruka 24\u00A0mesiacov, na výrobu a montáž dáva záruku kamenár. Podmienky dostanete v záručnom certifikáte pri odovzdaní</li>
-  <li><strong>Čas na vytvrdnutie</strong> — <strong>24 hodín</strong> po inštalácii nepoužívajte dosku v plnom zaťažení. Lepidlá a tmely potrebujú čas na úplné vytvrdnutie</li>
-  <li><strong>Kontakt pre budúcnosť</strong> — ak kedykoľvek v budúcnosti budete potrebovať poradiť, opraviť alebo rozšíriť, sme tu pre vás</li>
+  <li><strong>Protokol o čistení a údržbe</strong> – vysvetlíme vám, ako sa o sinterovaný kameň starať (spoiler: je to veľmi jednoduché)</li>
+  <li><strong>Záruka</strong> – na materiál platí záruka 24\u00A0mesiacov, na výrobu a montáž dáva záruku kamenár. Podmienky dostanete v záručnom certifikáte pri odovzdaní</li>
+  <li><strong>Čas na vytvrdnutie</strong> – <strong>24 hodín</strong> po inštalácii nepoužívajte dosku v plnom zaťažení. Lepidlá a tmely potrebujú čas na úplné vytvrdnutie</li>
+  <li><strong>Kontakt pre budúcnosť</strong> – ak kedykoľvek v budúcnosti budete potrebovať poradiť, opraviť alebo rozšíriť, sme tu pre vás</li>
 </ul>
 
 <h2 id="co-musite-pripravit-vy">Čo musíte pripraviť vy?</h2>
@@ -234,12 +234,12 @@ export const ARTICLE_13: BlogArticle = {
 <p>Aby celý proces prebehol hladko a bez zbytočných zdržaní, potrebujeme od vás niekoľko vecí. Tu je kompletný zoznam:</p>
 
 <ul>
-  <li><strong>Skrinky nainštalované a vyrovnané</strong> — toto je podmienka číslo jeden. Bez hotových skriniek sa nedá merať a bez merania sa nedá vyrábať. Skrinky musia byť v konečnej pozícii, ukotvené k stene a vyrovnané do roviny</li>
-  <li><strong>Voľná prístupová cesta pre doručenie</strong> — dosky sú veľké a ťažké. Treba voľný priechod od vchodu do budovy až po kuchyňu. Odstráňte nábytok, koberčeky a prekážky na trase</li>
-  <li><strong>Parkovanie pre dodávkové vozidlo</strong> — ideálne čo najbližšie k vchodu. Ak bývate v centre, zabezpečte parkovacie miesto vopred</li>
-  <li><strong>Inštalatérske prípojky pripravené</strong> — voda, odpad a plyn musia byť vyvedené na správnych pozíciách. Tieto pozície definuje projekt kuchyne</li>
-  <li><strong>Stará kuchynská doska odstránená</strong> — ak meníte existujúcu dosku, musí byť pred príchodom kamenára demontovaná. Ak potrebujete, demontáž starej dosky vieme dohodnúť s kamenárom — dajte nám vedieť pri objednávke</li>
-  <li><strong>Elektrické zásuvky a osvetlenie funkčné</strong> — pri inštalácii treba prístup k elektrike pre nástroje a osvetlenie pre kontrolu kvality</li>
+  <li><strong>Skrinky nainštalované a vyrovnané</strong> – toto je podmienka číslo jeden. Bez hotových skriniek sa nedá merať a bez merania sa nedá vyrábať. Skrinky musia byť v konečnej pozícii, ukotvené k stene a vyrovnané do roviny</li>
+  <li><strong>Voľná prístupová cesta pre doručenie</strong> – dosky sú veľké a ťažké. Treba voľný priechod od vchodu do budovy až po kuchyňu. Odstráňte nábytok, koberčeky a prekážky na trase</li>
+  <li><strong>Parkovanie pre dodávkové vozidlo</strong> – ideálne čo najbližšie k vchodu. Ak bývate v centre, zabezpečte parkovacie miesto vopred</li>
+  <li><strong>Inštalatérske prípojky pripravené</strong> – voda, odpad a plyn musia byť vyvedené na správnych pozíciách. Tieto pozície definuje projekt kuchyne</li>
+  <li><strong>Stará kuchynská doska odstránená</strong> – ak meníte existujúcu dosku, musí byť pred príchodom kamenára demontovaná. Ak potrebujete, demontáž starej dosky vieme dohodnúť s kamenárom – dajte nám vedieť pri objednávke</li>
+  <li><strong>Elektrické zásuvky a osvetlenie funkčné</strong> – pri inštalácii treba prístup k elektrike pre nástroje a osvetlenie pre kontrolu kvality</li>
 </ul>
 
 <p><strong>Jeden tip na záver:</strong> Ak si nie ste istí, či je všetko pripravené, jednoducho nám zavolajte alebo pošlite fotky. Radšej skontrolujeme a potvrdíme, než aby kamenár prišiel na miesto a zistil, že niečo chýba. Váš čas si vážime rovnako ako ten náš.</p>
@@ -247,35 +247,35 @@ export const ARTICLE_13: BlogArticle = {
     faqs: [
       {
         question: 'Ako dlho trvá celý proces od konzultácie po hotovú kuchyňu?',
-        answer: 'Celý proces trvá 10–15 pracovných dní. Najdlhšia fáza je CNC fabrikácia (7–10 dní). Konzultácia, zameranie a inštalácia sú otázkou hodín, nie dní.'
+        answer: 'Celý proces trvá 10 – 15 pracovných dní. Najdlhšia fáza je CNC fabrikácia (7 – 10 dní). Konzultácia, zameranie a inštalácia sú otázkou hodín, nie dní.'
       },
       {
         question: 'Koľko stojí konzultácia v showroome?',
-        answer: 'Konzultácia v našom showroome v Bošanoch je úplne bezplatná a nezáväzná. Trvá 1–2 hodiny a zahŕňa prehliadku materiálov, diskusiu o vašom projekte a predbežnú kalkuláciu.'
+        answer: 'Konzultácia v našom showroome v Bošanoch je úplne bezplatná a nezáväzná. Trvá 1 – 2 hodiny a zahŕňa prehliadku materiálov, diskusiu o vašom projekte a predbežnú kalkuláciu.'
       },
       {
         question: 'Prečo potrebujete hotové skrinky pred zameraním?',
-        answer: 'Zameranie zachytáva skutočný stav skriniek. Ak sa po zameraní zmení čokoľvek — pozícia skrinky, výška, uhol — meranie prestáva platiť. Dosky vyrobené na základe neaktuálneho merania nebudú sedieť.'
+        answer: 'Zameranie zachytáva skutočný stav skriniek. Ak sa po zameraní zmení čokoľvek – pozícia skrinky, výška, uhol – meranie prestáva platiť. Dosky vyrobené na základe neaktuálneho merania nebudú sedieť.'
       },
       {
         question: 'Môžem si zmeniť výber materiálu po zameraní?',
-        answer: 'Materiál môžete zmeniť kedykoľvek pred spustením fabrikácie. Po zameraní meníte len materiál — rozmery zostávajú rovnaké. Po spustení CNC rezania zmena nie je možná, pretože dosky sú už vyrezané presne pre váš projekt.'
+        answer: 'Materiál môžete zmeniť kedykoľvek pred spustením fabrikácie. Po zameraní meníte len materiál – rozmery zostávajú rovnaké. Po spustení CNC rezania zmena nie je možná, pretože dosky sú už vyrezané presne pre váš projekt.'
       },
       {
         question: 'Čo ak moje steny nie sú v pravom uhle?',
-        answer: 'To je bežná situácia — v bytoch sú steny zriedka v dokonalom 90° uhle. Práve preto sa meria priamo na mieste. Dosky sa vyrobia presne podľa reálnych uhlov vašich stien, takže do priestoru presne sadnú.'
+        answer: 'To je bežná situácia – v bytoch sú steny zriedka v dokonalom 90° uhle. Práve preto sa meria priamo na mieste. Dosky sa vyrobia presne podľa reálnych uhlov vašich stien, takže do priestoru presne sadnú.'
       },
       {
         question: 'Robíte aj demontáž starej kuchynskej dosky?',
         answer: 'Áno, demontáž starej dosky vieme dohodnúť s partnerským kamenárom. Informujte nás o tom pri objednávke, aby sme to zahrnuli do harmonogramu a cenovej ponuky. Štandardne predpokladáme, že stará doska je už odstránená.'
       },
       {
-        question: 'Ako prebieha transport dosiek do bytu vo vyšších poschodiach?',
-        answer: 'Pred doručením s vami prejdeme prístupovú cestu vrátane výťahov a schodísk. Kamenár prepravuje dosky vertikálne na A-rámoch a do bytu ich vnáša s profesionálnym vybavením. Ak výťah nestačí, dosky sa vnášajú po schodoch — počítajte s tým, že treba dostatočnú šírku schodiska.'
+        question: 'Ako prebieha transport dosiek do bytu na vyšších poschodiach?',
+        answer: 'Pred doručením s vami prejdeme prístupovú cestu vrátane výťahov a schodísk. Kamenár prepravuje dosky vertikálne na A-rámoch a do bytu ich vnáša s profesionálnym vybavením. Ak výťah nestačí, dosky sa vnášajú po schodoch – počítajte s tým, že treba dostatočnú šírku schodiska.'
       },
       {
         question: 'Čo ak sa pri inštalácii zistí problém s podkladom?',
-        answer: 'Kamenár kontroluje podklad ešte pred položením dosiek. Ak skrinky nie sú v rovine (tolerancia max 3\u00A0mm na 3\u00A0m), vyrovná ich podložkami. V extrémnych prípadoch vás kontaktujeme a dohodneme sa na riešení ešte pred montážou.'
+        answer: 'Kamenár kontroluje podklad ešte pred položením dosiek. Ak skrinky nie sú v rovine (tolerancia max. 3\u00A0mm na 3\u00A0m), vyrovná ich podložkami. V extrémnych prípadoch vás kontaktujeme a dohodneme sa na riešení ešte pred montážou.'
       },
       {
         question: 'Sú spoje medzi doskami viditeľné?',
@@ -287,11 +287,11 @@ export const ARTICLE_13: BlogArticle = {
       },
       {
         question: 'Osadia sa aj spotrebiče, alebo to musím riešiť sám?',
-        answer: 'Spotrebiče súvisiace s pracovnou doskou — drez, varná doska, batéria, dávkovač mydla — osádza kamenár priamo pri montáži dosky. Elektrickú prípojku varnej dosky a pripojenie plynu musí zabezpečiť kvalifikovaný elektrikár/plynár.'
+        answer: 'Spotrebiče súvisiace s pracovnou doskou – drez, varná doska, batéria, dávkovač mydla – osádza kamenár priamo pri montáži dosky. Elektrickú prípojku varnej dosky a pripojenie plynu musí zabezpečiť kvalifikovaný elektrikár/plynár.'
       },
       {
         question: 'Aká je záruka na inštaláciu a materiál?',
-        answer: 'Na fabrikáciu a montáž poskytuje záruku kamenár, ktorý ich realizuje. Na materiál platí záruka 24\u00A0mesiacov. Presné podmienky záruky sú súčasťou záručného certifikátu, ktorý dostanete pri odovzdaní projektu. V prípade akéhokoľvek problému nás kontaktujte — pomôžeme to doriešiť.'
+        answer: 'Na fabrikáciu a montáž poskytuje záruku kamenár, ktorý ich realizuje. Na materiál platí záruka 24\u00A0mesiacov. Presné podmienky záruky sú súčasťou záručného certifikátu, ktorý dostanete pri odovzdaní projektu. V prípade akéhokoľvek problému nás kontaktujte – pomôžeme to doriešiť.'
       }
     ]
   },

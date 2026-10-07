@@ -13,20 +13,20 @@ export const ARTICLE_24: BlogArticle = {
 
   sk: {
     title: 'Technický kameň: cena, nevýhody a pracovná doska do kuchyne',
-    subtitle: 'Sprievodca cenou, nevýhodami a výberom materiálu — sinterovaný kameň, quartz kompozit, keramika a solid surface',
-    excerpt: 'Praktický sprievodca: čo je technický kameň, ktorý typ sa hodí na kuchynskú dosku, koľko stojí (280–600 €/bm) a aké má reálne nevýhody.',
-    directAnswer: 'Technický kameň je trhový pojem pre umelo vyrábané materiály — sinterovaný kameň, kremenný kompozit, keramika alebo solid surface. Cena pracovnej dosky sa orientačne pohybuje od 280 do 600 €/bm vrátane základného opracovania a montáže.',
+    subtitle: 'Sprievodca cenou, nevýhodami a výberom materiálu – sinterovaný kameň, quartz kompozit, keramika a solid surface',
+    excerpt: 'Praktický sprievodca: čo je technický kameň, ktorý typ sa hodí na kuchynskú dosku, koľko stojí (280 – 600\u00A0€/bm) a aké má reálne nevýhody.',
+    directAnswer: 'Technický kameň je trhový pojem pre umelo vyrábané materiály – sinterovaný kameň, kremenný kompozit, keramika alebo solid surface. Cena pracovnej dosky sa orientačne pohybuje od 280 do 600\u00A0€/bm vrátane základného opracovania a montáže.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>
 <ul class="article-tldr">
   <li>Technický kameň nie je jeden konkrétny materiál. Je to širší trhový názov, pod ktorým sa miešajú rôzne typy moderných povrchov.</li>
   <li>Najčastejšie sa stretnete so štyrmi kategóriami: sinterovaný kameň, kremenný kompozit, solid surface a veľkoformátový porcelán / keramika.</li>
-  <li>Cena technického kameňa na pracovnú dosku sa najčastejšie pohybuje približne od 280 do 600 €/bm vrátane základnej fabrikácie a montáže.</li>
+  <li>Cena technického kameňa na pracovnú dosku sa najčastejšie pohybuje približne od 280 do 600\u00A0€/bm vrátane základnej fabrikácie a montáže.</li>
   <li>Do kuchyne sa najčastejšie vyberá sinterovaný kameň alebo kremenný kompozit. Oba materiály majú svoje výhody, ale správajú sa inak.</li>
   <li>Najväčšie riziko nie je vždy samotný materiál. Často rozhoduje fabrikácia a montáž. Aj kvalitný materiál môže prasknúť, ak ho reže alebo montuje človek bez skúseností.</li>
 </ul>
 
-<p>Technický kameň je <strong class="gold">trhové umbrella slovo</strong> pre moderné umelo vyrábané materiály, ktoré sa používajú najmä na kuchynské pracovné dosky, zásteny, ostrovčeky a kúpeľňové povrchy. V praxi sa pod týmto názvom najčastejšie myslí kremenný / quartz kompozit, ale zákazníci pod výrazom technický kameň často hľadajú aj sinterovaný kameň, veľkoformátovú keramiku, porcelán alebo solid surface.</p>
+<p>Technický kameň je <strong class="gold">zastrešujúci trhový pojem</strong> pre moderné umelo vyrábané materiály, ktoré sa používajú najmä na kuchynské pracovné dosky, zásteny, ostrovčeky a kúpeľňové povrchy. V praxi sa pod týmto názvom najčastejšie myslí kremenný / quartz kompozit, ale zákazníci pod výrazom technický kameň často hľadajú aj sinterovaný kameň, veľkoformátovú keramiku, porcelán alebo solid surface.</p>
 
 <p>Ak hľadáte výrazy ako technicky kamen cena, technicky kamen pracovna doska alebo umely kamen pracovna doska, väčšinou riešite jednu otázku: aký materiál sa oplatí dať na kuchynskú linku, koľko stojí a aké má nevýhody. Pravda je, že technický kameň pokrýva <strong class="gold">štyri rôzne kategórie kompozitných materiálov</strong>, ktoré sa správajú v kuchyni úplne inak.</p>
 
@@ -36,28 +36,28 @@ export const ARTICLE_24: BlogArticle = {
 
 <figure class="article-figure">
   <img src="/images/blog/technicky-kamen-pracovna-doska.webp" alt="Pracovná doska technický kameň v modernej kuchyni so sinterovaným kameňom" />
-  <figcaption>Pracovná doska zo sinterovaného kameňa v modernej kuchyni — moderná interpretácia technického kameňa.</figcaption>
+  <figcaption>Pracovná doska zo sinterovaného kameňa v modernej kuchyni – moderná interpretácia technického kameňa.</figcaption>
 </figure>
 
 <h2 id="co-je-technicky-kamen">Čo je technický kameň?</h2>
 
 <p>Technický kameň je trhový pojem pre materiály, ktoré nevznikli vyťažením bloku prírodného kameňa z lomu, ale priemyselnou výrobou.</p>
 
-<p>Prírodný kameň, ako mramor, žula alebo vápenec, sa ťaží v lome a následne sa reže, brúsi a leští. Technický kameň sa vyrába kontrolovaným procesom. Môže ísť o lisovanie minerálov, spekanie pri vysokej teplote, miešanie kremeňa so živicou alebo výrobu keramickej dosky. <strong class="gold">Prírodný kameň sa ťaží</strong> — technický kameň sa vyrába. To však neznamená, že všetky technické kamene sú rovnaké. Práve naopak. Materiály môžu na prvý pohľad vyzerať podobne, ale v kuchyni sa správajú úplne inak.</p>
+<p>Prírodný kameň, ako mramor, žula alebo vápenec, sa ťaží v lome a následne sa reže, brúsi a leští. Technický kameň sa vyrába kontrolovaným procesom. Môže ísť o lisovanie minerálov, spekanie pri vysokej teplote, miešanie kremeňa so živicou alebo výrobu keramickej dosky. <strong class="gold">Prírodný kameň sa ťaží</strong> – technický kameň sa vyrába. To však neznamená, že všetky technické kamene sú rovnaké. Práve naopak. Materiály môžu na prvý pohľad vyzerať podobne, ale v kuchyni sa správajú úplne inak.</p>
 
 <p>Na Slovensku sa výraz technicky kamen často používa aj bez diakritiky. Ľudia tým zvyčajne nehľadajú presný odborný názov materiálu. Hľadajú odpoveď na praktickú otázku: akú pracovnú dosku dať do kuchyne? Chcú vedieť, či materiál vydrží horúci hrniec. Či sa nezafarbí od kávy, vína alebo citróna. Či sa nepoškriabe. Či nezožltne pri okne. A hlavne, či cena dáva zmysel.</p>
 
-<p>Problém je, že predajcovia často používajú výraz technický kameň veľmi voľne. Niekedy tým myslia kremenný kompozit. Inokedy sinterovaný kameň. Niekedy keramickú dosku. A občas aj solid surface. Preto nestačí pýtať sa „Koľko stojí technický kameň?". Lepšia otázka je: Aký konkrétny typ technického kameňa kupujem?</p>
+<p>Problém je, že predajcovia často používajú výraz technický kameň veľmi voľne. Niekedy tým myslia kremenný kompozit. Inokedy sinterovaný kameň. Niekedy keramickú dosku. A občas aj solid surface. Preto nestačí pýtať sa „Koľko stojí technický kameň?“. Lepšia otázka je: Aký konkrétny typ technického kameňa kupujem?</p>
 
 <div class="article-highlight">
   <p><strong>Najčastejšie názvy, na ktoré narazíte:</strong></p>
   <ul>
-    <li><strong>Technický kameň</strong> — široký trhový názov pre viacero umelo vyrábaných povrchov; najčastejšie označuje kremenný kompozit.</li>
-    <li><strong>Umelý kameň</strong> — laický názov; často kremenný kompozit (Technistone, Silestone, Caesarstone), niekedy aj sinterovaný kameň alebo solid surface.</li>
-    <li><strong>Kremenný / quartz kompozit</strong> — drvený kremeň, živica a pigmenty.</li>
-    <li><strong>Sinterovaný / spekaný kameň</strong> — minerálny materiál lisovaný a spekaný pri vysokej teplote, bez živice.</li>
-    <li><strong>Keramická doska / veľkoformátový porcelán</strong> — keramika alebo porcelán vo veľkých formátoch.</li>
-    <li><strong>Solid surface</strong> — akrylátovo-minerálny kompozit (napr. Corian).</li>
+    <li><strong>Technický kameň</strong> – široký trhový názov pre viacero umelo vyrábaných povrchov; najčastejšie označuje kremenný kompozit.</li>
+    <li><strong>Umelý kameň</strong> – laický názov; často kremenný kompozit (Technistone, Silestone, Caesarstone), niekedy aj sinterovaný kameň alebo solid surface.</li>
+    <li><strong>Kremenný / quartz kompozit</strong> – drvený kremeň, živica a pigmenty.</li>
+    <li><strong>Sinterovaný / spekaný kameň</strong> – minerálny materiál lisovaný a spekaný pri vysokej teplote, bez živice.</li>
+    <li><strong>Keramická doska / veľkoformátový porcelán</strong> – keramika alebo porcelán vo veľkých formátoch.</li>
+    <li><strong>Solid surface</strong> – akrylátovo-minerálny kompozit (napr. Corian).</li>
   </ul>
 </div>
 
@@ -67,13 +67,13 @@ export const ARTICLE_24: BlogArticle = {
 
 <h3>1. Sinterovaný kameň</h3>
 
-<p>Sinterovaný kameň vzniká z prírodných minerálov, ktoré sa lisujú pod vysokým tlakom a následne spekajú pri vysokej teplote. Výsledkom je <strong class="gold">100 % minerálny povrch bez živice</strong>. Do tejto kategórie patria napríklad materiály typu Dekton, Lapitec, Neolith alebo Laminam.</p>
+<p>Sinterovaný kameň vzniká z prírodných minerálov, ktoré sa lisujú pod vysokým tlakom a následne spekajú pri vysokej teplote. Výsledkom je <strong class="gold">100\u00A0% minerálny povrch bez živice</strong>. Do tejto kategórie patria napríklad materiály typu Dekton, Lapitec, Neolith alebo Laminam.</p>
 
 <p>Najväčšia výhoda sinterovaného kameňa je jeho odolnosť. Dobre zvláda vysoké teploty, UV žiarenie aj škvrny. Keďže neobsahuje živicu, nežltne tak ako niektoré kompozity a hodí sa aj do kuchýň s množstvom prirodzeného svetla. Pre modernú kuchynskú pracovnú dosku je to dnes jedna z najsilnejších možností v prémiovej kategórii.</p>
 
 <h3>2. Kremenný / quartz kompozit</h3>
 
-<p>Toto je materiál, ktorý si veľa ľudí predstaví pod pojmom technický kameň. Vyrába sa z drveného kremeňa, živice a pigmentov — typicky až <strong class="gold">90 % drveného kremeňa</strong>. Na trhu sú známe značky ako Technistone, Silestone alebo Caesarstone.</p>
+<p>Toto je materiál, ktorý si veľa ľudí predstaví pod pojmom technický kameň. Vyrába sa z drveného kremeňa, živice a pigmentov – typicky až <strong class="gold">90\u00A0% drveného kremeňa</strong>. Na trhu sú známe značky ako Technistone, Silestone alebo Caesarstone.</p>
 
 <p>Kremenný kompozit má príjemný povrch, široký výber dekorov a dobrý pomer ceny a výkonu. Na dotyk pôsobí o niečo teplejšie ako sinterovaný kameň. Jeho slabšou stránkou je živica. Tá môže byť citlivejšia na vysoké teploty a dlhodobé UV žiarenie. Preto sa pri kuchyniach s veľkým preslnením alebo pri použití v exteriéri oplatí byť opatrný.</p>
 
@@ -85,7 +85,7 @@ export const ARTICLE_24: BlogArticle = {
 
 <h3>4. Veľkoformátový porcelán / keramická doska</h3>
 
-<p>Veľkoformátový porcelán alebo keramika sa vyrába z keramickej zmesi vypálenej pri vysokej teplote. Často sa používa v hrúbkach 6 až 12 mm. Vyzerá veľmi dobre, má pekné dekory a vie napodobniť mramor, betón, travertín alebo iné prírodné materiály.</p>
+<p>Veľkoformátový porcelán alebo keramika sa vyrába z keramickej zmesi vypálenej pri vysokej teplote. Často sa používa v hrúbkach 6 až 12\u00A0mm. Vyzerá veľmi dobre, má pekné dekory a vie napodobniť mramor, betón, travertín alebo iné prírodné materiály.</p>
 
 <p>Pri kuchynských doskách však treba riešiť správne podlepenie, podklad a montáž. Pri tenších formátoch je veľmi dôležité, aby bol materiál správne spracovaný. Inak môže byť problém najmä pri výrezoch, hranách a manipulácii.</p>
 
@@ -96,7 +96,7 @@ export const ARTICLE_24: BlogArticle = {
 
 <figure class="article-figure">
   <img src="/images/blog/article-24/typy-porovnanie.webp" alt="Štyri typy technického kameňa: sinterovaný kameň, kremenný kompozit, solid surface a keramika vedľa seba" loading="lazy" />
-  <figcaption>Štyri kategórie technického kameňa vedľa seba — vzhľadom podobné, charakterom rozdielne.</figcaption>
+  <figcaption>Štyri kategórie technického kameňa vedľa seba – vzhľadom podobné, charakterom rozdielne.</figcaption>
 </figure>
 
 <h2 id="technicky-kamen-pracovna-doska">Technický kameň pracovná doska: kedy dáva zmysel?</h2>
@@ -111,18 +111,18 @@ export const ARTICLE_24: BlogArticle = {
 
 <figure class="article-figure">
   <img src="/images/blog/article-24/kuchynska-doska-detail.webp" alt="Kuchynská doska technický kameň s veľkoformátovým dekorom v modernom interiéri" loading="lazy" />
-  <figcaption>Detail hrany pracovnej dosky zo sinterovaného kameňa — flush undermount drez a presné opracovanie.</figcaption>
+  <figcaption>Detail hrany pracovnej dosky zo sinterovaného kameňa – flush undermount drez a presné opracovanie.</figcaption>
 </figure>
 
-<h3>Hrúbka pracovnej dosky: 12 mm alebo 20 mm?</h3>
+<h3>Hrúbka pracovnej dosky: 12\u00A0mm alebo 20\u00A0mm?</h3>
 
-<p>Pri moderných kuchyniach sa najčastejšie rieši hrúbka 12 mm alebo 20 mm. Pri sinterovanom kameni je 12 mm často úplne postačujúcich pre bežné kuchynské aplikácie, ak je správne navrhnutý podklad, výrezy a montáž. Hrúbka 20 mm pôsobí mohutnejšie a robustnejšie. Nie vždy je však technicky nevyhnutná. Často ide skôr o dizajnové rozhodnutie. Detailne túto otázku rozoberáme v článku <a href="/blog/12mm-vs-20mm-hrubka">12 mm alebo 20 mm: aká hrúbka kamennej dosky</a>.</p>
+<p>Pri moderných kuchyniach sa najčastejšie rieši hrúbka 12\u00A0mm alebo 20\u00A0mm. Pri sinterovanom kameni 12\u00A0mm často úplne postačuje pre bežné kuchynské aplikácie, ak je správne navrhnutý podklad, výrezy a montáž. Hrúbka 20\u00A0mm pôsobí mohutnejšie a robustnejšie. Nie vždy je však technicky nevyhnutná. Často ide skôr o dizajnové rozhodnutie. Detailne túto otázku rozoberáme v článku <a href="/blog/12mm-vs-20mm-hrubka">12\u00A0mm alebo 20\u00A0mm: aká hrúbka kamennej dosky</a>.</p>
 
-<p>Zjednodušene: 12 mm pôsobí elegantne, moderne a subtílne. 20 mm pôsobí masívnejšie a výraznejšie. Dôležitejšie ako samotná hrúbka je však správne technické riešenie — najmä pri výrezoch pre varnú dosku, drez a batériu.</p>
+<p>Zjednodušene: 12\u00A0mm pôsobí elegantne, moderne a subtílne. 20\u00A0mm pôsobí masívnejšie a výraznejšie. Dôležitejšie ako samotná hrúbka je však správne technické riešenie – najmä pri výrezoch pre varnú dosku, drez a batériu.</p>
 
 <h2 id="technicky-kamen-kuchyna">Technický kameň kuchyňa: ako sa správa pri každodennom používaní</h2>
 
-<p>V kuchyni dostane každý materiál zabrať. Technický kameň v kuchyni musí zvládnuť teplo, vodu, mastnotu, kyslé potraviny, čistenie, nárazy aj každodenný chaos. Tu je rozdiel medzi typmi technického kameňa najviditeľnejší — pracujú sa <strong class="gold">inak ako prírodný granit</strong> a inak aj medzi sebou.</p>
+<p>V kuchyni dostane každý materiál zabrať. Technický kameň v kuchyni musí zvládnuť teplo, vodu, mastnotu, kyslé potraviny, čistenie, nárazy aj každodenný chaos. Tu je rozdiel medzi typmi technického kameňa najviditeľnejší – správajú sa <strong class="gold">inak ako prírodný granit</strong> a inak aj medzi sebou.</p>
 
 <h3>Teplo</h3>
 
@@ -138,19 +138,19 @@ export const ARTICLE_24: BlogArticle = {
 
 <h3>Slnko a UV žiarenie</h3>
 
-<p>Ak máte kuchyňu pri veľkom okne, ostrov pri presklenej stene alebo prechod na terasu, UV odolnosť je dôležitá. Sinterovaný kameň neobsahuje živicu, preto je pri slnku stabilnejší. Pri niektorých quartz kompozitoch môže byť dlhodobé UV žiarenie problém — postupne žltnú a tvrdnú.</p>
+<p>Ak máte kuchyňu pri veľkom okne, ostrovček pri presklenej stene alebo prechod na terasu, UV odolnosť je dôležitá. Sinterovaný kameň neobsahuje živicu, preto je pri slnku stabilnejší. Pri niektorých quartz kompozitoch môže byť dlhodobé UV žiarenie problém – postupne žltnú a tvrdnú.</p>
 
 <h3>Technický kameň na kuchynskú linku</h3>
 
-<p>Technický kameň na kuchynskú linku sa používa najmä ako pracovná doska, zástena za linkou alebo obklad kuchynského ostrova. Najväčšia výhoda je jednotný vzhľad. Rovnaký dekor môžete použiť na pracovnú dosku, zástenu aj bočné obklady ostrova. Kuchyňa potom pôsobí čistejšie, pokojnejšie a hodnotnejšie. Inšpiráciu nájdete v sekcii <a href="/kuchyne">Kuchyne</a>, kde ukazujeme reálne realizácie.</p>
+<p>Technický kameň na kuchynskú linku sa používa najmä ako pracovná doska, zástena za linkou alebo obklad kuchynského ostrovčeka. Najväčšia výhoda je jednotný vzhľad. Rovnaký dekor môžete použiť na pracovnú dosku, zástenu aj bočné obklady ostrovčeka. Kuchyňa potom pôsobí čistejšie, pokojnejšie a hodnotnejšie. Inšpiráciu nájdete v sekcii <a href="/kuchyne">Kuchyne</a>, kde ukazujeme reálne realizácie.</p>
 
-<p>Pri sinterovanom kameni je výhodou aj veľký formát platní. Vďaka tomu sa dajú robiť väčšie plochy s menším počtom spojov. To je dôležité hlavne pri ostrovoch a kuchyniach, kde je pracovná doska dominantou celého priestoru. Ak však niekto rieši iba malú, jednoduchú kuchyňu s nízkym rozpočtom, nemusí byť najdrahší materiál automaticky najlepšie riešenie. Správny výber závisí od priestoru, rozpočtu a spôsobu používania.</p>
+<p>Pri sinterovanom kameni je výhodou aj veľký formát platní. Vďaka tomu sa dajú robiť väčšie plochy s menším počtom spojov. To je dôležité hlavne pri ostrovčekoch a kuchyniach, kde je pracovná doska dominantou celého priestoru. Ak však niekto rieši iba malú, jednoduchú kuchyňu s nízkym rozpočtom, nemusí byť najdrahší materiál automaticky najlepšie riešenie. Správny výber závisí od priestoru, rozpočtu a spôsobu používania.</p>
 
 <p>Kompletný proces od merania po inštaláciu popisujeme v článku <a href="/blog/od-merania-po-instalaciu-proces-orostone">Od merania po inštaláciu: ako prebieha realizácia</a>.</p>
 
 <h2 id="cena-technickeho-kamena">Cena technického kameňa: koľko stojí pracovná doska?</h2>
 
-<p>Cena technického kameňa sa nedá povedať jedným číslom. Závisí od typu materiálu, dekoru, hrúbky, výrezov, hrán, dopravy a montáže. Pri kuchynskej pracovnej doske dáva najväčší zmysel hovoriť o cene za bežný meter vrátane základného opracovania a montáže. Orientačne počítajte <strong class="gold">od 280 do 600 €/bm</strong>.</p>
+<p>Cena technického kameňa sa nedá povedať jedným číslom. Závisí od typu materiálu, dekoru, hrúbky, výrezov, hrán, dopravy a montáže. Pri kuchynskej pracovnej doske dáva najväčší zmysel hovoriť o cene za bežný meter vrátane základného opracovania a montáže. Orientačne počítajte <strong class="gold">od 280 do 600\u00A0€/bm</strong>.</p>
 
 <div class="article-highlight">
   <p><strong>Orientačné ceny pracovnej dosky pre rok 2026:</strong></p>
@@ -159,30 +159,30 @@ export const ARTICLE_24: BlogArticle = {
       <tr><th>Materiál</th><th>Orientačná cena</th><th>Charakteristika</th></tr>
     </thead>
     <tbody>
-      <tr><td>Solid surface</td><td>280 – 400 €/bm</td><td>Mäkkší materiál, vhodný skôr na kúpeľne a tvarované riešenia</td></tr>
-      <tr><td>Kremenný / quartz kompozit</td><td>280 – 480 €/bm</td><td>Rozšírený materiál, dobrý pomer ceny a výkonu</td></tr>
-      <tr><td>Veľkoformátový porcelán / keramika</td><td>300 – 500 €/bm</td><td>Elegantný vzhľad, vyžaduje kvalitnú montáž</td></tr>
-      <tr><td>Sinterovaný kameň</td><td>400 – 600 €/bm</td><td>Vysoká odolnosť voči teplu, UV žiareniu a škvrnám</td></tr>
+      <tr><td>Solid surface</td><td>280 – 400\u00A0€/bm</td><td>Mäkkší materiál, vhodný skôr na kúpeľne a tvarované riešenia</td></tr>
+      <tr><td>Kremenný / quartz kompozit</td><td>280 – 480\u00A0€/bm</td><td>Rozšírený materiál, dobrý pomer ceny a výkonu</td></tr>
+      <tr><td>Veľkoformátový porcelán / keramika</td><td>300 – 500\u00A0€/bm</td><td>Elegantný vzhľad, vyžaduje kvalitnú montáž</td></tr>
+      <tr><td>Sinterovaný kameň</td><td>400 – 600\u00A0€/bm</td><td>Vysoká odolnosť voči teplu, UV žiareniu a škvrnám</td></tr>
     </tbody>
   </table>
-  <p>Tieto ceny sú orientačné. Nezahŕňajú špeciálne stavebné úpravy, demontáž starej dosky, extrémne náročnú dopravu ani nadštandardné dizajnové riešenia. Pri book-match dekoroch, veľkých ostrovoch alebo komplikovaných detailoch môže cena ísť vyššie.</p>
+  <p>Tieto ceny sú orientačné. Nezahŕňajú špeciálne stavebné úpravy, demontáž starej dosky, extrémne náročnú dopravu ani nadštandardné dizajnové riešenia. Pri book-match dekoroch, veľkých ostrovčekoch alebo komplikovaných detailoch môže cena ísť vyššie.</p>
 </div>
 
 <p>Aktuálne ceny jednotlivých dekorov sinterovaného kameňa za m² s DPH a sadzbu za kompletnú realizáciu uvádzame v <a href="/cennik">cenníku kamenných pracovných dosiek</a>.</p>
 
 <h3>Čo ovplyvňuje výslednú sumu</h3>
 
-<p>Pri fráze technický kameň cena je dôležité pochopiť, že cena nie je len o samotnej platni. Výslednú cenu ovplyvňuje typ materiálu, značka a kolekcia, dekor, hrúbka, počet výrezov, typ hrany, zameranie, opracovanie, doprava, výnos, montáž, rizikovosť manipulácie, počet spojov, veľkosť ostrova a požiadavka na book-match kresbu. Preto je lacný meter v cenníku často zavádzajúci. Klient nakoniec neplatí za meter v tabuľke. Platí za hotovú pracovnú dosku vo svojej kuchyni.</p>
+<p>Pri fráze technický kameň cena je dôležité pochopiť, že cena nie je len o samotnej platni. Výslednú cenu ovplyvňuje typ materiálu, značka a kolekcia, dekor, hrúbka, počet výrezov, typ hrany, zameranie, opracovanie, doprava, výnos, montáž, rizikovosť manipulácie, počet spojov, veľkosť ostrovčeka a požiadavka na book-match kresbu. Preto je lacný meter v cenníku často zavádzajúci. Klient nakoniec neplatí za meter v tabuľke. Platí za hotovú pracovnú dosku vo svojej kuchyni.</p>
 
 <h3>Pracovná doska technický kameň cena</h3>
 
-<p>Ak riešite frázu technicky kamen pracovna doska cena, najdôležitejšie je neporovnávať iba materiál. Dve pracovné dosky z rovnakého materiálu môžu mať úplne inú cenu. Jedna kuchyňa môže mať jednoduchý rovný tvar, jeden výrez na drez a jeden výrez na varnú dosku. Druhá môže mať veľký ostrov, zástenu, bočnice, book-match dekor, komplikovaný výnos a viac spojov. Na papieri je to stále „pracovná doska z technického kameňa". V realite sú to dve úplne odlišné zákazky. Preto sa seriózna cena robí až podľa pôdorysu a technických detailov.</p>
+<p>Ak riešite frázu technicky kamen pracovna doska cena, najdôležitejšie je neporovnávať iba materiál. Dve pracovné dosky z rovnakého materiálu môžu mať úplne inú cenu. Jedna kuchyňa môže mať jednoduchý rovný tvar, jeden výrez na drez a jeden výrez na varnú dosku. Druhá môže mať veľký ostrovček, zástenu, bočnice, book-match dekor, komplikovaný výnos a viac spojov. Na papieri je to stále „pracovná doska z technického kameňa“. V realite sú to dve úplne odlišné zákazky. Preto sa seriózna cena robí až podľa pôdorysu a technických detailov.</p>
 
 <p>Pri hľadaní pracovna doska technicky kamen cena ľudia často očakávajú jednoduchú odpoveď. Lenže samotná cena za bežný meter môže klamať. Nízka cena môže znamenať lacnejší typ materiálu, tenšiu dosku, slabší dekor, jednoduchšiu hranu, menej kvalitné opracovanie, chýbajúce podlepenie, rizikovú montáž alebo skryté príplatky. Pracovná doska nie je produkt ako stolička z e-shopu. Je to materiál, výroba, doprava a montáž v jednom. <strong class="gold">Najdrahší kompromis</strong> často vyzerá na začiatku ako výhodná ponuka.</p>
 
 <h3>Pozor na podozrivo lacné ponuky</h3>
 
-<p>Ak vám niekto ponúkne „technický kameň" za 150 €/bm, treba spozornieť. Nemusí ísť automaticky o podvod. Ale takmer určite nejde o prémiový sinterovaný kameň vrátane kvalitnej fabrikácie a montáže. Pri pracovnej doske sa lacné riešenie môže predražiť veľmi rýchlo. Stačí zlá montáž, prasklina pri výreze alebo hrana, ktorá sa začne odštepovať. Lacná doska, ktorá po dvoch rokoch praskne, nie je úspora. Je to odložený problém.</p>
+<p>Ak vám niekto ponúkne „technický kameň“ za 150\u00A0€/bm, treba spozornieť. Nemusí ísť automaticky o podvod. Ale takmer určite nejde o prémiový sinterovaný kameň vrátane kvalitnej fabrikácie a montáže. Pri pracovnej doske sa lacné riešenie môže predražiť veľmi rýchlo. Stačí zlá montáž, prasklina pri výreze alebo hrana, ktorá sa začne odštepovať. Lacná doska, ktorá po dvoch rokoch praskne, nie je úspora. Je to odložený problém.</p>
 
 <div class="article-tip">
   <p><strong>Pozor na neúplné cenové ponuky</strong></p>
@@ -191,12 +191,12 @@ export const ARTICLE_24: BlogArticle = {
 
 <figure class="article-figure">
   <img src="/images/blog/article-24/cenove-pasma.webp" alt="Technický kameň pracovná doska cena a porovnanie materiálov do kuchyne" loading="lazy" />
-  <figcaption>Cenové pásma rôznych typov technického kameňa — orientácia v kvalitatívnej hierarchii.</figcaption>
+  <figcaption>Cenové pásma rôznych typov technického kameňa – orientácia v kvalitatívnej hierarchii.</figcaption>
 </figure>
 
 <div class="article-cta">
   <p>Máte rozmery alebo pôdorys kuchyne?</p>
-  <p>Pripravíme vám orientačné cenové rozpätie podľa typu materiálu, dekoru a náročnosti realizácie — nezáväzne a zadarmo.</p>
+  <p>Pripravíme vám orientačné cenové rozpätie podľa typu materiálu, dekoru a náročnosti realizácie – nezáväzne a zadarmo.</p>
   <a href="/kontakt" class="cta-btn">Nezáväzná konzultácia →</a>
 </div>
 
@@ -206,7 +206,7 @@ export const ARTICLE_24: BlogArticle = {
 
 <h3>1. Niektoré typy sú krehkejšie v ohybe</h3>
 
-<p>Sinterovaný kameň a keramika sú veľmi tvrdé, ale pri zlom spracovaní môžu byť <strong class="gold">krehkejšie ako prírodná žula</strong>. Najčastejšie problémy vznikajú pri ostrých výrezoch, slabej podpere alebo nesprávnom prenose dosky. Riešenie nie je báť sa materiálu — riešenie je vybrať dodávateľa, ktorý vie, čo robí.</p>
+<p>Sinterovaný kameň a keramika sú veľmi tvrdé, ale pri zlom spracovaní môžu byť <strong class="gold">krehkejšie ako prírodná žula</strong>. Najčastejšie problémy vznikajú pri ostrých výrezoch, slabej podpere alebo nesprávnom prenose dosky. Riešenie nie je báť sa materiálu – riešenie je vybrať dodávateľa, ktorý vie, čo robí.</p>
 
 <h3>2. Hrany sa môžu pri náraze odštiepiť</h3>
 
@@ -214,7 +214,7 @@ export const ARTICLE_24: BlogArticle = {
 
 <h3>3. Prémiové dekory stoja viac</h3>
 
-<p>Najkrajšie dekory, výrazné kresby a book-match riešenia sú drahšie. To nie je trik dodávateľa. Je to kombinácia drahšieho materiálu, väčšieho odpadu a presnejšej práce. Ak chcete výrazný ostrov s kresbou, treba s tým počítať v rozpočte.</p>
+<p>Najkrajšie dekory, výrazné kresby a book-match riešenia sú drahšie. To nie je trik dodávateľa. Je to kombinácia drahšieho materiálu, väčšieho odpadu a presnejšej práce. Ak chcete výrazný ostrovček s kresbou, treba s tým počítať v rozpočte.</p>
 
 <h3>4. Montáž rozhoduje viac, než si ľudia myslia</h3>
 
@@ -222,19 +222,19 @@ export const ARTICLE_24: BlogArticle = {
 
 <h3>5. Veľké formáty sú ťažké</h3>
 
-<p>Veľká doska môže mať desiatky až stovky kilogramov. Pri väčších ostrovoch treba riešiť manipuláciu, výnos, schodisko, výťah alebo prístup do domu. Preto je dôležité riešiť logistiku ešte pred objednávkou, nie až v deň montáže.</p>
+<p>Veľká doska môže mať desiatky až stovky kilogramov. Pri väčších ostrovčekoch treba riešiť manipuláciu, výnos, schodisko, výťah alebo prístup do domu. Preto je dôležité riešiť logistiku ešte pred objednávkou, nie až v deň montáže.</p>
 
 <h3>6. Quartz kompozit môže byť citlivejší na UV a teplo</h3>
 
-<p>Kremenný kompozit obsahuje živicu. Tá môže byť pri dlhodobom UV žiarení alebo pri vysokej teplote citlivejšia ako čisto minerálne materiály. Pri intenzívnom UV časom <strong class="gold">žltne a tvrdne</strong>. Preto pri kuchyniach pri veľkých oknách, ostrovoch pri presklení alebo exteriérových plochách dáva sinterovaný kameň často väčší zmysel.</p>
+<p>Kremenný kompozit obsahuje živicu. Tá môže byť pri dlhodobom UV žiarení alebo pri vysokej teplote citlivejšia ako čisto minerálne materiály. Pri intenzívnom UV časom <strong class="gold">žltne a tvrdne</strong>. Preto pri kuchyniach pri veľkých oknách, ostrovčekoch pri presklení alebo exteriérových plochách dáva sinterovaný kameň často väčší zmysel.</p>
 
 <h3>Umelý kameň pracovná doska: je to to isté ako technický kameň?</h3>
 
-<p>Výraz umely kamen pracovna doska ľudia často používajú ako jednoduchšie pomenovanie pre technický kameň. Nie je to však úplne presný odborný názov. Pod umelým kameňom môže predajca myslieť kremenný kompozit, sinterovaný kameň, keramickú dosku alebo solid surface. Rozdiel medzi quartz kompozitom a sinterovaným kameňom môže byť v praxi veľký. Jeden obsahuje živicu, druhý nie. Jeden môže byť citlivejší na teplotu a UV žiarenie, druhý je v tomto stabilnejší. Názov nestačí — rozhoduje zloženie a použitie.</p>
+<p>Výraz umely kamen pracovna doska ľudia často používajú ako jednoduchšie pomenovanie pre technický kameň. Nie je to však úplne presný odborný názov. Pod umelým kameňom môže predajca myslieť kremenný kompozit, sinterovaný kameň, keramickú dosku alebo solid surface. Rozdiel medzi quartz kompozitom a sinterovaným kameňom môže byť v praxi veľký. Jeden obsahuje živicu, druhý nie. Jeden môže byť citlivejší na teplotu a UV žiarenie, druhý je v tomto stabilnejší. Názov nestačí – rozhoduje zloženie a použitie.</p>
 
 <figure class="article-figure">
   <img src="/images/blog/article-24/vyroba-sintering.webp" alt="Výroba sinterovaného kameňa pri vysokej teplote v modernej fabrike" loading="lazy" />
-  <figcaption>Výroba sinterovaného kameňa — lisovanie minerálov a spekanie pri vysokej teplote bez živice.</figcaption>
+  <figcaption>Výroba sinterovaného kameňa – lisovanie minerálov a spekanie pri vysokej teplote bez živice.</figcaption>
 </figure>
 
 <h2 id="preco-orostone-vybera-sinterovany">Prečo v Orostone odporúčame sinterovaný kameň</h2>
@@ -244,35 +244,35 @@ export const ARTICLE_24: BlogArticle = {
 <div class="article-highlight">
   <p><strong>Kľúčové fakty o sinterovanom kameni:</strong></p>
   <ul>
-    <li><strong>0 % živice</strong> — čisto minerálny povrch, vyrábaný pri teplotách presahujúcich 1 200 °C.</li>
-    <li><strong>Nasiakavosť pod 0,1 %</strong> — škvrny sa nevpíjajú, nepotrebuje impregnáciu.</li>
-    <li><strong>UV stabilita</strong> — vhodný aj pre kuchyne pri veľkých oknách a exteriérové aplikácie.</li>
-    <li><strong>Tepelná odolnosť</strong> — bezpečne zvláda kontakt s horúcim hrncom (pri korektnej montáži).</li>
-    <li><strong>Široký výber dekorov</strong> — od matných jednofarebných po realistické imitácie mramoru a betónu.</li>
+    <li><strong>0\u00A0% živice</strong> – čisto minerálny povrch, vyrábaný pri teplotách presahujúcich 1\u00A0200\u00A0°C.</li>
+    <li><strong>Nasiakavosť pod 0,1\u00A0%</strong> – škvrny sa nevpíjajú, nepotrebuje impregnáciu.</li>
+    <li><strong>UV stabilita</strong> – vhodný aj pre kuchyne pri veľkých oknách a exteriérové aplikácie.</li>
+    <li><strong>Tepelná odolnosť</strong> – bezpečne zvláda kontakt s horúcim hrncom (pri korektnej montáži).</li>
+    <li><strong>Široký výber dekorov</strong> – od matných jednofarebných po realistické imitácie mramoru a betónu.</li>
   </ul>
 </div>
 
 <p>Detailný prehľad technických vlastností nájdete v sekcii <a href="/vyhody">Výhody</a> a komplexný popis materiálu na stránke <a href="/sinterovany-kamen">Sinterovaný kameň</a>. Pre zákazníka to znamená jednoduchú vec: menej riešenia, menej kompromisov a viac pokoja pri používaní kuchyne.</p>
 
-<p>Kuchyňa nie je showroom. V kuchyni sa žije. Varí sa tam, rozlieva, čistí, odkladá, krája, behajú okolo nej deti a hostia. Materiál musí zvládnuť realitu, nie len dobre vyzerať na fotke.</p>
+<p>Kuchyňa nie je showroom. V kuchyni sa žije. Varí sa tam, rozlieva, čistí, odkladá, krája, behajú okolo nej deti a hostia. Materiál musí zvládnuť realitu, nielen dobre vyzerať na fotke.</p>
 
 <div class="article-case-study">
   <span class="case-study-label">Z praxe</span>
-  <h3>Klient z Bratislavy: ostrov 3,2 m a južne orientované okno</h3>
-  <p>Klient riešil kuchynský ostrov s rozmerom približne 3,2 × 1 meter. Na začiatku zvažoval kremenný kompozit. Páčil sa mu vzhľad, cena bola prijateľná a na malej vzorke pôsobil materiál veľmi dobre.</p>
-  <p>Pri konzultácii sa však ukázalo, že kuchyňa má veľké južne orientované okno. Na ostrov bude dopadať priame slnko niekoľko hodín denne. V takom prípade sme odporučili sinterovaný kameň. Nie preto, aby bola zákazka drahšia, ale preto, že pri danom priestore dával technicky väčší zmysel.</p>
-  <p>Rozdiel v cene bol <strong>približne 15 % vyšší</strong> oproti pôvodnému návrhu. Klient si vybral matný dekor s jemnou kresbou. Doska bola navrhnutá s plnou podporou, správnymi výrezmi a bezpečným opracovaním hrán.</p>
+  <h3>Klient z Bratislavy: ostrovček 3,2\u00A0m a južne orientované okno</h3>
+  <p>Klient riešil kuchynský ostrovček s rozmerom približne 3,2\u00A0×\u00A01 meter. Na začiatku zvažoval kremenný kompozit. Páčil sa mu vzhľad, cena bola prijateľná a na malej vzorke pôsobil materiál veľmi dobre.</p>
+  <p>Pri konzultácii sa však ukázalo, že kuchyňa má veľké južne orientované okno. Na ostrovček bude dopadať priame slnko niekoľko hodín denne. V takom prípade sme odporučili sinterovaný kameň. Nie preto, aby bola zákazka drahšia, ale preto, že pri danom priestore dával technicky väčší zmysel.</p>
+  <p>Cena bola <strong>približne o 15\u00A0% vyššia</strong> oproti pôvodnému návrhu. Klient si vybral matný dekor s jemnou kresbou. Doska bola navrhnutá s plnou podporou, správnymi výrezmi a bezpečným opracovaním hrán.</p>
   <p>Po roku používania: bez impregnácie, bez zafarbenia, bez viditeľných problémov. Toto je presne situácia, kde sa rozdiel medzi materiálmi neukáže v katalógu, ale až v reálnom živote.</p>
 </div>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-24/case-study-kuchyna.webp" alt="Realizácia: kuchynský ostrov so sinterovaným kameňom v matnom dekore" loading="lazy" />
-  <figcaption>Realizovaná kuchyňa: kuchynský ostrov so sinterovaným kameňom v matnom dekore — výsledok rozhodnutia z prípadovej štúdie.</figcaption>
+  <img src="/images/blog/article-24/case-study-kuchyna.webp" alt="Realizácia: kuchynský ostrovček so sinterovaným kameňom v matnom dekore" loading="lazy" />
+  <figcaption>Realizovaná kuchyňa: kuchynský ostrovček so sinterovaným kameňom v matnom dekore – výsledok rozhodnutia z prípadovej štúdie.</figcaption>
 </figure>
 
 <h2 id="zaver">Záver: technický kameň ako rozumný výber</h2>
 
-<p>Technický kameň nie je jeden materiál. Je to široký názov pre viacero povrchov, ktoré môžu vyzerať podobne, ale správajú sa inak. Preto sa neoplatí rozhodovať iba podľa ceny alebo malej vzorky. Dôležité je vedieť, aký materiál kupujete, z čoho je vyrobený, ako zvláda teplo, škvrny a UV žiarenie, kto ho bude rezať a montovať, a koľko bude stáť celý projekt — nie len samotná doska.</p>
+<p>Technický kameň nie je jeden materiál. Je to široký názov pre viacero povrchov, ktoré môžu vyzerať podobne, ale správajú sa inak. Preto sa neoplatí rozhodovať iba podľa ceny alebo malej vzorky. Dôležité je vedieť, aký materiál kupujete, z čoho je vyrobený, ako zvláda teplo, škvrny a UV žiarenie, kto ho bude rezať a montovať, a koľko bude stáť celý projekt – nielen samotná doska.</p>
 
 <p>Najlepšia pracovná doska nie je vždy tá najdrahšia. Je to tá, ktorá dáva zmysel pre vašu kuchyňu, váš rozpočet a spôsob používania. Kľúč je <strong class="gold">rozumieť tomu, čo kupujete</strong>.</p>
 
@@ -285,31 +285,31 @@ export const ARTICLE_24: BlogArticle = {
     faqs: [
       {
         question: 'Koľko stojí technický kameň?',
-        answer: 'Cena technického kameňa na pracovnú dosku sa najčastejšie pohybuje približne od 280 do 600 €/bm vrátane základného opracovania a montáže. Finálna cena závisí od typu materiálu, dekoru, hrúbky, výrezov, hrán, dopravy a náročnosti montáže.',
+        answer: 'Cena technického kameňa na pracovnú dosku sa najčastejšie pohybuje približne od 280 do 600\u00A0€/bm vrátane základného opracovania a montáže. Finálna cena závisí od typu materiálu, dekoru, hrúbky, výrezov, hrán, dopravy a náročnosti montáže.',
       },
       {
         question: 'Technický kameň cena: prečo sú medzi ponukami také rozdiely?',
-        answer: 'Rozdiely v cene vznikajú najmä kvôli typu materiálu, hrúbke, dekoru, kvalite opracovania, počtu výrezov a montáži. Lacná ponuka často neznamená rovnaký materiál a rovnaký výsledok — porovnávajte vždy obsah ponuky, nie iba cenu za meter.',
+        answer: 'Rozdiely v cene vznikajú najmä kvôli typu materiálu, hrúbke, dekoru, kvalite opracovania, počtu výrezov a montáži. Lacná ponuka často neznamená rovnaký materiál a rovnaký výsledok – porovnávajte vždy obsah ponuky, nie iba cenu za meter.',
       },
       {
         question: 'Aká je cena technického kameňa na kuchynskú dosku?',
-        answer: 'Cena technického kameňa na kuchynskú pracovnú dosku sa orientačne pohybuje od 280 do 600 €/bm. Pri prémiových dekoroch, veľkých ostrovoch alebo book-match riešeniach môže byť cena vyššia.',
+        answer: 'Cena technického kameňa na kuchynskú pracovnú dosku sa orientačne pohybuje od 280 do 600\u00A0€/bm. Pri prémiových dekoroch, veľkých ostrovčekoch alebo book-match riešeniach môže byť cena vyššia.',
       },
       {
         question: 'Technicky kamen cena: aké je orientačné rozpätie?',
-        answer: 'Pri hľadaní frázy technicky kamen cena počítajte orientačne s rozpätím 280 až 600 €/bm. Lacnejšie riešenia bývajú solid surface alebo základné quartz kompozity, drahšie riešenia sú sinterovaný kameň a prémiové dekory.',
+        answer: 'Pri hľadaní frázy technicky kamen cena počítajte orientačne s rozpätím 280 až 600\u00A0€/bm. Lacnejšie riešenia bývajú solid surface alebo základné quartz kompozity, drahšie riešenia sú sinterovaný kameň a prémiové dekory.',
       },
       {
         question: 'Technicky kamen pracovna doska: je to dobrá voľba?',
-        answer: 'Áno, technický kameň ako pracovná doska môže byť veľmi dobrá voľba, ak viete, aký typ materiálu kupujete. Najdôležitejšie je rozlíšiť, či ide o kremenný kompozit, sinterovaný kameň, keramiku alebo solid surface — každý má iné silné stránky a iné riziká.',
+        answer: 'Áno, technický kameň ako pracovná doska môže byť veľmi dobrá voľba, ak viete, aký typ materiálu kupujete. Najdôležitejšie je rozlíšiť, či ide o kremenný kompozit, sinterovaný kameň, keramiku alebo solid surface – každý má iné silné stránky a iné riziká.',
       },
       {
         question: 'Technicky kamen pracovna doska cena: koľko si pripraviť?',
-        answer: 'Pri fráze technicky kamen pracovna doska cena počítajte s orientačným rozpätím 280 až 600 €/bm. Presnú cenu určí až pôdorys kuchyne, počet výrezov, dekor, hrúbka a montáž.',
+        answer: 'Pri fráze technicky kamen pracovna doska cena počítajte s orientačným rozpätím 280 až 600\u00A0€/bm. Presnú cenu určí až pôdorys kuchyne, počet výrezov, dekor, hrúbka a montáž.',
       },
       {
         question: 'Pracovna doska technicky kamen: čo je najdôležitejšie?',
-        answer: 'Pri výbere pracovnej dosky z technického kameňa je najdôležitejšie poznať konkrétny materiál, jeho zloženie, odolnosť a spôsob montáže. Samotný názov technický kameň nestačí — pýtajte sa na typ a značku materiálu.',
+        answer: 'Pri výbere pracovnej dosky z technického kameňa je najdôležitejšie poznať konkrétny materiál, jeho zloženie, odolnosť a spôsob montáže. Samotný názov technický kameň nestačí – pýtajte sa na typ a značku materiálu.',
       },
       {
         question: 'Pracovna doska technicky kamen cena: prečo sa nedá povedať jedna suma?',
@@ -321,7 +321,7 @@ export const ARTICLE_24: BlogArticle = {
       },
       {
         question: 'Technicky kamen na kuchynsku linku: čo odporúčame?',
-        answer: 'Technický kameň na kuchynskú linku môže byť vhodný ako pracovná doska, zástena aj obklad ostrova. Pri náročnejších kuchyniach odporúčame najmä sinterovaný kameň, pri jednoduchších projektoch môže dávať zmysel aj kvalitný kremenný kompozit.',
+        answer: 'Technický kameň na kuchynskú linku môže byť vhodný ako pracovná doska, zástena aj obklad ostrovčeka. Pri náročnejších kuchyniach odporúčame najmä sinterovaný kameň, pri jednoduchších projektoch môže dávať zmysel aj kvalitný kremenný kompozit.',
       },
       {
         question: 'Kuchynska doska technicky kamen: aký typ vybrať?',

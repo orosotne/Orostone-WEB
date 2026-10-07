@@ -13,28 +13,28 @@ export const ARTICLE_19: BlogArticle = {
 
   sk: {
     title: 'Ako čistiť sinterovaný kameň (jediná rutina, ktorú potrebujete)',
-    subtitle: 'Jednoduchý návod na každodennú aj hĺbkovú údržbu — vrátane zoznamu, čo na povrch nikdy nepatrí',
+    subtitle: 'Jednoduchý návod na každodennú aj hĺbkovú údržbu – vrátane zoznamu toho, čo na povrch nikdy nepatrí',
     heroAlt: 'Ruka utiera pracovnú dosku Statuario Diamante mikrovláknovou utierkou, vedľa stojí fľaša s rozprašovačom',
     heroCaption: 'Vizualizácia s dekorom Statuario Diamante',
     excerpt:
       'Najodolnejší povrch v kuchyni má paradoxne najjednoduchšiu údržbu. Vlhká utierka, saponát, hotovo. Tu je celá rutina aj postupy na zaschnuté škvrny.',
     metaTitle: 'Ako čistiť sinterovaný kameň: denná rutina aj zaschnuté škvrny | OROSTONE',
     metaDescription:
-      'Návod na čistenie sinterovaného kameňa: denná údržba vlhkou utierkou a saponátom, postupy na kávu, víno, mastnotu aj vodný kameň — a zoznam prostriedkov, ktorým sa vyhnúť.',
+      'Návod na čistenie sinterovaného kameňa: denná údržba vlhkou utierkou a saponátom, postupy na kávu, víno, mastnotu aj vodný kameň – a zoznam prostriedkov, ktorým sa treba vyhnúť.',
     directAnswer:
-      'Na denné čistenie sinterovaného kameňa stačí vlhká utierka z mikrovlákna a pH neutrálny saponát. Materiál má nasiakavosť pod 0,1 %, takže nepotrebuje impregnáciu ani špeciálne prípravky. Na zaschnuté škvrny použite neabrazívny čistič alebo izopropylalkohol; vyhnite sa drôtenkám a brúsnym hubkám.',
+      'Na denné čistenie sinterovaného kameňa stačí vlhká utierka z mikrovlákna a pH neutrálny saponát. Materiál má nasiakavosť pod 0,1\u00A0%, takže nepotrebuje impregnáciu ani špeciálne prípravky. Na zaschnuté škvrny použite neabrazívny čistič alebo izopropylalkohol; vyhnite sa drôtenkám a brúsnym hubkám.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>
 <ul class="article-tldr">
   <li>Denná rutina = <strong>teplá voda + kvapka saponátu + mikrovlákno</strong>. Nič viac.</li>
-  <li>Nasiakavosť pod <strong>0,1 %</strong> znamená, že škvrny sa do povrchu nevpíjajú — žiadna impregnácia, nikdy</li>
+  <li>Nasiakavosť pod <strong>0,1\u00A0%</strong> znamená, že škvrny sa do povrchu nevpíjajú – žiadna impregnácia, nikdy</li>
   <li>Na zaschnuté škvrny: neabrazívny čistič, na atrament a fixku izopropylalkohol</li>
   <li>Nikdy: drôtenky, brúsne hubky a prostriedky s kyselinou fluorovodíkovou</li>
 </ul>
 
 <p>Viete, čo je paradox? Najodolnejší povrch, aký si do kuchyne viete dať, má zároveň najjednoduchšiu údržbu. Žiadna impregnácia ako pri žule. Žiadne špeciálne mramorové čističe. Žiadne leštenie každé tri roky.</p>
 
-<p>Sinterovaný kameň vzniká spekaním minerálov pri teplote nad 1 200 °C — výsledkom je plne vitrifikovaný povrch s nasiakavosťou pod 0,1 %. V praxi to znamená jedno: <strong>špina a tekutiny ostávajú na povrchu, nikdy nie v ňom.</strong> A čo je na povrchu, to zotriete.</p>
+<p>Sinterovaný kameň vzniká spekaním minerálov pri teplote nad 1\u00A0200\u00A0°C – výsledkom je plne vitrifikovaný povrch s nasiakavosťou pod 0,1\u00A0%. V praxi to znamená jedno: <strong>špina a tekutiny ostávajú na povrchu, nikdy nie v ňom.</strong> A čo je na povrchu, to zotriete.</p>
 
 <h2 id="denna-rutina">Denná rutina: tri veci, nič viac</h2>
 
@@ -42,11 +42,11 @@ export const ARTICLE_19: BlogArticle = {
 
 <ul>
   <li><strong>Teplá voda</strong> + kvapka bežného saponátu (klasický prostriedok na riad stačí)</li>
-  <li><strong>Mäkká utierka</strong> — mikrovlákno, nie drôtenka</li>
-  <li><strong>Utretie dosucha</strong> — zabráni mapám z tvrdej vody, hlavne pri tmavých dekoroch</li>
+  <li><strong>Mäkká utierka</strong> – mikrovlákno, nie drôtenka</li>
+  <li><strong>Utretie dosucha</strong> – zabráni mapám z tvrdej vody, hlavne pri tmavých dekoroch</li>
 </ul>
 
-<p>To je celé. Ak vám to znie príliš jednoducho — presne tak to má byť. Všetko ostatné v tomto článku rieši len výnimočné situácie.</p>
+<p>To je celé. Ak vám to znie príliš jednoducho – presne tak to má byť. Všetko ostatné v tomto článku rieši len výnimočné situácie.</p>
 
 <div class="article-tip">
   <strong>Tip pre matné povrchy:</strong> šmuhy po čistení najľahšie odstránite čistou vodou a utretím dosucha. Väčšina „škvŕn“, ktoré klienti riešia, sú v skutočnosti len zaschnuté zvyšky saponátu.
@@ -54,18 +54,18 @@ export const ARTICLE_19: BlogArticle = {
 
 <h2 id="preco-bez-impregnacie">Prečo nepotrebujete impregnáciu (a nikdy nebudete)</h2>
 
-<p>Toto je kľúčový rozdiel oproti prírodnému kameňu. Žula má nasiakavosť 0,1–3 % a vyžaduje impregnáciu každé 2–3 roky. Mramor navyše reaguje na kyseliny — citrón či ocot ho naleptajú. Sinterovaný kameň nemá póry, do ktorých by niečo vniklo, a kyselinám z kuchyne odoláva.</p>
+<p>Toto je kľúčový rozdiel oproti prírodnému kameňu. Žula má nasiakavosť 0,1 – 3\u00A0% a vyžaduje impregnáciu každé 2 – 3 roky. Mramor navyše reaguje na kyseliny – citrón či ocot ho naleptajú. Sinterovaný kameň nemá póry, do ktorých by niečo vniklo, a kyselinám z kuchyne odoláva.</p>
 
 <table>
   <thead><tr><th>Údržba</th><th>Sinterovaný kameň</th><th>Žula</th><th>Mramor</th></tr></thead>
   <tbody>
-    <tr><td>Impregnácia</td><td><strong>Nikdy</strong></td><td>Každé 2–3 roky</td><td>Pravidelne</td></tr>
+    <tr><td>Impregnácia</td><td><strong>Nikdy</strong></td><td>Každé 2 – 3 roky</td><td>Pravidelne</td></tr>
     <tr><td>Špeciálne čističe</td><td><strong>Netreba</strong></td><td>Odporúčané</td><td>Len pH neutrálne</td></tr>
     <tr><td>Citrón, ocot, víno</td><td><strong>Bez následkov</strong></td><td>Riziko škvŕn</td><td>Naleptanie povrchu</td></tr>
   </tbody>
 </table>
 
-<p>Ak vás zaujíma celé porovnanie materiálov vrátane cien, pozrite <a href="/vyhody">výhody sinterovaného kameňa</a>.</p>
+<p>Ak vás zaujíma celé porovnanie materiálov vrátane cien, pozrite si <a href="/vyhody">výhody sinterovaného kameňa</a>.</p>
 
 <h2 id="konkretne-skvrny">Čo na konkrétne škvrny</h2>
 
@@ -89,23 +89,23 @@ export const ARTICLE_19: BlogArticle = {
 <p>Krátky zoznam, ale berte ho vážne:</p>
 
 <ul>
-  <li><strong>Drôtenky a brúsne hubky.</strong> Samotný kameň nepoškriabu, ale dokážu zmatnieť lesklý povrch a zanechať kovové stopy. Mikrovlákno zvládne to isté bez rizika.</li>
-  <li><strong>Bielidlo a amoniak.</strong> Jednorazovo povrch prežije, ale pri pravidelnom používaní môžu zmeniť vzhľad povrchovej úpravy. Nie sú potrebné — bežný saponát stačí.</li>
-  <li><strong>Prostriedky s kyselinou fluorovodíkovou (HF).</strong> Jediná bežne dostupná chémia, ktorá sinterovaný povrch skutočne poškodzuje. Nájdete ju v niektorých odstraňovačoch hrdze — čítajte etikety.</li>
+  <li><strong>Drôtenky a brúsne hubky.</strong> Samotný kameň nepoškriabu, ale dokážu matovať lesklý povrch a zanechať kovové stopy. Mikrovlákno zvládne to isté bez rizika.</li>
+  <li><strong>Bielidlo a amoniak.</strong> Jednorazovo povrch prežije, ale pri pravidelnom používaní môžu zmeniť vzhľad povrchovej úpravy. Nie sú potrebné – bežný saponát stačí.</li>
+  <li><strong>Prostriedky s kyselinou fluorovodíkovou (HF).</strong> Jediná bežne dostupná chémia, ktorá sinterovaný povrch skutočne poškodzuje. Nájdete ju v niektorých odstraňovačoch hrdze – čítajte etikety.</li>
   <li><strong>Vosky a impregnácie.</strong> Nepoškodia, ale vytvoria na nenasiakavom povrchu zbytočný film, ktorý sa špiní. Vyhodené peniaze.</li>
 </ul>
 
 <h2 id="priklad-z-praxe">Príklad z praxe: kurkuma cez noc</h2>
 
-<p>Predstavte si, že pri večernom varení kvapne na dosku kurkumové karí — najobávanejšia škvrna v kuchyni — a všimnete si to až ráno. Na lamináte alebo mramore máte problém.</p>
+<p>Predstavte si, že pri večernom varení kvapne na dosku kurkumové karí – najobávanejšia škvrna v kuchyni – a všimnete si to až ráno. Na lamináte alebo mramore máte problém.</p>
 
-<p>Na sinterovanom kameni? Škvrna celú noc len leží na povrchu, lebo nemá kam vniknúť. Ráno ju zotriete vlhkou utierkou so saponátom; ak po nej ostal tieň, neabrazívny čistič ho odstráni za minútu. <strong>Presne toto je rozdiel medzi nasiakavosťou 0,1 % a pórovitým materiálom.</strong></p>
+<p>Na sinterovanom kameni? Škvrna celú noc len leží na povrchu, lebo nemá kam vniknúť. Ráno ju zotriete vlhkou utierkou so saponátom; ak po nej ostal tieň, neabrazívny čistič ho odstráni za minútu. <strong>Presne toto je rozdiel medzi nasiakavosťou 0,1\u00A0% a pórovitým materiálom.</strong></p>
 
 <h2 id="dlhodoba-udrzba">Dlhodobá údržba: stačí denná rutina</h2>
 
-<p>Žiadne každoročné ošetrenie, žiadne leštenie, žiadna obnova impregnácie. Povrch, ktorý si kúpite, si pri bežnom používaní zachová vzhľad aj po rokoch — stačí mu presne tá istá denná rutina z úvodu.</p>
+<p>Žiadne každoročné ošetrenie, žiadne leštenie, žiadna obnova impregnácie. Povrch, ktorý si kúpite, si pri bežnom používaní zachová vzhľad aj po rokoch – stačí mu presne tá istá denná rutina z úvodu.</p>
 
-<p>Horúce hrnce povrchu neublížia (odolá teplotám nad 300 °C — <a href="/blog/horuce-hrnce-na-sinterovanom-kameni">tu je celý test</a>), krájať odporúčame na doske skôr kvôli nožom než kvôli kameňu. A ak si dekor ešte len vyberáte, <a href="/vzorky">objednajte si vzorku zadarmo</a> a vyskúšajte si údržbu na vlastnej vzorke — pokojne aj s kurkumou.</p>
+<p>Horúce hrnce povrchu neublížia (odolá teplotám nad 300\u00A0°C – <a href="/blog/horuce-hrnce-na-sinterovanom-kameni">tu je celý test</a>), krájať odporúčame na doske skôr kvôli nožom než kvôli kameňu. A ak si dekor ešte len vyberáte, <a href="/vzorky">objednajte si vzorku zadarmo</a> a vyskúšajte si údržbu na vlastnej vzorke – pokojne aj s kurkumou.</p>
 `,
     faqs: [
       {
@@ -116,37 +116,37 @@ export const ARTICLE_19: BlogArticle = {
       {
         question: 'Potrebuje sinterovaný kameň impregnáciu?',
         answer:
-          'Nie, nikdy. Nasiakavosť pod 0,1 % znamená, že povrch nemá póry, do ktorých by tekutiny vnikali. Impregnácia by na povrchu len vytvorila zbytočný film — na rozdiel od žuly, ktorá ju vyžaduje každé 2–3 roky.',
+          'Nie, nikdy. Nasiakavosť pod 0,1\u00A0% znamená, že povrch nemá póry, do ktorých by tekutiny vnikali. Impregnácia by na povrchu len vytvorila zbytočný film – na rozdiel od žuly, ktorá ju vyžaduje každé 2 – 3 roky.',
       },
       {
         question: 'Ako odstránim zaschnuté škvrny?',
         answer:
-          'Neabrazívnym čistiacim prípravkom a mikrovláknom; zaschnuté zvyšky najprv odstráňte plastovou škrabkou. Na atrament a fixku použite izopropylalkohol. Škvrna nikdy nie je „v“ materiáli, vždy len na povrchu — otázka je len rozpustiť ju.',
+          'Neabrazívnym čistiacim prípravkom a mikrovláknom; zaschnuté zvyšky najprv odstráňte plastovou škrabkou. Na atrament a fixku použite izopropylalkohol. Škvrna nikdy nie je „v“ materiáli, vždy len na povrchu – otázka je len rozpustiť ju.',
       },
       {
         question: 'Poškodí povrch citrón, ocot alebo víno?',
         answer:
-          'Nie. Sinterovaný kameň odoláva bežným kuchynským kyselinám — citrón, ocot aj víno stačí zotrieť. Toto je zásadný rozdiel oproti mramoru, ktorý kyseliny naleptajú.',
+          'Nie. Sinterovaný kameň odoláva bežným kuchynským kyselinám – citrón, ocot aj víno stačí zotrieť. Toto je zásadný rozdiel oproti mramoru, ktorý kyseliny naleptajú.',
       },
       {
         question: 'Môžem použiť drôtenku alebo brúsnu hubku?',
         answer:
-          'Nepoužívajte ich. Kameň samotný nepoškriabu, ale môžu zmatnieť lesklú povrchovú úpravu a zanechať kovové stopy. Mikrovlákno s čistiacim prípravkom zvládne každú bežnú situáciu.',
+          'Nepoužívajte ich. Kameň samotný nepoškriabu, ale môžu matovať lesklú povrchovú úpravu a zanechať kovové stopy. Mikrovlákno s čistiacim prípravkom zvládne každú bežnú situáciu.',
       },
       {
         question: 'Existuje niečo, čo sinterovaný kameň naozaj poškodí?',
         answer:
-          'Z čistiacej chémie prakticky len prostriedky s kyselinou fluorovodíkovou (HF), ktorá sa vyskytuje v niektorých odstraňovačoch hrdze. Mechanicky sú rizikom silné bodové nárazy na hranu — s čistením ale nesúvisia.',
+          'Z čistiacej chémie prakticky len prostriedky s kyselinou fluorovodíkovou (HF), ktorá sa vyskytuje v niektorých odstraňovačoch hrdze. Mechanicky sú rizikom silné bodové nárazy na hranu – s čistením ale nesúvisia.',
       },
       {
         question: 'Ako sa starať o matný vs lesklý povrch?',
         answer:
-          'Rutina je rovnaká. Matný povrch je zhovievavejší k odtlačkom a šmuham; lesklý ich ukáže skôr, takže ho utierate častejšie. Pri oboch platí: po čistení utrite dosucha, nech neostanú mapy z tvrdej vody.',
+          'Rutina je rovnaká. Matný povrch je zhovievavejší k odtlačkom a šmuhám; lesklý ich ukáže skôr, takže ho utierate častejšie. Pri oboch platí: po čistení utrite dosucha, nech neostanú mapy z tvrdej vody.',
       },
       {
         question: 'Ako často treba hĺbkové čistenie?',
         answer:
-          'Nijako pravidelne — hĺbkové čistenie riešte, len keď vznikne konkrétna zaschnutá škvrna. Neexistuje sezónna údržba, ošetrovanie ani renovácia povrchu; denná rutina pokrýva všetko.',
+          'Nijako pravidelne – hĺbkové čistenie riešte, len keď vznikne konkrétna zaschnutá škvrna. Neexistuje sezónna údržba, ošetrovanie ani renovácia povrchu; denná rutina pokrýva všetko.',
       },
     ],
   },

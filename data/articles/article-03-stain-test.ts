@@ -12,28 +12,28 @@ export const ARTICLE_03: BlogArticle = {
 
   sk: {
     title: 'Zafarbí sa sinterovaný kameň? Reálny test s kávou, vínom a kurkumou',
-    subtitle: 'Testovali sme odolnosť sinterovaného kameňa voči najčastejším škvrnotvorným látkam v kuchyni — výsledky vás možno prekvapia',
-    excerpt: 'Sinterovaný kameň má pórovitosť pod 0,1% — káva, víno ani kurkuma doň neprenikajú. Ale testovali sme to a výsledky zaznamenali.',
+    subtitle: 'Testovali sme odolnosť sinterovaného kameňa voči najčastejším škvrnotvorným látkam v kuchyni – výsledky vás možno prekvapia',
+    excerpt: 'Sinterovaný kameň má pórovitosť pod 0,1\u00A0% – káva, víno ani kurkuma doň neprenikajú. Ale testovali sme to a výsledky zaznamenali.',
     metaTitle: 'Škvrny na sinterovanom kameni | OROSTONE',
     metaDescription: 'Káva, červené víno, kurkuma, olej. Zafarbí sa sinterovaný kameň po každodennom používaní? Nasiakavosť, čistenie a kde sú reálne hranice.',
-    directAnswer: 'Sinterovaný kameň má takmer nulovú pórovitosť (absorpcia vody pod 0,1%), čo znamená, že žiadna bežná kuchynská tekutina doň neprenikne. Škvrny od kávy, vína, kurkumy ani citrónovej šťavy sa nevstrebú do povrchu — stačí ich zotrieť vlhkou handrou. Impregnácia nie je potrebná.',
+    directAnswer: 'Sinterovaný kameň má takmer nulovú pórovitosť (absorpcia vody pod 0,1\u00A0%), čo znamená, že žiadna bežná kuchynská tekutina doň neprenikne. Škvrny od kávy, vína, kurkumy ani citrónovej šťavy sa nevstrebú do povrchu – stačí ich zotrieť vlhkou handrou. Impregnácia nie je potrebná.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>
 <ul class="article-tldr">
-  <li>Absorpcia vody pod 0,1% — tekutiny neprenikajú do štruktúry kameňa</li>
+  <li>Absorpcia vody pod 0,1\u00A0% – tekutiny neprenikajú do štruktúry kameňa</li>
   <li>Káva, víno, kurkuma, olej ani červená repa sinterovaný kameň nezafarbia</li>
-  <li>Impregnácia nie je potrebná — nikdy, na rozdiel od prírodného kameňa</li>
+  <li>Impregnácia nie je potrebná – nikdy, na rozdiel od prírodného kameňa</li>
   <li>Zaschnuté škvrny zvládne bežný čistiaci prostriedok bez špeciálnej chémie</li>
 </ul>
 
 <p>Každý, kto varí, vie, čo dokáže kurkuma. Alebo červené víno. Alebo olivový olej, ktorý raz vychladne na doske a vtlačí sa do každej mikroskopickej nerovnosti.</p>
 
-<p>Pri sinterovanom kameni je to inak. A nie preto, že by sme vám to len hovorili — <strong class="gold">testovali sme to a zaznamenali výsledky</strong>.</p>
+<p>Pri sinterovanom kameni je to inak. A nie preto, že by sme vám to len hovorili – <strong class="gold">testovali sme to a zaznamenali výsledky</strong>.</p>
 
-<p>V tomto článku nájdete reálne testovacie protokoly, konkrétne časy expozície a úprimné výsledky — vrátane jednej látky, kde sme očakávali horšie výsledky, ale sinterovaný kameň nás prekvapil.</p>
+<p>V tomto článku nájdete reálne testovacie protokoly, konkrétne časy expozície a úprimné výsledky – vrátane jednej látky, kde sme očakávali horšie výsledky, ale sinterovaný kameň nás prekvapil.</p>
 
 <div class="article-quote">
-  <p>Materiál s absorpciou vody pod 0,1% nemá kde uložiť škvrnu. Fyzikálne to jednoducho nejde.</p>
+  <p>Materiál s absorpciou vody pod 0,1\u00A0% nemá kde uložiť škvrnu. Fyzikálne to jednoducho nejde.</p>
 </div>
 
 <figure class="article-figure">
@@ -43,36 +43,36 @@ export const ARTICLE_03: BlogArticle = {
 
 <h2 id="preco-nevsiakne">Prečo tekutiny neprenikajú do sinterovaného kameňa?</h2>
 
-<p>Odpoveď je v čísle: <strong>absorpcia vody pod 0,1%</strong>. Toto nie je marketingový údaj — je to merateľná fyzikálna vlastnosť podľa normy ISO 10545-3.</p>
+<p>Odpoveď je v čísle: <strong>absorpcia vody pod 0,1\u00A0%</strong>. Toto nie je marketingový údaj – je to merateľná fyzikálna vlastnosť podľa normy ISO 10545-3.</p>
 
-<p>Pre porovnanie: prírodný mramor má absorpciu vody 0,2–0,5%, granit 0,1–0,4%, keramické dlaždice bez glazúry 3–7%. Sinterovaný kameň je v inej kategórii.</p>
+<p>Pre porovnanie: prírodný mramor má absorpciu vody 0,2 – 0,5\u00A0%, granit 0,1 – 0,4\u00A0%, keramické dlaždice bez glazúry 3 – 7\u00A0%. Sinterovaný kameň je v inej kategórii.</p>
 
-<p>Dôvod: spekanie pri 1 200°C pod tlakom 25 000 ton doslova <strong class="gold">uzavrie všetky mikropóry</strong>. Kryštalická štruktúra minerálov sa prepojí tak tesne, že tekutiny nemajú cestu dovnútra.</p>
+<p>Dôvod: spekanie pri 1\u00A0200\u00A0°C pod tlakom 25\u00A0000\u00A0ton doslova <strong class="gold">uzavrie všetky mikropóry</strong>. Kryštalická štruktúra minerálov sa prepojí tak tesne, že tekutiny nemajú cestu dovnútra.</p>
 
 <div class="article-highlight">
-  <p><strong>Čo znamená absorpcia 0,1% v praxi:</strong></p>
-  <p>Keby ste ponorili 1 kg sinterovaného kameňa do vody na 24 hodín, nasiakol by <strong>menej ako 1 gram vody</strong>. Pre porovnanie: houba absorbuje 10–20× svoju hmotnosť. Aj keramická dlaždica bez glazúry by nasiakla 30–70 gramov. Sinterovaný kameň je pre tekutiny prakticky nepreniknuteľný.</p>
+  <p><strong>Čo znamená absorpcia 0,1\u00A0% v praxi:</strong></p>
+  <p>Keby ste ponorili 1\u00A0kg sinterovaného kameňa do vody na 24 hodín, nasiakol by <strong>menej ako 1 gram vody</strong>. Pre porovnanie: hubka absorbuje 10 – 20× svoju hmotnosť. Aj keramická dlaždica bez glazúry by nasiakla 30 – 70 gramov. Sinterovaný kameň je pre tekutiny prakticky nepreniknuteľný.</p>
 </div>
 
 <h2 id="testovacia-metodika">Ako sme testovali</h2>
 
-<p>Testovanie prebehlo na doskách v bežných kuchynských podmienkach. Testované látky sme aplikovali priamo na povrch a nechali exponiť bez zakrytia pri izbovej teplote.</p>
+<p>Testovanie prebehlo na doskách v bežných kuchynských podmienkach. Testované látky sme aplikovali priamo na povrch a nechali pôsobiť bez zakrytia pri izbovej teplote.</p>
 
 <p>Testované látky a časy expozície:</p>
 <ul>
-  <li><strong>Čierna káva</strong> — 1 hodina, 6 hodín, 24 hodín</li>
-  <li><strong>Červené víno</strong> — 1 hodina, 12 hodín, 48 hodín</li>
-  <li><strong>Kurkuma (prášok v oleji)</strong> — 1 hodina, 24 hodín, 72 hodín</li>
-  <li><strong>Olivový olej</strong> — 1 hodina, 24 hodín (vychladnutý, stuhnutý)</li>
-  <li><strong>Citrónovú šťava (pH ~2)</strong> — 1 hodina, 6 hodín</li>
-  <li><strong>Červená repa (šťava)</strong> — 1 hodina, 24 hodín</li>
+  <li><strong>Čierna káva</strong> – 1 hodina, 6 hodín, 24 hodín</li>
+  <li><strong>Červené víno</strong> – 1 hodina, 12 hodín, 48 hodín</li>
+  <li><strong>Kurkuma (prášok v oleji)</strong> – 1 hodina, 24 hodín, 72 hodín</li>
+  <li><strong>Olivový olej</strong> – 1 hodina, 24 hodín (vychladnutý, stuhnutý)</li>
+  <li><strong>Citrónová šťava (pH ~2)</strong> – 1 hodina, 6 hodín</li>
+  <li><strong>Červená repa (šťava)</strong> – 1 hodina, 24 hodín</li>
 </ul>
 
-<p>Čistenie: vlhká handrička po každom teste. Bez špeciálnych čistiacich prostriedkov — iba bežná voda.</p>
+<p>Čistenie: vlhká handrička po každom teste. Bez špeciálnych čistiacich prostriedkov – iba bežná voda.</p>
 
 <figure class="article-figure">
   <img src="/images/blog/article-03-stains.webp" alt="Škvrny od kávy, vína a kurkumy na povrchu sinterovaného kameňa pred čistením" loading="lazy" />
-  <figcaption>Škvrnotvorné látky po 24 hodinách — vizuálne vyzerajú hrozivo, ale je to len povrchový film</figcaption>
+  <figcaption>Škvrnotvorné látky po 24 hodinách – vizuálne vyzerajú hrozivo, ale je to len povrchový film</figcaption>
 </figure>
 
 <h2 id="vysledky-testov">Výsledky: čo skutočne zostalo?</h2>
@@ -83,16 +83,16 @@ export const ARTICLE_03: BlogArticle = {
 <p>Po 1 hodine: farba viditeľná na povrchu, pri priamom pohľade. Po zotretí vlhkou handrou: nič. Po 24 hodinách: zaschnutá škvrna, trochu tuhšie čistenie. Po zotretí: nič viditeľné.</p>
 
 <h3>Červené víno</h3>
-<p>Po 12 hodinách: viditeľná červená škvrna, zaschnutá. Zotieranie suchým papierovým utierkom: zostatok pigmentu. Po vlhkej handrici: čistý povrch bez stopy. Po 48 hodinách: rovnaký postup, rovnaký výsledok. Žiadna permanentná pigmentácia.</p>
+<p>Po 12 hodinách: viditeľná červená škvrna, zaschnutá. Zotieranie suchou papierovou utierkou: zostatok pigmentu. Po vlhkej handričke: čistý povrch bez stopy. Po 48 hodinách: rovnaký postup, rovnaký výsledok. Žiadna permanentná pigmentácia.</p>
 
 <h3>Kurkuma v oleji</h3>
-<p>Kurkuma je pre biele povrchy noční mora. Intensely žltý pigment (kurkumín) zanecháva trvalé stopy na plastoch, silikóne aj na niektorých keramikách. Na sinterovanom kameni: po 72 hodinách (3 dni!) expozície, zaschnutá na povrchu — <strong class="gold">vyčistilo sa vlhkou handrou do 30 sekúnd</strong>. Žiadna žltá tinkcia.</p>
+<p>Kurkuma je pre biele povrchy nočná mora. Intenzívne žltý pigment (kurkumín) zanecháva trvalé stopy na plastoch, silikóne aj na niektorých keramikách. Na sinterovanom kameni: po 72 hodinách (3 dni!) expozície, zaschnutá na povrchu – <strong class="gold">vyčistila sa vlhkou handrou do 30 sekúnd</strong>. Žiadne žlté sfarbenie.</p>
 
 <h3>Olivový olej (stuhnutý)</h3>
-<p>Stuhnutý tuk na povrchu vyžadoval trochu viac mechanického tlaku pri čistení. Žiadna tukovina neprenikla do štruktúry. Povrch čistý po bežnom kuchynskom utierku.</p>
+<p>Stuhnutý tuk na povrchu vyžadoval trochu viac mechanického tlaku pri čistení. Žiadny tuk neprenikol do štruktúry. Povrch čistý po bežnej kuchynskej utierke.</p>
 
 <h3>Citrónová šťava</h3>
-<p>Citrón má pH ~2 — je to dilutovaná kyselina. Na prírodnom mramore by spôsobila leptanie (etching) a trvalé matné škvrny. Na sinterovanom kameni: po 6 hodinách expozície žiadna viditeľná zmena povrchu. ISO 10545-13 (chemická odolnosť) Trieda 5 platí v praxi.</p>
+<p>Citrón má pH ~2 – je to zriedená kyselina. Na prírodnom mramore by spôsobila leptanie (etching) a trvalé matné škvrny. Na sinterovanom kameni: po 6 hodinách expozície žiadna viditeľná zmena povrchu. ISO 10545-13 (chemická odolnosť) trieda 5 platí v praxi.</p>
 
 <h3>Červená repa</h3>
 <p>Intenzívna červená šťava. Po 24 hodinách: farebná škvrna viditeľná. Po zotretí vlhkou handrou s malým množstvom bežného čistiaceho prostriedku: povrch čistý. Bez trvalých stôp.</p>
@@ -105,93 +105,93 @@ export const ARTICLE_03: BlogArticle = {
 
 <h2 id="ine-materialy-porovnanie">Ako to vyzerá pri iných materiáloch?</h2>
 
-<p>Pre kontext — rovnaký test červeného vína a kurkumy na bežných alternatívach:</p>
+<p>Pre kontext – rovnaký test červeného vína a kurkumy na bežných alternatívach:</p>
 
-<p><strong>Prírodný mramor:</strong> Absorpcia vody 0,2–0,5%. Červené víno po 12 hodinách zanechalo trvalú ružovú tinkciu viditeľnú aj po čistení. Kurkuma v oleji: trvalé žlté škvrny. Impregnácia by skrátila čas vsávania, ale nevylúčila ho.</p>
+<p><strong>Prírodný mramor:</strong> Absorpcia vody 0,2 – 0,5\u00A0%. Červené víno po 12 hodinách zanechalo trvalé ružové sfarbenie viditeľné aj po čistení. Kurkuma v oleji: trvalé žlté škvrny. Impregnácia by skrátila čas vsávania, ale nevylúčila ho.</p>
 
-<p><strong>Prírodný granit:</strong> Lepší ako mramor, ale bez pravidelnej impregnácie olivový olej vsaje a zanechá tmavé škvrny. Kurkuma na tmavých granitoch je menej viditeľná, ale na svetlých dezénoch problematická.</p>
+<p><strong>Prírodný granit:</strong> Lepší ako mramor, ale bez pravidelnej impregnácie olivový olej sa vsaje a zanechá tmavé škvrny. Kurkuma na tmavých granitoch je menej viditeľná, ale na svetlých dezénoch problematická.</p>
 
-<p><strong>Kvarcitový kompozit (bez živíc na povrchu):</strong> Absorpcia vody taktiež pod 0,1% — kvarcit si v tomto aspekte vedie podobne dobre ako sinterovaný kameň. Výhoda sinterovaného: pri kyselinách je odolnejší (živice môžu reagovať).</p>
+<p><strong>Kvarcitový kompozit (bez živíc na povrchu):</strong> Absorpcia vody taktiež pod 0,1\u00A0% – kvarcit si v tomto aspekte vedie podobne dobre ako sinterovaný kameň. Výhoda sinterovaného: pri kyselinách je odolnejší (živice môžu reagovať).</p>
 
-<p><strong>Keramická dlaždica (glazovaná):</strong> Glazúra chráni povrch, ale spáry medzi dlaždicami sú zraniteľné — absorbujú škvrny a ťažko sa čistia.</p>
+<p><strong>Keramická dlaždica (glazovaná):</strong> Glazúra chráni povrch, ale spáry medzi dlaždicami sú zraniteľné – absorbujú škvrny a ťažko sa čistia.</p>
 
 <div class="article-highlight">
   <p><strong>Prečo prírodný kameň vyžaduje impregnáciu:</strong></p>
-  <p>Mramor a granit majú vyššiu pórovitosť — tekutiny prechádzajú cez kapilárne kanáliky do štruktúry kameňa. Impregnácia tieto kanáliky dočasne uzatvára, ale účinok trvá <strong>1–3 roky</strong>, potom je potrebné opakovanie. Sinterovaný kameň impregnáciu nepotrebuje — nemá čo impregnovat.</p>
+  <p>Mramor a granit majú vyššiu pórovitosť – tekutiny prechádzajú cez kapilárne kanáliky do štruktúry kameňa. Impregnácia tieto kanáliky dočasne uzatvára, ale účinok trvá <strong>1 – 3 roky</strong>, potom je potrebné opakovanie. Sinterovaný kameň impregnáciu nepotrebuje – nemá čo impregnovať.</p>
 </div>
 
 <h2 id="ako-cistit">Ako čistiť sinterovaný kameň správne</h2>
 
-<p>Jednoduchá rutina, ktorá funguje pre 99% situácií:</p>
+<p>Jednoduchá rutina, ktorá funguje pre 99\u00A0% situácií:</p>
 
-<p><strong>Každodenné čistenie:</strong> Vlhká handrička alebo papierový utierák. Bežná kuchynská tekutina (voda, šťava, olej) sa zotrenie ihneď. Žiadna špeciálna chémia.</p>
+<p><strong>Každodenné čistenie:</strong> Vlhká handrička alebo papierová utierka. Bežná kuchynská tekutina (voda, šťava, olej) sa zotrie ihneď. Žiadna špeciálna chémia.</p>
 
 <p><strong>Zaschnuté škvrny:</strong> Vlhká handrička + bežný kuchynský čistiaci prostriedok (napr. prostriedok na riad). Žiadne špeciálne kamenné čističe.</p>
 
-<p><strong>Tukové usadeniny:</strong> Teplá voda + trocha jaru na riad. Roztopí tuk, neutočí na povrch. V prípade potreby krátky kontakt odmašťovacieho prostriedku.</p>
+<p><strong>Tukové usadeniny:</strong> Teplá voda + trocha jaru na riad. Roztopí tuk, neutočí na povrch. V prípade potreby krátky kontakt odmasťovacieho prostriedku.</p>
 
 <p><strong>Čo nepoužívať:</strong></p>
 <ul>
-  <li><strong>Abrazívne čistidlá a drôtenky</strong> — poškodia povrch mechanicky, nie chemicky. Platí pre lesklý aj matný povrch.</li>
-  <li><strong>Silné kyseliny (napr. čistič rúr s HCl)</strong> — zbytočné aj škodlivé. ISO trieda 5 znamená odolnosť voči bežným domácim kyselinám, ale nie voči priemyselnej chémii.</li>
+  <li><strong>Abrazívne čistidlá a drôtenky</strong> – poškodia povrch mechanicky, nie chemicky. Platí pre lesklý aj matný povrch.</li>
+  <li><strong>Silné kyseliny (napr. čistič rúr s HCl)</strong> – zbytočné aj škodlivé. ISO trieda 5 znamená odolnosť voči bežným domácim kyselinám, ale nie voči priemyselnej chémii.</li>
 </ul>
 
 <div class="article-tip">
   <p><strong>Čo robíme v Orostone</strong></p>
-  <p>Každému zákazníkovi poskytneme jednoduchú jednostranovú kartu s pokynmi na čistenie. Skrátená verzia: vlhká handrička stačí na 99% situácií. Zvyšok 1% rieši bežný kuchynský čistiaci prostriedok. Žiadna impregnácia, žiadna špeciálna chémia, žiadna ročná údržba.</p>
+  <p>Každému zákazníkovi poskytneme jednoduchú jednostranovú kartu s pokynmi na čistenie. Skrátená verzia: vlhká handrička stačí na 99\u00A0% situácií. Zvyšok 1\u00A0% rieši bežný kuchynský čistiaci prostriedok. Žiadna impregnácia, žiadna špeciálna chémia, žiadna ročná údržba.</p>
 </div>
 
-<h2 id="matny-vs-leskly">Matný vs lesklý povrch — rozdiel v odolnosti voči škvrnám</h2>
+<h2 id="matny-vs-leskly">Matný vs lesklý povrch – rozdiel v odolnosti voči škvrnám</h2>
 
-<p>Technická odolnosť voči škvrnám je rovnaká pre oba povrchy — závisí od materiálu (absorpcia vody), nie od povrchovej úpravy. Ale v praxi je tu jeden rozdiel:</p>
+<p>Technická odolnosť voči škvrnám je rovnaká pre oba povrchy – závisí od materiálu (absorpcia vody), nie od povrchovej úpravy. Ale v praxi je tu jeden rozdiel:</p>
 
-<p><strong>Lesklý povrch:</strong> Škvrny sú okamžite viditeľné (vodné kvapky, odtlačky prstov). Čistenie je rýchlejšie — hladký povrch sa nenakopí. Psychologicky pôsobí „špinavejšie" rýchlejšie.</p>
+<p><strong>Lesklý povrch:</strong> Škvrny sú okamžite viditeľné (vodné kvapky, odtlačky prstov). Čistenie je rýchlejšie – na hladkom povrchu sa nič nenakopí. Psychologicky pôsobí „špinavejšie“ rýchlejšie.</p>
 
 <p><strong>Matný povrch:</strong> Škvrny sú menej viditeľné, ale kurkuma a červené víno na ňom môžu byť mierne menej ľahko viditeľné aj po čistení (ilúzia zvyškovej farby v mikroreliéfe). V reálnych testoch: rovnaký výsledok čistenia, ale vizuálne hodnotenie pred čistením je miernejšie pre matný.</p>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-03-cleaning.webp" alt="Čistenie sinterovaného kameňa vlhkou handrou — škvrna od červeného vína zmizne v sekundách" loading="lazy" />
+  <img src="/images/blog/article-03-cleaning.webp" alt="Čistenie sinterovaného kameňa vlhkou handrou – škvrna od červeného vína zmizne v sekundách" loading="lazy" />
   <figcaption>Čistenie sinterovaného kameňa: vlhká handrička, žiadna špeciálna chémia</figcaption>
 </figure>
 
 <h2 id="zaver">Záver: impregnácia nie je potrebná</h2>
 
-<p>Sinterovaný kameň <strong class="gold">nepotrebuje impregnáciu</strong>. Nikdy. To nie je hyperbola — je to fyzikálna realita materiálu s absorpciou vody pod 0,1%. Nie je čo impregnovat.</p>
+<p>Sinterovaný kameň <strong class="gold">nepotrebuje impregnáciu</strong>. Nikdy. To nie je hyperbola – je to fyzikálna realita materiálu s absorpciou vody pod 0,1\u00A0%. Nie je čo impregnovať.</p>
 
-<p>Všetky bežné kuchynské škvrnotvorné látky — káva, víno, kurkuma, olej, citrón, červená repa — sa z neho ľahko zotrú. Bez špeciálnej chémie. Bez špeciálnych postupov.</p>
+<p>Všetky bežné kuchynské škvrnotvorné látky – káva, víno, kurkuma, olej, citrón, červená repa – sa z neho ľahko zotrú. Bez špeciálnej chémie. Bez špeciálnych postupov.</p>
 
 <p>Toto je jeden z dôvodov, prečo je sinterovaný kameň ideálny pre rušné kuchyne a domácnosti s deťmi.</p>
 
 <div class="article-tip">
   <p><strong>Alebo nás jednoducho kontaktujte v Orostone</strong></p>
-  <p>Radi vám ukážeme sinterovaný kameň v praxi a zodpovieme všetky otázky. Nezáväzná konzultácia je zadarmo — príďte sa pozrieť.</p>
+  <p>Radi vám ukážeme sinterovaný kameň v praxi a zodpovieme všetky otázky. Nezáväzná konzultácia je zadarmo – príďte sa pozrieť.</p>
   <a href="/kontakt" class="tip-btn">Kontaktovať nás →</a>
 </div>
 `,
     faqs: [
       {
         question: 'Zanechá káva trvalú škvrnu na sinterovanom kameni?',
-        answer: 'Nie. Sinterovaný kameň má absorpciu vody pod 0,1% — káva neprenikne do štruktúry. Po zotretí vlhkou handrou nezostane žiadna stopa, ani po viachodinovej expozícii.',
+        answer: 'Nie. Sinterovaný kameň má absorpciu vody pod 0,1\u00A0% – káva neprenikne do štruktúry. Po zotretí vlhkou handrou nezostane žiadna stopa, ani po viachodinovej expozícii.',
       },
       {
         question: 'Poškodí červené víno sinterovaný kameň?',
-        answer: 'Nie. Červené víno zanechá viditeľnú farebnú škvrnu na povrchu, ale nevsaje sa dovnútra. Vlhká handrička s bežným čistiacim prostriedkom ju odstráni kompletne. Testovali sme 48-hodinovú expozíciu — výsledok rovnaký.',
+        answer: 'Nie. Červené víno zanechá viditeľnú farebnú škvrnu na povrchu, ale nevsaje sa dovnútra. Vlhká handrička s bežným čistiacim prostriedkom ju odstráni kompletne. Testovali sme 48-hodinovú expozíciu – výsledok rovnaký.',
       },
       {
         question: 'Je potrebná impregnácia sinterovaného kameňa?',
-        answer: 'Nie, nikdy. Absorpcia vody pod 0,1% znamená, že v materiáli nie sú kapilárne kanáliky, cez ktoré by tekutiny prenikali. Impregnácia pri sinterovanom kameni nemá zmysel — nemá čo utesnit. Na rozdiel od prírodného mramoru alebo granitu, ktoré vyžadujú impregnáciu každé 1–3 roky.',
+        answer: 'Nie, nikdy. Absorpcia vody pod 0,1\u00A0% znamená, že v materiáli nie sú kapilárne kanáliky, cez ktoré by tekutiny prenikali. Impregnácia pri sinterovanom kameni nemá zmysel – nemá čo utesniť. Na rozdiel od prírodného mramoru alebo granitu, ktoré vyžadujú impregnáciu každé 1 – 3 roky.',
       },
       {
         question: 'Čo ak zaschne kurkuma na sinterovanom kameni?',
-        answer: 'Kurkumín (pigment kurkumy) je intenzívne žltý a pri mnohých materiáloch zanecháva trvalé stopy. Na sinterovanom kameni sme testovali 72-hodinovú expozíciu — kurkuma sa vyčistila vlhkou handrou do 30 sekúnd bez akejkoľvek zvyškovej farby.',
+        answer: 'Kurkumín (pigment kurkumy) je intenzívne žltý a pri mnohých materiáloch zanecháva trvalé stopy. Na sinterovanom kameni sme testovali 72-hodinovú expozíciu – kurkuma sa vyčistila vlhkou handrou do 30 sekúnd bez akejkoľvek zvyškovej farby.',
       },
       {
-        question: 'Poškodí citrónovú šťavu povrch sinterovaného kameňa?',
-        answer: 'Nie. Citrónová šťava má pH ~2 (kyselina citrónová). Sinterovaný kameň má chemickú odolnosť triedy 5 podľa ISO 10545-13, čo zahŕňa bežné domáce kyseliny vrátane citrónovej šťavy. Na prírodnom mramori by citrón spôsobil leptanie (etching) — na sinterovanom kameni nie.',
+        question: 'Poškodí citrónová šťava povrch sinterovaného kameňa?',
+        answer: 'Nie. Citrónová šťava má pH ~2 (kyselina citrónová). Sinterovaný kameň má chemickú odolnosť triedy 5 podľa ISO 10545-13, čo zahŕňa bežné domáce kyseliny vrátane citrónovej šťavy. Na prírodnom mramore by citrón spôsobil leptanie (etching) – na sinterovanom kameni nie.',
       },
       {
         question: 'Čím čistím sinterovaný kameň v kuchyni?',
-        answer: 'Vlhká handrička alebo papierový utierák pre bežné každodenné čistenie. Zaschnuté škvrny: bežný kuchynský čistiaci prostriedok (prostriedok na riad) + vlhká handrička. Žiadne špeciálne kamenné čističe nie sú potrebné. Nepoužívajte abrazívne čistidlá ani drôtenky.',
+        answer: 'Vlhká handrička alebo papierová utierka pre bežné každodenné čistenie. Zaschnuté škvrny: bežný kuchynský čistiaci prostriedok (prostriedok na riad) + vlhká handrička. Žiadne špeciálne kamenné čističe nie sú potrebné. Nepoužívajte abrazívne čistidlá ani drôtenky.',
       },
       {
         question: 'Treba sinterovaný kameň čistiť špeciálnymi prostriedkami?',
@@ -199,14 +199,14 @@ export const ARTICLE_03: BlogArticle = {
       },
       {
         question: 'Je matný sinterovaný kameň odolnejší voči škvrnám ako lesklý?',
-        answer: 'Technická odolnosť je rovnaká — závisí od materiálu (absorpcia vody), nie od povrchového spracovania. Matný povrch môže vizuálne maskovať škvrny pred čistením, ale výsledok čistenia je totožný.',
+        answer: 'Technická odolnosť je rovnaká – závisí od materiálu (absorpcia vody), nie od povrchového spracovania. Matný povrch môže vizuálne maskovať škvrny pred čistením, ale výsledok čistenia je totožný.',
       },
       {
         question: 'Čo sa stane, ak zaschne olivový olej na sinterovanom kameni?',
-        answer: 'Stuhnutý olej zostane na povrchu bez toho, aby prenikol dovnútra. Pri čistení vyžaduje trochu viac mechanického tlaku — teplá voda s kvapkou prostriedku na riad to zvládne. Žiadna tukovina neprenikne do štruktúry kameňa.',
+        answer: 'Stuhnutý olej zostane na povrchu bez toho, aby prenikol dovnútra. Pri čistení vyžaduje trochu viac mechanického tlaku – teplá voda s kvapkou prostriedku na riad to zvládne. Žiadny tuk neprenikne do štruktúry kameňa.',
       },
       {
-        question: 'Ako dlho vydrží povrch sinterovaného kameňa bez škŕs a usadenín?',
+        question: 'Ako dlho vydrží povrch sinterovaného kameňa bez škvŕn a usadenín?',
         answer: 'Sinterovaný kameň má nasiakavosť pod 0,1\u00A0%, takže nečistoty a usadeniny ostávajú na povrchu a nevpíjajú sa do štruktúry. Pri bežnom používaní a obvyklej údržbe si povrch zachová vzhľad dlhé roky bez impregnácie. Mechanické škrabance od ostrých predmetov sú možné.',
       },
       {
@@ -215,7 +215,7 @@ export const ARTICLE_03: BlogArticle = {
       },
       {
         question: 'Môžem použiť sinterovaný kameň v kuchyni s deťmi?',
-        answer: 'Áno — a je to jedna z jeho predností. Takmer nulová pórovitosť znamená, že farby, šťavy, oleje ani iné škvrnotvorné látky, s ktorými pracujú deti, neprenikajú do povrchu. Čistenie je jednoduché a rýchle. Materiál nevyžaduje špeciálnu starostlivosť ani impregnáciu.',
+        answer: 'Áno – a je to jedna z jeho predností. Takmer nulová pórovitosť znamená, že farby, šťavy, oleje ani iné škvrnotvorné látky, s ktorými pracujú deti, neprenikajú do povrchu. Čistenie je jednoduché a rýchle. Materiál nevyžaduje špeciálnu starostlivosť ani impregnáciu.',
       },
     ],
   },

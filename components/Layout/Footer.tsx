@@ -111,7 +111,7 @@ const FooterComponent: React.FC<FooterProps> = ({ categories = [], isProductDeta
 
   return (
     <footer
-      className={`os-on-dark relative overflow-hidden bg-brand-dark bg-noise pt-[clamp(56px,7vw,88px)] text-brand-light ${isProductDetail ? 'pb-32 lg:pb-8' : 'pb-8'}`}
+      className={`os-on-dark relative overflow-hidden bg-brand-dark bg-noise pt-[clamp(56px,7vw,88px)] text-brand-light ${isProductDetail ? 'pb-32 lg:pb-8' : 'pb-[calc(6rem+env(safe-area-inset-bottom,0px))] lg:pb-8'}`}
     >
       {/* Trust strip */}
       {!compactOrder && <Container>
@@ -248,7 +248,7 @@ const FooterComponent: React.FC<FooterProps> = ({ categories = [], isProductDeta
         </div>
       </Container>
 
-      {/* Large logo watermark */}
+      {/* Large logo watermark — on mobile the footer's bottom padding keeps it clear of MobileCtaBar */}
       <Container className="mt-14 opacity-[0.07]" aria-hidden="true">
         <img src="/images/orostone-logo.svg" alt="" width={1168} height={230} loading="lazy" className="h-auto w-full brightness-0 invert" />
       </Container>

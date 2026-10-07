@@ -13,96 +13,96 @@ export const ARTICLE_16: BlogArticle = {
 
   sk: {
     title: 'Oplatí sa sinterovaný kameň? Cena vs životnosť vs údržba',
-    subtitle: 'Reálna matematika — nie marketingové sľuby. Tri scenáre, konkrétne čísla v eurách a brutálne úprimná odpoveď.',
-    excerpt: 'Kompletný finančný rozbor sinterovaného kameňa vs kvarcitu, žuly a laminátu. Tri reálne scenáre (rodinný dom, byt v Bratislave, Airbnb), 25-ročné náklady vlastníctva a úprimná odpoveď, kedy sa investícia oplatí — a kedy nie.',
+    subtitle: 'Reálna matematika – nie marketingové sľuby. Tri scenáre, konkrétne čísla v eurách a brutálne úprimná odpoveď.',
+    excerpt: 'Kompletný finančný rozbor sinterovaného kameňa vs kvarcitu, žuly a laminátu. Tri reálne scenáre (rodinný dom, byt v Bratislave, Airbnb), 25-ročné náklady vlastníctva a úprimná odpoveď, kedy sa investícia oplatí – a kedy nie.',
     metaTitle: 'Oplatí sa sinterovaný kameň? Cena a životnosť | OROSTONE',
-    metaDescription: 'Cena, životnosť, údržba, odolnosť. Sinterovaný kameň proti žule a technickému kameňu — kde sa rozdiel reálne ukáže za 5–10 rokov používania.',
-    directAnswer: 'Pre kuchyňu, ktorú plánujete používať 15+ rokov, sa sinterovaný kameň jednoznačne oplatí. Pri 25-ročnom horizonte vyjde lacnejšie ako žula (ušetríte 2\u00A0000–4\u00A0000\u00A0€ na údržbe) a porovnateľne s kvarcom — ale s výrazne lepšou odolnosťou voči teplu, UV a škvrnám. Neoplatí sa pri krátkodobom bývaní alebo prenájme.',
+    metaDescription: 'Cena, životnosť, údržba, odolnosť. Sinterovaný kameň proti žule a technickému kameňu – kde sa rozdiel reálne ukáže za 5 – 10 rokov používania.',
+    directAnswer: 'Pre kuchyňu, ktorú plánujete používať 15+ rokov, sa sinterovaný kameň jednoznačne oplatí. Pri 25-ročnom horizonte vyjde lacnejšie ako žula (ušetríte 2\u00A0000 – 4\u00A0000\u00A0€ na údržbe) a porovnateľne s kvarcom – ale s výrazne lepšou odolnosťou voči teplu, UV a škvrnám. Neoplatí sa pri krátkodobom bývaní alebo prenájme.',
     content: `
 <ul class="article-tldr">
-  <li>Pri 25-ročnom horizonte vyjde sinterovaný kameň lacnejšie ako žula — ušetríte 2\u00A0000–4\u00A0000\u00A0€ na údržbe</li>
-  <li>Pre byt na 5–10 rokov je lepší kvarcit (áno, hovoríme to ako predajcovia sinterovaného kameňa)</li>
-  <li>Laminát je stále najlacnejší — ale počítajte s 2–3 výmenami a dňami bez kuchyne</li>
+  <li>Pri 25-ročnom horizonte vyjde sinterovaný kameň lacnejšie ako žula – ušetríte 2\u00A0000 – 4\u00A0000\u00A0€ na údržbe</li>
+  <li>Pre byt na 5 – 10 rokov je lepší kvarcit (áno, hovoríme to ako predajcovia sinterovaného kameňa)</li>
+  <li>Laminát je stále najlacnejší – ale počítajte s 2 – 3 výmenami a dňami bez kuchyne</li>
   <li>Konkrétne čísla v eurách pre 3 scenáre: rodinný dom, byt, Airbnb</li>
 </ul>
 
-<p>Keď zákazník príde do nášho showroomu a opýta sa „Oplatí sa sinterovaný kameň?“, neodpovedáme „Áno, samozrejme“ — hoci predávame sinterovaný kameň. Odpovieme otázkou: <strong>Na koľko rokov plánujete túto kuchyňu?</strong></p>
+<p>Keď zákazník príde do nášho showroomu a opýta sa „Oplatí sa sinterovaný kameň?“, neodpovedáme „Áno, samozrejme“ – hoci predávame sinterovaný kameň. Odpovieme otázkou: <strong>Na koľko rokov plánujete túto kuchyňu?</strong></p>
 
-<p>Pretože odpoveď závisí od matematiky, nie od marketingu. A tá matematika je prekvapivo jednoduchá — len ju nikto nerobí. Väčšina článkov na internete porovnáva cenu za meter štvorcový a tým to končí. Ale cena za m² je len zlomok príbehu. Skutočné náklady sa ukážu až po 5, 10 alebo 25 rokoch používania.</p>
+<p>Pretože odpoveď závisí od matematiky, nie od marketingu. A tá matematika je prekvapivo jednoduchá – len ju nikto nerobí. Väčšina článkov na internete porovnáva cenu za meter štvorcový a tým to končí. Ale cena za m² je len zlomok príbehu. Skutočné náklady sa ukážu až po 5, 10 alebo 25 rokoch používania.</p>
 
-<p>V tomto článku urobíme to, čo by vám mal urobiť každý poctivý predajca: <strong>spočítame celkové náklady vlastníctva</strong> pre tri reálne scenáre slovenského zákazníka. A budeme brutálne úprimní — aj keď výsledok nebude vždy v prospech sinterovaného kameňa.</p>
+<p>V tomto článku urobíme to, čo by vám mal urobiť každý poctivý predajca: <strong>spočítame celkové náklady vlastníctva</strong> pre tri reálne scenáre slovenského zákazníka. A budeme brutálne úprimní – aj keď výsledok nebude vždy v prospech sinterovaného kameňa.</p>
 
-<h2 id="skutocne-naklady">Koľko naozaj stojí kuchynská doska? (nie len cena za m²)</h2>
+<h2 id="skutocne-naklady">Koľko naozaj stojí kuchynská doska? (nielen cena za m²)</h2>
 
 <p>Prvý omyl, ktorý treba odstrániť: porovnávať materiály len podľa ceny za meter štvorcový je ako porovnávať autá len podľa ceny v katalógu bez poistky, servisu a spotreby. Skutočné náklady na kuchynskú dosku sa skladajú z troch položiek:</p>
 
 <h3>1. Materiál</h3>
 <ul>
-<li><strong>Sinterovaný kameň:</strong> €250–600/m² (závisí od hrúbky, značky a dizajnu)</li>
-<li><strong>Kvarcit (engineered quartz):</strong> €150–450/m²</li>
-<li><strong>Žula (prírodná):</strong> €180–500/m²</li>
-<li><strong>Kvalitný laminát (HPL):</strong> €60–150/m²</li>
+<li><strong>Sinterovaný kameň:</strong> 250 – 600\u00A0€/m² (závisí od hrúbky, značky a dizajnu)</li>
+<li><strong>Kvarcit (engineered quartz):</strong> 150 – 450\u00A0€/m²</li>
+<li><strong>Žula (prírodná):</strong> 180 – 500\u00A0€/m²</li>
+<li><strong>Kvalitný laminát (HPL):</strong> 60 – 150\u00A0€/m²</li>
 </ul>
 
 <h3>2. Spracovanie (výrezy, hrany, leštenie)</h3>
 <ul>
-<li><strong>Sinterovaný kameň:</strong> €100–200/m² (vyžaduje špecializované CNC stroje a diamantové nástroje)</li>
-<li><strong>Kvarcit:</strong> €80–150/m²</li>
-<li><strong>Žula:</strong> €80–160/m²</li>
-<li><strong>Laminát:</strong> €30–60/m²</li>
+<li><strong>Sinterovaný kameň:</strong> 100 – 200\u00A0€/m² (vyžaduje špecializované CNC stroje a diamantové nástroje)</li>
+<li><strong>Kvarcit:</strong> 80 – 150\u00A0€/m²</li>
+<li><strong>Žula:</strong> 80 – 160\u00A0€/m²</li>
+<li><strong>Laminát:</strong> 30 – 60\u00A0€/m²</li>
 </ul>
 
 <h3>3. Inštalácia</h3>
 <ul>
-<li><strong>Sinterovaný kameň:</strong> €40–75/m² (často zahrnutá v cene spracovania)</li>
-<li><strong>Kvarcit:</strong> €35–60/m²</li>
-<li><strong>Žula:</strong> €40–70/m²</li>
-<li><strong>Laminát:</strong> €20–40/m²</li>
+<li><strong>Sinterovaný kameň:</strong> 40 – 75\u00A0€/m² (často zahrnutá v cene spracovania)</li>
+<li><strong>Kvarcit:</strong> 35 – 60\u00A0€/m²</li>
+<li><strong>Žula:</strong> 40 – 70\u00A0€/m²</li>
+<li><strong>Laminát:</strong> 20 – 40\u00A0€/m²</li>
 </ul>
 
-<h3>Celkové náklady pre priemernú kuchyňu (4 m²)</h3>
+<h3>Celkové náklady pre priemernú kuchyňu (4\u00A0m²)</h3>
 
 <table>
 <thead>
-<tr><th>Materiál</th><th>Materiál (4 m²)</th><th>Spracovanie</th><th>Inštalácia</th><th>Celkom</th></tr>
+<tr><th>Materiál</th><th>Materiál (4\u00A0m²)</th><th>Spracovanie</th><th>Inštalácia</th><th>Celkom</th></tr>
 </thead>
 <tbody>
-<tr><td><strong>Sinterovaný kameň</strong></td><td>€1 000–2 400</td><td>€400–800</td><td>€0–300</td><td><strong>€1 400–3 500</strong></td></tr>
-<tr><td><strong>Kvarcit</strong></td><td>€600–1 800</td><td>€320–600</td><td>€140–240</td><td><strong>€1 060–2 640</strong></td></tr>
-<tr><td><strong>Žula</strong></td><td>€720–2 000</td><td>€320–640</td><td>€160–280</td><td><strong>€1 200–2 920</strong></td></tr>
-<tr><td><strong>Kvalitný laminát</strong></td><td>€240–600</td><td>€120–240</td><td>€80–160</td><td><strong>€440–1 000</strong></td></tr>
+<tr><td><strong>Sinterovaný kameň</strong></td><td>1\u00A0000 – 2\u00A0400\u00A0€</td><td>400 – 800\u00A0€</td><td>0 – 300\u00A0€</td><td><strong>1\u00A0400 – 3\u00A0500\u00A0€</strong></td></tr>
+<tr><td><strong>Kvarcit</strong></td><td>600 – 1\u00A0800\u00A0€</td><td>320 – 600\u00A0€</td><td>140 – 240\u00A0€</td><td><strong>1\u00A0060 – 2\u00A0640\u00A0€</strong></td></tr>
+<tr><td><strong>Žula</strong></td><td>720 – 2\u00A0000\u00A0€</td><td>320 – 640\u00A0€</td><td>160 – 280\u00A0€</td><td><strong>1\u00A0200 – 2\u00A0920\u00A0€</strong></td></tr>
+<tr><td><strong>Kvalitný laminát</strong></td><td>240 – 600\u00A0€</td><td>120 – 240\u00A0€</td><td>80 – 160\u00A0€</td><td><strong>440 – 1\u00A0000\u00A0€</strong></td></tr>
 </tbody>
 </table>
 
-<p><strong>Na prvý pohľad:</strong> Sinterovaný kameň je najdrahší. Laminát je 3–4× lacnejší. Kvarcit a žula sú niekde medzi. Keby bol príbeh len o počiatočnej cene, článok by tu končil. Ale nekončí — pretože toto je až tá menej zaujímavá časť rovnice.</p>
+<p><strong>Na prvý pohľad:</strong> Sinterovaný kameň je najdrahší. Laminát je 3 – 4× lacnejší. Kvarcit a žula sú niekde medzi nimi. Keby bol príbeh len o počiatočnej cene, článok by tu končil. Ale nekončí – pretože toto je až tá menej zaujímavá časť rovnice.</p>
 
-<h2 id="scenar-1-rodinny-dom">Scenár 1 — Oplatí sa do rodinného domu na 25 rokov?</h2>
+<h2 id="scenar-1-rodinny-dom">Scenár 1 – Oplatí sa do rodinného domu na 25 rokov?</h2>
 
-<p>Toto je najčastejší scenár našich zákazníkov: rodina stavia alebo rekonštruuje dom v okolí Bratislavy. Kuchyňu plánujú používať minimálne 15–25 rokov. Robia ju raz a poriadne.</p>
+<p>Toto je najčastejší scenár našich zákazníkov: rodina stavia alebo rekonštruuje dom v okolí Bratislavy. Kuchyňu plánujú používať minimálne 15 – 25 rokov. Robia ju raz a poriadne.</p>
 
-<h3>Počiatočná investícia (stredná trieda každého materiálu, 4 m²)</h3>
+<h3>Počiatočná investícia (stredná trieda každého materiálu, 4\u00A0m²)</h3>
 <ul>
-<li><strong>Sinterovaný kameň:</strong> €2 800</li>
-<li><strong>Kvarcit:</strong> €2 000</li>
-<li><strong>Žula:</strong> €2 200</li>
-<li><strong>Kvalitný laminát:</strong> €600</li>
+<li><strong>Sinterovaný kameň:</strong> 2\u00A0800\u00A0€</li>
+<li><strong>Kvarcit:</strong> 2\u00A0000\u00A0€</li>
+<li><strong>Žula:</strong> 2\u00A0200\u00A0€</li>
+<li><strong>Kvalitný laminát:</strong> 600\u00A0€</li>
 </ul>
 
-<p>Rozdiel medzi sinterovaným kameňom a kvarcitom je €800. Medzi sinterovaným kameňom a žulou €600. Medzi sinterovaným kameňom a laminátom €2 200. Tieto čísla si zapamätajte — budeme ich porovnávať s 25-ročnými nákladmi na údržbu.</p>
+<p>Rozdiel medzi sinterovaným kameňom a kvarcitom je 800\u00A0€. Medzi sinterovaným kameňom a žulou 600\u00A0€. Medzi sinterovaným kameňom a laminátom 2\u00A0200\u00A0€. Tieto čísla si zapamätajte – budeme ich porovnávať s 25-ročnými nákladmi na údržbu.</p>
 
 <h3>Ročné náklady na údržbu</h3>
 
-<p><strong>Sinterovaný kameň: €0/rok</strong></p>
-<p>Žiadne impregnácie. Žiadne špeciálne čistiace prostriedky. Žiadne profesionálne leštenie. Stačí handričku s teplou vodou a bežným saponátom. Za 25 rokov: <strong>€0</strong>.</p>
+<p><strong>Sinterovaný kameň: 0\u00A0€/rok</strong></p>
+<p>Žiadne impregnácie. Žiadne špeciálne čistiace prostriedky. Žiadne profesionálne leštenie. Stačí handrička s teplou vodou a bežným saponátom. Za 25 rokov: <strong>0\u00A0€</strong>.</p>
 
-<p><strong>Kvarcit: ~€0–20/rok</strong></p>
-<p>Kvarcit tiež nevyžaduje impregnáciu. Avšak pri silných farbivách (kurkuma, červené víno, káva) sa môžu objaviť škvrny, ktoré vyžadujú špeciálne čistidlo (~€15–20). Ak máte dosku vedľa okna, UV degradácia živíc spôsobí žltnutie po 5–8 rokoch — oprava nie je možná, len výmena. Reálny rizikový náklad: <strong>0–500\u00A0€ za 25 rokov</strong> (ak nemáte UV problém) alebo <strong>2\u00A0000+\u00A0€</strong> (ak potrebujete výmenu pre UV degradáciu).</p>
+<p><strong>Kvarcit: ~0 – 20\u00A0€/rok</strong></p>
+<p>Kvarcit tiež nevyžaduje impregnáciu. Avšak pri silných farbivách (kurkuma, červené víno, káva) sa môžu objaviť škvrny, ktoré vyžadujú špeciálne čistidlo (~15 – 20\u00A0€). Ak máte dosku vedľa okna, UV degradácia živíc spôsobí žltnutie po 5 – 8 rokoch – oprava nie je možná, len výmena. Reálny rizikový náklad: <strong>0 – 500\u00A0€ za 25 rokov</strong> (ak nemáte UV problém) alebo <strong>2\u00A0000+\u00A0€</strong> (ak potrebujete výmenu pre UV degradáciu).</p>
 
-<p><strong>Žula: €80–150/rok (v priemere)</strong></p>
-<p>Žula je prírodný porézny kameň. Vyžaduje <strong>profesionálnu impregnáciu každé 2–3 roky</strong> (€200–300 za návštevu). Bez impregnácie nasáva tekutiny — olej, víno, citrónovú šťavu — a vznikajú trvalé škvrny. Za 25 rokov: <strong>8–12 impregnácií × €200–300 = €1 600–3 600</strong>. Ak zanedbáte impregnáciu, pridajte ešte €300–500 za profesionálne čistenie škvrn.</p>
+<p><strong>Žula: 80 – 150\u00A0€/rok (v priemere)</strong></p>
+<p>Žula je prírodný porézny kameň. Vyžaduje <strong>profesionálnu impregnáciu každé 2 – 3 roky</strong> (200 – 300\u00A0€ za návštevu). Bez impregnácie nasáva tekutiny – olej, víno, citrónovú šťavu – a vznikajú trvalé škvrny. Za 25 rokov: <strong>8 – 12 impregnácií × 200 – 300\u00A0€ = 1\u00A0600 – 3\u00A0600\u00A0€</strong>. Ak zanedbáte impregnáciu, pridajte ešte 300 – 500\u00A0€ za profesionálne čistenie škvŕn.</p>
 
-<p><strong>Kvalitný laminát: €600 každých 10–15 rokov (výmena)</strong></p>
-<p>Laminát má životnosť 10–15 rokov pri intenzívnom používaní. Odlupujúce sa hrany, poškodenie vodou pri drezoch, škrabance, vypálené stopy od horúcich hrncov — to všetko sa kumuluje. Za 25 rokov potrebujete <strong>1–2 kompletné výmeny: 600–1\u00A0200\u00A0€</strong>.</p>
+<p><strong>Kvalitný laminát: 600\u00A0€ každých 10 – 15 rokov (výmena)</strong></p>
+<p>Laminát má životnosť 10 – 15 rokov pri intenzívnom používaní. Odlupujúce sa hrany, poškodenie vodou pri drezoch, škrabance, vypálené stopy od horúcich hrncov – to všetko sa kumuluje. Za 25 rokov potrebujete <strong>1 – 2 kompletné výmeny: 600 – 1\u00A0200\u00A0€</strong>.</p>
 
 <h3>25-ročný celkový náklad vlastníctva</h3>
 
@@ -111,57 +111,57 @@ export const ARTICLE_16: BlogArticle = {
 <tr><th>Materiál</th><th>Počiatočná cena</th><th>25-ročná údržba</th><th>Výmeny</th><th>CELKOM (25 rokov)</th></tr>
 </thead>
 <tbody>
-<tr><td><strong>Sinterovaný kameň</strong></td><td>€2 800</td><td>€0</td><td>€0</td><td><strong>€2 800</strong></td></tr>
-<tr><td><strong>Kvarcit</strong></td><td>€2 000</td><td>€0–500</td><td>€0–2 000*</td><td><strong>€2 000–4 500</strong></td></tr>
-<tr><td><strong>Žula</strong></td><td>€2 200</td><td>€1 600–3 600</td><td>€0</td><td><strong>€3 800–5 800</strong></td></tr>
-<tr><td><strong>Kvalitný laminát</strong></td><td>€600</td><td>€0</td><td>€600–1 200</td><td><strong>€1 200–1 800</strong></td></tr>
+<tr><td><strong>Sinterovaný kameň</strong></td><td>2\u00A0800\u00A0€</td><td>0\u00A0€</td><td>0\u00A0€</td><td><strong>2\u00A0800\u00A0€</strong></td></tr>
+<tr><td><strong>Kvarcit</strong></td><td>2\u00A0000\u00A0€</td><td>0 – 500\u00A0€</td><td>0 – 2\u00A0000\u00A0€*</td><td><strong>2\u00A0000 – 4\u00A0500\u00A0€</strong></td></tr>
+<tr><td><strong>Žula</strong></td><td>2\u00A0200\u00A0€</td><td>1\u00A0600 – 3\u00A0600\u00A0€</td><td>0\u00A0€</td><td><strong>3\u00A0800 – 5\u00A0800\u00A0€</strong></td></tr>
+<tr><td><strong>Kvalitný laminát</strong></td><td>600\u00A0€</td><td>0\u00A0€</td><td>600 – 1\u00A0200\u00A0€</td><td><strong>1\u00A0200 – 1\u00A0800\u00A0€</strong></td></tr>
 </tbody>
 </table>
 
-<p><em>* Výmena kvarcitu pri UV degradácii — relevantné len pre dosky vedľa veľkých okien s priamym slnkom.</em></p>
+<p><em>* Výmena kvarcitu pri UV degradácii – relevantné len pre dosky vedľa veľkých okien s priamym slnkom.</em></p>
 
 <p><strong>Výsledok pre 25-ročný horizont:</strong></p>
 <ul>
-<li><strong>Sinterovaný kameň (€2 800)</strong> vyjde lacnejšie ako žula (€3 800–5 800) — ušetrenie <strong>€1 000–3 000</strong> na údržbe.</li>
-<li><strong>Sinterovaný kameň</strong> je porovnateľný s kvarcitom — ale bez rizika UV degradácie a s lepšou tepelnou odolnosťou.</li>
-<li><strong>Laminát</strong> je stále najlacnejší celkovo — ale budete žiť s 2–3 výmenami, estetickým kompromisom a žiadnou pridanou hodnotou nehnuteľnosti.</li>
+<li><strong>Sinterovaný kameň (2\u00A0800\u00A0€)</strong> vyjde lacnejšie ako žula (3\u00A0800 – 5\u00A0800\u00A0€) – ušetrenie <strong>1\u00A0000 – 3\u00A0000\u00A0€</strong> na údržbe.</li>
+<li><strong>Sinterovaný kameň</strong> je porovnateľný s kvarcitom – ale bez rizika UV degradácie a s lepšou tepelnou odolnosťou.</li>
+<li><strong>Laminát</strong> je stále najlacnejší celkovo – ale budete žiť s 2 – 3 výmenami, estetickým kompromisom a žiadnou pridanou hodnotou nehnuteľnosti.</li>
 </ul>
 
-<p><strong>Verdikt pre rodinný dom:</strong> Sinterovaný kameň sa jednoznačne oplatí. Nie je to najlacnejšia počiatočná investícia, ale je to najnižší celkový náklad vlastníctva medzi prémiovými materiálmi — a to bez kompromisov v kvalite alebo estetike.</p>
+<p><strong>Verdikt pre rodinný dom:</strong> Sinterovaný kameň sa jednoznačne oplatí. Nie je to najlacnejšia počiatočná investícia, ale je to najnižší celkový náklad vlastníctva medzi prémiovými materiálmi – a to bez kompromisov v kvalite alebo estetike.</p>
 
-<h2 id="scenar-2-byt-bratislava">Scenár 2 — Dáva zmysel do bytu v Bratislave na 5–10 rokov?</h2>
+<h2 id="scenar-2-byt-bratislava">Scenár 2 – Dáva zmysel do bytu v Bratislave na 5 – 10 rokov?</h2>
 
-<p>Iný scenár: kupujete alebo rekonštruujete 3-izbový byt v Bratislave. Plánujete v ňom bývať 5–10 rokov a potom ho predať alebo prenajať. Tu je matematika iná.</p>
+<p>Iný scenár: kupujete alebo rekonštruujete 3-izbový byt v Bratislave. Plánujete v ňom bývať 5 – 10 rokov a potom ho predať alebo prenajať. Tu je matematika iná.</p>
 
-<h3>Počiatočný rozdiel (opäť 4 m²)</h3>
+<h3>Počiatočný rozdiel (opäť 4\u00A0m²)</h3>
 <ul>
-<li>Sinterovaný kameň vs kvarcit: +€800</li>
-<li>Sinterovaný kameň vs žula: +€600</li>
+<li>Sinterovaný kameň vs kvarcit: +800\u00A0€</li>
+<li>Sinterovaný kameň vs žula: +600\u00A0€</li>
 </ul>
 
-<h3>Údržba za 5–10 rokov</h3>
+<h3>Údržba za 5 – 10 rokov</h3>
 <ul>
-<li><strong>Sinterovaný kameň:</strong> €0</li>
-<li><strong>Kvarcit:</strong> 0\u00A0€ (za 5–10 rokov nebudete mať UV problém, ak nie ste vedľa okna)</li>
-<li><strong>Žula:</strong> 2–4 impregnácie × €200–300 = €400–1 200</li>
+<li><strong>Sinterovaný kameň:</strong> 0\u00A0€</li>
+<li><strong>Kvarcit:</strong> 0\u00A0€ (za 5 – 10 rokov nebudete mať UV problém, ak nie ste vedľa okna)</li>
+<li><strong>Žula:</strong> 2 – 4 impregnácie × 200 – 300\u00A0€ = 400 – 1\u00A0200\u00A0€</li>
 </ul>
 
-<p>Za 5–10 rokov ušetríte na údržbe oproti žule len 400–1\u00A0200\u00A0€ — čo nepokryje vyššiu počiatočnú investíciu do sinterovaného kameňa.</p>
+<p>Za 5 – 10 rokov ušetríte na údržbe oproti žule len 400 – 1\u00A0200\u00A0€ – čo nepokryje vyššiu počiatočnú investíciu do sinterovaného kameňa.</p>
 
 <h3>Vplyv na predajnú cenu bytu</h3>
-<p>Tu je to komplikovanejšie. V prémiovom segmente bratislavského trhu (Staré Mesto, Ružinov, Koliba) prémiová kuchyňa <strong>zvyšuje vnímanú hodnotu bytu</strong>. Kupujúci v segmente €250 000+ si všimnú kvalitné materiály. Ale:</p>
+<p>Tu je to komplikovanejšie. V prémiovom segmente bratislavského trhu (Staré Mesto, Ružinov, Koliba) prémiová kuchyňa <strong>zvyšuje vnímanú hodnotu bytu</strong>. Kupujúci v segmente 250\u00A0000+\u00A0€ si všimnú kvalitné materiály. Ale:</p>
 
 <ul>
 <li>Rozdiel medzi kvarcitom a sinterovaným kameňom <strong>väčšina kupujúcich nerozozná</strong> vizuálne.</li>
-<li>Predajca nehnuteľností vám nenapíše do inzerátu „sinterovaný kameň“ — napíše „kamenná doska“ alebo „prémiová kuchyňa“.</li>
+<li>Predajca nehnuteľností vám nenapíše do inzerátu „sinterovaný kameň“ – napíše „kamenná doska“ alebo „prémiová kuchyňa“.</li>
 <li>Merateľná návratnosť investície do sinterovaného kameňa oproti kvarcitu pri predaji bytu do 10 rokov je <strong>neistá</strong>.</li>
 </ul>
 
-<p><strong>Naša úprimná odpoveď:</strong> Pre byt na 5–10 rokov je <strong>kvalitný kvarcit najlepší pomer ceny a hodnoty</strong>. Dostanete krásny, odolný povrch za nižšiu cenu. Sinterovaný kameň dáva zmysel, len ak máte kuchyňu vedľa veľkého okna (UV odolnosť) alebo ak varíte intenzívne a pravidelne kladiete horúce hrnce priamo na dosku.</p>
+<p><strong>Naša úprimná odpoveď:</strong> Pre byt na 5 – 10 rokov je <strong>kvalitný kvarcit najlepší pomer ceny a hodnoty</strong>. Dostanete krásny, odolný povrch za nižšiu cenu. Sinterovaný kameň dáva zmysel, len ak máte kuchyňu vedľa veľkého okna (UV odolnosť) alebo ak varíte intenzívne a pravidelne kladiete horúce hrnce priamo na dosku.</p>
 
 <p>Áno, práve sme vám povedali, že v tomto scenári náš hlavný produkt nie je najlepšia voľba. Ale radšej spokojný zákazník s kvarcitom ako nespokojný zákazník, ktorý si myslí, že preplatil sinterovaný kameň.</p>
 
-<h2 id="scenar-3-airbnb-prenajom">Scenár 3 — Oplatí sa do Airbnb alebo prenájmu?</h2>
+<h2 id="scenar-3-airbnb-prenajom">Scenár 3 – Oplatí sa do Airbnb alebo prenájmu?</h2>
 
 <p>Tretí scenár: investičný byt určený na krátkodobý alebo dlhodobý prenájom. Tu sa logika mení úplne.</p>
 
@@ -174,9 +174,9 @@ export const ARTICLE_16: BlogArticle = {
 
 <h3>Porovnanie pre prenájmy</h3>
 
-<p><strong>Žula:</strong> Bez pravidelnej impregnácie (ktorú nájomník neurobí) sa stane škvrnitou behom mesiacov. Nie je vhodná pre prenájmy.</p>
+<p><strong>Žula:</strong> Bez pravidelnej impregnácie (ktorú nájomník neurobí) sa stane škvrnitou v priebehu mesiacov. Nie je vhodná pre prenájmy.</p>
 
-<p><strong>Sinterovaný kameň:</strong> Zvládne aj menej šetrné zaobchádzanie bez impregnácie a špeciálnych čistidiel — ideálny z hľadiska trvanlivosti. Ale počiatočná investícia €2 800 sa pri prenájme vráti veľmi pomaly. Vyššia noc/mesačná cena za „prémiovú kuchyňu“ v Airbnb inzeráte? Možno €2–5/noc navyše. Pri 200 nocách ročne: €400–1 000/rok. Návratnosť investície 3–7 rokov oproti kvarcitu.</p>
+<p><strong>Sinterovaný kameň:</strong> Zvládne aj menej šetrné zaobchádzanie bez impregnácie a špeciálnych čistidiel – ideálny z hľadiska trvanlivosti. Ale počiatočná investícia 2\u00A0800\u00A0€ sa pri prenájme vráti veľmi pomaly. Vyššia cena za noc/mesiac vďaka „prémiovej kuchyni“ v Airbnb inzeráte? Možno 2 – 5\u00A0€/noc navyše. Pri 200 nocách ročne: 400 – 1\u00A0000\u00A0€/rok. Návratnosť investície 3 – 7 rokov oproti kvarcitu.</p>
 
 <p><strong>Kvarcit (stredná trieda):</strong> Odolný, nenáročný na údržbu, vizuálne atraktívny. Pre prenájmy typicky najlepší pomer výkon/cena.</p>
 
@@ -184,29 +184,29 @@ export const ARTICLE_16: BlogArticle = {
 
 <p><strong>Naše odporúčanie pre prenájmy:</strong></p>
 <ul>
-<li><strong>Prémiový Airbnb (nad €100/noc):</strong> Kvarcit strednej triedy. Vyzerá luxusne, je odolný, cenovo efektívny.</li>
+<li><strong>Prémiový Airbnb (nad 100\u00A0€/noc):</strong> Kvarcit strednej triedy. Vyzerá luxusne, je odolný, cenovo efektívny.</li>
 <li><strong>Štandardný prenájom:</strong> Kvalitný laminát. Investícia do kameňa sa nevráti cez vyšší nájom.</li>
-<li><strong>Sinterovaný kameň:</strong> Len ak plánujete prenajímať 15+ rokov a chcete minimalizovať akúkoľvek údržbu. Alebo ak je nehnuteľnosť v ultra-prémiovom segmente (luxusné apartmány v Starom Meste).</li>
+<li><strong>Sinterovaný kameň:</strong> Len ak plánujete prenajímať 15+ rokov a chcete minimalizovať akúkoľvek údržbu. Alebo ak je nehnuteľnosť v ultraprémiovom segmente (luxusné apartmány v Starom Meste).</li>
 </ul>
 
 <h2 id="co-nikdy-neplatite">Čo nikdy nebudete musieť platiť so sinterovaným kameňom?</h2>
 
-<p>Jedným z najprehliadanejších argumentov pre sinterovaný kameň nie je to, čo stojí — ale to, čo <strong>nikdy nebudete musieť platiť</strong>. Tu je konkrétny zoznam:</p>
+<p>Jedným z najprehliadanejších argumentov pre sinterovaný kameň nie je to, čo stojí – ale to, čo <strong>nikdy nebudete musieť platiť</strong>. Tu je konkrétny zoznam:</p>
 
 <h3>Žiadna impregnácia (na rozdiel od žuly)</h3>
-<p>Žula vyžaduje profesionálnu impregnáciu každé 2–3 roky. Cena: €200–300 za návštevu. Za 25 rokov: <strong>€1 600–3 600</strong>. Sinterovaný kameň má prakticky nulovú pórovitosť — nie je čo impregnovat.</p>
+<p>Žula vyžaduje profesionálnu impregnáciu každé 2 – 3 roky. Cena: 200 – 300\u00A0€ za návštevu. Za 25 rokov: <strong>1\u00A0600 – 3\u00A0600\u00A0€</strong>. Sinterovaný kameň má prakticky nulovú pórovitosť – nie je čo impregnovať.</p>
 
 <h3>Žiadne špeciálne čistiace prostriedky (na rozdiel od mramoru)</h3>
-<p>Mramor vyžaduje výhradne pH-neutrálne čistidlá. Bežný kuchynský čistič s kyselinou (citrón, ocot) ho naleptá. Špeciálne mramorové čističe: €15–25 za fľašu, cca 4× ročne = <strong>€60–100/rok</strong>. Sinterovaný kameň čistíte čímkoľvek — aj octom, aj čistidlom na sklo.</p>
+<p>Mramor vyžaduje výhradne pH-neutrálne čistidlá. Bežný kuchynský čistič s kyselinou (citrón, ocot) ho naleptá. Špeciálne mramorové čističe: 15 – 25\u00A0€ za fľašu, cca 4× ročne = <strong>60 – 100\u00A0€/rok</strong>. Sinterovaný kameň čistíte čímkoľvek – aj octom, aj čistidlom na sklo.</p>
 
 <h3>Žiadne profesionálne leštenie (na rozdiel od mramoru)</h3>
-<p>Mramor stráca lesk a vyžaduje profesionálne leštenie každé 3–5 rokov. Cena: €300–500 za návštevu. Za 25 rokov: <strong>€1 500–4 000</strong>. Sinterovaný kameň si zachováva povrch po celú životnosť bez akéhokoľvek leštenia.</p>
+<p>Mramor stráca lesk a vyžaduje profesionálne leštenie každé 3 – 5 rokov. Cena: 300 – 500\u00A0€ za návštevu. Za 25 rokov: <strong>1\u00A0500 – 4\u00A0000\u00A0€</strong>. Sinterovaný kameň si zachováva povrch po celú životnosť bez akéhokoľvek leštenia.</p>
 
-<h3>Žiadna oprava škvrn od kurkumy (na rozdiel od kvarcitu)</h3>
-<p>Kvarcit je odolný voči väčšine škvrnám, ale kurkuma, silné farbivá a niektoré chemikálie môžu preniknúť do živicového pojiva a zanechať trvalé zafarbenie. Profesionálne čistenie: €100–200. Sinterovaný kameň kurkumu jednoducho zotriete.</p>
+<h3>Žiadna oprava škvŕn od kurkumy (na rozdiel od kvarcitu)</h3>
+<p>Kvarcit je odolný voči väčšine škvŕn, ale kurkuma, silné farbivá a niektoré chemikálie môžu preniknúť do živicového pojiva a zanechať trvalé zafarbenie. Profesionálne čistenie: 100 – 200\u00A0€. Zo sinterovaného kameňa kurkumu jednoducho zotriete.</p>
 
 <h3>Žiadna oprava UV poškodenia (na rozdiel od kvarcitu)</h3>
-<p>Ak je kvarcitová doska vystavená priamemu slnku, živice degradujú — doska žltne a stráca lesk. Oprava neexistuje — jedinou možnosťou je <strong>výmena celej dosky (€2 000+)</strong>. Sinterovaný kameň je UV stabilný — aj po 20 rokoch na priamom slnku.</p>
+<p>Ak je kvarcitová doska vystavená priamemu slnku, živice sa degradujú – doska žltne a stráca lesk. Oprava neexistuje – jedinou možnosťou je <strong>výmena celej dosky (2\u00A0000+\u00A0€)</strong>. Sinterovaný kameň je UV stabilný – aj po 20 rokoch na priamom slnku.</p>
 
 <h3>Celkové úspory oproti ostatným prémiovým materiálom</h3>
 
@@ -215,62 +215,62 @@ export const ARTICLE_16: BlogArticle = {
 <tr><th>Náklad</th><th>Žula (25r)</th><th>Mramor (25r)</th><th>Kvarcit (25r)</th><th>Sinterovaný kameň (25r)</th></tr>
 </thead>
 <tbody>
-<tr><td>Impregnácia</td><td>€1 600–3 600</td><td>€1 200–2 400</td><td>€0</td><td><strong>€0</strong></td></tr>
-<tr><td>Špeciálne čistidlá</td><td>€0</td><td>€1 500–2 500</td><td>€0</td><td><strong>€0</strong></td></tr>
-<tr><td>Profesionálne leštenie</td><td>€0–800</td><td>€1 500–4 000</td><td>€0</td><td><strong>€0</strong></td></tr>
-<tr><td>Oprava škvrn</td><td>€300–800</td><td>€500–1 500</td><td>€0–400</td><td><strong>€0</strong></td></tr>
-<tr><td>UV oprava/výmena</td><td>€0</td><td>€0</td><td>€0–2 000</td><td><strong>€0</strong></td></tr>
-<tr><td><strong>CELKOM údržba</strong></td><td><strong>€1 900–5 200</strong></td><td><strong>€4 700–10 400</strong></td><td><strong>€0–2 400</strong></td><td><strong>€0</strong></td></tr>
+<tr><td>Impregnácia</td><td>1\u00A0600 – 3\u00A0600\u00A0€</td><td>1\u00A0200 – 2\u00A0400\u00A0€</td><td>0\u00A0€</td><td><strong>0\u00A0€</strong></td></tr>
+<tr><td>Špeciálne čistidlá</td><td>0\u00A0€</td><td>1\u00A0500 – 2\u00A0500\u00A0€</td><td>0\u00A0€</td><td><strong>0\u00A0€</strong></td></tr>
+<tr><td>Profesionálne leštenie</td><td>0 – 800\u00A0€</td><td>1\u00A0500 – 4\u00A0000\u00A0€</td><td>0\u00A0€</td><td><strong>0\u00A0€</strong></td></tr>
+<tr><td>Oprava škvŕn</td><td>300 – 800\u00A0€</td><td>500 – 1\u00A0500\u00A0€</td><td>0 – 400\u00A0€</td><td><strong>0\u00A0€</strong></td></tr>
+<tr><td>UV oprava/výmena</td><td>0\u00A0€</td><td>0\u00A0€</td><td>0 – 2\u00A0000\u00A0€</td><td><strong>0\u00A0€</strong></td></tr>
+<tr><td><strong>CELKOM údržba</strong></td><td><strong>1\u00A0900 – 5\u00A0200\u00A0€</strong></td><td><strong>4\u00A0700 – 10\u00A0400\u00A0€</strong></td><td><strong>0 – 2\u00A0400\u00A0€</strong></td><td><strong>0\u00A0€</strong></td></tr>
 </tbody>
 </table>
 
 <h2 id="kedy-sa-neoplati">Kedy sa sinterovaný kameň NEOPLATÍ?</h2>
 
-<p>Boli by sme nezodpovední, keby sme tvrdili, že sinterovaný kameň je správna voľba vždy. Nie je. Tu sú situácie, kedy odporúčame iný materiál:</p>
+<p>Boli by sme nezodpovední, keby sme tvrdili, že sinterovaný kameň je správna voľba vždy. Nie je. Tu sú situácie, keď odporúčame iný materiál:</p>
 
 <h3>1. Prenájom s lacnými skrinkami</h3>
-<p>Ak máte kuchynské skrinky za 1\u00A0500\u00A0€, nemá zmysel na ne dať dosku za 2\u00A0800\u00A0€. Materiály by mali byť v rovnakej kvalitnej triede. Prémiová doska na lacnej skrinke vyzerá nekoherentne — a tá investícia sa nikdy nevráti. <strong>Riešenie:</strong> kvalitný laminát za €500–700 alebo kvarcit nižšej triedy za €1 200.</p>
+<p>Ak máte kuchynské skrinky za 1\u00A0500\u00A0€, nemá zmysel na ne dať dosku za 2\u00A0800\u00A0€. Materiály by mali byť v rovnakej triede kvality. Prémiová doska na lacnej skrinke vyzerá nekoherentne – a tá investícia sa nikdy nevráti. <strong>Riešenie:</strong> kvalitný laminát za 500 – 700\u00A0€ alebo kvarcit nižšej triedy za 1\u00A0200\u00A0€.</p>
 
-<h3>2. Celkový rozpočet na dosku pod €1 000</h3>
-<p>Pri tomto rozpočte sinterovaný kameň jednoducho nie je možný (ani v najtenšej verzii a najmenšom rozmere). <strong>Riešenie:</strong> kvalitný HPL laminát s postformingom od značiek ako Egger alebo Pfleiderer. Za 500–800\u00A0€ dostanete veľmi slušnú dosku s 10–15-ročnou životnosťou.</p>
+<h3>2. Celkový rozpočet na dosku pod 1\u00A0000\u00A0€</h3>
+<p>Pri tomto rozpočte sinterovaný kameň jednoducho nie je možný (ani v najtenšej verzii a najmenšom rozmere). <strong>Riešenie:</strong> kvalitný HPL laminát s postformingom od značiek ako Egger alebo Pfleiderer. Za 500 – 800\u00A0€ dostanete veľmi slušnú dosku s 10 – 15-ročnou životnosťou.</p>
 
 <h3>3. Sťahujete sa do 3 rokov</h3>
-<p>Za 3 roky neušetríte na údržbe dosť, aby sa vyššia počiatočná investícia vrátila. A pri predaji bytu/domu rozdiel medzi kvarcitom a sinterovaným kameňom kupujúci pravdepodobne finančne neocení. <strong>Riešenie:</strong> kvarcit strednej triedy — najlepší pomer výkon/cena pre krátkodobé bývanie.</p>
+<p>Za 3 roky neušetríte na údržbe dosť, aby sa vyššia počiatočná investícia vrátila. A pri predaji bytu/domu rozdiel medzi kvarcitom a sinterovaným kameňom kupujúci pravdepodobne finančne neocení. <strong>Riešenie:</strong> kvarcit strednej triedy – najlepší pomer výkon/cena pre krátkodobé bývanie.</p>
 
-<h3>4. Malá kúpeľňová doska (pod 1 m²)</h3>
+<h3>4. Malá kúpeľňová doska (pod 1\u00A0m²)</h3>
 <p>Pre umývadlovú dosku v kúpeľni je sinterovaný kameň technicky vynikajúci, ale cenový rozdiel oproti kvalitnej porcelánovej dlažbe je neúmerný pri malom rozmere. Spracovanie malých kusov sinterovaného kameňa je relatívne drahé (fixné náklady na CNC nastavenie). <strong>Riešenie:</strong> veľkoformátová porcelánová dlaždica alebo kvalitný kvarcit.</p>
 
 <h3>5. Exteriérový jedálenský stôl v tieni</h3>
-<p>Sinterovaný kameň je vynikajúci v exteriéri vďaka UV a mrazuvzdornosti. Ale ak je stôl v tieni a nepotrebujete UV odolnosť, prémiový porcelán za nižšiu cenu splní rovnakú funkciu. <strong>Riešenie:</strong> veľkoformátové porcelánové dosky od špecializovaných výrobcov.</p>
+<p>Sinterovaný kameň je vynikajúci v exteriéri vďaka UV odolnosti a mrazuvzdornosti. Ale ak je stôl v tieni a nepotrebujete UV odolnosť, prémiový porcelán za nižšiu cenu splní rovnakú funkciu. <strong>Riešenie:</strong> veľkoformátové porcelánové dosky od špecializovaných výrobcov.</p>
 
 <h2 id="navratnost-investicie">Aká je návratnosť investície?</h2>
 
-<p>Poďme sa pozrieť na sinterovaný kameň ako na investíciu — nie náklad.</p>
+<p>Poďme sa pozrieť na sinterovaný kameň ako na investíciu – nie náklad.</p>
 
 <h3>Kuchynská rekonštrukcia a hodnota nehnuteľnosti</h3>
-<p>Podľa európskych realitných dát zvyšuje kompletná rekonštrukcia kuchyne hodnotu nehnuteľnosti o <strong>60–80% investovanej sumy</strong>. To znamená: ak investujete 15\u00A0000\u00A0€ do kuchyne, hodnota bytu vzrastie o cca 9\u00A0000–12\u00A0000\u00A0€. Prémiové materiály (kameň namiesto laminátu) túto návratnosť zvyšujú — kupujúci v prémiovom segmente <strong>platia nadproporčne viac za viditeľnú kvalitu</strong>.</p>
+<p>Podľa európskych realitných dát zvyšuje kompletná rekonštrukcia kuchyne hodnotu nehnuteľnosti o <strong>60 – 80\u00A0% investovanej sumy</strong>. To znamená: ak investujete 15\u00A0000\u00A0€ do kuchyne, hodnota bytu vzrastie o cca 9\u00A0000 – 12\u00A0000\u00A0€. Prémiové materiály (kameň namiesto laminátu) túto návratnosť zvyšujú – kupujúci v prémiovom segmente <strong>platia nadproporčne viac za viditeľnú kvalitu</strong>.</p>
 
 <h3>Bratislavský luxusný segment</h3>
-<p>V bratislavskom prémiovom segmente (byty nad €300 000, domy nad €500 000) kupujúci <strong>očakávajú</strong> kamennú dosku. Laminát je diskvalifikácia. Otázka je len: aký kameň?</p>
+<p>V bratislavskom prémiovom segmente (byty nad 300\u00A0000\u00A0€, domy nad 500\u00A0000\u00A0€) kupujúci <strong>očakávajú</strong> kamennú dosku. Laminát je diskvalifikácia. Otázka je len: aký kameň?</p>
 
 <ul>
-<li><strong>Žula:</strong> Vnímaná ako „klasická, ale zastaraná" voľba. Starší kupujúci ju akceptujú, mladší preferujú modernejšie materiály.</li>
-<li><strong>Kvarcit:</strong> Vnímaný ako „štandard prémiovej kuchyne." Bezpečná voľba.</li>
-<li><strong>Sinterovaný kameň:</strong> Vnímaný ako „najnovšia technológia, ultra-prémiový." Pre informovaných kupujúcich je to signál kvality. Pre neinformovaných vyzerá jednoducho ako krásny kameň — čo je tiež dosť.</li>
+<li><strong>Žula:</strong> Vnímaná ako „klasická, ale zastaraná“ voľba. Starší kupujúci ju akceptujú, mladší preferujú modernejšie materiály.</li>
+<li><strong>Kvarcit:</strong> Vnímaný ako „štandard prémiovej kuchyne.“ Bezpečná voľba.</li>
+<li><strong>Sinterovaný kameň:</strong> Vnímaný ako „najnovšia technológia, ultraprémiový.“ Pre informovaných kupujúcich je to signál kvality. Pre neinformovaných vyzerá jednoducho ako krásny kameň – čo je tiež dosť.</li>
 </ul>
 
 <h3>Psychológia kupujúceho</h3>
-<p>Pri prehliadke nehnuteľnosti venuje priemerný kupujúci kuchyni <strong>viac času ako akejkoľvek inej miestnosti</strong>. Prvé, čoho sa dotkne, je pracovná doska. Ten hmatový pocit — studený, hladký, masívny kameň — okamžite komunikuje kvalitu celého bytu. Je to iracionálne? Možno. Ale funguje to.</p>
+<p>Pri prehliadke nehnuteľnosti venuje priemerný kupujúci kuchyni <strong>viac času ako akejkoľvek inej miestnosti</strong>. Prvé, čoho sa dotkne, je pracovná doska. Ten hmatový pocit – studený, hladký, masívny kameň – okamžite komunikuje kvalitu celého bytu. Je to iracionálne? Možno. Ale funguje to.</p>
 
-<p>Sinterovaný kameň má ešte jednu výhodu: keď poviete kupujúcemu „toto je sinterovaný kameň — nevyžaduje impregnáciu, je odolný voči teplu aj UV“, práve ste mu dali <strong>racionálny dôvod</strong>, aby ospravedlnil emocionálne rozhodnutie. A to je presne to, čo kupujúci v prémiovom segmente potrebujú.</p>
+<p>Sinterovaný kameň má ešte jednu výhodu: keď poviete kupujúcemu „toto je sinterovaný kameň – nevyžaduje impregnáciu, je odolný voči teplu aj UV“, práve ste mu dali <strong>racionálny dôvod</strong>, aby ospravedlnil emocionálne rozhodnutie. A to je presne to, čo kupujúci v prémiovom segmente potrebujú.</p>
 
 <h3>Kvantitatívny odhad návratnosti</h3>
 <p>Pre prémiovú nehnuteľnosť v Bratislave odhadujeme, že sinterovaný kameň oproti kvarcitu:</p>
 <ul>
-<li>Zvyšuje vnímanú hodnotu kuchyne o <strong>€500–1 500</strong> pri predaji</li>
-<li>Počiatočný rozdiel v cene: <strong>€600–800</strong></li>
-<li>Čistá návratnosť pri predaji do 10 rokov: <strong>€0–700</strong> (neistá, závisí od kupujúceho)</li>
-<li>Čistá návratnosť pri vlastníctve 15+ rokov: <strong>€800–3 000+</strong> (istá — úspory na údržbe + zachovaná estetika)</li>
+<li>Zvyšuje vnímanú hodnotu kuchyne o <strong>500 – 1\u00A0500\u00A0€</strong> pri predaji</li>
+<li>Počiatočný rozdiel v cene: <strong>600 – 800\u00A0€</strong></li>
+<li>Čistá návratnosť pri predaji do 10 rokov: <strong>0 – 700\u00A0€</strong> (neistá, závisí od kupujúceho)</li>
+<li>Čistá návratnosť pri vlastníctve 15+ rokov: <strong>800 – 3\u00A0000+\u00A0€</strong> (istá – úspory na údržbe + zachovaná estetika)</li>
 </ul>
 
 <h2 id="faq">Často kladené otázky</h2>
@@ -278,63 +278,63 @@ export const ARTICLE_16: BlogArticle = {
     faqs: [
       {
         question: 'Je sinterovaný kameň drahší ako kvarcit?',
-        answer: 'Počiatočne áno — o cca 30–50%. Priemerná kuchynská doska zo sinterovaného kameňa stojí €1 400–3 500 (4 m²), kým kvarcit €1 060–2 640. Ale pri 25-ročnom vlastníctve sú celkové náklady porovnateľné, pretože sinterovaný kameň nevyžaduje impregnáciu ani špeciálnu údržbu.'
+        answer: 'Počiatočne áno – o cca 30 – 50\u00A0%. Priemerná kuchynská doska zo sinterovaného kameňa stojí 1\u00A0400 – 3\u00A0500\u00A0€ (4\u00A0m²), kým kvarcit 1\u00A0060 – 2\u00A0640\u00A0€. Ale pri 25-ročnom vlastníctve sú celkové náklady porovnateľné, pretože sinterovaný kameň nevyžaduje impregnáciu ani špeciálnu údržbu.'
       },
       {
         question: 'Koľko stojí sinterovaný kameň na meter štvorcový?',
-        answer: 'Samotný materiál stojí €250–600/m² v závislosti od hrúbky (6mm, 12mm, 20mm), značky a vzoru. S opracovaním a inštaláciou počítajte s celkovými nákladmi 350–875\u00A0€/m². Najčastejšie objednávky v Orostone sa pohybujú v rozmedzí €450–650/m² vrátane všetkého.'
+        answer: 'Samotný materiál stojí 250 – 600\u00A0€/m² v závislosti od hrúbky (6\u00A0mm, 12\u00A0mm, 20\u00A0mm), značky a vzoru. S opracovaním a inštaláciou počítajte s celkovými nákladmi 350 – 875\u00A0€/m². Najčastejšie objednávky v Orostone sa pohybujú v rozmedzí 450 – 650\u00A0€/m² vrátane všetkého.'
       },
       {
-        question: 'Oplatí sa sinterovaný kameň pri rozpočte €1 500 na dosku?',
-        answer: 'Na hranici. Za 1\u00A0500\u00A0€ dostanete sinterovaný kameň v tenšej (6\u00A0mm) verzii, základnom dizajne a pri menšej kuchyni (do 3\u00A0m²). Ak máte štandardnú 4\u00A0m² kuchyňu, za tento rozpočet dostanete kvalitnejší kvarcit — čo je v tomto prípade rozumnejšia voľba.'
+        question: 'Oplatí sa sinterovaný kameň pri rozpočte 1\u00A0500\u00A0€ na dosku?',
+        answer: 'Na hranici. Za 1\u00A0500\u00A0€ dostanete sinterovaný kameň v tenšej (6\u00A0mm) verzii, základnom dizajne a pri menšej kuchyni (do 3\u00A0m²). Ak máte štandardnú 4\u00A0m² kuchyňu, za tento rozpočet dostanete kvalitnejší kvarcit – čo je v tomto prípade rozumnejšia voľba.'
       },
       {
         question: 'Prečo je spracovanie sinterovaného kameňa také drahé?',
-        answer: 'Sinterovaný kameň je extrémne tvrdý materiál (7–8 Mohs). Vyžaduje špecializované CNC stroje s diamantovými nástrojmi, skúsených technikov a pomalšie rezné rýchlosti. Výrezy pre drez a varný panel sú najnáročnejšie operácie. Výsledkom je dokonalá presnosť — ale za vyššiu cenu spracovania.'
+        answer: 'Sinterovaný kameň je extrémne tvrdý materiál (7 – 8 Mohs). Vyžaduje špecializované CNC stroje s diamantovými nástrojmi, skúsených technikov a pomalšie rezné rýchlosti. Výrezy pre drez a varný panel sú najnáročnejšie operácie. Výsledkom je dokonalá presnosť – ale za vyššiu cenu spracovania.'
       },
       {
         question: 'Koľko ušetrím na údržbe oproti žule za 25 rokov?',
-        answer: 'Reálne €1 600–3 600 len na impregnáciách (žula vyžaduje reimpregnáciu každé 2–3 roky za €200–300). Ak pripočítate profesionálne čistenie škvrn, celková úspora je €2 000–4 000 za 25 rokov.'
+        answer: 'Reálne 1\u00A0600 – 3\u00A0600\u00A0€ len na impregnáciách (žula vyžaduje reimpregnáciu každé 2 – 3 roky za 200 – 300\u00A0€). Ak pripočítate profesionálne čistenie škvŕn, celková úspora je 2\u00A0000 – 4\u00A0000\u00A0€ za 25 rokov.'
       },
       {
         question: 'Je lacnejšie kúpiť laminát a vymeniť ho dvakrát?',
-        answer: 'Áno, z čisto finančného hľadiska. Kvalitný laminát za €600 × 3 (pôvodný + 2 výmeny za 25 rokov) = €1 800. Sinterovaný kameň = €2 800. Rozdiel je €1 000. Ale: výmena dosky znamená demontáž drezu, varného panela, obkladov — to sú ďalšie náklady €300–500 za výmenu. A žijete 2–3 dni bez kuchyne. Plus estetický a hmatový rozdiel je obrovský.'
+        answer: 'Áno, z čisto finančného hľadiska. Kvalitný laminát za 600\u00A0€ × 3 (pôvodný + 2 výmeny za 25 rokov) = 1\u00A0800\u00A0€. Sinterovaný kameň = 2\u00A0800\u00A0€. Rozdiel je 1\u00A0000\u00A0€. Ale: výmena dosky znamená demontáž drezu, varného panela, obkladov – to sú ďalšie náklady 300 – 500\u00A0€ za výmenu. A žijete 2 – 3 dni bez kuchyne. Plus estetický a hmatový rozdiel je obrovský.'
       },
       {
         question: 'Zvýši sinterovaný kameň hodnotu mojej nehnuteľnosti?',
-        answer: 'V prémiovom segmente bratislavského trhu (byty nad €250 000) áno — odhadujeme zvýšenie vnímanej hodnoty kuchyne o €500–1 500 oproti kvarcitu. V strednom segmente je rozdiel menší a ťažšie merateľný. V nižšom segmente sa investícia pri predaji nevráti.'
+        answer: 'V prémiovom segmente bratislavského trhu (byty nad 250\u00A0000\u00A0€) áno – odhadujeme zvýšenie vnímanej hodnoty kuchyne o 500 – 1\u00A0500\u00A0€ oproti kvarcitu. V strednom segmente je rozdiel menší a ťažšie merateľný. V nižšom segmente sa investícia pri predaji nevráti.'
       },
       {
         question: 'Oplatí sa sinterovaný kameň do Airbnb?',
-        answer: 'Pre väčšinu Airbnb nie. Kvarcit strednej triedy ponúka lepší pomer ceny a odolnosti. Výnimka: ultra-prémiové apartmány v centre Bratislavy (nad €120/noc), kde „prémiová kuchyňa" reálne zvyšuje obsadenosť a cenu za noc.'
+        answer: 'Pre väčšinu Airbnb nie. Kvarcit strednej triedy ponúka lepší pomer ceny a odolnosti. Výnimka: ultraprémiové apartmány v centre Bratislavy (nad 120\u00A0€/noc), kde „prémiová kuchyňa“ reálne zvyšuje obsadenosť a cenu za noc.'
       },
       {
         question: 'Kedy je kvarcit lepšia voľba ako sinterovaný kameň?',
-        answer: 'Kvarcit je lepšia voľba v týchto scenároch: 1) bývanie na 5–10 rokov, 2) rozpočet pod €2 000 na dosku, 3) prenájom (okrem ultra-prémiového segmentu), 4) kuchyňa bez priameho slnka a bez intenzívneho varenia s horúcimi hrnčekmi. V týchto prípadoch ušetríte 600–800\u00A0€ bez merateľného kompromisu.'
+        answer: 'Kvarcit je lepšia voľba v týchto scenároch: 1) bývanie na 5 – 10 rokov, 2) rozpočet pod 2\u00A0000\u00A0€ na dosku, 3) prenájom (okrem ultraprémiového segmentu), 4) kuchyňa bez priameho slnka a bez intenzívneho varenia s horúcimi hrnčekmi. V týchto prípadoch ušetríte 600 – 800\u00A0€ bez merateľného kompromisu.'
       },
       {
         question: 'Existuje niečo, v čom je sinterovaný kameň horší ako kvarcit?',
-        answer: 'Áno. Sinterovaný kameň je tvrdší a krehkejší — pri silnom bodovom náraze na hrane (napríklad spadnutie ťažkého oceľového hrnca presne na roh dosky) sa môže odštiepiť. Kvarcit je pružnejší vďaka živicovému pojivu. Oprava odštiepenia sinterovaného kameňa je tiež zložitejšia. V praxi je to však zriedkavý scenár.'
+        answer: 'Áno. Sinterovaný kameň je tvrdší a krehkejší – pri silnom bodovom náraze na hrane (napríklad spadnutie ťažkého oceľového hrnca presne na roh dosky) sa môže odštiepiť. Kvarcit je pružnejší vďaka živicovému pojivu. Oprava odštiepenia sinterovaného kameňa je tiež zložitejšia. V praxi je to však zriedkavý scenár.'
       },
       {
         question: 'Dá sa sinterovaný kameň financovať na splátky?',
-        answer: 'Áno. V Orostone ponúkame splátkový predaj cez partnerské spoločnosti. Typicky 12–36 mesačných splátok. Pri doske za €2 800 vychádza splátka na cca €80–240/mesiac v závislosti od dĺžky splácania. Kontaktujte nás pre konkrétnu kalkuláciu.'
+        answer: 'Áno. V Orostone ponúkame splátkový predaj cez partnerské spoločnosti. Typicky 12 – 36 mesačných splátok. Pri doske za 2\u00A0800\u00A0€ vychádza splátka na cca 80 – 240\u00A0€/mesiac v závislosti od dĺžky splácania. Kontaktujte nás pre konkrétnu kalkuláciu.'
       },
       {
         question: 'Koľko stojí oprava sinterovaného kameňa, ak sa poškodí?',
-        answer: 'Drobné škrabance na matnom povrchu: neviditeľné (matný povrch ich maskuje). Odštiepenie hrany: profesionálna oprava €100–250. Prasknutie dosky (veľmi zriedkavé): výmena segmentu €500–1 200, alebo celej dosky €2 000+. Pre porovnanie: oprava žuly stojí podobne, oprava laminátu je väčšinou nemožná (len výmena).'
+        answer: 'Drobné škrabance na matnom povrchu: neviditeľné (matný povrch ich maskuje). Odštiepenie hrany: profesionálna oprava 100 – 250\u00A0€. Prasknutie dosky (veľmi zriedkavé): výmena segmentu 500 – 1\u00A0200\u00A0€, alebo celej dosky 2\u00A0000+\u00A0€. Pre porovnanie: oprava žuly stojí podobne, oprava laminátu je väčšinou nemožná (len výmena).'
       },
       {
         question: 'Je sinterovaný kameň ekologickejší ako kvarcit?',
-        answer: 'Z hľadiska životného cyklu áno. Sinterovaný kameň obsahuje 100% prírodné minerály bez polyesterových živíc (kvarcit obsahuje 7–10% živíc z petrochémie). Na konci životnosti je sinterovaný kameň inertný materiál — nevylučuje škodliviny. Dlhšia životnosť tiež znamená menej odpadu z výmen.'
+        answer: 'Z hľadiska životného cyklu áno. Sinterovaný kameň obsahuje 100\u00A0% prírodné minerály bez polyesterových živíc (kvarcit obsahuje 7 – 10\u00A0% živíc z petrochémie). Na konci životnosti je sinterovaný kameň inertný materiál – nevylučuje škodliviny. Dlhšia životnosť tiež znamená menej odpadu z výmen.'
       },
       {
         question: 'Ako dlho vydrží sinterovaný kameň?',
-        answer: 'Pri bežnom kuchynskom použití desiatky rokov — výrobcovia udávajú životnosť 50+ rokov bez degradácie. Na rozdiel od kvarcitu nedegraduje UV žiarením, na rozdiel od žuly nevyžaduje pravidelnú impregnáciu na udržanie ochranných vlastností. Reálne obmedzenie životnosti je skôr zmena dizajnových preferencií ako opotrebenie materiálu.'
+        answer: 'Pri bežnom kuchynskom použití desiatky rokov – výrobcovia udávajú životnosť 50+ rokov bez degradácie. Na rozdiel od kvarcitu sa UV žiarením nedegraduje, na rozdiel od žuly nevyžaduje pravidelnú impregnáciu na udržanie ochranných vlastností. Reálne obmedzenie životnosti je skôr zmena dizajnových preferencií ako opotrebenie materiálu.'
       },
       {
         question: 'Môžem si sinterovaný kameň nainštalovať sám?',
-        answer: 'Dôrazne neodporúčame. Sinterovaný kameň je ťažký (30 kg/m²), krehký pri nesprávnej manipulácii a vyžaduje presné rezanie diamantovými nástrojmi. Chybná inštalácia môže spôsobiť prasknutie dosky v hodnote tisícov eur. Profesionálna inštalácia stojí €40–75/m² — to je zlomok ceny materiálu a istota správneho výsledku.'
+        answer: 'Dôrazne neodporúčame. Sinterovaný kameň je ťažký (30\u00A0kg/m²), krehký pri nesprávnej manipulácii a vyžaduje presné rezanie diamantovými nástrojmi. Chybná inštalácia môže spôsobiť prasknutie dosky v hodnote tisícov eur. Profesionálna inštalácia stojí 40 – 75\u00A0€/m² – to je zlomok ceny materiálu a istota správneho výsledku.'
       }
     ]
   },

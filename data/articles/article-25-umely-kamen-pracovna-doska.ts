@@ -15,67 +15,67 @@ export const ARTICLE_25: BlogArticle = {
     title: 'Umelý kameň na pracovnú dosku: cena, typy a výber do kuchyne',
     subtitle: 'Rozhodovací proces, cenové hladiny a 7 chýb, ktorým sa vyhnúť pri výbere kuchynskej pracovnej dosky',
     excerpt: 'Zistite, koľko stojí pracovná doska z umelého kameňa, aké typy existujú a kedy sa oplatí quartz, sinterovaný kameň alebo keramická kuchynská doska.',
-    directAnswer: 'Umelý kameň je laický pojem pre kompozitné kuchynské povrchy — typicky kremenný kompozit, sinterovaný kameň, solid surface alebo keramiku. Pred kúpou si vyjasnite použitie kuchyne, rozpočet a typ materiálu. Cena pracovnej dosky sa pohybuje od 280 do 600 €/bm vrátane fabrikácie a montáže.',
+    directAnswer: 'Umelý kameň je laický pojem pre kompozitné kuchynské povrchy – typicky kremenný kompozit, sinterovaný kameň, solid surface alebo keramiku. Pred kúpou si vyjasnite použitie kuchyne, rozpočet a typ materiálu. Cena pracovnej dosky sa pohybuje od 280 do 600\u00A0€/bm vrátane fabrikácie a montáže.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>
 <ul class="article-tldr">
-  <li>Umelý kameň nie je značka ani konkrétny materiál — je to laický názov pre kompozitné povrchy. Pred kúpou potrebujete vedieť, aký konkrétny typ vám predajca ponúka.</li>
+  <li>Umelý kameň nie je značka ani konkrétny materiál – je to laický názov pre kompozitné povrchy. Pred kúpou potrebujete vedieť, aký konkrétny typ vám predajca ponúka.</li>
   <li>Rozhodnutie medzi umelým a prírodným kameňom závisí od troch vecí: koľko slnka má kuchyňa, koľko v nej reálne varíte a koľko ste ochotný investovať do údržby.</li>
-  <li>Pri pracovných doskách počítajte s cenou 280–600 €/bm vrátane fabrikácie a montáže. Pri ponukách pod 200 €/bm spozornite — niečo v procese sa škrtá.</li>
-  <li>Najčastejšia chyba pri výbere nie je výber zlého materiálu, ale výber zlého dodávateľa. Aj prémiový sinterovaný kameň prasknú nesprávne navrhnuté výrezy.</li>
-  <li>Po roku používania ľudia najviac ľutujú, že si nedohodli detail edge profilu, šírku spojov a finálnu kresbu dekoru pred montážou — nie samotný materiál.</li>
+  <li>Pri pracovných doskách počítajte s cenou 280 – 600\u00A0€/bm vrátane fabrikácie a montáže. Pri ponukách pod 200\u00A0€/bm spozornite – niečo v procese sa škrtá.</li>
+  <li>Najčastejšia chyba pri výbere nie je výber zlého materiálu, ale výber zlého dodávateľa. Aj prémiový sinterovaný kameň praskne pri nesprávne navrhnutých výrezoch.</li>
+  <li>Po roku používania ľudia najviac ľutujú, že si nedohodli detail profilu hrany, šírku spojov a finálnu kresbu dekoru pred montážou – nie samotný materiál.</li>
 </ul>
 
-<p>„Umelý kameň" je <strong class="gold">jeden z najpoužívanejších termínov</strong> v slovenských kuchynských diskusiách — a zároveň jeden z najnejasnejších. Pod tým istým slovom predajcovia ponúkajú kremenný kompozit, sinterovaný kameň, keramickú dosku alebo solid surface. Sú to štyri rôzne materiály s rôznou cenou, odolnosťou a chovaním v kuchyni.</p>
+<p>„Umelý kameň“ je <strong class="gold">jeden z najpoužívanejších termínov</strong> v slovenských kuchynských diskusiách – a zároveň jeden z najnejasnejších. Pod tým istým slovom predajcovia ponúkajú kremenný kompozit, sinterovaný kameň, keramickú dosku alebo solid surface. Sú to štyri rôzne materiály s rôznou cenou, odolnosťou a správaním v kuchyni.</p>
 
-<p>Tento článok nie je akademická definícia. Je to <strong class="gold">poctivý sprievodca rozhodnutím</strong>, ktorý napísal tím, ktorý s partnerskými kamenármi denne rieši zameranie, výrobu aj montáž kuchynských pracovných dosiek. Cieľ je jednoduchý: aby ste pred showroomom vedeli, čo sa pýtať, čomu sa vyhnúť a koľko reálne počítať. Ak hľadáte kompletnú definíciu kompozitných materiálov, prečítajte si <a href="/blog/technicky-kamen-cena-pracovna-doska">úplný sprievodca technickým kameňom</a>. Tento článok začína tam, kde ten končí — pri rozhodnutí.</p>
+<p>Tento článok nie je akademická definícia. Je to <strong class="gold">poctivý sprievodca rozhodnutím</strong>, ktorý napísal tím, ktorý s partnerskými kamenármi denne rieši zameranie, výrobu aj montáž kuchynských pracovných dosiek. Cieľ je jednoduchý: aby ste pred showroomom vedeli, čo sa pýtať, čomu sa vyhnúť a koľko reálne počítať. Ak hľadáte kompletnú definíciu kompozitných materiálov, prečítajte si <a href="/blog/technicky-kamen-cena-pracovna-doska">úplného sprievodcu technickým kameňom</a>. Tento článok začína tam, kde ten končí – pri rozhodnutí.</p>
 
 <div class="article-quote">
-  <p>Umelý kameň nie je horší ako prírodný. Je iný — a v niektorých kuchyniach má jednoznačne väčší zmysel.</p>
+  <p>Umelý kameň nie je horší ako prírodný. Je iný – a v niektorých kuchyniach má jednoznačne väčší zmysel.</p>
 </div>
 
 <figure class="article-figure">
-  <img src="/images/blog/umely-kamen-pracovna-doska.webp" alt="Pracovná doska z umelého kameňa v modernej kuchyni — sinterovaný kameň ako kompozitný povrch" />
-  <figcaption>Moderná kuchyňa s pracovnou doskou z umelého kameňa — kompozitný povrch v matnom dekore.</figcaption>
+  <img src="/images/blog/umely-kamen-pracovna-doska.webp" alt="Pracovná doska z umelého kameňa v modernej kuchyni – sinterovaný kameň ako kompozitný povrch" />
+  <figcaption>Moderná kuchyňa s pracovnou doskou z umelého kameňa – kompozitný povrch v matnom dekore.</figcaption>
 </figure>
 
 <h2 id="umely-vs-prirodny">Umelý kameň alebo prírodný? Začnite rozhodnutím</h2>
 
-<p>Toto je rozhodnutie, ktoré sa robí ako prvé — nie pri výbere dekoru. Pretože odpoveď určuje, koľko vás kuchyňa bude stáť po piatich rokoch používania, nie iba pri prvej fakture.</p>
+<p>Toto je rozhodnutie, ktoré sa robí ako prvé – nie pri výbere dekoru. Pretože odpoveď určuje, koľko vás kuchyňa bude stáť po piatich rokoch používania, nie iba pri prvej faktúre.</p>
 
-<p>Prírodný kameň (mramor, granit, žula, vápenec) sa ťaží v lome a má individuálnu kresbu, ktorú nikto neskopíruje. Má však dva háčiky: <strong class="gold">je pórovitý</strong> a vyžaduje pravidelnú impregnáciu, a niektoré druhy (mramor, vápenec) sú citlivé na kyseliny — citrón, ocot, paradajková omáčka zanechajú stopy.</p>
+<p>Prírodný kameň (mramor, granit, žula, vápenec) sa ťaží v lome a má individuálnu kresbu, ktorú nikto neskopíruje. Má však dva háčiky: <strong class="gold">je pórovitý</strong> a vyžaduje pravidelnú impregnáciu, a niektoré druhy (mramor, vápenec) sú citlivé na kyseliny – citrón, ocot, paradajková omáčka zanechajú stopy.</p>
 
-<p>Umelý kameň je kompozit — buď drvený kremeň so živicou (quartz kompozit), spekané minerály bez živice (sinterovaný kameň), keramika alebo akrylát. Vyrába sa s konzistentnou kresbou, takmer nulovou nasiakavosťou a štandardizovanými technickými parametrami.</p>
+<p>Umelý kameň je kompozit – buď drvený kremeň so živicou (quartz kompozit), spekané minerály bez živice (sinterovaný kameň), keramika alebo akrylát. Vyrába sa s konzistentnou kresbou, takmer nulovou nasiakavosťou a štandardizovanými technickými parametrami.</p>
 
 <div class="article-highlight">
   <p><strong>Rýchla rozhodovacia matica:</strong></p>
   <ul>
-    <li><strong>Vyberte umelý kameň</strong>, ak: kuchyňu používate aktívne (varíte denne), máte malé deti, kuchyňa je pri veľkom okne s priamym slnkom, nechcete sa starať o pravidelnú impregnáciu, alebo plánujete jednotný dekor cez ostrov + zástenu + linku.</li>
+    <li><strong>Vyberte umelý kameň</strong>, ak: kuchyňu používate aktívne (varíte denne), máte malé deti, kuchyňa je pri veľkom okne s priamym slnkom, nechcete sa starať o pravidelnú impregnáciu alebo plánujete jednotný dekor cez ostrovček + zástenu + linku.</li>
     <li><strong>Zvážte prírodný kameň</strong>, ak: chcete jedinečnú prírodnú kresbu, používate kuchyňu menej intenzívne, ste ochotný impregnovať raz za rok a páči sa vám patina, ktorá vznikne časom.</li>
-    <li><strong>Skombinujte oba</strong>, ak: chcete prírodný mramor na ostrov ako vizuálny akcent + odolný umelý kameň na pracovnú zónu okolo varnej dosky a drezu.</li>
+    <li><strong>Skombinujte oba</strong>, ak: chcete prírodný mramor na ostrovček ako vizuálny akcent + odolný umelý kameň na pracovnú zónu okolo varnej dosky a drezu.</li>
   </ul>
 </div>
 
-<h2 id="co-je-umely-kamen">Čo presne myslia predajcovia pod „umelý kameň"?</h2>
+<h2 id="co-je-umely-kamen">Čo presne myslia predajcovia pod „umelý kameň“?</h2>
 
-<p>Pri rovnakej fráze rôzni predajcovia myslia rôzne materiály. Tu je preklad, čo môžete dostať pod nálepkou „umelý kameň":</p>
+<p>Pri rovnakej fráze rôzni predajcovia myslia rôzne materiály. Tu je preklad toho, čo môžete dostať pod nálepkou „umelý kameň“:</p>
 
-<p><strong>Kremenný (quartz) kompozit</strong> — najčastejšia interpretácia. Drvený kremeň, živica a pigmenty. Značky Technistone, Silestone, Caesarstone. <strong class="gold">90 % kremeňa, 10 % živice</strong> — z toho vyplýva aj jeho hlavná slabina: živica nezvláda dlhodobo vysokú teplotu a UV žiarenie. Pri intenzívnom slnku môže kompozit po pár rokoch žltnúť.</p>
+<p><strong>Kremenný (quartz) kompozit</strong> – najčastejšia interpretácia. Drvený kremeň, živica a pigmenty. Značky Technistone, Silestone, Caesarstone. <strong class="gold">90\u00A0% kremeňa, 10\u00A0% živice</strong> – z toho vyplýva aj jeho hlavná slabina: živica nezvláda dlhodobo vysokú teplotu a UV žiarenie. Pri intenzívnom slnku môže kompozit po pár rokoch žltnúť.</p>
 
-<p><strong>Sinterovaný kameň</strong> — minerálny povrch lisovaný a spekaný pri teplote nad 1 200 °C. Bez živice. Značky Dekton, Lapitec, Neolith, Laminam. Drahší ako kremenný kompozit, ale UV-stabilný a tepelne odolnejší. Detailne ho rozoberáme v <a href="/sinterovany-kamen">sekcii Sinterovaný kameň</a>. Dekory, ktoré dodávame, nájdete v <a href="/kategoria/sintered-stone">prehľade dekorov</a>.</p>
+<p><strong>Sinterovaný kameň</strong> – minerálny povrch lisovaný a spekaný pri teplote nad 1\u00A0200\u00A0°C. Bez živice. Značky Dekton, Lapitec, Neolith, Laminam. Drahší ako kremenný kompozit, ale UV-stabilný a tepelne odolnejší. Detailne ho rozoberáme v <a href="/sinterovany-kamen">sekcii Sinterovaný kameň</a>. Dekory, ktoré dodávame, nájdete v <a href="/kategoria/sintered-stone">prehľade dekorov</a>.</p>
 
-<p><strong>Keramická doska / veľkoformátový porcelán</strong> — vypálená keramická zmes, často v hrúbkach 6–12 mm. Vyzerá výborne, ale tenké formáty vyžadujú presnejšiu fabrikáciu — pri zlej manipulácii praskne pri výreze pre drez.</p>
+<p><strong>Keramická doska / veľkoformátový porcelán</strong> – vypálená keramická zmes, často v hrúbkach 6 – 12\u00A0mm. Vyzerá výborne, ale tenké formáty vyžadujú presnejšiu fabrikáciu – pri zlej manipulácii praskne pri výreze pre drez.</p>
 
-<p><strong>Solid surface</strong> — akryl s minerálnymi plnivami. Najznámejší Corian. Tvarovateľný, vhodný na umývadlá a oblé tvary. Do kuchyne ako hlavná pracovná doska skôr výnimka — je mäkší a poškriabe sa rýchlejšie.</p>
+<p><strong>Solid surface</strong> – akryl s minerálnymi plnivami. Najznámejší Corian. Tvarovateľný, vhodný na umývadlá a oblé tvary. Do kuchyne ako hlavná pracovná doska skôr výnimka – je mäkší a poškriabe sa rýchlejšie.</p>
 
 <div class="article-tip">
   <p><strong>Čo sa pýtať v showroome</strong></p>
-  <p>Nepýtajte sa „máte umelý kameň?". Pýtajte sa konkrétne: „Aký typ umelého kameňa odporúčate pre moju kuchyňu? Obsahuje živicu? Aká je nasiakavosť? Ako sa správa pri priamom slnku?" Predajca, ktorý vie odpovedať bez zaváhania, je signál, že materiál pozná. Predajca, ktorý začne hovoriť o značkách bez technických detailov, predáva katalóg, nie kameň.</p>
+  <p>Nepýtajte sa „máte umelý kameň?“. Pýtajte sa konkrétne: „Aký typ umelého kameňa odporúčate pre moju kuchyňu? Obsahuje živicu? Aká je nasiakavosť? Ako sa správa pri priamom slnku?“ Predajca, ktorý vie odpovedať bez zaváhania, je signál, že materiál pozná. Predajca, ktorý začne hovoriť o značkách bez technických detailov, predáva katalóg, nie kameň.</p>
 </div>
 
 <figure class="article-figure">
   <img src="/images/blog/article-25/umely-vs-prirodny.webp" alt="Umelý kameň pracovná doska a porovnanie s prírodným kameňom v rovnakej kuchyni" loading="lazy" />
-  <figcaption>Porovnanie kompozitného a prírodného povrchu — vizuálne podobné, technicky odlišné.</figcaption>
+  <figcaption>Porovnanie kompozitného a prírodného povrchu – vizuálne podobné, technicky odlišné.</figcaption>
 </figure>
 
 <h2 id="5-otazok-pred-showroomom">5 otázok, ktoré si vyjasnite pred showroomom</h2>
@@ -84,23 +84,23 @@ export const ARTICLE_25: BlogArticle = {
 
 <h3>1. Aké sú reálne rozmery vašej pracovnej dosky?</h3>
 
-<p>Bežne meraná dĺžka: <strong class="gold">3,5 až 6,5 bežných metrov</strong> v štandardnej slovenskej kuchyni. Plus prípadný ostrov 2–3,5 m. Tieto čísla potrebujete poznať pred prvou ponukou — bez nich vám predajca dá iba „od €X za bežný meter", čo nie je odpoveď.</p>
+<p>Bežne meraná dĺžka: <strong class="gold">3,5 až 6,5 bežného metra</strong> v štandardnej slovenskej kuchyni. Plus prípadný ostrovček 2 – 3,5\u00A0m. Tieto čísla potrebujete poznať pred prvou ponukou – bez nich vám predajca dá iba „od X\u00A0€ za bežný meter“, čo nie je odpoveď.</p>
 
 <h3>2. Koľko v kuchyni reálne varíte?</h3>
 
-<p>Rozdiel medzi „varíme každý deň pre 4-člennú rodinu" a „raz za týždeň prídu hostia" je pri výbere materiálu zásadný. Pri intenzívnom dennom používaní má sinterovaný kameň jasnú výhodu — neimpregnuje sa, nežltne, znesie horúci hrniec priamo z dosky. Pri menšej záťaži môže byť kvalitný kremenný kompozit ekonomickejší.</p>
+<p>Rozdiel medzi „varíme každý deň pre 4-člennú rodinu“ a „raz za týždeň prídu hostia“ je pri výbere materiálu zásadný. Pri intenzívnom dennom používaní má sinterovaný kameň jasnú výhodu – neimpregnuje sa, nežltne, znesie horúci hrniec priamo z dosky. Pri menšej záťaži môže byť kvalitný kremenný kompozit ekonomickejší.</p>
 
 <h3>3. Koľko priameho slnka dostáva pracovná zóna?</h3>
 
-<p>Tento detail rozhoduje viac, ako väčšina ľudí čaká. Ak na pracovnú dosku dopadá priame slnko viac než dve hodiny denne (typicky južná alebo západná orientácia, kuchyňa pri presklenej terase), kompozit so živicou je riskantnejší — postupne <strong class="gold">žltne a tvrdne</strong>. Sinterovaný kameň alebo keramika sú stabilnejšie.</p>
+<p>Tento detail rozhoduje viac, ako väčšina ľudí čaká. Ak na pracovnú dosku dopadá priame slnko viac než dve hodiny denne (typicky južná alebo západná orientácia, kuchyňa pri presklenej terase), kompozit so živicou je riskantnejší – postupne <strong class="gold">žltne a tvrdne</strong>. Sinterovaný kameň alebo keramika sú stabilnejšie.</p>
 
-<h3>4. Aký máte rozpočet — vrátane fabrikácie a montáže?</h3>
+<h3>4. Aký máte rozpočet – vrátane fabrikácie a montáže?</h3>
 
-<p>„Cena materiálu" nie je „cena pracovnej dosky". Cena, ktorá platí pre vašu kuchyňu, zahŕňa zameranie, výrobu (výrezy pre drez, varnú dosku, batériu), opracovanie hrán, dopravu, výnos do vyšších poschodí a montáž. Reálny rozpočet pre kuchyňu s 5 bm a jedným ostrovom začína okolo <strong class="gold">€2 000–€2 500</strong> pri kremennom kompozite a <strong class="gold">€3 500–€4 500</strong> pri sinterovanom kameni.</p>
+<p>„Cena materiálu“ nie je „cena pracovnej dosky“. Cena, ktorá platí pre vašu kuchyňu, zahŕňa zameranie, výrobu (výrezy pre drez, varnú dosku, batériu), opracovanie hrán, dopravu, výnos do vyšších poschodí a montáž. Reálny rozpočet pre kuchyňu s 5\u00A0bm a jedným ostrovčekom začína okolo <strong class="gold">2\u00A0000 – 2\u00A0500\u00A0€</strong> pri kremennom kompozite a <strong class="gold">3\u00A0500 – 4\u00A0500\u00A0€</strong> pri sinterovanom kameni.</p>
 
-<h3>5. Aký dekor sa vám páči — a aký zvládnete dlhodobo?</h3>
+<h3>5. Aký dekor sa vám páči – a aký zvládnete dlhodobo?</h3>
 
-<p>Výrazné mramorové imitácie s hlbokou kresbou pôsobia úchvatne na vzorke 30 × 30 cm. V plnej veľkosti 3-metrového ostrova môžu prevážiť celý interiér. Pred rozhodnutím si vždy vyžiadajte väčšiu vzorku (60 × 60 cm minimum) a pozrite si materiál v dennom svetle, nie iba v showroome pod LED.</p>
+<p>Výrazné mramorové imitácie s hlbokou kresbou pôsobia úchvatne na vzorke 30\u00A0×\u00A030\u00A0cm. V plnej veľkosti 3-metrového ostrovčeka môžu prevážiť celý interiér. Pred rozhodnutím si vždy vyžiadajte väčšiu vzorku (60\u00A0×\u00A060\u00A0cm minimum) a pozrite si materiál v dennom svetle, nie iba v showroome pod LED.</p>
 
 <h2 id="pre-koho-je-vhodna">Kuchynská pracovná doska z umelého kameňa: pre koho je vhodná?</h2>
 
@@ -108,123 +108,123 @@ export const ARTICLE_25: BlogArticle = {
 
 <h2 id="cenove-hladiny">Pracovná doska z umelého kameňa: cena podľa materiálu a montáže</h2>
 
-<p>Toto je sekcia, ktorú vám väčšina článkov nenapíše konkrétne. Nasledujúce čísla sú orientačné rozsahy pre rok 2026 vrátane základnej fabrikácie a montáže — nie cenníkový marketing.</p>
+<p>Toto je sekcia, ktorú vám väčšina článkov nenapíše konkrétne. Nasledujúce čísla sú orientačné rozsahy pre rok 2026 vrátane základnej fabrikácie a montáže – nie cenníkový marketing.</p>
 
-<p>Pri výbere neporovnávajte len samotný materiál. Kuchynské dosky z umelého kameňa sa líšia aj hrúbkou, typom výrezov, hranou, počtom spojov a kvalitou montáže — to všetko sa premieta do finálnej ceny rovnako ako značka kameňa.</p>
+<p>Pri výbere neporovnávajte len samotný materiál. Kuchynské dosky z umelého kameňa sa líšia aj hrúbkou, typom výrezov, hranou, počtom spojov a kvalitou montáže – to všetko sa premieta do finálnej ceny rovnako ako značka kameňa.</p>
 
 <div class="article-highlight">
-  <p><strong>€280 €/bm — vstupná hladina (kremenný kompozit, jednoduchý dekor)</strong></p>
+  <p><strong>280\u00A0€/bm – vstupná hladina (kremenný kompozit, jednoduchý dekor)</strong></p>
   <ul>
     <li>Štandardný quartz kompozit, neutrálny dekor (béžová, šedá, biela so svetlou kresbou)</li>
-    <li>Hrúbka 12 mm s rovnou hranou alebo jemným zrazením</li>
-    <li>2 výrezy (drez + varná doska), bez ostrova alebo s malým ostrovom do 1,8 m</li>
-    <li>Štandardná montáž v jednom dni, doprava do 30 km</li>
+    <li>Hrúbka 12\u00A0mm s rovnou hranou alebo jemným zrazením</li>
+    <li>2 výrezy (drez + varná doska), bez ostrovčeka alebo s malým ostrovčekom do 1,8\u00A0m</li>
+    <li>Štandardná montáž v jednom dni, doprava do 30\u00A0km</li>
   </ul>
   <p><strong>Kde sa šetrí:</strong> značka materiálu (menej známe značky), jednoduchý dekor, rovná hrana, malý objem. <strong>Pre koho:</strong> menšie kuchyne v byte, prenájom, druhá kuchyňa.</p>
 </div>
 
 <div class="article-highlight">
-  <p><strong>€400 €/bm — stredná hladina (prémiový kompozit alebo základný sinterovaný kameň)</strong></p>
+  <p><strong>400\u00A0€/bm – stredná hladina (prémiový kompozit alebo základný sinterovaný kameň)</strong></p>
   <ul>
     <li>Buď prémiový quartz s dekorom imitujúcim mramor, alebo vstupný sinterovaný kameň (Dekton, Laminam základné kolekcie)</li>
-    <li>Hrúbka 12 mm so zrazenou hranou alebo „mitered" geometriou pri ostrove</li>
-    <li>3–4 výrezy, ostrov do 3 m, 1 zástena</li>
+    <li>Hrúbka 12\u00A0mm so zrazenou hranou alebo „mitered“ geometriou pri ostrovčeku</li>
+    <li>3 – 4 výrezy, ostrovček do 3\u00A0m, 1 zástena</li>
     <li>Profesionálne zameranie, montáž s flush undermount drezom</li>
   </ul>
   <p><strong>Kde sa šetrí:</strong> kompromis medzi materiálom a fabrikáciou. <strong>Pre koho:</strong> hlavná kuchyňa v rodinnom dome alebo väčšom byte, aktívni varitelia.</p>
 </div>
 
 <div class="article-highlight">
-  <p><strong>€550 €/bm — prémiová hladina (prémiový sinterovaný kameň + komplexná fabrikácia)</strong></p>
+  <p><strong>550\u00A0€/bm – prémiová hladina (prémiový sinterovaný kameň + komplexná fabrikácia)</strong></p>
   <ul>
     <li>Prémiový sinterovaný kameň (Lapitec, Neolith Calacatta, Laminam Statuario)</li>
-    <li>Hrúbka 12 mm alebo 20 mm, podľa dizajnu; mitered hrany s waterfall ostrovom; book-match kresba pri viacerých platniach</li>
-    <li>5+ výrezov, ostrov 3+ m, zástena až po strop, integrované sokle</li>
+    <li>Hrúbka 12\u00A0mm alebo 20\u00A0mm, podľa dizajnu; mitered hrany s waterfall ostrovčekom; book-match kresba pri viacerých platniach</li>
+    <li>5+ výrezov, ostrovček 3+\u00A0m, zástena až po strop, integrované sokle</li>
     <li>Detailné zameranie, montáž s návrhom skrytých spojov</li>
   </ul>
-  <p><strong>Kde sa nešetrí:</strong> všetko od dekoru po detail. <strong>Pre koho:</strong> reprezentačná kuchyňa, ostrov ako stredobod interiéru, dlhodobá investícia 15+ rokov.</p>
+  <p><strong>Kde sa nešetrí:</strong> všetko od dekoru po detail. <strong>Pre koho:</strong> reprezentačná kuchyňa, ostrovček ako stredobod interiéru, dlhodobá investícia 15+ rokov.</p>
 </div>
 
-<p>Pod €280 €/bm pri sinterovanom kameni alebo prémiovom dekore sa väčšinou škrtá v fabrikácii — slabšie podlepenie, jednoduchšia hrana, prípadne nezahrnutá doprava alebo výnos. <strong class="gold">Najdrahší kompromis</strong> je dobre vyzerajúca platňa, ktorá po dvoch rokoch praskne pri zle navrhnutom výreze.</p>
+<p>Pod 280\u00A0€/bm pri sinterovanom kameni alebo prémiovom dekore sa väčšinou škrtá vo fabrikácii – slabšie podlepenie, jednoduchšia hrana, prípadne nezahrnutá doprava alebo výnos. <strong class="gold">Najdrahší kompromis</strong> je dobre vyzerajúca platňa, ktorá po dvoch rokoch praskne pri zle navrhnutom výreze.</p>
 
 <p>Ceny konkrétnych dekorov sinterovaného kameňa za m² s DPH nájdete v <a href="/cennik">cenníku kamenných pracovných dosiek</a>. Ak si chcete dekor najprv pozrieť pri dennom svetle, <a href="/vzorky">objednajte si vzorku</a>.</p>
 
 <div class="article-cta">
   <p>Máte rozmery alebo pôdorys kuchyne?</p>
-  <p>Pripravíme vám rozsah cien podľa skutočných parametrov vašej kuchyne — bez „od €X" obvyklých cenníkových odpovedí.</p>
+  <p>Pripravíme vám rozsah cien podľa skutočných parametrov vašej kuchyne – bez „od X\u00A0€“ obvyklých cenníkových odpovedí.</p>
   <a href="/kontakt" class="cta-btn">Nezáväzná konzultácia →</a>
 </div>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-25/cenove-hladiny.webp" alt="Pracovná doska umelý kameň cena — porovnanie troch cenových hladín kompozitných materiálov" loading="lazy" />
-  <figcaption>Tri cenové hladiny umelého kameňa — od vstupného kremenného kompozitu po prémiový sinterovaný kameň.</figcaption>
+  <img src="/images/blog/article-25/cenove-hladiny.webp" alt="Pracovná doska umelý kameň cena – porovnanie troch cenových hladín kompozitných materiálov" loading="lazy" />
+  <figcaption>Tri cenové hladiny umelého kameňa – od vstupného kremenného kompozitu po prémiový sinterovaný kameň.</figcaption>
 </figure>
 
 <h2 id="7-najcastejsich-chyb">7 najčastejších chýb pri výbere</h2>
 
-<p>Tieto chyby vidíme opakovane — nie z teórie, ale z reálnej praxe pri zameraniach a montážach. Niektoré sú lacné na opravu, iné znamenajú novú dosku.</p>
+<p>Tieto chyby vidíme opakovane – nie z teórie, ale z reálnej praxe pri zameraniach a montážach. Niektoré sú lacné na opravu, iné znamenajú novú dosku.</p>
 
 <h3>1. Rozhodovanie podľa malej vzorky</h3>
 
-<p>Vzorka 10 × 10 cm v showroome a 3-metrová doska v kuchyni vyzerajú odlišne. Žiadajte väčšiu vzorku, ideálne kus z tej istej platne, ktorá vám pôjde do kuchyne. Pri výrazných dekoroch požiadajte o fotografiu celej platne — kresba sa pri rezaní rozdelí, a vy chcete vedieť, ktorá časť skončí na vašom ostrove.</p>
+<p>Vzorka 10\u00A0×\u00A010\u00A0cm v showroome a 3-metrová doska v kuchyni vyzerajú odlišne. Žiadajte väčšiu vzorku, ideálne kus z tej istej platne, ktorá vám pôjde do kuchyne. Pri výrazných dekoroch požiadajte o fotografiu celej platne – kresba sa pri rezaní rozdelí, a vy chcete vedieť, ktorá časť skončí na vašom ostrovčeku.</p>
 
 <h3>2. Pozeranie iba na cenu za bežný meter</h3>
 
-<p>Cena €350 €/bm môže znamenať: doska + 2 výrezy + jednoduchá hrana + montáž — ALEBO len doska bez fabrikácie. Žiadajte rozpis: materiál, výrezy, hrana, doprava, montáž zvlášť. Inak porovnávate jablká s hruškami.</p>
+<p>Cena 350\u00A0€/bm môže znamenať: doska + 2 výrezy + jednoduchá hrana + montáž – ALEBO len doska bez fabrikácie. Žiadajte rozpis: materiál, výrezy, hrana, doprava, montáž zvlášť. Inak porovnávate jablká s hruškami.</p>
 
 <h3>3. Ignorovanie smeru kresby</h3>
 
-<p>Pri výrazných dekoroch (Calacatta, Patagonia, Pietra Grey) má smer kresby vplyv na výsledok. Predajca by mal pred rezaním ukázať „layout" — ako bude kresba prebiehať cez ostrov, ako sa stretne v rohu kuchyne, kde budú spoje. Ak vám túto vec nikto neukáže pred fabrikáciou, vyžiadajte si ju.</p>
+<p>Pri výrazných dekoroch (Calacatta, Patagonia, Pietra Grey) má smer kresby vplyv na výsledok. Predajca by mal pred rezaním ukázať „layout“ – ako bude kresba prebiehať cez ostrovček, ako sa stretne v rohu kuchyne, kde budú spoje. Ak vám túto vec nikto neukáže pred fabrikáciou, vyžiadajte si ju.</p>
 
 <h3>4. Podcenenie hrúbky pri výrezoch</h3>
 
-<p>Pri 12 mm doske je výrez pre veľký drez (60 × 50 cm) technicky náročnejší než pri 20 mm. Sinterovaný kameň je extrémne tvrdý, ale aj <strong class="gold">krehkejší v ohybe ako prírodná žula</strong>. Pri zlom navrhnutom rohu výrezu (príliš ostrý, bez zaoblenia) môže časom vzniknúť trhlina. Detailne hrúbku rozoberáme v článku <a href="/blog/12mm-vs-20mm-hrubka">12 mm alebo 20 mm: aká hrúbka kamennej dosky</a>.</p>
+<p>Pri 12\u00A0mm doske je výrez pre veľký drez (60\u00A0×\u00A050\u00A0cm) technicky náročnejší než pri 20\u00A0mm. Sinterovaný kameň je extrémne tvrdý, ale aj <strong class="gold">krehkejší v ohybe ako prírodná žula</strong>. Pri zle navrhnutom rohu výrezu (príliš ostrý, bez zaoblenia) môže časom vzniknúť trhlina. Detailne hrúbku rozoberáme v článku <a href="/blog/12mm-vs-20mm-hrubka">12\u00A0mm alebo 20\u00A0mm: aká hrúbka kamennej dosky</a>.</p>
 
 <h3>5. Nedohodnutie šírky spojov pri viacerých platniach</h3>
 
-<p>Pri kuchyni dlhšej ako 3,2 m (max. dĺžka štandardnej platne) budete mať aspoň jeden spoj. Šírka spoja sa pohybuje od 1 do 3 mm. Rozdiel medzi 1 mm a 3 mm spojom je vidieť na prvý pohľad — a vy by ste o tom mali rozhodnúť pred fabrikáciou, nie pri montáži, keď je už neskoro.</p>
+<p>Pri kuchyni dlhšej ako 3,2\u00A0m (max. dĺžka štandardnej platne) budete mať aspoň jeden spoj. Šírka spoja sa pohybuje od 1 do 3\u00A0mm. Rozdiel medzi 1\u00A0mm a 3\u00A0mm spojom je vidieť na prvý pohľad – a vy by ste o tom mali rozhodnúť pred fabrikáciou, nie pri montáži, keď je už neskoro.</p>
 
 <h3>6. Neoverené napojenie elektriky a vody pred zameraním</h3>
 
-<p>Pred zameraním musí byť rozvod vody, elektriny a odsávania na finálnych pozíciách. Ak elektrikár prerobí zásuvku po zameraní, nová doska nesedí. Toto je čistá logistika — žiadny materiál to nevyrieši.</p>
+<p>Pred zameraním musí byť rozvod vody, elektriny a odsávania na finálnych pozíciách. Ak elektrikár prerobí zásuvku po zameraní, nová doska nesedí. Toto je čistá logistika – žiadny materiál to nevyrieši.</p>
 
 <h3>7. Voľba dekoru bez zladenia s kuchynskou linkou</h3>
 
-<p>Doska a kuchynská linka idú do interiéru spolu. Vzorka dosky sama nestačí — vyžiadajte si fotomontáž alebo aspoň fyzické priloženie vzorky dosky k vzorke dvierok. Najčastejšia frustrácia po roku používania nie je samotná doska, ale že sa vizuálne nehodí k linke.</p>
+<p>Doska a kuchynská linka idú do interiéru spolu. Vzorka dosky sama nestačí – vyžiadajte si fotomontáž alebo aspoň fyzické priloženie vzorky dosky k vzorke dvierok. Najčastejšia frustrácia po roku používania nie je samotná doska, ale to, že sa vizuálne nehodí k linke.</p>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-25/chyba-instalacia.webp" alt="Pracovna doska umely kamen cena a inštalačné chyby — detail výrezu pri kuchynskom drez" loading="lazy" />
-  <figcaption>Detail výrezu pre drez — tu sa prejaví kvalita fabrikácie a podpery dosky.</figcaption>
+  <img src="/images/blog/article-25/chyba-instalacia.webp" alt="Pracovná doska umelý kameň cena a inštalačné chyby – detail výrezu pri kuchynskom dreze" loading="lazy" />
+  <figcaption>Detail výrezu pre drez – tu sa prejaví kvalita fabrikácie a podpery dosky.</figcaption>
 </figure>
 
 <h2 id="po-roku-uzivania">Čo zistíte až po roku používania</h2>
 
-<p>Toto je sekcia, ktorá v showroome chýba — pretože predajca nemá motiváciu vám hovoriť, čo zákazníci najviac ľutujú. Tu sú observácie z reálnych post-install rozhovorov, ktoré v Orostone vedieme so zákazníkmi po roku.</p>
+<p>Toto je sekcia, ktorá v showroome chýba – pretože predajca nemá motiváciu vám hovoriť, čo zákazníci najviac ľutujú. Tu sú observácie z reálnych rozhovorov po montáži, ktoré v Orostone vedieme so zákazníkmi po roku.</p>
 
 <p><strong>Detaily, ktoré ľudia oceňujú po roku:</strong></p>
 <ul>
-  <li><strong>Flush undermount drez</strong> — drez vsadený do dosky bez viditeľných švov sa čistí o 30 % rýchlejšie a vyzerá čistejšie aj po piatich rokoch.</li>
-  <li><strong>Zrazená hrana</strong> namiesto úplne ostrej — vyzerá takmer rovnako, ale neodštiepi sa, keď do nej v rýchlosti udriete hrncom.</li>
-  <li><strong>Zástena z toho istého materiálu</strong> — bez špár medzi doskou a obkladom, žiadny silikón, ktorý žltne, žiadne miesta pre špinu.</li>
-  <li><strong>Matný povrch</strong> namiesto lešteného pri tmavých dekoroch — odtlačky prstov a vodné kvapky sú na lesklom povrchu viditeľné z druhého konca miestnosti.</li>
+  <li><strong>Flush undermount drez</strong> – drez vsadený do dosky bez viditeľných švov sa čistí o 30\u00A0% rýchlejšie a vyzerá čistejšie aj po piatich rokoch.</li>
+  <li><strong>Zrazená hrana</strong> namiesto úplne ostrej – vyzerá takmer rovnako, ale neodštiepi sa, keď do nej v rýchlosti udriete hrncom.</li>
+  <li><strong>Zástena z toho istého materiálu</strong> – bez škár medzi doskou a obkladom, žiadny silikón, ktorý žltne, žiadne miesta pre špinu.</li>
+  <li><strong>Matný povrch</strong> namiesto lešteného pri tmavých dekoroch – odtlačky prstov a vodné kvapky sú na lesklom povrchu viditeľné z druhého konca miestnosti.</li>
 </ul>
 
 <p><strong>Čo by ľudia urobili inak:</strong></p>
 <ul>
-  <li><strong>Investovali by viac do fabrikácie, menej do dekoru</strong> — výrazný dekor po roku zovšednie, ale zle urobený výrez vám pripomenie každý deň.</li>
-  <li><strong>Vyžiadali by si rozkres pred rezaním</strong> — kde budú spoje, ako bude kresba pretekať cez ostrov, kde budú výrezy.</li>
-  <li><strong>Pýtali by sa na šírku silikónu</strong> okolo drezu a varnej dosky — 2 mm vs 4 mm vyzerajú rozdielne.</li>
-  <li><strong>Nepoponáhľali by sa s rozhodnutím</strong> — väčšina nespokojných zákazníkov sa rozhodla pod časovým tlakom (rekonštrukcia, sťahovanie). Dva extra týždne plánovania ušetria roky frustrácie.</li>
+  <li><strong>Investovali by viac do fabrikácie, menej do dekoru</strong> – výrazný dekor po roku zovšednie, ale zle urobený výrez sa vám pripomenie každý deň.</li>
+  <li><strong>Vyžiadali by si rozkres pred rezaním</strong> – kde budú spoje, ako bude kresba pretekať cez ostrovček, kde budú výrezy.</li>
+  <li><strong>Pýtali by sa na šírku silikónu</strong> okolo drezu a varnej dosky – 2\u00A0mm vs 4\u00A0mm vyzerajú rozdielne.</li>
+  <li><strong>Nepoponáhľali by sa s rozhodnutím</strong> – väčšina nespokojných zákazníkov sa rozhodla pod časovým tlakom (rekonštrukcia, sťahovanie). Dva extra týždne plánovania ušetria roky frustrácie.</li>
 </ul>
 
 <div class="article-tip">
   <p><strong>Čo robíme v Orostone</strong></p>
-  <p>Po každej montáži ostávame v kontakte. Pri sťažnosti je prvá otázka „čo presne nefunguje“ — a v 80 % prípadov to nie je materiál, ale detail montáže (silikón, hrana, výška spoja). Niečo z toho vie kamenár dorobiť aj po roku, niečo nie. Preto je <strong>predmontážna konzultácia</strong> najlepšie investovaný čas. Detailný proces od merania po inštaláciu popisujeme v článku <a href="/blog/od-merania-po-instalaciu-proces-orostone">Od merania po inštaláciu</a>.</p>
+  <p>Po každej montáži ostávame v kontakte. Pri sťažnosti je prvá otázka „čo presne nefunguje“ – a v 80\u00A0% prípadov to nie je materiál, ale detail montáže (silikón, hrana, výška spoja). Niečo z toho vie kamenár dorobiť aj po roku, niečo nie. Preto je <strong>predmontážna konzultácia</strong> najlepšie investovaný čas. Detailný proces od merania po inštaláciu popisujeme v článku <a href="/blog/od-merania-po-instalaciu-proces-orostone">Od merania po inštaláciu</a>.</p>
 </div>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-25/po-roku.webp" alt="Kuchynska doska umely kamen po roku používania — patina a údržba" loading="lazy" />
-  <figcaption>Pracovná doska z umelého kameňa po roku denného používania — bez impregnácie, bez stôp.</figcaption>
+  <img src="/images/blog/article-25/po-roku.webp" alt="Kuchynská doska umelý kameň po roku používania – patina a údržba" loading="lazy" />
+  <figcaption>Pracovná doska z umelého kameňa po roku denného používania – bez impregnácie, bez stôp.</figcaption>
 </figure>
 
 <h2 id="10-otazok-dodavatelovi">Ako sa pýtať dodávateľa: 10 otázok</h2>
@@ -232,67 +232,67 @@ export const ARTICLE_25: BlogArticle = {
 <p>Toto je checklist, ktorý si vytlačte a vezmite do showroomu. Predajca, ktorý odpovie bez zaváhania, materiál pozná. Predajca, ktorý sa vyhýba detailom, predáva katalóg.</p>
 
 <ol>
-  <li><strong>Aký konkrétny materiál a značka?</strong> Nie „technický kameň", ale presný brand a kolekcia.</li>
-  <li><strong>Aká je nasiakavosť materiálu (% absorpcie vody)?</strong> Pod 0,1 % je excelentné, pod 0,5 % je akceptovateľné.</li>
+  <li><strong>Aký konkrétny materiál a značka?</strong> Nie „technický kameň“, ale presná značka a kolekcia.</li>
+  <li><strong>Aká je nasiakavosť materiálu (% absorpcie vody)?</strong> Pod 0,1\u00A0% je excelentné, pod 0,5\u00A0% je akceptovateľné.</li>
   <li><strong>Obsahuje materiál živicu?</strong> Áno = quartz kompozit, nie = sinterovaný kameň alebo keramika.</li>
-  <li><strong>Aký je odporúčaný interval impregnácie?</strong> Pri kvalitnom kompozite odpoveď znie „nepotrebuje".</li>
-  <li><strong>Ukážete mi platnu, z ktorej bude rezaná moja kuchyňa?</strong> Vyžiadajte si fotografiu alebo fyzickú obhliadku.</li>
-  <li><strong>Aká je šírka spoja a aké lepidlo používate?</strong> Šírka 1–2 mm, farebne zladené epoxidové lepidlo.</li>
-  <li><strong>Aká je geometria hrany a prečo?</strong> Rovná, zrazená alebo mitered — každá má dôvod.</li>
+  <li><strong>Aký je odporúčaný interval impregnácie?</strong> Pri kvalitnom kompozite odpoveď znie „nepotrebuje“.</li>
+  <li><strong>Ukážete mi platňu, z ktorej bude rezaná moja kuchyňa?</strong> Vyžiadajte si fotografiu alebo fyzickú obhliadku.</li>
+  <li><strong>Aká je šírka spoja a aké lepidlo používate?</strong> Šírka 1 – 2\u00A0mm, farebne zladené epoxidové lepidlo.</li>
+  <li><strong>Aká je geometria hrany a prečo?</strong> Rovná, zrazená alebo mitered – každá má dôvod.</li>
   <li><strong>Pripravíte mi platňu presne podľa mojich rozmerov?</strong> Keď si platňu objednáte podľa vlastných rozmerov, dodávateľ by ju mal vedieť pripraviť presne na ne. V Orostone to vieme po písomnej dohode.</li>
   <li><strong>Aké sú podmienky reklamácie pri prasknutí v prvom roku?</strong> Žiadajte písomné podmienky, nie ústne.</li>
-  <li><strong>Môžem vidieť referenčnú realizáciu vo vašom showroome alebo u zákazníka?</strong> Žiadne fotografie z internetu — reálnu kuchyňu, kde to pracuje.</li>
+  <li><strong>Môžem vidieť referenčnú realizáciu vo vašom showroome alebo u zákazníka?</strong> Žiadne fotografie z internetu – reálnu kuchyňu, kde to pracuje.</li>
 </ol>
 
 <div class="article-case-study">
   <span class="case-study-label">Z praxe</span>
-  <h3>Klient z Bratislavy: 10 otázok zachránilo €1 200</h3>
-  <p>Klient pred objednávkou prišiel so zoznamom 10 otázok, ktoré si pripravil. Pôvodný dodávateľ ponúkol „prémiový umelý kameň" za €380 €/bm. Pri tretej otázke — značka a kolekcia — sa ukázalo, že ide o nešpecifikovaný kremenný kompozit s neuvedeným pôvodom.</p>
-  <p>Klient prišiel k nám. Pri rovnakom rozpočte sme navrhli sinterovaný kameň zo známej kolekcie. Cena bola o <strong>približne 8 % vyššia</strong>, ale obsahovala konkrétny brand, certifikát, technický list a 24-mesačnú záruku na materiál.</p>
-  <p>Po roku používania: bez problémov. Klient nedávno povedal, že tých 10 otázok nebolo o tom, že by nedôveroval prvému predajcovi — bolo to o tom, že sa naučil poznať rozdiel medzi materiálom a katalógom. To je presne dôvod, prečo táto sekcia v článku existuje.</p>
+  <h3>Klient z Bratislavy: 10 otázok zachránilo 1\u00A0200\u00A0€</h3>
+  <p>Klient pred objednávkou prišiel so zoznamom 10 otázok, ktoré si pripravil. Pôvodný dodávateľ ponúkol „prémiový umelý kameň“ za 380\u00A0€/bm. Pri tretej otázke – značka a kolekcia – sa ukázalo, že ide o nešpecifikovaný kremenný kompozit s neuvedeným pôvodom.</p>
+  <p>Klient prišiel k nám. Pri rovnakom rozpočte sme navrhli sinterovaný kameň zo známej kolekcie. Cena bola o <strong>približne 8\u00A0% vyššia</strong>, ale obsahovala konkrétnu značku, certifikát, technický list a 24-mesačnú záruku na materiál.</p>
+  <p>Po roku používania: bez problémov. Klient nedávno povedal, že tých 10 otázok nebolo o tom, že by nedôveroval prvému predajcovi – bolo to o tom, že sa naučil poznať rozdiel medzi materiálom a katalógom. To je presne dôvod, prečo táto sekcia v článku existuje.</p>
 </div>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-25/showroom-konzultacia.webp" alt="Umely kamen do kuchyne — konzultácia v Orostone showroome s 10 otázkami pre dodávateľa" loading="lazy" />
-  <figcaption>Konzultácia v Orostone showroome — vzorky materiálu vedľa rozkresu kuchyne.</figcaption>
+  <img src="/images/blog/article-25/showroom-konzultacia.webp" alt="Umelý kameň do kuchyne – konzultácia v Orostone showroome s 10 otázkami pre dodávateľa" loading="lazy" />
+  <figcaption>Konzultácia v Orostone showroome – vzorky materiálu vedľa rozkresu kuchyne.</figcaption>
 </figure>
 
 <h2 id="zaver">Záver: rozhodnutie pred materiálom</h2>
 
 <p>Najdôležitejšia vec pri výbere pracovnej dosky z umelého kameňa nie je značka materiálu. Je to <strong class="gold">poriadok rozhodnutí</strong>, v ktorom postupujete: najprv použitie kuchyne, potom typ materiálu, potom dekor a hrúbka, a nakoniec dodávateľ.</p>
 
-<p>Pretočené naopak — keď vyberáte podľa dekoru a ceny a až nakoniec myslíte na použitie — končíte s pracovnou doskou, ktorá vyzerá ako z časopisu, ale po roku ju ľutujete. Aj keby ste mali kúpiť drahší materiál, robte to vedome. Dobre vybraná pracovná doska nerieši samú seba — rieši kuchyňu, v ktorej budete žiť ďalších 15 rokov. Pre kontext o všetkých kompozitných materiáloch si pozrite <a href="/blog/oplati-sa-sinterovany-kamen">Oplatí sa sinterovaný kameň?</a> — komplementárny článok o dlhodobej hodnote.</p>
+<p>Pretočené naopak – keď vyberáte podľa dekoru a ceny a až nakoniec myslíte na použitie – končíte s pracovnou doskou, ktorá vyzerá ako z časopisu, ale po roku ju ľutujete. Aj keby ste mali kúpiť drahší materiál, robte to vedome. Dobre vybraná pracovná doska nerieši samú seba – rieši kuchyňu, v ktorej budete žiť ďalších 15 rokov. Pre kontext o všetkých kompozitných materiáloch si pozrite <a href="/blog/oplati-sa-sinterovany-kamen">Oplatí sa sinterovaný kameň?</a> – komplementárny článok o dlhodobej hodnote.</p>
 
 <div class="article-tip">
   <p><strong>Alebo nás jednoducho kontaktujte v Orostone</strong></p>
-  <p>Ak máte pôdorys kuchyne, fotografiu existujúcej linky alebo iba rozmery, pošlite nám ich. Pripravíme vám konkrétny návrh — nie generický cenník, ale rozsah cien podľa skutočnej kuchyne. Konzultácia je nezáväzná a zadarmo. Inšpiráciu z realizácií nájdete v sekcii <a href="/kuchyne">Kuchyne</a>.</p>
+  <p>Ak máte pôdorys kuchyne, fotografiu existujúcej linky alebo iba rozmery, pošlite nám ich. Pripravíme vám konkrétny návrh – nie generický cenník, ale rozsah cien podľa skutočnej kuchyne. Konzultácia je nezáväzná a zadarmo. Inšpiráciu z realizácií nájdete v sekcii <a href="/kuchyne">Kuchyne</a>.</p>
   <a href="/kontakt" class="tip-btn">Kontaktovať nás →</a>
 </div>
 `,
     faqs: [
       {
         question: 'Koľko stojí pracovná doska z umelého kameňa?',
-        answer: 'Cena pracovnej dosky z umelého kameňa sa orientačne pohybuje od 280 do 600 €/bm vrátane fabrikácie a montáže. Vstupný quartz kompozit začína okolo 280 €/bm, prémiový sinterovaný kameň je v rozsahu 450–600 €/bm. Pri ponukách pod 250 €/bm spozornite — niečo v procese (montáž, doprava, hrana) sa pravdepodobne neúčtuje.',
+        answer: 'Cena pracovnej dosky z umelého kameňa sa orientačne pohybuje od 280 do 600\u00A0€/bm vrátane fabrikácie a montáže. Vstupný quartz kompozit začína okolo 280\u00A0€/bm, prémiový sinterovaný kameň je v rozsahu 450 – 600\u00A0€/bm. Pri ponukách pod 250\u00A0€/bm spozornite – niečo v procese (montáž, doprava, hrana) sa pravdepodobne neúčtuje.',
       },
       {
         question: 'Pracovná doska z umelého kameňa: čo ovplyvňuje cenu?',
-        answer: 'Cenu ovplyvňuje typ materiálu, značka, dekor, hrúbka, počet výrezov, profil hrany, počet spojov, doprava, výnos do vyšších poschodí a zložitosť montáže. Dve doskové ponuky z toho istého materiálu sa môžu líšiť o 30–40 %, pretože jedna obsahuje iba materiál a druhá kompletný proces.',
+        answer: 'Cenu ovplyvňuje typ materiálu, značka, dekor, hrúbka, počet výrezov, profil hrany, počet spojov, doprava, výnos do vyšších poschodí a zložitosť montáže. Dve doskové ponuky z toho istého materiálu sa môžu líšiť o 30 – 40\u00A0%, pretože jedna obsahuje iba materiál a druhá kompletný proces.',
       },
       {
         question: 'Prečo nemá pracovná doska z umelého kameňa jednu univerzálnu cenu?',
-        answer: 'Pretože každá kuchyňa má iné parametre. Rovnaký materiál pri kuchyni s 3 výrezmi a ostrovom vyjde inak ako pri rovnej linke s jedným drezom. Seriózny dodávateľ vám dá cenu až po základnom zameraní alebo aspoň pôdorysu, nie pred ním.',
+        answer: 'Pretože každá kuchyňa má iné parametre. Rovnaký materiál pri kuchyni s 3 výrezmi a ostrovčekom vyjde inak ako pri rovnej linke s jedným drezom. Seriózny dodávateľ vám dá cenu až po základnom zameraní alebo aspoň podľa pôdorysu, nie pred ním.',
       },
       {
         question: 'Aký je rozdiel medzi technickým a umelým kameňom?',
-        answer: 'V slovenskom marketingu žiadny — oba pojmy sa používajú zameniteľne pre kompozitné materiály. Technicky to však sú štyri rôzne kategórie: kremenný kompozit, sinterovaný kameň, keramika a solid surface. Pýtajte sa na konkrétny typ, nie na všeobecnú nálepku.',
+        answer: 'V slovenskom marketingu žiadny – oba pojmy sa používajú zameniteľne pre kompozitné materiály. Technicky to však sú štyri rôzne kategórie: kremenný kompozit, sinterovaný kameň, keramika a solid surface. Pýtajte sa na konkrétny typ, nie na všeobecnú nálepku.',
       },
       {
         question: 'Koľko stojí kuchynská doska z umelého kameňa?',
-        answer: 'Pre štandardnú slovenskú kuchyňu so 4–6 bm a malým ostrovom počítajte 2 000–4 500 € v závislosti od materiálu a fabrikácie. Vstupný quartz kompozit s rovnou hranou a dvoma výrezmi je v dolnej časti tohto rozsahu, prémiový sinterovaný kameň s waterfall ostrovom v hornej.',
+        answer: 'Pre štandardnú slovenskú kuchyňu so 4 – 6\u00A0bm a malým ostrovčekom počítajte 2\u00A0000 – 4\u00A0500\u00A0€ v závislosti od materiálu a fabrikácie. Vstupný quartz kompozit s rovnou hranou a dvoma výrezmi je v dolnej časti tohto rozsahu, prémiový sinterovaný kameň s waterfall ostrovčekom v hornej.',
       },
       {
         question: 'Oplatí sa pracovná doska z umelého kameňa oproti laminátu?',
-        answer: 'Pri aktívnej kuchyni áno. Laminát je lacnejší, ale po 5–7 rokoch sa pri intenzívnom používaní opotrebuje — odvalí sa hrana, voda sa dostane pod povrch. Umelý kameň pri rozumnej cenovej hladine vydrží 15+ rokov. Rozdiel v ročnej amortizácii je menší, ako väčšina ľudí čaká.',
+        answer: 'Pri aktívnej kuchyni áno. Laminát je lacnejší, ale po 5 – 7 rokoch sa pri intenzívnom používaní opotrebuje – odvalí sa hrana, voda sa dostane pod povrch. Umelý kameň pri rozumnej cenovej hladine vydrží 15+ rokov. Rozdiel v ročnej amortizácii je menší, ako väčšina ľudí čaká.',
       },
       {
         question: 'Umelý kameň do kuchyne: ktorý typ vybrať?',
@@ -300,23 +300,23 @@ export const ARTICLE_25: BlogArticle = {
       },
       {
         question: 'Aké sú slabosti umelého kameňa v kuchyni?',
-        answer: 'Pri kremennom kompozite je to citlivosť živice na UV žiarenie a vysokú teplotu. Pri sinterovanom kameni je to krehkosť v ohybe pri zle navrhnutých výrezoch a vyššia cena. Pri keramike je dôležitá kvalita fabrikácie — tenké formáty praskajú pri zlej manipulácii.',
+        answer: 'Pri kremennom kompozite je to citlivosť živice na UV žiarenie a vysokú teplotu. Pri sinterovanom kameni je to krehkosť v ohybe pri zle navrhnutých výrezoch a vyššia cena. Pri keramike je dôležitá kvalita fabrikácie – tenké formáty praskajú pri zlej manipulácii.',
       },
       {
         question: 'Aký je reálny cenový rozsah kuchynskej pracovnej dosky z umelého kameňa?',
-        answer: 'Pre kompletnú zákazku (materiál + fabrikácia + montáž) počítajte 280–600 €/bm. Vstupný kremenný kompozit s rovnou hranou a 2 výrezmi je v dolnej časti, prémiový sinterovaný kameň s mitered hranami a book-match dekorom v hornej časti rozsahu.',
+        answer: 'Pre kompletnú zákazku (materiál + fabrikácia + montáž) počítajte 280 – 600\u00A0€/bm. Vstupný kremenný kompozit s rovnou hranou a 2 výrezmi je v dolnej časti, prémiový sinterovaný kameň s mitered hranami a book-match dekorom v hornej časti rozsahu.',
       },
       {
         question: 'Kuchynská pracovná doska z umelého kameňa: ako sa rozhodnúť medzi kompozitom a sinterovaným kameňom?',
-        answer: 'Tri otázky: koľko slnka má kuchyňa (viac slnka = sinterovaný), koľko v nej varíte (viac = sinterovaný) a aký je rozpočet (do €350 €/bm = kompozit, nad €450 €/bm = sinterovaný). Pri stredne veľkom rozpočte sa oplatí radšej zvoliť menší formát sinterovaného kameňa než maximálny formát kompozitu.',
+        answer: 'Tri otázky: koľko slnka má kuchyňa (viac slnka = sinterovaný), koľko v nej varíte (viac = sinterovaný) a aký je rozpočet (do 350\u00A0€/bm = kompozit, nad 450\u00A0€/bm = sinterovaný). Pri stredne veľkom rozpočte sa oplatí radšej zvoliť menší formát sinterovaného kameňa než maximálny formát kompozitu.',
       },
       {
         question: 'Ako dlho vydrží kuchynská doska z umelého kameňa?',
-        answer: 'Pri kvalitnej fabrikácii a montáži 15–20 rokov bez výrazného opotrebovania. Sinterovaný kameň môže fungovať aj 25+ rokov. Kremenný kompozit sa pri intenzívnom UV po 10–12 rokoch začne meniť (žltnutie). Životnosť je ovplyvnená najmä kvalitou montáže, nie iba materiálom.',
+        answer: 'Pri kvalitnej fabrikácii a montáži 15 – 20 rokov bez výrazného opotrebovania. Sinterovaný kameň môže fungovať aj 25+ rokov. Kremenný kompozit sa pri intenzívnom UV po 10 – 12 rokoch začne meniť (žltnutie). Životnosť je ovplyvnená najmä kvalitou montáže, nie iba materiálom.',
       },
       {
         question: 'Pracovná doska z umelého kameňa: ako sa o ňu starať?',
-        answer: 'Sinterovaný kameň a väčšina kremenných kompozitov nepotrebuje impregnáciu. Stačí denné čistenie vlhkou handričkou s neutrálnym saponátom. Pri zaschnutých škvrnách (káva, víno, ovocná šťava) izopropylalkohol. Vyhnite sa abrazívnym prostriedkom a drôtenkám a kyslým čistiacim prípravkom.',
+        answer: 'Sinterovaný kameň a väčšina kremenných kompozitov nepotrebujú impregnáciu. Stačí denné čistenie vlhkou handričkou s neutrálnym saponátom. Pri zaschnutých škvrnách (káva, víno, ovocná šťava) izopropylalkohol. Vyhnite sa abrazívnym prostriedkom a drôtenkám a kyslým čistiacim prípravkom.',
       },
     ],
   },

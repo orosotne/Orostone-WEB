@@ -32,7 +32,7 @@ export const EshopLayout: React.FC<EshopLayoutProps> = ({ children }) => {
   const isProductDetail = pathname.startsWith('/produkt/');
 
   return (
-    <div className="min-h-dvh flex flex-col font-sans text-brand-dark bg-white">
+    <div className="min-h-svh flex flex-col font-sans text-brand-dark bg-white">
       {/*
         Skip link — WCAG 2.4.1 Bypass Blocks (Level A) and EU EAA 2025.
         Visually hidden until keyboard-focused (Tab from page load), then jumps
@@ -57,12 +57,14 @@ export const EshopLayout: React.FC<EshopLayoutProps> = ({ children }) => {
       <CartDrawer />
 
       {/* Main Content — homepage has no top padding (hero goes behind transparent navbar) */}
-      {/* min-h-dvh reserves viewport height so the footer starts below the fold during initial
-          render / Suspense fallback — prevents footer-jump CLS when lazy chunks load and expand main. */}
+      {/* min-h-svh reserves viewport height so the footer starts below the fold during initial
+          render / Suspense fallback — prevents footer-jump CLS when lazy chunks load and expand main.
+          svh, not dvh: in-app browsers (Instagram, Facebook, WhatsApp) resize the dynamic viewport
+          as their toolbars collapse while scrolling, and a dvh height would re-lay the page each time. */}
       <main
         id="main"
         tabIndex={-1}
-        className={`min-w-0 w-full flex-grow min-h-dvh focus:outline-none ${isHomepage ? '' : SHOW_ANNOUNCEMENT_BAR ? 'pt-[100px] lg:pt-[116px]' : 'pt-16 lg:pt-20'}`}
+        className={`min-w-0 w-full flex-grow min-h-svh focus:outline-none ${isHomepage ? '' : SHOW_ANNOUNCEMENT_BAR ? 'pt-[100px] lg:pt-[116px]' : 'pt-16 lg:pt-20'}`}
       >
         {children}
       </main>

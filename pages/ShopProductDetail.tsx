@@ -96,7 +96,7 @@ export const ShopProductDetail: React.FC = () => {
 
   if (!product) {
     return (
-      <div className="min-h-dvh flex items-center justify-center">
+      <div className="min-h-svh flex items-center justify-center">
         <SEOHead
           title="Produkt nenájdený | OROSTONE"
           description="Požadovaný produkt neexistuje alebo bol odstránený."
@@ -174,7 +174,7 @@ export const ShopProductDetail: React.FC = () => {
   const seoImage = (product.gallery && product.gallery.length > 0 ? product.gallery[0] : product.image) || '/images/logo.png';
 
   return (
-    <div className="min-h-dvh w-full overflow-x-hidden overflow-y-visible bg-white">
+    <div className="min-h-svh w-full overflow-x-hidden overflow-y-visible bg-white">
       <SEOHead
         title={seoTitle}
         description={seoDescription}
