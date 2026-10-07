@@ -45,13 +45,13 @@ export const ARTICLE_03: BlogArticle = {
 
 <p>Odpoveď je v čísle: <strong>absorpcia vody pod 0,1\u00A0%</strong>. Toto nie je marketingový údaj – je to merateľná fyzikálna vlastnosť podľa normy ISO 10545-3.</p>
 
-<p>Pre porovnanie: prírodný mramor má absorpciu vody 0,2–0,5\u00A0%, granit 0,1–0,4\u00A0%, keramické dlaždice bez glazúry 3–7\u00A0%. Sinterovaný kameň je v inej kategórii.</p>
+<p>Pre porovnanie: prírodný mramor má absorpciu vody 0,2 – 0,5\u00A0%, granit 0,1 – 0,4\u00A0%, keramické dlaždice bez glazúry 3 – 7\u00A0%. Sinterovaný kameň je v inej kategórii.</p>
 
 <p>Dôvod: spekanie pri 1\u00A0200\u00A0°C pod tlakom 25\u00A0000\u00A0ton doslova <strong class="gold">uzavrie všetky mikropóry</strong>. Kryštalická štruktúra minerálov sa prepojí tak tesne, že tekutiny nemajú cestu dovnútra.</p>
 
 <div class="article-highlight">
   <p><strong>Čo znamená absorpcia 0,1\u00A0% v praxi:</strong></p>
-  <p>Keby ste ponorili 1\u00A0kg sinterovaného kameňa do vody na 24 hodín, nasiakol by <strong>menej ako 1 gram vody</strong>. Pre porovnanie: hubka absorbuje 10–20× svoju hmotnosť. Aj keramická dlaždica bez glazúry by nasiakla 30–70 gramov. Sinterovaný kameň je pre tekutiny prakticky nepreniknuteľný.</p>
+  <p>Keby ste ponorili 1\u00A0kg sinterovaného kameňa do vody na 24 hodín, nasiakol by <strong>menej ako 1 gram vody</strong>. Pre porovnanie: hubka absorbuje 10 – 20× svoju hmotnosť. Aj keramická dlaždica bez glazúry by nasiakla 30 – 70 gramov. Sinterovaný kameň je pre tekutiny prakticky nepreniknuteľný.</p>
 </div>
 
 <h2 id="testovacia-metodika">Ako sme testovali</h2>
@@ -107,7 +107,7 @@ export const ARTICLE_03: BlogArticle = {
 
 <p>Pre kontext – rovnaký test červeného vína a kurkumy na bežných alternatívach:</p>
 
-<p><strong>Prírodný mramor:</strong> Absorpcia vody 0,2–0,5\u00A0%. Červené víno po 12 hodinách zanechalo trvalé ružové sfarbenie viditeľné aj po čistení. Kurkuma v oleji: trvalé žlté škvrny. Impregnácia by skrátila čas vsávania, ale nevylúčila ho.</p>
+<p><strong>Prírodný mramor:</strong> Absorpcia vody 0,2 – 0,5\u00A0%. Červené víno po 12 hodinách zanechalo trvalé ružové sfarbenie viditeľné aj po čistení. Kurkuma v oleji: trvalé žlté škvrny. Impregnácia by skrátila čas vsávania, ale nevylúčila ho.</p>
 
 <p><strong>Prírodný granit:</strong> Lepší ako mramor, ale bez pravidelnej impregnácie olivový olej sa vsaje a zanechá tmavé škvrny. Kurkuma na tmavých granitoch je menej viditeľná, ale na svetlých dezénoch problematická.</p>
 
@@ -117,7 +117,7 @@ export const ARTICLE_03: BlogArticle = {
 
 <div class="article-highlight">
   <p><strong>Prečo prírodný kameň vyžaduje impregnáciu:</strong></p>
-  <p>Mramor a granit majú vyššiu pórovitosť – tekutiny prechádzajú cez kapilárne kanáliky do štruktúry kameňa. Impregnácia tieto kanáliky dočasne uzatvára, ale účinok trvá <strong>1–3 roky</strong>, potom je potrebné opakovanie. Sinterovaný kameň impregnáciu nepotrebuje – nemá čo impregnovať.</p>
+  <p>Mramor a granit majú vyššiu pórovitosť – tekutiny prechádzajú cez kapilárne kanáliky do štruktúry kameňa. Impregnácia tieto kanáliky dočasne uzatvára, ale účinok trvá <strong>1 – 3 roky</strong>, potom je potrebné opakovanie. Sinterovaný kameň impregnáciu nepotrebuje – nemá čo impregnovať.</p>
 </div>
 
 <h2 id="ako-cistit">Ako čistiť sinterovaný kameň správne</h2>
@@ -179,7 +179,7 @@ export const ARTICLE_03: BlogArticle = {
       },
       {
         question: 'Je potrebná impregnácia sinterovaného kameňa?',
-        answer: 'Nie, nikdy. Absorpcia vody pod 0,1\u00A0% znamená, že v materiáli nie sú kapilárne kanáliky, cez ktoré by tekutiny prenikali. Impregnácia pri sinterovanom kameni nemá zmysel – nemá čo utesniť. Na rozdiel od prírodného mramoru alebo granitu, ktoré vyžadujú impregnáciu každé 1–3 roky.',
+        answer: 'Nie, nikdy. Absorpcia vody pod 0,1\u00A0% znamená, že v materiáli nie sú kapilárne kanáliky, cez ktoré by tekutiny prenikali. Impregnácia pri sinterovanom kameni nemá zmysel – nemá čo utesniť. Na rozdiel od prírodného mramoru alebo granitu, ktoré vyžadujú impregnáciu každé 1 – 3 roky.',
       },
       {
         question: 'Čo ak zaschne kurkuma na sinterovanom kameni?',

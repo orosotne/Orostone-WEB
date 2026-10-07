@@ -48,7 +48,7 @@ export const ARTICLE_23: BlogArticle = {
 
 <ul>
   <li><strong>Viditeľné hrany zo všetkých strán</strong> – materiál musí vyzerať dobre nielen zhora, ale aj z boku</li>
-  <li><strong>Previsy pre barové sedenie</strong> – doska musí uniesť zaťaženie bez podpery na 300–400\u00A0mm</li>
+  <li><strong>Previsy pre barové sedenie</strong> – doska musí uniesť zaťaženie bez podpery na 300 – 400\u00A0mm</li>
   <li><strong>Vysoká expozícia</strong> – ostrovček je v centre pozornosti, každá škvrna a škrabanec je viditeľný</li>
   <li><strong>Kontakt s jedlom</strong> – príprava jedál priamo na doske vyžaduje hygienický, nepórovitý povrch</li>
 </ul>
@@ -58,7 +58,7 @@ export const ARTICLE_23: BlogArticle = {
 <div class="article-highlight">
   <ul>
     <li><strong>Pórovitosť pod 0,1\u00A0%</strong> – baktérie a škvrny neprenikajú do povrchu</li>
-    <li><strong>Odolnosť voči škrabancom</strong> – tvrdosť 6–7 Mohs (nôž kameň nepoškriabe)</li>
+    <li><strong>Odolnosť voči škrabancom</strong> – tvrdosť 6 – 7 Mohs (nôž kameň nepoškriabe)</li>
     <li><strong>Tepelná odolnosť nad 300\u00A0°C</strong> – horúce hrnce priamo na dosku</li>
     <li><strong>UV stabilita</strong> – farba sa nemení ani pri priamom slnečnom svetle (dôležité pri ostrovčeku pri okne)</li>
     <li><strong>Veľkoformátové platne</strong> – jeden kus až do 3\u00A0200\u00A0×\u00A01\u00A0600\u00A0mm = menej spojov</li>
@@ -79,7 +79,7 @@ export const ARTICLE_23: BlogArticle = {
   <ul>
     <li><strong>Minimálna šírka:</strong> 600\u00A0mm (len pracovná plocha) / 900\u00A0mm (s varičom alebo drezom)</li>
     <li><strong>Minimálna dĺžka:</strong> 1\u00A0200\u00A0mm (2 osoby) / 2\u00A0400\u00A0mm (4 osoby pri barových stoličkách)</li>
-    <li><strong>Previs pre barové sedenie:</strong> 300–400\u00A0mm (optimum 350\u00A0mm)</li>
+    <li><strong>Previs pre barové sedenie:</strong> 300 – 400\u00A0mm (optimum 350\u00A0mm)</li>
     <li><strong>Výška pracovnej plochy:</strong> 900\u00A0mm (štandard) / 1\u00A0050\u00A0mm (barová výška)</li>
     <li><strong>Odstup od okolitého nábytku:</strong> minimum 900\u00A0mm (ideálne 1\u00A0200\u00A0mm)</li>
   </ul>
@@ -151,7 +151,7 @@ export const ARTICLE_23: BlogArticle = {
 
 <ul>
   <li><strong>Half bullnose (polkruhová):</strong> najbezpečnejšia voľba – zaoblená hrana minimalizuje riziko chipovania aj pri náraze. Ideálna pre rodiny s deťmi.</li>
-  <li><strong>Chamfer (skosená 2-3\u00A0mm):</strong> moderný, čistý vzhľad. Dobrý kompromis medzi estetikou a odolnosťou.</li>
+  <li><strong>Chamfer (skosená 2 – 3\u00A0mm):</strong> moderný, čistý vzhľad. Dobrý kompromis medzi estetikou a odolnosťou.</li>
   <li><strong>Rovná 90°:</strong> najostrejší dizajn, ale najnáchylnejšia na chipovanie. Vhodná len pre ostrovčeky bez barového previsu. Viac o profiloch v našom <a href="/blog/hrany-a-profily-chipovanie">sprievodcovi hranami</a>.</li>
 </ul>
 
@@ -169,13 +169,13 @@ export const ARTICLE_23: BlogArticle = {
 
 <ol>
   <li><strong>Zameranie</strong> – technik zmeria finálne rozmery po osadení korpusu (nie podľa plánu kuchyne)</li>
-  <li><strong>Fabrikácia</strong> – CNC rez, výrezy pre drez/varič, profilovanie hrán, waterfall rezy (5–7 pracovných dní)</li>
+  <li><strong>Fabrikácia</strong> – CNC rez, výrezy pre drez/varič, profilovanie hrán, waterfall rezy (5 – 7 pracovných dní)</li>
   <li><strong>Doprava</strong> – špeciálny transport vo vertikálnej A-frame prepravke (platne sa nikdy neprepravujú na plocho)</li>
-  <li><strong>Montáž</strong> – osadenie na silikón, lepenie waterfall sekcií, napojenie drezu a variča (3–5 hodín)</li>
+  <li><strong>Montáž</strong> – osadenie na silikón, lepenie waterfall sekcií, napojenie drezu a variča (3 – 5 hodín)</li>
   <li><strong>Finalizácia</strong> – silikónové tesnenie, čistenie, kontrola (1 hodina)</li>
 </ol>
 
-<p>Celý proces od objednávky po hotový ostrovček trvá <strong>10–15 pracovných dní</strong>. Viac o procese v našom <a href="/blog/od-merania-po-instalaciu-proces-orostone">10-krokovom sprievodcovi</a>.</p>
+<p>Celý proces od objednávky po hotový ostrovček trvá <strong>10 – 15 pracovných dní</strong>. Viac o procese v našom <a href="/blog/od-merania-po-instalaciu-proces-orostone">10-krokovom sprievodcovi</a>.</p>
 
 <figure class="article-figure">
   <img src="/images/blog/article-23/installation.webp" alt="Dvaja technici osádzajú sinterovanú kamennú dosku na kuchynský ostrovček pomocou prísaviek" width="1408" height="792" loading="lazy" />
@@ -244,7 +244,7 @@ export const ARTICLE_23: BlogArticle = {
       },
       {
         question: 'Ako dlho trvá výroba a montáž ostrovčeka?',
-        answer: 'Od zamerania po hotový ostrovček počítajte s 10–15 pracovnými dňami. Samotná montáž na mieste trvá 3–5 hodín vrátane lepenia waterfall sekcií a napojenia drezu.',
+        answer: 'Od zamerania po hotový ostrovček počítajte s 10 – 15 pracovnými dňami. Samotná montáž na mieste trvá 3 – 5 hodín vrátane lepenia waterfall sekcií a napojenia drezu.',
       },
     ],
   },

@@ -94,7 +94,7 @@ export const ARTICLE_01: BlogArticle = {
 
 <h3>Technika dvoch prechodov</h3>
 
-<p>Profesionálni fabrikanti režú výrezy v <strong class="gold">dvoch krokoch</strong>. Prvý prechod ide len do čiastočnej hĺbky – pri 12\u00A0mm doske <strong>4–5\u00A0mm</strong>, pri 20\u00A0mm doske <strong>6–8\u00A0mm</strong>. Druhý prechod dokončí rez. Výrazne to znižuje vibrácie a riziko mikrotrhlín.</p>
+<p>Profesionálni fabrikanti režú výrezy v <strong class="gold">dvoch krokoch</strong>. Prvý prechod ide len do čiastočnej hĺbky – pri 12\u00A0mm doske <strong>4 – 5\u00A0mm</strong>, pri 20\u00A0mm doske <strong>6 – 8\u00A0mm</strong>. Druhý prechod dokončí rez. Výrazne to znižuje vibrácie a riziko mikrotrhlín.</p>
 
 <div class="article-tip">
   <p><strong>Pozor na toto</strong></p>
@@ -287,11 +287,11 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Čo ak spadne hrniec na hranu dosky?',
-        answer: 'Pri zaoblenom profile (half-bullnose, bevel) je riziko nízke – sinterovaný kameň má tvrdosť 6–7 na Mohsovej stupnici. Pri ostrej 90° hrane môže vzniknúť drobný odštiepok. Takéto poškodenie vie partnerský kamenár opraviť epoxidovým tmelom vo farbe dosky priamo na mieste.',
+        answer: 'Pri zaoblenom profile (half-bullnose, bevel) je riziko nízke – sinterovaný kameň má tvrdosť 6 – 7 na Mohsovej stupnici. Pri ostrej 90° hrane môže vzniknúť drobný odštiepok. Takéto poškodenie vie partnerský kamenár opraviť epoxidovým tmelom vo farbe dosky priamo na mieste.',
       },
       {
         question: 'Dá sa chipovanie opraviť?',
-        answer: 'Áno, drobné odštiepky (do 3–4\u00A0mm) kamenár opraví špeciálnym farebným epoxidovým tmelom. Oprava je viditeľná pri detailnom pohľade, ale pri bežnom používaní ju nepostrehnete. Väčšie poškodenia môžu vyžadovať prebrúsenie alebo výmenu segmentu dosky.',
+        answer: 'Áno, drobné odštiepky (do 3 – 4\u00A0mm) kamenár opraví špeciálnym farebným epoxidovým tmelom. Oprava je viditeľná pri detailnom pohľade, ale pri bežnom používaní ju nepostrehnete. Väčšie poškodenia môžu vyžadovať prebrúsenie alebo výmenu segmentu dosky.',
       },
       {
         question: 'Prečo sa nedá robiť ponorný rez?',
@@ -303,7 +303,7 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Koľko stojí oprava praskliny?',
-        answer: 'Malé praskliny sa dajú stabilizovať a vizuálne opraviť za 100–300\u00A0€. Ak prasklina prechádza celou doskou alebo zasahuje výrez, je nutná výmena segmentu, čo môže stáť od 500\u00A0€ vrátane demontáže a novej inštalácie. Preto je prevencia vždy lacnejšia.',
+        answer: 'Malé praskliny sa dajú stabilizovať a vizuálne opraviť za 100 – 300\u00A0€. Ak prasklina prechádza celou doskou alebo zasahuje výrez, je nutná výmena segmentu, čo môže stáť od 500\u00A0€ vrátane demontáže a novej inštalácie. Preto je prevencia vždy lacnejšia.',
       },
       {
         question: 'Je 3\u00A0mm sinterovaný kameň vhodný na kuchynskú dosku?',

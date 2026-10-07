@@ -56,7 +56,7 @@ export const ARTICLE_10: BlogArticle = {
 <div class="article-case-study">
   <span class="case-study-label">Z praxe</span>
   <h3>Rodina s deťmi a Nero Marquina v polished variante</h3>
-  <p>Máme klientov, ktorí si pôvodne zvolili lesklý čierny sinterovaný kameň – Nero Marquina v polished variante. Vyzeralo to úžasne v showroome. Po troch mesiacoch nám zavolali s frustrujúcim problémom: <strong class="gold">dosku utierali 5–8-krát denne</strong>. Každé dieťa, ktoré sa oprelo o dosku, zanechalo viditeľnú stopu. Každý pohár zanechal kruhovú šmuhu. Stôl nikdy nevyzeral čistý dlhšie ako 20 minút.</p>
+  <p>Máme klientov, ktorí si pôvodne zvolili lesklý čierny sinterovaný kameň – Nero Marquina v polished variante. Vyzeralo to úžasne v showroome. Po troch mesiacoch nám zavolali s frustrujúcim problémom: <strong class="gold">dosku utierali 5 – 8-krát denne</strong>. Každé dieťa, ktoré sa oprelo o dosku, zanechalo viditeľnú stopu. Každý pohár zanechal kruhovú šmuhu. Stôl nikdy nevyzeral čistý dlhšie ako 20 minút.</p>
   <p>Riešenie? Dohodli sme výmenu a partnerský kamenár im dosku vymenil za rovnaký dekor v matnom variante. Rovnaká farba, rovnaký kameň – ale úplne iný zážitok. Teraz utierajú dosku raz denne a vždy vyzerá čisto. Ako sami povedali: <em>„Je to, ako keby sme dostali úplne inú kuchyňu.“</em></p>
 </div>
 
@@ -75,7 +75,7 @@ export const ARTICLE_10: BlogArticle = {
 
 <h2 id="mikro-skrabance-a-opotrebenie">Ako vyzerajú mikroškrabance po rokoch používania?</h2>
 
-<p>Sinterovaný kameň je extrémne tvrdý materiál (7–8 na Mohsovej stupnici). Bežné kuchynské nože ho nepoškriabu. Ale mikroškrabance – tie neviditeľné, vláskové stopy, ktoré vznikajú posúvaním tanierov, hrncov a príborov – sú nevyhnutnou súčasťou života každej kuchynskej dosky. A tu je kľúčový rozdiel medzi povrchmi.</p>
+<p>Sinterovaný kameň je extrémne tvrdý materiál (7 – 8 na Mohsovej stupnici). Bežné kuchynské nože ho nepoškriabu. Ale mikroškrabance – tie neviditeľné, vláskové stopy, ktoré vznikajú posúvaním tanierov, hrncov a príborov – sú nevyhnutnou súčasťou života každej kuchynskej dosky. A tu je kľúčový rozdiel medzi povrchmi.</p>
 
 <h3>Lesklý povrch: zrkadlo, ktoré zradí každý škrabanec</h3>
 <p>Lesklý povrch funguje ako zrkadlo. Keď svetlo dopadne na dokonale hladkú plochu, odráža sa rovnomerne a vytvára ten charakteristický lesk. Lenže <strong class="gold">aj najmenší mikroškrabanec naruší túto rovnomernosť</strong>. Svetlo sa na mieste škrabanca odrazí pod iným uhlom a škrabanec je okamžite viditeľný – najmä pri bočnom osvetlení.</p>
@@ -109,7 +109,7 @@ export const ARTICLE_10: BlogArticle = {
 <p>Problém? <strong class="gold">Vaša kuchyňa nemá profesionálne osvetlenie.</strong> Má LED bodové svetlá v strope, ranné slnko z okna a večerné ambient svetlo z lustrov. Pod týmito svetlami lesklý povrch nevyzerá ako na profesionálnych fotkách – vyzerá ako lesklá plocha pokrytá odtlačkami prstov a šmuhami od utierky. Fotografia zaznamenáva ideálny moment. Realita je celý zvyšok dňa.</p>
 
 <h3>Realitné fotografie: výnimka z pravidla</h3>
-<p>Existuje jedna situácia, kde lesklý povrch jednoznačne vyhráva: <strong>realitné fotografie pri predaji nehnuteľnosti</strong>. Ak plánujete byt predať v horizonte 3–5 rokov, lesklá kuchynská doska vyzerá na inzerátnych fotkách výrazne lepšie. Kupujúci reagujú na dramatický lesk, pretože podvedome asociujú lesk s luxusom a novotou. V tomto špecifickom kontexte môže lesklý povrch zvýšiť vnímanú hodnotu kuchyne.</p>
+<p>Existuje jedna situácia, kde lesklý povrch jednoznačne vyhráva: <strong>realitné fotografie pri predaji nehnuteľnosti</strong>. Ak plánujete byt predať v horizonte 3 – 5 rokov, lesklá kuchynská doska vyzerá na inzerátnych fotkách výrazne lepšie. Kupujúci reagujú na dramatický lesk, pretože podvedome asociujú lesk s luxusom a novotou. V tomto špecifickom kontexte môže lesklý povrch zvýšiť vnímanú hodnotu kuchyne.</p>
 
 <h3>Matný povrch: to, čo vidíte, je to, čo dostanete</h3>
 <p>Matný povrch je v tomto smere čestnejší. Ako vyzerá v showroome, tak vyzerá doma. Ako vyzerá na fotke, tak vyzerá naživo. Žiadne sklamanie, žiadny rozdiel medzi očakávaním a realitou. Pre klientov, ktorí si robia informované rozhodnutia na základe dlhodobej skúsenosti – nie krátkodobého prvého dojmu – je to obrovská výhoda.</p>
@@ -166,12 +166,12 @@ export const ARTICLE_10: BlogArticle = {
 <p>Na základe spätnej väzby od našich klientov:</p>
 <ul>
 <li><strong>Matný povrch:</strong> 1× denne bežné utretie vlhkou utierkou stačí na udržanie čistého vzhľadu.</li>
-<li><strong>Lesklý povrch:</strong> 3–5× denne utieranie, ideálne mikrovláknom s čistiacim prostriedkom na sklo, aby ste odstránili šmuhy bez zanechania nových. Pre tmavé lesklé povrchy (čierna, antracit) to môže byť aj 6–8×.</li>
+<li><strong>Lesklý povrch:</strong> 3 – 5× denne utieranie, ideálne mikrovláknom s čistiacim prostriedkom na sklo, aby ste odstránili šmuhy bez zanechania nových. Pre tmavé lesklé povrchy (čierna, antracit) to môže byť aj 6 – 8×.</li>
 <li><strong>Leather finish:</strong> podobne ako matný, 1× denne. Textúra navyše maskuje aj drobné kvapky vody.</li>
 </ul>
 
 <div class="article-highlight">
-  <p><strong>Frekvencia čistenia v číslach:</strong> Matný povrch: <strong>1× denne</strong>. Lesklý povrch: <strong>3–5× denne</strong>. Tmavý lesklý: <strong>6–8× denne</strong>. Leather finish: <strong>1× denne</strong>. Rozdiel v čase strávenom údržbou je za rok desiatky hodín.</p>
+  <p><strong>Frekvencia čistenia v číslach:</strong> Matný povrch: <strong>1× denne</strong>. Lesklý povrch: <strong>3 – 5× denne</strong>. Tmavý lesklý: <strong>6 – 8× denne</strong>. Leather finish: <strong>1× denne</strong>. Rozdiel v čase strávenom údržbou je za rok desiatky hodín.</p>
 </div>
 
 <div class="article-tip">
@@ -231,7 +231,7 @@ export const ARTICLE_10: BlogArticle = {
       },
       {
         question: 'Je matný povrch ťažšie čistiteľný ako lesklý?',
-        answer: 'Práve naopak. Matný povrch je jednoduchší na údržbu, pretože nevidíte šmuhy od utierky ani odtlačky. Stačí raz denne utretie vlhkou utierkou. Lesklý povrch vyžaduje 3–5× denne utieranie, ideálne mikrovláknom, aby ste odstránili viditeľné stopy bez zanechania nových šmúh.'
+        answer: 'Práve naopak. Matný povrch je jednoduchší na údržbu, pretože nevidíte šmuhy od utierky ani odtlačky. Stačí raz denne utretie vlhkou utierkou. Lesklý povrch vyžaduje 3 – 5× denne utieranie, ideálne mikrovláknom, aby ste odstránili viditeľné stopy bez zanechania nových šmúh.'
       },
       {
         question: 'Vyzerá matný povrch lacnejšie ako lesklý?',
@@ -247,11 +247,11 @@ export const ARTICLE_10: BlogArticle = {
       },
       {
         question: 'Ako dlho vydrží lesk na lesklom sinterovanom kameni?',
-        answer: 'Sinterovaný kameň je tvrdší ako väčšina materiálov, s ktorými prichádza do kontaktu (Mohs 7–8), takže sa fyzicky neošúcha. Ale mikroškrabance z posúvania hrncov a tanierov postupne vytvárajú pavučinový efekt, ktorý znižuje intenzitu lesku. Pri bežnom používaní sa prvé zmeny objavia po 1–2 rokoch, výraznejšie po 3–5 rokoch.'
+        answer: 'Sinterovaný kameň je tvrdší ako väčšina materiálov, s ktorými prichádza do kontaktu (Mohs 7 – 8), takže sa fyzicky neošúcha. Ale mikroškrabance z posúvania hrncov a tanierov postupne vytvárajú pavučinový efekt, ktorý znižuje intenzitu lesku. Pri bežnom používaní sa prvé zmeny objavia po 1 – 2 rokoch, výraznejšie po 3 – 5 rokoch.'
       },
       {
         question: 'Dá sa lesklý povrch opätovne vyleštiť?',
-        answer: 'Teoreticky áno – profesionálne leštenie diamantovými pastami dokáže obnoviť pôvodný lesk. Prakticky je to nákladné (200–400\u00A0€ za celú dosku), vyžaduje špecialistu a efekt trvá len do ďalšieho opotrebenia. Nie je to realistické riešenie na pravidelnú bázu. Pri matnom povrchu tento problém jednoducho neexistuje.'
+        answer: 'Teoreticky áno – profesionálne leštenie diamantovými pastami dokáže obnoviť pôvodný lesk. Prakticky je to nákladné (200 – 400\u00A0€ za celú dosku), vyžaduje špecialistu a efekt trvá len do ďalšieho opotrebenia. Nie je to realistické riešenie na pravidelnú bázu. Pri matnom povrchu tento problém jednoducho neexistuje.'
       },
       {
         question: 'Aký povrch je lepší pre tmavú kuchyňu so slabým osvetlením?',
@@ -259,7 +259,7 @@ export const ARTICLE_10: BlogArticle = {
       },
       {
         question: 'Ovplyvňuje povrchová úprava cenu sinterovaného kameňa?',
-        answer: 'Minimálne. Cenový rozdiel medzi matným a lesklým variantom rovnakého dekoru je zvyčajne 5–15\u00A0%. Niektoré špeciálne úpravy (leather, naturale) môžu byť o 10–20\u00A0% drahšie ako štandardný matný. Povrch by ste mali vyberať podľa praktických a estetických kritérií, nie podľa ceny – rozdiel je v kontexte celkovej investície zanedbateľný.'
+        answer: 'Minimálne. Cenový rozdiel medzi matným a lesklým variantom rovnakého dekoru je zvyčajne 5 – 15\u00A0%. Niektoré špeciálne úpravy (leather, naturale) môžu byť o 10 – 20\u00A0% drahšie ako štandardný matný. Povrch by ste mali vyberať podľa praktických a estetických kritérií, nie podľa ceny – rozdiel je v kontexte celkovej investície zanedbateľný.'
       },
       {
         question: 'Aký povrch odporúčate na kuchynský ostrov?',
@@ -271,7 +271,7 @@ export const ARTICLE_10: BlogArticle = {
       },
       {
         question: 'Čo ak si vyberiem lesklý povrch a po čase ho budem chcieť zmeniť na matný?',
-        answer: 'Zmena z lesklého na matný je technicky možná – profesionálne prebrúsenie povrchu dokáže vytvoriť matný alebo honed efekt. Je to však zásah, ktorý vyžaduje špecialistu, stojí 300–600\u00A0€ za dosku a nie je reverzibilný. Opačná zmena (z matného na lesklý) je náročnejšia a drahšia. Preto odporúčame vybrať správny povrch hneď na začiatku – ideálne po návšteve showroomu, kde si oba varianty ohmatáte a porovnáte v reálnom svetle.'
+        answer: 'Zmena z lesklého na matný je technicky možná – profesionálne prebrúsenie povrchu dokáže vytvoriť matný alebo honed efekt. Je to však zásah, ktorý vyžaduje špecialistu, stojí 300 – 600\u00A0€ za dosku a nie je reverzibilný. Opačná zmena (z matného na lesklý) je náročnejšia a drahšia. Preto odporúčame vybrať správny povrch hneď na začiatku – ideálne po návšteve showroomu, kde si oba varianty ohmatáte a porovnáte v reálnom svetle.'
       }
     ]
   },

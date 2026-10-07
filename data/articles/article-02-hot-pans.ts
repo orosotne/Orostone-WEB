@@ -55,7 +55,7 @@ export const ARTICLE_02: BlogArticle = {
     <li><strong>Sinterovaný kameň:</strong> 300\u00A0°C+ bez poškodenia (bez živíc)</li>
     <li><strong>Kvarcitový kompozit:</strong> ~150\u00A0°C – polyesterové živice sa začínajú rozkladať, žltnúť</li>
     <li><strong>Laminát:</strong> ~80\u00A0°C – deformácia, trvalo viditeľné poškodenie</li>
-    <li><strong>Prírodný granit:</strong> 200–250\u00A0°C (závisí od konkrétneho kameňa a povrchového spracovania)</li>
+    <li><strong>Prírodný granit:</strong> 200 – 250\u00A0°C (závisí od konkrétneho kameňa a povrchového spracovania)</li>
   </ul>
 </div>
 
@@ -66,7 +66,7 @@ export const ARTICLE_02: BlogArticle = {
 
 <h2 id="co-sa-stane-kvarcit">Čo sa stane s kvarcitom pri horúcom hrnci?</h2>
 
-<p>Kvarcitový kompozit obsahuje 7–10\u00A0% polyesterových živíc. Pri dlhodobom kontakte s predmetmi nad 150\u00A0°C sa tieto živice začínajú tepelne degradovať. <strong class="gold">Výsledkom je trvalé poškodenie</strong> – najčastejšie žlté alebo biele škvrny v tvare spodku hrnca.</p>
+<p>Kvarcitový kompozit obsahuje 7 – 10\u00A0% polyesterových živíc. Pri dlhodobom kontakte s predmetmi nad 150\u00A0°C sa tieto živice začínajú tepelne degradovať. <strong class="gold">Výsledkom je trvalé poškodenie</strong> – najčastejšie žlté alebo biele škvrny v tvare spodku hrnca.</p>
 
 <p>Toto poškodenie je nereverzibilné. Oprava si vyžaduje výmenu celej dosky. A nie je to lacná záležitosť.</p>
 
@@ -106,9 +106,9 @@ export const ARTICLE_02: BlogArticle = {
 
 <h2 id="priamy-plamen">Čo ak naň zameriam priamy plameň?</h2>
 
-<p>Testovali sme to. Sinterovaný kameň vydrží priamy kontakt s kuchynským horákom – horáky produkujú teploty okolo 1\u00A0500–2\u00A0000\u00A0°C, ale kontaktná plocha je malá a trvanie krátkodobé.</p>
+<p>Testovali sme to. Sinterovaný kameň vydrží priamy kontakt s kuchynským horákom – horáky produkujú teploty okolo 1\u00A0500 – 2\u00A0000\u00A0°C, ale kontaktná plocha je malá a trvanie krátkodobé.</p>
 
-<p>Pri priamom plameňovom zahriatí jedného miesta počas 10–15 sekúnd nenastal žiadny viditeľný efekt – bez stopy, bez zmeny farby, bez deformácie. Pre porovnanie: na kvarcite by sa pri rovnakom teste objavila biela škvrna od degradovanej živice.</p>
+<p>Pri priamom plameňovom zahriatí jedného miesta počas 10 – 15 sekúnd nenastal žiadny viditeľný efekt – bez stopy, bez zmeny farby, bez deformácie. Pre porovnanie: na kvarcite by sa pri rovnakom teste objavila biela škvrna od degradovanej živice.</p>
 
 <p>Dôvod: sinterovaný kameň sa v podstate <strong class="gold">prehriať nedá pri teplotách, ktoré kuchyňa produkuje</strong>. Jeho výrobná teplota (1\u00A0200\u00A0°C) je vyššia ako teplota akéhokoľvek kuchynského zariadenia.</p>
 
@@ -139,7 +139,7 @@ export const ARTICLE_02: BlogArticle = {
 
 <p><strong>Prírodný mramor:</strong> Tepelne relatívne odolný, ale <strong class="gold">impregnácia sa zničí tepelným šokom</strong>. Po opakovanom tepelnom zaťažení sa stáva pórovitým a nasáva škvrny.</p>
 
-<p><strong>Prírodný granit:</strong> Dobrá tepelná odolnosť (200–250\u00A0°C), ale závisí od konkrétneho kameňa a spôsobu povrchovej úpravy. Pri mikroprasklinkách môže teplo urýchliť ich šírenie.</p>
+<p><strong>Prírodný granit:</strong> Dobrá tepelná odolnosť (200 – 250\u00A0°C), ale závisí od konkrétneho kameňa a spôsobu povrchovej úpravy. Pri mikroprasklinkách môže teplo urýchliť ich šírenie.</p>
 
 <div class="article-tip">
   <p><strong>Záver v jednej vete</strong></p>
@@ -187,7 +187,7 @@ export const ARTICLE_02: BlogArticle = {
       },
       {
         question: 'Prečo kvarcit neznesie horúce hrnce a sinterovaný kameň áno?',
-        answer: 'Kvarcitový kompozit obsahuje 7–10\u00A0% polyesterových živíc, ktoré sa tepelne degradujú pri ~150\u00A0°C. Sinterovaný kameň je 100\u00A0% minerálny bez živíc – výrobný proces pri 1\u00A0200\u00A0°C odstraňuje všetku organickú hmotu. Výsledkom je materiál, ktorý tepelné zaťaženie bežnej kuchyne zvládne bez obmedzení.',
+        answer: 'Kvarcitový kompozit obsahuje 7 – 10\u00A0% polyesterových živíc, ktoré sa tepelne degradujú pri ~150\u00A0°C. Sinterovaný kameň je 100\u00A0% minerálny bez živíc – výrobný proces pri 1\u00A0200\u00A0°C odstraňuje všetku organickú hmotu. Výsledkom je materiál, ktorý tepelné zaťaženie bežnej kuchyne zvládne bez obmedzení.',
       },
       {
         question: 'Poškodí horúci hrniec povrch sinterovaného kameňa?',
@@ -195,7 +195,7 @@ export const ARTICLE_02: BlogArticle = {
       },
       {
         question: 'Môžem na sinterovaný kameň položiť pekáč priamo z rúry?',
-        answer: 'Áno. Pekáče z rúry pri 220–250\u00A0°C môžete pokojne uložiť priamo na sinterovaný kameň. Materiál tento teplotný rozsah zvláda bez akýchkoľvek obmedzení.',
+        answer: 'Áno. Pekáče z rúry pri 220 – 250\u00A0°C môžete pokojne uložiť priamo na sinterovaný kameň. Materiál tento teplotný rozsah zvláda bez akýchkoľvek obmedzení.',
       },
       {
         question: 'Je sinterovaný kameň vhodný na kuchynský ostrov pri sporáku?',

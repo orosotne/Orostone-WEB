@@ -21,7 +21,7 @@ export const ARTICLE_22: BlogArticle = {
 <p class="article-tldr-label">Zhrnutie článku</p>
 <ul class="article-tldr">
   <li>Neviditeľná varná doska = indukčný modul pod sinterovaným kameňom (12\u00A0mm hrúbka)</li>
-  <li>Elektromagnetické pole prechádza cez kameň – výkon 90–95\u00A0% štandardnej indukcie</li>
+  <li>Elektromagnetické pole prechádza cez kameň – výkon 90 – 95\u00A0% štandardnej indukcie</li>
   <li>Kompatibilné systémy: Invisacook, TPIC Invisible Cooking, Miele TempControl (vybrané modely)</li>
   <li>Sinterovaný kameň je ideálny vďaka takmer nulovej pórovitosti a rovnomernému prenosu tepla</li>
   <li>Hrúbka platne musí byť presne 12\u00A0mm – 20\u00A0mm platne sú príliš hrubé pre prenos poľa</li>
@@ -44,13 +44,13 @@ export const ARTICLE_22: BlogArticle = {
 
 <p>Princíp je jednoduchý: <strong>indukčná cievka</strong> je umiestnená pod sinterovaným kameňom namiesto pod sklom. Elektromagnetické pole, ktoré generuje, prechádza cez nevodivý materiál (kameň) a vytvára teplo priamo v dne hrnca – rovnako ako pri klasickej indukčnej doske.</p>
 
-<p>Kľúčový rozdiel: sinterovaný kameň je <strong>dokonale rovný, nevodivý a nepórovitý</strong>. Elektromagnetické pole ním prechádza s minimálnymi stratami – účinnosť je 90–95\u00A0% oproti klasickej indukčnej doske so sklom.</p>
+<p>Kľúčový rozdiel: sinterovaný kameň je <strong>dokonale rovný, nevodivý a nepórovitý</strong>. Elektromagnetické pole ním prechádza s minimálnymi stratami – účinnosť je 90 – 95\u00A0% oproti klasickej indukčnej doske so sklom.</p>
 
 <div class="article-highlight">
   <p><strong>Porovnanie: klasická vs. neviditeľná indukcia</strong></p>
   <ul>
     <li><strong>Klasická indukcia (sklokeramika):</strong> účinnosť ~95\u00A0%, viditeľný panel, ťažšie čistenie okolo hrán</li>
-    <li><strong>Neviditeľná indukcia (pod kameňom):</strong> účinnosť ~90–95\u00A0%, žiadny viditeľný panel, celá plocha je jedna čistiteľná doska</li>
+    <li><strong>Neviditeľná indukcia (pod kameňom):</strong> účinnosť ~90 – 95\u00A0%, žiadny viditeľný panel, celá plocha je jedna čistiteľná doska</li>
     <li><strong>Plynový varič pod kameňom:</strong> NEMOŽNÉ – plameň nemá ako preniesť teplo cez kameň</li>
   </ul>
 </div>
@@ -83,7 +83,7 @@ export const ARTICLE_22: BlogArticle = {
 
 <h2 id="hrubka-12mm">Prečo musí byť platňa presne 12\u00A0mm?</h2>
 
-<p>Elektromagnetické pole má <strong>obmedzenú hĺbku prieniku</strong>. Pri hrúbke 12\u00A0mm sinterovaného kameňa pole prechádza s účinnosťou 90–95\u00A0%. Pri 20\u00A0mm platni sa účinnosť znižuje pod 70\u00A0% – hrniec sa ohrieva pomalšie a nerovnomerne.</p>
+<p>Elektromagnetické pole má <strong>obmedzenú hĺbku prieniku</strong>. Pri hrúbke 12\u00A0mm sinterovaného kameňa pole prechádza s účinnosťou 90 – 95\u00A0%. Pri 20\u00A0mm platni sa účinnosť znižuje pod 70\u00A0% – hrniec sa ohrieva pomalšie a nerovnomerne.</p>
 
 <div class="article-highlight">
   <p><strong>Vplyv hrúbky na výkon:</strong></p>
@@ -108,8 +108,8 @@ export const ARTICLE_22: BlogArticle = {
 <div class="article-highlight">
   <p><strong>Prehľad systémov (2026):</strong></p>
   <ul>
-    <li><strong>Invisacook:</strong> španielsky výrobca, 2–4 zóny, špeciálne navrhnuté pre sinterovaný kameň. Najrozšírenejšie riešenie na európskom trhu. Výkon 1\u00A0400–3\u00A0700\u00A0W na zónu.</li>
-    <li><strong>TPIC (The Pan Is Cooking):</strong> talianska technológia, modulárny systém. 1–6 zón, kompatibilné s viacerými hrúbkami platní.</li>
+    <li><strong>Invisacook:</strong> španielsky výrobca, 2 – 4 zóny, špeciálne navrhnuté pre sinterovaný kameň. Najrozšírenejšie riešenie na európskom trhu. Výkon 1\u00A0400 – 3\u00A0700\u00A0W na zónu.</li>
+    <li><strong>TPIC (The Pan Is Cooking):</strong> talianska technológia, modulárny systém. 1 – 6 zón, kompatibilné s viacerými hrúbkami platní.</li>
     <li><strong>Miele TempControl / KM 7000:</strong> vybrané modely sú certifikované pre inštaláciu pod sinterovaný kameň. Prémiová cenová kategória.</li>
     <li><strong>Bora S Pure / X Pure:</strong> niektoré Bora systémy s odsávaním nadol sú kompatibilné s 12\u00A0mm platňami. Integrujú varenie aj odsávanie pod jednu dosku.</li>
   </ul>
@@ -127,7 +127,7 @@ export const ARTICLE_22: BlogArticle = {
   <li><strong>Osadenie dosky:</strong> platňa sa uloží na kuchynskú linku, pripoja sa indukčné moduly a systém sa nakalibruje. Kalibrácia zahŕňa nastavenie výkonu pre konkrétnu hrúbku kameňa.</li>
 </ol>
 
-<p>Celý proces od objednávky po funkčnú kuchyňu trvá zvyčajne <strong>4–6 týždňov</strong>.</p>
+<p>Celý proces od objednávky po funkčnú kuchyňu trvá zvyčajne <strong>4 – 6 týždňov</strong>.</p>
 
 <figure class="article-figure">
   <img src="/images/blog/article-22/installation.webp" alt="Montáž indukčných cievok na spodnú stranu sinterovanej platne v dielni" width="1408" height="792" loading="lazy" />
@@ -148,7 +148,7 @@ export const ARTICLE_22: BlogArticle = {
   <p><strong>Celkom za 4-zónové riešenie:</strong> cca 4\u00A0000 – 5\u00A0800\u00A0€ (materiál + technika + montáž)</p>
 </div>
 
-<p>Pre porovnanie: prémiová klasická indukcia (Miele, Gaggenau) stojí 2\u00A0000–3\u00A0500\u00A0€ samotná. Neviditeľná varná doska je prirážka ~1\u00A0500–2\u00A0500\u00A0€ za dizajn bez viditeľných horákov a jednoliatú plochu.</p>
+<p>Pre porovnanie: prémiová klasická indukcia (Miele, Gaggenau) stojí 2\u00A0000 – 3\u00A0500\u00A0€ samotná. Neviditeľná varná doska je prirážka ~1\u00A0500 – 2\u00A0500\u00A0€ za dizajn bez viditeľných horákov a jednoliatú plochu.</p>
 
 <h2 id="pre-koho">Pre koho je neviditeľná varná doska?</h2>
 
@@ -173,8 +173,8 @@ export const ARTICLE_22: BlogArticle = {
 <ul>
   <li><strong>Len indukcia:</strong> plynové alebo odporové varenie nie je možné</li>
   <li><strong>Indukčné hrnce sú povinné:</strong> hrnce s feromagnetickým dnom (rovnako ako pri klasickej indukčnej doske)</li>
-  <li><strong>O 5–10\u00A0% pomalšie varenie:</strong> oproti priamemu kontaktu so sklom je drobná strata cez kameň</li>
-  <li><strong>Vyššia cena:</strong> oproti klasickej indukčnej doske ~1\u00A0500–2\u00A0500\u00A0€ navyše</li>
+  <li><strong>O 5 – 10\u00A0% pomalšie varenie:</strong> oproti priamemu kontaktu so sklom je drobná strata cez kameň</li>
+  <li><strong>Vyššia cena:</strong> oproti klasickej indukčnej doske ~1\u00A0500 – 2\u00A0500\u00A0€ navyše</li>
   <li><strong>Servis:</strong> ak sa cievka pokazí, treba odstrániť dosku – nie je to plug-and-play výmena</li>
 </ul>
 
@@ -204,7 +204,7 @@ export const ARTICLE_22: BlogArticle = {
       },
       {
         question: 'Funguje neviditeľná varná doska rovnako ako klasická indukcia?',
-        answer: 'Áno, princíp je rovnaký – elektromagnetické pole ohrieva priamo dno indukčného hrnca. Účinnosť cez 12\u00A0mm sinterovaný kameň je 90–95\u00A0% oproti klasickej indukčnej doske.',
+        answer: 'Áno, princíp je rovnaký – elektromagnetické pole ohrieva priamo dno indukčného hrnca. Účinnosť cez 12\u00A0mm sinterovaný kameň je 90 – 95\u00A0% oproti klasickej indukčnej doske.',
       },
       {
         question: 'Akú hrúbku sinterovaného kameňa potrebujem?',
@@ -212,7 +212,7 @@ export const ARTICLE_22: BlogArticle = {
       },
       {
         question: 'Koľko stojí neviditeľná varná doska?',
-        answer: 'Kompletné 4-zónové riešenie (indukčný modul + sinterovaný kameň + inštalácia) stojí cca 4\u00A0000 – 5\u00A0800\u00A0€ vrátane DPH. Je to prirážka ~1\u00A0500–2\u00A0500\u00A0€ oproti klasickej prémiovej indukcii.',
+        answer: 'Kompletné 4-zónové riešenie (indukčný modul + sinterovaný kameň + inštalácia) stojí cca 4\u00A0000 – 5\u00A0800\u00A0€ vrátane DPH. Je to prirážka ~1\u00A0500 – 2\u00A0500\u00A0€ oproti klasickej prémiovej indukcii.',
       },
       {
         question: 'Môžem použiť neviditeľnú varnú dosku s kvarcom alebo granitom?',

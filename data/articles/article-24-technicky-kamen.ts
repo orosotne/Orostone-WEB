@@ -14,7 +14,7 @@ export const ARTICLE_24: BlogArticle = {
   sk: {
     title: 'Technický kameň: cena, nevýhody a pracovná doska do kuchyne',
     subtitle: 'Sprievodca cenou, nevýhodami a výberom materiálu – sinterovaný kameň, quartz kompozit, keramika a solid surface',
-    excerpt: 'Praktický sprievodca: čo je technický kameň, ktorý typ sa hodí na kuchynskú dosku, koľko stojí (280–600\u00A0€/bm) a aké má reálne nevýhody.',
+    excerpt: 'Praktický sprievodca: čo je technický kameň, ktorý typ sa hodí na kuchynskú dosku, koľko stojí (280 – 600\u00A0€/bm) a aké má reálne nevýhody.',
     directAnswer: 'Technický kameň je trhový pojem pre umelo vyrábané materiály – sinterovaný kameň, kremenný kompozit, keramika alebo solid surface. Cena pracovnej dosky sa orientačne pohybuje od 280 do 600\u00A0€/bm vrátane základného opracovania a montáže.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>

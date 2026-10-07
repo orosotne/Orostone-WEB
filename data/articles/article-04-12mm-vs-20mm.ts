@@ -126,8 +126,8 @@ export const ARTICLE_04: BlogArticle = {
 <tr><th>Situácia</th><th>Max. previs</th><th>Poznámka</th></tr>
 </thead>
 <tbody>
-<tr><td><strong>Bežná kuchynská linka</strong></td><td>150–200\u00A0mm</td><td>Bez konzoly, pri plnom podklade</td></tr>
-<tr><td><strong>Barový výsun / sedenie</strong></td><td>300–500\u00A0mm</td><td>Vždy s kovovou konzolou</td></tr>
+<tr><td><strong>Bežná kuchynská linka</strong></td><td>150 – 200\u00A0mm</td><td>Bez konzoly, pri plnom podklade</td></tr>
+<tr><td><strong>Barový výsun / sedenie</strong></td><td>300 – 500\u00A0mm</td><td>Vždy s kovovou konzolou</td></tr>
 <tr><td><strong>Ostrov – bočný previs</strong></td><td>max. 200\u00A0mm</td><td>Bez konzoly pri súvislom podklade</td></tr>
 </tbody>
 </table>
@@ -188,7 +188,7 @@ export const ARTICLE_04: BlogArticle = {
       },
       {
         question: 'Aký je maximálny previs 12\u00A0mm dosky bez konzoly?',
-        answer: 'Pre bežnú kuchynskú linku odporúčame max. 150–200\u00A0mm. Pre ostrov s bočným previsom max. 200\u00A0mm. Akýkoľvek previs pre barové sedenie alebo dlhší výsun vyžaduje kovovú konzolu – bez ohľadu na hrúbku dosky.',
+        answer: 'Pre bežnú kuchynskú linku odporúčame max. 150 – 200\u00A0mm. Pre ostrov s bočným previsom max. 200\u00A0mm. Akýkoľvek previs pre barové sedenie alebo dlhší výsun vyžaduje kovovú konzolu – bez ohľadu na hrúbku dosky.',
       },
       {
         question: 'Kedy by som mal zvážiť 20\u00A0mm od iného dodávateľa?',

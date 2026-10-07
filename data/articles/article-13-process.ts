@@ -14,13 +14,13 @@ export const ARTICLE_13: BlogArticle = {
   sk: {
     title: 'Od merania po inštaláciu: proces Orostone v 10 krokoch',
     subtitle: 'Kompletný sprievodca celým procesom – od prvej konzultácie po odovzdanie hotovej kuchyne',
-    excerpt: 'Presne budete vedieť, čo sa deje v každej fáze. 10 krokov, konkrétne termíny, jasné zodpovednosti. Celý proces od konzultácie po hotovú kuchyňu trvá 10–15 pracovných dní.',
+    excerpt: 'Presne budete vedieť, čo sa deje v každej fáze. 10 krokov, konkrétne termíny, jasné zodpovednosti. Celý proces od konzultácie po hotovú kuchyňu trvá 10 – 15 pracovných dní.',
     metaTitle: 'Od pôdorysu po hotovú kuchyňu – proces | OROSTONE',
     metaDescription: 'Od pôdorysu cez výber dekoru a zameranie po finálnu kuchyňu. Celý proces zastrešíme so skúsenými kamenármi – čo má klient na oboch stranách očakávať.',
-    directAnswer: 'Celý proces od prvej konzultácie po hotovú kuchyňu trvá 10–15 pracovných dní. Zahŕňa: konzultáciu, výber materiálu, zameranie na mieste, CNC fabrikáciu, kontrolu kvality, transport na A-ráme, prípravu podkladu, montáž, inštaláciu spotrebičov a finálnu kontrolu.',
+    directAnswer: 'Celý proces od prvej konzultácie po hotovú kuchyňu trvá 10 – 15 pracovných dní. Zahŕňa: konzultáciu, výber materiálu, zameranie na mieste, CNC fabrikáciu, kontrolu kvality, transport na A-ráme, prípravu podkladu, montáž, inštaláciu spotrebičov a finálnu kontrolu.',
     content: `
 <ul class="article-tldr">
-  <li>Celý proces od konzultácie po hotovú kuchyňu trvá 10–15 pracovných dní</li>
+  <li>Celý proces od konzultácie po hotovú kuchyňu trvá 10 – 15 pracovných dní</li>
   <li>Zameranie robí ručne priamo u vás partnerský kamenár, ktorý dosku aj vyrobí</li>
   <li>CNC fabrikácia diamantovými nástrojmi – žiadne ručné rezanie</li>
   <li>Transport vo vertikálnych A-rámoch – dosky sa vždy vezú na stojato, nie naplocho</li>
@@ -30,7 +30,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <p>Neistota plodí stres – a práve preto vám v tomto článku ukážeme celý proces Orostone krok za krokom, s konkrétnymi termínmi, meraniami a zodpovednosťami.</p>
 
-<p>Či už plánujete novú kuchyňu, kúpeľňový obklad alebo ostrov do otvoreného priestoru, proces je vždy rovnaký: <strong>10 jasných krokov, 10–15 pracovných dní, jasné zodpovednosti</strong>. Poďme na to.</p>
+<p>Či už plánujete novú kuchyňu, kúpeľňový obklad alebo ostrov do otvoreného priestoru, proces je vždy rovnaký: <strong>10 jasných krokov, 10 – 15 pracovných dní, jasné zodpovednosti</strong>. Poďme na to.</p>
 
 <p><strong>Kto čo robí:</strong> Orostone vám poradí s výberom, dodá materiál – celé platne – a koordinuje termíny. Zameranie, výrobu, dopravu a montáž robí a fakturuje partnerský kamenár so skúsenosťami so sinterovaným kameňom. Výsledok kontrolujeme aj my.</p>
 
@@ -47,7 +47,7 @@ export const ARTICLE_13: BlogArticle = {
   <li><strong>Rozpočet a očakávania</strong> – otvorene diskutujeme o cene, aby ste vedeli, čo za svoj rozpočet dostanete</li>
 </ul>
 
-<p><strong>Trvanie:</strong> 1–2 hodiny. Konzultácia je bezplatná a nezáväzná.</p>
+<p><strong>Trvanie:</strong> 1 – 2 hodiny. Konzultácia je bezplatná a nezáväzná.</p>
 
 <p><strong>Tip pre klientov:</strong> Prineste si pôdorys kuchyne, fotky inšpirácie a – ak máte – výkres od kuchynského štúdia. Čím viac informácií máme od začiatku, tým presnejšie vám poradíme.</p>
 
@@ -87,7 +87,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <p><strong>Podmienka:</strong> Vaše skrinky musia byť <strong>kompletne nainštalované a vyrovnané</strong> pred príchodom kamenára. Meria sa finálny stav – akákoľvek zmena po zameraní znamená nové meranie.</p>
 
-<p><strong>Trvanie:</strong> 1–2 hodiny na mieste, v závislosti od komplexnosti kuchyne.</p>
+<p><strong>Trvanie:</strong> 1 – 2 hodiny na mieste, v závislosti od komplexnosti kuchyne.</p>
 
 <p><strong>Schválenie výkresov:</strong> Na základe merania kamenár pripraví výkresy s presným tvarom, rozmermi, pozíciami výrezov a profilmi hrán. Výkresy dostanete na schválenie – <strong>fabrikácia sa nespustí, kým ich neodsúhlasíte</strong>. Toto je vaša posledná príležitosť na zmeny bez dodatočných nákladov.</p>
 
@@ -98,7 +98,7 @@ export const ARTICLE_13: BlogArticle = {
 <p><strong>Rezanie mostovým CNC strojom:</strong></p>
 <ul>
   <li><strong>Diamantové pílové kotúče</strong> – jediný spôsob, ako čisto rezať sinterovaný kameň s tvrdosťou 7+ na Mohsovej stupnici</li>
-  <li><strong>Technika dvoch prechodov</strong> – pri 12\u00A0mm doske: prvý prechod 4–5\u00A0mm, druhý prechod dokončí rez. Pri 20\u00A0mm: prvý prechod 6–8\u00A0mm. Tento postup minimalizuje vibrácie a mikrotrhliny</li>
+  <li><strong>Technika dvoch prechodov</strong> – pri 12\u00A0mm doske: prvý prechod 4 – 5\u00A0mm, druhý prechod dokončí rez. Pri 20\u00A0mm: prvý prechod 6 – 8\u00A0mm. Tento postup minimalizuje vibrácie a mikrotrhliny</li>
   <li><strong>Vodné chladenie</strong> – nepretržitý prúd vody odvádza teplo a zabraňuje prehriatiu materiálu</li>
 </ul>
 
@@ -113,7 +113,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <p><strong>Profilovanie hrán:</strong> CNC stroj vyfrézuje zvolený profil hrany s presnosťou, ktorá nie je dosiahnuteľná ručným opracovaním. Výsledok je hladký a rovnomerný po celej dĺžke.</p>
 
-<p><strong>Trvanie:</strong> 7–10 pracovných dní od schválenia výkresov. Komplexnejšie projekty s viacerými kusmi môžu trvať dlhšie – o presnom termíne vás informujeme pri schválení.</p>
+<p><strong>Trvanie:</strong> 7 – 10 pracovných dní od schválenia výkresov. Komplexnejšie projekty s viacerými kusmi môžu trvať dlhšie – o presnom termíne vás informujeme pri schválení.</p>
 
 <h2 id="krok-5-kontrola-kvality">Krok 5 – Ako kontrolujeme kvalitu?</h2>
 
@@ -163,7 +163,7 @@ export const ARTICLE_13: BlogArticle = {
   <li><strong>Ochrana okolia</strong> – podlaha, spotrebiče a blízke povrchy sa zakryjú pred prachom a lepidlom</li>
 </ul>
 
-<p>Tento krok trvá 30–60 minút, ale je absolútne kritický. Správna príprava znamená stabilnú, beznapäťovú inštaláciu na celé desaťročia.</p>
+<p>Tento krok trvá 30 – 60 minút, ale je absolútne kritický. Správna príprava znamená stabilnú, beznapäťovú inštaláciu na celé desaťročia.</p>
 
 <h2 id="krok-8-montaz-dosiek">Krok 8 – Ako prebieha samotná montáž?</h2>
 
@@ -172,13 +172,13 @@ export const ARTICLE_13: BlogArticle = {
 <p><strong>Postup montáže:</strong></p>
 <ul>
   <li><strong>Aplikácia lepidla</strong> – profesionálne polyuretánové alebo silikónové lepidlo sa nanáša na hornú plochu skriniek v presne definovanom vzore. Lepidlo zabezpečuje pružné spojenie, ktoré absorbuje mikrodilatácie</li>
-  <li><strong>Osadenie dosiek</strong> – dosky sa zdvíhajú a ukladajú pomocou vákuových prísaviek. Manuálne posúvanie nie je možné – sinterovaný kameň váži 25–50\u00A0kg/m² podľa hrúbky</li>
+  <li><strong>Osadenie dosiek</strong> – dosky sa zdvíhajú a ukladajú pomocou vákuových prísaviek. Manuálne posúvanie nie je možné – sinterovaný kameň váži 25 – 50\u00A0kg/m² podľa hrúbky</li>
   <li><strong>Spoje a škáry</strong> – spoje medzi doskami sa vypĺňajú farebne ladeným epoxidovým tmelom. Správne vytvorený spoj je takmer neviditeľný – šírka škáry je menej ako 1\u00A0mm</li>
   <li><strong>Kontrola roviny</strong> – po osadení každého dielu sa rovina skontroluje vodováhou a v prípade potreby sa pozícia skoriguje pred vytvrdnutím lepidla</li>
   <li><strong>Upevnenie</strong> – dosky sa zaťažia alebo zafixujú svorkami počas vytvrdnutia lepidla</li>
 </ul>
 
-<p><strong>Trvanie:</strong> 4–8 hodín podľa rozsahu projektu. Jednoduchá L-kuchyňa: 4 hodiny. Veľký ostrov s viacerými dielmi: 6–8 hodín.</p>
+<p><strong>Trvanie:</strong> 4 – 8 hodín podľa rozsahu projektu. Jednoduchá L-kuchyňa: 4 hodiny. Veľký ostrov s viacerými dielmi: 6 – 8 hodín.</p>
 
 <h2 id="krok-9-instalacia-spotrebicov">Krok 9 – Kto inštaluje spotrebiče?</h2>
 
@@ -188,7 +188,7 @@ export const ARTICLE_13: BlogArticle = {
 <ul>
   <li>Aplikácia silikónového tmelu po obvode výrezu</li>
   <li>Pripevnenie drezu pomocou montážnych konzol zdola</li>
-  <li>Utesnenie styku drez–kameň transparentným silikónom</li>
+  <li>Utesnenie styku drez – kameň transparentným silikónom</li>
   <li>Funkčná skúška tesnosti</li>
 </ul>
 
@@ -247,11 +247,11 @@ export const ARTICLE_13: BlogArticle = {
     faqs: [
       {
         question: 'Ako dlho trvá celý proces od konzultácie po hotovú kuchyňu?',
-        answer: 'Celý proces trvá 10–15 pracovných dní. Najdlhšia fáza je CNC fabrikácia (7–10 dní). Konzultácia, zameranie a inštalácia sú otázkou hodín, nie dní.'
+        answer: 'Celý proces trvá 10 – 15 pracovných dní. Najdlhšia fáza je CNC fabrikácia (7 – 10 dní). Konzultácia, zameranie a inštalácia sú otázkou hodín, nie dní.'
       },
       {
         question: 'Koľko stojí konzultácia v showroome?',
-        answer: 'Konzultácia v našom showroome v Bošanoch je úplne bezplatná a nezáväzná. Trvá 1–2 hodiny a zahŕňa prehliadku materiálov, diskusiu o vašom projekte a predbežnú kalkuláciu.'
+        answer: 'Konzultácia v našom showroome v Bošanoch je úplne bezplatná a nezáväzná. Trvá 1 – 2 hodiny a zahŕňa prehliadku materiálov, diskusiu o vašom projekte a predbežnú kalkuláciu.'
       },
       {
         question: 'Prečo potrebujete hotové skrinky pred zameraním?',

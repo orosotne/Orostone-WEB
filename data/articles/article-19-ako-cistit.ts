@@ -54,12 +54,12 @@ export const ARTICLE_19: BlogArticle = {
 
 <h2 id="preco-bez-impregnacie">Prečo nepotrebujete impregnáciu (a nikdy nebudete)</h2>
 
-<p>Toto je kľúčový rozdiel oproti prírodnému kameňu. Žula má nasiakavosť 0,1–3\u00A0% a vyžaduje impregnáciu každé 2–3 roky. Mramor navyše reaguje na kyseliny – citrón či ocot ho naleptajú. Sinterovaný kameň nemá póry, do ktorých by niečo vniklo, a kyselinám z kuchyne odoláva.</p>
+<p>Toto je kľúčový rozdiel oproti prírodnému kameňu. Žula má nasiakavosť 0,1 – 3\u00A0% a vyžaduje impregnáciu každé 2 – 3 roky. Mramor navyše reaguje na kyseliny – citrón či ocot ho naleptajú. Sinterovaný kameň nemá póry, do ktorých by niečo vniklo, a kyselinám z kuchyne odoláva.</p>
 
 <table>
   <thead><tr><th>Údržba</th><th>Sinterovaný kameň</th><th>Žula</th><th>Mramor</th></tr></thead>
   <tbody>
-    <tr><td>Impregnácia</td><td><strong>Nikdy</strong></td><td>Každé 2–3 roky</td><td>Pravidelne</td></tr>
+    <tr><td>Impregnácia</td><td><strong>Nikdy</strong></td><td>Každé 2 – 3 roky</td><td>Pravidelne</td></tr>
     <tr><td>Špeciálne čističe</td><td><strong>Netreba</strong></td><td>Odporúčané</td><td>Len pH neutrálne</td></tr>
     <tr><td>Citrón, ocot, víno</td><td><strong>Bez následkov</strong></td><td>Riziko škvŕn</td><td>Naleptanie povrchu</td></tr>
   </tbody>
@@ -116,7 +116,7 @@ export const ARTICLE_19: BlogArticle = {
       {
         question: 'Potrebuje sinterovaný kameň impregnáciu?',
         answer:
-          'Nie, nikdy. Nasiakavosť pod 0,1\u00A0% znamená, že povrch nemá póry, do ktorých by tekutiny vnikali. Impregnácia by na povrchu len vytvorila zbytočný film – na rozdiel od žuly, ktorá ju vyžaduje každé 2–3 roky.',
+          'Nie, nikdy. Nasiakavosť pod 0,1\u00A0% znamená, že povrch nemá póry, do ktorých by tekutiny vnikali. Impregnácia by na povrchu len vytvorila zbytočný film – na rozdiel od žuly, ktorá ju vyžaduje každé 2 – 3 roky.',
       },
       {
         question: 'Ako odstránim zaschnuté škvrny?',

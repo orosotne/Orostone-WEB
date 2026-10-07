@@ -68,7 +68,7 @@ export const ARTICLE_07: BlogArticle = {
 <ul>
   <li><strong>Výsledok sinterovaného kameňa:</strong> &lt; 0,05\u00A0% (trieda BIa – ultranízka nasiakavosť)</li>
   <li><strong>Praktický dopad:</strong> Baktérie, plesne, škvrny ani čistiace prostriedky neprenikajú do materiálu</li>
-  <li><strong>Porovnanie:</strong> Prírodný granit 0,2–2\u00A0%, mramor 0,5–4\u00A0%, drevená doska 15–20\u00A0%</li>
+  <li><strong>Porovnanie:</strong> Prírodný granit 0,2 – 2\u00A0%, mramor 0,5 – 4\u00A0%, drevená doska 15 – 20\u00A0%</li>
 </ul>
 
 <div class="article-highlight">
@@ -79,16 +79,16 @@ export const ARTICLE_07: BlogArticle = {
 <p>Meria, akú silu vydrží platňa pred zlomením. Pre sinterovaný kameň sa toto priamo premieta do odolnosti pri montáži výrezov (umývadlá, drez, varič).</p>
 
 <ul>
-  <li><strong>20\u00A0mm sinterovaný kameň:</strong> Sila pri porušení typicky 16\u00A0000–20\u00A0000\u00A0N</li>
-  <li><strong>12\u00A0mm sinterovaný kameň:</strong> Sila pri porušení typicky 5\u00A0000–8\u00A0000\u00A0N</li>
+  <li><strong>20\u00A0mm sinterovaný kameň:</strong> Sila pri porušení typicky 16\u00A0000 – 20\u00A0000\u00A0N</li>
+  <li><strong>12\u00A0mm sinterovaný kameň:</strong> Sila pri porušení typicky 5\u00A0000 – 8\u00A0000\u00A0N</li>
   <li><strong>Prečo dôležité:</strong> Slabý výsledok = vyššie riziko prasknutia pri výrezoch a prevísajúcich častiach</li>
 </ul>
 
 <h3 id="iso-6">ISO 10545-6: Odolnosť voči abrázii (brúseniu)</h3>
-<p>Meria odolnosť povrchu voči opotrebeniu. Výsledky sa uvádzajú v PEI triedach (0–5) alebo ako počet otáčok pred viditeľným poškodením.</p>
+<p>Meria odolnosť povrchu voči opotrebeniu. Výsledky sa uvádzajú v PEI triedach (0 – 5) alebo ako počet otáčok pred viditeľným poškodením.</p>
 
 <div class="article-tip">
-  <strong>Pre kuchynské dosky:</strong> Vyžadujte PEI triedu 4 alebo 5. Sinterovaný kameň s Mohs tvrdosťou 6–7 dosahuje PEI 4–5 štandardne.
+  <strong>Pre kuchynské dosky:</strong> Vyžadujte PEI triedu 4 alebo 5. Sinterovaný kameň s Mohs tvrdosťou 6 – 7 dosahuje PEI 4 – 5 štandardne.
 </div>
 
 <h3 id="iso-7">ISO 10545-7: Odolnosť voči tepelnej rozťažnosti</h3>
@@ -106,7 +106,7 @@ export const ARTICLE_07: BlogArticle = {
 <p>Sinterovaný kameň dosahuje triedu A pre kyseliny (citrónovú, chlorovodíkovú) aj zásady. <strong class="gold">Toto z neho robí ideálny materiál pre kuchyne</strong>, kde dennodenne prichádzajú do styku káva, víno, paradajková omáčka a čistiace prostriedky.</p>
 
 <h3 id="iso-14">ISO 10545-14: Odolnosť voči škvrnám</h3>
-<p>Štandardizovaný protokol testovania 15 rôznych farebných látok – od kávy po červené víno a motorový olej. Výsledky v škále 1–5:</p>
+<p>Štandardizovaný protokol testovania 15 rôznych farebných látok – od kávy po červené víno a motorový olej. Výsledky v škále 1 – 5:</p>
 
 <ul>
   <li><strong>Trieda 5:</strong> Škvrna sa odstráni bežnou vodou – maximálna odolnosť</li>
@@ -115,7 +115,7 @@ export const ARTICLE_07: BlogArticle = {
 </ul>
 
 <div class="article-highlight">
-  <strong>Sinterovaný kameň dosahuje triedu 4–5</strong> pre väčšinu látok vrátane kávy, vína a olejov. Výnimka: niekoľko farbív s vysokou penetračnou silou (ako kurkumín) môže vyžadovať špecifický čistiaci postup – ale vždy len povrchovo.
+  <strong>Sinterovaný kameň dosahuje triedu 4 – 5</strong> pre väčšinu látok vrátane kávy, vína a olejov. Výnimka: niekoľko farbív s vysokou penetračnou silou (ako kurkumín) môže vyžadovať špecifický čistiaci postup – ale vždy len povrchovo.
 </div>
 
 <h2 id="nsf-ansi-51">3. NSF/ANSI 51 – certifikát bezpečnosti pre kontakt s potravinami</h2>
@@ -146,7 +146,7 @@ export const ARTICLE_07: BlogArticle = {
 <p>Greenguard Gold (predtým Greenguard Children &amp; Schools) je certifikácia organizácie <strong>UL (Underwriters Laboratories)</strong>. Testuje emisiu prchavých organických zlúčenín (VOC) z materiálov v interiérových aplikáciách.</p>
 
 <div class="article-highlight">
-  <strong>Prečo je to dôležité:</strong> VOC z nábytku, podláh a povrchov sú jednou z hlavných príčin horšej kvality vzduchu v interiéroch. Greenguard Gold má <strong class="gold">najprísnejšie limity emisií</strong> – 10–11× prísnejšie ako základná Greenguard certifikácia.
+  <strong>Prečo je to dôležité:</strong> VOC z nábytku, podláh a povrchov sú jednou z hlavných príčin horšej kvality vzduchu v interiéroch. Greenguard Gold má <strong class="gold">najprísnejšie limity emisií</strong> – 10 – 11× prísnejšie ako základná Greenguard certifikácia.
 </div>
 
 <p>Sinterovaný kameň je <strong class="gold">anorganický minerálny materiál</strong> – neobsahuje živice, lepidlá ani plastifikátory, ktoré by emitovali VOC. Toto je jeden z jeho kľúčových zdravotných benefitov oproti materiálom s organickými pojivami.</p>
@@ -177,8 +177,8 @@ export const ARTICLE_07: BlogArticle = {
 <ul>
   <li><strong>Trieda A1:</strong> Nehorľavý, neprispieva k požiaru, bez emisií dymu – <em>sinterovaný kameň</em></li>
   <li><strong>Trieda A2:</strong> Prakticky nehorľavý, minimálne emisie</li>
-  <li><strong>Trieda B–C:</strong> Obmedzene horľavý</li>
-  <li><strong>Trieda D–F:</strong> Rôzne stupne horľavosti</li>
+  <li><strong>Trieda B – C:</strong> Obmedzene horľavý</li>
+  <li><strong>Trieda D – F:</strong> Rôzne stupne horľavosti</li>
 </ul>
 
 <div class="article-highlight">
@@ -238,7 +238,7 @@ export const ARTICLE_07: BlogArticle = {
   <strong>Krok 4 – Vydavateľ certifikátov:</strong> Overte, kto vydal certifikát. Meno akreditovaného laboratória musí byť uvedené. Pre NSF: overíte na nsf.org/certified-products. Pre Greenguard: na ul.com/resources/greenguard-certification.
 </div>
 
-<p><strong>Krok 5 – Dátum vydania a platnosť:</strong> Certifikáty majú obmedzenú platnosť (typicky 1–3 roky). Starý certifikát môže byť zastaraný, ak výrobca menil výrobný proces.</p>
+<p><strong>Krok 5 – Dátum vydania a platnosť:</strong> Certifikáty majú obmedzenú platnosť (typicky 1 – 3 roky). Starý certifikát môže byť zastaraný, ak výrobca menil výrobný proces.</p>
 
 <h2 id="certifikacie-pre-architektonicky-trh">8. Certifikácie pre architektonické projekty</h2>
 
