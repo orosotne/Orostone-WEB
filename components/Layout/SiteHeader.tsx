@@ -146,7 +146,7 @@ export const SiteHeader: React.FC = () => {
   };
 
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
-    `border-b py-1.5 no-underline transition-colors ${isActive ? 'border-current' : 'border-transparent hover:border-current'}`;
+    `whitespace-nowrap border-b py-1.5 no-underline transition-colors ${isActive ? 'border-current' : 'border-transparent hover:border-current'}`;
 
   return (
     <header
