@@ -1545,7 +1545,7 @@ write("21-kampan-december-podakovanie.html", doc(
         ], top=28),
         section_title(None, "Otváracie hodiny cez sviatky", top=12),
         numbered([
-            ("Showroom v Bošanoch", "V pracovné dni 9:00–17:00. Cez víkend a sviatky po dohode na +421&nbsp;917&nbsp;588&nbsp;738."),
+            ("Showroom v Bošanoch", "V pracovné dni 9:00–17:00. Cez víkend a sviatky po dohode na čísle +421&nbsp;917&nbsp;588&nbsp;738."),
             ("E-shop a vzorky", "Objednávky prijímame aj cez sviatky. Vzorky odosielame do 2–3 pracovných dní, víkendy a sviatky sa do lehoty nerátajú."),
         ], top=8),
         quote_dark("Rada na január", "Ak plánujete novú kuchyňu na jar, január je dobrý čas začať: objednať si vzorky, poslať pôdorys a v pokoji si vybrať dekor.", top=24),
