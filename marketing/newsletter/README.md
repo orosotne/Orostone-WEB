@@ -65,7 +65,7 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 | 17 | Starostlivosť | Po realizácii 2/3 – 7 dní po montáži | Starostlivosť o dosku v skratke | skontrolované |
 | 06 | Ako sa vám žije | Po realizácii 3/3 – 30 dní po montáži | Ako sa vám žije s novou doskou? | skontrolované |
 | 22 | Riešite ešte kuchyňu? | Reaktivácia 1/3 – 90 dní bez aktivity | Riešite ešte kuchyňu? | skontrolované |
-| 23 | Tri realizácie | Reaktivácia 2/3 – 120 dní bez aktivity | Tri realizácie, na ktoré sme hrdí | skontrolované, pred odoslaním súhlas klientov so zverejnením |
+| 23 | Tri realizácie | Reaktivácia 2/3 – 120 dní bez aktivity | Tri realizácie, na ktoré sme hrdí | skontrolované, klienti so zverejnením súhlasia |
 | 24 | Máme vám ešte písať? | Reaktivácia 3/3 – 180 dní bez aktivity | Máme vám ešte písať? | skontrolované |
 | 25 | Technické podklady | B2B 1/3 – hneď po pridaní tagu | Technický list a textúry pre váš projekt | skontrolované |
 | 26 | Vzorky pre štúdio | B2B 2/3 – o 7 dní | Vzorky dekorov pre vaše štúdio | skontrolované |
@@ -78,7 +78,7 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 | 21 | Poďakovanie | Kampaň december | Ďakujeme za rok 2026 | skontrolované |
 | 28 | Kuchyňa na jar | Kampaň január 2027 | Nová kuchyňa na jar: kedy začať | skontrolované |
 | 29 | Dekor v detaile | Kampaň január 2027 | Appennino: svetlá plocha s jemnou kresbou | skontrolované |
-| 30 | Realizácia mesiaca | Kampaň február 2027 | Biela doska v ružovej kuchyni | skontrolované, pred odoslaním súhlas klienta so zverejnením |
+| 30 | Realizácia mesiaca | Kampaň február 2027 | Biela doska v ružovej kuchyni | skontrolované, klient so zverejnením súhlasí |
 | 31 | Pozvánka do showroomu | Kampaň február 2027 | Celé platne naživo v kaštieli v Bošanoch | skontrolované |
 | 32 | Dekor v detaile | Kampaň marec 2027 | Wild Forest: kresba pre veľké plochy | skontrolované |
 | 33 | Spolupráca so štúdiom | Kampaň marec 2027 | Návrh kuchyne a doska: ako ich zladiť | skontrolované |
