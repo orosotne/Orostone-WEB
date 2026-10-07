@@ -114,7 +114,7 @@ export const CategoryPage: React.FC = () => {
   // Category not found (neznámy slug, skrytá kategória, neplatná subkategória)
   if (!category || !isValidSubCategory) {
     return (
-      <Section tone="chalk" className="flex min-h-[calc(100dvh-4rem)] items-center lg:min-h-[calc(100dvh-5rem)]">
+      <Section tone="chalk" className="flex min-h-[calc(100svh-4rem)] items-center lg:min-h-[calc(100svh-5rem)]">
         <SEOHead
           title="Kategória nenájdená | OROSTONE E-Shop"
           description="Kategória s týmto názvom neexistuje alebo bola presunutá."

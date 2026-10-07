@@ -29,7 +29,7 @@ export const ThankYou: React.FC = () => {
   }, []);
 
   return (
-    <Section tone="chalk" className="flex min-h-[calc(100dvh-4rem)] items-center lg:min-h-[calc(100dvh-5rem)]">
+    <Section tone="chalk" className="flex min-h-[calc(100svh-4rem)] items-center lg:min-h-[calc(100svh-5rem)]">
       <SEOHead title="Objednávka dokončená | OROSTONE" description="Ďakujeme za vašu objednávku." noindex={true} />
       <Container className="grid justify-items-start gap-5">
         <span className="grid h-16 w-16 place-items-center rounded-full bg-brand-dark text-brand-light" aria-hidden="true">

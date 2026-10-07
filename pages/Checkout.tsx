@@ -31,7 +31,7 @@ export const Checkout = () => {
   // from a zero-item checkout layout to the empty state (CLS)
   if (itemCount === 0 && isLoading) {
     return (
-      <Section tone="chalk" className="min-h-[calc(100dvh-4rem)] lg:min-h-[calc(100dvh-5rem)]" aria-busy="true">
+      <Section tone="chalk" className="min-h-[calc(100svh-4rem)] lg:min-h-[calc(100svh-5rem)]" aria-busy="true">
         <SEOHead title="Pokladňa | OROSTONE" description="Dokončite vašu objednávku." noindex={true} />
       </Section>
     );
@@ -40,7 +40,7 @@ export const Checkout = () => {
   // Redirect if cart is empty
   if (itemCount === 0 && !isLoading) {
     return (
-      <Section tone="chalk" className="flex min-h-[calc(100dvh-4rem)] items-center lg:min-h-[calc(100dvh-5rem)]">
+      <Section tone="chalk" className="flex min-h-[calc(100svh-4rem)] items-center lg:min-h-[calc(100svh-5rem)]">
         <SEOHead title="Košík | OROSTONE" description="Váš nákupný košík." noindex={true} />
         <Container className="grid justify-items-start gap-5">
           <span className="grid h-16 w-16 place-items-center rounded-full bg-brand-sand" aria-hidden="true">
