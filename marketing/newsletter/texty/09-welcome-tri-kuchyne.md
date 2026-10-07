@@ -3,7 +3,7 @@
 - **Typ:** Automatizácia · Welcome séria 4/4
 - **Kedy sa posiela:** 9 dní po prihlásení (4 dni po e-maile 3/4)
 - **Predmet:** Tri kuchyne, tri rôzne rozhodnutia
-- **Preheader:** Pokojná plocha, tmavý kontrast a výrazná kresba. Čo rozhodlo pri každej z nich.
+- **Preheader:** Pri jednej rozhodla pokojná plocha, pri druhej tmavý kontrast a pri tretej výrazná kresba.
 - **Šablóna:** `sablony/09-welcome-tri-kuchyne.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí
@@ -39,7 +39,7 @@ Tmavosivá matná doska vytvára jasný kontrast s bielymi kazetovými dvierkami
 [alt fotky: Ostrovček a stena v dekore s výraznými zlatými žilami]
 03 · Ostrovček a stena
 Výrazná kresba ako stredobod
-Zlaté žily na ostrovčeku aj na stene nesú celú kuchyňu. Ostatné povrchy preto ostali tiché – tmavé drevo a jednoduché fronty.
+Zlaté žily na ostrovčeku aj na stene sú hlavným prvkom celej kuchyne. Ostatné povrchy preto ostali tiché – tmavé drevo a jednoduché fronty.
 
 ### Citát / dôležitá myšlienka
 Čo majú spoločné
@@ -52,7 +52,7 @@ Pozrieť všetky realizácie
 
 ### P. S.
 P. S. · Marián, Orostone
-Ktorá z troch kuchýň je vám najbližšie? Odpovedzte jedným číslom – 1, 2 alebo 3. Pošlem vám dekory, ktoré k nej fungujú najlepšie.
+Ktorá z troch kuchýň je vám najbližšia? Odpovedzte jedným číslom – 1, 2 alebo 3. Pošlem vám dekory, ktoré sa k nej hodia najlepšie.
 
 ### Podpis značky
 Krása kameňa.

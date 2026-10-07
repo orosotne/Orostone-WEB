@@ -3,7 +3,7 @@
 - **Typ:** Automatizácia · Dopyt → ponuka 2/4
 - **Kedy sa posiela:** 1 deň po odoslaní cenovej ponuky; zastaviť pri objednávke alebo odpovedi klienta
 - **Predmet:** Ako čítať cenovú ponuku
-- **Preheader:** Čo je v cene, čo porovnávať a na čo sa pýtať, keď máte na stole viac ponúk.
+- **Preheader:** Vysvetlíme, čo je v cene, čo porovnávať a na čo sa pýtať, keď máte na stole viac ponúk.
 - **Šablóna:** `sablony/12-automatizacia-ponuka-ako-citat.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí
@@ -58,7 +58,7 @@ Pýtajte sa
 – Kto robí zameranie a montáž?
 
 ### Tlačidlo (CTA)
-Prečítať celý sprievodca
+Prečítať celého sprievodcu
 Pozrieť cenník
 
 ### P. S.

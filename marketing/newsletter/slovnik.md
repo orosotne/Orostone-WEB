@@ -85,6 +85,8 @@ Nie: ~~Kliknite sem~~ · ~~Zistiť viac~~ · ~~Neváhajte~~
 
 - Predmet má približne do 50 znakov, bez výkričníka, bez emoji, bez VEĽKÝCH PÍSMEN a bez bodky na konci.
 - Preheader predmet dopĺňa, neopakuje ho. Je to celá veta s bodkou.
+- Veta nie je ani samostatný výpočet („Svetlo, skrinky a veľkosť plochy.“), ani nepriama otázka s bodkou („Prečo doska nepotrebuje impregnáciu.“). Pomôže sloveso: *Vysvetlíme, prečo…* · *Ukážeme, ako…* · *Doske stačí…*
+- Preheader má približne do 100 znakov. Dlhší text e-mailový klient aj tak skráti.
 
 ## 7. Čo nie je chyba
 
@@ -101,6 +103,12 @@ Pravidlá, ktoré vznikli pri kontrole a platia ďalej. Najnovšie hore.
 
 | Dátum | Pravidlo | Príklad |
 |---|---|---|
+| 7. 10. 2026 | Preheader je celá veta. Výpočet alebo nepriama otázka s bodkou nestačí (sekcia 6). | Vysvetlíme, čo je v cene, čo porovnávať a na čo sa pýtať… |
+| 7. 10. 2026 | Prísudkové prídavné meno sa zhoduje s podmetom | Ktorá z troch kuchýň je vám najbližšia? |
+| 7. 10. 2026 | *sprievodca* sa skloňuje podľa vzoru hrdina | Prečítať celého sprievodcu |
+| 7. 10. 2026 | Kalky: nie *fungovať k niečomu*, ale *hodiť sa k niečomu*; nie *robiť rozdiel*, ale *rozhodovať o…* | dekory, ktoré sa k nej hodia najlepšie |
+| 7. 10. 2026 | *v odpovedi*, nie *odpoveďou* | V odpovedi mi pošlite fotku kuchyne. |
+| 7. 10. 2026 | *chémia* je odbor. Pri konkrétnych látkach píšeme *prostriedky*, *látky* | jediné bežne dostupné prostriedky, ktoré povrch poškodia |
 | 7. 10. 2026 | Výpočet má jednotnú stavbu: buď samé menné spojenia, alebo samé vety | zadanie, zvolený dekor a výsledok vo veľkej ploche |
 | 7. 10. 2026 | Namiesto „dávať zmysel v…“ a úradného „z hľadiska…“ radšej slovesá | aby výsledok dobre vyzeral, bol praktický v každodennom používaní a mal rozumnú cenu |
 | 7. 10. 2026 | Väzby *spokojný s niečím* a *prejsť si niečo s niekým* | ako ste s doskou spokojní · otázky, ktoré si prejdeme s každým klientom |

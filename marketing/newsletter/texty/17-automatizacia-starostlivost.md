@@ -3,7 +3,7 @@
 - **Typ:** Automatizácia · Po realizácii 2/4
 - **Kedy sa posiela:** 7 dní po dátume montáže
 - **Predmet:** Starostlivosť o dosku v skratke
-- **Preheader:** Utierka, saponát a štyri veci, ktorým sa vyhnúť. Viac vaša doska nepotrebuje.
+- **Preheader:** Doske stačí utierka a saponát. Pozor si dajte len na štyri veci.
 - **Šablóna:** `sablony/17-automatizacia-starostlivost.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí
@@ -55,7 +55,7 @@ Drôtenky a brúsne hubky
 Kameň nepoškriabu, ale môžu zmatniť lesklý povrch a zanechať kovové stopy.
 02
 Prostriedky s kyselinou fluorovodíkovou
-Jediná bežná chémia, ktorá povrch poškodí. Býva v niektorých odstraňovačoch hrdze – čítajte etikety.
+Sú to jediné bežne dostupné prostriedky, ktoré povrch poškodia. Patria k nim niektoré odstraňovače hrdze – čítajte etikety.
 03
 Údery do hrany
 Hrana a rohy sú najcitlivejšie miesta. Ťažký hrniec na dosku položte, nespúšťajte ho na hranu.

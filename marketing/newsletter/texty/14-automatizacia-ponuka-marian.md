@@ -3,7 +3,7 @@
 - **Typ:** Automatizácia · Dopyt → ponuka 4/4 (čistý text)
 - **Kedy sa posiela:** 14 dní po odoslaní cenovej ponuky; zastaviť pri objednávke alebo odpovedi klienta
 - **Predmet:** Je niečo, čo vám bráni rozhodnúť sa?
-- **Preheader:** Žiadny tlak, len otázka.
+- **Preheader:** Nechcem na vás tlačiť, len sa pýtam.
 - **Šablóna:** `sablony/14-automatizacia-ponuka-marian.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

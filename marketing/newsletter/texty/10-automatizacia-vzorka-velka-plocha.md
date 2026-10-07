@@ -3,7 +3,7 @@
 - **Typ:** Automatizácia · Vzorky 3/4
 - **Kedy sa posiela:** 7 dní po doručení vzorky
 - **Predmet:** Ako váš dekor vyzerá vo veľkej ploche
-- **Preheader:** Celá platňa, realizácie a showroom. Tri spôsoby, ako vidieť kresbu v mierke kuchyne.
+- **Preheader:** Kresbu v mierke kuchyne uvidíte na fotke celej platne, v realizáciách alebo v showroome.
 - **Šablóna:** `sablony/10-automatizacia-vzorka-velka-plocha.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

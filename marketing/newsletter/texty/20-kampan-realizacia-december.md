@@ -4,7 +4,7 @@
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
 - **Komu:** Všetci odberatelia; mimo zákazníkov po realizácii
 - **Predmet:** Biela doska a tmavé drevo
-- **Preheader:** Realizácia mesiaca: ostrovček, kde kontrast drží celý priestor pokope.
+- **Preheader:** V realizácii mesiaca ukážeme ostrovček, kde kontrast drží celý priestor pokope.
 - **Šablóna:** `sablony/20-kampan-realizacia-december.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

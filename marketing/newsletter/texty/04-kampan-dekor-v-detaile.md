@@ -3,7 +3,7 @@
 - **Typ:** Kampaň · séria Dekor v detaile (1× mesačne, strieda sa s Realizáciou)
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
 - **Predmet:** Roman Travertine: travertín bez impregnácie
-- **Preheader:** Ako dekor vyzerá na celej platni, s čím ho kombinovať a na čo myslieť pri smere kresby.
+- **Preheader:** Ukážeme, ako dekor vyzerá na celej platni, s čím ho kombinovať a na čo myslieť pri smere kresby.
 - **Šablóna:** `sablony/04-kampan-dekor-v-detaile.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

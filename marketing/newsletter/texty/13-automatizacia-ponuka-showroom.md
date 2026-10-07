@@ -3,7 +3,7 @@
 - **Typ:** Automatizácia · Dopyt → ponuka 3/4
 - **Kedy sa posiela:** 5 dní po odoslaní cenovej ponuky; zastaviť pri objednávke alebo odpovedi klienta
 - **Predmet:** Pozrite si platne naživo
-- **Preheader:** Realizácia s podobným riešením a pozvanie do showroomu v Bošanoch, kde vám pripravíme celé platne.
+- **Preheader:** Ukážeme realizáciu s podobným riešením. V showroome v Bošanoch vám pripravíme celé platne.
 - **Šablóna:** `sablony/13-automatizacia-ponuka-showroom.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

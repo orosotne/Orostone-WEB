@@ -4,7 +4,7 @@
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
 - **Komu:** Všetci odberatelia
 - **Predmet:** Ako vzniká sinterovaný kameň
-- **Preheader:** Minerály, tlak do 25 000 ton a teplota nad 1 200 °C. Prečo potom doska nepotrebuje impregnáciu.
+- **Preheader:** Minerály sa lisujú a potom spekajú pri teplote nad 1 200 °C. Preto doska nepotrebuje impregnáciu.
 - **Šablóna:** `sablony/18-kampan-zo-zakulisia.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí
@@ -22,7 +22,7 @@ za pár hodín.
 
 ### Text
 Dobrý deň,
-prírodnému kameňu trvá vznik milióny rokov. Sinterovaný kameň vzniká podobne, z minerálov, tlaku a teploty. Celý proces však trvá len pár hodín. Takto prebieha.
+prírodný kameň sa tvorí milióny rokov. Sinterovaný kameň vzniká podobne, z minerálov, tlaku a teploty. Celý proces však trvá len pár hodín. Takto prebieha.
 
 ### Karta (fotka, štítok, nadpis, veta)
 [alt fotky: Prírodné minerály: kremeň, živec, íl a kovové oxidy]

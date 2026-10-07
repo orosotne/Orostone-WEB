@@ -4,7 +4,7 @@
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
 - **Komu:** Všetci odberatelia a zákazníci
 - **Predmet:** Ďakujeme za rok 2026
-- **Preheader:** Otváracie hodiny cez sviatky a jedna rada, ak plánujete kuchyňu na jar.
+- **Preheader:** Posielame otváracie hodiny cez sviatky a jednu radu, ak plánujete kuchyňu na jar.
 - **Šablóna:** `sablony/21-kampan-december-podakovanie.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí
@@ -36,7 +36,7 @@ Objednávky prijímame aj cez sviatky. Vzorky odošleme od [doplniť dátum].
 
 ### Citát / dôležitá myšlienka
 Rada na január
-Ak plánujete novú kuchyňu na jar, január je dobrý čas začať: objednať vzorky, poslať pôdorys a mať dekor vybraný v pokoji.
+Ak plánujete novú kuchyňu na jar, január je dobrý čas začať: objednať si vzorky, poslať pôdorys a v pokoji si vybrať dekor.
 
 ### Tlačidlo (CTA)
 Pozrieť realizácie

@@ -4,7 +4,7 @@
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
 - **Komu:** Všetci odberatelia; mimo zákazníkov po realizácii
 - **Predmet:** Taj Mahal na dlhom ostrovčeku s drezom
-- **Preheader:** Realizácia mesiaca: prečo krémový dekor a ako pôsobí vo veľkej ploche.
+- **Preheader:** V realizácii mesiaca ukážeme, prečo padla voľba na krémový dekor a ako pôsobí vo veľkej ploche.
 - **Šablóna:** `sablony/03-kampan-realizacia-mesiaca.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí
