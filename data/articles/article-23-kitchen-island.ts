@@ -29,7 +29,7 @@ export const ARTICLE_23: BlogArticle = {
 <ul class="article-tldr">
   <li>Sinterovaný kameň je ideálny materiál pre kuchynské ostrovčeky — odolný, ľahko udržiavateľný, dizajnovo flexibilný</li>
   <li>Pre ostrovčeky s previsom nad 300 mm použite 20 mm platňu (nie 12 mm)</li>
-  <li>Waterfall (kaskádové hrany) vytvárajú wow efekt — spoj pod 45° je takmer neviditeľný</li>
+  <li>Waterfall (kaskádové hrany) pôsobia výrazne — spoj pod 45° je takmer neviditeľný</li>
   <li>Maximálna veľkosť jedného kusu: 3 200 × 1 600 mm (závisí od výrobcu)</li>
   <li>Typická cena: 2 500 – 6 000 € za kompletný ostrovček s montážou</li>
 </ul>

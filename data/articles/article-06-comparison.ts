@@ -182,7 +182,7 @@ export const ARTICLE_06: BlogArticle = {
 <ul>
 <li><strong>Keramická dlaždica:</strong> impregnácia každé 1–2 roky (~€30–50/úkon), spárové škvrny, výmena poškodených dlaždíc — celkovo <strong>€2 000–3 000 navyše</strong> za 25 rokov</li>
 <li><strong>Kvarcitový kompozit:</strong> prakticky bezúdržbový v interiéri, ale ak ho vystavíš UV alebo tepelnému šoku, oprava = výmena celej dosky</li>
-<li><strong>Sinterovaný kameň:</strong> nulová údržba, žiadna impregnácia, odolný voči všetkému okrem extrémnych bodových nárazov</li>
+<li><strong>Sinterovaný kameň:</strong> minimálna údržba bez impregnácie, vysoká odolnosť pri bežnom používaní; citlivý je najmä na silné bodové nárazy</li>
 <li><strong>Porcelánové dosky:</strong> veľmi podobný nákladový profil ako sinterovaný kameň, nižšia vstupná cena</li>
 </ul>
 
@@ -213,7 +213,7 @@ export const ARTICLE_06: BlogArticle = {
 <ul>
 <li>Doska bude v <strong>exteriéri</strong> alebo vystavená priamemu slnku</li>
 <li>Očakávaš <strong>priamy kontakt s horúcimi predmetmi</strong> bez podložky</li>
-<li>Chceš <strong>nulovú údržbu</strong> — žiadnu impregnáciu, žiadne špeciálne čistenie</li>
+<li>Chceš <strong>minimálnu údržbu</strong> — žiadnu impregnáciu, žiadne špeciálne čistenie</li>
 <li>Máš rozpočet nad <strong>€350/m²</strong></li>
 <li>Chceš materiál s <strong>najdlhšou životnosťou</strong></li>
 </ul>

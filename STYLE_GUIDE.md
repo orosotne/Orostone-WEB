@@ -143,7 +143,7 @@ Links to oro-klient.orostone.sk carry `?od=<miesto>`, never UTM parameters.
 
 ## Legacy patterns (being phased out)
 
-A few remain on the product detail (`ProductLightbox`, `ResistanceParameters`, `MaterialPerspectivesViewer`, labels in `HeroSection`). Don't use them anywhere else; replace them when you touch those files.
+Only two remain, on the product detail: `container mx-auto px-6` in its sections and pixel font sizes in `ProductSwitcher`, `TechnicalOverview`, `ProductFAQSection`. Switching to `<Container>` widens the page to the site grid, so do it as one change after the owner approves it. Don't use them anywhere else.
 
 | Legacy | Replace with |
 |---|---|

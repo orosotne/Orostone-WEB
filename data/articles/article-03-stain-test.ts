@@ -215,7 +215,7 @@ export const ARTICLE_03: BlogArticle = {
       },
       {
         question: 'Môžem použiť sinterovaný kameň v kuchyni s deťmi?',
-        answer: 'Áno — a je to jedna z jeho predností. Nulová pórovitosť znamená, že farby, šťavy, oleje ani iné škvrnotvorné látky, s ktorými pracujú deti, neprenikajú do povrchu. Čistenie je jednoduché a rýchle. Materiál nevyžaduje špeciálnu starostlivosť ani impregnáciu.',
+        answer: 'Áno — a je to jedna z jeho predností. Takmer nulová pórovitosť znamená, že farby, šťavy, oleje ani iné škvrnotvorné látky, s ktorými pracujú deti, neprenikajú do povrchu. Čistenie je jednoduché a rýchle. Materiál nevyžaduje špeciálnu starostlivosť ani impregnáciu.',
       },
     ],
   },

@@ -2,26 +2,24 @@
 
 ## Project Overview
 
-Premium e-commerce website for Orostone (sintered stone / veľkoformátové platne). Dual-app SPA architecture: main marketing site + separate e-shop bundle.
+Premium e-commerce website for Orostone (sintered stone / veľkoformátové platne). Single e-shop SPA; price enquiries convert on the separate site oro-klient.orostone.sk.
 
 - **Brand:** Orostone — Slovak market, content in Slovak/Czech
-- **Domain:** orostone.sk / eshop.orostone.sk
+- **Domain:** orostone.sk (eshop.orostone.sk and www.orostone.sk redirect here)
 
 ## Tech Stack
 
 - **Framework:** React 19 + TypeScript + Vite 6
 - **Styling:** Tailwind CSS 3 (custom brand colors/theme)
-- **Animations:** Framer Motion, GSAP, Lenis (smooth scroll)
+- **Animations:** Framer Motion (LazyMotion, `m.*`)
 - **E-commerce:** Shopify Storefront API via Hydrogen React
 - **Backend/Auth:** Supabase (PostgreSQL + auth)
-- **AI:** Google Gemini API (visualizer feature)
 
 ## Architecture
 
-### Dual-App Pattern
-- `index.tsx` → `App.tsx` — main marketing site
-- `eshop.tsx` → `EshopApp.tsx` — separate e-shop SPA
-- Each has its own HTML entry (`index.html`, `eshop.html`)
+### Single E-shop App
+- `index.tsx` → `EshopApp.tsx` — e-shop SPA (single entry point)
+- Entry HTML: `index.html`; every route is prerendered by `scripts/prerender.ts`
 
 ### Key Directories
 ```
@@ -57,20 +55,28 @@ See `.env.example`. Required:
 - `VITE_SUPABASE_URL` + `VITE_SUPABASE_ANON_KEY`
 - `VITE_SHOPIFY_STORE_DOMAIN` + `VITE_SHOPIFY_STOREFRONT_TOKEN`
 - `VITE_PUBLIC_SITE_URL`
-- `GEMINI_API_KEY`
 
 ## Styling Conventions (see STYLE_GUIDE.md)
 
-The site is moving to a new design system (October 2026). New and rewritten sections use the building blocks in `components/Design/` (`Container`, `Section`, `SectionHeader`, `Eyebrow`, `TextLink`, `ActionButton`) and these tokens: colours `brand-light`, `brand-sand`, `brand-dark`, `brand-muted`, `brand-line`, `brand-gold` (accent only); type `text-os-h1`, `text-os-h2`, `text-os-h3`, `text-os-lead`, `text-os-eyebrow`. Pages that are not migrated yet still use the legacy patterns listed in STYLE_GUIDE.md; for small edits there, match the surrounding style. Reference sheet while developing: `/_dizajn`.
+The site uses a new design system (October 2026): building blocks in `components/Design/` and the tokens `brand-light`, `brand-sand`, `brand-dark`, `brand-muted`, `brand-line`, `brand-gold` (accent only) and `text-os-h1` … `text-os-eyebrow`. A few legacy patterns remain on the product detail (see STYLE_GUIDE.md). Reference sheet while developing: `/_dizajn`.
 
 - Font: **Montserrat** only (`font-sans`); headings weight 600, body 300.
 - Gold #ECD488 only as an accent (gold CTA in the header, the gold band and the mobile bar), never as text on a light background.
 - Restyling must keep URLs, meta, JSON-LD, H1/H2, `id` anchors, tables, internal links and every tracking call (`trackMetaEvent`, `trackGA4*`) intact; the seo-diff check blocks removals.
 
+## Slovak copy on the web (review rules)
+
+When reviewing or writing visible text (JSX, `data/**/*.ts`, alt texts, button labels):
+- Address the visitor with *vy* (vykanie) everywhere, blog included; the reflexive *svoj* when the owner is the subject („Nechajte nám svoj e-mail“).
+- *e-mail*, *e-mailový* with a hyphen; Slovak quotes „…“; en dash with spaces ( – ), not the em dash.
+- Numbers with units and thousands joined by non-breaking spaces: 3 200 × 1 600 mm, 12 mm, 1 979 €, 1 200 °C (`\u00A0` in strings, `&nbsp;` in JSX text).
+- Brand vocabulary and claims follow the copy manual: *sinterovaný kameň*, *pracovná doska*, *ostrovček*, *zástena*, *dekor*; never absolute promises (nezničiteľný, nulová / úplne bez údržby, wow efekt, luxus as filler). Orostone sells slabs, partner stonemasons do fabrication and installation.
+- Decor names stay as written (Calacatta Top, Roman Travertine …). Legal documents (VOP, ochrana súkromia, cookies, odstúpenie, reklamácie, doprava, rezervačný poplatok) are the owner's texts: report issues, do not rewrite them.
+
 ## State Management
 
 React Context API only — no Redux/Zustand. Contexts:
-- `AuthContext` — Supabase auth
+- `AuthContext` — Supabase auth (admin only; customer accounts live in Shopify)
 - `CartContext` — Shopify cart
 - `CookieContext` — GDPR cookie consent
 - `ThemeContext` — theme
