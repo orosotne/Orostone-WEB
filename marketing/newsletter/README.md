@@ -62,5 +62,5 @@ Vizuálne pravidlá e-mailu sú v skille `orostone-kreativy` (`references/newsle
 ## Zástupné texty
 
 - `[v hranatých zátvorkách]` – doplní Marián pred odoslaním (lokalita, citát klienta, dátum montáže…).
-- Obrázky sa načítavajú z `https://orostone.sk/images/email/`. Pred prvým odoslaním ich treba nahrať na web.
+- Obrázky sú v `public/images/email/` a web ich zverejní na `https://orostone.sk/images/email/`. Nový obrázok pridajte do tohto priečinka (JPG, dvojnásobná šírka oproti zobrazeniu, najviac okolo 150 KB).
 - Odkaz na odhlásenie a ďalšie premenné doplní rozosielací nástroj.
