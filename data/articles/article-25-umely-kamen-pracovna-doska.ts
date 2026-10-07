@@ -140,7 +140,7 @@ export const ARTICLE_25: BlogArticle = {
     <li>Prémiový sinterovaný kameň (Lapitec, Neolith Calacatta, Laminam Statuario)</li>
     <li>Hrúbka 12 mm alebo 20 mm, podľa dizajnu; mitered hrany s waterfall ostrovom; book-match kresba pri viacerých platniach</li>
     <li>5+ výrezov, ostrov 3+ m, zástena až po strop, integrované sokle</li>
-    <li>Detailné CAD zameranie, montáž s návrhom skrytých spojov</li>
+    <li>Detailné zameranie, montáž s návrhom skrytých spojov</li>
   </ul>
   <p><strong>Kde sa nešetrí:</strong> všetko od dekoru po detail. <strong>Pre koho:</strong> reprezentačná kuchyňa, ostrov ako stredobod interiéru, dlhodobá investícia 15+ rokov.</p>
 </div>
@@ -239,7 +239,7 @@ export const ARTICLE_25: BlogArticle = {
   <li><strong>Ukážete mi platnu, z ktorej bude rezaná moja kuchyňa?</strong> Vyžiadajte si fotografiu alebo fyzickú obhliadku.</li>
   <li><strong>Aká je šírka spoja a aké lepidlo používate?</strong> Šírka 1–2 mm, farebne zladené epoxidové lepidlo.</li>
   <li><strong>Aká je geometria hrany a prečo?</strong> Rovná, zrazená alebo mitered — každá má dôvod.</li>
-  <li><strong>Robíte zameranie sami alebo cez subdodávateľa?</strong> Vlastné zameranie znamená vlastnú zodpovednosť za chyby.</li>
+  <li><strong>Pripravíte mi platňu presne podľa mojich rozmerov?</strong> Keď si platňu objednáte podľa vlastných rozmerov, dodávateľ by ju mal vedieť pripraviť presne na ne. V Orostone to vieme.</li>
   <li><strong>Aké sú podmienky reklamácie pri prasknutí v prvom roku?</strong> Žiadajte písomné podmienky, nie ústne.</li>
   <li><strong>Môžem vidieť referenčnú realizáciu vo vašom showroome alebo u zákazníka?</strong> Žiadne fotografie z internetu — reálnu kuchyňu, kde to pracuje.</li>
 </ol>
@@ -248,7 +248,7 @@ export const ARTICLE_25: BlogArticle = {
   <span class="case-study-label">Z praxe</span>
   <h3>Klient z Bratislavy: 10 otázok zachránilo €1 200</h3>
   <p>Klient pred objednávkou prišiel so zoznamom 10 otázok, ktoré si pripravil. Pôvodný dodávateľ ponúkol „prémiový umelý kameň" za €380 €/bm. Pri tretej otázke — značka a kolekcia — sa ukázalo, že ide o nešpecifikovaný kremenný kompozit s neuvedeným pôvodom.</p>
-  <p>Klient prišiel k nám. Pri rovnakom rozpočte sme navrhli sinterovaný kameň zo známej kolekcie. Cena bola o <strong>približne 8 % vyššia</strong>, ale obsahovala konkrétny brand, certifikát, technický list a 10-ročnú záruku na materiál.</p>
+  <p>Klient prišiel k nám. Pri rovnakom rozpočte sme navrhli sinterovaný kameň zo známej kolekcie. Cena bola o <strong>približne 8 % vyššia</strong>, ale obsahovala konkrétny brand, certifikát, technický list a 24-mesačnú záruku na materiál.</p>
   <p>Po roku používania: bez problémov. Klient nedávno povedal, že tých 10 otázok nebolo o tom, že by nedôveroval prvému predajcovi — bolo to o tom, že sa naučil poznať rozdiel medzi materiálom a katalógom. To je presne dôvod, prečo táto sekcia v článku existuje.</p>
 </div>
 
@@ -338,7 +338,7 @@ export const ARTICLE_25: BlogArticle = {
 
 <p>"Engineered stone" is <strong class="gold">one of the most-used terms</strong> in kitchen conversations — and one of the most ambiguous. Under the same word, suppliers sell quartz composite, sintered stone, ceramic slabs or solid surface. These are four different materials with different prices, durability and behavior in a kitchen.</p>
 
-<p>This article is not an academic definition. It is <strong class="gold">an honest decision-making guide</strong> written by a team that actually templates, fabricates and installs kitchen countertops. The goal is simple: by the time you walk into a showroom, you should know what to ask, what to avoid and what budget to plan for. If you want a complete definition of composite materials, read our <a href="/blog/technicky-kamen-cena-pracovna-doska">complete guide to engineered stone</a>. This article picks up where that one ends — at the decision.</p>
+<p>This article is not an academic definition. It is <strong class="gold">an honest decision-making guide</strong> written by a team that deals with the measurement, fabrication and installation of kitchen countertops every day, together with partner stonemasons. The goal is simple: by the time you walk into a showroom, you should know what to ask, what to avoid and what budget to plan for. If you want a complete definition of composite materials, read our <a href="/blog/technicky-kamen-cena-pracovna-doska">complete guide to engineered stone</a>. This article picks up where that one ends — at the decision.</p>
 
 <div class="article-quote">
   <p>Engineered stone is not worse than natural stone. It is different — and in some kitchens it makes clearly more sense.</p>
@@ -450,7 +450,7 @@ export const ARTICLE_25: BlogArticle = {
     <li>Premium sintered stone (Lapitec, Neolith Calacatta, Laminam Statuario)</li>
     <li>12 or 20 mm thickness depending on design; mitered edges with waterfall island; book-match veining across multiple slabs</li>
     <li>5+ cutouts, island over 3 m, splashback to ceiling, integrated plinths</li>
-    <li>Detailed CAD templating, installation with hidden seam design</li>
+    <li>Detailed measurement, installation with hidden seam design</li>
   </ul>
   <p><strong>Where nothing is cut:</strong> from décor to detail. <strong>For whom:</strong> a representative kitchen, the island as the centerpiece, a 15+ year investment.</p>
 </div>
@@ -529,7 +529,7 @@ export const ARTICLE_25: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>What we do at Orostone</strong></p>
-  <p>After every installation we stay in touch. When something goes wrong, the first question is "what exactly is not working" — and in 80% of cases it is not the material, but an installation detail (silicone, edge, seam height). Some of these we can correct even after a year, some we cannot. That is why <strong>pre-installation consultation</strong> is the best-spent time. We describe the full process from templating to installation in our article <a href="/blog/od-merania-po-instalaciu-proces-orostone">From Templating to Installation</a>.</p>
+  <p>After every installation we stay in touch. When something goes wrong, the first question is "what exactly is not working" — and in 80% of cases it is not the material, but an installation detail (silicone, edge, seam height). Some of these the stonemason can correct even after a year, some not. That is why <strong>pre-installation consultation</strong> is the best-spent time. We describe the full process from templating to installation in our article <a href="/blog/od-merania-po-instalaciu-proces-orostone">From Templating to Installation</a>.</p>
 </div>
 
 <figure class="article-figure">
@@ -549,7 +549,7 @@ export const ARTICLE_25: BlogArticle = {
   <li><strong>Will you show me the slab my kitchen will be cut from?</strong> Request a photo or physical viewing.</li>
   <li><strong>What is the seam width and what adhesive do you use?</strong> 1–2 mm width, color-matched epoxy adhesive.</li>
   <li><strong>What is the edge geometry and why?</strong> Flat, chamfered or mitered — each has a reason.</li>
-  <li><strong>Do you template in-house or via subcontractor?</strong> In-house templating means in-house responsibility for errors.</li>
+  <li><strong>Can you prepare the slab exactly to my dimensions?</strong> When you order a slab to your own dimensions, the supplier should be able to prepare it exactly to them. At Orostone, we can.</li>
   <li><strong>What are the warranty terms for cracking in the first year?</strong> Request written terms, not verbal.</li>
   <li><strong>Can I see a reference installation in your showroom or at a customer's?</strong> No internet photos — a real kitchen where it works.</li>
 </ol>
@@ -558,7 +558,7 @@ export const ARTICLE_25: BlogArticle = {
   <span class="case-study-label">Case study</span>
   <h3>Bratislava client: 10 questions saved €1,200</h3>
   <p>Before ordering, the client came in with a list of 10 questions he had prepared. The original supplier offered "premium engineered stone" at €380/rm. By the third question — brand and collection — it became clear that it was an unspecified quartz composite of unstated origin.</p>
-  <p>The client came to us. At a similar budget, we proposed sintered stone from a known collection. The price was <strong>about 8% higher</strong> but included a specific brand, certification, technical data sheet and 10-year material warranty.</p>
+  <p>The client came to us. At a similar budget, we proposed sintered stone from a known collection. The price was <strong>about 8% higher</strong> but included a specific brand, certification, technical data sheet and 24-month material warranty.</p>
   <p>After a year of use: no issues. The client recently said the 10 questions were not about distrust of the first supplier — they were about learning the difference between material and a catalogue. Which is exactly why this section in the article exists.</p>
 </div>
 

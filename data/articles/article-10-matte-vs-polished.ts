@@ -318,7 +318,7 @@ export const ARTICLE_10: BlogArticle = {
   <span class="case-study-label">Case study</span>
   <h3>A family with children and Nero Marquina in polished</h3>
   <p>We had clients who originally chose polished black sintered stone — Nero Marquina in a polished variant. It looked stunning in the showroom. After three months, they called with a frustrating problem: <strong class="gold">they were wiping the countertop 5–8 times a day</strong>. Every child who leaned against the counter left a visible mark. Every glass left a circular smudge. The surface never looked clean for more than 20 minutes at a time.</p>
-  <p>The solution? We replaced it with the same decor in a matte variant. Same color, same stone — but a completely different experience. Now they wipe the counter once a day and it always looks clean. As they put it: <em>"It's like we got an entirely different kitchen."</em></p>
+  <p>The solution? Together with the partner stonemason, we replaced it with the same decor in a matte variant. Same color, same stone — but a completely different experience. Now they wipe the counter once a day and it always looks clean. As they put it: <em>"It's like we got an entirely different kitchen."</em></p>
 </div>
 
 <h3>Leather and honed — the golden middle ground</h3>
@@ -373,7 +373,7 @@ export const ARTICLE_10: BlogArticle = {
 <p>There's one situation where polished clearly wins: <strong>real estate photography when selling a property</strong>. If you plan to sell your apartment within 3–5 years, a polished kitchen countertop photographs significantly better for listing photos. Buyers respond to dramatic shine because they subconsciously associate gloss with luxury and newness. In this specific context, a polished finish can increase the perceived value of the kitchen.</p>
 
 <h3>Matte: what you see is what you get</h3>
-<p>Matte finishes are more honest in this regard. How it looks in the showroom is how it looks at home. How it looks in a photo is how it looks in person. No disappointment, no gap between expectation and reality. For clients making informed decisions based on long-term experience — not short-term wow factor — that's an enormous advantage.</p>
+<p>Matte finishes are more honest in this regard. How it looks in the showroom is how it looks at home. How it looks in a photo is how it looks in person. No disappointment, no gap between expectation and reality. For clients making informed decisions based on long-term experience — not a short-term first impression — that's an enormous advantage.</p>
 
 <div class="article-cta">
   <p>Want to compare finishes in person?</p>
@@ -426,7 +426,7 @@ export const ARTICLE_10: BlogArticle = {
 <h3>Cleaning frequency — hard numbers</h3>
 <p>Based on feedback from our clients:</p>
 <ul>
-<li><strong>Matte finish:</strong> once daily wiping with a damp cloth is sufficient to maintain a flawless appearance.</li>
+<li><strong>Matte finish:</strong> once daily wiping with a damp cloth is sufficient to maintain a clean appearance.</li>
 <li><strong>Polished finish:</strong> 3–5 times daily wiping, ideally with a microfiber cloth and glass cleaner to remove smudges without leaving new ones. For dark polished surfaces (black, anthracite), this can be 6–8 times.</li>
 <li><strong>Leather finish:</strong> similar to matte, once daily. The texture additionally masks minor water droplets.</li>
 </ul>
@@ -472,12 +472,12 @@ export const ARTICLE_10: BlogArticle = {
 <ul>
 <li><strong>Modern minimalism</strong> (handleless cabinets, clean lines): matte finish is visually consistent with the smooth, non-reflective cabinet design. Matte stone + matte cabinets = harmonious, calming aesthetics.</li>
 <li><strong>Warm luxury</strong> (wood elements, brass details): leather finish on the stone countertop pairs beautifully with wood texture and warm metal accents. It creates a tactilely rich space.</li>
-<li><strong>Glamour / Art Deco</strong> (contrasts, statement pieces): polished can work here — but we recommend it for smaller surfaces (bar counter, wall cladding) rather than the entire work surface.</li>
+<li><strong>Glamour / Art Deco</strong> (contrasts, bold elements): polished can work here — but we recommend it for smaller surfaces (bar counter, wall cladding) rather than the entire work surface.</li>
 <li><strong>Industrial loft</strong> (concrete, metal, dark tones): matte or honed finish in dark shades. A polished surface would disrupt the raw aesthetic of industrial style.</li>
 </ul>
 
 <h3>Our final recommendation</h3>
-<p>For a luxury Bratislava kitchen with daily use — family, cooking, entertaining — we recommend <strong class="gold">matte or leather finish</strong>. Not because polished isn't beautiful. It is. But beauty that requires 5 times daily maintenance isn't luxury — it's an obligation. <strong class="gold">True luxury is a surface that looks flawless</strong> whenever you glance at it throughout the day, without having to do anything extra.</p>
+<p>For a luxury Bratislava kitchen with daily use — family, cooking, entertaining — we recommend <strong class="gold">matte or leather finish</strong>. Not because polished isn't beautiful. It is. But beauty that requires 5 times daily maintenance isn't luxury — it's an obligation. <strong class="gold">True luxury is a surface that looks good</strong> whenever you glance at it throughout the day, without having to wipe it constantly.</p>
 
 <div class="article-tip">
   <p><strong>Visit our showroom in Bošany</strong></p>
