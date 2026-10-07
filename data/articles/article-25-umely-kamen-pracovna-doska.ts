@@ -239,7 +239,7 @@ export const ARTICLE_25: BlogArticle = {
   <li><strong>Ukážete mi platnu, z ktorej bude rezaná moja kuchyňa?</strong> Vyžiadajte si fotografiu alebo fyzickú obhliadku.</li>
   <li><strong>Aká je šírka spoja a aké lepidlo používate?</strong> Šírka 1–2 mm, farebne zladené epoxidové lepidlo.</li>
   <li><strong>Aká je geometria hrany a prečo?</strong> Rovná, zrazená alebo mitered — každá má dôvod.</li>
-  <li><strong>Pripravíte mi platňu presne podľa mojich rozmerov?</strong> Keď si platňu objednáte podľa vlastných rozmerov, dodávateľ by ju mal vedieť pripraviť presne na ne. V Orostone to vieme.</li>
+  <li><strong>Pripravíte mi platňu presne podľa mojich rozmerov?</strong> Keď si platňu objednáte podľa vlastných rozmerov, dodávateľ by ju mal vedieť pripraviť presne na ne. V Orostone to vieme po písomnej dohode.</li>
   <li><strong>Aké sú podmienky reklamácie pri prasknutí v prvom roku?</strong> Žiadajte písomné podmienky, nie ústne.</li>
   <li><strong>Môžem vidieť referenčnú realizáciu vo vašom showroome alebo u zákazníka?</strong> Žiadne fotografie z internetu — reálnu kuchyňu, kde to pracuje.</li>
 </ol>
@@ -549,7 +549,7 @@ export const ARTICLE_25: BlogArticle = {
   <li><strong>Will you show me the slab my kitchen will be cut from?</strong> Request a photo or physical viewing.</li>
   <li><strong>What is the seam width and what adhesive do you use?</strong> 1–2 mm width, color-matched epoxy adhesive.</li>
   <li><strong>What is the edge geometry and why?</strong> Flat, chamfered or mitered — each has a reason.</li>
-  <li><strong>Can you prepare the slab exactly to my dimensions?</strong> When you order a slab to your own dimensions, the supplier should be able to prepare it exactly to them. At Orostone, we can.</li>
+  <li><strong>Can you prepare the slab exactly to my dimensions?</strong> When you order a slab to your own dimensions, the supplier should be able to prepare it exactly to them. At Orostone, we can, based on a written agreement.</li>
   <li><strong>What are the warranty terms for cracking in the first year?</strong> Request written terms, not verbal.</li>
   <li><strong>Can I see a reference installation in your showroom or at a customer's?</strong> No internet photos — a real kitchen where it works.</li>
 </ol>
