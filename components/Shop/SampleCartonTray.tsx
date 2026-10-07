@@ -1,8 +1,10 @@
-import React, { forwardRef, useEffect, useId, useImperativeHandle, useRef, useState } from 'react';
+import React, { forwardRef, useEffect, useId, useImperativeHandle, useLayoutEffect, useRef, useState } from 'react';
 import type { RefObject } from 'react';
 import { applyStoneExposure, awaitLottieReady, cartonLeft, freezeFrame, loadMotionAssets, makeCartonData, waitForMotionImages, MOTION_TIMING as timing, SCENE_VIEW } from './sampleCartonMotion';
 import type { LottieAnimation, SampleDecor, SampleQuantity } from './sampleCartonMotion';
 import { createSampleFlight, siteHeaderBottom } from './sampleCartonFlight';
+import { createDockMotion } from './sampleCartonDock';
+import type { DockSnapshot } from './sampleCartonDock';
 import { formatSamplePrice, quoteSampleOrder } from '../../services/shopify/samples';
 import './SampleCartonTray.css';
 export type { SampleDecor, SampleQuantity } from './sampleCartonMotion';
@@ -27,7 +29,7 @@ export interface SampleCartonTrayProps {
 interface TrayView { slots: (SampleDecor | null)[]; visible: number[]; quantity: SampleQuantity; busy: boolean; packed: boolean; fallback: boolean; motionFailed: boolean; message: string }
 const isMobile = () => innerWidth <= 640 || (innerWidth <= 950 && innerHeight <= 500);
 const compactMobile = () => innerWidth <= 640;
-const dockedTrayHeight = (width: number, mobile: boolean) => width * 315 / 720 + (mobile && compactMobile() ? 84 : mobile ? 144 : 140);
+const dockedTrayHeight = (width: number, mobile: boolean) => width * 315 / 720 + (mobile && compactMobile() ? 84 : 150);
 const setLayoutProperty = (element: HTMLElement, name: string, value: string) => {
   if (element.style.getPropertyValue(name) !== value) element.style.setProperty(name, value);
 };
@@ -45,6 +47,7 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
   const pendingMounts = useRef(new Map<LottieAnimation, () => void>()), pendingQuantityProp = useRef<SampleQuantity | null>(null);
   const transferring = useRef(false), dockRaf = useRef(0), isDocked = useRef(false), dockFits = useRef(false), homeHeight = useRef(0), scrollDone = useRef<(() => void) | null>(null);
   const insertingFromGallery = useRef(false);
+  const dockMotion = useRef(createDockMotion()), dockSnapshot = useRef<DockSnapshot | null>(null), inlineGraphicOffset = useRef(54);
   // Browser chrome changes height during scrolling in Safari and social webviews.
   // Only a new width/orientation may change the scene's responsive dimensions.
   const mobileLayout = useRef({ width: 0, height: 0 });
@@ -58,18 +61,24 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     const home = homeRef.current, tray = trayRef.current, browser = callbacks.current.browserRef.current, button = callbacks.current.carouselButtonRef.current;
     if (!home || !tray || !browser || !button) return;
     const viewport = window.visualViewport?.height || innerHeight, header = siteHeaderBottom(), mobile = isMobile();
-    const homeRect = home.getBoundingClientRect(), orderRect = home.closest('.sample-order')?.getBoundingClientRect();
-    const homeVisible = homeRect.top < viewport - Math.min(homeHeight.current || 360, 360) && homeRect.bottom > header;
-    // Release at the order even while images load or the sample is in flight.
-    // Otherwise keep the flight's destination geometry frozen.
-    const readingOrder = orderRect && orderRect.top < header + (mobile ? 120 : (viewport - header) / 2);
+    const homeRect = home.getBoundingClientRect();
+    const widthChanged = mobileLayout.current.width !== innerWidth;
+    if (!isDocked.current || widthChanged) {
+      // Layout metrics ignore an in-progress FLIP and keep the placeholder
+      // exactly as tall as the inline tray, including fractional SVG heights.
+      if (isDocked.current) tray.classList.remove('is-docked');
+      homeHeight.current = tray.getBoundingClientRect().height;
+      inlineGraphicOffset.current = graphicRef.current?.offsetTop ?? 54;
+      if (isDocked.current) tray.classList.add('is-docked');
+    }
     if (transferring.current) {
-      if (!homeVisible && !readingOrder && !editingField()) return;
+      const graphicTop = graphicRef.current?.getBoundingClientRect().top ?? viewport;
+      if (homeRect.top + inlineGraphicOffset.current > graphicTop && !editingField()) return;
       flight.current.cancel('return-to-order');
       tray.style.removeProperty('top'); tray.style.removeProperty('bottom');
       transferring.current = false; insertingFromGallery.current = false;
     }
-    if (mobileLayout.current.width !== innerWidth) mobileLayout.current = { width: innerWidth, height: viewport };
+    if (widthChanged) mobileLayout.current = { width: innerWidth, height: viewport };
     const layoutHeight = mobile ? mobileLayout.current.height : viewport;
     const desktopWidth = viewport <= 800 ? 290 : innerWidth <= 1100 ? 310 : 480;
     let width = Math.max(0, Math.min(home.clientWidth, mobile ? innerWidth > 640 ? 310 : 480 : desktopWidth, innerWidth - (mobile ? 48 : 80)));
@@ -98,24 +107,30 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     setLayoutProperty(tray, '--tray-width', width + 'px');
     // Re-read after setting responsive sizes, before deciding whether to pin.
     const browserRect = browser.getBoundingClientRect(), buttonRect = button.getBoundingClientRect();
-    const inBrowser = browserRect.top < viewport - trayHeight - 16 && buttonRect.bottom > header;
+    const reachedBrowser = browserRect.top < viewport - trayHeight - 16;
     // A centered desktop tray must sit below the carousel's click target.
     // Keep its scale fixed while scrolling; only dock when both fit.
     // Match centerBrowser's 2px settling tolerance: fractional mobile scroll
     // positions must not reject a dock that already has the intended gap.
     const clearsButton = viewport - bottomInset - 12 - buttonRect.bottom >= trayHeight - 2;
-    // Keep insertion stable only while the customer stays in the gallery.
-    // Scrolling to the order always returns the same player to its inline home,
-    // even if the carton is still closing.
-    const staysInGallery = inBrowser && !homeVisible && !readingOrder && !editingField();
-    const next = staysInGallery && ((insertingFromGallery.current && isDocked.current) || (room && clearsButton));
-    if (!isDocked.current) homeHeight.current = tray.getBoundingClientRect().height;
+    // Release only when the inline illustration meets the floating one.
+    // The order heading/quantity picker can pass behind the dock first; their
+    // visibility must not teleport the cartons to a distant point in the page.
+    const dockGraphicTop = viewport - bottomInset - trayHeight + (mobile && compactMobile() ? 39 : 63);
+    const distanceHome = homeRect.top + inlineGraphicOffset.current - dockGraphicTop;
+    const beforeHome = distanceHome > (isDocked.current ? 0 : 8);
+    const next = reachedBrowser && beforeHome && !editingField() && ((insertingFromGallery.current && isDocked.current) || (room && clearsButton));
     setLayoutProperty(tray, '--tray-center-x', browserRect.left + browserRect.width / 2 + 'px');
+    if (next !== isDocked.current) dockSnapshot.current = dockMotion.current.capture(tray, isDocked.current);
     const homeMinHeight = next ? homeHeight.current + 'px' : '';
     if (home.style.minHeight !== homeMinHeight) home.style.minHeight = homeMinHeight;
     if (next !== isDocked.current) { isDocked.current = next; setDocked(next); }
   };
   const scheduleDock = () => { if (alive.current && !dockRaf.current) dockRaf.current = requestAnimationFrame(syncDock); };
+  useLayoutEffect(() => {
+    dockMotion.current.play(dockSnapshot.current, reduced.current);
+    dockSnapshot.current = null;
+  }, [docked]);
   const centerBrowser = async (source?: HTMLImageElement) => {
     const browser = callbacks.current.browserRef.current;
     if (!browser || editingField()) { syncDock(); return; }
@@ -186,6 +201,12 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     catch (error) { anim.destroy(); layer.remove(); throw error; }
     finally { pendingMounts.current.delete(anim); }
     if (!alive.current || version !== mountVersion.current) { anim.destroy(); layer.remove(); return; }
+    if (mode === 'insert' && source && !reduced.current) {
+      // Keep the previous scene visible until both the material and dock land.
+      await new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
+      await dockMotion.current.settled();
+      if (!alive.current || version !== mountVersion.current) { anim.destroy(); layer.remove(); return; }
+    }
     segmentDone.current?.(); animation.current?.destroy(); host.querySelectorAll('.sample-carton-player').forEach(node => { if (node !== layer) node.remove(); });
     const svg = layer.querySelector('svg'); if (!svg) { anim.destroy(); layer.remove(); throw new Error('Motion SVG unavailable'); }
     svg.setAttribute('viewBox', SCENE_VIEW); applyStoneExposure(svg); animation.current = anim;
@@ -278,7 +299,7 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
   useEffect(() => {
     alive.current = true;
     const media = matchMedia('(prefers-reduced-motion: reduce)'); reduced.current = media.matches;
-    const change = () => { reduced.current = media.matches; if (media.matches) { flight.current.cancel('reduced-motion'); if (animation.current && segmentEnd.current !== null) freezeFrame(animation.current, segmentEnd.current); segmentDone.current?.(); } }; media.addEventListener('change', change);
+    const change = () => { reduced.current = media.matches; if (media.matches) { dockMotion.current.cancel(); flight.current.cancel('reduced-motion'); if (animation.current && segmentEnd.current !== null) freezeFrame(animation.current, segmentEnd.current); segmentDone.current?.(); } }; media.addEventListener('change', change);
     const resize = new ResizeObserver(scheduleDock);
     for (const element of [homeRef.current, trayRef.current, props.carouselButtonRef.current, props.browserRef.current]) if (element) resize.observe(element);
     void document.fonts.ready.then(scheduleDock);
@@ -288,7 +309,7 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     return () => {
       alive.current = false; ++mountVersion.current; ++operationVersion.current; observer.disconnect(); resize.disconnect(); cancelAnimationFrame(dockRaf.current); dockRaf.current = 0;
       media.removeEventListener('change', change); removeEventListener('scroll', scheduleDock); removeEventListener('resize', scheduleDock); document.removeEventListener('focusin', scheduleDock); document.removeEventListener('focusout', scheduleDock); window.visualViewport?.removeEventListener('resize', scheduleDock);
-      scrollDone.current?.(); segmentDone.current?.(); flight.current.destroy(); for (const cancel of pendingMounts.current.values()) cancel(); pendingMounts.current.clear(); animation.current?.destroy(); animation.current = null;
+      scrollDone.current?.(); segmentDone.current?.(); dockMotion.current.cancel(); flight.current.destroy(); for (const cancel of pendingMounts.current.values()) cancel(); pendingMounts.current.clear(); animation.current?.destroy(); animation.current = null;
       props.browserRef.current?.style.removeProperty('--mobile-browser-height'); props.browserRef.current?.style.removeProperty('--mobile-header-bottom'); props.browserRef.current?.style.removeProperty('--sample-tile-size'); if (model.current.busy) callbacks.current.onBusyChange?.(false);
     };
   }, []);
