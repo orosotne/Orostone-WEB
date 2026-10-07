@@ -193,7 +193,7 @@ export const ARTICLE_25: BlogArticle = {
 <p>Doska a kuchynská linka idú do interiéru spolu. Vzorka dosky sama nestačí – vyžiadajte si fotomontáž alebo aspoň fyzické priloženie vzorky dosky k vzorke dvierok. Najčastejšia frustrácia po roku používania nie je samotná doska, ale to, že sa vizuálne nehodí k linke.</p>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-25/chyba-instalacia.webp" alt="Pracovna doska umely kamen cena a inštalačné chyby – detail výrezu pri kuchynskom dreze" loading="lazy" />
+  <img src="/images/blog/article-25/chyba-instalacia.webp" alt="Pracovná doska umelý kameň cena a inštalačné chyby – detail výrezu pri kuchynskom dreze" loading="lazy" />
   <figcaption>Detail výrezu pre drez – tu sa prejaví kvalita fabrikácie a podpery dosky.</figcaption>
 </figure>
 
@@ -223,7 +223,7 @@ export const ARTICLE_25: BlogArticle = {
 </div>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-25/po-roku.webp" alt="Kuchynska doska umely kamen po roku používania – patina a údržba" loading="lazy" />
+  <img src="/images/blog/article-25/po-roku.webp" alt="Kuchynská doska umelý kameň po roku používania – patina a údržba" loading="lazy" />
   <figcaption>Pracovná doska z umelého kameňa po roku denného používania – bez impregnácie, bez stôp.</figcaption>
 </figure>
 
@@ -253,7 +253,7 @@ export const ARTICLE_25: BlogArticle = {
 </div>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-25/showroom-konzultacia.webp" alt="Umely kamen do kuchyne – konzultácia v Orostone showroome s 10 otázkami pre dodávateľa" loading="lazy" />
+  <img src="/images/blog/article-25/showroom-konzultacia.webp" alt="Umelý kameň do kuchyne – konzultácia v Orostone showroome s 10 otázkami pre dodávateľa" loading="lazy" />
   <figcaption>Konzultácia v Orostone showroome – vzorky materiálu vedľa rozkresu kuchyne.</figcaption>
 </figure>
 
