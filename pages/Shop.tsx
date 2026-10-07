@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useShopifyProducts } from '../hooks/useShopifyProducts';
 import { OFFER_VALID_FROM } from '../lib/productSchema';
 import { calculateSlabPrice } from '../lib/slab';
@@ -24,6 +25,18 @@ import '../components/Home/home.css';
 
 export const Shop = () => {
   const { products } = useShopifyProducts();
+  const { hash } = useLocation();
+
+  // Older links such as /#vzorka (sample form): ScrollToTop resets every route to the top and the browser's own
+  // fragment jump runs before the sections exist, so scroll to the target once the page has mounted.
+  useEffect(() => {
+    const id = decodeURIComponent(hash.slice(1));
+    if (!id) return;
+    const timer = window.setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'start' });
+    }, 300);
+    return () => window.clearTimeout(timer);
+  }, [hash]);
 
   return (
     <div className="hp w-full overflow-x-clip">
