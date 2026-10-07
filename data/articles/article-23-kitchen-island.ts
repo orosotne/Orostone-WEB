@@ -36,7 +36,7 @@ export const ARTICLE_23: BlogArticle = {
 
 <p>Kuchynský ostrovček je srdcom modernej otvorenej kuchyne. Je to miesto, kde sa varí, raňajkuje, pracuje na notebooku a debatuje s návštevami. A materiál, z ktorého je vyrobený, definuje celý charakter priestoru.</p>
 
-<p><strong class="gold">Sinterovaný kameň</strong> sa stal prvou voľbou pre prémiové kuchynské ostrovčeky — a nie je to náhoda. Kombinuje vizuálnu eleganciu prírodného mramoru s odolnosťou, ktorá zvládne každodenné používanie bez údržby.</p>
+<p><strong class="gold">Sinterovaný kameň</strong> sa stal prvou voľbou pre prémiové kuchynské ostrovčeky — a nie je to náhoda. Kombinuje vizuálnu eleganciu prírodného mramoru s odolnosťou, ktorá zvládne každodenné používanie bez impregnácie a s jednoduchou údržbou.</p>
 
 <div class="article-quote">
   <p>Ostrovček nie je len pracovná plocha — je to najviditeľnejší kus nábytku v otvorenej kuchyni. Materiál, ktorý si zvolíte, vidíte celý deň.</p>
@@ -201,7 +201,7 @@ export const ARTICLE_23: BlogArticle = {
 
 <ul>
   <li><a href="/produkt/calacatta-top"><strong>Calacatta Top</strong></a> — klasický mramorový vzor so zlatými žilami. Najobľúbenejší dekór pre ostrovčeky.</li>
-  <li><a href="/produkt/wild-forest"><strong>Wild Forest</strong></a> — dramatické tmavé žily na šedom podklade. Statement kus pre moderné interiéry.</li>
+  <li><a href="/produkt/wild-forest"><strong>Wild Forest</strong></a> — dramatické tmavé žily na šedom podklade. Výrazný akcent pre moderné interiéry.</li>
   <li><a href="/produkt/statuario-diamante"><strong>Statuario Diamante</strong></a> — čisto biely s jemnými sivými žilami. Nadčasová elegancia.</li>
   <li><a href="/produkt/nero-margiua"><strong>Nero Margiua</strong></a> — čierny mramor pre odvážne priestory. Waterfall hrany v čiernej sú vizuálne najsilnejšie.</li>
 </ul>

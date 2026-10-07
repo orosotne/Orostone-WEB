@@ -28,7 +28,7 @@ export const ARTICLE_25: BlogArticle = {
 
 <p>„Umelý kameň" je <strong class="gold">jeden z najpoužívanejších termínov</strong> v slovenských kuchynských diskusiách — a zároveň jeden z najnejasnejších. Pod tým istým slovom predajcovia ponúkajú kremenný kompozit, sinterovaný kameň, keramickú dosku alebo solid surface. Sú to štyri rôzne materiály s rôznou cenou, odolnosťou a chovaním v kuchyni.</p>
 
-<p>Tento článok nie je akademická definícia. Je to <strong class="gold">poctivý sprievodca rozhodnutím</strong>, ktorý napísal tím, ktorý kuchynské pracovné dosky reálne meria, vyrába a montuje. Cieľ je jednoduchý: aby ste pred showroomom vedeli, čo sa pýtať, čomu sa vyhnúť a koľko reálne počítať. Ak hľadáte kompletnú definíciu kompozitných materiálov, prečítajte si <a href="/blog/technicky-kamen-cena-pracovna-doska">úplný sprievodca technickým kameňom</a>. Tento článok začína tam, kde ten končí — pri rozhodnutí.</p>
+<p>Tento článok nie je akademická definícia. Je to <strong class="gold">poctivý sprievodca rozhodnutím</strong>, ktorý napísal tím, ktorý s partnerskými kamenármi denne rieši zameranie, výrobu aj montáž kuchynských pracovných dosiek. Cieľ je jednoduchý: aby ste pred showroomom vedeli, čo sa pýtať, čomu sa vyhnúť a koľko reálne počítať. Ak hľadáte kompletnú definíciu kompozitných materiálov, prečítajte si <a href="/blog/technicky-kamen-cena-pracovna-doska">úplný sprievodca technickým kameňom</a>. Tento článok začína tam, kde ten končí — pri rozhodnutí.</p>
 
 <div class="article-quote">
   <p>Umelý kameň nie je horší ako prírodný. Je iný — a v niektorých kuchyniach má jednoznačne väčší zmysel.</p>
@@ -219,7 +219,7 @@ export const ARTICLE_25: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>Čo robíme v Orostone</strong></p>
-  <p>Po každej montáži ostávame v kontakte. Pri sťažnosti je prvá otázka „čo presne nefunguje" — a v 80 % prípadov to nie je materiál, ale detail montáže (silikón, hrana, výška spoja). Niečo z toho vieme dorobiť aj po roku, niečo nie. Preto je <strong>predmontážna konzultácia</strong> najlepšie investovaný čas. Detailný proces od merania po inštaláciu popisujeme v článku <a href="/blog/od-merania-po-instalaciu-proces-orostone">Od merania po inštaláciu</a>.</p>
+  <p>Po každej montáži ostávame v kontakte. Pri sťažnosti je prvá otázka „čo presne nefunguje" — a v 80 % prípadov to nie je materiál, ale detail montáže (silikón, hrana, výška spoja). Niečo z toho vie kamenár dorobiť aj po roku, niečo nie. Preto je <strong>predmontážna konzultácia</strong> najlepšie investovaný čas. Detailný proces od merania po inštaláciu popisujeme v článku <a href="/blog/od-merania-po-instalaciu-proces-orostone">Od merania po inštaláciu</a>.</p>
 </div>
 
 <figure class="article-figure">
@@ -264,7 +264,7 @@ export const ARTICLE_25: BlogArticle = {
 <p>Pretočené naopak — keď vyberáte podľa dekoru a ceny a až nakoniec myslíte na použitie — končíte s pracovnou doskou, ktorá vyzerá ako z časopisu, ale po roku ju ľutujete. Aj keby ste mali kúpiť drahší materiál, robte to vedome. Dobre vybraná pracovná doska nerieši samú seba — rieši kuchyňu, v ktorej budete žiť ďalších 15 rokov. Pre kontext o všetkých kompozitných materiáloch si pozrite <a href="/blog/oplati-sa-sinterovany-kamen">Oplatí sa sinterovaný kameň?</a> — komplementárny článok o dlhodobej hodnote.</p>
 
 <div class="article-tip">
-  <p><strong>Alebo nás jednoducho kontaktuj v Orostone</strong></p>
+  <p><strong>Alebo nás jednoducho kontaktujte v Orostone</strong></p>
   <p>Ak máte pôdorys kuchyne, fotografiu existujúcej linky alebo iba rozmery, pošlite nám ich. Pripravíme vám konkrétny návrh — nie generický cenník, ale rozsah cien podľa skutočnej kuchyne. Konzultácia je nezáväzná a zadarmo. Inšpiráciu z realizácií nájdete v sekcii <a href="/kuchyne">Kuchyne</a>.</p>
   <a href="/kontakt" class="tip-btn">Kontaktovať nás →</a>
 </div>

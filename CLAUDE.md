@@ -79,7 +79,7 @@ React Context API only — no Redux/Zustand. Contexts:
 - `SEOHead.tsx` component for meta/OG tags per page
 - Structured data (JSON-LD): Product, BreadcrumbList, FAQPage, LocalBusiness, Organization
 - SEO content DB: `data/product-seo-content.ts` (12 products)
-- **SEO diff gate:** every PR to `main` runs `.github/workflows/seo-diff.yml`, which compares title, meta description, H1/H2, `#` anchors, tables, JSON-LD types and internal links of every prerendered page against `main` and posts the list as a PR comment. Anything removed turns the check red — approve it deliberately or restore it (a rewrite must not silently drop a table or section that ranks). Locally: `npm run seo:diff -- <main dist> dist`.
+- **SEO diff gate:** every PR to `main` runs `.github/workflows/seo-diff.yml`, which compares title, meta description, H1/H2, `#` anchors, tables, JSON-LD types and internal links of every prerendered page against `main` and posts the list as a PR comment. Anything removed turns the check red — approve it deliberately or restore it (a rewrite must not silently drop a table or section that ranks). A reworded H2 that keeps its `#id` (on listings, its link) is listed as a change, not a removal. Locally: `npm run seo:diff -- <main dist> dist`.
 - `public/sitemap.xml`, `public/robots.txt`, `public/llms.txt`
 
 ## Debug Infrastructure

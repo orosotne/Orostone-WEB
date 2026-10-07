@@ -16,7 +16,7 @@ export const ARTICLE_03: BlogArticle = {
     excerpt: 'Sinterovaný kameň má pórovitosť pod 0,1% — káva, víno ani kurkuma doň neprenikajú. Ale testovali sme to a výsledky zaznamenali.',
     metaTitle: 'Škvrny na sinterovanom kameni | OROSTONE',
     metaDescription: 'Káva, červené víno, kurkuma, olej. Zafarbí sa sinterovaný kameň po každodennom používaní? Nasiakavosť, čistenie a kde sú reálne hranice.',
-    directAnswer: 'Sinterovaný kameň má takmer nulovú pórovitosť (absorpcia vody pod 0,1%), čo znamená, že žiadna bežná kuchynská tekutina doň neprenikne. Škvrny od kávy, vína, kurkumy ani citrónovej šťavy sa nevstrebú do povrchu — stačí ich zotriete vlhkou handrou. Impregnácia nie je potrebná.',
+    directAnswer: 'Sinterovaný kameň má takmer nulovú pórovitosť (absorpcia vody pod 0,1%), čo znamená, že žiadna bežná kuchynská tekutina doň neprenikne. Škvrny od kávy, vína, kurkumy ani citrónovej šťavy sa nevstrebú do povrchu — stačí ich zotrieť vlhkou handrou. Impregnácia nie je potrebná.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>
 <ul class="article-tldr">
@@ -98,7 +98,7 @@ export const ARTICLE_03: BlogArticle = {
 <p>Intenzívna červená šťava. Po 24 hodinách: farebná škvrna viditeľná. Po zotretí vlhkou handrou s malým množstvom bežného čistiaceho prostriedku: povrch čistý. Bez trvalých stôp.</p>
 
 <div class="article-cta">
-  <p>Chcete sinterovaný kameň, o ktorý sa nemusíte starať?</p>
+  <p>Chcete sinterovaný kameň s jednoduchou údržbou?</p>
   <p>Ukážeme vám vzorky a zodpovieme vaše otázky o čistení a údržbe priamo v showroome.</p>
   <a href="/kontakt" class="cta-btn">Nezáväzná konzultácia →</a>
 </div>
@@ -138,7 +138,7 @@ export const ARTICLE_03: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>Čo robíme v Orostone</strong></p>
-  <p>Pri každej inštalácii zákazníkom poskytneme jednoduchú jednostranovú kartu s pokynmi na čistenie. Skrátená verzia: vlhká handrička stačí na 99% situácií. Zvyšok 1% rieši bežný kuchynský čistiaci prostriedok. Žiadna impregnácia, žiadna špeciálna chémia, žiadna ročná údržba.</p>
+  <p>Každému zákazníkovi poskytneme jednoduchú jednostranovú kartu s pokynmi na čistenie. Skrátená verzia: vlhká handrička stačí na 99% situácií. Zvyšok 1% rieši bežný kuchynský čistiaci prostriedok. Žiadna impregnácia, žiadna špeciálna chémia, žiadna ročná údržba.</p>
 </div>
 
 <h2 id="matny-vs-leskly">Matný vs lesklý povrch — rozdiel v odolnosti voči škvrnám</h2>
@@ -163,8 +163,8 @@ export const ARTICLE_03: BlogArticle = {
 <p>Toto je jeden z dôvodov, prečo je sinterovaný kameň ideálny pre rušné kuchyne a domácnosti s deťmi.</p>
 
 <div class="article-tip">
-  <p><strong>Alebo nás jednoducho kontaktuj v Orostone</strong></p>
-  <p>Radi ti ukážeme sinterovaný kameň v praxi a zodpovieme všetky otázky. Nezáväzná konzultácia je zadarmo — príď sa pozrieť.</p>
+  <p><strong>Alebo nás jednoducho kontaktujte v Orostone</strong></p>
+  <p>Radi vám ukážeme sinterovaný kameň v praxi a zodpovieme všetky otázky. Nezáväzná konzultácia je zadarmo — príďte sa pozrieť.</p>
   <a href="/kontakt" class="tip-btn">Kontaktovať nás →</a>
 </div>
 `,
@@ -207,7 +207,7 @@ export const ARTICLE_03: BlogArticle = {
       },
       {
         question: 'Ako dlho vydrží povrch sinterovaného kameňa bez škŕs a usadenín?',
-        answer: 'Sinterovaný kameň nie je porézny, takže usadeniny sa nevtlačia do štruktúry. Povrch odolá bežnému každodennému zaťaženiu po celú životnosť kameňa (desiatky rokov) bez nutnosti akejkoľvek obnovy alebo opravy. Mechanické škrabance od ostrých predmetov sú možné, ale chemické usadeniny nie.',
+        answer: 'Sinterovaný kameň nie je porézny, takže usadeniny sa nevtlačia do štruktúry. Povrch odolá bežnému každodennému zaťaženiu po celú životnosť kameňa (desiatky rokov) bez impregnácie či renovácie. Mechanické škrabance od ostrých predmetov sú možné, ale chemické usadeniny nie.',
       },
       {
         question: 'Ovplyvňuje dezén (farba) odolnosť voči škvrnám?',

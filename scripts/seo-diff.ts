@@ -3,7 +3,8 @@
  * what changed. Anything REMOVED (page, H1, section, #jump anchor, table,
  * JSON-LD type, internal link, >20 % of text) or a changed canonical/robots
  * fails with exit code 1: removals need a deliberate human "yes" before merge.
- * Changed titles/descriptions/H1 texts are listed as warnings.
+ * Changed titles/descriptions/H1 texts are listed as warnings, and so are
+ * H2 texts whose #id or link stayed (the same section, reworded).
  *
  * Run:  npm run seo:diff -- <base dist/ or snapshot.json> <head dist/ or snapshot.json> [--md report.md]
  * CI:   .github/workflows/seo-diff.yml (base = main, head = pull request)
@@ -105,7 +106,14 @@ for (const r of shared) {
   if (b.robots !== h.robots) blocking.push(`${at} — meta robots: ${q(b.robots)} → ${q(h.robots)}`);
   if (b.h1.length && !h.h1.length) blocking.push(`${at} — chýba H1 (bolo ${q(b.h1[0])})`);
 
-  const lostH2 = minus(b.h2, h.h2);
+  // A heading that keeps its #id or its link is the same section reworded — a change, not a removal.
+  const renamedH2 = new Map<string, string>();
+  for (const text of minus(b.h2, h.h2)) {
+    const key = b.h2Keys?.[b.h2.indexOf(text)];
+    const to = key ? h.h2[h.h2Keys?.indexOf(key) ?? -1] : undefined;
+    if (to !== undefined && !b.h2.includes(to)) renamedH2.set(text, to);
+  }
+  const lostH2 = minus(b.h2, h.h2).filter((t) => !renamedH2.has(t));
   if (lostH2.length) blocking.push(`${at} — odstránené sekcie (H2): ${lostH2.map(q).join(', ')}`);
   const lostIds = minus(b.ids, h.ids);
   if (lostIds.length) blocking.push(`${at} — odstránené kotvy (#jump linky): ${lostIds.map((i) => `#${i}`).join(', ')}`);
@@ -121,10 +129,11 @@ for (const r of shared) {
   if (b.title !== h.title) warnings.push(`${at} — title: ${q(b.title)} → ${q(h.title)}`);
   if (b.description !== h.description) warnings.push(`${at} — meta description: ${q(b.description)} → ${q(h.description)}`);
   if (b.h1.length && h.h1.length && b.h1[0] !== h.h1[0]) warnings.push(`${at} — H1: ${q(b.h1[0])} → ${q(h.h1[0])}`);
+  for (const [from, to] of renamedH2) warnings.push(`${at} — H2 (rovnaká kotva/odkaz): ${q(from)} → ${q(to)}`);
   if (h.h1.length > 1 && b.h1.length <= 1) warnings.push(`${at} — viac ako jedno H1 (${h.h1.length})`);
 
   const gained: string[] = [];
-  const newH2 = minus(h.h2, b.h2);
+  const newH2 = minus(h.h2, b.h2).filter((t) => ![...renamedH2.values()].includes(t));
   if (newH2.length) gained.push(`sekcie ${newH2.map(q).join(', ')}`);
   if (h.tables > b.tables) gained.push(`+${h.tables - b.tables} tabuľka`);
   const newTypes = minus(h.jsonLdTypes, b.jsonLdTypes);

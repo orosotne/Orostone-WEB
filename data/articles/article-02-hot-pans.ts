@@ -23,7 +23,7 @@ export const ARTICLE_02: BlogArticle = {
   <li>Sinterovaný kameň odolá teplotám nad 300°C — horúce hrnce ho nepoškodí</li>
   <li>Žiadne živice = žiadne žltnutie, žiadne popraskanie pri tepelnom zaťažení</li>
   <li>Jediné reálne riziko: náhly termický šok (ľad na horúcu dosku a naopak)</li>
-  <li>Výhodou oproti kvarcitu: môžeš nechať na doske varič s panvicou bez podložky</li>
+  <li>Výhodou oproti kvarcitu: môžete nechať na doske varič s panvicou bez podložky</li>
 </ul>
 
 <p>Jedna z prvých otázok, ktorú zákazníci kladú pri výbere kuchynskej dosky: <em>„Môžem naň položiť horúci hrniec?"</em> Odpoveď závisí od materiálu. A pri sinterovanom kameni je odpoveď <strong class="gold">jednoznačne áno</strong>.</p>
@@ -163,8 +163,8 @@ export const ARTICLE_02: BlogArticle = {
 </figure>
 
 <div class="article-tip">
-  <p><strong>Alebo nás jednoducho kontaktuj v Orostone</strong></p>
-  <p>Radi ti ukážeme sinterovaný kameň v showroome a zodpovieme všetky otázky. Nezáväzná konzultácia je zadarmo — príď sa pozrieť, sáhni si na vzorky.</p>
+  <p><strong>Alebo nás jednoducho kontaktujte v Orostone</strong></p>
+  <p>Radi vám ukážeme sinterovaný kameň v showroome a zodpovieme všetky otázky. Nezáväzná konzultácia je zadarmo — príďte sa pozrieť, siahnite si na vzorky.</p>
   <a href="/kontakt" class="tip-btn">Kontaktovať nás →</a>
 </div>
 `,

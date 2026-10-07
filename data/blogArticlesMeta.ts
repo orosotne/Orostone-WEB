@@ -17,9 +17,9 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
     author: BLOG_AUTHOR_OROSTONE,
     tags: ['sinterovaný kameň', 'problémy', 'prevencia', 'inštalácia', 'chipovanie'],
     sk: {
-      title: 'Problémy so sinterovaným kameňom, o ktorých ti nikto nepovie (a ako im predchádzame)',
+      title: 'Problémy so sinterovaným kameňom, o ktorých vám nikto nepovie (a ako im predchádzame)',
       subtitle: 'Úprimný sprievodca rizikami sinterovaného kameňa — od chipovania po praskanie pri výrezoch',
-      excerpt: 'Sinterovaný kameň je vynikajúci materiál, ale nie je nezničiteľný. Pozri sa na reálne problémy, konkrétne čísla a overené riešenia, ktoré v Orostone denne používame.',
+      excerpt: 'Sinterovaný kameň je vynikajúci materiál, ale nie je nezničiteľný. Pozrite sa na reálne problémy, konkrétne čísla a overené riešenia, ktoré v Orostone denne používame.',
     },
     en: {
       title: 'Sintered Stone Problems Nobody Tells You About (And How We Prevent Them)',
@@ -77,7 +77,7 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
     author: BLOG_AUTHOR_OROSTONE,
     tags: ['sinterovaný kameň', 'hrúbka', '12mm', '20mm', 'kuchyňa', 'kuchynská doska'],
     sk: {
-      title: '12 mm vs 20 mm: aká hrúbka sinterovaného kameňa je správna pre tvoju kuchyňu?',
+      title: '12 mm vs 20 mm: aká hrúbka sinterovaného kameňa je správna pre vašu kuchyňu?',
       subtitle: 'Štrukturálny rozdiel, limity previsu, hmotnosť, cena — a rozhodovacia matica pre každý projekt',
       excerpt: 'Pevnosť pri prerušení: 5 000 N vs 16 000 N. Kedy stačí 12 mm a kedy je 20 mm nevyhnutnosť? Konkrétne čísla, pravidlá previsu a reálny prípad prasknutia 12 mm dosky s výrezom.',
     },
@@ -140,7 +140,7 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
     sk: {
       title: 'Sinterovaný kameň vs kvarcit vs keramika vs porcelán: v čom je skutočný rozdiel?',
       subtitle: 'Technické porovnanie materiálov pre prémiové kuchynské dosky — bez marketingových klišé',
-      excerpt: 'Komplexné porovnanie sinterovaného kameňa, kvarcitu, porcelánových dosiek a keramiky. Reálne čísla, certifikácie, cenové rozpätia a rozhodovací strom pre tvoj projekt.',
+      excerpt: 'Komplexné porovnanie sinterovaného kameňa, kvarcitu, porcelánových dosiek a keramiky. Reálne čísla, certifikácie, cenové rozpätia a rozhodovací strom pre váš projekt.',
     },
     en: {
       title: 'Sintered Stone vs Quartz vs Ceramic vs Porcelain: What\'s Actually Different?',
@@ -182,7 +182,7 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
     sk: {
       title: 'Od merania po inštaláciu: proces Orostone v 10 krokoch',
       subtitle: 'Kompletný sprievodca celým procesom — od prvej konzultácie po odovzdanie hotovej kuchyne',
-      excerpt: 'Presne budeš vedieť, čo sa deje v každej fáze. 10 krokov, konkrétne termíny, jasné zodpovednosti. Celý proces od konzultácie po hotovú kuchyňu trvá 10–15 pracovných dní.',
+      excerpt: 'Presne budete vedieť, čo sa deje v každej fáze. 10 krokov, konkrétne termíny, jasné zodpovednosti. Celý proces od konzultácie po hotovú kuchyňu trvá 10–15 pracovných dní.',
     },
     en: {
       title: 'From Measurement to Installation: The Orostone Process in 10 Steps',
@@ -283,10 +283,10 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
     author: BLOG_AUTHOR_OROSTONE,
     tags: ['sinterovaný kameň', 'ceny', 'cenová ponuka', 'transparentnosť', 'cena za bežný meter'],
     sk: {
-      title: 'Transparentné ceny: čo musí obsahovať tvoja cenová ponuka',
+      title: 'Transparentné ceny: čo musí obsahovať vaša cenová ponuka',
       subtitle: 'Sprievodca cenovou ponukou na sinterovaný kameň — bez skrytých poplatkov a prekvapení na faktúre',
       excerpt:
-        'Dve ponuky na tú istú kuchyňu sa môžu líšiť o stovky eur — a lacnejšia môže byť v skutočnosti drahšia. Zisti, čo musí férová ponuka obsahovať a na čo si dať pozor.',
+        'Dve ponuky na tú istú kuchyňu sa môžu líšiť o stovky eur — a lacnejšia môže byť v skutočnosti drahšia. Zistite, čo musí férová ponuka obsahovať a na čo si dať pozor.',
     },
     en: {
       title: 'Transparent Pricing: What Your Quote Must Include',
@@ -306,7 +306,7 @@ export const BLOG_ARTICLES_META: BlogArticleMeta[] = [
     author: BLOG_AUTHOR_OROSTONE,
     tags: ['sinterovaný kameň', 'čistenie', 'údržba', 'starostlivosť', 'škvrny'],
     sk: {
-      title: 'Ako čistiť sinterovaný kameň (jediná rutina, ktorú potrebuješ)',
+      title: 'Ako čistiť sinterovaný kameň (jediná rutina, ktorú potrebujete)',
       subtitle: 'Jednoduchý návod na každodennú aj hĺbkovú údržbu — vrátane zoznamu, čo na povrch nikdy nepatrí',
       excerpt:
         'Najodolnejší povrch v kuchyni má paradoxne najjednoduchšiu údržbu. Vlhká utierka, saponát, hotovo. Tu je celá rutina aj postupy na zaschnuté škvrny.',
