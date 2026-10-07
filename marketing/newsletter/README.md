@@ -52,12 +52,12 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 | 01 | Vitajte | Welcome 1/4 – hneď po prihlásení | Vitajte v Orostone. Toto vám budeme posielať | skontrolované, v Shopify treba vytvoriť kód VITAJTE |
 | 02 | List od Mariána | Welcome 2/4 – o 2 dni | Krátky list namiesto reklamy | skontrolované, čaká na Mariánovo schválenie |
 | 07 | Ako vybrať dekor | Welcome 3/4 – o 5 dní | Tri otázky pred výberom dekoru | skontrolované |
-| 09 | Tri kuchyne | Welcome 4/4 – o 9 dní | Tri kuchyne, tri rôzne rozhodnutia | na kontrole – nové fotky a dekory kuchýň |
+| 09 | Tri kuchyne | Welcome 4/4 – o 9 dní | Tri kuchyne, tri rôzne rozhodnutia | skontrolované |
 | 05 | Vzorka je doma | Vzorky 2/4 – 2 dni po doručení | Vzorka je doma. Skúste s ňou 4 veci | skontrolované |
 | 10 | Veľká plocha | Vzorky 3/4 – 7 dní po doručení | Ako váš dekor vyzerá vo veľkej ploche | skontrolované |
 | 11 | Marián (čistý text) | Vzorky 4/4 – 14 dní po doručení | Pomôžem vám s výberom? | skontrolované |
 | 12 | Ako čítať ponuku | Dopyt → ponuka 2/4 – deň po ponuke | Ako čítať cenovú ponuku | skontrolované |
-| 13 | Showroom | Dopyt → ponuka 3/4 – 5 dní po ponuke | Pozrite si platne naživo | na kontrole – fotka kaštieľa a nový preheader |
+| 13 | Showroom | Dopyt → ponuka 3/4 – 5 dní po ponuke | Pozrite si platne naživo | skontrolované |
 | 14 | Marián (čistý text) | Dopyt → ponuka 4/4 – 14 dní po ponuke | Je niečo, čo vám bráni rozhodnúť sa? | skontrolované |
 | 15 | Košík | Opustený košík 1/2 – o hodinu | Vaša vzorka zostala v košíku | skontrolované |
 | 16 | Marián (čistý text) | Opustený košík 2/2 – o deň | Váhate medzi dekormi? | skontrolované |
@@ -66,10 +66,10 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 | 06 | Ako sa vám žije | Po realizácii 3/4 – 30 dní po montáži | Ako sa vám žije s novou doskou? | skontrolované |
 | 03 | Realizácia mesiaca | Kampaň október | Taj Mahal na dlhom ostrovčeku s drezom | skontrolované |
 | 04 | Dekor v detaile | Kampaň október | Roman Travertine: travertín bez impregnácie | skontrolované |
-| 18 | Zo zákulisia | Kampaň november | Ako vzniká sinterovaný kameň | na kontrole – nové zábery výroby |
+| 18 | Zo zákulisia | Kampaň november | Ako vzniká sinterovaný kameň | skontrolované |
 | 19 | Sprievodca | Kampaň november | Čo je v cene pracovnej dosky | skontrolované |
 | 20 | Realizácia mesiaca | Kampaň december | Biela doska a tmavé drevo | skontrolované, čaká na súhlas klienta so zverejnením |
-| 21 | Poďakovanie | Kampaň december | Ďakujeme za rok 2026 | na kontrole – nová fotka |
+| 21 | Poďakovanie | Kampaň december | Ďakujeme za rok 2026 | skontrolované |
 
 **Ešte nenapísané (plán na rok 2027):** Po realizácii 4/4 (tip po 6 mesiacoch), Výročie, Reaktivácia (3 e-maily), B2B (3 e-maily), kampane január – marec (6 e-mailov). Potvrdenie objednávky vzorky posiela Shopify a potvrdenie dopytu web, tie netreba písať.
 

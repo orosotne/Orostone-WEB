@@ -168,4 +168,8 @@ S novými fotkami sa zmenil aj text, ktorý skontroluje ďalšie kolo:
 |---|---|---|---|---|---|---|
 | 1 | 21 | [alt] Vianočné pečenie na ostrovčeku zo sinterovaného kameňa, v pozadí vianočný stromček | [alt] Vianočné pečenie na ostrovčeku zo sinterovaného kameňa so stromčekom v pozadí | štylistika | Slovo *vianočný* sa opakovalo tesne po sebe a dodatok za čiarkou bol ťažkopádny. | zapracované |
 
+## Kolo 10 – Codex review v PR #88 (7. 10. 2026, po oprave z kola 9)
+
+Codex na `d7465f0` nenašiel žiadne pripomienky. Texty k novým fotkám v 09, 13, 18 a 21 sú skontrolované.
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
