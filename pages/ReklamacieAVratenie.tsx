@@ -20,7 +20,7 @@ export const ReklamacieAVratenie: React.FC = () => {
           <>
             Ak máte otázky k dodanému tovaru, kontaktujte nás na{' '}
             <a href="mailto:info@orostone.sk" className={LEGAL_LINK}>info@orostone.sk</a>.
-            Reklamácie vybavujeme a právo na odstúpenie od zmluvy uplatňujeme v súlade s platnými právnymi predpismi Slovenskej republiky.
+            Reklamácie vybavujeme a pri uplatnení práva na odstúpenie od zmluvy postupujeme v súlade s platnými právnymi predpismi Slovenskej republiky.
           </>
         }
       />
@@ -80,7 +80,7 @@ export const ReklamacieAVratenie: React.FC = () => {
                 <div>
                   <h3 className="mb-2 text-[1.1rem] font-semibold text-brand-dark">Kontrola pred spracovaním</h3>
                   <p className="text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
-                    Kupujúci je povinný <strong>pred akýmkoľvek rezaním, opracovaním alebo montážou</strong> dôkladne skontrolovať najmä rozmer, dekor, odtieň, povrch a zjavné vady tovaru. Po spracovaní tovaru nemožno úspešne uplatňovať tie vady alebo vlastnosti, ktoré boli zjavné alebo zistiteľné pred spracovaním.
+                    Kupujúci je povinný <strong>pred akýmkoľvek rezaním, opracovaním alebo montážou</strong> dôkladne skontrolovať najmä rozmer, dekor, odtieň, povrch a zjavné vady tovaru. Po spracovaní tovaru nemožno úspešne uplatniť reklamáciu založenú na vadách alebo vlastnostiach, ktoré boli zjavné alebo zistiteľné pred spracovaním.
                   </p>
                 </div>
               </div>
@@ -101,7 +101,7 @@ export const ReklamacieAVratenie: React.FC = () => {
 
             <div className="mb-6 rounded-[3px] border border-brand-line bg-white/60 p-6 sm:p-8">
               <p className="mb-4 text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
-                Reklamáciu alebo vytknutie vady môžete uplatniť e-mailom na{' '}
+                Reklamáciu môžete uplatniť alebo vadu vytknúť e-mailom na{' '}
                 <a href="mailto:info@orostone.sk" className={LEGAL_LINK}>info@orostone.sk</a>.
                 Pre rýchlejšie vybavenie odporúčame uviesť:
               </p>
@@ -112,11 +112,11 @@ export const ReklamacieAVratenie: React.FC = () => {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-0.5 text-brand-dark/40">✦</span>
-                  Popis vady a dátum zistenia
+                  Opis vady a dátum zistenia
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-0.5 text-brand-dark/40">✦</span>
-                  Fotodokumentáciu vady (detail + celkový pohľad), ak je to vzhľadom na povahu vady možné
+                  Fotodokumentáciu vady (detail aj celkový pohľad), ak je to vzhľadom na povahu vady možné
                 </li>
               </ul>
 
@@ -206,7 +206,7 @@ export const ReklamacieAVratenie: React.FC = () => {
             <div className="mb-6 rounded-[3px] border border-brand-line bg-white/60 p-6 sm:p-8">
               <h3 className="mb-3 text-[1.1rem] font-semibold text-brand-dark">Vrátenie platieb</h3>
               <p className="text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
-                Spoločnosť Orostone vráti spotrebiteľovi všetky platby, ktoré od neho prijala na základe alebo v súvislosti so zmluvou, vrátane nákladov na dodanie v rozsahu najlacnejšieho bežného spôsobu dodania ponúkaného spoločnosťou Orostone, a to <strong className="text-brand-dark">do 14 dní</strong> od doručenia oznámenia o odstúpení od zmluvy. Spoločnosť Orostone nie je povinná vrátiť platby skôr, ako jej bude tovar doručený späť alebo kým spotrebiteľ nepreukáže jeho odoslanie späť, podľa toho, čo nastane skôr.
+                Spoločnosť Orostone vráti spotrebiteľovi všetky platby, ktoré od neho prijala na základe zmluvy alebo v súvislosti s ňou, vrátane nákladov na dodanie v rozsahu najlacnejšieho bežného spôsobu dodania ponúkaného spoločnosťou Orostone, a to <strong className="text-brand-dark">do 14 dní</strong> od doručenia oznámenia o odstúpení od zmluvy. Spoločnosť Orostone nie je povinná vrátiť platby skôr, ako jej bude tovar doručený späť alebo kým spotrebiteľ nepreukáže jeho odoslanie späť, podľa toho, čo nastane skôr.
               </p>
             </div>
 

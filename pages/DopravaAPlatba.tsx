@@ -43,7 +43,7 @@ export const DopravaAPlatba: React.FC = () => {
                   <strong className="text-brand-dark">Súčasťou štandardnej dopravy nie je</strong> vnútorná manipulácia, vynáška, presun po schodoch, vykládka pomocou žeriava, vysokozdvižnej techniky ani iná nadštandardná manipulácia, ak nebolo písomne dohodnuté inak.
                 </p>
                 <p className="mb-4 text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
-                  Kupujúci je povinný zabezpečiť na mieste prevzatia primerané podmienky na bezpečné prevzatie tovaru, vrátane najmenej 2 osôb na asistenciu pri prevzatí.
+                  Kupujúci je povinný zabezpečiť na mieste prevzatia primerané podmienky na bezpečné prevzatie tovaru a najmenej dve osoby, ktoré pri prevzatí pomôžu.
                 </p>
                 <div className="rounded-r-[3px] border-l-2 border-brand-dark bg-brand-sand p-4 text-[0.95rem] leading-relaxed">
                   Ak kupujúci nezabezpečí prevzatie tovaru, prístup na miesto doručenia alebo potrebnú súčinnosť, spoločnosť Orostone je oprávnená požadovať náhradu nákladov márneho doručenia, opätovného doručenia a primeraných nákladov na skladovanie.
@@ -157,8 +157,7 @@ export const DopravaAPlatba: React.FC = () => {
               </p>
               <p className="mt-3 text-xs leading-relaxed text-brand-muted">
                 Podrobný postup pri odstúpení od zmluvy nájdete na stránke{' '}
-                <Link to="/reklamacie" className={LEGAL_LINK}>Reklamácie a vrátenie</Link>{' '}
-                alebo vyplňte{' '}
+                <Link to="/reklamacie" className={LEGAL_LINK}>Reklamácie a vrátenie</Link>; môžete tiež vyplniť{' '}
                 <Link to="/odstupenie-od-zmluvy" className={LEGAL_LINK}>formulár na odstúpenie od zmluvy</Link>.
               </p>
             </div>

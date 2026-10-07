@@ -230,7 +230,7 @@ const FooterComponent: React.FC<FooterProps> = ({ categories = [], isProductDeta
               <button onClick={openSettings} className="hover:text-brand-light hover:underline">Nastavenia cookies</button>
             </div>
             <p className="max-w-2xl text-[0.74rem] leading-relaxed text-brand-light/45">
-              Orostone s.r.o., Landererova 8, 811 09 Bratislava - mestská časť Staré Mesto, IČO: 55 254 772, DIČ: 2121930580, IČ DPH: SK2121930580. Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B.
+              Orostone s.r.o., Landererova 8, 811 09 Bratislava – mestská časť Staré Mesto, IČO: 55 254 772, DIČ: 2121930580, IČ DPH: SK2121930580. Zapísaná v Obchodnom registri Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B.
             </p>
             <p className="text-[0.74rem] text-brand-light/45">
               Alternatívne riešenie sporov:{' '}
