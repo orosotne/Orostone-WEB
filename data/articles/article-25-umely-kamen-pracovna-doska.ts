@@ -316,7 +316,7 @@ export const ARTICLE_25: BlogArticle = {
       },
       {
         question: 'Pracovná doska z umelého kameňa: ako sa o ňu starať?',
-        answer: 'Sinterovaný kameň a väčšina kremenných kompozitov nepotrebujú impregnáciu. Stačí denné čistenie vlhkou handričkou s neutrálnym saponátom. Pri zaschnutých škvrnách (káva, víno, ovocná šťava) izopropylalkohol. Vyhnite sa abrazívnym prostriedkom a drôtenkám a kyslým čistiacim prípravkom.',
+        answer: 'Sinterovaný kameň a väčšina kremenných kompozitov nepotrebujú impregnáciu. Stačí denné čistenie vlhkou handričkou s neutrálnym saponátom. Pri zaschnutých škvrnách (káva, víno, ovocná šťava) izopropylalkohol. Vyhnite sa abrazívnym prostriedkom a drôtenkám. Kyslé čistiace prípravky nepoužívajte na kremenný kompozit; sinterovanému kameňu bežné kuchynské kyseliny neublížia a vodný kameň z neho odstránite aj octom.',
       },
     ],
   },
@@ -626,7 +626,7 @@ export const ARTICLE_25: BlogArticle = {
       },
       {
         question: 'Engineered stone countertop: how do I care for it?',
-        answer: 'Sintered stone and most quartz composites do not require sealing. Daily cleaning with a damp cloth and neutral soap is enough. For dried stains (coffee, wine, fruit juice), use isopropyl alcohol. Avoid abrasive scouring pads and acidic cleaners.',
+        answer: 'Sintered stone and most quartz composites do not require sealing. Daily cleaning with a damp cloth and neutral soap is enough. For dried stains (coffee, wine, fruit juice), use isopropyl alcohol. Avoid abrasive cleaners and scouring pads. Don\'t use acidic cleaners on quartz composite; common kitchen acids don\'t harm sintered stone, and vinegar removes limescale from it.',
       },
     ],
   },

@@ -5,7 +5,7 @@ export const ARTICLE_10: BlogArticle = {
   slug: 'matny-vs-leskly-povrch',
   category: 'identity-aesthetics',
   publishDate: '2026-02-06',
-  lastModified: '2026-02-13',
+  lastModified: '2026-10-08',
   readTimeMinutes: 10,
   heroImage: '/images/blog/matte-vs-polished.webp',
   author: BLOG_AUTHOR_OROSTONE,
@@ -17,14 +17,14 @@ export const ARTICLE_10: BlogArticle = {
     excerpt: 'Objektívne porovnanie matného a lesklého povrchu sinterovaného kameňa. Odtlačky prstov, mikroškrabance, fotogenickosť, praktickosť a odporúčanie pre luxusné bratislavské kuchyne.',
     metaTitle: 'Matný alebo lesklý povrch? Kuchynská doska | OROSTONE',
     metaDescription: 'Matný alebo lesklý povrch? Rozdiel vo vzhľade, údržbe, odtlačkoch prstov a tom, ako sa doska v kuchyni dlhodobo „nosí“.',
-    directAnswer: 'Matný povrch vyzerá v reálnych kuchyniach sofistikovanejšie a je praktickejší – nezobrazuje odtlačky prstov, mikroškrabance ani šmuhy. Lesklý povrch vyzerá dramatickejšie na fotkách, ale vyžaduje neustále utieranie. Pre luxusné bratislavské kuchyne s denným používaním odporúčame matný alebo leather finish.',
+    directAnswer: 'Matný povrch vyzerá v reálnych kuchyniach sofistikovanejšie a je praktickejší – nezobrazuje odtlačky prstov, mikroškrabance ani šmuhy. Lesklý povrch vyzerá dramatickejšie na fotkách, ale vyžaduje neustále utieranie. Pre luxusné bratislavské kuchyne s denným používaním odporúčame matný povrch.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>
 <ul class="article-tldr">
   <li>Matný povrch nevyžaduje neustále utieranie odtlačkov prstov</li>
   <li>Lesklý vyzerá dramaticky na fotkách, ale v praxi frustruje</li>
-  <li>Pre bratislavské kuchyne s denným používaním odporúčame matný alebo leather</li>
-  <li>74\u00A0% našich klientov z luxusného segmentu si volí matný alebo leather finish</li>
+  <li>Pre bratislavské kuchyne s denným používaním odporúčame matný povrch</li>
+  <li>74\u00A0% našich klientov z luxusného segmentu si volí matný povrch</li>
 </ul>
 
 <p>Vybrať si materiál na kuchynskú dosku je iba polovica rozhodnutia. Druhá polovica – a mnohí tvrdia, že dôležitejšia – je povrchová úprava. Rovnaký sinterovaný kameň v rovnakej farbe vyzerá, pôsobí na dotyk a správa sa úplne inak v matnom, lesklom alebo leather variante.</p>
@@ -55,22 +55,22 @@ export const ARTICLE_10: BlogArticle = {
 
 <div class="article-case-study">
   <span class="case-study-label">Z praxe</span>
-  <h3>Rodina s deťmi a Nero Marquina v polished variante</h3>
-  <p>Máme klientov, ktorí si pôvodne zvolili lesklý čierny sinterovaný kameň – Nero Marquina v polished variante. Vyzeralo to úžasne v showroome. Po troch mesiacoch nám zavolali s frustrujúcim problémom: <strong class="gold">dosku utierali 5 – 8-krát denne</strong>. Každé dieťa, ktoré sa oprelo o dosku, zanechalo viditeľnú stopu. Každý pohár zanechal kruhovú šmuhu. Stôl nikdy nevyzeral čistý dlhšie ako 20 minút.</p>
-  <p>Riešenie? Dohodli sme výmenu a partnerský kamenár im dosku vymenil za rovnaký dekor v matnom variante. Rovnaká farba, rovnaký kameň – ale úplne iný zážitok. Teraz utierajú dosku raz denne a vždy vyzerá čisto. Ako sami povedali: <em>„Je to, ako keby sme dostali úplne inú kuchyňu.“</em></p>
+  <h3>Rodina s deťmi a lesklá čierna doska</h3>
+  <p>Máme klientov, ktorí si pôvodne zvolili lesklý čierny sinterovaný kameň. Vyzeralo to úžasne v showroome. Po troch mesiacoch nám zavolali s frustrujúcim problémom: <strong class="gold">dosku utierali 5 – 8-krát denne</strong>. Každé dieťa, ktoré sa oprelo o dosku, zanechalo viditeľnú stopu. Každý pohár zanechal kruhovú šmuhu. Stôl nikdy nevyzeral čistý dlhšie ako 20 minút.</p>
+  <p>Riešenie? Dohodli sme výmenu a partnerský kamenár im dosku vymenil za čierny dekor s matným povrchom. Rovnaká farba, rovnaký materiál – ale úplne iný zážitok. Teraz utierajú dosku raz denne a vždy vyzerá čisto. Ako sami povedali: <em>„Je to, ako keby sme dostali úplne inú kuchyňu.“</em></p>
 </div>
 
 <h3>Leather a honed – zlatá stredná cesta</h3>
-<p>Okrem čisto matného a lesklého povrchu existuje ešte <strong>leather finish</strong> (koženková textúra) a <strong>honed finish</strong> (jemne brúsený povrch). Leather finish má jemnú, hmatateľnú textúru, ktorá maskuje odtlačky ešte lepšie ako matný povrch a zároveň dodáva doske hĺbku a charakter. Honed finish je niečo medzi matným a lesklým – hladký, ale nereflektívny. Oba sú pre každodenné používanie vynikajúce.</p>
+<p>Okrem čisto matného a lesklého povrchu existuje ešte <strong>leather finish</strong> (koženková textúra) a <strong>honed finish</strong> (jemne brúsený povrch). Leather finish má jemnú, hmatateľnú textúru, ktorá maskuje odtlačky ešte lepšie ako matný povrch a zároveň dodáva doske hĺbku a charakter. Honed finish je niečo medzi matným a lesklým – hladký, ale nereflektívny. Oba sú pre každodenné používanie vynikajúce. V ponuke Orostone ich však nemáme – medzi matom a leskom je u nás zamatový povrch Silk (Super White Extra, Taj Mahal).</p>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-10/leather-finish-detail.webp" alt="Detail leather-finish sinterovaného kameňa Sahara Noir – jemná koženková textúra pod teplým svetlom" loading="lazy" />
-  <figcaption>Leather finish na Sahara Noir – hmatateľná textúra, ktorá maskuje odtlačky a dodáva kameni charakter</figcaption>
+  <img src="/images/blog/article-10/leather-finish-detail.webp" alt="Detail leather-finish tmavého sinterovaného kameňa so zlatistými žilkami – jemná koženková textúra pod teplým svetlom" loading="lazy" />
+  <figcaption>Leather finish na tmavom dekore – hmatateľná textúra, ktorá maskuje odtlačky a dodáva kameni charakter</figcaption>
 </figure>
 
 <div class="article-tip">
   <p><strong>Čo odporúčame v Orostone</strong></p>
-  <p>Pre rodiny s deťmi volíme vždy matný alebo leather finish. Nie kvôli cene – kvôli spokojnosti. Klienti, ktorí dali na našu radu, nám po roku ďakujú. Tí, čo trvali na lesku, nám po troch mesiacoch volajú.</p>
+  <p>Pre rodiny s deťmi volíme vždy matný povrch. Nie kvôli cene – kvôli spokojnosti. Klienti, ktorí dali na našu radu, nám po roku ďakujú. Tí, čo trvali na lesku, nám po troch mesiacoch volajú.</p>
 </div>
 
 <h2 id="mikro-skrabance-a-opotrebenie">Ako vyzerajú mikroškrabance po rokoch používania?</h2>
@@ -143,7 +143,7 @@ export const ARTICLE_10: BlogArticle = {
 <div class="article-highlight">
   <p><strong>Odporúčanie podľa orientácie kuchyne:</strong></p>
   <ul>
-    <li><strong>Severná orientácia</strong> (menej svetla) – lesklý alebo honed, ale počítajte so zvýšenou údržbou</li>
+    <li><strong>Severná orientácia</strong> (menej svetla) – lesklý alebo zamatový Silk, ale počítajte so zvýšenou údržbou</li>
     <li><strong>Južná / západná orientácia</strong> (priame slnko) – matný je takmer povinnosťou, lesklý oslňuje</li>
     <li><strong>Východná orientácia</strong> (ranné svetlo) – oboje funguje, záleží na preferencii</li>
   </ul>
@@ -167,11 +167,10 @@ export const ARTICLE_10: BlogArticle = {
 <ul>
 <li><strong>Matný povrch:</strong> 1× denne bežné utretie vlhkou utierkou stačí na udržanie čistého vzhľadu.</li>
 <li><strong>Lesklý povrch:</strong> 3 – 5× denne utieranie, ideálne mikrovláknom s čistiacim prostriedkom na sklo, aby ste odstránili šmuhy bez zanechania nových. Pre tmavé lesklé povrchy (čierna, antracit) to môže byť aj 6 – 8×.</li>
-<li><strong>Leather finish:</strong> podobne ako matný, 1× denne. Textúra navyše maskuje aj drobné kvapky vody.</li>
 </ul>
 
 <div class="article-highlight">
-  <p><strong>Frekvencia čistenia v číslach:</strong> Matný povrch: <strong>1× denne</strong>. Lesklý povrch: <strong>3 – 5× denne</strong>. Tmavý lesklý: <strong>6 – 8× denne</strong>. Leather finish: <strong>1× denne</strong>. Rozdiel v čase strávenom údržbou je za rok desiatky hodín.</p>
+  <p><strong>Frekvencia čistenia v číslach:</strong> Matný povrch: <strong>1× denne</strong>. Lesklý povrch: <strong>3 – 5× denne</strong>. Tmavý lesklý: <strong>6 – 8× denne</strong>. Rozdiel v čase strávenom údržbou je za rok desiatky hodín.</p>
 </div>
 
 <div class="article-tip">
@@ -190,33 +189,33 @@ export const ARTICLE_10: BlogArticle = {
 
 <h2 id="co-odporucame-pre-bratislavu">Čo odporúčame pre bratislavské luxusné kuchyne?</h2>
 
-<p>Po stovkách realizácií v bratislavských bytoch a domoch máme jasnú štatistiku: <strong class="gold">74\u00A0% našich klientov z luxusného segmentu si zvolí matný alebo leather finish</strong>. A väčšina z tých 26\u00A0%, ktorí si zvolia lesklý, ho volí pre špecifický účel – obklad steny za kuchynskou linkou alebo ostrovček v reprezentatívnej časti bytu.</p>
+<p>Po stovkách realizácií v bratislavských bytoch a domoch máme jasnú štatistiku: <strong class="gold">74\u00A0% našich klientov z luxusného segmentu si zvolí matný povrch</strong>. A väčšina z tých 26\u00A0%, ktorí si zvolia lesklý, ho volí pre špecifický účel – obklad steny za kuchynskou linkou alebo ostrovček v reprezentatívnej časti bytu.</p>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-10/matte-modern-kitchen.webp" alt="Luxusná moderná kuchyňa v Bratislave s matným Calacatta Gold sinterovaným kameňom a ranným svetlom" loading="lazy" />
-  <figcaption>Matný Calacatta Gold v modernej bratislavskej kuchyni – žiadne odlesky, len čistá elegancia</figcaption>
+  <img src="/images/blog/article-10/matte-modern-kitchen.webp" alt="Luxusná moderná kuchyňa v Bratislave s matnou bielou doskou zo sinterovaného kameňa a ranným svetlom" loading="lazy" />
+  <figcaption>Matný biely mramorový dekor v modernej bratislavskej kuchyni – žiadne odlesky, len čistá elegancia</figcaption>
 </figure>
 
-<h3>Najpopulárnejšie povrchové úpravy z našej kolekcie</h3>
-<p>Na základe predajných dát za posledné dva roky toto sú najžiadanejšie kombinácie dekor + povrch u bratislavskej klientely:</p>
+<h3>Dekory a povrchy z našej kolekcie</h3>
+<p>Každý dekor Orostone má jeden povrch, preto pri výbere rozhoduje kombinácia kresby a povrchu:</p>
 <ul>
-<li><strong>Calacatta Gold v matnom variante</strong> – biely mramorový dekor so zlatými žilkami. Najobľúbenejšia voľba pre moderné minimalistické kuchyne. Matný povrch dodáva mramoru sofistikovaný, zdržanlivý charakter namiesto „kričiaceho“ lesku.</li>
-<li><strong>Sahara Noir v leather variante</strong> – čierny mramor so zlatými žilkami. Leather textúra na tmavom kameni vytvára unikátny haptický zážitok a maskuje akékoľvek stopy používania.</li>
-<li><strong>Statuario v honed variante</strong> – klasický biely mramor so sivými žilkami. Honed povrch ponúka jemný, hodvábny lesk bez problémov s odtlačkami.</li>
-<li><strong>Pietra Grey v matnom variante</strong> – tmavosivý kameň, ideálny pre industriálne a loft kuchyne. V matnom variante vyzerá ako prírodná bridlica, ale s výkonom sinterovaného kameňa.</li>
+<li><strong>Calacatta Top – lesklý povrch</strong> – biely základ so širokými béžovozlatými žilami. Lesk dodáva kresbe hĺbku, preto sa hodí tam, kde je doska dominantou kuchyne.</li>
+<li><strong>Nero Margiua – matný povrch</strong> – sýta čierna s tenkými bielymi až striebristými žilami. Matný povrch na tmavej ploche nezvýrazňuje odtlačky.</li>
+<li><strong>Super White Extra a Taj Mahal – povrch Silk</strong> – jemne zamatový povrch medzi matom a leskom. Nerobí ostré odlesky a nezvýrazňuje odtlačky prstov.</li>
+<li><strong>Gothic Gold – matný povrch</strong> – tmavosivý základ s tenkými zlatohnedými žilkami. Matný povrch a teplý odtieň žíl mu dodávajú decentný vzhľad.</li>
 </ul>
 
 <h3>Párovanie s obľúbenými kuchynskými štýlmi v Bratislave</h3>
 <p>Bratislavské luxusné kuchyne majú niekoľko dominantných štýlov a každý si žiada iný povrch:</p>
 <ul>
 <li><strong>Moderný minimalizmus</strong> (bezúchytkové skrinky, čisté línie): matný povrch je vizuálne konzistentný s hladkým, nereflektívnym dizajnom skriniek. Matný kameň + matné skrinky = harmonická, upokojujúca estetika.</li>
-<li><strong>Teplý luxus</strong> (drevené prvky, mosadzné detaily): leather finish na kamennej doske krásne ladí s textúrou dreva a hrejivým kovovým akcentom. Vytvára hapticky bohatý priestor.</li>
+<li><strong>Teplý luxus</strong> (drevené prvky, mosadzné detaily): matný alebo zamatový povrch Silk na kamennej doske ladí s textúrou dreva a hrejivým kovovým akcentom.</li>
 <li><strong>Glamour / Art Deco</strong> (kontrasty, výrazné prvky): tu môže lesklý povrch fungovať – ale odporúčame ho skôr na menšie plochy (barový pult, obklad) než na celú pracovnú dosku.</li>
-<li><strong>Industriálny loft</strong> (betón, kov, tmavé tóny): matný alebo honed povrch v tmavých odtieňoch. Lesklý povrch by narušil surovú estetiku industriálneho štýlu.</li>
+<li><strong>Industriálny loft</strong> (betón, kov, tmavé tóny): matný povrch v tmavých odtieňoch. Lesklý povrch by narušil surovú estetiku industriálneho štýlu.</li>
 </ul>
 
 <h3>Naše konečné odporúčanie</h3>
-<p>Pre luxusnú bratislavskú kuchyňu s denným používaním – rodina, varenie, hostenie – odporúčame <strong class="gold">matný alebo leather finish</strong>. Nie preto, že by lesklý nebol krásny. Je. Ale krása, ktorá vyžaduje 5-krát denne údržbu, nie je luxus – je to záväzok. <strong class="gold">Skutočný luxus je povrch, ktorý vyzerá dobre</strong>, keď sa naň pozriete kedykoľvek počas dňa, bez toho, aby ste ho museli neustále utierať.</p>
+<p>Pre luxusnú bratislavskú kuchyňu s denným používaním – rodina, varenie, hostenie – odporúčame <strong class="gold">matný povrch</strong>. Nie preto, že by lesklý nebol krásny. Je. Ale krása, ktorá vyžaduje 5-krát denne údržbu, nie je luxus – je to záväzok. <strong class="gold">Skutočný luxus je povrch, ktorý vyzerá dobre</strong>, keď sa naň pozriete kedykoľvek počas dňa, bez toho, aby ste ho museli neustále utierať.</p>
 
 <div class="article-tip">
   <p><strong>Navštívte náš showroom v Bošanoch</strong></p>
@@ -239,11 +238,11 @@ export const ARTICLE_10: BlogArticle = {
       },
       {
         question: 'Čo je leather finish a pre koho je vhodný?',
-        answer: 'Leather finish (koženková textúra) je povrchová úprava s jemnou hmatateľnou štruktúrou, ktorá pripomína kožu. Je ešte lepší ako matný v maskovaní odtlačkov prstov a pridáva doske unikátny haptický rozmer. Ideálny pre tmavé dekory (Sahara Noir, Nero Marquina), kde textúra vynikne, a pre klientov, ktorí chcú niečo unikátne.'
+        answer: 'Leather finish (koženková textúra) je povrchová úprava s jemnou hmatateľnou štruktúrou, ktorá pripomína kožu. Je ešte lepší ako matný v maskovaní odtlačkov prstov a pridáva doske unikátny haptický rozmer. Hodí sa najmä k tmavým dekorom, kde textúra vynikne. V ponuke Orostone ho nemáme – pri tmavých dekoroch ako Nero Margiua či Gothic Gold plní podobnú úlohu matný povrch.'
       },
       {
         question: 'Môžem mať v kuchyni kombináciu matného a lesklého povrchu?',
-        answer: 'Áno, a je to dokonca sofistikovaný dizajnérsky prístup. Typická kombinácia: matný povrch na pracovnú dosku (kde prebieha varenie a každodenný kontakt) a lesklý povrch na obklad steny za kuchynskou linkou (kde sa dosky nikto nedotýka a dramatický lesk vynikne). Rovnaký dekor v dvoch povrchoch vytvára zaujímavú hru textúr.'
+        answer: 'Áno, a je to dokonca sofistikovaný dizajnérsky prístup. Typická kombinácia: matný povrch na pracovnú dosku (kde prebieha varenie a každodenný kontakt) a lesklý povrch na obklad steny za kuchynskou linkou (kde sa dosky nikto nedotýka a dramatický lesk vynikne). Kombinácia dvoch povrchov vytvára zaujímavú hru textúr.'
       },
       {
         question: 'Ako dlho vydrží lesk na lesklom sinterovanom kameni?',
@@ -255,15 +254,15 @@ export const ARTICLE_10: BlogArticle = {
       },
       {
         question: 'Aký povrch je lepší pre tmavú kuchyňu so slabým osvetlením?',
-        answer: 'Pre tmavú kuchyňu so severnou orientáciou a obmedzeným denným svetlom môže lesklý alebo honed povrch pomôcť rozjasniť priestor vďaka odrazu svetla. Ale zvážte kompromis: honed finish (jemne brúsený, nie plne lesklý) ponúka čiastočný odraz svetla bez extrémnej náchylnosti na odtlačky, ktorá sprevádza plne lesklý povrch.'
+        answer: 'Pre tmavú kuchyňu so severnou orientáciou a obmedzeným denným svetlom môže lesklý alebo zamatový povrch Silk pomôcť rozjasniť priestor vďaka odrazu svetla. Ale zvážte kompromis: Silk (medzi matom a leskom) ponúka čiastočný odraz svetla bez extrémnej náchylnosti na odtlačky, ktorá sprevádza plne lesklý povrch.'
       },
       {
         question: 'Ovplyvňuje povrchová úprava cenu sinterovaného kameňa?',
-        answer: 'Minimálne. Cenový rozdiel medzi matným a lesklým variantom rovnakého dekoru je zvyčajne 5 – 15\u00A0%. Niektoré špeciálne úpravy (leather, naturale) môžu byť o 10 – 20\u00A0% drahšie ako štandardný matný. Povrch by ste mali vyberať podľa praktických a estetických kritérií, nie podľa ceny – rozdiel je v kontexte celkovej investície zanedbateľný.'
+        answer: 'Pri Orostone sa za povrch neplatí zvlášť. Každý dekor má jeden povrch a vlastnú cenu – ceny všetkých dekorov nájdete v cenníku. Povrch by ste mali vyberať podľa praktických a estetických kritérií, nie podľa ceny.'
       },
       {
         question: 'Aký povrch odporúčate na kuchynský ostrovček?',
-        answer: 'Pre kuchynský ostrovček, ktorý slúži aj ako jedálenský stôl a pracovná plocha, jednoznačne matný alebo leather finish. Ostrovček je najdotýkanejšia plocha v kuchyni – ľudia sa oň opierajú, deti na ňom robia úlohy, hostia pri ňom sedia s nápojmi. Lesklý povrch na ostrovčeku je recept na neustále utieranie.'
+        answer: 'Pre kuchynský ostrovček, ktorý slúži aj ako jedálenský stôl a pracovná plocha, jednoznačne matný povrch. Ostrovček je najdotýkanejšia plocha v kuchyni – ľudia sa oň opierajú, deti na ňom robia úlohy, hostia pri ňom sedia s nápojmi. Lesklý povrch na ostrovčeku je recept na neustále utieranie.'
       },
       {
         question: 'Má povrchová úprava vplyv na hygienické vlastnosti kameňa?',
@@ -280,14 +279,14 @@ export const ARTICLE_10: BlogArticle = {
     title: 'Matte vs Polished: Which Looks More Expensive in Real Kitchens?',
     subtitle: 'A practical guide to sintered stone surfaces — from fingerprints to photogenicity',
     excerpt: 'An objective comparison of matte and polished sintered stone finishes for kitchen countertops. Fingerprints, micro-scratches, photogenicity, practicality, and our recommendation for luxury Bratislava kitchens.',
-    directAnswer: 'Matte finish looks more sophisticated in real kitchens and is more practical — it doesn\'t show fingerprints, micro-scratches, or smudges. Polished looks more dramatic in photos but requires constant wiping. For luxury Bratislava kitchens with daily use, we recommend matte or leather finish.',
+    directAnswer: 'Matte finish looks more sophisticated in real kitchens and is more practical — it doesn\'t show fingerprints, micro-scratches, or smudges. Polished looks more dramatic in photos but requires constant wiping. For luxury Bratislava kitchens with daily use, we recommend a matte finish.',
     content: `
 <p class="article-tldr-label">Key takeaways</p>
 <ul class="article-tldr">
   <li>Matte finish doesn't need constant fingerprint wiping</li>
   <li>Polished looks dramatic in photos but frustrates in daily use</li>
-  <li>For Bratislava kitchens with daily use, we recommend matte or leather</li>
-  <li>74% of our luxury clients choose matte or leather finish</li>
+  <li>For Bratislava kitchens with daily use, we recommend a matte finish</li>
+  <li>74% of our luxury clients choose a matte finish</li>
 </ul>
 
 <p>Choosing the material for your kitchen countertop is only half the decision. The other half — and many argue the more important half — is the surface finish. The same sintered stone in the same color looks, feels, and performs completely differently in matte, polished, or leather variants. And that difference doesn't reveal itself in a showroom under perfect lighting, but in your kitchen at 7:00 AM, when the kids leave for school and you notice a countertop full of fingerprints.</p>
@@ -316,22 +315,22 @@ export const ARTICLE_10: BlogArticle = {
 
 <div class="article-case-study">
   <span class="case-study-label">Case study</span>
-  <h3>A family with children and Nero Marquina in polished</h3>
-  <p>We had clients who originally chose polished black sintered stone — Nero Marquina in a polished variant. It looked stunning in the showroom. After three months, they called with a frustrating problem: <strong class="gold">they were wiping the countertop 5–8 times a day</strong>. Every child who leaned against the counter left a visible mark. Every glass left a circular smudge. The surface never looked clean for more than 20 minutes at a time.</p>
-  <p>The solution? We arranged a replacement, and the partner stonemason swapped it for the same decor in a matte variant. Same color, same stone — but a completely different experience. Now they wipe the counter once a day and it always looks clean. As they put it: <em>"It's like we got an entirely different kitchen."</em></p>
+  <h3>A family with children and a polished black countertop</h3>
+  <p>We had clients who originally chose polished black sintered stone. It looked stunning in the showroom. After three months, they called with a frustrating problem: <strong class="gold">they were wiping the countertop 5–8 times a day</strong>. Every child who leaned against the counter left a visible mark. Every glass left a circular smudge. The surface never looked clean for more than 20 minutes at a time.</p>
+  <p>The solution? We arranged a replacement, and the partner stonemason swapped it for a black decor with a matte finish. Same color, same material — but a completely different experience. Now they wipe the counter once a day and it always looks clean. As they put it: <em>"It's like we got an entirely different kitchen."</em></p>
 </div>
 
 <h3>Leather and honed — the golden middle ground</h3>
-<p>Beyond pure matte and polished, there's also <strong>leather finish</strong> (a textured surface resembling leather) and <strong>honed finish</strong> (a softly ground surface). Leather finish has a subtle, tactile texture that masks fingerprints even better than matte while adding depth and character to the stone. Honed finish sits between matte and polished — smooth but non-reflective. Both are excellent for everyday use.</p>
+<p>Beyond pure matte and polished, there's also <strong>leather finish</strong> (a textured surface resembling leather) and <strong>honed finish</strong> (a softly ground surface). Leather finish has a subtle, tactile texture that masks fingerprints even better than matte while adding depth and character to the stone. Honed finish sits between matte and polished — smooth but non-reflective. Both are excellent for everyday use. Orostone doesn't offer them, though — our in-between finish is the velvety Silk (Super White Extra, Taj Mahal).</p>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-10/leather-finish-detail.webp" alt="Close-up of leather-finish sintered stone in Sahara Noir showing subtle tactile texture under warm lighting" loading="lazy" />
-  <figcaption>Leather finish on Sahara Noir — tactile texture that hides fingerprints and adds character to the stone</figcaption>
+  <img src="/images/blog/article-10/leather-finish-detail.webp" alt="Close-up of leather-finish dark sintered stone with golden veins showing subtle tactile texture under warm lighting" loading="lazy" />
+  <figcaption>Leather finish on a dark decor — tactile texture that hides fingerprints and adds character to the stone</figcaption>
 </figure>
 
 <div class="article-tip">
   <p><strong>What we recommend at Orostone</strong></p>
-  <p>For families with children, we always choose matte or leather finish. Not because of price — because of satisfaction. Clients who listened to our advice thank us after a year. Those who insisted on polished call us after three months.</p>
+  <p>For families with children, we always choose a matte finish. Not because of price — because of satisfaction. Clients who listened to our advice thank us after a year. Those who insisted on polished call us after three months.</p>
 </div>
 
 <h2 id="micro-scratches-and-wear">What do micro-scratches look like after years of use?</h2>
@@ -404,7 +403,7 @@ export const ARTICLE_10: BlogArticle = {
 <div class="article-highlight">
   <p><strong>Recommendation by kitchen orientation:</strong></p>
   <ul>
-    <li><strong>North-facing</strong> (less light) — polished or honed, but expect increased maintenance</li>
+    <li><strong>North-facing</strong> (less light) — polished or velvety Silk, but expect increased maintenance</li>
     <li><strong>South / west-facing</strong> (direct sun) — matte is almost mandatory, polished causes glare</li>
     <li><strong>East-facing</strong> (morning light) — both work well, comes down to preference</li>
   </ul>
@@ -428,11 +427,10 @@ export const ARTICLE_10: BlogArticle = {
 <ul>
 <li><strong>Matte finish:</strong> once daily wiping with a damp cloth is sufficient to maintain a clean appearance.</li>
 <li><strong>Polished finish:</strong> 3–5 times daily wiping, ideally with a microfiber cloth and glass cleaner to remove smudges without leaving new ones. For dark polished surfaces (black, anthracite), this can be 6–8 times.</li>
-<li><strong>Leather finish:</strong> similar to matte, once daily. The texture additionally masks minor water droplets.</li>
 </ul>
 
 <div class="article-highlight">
-  <p><strong>Cleaning frequency in numbers:</strong> Matte: <strong>1x daily</strong>. Polished: <strong>3–5x daily</strong>. Dark polished: <strong>6–8x daily</strong>. Leather: <strong>1x daily</strong>. The difference in maintenance time adds up to dozens of hours per year.</p>
+  <p><strong>Cleaning frequency in numbers:</strong> Matte: <strong>1x daily</strong>. Polished: <strong>3–5x daily</strong>. Dark polished: <strong>6–8x daily</strong>. The difference in maintenance time adds up to dozens of hours per year.</p>
 </div>
 
 <div class="article-tip">
@@ -451,33 +449,33 @@ export const ARTICLE_10: BlogArticle = {
 
 <h2 id="what-we-recommend-for-bratislava">What do we recommend for luxury Bratislava kitchens?</h2>
 
-<p>After hundreds of installations in Bratislava apartments and houses, we have clear statistics: <strong class="gold">74% of our luxury segment clients choose matte or leather finish</strong>. And most of the 26% who choose polished select it for a specific purpose — a wall cladding behind the kitchen line or an island in a formal area of the apartment.</p>
+<p>After hundreds of installations in Bratislava apartments and houses, we have clear statistics: <strong class="gold">74% of our luxury segment clients choose a matte finish</strong>. And most of the 26% who choose polished select it for a specific purpose — a wall cladding behind the kitchen line or an island in a formal area of the apartment.</p>
 
 <figure class="article-figure">
-  <img src="/images/blog/article-10/matte-modern-kitchen.webp" alt="Luxury modern Bratislava kitchen with matte Calacatta Gold sintered stone countertop and morning light" loading="lazy" />
-  <figcaption>Matte Calacatta Gold in a modern Bratislava kitchen — no reflections, just pure elegance</figcaption>
+  <img src="/images/blog/article-10/matte-modern-kitchen.webp" alt="Luxury modern Bratislava kitchen with a matte white sintered stone countertop and morning light" loading="lazy" />
+  <figcaption>Matte white marble-look decor in a modern Bratislava kitchen — no reflections, just pure elegance</figcaption>
 </figure>
 
-<h3>Most popular finishes from our collection</h3>
-<p>Based on sales data from the past two years, these are the most requested decor + finish combinations among our Bratislava clientele:</p>
+<h3>Decors and finishes from our collection</h3>
+<p>Each Orostone decor has one finish, so what matters is how the pattern and the finish work together:</p>
 <ul>
-<li><strong>Calacatta Gold in matte</strong> — white marble decor with gold veining. The most popular choice for modern minimalist kitchens. Matte finish gives marble a sophisticated, understated character instead of "loud" gloss.</li>
-<li><strong>Sahara Noir in leather</strong> — black marble with gold veining. Leather texture on dark stone creates a unique tactile experience and masks any signs of use.</li>
-<li><strong>Statuario in honed</strong> — classic white marble with grey veining. Honed finish offers a gentle, silky sheen without fingerprint problems.</li>
-<li><strong>Pietra Grey in matte</strong> — dark grey stone, ideal for industrial and loft kitchens. In matte, it resembles natural slate but with sintered stone performance.</li>
+<li><strong>Calacatta Top — polished</strong> — white base with wide beige-gold veins. The gloss gives the pattern depth, so it suits places where the countertop is the centerpiece of the kitchen.</li>
+<li><strong>Nero Margiua — matte</strong> — deep black with thin white to silvery veins. A matte finish on a dark surface doesn't highlight fingerprints.</li>
+<li><strong>Super White Extra and Taj Mahal — Silk</strong> — a velvety finish between matte and polished. It avoids sharp reflections and doesn't highlight fingerprints.</li>
+<li><strong>Gothic Gold — matte</strong> — dark grey base with thin golden-brown veins. The matte finish and the warm tone of the veins give it an understated look.</li>
 </ul>
 
 <h3>Pairing with popular Bratislava kitchen styles</h3>
 <p>Luxury Bratislava kitchens follow several dominant styles, and each calls for a different finish:</p>
 <ul>
 <li><strong>Modern minimalism</strong> (handleless cabinets, clean lines): matte finish is visually consistent with the smooth, non-reflective cabinet design. Matte stone + matte cabinets = harmonious, calming aesthetics.</li>
-<li><strong>Warm luxury</strong> (wood elements, brass details): leather finish on the stone countertop pairs beautifully with wood texture and warm metal accents. It creates a tactilely rich space.</li>
+<li><strong>Warm luxury</strong> (wood elements, brass details): a matte or velvety Silk finish on the stone countertop pairs well with wood texture and warm metal accents.</li>
 <li><strong>Glamour / Art Deco</strong> (contrasts, bold elements): polished can work here — but we recommend it for smaller surfaces (bar counter, wall cladding) rather than the entire work surface.</li>
-<li><strong>Industrial loft</strong> (concrete, metal, dark tones): matte or honed finish in dark shades. A polished surface would disrupt the raw aesthetic of industrial style.</li>
+<li><strong>Industrial loft</strong> (concrete, metal, dark tones): matte finish in dark shades. A polished surface would disrupt the raw aesthetic of industrial style.</li>
 </ul>
 
 <h3>Our final recommendation</h3>
-<p>For a luxury Bratislava kitchen with daily use — family, cooking, entertaining — we recommend <strong class="gold">matte or leather finish</strong>. Not because polished isn't beautiful. It is. But beauty that requires 5 times daily maintenance isn't luxury — it's an obligation. <strong class="gold">True luxury is a surface that looks good</strong> whenever you glance at it throughout the day, without having to wipe it constantly.</p>
+<p>For a luxury Bratislava kitchen with daily use — family, cooking, entertaining — we recommend <strong class="gold">a matte finish</strong>. Not because polished isn't beautiful. It is. But beauty that requires 5 times daily maintenance isn't luxury — it's an obligation. <strong class="gold">True luxury is a surface that looks good</strong> whenever you glance at it throughout the day, without having to wipe it constantly.</p>
 
 <div class="article-tip">
   <p><strong>Visit our showroom in Bošany</strong></p>
@@ -500,11 +498,11 @@ export const ARTICLE_10: BlogArticle = {
       },
       {
         question: 'What is leather finish and who is it for?',
-        answer: 'Leather finish is a surface treatment with a subtle tactile texture resembling leather. It\'s even better than matte at hiding fingerprints and adds a unique haptic dimension to the stone. Ideal for dark decors (Sahara Noir, Nero Marquina), where the texture stands out, and for clients who want something distinctive.'
+        answer: 'Leather finish is a surface treatment with a subtle tactile texture resembling leather. It\'s even better than matte at hiding fingerprints and adds a unique haptic dimension to the stone. It suits dark decors in particular, where the texture stands out. Orostone doesn\'t offer it — with dark decors such as Nero Margiua or Gothic Gold, a matte finish plays a similar role.'
       },
       {
         question: 'Can I combine matte and polished finishes in one kitchen?',
-        answer: 'Yes, and it\'s actually a sophisticated design approach. A typical combination: matte on the work surface (where cooking and daily contact occur) and polished on the wall cladding behind the kitchen line (where the slab isn\'t touched and dramatic gloss shines). The same decor in two finishes creates an interesting play of textures.'
+        answer: 'Yes, and it\'s actually a sophisticated design approach. A typical combination: matte on the work surface (where cooking and daily contact occur) and polished on the wall cladding behind the kitchen line (where the slab isn\'t touched and dramatic gloss shines). Combining two finishes creates an interesting play of textures.'
       },
       {
         question: 'How long does the shine last on polished sintered stone?',
@@ -516,15 +514,15 @@ export const ARTICLE_10: BlogArticle = {
       },
       {
         question: 'Which finish is better for a dark kitchen with limited light?',
-        answer: 'For a dark kitchen with north-facing windows and limited daylight, polished or honed finish can help brighten the space by reflecting light. But consider the trade-off: honed finish (softly ground, not fully polished) offers partial light reflection without the extreme fingerprint susceptibility that comes with a fully polished surface.'
+        answer: 'For a dark kitchen with north-facing windows and limited daylight, a polished or velvety Silk finish can help brighten the space by reflecting light. But consider the trade-off: Silk (between matte and polished) offers partial light reflection without the extreme fingerprint susceptibility that comes with a fully polished surface.'
       },
       {
         question: 'Does the surface finish affect the price of sintered stone?',
-        answer: 'Minimally. The price difference between matte and polished variants of the same decor is typically 5–15%. Some special finishes (leather, naturale) may be 10–20% more expensive than standard matte. You should choose the finish based on practical and aesthetic criteria, not price — the difference is negligible in the context of the overall investment.'
+        answer: 'At Orostone you don\'t pay for the finish separately. Each decor has one finish and its own price — prices of all decors are in our price list. You should choose the finish based on practical and aesthetic criteria, not price.'
       },
       {
         question: 'What finish do you recommend for a kitchen island?',
-        answer: 'For a kitchen island that doubles as a dining table and workspace, matte or leather finish without question. The island is the most-touched surface in any kitchen — people lean on it, kids do homework on it, guests sit around it with drinks. A polished island is a recipe for constant wiping.'
+        answer: 'For a kitchen island that doubles as a dining table and workspace, a matte finish without question. The island is the most-touched surface in any kitchen — people lean on it, kids do homework on it, guests sit around it with drinks. A polished island is a recipe for constant wiping.'
       },
       {
         question: 'Does the surface finish affect the hygienic properties of the stone?',

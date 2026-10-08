@@ -5,7 +5,7 @@ export const ARTICLE_01: BlogArticle = {
   slug: 'problemy-so-sinterovanym-kamenom',
   category: 'risk-killers',
   publishDate: '2026-02-10',
-  lastModified: '2026-07-22',
+  lastModified: '2026-10-08',
   readTimeMinutes: 12,
   heroImage: '/images/blog/sintered-stone-problems.webp',
   author: BLOG_AUTHOR_OROSTONE,
@@ -68,7 +68,7 @@ export const ARTICLE_01: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>Čo robíme v Orostone</strong></p>
-  <p>Pri každom projekte odporúčame minimálne <strong>2\u00A0mm chamfer</strong>. Pre rodinné kuchyne s deťmi radíme half-bullnose. Stojí to pár eur navyše. Oprava chipu stojí pár stoviek.</p>
+  <p>Pri každom projekte odporúčame minimálne <strong>2\u00A0mm chamfer</strong>. Pre rodinné kuchyne s deťmi radíme half-bullnose. Príplatok u kamenára je orientačne 5 – 15\u00A0€ za bežný meter hrany pri chamferi a 20 – 40\u00A0€ pri half-bullnose. Oprava chipu stojí pár stoviek.</p>
 </div>
 
 <h2 id="praskliny-pri-vyrezoch">Čo spôsobuje praskliny pri výrezoch?</h2>
@@ -202,7 +202,7 @@ export const ARTICLE_01: BlogArticle = {
   <p>Spolupracujeme výlučne s certifikovanými kamenármi, ktorí prešli školením pre prácu so sinterovaným kameňom. Pred každou inštaláciou prebehne meranie na mieste a kontrola podkladu.</p>
 </div>
 
-<h2 id="priklad-z-praxe">Príklad z praxe: keď 90° hrana stojí 800\u00A0€</h2>
+<h2 id="priklad-z-praxe">Príklad z praxe: keď 90° hrana stojí 280\u00A0€</h2>
 
 <div class="article-case-study">
   <span class="case-study-label">Z praxe</span>
@@ -213,7 +213,7 @@ export const ARTICLE_01: BlogArticle = {
 </div>
 
 <div class="article-highlight">
-  <p><strong>Poučenie:</strong> Profil hrany stojí pri výrobe <strong>0\u00A0€ navyše</strong>. Oprava chipu stojí stovky. Výmena celého segmentu tisíce.</p>
+  <p><strong>Poučenie:</strong> 2\u00A0mm chamfer stojí pri výrobe orientačne <strong>5 – 15\u00A0€ za bežný meter navyše</strong>. Oprava chipu stojí stovky. Výmena celého segmentu tisíce.</p>
 </div>
 
 <h2 id="ako-v-orostone-predchadzame">Ako týmto problémom predchádzame v Orostone?</h2>
@@ -295,11 +295,11 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Prečo sa nedá robiť ponorný rez?',
-        answer: 'Ponorný rez generuje extrémne namáhanie v bode, kde kotúč vstupuje do materiálu. Sinterovaný kameň nemá kryštálovú štruktúru ako granit – je to vysoko komprimovaná keramika. Bodové napätie spôsobuje mikrotrhliny, ktoré sa môžu rozšíriť na plnú prasklinu. Preto sa pred výrezom najprv vŕtajú pilotné otvory.',
+        answer: 'Ponorný rez generuje extrémne namáhanie v bode, kde kotúč vstupuje do materiálu. Sinterovaný kameň nemá kryštálovú štruktúru ako granit – je to vysoko zhutnený minerálny materiál. Bodové napätie spôsobuje mikrotrhliny, ktoré sa môžu rozšíriť na plnú prasklinu. Preto sa pred výrezom najprv vŕtajú pilotné otvory.',
       },
       {
         question: 'Aký je rozdiel medzi sinterovaným kameňom a kremeňom pri chipovaní?',
-        answer: 'Kremenný kompozit obsahuje živicu, ktorá mu dáva pružnosť – preto je voči chipovaniu odolnejší. Sinterovaný kameň je čistá keramika bez živice, čo mu dáva lepšiu odolnosť voči teplu a škvrnám, ale nižšiu ohybovú pružnosť. Preto je správny profil hrán pri sinterovanom kameni dôležitejší.',
+        answer: 'Kremenný kompozit obsahuje živicu, ktorá mu dáva pružnosť – preto je voči chipovaniu odolnejší. Sinterovaný kameň je čisto minerálny materiál bez živice, čo mu dáva lepšiu odolnosť voči teplu a škvrnám, ale nižšiu ohybovú pružnosť. Preto je správny profil hrán pri sinterovanom kameni dôležitejší.',
       },
       {
         question: 'Koľko stojí oprava praskliny?',
@@ -391,7 +391,7 @@ export const ARTICLE_01: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>What we do at Orostone</strong></p>
-  <p>For every project, we recommend a minimum <strong>2 mm chamfer</strong>. For family kitchens with children, we advise half-bullnose. It costs a few euros more. Repairing a chip costs hundreds.</p>
+  <p>For every project, we recommend a minimum <strong>2 mm chamfer</strong>. For family kitchens with children, we advise half-bullnose. The stonemason charges roughly €5–15 extra per running meter of edge for a chamfer and €20–40 for half-bullnose. Repairing a chip costs hundreds.</p>
 </div>
 
 <h2 id="cracks-at-cutouts">What causes cracks at cutouts?</h2>
@@ -524,7 +524,7 @@ export const ARTICLE_01: BlogArticle = {
   <p>We work exclusively with certified stonemasons trained for sintered stone. Before every installation, the site is measured and the substrate inspected.</p>
 </div>
 
-<h2 id="real-world-example">Real-world example: when a 90° edge costs €800</h2>
+<h2 id="real-world-example">Real-world example: when a 90° edge costs €280</h2>
 
 <div class="article-case-study">
   <span class="case-study-label">Case study</span>
@@ -535,7 +535,7 @@ export const ARTICLE_01: BlogArticle = {
 </div>
 
 <div class="article-highlight">
-  <p><strong>The lesson:</strong> An edge profile costs <strong>€0 extra</strong> during fabrication. Repairing a chip costs hundreds. Replacing a segment costs thousands.</p>
+  <p><strong>The lesson:</strong> A 2 mm chamfer costs roughly <strong>€5–15 extra per running meter</strong> during fabrication. Repairing a chip costs hundreds. Replacing a segment costs thousands.</p>
 </div>
 
 <h2 id="how-orostone-prevents-these">How do we prevent these problems at Orostone?</h2>
@@ -617,11 +617,11 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Why can\'t you do a plunge cut?',
-        answer: 'A plunge cut generates extreme stress where the blade enters the material. Sintered stone is highly compressed ceramic without granite\'s crystal structure. Point stress creates micro-cracks that can propagate into full fractures. That is why pilot holes are drilled first.',
+        answer: 'A plunge cut generates extreme stress where the blade enters the material. Sintered stone is a highly compacted mineral material without granite\'s crystal structure. Point stress creates micro-cracks that can propagate into full fractures. That is why pilot holes are drilled first.',
       },
       {
         question: 'How does sintered stone compare to quartz for chipping?',
-        answer: 'Quartz composite contains resin that gives it flexibility — making it more forgiving for chipping. Sintered stone is pure ceramic with no resin, giving it better heat and stain resistance but lower flexural elasticity. That\'s why the correct edge profile matters more with sintered stone.',
+        answer: 'Quartz composite contains resin that gives it flexibility — making it more forgiving for chipping. Sintered stone is a fully mineral material with no resin, giving it better heat and stain resistance but lower flexural elasticity. That\'s why the correct edge profile matters more with sintered stone.',
       },
       {
         question: 'How much does it cost to repair a crack?',

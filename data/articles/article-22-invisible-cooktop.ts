@@ -1,10 +1,16 @@
 import { BlogArticle, BLOG_AUTHOR_OROSTONE } from '../blogTypes';
+import { INSTALLATION_RATE_PER_M2, SLAB_TOTAL_MIN, SLAB_TOTAL_MAX, formatEurWhole } from '../pricing';
+
+// Orostone sells material only (whole 12 mm slabs, live Shopify prices); fabrication
+// and installation are done and invoiced by the partner stonemason.
+const ONE_SLAB = `${formatEurWhole(SLAB_TOTAL_MIN)} – ${formatEurWhole(SLAB_TOTAL_MAX)}`;
 
 export const ARTICLE_22: BlogArticle = {
   id: 'invisible-cooktop-sintered-stone',
   slug: 'neviditelna-varna-doska-v-sinterovanom-kamene',
   category: 'identity-aesthetics',
   publishDate: '2026-04-12',
+  lastModified: '2026-10-08',
   readTimeMinutes: 11,
   heroImage: '/images/blog/article-22/hero.webp',
   author: BLOG_AUTHOR_OROSTONE,
@@ -90,7 +96,7 @@ export const ARTICLE_22: BlogArticle = {
   <ul>
     <li><strong>6\u00A0mm (tenká platňa):</strong> ~98\u00A0% účinnosť, ale nedostatočná mechanická pevnosť pre pracovnú dosku</li>
     <li><strong>12\u00A0mm (optimum):</strong> ~92\u00A0% účinnosť + dostatočná pevnosť pre bežné kuchynské použitie</li>
-    <li><strong>20\u00A0mm (štandard pre dosky):</strong> ~65\u00A0% účinnosť – príliš slabé pre praktické varenie</li>
+    <li><strong>20\u00A0mm (hrubšie dosky na trhu):</strong> ~65\u00A0% účinnosť – príliš slabé pre praktické varenie</li>
   </ul>
 </div>
 
@@ -99,7 +105,7 @@ export const ARTICLE_22: BlogArticle = {
   <figcaption>Presne 12\u00A0mm – optimálna hrúbka pre prenos elektromagnetického poľa pri zachovaní mechanickej pevnosti.</figcaption>
 </figure>
 
-<p>To znamená, že ak plánujete neviditeľnú varnú dosku, <strong>zóna varenia musí mať 12\u00A0mm platňu</strong>. Zvyšok pracovnej dosky môže byť štandardných 20\u00A0mm. Prechod medzi hrúbkami rieši fabrikácia so skosenou hranou alebo zapusteným lemom – vizuálne neviditeľný, technicky nevyhnutný.</p>
+<p>To znamená, že ak plánujete neviditeľnú varnú dosku, <strong>zóna varenia musí mať 12\u00A0mm platňu</strong>. Orostone predáva len 12\u00A0mm platne, takže celá pracovná doska vrátane zóny varenia má jednu hrúbku a prechod medzi hrúbkami netreba riešiť.</p>
 
 <h2 id="kompatibilne-systemy">Kompatibilné systémy neviditeľnej indukcie</h2>
 
@@ -115,7 +121,7 @@ export const ARTICLE_22: BlogArticle = {
   </ul>
 </div>
 
-<p>V Orostone vám pomôžeme s výberom systému a koordináciou s elektrikárom. Platňu na presnú hrúbku vyrobí partnerský kamenár. <a href="/vzorky">Objednajte si vzorku</a> a vyskúšajte materiál na vlastné oči.</p>
+<p>V Orostone vám pomôžeme s výberom systému a koordináciou s elektrikárom. Dodáme 12\u00A0mm platne, pracovnú dosku z nich vyrobí a osadí partnerský kamenár. <a href="/vzorky">Objednajte si vzorku</a> a vyskúšajte materiál na vlastné oči.</p>
 
 <h2 id="instalacia">Ako vyzerá inštalácia?</h2>
 
@@ -142,10 +148,10 @@ export const ARTICLE_22: BlogArticle = {
   <ul>
     <li><strong>Indukčný modul (2 zóny, Invisacook):</strong> 1\u00A0800 – 2\u00A0500\u00A0€</li>
     <li><strong>Indukčný modul (4 zóny, Invisacook/TPIC):</strong> 3\u00A0200 – 4\u00A0500\u00A0€</li>
-    <li><strong>Sinterovaný kameň 12\u00A0mm (fabrikácia zóny varenia):</strong> 400 – 800\u00A0€ (závisí od rozmerov a dekóru)</li>
+    <li><strong>Sinterovaný kameň 12\u00A0mm:</strong> celá platňa 3\u00A0200\u00A0×\u00A01\u00A0600\u00A0mm stojí ${ONE_SLAB} podľa dekoru. Zóna varenia je súčasťou pracovnej dosky, takže materiál na ňu nekupujete zvlášť. Výrobu a montáž dosky robí partnerský kamenár, orientačne za ${INSTALLATION_RATE_PER_M2}\u00A0€/m².</li>
     <li><strong>Inštalácia + kalibrácia:</strong> 300 – 500\u00A0€</li>
   </ul>
-  <p><strong>Celkom za 4-zónové riešenie:</strong> cca 4\u00A0000 – 5\u00A0800\u00A0€ (materiál + technika + montáž)</p>
+  <p><strong>Celkom za 4-zónovú techniku:</strong> cca 3\u00A0500 – 5\u00A0000\u00A0€ (modul + inštalácia). Materiál a výrobu pracovnej dosky platíte pri kamennej doske aj s bežnou varnou doskou.</p>
 </div>
 
 <p>Pre porovnanie: prémiová klasická indukcia (Miele, Gaggenau) stojí 2\u00A0000 – 3\u00A0500\u00A0€ samotná. Neviditeľná varná doska je prirážka ~1\u00A0500 – 2\u00A0500\u00A0€ za dizajn bez viditeľných horákov a jednoliatú plochu.</p>
@@ -184,7 +190,7 @@ export const ARTICLE_22: BlogArticle = {
   <p>Sinterovaný kameň nie je len pracovná doska. S neviditeľnou indukciou sa stáva celou kuchyňou.</p>
 </div>
 
-<p>Máte záujem o neviditeľnú varnú dosku zo sinterovaného kameňa? <a href="/kontakt">Kontaktujte nás</a> alebo si <a href="/vzorky">objednajte vzorky materiálov</a> – poradíme vám s výberom dekóru, hrúbky a kompatibilného indukčného systému.</p>
+<p>Máte záujem o neviditeľnú varnú dosku zo sinterovaného kameňa? <a href="/kontakt">Kontaktujte nás</a> alebo si <a href="/vzorky">objednajte vzorky materiálov</a> – poradíme vám s výberom dekóru a kompatibilného indukčného systému.</p>
 
 <h2 id="odporucane-dekory">Odporúčané dekóry pre neviditeľnú varnú dosku</h2>
 
@@ -193,7 +199,7 @@ export const ARTICLE_22: BlogArticle = {
 <ul>
   <li><a href="/produkt/calacatta-top"><strong>Calacatta Top</strong></a> – teplé zlaté žily na bielom podklade, elegantný a nadčasový</li>
   <li><a href="/produkt/nero-margiua"><strong>Nero Margiua</strong></a> – čierny mramor so striebornými žilami, dramatický kontrast</li>
-  <li><a href="/produkt/super-white-extra"><strong>Super White Extra</strong></a> – čisto biely minimalizmus, dokonalý pre moderné kuchyne</li>
+  <li><a href="/produkt/super-white-extra"><strong>Super White Extra</strong></a> – svetlý základ so sivými žilami, mramorový vzhľad aj v bielej kuchyni</li>
   <li><a href="/produkt/taj-mahal"><strong>Taj Mahal</strong></a> – krémovo-biely so zlatými žilami, teplý a útulný</li>
 </ul>
 `,
@@ -208,11 +214,11 @@ export const ARTICLE_22: BlogArticle = {
       },
       {
         question: 'Akú hrúbku sinterovaného kameňa potrebujem?',
-        answer: 'Zóna varenia musí mať 12\u00A0mm. Pri 20\u00A0mm platni je účinnosť príliš nízka pre praktické varenie. Zvyšok pracovnej dosky môže byť 20\u00A0mm – prechod sa rieši pri fabrikácii.',
+        answer: 'Zóna varenia musí mať 12\u00A0mm. Pri 20\u00A0mm platni je účinnosť príliš nízka pre praktické varenie. Orostone predáva len 12\u00A0mm platne, takže celá pracovná doska má jednu hrúbku a prechod medzi hrúbkami netreba riešiť.',
       },
       {
         question: 'Koľko stojí neviditeľná varná doska?',
-        answer: 'Kompletné 4-zónové riešenie (indukčný modul + sinterovaný kameň + inštalácia) stojí cca 4\u00A0000 – 5\u00A0800\u00A0€ vrátane DPH. Je to prirážka ~1\u00A0500 – 2\u00A0500\u00A0€ oproti klasickej prémiovej indukcii.',
+        answer: `Technika pre 4 zóny (indukčný modul + inštalácia a kalibrácia) stojí cca 3\u00A0500 – 5\u00A0000\u00A0€ vrátane DPH, čo je prirážka ~1\u00A0500 – 2\u00A0500\u00A0€ oproti klasickej prémiovej indukcii. K tomu patrí pracovná doska: celá 12\u00A0mm platňa od Orostone stojí ${ONE_SLAB}, výrobu a montáž robí a fakturuje partnerský kamenár.`,
       },
       {
         question: 'Môžem použiť neviditeľnú varnú dosku s kvarcom alebo granitom?',
