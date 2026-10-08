@@ -101,7 +101,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
 
   'givenchy-gold': {
     metaTitle: 'Givenchy Gold — zlatistý mramorový dekor | OROSTONE',
-    metaDescription: 'Teplý dekor so zlatistou kresbou v béžovo-hnedom poli. Pre interiéry, kde má dekor niesť vlastnú váhu — kúpeľne, akcentové steny, ostrovčeky. Veľká platňa v showroome Bošany.',
+    metaDescription: 'Biely dekor s výrazným zlatobéžovým žilkovaním. Pre interiéry, kde má dekor niesť vlastnú váhu — kúpeľne, akcentové steny, ostrovčeky. Veľká platňa v showroome Bošany.',
     keywords: [
       'givenchy gold obklad',
       'zlaté mramorové platne',
@@ -110,13 +110,13 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
       'prémiové platne',
     ],
     shortDescription:
-      'Teplý dekor s jemným zlato-okrovým žilkovaním v béžovo-hnedom poli. Hodí sa tam, kde má mať plocha vlastnú váhu — na kuchynskú dosku, ostrovček, umývadlovú dosku alebo obklad steny. Kresba nesie priestor sama, preto okolie znesie pokojnejšie riešenie.',
+      'Biely podklad s výrazným zlatobéžovým žilkovaním, ktoré sa miestami vetví. Hodí sa tam, kde má mať plocha vlastnú váhu — na kuchynskú dosku, ostrovček, umývadlovú dosku alebo obklad steny. Kresba nesie priestor sama, preto okolie znesie pokojnejšie riešenie.',
     longDescription:
-      '<p>GIVENCHY GOLD je teplý dekor — béžovo-hnedé pole s jemným zlato-okrovým žilkovaním, ktoré prechádza plochou v čitateľných, no nie krikľavých líniách. Povrch 4D Marble kreslí vzor na základni s vysokou belosťou (72°), takže zlaté tóny ostávajú čisté. Ako dekor reaguje na svetlo, si najlepšie overíte na vzorke alebo na celej platni.</p>' +
+      '<p>GIVENCHY GOLD má biely podklad s výrazným zlatobéžovým žilkovaním. Tenké línie sa miestami rozširujú a vetvia, takže kresba vynikne aj na veľkom ostrovčeku. Povrch 4D Marble kreslí vzor na základni s vysokou belosťou (72°), takže zlaté tóny ostávajú čisté. Ako dekor reaguje na svetlo, si najlepšie overíte na vzorke alebo na celej platni.</p>' +
       '<p>Zlato-okrové tóny ladia s dubom a orechom; kontrast dodá matná čierna batéria alebo úchytky a k zlatu sadne aj akcentové osvetlenie. Dekor funguje na kuchynskej doske a ostrovčeku, na umývadlovej doske aj na obklade steny. Keďže kresba nesie priestor sama, okolie nechajte jednoduchšie, aby dostala miesto.</p>' +
       '<p>Ako sinterovaný kameň má nasiakavosť pod 0,1 % — káva, víno ani citrónová šťava sa do povrchu nevpijú a stačí ich zotrieť. Povrch znesie horúci hrniec zo sporáka, odolá bežnému poškriabaniu od riadu aj kuchynským kyselinám. Impregnáciu nepotrebuje; na údržbu stačí vlhká utierka a neutrálny saponát.</p>',
     keyBenefits: [
-      'Teplé zlato-okrové žilkovanie v béžovo-hnedom poli',
+      'Výrazné zlatobéžové žilkovanie na bielom podklade',
       'Veľký formát drží súvislú kresbu na doske aj obklade',
       'Nasiakavosť pod 0,1 % — škvrny sa do povrchu nevpíjajú',
       'Odolný voči teplu, poškriabaniu aj kuchynským kyselinám',
@@ -182,7 +182,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
       'prírodný kameň dizajn',
       'akcentová stena obklad',
       'veľkoformátové platne',
-      'talianske kamenné platne',
+      'svetlý sinterovaný kameň',
     ],
     shortDescription:
       'Svetlý, takmer biely dekor s hustou, ale jemnou zlatobéžovou kresbou. Žilkovanie je detailné a pritom nízkokontrastné, takže plocha pôsobí čisto a vyvážene a nesúperí so zvyškom kuchyne. Určený na pracovné dosky, ostrovčeky, obklad stien, podlahy aj kúpeľne.',
@@ -212,7 +212,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
     shortDescription:
       'Vyrovnaná sivá s jemným gradovaním odtieňov a diskrétnym svetlejším žilkovaním. Plocha drží pokojnú líniu a nepreťahuje pozornosť na seba. Hodí sa na pracovné dosky, ostrovčeky aj zásteny v interiéroch, kde má byť tichým podkladom, nie hlavnou témou.',
     longDescription:
-      '<p>ASTRANA GREY je stredne sivý dekor bez ostrých kontrastov. Jemné gradovanie odtieňov a diskrétne svetlejšie žilkovanie sú čitateľné zblízka, z odstupu sa plocha číta ako jeden pokojný tón. Dekor nemá dominantné žily, takže neurčuje charakter miestnosti — necháva ho na nábytku, svetle a materiáloch okolo.</p>' +
+      '<p>ASTRANA GREY je svetlosivý dekor bez ostrých kontrastov. Jemné gradovanie odtieňov, diskrétne svetlejšie žilkovanie a miestami béžové detaily sú čitateľné zblízka, z odstupu sa plocha číta ako jeden pokojný tón. Dekor nemá dominantné žily, takže neurčuje charakter miestnosti — necháva ho na nábytku, svetle a materiáloch okolo.</p>' +
       '<p>Sivá znesie teplé aj studené okolie. Dobre sadne k dubu, bielemu lakovanému sklu aj matnému čiernemu kovaniu a funguje v škandinávskom rovnako ako v talianskom minimalizme. V otvorenej dispozícii, kde kuchyňu vidno z obývačky, plocha nerobí vizuálny zlom — z veľkoformátových platní vyjde doska, ostrovček aj zástena z jedného dekoru s minimom viditeľných spojov.</p>' +
       '<p>Sinterovaný kameň s povrchom Gluetech má nasiakavosť pod 0,1 %: káva, víno ani olej sa doň nevpijú a impregnácia nie je potrebná. Tvrdosť Mohs 7+ znamená, že doska odolá bežnej práci s riadom a náradím, a teplotná odolnosť do 300 °C znesie aj hrniec odložený priamo na plochu. UV stabilita drží odtieň aj pri okne. V rodinnej kuchyni v dennej prevádzke tak na údržbu stačí vlhká utierka s neutrálnym saponátom.</p>',
     keyBenefits: [

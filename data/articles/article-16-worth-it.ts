@@ -1,11 +1,34 @@
 import { BlogArticle, BLOG_AUTHOR_OROSTONE } from '../blogTypes';
+import {
+  INSTALLATION_RATE_PER_M2,
+  SLAB_PRICE_MIN,
+  SLAB_PRICE_MAX,
+  SLAB_TOTAL_MIN,
+  SLAB_TOTAL_MAX,
+  formatEur,
+  formatEurWhole,
+} from '../pricing';
+
+// Orostone sells material only (whole 12 mm slabs, live Shopify prices); fabrication
+// and installation are done and invoiced by the partner stonemason. The 4 m²
+// example kitchen uses the market material range (250–600 €/m², which covers one
+// Orostone slab) plus the partner's rate.
+const PARTNER_4M2 = 4 * INSTALLATION_RATE_PER_M2;
+const enEur = (n: number): string => `€${n.toFixed(2)}`;
+const enEurWhole = (n: number): string => `€${Math.round(n).toLocaleString('en-US')}`;
+const M2_RANGE = `${formatEur(SLAB_PRICE_MIN)} – ${formatEur(SLAB_PRICE_MAX)}`;
+const M2_RANGE_EN = `${enEur(SLAB_PRICE_MIN)}–${enEur(SLAB_PRICE_MAX)}`;
+const ONE_SLAB = `${formatEurWhole(SLAB_TOTAL_MIN)} – ${formatEurWhole(SLAB_TOTAL_MAX)}`;
+const ONE_SLAB_EN = `${enEurWhole(SLAB_TOTAL_MIN)}–${enEurWhole(SLAB_TOTAL_MAX)}`;
+const KITCHEN_4M2 = `${formatEurWhole(1000 + PARTNER_4M2)} – ${formatEurWhole(2400 + PARTNER_4M2)}`;
+const KITCHEN_4M2_EN = `${enEurWhole(1000 + PARTNER_4M2)}–${enEurWhole(2400 + PARTNER_4M2)}`;
 
 export const ARTICLE_16: BlogArticle = {
   id: 'is-sintered-stone-worth-it',
   slug: 'oplati-sa-sinterovany-kamen',
   category: 'value-comparisons',
   publishDate: '2026-02-02',
-  lastModified: '2026-02-13',
+  lastModified: '2026-10-08',
   readTimeMinutes: 13,
   heroImage: '/images/blog/sintered-stone-worth-it.webp',
   author: BLOG_AUTHOR_OROSTONE,
@@ -38,7 +61,7 @@ export const ARTICLE_16: BlogArticle = {
 
 <h3>1. Materiál</h3>
 <ul>
-<li><strong>Sinterovaný kameň:</strong> 250 – 600\u00A0€/m² (závisí od hrúbky, značky a dizajnu)</li>
+<li><strong>Sinterovaný kameň:</strong> 250 – 600\u00A0€/m² (závisí od hrúbky, značky a dizajnu). Dekory Orostone stoja ${M2_RANGE}/m², predávame však celé platne 3\u00A0200\u00A0×\u00A01\u00A0600\u00A0×\u00A012\u00A0mm – jedna stojí ${ONE_SLAB}.</li>
 <li><strong>Kvarcit (engineered quartz):</strong> 150 – 450\u00A0€/m²</li>
 <li><strong>Žula (prírodná):</strong> 180 – 500\u00A0€/m²</li>
 <li><strong>Kvalitný laminát (HPL):</strong> 60 – 150\u00A0€/m²</li>
@@ -46,7 +69,7 @@ export const ARTICLE_16: BlogArticle = {
 
 <h3>2. Spracovanie (výrezy, hrany, leštenie)</h3>
 <ul>
-<li><strong>Sinterovaný kameň:</strong> 100 – 200\u00A0€/m² (vyžaduje špecializované CNC stroje a diamantové nástroje)</li>
+<li><strong>Sinterovaný kameň:</strong> spracovanie aj montáž robí partnerský kamenár, orientačne za ${INSTALLATION_RATE_PER_M2}\u00A0€/m² vrátane zamerania a dopravy (vyžaduje špecializované CNC stroje a diamantové nástroje)</li>
 <li><strong>Kvarcit:</strong> 80 – 150\u00A0€/m²</li>
 <li><strong>Žula:</strong> 80 – 160\u00A0€/m²</li>
 <li><strong>Laminát:</strong> 30 – 60\u00A0€/m²</li>
@@ -54,7 +77,7 @@ export const ARTICLE_16: BlogArticle = {
 
 <h3>3. Inštalácia</h3>
 <ul>
-<li><strong>Sinterovaný kameň:</strong> 40 – 75\u00A0€/m² (často zahrnutá v cene spracovania)</li>
+<li><strong>Sinterovaný kameň:</strong> zahrnutá v sadzbe kamenára ${INSTALLATION_RATE_PER_M2}\u00A0€/m² (pozri spracovanie)</li>
 <li><strong>Kvarcit:</strong> 35 – 60\u00A0€/m²</li>
 <li><strong>Žula:</strong> 40 – 70\u00A0€/m²</li>
 <li><strong>Laminát:</strong> 20 – 40\u00A0€/m²</li>
@@ -67,14 +90,14 @@ export const ARTICLE_16: BlogArticle = {
 <tr><th>Materiál</th><th>Materiál (4\u00A0m²)</th><th>Spracovanie</th><th>Inštalácia</th><th>Celkom</th></tr>
 </thead>
 <tbody>
-<tr><td><strong>Sinterovaný kameň</strong></td><td>1\u00A0000 – 2\u00A0400\u00A0€</td><td>400 – 800\u00A0€</td><td>0 – 300\u00A0€</td><td><strong>1\u00A0400 – 3\u00A0500\u00A0€</strong></td></tr>
+<tr><td><strong>Sinterovaný kameň</strong></td><td>1\u00A0000 – 2\u00A0400\u00A0€</td><td>${formatEurWhole(PARTNER_4M2)} (vrátane montáže)</td><td>v cene spracovania</td><td><strong>${KITCHEN_4M2}</strong></td></tr>
 <tr><td><strong>Kvarcit</strong></td><td>600 – 1\u00A0800\u00A0€</td><td>320 – 600\u00A0€</td><td>140 – 240\u00A0€</td><td><strong>1\u00A0060 – 2\u00A0640\u00A0€</strong></td></tr>
 <tr><td><strong>Žula</strong></td><td>720 – 2\u00A0000\u00A0€</td><td>320 – 640\u00A0€</td><td>160 – 280\u00A0€</td><td><strong>1\u00A0200 – 2\u00A0920\u00A0€</strong></td></tr>
 <tr><td><strong>Kvalitný laminát</strong></td><td>240 – 600\u00A0€</td><td>120 – 240\u00A0€</td><td>80 – 160\u00A0€</td><td><strong>440 – 1\u00A0000\u00A0€</strong></td></tr>
 </tbody>
 </table>
 
-<p><strong>Na prvý pohľad:</strong> Sinterovaný kameň je najdrahší. Laminát je 3 – 4× lacnejší. Kvarcit a žula sú niekde medzi nimi. Keby bol príbeh len o počiatočnej cene, článok by tu končil. Ale nekončí – pretože toto je až tá menej zaujímavá časť rovnice.</p>
+<p><strong>Na prvý pohľad:</strong> Sinterovaný kameň je najdrahší. Laminát je niekoľkonásobne lacnejší. Kvarcit a žula sú niekde medzi nimi. Keby bol príbeh len o počiatočnej cene, článok by tu končil. Ale nekončí – pretože toto je až tá menej zaujímavá časť rovnice.</p>
 
 <h2 id="scenar-1-rodinny-dom">Scenár 1 – Oplatí sa do rodinného domu na 25 rokov?</h2>
 
@@ -278,15 +301,15 @@ export const ARTICLE_16: BlogArticle = {
     faqs: [
       {
         question: 'Je sinterovaný kameň drahší ako kvarcit?',
-        answer: 'Počiatočne áno – o cca 30 – 50\u00A0%. Priemerná kuchynská doska zo sinterovaného kameňa stojí 1\u00A0400 – 3\u00A0500\u00A0€ (4\u00A0m²), kým kvarcit 1\u00A0060 – 2\u00A0640\u00A0€. Ale pri 25-ročnom vlastníctve sú celkové náklady porovnateľné, pretože sinterovaný kameň nevyžaduje impregnáciu ani špeciálnu údržbu.'
+        answer: `Počiatočne áno. Kuchynská doska zo sinterovaného kameňa vychádza pri 4\u00A0m² na ${KITCHEN_4M2} vrátane práce partnerského kamenára, kvarcit na 1\u00A0060 – 2\u00A0640\u00A0€. Ale pri 25-ročnom vlastníctve sú celkové náklady porovnateľné, pretože sinterovaný kameň nevyžaduje impregnáciu ani špeciálnu údržbu.`
       },
       {
         question: 'Koľko stojí sinterovaný kameň na meter štvorcový?',
-        answer: 'Samotný materiál stojí 250 – 600\u00A0€/m² v závislosti od hrúbky (6\u00A0mm, 12\u00A0mm, 20\u00A0mm), značky a vzoru. S opracovaním a inštaláciou počítajte s celkovými nákladmi 350 – 875\u00A0€/m². Najčastejšie objednávky v Orostone sa pohybujú v rozmedzí 450 – 650\u00A0€/m² vrátane všetkého.'
+        answer: `Na trhu stojí samotný materiál 250 – 600\u00A0€/m² podľa hrúbky, značky a vzoru. Dekory Orostone stoja ${M2_RANGE}/m² s DPH, predávame však celé platne 3\u00A0200\u00A0×\u00A01\u00A0600\u00A0×\u00A012\u00A0mm – jedna stojí ${ONE_SLAB}. Výrobu a montáž robí a fakturuje partnerský kamenár, orientačne za ${INSTALLATION_RATE_PER_M2}\u00A0€/m²; nie sú súčasťou ceny materiálu.`
       },
       {
         question: 'Oplatí sa sinterovaný kameň pri rozpočte 1\u00A0500\u00A0€ na dosku?',
-        answer: 'Na hranici. Za 1\u00A0500\u00A0€ dostanete sinterovaný kameň v tenšej (6\u00A0mm) verzii, základnom dizajne a pri menšej kuchyni (do 3\u00A0m²). Ak máte štandardnú 4\u00A0m² kuchyňu, za tento rozpočet dostanete kvalitnejší kvarcit – čo je v tomto prípade rozumnejšia voľba.'
+        answer: `Pri tomto rozpočte nie. Samotná platňa 3\u00A0200\u00A0×\u00A01\u00A0600\u00A0×\u00A012\u00A0mm stojí u Orostone ${ONE_SLAB} a k tomu sa pripočíta výroba a montáž u partnerského kamenára (orientačne ${INSTALLATION_RATE_PER_M2}\u00A0€/m²). Tenšie ako 12\u00A0mm platne nepredávame. Za 1\u00A0500\u00A0€ dostanete kvalitnejší kvarcit – čo je v tomto prípade rozumnejšia voľba.`
       },
       {
         question: 'Prečo je spracovanie sinterovaného kameňa také drahé?',
@@ -334,7 +357,7 @@ export const ARTICLE_16: BlogArticle = {
       },
       {
         question: 'Môžem si sinterovaný kameň nainštalovať sám?',
-        answer: 'Dôrazne neodporúčame. Sinterovaný kameň je ťažký (30\u00A0kg/m²), krehký pri nesprávnej manipulácii a vyžaduje presné rezanie diamantovými nástrojmi. Chybná inštalácia môže spôsobiť prasknutie dosky v hodnote tisícov eur. Profesionálna inštalácia stojí 40 – 75\u00A0€/m² – to je zlomok ceny materiálu a istota správneho výsledku.'
+        answer: `Dôrazne neodporúčame. Sinterovaný kameň je ťažký (30\u00A0kg/m²), krehký pri nesprávnej manipulácii a vyžaduje presné rezanie diamantovými nástrojmi. Chybná inštalácia môže spôsobiť prasknutie dosky v hodnote tisícov eur. Výrobu a montáž preto robí partnerský kamenár so skúsenosťou so sinterovaným kameňom, orientačne za ${INSTALLATION_RATE_PER_M2}\u00A0€/m² vrátane zamerania a dopravy – je to istota správneho výsledku.`
       }
     ]
   },
@@ -364,7 +387,7 @@ export const ARTICLE_16: BlogArticle = {
 
 <h3>1. Material</h3>
 <ul>
-<li><strong>Sintered stone:</strong> €250–600/m² (depends on thickness, brand, and design)</li>
+<li><strong>Sintered stone:</strong> €250–600/m² (depends on thickness, brand, and design). Orostone decors cost ${M2_RANGE_EN}/m², but we sell whole 3200 × 1600 × 12 mm slabs — one costs ${ONE_SLAB_EN}.</li>
 <li><strong>Quartz (engineered):</strong> €150–450/m²</li>
 <li><strong>Granite (natural):</strong> €180–500/m²</li>
 <li><strong>Quality laminate (HPL):</strong> €60–150/m²</li>
@@ -372,7 +395,7 @@ export const ARTICLE_16: BlogArticle = {
 
 <h3>2. Fabrication (cutouts, edges, polishing)</h3>
 <ul>
-<li><strong>Sintered stone:</strong> €100–200/m² (requires specialized CNC machines and diamond tools)</li>
+<li><strong>Sintered stone:</strong> fabrication and installation are done by the partner stonemason, at roughly €${INSTALLATION_RATE_PER_M2}/m² including measuring and delivery (requires specialized CNC machines and diamond tools)</li>
 <li><strong>Quartz:</strong> €80–150/m²</li>
 <li><strong>Granite:</strong> €80–160/m²</li>
 <li><strong>Laminate:</strong> €30–60/m²</li>
@@ -380,7 +403,7 @@ export const ARTICLE_16: BlogArticle = {
 
 <h3>3. Installation</h3>
 <ul>
-<li><strong>Sintered stone:</strong> €40–75/m² (often included in fabrication price)</li>
+<li><strong>Sintered stone:</strong> included in the stonemason's €${INSTALLATION_RATE_PER_M2}/m² rate (see fabrication)</li>
 <li><strong>Quartz:</strong> €35–60/m²</li>
 <li><strong>Granite:</strong> €40–70/m²</li>
 <li><strong>Laminate:</strong> €20–40/m²</li>
@@ -393,14 +416,14 @@ export const ARTICLE_16: BlogArticle = {
 <tr><th>Material</th><th>Material (4 m²)</th><th>Fabrication</th><th>Installation</th><th>Total</th></tr>
 </thead>
 <tbody>
-<tr><td><strong>Sintered stone</strong></td><td>€1,000–2,400</td><td>€400–800</td><td>€0–300</td><td><strong>€1,400–3,500</strong></td></tr>
+<tr><td><strong>Sintered stone</strong></td><td>€1,000–2,400</td><td>${enEurWhole(PARTNER_4M2)} (incl. installation)</td><td>included in fabrication</td><td><strong>${KITCHEN_4M2_EN}</strong></td></tr>
 <tr><td><strong>Quartz</strong></td><td>€600–1,800</td><td>€320–600</td><td>€140–240</td><td><strong>€1,060–2,640</strong></td></tr>
 <tr><td><strong>Granite</strong></td><td>€720–2,000</td><td>€320–640</td><td>€160–280</td><td><strong>€1,200–2,920</strong></td></tr>
 <tr><td><strong>Quality laminate</strong></td><td>€240–600</td><td>€120–240</td><td>€80–160</td><td><strong>€440–1,000</strong></td></tr>
 </tbody>
 </table>
 
-<p><strong>At first glance:</strong> Sintered stone is the most expensive. Laminate is 3–4× cheaper. Quartz and granite fall somewhere in between. If the story were only about upfront cost, this article would end here. But it doesn't — because this is the less interesting part of the equation.</p>
+<p><strong>At first glance:</strong> Sintered stone is the most expensive. Laminate is several times cheaper. Quartz and granite fall somewhere in between. If the story were only about upfront cost, this article would end here. But it doesn't — because this is the less interesting part of the equation.</p>
 
 <h2 id="scenario-1-family-home">Scenario 1 — Is it worth it for a family home (25 years)?</h2>
 
@@ -604,15 +627,15 @@ export const ARTICLE_16: BlogArticle = {
     faqs: [
       {
         question: 'Is sintered stone more expensive than quartz?',
-        answer: 'Initially yes — by approximately 30–50%. An average sintered stone kitchen countertop costs €1,400–3,500 (4 m²), while quartz costs €1,060–2,640. But over 25 years of ownership, total costs are comparable because sintered stone needs no sealing or special maintenance.'
+        answer: `Initially yes. For a 4 m² kitchen, a sintered stone countertop comes to ${KITCHEN_4M2_EN} including the partner stonemason's work, while quartz costs €1,060–2,640. But over 25 years of ownership, total costs are comparable because sintered stone needs no sealing or special maintenance.`
       },
       {
         question: 'How much does sintered stone cost per square meter?',
-        answer: 'The material alone costs €250–600/m² depending on thickness (6mm, 12mm, 20mm), brand, and pattern. Including fabrication and installation, expect total costs of €350–875/m². The most common orders at Orostone range between €450–650/m² all-inclusive.'
+        answer: `On the market, the material alone costs €250–600/m² depending on thickness, brand, and pattern. Orostone decors cost ${M2_RANGE_EN}/m² incl. VAT, but we sell whole 3200 × 1600 × 12 mm slabs — one costs ${ONE_SLAB_EN}. Fabrication and installation are done and invoiced by the partner stonemason, at roughly €${INSTALLATION_RATE_PER_M2}/m², and are not part of the material price.`
       },
       {
         question: 'Is sintered stone worth it on a €1,500 countertop budget?',
-        answer: 'It\'s borderline. For €1,500, you can get sintered stone in a thinner (6mm) version, basic design, and for a smaller kitchen (under 3 m²). If you have a standard 4m² kitchen, this budget gets you better quality quartz — which is the smarter choice in this case.'
+        answer: `Not on this budget. A single 3200 × 1600 × 12 mm slab costs ${ONE_SLAB_EN} at Orostone, plus fabrication and installation by the partner stonemason (roughly €${INSTALLATION_RATE_PER_M2}/m²). We don't sell slabs thinner than 12 mm. For €1,500 you get better quality quartz — which is the smarter choice in this case.`
       },
       {
         question: 'Why is sintered stone fabrication so expensive?',
@@ -660,7 +683,7 @@ export const ARTICLE_16: BlogArticle = {
       },
       {
         question: 'Can I install sintered stone myself?',
-        answer: 'We strongly advise against it. Sintered stone is heavy (30 kg/m²), brittle when handled incorrectly, and requires precise cutting with diamond tools. Faulty installation can cause a crack in a countertop worth thousands of euros. Professional installation costs €40–75/m² — that\'s a fraction of the material cost and a guarantee of proper results.'
+        answer: `We strongly advise against it. Sintered stone is heavy (30 kg/m²), brittle when handled incorrectly, and requires precise cutting with diamond tools. Faulty installation can cause a crack in a countertop worth thousands of euros. That's why fabrication and installation are done by the partner stonemason experienced with sintered stone, at roughly €${INSTALLATION_RATE_PER_M2}/m² including measuring and delivery — a guarantee of proper results.`
       }
     ]
   }

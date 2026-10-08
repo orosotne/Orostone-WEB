@@ -41,7 +41,7 @@ export const ARTICLE_13: BlogArticle = {
 <p><strong>Čo sa deje počas konzultácie:</strong></p>
 <ul>
   <li><strong>Prehliadka vzoriek v plnej veľkosti</strong> – nepozeráte sa na malé vzorky 10\u00A0×\u00A010\u00A0cm. V showroome máme celé platne, kde vidíte skutočnú kresbu, žilkovanie a farebnosť materiálu tak, ako bude vyzerať vo vašej kuchyni</li>
-  <li><strong>Diskusia o hrúbke materiálu</strong> – vysvetlíme rozdiely medzi 12\u00A0mm a 20\u00A0mm hrúbkou, ich štrukturálne vlastnosti a kedy ktorú odporúčame</li>
+  <li><strong>Diskusia o hrúbke materiálu</strong> – vysvetlíme rozdiely medzi 12\u00A0mm a 20\u00A0mm hrúbkou, ich štrukturálne vlastnosti a prečo pracujeme s 12\u00A0mm platňami</li>
   <li><strong>Výber povrchovej úpravy</strong> – leštený, matný, satinovaný alebo štruktúrovaný povrch. Každý má iný vizuálny efekt a praktické vlastnosti</li>
   <li><strong>Profily hrán</strong> – od minimalistickej skosenej hrany po elegantný half-bullnose. Ukážeme vám vzorky na reálnom materiáli</li>
   <li><strong>Rozpočet a očakávania</strong> – otvorene diskutujeme o cene, aby ste vedeli, čo za svoj rozpočet dostanete</li>
@@ -322,7 +322,7 @@ export const ARTICLE_13: BlogArticle = {
 <p><strong>What happens during the consultation:</strong></p>
 <ul>
   <li><strong>Full-size slab viewing</strong> — you won't be looking at small 10×10 cm samples. Our showroom features complete slabs where you can see the actual pattern, veining, and colour of the material exactly as it will appear in your kitchen</li>
-  <li><strong>Thickness discussion</strong> — we explain the differences between 12 mm and 20 mm thickness, their structural properties, and when we recommend each one</li>
+  <li><strong>Thickness discussion</strong> — we explain the differences between 12 mm and 20 mm thickness, their structural properties, and why we work with 12 mm slabs</li>
   <li><strong>Surface finish selection</strong> — polished, matte, satin, or textured. Each has a different visual effect and practical properties</li>
   <li><strong>Edge profiles</strong> — from a minimalist chamfer to an elegant half-bullnose. We show you samples on actual material</li>
   <li><strong>Budget and expectations</strong> — we discuss pricing openly so you know exactly what your budget will deliver</li>

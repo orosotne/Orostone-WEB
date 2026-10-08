@@ -44,7 +44,7 @@ export const PRODUCT_META_OVERRIDE: Record<string, ProductMetaOverrideEntry> = {
   'givenchy-gold': {
     title: 'Givenchy Gold — zlatistý mramorový dekor | OROSTONE',
     description:
-      'Teplý dekor so zlatistou kresbou v béžovo-hnedom poli. Pre interiéry, kde má dekor niesť vlastnú váhu — kúpeľne, akcentové steny, ostrovčeky. Veľká platňa v showroome Bošany.',
+      'Biely dekor s výrazným zlatobéžovým žilkovaním. Pre interiéry, kde má dekor niesť vlastnú váhu — kúpeľne, akcentové steny, ostrovčeky. Veľká platňa v showroome Bošany.',
   },
   'gothic-gold': {
     title: 'Gothic Gold — tmavý dekor so zlatistou kresbou | OROSTONE',
