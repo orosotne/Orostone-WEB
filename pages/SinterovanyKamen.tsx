@@ -53,19 +53,19 @@ const PROCESS = [
     title: 'Výber minerálov',
     desc: 'Starostlivo vybraný kremeň, živec, íl a kovové oxidy — výlučne prírodné suroviny bez syntetických prímesí.',
     img: 'sk-vyroba-mineraly',
-    imgAlt: 'Prírodné minerály použité pri výrobe sinterovaného kameňa',
+    imgAlt: 'Kopy surovín vo výrobnej hale: kremenný piesok, živec, kaolín a íl',
   },
   {
     title: 'Extrémna kompakcia',
     desc: 'Minerálna zmes sa zlisuje pod tlakom 10 000 – 25 000 ton. To je ekvivalent hmotnosti dvoch a pol Eiffelových veží na jednej doske.',
     img: 'sk-vyroba-lisovanie',
-    imgAlt: 'Kompakcia minerálov pod tlakom 25 000 ton',
+    imgAlt: 'Lis, ktorý stlačí minerálnu zmes do veľkoformátovej platne',
   },
   {
     title: 'Sintrovanie',
     desc: 'Doska sa vypáli pri teplote nad 1 200 °C. Častice sa spoja na molekulárnej úrovni — vzniká monolitický, nepórovitý povrch.',
     img: 'sk-vyroba-vypal',
-    imgAlt: 'Sintrovanie pri teplote 1\u00A0200\u00A0°C',
+    imgAlt: 'Platne vchádzajú na valčekoch do pece, kde sa spekajú pri teplote nad 1\u00A0200\u00A0°C',
   },
 ];
 
@@ -261,7 +261,7 @@ export const SinterovanyKamen = () => {
               <li key={item.title} className="grid content-start gap-3">
                 <ResponsiveImage
                   base={`${IMG}/${item.img}`}
-                  widths={[640, 1200]}
+                  widths={[640, 1040]}
                   ratio={1.5}
                   alt={item.imgAlt}
                   sizes="(min-width: 768px) 30vw, 100vw"
