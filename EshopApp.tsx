@@ -31,6 +31,16 @@ scheduleChunkPrefetch();
 // SCROLL TO TOP ON ROUTE CHANGE
 // ===========================================
 
+// Only a plain element id counts as an anchor (the blog keeps its query string after "#?").
+const anchorId = (hash: string) => {
+  try {
+    const id = decodeURIComponent(hash.replace(/^#/, ''));
+    return /^[A-Za-z][\w-]*$/.test(id) ? id : '';
+  } catch {
+    return '';
+  }
+};
+
 const ScrollToTop = () => {
   const { pathname } = useLocation();
   const prevPathRef = useRef(pathname);
@@ -43,6 +53,34 @@ const ScrollToTop = () => {
     if (isProductRoute(prev) && isProductRoute(pathname)) return;
 
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
+    // A link with an anchor (e.g. /#footer-newsletter from an e-mail): the target renders
+    // after load, so wait for it briefly and scroll to it. A form field goes to the middle
+    // of the screen so the fixed header does not cover it; sections keep their scroll-margin.
+    // Images and lazy sections above can still change height, so the target is put back in
+    // place a few times until the visitor starts scrolling.
+    const id = anchorId(window.location.hash);
+    if (!id) return;
+    let tries = 0;
+    const timers: number[] = [];
+    const userEvents = ['wheel', 'touchstart', 'keydown', 'mousedown'] as const;
+    const stop = () => {
+      timers.forEach((t) => window.clearTimeout(t));
+      userEvents.forEach((type) => window.removeEventListener(type, stop));
+    };
+    const scrollToAnchor = () => {
+      const el = document.getElementById(id);
+      if (!el) {
+        if (++tries < 30) timers.push(window.setTimeout(scrollToAnchor, 100));
+        return;
+      }
+      const place = () => el.scrollIntoView({ block: el.matches('input, textarea, select') ? 'center' : 'start' });
+      place();
+      [300, 800, 1500, 2500].forEach((ms) => timers.push(window.setTimeout(place, ms)));
+    };
+    userEvents.forEach((type) => window.addEventListener(type, stop, { passive: true }));
+    scrollToAnchor();
+    return stop;
   }, [pathname]);
 
   return null;
