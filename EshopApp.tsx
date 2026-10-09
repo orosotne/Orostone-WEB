@@ -32,9 +32,10 @@ scheduleChunkPrefetch();
 // ===========================================
 
 // Only a plain element id counts as an anchor (the blog keeps its query string after "#?").
+// Trailing punctuation is dropped: some mail clients link "…/#footer-newsletter." with the dot.
 const anchorId = (hash: string) => {
   try {
-    const id = decodeURIComponent(hash.replace(/^#/, ''));
+    const id = decodeURIComponent(hash.replace(/^#/, '')).replace(/[.,;:!?)]+$/, '');
     return /^[A-Za-z][\w-]*$/.test(id) ? id : '';
   } catch {
     return '';
