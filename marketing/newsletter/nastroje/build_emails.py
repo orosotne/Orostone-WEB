@@ -783,8 +783,12 @@ PLAIN_F = "Helvetica,Arial,sans-serif"
 
 
 def plain(meta, title, preheader, paragraphs, reason, greeting="Dobrý deň,",
-          sign=("S pozdravom", "Marián Brázdil", "Orostone · sinterovaný kameň", "+421 917 588 738")):
-    """Čistý text bez dizajnu: osobný e-mail od Mariána (Graza ~1 z 5)."""
+          sign=("S pozdravom", "Marián Brázdil", "Orostone · sinterovaný kameň", "+421 917 588 738"),
+          unsub=True):
+    """Čistý text bez dizajnu: osobný e-mail od Mariána (Graza ~1 z 5).
+    unsub=False: e-mail z CRM mimo zoznamu odberateľov, pätička len s dôvodom."""
+    unsub_html = (' <a href="{% unsubscribe %}" style="color:#6B7280; text-decoration:underline;">Odhlásiť odber</a>'
+                  if unsub else "")
     meta_lines = "\n".join(f"  {k:<10} {v}" for k, v in meta.items())
     pre_pad = "&nbsp;&zwnj;" * 40
     ps_html = "".join(f'<p style="margin:0 0 16px;">{x}</p>' for x in paragraphs)
@@ -824,7 +828,7 @@ def plain(meta, title, preheader, paragraphs, reason, greeting="Dobrý deň,",
         <!-- LEGAL / UNSUB -->
         <tr>
           <td style="padding-top:32px; font-family:{PLAIN_F}; font-size:11px; line-height:17px; color:#6B7280;">
-            {reason} <a href="{{% unsubscribe %}}" style="color:#6B7280; text-decoration:underline;">Odhlásiť odber</a>
+            {reason}{unsub_html}
           </td>
         </tr>
       </table>
@@ -2004,5 +2008,32 @@ write_nb("33-kampan-spolupraca-studio.html", doc(
         signature(top=0),
         footer(),
     ]))
+
+REASON_DOPYT = "Tento e-mail ste dostali, pretože ste nás kontaktovali kvôli pracovnej doske."
+
+# 34 – CRM: jednorazová otázka k dopytu (čistý text, osobne od Mariána)
+write_nb("34-crm-otazka-k-dopytu.html", plain(
+    {
+        "TYP:": "Osobný e-mail z CRM · jednorazová otázka k dopytu (čistý text)",
+        "SPÚŠŤAČ:": "Raz, ručne z CRM po schválení Mariánom: otvorený dopyt alebo ponuka bez odozvy 14 a viac dní",
+        "SEGMENT:": "Ľudia s dopytom bez súhlasu s newsletterom (audit CRM 8. 10. 2026: 322 kontaktov). Neposielať: odmietnutie alebo prehra, rozpracovaný obchod, nový dopyt, zákazník po kúpe, 3 naše správy bez odpovede",
+        "PREDMET:": "Krátka otázka k vašej pracovnej doske",
+        "PREHEADER:": "Odpoveď vám zaberie pár sekúnd.",
+        "CIEĽ:": "Zistiť, v akej fáze je projekt, slušne uzavrieť dopyty bez záujmu a ponúknuť odber so súhlasom.",
+        "VARIANTY:": "Dostali ponuku: prvá veta „v [mesiac] sme vám poslali cenovú ponuku na pracovnú dosku v dekore [dekor].“, bod 1 „stále vyberám, poraďte mi alebo ponuku upravte“, odsek o pôdoryse nahradiť vetou „Ak by ste chceli v ponuke niečo zmeniť, napríklad dekor alebo rozloženie platní, stačí mi napísať.“ | Vyžiadali si vzorku: prvá veta „v [mesiac] ste si od nás vyžiadali vzorku dekoru [dekor].“ | Dekor v CRM chýba: „… na pracovnú dosku do kuchyne.“",
+        "POZNÁMKA:": "[mesiac] v 6. páde (v júni, v júli …). Odkaz na prihlásenie: pätička webu (#footer-newsletter) alebo samostatná stránka – rozhodnúť pred odoslaním. Odpovede 1 a 2 vybaviť do 1–2 pracovných dní.",
+    },
+    "Krátka otázka k vašej pracovnej doske",
+    "Odpoveď vám zaberie pár sekúnd.",
+    [
+        "v [mesiac] ste sa u nás pýtali na pracovnú dosku v dekore [dekor]. Chcel by som sa uistiť, že máte všetko, čo na rozhodnutie potrebujete.",
+        "Stačí mi odpísať jedno číslo:",
+        "1 – stále vyberám, poraďte mi<br />2 – kuchyňu budem riešiť neskôr (napíšte približne kedy, ozvem sa až vtedy)<br />3 – kuchyňu už mám hotovú alebo sme sa rozhodli inak (potom vám už nebudem písať)",
+        "Ak ešte vyberáte, najrýchlejšie pomôže pôdorys alebo základné rozmery. Pripravím z nich orientačné cenové rozpätie a návrh rozloženia platní. Ak si chcete najprv overiť dekor, pošleme vám vzorku.",
+        "P. S. Približne dvakrát do mesiaca posielame jednu realizáciu alebo radu k výberu dosky. Ak o ne máte záujem, prihláste sa tu: [odkaz na prihlásenie]. Posielame ich len tým, ktorí sa prihlásia.",
+    ],
+    REASON_DOPYT,
+    unsub=False,
+))
 
 print("hotovo →", OUT)

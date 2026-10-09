@@ -49,7 +49,7 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 
 | # | E-mail | Kam patrí | Predmet | Stav |
 |---|---|---|---|---|
-| 01 | Vitajte | Welcome 1/4 – hneď po prihlásení | Vitajte v Orostone. Toto vám budeme posielať | skontrolované, v Shopify treba vytvoriť kód VITAJTE |
+| 01 | Vitajte | Welcome 1/4 – hneď po prihlásení | Vitajte v Orostone. Toto vám budeme posielať | skontrolované, kód VITAJTE v Shopify existuje |
 | 02 | List od Mariána | Welcome 2/4 – o 2 dni | Dve chyby, ktoré vidím pri výbere dosky | skontrolované, Marián list schválil |
 | 07 | Ako vybrať dekor | Welcome 3/4 – o 5 dní | Tri otázky pred výberom dekoru | skontrolované |
 | 09 | Tri kuchyne | Welcome 4/4 – o 9 dní | Tri kuchyne, tri rôzne rozhodnutia | skontrolované |
@@ -82,6 +82,7 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 | 31 | Pozvánka do showroomu | Kampaň február 2027 | Celé platne naživo v kaštieli v Bošanoch | skontrolované |
 | 32 | Dekor v detaile | Kampaň marec 2027 | Wild Forest: kresba pre veľké plochy | skontrolované |
 | 33 | Spolupráca so štúdiom | Kampaň marec 2027 | Návrh kuchyne a doska: ako ich zladiť | skontrolované |
+| 34 | Otázka k dopytu (čistý text) | CRM – jednorazovo, po schválení Mariánom | Krátka otázka k vašej pracovnej doske | na kontrole, odkaz na prihlásenie treba doplniť |
 
 **Neposielame:** tip šesť mesiacov po montáži a Výročie (rozhodnutie Martina zo 7. 10. 2026). Potvrdenie objednávky vzorky posiela Shopify a potvrdenie dopytu web, tie netreba písať.
 
@@ -90,9 +91,9 @@ Vizuálne pravidlá e-mailu sú v skille `orostone-kreativy` (`references/newsle
 
 ## Zástupné texty
 
-- `[v hranatých zátvorkách]` – doplní sa pred odoslaním. Dnes ich má len e-mail 08 (meno, dátum montáže, dekor – pre každého zákazníka iné).
+- `[v hranatých zátvorkách]` – doplní sa pred odoslaním. Majú ich e-mail 08 (meno, dátum montáže, dekor – pre každého zákazníka iné) a e-mail 34 (mesiac dopytu v 6. páde, dekor a odkaz na prihlásenie; tri varianty prvej vety sú v hlavičke šablóny).
 - Realizácia mesiaca (03, 20) uvádza len fakty z fotiek a zo stránky Realizácie. Lokalitu, kamenára a citát klienta doplníme, keď ich Marián potvrdí (citát len so súhlasom klienta).
-- Uvítacia odmena je **prvá vzorka bez poštovného**, kód `VITAJTE` (rozhodnutie 7. 10. 2026, nahrádza WELCOME5). Kód musí v Shopify existovať skôr, než ho e-mail sľúbi.
+- Uvítacia odmena je **prvá vzorka bez poštovného**, kód `VITAJTE` (rozhodnutie 7. 10. 2026, nahrádza WELCOME5). Kód v Shopify už existuje (doprava vzorky 0 €, overené výpočtom objednávky v Shopify).
 - Fotky vybral Martin 7. 10. 2026 v troch kolách. Zábery výroby v 18 sú ilustračné (Higgsfield) a vychádzajú z fotiek skutočných fabrík na sinterovaný kameň. Kaštieľ v 13 je skutočná fotka z titulnej stránky webu.
 - Obrázky sú v `public/images/email/` a web ich zverejní na `https://orostone.sk/images/email/`. Nový obrázok pridajte do tohto priečinka (JPG, dvojnásobná šírka oproti zobrazeniu, najviac okolo 150 KB).
 - Odkaz na odhlásenie a ďalšie premenné doplní rozosielací nástroj.

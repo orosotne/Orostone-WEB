@@ -52,6 +52,7 @@ for f in sorted(os.listdir(SRC)):
            *( [f'- **Komu:** {meta["SEGMENT"]}'] if "SEGMENT" in meta else [] ),
            f'- **Predmet:** {meta.get("PREDMET","")}',
            f'- **Preheader:** {html.unescape(pre.group(1).strip()) if pre else meta.get("PREHEADER","")}',
+           *( ['- **Varianty:**'] + [f'  - {v.strip()}' for v in meta["VARIANTY"].split(' | ')] if "VARIANTY" in meta else [] ),
            f'- **Šablóna:** `sablony/{f}`', '', '## Text e-mailu v poradí, ako sa zobrazí', '']
     seen_footer=False
     for name, parts in p.blocks:
