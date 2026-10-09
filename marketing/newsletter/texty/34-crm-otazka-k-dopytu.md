@@ -18,10 +18,10 @@ Dobrý deň,
 v [mesiac] ste sa u nás pýtali na pracovnú dosku v dekore [dekor]. Chcel by som sa uistiť, že máte všetko, čo na rozhodnutie potrebujete.
 Stačí mi odpísať jedno číslo:
 1 – stále vyberám, poraďte mi
-2 – kuchyňu budem riešiť neskôr (napíšte približne kedy, ozvem sa až vtedy)
+2 – kuchyňu budem riešiť neskôr (napíšte mi približný termín a ozvem sa až vtedy)
 3 – kuchyňu už mám hotovú alebo sme sa rozhodli inak (potom vám už nebudem písať)
 Ak ešte vyberáte, najrýchlejšie pomôže pôdorys alebo základné rozmery. Pripravím z nich orientačné cenové rozpätie a návrh rozloženia platní. Ak si chcete najprv overiť dekor, pošleme vám vzorku.
-P. S. Približne dvakrát do mesiaca posielame jednu realizáciu alebo radu k výberu dosky. Ak o ne máte záujem, prihláste sa tu: [odkaz na prihlásenie]. Posielame ich len tým, ktorí sa prihlásia.
+P. S. Približne dvakrát do mesiaca posielame ukážku jednej realizácie alebo radu, ako si vybrať dosku. Ak o ne máte záujem, prihláste sa tu: [odkaz na prihlásenie]. Posielame ich len so súhlasom.
 S pozdravom
 Marián Brázdil
 Orostone · sinterovaný kameň

@@ -224,4 +224,17 @@ Fakty sú z produktových dát, technického listu (TDS), dokumentu Key facts 20
 
 Codex na `f0dd6cb` nenašiel žiadne pripomienky. E-maily 22–33 sú jazykovo skontrolované vrátane opráv z kola 13, nových pravidiel v `slovnik.md` a popisov fotiek v 04, 07 a 10.
 
+### Nový obsah (9. 10. 2026, e-mail 34)
+
+Po audite CRM z 8. 10. 2026: osobný list od Mariána v čistom texte (**34 – Krátka otázka k vašej pracovnej doske**) pre ľudí s otvoreným dopytom alebo ponukou bez odozvy. Ide jednorazovo z CRM, nie zo zoznamu odberateľov. Na kontrolu sú aj tri varianty prvej vety v hlavičke šablóny.
+
+## Kolo 15 – Codex review v PR #100 (9. 10. 2026, e-mail 34)
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 34 | 2 – kuchyňu budem riešiť neskôr (napíšte približne kedy, ozvem sa až vtedy) | 2 – kuchyňu budem riešiť neskôr (napíšte mi približný termín a ozvem sa až vtedy) | štylistika | Eliptická vedľajšia veta s *kedy* bez čiarky znela úsečne. | zapracované |
+| 2 | 34 | Približne dvakrát do mesiaca posielame jednu realizáciu alebo radu k výberu dosky. | Približne dvakrát do mesiaca posielame ukážku jednej realizácie alebo radu, ako si vybrať dosku. | lexika | Realizácia je hotová kuchyňa u klienta (sekcia 4), poslať sa dá jej ukážka. | zapracované |
+| 3 | 34 | …prihláste sa tu: [odkaz na prihlásenie]. Posielame ich len tým, ktorí sa prihlásia. | …prihláste sa tu: [odkaz na prihlásenie]. Posielame ich len so súhlasom. | štylistika | Tesné opakovanie *prihláste sa / prihlásia* v susedných vetách. | zapracované |
+| 4 | 22 | Podľa odpovede vám budeme posielať realizácie a rady… | Podľa odpovede vám budeme posielať ukážky realizácií a rady… | lexika | Rovnaký prípad ako č. 2, opravené kvôli jednotnosti. | zapracované |
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
