@@ -822,7 +822,7 @@ def plain(meta, title, preheader, paragraphs, reason, greeting="Dobrý deň,",
           <td style="font-family:{PLAIN_F}; font-size:15px; line-height:24px; color:#1A1A1A;">
             <p style="margin:0 0 16px;">{greeting}</p>
             {ps_html}
-            <p style="margin:24px 0 0;">{s1}<br />{s2}<br />{s3}<br /><a href="tel:+421917588738" style="color:#1A1A1A; text-decoration:none;">{s4}</a></p>
+            <p style="margin:24px 0 0;">{s1}<br />{s2}<br />{s3}<br /><a href="tel:{s4.replace(" ", "")}" style="color:#1A1A1A; text-decoration:none;">{s4}</a></p>
           </td>
         </tr>
         <!-- LEGAL / UNSUB -->
@@ -2010,6 +2010,10 @@ write_nb("33-kampan-spolupraca-studio.html", doc(
     ]))
 
 REASON_DOPYT = "Tento e-mail ste dostali, pretože ste nás kontaktovali kvôli pracovnej doske."
+# Podpis Mariána v e-mailoch z CRM: priame číslo, rovnaké ako v ostatných e-mailoch z CRM.
+SIGN_MARIAN_CRM = ("S pozdravom", "Marián Brázdil", "Orostone · sinterovaný kameň", "+421 911 891 875")
+# Prihlásenie na odber: formulár v pätičke webu.
+NEWSLETTER_SIGNUP = SITE + "/#footer-newsletter"
 
 # 34 – CRM: jednorazová otázka k dopytu (čistý text, osobne od Mariána)
 write_nb("34-crm-otazka-k-dopytu.html", plain(
@@ -2021,7 +2025,7 @@ write_nb("34-crm-otazka-k-dopytu.html", plain(
         "PREHEADER:": "Odpoveď vám zaberie pár sekúnd.",
         "CIEĽ:": "Zistiť, v akej fáze je projekt, slušne uzavrieť dopyty bez záujmu a ponúknuť odber so súhlasom.",
         "VARIANTY:": "Dostali ponuku: prvá veta „v [mesiac] sme vám poslali cenovú ponuku na pracovnú dosku v dekore [dekor].“, bod 1 „stále vyberám, poraďte mi alebo ponuku upravte“, odsek o pôdoryse nahradiť vetou „Ak by ste chceli v ponuke niečo zmeniť, napríklad dekor alebo rozloženie platní, stačí mi napísať.“ | Vyžiadali si vzorku: prvá veta „v [mesiac] ste si od nás vyžiadali vzorku dekoru [dekor].“ | Dekor v CRM chýba: „… na pracovnú dosku do kuchyne.“",
-        "POZNÁMKA:": "[mesiac] v 6. páde (v júni, v júli …). Odkaz na prihlásenie: pätička webu (#footer-newsletter) alebo samostatná stránka – rozhodnúť pred odoslaním. Odpovede 1 a 2 vybaviť do 1–2 pracovných dní.",
+        "POZNÁMKA:": "[mesiac] v 6. páde (v júni, v júli …). Odkaz na prihlásenie vedie na formulár v pätičke webu (https://orostone.sk/#footer-newsletter). Podpis má priame číslo Mariána ako ostatné e-maily z CRM. Odpovede 1 a 2 vybaviť do 1–2 pracovných dní.",
     },
     "Krátka otázka k vašej pracovnej doske",
     "Odpoveď vám zaberie pár sekúnd.",
@@ -2030,9 +2034,10 @@ write_nb("34-crm-otazka-k-dopytu.html", plain(
         "Stačí mi odpísať jedno číslo:",
         "1 – stále vyberám, poraďte mi<br />2 – kuchyňu budem riešiť neskôr (napíšte mi približný termín a ozvem sa až vtedy)<br />3 – kuchyňu už mám hotovú alebo sme sa rozhodli inak (potom vám už nebudem písať)",
         "Ak ešte vyberáte, najrýchlejšie pomôže pôdorys alebo základné rozmery. Pripravím z nich orientačné cenové rozpätie a návrh rozloženia platní. Ak si chcete najprv overiť dekor, pošleme vám vzorku.",
-        "P. S. Približne dvakrát do mesiaca posielame ukážku jednej realizácie alebo radu, ako si vybrať dosku. Ak o ne máte záujem, prihláste sa tu: [odkaz na prihlásenie]. Posielame ich len so súhlasom.",
+        "P. S. Približne dvakrát do mesiaca posielame ukážku jednej realizácie alebo radu, ako si vybrať dosku. Ak o ne máte záujem, prihláste sa tu: <a href=\"" + NEWSLETTER_SIGNUP + "\" style=\"color:#1A1A1A; text-decoration:underline;\">orostone.sk</a>. Posielame ich len so súhlasom.",
     ],
     REASON_DOPYT,
+    sign=SIGN_MARIAN_CRM,
     unsub=False,
 ))
 

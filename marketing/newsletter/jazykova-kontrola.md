@@ -241,4 +241,6 @@ Po audite CRM z 8. 10. 2026: osobný list od Mariána v čistom texte (**34 – 
 
 Codex na `3f1fe9a` nenašiel žiadne pripomienky. E-mail 34 je jazykovo skontrolovaný vrátane troch variantov prvej vety, opravy v 22 a nového pravidla v `slovnik.md`.
 
+Doplnené 9. 10. 2026 po rozhodnutí Martina, bez zmeny textu: zástupný text `[odkaz na prihlásenie]` nahradil odkaz `orostone.sk` na formulár v pätičke webu a v podpise je priame číslo Mariána +421 911 891 875, rovnaké ako v ostatných e-mailoch z CRM.
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.

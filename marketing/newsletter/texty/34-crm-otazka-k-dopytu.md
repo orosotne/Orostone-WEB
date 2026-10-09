@@ -21,11 +21,11 @@ Stačí mi odpísať jedno číslo:
 2 – kuchyňu budem riešiť neskôr (napíšte mi približný termín a ozvem sa až vtedy)
 3 – kuchyňu už mám hotovú alebo sme sa rozhodli inak (potom vám už nebudem písať)
 Ak ešte vyberáte, najrýchlejšie pomôže pôdorys alebo základné rozmery. Pripravím z nich orientačné cenové rozpätie a návrh rozloženia platní. Ak si chcete najprv overiť dekor, pošleme vám vzorku.
-P. S. Približne dvakrát do mesiaca posielame ukážku jednej realizácie alebo radu, ako si vybrať dosku. Ak o ne máte záujem, prihláste sa tu: [odkaz na prihlásenie]. Posielame ich len so súhlasom.
+P. S. Približne dvakrát do mesiaca posielame ukážku jednej realizácie alebo radu, ako si vybrať dosku. Ak o ne máte záujem, prihláste sa tu: orostone.sk. Posielame ich len so súhlasom.
 S pozdravom
 Marián Brázdil
 Orostone · sinterovaný kameň
-+421 917 588 738
++421 911 891 875
 
 ### Pätička — dôvod a odhlásenie
 Tento e-mail ste dostali, pretože ste nás kontaktovali kvôli pracovnej doske.

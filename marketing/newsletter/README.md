@@ -82,7 +82,7 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 | 31 | Pozvánka do showroomu | Kampaň február 2027 | Celé platne naživo v kaštieli v Bošanoch | skontrolované |
 | 32 | Dekor v detaile | Kampaň marec 2027 | Wild Forest: kresba pre veľké plochy | skontrolované |
 | 33 | Spolupráca so štúdiom | Kampaň marec 2027 | Návrh kuchyne a doska: ako ich zladiť | skontrolované |
-| 34 | Otázka k dopytu (čistý text) | CRM – jednorazovo, po schválení Mariánom | Krátka otázka k vašej pracovnej doske | skontrolované, odkaz na prihlásenie treba doplniť |
+| 34 | Otázka k dopytu (čistý text) | CRM – jednorazovo, po schválení Mariánom | Krátka otázka k vašej pracovnej doske | skontrolované, do CRM ho treba ešte zapojiť |
 
 **Neposielame:** tip šesť mesiacov po montáži a Výročie (rozhodnutie Martina zo 7. 10. 2026). Potvrdenie objednávky vzorky posiela Shopify a potvrdenie dopytu web, tie netreba písať.
 
@@ -91,7 +91,7 @@ Vizuálne pravidlá e-mailu sú v skille `orostone-kreativy` (`references/newsle
 
 ## Zástupné texty
 
-- `[v hranatých zátvorkách]` – doplní sa pred odoslaním. Majú ich e-mail 08 (meno, dátum montáže, dekor – pre každého zákazníka iné) a e-mail 34 (mesiac dopytu v 6. páde, dekor a odkaz na prihlásenie; tri varianty prvej vety sú v hlavičke šablóny).
+- `[v hranatých zátvorkách]` – doplní sa pred odoslaním. Majú ich e-mail 08 (meno, dátum montáže, dekor – pre každého zákazníka iné) a e-mail 34 (mesiac dopytu v 6. páde a dekor; tri varianty prvej vety sú v hlavičke šablóny). Odkaz na prihlásenie v e-maile 34 vedie na formulár v pätičke webu.
 - Realizácia mesiaca (03, 20) uvádza len fakty z fotiek a zo stránky Realizácie. Lokalitu, kamenára a citát klienta doplníme, keď ich Marián potvrdí (citát len so súhlasom klienta).
 - Uvítacia odmena je **prvá vzorka bez poštovného**, kód `VITAJTE` (rozhodnutie 7. 10. 2026, nahrádza WELCOME5). Kód v Shopify už existuje (doprava vzorky 0 €, overené výpočtom objednávky v Shopify).
 - Fotky vybral Martin 7. 10. 2026 v troch kolách. Zábery výroby v 18 sú ilustračné (Higgsfield) a vychádzajú z fotiek skutočných fabrík na sinterovaný kameň. Kaštieľ v 13 je skutočná fotka z titulnej stránky webu.
