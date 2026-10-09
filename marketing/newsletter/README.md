@@ -82,7 +82,7 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 | 31 | Pozvánka do showroomu | Kampaň február 2027 | Celé platne naživo v kaštieli v Bošanoch | skontrolované |
 | 32 | Dekor v detaile | Kampaň marec 2027 | Wild Forest: kresba pre veľké plochy | skontrolované |
 | 33 | Spolupráca so štúdiom | Kampaň marec 2027 | Návrh kuchyne a doska: ako ich zladiť | skontrolované |
-| 34 | Otázka k dopytu (čistý text) | CRM – jednorazovo, po schválení Mariánom | Krátka otázka k vašej pracovnej doske | na kontrole, odkaz na prihlásenie treba doplniť |
+| 34 | Otázka k dopytu (čistý text) | CRM – jednorazovo, po schválení Mariánom | Krátka otázka k vašej pracovnej doske | skontrolované, odkaz na prihlásenie treba doplniť |
 
 **Neposielame:** tip šesť mesiacov po montáži a Výročie (rozhodnutie Martina zo 7. 10. 2026). Potvrdenie objednávky vzorky posiela Shopify a potvrdenie dopytu web, tie netreba písať.
 

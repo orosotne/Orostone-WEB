@@ -237,4 +237,8 @@ Po audite CRM z 8. 10. 2026: osobný list od Mariána v čistom texte (**34 – 
 | 3 | 34 | …prihláste sa tu: [odkaz na prihlásenie]. Posielame ich len tým, ktorí sa prihlásia. | …prihláste sa tu: [odkaz na prihlásenie]. Posielame ich len so súhlasom. | štylistika | Tesné opakovanie *prihláste sa / prihlásia* v susedných vetách. | zapracované |
 | 4 | 22 | Podľa odpovede vám budeme posielať realizácie a rady… | Podľa odpovede vám budeme posielať ukážky realizácií a rady… | lexika | Rovnaký prípad ako č. 2, opravené kvôli jednotnosti. | zapracované |
 
+## Kolo 16 – Codex review v PR #100 (9. 10. 2026, po oprave z kola 15)
+
+Codex na `3f1fe9a` nenašiel žiadne pripomienky. E-mail 34 je jazykovo skontrolovaný vrátane troch variantov prvej vety, opravy v 22 a nového pravidla v `slovnik.md`.
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
