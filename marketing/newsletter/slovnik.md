@@ -106,6 +106,7 @@ Pravidlá, ktoré vznikli pri kontrole a platia ďalej. Najnovšie hore.
 
 | Dátum | Pravidlo | Príklad |
 |---|---|---|
+| 9. 10. 2026 | Realizácia je hotová kuchyňa u klienta (sekcia 4), preto ju neposielame. Posielame jej *ukážku* alebo *fotky*. | Posielame ukážku jednej realizácie alebo radu, ako si vybrať dosku. |
 | 7. 10. 2026 | Kalky z angličtiny: nie *pre mierku* (for scale), ale *na porovnanie veľkosti*; nie *držať kuchyňu svetlú*, ale *kuchyňa zostáva svetlá*. Vo výpočte s protikladom (*priniesť svetlo, nie pozornosť*) musí sloveso sedieť k obom členom. | Celá platňa vedľa človeka na porovnanie veľkosti. · Doska má priestor rozjasniť a nepútať na seba pozornosť. |
 | 7. 10. 2026 | Odborné termíny: *kryštalický oxid kremičitý* (nie *kremík*, to je prvok). Vzorku klient *vezme do ruky*, štúdio nás *zapojí do návrhu* (nie hovorové *chytiť*, *pribrať*). | Obsah kryštalického oxidu kremičitého nepresahuje 1 %. |
 | 7. 10. 2026 | Ani v rozlúčkovom e-maile nepíšeme, čo automatizácia urobí, keď čitateľ neklikne (sekcia 1). Stačí, čo má urobiť, ak chce e-maily dostávať. | Ak chcete e-maily dostávať ďalej, kliknite na tlačidlo. |
