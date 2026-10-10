@@ -1,9 +1,12 @@
 // Shopify CDN resizes images on the fly via ?width= — used by the product page, the catalog and the mega menu
 // so the same URLs (and the browser cache) are shared between them.
+// Shopify's ?v= is kept: the CDN caches for a year, so a photo replaced in Shopify under the same file name only
+// reaches returning visitors through the new ?v=.
 
 export const shopifyImageUrl = (url: string, width: number): string => {
-  const base = url.replace(/(\?.*)?$/, '');
-  return `${base}?width=${width}&quality=80`;
+  const [base, query = ''] = url.split('?');
+  const version = query.match(/(?:^|&)v=([^&]+)/)?.[1];
+  return `${base}?${version ? `v=${version}&` : ''}width=${width}&quality=80`;
 };
 
 export const shopifySrcSet = (url: string): string | undefined => {
