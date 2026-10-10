@@ -32,7 +32,7 @@ const FAQ_ITEMS = VYHODY_FAQ;
 
 // One visualization per benefit (zip by index with VYHODY_BENEFITS): the property shown, not described.
 const BENEFIT_IMAGES = [
-  { base: 'vyhody-teplo', alt: 'Hrniec z nehrdzavejúcej ocele priamo na pracovnej doske Gothic Gold' },
+  { base: 'vyhody-teplo', alt: 'Horúci hrniec z nehrdzavejúcej ocele s pokrievkou priamo na pracovnej doske Gothic Gold' },
   { base: 'vyhody-nasiakavost', alt: 'Sprchový kút obložený veľkoformátovými platňami Statuario Diamante' },
   { base: 'vyhody-skvrny', alt: 'Pohár červeného vína, káva a citrón na doske Calacatta Top, pohľad zhora' },
   { base: 'vyhody-uv', alt: 'Ostrovček Calacatta Top pri veľkom okne v slnečnom svetle' },

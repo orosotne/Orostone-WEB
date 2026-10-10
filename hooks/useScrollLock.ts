@@ -2,21 +2,24 @@ import { useEffect, useRef } from 'react';
 
 /**
  * Locks page scroll when `locked` is true.
- * Uses the iOS-safe `position: fixed` technique so the page doesn't
- * jump to top on Safari. Restores the exact scroll position on unlock.
  *
- * Safe for concurrent overlays: only the first lock captures the scroll
- * position and only the last unlock restores it.
+ * Current browsers (Safari 16+, Chrome, Firefox, the Facebook/Instagram in-app browsers on them): `overflow: hidden`
+ * on the root is enough, touch scrolling included. The page keeps its scroll position, so nothing moves under the
+ * overlay, sticky elements stay stuck and the browser's toolbars don't spring open (which shifted the whole page on
+ * open and again on close). Only the root is locked: `overflow: hidden` on <body> would turn it into the scroll
+ * container of every sticky element and unstick them.
  *
- * If a link inside the overlay navigated to another page meanwhile, the old
- * position is not restored: the new page starts at the top.
+ * Older iOS ignores that and needs the body pinned with `position: fixed` (with the exact scroll position restored
+ * on unlock). Safari 16, which fixed it, also brought `overflow: clip`, so its support tells the two apart. There,
+ * sticky elements (the product gallery, catalog filter bar, …) would come unstuck while the body is fixed; they are
+ * held in place with a `translate` for the duration of the lock. If a link inside the overlay navigated to another
+ * page meanwhile, the old position is not restored: the new page starts at the top.
  *
- * Sticky elements (the product gallery, catalog filter bar, …) would come
- * unstuck while the body is fixed and jump behind a translucent scrim; they
- * are held in place with a `translate` for the duration of the lock.
+ * Safe for concurrent overlays: only the first lock takes effect and only the last unlock releases it.
  */
 
 let lockCount = 0;
+let pinned = false;
 let savedScrollY = 0;
 let savedPath = '';
 let heldSticky: Array<{ el: HTMLElement; translate: string }> = [];
@@ -31,15 +34,26 @@ let savedStyles: {
   bodyWidth: string;
 } | null = null;
 
+const EMPTY_STYLES = { htmlOverflow: '', bodyOverflow: '', bodyPosition: '', bodyTop: '', bodyLeft: '', bodyRight: '', bodyWidth: '' };
+
 /** Tailwind sticky elements (`sticky`, `lg:sticky` …) that are sticky at the current width. */
 const stickyElements = (): HTMLElement[] =>
   Array.from(document.querySelectorAll<HTMLElement>('[class~="sticky"], [class*=":sticky"]')).filter(
     (el) => getComputedStyle(el).position === 'sticky',
   );
 
+const needsPinnedBody = () => typeof CSS !== 'undefined' && !CSS.supports('overflow', 'clip');
+
 function lock() {
   lockCount++;
   if (lockCount > 1) return;
+
+  pinned = needsPinnedBody();
+  if (!pinned) {
+    savedStyles = { ...EMPTY_STYLES, htmlOverflow: document.documentElement.style.overflow };
+    document.documentElement.style.overflow = 'hidden';
+    return;
+  }
 
   savedScrollY = window.scrollY;
   savedPath = window.location.pathname;
@@ -76,6 +90,10 @@ function unlock() {
   if (lockCount > 0 || !savedStyles) return;
 
   document.documentElement.style.overflow = savedStyles.htmlOverflow;
+  if (!pinned) {
+    savedStyles = null;
+    return;
+  }
   document.body.style.overflow = savedStyles.bodyOverflow;
   document.body.style.position = savedStyles.bodyPosition;
   document.body.style.top = savedStyles.bodyTop;

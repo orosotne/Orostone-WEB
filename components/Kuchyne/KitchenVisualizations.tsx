@@ -66,8 +66,10 @@ export const KitchenVisualizations: React.FC<{ className?: string }> = ({ classN
     if (!frame) return null;
     const rect = frame.getBoundingClientRect();
     const img = frame.querySelector('img');
-    const aspect = img && img.naturalWidth ? img.naturalWidth / img.naturalHeight : rect.width / rect.height;
-    return { rect, aspect };
+    const loaded = img && img.naturalWidth > 0 ? img : null;
+    const aspect = loaded ? loaded.naturalWidth / loaded.naturalHeight : rect.width / rect.height;
+    // the page photo (already loaded) lies under the full-size one until it arrives
+    return { rect, aspect, src: loaded?.currentSrc };
   }, []);
 
   const active = KITCHEN_VISUALIZATIONS[opened.kitchen];
