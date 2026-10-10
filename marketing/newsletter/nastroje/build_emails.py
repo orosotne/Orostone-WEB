@@ -1095,7 +1095,7 @@ write("07-welcome-ako-vybrat-dekor.html", doc(
         "PREDMET:": "Tri otázky pred výberom dekoru",
         "PREHEADER:": "Týkajú sa svetla, skriniek a veľkosti plochy. Na konci sa vás opýtame, kedy plánujete novú kuchyňu.",
         "CIEĽ:": "Edukácia + zistiť horizont projektu (klik = vlastnosť horizont v profile)",
-        "POZNÁMKA:": "Tlačidlá voľby cez Klaviyo zapíšu do profilu vlastnosť horizont (do-3-mesiacov, 3-12-mesiacov, inspiracia) a presmerujú na Realizácie s parametrom horizont=…, kde web poďakuje za odpoveď. Pri do-3-mesiacov dostane Marián upozornenie.",
+        "POZNÁMKA:": "Tlačidlá voľby cez Klaviyo zapíšu do profilu vlastnosť horizont (do-3-mesiacov, 3-12-mesiacov, inspiracia) a presmerujú na Realizácie s parametrom horizont=…, kde web poďakuje za odpoveď (PR #110). Pri do-3-mesiacov dostane Marián upozornenie.",
     },
     "Tri otázky pred výberom dekoru",
     "Týkajú sa svetla, skriniek a veľkosti plochy. Na konci sa vás opýtame, kedy plánujete novú kuchyňu.",
