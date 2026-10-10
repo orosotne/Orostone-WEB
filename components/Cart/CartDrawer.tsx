@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { m, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence, useDragControls, type PanInfo } from 'framer-motion';
 import { X, Minus, Plus, ShoppingBag, Trash2, ExternalLink, Wrench, Info, ChevronUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
-import { formatPrice } from '../../lib/utils';
+import { formatPrice, titleCase } from '../../lib/utils';
 import { shopifySized } from '../../lib/shopifyImage';
 import { useCookies } from '../../context/CookieContext';
 import { trackMetaEvent, savePendingPurchase } from '../../hooks/useMetaPixel';
 import { trackGA4BeginCheckout } from '../../services/analytics';
 import { ActionButton, chipClass } from '../Design';
+import { useScrollLock } from '../../hooks/useScrollLock';
+import { FADE, SPRING_SHEET, projectMomentum } from '../../lib/motion';
 
 const INSTALLATION_STORAGE_KEY = 'orostone_installation_data';
 
@@ -23,14 +25,30 @@ interface InstallationData {
 }
 
 const ICON_BUTTON =
-  'grid h-11 w-11 flex-none place-items-center rounded-full text-brand-muted transition-colors hover:bg-brand-sand hover:text-brand-dark disabled:opacity-40';
-const SMALL_PRINT = 'text-[0.78rem] font-light leading-relaxed text-brand-muted';
+  'grid h-11 w-11 flex-none place-items-center rounded-full text-brand-muted os-press hover:bg-brand-sand hover:text-brand-dark disabled:opacity-40';
+const SMALL_PRINT = 'text-[0.78rem] font-normal leading-relaxed text-brand-muted';
 const NOTE_BOX = 'flex items-start gap-2.5 rounded-[3px] bg-brand-sand px-3.5 py-3';
 
 export const CartDrawer: React.FC = () => {
   const { items, isOpen, closeCart, removeItem, updateQuantity, itemCount, subtotal, total, totalDiscount, subtotalBeforeDiscount, appliedDiscountTitles, checkoutUrl, isLoading, error, clearError, productItems, sampleItems } = useCart();
   const { preferences } = useCookies();
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const dragControls = useDragControls();
+
+  // The page behind the drawer stays put while the cart is open
+  useScrollLock(isOpen);
+
+  // Touch only: drag the drawer back to the right to close it. A mouse keeps selecting text as usual.
+  const startDrag = (e: React.PointerEvent) => {
+    if (e.pointerType === 'touch') dragControls.start(e);
+  };
+  // Close when the flick would carry the drawer past half its width (velocity projected the way scrolling
+  // decelerates); otherwise it springs back. The exit animation then continues from the finger's position.
+  const handleDragEnd = (_: unknown, info: PanInfo) => {
+    const width = drawerRef.current?.offsetWidth ?? 440;
+    if (info.offset.x + projectMomentum(info.velocity.x) > width / 2) closeCart();
+  };
 
   // Load installation data from localStorage
   const [installationData, setInstallationData] = useState<InstallationData | null>(null);
@@ -94,17 +112,30 @@ export const CartDrawer: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            transition={FADE}
             className="fixed inset-0 z-[70] bg-brand-dark/45"
             onClick={closeCart}
           />
 
           {/* Drawer */}
           <m.div
+            ref={drawerRef}
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
-            transition={{ type: 'tween', duration: 0.2, ease: 'easeOut' }}
+            transition={SPRING_SHEET}
+            drag="x"
+            dragControls={dragControls}
+            dragListener={false}
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={{ left: 0.04, right: 1 }}
+            dragMomentum={false}
+            // critically damped return when the flick was too short to close
+            dragTransition={{ bounceStiffness: 400, bounceDamping: 40 }}
+            onPointerDown={startDrag}
+            onDragEnd={handleDragEnd}
+            // vertical pans stay native (the item list scrolls); sideways moves are left to the drag
+            style={{ touchAction: 'pan-y' }}
             role="dialog"
             aria-modal="true"
             aria-labelledby="cart-title"
@@ -115,7 +146,7 @@ export const CartDrawer: React.FC = () => {
               <h2 id="cart-title" className="text-[1.3rem] font-semibold">
                 Košík
                 {itemCount > 0 && (
-                  <span className="ml-2 text-[0.88rem] font-light tabular-nums text-brand-muted">
+                  <span className="ml-2 text-[0.88rem] font-normal tabular-nums text-brand-muted">
                     {itemCount} {itemCount === 1 ? 'položka' : itemCount < 5 ? 'položky' : 'položiek'}
                   </span>
                 )}
@@ -141,7 +172,7 @@ export const CartDrawer: React.FC = () => {
             )}
 
             {/* Content */}
-            <div className="flex-1 overflow-y-auto overscroll-contain">
+            <div className="flex-1 overflow-y-auto overscroll-contain [touch-action:pan-y]">
               {items.length === 0 ? (
                 <div className="flex h-full flex-col items-center justify-center p-8 text-center">
                   <div className="mb-6 grid h-20 w-20 place-items-center rounded-full bg-brand-sand">
@@ -191,11 +222,11 @@ export const CartDrawer: React.FC = () => {
 
                             {/* Info */}
                             <div className="min-w-0 flex-1">
-                              <h3 className="truncate text-[0.95rem] font-semibold tracking-[0.04em]">
-                                {item.name}
+                              <h3 className="truncate text-[0.95rem] font-semibold">
+                                {titleCase(item.name)}
                               </h3>
                               {item.variant && (
-                                <p className="mt-0.5 text-[0.84rem] font-light text-brand-muted">
+                                <p className="mt-0.5 text-[0.84rem] font-normal text-brand-muted">
                                   {item.variant}
                                 </p>
                               )}
@@ -223,7 +254,7 @@ export const CartDrawer: React.FC = () => {
                                   <button
                                     type="button"
                                     onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                    className="grid h-10 w-10 place-items-center rounded-l-[10px] transition-colors hover:bg-brand-sand disabled:opacity-40"
+                                    className="grid h-10 w-10 place-items-center rounded-l-[10px] os-press hover:bg-brand-sand disabled:opacity-40"
                                     disabled={isLoading}
                                     aria-label={`Znížiť počet: ${item.name}`}
                                   >
@@ -235,7 +266,7 @@ export const CartDrawer: React.FC = () => {
                                   <button
                                     type="button"
                                     onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                                    className="grid h-10 w-10 place-items-center rounded-r-[10px] transition-colors hover:bg-brand-sand disabled:opacity-40"
+                                    className="grid h-10 w-10 place-items-center rounded-r-[10px] os-press hover:bg-brand-sand disabled:opacity-40"
                                     disabled={isLoading}
                                     aria-label={`Zvýšiť počet: ${item.name}`}
                                   >
@@ -290,9 +321,9 @@ export const CartDrawer: React.FC = () => {
                               {/* Info */}
                               <div className="min-w-0 flex-1">
                                 <h4 className="truncate text-[0.9rem] font-medium">
-                                  {item.name}
+                                  {titleCase(item.name)}
                                 </h4>
-                                <p className="mt-0.5 text-[0.78rem] font-light text-brand-muted">
+                                <p className="mt-0.5 text-[0.78rem] font-normal text-brand-muted">
                                   {item.variant}
                                 </p>
                                 <p className="mt-0.5 text-[0.78rem] font-medium tabular-nums">
@@ -347,23 +378,23 @@ export const CartDrawer: React.FC = () => {
                             </div>
                             {installationData.installation_area_m2 > 0 ? (
                               <>
-                                <p className="mt-1 text-[0.84rem] font-light text-brand-muted">
+                                <p className="mt-1 text-[0.84rem] font-normal text-brand-muted">
                                   Sprostredkovaná služba • {installationData.installation_area_m2} m²
                                 </p>
                                 <p className="mt-1 font-semibold tabular-nums">
                                   {formatPrice(installationData.installation_price_estimate_vat)}
-                                  <span className="ml-1 text-[0.78rem] font-light text-brand-muted">s DPH</span>
+                                  <span className="ml-1 text-[0.78rem] font-normal text-brand-muted">s DPH</span>
                                 </p>
-                                <p className="mt-1 text-[0.78rem] font-light text-brand-muted">
+                                <p className="mt-1 text-[0.78rem] font-normal text-brand-muted">
                                   Orientačná cena – potvrdí sa po zameraní
                                 </p>
                               </>
                             ) : (
                               <>
-                                <p className="mt-1 text-[0.84rem] font-light text-brand-muted">
+                                <p className="mt-1 text-[0.84rem] font-normal text-brand-muted">
                                   Sprostredkovaná služba • plocha na dohodnutie
                                 </p>
-                                <p className="mt-1 text-[0.78rem] font-light text-brand-muted">
+                                <p className="mt-1 text-[0.78rem] font-normal text-brand-muted">
                                   Budeme vás kontaktovať o ďalšom postupe
                                 </p>
                               </>
@@ -406,7 +437,7 @@ export const CartDrawer: React.FC = () => {
                   onClick={() => setIsSummaryExpanded(prev => !prev)}
                   aria-expanded={isSummaryExpanded}
                   aria-controls="cart-summary-details"
-                  className="flex min-h-[44px] w-full items-center justify-center gap-1.5 px-6 pt-2 text-[0.8rem] font-medium text-brand-muted transition-colors hover:text-brand-dark"
+                  className="flex min-h-[44px] w-full items-center justify-center gap-1.5 px-6 pt-2 text-[0.8rem] font-medium text-brand-muted os-press hover:text-brand-dark"
                 >
                   <m.span
                     animate={{ rotate: isSummaryExpanded ? 180 : 0 }}
@@ -469,7 +500,7 @@ export const CartDrawer: React.FC = () => {
                                 Ušetríte {Math.round((totalDiscount / subtotalBeforeDiscount) * 100)}%
                               </span>
                               {appliedDiscountTitles[0] && (
-                                <p className="mt-0.5 truncate text-[0.78rem] font-light text-brand-muted">
+                                <p className="mt-0.5 truncate text-[0.78rem] font-normal text-brand-muted">
                                   {appliedDiscountTitles[0]}
                                 </p>
                               )}
@@ -530,7 +561,7 @@ export const CartDrawer: React.FC = () => {
                     <span>Celkom</span>
                     <span className="flex items-baseline gap-2 tabular-nums">
                       {totalDiscount > 0 && (
-                        <span className="text-[0.84rem] font-light text-brand-muted line-through">
+                        <span className="text-[0.84rem] font-normal text-brand-muted line-through">
                           {formatPrice(subtotalBeforeDiscount)}
                         </span>
                       )}
@@ -549,7 +580,7 @@ export const CartDrawer: React.FC = () => {
                     type="button"
                     onClick={handleCheckout}
                     disabled={!checkoutUrl || isLoading}
-                    className="flex min-h-[54px] w-full items-center justify-center gap-3 rounded-[10px] bg-brand-dark px-6 text-[0.78rem] font-bold uppercase tracking-[0.12em] text-brand-light transition-colors hover:bg-[#333331] disabled:opacity-50"
+                    className="flex min-h-[54px] w-full items-center justify-center gap-3 rounded-[10px] bg-brand-dark px-6 text-[0.78rem] font-bold uppercase tracking-[0.12em] text-brand-light os-press hover:bg-[#333331] disabled:opacity-50"
                   >
                     {isLoading ? (
                       <>

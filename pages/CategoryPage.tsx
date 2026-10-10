@@ -225,11 +225,7 @@ export const CategoryPage: React.FC = () => {
                     key={product.id}
                     product={product}
                     priority={i < 4}
-                    onAddToCart={() => {
-                      if (product.shopifyVariantId) {
-                        addItem(product.shopifyVariantId, 1);
-                      }
-                    }}
+                    onAddToCart={() => (product.shopifyVariantId ? addItem(product.shopifyVariantId, 1) : undefined)}
                     inCart={isInCart(product.id)}
                     quantity={getItemQuantity(product.id)}
                   />

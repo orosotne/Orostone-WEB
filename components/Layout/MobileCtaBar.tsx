@@ -41,7 +41,7 @@ export const MobileCtaBar: React.FC = () => {
       <a
         href="tel:+421917588738"
         aria-label="Zavolať +421 917 588 738"
-        className="grid h-[50px] w-[50px] flex-none place-items-center rounded-[10px] bg-brand-dark text-brand-light"
+        className="os-press grid h-[50px] w-[50px] flex-none place-items-center rounded-[10px] bg-brand-dark text-brand-light"
       >
         <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
           <path fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" d="M5.2 3.5h3.1l1.6 4.2-2 1.3a11 11 0 0 0 5.1 5.1l1.3-2 4.2 1.6v3.1a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3.2 5.7a2 2 0 0 1 2-2.2Z" />

@@ -216,7 +216,7 @@ export const ReklamacieAVratenie: React.FC = () => {
                 <div className="flex items-start gap-3">
                   <div>
                     <h3 className="mb-1 text-[1.1rem] font-semibold text-brand-dark">Vzorový formulár na odstúpenie od zmluvy</h3>
-                    <p className="text-sm font-light text-brand-muted">
+                    <p className="text-sm font-normal text-brand-muted">
                       Podľa zákona č. 108/2024 Z.&nbsp;z. o ochrane spotrebiteľa
                     </p>
                   </div>

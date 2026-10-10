@@ -6,6 +6,8 @@ import { VISIBLE_CATEGORIES } from '../../config/features';
 import { useShopifyProducts } from '../../hooks/useShopifyProducts';
 import type { ProductColorTone, ShopProduct } from '../../constants';
 import { shopifySized, shopifySrcSet } from '../../lib/shopifyImage';
+import { titleCase } from '../../lib/utils';
+import { SPRING } from '../../lib/motion';
 
 // ===========================================
 // TYPES
@@ -253,7 +255,7 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -10 }}
-        transition={{ duration: 0.25, ease: 'easeOut' }}
+        transition={SPRING}
         className="absolute left-0 right-0 top-full z-50 border-t border-brand-line bg-brand-light shadow-[0_24px_40px_-24px_rgba(26,26,26,0.25)]"
       >
         <div className="mx-auto max-w-os px-[var(--os-edge)] py-10">
@@ -285,7 +287,7 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
-      transition={{ duration: 0.25, ease: 'easeOut' }}
+      transition={SPRING}
       className="absolute left-0 right-0 top-full z-50 border-t border-brand-line bg-brand-light shadow-[0_24px_40px_-24px_rgba(26,26,26,0.25)]"
     >
       <div className="mx-auto max-w-os px-[var(--os-edge)]">
@@ -346,7 +348,7 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
             <div className="flex items-center justify-between mb-5">
               <h3 className="text-os-eyebrow uppercase text-brand-muted">
                 {filterLabel}
-                <span className="ml-2 text-brand-muted/60">({displayProducts.length})</span>
+                <span className="ml-2 tabular-nums text-brand-muted">({displayProducts.length})</span>
               </h3>
 
               {/* Desktop navigation arrows */}
@@ -404,7 +406,7 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
+                    transition={SPRING}
                     className="flex-shrink-0 w-[180px] lg:w-[200px] snap-start"
                   >
                     <Link
@@ -423,7 +425,7 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
                         />
                       </div>
                       <h4 className="truncate text-[0.88rem] font-medium text-brand-dark">
-                        {product.name}
+                        {titleCase(product.name)}
                       </h4>
                       <p className="mt-0.5 text-[0.8rem] font-normal text-brand-muted">
                         {product.pricePerM2} €/m²

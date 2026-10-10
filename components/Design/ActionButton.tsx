@@ -42,7 +42,7 @@ export const ActionButton: React.FC<ActionButtonProps> = ({
   onClick,
   className = '',
 }) => {
-  const cls = `inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-[10px] font-bold uppercase leading-none tracking-[0.12em] no-underline transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-50 ${SIZE_CLASSES[size]} ${VARIANT_CLASSES[variant]} ${className}`;
+  const cls = `os-press inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-[10px] font-bold uppercase leading-none tracking-[0.12em] no-underline disabled:cursor-not-allowed disabled:opacity-50 ${SIZE_CLASSES[size]} ${VARIANT_CLASSES[variant]} ${className}`;
   const content = (
     <>
       {children}

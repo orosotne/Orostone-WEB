@@ -4,12 +4,16 @@ import { ChevronDown } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { resolveCountryOfOrigin } from '../../constants';
 import type { ShopProduct } from '../../constants';
+import { Container, Eyebrow } from '../Design';
+import { REVEAL, SPRING } from '../../lib/motion';
+import { LIGHT_TONE_BG, type LightTone } from './types';
 
 interface TechnicalOverviewProps {
   product: ShopProduct;
+  tone?: LightTone;
 }
 
-export const TechnicalOverview: React.FC<TechnicalOverviewProps> = ({ product }) => {
+export const TechnicalOverview: React.FC<TechnicalOverviewProps> = ({ product, tone = 'chalk' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const specs = [
     { label: 'Materiál', value: product.material || 'Sinterovaný kameň' },
@@ -23,65 +27,53 @@ export const TechnicalOverview: React.FC<TechnicalOverviewProps> = ({ product })
   ];
 
   const specGrid = (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-px bg-brand-line">
+    <div className="grid grid-cols-1 gap-px bg-brand-line sm:grid-cols-2 lg:grid-cols-4">
       {specs.map((spec, index) => (
         <div key={index} className="bg-white p-4 lg:p-6">
-          <span className="text-xs lg:text-[10px] font-bold tracking-[0.15em] uppercase text-brand-muted block mb-2">
-            {spec.label}
-          </span>
-          <span className="text-base sm:text-lg font-medium text-brand-dark">
-            {spec.value}
-          </span>
+          <span className="mb-2 block text-os-eyebrow uppercase text-brand-muted">{spec.label}</span>
+          <span className="text-base font-medium text-brand-dark sm:text-lg">{spec.value}</span>
         </div>
       ))}
     </div>
   );
 
   return (
-    <section className="py-10 lg:py-16 bg-[#F9F9F7]">
-      <div className="container mx-auto px-6">
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+    <section className={`py-10 lg:py-16 ${LIGHT_TONE_BG[tone]}`}>
+      <Container>
+        <m.div {...REVEAL}>
           <div className="lg:hidden">
             <button
+              type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="w-full flex items-center justify-between py-2"
+              aria-expanded={isOpen}
+              className="flex min-h-[44px] w-full items-center justify-between py-2 transition-opacity active:opacity-60"
             >
-              <h2 className="flex items-center gap-3.5 text-os-eyebrow uppercase text-brand-dark before:h-px before:w-7 before:bg-current before:opacity-75 before:content-['']">
+              <Eyebrow as="h2" className="text-brand-dark">
                 Technické parametre
-              </h2>
+              </Eyebrow>
               <ChevronDown
                 size={20}
-                className={cn(
-                  "text-brand-dark transition-transform duration-300",
-                  isOpen && "rotate-180"
-                )}
+                className={cn('text-brand-dark transition-transform duration-300', isOpen && 'rotate-180')}
               />
             </button>
             <m.div
               initial={false}
               animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              transition={SPRING}
               className="overflow-hidden"
             >
-              <div className="pt-4">
-                {specGrid}
-              </div>
+              <div className="pt-4">{specGrid}</div>
             </m.div>
           </div>
 
           <div className="hidden lg:block">
-            <h2 className="flex items-center gap-3.5 text-os-eyebrow uppercase text-brand-dark before:h-px before:w-7 before:bg-current before:opacity-75 before:content-[''] mb-8">
+            <Eyebrow as="h2" className="mb-8 text-brand-dark">
               Technické parametre
-            </h2>
+            </Eyebrow>
             {specGrid}
           </div>
         </m.div>
-      </div>
+      </Container>
     </section>
   );
 };

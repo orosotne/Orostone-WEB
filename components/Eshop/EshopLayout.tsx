@@ -6,6 +6,7 @@ import { SiteHeader } from '../Layout/SiteHeader';
 import { MobileCtaBar } from '../Layout/MobileCtaBar';
 import { getVisibleCategories } from './EshopMegaMenu';
 import { CartDrawer } from '../Cart/CartDrawer';
+import { CartErrorToast } from '../UI/Toast';
 import { CookieBanner } from '../UI/CookieBanner';
 import { CookieSettings } from '../UI/CookieSettings';
 import { SHOW_ANNOUNCEMENT_BAR } from '../../constants';
@@ -55,6 +56,7 @@ export const EshopLayout: React.FC<EshopLayoutProps> = ({ children }) => {
 
       {/* Cart Drawer (slide-in panel) */}
       <CartDrawer />
+      <CartErrorToast />
 
       {/* Main Content — homepage has no top padding (hero goes behind transparent navbar) */}
       {/* min-h-svh reserves viewport height so the footer starts below the fold during initial

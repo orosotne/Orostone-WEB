@@ -83,7 +83,7 @@ export const OdstupeniOdZmluvy: React.FC = () => {
       <div className="max-w-[860px]">
         {/* Info box */}
         <div className="mb-8 rounded-r-[3px] border-l-2 border-brand-dark bg-brand-sand p-6 print:hidden">
-          <p className="text-sm font-light leading-relaxed">
+          <p className="text-sm font-normal leading-relaxed">
             <strong className="text-brand-dark">Ako postupovať:</strong> 1. Vyplňte všetky polia nižšie. 2. Kliknite na „Vytlačiť formulár“. 3. Vytlačený formulár podpíšte. 4. Podpísaný formulár nám zašlite e-mailom (naskenovaný alebo odfotografovaný) alebo poštou pred uplynutím 14-dňovej lehoty od prevzatia tovaru.
           </p>
         </div>
@@ -99,7 +99,7 @@ export const OdstupeniOdZmluvy: React.FC = () => {
               <h2 className="mb-1 text-[1.25rem] font-semibold text-brand-dark">
                 Oznámenie o odstúpení od zmluvy
               </h2>
-              <p className="text-sm font-light text-brand-muted">
+              <p className="text-sm font-normal text-brand-muted">
                 Vzorový formulár podľa zákona č. 108/2024 Z.&nbsp;z. o ochrane spotrebiteľa
               </p>
             </div>
@@ -108,7 +108,7 @@ export const OdstupeniOdZmluvy: React.FC = () => {
           {/* Adresát */}
           <div className="mb-8">
             <p className={`${groupLabel} mb-3`}>Adresát (predávajúci)</p>
-            <div className="rounded-[3px] bg-brand-sand p-5 text-sm font-light leading-relaxed">
+            <div className="rounded-[3px] bg-brand-sand p-5 text-sm font-normal leading-relaxed">
               <p className="font-semibold text-brand-dark">Orostone s.r.o.</p>
               <p>Landererova 8, 811 09 Bratislava</p>
               <p>IČO: 55 254 772</p>
@@ -231,7 +231,7 @@ export const OdstupeniOdZmluvy: React.FC = () => {
         {/* Info o lehote */}
         <div className="mt-8 border-t border-brand-line pt-8 print:hidden">
           <h3 className="mb-3 text-os-eyebrow uppercase text-brand-dark">Dôležité informácie</h3>
-          <ul className="space-y-2 text-sm font-light leading-relaxed text-brand-dark/85">
+          <ul className="space-y-2 text-sm font-normal leading-relaxed text-brand-dark/85">
             <li>• Spotrebiteľ môže odstúpiť od zmluvy do <strong>14 dní</strong> od prevzatia tovaru.</li>
             <li>• Tovar je potrebné zaslať späť najneskôr do 14 dní odo dňa odstúpenia od zmluvy.</li>
             <li>• Náklady na vrátenie tovaru znáša spotrebiteľ.</li>

@@ -74,10 +74,28 @@ async function retryImport<T extends ComponentType<unknown>>(
   throw new Error('Unreachable');
 }
 
-/** Keeps a number and its unit on one line in headings: "20 mm", "300 °C", "20 %", "1 704 €". */
 /** "TAJ MAHAL" → "Taj Mahal": product names come uppercase from Shopify, headings use title case. */
 export const titleCase = (text: string): string =>
   text.toLocaleLowerCase('sk').replace(/(^|[\s-])(\S)/g, (_, sep: string, ch: string) => sep + ch.toLocaleUpperCase('sk'));
 
+/**
+ * Card blurb from a Shopify description: drops the product name when the text opens with it (the card title
+ * already says it) and writes the name in title case where it appears later.
+ * "GIVENCHY GOLD zaujme výrazným…" → "Zaujme výrazným…"; "V dekore WILD FOREST sa…" → "V dekore Wild Forest sa…".
+ */
+export const productBlurb = (description: string, name: string): string => {
+  let text = description.trim();
+  if (name && text.toLocaleUpperCase('sk').startsWith(`${name.toLocaleUpperCase('sk')} `)) {
+    text = text.slice(name.length).trimStart();
+    text = text.charAt(0).toLocaleUpperCase('sk') + text.slice(1);
+  }
+  return withProductName(text, name);
+};
+
+/** Writes the product name in title case inside a description (text or HTML): "Pre CALACATTA TOP sú…" → "Pre Calacatta Top sú…". */
+export const withProductName = (text: string, name: string): string =>
+  name ? text.split(name).join(titleCase(name)) : text;
+
+/** Keeps a number and its unit on one line in headings: "20 mm", "300 °C", "20 %", "1 704 €". */
 export const keepUnits = (text: string): string =>
   text.replace(/(\d) (mm|cm|m²|m|°C|%|€)(?=[\s,.:;!?)]|$)/g, '$1\u00A0$2');

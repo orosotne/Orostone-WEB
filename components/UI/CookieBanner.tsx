@@ -1,61 +1,65 @@
 import React from 'react';
 import { m, AnimatePresence } from 'framer-motion';
-import { Settings } from 'lucide-react';
 import { useCookies } from '../../context/CookieContext';
 import { useCartUI } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
+import { SPRING } from '../../lib/motion';
 
 const BUTTON =
-  'inline-flex min-h-[44px] sm:min-h-[48px] items-center justify-center rounded-[10px] px-3 text-center text-[0.7rem] font-bold uppercase leading-tight tracking-[0.1em] transition-colors duration-200';
+  'os-press inline-flex min-h-[44px] items-center justify-center rounded-[10px] px-3 text-center text-[0.7rem] font-bold uppercase leading-tight tracking-[0.1em]';
 
+/**
+ * Compact consent bar: one short paragraph and two equal buttons (reject / accept), so on a phone it covers
+ * well under a quarter of the screen. The full explanation of each category lives in the settings dialog.
+ */
 export const CookieBanner: React.FC = () => {
   const { hasConsented, isSettingsOpen, acceptAll, rejectAll, openSettings } = useCookies();
   const { isOpen: isCartOpen } = useCartUI();
 
   // The settings dialog and the cart drawer sit below this bar's z-index, so step aside while either is open
-  // (on a first visit the bar would otherwise cover the drawer's "Prejsť do pokladne" button)
-  if (hasConsented || isSettingsOpen || isCartOpen) return null;
+  // (on a first visit the bar would otherwise cover the drawer's "Prejsť do pokladne" button).
+  // The condition sits inside AnimatePresence, so the bar slides out instead of vanishing.
+  const visible = !hasConsented && !isSettingsOpen && !isCartOpen;
 
   return (
     <AnimatePresence>
-      <m.div
-        initial={{ y: 60, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: 60, opacity: 0 }}
-        transition={{ type: 'spring', damping: 30, stiffness: 180, delay: 1.5 }}
-        className="fixed bottom-0 left-0 right-0 z-[10002] p-2.5 pb-[calc(10px+env(safe-area-inset-bottom,0px))] sm:p-4 md:p-6 print:hidden"
-        role="region"
-        aria-label="Súhlas s cookies"
-      >
-        <div className="mx-auto max-w-[1080px] rounded-[3px] border border-brand-line bg-brand-light p-4 text-brand-dark shadow-[0_28px_70px_-24px_rgba(26,26,26,0.4)] sm:p-5 md:p-7">
-          <div className="flex flex-col gap-3.5 sm:gap-5 lg:flex-row lg:items-center lg:gap-10">
+      {visible && (
+        <m.div
+          key="cookie-banner"
+          initial={{ y: 24, opacity: 0 }}
+          animate={{ y: 0, opacity: 1, transition: { ...SPRING, delay: 1.5 } }}
+          exit={{ y: 24, opacity: 0, transition: { duration: 0.2 } }}
+          className="fixed bottom-0 left-0 right-0 z-[10002] p-2 pb-[calc(8px+env(safe-area-inset-bottom,0px))] sm:p-4 print:hidden"
+          role="region"
+          aria-label="Súhlas s cookies"
+        >
+          <div className="mx-auto max-w-[1080px] rounded-[10px] border border-brand-line bg-brand-light p-4 text-brand-dark shadow-[0_24px_60px_-24px_rgba(26,26,26,0.4)] sm:px-6 sm:py-5">
+            <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-8">
+              <div className="min-w-0 flex-1">
+                <h2 className="sr-only text-[1rem] font-semibold sm:not-sr-only sm:mb-1">Používame cookies a podobné technológie</h2>
+                <p className="text-[0.8rem] font-normal leading-snug text-brand-muted sm:text-[0.84rem] sm:leading-relaxed">
+                  Nevyhnutné cookies sú vždy aktívne, web bez nich nefunguje. Analytické a marketingové používame len
+                  s vaším súhlasom, ktorý môžete kedykoľvek zmeniť. Viac informácií v{' '}
+                  <Link to="/cookies" className="font-medium text-brand-dark underline underline-offset-4">
+                    zásadách cookies
+                  </Link>
+                  {' '}a{' '}
+                  <Link to="/ochrana-sukromia" className="font-medium text-brand-dark underline underline-offset-4">
+                    ochrane osobných údajov
+                  </Link>
+                  .{' '}
+                  <button
+                    type="button"
+                    onClick={openSettings}
+                    className="font-medium text-brand-dark underline underline-offset-4 transition-opacity active:opacity-60 [@media(pointer:coarse)]:-my-2 [@media(pointer:coarse)]:py-2"
+                  >
+                    Prispôsobiť nastavenia
+                  </button>
+                </p>
+              </div>
 
-            {/* Text */}
-            <div className="flex-1">
-              <h2 className="mb-1.5 text-[0.98rem] font-semibold sm:mb-2 sm:text-[1.05rem]">Používame cookies a podobné technológie</h2>
-              <p className="text-[0.8rem] font-light leading-snug text-brand-muted sm:text-[0.88rem] sm:leading-relaxed">
-                Na našom webe používame nevyhnutné cookies a podobné technológie
-                na zabezpečenie správneho fungovania, bezpečnosti a uloženia vašich nastavení.
-                Analytické a marketingové technológie používame iba s vaším súhlasom.
-                Svoje nastavenia môžete kedykoľvek zmeniť.
-              </p>
-              <p className="mt-1.5 text-[0.74rem] font-light leading-snug text-brand-muted sm:mt-2 sm:text-[0.78rem] sm:leading-relaxed">
-                Nevyhnutné technológie sú vždy aktívne, pretože sú potrebné na základné fungovanie webu.
-                Viac informácií v{' '}
-                <Link to="/cookies" className="font-medium text-brand-dark underline underline-offset-4">
-                  zásadách cookies
-                </Link>
-                {' '}a{' '}
-                <Link to="/ochrana-sukromia" className="font-medium text-brand-dark underline underline-offset-4">
-                  ochrane osobných údajov
-                </Link>.
-              </p>
-            </div>
-
-            {/* Buttons */}
-            <div className="flex flex-col gap-1 sm:gap-2 lg:w-[380px] lg:flex-none">
-              {/* Primary actions — Reject + Accept side by side, same size */}
-              <div className="grid grid-cols-2 gap-2.5">
+              {/* Reject and accept side by side, same size and weight of outline vs fill */}
+              <div className="grid grid-cols-2 gap-2 lg:w-[380px] lg:flex-none">
                 <button
                   type="button"
                   onClick={rejectAll}
@@ -71,21 +75,10 @@ export const CookieBanner: React.FC = () => {
                   Prijať všetko
                 </button>
               </div>
-
-              {/* Settings link */}
-              <button
-                type="button"
-                onClick={openSettings}
-                className="group inline-flex min-h-[44px] items-center justify-center gap-1.5 text-[0.88rem] font-medium text-brand-muted transition-colors hover:text-brand-dark"
-              >
-                <Settings className="h-3.5 w-3.5 transition-transform group-hover:rotate-45" />
-                Prispôsobiť nastavenia
-              </button>
             </div>
-
           </div>
-        </div>
-      </m.div>
+        </m.div>
+      )}
     </AnimatePresence>
   );
 };

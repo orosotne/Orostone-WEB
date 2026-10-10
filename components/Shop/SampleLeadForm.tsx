@@ -18,7 +18,7 @@ interface SampleLeadFormProps {
 
 const label = 'mb-1.5 block text-[0.7rem] font-bold uppercase tracking-[0.14em] text-brand-muted';
 const field =
-  'w-full rounded-[10px] border border-brand-line bg-white px-4 py-3 text-base text-brand-dark placeholder:text-brand-muted/50 transition-colors focus:border-brand-dark focus:outline-none';
+  'w-full rounded-[10px] border border-brand-line bg-white px-4 py-3 text-base text-brand-dark placeholder:text-brand-muted transition-colors focus:border-brand-dark focus:outline-none';
 
 /**
  * Free-sample request form (lead). Submits through submit-quote (Turnstile verified server-side)
@@ -189,10 +189,17 @@ export const SampleLeadForm: React.FC<SampleLeadFormProps> = ({ preselectedDekor
         options={{ theme: 'light', language: 'sk' }}
       />
 
+      {/* Until the terms box is ticked the button is a light outline (not a heavy grey block); while sending it stays dark */}
       <button
         type="submit"
         disabled={status === 'loading' || !agreedToVOP}
-        className="inline-flex min-h-[54px] w-full items-center justify-center gap-3 rounded-[10px] bg-brand-dark px-[26px] text-[0.78rem] font-bold uppercase leading-none tracking-[0.12em] text-brand-light transition-colors hover:bg-[#333331] disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
+        className={`os-press inline-flex min-h-[54px] w-full items-center justify-center gap-3 rounded-[10px] border px-[26px] text-[0.78rem] font-bold uppercase leading-none tracking-[0.12em] sm:w-auto ${
+          status === 'loading'
+            ? 'cursor-wait border-brand-dark bg-brand-dark text-brand-light'
+            : agreedToVOP
+              ? 'border-brand-dark bg-brand-dark text-brand-light hover:bg-[#333331]'
+              : 'cursor-not-allowed border-brand-line bg-brand-sand text-brand-muted'
+        }`}
       >
         {status === 'loading' ? (
           <>

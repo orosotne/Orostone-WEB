@@ -7,6 +7,8 @@ import { HOME_GUIDES } from './homeData';
 
 const easeWave = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 const A = 7; // wave amplitude in %
+// At rest the photo already peeks in under a thin gold wave, so the cards are not three empty dark blocks
+const REST = 0.2;
 
 /** clip-path polygon: a wavy edge that rises from the bottom (prog 0) to the top (prog 1) */
 const wavePoly = (prog: number, phase: number) => {
@@ -31,14 +33,23 @@ interface GuideCardProps {
   minutes: number;
 }
 
-/** Blog card: on hover/focus (on touch screens when scrolled into view) a gold wave pulls the article's hero photo up. */
+/** Wave edge of the photo layer and, a hair above it, of the gold layer. */
+const paint = (photo: HTMLElement, wave: HTMLElement, prog: number, phase: number) => {
+  photo.style.clipPath = wavePoly(prog, phase);
+  wave.style.clipPath = wavePoly(Math.min(1, prog + 0.025 * Math.sin(Math.PI * prog)), phase + 0.25);
+};
+
+/**
+ * Blog card: the article's hero photo peeks in at the bottom under a gold wave; on hover/focus (on touch screens
+ * when scrolled into view) the wave pulls the photo all the way up.
+ */
 const GuideCard: React.FC<GuideCardProps> = ({ slug, title, titleEm, image, category, minutes }) => {
   const cardRef = useRef<HTMLAnchorElement>(null);
   const photoRef = useRef<HTMLSpanElement>(null);
   const waveRef = useRef<HTMLSpanElement>(null);
-  const anim = useRef({ p: 0, from: 0, to: 0, start: 0, dur: 1, raf: 0 });
+  const anim = useRef({ p: REST, from: REST, to: REST, start: 0, dur: 1, raf: 0 });
 
-  const run = (target: 0 | 1) => {
+  const run = (target: number) => {
     const card = cardRef.current;
     const photo = photoRef.current;
     const wave = waveRef.current;
@@ -47,19 +58,19 @@ const GuideCard: React.FC<GuideCardProps> = ({ slug, title, titleEm, image, cate
     const a = anim.current;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       a.p = target;
-      photo.style.clipPath = wave.style.clipPath = target ? 'none' : '';
+      if (target === 1) photo.style.clipPath = wave.style.clipPath = 'none';
+      else paint(photo, wave, target, 0);
       return;
     }
     a.from = a.p;
     a.to = target;
     a.start = performance.now();
-    a.dur = (target ? 1100 : 800) * Math.max(0.4, Math.abs(a.to - a.from));
+    a.dur = (target === 1 ? 1100 : 800) * Math.max(0.4, Math.abs(a.to - a.from));
     const frame = (now: number) => {
       const k = Math.min(1, (now - a.start) / a.dur);
       const phase = now / 520;
       a.p = a.from + (a.to - a.from) * easeWave(k);
-      photo.style.clipPath = wavePoly(a.p, phase);
-      wave.style.clipPath = wavePoly(Math.min(1, a.p + 0.025 * Math.sin(Math.PI * a.p)), phase + 0.25);
+      paint(photo, wave, a.p, phase);
       a.raf = k < 1 ? requestAnimationFrame(frame) : 0;
     };
     if (!a.raf) a.raf = requestAnimationFrame(frame);
@@ -68,6 +79,7 @@ const GuideCard: React.FC<GuideCardProps> = ({ slug, title, titleEm, image, cate
   useEffect(() => {
     const a = anim.current;
     const card = cardRef.current;
+    if (photoRef.current && waveRef.current) paint(photoRef.current, waveRef.current, REST, 0);
     let io: IntersectionObserver | undefined;
     if (card && window.matchMedia('(hover: none)').matches && 'IntersectionObserver' in window) {
       io = new IntersectionObserver(
@@ -95,9 +107,9 @@ const GuideCard: React.FC<GuideCardProps> = ({ slug, title, titleEm, image, cate
       to={`/blog/${slug}`}
       className="hp-guide hp-noise"
       onMouseEnter={() => run(1)}
-      onMouseLeave={() => run(0)}
+      onMouseLeave={() => run(REST)}
       onFocus={() => run(1)}
-      onBlur={() => run(0)}
+      onBlur={() => run(REST)}
     >
       <span ref={waveRef} className="hp-g-layer hp-g-wave" aria-hidden="true" />
       <span ref={photoRef} className="hp-g-layer hp-g-photo" aria-hidden="true">

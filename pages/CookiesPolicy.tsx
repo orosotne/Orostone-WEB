@@ -52,7 +52,7 @@ export const CookiesPolicy = () => {
               <h2 className="mb-4 text-os-eyebrow uppercase text-brand-muted">
                 Prevádzkovateľ webu
               </h2>
-              <div className="space-y-1 text-sm font-light leading-relaxed">
+              <div className="space-y-1 text-sm font-normal leading-relaxed">
                 <p className="font-medium text-brand-dark">Orostone s.r.o.</p>
                 <p>Landererova 8, 811 09 Bratislava – mestská časť Staré Mesto</p>
                 <p>IČO: 55 254 772 • DIČ: 2121930580 • IČ DPH: SK2121930580</p>

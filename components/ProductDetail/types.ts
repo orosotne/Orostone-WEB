@@ -40,3 +40,10 @@ export const loadInstallationFromStorage = (): InstallationData | null => {
     return null;
   }
 };
+
+/** Light band of a product detail section; ShopProductDetail alternates them so neighbours never share a background. */
+export type LightTone = 'chalk' | 'sand';
+export const LIGHT_TONE_BG: Record<LightTone, string> = {
+  chalk: 'bg-brand-light',
+  sand: 'bg-brand-sand',
+};

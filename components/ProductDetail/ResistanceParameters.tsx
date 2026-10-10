@@ -2,10 +2,15 @@ import React from 'react';
 import { m } from 'framer-motion';
 import { Flame, Apple, Diamond, Droplet } from 'lucide-react';
 import type { ShopProduct } from '../../constants';
+import { Container, Eyebrow, ResponsiveImage } from '../Design';
+import { REVEAL, revealAt } from '../../lib/motion';
 
 interface ResistanceParametersProps {
   product: ShopProduct;
 }
+
+// Visualizations with real Orostone decors (the same set as /vyhody, made by temp_redizajn/page-assets.mjs)
+const IMG = '/images/stranky';
 
 export const ResistanceParameters: React.FC<ResistanceParametersProps> = ({ product }) => {
   const parameters = [
@@ -13,80 +18,72 @@ export const ResistanceParameters: React.FC<ResistanceParametersProps> = ({ prod
       title: 'Odolnosť voči teplu',
       value: product.heatResistance || 'Do 300°C',
       description: 'Horúce nádoby môžete položiť priamo na povrch',
-      image: '/images/resistance/heat-resistance.webp',
+      image: { base: `${IMG}/vyhody-teplo`, ratio: 1, alt: 'Hrniec z nehrdzavejúcej ocele priamo na pracovnej doske Gothic Gold' },
       icon: Flame,
     },
     {
       title: 'Hygiena a bezpečnosť potravín',
       value: 'Hygienický',
       description: 'Povrch je hygienický, nepórovitý a bezpečný pre kontakt s potravinami',
-      image: '/images/resistance/food-safety.webp',
+      image: { base: `${IMG}/vyhody-udrzba`, ratio: 1, alt: 'Ruka utiera rozliatu tekutinu a omrvinky z dosky Calacatta Top vlhkou utierkou' },
       icon: Apple,
     },
     {
       title: 'Odolnosť voči škrabancom',
       value: product.scratchResistance || 'Mohs 7+',
       description: 'Tvrdosť blízka diamantu',
-      image: '/images/resistance/scratch-resistance.webp',
+      image: { base: `${IMG}/sk-povrch-lesteny`, ratio: 4 / 3, alt: 'Detail lešteného povrchu dekoru Calacatta Top s odrazom svetla' },
       icon: Diamond,
     },
     {
       title: 'Odolnosť voči škvrnám',
       value: product.stainResistance || 'Nenasiakavý',
       description: `Porozita ${product.porosity || '< 0.1%'}`,
-      image: '/images/resistance/stain-resistance.webp',
+      image: { base: `${IMG}/vyhody-skvrny`, ratio: 1, alt: 'Pohár červeného vína, káva a citrón na doske Calacatta Top, pohľad zhora' },
       icon: Droplet,
     },
   ];
 
   return (
-    <section className="py-10 lg:py-16 bg-brand-dark text-white">
-      <div className="container mx-auto px-6">
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="flex items-center gap-3.5 text-os-eyebrow uppercase text-white/70 before:h-px before:w-7 before:bg-current before:opacity-75 before:content-[''] mb-12">
+    <section className="bg-brand-dark py-10 text-brand-light lg:py-16">
+      <Container>
+        <m.div {...REVEAL}>
+          <Eyebrow as="h2" gold className="mb-12">
             Odolnosť materiálu
-          </h2>
+          </Eyebrow>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+          <div className="grid grid-cols-1 gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-6">
             {parameters.map((param, index) => (
-              <m.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="space-y-3 lg:space-y-4"
-              >
-                <div className="aspect-square relative rounded-[3px] overflow-hidden">
-                  <img
-                    src={param.image}
-                    alt={param.title}
-                    width={400}
-                    height={400}
-                    className="w-full h-full object-cover"
+              <m.div key={index} {...revealAt(index)} className="grid content-start gap-4">
+                <div className="relative aspect-square overflow-hidden rounded-[3px] bg-brand-stone">
+                  <ResponsiveImage
+                    base={param.image.base}
+                    widths={[640, 1200]}
+                    ratio={param.image.ratio}
+                    alt={param.image.alt}
+                    sizes="(min-width: 1024px) 23vw, (min-width: 640px) 46vw, 100vw"
+                    className="h-full w-full object-cover"
                   />
-                  <div className="absolute top-3 left-3 w-10 h-10 sm:w-14 sm:h-14 bg-brand-light backdrop-blur rounded-full flex items-center justify-center">
-                    <param.icon size={20} className="text-brand-dark sm:w-7 sm:h-7" />
-                  </div>
-                  <div className="absolute bottom-3 left-3 right-3">
-                    <p className="text-lg sm:text-xl font-bold text-white drop-shadow-lg">{param.value}</p>
+                  <div className="absolute left-3 top-3 grid h-10 w-10 place-items-center rounded-full bg-brand-light sm:h-12 sm:w-12">
+                    <param.icon size={20} className="text-brand-dark" aria-hidden="true" />
                   </div>
                 </div>
 
-                <div>
-                  <h3 className="text-sm font-medium text-white/60 mb-1">{param.title}</h3>
-                  <p className="text-sm text-white/50">{param.description}</p>
+                {/* The value sits under the photo on graphite, never as white text on a light picture */}
+                <div className="grid gap-1">
+                  <p className="text-os-h3 text-brand-light">{param.value}</p>
+                  <h3 className="text-sm font-medium text-brand-light/80">{param.title}</h3>
+                  <p className="text-sm font-normal text-brand-light/70">{param.description}</p>
                 </div>
               </m.div>
             ))}
           </div>
+
+          <p className="mt-10 text-[0.84rem] font-normal text-brand-light/70">
+            Ilustračné vizualizácie. Kameň na nich je skutočný dekor Orostone: Gothic Gold a Calacatta Top.
+          </p>
         </m.div>
-      </div>
+      </Container>
     </section>
   );
 };
