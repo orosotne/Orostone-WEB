@@ -13,6 +13,15 @@
 //
 // DEPLOYMENT:
 //   supabase functions deploy subscribe-newsletter --project-ref <ref>
+//
+// KLAVIYO (od 10. 10. 2026):
+//   KLAVIYO_NEWSLETTER_LIST_ID  ID zoznamu „Newsletter – web“. Kým nie je nastavené,
+//                               funkcia sa správa ako doteraz (uvítací e-mail cez Resend).
+//   KLAVIYO_COMPANY_ID          verejný kľúč účtu (nie je tajný), predvolene RxkFZa.
+//   S nastaveným zoznamom ide odberateľ do Klaviya a uvítaciu sériu posiela flow
+//   na zozname. Uvítací e-mail cez Resend odíde, len keď Klaviyo zlyhá, aby nový
+//   odberateľ vždy niečo dostal. Odhlásenie spravuje Klaviyo: `is_active` v tabuľke
+//   odhlásenie cez odkaz v e-maile neukáže.
 // ===========================================
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
@@ -24,6 +33,60 @@ const corsHeaders = {
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type, Authorization, apikey',
 };
+
+const KLAVIYO_LIST_ID = Deno.env.get('KLAVIYO_NEWSLETTER_LIST_ID')?.trim() || '';
+const KLAVIYO_COMPANY_ID = Deno.env.get('KLAVIYO_COMPANY_ID')?.trim() || 'RxkFZa';
+const KLAVIYO_REVISION = '2026-07-15';
+
+/**
+ * Prihlási e-mail do zoznamu v Klaviyu (client API, verejný kľúč, bez tajomstva).
+ * Vráti true len pri 202. Nikdy nehádže: zlyhanie Klaviya nesmie zhodiť odber na webe.
+ */
+async function subscribeInKlaviyo(email: string, name: string | undefined, source: string): Promise<boolean> {
+  if (!KLAVIYO_LIST_ID) return false;
+  const [firstName, ...rest] = (name ?? '').split(/\s+/).filter(Boolean);
+  try {
+    const res = await fetch(
+      `https://a.klaviyo.com/client/subscriptions?company_id=${encodeURIComponent(KLAVIYO_COMPANY_ID)}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/vnd.api+json',
+          Accept: 'application/vnd.api+json',
+          revision: KLAVIYO_REVISION,
+        },
+        body: JSON.stringify({
+          data: {
+            type: 'subscription',
+            attributes: {
+              custom_source: `orostone.sk – ${source}`,
+              profile: {
+                data: {
+                  type: 'profile',
+                  attributes: {
+                    email,
+                    ...(firstName ? { first_name: firstName } : {}),
+                    ...(rest.length ? { last_name: rest.join(' ') } : {}),
+                    properties: { zdroj_odberu: source },
+                    subscriptions: { email: { marketing: { consent: 'SUBSCRIBED' } } },
+                  },
+                },
+              },
+            },
+            relationships: { list: { data: { type: 'list', id: KLAVIYO_LIST_ID } } },
+          },
+        }),
+        signal: AbortSignal.timeout(5000),
+      },
+    );
+    if (res.status === 202) return true;
+    console.error('[subscribe-newsletter] Klaviyo odmietlo odber:', res.status, (await res.text()).slice(0, 300));
+    return false;
+  } catch (err) {
+    console.error('[subscribe-newsletter] Klaviyo nedostupné:', err instanceof Error ? err.message : err);
+    return false;
+  }
+}
 
 interface SubscribeBody {
   email: string;
@@ -132,6 +195,9 @@ serve(async (req) => {
 
       if (existing.is_active) {
         // Already active — idempotent success, no welcome email re-send.
+        // Do Klaviya ho pošleme aj tak: kto sa odhlásil odkazom v e-maile a znova
+        // sa prihlási na webe, má odber obnovený. Kto je v zozname, flow znova nedostane.
+        await subscribeInKlaviyo(email, name, source);
         return new Response(
           JSON.stringify({ success: true, alreadySubscribed: true }),
           { status: 200, headers: corsHeaders },
@@ -164,9 +230,13 @@ serve(async (req) => {
       );
     }
 
-    // 2. Send welcome email (fire-and-forget) only for new subscribers and
-    //    reactivated unsubscribers — NOT when alreadySubscribed.
-    if (isNewSubscriber || isReactivated) {
+    // 2. Klaviyo: zoznam „Newsletter – web“, uvítaciu sériu posiela flow na zozname.
+    const inKlaviyo = await subscribeInKlaviyo(email, name, source);
+
+    // 3. Send welcome email (fire-and-forget) only for new subscribers and
+    //    reactivated unsubscribers — NOT when alreadySubscribed, and not when
+    //    Klaviyo took the subscriber (its flow sends the welcome series).
+    if ((isNewSubscriber || isReactivated) && !inKlaviyo) {
       fetch(`${SUPABASE_URL}/functions/v1/send-newsletter-welcome`, {
         method: 'POST',
         headers: {

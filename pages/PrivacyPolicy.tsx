@@ -165,6 +165,12 @@ export const PrivacyPolicy = () => {
                       note: 'E-mailová adresa príjemcu sa zdieľa iba na doručenie správy.',
                     },
                     {
+                      name: 'Klaviyo, Inc.',
+                      purpose: 'Odosielanie newslettera, správa odberu a odhlásení, meranie otvorení a kliknutí v e-mailoch',
+                      location: 'USA',
+                      note: 'Spracúva e-mailovú adresu, meno (ak ho uvediete), odkiaľ ste sa prihlásili a odpovede, ktoré v e-mailoch zvolíte. Vlastné zásady: klaviyo.com/legal/privacy',
+                    },
+                    {
                       name: 'Vercel Inc.',
                       purpose: 'Hosting a doručovanie webovej stránky orostone.sk, anonymné meranie návštevnosti a rýchlosti stránok (Vercel Web Analytics, Speed Insights)',
                       location: 'USA',
@@ -352,6 +358,11 @@ export const PrivacyPolicy = () => {
                       <td className="py-3 px-3 align-top">Štandardné zmluvné doložky (SCC)</td>
                     </tr>
                     <tr>
+                      <td className="py-3 px-3 font-semibold text-brand-dark align-top">Klaviyo, Inc.</td>
+                      <td className="py-3 px-3 align-top">USA</td>
+                      <td className="py-3 px-3 align-top">EU–US Data Privacy Framework + SCC</td>
+                    </tr>
+                    <tr>
                       <td className="py-3 px-3 font-semibold text-brand-dark align-top">Cloudflare, Inc.</td>
                       <td className="py-3 px-3 align-top">USA</td>
                       <td className="py-3 px-3 align-top">EU–US Data Privacy Framework + SCC</td>
@@ -471,7 +482,7 @@ export const PrivacyPolicy = () => {
         <div className="mt-6 flex flex-col items-start justify-between gap-6 border-t border-brand-line pt-8 md:flex-row md:items-center">
           <div>
             <p className="text-sm text-brand-muted">Posledná aktualizácia</p>
-            <p className="text-lg font-medium text-brand-dark">7.&nbsp;10.&nbsp;2026</p>
+            <p className="text-lg font-medium text-brand-dark">10.&nbsp;10.&nbsp;2026</p>
           </div>
           <ActionButton to="/kontakt" variant="outline" arrow>
             Kontaktujte nás
