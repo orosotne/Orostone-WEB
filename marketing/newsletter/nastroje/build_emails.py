@@ -26,7 +26,7 @@ GOLD_INK = "#7A6A2E"  # zlatý atrament: zlatý text na svetlom pozadí (kontras
 CARD = "#FAFAF7"
 PAGE = "#E8E5DE"
 ALT = "#F5F5F0"
-LINE = "rgba(26,26,26,0.08)"
+LINE = "#E8E8E5"  # 8 % INK na CARD; rgba() Outlook pre Windows nezobrazí
 
 IMG = "https://orostone.sk/images/email/"
 SITE = "https://orostone.sk"
@@ -34,11 +34,14 @@ SHOP_CDN = "https://cdn.shopify.com/s/files/1/1013/8642/0570/files/"
 
 
 def shop_img(name, v, w=1040):
-    return f"{SHOP_CDN}{name}?v={v}&width={w}&format=pjpg"
+    """Fotka dekoru z e-shopu ako JPG v public/images/email/ (dekor-<názov>-<šírka>.jpg).
+    Zdroj je {SHOP_CDN}{name}?v={v}&width={w}&format=pjpg. Pri novom dekore súbor stiahni,
+    zmenši pod 150 kB a ulož; check_images.py stráži, že existuje."""
+    slug = re.sub(r"[^a-z0-9]+", "-", name.rsplit(".", 1)[0].lower()).strip("-")
+    return f"{IMG}dekor-{slug}-{w}.jpg"
 
 
 CSS = """
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap');
   body,table,td,p,a,li{ -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
   table,td{ mso-table-lspace:0pt; mso-table-rspace:0pt; border-collapse:collapse; }
   img{ -ms-interpolation-mode:bicubic; border:0; outline:none; text-decoration:none; display:block; }
@@ -110,8 +113,13 @@ def doc(meta, title, preheader, rows):
 <meta name="supported-color-schemes" content="light" />
 <title>{title}</title>
 <!--[if mso]><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet" type="text/css" />
 <style type="text/css">{CSS}</style>
+<!--[if !mso]><!-->
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap');</style>
+<!--<![endif]-->
+<!--[if mso]>
+<style type="text/css">body, table, td, p, a, li, div, span {{ font-family: Helvetica, Arial, sans-serif !important; }}</style>
+<![endif]-->
 </head>
 
 <body style="margin:0; padding:0; background:{PAGE}; font-family:{F}; color:{INK};">
@@ -157,7 +165,7 @@ def header(series="", date=""):
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td align="left" valign="middle">
-                  <a href="{SITE}" target="_blank"><img class="header-logo" src="{SITE}/images/orostone-logo-hd.png" alt="Orostone" height="28" style="display:block; height:28px; width:auto; border:0;" /></a>
+                  <a href="{SITE}" target="_blank"><img class="header-logo" src="{SITE}/images/orostone-logo-hd.png" alt="Orostone" width="142" height="28" style="display:block; height:28px; width:auto; border:0;" /></a>
                 </td>{right}
               </tr>
             </table>
@@ -167,7 +175,7 @@ def header(series="", date=""):
 
 
 def _pill(text, dark=False):
-    bg = "rgba(255,255,255,0.10)" if dark else INK
+    bg = "#313131" if dark else INK
     return f"""<table role="presentation" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td style="background:{bg}; padding:8px 14px; border-radius:9999px;">
@@ -662,7 +670,7 @@ def letter(paragraphs, signoff, name, role, avatar, top=22):
 def ps(html, who="Marián, Orostone", top=28, bottom=36, avatar=True):
     av = f"""
                       <td valign="top" width="56" style="padding-right:14px;">
-                        <img class="ps-avatar" src="{SITE}/images/marian-brazdil.png" alt="Marián, Orostone" width="48" height="48" style="display:block; width:48px; height:48px; border-radius:9999px; border:0;" />
+                        <img class="ps-avatar" src="{IMG}marian-brazdil-112.jpg" alt="Marián, Orostone" width="48" height="48" style="display:block; width:48px; height:48px; border-radius:9999px; border:0;" />
                       </td>""" if avatar else ""
     return f"""
         <!-- P.S. -->
@@ -694,7 +702,7 @@ def signature(top=8):
         <tr>
           <td style="padding:{top}px 40px 0;">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr><td style="border-bottom:1px solid rgba(26,26,26,0.10); font-size:0; line-height:0; height:52px;">&nbsp;</td></tr>
+              <tr><td style="border-bottom:1px solid #E4E4E1; font-size:0; line-height:0; height:52px;">&nbsp;</td></tr>
               <tr>
                 <td align="center" style="line-height:0;">
                   <img class="badge-divider" src="{IMG}orostone-badge.png" alt="Krása kameňa, sila technológie" width="112" height="112" style="display:inline-block; width:112px; height:112px; margin-top:-56px; border:0; background:{CARD}; padding:0 18px;" />
@@ -720,19 +728,19 @@ def footer(reason="Tento e-mail ste dostali, pretože ste sa prihlásili na odbe
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td class="footer-brand" align="left" valign="middle" style="padding-bottom:18px;">
-                  <img src="{IMG}orostone-logo-white.png" alt="Orostone" height="26" style="display:block; height:26px; width:auto; border:0;" />
+                  <img src="{IMG}orostone-logo-white.png" alt="Orostone" width="132" height="26" style="display:block; height:26px; width:auto; border:0;" />
                   <div style="font-family:{F}; font-weight:300; font-size:11px; color:#9CA3AF; margin-top:8px;">Sinterovaný kameň &middot; pracovné dosky</div>
                 </td>
                 <td class="footer-socials" align="right" valign="middle" style="padding-bottom:18px;">
                   <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="right">
                     <tr>
-                      <td style="padding-left:8px;"><a href="https://www.instagram.com/orostone_/" target="_blank" style="display:inline-block; width:34px; height:34px; border:1px solid rgba(255,255,255,0.18); border-radius:9999px; text-decoration:none;"><img src="{IMG}instagram-white.png" alt="Instagram" width="16" height="16" style="display:block; margin:8px auto; border:0;" /></a></td>
-                      <td style="padding-left:8px;"><a href="https://www.facebook.com/orostone.sk/" target="_blank" style="display:inline-block; width:34px; height:34px; border:1px solid rgba(255,255,255,0.18); border-radius:9999px; text-decoration:none;"><img src="{IMG}facebook-white.png" alt="Facebook" width="16" height="16" style="display:block; margin:8px auto; border:0;" /></a></td>
+                      <td style="padding-left:8px;"><a href="https://www.instagram.com/orostone_/" target="_blank" style="display:inline-block; width:34px; height:34px; border:1px solid #434343; border-radius:9999px; text-decoration:none;"><img src="{IMG}instagram-white.png" alt="Instagram" width="16" height="16" style="display:block; margin:8px auto; border:0;" /></a></td>
+                      <td style="padding-left:8px;"><a href="https://www.facebook.com/orostone.sk/" target="_blank" style="display:inline-block; width:34px; height:34px; border:1px solid #434343; border-radius:9999px; text-decoration:none;"><img src="{IMG}facebook-white.png" alt="Facebook" width="16" height="16" style="display:block; margin:8px auto; border:0;" /></a></td>
                     </tr>
                   </table>
                 </td>
               </tr>
-              <tr><td colspan="2" style="border-top:1px solid rgba(255,255,255,0.10); font-size:0; line-height:0;">&nbsp;</td></tr>
+              <tr><td colspan="2" style="border-top:1px solid #313131; font-size:0; line-height:0;">&nbsp;</td></tr>
               <tr>
                 <td colspan="2" style="padding:18px 0 6px;">
                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -756,11 +764,11 @@ def footer(reason="Tento e-mail ste dostali, pretože ste sa prihlásili na odbe
         <!-- LEGAL / UNSUB -->
         <tr>
           <td class="px-40" style="padding:18px 40px 26px; background:#0F0F0F;">
-            <div style="font-family:{F}; font-size:10.5px; font-weight:300; line-height:16px; color:#9CA3AF;">{reason}</div>
+            <div style="font-family:{F}; font-size:12px; font-weight:300; line-height:18px; color:#9CA3AF;">{reason}</div>
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:10px;">
               <tr>
-                <td align="left" style="font-family:{F}; font-size:10.5px; font-weight:300; color:#9CA3AF;">&copy; 2026 Orostone, s.&nbsp;r.&nbsp;o.</td>
-                <td align="right" style="font-family:{F}; font-size:10.5px; font-weight:300;"><a href="{{% unsubscribe_link %}}" style="color:#E5E7EB; text-decoration:underline;">Odhlásiť odber</a></td>
+                <td align="left" style="font-family:{F}; font-size:12px; font-weight:300; color:#9CA3AF;">&copy; 2026 Orostone, s.&nbsp;r.&nbsp;o.</td>
+                <td align="right" style="font-family:{F}; font-size:12px; font-weight:300;"><a href="{{% unsubscribe_link %}}" style="color:#E5E7EB; text-decoration:underline;">Odhlásiť odber</a></td>
               </tr>
             </table>
           </td>
@@ -803,6 +811,7 @@ def plain(meta, title, preheader, paragraphs, reason, greeting="Dobrý deň,",
     unsub=False: e-mail z CRM mimo zoznamu odberateľov, pätička len s dôvodom."""
     unsub_html = (' <a href="{% unsubscribe_link %}" style="color:#6B7280; text-decoration:underline;">Odhlásiť odber</a>'
                   if unsub else "")
+    addr_html = "<br />Orostone, s.&nbsp;r.&nbsp;o. &middot; SNP 113/1, 956&nbsp;18 Bošany" if unsub else ""
     meta_lines = "\n".join(f"  {k:<10} {v}" for k, v in meta.items())
     pre_pad = "&nbsp;&zwnj;" * 40
     ps_html = "".join(f'<p style="margin:0 0 16px;">{x}</p>' for x in paragraphs)
@@ -842,7 +851,7 @@ def plain(meta, title, preheader, paragraphs, reason, greeting="Dobrý deň,",
         <!-- LEGAL / UNSUB -->
         <tr>
           <td style="padding-top:32px; font-family:{PLAIN_F}; font-size:11px; line-height:17px; color:#6B7280;">
-            {reason}{unsub_html}
+            {reason}{unsub_html}{addr_html}
           </td>
         </tr>
       </table>
@@ -927,7 +936,7 @@ write("02-welcome-list-od-mariana.html", doc(
             "Preto vám pred rozhodnutím ukážem celé platne. V showroome v Bošanoch, v renesančnom kaštieli, ich uvidíte vo formáte 3200 × 1600&nbsp;mm – tak, ako budú pôsobiť vo vašej kuchyni.",
             "Výrobu a montáž robia kamenári, s ktorými spolupracujeme a ktorí so sinterovaným kameňom vedia pracovať. Vy riešite jedno: aby výsledok dobre vyzeral, bol praktický v každodennom používaní a mal rozumnú cenu.",
             'Ak sa chcete na niečo spýtať, odpovedzte na tento e-mail alebo mi zavolajte na +421&nbsp;917&nbsp;588&nbsp;738. Odpíšem vám osobne. Medzitým si môžete <a href="' + SITE + '/realizacie" target="_blank" style="color:#1A1A1A; font-weight:500; text-decoration:underline;">pozrieť realizácie</a>.',
-        ], "S pozdravom", "Marián Brázdil", "Orostone · sinterovaný kameň", SITE + "/images/marian-brazdil.png"),
+        ], "S pozdravom", "Marián Brázdil", "Orostone · sinterovaný kameň", IMG + "marian-brazdil-112.jpg"),
         ps("Ak plánujete návštevu showroomu, napíšte mi vopred, ktoré dekory vás zaujímajú. Pripravím vám platne s týmito dekormi.", who="Marián", top=28, avatar=False),
         signature(top=0),
         footer(),
