@@ -138,6 +138,7 @@ Based on Apple's fluid-interface principles (the `apple-design` skill in `.claud
 - Only real Orostone decors. Stone in a visualization comes from the supplier scan, never from an AI texture.
 - Straight-on view, minimal perspective distortion, corrected verticals, clean geometric composition.
 - Label visualizations ("Vizualizácia s dekorom X") and edited photos ("upravená fotografia realizácie").
+- Kitchen sets (`/kuchyne` › Vizualizácie, `components/Kuchyne/KitchenVisualizations`): one kitchen in one decor from four views (front, side, edge detail, the room), rendered in Higgsfield with Nano Banana 2.1, the decor's slab scan (its first Shopify image) as the reference and the front view as the reference for the other three. Compare the stone with the scan before publishing: a second reference photo can pull the decor's colour towards another stone.
 
 ---
 

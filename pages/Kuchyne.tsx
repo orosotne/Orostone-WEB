@@ -21,7 +21,15 @@ import {
   useDrawIn,
 } from '@/components/Design';
 import { HOME_DECORS, HOME_REALIZATIONS, decorImage } from '@/components/Home/homeData';
-import { KITCHEN_FAQS, KUCHYNE_FEATURES, KUCHYNE_H1, KUCHYNE_PROCESS_STEPS } from '@/data/pillars/kuchyne';
+import { KitchenVisualizations } from '@/components/Kuchyne/KitchenVisualizations';
+import {
+  KITCHEN_FAQS,
+  KUCHYNE_FEATURES,
+  KUCHYNE_H1,
+  KUCHYNE_PROCESS_STEPS,
+  KUCHYNE_VIZUALIZACIE_H2,
+  KUCHYNE_VIZUALIZACIE_LEAD,
+} from '@/data/pillars/kuchyne';
 
 // Real client kitchens (decor names from the time of installation); six different decors, so the second Taj Mahal stays on the homepage only.
 const GALLERY = HOME_REALIZATIONS.filter((r) => r.image !== 'svetly-onyx');
@@ -135,7 +143,14 @@ export const Kuchyne = () => {
         <FeatureGrid items={FEATURES} className="mt-[clamp(56px,7vw,104px)]" />
       </PageHero>
 
-      <Section tone="sand">
+      <Section tone="sand" id="vizualizacie">
+        <Container>
+          <SectionHeader eyebrow="Vizualizácie" title={KUCHYNE_VIZUALIZACIE_H2} lead={KUCHYNE_VIZUALIZACIE_LEAD} />
+          <KitchenVisualizations className={below} />
+        </Container>
+      </Section>
+
+      <Section tone="chalk">
         <Container>
           <div className={rowHead}>
             <SectionHeader
@@ -173,7 +188,7 @@ export const Kuchyne = () => {
         </Container>
       </Section>
 
-      <Section tone="chalk">
+      <Section tone="sand">
         <Container>
           <div className={rowHead}>
             <SectionHeader
@@ -211,7 +226,7 @@ export const Kuchyne = () => {
         </Container>
       </Section>
 
-      <Section tone="sand">
+      <Section tone="chalk">
         <Container>
           <SectionHeader eyebrow="Ako to funguje" title="Od výberu po inštaláciu" />
           <StepList steps={STEPS} className={below} />
