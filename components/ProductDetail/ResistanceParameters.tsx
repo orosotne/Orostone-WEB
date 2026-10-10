@@ -18,7 +18,7 @@ export const ResistanceParameters: React.FC<ResistanceParametersProps> = ({ prod
       title: 'Odolnosť voči teplu',
       value: product.heatResistance || 'Do 300°C',
       description: 'Horúce nádoby môžete položiť priamo na povrch',
-      image: { base: `${IMG}/vyhody-teplo`, ratio: 1, alt: 'Hrniec z nehrdzavejúcej ocele priamo na pracovnej doske Gothic Gold' },
+      image: { base: `${IMG}/vyhody-teplo`, ratio: 1, alt: 'Horúci hrniec z nehrdzavejúcej ocele s pokrievkou priamo na pracovnej doske Gothic Gold' },
       icon: Flame,
     },
     {

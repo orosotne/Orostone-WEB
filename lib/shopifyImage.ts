@@ -15,3 +15,27 @@ export const shopifySrcSet = (url: string): string | undefined => {
 /** Resized Shopify URL; other images (local files, placeholders) are returned unchanged. */
 export const shopifySized = (url: string, width: number): string =>
   url && url.includes('cdn.shopify.com') ? shopifyImageUrl(url, width) : url;
+
+const preloaded = new Map<string, HTMLImageElement>();
+
+/**
+ * Downloads the srcset candidate the browser will pick for an <img> with the same `sizes`, so that <img> paints
+ * straight from the cache (preloading a fixed ?width= misses whenever the device picks another size). Other URLs,
+ * such as local photos, are fetched as they are. The images are kept, so each is fetched once and not dropped
+ * mid-download.
+ */
+export const preloadImage = (url: string, sizes = '100vw'): HTMLImageElement | undefined => {
+  if (typeof window === 'undefined' || !url) return undefined;
+  const key = `${url} ${sizes}`;
+  let img = preloaded.get(key);
+  if (!img) {
+    img = new Image();
+    img.decoding = 'async';
+    img.sizes = sizes;
+    const srcSet = shopifySrcSet(url);
+    if (srcSet) img.srcset = srcSet;
+    img.src = shopifySized(url, 1200);
+    preloaded.set(key, img);
+  }
+  return img;
+};

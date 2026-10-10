@@ -1,7 +1,9 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Container, Section } from '../Design';
 import { CATALOG_GRID } from '../Shop/catalogGrid';
+import { categoryHeroCopy } from '../Shop/categoryHero';
 
 // ===========================================
 // BASE SKELETON
@@ -70,57 +72,60 @@ export const ProductGridSkeleton: React.FC<ProductGridSkeletonProps> = ({
 
 export const ProductDetailSkeleton: React.FC = () => (
   <>
-    <section className="pt-6 pb-8 lg:pt-8 lg:pb-16 bg-gradient-to-br from-white via-[#FAFAF8] to-[#F5F5F0]">
-      <div className="container mx-auto px-6">
-        {/* Breadcrumb */}
-        <div className="flex items-center justify-between mb-8">
+    {/* Hero: the same boxes as HeroSection (breadcrumb row, brand line, chips and title above the photo on phones),
+        so the photo and the title stay where they are when the page arrives */}
+    <section className="bg-brand-light pb-8 pt-6 lg:pb-16 lg:pt-8">
+      <Container>
+        <div className="mb-8 flex h-7 items-center justify-between">
           <div className="flex items-center gap-2">
-            <Skeleton className="h-3 w-12" />
-            <Skeleton className="h-3 w-2" />
-            <Skeleton className="h-3 w-32" />
+            <Skeleton className="h-3 w-12 rounded-sm bg-brand-sand" />
+            <Skeleton className="h-3 w-24 rounded-sm bg-brand-sand" />
           </div>
-          <Skeleton className="h-8 w-8 rounded-lg" />
+          <Skeleton className="h-7 w-20 rounded-sm bg-brand-sand" />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-          {/* Desktop Image Gallery — col-span-7 */}
-          <div className="hidden lg:block lg:col-span-7 space-y-4">
-            <Skeleton className="aspect-square w-full rounded-xl" />
-            <div className="flex gap-3">
-              {Array.from({ length: 4 }).map((_, i) => (
-                <Skeleton key={i} className="w-20 h-20 rounded-lg" />
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-start lg:gap-16">
+          <div className="hidden space-y-3 lg:col-span-7 lg:block">
+            <Skeleton className="aspect-square w-full rounded-[3px] bg-brand-sand lg:max-h-[calc(100svh-104px-24px-128px)] lg:min-h-[360px]" />
+            <div className="grid grid-cols-7 gap-2">
+              {Array.from({ length: 7 }).map((_, i) => (
+                <Skeleton key={i} className="aspect-square rounded-[3px] bg-brand-sand" />
               ))}
             </div>
           </div>
 
-          {/* Mobile Image — 3:4 aspect */}
-          <div className="lg:hidden">
-            <Skeleton className="aspect-[3/4] w-full rounded-lg" />
-          </div>
+          <div className="lg:col-span-5">
+            <div className="mb-2 flex h-6 items-center lg:mb-4">
+              <Skeleton className="h-3 w-24 rounded-sm bg-brand-sand" />
+            </div>
+            <div className="mb-4 flex gap-2 overflow-hidden">
+              <Skeleton className="h-[30px] w-16 flex-none rounded-full bg-brand-sand" />
+              <Skeleton className="h-[30px] w-28 flex-none rounded-full bg-brand-sand" />
+              <Skeleton className="h-[30px] w-40 flex-none rounded-full bg-brand-sand" />
+            </div>
+            {/* one line of the title: text-3xl / md:text-4xl / lg:text-5xl at leading-tight */}
+            <Skeleton className="mb-2 h-[2.34rem] w-3/4 rounded-sm bg-brand-sand md:h-[2.81rem] lg:mb-4 lg:h-[3.75rem]" />
 
-          {/* Product Info — col-span-5 */}
-          <div className="lg:col-span-5 space-y-4">
-            <Skeleton className="h-3 w-24" />
-            <Skeleton className="h-8 w-3/4" />
-            <div className="flex gap-2 mt-2">
-              <Skeleton className="h-8 w-20 rounded-full" />
-              <Skeleton className="h-8 w-24 rounded-full" />
-              <Skeleton className="h-8 w-20 rounded-full" />
+            <div className="mb-6 lg:hidden">
+              <Skeleton className="aspect-[3/4] w-full rounded-[3px] bg-brand-sand" />
+              <div className="grid grid-cols-4 gap-2 pt-3">
+                {Array.from({ length: 4 }).map((_, i) => (
+                  <Skeleton key={i} className="aspect-square rounded-[3px] bg-brand-sand" />
+                ))}
+              </div>
             </div>
-            <Skeleton className="h-4 w-full mt-4" />
-            <Skeleton className="h-4 w-5/6" />
-            <div className="pt-4 space-y-3">
-              <Skeleton className="h-10 w-32" />
-              <Skeleton className="h-12 w-full rounded-xl" />
-            </div>
-            <div className="pt-6 space-y-2">
-              <Skeleton className="h-3 w-28" />
-              <Skeleton className="h-3 w-40" />
-              <Skeleton className="h-3 w-36" />
+
+            <div className="space-y-4">
+              <Skeleton className="h-4 w-full rounded-sm bg-brand-sand" />
+              <Skeleton className="h-4 w-5/6 rounded-sm bg-brand-sand" />
+              <div className="space-y-3 pt-4">
+                <Skeleton className="h-10 w-32 rounded-sm bg-brand-sand" />
+                <Skeleton className="h-12 w-full rounded-[10px] bg-brand-sand" />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
 
     {/* Features/highlights placeholder */}
@@ -190,13 +195,39 @@ export const CatalogGridSkeleton: React.FC<{ count?: number }> = ({ count = 8 })
 // CATEGORY PAGE SKELETON (matches CategoryPage: PageHero, colour chips, grid)
 // ===========================================
 
-export const CategoryPageSkeleton: React.FC = () => (
+/** Text set invisibly over sand bars, line by line: the block wraps and measures exactly like the real one */
+const TextBars: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <span className="animate-pulse rounded-sm bg-brand-sand text-transparent [-webkit-box-decoration-break:clone] [box-decoration-break:clone]">
+    {children}
+  </span>
+);
+
+export const CategoryPageSkeleton: React.FC = () => {
+  const { slug = '', subCategory } = useParams<{ slug: string; subCategory?: string }>();
+  const hero = categoryHeroCopy(slug, subCategory);
+  return (
   <>
+    {/* PageHero's boxes with the page's own title and lead, so the chips and the grid don't move when it arrives */}
     <Section tone="chalk" band={false} className="pb-[var(--os-band)] pt-[clamp(40px,5vw,88px)]">
-      <Container className="grid gap-5">
-        <div className="h-3.5 w-24 animate-pulse rounded-sm bg-brand-sand" />
-        <div className="h-[clamp(2.2rem,3vw,3.5rem)] w-[min(520px,80%)] animate-pulse rounded-sm bg-brand-sand" />
-        <div className="h-5 w-[min(560px,90%)] animate-pulse rounded-sm bg-brand-sand" />
+      <Container>
+        <div className="grid max-w-[660px] justify-items-start gap-5" aria-hidden="true">
+          <ol className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-os-eyebrow uppercase text-brand-sand before:mr-1 before:h-px before:w-7 before:bg-current before:content-['']">
+            {(hero?.crumbs ?? ['E-shop', 'Sinterovaný kameň']).map((label, i) => (
+              <li key={label} className="flex items-center gap-2.5">
+                {i > 0 && <span className="font-normal">/</span>}
+                <TextBars>{label}</TextBars>
+              </li>
+            ))}
+          </ol>
+          <p className="text-os-h1 [text-wrap:balance]">
+            <TextBars>{hero?.title ?? 'Sinterovaný kameň'}</TextBars>
+          </p>
+          {hero?.lead && (
+            <p className="max-w-[54ch] text-os-lead font-light">
+              <TextBars>{hero.lead}</TextBars>
+            </p>
+          )}
+        </div>
       </Container>
     </Section>
     <div className="border-y border-brand-line bg-brand-light">
@@ -212,7 +243,8 @@ export const CategoryPageSkeleton: React.FC = () => (
       </Container>
     </Section>
   </>
-);
+  );
+};
 
 // ===========================================
 // CHECKOUT SKELETON

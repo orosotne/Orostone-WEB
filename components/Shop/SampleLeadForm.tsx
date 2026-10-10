@@ -186,7 +186,7 @@ export const SampleLeadForm: React.FC<SampleLeadFormProps> = ({ preselectedDekor
         siteKey={import.meta.env.VITE_TURNSTILE_SITEKEY}
         onSuccess={setTurnstileToken}
         onExpire={() => setTurnstileToken(null)}
-        options={{ theme: 'light', language: 'sk' }}
+        options={{ theme: 'light', language: 'sk', size: 'flexible' }}
       />
 
       {/* Until the terms box is ticked the button is a light outline (not a heavy grey block); while sending it stays dark */}

@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef, useCallback, startTransition } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useCallback, startTransition } from 'react';
 import { Link } from 'react-router-dom';
-import { m, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { m, useReducedMotion } from 'framer-motion';
 import {
   Check,
   ShoppingBag,
@@ -14,7 +14,7 @@ import {
   ChevronDown,
   Loader2,
 } from 'lucide-react';
-import { cn, formatPrice, titleCase, withProductName } from '../../lib/utils';
+import { cn, formatPrice, onIdle, titleCase, withProductName } from '../../lib/utils';
 import { MAX_SAMPLES } from '../../constants';
 import type { ShopProduct } from '../../constants';
 import { ShareButton } from '../UI/ShareButton';
@@ -23,8 +23,9 @@ import { ProductSwitcher } from './ProductSwitcher';
 import { BundleSelector } from './BundleSelector';
 import { InstallationSelector } from './InstallationSelector';
 import { ProductLightbox, type LightboxOrigin } from './ProductLightbox';
+import { MainPhoto, MAIN_PHOTO_SIZES } from './MainPhoto';
 // Dočasne skryté: import { MaterialPerspectivesViewer } from './MaterialPerspectivesViewer';
-import { ThicknessIcon, shopifyImageUrl, shopifySrcSet, productImageAlt, shortFinish, getFinishIcon, calculateSlabPrice } from './utils';
+import { ThicknessIcon, shopifyImageUrl, shopifySrcSet, preloadImage, productImageAlt, shortFinish, getFinishIcon, calculateSlabPrice } from './utils';
 import type { BundleOption } from './types';
 import { BUNDLE_OPTIONS } from './types';
 
@@ -82,11 +83,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const reduceMotion = useReducedMotion();
 
   const name = titleCase(product.name);
-  const images = product.gallery && product.gallery.length > 0
-    ? product.gallery
-    : [product.image];
+  const images = useMemo(
+    () => (product.gallery && product.gallery.length > 0 ? product.gallery : [product.image]),
+    [product.gallery, product.image],
+  );
 
-  const currentImage = images[selectedImageIndex];
   const singleSlabPrice = calculateSlabPrice(product.pricePerM2, product.dimensions);
 
   // The photo the lightbox grows out of and shrinks back into: the main image on desktop, the visible slide on
@@ -109,8 +110,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     }
     if (!frame) return null;
     const rect = frame.getBoundingClientRect();
-    const aspect = img && img.naturalWidth ? img.naturalWidth / img.naturalHeight : rect.width / rect.height;
-    return { rect, aspect };
+    const loaded = img && img.naturalWidth > 0 ? img : null;
+    const aspect = loaded ? loaded.naturalWidth / loaded.naturalHeight : rect.width / rect.height;
+    return { rect, aspect, src: loaded?.currentSrc };
   }, []);
 
   const openLightbox = (index?: number) => {
@@ -144,15 +146,30 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
     if (rail && rail.offsetParent !== null) rail.scrollTo({ left: selectedImageIndex * rail.clientWidth, behavior: 'instant' });
   }, [isLightboxOpen, selectedImageIndex]);
 
+  // Desktop: once the page is idle, fetch every photo at the size the main photo will use, so switching is instant.
+  // Phones skip this; their carousel loads the slides next to the visible one (see `loading` below).
   useEffect(() => {
-    images.slice(0, 3).forEach(src => { const img = new Image(); img.src = src; });
+    if (mainImageRef.current?.offsetParent == null) return;
+    return onIdle(() => images.forEach((src) => preloadImage(src, MAIN_PHOTO_SIZES)), 2500);
   }, [images]);
 
   // Tell the page whether the add-to-cart buttons are visible (drives the mobile sticky bar)
   useEffect(() => {
     const el = ctaRef.current;
     if (!el || !onCtaVisibilityChange || !('IntersectionObserver' in window)) return;
-    const io = new IntersectionObserver(([entry]) => onCtaVisibilityChange(entry.isIntersecting), { threshold: 0 });
+    // On screen once half of the buttons are, off only when all of them are: a browser toolbar growing or shrinking
+    // at the screen edge (in-app browsers) can't flip the sticky bar in and out
+    let visible: boolean | null = null;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        const next = entry.intersectionRatio >= 0.5 ? true : entry.isIntersecting ? visible : false;
+        if (next !== null && next !== visible) {
+          visible = next;
+          onCtaVisibilityChange(next);
+        }
+      },
+      { threshold: [0, 0.5] },
+    );
     io.observe(el);
     return () => io.disconnect();
   }, [onCtaVisibilityChange]);
@@ -200,23 +217,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               className="group relative aspect-square w-full cursor-pointer overflow-hidden rounded-[3px] bg-[#F5F5F3] lg:max-h-[calc(100svh-104px-24px-128px)] lg:min-h-[360px]"
               onClick={() => openLightbox()}
             >
-              <AnimatePresence mode="sync" initial={false}>
-                <m.img
-                  key={selectedImageIndex}
-                  src={shopifyImageUrl(currentImage, 1200)}
-                  fetchPriority={selectedImageIndex === 0 ? 'high' : 'auto'}
-                  alt={productImageAlt(product, selectedImageIndex)}
-                  width={1200}
-                  height={1200}
-                  className="absolute inset-0 h-full w-full object-cover"
-                  srcSet={shopifySrcSet(currentImage)}
-                  sizes="(max-width: 768px) 100vw, 58vw"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                />
-              </AnimatePresence>
+              <MainPhoto images={images} index={selectedImageIndex} alt={(i) => productImageAlt(product, i)} />
 
               <div className="absolute bottom-4 right-4 flex h-10 w-10 items-center justify-center rounded-[3px] bg-white/90 text-brand-dark opacity-0 backdrop-blur transition-opacity group-hover:opacity-100">
                 <ZoomIn size={18} aria-hidden="true" />
@@ -263,6 +264,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     key={index}
                     type="button"
                     onClick={() => setSelectedImageIndex(index)}
+                    onPointerEnter={() => preloadImage(img, MAIN_PHOTO_SIZES)}
+                    onFocus={() => preloadImage(img, MAIN_PHOTO_SIZES)}
                     aria-label={`Obrázok ${index + 1}`}
                     aria-current={selectedImageIndex === index ? 'true' : undefined}
                     className={cn(
@@ -437,7 +440,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                           className="h-full w-full object-cover"
                           srcSet={shopifySrcSet(img)}
                           sizes="100vw"
-                          loading={index === 0 ? 'eager' : 'lazy'}
+                          loading={Math.abs(index - selectedImageIndex) <= 1 ? 'eager' : 'lazy'}
                           fetchPriority={index === 0 ? 'high' : 'auto'}
                         />
                         {index === 0 && product.inStock && (
@@ -503,9 +506,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <ProductSwitcher currentProductId={product.id} products={allProducts} />
               </div>
 
-              {product.stockQuantity > 0 && (
+              {/* Present from the first render for an in-stock product (the bundled catalog has no counts), so the
+                  live count from Shopify only changes the words and never pushes the order form down */}
+              {(product.inStock || product.stockQuantity > 0) && (
                 <div className="order-[9] mb-4 text-sm text-brand-muted lg:order-[8]">
-                  {product.stockQuantity} ks skladom
+                  {product.stockQuantity > 0 ? `${product.stockQuantity} ks skladom` : 'Skladom'}
                 </div>
               )}
 

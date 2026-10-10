@@ -12,13 +12,15 @@ import {
 } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useScrollLock } from '../../hooks/useScrollLock';
-import { shopifyImageUrl, shopifySrcSet } from './utils';
+import { preloadImage, shopifyImageUrl, shopifySized, shopifySrcSet } from './utils';
 import { FADE, SPRING, SPRING_FLICK, projectMomentum } from '../../lib/motion';
 
 /** The photo on the page the lightbox grows out of: its frame on screen and the image's natural aspect (w / h). */
 export interface LightboxOrigin {
   rect: DOMRect;
   aspect: number;
+  /** The URL the page photo shows (its srcset pick), already in the cache: the flight starts on those pixels */
+  src?: string;
 }
 
 interface ProductLightboxProps {
@@ -86,6 +88,9 @@ const geometryFrom = (origin: LightboxOrigin | null, aspect: number): Geometry =
 
 const mix = (from: number, to: number, p: number) => from + (to - from) * p;
 
+/** `sizes` of the full-size photo, shared with the preloader so both pick the same srcset candidate */
+const FULL_SIZES = '100vw';
+
 /**
  * Product gallery lightbox. The photo grows out of the one on the page (same place, same crop) and shrinks back into
  * it; on touch it follows the finger: a sideways flick pages, an up/down flick closes, the backdrop thins out while
@@ -115,6 +120,19 @@ const LightboxView: React.FC<ProductLightboxProps> = ({
   const [aspects, setAspects] = useState<Record<number, number>>(() =>
     opened.current ? { [currentIndex]: opened.current.aspect } : {},
   );
+  const learnAspect = (index: number, img: HTMLImageElement) => {
+    // the real aspect wins over the estimate (an unloaded page photo reports its frame instead)
+    if (!img.naturalWidth || !img.naturalHeight) return;
+    const real = img.naturalWidth / img.naturalHeight;
+    setAspects((prev) => (Math.abs((prev[index] ?? 0) - real) > 0.01 ? { ...prev, [index]: real } : prev));
+  };
+
+  // Under every full-size photo lies a small one the page has usually loaded already (the thumbnail, or for the
+  // opened photo the exact image on the page), so the stage never shows an empty frame while the big one downloads.
+  const openedIndex = useRef(currentIndex);
+  const thumbWidth = useRef(window.matchMedia('(min-width: 1024px)').matches ? 400 : 200);
+  const placeholderFor = (index: number) =>
+    (index === openedIndex.current && opened.current?.src) || shopifySized(images[index], thumbWidth.current);
   const aspect = aspects[currentIndex] ?? opened.current?.aspect ?? 1;
   const full = fullSize(aspect);
 
@@ -189,12 +207,23 @@ const LightboxView: React.FC<ProductLightboxProps> = ({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isPresent, onClose, onPrevious, onNext]);
 
+  // Every photo's aspect up front, from the small placeholders, so paging never resizes the stage when the photo
+  // arrives; and the neighbours at full size, the same srcset pick as the <img> below
   useEffect(() => {
-    const toPreload = [images[currentIndex - 1], images[currentIndex + 1]].filter(Boolean);
-    toPreload.forEach((src) => {
+    let alive = true;
+    images.forEach((src, index) => {
       const img = new Image();
-      img.src = shopifyImageUrl(src, 1600);
+      img.src = shopifySized(src, thumbWidth.current);
+      img.decode().then(() => alive && learnAspect(index, img), () => {});
     });
+    return () => {
+      alive = false;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [images]);
+
+  useEffect(() => {
+    [images[currentIndex - 1], images[currentIndex + 1]].forEach((src) => src && preloadImage(src, FULL_SIZES));
   }, [currentIndex, images]);
 
   // Held until the photo is back on the page, so nothing scrolls under the closing animation
@@ -304,25 +333,25 @@ const LightboxView: React.FC<ProductLightboxProps> = ({
             onDragEnd={handleDragEnd}
             onPointerDown={startDrag}
             style={{ x: dragX, y: dragY, scale: pullScale, touchAction: 'pinch-zoom' }}
-            className="pointer-events-auto h-full w-full cursor-grab active:cursor-grabbing"
+            className="pointer-events-auto relative h-full w-full cursor-grab active:cursor-grabbing"
           >
+            <img
+              key={`placeholder-${currentIndex}`}
+              src={placeholderFor(currentIndex)}
+              alt=""
+              aria-hidden="true"
+              draggable={false}
+              className="absolute inset-0 h-full w-full select-none object-contain"
+            />
             <img
               key={currentIndex}
               src={shopifyImageUrl(src, 1600)}
               srcSet={shopifySrcSet(src)}
-              sizes="100vw"
+              sizes={FULL_SIZES}
               alt={`${productName} - ${currentIndex + 1}`}
               draggable={false}
-              onLoad={(e) => {
-                // the real aspect wins over the estimate (an unloaded page photo reports its frame instead)
-                const { naturalWidth, naturalHeight } = e.currentTarget;
-                if (!naturalWidth || !naturalHeight) return;
-                const real = naturalWidth / naturalHeight;
-                if (Math.abs((aspects[currentIndex] ?? 0) - real) > 0.01) {
-                  setAspects((prev) => ({ ...prev, [currentIndex]: real }));
-                }
-              }}
-              className="h-full w-full select-none object-contain"
+              onLoad={(e) => learnAspect(currentIndex, e.currentTarget)}
+              className="relative h-full w-full select-none object-contain"
             />
           </m.div>
         </m.div>
