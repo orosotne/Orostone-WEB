@@ -62,6 +62,7 @@ See `.env.example`. Required:
 
 The site uses a new design system (October 2026). New and rewritten sections use the building blocks in `components/Design/` (`Container`, `Section`, `SectionHeader`, `Eyebrow`, `TextLink`, `ActionButton`, `PageHero`, `GoldBand`, `FeatureGrid`, `StepList`, `FaqList`, `LegalLayout` …; full list in STYLE_GUIDE.md) and these tokens: colours `brand-light`, `brand-sand`, `brand-dark`, `brand-muted`, `brand-line`, `brand-gold` (accent only); type `text-os-h1`, `text-os-h2`, `text-os-h3`, `text-os-lead`, `text-os-eyebrow`. The product detail (`ShopProductDetail` + `components/ProductDetail/`) is on the new design too (proposal A, then `<Container>` and the type scale, approved by the owner in October 2026). Reference sheet while developing: `/_dizajn`.
 - Motion follows Apple's fluid-interface rules (skill `apple-design`, STYLE_GUIDE › Motion): springs from `lib/motion.ts` instead of fixed tweens, `os-press` press feedback on controls, hover styles only on hover-capable devices (`hoverOnlyWhenSupported`), enter and exit along the same path.
+- Nothing moves after first paint (visitors from Facebook/Instagram ads use slow in-app browsers): skeletons repeat the real page's boxes, late content reserves its space, photos switch through `usePhotoLayers` (STYLE_GUIDE › E-shop, Motion).
 
 - Font: **Montserrat** only (`font-sans`); headings weight 600, body 300.
 - Gold #ECD488 only as an accent (gold CTA in the header, the gold band and the mobile bar), never as text on a light background.

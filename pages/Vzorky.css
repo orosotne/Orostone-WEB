@@ -1,5 +1,5 @@
 /* The stone and its own carton are the signature. Everything else helps the choice. */
-.sample-page{position:relative;--sample-ink:#1a1a1a;--sample-muted:#62665d;--sample-line:#dbddd6;--sample-paper:#fafafa;--sample-gold:#ecd488;background:var(--sample-paper);color:var(--sample-ink);font-family:Montserrat,sans-serif}
+.sample-page{position:relative;--sample-ink:#1a1a1a;--sample-muted:#62665d;--sample-line:#dbddd6;--sample-paper:#fafafa;--sample-gold:#ecd488;background:var(--sample-paper);color:var(--sample-ink);font-family:Montserrat,'Montserrat Fallback',sans-serif}
 .sample-page button,.sample-page select{touch-action:manipulation}
 .sample-page button:focus-visible,.sample-page a:focus-visible,.sample-page summary:focus-visible,.sample-page select:focus-visible{outline:2px solid var(--sample-ink);outline-offset:4px}
 .sample-intro,.sample-decor-browser,#vzorka{scroll-margin-top:120px}

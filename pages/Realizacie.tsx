@@ -14,6 +14,9 @@ import {
   TextLink,
 } from '@/components/Design';
 import { useScrollLock } from '@/hooks/useScrollLock';
+import { photoFade, usePhotoLayers } from '@/hooks/usePhotoLayers';
+import { preloadImage } from '@/lib/shopifyImage';
+import { SPRING } from '@/lib/motion';
 
 /* ─── PROJECT DATA ───────────────────────────────────── */
 
@@ -367,10 +370,14 @@ const breadcrumbLD = createBreadcrumbLD([
   { name: 'Realizácie', url: 'https://orostone.sk/realizacie' },
 ]);
 
+const SEO_KEYWORDS = ['realizácie sinterovaný kameň', 'kuchyne sinterovaný kameň', 'kuchynská doska realizácie', 'sinterovaný kameň portfólio'];
+
 /** "1 fotka" · "2–4 fotky" · "5+ fotiek" */
 const photoCount = (n: number) => `${n} ${n === 1 ? 'fotka' : n < 5 ? 'fotky' : 'fotiek'}`;
 
 /* ─── LIGHTBOX ───────────────────────────────────────── */
+
+const OUT_DELAY_MS = 120;
 
 const Lightbox: React.FC<{
   images: string[];
@@ -380,6 +387,12 @@ const Lightbox: React.FC<{
   onNav: (i: number) => void;
 }> = ({ images, title, index, onClose, onNav }) => {
   useScrollLock(true);
+  const { layers, reveal, drop } = usePhotoLayers(index);
+
+  // The neighbours load ahead, so a step usually finds its photo decoded already
+  useEffect(() => {
+    [images[index - 1], images[index + 1]].forEach((src) => src && preloadImage(src));
+  }, [images, index]);
 
   const handleKey = useCallback(
     (e: KeyboardEvent) => {
@@ -448,18 +461,36 @@ const Lightbox: React.FC<{
         </button>
       )}
 
-      {/* Image */}
-      <m.img
-        key={images[index]}
-        initial={{ opacity: 0, scale: 0.97 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.2 }}
-        src={images[index]}
-        alt={`${title} — fotka ${index + 1}`}
-        className="max-h-[82dvh] max-w-[90vw] rounded-[3px] object-contain"
-        onClick={(e) => e.stopPropagation()}
-      />
+      {/* Photos, stacked in one grid cell. The next one fades in over the current one once decoded (usePhotoLayers),
+          so a step never goes dark between photos. */}
+      <m.div initial={{ scale: 0.97 }} animate={{ scale: 1 }} transition={SPRING} className="grid place-items-center">
+        {layers.map((layer, i) => {
+          const isTop = i === layers.length - 1;
+          // Covered by a newer decoded photo: dissolve a beat later, so where the two overlap the new one already
+          // hides it, and where they don't (other proportions) it fades out instead of popping off
+          const covered = layers.slice(i + 1).some((l) => l.ready);
+          return (
+            <img
+              key={layer.id}
+              src={images[layer.item]}
+              alt={isTop ? `${title} — fotka ${layer.item + 1}` : ''}
+              aria-hidden={isTop ? undefined : true}
+              decoding="async"
+              onLoad={layer.ready ? undefined : (e) => reveal(e.currentTarget, layer.id)}
+              onError={layer.ready ? undefined : (e) => reveal(e.currentTarget, layer.id)}
+              style={{
+                opacity: layer.ready && !covered ? 1 : 0,
+                transition: photoFade(covered ? OUT_DELAY_MS : 0),
+              }}
+              onTransitionEnd={(e) => {
+                if (e.propertyName === 'opacity' && covered) drop(layer.id);
+              }}
+              className="col-start-1 row-start-1 max-h-[82svh] max-w-[90vw] rounded-[3px] object-contain"
+              onClick={(e) => e.stopPropagation()}
+            />
+          );
+        })}
+      </m.div>
     </m.div>
   );
 };
@@ -479,7 +510,7 @@ export const Realizacie = () => {
         title="Realizácie kuchynských dosiek | OROSTONE"
         description="Pozrite, ako sinterovaný kameň vyzerá v reálnych kuchyniach a ostrovčekoch. Veľké plochy, kde dekor rozhoduje výsledok celej miestnosti."
         canonical="https://orostone.sk/realizacie"
-        keywords={['realizácie sinterovaný kameň', 'kuchyne sinterovaný kameň', 'kuchynská doska realizácie', 'sinterovaný kameň portfólio']}
+        keywords={SEO_KEYWORDS}
         structuredData={breadcrumbLD}
       />
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useShopifyProducts } from '../hooks/useShopifyProducts';
 import { OFFER_VALID_FROM, SHIPPING_DETAILS_LD, RETURN_POLICY_LD } from '../lib/productSchema';
@@ -27,9 +27,14 @@ export const Shop = () => {
   const { products } = useShopifyProducts();
   const { hash } = useLocation();
 
-  // Older links such as /#vzorka (sample form): ScrollToTop resets every route to the top and the browser's own
-  // fragment jump runs before the sections exist, so scroll to the target once the page has mounted.
+  // Links such as /#vzorka (sample form) followed while already on this page. Arriving with one is ScrollToTop's job
+  // (EshopApp), which keeps the target in place while the page settles; scrolling here too made the two compete.
+  const arrived = useRef(false);
   useEffect(() => {
+    if (!arrived.current) {
+      arrived.current = true;
+      return;
+    }
     const id = decodeURIComponent(hash.slice(1));
     if (!id) return;
     const timer = window.setTimeout(() => {

@@ -10,6 +10,7 @@ import { useShopifyProducts } from '../hooks/useShopifyProducts';
 import { useCart } from '../context/CartContext';
 import { ProductCard } from '../components/Shop/ProductCard';
 import { CATALOG_GRID } from '../components/Shop/catalogGrid';
+import { categoryHeroCopy } from '../components/Shop/categoryHero';
 import { SEOHead } from '../components/UI/SEOHead';
 import { CatalogOfflineNotice } from '../components/UI/CatalogOfflineNotice';
 import { CatalogGridSkeleton } from '../components/UI/Skeleton';
@@ -145,10 +146,8 @@ export const CategoryPage: React.FC = () => {
     `${category.name} — produkty od OROSTONE.`;
 
   const isSintered = mainCategory === 'sintered-stone';
-  const lead =
-    isSintered && !subCategory
-      ? 'Celé platne 3 200 × 1 600 mm. Pri každom dekore vidíte cenu za m² aj cenu celej platne.'
-      : seoDescription;
+  // the same title and lead the loading skeleton sets, so the hero keeps its height
+  const hero = categoryHeroCopy(mainCategory, subCategory);
   const activeSlug = subCategory ? `${mainCategory}/${subCategory}` : mainCategory;
 
   return (
@@ -175,8 +174,8 @@ export const CategoryPage: React.FC = () => {
           subCategoryName ? { label: category.name, to: `/kategoria/${slug}` } : { label: category.name },
           ...(subCategoryName ? [{ label: subCategoryName }] : []),
         ]}
-        title={subCategoryName ? `${category.name} — ${subCategoryName}` : category.name}
-        lead={lead}
+        title={hero?.title ?? category.name}
+        lead={hero?.lead ?? seoDescription}
       />
 
       {/* ==================== COLOUR FILTER (links to the indexable subcategory URLs) ==================== */}

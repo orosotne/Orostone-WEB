@@ -62,7 +62,8 @@ export const HomeProcess: React.FC = () => (
           </p>
           {/* id="vzorka": older links to /#vzorka land on the form */}
           <div id="vzorka" className="w-full scroll-mt-16 lg:scroll-mt-20">
-            <Suspense fallback={<div className="min-h-[520px]" aria-hidden="true" />}>
+            {/* About as tall as the form (with its captcha) at each width, so nothing below moves when it arrives */}
+            <Suspense fallback={<div className="min-h-[650px] sm:min-h-[440px]" aria-hidden="true" />}>
               <SampleLeadForm />
             </Suspense>
           </div>

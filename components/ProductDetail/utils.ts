@@ -29,7 +29,7 @@ export const ThicknessIcon: React.FC<{ size?: number; className?: string }> = ({
 export { calculateSlabPrice } from '../../lib/slab';
 
 // Moved to lib/shopifyImage.ts (shared with the catalog and the mega menu); re-exported for existing importers.
-export { shopifyImageUrl, shopifySrcSet } from '../../lib/shopifyImage';
+export { shopifyImageUrl, shopifySrcSet, shopifySized, preloadImage } from '../../lib/shopifyImage';
 
 export const productImageAlt = (product: ShopProduct, index?: number): string => {
   const base = `${product.name} veľkoformátová platňa`;
