@@ -1,80 +1,32 @@
-import React, { useState } from 'react';
-import { m, AnimatePresence } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
-import { cn } from '../../lib/utils';
+import React from 'react';
 import { getProductSEOContent, GENERIC_PRODUCT_FAQS } from '../../data/product-seo-content';
 import type { ShopProduct } from '../../constants';
+import { Container, Eyebrow, FaqList } from '../Design';
+import { LIGHT_TONE_BG, type LightTone } from './types';
 
 interface ProductFAQSectionProps {
   product: ShopProduct;
+  tone?: LightTone;
 }
 
-export const ProductFAQSection: React.FC<ProductFAQSectionProps> = ({ product }) => {
+/** The site's FAQ pattern: heading left, questions right from 1024 px; answers stay in the DOM (native <details>). */
+export const ProductFAQSection: React.FC<ProductFAQSectionProps> = ({ product, tone = 'chalk' }) => {
   const seoContent = getProductSEOContent(product.id);
   const productFaqs = seoContent?.faqs || [];
   const allFaqs = [...productFaqs, ...GENERIC_PRODUCT_FAQS];
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   if (allFaqs.length === 0) return null;
 
   return (
-    <section className="py-12 lg:py-16 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="max-w-3xl mx-auto">
-          <m.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-xs lg:text-[11px] font-bold tracking-[0.2em] uppercase text-brand-muted mb-8"
-          >
+    <section className={`py-12 lg:py-16 ${LIGHT_TONE_BG[tone]}`}>
+      <Container className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] lg:gap-16">
+        <div>
+          <Eyebrow as="h2" className="text-brand-dark">
             Časté otázky
-          </m.h2>
-
-          <div className="divide-y divide-gray-200">
-            {allFaqs.map((faq, index) => (
-              <m.div
-                key={index}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-              >
-                <button
-                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  className="w-full flex items-center justify-between py-5 text-left gap-4"
-                >
-                  <span className="text-base lg:text-lg font-medium text-brand-dark leading-snug">
-                    {faq.question}
-                  </span>
-                  <ChevronDown
-                    size={18}
-                    className={cn(
-                      "flex-shrink-0 text-brand-muted transition-transform duration-200",
-                      openIndex === index && "rotate-180"
-                    )}
-                  />
-                </button>
-                <AnimatePresence>
-                  {openIndex === index && (
-                    <m.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="overflow-hidden"
-                    >
-                      <p className="pb-5 text-brand-muted font-light leading-relaxed">
-                        {faq.answer}
-                      </p>
-                    </m.div>
-                  )}
-                </AnimatePresence>
-              </m.div>
-            ))}
-          </div>
+          </Eyebrow>
         </div>
-      </div>
+        <FaqList items={allFaqs.map((faq) => ({ question: faq.question, answer: faq.answer }))} />
+      </Container>
     </section>
   );
 };

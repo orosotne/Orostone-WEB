@@ -16,7 +16,7 @@ export const HomeFacts: React.FC = () => {
       <Container>
         <div ref={draw.ref} className={`hp-facts-in ${draw.className}`}>
           {FACTS.map(({ Icon, title, text }, i) => (
-            <div key={title} className="hp-fact os-ico-item" style={{ '--d': `${i * 0.14}s` } as React.CSSProperties}>
+            <div key={title} className="hp-fact os-ico-item" style={{ '--d': `${i * 0.07}s` } as React.CSSProperties}>
               <Icon className="hp-fact-ico" />
               <b>{title}</b>
               <span>{text}</span>

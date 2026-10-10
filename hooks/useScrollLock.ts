@@ -7,10 +7,14 @@ import { useEffect, useRef } from 'react';
  *
  * Safe for concurrent overlays: only the first lock captures the scroll
  * position and only the last unlock restores it.
+ *
+ * If a link inside the overlay navigated to another page meanwhile, the old
+ * position is not restored: the new page starts at the top.
  */
 
 let lockCount = 0;
 let savedScrollY = 0;
+let savedPath = '';
 let savedStyles: {
   htmlOverflow: string;
   bodyOverflow: string;
@@ -26,6 +30,7 @@ function lock() {
   if (lockCount > 1) return;
 
   savedScrollY = window.scrollY;
+  savedPath = window.location.pathname;
   savedStyles = {
     htmlOverflow: document.documentElement.style.overflow,
     bodyOverflow: document.body.style.overflow,
@@ -56,7 +61,7 @@ function unlock() {
   document.body.style.left = savedStyles.bodyLeft;
   document.body.style.right = savedStyles.bodyRight;
   document.body.style.width = savedStyles.bodyWidth;
-  window.scrollTo(0, savedScrollY);
+  if (window.location.pathname === savedPath) window.scrollTo(0, savedScrollY);
 
   savedStyles = null;
 }

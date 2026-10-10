@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
     darkMode: ["class"],
+    // hover: styles only on devices that can hover — on touch screens a tap must not leave a card lifted
+    future: {
+      hoverOnlyWhenSupported: true,
+    },
     content: [
     "./index.html",
     "./pages/**/*.{js,ts,jsx,tsx}",

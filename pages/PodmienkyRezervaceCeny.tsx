@@ -192,7 +192,7 @@ export const PodmienkyRezervaceCeny = () => {
 
         {/* Footer note */}
         <div className="mt-6 border-t border-brand-line pt-8">
-          <p className="text-sm font-light leading-relaxed text-brand-dark/85">
+          <p className="text-sm font-normal leading-relaxed text-brand-dark/85">
             Tieto podmienky rezervačného poplatku sú účinné od 1. 5. 2026. Tvoria neoddeliteľnú súčasť zmluvy uzavretej úhradou rezervačného poplatku. V otázkach, ktoré tieto podmienky neupravujú, sa primerane uplatnia <Link to="/vop" className={LEGAL_LINK}>Všeobecné obchodné podmienky Orostone</Link>.
           </p>
           <p className="mt-3 text-sm text-brand-muted">

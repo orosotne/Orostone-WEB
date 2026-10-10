@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { m } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
+import { SPRING } from '../lib/motion';
 import {
   ArrowLeft, ShoppingBag, Lock, Truck,
   Minus, Plus, Trash2, Package, ExternalLink
 } from 'lucide-react';
 import { useCart } from '../context/CartContext';
-import { formatPrice } from '../lib/utils';
+import { formatPrice, titleCase } from '../lib/utils';
 import { shopifySized } from '../lib/shopifyImage';
 import { useCookies } from '../context/CookieContext';
 import { trackMetaEvent, savePendingPurchase } from '../hooks/useMetaPixel';
@@ -21,7 +22,7 @@ import { ActionButton, Container, Section, TextLink } from '../components/Design
 // Shopify hosted checkout pre platbu/dodanie.
 
 const STEP_BUTTON =
-  'grid h-10 w-10 place-items-center transition-colors hover:bg-brand-sand disabled:opacity-40';
+  'grid h-10 w-10 place-items-center os-press hover:bg-brand-sand disabled:opacity-40';
 
 export const Checkout = () => {
   const { items, removeItem, updateQuantity, subtotal, total, totalDiscount, subtotalBeforeDiscount, appliedDiscountTitles, itemCount, checkoutUrl, isLoading } = useCart();
@@ -98,84 +99,88 @@ export const Checkout = () => {
             </h2>
 
             <div className="divide-y divide-brand-line border-y border-brand-line">
-              {items.map((item) => (
-                <m.div
-                  key={item.id}
-                  layout
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="flex gap-5 py-6"
-                >
-                  <div className="h-[126px] w-[72px] flex-none overflow-hidden rounded-[2px] bg-brand-sand shadow-[0_0_0_1px_rgba(26,26,26,0.07)]">
-                    <img src={shopifySized(item.image, 200)} alt={item.name} className="h-full w-full object-cover" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="font-semibold tracking-[0.04em]">{item.name}</h3>
-                    {item.variant && (
-                      <p className="mt-0.5 text-[0.88rem] font-light text-brand-muted">{item.variant}</p>
-                    )}
-                    {item.lineDiscount > 0 && item.originalPrice > 0 ? (
-                      <div className="mt-1.5 flex flex-wrap items-center gap-2 tabular-nums">
-                        <span className="text-[0.8rem] text-brand-muted line-through">
-                          {formatPrice(item.originalPrice)}
-                        </span>
-                        <span className="text-[0.9rem] font-semibold">
-                          {formatPrice(item.price)}
-                        </span>
-                        <span className="rounded-[3px] bg-brand-dark px-1.5 py-0.5 text-[0.66rem] font-bold tracking-[0.08em] text-brand-light">
-                          −{Math.round((item.lineDiscount / (item.originalPrice * item.quantity)) * 100)}%
-                        </span>
-                      </div>
-                    ) : (
-                      <p className="mt-1.5 text-[0.9rem] font-medium tabular-nums">{formatPrice(item.price)}</p>
-                    )}
+              {/* A removed line fades out and the rest close the gap, instead of everything jumping */}
+              <AnimatePresence initial={false}>
+                {items.map((item) => (
+                  <m.div
+                    key={item.id}
+                    layout
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={SPRING}
+                    className="flex gap-5 py-6"
+                  >
+                    <div className="h-[126px] w-[72px] flex-none overflow-hidden rounded-[2px] bg-brand-sand shadow-[0_0_0_1px_rgba(26,26,26,0.07)]">
+                      <img src={shopifySized(item.image, 200)} alt={item.name} className="h-full w-full object-cover" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="font-semibold">{titleCase(item.name)}</h3>
+                      {item.variant && (
+                        <p className="mt-0.5 text-[0.88rem] font-normal text-brand-muted">{item.variant}</p>
+                      )}
+                      {item.lineDiscount > 0 && item.originalPrice > 0 ? (
+                        <div className="mt-1.5 flex flex-wrap items-center gap-2 tabular-nums">
+                          <span className="text-[0.8rem] text-brand-muted line-through">
+                            {formatPrice(item.originalPrice)}
+                          </span>
+                          <span className="text-[0.9rem] font-semibold">
+                            {formatPrice(item.price)}
+                          </span>
+                          <span className="rounded-[3px] bg-brand-dark px-1.5 py-0.5 text-[0.66rem] font-bold tracking-[0.08em] text-brand-light">
+                            −{Math.round((item.lineDiscount / (item.originalPrice * item.quantity)) * 100)}%
+                          </span>
+                        </div>
+                      ) : (
+                        <p className="mt-1.5 text-[0.9rem] font-medium tabular-nums">{formatPrice(item.price)}</p>
+                      )}
 
-                    <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-                      <div className="flex items-center overflow-hidden rounded-[10px] border border-brand-line bg-white/60">
-                        <button
-                          type="button"
-                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                          className={STEP_BUTTON}
-                          disabled={isLoading}
-                          aria-label={`Znížiť počet: ${item.name}`}
-                        >
-                          <Minus size={15} />
-                        </button>
-                        <span className="min-w-[2.5rem] text-center text-[0.9rem] font-medium tabular-nums" aria-live="polite">{item.quantity}</span>
-                        <button
-                          type="button"
-                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                          className={STEP_BUTTON}
-                          disabled={isLoading}
-                          aria-label={`Zvýšiť počet: ${item.name}`}
-                        >
-                          <Plus size={15} />
-                        </button>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <span className="flex flex-col items-end font-semibold leading-tight tabular-nums">
-                          {item.lineDiscount > 0 && (
-                            <span className="text-[0.8rem] font-light text-brand-muted line-through">
-                              {formatPrice(item.originalPrice * item.quantity)}
-                            </span>
-                          )}
-                          <span>{formatPrice(item.price * item.quantity)}</span>
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => removeItem(item.id)}
-                          className="grid h-11 w-11 place-items-center rounded-full text-brand-muted transition-colors hover:bg-brand-sand hover:text-brand-dark disabled:opacity-40"
-                          disabled={isLoading}
-                          aria-label={`Odstrániť z košíka: ${item.name}`}
-                        >
-                          <Trash2 size={17} strokeWidth={1.5} />
-                        </button>
+                      <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+                        <div className="flex items-center overflow-hidden rounded-[10px] border border-brand-line bg-white/60">
+                          <button
+                            type="button"
+                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                            className={STEP_BUTTON}
+                            disabled={isLoading}
+                            aria-label={`Znížiť počet: ${item.name}`}
+                          >
+                            <Minus size={15} />
+                          </button>
+                          <span className="min-w-[2.5rem] text-center text-[0.9rem] font-medium tabular-nums" aria-live="polite">{item.quantity}</span>
+                          <button
+                            type="button"
+                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                            className={STEP_BUTTON}
+                            disabled={isLoading}
+                            aria-label={`Zvýšiť počet: ${item.name}`}
+                          >
+                            <Plus size={15} />
+                          </button>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <span className="flex flex-col items-end font-semibold leading-tight tabular-nums">
+                            {item.lineDiscount > 0 && (
+                              <span className="text-[0.8rem] font-normal text-brand-muted line-through">
+                                {formatPrice(item.originalPrice * item.quantity)}
+                              </span>
+                            )}
+                            <span>{formatPrice(item.price * item.quantity)}</span>
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => removeItem(item.id)}
+                            className="grid h-11 w-11 place-items-center rounded-full text-brand-muted os-press hover:bg-brand-sand hover:text-brand-dark disabled:opacity-40"
+                            disabled={isLoading}
+                            aria-label={`Odstrániť z košíka: ${item.name}`}
+                          >
+                            <Trash2 size={17} strokeWidth={1.5} />
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </m.div>
-              ))}
+                  </m.div>
+                ))}
+              </AnimatePresence>
             </div>
           </div>
 
@@ -198,7 +203,7 @@ export const Checkout = () => {
                       Ušetríte {Math.round((totalDiscount / subtotalBeforeDiscount) * 100)}%
                     </span>
                     {appliedDiscountTitles[0] && (
-                      <p className="mt-0.5 truncate text-[0.78rem] font-light text-brand-muted">
+                      <p className="mt-0.5 truncate text-[0.78rem] font-normal text-brand-muted">
                         {appliedDiscountTitles[0]}
                       </p>
                     )}
@@ -214,9 +219,9 @@ export const Checkout = () => {
               </div>
               <div className="flex justify-between gap-4">
                 <span className="font-light text-brand-muted">DPH</span>
-                <span className="text-right text-[0.84rem] font-light text-brand-muted">potvrdí sa v pokladni</span>
+                <span className="text-right text-[0.84rem] font-normal text-brand-muted">potvrdí sa v pokladni</span>
               </div>
-              <p className="text-[0.78rem] font-light leading-relaxed text-brand-muted">
+              <p className="text-[0.78rem] font-normal leading-relaxed text-brand-muted">
                 Presná cena dopravy závisí od adresy a počtu platní.
                 Montáž nie je súčasťou objednávky.{' '}
                 <Link to="/doprava" className="font-medium text-brand-dark underline underline-offset-4">
@@ -227,7 +232,7 @@ export const Checkout = () => {
                 <span className="font-semibold">Celkom</span>
                 <span className="flex items-baseline gap-2 tabular-nums">
                   {totalDiscount > 0 && (
-                    <span className="text-[0.84rem] font-light text-brand-muted line-through">
+                    <span className="text-[0.84rem] font-normal text-brand-muted line-through">
                       {formatPrice(subtotalBeforeDiscount)}
                     </span>
                   )}
@@ -241,7 +246,7 @@ export const Checkout = () => {
               type="button"
               onClick={handleCheckout}
               disabled={!checkoutUrl || isLoading}
-              className="mt-6 flex min-h-[54px] w-full items-center justify-center gap-3 rounded-[10px] bg-brand-dark px-6 text-[0.78rem] font-bold uppercase tracking-[0.12em] text-brand-light transition-colors hover:bg-[#333331] disabled:opacity-50"
+              className="mt-6 flex min-h-[54px] w-full items-center justify-center gap-3 rounded-[10px] bg-brand-dark px-6 text-[0.78rem] font-bold uppercase tracking-[0.12em] text-brand-light os-press hover:bg-[#333331] disabled:opacity-50"
             >
               {isLoading ? (
                 <>
@@ -256,14 +261,14 @@ export const Checkout = () => {
               )}
             </button>
 
-            <p className="mt-3 text-center text-[0.78rem] font-light leading-relaxed text-brand-muted">
+            <p className="mt-3 text-center text-[0.78rem] font-normal leading-relaxed text-brand-muted">
               Budete presmerovaný do zabezpečenej pokladne. Záväzná objednávka s povinnosťou platby vznikne až v poslednom kroku po jej odoslaní.
               Nákupom súhlasíte s{' '}
               <Link to="/vop" className="font-medium text-brand-dark underline underline-offset-4">VOP</Link>.
             </p>
 
             {/* Trust badges */}
-            <ul className="mt-6 space-y-3 border-t border-brand-dark/10 pt-6 text-[0.88rem] font-light">
+            <ul className="mt-6 space-y-3 border-t border-brand-dark/10 pt-6 text-[0.88rem] font-normal">
               <li className="flex items-center gap-2.5">
                 <Lock size={16} strokeWidth={1.5} className="flex-none" />
                 Zabezpečená platba kartou, Apple Pay alebo Google Pay

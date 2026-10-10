@@ -1,6 +1,6 @@
 # Orostone Style Guide
 
-Since October 2026 the site uses a new design system, taken from the approved homepage proposal. Every page uses it. The product detail (`/produkt/:id`, `pages/ShopProductDetail.tsx` + `components/ProductDetail/`) was migrated in October 2026 (proposal A) and still has a few legacy patterns, listed at the end of this file. New and rewritten sections must use the system below.
+Since October 2026 the site uses a new design system, taken from the approved homepage proposal. Every page uses it, the product detail (`/produkt/:id`, `pages/ShopProductDetail.tsx` + `components/ProductDetail/`) included: it was migrated in October 2026 (proposal A) and moved to `<Container>` and the type scale after the owner approved the wider layout. New and rewritten sections must use the system below.
 
 ---
 
@@ -11,7 +11,7 @@ Since October 2026 the site uses a new design system, taken from the approved ho
 | `Container` | The one content grid: max 1800 px, side margin `--os-edge` = `clamp(20px, 5.5vw, 104px)` |
 | `Section` | A band with `tone` = `chalk` · `sand` · `graphite` · `gold` and vertical padding `--os-band` = `clamp(72px, 8vw, 120px)` |
 | `SectionHeader` | Eyebrow + heading (`h2`, or the page `h1`) + lead; `onDark` on graphite |
-| `Eyebrow` | Small uppercase label with a 28 px rule before it |
+| `Eyebrow` | Small uppercase label with a 28 px rule before it; `as="h2"` where the label is the section heading (product detail sections) |
 | `TextLink` | CTA level 3: underlined link with an arrow |
 | `ActionButton` | CTA levels 1 (`gold`) and 2 (`dark`), plus `outline` and `light-outline` |
 | `ArrowIcon` | The arrow used by links and buttons |
@@ -46,6 +46,11 @@ Reference sheet while developing: `npm run dev` → http://localhost:3000/_dizaj
 
 ### E-shop
 
+- Product detail sections take a `tone` (`chalk` · `sand`); `ShopProductDetail` alternates them under the chalk hero, so neighbours never share a background. Their headings are `<Eyebrow as="h2">`, content sits in `<Container>`.
+- The desktop gallery is sticky (`lg:sticky lg:top-[104px]`, main photo capped to the screen height, all thumbnails in one row). The page wrapper uses `overflow-x-clip`, never `overflow-x-hidden`, which would break `sticky`.
+- On phones the add-to-cart buttons sit in the hero too; the sticky bar (price + „Do košíka") shows only while they are off screen.
+- Add to cart answers at once: the button reads „Pridávam…" and ignores further taps until Shopify replied (adding a slab is not idempotent). Cart errors show in `components/UI/Toast` while the drawer is closed.
+
 - `components/Shop/ProductCard` is the catalog card: the whole slab in its true proportion (Shopify images are 1536 × 2752 px), tone label · thickness · stock, price per m² and per slab, and an outline „Do košíka" button outside the link. The grid class lives in `components/Shop/catalogGrid.ts` so the skeletons match.
 - Load Shopify images through `lib/shopifyImage.ts` (`shopifySized`, `shopifySrcSet`): the CDN resizes on `?width=`, the originals are ~250 KB each.
 - Slab prices are whole euros in Shopify and `pricePerM2` is derived from them; round `calculateSlabPrice()` before showing it so it matches the cart.
@@ -78,7 +83,7 @@ Reference sheet while developing: `npm run dev` → http://localhost:3000/_dizaj
 
 ## Typography
 
-Montserrat only (`font-sans`). Body text is 16 px, `font-light` (300), line height 1.6. Text smaller than 15 px uses `font-normal` (400) so it stays legible. The page H1 must be visibly larger than the H2s.
+Montserrat only (`font-sans`). Body text is 16 px, `font-light` (300), line height 1.6. Text smaller than 15 px uses `font-normal` (400) so it stays legible; `index.css` sets this for `text-xs` and `text-sm` (an explicit `font-*` class still wins), other small sizes need `font-normal` in the class. The page H1 must be visibly larger than the H2s.
 
 | Class | Size | Weight | Use |
 |---|---|---|---|
@@ -111,9 +116,17 @@ Links to oro-klient.orostone.sk carry `?od=<miesto>`, never UTM parameters.
 
 ## Motion
 
-- Subtle and once: a reveal or a line-icon draw-in when an element enters the viewport.
+Based on Apple's fluid-interface principles (the `apple-design` skill in `.claude/skills/`).
+
+- Subtle and once: a reveal or a line-icon draw-in when an element enters the viewport. Reveals use `REVEAL` / `revealAt(i)` from `lib/motion.ts` (0.35 s, 12 px); a row of line icons is fully drawn in about a second.
+- Anything that opens or closes uses a spring from `lib/motion.ts`, not a fixed-length tween: `SPRING` (critically damped, no overshoot) by default, `SPRING_SHEET` for drawers, `SPRING_FLICK` (slight settle) only after a flick. Springs start from the current position and speed, so an interrupted animation never jumps.
+- Enter and leave along the same path, from the element that opened it: the cart slides in from the right and out to the right, the search panel and the phone menu unroll from the header edge, the lightbox grows out of the photo and shrinks back into it, dropdowns scale from their trigger corner.
+- Every control answers the press at once: `os-press` (scale 0.97 on `:active`, quick return; big option cards set `[--os-press-scale:0.99]`), links dim (`active:opacity-50`). Hover styles only on devices that hover: Tailwind has `future.hoverOnlyWhenSupported`, plain CSS puts `:hover` in `@media (hover: hover)`.
+- Sheets follow the finger: the cart drawer drags closed (touch), the lightbox pages with a sideways flick and closes with an up/down flick. The decision uses the projected end point (`projectMomentum`), and the animation continues at the finger's speed.
+- Sideways strips on phones snap (`snap-x snap-mandatory`) and fade their right edge (`os-fade-x`, with a spacer so the last item scrolls fully in).
 - Continuous motion (marquee, rotating seal) pauses while it is off-screen.
 - Respect `prefers-reduced-motion`. framer-motion follows it through `MotionConfig`; CSS and GSAP animations must check it themselves.
+- Materials: the header is frosted glass while the page scrolls under it (`os-glass`, a child layer, never `backdrop-filter` on the header itself, which would trap the fixed drawer). `prefers-reduced-transparency` and `prefers-contrast: more` turn glass and every `backdrop-blur` solid.
 
 ---
 
@@ -141,9 +154,9 @@ Links to oro-klient.orostone.sk carry `?od=<miesto>`, never UTM parameters.
 
 ---
 
-## Legacy patterns (being phased out)
+## Legacy patterns (phased out)
 
-Only two remain, on the product detail: `container mx-auto px-6` in its sections and pixel font sizes in `ProductSwitcher`, `TechnicalOverview`, `ProductFAQSection`. Switching to `<Container>` widens the page to the site grid, so do it as one change after the owner approves it. Don't use them anywhere else.
+None remain: the product detail moved to `<Container>` and the type scale in October 2026, and `components/UI/Button.tsx` was removed. Don't reintroduce them.
 
 | Legacy | Replace with |
 |---|---|

@@ -178,32 +178,87 @@
 .os-will-draw .os-ico .vein,
 .os-will-draw .os-ico .hand,
 .os-will-draw .os-ico .bubble { opacity: 0; transform: scale(.55); }
-.os-is-in .os-ico .ln > * { stroke-dashoffset: 0; transition: stroke-dashoffset 1.3s cubic-bezier(.65, 0, .35, 1) calc(var(--d, 0s) + var(--k, 0) * 110ms); }
+/* Short on purpose: a half-drawn icon reads as broken, so the whole row is complete in well under a second */
+.os-is-in .os-ico .ln > * { stroke-dashoffset: 0; transition: stroke-dashoffset .6s cubic-bezier(.65, 0, .35, 1) calc(var(--d, 0s) + var(--k, 0) * 50ms); }
 .os-is-in .os-ico .au,
 .os-is-in .os-ico .vein,
 .os-is-in .os-ico .hand,
 .os-is-in .os-ico .bubble {
   opacity: 1;
   transform: none;
-  transition: opacity .5s ease calc(var(--d, 0s) + .8s + var(--j, 0) * 90ms), transform .8s cubic-bezier(.2, 1.5, .4, 1) calc(var(--d, 0s) + .8s + var(--j, 0) * 90ms);
+  transition: opacity .3s ease calc(var(--d, 0s) + .4s + var(--j, 0) * 50ms), transform .45s cubic-bezier(.2, 1.5, .4, 1) calc(var(--d, 0s) + .4s + var(--j, 0) * 50ms);
 }
-/* small hover motion on the item that holds the icon */
-.os-ico-item:hover .os-ico { transform: translateY(-3px); }
+/* small hover motion on the item that holds the icon (pointer devices only) */
 .os-ico .slab-front,
 .os-ico .truck { transition: transform .5s cubic-bezier(.2, .7, .2, 1); }
 .os-ico .badge { transform-box: fill-box; transform-origin: 50% 35%; transition: transform .7s cubic-bezier(.2, 1.5, .4, 1); }
-.os-ico-item:hover .slab-front { transform: translateX(2.5px); }
-.os-ico-item:hover .truck { transform: translateX(3px); }
-.os-ico-item:hover .badge { transform: rotate(-9deg); }
-.os-ico-item:hover .min { transform-box: view-box; transform-origin: 33.5px 34.5px; animation: os-tick 1.2s cubic-bezier(.65, 0, .35, 1); }
-.os-ico-item:hover .bubble { animation: os-level 1.3s cubic-bezier(.3, .7, .3, 1); }
-.os-ico-item:hover .days .au { animation: os-pop .55s cubic-bezier(.2, 1.5, .4, 1) calc(var(--j, 0) * 80ms); }
+@media (hover: hover) {
+  .os-ico-item:hover .os-ico { transform: translateY(-3px); }
+  .os-ico-item:hover .slab-front { transform: translateX(2.5px); }
+  .os-ico-item:hover .truck { transform: translateX(3px); }
+  .os-ico-item:hover .badge { transform: rotate(-9deg); }
+  .os-ico-item:hover .min { transform-box: view-box; transform-origin: 33.5px 34.5px; animation: os-tick 1.2s cubic-bezier(.65, 0, .35, 1); }
+  .os-ico-item:hover .bubble { animation: os-level 1.3s cubic-bezier(.3, .7, .3, 1); }
+  .os-ico-item:hover .days .au { animation: os-pop .55s cubic-bezier(.2, 1.5, .4, 1) calc(var(--j, 0) * 80ms); }
+}
 @keyframes os-tick { from { transform: rotate(0); } to { transform: rotate(360deg); } }
 @keyframes os-level { 0% { transform: translateX(0); } 25% { transform: translateX(2.6px); } 55% { transform: translateX(-1.6px); } 80% { transform: translateX(.6px); } 100% { transform: none; } }
 @keyframes os-pop { 0% { transform: scale(1); } 45% { transform: scale(.55); } 100% { transform: scale(1); } }
 @media (prefers-reduced-motion: reduce) {
   .os-ico,
   .os-ico * { transition: none !important; animation: none !important; }
+}
+
+/* ===== Small text (STYLE_GUIDE › Typography): under 15 px it is set at 400, not the body's 300.
+   :where() keeps this at zero specificity, so an explicit font-* class still wins. ===== */
+@layer base {
+  :where(.text-xs, .text-sm) { font-weight: 400; }
+}
+
+/* ===== Press feedback: a control answers the finger at once (on press, not on release) and returns softly ===== */
+@layer components {
+  .os-press {
+    transition-property: color, background-color, border-color, text-decoration-color, opacity, box-shadow, transform;
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(.2, .7, .2, 1);
+  }
+  /* big surfaces (option cards) set --os-press-scale: .99 so the press stays a nudge, not a jump.
+     Built on Tailwind's transform variables, so a -translate-y-1/2 on the same element is kept. */
+  .os-press:active:not(:disabled):not([aria-disabled='true']) {
+    --tw-scale-x: var(--os-press-scale, .97);
+    --tw-scale-y: var(--os-press-scale, .97);
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    transition-duration: .08s;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .os-press:active:not(:disabled):not([aria-disabled='true']) { --tw-scale-x: 1; --tw-scale-y: 1; opacity: .8; }
+  }
+}
+
+/* ===== Translucent chrome (site header): the page scrolls under a frosted layer ===== */
+.os-glass {
+  background-color: rgb(249 249 247 / .9);
+  -webkit-backdrop-filter: saturate(1.8) blur(18px);
+  backdrop-filter: saturate(1.8) blur(18px);
+}
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .os-glass { background-color: theme('colors.brand.light'); }
+}
+/* Visitors who asked for less transparency or more contrast get solid surfaces */
+@media (prefers-reduced-transparency: reduce) {
+  .os-glass { background-color: theme('colors.brand.light'); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  [class*='backdrop-blur'] { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+}
+@media (prefers-contrast: more) {
+  .os-glass { background-color: theme('colors.brand.light'); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  [class*='backdrop-blur'] { -webkit-backdrop-filter: none !important; backdrop-filter: none !important; }
+}
+
+/* ===== Sideways strips: the right edge fades out, so a cut-off tile reads as "there is more this way".
+   The strip ends with a spacer as wide as the fade, so the last tile can scroll fully into view. ===== */
+.os-fade-x {
+  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent);
+  mask-image: linear-gradient(90deg, #000 calc(100% - 36px), transparent);
 }
 
 /* GSAP pin-spacer intercepts mouse events by default — pass through to pinned content */

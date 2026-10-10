@@ -298,14 +298,14 @@ export const PrivacyPolicy = () => {
                   </div>
                 </div>
                 <div className={`${LEGAL_BOX} flex items-start gap-4 p-4`}>
-                  <span className="min-w-[2.5rem] pt-1 text-center text-sm font-light text-brand-dark">∞ /</span>
+                  <span className="min-w-[2.5rem] pt-1 text-center text-sm font-normal text-brand-dark">∞ /</span>
                   <div>
                     <p className="font-semibold text-brand-dark">Do odvolania súhlasu</p>
                     <p className="text-sm">Newsletter – e-mailová adresa sa uchováva do odvolania súhlasu. Po odvolaní súhlasu sú údaje vymazané do 30 dní.</p>
                   </div>
                 </div>
                 <div className={`${LEGAL_BOX} flex items-start gap-4 p-4`}>
-                  <span className="min-w-[2.5rem] pt-1 text-center text-sm font-light text-brand-dark">→</span>
+                  <span className="min-w-[2.5rem] pt-1 text-center text-sm font-normal text-brand-dark">→</span>
                   <div>
                     <p className="font-semibold text-brand-dark">Cookies</p>
                     <p className="text-sm">

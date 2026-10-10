@@ -3,6 +3,7 @@ import { m, AnimatePresence } from 'framer-motion';
 import { Check, Wrench, HelpCircle, Info } from 'lucide-react';
 import { cn, formatPrice } from '../../lib/utils';
 import { INSTALLATION_RATE_PER_M2 } from './types';
+import { SPRING } from '../../lib/motion';
 
 interface InstallationSelectorProps {
   installationSelected: boolean;
@@ -44,8 +45,10 @@ export const InstallationSelector: React.FC<InstallationSelectorProps> = ({
       <div className="border border-brand-line bg-white transition-all">
         <button
           type="button"
+          role="switch"
+          aria-checked={installationSelected}
           onClick={() => onInstallationToggle(!installationSelected)}
-          className="w-full flex items-center justify-between p-4 group"
+          className="os-press [--os-press-scale:0.99] w-full flex items-center justify-between p-4 group"
         >
           <div className="flex items-center gap-3">
             <div className={cn(
@@ -91,11 +94,11 @@ export const InstallationSelector: React.FC<InstallationSelectorProps> = ({
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              transition={SPRING}
               className="overflow-hidden"
             >
               <div className="px-4 pb-5 space-y-4 border-t border-brand-line pt-4">
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs lg:text-[11px] text-brand-muted">
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-brand-muted">
                   <span className="flex items-center gap-1">
                     <Check size={12} className="text-brand-dark" />
                     Overený partner
@@ -139,25 +142,25 @@ export const InstallationSelector: React.FC<InstallationSelectorProps> = ({
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.25, ease: 'easeInOut' }}
+                        transition={SPRING}
                         className="overflow-hidden"
                       >
-                        <div className="bg-[#F9F9F7] border border-brand-line p-3 mb-2 text-xs lg:text-[11px] text-brand-muted leading-relaxed space-y-2">
-                          <p className="font-semibold text-brand-dark text-xs lg:text-[11px]">
+                        <div className="bg-[#F9F9F7] border border-brand-line p-3 mb-2 text-xs text-brand-muted leading-relaxed space-y-2">
+                          <p className="font-semibold text-brand-dark text-xs">
                             Čo je plocha na opracovanie?
                           </p>
                           <p>
                             Je to súčet všetkých plôch (v m²), na ktoré sa bude montovať sinterovaný kameň — pracovné dosky, ostrovčeky, zásteny a pod.
                           </p>
-                          <p className="font-semibold text-brand-dark text-xs lg:text-[11px] pt-1">
+                          <p className="font-semibold text-brand-dark text-xs pt-1">
                             Ako merať?
                           </p>
                           <p>
                             Zmerajte dĺžku a šírku každej plochy v centimetroch, prepočítajte na metre (delené 100) a vynásobte. Sčítajte všetky plochy dohromady.
                           </p>
                           <div className="bg-white border border-brand-line p-2.5 space-y-1.5 rounded">
-                            <p className="font-semibold text-brand-dark text-xs lg:text-[11px]">Príklad:</p>
-                            <div className="space-y-1 text-xs lg:text-[11px]">
+                            <p className="font-semibold text-brand-dark text-xs">Príklad:</p>
+                            <div className="space-y-1 text-xs">
                               <div className="flex justify-between">
                                 <span>Ostrovček 120 × 90 cm</span>
                                 <span className="font-medium text-brand-dark">1,08 m²</span>
@@ -202,9 +205,9 @@ export const InstallationSelector: React.FC<InstallationSelectorProps> = ({
                       });
                     }}
                     placeholder="napr. 2.5"
-                    className="w-full px-4 py-2.5 border border-brand-line text-base text-brand-dark bg-white focus:ring-1 focus:ring-brand-dark focus:border-brand-dark outline-none transition-all placeholder:text-brand-muted/60"
+                    className="w-full px-4 py-2.5 border border-brand-line text-base text-brand-dark bg-white focus:ring-1 focus:ring-brand-dark focus:border-brand-dark outline-none transition-all placeholder:text-brand-muted"
                   />
-                  <p className="text-xs lg:text-[11px] text-brand-muted mt-1">
+                  <p className="text-xs text-brand-muted mt-1">
                     Zadajte súčet všetkých plôch, ktoré sa budú opracovávať. Ak si nie ste istí, nechajte pole prázdne — budeme vás kontaktovať.
                   </p>
                 </div>
@@ -212,12 +215,12 @@ export const InstallationSelector: React.FC<InstallationSelectorProps> = ({
                 <div className="bg-[#F9F9F7] p-4 border border-brand-line">
                   <div className="flex items-center justify-between">
                     <div>
-                      <span className="text-xs lg:text-[11px] text-brand-muted block mb-1">Orientačná cena montáže</span>
+                      <span className="text-xs text-brand-muted block mb-1">Orientačná cena montáže</span>
                       <span className="text-xl font-bold text-brand-dark">
                         {installationPrice !== null ? (
-                          <>{formatPrice(installationPrice)} <span className="text-xs lg:text-[11px] font-normal text-brand-muted">s DPH</span></>
+                          <>{formatPrice(installationPrice)} <span className="text-xs font-normal text-brand-muted">s DPH</span></>
                         ) : (
-                          <span className="text-brand-muted/60">—</span>
+                          <span className="text-brand-muted">—</span>
                         )}
                       </span>
                     </div>
@@ -246,36 +249,36 @@ export const InstallationSelector: React.FC<InstallationSelectorProps> = ({
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: 'easeInOut' }}
+                      transition={SPRING}
                       className="overflow-hidden"
                     >
-                      <div className="bg-[#F9F9F7] border border-brand-line p-4 space-y-3 text-xs lg:text-[11px] text-brand-muted leading-relaxed">
+                      <div className="bg-[#F9F9F7] border border-brand-line p-4 space-y-3 text-xs text-brand-muted leading-relaxed">
                         <div>
-                          <h4 className="font-semibold text-brand-dark text-xs lg:text-[11px] uppercase tracking-wider mb-1">
+                          <h4 className="font-semibold text-brand-dark text-xs uppercase tracking-wider mb-1">
                             Ako sa počíta orientačná cena?
                           </h4>
                           <p>Zadáte plochu v m² a systém vypočíta orientačnú cenu podľa štandardnej sadzby za montáž.</p>
                         </div>
                         <div className="border-t border-brand-line pt-3">
-                          <h4 className="font-semibold text-brand-dark text-xs lg:text-[11px] uppercase tracking-wider mb-1">
+                          <h4 className="font-semibold text-brand-dark text-xs uppercase tracking-wider mb-1">
                             Čo je v cene?
                           </h4>
                           <p>Cena zahŕňa zameranie, dopravu, opracovanie hrán, leštenie a montáž.</p>
                         </div>
                         <div className="border-t border-brand-line pt-3">
-                          <h4 className="font-semibold text-brand-dark text-xs lg:text-[11px] uppercase tracking-wider mb-1">
+                          <h4 className="font-semibold text-brand-dark text-xs uppercase tracking-wider mb-1">
                             Orientačnosť
                           </h4>
                           <p>Ide o orientačnú cenu. Po obhliadke/zameraní sa môže mierne znížiť alebo zvýšiť podľa prístupu, členitosti, výrezov a detailov realizácie.</p>
                         </div>
                         <div className="border-t border-brand-line pt-3">
-                          <h4 className="font-semibold text-brand-dark text-xs lg:text-[11px] uppercase tracking-wider mb-1">
+                          <h4 className="font-semibold text-brand-dark text-xs uppercase tracking-wider mb-1">
                             Presnosť
                           </h4>
                           <p>Ak zadáte správne rozmery, vo väčšine prípadov je výsledná cena veľmi blízko realite (cca 90 % prípadov).</p>
                         </div>
                         <div className="border-t border-brand-line pt-3">
-                          <h4 className="font-semibold text-brand-dark text-xs lg:text-[11px] uppercase tracking-wider mb-1">
+                          <h4 className="font-semibold text-brand-dark text-xs uppercase tracking-wider mb-1">
                             Právne/transparentne
                           </h4>
                           <p>Montáž nepredávame priamo cez e-shop – službu iba sprostredkujeme. Cenu montáže hradíte priamo dodávateľovi služby. Finálnu ponuku a termín potvrdí montážny partner po zameraní.</p>
@@ -285,7 +288,7 @@ export const InstallationSelector: React.FC<InstallationSelectorProps> = ({
                   )}
                 </AnimatePresence>
 
-                <p className="text-xs lg:text-[10px] text-brand-muted leading-snug">
+                <p className="text-xs text-brand-muted leading-snug">
                   Orientačná cena – potvrdí sa po zameraní. Cenu montáže hradíte priamo dodávateľovi služby, nie cez e-shop. Montáž sprostredkujeme cez montážneho partnera.
                 </p>
               </div>

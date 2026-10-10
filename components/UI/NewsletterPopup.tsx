@@ -97,7 +97,7 @@ export const NewsletterPopup: React.FC = () => {
               <div className="px-8 py-6">
                 {status === 'success' ? (
                   <div className="text-center py-4">
-                    <CheckCircle className="w-12 h-12 text-brand-gold mx-auto mb-3" strokeWidth={1.5} />
+                    <CheckCircle className="w-12 h-12 text-brand-dark mx-auto mb-3" strokeWidth={1.5} />
                     <p className="font-bold text-brand-dark text-lg mb-1">Výborne!</p>
                     <p className="text-gray-500 text-sm leading-relaxed">
                       Skontrolujte e-mail – kód <strong className="text-brand-dark">VITAJTE</strong> na vzorku bez poštovného je na ceste.

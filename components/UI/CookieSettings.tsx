@@ -3,6 +3,8 @@ import { m, AnimatePresence } from 'framer-motion';
 import { X, BarChart3, Megaphone, Shield, Layers } from 'lucide-react';
 import { useCookies, CookiePreferences } from '../../context/CookieContext';
 import { Link } from 'react-router-dom';
+import { SPRING } from '../../lib/motion';
+import { useScrollLock } from '../../hooks/useScrollLock';
 
 interface ToggleSwitchProps {
   enabled: boolean;
@@ -72,19 +74,22 @@ const CookieCategory: React.FC<CookieCategoryProps> = ({
             <ToggleSwitch enabled={enabled} onChange={onChange} disabled={disabled} label={title} />
           </div>
         </div>
-        <p className="text-[0.84rem] font-light leading-snug text-brand-muted">{description}</p>
+        <p className="text-[0.84rem] font-normal leading-snug text-brand-muted">{description}</p>
       </div>
     </div>
   );
 };
 
 const FOOTER_BUTTON =
-  'inline-flex min-h-[46px] flex-1 items-center justify-center rounded-[10px] px-4 text-[0.7rem] font-bold uppercase tracking-[0.1em] transition-colors duration-200';
+  'inline-flex min-h-[46px] flex-1 items-center justify-center rounded-[10px] px-4 text-[0.7rem] font-bold uppercase tracking-[0.1em] os-press';
 
 export const CookieSettings: React.FC = () => {
   const { isSettingsOpen, closeSettings, preferences, savePreferences, acceptAll, rejectAll } = useCookies();
   const [localPrefs, setLocalPrefs] = useState<CookiePreferences>(preferences);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  // The page behind the dialog stays put (iOS-safe lock shared with the other overlays)
+  useScrollLock(isSettingsOpen);
 
   useEffect(() => {
     if (isSettingsOpen) {
@@ -130,7 +135,7 @@ export const CookieSettings: React.FC = () => {
             initial={{ opacity: 0, scale: 0.97, y: 16 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.97, y: 16 }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+            transition={SPRING}
             role="dialog"
             aria-modal="true"
             aria-labelledby="cookie-settings-title"
@@ -143,13 +148,13 @@ export const CookieSettings: React.FC = () => {
               <div className="flex flex-shrink-0 items-start justify-between gap-4 border-b border-brand-line py-4 pl-5 pr-3 md:py-5 md:pl-7">
                 <div className="pt-1">
                   <h2 id="cookie-settings-title" className="text-[1.15rem] font-semibold leading-snug">Nastavenia cookies a podobných technológií</h2>
-                  <p className="mt-0.5 text-[0.8rem] font-light text-brand-muted">Upravte svoje preferencie</p>
+                  <p className="mt-0.5 text-[0.8rem] font-normal text-brand-muted">Upravte svoje preferencie</p>
                 </div>
                 <button
                   ref={closeButtonRef}
                   type="button"
                   onClick={closeSettings}
-                  className="grid h-11 w-11 flex-none place-items-center rounded-full text-brand-muted transition-colors hover:bg-brand-sand hover:text-brand-dark"
+                  className="grid h-11 w-11 flex-none place-items-center rounded-full text-brand-muted os-press hover:bg-brand-sand hover:text-brand-dark"
                   aria-label="Zavrieť nastavenia cookies"
                 >
                   <X className="h-5 w-5" strokeWidth={1.5} />
@@ -158,7 +163,7 @@ export const CookieSettings: React.FC = () => {
 
               {/* Content */}
               <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-5 py-4 md:px-7">
-                <p className="text-[0.84rem] font-light leading-relaxed text-brand-muted">
+                <p className="text-[0.84rem] font-normal leading-relaxed text-brand-muted">
                   Tu si môžete nastaviť, ktoré cookies a podobné technológie povolíte.
                   Nevyhnutné technológie sú vždy aktívne. Ostatné kategórie môžete
                   povoliť alebo odmietnuť podľa svojich preferencií.
