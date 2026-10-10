@@ -88,7 +88,7 @@ export const KUCHYNE_PROCESS_STEPS: { title: string; description: string }[] = [
 ];
 
 // ---------------------------------------------------------------------------
-// Vizualizácie: three kitchens, each in one decor, shown from four views.
+// Vizualizácie: kitchens, each in one decor, shown from four views.
 // Rendered in Higgsfield (Nano Banana 2.1) with the decor's slab scan as the reference, zero-distortion views.
 // Files: public/images/kuchyne/<decorSlug>-<view>-<width>.avif|webp
 // ---------------------------------------------------------------------------
@@ -114,7 +114,7 @@ export interface KitchenVisualization {
 
 export const KUCHYNE_VIZUALIZACIE_H2 = 'Kuchyne v dekoroch Orostone';
 export const KUCHYNE_VIZUALIZACIE_LEAD =
-  'Tri kuchyne, tri dekory. Každú ukazujeme spredu, z boku, v detaile hrany aj v priestore, bez perspektívneho skreslenia. Kresba kameňa vychádza zo skenu skutočnej platne, takže vidíte, ako dekor pôsobí na ostrovčeku aj na zástene.';
+  'Štyri kuchyne, štyri dekory. Každú ukazujeme spredu, z boku, v detaile hrany aj v priestore, bez perspektívneho skreslenia. Kresba kameňa vychádza zo skenu skutočnej platne, takže vidíte, ako dekor pôsobí na ostrovčeku aj na zástene.';
 
 export const KITCHEN_VISUALIZATIONS: KitchenVisualization[] = [
   {
@@ -151,6 +151,18 @@ export const KITCHEN_VISUALIZATIONS: KitchenVisualization[] = [
       zboku: 'Bočná strana ostrovčeka v dekore Wild Forest, výrazná žilka prechádza z dosky až k podlahe',
       hrana: 'Detail rohu ostrovčeka v dekore Wild Forest, hrdzavé žilky pokračujú cez hranu',
       priestor: 'Kuchyňa v dekore Wild Forest zo strany, ostrovček, zástena s podsvietenou policou a okno',
+    },
+  },
+  {
+    decorSlug: 'nero-margiua',
+    decor: 'Nero Margiua',
+    title: 'Čierny ostrovček a krémové fronty',
+    text: 'Nero Margiua funguje najlepšie ako kontrast. Pri krémových frontoch a svetlom dube čierna doska vynikne a jemné strieborno-biele žilky ju prepoja so svetlým okolím.',
+    alts: {
+      spredu: 'Kuchyňa s čiernym ostrovčekom a zástenou v dekore Nero Margiua a krémovými skrinkami, pohľad spredu',
+      zboku: 'Ostrovček v dekore Nero Margiua z boku, biele žilky pokračujú z dosky cez hranu',
+      hrana: 'Detail rohu ostrovčeka v dekore Nero Margiua, tenké biele žilky prechádzajú cez hranu zrezanú pod 45°',
+      priestor: 'Kuchyňa v dekore Nero Margiua zo strany, čierny ostrovček, krémové skrinky a okná',
     },
   },
 ];
