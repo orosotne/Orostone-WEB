@@ -30,8 +30,9 @@
 //   zoznamu, toho NEprihlasujeme: bulk subscribe by odhlásenie zrušil a formulár na webe
 //   nikto neoveruje. Tím dostane upozornenie. Odpoveď 202 je len prijatá úloha, preto
 //   o chvíľu na pozadí overíme, že je e-mail v zozname a prihlásený (súhlas SUBSCRIBED),
-//   a ak nie, tiež upozorníme. Pri zozname s dvojitým potvrdením (double opt-in) sa
-//   súhlas zapíše až po kliknutí v e-maile, vtedy neupozorňujeme.
+//   a ak nie, tiež upozorníme. Zoznam má jednoduché potvrdenie (single opt-in). Pri
+//   dvojitom by sa súhlas zapísal až po kliknutí v e-maile a overenie po minúte by
+//   upozorňovalo pri každom nepotvrdenom odbere: pri prepnutí ho treba prerobiť.
 // ===========================================
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
@@ -147,7 +148,7 @@ async function klaviyoOptOutState(email: string): Promise<'free' | 'opted-out' |
 /**
  * Po prijatí odberu (202) overí, že je e-mail v zozname A prihlásený (súhlas SUBSCRIBED, bez
  * odhlásenia). Samotné členstvo nestačí, do zoznamu sa dá dostať aj bez súhlasu. Ak ani po minúte
- * nie, upozorní tím. Pri dvojitom potvrdení čaká Klaviyo na klik v e-maile, to nie je chyba.
+ * nie, upozorní tím.
  */
 async function verifySubscribed(email: string, source: string): Promise<void> {
   const filter = emailFilter(email);
@@ -161,18 +162,7 @@ async function verifySubscribed(email: string, source: string): Promise<void> {
       // ďalší pokus alebo upozornenie nižšie
     }
   }
-  if (await listUsesDoubleOptIn()) return;
   await alertKlaviyoFailure(email, source, 'unconfirmed');
-}
-
-/** Má zoznam dvojité potvrdenie? Pri chybe nie, radšej jedno upozornenie navyše ako žiadne. */
-async function listUsesDoubleOptIn(): Promise<boolean> {
-  try {
-    const res = await klaviyoGet(`lists/${KLAVIYO_LIST_ID}?fields[list]=opt_in_process`);
-    return res.ok && (await res.json())?.data?.attributes?.opt_in_process === 'double_opt_in';
-  } catch {
-    return false;
-  }
 }
 
 /** Pauza pred druhým pokusom: Retry-After z odpovede (429/503), najviac 3 s, inak 0,8 s. */
