@@ -7,6 +7,7 @@
  */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
+import { shopifySized } from '../lib/shopifyImage';
 
 // ---------------------------------------------------------------------------
 // Data imports
@@ -401,7 +402,7 @@ function prerenderProduct(product: any): void {
         <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; <a href="/kategoria/sintered-stone">Produkty</a> &rsaquo; ${esc(product.name)}</nav>
         <h1>${esc(product.name)}</h1>
         <p><strong>${product.pricePerM2.toFixed(2)} &euro; / m² s DPH</strong> (platňa ${esc(product.dimensions)} ≈ ${slabTotal.toFixed(2)} &euro; s DPH)</p>
-        <img src="${product.image.includes('cdn.shopify.com') ? product.image.replace(/(\?.*)?$/, '') + '?width=800&quality=80' : product.image}" alt="${esc(product.name)}" width="800" loading="lazy" />
+        <img src="${shopifySized(product.image, 800)}" alt="${esc(product.name)}" width="800" loading="lazy" />
         <div>${product.descriptionHtml || esc(product.description)}</div>
         ${benefitsHtml}
         <h2>Technické parametre</h2>
