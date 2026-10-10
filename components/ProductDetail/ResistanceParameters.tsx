@@ -39,7 +39,7 @@ export const ResistanceParameters: React.FC<ResistanceParametersProps> = ({ prod
       title: 'Odolnosť voči škvrnám',
       value: product.stainResistance || 'Nenasiakavý',
       description: `Porozita ${product.porosity || '< 0.1%'}`,
-      image: { base: `${IMG}/vyhody-skvrny`, ratio: 1, alt: 'Pohár červeného vína, káva a citrón na doske Calacatta Top, pohľad zhora' },
+      image: { base: `${IMG}/vyhody-skvrny`, ratio: 1, alt: 'Pohár červeného vína s rozliatymi kvapkami, espresso a citrón na doske Calacatta Top, pohľad zhora' },
       icon: Droplet,
     },
   ];
