@@ -29,7 +29,8 @@ dist-ssr
 *.sw?
 
 # Local/AI settings
-.claude/
+.claude/*
+!.claude/skills/
 .cursor/
 
 # System/temp files
