@@ -34,7 +34,7 @@ const FAQ_ITEMS = VYHODY_FAQ;
 const BENEFIT_IMAGES = [
   { base: 'vyhody-teplo', alt: 'Horúci hrniec z nehrdzavejúcej ocele s pokrievkou priamo na pracovnej doske Gothic Gold' },
   { base: 'vyhody-nasiakavost', alt: 'Sprchový kút obložený veľkoformátovými platňami Statuario Diamante' },
-  { base: 'vyhody-skvrny', alt: 'Pohár červeného vína, káva a citrón na doske Calacatta Top, pohľad zhora' },
+  { base: 'vyhody-skvrny', alt: 'Pohár červeného vína s rozliatymi kvapkami, espresso a citrón na doske Calacatta Top, pohľad zhora' },
   { base: 'vyhody-uv', alt: 'Ostrovček Calacatta Top pri veľkom okne v slnečnom svetle' },
   { base: 'vyhody-udrzba', alt: 'Ruka utiera rozliatu tekutinu a omrvinky z dosky Calacatta Top vlhkou utierkou' },
   { base: 'vyhody-varna-doska', alt: 'Ruka kladie hrniec priamo na súvislú dosku Gothic Gold bez viditeľných varných zón, pohľad zhora' },
