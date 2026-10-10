@@ -10,11 +10,17 @@ import { useEffect, useRef } from 'react';
  *
  * If a link inside the overlay navigated to another page meanwhile, the old
  * position is not restored: the new page starts at the top.
+ *
+ * Sticky elements (the product gallery, catalog filter bar, …) would come
+ * unstuck while the body is fixed and jump behind a translucent scrim; they
+ * are held in place with a `translate` for the duration of the lock.
  */
 
 let lockCount = 0;
 let savedScrollY = 0;
 let savedPath = '';
+let heldSticky: Array<{ el: HTMLElement; translate: string }> = [];
+
 let savedStyles: {
   htmlOverflow: string;
   bodyOverflow: string;
@@ -25,12 +31,19 @@ let savedStyles: {
   bodyWidth: string;
 } | null = null;
 
+/** Tailwind sticky elements (`sticky`, `lg:sticky` …) that are sticky at the current width. */
+const stickyElements = (): HTMLElement[] =>
+  Array.from(document.querySelectorAll<HTMLElement>('[class~="sticky"], [class*=":sticky"]')).filter(
+    (el) => getComputedStyle(el).position === 'sticky',
+  );
+
 function lock() {
   lockCount++;
   if (lockCount > 1) return;
 
   savedScrollY = window.scrollY;
   savedPath = window.location.pathname;
+  const sticky = stickyElements().map((el) => ({ el, top: el.getBoundingClientRect().top }));
   savedStyles = {
     htmlOverflow: document.documentElement.style.overflow,
     bodyOverflow: document.body.style.overflow,
@@ -48,6 +61,14 @@ function lock() {
   document.body.style.left = '0';
   document.body.style.right = '0';
   document.body.style.width = '100%';
+
+  // Measured after the body is fixed: move each sticky element back to where it was on screen
+  heldSticky = sticky.map(({ el, top }) => {
+    const translate = el.style.translate;
+    const shift = top - el.getBoundingClientRect().top;
+    if (Math.abs(shift) > 0.5) el.style.translate = `0 ${shift}px`;
+    return { el, translate };
+  });
 }
 
 function unlock() {
@@ -62,6 +83,11 @@ function unlock() {
   document.body.style.right = savedStyles.bodyRight;
   document.body.style.width = savedStyles.bodyWidth;
   if (window.location.pathname === savedPath) window.scrollTo(0, savedScrollY);
+  // Scrolled back, so they stick on their own again (same frame, nothing is painted in between)
+  heldSticky.forEach(({ el, translate }) => {
+    el.style.translate = translate;
+  });
+  heldSticky = [];
 
   savedStyles = null;
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, startTransition } from 'react';
+import React, { useState, useEffect, useRef, useCallback, startTransition } from 'react';
 import { Link } from 'react-router-dom';
 import { m, AnimatePresence, useReducedMotion } from 'framer-motion';
 import {
@@ -22,7 +22,7 @@ import { Container, Eyebrow } from '../Design';
 import { ProductSwitcher } from './ProductSwitcher';
 import { BundleSelector } from './BundleSelector';
 import { InstallationSelector } from './InstallationSelector';
-import { ProductLightbox } from './ProductLightbox';
+import { ProductLightbox, type LightboxOrigin } from './ProductLightbox';
 // Dočasne skryté: import { MaterialPerspectivesViewer } from './MaterialPerspectivesViewer';
 import { ThicknessIcon, shopifyImageUrl, shopifySrcSet, productImageAlt, shortFinish, getFinishIcon, calculateSlabPrice } from './utils';
 import type { BundleOption } from './types';
@@ -75,7 +75,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [showAllImages, setShowAllImages] = useState(false);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [lightboxOrigin, setLightboxOrigin] = useState<DOMRect | null>(null);
   const [descExpanded, setDescExpanded] = useState(false);
   const mobileGalleryRef = useRef<HTMLDivElement>(null);
   const mainImageRef = useRef<HTMLDivElement>(null);
@@ -91,27 +90,38 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   const singleSlabPrice = calculateSlabPrice(product.pricePerM2, product.dimensions);
 
   // The photo the lightbox grows out of and shrinks back into: the main image on desktop, the visible slide on
-  // phones. Measured in the same update that opens or closes it, so the animation starts from the right place.
-  const getLightboxOrigin = () => {
-    const el = [mainImageRef.current, mobileGalleryRef.current].find((node) => node && node.offsetParent !== null);
-    return el ? el.getBoundingClientRect() : null;
-  };
+  // phones (the carousel is kept on the lightbox's photo, see below). The lightbox measures it when it opens and
+  // again when it closes.
+  const selectedIndexRef = useRef(selectedImageIndex);
+  selectedIndexRef.current = selectedImageIndex;
+  const getLightboxOrigin = useCallback((): LightboxOrigin | null => {
+    let frame: HTMLElement | null = null;
+    let img: HTMLImageElement | null = null;
+    const main = mainImageRef.current;
+    const rail = mobileGalleryRef.current;
+    if (main && main.offsetParent !== null) {
+      frame = main;
+      const shown = main.querySelectorAll('img');
+      img = shown[shown.length - 1] ?? null;
+    } else if (rail && rail.offsetParent !== null) {
+      frame = rail;
+      img = rail.children[selectedIndexRef.current]?.querySelector('img') ?? null;
+    }
+    if (!frame) return null;
+    const rect = frame.getBoundingClientRect();
+    const aspect = img && img.naturalWidth ? img.naturalWidth / img.naturalHeight : rect.width / rect.height;
+    return { rect, aspect };
+  }, []);
 
   const openLightbox = (index?: number) => {
-    const origin = getLightboxOrigin();
     startTransition(() => {
       if (index !== undefined) setSelectedImageIndex(index);
-      setLightboxOrigin(origin);
       setIsLightboxOpen(true);
     });
     onLightboxChange?.(true);
   };
   const closeLightbox = () => {
-    const origin = getLightboxOrigin();
-    startTransition(() => {
-      setLightboxOrigin(origin);
-      setIsLightboxOpen(false);
-    });
+    startTransition(() => setIsLightboxOpen(false));
     onLightboxChange?.(false);
   };
   const goToPreviousLightbox = () =>
@@ -605,7 +615,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           onPrevious={goToPreviousLightbox}
           onNext={goToNextLightbox}
           productName={name}
-          originRect={lightboxOrigin}
+          getOrigin={getLightboxOrigin}
         />
       </Container>
     </section>
