@@ -12,7 +12,7 @@ import {
 } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useScrollLock } from '../../hooks/useScrollLock';
-import { shopifyImageUrl, shopifySrcSet } from './utils';
+import { shopifySized, shopifySrcSet } from '../../lib/shopifyImage';
 import { FADE, SPRING, SPRING_FLICK, projectMomentum } from '../../lib/motion';
 
 /** The photo on the page the lightbox grows out of: its frame on screen and the image's natural aspect (w / h). */
@@ -29,6 +29,8 @@ interface ProductLightboxProps {
   onPrevious: () => void;
   onNext: () => void;
   productName: string;
+  /** Alt text per photo; defaults to "<productName> - <n>" */
+  alts?: string[];
   /** Measures the photo on the page; called when the lightbox opens and again when it closes */
   getOrigin?: () => LightboxOrigin | null;
 }
@@ -104,6 +106,7 @@ const LightboxView: React.FC<ProductLightboxProps> = ({
   onPrevious,
   onNext,
   productName,
+  alts,
   getOrigin,
 }) => {
   const [isPresent, safeToRemove] = usePresence();
@@ -193,7 +196,7 @@ const LightboxView: React.FC<ProductLightboxProps> = ({
     const toPreload = [images[currentIndex - 1], images[currentIndex + 1]].filter(Boolean);
     toPreload.forEach((src) => {
       const img = new Image();
-      img.src = shopifyImageUrl(src, 1600);
+      img.src = shopifySized(src, 1600);
     });
   }, [currentIndex, images]);
 
@@ -308,10 +311,10 @@ const LightboxView: React.FC<ProductLightboxProps> = ({
           >
             <img
               key={currentIndex}
-              src={shopifyImageUrl(src, 1600)}
+              src={shopifySized(src, 1600)}
               srcSet={shopifySrcSet(src)}
               sizes="100vw"
-              alt={`${productName} - ${currentIndex + 1}`}
+              alt={alts?.[currentIndex] ?? `${productName} - ${currentIndex + 1}`}
               draggable={false}
               onLoad={(e) => {
                 // the real aspect wins over the estimate (an unloaded page photo reports its frame instead)

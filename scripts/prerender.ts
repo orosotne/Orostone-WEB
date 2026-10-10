@@ -27,7 +27,14 @@ const { BLOG_ARTICLES_LISTING } = await import('../data/blogArticlesMeta.js');
 // prerender + sitemap/llms generator + validate-dist.
 const { INFO_PAGES, COLOR_SUBCATEGORIES } = await import('../data/prerenderPages.js');
 const { CATEGORY_SEO } = await import('../data/seo/categories.js');
-const { KITCHEN_FAQS, KUCHYNE_H1, KUCHYNE_PROCESS_STEPS } = await import('../data/pillars/kuchyne.js');
+const {
+  KITCHEN_FAQS,
+  KUCHYNE_H1,
+  KUCHYNE_PROCESS_STEPS,
+  KITCHEN_VISUALIZATIONS,
+  KUCHYNE_VIZUALIZACIE_H2,
+  KUCHYNE_VIZUALIZACIE_LEAD,
+} = await import('../data/pillars/kuchyne.js');
 const {
   CENNIK_TITLE,
   CENNIK_DESCRIPTION,
@@ -715,6 +722,9 @@ function prerenderVzorky(): void {
 // ---------------------------------------------------------------------------
 
 function prerenderKuchyne(): void {
+  const visualizationsHtml = `<section id="vizualizacie"><h2>${esc(KUCHYNE_VIZUALIZACIE_H2)}</h2><p>${esc(KUCHYNE_VIZUALIZACIE_LEAD)}</p>${KITCHEN_VISUALIZATIONS.map(
+    (k) => `<article><h3>${esc(k.title)}</h3><p>${esc(k.text)}</p><p><a href="/produkt/${k.decorSlug}">Pozrieť dekor ${esc(k.decor)}</a></p></article>`,
+  ).join('')}</section>`;
   const processHtml = `<section><h2>Od výberu po inštaláciu</h2><ol>${KUCHYNE_PROCESS_STEPS.map(
     (s) => `<li><strong>${esc(s.title)}</strong> — ${esc(s.description)}</li>`,
   ).join('')}</ol></section>`;
@@ -729,6 +739,7 @@ function prerenderKuchyne(): void {
       <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Kuchyne</nav>
       <h1>${esc(KUCHYNE_H1)}</h1>
       <p>Sinterovaný kameň pre kuchyňu — pracovné dosky, ostrovčeky a zásteny v dekoroch, ktoré obstoja pri dennom svetle. V showroome v Bošanoch porovnáte celé platne, prejdeme cez váš pôdorys a pripravíme projekt. Inštaláciu vykonáva kamenár. Bez impregnácie, s nízkou nasiakavosťou — pre kuchyne, kde nechcete kompromis.</p>
+      ${visualizationsHtml}
       ${processHtml}
       <section><h2>Navrhnite si pracovnú dosku v 3D</h2><p>Malá vzorka neukáže, ako bude dekor pôsobiť na celej doske. V konfigurátore zadáte tvar kuchyne, rozmery, dekor aj otvory pre drez a varnú dosku a návrh uvidíte v 3D. Netreba sa registrovať — kontakt zadáte až pri odoslaní. Návrh posúdi náš obchodný zástupca a ozve sa vám.</p><p><a href="https://crm.orostone.sk/konfigurator">Otvoriť 3D konfigurátor</a></p></section>
       ${faqSectionHtml(KITCHEN_FAQS)}
