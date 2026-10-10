@@ -19,13 +19,18 @@
 //                               funkcia sa správa ako doteraz (uvítací e-mail cez Resend).
 //   KLAVIYO_COMPANY_ID          verejný kľúč účtu (nie je tajný), predvolene RxkFZa.
 //   S nastaveným zoznamom ide odberateľ do Klaviya a uvítaciu sériu posiela flow
-//   na zozname. Uvítací e-mail cez Resend odíde, len keď Klaviyo zlyhá, aby nový
-//   odberateľ vždy niečo dostal. Odhlásenie spravuje Klaviyo: `is_active` v tabuľke
-//   odhlásenie cez odkaz v e-maile neukáže.
+//   na zozname. Uvítací e-mail cez Resend odíde, len keď Klaviyo odber jednoznačne
+//   odmietne (4xx). Pri neistom výsledku (timeout, 5xx, sieť) sa odber raz zopakuje
+//   (Klaviyo je idempotentné, flow znova nespustí) a uvítanie cez Resend NEodíde,
+//   lebo Klaviyo ho mohlo prijať a poslalo by sa dvakrát. Ak odber neprejde, príde
+//   upozornenie na ALERT_EMAIL, aby ho tím pridal ručne. Odhlásenie spravuje Klaviyo:
+//   `is_active` v tabuľke odhlásenie cez odkaz v e-maile neukáže.
 // ===========================================
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { escapeHtml } from '../_shared/escape.ts';
+import { sendEmail } from '../_shared/resend.ts';
 
 const corsHeaders = {
   'Content-Type': 'application/json',
@@ -37,54 +42,96 @@ const corsHeaders = {
 const KLAVIYO_LIST_ID = Deno.env.get('KLAVIYO_NEWSLETTER_LIST_ID')?.trim() || '';
 const KLAVIYO_COMPANY_ID = Deno.env.get('KLAVIYO_COMPANY_ID')?.trim() || 'RxkFZa';
 const KLAVIYO_REVISION = '2026-07-15';
+const ALERT_EMAIL = 'dopyt@orostone.sk';
+
+/**
+ * 'ok'       Klaviyo odber prijalo (202).
+ * 'rejected' Klaviyo ho jednoznačne odmietlo (4xx okrem 429), v zozname nie je.
+ * 'unknown'  ani po dvoch pokusoch nevieme (timeout, 5xx, 429, sieť), mohol prejsť.
+ * 'off'      Klaviyo nie je nastavené (chýba KLAVIYO_NEWSLETTER_LIST_ID).
+ */
+type KlaviyoResult = 'ok' | 'rejected' | 'unknown' | 'off';
 
 /**
  * Prihlási e-mail do zoznamu v Klaviyu (client API, verejný kľúč, bez tajomstva).
- * Vráti true len pri 202. Nikdy nehádže: zlyhanie Klaviya nesmie zhodiť odber na webe.
+ * Nikdy nehádže: zlyhanie Klaviya nesmie zhodiť odber na webe.
  */
-async function subscribeInKlaviyo(email: string, name: string | undefined, source: string): Promise<boolean> {
-  if (!KLAVIYO_LIST_ID) return false;
+async function subscribeInKlaviyo(email: string, name: string | undefined, source: string): Promise<KlaviyoResult> {
+  if (!KLAVIYO_LIST_ID) return 'off';
   const [firstName, ...rest] = (name ?? '').split(/\s+/).filter(Boolean);
-  try {
-    const res = await fetch(
-      `https://a.klaviyo.com/client/subscriptions?company_id=${encodeURIComponent(KLAVIYO_COMPANY_ID)}`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/vnd.api+json',
-          Accept: 'application/vnd.api+json',
-          revision: KLAVIYO_REVISION,
-        },
-        body: JSON.stringify({
+  const body = JSON.stringify({
+    data: {
+      type: 'subscription',
+      attributes: {
+        custom_source: `orostone.sk – ${source}`,
+        profile: {
           data: {
-            type: 'subscription',
+            type: 'profile',
             attributes: {
-              custom_source: `orostone.sk – ${source}`,
-              profile: {
-                data: {
-                  type: 'profile',
-                  attributes: {
-                    email,
-                    ...(firstName ? { first_name: firstName } : {}),
-                    ...(rest.length ? { last_name: rest.join(' ') } : {}),
-                    properties: { zdroj_odberu: source },
-                    subscriptions: { email: { marketing: { consent: 'SUBSCRIBED' } } },
-                  },
-                },
-              },
+              email,
+              ...(firstName ? { first_name: firstName } : {}),
+              ...(rest.length ? { last_name: rest.join(' ') } : {}),
+              properties: { zdroj_odberu: source },
+              subscriptions: { email: { marketing: { consent: 'SUBSCRIBED' } } },
             },
-            relationships: { list: { data: { type: 'list', id: KLAVIYO_LIST_ID } } },
           },
-        }),
-        signal: AbortSignal.timeout(5000),
+        },
       },
-    );
-    if (res.status === 202) return true;
-    console.error('[subscribe-newsletter] Klaviyo odmietlo odber:', res.status, (await res.text()).slice(0, 300));
-    return false;
+      relationships: { list: { data: { type: 'list', id: KLAVIYO_LIST_ID } } },
+    },
+  });
+
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    try {
+      const res = await fetch(
+        `https://a.klaviyo.com/client/subscriptions?company_id=${encodeURIComponent(KLAVIYO_COMPANY_ID)}`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/vnd.api+json',
+            Accept: 'application/vnd.api+json',
+            revision: KLAVIYO_REVISION,
+          },
+          body,
+          signal: AbortSignal.timeout(5000),
+        },
+      );
+      if (res.status === 202) return 'ok';
+      const detail = (await res.text()).slice(0, 300);
+      if (res.status >= 400 && res.status < 500 && res.status !== 429) {
+        console.error('[subscribe-newsletter] Klaviyo odmietlo odber:', res.status, detail);
+        return 'rejected';
+      }
+      console.error(`[subscribe-newsletter] Klaviyo pokus ${attempt}:`, res.status, detail);
+    } catch (err) {
+      console.error(`[subscribe-newsletter] Klaviyo pokus ${attempt}:`, err instanceof Error ? err.message : err);
+    }
+    if (attempt === 1) await new Promise((r) => setTimeout(r, 800));
+  }
+  return 'unknown';
+}
+
+/** Na pozadí, aby upozornenie nepredĺžilo odpoveď webu (Supabase Edge Runtime: waitUntil). */
+function inBackground(task: Promise<unknown>): void {
+  const runtime = (globalThis as { EdgeRuntime?: { waitUntil(p: Promise<unknown>): void } }).EdgeRuntime;
+  if (runtime?.waitUntil) runtime.waitUntil(task);
+  else task.catch(() => {});
+}
+
+/** Odber sa do Klaviya nedostal (alebo nevieme): tím ho pridá ručne. Nikdy nehádže. */
+async function alertKlaviyoFailure(email: string, source: string, result: KlaviyoResult): Promise<void> {
+  const unsure = result === 'unknown';
+  try {
+    await sendEmail({
+      from: 'Orostone web <noreply@orostone.sk>',
+      to: ALERT_EMAIL,
+      subject: 'Newsletter: odber sa nepreniesol do Klaviya',
+      html: `<p>E-mail <strong>${escapeHtml(email)}</strong> sa na webe prihlásil na odber (${escapeHtml(source)}), ale do zoznamu „Newsletter – web“ v Klaviyu sa ${unsure ? 'možno nedostal: Klaviyo neodpovedalo ani na druhý pokus' : 'nedostal: Klaviyo odber odmietlo'}.</p>
+<p>V databáze webu je odber uložený. Pridajte e-mail do zoznamu v Klaviyu ručne (Zoznamy → Newsletter – web).${unsure ? ' Najprv overte, či tam už nie je.' : ''}</p>`,
+      onMissingKey: 'skip',
+    });
   } catch (err) {
-    console.error('[subscribe-newsletter] Klaviyo nedostupné:', err instanceof Error ? err.message : err);
-    return false;
+    console.error('[subscribe-newsletter] Upozornenie sa neodoslalo:', err instanceof Error ? err.message : err);
   }
 }
 
@@ -197,7 +244,8 @@ serve(async (req) => {
         // Already active — idempotent success, no welcome email re-send.
         // Do Klaviya ho pošleme aj tak: kto sa odhlásil odkazom v e-maile a znova
         // sa prihlási na webe, má odber obnovený. Kto je v zozname, flow znova nedostane.
-        await subscribeInKlaviyo(email, name, source);
+        const again = await subscribeInKlaviyo(email, name, source);
+        if (again === 'rejected' || again === 'unknown') inBackground(alertKlaviyoFailure(email, source, again));
         return new Response(
           JSON.stringify({ success: true, alreadySubscribed: true }),
           { status: 200, headers: corsHeaders },
@@ -231,12 +279,14 @@ serve(async (req) => {
     }
 
     // 2. Klaviyo: zoznam „Newsletter – web“, uvítaciu sériu posiela flow na zozname.
-    const inKlaviyo = await subscribeInKlaviyo(email, name, source);
+    const klaviyo = await subscribeInKlaviyo(email, name, source);
+    if (klaviyo === 'rejected' || klaviyo === 'unknown') inBackground(alertKlaviyoFailure(email, source, klaviyo));
 
     // 3. Send welcome email (fire-and-forget) only for new subscribers and
-    //    reactivated unsubscribers — NOT when alreadySubscribed, and not when
-    //    Klaviyo took the subscriber (its flow sends the welcome series).
-    if ((isNewSubscriber || isReactivated) && !inKlaviyo) {
+    //    reactivated unsubscribers — NOT when alreadySubscribed. With Klaviyo on,
+    //    only when it definitely rejected the subscriber: after 'ok' its flow sends
+    //    the welcome series, after 'unknown' it may have (no double welcome).
+    if ((isNewSubscriber || isReactivated) && (klaviyo === 'off' || klaviyo === 'rejected')) {
       fetch(`${SUPABASE_URL}/functions/v1/send-newsletter-welcome`, {
         method: 'POST',
         headers: {
