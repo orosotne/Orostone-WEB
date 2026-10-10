@@ -127,7 +127,7 @@ export const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProp
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
             <div className="absolute top-4 left-4">
-              <span className="bg-white/90 backdrop-blur text-brand-dark text-xs lg:text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded">
+              <span className="bg-white/90 backdrop-blur text-brand-dark text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded">
                 {activePerspective.badge}
               </span>
             </div>
@@ -187,7 +187,7 @@ export const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProp
                       className="w-full h-auto max-h-[60dvh] object-contain"
                     />
                     <div className="absolute top-4 left-4">
-                      <span className="bg-white/90 backdrop-blur text-brand-dark text-xs lg:text-[10px] font-bold uppercase tracking-wider px-4 py-2 rounded">
+                      <span className="bg-white/90 backdrop-blur text-brand-dark text-xs font-bold uppercase tracking-wider px-4 py-2 rounded">
                         {activePerspective.badge}
                       </span>
                     </div>

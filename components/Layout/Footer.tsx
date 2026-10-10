@@ -69,12 +69,12 @@ const NewsletterWidget: React.FC = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="vas@email.sk"
-          className="min-h-[46px] flex-1 rounded-[10px] border border-brand-light/20 bg-brand-light/5 px-4 text-sm text-brand-light placeholder:text-brand-light/40 transition-colors focus:border-brand-gold focus:outline-none"
+          className="min-h-[46px] flex-1 rounded-[10px] border border-brand-light/20 bg-brand-light/5 px-4 text-sm text-brand-light placeholder:text-brand-light/60 transition-colors focus:border-brand-gold focus:outline-none"
         />
         <button
           type="submit"
           disabled={status === 'loading'}
-          className="inline-flex min-h-[46px] flex-shrink-0 items-center justify-center rounded-[10px] bg-brand-light px-5 text-[0.72rem] font-bold uppercase tracking-[0.12em] text-brand-dark transition-colors hover:bg-white disabled:opacity-60"
+          className="inline-flex min-h-[46px] flex-shrink-0 items-center justify-center rounded-[10px] bg-brand-light px-5 text-[0.72rem] font-bold uppercase tracking-[0.12em] text-brand-dark os-press hover:bg-white disabled:opacity-60"
         >
           {status === 'loading' ? <Loader2 size={16} className="animate-spin" /> : 'Odoberať'}
         </button>
@@ -120,7 +120,7 @@ const FooterComponent: React.FC<FooterProps> = ({ categories = [], isProductDeta
           className={`mb-12 grid grid-cols-1 gap-9 border-b border-brand-light/15 pb-[clamp(56px,7vw,88px)] sm:grid-cols-2 lg:grid-cols-4 lg:gap-5 ${draw.className}`}
         >
           {TRUST.map(({ Icon, title, text }, i) => (
-            <div key={title} className="os-ico-item grid justify-items-center gap-1 text-center" style={{ '--d': `${i * 0.14}s` } as React.CSSProperties}>
+            <div key={title} className="os-ico-item grid justify-items-center gap-1 text-center" style={{ '--d': `${i * 0.07}s` } as React.CSSProperties}>
               <Icon className="mb-3.5 h-12 w-12" />
               <p className="text-[0.92rem] font-semibold">{title}</p>
               <p className="text-[0.82rem] font-normal text-brand-light/60">{text}</p>
@@ -156,7 +156,7 @@ const FooterComponent: React.FC<FooterProps> = ({ categories = [], isProductDeta
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="grid h-11 w-11 place-items-center rounded-full border border-brand-light/20 text-brand-light/80 transition-colors hover:border-brand-gold hover:text-brand-gold"
+                className="grid h-11 w-11 place-items-center rounded-full border border-brand-light/20 text-brand-light/80 os-press hover:border-brand-gold hover:text-brand-gold"
               >
                 <Icon size={17} strokeWidth={1.6} />
               </a>

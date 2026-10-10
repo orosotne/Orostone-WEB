@@ -1,25 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Share2, Link2, Facebook, Mail, Check } from 'lucide-react';
 import { m, AnimatePresence } from 'framer-motion';
+import { SPRING } from '../../lib/motion';
 
 interface ShareButtonProps {
   title: string;
   url?: string;
-  variant?: 'dark' | 'gold';
 }
 
-export const ShareButton: React.FC<ShareButtonProps> = ({
-  title,
-  url,
-  variant = 'dark',
-}) => {
+export const ShareButton: React.FC<ShareButtonProps> = ({ title, url }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const shareUrl = url || window.location.href;
-
-  const hoverColor = variant === 'gold' ? 'hover:text-brand-gold' : 'hover:text-brand-dark';
 
   // Close dropdown on outside click
   useEffect(() => {
@@ -114,10 +108,12 @@ export const ShareButton: React.FC<ShareButtonProps> = ({
   return (
     <div ref={containerRef} className="relative">
       <button
+        type="button"
         onClick={handleShare}
-        className={`text-xs text-gray-400 ${hoverColor} uppercase tracking-widest flex items-center gap-2 transition-colors`}
+        aria-expanded={isOpen}
+        className="os-press -my-2 flex min-h-[44px] items-center gap-2 text-xs font-medium uppercase tracking-widest text-brand-muted hover:text-brand-dark"
       >
-        <Share2 size={14} /> Zdieľať
+        <Share2 size={14} aria-hidden="true" /> Zdieľať
       </button>
 
       <AnimatePresence>
@@ -126,8 +122,9 @@ export const ShareButton: React.FC<ShareButtonProps> = ({
             initial={{ opacity: 0, y: -4, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -4, scale: 0.95 }}
-            transition={{ duration: 0.15 }}
-            className="absolute right-0 top-full mt-2 bg-white rounded-lg shadow-lg border border-gray-100 py-1.5 z-50 min-w-[180px]"
+            transition={SPRING}
+            style={{ transformOrigin: 'top right' }}
+            className="absolute right-0 top-full z-50 mt-2 min-w-[200px] rounded-[10px] border border-brand-line bg-white py-1.5 shadow-[0_18px_40px_-20px_rgba(26,26,26,0.35)]"
           >
             {items.map((item) => {
               const Icon = item.icon;
@@ -135,7 +132,8 @@ export const ShareButton: React.FC<ShareButtonProps> = ({
                 <button
                   key={item.label}
                   onClick={item.onClick}
-                  className="w-full flex items-center gap-2.5 px-4 py-2 text-xs text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors text-left"
+                  type="button"
+                  className="flex min-h-[44px] w-full items-center gap-2.5 px-4 text-left text-sm text-brand-muted transition-colors hover:bg-brand-light hover:text-brand-dark active:bg-brand-sand"
                 >
                   <Icon size={14} />
                   {item.label}

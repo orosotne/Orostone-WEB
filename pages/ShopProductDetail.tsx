@@ -1,10 +1,7 @@
-import React, { useState, useMemo, useEffect, useRef, startTransition } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { m, AnimatePresence } from 'framer-motion';
-import { ArrowLeft } from 'lucide-react';
-import { ShopProduct } from '../constants';
+import React, { useState, useMemo, useEffect, useRef, useCallback, startTransition } from 'react';
+import { useParams } from 'react-router-dom';
+import { ArrowLeft, Check, Loader2, ShoppingBag } from 'lucide-react';
 import { useShopifyProducts, useShopifyProduct } from '../hooks/useShopifyProducts';
-import { Button } from '../components/UI/Button';
 import { useCart } from '../context/CartContext';
 import { cn, formatPrice } from '../lib/utils';
 import { ProductDetailSkeleton } from '../components/UI/Skeleton';
@@ -28,9 +25,11 @@ import {
   saveInstallationToStorage,
   calculateSlabPrice,
   type BundleOption,
+  type LightTone,
 } from '../components/ProductDetail';
 import { MAX_SAMPLES } from '../constants';
-import { GoldBand } from '../components/Design';
+import { ActionButton, GoldBand } from '../components/Design';
+import { Toast } from '../components/UI/Toast';
 
 export const ShopProductDetail: React.FC = () => {
   const { id } = useParams();
@@ -46,6 +45,10 @@ export const ShopProductDetail: React.FC = () => {
   const { product: shopifyProduct, isLoading: productLoading } = useShopifyProduct(id, cachedProduct);
   const [selectedBundle, setSelectedBundle] = useState<BundleOption>(BUNDLE_OPTIONS[0]);
   const [cartError, setCartError] = useState<string | null>(null);
+  const clearCartError = useCallback(() => setCartError(null), []);
+  const [isAdding, setIsAdding] = useState(false);
+  // The hero's add-to-cart buttons are on screen: the mobile sticky bar steps aside (starts hidden, slides in)
+  const [ctaVisible, setCtaVisible] = useState(true);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [installationSelected, setInstallationSelected] = useState(false);
   const [installationAreaM2, setInstallationAreaM2] = useState<number | null>(null);
@@ -105,18 +108,19 @@ export const ShopProductDetail: React.FC = () => {
         <div className="text-center">
           <h1 className="text-2xl font-bold text-brand-dark mb-4">Produkt nenájdený</h1>
           <p className="text-brand-muted mb-8">Požadovaný produkt neexistuje alebo bol odstránený.</p>
-          <Link to="/">
-            <Button variant="primary">
-              <ArrowLeft size={16} />
-              Späť do obchodu
-            </Button>
-          </Link>
+          <ActionButton to="/">
+            <ArrowLeft size={16} aria-hidden="true" />
+            Späť do obchodu
+          </ActionButton>
         </div>
       </div>
     );
   }
 
-  const handleAddToCart = () => {
+  // The button answers at once („Pridávam…") and ignores further taps until Shopify replied: adding a slab is not
+  // idempotent, a second tap would add a second ~1 700 € slab.
+  const handleAddToCart = async () => {
+    if (isAdding) return;
     if (product.shopifyVariantId) {
       const variantId = product.shopifyVariantId;
       const bundleQty = selectedBundle.quantity;
@@ -125,9 +129,10 @@ export const ShopProductDetail: React.FC = () => {
       const productId = product.id;
       const productName = product.name;
 
+      setIsAdding(true);
+      const added = addItem(variantId, bundleQty);
       startTransition(() => {
         setCartError(null);
-        addItem(variantId, bundleQty);
 
         if (installSelected) {
           const hasArea = installArea !== null && installArea >= 0.1;
@@ -145,23 +150,25 @@ export const ShopProductDetail: React.FC = () => {
           saveInstallationToStorage(null);
         }
       });
+      try {
+        await added;
+      } finally {
+        setIsAdding(false);
+      }
     } else {
       console.warn('Produkt nemá shopifyVariantId, nie je možné pridať do košíka:', product.id);
       setCartError('Tento produkt momentálne nie je možné pridať do košíka. Skúste to prosím neskôr.');
-      setTimeout(() => setCartError(null), 5000);
     }
   };
 
   const handleAddSample = () => {
     if (!product.sampleShopifyVariantId) {
       setCartError('Vzorka pre tento produkt nie je momentálne dostupná.');
-      setTimeout(() => setCartError(null), 5000);
       return;
     }
     if (isSampleInCart(product.id)) return;
     if (sampleCount >= MAX_SAMPLES) {
       setCartError(`Dosiahli ste maximum ${MAX_SAMPLES} vzoriek. Odoberte niektorú pred pridaním novej.`);
-      setTimeout(() => setCartError(null), 5000);
       return;
     }
     setCartError(null);
@@ -173,8 +180,32 @@ export const ShopProductDetail: React.FC = () => {
   const seoDescription = metaOverride?.description || product.metaDescription || product.seoDescription || product.description;
   const seoImage = (product.gallery && product.gallery.length > 0 ? product.gallery[0] : product.image) || '/images/logo.png';
 
+  // Light bands alternate under the chalk hero, so two neighbours never share a background (STYLE_GUIDE › Layout)
+  const toneQueue: LightTone[] = [];
+  const nextTone = (): LightTone => {
+    const tone: LightTone = toneQueue.length % 2 === 0 ? 'sand' : 'chalk';
+    toneQueue.push(tone);
+    return tone;
+  };
+  const storyTone = product.richDescription || product.designInsight ? nextTone() : 'sand';
+  const benefitsTone = product.keyBenefits?.length ? nextTone() : 'chalk';
+  const technicalTone = nextTone();
+  const applicationTone = nextTone();
+  const logisticsTone = nextTone();
+  const architectTone = nextTone();
+  const faqTone = nextTone();
+
+  const bundlePricePerM2 = Math.round(product.pricePerM2 * (1 - selectedBundle.discountPercent / 100) * 100) / 100;
+  const bundleTotal = Math.round(
+    calculateSlabPrice(product.pricePerM2, product.dimensions) * selectedBundle.quantity * (1 - selectedBundle.discountPercent / 100) * 100,
+  ) / 100;
+  const quantityLabel = `${selectedBundle.quantity} ${selectedBundle.quantity === 1 ? 'platňa' : selectedBundle.quantity < 5 ? 'platne' : 'platní'}`;
+  const showStickyBar = !ctaVisible && !isCartOpen && !isLightboxOpen;
+  const inCart = isInCart(product.id);
+
   return (
-    <div className="min-h-svh w-full overflow-x-hidden overflow-y-visible bg-white">
+    // overflow-x-clip, not hidden: hidden would make this a scroll container and break the sticky gallery
+    <div className="min-h-svh w-full overflow-x-clip bg-brand-light">
       <SEOHead
         title={seoTitle}
         description={seoDescription}
@@ -183,18 +214,7 @@ export const ShopProductDetail: React.FC = () => {
         ogImage={seoImage}
       />
 
-      <AnimatePresence>
-        {cartError && (
-          <m.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="fixed top-4 left-4 right-4 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 z-50 bg-red-600 text-white px-6 py-3 rounded-[3px] shadow-xl text-sm font-medium sm:max-w-md text-center"
-          >
-            {cartError}
-          </m.div>
-        )}
-      </AnimatePresence>
+      <Toast message={cartError} onClose={clearCartError} />
 
       <HeroSection
         key={product.id}
@@ -203,7 +223,8 @@ export const ShopProductDetail: React.FC = () => {
         selectedBundle={selectedBundle}
         onBundleChange={setSelectedBundle}
         onAddToCart={handleAddToCart}
-        isInCart={isInCart(product.id)}
+        isAdding={isAdding}
+        isInCart={inCart}
         installationSelected={installationSelected}
         installationAreaM2={installationAreaM2}
         onInstallationToggle={setInstallationSelected}
@@ -212,99 +233,67 @@ export const ShopProductDetail: React.FC = () => {
         isSampleInCart={isSampleInCart(product.id)}
         sampleCount={sampleCount}
         onLightboxChange={setIsLightboxOpen}
+        onCtaVisibilityChange={setCtaVisible}
       />
 
-      <ProductStorySection product={product} />
-      <KeyBenefitsSection product={product} />
-      <TechnicalOverview product={product} />
-      <ApplicationSection product={product} />
+      <ProductStorySection product={product} tone={storyTone} />
+      <KeyBenefitsSection product={product} tone={benefitsTone} />
+      <TechnicalOverview product={product} tone={technicalTone} />
+      <ApplicationSection product={product} tone={applicationTone} />
       <ResistanceParameters product={product} />
-      <LogisticsSection product={product} />
-      <ArchitectBlock product={product} />
-      <ProductFAQSection product={product} />
+      <LogisticsSection product={product} tone={logisticsTone} />
+      <ArchitectBlock product={product} tone={architectTone} />
+      <ProductFAQSection product={product} tone={faqTone} />
       <GoldBand od="produkt" dekor={product.id} title="Potrebujete dosku na mieru?" />
 
-      {/* Sticky Add-to-Cart Bottom Bar — mobile only */}
-      <div className={cn(
-        "fixed left-0 right-0 z-[60] lg:hidden bg-white border-t border-brand-line shadow-[0_-4px_20px_rgba(0,0,0,0.08)] transition-all duration-300 bottom-0",
-        (isCartOpen || isLightboxOpen) && "hidden"
-      )}
-        style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
+      {/* Sticky add-to-cart bar, phones only: one row (price + button). It shows while the hero's buttons are off
+          screen and slides away when they scroll into view, so the two never compete. The sample stays in the hero. */}
+      <div
+        className={cn(
+          'os-glass fixed inset-x-0 bottom-0 z-[60] border-t border-brand-line px-4 pb-[calc(10px+env(safe-area-inset-bottom,0px))] pt-2.5 shadow-[0_-10px_30px_-18px_rgba(26,26,26,0.35)] transition-transform duration-300 [transition-timing-function:cubic-bezier(.2,.7,.2,1)] motion-reduce:transition-none lg:hidden',
+          showStickyBar ? 'translate-y-0' : 'translate-y-[110%]',
+        )}
+        aria-hidden={!showStickyBar}
+        // inert while slid away: its button must not be reachable by Tab or a screen reader
+        inert={!showStickyBar}
       >
-        <div className="px-4 py-3 space-y-2">
-          <div className="flex items-center gap-3">
-            <div className="flex-1 min-w-0">
-              <p className="text-xs text-brand-muted truncate">{product.name} • {selectedBundle.quantity} {selectedBundle.quantity === 1 ? 'platňa' : selectedBundle.quantity < 5 ? 'platne' : 'platní'}</p>
-              <p className="text-lg font-bold text-brand-dark leading-tight">
-                {formatPrice(Math.round(product.pricePerM2 * (1 - selectedBundle.discountPercent / 100) * 100) / 100)}
-                <span className="text-xs font-normal text-brand-muted ml-1">/ m² s DPH</span>
-                {selectedBundle.discountPercent > 0 && (
-                  <span className="text-xs font-normal text-brand-muted ml-1 line-through">{formatPrice(product.pricePerM2)}</span>
-                )}
-              </p>
-              <p className="text-[10px] text-brand-muted leading-tight">Doprava od 150 EUR s DPH</p>
-            </div>
-            <button
-              onClick={handleAddToCart}
-              className={cn(
-                "flex-shrink-0 h-12 px-5 text-sm font-semibold tracking-wider uppercase transition-all flex items-center justify-center gap-2 rounded-[10px]",
-                isInCart(product.id)
-                  ? "border border-brand-dark bg-brand-sand text-brand-dark"
-                  : "bg-brand-dark text-white active:bg-black"
-              )}
-            >
-              {isInCart(product.id) ? (
-                <>
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  V košíku
-                </>
-              ) : (
-                <>
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 11H4L5 9z" /></svg>
-                  Do košíka
-                </>
-              )}
-            </button>
+        <div className="flex items-center gap-3">
+          <div className="min-w-0 flex-1">
+            <p className="text-lg font-bold leading-tight tabular-nums text-brand-dark">
+              {formatPrice(bundlePricePerM2)}
+              <span className="ml-1 text-xs font-normal text-brand-muted">/ m² s DPH</span>
+            </p>
+            <p className="truncate text-xs tabular-nums text-brand-muted">
+              {quantityLabel} · spolu {formatPrice(bundleTotal)}
+            </p>
           </div>
-          {!product.sampleShopifyVariantId ? (
-            <Link
-              to="/vzorky"
-              className="w-full h-11 text-xs font-semibold tracking-wider uppercase transition-all flex items-center justify-center gap-2 rounded-[10px] border border-brand-dark text-brand-dark active:border-brand-dark active:text-brand-muted"
-            >
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
-              Objednať vzorku zadarmo
-            </Link>
-          ) : (
-            <button
-              onClick={handleAddSample}
-              disabled={sampleCount >= MAX_SAMPLES && !isSampleInCart(product.id)}
-              className={cn(
-                "w-full h-11 text-xs font-semibold tracking-wider uppercase transition-all flex items-center justify-center gap-2 rounded-[10px] border",
-                isSampleInCart(product.id)
-                  ? "border-brand-dark bg-brand-sand text-brand-dark"
-                  : sampleCount >= MAX_SAMPLES
-                    ? "border-brand-line text-brand-muted"
-                    : "border-brand-dark text-brand-dark active:border-brand-dark active:text-brand-muted"
-              )}
-            >
-              {isSampleInCart(product.id) ? (
-                <>
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
-                  Vzorka v košíku
-                </>
-              ) : sampleCount >= MAX_SAMPLES ? (
-                <>
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
-                  Maximum vzoriek ({MAX_SAMPLES})
-                </>
-              ) : (
-                <>
-                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
-                  Objednať vzorku zadarmo
-                </>
-              )}
-            </button>
-          )}
+          <button
+            type="button"
+            onClick={handleAddToCart}
+            aria-busy={isAdding}
+            className={cn(
+              'os-press flex h-12 flex-shrink-0 items-center justify-center gap-2 rounded-[10px] px-5 text-sm font-semibold uppercase tracking-wider',
+              inCart && !isAdding ? 'border border-brand-dark bg-brand-sand text-brand-dark' : 'bg-brand-dark text-white',
+              isAdding && 'cursor-wait',
+            )}
+          >
+            {isAdding ? (
+              <>
+                <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                Pridávam…
+              </>
+            ) : inCart ? (
+              <>
+                <Check className="h-4 w-4" aria-hidden="true" />
+                V košíku
+              </>
+            ) : (
+              <>
+                <ShoppingBag className="h-4 w-4" aria-hidden="true" />
+                Do košíka
+              </>
+            )}
+          </button>
         </div>
       </div>
     </div>

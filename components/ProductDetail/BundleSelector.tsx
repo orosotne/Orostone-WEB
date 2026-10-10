@@ -3,6 +3,7 @@ import { cn, formatPrice } from '../../lib/utils';
 import { slabAreaFromPrices } from '../../lib/slab';
 import type { BundleOption } from './types';
 import { BUNDLE_OPTIONS } from './types';
+import { Eyebrow } from '../Design';
 
 interface BundleSelectorProps {
   pricePerSlab: number;
@@ -38,10 +39,10 @@ export const BundleSelector: React.FC<BundleSelectorProps> = ({
 
   return (
     <div className="mb-8">
-      <h3 className="flex items-center gap-3.5 text-os-eyebrow uppercase text-brand-dark before:h-px before:w-7 before:bg-current before:opacity-75 before:content-[''] mb-4">
+      <Eyebrow as="h3" id="bundle-label" className="mb-4 text-brand-dark">
         Počet platní
-      </h3>
-      <div className="space-y-3">
+      </Eyebrow>
+      <div className="space-y-3" role="radiogroup" aria-labelledby="bundle-label">
         {BUNDLE_OPTIONS.map((bundle) => {
           const isSelected = selectedBundle.quantity === bundle.quantity;
           const bundlePrice = calculateBundlePrice(bundle);
@@ -52,9 +53,12 @@ export const BundleSelector: React.FC<BundleSelectorProps> = ({
           return (
             <button
               key={bundle.quantity}
+              type="button"
+              role="radio"
+              aria-checked={isSelected}
               onClick={() => onBundleChange(bundle)}
               className={cn(
-                "w-full p-3 sm:p-4 border transition-all text-left relative",
+                "os-press [--os-press-scale:0.99] w-full p-3 sm:p-4 border text-left relative",
                 isSelected
                   ? "border-brand-dark bg-white ring-1 ring-brand-dark"
                   : bundle.isBestValue
@@ -63,7 +67,7 @@ export const BundleSelector: React.FC<BundleSelectorProps> = ({
               )}
             >
               {bundle.isBestValue && (
-                <span className="absolute -top-2.5 right-4 rounded-[3px] bg-brand-dark text-brand-light text-[9px] font-bold tracking-wider uppercase px-2 py-0.5">
+                <span className="absolute -top-2.5 right-4 rounded-[3px] bg-brand-dark px-2 py-0.5 text-[0.66rem] font-bold uppercase tracking-[0.12em] text-brand-light">
                   Najlepšia hodnota
                 </span>
               )}
@@ -96,7 +100,7 @@ export const BundleSelector: React.FC<BundleSelectorProps> = ({
                           </span>
                         )}
                       </div>
-                      <div className="text-[11px] sm:text-xs text-brand-muted">
+                      <div className="text-xs text-brand-muted">
                         {formatPrice(bundlePricePerM2)} / m² • {totalAreaM2.toFixed(2)} m²
                       </div>
                     </div>
@@ -105,11 +109,11 @@ export const BundleSelector: React.FC<BundleSelectorProps> = ({
                       <div className="font-bold text-brand-dark text-base sm:text-lg">
                         {formatPrice(bundlePricePerM2)}<span className="text-xs sm:text-sm font-normal text-brand-muted"> / m² s DPH</span>
                       </div>
-                      <div className="text-[11px] sm:text-xs text-brand-muted">
+                      <div className="text-xs text-brand-muted">
                         spolu {formatPrice(bundlePrice)}
                       </div>
                       {savings > 0 && (
-                        <div className="text-brand-dark text-[11px] sm:text-xs font-medium">
+                        <div className="text-brand-dark text-xs font-medium">
                           Ušetríš: {formatPrice(savings)}
                         </div>
                       )}

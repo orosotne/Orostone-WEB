@@ -1,14 +1,17 @@
 import React from 'react';
 import { m } from 'framer-motion';
 import { Package, Clock, Truck, MapPin } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import type { ShopProduct } from '../../constants';
+import { Container, Eyebrow, TextLink } from '../Design';
+import { REVEAL } from '../../lib/motion';
+import { LIGHT_TONE_BG, type LightTone } from './types';
 
 interface LogisticsSectionProps {
   product: ShopProduct;
+  tone?: LightTone;
 }
 
-export const LogisticsSection: React.FC<LogisticsSectionProps> = ({ product }) => {
+export const LogisticsSection: React.FC<LogisticsSectionProps> = ({ product, tone = 'chalk' }) => {
   const logistics = [
     {
       icon: Package,
@@ -35,59 +38,43 @@ export const LogisticsSection: React.FC<LogisticsSectionProps> = ({ product }) =
   ];
 
   return (
-    <section className="py-10 lg:py-16 bg-[#F9F9F7]">
-      <div className="container mx-auto px-6">
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="flex items-center gap-3.5 text-os-eyebrow uppercase text-brand-dark before:h-px before:w-7 before:bg-current before:opacity-75 before:content-[''] mb-8">
+    <section className={`py-10 lg:py-16 ${LIGHT_TONE_BG[tone]}`}>
+      <Container>
+        <m.div {...REVEAL}>
+          <Eyebrow as="h2" className="mb-8 text-brand-dark">
             Dodanie a logistika
-          </h2>
+          </Eyebrow>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             {logistics.map((item, index) => {
               const Icon = item.icon;
               return (
-                <div key={index} className="bg-white p-4 lg:p-6 border border-brand-line">
-                  <Icon size={20} className="text-brand-dark mb-4" />
-                  <span className="text-xs lg:text-[10px] font-bold tracking-[0.15em] uppercase text-brand-muted block mb-2">
-                    {item.label}
-                  </span>
-                  <span className="text-brand-dark font-medium">
-                    {item.value}
-                  </span>
+                <div key={index} className="border border-brand-line bg-white p-4 lg:p-6">
+                  <Icon size={20} className="mb-4 text-brand-dark" aria-hidden="true" />
+                  <span className="mb-2 block text-os-eyebrow uppercase text-brand-muted">{item.label}</span>
+                  <span className="font-medium text-brand-dark">{item.value}</span>
                 </div>
               );
             })}
           </div>
 
-          <div className="mt-6 p-4 lg:p-5 bg-white border border-brand-line flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div className="mt-6 flex flex-col gap-3 border border-brand-line bg-white p-4 sm:flex-row sm:items-center sm:justify-between lg:p-5">
             <div className="space-y-1">
-              <p className="text-sm font-semibold text-brand-dark">
-                Doprava od 150 EUR s DPH
-              </p>
-              <p className="text-xs text-brand-muted">
-                Presná cena sa potvrdí v pokladni podľa adresy a počtu platní.
-              </p>
+              <p className="text-sm font-semibold text-brand-dark">Doprava od 150 EUR s DPH</p>
+              <p className="text-xs text-brand-muted">Presná cena sa potvrdí v pokladni podľa adresy a počtu platní.</p>
             </div>
-            <Link
-              to="/doprava"
-              className="text-xs font-semibold text-brand-dark hover:text-brand-dark transition-colors uppercase tracking-wider whitespace-nowrap"
-            >
-              Viac o doprave →
-            </Link>
+            <TextLink to="/doprava" className="whitespace-nowrap">
+              Viac o doprave
+            </TextLink>
           </div>
 
           {product.handlingNotes && (
-            <div className="mt-4 p-4 bg-amber-50 border border-amber-200 text-amber-800 text-sm">
+            <div className="mt-4 border-l-2 border-brand-dark bg-brand-sand p-4 text-sm text-brand-dark">
               <strong>Upozornenie:</strong> {product.handlingNotes}
             </div>
           )}
         </m.div>
-      </div>
+      </Container>
     </section>
   );
 };

@@ -188,10 +188,23 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   // ------------------------------------------
   // Inicializacia kosika
   // ------------------------------------------
-  useEffect(() => {
-    if (!isShopifyConfigured()) return;
+  // One shared run: the idle-time init and an early „Do košíka" tap (before idle fired) wait for the same
+  // promise instead of failing with „Košík nie je inicializovaný" or creating two carts.
+  const initPromiseRef = useRef<Promise<ShopifyCart | null> | null>(null);
 
-    const initCart = async () => {
+  const ensureCart = useCallback((): Promise<ShopifyCart | null> => {
+    if (cartRef.current) return Promise.resolve(cartRef.current);
+    if (!isShopifyConfigured()) return Promise.resolve(null);
+    if (initPromiseRef.current) return initPromiseRef.current;
+
+    const adopt = (next: ShopifyCart) => {
+      setCart(next);
+      cartRef.current = next;
+      localStorage.setItem(CART_ID_KEY, next.id);
+      return next;
+    };
+
+    const run = async (): Promise<ShopifyCart | null> => {
       setIsLoading(true);
       try {
         // Skus nacitat existujuci cart z localStorage
@@ -201,11 +214,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
           try {
             const existingCart = await shopifyGetCart(savedCartId);
             // Cart exists and is valid — check if it hasn't been completed (checkout finished)
-            if (existingCart && existingCart.lines) {
-              setCart(existingCart);
-              cartRef.current = existingCart;
-              return;
-            }
+            if (existingCart && existingCart.lines) return adopt(existingCart);
           } catch {
             // Cart expired or invalid — remove stale ID and create new
             localStorage.removeItem(CART_ID_KEY);
@@ -213,30 +222,36 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         }
 
         // Ak neexistuje alebo expiroval, vytvor novy
-        const newCart = await shopifyCreateCart();
-        setCart(newCart);
-        cartRef.current = newCart;
-        localStorage.setItem(CART_ID_KEY, newCart.id);
+        return adopt(await shopifyCreateCart());
       } catch (error) {
         console.error('Chyba pri inicializacii kosika:', error);
         // Vytvor novy cart ak sa nieco pokazilo
         localStorage.removeItem(CART_ID_KEY);
         try {
-          const newCart = await shopifyCreateCart();
-          setCart(newCart);
-          cartRef.current = newCart;
-          localStorage.setItem(CART_ID_KEY, newCart.id);
+          return adopt(await shopifyCreateCart());
         } catch (retryError) {
           console.error('Nepodarilo sa vytvorit kosik:', retryError);
+          return null;
         }
       } finally {
         setIsLoading(false);
       }
     };
 
-    // Defer cart init to avoid competing with LCP resources
-    return onIdle(initCart, 3000);
+    const pending = run().then((result) => {
+      // A failed run may be retried by the next action
+      if (!result) initPromiseRef.current = null;
+      return result;
+    });
+    initPromiseRef.current = pending;
+    return pending;
   }, []);
+
+  useEffect(() => {
+    if (!isShopifyConfigured()) return;
+    // Defer cart init to avoid competing with LCP resources
+    return onIdle(() => { void ensureCart(); }, 3000);
+  }, [ensureCart]);
 
   // ------------------------------------------
   // ACTIONS
@@ -253,14 +268,14 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   }, []);
 
   const addItem = useCallback(async (variantId: string, quantity: number = 1) => {
-    const currentCart = cartRef.current;
+    setError(null);
+    const currentCart = cartRef.current ?? (await ensureCart());
     if (!currentCart) {
-      setError('Košík nie je inicializovaný. Skúste obnoviť stránku.');
+      setError('Košík sa nepodarilo pripraviť. Skontrolujte pripojenie a skúste to znova.');
       return;
     }
 
     setIsLoading(true);
-    setError(null);
     try {
       let updatedCart: ShopifyCart;
       try {
@@ -296,7 +311,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     } finally {
       setIsLoading(false);
     }
-  }, [recoverCart]);
+  }, [recoverCart, ensureCart]);
 
   const removeItem = useCallback(async (lineId: string) => {
     const currentCart = cartRef.current;
