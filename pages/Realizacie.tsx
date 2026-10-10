@@ -379,6 +379,12 @@ const photoCount = (n: number) => `${n} ${n === 1 ? 'fotka' : n < 5 ? 'fotky' : 
 
 const OUT_DELAY_MS = 120;
 
+/** Natural proportions (w / h) of a photo the browser already has, such as the one just clicked on the page */
+const cachedAspect = (src: string) => {
+  const img = preloadImage(src);
+  return img?.complete && img.naturalWidth ? img.naturalWidth / img.naturalHeight : undefined;
+};
+
 const Lightbox: React.FC<{
   images: string[];
   title: string;
@@ -388,6 +394,19 @@ const Lightbox: React.FC<{
 }> = ({ images, title, index, onClose, onNav }) => {
   useScrollLock(true);
   const { layers, reveal, drop } = usePhotoLayers(index);
+
+  // Every photo fills the same frame, as large as the screen allows. At their own size the 800 px photos would come
+  // up smaller than the 1200 px hero before them, with the rest of the hero dissolving around them. The size is set
+  // on load, before the photo is revealed; the opened one is usually known from the start.
+  const [aspects, setAspects] = useState<Record<string, number>>(() => {
+    const aspect = cachedAspect(images[index]);
+    return aspect ? { [images[index]]: aspect } : {};
+  });
+  const learnAspect = useCallback((src: string, img: HTMLImageElement) => {
+    if (!img.naturalWidth || !img.naturalHeight) return;
+    const aspect = img.naturalWidth / img.naturalHeight;
+    setAspects((prev) => (prev[src] === aspect ? prev : { ...prev, [src]: aspect }));
+  }, []);
 
   // The neighbours load ahead, so a step usually finds its photo decoded already
   useEffect(() => {
@@ -420,6 +439,8 @@ const Lightbox: React.FC<{
       aria-modal="true"
       aria-label={title}
     >
+      {/* The controls stay above the photos (z-10): the photos are positioned too, and on a phone they reach under
+          the arrows */}
       {/* Close */}
       <button
         onClick={onClose}
@@ -430,7 +451,7 @@ const Lightbox: React.FC<{
       </button>
 
       {/* Title + counter */}
-      <div className="absolute left-1/2 top-5 grid -translate-x-1/2 justify-items-center gap-1 text-center text-brand-light/70">
+      <div className="absolute left-1/2 top-5 z-10 grid -translate-x-1/2 justify-items-center gap-1 text-center text-brand-light/70">
         <span className="text-[0.92rem] font-medium text-brand-light">{title}</span>
         {images.length > 1 && (
           <span className="text-[0.8rem] font-normal tabular-nums tracking-[0.12em]">
@@ -443,7 +464,7 @@ const Lightbox: React.FC<{
       {index > 0 && (
         <button
           onClick={(e) => { e.stopPropagation(); onNav(index - 1); }}
-          className="absolute left-3 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center text-brand-light/60 transition-colors hover:text-brand-light"
+          className="absolute left-3 top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center text-brand-light/60 transition-colors hover:text-brand-light"
           aria-label="Predchádzajúca"
         >
           <ChevronLeft size={34} strokeWidth={1.25} />
@@ -454,7 +475,7 @@ const Lightbox: React.FC<{
       {index < images.length - 1 && (
         <button
           onClick={(e) => { e.stopPropagation(); onNav(index + 1); }}
-          className="absolute right-3 top-1/2 grid h-12 w-12 -translate-y-1/2 place-items-center text-brand-light/60 transition-colors hover:text-brand-light"
+          className="absolute right-3 top-1/2 z-10 grid h-12 w-12 -translate-y-1/2 place-items-center text-brand-light/60 transition-colors hover:text-brand-light"
           aria-label="Nasledujúca"
         >
           <ChevronRight size={34} strokeWidth={1.25} />
@@ -462,30 +483,39 @@ const Lightbox: React.FC<{
       )}
 
       {/* Photos, stacked in one grid cell. The next one fades in over the current one once decoded (usePhotoLayers),
-          so a step never goes dark between photos. */}
+          so a step never goes dark between photos. Each photo is positioned (relative) so the newer one always
+          paints on top: unpositioned, a photo that reaches opacity 1 would paint under the previous one while that
+          is still fading out (below opacity 1 an element paints at the positioned level), and the previous photo
+          would show through again. */}
       <m.div initial={{ scale: 0.97 }} animate={{ scale: 1 }} transition={SPRING} className="grid place-items-center">
         {layers.map((layer, i) => {
           const isTop = i === layers.length - 1;
+          const src = images[layer.item];
+          const aspect = aspects[src];
           // Covered by a newer decoded photo: dissolve a beat later, so where the two overlap the new one already
           // hides it, and where they don't (other proportions) it fades out instead of popping off
           const covered = layers.slice(i + 1).some((l) => l.ready);
           return (
             <img
               key={layer.id}
-              src={images[layer.item]}
+              src={src}
               alt={isTop ? `${title} — fotka ${layer.item + 1}` : ''}
               aria-hidden={isTop ? undefined : true}
               decoding="async"
-              onLoad={layer.ready ? undefined : (e) => reveal(e.currentTarget, layer.id)}
+              onLoad={(e) => {
+                learnAspect(src, e.currentTarget);
+                if (!layer.ready) reveal(e.currentTarget, layer.id);
+              }}
               onError={layer.ready ? undefined : (e) => reveal(e.currentTarget, layer.id)}
               style={{
+                width: aspect ? `min(90vw, calc(82svh * ${aspect}))` : undefined,
                 opacity: layer.ready && !covered ? 1 : 0,
                 transition: photoFade(covered ? OUT_DELAY_MS : 0),
               }}
               onTransitionEnd={(e) => {
                 if (e.propertyName === 'opacity' && covered) drop(layer.id);
               }}
-              className="col-start-1 row-start-1 max-h-[82svh] max-w-[90vw] rounded-[3px] object-contain"
+              className="relative col-start-1 row-start-1 max-h-[82svh] max-w-[90vw] rounded-[3px] object-contain"
               onClick={(e) => e.stopPropagation()}
             />
           );
