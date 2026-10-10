@@ -211,9 +211,14 @@ export const CategoryPageSkeleton: React.FC = () => {
     <Section tone="chalk" band={false} className="pb-[var(--os-band)] pt-[clamp(40px,5vw,88px)]">
       <Container>
         <div className="grid max-w-[660px] justify-items-start gap-5" aria-hidden="true">
-          <p className="text-os-eyebrow uppercase">
-            <TextBars>E-shop / Sinterovaný kameň</TextBars>
-          </p>
+          <ol className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-os-eyebrow uppercase text-brand-sand before:mr-1 before:h-px before:w-7 before:bg-current before:content-['']">
+            {(hero?.crumbs ?? ['E-shop', 'Sinterovaný kameň']).map((label, i) => (
+              <li key={label} className="flex items-center gap-2.5">
+                {i > 0 && <span className="font-normal">/</span>}
+                <TextBars>{label}</TextBars>
+              </li>
+            ))}
+          </ol>
           <p className="text-os-h1 [text-wrap:balance]">
             <TextBars>{hero?.title ?? 'Sinterovaný kameň'}</TextBars>
           </p>
