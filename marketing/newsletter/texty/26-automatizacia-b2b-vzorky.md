@@ -16,7 +16,7 @@ Vzorky dekorov, ktoré ukážete klientom pri stole.
 Vzorky, ktoré
 ukážete klientovi.
 
-### Hlavná fotka (popis na fotke)
+### Hlavná fotka (popis pod fotkou)
 [alt fotky: Šesť vzoriek sinterovaného kameňa Orostone na svetlom dubovom stole]
 
 ### Text

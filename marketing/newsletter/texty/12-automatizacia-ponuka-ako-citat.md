@@ -16,7 +16,7 @@ Krátky sprievodca k ponuke, ktorú ste od nás dostali.
 Cena za meter
 nepovie všetko.
 
-### Hlavná fotka (popis na fotke)
+### Hlavná fotka (popis pod fotkou)
 [alt fotky: Ručne kreslený pôdorys kuchyne, vzorka sinterovaného kameňa a skladací meter]
 ● Pôdorys a vzorka
 

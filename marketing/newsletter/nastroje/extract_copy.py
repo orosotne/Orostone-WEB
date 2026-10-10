@@ -10,7 +10,7 @@ SRC = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "..", "sablony")
 OUT = sys.argv[2] if len(sys.argv) > 2 else os.path.join(HERE, "..", "texty")
 NAMES = {
  'HEADER':'Hlavička','EYEBROW (séria)':'Séria (pill) a veta pod ňou','HEADLINE':'Nadpis','TMAVÝ PÁS':'Tmavý pás (úvod)',
- 'HERO IMAGE':'Hlavná fotka (popis na fotke)','KAMENNÝ PÁS':None,'TEXT':'Text','NADPIS SEKCIE':'Nadpis sekcie',
+ 'HERO IMAGE':'Hlavná fotka (popis pod fotkou)','KAMENNÝ PÁS':None,'TEXT':'Text','NADPIS SEKCIE':'Nadpis sekcie',
  'ČÍSLOVANÝ ZOZNAM':'Číslovaný zoznam','FACTS STRIP':'Fakty','CITÁT / HLAVNÁ MYŠLIENKA (tmavá karta)':'Citát / dôležitá myšlienka',
  'DVOJICA FOTIEK':'Dvojica fotiek (popis)','OBRÁZOK S POPISOM':'Obrázok (popis)','DVE KARTY':'Dve karty',
  'MOODBOARD + KOMBINÁCIE':'Kombinácie','KOMBINÁCIE (swatche)':'Kombinácie','PONUKA (biela karta)':'Ponuka',

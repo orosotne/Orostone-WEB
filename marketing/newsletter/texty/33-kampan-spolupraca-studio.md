@@ -20,7 +20,7 @@ Ako pracujeme s kuchynskými štúdiami a architektmi.
 Kuchyňa a doska
 z jedného návrhu.
 
-### Hlavná fotka (popis na fotke)
+### Hlavná fotka (popis pod fotkou)
 [alt fotky: Návrh kuchyne so vzorkami frontov, mosadznou úchytkou a vzorkami sinterovaného kameňa na dubovom stole]
 
 ### Text

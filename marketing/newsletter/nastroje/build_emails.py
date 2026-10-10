@@ -12,6 +12,7 @@ Texty e-mailov sa upravujú tu; `sablony/` a `texty/` sa z neho generujú.
 """
 import os
 import sys
+import re
 
 OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "sablony")
 os.makedirs(OUT, exist_ok=True)
@@ -37,6 +38,7 @@ def shop_img(name, v, w=1040):
 
 
 CSS = """
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap');
   body,table,td,p,a,li{ -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
   table,td{ mso-table-lspace:0pt; mso-table-rspace:0pt; border-collapse:collapse; }
   img{ -ms-interpolation-mode:bicubic; border:0; outline:none; text-decoration:none; display:block; }
@@ -50,11 +52,12 @@ CSS = """
     .h1{ font-size:26px !important; line-height:32px !important; }
     .h1-dark{ font-size:27px !important; line-height:33px !important; }
     .h2{ font-size:20px !important; line-height:26px !important; }
-    .pull{ font-size:15px !important; line-height:23px !important; }
+    .pull{ font-size:17px !important; line-height:25px !important; }
     .hero-wrap{ padding:0 16px !important; }
+    .hero-cap{ padding:10px 16px 0 !important; }
     .meta-right{ display:none !important; }
     .header-logo{ height:24px !important; }
-    .cta-btn{ padding:13px 22px !important; font-size:10.5px !important; letter-spacing:0.14em !important; }
+    .cta-btn{ padding:13px 18px !important; font-size:12px !important; letter-spacing:0.1em !important; line-height:16px !important; }
     .facts-cell{ display:inline-block !important; width:50% !important; box-sizing:border-box !important; padding:12px 10px 12px 0 !important; border-left:0 !important; }
     .pair-col{ display:block !important; width:100% !important; padding:0 0 12px 0 !important; }
     .pair-col img{ width:100% !important; max-width:100% !important; height:auto !important; }
@@ -71,7 +74,9 @@ CSS = """
     .badge-divider{ width:104px !important; height:104px !important; margin-top:-52px !important; padding:0 14px !important; }
     .list-num{ width:30px !important; }
     .ps-cell{ padding:18px 18px !important; }
-    .letter{ font-size:15px !important; line-height:25px !important; }
+    .t-body, .letter{ font-size:16px !important; line-height:27px !important; }
+    .t-title{ font-size:16px !important; line-height:23px !important; }
+    .t-small{ font-size:15px !important; line-height:24px !important; }
   }
   @media screen and (max-width:400px){
     .h1{ font-size:23px !important; line-height:29px !important; }
@@ -121,9 +126,11 @@ def doc(meta, title, preheader, rows):
   <tr>
     <td align="center" style="padding:32px 12px;">
 
-      <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background:{CARD}; border-radius:16px; overflow:hidden;">
+      <!--[if mso]><table role="presentation" width="600" align="center" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->
+      <table role="presentation" class="container" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; max-width:600px; margin:0 auto; background:{CARD}; border-radius:16px; overflow:hidden;">
 {''.join(rows)}
       </table>
+      <!--[if mso]></td></tr></table><![endif]-->
 
     </td>
   </tr>
@@ -214,7 +221,7 @@ def headline(html, top=18, bottom=8):
 def dark_band(pill_text, headline_html, sub=None, image=None, cta=None, note=None):
     """Tmavý pás (color blocking): séria + headline so zlatou kurzívou, voliteľne obrázok a CTA."""
     sub_html = f"""
-                  <div style="font-family:{F}; font-size:15px; font-weight:300; line-height:25px; color:#E5E7EB; margin-top:14px;">{sub}</div>""" if sub else ""
+                  <div class="t-body" style="font-family:{F}; font-size:15px; font-weight:300; line-height:25px; color:#E5E7EB; margin-top:14px;">{sub}</div>""" if sub else ""
     note_html = f"""
                   <div style="font-family:{F}; font-size:12px; font-weight:400; line-height:18px; color:#9CA3AF; margin-top:12px;">{note}</div>""" if note else ""
     img_html = ""
@@ -244,24 +251,25 @@ def dark_band(pill_text, headline_html, sub=None, image=None, cta=None, note=Non
 
 
 def hero(src, alt, capsule=None, w=520, top=8):
+    """Hlavná fotka. Popis (capsule) je pod fotkou, nie na nej: Gmail ignoruje position:absolute."""
     cap = ""
     if capsule:
         cap = f"""
-              <div style="position:absolute; bottom:14px; left:14px; padding:6px 12px; background:rgba(26,26,26,0.78); border-radius:9999px; font-family:{F}; font-size:9.5px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#FFFFFF; line-height:1;"><span style="color:{GOLD};">&#9679;</span>&nbsp; {capsule}</div>"""
+        <tr>
+          <td class="hero-cap" style="padding:10px 40px 0; font-family:{F}; font-size:10px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:{GRAY}; line-height:15px;"><span style="color:{GOLD_INK};">&#9679;</span>&nbsp; {capsule}</td>
+        </tr>"""
     return f"""
         <!-- HERO IMAGE -->
         <tr>
           <td class="hero-wrap" style="padding:{top}px 40px 0; line-height:0;">
             <!--[if !mso]><!-- -->
-            <div style="position:relative;">
-              <img src="{src}" alt="{alt}" width="{w}" style="width:100%; max-width:{w}px; height:auto; display:block; border-radius:12px;" />{cap}
-            </div>
+            <img src="{src}" alt="{alt}" width="{w}" style="width:100%; max-width:{w}px; height:auto; display:block; border-radius:12px;" />
             <!--<![endif]-->
             <!--[if mso]>
             <img src="{src}" alt="{alt}" width="{w}" style="width:{w}px; height:auto; display:block;" />
             <![endif]-->
           </td>
-        </tr>
+        </tr>{cap}
 """
 
 
@@ -283,7 +291,7 @@ def text(paragraphs, greeting="Dobrý deň,", top=24, bottom=8):
     return f"""
         <!-- TEXT -->
         <tr>
-          <td class="px-40" style="padding:{top}px 40px {bottom}px; font-family:{F}; font-size:15px; font-weight:300; line-height:26px; color:{BODY};">
+          <td class="px-40 t-body" style="padding:{top}px 40px {bottom}px; font-family:{F}; font-size:15px; font-weight:300; line-height:26px; color:{BODY};">
             {g}{ps}
           </td>
         </tr>
@@ -324,8 +332,8 @@ def numbered(items, top=12, note=None):
                     <tr>
                       <td class="list-num" valign="top" width="44" style="font-family:{F}; font-size:11px; font-weight:700; letter-spacing:0.22em; color:{GOLD_INK}; padding-top:3px;">{i:02d}</td>
                       <td valign="top">
-                        <div style="font-family:{F}; font-size:15px; font-weight:700; line-height:22px; color:{INK};">{t}</div>
-                        <div style="font-family:{F}; font-size:13.5px; font-weight:400; line-height:22px; color:{GRAY}; margin-top:4px;">{d}</div>
+                        <div class="t-title" style="font-family:{F}; font-size:15px; font-weight:700; line-height:22px; color:{INK};">{t}</div>
+                        <div class="t-small" style="font-family:{F}; font-size:13.5px; font-weight:400; line-height:22px; color:{GRAY}; margin-top:4px;">{d}</div>
                       </td>
                     </tr>
                   </table>
@@ -425,7 +433,7 @@ def split(left, right, top=16):
     """Dve karty vedľa seba: (title, [items]) — napr. Kde funguje / Na čo myslieť."""
     def card(title, items, dark_label):
         lis = "".join(f"""
-                    <tr><td valign="top" width="16" style="font-family:{F}; font-size:13px; font-weight:700; color:{GOLD_INK}; padding:6px 0;">&ndash;</td><td valign="top" style="font-family:{F}; font-size:13.5px; font-weight:400; line-height:21px; color:{BODY}; padding:6px 0 6px 6px;">{it}</td></tr>""" for it in items)
+                    <tr><td valign="top" width="16" style="font-family:{F}; font-size:13px; font-weight:700; color:{GOLD_INK}; padding:6px 0;">&ndash;</td><td class="t-small" valign="top" style="font-family:{F}; font-size:13.5px; font-weight:400; line-height:21px; color:{BODY}; padding:6px 0 6px 6px;">{it}</td></tr>""" for it in items)
         return f"""<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#FFFFFF; border:1px solid {LINE}; border-radius:14px; border-collapse:separate; border-spacing:0;">
                     <tr><td style="padding:20px 20px 14px;">
                       <div style="font-family:{F}; font-size:10px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:{dark_label};">{title}</div>
@@ -501,8 +509,14 @@ def media_row(img, alt, items, top=18):
 """
 
 
-def choices(question, note, options, top=28):
-    """Preferenčný blok: otázka + 3 tlačidlá-obrysy. Každé tlačidlo je samostatný odkaz → segment podľa kliku v ESP."""
+def choices(question, note, options, top=28, prop=None):
+    """Preferenčný blok: otázka + 3 tlačidlá-obrysy. Každé tlačidlo je samostatný odkaz.
+    S prop= je voľba (text, odkaz, hodnota): klik cez Klaviyo {% update_property_link %} zapíše
+    hodnotu do vlastnosti profilu `prop` a presmeruje na odkaz. Hodnota len a-z, 0-9, pomlčka
+    (Klaviyo v nej nepovolí diakritiku)."""
+    if prop:
+        assert all(re.fullmatch(r"[a-z0-9-]+", o[2]) for o in options), options
+        options = [(o[0], "{% update_property_link '" + prop + "' '" + o[2] + "' '" + o[1] + "' %}") for o in options]
     btns = "".join(f"""
                   <tr><td style="padding:0 0 10px;">
                     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
@@ -520,7 +534,7 @@ def choices(question, note, options, top=28):
                 <td style="padding:24px 24px 14px;">
                   <div style="font-family:{F}; font-size:10px; font-weight:700; letter-spacing:0.24em; text-transform:uppercase; color:{GOLD_INK}; margin-bottom:10px;">Jedna otázka pre nás</div>
                   <div style="font-family:{F}; font-size:20px; font-weight:700; line-height:26px; color:{INK};">{question}</div>
-                  <div style="font-family:{F}; font-size:13.5px; font-weight:400; line-height:21px; color:{GRAY}; margin:8px 0 16px;">{note}</div>
+                  <div class="t-small" style="font-family:{F}; font-size:13.5px; font-weight:400; line-height:21px; color:{GRAY}; margin:8px 0 16px;">{note}</div>
                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">{btns}
                   </table>
                 </td>
@@ -581,7 +595,7 @@ def card_offer(label, title, body, cta_label, href, note=None, top=28):
                 <td style="padding:26px 28px 24px;">
                   <div style="font-family:{F}; font-size:10px; font-weight:700; letter-spacing:0.24em; text-transform:uppercase; color:{GOLD_INK}; margin-bottom:10px;">{label}</div>
                   <div style="font-family:{F}; font-size:22px; font-weight:700; line-height:28px; color:{INK};">{title}</div>
-                  <p style="margin:10px 0 18px; font-family:{F}; font-size:14px; font-weight:400; line-height:23px; color:{BODY};">{body}</p>
+                  <p class="t-small" style="margin:10px 0 18px; font-family:{F}; font-size:14px; font-weight:400; line-height:23px; color:{BODY};">{body}</p>
                   {button(cta_label, href)}{note_html}
                 </td>
               </tr>
@@ -609,7 +623,7 @@ def product(img, alt, name, desc, spec, cta_label, href, link=None, top=28):
                       <td class="product-txt-col" valign="top">
                         <div style="font-family:{F}; font-size:10px; font-weight:700; letter-spacing:0.24em; text-transform:uppercase; color:{GOLD_INK};">Dekor v e-shope</div>
                         <div style="font-family:{F}; font-size:20px; font-weight:700; line-height:26px; letter-spacing:0.04em; color:{INK}; margin-top:6px;">{name}</div>
-                        <div style="font-family:{F}; font-size:13.5px; font-weight:400; line-height:21px; color:{BODY}; margin-top:8px;">{desc}</div>
+                        <div class="t-small" style="font-family:{F}; font-size:13.5px; font-weight:400; line-height:21px; color:{BODY}; margin-top:8px;">{desc}</div>
                         <div style="font-family:{F}; font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:{GRAY}; margin-top:10px;">{spec}</div>
                         <div style="margin-top:16px;">{button(cta_label, href, width=220)}</div>{link_html}
                       </td>
@@ -661,7 +675,7 @@ def ps(html, who="Marián, Orostone", top=28, bottom=36, avatar=True):
                     <tr>{av}
                       <td valign="top">
                         <div style="font-family:{F}; font-size:9.5px; font-weight:700; letter-spacing:0.24em; text-transform:uppercase; color:{GOLD_INK}; margin-bottom:8px;">P.&nbsp;S. &middot; {who}</div>
-                        <div style="font-family:{F}; font-size:13.5px; font-weight:400; line-height:22px; color:#3d3729;">{html}</div>
+                        <div class="t-small" style="font-family:{F}; font-size:13.5px; font-weight:400; line-height:22px; color:#3d3729;">{html}</div>
                       </td>
                     </tr>
                   </table>
@@ -712,8 +726,8 @@ def footer(reason="Tento e-mail ste dostali, pretože ste sa prihlásili na odbe
                 <td class="footer-socials" align="right" valign="middle" style="padding-bottom:18px;">
                   <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="right">
                     <tr>
-                      <td style="padding-left:8px;"><a href="https://www.instagram.com/orostone_/" target="_blank" style="display:inline-block; width:34px; height:34px; border:1px solid rgba(255,255,255,0.18); border-radius:9999px; text-decoration:none;"><img src="https://cdn.simpleicons.org/instagram/white" alt="Instagram" width="16" height="16" style="display:block; margin:8px auto; border:0;" /></a></td>
-                      <td style="padding-left:8px;"><a href="https://www.facebook.com/orostone.sk/" target="_blank" style="display:inline-block; width:34px; height:34px; border:1px solid rgba(255,255,255,0.18); border-radius:9999px; text-decoration:none;"><img src="https://cdn.simpleicons.org/facebook/white" alt="Facebook" width="16" height="16" style="display:block; margin:8px auto; border:0;" /></a></td>
+                      <td style="padding-left:8px;"><a href="https://www.instagram.com/orostone_/" target="_blank" style="display:inline-block; width:34px; height:34px; border:1px solid rgba(255,255,255,0.18); border-radius:9999px; text-decoration:none;"><img src="{IMG}instagram-white.png" alt="Instagram" width="16" height="16" style="display:block; margin:8px auto; border:0;" /></a></td>
+                      <td style="padding-left:8px;"><a href="https://www.facebook.com/orostone.sk/" target="_blank" style="display:inline-block; width:34px; height:34px; border:1px solid rgba(255,255,255,0.18); border-radius:9999px; text-decoration:none;"><img src="{IMG}facebook-white.png" alt="Facebook" width="16" height="16" style="display:block; margin:8px auto; border:0;" /></a></td>
                     </tr>
                   </table>
                 </td>
@@ -746,7 +760,7 @@ def footer(reason="Tento e-mail ste dostali, pretože ste sa prihlásili na odbe
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:10px;">
               <tr>
                 <td align="left" style="font-family:{F}; font-size:10.5px; font-weight:300; color:#9CA3AF;">&copy; 2026 Orostone, s.&nbsp;r.&nbsp;o.</td>
-                <td align="right" style="font-family:{F}; font-size:10.5px; font-weight:300;"><a href="{{% unsubscribe %}}" style="color:#E5E7EB; text-decoration:underline;">Odhlásiť odber</a></td>
+                <td align="right" style="font-family:{F}; font-size:10.5px; font-weight:300;"><a href="{{% unsubscribe_link %}}" style="color:#E5E7EB; text-decoration:underline;">Odhlásiť odber</a></td>
               </tr>
             </table>
           </td>
@@ -763,7 +777,7 @@ def case_card(img, alt, label, title, body, top=24):
             <img src="{img}" alt="{alt}" width="520" style="width:100%; max-width:520px; height:auto; display:block; border-radius:12px;" />
             <div style="font-family:{F}; font-size:10px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:{GOLD_INK}; margin-top:14px; line-height:15px;">{label}</div>
             <div style="font-family:{F}; font-size:18px; font-weight:700; line-height:24px; color:{INK}; margin-top:6px;">{title}</div>
-            <div style="font-family:{F}; font-size:14px; font-weight:400; line-height:22px; color:{BODY}; margin-top:6px;">{body}</div>
+            <div class="t-small" style="font-family:{F}; font-size:14px; font-weight:400; line-height:22px; color:{BODY}; margin-top:6px;">{body}</div>
           </td>
         </tr>
 """
@@ -787,7 +801,7 @@ def plain(meta, title, preheader, paragraphs, reason, greeting="Dobrý deň,",
           unsub=True):
     """Čistý text bez dizajnu: osobný e-mail od Mariána (Graza ~1 z 5).
     unsub=False: e-mail z CRM mimo zoznamu odberateľov, pätička len s dôvodom."""
-    unsub_html = (' <a href="{% unsubscribe %}" style="color:#6B7280; text-decoration:underline;">Odhlásiť odber</a>'
+    unsub_html = (' <a href="{% unsubscribe_link %}" style="color:#6B7280; text-decoration:underline;">Odhlásiť odber</a>'
                   if unsub else "")
     meta_lines = "\n".join(f"  {k:<10} {v}" for k, v in meta.items())
     pre_pad = "&nbsp;&zwnj;" * 40
@@ -1080,8 +1094,8 @@ write("07-welcome-ako-vybrat-dekor.html", doc(
         "SPÚŠŤAČ:": "5 dní po prihlásení (3 dni po e-maile 2/4)",
         "PREDMET:": "Tri otázky pred výberom dekoru",
         "PREHEADER:": "Týkajú sa svetla, skriniek a veľkosti plochy. Na konci sa vás opýtame, kedy plánujete novú kuchyňu.",
-        "CIEĽ:": "Edukácia + zistiť horizont projektu (klik = segment)",
-        "POZNÁMKA:": "Každé tlačidlo voľby je samostatný odkaz s parametrom horizont=…; v ESP vytvor segment podľa kliku na odkaz.",
+        "CIEĽ:": "Edukácia + zistiť horizont projektu (klik = vlastnosť horizont v profile)",
+        "POZNÁMKA:": "Tlačidlá voľby cez Klaviyo zapíšu do profilu vlastnosť horizont (do-3-mesiacov, 3-12-mesiacov, inspiracia) a presmerujú na Realizácie s parametrom horizont=…, kde web poďakuje za odpoveď. Pri do-3-mesiacov dostane Marián upozornenie.",
     },
     "Tri otázky pred výberom dekoru",
     "Týkajú sa svetla, skriniek a veľkosti plochy. Na konci sa vás opýtame, kedy plánujete novú kuchyňu.",
@@ -1101,10 +1115,10 @@ write("07-welcome-ako-vybrat-dekor.html", doc(
         quote_dark("Pravidlo", 'Najdrahší kompromis pri pracovnej doske býva ten, <strong style="font-weight:700; font-style:normal; color:#ECD488;">ktorý na začiatku vyzeral ako úspora.</strong>', top=24),
         choices("Kedy plánujete novú kuchyňu?",
                 "Kliknite na jednu možnosť. Podľa nej vám budeme posielať to, čo práve potrebujete – nič viac.",
-                [("Do 3 mesiacov", SITE + "/realizacie?horizont=do-3-mesiacov"),
-                 ("O 3 až 12 mesiacov", SITE + "/realizacie?horizont=3-12-mesiacov"),
-                 ("Zatiaľ sa len inšpirujem", SITE + "/realizacie?horizont=inspiracia")]),
-        cta("Pozrieť dekory", SITE + "/", link=("Objednať vzorky", SITE + "/vzorky")),
+                [("Do 3 mesiacov", SITE + "/realizacie?horizont=do-3-mesiacov", "do-3-mesiacov"),
+                 ("O 3 až 12 mesiacov", SITE + "/realizacie?horizont=3-12-mesiacov", "3-12-mesiacov"),
+                 ("Zatiaľ sa len inšpirujem", SITE + "/realizacie?horizont=inspiracia", "inspiracia")], prop="horizont"),
+        cta("Pozrieť dekory", SITE + "/kategoria/sintered-stone", link=("Objednať vzorky", SITE + "/vzorky")),
         ps("Ak si nie ste istí, pošlite fotku kuchyne alebo vizualizáciu. Poradíme, ktoré dva až tri dekory má zmysel objednať si ako vzorky."),
         signature(top=0),
         footer(),
@@ -1168,7 +1182,7 @@ write("09-welcome-tri-kuchyne.html", doc(
         "PREDMET:": "Tri kuchyne, tri rôzne rozhodnutia",
         "PREHEADER:": "Pri jednej rozhodla pokojná plocha, pri druhej tmavý kontrast a pri tretej výrazná kresba.",
         "CIEĽ:": "Ukázať, že dekor je rozhodnutie o celej kuchyni → pôdorys a orientačná cena",
-        "POZNÁMKA:": "Realizácie a dekory vybral Martin 7. 10. 2026. Kuchyňa 2 je na stránke Realizácie uvedená ako Nero Marquina, v e-shope sa dekor volá Nero Margiua. Potom odberateľ prechádza do kampaní; s horizontom do-3-mesiacov dostane pozvanie do showroomu (13).",
+        "POZNÁMKA:": "Realizácie a dekory vybral Martin 7. 10. 2026. Kuchyňa 2 je na stránke Realizácie uvedená ako Nero Marquina, v e-shope sa dekor volá Nero Margiua. Potom odberateľ prechádza do kampaní. Pri horizonte do-3-mesiacov dostane Marián upozornenie a ozve sa osobne.",
     },
     "Tri kuchyne, tri rôzne rozhodnutia",
     "Pri jednej rozhodla pokojná plocha, pri druhej tmavý kontrast a pri tretej výrazná kresba.",
@@ -1607,9 +1621,9 @@ write_nb("22-automatizacia-reaktivacia-otazka.html", doc(
         ], top=24),
         choices("V akej fáze je vaša kuchyňa?",
                 "Podľa odpovede vám budeme posielať ukážky realizácií a rady, ktoré zodpovedajú vášmu plánu.",
-                [("Riešim ju do 3 mesiacov", SITE + "/realizacie?horizont=do-3-mesiacov"),
-                 ("Plánujem ju neskôr", SITE + "/realizacie?horizont=3-12-mesiacov"),
-                 ("Kuchyňu už mám hotovú", SITE + "/realizacie?horizont=hotovo")], top=8),
+                [("Riešim ju do 3 mesiacov", SITE + "/realizacie?horizont=do-3-mesiacov", "do-3-mesiacov"),
+                 ("Plánujem ju neskôr", SITE + "/realizacie?horizont=3-12-mesiacov", "3-12-mesiacov"),
+                 ("Kuchyňu už mám hotovú", SITE + "/realizacie?horizont=hotovo", "hotovo")], top=8, prop="horizont"),
         ps("Ak váhate medzi dvoma dekormi, odpovedzte na tento e-mail a pošlite fotku kuchyne. Odpíšem vám osobne, ktorý sa k nej podľa mňa hodí viac."),
         signature(top=0),
         footer(),
@@ -1711,7 +1725,7 @@ write_nb("25-automatizacia-b2b-podklady.html", doc(
             ("Spracovanie podľa technického listu", "Rezanie, výrezy aj montáž robí kamenár podľa technického listu a montážneho manuálu."),
             ("Bezpečné spracovanie", "Obsah kryštalického oxidu kremičitého nepresahuje 1 %. Pri rezaní a brúsení však vzniká prach, preto k práci patrí odsávanie alebo mokré rezanie."),
         ], top=8),
-        cta("Stiahnuť technický list", SITE + "/documents/TDS_orostone.pdf", sub="PDF, 2 strany.", link=("Pozrieť všetky dekory", SITE + "/"), width=280),
+        cta("Stiahnuť technický list", SITE + "/documents/TDS_orostone.pdf", sub="PDF, 2 strany.", link=("Pozrieť všetky dekory", SITE + "/kategoria/sintered-stone"), width=280),
         ps("Pripravujete konkrétny projekt? Pošlite mi pôdorys alebo výkres. Vypočítam, koľko platní budete potrebovať, a pripravím orientačnú cenu materiálu."),
         signature(top=0),
         footer(reason=REASON_B2B),

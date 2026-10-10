@@ -20,7 +20,7 @@ Raz za čas jedna odborná téma: hrúbka, hrany, údržba alebo cena.
 Čo je v cene
 pracovnej dosky.
 
-### Hlavná fotka (popis na fotke)
+### Hlavná fotka (popis pod fotkou)
 [alt fotky: Posuvné meradlo meria hrúbku vzorky sinterovaného kameňa]
 ● Hrúbka 12 mm
 

@@ -20,7 +20,7 @@ Raz mesačne jedna skutočná kuchyňa a jej dekor vo veľkej ploche.
 Biela doska
 v ružovej kuchyni.
 
-### Hlavná fotka (popis na fotke)
+### Hlavná fotka (popis pod fotkou)
 [alt fotky: Zaoblený ostrovček s bielou doskou a varnou doskou v kuchyni s ružovými frontami]
 ● Super White
 

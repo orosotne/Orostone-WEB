@@ -20,7 +20,7 @@ Raz mesačne jedna skutočná kuchyňa a jej dekor vo veľkej ploche.
 Taj Mahal
 na dlhom ostrovčeku.
 
-### Hlavná fotka (popis na fotke)
+### Hlavná fotka (popis pod fotkou)
 [alt fotky: Dlhý ostrovček s drezom v dekore Taj Mahal]
 ● Taj Mahal
 
