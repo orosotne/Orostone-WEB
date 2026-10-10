@@ -26,10 +26,12 @@
 //   mohlo prijať a poslalo by sa dvakrát. Ak odber neprejde, príde upozornenie na
 //   ALERT_EMAIL, aby ho tím pridal ručne. Odhlásenie spravuje Klaviyo: `is_active`
 //   v tabuľke odhlásenie cez odkaz v e-maile neukáže.
-//   Kto je v Klaviyu odhlásený alebo potlačený (spam, ručne), toho NEprihlasujeme:
-//   bulk subscribe by odhlásenie zrušil a formulár na webe nikto neoveruje. Tím dostane
-//   upozornenie. Odpoveď 202 je len prijatá úloha, preto o chvíľu na pozadí overíme,
-//   či je e-mail naozaj v zozname, a ak nie, tiež upozorníme.
+//   Kto je v Klaviyu odhlásený alebo potlačený (spam, ručne), celkovo alebo len z tohto
+//   zoznamu, toho NEprihlasujeme: bulk subscribe by odhlásenie zrušil a formulár na webe
+//   nikto neoveruje. Tím dostane upozornenie. Odpoveď 202 je len prijatá úloha, preto
+//   o chvíľu na pozadí overíme, že je e-mail v zozname a prihlásený (súhlas SUBSCRIBED),
+//   a ak nie, tiež upozorníme. Pri zozname s dvojitým potvrdením (double opt-in) sa
+//   súhlas zapíše až po kliknutí v e-maile, vtedy neupozorňujeme.
 // ===========================================
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
@@ -53,16 +55,20 @@ const ALERT_EMAIL = 'dopyt@orostone.sk';
  * 'ok'       Klaviyo odber prijalo (202).
  * 'rejected' Klaviyo ho jednoznačne odmietlo (4xx okrem 429, aj zlý kľúč), v zozname nie je.
  * 'unknown'  ani po dvoch pokusoch nevieme (timeout, 5xx, 429, sieť), mohol prejsť.
- * 'blocked'  v Klaviyu je odhlásený alebo potlačený: neprihlasujeme, nič mu neposielame.
+ * 'blocked'  v Klaviyu je odhlásený alebo potlačený (celkovo alebo z tohto zoznamu):
+ *            neprihlasujeme, nič mu neposielame.
  * 'off'      Klaviyo nie je nastavené (chýba zoznam alebo kľúč).
  */
 type KlaviyoResult = 'ok' | 'rejected' | 'unknown' | 'blocked' | 'off';
-/** Dôvod upozornenia tímu: výsledok odberu, alebo prijatý odber, ktorý sa v zozname neobjavil. */
+/** Dôvod upozornenia tímu: výsledok odberu, alebo prijatý odber, ktorý sa v zozname neobjavil ako prihlásený. */
 type AlertReason = 'rejected' | 'unknown' | 'blocked' | 'unconfirmed';
 
-/** Potlačenia, ktoré bulk subscribe zruší (a neoverený formulár zrušiť nesmie). */
-const OPT_OUT_REASONS = new Set(['UNSUBSCRIBE', 'SPAM_REPORT', 'USER_SUPPRESSED']);
-/** Kedy po prijatí odberu overiť, že je e-mail v zozname (Klaviyo ho spracúva asynchrónne). */
+/**
+ * Potlačenia, ktoré bulk subscribe zruší (a neoverený formulár zrušiť nesmie). Spam: dokumentácia
+ * bulk subscribe píše SPAM_REPORT, profil SPAM_COMPLAINT, berieme oboje.
+ */
+const OPT_OUT_REASONS = new Set(['UNSUBSCRIBE', 'SPAM_REPORT', 'SPAM_COMPLAINT', 'USER_SUPPRESSED']);
+/** Kedy po prijatí odberu overiť, že je e-mail v zozname prihlásený (Klaviyo ho spracúva asynchrónne). */
 const VERIFY_AFTER_MS = [15_000, 45_000];
 
 function klaviyoPost(path: string, payload: unknown): Promise<Response> {
@@ -95,6 +101,31 @@ function emailFilter(email: string): string | null {
   return /["\\]/.test(email) ? null : encodeURIComponent(`equals(email,"${email}")`);
 }
 
+/** E-mailový marketing z profilu Klaviya (`additional-fields[profile]=subscriptions`). */
+interface EmailMarketing {
+  consent?: unknown;
+  suppression?: Array<{ reason?: unknown } | null>;
+  list_suppressions?: Array<{ list_id?: unknown; reason?: unknown } | null>;
+}
+
+function emailMarketing(profile: unknown): EmailMarketing | null {
+  const m = (profile as { attributes?: { subscriptions?: { email?: { marketing?: unknown } } } } | null | undefined)
+    ?.attributes?.subscriptions?.email?.marketing;
+  return m && typeof m === 'object' ? (m as EmailMarketing) : null;
+}
+
+/**
+ * Odhlásený alebo potlačený celkovo, alebo len z nášho zoznamu? Odhlásenie zo zoznamu je
+ * v `list_suppressions` a súhlas pri ňom môže ostať SUBSCRIBED (účet bez globálneho odhlásenia).
+ */
+function optedOut(m: EmailMarketing): boolean {
+  const optOut = (s: { reason?: unknown } | null) => OPT_OUT_REASONS.has(String(s?.reason));
+  const global = Array.isArray(m.suppression) && m.suppression.some(optOut);
+  const ourList = Array.isArray(m.list_suppressions)
+    && m.list_suppressions.some((s) => s?.list_id === KLAVIYO_LIST_ID && optOut(s));
+  return m.consent === 'UNSUBSCRIBED' || global || ourList;
+}
+
 /** Je e-mail v Klaviyu odhlásený alebo potlačený? 'unknown' = nevieme (chyba, divný e-mail). */
 async function klaviyoOptOutState(email: string): Promise<'free' | 'opted-out' | 'unknown'> {
   const filter = emailFilter(email);
@@ -105,31 +136,43 @@ async function klaviyoOptOutState(email: string): Promise<'free' | 'opted-out' |
       console.error('[subscribe-newsletter] Klaviyo profil (kontrola odhlásenia):', res.status, (await res.text()).slice(0, 300));
       return 'unknown';
     }
-    const json = await res.json();
-    const marketing = json?.data?.[0]?.attributes?.subscriptions?.email?.marketing;
-    if (!marketing) return 'free';
-    const suppressed = Array.isArray(marketing.suppression)
-      && marketing.suppression.some((s: { reason?: unknown }) => OPT_OUT_REASONS.has(String(s?.reason)));
-    return marketing.consent === 'UNSUBSCRIBED' || suppressed ? 'opted-out' : 'free';
+    const marketing = emailMarketing((await res.json())?.data?.[0]);
+    return marketing && optedOut(marketing) ? 'opted-out' : 'free';
   } catch (err) {
     console.error('[subscribe-newsletter] Klaviyo profil (kontrola odhlásenia):', err instanceof Error ? err.message : err);
     return 'unknown';
   }
 }
 
-/** Po prijatí odberu (202) overí, že je e-mail naozaj v zozname. Ak ani po minúte nie, upozorní tím. */
-async function verifyInList(email: string, source: string): Promise<void> {
+/**
+ * Po prijatí odberu (202) overí, že je e-mail v zozname A prihlásený (súhlas SUBSCRIBED, bez
+ * odhlásenia). Samotné členstvo nestačí, do zoznamu sa dá dostať aj bez súhlasu. Ak ani po minúte
+ * nie, upozorní tím. Pri dvojitom potvrdení čaká Klaviyo na klik v e-maile, to nie je chyba.
+ */
+async function verifySubscribed(email: string, source: string): Promise<void> {
   const filter = emailFilter(email);
   for (const waitMs of VERIFY_AFTER_MS) {
     await new Promise((r) => setTimeout(r, waitMs));
     try {
-      const res = await klaviyoGet(`lists/${KLAVIYO_LIST_ID}/profiles?filter=${filter}&fields[profile]=email`);
-      if (res.ok && ((await res.json())?.data?.length ?? 0) > 0) return;
+      const res = await klaviyoGet(`lists/${KLAVIYO_LIST_ID}/profiles?filter=${filter}&additional-fields[profile]=subscriptions`);
+      const marketing = res.ok ? emailMarketing((await res.json())?.data?.[0]) : null;
+      if (marketing?.consent === 'SUBSCRIBED' && !optedOut(marketing)) return;
     } catch {
       // ďalší pokus alebo upozornenie nižšie
     }
   }
+  if (await listUsesDoubleOptIn()) return;
   await alertKlaviyoFailure(email, source, 'unconfirmed');
+}
+
+/** Má zoznam dvojité potvrdenie? Pri chybe nie, radšej jedno upozornenie navyše ako žiadne. */
+async function listUsesDoubleOptIn(): Promise<boolean> {
+  try {
+    const res = await klaviyoGet(`lists/${KLAVIYO_LIST_ID}?fields[list]=opt_in_process`);
+    return res.ok && (await res.json())?.data?.attributes?.opt_in_process === 'double_opt_in';
+  } catch {
+    return false;
+  }
 }
 
 /** Pauza pred druhým pokusom: Retry-After z odpovede (429/503), najviac 3 s, inak 0,8 s. */
@@ -187,7 +230,7 @@ async function subscribeInKlaviyo(email: string, name: string | undefined, sourc
     try {
       res = await klaviyoPost('profile-subscription-bulk-create-jobs', payload);
       if (res.status === 202) {
-        inBackground(verifyInList(email, source));
+        inBackground(verifySubscribed(email, source));
         return 'ok';
       }
       const detail = (await res.text()).slice(0, 300);
@@ -221,11 +264,11 @@ const ALERT_TEXT: Record<AlertReason, { what: string; todo: string }> = {
     todo: 'Overte, či už v zozname nie je, a ak nie, pridajte ho ručne (Zoznamy → Newsletter – web).',
   },
   unconfirmed: {
-    what: 'Klaviyo odber prijalo, ale ani po minúte ho v zozname „Newsletter – web“ nevidno.',
-    todo: 'Overte, či už v zozname nie je, a ak nie, pridajte ho ručne (Zoznamy → Newsletter – web).',
+    what: 'Klaviyo odber prijalo, ale ani po minúte nie je v zozname „Newsletter – web“ prihlásený: v zozname chýba alebo nemá súhlas so zasielaním e-mailov.',
+    todo: 'Pozrite si jeho profil v Klaviyu. Ak v zozname nie je alebo nie je prihlásený, pridajte ho do zoznamu ručne (Zoznamy → Newsletter – web).',
   },
   blocked: {
-    what: 'Do Klaviya sme ho neprihlásili: v Klaviyu je odhlásený alebo e-mail nahlásil ako spam. Formulár na webe nikto neoveruje, takže automatické prihlásenie by mohlo zrušiť cudzie odhlásenie.',
+    what: 'Do Klaviya sme ho neprihlásili: v Klaviyu je odhlásený (celkovo alebo z tohto zoznamu) alebo e-mail nahlásil ako spam. Formulár na webe nikto neoveruje, takže automatické prihlásenie by mohlo zrušiť cudzie odhlásenie.',
     todo: 'Ak sa naozaj chce vrátiť (napr. vám napísal), pridajte ho do zoznamu ručne. Inak netreba robiť nič.',
   },
 };
