@@ -133,7 +133,7 @@ export const KITCHEN_VISUALIZATIONS: KitchenVisualization[] = [
     decorSlug: 'roman-travertine',
     decor: 'Roman Travertine',
     title: 'Travertín pod oblúkom',
-    text: 'Roman Travertine má textúru travertínu, ale nie jeho údržbu: netreba ho impregnovať a škvrny neprenikajú do povrchu. Prirodzene ladí s vápennou omietkou, dubom a tmavým bronzom.',
+    text: 'Roman Travertine má textúru travertínu bez nárokov na údržbu, aké má prírodný kameň: pri nasiakavosti pod 0,1\u00A0% ho netreba impregnovať a škvrnu stačí zotrieť vlhkou utierkou. Prirodzene ladí s vápennou omietkou, dubom a tmavým bronzom.',
     alts: {
       spredu: 'Kuchyňa s ostrovčekom v dekore Roman Travertine pod oblúkom z vápennej omietky, pohľad spredu',
       zboku: 'Ostrovček v dekore Roman Travertine z boku, pásy kresby pokračujú cez hranu',
