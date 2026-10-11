@@ -68,7 +68,10 @@ CREATE TABLE newsletter_subscribers (
     source TEXT NOT NULL DEFAULT 'unknown',
     subscribed_at TIMESTAMPTZ DEFAULT NOW(),
     unsubscribed_at TIMESTAMPTZ,
-    is_active BOOLEAN DEFAULT TRUE
+    is_active BOOLEAN DEFAULT TRUE,
+    -- Čas posledného pokusu o odber v Klaviyu (subscribe-newsletter), dátum súhlasu je v subscribed_at.
+    -- Migrácia 20261011_newsletter_klaviyo_attempt.sql.
+    klaviyo_attempted_at TIMESTAMPTZ
 );
 
 -- ===========================================
