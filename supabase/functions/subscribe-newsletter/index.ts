@@ -33,7 +33,9 @@
 //   `subscribed_at`. Opakované odoslanie formulára do 30 minút od pokusu Klaviyo nevolá
 //   vôbec a z dvoch súbežných požiadaviek si pokus podmieneným UPDATE vezme len jedna.
 //   Meno a zdroj zapíšeme len do nového profilu: formulár nikto neoveruje a existujúci
-//   profil by si inak mohol ktokoľvek prepísať.
+//   profil by si inak mohol ktokoľvek prepísať. Pri neistom výsledku sa zápis raz zopakuje
+//   a keď neprejde, tím dostane upozornenie s menom a zdrojom (pri ďalšom odoslaní
+//   formulára už profil existuje a znova ich nezapíšeme).
 //   Kto je v Klaviyu odhlásený alebo potlačený (spam, ručne), celkovo alebo len z tohto
 //   zoznamu, toho NEprihlasujeme: bulk subscribe by odhlásenie zrušil a formulár na webe
 //   nikto neoveruje. Tím dostane upozornenie. Odpoveď 202 je len prijatá úloha, preto
@@ -75,8 +77,11 @@ const ALERT_EMAIL = 'dopyt@orostone.sk';
  * 'off'      Klaviyo nie je nastavené (chýba zoznam alebo kľúč).
  */
 type KlaviyoResult = 'ok' | 'rejected' | 'unknown' | 'blocked' | 'off';
-/** Dôvod upozornenia tímu: výsledok odberu, alebo prijatý odber, ktorý sa v zozname neobjavil ako prihlásený. */
-type AlertReason = 'rejected' | 'unknown' | 'blocked' | 'unconfirmed';
+/**
+ * Dôvod upozornenia tímu: výsledok odberu, prijatý odber, ktorý sa v zozname neobjavil ako
+ * prihlásený, alebo meno a zdroj, ktoré sa do nového profilu nezapísali.
+ */
+type AlertReason = 'rejected' | 'unknown' | 'blocked' | 'unconfirmed' | 'profile';
 
 /** Kedy po prijatí odberu overiť, že je e-mail v zozname prihlásený (Klaviyo ho spracúva asynchrónne). */
 const VERIFY_AFTER_MS = [15_000, 45_000];
@@ -174,25 +179,38 @@ function retryDelayMs(res: Response | null): number {
   return Number.isFinite(seconds) && seconds > 0 ? Math.min(seconds * 1000, 3000) : 800;
 }
 
-/** Meno a zdroj do nového profilu. Odber ich nenesie, preto zvlášť. Nehádže, odber nezastaví. */
+/**
+ * Meno a zdroj do nového profilu. Odber ich nenesie, preto zvlášť. Zápis je synchrónny (200/201
+ * = zapísané) a opakovateľný, pri neistom výsledku (timeout, 5xx, 429, sieť) ho raz zopakujeme.
+ * Keď neprejde, upozorníme tím: pri ďalšom odoslaní formulára už profil existuje a meno ani
+ * zdroj znova nezapíšeme. Nehádže, odber nezastaví.
+ */
 async function upsertKlaviyoProfile(email: string, name: string | undefined, source: string): Promise<void> {
   const [firstName, ...rest] = (name ?? '').split(/\s+/).filter(Boolean);
-  try {
-    const res = await klaviyoPost('profile-import', {
-      data: {
-        type: 'profile',
-        attributes: {
-          email,
-          ...(firstName ? { first_name: firstName } : {}),
-          ...(rest.length ? { last_name: rest.join(' ') } : {}),
-          properties: { zdroj_odberu: source },
-        },
+  const payload = {
+    data: {
+      type: 'profile',
+      attributes: {
+        email,
+        ...(firstName ? { first_name: firstName } : {}),
+        ...(rest.length ? { last_name: rest.join(' ') } : {}),
+        properties: { zdroj_odberu: source },
       },
-    });
-    if (!res.ok) console.error('[subscribe-newsletter] Klaviyo profil:', res.status, (await res.text()).slice(0, 300));
-  } catch (err) {
-    console.error('[subscribe-newsletter] Klaviyo profil:', err instanceof Error ? err.message : err);
+    },
+  };
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    let res: Response | null = null;
+    try {
+      res = await klaviyoPost('profile-import', payload);
+      if (res.ok) return;
+      console.error(`[subscribe-newsletter] Klaviyo profil, pokus ${attempt}:`, res.status, (await res.text()).slice(0, 300));
+      if (res.status >= 400 && res.status < 500 && res.status !== 429) break;
+    } catch (err) {
+      console.error(`[subscribe-newsletter] Klaviyo profil, pokus ${attempt}:`, err instanceof Error ? err.message : err);
+    }
+    if (attempt === 1) await new Promise((r) => setTimeout(r, retryDelayMs(res)));
   }
+  await alertKlaviyoFailure(email, source, 'profile', name);
 }
 
 /**
@@ -248,7 +266,8 @@ function inBackground(task: Promise<unknown>): void {
   else task.catch(() => {});
 }
 
-const ALERT_TEXT: Record<AlertReason, { what: string; todo: string }> = {
+const ALERT_SUBJECT = 'Newsletter: odber sa nepreniesol do Klaviya';
+const ALERT_TEXT: Record<AlertReason, { what: string; todo: string; subject?: string }> = {
   rejected: {
     what: 'Do zoznamu „Newsletter – web“ v Klaviyu sa nedostal: Klaviyo odber odmietlo.',
     todo: 'Pridajte e-mail do zoznamu v Klaviyu ručne (Zoznamy → Newsletter – web).',
@@ -265,17 +284,23 @@ const ALERT_TEXT: Record<AlertReason, { what: string; todo: string }> = {
     what: 'Do Klaviya sme ho neprihlásili: v Klaviyu je odhlásený (celkovo alebo z tohto zoznamu) alebo e-mail nahlásil ako spam. Formulár na webe nikto neoveruje, takže automatické prihlásenie by mohlo zrušiť cudzie odhlásenie.',
     todo: 'Ak sa naozaj chce vrátiť (napr. vám napísal), pridajte ho do zoznamu ručne. Inak netreba robiť nič.',
   },
+  profile: {
+    subject: 'Newsletter: meno a zdroj sa nezapísali do Klaviya',
+    what: 'Meno a zdroj odberu sa do jeho nového profilu v Klaviyu nezapísali ani na druhý pokus. Samotný odber ide samostatnou úlohou. Ak neprejde, príde o ňom zvlášť upozornenie.',
+    todo: 'Doplňte v jeho profile v Klaviyu ručne vlastnosť zdroj_odberu a meno, ak ho zadal. Web ich už nedoplní ani pri ďalšom odoslaní formulára, profil už existuje.',
+  },
 };
 
-/** Odber do Klaviya neprešiel, je neistý alebo zablokovaný: tím rozhodne ručne. Nikdy nehádže. */
-async function alertKlaviyoFailure(email: string, source: string, reason: AlertReason): Promise<void> {
+/** Odber do Klaviya neprešiel, je neistý alebo zablokovaný, alebo chýba meno a zdroj: tím rozhodne ručne. Nikdy nehádže. */
+async function alertKlaviyoFailure(email: string, source: string, reason: AlertReason, name?: string): Promise<void> {
   const text = ALERT_TEXT[reason];
+  const who = name ? `, meno <strong>${escapeHtml(name)}</strong>` : '';
   try {
     await sendEmail({
       from: 'Orostone web <noreply@orostone.sk>',
       to: ALERT_EMAIL,
-      subject: 'Newsletter: odber sa nepreniesol do Klaviya',
-      html: `<p>E-mail <strong>${escapeHtml(email)}</strong> sa na webe prihlásil na odber (${escapeHtml(source)}). ${text.what}</p>
+      subject: text.subject ?? ALERT_SUBJECT,
+      html: `<p>E-mail <strong>${escapeHtml(email)}</strong> sa na webe prihlásil na odber (zdroj ${escapeHtml(source)}${who}). ${text.what}</p>
 <p>V databáze webu je odber uložený. ${text.todo}</p>`,
       onMissingKey: 'skip',
     });
