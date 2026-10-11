@@ -20,9 +20,9 @@ Raz mesačne jedna skutočná kuchyňa a jej dekor vo veľkej ploche.
 Biela doska
 a tmavé drevo.
 
-### Hlavná fotka (popis na fotke)
+### Hlavná fotka (popis pod fotkou)
 [alt fotky: Biely ostrovček zo sinterovaného kameňa s drevenými bokmi]
-● Polaris Statuario White
+Polaris Statuario White
 
 ### Fakty
 Dekor

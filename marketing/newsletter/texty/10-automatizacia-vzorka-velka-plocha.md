@@ -15,9 +15,9 @@ Vzorka doma
 Malá vzorka,
 veľká plocha.
 
-### Hlavná fotka (popis na fotke)
+### Hlavná fotka (popis pod fotkou)
 [alt fotky: Celá platňa Taj Mahal vedľa človeka na porovnanie veľkosti]
-● Taj Mahal · 3200 × 1600 mm
+Taj Mahal · 3200 × 1600 mm
 
 ### Text
 Dobrý deň,

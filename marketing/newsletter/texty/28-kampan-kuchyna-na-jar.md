@@ -20,9 +20,9 @@ Kedy začať, aby bola doska hotová spolu so skrinkami.
 Kuchyňa na jar
 sa začína v januári.
 
-### Hlavná fotka (popis na fotke)
+### Hlavná fotka (popis pod fotkou)
 [alt fotky: Ostrovček zo sinterovaného kameňa Appennino s tulipánmi a zrolovaným pôdorysom pri zimnom okne]
-● Appennino
+Appennino
 
 ### Text
 Dobrý deň,

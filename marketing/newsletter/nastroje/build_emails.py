@@ -68,7 +68,8 @@ CSS = """
     .footer-socials{ display:block !important; width:100% !important; text-align:center !important; }
     .footer-socials table{ float:none !important; margin:0 auto !important; }
     .footer-col{ display:block !important; width:100% !important; padding:0 0 16px 0 !important; }
-    .badge-divider{ width:104px !important; height:104px !important; margin-top:-52px !important; padding:0 14px !important; }
+    .badge-divider{ width:104px !important; height:104px !important; }
+    .badge-cell{ padding:0 14px !important; }
     .list-num{ width:30px !important; }
     .ps-cell{ padding:18px 18px !important; }
     .letter{ font-size:15px !important; line-height:25px !important; }
@@ -77,7 +78,7 @@ CSS = """
     .h1{ font-size:23px !important; line-height:29px !important; }
     .h1-dark{ font-size:24px !important; line-height:30px !important; }
     .ps-avatar{ width:42px !important; height:42px !important; }
-    .badge-divider{ width:92px !important; height:92px !important; margin-top:-46px !important; }
+    .badge-divider{ width:92px !important; height:92px !important; }
   }
 """
 
@@ -244,22 +245,17 @@ def dark_band(pill_text, headline_html, sub=None, image=None, cta=None, note=Non
 
 
 def hero(src, alt, capsule=None, w=520, top=8):
+    """Hlavná fotka. Štítok (capsule) je popis pod fotkou ako pri case_card:
+    štítok položený na fotku cez position:absolute by Gmail odsunul pod ňu ako pruh."""
     cap = ""
     if capsule:
         cap = f"""
-              <div style="position:absolute; bottom:14px; left:14px; padding:6px 12px; background:rgba(26,26,26,0.78); border-radius:9999px; font-family:{F}; font-size:9.5px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#FFFFFF; line-height:1;"><span style="color:{GOLD};">&#9679;</span>&nbsp; {capsule}</div>"""
+            <div style="font-family:{F}; font-size:10px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:{GOLD_INK}; margin-top:14px; line-height:15px;">{capsule}</div>"""
     return f"""
         <!-- HERO IMAGE -->
         <tr>
-          <td class="hero-wrap" style="padding:{top}px 40px 0; line-height:0;">
-            <!--[if !mso]><!-- -->
-            <div style="position:relative;">
-              <img src="{src}" alt="{alt}" width="{w}" style="width:100%; max-width:{w}px; height:auto; display:block; border-radius:12px;" />{cap}
-            </div>
-            <!--<![endif]-->
-            <!--[if mso]>
-            <img src="{src}" alt="{alt}" width="{w}" style="width:{w}px; height:auto; display:block;" />
-            <![endif]-->
+          <td class="hero-wrap" style="padding:{top}px 40px 0;">
+            <img src="{src}" alt="{alt}" width="{w}" style="width:100%; max-width:{w}px; height:auto; display:block; border-radius:12px;" />{cap}
           </td>
         </tr>
 """
@@ -674,20 +670,26 @@ def ps(html, who="Marián, Orostone", top=28, bottom=36, avatar=True):
 
 
 def signature(top=8):
-    """Podpisový blok — opakuje sa v každom e-maile (ako Graza 'Squeezable / Single Origin…')."""
+    """Podpisový blok — opakuje sa v každom e-maile (ako Graza 'Squeezable / Single Origin…').
+    Odznak stojí v riadku medzi dvoma čiarami (čiara | odznak | čiara). Záporný okraj,
+    ktorým by sa posunul na čiaru, Gmail zahodí. Čiara je plná farba, lebo Outlook nepozná rgba."""
+    line = ('<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>'
+            '<td style="border-top:1px solid #E4E4E1; font-size:0; line-height:0; mso-line-height-rule:exactly;">&nbsp;</td>'
+            '</tr></table>')
     return f"""
         <!-- PODPIS ZNAČKY -->
         <tr>
           <td style="padding:{top}px 40px 0;">
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr><td style="border-bottom:1px solid rgba(26,26,26,0.10); font-size:0; line-height:0; height:52px;">&nbsp;</td></tr>
               <tr>
-                <td align="center" style="line-height:0;">
-                  <img class="badge-divider" src="https://raw.githubusercontent.com/orosotne/orostone-assets/master/orostone-badge-ig-post-transparent.png" alt="Krása kameňa, sila technológie" width="112" height="112" style="display:inline-block; width:112px; height:112px; margin-top:-56px; border:0; background:{CARD}; padding:0 18px;" />
+                <td width="50%" valign="middle">{line}</td>
+                <td class="badge-cell" align="center" valign="middle" style="padding:0 18px; line-height:0;">
+                  <img class="badge-divider" src="https://raw.githubusercontent.com/orosotne/orostone-assets/master/orostone-badge-ig-post-transparent.png" alt="Krása kameňa, sila technológie" width="112" height="112" style="display:block; width:112px; height:112px; border:0; margin:0 auto;" />
                 </td>
+                <td width="50%" valign="middle">{line}</td>
               </tr>
               <tr>
-                <td align="center" style="padding:14px 0 36px; font-family:{F}; font-size:18px; line-height:26px; color:{INK};">
+                <td colspan="3" align="center" style="padding:14px 0 36px; font-family:{F}; font-size:18px; line-height:26px; color:{INK};">
                   <span style="font-weight:700;">Krása kameňa.</span><br />
                   <span style="font-weight:300; font-style:italic;">Sila technológie.</span>
                 </td>
@@ -712,8 +714,8 @@ def footer(reason="Tento e-mail ste dostali, pretože ste sa prihlásili na odbe
                 <td class="footer-socials" align="right" valign="middle" style="padding-bottom:18px;">
                   <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="right">
                     <tr>
-                      <td style="padding-left:8px;"><a href="https://www.instagram.com/orostone_/" target="_blank" style="display:inline-block; width:34px; height:34px; border:1px solid rgba(255,255,255,0.18); border-radius:9999px; text-decoration:none;"><img src="https://cdn.simpleicons.org/instagram/white" alt="Instagram" width="16" height="16" style="display:block; margin:8px auto; border:0;" /></a></td>
-                      <td style="padding-left:8px;"><a href="https://www.facebook.com/orostone.sk/" target="_blank" style="display:inline-block; width:34px; height:34px; border:1px solid rgba(255,255,255,0.18); border-radius:9999px; text-decoration:none;"><img src="https://cdn.simpleicons.org/facebook/white" alt="Facebook" width="16" height="16" style="display:block; margin:8px auto; border:0;" /></a></td>
+                      <td style="padding-left:8px;"><a href="https://www.instagram.com/orostone_/" target="_blank" style="display:inline-block; width:34px; height:34px; border:1px solid rgba(255,255,255,0.18); border-radius:9999px; text-decoration:none;"><img src="{IMG}ikona-instagram.png" alt="Instagram" width="16" height="16" style="display:block; margin:8px auto; border:0;" /></a></td>
+                      <td style="padding-left:8px;"><a href="https://www.facebook.com/orostone.sk/" target="_blank" style="display:inline-block; width:34px; height:34px; border:1px solid rgba(255,255,255,0.18); border-radius:9999px; text-decoration:none;"><img src="{IMG}ikona-facebook.png" alt="Facebook" width="16" height="16" style="display:block; margin:8px auto; border:0;" /></a></td>
                     </tr>
                   </table>
                 </td>
@@ -746,7 +748,7 @@ def footer(reason="Tento e-mail ste dostali, pretože ste sa prihlásili na odbe
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:10px;">
               <tr>
                 <td align="left" style="font-family:{F}; font-size:10.5px; font-weight:300; color:#9CA3AF;">&copy; 2026 Orostone, s.&nbsp;r.&nbsp;o.</td>
-                <td align="right" style="font-family:{F}; font-size:10.5px; font-weight:300;"><a href="{{% unsubscribe %}}" style="color:#E5E7EB; text-decoration:underline;">Odhlásiť odber</a></td>
+                <td align="right" style="font-family:{F}; font-size:10.5px; font-weight:300;"><a href="{{% unsubscribe_link %}}" style="color:#E5E7EB; text-decoration:underline;">Odhlásiť odber</a></td>
               </tr>
             </table>
           </td>
@@ -787,7 +789,7 @@ def plain(meta, title, preheader, paragraphs, reason, greeting="Dobrý deň,",
           unsub=True):
     """Čistý text bez dizajnu: osobný e-mail od Mariána (Graza ~1 z 5).
     unsub=False: e-mail z CRM mimo zoznamu odberateľov, pätička len s dôvodom."""
-    unsub_html = (' <a href="{% unsubscribe %}" style="color:#6B7280; text-decoration:underline;">Odhlásiť odber</a>'
+    unsub_html = (' <a href="{% unsubscribe_link %}" style="color:#6B7280; text-decoration:underline;">Odhlásiť odber</a>'
                   if unsub else "")
     meta_lines = "\n".join(f"  {k:<10} {v}" for k, v in meta.items())
     pre_pad = "&nbsp;&zwnj;" * 40

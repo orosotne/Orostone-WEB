@@ -15,9 +15,9 @@ Vzorka doma
 Vzorka nie je suvenír.
 Vyskúšajte ju.
 
-### Hlavná fotka (popis na fotke)
+### Hlavná fotka (popis pod fotkou)
 [alt fotky: Balíček so vzorkou sinterovaného kameňa Orostone]
-● Vzorka 12 mm
+Vzorka 12 mm
 
 ### Text
 Dobrý deň,

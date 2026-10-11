@@ -16,9 +16,9 @@ Krátky návod, ako dosku čistiť a čomu sa vyhnúť.
 Utierka a saponát.
 Viac netreba.
 
-### Hlavná fotka (popis na fotke)
+### Hlavná fotka (popis pod fotkou)
 [alt fotky: Ruka utiera pracovnú dosku zo sinterovaného kameňa utierkou z mikrovlákna]
-● Denné čistenie
+Denné čistenie
 
 ### Text
 Dobrý deň,

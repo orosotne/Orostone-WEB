@@ -12,7 +12,7 @@
 Vzorka čaká
 v košíku.
 
-### Hlavná fotka (popis na fotke)
+### Hlavná fotka (popis pod fotkou)
 [alt fotky: Tri vzorky sinterovaného kameňa vedľa seba: Calacatta Top, Astrana Grey a Gothic Gold]
 
 ### Text

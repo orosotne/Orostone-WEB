@@ -15,9 +15,9 @@ Vaša kuchyňa
 Riešite ešte
 kuchyňu?
 
-### Hlavná fotka (popis na fotke)
+### Hlavná fotka (popis pod fotkou)
 [alt fotky: Šálka kávy a zápisník na ostrovčeku zo sinterovaného kameňa Taj Mahal pri okne]
-● Taj Mahal
+Taj Mahal
 
 ### Text
 Dobrý deň,
