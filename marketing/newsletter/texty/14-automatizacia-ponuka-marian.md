@@ -20,4 +20,4 @@ Orostone · sinterovaný kameň
 
 ### Pätička — dôvod a odhlásenie
 Tento e-mail ste dostali, pretože ste od Orostone dostali cenovú ponuku. Odhlásiť odber
-Orostone, s. r. o. · SNP 113/1, 956 18 Bošany
+Orostone, s. r. o. · sídlo: Landererova 8, 811 09 Bratislava

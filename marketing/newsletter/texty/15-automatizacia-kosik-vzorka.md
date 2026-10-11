@@ -39,4 +39,5 @@ Sila technológie.
 ### Pätička — dôvod a odhlásenie
 Tento e-mail ste dostali, pretože ste v e-shope orostone.sk začali objednávať vzorku.
 © 2026 Orostone, s. r. o.
+Sídlo: Landererova 8, 811 09 Bratislava
 Odhlásiť odber

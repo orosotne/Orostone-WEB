@@ -767,8 +767,8 @@ def footer(reason="Tento e-mail ste dostali, pretože ste sa prihlásili na odbe
             <div style="font-family:{F}; font-size:12px; font-weight:300; line-height:18px; color:#9CA3AF;">{reason}</div>
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:10px;">
               <tr>
-                <td align="left" style="font-family:{F}; font-size:12px; font-weight:300; color:#9CA3AF;">&copy; 2026 Orostone, s.&nbsp;r.&nbsp;o.</td>
-                <td align="right" style="font-family:{F}; font-size:12px; font-weight:300;"><a href="{{% unsubscribe_link %}}" style="color:#E5E7EB; text-decoration:underline;">Odhlásiť odber</a></td>
+                <td align="left" style="font-family:{F}; font-size:12px; font-weight:300; line-height:18px; color:#9CA3AF;">&copy; 2026 Orostone, s.&nbsp;r.&nbsp;o.<br />Sídlo: Landererova&nbsp;8, 811&nbsp;09&nbsp;Bratislava</td>
+                <td align="right" valign="bottom" style="padding-left:12px; font-family:{F}; font-size:12px; font-weight:300; white-space:nowrap;"><a href="{{% unsubscribe_link %}}" style="color:#E5E7EB; text-decoration:underline;">Odhlásiť odber</a></td>
               </tr>
             </table>
           </td>
@@ -811,7 +811,7 @@ def plain(meta, title, preheader, paragraphs, reason, greeting="Dobrý deň,",
     unsub=False: e-mail z CRM mimo zoznamu odberateľov, pätička len s dôvodom."""
     unsub_html = (' <a href="{% unsubscribe_link %}" style="color:#6B7280; text-decoration:underline;">Odhlásiť odber</a>'
                   if unsub else "")
-    addr_html = "<br />Orostone, s.&nbsp;r.&nbsp;o. &middot; SNP 113/1, 956&nbsp;18 Bošany" if unsub else ""
+    addr_html = "<br />Orostone, s.&nbsp;r.&nbsp;o. &middot; sídlo: Landererova&nbsp;8, 811&nbsp;09&nbsp;Bratislava" if unsub else ""
     meta_lines = "\n".join(f"  {k:<10} {v}" for k, v in meta.items())
     pre_pad = "&nbsp;&zwnj;" * 40
     ps_html = "".join(f'<p style="margin:0 0 16px;">{x}</p>' for x in paragraphs)
