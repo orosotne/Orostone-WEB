@@ -307,7 +307,7 @@ export const PrivacyPolicy = () => {
                   <span className="min-w-[2.5rem] pt-1 text-center text-sm font-normal text-brand-dark">∞ /</span>
                   <div>
                     <p className="font-semibold text-brand-dark">Do odvolania súhlasu</p>
-                    <p className="text-sm">Newsletter – e-mailová adresa sa uchováva do odvolania súhlasu. Po odvolaní súhlasu ju spolu s ďalšími údajmi o odbere do 30 dní vymažeme z databázy webu. V Klaviyu, cez ktorý newsletter posielame, ostane váš profil s označením, že ste sa odhlásili, aby vám newsletter už neprišiel (oprávnený záujem). Uchovávame ho, kým newsletter posielame, a na požiadanie ho vymažeme.</p>
+                    <p className="text-sm">Newsletter – e-mailová adresa sa uchováva do odvolania súhlasu. Po odvolaní súhlasu ju spolu s ďalšími údajmi o odbere do 30 dní vymažeme z databázy webu. V službe Klaviyo, cez ktorú newsletter posielame, ostane váš profil s označením, že ste sa odhlásili, aby vám newsletter už neprišiel (oprávnený záujem). Uchovávame ho, kým newsletter posielame, a na požiadanie ho vymažeme.</p>
                   </div>
                 </div>
                 <div className={`${LEGAL_BOX} flex items-start gap-4 p-4`}>

@@ -193,7 +193,7 @@ Ako dlho vaše údaje uchovávame
 
 Do odvolania súhlasu
 
-Newsletter – e-mailová adresa sa uchováva do odvolania súhlasu. Po odvolaní súhlasu ju spolu s ďalšími údajmi o odbere do 30 dní vymažeme z databázy webu. V Klaviyu, cez ktorý newsletter posielame, ostane váš profil s označením, že ste sa odhlásili, aby vám newsletter už neprišiel (oprávnený záujem). Uchovávame ho, kým newsletter posielame, a na požiadanie ho vymažeme.
+Newsletter – e-mailová adresa sa uchováva do odvolania súhlasu. Po odvolaní súhlasu ju spolu s ďalšími údajmi o odbere do 30 dní vymažeme z databázy webu. V službe Klaviyo, cez ktorú newsletter posielame, ostane váš profil s označením, že ste sa odhlásili, aby vám newsletter už neprišiel (oprávnený záujem). Uchovávame ho, kým newsletter posielame, a na požiadanie ho vymažeme.
 
 →
 
