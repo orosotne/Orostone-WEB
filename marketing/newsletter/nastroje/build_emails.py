@@ -106,8 +106,9 @@ def doc(meta, title, preheader, rows):
 <meta name="supported-color-schemes" content="light" />
 <title>{title}</title>
 <!--[if mso]><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet" type="text/css" />
 <style type="text/css">{CSS}</style>
+<!-- Písmo cez @import, lebo <link> Klaviyo pri uložení zahodí. Klaviyo oba bloky spojí do jedného, @import ostane prvým pravidlom. -->
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap');</style>
 </head>
 
 <body style="margin:0; padding:0; background:{PAGE}; font-family:{F}; color:{INK};">
