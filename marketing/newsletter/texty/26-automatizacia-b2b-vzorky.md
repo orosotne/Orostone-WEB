@@ -16,7 +16,7 @@ Vzorky dekorov, ktoré ukážete klientom pri stole.
 Vzorky, ktoré
 ukážete klientovi.
 
-### Hlavná fotka (popis na fotke)
+### Hlavná fotka (popis pod fotkou)
 [alt fotky: Šesť vzoriek sinterovaného kameňa Orostone na svetlom dubovom stole]
 
 ### Text
@@ -63,4 +63,5 @@ Sila technológie.
 ### Pätička — dôvod a odhlásenie
 Tento e-mail ste dostali, pretože ste nás kontaktovali ako architekt, dizajnér, kuchynské štúdio alebo kamenár.
 © 2026 Orostone, s. r. o.
+Sídlo: Landererova 8, 811 09 Bratislava
 Odhlásiť odber

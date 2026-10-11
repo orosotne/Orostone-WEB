@@ -12,7 +12,7 @@
 Vzorka čaká
 v košíku.
 
-### Hlavná fotka (popis na fotke)
+### Hlavná fotka (popis pod fotkou)
 [alt fotky: Tri vzorky sinterovaného kameňa vedľa seba: Calacatta Top, Astrana Grey a Gothic Gold]
 
 ### Text
@@ -39,4 +39,5 @@ Sila technológie.
 ### Pätička — dôvod a odhlásenie
 Tento e-mail ste dostali, pretože ste v e-shope orostone.sk začali objednávať vzorku.
 © 2026 Orostone, s. r. o.
+Sídlo: Landererova 8, 811 09 Bratislava
 Odhlásiť odber

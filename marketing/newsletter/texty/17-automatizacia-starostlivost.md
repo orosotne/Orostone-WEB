@@ -16,7 +16,7 @@ Krátky návod, ako dosku čistiť a čomu sa vyhnúť.
 Utierka a saponát.
 Viac netreba.
 
-### Hlavná fotka (popis na fotke)
+### Hlavná fotka (popis pod fotkou)
 [alt fotky: Ruka utiera pracovnú dosku zo sinterovaného kameňa utierkou z mikrovlákna]
 ● Denné čistenie
 
@@ -75,4 +75,5 @@ Sila technológie.
 ### Pätička — dôvod a odhlásenie
 Tento e-mail ste dostali ako zákazník Orostone po dokončení montáže.
 © 2026 Orostone, s. r. o.
+Sídlo: Landererova 8, 811 09 Bratislava
 Odhlásiť odber

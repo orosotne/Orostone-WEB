@@ -20,7 +20,7 @@ Raz mesačne jedna skutočná kuchyňa a jej dekor vo veľkej ploche.
 Biela doska
 a tmavé drevo.
 
-### Hlavná fotka (popis na fotke)
+### Hlavná fotka (popis pod fotkou)
 [alt fotky: Biely ostrovček zo sinterovaného kameňa s drevenými bokmi]
 ● Polaris Statuario White
 
@@ -74,4 +74,5 @@ Sila technológie.
 ### Pätička — dôvod a odhlásenie
 Tento e-mail ste dostali, pretože ste sa prihlásili na odber noviniek Orostone.
 © 2026 Orostone, s. r. o.
+Sídlo: Landererova 8, 811 09 Bratislava
 Odhlásiť odber

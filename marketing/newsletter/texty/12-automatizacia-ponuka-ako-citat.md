@@ -16,7 +16,7 @@ Krátky sprievodca k ponuke, ktorú ste od nás dostali.
 Cena za meter
 nepovie všetko.
 
-### Hlavná fotka (popis na fotke)
+### Hlavná fotka (popis pod fotkou)
 [alt fotky: Ručne kreslený pôdorys kuchyne, vzorka sinterovaného kameňa a skladací meter]
 ● Pôdorys a vzorka
 
@@ -69,4 +69,5 @@ Sila technológie.
 ### Pätička — dôvod a odhlásenie
 Tento e-mail ste dostali, pretože ste od Orostone dostali cenovú ponuku.
 © 2026 Orostone, s. r. o.
+Sídlo: Landererova 8, 811 09 Bratislava
 Odhlásiť odber

@@ -16,7 +16,7 @@ Celé platne vášho dekoru uvidíte v renesančnom kaštieli v Bošanoch.
 Rozhodnite sa
 pri celej platni.
 
-### Hlavná fotka (popis na fotke)
+### Hlavná fotka (popis pod fotkou)
 [alt fotky: Renesančný kaštieľ v Bošanoch, v ktorom je showroom Orostone]
 ● Showroom v Bošanoch
 
@@ -54,4 +54,5 @@ Sila technológie.
 ### Pätička — dôvod a odhlásenie
 Tento e-mail ste dostali, pretože ste od Orostone dostali cenovú ponuku.
 © 2026 Orostone, s. r. o.
+Sídlo: Landererova 8, 811 09 Bratislava
 Odhlásiť odber

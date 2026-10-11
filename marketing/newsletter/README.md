@@ -41,7 +41,10 @@ Claude potom opravy prenesie do šablón.
 ```bash
 python3 marketing/newsletter/nastroje/build_emails.py   # sablony/
 python3 marketing/newsletter/nastroje/extract_copy.py   # texty/
+python3 marketing/newsletter/nastroje/check_images.py   # obrázky len z orostone.sk a v public/images/
 ```
+
+Obrázky v e-mailoch sú len z `orostone.sk` a ich súbory sú v repozitári (`public/images/email/`), aj fotky dekorov z e-shopu (`dekor-<názov>-<šírka>.jpg`, do 150 kB). Cudzí hosting ako GitHub alebo CDN e-shopu zhoršuje doručiteľnosť a obrázok sa môže stratiť. Šablóny sú pripravené pre Klaviyo: odhlásenie `{% unsubscribe_link %}`, voľby horizontu `{% update_property_link %}`.
 
 ## E-maily
 

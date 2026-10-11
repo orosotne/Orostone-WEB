@@ -15,7 +15,7 @@ Vzorka doma
 Malá vzorka,
 veľká plocha.
 
-### Hlavná fotka (popis na fotke)
+### Hlavná fotka (popis pod fotkou)
 [alt fotky: Celá platňa Taj Mahal vedľa človeka na porovnanie veľkosti]
 ● Taj Mahal · 3200 × 1600 mm
 
@@ -57,4 +57,5 @@ Sila technológie.
 ### Pätička — dôvod a odhlásenie
 Tento e-mail ste dostali, pretože ste si v e-shope orostone.sk objednali vzorku.
 © 2026 Orostone, s. r. o.
+Sídlo: Landererova 8, 811 09 Bratislava
 Odhlásiť odber
