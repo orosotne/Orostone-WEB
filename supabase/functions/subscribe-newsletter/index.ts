@@ -13,6 +13,9 @@
 //
 // DEPLOYMENT:
 //   supabase functions deploy subscribe-newsletter --project-ref <ref>
+//   Najprv migrácie 20261011_newsletter_klaviyo_attempt.sql a
+//   20261011_newsletter_subscribe_function.sql: odber sa zapisuje cez funkciu
+//   newsletter_subscribe.
 //
 // KLAVIYO (od 10. 10. 2026), serverové API podľa odporúčania Klaviya:
 //   KLAVIYO_NEWSLETTER_LIST_ID  ID zoznamu „Newsletter – web“ (nie je tajné).
@@ -49,10 +52,10 @@
 //   bežne prídu dva-tri týždenne) web prihlásenie neuloží, Klaviyo nevolá, uvítanie
 //   nepošle a odpovie 429 s prosbou skúsiť to neskôr. Cudzie adresy z útoku tak
 //   nedostávajú e-maily, nemíňajú limity Klaviya a nedostanú sa ani do dennej
-//   synchronizácie. Nový riadok sa najprv zapíše a až potom spočíta, takže strop drží
-//   aj pri súbežných požiadavkách, a nad stropom sa hneď zmaže. Tím dostane najviac
-//   jedno upozornenie za deň (Resend Idempotency-Key). Pred kampaňou, ktorá prinesie
-//   veľa prihlásení naraz (súťaž), treba strop zvýšiť (SUBSCRIBE_LIMITS).
+//   synchronizácie. Počet aj zápis robí v jednej transakcii so zámkom databázová funkcia
+//   newsletter_subscribe, takže pri súbežnom návale prejde presne prvých 10 (30). Tím
+//   dostane najviac jedno upozornenie za deň (Resend Idempotency-Key). Pred kampaňou,
+//   ktorá prinesie veľa prihlásení naraz (súťaž), treba strop zvýšiť (SUBSCRIBE_LIMITS).
 // ===========================================
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
@@ -102,37 +105,21 @@ const RESUBMIT_WINDOW_MS = 30 * 60 * 1000;
  * Strop na nové a obnovené odbery z verejného formulára, počíta sa `subscribed_at`.
  * Bežne prídu dva-tri týždenne, strop je poistka proti útoku s cudzími adresami.
  */
-const SUBSCRIBE_LIMITS = [
-  { windowMs: 60 * 60 * 1000, max: 10 },
-  { windowMs: 24 * 60 * 60 * 1000, max: 30 },
-] as const;
+const SUBSCRIBE_LIMITS = { hour: 10, day: 30 } as const;
+
+/** Výsledok databázovej funkcie newsletter_subscribe (migrácia 20261011_newsletter_subscribe_function.sql). */
+interface SubscribeOutcome {
+  outcome: 'inserted' | 'reactivated' | 'active' | 'limit';
+  id: string | null;
+  /** Strop je plný (pri 'active' Klaviyo znova nevoláme). */
+  over: boolean;
+}
 
 /** Odpoveď nad stropom. Prihlásenie sa neuložilo, človek to môže skúsiť neskôr. */
 const LIMIT_ERROR = 'Prihlásenie sa teraz nepodarilo. Skúste to, prosím, neskôr.';
 
 /** Klaviyo prijme e-mail najviac so 100 znakmi (Profiles API). */
 const MAX_EMAIL_LENGTH = 100;
-
-/** Čas pokusu o odber v Klaviyu pre zápis do riadku. Bez Klaviya stĺpec nepoužívame. */
-const attemptStamp = () => (klaviyoEnabled() ? { klaviyo_attempted_at: new Date().toISOString() } : {});
-
-/**
- * Je prekročený strop na odbery? Počíta riadky so `subscribed_at` v okne, `pending` sú
- * odbery, ktoré sa ešte nezapísali (obnovenie odberu sa kontroluje pred zápisom). Keď
- * počet nezistíme, pokračujeme: strop je poistka proti hromadnému zneužitiu, nie brána
- * pre jednotlivé odbery, a útočník chybu databázy vyvolať nevie.
- */
-async function overSubscribeLimit(supabase: SupabaseClient, pending: 0 | 1 = 0): Promise<boolean> {
-  const counts = await Promise.all(SUBSCRIBE_LIMITS.map(async (limit) => {
-    const { count, error } = await supabase
-      .from('newsletter_subscribers')
-      .select('id', { count: 'exact', head: true })
-      .gte('subscribed_at', new Date(Date.now() - limit.windowMs).toISOString());
-    if (error) console.error('[subscribe-newsletter] Počet odberov sa nepodarilo zistiť:', error.message);
-    return error ? null : count;
-  }));
-  return SUBSCRIBE_LIMITS.some((limit, i) => counts[i] != null && counts[i]! + pending > limit.max);
-}
 
 /** Odpoveď nad stropom: upozornenie tímu (najviac raz za deň) a 429. */
 function limitResponse(): Response {
@@ -445,106 +432,50 @@ serve(async (req) => {
       auth: { persistSession: false },
     });
 
-    // Race-safe subscribe pattern (fixes /ultrareview bug_008).
-    //
-    // Previous SELECT-then-INSERT/UPDATE flow had a TOCTOU race: two concurrent
-    // submits for the same brand-new email both observed "no row" and both
-    // INSERTed; the second hit the unique constraint on `email` and surfaced
-    // a 500 to the user even though they were now subscribed.
-    //
-    // New flow:
-    //   1. Try INSERT.
-    //   2. On 23505 (unique violation) → row already exists. Re-fetch and
-    //      decide whether to reactivate or return idempotent success.
-    //   3. On any other error → real failure.
-    //
-    // Atomicity comes from the UNIQUE(email) constraint (schema.sql:54): only
-    // ONE concurrent INSERT can win, the other gets 23505 deterministically.
+    // 1. Zápis odberu cez databázovú funkciu newsletter_subscribe (migrácia
+    //    20261011_newsletter_subscribe_function.sql). Zámok v nej pustí naraz jeden odber,
+    //    takže strop aj zápis sú atomické: pri súbežnom návale prejde presne prvých
+    //    SUBSCRIBE_LIMITS odberov a duplicitný e-mail nevznikne (predtým to strážil
+    //    23505 z UNIQUE(email), fix /ultrareview bug_008).
+    const { data: sub, error: subError } = await supabase.rpc('newsletter_subscribe', {
+      p_email: email,
+      p_name: name ?? null,
+      p_source: source,
+      p_stamp_attempt: klaviyoEnabled(),
+      p_hour_max: SUBSCRIBE_LIMITS.hour,
+      p_day_max: SUBSCRIBE_LIMITS.day,
+    });
+    const outcome = (sub as SubscribeOutcome | null)?.outcome;
+    if (subError || !outcome) {
+      console.error('[subscribe-newsletter] newsletter_subscribe failed:', subError?.message ?? sub);
+      return new Response(
+        JSON.stringify({ success: false, error: 'Nepodarilo sa prihlásiť na odber' }),
+        { status: 500, headers: corsHeaders },
+      );
+    }
+    const { id, over } = sub as SubscribeOutcome;
 
-    const insertResult = await supabase
-      .from('newsletter_subscribers')
-      .insert({ email, name: name ?? null, source, ...attemptStamp() })
-      .select('id')
-      .single();
+    if (outcome === 'limit') return limitResponse();
 
-    let isNewSubscriber = false;
-    let isReactivated = false;
-
-    if (!insertResult.error) {
-      // 1a. Brand-new subscriber — INSERT succeeded. Strop sa počíta až po zápise, takže
-      // drží aj pri súbežných požiadavkách. Nad stropom nový riadok hneď zmažeme.
-      if (await overSubscribeLimit(supabase)) {
-        const { error: deleteError } = await supabase.from('newsletter_subscribers').delete().eq('id', insertResult.data.id);
-        if (deleteError) console.error('[subscribe-newsletter] Riadok nad stropom sa nezmazal:', deleteError.message);
-        return limitResponse();
+    if (outcome === 'active') {
+      // Already active — idempotent success, no welcome email re-send.
+      // Do Klaviya ho pošleme aj tak, ak predošlý odber neprešiel (kto v zozname je,
+      // novú úlohu nedostane, kto sa v Klaviyu odhlásil, toho neprihlásime). Opakované
+      // odoslanie do 30 minút od posledného pokusu (dvojklik, dve karty) už rieši prvá
+      // požiadavka: pokus si atomicky vezme len jedna z nich. Pri plnom strope Klaviyo
+      // nevoláme.
+      if (klaviyoEnabled() && !over && id && await claimKlaviyoAttempt(supabase, id)) {
+        const again = await subscribeInKlaviyo(email, name, source);
+        if (again === 'rejected' || again === 'unknown' || again === 'blocked') inBackground(alertKlaviyoFailure(email, source, again));
       }
-      isNewSubscriber = true;
-    } else if (insertResult.error.code === '23505') {
-      // 1b. Row already exists. Re-fetch and decide.
-      const { data: existing, error: lookupError } = await supabase
-        .from('newsletter_subscribers')
-        .select('id, is_active')
-        .eq('email', email)
-        .single();
+      return new Response(
+        JSON.stringify({ success: true, alreadySubscribed: true }),
+        { status: 200, headers: corsHeaders },
+      );
+    }
 
-      if (lookupError || !existing) {
-        console.error('[subscribe-newsletter] Lookup after 23505 failed:', lookupError);
-        return new Response(
-          JSON.stringify({ success: false, error: 'Nepodarilo sa overiť odber' }),
-          { status: 500, headers: corsHeaders },
-        );
-      }
-
-      if (existing.is_active) {
-        // Already active — idempotent success, no welcome email re-send.
-        // Do Klaviya ho pošleme aj tak, ak predošlý odber neprešiel (kto v zozname je,
-        // novú úlohu nedostane, kto sa v Klaviyu odhlásil, toho neprihlásime). Opakované
-        // odoslanie do 30 minút od posledného pokusu (dvojklik, dve karty) už rieši prvá
-        // požiadavka: pokus si atomicky vezme len jedna z nich.
-        if (klaviyoEnabled() && !(await overSubscribeLimit(supabase)) && await claimKlaviyoAttempt(supabase, existing.id)) {
-          const again = await subscribeInKlaviyo(email, name, source);
-          if (again === 'rejected' || again === 'unknown' || again === 'blocked') inBackground(alertKlaviyoFailure(email, source, again));
-        }
-        return new Response(
-          JSON.stringify({ success: true, alreadySubscribed: true }),
-          { status: 200, headers: corsHeaders },
-        );
-      }
-
-      // Obnovenie odberu nad stropom neuložíme. Kontrola ide pred zápisom: neaktívne riadky
-      // web nevytvára (odhlásených maže synchronizácia), útočník ich nevie vyrobiť hromadne.
-      if (await overSubscribeLimit(supabase, 1)) return limitResponse();
-
-      // Reactivate inactive row. Podmienka na is_active: z dvoch súbežných požiadaviek
-      // riadok reaktivuje (a Klaviyo zavolá) len jedna, druhá skončí ako už prihlásený.
-      const { data: reactivated, error: updateError } = await supabase
-        .from('newsletter_subscribers')
-        .update({
-          is_active: true,
-          unsubscribed_at: null,
-          subscribed_at: new Date().toISOString(),
-          ...attemptStamp(),
-        })
-        .eq('id', existing.id)
-        .not('is_active', 'is', true)
-        .select('id');
-
-      if (updateError) {
-        console.error('[subscribe-newsletter] Reactivate failed:', updateError);
-        return new Response(
-          JSON.stringify({ success: false, error: 'Nepodarilo sa reaktivovať odber' }),
-          { status: 500, headers: corsHeaders },
-        );
-      }
-      if (!reactivated?.length) {
-        return new Response(
-          JSON.stringify({ success: true, alreadySubscribed: true }),
-          { status: 200, headers: corsHeaders },
-        );
-      }
-      isReactivated = true;
-    } else {
-      console.error('[subscribe-newsletter] Insert failed:', insertResult.error);
+    if (outcome !== 'inserted' && outcome !== 'reactivated') {
+      console.error('[subscribe-newsletter] newsletter_subscribe: neznámy výsledok', outcome);
       return new Response(
         JSON.stringify({ success: false, error: 'Nepodarilo sa prihlásiť na odber' }),
         { status: 500, headers: corsHeaders },
@@ -556,10 +487,10 @@ serve(async (req) => {
     if (klaviyo === 'rejected' || klaviyo === 'unknown' || klaviyo === 'blocked') inBackground(alertKlaviyoFailure(email, source, klaviyo));
 
     // 3. Send welcome email (fire-and-forget) only for new subscribers and
-    //    reactivated unsubscribers — NOT when alreadySubscribed. With Klaviyo on,
+    //    reactivated unsubscribers — alreadySubscribed returned above. With Klaviyo on,
     //    only when it definitely rejected the subscriber: after 'ok' its flow sends
     //    the welcome series, after 'unknown' it may have (no double welcome).
-    if ((isNewSubscriber || isReactivated) && (klaviyo === 'off' || klaviyo === 'rejected')) {
+    if (klaviyo === 'off' || klaviyo === 'rejected') {
       fetch(`${SUPABASE_URL}/functions/v1/send-newsletter-welcome`, {
         method: 'POST',
         headers: {

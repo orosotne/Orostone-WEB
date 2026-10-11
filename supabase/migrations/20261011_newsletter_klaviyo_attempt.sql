@@ -6,8 +6,9 @@
 -- za 30 minút). Podmienený UPDATE nad týmto stĺpcom pustí z dvoch súbežných požiadaviek
 -- len jednu. Dátum súhlasu ostáva v subscribed_at.
 --
--- Stĺpec je voliteľný a starší kód ho ignoruje, migráciu treba spustiť pred nastavením
--- KLAVIYO_* secrets (bez nich funkcia stĺpec nepoužíva).
+-- Stĺpec je voliteľný a starší kód ho ignoruje. Migráciu treba spustiť pred nasadením
+-- subscribe-newsletter: odber zapisuje funkcia newsletter_subscribe (migrácia
+-- 20261011_newsletter_subscribe_function.sql), ktorá stĺpec používa.
 
 ALTER TABLE public.newsletter_subscribers
   ADD COLUMN IF NOT EXISTS klaviyo_attempted_at TIMESTAMPTZ;
