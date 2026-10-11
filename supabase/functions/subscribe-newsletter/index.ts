@@ -44,14 +44,15 @@
 //   dvojitom by sa súhlas zapísal až po kliknutí v e-maile a overenie po minúte by
 //   upozorňovalo pri každom nepotvrdenom odbere: pri prepnutí ho treba prerobiť.
 //
-// STROP NA ODBERY (od 11. 10. 2026): formulár je verejný a bez CAPTCHA. Keď za hodinu
-//   príde viac ako 10 nových alebo obnovených odberov alebo za 24 hodín viac ako 30
-//   (bežne je to pár týždenne), odber sa uloží do databázy webu, ale Klaviyo sa nevolá
-//   a uvítací e-mail neodíde: cudzie adresy z útoku by inak dostávali e-maily a míňali
-//   limity Klaviya. Tím dostane upozornenie pri prvom prekročení. Riadok si nechá čas
-//   pokusu z vloženia, takže opakované odoslanie do 30 minút Klaviyo nevolá, neskôr áno.
-//   Pred kampaňou, ktorá prinesie veľa prihlásení naraz (súťaž), treba strop zvýšiť
-//   (SUBSCRIBE_LIMITS).
+// STROP NA ODBERY (od 11. 10. 2026): formulár je verejný a bez CAPTCHA. Nad stropom
+//   (viac ako 10 nových alebo obnovených odberov za hodinu alebo viac ako 30 za 24 hodín,
+//   bežne prídu dva-tri týždenne) web prihlásenie neuloží, Klaviyo nevolá, uvítanie
+//   nepošle a odpovie 429 s prosbou skúsiť to neskôr. Cudzie adresy z útoku tak
+//   nedostávajú e-maily, nemíňajú limity Klaviya a nedostanú sa ani do dennej
+//   synchronizácie. Nový riadok sa najprv zapíše a až potom spočíta, takže strop drží
+//   aj pri súbežných požiadavkách, a nad stropom sa hneď zmaže. Tím dostane najviac
+//   jedno upozornenie za deň (Resend Idempotency-Key). Pred kampaňou, ktorá prinesie
+//   veľa prihlásení naraz (súťaž), treba strop zvýšiť (SUBSCRIBE_LIMITS).
 // ===========================================
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
@@ -102,9 +103,12 @@ const RESUBMIT_WINDOW_MS = 30 * 60 * 1000;
  * Bežne prídu dva-tri týždenne, strop je poistka proti útoku s cudzími adresami.
  */
 const SUBSCRIBE_LIMITS = [
-  { windowMs: 60 * 60 * 1000, max: 10, label: 'Za poslednú hodinu' },
-  { windowMs: 24 * 60 * 60 * 1000, max: 30, label: 'Za posledných 24 hodín' },
+  { windowMs: 60 * 60 * 1000, max: 10 },
+  { windowMs: 24 * 60 * 60 * 1000, max: 30 },
 ] as const;
+
+/** Odpoveď nad stropom. Prihlásenie sa neuložilo, človek to môže skúsiť neskôr. */
+const LIMIT_ERROR = 'Prihlásenie sa teraz nepodarilo. Skúste to, prosím, neskôr.';
 
 /** Klaviyo prijme e-mail najviac so 100 znakmi (Profiles API). */
 const MAX_EMAIL_LENGTH = 100;
@@ -113,11 +117,12 @@ const MAX_EMAIL_LENGTH = 100;
 const attemptStamp = () => (klaviyoEnabled() ? { klaviyo_attempted_at: new Date().toISOString() } : {});
 
 /**
- * Je prekročený strop na odbery? S `alertOnCross` pri prvom prekročení (počet je práve
- * max + 1) upozorní tím. Keď počet nezistíme, pokračujeme: strop je poistka proti
- * hromadnému zneužitiu, nie brána pre jednotlivé odbery, a databáza riadok práve zapísala.
+ * Je prekročený strop na odbery? Počíta riadky so `subscribed_at` v okne, `pending` sú
+ * odbery, ktoré sa ešte nezapísali (obnovenie odberu sa kontroluje pred zápisom). Keď
+ * počet nezistíme, pokračujeme: strop je poistka proti hromadnému zneužitiu, nie brána
+ * pre jednotlivé odbery, a útočník chybu databázy vyvolať nevie.
  */
-async function overSubscribeLimit(supabase: SupabaseClient, alertOnCross: boolean): Promise<boolean> {
+async function overSubscribeLimit(supabase: SupabaseClient, pending: 0 | 1 = 0): Promise<boolean> {
   const counts = await Promise.all(SUBSCRIBE_LIMITS.map(async (limit) => {
     const { count, error } = await supabase
       .from('newsletter_subscribers')
@@ -126,14 +131,13 @@ async function overSubscribeLimit(supabase: SupabaseClient, alertOnCross: boolea
     if (error) console.error('[subscribe-newsletter] Počet odberov sa nepodarilo zistiť:', error.message);
     return error ? null : count;
   }));
-  let over = false;
-  SUBSCRIBE_LIMITS.forEach((limit, i) => {
-    const count = counts[i];
-    if (count == null || count <= limit.max) return;
-    over = true;
-    if (alertOnCross && count === limit.max + 1) inBackground(alertSubscribeLimit(limit.label, limit.max));
-  });
-  return over;
+  return SUBSCRIBE_LIMITS.some((limit, i) => counts[i] != null && counts[i]! + pending > limit.max);
+}
+
+/** Odpoveď nad stropom: upozornenie tímu (najviac raz za deň) a 429. */
+function limitResponse(): Response {
+  inBackground(alertSubscribeLimit());
+  return new Response(JSON.stringify({ success: false, error: LIMIT_ERROR }), { status: 429, headers: corsHeaders });
 }
 
 /**
@@ -354,16 +358,23 @@ async function alertKlaviyoFailure(email: string, source: string, reason: AlertR
   }
 }
 
-/** Prvé prekročenie stropu na odbery. Bez adries, môže ísť o útok. Nikdy nehádže. */
-async function alertSubscribeLimit(label: string, max: number): Promise<void> {
+/**
+ * Prekročený strop na odbery, bez adries (môže ísť o útok). Rovnaký obsah a kľúč počas dňa
+ * (UTC), takže Resend pošle najviac jedno upozornenie za deň aj pri súbežných požiadavkách.
+ * Nikdy nehádže.
+ */
+async function alertSubscribeLimit(): Promise<void> {
+  const day = new Date().toISOString().slice(0, 10);
+  const [y, m, d] = day.split('-').map(Number);
   try {
     await sendEmail({
       from: 'Orostone web <noreply@orostone.sk>',
       to: ALERT_EMAIL,
       subject: 'Newsletter: neobvykle veľa prihlásení na odber',
-      html: `<p>${escapeHtml(label)} prišlo na webe viac ako ${max} prihlásení na odber. Môže ísť o útok s cudzími adresami.</p>
-<p>Ďalšie prihlásenia ukladáme do databázy webu (tabuľka newsletter_subscribers), ale kým ich počet neklesne pod strop, neposielame ich do Klaviya a neodchádza im uvítací e-mail. Ak sú to skutoční záujemcovia (napr. po kampani alebo súťaži), pridajte ich do Klaviya ručne a požiadajte o zvýšenie stropu vo funkcii subscribe-newsletter. Ak ide o útok, netreba robiť nič.</p>`,
+      html: `<p>Dnes (${d}. ${m}. ${y}) prišlo na webe viac prihlásení na odber, ako povoľuje strop: 10 za hodinu a 30 za 24 hodín. Môže ísť o útok s cudzími adresami.</p>
+<p>Prihlásenia nad stropom web neukladá, neposiela do Klaviya a odpovedá na ne prosbou skúsiť to neskôr. Ak ide o útok, netreba robiť nič. Ak sú to skutoční záujemcovia (napr. po kampani alebo súťaži), požiadajte o zvýšenie stropu vo funkcii subscribe-newsletter. Ďalšie upozornenie dnes už nepríde.</p>`,
       onMissingKey: 'skip',
+      idempotencyKey: `newsletter-strop-${day}`,
     });
   } catch (err) {
     console.error('[subscribe-newsletter] Upozornenie na strop sa neodoslalo:', err instanceof Error ? err.message : err);
@@ -452,13 +463,21 @@ serve(async (req) => {
 
     const insertResult = await supabase
       .from('newsletter_subscribers')
-      .insert({ email, name: name ?? null, source, ...attemptStamp() });
+      .insert({ email, name: name ?? null, source, ...attemptStamp() })
+      .select('id')
+      .single();
 
     let isNewSubscriber = false;
     let isReactivated = false;
 
     if (!insertResult.error) {
-      // 1a. Brand-new subscriber — INSERT succeeded.
+      // 1a. Brand-new subscriber — INSERT succeeded. Strop sa počíta až po zápise, takže
+      // drží aj pri súbežných požiadavkách. Nad stropom nový riadok hneď zmažeme.
+      if (await overSubscribeLimit(supabase)) {
+        const { error: deleteError } = await supabase.from('newsletter_subscribers').delete().eq('id', insertResult.data.id);
+        if (deleteError) console.error('[subscribe-newsletter] Riadok nad stropom sa nezmazal:', deleteError.message);
+        return limitResponse();
+      }
       isNewSubscriber = true;
     } else if (insertResult.error.code === '23505') {
       // 1b. Row already exists. Re-fetch and decide.
@@ -482,7 +501,7 @@ serve(async (req) => {
         // novú úlohu nedostane, kto sa v Klaviyu odhlásil, toho neprihlásime). Opakované
         // odoslanie do 30 minút od posledného pokusu (dvojklik, dve karty) už rieši prvá
         // požiadavka: pokus si atomicky vezme len jedna z nich.
-        if (klaviyoEnabled() && !(await overSubscribeLimit(supabase, false)) && await claimKlaviyoAttempt(supabase, existing.id)) {
+        if (klaviyoEnabled() && !(await overSubscribeLimit(supabase)) && await claimKlaviyoAttempt(supabase, existing.id)) {
           const again = await subscribeInKlaviyo(email, name, source);
           if (again === 'rejected' || again === 'unknown' || again === 'blocked') inBackground(alertKlaviyoFailure(email, source, again));
         }
@@ -491,6 +510,10 @@ serve(async (req) => {
           { status: 200, headers: corsHeaders },
         );
       }
+
+      // Obnovenie odberu nad stropom neuložíme. Kontrola ide pred zápisom: neaktívne riadky
+      // web nevytvára (odhlásených maže synchronizácia), útočník ich nevie vyrobiť hromadne.
+      if (await overSubscribeLimit(supabase, 1)) return limitResponse();
 
       // Reactivate inactive row. Podmienka na is_active: z dvoch súbežných požiadaviek
       // riadok reaktivuje (a Klaviyo zavolá) len jedna, druhá skončí ako už prihlásený.
@@ -528,19 +551,11 @@ serve(async (req) => {
       );
     }
 
-    // 2. Strop na odbery: nad ním ostane odber len v databáze webu, bez Klaviya a uvítania.
-    if (await overSubscribeLimit(supabase, true)) {
-      return new Response(
-        JSON.stringify({ success: true }),
-        { status: 200, headers: corsHeaders },
-      );
-    }
-
-    // 3. Klaviyo: zoznam „Newsletter – web“, uvítaciu sériu posiela flow na zozname.
+    // 2. Klaviyo: zoznam „Newsletter – web“, uvítaciu sériu posiela flow na zozname.
     const klaviyo = await subscribeInKlaviyo(email, name, source);
     if (klaviyo === 'rejected' || klaviyo === 'unknown' || klaviyo === 'blocked') inBackground(alertKlaviyoFailure(email, source, klaviyo));
 
-    // 4. Send welcome email (fire-and-forget) only for new subscribers and
+    // 3. Send welcome email (fire-and-forget) only for new subscribers and
     //    reactivated unsubscribers — NOT when alreadySubscribed. With Klaviyo on,
     //    only when it definitely rejected the subscriber: after 'ok' its flow sends
     //    the welcome series, after 'unknown' it may have (no double welcome).
