@@ -51,7 +51,7 @@ CSS = """
     .h1-dark{ font-size:27px !important; line-height:33px !important; }
     .h2{ font-size:20px !important; line-height:26px !important; }
     .pull{ font-size:15px !important; line-height:23px !important; }
-    .hero-wrap{ padding:0 16px !important; }
+    .hero-wrap{ padding-left:16px !important; padding-right:16px !important; }
     .meta-right{ display:none !important; }
     .header-logo{ height:24px !important; }
     .cta-btn{ padding:13px 22px !important; font-size:10.5px !important; letter-spacing:0.14em !important; }
