@@ -16,7 +16,7 @@ Preto vám budeme posielať len to, čo pri tom rozhodnutí naozaj pomôže.
 
 ### Hlavná fotka (popis pod fotkou)
 [alt fotky: Ostrovček zo sinterovaného kameňa v svetlej kuchyni]
-Realizácia Orostone
+● Realizácia Orostone
 
 ### Text
 Dobrý deň,
@@ -56,4 +56,5 @@ Sila technológie.
 ### Pätička — dôvod a odhlásenie
 Tento e-mail ste dostali, pretože ste sa prihlásili na odber noviniek Orostone.
 © 2026 Orostone, s. r. o.
+Sídlo: Landererova 8, 811 09 Bratislava
 Odhlásiť odber

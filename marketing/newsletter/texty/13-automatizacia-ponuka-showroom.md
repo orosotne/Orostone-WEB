@@ -18,7 +18,7 @@ pri celej platni.
 
 ### Hlavná fotka (popis pod fotkou)
 [alt fotky: Renesančný kaštieľ v Bošanoch, v ktorom je showroom Orostone]
-Showroom v Bošanoch
+● Showroom v Bošanoch
 
 ### Text
 Dobrý deň,
@@ -54,4 +54,5 @@ Sila technológie.
 ### Pätička — dôvod a odhlásenie
 Tento e-mail ste dostali, pretože ste od Orostone dostali cenovú ponuku.
 © 2026 Orostone, s. r. o.
+Sídlo: Landererova 8, 811 09 Bratislava
 Odhlásiť odber

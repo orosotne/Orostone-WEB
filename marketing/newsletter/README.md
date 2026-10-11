@@ -41,7 +41,10 @@ Claude potom opravy prenesie do šablón.
 ```bash
 python3 marketing/newsletter/nastroje/build_emails.py   # sablony/
 python3 marketing/newsletter/nastroje/extract_copy.py   # texty/
+python3 marketing/newsletter/nastroje/check_images.py   # obrázky len z orostone.sk a v public/images/
 ```
+
+Obrázky v e-mailoch sú len z `orostone.sk` a ich súbory sú v repozitári (`public/images/email/`), aj fotky dekorov z e-shopu (`dekor-<názov>-<šírka>.jpg`, do 150 kB). Cudzí hosting ako GitHub alebo CDN e-shopu zhoršuje doručiteľnosť a obrázok sa môže stratiť. Šablóny sú pripravené pre Klaviyo: odhlásenie `{% unsubscribe_link %}`, voľby horizontu `{% update_property_link %}`.
 
 ## E-maily
 
@@ -96,5 +99,5 @@ Vizuálne pravidlá e-mailu sú v skille `orostone-kreativy` (`references/newsle
 - Uvítacia odmena je **prvá vzorka bez poštovného**, kód `VITAJTE` (rozhodnutie 7. 10. 2026, nahrádza WELCOME5). Kód v Shopify už existuje (doprava vzorky 0 €, overené výpočtom objednávky v Shopify).
 - Fotky vybral Martin 7. 10. 2026 v troch kolách. Zábery výroby v 18 sú ilustračné (Higgsfield) a vychádzajú z fotiek skutočných fabrík na sinterovaný kameň. Kaštieľ v 13 je skutočná fotka z titulnej stránky webu.
 - Obrázky sú v `public/images/email/` a web ich zverejní na `https://orostone.sk/images/email/`. Nový obrázok pridajte do tohto priečinka (JPG, dvojnásobná šírka oproti zobrazeniu, najviac okolo 150 KB).
-- Gmail nezobrazí SVG a ignoruje `position` aj záporné okraje. Ikony sociálnych sietí sú preto PNG (`ikona-instagram.png`, `ikona-facebook.png`). Štítok k hlavnej fotke je pod fotkou a odznak v podpise stojí v riadku medzi dvoma čiarami.
+- Gmail nezobrazí SVG a ignoruje `position` aj záporné okraje. Ikony sociálnych sietí sú preto PNG (`instagram-white.png`, `facebook-white.png`), popis hlavnej fotky je pod fotkou a odznak v podpise stojí v riadku medzi dvoma čiarami. Na mobile sa pri hlavnej fotke zmenší len bočný okraj. Horný ostáva, aby fotka nepriliehala k tmavému pásu.
 - Odkaz na odhlásenie je tag Klaviyo `{% unsubscribe_link %}`, ktorý vloží len adresu, a preto patrí do `href`. Tag `{% unsubscribe %}` vkladá celý odkaz, takže v `href` by odkaz rozbil. Ďalšie premenné doplní rozosielací nástroj.

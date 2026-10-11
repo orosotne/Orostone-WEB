@@ -18,7 +18,7 @@ pred výberom dekoru.
 
 ### Hlavná fotka (popis pod fotkou)
 [alt fotky: Celá platňa Taj Mahal vedľa človeka na porovnanie veľkosti]
-Taj Mahal · 3200 × 1600 mm
+● Taj Mahal · 3200 × 1600 mm
 
 ### Text
 Dobrý deň,
@@ -62,4 +62,5 @@ Sila technológie.
 ### Pätička — dôvod a odhlásenie
 Tento e-mail ste dostali, pretože ste sa prihlásili na odber noviniek Orostone.
 © 2026 Orostone, s. r. o.
+Sídlo: Landererova 8, 811 09 Bratislava
 Odhlásiť odber
