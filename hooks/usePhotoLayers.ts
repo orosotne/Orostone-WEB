@@ -24,6 +24,10 @@ const SETTLE_FALLBACK_MS = 1000;
  * frame when it finishes, which flashed the previous photo). Remove what can no longer be seen from the img's
  * onTransitionEnd: `settle` drops everything under a layer that has finished fading in, `drop` one layer that has
  * finished fading out. If a transition never runs, the layers are settled a little later anyway.
+ *
+ * Give every layer a position (`absolute` or `relative`). Below opacity 1 an element paints at the level of positioned
+ * elements, so an unpositioned layer that has just faded in drops under an older one that is still fading out, and the
+ * older photo shows through again.
  */
 export function usePhotoLayers<T>(current: T) {
   const nextId = useRef(1);
