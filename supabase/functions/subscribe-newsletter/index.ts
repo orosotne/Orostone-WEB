@@ -28,7 +28,10 @@
 //   v tabuľke odhlásenie cez odkaz v e-maile neukáže. Riadky odhlásených raz denne
 //   zmaže sync-newsletter-unsubscribes (zásady: výmaz do 30 dní po odvolaní súhlasu).
 //   Kto už je v zozname prihlásený, nedostane novú úlohu odberu (Klaviyo radí najviac
-//   jednu za 30 minút) a opakované odoslanie formulára do 30 minút Klaviyo nevolá vôbec.
+//   jednu za 30 minút). Čas posledného pokusu o odber je v stĺpci `klaviyo_attempted_at`
+//   (migrácia 20261011_newsletter_klaviyo_attempt.sql), dátum súhlasu ostáva v
+//   `subscribed_at`. Opakované odoslanie formulára do 30 minút od pokusu Klaviyo nevolá
+//   vôbec a z dvoch súbežných požiadaviek si pokus podmieneným UPDATE vezme len jedna.
 //   Meno a zdroj zapíšeme len do nového profilu: formulár nikto neoveruje a existujúci
 //   profil by si inak mohol ktokoľvek prepísať.
 //   Kto je v Klaviyu odhlásený alebo potlačený (spam, ručne), celkovo alebo len z tohto
@@ -41,7 +44,7 @@
 // ===========================================
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
-import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { createClient, type SupabaseClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import { escapeHtml } from '../_shared/escape.ts';
 import {
   emailFilter,
@@ -77,8 +80,32 @@ type AlertReason = 'rejected' | 'unknown' | 'blocked' | 'unconfirmed';
 
 /** Kedy po prijatí odberu overiť, že je e-mail v zozname prihlásený (Klaviyo ho spracúva asynchrónne). */
 const VERIFY_AFTER_MS = [15_000, 45_000];
-/** Opakované odoslanie formulára v tomto okne (dvojklik, dve karty) už rieši prvá požiadavka. */
+/** Opakované odoslanie formulára do tohto času od posledného pokusu o odber (dvojklik, dve karty) už rieši prvá požiadavka. */
 const RESUBMIT_WINDOW_MS = 30 * 60 * 1000;
+
+/** Čas pokusu o odber v Klaviyu pre zápis do riadku. Bez Klaviya stĺpec nepoužívame. */
+const attemptStamp = () => (klaviyoEnabled() ? { klaviyo_attempted_at: new Date().toISOString() } : {});
+
+/**
+ * Atomicky si vezme pokus o odber v Klaviyu pre existujúci riadok: uspeje, len keď posledný
+ * pokus bol pred viac ako RESUBMIT_WINDOW_MS alebo žiadny. Podmienený UPDATE nad jedným
+ * riadkom pustí z dvoch súbežných požiadaviek len jednu. Pri chybe databázy Klaviyo
+ * nevoláme, aby nevznikla druhá úloha odberu.
+ */
+async function claimKlaviyoAttempt(supabase: SupabaseClient, id: string): Promise<boolean> {
+  const cutoff = new Date(Date.now() - RESUBMIT_WINDOW_MS).toISOString();
+  const { data, error } = await supabase
+    .from('newsletter_subscribers')
+    .update({ klaviyo_attempted_at: new Date().toISOString() })
+    .eq('id', id)
+    .or(`klaviyo_attempted_at.is.null,klaviyo_attempted_at.lt."${cutoff}"`)
+    .select('id');
+  if (error) {
+    console.error('[subscribe-newsletter] Klaviyo attempt claim failed:', error.message);
+    return false;
+  }
+  return (data?.length ?? 0) > 0;
+}
 
 /**
  * Stav e-mailu v Klaviyu pred odberom:
@@ -338,7 +365,7 @@ serve(async (req) => {
 
     const insertResult = await supabase
       .from('newsletter_subscribers')
-      .insert({ email, name: name ?? null, source });
+      .insert({ email, name: name ?? null, source, ...attemptStamp() });
 
     let isNewSubscriber = false;
     let isReactivated = false;
@@ -350,7 +377,7 @@ serve(async (req) => {
       // 1b. Row already exists. Re-fetch and decide.
       const { data: existing, error: lookupError } = await supabase
         .from('newsletter_subscribers')
-        .select('id, is_active, subscribed_at')
+        .select('id, is_active')
         .eq('email', email)
         .single();
 
@@ -366,9 +393,9 @@ serve(async (req) => {
         // Already active — idempotent success, no welcome email re-send.
         // Do Klaviya ho pošleme aj tak, ak predošlý odber neprešiel (kto v zozname je,
         // novú úlohu nedostane, kto sa v Klaviyu odhlásil, toho neprihlásime). Opakované
-        // odoslanie do 30 minút (dvojklik, dve karty) už rieši prvá požiadavka.
-        const subscribedAt = Date.parse(existing.subscribed_at ?? '');
-        if (!(Date.now() - subscribedAt < RESUBMIT_WINDOW_MS)) {
+        // odoslanie do 30 minút od posledného pokusu (dvojklik, dve karty) už rieši prvá
+        // požiadavka: pokus si atomicky vezme len jedna z nich.
+        if (klaviyoEnabled() && await claimKlaviyoAttempt(supabase, existing.id)) {
           const again = await subscribeInKlaviyo(email, name, source);
           if (again === 'rejected' || again === 'unknown' || again === 'blocked') inBackground(alertKlaviyoFailure(email, source, again));
         }
@@ -378,21 +405,31 @@ serve(async (req) => {
         );
       }
 
-      // Reactivate inactive row.
-      const { error: updateError } = await supabase
+      // Reactivate inactive row. Podmienka na is_active: z dvoch súbežných požiadaviek
+      // riadok reaktivuje (a Klaviyo zavolá) len jedna, druhá skončí ako už prihlásený.
+      const { data: reactivated, error: updateError } = await supabase
         .from('newsletter_subscribers')
         .update({
           is_active: true,
           unsubscribed_at: null,
           subscribed_at: new Date().toISOString(),
+          ...attemptStamp(),
         })
-        .eq('id', existing.id);
+        .eq('id', existing.id)
+        .not('is_active', 'is', true)
+        .select('id');
 
       if (updateError) {
         console.error('[subscribe-newsletter] Reactivate failed:', updateError);
         return new Response(
           JSON.stringify({ success: false, error: 'Nepodarilo sa reaktivovať odber' }),
           { status: 500, headers: corsHeaders },
+        );
+      }
+      if (!reactivated?.length) {
+        return new Response(
+          JSON.stringify({ success: true, alreadySubscribed: true }),
+          { status: 200, headers: corsHeaders },
         );
       }
       isReactivated = true;

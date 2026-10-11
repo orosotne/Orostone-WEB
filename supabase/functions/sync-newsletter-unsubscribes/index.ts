@@ -11,7 +11,8 @@
 //   2. Zmaže aj neaktívne riadky, ktoré sú odhlásené viac ako 30 dní.
 //
 // Volá ju len workflow so service-role kľúčom. Bez Klaviya (chýba zoznam alebo kľúč)
-// nerobí nič. V odpovedi ani v logu nie sú e-mailové adresy, len počty.
+// nič nezmaže a vráti 503: workflow zčervená, inak by sa odhlásení potichu prestali mazať.
+// V odpovedi ani v logu nie sú e-mailové adresy, len počty.
 //
 // DEPLOYMENT:
 //   supabase functions deploy sync-newsletter-unsubscribes --project-ref xfkznvqufhnrphpdhfnc
@@ -54,7 +55,9 @@ serve(async (req) => {
   if (!SUPABASE_SERVICE_KEY || authHeader !== `Bearer ${SUPABASE_SERVICE_KEY}`) {
     return json({ success: false, error: 'Unauthorized' }, 401);
   }
-  if (!klaviyoEnabled()) return json({ success: true, skipped: 'Klaviyo nie je nastavené' });
+  if (!klaviyoEnabled()) {
+    return json({ success: false, error: 'Klaviyo nie je nastavené (KLAVIYO_NEWSLETTER_LIST_ID, KLAVIYO_PRIVATE_API_KEY)' }, 503);
+  }
 
   const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY, { auth: { persistSession: false } });
   try {

@@ -91,6 +91,14 @@ Odosielanie e-mailov – potvrdenia dopytov, notifikácie o objednávke a newsle
 
 E-mailová adresa príjemcu sa zdieľa iba na doručenie správy.
 
+#### Klaviyo, Inc.
+
+USA
+
+Odosielanie newslettera, správa odberu a odhlásení, meranie otvorení a kliknutí v e-mailoch
+
+Spracúva e-mailovú adresu, meno (ak ho uvediete), odkiaľ ste sa prihlásili a odpovede, ktoré v e-mailoch zvolíte. Vlastné zásady: klaviyo.com/legal/privacy
+
 #### Vercel Inc.
 
 USA
@@ -185,7 +193,7 @@ Ako dlho vaše údaje uchovávame
 
 Do odvolania súhlasu
 
-Newsletter – e-mailová adresa sa uchováva do odvolania súhlasu. Po odvolaní súhlasu sú údaje vymazané do 30 dní.
+Newsletter – e-mailová adresa sa uchováva do odvolania súhlasu. Po odvolaní súhlasu ju spolu s ďalšími údajmi o odbere do 30 dní vymažeme z databázy webu. V Klaviyu, cez ktorý newsletter posielame, ostane váš profil s označením, že ste sa odhlásili, aby vám newsletter už neprišiel (oprávnený záujem). Uchovávame ho, kým newsletter posielame, a na požiadanie ho vymažeme.
 
 →
 
@@ -206,6 +214,7 @@ Niektorí naši sprostredkovatelia a partneri sídlia mimo Európskeho hospodár
 | Shopify Inc. | Kanada / USA | Rozhodnutie o primeranosti (Kanada); EU–US Data Privacy Framework (USA) |
 | Vercel Inc. | USA | Štandardné zmluvné doložky (SCC) |
 | Resend Inc. | USA | Štandardné zmluvné doložky (SCC) |
+| Klaviyo, Inc. | USA | EU–US Data Privacy Framework + SCC |
 | Cloudflare, Inc. | USA | EU–US Data Privacy Framework + SCC |
 | Google LLC | USA | EU–US Data Privacy Framework |
 | Meta Platforms, Inc. | USA | EU–US Data Privacy Framework |
@@ -293,6 +302,6 @@ Ak sa domnievate, že spracovanie vašich osobných údajov je v rozpore so zák
 
 Posledná aktualizácia
 
-7. 10. 2026
+11. 10. 2026
 
 KONTAKTUJTE NÁS
