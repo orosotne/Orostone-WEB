@@ -25,7 +25,12 @@
 //   idempotentné, flow znova nespustí) a uvítanie cez Resend NEodíde, lebo Klaviyo ho
 //   mohlo prijať a poslalo by sa dvakrát. Ak odber neprejde, príde upozornenie na
 //   ALERT_EMAIL, aby ho tím pridal ručne. Odhlásenie spravuje Klaviyo: `is_active`
-//   v tabuľke odhlásenie cez odkaz v e-maile neukáže.
+//   v tabuľke odhlásenie cez odkaz v e-maile neukáže. Riadky odhlásených raz denne
+//   zmaže sync-newsletter-unsubscribes (zásady: výmaz do 30 dní po odvolaní súhlasu).
+//   Kto už je v zozname prihlásený, nedostane novú úlohu odberu (Klaviyo radí najviac
+//   jednu za 30 minút) a opakované odoslanie formulára do 30 minút Klaviyo nevolá vôbec.
+//   Meno a zdroj zapíšeme len do nového profilu: formulár nikto neoveruje a existujúci
+//   profil by si inak mohol ktokoľvek prepísať.
 //   Kto je v Klaviyu odhlásený alebo potlačený (spam, ručne), celkovo alebo len z tohto
 //   zoznamu, toho NEprihlasujeme: bulk subscribe by odhlásenie zrušil a formulár na webe
 //   nikto neoveruje. Tím dostane upozornenie. Odpoveď 202 je len prijatá úloha, preto
@@ -38,6 +43,15 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import { escapeHtml } from '../_shared/escape.ts';
+import {
+  emailFilter,
+  emailMarketing,
+  KLAVIYO_LIST_ID,
+  klaviyoEnabled,
+  klaviyoGet,
+  klaviyoPost,
+  optedOut,
+} from '../_shared/klaviyo.ts';
 import { sendEmail } from '../_shared/resend.ts';
 
 const corsHeaders = {
@@ -47,9 +61,6 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'Content-Type, Authorization, apikey',
 };
 
-const KLAVIYO_LIST_ID = Deno.env.get('KLAVIYO_NEWSLETTER_LIST_ID')?.trim() || '';
-const KLAVIYO_API_KEY = Deno.env.get('KLAVIYO_PRIVATE_API_KEY')?.trim() || '';
-const KLAVIYO_REVISION = '2026-07-15';
 const ALERT_EMAIL = 'dopyt@orostone.sk';
 
 /**
@@ -64,84 +75,49 @@ type KlaviyoResult = 'ok' | 'rejected' | 'unknown' | 'blocked' | 'off';
 /** Dôvod upozornenia tímu: výsledok odberu, alebo prijatý odber, ktorý sa v zozname neobjavil ako prihlásený. */
 type AlertReason = 'rejected' | 'unknown' | 'blocked' | 'unconfirmed';
 
-/**
- * Potlačenia, ktoré bulk subscribe zruší (a neoverený formulár zrušiť nesmie). Spam: dokumentácia
- * bulk subscribe píše SPAM_REPORT, profil SPAM_COMPLAINT, berieme oboje.
- */
-const OPT_OUT_REASONS = new Set(['UNSUBSCRIBE', 'SPAM_REPORT', 'SPAM_COMPLAINT', 'USER_SUPPRESSED']);
 /** Kedy po prijatí odberu overiť, že je e-mail v zozname prihlásený (Klaviyo ho spracúva asynchrónne). */
 const VERIFY_AFTER_MS = [15_000, 45_000];
-
-function klaviyoPost(path: string, payload: unknown): Promise<Response> {
-  return fetch(`https://a.klaviyo.com/api/${path}`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Klaviyo-API-Key ${KLAVIYO_API_KEY}`,
-      'Content-Type': 'application/vnd.api+json',
-      Accept: 'application/vnd.api+json',
-      revision: KLAVIYO_REVISION,
-    },
-    body: JSON.stringify(payload),
-    signal: AbortSignal.timeout(5000),
-  });
-}
-
-function klaviyoGet(pathAndQuery: string): Promise<Response> {
-  return fetch(`https://a.klaviyo.com/api/${pathAndQuery}`, {
-    headers: {
-      Authorization: `Klaviyo-API-Key ${KLAVIYO_API_KEY}`,
-      Accept: 'application/vnd.api+json',
-      revision: KLAVIYO_REVISION,
-    },
-    signal: AbortSignal.timeout(5000),
-  });
-}
-
-/** Filter Klaviya na jeden e-mail. Úvodzovky a spätné lomky by filter rozbili, také e-maily nepustíme. */
-function emailFilter(email: string): string | null {
-  return /["\\]/.test(email) ? null : encodeURIComponent(`equals(email,"${email}")`);
-}
-
-/** E-mailový marketing z profilu Klaviya (`additional-fields[profile]=subscriptions`). */
-interface EmailMarketing {
-  consent?: unknown;
-  suppression?: Array<{ reason?: unknown } | null>;
-  list_suppressions?: Array<{ list_id?: unknown; reason?: unknown } | null>;
-}
-
-function emailMarketing(profile: unknown): EmailMarketing | null {
-  const m = (profile as { attributes?: { subscriptions?: { email?: { marketing?: unknown } } } } | null | undefined)
-    ?.attributes?.subscriptions?.email?.marketing;
-  return m && typeof m === 'object' ? (m as EmailMarketing) : null;
-}
+/** Opakované odoslanie formulára v tomto okne (dvojklik, dve karty) už rieši prvá požiadavka. */
+const RESUBMIT_WINDOW_MS = 30 * 60 * 1000;
 
 /**
- * Odhlásený alebo potlačený celkovo, alebo len z nášho zoznamu? Odhlásenie zo zoznamu je
- * v `list_suppressions` a súhlas pri ňom môže ostať SUBSCRIBED (účet bez globálneho odhlásenia).
+ * Stav e-mailu v Klaviyu pred odberom:
+ *   'subscribed' v zozname a prihlásený: novú úlohu netreba,
+ *   'opted-out'  odhlásený alebo potlačený, celkovo alebo z tohto zoznamu: neprihlasujeme,
+ *   'free'       môžeme prihlásiť, `exists` hovorí, či profil už existuje,
+ *   'unknown'    nevieme (chyba, divný e-mail): naslepo neprihlasujeme.
  */
-function optedOut(m: EmailMarketing): boolean {
-  const optOut = (s: { reason?: unknown } | null) => OPT_OUT_REASONS.has(String(s?.reason));
-  const global = Array.isArray(m.suppression) && m.suppression.some(optOut);
-  const ourList = Array.isArray(m.list_suppressions)
-    && m.list_suppressions.some((s) => s?.list_id === KLAVIYO_LIST_ID && optOut(s));
-  return m.consent === 'UNSUBSCRIBED' || global || ourList;
+interface PreState {
+  state: 'subscribed' | 'opted-out' | 'free' | 'unknown';
+  exists: boolean;
 }
 
-/** Je e-mail v Klaviyu odhlásený alebo potlačený? 'unknown' = nevieme (chyba, divný e-mail). */
-async function klaviyoOptOutState(email: string): Promise<'free' | 'opted-out' | 'unknown'> {
+async function unknownFrom(what: string, res: Response): Promise<PreState> {
+  console.error(`[subscribe-newsletter] Klaviyo ${what} (kontrola pred odberom):`, res.status, (await res.text()).slice(0, 300));
+  return { state: 'unknown', exists: false };
+}
+
+async function klaviyoState(email: string): Promise<PreState> {
   const filter = emailFilter(email);
-  if (!filter) return 'unknown';
+  if (!filter) return { state: 'unknown', exists: false };
   try {
-    const res = await klaviyoGet(`profiles?filter=${filter}&additional-fields[profile]=subscriptions`);
-    if (!res.ok) {
-      console.error('[subscribe-newsletter] Klaviyo profil (kontrola odhlásenia):', res.status, (await res.text()).slice(0, 300));
-      return 'unknown';
+    // Najprv zoznam: kto v ňom je prihlásený, toho netreba prihlasovať znova.
+    const inList = await klaviyoGet(`lists/${KLAVIYO_LIST_ID}/profiles?filter=${filter}&additional-fields[profile]=subscriptions`);
+    if (!inList.ok) return await unknownFrom('zoznam', inList);
+    const member = emailMarketing((await inList.json())?.data?.[0]);
+    if (member) {
+      if (optedOut(member)) return { state: 'opted-out', exists: true };
+      return { state: member.consent === 'SUBSCRIBED' ? 'subscribed' : 'free', exists: true };
     }
-    const marketing = emailMarketing((await res.json())?.data?.[0]);
-    return marketing && optedOut(marketing) ? 'opted-out' : 'free';
+    // Mimo zoznamu môže profil existovať z iného zdroja (odhlásený, potlačený, s menom z CRM).
+    const res = await klaviyoGet(`profiles?filter=${filter}&additional-fields[profile]=subscriptions`);
+    if (!res.ok) return await unknownFrom('profil', res);
+    const profile = (await res.json())?.data?.[0];
+    const marketing = emailMarketing(profile);
+    return { state: marketing && optedOut(marketing) ? 'opted-out' : 'free', exists: Boolean(profile) };
   } catch (err) {
-    console.error('[subscribe-newsletter] Klaviyo profil (kontrola odhlásenia):', err instanceof Error ? err.message : err);
-    return 'unknown';
+    console.error('[subscribe-newsletter] Klaviyo (kontrola pred odberom):', err instanceof Error ? err.message : err);
+    return { state: 'unknown', exists: false };
   }
 }
 
@@ -171,7 +147,7 @@ function retryDelayMs(res: Response | null): number {
   return Number.isFinite(seconds) && seconds > 0 ? Math.min(seconds * 1000, 3000) : 800;
 }
 
-/** Meno a zdroj do profilu. Odber ich nenesie, preto zvlášť. Nehádže, odber nezastaví. */
+/** Meno a zdroj do nového profilu. Odber ich nenesie, preto zvlášť. Nehádže, odber nezastaví. */
 async function upsertKlaviyoProfile(email: string, name: string | undefined, source: string): Promise<void> {
   const [firstName, ...rest] = (name ?? '').split(/\s+/).filter(Boolean);
   try {
@@ -197,11 +173,12 @@ async function upsertKlaviyoProfile(email: string, name: string | undefined, sou
  * Nikdy nehádže: zlyhanie Klaviya nesmie zhodiť odber na webe.
  */
 async function subscribeInKlaviyo(email: string, name: string | undefined, source: string): Promise<KlaviyoResult> {
-  if (!KLAVIYO_LIST_ID || !KLAVIYO_API_KEY) return 'off';
-  const optOut = await klaviyoOptOutState(email);
-  if (optOut === 'opted-out') return 'blocked';
-  if (optOut === 'unknown') return 'unknown';
-  inBackground(upsertKlaviyoProfile(email, name, source));
+  if (!klaviyoEnabled()) return 'off';
+  const { state, exists } = await klaviyoState(email);
+  if (state === 'opted-out') return 'blocked';
+  if (state === 'unknown') return 'unknown';
+  if (state === 'subscribed') return 'ok';
+  if (!exists) inBackground(upsertKlaviyoProfile(email, name, source));
   const payload = {
     data: {
       type: 'profile-subscription-bulk-create-job',
@@ -373,7 +350,7 @@ serve(async (req) => {
       // 1b. Row already exists. Re-fetch and decide.
       const { data: existing, error: lookupError } = await supabase
         .from('newsletter_subscribers')
-        .select('id, is_active')
+        .select('id, is_active, subscribed_at')
         .eq('email', email)
         .single();
 
@@ -387,10 +364,14 @@ serve(async (req) => {
 
       if (existing.is_active) {
         // Already active — idempotent success, no welcome email re-send.
-        // Do Klaviya ho pošleme aj tak: kto sa odhlásil odkazom v e-maile a znova
-        // sa prihlási na webe, má odber obnovený. Kto je v zozname, flow znova nedostane.
-        const again = await subscribeInKlaviyo(email, name, source);
-        if (again === 'rejected' || again === 'unknown' || again === 'blocked') inBackground(alertKlaviyoFailure(email, source, again));
+        // Do Klaviya ho pošleme aj tak, ak predošlý odber neprešiel (kto v zozname je,
+        // novú úlohu nedostane, kto sa v Klaviyu odhlásil, toho neprihlásime). Opakované
+        // odoslanie do 30 minút (dvojklik, dve karty) už rieši prvá požiadavka.
+        const subscribedAt = Date.parse(existing.subscribed_at ?? '');
+        if (!(Date.now() - subscribedAt < RESUBMIT_WINDOW_MS)) {
+          const again = await subscribeInKlaviyo(email, name, source);
+          if (again === 'rejected' || again === 'unknown' || again === 'blocked') inBackground(alertKlaviyoFailure(email, source, again));
+        }
         return new Response(
           JSON.stringify({ success: true, alreadySubscribed: true }),
           { status: 200, headers: corsHeaders },
