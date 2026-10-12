@@ -42,7 +42,7 @@ for f in sorted(os.listdir(SRC)):
     if not f.endswith('.html'): continue
     raw=open(os.path.join(SRC,f),encoding='utf-8').read()
     meta=dict(re.findall(r'^\s{2}([A-ZÁ-Ž]+):\s+(.+)$', raw.split('-->',1)[0], re.M))
-    pre=re.search(r'<!-- Preheader -->\s*<div[^>]*>\s*(.*?)\s*&nbsp;', raw, re.S)
+    pre=re.search(r'<!-- Preheader -->\s*<div[^>]*>\s*(.*?)\s*(?:&#847;|&zwnj;|&nbsp;)', raw, re.S)
     body=re.sub(r'<!--\[if mso\]>.*?<!\[endif\]-->','',raw,flags=re.S)
     p=Blocks(); p.feed(body)
     title=re.search(r'<title>(.*?)</title>', raw).group(1)
