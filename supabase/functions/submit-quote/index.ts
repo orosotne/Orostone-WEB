@@ -199,16 +199,20 @@ serve(async (req) => {
       );
     }
 
-    // 3. Trigger email notification (fire-and-forget; don't block on failure)
-    fetch(`${SUPABASE_URL}/functions/v1/send-quote-notification`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
-        apikey: SUPABASE_SERVICE_KEY,
-      },
-      body: JSON.stringify({ quote_id: quote.id }),
-    }).catch((err) => console.warn('[submit-quote] Notification dispatch failed:', err));
+    // 3. Trigger email notification in the background (don't block on failure). Without
+    //    waitUntil the runtime may shut an idle worker down right after the response
+    //    (EarlyDrop) and the request to send-quote-notification would be lost.
+    inBackground(
+      fetch(`${SUPABASE_URL}/functions/v1/send-quote-notification`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
+          apikey: SUPABASE_SERVICE_KEY,
+        },
+        body: JSON.stringify({ quote_id: quote.id }),
+      }).catch((err) => console.warn('[submit-quote] Notification dispatch failed:', err)),
+    );
 
     // 4. Newsletter box on the sample form. The visitor's Turnstile token is single-use and
     //    was spent above, so subscribe here: subscribe-newsletter trusts the service-role key
