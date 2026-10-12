@@ -51,7 +51,7 @@ Termín výroby skriniek si overte vo svojom kuchynskom štúdiu. Dosku potom na
 
 ### Tlačidlo (CTA)
 Objednať vzorku
-Prvá vzorka je zadarmo. S kódom VITAJTE neplatíte ani poštovné, kód platí na jednu objednávku.
+Prvá vzorka je zadarmo. S kódom VITAJTE neplatíte ani poštovné. Môžete ho použiť na jednu objednávku.
 Prečítať celý postup
 
 ### P. S.

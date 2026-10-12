@@ -64,7 +64,7 @@ Bez živíc a bez pórov nemá škvrna kam vniknúť a teplo nemá čo roztaviť
 
 ### Tlačidlo (CTA)
 Objednať vzorku
-Prvá vzorka je zadarmo. S kódom VITAJTE neplatíte ani poštovné, kód platí na jednu objednávku.
+Prvá vzorka je zadarmo. S kódom VITAJTE neplatíte ani poštovné. Môžete ho použiť na jednu objednávku.
 Prečítať viac o sinterovanom kameni
 
 ### P. S.

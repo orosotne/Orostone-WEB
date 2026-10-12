@@ -60,7 +60,7 @@ Výrazná kresba potrebuje pokojné okolie. Tu ho tvorí tmavé drevo s jednoduc
 
 ### Tlačidlo (CTA)
 Objednať vzorku
-Prvá vzorka je zadarmo. S kódom VITAJTE neplatíte ani poštovné, kód platí na jednu objednávku.
+Prvá vzorka je zadarmo. S kódom VITAJTE neplatíte ani poštovné. Môžete ho použiť na jednu objednávku.
 Pozrieť ďalšie realizácie
 
 ### P. S.
