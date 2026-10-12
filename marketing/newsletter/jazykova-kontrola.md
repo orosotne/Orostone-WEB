@@ -259,4 +259,8 @@ Rovnaké znenie ako v č. 1–3 má schválený e-mail 01 a sloveso *fungovať* 
 
 Codex na `62a5375` nenašiel žiadne pripomienky. E-mail 35 je jazykovo skontrolovaný vrátane opráv z kola 17.
 
+## Kolo 19 – Codex review v PR #123 (12. 10. 2026, README a funkcia subscribe-newsletter)
+
+Codex na `4855b4f` nenašiel v textoch žiadne pripomienky, ani v novej časti README „Komu posielame“. Mal jednu pripomienku ku kódu `subscribe-newsletter`: vyradenie zo zoznamu Dopyty nečaká na potvrdenie odberu vlastníkom e-mailu. Martin 12. 10. 2026 rozhodol ponechať jednoduché potvrdenie odberu (single opt-in), kód sa nemení.
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
