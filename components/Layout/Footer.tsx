@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Youtube, CheckCircle, Loader2 } from 'lucide-react';
+import { Turnstile } from '@marsidev/react-turnstile';
 import { useCookies } from '../../context/CookieContext';
+import { useBackgroundTurnstile } from '../../hooks/useBackgroundTurnstile';
 import { Container, useDrawIn, IconWarranty, IconSecurePay, IconDispatch, IconDelivery } from '../Design';
-import { useLazyTurnstile } from '../../hooks/useLazyTurnstile';
 // Dynamic import — keeps supabase out of the initial bundle
 const loadNewsletter = () => import('../../services/newsletter.service');
 
@@ -34,28 +35,22 @@ const NewsletterWidget: React.FC = () => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [msg, setMsg] = useState('');
-  // Anti-bot check verified by subscribe-newsletter; loads on the first touch of the form.
-  const turnstile = useLazyTurnstile('dark');
+  const turnstile = useBackgroundTurnstile();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) return;
     setStatus('loading');
-    try {
-      const turnstileToken = await turnstile.getToken();
-      const { subscribeToNewsletter } = await loadNewsletter();
-      const result = await subscribeToNewsletter({ email, source: 'footer', turnstileToken });
-      if (result.success) {
-        setStatus('success');
-        setMsg(result.alreadySubscribed ? 'Tento e-mail je už prihlásený.' : 'Ďakujeme za prihlásenie!');
-        return;
-      }
-    } catch {
-      // Turnstile did not load or solve in time: same message as a failed subscription.
+    const [{ subscribeToNewsletter }, turnstileToken] = await Promise.all([loadNewsletter(), turnstile.getToken()]);
+    const result = await subscribeToNewsletter({ email, source: 'footer', turnstileToken });
+    if (result.success) {
+      setStatus('success');
+      setMsg(result.alreadySubscribed ? 'Tento e-mail je už prihlásený.' : 'Ďakujeme za prihlásenie!');
+    } else {
+      turnstile.reset();
+      setStatus('error');
+      setMsg('Niečo sa nepodarilo. Skúste to znova.');
     }
-    turnstile.reset(); // the token is single-use, a retry needs a fresh one
-    setStatus('error');
-    setMsg('Niečo sa nepodarilo. Skúste to znova.');
   };
 
   if (status === 'success') {
@@ -68,7 +63,19 @@ const NewsletterWidget: React.FC = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} onFocusCapture={turnstile.arm} onPointerDownCapture={turnstile.arm} className="grid gap-2">
+    <form onSubmit={handleSubmit} className="relative grid gap-2">
+      {/* Bot check: visible only when Cloudflare asks for a click, then above the field (the phone keyboard
+          covers what is below) and out of the flow, so nothing moves; first in the DOM, so it is also first
+          in the tab order. contain:layout keeps Cloudflare's hidden 1 px iframe (position: fixed) in this
+          box, so its appearance is not a layout shift. */}
+      {turnstile.armed && (
+        <Turnstile
+          {...turnstile.widgetProps}
+          id="footer-newsletter-turnstile"
+          className="absolute bottom-[calc(100%_+_0.5rem)] left-0 z-10 [contain:layout]"
+          options={{ appearance: 'interaction-only', theme: 'dark', language: 'sk' }}
+        />
+      )}
       <div className="flex flex-col gap-2 sm:flex-row">
         <label htmlFor="footer-newsletter" className="sr-only">Váš e-mail</label>
         <input
@@ -77,6 +84,7 @@ const NewsletterWidget: React.FC = () => {
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          onFocus={turnstile.arm}
           placeholder="vas@email.sk"
           className="min-h-[46px] flex-1 rounded-[10px] border border-brand-light/20 bg-brand-light/5 px-4 text-sm text-brand-light placeholder:text-brand-light/60 transition-colors focus:border-brand-gold focus:outline-none"
         />
@@ -88,7 +96,6 @@ const NewsletterWidget: React.FC = () => {
           {status === 'loading' ? <Loader2 size={16} className="animate-spin" /> : 'Odoberať'}
         </button>
       </div>
-      {turnstile.widget}
       {status === 'error' && <p className="text-xs text-red-300">{msg}</p>}
       <p className="text-[0.78rem] leading-relaxed text-brand-light/50">
         Prihlásením súhlasíte so zasielaním noviniek. Odhlásiť sa môžete kedykoľvek.{' '}

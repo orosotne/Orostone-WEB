@@ -27,8 +27,9 @@ export interface NewsletterSubscribeData {
   email: string;
   name?: string;
   source: string;
-  /** Cloudflare Turnstile token (single-use), verified server-side before anything is stored. */
-  turnstileToken: string;
+  // Cloudflare Turnstile token — verified SERVER-SIDE in subscribe-newsletter when
+  // TURNSTILE_ENFORCE=true. Null when the challenge did not finish; the server decides.
+  turnstileToken?: string | null;
 }
 
 export interface NewsletterSubscribeResult {

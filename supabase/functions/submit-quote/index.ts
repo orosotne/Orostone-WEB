@@ -12,7 +12,9 @@
 //   services/quotes.service.ts → findOrCreateCustomer()  (now server-side only)
 //
 // REQUEST: POST { email, name, phone?, city?, project_type, item_needed?,
-//                 dimensions?, decor? }
+//                 dimensions?, decor?, turnstileToken?, newsletter? }
+//   newsletter: true (newsletter box on the sample form) → after the lead is saved,
+//   subscribe-newsletter is called with the service-role key, source `sample_lead`.
 // RESPONSE: 200 { success: true, quote_id: string, customer_id: string }
 //           4xx { success: false, error: string }
 //
@@ -57,6 +59,7 @@ interface SubmitQuoteBody {
   item_needed?: string;
   dimensions?: string;
   decor?: string;
+  newsletter: boolean;
 }
 
 function validate(body: unknown): { ok: true; data: SubmitQuoteBody } | { ok: false; error: string } {
@@ -85,8 +88,16 @@ function validate(body: unknown): { ok: true; data: SubmitQuoteBody } | { ok: fa
       dimensions:
         typeof b.dimensions === 'string' && b.dimensions.trim() ? b.dimensions.trim() : undefined,
       decor: typeof b.decor === 'string' && b.decor.trim() ? b.decor.trim() : undefined,
+      newsletter: b.newsletter === true,
     },
   };
+}
+
+/** Keeps the worker alive after the response until the task settles (Supabase Edge Runtime: waitUntil). */
+function inBackground(task: Promise<unknown>): void {
+  const runtime = (globalThis as { EdgeRuntime?: { waitUntil(p: Promise<unknown>): void } }).EdgeRuntime;
+  if (runtime?.waitUntil) runtime.waitUntil(task);
+  else task.catch(() => {});
 }
 
 serve(async (req) => {
@@ -131,7 +142,7 @@ serve(async (req) => {
       });
     }
 
-    const { email, name, phone, city, project_type, item_needed, dimensions, decor } =
+    const { email, name, phone, city, project_type, item_needed, dimensions, decor, newsletter } =
       validated.data;
 
     const SUPABASE_URL = Deno.env.get('SUPABASE_URL')!;
@@ -198,6 +209,27 @@ serve(async (req) => {
       },
       body: JSON.stringify({ quote_id: quote.id }),
     }).catch((err) => console.warn('[submit-quote] Notification dispatch failed:', err));
+
+    // 4. Newsletter box on the sample form. The visitor's Turnstile token is single-use and
+    //    was spent above, so subscribe here: subscribe-newsletter trusts the service-role key
+    //    instead of asking for a second challenge. In the background, the lead is already saved.
+    if (newsletter) {
+      inBackground(
+        fetch(`${SUPABASE_URL}/functions/v1/subscribe-newsletter`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
+            apikey: SUPABASE_SERVICE_KEY,
+          },
+          body: JSON.stringify({ email, name, source: 'sample_lead' }),
+        })
+          .then(async (res) => {
+            if (!res.ok) console.warn('[submit-quote] Newsletter subscribe failed:', res.status, (await res.text()).slice(0, 200));
+          })
+          .catch((err) => console.warn('[submit-quote] Newsletter subscribe dispatch failed:', err)),
+      );
+    }
 
     return new Response(
       JSON.stringify({ success: true, quote_id: quote.id, customer_id: customer.id }),
