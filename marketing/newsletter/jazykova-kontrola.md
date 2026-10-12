@@ -243,4 +243,16 @@ Codex na `3f1fe9a` nenašiel žiadne pripomienky. E-mail 34 je jazykovo skontrol
 
 Doplnené 9. 10. 2026 po rozhodnutí Martina, bez zmeny textu: zástupný text `[odkaz na prihlásenie]` nahradil odkaz `orostone.sk` na formulár v pätičke webu a v podpise je priame číslo Mariána +421 911 891 875, rovnaké ako v ostatných e-mailoch z CRM.
 
+## Kolo 17 – Codex review v PR #123 (12. 10. 2026, e-mail 35)
+
+Nový obsah: jednorazová kampaň **35 – Odteraz vám budeme písať dvakrát do mesiaca** pre ľudí, ktorí sa na webe prihlásili pred spustením uvítacej série.
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 35 | [preheader] …a poradíme, ako vybrať dosku. Výpredaje neposielame. | [preheader] …a poradíme, ako vybrať dosku. | slovník | *Výpredaj* je medzi výrazmi, ktoré nepoužívame (sekcia 4). Navrhnuté *Zľavy neposielame* by odporovalo ponuke v tom istom e-maile (vzorka bez poštovného s kódom VITAJTE), preto veta vypadla. | zapracované s úpravou |
+| 2 | 35 | Výpredaje v ňom nenájdete. Nájdete v ňom to, čo pomáha rozhodnúť sa rozumne. | Nájdete v ňom to, čo pomáha rozhodnúť sa rozumne. | slovník | Zakázané *výpredaje* a tesné opakovanie *nájdete v ňom*. Navrhnuté *Namiesto zliav…* by z rovnakého dôvodu ako č. 1 odporovalo ponuke. | zapracované s úpravou |
+| 3 | 35 | kombinácie so skrinkami a miesta, kde funguje najlepšie | kombinácie so skrinkami a priestory, do ktorých sa hodí najlepšie | kalk | *Dekor funguje na mieste* je kalk, prirodzená väzba je *hodí sa do priestoru* (porovnaj *fungovať k niečomu* v sekcii 8 slovníka). | zapracované |
+
+Rovnaké znenie ako v č. 1–3 má schválený e-mail 01 a sloveso *fungovať* pri dekore majú aj 04, 29 a 32 („Kde funguje“). Či ich zjednotiť, rozhodne Martin.
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.

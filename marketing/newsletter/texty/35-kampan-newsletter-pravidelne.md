@@ -4,7 +4,7 @@
 - **Kedy sa posiela:** Raz, ručne v októbri 2026, pred prvou októbrovou kampaňou (03)
 - **Komu:** Zoznam Newsletter – web: ľudia, ktorí sa na webe prihlásili pred spustením uvítacej série (apríl – október 2026)
 - **Predmet:** Odteraz vám budeme písať dvakrát do mesiaca
-- **Preheader:** 🪨 Ukážeme vám hotové kuchyne aj dekory zblízka a poradíme, ako vybrať dosku. Výpredaje neposielame.
+- **Preheader:** 🪨 Ukážeme vám hotové kuchyne aj dekory zblízka a poradíme, ako vybrať dosku.
 - **Šablóna:** `sablony/35-kampan-newsletter-pravidelne.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí
@@ -25,7 +25,7 @@ Preto vám budeme posielať len to, čo pri tom rozhodnutí naozaj pomôže.
 ### Text
 Dobrý deň,
 pred časom ste sa na orostone.sk prihlásili na odber noviniek. Odteraz vám ich budeme posielať pravidelne, približne dvakrát do mesiaca.
-Orostone je sinterovaný kameň pre kuchyne a interiéry – pracovné dosky, ostrovčeky a zásteny. Newsletter píšeme pre ľudí, ktorí dosku práve vyberajú alebo ju budú vyberať o pár mesiacov. Výpredaje v ňom nenájdete. Nájdete v ňom to, čo pomáha rozhodnúť sa rozumne.
+Orostone je sinterovaný kameň pre kuchyne a interiéry – pracovné dosky, ostrovčeky a zásteny. Newsletter píšeme pre ľudí, ktorí dosku práve vyberajú alebo ju budú vyberať o pár mesiacov. Nájdete v ňom to, čo pomáha rozhodnúť sa rozumne.
 
 ### Nadpis sekcie
 Čo vám budeme posielať
@@ -36,7 +36,7 @@ Realizácie
 Skutočné kuchyne: zadanie, zvolený dekor a výsledok vo veľkej ploche.
 02
 Dekory v detaile
-Jeden dekor bez prikrášľovania – kresba, kombinácie so skrinkami a miesta, kde funguje najlepšie.
+Jeden dekor bez prikrášľovania – kresba, kombinácie so skrinkami a priestory, do ktorých sa hodí najlepšie.
 03
 Sprievodcovia
 Hrúbka, hrany, údržba aj cena. Vecne a bez technického žargónu.
