@@ -95,8 +95,15 @@ CSS = """
 # Kostra
 # ---------------------------------------------------------------------------
 
+# Preheader začína emoji kameňa (rozhodnutie Martina z 12. 10. 2026), v schránke je hneď za predmetom.
+# Predmet je bez emoji. Osobné listy Mariána (plain) ho nemajú, majú vyzerať ako bežný e-mail.
+PRE_EMOJI = "🪨"
+
+
 def doc(meta, title, preheader, rows):
     """meta: dict s PREDMET/PREHEADER/TYP/... — zapíše sa ako komentár na začiatok."""
+    preheader = f"{PRE_EMOJI} {preheader}"
+    meta = {k: (f"{PRE_EMOJI} {v}" if k == "PREHEADER:" else v) for k, v in meta.items()}
     meta_lines = "\n".join(f"  {k:<10} {v}" for k, v in meta.items())
     pre_pad = "&nbsp;&zwnj;" * 40
     return f"""<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

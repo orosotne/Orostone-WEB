@@ -4,7 +4,7 @@
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
 - **Komu:** Všetci odberatelia; mimo zákazníkov po realizácii
 - **Predmet:** Biela doska v ružovej kuchyni
-- **Preheader:** V realizácii mesiaca ukážeme, ako biela doska upokojí výrazné ružové fronty.
+- **Preheader:** 🪨 V realizácii mesiaca ukážeme, ako biela doska upokojí výrazné ružové fronty.
 - **Šablóna:** `sablony/30-kampan-realizacia-februar.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

@@ -4,7 +4,7 @@
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
 - **Komu:** Všetci odberatelia a zákazníci
 - **Predmet:** Ďakujeme za rok 2026
-- **Preheader:** Posielame otváracie hodiny cez sviatky a jednu radu, ak plánujete kuchyňu na jar.
+- **Preheader:** 🪨 Posielame otváracie hodiny cez sviatky a jednu radu, ak plánujete kuchyňu na jar.
 - **Šablóna:** `sablony/21-kampan-december-podakovanie.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

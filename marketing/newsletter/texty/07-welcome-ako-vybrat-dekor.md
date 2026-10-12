@@ -3,7 +3,7 @@
 - **Typ:** Automatizácia · Welcome séria 3/4
 - **Kedy sa posiela:** 5 dní po prihlásení (3 dni po e-maile 2/4)
 - **Predmet:** Tri otázky pred výberom dekoru
-- **Preheader:** Týkajú sa svetla, skriniek a veľkosti plochy. Na konci sa vás opýtame, kedy plánujete novú kuchyňu.
+- **Preheader:** 🪨 Týkajú sa svetla, skriniek a veľkosti plochy. Na konci sa vás opýtame, kedy plánujete novú kuchyňu.
 - **Šablóna:** `sablony/07-welcome-ako-vybrat-dekor.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

@@ -3,7 +3,7 @@
 - **Typ:** Automatizácia · Reaktivácia 2/3
 - **Kedy sa posiela:** 120 dní bez otvorenia a kliknutia
 - **Predmet:** Tri realizácie, na ktoré sme hrdí
-- **Preheader:** Ukážeme kamenný krb, teplý travertín na tmavom ostrovčeku a svetlú dosku pri dreve.
+- **Preheader:** 🪨 Ukážeme kamenný krb, teplý travertín na tmavom ostrovčeku a svetlú dosku pri dreve.
 - **Šablóna:** `sablony/23-automatizacia-reaktivacia-realizacie.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

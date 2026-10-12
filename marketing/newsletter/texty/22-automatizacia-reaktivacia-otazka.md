@@ -3,7 +3,7 @@
 - **Typ:** Automatizácia · Reaktivácia 1/3
 - **Kedy sa posiela:** 90 dní bez otvorenia a kliknutia
 - **Predmet:** Riešite ešte kuchyňu?
-- **Preheader:** Jedným kliknutím nám dáte vedieť, v akej fáze ste, a budeme písať len to, čo sa vám hodí.
+- **Preheader:** 🪨 Jedným kliknutím nám dáte vedieť, v akej fáze ste, a budeme písať len to, čo sa vám hodí.
 - **Šablóna:** `sablony/22-automatizacia-reaktivacia-otazka.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

@@ -3,7 +3,7 @@
 - **Typ:** Automatizácia · Reaktivácia 3/3
 - **Kedy sa posiela:** 180 dní bez otvorenia a kliknutia
 - **Predmet:** Máme vám ešte písať?
-- **Preheader:** Ak chcete e-maily od nás dostávať ďalej, stačí jedno kliknutie.
+- **Preheader:** 🪨 Ak chcete e-maily od nás dostávať ďalej, stačí jedno kliknutie.
 - **Šablóna:** `sablony/24-automatizacia-reaktivacia-rozlucka.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

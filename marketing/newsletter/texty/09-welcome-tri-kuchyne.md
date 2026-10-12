@@ -3,7 +3,7 @@
 - **Typ:** Automatizácia · Welcome séria 4/4
 - **Kedy sa posiela:** 9 dní po prihlásení (4 dni po e-maile 3/4)
 - **Predmet:** Tri kuchyne, tri rôzne rozhodnutia
-- **Preheader:** Pri jednej rozhodla pokojná plocha, pri druhej tmavý kontrast a pri tretej výrazná kresba.
+- **Preheader:** 🪨 Pri jednej rozhodla pokojná plocha, pri druhej tmavý kontrast a pri tretej výrazná kresba.
 - **Šablóna:** `sablony/09-welcome-tri-kuchyne.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

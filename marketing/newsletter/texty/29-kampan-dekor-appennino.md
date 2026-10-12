@@ -3,7 +3,7 @@
 - **Typ:** Kampaň · séria Dekor v detaile (1× mesačne, strieda sa s Realizáciou)
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
 - **Predmet:** Appennino: svetlá plocha s jemnou kresbou
-- **Preheader:** Ukážeme, ako dekor vyzerá na celej platni, s čím ho kombinovať a na čo myslieť pri výbere.
+- **Preheader:** 🪨 Ukážeme, ako dekor vyzerá na celej platni, s čím ho kombinovať a na čo myslieť pri výbere.
 - **Šablóna:** `sablony/29-kampan-dekor-appennino.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

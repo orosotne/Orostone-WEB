@@ -3,7 +3,7 @@
 - **Typ:** Automatizácia · B2B 3/3
 - **Kedy sa posiela:** 21 dní po pridaní tagu B2B
 - **Predmet:** Príďte s klientom vybrať konkrétnu platňu
-- **Preheader:** V kaštieli v Bošanoch pripravíme celé platne dekorov, ktoré pre klienta zvažujete.
+- **Preheader:** 🪨 V kaštieli v Bošanoch pripravíme celé platne dekorov, ktoré pre klienta zvažujete.
 - **Šablóna:** `sablony/27-automatizacia-b2b-showroom.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

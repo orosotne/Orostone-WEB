@@ -4,7 +4,7 @@
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
 - **Komu:** Všetci odberatelia; mimo zákazníkov po realizácii
 - **Predmet:** Návrh kuchyne a doska: ako ich zladiť
-- **Preheader:** Ukážeme, čo má štúdio o doske vedieť a kedy nás zapojiť do návrhu.
+- **Preheader:** 🪨 Ukážeme, čo má štúdio o doske vedieť a kedy nás zapojiť do návrhu.
 - **Šablóna:** `sablony/33-kampan-spolupraca-studio.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

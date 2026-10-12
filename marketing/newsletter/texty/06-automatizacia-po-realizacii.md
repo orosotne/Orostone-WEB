@@ -3,7 +3,7 @@
 - **Typ:** Automatizácia · Po realizácii 3/3 (30 dní po montáži)
 - **Kedy sa posiela:** 30 dní po montáži (dátum montáže z CRM)
 - **Predmet:** Ako sa vám žije s novou doskou?
-- **Preheader:** Hodnotenie vám zaberie dve minúty a pomôže ďalším pri výbere. Budeme radi aj za jednu fotku.
+- **Preheader:** 🪨 Hodnotenie vám zaberie dve minúty a pomôže ďalším pri výbere. Budeme radi aj za jednu fotku.
 - **Šablóna:** `sablony/06-automatizacia-po-realizacii.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí
