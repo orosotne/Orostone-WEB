@@ -7,7 +7,7 @@
  */
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
-import { shopifySized } from '../lib/shopifyImage';
+import { shopifySized, shopifyImageUrl, shopifySrcSet } from '../lib/shopifyImage';
 
 // ---------------------------------------------------------------------------
 // Data imports
@@ -118,6 +118,8 @@ interface Page {
   ogType?: string;
   rootContent: string;
   jsonLd?: object[];
+  /** First gallery photo of a product: preloaded so the LCP image does not wait for the JS bundle */
+  heroImage?: string;
 }
 
 let count = 0;
@@ -180,6 +182,19 @@ function writePage(page: Page): void {
   // Canonical
   const canonicalTag = `    <link rel="canonical" href="${page.canonical}" />\n`;
   html = html.replace('</head>', `${canonicalTag}</head>`);
+
+  // Product photo preload. Same srcset and sizes as the <img> on the page, so the browser picks the same candidate:
+  // the phone/tablet carousel uses 100vw, the desktop MainPhoto MAIN_PHOTO_SIZES (components/ProductDetail/MainPhoto.tsx).
+  if (page.heroImage) {
+    const srcset = shopifySrcSet(page.heroImage);
+    const href = shopifyImageUrl(page.heroImage, 1200);
+    const preload = (media: string, sizes: string) =>
+      `    <link rel="preload" as="image" fetchpriority="high" href="${href}"${srcset ? ` imagesrcset="${srcset}" imagesizes="${sizes}"` : ''} media="${media}" />\n`;
+    html = html.replace(
+      '</head>',
+      `${preload('(max-width: 1023px)', '100vw')}${preload('(min-width: 1024px)', '(max-width: 768px) 100vw, 58vw')}</head>`,
+    );
+  }
 
   // Page-specific JSON-LD (appended before </head>, site-wide schemas stay)
   if (page.jsonLd?.length) {
@@ -397,6 +412,7 @@ function prerenderProduct(product: any): void {
     canonical,
     ogImage,
     ogType: 'product',
+    heroImage: product.gallery?.[0] || product.image,
     rootContent: `
       <article>
         <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; <a href="/kategoria/sintered-stone">Produkty</a> &rsaquo; ${esc(product.name)}</nav>
