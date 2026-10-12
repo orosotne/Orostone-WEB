@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useShopifyProducts } from '../hooks/useShopifyProducts';
-import { OFFER_VALID_FROM, SHIPPING_DETAILS_LD, RETURN_POLICY_LD } from '../lib/productSchema';
+import { OFFER_VALID_FROM, offerPriceValidUntil, SHIPPING_DETAILS_LD, RETURN_POLICY_LD } from '../lib/productSchema';
 import { calculateSlabPrice } from '../lib/slab';
 import { SEOHead, OROSTONE_ORGANIZATION_LD } from '../components/UI/SEOHead';
 import { HomeHero } from '../components/Home/HomeHero';
@@ -86,6 +86,7 @@ export const Shop = () => {
                     "referenceQuantity": { "@type": "QuantitativeValue", "value": 1, "unitCode": "MTK" }
                   },
                   "validFrom": OFFER_VALID_FROM,
+                  "priceValidUntil": offerPriceValidUntil(),
                   "availability": p.inStock
                     ? "https://schema.org/InStock"
                     : "https://schema.org/PreOrder",
