@@ -100,7 +100,7 @@ Kontakty v Klaviyu sme 12. 10. 2026 na žiadosť Martina upratali do dvoch oddel
 | Skupina | Zoznam v Klaviyu | Kto v nej je | Čo dostáva |
 |---|---|---|---|
 | Odberatelia newslettera | Newsletter – web (`VSrLFs`) | Prihlásili sa na odber na webe (pätička, pop-up, formulár na vzorku so súhlasom). Nových pridáva web sám. | Uvítaciu sériu 01, 02, 07, 09 (beží od 12. 10. 2026) a kampane |
-| Dopyty | Dopyty – LP1, LP2, e-mail (len k dopytu) (`TKAHuh`) | Napísali nám cez formulár LP1 (aj cez starší formulár TILDA), LP2 alebo priamo e-mailom. V CRM majú otvorený dopyt alebo otvorený obchod a dopyt poslali za posledných 6 mesiacov. Vlastnosť profilu `zdroj_dopytu` je LP1, LP2 alebo E-mail. K 12. 10. 2026 ich je 446, nové dopyty sa do zoznamu samy nepridávajú. Kto sa na webe prihlási na odber, toho web z tohto zoznamu sám vyradí. | Len e-maily k ich dopytu, napríklad 12–14 a 34. Súhlas s newsletterom nedali, preto im neposielame kampane ani uvítaciu sériu. |
+| Dopyty | Dopyty – LP1, LP2, e-mail (len k dopytu) (`TKAHuh`) | Napísali nám cez formulár LP1 (aj cez starší formulár TILDA), LP2 alebo priamo e-mailom. V CRM majú otvorený dopyt alebo otvorený obchod a dopyt poslali za posledných 6 mesiacov. Vlastnosť profilu `zdroj_dopytu` je LP1, LP2 alebo E-mail. Po upratovaní 12. 10. 2026 ich je 373, nové dopyty sa do zoznamu samy nepridávajú. Kto sa na webe prihlási na odber, toho web z tohto zoznamu sám vyradí. | Len e-maily k ich dopytu, napríklad 12–14 a 34. Súhlas s newsletterom nedali, preto im neposielame kampane ani uvítaciu sériu. |
 
 Pravidlá kampaní (rozhodnutia Martina z 12. 10. 2026):
 
@@ -113,6 +113,7 @@ Pravidlá kampaní (rozhodnutia Martina z 12. 10. 2026):
 - 13 ľudí, ktorí sa odhlásili alebo majú nedoručiteľnú adresu, ostalo v Klaviyu potlačených, aby im nič neodišlo. Firemné adresy info@ a marian.brazdil@ ostali. Ostatné staré kontakty (importy z Meta Ads, monday.com, LEADS_2026 a ďalšie) sú zmazané aj so starými zoznamami.
 - 5 adries z CRM má preklep (napríklad „gmail.comd“), preto do Klaviya nešli. Treba ich opraviť v CRM.
 - Z 515 dopytov sme 12. 10. 2026 zmazali 69 najstarších (dopyt od 12. 4. do 13. 5. 2026), ktorí nám nikdy neodpísali (v CRM nemajú žiadnu prichádzajúcu správu), aby sme ostali v limite 500 aktívnych kontaktov v Klaviyu.
+- 12. 10. 2026 večer sme na rozhodnutie Martina zmazali z Klaviya ďalších 73 dopytov, ktoré nám v CRM nikdy neodpísali (žiadna prichádzajúca správa pri dopyte ani obchode). V CRM ostávajú a e-mail 34 im môže ísť ďalej. Pravidlo „mazať dopyty s uzavretým alebo prehratým obchodom“ k 12. 10. neuvoľnilo nič, všetkých 446 malo otvorený dopyt alebo obchod. Odberateľov sa mazanie netýkalo.
 
 ## Zástupné texty
 
