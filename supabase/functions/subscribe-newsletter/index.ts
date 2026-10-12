@@ -7,7 +7,7 @@
 // Replaces:
 //   services/newsletter.service.ts → subscribeToNewsletter()
 //
-// REQUEST: POST { email: string; name?: string; source: string; turnstileToken: string }
+// REQUEST: POST { email: string; name?: string; source: string; turnstileToken?: string }
 // RESPONSE: 200 { success: true; alreadySubscribed?: boolean }
 //           4xx { success: false; error: string }   (403 = overenie Turnstile neprešlo)
 //
@@ -16,14 +16,17 @@
 //   Najprv migrácie 20261011_newsletter_klaviyo_attempt.sql a
 //   20261012_newsletter_subscribe_function.sql: odber sa zapisuje cez funkciu
 //   newsletter_subscribe. A až po nasadení webu, ktorý posiela turnstileToken
-//   (pätička, formulár na vzorku): starý web token neposiela a dostal by 403.
+//   (pätička, pop-up): starý web token neposiela a pri TURNSTILE_ENFORCE=true by dostal 403.
 //
 // OCHRANA PROTI ROBOTOM (od 12. 10. 2026): Cloudflare Turnstile, ten istý kľúč ako formulár
-//   na vzorku (_shared/turnstile.ts, secret CLOUDFLARE_TURNSTILE_SECRET). Token overíme po
-//   kontrole údajov a pred zápisom: bez platného tokenu odpovieme 403 a nič sa nezapíše,
-//   neodošle ani nespotrebuje strop. Token je jednorazový, takže každé odoslanie vrátane
-//   opakovaného pre už prihlásenú adresu potrebuje nové overenie a skript nemôže formulár
-//   volať dookola. Pri výpadku Cloudflaru odber neprejde (radšej ako bez ochrany).
+//   na vzorku (_shared/turnstile.ts, secret CLOUDFLARE_TURNSTILE_SECRET), pri
+//   TURNSTILE_ENFORCE=true (rovnaký prepínač ako submit-quote, platí pre celý projekt). Token
+//   overíme po kontrole údajov a pred zápisom: bez platného tokenu odpovieme 403 a nič sa
+//   nezapíše, neodošle ani nespotrebuje strop. Token je jednorazový, takže každé odoslanie
+//   vrátane opakovaného pre už prihlásenú adresu potrebuje nové overenie a skript nemôže
+//   formulár volať dookola. Pri výpadku Cloudflaru odber neprejde (radšej ako bez ochrany).
+//   Bez overenia prejde len volanie so service-role kľúčom: posiela ho submit-quote za
+//   políčko newslettera vo formulári na vzorku, kde je jednorazový token už minutý.
 //
 // KLAVIYO (od 10. 10. 2026), serverové API podľa odporúčania Klaviya:
 //   KLAVIYO_NEWSLETTER_LIST_ID  ID zoznamu „Newsletter – web“ (nie je tajné).
@@ -454,18 +457,25 @@ serve(async (req) => {
 
     const { email, name, source } = validated.data;
 
-    // 0. Ochrana proti robotom (Turnstile) pred akýmkoľvek zápisom alebo e-mailom.
-    const turnstile = await verifyTurnstile((json as Record<string, unknown>).turnstileToken, clientIp(req));
-    if (!turnstile.success) {
-      console.warn('[subscribe-newsletter] turnstile rejected', { codes: turnstile.errorCodes });
-      return new Response(JSON.stringify({ success: false, error: TURNSTILE_ERROR }), {
-        status: 403,
-        headers: corsHeaders,
-      });
-    }
-
     const SUPABASE_URL = Deno.env.get('SUPABASE_URL')!;
     const SUPABASE_SERVICE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+
+    // 0. Ochrana proti robotom (Turnstile) pred akýmkoľvek zápisom alebo e-mailom, pri
+    //    TURNSTILE_ENFORCE=true (rovnaký prepínač ako submit-quote). Service-role kľúč posiela
+    //    len submit-quote za políčko newslettera vo formulári na vzorku: jednorazový token
+    //    z formulára overil on, druhý by musel návštevník získať znova.
+    const fromServer = Boolean(SUPABASE_SERVICE_KEY) && req.headers.get('authorization') === `Bearer ${SUPABASE_SERVICE_KEY}`;
+    if (Deno.env.get('TURNSTILE_ENFORCE') === 'true' && !fromServer) {
+      const turnstile = await verifyTurnstile((json as Record<string, unknown>).turnstileToken, clientIp(req));
+      if (!turnstile.success) {
+        console.warn('[subscribe-newsletter] turnstile rejected', { codes: turnstile.errorCodes });
+        return new Response(JSON.stringify({ success: false, error: TURNSTILE_ERROR }), {
+          status: 403,
+          headers: corsHeaders,
+        });
+      }
+    }
+
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY, {
       auth: { persistSession: false },
     });

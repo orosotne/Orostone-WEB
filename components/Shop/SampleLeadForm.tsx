@@ -5,7 +5,6 @@ import { useShopifyProducts } from '../../hooks/useShopifyProducts';
 import { submitSampleLead } from '../../services/quotes.service';
 import { trackMetaEvent } from '../../hooks/useMetaPixel';
 import { trackGA4Event } from '../../services/analytics';
-import { subscribeToNewsletter } from '../../services/newsletter.service';
 import { useHoneypot } from '../../hooks/useHoneypot';
 import { useTurnstile } from '../../hooks/useTurnstile';
 import { Turnstile } from '@marsidev/react-turnstile';
@@ -37,7 +36,7 @@ export const SampleLeadForm: React.FC<SampleLeadFormProps> = ({ preselectedDekor
     if (preselectedDekor) setDekorValue(preselectedDekor);
   }, [preselectedDekor]);
   const { honeypotValue, setHoneypotValue, isBot } = useHoneypot();
-  const { turnstileRef, turnstileToken, setTurnstileToken, reset: resetTurnstile, nextToken } = useTurnstile();
+  const { turnstileRef, turnstileToken, setTurnstileToken, reset: resetTurnstile } = useTurnstile();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -61,12 +60,14 @@ export const SampleLeadForm: React.FC<SampleLeadFormProps> = ({ preselectedDekor
     }
 
     // Turnstile is verified SERVER-SIDE in submit-quote (finding f02); the token is
-    // single-use, so it is forwarded, not redeemed here.
+    // single-use, so it is forwarded, not redeemed here. For the same reason submit-quote
+    // also subscribes to the newsletter when the box is ticked.
     const result = await submitSampleLead({
       name,
       email,
       phone: phone || undefined,
       dekor,
+      newsletter: newsletterConsent,
     }, turnstileToken);
 
     if (result.success) {
@@ -80,15 +81,6 @@ export const SampleLeadForm: React.FC<SampleLeadFormProps> = ({ preselectedDekor
         lead_source: 'sample_request',
         item_name: dekor,
       });
-      if (newsletterConsent) {
-        // The lead spent the Turnstile token; subscribe-newsletter verifies its own. The
-        // newsletter is optional, so a failure here never undoes the sample request.
-        try {
-          await subscribeToNewsletter({ email, name, source: 'sample_lead', turnstileToken: await nextToken() });
-        } catch {
-          /* no fresh token in time: the lead is in, the newsletter stays off */
-        }
-      }
       setStatus('success');
     } else {
       // Token is single-use — reset the widget so a retry gets a fresh one.

@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
 import { X, Loader2, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Turnstile } from '@marsidev/react-turnstile';
 import { subscribeToNewsletter } from '../../services/newsletter.service';
 import { trackGA4Event } from '../../services/analytics';
-import { useLazyTurnstile } from '../../hooks/useLazyTurnstile';
+import { useBackgroundTurnstile } from '../../hooks/useBackgroundTurnstile';
 
 const LS_KEY = 'orostone-newsletter-popup';
 const DELAY_MS = 8000;
@@ -22,8 +23,7 @@ export const NewsletterPopup: React.FC = () => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
-  // Anti-bot check verified by subscribe-newsletter; loads on the first touch of the form.
-  const turnstile = useLazyTurnstile('light');
+  const turnstile = useBackgroundTurnstile();
 
   useEffect(() => {
     if (getPopupState()) return;
@@ -42,22 +42,17 @@ export const NewsletterPopup: React.FC = () => {
     if (!email.trim()) return;
     setStatus('loading');
 
-    let error = 'Niečo sa nepodarilo. Skúste to znova.';
-    try {
-      const result = await subscribeToNewsletter({ email, source: 'popup', turnstileToken: await turnstile.getToken() });
-      if (result.success) {
-        trackGA4Event('sign_up', { method: 'newsletter_popup' });
-        setStatus('success');
-        setPopupState('done');
-        return;
-      }
-      if (result.error) error = result.error;
-    } catch {
-      // Turnstile did not load or solve in time
+    const result = await subscribeToNewsletter({ email, source: 'popup', turnstileToken: await turnstile.getToken() });
+
+    if (result.success) {
+      trackGA4Event('sign_up', { method: 'newsletter_popup' });
+      setStatus('success');
+      setPopupState('done');
+    } else {
+      turnstile.reset();
+      setStatus('error');
+      setErrorMsg(result.error || 'Niečo sa nepodarilo. Skúste to znova.');
     }
-    turnstile.reset(); // the token is single-use, a retry needs a fresh one
-    setStatus('error');
-    setErrorMsg(error);
   };
 
   return (
@@ -124,16 +119,26 @@ export const NewsletterPopup: React.FC = () => {
                       Prihláste sa na odber noviniek a prvú vzorku vám pošleme bez poštovného.
                     </p>
 
-                    <form onSubmit={handleSubmit} onFocusCapture={turnstile.arm} onPointerDownCapture={turnstile.arm} className="space-y-3">
+                    <form onSubmit={handleSubmit} className="relative grid gap-3">
+                      {/* Bot check: visible only when Cloudflare asks for a click, then over the text above the field,
+                          out of the flow and first in the tab order (same as the footer, contain:layout included) */}
+                      {turnstile.armed && (
+                        <Turnstile
+                          {...turnstile.widgetProps}
+                          id="popup-newsletter-turnstile"
+                          className="absolute bottom-[calc(100%_+_0.5rem)] left-0 z-10 [contain:layout]"
+                          options={{ appearance: 'interaction-only', theme: 'light', language: 'sk' }}
+                        />
+                      )}
                       <input
                         type="email"
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        onFocus={turnstile.arm}
                         placeholder="vas@email.sk"
                         className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-brand-dark placeholder-gray-300 focus:outline-none focus:border-brand-gold transition-colors"
                       />
-                      {turnstile.widget}
                       {status === 'error' && (
                         <p className="text-red-500 text-xs">{errorMsg}</p>
                       )}

@@ -44,6 +44,9 @@ interface SubmitQuotePayload {
   // TURNSTILE_ENFORCE=true (finding f02). Sent on every lead so the switch can be
   // flipped without a client redeploy.
   turnstileToken?: string;
+  // Newsletter box on the sample form: submit-quote subscribes server-side, because the
+  // single-use Turnstile token is spent on this request.
+  newsletter?: boolean;
 }
 
 /**
@@ -147,6 +150,7 @@ export interface SampleLeadFormData {
   email: string;
   phone?: string;
   dekor: string;
+  newsletter?: boolean;
 }
 
 /**
@@ -175,6 +179,7 @@ export async function submitSampleLead(data: SampleLeadFormData, turnstileToken?
       project_type: 'Vzorka zadarmo (Shop)',
       decor: data.dekor,
       turnstileToken,
+      newsletter: data.newsletter,
     });
 
     if (!result.success || !result.quote_id) {
