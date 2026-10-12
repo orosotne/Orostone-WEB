@@ -99,13 +99,18 @@ CSS = """
 # Predmet je bez emoji. Osobné listy Mariána (plain) ho nemajú, majú vyzerať ako bežný e-mail.
 PRE_EMOJI = "🪨"
 
+# Neviditeľná výplň za preheaderom. Schránka ukáže v náhľade toľko textu, koľko sa zmestí, a keby
+# výplň bola krátka, doplní za preheader prvý text e-mailu (Gmail 12. 10. 2026: „Newsletter Orostone“).
+# 450 neviditeľných znakov náhľad zaplní v každej bežnej schránke.
+PRE_PAD = "&#847;&zwnj;&nbsp;&#8199;&shy;" * 90
+
 
 def doc(meta, title, preheader, rows):
     """meta: dict s PREDMET/PREHEADER/TYP/... — zapíše sa ako komentár na začiatok."""
     preheader = f"{PRE_EMOJI} {preheader}"
     meta = {k: (f"{PRE_EMOJI} {v}" if k == "PREHEADER:" else v) for k, v in meta.items()}
     meta_lines = "\n".join(f"  {k:<10} {v}" for k, v in meta.items())
-    pre_pad = "&nbsp;&zwnj;" * 40
+    pre_pad = PRE_PAD
     return f"""<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!--
   OROSTONE — e-mailová šablóna (skill orostone-newsletter)
@@ -827,7 +832,7 @@ def plain(meta, title, preheader, paragraphs, reason, greeting="Dobrý deň,",
                   if unsub else "")
     addr_html = "<br />Orostone, s.&nbsp;r.&nbsp;o. &middot; sídlo: Landererova&nbsp;8, 811&nbsp;09&nbsp;Bratislava" if unsub else ""
     meta_lines = "\n".join(f"  {k:<10} {v}" for k, v in meta.items())
-    pre_pad = "&nbsp;&zwnj;" * 40
+    pre_pad = PRE_PAD
     ps_html = "".join(f'<p style="margin:0 0 16px;">{x}</p>' for x in paragraphs)
     s1, s2, s3, s4 = sign
     return f"""<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

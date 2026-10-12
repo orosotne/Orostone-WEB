@@ -1,0 +1,65 @@
+name: Instagram – denné obnovenie webu
+
+# Instagram pás na homepage berie príspevky pri builde (scripts/sync-instagram.ts).
+# Raz denne sa pozrieme, či na Instagrame pribudol príspevok, ktorý ostrý web
+# ešte nemá; ak áno, cez Vercel Deploy Hook spustíme nové nasadenie main.
+# Secret VERCEL_DEPLOY_HOOK_URL: Vercel → orostone → Settings → Git → Deploy Hooks (vetva main).
+on:
+  schedule:
+    # Každý deň o 5:00 UTC (6:00 / 7:00 SK)
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Nový príspevok → nasadenie
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      # Rovnaký výber príspevkov ako pri builde na Vercel
+      - name: Stiahni príspevky
+        env:
+          VITE_SUPABASE_URL: https://xfkznvqufhnrphpdhfnc.supabase.co
+        run: npx tsx scripts/sync-instagram.ts | tee /tmp/sync.log
+
+      - name: Nasaď web, ak mu chýba príspevok
+        env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+        run: |
+          if ! grep -q '^OK:' /tmp/sync.log; then
+            echo "::warning::Instagram feed sa nepodarilo stiahnuť, dnes nič nenasadzujem."
+            exit 0
+          fi
+
+          MISSING=0
+          for ID in $(jq -r '.[].id' data/instagram-feed.json); do
+            TYPE=$(curl -s -o /dev/null -w '%{content_type}' "https://orostone.sk/images/instagram/$ID.webp")
+            if [ "$TYPE" != "image/webp" ]; then
+              echo "Na webe chýba príspevok $ID"
+              MISSING=1
+            fi
+          done
+
+          if [ "$MISSING" = "0" ]; then
+            echo "✅ Web má všetky aktuálne príspevky."
+            exit 0
+          fi
+          if [ -z "$HOOK" ]; then
+            echo "::error::Chýba secret VERCEL_DEPLOY_HOOK_URL, web sa nedá nasadiť."
+            exit 1
+          fi
+          curl -fsS -X POST "$HOOK" > /dev/null
+          echo "🚀 Spustené nové nasadenie webu."
