@@ -255,4 +255,8 @@ Nový obsah: jednorazová kampaň **35 – Odteraz vám budeme písať dvakrát 
 
 Rovnaké znenie ako v č. 1–3 má schválený e-mail 01 a sloveso *fungovať* pri dekore majú aj 04, 29 a 32 („Kde funguje“). Či ich zjednotiť, rozhodne Martin.
 
+## Kolo 18 – Codex review v PR #123 (12. 10. 2026, po oprave z kola 17)
+
+Codex na `62a5375` nenašiel žiadne pripomienky. E-mail 35 je jazykovo skontrolovaný vrátane opráv z kola 17.
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
