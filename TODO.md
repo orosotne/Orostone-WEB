@@ -58,7 +58,7 @@
 |---|-------|----------|------|----------|
 | 3.1 | Shop page redesign — InspirationSection, SampleLeadSection | — | ✅ | Commitnuté |
 | 3.2 | RotatingBadge komponent | — | ✅ | Commitnuté |
-| 3.3 | Instagram feed integrácia (Supabase Edge Functions) | — | ✅ | `useInstagramFeed`, supabase functions |
+| 3.3 | Instagram feed integrácia (Supabase Edge Functions) | — | ✅ | `scripts/sync-instagram.ts` pri builde, supabase functions |
 | 3.4 | Košík a checkout flow | HIGH | ✅ | Shopify hosted checkout, redirect cez `checkoutUrl` + return_to thank-you stránka |
 | 3.5 | Kontaktný formulár — SEO optimalizovaná stránka | MEDIUM | 🔲 | |
 | 3.6 | Zákaznícke recenzie — zbieranie a zobrazovanie | MEDIUM | 🔲 | |
