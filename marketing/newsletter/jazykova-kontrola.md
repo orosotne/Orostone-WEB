@@ -263,4 +263,16 @@ Codex na `62a5375` nenašiel žiadne pripomienky. E-mail 35 je jazykovo skontrol
 
 Codex na `4855b4f` nenašiel v textoch žiadne pripomienky, ani v novej časti README „Komu posielame“. Mal jednu pripomienku ku kódu `subscribe-newsletter`: vyradenie zo zoznamu Dopyty nečaká na potvrdenie odberu vlastníkom e-mailu. Martin 12. 10. 2026 rozhodol ponechať jednoduché potvrdenie odberu (single opt-in), kód sa nemení.
 
+## Kolo 20 – Claude, zjednotenie podľa kola 17 (12. 10. 2026)
+
+Martin 12. 10. 2026 rozhodol zjednotiť e-mail 01 a dekory 04, 29 a 32 s opravami z kola 17. Čaká na Codex.
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 01 | [preheader] …ktorá pomôže pri výbere pracovnej dosky. Výpredaje neposielame. | [preheader] …ktorá pomôže pri výbere pracovnej dosky. | slovník | Rovnako ako kolo 17 č. 1: *výpredaj* nepoužívame a veta odporovala vzorke bez poštovného s kódom VITAJTE v tom istom e-maile. | na kontrole |
+| 2 | 01 | Výpredaje v ňom nenájdete. Nájdete v ňom to, čo pomáha rozhodnúť sa rozumne. | Nájdete v ňom to, čo pomáha rozhodnúť sa rozumne. | slovník | Rovnako ako kolo 17 č. 2. | na kontrole |
+| 3 | 01 | kombinácie so skrinkami a miesta, kde funguje najlepšie | kombinácie so skrinkami a priestory, do ktorých sa hodí najlepšie | kalk | Rovnako ako kolo 17 č. 3. | na kontrole |
+| 4 | 04, 29, 32 | 02 – Kde funguje a na čo myslieť · karta Kde funguje | 02 – Kde sa uplatní a na čo myslieť · karta Kde sa uplatní | kalk | *Dekor funguje* je kalk (slovník, sekcia 8). *Kam sa hodí* by v 04 a 29 tesne opakovalo úvodnú vetu *Hodí sa…*, preto *uplatniť sa*. | na kontrole |
+| 5 | 04 | Funguje tam, kde má povrch priniesť textúru… | Hodí sa tam, kde má povrch priniesť textúru… | kalk | Rovnaký kalk ako č. 4, prirodzená väzba je *hodiť sa*. | na kontrole |
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.

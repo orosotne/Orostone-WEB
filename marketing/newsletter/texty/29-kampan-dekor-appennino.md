@@ -31,10 +31,10 @@ Hodí sa do kuchýň, kde má doska priestor rozjasniť a nepútať na seba pozo
 Celá platňa 3200 × 1600 mm · každá platňa má vlastný priebeh žiliek
 
 ### Nadpis sekcie
-02 – Kde funguje a na čo myslieť
+02 – Kde sa uplatní a na čo myslieť
 
 ### Dve karty
-Kde funguje
+Kde sa uplatní
 – Pracovné dosky a ostrovčeky
 – Obklad stien a zásteny
 – Kúpeľne aj podlahy

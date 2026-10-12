@@ -446,7 +446,7 @@ def figure(src, alt, caption=None, top=20, w=520):
 
 
 def split(left, right, top=16):
-    """Dve karty vedľa seba: (title, [items]) — napr. Kde funguje / Na čo myslieť."""
+    """Dve karty vedľa seba: (title, [items]) — napr. Kde sa uplatní / Na čo myslieť."""
     def card(title, items, dark_label):
         lis = "".join(f"""
                     <tr><td valign="top" width="16" style="font-family:{F}; font-size:13px; font-weight:700; color:{GOLD_INK}; padding:6px 0;">&ndash;</td><td class="t-small" valign="top" style="font-family:{F}; font-size:13.5px; font-weight:400; line-height:21px; color:{BODY}; padding:6px 0 6px 6px;">{it}</td></tr>""" for it in items)
@@ -895,12 +895,12 @@ write("01-welcome-vitajte.html", doc(
         "TYP:": "Automatizácia · Welcome séria 1/4",
         "SPÚŠŤAČ:": "Hneď po prihlásení na odber (popup, pätička, sekcia vzoriek)",
         "PREDMET:": "Vitajte v Orostone. Toto vám budeme posielať",
-        "PREHEADER:": "Dvakrát do mesiaca vám pošleme jednu vec, ktorá pomôže pri výbere pracovnej dosky. Výpredaje neposielame.",
+        "PREHEADER:": "Dvakrát do mesiaca vám pošleme jednu vec, ktorá pomôže pri výbere pracovnej dosky.",
         "CIEĽ:": "Nastaviť očakávania + prvý krok: objednať vzorku",
         "POZNÁMKA:": "Uvítací kód VITAJTE (doprava prvej vzorky zadarmo) musí v Shopify existovať skôr, než e-mail spustíš.",
     },
     "Vitajte v Orostone",
-    "Dvakrát do mesiaca vám pošleme jednu vec, ktorá pomôže pri výbere pracovnej dosky. Výpredaje neposielame.",
+    "Dvakrát do mesiaca vám pošleme jednu vec, ktorá pomôže pri výbere pracovnej dosky.",
     [
         header(),
         dark_band("Vitajte v Orostone",
@@ -909,12 +909,12 @@ write("01-welcome-vitajte.html", doc(
         hero(IMG + "uvitanie-ostrovcek.jpg", "Ostrovček zo sinterovaného kameňa v svetlej kuchyni", capsule="Realizácia Orostone", top=32),
         text([
             "ďakujeme, že ste sa prihlásili. Orostone je sinterovaný kameň pre kuchyne a interiéry – pracovné dosky, ostrovčeky a zásteny.",
-            "Newsletter píšeme pre ľudí, ktorí dosku práve vyberajú alebo ju budú vyberať o pár mesiacov. Výpredaje v ňom nenájdete. Nájdete v ňom to, čo pomáha rozhodnúť sa rozumne.",
+            "Newsletter píšeme pre ľudí, ktorí dosku práve vyberajú alebo ju budú vyberať o pár mesiacov. Nájdete v ňom to, čo pomáha rozhodnúť sa rozumne.",
         ]),
         section_title(None, "Čo vám budeme posielať", top=16),
         numbered([
             ("Realizácie", "Skutočné kuchyne: zadanie, zvolený dekor a výsledok vo veľkej ploche."),
-            ("Dekory v detaile", "Jeden dekor bez prikrášľovania – kresba, kombinácie so skrinkami a miesta, kde funguje najlepšie."),
+            ("Dekory v detaile", "Jeden dekor bez prikrášľovania – kresba, kombinácie so skrinkami a priestory, do ktorých sa hodí najlepšie."),
             ("Sprievodcovia", "Hrúbka, hrany, údržba aj cena. Vecne a bez technického žargónu."),
         ], note="Približne dvakrát do mesiaca. Odhlásiť sa dá jedným kliknutím v pätičke."),
         card_offer("Uvítací darček", "Vzorka bez poštovného",
@@ -1014,13 +1014,13 @@ write("04-kampan-dekor-v-detaile.html", doc(
                   image=(shop_img("Roman_Travertine_1.png", "1776676498"), "Kuchyňa s ostrovčekom a pracovnou doskou Roman Travertine")),
         text([
             "Roman Travertine je dekor s architektonickým charakterom. Pripomína vrstvenie travertínu, no na rozdiel od pravého travertínu nepotrebuje impregnáciu.",
-            "Funguje tam, kde má povrch priniesť textúru a dojem prírodného materiálu bez prehnaného efektu.",
+            "Hodí sa tam, kde má povrch priniesť textúru a dojem prírodného materiálu bez prehnaného efektu.",
         ], top=28),
         section_title("01", "Vo veľkej ploche", top=8),
         figure(shop_img("mockup-ROMAN-TRAVERTINE.webp", "1773771257"), "Celá platňa Roman Travertine vedľa človeka na porovnanie veľkosti",
                caption="Celá platňa 3200 × 1600 mm · dlhé línie kresby na malej vzorke neuvidíte", top=16),
-        section_title("02", "Kde funguje a na čo myslieť"),
-        split(("Kde funguje", ["Pracovné dosky a ostrovčeky", "Obklad steny za linkou", "Interiéry s prírodným drevom a textúrovanou omietkou"]),
+        section_title("02", "Kde sa uplatní a na čo myslieť"),
+        split(("Kde sa uplatní", ["Pracovné dosky a ostrovčeky", "Obklad steny za linkou", "Interiéry s prírodným drevom a textúrovanou omietkou"]),
               ("Na čo myslieť", ["Smer kresby: pozdĺžne pásiky pôsobia inak na doske a na boku ostrovčeka.", "Rozloženie: pozrite si fotku celej platne a rezy naplánujte s kamenárom."])),
         pair((shop_img("Roman_Travertine_2.png", "1776676498", 520), "Bok ostrovčeka v dekore Roman Travertine"),
              (shop_img("Roman_Travertine_3.png", "1776676485", 520), "Ostrovček Roman Travertine zhora"),
@@ -1879,8 +1879,8 @@ write_nb("29-kampan-dekor-appennino.html", doc(
         section_title("01", "Vo veľkej ploche", top=8),
         figure(shop_img("mockup-Appennino.webp", "1773771257"), "Celá platňa Appennino vedľa človeka na porovnanie veľkosti",
                caption="Celá platňa 3200 × 1600 mm · každá platňa má vlastný priebeh žiliek", top=16),
-        section_title("02", "Kde funguje a na čo myslieť"),
-        split(("Kde funguje", ["Pracovné dosky a ostrovčeky", "Obklad stien a zásteny", "Kúpeľne aj podlahy"]),
+        section_title("02", "Kde sa uplatní a na čo myslieť"),
+        split(("Kde sa uplatní", ["Pracovné dosky a ostrovčeky", "Obklad stien a zásteny", "Kúpeľne aj podlahy"]),
               ("Na čo myslieť", ["Každá platňa má vlastnú kresbu. Konkrétnu si vyberiete v showroome v Bošanoch.", "Svetlo v kuchyni ovplyvní, ako bude svetlá plocha pôsobiť. Vzorku si pozrite ráno aj večer."])),
         pair((shop_img("Appeninno_2.png", "1776676869", 520), "Bok ostrovčeka v dekore Appennino"),
              (shop_img("Appeninno_3.png", "1776676869", 520), "Ostrovček Appennino zhora"),
@@ -1993,8 +1993,8 @@ write_nb("32-kampan-dekor-wild-forest.html", doc(
         section_title("01", "Vo veľkej ploche", top=8),
         figure(shop_img("mockup-WILD-FOREST.webp", "1773771468"), "Celá platňa Wild Forest vedľa človeka na porovnanie veľkosti",
                caption="Celá platňa 3200 × 1600 mm · vzorka 10 × 10 cm celý priebeh kresby nezachytí", top=16),
-        section_title("02", "Kde funguje a na čo myslieť"),
-        split(("Kde funguje", ["Ostrovčeky a obklady stien", "Kúpeľne a wellness", "Interiéry s dubom a zeleňou"]),
+        section_title("02", "Kde sa uplatní a na čo myslieť"),
+        split(("Kde sa uplatní", ["Ostrovčeky a obklady stien", "Kúpeľne a wellness", "Interiéry s dubom a zeleňou"]),
               ("Na čo myslieť", ["Vzorka ukáže farbu a povrch, celý priebeh kresby uvidíte až na platni.", "Rozloženie platní naplánujte s kamenárom, aby výrazné miesta kresby boli tam, kde ich chcete."])),
         pair((shop_img("Wild_Forest_3.png", "1776677454", 520), "Ostrovček Wild Forest zhora"),
              (shop_img("Wild_Forest_4.png", "1776677454", 520), "Pracovná doska Wild Forest s drezom"),
