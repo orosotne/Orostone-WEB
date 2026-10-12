@@ -299,4 +299,8 @@ Bez zmeny textu: hlavička SEGMENT v 03, 20, 21, 28, 30, 31 a 33 už neuvádza �
 |---|---|---|---|---|---|---|
 | 1 | 18, 20, 28, 30 | S kódom VITAJTE neplatíte ani poštovné, kód platí na jednu objednávku. | S kódom VITAJTE neplatíte ani poštovné. Môžete ho použiť na jednu objednávku. | štylistika | Tesné opakovanie koreňa *plat-* v dvoch významoch (neplatiť × platnosť kódu). | prijaté, zapracované |
 
+## Kolo 24 – Codex review v PR #125 (12. 10. 2026, po zmene z kola 23)
+
+Codex na `1a26517` nenašiel žiadne pripomienky. Opravy z kôl 22 a 23 v 03, 18, 20, 28 až 33 sú jazykovo skontrolované.
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
