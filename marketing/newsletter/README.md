@@ -52,7 +52,7 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 
 | # | E-mail | Kam patrí | Predmet | Stav |
 |---|---|---|---|---|
-| 01 | Vitajte | Welcome 1/4 – hneď po prihlásení | Vitajte v Orostone. Toto vám budeme posielať | na kontrole (zjednotenie s 35), kód VITAJTE v Shopify existuje |
+| 01 | Vitajte | Welcome 1/4 – hneď po prihlásení | Vitajte v Orostone. Toto vám budeme posielať | skontrolované, kód VITAJTE v Shopify existuje |
 | 02 | List od Mariána | Welcome 2/4 – o 2 dni | Dve chyby, ktoré vidím pri výbere dosky | skontrolované, Marián list schválil |
 | 07 | Ako vybrať dekor | Welcome 3/4 – o 5 dní | Tri otázky pred výberom dekoru | skontrolované |
 | 09 | Tri kuchyne | Welcome 4/4 – o 9 dní | Tri kuchyne, tri rôzne rozhodnutia | skontrolované |
@@ -75,16 +75,16 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 | 27 | Showroom s klientom | B2B 3/3 – o 21 dní | Príďte s klientom vybrať konkrétnu platňu | skontrolované |
 | 35 | Pre doterajších odberateľov | Kampaň október – jednorazovo, pred 03 | Odteraz vám budeme písať dvakrát do mesiaca | skontrolované |
 | 03 | Realizácia mesiaca | Kampaň október | Taj Mahal na dlhom ostrovčeku s drezom | skontrolované |
-| 04 | Dekor v detaile | Kampaň október | Roman Travertine: travertín bez impregnácie | na kontrole (Kde sa uplatní) |
+| 04 | Dekor v detaile | Kampaň október | Roman Travertine: travertín bez impregnácie | skontrolované |
 | 18 | Zo zákulisia | Kampaň november | Ako vzniká sinterovaný kameň | skontrolované |
 | 19 | Sprievodca | Kampaň november | Čo je v cene pracovnej dosky | skontrolované |
 | 20 | Realizácia mesiaca | Kampaň december | Biela doska a tmavé drevo | skontrolované, klient so zverejnením súhlasí |
 | 21 | Poďakovanie | Kampaň december | Ďakujeme za rok 2026 | skontrolované |
 | 28 | Kuchyňa na jar | Kampaň január 2027 | Nová kuchyňa na jar: kedy začať | skontrolované |
-| 29 | Dekor v detaile | Kampaň január 2027 | Appennino: svetlá plocha s jemnou kresbou | na kontrole (Kde sa uplatní) |
+| 29 | Dekor v detaile | Kampaň január 2027 | Appennino: svetlá plocha s jemnou kresbou | skontrolované |
 | 30 | Realizácia mesiaca | Kampaň február 2027 | Biela doska v ružovej kuchyni | skontrolované, klient so zverejnením súhlasí |
 | 31 | Pozvánka do showroomu | Kampaň február 2027 | Celé platne naživo v kaštieli v Bošanoch | skontrolované |
-| 32 | Dekor v detaile | Kampaň marec 2027 | Wild Forest: kresba pre veľké plochy | na kontrole (Kde sa uplatní) |
+| 32 | Dekor v detaile | Kampaň marec 2027 | Wild Forest: kresba pre veľké plochy | skontrolované |
 | 33 | Spolupráca so štúdiom | Kampaň marec 2027 | Návrh kuchyne a doska: ako ich zladiť | skontrolované |
 | 34 | Otázka k dopytu (čistý text) | CRM – jednorazovo, po schválení Mariánom | Krátka otázka k vašej pracovnej doske | skontrolované, do CRM ho treba ešte zapojiť |
 
