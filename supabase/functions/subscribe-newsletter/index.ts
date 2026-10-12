@@ -7,15 +7,23 @@
 // Replaces:
 //   services/newsletter.service.ts → subscribeToNewsletter()
 //
-// REQUEST: POST { email: string; name?: string; source: string }
+// REQUEST: POST { email: string; name?: string; source: string; turnstileToken: string }
 // RESPONSE: 200 { success: true; alreadySubscribed?: boolean }
-//           4xx { success: false; error: string }
+//           4xx { success: false; error: string }   (403 = overenie Turnstile neprešlo)
 //
 // DEPLOYMENT:
 //   supabase functions deploy subscribe-newsletter --project-ref <ref>
 //   Najprv migrácie 20261011_newsletter_klaviyo_attempt.sql a
 //   20261011_newsletter_subscribe_function.sql: odber sa zapisuje cez funkciu
-//   newsletter_subscribe.
+//   newsletter_subscribe. A až po nasadení webu, ktorý posiela turnstileToken
+//   (pätička, formulár na vzorku): starý web token neposiela a dostal by 403.
+//
+// OCHRANA PROTI ROBOTOM (od 12. 10. 2026): Cloudflare Turnstile, ten istý kľúč ako formulár
+//   na vzorku (_shared/turnstile.ts, secret CLOUDFLARE_TURNSTILE_SECRET). Token overíme po
+//   kontrole údajov a pred zápisom: bez platného tokenu odpovieme 403 a nič sa nezapíše,
+//   neodošle ani nespotrebuje strop. Token je jednorazový, takže každé odoslanie vrátane
+//   opakovaného pre už prihlásenú adresu potrebuje nové overenie a skript nemôže formulár
+//   volať dookola. Pri výpadku Cloudflaru odber neprejde (radšej ako bez ochrany).
 //
 // KLAVIYO (od 10. 10. 2026), serverové API podľa odporúčania Klaviya:
 //   KLAVIYO_NEWSLETTER_LIST_ID  ID zoznamu „Newsletter – web“ (nie je tajné).
@@ -47,7 +55,8 @@
 //   dvojitom by sa súhlas zapísal až po kliknutí v e-maile a overenie po minúte by
 //   upozorňovalo pri každom nepotvrdenom odbere: pri prepnutí ho treba prerobiť.
 //
-// STROP NA ODBERY (od 11. 10. 2026): formulár je verejný a bez CAPTCHA. Nad stropom
+// STROP NA ODBERY (od 11. 10. 2026): druhá poistka za Turnstile, napr. keď niekto overenia
+//   rieši ručne alebo cez platenú službu. Nad stropom
 //   (viac ako 10 nových alebo obnovených odberov za hodinu alebo viac ako 30 za 24 hodín,
 //   bežne prídu dva-tri týždenne) web prihlásenie neuloží, Klaviyo nevolá, uvítanie
 //   nepošle a odpovie 429 s prosbou skúsiť to neskôr. Cudzie adresy z útoku tak
@@ -56,6 +65,7 @@
 //   newsletter_subscribe, takže pri súbežnom návale prejde presne prvých 10 (30). Tím
 //   dostane najviac jedno upozornenie za deň (Resend Idempotency-Key). Pred kampaňou,
 //   ktorá prinesie veľa prihlásení naraz (súťaž), treba strop zvýšiť (SUBSCRIBE_LIMITS).
+//   Upozornenia o odbere do Klaviya prídu o tej istej adrese a dôvode tiež najviac raz za deň.
 // ===========================================
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
@@ -71,6 +81,7 @@ import {
   optedOut,
 } from '../_shared/klaviyo.ts';
 import { sendEmail } from '../_shared/resend.ts';
+import { clientIp, verifyTurnstile } from '../_shared/turnstile.ts';
 
 const corsHeaders = {
   'Content-Type': 'application/json',
@@ -117,6 +128,9 @@ interface SubscribeOutcome {
 
 /** Odpoveď nad stropom. Prihlásenie sa neuložilo, človek to môže skúsiť neskôr. */
 const LIMIT_ERROR = 'Prihlásenie sa teraz nepodarilo. Skúste to, prosím, neskôr.';
+
+/** Odpoveď, keď overenie Turnstile neprešlo. Formulár dostane nový token a človek to skúsi znova. */
+const TURNSTILE_ERROR = 'Overenie proti robotom zlyhalo. Skúste to, prosím, znova.';
 
 /** Klaviyo prijme e-mail najviac so 100 znakmi (Profiles API). */
 const MAX_EMAIL_LENGTH = 100;
@@ -327,7 +341,20 @@ const ALERT_TEXT: Record<AlertReason, { what: string; todo: string; subject?: st
   },
 };
 
-/** Odber do Klaviya neprešiel, je neistý alebo zablokovaný, alebo chýba meno a zdroj: tím rozhodne ručne. Nikdy nehádže. */
+/**
+ * Resend Idempotency-Key upozornenia: o tej istej adrese a dôvode odíde najviac jedno za deň
+ * (UTC), aj keď niekto formulár s tou adresou odosiela dookola. Adresu v kľúči nahrádza odtlačok.
+ */
+async function alertKey(email: string, reason: AlertReason): Promise<string> {
+  const digest = new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(email)));
+  const hash = Array.from(digest.slice(0, 12), (b) => b.toString(16).padStart(2, '0')).join('');
+  return `newsletter-${reason}-${hash}-${new Date().toISOString().slice(0, 10)}`;
+}
+
+/**
+ * Odber do Klaviya neprešiel, je neistý alebo zablokovaný, alebo chýba meno a zdroj: tím rozhodne ručne.
+ * O tej istej adrese a dôvode najviac raz za deň (alertKey). Nikdy nehádže.
+ */
 async function alertKlaviyoFailure(email: string, source: string, reason: AlertReason, name?: string): Promise<void> {
   const text = ALERT_TEXT[reason];
   const who = name ? `, meno <strong>${escapeHtml(name)}</strong>` : '';
@@ -339,6 +366,7 @@ async function alertKlaviyoFailure(email: string, source: string, reason: AlertR
       html: `<p>E-mail <strong>${escapeHtml(email)}</strong> sa na webe prihlásil na odber (zdroj ${escapeHtml(source)}${who}). ${text.what}</p>
 <p>V databáze webu je odber uložený. ${text.todo}</p>`,
       onMissingKey: 'skip',
+      idempotencyKey: await alertKey(email, reason),
     });
   } catch (err) {
     console.error('[subscribe-newsletter] Upozornenie sa neodoslalo:', err instanceof Error ? err.message : err);
@@ -425,6 +453,16 @@ serve(async (req) => {
     }
 
     const { email, name, source } = validated.data;
+
+    // 0. Ochrana proti robotom (Turnstile) pred akýmkoľvek zápisom alebo e-mailom.
+    const turnstile = await verifyTurnstile((json as Record<string, unknown>).turnstileToken, clientIp(req));
+    if (!turnstile.success) {
+      console.warn('[subscribe-newsletter] turnstile rejected', { codes: turnstile.errorCodes });
+      return new Response(JSON.stringify({ success: false, error: TURNSTILE_ERROR }), {
+        status: 403,
+        headers: corsHeaders,
+      });
+    }
 
     const SUPABASE_URL = Deno.env.get('SUPABASE_URL')!;
     const SUPABASE_SERVICE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;

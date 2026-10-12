@@ -27,6 +27,8 @@ export interface NewsletterSubscribeData {
   email: string;
   name?: string;
   source: string;
+  /** Cloudflare Turnstile token (single-use), verified server-side before anything is stored. */
+  turnstileToken: string;
 }
 
 export interface NewsletterSubscribeResult {
@@ -59,6 +61,7 @@ export async function subscribeToNewsletter(
         email: data.email,
         name: data.name,
         source: data.source,
+        turnstileToken: data.turnstileToken,
       }),
     });
 

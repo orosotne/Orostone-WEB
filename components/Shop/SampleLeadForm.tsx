@@ -37,7 +37,7 @@ export const SampleLeadForm: React.FC<SampleLeadFormProps> = ({ preselectedDekor
     if (preselectedDekor) setDekorValue(preselectedDekor);
   }, [preselectedDekor]);
   const { honeypotValue, setHoneypotValue, isBot } = useHoneypot();
-  const { turnstileRef, turnstileToken, setTurnstileToken, reset: resetTurnstile } = useTurnstile();
+  const { turnstileRef, turnstileToken, setTurnstileToken, reset: resetTurnstile, nextToken } = useTurnstile();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -81,7 +81,13 @@ export const SampleLeadForm: React.FC<SampleLeadFormProps> = ({ preselectedDekor
         item_name: dekor,
       });
       if (newsletterConsent) {
-        await subscribeToNewsletter({ email, name, source: 'sample_lead' });
+        // The lead spent the Turnstile token; subscribe-newsletter verifies its own. The
+        // newsletter is optional, so a failure here never undoes the sample request.
+        try {
+          await subscribeToNewsletter({ email, name, source: 'sample_lead', turnstileToken: await nextToken() });
+        } catch {
+          /* no fresh token in time: the lead is in, the newsletter stays off */
+        }
       }
       setStatus('success');
     } else {
