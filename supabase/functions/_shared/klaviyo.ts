@@ -5,10 +5,15 @@
 // (denné zosúladenie odhlásení s tabuľkou newsletter_subscribers).
 //
 //   KLAVIYO_NEWSLETTER_LIST_ID  ID zoznamu „Newsletter – web“ (nie je tajné).
+//   KLAVIYO_INQUIRY_LIST_ID     ID zoznamu „Dopyty – LP1, LP2, e-mail (len k dopytu)“ (nie je
+//                               tajné, nepovinné). Bez nastavenia platí TKAHuh, prázdna hodnota
+//                               vyraďovanie vypne. Kto sa prihlási na odber, toho z neho
+//                               subscribe-newsletter vyradí.
 //   KLAVIYO_PRIVATE_API_KEY     súkromný kľúč Klaviya (Lists, Profiles, Subscriptions:
 //                               Full). Len v Supabase secrets, nikdy v kóde ani v logu.
 
 export const KLAVIYO_LIST_ID = Deno.env.get('KLAVIYO_NEWSLETTER_LIST_ID')?.trim() || '';
+export const KLAVIYO_INQUIRY_LIST_ID = (Deno.env.get('KLAVIYO_INQUIRY_LIST_ID') ?? 'TKAHuh').trim();
 const KLAVIYO_API_KEY = Deno.env.get('KLAVIYO_PRIVATE_API_KEY')?.trim() || '';
 const KLAVIYO_REVISION = '2026-07-15';
 
@@ -24,6 +29,20 @@ const OPT_OUT_REASONS = new Set(['UNSUBSCRIBE', 'SPAM_REPORT', 'SPAM_COMPLAINT',
 export function klaviyoPost(path: string, payload: unknown): Promise<Response> {
   return fetch(`https://a.klaviyo.com/api/${path}`, {
     method: 'POST',
+    headers: {
+      Authorization: `Klaviyo-API-Key ${KLAVIYO_API_KEY}`,
+      'Content-Type': 'application/vnd.api+json',
+      Accept: 'application/vnd.api+json',
+      revision: KLAVIYO_REVISION,
+    },
+    body: JSON.stringify(payload),
+    signal: AbortSignal.timeout(5000),
+  });
+}
+
+export function klaviyoDelete(path: string, payload: unknown): Promise<Response> {
+  return fetch(`https://a.klaviyo.com/api/${path}`, {
+    method: 'DELETE',
     headers: {
       Authorization: `Klaviyo-API-Key ${KLAVIYO_API_KEY}`,
       'Content-Type': 'application/vnd.api+json',

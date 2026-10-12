@@ -2078,4 +2078,47 @@ write_nb("34-crm-otazka-k-dopytu.html", plain(
     unsub=False,
 ))
 
+# 35 – Kampaň: jednorazovo pre doterajších odberateľov (prihlásili sa pred spustením uvítacej série)
+write_nb("35-kampan-newsletter-pravidelne.html", doc(
+    {
+        "TYP:": "Kampaň · jednorazovo pre doterajších odberateľov",
+        "SPÚŠŤAČ:": "Raz, ručne v októbri 2026, pred prvou októbrovou kampaňou (03)",
+        "SEGMENT:": "Zoznam Newsletter – web: ľudia, ktorí sa na webe prihlásili pred spustením uvítacej série (apríl – október 2026)",
+        "PREDMET:": "Odteraz vám budeme písať dvakrát do mesiaca",
+        "PREHEADER:": "Ukážeme vám hotové kuchyne aj dekory zblízka a poradíme, ako vybrať dosku.",
+        "CIEĽ:": "Pripomenúť, prečo im píšeme, nastaviť očakávania, zistiť horizont projektu (voľba) → vzorka",
+        "POZNÁMKA:": "Noví odberatelia ho nedostávajú, majú uvítaciu sériu 01, 02, 07, 09. Pás, zoznam, ponuka a P. S. vychádzajú z 01, voľba horizontu je zo 07 a zapíše vlastnosť horizont rovnako.",
+    },
+    "Newsletter Orostone",
+    "Ukážeme vám hotové kuchyne aj dekory zblízka a poradíme, ako vybrať dosku.",
+    [
+        header("Newsletter", "október 2026"),
+        dark_band("Newsletter Orostone", "Pracovná doska<br />" + accent_dark("sa vyberá raz."),
+                  sub="Preto vám budeme posielať len to, čo pri tom rozhodnutí naozaj pomôže."),
+        hero(IMG + "realizacia-lamely.jpg", "Biely ostrovček s jemnými sivými žilkami a čiernou varnou doskou pri stene z drevených lamiel",
+             capsule="Realizácia Orostone", top=32),
+        text([
+            "pred časom ste sa na orostone.sk prihlásili na odber noviniek. Odteraz vám ich budeme posielať pravidelne, približne dvakrát do mesiaca.",
+            "Orostone je sinterovaný kameň pre kuchyne a interiéry – pracovné dosky, ostrovčeky a zásteny. Newsletter píšeme pre ľudí, ktorí dosku práve vyberajú alebo ju budú vyberať o pár mesiacov. Nájdete v ňom to, čo pomáha rozhodnúť sa rozumne.",
+        ]),
+        section_title(None, "Čo vám budeme posielať", top=16),
+        numbered([
+            ("Realizácie", "Skutočné kuchyne: zadanie, zvolený dekor a výsledok vo veľkej ploche."),
+            ("Dekory v detaile", "Jeden dekor bez prikrášľovania – kresba, kombinácie so skrinkami a priestory, do ktorých sa hodí najlepšie."),
+            ("Sprievodcovia", "Hrúbka, hrany, údržba aj cena. Vecne a bez technického žargónu."),
+        ], note="Odhlásiť sa dá kedykoľvek jedným kliknutím v pätičke."),
+        choices("Kedy plánujete novú kuchyňu?",
+                "Kliknite na jednu možnosť. Podľa nej vám budeme posielať to, čo práve potrebujete – nič viac.",
+                [("Do 3 mesiacov", SITE + "/realizacie?horizont=do-3-mesiacov", "do-3-mesiacov"),
+                 ("O 3 až 12 mesiacov", SITE + "/realizacie?horizont=3-12-mesiacov", "3-12-mesiacov"),
+                 ("Zatiaľ sa len inšpirujem", SITE + "/realizacie?horizont=inspiracia", "inspiracia")], prop="horizont"),
+        card_offer("Pre odberateľov", "Vzorka bez poštovného",
+                   "Kresbu kameňa najlepšie posúdite doma – pri svojom svetle a vedľa svojich skriniek. Prvá vzorka je zadarmo a ako odberateľ neplatíte ani poštovné.",
+                   "Objednať vzorku", SITE + "/vzorky",
+                   note='V pokladni zadajte kód <strong style="font-weight:700; color:#1A1A1A;">VITAJTE</strong>. Platí na jednu objednávku vzoriek.'),
+        ps('Ak už máte pôdorys kuchyne, pošlite nám ho v odpovedi na tento e-mail. <strong style="font-weight:700; color:#1A1A1A;">Pripravíme orientačné cenové rozpätie</strong> pre váš projekt – nezáväzne.'),
+        signature(top=0),
+        footer(),
+    ]))
+
 print("hotovo →", OUT)

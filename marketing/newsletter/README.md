@@ -73,6 +73,7 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 | 25 | Technické podklady | B2B 1/3 – hneď po pridaní tagu | Technický list a textúry pre váš projekt | skontrolované |
 | 26 | Vzorky pre štúdio | B2B 2/3 – o 7 dní | Vzorky dekorov pre vaše štúdio | skontrolované |
 | 27 | Showroom s klientom | B2B 3/3 – o 21 dní | Príďte s klientom vybrať konkrétnu platňu | skontrolované |
+| 35 | Pre doterajších odberateľov | Kampaň október – jednorazovo, pred 03 | Odteraz vám budeme písať dvakrát do mesiaca | skontrolované |
 | 03 | Realizácia mesiaca | Kampaň október | Taj Mahal na dlhom ostrovčeku s drezom | skontrolované |
 | 04 | Dekor v detaile | Kampaň október | Roman Travertine: travertín bez impregnácie | skontrolované |
 | 18 | Zo zákulisia | Kampaň november | Ako vzniká sinterovaný kameň | skontrolované |
@@ -91,6 +92,20 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 
 Program newslettera, typy e-mailov a kalendár sú v skille `orostone-newsletter` (`references/program-a-typy.md`).
 Vizuálne pravidlá e-mailu sú v skille `orostone-kreativy` (`references/newsletter-vizual.md`).
+
+## Komu posielame (skupiny v Klaviyu)
+
+Kontakty v Klaviyu sme 12. 10. 2026 na žiadosť Martina upratali do dvoch oddelených skupín. Kto patrí do oboch, je len medzi odberateľmi, aby nedostával e-maily dvakrát.
+
+| Skupina | Zoznam v Klaviyu | Kto v nej je | Čo dostáva |
+|---|---|---|---|
+| Odberatelia newslettera | Newsletter – web (`VSrLFs`) | Prihlásili sa na odber na webe (pätička, pop-up, formulár na vzorku so súhlasom). Nových pridáva web sám. | Uvítaciu sériu 01, 02, 07, 09 (beží od 12. 10. 2026) a kampane |
+| Dopyty | Dopyty – LP1, LP2, e-mail (len k dopytu) (`TKAHuh`) | Napísali nám cez formulár LP1 (aj cez starší formulár TILDA), LP2 alebo priamo e-mailom. V CRM majú otvorený dopyt alebo otvorený obchod a dopyt poslali za posledných 6 mesiacov. Vlastnosť profilu `zdroj_dopytu` je LP1, LP2 alebo E-mail. K 12. 10. 2026 ich je 446, nové dopyty sa do zoznamu samy nepridávajú. Kto sa na webe prihlási na odber, toho web z tohto zoznamu sám vyradí. | Len e-maily k ich dopytu, napríklad 12–14 a 34. Súhlas s newsletterom nedali, preto im neposielame kampane ani uvítaciu sériu. |
+
+- 28 ľudí bolo v oboch skupinách, ostali len medzi odberateľmi.
+- 13 ľudí, ktorí sa odhlásili alebo majú nedoručiteľnú adresu, ostalo v Klaviyu potlačených, aby im nič neodišlo. Firemné adresy info@ a marian.brazdil@ ostali. Ostatné staré kontakty (importy z Meta Ads, monday.com, LEADS_2026 a ďalšie) sú zmazané aj so starými zoznamami.
+- 5 adries z CRM má preklep (napríklad „gmail.comd“), preto do Klaviya nešli. Treba ich opraviť v CRM.
+- Z 515 dopytov sme 12. 10. 2026 zmazali 69 najstarších (dopyt od 12. 4. do 13. 5. 2026), ktorí nám nikdy neodpísali (v CRM nemajú žiadnu prichádzajúcu správu), aby sme ostali v limite 500 aktívnych kontaktov v Klaviyu.
 
 ## Zástupné texty
 
