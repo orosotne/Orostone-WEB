@@ -22,6 +22,10 @@ const BASE_URL = 'https://orostone.sk';
  */
 export const OFFER_VALID_FROM = '2026-01-01';
 
+/** Offer.priceValidUntil — one year from the build date. */
+export const offerPriceValidUntil = () =>
+  new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0];
+
 /** Shipping exactly as the Shopify checkout offers it (both options appear for any Slovak address); see /doprava. */
 const SHIPPING_OPTIONS = [
   { name: 'Dovoz Bratislava a okolie', rate: '150' },
@@ -146,9 +150,7 @@ export function buildProductJsonLd(
         unitCode: 'MTK',
       },
       validFrom: OFFER_VALID_FROM,
-      priceValidUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 1))
-        .toISOString()
-        .split('T')[0],
+      priceValidUntil: offerPriceValidUntil(),
       availability: product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/PreOrder',
       itemCondition: 'https://schema.org/NewCondition',
       seller: { '@type': 'Organization', name: 'OROSTONE s.r.o.' },
