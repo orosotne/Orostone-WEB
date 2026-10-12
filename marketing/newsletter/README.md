@@ -109,7 +109,7 @@ Pravidlá kampaní (rozhodnutia Martina z 12. 10. 2026):
 - Kampane vylučujú segment `RdLKj8` (prihlásení za posledných 10 dní, teda ešte v uvítacej sérii) a pre istotu aj zoznam Dopyty (`TKAHuh`).
 - Všetkých deväť kampaní do 26. 1. 2027 je v Klaviyu naplánovaných (12. 10. 2026).
 - Potvrdenia z 12. 10. 2026: showroom je cez sviatky otvorený bežne (21), tlačidlo vzorky v 20 ostáva na stránke vzoriek, platne Appennino budú v januári v showroome (29) a odpovede na ahoj@orostone.sk niekto číta.
-- Deň pred každou kampaňou kontrolujeme limit aktívnych kontaktov (500), počet príjemcov, odhlásenia a sťažnosti na spam po predchádzajúcej kampani. Ak sa odhlási viac ako 1 % príjemcov alebo príde sťažnosť na spam, ďalšia kampaň nejde, kým Martin nerozhodne. Miesto uvoľňujeme len mazaním Dopytov a len po súhlase Martina, nikdy nie odberateľov.
+- Deň pred každou kampaňou kontrolujeme limit aktívnych kontaktov (500), počet príjemcov, odhlásenia a sťažnosti na spam po predchádzajúcej kampani. Ak sa odhlási viac ako 1 % príjemcov alebo príde sťažnosť na spam, hneď to napíšeme Martinovi s návrhom, či ďalšiu kampaň zastaviť. Miesto uvoľňujeme len mazaním Dopytov a len po súhlase Martina, nikdy nie odberateľov.
 
 - 28 ľudí bolo v oboch skupinách, ostali len medzi odberateľmi.
 - 13 ľudí, ktorí sa odhlásili alebo majú nedoručiteľnú adresu, ostalo v Klaviyu potlačených, aby im nič neodišlo. Firemné adresy info@ a marian.brazdil@ ostali. Ostatné staré kontakty (importy z Meta Ads, monday.com, LEADS_2026 a ďalšie) sú zmazané aj so starými zoznamami.
