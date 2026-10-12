@@ -52,11 +52,12 @@
 //   formulára už profil existuje a znova ich nezapíšeme).
 //   Kto je v Klaviyu odhlásený alebo potlačený (spam, ručne), celkovo alebo len z tohto
 //   zoznamu, toho NEprihlasujeme: bulk subscribe by odhlásenie zrušil a formulár na webe
-//   nikto neoveruje. Tím dostane upozornenie. Odpoveď 202 je len prijatá úloha, preto
-//   o chvíľu na pozadí overíme, že je e-mail v zozname a prihlásený (súhlas SUBSCRIBED),
-//   a ak nie, tiež upozorníme. Zoznam má jednoduché potvrdenie (single opt-in). Pri
-//   dvojitom by sa súhlas zapísal až po kliknutí v e-maile a overenie po minúte by
-//   upozorňovalo pri každom nepotvrdenom odbere: pri prepnutí ho treba prerobiť.
+//   nikto neoveruje. Tím dostane upozornenie. Odpoveď 202 je len prijatá úloha a Klaviyo ju
+//   spracúva aj niekoľko minút (12. 10. 2026 trvala 3,5 minúty), preto ju funkcia neoveruje.
+//   Či je e-mail v zozname a prihlásený (súhlas SUBSCRIBED), skontroluje v noci
+//   sync-newsletter-unsubscribes a tím upozorní, keď nie. Zoznam má jednoduché potvrdenie
+//   (single opt-in). Pri dvojitom by sa súhlas zapísal až po kliknutí v e-maile a nočná
+//   kontrola by upozorňovala pri každom nepotvrdenom odbere: pri prepnutí ju treba prerobiť.
 //
 // STROP NA ODBERY (od 11. 10. 2026): druhá poistka za Turnstile, napr. keď niekto overenia
 //   rieši ručne alebo cez platenú službu. Nad stropom
@@ -105,13 +106,12 @@ const ALERT_EMAIL = 'dopyt@orostone.sk';
  */
 type KlaviyoResult = 'ok' | 'rejected' | 'unknown' | 'blocked' | 'off';
 /**
- * Dôvod upozornenia tímu: výsledok odberu, prijatý odber, ktorý sa v zozname neobjavil ako
- * prihlásený, alebo meno a zdroj, ktoré sa do nového profilu nezapísali.
+ * Dôvod upozornenia tímu: výsledok odberu, alebo meno a zdroj, ktoré sa do nového profilu
+ * nezapísali. Prijatý odber, ktorý sa v zozname neobjavil ako prihlásený, hlási nočná kontrola
+ * v sync-newsletter-unsubscribes.
  */
-type AlertReason = 'rejected' | 'unknown' | 'blocked' | 'unconfirmed' | 'profile';
+type AlertReason = 'rejected' | 'unknown' | 'blocked' | 'profile';
 
-/** Kedy po prijatí odberu overiť, že je e-mail v zozname prihlásený (Klaviyo ho spracúva asynchrónne). */
-const VERIFY_AFTER_MS = [15_000, 45_000];
 /** Opakované odoslanie formulára do tohto času od posledného pokusu o odber (dvojklik, dve karty) už rieši prvá požiadavka. */
 const RESUBMIT_WINDOW_MS = 30 * 60 * 1000;
 
@@ -206,26 +206,6 @@ async function klaviyoState(email: string): Promise<PreState> {
   }
 }
 
-/**
- * Po prijatí odberu (202) overí, že je e-mail v zozname A prihlásený (súhlas SUBSCRIBED, bez
- * odhlásenia). Samotné členstvo nestačí, do zoznamu sa dá dostať aj bez súhlasu. Ak ani po minúte
- * nie, upozorní tím.
- */
-async function verifySubscribed(email: string, source: string): Promise<void> {
-  const filter = emailFilter(email);
-  for (const waitMs of VERIFY_AFTER_MS) {
-    await new Promise((r) => setTimeout(r, waitMs));
-    try {
-      const res = await klaviyoGet(`lists/${KLAVIYO_LIST_ID}/profiles?filter=${filter}&additional-fields[profile]=subscriptions`);
-      const marketing = res.ok ? emailMarketing((await res.json())?.data?.[0]) : null;
-      if (marketing?.consent === 'SUBSCRIBED' && !optedOut(marketing)) return;
-    } catch {
-      // ďalší pokus alebo upozornenie nižšie
-    }
-  }
-  await alertKlaviyoFailure(email, source, 'unconfirmed');
-}
-
 /** Pauza pred druhým pokusom: Retry-After z odpovede (429/503), najviac 3 s, inak 0,8 s. */
 function retryDelayMs(res: Response | null): number {
   const seconds = Number(res?.headers.get('Retry-After'));
@@ -294,10 +274,8 @@ async function subscribeInKlaviyo(email: string, name: string | undefined, sourc
     let res: Response | null = null;
     try {
       res = await klaviyoPost('profile-subscription-bulk-create-jobs', payload);
-      if (res.status === 202) {
-        inBackground(verifySubscribed(email, source));
-        return 'ok';
-      }
+      // 202 je prijatá úloha. Či ju Klaviyo spracovalo, overí nočná kontrola v sync-newsletter-unsubscribes.
+      if (res.status === 202) return 'ok';
       const detail = (await res.text()).slice(0, 300);
       if (res.status >= 400 && res.status < 500 && res.status !== 429) {
         console.error('[subscribe-newsletter] Klaviyo odmietlo odber:', res.status, detail);
@@ -328,10 +306,6 @@ const ALERT_TEXT: Record<AlertReason, { what: string; todo: string; subject?: st
   unknown: {
     what: 'Do zoznamu „Newsletter – web“ v Klaviyu sa možno nedostal: Klaviyo neodpovedalo ani na druhý pokus.',
     todo: 'Overte, či už v zozname nie je, a ak nie, pridajte ho ručne (Zoznamy → Newsletter – web).',
-  },
-  unconfirmed: {
-    what: 'Klaviyo odber prijalo, ale ani po minúte nie je v zozname „Newsletter – web“ prihlásený: v zozname chýba alebo nemá súhlas so zasielaním e-mailov.',
-    todo: 'Pozrite si jeho profil v Klaviyu. Ak v zozname nie je alebo nie je prihlásený, pridajte ho do zoznamu ručne (Zoznamy → Newsletter – web).',
   },
   blocked: {
     what: 'Do Klaviya sme ho neprihlásili: v Klaviyu je odhlásený (celkovo alebo z tohto zoznamu) alebo e-mail nahlásil ako spam. Formulár na webe nikto neoveruje, takže automatické prihlásenie by mohlo zrušiť cudzie odhlásenie.',
