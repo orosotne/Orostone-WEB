@@ -42,7 +42,7 @@ scripts/        # CLI scripts (sync, image processing)
 `data/shop-products-fallback.json` is a local offline copy of the Shopify catalog. Sync with `npm run sync:shop-fallback`.
 
 ### Instagram Strip
-The homepage Instagram strip renders `data/instagram-feed.json` and 600×750 webp tiles in `public/images/instagram/`, taken from the `instagram-feed` edge function at build time (`scripts/sync-instagram.ts`). No runtime call to Instagram; new posts appear with the next deploy.
+The homepage Instagram strip renders `data/instagram-feed.json` and 600×750 webp tiles in `public/images/instagram/`, taken from the `instagram-feed` edge function at build time (`scripts/sync-instagram.ts`). No runtime call to Instagram; new posts appear with the next deploy. `.github/workflows/instagram-daily-deploy.yml` checks daily and triggers a deploy through the Vercel Deploy Hook (secret `VERCEL_DEPLOY_HOOK_URL`) when the live site is missing a post.
 
 ## Dev Commands
 

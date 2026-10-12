@@ -207,9 +207,9 @@ export const PrivacyPolicy = () => {
                     },
                     {
                       name: 'Meta Platforms, Inc. (Facebook / Instagram)',
-                      purpose: 'Remarketing a meranie konverzií cez Meta Pixel – zobrazovanie relevantných reklám; zobrazenie príspevkov z nášho Instagramu na webe',
+                      purpose: 'Remarketing a meranie konverzií cez Meta Pixel – zobrazovanie relevantných reklám',
                       location: 'USA',
-                      note: 'Meta Pixel sa aktivuje iba po vašom súhlase s marketingovými cookies. Obrázky príspevkov z Instagramu sa načítavajú zo serverov Meta, ktoré pri tom spracúvajú IP adresu návštevníka. Meta spracúva údaje podľa vlastných zásad súkromia.',
+                      note: 'Meta Pixel sa aktivuje iba po vašom súhlase s marketingovými cookies. Meta spracúva údaje podľa vlastných zásad súkromia.',
                     },
                     {
                       name: 'Google LLC',
@@ -482,7 +482,7 @@ export const PrivacyPolicy = () => {
         <div className="mt-6 flex flex-col items-start justify-between gap-6 border-t border-brand-line pt-8 md:flex-row md:items-center">
           <div>
             <p className="text-sm text-brand-muted">Posledná aktualizácia</p>
-            <p className="text-lg font-medium text-brand-dark">11.&nbsp;10.&nbsp;2026</p>
+            <p className="text-lg font-medium text-brand-dark">12.&nbsp;10.&nbsp;2026</p>
           </div>
           <ActionButton to="/kontakt" variant="outline" arrow>
             Kontaktujte nás

@@ -123,9 +123,9 @@ Spracúva technické signály zariadenia (IP adresu, odtlačok prehliadača). Cl
 
 USA
 
-Remarketing a meranie konverzií cez Meta Pixel – zobrazovanie relevantných reklám; zobrazenie príspevkov z nášho Instagramu na webe
+Remarketing a meranie konverzií cez Meta Pixel – zobrazovanie relevantných reklám
 
-Meta Pixel sa aktivuje iba po vašom súhlase s marketingovými cookies. Obrázky príspevkov z Instagramu sa načítavajú zo serverov Meta, ktoré pri tom spracúvajú IP adresu návštevníka. Meta spracúva údaje podľa vlastných zásad súkromia.
+Meta Pixel sa aktivuje iba po vašom súhlase s marketingovými cookies. Meta spracúva údaje podľa vlastných zásad súkromia.
 
 #### Google LLC
 
@@ -302,6 +302,6 @@ Ak sa domnievate, že spracovanie vašich osobných údajov je v rozpore so zák
 
 Posledná aktualizácia
 
-11. 10. 2026
+12. 10. 2026
 
 KONTAKTUJTE NÁS
