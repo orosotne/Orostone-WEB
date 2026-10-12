@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { m, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { SEOHead, createBreadcrumbLD } from '@/components/UI/SEOHead';
@@ -525,6 +526,24 @@ const Lightbox: React.FC<{
   );
 };
 
+/* ─── ODPOVEĎ Z E-MAILU ──────────────────────────────── */
+
+// Tlačidlá „Kedy plánujete novú kuchyňu?“ v e-mailoch 07 a 22 zapíšu odpoveď do profilu
+// v Klaviyu a presmerujú sem s ?horizont=…. Pruh potvrdí, že odpoveď prišla.
+const HORIZONT_ODPOVEDE = new Set(['do-3-mesiacov', '3-12-mesiacov', 'inspiracia', 'hotovo']);
+
+const HorizontThanks = () => {
+  const [params] = useSearchParams();
+  if (!HORIZONT_ODPOVEDE.has(params.get('horizont') ?? '')) return null;
+  return (
+    <div role="status" className="border-b border-brand-line bg-brand-sand">
+      <Container className="py-4">
+        <p className="m-0 font-normal text-brand-dark">Ďakujeme, odpoveď sme si poznačili.</p>
+      </Container>
+    </div>
+  );
+};
+
 /* ─── PAGE ───────────────────────────────────────────── */
 
 export const Realizacie = () => {
@@ -543,6 +562,8 @@ export const Realizacie = () => {
         keywords={SEO_KEYWORDS}
         structuredData={breadcrumbLD}
       />
+
+      <HorizontThanks />
 
       <PageHero
         eyebrow="Portfólio"

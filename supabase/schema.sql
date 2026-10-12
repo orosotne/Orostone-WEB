@@ -68,7 +68,10 @@ CREATE TABLE newsletter_subscribers (
     source TEXT NOT NULL DEFAULT 'unknown',
     subscribed_at TIMESTAMPTZ DEFAULT NOW(),
     unsubscribed_at TIMESTAMPTZ,
-    is_active BOOLEAN DEFAULT TRUE
+    is_active BOOLEAN DEFAULT TRUE,
+    -- Čas posledného pokusu o odber v Klaviyu (subscribe-newsletter), dátum súhlasu je v subscribed_at.
+    -- Migrácia 20261011_newsletter_klaviyo_attempt.sql.
+    klaviyo_attempted_at TIMESTAMPTZ
 );
 
 -- ===========================================
@@ -146,6 +149,61 @@ ALTER TABLE newsletter_subscribers ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "Allow authenticated full access" ON newsletter_subscribers
     FOR ALL
     USING (auth.role() = 'authenticated');
+
+-- Odber so stropom v jednej transakcii (volá ju len subscribe-newsletter cez service_role).
+-- Popis a výsledky: supabase/migrations/20261012_newsletter_subscribe_function.sql.
+CREATE OR REPLACE FUNCTION public.newsletter_subscribe(
+  p_email TEXT,
+  p_name TEXT,
+  p_source TEXT,
+  p_stamp_attempt BOOLEAN,
+  p_hour_max INTEGER,
+  p_day_max INTEGER
+) RETURNS JSONB
+LANGUAGE plpgsql
+SET search_path = public
+AS $$
+DECLARE
+  v_id UUID;
+  v_active BOOLEAN;
+  v_over BOOLEAN;
+BEGIN
+  PERFORM pg_advisory_xact_lock(hashtext('newsletter_subscribe'));
+
+  SELECT id, is_active INTO v_id, v_active
+    FROM newsletter_subscribers
+   WHERE email = p_email;
+
+  v_over := (SELECT count(*) FROM newsletter_subscribers WHERE subscribed_at > now() - interval '1 hour') >= p_hour_max
+         OR (SELECT count(*) FROM newsletter_subscribers WHERE subscribed_at > now() - interval '24 hours') >= p_day_max;
+
+  IF v_id IS NOT NULL AND v_active IS TRUE THEN
+    RETURN jsonb_build_object('outcome', 'active', 'id', v_id, 'over', v_over);
+  END IF;
+
+  IF v_over THEN
+    RETURN jsonb_build_object('outcome', 'limit', 'id', v_id, 'over', true);
+  END IF;
+
+  IF v_id IS NOT NULL THEN
+    UPDATE newsletter_subscribers
+       SET is_active = true,
+           unsubscribed_at = NULL,
+           subscribed_at = now(),
+           klaviyo_attempted_at = CASE WHEN p_stamp_attempt THEN now() ELSE klaviyo_attempted_at END
+     WHERE id = v_id;
+    RETURN jsonb_build_object('outcome', 'reactivated', 'id', v_id, 'over', false);
+  END IF;
+
+  INSERT INTO newsletter_subscribers (email, name, source, klaviyo_attempted_at)
+  VALUES (p_email, p_name, p_source, CASE WHEN p_stamp_attempt THEN now() END)
+  RETURNING id INTO v_id;
+  RETURN jsonb_build_object('outcome', 'inserted', 'id', v_id, 'over', false);
+END;
+$$;
+
+REVOKE ALL ON FUNCTION public.newsletter_subscribe(TEXT, TEXT, TEXT, BOOLEAN, INTEGER, INTEGER) FROM PUBLIC, anon, authenticated;
+GRANT EXECUTE ON FUNCTION public.newsletter_subscribe(TEXT, TEXT, TEXT, BOOLEAN, INTEGER, INTEGER) TO service_role;
 
 -- QUOTE_FILES policies
 -- Anonymous môže nahrávať súbory

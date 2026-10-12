@@ -15,6 +15,11 @@ export interface SendEmailOptions {
   html: string;
   replyTo?: string;
   /**
+   * Resend `Idempotency-Key`: s rovnakým kľúčom a obsahom odíde e-mail za 24 hodín len raz,
+   * aj keď príde viac požiadaviek naraz. Pre upozornenia, ktoré nesmú zaplaviť schránku.
+   */
+  idempotencyKey?: string;
+  /**
    * What to do when RESEND_API_KEY is absent:
    *  - 'skip'  → log a warning and resolve { skipped: true } (non-critical mail)
    *  - 'throw' → throw (critical path that must surface the misconfig)
@@ -45,6 +50,7 @@ export async function sendEmail(opts: SendEmailOptions): Promise<SendEmailResult
     headers: {
       Authorization: `Bearer ${apiKey}`,
       'Content-Type': 'application/json',
+      ...(opts.idempotencyKey ? { 'Idempotency-Key': opts.idempotencyKey } : {}),
     },
     body: JSON.stringify({
       from: opts.from,

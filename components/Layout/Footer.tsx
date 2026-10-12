@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Facebook, Instagram, Youtube, CheckCircle, Loader2 } from 'lucide-react';
 import { useCookies } from '../../context/CookieContext';
 import { Container, useDrawIn, IconWarranty, IconSecurePay, IconDispatch, IconDelivery } from '../Design';
+import { useLazyTurnstile } from '../../hooks/useLazyTurnstile';
 // Dynamic import — keeps supabase out of the initial bundle
 const loadNewsletter = () => import('../../services/newsletter.service');
 
@@ -33,20 +34,28 @@ const NewsletterWidget: React.FC = () => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [msg, setMsg] = useState('');
+  // Anti-bot check verified by subscribe-newsletter; loads on the first touch of the form.
+  const turnstile = useLazyTurnstile('dark');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) return;
     setStatus('loading');
-    const { subscribeToNewsletter } = await loadNewsletter();
-    const result = await subscribeToNewsletter({ email, source: 'footer' });
-    if (result.success) {
-      setStatus('success');
-      setMsg(result.alreadySubscribed ? 'Tento e-mail je už prihlásený.' : 'Ďakujeme za prihlásenie!');
-    } else {
-      setStatus('error');
-      setMsg('Niečo sa nepodarilo. Skúste to znova.');
+    try {
+      const turnstileToken = await turnstile.getToken();
+      const { subscribeToNewsletter } = await loadNewsletter();
+      const result = await subscribeToNewsletter({ email, source: 'footer', turnstileToken });
+      if (result.success) {
+        setStatus('success');
+        setMsg(result.alreadySubscribed ? 'Tento e-mail je už prihlásený.' : 'Ďakujeme za prihlásenie!');
+        return;
+      }
+    } catch {
+      // Turnstile did not load or solve in time: same message as a failed subscription.
     }
+    turnstile.reset(); // the token is single-use, a retry needs a fresh one
+    setStatus('error');
+    setMsg('Niečo sa nepodarilo. Skúste to znova.');
   };
 
   if (status === 'success') {
@@ -59,7 +68,7 @@ const NewsletterWidget: React.FC = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="grid gap-2">
+    <form onSubmit={handleSubmit} onFocusCapture={turnstile.arm} onPointerDownCapture={turnstile.arm} className="grid gap-2">
       <div className="flex flex-col gap-2 sm:flex-row">
         <label htmlFor="footer-newsletter" className="sr-only">Váš e-mail</label>
         <input
@@ -79,6 +88,7 @@ const NewsletterWidget: React.FC = () => {
           {status === 'loading' ? <Loader2 size={16} className="animate-spin" /> : 'Odoberať'}
         </button>
       </div>
+      {turnstile.widget}
       {status === 'error' && <p className="text-xs text-red-300">{msg}</p>}
       <p className="text-[0.78rem] leading-relaxed text-brand-light/50">
         Prihlásením súhlasíte so zasielaním noviniek. Odhlásiť sa môžete kedykoľvek.{' '}

@@ -25,5 +25,16 @@ export function useTurnstile() {
     setTurnstileToken(null);
   };
 
-  return { turnstileRef, turnstileToken, setTurnstileToken, verifyToken, reset };
+  /**
+   * A fresh token for a second server call after the current one was spent (tokens are
+   * single-use): resets the widget and waits until Cloudflare solves it again.
+   */
+  const nextToken = async (timeoutMs = 30_000): Promise<string> => {
+    reset();
+    const widget = turnstileRef.current;
+    if (!widget) throw new Error('Turnstile is not mounted');
+    return widget.getResponsePromise(timeoutMs);
+  };
+
+  return { turnstileRef, turnstileToken, setTurnstileToken, verifyToken, reset, nextToken };
 }
