@@ -2,7 +2,7 @@
 
 - **Typ:** Kampaň · séria Realizácia mesiaca (1× mesačne)
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
-- **Komu:** Všetci odberatelia; mimo zákazníkov po realizácii
+- **Komu:** Všetci odberatelia vrátane zákazníkov
 - **Predmet:** Biela doska v ružovej kuchyni
 - **Preheader:** 🪨 V realizácii mesiaca ukážeme, ako biela doska upokojí výrazné ružové fronty.
 - **Šablóna:** `sablony/30-kampan-realizacia-februar.html`
@@ -14,7 +14,7 @@ Realizácia mesiaca · február 2027
 
 ### Séria (pill) a veta pod ňou
 Realizácia mesiaca
-Raz mesačne jedna skutočná kuchyňa a jej dekor vo veľkej ploche.
+Skutočná kuchyňa a jej dekor vo veľkej ploche.
 
 ### Nadpis
 Biela doska
@@ -60,7 +60,7 @@ Keď sú fronty výrazné, doska môže ustúpiť. Biela plocha dá farbe priest
 
 ### Tlačidlo (CTA)
 Objednať vzorku
-Prvá vzorka je zadarmo, platíte iba dopravu 2,50 €.
+Prvá vzorka je zadarmo. S kódom VITAJTE neplatíte ani poštovné. Môžete ho použiť na jednu objednávku.
 Pozrieť ďalšie realizácie
 
 ### P. S.
@@ -73,6 +73,6 @@ Sila technológie.
 
 ### Pätička — dôvod a odhlásenie
 Tento e-mail ste dostali, pretože ste sa prihlásili na odber noviniek Orostone.
-© 2026 Orostone, s. r. o.
+© 2027 Orostone, s. r. o.
 Sídlo: Landererova 8, 811 09 Bratislava
 Odhlásiť odber

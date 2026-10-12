@@ -2,7 +2,7 @@
 
 - **Typ:** Kampaň · séria Spolupráca (1× za štvrťrok)
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
-- **Komu:** Všetci odberatelia; mimo zákazníkov po realizácii
+- **Komu:** Všetci odberatelia vrátane zákazníkov
 - **Predmet:** Návrh kuchyne a doska: ako ich zladiť
 - **Preheader:** 🪨 Ukážeme, čo má štúdio o doske vedieť a kedy nás zapojiť do návrhu.
 - **Šablóna:** `sablony/33-kampan-spolupraca-studio.html`
@@ -60,6 +60,6 @@ Sila technológie.
 
 ### Pätička — dôvod a odhlásenie
 Tento e-mail ste dostali, pretože ste sa prihlásili na odber noviniek Orostone.
-© 2026 Orostone, s. r. o.
+© 2027 Orostone, s. r. o.
 Sídlo: Landererova 8, 811 09 Bratislava
 Odhlásiť odber

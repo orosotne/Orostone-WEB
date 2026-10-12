@@ -2,7 +2,7 @@
 
 - **Typ:** Kampaň · séria Pozvánka (podľa potreby)
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
-- **Komu:** Odberatelia s horizontom do 3 mesiacov alebo 3 až 12 mesiacov; mimo zákazníkov po realizácii
+- **Komu:** Odberatelia s horizontom do 3 mesiacov alebo 3 až 12 mesiacov
 - **Predmet:** Celé platne naživo v kaštieli v Bošanoch
 - **Preheader:** 🪨 Pripravíme dekory, ktoré vás zaujímajú, a vyberiete si konkrétnu platňu.
 - **Šablóna:** `sablony/31-kampan-pozvanka-showroom.html`
@@ -56,6 +56,6 @@ Sila technológie.
 
 ### Pätička — dôvod a odhlásenie
 Tento e-mail ste dostali, pretože ste sa prihlásili na odber noviniek Orostone.
-© 2026 Orostone, s. r. o.
+© 2027 Orostone, s. r. o.
 Sídlo: Landererova 8, 811 09 Bratislava
 Odhlásiť odber

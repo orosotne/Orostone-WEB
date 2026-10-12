@@ -451,7 +451,7 @@ def figure(src, alt, caption=None, top=20, w=520):
 
 
 def split(left, right, top=16):
-    """Dve karty vedľa seba: (title, [items]) — napr. Kde funguje / Na čo myslieť."""
+    """Dve karty vedľa seba: (title, [items]) — napr. Kde sa uplatní / Na čo myslieť."""
     def card(title, items, dark_label):
         lis = "".join(f"""
                     <tr><td valign="top" width="16" style="font-family:{F}; font-size:13px; font-weight:700; color:{GOLD_INK}; padding:6px 0;">&ndash;</td><td class="t-small" valign="top" style="font-family:{F}; font-size:13.5px; font-weight:400; line-height:21px; color:{BODY}; padding:6px 0 6px 6px;">{it}</td></tr>""" for it in items)
@@ -739,7 +739,7 @@ def signature(top=8):
 """
 
 
-def footer(reason="Tento e-mail ste dostali, pretože ste sa prihlásili na odber noviniek Orostone."):
+def footer(reason="Tento e-mail ste dostali, pretože ste sa prihlásili na odber noviniek Orostone.", year="2026"):
     return f"""
         <!-- FOOTER -->
         <tr>
@@ -786,7 +786,7 @@ def footer(reason="Tento e-mail ste dostali, pretože ste sa prihlásili na odbe
             <div style="font-family:{F}; font-size:12px; font-weight:300; line-height:18px; color:#9CA3AF;">{reason}</div>
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:10px;">
               <tr>
-                <td align="left" style="font-family:{F}; font-size:12px; font-weight:300; line-height:18px; color:#9CA3AF;">&copy; 2026 Orostone, s.&nbsp;r.&nbsp;o.<br />Sídlo: Landererova&nbsp;8, 811&nbsp;09&nbsp;Bratislava</td>
+                <td align="left" style="font-family:{F}; font-size:12px; font-weight:300; line-height:18px; color:#9CA3AF;">&copy; {year} Orostone, s.&nbsp;r.&nbsp;o.<br />Sídlo: Landererova&nbsp;8, 811&nbsp;09&nbsp;Bratislava</td>
                 <td align="right" valign="bottom" style="padding-left:12px; font-family:{F}; font-size:12px; font-weight:300; white-space:nowrap;"><a href="{{% unsubscribe_link %}}" style="color:#E5E7EB; text-decoration:underline;">Odhlásiť odber</a></td>
               </tr>
             </table>
@@ -900,12 +900,12 @@ write("01-welcome-vitajte.html", doc(
         "TYP:": "Automatizácia · Welcome séria 1/4",
         "SPÚŠŤAČ:": "Hneď po prihlásení na odber (popup, pätička, sekcia vzoriek)",
         "PREDMET:": "Vitajte v Orostone. Toto vám budeme posielať",
-        "PREHEADER:": "Dvakrát do mesiaca vám pošleme jednu vec, ktorá pomôže pri výbere pracovnej dosky. Výpredaje neposielame.",
+        "PREHEADER:": "Dvakrát do mesiaca vám pošleme jednu vec, ktorá pomôže pri výbere pracovnej dosky.",
         "CIEĽ:": "Nastaviť očakávania + prvý krok: objednať vzorku",
         "POZNÁMKA:": "Uvítací kód VITAJTE (doprava prvej vzorky zadarmo) musí v Shopify existovať skôr, než e-mail spustíš.",
     },
     "Vitajte v Orostone",
-    "Dvakrát do mesiaca vám pošleme jednu vec, ktorá pomôže pri výbere pracovnej dosky. Výpredaje neposielame.",
+    "Dvakrát do mesiaca vám pošleme jednu vec, ktorá pomôže pri výbere pracovnej dosky.",
     [
         header(),
         dark_band("Vitajte v Orostone",
@@ -914,12 +914,12 @@ write("01-welcome-vitajte.html", doc(
         hero(IMG + "uvitanie-ostrovcek.jpg", "Ostrovček zo sinterovaného kameňa v svetlej kuchyni", capsule="Realizácia Orostone", top=32),
         text([
             "ďakujeme, že ste sa prihlásili. Orostone je sinterovaný kameň pre kuchyne a interiéry – pracovné dosky, ostrovčeky a zásteny.",
-            "Newsletter píšeme pre ľudí, ktorí dosku práve vyberajú alebo ju budú vyberať o pár mesiacov. Výpredaje v ňom nenájdete. Nájdete v ňom to, čo pomáha rozhodnúť sa rozumne.",
+            "Newsletter píšeme pre ľudí, ktorí dosku práve vyberajú alebo ju budú vyberať o pár mesiacov. Nájdete v ňom to, čo pomáha rozhodnúť sa rozumne.",
         ]),
         section_title(None, "Čo vám budeme posielať", top=16),
         numbered([
             ("Realizácie", "Skutočné kuchyne: zadanie, zvolený dekor a výsledok vo veľkej ploche."),
-            ("Dekory v detaile", "Jeden dekor bez prikrášľovania – kresba, kombinácie so skrinkami a miesta, kde funguje najlepšie."),
+            ("Dekory v detaile", "Jeden dekor bez prikrášľovania – kresba, kombinácie so skrinkami a priestory, do ktorých sa hodí najlepšie."),
             ("Sprievodcovia", "Hrúbka, hrany, údržba aj cena. Vecne a bez technického žargónu."),
         ], note="Približne dvakrát do mesiaca. Odhlásiť sa dá jedným kliknutím v pätičke."),
         card_offer("Uvítací darček", "Vzorka bez poštovného",
@@ -965,7 +965,7 @@ write("02-welcome-list-od-mariana.html", doc(
 write("03-kampan-realizacia-mesiaca.html", doc(
     {
         "TYP:": "Kampaň · séria Realizácia mesiaca (1× mesačne)",
-        "SEGMENT:": "Všetci odberatelia; mimo zákazníkov po realizácii",
+        "SEGMENT:": "Všetci odberatelia vrátane zákazníkov",
         "PREDMET:": "Taj Mahal na dlhom ostrovčeku s drezom",
         "PREHEADER:": "V realizácii mesiaca ukážeme, prečo padla voľba na krémový dekor a ako pôsobí vo veľkej ploche.",
         "CIEĽ:": "Ukázať výsledok vo veľkej ploche → vzorka dekoru / pôdorys",
@@ -975,7 +975,7 @@ write("03-kampan-realizacia-mesiaca.html", doc(
     "V realizácii mesiaca ukážeme, prečo padla voľba na krémový dekor a ako pôsobí vo veľkej ploche.",
     [
         header("Realizácia mesiaca", "október 2026"),
-        eyebrow("Realizácia mesiaca", note="Raz mesačne jedna skutočná kuchyňa a jej dekor vo veľkej ploche."),
+        eyebrow("Realizácia mesiaca", note="Skutočná kuchyňa a jej dekor vo veľkej ploche."),
         headline("Taj Mahal<br />" + accent_light("na dlhom ostrovčeku.")),
         hero(IMG + "realizacia-taj-mahal-hero.jpg", "Dlhý ostrovček s drezom v dekore Taj Mahal", capsule="Taj Mahal", top=14),
         facts([("Dekor", "Taj Mahal"), ("Aplikácia", "Ostrovček s drezom"), ("Priestor", "Otvorená kuchyňa"), ("Sedenie", "Na konci ostrovčeka")]),
@@ -1019,13 +1019,13 @@ write("04-kampan-dekor-v-detaile.html", doc(
                   image=(shop_img("Roman_Travertine_1.png", "1776676498"), "Kuchyňa s ostrovčekom a pracovnou doskou Roman Travertine")),
         text([
             "Roman Travertine je dekor s architektonickým charakterom. Pripomína vrstvenie travertínu, no na rozdiel od pravého travertínu nepotrebuje impregnáciu.",
-            "Funguje tam, kde má povrch priniesť textúru a dojem prírodného materiálu bez prehnaného efektu.",
+            "Hodí sa tam, kde má povrch priniesť textúru a dojem prírodného materiálu bez prehnaného efektu.",
         ], top=28),
         section_title("01", "Vo veľkej ploche", top=8),
         figure(shop_img("mockup-ROMAN-TRAVERTINE.webp", "1773771257"), "Celá platňa Roman Travertine vedľa človeka na porovnanie veľkosti",
                caption="Celá platňa 3200 × 1600 mm · dlhé línie kresby na malej vzorke neuvidíte", top=16),
-        section_title("02", "Kde funguje a na čo myslieť"),
-        split(("Kde funguje", ["Pracovné dosky a ostrovčeky", "Obklad steny za linkou", "Interiéry s prírodným drevom a textúrovanou omietkou"]),
+        section_title("02", "Kde sa uplatní a na čo myslieť"),
+        split(("Kde sa uplatní", ["Pracovné dosky a ostrovčeky", "Obklad steny za linkou", "Interiéry s prírodným drevom a textúrovanou omietkou"]),
               ("Na čo myslieť", ["Smer kresby: pozdĺžne pásiky pôsobia inak na doske a na boku ostrovčeka.", "Rozloženie: pozrite si fotku celej platne a rezy naplánujte s kamenárom."])),
         pair((shop_img("Roman_Travertine_2.png", "1776676498", 520), "Bok ostrovčeka v dekore Roman Travertine"),
              (shop_img("Roman_Travertine_3.png", "1776676485", 520), "Ostrovček Roman Travertine zhora"),
@@ -1475,7 +1475,7 @@ write("18-kampan-zo-zakulisia.html", doc(
     "Minerály sa lisujú a potom spekajú pri teplote nad 1 200 °C. Preto doska nepotrebuje impregnáciu.",
     [
         header("Zo zákulisia", "november 2026"),
-        eyebrow("Zo zákulisia", note="Raz za štvrťrok: odkiaľ kameň pochádza a kto s ním pracuje."),
+        eyebrow("Zo zákulisia", note="Odkiaľ kameň pochádza a kto s ním pracuje."),
         headline("Z minerálov<br />" + accent_light("za pár hodín.")),
         text([
             "prírodný kameň sa tvorí milióny rokov. Sinterovaný kameň vzniká podobne – pôsobením tlaku a teploty na minerály. Celý proces však trvá len pár hodín. Takto prebieha.",
@@ -1493,8 +1493,8 @@ write("18-kampan-zo-zakulisia.html", doc(
         section_title(None, "Čo to znamená pre vašu kuchyňu", top=28),
         facts([("Nasiakavosť", "< 0,1 %"), ("Tepelná odolnosť", "> 300 °C"), ("Tvrdosť", "6–8 Mohs"), ("Zloženie", "100 % minerálov")], top=12),
         quote_dark("Prečo na tom záleží", 'Bez živíc a bez pórov nemá škvrna kam vniknúť a teplo nemá čo roztaviť. Preto doska <strong style="font-weight:700; font-style:normal; color:#ECD488;">nepotrebuje impregnáciu</strong> a horúci hrniec jej neublíži.', top=24),
-        cta("Objednať vzorku", SITE + "/vzorky", sub="Prvá vzorka je zadarmo, platíte iba dopravu 2,50 €.", link=("Prečítať viac o sinterovanom kameni", SITE + "/sinterovany-kamen"), width=260),
-        ps("Nabudúce v tejto sérii: ako kamenár premení platňu na hotovú dosku – od zamerania po montáž."),
+        cta("Objednať vzorku", SITE + "/vzorky", sub="Prvá vzorka je zadarmo. S kódom VITAJTE neplatíte ani poštovné. Môžete ho použiť na jednu objednávku.", link=("Prečítať viac o sinterovanom kameni", SITE + "/sinterovany-kamen"), width=260),
+        ps("Na <a href=\"" + SITE + "/blog/od-merania-po-instalaciu-proces-orostone\" target=\"_blank\" style=\"color:#1A1A1A; text-decoration:underline;\">blogu</a> sme opísali, ako kamenár premení platňu na hotovú dosku – od zamerania po montáž."),
         signature(top=0),
         footer(),
     ]))
@@ -1536,7 +1536,7 @@ write("19-kampan-sprievodca-cena.html", doc(
 write("20-kampan-realizacia-december.html", doc(
     {
         "TYP:": "Kampaň · séria Realizácia mesiaca (1× mesačne)",
-        "SEGMENT:": "Všetci odberatelia; mimo zákazníkov po realizácii",
+        "SEGMENT:": "Všetci odberatelia vrátane zákazníkov",
         "PREDMET:": "Biela doska a tmavé drevo",
         "PREHEADER:": "V realizácii mesiaca ukážeme ostrovček, kde kontrast drží celý priestor pokope.",
         "CIEĽ:": "Dôkaz z reálnej kuchyne → vzorka dekoru alebo pôdorys",
@@ -1546,7 +1546,7 @@ write("20-kampan-realizacia-december.html", doc(
     "V realizácii mesiaca ukážeme ostrovček, kde kontrast drží celý priestor pokope.",
     [
         header("Realizácia mesiaca", "december 2026"),
-        eyebrow("Realizácia mesiaca", note="Raz mesačne jedna skutočná kuchyňa a jej dekor vo veľkej ploche."),
+        eyebrow("Realizácia mesiaca", note="Skutočná kuchyňa a jej dekor vo veľkej ploche."),
         headline("Biela doska<br />" + accent_light("a tmavé drevo.")),
         hero(IMG + "realizacia-statuario.jpg", "Biely ostrovček zo sinterovaného kameňa s drevenými bokmi", capsule="Polaris Statuario White", top=14),
         facts([("Dekor", "Polaris Statuario White"), ("Aplikácia", "Ostrovček a zástena"), ("Varná doska", "V ostrovčeku"), ("Kombinácia", "Tmavé drevo")]),
@@ -1562,7 +1562,7 @@ write("20-kampan-realizacia-december.html", doc(
              (IMG + "realizacia-statuario-2.jpg", "Biela doska ostrovčeka a zástena za linkou"),
              caption="Ostrovček a zástena v jednom dekore"),
         quote_dark("Hlavná myšlienka", "Výrazná kresba potrebuje pokojné okolie. Tu ho tvorí tmavé drevo s jednoduchými frontami.", top=20),
-        cta("Objednať vzorku", SITE + "/vzorky", sub="Prvá vzorka je zadarmo, platíte iba dopravu 2,50 €.", link=("Pozrieť ďalšie realizácie", SITE + "/realizacie"), width=260),
+        cta("Objednať vzorku", SITE + "/vzorky", sub="Prvá vzorka je zadarmo. S kódom VITAJTE neplatíte ani poštovné. Môžete ho použiť na jednu objednávku.", link=("Pozrieť ďalšie realizácie", SITE + "/realizacie"), width=260),
         ps('Zvažujete podobný ostrovček? Pošlite pôdorys s rozmermi – <strong style="font-weight:700; color:#1A1A1A;">pripravíme orientačné cenové rozpätie</strong> presne pre vašu kuchyňu.'),
         signature(top=0),
         footer(),
@@ -1572,7 +1572,7 @@ write("20-kampan-realizacia-december.html", doc(
 write("21-kampan-december-podakovanie.html", doc(
     {
         "TYP:": "Kampaň · Sezónne (december)",
-        "SEGMENT:": "Všetci odberatelia a zákazníci",
+        "SEGMENT:": "Všetci odberatelia vrátane zákazníkov",
         "PREDMET:": "Ďakujeme za rok 2026",
         "PREHEADER:": "Posielame otváracie hodiny cez sviatky a jednu radu, ak plánujete kuchyňu na jar.",
         "CIEĽ:": "Vzťah a informácia. Bez zľavy.",
@@ -1830,7 +1830,7 @@ write_nb("27-automatizacia-b2b-showroom.html", doc(
 write_nb("28-kampan-kuchyna-na-jar.html", doc(
     {
         "TYP:": "Kampaň · Sezónne (január)",
-        "SEGMENT:": "Všetci odberatelia; mimo zákazníkov po realizácii a horizontu hotovo",
+        "SEGMENT:": "Všetci odberatelia vrátane zákazníkov",
         "PREDMET:": "Nová kuchyňa na jar: kedy začať",
         "PREHEADER:": "Ukážeme, v akom poradí postupovať, aby doska nebola posledná vec, na ktorú čakáte.",
         "CIEĽ:": "Začať výber teraz → vzorka, pôdorys",
@@ -1854,10 +1854,10 @@ write_nb("28-kampan-kuchyna-na-jar.html", doc(
             ("Výroba a montáž", "Výroba trvá 7–10 pracovných dní od schválenia výkresov. Samotná montáž je otázka hodín."),
         ], top=8),
         quote_dark("Dobré vedieť", "Termín výroby skriniek si overte vo svojom kuchynskom štúdiu. Dosku potom naplánujete podľa neho.", top=24),
-        cta("Objednať vzorku", SITE + "/vzorky", sub="Prvá vzorka je zadarmo, platíte iba dopravu 2,50 €.", link=("Prečítať celý postup", SITE + "/blog/od-merania-po-instalaciu-proces-orostone"), width=260),
+        cta("Objednať vzorku", SITE + "/vzorky", sub="Prvá vzorka je zadarmo. S kódom VITAJTE neplatíte ani poštovné. Môžete ho použiť na jednu objednávku.", link=("Prečítať celý postup", SITE + "/blog/od-merania-po-instalaciu-proces-orostone"), width=260),
         ps("Neviete sa rozhodnúť medzi dvoma dekormi? Odpovedzte na tento e-mail a pošlite fotku frontov. Poradíme, ktorý sa k nim hodí viac."),
         signature(top=0),
-        footer(),
+        footer(year="2027"),
     ]))
 
 # 29 – Kampaň január: Dekor v detaile – Appennino
@@ -1884,8 +1884,8 @@ write_nb("29-kampan-dekor-appennino.html", doc(
         section_title("01", "Vo veľkej ploche", top=8),
         figure(shop_img("mockup-Appennino.webp", "1773771257"), "Celá platňa Appennino vedľa človeka na porovnanie veľkosti",
                caption="Celá platňa 3200 × 1600 mm · každá platňa má vlastný priebeh žiliek", top=16),
-        section_title("02", "Kde funguje a na čo myslieť"),
-        split(("Kde funguje", ["Pracovné dosky a ostrovčeky", "Obklad stien a zásteny", "Kúpeľne aj podlahy"]),
+        section_title("02", "Kde sa uplatní a na čo myslieť"),
+        split(("Kde sa uplatní", ["Pracovné dosky a ostrovčeky", "Obklad stien a zásteny", "Kúpeľne aj podlahy"]),
               ("Na čo myslieť", ["Každá platňa má vlastnú kresbu. Konkrétnu si vyberiete v showroome v Bošanoch.", "Svetlo v kuchyni ovplyvní, ako bude svetlá plocha pôsobiť. Vzorku si pozrite ráno aj večer."])),
         pair((shop_img("Appeninno_2.png", "1776676869", 520), "Bok ostrovčeka v dekore Appennino"),
              (shop_img("Appeninno_3.png", "1776676869", 520), "Ostrovček Appennino zhora"),
@@ -1900,14 +1900,14 @@ write_nb("29-kampan-dekor-appennino.html", doc(
         cta("Objednať vzorku", SITE + "/vzorky", link=("Pozrieť dekor v e-shope", SITE + "/produkt/appennino"), top=26),
         ps('Konkrétnu platňu Appennino si môžete vybrať v showroome v Bošanoch. Napíšte nám vopred a <strong style="font-weight:700; color:#1A1A1A;">platne vám pripravíme</strong>.'),
         signature(top=0),
-        footer(),
+        footer(year="2027"),
     ]))
 
 # 30 – Kampaň február: Realizácia mesiaca
 write_nb("30-kampan-realizacia-februar.html", doc(
     {
         "TYP:": "Kampaň · séria Realizácia mesiaca (1× mesačne)",
-        "SEGMENT:": "Všetci odberatelia; mimo zákazníkov po realizácii",
+        "SEGMENT:": "Všetci odberatelia vrátane zákazníkov",
         "PREDMET:": "Biela doska v ružovej kuchyni",
         "PREHEADER:": "V realizácii mesiaca ukážeme, ako biela doska upokojí výrazné ružové fronty.",
         "CIEĽ:": "Dôkaz z reálnej kuchyne → vzorka dekoru alebo pôdorys",
@@ -1917,7 +1917,7 @@ write_nb("30-kampan-realizacia-februar.html", doc(
     "V realizácii mesiaca ukážeme, ako biela doska upokojí výrazné ružové fronty.",
     [
         header("Realizácia mesiaca", "február 2027"),
-        eyebrow("Realizácia mesiaca", note="Raz mesačne jedna skutočná kuchyňa a jej dekor vo veľkej ploche."),
+        eyebrow("Realizácia mesiaca", note="Skutočná kuchyňa a jej dekor vo veľkej ploche."),
         headline("Biela doska<br />" + accent_light("v ružovej kuchyni.")),
         hero(IMG + "realizacia-ruzova-hero.jpg", "Zaoblený ostrovček s bielou doskou a varnou doskou v kuchyni s ružovými frontami", capsule="Super White", top=14),
         facts([("Dekor", "Super White"), ("Aplikácia", "Linka a ostrovček"), ("Ostrovček", "Zaoblený"), ("Kombinácia", "Ružové fronty")]),
@@ -1933,17 +1933,17 @@ write_nb("30-kampan-realizacia-februar.html", doc(
              (IMG + "realizacia-ruzova-2.jpg", "Zaoblený ostrovček s bielou doskou pod lustrom"),
              caption="Linka s drezom a ostrovček v jednom dekore"),
         quote_dark("Hlavná myšlienka", "Keď sú fronty výrazné, doska môže ustúpiť. Biela plocha dá farbe priestor.", top=20),
-        cta("Objednať vzorku", SITE + "/vzorky", sub="Prvá vzorka je zadarmo, platíte iba dopravu 2,50 €.", link=("Pozrieť ďalšie realizácie", SITE + "/realizacie"), width=260),
+        cta("Objednať vzorku", SITE + "/vzorky", sub="Prvá vzorka je zadarmo. S kódom VITAJTE neplatíte ani poštovné. Môžete ho použiť na jednu objednávku.", link=("Pozrieť ďalšie realizácie", SITE + "/realizacie"), width=260),
         ps('Plánujete farebné fronty? Pošlite nám ich odtieň alebo fotku vzorky. <strong style="font-weight:700; color:#1A1A1A;">Poradíme, ktoré dekory sa k nim hodia.</strong>'),
         signature(top=0),
-        footer(),
+        footer(year="2027"),
     ]))
 
 # 31 – Kampaň február: Pozvánka do showroomu
 write_nb("31-kampan-pozvanka-showroom.html", doc(
     {
         "TYP:": "Kampaň · séria Pozvánka (podľa potreby)",
-        "SEGMENT:": "Odberatelia s horizontom do 3 mesiacov alebo 3 až 12 mesiacov; mimo zákazníkov po realizácii",
+        "SEGMENT:": "Odberatelia s horizontom do 3 mesiacov alebo 3 až 12 mesiacov",
         "PREDMET:": "Celé platne naživo v kaštieli v Bošanoch",
         "PREHEADER:": "Pripravíme dekory, ktoré vás zaujímajú, a vyberiete si konkrétnu platňu.",
         "CIEĽ:": "Návšteva showroomu → výber platne",
@@ -1971,7 +1971,7 @@ write_nb("31-kampan-pozvanka-showroom.html", doc(
         cta("Dohodnúť návštevu", SITE + "/kontakt", sub="SNP 113/1, Bošany. Návšteva je bezplatná a nezáväzná.", link=("Pozrieť realizácie", SITE + "/realizacie"), width=260),
         ps("Cesta do Bošian sa vám teraz nehodí? Odpovedzte na tento e-mail. Pošleme vám fotky celej platne vášho dekoru."),
         signature(top=0),
-        footer(),
+        footer(year="2027"),
     ]))
 
 # 32 – Kampaň marec: Dekor v detaile – Wild Forest
@@ -1998,8 +1998,8 @@ write_nb("32-kampan-dekor-wild-forest.html", doc(
         section_title("01", "Vo veľkej ploche", top=8),
         figure(shop_img("mockup-WILD-FOREST.webp", "1773771468"), "Celá platňa Wild Forest vedľa človeka na porovnanie veľkosti",
                caption="Celá platňa 3200 × 1600 mm · vzorka 10 × 10 cm celý priebeh kresby nezachytí", top=16),
-        section_title("02", "Kde funguje a na čo myslieť"),
-        split(("Kde funguje", ["Ostrovčeky a obklady stien", "Kúpeľne a wellness", "Interiéry s dubom a zeleňou"]),
+        section_title("02", "Kde sa uplatní a na čo myslieť"),
+        split(("Kde sa uplatní", ["Ostrovčeky a obklady stien", "Kúpeľne a wellness", "Interiéry s dubom a zeleňou"]),
               ("Na čo myslieť", ["Vzorka ukáže farbu a povrch, celý priebeh kresby uvidíte až na platni.", "Rozloženie platní naplánujte s kamenárom, aby výrazné miesta kresby boli tam, kde ich chcete."])),
         pair((shop_img("Wild_Forest_3.png", "1776677454", 520), "Ostrovček Wild Forest zhora"),
              (shop_img("Wild_Forest_4.png", "1776677454", 520), "Pracovná doska Wild Forest s drezom"),
@@ -2014,14 +2014,14 @@ write_nb("32-kampan-dekor-wild-forest.html", doc(
         cta("Objednať vzorku", SITE + "/vzorky", link=("Pozrieť dekor v e-shope", SITE + "/produkt/wild-forest"), top=26),
         ps('Celý priebeh kresby Wild Forest uvidíte na platni v showroome v Bošanoch. Napíšte nám vopred a <strong style="font-weight:700; color:#1A1A1A;">platňu vám pripravíme</strong>.'),
         signature(top=0),
-        footer(),
+        footer(year="2027"),
     ]))
 
 # 33 – Kampaň marec: Spolupráca so štúdiom
 write_nb("33-kampan-spolupraca-studio.html", doc(
     {
         "TYP:": "Kampaň · séria Spolupráca (1× za štvrťrok)",
-        "SEGMENT:": "Všetci odberatelia; mimo zákazníkov po realizácii",
+        "SEGMENT:": "Všetci odberatelia vrátane zákazníkov",
         "PREDMET:": "Návrh kuchyne a doska: ako ich zladiť",
         "PREHEADER:": "Ukážeme, čo má štúdio o doske vedieť a kedy nás zapojiť do návrhu.",
         "CIEĽ:": "Dostať Orostone do návrhu kuchyne včas → kontakt na štúdio, vzorky, pôdorys",
@@ -2048,7 +2048,7 @@ write_nb("33-kampan-spolupraca-studio.html", doc(
         cta("Napísať nám", SITE + "/kontakt", link=("Objednať vzorky", SITE + "/vzorky"), width=220),
         ps("Ste kuchynské štúdio alebo architekt? Napíšte mi. Pošlem vám technický list a vzorky dekorov pre vaše štúdio."),
         signature(top=0),
-        footer(),
+        footer(year="2027"),
     ]))
 
 REASON_DOPYT = "Tento e-mail ste dostali, pretože ste nás kontaktovali kvôli pracovnej doske."

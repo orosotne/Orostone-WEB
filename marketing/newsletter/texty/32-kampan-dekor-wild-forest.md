@@ -31,10 +31,10 @@ Vzor je veľkoplošný, preto vynikne až na väčšej súvislej ploche – na o
 Celá platňa 3200 × 1600 mm · vzorka 10 × 10 cm celý priebeh kresby nezachytí
 
 ### Nadpis sekcie
-02 – Kde funguje a na čo myslieť
+02 – Kde sa uplatní a na čo myslieť
 
 ### Dve karty
-Kde funguje
+Kde sa uplatní
 – Ostrovčeky a obklady stien
 – Kúpeľne a wellness
 – Interiéry s dubom a zeleňou
@@ -83,6 +83,6 @@ Sila technológie.
 
 ### Pätička — dôvod a odhlásenie
 Tento e-mail ste dostali, pretože ste sa prihlásili na odber noviniek Orostone.
-© 2026 Orostone, s. r. o.
+© 2027 Orostone, s. r. o.
 Sídlo: Landererova 8, 811 09 Bratislava
 Odhlásiť odber

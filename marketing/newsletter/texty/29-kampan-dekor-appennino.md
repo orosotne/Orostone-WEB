@@ -31,10 +31,10 @@ Hodí sa do kuchýň, kde má doska priestor rozjasniť a nepútať na seba pozo
 Celá platňa 3200 × 1600 mm · každá platňa má vlastný priebeh žiliek
 
 ### Nadpis sekcie
-02 – Kde funguje a na čo myslieť
+02 – Kde sa uplatní a na čo myslieť
 
 ### Dve karty
-Kde funguje
+Kde sa uplatní
 – Pracovné dosky a ostrovčeky
 – Obklad stien a zásteny
 – Kúpeľne aj podlahy
@@ -83,6 +83,6 @@ Sila technológie.
 
 ### Pätička — dôvod a odhlásenie
 Tento e-mail ste dostali, pretože ste sa prihlásili na odber noviniek Orostone.
-© 2026 Orostone, s. r. o.
+© 2027 Orostone, s. r. o.
 Sídlo: Landererova 8, 811 09 Bratislava
 Odhlásiť odber
