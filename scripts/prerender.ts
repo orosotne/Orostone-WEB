@@ -634,8 +634,8 @@ function prerenderInfoPage(p: InfoPage): void {
 // ---------------------------------------------------------------------------
 
 function prerenderHome(): void {
-  const topProducts = products.slice(0, 6);
-  const productLinksHtml = topProducts
+  // Every decor, like the decor rack on the page; a decor missing here has far fewer crawl paths
+  const productLinksHtml = products
     .map((p) => `<li><a href="/produkt/${p.id}">${esc(p.name)}</a></li>`)
     .join('');
 
