@@ -71,7 +71,10 @@ CREATE TABLE newsletter_subscribers (
     is_active BOOLEAN DEFAULT TRUE,
     -- Čas posledného pokusu o odber v Klaviyu (subscribe-newsletter), dátum súhlasu je v subscribed_at.
     -- Migrácia 20261011_newsletter_klaviyo_attempt.sql.
-    klaviyo_attempted_at TIMESTAMPTZ
+    klaviyo_attempted_at TIMESTAMPTZ,
+    -- Kedy nočná synchronizácia overila v Klaviyu posledný pokus o odber (overený, keď
+    -- klaviyo_checked_at >= klaviyo_attempted_at). Migrácia 20261013_newsletter_klaviyo_checked.sql.
+    klaviyo_checked_at TIMESTAMPTZ
 );
 
 -- ===========================================

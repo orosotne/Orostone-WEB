@@ -9,10 +9,13 @@
 //   1. Aktívne riadky overí v Klaviyu po 50 adresách. Kto je odhlásený alebo potlačený
 //      (celkovo alebo zo zoznamu „Newsletter – web“), toho riadok zmaže.
 //   2. Zmaže aj neaktívne riadky, ktoré sú odhlásené viac ako 30 dní.
-//   3. Overí odbery, ktoré subscribe-newsletter za posledný deň poslal do Klaviya (stĺpec
-//      klaviyo_attempted_at): sú v zozname „Newsletter – web“ prihlásené? Klaviyo úlohu
-//      odberu spracúva aj niekoľko minút, preto to neoveruje subscribe-newsletter hneď po
-//      odbere, ale až táto nočná kontrola. Kto chýba, toho tím dostane v jednom upozornení.
+//   3. Overí pokusy o odber, ktoré subscribe-newsletter poslal do Klaviya (stĺpec
+//      klaviyo_attempted_at) a sú staršie ako hodina: sú v zozname „Newsletter – web“
+//      prihlásené? Klaviyo úlohu odberu spracúva aj niekoľko minút, preto to neoveruje
+//      subscribe-newsletter hneď po odbere, ale až táto nočná kontrola. Kto chýba, toho tím
+//      dostane v jednom upozornení. Overený pokus si označí v klaviyo_checked_at (migrácia
+//      20261013_newsletter_klaviyo_checked.sql), každý pokus sa tak overí raz. Vynechaný alebo
+//      neúspešný beh nič nevynechá: neoverený pokus počká na najbližší úspešný beh.
 //
 // Volá ju len workflow so service-role kľúčom. Bez Klaviya (chýba zoznam alebo kľúč)
 // nič nezmaže a vráti 503: workflow zčervená, inak by sa odhlásení potichu prestali mazať.
@@ -38,12 +41,8 @@ const CHUNK = 50;
 const PAGE = 1000;
 const RETENTION_DAYS = 30;
 const ALERT_EMAIL = 'dopyt@orostone.sk';
-/**
- * Okno nočnej kontroly odberov (krok 3) podľa klaviyo_attempted_at, v hodinách dozadu. Poslednú
- * hodinu necháme na ďalšiu noc, Klaviyo úlohu odberu ešte môže spracúvať. 26 hodín pokryje aj
- * meškanie plánovaného behu na GitHube, odber z prekryvu sa tak skontroluje dvakrát, nie nikdy.
- */
-const VERIFY_WINDOW_HOURS = { from: 26, to: 1 } as const;
+/** Pokus o odber mladší ako hodina necháme na ďalšiu noc, Klaviyo ho ešte môže spracúvať. */
+const VERIFY_AFTER_MS = 60 * 60 * 1000;
 
 /**
  * Profily z Klaviya (e-mail malými písmenami → e-mailový marketing) pre adresy, po 50.
@@ -82,27 +81,30 @@ async function notSubscribedInList(emails: string[]): Promise<string[]> {
 }
 
 /**
- * Jedno upozornenie tímu za noc s adresami, ktoré Klaviyo neprihlásilo. Rovnaký zoznam v ten istý
+ * Jedno upozornenie tímu za beh s adresami, ktoré Klaviyo neprihlásilo. Rovnaký zoznam v ten istý
  * deň (UTC) odíde najviac raz, aj keď workflow niekto spustí znova (Resend Idempotency-Key).
+ * Vráti, či upozornenie odišlo: neodoslané pokusy ostanú neoverené a skúsia sa v ďalšom behu.
  * Nikdy nehádže: synchronizácia odhlásených už prebehla.
  */
-async function alertNotSubscribed(emails: string[]): Promise<void> {
+async function alertNotSubscribed(emails: string[]): Promise<boolean> {
   const day = new Date().toISOString().slice(0, 10);
   const digest = new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(emails.join(','))));
   const hash = Array.from(digest.slice(0, 12), (b) => b.toString(16).padStart(2, '0')).join('');
   try {
-    await sendEmail({
+    const sent = await sendEmail({
       from: 'Orostone web <noreply@orostone.sk>',
       to: ALERT_EMAIL,
       subject: 'Newsletter: odbery z webu chýbajú v Klaviyu',
-      html: `<p>Tieto e-maily sa za posledný deň prihlásili na webe na odber a web ich poslal do Klaviya, ale v zozname „Newsletter – web“ nie sú prihlásené (chýbajú v ňom alebo nemajú súhlas so zasielaním e-mailov):</p>
+      html: `<p>Tieto e-maily sa prihlásili na webe na odber a web ich poslal do Klaviya, ale v zozname „Newsletter – web“ nie sú prihlásené (chýbajú v ňom alebo nemajú súhlas so zasielaním e-mailov):</p>
 <ul>${emails.map((e) => `<li>${escapeHtml(e)}</li>`).join('')}</ul>
 <p>V databáze webu sú odbery uložené. Pozrite si ich profily v Klaviyu a chýbajúce pridajte do zoznamu ručne (Zoznamy → Newsletter – web).</p>`,
       onMissingKey: 'skip',
       idempotencyKey: `newsletter-overenie-${day}-${hash}`,
     });
+    return sent.ok;
   } catch (err) {
     console.error('[sync-newsletter-unsubscribes] Upozornenie sa neodoslalo:', err instanceof Error ? err.message : err);
+    return false;
   }
 }
 
@@ -152,35 +154,49 @@ serve(async (req) => {
       .lt('unsubscribed_at', cutoff);
     if (oldError) throw new Error(`delete inactive: ${oldError.message}`);
 
-    // 3. Odbery poslané do Klaviya za posledný deň: sú v zozname prihlásené? Odhlásených krok 1
-    //    už zmazal, nebudú v upozornení.
-    const hoursAgo = (h: number) => new Date(Date.now() - h * 3_600_000).toISOString();
-    const [verifyFrom, verifyTo] = [hoursAgo(VERIFY_WINDOW_HOURS.from), hoursAgo(VERIFY_WINDOW_HOURS.to)];
-    const recentEmails = new Set<string>();
+    // 3. Neoverené pokusy o odber staršie ako hodina: sú v zozname prihlásené? Odhlásených krok 1
+    //    už zmazal, nebudú v upozornení. Pokus je overený, keď klaviyo_checked_at >= klaviyo_attempted_at.
+    //    PostgREST nevie porovnať dva stĺpce, preto ich porovnáme tu (tabuľka je malá).
+    const verifyBefore = new Date(Date.now() - VERIFY_AFTER_MS).toISOString();
+    const pendingByEmail = new Map<string, string[]>();
     for (let from = 0; ; from += PAGE) {
       const { data, error } = await supabase
         .from('newsletter_subscribers')
-        .select('id, email')
+        .select('id, email, klaviyo_attempted_at, klaviyo_checked_at')
         .eq('is_active', true)
-        .gte('klaviyo_attempted_at', verifyFrom)
-        .lt('klaviyo_attempted_at', verifyTo)
+        .lt('klaviyo_attempted_at', verifyBefore)
         .order('id')
         .range(from, from + PAGE - 1);
-      if (error) throw new Error(`select recent: ${error.message}`);
+      if (error) throw new Error(`select pending: ${error.message}`);
       for (const row of data ?? []) {
+        if (row.klaviyo_checked_at && Date.parse(row.klaviyo_checked_at) >= Date.parse(row.klaviyo_attempted_at)) continue;
         const email = String(row.email ?? '').trim().toLowerCase();
-        if (email && filterSafe(email)) recentEmails.add(email);
+        if (!email || !filterSafe(email)) continue;
+        pendingByEmail.set(email, [...(pendingByEmail.get(email) ?? []), row.id]);
       }
       if (!data || data.length < PAGE) break;
     }
-    const notSubscribed = await notSubscribedInList([...recentEmails]);
-    if (notSubscribed.length) await alertNotSubscribed(notSubscribed);
+    const pending = [...pendingByEmail.keys()];
+    const notSubscribed = await notSubscribedInList(pending);
+    const alerted = notSubscribed.length ? await alertNotSubscribed(notSubscribed) : true;
+    // Overené sú prihlásené adresy a chýbajúce, o ktorých upozornenie odišlo. Podmienka na čas pokusu
+    // nechá pokus z opakovaného odoslania formulára počas behu na ďalší beh.
+    const done = pending.filter((email) => alerted || !notSubscribed.includes(email)).flatMap((email) => pendingByEmail.get(email) ?? []);
+    const checkedAt = new Date().toISOString();
+    for (let i = 0; i < done.length; i += 100) {
+      const { error } = await supabase
+        .from('newsletter_subscribers')
+        .update({ klaviyo_checked_at: checkedAt })
+        .in('id', done.slice(i, i + 100))
+        .lt('klaviyo_attempted_at', verifyBefore);
+      if (error) throw new Error(`mark checked: ${error.message}`);
+    }
 
     const result = {
       checked: idsByEmail.size,
       removed: ids.length,
       removedInactive: count ?? 0,
-      verified: recentEmails.size,
+      verified: pending.length,
       notSubscribed: notSubscribed.length,
     };
     console.log('[sync-newsletter-unsubscribes]', JSON.stringify(result));
