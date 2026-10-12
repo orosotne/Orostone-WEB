@@ -218,14 +218,8 @@ export const SiteHeader: React.FC = () => {
               </span>
             )}
           </button>
-          {/* Homepage above the fold offers only the free sample; other pages keep the price CTA. */}
-          <ActionButton
-            variant="gold"
-            size="sm"
-            to={isHomepage ? '/vzorky' : PRICE_URL('hlavicka')}
-            className="ml-2 hidden md:inline-flex"
-          >
-            {isHomepage ? 'Vzorka zadarmo' : 'Orientačná cena'}
+          <ActionButton variant="gold" size="sm" to="/vzorky" className="ml-2 hidden md:inline-flex">
+            Vzorka zadarmo
           </ActionButton>
           <button
             type="button"
