@@ -41,12 +41,13 @@ export const SHIPPING_DETAILS_LD = SHIPPING_OPTIONS.map(({ name, rate }) => ({
   },
 }));
 
-/** 14-day withdrawal, return paid by the customer. No returnMethod: slabs go back by carrier pickup, not by mail. */
+/** 14-day withdrawal, return paid by the customer. ReturnByMail is Google's value for any shipped return, carrier pickup included. */
 export const RETURN_POLICY_LD = {
   '@type': 'MerchantReturnPolicy',
   applicableCountry: 'SK',
   returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
   merchantReturnDays: 14,
+  returnMethod: 'https://schema.org/ReturnByMail',
   returnFees: 'https://schema.org/ReturnFeesCustomerResponsibility',
 };
 
