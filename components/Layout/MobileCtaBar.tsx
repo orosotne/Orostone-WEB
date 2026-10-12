@@ -5,7 +5,7 @@ import { ActionButton } from '../Design';
 // Pages without the bar: product detail has its own sticky cart bar, checkout and legal pages stay clean.
 const HIDDEN_PREFIXES = ['/produkt/', '/vzorky', '/checkout', '/objednavka-dokoncena', '/vop', '/ochrana-sukromia', '/cookies', '/odstupenie-od-zmluvy', '/reklamacie', '/doprava', '/podmienky-rezervacie-ceny'];
 
-/** Mobile/tablet bottom bar (below lg): gold price CTA + phone. Slides in after 400 px of scroll. */
+/** Mobile/tablet bottom bar (below lg): gold free-sample CTA + phone. Slides in after 400 px of scroll. */
 export const MobileCtaBar: React.FC = () => {
   const { pathname } = useLocation();
   const [visible, setVisible] = useState(false);
@@ -35,8 +35,8 @@ export const MobileCtaBar: React.FC = () => {
       // inert while slid away: its links must not be reachable by Tab or a screen reader
       inert={!visible}
     >
-      <ActionButton variant="gold" to="https://oro-klient.orostone.sk/?od=mobil-lista" className="min-h-[50px] flex-1">
-        Získať orientačnú cenu
+      <ActionButton variant="gold" to="/vzorky" className="min-h-[50px] flex-1">
+        Vzorka zadarmo
       </ActionButton>
       <a
         href="tel:+421917588738"

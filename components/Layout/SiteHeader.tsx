@@ -35,8 +35,9 @@ const HiringDot: React.FC = () => (
   <span className="inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-gold" aria-hidden="true" />
 );
 
+// 40 px on phones so the free-sample button fits next to the icons; 44 px from 640 px.
 const iconBtn =
-  'os-press grid h-11 w-11 place-items-center rounded-full hover:bg-brand-dark/5 active:bg-brand-dark/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark';
+  'os-press grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-full hover:bg-brand-dark/5 active:bg-brand-dark/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark';
 
 // Search panel and drawer unroll from the header's lower edge and roll back up the same way.
 // With reduced motion they only cross-fade.
@@ -175,9 +176,9 @@ export const SiteHeader: React.FC = () => {
         aria-hidden="true"
         className={`pointer-events-none absolute inset-0 -z-10 transition-opacity duration-300 ${layerOpen ? 'bg-brand-light' : 'os-glass'} ${isTransparent ? 'opacity-0' : 'opacity-100'}`}
       />
-      <Container className="flex h-16 items-center gap-6 lg:h-20 min-[1360px]:gap-9">
+      <Container className="flex h-16 items-center gap-3 sm:gap-6 lg:h-20 min-[1360px]:gap-9">
         <Link to="/" className="flex-none" aria-label="OROSTONE, hlavná stránka">
-          <img src="/images/orostone-logo.svg" alt="OROSTONE" width={136} height={27} className="h-auto w-[118px] lg:w-[136px]" />
+          <img src="/images/orostone-logo.svg" alt="OROSTONE" width={136} height={27} className="h-auto w-[96px] sm:w-[118px] lg:w-[136px]" />
         </Link>
 
         {/* Desktop navigation (from 1360 px) */}
@@ -218,8 +219,15 @@ export const SiteHeader: React.FC = () => {
               </span>
             )}
           </button>
-          <ActionButton variant="gold" size="sm" to="/vzorky" className="ml-2 hidden md:inline-flex">
-            Vzorka zadarmo
+          {/* On phones the label wraps to two short lines so it fits beside search, cart and menu. */}
+          <ActionButton
+            variant="gold"
+            size="sm"
+            to="/vzorky"
+            className="text-center md:ml-2 max-md:min-h-[40px] max-md:px-2.5 max-md:text-[0.6rem] max-md:leading-[1.15] max-md:tracking-[0.08em]"
+          >
+            Vzorka
+            <br className="md:hidden" /> zadarmo
           </ActionButton>
           <button
             type="button"
