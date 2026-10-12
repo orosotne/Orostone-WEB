@@ -31,7 +31,8 @@
 // KLAVIYO (od 10. 10. 2026), serverové API podľa odporúčania Klaviya:
 //   KLAVIYO_NEWSLETTER_LIST_ID  ID zoznamu „Newsletter – web“ (nie je tajné).
 //   KLAVIYO_INQUIRY_LIST_ID     ID zoznamu „Dopyty – LP1, LP2, e-mail (len k dopytu)“ (nie je
-//                               tajné, nepovinné). Vyradenie z neho je opísané nižšie.
+//                               tajné, nepovinné, bez nastavenia TKAHuh). Vyradenie z neho je
+//                               opísané nižšie.
 //   KLAVIYO_PRIVATE_API_KEY     súkromný kľúč Klaviya (Lists, Profiles, Subscriptions:
 //                               Full). Len v Supabase secrets, nikdy v kóde ani v logu.
 //   Kým nie sú nastavené zoznam „Newsletter – web“ a kľúč, funkcia sa správa ako doteraz
@@ -64,8 +65,8 @@
 //   Keď Klaviyo odber prijme alebo je e-mail v zozname už prihlásený, funkcia ho na pozadí
 //   vyradí zo zoznamu „Dopyty“ (KLAVIYO_INQUIRY_LIST_ID): kto dal súhlas s newsletterom,
 //   patrí len medzi odberateľov, inak by mu popri newsletteri chodili aj e-maily k dopytu.
-//   Kto v zozname nie je, tomu sa nič nestane. Bez nastaveného ID sa nevyraďuje. Keď
-//   vyradenie neprejde ani na druhý pokus, tím dostane upozornenie.
+//   Kto v zozname nie je, tomu sa nič nestane. Prázdne KLAVIYO_INQUIRY_LIST_ID vyraďovanie
+//   vypne. Keď vyradenie neprejde ani na druhý pokus, tím dostane upozornenie.
 //
 // STROP NA ODBERY (od 11. 10. 2026): druhá poistka za Turnstile, napr. keď niekto overenia
 //   rieši ručne alebo cez platenú službu. Nad stropom

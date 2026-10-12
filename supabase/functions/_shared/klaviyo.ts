@@ -6,13 +6,14 @@
 //
 //   KLAVIYO_NEWSLETTER_LIST_ID  ID zoznamu „Newsletter – web“ (nie je tajné).
 //   KLAVIYO_INQUIRY_LIST_ID     ID zoznamu „Dopyty – LP1, LP2, e-mail (len k dopytu)“ (nie je
-//                               tajné, nepovinné). Kto sa prihlási na odber, toho z neho
+//                               tajné, nepovinné). Bez nastavenia platí TKAHuh, prázdna hodnota
+//                               vyraďovanie vypne. Kto sa prihlási na odber, toho z neho
 //                               subscribe-newsletter vyradí.
 //   KLAVIYO_PRIVATE_API_KEY     súkromný kľúč Klaviya (Lists, Profiles, Subscriptions:
 //                               Full). Len v Supabase secrets, nikdy v kóde ani v logu.
 
 export const KLAVIYO_LIST_ID = Deno.env.get('KLAVIYO_NEWSLETTER_LIST_ID')?.trim() || '';
-export const KLAVIYO_INQUIRY_LIST_ID = Deno.env.get('KLAVIYO_INQUIRY_LIST_ID')?.trim() || '';
+export const KLAVIYO_INQUIRY_LIST_ID = (Deno.env.get('KLAVIYO_INQUIRY_LIST_ID') ?? 'TKAHuh').trim();
 const KLAVIYO_API_KEY = Deno.env.get('KLAVIYO_PRIVATE_API_KEY')?.trim() || '';
 const KLAVIYO_REVISION = '2026-07-15';
 
