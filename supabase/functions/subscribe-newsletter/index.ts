@@ -14,7 +14,7 @@
 // DEPLOYMENT:
 //   supabase functions deploy subscribe-newsletter --project-ref <ref>
 //   Najprv migrácie 20261011_newsletter_klaviyo_attempt.sql a
-//   20261011_newsletter_subscribe_function.sql: odber sa zapisuje cez funkciu
+//   20261012_newsletter_subscribe_function.sql: odber sa zapisuje cez funkciu
 //   newsletter_subscribe. A až po nasadení webu, ktorý posiela turnstileToken
 //   (pätička, formulár na vzorku): starý web token neposiela a dostal by 403.
 //
@@ -118,7 +118,7 @@ const RESUBMIT_WINDOW_MS = 30 * 60 * 1000;
  */
 const SUBSCRIBE_LIMITS = { hour: 10, day: 30 } as const;
 
-/** Výsledok databázovej funkcie newsletter_subscribe (migrácia 20261011_newsletter_subscribe_function.sql). */
+/** Výsledok databázovej funkcie newsletter_subscribe (migrácia 20261012_newsletter_subscribe_function.sql). */
 interface SubscribeOutcome {
   outcome: 'inserted' | 'reactivated' | 'active' | 'limit';
   id: string | null;
@@ -471,7 +471,7 @@ serve(async (req) => {
     });
 
     // 1. Zápis odberu cez databázovú funkciu newsletter_subscribe (migrácia
-    //    20261011_newsletter_subscribe_function.sql). Zámok v nej pustí naraz jeden odber,
+    //    20261012_newsletter_subscribe_function.sql). Zámok v nej pustí naraz jeden odber,
     //    takže strop aj zápis sú atomické: pri súbežnom návale prejde presne prvých
     //    SUBSCRIBE_LIMITS odberov a duplicitný e-mail nevznikne (predtým to strážil
     //    23505 z UNIQUE(email), fix /ultrareview bug_008).

@@ -8,7 +8,7 @@
 --
 -- Stĺpec je voliteľný a starší kód ho ignoruje. Migráciu treba spustiť pred nasadením
 -- subscribe-newsletter: odber zapisuje funkcia newsletter_subscribe (migrácia
--- 20261011_newsletter_subscribe_function.sql), ktorá stĺpec používa.
+-- 20261012_newsletter_subscribe_function.sql), ktorá stĺpec používa.
 
 ALTER TABLE public.newsletter_subscribers
   ADD COLUMN IF NOT EXISTS klaviyo_attempted_at TIMESTAMPTZ;

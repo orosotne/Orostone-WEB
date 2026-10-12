@@ -151,7 +151,7 @@ CREATE POLICY "Allow authenticated full access" ON newsletter_subscribers
     USING (auth.role() = 'authenticated');
 
 -- Odber so stropom v jednej transakcii (volá ju len subscribe-newsletter cez service_role).
--- Popis a výsledky: supabase/migrations/20261011_newsletter_subscribe_function.sql.
+-- Popis a výsledky: supabase/migrations/20261012_newsletter_subscribe_function.sql.
 CREATE OR REPLACE FUNCTION public.newsletter_subscribe(
   p_email TEXT,
   p_name TEXT,
