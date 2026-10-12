@@ -1,38 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Container, Section, SectionHeader, TextLink } from '../Design';
-import { useInstagramFeed, getPostImageUrl } from '../../hooks/useInstagramFeed';
+import feed from '../../data/instagram-feed.json';
 import { useOffscreen } from './useOffscreen';
 
 const PROFILE = 'https://www.instagram.com/orostone_/';
 
-/** Latest Instagram posts as portrait 4:5 tiles (as on Instagram) in a slow right-to-left marquee (pauses on hover, focus, off-screen and with reduced motion). */
+/** Latest Instagram posts as portrait 4:5 tiles (as on Instagram) in a slow right-to-left marquee (pauses on hover, focus, off-screen and with reduced motion). The posts and their 600×750 webp tiles are taken at build time (scripts/sync-instagram.ts), so the strip shows them at once instead of waiting for the Instagram API. */
 export const HomeInstagram: React.FC = () => {
   const { ref, off } = useOffscreen<HTMLDivElement>();
-  const [enabled, setEnabled] = useState(false);
-  const { posts } = useInstagramFeed(8, enabled);
-
-  // Fetch the feed only when the section gets close to the viewport
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || !('IntersectionObserver' in window)) {
-      setEnabled(true);
-      return;
-    }
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setEnabled(true);
-          io.disconnect();
-        }
-      },
-      { rootMargin: '600px' },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [ref]);
 
   const tile = (clone: boolean) =>
-    posts.map((post) => (
+    feed.map((post) => (
       <a
         key={`${clone ? 'c' : 'o'}-${post.id}`}
         className={`hp-ig ${clone ? 'hp-ig-clone' : ''}`}
@@ -43,8 +21,8 @@ export const HomeInstagram: React.FC = () => {
         tabIndex={clone ? -1 : undefined}
         aria-label={clone ? undefined : 'Príspevok Orostone na Instagrame'}
       >
-        {/* eager: the strip moves sideways, so lazy images would come in blank; the feed itself loads only near the viewport */}
-        <img src={getPostImageUrl(post)} alt="" loading="eager" decoding="async" width={280} height={350} />
+        {/* eager: the strip moves sideways, so lazy images would come in blank; low priority keeps them behind the photos higher up */}
+        <img src={post.image} alt="" loading="eager" fetchPriority="low" decoding="async" width={280} height={350} />
       </a>
     ));
 

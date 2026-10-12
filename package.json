@@ -9,11 +9,12 @@
   "scripts": {
     "dev": "vite",
     "typecheck": "tsc --noEmit",
-    "build": "tsc --noEmit && tsx scripts/sync-shop-fallback.ts && vite build && tsx scripts/prerender.ts && tsx scripts/generate-seo-artifacts.ts && tsx scripts/validate-dist.ts",
+    "build": "tsc --noEmit && tsx scripts/sync-shop-fallback.ts && tsx scripts/sync-instagram.ts && vite build && tsx scripts/prerender.ts && tsx scripts/generate-seo-artifacts.ts && tsx scripts/validate-dist.ts",
     "indexnow": "tsx scripts/indexnow-ping.ts",
     "seo:diff": "tsx scripts/seo-diff.ts",
     "preview": "vite preview",
-    "sync:shop-fallback": "tsx scripts/sync-shop-fallback.ts"
+    "sync:shop-fallback": "tsx scripts/sync-shop-fallback.ts",
+    "sync:instagram": "tsx scripts/sync-instagram.ts"
   },
   "dependencies": {
     "@marsidev/react-turnstile": "^1.4.2",
