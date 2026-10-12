@@ -4,7 +4,7 @@
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
 - **Komu:** Odberatelia s horizontom do 3 mesiacov alebo 3 až 12 mesiacov; mimo zákazníkov po realizácii
 - **Predmet:** Celé platne naživo v kaštieli v Bošanoch
-- **Preheader:** Pripravíme dekory, ktoré vás zaujímajú, a vyberiete si konkrétnu platňu.
+- **Preheader:** 🪨 Pripravíme dekory, ktoré vás zaujímajú, a vyberiete si konkrétnu platňu.
 - **Šablóna:** `sablony/31-kampan-pozvanka-showroom.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

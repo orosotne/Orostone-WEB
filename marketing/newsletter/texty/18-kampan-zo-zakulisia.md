@@ -4,7 +4,7 @@
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
 - **Komu:** Všetci odberatelia
 - **Predmet:** Ako vzniká sinterovaný kameň
-- **Preheader:** Minerály sa lisujú a potom spekajú pri teplote nad 1 200 °C. Preto doska nepotrebuje impregnáciu.
+- **Preheader:** 🪨 Minerály sa lisujú a potom spekajú pri teplote nad 1 200 °C. Preto doska nepotrebuje impregnáciu.
 - **Šablóna:** `sablony/18-kampan-zo-zakulisia.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

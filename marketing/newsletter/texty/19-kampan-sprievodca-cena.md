@@ -4,7 +4,7 @@
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
 - **Komu:** Všetci odberatelia; mimo kontaktov v automatizácii Dopyt → ponuka
 - **Predmet:** Čo je v cene pracovnej dosky
-- **Preheader:** Cenu tvorí materiál, opracovanie, doprava a montáž. Ukážeme, ako porovnať dve ponuky.
+- **Preheader:** 🪨 Cenu tvorí materiál, opracovanie, doprava a montáž. Ukážeme, ako porovnať dve ponuky.
 - **Šablóna:** `sablony/19-kampan-sprievodca-cena.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

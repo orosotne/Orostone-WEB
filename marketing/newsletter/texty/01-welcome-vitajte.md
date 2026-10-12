@@ -3,7 +3,7 @@
 - **Typ:** Automatizácia · Welcome séria 1/4
 - **Kedy sa posiela:** Hneď po prihlásení na odber (popup, pätička, sekcia vzoriek)
 - **Predmet:** Vitajte v Orostone. Toto vám budeme posielať
-- **Preheader:** Dvakrát do mesiaca vám pošleme jednu vec, ktorá pomôže pri výbere pracovnej dosky. Výpredaje neposielame.
+- **Preheader:** 🪨 Dvakrát do mesiaca vám pošleme jednu vec, ktorá pomôže pri výbere pracovnej dosky. Výpredaje neposielame.
 - **Šablóna:** `sablony/01-welcome-vitajte.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

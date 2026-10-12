@@ -3,7 +3,7 @@
 - **Typ:** Kampaň · séria Dekor v detaile (1× mesačne, strieda sa s Realizáciou)
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
 - **Predmet:** Wild Forest: kresba pre veľké plochy
-- **Preheader:** Ukážeme, prečo tento dekor vynikne až na celej platni a s čím ho kombinovať.
+- **Preheader:** 🪨 Ukážeme, prečo tento dekor vynikne až na celej platni a s čím ho kombinovať.
 - **Šablóna:** `sablony/32-kampan-dekor-wild-forest.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

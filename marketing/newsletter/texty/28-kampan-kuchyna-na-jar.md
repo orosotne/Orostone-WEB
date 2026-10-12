@@ -4,7 +4,7 @@
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
 - **Komu:** Všetci odberatelia; mimo zákazníkov po realizácii a horizontu hotovo
 - **Predmet:** Nová kuchyňa na jar: kedy začať
-- **Preheader:** Ukážeme, v akom poradí postupovať, aby doska nebola posledná vec, na ktorú čakáte.
+- **Preheader:** 🪨 Ukážeme, v akom poradí postupovať, aby doska nebola posledná vec, na ktorú čakáte.
 - **Šablóna:** `sablony/28-kampan-kuchyna-na-jar.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

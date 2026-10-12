@@ -3,7 +3,7 @@
 - **Typ:** Automatizácia · Po realizácii 2/3
 - **Kedy sa posiela:** 7 dní po dátume montáže
 - **Predmet:** Starostlivosť o dosku v skratke
-- **Preheader:** Doske stačí utierka a saponát. Pozor si dajte len na štyri veci.
+- **Preheader:** 🪨 Doske stačí utierka a saponát. Pozor si dajte len na štyri veci.
 - **Šablóna:** `sablony/17-automatizacia-starostlivost.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí

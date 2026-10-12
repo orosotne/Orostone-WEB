@@ -3,7 +3,7 @@
 - **Typ:** Automatizácia · B2B 1/3
 - **Kedy sa posiela:** Hneď po pridaní tagu B2B (architekt, dizajnér, kuchynské štúdio, kamenár)
 - **Predmet:** Technický list a textúry pre váš projekt
-- **Preheader:** Posielame parametre podľa noriem EN, formáty, hrúbky a textúry dekorov na jednom mieste.
+- **Preheader:** 🪨 Posielame parametre podľa noriem EN, formáty, hrúbky a textúry dekorov na jednom mieste.
 - **Šablóna:** `sablony/25-automatizacia-b2b-podklady.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí
