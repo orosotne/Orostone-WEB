@@ -2,7 +2,7 @@
 
 - **Typ:** Kampaň · Sezónne (december)
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
-- **Komu:** Všetci odberatelia a zákazníci
+- **Komu:** Všetci odberatelia vrátane zákazníkov
 - **Predmet:** Ďakujeme za rok 2026
 - **Preheader:** 🪨 Posielame otváracie hodiny cez sviatky a jednu radu, ak plánujete kuchyňu na jar.
 - **Šablóna:** `sablony/21-kampan-december-podakovanie.html`

@@ -2,7 +2,7 @@
 
 - **Typ:** Kampaň · séria Realizácia mesiaca (1× mesačne)
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
-- **Komu:** Všetci odberatelia; mimo zákazníkov po realizácii
+- **Komu:** Všetci odberatelia vrátane zákazníkov
 - **Predmet:** Biela doska a tmavé drevo
 - **Preheader:** 🪨 V realizácii mesiaca ukážeme ostrovček, kde kontrast drží celý priestor pokope.
 - **Šablóna:** `sablony/20-kampan-realizacia-december.html`
@@ -14,7 +14,7 @@ Realizácia mesiaca · december 2026
 
 ### Séria (pill) a veta pod ňou
 Realizácia mesiaca
-Raz mesačne jedna skutočná kuchyňa a jej dekor vo veľkej ploche.
+Skutočná kuchyňa a jej dekor vo veľkej ploche.
 
 ### Nadpis
 Biela doska
@@ -60,7 +60,7 @@ Výrazná kresba potrebuje pokojné okolie. Tu ho tvorí tmavé drevo s jednoduc
 
 ### Tlačidlo (CTA)
 Objednať vzorku
-Prvá vzorka je zadarmo, platíte iba dopravu 2,50 €.
+Prvá vzorka je zadarmo. S kódom VITAJTE neplatíte ani poštovné, kód platí na jednu objednávku.
 Pozrieť ďalšie realizácie
 
 ### P. S.

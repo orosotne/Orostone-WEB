@@ -2,7 +2,7 @@
 
 - **Typ:** Kampaň · Sezónne (január)
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
-- **Komu:** Všetci odberatelia; mimo zákazníkov po realizácii a horizontu hotovo
+- **Komu:** Všetci odberatelia vrátane zákazníkov
 - **Predmet:** Nová kuchyňa na jar: kedy začať
 - **Preheader:** 🪨 Ukážeme, v akom poradí postupovať, aby doska nebola posledná vec, na ktorú čakáte.
 - **Šablóna:** `sablony/28-kampan-kuchyna-na-jar.html`
@@ -51,7 +51,7 @@ Termín výroby skriniek si overte vo svojom kuchynskom štúdiu. Dosku potom na
 
 ### Tlačidlo (CTA)
 Objednať vzorku
-Prvá vzorka je zadarmo, platíte iba dopravu 2,50 €.
+Prvá vzorka je zadarmo. S kódom VITAJTE neplatíte ani poštovné, kód platí na jednu objednávku.
 Prečítať celý postup
 
 ### P. S.
@@ -64,6 +64,6 @@ Sila technológie.
 
 ### Pätička — dôvod a odhlásenie
 Tento e-mail ste dostali, pretože ste sa prihlásili na odber noviniek Orostone.
-© 2026 Orostone, s. r. o.
+© 2027 Orostone, s. r. o.
 Sídlo: Landererova 8, 811 09 Bratislava
 Odhlásiť odber

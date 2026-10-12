@@ -2,7 +2,7 @@
 
 - **Typ:** Kampaň · séria Realizácia mesiaca (1× mesačne)
 - **Kedy sa posiela:** kampaň podľa kalendára (2× mesačne)
-- **Komu:** Všetci odberatelia; mimo zákazníkov po realizácii
+- **Komu:** Všetci odberatelia vrátane zákazníkov
 - **Predmet:** Taj Mahal na dlhom ostrovčeku s drezom
 - **Preheader:** 🪨 V realizácii mesiaca ukážeme, prečo padla voľba na krémový dekor a ako pôsobí vo veľkej ploche.
 - **Šablóna:** `sablony/03-kampan-realizacia-mesiaca.html`
@@ -14,7 +14,7 @@ Realizácia mesiaca · október 2026
 
 ### Séria (pill) a veta pod ňou
 Realizácia mesiaca
-Raz mesačne jedna skutočná kuchyňa a jej dekor vo veľkej ploche.
+Skutočná kuchyňa a jej dekor vo veľkej ploche.
 
 ### Nadpis
 Taj Mahal

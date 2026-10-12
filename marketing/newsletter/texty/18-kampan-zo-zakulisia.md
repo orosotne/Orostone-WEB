@@ -14,7 +14,7 @@ Zo zákulisia · november 2026
 
 ### Séria (pill) a veta pod ňou
 Zo zákulisia
-Raz za štvrťrok: odkiaľ kameň pochádza a kto s ním pracuje.
+Odkiaľ kameň pochádza a kto s ním pracuje.
 
 ### Nadpis
 Z minerálov
@@ -64,12 +64,12 @@ Bez živíc a bez pórov nemá škvrna kam vniknúť a teplo nemá čo roztaviť
 
 ### Tlačidlo (CTA)
 Objednať vzorku
-Prvá vzorka je zadarmo, platíte iba dopravu 2,50 €.
+Prvá vzorka je zadarmo. S kódom VITAJTE neplatíte ani poštovné, kód platí na jednu objednávku.
 Prečítať viac o sinterovanom kameni
 
 ### P. S.
 P. S. · Marián, Orostone
-Nabudúce v tejto sérii: ako kamenár premení platňu na hotovú dosku – od zamerania po montáž.
+Na blogu sme opísali, ako kamenár premení platňu na hotovú dosku – od zamerania po montáž.
 
 ### Podpis značky
 Krása kameňa.

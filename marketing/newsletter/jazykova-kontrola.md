@@ -279,4 +279,18 @@ Martin 12. 10. 2026 rozhodol zjednotiť e-mail 01 a dekory 04, 29 a 32 s opravam
 
 Codex na `f28c239` nenašiel žiadne pripomienky. E-mail 01 a dekory 04, 29 a 32 sú jazykovo skontrolované vrátane zmien z kola 20.
 
+## Kolo 22 – Claude, opravy pred kampaňami do januára (12. 10. 2026)
+
+Kontrola kampaní 18–33 pred plánovaním našla štyri nesúlady s kalendárom a s ponukou pre odberateľov. Martin 12. 10. 2026 schválil všetky štyri opravy. Codex review je v ďalšom kole.
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 03, 20, 30 | Raz mesačne jedna skutočná kuchyňa a jej dekor vo veľkej ploche. | Skutočná kuchyňa a jej dekor vo veľkej ploche. | fakt | Realizácia mesiaca ide v októbri, decembri a februári, nie každý mesiac. | zapracované |
+| 2 | 18 | Raz za štvrťrok: odkiaľ kameň pochádza a kto s ním pracuje. | Odkiaľ kameň pochádza a kto s ním pracuje. | fakt | Ďalší diel série nie je napísaný ani naplánovaný. | zapracované |
+| 3 | 18 | [P. S.] Nabudúce v tejto sérii: ako kamenár premení platňu na hotovú dosku – od zamerania po montáž. | [P. S.] Na blogu sme opísali, ako kamenár premení platňu na hotovú dosku – od zamerania po montáž. | fakt | Sľub ďalšieho dielu bez krytia. Článok o postupe na blogu existuje (odkaz vedie naň, rovnako ako v 28). | zapracované |
+| 4 | 18, 20, 28, 30 | Prvá vzorka je zadarmo, platíte iba dopravu 2,50 €. | Prvá vzorka je zadarmo. S kódom VITAJTE neplatíte ani poštovné, kód platí na jednu objednávku. | fakt | Odberatelia dostali v 01 alebo 35 kód VITAJTE na vzorku bez poštovného. Veta im odporovala. | zapracované |
+| 5 | 28–33 | © 2026 Orostone, s. r. o. | © 2027 Orostone, s. r. o. | fakt | Kampane idú v roku 2027. Automatizácie a kampane z roku 2026 majú © 2026 (parameter `year` vo funkcii `footer`). | zapracované |
+
+Bez zmeny textu: hlavička SEGMENT v 03, 20, 21, 28, 30, 31 a 33 už neuvádza „mimo zákazníkov po realizácii“. Martin 12. 10. 2026 rozhodol, že kampane dostávajú všetci odberatelia vrátane tých, ktorí už kúpili.
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.

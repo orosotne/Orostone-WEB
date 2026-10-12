@@ -73,16 +73,16 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 | 25 | Technické podklady | B2B 1/3 – hneď po pridaní tagu | Technický list a textúry pre váš projekt | skontrolované |
 | 26 | Vzorky pre štúdio | B2B 2/3 – o 7 dní | Vzorky dekorov pre vaše štúdio | skontrolované |
 | 27 | Showroom s klientom | B2B 3/3 – o 21 dní | Príďte s klientom vybrať konkrétnu platňu | skontrolované |
-| 35 | Pre doterajších odberateľov | Kampaň október – jednorazovo, pred 03 | Odteraz vám budeme písať dvakrát do mesiaca | skontrolované |
-| 03 | Realizácia mesiaca | Kampaň október | Taj Mahal na dlhom ostrovčeku s drezom | skontrolované |
-| 04 | Dekor v detaile | Kampaň október | Roman Travertine: travertín bez impregnácie | skontrolované |
-| 18 | Zo zákulisia | Kampaň november | Ako vzniká sinterovaný kameň | skontrolované |
-| 19 | Sprievodca | Kampaň november | Čo je v cene pracovnej dosky | skontrolované |
-| 20 | Realizácia mesiaca | Kampaň december | Biela doska a tmavé drevo | skontrolované, klient so zverejnením súhlasí |
-| 21 | Poďakovanie | Kampaň december | Ďakujeme za rok 2026 | skontrolované |
-| 28 | Kuchyňa na jar | Kampaň január 2027 | Nová kuchyňa na jar: kedy začať | skontrolované |
-| 29 | Dekor v detaile | Kampaň január 2027 | Appennino: svetlá plocha s jemnou kresbou | skontrolované |
-| 30 | Realizácia mesiaca | Kampaň február 2027 | Biela doska v ružovej kuchyni | skontrolované, klient so zverejnením súhlasí |
+| 35 | Pre doterajších odberateľov | Kampaň – jednorazovo, st 14. 10. 2026 (naplánovaná) | Odteraz vám budeme písať dvakrát do mesiaca | skontrolované |
+| 03 | Realizácia mesiaca | Kampaň – st 21. 10. 2026 | Taj Mahal na dlhom ostrovčeku s drezom | na kontrole (kolo 22) |
+| 04 | Dekor v detaile | Kampaň – pi 30. 10. 2026 (naplánovaná) | Roman Travertine: travertín bez impregnácie | skontrolované |
+| 18 | Zo zákulisia | Kampaň – ut 24. 11. 2026 | Ako vzniká sinterovaný kameň | na kontrole (kolo 22) |
+| 19 | Sprievodca | Kampaň – pi 13. 11. 2026 | Čo je v cene pracovnej dosky | skontrolované |
+| 20 | Realizácia mesiaca | Kampaň – št 3. 12. 2026 | Biela doska a tmavé drevo | na kontrole (kolo 22), klient so zverejnením súhlasí |
+| 21 | Poďakovanie | Kampaň – ut 15. 12. 2026 | Ďakujeme za rok 2026 | skontrolované |
+| 28 | Kuchyňa na jar | Kampaň – ut 12. 1. 2027 | Nová kuchyňa na jar: kedy začať | na kontrole (kolo 22) |
+| 29 | Dekor v detaile | Kampaň – ut 26. 1. 2027 | Appennino: svetlá plocha s jemnou kresbou | skontrolované |
+| 30 | Realizácia mesiaca | Kampaň február 2027 | Biela doska v ružovej kuchyni | na kontrole (kolo 22), klient so zverejnením súhlasí |
 | 31 | Pozvánka do showroomu | Kampaň február 2027 | Celé platne naživo v kaštieli v Bošanoch | skontrolované |
 | 32 | Dekor v detaile | Kampaň marec 2027 | Wild Forest: kresba pre veľké plochy | skontrolované |
 | 33 | Spolupráca so štúdiom | Kampaň marec 2027 | Návrh kuchyne a doska: ako ich zladiť | skontrolované |
@@ -101,6 +101,13 @@ Kontakty v Klaviyu sme 12. 10. 2026 na žiadosť Martina upratali do dvoch oddel
 |---|---|---|---|
 | Odberatelia newslettera | Newsletter – web (`VSrLFs`) | Prihlásili sa na odber na webe (pätička, pop-up, formulár na vzorku so súhlasom). Nových pridáva web sám. | Uvítaciu sériu 01, 02, 07, 09 (beží od 12. 10. 2026) a kampane |
 | Dopyty | Dopyty – LP1, LP2, e-mail (len k dopytu) (`TKAHuh`) | Napísali nám cez formulár LP1 (aj cez starší formulár TILDA), LP2 alebo priamo e-mailom. V CRM majú otvorený dopyt alebo otvorený obchod a dopyt poslali za posledných 6 mesiacov. Vlastnosť profilu `zdroj_dopytu` je LP1, LP2 alebo E-mail. K 12. 10. 2026 ich je 446, nové dopyty sa do zoznamu samy nepridávajú. Kto sa na webe prihlási na odber, toho web z tohto zoznamu sám vyradí. | Len e-maily k ich dopytu, napríklad 12–14 a 34. Súhlas s newsletterom nedali, preto im neposielame kampane ani uvítaciu sériu. |
+
+Pravidlá kampaní (rozhodnutia Martina z 12. 10. 2026):
+
+- Kampane idú o 9:00 len zoznamu Newsletter – web, najviac 3 do mesiaca. Termíny do januára 2027 sú v tabuľke vyššie.
+- Kampane dostávajú aj odberatelia, ktorí už u nás kúpili. Zákazníci, ktorí sa na odber neprihlásili, ich nedostávajú.
+- Kampane vylučujú segment `RdLKj8` (prihlásení za posledných 10 dní, teda ešte v uvítacej sérii) a pre istotu aj zoznam Dopyty (`TKAHuh`).
+- Deň pred každou kampaňou kontrolujeme limit aktívnych kontaktov (500), počet príjemcov a odhlásenia. Miesto uvoľňujeme mazaním Dopytov, ktoré majú v CRM uzavretý alebo prehratý obchod, nikdy nie odberateľov.
 
 - 28 ľudí bolo v oboch skupinách, ostali len medzi odberateľmi.
 - 13 ľudí, ktorí sa odhlásili alebo majú nedoručiteľnú adresu, ostalo v Klaviyu potlačených, aby im nič neodišlo. Firemné adresy info@ a marian.brazdil@ ostali. Ostatné staré kontakty (importy z Meta Ads, monday.com, LEADS_2026 a ďalšie) sú zmazané aj so starými zoznamami.
