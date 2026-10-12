@@ -74,14 +74,14 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 | 26 | Vzorky pre štúdio | B2B 2/3 – o 7 dní | Vzorky dekorov pre vaše štúdio | skontrolované |
 | 27 | Showroom s klientom | B2B 3/3 – o 21 dní | Príďte s klientom vybrať konkrétnu platňu | skontrolované |
 | 35 | Pre doterajších odberateľov | Kampaň – jednorazovo, st 14. 10. 2026 (naplánovaná) | Odteraz vám budeme písať dvakrát do mesiaca | skontrolované |
-| 03 | Realizácia mesiaca | Kampaň – st 21. 10. 2026 | Taj Mahal na dlhom ostrovčeku s drezom | skontrolované |
+| 03 | Realizácia mesiaca | Kampaň – st 21. 10. 2026 (naplánovaná) | Taj Mahal na dlhom ostrovčeku s drezom | skontrolované |
 | 04 | Dekor v detaile | Kampaň – pi 30. 10. 2026 (naplánovaná) | Roman Travertine: travertín bez impregnácie | skontrolované |
-| 18 | Zo zákulisia | Kampaň – ut 24. 11. 2026 | Ako vzniká sinterovaný kameň | skontrolované |
-| 19 | Sprievodca | Kampaň – pi 13. 11. 2026 | Čo je v cene pracovnej dosky | skontrolované |
-| 20 | Realizácia mesiaca | Kampaň – št 3. 12. 2026 | Biela doska a tmavé drevo | skontrolované, klient so zverejnením súhlasí |
-| 21 | Poďakovanie | Kampaň – ut 15. 12. 2026 | Ďakujeme za rok 2026 | skontrolované |
-| 28 | Kuchyňa na jar | Kampaň – ut 12. 1. 2027 | Nová kuchyňa na jar: kedy začať | skontrolované |
-| 29 | Dekor v detaile | Kampaň – ut 26. 1. 2027 | Appennino: svetlá plocha s jemnou kresbou | skontrolované |
+| 18 | Zo zákulisia | Kampaň – ut 24. 11. 2026 (naplánovaná) | Ako vzniká sinterovaný kameň | skontrolované |
+| 19 | Sprievodca | Kampaň – pi 13. 11. 2026 (naplánovaná) | Čo je v cene pracovnej dosky | skontrolované |
+| 20 | Realizácia mesiaca | Kampaň – št 3. 12. 2026 (naplánovaná) | Biela doska a tmavé drevo | skontrolované, klient so zverejnením súhlasí |
+| 21 | Poďakovanie | Kampaň – ut 15. 12. 2026 (naplánovaná) | Ďakujeme za rok 2026 | skontrolované |
+| 28 | Kuchyňa na jar | Kampaň – ut 12. 1. 2027 (naplánovaná) | Nová kuchyňa na jar: kedy začať | skontrolované |
+| 29 | Dekor v detaile | Kampaň – ut 26. 1. 2027 (naplánovaná) | Appennino: svetlá plocha s jemnou kresbou | skontrolované |
 | 30 | Realizácia mesiaca | Kampaň február 2027 | Biela doska v ružovej kuchyni | skontrolované, klient so zverejnením súhlasí |
 | 31 | Pozvánka do showroomu | Kampaň február 2027 | Celé platne naživo v kaštieli v Bošanoch | skontrolované |
 | 32 | Dekor v detaile | Kampaň marec 2027 | Wild Forest: kresba pre veľké plochy | skontrolované |
@@ -107,7 +107,9 @@ Pravidlá kampaní (rozhodnutia Martina z 12. 10. 2026):
 - Kampane idú o 9:00 len zoznamu Newsletter – web, najviac 3 do mesiaca. Termíny do januára 2027 sú v tabuľke vyššie.
 - Kampane dostávajú aj odberatelia, ktorí už u nás kúpili. Zákazníci, ktorí sa na odber neprihlásili, ich nedostávajú.
 - Kampane vylučujú segment `RdLKj8` (prihlásení za posledných 10 dní, teda ešte v uvítacej sérii) a pre istotu aj zoznam Dopyty (`TKAHuh`).
-- Deň pred každou kampaňou kontrolujeme limit aktívnych kontaktov (500), počet príjemcov a odhlásenia. Miesto uvoľňujeme mazaním Dopytov, ktoré majú v CRM uzavretý alebo prehratý obchod, nikdy nie odberateľov.
+- Všetkých deväť kampaní do 26. 1. 2027 je v Klaviyu naplánovaných (12. 10. 2026).
+- Potvrdenia z 12. 10. 2026: showroom je cez sviatky otvorený bežne (21), tlačidlo vzorky v 20 ostáva na stránke vzoriek, platne Appennino budú v januári v showroome (29) a odpovede na ahoj@orostone.sk niekto číta.
+- Deň pred každou kampaňou kontrolujeme limit aktívnych kontaktov (500), počet príjemcov, odhlásenia a sťažnosti na spam po predchádzajúcej kampani. Ak sa odhlási viac ako 1 % príjemcov alebo príde sťažnosť na spam, ďalšia kampaň nejde, kým Martin nerozhodne. Miesto uvoľňujeme len mazaním Dopytov a len po súhlase Martina, nikdy nie odberateľov.
 
 - 28 ľudí bolo v oboch skupinách, ostali len medzi odberateľmi.
 - 13 ľudí, ktorí sa odhlásili alebo majú nedoručiteľnú adresu, ostalo v Klaviyu potlačených, aby im nič neodišlo. Firemné adresy info@ a marian.brazdil@ ostali. Ostatné staré kontakty (importy z Meta Ads, monday.com, LEADS_2026 a ďalšie) sú zmazané aj so starými zoznamami.
