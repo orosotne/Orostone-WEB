@@ -30,9 +30,12 @@
 //
 // KLAVIYO (od 10. 10. 2026), serverové API podľa odporúčania Klaviya:
 //   KLAVIYO_NEWSLETTER_LIST_ID  ID zoznamu „Newsletter – web“ (nie je tajné).
+//   KLAVIYO_INQUIRY_LIST_ID     ID zoznamu „Dopyty – LP1, LP2, e-mail (len k dopytu)“ (nie je
+//                               tajné, nepovinné). Vyradenie z neho je opísané nižšie.
 //   KLAVIYO_PRIVATE_API_KEY     súkromný kľúč Klaviya (Lists, Profiles, Subscriptions:
 //                               Full). Len v Supabase secrets, nikdy v kóde ani v logu.
-//   Kým nie sú nastavené obe, funkcia sa správa ako doteraz (uvítací e-mail cez Resend).
+//   Kým nie sú nastavené zoznam „Newsletter – web“ a kľúč, funkcia sa správa ako doteraz
+//   (uvítací e-mail cez Resend).
 //   S nimi ide odberateľ do Klaviya a uvítaciu sériu posiela flow na zozname. Uvítací
 //   e-mail cez Resend odíde, len keď Klaviyo odber jednoznačne odmietne (4xx). Pri
 //   neistom výsledku (timeout, 5xx, 429, sieť) sa odber raz zopakuje (Klaviyo je
@@ -58,6 +61,11 @@
 //   sync-newsletter-unsubscribes a tím upozorní, keď nie. Zoznam má jednoduché potvrdenie
 //   (single opt-in). Pri dvojitom by sa súhlas zapísal až po kliknutí v e-maile a nočná
 //   kontrola by upozorňovala pri každom nepotvrdenom odbere: pri prepnutí ju treba prerobiť.
+//   Keď Klaviyo odber prijme alebo je e-mail v zozname už prihlásený, funkcia ho na pozadí
+//   vyradí zo zoznamu „Dopyty“ (KLAVIYO_INQUIRY_LIST_ID): kto dal súhlas s newsletterom,
+//   patrí len medzi odberateľov, inak by mu popri newsletteri chodili aj e-maily k dopytu.
+//   Kto v zozname nie je, tomu sa nič nestane. Bez nastaveného ID sa nevyraďuje. Keď
+//   vyradenie neprejde ani na druhý pokus, tím dostane upozornenie.
 //
 // STROP NA ODBERY (od 11. 10. 2026): druhá poistka za Turnstile, napr. keď niekto overenia
 //   rieši ručne alebo cez platenú službu. Nad stropom
@@ -78,7 +86,9 @@ import { escapeHtml } from '../_shared/escape.ts';
 import {
   emailFilter,
   emailMarketing,
+  KLAVIYO_INQUIRY_LIST_ID,
   KLAVIYO_LIST_ID,
+  klaviyoDelete,
   klaviyoEnabled,
   klaviyoGet,
   klaviyoPost,
@@ -106,11 +116,11 @@ const ALERT_EMAIL = 'dopyt@orostone.sk';
  */
 type KlaviyoResult = 'ok' | 'rejected' | 'unknown' | 'blocked' | 'off';
 /**
- * Dôvod upozornenia tímu: výsledok odberu, alebo meno a zdroj, ktoré sa do nového profilu
- * nezapísali. Prijatý odber, ktorý sa v zozname neobjavil ako prihlásený, hlási nočná kontrola
- * v sync-newsletter-unsubscribes.
+ * Dôvod upozornenia tímu: výsledok odberu, meno a zdroj, ktoré sa do nového profilu
+ * nezapísali, alebo vyradenie zo zoznamu „Dopyty“, ktoré neprešlo. Prijatý odber, ktorý sa
+ * v zozname neobjavil ako prihlásený, hlási nočná kontrola v sync-newsletter-unsubscribes.
  */
-type AlertReason = 'rejected' | 'unknown' | 'blocked' | 'profile';
+type AlertReason = 'rejected' | 'unknown' | 'blocked' | 'profile' | 'inquiry';
 
 /** Opakované odoslanie formulára do tohto času od posledného pokusu o odber (dvojklik, dve karty) už rieši prvá požiadavka. */
 const RESUBMIT_WINDOW_MS = 30 * 60 * 1000;
@@ -290,6 +300,34 @@ async function subscribeInKlaviyo(email: string, name: string | undefined, sourc
   return 'unknown';
 }
 
+/**
+ * Po prijatom odbere vyradí e-mail zo zoznamu „Dopyty“: kto dal súhlas s newsletterom, patrí
+ * len medzi odberateľov. Kto v zozname nie je, tomu sa nič nestane. Pri neistom výsledku
+ * (timeout, 5xx, 429, sieť) to raz zopakujeme, keď to neprejde, upozorníme tím. Nehádže.
+ */
+async function leaveInquiryList(email: string, source: string): Promise<void> {
+  const filter = emailFilter(email);
+  if (!KLAVIYO_INQUIRY_LIST_ID || !filter) return;
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    let res: Response | null = null;
+    try {
+      res = await klaviyoGet(`lists/${KLAVIYO_INQUIRY_LIST_ID}/profiles?filter=${filter}&fields[profile]=email`);
+      if (res.ok) {
+        const id = (await res.json())?.data?.[0]?.id;
+        if (!id) return;
+        res = await klaviyoDelete(`lists/${KLAVIYO_INQUIRY_LIST_ID}/relationships/profiles`, { data: [{ type: 'profile', id }] });
+        if (res.ok) return;
+      }
+      console.error(`[subscribe-newsletter] Klaviyo zoznam Dopyty, pokus ${attempt}:`, res.status, (await res.text()).slice(0, 300));
+      if (res.status >= 400 && res.status < 500 && res.status !== 429) break;
+    } catch (err) {
+      console.error(`[subscribe-newsletter] Klaviyo zoznam Dopyty, pokus ${attempt}:`, err instanceof Error ? err.message : err);
+    }
+    if (attempt === 1) await new Promise((r) => setTimeout(r, retryDelayMs(res)));
+  }
+  await alertKlaviyoFailure(email, source, 'inquiry');
+}
+
 /** Na pozadí, aby upozornenie nepredĺžilo odpoveď webu (Supabase Edge Runtime: waitUntil). */
 function inBackground(task: Promise<unknown>): void {
   const runtime = (globalThis as { EdgeRuntime?: { waitUntil(p: Promise<unknown>): void } }).EdgeRuntime;
@@ -315,6 +353,11 @@ const ALERT_TEXT: Record<AlertReason, { what: string; todo: string; subject?: st
     subject: 'Newsletter: meno a zdroj sa nezapísali do Klaviya',
     what: 'Meno a zdroj odberu sa do jeho nového profilu v Klaviyu nezapísali ani na druhý pokus. Samotný odber ide samostatnou úlohou. Ak neprejde, príde o ňom zvlášť upozornenie.',
     todo: 'Doplňte v jeho profile v Klaviyu ručne vlastnosť zdroj_odberu a meno, ak ho zadal. Web ich už nedoplní ani pri ďalšom odoslaní formulára, profil už existuje.',
+  },
+  inquiry: {
+    subject: 'Newsletter: odberateľ ostal v zozname Dopyty',
+    what: 'Klaviyo odber prijalo, no zo zoznamu „Dopyty – LP1, LP2, e-mail (len k dopytu)“ sa nevyradil ani na druhý pokus. Popri newsletteri by mu mohli chodiť aj e-maily k dopytu.',
+    todo: 'Odstráňte ho v Klaviyu zo zoznamu „Dopyty – LP1, LP2, e-mail (len k dopytu)“. Ak v ňom nie je, netreba robiť nič.',
   },
 };
 
@@ -488,6 +531,7 @@ serve(async (req) => {
       // nevoláme.
       if (klaviyoEnabled() && !over && id && await claimKlaviyoAttempt(supabase, id)) {
         const again = await subscribeInKlaviyo(email, name, source);
+        if (again === 'ok') inBackground(leaveInquiryList(email, source));
         if (again === 'rejected' || again === 'unknown' || again === 'blocked') inBackground(alertKlaviyoFailure(email, source, again));
       }
       return new Response(
@@ -505,7 +549,9 @@ serve(async (req) => {
     }
 
     // 2. Klaviyo: zoznam „Newsletter – web“, uvítaciu sériu posiela flow na zozname.
+    //    Prijatý odber vyradí e-mail zo zoznamu „Dopyty“.
     const klaviyo = await subscribeInKlaviyo(email, name, source);
+    if (klaviyo === 'ok') inBackground(leaveInquiryList(email, source));
     if (klaviyo === 'rejected' || klaviyo === 'unknown' || klaviyo === 'blocked') inBackground(alertKlaviyoFailure(email, source, klaviyo));
 
     // 3. Send welcome email (fire-and-forget) only for new subscribers and
