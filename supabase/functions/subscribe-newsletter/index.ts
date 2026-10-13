@@ -25,8 +25,10 @@
 //   nezapíše, neodošle ani nespotrebuje strop. Token je jednorazový, takže každé odoslanie
 //   vrátane opakovaného pre už prihlásenú adresu potrebuje nové overenie a skript nemôže
 //   formulár volať dookola. Pri výpadku Cloudflaru odber neprejde (radšej ako bez ochrany).
-//   Bez overenia prejde len volanie so service-role kľúčom: posiela ho submit-quote za
-//   políčko newslettera vo formulári na vzorku, kde je jednorazový token už minutý.
+//   Bez overenia prejde len volanie s tajným kľúčom v hlavičke apikey (_shared/auth.ts
+//   isServiceRole): posiela ho submit-quote za políčko newslettera vo formulári na vzorku,
+//   kde je jednorazový token už minutý. Funkcia je verejná a nasadená s verify_jwt = false
+//   (supabase/config.toml): web posiela publishable kľúč len v hlavičke apikey, nie je to JWT.
 //
 // KLAVIYO (od 10. 10. 2026), serverové API podľa odporúčania Klaviya:
 //   KLAVIYO_NEWSLETTER_LIST_ID  ID zoznamu „Newsletter – web“ (nie je tajné).
@@ -97,6 +99,7 @@ import {
 } from '../_shared/klaviyo.ts';
 import { sendEmail } from '../_shared/resend.ts';
 import { clientIp, verifyTurnstile } from '../_shared/turnstile.ts';
+import { isServiceRole, serviceRoleHeaders } from '../_shared/auth.ts';
 
 const corsHeaders = {
   'Content-Type': 'application/json',
@@ -479,10 +482,10 @@ serve(async (req) => {
     const SUPABASE_SERVICE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
 
     // 0. Ochrana proti robotom (Turnstile) pred akýmkoľvek zápisom alebo e-mailom, pri
-    //    TURNSTILE_ENFORCE=true (rovnaký prepínač ako submit-quote). Service-role kľúč posiela
+    //    TURNSTILE_ENFORCE=true (rovnaký prepínač ako submit-quote). Tajný kľúč posiela
     //    len submit-quote za políčko newslettera vo formulári na vzorku: jednorazový token
     //    z formulára overil on, druhý by musel návštevník získať znova.
-    const fromServer = Boolean(SUPABASE_SERVICE_KEY) && req.headers.get('authorization') === `Bearer ${SUPABASE_SERVICE_KEY}`;
+    const fromServer = isServiceRole(req);
     if (Deno.env.get('TURNSTILE_ENFORCE') === 'true' && !fromServer) {
       const turnstile = await verifyTurnstile((json as Record<string, unknown>).turnstileToken, clientIp(req));
       if (!turnstile.success) {
@@ -562,10 +565,7 @@ serve(async (req) => {
     if (klaviyo === 'off' || klaviyo === 'rejected') {
       fetch(`${SUPABASE_URL}/functions/v1/send-newsletter-welcome`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
-        },
+        headers: serviceRoleHeaders(),
         body: JSON.stringify({ email, name }),
       }).catch((err) => console.warn('[subscribe-newsletter] Welcome email dispatch failed:', err));
     }
