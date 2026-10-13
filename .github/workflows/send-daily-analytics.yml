@@ -15,11 +15,18 @@ jobs:
 
     steps:
       - name: Call Supabase Edge Function
+        env:
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
         run: |
+          if [ -z "$SUPABASE_SECRET_KEY" ]; then
+            echo "::error::Chýba secret SUPABASE_SECRET_KEY (tajný kľúč sb_secret_… zo Supabase → Project Settings → API Keys)."
+            exit 1
+          fi
+
           RESPONSE=$(curl -s -o /tmp/analytics_response.json -w "%{http_code}" \
             -X POST \
             "https://xfkznvqufhnrphpdhfnc.supabase.co/functions/v1/send-daily-analytics" \
-            -H "Authorization: Bearer ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
+            -H "apikey: $SUPABASE_SECRET_KEY" \
             -H "Content-Type: application/json" \
             -d '{}')
 

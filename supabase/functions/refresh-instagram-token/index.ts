@@ -10,8 +10,8 @@ serve(async (req) => {
     'Access-Control-Allow-Origin': '*',
   };
 
-  // Volá ju len workflow .github/workflows/refresh-instagram-token.yml so service-role kľúčom.
-  // Kontrola JWT na platforme pustí aj verejný anon kľúč z webu.
+  // Volá ju len workflow .github/workflows/refresh-instagram-token.yml s tajným kľúčom
+  // sb_secret_… v hlavičke apikey (overenie v _shared/auth.ts, verify_jwt = false).
   if (!isServiceRole(req)) {
     return new Response(JSON.stringify({ success: false, error: 'Unauthorized' }), {
       status: 401,

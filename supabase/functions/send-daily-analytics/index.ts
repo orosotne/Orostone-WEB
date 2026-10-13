@@ -10,12 +10,11 @@
 // - GOOGLE_REFRESH_TOKEN      (refresh token z application_default_credentials.json)
 // - GA4_PROPERTY_ID           (default: 426727701)
 //
-// Volá ju len workflow .github/workflows/send-daily-analytics.yml so service-role kľúčom.
-// Kontrola JWT na platforme pustí aj verejný anon kľúč z webu, preto volajúceho overuje
-// aj funkcia (_shared/auth.ts): inak by ktokoľvek mohol míňať kvótu GA4 API a posielať e-maily cez Resend,
-// ktorý má spoločnú kvótu s e-mailmi pre zákazníkov.
+// Volá ju len workflow .github/workflows/send-daily-analytics.yml s tajným kľúčom sb_secret_…
+// v hlavičke apikey. Volajúceho overuje funkcia (_shared/auth.ts): inak by ktokoľvek mohol
+// míňať kvótu GA4 API a posielať e-maily cez Resend, ktorý má spoločnú kvótu s e-mailmi pre zákazníkov.
 //
-// DEPLOYMENT:
+// DEPLOYMENT (z koreňa repa, verify_jwt = false berie zo supabase/config.toml):
 // supabase functions deploy send-daily-analytics --project-ref xfkznvqufhnrphpdhfnc
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
