@@ -15,6 +15,10 @@
 // supabase functions deploy send-quote-notification --project-ref xfkznvqufhnrphpdhfnc
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
+import { handoffSample } from './sample-handoff.ts';
+
+// Activate only after CRM code, migration and shared secret are ready.
+const UNIFIED_SAMPLE_CONFIRMATION = Deno.env.get('UNIFIED_SAMPLE_CONFIRMATION') === 'true';
 
 // Escapes user-controlled strings before inserting into HTML email bodies.
 // Prevents HTML injection / layout breakage from malicious name/description values.
@@ -116,7 +120,12 @@ serve(async (req) => {
 
     const isSampleLead = quote.project_type === 'Vzorka zadarmo (Shop)';
 
-    await Promise.all([
+    if (isSampleLead && UNIFIED_SAMPLE_CONFIRMATION) {
+      // Never fall back to the old customer email after an uncertain handoff.
+      // CRM deduplicates retries using the immutable quote ID.
+      await handoffSample(quote, customer, Deno.env.get('SAMPLE_INGEST_SECRET'));
+      await sendAdminNotification(quote, customer, true, true);
+    } else await Promise.all([
       sendAdminNotification(quote, customer, isSampleLead),
       isSampleLead
         ? sendSampleLeadConfirmation(quote, customer)
@@ -139,9 +148,9 @@ serve(async (req) => {
 // ===========================================
 // ADMIN NOTIFIKÁCIA
 // ===========================================
-async function sendAdminNotification(quote: QuoteData, customer: CustomerData, isSampleLead: boolean) {
+async function sendAdminNotification(quote: QuoteData, customer: CustomerData, isSampleLead: boolean, unifiedSample = false) {
   const subject = isSampleLead
-    ? `[Orostone] Nová žiadosť o vzorku — ${customer.name} (${quote.decor ?? 'dekor nevybraný'})`
+    ? `${unifiedSample ? '[Orostone CRM vzorka v1]' : '[Orostone]'} Nová žiadosť o vzorku — ${customer.name} (${quote.decor ?? 'dekor nevybraný'})`
     : `[Orostone] Nový dopyt — ${customer.name} (${quote.project_type})`;
 
   const html = `
@@ -317,7 +326,7 @@ async function sendAdminNotification(quote: QuoteData, customer: CustomerData, i
 </body>
 </html>`;
 
-  await sendEmail({ to: ADMIN_EMAIL, subject, html });
+  await sendEmail({ to: ADMIN_EMAIL, subject, html, idempotencyKey: unifiedSample ? `sample-admin-v1:${quote.id}` : undefined });
 }
 
 // ===========================================
@@ -586,9 +595,9 @@ async function sendCustomerConfirmation(quote: QuoteData, customer: CustomerData
 // ===========================================
 // HELPER: odoslanie emailu cez Resend
 // ===========================================
-interface EmailParams { to: string; subject: string; html: string; }
+interface EmailParams { to: string; subject: string; html: string; idempotencyKey?: string; }
 
-async function sendEmail({ to, subject, html }: EmailParams) {
+async function sendEmail({ to, subject, html, idempotencyKey }: EmailParams) {
   if (!RESEND_API_KEY) {
     console.warn('[send-quote-notification] RESEND_API_KEY nie je nastavený — preskakujem email');
     return;
@@ -599,6 +608,7 @@ async function sendEmail({ to, subject, html }: EmailParams) {
     headers: {
       Authorization: `Bearer ${RESEND_API_KEY}`,
       'Content-Type': 'application/json',
+      ...(idempotencyKey ? { 'Idempotency-Key': idempotencyKey } : {}),
     },
     body: JSON.stringify({ from: FROM_EMAIL, to, subject, html }),
   });
@@ -610,3 +620,4 @@ async function sendEmail({ to, subject, html }: EmailParams) {
 
   console.log(`[send-quote-notification] Email odoslaný na ${to}`);
 }
+
