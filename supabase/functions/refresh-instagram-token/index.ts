@@ -9,6 +9,18 @@ serve(async (req) => {
     'Access-Control-Allow-Origin': '*',
   };
 
+  // Volá ju len workflow .github/workflows/refresh-instagram-token.yml so service-role kľúčom.
+  // Kontrola JWT na platforme pustí aj verejný anon kľúč z webu.
+  const serviceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
+  const authHeader = req.headers.get('authorization') ?? '';
+  const bearerToken = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : '';
+  if (!serviceKey || bearerToken !== serviceKey) {
+    return new Response(JSON.stringify({ success: false, error: 'Unauthorized' }), {
+      status: 401,
+      headers: corsHeaders,
+    });
+  }
+
   try {
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;

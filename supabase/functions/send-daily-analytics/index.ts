@@ -10,6 +10,11 @@
 // - GOOGLE_REFRESH_TOKEN      (refresh token z application_default_credentials.json)
 // - GA4_PROPERTY_ID           (default: 426727701)
 //
+// Volá ju len workflow .github/workflows/send-daily-analytics.yml so service-role kľúčom.
+// Kontrola JWT na platforme pustí aj verejný anon kľúč z webu, preto kľúč overuje
+// aj funkcia: inak by ktokoľvek mohol míňať kvótu GA4 API a posielať e-maily cez Resend,
+// ktorý má spoločnú kvótu s e-mailmi pre zákazníkov.
+//
 // DEPLOYMENT:
 // supabase functions deploy send-daily-analytics --project-ref xfkznvqufhnrphpdhfnc
 
@@ -21,6 +26,7 @@ const GOOGLE_CLIENT_ID = Deno.env.get('GOOGLE_CLIENT_ID');
 const GOOGLE_CLIENT_SECRET = Deno.env.get('GOOGLE_CLIENT_SECRET');
 const GOOGLE_REFRESH_TOKEN = Deno.env.get('GOOGLE_REFRESH_TOKEN');
 const GA4_PROPERTY_ID = Deno.env.get('GA4_PROPERTY_ID') || '426727701';
+const SUPABASE_SERVICE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
 const REPORT_TO = 'martinmiskeje@gmail.com';
 const FROM_EMAIL = 'Orostone Analytics <noreply@orostone.sk>';
 const LOGO_URL = 'https://www.orostone.sk/images/orostone-logo-email.png';
@@ -763,6 +769,15 @@ async function sendEmail(to: string, subject: string, html: string): Promise<voi
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders });
+  }
+
+  const authHeader = req.headers.get('authorization') ?? '';
+  const bearerToken = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : '';
+  if (!SUPABASE_SERVICE_KEY || bearerToken !== SUPABASE_SERVICE_KEY) {
+    return new Response(JSON.stringify({ success: false, error: 'Unauthorized' }), {
+      status: 401,
+      headers: corsHeaders,
+    });
   }
 
   try {
