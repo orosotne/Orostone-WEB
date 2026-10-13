@@ -326,7 +326,8 @@ CREATE POLICY "Allow service_role write instagram token" ON instagram_tokens
 --   1. zapnutí pg_cron + pg_net extensions v Supabase Dashboard
 --   2. deployi Edge Function: supabase functions deploy refresh-instagram-token
 --   3. nastavení app.settings cez: ALTER DATABASE postgres SET app.settings.supabase_url = '...';
---                                   ALTER DATABASE postgres SET app.settings.service_role_key = '...';
+--                                   ALTER DATABASE postgres SET app.settings.secret_key = 'sb_secret_...';
+--      (tajný kľúč default, nie legacy service_role JWT; funkcia ho overuje len v hlavičke apikey)
 
 -- SELECT cron.schedule(
 --   'refresh-instagram-token',
@@ -335,7 +336,7 @@ CREATE POLICY "Allow service_role write instagram token" ON instagram_tokens
 --   SELECT net.http_post(
 --     url := current_setting('app.settings.supabase_url') || '/functions/v1/refresh-instagram-token',
 --     headers := jsonb_build_object(
---       'Authorization', 'Bearer ' || current_setting('app.settings.service_role_key'),
+--       'apikey', current_setting('app.settings.secret_key'),
 --       'Content-Type', 'application/json'
 --     ),
 --     body := '{}'::jsonb
