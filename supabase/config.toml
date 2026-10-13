@@ -45,3 +45,7 @@ verify_jwt = false
 # (SHOPIFY_WEBHOOK_SECRET), Shopify nepošle JWT. Ručné preposlanie s tajným kľúčom (isServiceRole).
 [functions.alfapureo-order]
 verify_jwt = false
+
+# Alfapureo posiela odkaz na sledovanie GLS; podpis overuje funkcia sama (ALFAPUREO_SECRET).
+[functions.alfapureo-tracking]
+verify_jwt = false
