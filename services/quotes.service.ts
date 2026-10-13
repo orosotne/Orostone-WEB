@@ -1,9 +1,8 @@
 import { getSupabase } from '../lib/supabase';
-import { isSupabaseConfigured } from '../lib/supabaseEnv';
+import { edgeFunctionHeaders, isSupabaseConfigured } from '../lib/supabaseEnv';
 import { uploadQuoteFiles } from './storage.service';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
-const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
 
 import type { QuoteFormData, Quote } from '../types/database.types';
 
@@ -61,11 +60,7 @@ async function callSubmitQuote(payload: SubmitQuotePayload): Promise<{
 }> {
   const res = await fetch(`${SUPABASE_URL}/functions/v1/submit-quote`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
-      apikey: SUPABASE_ANON_KEY,
-    },
+    headers: edgeFunctionHeaders(),
     body: JSON.stringify(payload),
   });
 
