@@ -14,6 +14,24 @@ verify_jwt = false
 [functions.sync-newsletter-unsubscribes]
 verify_jwt = false
 
+# Interné funkcie: volajú ich len submit-quote a subscribe-newsletter s tajným kľúčom v hlavičke
+# apikey, overenie rovnako cez _shared/auth.ts isServiceRole.
+[functions.send-quote-notification]
+verify_jwt = false
+
+[functions.send-newsletter-welcome]
+verify_jwt = false
+
+# Verejné funkcie formulárov. Web posiela publishable kľúč sb_publishable_… len v hlavičke
+# apikey (nie je to JWT); do vypnutia legacy kľúčov aj starý anon JWT. Kľúč netreba overovať,
+# je verejný v kóde webu. Pred zápisom ich chráni Turnstile (TURNSTILE_ENFORCE) a odber
+# newslettera aj strop na počet prihlásení.
+[functions.submit-quote]
+verify_jwt = false
+
+[functions.subscribe-newsletter]
+verify_jwt = false
+
 # Verejné funkcie, už nasadené bez kontroly JWT. Uvedené tu, aby ich nasadenie bez
 # --no-verify-jwt omylom neprepol na verify_jwt = true (build webu volá instagram-feed
 # len s hlavičkou apikey).

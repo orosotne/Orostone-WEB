@@ -14,12 +14,14 @@
 // REQUEST: POST { email, name, phone?, city?, project_type, item_needed?,
 //                 dimensions?, decor?, turnstileToken?, newsletter? }
 //   newsletter: true (newsletter box on the sample form) → after the lead is saved,
-//   subscribe-newsletter is called with the service-role key, source `sample_lead`.
+//   subscribe-newsletter is called with the secret key in `apikey`, source `sample_lead`.
 // RESPONSE: 200 { success: true, quote_id: string, customer_id: string }
 //           4xx { success: false, error: string }
 //
 // DEPLOYMENT:
 //   supabase functions deploy submit-quote --project-ref <ref>
+//   verify_jwt = false (supabase/config.toml): the website sends the publishable key in `apikey`
+//   only, which is not a JWT. Public endpoint, bots are stopped by Turnstile below.
 //
 // ENV VARS REQUIRED (already present in Supabase Edge runtime):
 //   SUPABASE_URL                 — auto-provided
@@ -29,6 +31,7 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import { verifyTurnstile, clientIp } from '../_shared/turnstile.ts';
+import { serviceRoleHeaders } from '../_shared/auth.ts';
 
 const corsHeaders = {
   'Content-Type': 'application/json',
@@ -205,27 +208,20 @@ serve(async (req) => {
     inBackground(
       fetch(`${SUPABASE_URL}/functions/v1/send-quote-notification`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
-          apikey: SUPABASE_SERVICE_KEY,
-        },
+        headers: serviceRoleHeaders(),
         body: JSON.stringify({ quote_id: quote.id }),
       }).catch((err) => console.warn('[submit-quote] Notification dispatch failed:', err)),
     );
 
     // 4. Newsletter box on the sample form. The visitor's Turnstile token is single-use and
-    //    was spent above, so subscribe here: subscribe-newsletter trusts the service-role key
-    //    instead of asking for a second challenge. In the background, the lead is already saved.
+    //    was spent above, so subscribe here: subscribe-newsletter trusts the secret key
+    //    (_shared/auth.ts isServiceRole) instead of asking for a second challenge. In the
+    //    background, the lead is already saved.
     if (newsletter) {
       inBackground(
         fetch(`${SUPABASE_URL}/functions/v1/subscribe-newsletter`, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
-            apikey: SUPABASE_SERVICE_KEY,
-          },
+          headers: serviceRoleHeaders(),
           body: JSON.stringify({ email, name, source: 'sample_lead' }),
         })
           .then(async (res) => {

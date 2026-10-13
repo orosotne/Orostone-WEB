@@ -1,10 +1,9 @@
 // Newsletter calls Edge Functions via fetch — no Supabase JS SDK needed.
 // Importing only the lightweight env check keeps @supabase/supabase-js OUT
 // of the initial bundle (~168 KB / 43 KB gzip saved).
-import { isSupabaseConfigured } from '../lib/supabaseEnv';
+import { edgeFunctionHeaders, isSupabaseConfigured } from '../lib/supabaseEnv';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
-const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
 
 // ===========================================
 // NEWSLETTER SERVICE
@@ -53,11 +52,7 @@ export async function subscribeToNewsletter(
   try {
     const res = await fetch(`${SUPABASE_URL}/functions/v1/subscribe-newsletter`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
-        apikey: SUPABASE_ANON_KEY,
-      },
+      headers: edgeFunctionHeaders(),
       body: JSON.stringify({
         email: data.email,
         name: data.name,

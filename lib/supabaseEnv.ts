@@ -11,6 +11,8 @@
 // which lazy-loads the SDK on first call.
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string | undefined;
+// Publishable key `sb_publishable_…`, or the legacy anon JWT `eyJ…` until Supabase turns
+// legacy keys off at the end of 2026.
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
 
 export function isSupabaseConfigured(): boolean {
@@ -18,8 +20,20 @@ export function isSupabaseConfigured(): boolean {
     SUPABASE_URL &&
       SUPABASE_ANON_KEY &&
       SUPABASE_URL.includes('supabase.co') &&
-      SUPABASE_ANON_KEY.startsWith('eyJ'),
+      (SUPABASE_ANON_KEY.startsWith('sb_publishable_') || SUPABASE_ANON_KEY.startsWith('eyJ')),
   );
+}
+
+/**
+ * Headers for calling our Edge Functions with the public key. The publishable key is not a
+ * JWT, so it goes only in `apikey`. The legacy anon JWT also goes in `Authorization`, which
+ * functions still deployed with verify_jwt = true require.
+ */
+export function edgeFunctionHeaders(): Record<string, string> {
+  const key = SUPABASE_ANON_KEY ?? '';
+  return key.startsWith('eyJ')
+    ? { 'Content-Type': 'application/json', apikey: key, Authorization: `Bearer ${key}` }
+    : { 'Content-Type': 'application/json', apikey: key };
 }
 
 export const SUPABASE_ENV = {

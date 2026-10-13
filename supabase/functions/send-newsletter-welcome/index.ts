@@ -2,16 +2,17 @@
 // EDGE FUNCTION: send-newsletter-welcome
 // ===========================================
 // Volanie: POST { email: string; name?: string }
-// Volá ju len subscribe-newsletter so service-role kľúčom v hlavičke Authorization.
+// Volá ju len subscribe-newsletter s tajným kľúčom v hlavičke apikey (_shared/auth.ts isServiceRole).
 //
 // DEPLOYMENT:
 // supabase functions deploy send-newsletter-welcome --project-ref xfkznvqufhnrphpdhfnc
+// verify_jwt = false (supabase/config.toml): tajný kľúč nie je JWT, overuje ho funkcia.
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 import { escapeHtml } from '../_shared/escape.ts';
+import { isServiceRole } from '../_shared/auth.ts';
 
 const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
-const SUPABASE_SERVICE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
 const FROM_EMAIL = 'Orostone <noreply@orostone.sk>';
 const LOGO_URL = 'https://www.orostone.sk/images/orostone-logo-email.png';
 const LOGO_CIRCLE_URL = 'https://www.orostone.sk/images/logo-circle.png';
@@ -31,11 +32,9 @@ serve(async (req) => {
     return new Response('ok', { headers: corsHeaders });
   }
 
-  // Require service-role key so arbitrary callers cannot send orostone.sk-branded
-  // email to any address. subscribe-newsletter already passes it via Authorization header.
-  const authHeader = req.headers.get('authorization') ?? '';
-  const bearerToken = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : '';
-  if (!SUPABASE_SERVICE_KEY || bearerToken !== SUPABASE_SERVICE_KEY) {
+  // Require the secret key so arbitrary callers cannot send orostone.sk-branded
+  // email to any address. subscribe-newsletter passes it in the apikey header.
+  if (!isServiceRole(req)) {
     return new Response(JSON.stringify({ error: 'Unauthorized' }), {
       status: 401,
       headers: corsHeaders,

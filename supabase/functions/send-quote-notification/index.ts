@@ -13,9 +13,12 @@
 //
 // DEPLOYMENT:
 // supabase functions deploy send-quote-notification --project-ref xfkznvqufhnrphpdhfnc
+// verify_jwt = false (supabase/config.toml): submit-quote volá s tajným kľúčom v hlavičke apikey,
+// ten nie je JWT a overuje ho funkcia (_shared/auth.ts isServiceRole).
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 import { handoffSample } from './sample-handoff.ts';
+import { isServiceRole } from '../_shared/auth.ts';
 
 // Activate only after CRM code, migration and shared secret are ready.
 const UNIFIED_SAMPLE_CONFIRMATION = Deno.env.get('UNIFIED_SAMPLE_CONFIRMATION') === 'true';
@@ -70,11 +73,9 @@ serve(async (req) => {
     return new Response(null, { status: 204, headers: corsHeaders });
   }
 
-  // Require service-role key so arbitrary callers cannot trigger email spam.
-  // submit-quote already passes it via Authorization header.
-  const authHeader = req.headers.get('authorization') ?? '';
-  const bearerToken = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : '';
-  if (!SUPABASE_SERVICE_KEY || bearerToken !== SUPABASE_SERVICE_KEY) {
+  // Require the secret key so arbitrary callers cannot trigger email spam.
+  // submit-quote passes it in the apikey header.
+  if (!isServiceRole(req)) {
     return new Response(JSON.stringify({ error: 'Unauthorized' }), {
       status: 401,
       headers: corsHeaders,
