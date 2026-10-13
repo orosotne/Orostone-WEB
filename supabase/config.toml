@@ -40,3 +40,8 @@ verify_jwt = false
 
 [functions.verify-turnstile]
 verify_jwt = false
+
+# Shopify webhook „Order payment“ (orders/paid): podpis X-Shopify-Hmac-Sha256 overuje funkcia sama
+# (SHOPIFY_WEBHOOK_SECRET), Shopify nepošle JWT. Ručné preposlanie s tajným kľúčom (isServiceRole).
+[functions.alfapureo-order]
+verify_jwt = false
