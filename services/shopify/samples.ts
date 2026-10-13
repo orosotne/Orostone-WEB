@@ -149,6 +149,11 @@ export interface SampleCheckout {
   expectedTotalCents: number;
 }
 
+/** "Kód produktu: MN203D321612" from the decor's Shopify description, or '' when missing. */
+export function sampleProductCode(description: string | null | undefined): string {
+  return /Kód produktu:\s*([A-Z0-9][A-Z0-9-]*)/i.exec(description ?? '')?.[1].toUpperCase() ?? '';
+}
+
 type CartResult = {
   id: string;
   checkoutUrl: string;
@@ -170,9 +175,9 @@ export async function createSampleCheckout({ decorIds }: { decorIds: string[] })
   if (!variant.availableForSale) throw new Error('Zvolený počet vzoriek momentálne nie je dostupný.');
 
   // Query variables carry handles; no user-provided text is interpolated into GraphQL.
-  const decorResult = await shopifyFetch<Record<string, { handle: string; title: string; tags: string[]; productType: string } | null>>({
+  const decorResult = await shopifyFetch<Record<string, { handle: string; title: string; tags: string[]; productType: string; description: string } | null>>({
     query: `query SampleDecors(${decorIds.map((_, i) => `$handle${i}: String!`).join(', ')}) {
-      ${decorIds.map((_, i) => `decor${i}: product(handle: $handle${i}) { handle title tags productType }`).join('\n')}
+      ${decorIds.map((_, i) => `decor${i}: product(handle: $handle${i}) { handle title tags productType description }`).join('\n')}
     }`,
     variables: Object.fromEntries(decorIds.map((id, i) => [`handle${i}`, id])),
   });
@@ -183,6 +188,9 @@ export async function createSampleCheckout({ decorIds }: { decorIds: string[] })
       throw new Error('Niektorý zo zvolených dekorov už nie je dostupný v ponuke. Upravte svoj výber.');
     }
     attributes.push({ key: `Vzorka ${i + 1}`, value: product.title }, { key: `_sample_handle_${i + 1}`, value: id });
+    // Fulfilment partner (Alfapureo) packs by this code; it lives in the product description.
+    const code = sampleProductCode(product.description);
+    if (code) attributes.push({ key: `_sample_code_${i + 1}`, value: code });
   });
 
   const result = await shopifyFetch<{ cartCreate: { cart: CartResult | null; userErrors: Array<{ message: string }> } }>({
