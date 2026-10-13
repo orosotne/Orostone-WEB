@@ -1,0 +1,24 @@
+# Nastavenie nasadzovania edge funkcií (supabase functions deploy z koreňa repa).
+# Funkcie, ktoré tu nie sú, sa nasadzujú s predvoleným verify_jwt = true.
+project_id = "Orostone-WEB"
+
+# Cron funkcie volá len GitHub Actions s tajným kľúčom sb_secret_… v hlavičke apikey.
+# Nový kľúč nie je JWT, platforma ho nevie overiť, preto ho overuje funkcia sama
+# (_shared/auth.ts isServiceRole proti SUPABASE_SECRET_KEYS) a všetko ostatné vráti 401.
+[functions.send-daily-analytics]
+verify_jwt = false
+
+[functions.refresh-instagram-token]
+verify_jwt = false
+
+[functions.sync-newsletter-unsubscribes]
+verify_jwt = false
+
+# Verejné funkcie, už nasadené bez kontroly JWT. Uvedené tu, aby ich nasadenie bez
+# --no-verify-jwt omylom neprepol na verify_jwt = true (build webu volá instagram-feed
+# len s hlavičkou apikey).
+[functions.instagram-feed]
+verify_jwt = false
+
+[functions.verify-turnstile]
+verify_jwt = false

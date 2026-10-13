@@ -17,12 +17,12 @@
 //      20261013_newsletter_klaviyo_checked.sql), každý pokus sa tak overí raz. Vynechaný alebo
 //      neúspešný beh nič nevynechá: neoverený pokus počká na najbližší úspešný beh.
 //
-// Volá ju len workflow so service-role kľúčom. Bez Klaviya (chýba zoznam alebo kľúč)
+// Volá ju len workflow s tajným kľúčom sb_secret_… v hlavičke apikey. Bez Klaviya (chýba zoznam alebo kľúč)
 // nič nezmaže a vráti 503: workflow zčervená, inak by sa odhlásení potichu prestali mazať.
 // V odpovedi ani v logu nie sú e-mailové adresy, len počty. Adresy sú len v upozornení
 // tímu na ALERT_EMAIL, rovnako ako pri upozorneniach zo subscribe-newsletter.
 //
-// DEPLOYMENT:
+// DEPLOYMENT (z koreňa repa, verify_jwt = false berie zo supabase/config.toml):
 //   supabase functions deploy sync-newsletter-unsubscribes --project-ref xfkznvqufhnrphpdhfnc
 // ===========================================
 
