@@ -66,7 +66,8 @@ async function accessToken(): Promise<string> {
     signal: AbortSignal.timeout(10_000),
   });
   const data = await res.json().catch(() => ({}));
-  if (!res.ok || !data.access_token) throw new Error(`Shopify token HTTP ${res.status}`);
+  // Shopify vráti napr. {error: 'invalid_client', error_description: …}; neobsahuje tajné údaje.
+  if (!res.ok || !data.access_token) throw new Error(`Shopify token HTTP ${res.status}: ${data.error ?? ''} ${data.error_description ?? ''}`.trim());
   return data.access_token;
 }
 
