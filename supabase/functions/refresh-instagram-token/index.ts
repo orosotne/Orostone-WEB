@@ -1,5 +1,6 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { isServiceRole } from '../_shared/auth.ts';
 
 const GRAPH_API_VERSION = 'v24.0';
 
@@ -11,10 +12,7 @@ serve(async (req) => {
 
   // Volá ju len workflow .github/workflows/refresh-instagram-token.yml so service-role kľúčom.
   // Kontrola JWT na platforme pustí aj verejný anon kľúč z webu.
-  const serviceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
-  const authHeader = req.headers.get('authorization') ?? '';
-  const bearerToken = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : '';
-  if (!serviceKey || bearerToken !== serviceKey) {
+  if (!isServiceRole(req)) {
     return new Response(JSON.stringify({ success: false, error: 'Unauthorized' }), {
       status: 401,
       headers: corsHeaders,

@@ -28,6 +28,7 @@
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+import { isServiceRole } from '../_shared/auth.ts';
 import { json, preflight } from '../_shared/cors.ts';
 import { escapeHtml } from '../_shared/escape.ts';
 import { emailMarketing, filterSafe, KLAVIYO_LIST_ID, klaviyoEnabled, klaviyoGet, optedOut, type EmailMarketing } from '../_shared/klaviyo.ts';
@@ -111,8 +112,7 @@ async function alertNotSubscribed(emails: string[]): Promise<boolean> {
 serve(async (req) => {
   if (req.method === 'OPTIONS') return preflight();
 
-  const authHeader = req.headers.get('authorization') ?? '';
-  if (!SUPABASE_SERVICE_KEY || authHeader !== `Bearer ${SUPABASE_SERVICE_KEY}`) {
+  if (!isServiceRole(req)) {
     return json({ success: false, error: 'Unauthorized' }, 401);
   }
   if (!klaviyoEnabled()) {
