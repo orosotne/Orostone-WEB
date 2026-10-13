@@ -1,0 +1,32 @@
+name: Tests
+
+# Pri každom PR do main spustí `npm test` (node:test cez tsx, scripts/tests/*.test.ts).
+# Bez push na main: zlúčený PR už raz prešiel, druhý beh by len zdvojil minúty.
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: npm test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci --no-audit --no-fund
+
+      - run: npm test

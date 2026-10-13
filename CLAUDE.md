@@ -50,6 +50,7 @@ The homepage Instagram strip renders `data/instagram-feed.json` and 600×750 web
 npm run dev              # Dev server on :3000
 npm run build            # Production build
 npm run preview          # Preview build
+npm test                 # node:test suite in scripts/tests (also runs on every PR to main)
 npm run sync:shop-fallback  # Sync Shopify product catalog to local fallback
 npm run sync:instagram   # Latest Instagram posts → data/instagram-feed.json + public/images/instagram/ (also runs in build)
 ```

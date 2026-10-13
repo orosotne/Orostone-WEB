@@ -46,6 +46,7 @@ scripts/        # CLI scripts (sync, image processing)
 npm run dev              # Dev server on :3000
 npm run build            # Production build
 npm run preview          # Preview build
+npm test                 # node:test suite in scripts/tests (also runs on every PR to main)
 npm run sync:shop-fallback  # Sync Shopify product catalog to local fallback
 ```
 
