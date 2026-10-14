@@ -4,7 +4,7 @@ Stav k 14. 10. 2026. Klaviyo som read-only overil okolo 10:50 UTC. Podkladom je 
 
 Skratky: N = `marketing/newsletter`, B = `N/nastroje/build_emails.py`, PB = playbook `index.html`. **Š** = štandardný odosielateľ: from_label „Marián z Orostone“, from_email `ahoj@orostone.sk`, reply_to `ahoj@orostone.sk`. Majú ho všetky štyri správy v SNJKTh a je aj predvolený v účte.
 
-> **Hneď pre Martina, ešte pred stavbou čohokoľvek.** Rozhodnuté 14. 10.: kampaň 03 ide podľa plánu 21. 10. Shopify pripojil Martin zámerne. Otvorené ostáva nastavenie synchronizácie odberateľov zo Shopify (bod 2).
+> **Hneď pre Martina, ešte pred stavbou čohokoľvek.** Rozhodnuté 14. 10.: kampaň 03 ide podľa plánu 21. 10. Shopify pripojil Martin zámerne. Synchronizácia odberateľov zo Shopify je vypnutá (screenshot od Martina, 14. 10.: „Sync your Shopify email subscribers to Klaviyo“ nezaškrtnuté, Shopify Markets nezaškrtnuté).
 > 1. **Odhlásenia po kampani 35:** 3 odhlásenia z 52 príjemcov, teda 5,8 %. Hranica na hlásenie je 1 % (README:112). Sťažnosti na spam: 0. Kampaň 03 je naplánovaná na 21. 10. o 07:00 UTC. Martin rozhodne, či 03 pôjde. Bez jeho rozhodnutia kampaň nemeniť ani nerušiť. Čísla sa ešte menia, preto ich pred odovzdaním plánu treba znova skontrolovať (`get_campaign_report`).
 > 2. **Shopify je pripojený ku Klaviyu** od 14. 10. 08:25 UTC. Martin potvrdí, že pripojenie bolo zámerné. V UI Klaviya skontroluje, do ktorého zoznamu zapisuje synchronizácia odberateľov zo Shopify: musí byť vypnutá alebo zapisovať do samostatného zoznamu, nikdy nie do VSrLFs. Treba to potvrdiť pred ďalšou objednávkou vzorky.
 
@@ -615,7 +615,7 @@ UTM, návrh: `utm_campaign=b2b`.
 
 1. **Kampaň 35:** 3 odhlásenia z 52 (5,8 %), sťažnosti 0. Rozhodnuté 14. 10.: kampaň 03 odíde podľa plánu 21. 10.
 2. **Shopify → Klaviyo (pripojené 14. 10. 08:25 UTC):**
-   - Pripojenie bolo zámerné (Martin, 14. 10.).
+   - Pripojenie bolo zámerné (Martin, 14. 10.). Synchronizácia odberateľov zo Shopify je vypnutá (14. 10.), takže A2 a A4 zatiaľ dostanú len ľudia prihlásení v Klaviyu. Zapnúť ju do samostatného zoznamu je samostatné rozhodnutie.
    - Ako je nastavená synchronizácia odberateľov zo Shopify? Musí byť vypnutá alebo zapisovať do samostatného zoznamu, nikdy nie do VSrLFs.
    - Zapnutie prihlasuje profily vrátane historických a môže znova prihlásiť tých, ktorí sa v Klaviyu odhlásili. Ak ju chcete zapnúť, najprv porovnáme zákazníkov s 13 potlačenými profilmi (README:115).
    - Rozdiel v praxi: keď je vypnutá, A2 a A4 dostanú len ľudia prihlásení v Klaviyu (prakticky VSrLFs). So samostatným zoznamom ich dostanú aj kupujúci, ktorí dali súhlas v checkoute.
