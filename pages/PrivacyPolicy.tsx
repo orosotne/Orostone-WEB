@@ -91,7 +91,7 @@ export const PrivacyPolicy = () => {
                     </tr>
                     <tr>
                       <td className="py-3 px-3 font-semibold text-brand-dark align-top">Marketing</td>
-                      <td className="py-3 px-3 align-top">Newsletter, remarketingové ponuky a meranie účinnosti reklám v Google Ads a na Facebooku či Instagrame (len s výslovným súhlasom)</td>
+                      <td className="py-3 px-3 align-top">Newsletter a automatické e-maily (po objednaní vzorky, pri nedokončenej objednávke v pokladni e-shopu a odberateľom, ktorí newsletter dlhšie neotvárajú), remarketingové ponuky a meranie účinnosti reklám v Google Ads a na Facebooku či Instagrame (len s výslovným súhlasom)</td>
                       <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. a) – súhlas</td>
                     </tr>
                     <tr>
@@ -121,6 +121,7 @@ export const PrivacyPolicy = () => {
                   <h4 className="mb-2 font-semibold text-brand-dark">Newsletter</h4>
                   <p className="text-sm">
                     Prihlásenie na newsletter je <strong>dobrovoľné</strong>. Ak e-mailovú adresu neposkytnete, odber newslettera nebude možný.
+                    Súhlas s e-mailovým marketingom môžete dať aj v pokladni e-shopu zaškrtnutím políčka. Políčko nie je vopred zaškrtnuté a nákup je možný aj bez neho.
                     Súhlas možno kedykoľvek odvolať kliknutím na odkaz v e-maile.
                   </p>
                 </div>
@@ -148,9 +149,9 @@ export const PrivacyPolicy = () => {
                   {[
                     {
                       name: 'Shopify Inc.',
-                      purpose: 'E-shopová platforma, spracovanie objednávok a platieb pri nákupe cez e-shop',
+                      purpose: 'E-shopová platforma, spracovanie objednávok a platieb pri nákupe cez e-shop, záznam súhlasu s e-mailovým marketingom udeleného v pokladni',
                       location: 'Kanada / USA',
-                      note: 'Shopify je certifikovaný PCI DSS spracovateľ platieb. Vlastné zásady: privacy.shopify.com',
+                      note: 'Shopify je certifikovaný PCI DSS spracovateľ platieb. Údaje o objednávkach a súhlas s e-mailovým marketingom z pokladne sa automaticky odovzdávajú do služby Klaviyo. Vlastné zásady: privacy.shopify.com',
                     },
                     {
                       name: 'Supabase Inc.',
@@ -166,9 +167,9 @@ export const PrivacyPolicy = () => {
                     },
                     {
                       name: 'Klaviyo, Inc.',
-                      purpose: 'Odosielanie newslettera, správa odberu a odhlásení, meranie otvorení a kliknutí v e-mailoch',
+                      purpose: 'Odosielanie newslettera a automatických e-mailov, správa odberu a odhlásení, meranie otvorení a kliknutí v e-mailoch',
                       location: 'USA',
-                      note: 'Spracúva e-mailovú adresu, meno (ak ho uvediete), odkiaľ ste sa prihlásili a odpovede, ktoré v e-mailoch zvolíte. Vlastné zásady: klaviyo.com/legal/privacy',
+                      note: 'Spracúva e-mailovú adresu, meno (ak ho uvediete), odkiaľ ste sa prihlásili a odpovede, ktoré v e-mailoch zvolíte. Z e-shopu Shopify do nej prechádzajú údaje o objednávkach (aj nedokončených v pokladni) a stav súhlasu s e-mailovým marketingom. Marketingové e-maily z nej posielame len tým, ktorí na to dali súhlas. Vlastné zásady: klaviyo.com/legal/privacy',
                     },
                     {
                       name: 'Vercel Inc.',
@@ -387,8 +388,9 @@ export const PrivacyPolicy = () => {
               </div>
               <div className="mt-4 rounded-r-[3px] border-l-2 border-brand-dark bg-brand-sand p-4">
                 <p className="text-sm">
-                  Supabase (databáza dopytov a objednávok) je prevádzkovaná výhradne na serveroch v <strong>Nemecku (EÚ)</strong>, takže vaše dáta
-                  z dopytov a objednávok zostávajú primárne v EHP.
+                  Supabase (databáza dopytov a cenových ponúk) je prevádzkovaná výhradne na serveroch v <strong>Nemecku (EÚ)</strong>, takže údaje
+                  uložené v tejto databáze zostávajú v EHP. Objednávky z e-shopu spracúva Shopify (Kanada / USA) a e-maily posielajú Klaviyo a Resend (USA).
+                  Prenos k nim chránia záruky uvedené v tabuľke vyššie.
                 </p>
               </div>
           </LegalSection>
@@ -482,7 +484,7 @@ export const PrivacyPolicy = () => {
         <div className="mt-6 flex flex-col items-start justify-between gap-6 border-t border-brand-line pt-8 md:flex-row md:items-center">
           <div>
             <p className="text-sm text-brand-muted">Posledná aktualizácia</p>
-            <p className="text-lg font-medium text-brand-dark">12.&nbsp;10.&nbsp;2026</p>
+            <p className="text-lg font-medium text-brand-dark">14.&nbsp;10.&nbsp;2026</p>
           </div>
           <ActionButton to="/kontakt" variant="outline" arrow>
             Kontaktujte nás
