@@ -226,15 +226,19 @@ UTM, návrh: `utm_campaign=vzorky`, `utm_content=05-vzorka-doma`, `10-vzorka-vel
 - **V repozitári hneď:** dynamický blok v 10, voliteľne aj v 05. Ide cez B, Codex a merge, spolu s 15 a 16.
 - **Martin rozhodne:**
   - **Synchronizácia odberateľov zo Shopify:**
-    - Zapnutie, do akéhokoľvek zoznamu, prihlasuje profily, preto je to jeho rozhodnutie.
-    - Klaviyo pri zapnutí synchronizuje aj historických odberateľov. Kto sa v Klaviyu odhlásil a v checkoute dá súhlas, bude znova prihlásený (Klaviyo Help 115005080667).
-    - Pred zapnutím porovnať zákazníkov Shopify s 13 potlačenými alebo odhlásenými profilmi (README:115).
-    - Nikdy do VSrLFs. Išlo by o hromadný prídavok, ktorý spustí SNJKTh.
+    - **Oprava 14. 10. (read-only kontrola session newsletter):** súhlas zo Shopify už v Klaviyu je, hoci je políčko synchronizácie vypnuté. Historická synchronizácia 14. 10. 08:25 zapísala 4 zákazníkov ako subscribed (metóda Shopify / Historical Sync). Všetkých 9 zákazníkov Shopify už má profil. Zapnutie políčka teda mení len členstvo v zozname, udalosť Subscribed to List a vstup do flowu spúšťaného zoznamom. Nové profily ani súhlasy nepribudnú.
+    - Dôsledok: filter „can receive email marketing, subscribed“ v draftoch A2 a A4 už dnes pustí aj týchto 4 zákazníkov. Kým Martin neoverí predvyplnenie súhlasu (nižšie) a neupravia sa zásady, žiadny flow A2 ani A4 nespúšťať.
+    - Znovuprihlásenie: dnes by nikoho neprihlásilo proti jeho vôli. 20 globálne potlačených profilov (13 odhlásených vrátane 3 po kampani 35, 2 ručne, 5 hard bounce; README:115 uvádza stav k 12. 10.) sa neprekrýva s 5 odberateľmi zo Shopify.
+    - Zoznam: nový samostatný, napr. „Zákazníci – súhlas v pokladni Shopify“. Nikdy VSrLFs (spustí SNJKTh) ani TKAHuh. Prepínač aj výber zoznamu sú len v UI Klaviya. „Sync Klaviyo profiles to Shopify“ ostáva vypnuté.
+    - Poradie: (1) Martin overí v Shopify › Settings › Checkout › Marketing options › Email, že „Preselect the sign-up option“ je vypnuté pre všetky regióny, a urobí screenshot. Ak je alebo bolo zapnuté, tieto súhlasy sa na marketing nepoužijú. (2) Úprava zásad cez PR (session newsletter ponúka prípravu). (3) Až potom zoznam a zapnutie synchronizácie.
   - **Súhlasový základ pre kupujúcich.** Zásady sľubujú marketing len s výslovným súhlasom (`docs/pravne-texty/texty/ochrana-sukromia.md:41`).
   - **Platnosť súhlasu zo Shopify:** skôr než ho začneme brať ako platný, Martin overí v Shopify › Settings › Checkout › Marketing options, že je vypnuté predvolené zaškrtnutie súhlasu a že text zodpovedá zásadám.
 - **Súhlas príjemcov:**
   - Checkout zaznamenáva `buyer_accepts_marketing`: ORO-1011, 1012 a 1013 majú true, ORO-1010 false.
-  - Do profilov v Klaviyu sa súhlas zatiaľ nepreniesol (14. 10. nie sú žiadne udalosti prihlásenia).
+  - Do profilov v Klaviyu sa súhlas preniesol historickou synchronizáciou 14. 10. 08:25 (4 subscribed), bez udalostí Subscribed to List.
+  - Podozrenie na predvyplnené políčko: 3 zo 4 reálnych kupujúcich dali súhlas a Martinove testovacie objednávky sú od 1. 4. všetky „áno“, predtým „nie“. Overí Martin ručne, cez API sa to prečítať nedá.
+  - Zásady (`ochrana-sukromia.md:41, :70-76, :94-100`, `pages/PrivacyPolicy.tsx`) nehovoria o súhlase v pokladni, odovzdaní do Klaviya ani o automatických e-mailoch. Nezrovnalosť: `:76` (údaje Shopify v EÚ) vs. `:214` (prenosy do Kanady a USA).
+- **Automatické segmenty „(Shopify)“** (RNK3AY, SB2AUp, TFNbsR, VyRjiJ, XYifrQ) majú podmienku „subscription: any“, teda aj nikdy neprihlásených. Nepoužívať. Archivovať alebo prepnúť na „subscribed“ len s Martinovým OK.
 - **Naživo** len po Martinovom OK.
 
 ### 5. Pasce
