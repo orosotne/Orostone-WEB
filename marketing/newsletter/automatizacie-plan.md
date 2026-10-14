@@ -4,7 +4,7 @@ Stav k 14. 10. 2026. Klaviyo som read-only overil okolo 10:50 UTC. Podkladom je 
 
 Skratky: N = `marketing/newsletter`, B = `N/nastroje/build_emails.py`, PB = playbook `index.html`. **Š** = štandardný odosielateľ: from_label „Marián z Orostone“, from_email `ahoj@orostone.sk`, reply_to `ahoj@orostone.sk`. Majú ho všetky štyri správy v SNJKTh a je aj predvolený v účte.
 
-> **Hneď pre Martina (stav 14. 10. popoludní):** v Shopify je súhlas s e-mailami v pokladni **predvyplnený pre Slovensko** (overila session Automatizácie v Klavyo v Shopify admin). Martin ho vypne sám: Settings › Checkout › Email › „Chcem dostávať novinky a ponuky e-mailom“ › „Preselect checkbox in certain regions“ › odstrániť Slovensko, uložiť, urobiť screenshot. Kým to nie je vypnuté a nie sú upravené zásady, A2, A4 ani synchronizácia odberateľov zo Shopify sa nespúšťajú.
+> **Hneď pre Martina (stav 14. 10. popoludní):** v Shopify je súhlas s e-mailami v pokladni **predvyplnený pre Slovensko** (overila session Automatizácie v Klavyo v Shopify admin). **Martin ho 14. 10. vypol** (overila session Automatizácie v Klavyo po novom načítaní stránky: „Preselect checkbox in certain regions“ = „None selected“). Nové súhlasy z pokladne už nie sú predvyplnené; doterajšie 4 súhlasy zo Shopify sa naďalej nepoužívajú. A2, A4 ani synchronizácia odberateľov zo Shopify sa nespúšťajú, kým nie sú upravené zásady ochrany súkromia a Martin nedá OK.
 >
 > Vybavené 14. 10.: kampaň 03 ide podľa plánu 21. 10. (Martin). Shopify pripojil Martin zámerne. Synchronizácia odberateľov zo Shopify aj profilov z Klaviya do Shopify je vypnutá (screenshoty od Martina).
 
@@ -33,8 +33,8 @@ Skratky: N = `marketing/newsletter`, B = `N/nastroje/build_emails.py`, PB = play
 - **Predvyplnený súhlas v pokladni Shopify (overené 14. 10. v Shopify admin):** pri „Chcem dostávať novinky a ponuky e-mailom“ je „Preselect checkbox in certain regions: Slovakia“.
   - Súhlasy z pokladne pre SK sú preto neplatné (GDPR recitál 32, SDEÚ C-673/17 Planet49). Týka sa aj 4 profilov, ktoré historická synchronizácia 14. 10. zapísala ako subscribed (metóda Shopify).
   - Tieto profily nie sú vo VSrLFs ani v inom zozname, ktorému sa posiela (kampane idú na VSrLFs, A7 vyžaduje členstvo vo VSrLFs), takže im dnes nič neodíde. Na marketing sa nepoužívajú.
-  - Vypnutie predvyplnenia: Martin (session Automatizácie v Klavyo to zablokoval bezpečnostný filter). Čo s 4 neplatnými súhlasmi (nechať nepoužité, alebo zmeniť ich stav v Klaviyu), rozhodne Martin.
-- **Otvorené:** synchronizácia odberateľov zo Shopify do nového samostatného zoznamu (nie VSrLFs). Read-only kontrola session newsletter je hotová (nikoho by neprihlásila proti jeho vôli), ale čaká sa na (1) vypnutie predvyplnenia pre SK, (2) úpravu zásad ochrany súkromia cez PR a (3) Martinovo potvrdenie.
+  - Vypnutie predvyplnenia: hotové 14. 10. (Martin; overené: „None selected“). Čo s 4 neplatnými súhlasmi (nechať nepoužité, alebo zmeniť ich stav v Klaviyu), rozhodne Martin.
+- **Otvorené:** synchronizácia odberateľov zo Shopify do nového samostatného zoznamu (nie VSrLFs). Read-only kontrola session newsletter je hotová (nikoho by neprihlásila proti jeho vôli) a predvyplnenie pre SK je vypnuté (14. 10.). Čaká sa na (1) úpravu zásad ochrany súkromia cez PR a (2) Martinovo potvrdenie.
 
 ## Súčasný stav
 
