@@ -57,13 +57,13 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 | 07 | Ako vybrať dekor | Welcome 3/4 – o 5 dní | Tri otázky pred výberom dekoru | skontrolované |
 | 09 | Tri kuchyne | Welcome 4/4 – o 9 dní | Tri kuchyne, tri rôzne rozhodnutia | skontrolované |
 | 05 | Vzorka je doma | Vzorky 2/4 – 2 dni po doručení | Vzorka je doma. Skúste s ňou 4 veci | skontrolované |
-| 10 | Veľká plocha | Vzorky 3/4 – 7 dní po doručení | Ako váš dekor vyzerá vo veľkej ploche | skontrolované |
+| 10 | Veľká plocha | Vzorky 3/4 – 7 dní po doručení | Ako váš dekor vyzerá vo veľkej ploche | na kontrole, dekor, fotka platne a odkaz podľa prvej vzorky z objednávky |
 | 11 | Marián (čistý text) | Vzorky 4/4 – 14 dní po doručení | Pomôžem vám s výberom? | skontrolované |
 | 12 | Ako čítať ponuku | Dopyt → ponuka 2/4 – deň po ponuke | Ako čítať cenovú ponuku | skontrolované |
 | 13 | Showroom | Dopyt → ponuka 3/4 – 5 dní po ponuke | Pozrite si platne naživo | skontrolované |
 | 14 | Marián (čistý text) | Dopyt → ponuka 4/4 – 14 dní po ponuke | Je niečo, čo vám bráni rozhodnúť sa? | skontrolované |
-| 15 | Košík | Opustený košík 1/2 – o hodinu | Vaša vzorka zostala v košíku | skontrolované |
-| 16 | Marián (čistý text) | Opustený košík 2/2 – o deň | Váhate medzi dekormi? | skontrolované |
+| 15 | Košík | Opustený košík 1/2 – o hodinu | Vaša vzorka zostala v košíku | na kontrole, tlačidlo vedie na rozpracovanú objednávku, preheader bez vety o doprave |
+| 16 | Marián (čistý text) | Opustený košík 2/2 – o deň | Váhate medzi dekormi? | na kontrole, odkaz „tu“ vedie na rozpracovanú objednávku |
 | 08 | Hotovo | Po realizácii 1/3 – deň montáže | Hotovo: fotky z vašej montáže | skontrolované |
 | 17 | Starostlivosť | Po realizácii 2/3 – 7 dní po montáži | Starostlivosť o dosku v skratke | skontrolované |
 | 06 | Ako sa vám žije | Po realizácii 3/3 – 30 dní po montáži | Ako sa vám žije s novou doskou? | skontrolované |

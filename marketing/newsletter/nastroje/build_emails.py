@@ -1237,6 +1237,15 @@ write("09-welcome-tri-kuchyne.html", doc(
         footer(),
     ]))
 
+# Údaje vzorky z udalosti Shopify Fulfilled Order (Klaviyo). Vlastnosti položky sú v
+# event.extra.line_items.0.product.properties ako slovník; kľúče s medzerou cez |lookup.
+# Fotka celej platne: dekor-mockup-<handle>-1040.jpg v public/images/email/ (check_images.py
+# overí súbor pre každý dekor z data/shop-products-fallback.json).
+VZORKA = "event.extra.line_items.0.product.properties"
+VZORKA_NAZOV = "{{ " + VZORKA + "|lookup:'Vzorka 1'|default:'Taj Mahal'|title }}"
+VZORKA_HANDLE = "{{ " + VZORKA + "|lookup:'_sample_handle_1'|default:'taj-mahal' }}"
+VZORKA_VIAC = "{% if " + VZORKA + "|lookup:'Počet vzoriek' and " + VZORKA + "|lookup:'Počet vzoriek' != '1' %}"
+
 # 10 – Vzorky 3/4: Ako dekor vyzerá vo veľkej ploche
 write("10-automatizacia-vzorka-velka-plocha.html", doc(
     {
@@ -1245,7 +1254,7 @@ write("10-automatizacia-vzorka-velka-plocha.html", doc(
         "PREDMET:": "Ako váš dekor vyzerá vo veľkej ploche",
         "PREHEADER:": "Kresbu v mierke kuchyne uvidíte na fotke celej platne, v realizáciách alebo v showroome.",
         "CIEĽ:": "Ukázať dekor v mierke → stránka dekoru, ďalšia vzorka alebo pôdorys",
-        "POZNÁMKA:": "V Klaviyo nahradiť názov dekoru, fotku celej platne a odkaz podľa objednanej vzorky (dynamický blok). Predvolený je Taj Mahal.",
+        "POZNÁMKA:": "Názov dekoru, fotka celej platne a odkaz sú dynamické podľa prvej vzorky v objednávke (Klaviyo, udalosť Fulfilled Order zo Shopify). Bez údajov sa zobrazí Taj Mahal.",
     },
     "Ako váš dekor vyzerá vo veľkej ploche",
     "Kresbu v mierke kuchyne uvidíte na fotke celej platne, v realizáciách alebo v showroome.",
@@ -1253,9 +1262,10 @@ write("10-automatizacia-vzorka-velka-plocha.html", doc(
         header(),
         eyebrow("Vzorka doma"),
         headline("Malá vzorka,<br />" + accent_light("veľká plocha.")),
-        hero(shop_img("mockup-TAJ-MAHAL.webp", "1773771257"), "Celá platňa Taj Mahal vedľa človeka na porovnanie veľkosti", capsule="Taj Mahal · 3200 × 1600 mm", top=14),
+        hero(IMG + "dekor-mockup-" + VZORKA_HANDLE + "-1040.jpg", "Celá platňa " + VZORKA_NAZOV + " vedľa človeka na porovnanie veľkosti", capsule=VZORKA_NAZOV + " · 3200 × 1600 mm", top=14),
         text([
             "vzorku máte doma už týždeň. Farbu a povrch ste si overili, no jedno vám malý štvorec neukáže: ako sa kresba rozloží na troch metroch pracovnej dosky alebo na ostrovčeku.",
+            VZORKA_VIAC + "Na fotke je " + VZORKA_NAZOV + ", prvý dekor z vašej objednávky. Celé platne ostatných dekorov nájdete rovnako na ich stránkach.{% endif %}",
         ], top=24),
         section_title(None, "Tri spôsoby, ako vidieť dekor vo veľkej ploche", top=12),
         numbered([
@@ -1264,7 +1274,7 @@ write("10-automatizacia-vzorka-velka-plocha.html", doc(
             ("Celé platne v showroome", "V Bošanoch vám pripravíme platne vášho dekoru. Ak prinesiete vzorku frontu, porovnáte ich priamo vedľa seba."),
         ], top=8),
         figure(IMG + "vzorka-pri-dvierkach.jpg", "Vzorka sinterovaného kameňa priložená k dubovým dvierkam kuchynskej skrinky", caption="Vzorka pri dvierkach skrinky · dekor Appennino", top=24),
-        cta("Pozrieť celú platňu", SITE + "/produkt/taj-mahal", sub="Na stránke dekoru je fotka celej platne aj cena.", link=("Objednať ďalšiu vzorku", SITE + "/vzorky"), width=260),
+        cta("Pozrieť celú platňu", SITE + "/produkt/" + VZORKA_HANDLE, sub="Na stránke dekoru je fotka celej platne aj cena.", link=("Objednať ďalšiu vzorku", SITE + "/vzorky"), width=260),
         ps("Ak už viete, ktorý dekor to bude, pošlite pôdorys. Navrhneme rozloženie platní tak, aby žily išli tam, kde ich chcete mať, a pripravíme orientačné cenové rozpätie."),
         signature(top=0),
         footer(reason=REASON_VZORKA),
@@ -1375,18 +1385,21 @@ write("14-automatizacia-ponuka-marian.html", plain(
     REASON_PONUKA,
 ))
 
+# Rozpracovaná objednávka z udalosti Shopify Checkout Started (Klaviyo).
+KOSIK_URL = "{{ event.extra.responsive_checkout_url|default:'" + SITE + "/vzorky' }}"
+
 # 15 – Opustený košík 1/2
 write("15-automatizacia-kosik-vzorka.html", doc(
     {
         "TYP:": "Automatizácia · Opustený košík 1/2",
         "SPÚŠŤAČ:": "1 hodinu po začatí objednávky bez dokončenia (Klaviyo: Checkout Started)",
         "PREDMET:": "Vaša vzorka zostala v košíku",
-        "PREHEADER:": "Objednávku dokončíte jedným kliknutím. Prvá vzorka je zadarmo, platíte iba dopravu.",
+        "PREHEADER:": "Objednávku dokončíte jedným kliknutím. Prvá vzorka je zadarmo.",
         "CIEĽ:": "Dokončiť objednávku vzorky. Bez zľavy.",
-        "POZNÁMKA:": "Posielať len kontaktom so súhlasom s e-mailovým marketingom. Odkaz tlačidla v Klaviyo: adresa košíka z udalosti; obrázok môže byť dynamický podľa vzorky.",
+        "POZNÁMKA:": "Posielať len kontaktom so súhlasom s e-mailovým marketingom. Tlačidlo vedie na rozpracovanú objednávku z udalosti Checkout Started (Shopify); bez nej na /vzorky.",
     },
     "Vaša vzorka zostala v košíku",
-    "Objednávku dokončíte jedným kliknutím. Prvá vzorka je zadarmo, platíte iba dopravu.",
+    "Objednávku dokončíte jedným kliknutím. Prvá vzorka je zadarmo.",
     [
         header(),
         headline("Vzorka čaká<br />" + accent_light("v košíku."), top=30),
@@ -1395,7 +1408,7 @@ write("15-automatizacia-kosik-vzorka.html", doc(
             "objednávka vzorky ostala nedokončená. Ak vás niečo vyrušilo, košík sme vám uložili – stačí jedno kliknutie.",
         ], top=24),
         facts([("Rozmer", "10 × 10 cm"), ("Hrúbka", "12 mm"), ("Prvá vzorka", "zadarmo"), ("Doprava", "2,50 €")], top=8),
-        cta("Dokončiť objednávku", SITE + "/vzorky", width=260),
+        cta("Dokončiť objednávku", KOSIK_URL, width=260),
         signature(top=28),
         footer(reason=REASON_KOSIK),
     ]))
@@ -1408,14 +1421,14 @@ write("16-automatizacia-kosik-marian.html", plain(
         "PREDMET:": "Váhate medzi dekormi?",
         "PREHEADER:": "Pošlite fotku kuchyne, poradíme.",
         "CIEĽ:": "Odpoveď s fotkou kuchyne → osobná rada → objednávka vzoriek",
-        "POZNÁMKA:": "Odkaz „tu“ v Klaviyo nahradiť adresou košíka z udalosti.",
+        "POZNÁMKA:": "Odkaz „tu“ vedie na rozpracovanú objednávku z udalosti Checkout Started (Shopify); bez nej na /vzorky.",
     },
     "Váhate medzi dekormi?",
     "Pošlite fotku kuchyne, poradíme.",
     [
         "včera ste si v e-shope vyberali vzorku, ale objednávka ostala nedokončená. Ak je dôvodom to, že neviete, ktorý dekor zvoliť, pomôžem vám.",
         "V odpovedi mi pošlite fotku kuchyne alebo vizualizáciu a napíšte, aké budú skrinky a podlaha. Odporučím vám dva až tri dekory, ktoré má zmysel objednať si ako vzorky.",
-        'Ak ste si už vybrali, objednávku dokončíte <a href="' + SITE + '/vzorky" style="color:#1A1A1A; text-decoration:underline;">tu</a>.',
+        'Ak ste si už vybrali, objednávku dokončíte <a href="' + KOSIK_URL + '" style="color:#1A1A1A; text-decoration:underline;">tu</a>.',
     ],
     REASON_KOSIK,
 ))

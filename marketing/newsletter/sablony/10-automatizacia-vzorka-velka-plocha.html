@@ -6,7 +6,7 @@
   PREDMET:   Ako váš dekor vyzerá vo veľkej ploche
   PREHEADER: 🪨 Kresbu v mierke kuchyne uvidíte na fotke celej platne, v realizáciách alebo v showroome.
   CIEĽ:      Ukázať dekor v mierke → stránka dekoru, ďalšia vzorka alebo pôdorys
-  POZNÁMKA:  V Klaviyo nahradiť názov dekoru, fotku celej platne a odkaz podľa objednanej vzorky (dynamický blok). Predvolený je Taj Mahal.
+  POZNÁMKA:  Názov dekoru, fotka celej platne a odkaz sú dynamické podľa prvej vzorky v objednávke (Klaviyo, udalosť Fulfilled Order zo Shopify). Bez údajov sa zobrazí Taj Mahal.
   Obrázky: https://orostone.sk/images/email/ (v repozitári Orostone-WEB: public/images/email/)
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="sk">
@@ -131,21 +131,21 @@
         <tr>
           <td class="hero-wrap" style="padding:14px 40px 0; line-height:0;">
             <!--[if !mso]><!-- -->
-            <img src="https://orostone.sk/images/email/dekor-mockup-taj-mahal-1040.jpg" alt="Celá platňa Taj Mahal vedľa človeka na porovnanie veľkosti" width="520" style="width:100%; max-width:520px; height:auto; display:block; border-radius:12px;" />
+            <img src="https://orostone.sk/images/email/dekor-mockup-{{ event.extra.line_items.0.product.properties|lookup:'_sample_handle_1'|default:'taj-mahal' }}-1040.jpg" alt="Celá platňa {{ event.extra.line_items.0.product.properties|lookup:'Vzorka 1'|default:'Taj Mahal'|title }} vedľa človeka na porovnanie veľkosti" width="520" style="width:100%; max-width:520px; height:auto; display:block; border-radius:12px;" />
             <!--<![endif]-->
             <!--[if mso]>
-            <img src="https://orostone.sk/images/email/dekor-mockup-taj-mahal-1040.jpg" alt="Celá platňa Taj Mahal vedľa človeka na porovnanie veľkosti" width="520" style="width:520px; height:auto; display:block;" />
+            <img src="https://orostone.sk/images/email/dekor-mockup-{{ event.extra.line_items.0.product.properties|lookup:'_sample_handle_1'|default:'taj-mahal' }}-1040.jpg" alt="Celá platňa {{ event.extra.line_items.0.product.properties|lookup:'Vzorka 1'|default:'Taj Mahal'|title }} vedľa človeka na porovnanie veľkosti" width="520" style="width:520px; height:auto; display:block;" />
             <![endif]-->
           </td>
         </tr>
         <tr>
-          <td class="hero-cap" style="padding:10px 40px 0; font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#6B7280; line-height:15px;"><span style="color:#7A6A2E;">&#9679;</span>&nbsp; Taj Mahal · 3200 × 1600 mm</td>
+          <td class="hero-cap" style="padding:10px 40px 0; font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#6B7280; line-height:15px;"><span style="color:#7A6A2E;">&#9679;</span>&nbsp; {{ event.extra.line_items.0.product.properties|lookup:'Vzorka 1'|default:'Taj Mahal'|title }} · 3200 × 1600 mm</td>
         </tr>
 
         <!-- TEXT -->
         <tr>
           <td class="px-40 t-body" style="padding:24px 40px 8px; font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:15px; font-weight:300; line-height:26px; color:#2A2A2A;">
-            <p style="margin:0 0 16px; font-weight:500; color:#1A1A1A;">Dobrý deň,</p><p style="margin:0 0 16px;">vzorku máte doma už týždeň. Farbu a povrch ste si overili, no jedno vám malý štvorec neukáže: ako sa kresba rozloží na troch metroch pracovnej dosky alebo na ostrovčeku.</p>
+            <p style="margin:0 0 16px; font-weight:500; color:#1A1A1A;">Dobrý deň,</p><p style="margin:0 0 16px;">vzorku máte doma už týždeň. Farbu a povrch ste si overili, no jedno vám malý štvorec neukáže: ako sa kresba rozloží na troch metroch pracovnej dosky alebo na ostrovčeku.</p><p style="margin:0 0 16px;">{% if event.extra.line_items.0.product.properties|lookup:'Počet vzoriek' and event.extra.line_items.0.product.properties|lookup:'Počet vzoriek' != '1' %}Na fotke je {{ event.extra.line_items.0.product.properties|lookup:'Vzorka 1'|default:'Taj Mahal'|title }}, prvý dekor z vašej objednávky. Celé platne ostatných dekorov nájdete rovnako na ich stránkach.{% endif %}</p>
           </td>
         </tr>
 
@@ -217,13 +217,13 @@
               <tr>
                 <td align="center" style="background:#1A1A1A; border-radius:9999px;">
                   <!--[if mso]>
-                  <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://orostone.sk/produkt/taj-mahal" style="height:46px;v-text-anchor:middle;width:260px;" arcsize="50%" stroke="f" fillcolor="#1A1A1A">
+                  <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://orostone.sk/produkt/{{ event.extra.line_items.0.product.properties|lookup:'_sample_handle_1'|default:'taj-mahal' }}" style="height:46px;v-text-anchor:middle;width:260px;" arcsize="50%" stroke="f" fillcolor="#1A1A1A">
                     <w:anchorlock/>
                     <center style="color:#FFFFFF;font-family:Arial,sans-serif;font-size:11px;font-weight:bold;letter-spacing:2px;">POZRIEŤ CELÚ PLATŇU &rarr;</center>
                   </v:roundrect>
                   <![endif]-->
                   <!--[if !mso]><!-- -->
-                  <a class="cta-btn" href="https://orostone.sk/produkt/taj-mahal" target="_blank" style="display:inline-block; padding:15px 28px; font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#FFFFFF; text-decoration:none; line-height:1; border-radius:9999px;">Pozrieť celú platňu <span style="color:#ECD488;">&rarr;</span></a>
+                  <a class="cta-btn" href="https://orostone.sk/produkt/{{ event.extra.line_items.0.product.properties|lookup:'_sample_handle_1'|default:'taj-mahal' }}" target="_blank" style="display:inline-block; padding:15px 28px; font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#FFFFFF; text-decoration:none; line-height:1; border-radius:9999px;">Pozrieť celú platňu <span style="color:#ECD488;">&rarr;</span></a>
                   <!--<![endif]-->
                 </td>
               </tr>
