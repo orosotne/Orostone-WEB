@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "vite",
     "typecheck": "tsc --noEmit",
+    "test": "tsx --test scripts/tests/*.test.ts",
     "build": "tsc --noEmit && tsx scripts/sync-shop-fallback.ts && tsx scripts/sync-instagram.ts && vite build && tsx scripts/prerender.ts && tsx scripts/generate-seo-artifacts.ts && tsx scripts/validate-dist.ts",
     "indexnow": "tsx scripts/indexnow-ping.ts",
     "seo:diff": "tsx scripts/seo-diff.ts",
