@@ -161,7 +161,7 @@ Skratky: N = `marketing/newsletter`, B = `N/nastroje/build_emails.py`, PB = play
 |---|---|---|---|---|
 | A2 Vzorky | Shopify Fulfilled Order Y4VvMe | áno, od 14. 10. (4 udalosti) | nič | **live od 14. 10. 18:54 UTC (flow Tp45w8)** |
 | A7 Reaktivácia | segment VGyNMu (Opened TqZ5Tp, Clicked VdqXpS) | áno | nič | **live od 14. 10. 11:50 UTC (flow R5jtdq)** |
-| A4 Opustený košík | Shopify Checkout Started TR4G9D | áno (13 udalostí, žiadna skutočne opustená) | Martin 14. 10.: e-mail o opustenej pokladni ostáva v Shopify, A4 sa nespúšťa | nič, flow nevytvorený |
+| A4 Opustený košík | Shopify Checkout Started TR4G9D | áno (13 udalostí, žiadna skutočne opustená) | Martin 14. 10.: e-mail o opustenej pokladni má posielať Shopify, A4 sa nespúšťa. Shopify ho zatiaľ neposlal ani raz (0 z 3, pozri A4 › 4) | nič, flow nevytvorený |
 | A3 Dopyt → ponuka | CRM, fáza „Finálna ponuka odoslaná“ | nie | rozhodnutie Klaviyo vs. CRM; CRM kód; nový kľúč | nič |
 | A5 Po realizácii | CRM, montáž so stavom `dokoncene` | nie | CRM kód; fotky pre 08; súhlas | nič |
 | A8 B2B | neexistuje | nie | model súhlasu a zdroj kontaktov | nič |
@@ -397,7 +397,11 @@ Filtre a ukončenie:
 UTM, návrh: `utm_campaign=opusteny-kosik`.
 
 ### 4. Draft vs. live a schválenia
-- **Rozhodnutie Martina 14. 10. 2026:** vlastný e-mail Shopify o opustenej pokladni ostáva zapnutý, A4 sa nespúšťa a flow sa nevytvára. Šablóny 15 (R8WGMM) a 16 (RjSdCb) sú v Klaviyu pripravené.
+- **Rozhodnutie Martina 14. 10. 2026:** e-mail o opustenej pokladni nechať na Shopify, A4 sa nespúšťa a flow sa nevytvára. Šablóny 15 (R8WGMM) a 16 (RjSdCb) sú v Klaviyu pripravené.
+  - **Overené 14. 10. (Shopify Admin API, len čítanie):** Shopify eviduje 3 opustené pokladne (27. 9. a dvakrát 2. 10. 2026, 2 zákazníci, košík s platňou, ani jeden neskôr neobjednal). Pri žiadnej e-mail neodišiel (`email_state` not_sent, `emailSentAt` prázdne). Obaja zákazníci sú v Shopify bez súhlasu s e-mailovým marketingom.
+  - Samotné nastavenie automatizácie API neukáže. Podľa pomocníka Shopify ide e-mail predvolene len zákazníkom so súhlasom s e-mailovým marketingom; druhá možnosť je, že je automatizácia vypnutá. Overí Martin v Shopify admin › Apps › Messaging › Automations (staršia verzia: „Abandoned checkout emails by Shopify“ › Edit settings › Send to).
+  - Poslať e-mail všetkým zákazníkom by bolo v rozpore so zásadami: automatické e-maily vrátane e-mailu o nedokončenom nákupe sú tam „len s vaším výslovným súhlasom“ (`pages/PrivacyPolicy.tsx:94`).
+  - **Medzera:** Shopify nevie vylúčiť segment U2XF6B. Súhlas má v Shopify 5 zákazníkov a 4 z nich sú práve neplatné predvyplnené súhlasy z U2XF6B. Ak je automatizácia zapnutá pre odberateľov, dostanú ju dnes takmer výlučne títo ľudia. Rozhodne Martin: Shopify e-mail vypnúť (a prípadne neskôr spustiť A4, ktorý U2XF6B vylučuje), alebo riziko prijať.
   - Pred prípadným spustením: overiť na skutočne opustenej pokladni, že `responsive_checkout_url` vedie na obnovenie košíka (všetkých 13 historických udalostí skončilo objednávkou a odkaz vedie na stránku objednávky), a zosúladiť „Doprava 2,50 €“ v 15 s kódom VITAJTE.
 - **Spúšťač existuje.** Blokujú zmeny 15 a 16 (URL košíka, text o doprave), ktoré idú cez B, Codex a merge spolu s 10.
 - **Flow** vytvoriť až s finálnymi 15 a 16.
