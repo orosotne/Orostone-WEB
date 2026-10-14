@@ -91,8 +91,13 @@ export const PrivacyPolicy = () => {
                     </tr>
                     <tr>
                       <td className="py-3 px-3 font-semibold text-brand-dark align-top">Marketing</td>
-                      <td className="py-3 px-3 align-top">Newsletter a automatické e-maily (po objednaní vzorky, pri nedokončenej objednávke v pokladni e-shopu a odberateľom, ktorí newsletter dlhšie neotvárajú), remarketingové ponuky a meranie účinnosti reklám v Google Ads a na Facebooku či Instagrame (len s výslovným súhlasom)</td>
+                      <td className="py-3 px-3 align-top">Newsletter, automatické e-maily, remarketingové ponuky a meranie účinnosti reklám v Google Ads a na Facebooku či Instagrame, všetko len s vaším výslovným súhlasom. Automatické e-maily posielame, keď si objednáte vzorku, keď nedokončíte nákup v pokladni e-shopu alebo keď ako odberateľ newslettera 90&nbsp;dní neotvoríte žiadny náš e-mail ani v ňom na nič nekliknete.</td>
                       <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. a) – súhlas</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-3 font-semibold text-brand-dark align-top">Prehľad objednávok a meranie e-mailov</td>
+                      <td className="py-3 px-3 align-top">Údaje o objednávkach a o nákupoch nedokončených v pokladni prenášame z e-shopu do služby Klaviyo pri všetkých zákazníkoch, aj pri tých, ktorí súhlas s e-mailovým marketingom nedali. Slúžia na prehľad objednávok a na meranie, ako naše e-maily prispievajú k objednávkam. Zákazníkom bez súhlasu marketingové e-maily neposielame.</td>
+                      <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. f) – oprávnený záujem (prehľad objednávok a meranie výsledkov e-mailov)</td>
                     </tr>
                     <tr>
                       <td className="py-3 px-3 font-semibold text-brand-dark align-top">Analytika</td>
@@ -103,7 +108,9 @@ export const PrivacyPolicy = () => {
                 </table>
               </div>
               <p className="mt-3 text-xs text-brand-muted">
-                Automatizované rozhodovanie ani profilovanie v zmysle čl. 22 GDPR <strong>nevykonávame</strong>.
+                Automatizované rozhodovanie, ktoré by malo pre vás právne alebo podobne významné účinky (čl. 22 GDPR), <strong>nevykonávame</strong>.
+                Automatické e-maily vyberáme podľa jednoduchých pravidiel, napríklad či ste nedokončili nákup v pokladni, čo ste odpovedali v e-maile
+                alebo či ste 90&nbsp;dní neotvorili žiadny náš e-mail. Proti tomu môžete kedykoľvek namietať alebo sa z e-mailov odhlásiť.
               </p>
           </LegalSection>
 
@@ -121,7 +128,7 @@ export const PrivacyPolicy = () => {
                   <h4 className="mb-2 font-semibold text-brand-dark">Newsletter</h4>
                   <p className="text-sm">
                     Prihlásenie na newsletter je <strong>dobrovoľné</strong>. Ak e-mailovú adresu neposkytnete, odber newslettera nebude možný.
-                    Súhlas s e-mailovým marketingom môžete dať aj v pokladni e-shopu zaškrtnutím políčka. Políčko nie je vopred zaškrtnuté a nákup je možný aj bez neho.
+                    Súhlas s e-mailovým marketingom môžete dať aj v pokladni e-shopu zaškrtnutím políčka „Chcem dostávať novinky a ponuky e-mailom“. Políčko nie je vopred zaškrtnuté a nakúpiť môžete aj bez súhlasu.
                     Súhlas možno kedykoľvek odvolať kliknutím na odkaz v e-maile.
                   </p>
                 </div>
@@ -149,9 +156,9 @@ export const PrivacyPolicy = () => {
                   {[
                     {
                       name: 'Shopify Inc.',
-                      purpose: 'E-shopová platforma, spracovanie objednávok a platieb pri nákupe cez e-shop, záznam súhlasu s e-mailovým marketingom udeleného v pokladni',
+                      purpose: 'E-shopová platforma, spracovanie objednávok a platieb pri nákupe cez e-shop, záznam súhlasu s e-mailovým marketingom z pokladne',
                       location: 'Kanada / USA',
-                      note: 'Shopify je certifikovaný PCI DSS spracovateľ platieb. Údaje o objednávkach a súhlas s e-mailovým marketingom z pokladne sa automaticky odovzdávajú do služby Klaviyo. Vlastné zásady: privacy.shopify.com',
+                      note: 'Shopify je certifikovaný PCI DSS spracovateľ platieb. Údaje o zákazníkoch a objednávkach (aj o nákupoch nedokončených v pokladni) a stav súhlasu s e-mailovým marketingom automaticky odovzdáva službe Klaviyo. Vlastné zásady: privacy.shopify.com',
                     },
                     {
                       name: 'Supabase Inc.',
@@ -161,15 +168,15 @@ export const PrivacyPolicy = () => {
                     },
                     {
                       name: 'Resend Inc.',
-                      purpose: 'Odosielanie e-mailov – potvrdenia dopytov, notifikácie o objednávke a newsletter',
+                      purpose: 'Odosielanie e-mailov – potvrdenia dopytov, notifikácie o objednávke a uvítací e-mail newslettera, ak ho nemôže poslať Klaviyo',
                       location: 'USA',
                       note: 'E-mailová adresa príjemcu sa zdieľa iba na doručenie správy.',
                     },
                     {
                       name: 'Klaviyo, Inc.',
-                      purpose: 'Odosielanie newslettera a automatických e-mailov, správa odberu a odhlásení, meranie otvorení a kliknutí v e-mailoch',
+                      purpose: 'Odosielanie newslettera a automatických e-mailov, správa odberu a odhlásení, meranie otvorení a kliknutí v e-mailoch, prehľad objednávok z e-shopu',
                       location: 'USA',
-                      note: 'Spracúva e-mailovú adresu, meno (ak ho uvediete), odkiaľ ste sa prihlásili a odpovede, ktoré v e-mailoch zvolíte. Z e-shopu Shopify do nej prechádzajú údaje o objednávkach (aj nedokončených v pokladni) a stav súhlasu s e-mailovým marketingom. Marketingové e-maily z nej posielame len tým, ktorí na to dali súhlas. Vlastné zásady: klaviyo.com/legal/privacy',
+                      note: 'Spracúva e-mailovú adresu, meno (ak ho uvediete), odkiaľ ste sa prihlásili a odpovede, ktoré v e-mailoch zvolíte. Z e-shopu na platforme Shopify dostáva údaje o všetkých zákazníkoch, aj o tých, ktorí súhlas s e-mailovým marketingom nedali: meno, kontaktné a dodacie údaje, objednávky, nákupy nedokončené v pokladni a stav súhlasu s e-mailovým marketingom. Marketingové e-maily cez Klaviyo posielame len tým, ktorí s nimi súhlasili. Vlastné zásady: klaviyo.com/legal/privacy',
                     },
                     {
                       name: 'Vercel Inc.',
@@ -256,7 +263,16 @@ export const PrivacyPolicy = () => {
                   <ul className="text-sm space-y-1">
                     <li>• Objednaný tovar</li>
                     <li>• História objednávok</li>
+                    <li>• Nákupy nedokončené v pokladni</li>
                     <li>• Platobné údaje</li>
+                  </ul>
+                </div>
+                <div className={`${LEGAL_BOX} p-4`}>
+                  <h4 className="mb-2 font-semibold text-brand-dark">E-mailová komunikácia</h4>
+                  <ul className="text-sm space-y-1">
+                    <li>• Súhlas s e-mailovým marketingom a odhlásenie</li>
+                    <li>• Otvorenia e-mailov a kliknutia v nich</li>
+                    <li>• Odpovede, ktoré v e-mailoch zvolíte</li>
                   </ul>
                 </div>
                 <div className={`${LEGAL_BOX} p-4`}>
@@ -288,6 +304,13 @@ export const PrivacyPolicy = () => {
                   <div>
                     <p className="font-semibold text-brand-dark">rokov</p>
                     <p className="text-sm">Obchodná korešpondencia, cenové ponuky a kontaktné formuláre</p>
+                  </div>
+                </div>
+                <div className={`${LEGAL_BOX} flex items-center gap-4 p-4`}>
+                  <span className="min-w-[2.5rem] text-center text-2xl font-light tabular-nums text-brand-dark">3</span>
+                  <div>
+                    <p className="font-semibold text-brand-dark">roky</p>
+                    <p className="text-sm">Údaje z e-shopu v službe Klaviyo – profil zákazníka s údajmi o objednávkach a nákupoch nedokončených v pokladni uchovávame 3&nbsp;roky od poslednej objednávky (ak ste objednávku nedokončili, od posledného nákupu v pokladni). Potom profil vymažeme. Ak odoberáte newsletter alebo ste dali súhlas s e-mailovým marketingom, profil ostáva, kým súhlas platí.</p>
                   </div>
                 </div>
                 <div className={`${LEGAL_BOX} flex items-center gap-4 p-4`}>
@@ -331,7 +354,7 @@ export const PrivacyPolicy = () => {
           <LegalSection id="medzinarodny-prenos" number="7" title="Medzinárodný prenos údajov" subtitle="Prenos údajov mimo Európskeho hospodárskeho priestoru">
               <p>
                 Niektorí naši sprostredkovatelia a partneri sídlia mimo Európskeho hospodárskeho priestoru (EHP).
-                Pre každý prenos je zabezpečená príslušná záruka v súlade s čl. 46 GDPR:
+                Pre každý prenos je zabezpečená príslušná záruka podľa čl. 45 alebo 46 GDPR:
               </p>
               <div className="overflow-x-auto -mx-2">
                 <table className="w-full text-sm border-collapse min-w-[480px]">
@@ -388,9 +411,9 @@ export const PrivacyPolicy = () => {
               </div>
               <div className="mt-4 rounded-r-[3px] border-l-2 border-brand-dark bg-brand-sand p-4">
                 <p className="text-sm">
-                  Supabase (databáza dopytov a cenových ponúk) je prevádzkovaná výhradne na serveroch v <strong>Nemecku (EÚ)</strong>, takže údaje
-                  uložené v tejto databáze zostávajú v EHP. Objednávky z e-shopu spracúva Shopify (Kanada / USA) a e-maily posielajú Klaviyo a Resend (USA).
-                  Prenos k nim chránia záruky uvedené v tabuľke vyššie.
+                  Supabase (databáza dopytov a cenových ponúk) beží výhradne na serveroch v <strong>Nemecku (EÚ)</strong>, takže údaje
+                  uložené v tejto databáze zostávajú v EHP. Ostatní poskytovatelia v tabuľke spracúvajú údaje aj mimo EHP, napríklad Shopify
+                  objednávky z e-shopu (Kanada / USA) a Klaviyo profily zákazníkov a odberateľov (USA). Pri prenose údajov k nim platia záruky uvedené v tabuľke vyššie.
                 </p>
               </div>
           </LegalSection>
@@ -404,8 +427,8 @@ export const PrivacyPolicy = () => {
                   { title: 'Právo na vymazanie (čl. 17)', desc: 'Za určitých podmienok môžete žiadať o výmaz svojich údajov (právo na zabudnutie)' },
                   { title: 'Právo na obmedzenie (čl. 18)', desc: 'Môžete žiadať o obmedzenie spracovania vašich údajov počas riešenia sporu' },
                   { title: 'Právo na prenosnosť (čl. 20)', desc: 'Môžete žiadať o prenos vašich údajov inému prevádzkovateľovi v štruktúrovanom formáte' },
-                  { title: 'Právo namietať (čl. 21)', desc: 'Môžete namietať proti spracovaniu na základe oprávneného záujmu alebo na účely priameho marketingu' },
-                  { title: 'Právo odvolať súhlas (čl. 7 ods. 3)', desc: 'Ak spracovanie prebieha na základe súhlasu, môžete ho kedykoľvek odvolať bez ujmy na zákonnosti spracovania pred odvolaním. Odber newslettera zrušíte kliknutím na odkaz v e-maile.' },
+                  { title: 'Právo namietať (čl. 21)', desc: 'Môžete namietať proti spracovaniu na základe oprávneného záujmu, napríklad proti prehľadu objednávok a meraniu e-mailov v službe Klaviyo, a proti spracovaniu na účely priameho marketingu vrátane súvisiaceho profilovania. Po námietke proti priamemu marketingu vaše údaje na tento účel ďalej nespracúvame.' },
+                  { title: 'Právo odvolať súhlas (čl. 7 ods. 3)', desc: 'Ak spracovanie prebieha na základe súhlasu, môžete ho kedykoľvek odvolať bez ujmy na zákonnosti spracovania pred odvolaním. Odber newslettera aj ďalších marketingových e-mailov zrušíte kliknutím na odkaz v e-maile.' },
                 ].map((item, index) => (
                   <div key={index} className={`${LEGAL_BOX} p-4`}>
                     <h4 className="mb-1 font-semibold text-brand-dark">{item.title}</h4>

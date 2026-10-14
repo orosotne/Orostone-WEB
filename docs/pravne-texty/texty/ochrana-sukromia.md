@@ -38,10 +38,11 @@ Vaše osobné údaje spracúvame na tieto účely:
 | Komunikácia | Informovanie o stave objednávky, odpovedanie na dopyty a poskytovanie cenových ponúk | čl. 6 ods. 1 písm. b) – plnenie zmluvy / čl. 6 ods. 1 písm. f) – oprávnený záujem (vybavenie dopytu zákazníka a poskytnutie cenovej ponuky) |
 | Zákonné povinnosti | Vedenie účtovníctva, plnenie daňových a archivačných povinností | čl. 6 ods. 1 písm. c) – zákonná povinnosť |
 | Bezpečnosť | Ochrana formulárov pred automatizovanými útokmi (Cloudflare Turnstile) | čl. 6 ods. 1 písm. f) – oprávnený záujem (ochrana webovej stránky a formulárov pred zneužitím) |
-| Marketing | Newsletter a automatické e-maily (po objednaní vzorky, pri nedokončenej objednávke v pokladni e-shopu a odberateľom, ktorí newsletter dlhšie neotvárajú), remarketingové ponuky a meranie účinnosti reklám v Google Ads a na Facebooku či Instagrame (len s výslovným súhlasom) | čl. 6 ods. 1 písm. a) – súhlas |
+| Marketing | Newsletter, automatické e-maily, remarketingové ponuky a meranie účinnosti reklám v Google Ads a na Facebooku či Instagrame, všetko len s vaším výslovným súhlasom. Automatické e-maily posielame, keď si objednáte vzorku, keď nedokončíte nákup v pokladni e-shopu alebo keď ako odberateľ newslettera 90 dní neotvoríte žiadny náš e-mail ani v ňom na nič nekliknete. | čl. 6 ods. 1 písm. a) – súhlas |
+| Prehľad objednávok a meranie e-mailov | Údaje o objednávkach a o nákupoch nedokončených v pokladni prenášame z e-shopu do služby Klaviyo pri všetkých zákazníkoch, aj pri tých, ktorí súhlas s e-mailovým marketingom nedali. Slúžia na prehľad objednávok a na meranie, ako naše e-maily prispievajú k objednávkam. Zákazníkom bez súhlasu marketingové e-maily neposielame. | čl. 6 ods. 1 písm. f) – oprávnený záujem (prehľad objednávok a meranie výsledkov e-mailov) |
 | Analytika | Meranie návštevnosti a správania na webe (Google Analytics 4) po udelení súhlasu | čl. 6 ods. 1 písm. a) – súhlas |
 
-Automatizované rozhodovanie ani profilovanie v zmysle čl. 22 GDPR nevykonávame.
+Automatizované rozhodovanie, ktoré by malo pre vás právne alebo podobne významné účinky (čl. 22 GDPR), nevykonávame. Automatické e-maily vyberáme podľa jednoduchých pravidiel, napríklad či ste nedokončili nákup v pokladni, čo ste odpovedali v e-maile alebo či ste 90 dní neotvorili žiadny náš e-mail. Proti tomu môžete kedykoľvek namietať alebo sa z e-mailov odhlásiť.
 
 ## 3. Dôsledky neposkytnutia osobných údajov
 
@@ -53,7 +54,7 @@ Poskytnutie kontaktných a dodacích údajov je zmluvnou požiadavkou potrebnou 
 
 #### Newsletter
 
-Prihlásenie na newsletter je dobrovoľné. Ak e-mailovú adresu neposkytnete, odber newslettera nebude možný. Súhlas s e-mailovým marketingom môžete dať aj v pokladni e-shopu zaškrtnutím políčka. Políčko nie je vopred zaškrtnuté a nákup je možný aj bez neho. Súhlas možno kedykoľvek odvolať kliknutím na odkaz v e-maile.
+Prihlásenie na newsletter je dobrovoľné. Ak e-mailovú adresu neposkytnete, odber newslettera nebude možný. Súhlas s e-mailovým marketingom môžete dať aj v pokladni e-shopu zaškrtnutím políčka „Chcem dostávať novinky a ponuky e-mailom“. Políčko nie je vopred zaškrtnuté a nakúpiť môžete aj bez súhlasu. Súhlas možno kedykoľvek odvolať kliknutím na odkaz v e-maile.
 
 #### Analytické a marketingové cookies
 
@@ -71,9 +72,9 @@ Nasledujúce subjekty spracúvajú osobné údaje v mene Orostone na základe p�
 
 Kanada / USA
 
-E-shopová platforma, spracovanie objednávok a platieb pri nákupe cez e-shop, záznam súhlasu s e-mailovým marketingom udeleného v pokladni
+E-shopová platforma, spracovanie objednávok a platieb pri nákupe cez e-shop, záznam súhlasu s e-mailovým marketingom z pokladne
 
-Shopify je certifikovaný PCI DSS spracovateľ platieb. Údaje o objednávkach a súhlas s e-mailovým marketingom z pokladne sa automaticky odovzdávajú do služby Klaviyo. Vlastné zásady: privacy.shopify.com
+Shopify je certifikovaný PCI DSS spracovateľ platieb. Údaje o zákazníkoch a objednávkach (aj o nákupoch nedokončených v pokladni) a stav súhlasu s e-mailovým marketingom automaticky odovzdáva službe Klaviyo. Vlastné zásady: privacy.shopify.com
 
 #### Supabase Inc.
 
@@ -87,7 +88,7 @@ Dáta sú uložené na serveroch v EÚ. Prenos mimo EHP sa nevykonáva.
 
 USA
 
-Odosielanie e-mailov – potvrdenia dopytov, notifikácie o objednávke a newsletter
+Odosielanie e-mailov – potvrdenia dopytov, notifikácie o objednávke a uvítací e-mail newslettera, ak ho nemôže poslať Klaviyo
 
 E-mailová adresa príjemcu sa zdieľa iba na doručenie správy.
 
@@ -95,9 +96,9 @@ E-mailová adresa príjemcu sa zdieľa iba na doručenie správy.
 
 USA
 
-Odosielanie newslettera a automatických e-mailov, správa odberu a odhlásení, meranie otvorení a kliknutí v e-mailoch
+Odosielanie newslettera a automatických e-mailov, správa odberu a odhlásení, meranie otvorení a kliknutí v e-mailoch, prehľad objednávok z e-shopu
 
-Spracúva e-mailovú adresu, meno (ak ho uvediete), odkiaľ ste sa prihlásili a odpovede, ktoré v e-mailoch zvolíte. Z e-shopu Shopify do nej prechádzajú údaje o objednávkach (aj nedokončených v pokladni) a stav súhlasu s e-mailovým marketingom. Marketingové e-maily z nej posielame len tým, ktorí na to dali súhlas. Vlastné zásady: klaviyo.com/legal/privacy
+Spracúva e-mailovú adresu, meno (ak ho uvediete), odkiaľ ste sa prihlásili a odpovede, ktoré v e-mailoch zvolíte. Z e-shopu na platforme Shopify dostáva údaje o všetkých zákazníkoch, aj o tých, ktorí súhlas s e-mailovým marketingom nedali: meno, kontaktné a dodacie údaje, objednávky, nákupy nedokončené v pokladni a stav súhlasu s e-mailovým marketingom. Marketingové e-maily cez Klaviyo posielame len tým, ktorí s nimi súhlasili. Vlastné zásady: klaviyo.com/legal/privacy
 
 #### Vercel Inc.
 
@@ -161,7 +162,17 @@ Aké údaje zhromažďujeme
 
 - História objednávok
 
+- Nákupy nedokončené v pokladni
+
 - Platobné údaje
+
+#### E-mailová komunikácia
+
+- Súhlas s e-mailovým marketingom a odhlásenie
+
+- Otvorenia e-mailov a kliknutia v nich
+
+- Odpovede, ktoré v e-mailoch zvolíte
 
 #### Technické údaje
 
@@ -185,6 +196,8 @@ Ako dlho vaše údaje uchovávame
 
 **5** rokov Obchodná korešpondencia, cenové ponuky a kontaktné formuláre
 
+**3** roky Údaje z e-shopu v službe Klaviyo – profil zákazníka s údajmi o objednávkach a nákupoch nedokončených v pokladni uchovávame 3 roky od poslednej objednávky (ak ste objednávku nedokončili, od posledného nákupu v pokladni). Potom profil vymažeme. Ak odoberáte newsletter alebo ste dali súhlas s e-mailovým marketingom, profil ostáva, kým súhlas platí.
+
 **2** roky Zodpovednosť za vady – údaje na vybavenie reklamácií
 
 **90** dní Bezpečnostné a technické logy (ochrana pred zneužitím)
@@ -207,7 +220,7 @@ Po uplynutí príslušných lehôt sú údaje bezpečne vymazané.
 
 Prenos údajov mimo Európskeho hospodárskeho priestoru
 
-Niektorí naši sprostredkovatelia a partneri sídlia mimo Európskeho hospodárskeho priestoru (EHP). Pre každý prenos je zabezpečená príslušná záruka v súlade s čl. 46 GDPR:
+Niektorí naši sprostredkovatelia a partneri sídlia mimo Európskeho hospodárskeho priestoru (EHP). Pre každý prenos je zabezpečená príslušná záruka podľa čl. 45 alebo 46 GDPR:
 
 | POSKYTOVATEĽ | KRAJINA | ZÁRUKA PRENOSU |
 |---|---|---|
@@ -220,7 +233,7 @@ Niektorí naši sprostredkovatelia a partneri sídlia mimo Európskeho hospodár
 | Meta Platforms, Inc. | USA | EU–US Data Privacy Framework |
 | Supabase Inc. | EÚ (Frankfurt) | Prenos mimo EHP sa nevykonáva |
 
-Supabase (databáza dopytov a cenových ponúk) je prevádzkovaná výhradne na serveroch v Nemecku (EÚ), takže údaje uložené v tejto databáze zostávajú v EHP. Objednávky z e-shopu spracúva Shopify (Kanada / USA) a e-maily posielajú Klaviyo a Resend (USA). Prenos k nim chránia záruky uvedené v tabuľke vyššie.
+Supabase (databáza dopytov a cenových ponúk) beží výhradne na serveroch v Nemecku (EÚ), takže údaje uložené v tejto databáze zostávajú v EHP. Ostatní poskytovatelia v tabuľke spracúvajú údaje aj mimo EHP, napríklad Shopify objednávky z e-shopu (Kanada / USA) a Klaviyo profily zákazníkov a odberateľov (USA). Pri prenose údajov k nim platia záruky uvedené v tabuľke vyššie.
 
 ## 8. Vaše práva
 
@@ -248,11 +261,11 @@ Môžete žiadať o prenos vašich údajov inému prevádzkovateľovi v štrukt�
 
 #### Právo namietať (čl. 21)
 
-Môžete namietať proti spracovaniu na základe oprávneného záujmu alebo na účely priameho marketingu
+Môžete namietať proti spracovaniu na základe oprávneného záujmu, napríklad proti prehľadu objednávok a meraniu e-mailov v službe Klaviyo, a proti spracovaniu na účely priameho marketingu vrátane súvisiaceho profilovania. Po námietke proti priamemu marketingu vaše údaje na tento účel ďalej nespracúvame.
 
 #### Právo odvolať súhlas (čl. 7 ods. 3)
 
-Ak spracovanie prebieha na základe súhlasu, môžete ho kedykoľvek odvolať bez ujmy na zákonnosti spracovania pred odvolaním. Odber newslettera zrušíte kliknutím na odkaz v e-maile.
+Ak spracovanie prebieha na základe súhlasu, môžete ho kedykoľvek odvolať bez ujmy na zákonnosti spracovania pred odvolaním. Odber newslettera aj ďalších marketingových e-mailov zrušíte kliknutím na odkaz v e-maile.
 
 Ako uplatniť svoje práva? Napíšte nám na info@orostone.sk alebo zavolajte na +421 917 588 738. Na vašu žiadosť odpovieme do 30 dní (podľa čl. 12 ods. 3 GDPR).
 
