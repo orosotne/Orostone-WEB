@@ -416,8 +416,7 @@ export const PrivacyPolicy = () => {
                   Supabase (databáza dopytov a cenových ponúk) beží výhradne na serveroch v <strong>Nemecku (EÚ)</strong>, takže údaje
                   uložené v tejto databáze zostávajú v EHP. Ostatní poskytovatelia v tabuľke spracúvajú údaje aj mimo EHP, napríklad Shopify spracúva
                   objednávky z e-shopu (Kanada / USA) a Klaviyo profily zákazníkov a odberateľov (USA). Prenos údajov týmto poskytovateľom sa opiera
-                  o rozhodnutie o primeranosti alebo o záruky uvedené v tabuľke vyššie. Kópiu štandardných zmluvných doložiek si môžete vyžiadať
-                  e-mailom na <a href="mailto:info@orostone.sk" className={LEGAL_LINK}>info@orostone.sk</a>.
+                  o rozhodnutie o primeranosti alebo o záruky uvedené v tabuľke vyššie.
                 </p>
               </div>
           </LegalSection>

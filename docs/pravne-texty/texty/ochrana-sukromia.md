@@ -233,7 +233,7 @@ Niektorí naši sprostredkovatelia a partneri sídlia mimo Európskeho hospodár
 | Meta Platforms, Inc. | USA | EU–US Data Privacy Framework |
 | Supabase Inc. | EÚ (Frankfurt) | Prenos mimo EHP sa nevykonáva |
 
-Supabase (databáza dopytov a cenových ponúk) beží výhradne na serveroch v Nemecku (EÚ), takže údaje uložené v tejto databáze zostávajú v EHP. Ostatní poskytovatelia v tabuľke spracúvajú údaje aj mimo EHP, napríklad Shopify spracúva objednávky z e-shopu (Kanada / USA) a Klaviyo profily zákazníkov a odberateľov (USA). Prenos údajov týmto poskytovateľom sa opiera o rozhodnutie o primeranosti alebo o záruky uvedené v tabuľke vyššie. Kópiu štandardných zmluvných doložiek si môžete vyžiadať e-mailom na info@orostone.sk.
+Supabase (databáza dopytov a cenových ponúk) beží výhradne na serveroch v Nemecku (EÚ), takže údaje uložené v tejto databáze zostávajú v EHP. Ostatní poskytovatelia v tabuľke spracúvajú údaje aj mimo EHP, napríklad Shopify spracúva objednávky z e-shopu (Kanada / USA) a Klaviyo profily zákazníkov a odberateľov (USA). Prenos údajov týmto poskytovateľom sa opiera o rozhodnutie o primeranosti alebo o záruky uvedené v tabuľke vyššie.
 
 ## 8. Vaše práva
 
