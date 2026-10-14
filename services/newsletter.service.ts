@@ -5,6 +5,15 @@ import { edgeFunctionHeaders, isSupabaseConfigured } from '../lib/supabaseEnv';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
 
+// localStorage key of the signup pop-up: 'dismissed' or 'done'. v2 since the free-shipping offer,
+// so visitors who closed the old 5 % pop-up see the new one once.
+export const NEWSLETTER_POPUP_KEY = 'orostone-newsletter-popup-v2';
+
+// Any successful signup (footer, pop-up, …) stops the pop-up from offering it again.
+function markSubscribed() {
+  try { localStorage.setItem(NEWSLETTER_POPUP_KEY, 'done'); } catch { /* ignore */ }
+}
+
 // ===========================================
 // NEWSLETTER SERVICE
 // ===========================================
@@ -44,6 +53,7 @@ export async function subscribeToNewsletter(
     if (import.meta.env.DEV) {
       await new Promise((r) => setTimeout(r, 800));
       console.log('[newsletter DEV] Simulovaný subscribe pre:', data.email);
+      markSubscribed();
       return { success: true };
     }
     return { success: false, error: 'Služba momentálne nie je dostupná.' };
@@ -75,6 +85,7 @@ export async function subscribeToNewsletter(
       };
     }
 
+    markSubscribed();
     return {
       success: true,
       alreadySubscribed: body.alreadySubscribed,
