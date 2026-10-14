@@ -159,9 +159,9 @@ Skratky: N = `marketing/newsletter`, B = `N/nastroje/build_emails.py`, PB = play
 
 | Automatizácia | Zdroj spúšťača | Je v Klaviyu dnes | Čo blokuje | Čo sa dá urobiť hneď |
 |---|---|---|---|---|
-| A2 Vzorky | Shopify Fulfilled Order Y4VvMe | áno, od 14. 10. (4 udalosti) | PR na dynamický blok v 10; rozhodnutia o súhlase a synchronizácii odberateľov | nahrať 05 a 11; PR pre 10 |
+| A2 Vzorky | Shopify Fulfilled Order Y4VvMe | áno, od 14. 10. (4 udalosti) | nič | **live od 14. 10. 18:54 UTC (flow Tp45w8)** |
 | A7 Reaktivácia | segment VGyNMu (Opened TqZ5Tp, Clicked VdqXpS) | áno | nič | **live od 14. 10. 11:50 UTC (flow R5jtdq)** |
-| A4 Opustený košík | Shopify Checkout Started TR4G9D | áno (13 udalostí) | PR na 15 a 16 (URL košíka, text o doprave); vypnutie Shopify e-mailu; súhlas | PR pre 15 a 16 spolu s 10 |
+| A4 Opustený košík | Shopify Checkout Started TR4G9D | áno (13 udalostí, žiadna skutočne opustená) | Martin 14. 10.: e-mail o opustenej pokladni ostáva v Shopify, A4 sa nespúšťa | nič, flow nevytvorený |
 | A3 Dopyt → ponuka | CRM, fáza „Finálna ponuka odoslaná“ | nie | rozhodnutie Klaviyo vs. CRM; CRM kód; nový kľúč | nič |
 | A5 Po realizácii | CRM, montáž so stavom `dokoncene` | nie | CRM kód; fotky pre 08; súhlas | nič |
 | A8 B2B | neexistuje | nie | model súhlasu a zdroj kontaktov | nič |
@@ -245,6 +245,15 @@ Poznámky k dynamickým dátam v 10 (a voliteľne v 05):
 UTM, návrh: `utm_campaign=vzorky`, `utm_content=05-vzorka-doma`, `10-vzorka-velka-plocha`, `11-vzorka-marian`.
 
 ### 4. Draft vs. live a schválenia
+- **Naživo od 14. 10. 2026 18:54 UTC (Martin dal OK; postavila session newsletter):** flow **Tp45w8** „Vzorky (A2) – po odoslaní platenej vzorky“.
+  - Spúšťač: Fulfilled Order Y4VvMe, filter `Items` (zoznam) obsahuje „Vzorky Orostone“ (zodpovedá 4 zo 4 objednávok vzoriek, 0 z 9 objednávok platní).
+  - Filter profilu: e-mail subscribed, nie je v segmente U2XF6B, nie je v zozname TKAHuh. Re-entry 30 dní.
+  - Kroky: 4 d do 09:00 → 05 (správa QXB9p2, šablóna UysUpY, klon TzfAiG) → 5 d do 09:00 → 10 (TVrRMm / XwhCNj, klon VwN39Y) → 7 d do 09:00 → 11 (V6QGFd / WTgAbG, klon Sze5Hr). Časové pásmo profilu.
+  - Každá správa: Š, smart sending zapnutý, transactional false, UTM `klaviyo / email / vzorky / NN-slug`, preview_text = preheader šablóny.
+  - Šablóna 05 Vfw2VY mala preklep „hrček“ (4×); nahratá znova z main ako TzfAiG a overená. 10 a 11 majú text zhodný s main, výplň preheadera je o pár neviditeľných znakov kratšia.
+  - Rozhodnutia Martina 14. 10.: 11 ide všetkým (bez podmienky „neposlal dopyt“), prekryv s uvítacou sériou sa prijíma.
+  - Overené renderom: 10 vyplní dekor, fotku platne a odkaz z prvej vzorky objednávky; pri 1 vzorke ostane prázdny odsek (16 px medzera).
+  - Prvá reálna udalosť ukáže, či flow v ostrej správe vidí `event.extra.line_items.0.product.properties` rovnako ako historické udalosti. Skontrolovať pri prvej odoslanej 10.
 - **V Klaviyu hneď (nič neodíde):** nahrať 05 a 11 ako šablóny.
 - **Flow:** vytvoriť až vtedy, keď sú všetky tri správy finálne (10 po merge), alebo keď Martin písomne rozhodne, že A2 pôjde natrvalo bez 10. Krok sa cez API dodatočne pridať nedá.
 - **V repozitári hneď:** dynamický blok v 10, voliteľne aj v 05. Ide cez B, Codex a merge, spolu s 15 a 16.
@@ -388,6 +397,8 @@ Filtre a ukončenie:
 UTM, návrh: `utm_campaign=opusteny-kosik`.
 
 ### 4. Draft vs. live a schválenia
+- **Rozhodnutie Martina 14. 10. 2026:** vlastný e-mail Shopify o opustenej pokladni ostáva zapnutý, A4 sa nespúšťa a flow sa nevytvára. Šablóny 15 (R8WGMM) a 16 (RjSdCb) sú v Klaviyu pripravené.
+  - Pred prípadným spustením: overiť na skutočne opustenej pokladni, že `responsive_checkout_url` vedie na obnovenie košíka (všetkých 13 historických udalostí skončilo objednávkou a odkaz vedie na stránku objednávky), a zosúladiť „Doprava 2,50 €“ v 15 s kódom VITAJTE.
 - **Spúšťač existuje.** Blokujú zmeny 15 a 16 (URL košíka, text o doprave), ktoré idú cez B, Codex a merge spolu s 10.
 - **Flow** vytvoriť až s finálnymi 15 a 16.
 - **Martin:** vypnutie e-mailu Shopify, rozhodnutie o súhlase a o synchronizácii odberateľov, spustenie naživo.
