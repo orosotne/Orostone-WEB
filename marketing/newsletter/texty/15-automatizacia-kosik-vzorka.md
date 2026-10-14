@@ -3,7 +3,7 @@
 - **Typ:** Automatizácia · Opustený košík 1/2
 - **Kedy sa posiela:** 1 hodinu po začatí objednávky bez dokončenia (Klaviyo: Checkout Started)
 - **Predmet:** Vaša vzorka zostala v košíku
-- **Preheader:** 🪨 Objednávku dokončíte jedným kliknutím. Prvá vzorka je zadarmo, platíte iba dopravu.
+- **Preheader:** 🪨 Objednávku dokončíte jedným kliknutím. Prvá vzorka je zadarmo.
 - **Šablóna:** `sablony/15-automatizacia-kosik-vzorka.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí
