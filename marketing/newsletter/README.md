@@ -88,6 +88,8 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 | 33 | Spolupráca so štúdiom | Kampaň marec 2027 | Návrh kuchyne a doska: ako ich zladiť | skontrolované |
 | 34 | Otázka k dopytu (čistý text) | CRM – jednorazovo, po schválení Mariánom | Krátka otázka k vašej pracovnej doske | skontrolované, do CRM ho treba ešte zapojiť |
 
+**Odkiaľ idú:** Dopyt → ponuka (12–14) a Po realizácii (08, 17, 06) pôjdu z CRM ako koncepty so schválením, rovnako ako 34, nie z Klaviya (rozhodnutie Martina zo 14. 10. 2026). Pred spustením 12–14 treba s Martinom potvrdiť, či ich zásady ochrany súkromia pokrývajú ako komunikáciu k dopytu a cenovej ponuke (oprávnený záujem), alebo potrebujú súhlas. Automatické e-maily z Klaviya idú len ľuďom so súhlasom.
+
 **Neposielame:** tip šesť mesiacov po montáži a Výročie (rozhodnutie Martina zo 7. 10. 2026). Potvrdenie objednávky vzorky posiela Shopify a potvrdenie dopytu web, tie netreba písať.
 
 Program newslettera, typy e-mailov a kalendár sú v skille `orostone-newsletter` (`references/program-a-typy.md`).
@@ -100,7 +102,7 @@ Kontakty v Klaviyu sme 12. 10. 2026 na žiadosť Martina upratali do dvoch oddel
 | Skupina | Zoznam v Klaviyu | Kto v nej je | Čo dostáva |
 |---|---|---|---|
 | Odberatelia newslettera | Newsletter – web (`VSrLFs`) | Prihlásili sa na odber na webe (pätička, pop-up, formulár na vzorku so súhlasom). Nových pridáva web sám. | Uvítaciu sériu 01, 02, 07, 09 (beží od 12. 10. 2026) a kampane |
-| Dopyty | Dopyty – LP1, LP2, e-mail (len k dopytu) (`TKAHuh`) | Napísali nám cez formulár LP1 (aj cez starší formulár TILDA), LP2 alebo priamo e-mailom. V CRM majú otvorený dopyt alebo otvorený obchod a dopyt poslali za posledných 6 mesiacov. Vlastnosť profilu `zdroj_dopytu` je LP1, LP2 alebo E-mail. Po upratovaní 12. 10. 2026 ich je 373, nové dopyty sa do zoznamu samy nepridávajú. Kto sa na webe prihlási na odber, toho web z tohto zoznamu sám vyradí. | Len e-maily k ich dopytu, napríklad 12–14 a 34. Súhlas s newsletterom nedali, preto im neposielame kampane ani uvítaciu sériu. |
+| Dopyty | Dopyty – LP1, LP2, e-mail (len k dopytu) (`TKAHuh`) | Napísali nám cez formulár LP1 (aj cez starší formulár TILDA), LP2 alebo priamo e-mailom. V CRM majú otvorený dopyt alebo otvorený obchod a dopyt poslali za posledných 6 mesiacov. Vlastnosť profilu `zdroj_dopytu` je LP1, LP2 alebo E-mail. Po upratovaní 12. 10. 2026 ich je 373, nové dopyty sa do zoznamu samy nepridávajú. Kto sa na webe prihlási na odber, toho web z tohto zoznamu sám vyradí. | Len e-maily k ich dopytu, napríklad 12–14 a 34. Tie idú z CRM ako koncepty so schválením Mariána, nie ako automatizácia v Klaviyu (rozhodnutie Martina zo 14. 10. 2026). Súhlas s newsletterom nedali, preto im neposielame kampane ani uvítaciu sériu. |
 
 Pravidlá kampaní (rozhodnutia Martina z 12. 10. 2026):
 
