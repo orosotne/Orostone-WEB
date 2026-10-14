@@ -84,3 +84,20 @@ Codex v PR #110 (commit d022f6d): 1 pripomienka k zásadám ochrany súkromia, z
 |---|---|---|---|---|---|
 | 1 | Ochrana súkromia – doba uchovávania (newsletter) | Po odvolaní súhlasu sú údaje vymazané do 30 dní. V Klaviyu ostane e-mailová adresa označená ako odhlásená, aby vám newsletter už neprišiel. | Po odvolaní súhlasu ju spolu s ďalšími údajmi o odbere do 30 dní vymažeme z databázy webu. V službe Klaviyo, cez ktorú newsletter posielame, ostane váš profil s označením, že ste sa odhlásili, aby vám newsletter už neprišiel (oprávnený záujem). Uchovávame ho, kým newsletter posielame, a na požiadanie ho vymažeme. | význam | zapracované, majiteľ potvrdil 12. 10. 2026. Pôvodné vety si protirečili: výmaz do 30 dní a zároveň adresa ostáva v Klaviyu. Nové znenie oddeľuje výmaz z databázy webu od záznamu v Klaviyu. V Klaviyu ostáva celý profil, nielen adresa, preto „profil“. |
 | 2 | Ochrana súkromia – doba uchovávania (newsletter) | V Klaviyu, cez ktorý newsletter posielame | V službe Klaviyo, cez ktorú newsletter posielame | gramatika | zapracované (Codex k b1d9998: zámeno „ktorý“ nemalo vo vete mužský antecedent) |
+
+## Kolo 3 – zásady: pokladňa Shopify a Klaviyo, PR #140 (14. 10. 2026)
+
+Vlastná kontrola Claude (dve nezávislé kolá: právo, jazyk, regresie) pred odovzdaním Codexu. Vecné zmeny vychádzajú z rozhodnutí majiteľa zo 14. 10. 2026: údaje o objednávkach všetkých zákazníkov idú do Klaviya na základe oprávneného záujmu (prehľad objednávok a meranie výsledkov e-mailov), marketingové e-maily len so súhlasom, uchovávanie v Klaviyu 3 roky od poslednej objednávky, právo namietať. Body so stavom „na potvrdenie“ z týchto rozhodnutí vyplývajú, ale majiteľ ich výslovne neschválil.
+
+| # | Dokument | Pôvodný text | Nový text | Typ | Stav |
+|---|---|---|---|---|---|
+| 1 | Ochrana súkromia, čl. 2 | – | Nový účel „Prehľad objednávok a meranie e-mailov“, čl. 6 ods. 1 písm. f) | význam | zapracované, majiteľ rozhodol 14. 10. 2026 |
+| 2 | Ochrana súkromia, čl. 6 | – | 3 roky od poslednej objednávky (údaje z e-shopu v službe Klaviyo) | význam | zapracované, majiteľ potvrdil 14. 10. 2026 |
+| 3 | Ochrana súkromia, čl. 6 | – | Kto ešte nič neobjednal, lehota plynie od posledného nákupu nedokončeného v pokladni; profil so súhlasom ostáva, kým súhlas platí; po odhlásení sa po lehote vymaže profil s objednávkami a ostane len e-mailová adresa s označením odhlásenia | význam | zapracované, na potvrdenie majiteľom |
+| 4 | Ochrana súkromia, čl. 8 | Môžete namietať proti spracovaniu na základe oprávneného záujmu alebo na účely priameho marketingu | Samostatný rámček „Právo namietať (čl. 21 GDPR)“ (čl. 21 ods. 4 GDPR: jasne a oddelene od iných informácií) | význam | zapracované, majiteľ rozhodol 14. 10. 2026 (právo namietať) |
+| 5 | Ochrana súkromia, čl. 2 | Automatizované rozhodovanie ani profilovanie v zmysle čl. 22 GDPR nevykonávame. | Automatizované rozhodovanie s právnymi alebo podobne významnými účinkami nevykonávame; výber e-mailov podľa jednoduchých pravidiel; upozornenie obchodníkovi pri odpovedi „do 3 mesiacov“ | význam | zapracované, na potvrdenie majiteľom |
+| 6 | Ochrana súkromia, čl. 7 | záruka v súlade s čl. 46 GDPR; stĺpec „Záruka prenosu“ | rozhodnutie o primeranosti (čl. 45) alebo primerané záruky (čl. 46); stĺpec „Základ prenosu“ | význam | zapracované (Kanada a EU–US Data Privacy Framework sú rozhodnutia podľa čl. 45, nie záruky podľa čl. 46) |
+| 7 | Ochrana súkromia, čl. 2 a 4 | pri nedokončenej objednávke v pokladni | nákup nedokončený v pokladni | význam | zapracované (objednávka vzniká až odoslaním v poslednom kroku, Checkout.tsx) |
+| 8 | Ochrana súkromia, čl. 3 | Políčko nie je vopred zaškrtnuté a nákup je možný aj bez neho. | … a nakúpiť môžete aj bez súhlasu. | gramatika | zapracované („neho“ sa vzťahovalo na políčko) |
+| 9 | Ochrana súkromia – Klaviyo | Z e-shopu Shopify do nej prechádzajú… z nej posielame | Z e-shopu na platforme Shopify dostáva… cez Klaviyo posielame | gramatika | zapracované (zámeno „nej“ nemalo antecedent, ako v Kole 2 č. 2) |
+| 10 | Ochrana súkromia, čl. 7 | Pri prenose údajov k nim | Prenos údajov týmto poskytovateľom | gramatika | zapracované (ako v Kole 1 č. 13) |
