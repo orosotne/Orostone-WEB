@@ -196,7 +196,7 @@ Ako dlho vaše údaje uchovávame
 
 **5** rokov Obchodná korešpondencia, cenové ponuky a kontaktné formuláre
 
-**3** roky Údaje z e-shopu v službe Klaviyo – profil zákazníka s údajmi o objednávkach a nákupoch nedokončených v pokladni uchovávame 3 roky od poslednej objednávky (ak ste u nás ešte nič neobjednali, od posledného nákupu nedokončeného v pokladni). Potom profil vymažeme. Kým však odoberáte newsletter alebo platí váš súhlas s e-mailovým marketingom, profil aj s údajmi o objednávkach ostáva; ak lehota medzitým uplynula, vymažeme ho po odvolaní súhlasu. Ak ste sa z e-mailov odhlásili, po vymazaní profilu ponecháme v službe Klaviyo len vašu e-mailovú adresu s označením, že ste sa odhlásili, aby vám marketingové e-maily už neprišli (oprávnený záujem). Tento záznam uchovávame, kým marketingové e-maily posielame, a na požiadanie ho vymažeme.
+**3** roky Údaje z e-shopu v službe Klaviyo – profil zákazníka s údajmi o objednávkach a nákupoch nedokončených v pokladni uchovávame 3 roky od poslednej objednávky (ak ste u nás ešte nič neobjednali, od posledného nákupu nedokončeného v pokladni). Potom profil najneskôr do 3 mesiacov vymažeme. Kým však odoberáte newsletter alebo platí váš súhlas s e-mailovým marketingom, profil aj s údajmi o objednávkach ostáva; ak lehota medzitým uplynula, vymažeme ho najneskôr do 3 mesiacov po odvolaní súhlasu. Ak ste sa z e-mailov odhlásili, po vymazaní profilu ponecháme v službe Klaviyo len vašu e-mailovú adresu s označením, že ste sa odhlásili, aby vám marketingové e-maily už neprišli (oprávnený záujem). Tento záznam uchovávame, kým marketingové e-maily posielame, a na požiadanie ho vymažeme.
 
 **2** roky Zodpovednosť za vady – údaje na vybavenie reklamácií
 
