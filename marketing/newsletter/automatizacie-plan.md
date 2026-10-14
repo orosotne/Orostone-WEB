@@ -8,6 +8,24 @@ Skratky: N = `marketing/newsletter`, B = `N/nastroje/build_emails.py`, PB = play
 > 1. **Odhlásenia po kampani 35:** 3 odhlásenia z 52 príjemcov, teda 5,8 %. Hranica na hlásenie je 1 % (README:112). Sťažnosti na spam: 0. Kampaň 03 je naplánovaná na 21. 10. o 07:00 UTC. Martin rozhodne, či 03 pôjde. Bez jeho rozhodnutia kampaň nemeniť ani nerušiť. Čísla sa ešte menia, preto ich pred odovzdaním plánu treba znova skontrolovať (`get_campaign_report`).
 > 2. **Shopify je pripojený ku Klaviyu** od 14. 10. 08:25 UTC. Martin potvrdí, že pripojenie bolo zámerné. V UI Klaviya skontroluje, do ktorého zoznamu zapisuje synchronizácia odberateľov zo Shopify: musí byť vypnutá alebo zapisovať do samostatného zoznamu, nikdy nie do VSrLFs. Treba to potvrdiť pred ďalšou objednávkou vzorky.
 
+## Urobené a rozhodnuté 14. 10. (session Automatizácie v Klavyo)
+
+- **Rozhodnutia Martina:** tlačidlo „Ostať v odbere“ v 24 ostáva obyčajný odkaz (bez `update_property_link` a bez úpravy webu). A3 (12–14) a A5 (08, 17, 06) pôjdu z CRM ako schvaľované koncepty, rovnako ako e-mail 34, nie z Klaviya.
+- **Integrácia Shopify** (nastavená v UI 14. 10.): synchronizácia odberateľov zo Shopify vypnutá, synchronizácia profilov z Klaviya do Shopify vypnutá, Shopify access (Sidekick) vypnutý, onsite tracking zapnutý (týka sa len témy Shopify, nie headless webu). Meta Ads a Google Ads sú znova „Enabled“. Wix integrácia už nie je pripojená, jeho staré metriky ostávajú.
+- **Nahrané v Klaviyu z main** (nič neodoslané, žiadny flow):
+
+  | Šablóna | ID |
+  |---|---|
+  | 05 Vzorka je doma | Vfw2VY |
+  | 11 Pomôžem vám s výberom? | Sze5Hr |
+  | 22 Riešite ešte kuchyňu? | X8jULq |
+  | 23 Tri realizácie | RpGJMA |
+  | 24 Máme vám ešte písať? | YjhfKT |
+
+- **Segment VGyNMu „Reaktivácia (A7): newsletter 90+ dní bez otvorenia a kliku“:** člen VSrLFs aspoň 90 dní, 0× Opened Email (TqZ5Tp) a 0× Clicked Email (VdqXpS) za posledných 90 dní, nie je v TKAHuh, email subscribed.
+- **Deľba práce:** všetko, čo sa v Klaviyu stavia alebo nastavuje (flowy, šablóny, segmenty, zoznamy, integrácie), a tento plán robí session Automatizácie v Klavyo. Naplánované kampane, ich kontroly a výsledky, UHSrFj, Resend a playbook robí session newsletter.
+- **Otvorené:** zapnutie synchronizácie odberateľov zo Shopify do nového samostatného zoznamu (nie VSrLFs). Čaká na read-only kontrolu session newsletter (`claude/shopify-sync-kontrola`) a Martinovo potvrdenie.
+
 ## Súčasný stav
 
 **Naživo**
@@ -118,7 +136,7 @@ Skratky: N = `marketing/newsletter`, B = `N/nastroje/build_emails.py`, PB = play
 | Automatizácia | Zdroj spúšťača | Je v Klaviyu dnes | Čo blokuje | Čo sa dá urobiť hneď |
 |---|---|---|---|---|
 | A2 Vzorky | Shopify Fulfilled Order Y4VvMe | áno, od 14. 10. (4 udalosti) | PR na dynamický blok v 10; rozhodnutia o súhlase a synchronizácii odberateľov | nahrať 05 a 11; PR pre 10 |
-| A7 Reaktivácia | engagement metriky (Received RCzcnU, Opened TqZ5Tp, Clicked VdqXpS) | áno | rozhodnutie o 24 | nahrať 22 a 23, vytvoriť segment |
+| A7 Reaktivácia | segment VGyNMu (Opened TqZ5Tp, Clicked VdqXpS) | áno | nič, 24 rozhodnuté 14. 10. | šablóny 22–24 a segment hotové 14. 10.; zostáva draft flowu |
 | A4 Opustený košík | Shopify Checkout Started TR4G9D | áno (13 udalostí) | PR na 15 a 16 (URL košíka, text o doprave); vypnutie Shopify e-mailu; súhlas | PR pre 15 a 16 spolu s 10 |
 | A3 Dopyt → ponuka | CRM, fáza „Finálna ponuka odoslaná“ | nie | rozhodnutie Klaviyo vs. CRM; CRM kód; nový kľúč | nič |
 | A5 Po realizácii | CRM, montáž so stavom `dokoncene` | nie | CRM kód; fotky pre 08; súhlas | nič |
@@ -453,8 +471,8 @@ Filtre a ukončenie:
 UTM, návrh: `utm_campaign=reaktivacia`. Či Klaviyo pridá UTM aj k cieľu `update_property_link`: neoverené.
 
 ### 4. Draft vs. live a schválenia
-- **Hneď (nič neodíde):** nahrať 22 a 23 a vytvoriť segment.
-- **Flow:** vytvoriť až po Martinovom rozhodnutí o 24. Buď ostane obyčajný odkaz, alebo pribudne `update_property_link 'odber'`, čo znamená zmenu textu cez B a Codex a web PR, ktorý spracuje `?odber`. Potom postaviť flow naraz celý, so všetkými tromi správami.
+- **Hotové 14. 10.:** šablóny 22 X8jULq, 23 RpGJMA, 24 YjhfKT a segment VGyNMu. 24 = obyčajný odkaz (Martin, 14. 10.).
+- **Flow:** postaviť ako draft zo segmentu VGyNMu (pôvodne podmienené rozhodnutím o 24). Buď ostane obyčajný odkaz, alebo pribudne `update_property_link 'odber'`, čo znamená zmenu textu cez B a Codex a web PR, ktorý spracuje `?odber`. Potom postaviť flow naraz celý, so všetkými tromi správami.
 - **Pred spustením:**
   1. Martinovo OK na spustenie, pred 8. 1. 2027. (Alert UHSrFj je pripravený: telo vyplnené, Marián opt-in potvrdil 13. 10. Klik v 22 ho spustí.)
 - **Ak A7 nestihne 8. 1.:** ručné pridanie súčasných členov segmentu (v UI „add past profiles“) je odoslanie a potrebuje Martinovo výslovné OK.
@@ -636,17 +654,17 @@ UTM, návrh: `utm_campaign=b2b`.
    - Vypnúť vlastný e-mail Shopify o opustenom checkoute?
    - Ako má 15 hovoriť o doprave vzhľadom na kód VITAJTE?
    - Prijímame medzeru pri bezplatnej vzorke (15 a 16 môžu prísť aj tomu, kto si ju objednal cez #vzorka)?
-9. **A3:**
+9. **A3:** rozhodnuté 14. 10.: z CRM so schválením (ako e-mail 34).
    - Z Klaviya (CRM udalosti, nový Klaviyo kľúč v env CRM na Verceli), alebo z CRM ako schvaľované koncepty ako e-mail 34?
    - Čo s prekryvom 14 a 34?
    - Platí, že odberateľ VSrLFs, ktorý dostane ponuku, A3 nedostane? README:103 počíta s tým, že dopyty dostanú 12–14.
    - Má človek s druhou ponukou dostať sériu znova?
-10. **A5:**
+10. **A5:** rozhodnuté 14. 10.: 08, 17 aj 06 z CRM so schválením.
     - Pôjde 08 z CRM s Mariánovým schválením?
     - Pôjdu 17 a 06 z Klaviya, alebo z CRM?
     - Vylúčiť z A5 odberateľov VSrLFs, ako káže pravidlo pre dopyty?
     - Má sa súhlas so zverejnením fotiek ukladať do profilu (`update_property_link` a spracovanie `?suhlas` na webe)?
-11. **A7, rozhodnúť pred stavbou:**
+11. **A7, rozhodnúť pred stavbou:** tlačidlo v 24 = obyčajný odkaz (Martin, 14. 10.).
     - Má tlačidlo v 24 nastavovať `odber=ponechat` a má homepage spracovať `?odber`, alebo ostane obyčajný odkaz?
     - Čo s ľuďmi, ktorí nereagujú ani na 24? Meta B:1703 navrhuje suppress, podľa pravidiel to ide len s vaším súhlasom.
     - Vylúčiť segment W8zMyZ (horizont = hotovo) z naplánovaných kampaní?
