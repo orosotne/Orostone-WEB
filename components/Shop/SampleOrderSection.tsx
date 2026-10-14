@@ -2,6 +2,7 @@ import { forwardRef, useCallback, useEffect, useImperativeHandle, useRef, useSta
 import { ArrowRight, ArrowUp, Loader2 } from 'lucide-react';
 import SampleCartonTray, { type SampleCartonTrayHandle, type SampleDecor } from './SampleCartonTray';
 import { SampleQuantityPicker } from './SampleQuantityPicker';
+import { CheckoutReminderNotice } from '../Cart/CheckoutReminderNotice';
 import { createSampleCheckout, fetchSampleBundle, formatSamplePrice, quoteSampleOrder, type SampleQuantity } from '../../services/shopify/samples';
 import { trackMetaEvent, savePendingPurchase } from '../../hooks/useMetaPixel';
 import { trackGA4AddToCart, trackGA4BeginCheckout } from '../../services/analytics';
@@ -148,6 +149,7 @@ export const SampleOrderSection = forwardRef<SampleOrderSectionHandle, SampleOrd
               {checkoutBusy ? 'Pripravujeme pokladňu…' : availabilityLoading ? 'Overujeme dostupnosť…' : 'Pokračovať k doručeniu a platbe'}
             </button>
             <p className="sample-order-next">Adresu a spôsob platby doplníte v ďalšom kroku.</p>
+            <CheckoutReminderNotice className="sample-order-next" linkClassName="underline underline-offset-4" />
           </aside>
         </div>
       </div>

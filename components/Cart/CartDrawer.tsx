@@ -10,6 +10,7 @@ import { trackMetaEvent, savePendingPurchase } from '../../hooks/useMetaPixel';
 import { trackGA4BeginCheckout } from '../../services/analytics';
 import { ActionButton, chipClass } from '../Design';
 import { useScrollLock } from '../../hooks/useScrollLock';
+import { CheckoutReminderNotice } from './CheckoutReminderNotice';
 import { FADE, SPRING_SHEET, projectMomentum } from '../../lib/motion';
 
 const INSTALLATION_STORAGE_KEY = 'orostone_installation_data';
@@ -594,6 +595,11 @@ export const CartDrawer: React.FC = () => {
                       </>
                     )}
                   </button>
+                  <CheckoutReminderNotice
+                    className="mt-2 text-center text-[0.7rem] font-normal leading-relaxed text-brand-muted"
+                    linkClassName="font-medium text-brand-dark underline underline-offset-4"
+                    onNavigate={closeCart}
+                  />
                 </div>
               </div>
             )}
