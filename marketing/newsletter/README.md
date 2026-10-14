@@ -62,7 +62,7 @@ Stav: **skontrolované** = prešlo kontrolou Claude aj Codexom · **na kontrole*
 | 12 | Ako čítať ponuku | Dopyt → ponuka 2/4 – deň po ponuke | Ako čítať cenovú ponuku | skontrolované |
 | 13 | Showroom | Dopyt → ponuka 3/4 – 5 dní po ponuke | Pozrite si platne naživo | skontrolované |
 | 14 | Marián (čistý text) | Dopyt → ponuka 4/4 – 14 dní po ponuke | Je niečo, čo vám bráni rozhodnúť sa? | skontrolované |
-| 15 | Košík | Opustený košík 1/2 – o hodinu | Vaša vzorka zostala v košíku | skontrolované, tlačidlo vedie na rozpracovanú objednávku, preheader bez vety o doprave; nespustené, e-mail o opustenej pokladni má posielať Shopify (Martin, 14. 10.); Shopify ho do 14. 10. neposlal ani raz, pozri plán A4 |
+| 15 | Košík | Opustený košík 1/2 – o hodinu | Vaša vzorka zostala v košíku | skontrolované, tlačidlo vedie na rozpracovanú objednávku, preheader bez vety o doprave; nespustené, e-mail o opustenej pokladni posiela Shopify všetkým zákazníkom, aj bez súhlasu (Martin, 14. 10.; zásady PR #144), pozri plán A4 |
 | 16 | Marián (čistý text) | Opustený košík 2/2 – o deň | Váhate medzi dekormi? | skontrolované, odkaz „tu“ vedie na rozpracovanú objednávku; nespustené (pozri 15) |
 | 08 | Hotovo | Po realizácii 1/3 – deň montáže | Hotovo: fotky z vašej montáže | skontrolované |
 | 17 | Starostlivosť | Po realizácii 2/3 – 7 dní po montáži | Starostlivosť o dosku v skratke | skontrolované |
