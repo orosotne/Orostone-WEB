@@ -91,8 +91,13 @@ export const PrivacyPolicy = () => {
                     </tr>
                     <tr>
                       <td className="py-3 px-3 font-semibold text-brand-dark align-top">Marketing</td>
-                      <td className="py-3 px-3 align-top">Newsletter, remarketingové ponuky a meranie účinnosti reklám v Google Ads a na Facebooku či Instagrame (len s výslovným súhlasom)</td>
+                      <td className="py-3 px-3 align-top">Newsletter, automatické e-maily, remarketingové ponuky a meranie účinnosti reklám v Google Ads a na Facebooku či Instagrame, všetko len s vaším výslovným súhlasom. Automatické e-maily vám môžeme poslať napríklad po prihlásení na newsletter, keď si objednáte vzorku, keď nedokončíte nákup v pokladni e-shopu alebo keď ako odberateľ newslettera 90&nbsp;dní neotvoríte žiadny z našich e-mailov ani v nich na nič nekliknete.</td>
                       <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. a) – súhlas</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-3 font-semibold text-brand-dark align-top">Prehľad objednávok a meranie e-mailov</td>
+                      <td className="py-3 px-3 align-top">Meno, kontaktné a dodacie údaje, ako aj údaje o objednávkach a o nákupoch nedokončených v pokladni prenášame z e-shopu do služby Klaviyo pri všetkých zákazníkoch, aj pri tých, ktorí súhlas s e-mailovým marketingom nedali. Slúžia na prehľad objednávok a na meranie, ako naše e-maily prispievajú k objednávkam. Prenášame aj stav súhlasu s e-mailovým marketingom, aby sme zákazníkom bez súhlasu marketingové e-maily neposielali. Proti tomuto spracovaniu môžete kedykoľvek namietať (viac v časti Vaše práva).</td>
+                      <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. f) – oprávnený záujem (prehľad objednávok a meranie výsledkov e-mailov)</td>
                     </tr>
                     <tr>
                       <td className="py-3 px-3 font-semibold text-brand-dark align-top">Analytika</td>
@@ -103,7 +108,11 @@ export const PrivacyPolicy = () => {
                 </table>
               </div>
               <p className="mt-3 text-xs text-brand-muted">
-                Automatizované rozhodovanie ani profilovanie v zmysle čl. 22 GDPR <strong>nevykonávame</strong>.
+                Automatizované rozhodovanie, ktoré by malo pre vás právne alebo podobne významné účinky (čl. 22 GDPR), <strong>nevykonávame</strong>.
+                Ktoré marketingové e-maily vám pošleme, určujeme podľa jednoduchých pravidiel, napríklad podľa toho, či ste nedokončili nákup v pokladni,
+                akú odpoveď ste v e-maile zvolili alebo či ste 90&nbsp;dní neotvorili žiadny z našich e-mailov ani v nich na nič neklikli. Ak v e-maile
+                zvolíte, že kuchyňu riešite do 3&nbsp;mesiacov, dostane o tom upozornenie náš obchodník, aby vám mohol osobne napísať. Proti takémuto spracovaniu môžete kedykoľvek
+                namietať alebo sa z e-mailov odhlásiť.
               </p>
           </LegalSection>
 
@@ -121,6 +130,7 @@ export const PrivacyPolicy = () => {
                   <h4 className="mb-2 font-semibold text-brand-dark">Newsletter</h4>
                   <p className="text-sm">
                     Prihlásenie na newsletter je <strong>dobrovoľné</strong>. Ak e-mailovú adresu neposkytnete, odber newslettera nebude možný.
+                    Súhlas s e-mailovým marketingom môžete dať aj v pokladni e-shopu zaškrtnutím políčka „Chcem dostávať novinky a ponuky e-mailom“. Políčko nie je vopred zaškrtnuté a nakúpiť môžete aj bez súhlasu.
                     Súhlas možno kedykoľvek odvolať kliknutím na odkaz v e-maile.
                   </p>
                 </div>
@@ -148,9 +158,9 @@ export const PrivacyPolicy = () => {
                   {[
                     {
                       name: 'Shopify Inc.',
-                      purpose: 'E-shopová platforma, spracovanie objednávok a platieb pri nákupe cez e-shop',
+                      purpose: 'E-shopová platforma, spracovanie objednávok a platieb pri nákupe cez e-shop, záznam súhlasu s e-mailovým marketingom, ak ho dáte v pokladni',
                       location: 'Kanada / USA',
-                      note: 'Shopify je certifikovaný PCI DSS spracovateľ platieb. Vlastné zásady: privacy.shopify.com',
+                      note: 'Shopify je certifikovaný PCI DSS spracovateľ platieb. Službe Klaviyo automaticky odovzdáva údaje o zákazníkoch a objednávkach (aj o nákupoch nedokončených v pokladni) a stav súhlasu s e-mailovým marketingom. Vlastné zásady: privacy.shopify.com',
                     },
                     {
                       name: 'Supabase Inc.',
@@ -160,15 +170,15 @@ export const PrivacyPolicy = () => {
                     },
                     {
                       name: 'Resend Inc.',
-                      purpose: 'Odosielanie e-mailov – potvrdenia dopytov, notifikácie o objednávke a newsletter',
+                      purpose: 'Odosielanie e-mailov – potvrdenia dopytov, notifikácie o objednávke a uvítací e-mail newslettera, ak ho nemôže poslať Klaviyo',
                       location: 'USA',
                       note: 'E-mailová adresa príjemcu sa zdieľa iba na doručenie správy.',
                     },
                     {
                       name: 'Klaviyo, Inc.',
-                      purpose: 'Odosielanie newslettera, správa odberu a odhlásení, meranie otvorení a kliknutí v e-mailoch',
+                      purpose: 'Odosielanie newslettera a automatických e-mailov, správa odberu a odhlásení, meranie otvorení a kliknutí v e-mailoch, prehľad objednávok z e-shopu',
                       location: 'USA',
-                      note: 'Spracúva e-mailovú adresu, meno (ak ho uvediete), odkiaľ ste sa prihlásili a odpovede, ktoré v e-mailoch zvolíte. Vlastné zásady: klaviyo.com/legal/privacy',
+                      note: 'Spracúva e-mailovú adresu, meno (ak ho uvediete), odkiaľ ste sa prihlásili a odpovede, ktoré v e-mailoch zvolíte. Z e-shopu na platforme Shopify dostáva o všetkých zákazníkoch, aj o tých, ktorí súhlas s e-mailovým marketingom nedali, tieto údaje: meno, kontaktné a dodacie údaje, objednávky, nákupy nedokončené v pokladni a stav súhlasu s e-mailovým marketingom. Marketingové e-maily cez Klaviyo posielame len tým, ktorí s nimi súhlasili. Vlastné zásady: klaviyo.com/legal/privacy',
                     },
                     {
                       name: 'Vercel Inc.',
@@ -255,7 +265,16 @@ export const PrivacyPolicy = () => {
                   <ul className="text-sm space-y-1">
                     <li>• Objednaný tovar</li>
                     <li>• História objednávok</li>
+                    <li>• Nákupy nedokončené v pokladni</li>
                     <li>• Platobné údaje</li>
+                  </ul>
+                </div>
+                <div className={`${LEGAL_BOX} p-4`}>
+                  <h4 className="mb-2 font-semibold text-brand-dark">E-mailová komunikácia</h4>
+                  <ul className="text-sm space-y-1">
+                    <li>• Súhlas s e-mailovým marketingom a odhlásenie</li>
+                    <li>• Otvorenia e-mailov a kliknutia v nich</li>
+                    <li>• Odpovede, ktoré v e-mailoch zvolíte</li>
                   </ul>
                 </div>
                 <div className={`${LEGAL_BOX} p-4`}>
@@ -289,6 +308,13 @@ export const PrivacyPolicy = () => {
                     <p className="text-sm">Obchodná korešpondencia, cenové ponuky a kontaktné formuláre</p>
                   </div>
                 </div>
+                <div className={`${LEGAL_BOX} flex items-start gap-4 p-4`}>
+                  <span className="min-w-[2.5rem] text-center text-2xl font-light tabular-nums text-brand-dark">3</span>
+                  <div>
+                    <p className="font-semibold text-brand-dark">roky</p>
+                    <p className="text-sm">Údaje z e-shopu v službe Klaviyo – profil zákazníka s údajmi o objednávkach a nákupoch nedokončených v pokladni uchovávame 3&nbsp;roky od poslednej objednávky (ak ste u nás ešte nič neobjednali, od posledného nákupu nedokončeného v pokladni). Potom profil najneskôr do 3&nbsp;mesiacov vymažeme. Kým však odoberáte newsletter alebo platí váš súhlas s e-mailovým marketingom, profil aj s údajmi o objednávkach ostáva; ak lehota medzitým uplynula, vymažeme ho najneskôr do 3&nbsp;mesiacov po odvolaní súhlasu. Ak ste sa z e-mailov odhlásili, po vymazaní profilu ponecháme v službe Klaviyo len vašu e-mailovú adresu s označením, že ste sa odhlásili, aby vám marketingové e-maily už neprišli (oprávnený záujem). Tento záznam uchovávame, kým marketingové e-maily posielame, a na požiadanie ho vymažeme.</p>
+                  </div>
+                </div>
                 <div className={`${LEGAL_BOX} flex items-center gap-4 p-4`}>
                   <span className="min-w-[2.5rem] text-center text-2xl font-light tabular-nums text-brand-dark">2</span>
                   <div>
@@ -307,7 +333,7 @@ export const PrivacyPolicy = () => {
                   <span className="min-w-[2.5rem] pt-1 text-center text-sm font-normal text-brand-dark">∞ /</span>
                   <div>
                     <p className="font-semibold text-brand-dark">Do odvolania súhlasu</p>
-                    <p className="text-sm">Newsletter – e-mailová adresa sa uchováva do odvolania súhlasu. Po odvolaní súhlasu ju spolu s ďalšími údajmi o odbere do 30 dní vymažeme z databázy webu. V službe Klaviyo, cez ktorú newsletter posielame, ostane váš profil s označením, že ste sa odhlásili, aby vám newsletter už neprišiel (oprávnený záujem). Uchovávame ho, kým newsletter posielame, a na požiadanie ho vymažeme.</p>
+                    <p className="text-sm">Newsletter – e-mailová adresa sa uchováva do odvolania súhlasu. Po odvolaní súhlasu ju spolu s ďalšími údajmi o odbere do 30&nbsp;dní vymažeme z databázy webu. V službe Klaviyo, cez ktorú newsletter posielame, ostane váš profil s označením, že ste sa odhlásili, aby vám newsletter už neprišiel (oprávnený záujem). Uchovávame ho, kým newsletter posielame, a na požiadanie ho vymažeme. Ak sú vo vašom profile aj údaje z e-shopu (objednávky alebo nákupy nedokončené v pokladni), po uplynutí lehoty 3&nbsp;roky uvedenej vyššie profil vymažeme a ponecháme len vašu e-mailovú adresu s označením, že ste sa odhlásili.</p>
                   </div>
                 </div>
                 <div className={`${LEGAL_BOX} flex items-start gap-4 p-4`}>
@@ -330,7 +356,7 @@ export const PrivacyPolicy = () => {
           <LegalSection id="medzinarodny-prenos" number="7" title="Medzinárodný prenos údajov" subtitle="Prenos údajov mimo Európskeho hospodárskeho priestoru">
               <p>
                 Niektorí naši sprostredkovatelia a partneri sídlia mimo Európskeho hospodárskeho priestoru (EHP).
-                Pre každý prenos je zabezpečená príslušná záruka v súlade s čl. 46 GDPR:
+                Každý prenos sa opiera o rozhodnutie Európskej komisie o primeranosti (čl. 45 GDPR) alebo o primerané záruky (čl. 46 GDPR):
               </p>
               <div className="overflow-x-auto -mx-2">
                 <table className="w-full text-sm border-collapse min-w-[480px]">
@@ -338,7 +364,7 @@ export const PrivacyPolicy = () => {
                     <tr className="border-b border-brand-dark">
                       <th className="py-2 px-3 text-left text-[0.7rem] font-bold uppercase tracking-[0.12em] text-brand-dark">Poskytovateľ</th>
                       <th className="py-2 px-3 text-left text-[0.7rem] font-bold uppercase tracking-[0.12em] text-brand-dark">Krajina</th>
-                      <th className="py-2 px-3 text-left text-[0.7rem] font-bold uppercase tracking-[0.12em] text-brand-dark">Záruka prenosu</th>
+                      <th className="py-2 px-3 text-left text-[0.7rem] font-bold uppercase tracking-[0.12em] text-brand-dark">Základ prenosu</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-brand-line">
@@ -387,8 +413,10 @@ export const PrivacyPolicy = () => {
               </div>
               <div className="mt-4 rounded-r-[3px] border-l-2 border-brand-dark bg-brand-sand p-4">
                 <p className="text-sm">
-                  Supabase (databáza dopytov a objednávok) je prevádzkovaná výhradne na serveroch v <strong>Nemecku (EÚ)</strong>, takže vaše dáta
-                  z dopytov a objednávok zostávajú primárne v EHP.
+                  Supabase (databáza dopytov a cenových ponúk) beží výhradne na serveroch v <strong>Nemecku (EÚ)</strong>, takže údaje
+                  uložené v tejto databáze zostávajú v EHP. Ostatní poskytovatelia v tabuľke spracúvajú údaje aj mimo EHP, napríklad Shopify spracúva
+                  objednávky z e-shopu (Kanada / USA) a Klaviyo profily zákazníkov a odberateľov (USA). Prenos údajov týmto poskytovateľom sa opiera
+                  o rozhodnutie o primeranosti alebo o záruky uvedené v tabuľke vyššie.
                 </p>
               </div>
           </LegalSection>
@@ -402,14 +430,27 @@ export const PrivacyPolicy = () => {
                   { title: 'Právo na vymazanie (čl. 17)', desc: 'Za určitých podmienok môžete žiadať o výmaz svojich údajov (právo na zabudnutie)' },
                   { title: 'Právo na obmedzenie (čl. 18)', desc: 'Môžete žiadať o obmedzenie spracovania vašich údajov počas riešenia sporu' },
                   { title: 'Právo na prenosnosť (čl. 20)', desc: 'Môžete žiadať o prenos vašich údajov inému prevádzkovateľovi v štruktúrovanom formáte' },
-                  { title: 'Právo namietať (čl. 21)', desc: 'Môžete namietať proti spracovaniu na základe oprávneného záujmu alebo na účely priameho marketingu' },
-                  { title: 'Právo odvolať súhlas (čl. 7 ods. 3)', desc: 'Ak spracovanie prebieha na základe súhlasu, môžete ho kedykoľvek odvolať bez ujmy na zákonnosti spracovania pred odvolaním. Odber newslettera zrušíte kliknutím na odkaz v e-maile.' },
+                  { title: 'Právo namietať (čl. 21)', desc: 'Môžete namietať proti spracovaniu na základe oprávneného záujmu a proti spracovaniu na účely priameho marketingu vrátane súvisiaceho profilovania. Podrobnosti sú v rámčeku nižšie.' },
+                  { title: 'Právo odvolať súhlas (čl. 7 ods. 3)', desc: 'Ak spracovanie prebieha na základe súhlasu, môžete ho kedykoľvek odvolať bez ujmy na zákonnosti spracovania pred odvolaním. Odber newslettera aj ďalších marketingových e-mailov zrušíte kliknutím na odkaz v e-maile.' },
                 ].map((item, index) => (
                   <div key={index} className={`${LEGAL_BOX} p-4`}>
                     <h4 className="mb-1 font-semibold text-brand-dark">{item.title}</h4>
                     <p className="text-sm">{item.desc}</p>
                   </div>
                 ))}
+              </div>
+              <div className="mt-6 rounded-r-[3px] border-l-2 border-brand-dark bg-brand-sand p-4">
+                <p className="text-sm">
+                  <strong>Právo namietať (čl. 21 GDPR)</strong><br />
+                  Z dôvodov týkajúcich sa vašej konkrétnej situácie môžete kedykoľvek namietať proti spracovaniu na základe oprávneného záujmu,
+                  napríklad proti prenosu vašich údajov z e-shopu (meno, kontaktné a dodacie údaje, objednávky a nákupy nedokončené v pokladni)
+                  do služby Klaviyo na prehľad objednávok a meranie e-mailov. Spracovanie, proti ktorému ste namietali, potom ukončíme, ibaže preukážeme nevyhnutné oprávnené dôvody, ktoré
+                  prevažujú nad vašimi záujmami, právami a slobodami, alebo dôvody na preukazovanie, uplatňovanie či obhajovanie právnych nárokov.
+                  Proti spracovaniu na účely priameho marketingu vrátane súvisiaceho profilovania môžete namietať kedykoľvek a bez udania dôvodu;
+                  vaše údaje potom na tieto účely ďalej nespracúvame. Námietku pošlite na{' '}
+                  <a href="mailto:info@orostone.sk" className={LEGAL_LINK}>info@orostone.sk</a>. Odhlásenie z e-mailov zastaví len marketingové
+                  e-maily, nie prenos údajov z e-shopu do služby Klaviyo.
+                </p>
               </div>
               <div className="mt-6 rounded-r-[3px] border-l-2 border-brand-dark bg-brand-sand p-4">
                 <p className="text-sm">
@@ -482,7 +523,7 @@ export const PrivacyPolicy = () => {
         <div className="mt-6 flex flex-col items-start justify-between gap-6 border-t border-brand-line pt-8 md:flex-row md:items-center">
           <div>
             <p className="text-sm text-brand-muted">Posledná aktualizácia</p>
-            <p className="text-lg font-medium text-brand-dark">12.&nbsp;10.&nbsp;2026</p>
+            <p className="text-lg font-medium text-brand-dark">14.&nbsp;10.&nbsp;2026</p>
           </div>
           <ActionButton to="/kontakt" variant="outline" arrow>
             Kontaktujte nás
