@@ -4,9 +4,9 @@ Stav k 14. 10. 2026. Klaviyo som read-only overil okolo 10:50 UTC. Podkladom je 
 
 Skratky: N = `marketing/newsletter`, B = `N/nastroje/build_emails.py`, PB = playbook `index.html`. **Š** = štandardný odosielateľ: from_label „Marián z Orostone“, from_email `ahoj@orostone.sk`, reply_to `ahoj@orostone.sk`. Majú ho všetky štyri správy v SNJKTh a je aj predvolený v účte.
 
-> **Hneď pre Martina, ešte pred stavbou čohokoľvek.** Rozhodnuté 14. 10.: kampaň 03 ide podľa plánu 21. 10. Shopify pripojil Martin zámerne. Synchronizácia odberateľov zo Shopify je vypnutá (screenshot od Martina, 14. 10.: „Sync your Shopify email subscribers to Klaviyo“ nezaškrtnuté, Shopify Markets nezaškrtnuté).
-> 1. **Odhlásenia po kampani 35:** 3 odhlásenia z 52 príjemcov, teda 5,8 %. Hranica na hlásenie je 1 % (README:112). Sťažnosti na spam: 0. Kampaň 03 je naplánovaná na 21. 10. o 07:00 UTC. Martin rozhodne, či 03 pôjde. Bez jeho rozhodnutia kampaň nemeniť ani nerušiť. Čísla sa ešte menia, preto ich pred odovzdaním plánu treba znova skontrolovať (`get_campaign_report`).
-> 2. **Shopify je pripojený ku Klaviyu** od 14. 10. 08:25 UTC. Martin potvrdí, že pripojenie bolo zámerné. V UI Klaviya skontroluje, do ktorého zoznamu zapisuje synchronizácia odberateľov zo Shopify: musí byť vypnutá alebo zapisovať do samostatného zoznamu, nikdy nie do VSrLFs. Treba to potvrdiť pred ďalšou objednávkou vzorky.
+> **Hneď pre Martina (stav 14. 10. popoludní):** v Shopify je súhlas s e-mailami v pokladni **predvyplnený pre Slovensko** (overila session Automatizácie v Klavyo v Shopify admin). Martin ho vypne sám: Settings › Checkout › Email › „Chcem dostávať novinky a ponuky e-mailom“ › „Preselect checkbox in certain regions“ › odstrániť Slovensko, uložiť, urobiť screenshot. Kým to nie je vypnuté a nie sú upravené zásady, A2, A4 ani synchronizácia odberateľov zo Shopify sa nespúšťajú.
+>
+> Vybavené 14. 10.: kampaň 03 ide podľa plánu 21. 10. (Martin). Shopify pripojil Martin zámerne. Synchronizácia odberateľov zo Shopify aj profilov z Klaviya do Shopify je vypnutá (screenshoty od Martina).
 
 ## Urobené a rozhodnuté 14. 10. (session Automatizácie v Klavyo)
 
@@ -24,7 +24,17 @@ Skratky: N = `marketing/newsletter`, B = `N/nastroje/build_emails.py`, PB = play
 
 - **Segment VGyNMu „Reaktivácia (A7): newsletter 90+ dní bez otvorenia a kliku“:** člen VSrLFs aspoň 90 dní, 0× Opened Email (TqZ5Tp) a 0× Clicked Email (VdqXpS) za posledných 90 dní, nie je v TKAHuh, email subscribed.
 - **Deľba práce:** všetko, čo sa v Klaviyu stavia alebo nastavuje (flowy, šablóny, segmenty, zoznamy, integrácie), a tento plán robí session Automatizácie v Klavyo. Naplánované kampane, ich kontroly a výsledky, UHSrFj, Resend a playbook robí session newsletter.
-- **Otvorené:** zapnutie synchronizácie odberateľov zo Shopify do nového samostatného zoznamu (nie VSrLFs). Čaká na read-only kontrolu session newsletter (`claude/shopify-sync-kontrola`) a Martinovo potvrdenie.
+- **A7 Reaktivácia je live od 14. 10. 11:50 UTC** (zapla session Automatizácie v Klavyo; konfiguráciu overila session newsletter cez API):
+  - Flow **R5jtdq** „Reaktivácia (A7) – Newsletter web“, spúšťač segment VGyNMu.
+  - Kroky: čakanie 1 d do 09:00 → 22 (správa UEbeen, šablóna Yf2Zfk) → 30 d do 09:00 → 23 (UzxXSY / YapJTW) → 60 d do 09:00 → 24 (VJWNLQ / XxnGhj). Časové pásmo profilu.
+  - Filter flowu (všetko naraz): e-mail subscribed, nie je v TKAHuh, 0× Opened Email (TqZ5Tp) a 0× Clicked Email (VdqXpS) od vstupu do flowu.
+  - Odosiela Š, smart sending zapnutý, transactional false, UTM `klaviyo / email / reaktivacia / NN-slug`. Re-entry: alltime 1 (podľa session Automatizácie v Klavyo; API pole nevracia).
+  - Segment VGyNMu mal pri spustení 0 profilov. Prví vstúpia okolo 8. 1. 2027.
+- **Predvyplnený súhlas v pokladni Shopify (overené 14. 10. v Shopify admin):** pri „Chcem dostávať novinky a ponuky e-mailom“ je „Preselect checkbox in certain regions: Slovakia“.
+  - Súhlasy z pokladne pre SK sú preto neplatné (GDPR recitál 32, SDEÚ C-673/17 Planet49). Týka sa aj 4 profilov, ktoré historická synchronizácia 14. 10. zapísala ako subscribed (metóda Shopify).
+  - Tieto profily nie sú vo VSrLFs ani v inom zozname, ktorému sa posiela (kampane idú na VSrLFs, A7 vyžaduje členstvo vo VSrLFs), takže im dnes nič neodíde. Na marketing sa nepoužívajú.
+  - Vypnutie predvyplnenia: Martin (session Automatizácie v Klavyo to zablokoval bezpečnostný filter). Čo s 4 neplatnými súhlasmi (nechať nepoužité, alebo zmeniť ich stav v Klaviyu), rozhodne Martin.
+- **Otvorené:** synchronizácia odberateľov zo Shopify do nového samostatného zoznamu (nie VSrLFs). Read-only kontrola session newsletter je hotová (nikoho by neprihlásila proti jeho vôli), ale čaká sa na (1) vypnutie predvyplnenia pre SK, (2) úpravu zásad ochrany súkromia cez PR a (3) Martinovo potvrdenie.
 
 ## Súčasný stav
 
@@ -136,7 +146,7 @@ Skratky: N = `marketing/newsletter`, B = `N/nastroje/build_emails.py`, PB = play
 | Automatizácia | Zdroj spúšťača | Je v Klaviyu dnes | Čo blokuje | Čo sa dá urobiť hneď |
 |---|---|---|---|---|
 | A2 Vzorky | Shopify Fulfilled Order Y4VvMe | áno, od 14. 10. (4 udalosti) | PR na dynamický blok v 10; rozhodnutia o súhlase a synchronizácii odberateľov | nahrať 05 a 11; PR pre 10 |
-| A7 Reaktivácia | segment VGyNMu (Opened TqZ5Tp, Clicked VdqXpS) | áno | nič, 24 rozhodnuté 14. 10. | šablóny 22–24 a segment hotové 14. 10.; zostáva draft flowu |
+| A7 Reaktivácia | segment VGyNMu (Opened TqZ5Tp, Clicked VdqXpS) | áno | nič | **live od 14. 10. 11:50 UTC (flow R5jtdq)** |
 | A4 Opustený košík | Shopify Checkout Started TR4G9D | áno (13 udalostí) | PR na 15 a 16 (URL košíka, text o doprave); vypnutie Shopify e-mailu; súhlas | PR pre 15 a 16 spolu s 10 |
 | A3 Dopyt → ponuka | CRM, fáza „Finálna ponuka odoslaná“ | nie | rozhodnutie Klaviyo vs. CRM; CRM kód; nový kľúč | nič |
 | A5 Po realizácii | CRM, montáž so stavom `dokoncene` | nie | CRM kód; fotky pre 08; súhlas | nič |
@@ -148,7 +158,7 @@ Playbook radí ako prvé A1, A2, A3 a A5 (PB:1105). A3 a A5 sú zablokované, A2
    - PR pre 10 začať hneď a do toho istého PR dať aj 15 a 16.
    - Flow postaviť po merge a po Martinových rozhodnutiach o súhlase a synchronizácii odberateľov.
    - 05 a 11 sa dajú použiť bez zmeny textu.
-2. **A7.** Nepotrebuje nové dáta, iba Martinovo rozhodnutie o 24. Potom sa postaví naraz celý.
+2. **A7. Hotové: live od 14. 10. 11:50 UTC (flow R5jtdq).** Pôvodný postup pre záznam:
    - Prví odberatelia dosiahnu 90 dní vo VSrLFs okolo 8. 1. 2027 (prenos 10. 10. 2026).
    - Segmentový flow nepridá ľudí, ktorí už v segmente sú, preto musí byť naživo pred týmto dátumom.
    - Ak Martin o 24 rozhodne skôr, než sa zmerguje PR pre 10, A7 sa môže postaviť skôr než A2. Na priorite to nič nemení.
@@ -230,13 +240,13 @@ UTM, návrh: `utm_campaign=vzorky`, `utm_content=05-vzorka-doma`, `10-vzorka-vel
     - Dôsledok: filter „can receive email marketing, subscribed“ v draftoch A2 a A4 už dnes pustí aj týchto 4 zákazníkov. Kým Martin neoverí predvyplnenie súhlasu (nižšie) a neupravia sa zásady, žiadny flow A2 ani A4 nespúšťať.
     - Znovuprihlásenie: dnes by nikoho neprihlásilo proti jeho vôli. 20 globálne potlačených profilov (13 odhlásených vrátane 3 po kampani 35, 2 ručne, 5 hard bounce; README:115 uvádza stav k 12. 10.) sa neprekrýva s 5 odberateľmi zo Shopify.
     - Zoznam: nový samostatný, napr. „Zákazníci – súhlas v pokladni Shopify“. Nikdy VSrLFs (spustí SNJKTh) ani TKAHuh. Prepínač aj výber zoznamu sú len v UI Klaviya. „Sync Klaviyo profiles to Shopify“ ostáva vypnuté.
-    - Poradie: (1) Martin overí v Shopify › Settings › Checkout › Marketing options › Email, že „Preselect the sign-up option“ je vypnuté pre všetky regióny, a urobí screenshot. Ak je alebo bolo zapnuté, tieto súhlasy sa na marketing nepoužijú. (2) Úprava zásad cez PR (session newsletter ponúka prípravu). (3) Až potom zoznam a zapnutie synchronizácie.
+    - Poradie: (1) Martin overí v Shopify › Settings › Checkout › Marketing options › Email, že „Preselect the sign-up option“ je vypnuté pre všetky regióny, a urobí screenshot. Ak je alebo bolo zapnuté, tieto súhlasy sa na marketing nepoužijú. **Overené 14. 10.: predvyplnené pre Slovensko, teda súhlasy z pokladne pre SK sa nepoužijú; Martin predvyplnenie vypne.** (2) Úprava zásad cez PR (session newsletter ponúka prípravu). (3) Až potom zoznam a zapnutie synchronizácie.
   - **Súhlasový základ pre kupujúcich.** Zásady sľubujú marketing len s výslovným súhlasom (`docs/pravne-texty/texty/ochrana-sukromia.md:41`).
   - **Platnosť súhlasu zo Shopify:** skôr než ho začneme brať ako platný, Martin overí v Shopify › Settings › Checkout › Marketing options, že je vypnuté predvolené zaškrtnutie súhlasu a že text zodpovedá zásadám.
 - **Súhlas príjemcov:**
   - Checkout zaznamenáva `buyer_accepts_marketing`: ORO-1011, 1012 a 1013 majú true, ORO-1010 false.
   - Do profilov v Klaviyu sa súhlas preniesol historickou synchronizáciou 14. 10. 08:25 (4 subscribed), bez udalostí Subscribed to List.
-  - Podozrenie na predvyplnené políčko: 3 zo 4 reálnych kupujúcich dali súhlas a Martinove testovacie objednávky sú od 1. 4. všetky „áno“, predtým „nie“. Overí Martin ručne, cez API sa to prečítať nedá.
+  - Predvyplnené políčko: podozrenie (3 zo 4 reálnych kupujúcich dali súhlas, Martinove testovacie objednávky od 1. 4. všetky „áno“) sa potvrdilo 14. 10.: „Preselect checkbox in certain regions: Slovakia“. Súhlasy z pokladne pre SK sú neplatné.
   - Zásady (`ochrana-sukromia.md:41, :70-76, :94-100`, `pages/PrivacyPolicy.tsx`) nehovoria o súhlase v pokladni, odovzdaní do Klaviya ani o automatických e-mailoch. Nezrovnalosť: `:76` (údaje Shopify v EÚ) vs. `:214` (prenosy do Kanady a USA).
 - **Automatické segmenty „(Shopify)“** (RNK3AY, SB2AUp, TFNbsR, VyRjiJ, XYifrQ) majú podmienku „subscription: any“, teda aj nikdy neprihlásených. Nepoužívať. Archivovať alebo prepnúť na „subscribed“ len s Martinovým OK.
 - **Naživo** len po Martinovom OK.
@@ -475,7 +485,7 @@ Filtre a ukončenie:
 UTM, návrh: `utm_campaign=reaktivacia`. Či Klaviyo pridá UTM aj k cieľu `update_property_link`: neoverené.
 
 ### 4. Draft vs. live a schválenia
-- **Hotové 14. 10.:** šablóny 22 X8jULq, 23 RpGJMA, 24 YjhfKT a segment VGyNMu. 24 = obyčajný odkaz (Martin, 14. 10.).
+- **Hotové 14. 10.:** šablóny 22 X8jULq, 23 RpGJMA, 24 YjhfKT a segment VGyNMu. 24 = obyčajný odkaz (Martin, 14. 10.). **Flow R5jtdq je live od 11:50 UTC** (podrobnosti v časti „Urobené a rozhodnuté 14. 10.“). Pred 22 je čakanie 1 d do 09:00, takže 22 neodchádza v noci.
 - **Flow:** postaviť ako draft zo segmentu VGyNMu (pôvodne podmienené rozhodnutím o 24). Buď ostane obyčajný odkaz, alebo pribudne `update_property_link 'odber'`, čo znamená zmenu textu cez B a Codex a web PR, ktorý spracuje `?odber`. Potom postaviť flow naraz celý, so všetkými tromi správami.
 - **Pred spustením:**
   1. Martinovo OK na spustenie, pred 8. 1. 2027. (Alert UHSrFj je pripravený: telo vyplnené, Marián opt-in potvrdil 13. 10. Klik v 22 ho spustí.)
@@ -641,7 +651,7 @@ UTM, návrh: `utm_campaign=b2b`.
    - Ako je nastavená synchronizácia odberateľov zo Shopify? Musí byť vypnutá alebo zapisovať do samostatného zoznamu, nikdy nie do VSrLFs.
    - Zapnutie prihlasuje profily vrátane historických a môže znova prihlásiť tých, ktorí sa v Klaviyu odhlásili. Ak ju chcete zapnúť, najprv porovnáme zákazníkov s 13 potlačenými profilmi (README:115).
    - Rozdiel v praxi: keď je vypnutá, A2 a A4 dostanú len ľudia prihlásení v Klaviyu (prakticky VSrLFs). So samostatným zoznamom ich dostanú aj kupujúci, ktorí dali súhlas v checkoute.
-   - Je v Shopify › Settings › Checkout › Marketing options vypnuté predvolené zaškrtnutie súhlasu? Zodpovedá text zásadám (`:41`)? Súhlas dali 3 zo 4 kupujúcich vzoriek.
+   - Predvolené zaškrtnutie súhlasu bolo zapnuté pre Slovensko (overené 14. 10.). Martin ho vypne. Zodpovedá text políčka zásadám (`:41`)? Čo s 4 neplatnými súhlasmi zo Shopify v Klaviyu: nechať nepoužité, alebo zmeniť ich stav?
 3. **Mapovanie revenue** ukazuje na Wix TSzMKT. Máme ho prepnúť na Shopify Uu5JLg?
 4. **Plán Klaviya:** je to free, alebo platený Email s 5 000 e-mailmi?
 5. **Súhlas pri A2, A4 a A5:**
