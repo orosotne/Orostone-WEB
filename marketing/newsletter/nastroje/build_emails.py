@@ -1265,7 +1265,7 @@ write("10-automatizacia-vzorka-velka-plocha.html", doc(
         hero(IMG + "dekor-mockup-" + VZORKA_HANDLE + "-1040.jpg", "Celá platňa " + VZORKA_NAZOV + " vedľa človeka na porovnanie veľkosti", capsule=VZORKA_NAZOV + " · 3200 × 1600 mm", top=14),
         text([
             "vzorku máte doma už týždeň. Farbu a povrch ste si overili, no jedno vám malý štvorec neukáže: ako sa kresba rozloží na troch metroch pracovnej dosky alebo na ostrovčeku.",
-            VZORKA_VIAC + "Na fotke je " + VZORKA_NAZOV + ", prvý dekor z vašej objednávky. Celé platne ostatných dekorov nájdete rovnako na ich stránkach.{% endif %}",
+            VZORKA_VIAC + "Na fotke je " + VZORKA_NAZOV + ", prvý dekor z vašej objednávky. Celé platne ostatných dekorov nájdete na ich stránkach.{% endif %}",
         ], top=24),
         section_title(None, "Tri spôsoby, ako vidieť dekor vo veľkej ploche", top=12),
         numbered([

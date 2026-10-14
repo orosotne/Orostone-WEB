@@ -145,7 +145,7 @@
         <!-- TEXT -->
         <tr>
           <td class="px-40 t-body" style="padding:24px 40px 8px; font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:15px; font-weight:300; line-height:26px; color:#2A2A2A;">
-            <p style="margin:0 0 16px; font-weight:500; color:#1A1A1A;">Dobrý deň,</p><p style="margin:0 0 16px;">vzorku máte doma už týždeň. Farbu a povrch ste si overili, no jedno vám malý štvorec neukáže: ako sa kresba rozloží na troch metroch pracovnej dosky alebo na ostrovčeku.</p><p style="margin:0 0 16px;">{% if event.extra.line_items.0.product.properties|lookup:'Počet vzoriek' and event.extra.line_items.0.product.properties|lookup:'Počet vzoriek' != '1' %}Na fotke je {{ event.extra.line_items.0.product.properties|lookup:'Vzorka 1'|default:'Taj Mahal'|title }}, prvý dekor z vašej objednávky. Celé platne ostatných dekorov nájdete rovnako na ich stránkach.{% endif %}</p>
+            <p style="margin:0 0 16px; font-weight:500; color:#1A1A1A;">Dobrý deň,</p><p style="margin:0 0 16px;">vzorku máte doma už týždeň. Farbu a povrch ste si overili, no jedno vám malý štvorec neukáže: ako sa kresba rozloží na troch metroch pracovnej dosky alebo na ostrovčeku.</p><p style="margin:0 0 16px;">{% if event.extra.line_items.0.product.properties|lookup:'Počet vzoriek' and event.extra.line_items.0.product.properties|lookup:'Počet vzoriek' != '1' %}Na fotke je {{ event.extra.line_items.0.product.properties|lookup:'Vzorka 1'|default:'Taj Mahal'|title }}, prvý dekor z vašej objednávky. Celé platne ostatných dekorov nájdete na ich stránkach.{% endif %}</p>
           </td>
         </tr>
 

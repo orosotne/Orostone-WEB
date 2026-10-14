@@ -22,7 +22,7 @@ veľká plocha.
 ### Text
 Dobrý deň,
 vzorku máte doma už týždeň. Farbu a povrch ste si overili, no jedno vám malý štvorec neukáže: ako sa kresba rozloží na troch metroch pracovnej dosky alebo na ostrovčeku.
-{% if event.extra.line_items.0.product.properties|lookup:'Počet vzoriek' and event.extra.line_items.0.product.properties|lookup:'Počet vzoriek' != '1' %}Na fotke je {{ event.extra.line_items.0.product.properties|lookup:'Vzorka 1'|default:'Taj Mahal'|title }}, prvý dekor z vašej objednávky. Celé platne ostatných dekorov nájdete rovnako na ich stránkach.{% endif %}
+{% if event.extra.line_items.0.product.properties|lookup:'Počet vzoriek' and event.extra.line_items.0.product.properties|lookup:'Počet vzoriek' != '1' %}Na fotke je {{ event.extra.line_items.0.product.properties|lookup:'Vzorka 1'|default:'Taj Mahal'|title }}, prvý dekor z vašej objednávky. Celé platne ostatných dekorov nájdete na ich stránkach.{% endif %}
 
 ### Nadpis sekcie
 Tri spôsoby, ako vidieť dekor vo veľkej ploche
