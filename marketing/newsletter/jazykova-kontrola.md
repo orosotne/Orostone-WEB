@@ -309,4 +309,8 @@ Codex na `1a26517` nenašiel žiadne pripomienky. Opravy z kôl 22 a 23 v 03, 18
 |---|---|---|---|---|---|---|
 | 1 | 10 | Celé platne ostatných dekorov nájdete rovnako na ich stránkach. | Celé platne ostatných dekorov nájdete na ich stránkach. | štylistika | „Rovnako“ nemá jasný porovnávací základ. | prijaté, zapracované |
 
+## Kolo 26 – Codex review v PR #141 (14. 10. 2026, po zmene z kola 25)
+
+Codex na `5a86f19` nenašiel žiadne pripomienky. Zmeny v 10, 15 a 16 sú jazykovo skontrolované.
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
