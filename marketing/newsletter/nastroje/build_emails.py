@@ -2171,39 +2171,42 @@ KOSIK_KOD = "KOSIK5"
 KOSIK_CHECKOUT = "{% if event.CheckoutURL %}{{ event.CheckoutURL }}&discount=" + KOSIK_KOD + "{% else %}" + SITE + "{% endif %}"
 REASON_KOSIK_WEB = "Tento e-mail ste dostali, pretože odoberáte novinky Orostone a v e-shope orostone.sk ste si vložili dekor do košíka."
 
-# 36 – Košík z webu: dekor vložený do košíka (odberatelia newslettera)
+# 36 – Košík z webu: dekor vložený do košíka (odberatelia newslettera), so zľavou KOSIK5
 write_nb("36-automatizacia-kosik-dekor.html", doc(
     {
         "TYP:": "Automatizácia · Košík z webu",
-        "SPÚŠŤAČ:": "2 hodiny po vložení dekoru do košíka na orostone.sk bez začatia pokladne a bez objednávky (Klaviyo: Added to Cart z webu)",
-        "PREDMET:": "Váš dekor čaká v košíku, so zľavou 5 %",
-        "PREHEADER:": "Košík sme vám uložili. Ako odberateľ noviniek máte na jeho dokončenie 5 % zľavu s kódom KOSIK5.",
+        "SPÚŠŤAČ:": "Na druhý deň o 9:00 po vložení dekoru do košíka na orostone.sk, ak človek nezačal pokladňu ani neobjednal (Klaviyo: Added to Cart z webu)",
+        "PREDMET:": "Zľava 5 % na dekor vo vašom košíku",
+        "PREHEADER:": "Kód KOSIK5 platí na celú objednávku. Košík sme vám uložili, dokončíte ho jedným kliknutím.",
         "CIEĽ:": "Dokončiť objednávku s kódom KOSIK5, alebo urobiť ďalší krok (vzorka, celá platňa, pôdorys).",
-        "POZNÁMKA:": "Len odberatelia so súhlasom, ktorých web rozpoznal po príchode z nášho e-mailu. Názov dekoru, fotka platne, položky a odkazy sú dynamické z udalosti; bez údajov Taj Mahal. Tlačidlo vedie do pokladne Shopify s uloženým košíkom a kód KOSIK5 (5 % z celej objednávky, raz na zákazníka) doplní z parametra discount.",
+        "POZNÁMKA:": "Len odberatelia so súhlasom, ktorých web rozpoznal po príchode z nášho e-mailu. Zľava je v predmete, v hlavičke, v tmavom páse aj na fotke (kosik-zlava-5.jpg). Názov dekoru, fotka platne, položky a odkazy sú dynamické z udalosti; bez údajov Taj Mahal. Tlačidlá vedú do pokladne Shopify s uloženým košíkom a kód KOSIK5 (5 % z celej objednávky, raz na zákazníka) doplnia z parametra discount.",
     },
-    "Váš dekor čaká v košíku, so zľavou 5 %",
-    "Košík sme vám uložili. Ako odberateľ noviniek máte na jeho dokončenie 5 % zľavu s kódom KOSIK5.",
+    "Zľava 5 % na dekor vo vašom košíku",
+    "Kód KOSIK5 platí na celú objednávku. Košík sme vám uložili, dokončíte ho jedným kliknutím.",
     [
-        header(),
-        eyebrow("Váš košík na orostone.sk"),
-        headline(KOSIK_NAZOV + " čaká<br />" + accent_light("v košíku.")),
-        hero(IMG + "dekor-mockup-" + KOSIK_HANDLE + "-1040.jpg", "Celá platňa " + KOSIK_NAZOV + " vedľa človeka na porovnanie veľkosti", capsule=KOSIK_NAZOV + " · celá platňa 3200 × 1600 mm", top=14),
+        header("Zľava 5 %", "kód " + KOSIK_KOD),
+        dark_band("Zľava pre odberateľov noviniek",
+                  KOSIK_NAZOV + "<br />" + accent_dark("o 5 % lacnejšie."),
+                  sub="Dekor máte v košíku, my sme ho uložili. S kódom <strong style=\"font-weight:700; color:#FFFFFF;\">" + KOSIK_KOD + "</strong> zaplatíte za celú objednávku o 5 % menej.",
+                  image=(IMG + "kosik-zlava-5.jpg", "Zľava 5 % s kódom KOSIK5 na pracovnú dosku zo sinterovaného kameňa Orostone"),
+                  cta=("Dokončiť so zľavou 5 %", KOSIK_CHECKOUT)),
         text([
-            "dekor " + KOSIK_NAZOV + " ste si na orostone.sk vložili do košíka a objednávku ste zatiaľ nedokončili. Košík sme vám uložili, nič sa nestratilo.",
-            "Ak ste sa ešte nerozhodli, je to v poriadku. Pracovná doska sa vyberá raz a nerozhoduje o nej malá vzorka ani cena, ale to, ako kresba vyzerá na celej ploche a ako sa doska používa každý deň.",
-        ], top=24),
+            "dekor " + KOSIK_NAZOV + " ste si na orostone.sk vložili do košíka a objednávku ste zatiaľ nedokončili. Ako odberateľovi noviniek vám na ňu dávame zľavu 5 %, aby sa vám rozhodovalo ľahšie.",
+            "Pracovná doska sa vyberá raz. Nerozhoduje o nej malá vzorka ani cena, ale to, ako kresba vyzerá na celej ploche a ako sa doska používa každý deň.",
+        ], top=32),
         cart_items("V košíku máte", top=8),
-        card_offer("Pre odberateľov noviniek", "5 % na dokončenie objednávky",
-                   'Rozhodnutie vám chceme uľahčiť: s kódom <strong style="font-weight:700; color:#1A1A1A;">' + KOSIK_KOD + '</strong> je celá objednávka o 5 % lacnejšia. Kód dostávate ako odberateľ noviniek Orostone a platí na jednu objednávku. Tlačidlo otvorí váš uložený košík v pokladni a kód doplní samo; inak ho zadáte do poľa „Zľavový kód“.',
+        hero(IMG + "dekor-mockup-" + KOSIK_HANDLE + "-1040.jpg", "Celá platňa " + KOSIK_NAZOV + " vedľa človeka na porovnanie veľkosti", capsule=KOSIK_NAZOV + " · celá platňa 3200 × 1600 mm", top=28),
+        card_offer("Váš zľavový kód", KOSIK_KOD + " · 5 % z celej objednávky",
+                   'Kód dostávate ako odberateľ noviniek Orostone. Platí na jednu objednávku a odpočíta 5 % z ceny všetkého tovaru v košíku. Tlačidlo otvorí váš uložený košík v pokladni a kód doplní samo; inak ho zadajte do poľa „Zľavový kód“.',
                    "Dokončiť objednávku so zľavou", KOSIK_CHECKOUT,
-                   note='Zľava sa počíta z ceny tovaru bez dopravy. Ak si chcete dekor najprv overiť na vzorke, kód vám ostáva. <a href="' + SITE + "/produkt/" + KOSIK_HANDLE + '" target="_blank" style="color:#1A1A1A; text-decoration:underline;">Pozrieť dekor znova</a>'),
+                   note='Zľava sa počíta z ceny tovaru, nie z dopravy. Ak si chcete dekor najprv overiť na vzorke, kód si nechajte na objednávku platne – platí len raz. <a href="' + SITE + "/produkt/" + KOSIK_HANDLE + '" target="_blank" style="color:#1A1A1A; text-decoration:underline;">Pozrieť dekor znova</a>'),
         section_title(None, "Ak ešte váhate", top=28),
         numbered([
             ("Vzorka v rukách", "Prvá vzorka je zadarmo. Priložte ju k dvierkam a k podlahe pri svojom svetle – uvidíte viac než na obrazovke."),
             ("Celá platňa", "Na stránke dekoru je fotka platne 3200 × 1600&nbsp;mm vedľa človeka. Ukáže, ako sa kresba rozloží po dĺžke pracovnej dosky."),
             ("Pôdorys", "Pošlite pôdorys alebo rozmery v odpovedi na tento e-mail. Navrhneme rozloženie platní a pripravíme orientačné cenové rozpätie."),
         ], top=8),
-        ps("Ak váhate medzi dvoma dekormi, odpovedzte na tento e-mail a napíšte, ktoré to sú. Poradím, ktorý z nich bude vo veľkej ploche vašej kuchyne fungovať lepšie."),
+        ps("Ak váhate medzi dvoma dekormi, odpovedzte na tento e-mail a napíšte, ktoré to sú. Poradím, ktorý z nich bude vo veľkej ploche vašej kuchyne fungovať lepšie. Kód " + KOSIK_KOD + " platí aj na dekor, ktorý si nakoniec vyberiete."),
         signature(top=0),
         footer(reason=REASON_KOSIK_WEB),
     ]))

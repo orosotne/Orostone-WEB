@@ -162,7 +162,7 @@ Skratky: N = `marketing/newsletter`, B = `N/nastroje/build_emails.py`, PB = play
 | A2 Vzorky | Shopify Fulfilled Order Y4VvMe | áno, od 14. 10. (4 udalosti) | nič | **live od 14. 10. 18:54 UTC (flow Tp45w8)** |
 | A7 Reaktivácia | segment VGyNMu (Opened TqZ5Tp, Clicked VdqXpS) | áno | nič | **live od 14. 10. 11:50 UTC (flow R5jtdq)** |
 | A4 Opustený košík | Shopify Checkout Started TR4G9D | áno (13 udalostí, žiadna skutočne opustená) | Martin 14. 10.: e-mail o opustenej pokladni posiela Shopify všetkým zákazníkom, aj bez súhlasu (zásady: PR #144), A4 sa nespúšťa. Do 14. 10. Shopify neposlal ani jeden (0 z 3, pozri A4 › 4) | nič, flow nevytvorený |
-| A4b Košík z webu | Added to Cart z webu (API, Klaviyo.js) | nie, vznikne prvou udalosťou po nasadení | merge PR (web, 36, zásady), nahranie 36 z main, OK Martina | draft flow po merge (pozri A4b) |
+| A4b Košík z webu | Added to Cart z webu (API TANKsY, Klaviyo.js) | áno, 2 testovacie udalosti 15. 10. | merge PR #148, nahranie 36 z main | Martin 15. 10. dal OK na draft, test na jeho adresu a spustenie po teste |
 | A3 Dopyt → ponuka | CRM, fáza „Finálna ponuka odoslaná“ | nie | rozhodnutie Klaviyo vs. CRM; CRM kód; nový kľúč | nič |
 | A5 Po realizácii | CRM, montáž so stavom `dokoncene` | nie | CRM kód; fotky pre 08; súhlas | nič |
 | A8 B2B | neexistuje | nie | model súhlasu a zdroj kontaktov | nič |
@@ -431,27 +431,27 @@ Zadanie Martina 15. 10. 2026: pripomenutie košíka cez Klaviyo (nie Shopify) pr
 
 | Krok | Čas | Šablóna | Podmienka |
 |---|---|---|---|
-| 1 | 2 h po Added to Cart | 36 | 0× Checkout Started TR4G9D a 0× Placed Order Uu5JLg od vstupu |
+| 1 | na druhý deň o 09:00 po Added to Cart (`days=1`, `delay_until_time=09:00`, `timezone=profile`) | 36 | 0× Checkout Started TR4G9D a 0× Placed Order Uu5JLg od vstupu |
 
 - **Filter profilu:** člen zoznamu VSrLFs (odberatelia newslettera z webu), súhlas s e-mailovým marketingom (subscribed), bez segmentu U2XF6B, bez zoznamu TKAHuh (ako A2). Pripomenutie tak nedostane zákazník zo Shopify so súhlasom z pokladne, len odberateľ z webu (odporúčanie session „Orostone – kampane a Klaviyo“, 15. 10.).
 - **Ukončenie:** kto začne pokladňu, vypadne (ďalej ho rieši pripomenutie zo Shopify); kto objedná, vypadne.
 - **Re-entry:** 7 dní.
 - **Smart sending:** vypnúť (kampaň v predchádzajúcich 16 h by pripomenutie preskočila).
-- **Noc:** 2 h po vložení môže e-mail odísť v noci; Martin rozhodne, či radšej „nasledujúci deň o 9:00“.
+- **Časovanie:** Martin 15. 10. zvolil „na druhý deň o 9:00“ (e-mail nikdy neodíde v noci).
 - UTM: `utm_campaign=kosik-web`, `utm_content=36-kosik-dekor`.
 
 ### 3. Šablóna, odosielateľ, predmet, preheader
 
 | Šablóna | Odosielateľ | Predmet | Preheader | Dynamické dáta |
 |---|---|---|---|---|
-| `N/sablony/36-automatizacia-kosik-dekor.html` | Š | Váš dekor čaká v košíku, so zľavou 5 % | 🪨 Košík sme vám uložili. Ako odberateľ noviniek máte na jeho dokončenie 5 % zľavu s kódom KOSIK5. | názov a handle dekoru (fotka `dekor-mockup-<handle>-1040.jpg`, odkaz na dekor), `event.Items` (názov, variant, množstvo), tlačidlo na `event.CheckoutURL` s `&discount=KOSIK5`; bez údajov Taj Mahal |
+| `N/sablony/36-automatizacia-kosik-dekor.html` | Š | Zľava 5 % na dekor vo vašom košíku | 🪨 Kód KOSIK5 platí na celú objednávku. Košík sme vám uložili, dokončíte ho jedným kliknutím. | názov a handle dekoru (fotka `dekor-mockup-<handle>-1040.jpg`, odkaz na dekor), `event.Items` (názov, variant, množstvo), tlačidlo na `event.CheckoutURL` s `&discount=KOSIK5`; bez údajov Taj Mahal |
 
-**Zľava KOSIK5 (zadanie Martina 15. 10.):** kód v Shopify (15. 10. ešte nevytvorený, vytvorí Martin v admine Zľavy › Vytvoriť zľavu › Kód, alebo Claude po povolení zápisu cez Shopify MCP), 5 % z celej objednávky, raz na zákazníka, pre všetkých zákazníkov (Shopify nevie obmedziť na odberateľov Klaviya; kód pozná len príjemca e-mailu), bez dátumu konca, kombinuje sa s dopravnou zľavou (VITAJTE). E-mail vysvetľuje, prečo kód dostáva (odberateľ noviniek, nedokončený košík) a že platí na jednu objednávku. Pokladňa Shopify kód doplní z parametra `discount` v odkaze; overiť pri prvom teste naživo. Ak by Martin chcel platnosť „7 dní od e-mailu“, treba jedinečné kódy cez Klaviyo › Coupons (Shopify), nie statický kód.
+**Zľava KOSIK5 (zadanie Martina 15. 10.):** kód v Shopify vytvorený 15. 10. 2026 (`gid://shopify/DiscountCodeNode/1877543977306`, platí od 11:30 UTC), 5 % z celej objednávky, raz na zákazníka, pre všetkých zákazníkov (Shopify nevie obmedziť na odberateľov Klaviya; kód pozná len príjemca e-mailu), bez dátumu konca, kombinuje sa s dopravnou zľavou (VITAJTE). E-mail vysvetľuje, prečo kód dostáva (odberateľ noviniek, nedokončený košík) a že platí na jednu objednávku. Pokladňa Shopify kód doplní z parametra `discount` v odkaze; overiť pri prvom teste naživo. Ak by Martin chcel platnosť „7 dní od e-mailu“, treba jedinečné kódy cez Klaviyo › Coupons (Shopify), nie statický kód.
 
 ### 4. Draft vs. live a schválenia
 - Zásady: čl. 2 (Marketing: pripomenutie košíka a rozpoznanie odberateľa), čl. 4 (Klaviyo), čl. 9 a zásady cookies (`__kla_id`) upravené v tom istom PR; kontrolný log Kolo 5.
 - Postup: merge PR → nahrať 36 z main → prvá udalosť z webu (test na internom profile) → `create_flow` ako draft → Martin OK → live.
-- **Martin:** potvrdiť znenie zásad, časovanie (2 h), spustenie naživo.
+- **Martin 15. 10.:** zásady potvrdil, časovanie „na druhý deň o 9:00“, jeden kód KOSIK5, OK na kód, Codex a merge, draft s testom na jeho adresu a spustenie naživo po teste (vrátane vypnutia Shopify „Recover abandoned cart“). Zľavu chce výrazne v predmete, hlavičke aj na fotke (Higgsfield).
 
 ### 5. Pasce
 - **Safari** skracuje `__kla_id` na 24 h (URL s parametrami) až 7 dní; odberateľ z e-mailu je rozpoznaný len v tomto okne.

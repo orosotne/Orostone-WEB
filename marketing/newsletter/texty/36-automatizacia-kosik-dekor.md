@@ -1,28 +1,28 @@
-# 36 – Váš dekor čaká v košíku, so zľavou 5 %
+# 36 – Zľava 5 % na dekor vo vašom košíku
 
 - **Typ:** Automatizácia · Košík z webu
-- **Kedy sa posiela:** 2 hodiny po vložení dekoru do košíka na orostone.sk bez začatia pokladne a bez objednávky (Klaviyo: Added to Cart z webu)
-- **Predmet:** Váš dekor čaká v košíku, so zľavou 5 %
-- **Preheader:** 🪨 Košík sme vám uložili. Ako odberateľ noviniek máte na jeho dokončenie 5 % zľavu s kódom KOSIK5.
+- **Kedy sa posiela:** Na druhý deň o 9:00 po vložení dekoru do košíka na orostone.sk, ak človek nezačal pokladňu ani neobjednal (Klaviyo: Added to Cart z webu)
+- **Predmet:** Zľava 5 % na dekor vo vašom košíku
+- **Preheader:** 🪨 Kód KOSIK5 platí na celú objednávku. Košík sme vám uložili, dokončíte ho jedným kliknutím.
 - **Šablóna:** `sablony/36-automatizacia-kosik-dekor.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí
 
-### Séria (pill) a veta pod ňou
-Váš košík na orostone.sk
+### Hlavička
+Zľava 5 % · kód KOSIK5
 
-### Nadpis
-{{ event.AddedItemProductName|default:'Taj Mahal'|title }} čaká
-v košíku.
-
-### Hlavná fotka (popis pod fotkou)
-[alt fotky: Celá platňa {{ event.AddedItemProductName|default:'Taj Mahal'|title }} vedľa človeka na porovnanie veľkosti]
-● {{ event.AddedItemProductName|default:'Taj Mahal'|title }} · celá platňa 3200 × 1600 mm
+### Tmavý pás (úvod)
+Zľava pre odberateľov noviniek
+{{ event.AddedItemProductName|default:'Taj Mahal'|title }}
+o 5 % lacnejšie.
+Dekor máte v košíku, my sme ho uložili. S kódom KOSIK5 zaplatíte za celú objednávku o 5 % menej.
+[alt fotky: Zľava 5 % s kódom KOSIK5 na pracovnú dosku zo sinterovaného kameňa Orostone]
+Dokončiť so zľavou 5 %
 
 ### Text
 Dobrý deň,
-dekor {{ event.AddedItemProductName|default:'Taj Mahal'|title }} ste si na orostone.sk vložili do košíka a objednávku ste zatiaľ nedokončili. Košík sme vám uložili, nič sa nestratilo.
-Ak ste sa ešte nerozhodli, je to v poriadku. Pracovná doska sa vyberá raz a nerozhoduje o nej malá vzorka ani cena, ale to, ako kresba vyzerá na celej ploche a ako sa doska používa každý deň.
+dekor {{ event.AddedItemProductName|default:'Taj Mahal'|title }} ste si na orostone.sk vložili do košíka a objednávku ste zatiaľ nedokončili. Ako odberateľovi noviniek vám na ňu dávame zľavu 5 %, aby sa vám rozhodovalo ľahšie.
+Pracovná doska sa vyberá raz. Nerozhoduje o nej malá vzorka ani cena, ale to, ako kresba vyzerá na celej ploche a ako sa doska používa každý deň.
 
 ### Položky košíka
 V košíku máte
@@ -31,12 +31,16 @@ V košíku máte
 {% if item.VariantName and item.VariantName != 'Default Title' %}{{ item.VariantName }} · {% endif %}{{ item.Quantity }} ks
 {% endfor %}
 
+### Hlavná fotka (popis pod fotkou)
+[alt fotky: Celá platňa {{ event.AddedItemProductName|default:'Taj Mahal'|title }} vedľa človeka na porovnanie veľkosti]
+● {{ event.AddedItemProductName|default:'Taj Mahal'|title }} · celá platňa 3200 × 1600 mm
+
 ### Ponuka
-Pre odberateľov noviniek
-5 % na dokončenie objednávky
-Rozhodnutie vám chceme uľahčiť: s kódom KOSIK5 je celá objednávka o 5 % lacnejšia. Kód dostávate ako odberateľ noviniek Orostone a platí na jednu objednávku. Tlačidlo otvorí váš uložený košík v pokladni a kód doplní samo; inak ho zadáte do poľa „Zľavový kód“.
+Váš zľavový kód
+KOSIK5 · 5 % z celej objednávky
+Kód dostávate ako odberateľ noviniek Orostone. Platí na jednu objednávku a odpočíta 5 % z ceny všetkého tovaru v košíku. Tlačidlo otvorí váš uložený košík v pokladni a kód doplní samo; inak ho zadajte do poľa „Zľavový kód“.
 Dokončiť objednávku so zľavou
-Zľava sa počíta z ceny tovaru bez dopravy. Ak si chcete dekor najprv overiť na vzorke, kód vám ostáva. Pozrieť dekor znova
+Zľava sa počíta z ceny tovaru, nie z dopravy. Ak si chcete dekor najprv overiť na vzorke, kód si nechajte na objednávku platne – platí len raz. Pozrieť dekor znova
 
 ### Nadpis sekcie
 Ak ešte váhate
@@ -54,7 +58,7 @@ Pošlite pôdorys alebo rozmery v odpovedi na tento e-mail. Navrhneme rozloženi
 
 ### P. S.
 P. S. · Marián, Orostone
-Ak váhate medzi dvoma dekormi, odpovedzte na tento e-mail a napíšte, ktoré to sú. Poradím, ktorý z nich bude vo veľkej ploche vašej kuchyne fungovať lepšie.
+Ak váhate medzi dvoma dekormi, odpovedzte na tento e-mail a napíšte, ktoré to sú. Poradím, ktorý z nich bude vo veľkej ploche vašej kuchyne fungovať lepšie. Kód KOSIK5 platí aj na dekor, ktorý si nakoniec vyberiete.
 
 ### Podpis značky
 Krása kameňa.
