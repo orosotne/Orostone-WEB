@@ -13,6 +13,7 @@ import { useCookies } from '../context/CookieContext';
 import { trackMetaEvent, savePendingPurchase } from '../hooks/useMetaPixel';
 import { trackGA4BeginCheckout } from '../services/analytics';
 import { SEOHead } from '../components/UI/SEOHead';
+import { CheckoutReminderNotice } from '../components/Cart/CheckoutReminderNotice';
 import { ActionButton, Container, Section, TextLink } from '../components/Design';
 
 // ===========================================
@@ -266,6 +267,10 @@ export const Checkout = () => {
               Nákupom súhlasíte s{' '}
               <Link to="/vop" className="font-medium text-brand-dark underline underline-offset-4">VOP</Link>.
             </p>
+            <CheckoutReminderNotice
+              className="mt-2 text-center text-[0.78rem] font-normal leading-relaxed text-brand-muted"
+              linkClassName="font-medium text-brand-dark underline underline-offset-4"
+            />
 
             {/* Trust badges */}
             <ul className="mt-6 space-y-3 border-t border-brand-dark/10 pt-6 text-[0.88rem] font-normal">

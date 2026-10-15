@@ -10,6 +10,7 @@ import { trackMetaEvent, savePendingPurchase } from '../../hooks/useMetaPixel';
 import { trackGA4BeginCheckout } from '../../services/analytics';
 import { ActionButton, chipClass } from '../Design';
 import { useScrollLock } from '../../hooks/useScrollLock';
+import { CheckoutReminderNotice } from './CheckoutReminderNotice';
 import { FADE, SPRING_SHEET, projectMomentum } from '../../lib/motion';
 
 const INSTALLATION_STORAGE_KEY = 'orostone_installation_data';
@@ -461,7 +462,7 @@ export const CartDrawer: React.FC = () => {
                       transition={{ duration: 0.25, ease: 'easeInOut' }}
                       className="overflow-hidden"
                     >
-                      <div className="space-y-4 px-6 pb-3 pt-2">
+                      <div className="max-h-[35svh] space-y-4 overflow-y-auto overscroll-contain px-6 pb-3 pt-2">
                         {/* Product subtotal (shown when both products and samples exist) */}
                         {productItems.length > 0 && sampleItems.length > 0 && (
                           <div className="flex justify-between text-[0.9rem]">
@@ -594,6 +595,11 @@ export const CartDrawer: React.FC = () => {
                       </>
                     )}
                   </button>
+                  <CheckoutReminderNotice
+                    className={`${SMALL_PRINT} text-center`}
+                    linkClassName="font-medium text-brand-dark underline underline-offset-4"
+                    onNavigate={closeCart}
+                  />
                 </div>
               </div>
             )}
