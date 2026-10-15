@@ -159,9 +159,9 @@ Skratky: N = `marketing/newsletter`, B = `N/nastroje/build_emails.py`, PB = play
 
 | Automatizácia | Zdroj spúšťača | Je v Klaviyu dnes | Čo blokuje | Čo sa dá urobiť hneď |
 |---|---|---|---|---|
-| A2 Vzorky | Shopify Fulfilled Order Y4VvMe | áno, od 14. 10. (4 udalosti) | PR na dynamický blok v 10; rozhodnutia o súhlase a synchronizácii odberateľov | nahrať 05 a 11; PR pre 10 |
+| A2 Vzorky | Shopify Fulfilled Order Y4VvMe | áno, od 14. 10. (4 udalosti) | nič | **live od 14. 10. 18:54 UTC (flow Tp45w8)** |
 | A7 Reaktivácia | segment VGyNMu (Opened TqZ5Tp, Clicked VdqXpS) | áno | nič | **live od 14. 10. 11:50 UTC (flow R5jtdq)** |
-| A4 Opustený košík | Shopify Checkout Started TR4G9D | áno (13 udalostí) | PR na 15 a 16 (URL košíka, text o doprave); vypnutie Shopify e-mailu; súhlas | PR pre 15 a 16 spolu s 10 |
+| A4 Opustený košík | Shopify Checkout Started TR4G9D | áno (13 udalostí, žiadna skutočne opustená) | Martin 14. 10.: e-mail o opustenej pokladni posiela Shopify všetkým zákazníkom, aj bez súhlasu (zásady: PR #144), A4 sa nespúšťa. Do 14. 10. Shopify neposlal ani jeden (0 z 3, pozri A4 › 4) | nič, flow nevytvorený |
 | A3 Dopyt → ponuka | CRM, fáza „Finálna ponuka odoslaná“ | nie | rozhodnutie Klaviyo vs. CRM; CRM kód; nový kľúč | nič |
 | A5 Po realizácii | CRM, montáž so stavom `dokoncene` | nie | CRM kód; fotky pre 08; súhlas | nič |
 | A8 B2B | neexistuje | nie | model súhlasu a zdroj kontaktov | nič |
@@ -176,7 +176,7 @@ Playbook radí ako prvé A1, A2, A3 a A5 (PB:1105). A3 a A5 sú zablokované, A2
    - Prví odberatelia dosiahnu 90 dní vo VSrLFs okolo 8. 1. 2027 (prenos 10. 10. 2026).
    - Segmentový flow nepridá ľudí, ktorí už v segmente sú, preto musí byť naživo pred týmto dátumom.
    - Ak Martin o 24 rozhodne skôr, než sa zmerguje PR pre 10, A7 sa môže postaviť skôr než A2. Na priorite to nič nemení.
-3. **A4** po merge 15 a 16 a po vypnutí vlastného e-mailu Shopify.
+3. **A4** sa nespúšťa (Martin 14. 10.): pripomenutie posiela Shopify všetkým zákazníkom (PR #144). Ak by sa A4 niekedy spúšťal, najprv merge 15 a 16 a vypnutie e-mailu Shopify.
 4. **A3 a A5** po rozhodnutí, či pôjdu z Klaviya (CRM udalosti cez Create Event API), alebo z CRM ako schvaľované koncepty v `lead_drafts`, rovnako ako e-mail 34.
    - **Odporúčanie pre 08:** z CRM so schválením, lebo potrebuje fotky konkrétnej montáže.
    - **A3 tiež skôr z CRM:** odpovede sa naviažu na lead, uplatní sa brána `inquiryQuestionGate`, e-mail 14 sa prekrýva so 34 a väčšina dopytov nemá marketingový súhlas.
@@ -245,6 +245,15 @@ Poznámky k dynamickým dátam v 10 (a voliteľne v 05):
 UTM, návrh: `utm_campaign=vzorky`, `utm_content=05-vzorka-doma`, `10-vzorka-velka-plocha`, `11-vzorka-marian`.
 
 ### 4. Draft vs. live a schválenia
+- **Naživo od 14. 10. 2026 18:54 UTC (Martin dal OK; postavila session newsletter):** flow **Tp45w8** „Vzorky (A2) – po odoslaní platenej vzorky“.
+  - Spúšťač: Fulfilled Order Y4VvMe, filter `Items` (zoznam) obsahuje „Vzorky Orostone“ (zodpovedá 4 zo 4 objednávok vzoriek, 0 z 9 objednávok platní).
+  - Filter profilu: e-mail subscribed, nie je v segmente U2XF6B, nie je v zozname TKAHuh. Re-entry 30 dní.
+  - Kroky: 4 d do 09:00 → 05 (správa QXB9p2, šablóna UysUpY, klon TzfAiG) → 5 d do 09:00 → 10 (TVrRMm / XwhCNj, klon VwN39Y) → 7 d do 09:00 → 11 (V6QGFd / WTgAbG, klon Sze5Hr). Časové pásmo profilu.
+  - Každá správa: Š, smart sending zapnutý, transactional false, UTM `klaviyo / email / vzorky / NN-slug`, preview_text = preheader šablóny.
+  - Šablóna 05 Vfw2VY mala preklep „hrček“ (4×); nahratá znova z main ako TzfAiG a overená. 10 a 11 majú text zhodný s main, výplň preheadera je o pár neviditeľných znakov kratšia.
+  - Rozhodnutia Martina 14. 10.: 11 ide všetkým (bez podmienky „neposlal dopyt“), prekryv s uvítacou sériou sa prijíma.
+  - Overené renderom: 10 vyplní dekor, fotku platne a odkaz z prvej vzorky objednávky; pri 1 vzorke ostane prázdny odsek (16 px medzera).
+  - Prvá reálna udalosť ukáže, či flow v ostrej správe vidí `event.extra.line_items.0.product.properties` rovnako ako historické udalosti. Skontrolovať pri prvej odoslanej 10.
 - **V Klaviyu hneď (nič neodíde):** nahrať 05 a 11 ako šablóny.
 - **Flow:** vytvoriť až vtedy, keď sú všetky tri správy finálne (10 po merge), alebo keď Martin písomne rozhodne, že A2 pôjde natrvalo bez 10. Krok sa cez API dodatočne pridať nedá.
 - **V repozitári hneď:** dynamický blok v 10, voliteľne aj v 05. Ide cez B, Codex a merge, spolu s 15 a 16.
@@ -375,7 +384,7 @@ Filtre a ukončenie:
 - **Súhlas: povinný.** Meta e-mailu 15 hovorí „Posielať len kontaktom so súhlasom s e-mailovým marketingom“ (B:1386). Kým je synchronizácia odberateľov vypnutá, dostanú 15 a 16 len ľudia prihlásení v Klaviyu.
 - **Re-entry:** `reentry_criteria` {duration: 30, unit: day}.
 - **Smart sending pri 15:** nastaviť výslovne a zvážiť vypnutie. Okno 16 h (napríklad po kampani) môže 1-hodinový e-mail preskočiť.
-- **Shopify e-mail:** vypnúť vlastný e-mail Shopify o opustenom checkoute (Martin), inak príde zákazníkovi dvakrát.
+- **Shopify e-mail:** od 14. 10. ostáva zapnutý pre všetkých zákazníkov (rozhodnutie Martina, zásady PR #144). Ak by sa A4 niekedy spúšťal, e-mail Shopify treba vypnúť, inak príde zákazníkovi dvakrát.
 - **Medzera pri bezplatnej vzorke:** kto opustí checkout a potom si objedná bezplatnú vzorku cez #vzorka, Placed Order nevznikne a dostane 15 aj 16. Buď to prijať, alebo neskôr pridať CRM signál „Vzorka objednaná“. Rozhodne Martin.
 
 ### 3. Šablóny, odosielateľ, predmet, preheader
@@ -388,9 +397,17 @@ Filtre a ukončenie:
 UTM, návrh: `utm_campaign=opusteny-kosik`.
 
 ### 4. Draft vs. live a schválenia
+- **Rozhodnutie Martina 14. 10. 2026:** e-mail o opustenej pokladni nechať na Shopify, A4 sa nespúšťa a flow sa nevytvára. Šablóny 15 (R8WGMM) a 16 (RjSdCb) sú v Klaviyu pripravené.
+  - **Overené 14. 10. (Shopify Admin API, len čítanie):** Shopify eviduje 3 opustené pokladne (27. 9. a dvakrát 2. 10. 2026, 2 zákazníci, košík s platňou, ani jeden neskôr neobjednal). Pri žiadnej e-mail neodišiel (`email_state` not_sent, `emailSentAt` prázdne). Obaja zákazníci sú v Shopify bez súhlasu s e-mailovým marketingom.
+  - Samotné nastavenie automatizácie API neukáže. Podľa pomocníka Shopify ide e-mail predvolene len zákazníkom so súhlasom s e-mailovým marketingom; druhá možnosť je, že je automatizácia vypnutá. Overí Martin v Shopify admin › Apps › Messaging › Automations (staršia verzia: „Abandoned checkout emails by Shopify“ › Edit settings › Send to).
+  - **Rozhodnutie Martina 14. 10. 2026 (večer):** pripomenutie zo Shopify pôjde všetkým zákazníkom, ktorí v pokladni zadajú e-mail, aj bez súhlasu s e-mailovým marketingom. Martin prevzal zodpovednosť za právne riziko. Zásady a upozornenie pri tlačidlách do pokladne upravuje PR #144 (právny základ čl. 6 ods. 1 písm. f) GDPR v spojení s § 116 ods. 15 zákona č. 452/2021 Z. z., kontrolný log Kolo 4). Výklad tejto výnimky pre nákup nedokončený v pokladni je sporný.
+  - Segment U2XF6B tu nerozhoduje: pripomenutie sa neopiera o súhlas, takže ho dostanú aj zákazníci s neplatným predvyplneným súhlasom, rovnako ako ostatní.
+  - **Poradie:** (1) merge a nasadenie PR #144, (2) Martin v Shopify admin › Apps › Messaging › Automations nastaví príjemcov na všetkých zákazníkov a jeden e-mail, (3) e-mail po slovensky, len tovar z pokladne, bez zľavy a iného tovaru, s odkazom na odhlásenie a so samostatnou vetou o práve namietať, (4) test na vlastnej adrese vrátane odhlásenia. Klaviyo A4 súčasne nespúšťať, inak príde pripomenutie dvakrát.
+  - Odhlásenie z Klaviya sa do Shopify neprenáša (synchronizácia je vypnutá), preto kto sa odhlási z newslettera, pripomenutie zo Shopify môže dostať. Zásady to v čl. 8 uvádzajú.
+  - Pred prípadným spustením: overiť na skutočne opustenej pokladni, že `responsive_checkout_url` vedie na obnovenie košíka (všetkých 13 historických udalostí skončilo objednávkou a odkaz vedie na stránku objednávky), a zosúladiť „Doprava 2,50 €“ v 15 s kódom VITAJTE.
 - **Spúšťač existuje.** Blokujú zmeny 15 a 16 (URL košíka, text o doprave), ktoré idú cez B, Codex a merge spolu s 10.
 - **Flow** vytvoriť až s finálnymi 15 a 16.
-- **Martin:** vypnutie e-mailu Shopify, rozhodnutie o súhlase a o synchronizácii odberateľov, spustenie naživo.
+- **Martin (len ak by sa A4 spúšťal):** vypnutie e-mailu Shopify, rozhodnutie o súhlase a o synchronizácii odberateľov, spustenie naživo.
 - **Súhlas príjemcov:** len kontakty s marketingovým súhlasom, bez segmentu U2XF6B.
 
 ### 5. Pasce
@@ -670,7 +687,7 @@ UTM, návrh: `utm_campaign=b2b`.
 3. **Mapovanie revenue** ukazuje na Wix TSzMKT. Máme ho prepnúť na Shopify Uu5JLg?
 4. **Plán Klaviya:** je to free, alebo platený Email s 5 000 e-mailmi?
 5. **Súhlas pri A2, A4 a A5:**
-   - Smú tieto e-maily ísť aj ľuďom bez marketingového súhlasu? Dovtedy majú všetky drafty súhlasový filter.
+   - Smú tieto e-maily ísť aj ľuďom bez marketingového súhlasu? Dovtedy majú všetky drafty súhlasový filter. **Rozhodnuté 14. 10.:** A2 len so súhlasom (flow Tp45w8); pripomenutie nedokončeného nákupu zo Shopify aj bez súhlasu (PR #144).
    - Zásady upravuje PR #140 (session newsletter), znenie schvaľuje Martin.
 6. **A2:**
    - Len platené vzorky, alebo aj bezplatné? Bezplatné potrebujú v CRM nový stav „Vzorka odoslaná“.
@@ -680,7 +697,7 @@ UTM, návrh: `utm_campaign=b2b`.
    - Vzorky z košíka platní A2 nepokryje. Vadí to?
 7. **A2 a uvítacia séria:** má nový odberateľ v RdLKj8, ktorý si objedná vzorku, dostať aj A2?
 8. **A4:**
-   - Vypnúť vlastný e-mail Shopify o opustenom checkoute?
+   - Vypnúť vlastný e-mail Shopify o opustenom checkoute? **Rozhodnuté 14. 10.:** nie, Shopify ho posiela všetkým zákazníkom (PR #144), A4 sa nespúšťa.
    - Ako má 15 hovoriť o doprave vzhľadom na kód VITAJTE?
    - Prijímame medzeru pri bezplatnej vzorke (15 a 16 môžu prísť aj tomu, kto si ju objednal cez #vzorka)?
 9. **A3:** rozhodnuté 14. 10.: z CRM so schválením (ako e-mail 34).
