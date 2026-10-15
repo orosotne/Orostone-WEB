@@ -227,10 +227,10 @@ const FooterComponent: React.FC<FooterProps> = ({ categories = [], isProductDeta
             <span className="text-brand-light group-hover:underline group-hover:underline-offset-4">SNP 113/1, 956 18 Bošany</span>
             <span className="text-[0.8rem] text-brand-light/60">Showroom — tu nás nájdete</span>
           </a>
-          {/* Zámerne bez odkazu na mapu — klienti si sídlo mýlili so showroomom. */}
+          {/* Celé platne sú vystavené v showroome v Bošanoch. */}
           <div className="grid gap-0.5">
             <span className="text-brand-light/60">Landererova 8, 811 09 Bratislava</span>
-            <span className="text-[0.8rem] text-brand-light/45">Sídlo a fakturačná adresa, nie showroom</span>
+            <span className="text-[0.8rem] text-brand-light/45">Obchodné kancelárie a sídlo spoločnosti</span>
           </div>
         </div>
       </Container>
