@@ -75,7 +75,7 @@ export const ARTICLE_10: BlogArticle = {
 
 <h2 id="mikro-skrabance-a-opotrebenie">Ako vyzerajú mikroškrabance po rokoch používania?</h2>
 
-<p>Sinterovaný kameň je extrémne tvrdý materiál (7 – 8 na Mohsovej stupnici). Bežné kuchynské nože ho nepoškriabu. Ale mikroškrabance – tie neviditeľné, vláskové stopy, ktoré vznikajú posúvaním tanierov, hrncov a príborov – sú nevyhnutnou súčasťou života každej kuchynskej dosky. A tu je kľúčový rozdiel medzi povrchmi.</p>
+<p>Sinterovaný kameň je extrémne tvrdý materiál (7+ na Mohsovej stupnici). Bežné kuchynské nože ho nepoškriabu. Ale mikroškrabance – tie neviditeľné, vláskové stopy, ktoré vznikajú posúvaním tanierov, hrncov a príborov – sú nevyhnutnou súčasťou života každej kuchynskej dosky. A tu je kľúčový rozdiel medzi povrchmi.</p>
 
 <h3>Lesklý povrch: zrkadlo, ktoré zradí každý škrabanec</h3>
 <p>Lesklý povrch funguje ako zrkadlo. Keď svetlo dopadne na dokonale hladkú plochu, odráža sa rovnomerne a vytvára ten charakteristický lesk. Lenže <strong class="gold">aj najmenší mikroškrabanec naruší túto rovnomernosť</strong>. Svetlo sa na mieste škrabanca odrazí pod iným uhlom a škrabanec je okamžite viditeľný – najmä pri bočnom osvetlení.</p>
@@ -246,7 +246,7 @@ export const ARTICLE_10: BlogArticle = {
       },
       {
         question: 'Ako dlho vydrží lesk na lesklom sinterovanom kameni?',
-        answer: 'Sinterovaný kameň je tvrdší ako väčšina materiálov, s ktorými prichádza do kontaktu (Mohs 7 – 8), takže sa fyzicky neošúcha. Ale mikroškrabance z posúvania hrncov a tanierov postupne vytvárajú pavučinový efekt, ktorý znižuje intenzitu lesku. Pri bežnom používaní sa prvé zmeny objavia po 1 – 2 rokoch, výraznejšie po 3 – 5 rokoch.'
+        answer: 'Sinterovaný kameň je tvrdší ako väčšina materiálov, s ktorými prichádza do kontaktu (Mohs 7+), takže sa fyzicky neošúcha. Ale mikroškrabance z posúvania hrncov a tanierov postupne vytvárajú pavučinový efekt, ktorý znižuje intenzitu lesku. Pri bežnom používaní sa prvé zmeny objavia po 1 – 2 rokoch, výraznejšie po 3 – 5 rokoch.'
       },
       {
         question: 'Dá sa lesklý povrch opätovne vyleštiť?',
@@ -335,7 +335,7 @@ export const ARTICLE_10: BlogArticle = {
 
 <h2 id="micro-scratches-and-wear">What do micro-scratches look like after years of use?</h2>
 
-<p>Sintered stone is an extremely hard material (7–8 on the Mohs scale). Regular kitchen knives can't scratch it. But micro-scratches — those invisible, hairline marks that appear from sliding plates, pots, and cutlery — are an inevitable part of every kitchen countertop's life. And here lies the critical difference between finishes.</p>
+<p>Sintered stone is an extremely hard material (7+ on the Mohs scale). Regular kitchen knives can't scratch it. But micro-scratches — those invisible, hairline marks that appear from sliding plates, pots, and cutlery — are an inevitable part of every kitchen countertop's life. And here lies the critical difference between finishes.</p>
 
 <h3>Polished: a mirror that betrays every scratch</h3>
 <p>A polished surface functions like a mirror. When light hits a perfectly smooth surface, it reflects uniformly, creating that characteristic shine. But <strong class="gold">even the smallest micro-scratch disrupts this uniformity</strong>. Light reflects at a different angle at the scratch point, making it immediately visible — especially under side lighting.</p>
@@ -506,7 +506,7 @@ export const ARTICLE_10: BlogArticle = {
       },
       {
         question: 'How long does the shine last on polished sintered stone?',
-        answer: 'Sintered stone is harder than most materials it comes in contact with (Mohs 7–8), so it doesn\'t physically wear down. However, micro-scratches from sliding pots and plates gradually create a spider web effect that reduces shine intensity. With normal use, first changes appear after 1–2 years, becoming more noticeable after 3–5 years.'
+        answer: 'Sintered stone is harder than most materials it comes in contact with (Mohs 7+), so it doesn\'t physically wear down. However, micro-scratches from sliding pots and plates gradually create a spider web effect that reduces shine intensity. With normal use, first changes appear after 1–2 years, becoming more noticeable after 3–5 years.'
       },
       {
         question: 'Can a polished surface be re-polished?',

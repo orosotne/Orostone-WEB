@@ -287,7 +287,7 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Čo ak spadne hrniec na hranu dosky?',
-        answer: 'Pri zaoblenom profile (half-bullnose, bevel) je riziko nízke – sinterovaný kameň má tvrdosť 6 – 7 na Mohsovej stupnici. Pri ostrej 90° hrane môže vzniknúť drobný odštiepok. Takéto poškodenie vie partnerský kamenár opraviť epoxidovým tmelom vo farbe dosky priamo na mieste.',
+        answer: 'Pri zaoblenom profile (half-bullnose, bevel) je riziko nízke – sinterovaný kameň má tvrdosť 7+ na Mohsovej stupnici. Pri ostrej 90° hrane môže vzniknúť drobný odštiepok. Takéto poškodenie vie partnerský kamenár opraviť epoxidovým tmelom vo farbe dosky priamo na mieste.',
       },
       {
         question: 'Dá sa chipovanie opraviť?',
@@ -609,7 +609,7 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'What if a pot falls on the countertop edge?',
-        answer: 'With a rounded profile (half-bullnose, bevel), the risk is low — sintered stone has a Mohs hardness of 6–7. With a sharp 90° edge, a minor chip may occur. The partner stonemason can repair such damage with color-matched epoxy directly on-site.',
+        answer: 'With a rounded profile (half-bullnose, bevel), the risk is low — sintered stone has a Mohs hardness of 7+. With a sharp 90° edge, a minor chip may occur. The partner stonemason can repair such damage with color-matched epoxy directly on-site.',
       },
       {
         question: 'Can chipping be repaired?',

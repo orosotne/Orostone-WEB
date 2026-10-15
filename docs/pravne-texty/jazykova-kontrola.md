@@ -155,3 +155,16 @@ Vecná zmena z rozhodnutia majiteľa z 15. 10. 2026. Pripomenutie nedokončenéh
 | # | Dokument | Pôvodný text | Nový text | Typ | Stav |
 |---|---|---|---|---|---|
 | 1 | Ochrana súkromia, čl. 2 – Pripomenutie nedokončeného nákupu | … a s odkazom na dokončenie nákupu. | … a s odkazom na dokončenie nákupu. E-mail môže obsahovať aj zľavový kód na dokončenie tohto nákupu. | význam | zapracované, majiteľ rozhodol 15. 10. 2026 |
+
+## Kolo 7 – zásady: pripomenutie prezeraného dekoru cez Klaviyo (15. 10. 2026)
+
+Vecná zmena zo zadania majiteľa z 15. 10. 2026 („Convert abandoned product browse“). Odberateľom newslettera, ktorí si na webe prezrú dekor a nevložia ho do košíka, pošle služba Klaviyo na druhý deň pripomenutie prezeraného dekoru s ponukou vzorky zadarmo (bez zľavy, najviac raz za 30 dní). Ide o ďalší automatický e-mail v rámci súhlasu s e-mailovým marketingom (Kolo 3) a rovnakého technického riešenia ako pripomenutie košíka (Kolo 5): skript Klaviyo sa načíta len pri povolených marketingových cookies a len pre odberateľa, ktorý prišiel z odkazu v našom e-maile; na detaile produktu web pošle udalosť Viewed Product (`pages/ShopProductDetail.tsx`). Nová je teda len evidencia prezretých dekorov. Majiteľ znenie potvrdil 15. 10. 2026 („ano potvrdzujem“). Po Codex review (P1) udalosť Viewed Product čaká aj na súhlas udelený až na stránke dekoru.
+
+| # | Dokument | Pôvodný text | Nový text | Typ | Stav |
+|---|---|---|---|---|---|
+| 1 | Ochrana súkromia, čl. 2 – Marketing | … keď si objednáte vzorku, keď si ako odberateľ newslettera vložíte dekor do košíka e-shopu … | … keď si objednáte vzorku, keď si ako odberateľ newslettera prezriete dekor v e-shope a nevložíte ho do košíka (pripomenutie prezeraného dekoru), keď si ako odberateľ newslettera vložíte dekor do košíka e-shopu … | význam | zapracované, majiteľ potvrdil 15. 10. 2026 |
+| 2 | Ochrana súkromia, čl. 4 – Klaviyo | … a zaznamená, že si vložil dekor do košíka; Klaviyo mu potom pošle pripomenutie košíka. | … a zaznamená, ktoré dekory si prezrel a ktorý si vložil do košíka; Klaviyo mu potom pošle pripomenutie prezeraného dekoru alebo košíka. | význam | zapracované, majiteľ potvrdil 15. 10. 2026 |
+| 3 | Ochrana súkromia, čl. 9 – Marketingové cookies | … a pripomenutie košíka. Aktivujú sa iba po vašom súhlase. | … a pripomenutie prezeraného dekoru a košíka. Aktivujú sa iba po vašom súhlase. | význam | zapracované, majiteľ potvrdil 15. 10. 2026 |
+| 4 | Cookies – marketingové cookies | … ktorý prišiel z nášho e-mailu (pripomenutie košíka). | … ktorý prišiel z nášho e-mailu (pripomenutie prezeraného dekoru a košíka). | význam | zapracované, majiteľ potvrdil 15. 10. 2026 |
+| 5 | Cookies – tabuľka cookies, `__kla_id` | … a záznam vloženia dekoru do košíka pre pripomenutie košíka (len so súhlasom) | … a záznam prezretých dekorov a vloženia dekoru do košíka pre pripomenutie prezeraného dekoru a košíka (len so súhlasom) | význam | zapracované, majiteľ potvrdil 15. 10. 2026 |
+| 6 | Cookies – tretie strany | Klaviyo – … rozpoznanie odberateľa newslettera na webe pre pripomenutie košíka | Klaviyo – … rozpoznanie odberateľa newslettera na webe pre pripomenutie prezeraného dekoru a košíka | význam | zapracované, majiteľ potvrdil 15. 10. 2026 |
