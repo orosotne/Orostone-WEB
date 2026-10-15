@@ -28,7 +28,7 @@ Všetky tri stránky na produkcii vracajú 200 a ich titulky zodpovedajú dekoro
 - Shopify ho pustí raz na zákazníka. To bráni opakovanému použitiu, nie tomu, aby ho použil ktokoľvek bez prihlásenia.
 - Reklama má tak jeden ďalší krok: otvoriť dekor, prihlásiť sa v popupe. Kód sa ukáže v popupe a novému odberateľovi príde e-mailom spolu s VITAJTE.
 
-**Čo reklama nesmie sľúbiť:** zľava platí raz, na platne (12 dekorov), nie na vzorky ani dopravu. Nekombinuje sa s inými zľavami vrátane automatickej 20 % pri 3 a viac platniach, VITAJTE ani KOSIK5. Platí len pri objednávke v e-shope orostone.sk, nie pri objednávke telefonicky ani na cenovú ponuku. Preto píšeme „zľava 5 % na platne“, nikdy „5 % navyše“ ani „na celý nákup“. Podmienky ukáže popup B (krátke znenie z konštanty `SLAB_CODE_TERMS` v `lib/discountPopup.ts`) a uvítací e-mail.
+**Čo reklama nesmie sľúbiť:** zľava platí raz, na platne (12 dekorov), nie na vzorky ani dopravu. Nekombinuje sa s inými zľavami vrátane automatickej zľavy 20 % pri objednávke od troch platní, VITAJTE ani KOSIK5. Platí len pri objednávke v e-shope orostone.sk, nie pri objednávke telefonicky ani na cenovú ponuku. Preto píšeme „zľava 5 % na platne“, nikdy „5 % navyše“ ani „na celý nákup“. Podmienky ukáže popup B (krátke znenie z konštanty `SLAB_CODE_TERMS` v `lib/discountPopup.ts`) a uvítací e-mail.
 
 ## 2. Publikum
 
