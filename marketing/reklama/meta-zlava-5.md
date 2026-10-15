@@ -1,6 +1,6 @@
 # Meta reklama: zľava 5 % na platne (retargeting)
 
-Podklad na nastavenie reklamy na Facebooku a Instagrame. Stav k 15. 10. 2026: **nič nie je spustené ani vytvorené v Ads Manageri.** Kampaň spúšťa len Martin a rozpočet určuje on. Pred spustením musí Martin rozhodnúť aj o súhlase s cookies (bod 1 v časti Na rozhodnutie pre Martina).
+Podklad na nastavenie reklamy na Facebooku a Instagrame. Stav k 15. 10. 2026: **nič nie je spustené ani vytvorené v Ads Manageri.** Kampaň spúšťa len Martin a rozpočet určuje on. O načítaní Pixelu bez odpovede na lištu cookies Martin rozhodol 15. 10. 2026 (časť Rozhodnuté).
 
 Súvisí s rozhodnutiami Martina z 15. 10. 2026: popup B „5 % na váš kameň“ (kód WELCOME5) a uvítací e-mail 01, v ktorom každý nový odberateľ webu dostane oba kódy, VITAJTE aj WELCOME5. Správanie popupu B je opísané podľa vetvy `claude/popup-zlava5`.
 
@@ -21,7 +21,7 @@ Súvisí s rozhodnutiami Martina z 15. 10. 2026: popup B „5 % na váš kameň�
 | B | `https://orostone.sk/produkt/roman-travertine?ponuka=zlava5&utm_source=facebook&utm_medium=paid_social&utm_campaign=retargeting-zlava5&utm_content=b-roman-travertine` |
 | C | `https://orostone.sk/produkt/wild-forest?ponuka=zlava5&utm_source=facebook&utm_medium=paid_social&utm_campaign=retargeting-zlava5&utm_content=c-wild-forest` |
 
-Všetky tri stránky na produkcii existujú a ich titulky zodpovedajú dekorom (overené 15. 10. 2026; samotná odpoveď 200 nestačí, web ju vráti aj pre neexistujúci dekor). `utm_medium=paid_social` zaradí GA4 návštevy do kanála Paid Social.
+Všetky tri stránky na produkcii vracajú 200 a ich titulky zodpovedajú dekorom (overené 15. 10. 2026). Neexistujúci dekor od PR #159 vracia 404. `utm_medium=paid_social` zaradí GA4 návštevy do kanála Paid Social.
 
 **Prečo kód v reklame nie je:**
 - WELCOME5 je odmena za prihlásenie na newsletter. Vytlačený v reklame by sa šíril bez prihlásenia (zdieľanie, zľavové weby) a reklama by prestala privádzať odberateľov.
@@ -43,12 +43,7 @@ Všetky tri stránky na produkcii existujú a ich titulky zodpovedajú dekorom (
 | **Rozšírenie publika** | Vypnuté. Advantage+ publikum by reklamu ukázalo aj mimo návštevníkov webu, preto použiť pôvodné možnosti publika. |
 
 Na čo myslieť:
-- **Pixel a GA4 sa dnes načítajú aj bez odpovede na lištu cookies.** `context/CookieContext.tsx` má predvolené `analytics: true` a `marketing: true`, kým návštevník na lištu neodpovie, a `hooks/useMetaPixel.ts` kontroluje len `preferences.marketing`. Pixel preto pošle `PageView` asi 5 s po načítaní alebo pri prvej interakcii každému, kto cookies neodmietol. GA4 sa správa rovnako (`hooks/useAnalytics.ts`). Martin to ponechal (PR #148: „Predvolené nastavenie cookies sa nemení (rozhodnutie majiteľa, znova potvrdené 15. 10.)“). Dôsledky pre túto kampaň:
-  - publikum „Web 30 dní“ bude obsahovať aj návštevníkov, ktorí na lištu nikdy neodpovedali;
-  - zásady ochrany súkromia píšu, že sa „Meta Pixel aktivuje iba po vašom súhlase s marketingovými cookies“ (`pages/PrivacyPolicy.tsx`);
-  - podmienky Mety pre Business Tools vyžadujú pri návštevníkoch z EÚ právny základ, teda súhlas.
-
-  Rozhoduje Martin, bod 1 nižšie.
+- **Pixel a GA4 sa dnes načítajú aj bez odpovede na lištu cookies.** `context/CookieContext.tsx` má predvolené `analytics: true` a `marketing: true`, kým návštevník na lištu neodpovie, a `hooks/useMetaPixel.ts` kontroluje len `preferences.marketing`. Pixel preto pošle `PageView` asi 5 s po načítaní alebo pri prvej interakcii každému, kto cookies neodmietol. GA4 sa správa rovnako (`hooks/useAnalytics.ts`). Martin to ponechal (PR #148: „Predvolené nastavenie cookies sa nemení (rozhodnutie majiteľa, znova potvrdené 15. 10.)“) a 15. 10. 2026 rozhodol spustiť kampaň s týmto nastavením (časť Rozhodnuté). Publikum „Web 30 dní“ preto obsahuje aj návštevníkov, ktorí na lištu neodpovedali.
 - **Veľkosť publika** ukáže Ads Manager po vytvorení. Bude menšia ako návštevnosť: chýbajú tí, čo cookies odmietli alebo odišli skôr, než sa Pixel načítal, a Meta do publík z webu nezaradí ľudí v EÚ, ktorí si zvolili menej prispôsobené reklamy. Pod 100 ľudí Meta reklamu nedoručí. Pri publiku pod 1 000 ľudí treba rozhodnúť, či okno predĺžiť na 60 dní.
 - **Prečo `value` > 100 pri vylúčení kupujúcich:** `Purchase` posiela web zo stránky poďakovania (`pages/ThankYou.tsx`) pri platniach aj pri vzorkách. Objednávka vzoriek ho pošle s hodnotou najviac 12,30 € (najviac 3 vzorky) a jej `content_ids` sú handle dekorov, rovnaké ako pri platniach, takže podľa nich sa nákupy nerozlíšia. Najlacnejšia platňa stojí vyše 1 600 €. S podmienkou `value` > 100 ostanú v publiku kupujúci vzoriek, teda najteplejší záujemcovia o zľavu na platne.
 - **Vylúčenie kupujúcich je neúplné.** Pixel nevidí nákupy tých, čo cookies odmietli. Serverová záloha (`api/shopify-order-webhook.ts`) posiela nákupy len do GA4. Či Shopify posiela `Purchase` aj cez Conversions API (kanál Facebook & Instagram na tom istom Pixeli), treba overiť v Events Manageri; ak áno, skontrolovať aj tam, že nesie `value`.
@@ -114,7 +109,6 @@ Pre Stories aj Reels platí jedna kreatíva navrhnutá podľa prísnejšej zóny
 Celý postup končí uložením konceptu. Zverejniť (Publish) môže len Martin.
 
 **0. Pred spustením musí platiť všetko:**
-- Martin rozhodol bod 1 (súhlas s cookies). Pri možnosti (b) je oprava kódu nasadená.
 - Popup B je na produkcii a reaguje na `?ponuka=zlava5`. V tej istej návšteve sa nezobrazí popup A.
 - WELCOME5 je v Shopify aktívny s dohodnutými podmienkami.
 - Uvítací e-mail 01 s oboma kódmi beží v Klaviyu a záložné odoslanie (`send-newsletter-welcome`) je nasadené z `main`. Predmet oboch: „Vitajte v Orostone. Posielame vaše dva uvítacie kódy“.
@@ -124,7 +118,7 @@ Celý postup končí uložením konceptu. Zverejniť (Publish) môže len Martin
 - Test na mobile, vo vstavanom prehliadači Instagramu aj Facebooku: lišta cookies, po 3 s popup B, prihlásenie, kód na obrazovke, e-mail s oboma kódmi, WELCOME5 v pokladni pri jednej platni. Potom s e-mailom, ktorý už odoberá: kód na obrazovke a veta, že nový e-mail nepríde.
 
 **1. Publiká** (Publiká → Vytvoriť publikum → Vlastné publikum → Webová stránka, zdroj Pixel `712209907542673`):
-- „Web 30 dní“: všetci návštevníci webovej stránky, 30 dní. Pri možnosti (b) z bodu 1 ho vytvoriť v deň nasadenia opravy. Meta pri vytvorení doplní spätne aj návštevy z celého okna, preto bude publikum obsahovať len návštevníkov so súhlasom až 30 dní po nasadení.
+- „Web 30 dní“: všetci návštevníci webovej stránky, 30 dní.
 - „Nákup nad 100 € 180 dní“: udalosť `Purchase`, spresniť parametrom `value` väčší ako 100, 180 dní (prečo, pozri časť 2).
 - Voliteľne „Tím Orostone“: `PageView` spresnené parametrom `internal_traffic`.
 - „Newsletter – web (Klaviyo)“ len po rozhodnutí podľa časti 2.
@@ -159,7 +153,7 @@ K cieľu Predaj (optimalizácia na odber alebo nákup) sa oplatí vrátiť, keď
 
 - Rozpočet sa odvíja od veľkosti publika, ktorú Ads Manager ukáže až po vytvorení publika: týždenný rozpočet ≈ počet ľudí × cieľová frekvencia × CPM / 1 000.
 - Pri frekvencii 2 za týždeň a CPM 6 € (orientačný odhad, nie údaj z účtu): 1 000 ľudí ≈ 1,70 € denne, 3 000 ľudí ≈ 5 € denne, 6 000 ľudí ≈ 10 € denne.
-- 10 € denne teda až od približne 6 000 ľudí. Pri menšom publiku vyšší rozpočet nezvýši dosah, len frekvenciu nad strop 3 za 7 dní.
+- 10 € denne teda až od približne 6 000 ľudí. Pri publiku pod asi 4 000 ľudí by 10 € denne prekročilo strop 3 za 7 dní; medzi 4 000 a 6 000 ľuďmi vyjde frekvencia nad plánované 2.
 - Začať podľa vzorca, po 7 dňoch upraviť podľa skutočnej frekvencie a CPM v Ads Manageri.
 
 ### Frekvencia, obmena, harmonogram
@@ -174,7 +168,7 @@ Nie je súčasťou tohto zadania. Ak by sa Martin rozhodol, treba:
 - **Kampaň Display** s publikom „návštevníci orostone.sk za 30 dní“ v režime Zacielenie, nie Pozorovanie. Performance Max nie je čistý remarketing: publikum berie len ako signál a míňa aj na nových ľudí.
 - **Zber publika:** prepojiť GA4 (`G-W3ZPVYZ9HQ`) s Google Ads a zapnúť signály pre personalizovanú reklamu, alebo pridať značku Google Ads do GTM (`GTM-WVQWKLMZ`). Či ju GTM už má, v repozitári nevidno, treba overiť v GTM.
 - **Pozor na GTM:** `index.html` ho načíta na každej stránke 2 s po načítaní alebo pri prvej interakcii, bez ohľadu na súhlas a bez predvoleného stavu súhlasu (`gtag('consent', 'default', …)` nastaví až `hooks/useAnalytics.ts`, neskôr a predvolene „granted“). Značka Google Ads v GTM by sa spustila pred súhlasom. Naživo môže ísť len s kontrolou súhlasu (`ad_storage`, `ad_user_data`) a až keď sa pred načítaním GTM nastaví predvolené „denied“.
-- **Súhlas:** web posiela `ad_storage`, `ad_user_data` a `ad_personalization` podľa marketingových cookies a GA4 načíta podľa analytických (`hooks/useAnalytics.ts`). Oboje je predvolene zapnuté, kým návštevník na lištu neodpovie (časť 2), hoci zásady ochrany súkromia píšu, že sa Google Analytics „aktivuje iba po súhlase“. Platí rovnaké rozhodnutie ako bod 1 nižšie. Remarketing cez Google Ads zásady už uvádzajú.
+- **Súhlas:** web posiela `ad_storage`, `ad_user_data` a `ad_personalization` podľa marketingových cookies a GA4 načíta podľa analytických (`hooks/useAnalytics.ts`). Oboje je predvolene zapnuté, kým návštevník na lištu neodpovie (časť 2), hoci zásady ochrany súkromia píšu, že sa Google Analytics „aktivuje iba po súhlase“. Rozhodnutie z 15. 10. 2026 (časť Rozhodnuté) sa týka Meta Pixelu; o Google Ads by Martin rozhodol zvlášť. Remarketing cez Google Ads zásady už uvádzajú.
 - **Veľkosť:** Display potrebuje aspoň 100 aktívnych používateľov za 30 dní.
 - **Kreatívy:** responzívna obsahová reklama. Obrázky 1200 × 628 a 1200 × 1200, logo 1200 × 1200, krátke nadpisy do 30 znakov, dlhý nadpis a popisy do 90 znakov. Texty prevziať z variantov A–C.
 - **Odkaz:** vstupná stránka s `?ponuka=zlava5`. Atribúciu rieši automatické označovanie (gclid), UTM netreba.
@@ -190,13 +184,14 @@ Nie je súčasťou tohto zadania. Ak by sa Martin rozhodol, treba:
 
 **Výsledok po 14 dňoch:** cena za odberateľa z reklamy = útrata ÷ počet nových profilov so `zdroj_odberu` = `popup_zlava5_reklama` (Klaviyo). Pre kontrolu `sign_up` s `offer_source` = `reklama` v GA4. K tomu objednávky s WELCOME5 a víťazný variant na ďalšiu obmenu.
 
+## Rozhodnuté
+
+**Pixel bez odpovede na lištu cookies (Martin, 15. 10. 2026).** Kampaň ide so súčasným nastavením: Pixel sa načíta aj vtedy, keď návštevník na lištu cookies ešte neodpovedal (časť 2). Veta v zásadách ochrany súkromia „Meta Pixel sa aktivuje iba po vašom súhlase s marketingovými cookies.“ (`pages/PrivacyPolicy.tsx`) ostáva bez zmeny. Riziko berie na seba majiteľ. Martinove slová: „ano chcem aby sa meta pixel nacital aj bez suhlasu, nemen to je to na moje triskko“ a k vete v zásadách „nechaj tak tu vetu nemen“.
+
 ## Na rozhodnutie pre Martina
 
-1. **Súhlas s cookies pred spustením.** Pixel a GA4 sa dnes načítajú, kým návštevník na lištu cookies neodpovie (časť 2), a Martin to ponechal (PR #148). Publikum „Web 30 dní“ preto zahrnie aj ľudí, ktorí na lištu neodpovedali. Zásady ochrany súkromia sľubujú Pixel až po súhlase a podmienky Mety pre Business Tools vyžadujú pri návštevníkoch z EÚ právny základ (súhlas). Možnosti:
-   - (a) spustiť tak, ako je, na zodpovednosť majiteľa;
-   - (b) najprv samostatnou úpravou kódu načítať Pixel až po výslovnom súhlase a publikum vytvoriť od dňa nasadenia (časť 4, bod 1).
-2. Rozpočet podľa veľkosti publika (vzorec v časti 4; 10 € denne až od približne 6 000 ľudí) a dátum spustenia po splnení bodu 0.
-3. Česko áno alebo nie (platne doručujeme len na Slovensku, odporúčam nie).
-4. Vylúčenie odberateľov: doplniť zásady a potom synchronizovať zoznam z Klaviya, alebo udalosť Pixelu pri odbere (zmena webu), alebo zatiaľ bez vylúčenia.
-5. Dve sady reklám (`utm_source` = `facebook` / `instagram`), alebo jedna sada s `{{site_source_name}}` (`fb` / `ig`).
-6. Pri publiku pod 1 000 ľudí predĺžiť okno z 30 na 60 dní.
+1. Rozpočet podľa veľkosti publika (vzorec v časti 4; 10 € denne až od približne 6 000 ľudí) a dátum spustenia po splnení bodu 0.
+2. Česko áno alebo nie (platne doručujeme len na Slovensku, odporúčam nie).
+3. Vylúčenie odberateľov: doplniť zásady a potom synchronizovať zoznam z Klaviya, alebo udalosť Pixelu pri odbere (zmena webu), alebo zatiaľ bez vylúčenia.
+4. Dve sady reklám (`utm_source` = `facebook` / `instagram`), alebo jedna sada s `{{site_source_name}}` (`fb` / `ig`).
+5. Pri publiku pod 1 000 ľudí predĺžiť okno z 30 na 60 dní.
