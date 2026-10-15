@@ -82,6 +82,7 @@ Podrobný zoznam
 | _fbp | Meta | Marketingové | Meta Pixel – meranie konverzií a remarketing (len so súhlasom) | 3 mesiace |
 | _fbc | Meta | Marketingové | Meta Pixel – identifikátor kliknutia z Meta reklamy (len so súhlasom) | 3 mesiace |
 | __kla_id | Klaviyo | Marketingové | Klaviyo – rozpoznanie odberateľa newslettera, ktorý prišiel z odkazu v našom e-maile, a záznam vloženia dekoru do košíka pre pripomenutie košíka (len so súhlasom) | Do 2 rokov; Safari a Firefox platnosť skracujú na dni až týždne |
+| __kla_off | Orostone | Nevyhnutné | cookie – záznam, že ste marketingové cookies odmietli alebo súhlas odvolali, aby Klaviyo na webe nesledovalo; nastaví sa len vtedy, ak už Klaviyo na webe bežalo | 1 rok |
 | _gcl_aw, _gcl_au | Google | Marketingové | Google Ads – uloženie identifikátora kliknutia na reklamu a meranie konverzií | 90 dní |
 
 ## 4. Právny základ

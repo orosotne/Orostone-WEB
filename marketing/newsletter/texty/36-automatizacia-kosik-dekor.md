@@ -1,7 +1,7 @@
 # 36 – Zľava 5 % na dekor vo vašom košíku
 
 - **Typ:** Automatizácia · Košík z webu
-- **Kedy sa posiela:** Na druhý deň o 9:00 po vložení dekoru do košíka na orostone.sk, ak človek nezačal pokladňu ani neobjednal (Klaviyo: Added to Cart z webu)
+- **Kedy sa posiela:** Na druhý deň o 9:00 po vložení dekoru do košíka na orostone.sk, ak človek nezačal pokladňu, neobjednal ani košík nevyprázdnil (Klaviyo: Added to Cart z webu)
 - **Predmet:** Zľava 5 % na dekor vo vašom košíku
 - **Preheader:** 🪨 Kód KOSIK5 platí na celú objednávku. Košík sme vám uložili. K objednávke sa vrátite jedným kliknutím.
 - **Šablóna:** `sablony/36-automatizacia-kosik-dekor.html`
@@ -15,8 +15,8 @@ Zľava 5 % · kód KOSIK5
 Zľava pre odberateľov
 {{ event.AddedItemProductName|default:'Taj Mahal'|title }}
 o 5 % lacnejšie.
-Dekor máte v košíku, ktorý sme vám uložili. S kódom KOSIK5 zaplatíte za celú objednávku o 5 % menej.
-[alt fotky: Zľava 5 % s kódom KOSIK5 na pracovnú dosku zo sinterovaného kameňa Orostone]
+Košík sme vám uložili. Kód KOSIK5 platí na celú objednávku na orostone.sk.
+[alt fotky: Zľava 5 % na celú objednávku s kódom KOSIK5. Vizualizácia kuchyne s dekorom {{ event.AddedItemProductName|default:'Taj Mahal'|title }}]
 Dokončiť so zľavou 5 %
 
 ### Text
@@ -33,14 +33,14 @@ V košíku máte
 
 ### Hlavná fotka (popis pod fotkou)
 [alt fotky: Celá platňa {{ event.AddedItemProductName|default:'Taj Mahal'|title }} vedľa človeka na porovnanie veľkosti]
-● {{ event.AddedItemProductName|default:'Taj Mahal'|title }} · celá platňa 3200 × 1600 mm
+● {{ event.AddedItemProductName|default:'Taj Mahal'|title }} · celá platňa
 
 ### Ponuka
 Váš zľavový kód
-KOSIK5 · 5 % z celej objednávky
-Kód dostávate ako odberateľ noviniek Orostone. Platí na jednu objednávku a odpočíta 5 % z ceny všetkého tovaru v košíku. Tlačidlo otvorí váš uložený košík v pokladni a kód doplní samo; inak ho zadajte do poľa „Zľavový kód“.
-Dokončiť objednávku so zľavou
-Zľava sa počíta z ceny tovaru, nie z dopravy. Ak si chcete dekor najprv overiť na vzorke, kód si nechajte na objednávku platne – platí len raz. Pozrieť dekor znova
+KOSIK5
+Odpočíta 5 % z ceny všetkého tovaru v košíku a platí na jednu objednávku na orostone.sk. Dostávate ho ako odberateľ noviniek Orostone. Tlačidlo otvorí váš uložený košík v pokladni a kód doplní samo; inak ho zadajte do poľa „Zľavový kód“.
+Dokončiť objednávku
+Zľavu uplatníte len pri objednávke na orostone.sk. Ak objednávate po telefóne alebo na základe cenovej ponuky, kód použiť nemôžeme. Zľava sa počíta z ceny tovaru, nie z dopravy. Ak si chcete dekor najprv overiť na vzorke, kód si nechajte na objednávku platne – platí len raz. Pozrieť dekor znova
 
 ### Nadpis sekcie
 Ak ešte váhate
@@ -58,7 +58,7 @@ Pošlite pôdorys alebo rozmery v odpovedi na tento e-mail. Navrhneme rozloženi
 
 ### P. S.
 P. S. · Marián, Orostone
-Ak váhate medzi dvoma dekormi, odpovedzte na tento e-mail a napíšte, ktoré to sú. Poradím, ktorý z nich bude na veľkej ploche vo vašej kuchyni vyzerať lepšie. Kód KOSIK5 platí aj na dekor, ktorý si nakoniec vyberiete.
+Ak váhate medzi dvoma dekormi, odpovedzte na tento e-mail a napíšte, ktoré to sú. Poradím, ktorý z nich bude na veľkej ploche vo vašej kuchyni vyzerať lepšie. Kód KOSIK5 platí aj na dekor, ktorý si nakoniec vyberiete, ak ho objednáte na orostone.sk.
 
 ### Podpis značky
 Krása kameňa.

@@ -35,6 +35,20 @@ function storedMarketingRejected(): boolean {
   }
 }
 
+// While the cookie __kla_off is set, klaviyo.js stops onsite tracking (Klaviyo help, "About
+// cookies in Klaviyo"). Set on a rejection or withdrawal, together with dropping the identifier
+// (host or parent domain); removed again when the visitor allows marketing cookies.
+function setKlaviyoOff(off: boolean): void {
+  if (!off) {
+    document.cookie = '__kla_off=; path=/; max-age=0; SameSite=Lax';
+    return;
+  }
+  document.cookie = '__kla_off=true; path=/; max-age=31536000; SameSite=Lax';
+  const host = window.location.hostname.replace(/^www\./, '');
+  document.cookie = '__kla_id=; path=/; max-age=0';
+  document.cookie = `__kla_id=; path=/; max-age=0; domain=.${host}`;
+}
+
 /**
  * Loads klaviyo.js only when marketing cookies are allowed (same model as the Meta Pixel) and
  * only for visitors Klaviyo can identify: those arriving from our e-mails (`_kx` in the URL) or
@@ -48,11 +62,18 @@ export function useKlaviyo(): void {
   const interacted = useFirstInteraction();
   const loadedRef = useRef(false);
 
-  // Keep trackKlaviyoEvent in step with the visitor's choice; a rejection before the script
-  // loads also drops the events waiting in the queue.
+  // Keep trackKlaviyoEvent in step with the visitor's choice. A rejection before the script loads
+  // drops the events waiting in the queue; a rejection or withdrawal after Klaviyo has run (script
+  // loaded or its cookie present) switches its tracking off and removes the identifier.
   useEffect(() => {
     marketingAllowed = preferences.marketing;
-    if (!preferences.marketing && !loadedRef.current && window._klOnsite) window._klOnsite.length = 0;
+    if (preferences.marketing) {
+      // The first render still has the default `true`; a stored rejection must keep Klaviyo off
+      if (!storedMarketingRejected()) setKlaviyoOff(false);
+      return;
+    }
+    if (!loadedRef.current && window._klOnsite) window._klOnsite.length = 0;
+    if (loadedRef.current || /(^|;\s*)__kla_id=/.test(document.cookie)) setKlaviyoOff(true);
   }, [preferences.marketing]);
 
   useEffect(() => {

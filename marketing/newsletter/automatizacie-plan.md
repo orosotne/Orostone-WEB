@@ -431,10 +431,12 @@ Zadanie Martina 15. 10. 2026: pripomenutie košíka cez Klaviyo (nie Shopify) pr
 
 | Krok | Čas | Šablóna | Podmienka |
 |---|---|---|---|
-| 1 | na druhý deň o 09:00 po Added to Cart (`days=1`, `delay_until_time=09:00`, `timezone=profile`) | 36 | 0× Checkout Started TR4G9D a 0× Placed Order Uu5JLg od vstupu |
+| 1 | na druhý deň o 09:00 po Added to Cart (`days=1`, `delay_until_time=09:00`, `timezone=profile`) | 36 | 0× Checkout Started TR4G9D, 0× Placed Order Uu5JLg a 0× Emptied Cart od vstupu |
 
 - **Filter profilu:** člen zoznamu VSrLFs (odberatelia newslettera z webu), súhlas s e-mailovým marketingom (subscribed), bez segmentu U2XF6B, bez zoznamu TKAHuh (ako A2). Pripomenutie tak nedostane zákazník zo Shopify so súhlasom z pokladne, len odberateľ z webu (odporúčanie session „Orostone – kampane a Klaviyo“, 15. 10.).
-- **Ukončenie:** kto začne pokladňu, vypadne (ďalej ho rieši pripomenutie zo Shopify); kto objedná, vypadne.
+- **Ukončenie:** kto začne pokladňu, vypadne (ďalej ho rieši pripomenutie zo Shopify); kto objedná, vypadne; kto z košíka odstráni poslednú platňu, vypadne (udalosť **Emptied Cart** z webu, `trackCartEmptied` v `CartContext`, pridané po Codex review 15. 10.).
+- **Vzorky:** pridanie vzorky z detailu produktu udalosť Added to Cart neposiela.
+- **Odvolanie súhlasu:** web nastaví cookie `__kla_off` a zmaže `__kla_id`; Klaviyo potom na webe nesleduje (overené v prehliadači 15. 10.).
 - **Re-entry:** 7 dní.
 - **Smart sending:** vypnúť (kampaň v predchádzajúcich 16 h by pripomenutie preskočila).
 - **Časovanie:** Martin 15. 10. zvolil „na druhý deň o 9:00“ (e-mail nikdy neodíde v noci).
@@ -444,7 +446,9 @@ Zadanie Martina 15. 10. 2026: pripomenutie košíka cez Klaviyo (nie Shopify) pr
 
 | Šablóna | Odosielateľ | Predmet | Preheader | Dynamické dáta |
 |---|---|---|---|---|
-| `N/sablony/36-automatizacia-kosik-dekor.html` | Š | Zľava 5 % na dekor vo vašom košíku | 🪨 Kód KOSIK5 platí na celú objednávku. Košík sme vám uložili, dokončíte ho jedným kliknutím. | názov a handle dekoru (fotka `dekor-mockup-<handle>-1040.jpg`, odkaz na dekor), `event.Items` (názov, variant, množstvo), tlačidlo na `event.CheckoutURL` s `&discount=KOSIK5`; bez údajov Taj Mahal |
+| `N/sablony/36-automatizacia-kosik-dekor.html` | Š | Zľava 5 % na dekor vo vašom košíku | 🪨 Kód KOSIK5 platí na celú objednávku. Košík sme vám uložili, dokončíte ho jedným kliknutím. | názov a handle dekoru (banner `kosik-zlava-5-<handle>.jpg` s kuchyňou z detailu produktu a zľavou 5 %, fotka `dekor-mockup-<handle>-1040.jpg`, odkaz na dekor), `event.Items` (názov, variant, množstvo), tlačidlá na `event.CheckoutURL` s `&discount=KOSIK5`; bez údajov Taj Mahal |
+
+**Bannery (Martin 15. 10.):** pre každý z 12 dekorov `public/images/email/kosik-zlava-5-<handle>.jpg` (1040 × 694, do 150 kB): vľavo názov dekoru, „5 % na celú objednávku“ a kód KOSIK5 (Montserrat), vpravo prvá fotka z galérie detailu produktu (záber na celú kuchyňu, popisok „Vizualizácia“). Šablóna a skript sú v Podklady/Orostone/Klaviyo-kosik-zlava; pri novom dekore treba banner doplniť, inak `check_images.py` zlyhá. Zľava platí len pri objednávke na orostone.sk, nie po telefóne ani na základe cenovej ponuky (veta v e-maile).
 
 **Zľava KOSIK5 (zadanie Martina 15. 10.):** kód v Shopify vytvorený 15. 10. 2026 (`gid://shopify/DiscountCodeNode/1877543977306`, platí od 11:30 UTC), 5 % z celej objednávky, raz na zákazníka, pre všetkých zákazníkov (Shopify nevie obmedziť na odberateľov Klaviya; kód pozná len príjemca e-mailu), bez dátumu konca, kombinuje sa s dopravnou zľavou (VITAJTE). E-mail vysvetľuje, prečo kód dostáva (odberateľ noviniek, nedokončený košík) a že platí na jednu objednávku. Pokladňa Shopify kód doplní z parametra `discount` v odkaze; overiť pri prvom teste naživo. Ak by Martin chcel platnosť „7 dní od e-mailu“, treba jedinečné kódy cez Klaviyo › Coupons (Shopify), nie statický kód.
 

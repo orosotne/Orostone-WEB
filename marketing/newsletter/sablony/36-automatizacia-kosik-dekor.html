@@ -2,11 +2,11 @@
 <!--
   OROSTONE — e-mailová šablóna (skill orostone-newsletter)
   TYP:       Automatizácia · Košík z webu
-  SPÚŠŤAČ:   Na druhý deň o 9:00 po vložení dekoru do košíka na orostone.sk, ak človek nezačal pokladňu ani neobjednal (Klaviyo: Added to Cart z webu)
+  SPÚŠŤAČ:   Na druhý deň o 9:00 po vložení dekoru do košíka na orostone.sk, ak človek nezačal pokladňu, neobjednal ani košík nevyprázdnil (Klaviyo: Added to Cart z webu)
   PREDMET:   Zľava 5 % na dekor vo vašom košíku
   PREHEADER: 🪨 Kód KOSIK5 platí na celú objednávku. Košík sme vám uložili. K objednávke sa vrátite jedným kliknutím.
-  CIEĽ:      Dokončiť objednávku s kódom KOSIK5, alebo urobiť ďalší krok (vzorka, celá platňa, pôdorys).
-  POZNÁMKA:  Len odberatelia so súhlasom, ktorých web rozpoznal po príchode z nášho e-mailu. Zľava je v predmete, v hlavičke, v tmavom páse aj na fotke (kosik-zlava-5.jpg). Názov dekoru, fotka platne, položky a odkazy sú dynamické z udalosti; bez údajov Taj Mahal. Tlačidlá vedú do pokladne Shopify s uloženým košíkom a kód KOSIK5 (5 % z celej objednávky, raz na zákazníka) doplnia z parametra discount.
+  CIEĽ:      Dokončiť objednávku na orostone.sk s kódom KOSIK5, alebo urobiť ďalší krok (vzorka, celá platňa, pôdorys).
+  POZNÁMKA:  Len odberatelia so súhlasom, ktorých web rozpoznal po príchode z nášho e-mailu. Zľava je v predmete, v hlavičke, v tmavom páse aj na banneri. Banner, názov dekoru, fotka platne, položky a odkazy sú dynamické podľa dekoru z udalosti; bez údajov Taj Mahal. Tlačidlá vedú do pokladne Shopify s uloženým košíkom a kód KOSIK5 (5 % z celej objednávky, raz na zákazníka) doplnia z parametra discount. Zľava platí len pri objednávke na orostone.sk, nie po telefóne ani na základe cenovej ponuky.
   Obrázky: https://orostone.sk/images/email/ (v repozitári Orostone-WEB: public/images/email/)
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="sk">
@@ -98,7 +98,7 @@
                   <a href="https://orostone.sk" target="_blank"><img class="header-logo" src="https://orostone.sk/images/orostone-logo-hd.png" alt="Orostone" width="142" height="28" style="display:block; height:28px; width:auto; border:0;" /></a>
                 </td>
                 <td class="meta-right" align="right" valign="middle" style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#6B7280;">
-                  Zľava 5 % <span style="color:#7A6A2E;">· kód KOSIK5</span>
+                  Zľava 5 % <span style="color:#7A6A2E;">· kód KOSIK5</span>
                 </td>
               </tr>
             </table>
@@ -123,20 +123,20 @@
                 </td>
               </tr>
             </table>
-                  <div class="h1-dark" style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:34px; font-weight:700; line-height:40px; letter-spacing:-0.005em; color:#FFFFFF; margin-top:18px;">{{ event.AddedItemProductName|default:'Taj Mahal'|title }}<br /><em style="font-weight:300; font-style:italic; color:#ECD488;">o&nbsp;5 % lacnejšie.</em></div>
-                  <div class="t-body" style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:15px; font-weight:300; line-height:25px; color:#E5E7EB; margin-top:14px;">Dekor máte v&nbsp;košíku, ktorý sme vám uložili. S&nbsp;kódom <strong style="font-weight:700; color:#FFFFFF;">KOSIK5</strong> zaplatíte za celú objednávku o&nbsp;5 % menej.</div>
-                  <div style="margin-top:24px; line-height:0;"><img src="https://orostone.sk/images/email/kosik-zlava-5.jpg" alt="Zľava 5 % s kódom KOSIK5 na pracovnú dosku zo sinterovaného kameňa Orostone" width="520" style="width:100%; max-width:520px; height:auto; display:block; border-radius:12px;" /></div>
+                  <div class="h1-dark" style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:34px; font-weight:700; line-height:40px; letter-spacing:-0.005em; color:#FFFFFF; margin-top:18px;">{{ event.AddedItemProductName|default:'Taj Mahal'|title }}<br /><em style="font-weight:300; font-style:italic; color:#ECD488;">o&nbsp;5 % lacnejšie.</em></div>
+                  <div class="t-body" style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:15px; font-weight:300; line-height:25px; color:#E5E7EB; margin-top:14px;">Košík sme vám uložili. Kód <strong style="font-weight:700; color:#FFFFFF;">KOSIK5</strong> platí na celú objednávku na orostone.sk.</div>
+                  <div style="margin-top:24px; line-height:0;"><img src="https://orostone.sk/images/email/kosik-zlava-5-{{ event.AddedItemProductID|default:'taj-mahal' }}.jpg" alt="Zľava 5 % na celú objednávku s kódom KOSIK5. Vizualizácia kuchyne s dekorom {{ event.AddedItemProductName|default:'Taj Mahal'|title }}" width="520" style="width:100%; max-width:520px; height:auto; display:block; border-radius:12px;" /></div>
                   <div style="margin-top:24px;"><table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0;">
               <tr>
                 <td align="center" style="background:#ECD488; border-radius:9999px;">
                   <!--[if mso]>
                   <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{% if event.CheckoutURL %}{{ event.CheckoutURL }}&discount=KOSIK5{% else %}https://orostone.sk{% endif %}" style="height:46px;v-text-anchor:middle;width:260px;" arcsize="50%" stroke="f" fillcolor="#ECD488">
                     <w:anchorlock/>
-                    <center style="color:#1A1A1A;font-family:Arial,sans-serif;font-size:11px;font-weight:bold;letter-spacing:2px;">DOKONČIŤ SO ZĽAVOU 5 % &rarr;</center>
+                    <center style="color:#1A1A1A;font-family:Arial,sans-serif;font-size:11px;font-weight:bold;letter-spacing:2px;">DOKONČIŤ SO ZĽAVOU 5 % &rarr;</center>
                   </v:roundrect>
                   <![endif]-->
                   <!--[if !mso]><!-- -->
-                  <a class="cta-btn" href="{% if event.CheckoutURL %}{{ event.CheckoutURL }}&discount=KOSIK5{% else %}https://orostone.sk{% endif %}" target="_blank" style="display:inline-block; padding:15px 28px; font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#1A1A1A; text-decoration:none; line-height:1; border-radius:9999px;">Dokončiť so zľavou 5 % <span style="color:#1A1A1A;">&rarr;</span></a>
+                  <a class="cta-btn" href="{% if event.CheckoutURL %}{{ event.CheckoutURL }}&discount=KOSIK5{% else %}https://orostone.sk{% endif %}" target="_blank" style="display:inline-block; padding:15px 28px; font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#1A1A1A; text-decoration:none; line-height:1; border-radius:9999px;">Dokončiť so zľavou 5 % <span style="color:#1A1A1A;">&rarr;</span></a>
                   <!--<![endif]-->
                 </td>
               </tr>
@@ -150,7 +150,7 @@
         <!-- TEXT -->
         <tr>
           <td class="px-40 t-body" style="padding:32px 40px 8px; font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:15px; font-weight:300; line-height:26px; color:#2A2A2A;">
-            <p style="margin:0 0 16px; font-weight:500; color:#1A1A1A;">Dobrý deň,</p><p style="margin:0 0 16px;">dekor {{ event.AddedItemProductName|default:'Taj Mahal'|title }} ste si na orostone.sk vložili do košíka a&nbsp;objednávku ste zatiaľ nedokončili. Ako odberateľovi noviniek vám na ňu dávame zľavu 5 %, aby sa vám rozhodovalo ľahšie.</p><p style="margin:0 0 16px;">Pracovná doska sa vyberá raz. Nerozhoduje o&nbsp;nej malá vzorka ani cena, ale to, ako kresba vyzerá na celej ploche a&nbsp;ako sa doska používa každý deň.</p>
+            <p style="margin:0 0 16px; font-weight:500; color:#1A1A1A;">Dobrý deň,</p><p style="margin:0 0 16px;">dekor {{ event.AddedItemProductName|default:'Taj Mahal'|title }} ste si na orostone.sk vložili do košíka a&nbsp;objednávku ste zatiaľ nedokončili. Ako odberateľovi noviniek vám na ňu dávame zľavu 5 %, aby sa vám rozhodovalo ľahšie.</p><p style="margin:0 0 16px;">Pracovná doska sa vyberá raz. Nerozhoduje o&nbsp;nej malá vzorka ani cena, ale to, ako kresba vyzerá na celej ploche a&nbsp;ako sa doska používa každý deň.</p>
           </td>
         </tr>
 
@@ -183,7 +183,7 @@
           </td>
         </tr>
         <tr>
-          <td class="hero-cap" style="padding:10px 40px 0; font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#6B7280; line-height:15px;"><span style="color:#7A6A2E;">&#9679;</span>&nbsp; {{ event.AddedItemProductName|default:'Taj Mahal'|title }} · celá platňa 3200 × 1600 mm</td>
+          <td class="hero-cap" style="padding:10px 40px 0; font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:#6B7280; line-height:15px;"><span style="color:#7A6A2E;">&#9679;</span>&nbsp; {{ event.AddedItemProductName|default:'Taj Mahal'|title }} · celá platňa</td>
         </tr>
 
         <!-- PONUKA (biela karta) -->
@@ -193,24 +193,24 @@
               <tr>
                 <td style="padding:26px 28px 24px;">
                   <div style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:0.24em; text-transform:uppercase; color:#7A6A2E; margin-bottom:10px;">Váš zľavový kód</div>
-                  <div style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:22px; font-weight:700; line-height:28px; color:#1A1A1A;">KOSIK5 · 5 % z&nbsp;celej objednávky</div>
-                  <p class="t-small" style="margin:10px 0 18px; font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:14px; font-weight:400; line-height:23px; color:#2A2A2A;">Kód dostávate ako odberateľ noviniek Orostone. Platí na jednu objednávku a&nbsp;odpočíta 5 % z&nbsp;ceny všetkého tovaru v&nbsp;košíku. Tlačidlo otvorí váš uložený košík v&nbsp;pokladni a&nbsp;kód doplní samo; inak ho zadajte do poľa „Zľavový kód“.</p>
+                  <div style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:22px; font-weight:700; line-height:28px; color:#1A1A1A;">KOSIK5</div>
+                  <p class="t-small" style="margin:10px 0 18px; font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:14px; font-weight:400; line-height:23px; color:#2A2A2A;">Odpočíta 5 % z&nbsp;ceny všetkého tovaru v&nbsp;košíku a&nbsp;platí na jednu objednávku na orostone.sk. Dostávate ho ako odberateľ noviniek Orostone. Tlačidlo otvorí váš uložený košík v&nbsp;pokladni a&nbsp;kód doplní samo; inak ho zadajte do poľa „Zľavový kód“.</p>
                   <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0;">
               <tr>
                 <td align="center" style="background:#1A1A1A; border-radius:9999px;">
                   <!--[if mso]>
                   <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{% if event.CheckoutURL %}{{ event.CheckoutURL }}&discount=KOSIK5{% else %}https://orostone.sk{% endif %}" style="height:46px;v-text-anchor:middle;width:260px;" arcsize="50%" stroke="f" fillcolor="#1A1A1A">
                     <w:anchorlock/>
-                    <center style="color:#FFFFFF;font-family:Arial,sans-serif;font-size:11px;font-weight:bold;letter-spacing:2px;">DOKONČIŤ OBJEDNÁVKU SO ZĽAVOU &rarr;</center>
+                    <center style="color:#FFFFFF;font-family:Arial,sans-serif;font-size:11px;font-weight:bold;letter-spacing:2px;">DOKONČIŤ OBJEDNÁVKU &rarr;</center>
                   </v:roundrect>
                   <![endif]-->
                   <!--[if !mso]><!-- -->
-                  <a class="cta-btn" href="{% if event.CheckoutURL %}{{ event.CheckoutURL }}&discount=KOSIK5{% else %}https://orostone.sk{% endif %}" target="_blank" style="display:inline-block; padding:15px 28px; font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#FFFFFF; text-decoration:none; line-height:1; border-radius:9999px;">Dokončiť objednávku so zľavou <span style="color:#ECD488;">&rarr;</span></a>
+                  <a class="cta-btn" href="{% if event.CheckoutURL %}{{ event.CheckoutURL }}&discount=KOSIK5{% else %}https://orostone.sk{% endif %}" target="_blank" style="display:inline-block; padding:15px 28px; font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#FFFFFF; text-decoration:none; line-height:1; border-radius:9999px;">Dokončiť objednávku <span style="color:#ECD488;">&rarr;</span></a>
                   <!--<![endif]-->
                 </td>
               </tr>
             </table>
-                  <div style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:12px; font-weight:400; line-height:19px; color:#6B7280; margin-top:14px; padding-top:14px; border-top:1px solid #E8E8E5;">Zľava sa počíta z&nbsp;ceny tovaru, nie z&nbsp;dopravy. Ak si chcete dekor najprv overiť na vzorke, kód si nechajte na objednávku platne – platí len raz. <a href="https://orostone.sk/produkt/{{ event.AddedItemProductID|default:'taj-mahal' }}" target="_blank" style="color:#1A1A1A; text-decoration:underline;">Pozrieť dekor znova</a></div>
+                  <div style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:12px; font-weight:400; line-height:19px; color:#6B7280; margin-top:14px; padding-top:14px; border-top:1px solid #E8E8E5;"><strong style="font-weight:700; color:#1A1A1A;">Zľavu uplatníte len pri objednávke na orostone.sk.</strong> Ak objednávate po telefóne alebo na základe cenovej ponuky, kód použiť nemôžeme. Zľava sa počíta z&nbsp;ceny tovaru, nie z&nbsp;dopravy. Ak si chcete dekor najprv overiť na vzorke, kód si nechajte na objednávku platne – platí len raz. <a href="https://orostone.sk/produkt/{{ event.AddedItemProductID|default:'taj-mahal' }}" target="_blank" style="color:#1A1A1A; text-decoration:underline;">Pozrieť dekor znova</a></div>
                 </td>
               </tr>
             </table>
@@ -282,7 +282,7 @@
                       </td>
                       <td valign="top">
                         <div style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:9.5px; font-weight:700; letter-spacing:0.24em; text-transform:uppercase; color:#7A6A2E; margin-bottom:8px;">P.&nbsp;S. &middot; Marián, Orostone</div>
-                        <div class="t-small" style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:13.5px; font-weight:400; line-height:22px; color:#3d3729;">Ak váhate medzi dvoma dekormi, odpovedzte na tento e-mail a&nbsp;napíšte, ktoré to sú. Poradím, ktorý z&nbsp;nich bude na veľkej ploche vo vašej kuchyni vyzerať lepšie. Kód KOSIK5 platí aj na dekor, ktorý si nakoniec vyberiete.</div>
+                        <div class="t-small" style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:13.5px; font-weight:400; line-height:22px; color:#3d3729;">Ak váhate medzi dvoma dekormi, odpovedzte na tento e-mail a&nbsp;napíšte, ktoré to sú. Poradím, ktorý z&nbsp;nich bude na veľkej ploche vo vašej kuchyni vyzerať lepšie. Kód KOSIK5 platí aj na dekor, ktorý si nakoniec vyberiete, ak ho objednáte na orostone.sk.</div>
                       </td>
                     </tr>
                   </table>

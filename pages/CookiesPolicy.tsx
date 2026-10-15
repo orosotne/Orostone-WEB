@@ -300,6 +300,13 @@ export const CookiesPolicy = () => {
                       <td className="min-w-[8rem] py-3 px-2 align-top">Do 2&nbsp;rokov; Safari a Firefox platnosť skracujú na dni až týždne</td>
                     </tr>
                     <tr>
+                      <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">__kla_off</td>
+                      <td className="py-3 px-2 align-top">Orostone</td>
+                      <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Nevyhnutné</span></td>
+                      <td className="py-3 px-2 align-top">cookie – záznam, že ste marketingové cookies odmietli alebo súhlas odvolali, aby Klaviyo na webe nesledovalo; nastaví sa len vtedy, ak už Klaviyo na webe bežalo</td>
+                      <td className="min-w-[8rem] py-3 px-2 align-top">1&nbsp;rok</td>
+                    </tr>
+                    <tr>
                       <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">_gcl_aw, _gcl_au</td>
                       <td className="py-3 px-2 align-top">Google</td>
                       <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Marketingové</span></td>
