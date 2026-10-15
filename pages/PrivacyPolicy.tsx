@@ -96,7 +96,7 @@ export const PrivacyPolicy = () => {
                     </tr>
                     <tr>
                       <td className="py-3 px-3 font-semibold text-brand-dark align-top">Pripomenutie nedokončeného nákupu</td>
-                      <td className="py-3 px-3 align-top">Ak v pokladni e-shopu zadáte e-mailovú adresu a nákup nedokončíte, platforma Shopify vám v našom mene pošle k tomuto nákupu jeden e-mail s prehľadom tovaru, ktorý ste v pokladni nechali, a s odkazom na dokončenie nákupu. Pripomenutie vám pošleme aj vtedy, ak ste súhlas s e-mailovým marketingom nedali. Odmietnuť pripomenutie môžete kedykoľvek, bezplatne a bez udania dôvodu odkazom na odhlásenie v e-maile alebo správou na info@orostone.sk. Ide o námietku proti priamemu marketingu (viac v časti Vaše práva).</td>
+                      <td className="py-3 px-3 align-top">Ak v pokladni e-shopu zadáte e-mailovú adresu a nákup nedokončíte, platforma Shopify vám v našom mene pošle k tomuto nákupu jeden e-mail s prehľadom tovaru, ktorý ste v pokladni nechali, a s odkazom na dokončenie nákupu. E-mail môže obsahovať aj zľavový kód na dokončenie tohto nákupu. Pripomenutie vám pošleme aj vtedy, ak ste súhlas s e-mailovým marketingom nedali. Odmietnuť pripomenutie môžete kedykoľvek, bezplatne a bez udania dôvodu odkazom na odhlásenie v e-maile alebo správou na info@orostone.sk. Ide o námietku proti priamemu marketingu (viac v časti Vaše práva).</td>
                       <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. f) – oprávnený záujem (pripomenutie nákupu, ktorý ste v našom e-shope začali) v spojení s §&nbsp;116 ods.&nbsp;15 zákona č.&nbsp;452/2021 Z.&nbsp;z. o elektronických komunikáciách v znení neskorších predpisov</td>
                     </tr>
                     <tr>
