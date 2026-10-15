@@ -7,8 +7,12 @@ const PROFILE = 'https://www.instagram.com/orostone_/';
 /** Auto-scroll speed in px/s and how long it waits after the visitor swipes, scrolls or hovers. */
 const SPEED = 24;
 const RESUME_MS = 2500;
+/** The posts are laid out COPIES times and the strip keeps to the middle copy, so there are two copies of runway each way; it hops back by whole copies only once nothing has scrolled for SETTLE_MS. */
+const COPIES = 5;
+const HOME = 2;
+const SETTLE_MS = 300;
 
-/** Latest Instagram posts as portrait 4:5 tiles (as on Instagram) in a slow right-to-left marquee that can also be swiped or scrolled by hand (it drives scrollLeft, so the strip stays a normal scroller; pauses while touched, hovered, focused, off-screen and with reduced motion). The posts and their 600×750 webp tiles are taken at build time (scripts/sync-instagram.ts), so the strip shows them at once instead of waiting for the Instagram API. */
+/** Latest Instagram posts as portrait 4:5 tiles (as on Instagram) in a slow right-to-left marquee that runs endlessly both ways and can also be swiped or scrolled by hand (it drives scrollLeft, so the strip stays a normal scroller; pauses while touched, hovered, focused, off-screen and with reduced motion). The posts and their 600×750 webp tiles are taken at build time (scripts/sync-instagram.ts), so the strip shows them at once instead of waiting for the Instagram API. */
 export const HomeInstagram: React.FC = () => {
   const { ref, off } = useOffscreen<HTMLDivElement>();
   const hold = useRef(0);
@@ -23,8 +27,19 @@ export const HomeInstagram: React.FC = () => {
     let speed = 0;
     let last = performance.now();
     let frame = 0;
+    let touching = false;
+    let input = -Infinity;
     const pause = () => {
-      hold.current = performance.now() + RESUME_MS;
+      input = performance.now();
+      hold.current = input + RESUME_MS;
+    };
+    const onTouchStart = () => {
+      touching = true;
+      pause();
+    };
+    const onTouchEnd = () => {
+      touching = false;
+      pause();
     };
     // our own writes also fire scroll events; anything else (momentum after a swipe, trackpad) is the visitor
     const onScroll = () => {
@@ -33,8 +48,9 @@ export const HomeInstagram: React.FC = () => {
     const tick = (now: number) => {
       const dt = Math.min(now - last, 100);
       last = now;
-      const half = el.scrollWidth / 2;
-      const busy = now < hold.current || el.matches(':focus-within') || (el.matches(':hover') && hover.matches);
+      const period = el.scrollWidth / COPIES;
+      const focused = el.matches(':focus-within');
+      const busy = now < hold.current || focused || (el.matches(':hover') && hover.matches);
       if (busy) {
         pos = el.scrollLeft;
         speed = 0;
@@ -43,9 +59,12 @@ export const HomeInstagram: React.FC = () => {
         speed += (SPEED - speed) * (1 - Math.exp(-dt / 400));
         pos += (speed * dt) / 1000;
       }
-      // the second half repeats the first, so jumping by half keeps the loop seamless in both directions
-      if (pos >= half) pos -= half;
-      else if (pos <= 0 && busy) pos += half;
+      // the copies are identical, so hopping by whole copies back into the middle one is invisible. It waits until the finger is up and the momentum is over (a hop under a swipe fought the browser and the strip blinked out at the left edge) and while a tile has keyboard focus, so focus is not carried off-screen
+      if (period > 0 && !touching && !focused && now - input > SETTLE_MS) {
+        // 1 px slack: scrollLeft is written rounded down, which would otherwise read as just short of the middle copy and hop again
+        while (pos < HOME * period - 1) pos += period;
+        while (pos >= (HOME + 1) * period) pos -= period;
+      }
       // scrollLeft snaps to whole device pixels (whole CSS pixels in Safari), so 0.4 px a frame came out as a 1 px jump every 2–3 frames; the scroller takes the whole pixels and a transform on the track the remainder
       const whole = Math.floor(pos);
       if (!busy || Math.abs(el.scrollLeft - pos) > 2) {
@@ -55,7 +74,9 @@ export const HomeInstagram: React.FC = () => {
       track.style.transform = busy ? '' : `translate3d(${(whole - pos).toFixed(3)}px, 0, 0)`;
       frame = requestAnimationFrame(tick);
     };
-    el.addEventListener('touchstart', pause, { passive: true });
+    el.addEventListener('touchstart', onTouchStart, { passive: true });
+    el.addEventListener('touchend', onTouchEnd, { passive: true });
+    el.addEventListener('touchcancel', onTouchEnd, { passive: true });
     el.addEventListener('wheel', pause, { passive: true });
     el.addEventListener('pointerdown', pause);
     el.addEventListener('scroll', onScroll, { passive: true });
@@ -63,17 +84,20 @@ export const HomeInstagram: React.FC = () => {
     return () => {
       cancelAnimationFrame(frame);
       track.style.transform = '';
-      el.removeEventListener('touchstart', pause);
+      el.removeEventListener('touchstart', onTouchStart);
+      el.removeEventListener('touchend', onTouchEnd);
+      el.removeEventListener('touchcancel', onTouchEnd);
       el.removeEventListener('wheel', pause);
       el.removeEventListener('pointerdown', pause);
       el.removeEventListener('scroll', onScroll);
     };
   }, [off, ref]);
 
-  const tile = (clone: boolean) =>
+  // the real links sit in the middle copy (where the strip rests); the copies around them are hidden from screen readers and the tab order
+  const tile = (copy: number, clone = copy !== HOME) =>
     feed.map((post) => (
       <a
-        key={`${clone ? 'c' : 'o'}-${post.id}`}
+        key={`${copy}-${post.id}`}
         className={`hp-ig ${clone ? 'hp-ig-clone' : ''}`}
         href={post.permalink || PROFILE}
         target="_blank"
@@ -101,8 +125,7 @@ export const HomeInstagram: React.FC = () => {
       </Container>
       <div ref={ref} className={`hp-ig-marquee ${off ? 'is-off' : ''}`}>
         <div className="hp-ig-track">
-          {tile(false)}
-          {tile(true)}
+          {Array.from({ length: COPIES }, (_, copy) => tile(copy))}
         </div>
       </div>
     </Section>
