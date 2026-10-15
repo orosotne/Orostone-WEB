@@ -1,6 +1,7 @@
 import path from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { OROSTONE_BUSINESS_GRAPH_LD } from './lib/businessSchema';
 
 export default defineConfig(() => {
     return {
@@ -8,7 +9,20 @@ export default defineConfig(() => {
         port: 3000,
         host: '0.0.0.0',
       },
-      plugins: [react()],
+      plugins: [
+        react(),
+        {
+          name: 'orostone-business-schema',
+          // One graph in the document head survives SPA navigation and is
+          // inherited by every static page generated from the built HTML.
+          transformIndexHtml: () => [{
+            tag: 'script',
+            attrs: { type: 'application/ld+json' },
+            children: JSON.stringify(OROSTONE_BUSINESS_GRAPH_LD).replace(/</g, '\\u003c'),
+            injectTo: 'head' as const,
+          }],
+        },
+      ],
       resolve: {
         alias: {
           '@': path.resolve(__dirname, '.'),

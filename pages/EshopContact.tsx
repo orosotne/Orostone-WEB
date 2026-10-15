@@ -34,58 +34,6 @@ export const EshopContact: React.FC = () => {
           { name: 'Kontakt', url: 'https://orostone.sk/kontakt' },
         ])}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "LocalBusiness",
-          "@id": "https://orostone.sk/kontakt#business",
-          "name": "OROSTONE s.r.o.",
-          "description": "Sinterovaný kameň pre kuchynské dosky, obklady a architektonické projekty.",
-          "url": "https://orostone.sk",
-          "telephone": "+421917588738",
-          "email": "info@orostone.sk",
-          "image": "https://orostone.sk/images/og-orostone.png",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Landererova 8",
-            "addressLocality": "Bratislava",
-            "addressRegion": "Bratislavský kraj",
-            "postalCode": "811 09",
-            "addressCountry": "SK"
-          },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": 48.1486,
-            "longitude": 17.1077
-          },
-          "priceRange": "€€€",
-          "currenciesAccepted": "EUR",
-          "paymentAccepted": "Bankový prevod, Platba kartou, Apple Pay, Google Pay",
-          "department": {
-            "@type": "LocalBusiness",
-            "name": "OROSTONE Showroom Bošany",
-            "description": "Showroom sinterovaného kameňa v renesančnom kaštieli — porovnanie celých platní 3200 × 1600 mm pri dennom svetle. Cez víkend po dohode.",
-            "telephone": "+421917588738",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "SNP 113/1",
-              "addressLocality": "Bošany",
-              "postalCode": "956 18",
-              "addressCountry": "SK"
-            },
-            "openingHoursSpecification": [
-              {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                "opens": "09:00",
-                "closes": "17:00"
-              }
-            ]
-          }
-        }) }}
-      />
-
       <PageHero
         eyebrow="Kontakt"
         title="Sme tu pre vás"
@@ -98,7 +46,7 @@ export const EshopContact: React.FC = () => {
                 <a href="tel:+421917588738" className="text-[clamp(1.6rem,2.6vw,2.4rem)] font-semibold tabular-nums tracking-[-0.01em] no-underline hover:underline">
                   +421 917 588 738
                 </a>
-                <span className="text-[0.92rem] font-normal text-brand-muted">Po–Pia 8:00 – 17:00</span>
+                <span className="text-[0.92rem] font-normal text-brand-muted">Telefonicky: Po–Pia 8:00 – 17:00</span>
               </dd>
             </div>
             <div className="grid gap-1.5">
