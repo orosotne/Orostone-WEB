@@ -111,72 +111,7 @@
           scrollbar-width: none;
       }
     </style>
-    <!-- LocalBusiness JSON-LD for local SEO -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "HomeAndConstructionBusiness",
-      "name": "OROSTONE s.r.o.",
-      "description": "Sinterovaný kameň pre pracovné dosky, ostrovčeky, zásteny aj veľké plochy. V showroome Bošany pomôžeme vybrať dekor a doviezť platne ku kamenárovi, ktorého si vyberiete vy alebo my.",
-      "url": "https://orostone.sk",
-      "logo": "https://orostone.sk/images/brand/orostone-circle.png",
-      "image": "https://orostone.sk/images/og-orostone.png",
-      "telephone": "+421917588738",
-      "email": "info@orostone.sk",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Landererova 8",
-        "addressLocality": "Bratislava",
-        "addressRegion": "Bratislavský kraj",
-        "postalCode": "811 09",
-        "addressCountry": "SK"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 48.1486,
-        "longitude": 17.1077
-      },
-      "areaServed": [
-        {
-          "@type": "GeoCircle",
-          "geoMidpoint": {
-            "@type": "GeoCoordinates",
-            "latitude": 48.1486,
-            "longitude": 17.1077
-          },
-          "geoRadius": "100000"
-        },
-        {
-          "@type": "Country",
-          "name": "Slovakia"
-        }
-      ],
-      "priceRange": "€€€",
-      "currenciesAccepted": "EUR",
-      "paymentAccepted": "Bankový prevod, Platba kartou",
-      "department": {
-        "@type": "LocalBusiness",
-        "name": "OROSTONE Showroom Bošany",
-        "description": "Showroom sinterovaného kameňa v renesančnom kaštieli — porovnanie celých platní 3200 × 1600 mm pri dennom svetle. Cez víkend po dohode.",
-        "telephone": "+421917588738",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "SNP 113/1",
-          "addressLocality": "Bošany",
-          "postalCode": "956 18",
-          "addressCountry": "SK"
-        },
-        "openingHoursSpecification": [
-          {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-            "opens": "09:00",
-            "closes": "17:00"
-          }
-        ]
-      }
-    }
-    </script>
+    <!-- Organization + showroom JSON-LD are injected from lib/businessSchema.ts by Vite. -->
     <!-- WebSite JSON-LD with SearchAction for sitelinks -->
     <script type="application/ld+json">
     {

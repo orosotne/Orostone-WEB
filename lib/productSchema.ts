@@ -12,6 +12,7 @@
 // Plain, dependency-free TS (same contract as lib/slab.ts): browser,
 // tsx build scripts and Vercel functions can all import it.
 import { calculateSlabPrice, slabAreaM2 } from './slab';
+import { OROSTONE_SELLER_LD } from './businessSchema';
 
 const BASE_URL = 'https://orostone.sk';
 
@@ -120,16 +121,6 @@ export function buildProductJsonLd(
       '@type': 'Brand',
       name: product.vendor || 'OROSTONE',
     },
-    manufacturer: {
-      '@type': 'Organization',
-      name: 'OROSTONE s.r.o.',
-      url: BASE_URL,
-      areaServed: {
-        '@type': 'GeoCircle',
-        geoMidpoint: { '@type': 'GeoCoordinates', latitude: 48.1486, longitude: 17.1077 },
-        geoRadius: '50000',
-      },
-    },
     category: 'Veľkoformátové platne',
     material: product.material || 'Sinterovaný kameň',
     size: product.dimensions,
@@ -164,7 +155,7 @@ export function buildProductJsonLd(
       priceValidUntil: offerPriceValidUntil(),
       availability: product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/PreOrder',
       itemCondition: 'https://schema.org/NewCondition',
-      seller: { '@type': 'Organization', name: 'OROSTONE s.r.o.' },
+      seller: OROSTONE_SELLER_LD,
       shippingDetails: shippingDetailsForStock(product.inStock),
       hasMerchantReturnPolicy: RETURN_POLICY_LD,
     },
