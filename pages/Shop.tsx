@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useShopifyProducts } from '../hooks/useShopifyProducts';
-import { OFFER_VALID_FROM, offerPriceValidUntil, SHIPPING_DETAILS_LD, RETURN_POLICY_LD } from '../lib/productSchema';
+import { OFFER_VALID_FROM, offerPriceValidUntil, shippingDetailsForStock, RETURN_POLICY_LD } from '../lib/productSchema';
 import { calculateSlabPrice } from '../lib/slab';
 import { SEOHead, OROSTONE_ORGANIZATION_LD } from '../components/UI/SEOHead';
 import { HomeHero } from '../components/Home/HomeHero';
@@ -92,7 +92,7 @@ export const Shop = () => {
                     : "https://schema.org/PreOrder",
                   "itemCondition": "https://schema.org/NewCondition",
                   "seller": { "@type": "Organization", "name": "OROSTONE s.r.o." },
-                  "shippingDetails": SHIPPING_DETAILS_LD,
+                  "shippingDetails": shippingDetailsForStock(p.inStock),
                   "hasMerchantReturnPolicy": RETURN_POLICY_LD
                 },
               },

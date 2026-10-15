@@ -66,6 +66,12 @@ Odstúpenie môžete zaslať:
 
 Spotrebiteľ je povinný najneskôr do 14 dní odo dňa odstúpenia zaslať tovar späť alebo ho odovzdať spoločnosti Orostone, ak spoločnosť Orostone nenavrhne iný spôsob prevzatia.
 
+### Kam vrátiť tovar
+
+Vzorky aj celé platne vracajte na adresu Orostone s.r.o., SNP 113/1, 956 18 Bošany.
+
+Pri vrátení tovaru po odstúpení od zmluvy zabezpečuje spätnú prepravu aj prepravný štítok zákazník.
+
 ### Náklady na vrátenie tovaru
 
 Náklady na vrátenie tovaru znáša spotrebiteľ. Keďže veľkoformátové platne vzhľadom na svoju povahu, hmotnosť a rozmery nemožno spravidla vrátiť bežnou poštovou službou, vracajú sa primeranou prepravou.
@@ -77,6 +83,10 @@ Priame náklady na vrátenie platní sú spravidla od 150 € s DPH v Bratislave
 Spotrebiteľ zodpovedá len za zníženie hodnoty tovaru, ktoré vzniklo v dôsledku takého zaobchádzania s tovarom, ktoré je nad rámec potrebný na zistenie vlastností a funkčnosti tovaru.
 
 Z dôvodu bezpečnej spätnej prepravy odporúčame tovar vrátiť v pôvodnom obale alebo v rovnocennom ochrannom balení. Absencia pôvodného obalu sama osebe nevylučuje platné odstúpenie od zmluvy, môže však mať vplyv na posúdenie zodpovednosti za poškodenie vzniknuté pri spätnom transporte.
+
+### Výmena za iný dekor
+
+Prijímame aj výmeny nepoškodeného tovaru za iný dekor. Pri záujme o výmenu nás kontaktujte na info@orostone.sk, aby sme dohodli konkrétny dekor a postup výmeny.
 
 ### Vrátenie platieb
 

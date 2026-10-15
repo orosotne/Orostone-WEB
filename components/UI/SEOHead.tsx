@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { SHIPPING_DETAILS_LD, RETURN_POLICY_LD } from '../../lib/productSchema';
+import { shippingDetailsForStock, RETURN_POLICY_LD } from '../../lib/productSchema';
 
 // Produkčný origin — preferovaný pre canonical/og:url aj na preview/staging buildoch.
 // Ak `VITE_PUBLIC_SITE_URL` nie je nastavený, fallbackujeme na aktuálny origin, aby dev
@@ -193,7 +193,7 @@ export const createProductLD = (product: {
       '@type': 'Organization',
       name: 'OROSTONE',
     },
-    shippingDetails: SHIPPING_DETAILS_LD,
+    shippingDetails: shippingDetailsForStock(product.inStock),
     hasMerchantReturnPolicy: RETURN_POLICY_LD,
   },
 });

@@ -178,6 +178,17 @@ export const ReklamacieAVratenie: React.FC = () => {
               </p>
             </div>
 
+            {/* Adresa a spôsob vrátenia */}
+            <div className="mb-6 rounded-[3px] border border-brand-line bg-white/60 p-6 sm:p-8">
+              <h3 className="mb-3 text-[1.1rem] font-semibold text-brand-dark">Kam vrátiť tovar</h3>
+              <p className="mb-3 text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
+                Vzorky aj celé platne vracajte na adresu <strong className="text-brand-dark">Orostone s.r.o., SNP 113/1, 956 18 Bošany</strong>.
+              </p>
+              <p className="text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
+                Pri vrátení tovaru po odstúpení od zmluvy zabezpečuje spätnú prepravu aj prepravný štítok zákazník.
+              </p>
+            </div>
+
             {/* Náklady na vrátenie */}
             <div className="mb-6 rounded-r-[3px] border-l-2 border-brand-dark bg-brand-sand p-6 sm:p-8">
               <h3 className="mb-3 text-[1.1rem] font-semibold text-brand-dark">
@@ -199,6 +210,15 @@ export const ReklamacieAVratenie: React.FC = () => {
               </p>
               <p className="text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
                 Z dôvodu bezpečnej spätnej prepravy odporúčame tovar vrátiť v pôvodnom obale alebo v rovnocennom ochrannom balení. Absencia pôvodného obalu sama osebe nevylučuje platné odstúpenie od zmluvy, môže však mať vplyv na posúdenie zodpovednosti za poškodenie vzniknuté pri spätnom transporte.
+              </p>
+            </div>
+
+            {/* Výmena nepoškodeného tovaru */}
+            <div className="mb-6 rounded-[3px] border border-brand-line bg-white/60 p-6 sm:p-8">
+              <h3 className="mb-3 text-[1.1rem] font-semibold text-brand-dark">Výmena za iný dekor</h3>
+              <p className="text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
+                Prijímame aj výmeny nepoškodeného tovaru za iný dekor. Pri záujme o výmenu nás kontaktujte na{' '}
+                <a href="mailto:info@orostone.sk" className={LEGAL_LINK}>info@orostone.sk</a>, aby sme dohodli konkrétny dekor a postup výmeny.
               </p>
             </div>
 

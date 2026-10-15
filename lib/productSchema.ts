@@ -51,6 +51,11 @@ export const SHIPPING_DETAILS_LD = SHIPPING_OPTIONS.map(({ name, rate }) => ({
   },
 }));
 
+/** The stock delivery window must not be promised for unavailable or made-to-order slabs. */
+export const shippingDetailsForStock = (inStock?: boolean) => inStock
+  ? SHIPPING_DETAILS_LD
+  : SHIPPING_DETAILS_LD.map(({ deliveryTime, ...details }) => details);
+
 /** 14-day withdrawal, return paid by the customer. ReturnByMail is Google's value for any shipped return, carrier pickup included. */
 export const RETURN_POLICY_LD = {
   '@type': 'MerchantReturnPolicy',
@@ -160,11 +165,7 @@ export function buildProductJsonLd(
       availability: product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/PreOrder',
       itemCondition: 'https://schema.org/NewCondition',
       seller: { '@type': 'Organization', name: 'OROSTONE s.r.o.' },
-      // The confirmed window applies only to stock; made-to-order delivery
-      // remains governed by /doprava rather than inheriting the stock promise.
-      shippingDetails: product.inStock
-        ? SHIPPING_DETAILS_LD
-        : SHIPPING_DETAILS_LD.map(({ deliveryTime, ...details }) => details),
+      shippingDetails: shippingDetailsForStock(product.inStock),
       hasMerchantReturnPolicy: RETURN_POLICY_LD,
     },
     additionalProperty: [
