@@ -113,14 +113,15 @@ const corsHeaders = {
 const ALERT_EMAIL = 'dopyt@orostone.sk';
 
 /**
- * 'ok'       Klaviyo odber prijalo (202).
+ * 'ok'       Klaviyo odber prijalo (202), flow na zozname pošle uvítaciu sériu.
+ * 'member'   v zozname už je prihlásený, novú úlohu netreba a uvítacia séria sa znova nespustí.
  * 'rejected' Klaviyo ho jednoznačne odmietlo (4xx okrem 429, aj zlý kľúč), v zozname nie je.
  * 'unknown'  ani po dvoch pokusoch nevieme (timeout, 5xx, 429, sieť), mohol prejsť.
  * 'blocked'  v Klaviyu je odhlásený alebo potlačený (celkovo alebo z tohto zoznamu):
  *            neprihlasujeme, nič mu neposielame.
  * 'off'      Klaviyo nie je nastavené (chýba zoznam alebo kľúč).
  */
-type KlaviyoResult = 'ok' | 'rejected' | 'unknown' | 'blocked' | 'off';
+type KlaviyoResult = 'ok' | 'member' | 'rejected' | 'unknown' | 'blocked' | 'off';
 /**
  * Dôvod upozornenia tímu: výsledok odberu, meno a zdroj, ktoré sa do nového profilu
  * nezapísali, alebo vyradenie zo zoznamu „Dopyty“, ktoré neprešlo. Prijatý odber, ktorý sa
@@ -271,7 +272,7 @@ async function subscribeInKlaviyo(email: string, name: string | undefined, sourc
   const { state, exists } = await klaviyoState(email);
   if (state === 'opted-out') return 'blocked';
   if (state === 'unknown') return 'unknown';
-  if (state === 'subscribed') return 'ok';
+  if (state === 'subscribed') return 'member';
   if (!exists) inBackground(upsertKlaviyoProfile(email, name, source));
   const payload = {
     data: {
@@ -537,7 +538,7 @@ serve(async (req) => {
       // nevoláme.
       if (klaviyoEnabled() && !over && id && await claimKlaviyoAttempt(supabase, id)) {
         const again = await subscribeInKlaviyo(email, name, source);
-        if (again === 'ok') inBackground(leaveInquiryList(email, source));
+        if (again === 'ok' || again === 'member') inBackground(leaveInquiryList(email, source));
         if (again === 'rejected' || again === 'unknown' || again === 'blocked') inBackground(alertKlaviyoFailure(email, source, again));
       }
       return new Response(
@@ -557,7 +558,7 @@ serve(async (req) => {
     // 2. Klaviyo: zoznam „Newsletter – web“, uvítaciu sériu posiela flow na zozname.
     //    Prijatý odber vyradí e-mail zo zoznamu „Dopyty“.
     const klaviyo = await subscribeInKlaviyo(email, name, source);
-    if (klaviyo === 'ok') inBackground(leaveInquiryList(email, source));
+    if (klaviyo === 'ok' || klaviyo === 'member') inBackground(leaveInquiryList(email, source));
     if (klaviyo === 'rejected' || klaviyo === 'unknown' || klaviyo === 'blocked') inBackground(alertKlaviyoFailure(email, source, klaviyo));
 
     // 3. Send welcome email only for new subscribers and reactivated unsubscribers —
@@ -582,11 +583,11 @@ serve(async (req) => {
     }
 
     // Uvítací e-mail s kódmi: po 'ok' ho posiela flow v Klaviyu, po 'off'/'rejected' záložná
-    // funkcia vyššie, ak naozaj odišiel. Po 'blocked' neodíde nič, po 'unknown' to nevieme,
-    // preto ho web nesľúbi a kódy ukáže na obrazovke.
+    // funkcia vyššie, ak naozaj odišiel. Po 'member' (v zozname už bol) sa séria znova nespustí,
+    // po 'blocked' neodíde nič, po 'unknown' to nevieme: web ho nesľúbi a kódy ukáže na obrazovke.
     const welcomeEmail = klaviyo === 'ok' || fallbackSent;
     return new Response(
-      JSON.stringify({ success: true, welcomeEmail }),
+      JSON.stringify({ success: true, welcomeEmail, ...(klaviyo === 'member' ? { alreadySubscribed: true } : {}) }),
       { status: 200, headers: corsHeaders },
     );
   } catch (error) {
