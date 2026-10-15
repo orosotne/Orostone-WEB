@@ -1,16 +1,19 @@
-# Meta reklama: zľava 5 % na váš dekor (retargeting)
+# Meta reklama: zľava 5 % na platne (retargeting)
 
-Podklad na nastavenie reklamy na Facebooku a Instagrame. Stav k 15. 10. 2026: **nič nie je spustené ani vytvorené v Ads Manageri.** Kampaň spúšťa len Martin a rozpočet určuje on.
+Podklad na nastavenie reklamy na Facebooku a Instagrame. Stav k 15. 10. 2026: **nič nie je spustené ani vytvorené v Ads Manageri.** Kampaň spúšťa len Martin a rozpočet určuje on. Pred spustením musí Martin rozhodnúť aj o súhlase s cookies (bod 1 v časti Na rozhodnutie pre Martina).
 
-Súvisí s rozhodnutím Martina z 15. 10. 2026: popup B „5 % na kameň“ (kód WELCOME5) a uvítací e-mail, v ktorom každý nový odberateľ dostane oba kódy, VITAJTE aj WELCOME5.
+Súvisí s rozhodnutiami Martina z 15. 10. 2026: popup B „5 % na váš kameň“ (kód WELCOME5) a uvítací e-mail 01, v ktorom každý nový odberateľ webu dostane oba kódy, VITAJTE aj WELCOME5. Správanie popupu B je opísané podľa vetvy `claude/popup-zlava5`.
 
 ## 1. Cieľ a ponuka
 
 **Cieľ:** priviesť späť ľudí, ktorí boli na orostone.sk za posledných 30 dní, a získať ich ako odberateľov newslettera. Kód WELCOME5 im potom pomôže dokončiť objednávku platní.
 
-**Ponuka v reklame:** „5 % zľava na váš dekor“. Kód človek dostane za prihlásenie na newsletter v popupe B a príde mu e-mailom.
+**Ponuka v reklame:** zľava 5 % na platne vášho dekoru. Kód WELCOME5 sa po prihlásení na newsletter v popupe B ukáže na obrazovke a novému odberateľovi príde aj e-mailom spolu s VITAJTE.
 
-**Vstupná stránka:** detail dekoru s parametrom `ponuka=zlava5`. Ten zobrazí popup B 3 s po načítaní aj bez pravidla troch dní. Odberateľom ani na pokladni a právnych stránkach sa popup nezobrazí.
+**Vstupná stránka:** detail dekoru s parametrom `ponuka=zlava5`. Popup B sa ukáže 3 s po načítaní, a ak lišta cookies ešte nemá odpoveď, 3 s po odpovedi na ňu. Vo vstavanom prehliadači Facebooku a Instagramu príde lišta takmer vždy, lebo má vlastné úložisko.
+- Pravidlo troch dní pre reklamu neplatí. Popup sa ukáže aj tomu, kto ho predtým zavrel, najviac raz za návštevu. V tej istej návšteve sa nezobrazí popup A.
+- Len na úvodnej stránke, detaile produktu, v kategórii a v článku blogu. Nikdy na pokladni, stránke poďakovania, `/vzorky`, právnych stránkach a nikdy tomu, koho prehliadač pozná ako odberateľa.
+- Ak sa popup B neukáže, rovnaké dva kódy dá prihlásenie v pätičke: uvítací e-mail dostane každý nový odberateľ.
 
 | Variant | Vstupná stránka (`utm_source` je `facebook` alebo `instagram` podľa sady reklám) |
 |---|---|
@@ -18,51 +21,62 @@ Súvisí s rozhodnutím Martina z 15. 10. 2026: popup B „5 % na kameň“ (kó
 | B | `https://orostone.sk/produkt/roman-travertine?ponuka=zlava5&utm_source=facebook&utm_medium=paid_social&utm_campaign=retargeting-zlava5&utm_content=b-roman-travertine` |
 | C | `https://orostone.sk/produkt/wild-forest?ponuka=zlava5&utm_source=facebook&utm_medium=paid_social&utm_campaign=retargeting-zlava5&utm_content=c-wild-forest` |
 
-Všetky tri stránky odpovedajú 200 (overené 15. 10. 2026). `utm_medium=paid_social` zaradí GA4 návštevy do kanála Paid Social.
+Všetky tri stránky na produkcii existujú a ich titulky zodpovedajú dekorom (overené 15. 10. 2026; samotná odpoveď 200 nestačí, web ju vráti aj pre neexistujúci dekor). `utm_medium=paid_social` zaradí GA4 návštevy do kanála Paid Social.
 
 **Prečo kód v reklame nie je:**
 - WELCOME5 je odmena za prihlásenie na newsletter. Vytlačený v reklame by sa šíril bez prihlásenia (zdieľanie, zľavové weby) a reklama by prestala privádzať odberateľov.
-- Shopify ho pustí raz na zákazníka. To bráni opakovanému použitiu, nie tomu, aby ho použil ktokoľvek bez súhlasu.
-- Reklama má tak jeden ďalší krok: otvoriť dekor, prihlásiť sa v popupe. Kód príde e-mailom spolu s VITAJTE.
+- Shopify ho pustí raz na zákazníka. To bráni opakovanému použitiu, nie tomu, aby ho použil ktokoľvek bez prihlásenia.
+- Reklama má tak jeden ďalší krok: otvoriť dekor, prihlásiť sa v popupe. Kód sa ukáže v popupe a novému odberateľovi príde e-mailom spolu s VITAJTE.
 
-**Čo reklama nesmie sľúbiť:** zľava platí na platne (12 dekorov), nie na vzorky ani dopravu. Nekombinuje sa s inými zľavami vrátane automatickej 20 % pri 3 a viac platniach, VITAJTE ani KOSIK5. Platí len pri objednávke v e-shope orostone.sk, nie pri objednávke telefonicky ani na cenovú ponuku. Preto píšeme „zľava 5 % na platne“, nikdy „5 % navyše“ ani „na celý nákup“. Podmienky ukáže popup B a uvítací e-mail.
+**Čo reklama nesmie sľúbiť:** zľava platí raz, na platne (12 dekorov), nie na vzorky ani dopravu. Nekombinuje sa s inými zľavami vrátane automatickej 20 % pri 3 a viac platniach, VITAJTE ani KOSIK5. Platí len pri objednávke v e-shope orostone.sk, nie pri objednávke telefonicky ani na cenovú ponuku. Preto píšeme „zľava 5 % na platne“, nikdy „5 % navyše“ ani „na celý nákup“. Podmienky ukáže popup B (krátke znenie z konštanty `SLAB_CODE_TERMS` v `lib/discountPopup.ts`) a uvítací e-mail.
 
 ## 2. Publikum
 
 | | Nastavenie |
 |---|---|
 | **Zahrnúť** | Vlastné publikum z webu: Meta Pixel `712209907542673` (ID z produkčného webu, overené 15. 10. 2026), všetci návštevníci za posledných 30 dní |
-| **Vylúčiť** | Nákup (udalosť `Purchase`) za posledných 180 dní |
-| **Vylúčiť, ak sa schváli** | Odberatelia newslettera, zoznam Newsletter – web (`VSrLFs`) synchronizovaný z Klaviya (integrácia Meta Ads je v Klaviyu zapnutá, stav 14. 10. 2026). Pozor na zásady ochrany súkromia nižšie. |
+| **Vylúčiť** | „Nákup nad 100 €“: udalosť `Purchase` spresnená parametrom `value` väčší ako 100 (EUR), posledných 180 dní |
+| **Vylúčiť, ak sa schváli** | Odberatelia newslettera, zoznam Newsletter – web (`VSrLFs`) synchronizovaný z Klaviya. Dnes nie: zásady ochrany súkromia odovzdanie zoznamov nepokrývajú, pozri nižšie. |
 | **Vylúčiť (voliteľné)** | Tím Orostone: `PageView` s parametrom `internal_traffic` (web ho posiela pri cookie `orostone_internal`) |
 | **Krajina** | Slovensko (ľudia, ktorí tu žijú). Česko rozhodne Martin, pozri nižšie. |
 | **Vek** | 25–65 |
 | **Rozšírenie publika** | Vypnuté. Advantage+ publikum by reklamu ukázalo aj mimo návštevníkov webu, preto použiť pôvodné možnosti publika. |
 
 Na čo myslieť:
-- **Pixel sa načíta len návštevníkom, ktorí prijali marketingové cookies** (`hooks/useMetaPixel.ts`). Publikum je preto menšie ako návštevnosť webu. Veľkosť ukáže Ads Manager po vytvorení publika. Pod 100 ľudí Meta reklamu nedoručí. Pri publiku pod 1 000 ľudí treba rozhodnúť, či okno predĺžiť na 60 dní.
-- **Vylúčenie kupujúcich je neúplné.** `Purchase` posiela web zo stránky poďakovania (`pages/ThankYou.tsx`), len so súhlasom s marketingovými cookies. Serverová záloha (`api/shopify-order-webhook.ts`) posiela nákupy len do GA4, nie do Mety.
-- **Prečo vylúčiť odberateľov:** kto už odoberá, druhý uvítací e-mail nedostane (`subscribe-newsletter` ho do zoznamu znova neprihlási), teda nedostane ani WELCOME5. Web si stav popupov pamätá len v prehliadači, kde sa človek prihlásil (popup A v `localStorage`). Vstavaný prehliadač Facebooku a Instagramu má vlastné úložisko, takže odberateľ z reklamy môže popup B vidieť a kód nedostane.
-- **Synchronizácia zoznamu z Klaviya do Mety nie je v zásadách ochrany súkromia.** Zásady pri Mete uvádzajú len Meta Pixel so súhlasom, nie odovzdanie e-mailových adries na tvorbu publík. Pred zapnutím synchronizácie treba zásady doplniť. Je to právny text, rozhoduje Martin. Druhá možnosť je udalosť Pixelu pri odbere a vylúčenie podľa nej. Pätička ani popup A ju dnes neposielajú. Či ju bude posielať popup B, treba overiť v jeho implementácii.
+- **Pixel a GA4 sa dnes načítajú aj bez odpovede na lištu cookies.** `context/CookieContext.tsx` má predvolené `analytics: true` a `marketing: true`, kým návštevník na lištu neodpovie, a `hooks/useMetaPixel.ts` kontroluje len `preferences.marketing`. Pixel preto pošle `PageView` asi 5 s po načítaní alebo pri prvej interakcii každému, kto cookies neodmietol. GA4 sa správa rovnako (`hooks/useAnalytics.ts`). Martin to ponechal (PR #148: „Predvolené nastavenie cookies sa nemení (rozhodnutie majiteľa, znova potvrdené 15. 10.)“). Dôsledky pre túto kampaň:
+  - publikum „Web 30 dní“ bude obsahovať aj návštevníkov, ktorí na lištu nikdy neodpovedali;
+  - zásady ochrany súkromia píšu, že sa „Meta Pixel aktivuje iba po vašom súhlase s marketingovými cookies“ (`pages/PrivacyPolicy.tsx`);
+  - podmienky Mety pre Business Tools vyžadujú pri návštevníkoch z EÚ právny základ, teda súhlas.
+
+  Rozhoduje Martin, bod 1 nižšie.
+- **Veľkosť publika** ukáže Ads Manager po vytvorení. Bude menšia ako návštevnosť: chýbajú tí, čo cookies odmietli alebo odišli skôr, než sa Pixel načítal, a Meta do publík z webu nezaradí ľudí v EÚ, ktorí si zvolili menej prispôsobené reklamy. Pod 100 ľudí Meta reklamu nedoručí. Pri publiku pod 1 000 ľudí treba rozhodnúť, či okno predĺžiť na 60 dní.
+- **Prečo `value` > 100 pri vylúčení kupujúcich:** `Purchase` posiela web zo stránky poďakovania (`pages/ThankYou.tsx`) pri platniach aj pri vzorkách. Objednávka vzoriek ho pošle s hodnotou najviac 12,30 € (najviac 3 vzorky) a jej `content_ids` sú handle dekorov, rovnaké ako pri platniach, takže podľa nich sa nákupy nerozlíšia. Najlacnejšia platňa stojí vyše 1 600 €. S podmienkou `value` > 100 ostanú v publiku kupujúci vzoriek, teda najteplejší záujemcovia o zľavu na platne.
+- **Vylúčenie kupujúcich je neúplné.** Pixel nevidí nákupy tých, čo cookies odmietli. Serverová záloha (`api/shopify-order-webhook.ts`) posiela nákupy len do GA4. Či Shopify posiela `Purchase` aj cez Conversions API (kanál Facebook & Instagram na tom istom Pixeli), treba overiť v Events Manageri; ak áno, skontrolovať aj tam, že nesie `value`.
+- **Odberatelia:** kto už odoberá a v popupe B sa prihlási znova, kód uvidí na obrazovke a popup mu napíše, že nový e-mail mu nepríde (`subscribe-newsletter` vráti `alreadySubscribed` a druhý uvítací e-mail nepošle). Vylúčiť ich odporúčam kvôli rozpočtu: reklama za nich platí, hoci odberateľov nepribudne. Web si stav popupov pamätá len v prehliadači, kde sa človek prihlásil. Vstavaný prehliadač Facebooku a Instagramu má vlastné úložisko, takže odberateľ z reklamy popup B uvidí.
+- **Synchronizácia zoznamu z Klaviya do Mety nie je v zásadách ochrany súkromia.** Zásady pri Mete uvádzajú len Meta Pixel, nie odovzdanie e-mailových adries na tvorbu publík. Pred zapnutím synchronizácie treba zásady doplniť (právny text, rozhoduje Martin); dovtedy ostáva vypnutá (kontrola v bode 0 časti 4). Druhá možnosť je udalosť Pixelu pri odbere a vylúčenie podľa nej. Dnes ju neposiela pätička, popup A ani popup B.
 - **Česko:** e-shop doručuje platne výlučne na území Slovenska (stránka Doprava a platba). Na začiatok odporúčam len Slovensko.
 
 ## 3. Kreatíva
 
-Každý variant ide v troch formátoch. Copy sa riadi skillom `copy-orostone` (najprv hodnota, potom cena, bez výkričníkov, bez falošnej naliehavosti, bez slova luxus), vizuál skillom `orostone-kreativy`.
+Každý variant ide v troch formátoch. Copy sa riadi skillom `copy-orostone`: najprv hodnota alebo dekor, potom zľava, „sinterovaný kameň“ aspoň v jednom texte každého variantu (§ 7.4), bez výkričníkov, bez falošnej naliehavosti, bez slova luxus. Vizuál sa riadi skillom `orostone-kreativy`.
 
 ### Texty
 
 | | A – Appennino | B – Roman Travertine | C – Wild Forest |
 |---|---|---|---|
-| **Hlavný text** (do 125 znakov, celý viditeľný) | Pracovnú dosku budete denne používať aj vidieť. Za prihlásenie na newsletter dostanete zľavu 5 % na platne svojho dekoru. (121) | Roman Travertine má kresbu travertínu a nepotrebuje impregnáciu. Za prihlásenie na newsletter dostanete na platne zľavu 5 %. (124) | Wild Forest sa naplno ukáže až vo veľkej ploche, nie na vzorke. Za prihlásenie na newsletter dostanete na platne zľavu 5 %. (123) |
-| **Nadpis** (do 40) | 5 % zľava na váš dekor (22) | Roman Travertine so zľavou 5 % (30) | Zľava 5 % na platne Wild Forest (31) |
+| **Hlavný text** (do 125 znakov, celý viditeľný) | Pracovnú dosku zo sinterovaného kameňa budete denne používať aj vidieť. Za odber newslettera dostanete na platne zľavu 5 %. (123) | Roman Travertine je sinterovaný kameň s kresbou travertínu, bez impregnácie. Za odber newslettera máte na platne zľavu 5 %. (123) | Sinterovaný kameň Wild Forest sa naplno ukáže až vo veľkej ploche. Za odber newslettera dostanete na platne zľavu 5 %. (118) |
+| **Nadpis** (FB do 27, IG do 40) | Váš dekor so zľavou 5 % (23) | Roman Travertine, zľava 5 % (27) | Wild Forest so zľavou 5 % (25) |
 | **Popis** (do 30) | Pri objednávke na orostone.sk (29) | Kód vám príde e-mailom (22) | Platí pre objednávky v e-shope (30) |
-| **Tlačidlo** | Get offer („Získať ponuku“) | Shop now („Nakupovať“) | Learn more („Zistiť viac“) |
-| **Text na obrázku**, riadok 1: Montserrat Bold | 5 % na váš dekor | Travertín bez impregnácie | Kresba pre veľkú plochu |
-| riadok 2: Montserrat Light Italic | za odber newslettera | 5 % za odber newslettera | 5 % za odber newslettera |
+| **Tlačidlo** | Learn more („Zistiť viac“) | Shop now („Nakupovať“) | Learn more („Zistiť viac“) |
+| **Text na obrázku**, riadok 1: Montserrat Bold | Pokojná svetlá plocha (21) | Kresba travertínu bez impregnácie (33) | Kresba pre veľkú plochu (23) |
+| riadok 2: Montserrat Light Italic | 5 % za odber newslettera (24) | 5 % za odber newslettera (24) | 5 % za odber newslettera (24) |
+| **Popisok na obrázku**: Montserrat Light | Vizualizácia s dekorom Appennino | Vizualizácia s dekorom Roman Travertine | Vizualizácia s dekorom Wild Forest |
 | **`utm_content`** | `a-appennino` | `b-roman-travertine` | `c-wild-forest` |
 
-Čísla v zátvorkách sú počty znakov. Slovenské popisy tlačidiel sa riadia rozhraním Mety, vyberá sa z jej zoznamu. Popis sa na Instagrame často nezobrazí, preto to, že zľava je za prihlásenie na newsletter a na platne, hovorí už hlavný text.
+- Čísla v zátvorkách sú počty znakov vrátane medzier, prepočítané skriptom 15. 10. 2026. Pred % patrí pevná medzera, aby sa „5 %“ nezalomilo.
+- Nadpis nad 27 znakov Facebook v kanáli skráti, Instagram ukáže do 40.
+- Slovenské popisy tlačidiel sa riadia rozhraním Mety, vyberá sa z jej zoznamu. „Get offer“ nepoužívať: v slovenčine je to „Získať ponuku“ a číta sa ako cenová ponuka, na ktorú zľava neplatí.
+- Popis sa na Instagrame často nezobrazí, preto to, že zľava je za odber newslettera a na platne, hovorí už hlavný text.
 
 ### Formáty a bezpečné zóny
 
@@ -84,13 +98,14 @@ Pre Stories aj Reels platí jedna kreatíva navrhnutá podľa prísnejšej zóny
 
 - Výrezy bez zväčšovania: 4:5 = výrez 1440 × 1800 zmenšený na 1080 × 1350; 9:16 = výrez 1080 × 1920 z toho istého súboru; 1:1 = výrez 1280 × 1280 (alebo celý štvorec 1440 × 1440) zmenšený na 1080 × 1080.
 - Logo: `public/images/orostone-logo-main.svg` (vektor), na tmavom podklade `public/images/email/orostone-logo-white.png`. Najviac 30 % šírky (324 px).
-- Súbory v `public/images/kuchyne/` sú vizualizácie z Higgsfieldu so skutočným dekorom (`data/pillars/kuchyne.ts`). V reklame ich nevolajte realizácia ani kuchyňa klienta.
+- Súbory v `public/images/kuchyne/` sú vizualizácie z Higgsfieldu so skutočným dekorom (`data/pillars/kuchyne.ts`). V reklame ich nevolajte realizácia ani kuchyňa klienta a označte ich popiskom (Pravidlá vizuálu).
 - Nepoužívať: `public/images/email/kosik-zlava-5-*.jpg` (1040 px, patria k e-mailu s kódom KOSIK5), `public/images/vzorky/*.webp` (400 px), `public/images/home/dekory/*.webp` (520 px).
-- **Finálna grafika príde neskôr z Higgsfieldu.** Rovnakú hlavnú fotku má mať popup B (cesta k obrázku je v jednej konštante v jeho kóde), aby vstupná stránka nadväzovala na reklamu.
+- **Popup B má jednu fotku pre všetky varianty:** `/images/kuchyne/roman-travertine-hrana` s popiskom „Vizualizácia s dekorom Roman Travertine“ (konštanta `DISCOUNT_POPUP_IMAGE` v `lib/discountPopup.ts`). Pri variante B nadväzuje na reklamu, pri A a C nie; to zatiaľ akceptujeme. Keď príde finálna grafika z Higgsfieldu, dá sa konštanta vymeniť. Fotka podľa dekoru vstupnej stránky by bola zmena kódu popupu.
 
 ### Pravidlá vizuálu
 
 - Text najviac 20 % plochy, žiadne VEĽKÉ PÍSMENÁ vo vetách, žiadny výkričník a žiadny kód na obrázku.
+- Každý obrázok nesie malý popisok „Vizualizácia s dekorom Appennino / Roman Travertine / Wild Forest“ (Montserrat Light, asi 22–26 px, vnútri bezpečnej zóny, nie je súčasťou dvoch riadkov textu), ako vyžaduje `STYLE_GUIDE.md` › Photos. Meta môže pri obrázkoch z AI nástrojov sama pridať označenie „AI info“ (podľa metadát súboru).
 - Písmo len Montserrat. Paleta: `#1A1A1A`, `#F9F9F7`, `#F5F5F0`, jediný akcent zlatá `#ECD488`. Zlatý text len na tmavom podklade (graphite pás alebo tmavý prechod cez fotku), nikdy na svetlom.
 - Export PNG (ostrý text). Pred odovzdaním prejsť checklist zo skillu `orostone-kreativy`.
 
@@ -99,15 +114,18 @@ Pre Stories aj Reels platí jedna kreatíva navrhnutá podľa prísnejšej zóny
 Celý postup končí uložením konceptu. Zverejniť (Publish) môže len Martin.
 
 **0. Pred spustením musí platiť všetko:**
+- Martin rozhodol bod 1 (súhlas s cookies). Pri možnosti (b) je oprava kódu nasadená.
 - Popup B je na produkcii a reaguje na `?ponuka=zlava5`. V tej istej návšteve sa nezobrazí popup A.
 - WELCOME5 je v Shopify aktívny s dohodnutými podmienkami.
-- Uvítací e-mail s oboma kódmi beží v Klaviyu.
+- Uvítací e-mail 01 s oboma kódmi beží v Klaviyu a záložné odoslanie (`send-newsletter-welcome`) je nasadené z `main`. Predmet oboch: „Vitajte v Orostone. Posielame vaše dva uvítacie kódy“.
 - Veta o zľave pre nových odberateľov je v zásadách ochrany súkromia na produkcii.
-- Test na mobile, vo vstavanom prehliadači Instagramu aj Facebooku: lišta cookies, potom popup B, prihlásenie, e-mail s kódmi, WELCOME5 v pokladni pri jednej platni.
+- Martin v Klaviyu › Integrations › Meta Ads overil, že nebeží synchronizácia žiadneho zoznamu ani segmentu do publík Mety (zásady ochrany súkromia odovzdanie zoznamov nepokrývajú), a nechal ju vypnutú.
+- Martin v Events Manageri (zdroje udalostí) overil, či Shopify posiela `Purchase` cez Conversions API (časť 2).
+- Test na mobile, vo vstavanom prehliadači Instagramu aj Facebooku: lišta cookies, po 3 s popup B, prihlásenie, kód na obrazovke, e-mail s oboma kódmi, WELCOME5 v pokladni pri jednej platni. Potom s e-mailom, ktorý už odoberá: kód na obrazovke a veta, že nový e-mail nepríde.
 
 **1. Publiká** (Publiká → Vytvoriť publikum → Vlastné publikum → Webová stránka, zdroj Pixel `712209907542673`):
-- „Web 30 dní“: všetci návštevníci webovej stránky, 30 dní.
-- „Nákup 180 dní“: udalosť `Purchase`, 180 dní.
+- „Web 30 dní“: všetci návštevníci webovej stránky, 30 dní. Pri možnosti (b) z bodu 1 ho vytvoriť v deň nasadenia opravy. Meta pri vytvorení doplní spätne aj návštevy z celého okna, preto bude publikum obsahovať len návštevníkov so súhlasom až 30 dní po nasadení.
+- „Nákup nad 100 € 180 dní“: udalosť `Purchase`, spresniť parametrom `value` väčší ako 100, 180 dní (prečo, pozri časť 2).
 - Voliteľne „Tím Orostone“: `PageView` spresnené parametrom `internal_traffic`.
 - „Newsletter – web (Klaviyo)“ len po rozhodnutí podľa časti 2.
 
@@ -115,13 +133,13 @@ Celý postup končí uložením konceptu. Zverejniť (Publish) môže len Martin
 
 Prečo Návštevnosť a nie Predaj:
 - Optimalizácia na nákup potrebuje desiatky udalostí `Purchase` týždenne. Platne sa kupujú zriedka a Pixel vidí len časť nákupov.
-- Odber newslettera Pixel dnes nezaznamenáva, takže sa naň nedá optimalizovať.
+- Odber newslettera Pixel nezaznamenáva (ani v popupe B), takže sa naň nedá optimalizovať.
 - Pri malom publiku rozhoduje najmä frekvencia, nie algoritmus.
 
 K cieľu Predaj (optimalizácia na odber alebo nákup) sa oplatí vrátiť, keď web bude posielať udalosť odberu a bude jej dosť.
 
 **3. Sady reklám:** dve, líšia sa len platformou, aby `utm_source` bol `facebook` alebo `instagram`.
-- Miesto konverzie Webová stránka. Cieľ výkonu: Maximalizovať počet zobrazení vstupnej stránky (počíta sa len pri súhlase s cookies, nevadí to).
+- Miesto konverzie Webová stránka. Cieľ výkonu: Maximalizovať počet zobrazení vstupnej stránky (počíta sa len vtedy, keď sa Pixel na stránke načíta; nevadí to).
 - Publikum podľa časti 2, rozšírenie publika vypnuté.
 - Umiestnenia ručne. Sada „Facebook“: kanál, Stories, Reels. Sada „Instagram“: kanál, Stories, Reels, Preskúmať.
 - Vypnúť: Audience Network, Messenger, Threads, pravý stĺpec, Marketplace, vyhľadávanie a in-stream videá.
@@ -129,18 +147,20 @@ K cieľu Predaj (optimalizácia na odber alebo nákup) sa oplatí vrátiť, keď
 
 **4. Reklamy:** v každej sade tri reklamy (A, B, C), jeden obrázok, prispôsobenie podľa umiestnenia:
 - 4:5 pre kanály, 9:16 pre Stories a Reels, 1:1 ako záloha.
-- Webová stránka: `https://orostone.sk/produkt/<dekor>`. Do poľa Parametre URL vložiť `ponuka=zlava5&utm_source=facebook&utm_medium=paid_social&utm_campaign=retargeting-zlava5&utm_content=<variant>`. V sade Instagram vložiť `utm_source=instagram`.
+- Webová stránka: `https://orostone.sk/produkt/<dekor>`. Do poľa Parametre URL vložiť celý reťazec, `<variant>` podľa tabuľky textov:
+  - sada Facebook: `ponuka=zlava5&utm_source=facebook&utm_medium=paid_social&utm_campaign=retargeting-zlava5&utm_content=<variant>`
+  - sada Instagram: `ponuka=zlava5&utm_source=instagram&utm_medium=paid_social&utm_campaign=retargeting-zlava5&utm_content=<variant>`
 - Zobrazený odkaz: `orostone.sk`. Sledovanie: Pixel zapnutý.
 - **Vypnúť všetky vylepšenia Advantage+ kreatívy** (úpravy textu, prekrytia, hudba, animácia, rozšírenie obrázka) aj **reklamy viacerých inzerentov**. Inak Meta pridá text, ktorý neprešiel kontrolou značky.
 
-**5. Kontrola:** náhľad každého umiestnenia (text mimo zakrytých zón), odkaz otvoriť z náhľadu na mobile. Potom **Uložiť ako koncept** a poslať Martinovi.
+**5. Kontrola:** náhľad každého umiestnenia (text a popisok mimo zakrytých zón), odkaz otvoriť z náhľadu na mobile. Potom **Uložiť ako koncept** a poslať Martinovi.
 
 ### Rozpočet (NÁVRH, rozhoduje Martin)
 
-- Návrh: **5–10 € denne za celú kampaň**, teda 150–300 € za prvý mesiac. Začať pri dolnej hranici.
-- Prečo tak málo: publikum je malé (len návštevníci so súhlasom s marketingovými cookies). Viac peňazí do malého publika nezvýši dosah, len frekvenciu.
-- Prepočet podľa skutočnej veľkosti publika: týždenný rozpočet ≈ počet ľudí × cieľová frekvencia × CPM / 1 000.
-- Príklad: 3 000 ľudí, frekvencia 2 za týždeň a CPM 6 € (orientačný odhad, nie údaj z účtu) dávajú 36 € týždenne, teda okolo 5 € denne.
+- Rozpočet sa odvíja od veľkosti publika, ktorú Ads Manager ukáže až po vytvorení publika: týždenný rozpočet ≈ počet ľudí × cieľová frekvencia × CPM / 1 000.
+- Pri frekvencii 2 za týždeň a CPM 6 € (orientačný odhad, nie údaj z účtu): 1 000 ľudí ≈ 1,70 € denne, 3 000 ľudí ≈ 5 € denne, 6 000 ľudí ≈ 10 € denne.
+- 10 € denne teda až od približne 6 000 ľudí. Pri menšom publiku vyšší rozpočet nezvýši dosah, len frekvenciu nad strop 3 za 7 dní.
+- Začať podľa vzorca, po 7 dňoch upraviť podľa skutočnej frekvencie a CPM v Ads Manageri.
 
 ### Frekvencia, obmena, harmonogram
 
@@ -153,7 +173,8 @@ K cieľu Predaj (optimalizácia na odber alebo nákup) sa oplatí vrátiť, keď
 Nie je súčasťou tohto zadania. Ak by sa Martin rozhodol, treba:
 - **Kampaň Display** s publikom „návštevníci orostone.sk za 30 dní“ v režime Zacielenie, nie Pozorovanie. Performance Max nie je čistý remarketing: publikum berie len ako signál a míňa aj na nových ľudí.
 - **Zber publika:** prepojiť GA4 (`G-W3ZPVYZ9HQ`) s Google Ads a zapnúť signály pre personalizovanú reklamu, alebo pridať značku Google Ads do GTM (`GTM-WVQWKLMZ`). Či ju GTM už má, v repozitári nevidno, treba overiť v GTM.
-- **Súhlas:** web posiela `ad_storage`, `ad_user_data` a `ad_personalization` podľa marketingových cookies (`hooks/useAnalytics.ts`). Značku GA však načíta len so súhlasom s analytickými cookies, takže publikum zbiera len pri oboch súhlasoch. Zásady ochrany súkromia remarketing cez Google Ads už uvádzajú.
+- **Pozor na GTM:** `index.html` ho načíta na každej stránke 2 s po načítaní alebo pri prvej interakcii, bez ohľadu na súhlas a bez predvoleného stavu súhlasu (`gtag('consent', 'default', …)` nastaví až `hooks/useAnalytics.ts`, neskôr a predvolene „granted“). Značka Google Ads v GTM by sa spustila pred súhlasom. Naživo môže ísť len s kontrolou súhlasu (`ad_storage`, `ad_user_data`) a až keď sa pred načítaním GTM nastaví predvolené „denied“.
+- **Súhlas:** web posiela `ad_storage`, `ad_user_data` a `ad_personalization` podľa marketingových cookies a GA4 načíta podľa analytických (`hooks/useAnalytics.ts`). Oboje je predvolene zapnuté, kým návštevník na lištu neodpovie (časť 2), hoci zásady ochrany súkromia píšu, že sa Google Analytics „aktivuje iba po súhlase“. Platí rovnaké rozhodnutie ako bod 1 nižšie. Remarketing cez Google Ads zásady už uvádzajú.
 - **Veľkosť:** Display potrebuje aspoň 100 aktívnych používateľov za 30 dní.
 - **Kreatívy:** responzívna obsahová reklama. Obrázky 1200 × 628 a 1200 × 1200, logo 1200 × 1200, krátke nadpisy do 30 znakov, dlhý nadpis a popisy do 90 znakov. Texty prevziať z variantov A–C.
 - **Odkaz:** vstupná stránka s `?ponuka=zlava5`. Atribúciu rieši automatické označovanie (gclid), UTM netreba.
@@ -162,17 +183,20 @@ Nie je súčasťou tohto zadania. Ak by sa Martin rozhodol, treba:
 
 | Kde | Čo sledovať | Pozor |
 |---|---|---|
-| **GA4** | Prehľady → Akvizícia → Akvizícia návštevnosti, kampaň relácie `retargeting-zlava5`. Varianty porovná dimenzia s `utm_content`. Udalosti `sign_up` a `purchase` v týchto reláciách. | Len návštevníci so súhlasom s analytickými cookies. Popup A posiela `sign_up` s `method: newsletter_popup`, hodnotu pre popup B treba overiť v jeho kóde. |
+| **GA4** | Prehľady → Akvizícia → Akvizícia návštevnosti, kampaň relácie `retargeting-zlava5`. Varianty porovná dimenzia s `utm_content`. Udalosti `sign_up` a `purchase` v týchto reláciách. Popup B posiela `sign_up` s `method: newsletter_popup_zlava5` a parametrom `offer_source` (`reklama` pri návšteve z reklamy, inak `web`). Popup A posiela `method: newsletter_popup`. | Len návštevníci, ktorí analytické cookies neodmietli (predvolene zapnuté, časť 2). `offer_source` treba v GA4 zaregistrovať ako vlastnú dimenziu (rozsah udalosť), inak ho prehľady neukážu. |
 | **Shopify** | Zľavy → WELCOME5: počet použití. Analytika → Prehľady → Predaj podľa zľavy. | Počet zahŕňa všetkých nových odberateľov z akéhokoľvek formulára, nielen ľudí z reklamy. UTM do objednávky prenáša web len pri košíku platní (`context/CartContext.tsx`). |
-| **Klaviyo** | Segment s vlastnosťou `zdroj_odberu` = `popup_zlava5` a rast zoznamu Newsletter – web. | `subscribe-newsletter` zapisuje `zdroj_odberu` len novému profilu, preto je počet dolný odhad. Popup B sa ukazuje aj bez reklamy, preto počet `popup_zlava5` zahŕňa aj odbery mimo reklamy. |
-| **Meta** | Dosah, frekvencia, CTR (odkaz), zobrazenia vstupnej stránky a cena za ne, porovnanie A, B, C. | Nákupy v Mete sú len orientačné (Pixel so súhlasom, bez serverových udalostí). |
+| **Klaviyo** | Segment s vlastnosťou `zdroj_odberu` = `popup_zlava5_reklama` (popup B v návšteve z reklamy) a pre porovnanie `popup_zlava5` (popup B mimo reklamy). Rast zoznamu Newsletter – web. | `subscribe-newsletter` zapisuje `zdroj_odberu` len novému profilu, preto je počet dolný odhad. Nezávisí od súhlasu s cookies. |
+| **Meta** | Dosah, frekvencia, CTR (odkaz), zobrazenia vstupnej stránky a cena za ne, porovnanie A, B, C. | Nákupy v Mete sú len orientačné: Pixel ich posiela zo stránky poďakovania, aj pri vzorkách. Či prichádzajú aj cez Conversions API zo Shopify, overiť v Events Manageri. Popup B Mete žiadnu udalosť neposiela. |
 
-**Výsledok po 14 dňoch:** cena za odberateľa z reklamy = útrata ÷ počet `sign_up` v reláciách `retargeting-zlava5` (GA4). K tomu objednávky s WELCOME5 a víťazný variant na ďalšiu obmenu.
+**Výsledok po 14 dňoch:** cena za odberateľa z reklamy = útrata ÷ počet nových profilov so `zdroj_odberu` = `popup_zlava5_reklama` (Klaviyo). Pre kontrolu `sign_up` s `offer_source` = `reklama` v GA4. K tomu objednávky s WELCOME5 a víťazný variant na ďalšiu obmenu.
 
 ## Na rozhodnutie pre Martina
 
-1. Rozpočet (návrh 5–10 € denne) a dátum spustenia po splnení bodu 0.
-2. Česko áno alebo nie (platne doručujeme len na Slovensku, odporúčam nie).
-3. Vylúčenie odberateľov: doplniť zásady a synchronizovať zoznam z Klaviya, alebo udalosť Pixelu pri odbere (zmena webu), alebo zatiaľ bez vylúčenia.
-4. Dve sady reklám (`utm_source` = `facebook` / `instagram`), alebo jedna sada s `{{site_source_name}}` (`fb` / `ig`).
-5. Pri publiku pod 1 000 ľudí predĺžiť okno z 30 na 60 dní.
+1. **Súhlas s cookies pred spustením.** Pixel a GA4 sa dnes načítajú, kým návštevník na lištu cookies neodpovie (časť 2), a Martin to ponechal (PR #148). Publikum „Web 30 dní“ preto zahrnie aj ľudí, ktorí na lištu neodpovedali. Zásady ochrany súkromia sľubujú Pixel až po súhlase a podmienky Mety pre Business Tools vyžadujú pri návštevníkoch z EÚ právny základ (súhlas). Možnosti:
+   - (a) spustiť tak, ako je, na zodpovednosť majiteľa;
+   - (b) najprv samostatnou úpravou kódu načítať Pixel až po výslovnom súhlase a publikum vytvoriť od dňa nasadenia (časť 4, bod 1).
+2. Rozpočet podľa veľkosti publika (vzorec v časti 4; 10 € denne až od približne 6 000 ľudí) a dátum spustenia po splnení bodu 0.
+3. Česko áno alebo nie (platne doručujeme len na Slovensku, odporúčam nie).
+4. Vylúčenie odberateľov: doplniť zásady a potom synchronizovať zoznam z Klaviya, alebo udalosť Pixelu pri odbere (zmena webu), alebo zatiaľ bez vylúčenia.
+5. Dve sady reklám (`utm_source` = `facebook` / `instagram`), alebo jedna sada s `{{site_source_name}}` (`fb` / `ig`).
+6. Pri publiku pod 1 000 ľudí predĺžiť okno z 30 na 60 dní.
