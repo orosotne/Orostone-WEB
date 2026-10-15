@@ -1,6 +1,6 @@
 # OROSTONE — Premium Sintered Stone Surfaces
 
-> OROSTONE is a Slovak premium supplier of sintered stone (sinterovaný kameň) for kitchen countertops, bathroom vanities, wall cladding, and architectural projects. Based in Bratislava, Slovakia. We provide end-to-end service: expert consultation, digital laser templating (±0.05mm precision), CNC diamond fabrication, A-frame transport, and professional installation carried out by partner stonemasons experienced with large-format slabs. All projects completed in 10–15 working days.
+> OROSTONE is a Slovak premium supplier of sintered stone (sinterovaný kameň) for kitchen countertops, kitchen islands, backsplashes, bathrooms, and wall cladding. Registered office in Bratislava, showroom with full slabs in Bošany, Slovakia. We help you choose a decor, sell whole slabs (3200 × 1600 × 12 mm), deliver them across Slovakia, and coordinate the project. Measuring (by hand, on site), fabrication, transport of the finished pieces, and installation are done and invoiced by a partner stonemason — one we recommend or one you choose.
 
 > For the full, detailed version of this document (product specs, FAQs, legal details), see: https://orostone.sk/llms-full.txt
 
@@ -10,8 +10,25 @@
 - Withstands temperatures up to 300°C, UV radiation, acids, and scratches
 - Near-zero porosity (under 0.1%) — stain-proof without sealing
 - Orostone catalog: 12 mm slabs in 3200 × 1600 mm format (the material itself also exists in 3 mm and 20 mm variants)
-- Mohs hardness 6–7, breaking force up to 16,000N for 20mm slabs
+- Mohs hardness 7+, breaking force up to 16,000N for 20mm slabs
 - Popular finishes: matte, polished, leather/textured
+- Material price: {{SLAB_PRICE_MIN}}–{{SLAB_PRICE_MAX}} €/m² incl. VAT depending on the decor. Orostone sells whole slabs only: {{SLAB_TOTAL_MIN}}–{{SLAB_TOTAL_MAX}} € per slab incl. VAT, −{{BULK_PERCENT}} % from {{BULK_QTY}} slabs. A typical kitchen needs 1–2 slabs.
+- Fabrication and installation: the partner stonemason's orientation rate is ≈ {{INSTALLATION_RATE}} €/m² incl. VAT (measuring, transport, edge processing, polishing, installation). The stonemason invoices this work; it is not part of Orostone's material price.
+- Samples (10 × 10 cm): the first sample is free, each further sample costs 4.90 € and shipping 2.50 € (incl. VAT), max. three samples per order
+- Warranty: 24 months on the material; the stonemason gives the warranty on fabrication and installation
+- Delivery: Slovakia only; stock slabs typically within 3–5 working days
+
+## Key Pages
+
+- Price list: https://orostone.sk/cennik
+- Order samples (first sample free): https://orostone.sk/vzorky
+- All decors: https://orostone.sk/kategoria/sintered-stone
+- Sintered stone kitchens: https://orostone.sk/kuchyne
+- Completed projects: https://orostone.sk/realizacie
+- What sintered stone is: https://orostone.sk/sinterovany-kamen
+- Shipping and payment: https://orostone.sk/doprava
+- Complaints and returns: https://orostone.sk/reklamacie
+- Contact: https://orostone.sk/kontakt
 
 {{PRODUCT_CATALOG}}
 
@@ -22,19 +39,20 @@
 ## Services
 
 - Free no-obligation consultation and showroom visits
-- Digital laser templating with ±0.05mm precision
-- CNC diamond-tool fabrication (two-pass cutting standard)
-- In-house transport in custom A-frame vehicles
-- Professional installation by partner stonemasons experienced with sintered stone
-- Extended warranty and after-sales repair service
+- Help choosing a decor that works on a large surface — full slabs on display in the Bošany showroom
+- Sale of whole sintered stone slabs and specialised delivery across Slovakia
+- Project coordination with the partner stonemason: on-site measuring by hand, CNC fabrication, transport, installation, and fitting of the sink and hob
+- Slabs prepared to your exact dimensions only by written agreement
+- Price reservation: a 99 € fee guarantees current Orostone prices for 6 months
 
 ## Contact
 
 - Website: https://orostone.sk
 - E-shop: https://orostone.sk
-- Email: info@orostone.sk
+- Quotes and inquiries: dopyt@orostone.sk
+- Administration and invoices: info@orostone.sk
 - Phone: +421 917 588 738
 - Showroom: SNP 113/1, 956 18 Bošany, Slovakia — Mon–Fri 9:00–17:00, weekends by appointment
 - Commercial offices and registered office: Landererova 8, 811 09 Bratislava, Slovakia. Full slabs are displayed only at the Bošany showroom.
 - Languages: Slovak, English
-- Instagram: https://www.instagram.com/orostone.sk/
+{{SOCIAL_LINKS}}

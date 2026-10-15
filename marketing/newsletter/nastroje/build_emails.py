@@ -1527,7 +1527,7 @@ write("18-kampan-zo-zakulisia.html", doc(
                   "Častice sa spoja a vznikne celistvý povrch bez pórov."),
         note("Ilustračné zábery výroby."),
         section_title(None, "Čo to znamená pre vašu kuchyňu", top=28),
-        facts([("Nasiakavosť", "< 0,1 %"), ("Tepelná odolnosť", "> 300 °C"), ("Tvrdosť", "6–8 Mohs"), ("Zloženie", "100 % minerálov")], top=12),
+        facts([("Nasiakavosť", "< 0,1 %"), ("Tepelná odolnosť", "> 300 °C"), ("Tvrdosť", "Mohs 7+"), ("Zloženie", "100 % minerálov")], top=12),
         quote_dark("Prečo na tom záleží", 'Bez živíc a bez pórov nemá škvrna kam vniknúť a teplo nemá čo roztaviť. Preto doska <strong style="font-weight:700; font-style:normal; color:#ECD488;">nepotrebuje impregnáciu</strong> a horúci hrniec jej neublíži.', top=24),
         cta("Objednať vzorku", SITE + "/vzorky", sub="Prvá vzorka je zadarmo. S kódom VITAJTE neplatíte ani poštovné. Môžete ho použiť na jednu objednávku.", link=("Prečítať viac o sinterovanom kameni", SITE + "/sinterovany-kamen"), width=260),
         ps("Na <a href=\"" + SITE + "/blog/od-merania-po-instalaciu-proces-orostone\" target=\"_blank\" style=\"color:#1A1A1A; text-decoration:underline;\">blogu</a> sme opísali, ako kamenár premení platňu na hotovú dosku – od zamerania po montáž."),

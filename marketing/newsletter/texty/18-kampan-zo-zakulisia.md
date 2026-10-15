@@ -54,7 +54,7 @@ Nasiakavosť
 Tepelná odolnosť
 > 300 °C
 Tvrdosť
-6–8 Mohs
+Mohs 7+
 Zloženie
 100 % minerálov
 

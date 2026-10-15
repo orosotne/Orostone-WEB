@@ -138,7 +138,7 @@ Stoji to par eur navyse. Opravu chipu par stoviek.
 ### Priklad:
 ```
 ❌ "Sinterovany kamen je velmi tvrdy."
-✅ "Sinterovany kamen dosahuje tvrdost 7-8 na Mohsovej stupnici — 
+✅ "Sinterovany kamen dosahuje tvrdost 7+ na Mohsovej stupnici — 
     to je porovnatelne s kvarcom. Pre porovnanie, noz ma tvrdost 5,5."
 
 ❌ "Material je tepelne odolny."
