@@ -236,6 +236,19 @@ if (!existsSync(llmsPath)) {
 if (!existsSync(resolve(DIST, 'llms-full.txt'))) fail('dist/llms-full.txt missing');
 
 // ---------------------------------------------------------------------------
+// 5. 404 page — served by Vercel with HTTP 404 for every unknown URL
+// ---------------------------------------------------------------------------
+
+const notFoundPath = resolve(DIST, '404.html');
+if (!existsSync(notFoundPath)) {
+  fail('dist/404.html missing (unknown URLs would get the Vercel default page)');
+} else {
+  const notFound = readFileSync(notFoundPath, 'utf-8');
+  if (!/<meta name="robots" content="noindex/.test(notFound)) fail('dist/404.html is not noindex');
+  if (/<link rel="canonical"/.test(notFound)) fail('dist/404.html must not have a canonical');
+}
+
+// ---------------------------------------------------------------------------
 // Result
 // ---------------------------------------------------------------------------
 

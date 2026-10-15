@@ -16,7 +16,16 @@ import { resolve } from 'node:path';
 import { buildRouteRegistry, loadFallbackProducts, BASE_URL, type RouteEntry } from './lib/routes';
 import { getPublishedArticles } from '../data/blogArticles';
 import { LLMS_PRODUCT_CONTENT } from '../data/llmsProductBlurbs';
-import { SLAB_PRICE_MIN, SLAB_PRICE_MAX } from '../data/pricing';
+import {
+  SLAB_PRICE_MIN,
+  SLAB_PRICE_MAX,
+  SLAB_TOTAL_MIN,
+  SLAB_TOTAL_MAX,
+  BULK_DISCOUNT,
+  INSTALLATION_RATE_PER_M2,
+  MARKET_SINTERED_PER_BM,
+} from '../data/pricing';
+import { OROSTONE_BUSINESS_GRAPH_LD, OROSTONE_MAPS_URL } from '../lib/businessSchema';
 import { calculateSlabPrice, slabAreaM2 } from '../lib/slab';
 
 const ROOT = resolve(process.cwd());
@@ -66,7 +75,6 @@ function productCatalogShort(products: any[]): string {
       `- ${priceLine(p)}`,
       `- ${curated?.blurb || p.metaDescription || ''}`,
     ];
-    if (p.keywords?.length) lines.push(`- Keywords: ${p.keywords.join(', ')}`);
     return lines.join('\n');
   });
 
@@ -89,7 +97,6 @@ function productCatalogFull(products: any[]): string {
     if (curated?.finishes) lines.push(`- Finishes: ${curated.finishes}`);
     if (curated?.special) lines.push(`- Special: ${curated.special}`);
     if (!curated) lines.push(`- ${p.metaDescription || ''}`);
-    if (p.keywords?.length) lines.push(`- SEO keywords: ${p.keywords.join(', ')}`);
     return lines.join('\n');
   });
 
@@ -104,6 +111,33 @@ function blogList(): string {
     })
     .join('\n');
 }
+
+// Profiles come from the JSON-LD sameAs (lib/businessSchema.ts), so llms.txt
+// can never point to a different account than the structured data.
+const SOCIAL_LABELS: Record<string, string> = {
+  'www.instagram.com': 'Instagram',
+  'www.facebook.com': 'Facebook',
+  'www.youtube.com': 'YouTube',
+};
+
+function socialLinks(): string {
+  const org = OROSTONE_BUSINESS_GRAPH_LD['@graph'][0] as { sameAs: string[] };
+  return [
+    ...org.sameAs.map((url) => `- ${SOCIAL_LABELS[new URL(url).hostname] ?? new URL(url).hostname}: ${url}`),
+    `- Google Maps (Bošany showroom): ${OROSTONE_MAPS_URL}`,
+  ].join('\n');
+}
+
+// Live price facts shared by both llms templates (data/pricing.ts).
+const PRICE_MARKERS = {
+  SLAB_PRICE_MIN: eur(SLAB_PRICE_MIN),
+  SLAB_PRICE_MAX: eur(SLAB_PRICE_MAX),
+  SLAB_TOTAL_MIN: String(SLAB_TOTAL_MIN),
+  SLAB_TOTAL_MAX: String(SLAB_TOTAL_MAX),
+  BULK_PERCENT: String(BULK_DISCOUNT.discountPercent),
+  BULK_QTY: String(BULK_DISCOUNT.quantity),
+  INSTALLATION_RATE: String(INSTALLATION_RATE_PER_M2),
+};
 
 function blogInsights(): string {
   return getPublishedArticles()
@@ -212,6 +246,8 @@ writeFileSync(
   fillTemplate('llms.template.txt', {
     PRODUCT_CATALOG: productCatalogShort(products),
     BLOG_ARTICLES: blogList(),
+    SOCIAL_LINKS: socialLinks(),
+    ...PRICE_MARKERS,
   }),
   'utf-8',
 );
@@ -222,8 +258,10 @@ writeFileSync(
   fillTemplate('llms-full.template.txt', {
     PRODUCT_CATALOG_FULL: productCatalogFull(products),
     BLOG_INSIGHTS: blogInsights(),
-    SLAB_PRICE_MIN: eur(SLAB_PRICE_MIN),
-    SLAB_PRICE_MAX: eur(SLAB_PRICE_MAX),
+    SOCIAL_LINKS: socialLinks(),
+    ...PRICE_MARKERS,
+    MARKET_BM_MIN: String(MARKET_SINTERED_PER_BM.min),
+    MARKET_BM_MAX: String(MARKET_SINTERED_PER_BM.max),
   }),
   'utf-8',
 );

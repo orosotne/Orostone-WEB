@@ -83,7 +83,7 @@ export const ARTICLE_06: BlogArticle = {
 <tr><th>Vlastnosť</th><th>Sinterovaný kameň</th><th>Kvarcit (kompozit)</th><th>Porcelánové dosky</th><th>Keramika</th></tr>
 </thead>
 <tbody>
-<tr><td><strong>Tvrdosť (Mohs)</strong></td><td>7 – 8</td><td>6 – 7</td><td>8 – 9</td><td>4 – 6</td></tr>
+<tr><td><strong>Tvrdosť (Mohs)</strong></td><td>7+</td><td>6 – 7</td><td>8 – 9</td><td>4 – 6</td></tr>
 <tr><td><strong>Tepelná odolnosť</strong></td><td>300\u00A0°C+ (bez poškodenia)</td><td>~150\u00A0°C (živica sa rozkladá)</td><td>300\u00A0°C+ (bez živíc)</td><td>200\u00A0°C+</td></tr>
 <tr><td><strong>Absorpcia vody</strong></td><td>&lt;0,1\u00A0%</td><td>&lt;0,1\u00A0%</td><td>&lt;0,05\u00A0%</td><td>3 – 7\u00A0%</td></tr>
 <tr><td><strong>UV odolnosť</strong></td><td>Vynikajúca (bez živíc)</td><td>Slabá (živice sa degradujú)</td><td>Vynikajúca</td><td>Dobrá (glazúra chráni)</td></tr>
@@ -96,7 +96,7 @@ export const ARTICLE_06: BlogArticle = {
 
 <h3>Čo tie čísla skutočne znamenajú pre vás</h3>
 
-<p><strong>Tvrdosť 7 – 8 Mohs</strong> znamená, že sinterovaný kameň je tvrdší ako väčšina kuchynských nožov (5,5 – 6 Mohs). Porcelán je paradoxne ešte tvrdší (8 – 9), ale tá extra tvrdosť znamená aj vyššiu krehkosť – porcelánové dosky sa ľahšie odštiepia pri nárazoch.</p>
+<p><strong>Tvrdosť Mohs 7+</strong> znamená, že sinterovaný kameň je tvrdší ako väčšina kuchynských nožov (5,5 – 6 Mohs). Porcelán je paradoxne ešte tvrdší (8 – 9), ale tá extra tvrdosť znamená aj vyššiu krehkosť – porcelánové dosky sa ľahšie odštiepia pri nárazoch.</p>
 
 <p><strong>Tepelná odolnosť 300\u00A0°C+</strong> pri sinterovanom kameni je reálna výhoda. Môžete naň položiť horúci hrniec priamo z plameňa bez obáv. Pri kvarcite toto robte len s podložkou – 150\u00A0°C je teplota, ktorú bežný hrniec po 5 minútach na sporáku ľahko prekročí.</p>
 
@@ -409,7 +409,7 @@ export const ARTICLE_06: BlogArticle = {
 <tr><th>Property</th><th>Sintered Stone</th><th>Engineered Quartz</th><th>Porcelain Slabs</th><th>Ceramic</th></tr>
 </thead>
 <tbody>
-<tr><td><strong>Hardness (Mohs)</strong></td><td>7–8</td><td>6–7</td><td>8–9</td><td>4–6</td></tr>
+<tr><td><strong>Hardness (Mohs)</strong></td><td>7+</td><td>6–7</td><td>8–9</td><td>4–6</td></tr>
 <tr><td><strong>Heat resistance</strong></td><td>300°C+ (no damage)</td><td>~150°C (resin breaks down)</td><td>300°C+ (no resins)</td><td>200°C+</td></tr>
 <tr><td><strong>Water absorption</strong></td><td>&lt;0.1%</td><td>&lt;0.1%</td><td>&lt;0.05%</td><td>3–7%</td></tr>
 <tr><td><strong>UV resistance</strong></td><td>Excellent (no resins)</td><td>Poor (resins degrade)</td><td>Excellent</td><td>Good (glaze protects)</td></tr>
@@ -422,7 +422,7 @@ export const ARTICLE_06: BlogArticle = {
 
 <h3>What Those Numbers Actually Mean for You</h3>
 
-<p><strong>7–8 Mohs hardness</strong> means sintered stone is harder than most kitchen knives (5.5–6 Mohs). Porcelain is paradoxically even harder (8–9), but that extra hardness also means higher brittleness — porcelain slabs chip more easily on impact.</p>
+<p><strong>Mohs hardness of 7+</strong> means sintered stone is harder than most kitchen knives (5.5–6 Mohs). Porcelain is paradoxically even harder (8–9), but that extra hardness also means higher brittleness — porcelain slabs chip more easily on impact.</p>
 
 <p><strong>300°C+ heat resistance</strong> in sintered stone is a real advantage. You can place a hot pan directly from the flame without concern. With quartz, always use a trivet — 150°C is a temperature a regular pot can easily exceed after 5 minutes on the stove.</p>
 

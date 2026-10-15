@@ -60,7 +60,7 @@ export const ARTICLE_23: BlogArticle = {
 <div class="article-highlight">
   <ul>
     <li><strong>Pórovitosť pod 0,1\u00A0%</strong> – baktérie a škvrny neprenikajú do povrchu</li>
-    <li><strong>Odolnosť voči škrabancom</strong> – tvrdosť 6 – 7 Mohs (nôž kameň nepoškriabe)</li>
+    <li><strong>Odolnosť voči škrabancom</strong> – tvrdosť Mohs 7+ (nôž kameň nepoškriabe)</li>
     <li><strong>Tepelná odolnosť nad 300\u00A0°C</strong> – horúce hrnce priamo na dosku</li>
     <li><strong>UV stabilita</strong> – farba sa nemení ani pri priamom slnečnom svetle (dôležité pri ostrovčeku pri okne)</li>
     <li><strong>Veľkoformátové platne</strong> – jeden kus až do 3\u00A0200\u00A0×\u00A01\u00A0600\u00A0mm = menej spojov</li>

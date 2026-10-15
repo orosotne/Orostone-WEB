@@ -313,7 +313,7 @@ export const ARTICLE_16: BlogArticle = {
       },
       {
         question: 'Prečo je spracovanie sinterovaného kameňa také drahé?',
-        answer: 'Sinterovaný kameň je extrémne tvrdý materiál (7 – 8 Mohs). Vyžaduje špecializované CNC stroje s diamantovými nástrojmi, skúsených technikov a pomalšie rezné rýchlosti. Výrezy pre drez a varný panel sú najnáročnejšie operácie. Výsledkom je dokonalá presnosť – ale za vyššiu cenu spracovania.'
+        answer: 'Sinterovaný kameň je extrémne tvrdý materiál (Mohs 7+). Vyžaduje špecializované CNC stroje s diamantovými nástrojmi, skúsených technikov a pomalšie rezné rýchlosti. Výrezy pre drez a varný panel sú najnáročnejšie operácie. Výsledkom je dokonalá presnosť – ale za vyššiu cenu spracovania.'
       },
       {
         question: 'Koľko ušetrím na údržbe oproti žule za 25 rokov?',
@@ -639,7 +639,7 @@ export const ARTICLE_16: BlogArticle = {
       },
       {
         question: 'Why is sintered stone fabrication so expensive?',
-        answer: 'Sintered stone is an extremely hard material (7–8 Mohs). It requires specialized CNC machines with diamond tools, experienced technicians, and slower cutting speeds. Cutouts for sinks and cooktops are the most demanding operations. The result is perfect precision — but at a higher fabrication cost.'
+        answer: 'Sintered stone is an extremely hard material (Mohs 7+). It requires specialized CNC machines with diamond tools, experienced technicians, and slower cutting speeds. Cutouts for sinks and cooktops are the most demanding operations. The result is perfect precision — but at a higher fabrication cost.'
       },
       {
         question: 'How much will I save on maintenance compared to granite over 25 years?',
