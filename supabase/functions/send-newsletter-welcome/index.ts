@@ -185,7 +185,7 @@ serve(async (req) => {
                   </span>
                 </div>
                 <p class="email-subtext" style="margin: 12px 0 0 0; font-size: 13px; font-weight: 400; color: #5F5E5A; line-height: 1.5;">
-                  V&nbsp;pokladni zadajte kód ${SLAB_DISCOUNT_CODE}. Platí na jednu objednávku a&nbsp;nedá sa kombinovať so žiadnou inou zľavou&nbsp;– ani so zľavou 20&nbsp;%, ktorú e-shop odpočíta automaticky pri objednávke od troch platní.
+                  V&nbsp;pokladni zadajte kód ${SLAB_DISCOUNT_CODE}. Platí na jednu objednávku a&nbsp;nedá sa kombinovať so žiadnou inou zľavou&nbsp;– ani so zľavou 20&nbsp;%, ktorú e-shop odpočíta automaticky pri objednávke troch alebo viacerých platní.
                 </p>
                 <p style="margin: 14px 0 0 0; font-size: 12px;">
                   <a href="${DECORS_URL}" class="footer-link"
@@ -199,7 +199,7 @@ serve(async (req) => {
             <tr>
               <td class="email-body" style="background-color: #ffffff; padding: 0 40px 36px 40px; text-align: center;">
                 <p class="email-subtext" style="margin: 0; font-size: 13px; font-weight: 400; color: #5F5E5A; line-height: 1.6;">
-                  Kódy uplatníte len v&nbsp;e-shope orostone.sk, nie pri objednávke po telefóne ani na základe cenovej ponuky. Na vzorku zadajte ${DISCOUNT_CODE}. ${SLAB_DISCOUNT_CODE} si nechajte na objednávku platní&nbsp;– platí len raz a&nbsp;v&nbsp;pokladni by sa minul aj na vzorke.
+                  Kódy uplatníte len v&nbsp;e-shope orostone.sk, nie pri objednávke po telefóne ani na základe cenovej ponuky. Na vzorku zadajte ${DISCOUNT_CODE}, na platne ${SLAB_DISCOUNT_CODE}.
                 </p>
               </td>
             </tr>

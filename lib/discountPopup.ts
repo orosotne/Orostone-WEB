@@ -23,7 +23,7 @@ export const SLAB_DISCOUNT_CODE = 'WELCOME5'; // 5 % on the 12 decor slabs, once
  * Short terms of WELCOME5, the same in both pop-ups (the e-mails carry the full wording). U+00A0 before % and after
  * one-letter words, as &nbsp; in JSX.
  */
-export const SLAB_CODE_TERMS = `Kód ${SLAB_DISCOUNT_CODE} môžete použiť raz, pri objednávke platní v\u00A0e-shope orostone.sk. Nedá sa kombinovať so žiadnou inou zľavou, ani so zľavou 20\u00A0% od troch platní.`;
+export const SLAB_CODE_TERMS = `Kód ${SLAB_DISCOUNT_CODE} môžete použiť iba raz a\u00A0len pri objednávke platní v\u00A0e-shope orostone.sk. Nedá sa kombinovať so žiadnou inou zľavou, ani so zľavou 20\u00A0% od troch platní.`;
 
 /**
  * Photo of pop-up B, the one place to swap it (the final hero comes from Higgsfield): `base` names the files
