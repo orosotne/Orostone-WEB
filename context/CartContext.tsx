@@ -12,6 +12,7 @@ import {
   type ShopifyCartLine,
 } from '../services/shopify.service';
 import { trackMetaEvent } from '../hooks/useMetaPixel';
+import { trackKlaviyoEvent } from '../hooks/useKlaviyo';
 import { trackGA4AddToCart } from '../services/analytics';
 import { getUTMForCheckout } from '../hooks/useUTMTracking';
 import { onIdle } from '../lib/utils';
@@ -304,6 +305,30 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
           num_items: quantity,
         });
         trackGA4AddToCart({ id: variantId, name: line.node.merchandise.title, price, quantity });
+        // Klaviyo „Added to Cart“ (pripomenutie košíka odberateľom newslettera); vlastnosti
+        // v tvare, aký Klaviyo používa pre túto udalosť, plus handle pre fotku a odkaz v e-maile
+        const product = line.node.merchandise.product;
+        trackKlaviyoEvent('Added to Cart', {
+          $value: price * quantity,
+          AddedItemProductName: product.title,
+          AddedItemProductID: product.handle,
+          AddedItemVariantName: line.node.merchandise.title,
+          AddedItemPrice: price,
+          AddedItemQuantity: quantity,
+          AddedItemURL: `${SITE_URL}/produkt/${product.handle}`,
+          AddedItemImageURL: line.node.merchandise.image?.url ?? product.images.edges[0]?.node.url ?? '',
+          ItemNames: updatedCart.lines.edges.map(({ node }) => node.merchandise.product.title),
+          CheckoutURL: updatedCart.checkoutUrl,
+          Items: updatedCart.lines.edges.map(({ node }) => ({
+            ProductName: node.merchandise.product.title,
+            ProductID: node.merchandise.product.handle,
+            VariantName: node.merchandise.title,
+            Quantity: node.quantity,
+            ItemPrice: parseFloat(node.cost?.amountPerQuantity?.amount ?? '0'),
+            RowTotal: parseFloat(node.cost?.totalAmount?.amount ?? '0'),
+            ProductURL: `${SITE_URL}/produkt/${node.merchandise.product.handle}`,
+          })),
+        });
       }
     } catch (err) {
       console.error('Chyba pri pridani do kosika:', err);

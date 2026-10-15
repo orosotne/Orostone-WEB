@@ -397,6 +397,29 @@ def facts(items, top=20):
 """
 
 
+def cart_items(label, top=24):
+    """Položky košíka z udalosti Klaviyo (event.Items z webu): názov dekoru, variant a množstvo.
+    Bez cien – tie ukáže pokladňa, kde sa počíta aj doprava a zľava."""
+    return f"""
+        <!-- POLOŽKY KOŠÍKA -->
+        <tr>
+          <td class="px-40" style="padding:{top}px 40px 0;">
+            <div style="font-family:{F}; font-size:10px; font-weight:700; letter-spacing:0.24em; text-transform:uppercase; color:{GOLD_INK}; margin-bottom:4px;">{label}</div>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-bottom:1px solid {LINE};">
+              {{% for item in event.Items %}}
+              <tr>
+                <td valign="top" style="padding:14px 0; border-top:1px solid {LINE};">
+                  <div class="t-title" style="font-family:{F}; font-size:15px; font-weight:700; line-height:22px; color:{INK};">{{{{ item.ProductName|title }}}}</div>
+                  <div class="t-small" style="font-family:{F}; font-size:13.5px; font-weight:400; line-height:22px; color:{GRAY}; margin-top:2px;">{{% if item.VariantName and item.VariantName != 'Default Title' %}}{{{{ item.VariantName }}}} &middot; {{% endif %}}{{{{ item.Quantity }}}}&nbsp;ks</div>
+                </td>
+              </tr>
+              {{% endfor %}}
+            </table>
+          </td>
+        </tr>
+"""
+
+
 def quote_dark(label, body_html, attribution=None, top=24):
     att = f"""
                   <div style="font-family:{F}; font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:#9CA3AF; margin-top:14px;">{attribution}</div>""" if attribution else ""
@@ -2137,6 +2160,47 @@ write_nb("35-kampan-newsletter-pravidelne.html", doc(
         ps('Ak už máte pôdorys kuchyne, pošlite nám ho v odpovedi na tento e-mail. <strong style="font-weight:700; color:#1A1A1A;">Pripravíme orientačné cenové rozpätie</strong> pre váš projekt – nezáväzne.'),
         signature(top=0),
         footer(),
+    ]))
+
+# Udalosť „Added to Cart“ z webu orostone.sk (hooks/useKlaviyo.ts, context/CartContext.tsx):
+# názov a handle dekoru, uložený košík v pokladni Shopify a položky košíka.
+KOSIK_NAZOV = "{{ event.AddedItemProductName|default:'Taj Mahal'|title }}"
+KOSIK_HANDLE = "{{ event.AddedItemProductID|default:'taj-mahal' }}"
+KOSIK_CHECKOUT = "{{ event.CheckoutURL|default:'" + SITE + "' }}"
+REASON_KOSIK_WEB = "Tento e-mail ste dostali, pretože odoberáte novinky Orostone a v e-shope orostone.sk ste si vložili dekor do košíka."
+
+# 36 – Košík z webu: dekor vložený do košíka (odberatelia newslettera)
+write_nb("36-automatizacia-kosik-dekor.html", doc(
+    {
+        "TYP:": "Automatizácia · Košík z webu",
+        "SPÚŠŤAČ:": "2 hodiny po vložení dekoru do košíka na orostone.sk bez začatia pokladne a bez objednávky (Klaviyo: Added to Cart z webu)",
+        "PREDMET:": "Váš dekor čaká v košíku",
+        "PREHEADER:": "Košík sme vám uložili. Dokončíte ho jedným kliknutím, alebo si dekor najprv overte na vzorke.",
+        "CIEĽ:": "Dokončiť objednávku, alebo urobiť ďalší krok (vzorka, celá platňa, pôdorys). Bez zľavy.",
+        "POZNÁMKA:": "Len odberatelia so súhlasom, ktorých web rozpoznal po príchode z nášho e-mailu. Názov dekoru, fotka platne, položky a odkazy sú dynamické z udalosti; bez údajov Taj Mahal. Tlačidlo vedie do pokladne Shopify s uloženým košíkom.",
+    },
+    "Váš dekor čaká v košíku",
+    "Košík sme vám uložili. Dokončíte ho jedným kliknutím, alebo si dekor najprv overte na vzorke.",
+    [
+        header(),
+        eyebrow("Váš košík na orostone.sk"),
+        headline(KOSIK_NAZOV + " čaká<br />" + accent_light("v košíku.")),
+        hero(IMG + "dekor-mockup-" + KOSIK_HANDLE + "-1040.jpg", "Celá platňa " + KOSIK_NAZOV + " vedľa človeka na porovnanie veľkosti", capsule=KOSIK_NAZOV + " · celá platňa 3200 × 1600 mm", top=14),
+        text([
+            "dekor " + KOSIK_NAZOV + " ste si na orostone.sk vložili do košíka a objednávku ste zatiaľ nedokončili. Košík sme vám uložili, nič sa nestratilo.",
+            "Ak ste sa ešte nerozhodli, je to v poriadku. Pracovná doska sa vyberá raz a nerozhoduje o nej malá vzorka ani cena, ale to, ako kresba vyzerá na celej ploche a ako sa doska používa každý deň.",
+        ], top=24),
+        cart_items("V košíku máte", top=8),
+        cta("Dokončiť objednávku", KOSIK_CHECKOUT, sub="Tlačidlo otvorí váš uložený košík v pokladni.", link=("Pozrieť dekor znova", SITE + "/produkt/" + KOSIK_HANDLE), width=260),
+        section_title(None, "Ak ešte váhate", top=28),
+        numbered([
+            ("Vzorka v rukách", "Prvá vzorka je zadarmo. Priložte ju k dvierkam a k podlahe pri svojom svetle – uvidíte viac než na obrazovke."),
+            ("Celá platňa", "Na stránke dekoru je fotka platne 3200 × 1600&nbsp;mm vedľa človeka. Ukáže, ako sa kresba rozloží po dĺžke pracovnej dosky."),
+            ("Pôdorys", "Pošlite pôdorys alebo rozmery v odpovedi na tento e-mail. Navrhneme rozloženie platní a pripravíme orientačné cenové rozpätie."),
+        ], top=8),
+        ps("Ak váhate medzi dvoma dekormi, odpovedzte na tento e-mail a napíšte, ktoré to sú. Poradím, ktorý z nich bude vo veľkej ploche vašej kuchyne fungovať lepšie."),
+        signature(top=0),
+        footer(reason=REASON_KOSIK_WEB),
     ]))
 
 print("hotovo →", OUT)

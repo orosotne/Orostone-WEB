@@ -162,6 +162,7 @@ Skratky: N = `marketing/newsletter`, B = `N/nastroje/build_emails.py`, PB = play
 | A2 Vzorky | Shopify Fulfilled Order Y4VvMe | áno, od 14. 10. (4 udalosti) | nič | **live od 14. 10. 18:54 UTC (flow Tp45w8)** |
 | A7 Reaktivácia | segment VGyNMu (Opened TqZ5Tp, Clicked VdqXpS) | áno | nič | **live od 14. 10. 11:50 UTC (flow R5jtdq)** |
 | A4 Opustený košík | Shopify Checkout Started TR4G9D | áno (13 udalostí, žiadna skutočne opustená) | Martin 14. 10.: e-mail o opustenej pokladni posiela Shopify všetkým zákazníkom, aj bez súhlasu (zásady: PR #144), A4 sa nespúšťa. Do 14. 10. Shopify neposlal ani jeden (0 z 3, pozri A4 › 4) | nič, flow nevytvorený |
+| A4b Košík z webu | Added to Cart z webu (API, Klaviyo.js) | nie, vznikne prvou udalosťou po nasadení | merge PR (web, 36, zásady), nahranie 36 z main, OK Martina | draft flow po merge (pozri A4b) |
 | A3 Dopyt → ponuka | CRM, fáza „Finálna ponuka odoslaná“ | nie | rozhodnutie Klaviyo vs. CRM; CRM kód; nový kľúč | nič |
 | A5 Po realizácii | CRM, montáž so stavom `dokoncene` | nie | CRM kód; fotky pre 08; súhlas | nič |
 | A8 B2B | neexistuje | nie | model súhlasu a zdroj kontaktov | nič |
@@ -416,6 +417,45 @@ UTM, návrh: `utm_campaign=opusteny-kosik`.
 - **Placed Order:** vyberať Uu5JLg (Shopify), nie Wix TSzMKT.
 - **Nočné odoslanie:** 15 o hodinu po vstupe môže odísť v noci. Tichý režim pre e-mail v Klaviyu neexistuje, `sms_quiet_hours_enabled` je len pri SMS.
 - **UTM:** checkout vzoriek UTM nenesie (pozri spoločné pasce).
+
+## A4b Košík z webu (36)
+
+Zadanie Martina 15. 10. 2026: pripomenutie košíka cez Klaviyo (nie Shopify) pre odberateľov newslettera, ktorí si na webe vložia dekor do košíka. Shopify ďalej posiela pripomenutie nákupu nedokončeného v pokladni (A4, PR #144); A4b je iná udalosť (košík, nie pokladňa) a ide len so súhlasom.
+
+### 1. Spúšťač a zdroj udalosti
+- **Web:** `hooks/useKlaviyo.ts` načíta `klaviyo.js` (verejný kľúč RxkFZa) len pri povolených marketingových cookies a len návštevníkom, ktorých Klaviyo vie identifikovať: tomu, kto prišiel z nášho e-mailu (`_kx` v URL), hneď; tomu, kto už má cookie `__kla_id`, po prvej interakcii. Anonymný návštevník skript ani cookie nedostane. `context/CartContext.tsx` pri pridaní do košíka posiela udalosť **Added to Cart** (vlastnosti `AddedItemProductName`, `AddedItemProductID` = handle, `AddedItemVariantName`, `AddedItemPrice`, `AddedItemQuantity`, `AddedItemURL`, `AddedItemImageURL`, `ItemNames`, `CheckoutURL` = pokladňa Shopify s uloženým košíkom, `Items[]`).
+- **Metrika v Klaviyu:** Added to Cart z integrácie **API**, ID **TANKsY** (nie Shopify VDuzE8, nie Wix). Vznikla 15. 10. 2026 testovacou udalosťou s payloadom z webu na internom profile (zoznam ThRq8q) cez Client Events API; z localhostu (http) klaviyo.js udalosť neodošle, na https webe áno.
+- **Koho udalosť zachytí:** len identifikovaného návštevníka, teda odberateľa, ktorý prišiel z odkazu v našom e-maile (cookie `__kla_id`) a má povolené marketingové cookies. Anonymné pridania do košíka Klaviyo neukladá. Výber vzoriek na `/vzorky` udalosť neposiela (ide rovno do pokladne, pokrýva ho Shopify).
+
+### 2. Kroky, oneskorenia, filtre, podmienky ukončenia
+
+| Krok | Čas | Šablóna | Podmienka |
+|---|---|---|---|
+| 1 | 2 h po Added to Cart | 36 | 0× Checkout Started TR4G9D a 0× Placed Order Uu5JLg od vstupu |
+
+- **Filter profilu:** člen zoznamu VSrLFs (odberatelia newslettera z webu), súhlas s e-mailovým marketingom (subscribed), bez segmentu U2XF6B, bez zoznamu TKAHuh (ako A2). Pripomenutie tak nedostane zákazník zo Shopify so súhlasom z pokladne, len odberateľ z webu (odporúčanie session „Orostone – kampane a Klaviyo“, 15. 10.).
+- **Ukončenie:** kto začne pokladňu, vypadne (ďalej ho rieši pripomenutie zo Shopify); kto objedná, vypadne.
+- **Re-entry:** 7 dní.
+- **Smart sending:** vypnúť (kampaň v predchádzajúcich 16 h by pripomenutie preskočila).
+- **Noc:** 2 h po vložení môže e-mail odísť v noci; Martin rozhodne, či radšej „nasledujúci deň o 9:00“.
+- UTM: `utm_campaign=kosik-web`, `utm_content=36-kosik-dekor`.
+
+### 3. Šablóna, odosielateľ, predmet, preheader
+
+| Šablóna | Odosielateľ | Predmet | Preheader | Dynamické dáta |
+|---|---|---|---|---|
+| `N/sablony/36-automatizacia-kosik-dekor.html` | Š | Váš dekor čaká v košíku | 🪨 Košík sme vám uložili. Dokončíte ho jedným kliknutím, alebo si dekor najprv overte na vzorke. | názov a handle dekoru (fotka `dekor-mockup-<handle>-1040.jpg`, odkaz na dekor), `event.Items` (názov, variant, množstvo), tlačidlo na `event.CheckoutURL`; bez údajov Taj Mahal |
+
+### 4. Draft vs. live a schválenia
+- Zásady: čl. 2 (Marketing: pripomenutie košíka a rozpoznanie odberateľa), čl. 4 (Klaviyo), čl. 9 a zásady cookies (`__kla_id`) upravené v tom istom PR; kontrolný log Kolo 5.
+- Postup: merge PR → nahrať 36 z main → prvá udalosť z webu (test na internom profile) → `create_flow` ako draft → Martin OK → live.
+- **Martin:** potvrdiť znenie zásad, časovanie (2 h), spustenie naživo.
+
+### 5. Pasce
+- **Safari** skracuje `__kla_id` na 24 h (URL s parametrami) až 7 dní; odberateľ z e-mailu je rozpoznaný len v tomto okne.
+- **Dva košíky:** Shopify pripomenutie pokladne a 36 sa nestretnú vďaka filtru Checkout Started; kto začne pokladňu po odoslaní 36, dostane aj Shopify e-mail (iná udalosť, iný e-mail).
+- **„Prvá vzorka je zadarmo“** v 36 sedí s `/vzorky`; o doprave 36 nehovorí (kód VITAJTE).
+- **Limit profilov:** udalosť nevytvára nové profily (len identifikovaní odberatelia).
 
 ## A5 Po realizácii (08, 17, 06)
 
