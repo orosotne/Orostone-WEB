@@ -344,7 +344,7 @@ export const SiteHeader: React.FC = () => {
                 <a href={PHONE_HREF} className="flex items-center gap-3 text-[1.05rem] font-medium tabular-nums no-underline">
                   <Phone size={18} strokeWidth={1.6} aria-hidden="true" /> {PHONE_LABEL}
                 </a>
-                <p className="text-[0.85rem] font-normal text-brand-muted">Po–Pia 8:00 – 17:00</p>
+                <p className="text-[0.85rem] font-normal text-brand-muted">Telefonicky: Po–Pia 8:00 – 17:00</p>
                 <ActionButton variant="gold" to={PRICE_URL('menu')} className="mt-2 w-full sm:w-auto">
                   Získať orientačnú cenu
                 </ActionButton>

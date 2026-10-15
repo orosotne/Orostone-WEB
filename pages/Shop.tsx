@@ -3,7 +3,8 @@ import { useLocation } from 'react-router-dom';
 import { useShopifyProducts } from '../hooks/useShopifyProducts';
 import { OFFER_VALID_FROM, offerPriceValidUntil, shippingDetailsForStock, RETURN_POLICY_LD } from '../lib/productSchema';
 import { calculateSlabPrice } from '../lib/slab';
-import { SEOHead, OROSTONE_ORGANIZATION_LD } from '../components/UI/SEOHead';
+import { OROSTONE_SELLER_LD } from '../lib/businessSchema';
+import { SEOHead } from '../components/UI/SEOHead';
 import { HomeHero } from '../components/Home/HomeHero';
 import { HomeFacts } from '../components/Home/HomeFacts';
 import { HomeDecors } from '../components/Home/HomeDecors';
@@ -50,7 +51,6 @@ export const Shop = () => {
         description="Sinterovaný kameň pre kuchyne, ostrovčeky a interiéry. Pomôžeme vybrať dekor, ktorý funguje aj vo veľkej ploche. Showroom Bošany, dodanie po SR."
         canonical="https://orostone.sk/"
         ogType="website"
-        structuredData={OROSTONE_ORGANIZATION_LD}
         maxVideoPreview={0}
       />
 
@@ -91,7 +91,7 @@ export const Shop = () => {
                     ? "https://schema.org/InStock"
                     : "https://schema.org/PreOrder",
                   "itemCondition": "https://schema.org/NewCondition",
-                  "seller": { "@type": "Organization", "name": "OROSTONE s.r.o." },
+                  "seller": OROSTONE_SELLER_LD,
                   "shippingDetails": shippingDetailsForStock(p.inStock),
                   "hasMerchantReturnPolicy": RETURN_POLICY_LD
                 },

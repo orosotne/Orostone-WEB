@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { shippingDetailsForStock, RETURN_POLICY_LD } from '../../lib/productSchema';
+import { OROSTONE_SELLER_LD } from '../../lib/businessSchema';
 
 // Produkčný origin — preferovaný pre canonical/og:url aj na preview/staging buildoch.
 // Ak `VITE_PUBLIC_SITE_URL` nie je nastavený, fallbackujeme na aktuálny origin, aby dev
@@ -189,63 +190,10 @@ export const createProductLD = (product: {
       ? 'https://schema.org/InStock'
       : 'https://schema.org/OutOfStock',
     url: product.url,
-    seller: {
-      '@type': 'Organization',
-      name: 'OROSTONE',
-    },
+    seller: OROSTONE_SELLER_LD,
     shippingDetails: shippingDetailsForStock(product.inStock),
     hasMerchantReturnPolicy: RETURN_POLICY_LD,
   },
 });
-
-// ===========================================
-// HELPER: Organization structured data
-// ===========================================
-
-export const OROSTONE_ORGANIZATION_LD = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'OROSTONE',
-  url: 'https://orostone.sk',
-  logo: 'https://orostone.sk/images/brand/orostone-circle.png',
-  description: 'Sinterovaný kameň pre kuchyne, kúpeľne a architektonické projekty.',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Landererova 8',
-    addressLocality: 'Bratislava',
-    postalCode: '811 09',
-    addressCountry: 'SK',
-  },
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: '+421917588738',
-    contactType: 'customer service',
-    availableLanguage: ['Slovak', 'English'],
-    email: 'info@orostone.sk',
-  },
-  department: {
-    '@type': 'LocalBusiness',
-    name: 'OROSTONE Showroom Bošany',
-    description:
-      'Showroom sinterovaného kameňa v renesančnom kaštieli — porovnanie celých platní 3200 × 1600 mm pri dennom svetle. Cez víkend po dohode.',
-    telephone: '+421917588738',
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'SNP 113/1',
-      addressLocality: 'Bošany',
-      postalCode: '956 18',
-      addressCountry: 'SK',
-    },
-    openingHoursSpecification: [
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-        opens: '09:00',
-        closes: '17:00',
-      },
-    ],
-  },
-  sameAs: ['https://www.instagram.com/orostone.sk/'],
-};
 
 export default SEOHead;
