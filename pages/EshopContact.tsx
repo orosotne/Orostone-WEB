@@ -90,6 +90,9 @@ export const EshopContact: React.FC = () => {
                 <dd className="m-0 font-normal">Po–pia 9:00–17:00, cez víkend po dohode</dd>
               </div>
             </dl>
+            <p className="text-[0.92rem] font-normal text-brand-muted">
+              Každú návštevu si, prosím, dohodnite telefonicky aspoň 1&nbsp;hodinu vopred.
+            </p>
             <p className="max-w-[54ch] font-light text-brand-muted">
               Celé platne 3&nbsp;200&nbsp;×&nbsp;1&nbsp;600&nbsp;mm si tu pozriete pri dennom svetle a porovnáte dekory vo veľkej ploche. Na malej
               vzorke sa kresba ani mierka posúdiť nedajú.
