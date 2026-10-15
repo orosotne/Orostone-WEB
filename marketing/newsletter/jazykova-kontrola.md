@@ -323,4 +323,8 @@ Codex na `5a86f19` nenašiel žiadne pripomienky. Zmeny v 10, 15 a 16 sú jazyko
 
 Pripomienky ku kódu a zásadám v tom istom review (načítanie Klaviya pri uloženom odmietnutí cookies, udalosť pri pridaní vzorky, nezlomiteľná medzera „2&nbsp;rokov“ v zásadách cookies) sú prijaté a opravené v PR #148.
 
+## Kolo 28 – Codex review v PR #148 (15. 10. 2026, po zmenách z kola 27)
+
+Codex na `9b37b47` nenašiel žiadne pripomienky („Didn't find any major issues“). E-mail 36 vo finálnej podobe (banner podľa dekoru, zľava len pri objednávke na orostone.sk) je jazykovo skontrolovaný.
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
