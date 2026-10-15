@@ -327,4 +327,18 @@ Pripomienky ku kódu a zásadám v tom istom review (načítanie Klaviya pri ulo
 
 Codex na `9b37b47` nenašiel žiadne pripomienky („Didn't find any major issues“). E-mail 36 vo finálnej podobe (banner podľa dekoru, zľava len pri objednávke na orostone.sk) je jazykovo skontrolovaný.
 
+## Kolo 29 – Claude, druhý uvítací kód v 01 (15. 10. 2026)
+
+Martin 15. 10. 2026 rozhodol, že každý nový odberateľ dostane v e-maile 01 oba uvítacie kódy: VITAJTE (doprava prvej vzorky zadarmo) a WELCOME5 (5 % na platne), bez ohľadu na to, cez ktorý pop-up alebo formulár sa prihlásil. Jeho správa z 15. 10. 2026: „teda ano sprav aj toto: Zľava 5 % za prihlásenie na newsletter (odporúčam). … Do zásad stačí jedna veta o zľave pre nových odberateľov.“ Podmienky kódu WELCOME5 sú overené v Shopify 15. 10. 2026: 5 % na 12 dekorov, raz na zákazníka, bez kombinácie s inou zľavou. Codex review je v ďalšom kole.
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 01 (preheader) | Dvakrát do mesiaca vám pošleme jednu vec, ktorá pomôže pri výbere pracovnej dosky. | Ako odberateľ máte dopravu prvej vzorky zadarmo a zľavu 5 % na platne. | fakt | Po prihlásení z pop-upu odberateľ v schránke hľadá sľúbený kód. Predmet sa nemení, o frekvencii hovorí poznámka pod zoznamom. | zapracované |
+| 2 | 01 (nadpis sekcie) | – | Dva uvítacie darčeky | fakt | Nový nadpis nad dvoma kartami s kódmi. | zapracované |
+| 3 | 01 (ponuka VITAJTE) | [štítok] Uvítací darček | [štítok] Kód VITAJTE | fakt | Pri dvoch kartách štítok rozlišuje kód. Text karty sa nemení. | zapracované |
+| 4 | 01 (ponuka WELCOME5) | – | Kód WELCOME5 · Zľava 5 % na platne · Keď si dekor vyberiete, kód odpočíta 5 % z ceny platní, nie z dopravy. Vzťahuje sa na všetkých 12 dekorov v e-shope. · Pozrieť dekory · V pokladni zadajte kód WELCOME5. Platí na jednu objednávku a nedá sa kombinovať so žiadnou inou zľavou – ani so zľavou 20 %, ktorú e-shop odpočíta automaticky pri troch a viac platniach. | fakt | Nová karta s podmienkami podľa Shopify. Tlačidlo vedie na dekory ako v 07. | zapracované |
+| 5 | 01 (poznámka) | – | Kódy uplatníte len v e-shope orostone.sk, nie pri objednávke po telefóne ani na základe cenovej ponuky. V jednej objednávke sa dá použiť len jeden z nich, preto si VITAJTE nechajte na vzorku a WELCOME5 na platne. | fakt | Kódy sa v pokladni nekombinujú a vzorka je v Shopify variant produktu dekoru, takže WELCOME5 by sa minul aj na objednávke vzorky. Podmienka o telefóne a cenovej ponuke je rovnaká ako v 36. | zapracované |
+
+Bez zmeny textu: kampane 18, 20, 28, 30 a 35 spomínajú len kód VITAJTE a ostávajú, ako sú.
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
