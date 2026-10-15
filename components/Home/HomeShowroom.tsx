@@ -49,6 +49,9 @@ export const HomeShowroom: React.FC = () => (
           <div><dt>Adresa</dt><dd>SNP 113/1, 956 18 Bošany</dd></div>
           <div><dt>Otvorené</dt><dd>Po–Pia 9:00–17:00, cez víkend po dohode</dd></div>
         </dl>
+        <p className="text-[0.92rem] font-normal text-brand-muted">
+          Každú návštevu si, prosím, dohodnite telefonicky aspoň 1&nbsp;hodinu vopred.
+        </p>
         <div className="hp-cta-row">
           <ActionButton variant="dark" to={PHONE_HREF}>Dohodnúť návštevu</ActionButton>
           <TextLink to={MAPS_URL}>Zobraziť na mape</TextLink>
