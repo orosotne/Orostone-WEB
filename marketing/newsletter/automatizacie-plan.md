@@ -163,7 +163,7 @@ Skratky: N = `marketing/newsletter`, B = `N/nastroje/build_emails.py`, PB = play
 | A7 Reaktivácia | segment VGyNMu (Opened TqZ5Tp, Clicked VdqXpS) | áno | nič | **live od 14. 10. 11:50 UTC (flow R5jtdq)** |
 | A4 Opustený košík | Shopify Checkout Started TR4G9D | áno (13 udalostí, žiadna skutočne opustená) | Martin 14. 10.: e-mail o opustenej pokladni posiela Shopify všetkým zákazníkom, aj bez súhlasu (zásady: PR #144), A4 sa nespúšťa. Do 14. 10. Shopify neposlal ani jeden (0 z 3), lebo e-mail bol v stave Draft (overené 15. 10., pozri A4 › 4) | nič, flow nevytvorený |
 | A4b Košík z webu | Added to Cart z webu (API TANKsY, Klaviyo.js) | áno | nič | **live od 15. 10. 11:49 UTC (flow WV6K3N)** |
-| A9 Prezeraný dekor | Viewed Product z webu (Klaviyo.js, metrika vznikne prvou udalosťou) | nie | merge PR (web, 37, bannery, zásady Kolo 7 – potvrdí Martin) | nič, flow po merge ako draft |
+| A9 Prezeraný dekor | Viewed Product z webu (Klaviyo.js, metrika vznikne prvou udalosťou) | nie | merge PR #157 (zásady Kolo 7 potvrdené 15. 10.) | flow po merge ako draft |
 | A3 Dopyt → ponuka | CRM, fáza „Finálna ponuka odoslaná“ | nie | rozhodnutie Klaviyo vs. CRM; CRM kód; nový kľúč | nič |
 | A5 Po realizácii | CRM, montáž so stavom `dokoncene` | nie | CRM kód; fotky pre 08; súhlas | nič |
 | A8 B2B | neexistuje | nie | model súhlasu a zdroj kontaktov | nič |
@@ -503,7 +503,7 @@ Zadanie Martina 15. 10. 2026 (zo zoznamu odporúčaných automatizácií Shopify
 **Ponuka (fakty zo stránky Doprava a platba):** vzorka 10 × 10 cm, prvá zadarmo, každá ďalšia 4,90 €, doprava 2,50 €. Kód VITAJTE (doprava vzorky zadarmo do 3 €, raz na zákazníka) e-mail spomína podmienene: „ak ste ho ešte nepoužili“. Tlačidlá vedú na stránku dekoru, kde tlačidlo „Objednať vzorku zadarmo“ vloží vzorku presne tohto dekoru.
 
 ### 4. Draft vs. live a schválenia
-- Zásady: čl. 2, čl. 4, čl. 9 a zásady cookies (`__kla_id`) upravené v tom istom PR; kontrolný log Kolo 7. **Znenie potvrdí Martin.**
+- Zásady: čl. 2, čl. 4, čl. 9 a zásady cookies (`__kla_id`) upravené v tom istom PR; kontrolný log Kolo 7. **Martin znenie potvrdil 15. 10. 2026.**
 - Postup: Codex → merge PR → nasadenie webu → prvá udalosť Viewed Product (test na internom profile) → nahrať 37 z main → `create_flow` ako draft → test na adresu Martina → Martin OK → live.
 
 ### 5. Pasce
