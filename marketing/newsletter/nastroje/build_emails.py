@@ -913,6 +913,23 @@ def write(name, html):
     print(f"{name}: {len(html.encode('utf-8')) // 1024} KB")
 
 
+_NB_PROTECT = re.compile(r'(<!--\s*Preheader\s*-->\s*<div[^>]*>.*?</div>|<!--.*?-->|<style.*?</style>|<title>.*?</title>|<[^>]+>)', re.S)
+
+
+def nbsp(html_doc):
+    """Nezlomiteľná medzera za jednopísmenovou predložkou alebo spojkou (v, s, z, k, o, u, a, i) vo viditeľnom texte.
+    Preheader, komentáre, štýly a značky ostávajú bez zmeny (extract_copy číta preheader po prvé &nbsp;)."""
+    parts = _NB_PROTECT.split(html_doc)
+    for i, part in enumerate(parts):
+        if i % 2 == 0:
+            parts[i] = re.sub(r'(?<![^\s>])([vszkouaiVSZKOUAI]) (?=\S)', r'\1&nbsp;', part)
+    return "".join(parts)
+
+
+def write_nb(name, html_doc):
+    write(name, nbsp(html_doc))
+
+
 # ---------------------------------------------------------------------------
 # Šablóny
 # ---------------------------------------------------------------------------
@@ -926,7 +943,7 @@ def write(name, html):
 # Záložný uvítací e-mail (Supabase funkcia send-newsletter-welcome) má mať rovnaké podmienky WELCOME5, poznámku
 # a predmet, pri zmene ich zladiť. Predmet a preheader sa v Klaviyu menia aj v správe VLzuhC (pole Subject a Preview text).
 WELCOME_KOD = "WELCOME5"
-write("01-welcome-vitajte.html", doc(
+write_nb("01-welcome-vitajte.html", doc(
     {
         "TYP:": "Automatizácia · Welcome séria 1/4",
         "SPÚŠŤAČ:": "Hneď po prihlásení na odber cez formuláre na webe orostone.sk (zoznam Newsletter – web)",
@@ -944,28 +961,29 @@ write("01-welcome-vitajte.html", doc(
                   sub="Preto vám budeme posielať len to, čo pri tom rozhodnutí naozaj pomôže."),
         hero(IMG + "uvitanie-ostrovcek.jpg", "Ostrovček zo sinterovaného kameňa v svetlej kuchyni", capsule="Realizácia Orostone", top=32),
         text([
-            "ďakujeme, že ste sa prihlásili. Orostone je sinterovaný kameň pre kuchyne a interiéry – pracovné dosky, ostrovčeky a zásteny.",
+            "ďakujeme, že ste sa prihlásili. Orostone je sinterovaný kameň pre kuchyne a interiéry&nbsp;– pracovné dosky, ostrovčeky a zásteny.",
             "Newsletter píšeme pre ľudí, ktorí dosku práve vyberajú alebo ju budú vyberať o pár mesiacov. Nájdete v ňom to, čo pomáha rozhodnúť sa rozumne.",
         ]),
         section_title(None, "Čo vám budeme posielať", top=16),
         numbered([
             ("Realizácie", "Skutočné kuchyne: zadanie, zvolený dekor a výsledok vo veľkej ploche."),
-            ("Dekory v detaile", "Jeden dekor bez prikrášľovania – kresba, kombinácie so skrinkami a priestory, do ktorých sa hodí najlepšie."),
+            ("Dekory v detaile", "Jeden dekor bez prikrášľovania&nbsp;– kresba, kombinácie so skrinkami a priestory, do ktorých sa hodí najlepšie."),
             ("Sprievodcovia", "Hrúbka, hrany, údržba aj cena. Vecne a bez technického žargónu."),
         ], note="Približne dvakrát do mesiaca. Odhlásiť sa dá jedným kliknutím v pätičke."),
         section_title(None, "Dva uvítacie darčeky", top=32),
         card_offer("Kód VITAJTE", "Vzorka bez poštovného",
-                   "Kresbu kameňa najlepšie posúdite doma – pri svojom svetle a vedľa svojich skriniek. Prvá vzorka je zadarmo a ako odberateľ neplatíte ani poštovné.",
+                   "Kresbu kameňa najlepšie posúdite doma&nbsp;– pri svojom svetle a vedľa svojich skriniek. Prvá vzorka je zadarmo a ako odberateľ neplatíte ani poštovné.",
                    "Objednať vzorku", SITE + "/vzorky",
                    note='V pokladni zadajte kód <strong style="font-weight:700; color:#1A1A1A;">VITAJTE</strong>. Platí na jednu objednávku vzoriek.', top=12),
-        # &nbsp; pred pomlčkou a za jednopísmenovým slovom v nových vetách: pomlčka ani „a v“ nemajú stáť na kraji riadku
-        # (pri 600 px začínala pomlčka riadok, pri 375 px končil riadok na „a v“).
+        # &nbsp; pred každou pomlčkou v e-maile: pomlčka nemá začínať riadok (pri 600 px ho začínala v tejto karte, pri 360 px
+        # v P. S.). Za jednopísmenové slová (a, v, z, o …) dáva &nbsp; v celom e-maile write_nb – pri 600 aj 375 px končili
+        # riadky na „a“, „o“, „v“, „z“.
         card_offer("Kód " + WELCOME_KOD, "Zľava 5&nbsp;% na platne",
-                   "Keď si dekor vyberiete, kód odpočíta 5&nbsp;% z ceny platní, nie z dopravy. Vzťahuje sa na všetkých 12 dekorov v e-shope.",
+                   "Keď si dekor vyberiete, kód odpočíta 5&nbsp;% z ceny platní, nie z&nbsp;dopravy. Vzťahuje sa na všetkých 12 dekorov v e-shope.",
                    "Pozrieť dekory", SITE + "/kategoria/sintered-stone",
-                   note='V pokladni zadajte kód <strong style="font-weight:700; color:#1A1A1A;">' + WELCOME_KOD + '</strong>. Platí na jednu objednávku a&nbsp;nedá sa kombinovať so žiadnou inou zľavou&nbsp;– ani so zľavou 20&nbsp;%, ktorú e-shop odpočíta automaticky od troch platní.', top=16),
+                   note='V pokladni zadajte kód <strong style="font-weight:700; color:#1A1A1A;">' + WELCOME_KOD + '</strong>. Platí na jednu objednávku a&nbsp;nedá sa kombinovať so žiadnou inou zľavou&nbsp;– ani so zľavou 20&nbsp;%, ktorú e-shop odpočíta automaticky pri objednávke od troch platní.', top=16),
         note('<strong style="font-weight:700; color:#1A1A1A;">Kódy uplatníte len v e-shope orostone.sk</strong>, nie pri objednávke po telefóne ani na základe cenovej ponuky. Na vzorku zadajte VITAJTE. ' + WELCOME_KOD + ' si nechajte na objednávku platní&nbsp;– platí len raz a&nbsp;v&nbsp;pokladni by sa minul aj na vzorke.', top=14),
-        ps('Ak už máte pôdorys kuchyne, pošlite nám ho v odpovedi na tento e-mail. <strong style="font-weight:700; color:#1A1A1A;">Pripravíme orientačné cenové rozpätie</strong> pre váš projekt – nezáväzne.'),
+        ps('Ak už máte pôdorys kuchyne, pošlite nám ho v odpovedi na tento e-mail. <strong style="font-weight:700; color:#1A1A1A;">Pripravíme orientačné cenové rozpätie</strong> pre váš projekt&nbsp;– nezáväzne.'),
         signature(top=0),
         footer(),
     ]))
@@ -1657,26 +1675,7 @@ write("21-kampan-december-podakovanie.html", doc(
 # Šablóny 22–33: reaktivácia, B2B a kampane január – marec 2027
 # ---------------------------------------------------------------------------
 
-import re
-
 REASON_B2B = "Tento e-mail ste dostali, pretože ste nás kontaktovali ako architekt, dizajnér, kuchynské štúdio alebo kamenár."
-
-_NB_PROTECT = re.compile(r'(<!--\s*Preheader\s*-->\s*<div[^>]*>.*?</div>|<!--.*?-->|<style.*?</style>|<title>.*?</title>|<[^>]+>)', re.S)
-
-
-def nbsp(html_doc):
-    """Nezlomiteľná medzera za jednopísmenovou predložkou alebo spojkou (v, s, z, k, o, u, a, i) vo viditeľnom texte.
-    Preheader, komentáre, štýly a značky ostávajú bez zmeny (extract_copy číta preheader po prvé &nbsp;)."""
-    parts = _NB_PROTECT.split(html_doc)
-    for i, part in enumerate(parts):
-        if i % 2 == 0:
-            parts[i] = re.sub(r'(?<![^\s>])([vszkouaiVSZKOUAI]) (?=\S)', r'\1&nbsp;', part)
-    return "".join(parts)
-
-
-def write_nb(name, html_doc):
-    write(name, nbsp(html_doc))
-
 
 # 22 – Reaktivácia 1/3: Riešite ešte kuchyňu?
 write_nb("22-automatizacia-reaktivacia-otazka.html", doc(
