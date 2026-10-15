@@ -159,8 +159,8 @@ export const EshopContact: React.FC = () => {
       <Section tone="chalk">
         <Container className="grid gap-x-[clamp(32px,5vw,80px)] gap-y-14 md:grid-cols-2">
           <article className={card}>
-            <h2 className={cardTitle}>Sídlo a fakturačné údaje</h2>
-            <p className="text-[0.92rem] font-normal text-brand-muted">Adresa pre faktúry a poštu, nie pre návštevu.</p>
+            <h2 className={cardTitle}>Obchodné kancelárie a fakturačné údaje</h2>
+            <p className="text-[0.92rem] font-normal text-brand-muted">Obchodné kancelárie a sídlo spoločnosti Orostone.</p>
             <p className="leading-relaxed">
               Orostone s.r.o.
               <br />
@@ -169,7 +169,7 @@ export const EshopContact: React.FC = () => {
               mestská časť Staré Mesto
             </p>
             <p className="w-full max-w-[520px] border-l-2 border-brand-dark bg-brand-sand px-4 py-3 text-[0.92rem] font-normal">
-              Na tejto adrese nie je showroom ani predajňa. Platne si pozriete v{' '}
+              Celé platne si môžete pozrieť iba v showroome v{' '}
               <strong className="font-semibold">Bošanoch, SNP 113/1</strong>.
             </p>
             <div className="grid gap-1 text-[0.9rem] font-normal text-brand-muted">

@@ -5,6 +5,7 @@ import { Turnstile } from '@marsidev/react-turnstile';
 import { useCookies } from '../../context/CookieContext';
 import { useBackgroundTurnstile } from '../../hooks/useBackgroundTurnstile';
 import { Container, useDrawIn, IconWarranty, IconSecurePay, IconDispatch, IconDelivery } from '../Design';
+import { STOCK_SLAB_DELIVERY_RANGE } from '../../lib/delivery';
 // Dynamic import — keeps supabase out of the initial bundle
 const loadNewsletter = () => import('../../services/newsletter.service');
 
@@ -18,7 +19,7 @@ const PAYMENT_MARKS = [
 const TRUST = [
   { Icon: IconWarranty, title: '24 mesiacov na reklamáciu', text: 'Zákonná zodpovednosť za vady' },
   { Icon: IconSecurePay, title: 'Bezpečná platba', text: 'Platobnou kartou' },
-  { Icon: IconDispatch, title: 'Expedícia do 5 pracovných dní', text: 'Po prijatí platby' },
+  { Icon: IconDispatch, title: `Doručenie za ${STOCK_SLAB_DELIVERY_RANGE}`, text: 'Skladové platne, od objednávky' },
   { Icon: IconDelivery, title: 'Doručenie po celom Slovensku', text: 'Špeciálna preprava platní' },
 ] as const;
 
@@ -226,10 +227,10 @@ const FooterComponent: React.FC<FooterProps> = ({ categories = [], isProductDeta
             <span className="text-brand-light group-hover:underline group-hover:underline-offset-4">SNP 113/1, 956 18 Bošany</span>
             <span className="text-[0.8rem] text-brand-light/60">Showroom — tu nás nájdete</span>
           </a>
-          {/* Zámerne bez odkazu na mapu — klienti si sídlo mýlili so showroomom. */}
+          {/* Celé platne sú vystavené v showroome v Bošanoch. */}
           <div className="grid gap-0.5">
             <span className="text-brand-light/60">Landererova 8, 811 09 Bratislava</span>
-            <span className="text-[0.8rem] text-brand-light/45">Sídlo a fakturačná adresa, nie showroom</span>
+            <span className="text-[0.8rem] text-brand-light/45">Obchodné kancelárie a sídlo spoločnosti</span>
           </div>
         </div>
       </Container>

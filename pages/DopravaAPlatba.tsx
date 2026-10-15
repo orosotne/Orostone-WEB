@@ -1,4 +1,5 @@
 import React from 'react';
+import { STOCK_SLAB_DELIVERY_TIMEFRAME } from '../lib/delivery';
 import { Link } from 'react-router-dom';
 import { Phone, Mail } from 'lucide-react';
 import { SEOHead } from '../components/UI/SEOHead';
@@ -57,7 +58,7 @@ export const DopravaAPlatba: React.FC = () => {
                 <ul className="space-y-4 text-[0.95rem] font-light text-brand-dark/85">
                   <li className="flex items-start gap-2">
                     <span className="mt-0.5 text-brand-dark/40">✦</span>
-                    <span><strong className="text-brand-dark">Skladové platne:</strong> expedujeme spravidla do 5 pracovných dní od prijatia platby</span>
+                    <span><strong className="text-brand-dark">Skladové platne:</strong> doručujeme spravidla za {STOCK_SLAB_DELIVERY_TIMEFRAME}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="mt-0.5 text-brand-dark/40">✦</span>
