@@ -176,7 +176,7 @@ Playbook radí ako prvé A1, A2, A3 a A5 (PB:1105). A3 a A5 sú zablokované, A2
    - Prví odberatelia dosiahnu 90 dní vo VSrLFs okolo 8. 1. 2027 (prenos 10. 10. 2026).
    - Segmentový flow nepridá ľudí, ktorí už v segmente sú, preto musí byť naživo pred týmto dátumom.
    - Ak Martin o 24 rozhodne skôr, než sa zmerguje PR pre 10, A7 sa môže postaviť skôr než A2. Na priorite to nič nemení.
-3. **A4** po merge 15 a 16 a po vypnutí vlastného e-mailu Shopify.
+3. **A4** sa nespúšťa (Martin 14. 10.): pripomenutie posiela Shopify všetkým zákazníkom (PR #144). Ak by sa A4 niekedy spúšťal, najprv merge 15 a 16 a vypnutie e-mailu Shopify.
 4. **A3 a A5** po rozhodnutí, či pôjdu z Klaviya (CRM udalosti cez Create Event API), alebo z CRM ako schvaľované koncepty v `lead_drafts`, rovnako ako e-mail 34.
    - **Odporúčanie pre 08:** z CRM so schválením, lebo potrebuje fotky konkrétnej montáže.
    - **A3 tiež skôr z CRM:** odpovede sa naviažu na lead, uplatní sa brána `inquiryQuestionGate`, e-mail 14 sa prekrýva so 34 a väčšina dopytov nemá marketingový súhlas.
@@ -384,7 +384,7 @@ Filtre a ukončenie:
 - **Súhlas: povinný.** Meta e-mailu 15 hovorí „Posielať len kontaktom so súhlasom s e-mailovým marketingom“ (B:1386). Kým je synchronizácia odberateľov vypnutá, dostanú 15 a 16 len ľudia prihlásení v Klaviyu.
 - **Re-entry:** `reentry_criteria` {duration: 30, unit: day}.
 - **Smart sending pri 15:** nastaviť výslovne a zvážiť vypnutie. Okno 16 h (napríklad po kampani) môže 1-hodinový e-mail preskočiť.
-- **Shopify e-mail:** vypnúť vlastný e-mail Shopify o opustenom checkoute (Martin), inak príde zákazníkovi dvakrát.
+- **Shopify e-mail:** od 14. 10. ostáva zapnutý pre všetkých zákazníkov (rozhodnutie Martina, zásady PR #144). Ak by sa A4 niekedy spúšťal, e-mail Shopify treba vypnúť, inak príde zákazníkovi dvakrát.
 - **Medzera pri bezplatnej vzorke:** kto opustí checkout a potom si objedná bezplatnú vzorku cez #vzorka, Placed Order nevznikne a dostane 15 aj 16. Buď to prijať, alebo neskôr pridať CRM signál „Vzorka objednaná“. Rozhodne Martin.
 
 ### 3. Šablóny, odosielateľ, predmet, preheader
@@ -407,7 +407,7 @@ UTM, návrh: `utm_campaign=opusteny-kosik`.
   - Pred prípadným spustením: overiť na skutočne opustenej pokladni, že `responsive_checkout_url` vedie na obnovenie košíka (všetkých 13 historických udalostí skončilo objednávkou a odkaz vedie na stránku objednávky), a zosúladiť „Doprava 2,50 €“ v 15 s kódom VITAJTE.
 - **Spúšťač existuje.** Blokujú zmeny 15 a 16 (URL košíka, text o doprave), ktoré idú cez B, Codex a merge spolu s 10.
 - **Flow** vytvoriť až s finálnymi 15 a 16.
-- **Martin:** vypnutie e-mailu Shopify, rozhodnutie o súhlase a o synchronizácii odberateľov, spustenie naživo.
+- **Martin (len ak by sa A4 spúšťal):** vypnutie e-mailu Shopify, rozhodnutie o súhlase a o synchronizácii odberateľov, spustenie naživo.
 - **Súhlas príjemcov:** len kontakty s marketingovým súhlasom, bez segmentu U2XF6B.
 
 ### 5. Pasce
