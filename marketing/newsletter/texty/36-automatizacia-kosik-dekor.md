@@ -3,7 +3,7 @@
 - **Typ:** Automatizácia · Košík z webu
 - **Kedy sa posiela:** Na druhý deň o 9:00 po vložení dekoru do košíka na orostone.sk, ak človek nezačal pokladňu ani neobjednal (Klaviyo: Added to Cart z webu)
 - **Predmet:** Zľava 5 % na dekor vo vašom košíku
-- **Preheader:** 🪨 Kód KOSIK5 platí na celú objednávku. Košík sme vám uložili, dokončíte ho jedným kliknutím.
+- **Preheader:** 🪨 Kód KOSIK5 platí na celú objednávku. Košík sme vám uložili. K objednávke sa vrátite jedným kliknutím.
 - **Šablóna:** `sablony/36-automatizacia-kosik-dekor.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí
@@ -12,10 +12,10 @@
 Zľava 5 % · kód KOSIK5
 
 ### Tmavý pás (úvod)
-Zľava pre odberateľov noviniek
+Zľava pre odberateľov
 {{ event.AddedItemProductName|default:'Taj Mahal'|title }}
 o 5 % lacnejšie.
-Dekor máte v košíku, my sme ho uložili. S kódom KOSIK5 zaplatíte za celú objednávku o 5 % menej.
+Dekor máte v košíku, ktorý sme vám uložili. S kódom KOSIK5 zaplatíte za celú objednávku o 5 % menej.
 [alt fotky: Zľava 5 % s kódom KOSIK5 na pracovnú dosku zo sinterovaného kameňa Orostone]
 Dokončiť so zľavou 5 %
 
@@ -58,7 +58,7 @@ Pošlite pôdorys alebo rozmery v odpovedi na tento e-mail. Navrhneme rozloženi
 
 ### P. S.
 P. S. · Marián, Orostone
-Ak váhate medzi dvoma dekormi, odpovedzte na tento e-mail a napíšte, ktoré to sú. Poradím, ktorý z nich bude vo veľkej ploche vašej kuchyne fungovať lepšie. Kód KOSIK5 platí aj na dekor, ktorý si nakoniec vyberiete.
+Ak váhate medzi dvoma dekormi, odpovedzte na tento e-mail a napíšte, ktoré to sú. Poradím, ktorý z nich bude na veľkej ploche vo vašej kuchyni vyzerať lepšie. Kód KOSIK5 platí aj na dekor, ktorý si nakoniec vyberiete.
 
 ### Podpis značky
 Krása kameňa.

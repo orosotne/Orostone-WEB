@@ -297,7 +297,7 @@ export const CookiesPolicy = () => {
                       <td className="py-3 px-2 align-top">
                         <a href="https://www.klaviyo.com/legal/privacy" target="_blank" rel="noopener noreferrer" className={LEGAL_LINK}>Klaviyo</a> – rozpoznanie odberateľa newslettera, ktorý prišiel z odkazu v našom e-maile, a záznam vloženia dekoru do košíka pre pripomenutie košíka (len so súhlasom)
                       </td>
-                      <td className="min-w-[8rem] py-3 px-2 align-top">Do 2 rokov; Safari a Firefox platnosť skracujú na dni až týždne</td>
+                      <td className="min-w-[8rem] py-3 px-2 align-top">Do 2&nbsp;rokov; Safari a Firefox platnosť skracujú na dni až týždne</td>
                     </tr>
                     <tr>
                       <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">_gcl_aw, _gcl_au</td>

@@ -306,9 +306,11 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         });
         trackGA4AddToCart({ id: variantId, name: line.node.merchandise.title, price, quantity });
         // Klaviyo „Added to Cart“ (pripomenutie košíka odberateľom newslettera); vlastnosti
-        // v tvare, aký Klaviyo používa pre túto udalosť, plus handle pre fotku a odkaz v e-maile
+        // v tvare, aký Klaviyo používa pre túto udalosť, plus handle pre fotku a odkaz v e-maile.
+        // Vzorka (variant „Vzorka“ z detailu produktu) udalosť neposiela: e-mail je o objednávke platne.
         const product = line.node.merchandise.product;
-        trackKlaviyoEvent('Added to Cart', {
+        const isSample = line.node.merchandise.title.toLowerCase().includes(SAMPLE_VARIANT_KEYWORD.toLowerCase());
+        if (!isSample) trackKlaviyoEvent('Added to Cart', {
           $value: price * quantity,
           AddedItemProductName: product.title,
           AddedItemProductID: product.handle,

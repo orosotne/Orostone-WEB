@@ -23,6 +23,18 @@ const cameFromEmail =
 // Set by klaviyo.js once a visitor was identified on an earlier visit (e-mail link).
 const knownVisitor = typeof document !== 'undefined' && /(^|;\s*)__kla_id=/.test(document.cookie);
 
+// The stored cookie choice, read directly: this hook's effects run before CookieProvider loads
+// it from localStorage, so on the first render `preferences.marketing` is still the default.
+// Mirrors CookieContext: a saved choice without the key counts as a rejection.
+function storedMarketingRejected(): boolean {
+  try {
+    const raw = localStorage.getItem('orostone-cookies');
+    return !!raw && (JSON.parse(raw).marketing ?? false) === false;
+  } catch {
+    return false;
+  }
+}
+
 /**
  * Loads klaviyo.js only when marketing cookies are allowed (same model as the Meta Pixel) and
  * only for visitors Klaviyo can identify: those arriving from our e-mails (`_kx` in the URL) or
@@ -44,7 +56,7 @@ export function useKlaviyo(): void {
   }, [preferences.marketing]);
 
   useEffect(() => {
-    if (!preferences.marketing || loadedRef.current) return;
+    if (!preferences.marketing || loadedRef.current || storedMarketingRejected()) return;
     if (!cameFromEmail && !(knownVisitor && interacted)) return;
     loadedRef.current = true;
 
