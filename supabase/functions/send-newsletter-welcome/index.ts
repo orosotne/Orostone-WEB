@@ -303,7 +303,13 @@ serve(async (req) => {
 </body>
 </html>`;
 
-    await sendEmail({ to: email, subject: SUBJECT, html });
+    // subscribe-newsletter promises the codes by e-mail only after a 2xx from here
+    if (!(await sendEmail({ to: email, subject: SUBJECT, html }))) {
+      return new Response(JSON.stringify({ success: false, error: 'Resend nie je nastavený' }), {
+        status: 503,
+        headers: corsHeaders,
+      });
+    }
 
     return new Response(JSON.stringify({ success: true }), { headers: corsHeaders });
   } catch (err) {
@@ -317,10 +323,11 @@ serve(async (req) => {
 
 interface EmailParams { to: string; subject: string; html: string; }
 
-async function sendEmail({ to, subject, html }: EmailParams) {
+/** true = Resend accepted the e-mail; false = RESEND_API_KEY is missing, nothing sent. Throws on a Resend error. */
+async function sendEmail({ to, subject, html }: EmailParams): Promise<boolean> {
   if (!RESEND_API_KEY) {
     console.warn('[send-newsletter-welcome] RESEND_API_KEY nie je nastavený — preskakujem email');
-    return;
+    return false;
   }
 
   const response = await fetch('https://api.resend.com/emails', {
@@ -338,4 +345,5 @@ async function sendEmail({ to, subject, html }: EmailParams) {
   }
 
   console.log(`[send-newsletter-welcome] Email odoslaný na ${to}`);
+  return true;
 }

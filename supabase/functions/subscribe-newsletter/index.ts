@@ -560,21 +560,31 @@ serve(async (req) => {
     if (klaviyo === 'ok') inBackground(leaveInquiryList(email, source));
     if (klaviyo === 'rejected' || klaviyo === 'unknown' || klaviyo === 'blocked') inBackground(alertKlaviyoFailure(email, source, klaviyo));
 
-    // 3. Send welcome email (fire-and-forget) only for new subscribers and
-    //    reactivated unsubscribers — alreadySubscribed returned above. With Klaviyo on,
-    //    only when it definitely rejected the subscriber: after 'ok' its flow sends
-    //    the welcome series, after 'unknown' it may have (no double welcome).
+    // 3. Send welcome email only for new subscribers and reactivated unsubscribers —
+    //    alreadySubscribed returned above. With Klaviyo on, only when it definitely rejected
+    //    the subscriber: after 'ok' its flow sends the welcome series, after 'unknown' it may
+    //    have (no double welcome). Awaited (max 8 s), so the web promises the codes by e-mail
+    //    only when the fallback really sent it.
+    let fallbackSent = false;
     if (klaviyo === 'off' || klaviyo === 'rejected') {
-      fetch(`${SUPABASE_URL}/functions/v1/send-newsletter-welcome`, {
-        method: 'POST',
-        headers: serviceRoleHeaders(),
-        body: JSON.stringify({ email, name }),
-      }).catch((err) => console.warn('[subscribe-newsletter] Welcome email dispatch failed:', err));
+      try {
+        const res = await fetch(`${SUPABASE_URL}/functions/v1/send-newsletter-welcome`, {
+          method: 'POST',
+          headers: serviceRoleHeaders(),
+          body: JSON.stringify({ email, name }),
+          signal: AbortSignal.timeout(8000),
+        });
+        fallbackSent = res.ok;
+        if (!res.ok) console.warn('[subscribe-newsletter] Welcome email not sent:', res.status);
+      } catch (err) {
+        console.warn('[subscribe-newsletter] Welcome email dispatch failed:', err);
+      }
     }
 
     // Uvítací e-mail s kódmi: po 'ok' ho posiela flow v Klaviyu, po 'off'/'rejected' záložná
-    // funkcia vyššie. Po 'blocked' neodíde nič, po 'unknown' to nevieme, preto ho web nesľúbi.
-    const welcomeEmail = klaviyo === 'ok' || klaviyo === 'off' || klaviyo === 'rejected';
+    // funkcia vyššie, ak naozaj odišiel. Po 'blocked' neodíde nič, po 'unknown' to nevieme,
+    // preto ho web nesľúbi a kódy ukáže na obrazovke.
+    const welcomeEmail = klaviyo === 'ok' || fallbackSent;
     return new Response(
       JSON.stringify({ success: true, welcomeEmail }),
       { status: 200, headers: corsHeaders },

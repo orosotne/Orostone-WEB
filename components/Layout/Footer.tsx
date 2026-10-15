@@ -6,6 +6,9 @@ import { useCookies } from '../../context/CookieContext';
 import { useBackgroundTurnstile } from '../../hooks/useBackgroundTurnstile';
 import { Container, useDrawIn, IconWarranty, IconSecurePay, IconDispatch, IconDelivery } from '../Design';
 import { STOCK_SLAB_DELIVERY_RANGE } from '../../lib/delivery';
+import { SAMPLE_SHIPPING_CODE, SLAB_DISCOUNT_CODE, codesDelivery } from '../../lib/discountPopup';
+import type { CodesDelivery } from '../../lib/discountPopup';
+import { SlabCodeTerms } from '../UI/SlabCodeTerms';
 // Dynamic import — keeps supabase out of the initial bundle
 const loadNewsletter = () => import('../../services/newsletter.service');
 
@@ -36,6 +39,7 @@ const NewsletterWidget: React.FC = () => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [msg, setMsg] = useState('');
+  const [delivery, setDelivery] = useState<CodesDelivery>('email');
   const turnstile = useBackgroundTurnstile();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -46,6 +50,7 @@ const NewsletterWidget: React.FC = () => {
     const result = await subscribeToNewsletter({ email, source: 'footer', turnstileToken });
     if (result.success) {
       setStatus('success');
+      setDelivery(codesDelivery(result));
       setMsg(result.alreadySubscribed ? 'Tento e-mail je už prihlásený.' : 'Ďakujeme za prihlásenie!');
     } else {
       turnstile.reset();
@@ -56,9 +61,22 @@ const NewsletterWidget: React.FC = () => {
 
   if (status === 'success') {
     return (
-      <div className="flex items-center gap-2 text-sm text-brand-gold">
-        <CheckCircle size={16} />
-        <span>{msg}</span>
+      <div>
+        <div className="flex items-center gap-2 text-sm text-brand-gold">
+          <CheckCircle size={16} />
+          <span>{msg}</span>
+        </div>
+        {/* New sign-up without a welcome e-mail (Klaviyo blocked or did not answer): the codes are shown here */}
+        {delivery === 'screen' && (
+          <div className="mt-2 text-[0.78rem] leading-relaxed text-brand-light/[0.84]">
+            <p>
+              <span className="whitespace-nowrap">E-mail</span> s&nbsp;kódmi vám tentoraz poslať nevieme. Na dopravu prvej vzorky zadarmo zadajte v&nbsp;pokladni kód{' '}
+              <strong className="font-semibold text-brand-light">{SAMPLE_SHIPPING_CODE}</strong>, na 5&nbsp;% zľavu na platne kód{' '}
+              <strong className="font-semibold text-brand-light">{SLAB_DISCOUNT_CODE}</strong>.
+            </p>
+            <p className="mt-1 text-brand-light/70"><SlabCodeTerms /></p>
+          </div>
+        )}
       </div>
     );
   }
