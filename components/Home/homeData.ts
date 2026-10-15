@@ -70,9 +70,8 @@ export const HOME_GUIDES: Array<{ slug: string; title: string; titleEm: string }
 export { oroKlientUrl as ORO_KLIENT, PHONE_HREF, PHONE_LABEL } from '../Design/links';
 export const MAPS_URL = 'https://www.google.com/maps?q=SNP+113%2F1%2C+956+18+Bo%C5%A1any';
 
-/** Orostone on Google Maps, opened on the reviews tab. */
-export const GOOGLE_REVIEWS_URL =
-  'https://www.google.com/maps/place/Orostone/@48.1424061,17.1268597,17z/data=!4m8!3m7!1s0x4714cbd6d2121cad:0xa6f69681af7eecf4!8m2!3d48.1424061!4d17.1268597!9m1!1b1!16s%2Fg%2F11xkf9m7y8';
+/** Stable Google place link without an outdated map viewport. */
+export { OROSTONE_MAPS_URL as GOOGLE_REVIEWS_URL } from '../../lib/businessSchema';
 
 /** Rating as shown on Google Maps when last checked — update together with the reviews below. */
 export const GOOGLE_RATING = { value: '5,0', count: 5, checked: '2026-10-07' };

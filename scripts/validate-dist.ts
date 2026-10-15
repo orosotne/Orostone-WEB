@@ -8,9 +8,11 @@
  */
 import { readFileSync, existsSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { isDeepStrictEqual } from 'node:util';
 import { buildRouteRegistry, loadFallbackProducts, BASE_URL } from './lib/routes';
 import { getPublishedArticles } from '../data/blogArticles';
 import { BLOG_ARTICLES_LISTING } from '../data/blogArticlesMeta';
+import { ORGANIZATION_ID, OROSTONE_BUSINESS_GRAPH_LD } from '../lib/businessSchema';
 
 const DIST = resolve(process.cwd(), 'dist');
 
@@ -81,6 +83,15 @@ for (const route of routes) {
   // All JSON-LD blocks must parse (collected errors inside)
   const blocks = extractJsonLdBlocks(html);
 
+  // The business identity must exist exactly once even before JavaScript runs.
+  // The Vite-injected head stays in place during client-side route changes.
+  const businessGraphs = blocks.filter((block) => block['@graph']?.some(
+    (entity: Record<string, unknown>) => entity['@id'] === ORGANIZATION_ID,
+  ));
+  if (businessGraphs.length !== 1 || !isDeepStrictEqual(businessGraphs[0], OROSTONE_BUSINESS_GRAPH_LD)) {
+    fail(`${route.path}: expected exactly one shared organization/showroom graph`);
+  }
+
   // Product pages: Product schema with a sane Offer
   if (route.kind === 'product') {
     const product = blocks.find((b) => b['@type'] === 'Product');
@@ -95,6 +106,9 @@ for (const route of routes) {
         fail(`${route.path}: Offer.priceCurrency ${product.offers?.priceCurrency} ≠ EUR`);
       }
       if (!product.offers?.availability) fail(`${route.path}: Offer.availability missing`);
+      if (product.offers?.seller?.['@id'] !== ORGANIZATION_ID) {
+        fail(`${route.path}: Offer.seller must reference the shared legal organization`);
+      }
       if (!product.image || (Array.isArray(product.image) && product.image.length === 0)) {
         fail(`${route.path}: Product.image missing`);
       }
