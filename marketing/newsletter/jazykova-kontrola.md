@@ -352,3 +352,9 @@ Bez zmeny textu: kampane 18, 20, 28, 30 a 35 spomínajú len kód VITAJTE a ost�
 | 2 | 01 (poznámka) | WELCOME5 si nechajte na objednávku platní – platí len raz a v pokladni by sa minul aj na vzorke. | WELCOME5 si nechajte na objednávku platní – môžete ho uplatniť len raz; ak by ste ho uplatnili pri objednávke vzorky, na platne by ste ho už použiť nemohli. | štylistika | Zvratné „kód by sa minul“ je neprirodzené a nevyjadruje presne, že zákazník vyčerpá jeho jediné uplatnenie. | prijaté, zapracované |
 
 Rovnaké znenie podmienky preberá záložný uvítací e-mail (`supabase/functions/send-newsletter-welcome`, PR #165).
+
+## Kolo 31 – Codex review v PR #165 (15. 10. 2026, poznámka o kódoch v 01)
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 01 (poznámka) | Na vzorku zadajte VITAJTE. WELCOME5 si nechajte na objednávku platní – môžete ho uplatniť len raz; ak by ste ho uplatnili pri objednávke vzorky, na platne by ste ho už použiť nemohli. | Na vzorku zadajte VITAJTE, na platne WELCOME5. | fakt | Codex (záložný e-mail v PR #165, rovnaká veta) upozornil, že WELCOME5 sa na objednávku vzoriek neuplatní. Overené v Shopify 15. 10. 2026: vzorky sú samostatný produkt `vzorky-orostone`, WELCOME5 platí len na 12 produktov dekorov (každý má jediný variant, platňu). Dôvod v kolách 29 a 30 („vzorka je variant produktu dekoru“) bol nesprávny. | prijaté, zapracované |

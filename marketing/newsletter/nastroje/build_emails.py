@@ -938,8 +938,8 @@ def write_nb(name, html_doc):
 # Dva uvítacie kódy pre každého, kto sa na odber prihlási formulárom na webe orostone.sk (Martin, 15. 10. 2026:
 # „Oba kódy každému“). Predmet kódy spomína (Martin, 15. 10. 2026: „Spomenúť kódy“).
 # Shopify (overené 15. 10. 2026): VITAJTE = doprava zadarmo (do 3 €, teda len vzorky), WELCOME5 = 5 % na 12 dekorov.
-# Oba raz na zákazníka a bez kombinácií. Vzorka je variant produktu dekoru, WELCOME5 by sa teda minul aj na
-# objednávke vzorky – e-mail radí zadať na vzorku VITAJTE a WELCOME5 si nechať na objednávku platní.
+# Oba raz na zákazníka a bez kombinácií. Vzorky sú v Shopify samostatný produkt vzorky-orostone, na ktorý WELCOME5
+# neplatí (overené 15. 10. 2026) – e-mail preto radí VITAJTE na vzorku a WELCOME5 na platne.
 # Záložný uvítací e-mail (Supabase funkcia send-newsletter-welcome) má mať rovnaké podmienky WELCOME5, poznámku
 # a predmet, pri zmene ich zladiť. Predmet a preheader sa v Klaviyu menia aj v správe VLzuhC (pole Subject a Preview text).
 WELCOME_KOD = "WELCOME5"
@@ -982,7 +982,7 @@ write_nb("01-welcome-vitajte.html", doc(
                    "Keď si dekor vyberiete, kód odpočíta 5&nbsp;% z ceny platní, nie z&nbsp;dopravy. Vzťahuje sa na všetkých 12 dekorov v e-shope.",
                    "Pozrieť dekory", SITE + "/kategoria/sintered-stone",
                    note='V pokladni zadajte kód <strong style="font-weight:700; color:#1A1A1A;">' + WELCOME_KOD + '</strong>. Platí na jednu objednávku a&nbsp;nedá sa kombinovať so žiadnou inou zľavou&nbsp;– ani so zľavou 20&nbsp;%, ktorú e-shop odpočíta automaticky pri objednávke troch alebo viacerých platní.', top=16),
-        note('<strong style="font-weight:700; color:#1A1A1A;">Kódy uplatníte len v e-shope orostone.sk</strong>, nie pri objednávke po telefóne ani na základe cenovej ponuky. Na vzorku zadajte VITAJTE. ' + WELCOME_KOD + ' si nechajte na objednávku platní&nbsp;– môžete ho uplatniť len raz; ak by ste ho uplatnili pri objednávke vzorky, na platne by ste ho už použiť nemohli.', top=14),
+        note('<strong style="font-weight:700; color:#1A1A1A;">Kódy uplatníte len v e-shope orostone.sk</strong>, nie pri objednávke po telefóne ani na základe cenovej ponuky. Na vzorku zadajte VITAJTE, na platne ' + WELCOME_KOD + '.', top=14),
         ps('Ak už máte pôdorys kuchyne, pošlite nám ho v odpovedi na tento e-mail. <strong style="font-weight:700; color:#1A1A1A;">Pripravíme orientačné cenové rozpätie</strong> pre váš projekt&nbsp;– nezáväzne.'),
         signature(top=0),
         footer(),
