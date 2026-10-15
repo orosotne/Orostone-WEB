@@ -17,7 +17,7 @@ NAMES = {
  'PRODUKTOVÁ KARTA':'Produktová karta','CTA':'Tlačidlo (CTA)','LIST (osobný tón, bez dekorácií)':'List',
  'P.S.':'P. S.','PODPIS ZNAČKY':'Podpis značky','FOOTER':None,'LEGAL / UNSUB':'Pätička — dôvod a odhlásenie',
  'VOĽBA (preferencia / segmentácia klikom)':'Voľba (tlačidlá)',
- 'REALIZÁCIA (karta)':'Karta (fotka, štítok, nadpis, veta)','POZNÁMKA':'Poznámka'}
+ 'REALIZÁCIA (karta)':'Karta (fotka, štítok, nadpis, veta)','POZNÁMKA':'Poznámka','POLOŽKY KOŠÍKA':'Položky košíka'}
 
 class Blocks(HTMLParser):
     def __init__(s):

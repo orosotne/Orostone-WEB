@@ -313,4 +313,14 @@ Codex na `1a26517` nenašiel žiadne pripomienky. Opravy z kôl 22 a 23 v 03, 18
 
 Codex na `5a86f19` nenašiel žiadne pripomienky. Zmeny v 10, 15 a 16 sú jazykovo skontrolované.
 
+## Kolo 27 – Codex review v PR #148 (15. 10. 2026, e-mail 36: košík z webu so zľavou 5 %)
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 36 (preheader) | Košík sme vám uložili, dokončíte ho jedným kliknutím. | Košík sme vám uložili. K objednávke sa vrátite jedným kliknutím. | štylistika | Dokončuje sa objednávka alebo nákup, nie košík; dve vety namiesto spojenia čiarkou. | prijaté, zapracované |
+| 2 | 36 (tmavý pás) | Dekor máte v košíku, my sme ho uložili. | Dekor máte v košíku, ktorý sme vám uložili. | gramatika | Zámeno „ho“ mohlo odkazovať na dekor aj na košík. | prijaté, zapracované |
+| 3 | 36 (P. S.) | Poradím, ktorý z nich bude vo veľkej ploche vašej kuchyne fungovať lepšie. | Poradím, ktorý z nich bude na veľkej ploche vo vašej kuchyni vyzerať lepšie. | štylistika | „Vo veľkej ploche“ má nesprávnu predložku a „dekor bude fungovať“ je kalk. | prijaté, zapracované |
+
+Pripomienky ku kódu a zásadám v tom istom review (načítanie Klaviya pri uloženom odmietnutí cookies, udalosť pri pridaní vzorky, nezlomiteľná medzera „2&nbsp;rokov“ v zásadách cookies) sú prijaté a opravené v PR #148.
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.

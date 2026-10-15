@@ -397,6 +397,29 @@ def facts(items, top=20):
 """
 
 
+def cart_items(label, top=24):
+    """Položky košíka z udalosti Klaviyo (event.Items z webu): názov dekoru, variant a množstvo.
+    Bez cien – tie ukáže pokladňa, kde sa počíta aj doprava a zľava."""
+    return f"""
+        <!-- POLOŽKY KOŠÍKA -->
+        <tr>
+          <td class="px-40" style="padding:{top}px 40px 0;">
+            <div style="font-family:{F}; font-size:10px; font-weight:700; letter-spacing:0.24em; text-transform:uppercase; color:{GOLD_INK}; margin-bottom:4px;">{label}</div>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-bottom:1px solid {LINE};">
+              {{% for item in event.Items %}}
+              <tr>
+                <td valign="top" style="padding:14px 0; border-top:1px solid {LINE};">
+                  <div class="t-title" style="font-family:{F}; font-size:15px; font-weight:700; line-height:22px; color:{INK};">{{{{ item.ProductName|title }}}}</div>
+                  <div class="t-small" style="font-family:{F}; font-size:13.5px; font-weight:400; line-height:22px; color:{GRAY}; margin-top:2px;">{{% if item.VariantName and item.VariantName != 'Default Title' %}}{{{{ item.VariantName }}}} &middot; {{% endif %}}{{{{ item.Quantity }}}}&nbsp;ks</div>
+                </td>
+              </tr>
+              {{% endfor %}}
+            </table>
+          </td>
+        </tr>
+"""
+
+
 def quote_dark(label, body_html, attribution=None, top=24):
     att = f"""
                   <div style="font-family:{F}; font-size:11px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:#9CA3AF; margin-top:14px;">{attribution}</div>""" if attribution else ""
@@ -2137,6 +2160,58 @@ write_nb("35-kampan-newsletter-pravidelne.html", doc(
         ps('Ak už máte pôdorys kuchyne, pošlite nám ho v odpovedi na tento e-mail. <strong style="font-weight:700; color:#1A1A1A;">Pripravíme orientačné cenové rozpätie</strong> pre váš projekt – nezáväzne.'),
         signature(top=0),
         footer(),
+    ]))
+
+# Udalosť „Added to Cart“ z webu orostone.sk (hooks/useKlaviyo.ts, context/CartContext.tsx):
+# názov a handle dekoru, uložený košík v pokladni Shopify a položky košíka.
+KOSIK_NAZOV = "{{ event.AddedItemProductName|default:'Taj Mahal'|title }}"
+KOSIK_HANDLE = "{{ event.AddedItemProductID|default:'taj-mahal' }}"
+# Kód KOSIK5 (Shopify): 5 % z celej objednávky, raz na zákazníka. Pokladňa Shopify ho z parametra discount doplní sama.
+KOSIK_KOD = "KOSIK5"
+KOSIK_CHECKOUT = "{% if event.CheckoutURL %}{{ event.CheckoutURL }}&discount=" + KOSIK_KOD + "{% else %}" + SITE + "{% endif %}"
+REASON_KOSIK_WEB = "Tento e-mail ste dostali, pretože odoberáte novinky Orostone a v e-shope orostone.sk ste si vložili dekor do košíka."
+
+# 36 – Košík z webu: dekor vložený do košíka (odberatelia newslettera), so zľavou KOSIK5
+# Banner kosik-zlava-5-<handle>.jpg: vľavo „5 % na celú objednávku · KOSIK5“, vpravo kuchyňa s dekorom
+# (prvá fotka z galérie detailu produktu na orostone.sk). Je pre každý z 12 dekorov; check_images.py ich overí.
+ZLAVA = "5\u00a0%"  # nezlomiteľná medzera, aby sa „5“ a „%“ nerozdelili
+write_nb("36-automatizacia-kosik-dekor.html", doc(
+    {
+        "TYP:": "Automatizácia · Košík z webu",
+        "SPÚŠŤAČ:": "Na druhý deň o 9:00 po vložení dekoru do košíka na orostone.sk, ak človek nezačal pokladňu, neobjednal ani košík nevyprázdnil (Klaviyo: Added to Cart z webu)",
+        "PREDMET:": "Zľava 5 % na dekor vo vašom košíku",
+        "PREHEADER:": "Kód KOSIK5 platí na celú objednávku. Košík sme vám uložili. K objednávke sa vrátite jedným kliknutím.",
+        "CIEĽ:": "Dokončiť objednávku na orostone.sk s kódom KOSIK5, alebo urobiť ďalší krok (vzorka, celá platňa, pôdorys).",
+        "POZNÁMKA:": "Len odberatelia so súhlasom, ktorých web rozpoznal po príchode z nášho e-mailu. Zľava je v predmete, v hlavičke, v tmavom páse aj na banneri. Banner, názov dekoru, fotka platne, položky a odkazy sú dynamické podľa dekoru z udalosti; bez údajov Taj Mahal. Tlačidlá vedú do pokladne Shopify s uloženým košíkom a kód KOSIK5 (5 % z celej objednávky, raz na zákazníka) doplnia z parametra discount. Zľava platí len pri objednávke na orostone.sk, nie po telefóne ani na základe cenovej ponuky.",
+    },
+    "Zľava 5 % na dekor vo vašom košíku",
+    "Kód KOSIK5 platí na celú objednávku. Košík sme vám uložili. K objednávke sa vrátite jedným kliknutím.",
+    [
+        header("Zľava " + ZLAVA, "kód " + KOSIK_KOD),
+        dark_band("Zľava pre odberateľov",
+                  KOSIK_NAZOV + "<br />" + accent_dark("o " + ZLAVA + " lacnejšie."),
+                  sub="Košík sme vám uložili. Kód <strong style=\"font-weight:700; color:#FFFFFF;\">" + KOSIK_KOD + "</strong> platí na celú objednávku na orostone.sk.",
+                  image=(IMG + "kosik-zlava-5-" + KOSIK_HANDLE + ".jpg", "Zľava 5 % na celú objednávku s kódom KOSIK5. Vizualizácia kuchyne s dekorom " + KOSIK_NAZOV),
+                  cta=("Dokončiť so zľavou " + ZLAVA, KOSIK_CHECKOUT)),
+        text([
+            "dekor " + KOSIK_NAZOV + " ste si na orostone.sk vložili do košíka a objednávku ste zatiaľ nedokončili. Ako odberateľovi noviniek vám na ňu dávame zľavu " + ZLAVA + ", aby sa vám rozhodovalo ľahšie.",
+            "Pracovná doska sa vyberá raz. Nerozhoduje o nej malá vzorka ani cena, ale to, ako kresba vyzerá na celej ploche a ako sa doska používa každý deň.",
+        ], top=32),
+        cart_items("V košíku máte", top=8),
+        hero(IMG + "dekor-mockup-" + KOSIK_HANDLE + "-1040.jpg", "Celá platňa " + KOSIK_NAZOV + " vedľa človeka na porovnanie veľkosti", capsule=KOSIK_NAZOV + " · celá platňa", top=28),
+        card_offer("Váš zľavový kód", KOSIK_KOD,
+                   'Odpočíta ' + ZLAVA + ' z ceny všetkého tovaru v košíku a platí na jednu objednávku na orostone.sk. Dostávate ho ako odberateľ noviniek Orostone. Tlačidlo otvorí váš uložený košík v pokladni a kód doplní samo; inak ho zadajte do poľa „Zľavový kód“.',
+                   "Dokončiť objednávku", KOSIK_CHECKOUT,
+                   note='<strong style="font-weight:700; color:#1A1A1A;">Zľavu uplatníte len pri objednávke na orostone.sk.</strong> Ak objednávate po telefóne alebo na základe cenovej ponuky, kód použiť nemôžeme. Zľava sa počíta z ceny tovaru, nie z dopravy. Ak si chcete dekor najprv overiť na vzorke, kód si nechajte na objednávku platne – platí len raz. <a href="' + SITE + "/produkt/" + KOSIK_HANDLE + '" target="_blank" style="color:#1A1A1A; text-decoration:underline;">Pozrieť dekor znova</a>'),
+        section_title(None, "Ak ešte váhate", top=28),
+        numbered([
+            ("Vzorka v rukách", "Prvá vzorka je zadarmo. Priložte ju k dvierkam a k podlahe pri svojom svetle – uvidíte viac než na obrazovke."),
+            ("Celá platňa", "Na stránke dekoru je fotka platne 3200 × 1600&nbsp;mm vedľa človeka. Ukáže, ako sa kresba rozloží po dĺžke pracovnej dosky."),
+            ("Pôdorys", "Pošlite pôdorys alebo rozmery v odpovedi na tento e-mail. Navrhneme rozloženie platní a pripravíme orientačné cenové rozpätie."),
+        ], top=8),
+        ps("Ak váhate medzi dvoma dekormi, odpovedzte na tento e-mail a napíšte, ktoré to sú. Poradím, ktorý z nich bude na veľkej ploche vo vašej kuchyni vyzerať lepšie. Kód " + KOSIK_KOD + " platí aj na dekor, ktorý si nakoniec vyberiete, ak ho objednáte na orostone.sk."),
+        signature(top=0),
+        footer(reason=REASON_KOSIK_WEB),
     ]))
 
 print("hotovo →", OUT)

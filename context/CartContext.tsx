@@ -12,6 +12,7 @@ import {
   type ShopifyCartLine,
 } from '../services/shopify.service';
 import { trackMetaEvent } from '../hooks/useMetaPixel';
+import { trackKlaviyoEvent } from '../hooks/useKlaviyo';
 import { trackGA4AddToCart } from '../services/analytics';
 import { getUTMForCheckout } from '../hooks/useUTMTracking';
 import { onIdle } from '../lib/utils';
@@ -78,6 +79,16 @@ interface CartContextType {
 const CART_ID_KEY = 'orostone_shopify_cart_id';
 const CART_OP_TIMEOUT_MS = 15000;
 const SITE_URL = import.meta.env.VITE_PUBLIC_SITE_URL ?? 'https://orostone.sk';
+
+// Pripomienka košíka v Klaviyu sa týka platní, nie vzoriek (variant s „Vzorka“ v názve)
+const isSampleTitle = (title: string): boolean =>
+  title.toLowerCase().includes(SAMPLE_VARIANT_KEYWORD.toLowerCase());
+const hasPlateLines = (c: ShopifyCart | null | undefined): boolean =>
+  !!c?.lines.edges.some(({ node }) => !isSampleTitle(node.merchandise.title));
+// Keď z košíka zmizne posledná platňa, Klaviyo dostane „Emptied Cart“ a flow pripomienky sa ukončí
+const trackCartEmptied = (before: ShopifyCart | null | undefined, after: ShopifyCart | null | undefined): void => {
+  if (hasPlateLines(before) && !hasPlateLines(after)) trackKlaviyoEvent('Emptied Cart', {});
+};
 
 function withTimeout<T>(promise: Promise<T>, ms: number = CART_OP_TIMEOUT_MS): Promise<T> {
   let timeoutId: ReturnType<typeof setTimeout>;
@@ -304,6 +315,31 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
           num_items: quantity,
         });
         trackGA4AddToCart({ id: variantId, name: line.node.merchandise.title, price, quantity });
+        // Klaviyo „Added to Cart“ (pripomenutie košíka odberateľom newslettera); vlastnosti
+        // v tvare, aký Klaviyo používa pre túto udalosť, plus handle pre fotku a odkaz v e-maile.
+        // Vzorka (variant „Vzorka“ z detailu produktu) udalosť neposiela: e-mail je o objednávke platne.
+        const product = line.node.merchandise.product;
+        if (!isSampleTitle(line.node.merchandise.title)) trackKlaviyoEvent('Added to Cart', {
+          $value: price * quantity,
+          AddedItemProductName: product.title,
+          AddedItemProductID: product.handle,
+          AddedItemVariantName: line.node.merchandise.title,
+          AddedItemPrice: price,
+          AddedItemQuantity: quantity,
+          AddedItemURL: `${SITE_URL}/produkt/${product.handle}`,
+          AddedItemImageURL: line.node.merchandise.image?.url ?? product.images.edges[0]?.node.url ?? '',
+          ItemNames: updatedCart.lines.edges.map(({ node }) => node.merchandise.product.title),
+          CheckoutURL: updatedCart.checkoutUrl,
+          Items: updatedCart.lines.edges.map(({ node }) => ({
+            ProductName: node.merchandise.product.title,
+            ProductID: node.merchandise.product.handle,
+            VariantName: node.merchandise.title,
+            Quantity: node.quantity,
+            ItemPrice: parseFloat(node.cost?.amountPerQuantity?.amount ?? '0'),
+            RowTotal: parseFloat(node.cost?.totalAmount?.amount ?? '0'),
+            ProductURL: `${SITE_URL}/produkt/${node.merchandise.product.handle}`,
+          })),
+        });
       }
     } catch (err) {
       console.error('Chyba pri pridani do kosika:', err);
@@ -323,6 +359,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       const updatedCart = await withCartTimeout(() => shopifyRemoveFromCart(currentCart.id, lineId));
       setCart(updatedCart);
       cartRef.current = updatedCart;
+      trackCartEmptied(currentCart, updatedCart);
     } catch (err) {
       console.error('Chyba pri odstraneni z kosika:', err);
       setError('Nepodarilo sa odstrániť produkt z košíka.');
@@ -342,6 +379,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         const updatedCart = await withCartTimeout(() => shopifyRemoveFromCart(currentCart.id, lineId));
         setCart(updatedCart);
         cartRef.current = updatedCart;
+        trackCartEmptied(currentCart, updatedCart);
       } else {
         const updatedCart = await withCartTimeout(() => shopifyUpdateCartItem(currentCart.id, lineId, quantity));
         setCart(updatedCart);
@@ -359,9 +397,11 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     setIsLoading(true);
     setError(null);
     try {
+      const previousCart = cartRef.current;
       const newCart = await shopifyCreateCart();
       setCart(newCart);
       cartRef.current = newCart;
+      trackCartEmptied(previousCart, newCart);
       localStorage.setItem(CART_ID_KEY, newCart.id);
     } catch (err) {
       console.error('Chyba pri vyprazdneni kosika:', err);

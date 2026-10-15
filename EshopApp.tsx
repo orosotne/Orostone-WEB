@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { useAnalytics } from './hooks/useAnalytics';
 import { useMetaPixel } from './hooks/useMetaPixel';
+import { useKlaviyo } from './hooks/useKlaviyo';
 import { captureUTM } from './hooks/useUTMTracking';
 import { BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 import { EshopLayout } from './components/Eshop/EshopLayout';
@@ -108,6 +109,7 @@ const SpeedInsightsWithRoute = () => {
 const EshopAppContent = () => {
   useAnalytics();
   useMetaPixel();
+  useKlaviyo();
 
   return (
     <EshopLayout>

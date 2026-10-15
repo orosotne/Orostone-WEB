@@ -60,7 +60,7 @@ Používajú sa na meranie návštevnosti a správania na webe, aby sme vedeli z
 
 Podľa vášho súhlasu
 
-Používajú sa na meranie účinnosti reklamy, remarketing a zobrazovanie relevantnejších reklamných kampaní. Aktivujú sa iba po vašom predchádzajúcom súhlase.
+Používajú sa na meranie účinnosti reklamy, remarketing a zobrazovanie relevantnejších reklamných kampaní a na rozpoznanie odberateľa newslettera, ktorý prišiel z nášho e-mailu (pripomenutie košíka). Aktivujú sa iba po vašom predchádzajúcom súhlase.
 
 ## 3. Prehľad používaných cookies a podobných technológií
 
@@ -81,6 +81,8 @@ Podrobný zoznam
 | orostone_internal | Orostone | Analytické | cookie – označenie návštev nášho tímu, aby sa nezapočítavali do štatistík; nastaví sa len cez interný odkaz | 1 rok |
 | _fbp | Meta | Marketingové | Meta Pixel – meranie konverzií a remarketing (len so súhlasom) | 3 mesiace |
 | _fbc | Meta | Marketingové | Meta Pixel – identifikátor kliknutia z Meta reklamy (len so súhlasom) | 3 mesiace |
+| __kla_id | Klaviyo | Marketingové | Klaviyo – rozpoznanie odberateľa newslettera, ktorý prišiel z odkazu v našom e-maile, a záznam vloženia dekoru do košíka pre pripomenutie košíka (len so súhlasom) | Do 2 rokov; Safari a Firefox platnosť skracujú na dni až týždne |
+| __kla_off | Orostone | Nevyhnutné | cookie – záznam, že ste marketingové cookies odmietli alebo súhlas odvolali, aby Klaviyo na webe nesledovalo; nastaví sa len vtedy, ak už Klaviyo na webe bežalo | 1 rok |
 | _gcl_aw, _gcl_au | Google | Marketingové | Google Ads – uloženie identifikátora kliknutia na reklamu a meranie konverzií | 90 dní |
 
 ## 4. Právny základ
@@ -128,6 +130,8 @@ Cloudflare – ochrana formulárov a webu
 Google (Google Analytics 4, Google Tag Manager, Google Ads) – analytika návštevnosti, meranie konverzií a remarketing
 
 Meta (Meta Pixel) – remarketing a meranie konverzií
+
+Klaviyo – newsletter a automatické e-maily, rozpoznanie odberateľa newslettera na webe pre pripomenutie košíka
 
 Vercel – anonymné meranie návštevnosti a rýchlosti stránok bez cookies
 
