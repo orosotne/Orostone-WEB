@@ -162,7 +162,7 @@ Skratky: N = `marketing/newsletter`, B = `N/nastroje/build_emails.py`, PB = play
 | A2 Vzorky | Shopify Fulfilled Order Y4VvMe | áno, od 14. 10. (4 udalosti) | nič | **live od 14. 10. 18:54 UTC (flow Tp45w8)** |
 | A7 Reaktivácia | segment VGyNMu (Opened TqZ5Tp, Clicked VdqXpS) | áno | nič | **live od 14. 10. 11:50 UTC (flow R5jtdq)** |
 | A4 Opustený košík | Shopify Checkout Started TR4G9D | áno (13 udalostí, žiadna skutočne opustená) | Martin 14. 10.: e-mail o opustenej pokladni posiela Shopify všetkým zákazníkom, aj bez súhlasu (zásady: PR #144), A4 sa nespúšťa. Do 14. 10. Shopify neposlal ani jeden (0 z 3, pozri A4 › 4) | nič, flow nevytvorený |
-| A4b Košík z webu | Added to Cart z webu (API TANKsY, Klaviyo.js) | áno, 2 testovacie udalosti 15. 10. | merge PR #148, nahranie 36 z main | Martin 15. 10. dal OK na draft, test na jeho adresu a spustenie po teste |
+| A4b Košík z webu | Added to Cart z webu (API TANKsY, Klaviyo.js) | áno | nič | **live od 15. 10. 11:49 UTC (flow WV6K3N)** |
 | A3 Dopyt → ponuka | CRM, fáza „Finálna ponuka odoslaná“ | nie | rozhodnutie Klaviyo vs. CRM; CRM kód; nový kľúč | nič |
 | A5 Po realizácii | CRM, montáž so stavom `dokoncene` | nie | CRM kód; fotky pre 08; súhlas | nič |
 | A8 B2B | neexistuje | nie | model súhlasu a zdroj kontaktov | nič |
@@ -419,6 +419,8 @@ UTM, návrh: `utm_campaign=opusteny-kosik`.
 - **UTM:** checkout vzoriek UTM nenesie (pozri spoločné pasce).
 
 ## A4b Košík z webu (36)
+
+> **Stav 15. 10. 2026:** PR #148 zlúčený (91a99da) a web nasadený (klaviyo.js, udalosti Added to Cart a Emptied Cart, `__kla_off`, bannery). Šablóna 36 nahratá z main ako **VmBnwe**, flow **WV6K3N** „Košík z webu (A4b) – zľava 5 % KOSIK5“ ju skopíroval ako **Wi5Grb**, správa **UvDNUG**, akcie 120696980 (čakanie 1 deň do 9:00) a 120696981 (e-mail). Filtre: subscribed, člen VSrLFs, bez U2XF6B a TKAHuh, 0× Checkout Started TR4G9D, 0× Placed Order Uu5JLg a 0× Emptied Cart **REk77Q** od vstupu; re-entry 7 dní; smart sending vypnutý; UTM kosik-web. Test (render s dekorom Appennino a Taj Mahal, pokladňa s `&discount=KOSIK5`: 2 199,00 € → 2 089,05 €) prešiel, testovací e-mail odoslaný na adresu Martina. Flow aj e-mail sú **live** od 11:49 UTC. V Shopify Messaging je „Recover abandoned cart“ **Inactive** (vypnuté 15. 10. na pokyn Martina, nezmazané), „Recover abandoned checkout“ s DOKONCIT10 (10 %) ostáva Active. Martin 15. 10.: KOSIK5 ostáva 5 % (košík na webe), DOKONCIT10 10 % (pokladňa Shopify), nezlaďovať.
 
 Zadanie Martina 15. 10. 2026: pripomenutie košíka cez Klaviyo (nie Shopify) pre odberateľov newslettera, ktorí si na webe vložia dekor do košíka. Shopify ďalej posiela pripomenutie nákupu nedokončeného v pokladni (A4, PR #144); A4b je iná udalosť (košík, nie pokladňa) a ide len so súhlasom.
 
