@@ -91,13 +91,13 @@ export const PrivacyPolicy = () => {
                     </tr>
                     <tr>
                       <td className="py-3 px-3 font-semibold text-brand-dark align-top">Marketing</td>
-                      <td className="py-3 px-3 align-top">Newsletter, automatické e-maily, remarketingové ponuky a meranie účinnosti reklám v Google Ads a na Facebooku či Instagrame, všetko len s vaším výslovným súhlasom. Automatické e-maily vám môžeme poslať napríklad po prihlásení na newsletter, keď si objednáte vzorku alebo keď ako odberateľ newslettera 90&nbsp;dní neotvoríte žiadny z našich e-mailov ani v nich na nič nekliknete. Výnimkou je pripomenutie nedokončeného nákupu, ktoré posielame aj bez súhlasu (nasledujúci riadok).</td>
+                      <td className="py-3 px-3 align-top">Newsletter, automatické e-maily, remarketingové ponuky a meranie účinnosti reklám v Google Ads a na Facebooku či Instagrame, všetko len s vaším výslovným súhlasom. Automatické e-maily vám môžeme poslať napríklad po prihlásení na newsletter, keď si objednáte vzorku alebo keď ako odberateľ newslettera 90&nbsp;dní neotvoríte žiadny z našich e-mailov ani v nich na nič nekliknete. Výnimkou je pripomenutie nedokončeného nákupu, ktoré posielame aj bez súhlasu (pozri nasledujúci riadok).</td>
                       <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. a) – súhlas</td>
                     </tr>
                     <tr>
                       <td className="py-3 px-3 font-semibold text-brand-dark align-top">Pripomenutie nedokončeného nákupu</td>
-                      <td className="py-3 px-3 align-top">Ak v pokladni e-shopu zadáte e-mailovú adresu a nákup nedokončíte, platforma Shopify vám v našom mene pošle jeden e-mail s pripomenutím tovaru, ktorý ste v pokladni nechali, a s odkazom na dokončenie nákupu. Pripomenutie vám pošleme aj vtedy, ak ste súhlas s e-mailovým marketingom nedali. Môžete ho kedykoľvek bezplatne odmietnuť odkazom na odhlásenie v e-maile alebo správou na info@orostone.sk a máte právo proti nemu namietať (viac v časti Vaše práva).</td>
-                      <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. f) – oprávnený záujem (pripomenúť vám nákup, ktorý ste v našom e-shope začali) v spojení s § 116 ods. 15 zákona č. 452/2021 Z.&nbsp;z. o elektronických komunikáciách</td>
+                      <td className="py-3 px-3 align-top">Ak v pokladni e-shopu zadáte e-mailovú adresu a nákup nedokončíte, platforma Shopify vám v našom mene pošle k tomuto nákupu jeden e-mail s prehľadom tovaru, ktorý ste v pokladni nechali, a s odkazom na dokončenie nákupu. Pripomenutie vám pošleme aj vtedy, ak ste súhlas s e-mailovým marketingom nedali. Odmietnuť pripomenutie môžete kedykoľvek, bezplatne a bez udania dôvodu odkazom na odhlásenie v e-maile alebo správou na info@orostone.sk. Ide o námietku proti priamemu marketingu (viac v časti Vaše práva).</td>
+                      <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. f) – oprávnený záujem (pripomenutie nákupu, ktorý ste v našom e-shope začali) v spojení s §&nbsp;116 ods.&nbsp;15 zákona č.&nbsp;452/2021 Z.&nbsp;z. o elektronických komunikáciách v znení neskorších predpisov</td>
                     </tr>
                     <tr>
                       <td className="py-3 px-3 font-semibold text-brand-dark align-top">Prehľad objednávok a meranie e-mailov</td>
@@ -135,8 +135,8 @@ export const PrivacyPolicy = () => {
                   <h4 className="mb-2 font-semibold text-brand-dark">Newsletter</h4>
                   <p className="text-sm">
                     Prihlásenie na newsletter je <strong>dobrovoľné</strong>. Ak e-mailovú adresu neposkytnete, odber newslettera nebude možný.
-                    Súhlas s e-mailovým marketingom môžete dať aj v pokladni e-shopu zaškrtnutím políčka „Chcem dostávať novinky a ponuky e-mailom“. Políčko nie je vopred zaškrtnuté a nakúpiť môžete aj bez súhlasu. Aj bez súhlasu vám však môže prísť jedno pripomenutie nedokončeného nákupu (pozri časť Účel spracovania). Jeho prijímanie nie je podmienkou nákupu a môžete ho odmietnuť.
-                    Súhlas možno kedykoľvek odvolať kliknutím na odkaz v e-maile.
+                    Súhlas s e-mailovým marketingom môžete dať aj v pokladni e-shopu zaškrtnutím políčka „Chcem dostávať novinky a ponuky e-mailom“. Políčko nie je vopred zaškrtnuté a nakúpiť môžete aj bez súhlasu.
+                    Súhlas možno kedykoľvek odvolať kliknutím na odkaz v e-maile. Bez ohľadu na súhlas vám ku každému nákupu, ktorý v pokladni nedokončíte, môže prísť jedno pripomenutie (pozri časť Účel spracovania). Pripomenutie môžete kedykoľvek odmietnuť a na vaše nákupy to nemá vplyv.
                   </p>
                 </div>
                 <div className={`${LEGAL_BOX} p-4`}>
@@ -278,7 +278,7 @@ export const PrivacyPolicy = () => {
                   <h4 className="mb-2 font-semibold text-brand-dark">E-mailová komunikácia</h4>
                   <ul className="text-sm space-y-1">
                     <li>• Súhlas s e-mailovým marketingom a odhlásenie</li>
-                    <li>• Odoslané pripomenutia nedokončeného nákupu a ich odmietnutie</li>
+                    <li>• Odoslanie pripomenutí nedokončeného nákupu a ich odmietnutie</li>
                     <li>• Otvorenia e-mailov a kliknutia v nich</li>
                     <li>• Odpovede, ktoré v e-mailoch zvolíte</li>
                   </ul>
@@ -332,7 +332,7 @@ export const PrivacyPolicy = () => {
                   <span className="min-w-[2.5rem] text-center text-2xl font-light tabular-nums text-brand-dark">3</span>
                   <div>
                     <p className="font-semibold text-brand-dark">mesiace</p>
-                    <p className="text-sm">Nákupy nedokončené v pokladni na platforme Shopify – Shopify ich spravidla po 3&nbsp;mesiacoch automaticky vymaže. Záznam o tom, že ste pripomenutia odmietli, uchovávame, kým pripomenutia posielame, aby vám ďalšie už neprišli.</p>
+                    <p className="text-sm">Nákupy nedokončené v pokladni – platforma Shopify ich spravidla po 3&nbsp;mesiacoch automaticky vymaže. Záznam o tom, že ste pripomenutia odmietli, uchovávame, kým ich posielame, aby vám ďalšie už neprišli.</p>
                   </div>
                 </div>
                 <div className={`${LEGAL_BOX} flex items-center gap-4 p-4`}>
@@ -428,7 +428,7 @@ export const PrivacyPolicy = () => {
                 <p className="text-sm">
                   Supabase (databáza dopytov a cenových ponúk) beží výhradne na serveroch v <strong>Nemecku (EÚ)</strong>, takže údaje
                   uložené v tejto databáze zostávajú v EHP. Ostatní poskytovatelia v tabuľke spracúvajú údaje aj mimo EHP, napríklad Shopify spracúva
-                  objednávky a nákupy nedokončené v pokladni e-shopu (Kanada / USA) a Klaviyo profily zákazníkov a odberateľov (USA). Prenos údajov týmto poskytovateľom sa opiera
+                  objednávky z e-shopu a nákupy nedokončené v pokladni (Kanada / USA) a Klaviyo profily zákazníkov a odberateľov (USA). Prenos údajov týmto poskytovateľom sa opiera
                   o rozhodnutie o primeranosti alebo o záruky uvedené v tabuľke vyššie.
                 </p>
               </div>
@@ -443,7 +443,7 @@ export const PrivacyPolicy = () => {
                   { title: 'Právo na vymazanie (čl. 17)', desc: 'Za určitých podmienok môžete žiadať o výmaz svojich údajov (právo na zabudnutie)' },
                   { title: 'Právo na obmedzenie (čl. 18)', desc: 'Môžete žiadať o obmedzenie spracovania vašich údajov počas riešenia sporu' },
                   { title: 'Právo na prenosnosť (čl. 20)', desc: 'Môžete žiadať o prenos vašich údajov inému prevádzkovateľovi v štruktúrovanom formáte' },
-                  { title: 'Právo namietať (čl. 21)', desc: 'Môžete namietať proti spracovaniu na základe oprávneného záujmu a proti spracovaniu na účely priameho marketingu vrátane súvisiaceho profilovania a pripomenutia nedokončeného nákupu. Podrobnosti sú v rámčeku nižšie.' },
+                  { title: 'Právo namietať (čl. 21)', desc: 'Môžete namietať proti spracovaniu na základe oprávneného záujmu a proti spracovaniu na účely priameho marketingu vrátane súvisiaceho profilovania. Námietkou odmietnete aj pripomenutie nedokončeného nákupu. Podrobnosti sú v rámčeku nižšie.' },
                   { title: 'Právo odvolať súhlas (čl. 7 ods. 3)', desc: 'Ak spracovanie prebieha na základe súhlasu, môžete ho kedykoľvek odvolať bez ujmy na zákonnosti spracovania pred odvolaním. Odber newslettera aj ďalších marketingových e-mailov, na ktoré ste dali súhlas, zrušíte kliknutím na odkaz v e-maile.' },
                 ].map((item, index) => (
                   <div key={index} className={`${LEGAL_BOX} p-4`}>
@@ -460,11 +460,11 @@ export const PrivacyPolicy = () => {
                   do služby Klaviyo na prehľad objednávok a meranie e-mailov. Spracovanie, proti ktorému ste namietali, potom ukončíme, ibaže preukážeme nevyhnutné oprávnené dôvody, ktoré
                   prevažujú nad vašimi záujmami, právami a slobodami, alebo dôvody na preukazovanie, uplatňovanie či obhajovanie právnych nárokov.
                   Proti spracovaniu na účely priameho marketingu vrátane súvisiaceho profilovania môžete namietať kedykoľvek a bez udania dôvodu;
-                  vaše údaje potom na tieto účely ďalej nespracúvame. Pripomenutie nedokončeného nákupu, ktoré posielame na základe oprávneného
-                  záujmu, môžete kedykoľvek bezplatne odmietnuť kliknutím na odkaz na odhlásenie v tomto e-maile; ďalšie pripomenutia vám potom
-                  neposielame. Námietku môžete poslať aj na{' '}
-                  <a href="mailto:info@orostone.sk" className={LEGAL_LINK}>info@orostone.sk</a>. Odhlásenie z newslettera zastaví e-maily zo služby
-                  Klaviyo, pripomenutie nedokončeného nákupu odmietnete odkazom priamo v ňom. Ani jedno nezastaví prenos údajov z e-shopu do služby Klaviyo.
+                  vaše údaje potom na tieto účely ďalej nespracúvame. Pripomenutie nedokončeného nákupu je priamy marketing, ktorý posielame na základe
+                  oprávneného záujmu. Pripomenutie môžete kedykoľvek, bezplatne a bez udania dôvodu odmietnuť kliknutím na odkaz na odhlásenie v samotnom
+                  pripomenutí; ďalšie pripomenutia vám potom neposielame. Každú námietku môžete poslať na{' '}
+                  <a href="mailto:info@orostone.sk" className={LEGAL_LINK}>info@orostone.sk</a>. Odhlásenie z newslettera zastaví len e-maily zo služby
+                  Klaviyo, nie pripomenutie nedokončeného nákupu. Ani jeden z týchto krokov nezastaví prenos údajov z e-shopu do služby Klaviyo.
                 </p>
               </div>
               <div className="mt-6 rounded-r-[3px] border-l-2 border-brand-dark bg-brand-sand p-4">

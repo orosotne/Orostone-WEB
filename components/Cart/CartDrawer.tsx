@@ -462,7 +462,7 @@ export const CartDrawer: React.FC = () => {
                       transition={{ duration: 0.25, ease: 'easeInOut' }}
                       className="overflow-hidden"
                     >
-                      <div className="space-y-4 px-6 pb-3 pt-2">
+                      <div className="max-h-[35svh] space-y-4 overflow-y-auto overscroll-contain px-6 pb-3 pt-2">
                         {/* Product subtotal (shown when both products and samples exist) */}
                         {productItems.length > 0 && sampleItems.length > 0 && (
                           <div className="flex justify-between text-[0.9rem]">
@@ -596,7 +596,7 @@ export const CartDrawer: React.FC = () => {
                     )}
                   </button>
                   <CheckoutReminderNotice
-                    className="mt-2 text-center text-[0.7rem] font-normal leading-relaxed text-brand-muted"
+                    className={`${SMALL_PRINT} text-center`}
                     linkClassName="font-medium text-brand-dark underline underline-offset-4"
                     onNavigate={closeCart}
                   />

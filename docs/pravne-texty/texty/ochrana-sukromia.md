@@ -38,8 +38,8 @@ Vaše osobné údaje spracúvame na tieto účely:
 | Komunikácia | Informovanie o stave objednávky, odpovedanie na dopyty a poskytovanie cenových ponúk | čl. 6 ods. 1 písm. b) – plnenie zmluvy / čl. 6 ods. 1 písm. f) – oprávnený záujem (vybavenie dopytu zákazníka a poskytnutie cenovej ponuky) |
 | Zákonné povinnosti | Vedenie účtovníctva, plnenie daňových a archivačných povinností | čl. 6 ods. 1 písm. c) – zákonná povinnosť |
 | Bezpečnosť | Ochrana formulárov pred automatizovanými útokmi (Cloudflare Turnstile) | čl. 6 ods. 1 písm. f) – oprávnený záujem (ochrana webovej stránky a formulárov pred zneužitím) |
-| Marketing | Newsletter, automatické e-maily, remarketingové ponuky a meranie účinnosti reklám v Google Ads a na Facebooku či Instagrame, všetko len s vaším výslovným súhlasom. Automatické e-maily vám môžeme poslať napríklad po prihlásení na newsletter, keď si objednáte vzorku alebo keď ako odberateľ newslettera 90 dní neotvoríte žiadny z našich e-mailov ani v nich na nič nekliknete. Výnimkou je pripomenutie nedokončeného nákupu, ktoré posielame aj bez súhlasu (nasledujúci riadok). | čl. 6 ods. 1 písm. a) – súhlas |
-| Pripomenutie nedokončeného nákupu | Ak v pokladni e-shopu zadáte e-mailovú adresu a nákup nedokončíte, platforma Shopify vám v našom mene pošle jeden e-mail s pripomenutím tovaru, ktorý ste v pokladni nechali, a s odkazom na dokončenie nákupu. Pripomenutie vám pošleme aj vtedy, ak ste súhlas s e-mailovým marketingom nedali. Môžete ho kedykoľvek bezplatne odmietnuť odkazom na odhlásenie v e-maile alebo správou na info@orostone.sk a máte právo proti nemu namietať (viac v časti Vaše práva). | čl. 6 ods. 1 písm. f) – oprávnený záujem (pripomenúť vám nákup, ktorý ste v našom e-shope začali) v spojení s § 116 ods. 15 zákona č. 452/2021 Z. z. o elektronických komunikáciách |
+| Marketing | Newsletter, automatické e-maily, remarketingové ponuky a meranie účinnosti reklám v Google Ads a na Facebooku či Instagrame, všetko len s vaším výslovným súhlasom. Automatické e-maily vám môžeme poslať napríklad po prihlásení na newsletter, keď si objednáte vzorku alebo keď ako odberateľ newslettera 90 dní neotvoríte žiadny z našich e-mailov ani v nich na nič nekliknete. Výnimkou je pripomenutie nedokončeného nákupu, ktoré posielame aj bez súhlasu (pozri nasledujúci riadok). | čl. 6 ods. 1 písm. a) – súhlas |
+| Pripomenutie nedokončeného nákupu | Ak v pokladni e-shopu zadáte e-mailovú adresu a nákup nedokončíte, platforma Shopify vám v našom mene pošle k tomuto nákupu jeden e-mail s prehľadom tovaru, ktorý ste v pokladni nechali, a s odkazom na dokončenie nákupu. Pripomenutie vám pošleme aj vtedy, ak ste súhlas s e-mailovým marketingom nedali. Odmietnuť pripomenutie môžete kedykoľvek, bezplatne a bez udania dôvodu odkazom na odhlásenie v e-maile alebo správou na info@orostone.sk. Ide o námietku proti priamemu marketingu (viac v časti Vaše práva). | čl. 6 ods. 1 písm. f) – oprávnený záujem (pripomenutie nákupu, ktorý ste v našom e-shope začali) v spojení s § 116 ods. 15 zákona č. 452/2021 Z. z. o elektronických komunikáciách v znení neskorších predpisov |
 | Prehľad objednávok a meranie e-mailov | Meno, kontaktné a dodacie údaje, ako aj údaje o objednávkach a o nákupoch nedokončených v pokladni prenášame z e-shopu do služby Klaviyo pri všetkých zákazníkoch, aj pri tých, ktorí súhlas s e-mailovým marketingom nedali. Slúžia na prehľad objednávok a na meranie, ako naše e-maily prispievajú k objednávkam. Prenášame aj stav súhlasu s e-mailovým marketingom, aby sme zákazníkom bez súhlasu neposielali newsletter ani automatické e-maily cez službu Klaviyo. Proti tomuto spracovaniu môžete kedykoľvek namietať (viac v časti Vaše práva). | čl. 6 ods. 1 písm. f) – oprávnený záujem (prehľad objednávok a meranie výsledkov e-mailov) |
 | Analytika | Meranie návštevnosti a správania na webe (Google Analytics 4) po udelení súhlasu | čl. 6 ods. 1 písm. a) – súhlas |
 
@@ -55,7 +55,7 @@ Poskytnutie kontaktných a dodacích údajov je zmluvnou požiadavkou potrebnou 
 
 #### Newsletter
 
-Prihlásenie na newsletter je dobrovoľné. Ak e-mailovú adresu neposkytnete, odber newslettera nebude možný. Súhlas s e-mailovým marketingom môžete dať aj v pokladni e-shopu zaškrtnutím políčka „Chcem dostávať novinky a ponuky e-mailom“. Políčko nie je vopred zaškrtnuté a nakúpiť môžete aj bez súhlasu. Aj bez súhlasu vám však môže prísť jedno pripomenutie nedokončeného nákupu (pozri časť Účel spracovania). Jeho prijímanie nie je podmienkou nákupu a môžete ho odmietnuť. Súhlas možno kedykoľvek odvolať kliknutím na odkaz v e-maile.
+Prihlásenie na newsletter je dobrovoľné. Ak e-mailovú adresu neposkytnete, odber newslettera nebude možný. Súhlas s e-mailovým marketingom môžete dať aj v pokladni e-shopu zaškrtnutím políčka „Chcem dostávať novinky a ponuky e-mailom“. Políčko nie je vopred zaškrtnuté a nakúpiť môžete aj bez súhlasu. Súhlas možno kedykoľvek odvolať kliknutím na odkaz v e-maile. Bez ohľadu na súhlas vám ku každému nákupu, ktorý v pokladni nedokončíte, môže prísť jedno pripomenutie (pozri časť Účel spracovania). Pripomenutie môžete kedykoľvek odmietnuť a na vaše nákupy to nemá vplyv.
 
 #### Analytické a marketingové cookies
 
@@ -171,7 +171,7 @@ Aké údaje zhromažďujeme
 
 - Súhlas s e-mailovým marketingom a odhlásenie
 
-- Odoslané pripomenutia nedokončeného nákupu a ich odmietnutie
+- Odoslanie pripomenutí nedokončeného nákupu a ich odmietnutie
 
 - Otvorenia e-mailov a kliknutia v nich
 
@@ -203,7 +203,7 @@ Ako dlho vaše údaje uchovávame
 
 **2** roky Zodpovednosť za vady – údaje na vybavenie reklamácií
 
-**3** mesiace Nákupy nedokončené v pokladni na platforme Shopify – Shopify ich spravidla po 3 mesiacoch automaticky vymaže. Záznam o tom, že ste pripomenutia odmietli, uchovávame, kým pripomenutia posielame, aby vám ďalšie už neprišli.
+**3** mesiace Nákupy nedokončené v pokladni – platforma Shopify ich spravidla po 3 mesiacoch automaticky vymaže. Záznam o tom, že ste pripomenutia odmietli, uchovávame, kým ich posielame, aby vám ďalšie už neprišli.
 
 **90** dní Bezpečnostné a technické logy (ochrana pred zneužitím)
 
@@ -238,7 +238,7 @@ Niektorí naši sprostredkovatelia a partneri sídlia mimo Európskeho hospodár
 | Meta Platforms, Inc. | USA | EU–US Data Privacy Framework |
 | Supabase Inc. | EÚ (Frankfurt) | Prenos mimo EHP sa nevykonáva |
 
-Supabase (databáza dopytov a cenových ponúk) beží výhradne na serveroch v Nemecku (EÚ), takže údaje uložené v tejto databáze zostávajú v EHP. Ostatní poskytovatelia v tabuľke spracúvajú údaje aj mimo EHP, napríklad Shopify spracúva objednávky a nákupy nedokončené v pokladni e-shopu (Kanada / USA) a Klaviyo profily zákazníkov a odberateľov (USA). Prenos údajov týmto poskytovateľom sa opiera o rozhodnutie o primeranosti alebo o záruky uvedené v tabuľke vyššie.
+Supabase (databáza dopytov a cenových ponúk) beží výhradne na serveroch v Nemecku (EÚ), takže údaje uložené v tejto databáze zostávajú v EHP. Ostatní poskytovatelia v tabuľke spracúvajú údaje aj mimo EHP, napríklad Shopify spracúva objednávky z e-shopu a nákupy nedokončené v pokladni (Kanada / USA) a Klaviyo profily zákazníkov a odberateľov (USA). Prenos údajov týmto poskytovateľom sa opiera o rozhodnutie o primeranosti alebo o záruky uvedené v tabuľke vyššie.
 
 ## 8. Vaše práva
 
@@ -266,13 +266,13 @@ Môžete žiadať o prenos vašich údajov inému prevádzkovateľovi v štrukt�
 
 #### Právo namietať (čl. 21)
 
-Môžete namietať proti spracovaniu na základe oprávneného záujmu a proti spracovaniu na účely priameho marketingu vrátane súvisiaceho profilovania a pripomenutia nedokončeného nákupu. Podrobnosti sú v rámčeku nižšie.
+Môžete namietať proti spracovaniu na základe oprávneného záujmu a proti spracovaniu na účely priameho marketingu vrátane súvisiaceho profilovania. Námietkou odmietnete aj pripomenutie nedokončeného nákupu. Podrobnosti sú v rámčeku nižšie.
 
 #### Právo odvolať súhlas (čl. 7 ods. 3)
 
 Ak spracovanie prebieha na základe súhlasu, môžete ho kedykoľvek odvolať bez ujmy na zákonnosti spracovania pred odvolaním. Odber newslettera aj ďalších marketingových e-mailov, na ktoré ste dali súhlas, zrušíte kliknutím na odkaz v e-maile.
 
-Právo namietať (čl. 21 GDPR) Z dôvodov týkajúcich sa vašej konkrétnej situácie môžete kedykoľvek namietať proti spracovaniu na základe oprávneného záujmu, napríklad proti prenosu vašich údajov z e-shopu (meno, kontaktné a dodacie údaje, objednávky a nákupy nedokončené v pokladni) do služby Klaviyo na prehľad objednávok a meranie e-mailov. Spracovanie, proti ktorému ste namietali, potom ukončíme, ibaže preukážeme nevyhnutné oprávnené dôvody, ktoré prevažujú nad vašimi záujmami, právami a slobodami, alebo dôvody na preukazovanie, uplatňovanie či obhajovanie právnych nárokov. Proti spracovaniu na účely priameho marketingu vrátane súvisiaceho profilovania môžete namietať kedykoľvek a bez udania dôvodu; vaše údaje potom na tieto účely ďalej nespracúvame. Pripomenutie nedokončeného nákupu, ktoré posielame na základe oprávneného záujmu, môžete kedykoľvek bezplatne odmietnuť kliknutím na odkaz na odhlásenie v tomto e-maile; ďalšie pripomenutia vám potom neposielame. Námietku môžete poslať aj na info@orostone.sk. Odhlásenie z newslettera zastaví e-maily zo služby Klaviyo, pripomenutie nedokončeného nákupu odmietnete odkazom priamo v ňom. Ani jedno nezastaví prenos údajov z e-shopu do služby Klaviyo.
+Právo namietať (čl. 21 GDPR) Z dôvodov týkajúcich sa vašej konkrétnej situácie môžete kedykoľvek namietať proti spracovaniu na základe oprávneného záujmu, napríklad proti prenosu vašich údajov z e-shopu (meno, kontaktné a dodacie údaje, objednávky a nákupy nedokončené v pokladni) do služby Klaviyo na prehľad objednávok a meranie e-mailov. Spracovanie, proti ktorému ste namietali, potom ukončíme, ibaže preukážeme nevyhnutné oprávnené dôvody, ktoré prevažujú nad vašimi záujmami, právami a slobodami, alebo dôvody na preukazovanie, uplatňovanie či obhajovanie právnych nárokov. Proti spracovaniu na účely priameho marketingu vrátane súvisiaceho profilovania môžete namietať kedykoľvek a bez udania dôvodu; vaše údaje potom na tieto účely ďalej nespracúvame. Pripomenutie nedokončeného nákupu je priamy marketing, ktorý posielame na základe oprávneného záujmu. Pripomenutie môžete kedykoľvek, bezplatne a bez udania dôvodu odmietnuť kliknutím na odkaz na odhlásenie v samotnom pripomenutí; ďalšie pripomenutia vám potom neposielame. Každú námietku môžete poslať na info@orostone.sk. Odhlásenie z newslettera zastaví len e-maily zo služby Klaviyo, nie pripomenutie nedokončeného nákupu. Ani jeden z týchto krokov nezastaví prenos údajov z e-shopu do služby Klaviyo.
 
 Ako uplatniť svoje práva? Napíšte nám na info@orostone.sk alebo zavolajte na +421 917 588 738. Na vašu žiadosť odpovieme do 30 dní (podľa čl. 12 ods. 3 GDPR).
 

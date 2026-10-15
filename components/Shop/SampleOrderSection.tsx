@@ -149,7 +149,7 @@ export const SampleOrderSection = forwardRef<SampleOrderSectionHandle, SampleOrd
               {checkoutBusy ? 'Pripravujeme pokladňu…' : availabilityLoading ? 'Overujeme dostupnosť…' : 'Pokračovať k doručeniu a platbe'}
             </button>
             <p className="sample-order-next">Adresu a spôsob platby doplníte v ďalšom kroku.</p>
-            <CheckoutReminderNotice className="sample-order-next" linkClassName="underline underline-offset-4" />
+            <CheckoutReminderNotice className="sample-order-next" linkClassName="underline underline-offset-4" newTab />
           </aside>
         </div>
       </div>
