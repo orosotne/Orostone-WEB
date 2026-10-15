@@ -8,6 +8,7 @@ import { ProductDetailSkeleton } from '../components/UI/Skeleton';
 import { useCookies } from '../context/CookieContext';
 import { trackMetaEvent } from '../hooks/useMetaPixel';
 import { trackGA4ViewItem } from '../services/analytics';
+import { trackKlaviyoEvent } from '../hooks/useKlaviyo';
 import { SEOHead } from '../components/UI/SEOHead';
 import { PRODUCT_META_OVERRIDE } from '../data/productMetaOverride';
 import {
@@ -30,6 +31,8 @@ import {
 import { MAX_SAMPLES } from '../constants';
 import { ActionButton, GoldBand } from '../components/Design';
 import { Toast } from '../components/UI/Toast';
+
+const SITE_URL = import.meta.env.VITE_PUBLIC_SITE_URL ?? 'https://orostone.sk';
 
 export const ShopProductDetail: React.FC = () => {
   const { id } = useParams();
@@ -93,6 +96,17 @@ export const ShopProductDetail: React.FC = () => {
       currency: 'EUR',
     });
     trackGA4ViewItem({ id: product.shopifyVariantId ?? product.id, name: product.name, price });
+    // Klaviyo „Viewed Product“ (pripomenutie prezeraného dekoru odberateľom newslettera); vlastnosti
+    // v tvare, aký Klaviyo používa pre túto udalosť. ProductID je handle pre fotku a odkaz v e-maile.
+    trackKlaviyoEvent('Viewed Product', {
+      $value: price,
+      ProductName: product.name,
+      ProductID: product.id,
+      Brand: 'Orostone',
+      Price: price,
+      URL: `${SITE_URL}/produkt/${product.id}`,
+      ImageURL: product.image ?? '',
+    });
   }, [product]);
 
   if (isLoading) return <ProductDetailSkeleton />;
