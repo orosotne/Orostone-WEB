@@ -163,6 +163,7 @@ Skratky: N = `marketing/newsletter`, B = `N/nastroje/build_emails.py`, PB = play
 | A7 Reaktivácia | segment VGyNMu (Opened TqZ5Tp, Clicked VdqXpS) | áno | nič | **live od 14. 10. 11:50 UTC (flow R5jtdq)** |
 | A4 Opustený košík | Shopify Checkout Started TR4G9D | áno (13 udalostí, žiadna skutočne opustená) | Martin 14. 10.: e-mail o opustenej pokladni posiela Shopify všetkým zákazníkom, aj bez súhlasu (zásady: PR #144), A4 sa nespúšťa. Do 14. 10. Shopify neposlal ani jeden (0 z 3), lebo e-mail bol v stave Draft (overené 15. 10., pozri A4 › 4) | nič, flow nevytvorený |
 | A4b Košík z webu | Added to Cart z webu (API TANKsY, Klaviyo.js) | áno | nič | **live od 15. 10. 11:49 UTC (flow WV6K3N)** |
+| A9 Prezeraný dekor | Viewed Product z webu (Klaviyo.js, metrika vznikne prvou udalosťou) | nie | merge PR #157 (zásady Kolo 7 potvrdené 15. 10.) | flow po merge ako draft |
 | A3 Dopyt → ponuka | CRM, fáza „Finálna ponuka odoslaná“ | nie | rozhodnutie Klaviyo vs. CRM; CRM kód; nový kľúč | nič |
 | A5 Po realizácii | CRM, montáž so stavom `dokoncene` | nie | CRM kód; fotky pre 08; súhlas | nič |
 | A8 B2B | neexistuje | nie | model súhlasu a zdroj kontaktov | nič |
@@ -469,6 +470,46 @@ Zadanie Martina 15. 10. 2026: pripomenutie košíka cez Klaviyo (nie Shopify) pr
 - **Dva košíky:** Shopify pripomenutie pokladne a 36 sa nestretnú vďaka filtru Checkout Started; kto začne pokladňu po odoslaní 36, dostane aj Shopify e-mail (iná udalosť, iný e-mail).
 - **„Prvá vzorka je zadarmo“** v 36 sedí s `/vzorky`; o doprave 36 nehovorí (kód VITAJTE).
 - **Limit profilov:** udalosť nevytvára nové profily (len identifikovaní odberatelia).
+
+## A9 Prezeraný dekor (37)
+
+Zadanie Martina 15. 10. 2026 (zo zoznamu odporúčaných automatizácií Shopify: „Convert abandoned product browse“): odberateľ newslettera si na webe prezrie dekor, ale nevloží ho do košíka. Na druhý deň dostane e-mail s ponukou **vzorky zadarmo**, bez zľavy. Vzorka je hlavný prvý krok k nákupu platne.
+
+### 1. Spúšťač a zdroj udalosti
+- **Web:** `pages/ShopProductDetail.tsx` pri zobrazení dekoru pošle `trackKlaviyoEvent('Viewed Product', …)` vedľa Meta ViewContent a GA4 view_item, raz na dekor. Vlastnosti v tvare, aký Klaviyo používa pre túto udalosť: `ProductName`, `ProductID` (handle), `URL`, `ImageURL`, `Price`, `Brand`, `$value`.
+- **Koho udalosť zachytí:** rovnako ako A4b len identifikovaného odberateľa (prišiel z odkazu v našom e-maile, cookie `__kla_id`, povolené marketingové cookies). Anonymné zobrazenia Klaviyo neukladá a nové profily nevznikajú.
+- **Metrika:** Viewed Product (API) v Klaviyu ešte nie je. Vznikne prvou udalosťou z webu po nasadení (test na internom profile ThRq8q, ako pri A4b).
+
+### 2. Kroky, oneskorenia, filtre, podmienky ukončenia
+
+| Krok | Čas | Šablóna | Podmienka |
+|---|---|---|---|
+| 1 | na druhý deň o 09:00 po Viewed Product (`days=1`, `delay_until_time=09:00`, `timezone=profile`) | 37 | 0× Added to Cart TANKsY, 0× Checkout Started TR4G9D a 0× Placed Order Uu5JLg od vstupu |
+
+- **Filter profilu:** ako A4b (člen VSrLFs, subscribed, bez U2XF6B a TKAHuh) a navyše 0× Placed Order Uu5JLg za posledných 14 dní (kto si práve objednal vzorky, má ich na ceste; postará sa o neho A2).
+- **Frekvencia:** najviac 1 e-mail za 30 dní (re-entry 30 dní). Pri viacerých dekoroch v jeden deň ide e-mail o prvom prezretom.
+- **Prekryv s A4b:** kto si dekor vloží do košíka, z A9 vypadne a dostane len 36.
+- **Smart sending:** zapnúť (16 h). Prezretie je slabší signál než košík a kampaň v ten istý deň má prednosť.
+- UTM: `utm_campaign=prezerany-dekor`, `utm_content=37-prezerany-dekor`.
+
+### 3. Šablóna, odosielateľ, predmet, preheader
+
+| Šablóna | Odosielateľ | Predmet | Preheader | Dynamické dáta |
+|---|---|---|---|---|
+| `N/sablony/37-automatizacia-prezerany-dekor.html` | Š | Vzorka dekoru {{ event.ProductName\|title }} zadarmo | 🪨 Kresbu kameňa najlepšie posúdite doma, pri svojom svetle a vedľa svojich skriniek. | názov a handle dekoru (banner `vzorka-zadarmo-<handle>.jpg`, fotka celej platne, odkazy na stránku dekoru); bez údajov Taj Mahal |
+
+**Bannery:** pre každý z 12 dekorov `public/images/email/vzorka-zadarmo-<handle>.jpg` (1040 × 694, do 120 kB): vľavo názov dekoru, „Vzorka zadarmo“ a „pozrite si dekor pri svojom svetle“, vpravo kuchyňa z banneru `kosik-zlava-5-<handle>.jpg` (x 400–1040). Šablóna a render v ~/Documents/Podklady/Orostone/Klaviyo-prezerany-dekor/sablona-banneru. Pri novom dekore doplniť oba bannery.
+
+**Ponuka (fakty zo stránky Doprava a platba):** vzorka 10 × 10 cm, prvá zadarmo, každá ďalšia 4,90 €, doprava 2,50 €. Kód VITAJTE (doprava vzorky zadarmo do 3 €, raz na zákazníka) e-mail spomína podmienene: „ak ste ho ešte nepoužili“. Tlačidlá vedú na stránku dekoru, kde tlačidlo „Objednať vzorku zadarmo“ vloží vzorku presne tohto dekoru.
+
+### 4. Draft vs. live a schválenia
+- Zásady: čl. 2, čl. 4, čl. 9 a zásady cookies (`__kla_id`) upravené v tom istom PR; kontrolný log Kolo 7. **Martin znenie potvrdil 15. 10. 2026.**
+- Postup: Codex → merge PR → nasadenie webu → prvá udalosť Viewed Product (test na internom profile) → nahrať 37 z main → `create_flow` ako draft → test na adresu Martina → Martin OK → live.
+
+### 5. Pasce
+- **Safari** skracuje `__kla_id` (pozri A4b) – A9 zachytí len odberateľov krátko po kliknutí v e-maile.
+- **Každý klik z newslettera na dekor je prezretie.** Kampaň s dekorom by bez filtrov spustila A9 u každého, kto klikol. Smart sending a ukončenie pri košíku to tlmia; po prvom týždni skontrolovať počet odoslaní a prípadne vylúčiť kliky z kampaní (Clicked Email VdqXpS za posledných 24 h).
+- **Žiadna zľava:** zámer. Zľavu dostáva až košík (KOSIK5) a pokladňa (DOKONCIT10).
 
 ## A5 Po realizácii (08, 17, 06)
 

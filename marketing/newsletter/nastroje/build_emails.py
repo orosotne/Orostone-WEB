@@ -2214,4 +2214,53 @@ write_nb("36-automatizacia-kosik-dekor.html", doc(
         footer(reason=REASON_KOSIK_WEB),
     ]))
 
+# Udalosť „Viewed Product“ z webu orostone.sk (pages/ShopProductDetail.tsx, hooks/useKlaviyo.ts):
+# názov a handle prezeraného dekoru.
+PREZ_NAZOV = "{{ event.ProductName|default:'Taj Mahal'|title }}"
+PREZ_HANDLE = "{{ event.ProductID|default:'taj-mahal' }}"
+# Stránka dekoru: tlačidlo „Objednať vzorku zadarmo“ vloží do košíka vzorku presne tohto dekoru.
+PREZ_URL = SITE + "/produkt/" + PREZ_HANDLE
+REASON_PREZ = "Tento e-mail ste dostali, pretože odoberáte novinky Orostone a na orostone.sk ste si prezerali dekor."
+
+# 37 – Prezeraný dekor: odberateľ si prezeral dekor a nevložil ho do košíka, ponuka vzorky zadarmo (bez zľavy)
+# Banner vzorka-zadarmo-<handle>.jpg: vľavo „Vzorka zadarmo“, vpravo kuchyňa s dekorom (rovnaká fotka
+# ako na banneri kosik-zlava-5-<handle>.jpg). Je pre každý z 12 dekorov; check_images.py ich overí.
+write_nb("37-automatizacia-prezerany-dekor.html", doc(
+    {
+        "TYP:": "Automatizácia · Prezeraný dekor",
+        "SPÚŠŤAČ:": "Na druhý deň o 9:00 po prezretí dekoru na orostone.sk, ak človek dekor nevložil do košíka, nezačal pokladňu a neobjednal; najviac raz za 30 dní (Klaviyo: Viewed Product z webu)",
+        "PREDMET:": "Vzorka dekoru " + PREZ_NAZOV + " zadarmo",
+        "PREHEADER:": "Kresbu kameňa najlepšie posúdite doma, pri svojom svetle a vedľa svojich skriniek.",
+        "CIEĽ:": "Objednať vzorku prezeraného dekoru na jeho stránke na orostone.sk, prípadne poslať pôdorys.",
+        "POZNÁMKA:": "Len odberatelia so súhlasom, ktorých web rozpoznal po príchode z nášho e-mailu. Bez zľavy: ponukou je prvá vzorka zadarmo (doprava 2,50 €, s kódom VITAJTE zadarmo, ak ho ešte nepoužili). Ponuka je v predmete, v hlavičke, v tmavom páse aj na banneri. Banner, názov dekoru, fotka platne a odkazy sú dynamické podľa dekoru z udalosti; bez údajov Taj Mahal.",
+    },
+    "Vzorka dekoru " + PREZ_NAZOV + " zadarmo",
+    "Kresbu kameňa najlepšie posúdite doma, pri svojom svetle a vedľa svojich skriniek.",
+    [
+        header("Vzorka zadarmo"),
+        dark_band("Pre odberateľov",
+                  PREZ_NAZOV + "<br />" + accent_dark("na vzorke zadarmo."),
+                  sub="Priložte ju k dvierkam a k podlahe pri svojom svetle. Uvidíte, ako dekor vyzerá u vás, nie na obrazovke.",
+                  image=(IMG + "vzorka-zadarmo-" + PREZ_HANDLE + ".jpg", "Vzorka zadarmo. Vizualizácia kuchyne s dekorom " + PREZ_NAZOV),
+                  cta=("Objednať vzorku zadarmo", PREZ_URL)),
+        text([
+            "na orostone.sk ste si prezerali dekor " + PREZ_NAZOV + ". Na obrazovke však kameň nikdy nevyzerá presne tak ako doma. Mení ho svetlo, farba skriniek aj podlaha.",
+            "Preto je prvá vzorka zadarmo. Objednáte ju na stránke dekoru tlačidlom „Objednať vzorku zadarmo“.",
+        ], top=32),
+        hero(IMG + "dekor-mockup-" + PREZ_HANDLE + "-1040.jpg", "Celá platňa " + PREZ_NAZOV + " vedľa človeka na porovnanie veľkosti", capsule=PREZ_NAZOV + " · celá platňa", top=28),
+        card_offer("Vzorka dekoru", "Prvá vzorka zadarmo",
+                   "Vzorka má rozmer 10&nbsp;×&nbsp;10&nbsp;cm, takže kresbu aj povrch posúdite v ruke. Za prvú vzorku platíte iba dopravu 2,50&nbsp;€.",
+                   "Objednať vzorku", PREZ_URL,
+                   note='Ak ste kód <strong style="font-weight:700; color:#1A1A1A;">VITAJTE</strong> ešte nepoužili, zadajte ho v pokladni a neplatíte ani dopravu. Každá ďalšia vzorka stojí 4,90&nbsp;€.'),
+        section_title(None, "Čo ešte pomôže pri výbere", top=28),
+        numbered([
+            ("Celá platňa", "Na stránke dekoru je fotka platne 3200 × 1600&nbsp;mm vedľa človeka. Ukáže, ako sa kresba rozloží po dĺžke pracovnej dosky."),
+            ("Realizácie", "Pozrite si hotové kuchyne s naším kameňom. Dekor vo veľkej ploche pôsobí inak než na malom výreze."),
+            ("Pôdorys", "Pošlite pôdorys alebo rozmery v odpovedi na tento e-mail. Navrhneme rozloženie platní a pripravíme orientačné cenové rozpätie."),
+        ], top=8),
+        ps("Ak váhate medzi dvoma dekormi, objednajte si vzorky oboch a položte ich vedľa seba na linku. Rozdiel uvidíte hneď. Ak chcete, odpovedzte na tento e-mail a poradím, ktorý z nich sa k vašej kuchyni hodí lepšie."),
+        signature(top=0),
+        footer(reason=REASON_PREZ),
+    ]))
+
 print("hotovo →", OUT)
