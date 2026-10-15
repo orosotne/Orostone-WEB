@@ -10,7 +10,7 @@
 - Withstands temperatures up to 300°C, UV radiation, acids, and scratches
 - Near-zero porosity (under 0.1%) — stain-proof without sealing
 - Orostone catalog: 12 mm slabs in 3200 × 1600 mm format (the material itself also exists in 3 mm and 20 mm variants)
-- Mohs hardness 6–7, breaking force up to 16,000N for 20mm slabs
+- Mohs hardness 7+, breaking force up to 16,000N for 20mm slabs
 - Popular finishes: matte, polished, leather/textured
 - Material price: {{SLAB_PRICE_MIN}}–{{SLAB_PRICE_MAX}} €/m² incl. VAT depending on the decor. Orostone sells whole slabs only: {{SLAB_TOTAL_MIN}}–{{SLAB_TOTAL_MAX}} € per slab incl. VAT, −{{BULK_PERCENT}} % from {{BULK_QTY}} slabs. A typical kitchen needs 1–2 slabs.
 - Fabrication and installation: the partner stonemason's orientation rate is ≈ {{INSTALLATION_RATE}} €/m² incl. VAT (measuring, transport, edge processing, polishing, installation). The stonemason invoices this work; it is not part of Orostone's material price.

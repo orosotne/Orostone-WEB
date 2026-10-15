@@ -30,7 +30,7 @@ Sintered stone (sinterovaný kameň) is a premium surface material made from 100
 
 **Technical properties:**
 - Porosity: < 0.1% (near-zero — stain-proof without sealing)
-- Mohs hardness: 6–7 (diamond is 10, granite is 6–7)
+- Mohs hardness: 7+ (diamond is 10, granite is 6–7)
 - Heat resistance: up to 300°C continuous, 500°C short-term
 - UV resistance: no fading outdoors or in bright light
 - Flexural strength: up to 16,000N for 20mm slabs

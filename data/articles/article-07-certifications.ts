@@ -88,7 +88,7 @@ export const ARTICLE_07: BlogArticle = {
 <p>Meria odolnosť povrchu voči opotrebeniu. Výsledky sa uvádzajú v PEI triedach (0 – 5) alebo ako počet otáčok pred viditeľným poškodením.</p>
 
 <div class="article-tip">
-  <strong>Pre kuchynské dosky:</strong> Vyžadujte PEI triedu 4 alebo 5. Sinterovaný kameň s Mohs tvrdosťou 6 – 7 dosahuje PEI 4 – 5 štandardne.
+  <strong>Pre kuchynské dosky:</strong> Vyžadujte PEI triedu 4 alebo 5. Sinterovaný kameň s tvrdosťou Mohs 7+ dosahuje PEI 4 – 5 štandardne.
 </div>
 
 <h3 id="iso-7">ISO 10545-7: Odolnosť voči tepelnej rozťažnosti</h3>
@@ -418,7 +418,7 @@ export const ARTICLE_07: BlogArticle = {
 <p>Measures resistance to surface wear. Results are expressed as PEI classes (0–5) or number of rotations before visible damage.</p>
 
 <div class="article-tip">
-  <strong>For kitchen worktops:</strong> Require PEI class 4 or 5. Sintered stone with Mohs hardness 6–7 routinely achieves PEI 4–5.
+  <strong>For kitchen worktops:</strong> Require PEI class 4 or 5. Sintered stone with Mohs hardness 7+ routinely achieves PEI 4–5.
 </div>
 
 <h3 id="iso-7-en">ISO 10545-7: Thermal Expansion Resistance</h3>

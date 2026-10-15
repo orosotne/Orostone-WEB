@@ -43,7 +43,7 @@ export const ARTICLE_05: BlogArticle = {
 
 <h2 id="preco-chipuju">Prečo hrany chipujú – fyzikálne vysvetlenie</h2>
 
-<p>Sinterovaný kameň je výnimočne tvrdý materiál (7 – 8 Mohs). Ale tvrdosť a krehkosť nie sú protiklady – sú to dve nezávislé vlastnosti. Diamant je tvrdý, ale pri správnom uhle nárazu sa rozlomí. Sinterovaný kameň je na tom podobne.</p>
+<p>Sinterovaný kameň je výnimočne tvrdý materiál (Mohs 7+). Ale tvrdosť a krehkosť nie sú protiklady – sú to dve nezávislé vlastnosti. Diamant je tvrdý, ale pri správnom uhle nárazu sa rozlomí. Sinterovaný kameň je na tom podobne.</p>
 
 <p>Na ostrých hranách sa mechanické napätie sústredí do jedného bodu – hrana je koncentrátor napätia. Keď na hrane nastane náraz (spadnutý hrniec, posúvaný tanier, úder kuchynskou pomôckou), energia nárazu nemá kam ísť – <strong class="gold">materiál sa odštiepi</strong>.</p>
 
@@ -133,7 +133,7 @@ export const ARTICLE_05: BlogArticle = {
 
 <p><strong>Chladenie:</strong> Sinterovaný kameň sa musí pri obrábaní chladiť vodou. Suchý rez generuje teplo, ktoré narúša kryštalickú štruktúru na hrane.</p>
 
-<p><strong>Diamantový nástroj:</strong> Len diamantové kotúče a brúsne nástroje sú vhodné pre sinterovaný kameň (tvrdosť 7 – 8 Mohs). Karbidové nástroje spôsobujú chipovanie počas samotného obrábania.</p>
+<p><strong>Diamantový nástroj:</strong> Len diamantové kotúče a brúsne nástroje sú vhodné pre sinterovaný kameň (tvrdosť Mohs 7+). Karbidové nástroje spôsobujú chipovanie počas samotného obrábania.</p>
 
 <div class="article-tip">
   <p><strong>Čo robíme v Orostone</strong></p>
@@ -278,7 +278,7 @@ export const ARTICLE_05: BlogArticle = {
 
 <h2 id="why-chips">Why Edges Chip — The Physics</h2>
 
-<p>Sintered stone is exceptionally hard (7–8 Mohs). But hardness and brittleness are not opposites — they're two independent properties. Diamond is hard, but at the right impact angle it fractures. Sintered stone is similar.</p>
+<p>Sintered stone is exceptionally hard (Mohs 7+). But hardness and brittleness are not opposites — they're two independent properties. Diamond is hard, but at the right impact angle it fractures. Sintered stone is similar.</p>
 
 <p>At sharp edges, mechanical stress concentrates at a single point — the edge is a stress concentrator. When an impact occurs at the edge (a dropped pot, a sliding plate, a blow from a utensil), the impact energy has nowhere to go — <strong class="gold">the material chips</strong>.</p>
 
@@ -360,7 +360,7 @@ export const ARTICLE_05: BlogArticle = {
 
 <p><strong>Cooling:</strong> Sintered stone must be cooled with water during machining. Dry cutting generates heat that disrupts the crystalline structure at the edge.</p>
 
-<p><strong>Diamond tooling:</strong> Only diamond discs and grinding tools are suitable for sintered stone (hardness 7–8 Mohs). Carbide tools cause chipping during the machining process itself.</p>
+<p><strong>Diamond tooling:</strong> Only diamond discs and grinding tools are suitable for sintered stone (hardness Mohs 7+). Carbide tools cause chipping during the machining process itself.</p>
 
 <div class="article-tip">
   <p><strong>What we do at Orostone</strong></p>
