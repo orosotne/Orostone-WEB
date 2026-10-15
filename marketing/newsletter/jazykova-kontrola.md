@@ -358,3 +358,7 @@ Rovnaké znenie podmienky preberá záložný uvítací e-mail (`supabase/functi
 | # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
 |---|---|---|---|---|---|---|
 | 1 | 01 (poznámka) | Na vzorku zadajte VITAJTE. WELCOME5 si nechajte na objednávku platní – môžete ho uplatniť len raz; ak by ste ho uplatnili pri objednávke vzorky, na platne by ste ho už použiť nemohli. | Na vzorku zadajte VITAJTE, na platne WELCOME5. | fakt | Codex (záložný e-mail v PR #165, rovnaká veta) upozornil, že WELCOME5 sa na objednávku vzoriek neuplatní. Overené v Shopify 15. 10. 2026: vzorky sú samostatný produkt `vzorky-orostone`, WELCOME5 platí len na 12 produktov dekorov (každý má jediný variant, platňu). Dôvod v kolách 29 a 30 („vzorka je variant produktu dekoru“) bol nesprávny. | prijaté, zapracované |
+
+## Kolo 32 – Codex review v PR #163 (15. 10. 2026, po zmenách z kôl 30 a 31)
+
+Codex na `993fe7f` aj na `3aff9f8` nenašiel žiadne pripomienky („Didn't find any major issues“). E-mail 01 s oboma uvítacími kódmi je vo finálnej podobe jazykovo skontrolovaný.
