@@ -213,7 +213,7 @@ const FooterComponent: React.FC<FooterProps> = ({ categories = [], isProductDeta
           <h3 className={colTitle}>Kontakt</h3>
           <a href="tel:+421917588738" className="group grid gap-0.5 no-underline">
             <span className="font-medium tabular-nums text-brand-light group-hover:underline group-hover:underline-offset-4">+421 917 588 738</span>
-            <span className="text-[0.8rem] text-brand-light/60">Po–Pia 8:00 – 17:00</span>
+            <span className="text-[0.8rem] text-brand-light/60">Telefonicky: Po–Pia 8:00 – 17:00</span>
           </a>
           <a href="mailto:dopyt@orostone.sk" className="group grid gap-0.5 no-underline">
             <span className="text-brand-light group-hover:underline group-hover:underline-offset-4">dopyt@orostone.sk</span>
