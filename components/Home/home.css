@@ -231,14 +231,11 @@
 .hp .hp-guide.is-on .hp-g-photo img { transform: none; }
 
 /* instagram */
-.hp .hp-ig-marquee { margin-top: clamp(40px, 5vw, 64px); overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
-.hp .hp-ig-track { display: flex; align-items: flex-start; gap: 12px; width: max-content; padding: 8px 12px 8px 0; animation: hp-ig-roll 200s linear infinite; }
-.hp .hp-ig-marquee:focus-within .hp-ig-track,
-.hp .hp-ig-marquee.is-off .hp-ig-track { animation-play-state: paused; }
-@keyframes hp-ig-roll { to { transform: translateX(-50%); } }
+.hp .hp-ig-marquee { margin-top: clamp(40px, 5vw, 64px); overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scrollbar-width: none; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.hp .hp-ig-marquee::-webkit-scrollbar { display: none; }
+.hp .hp-ig-track { display: flex; align-items: flex-start; gap: 12px; width: max-content; padding: 8px 12px 8px 0; }
 .hp .hp-ig { position: relative; flex: 0 0 clamp(200px, 20vw, 280px); aspect-ratio: 4/5; overflow: hidden; border-radius: 2px; isolation: isolate; transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1); }
 @media (hover: hover) {
-  .hp .hp-ig-marquee:hover .hp-ig-track { animation-play-state: paused; }
   .hp .hp-ig:hover { transform: translateY(-4px); }
 }
 .hp .hp-ig img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -296,7 +293,7 @@
   .hp .hp-slab-full figcaption { margin-right: 28px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hp .hp-ig-marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+  .hp .hp-ig-marquee { -webkit-mask-image: none; mask-image: none; }
   .hp .hp-ig-clone { display: none; }
   .hp *,
   .hp *::before,
