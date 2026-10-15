@@ -43,7 +43,7 @@ const IMG = '/images/stranky';
 
 const STATS = [
   { label: 'Nasiakavosť', value: '< 0,1 %' },
-  { label: 'Tvrdosť (Mohs)', value: '6–8' },
+  { label: 'Tvrdosť (Mohs)', value: '7+' },
   { label: 'Tepelná odolnosť', value: '> 300 °C' },
   { label: 'Zloženie', value: '100 % minerály' },
 ];
@@ -71,7 +71,7 @@ const PROCESS = [
 
 const FEATURES = [
   { title: 'Odolnosť teplu', text: 'Odolá teplotám nad 300 °C. Horúci hrniec priamo na dosku — bez strachu.' },
-  { title: 'Odolnosť voči poškriabaniu', text: 'Tvrdosť 6–8 na Mohsovej stupnici. Tvrdší ako žula (6) a väčšina kuchynského náradia.' },
+  { title: 'Odolnosť voči poškriabaniu', text: 'Tvrdosť 7+ na Mohsovej stupnici. Tvrdší ako žula (6) a väčšina kuchynského náradia.' },
   { title: 'Nasiakavosť pod 0,1 %', text: 'Víno, káva ani olej sa nevsiaknu. Na hladkom, nepórovitom povrchu sa baktérie a plesne nemajú kde uchytiť.' },
   { title: 'UV stabilita', text: 'Farba sa nemení ani na priamom slnku. Ideálne aj pre exteriéry a fasády.' },
   { title: 'Chemická odolnosť', text: 'Trieda A podľa ISO 10545-13. Odolný voči kyselinám, zásadám aj bazénovej chémii.' },

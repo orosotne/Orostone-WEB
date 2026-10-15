@@ -175,7 +175,7 @@ export const CookiesPolicy = () => {
                 <p className="text-sm leading-relaxed">
                   Používajú sa na meranie účinnosti reklamy, remarketing
                   a zobrazovanie relevantnejších reklamných kampaní a na rozpoznanie
-                  odberateľa newslettera, ktorý prišiel z nášho e-mailu (pripomenutie košíka).
+                  odberateľa newslettera, ktorý prišiel z nášho e-mailu (pripomenutie prezeraného dekoru a košíka).
                   Aktivujú sa iba po vašom predchádzajúcom súhlase.
                 </p>
               </div>
@@ -295,7 +295,7 @@ export const CookiesPolicy = () => {
                       <td className="py-3 px-2 align-top">Klaviyo</td>
                       <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Marketingové</span></td>
                       <td className="py-3 px-2 align-top">
-                        <a href="https://www.klaviyo.com/legal/privacy" target="_blank" rel="noopener noreferrer" className={LEGAL_LINK}>Klaviyo</a> – rozpoznanie odberateľa newslettera, ktorý prišiel z odkazu v našom e-maile, a záznam vloženia dekoru do košíka pre pripomenutie košíka (len so súhlasom)
+                        <a href="https://www.klaviyo.com/legal/privacy" target="_blank" rel="noopener noreferrer" className={LEGAL_LINK}>Klaviyo</a> – rozpoznanie odberateľa newslettera, ktorý prišiel z odkazu v našom e-maile, a záznam prezretých dekorov a vloženia dekoru do košíka pre pripomenutie prezeraného dekoru a košíka (len so súhlasom)
                       </td>
                       <td className="min-w-[8rem] py-3 px-2 align-top">Do 2&nbsp;rokov; Safari a Firefox platnosť skracujú na dni až týždne</td>
                     </tr>
@@ -390,7 +390,7 @@ export const CookiesPolicy = () => {
                   { name: 'Cloudflare', desc: 'ochrana formulárov a webu' },
                   { name: 'Google (Google Analytics 4, Google Tag Manager, Google Ads)', desc: 'analytika návštevnosti, meranie konverzií a remarketing' },
                   { name: 'Meta (Meta Pixel)', desc: 'remarketing a meranie konverzií' },
-                  { name: 'Klaviyo', desc: 'newsletter a automatické e-maily, rozpoznanie odberateľa newslettera na webe pre pripomenutie košíka' },
+                  { name: 'Klaviyo', desc: 'newsletter a automatické e-maily, rozpoznanie odberateľa newslettera na webe pre pripomenutie prezeraného dekoru a košíka' },
                   { name: 'Vercel', desc: 'anonymné meranie návštevnosti a rýchlosti stránok bez cookies' },
                 ].map((item) => (
                   <div key={item.name} className={`${LEGAL_BOX} p-3`}>

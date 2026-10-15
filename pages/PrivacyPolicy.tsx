@@ -91,7 +91,7 @@ export const PrivacyPolicy = () => {
                     </tr>
                     <tr>
                       <td className="py-3 px-3 font-semibold text-brand-dark align-top">Marketing</td>
-                      <td className="py-3 px-3 align-top">Newsletter, automatické e-maily, remarketingové ponuky a meranie účinnosti reklám v Google Ads a na Facebooku či Instagrame, všetko len s vaším výslovným súhlasom. Automatické e-maily vám môžeme poslať napríklad po prihlásení na newsletter, keď si objednáte vzorku, keď si ako odberateľ newslettera vložíte dekor do košíka e-shopu a objednávku nedokončíte (pripomenutie košíka) alebo keď ako odberateľ newslettera 90&nbsp;dní neotvoríte žiadny z našich e-mailov ani v nich na nič nekliknete. Odberateľa newslettera v e-shope rozpoznáme len vtedy, ak prišiel z odkazu v našom e-maile a povolil marketingové cookies (pozri časť Cookies). Výnimkou je pripomenutie nedokončeného nákupu, ktoré posielame aj bez súhlasu (pozri nasledujúci riadok).</td>
+                      <td className="py-3 px-3 align-top">Newsletter, automatické e-maily, remarketingové ponuky a meranie účinnosti reklám v Google Ads a na Facebooku či Instagrame, všetko len s vaším výslovným súhlasom. Automatické e-maily vám môžeme poslať napríklad po prihlásení na newsletter, keď si objednáte vzorku, keď si ako odberateľ newslettera prezriete dekor v e-shope a nevložíte ho do košíka (pripomenutie prezeraného dekoru), keď si ako odberateľ newslettera vložíte dekor do košíka e-shopu a objednávku nedokončíte (pripomenutie košíka) alebo keď ako odberateľ newslettera 90&nbsp;dní neotvoríte žiadny z našich e-mailov ani v nich na nič nekliknete. Odberateľa newslettera v e-shope rozpoznáme len vtedy, ak prišiel z odkazu v našom e-maile a povolil marketingové cookies (pozri časť Cookies). Výnimkou je pripomenutie nedokončeného nákupu, ktoré posielame aj bez súhlasu (pozri nasledujúci riadok).</td>
                       <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. a) – súhlas</td>
                     </tr>
                     <tr>
@@ -184,7 +184,7 @@ export const PrivacyPolicy = () => {
                       name: 'Klaviyo, Inc.',
                       purpose: 'Odosielanie newslettera a automatických e-mailov, správa odberu a odhlásení, meranie otvorení a kliknutí v e-mailoch, prehľad objednávok z e-shopu',
                       location: 'USA',
-                      note: 'Spracúva e-mailovú adresu, meno (ak ho uvediete), odkiaľ ste sa prihlásili a odpovede, ktoré v e-mailoch zvolíte. Z e-shopu na platforme Shopify dostáva o všetkých zákazníkoch, aj o tých, ktorí súhlas s e-mailovým marketingom nedali, tieto údaje: meno, kontaktné a dodacie údaje, objednávky, nákupy nedokončené v pokladni a stav súhlasu s e-mailovým marketingom. Marketingové e-maily cez Klaviyo posielame len tým, ktorí s nimi súhlasili. Ak povolíte marketingové cookies, skript služby Klaviyo na našom webe rozpozná odberateľa newslettera, ktorý prišiel z odkazu v našom e-maile, a zaznamená, že si vložil dekor do košíka; Klaviyo mu potom pošle pripomenutie košíka. Pripomenutie nákupu nedokončeného v pokladni neposiela Klaviyo, ale Shopify. Vlastné zásady: klaviyo.com/legal/privacy',
+                      note: 'Spracúva e-mailovú adresu, meno (ak ho uvediete), odkiaľ ste sa prihlásili a odpovede, ktoré v e-mailoch zvolíte. Z e-shopu na platforme Shopify dostáva o všetkých zákazníkoch, aj o tých, ktorí súhlas s e-mailovým marketingom nedali, tieto údaje: meno, kontaktné a dodacie údaje, objednávky, nákupy nedokončené v pokladni a stav súhlasu s e-mailovým marketingom. Marketingové e-maily cez Klaviyo posielame len tým, ktorí s nimi súhlasili. Ak povolíte marketingové cookies, skript služby Klaviyo na našom webe rozpozná odberateľa newslettera, ktorý prišiel z odkazu v našom e-maile, a zaznamená, ktoré dekory si prezrel a ktorý si vložil do košíka; Klaviyo mu potom pošle pripomenutie prezeraného dekoru alebo košíka. Pripomenutie nákupu nedokončeného v pokladni neposiela Klaviyo, ale Shopify. Vlastné zásady: klaviyo.com/legal/privacy',
                     },
                     {
                       name: 'Vercel Inc.',
@@ -500,7 +500,7 @@ export const PrivacyPolicy = () => {
                 </div>
                 <div className={`${LEGAL_BOX} p-4`}>
                   <h4 className="mb-1 font-semibold text-brand-dark">Marketingové cookies</h4>
-                  <p className="text-sm">Meta Pixel – remarketing a meranie konverzií. Klaviyo – rozpoznanie odberateľa newslettera, ktorý prišiel z nášho e-mailu, a pripomenutie košíka. Aktivujú sa iba po vašom súhlase.</p>
+                  <p className="text-sm">Meta Pixel – remarketing a meranie konverzií. Klaviyo – rozpoznanie odberateľa newslettera, ktorý prišiel z nášho e-mailu, a pripomenutie prezeraného dekoru a košíka. Aktivujú sa iba po vašom súhlase.</p>
                 </div>
               </div>
               <Link

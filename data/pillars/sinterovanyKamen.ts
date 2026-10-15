@@ -23,7 +23,7 @@ export const SINTEROVANY_KAMEN_FAQ: PillarFaq[] = [
   {
     question: 'Poškriabe sa sinterovaný kameň?',
     answer:
-      'Pri bežnom používaní nie. Tvrdosť sinterovaného kameňa dosahuje 6–8 na Mohsovej stupnici — je tvrdší ako väčšina kuchynského náradia. Pre dlhodobú krásu povrchu však odporúčame používať krájaciu dosku.',
+      'Pri bežnom používaní nie. Tvrdosť sinterovaného kameňa dosahuje 7+ na Mohsovej stupnici — je tvrdší ako väčšina kuchynského náradia. Pre dlhodobú krásu povrchu však odporúčame používať krájaciu dosku.',
   },
   {
     question: 'Musím sinterovaný kameň impregnovat?',
@@ -85,7 +85,7 @@ export const SINTEROVANY_KAMEN_COMPARISON: SkComparisonRow[] = [
   },
   {
     property: 'Tvrdosť (Mohs)',
-    sintered: '6–8',
+    sintered: '7+',
     natural: '3–7',
     quartz: '6–7',
     ceramic: '5–6',
