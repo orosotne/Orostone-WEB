@@ -48,7 +48,7 @@ Tieto technológie sú potrebné na základné fungovanie webu, bezpečnosť, sp
 
 Podľa použitia funkcie
 
-Tieto technológie pomáhajú zapamätať si vaše preferencie a zlepšujú používateľský komfort. Aktivujú sa len v prípadoch, keď je to potrebné na uloženie vami výslovne zvoleného nastavenia.
+Tieto technológie pomáhajú zapamätať si vaše preferencie a zlepšujú používateľský komfort. Aktivujú sa len v prípadoch, keď je to potrebné na uloženie vami zvoleného nastavenia alebo stavu funkcie webu, napríklad či sa vám už zobrazilo vyskakovacie okno.
 
 ### Analytické
 

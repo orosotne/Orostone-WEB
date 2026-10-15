@@ -185,7 +185,7 @@ serve(async (req) => {
                   </span>
                 </div>
                 <p class="email-subtext" style="margin: 12px 0 0 0; font-size: 13px; font-weight: 400; color: #5F5E5A; line-height: 1.5;">
-                  V&nbsp;pokladni zadajte kód ${SLAB_DISCOUNT_CODE}. Platí na jednu objednávku a&nbsp;nedá sa kombinovať so žiadnou inou zľavou&nbsp;– ani so zľavou 20&nbsp;%, ktorú e-shop odpočíta automaticky pri objednávke troch alebo viacerých platní.
+                  Kód odpočíta 5&nbsp;% z&nbsp;ceny platní, nie z&nbsp;dopravy. V&nbsp;pokladni zadajte kód ${SLAB_DISCOUNT_CODE}. Platí na jednu objednávku a&nbsp;nedá sa kombinovať so žiadnou inou zľavou&nbsp;– ani so zľavou 20&nbsp;%, ktorú e-shop odpočíta automaticky pri objednávke troch alebo viacerých platní.
                 </p>
                 <p style="margin: 14px 0 0 0; font-size: 12px;">
                   <a href="${DECORS_URL}" class="footer-link"
@@ -287,7 +287,10 @@ serve(async (req) => {
                      style="color: #bbbbbb; text-decoration: none;">www.orostone.sk</a>
                 </p>
                 <p class="footer-small" style="margin: 10px 0 0 0; font-size: 10px; color: #cccccc; font-weight: 300;">
-                  Dostali ste tento email, pretože ste sa prihlásili na odber noviniek Orostone.
+                  Dostali ste tento e-mail, pretože ste sa prihlásili na odber noviniek Orostone.
+                </p>
+                <p class="footer-small" style="margin: 6px 0 0 0; font-size: 10px; color: #cccccc; font-weight: 300;">
+                  Odhlásiť sa môžete kedykoľvek odpoveďou na tento e-mail alebo na info@orostone.sk.
                 </p>
               </td>
             </tr>

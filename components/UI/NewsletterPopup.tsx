@@ -70,15 +70,25 @@ function markShownThisVisit() {
   try { sessionStorage.setItem(NEWSLETTER_POPUP_SESSION_KEY, '1'); } catch { /* ignore */ }
 }
 
+type SubmitStatus = 'idle' | 'loading' | 'success' | 'error';
+
 export const NewsletterPopup: React.FC = () => {
   const [visible, setVisible] = useState(false);
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [status, setStatusState] = useState<SubmitStatus>('idle');
   const [delivery, setDelivery] = useState<CodesDelivery>('email');
   const [errorMsg, setErrorMsg] = useState('');
   const turnstile = useBackgroundTurnstile();
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const successHeadingRef = useRef<HTMLHeadingElement>(null);
+  // The status as of now, for dismiss(): Escape and the backdrop must not see a stale 'idle' while the sign-up is sent
+  const statusRef = useRef<SubmitStatus>('idle');
+  const setStatus = (next: SubmitStatus) => {
+    statusRef.current = next;
+    setStatusState(next);
+  };
+  const loading = status === 'loading';
   const { hasConsented, isSettingsOpen } = useCookies();
   const { isOpen: isCartOpen } = useCartUI();
   const { pathname } = useLocation();
@@ -98,9 +108,11 @@ export const NewsletterPopup: React.FC = () => {
     return () => clearTimeout(timer);
   }, [blocked]);
 
-  // Read the stored state, not `status`: turning a signup ('done') into 'dismissed' would offer pop-up B to a
-  // subscriber 3 days later
+  // Not while the sign-up is on its way: with 'screen' or 'already' the codes would land in a closed dialog, the only
+  // place they are shown. Read the stored state, not `status`: turning a signup ('done') into 'dismissed' would offer
+  // pop-up B to a subscriber 3 days later
   const dismiss = () => {
+    if (statusRef.current === 'loading') return;
     setVisible(false);
     const next = nextStateOnDismiss(getPopupState());
     if (next) {
@@ -111,6 +123,11 @@ export const NewsletterPopup: React.FC = () => {
 
   // Keyboard: focus lands on the close button, Tab stays in the dialog, Escape closes it, focus then goes back
   useDialogFocus(visible, dialogRef, closeButtonRef, dismiss);
+
+  // The submit button is gone with the form: focus goes to the result, so a screen reader reads the codes
+  useEffect(() => {
+    if (status === 'success') successHeadingRef.current?.focus({ preventScroll: true });
+  }, [status]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -175,7 +192,8 @@ export const NewsletterPopup: React.FC = () => {
                 ref={closeButtonRef}
                 type="button"
                 onClick={dismiss}
-                className="absolute right-2 top-2 grid h-11 w-11 place-items-center rounded-full bg-brand-light/85 text-brand-muted os-press hover:bg-brand-sand hover:text-brand-dark"
+                disabled={loading}
+                className="absolute right-2 top-2 grid h-11 w-11 place-items-center rounded-full bg-brand-light/85 text-brand-muted os-press enabled:hover:bg-brand-sand enabled:hover:text-brand-dark disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label="Zavrieť"
               >
                 <X className="h-5 w-5" strokeWidth={1.5} />
@@ -184,17 +202,18 @@ export const NewsletterPopup: React.FC = () => {
               <div className="min-w-0 flex-1 px-5 pb-5 pt-5 sm:px-7 sm:pb-7 sm:pt-8">
                 {status === 'success' ? (
                   <>
-                    <Eyebrow className="text-brand-muted">Ste prihlásení</Eyebrow>
-                    <h2 id="newsletter-popup-title" className="mt-3 text-os-h3">
+                    {/* 'screen': Klaviyo may have blocked the address, so no claim that it is subscribed */}
+                    <Eyebrow className="text-brand-muted">{delivery === 'screen' ? 'Ďakujeme' : 'Ste prihlásení'}</Eyebrow>
+                    <h2 ref={successHeadingRef} id="newsletter-popup-title" tabIndex={-1} className="mt-3 text-os-h3 outline-none">
                       Doprava prvej vzorky je na nás
                     </h2>
                     <p className="mt-2 text-[0.9rem] font-light leading-relaxed text-brand-muted">
                       {delivery !== 'email' ? (
                         <>
                           {delivery === 'already' ? (
-                            <>Na túto adresu už novinky posielame, preto vám nový <span className="whitespace-nowrap">e-mail</span> nepríde.</>
+                            <>Na túto adresu už novinky posielame, preto vám uvítací <span className="whitespace-nowrap">e-mail</span> s&nbsp;kódmi znova nepošleme.</>
                           ) : (
-                            <><span className="whitespace-nowrap">E-mail</span> s&nbsp;kódmi vám tentoraz poslať nevieme.</>
+                            <>Uvítací <span className="whitespace-nowrap">e-mail</span> s&nbsp;kódmi vám teraz poslať nemôžeme, preto ich uvádzame tu.</>
                           )}{' '}
                           Kódy si poznačte. Pri objednávke vzorky zadajte v&nbsp;pokladni tento kód:
                         </>
@@ -255,8 +274,8 @@ export const NewsletterPopup: React.FC = () => {
                       {status === 'error' && (
                         <p className="text-[0.8rem] text-red-700" role="alert">{errorMsg}</p>
                       )}
-                      <ActionButton type="submit" disabled={status === 'loading'} className="w-full">
-                        {status === 'loading' ? (
+                      <ActionButton type="submit" disabled={loading} className="w-full">
+                        {loading ? (
                           <><Loader2 size={16} className="animate-spin" /> Odosielam…</>
                         ) : (
                           'Chcem dopravu zadarmo'
@@ -274,7 +293,8 @@ export const NewsletterPopup: React.FC = () => {
                     <button
                       type="button"
                       onClick={dismiss}
-                      className="mt-2 min-h-[44px] w-full text-center text-[0.8rem] text-brand-muted active:opacity-50 hover:text-brand-dark"
+                      disabled={loading}
+                      className="mt-2 min-h-[44px] w-full text-center text-[0.8rem] text-brand-muted active:opacity-50 enabled:hover:text-brand-dark disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       Nie, ďakujem
                     </button>

@@ -11,6 +11,9 @@
 // RESPONSE: 200 { success: true; alreadySubscribed?: boolean; welcomeEmail?: boolean }
 //           welcomeEmail: false = uvítací e-mail s kódmi neodíde (Klaviyo odber zablokovalo
 //           alebo neodpovedalo), pop-up ukáže kódy len na obrazovke
+//           alreadySubscribed: true = adresa už je prihlásená, uvítací e-mail znova neodíde.
+//           Výnimka: prihlásená adresa, ktorú Klaviyo pri opakovanom pokuse prijme až teraz,
+//           dostane { success: true; welcomeEmail: true } (flow na zozname pošle e-mail 01)
 //           4xx { success: false; error: string }   (403 = overenie Turnstile neprešlo)
 //
 // DEPLOYMENT:
@@ -530,16 +533,23 @@ serve(async (req) => {
     if (outcome === 'limit') return limitResponse();
 
     if (outcome === 'active') {
-      // Already active — idempotent success, no welcome email re-send.
+      // Already active — idempotent success, no welcome email re-send from here.
       // Do Klaviya ho pošleme aj tak, ak predošlý odber neprešiel (kto v zozname je,
       // novú úlohu nedostane, kto sa v Klaviyu odhlásil, toho neprihlásime). Opakované
       // odoslanie do 30 minút od posledného pokusu (dvojklik, dve karty) už rieši prvá
       // požiadavka: pokus si atomicky vezme len jedna z nich. Pri plnom strope Klaviyo
-      // nevoláme.
+      // nevoláme. Keď Klaviyo odber teraz prijme ('ok'), adresa v zozname ešte nebola a flow
+      // na zozname pošle uvítací e-mail 01 s kódmi: odpovieme ako pri novom odbere.
       if (klaviyoEnabled() && !over && id && await claimKlaviyoAttempt(supabase, id)) {
         const again = await subscribeInKlaviyo(email, name, source);
         if (again === 'ok' || again === 'member') inBackground(leaveInquiryList(email, source));
         if (again === 'rejected' || again === 'unknown' || again === 'blocked') inBackground(alertKlaviyoFailure(email, source, again));
+        if (again === 'ok') {
+          return new Response(
+            JSON.stringify({ success: true, welcomeEmail: true }),
+            { status: 200, headers: corsHeaders },
+          );
+        }
       }
       return new Response(
         JSON.stringify({ success: true, alreadySubscribed: true }),

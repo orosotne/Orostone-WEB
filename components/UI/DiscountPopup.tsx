@@ -85,17 +85,27 @@ const CARD: PanelMotion = {
 };
 const FADE_ONLY: PanelMotion = { initial: { opacity: 0 }, animate: { opacity: 1 }, transition: FADE };
 
+type SubmitStatus = 'idle' | 'loading' | 'success' | 'error';
+
 export const DiscountPopup: React.FC = () => {
   const [visible, setVisible] = useState(false);
   const [sheet, setSheet] = useState(false);
   const [viaAd, setViaAd] = useState(false);
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [status, setStatusState] = useState<SubmitStatus>('idle');
   const [delivery, setDelivery] = useState<CodesDelivery>('email');
   const [errorMsg, setErrorMsg] = useState('');
   const turnstile = useBackgroundTurnstile();
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const successHeadingRef = useRef<HTMLHeadingElement>(null);
+  // The status as of now, for dismiss(): Escape and the backdrop must not see a stale 'idle' while the sign-up is sent
+  const statusRef = useRef<SubmitStatus>('idle');
+  const setStatus = (next: SubmitStatus) => {
+    statusRef.current = next;
+    setStatusState(next);
+  };
+  const loading = status === 'loading';
   const { hasConsented, isSettingsOpen } = useCookies();
   const { isOpen: isCartOpen } = useCartUI();
   const { pathname, search } = useLocation();
@@ -140,8 +150,10 @@ export const DiscountPopup: React.FC = () => {
     return () => clearTimeout(timer);
   }, [blocked, pathname, search]);
 
-  // Read the stored state, not `status`: a signup ('done') must survive closing the dialog
+  // Not while the sign-up is on its way: with 'screen' or 'already' the codes would land in a closed dialog, the only
+  // place they are shown. Read the stored state, not `status`: a signup ('done') must survive closing the dialog
   const dismiss = () => {
+    if (statusRef.current === 'loading') return;
     setVisible(false);
     const next = nextStateOnDismiss(read('local', DISCOUNT_POPUP_KEY));
     if (next) write('local', DISCOUNT_POPUP_KEY, next);
@@ -149,6 +161,11 @@ export const DiscountPopup: React.FC = () => {
 
   // Keyboard: focus lands on the close button, Tab stays in the dialog, Escape closes it, focus then goes back
   useDialogFocus(visible, dialogRef, closeButtonRef, dismiss);
+
+  // The submit button is gone with the form: focus goes to the result, so a screen reader reads the codes
+  useEffect(() => {
+    if (status === 'success') successHeadingRef.current?.focus({ preventScroll: true });
+  }, [status]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -251,7 +268,8 @@ export const DiscountPopup: React.FC = () => {
                 ref={closeButtonRef}
                 type="button"
                 onClick={dismiss}
-                className="absolute right-2 top-2 z-10 grid h-11 w-11 place-items-center rounded-full bg-brand-dark/60 text-brand-light os-press hover:bg-brand-dark tiny-phone:right-1 tiny-phone:top-1"
+                disabled={loading}
+                className="absolute right-2 top-2 z-10 grid h-11 w-11 place-items-center rounded-full bg-brand-dark/60 text-brand-light os-press enabled:hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-50 tiny-phone:right-1 tiny-phone:top-1"
                 aria-label="Zavrieť"
               >
                 <X className="h-5 w-5" strokeWidth={1.5} />
@@ -260,8 +278,14 @@ export const DiscountPopup: React.FC = () => {
               <div className="min-w-0 flex-1 px-5 pb-3 pt-5 sm:px-8 sm:pb-6 sm:pt-10 short-phone:pb-1 short-phone:pt-4">
                 {status === 'success' ? (
                   <>
-                    <Eyebrow gold className="tiny-phone:pr-12">Ste prihlásení</Eyebrow>
-                    <h2 id="discount-popup-title" className="mt-3 pr-8 text-os-h2 short-phone:mt-2">
+                    {/* 'screen': Klaviyo may have blocked the address, so no claim that it is subscribed */}
+                    <Eyebrow gold className="tiny-phone:pr-12">{delivery === 'screen' ? 'Ďakujeme' : 'Ste prihlásení'}</Eyebrow>
+                    <h2
+                      ref={successHeadingRef}
+                      id="discount-popup-title"
+                      tabIndex={-1}
+                      className="mt-3 pr-8 text-os-h2 outline-none short-phone:mt-2"
+                    >
                       Váš kód na 5&nbsp;% zľavu
                     </h2>
                     <p className="mt-5 rounded-[10px] border border-dashed border-brand-gold/70 bg-white/[0.04] px-4 py-4 text-center text-os-h2 font-bold leading-none tracking-[0.16em] text-brand-gold">
@@ -270,9 +294,9 @@ export const DiscountPopup: React.FC = () => {
                     {delivery !== 'email' ? (
                       <p className="mt-4 text-sm font-normal leading-relaxed text-brand-light/80 sm:text-base">
                         {delivery === 'already' ? (
-                          <>Na túto adresu už novinky posielame, preto vám nový <span className="whitespace-nowrap">e-mail</span> nepríde.</>
+                          <>Na túto adresu už novinky posielame, preto vám uvítací <span className="whitespace-nowrap">e-mail</span> s&nbsp;kódmi znova nepošleme.</>
                         ) : (
-                          <><span className="whitespace-nowrap">E-mail</span> s&nbsp;kódmi vám tentoraz poslať nevieme.</>
+                          <>Uvítací <span className="whitespace-nowrap">e-mail</span> s&nbsp;kódmi vám teraz poslať nemôžeme, preto ich uvádzame tu.</>
                         )}{' '}
                         Kód si poznačte a&nbsp;zadajte ho v&nbsp;pokladni pri objednávke platní. Na dopravu prvej vzorky zadarmo zadajte kód{' '}
                         <strong className="font-semibold text-brand-light">{SAMPLE_SHIPPING_CODE}</strong>.
@@ -327,8 +351,8 @@ export const DiscountPopup: React.FC = () => {
                       {status === 'error' && (
                         <p className="text-sm text-red-300" role="alert">{errorMsg}</p>
                       )}
-                      <ActionButton type="submit" variant="gold" disabled={status === 'loading'} className="w-full short-phone:min-h-[46px]">
-                        {status === 'loading' ? (
+                      <ActionButton type="submit" variant="gold" disabled={loading} className="w-full short-phone:min-h-[46px]">
+                        {loading ? (
                           <><Loader2 size={16} className="animate-spin" /> Odosielam…</>
                         ) : (
                           <>Chcem 5&nbsp;% zľavu</>
@@ -349,7 +373,8 @@ export const DiscountPopup: React.FC = () => {
                     <button
                       type="button"
                       onClick={dismiss}
-                      className="mt-1 min-h-[44px] w-full text-center text-sm text-brand-light/70 active:opacity-50 hover:text-brand-light short-phone:mt-0"
+                      disabled={loading}
+                      className="mt-1 min-h-[44px] w-full text-center text-sm text-brand-light/70 active:opacity-50 enabled:hover:text-brand-light disabled:cursor-not-allowed disabled:opacity-50 short-phone:mt-0"
                     >
                       Nie, ďakujem
                     </button>

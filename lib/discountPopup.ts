@@ -11,11 +11,12 @@
 
 /**
  * Welcome codes. Every new web subscriber gets both in welcome e-mail 01. Deploy order
- * (docs/pravne-texty/jazykova-kontrola.md › Kolo 8): (1) template 01 with WELCOME5 uploaded to Klaviyo (XkFccQ,
- * preview text in VLzuhC) with the owner's OK; (2) merge this branch, the web deploys automatically; (3) right after,
- * with the owner's OK, deploy send-newsletter-welcome and subscribe-newsletter from main. Between (2) and (3) only the
- * fallback e-mail (sent only when Klaviyo rejects the sign-up) still lacks WELCOME5 and the pop-ups do not yet learn
- * that a blocked sign-up gets no welcome e-mail, a short and deliberate window.
+ * (docs/pravne-texty/jazykova-kontrola.md › Kolo 8): (1) template 01 with WELCOME5 uploaded to Klaviyo (template
+ * XkFccQ) and the new subject and preview text in message VLzuhC, with the owner's OK; (2) merge this branch, the web
+ * deploys automatically; (3) right after, with the owner's OK, deploy from main first send-newsletter-welcome, then
+ * subscribe-newsletter. Between (2) and (3) the fallback e-mail (sent only when Klaviyo rejects the sign-up) still
+ * lacks WELCOME5 and the pop-ups do not yet learn that the welcome e-mail does not go out (a blocked sign-up, Klaviyo
+ * not answering, or an address already on the list), a short and deliberate window.
  */
 export const SAMPLE_SHIPPING_CODE = 'VITAJTE'; // free shipping of the first sample, once per customer
 export const SLAB_DISCOUNT_CODE = 'WELCOME5'; // 5 % on the 12 decor slabs, once per customer, no combining
@@ -24,7 +25,7 @@ export const SLAB_DISCOUNT_CODE = 'WELCOME5'; // 5 % on the 12 decor slabs, once
  * Short terms of WELCOME5, the same in both pop-ups (the e-mails carry the full wording). U+00A0 before % and after
  * one-letter words, as &nbsp; in JSX.
  */
-export const SLAB_CODE_TERMS = `Kód ${SLAB_DISCOUNT_CODE} môžete použiť iba raz a\u00A0len pri objednávke platní v\u00A0e-shope orostone.sk. Nedá sa kombinovať so žiadnou inou zľavou, ani so zľavou 20\u00A0% od troch platní.`;
+export const SLAB_CODE_TERMS = `Kód ${SLAB_DISCOUNT_CODE} môžete použiť iba raz a\u00A0len pri objednávke platní v\u00A0e-shope orostone.sk. Nedá sa kombinovať so žiadnou inou zľavou, ani s\u00A0automatickou zľavou 20\u00A0% pri objednávke troch alebo viacerých platní.`;
 
 /**
  * Photo of pop-up B, the one place to swap it (the final hero comes from Higgsfield): `base` names the files

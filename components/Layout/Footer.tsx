@@ -49,9 +49,11 @@ const NewsletterWidget: React.FC = () => {
     const [{ subscribeToNewsletter }, turnstileToken] = await Promise.all([loadNewsletter(), turnstile.getToken()]);
     const result = await subscribeToNewsletter({ email, source: 'footer', turnstileToken });
     if (result.success) {
+      const codes = codesDelivery(result);
       setStatus('success');
-      setDelivery(codesDelivery(result));
-      setMsg(result.alreadySubscribed ? 'Tento e-mail je už prihlásený.' : 'Ďakujeme za prihlásenie!');
+      setDelivery(codes);
+      // 'screen': Klaviyo may have blocked the address, so no thanks for a sign-up that may not exist
+      setMsg(codes === 'already' ? 'Tento e-mail je už prihlásený.' : codes === 'screen' ? 'Ďakujeme.' : 'Ďakujeme za prihlásenie!');
     } else {
       turnstile.reset();
       setStatus('error');
@@ -66,12 +68,15 @@ const NewsletterWidget: React.FC = () => {
           <CheckCircle size={16} />
           <span>{msg}</span>
         </div>
-        {/* New sign-up without a welcome e-mail (Klaviyo blocked or did not answer): the codes are shown here */}
-        {delivery === 'screen' && (
+        {/* No welcome e-mail (already on the list, or Klaviyo blocked or did not answer): the codes are shown here,
+            as in the pop-ups, which this sign-up has just switched off */}
+        {delivery !== 'email' && (
           <div className="mt-2 text-[0.78rem] leading-relaxed text-brand-light/[0.84]">
             <p>
-              <span className="whitespace-nowrap">E-mail</span> s&nbsp;kódmi vám tentoraz poslať nevieme. Na dopravu prvej vzorky zadarmo zadajte v&nbsp;pokladni kód{' '}
-              <strong className="font-semibold text-brand-light">{SAMPLE_SHIPPING_CODE}</strong>, na 5&nbsp;% zľavu na platne kód{' '}
+              Uvítací <span className="whitespace-nowrap">e-mail</span> s&nbsp;kódmi vám{' '}
+              {delivery === 'already' ? 'znova nepošleme' : 'teraz poslať nemôžeme'}, kódy pre nových odberateľov uvádzame
+              tu: na dopravu prvej vzorky zadarmo{' '}
+              <strong className="font-semibold text-brand-light">{SAMPLE_SHIPPING_CODE}</strong>, na 5&nbsp;% zľavu na platne{' '}
               <strong className="font-semibold text-brand-light">{SLAB_DISCOUNT_CODE}</strong>.
             </p>
             <p className="mt-1 text-brand-light/70"><SlabCodeTerms /></p>

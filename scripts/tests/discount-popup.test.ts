@@ -210,10 +210,11 @@ test('the photo files the <picture> points to exist, AVIF and WebP at 720 and 14
 test('the short WELCOME5 terms name the exclusions and keep non-breaking spaces', () => {
   assert.equal(
     SLAB_CODE_TERMS.replace(/\u00A0/g, ' '),
-    'Kód WELCOME5 môžete použiť iba raz a len pri objednávke platní v e-shope orostone.sk. Nedá sa kombinovať so žiadnou inou zľavou, ani so zľavou 20 % od troch platní.',
+    'Kód WELCOME5 môžete použiť iba raz a len pri objednávke platní v e-shope orostone.sk. Nedá sa kombinovať so žiadnou inou zľavou, ani s automatickou zľavou 20 % pri objednávke troch alebo viacerých platní.',
   );
   assert.match(SLAB_CODE_TERMS, /20\u00A0%/);
   assert.match(SLAB_CODE_TERMS, / v\u00A0e-shope/);
+  assert.match(SLAB_CODE_TERMS, / s\u00A0automatickou/);
 });
 
 // Last: rememberAdOfferLanding sets module state for the rest of the file
