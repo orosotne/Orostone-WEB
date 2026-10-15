@@ -220,7 +220,7 @@ export const DiscountPopup: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/75 via-brand-dark/0 to-brand-dark/0" aria-hidden />
                 {/* Phones: on a dark chip, the light travertine behind it would leave the label at about 2.5:1. On short
                     screens the band is 88 px and the label smaller, so it stays clear of the sticker down to 320 px. */}
-                <p className="absolute bottom-2 right-2 rounded-[4px] bg-brand-dark/75 px-2 py-0.5 text-xs text-brand-light sm:bottom-4 sm:left-6 sm:right-auto sm:bg-transparent sm:p-0 short-phone:bottom-1.5 short-phone:right-1.5 short-phone:text-[0.68rem]">
+                <p className="absolute bottom-1.5 right-2 rounded-[4px] bg-brand-dark/75 px-2 py-0.5 text-xs text-brand-light sm:bottom-4 sm:left-6 sm:right-auto sm:bg-transparent sm:p-0 short-phone:bottom-1.5 short-phone:right-1.5 short-phone:text-[0.68rem]">
                   {DISCOUNT_POPUP_IMAGE.label}
                 </p>
 
