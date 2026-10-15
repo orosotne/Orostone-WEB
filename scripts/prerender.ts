@@ -120,6 +120,8 @@ interface Page {
   jsonLd?: object[];
   /** First gallery photo of a product: preloaded so the LCP image does not wait for the JS bundle */
   heroImage?: string;
+  /** Not-found page: noindex, no canonical, written to dist/404.html */
+  notFound?: boolean;
 }
 
 let count = 0;
@@ -179,9 +181,13 @@ function writePage(page: Page): void {
     html = html.replace(/(<meta name="twitter:image" content=")[^"]*(")/, `$1${page.ogImage}$2`);
   }
 
-  // Canonical
-  const canonicalTag = `    <link rel="canonical" href="${page.canonical}" />\n`;
-  html = html.replace('</head>', `${canonicalTag}</head>`);
+  // Canonical (a not-found page has none and is noindex)
+  if (page.notFound) {
+    html = html.replace(/(<meta name="robots" content=")[^"]*(")/, '$1noindex, follow$2');
+  } else {
+    const canonicalTag = `    <link rel="canonical" href="${page.canonical}" />\n`;
+    html = html.replace('</head>', `${canonicalTag}</head>`);
+  }
 
   // Product photo preload. Same srcset and sizes as the <img> on the page, so the browser picks the same candidate:
   // the phone/tablet carousel uses 100vw, the desktop MainPhoto MAIN_PHOTO_SIZES (components/ProductDetail/MainPhoto.tsx).
@@ -223,7 +229,9 @@ function writePage(page: Page): void {
   }
 
   // Write file
-  const filePath = resolve(DIST, page.route.replace(/^\//, ''), 'index.html');
+  const filePath = page.notFound
+    ? resolve(DIST, '404.html')
+    : resolve(DIST, page.route.replace(/^\//, ''), 'index.html');
   mkdirSync(dirname(filePath), { recursive: true });
   writeFileSync(filePath, html, 'utf-8');
   count++;
@@ -962,6 +970,26 @@ function prerenderCennik(): void {
 }
 
 // ---------------------------------------------------------------------------
+// 404 — Vercel serves dist/404.html with HTTP 404 for every URL that has no
+// file (vercel.json rewrites only the client-only routes to index.html).
+// React then renders NotFoundPage from routes.tsx.
+// ---------------------------------------------------------------------------
+
+function prerenderNotFound(): void {
+  writePage({
+    route: '/404',
+    title: 'Stránka nenájdená | OROSTONE',
+    description: 'Hľadaná stránka neexistuje alebo bola presunutá.',
+    canonical: `${BASE_URL}/`,
+    notFound: true,
+    rootContent: `
+      <h1>Stránka nenájdená</h1>
+      <p>Hľadaná stránka neexistuje alebo bola presunutá. Skúste sa pozrieť na naše produkty alebo sa vráťte na hlavnú stránku.</p>
+      <p><a href="/kategoria/sintered-stone">Všetky produkty</a> &middot; <a href="/">Hlavná stránka</a></p>`,
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
@@ -1028,6 +1056,11 @@ console.log('\nKariera:');
 prerenderKariera();
 const jobCount = (JOB_OPENINGS as any[]).length;
 console.log(`  ✓ /kariera (${jobCount} ${jobCount === 1 ? 'pozícia' : jobCount < 5 ? 'pozície' : 'pozícií'})`);
+
+// 404
+console.log('\n404:');
+prerenderNotFound();
+console.log('  ✓ /404.html');
 
 // Homepage
 console.log('\nHomepage:');
