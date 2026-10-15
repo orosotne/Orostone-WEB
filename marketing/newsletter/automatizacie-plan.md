@@ -444,7 +444,9 @@ Zadanie Martina 15. 10. 2026: pripomenutie košíka cez Klaviyo (nie Shopify) pr
 
 | Šablóna | Odosielateľ | Predmet | Preheader | Dynamické dáta |
 |---|---|---|---|---|
-| `N/sablony/36-automatizacia-kosik-dekor.html` | Š | Váš dekor čaká v košíku | 🪨 Košík sme vám uložili. Dokončíte ho jedným kliknutím, alebo si dekor najprv overte na vzorke. | názov a handle dekoru (fotka `dekor-mockup-<handle>-1040.jpg`, odkaz na dekor), `event.Items` (názov, variant, množstvo), tlačidlo na `event.CheckoutURL`; bez údajov Taj Mahal |
+| `N/sablony/36-automatizacia-kosik-dekor.html` | Š | Váš dekor čaká v košíku, so zľavou 5 % | 🪨 Košík sme vám uložili. Ako odberateľ noviniek máte na jeho dokončenie 5 % zľavu s kódom KOSIK5. | názov a handle dekoru (fotka `dekor-mockup-<handle>-1040.jpg`, odkaz na dekor), `event.Items` (názov, variant, množstvo), tlačidlo na `event.CheckoutURL` s `&discount=KOSIK5`; bez údajov Taj Mahal |
+
+**Zľava KOSIK5 (zadanie Martina 15. 10.):** kód v Shopify, 5 % z celej objednávky, raz na zákazníka, pre všetkých zákazníkov (Shopify nevie obmedziť na odberateľov Klaviya; kód pozná len príjemca e-mailu), bez dátumu konca, kombinuje sa s dopravnou zľavou (VITAJTE). E-mail vysvetľuje, prečo kód dostáva (odberateľ noviniek, nedokončený košík) a že platí na jednu objednávku. Pokladňa Shopify kód doplní z parametra `discount` v odkaze; overiť pri prvom teste naživo. Ak by Martin chcel platnosť „7 dní od e-mailu“, treba jedinečné kódy cez Klaviyo › Coupons (Shopify), nie statický kód.
 
 ### 4. Draft vs. live a schválenia
 - Zásady: čl. 2 (Marketing: pripomenutie košíka a rozpoznanie odberateľa), čl. 4 (Klaviyo), čl. 9 a zásady cookies (`__kla_id`) upravené v tom istom PR; kontrolný log Kolo 5.

@@ -2166,7 +2166,9 @@ write_nb("35-kampan-newsletter-pravidelne.html", doc(
 # názov a handle dekoru, uložený košík v pokladni Shopify a položky košíka.
 KOSIK_NAZOV = "{{ event.AddedItemProductName|default:'Taj Mahal'|title }}"
 KOSIK_HANDLE = "{{ event.AddedItemProductID|default:'taj-mahal' }}"
-KOSIK_CHECKOUT = "{{ event.CheckoutURL|default:'" + SITE + "' }}"
+# Kód KOSIK5 (Shopify): 5 % z celej objednávky, raz na zákazníka. Pokladňa Shopify ho z parametra discount doplní sama.
+KOSIK_KOD = "KOSIK5"
+KOSIK_CHECKOUT = "{% if event.CheckoutURL %}{{ event.CheckoutURL }}&discount=" + KOSIK_KOD + "{% else %}" + SITE + "{% endif %}"
 REASON_KOSIK_WEB = "Tento e-mail ste dostali, pretože odoberáte novinky Orostone a v e-shope orostone.sk ste si vložili dekor do košíka."
 
 # 36 – Košík z webu: dekor vložený do košíka (odberatelia newslettera)
@@ -2174,13 +2176,13 @@ write_nb("36-automatizacia-kosik-dekor.html", doc(
     {
         "TYP:": "Automatizácia · Košík z webu",
         "SPÚŠŤAČ:": "2 hodiny po vložení dekoru do košíka na orostone.sk bez začatia pokladne a bez objednávky (Klaviyo: Added to Cart z webu)",
-        "PREDMET:": "Váš dekor čaká v košíku",
-        "PREHEADER:": "Košík sme vám uložili. Dokončíte ho jedným kliknutím, alebo si dekor najprv overte na vzorke.",
-        "CIEĽ:": "Dokončiť objednávku, alebo urobiť ďalší krok (vzorka, celá platňa, pôdorys). Bez zľavy.",
-        "POZNÁMKA:": "Len odberatelia so súhlasom, ktorých web rozpoznal po príchode z nášho e-mailu. Názov dekoru, fotka platne, položky a odkazy sú dynamické z udalosti; bez údajov Taj Mahal. Tlačidlo vedie do pokladne Shopify s uloženým košíkom.",
+        "PREDMET:": "Váš dekor čaká v košíku, so zľavou 5 %",
+        "PREHEADER:": "Košík sme vám uložili. Ako odberateľ noviniek máte na jeho dokončenie 5 % zľavu s kódom KOSIK5.",
+        "CIEĽ:": "Dokončiť objednávku s kódom KOSIK5, alebo urobiť ďalší krok (vzorka, celá platňa, pôdorys).",
+        "POZNÁMKA:": "Len odberatelia so súhlasom, ktorých web rozpoznal po príchode z nášho e-mailu. Názov dekoru, fotka platne, položky a odkazy sú dynamické z udalosti; bez údajov Taj Mahal. Tlačidlo vedie do pokladne Shopify s uloženým košíkom a kód KOSIK5 (5 % z celej objednávky, raz na zákazníka) doplní z parametra discount.",
     },
-    "Váš dekor čaká v košíku",
-    "Košík sme vám uložili. Dokončíte ho jedným kliknutím, alebo si dekor najprv overte na vzorke.",
+    "Váš dekor čaká v košíku, so zľavou 5 %",
+    "Košík sme vám uložili. Ako odberateľ noviniek máte na jeho dokončenie 5 % zľavu s kódom KOSIK5.",
     [
         header(),
         eyebrow("Váš košík na orostone.sk"),
@@ -2191,7 +2193,10 @@ write_nb("36-automatizacia-kosik-dekor.html", doc(
             "Ak ste sa ešte nerozhodli, je to v poriadku. Pracovná doska sa vyberá raz a nerozhoduje o nej malá vzorka ani cena, ale to, ako kresba vyzerá na celej ploche a ako sa doska používa každý deň.",
         ], top=24),
         cart_items("V košíku máte", top=8),
-        cta("Dokončiť objednávku", KOSIK_CHECKOUT, sub="Tlačidlo otvorí váš uložený košík v pokladni.", link=("Pozrieť dekor znova", SITE + "/produkt/" + KOSIK_HANDLE), width=260),
+        card_offer("Pre odberateľov noviniek", "5 % na dokončenie objednávky",
+                   'Rozhodnutie vám chceme uľahčiť: s kódom <strong style="font-weight:700; color:#1A1A1A;">' + KOSIK_KOD + '</strong> je celá objednávka o 5 % lacnejšia. Kód dostávate ako odberateľ noviniek Orostone a platí na jednu objednávku. Tlačidlo otvorí váš uložený košík v pokladni a kód doplní samo; inak ho zadáte do poľa „Zľavový kód“.',
+                   "Dokončiť objednávku so zľavou", KOSIK_CHECKOUT,
+                   note='Zľava sa počíta z ceny tovaru bez dopravy. Ak si chcete dekor najprv overiť na vzorke, kód vám ostáva. <a href="' + SITE + "/produkt/" + KOSIK_HANDLE + '" target="_blank" style="color:#1A1A1A; text-decoration:underline;">Pozrieť dekor znova</a>'),
         section_title(None, "Ak ešte váhate", top=28),
         numbered([
             ("Vzorka v rukách", "Prvá vzorka je zadarmo. Priložte ju k dvierkam a k podlahe pri svojom svetle – uvidíte viac než na obrazovke."),

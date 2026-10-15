@@ -1,9 +1,9 @@
-# 36 – Váš dekor čaká v košíku
+# 36 – Váš dekor čaká v košíku, so zľavou 5 %
 
 - **Typ:** Automatizácia · Košík z webu
 - **Kedy sa posiela:** 2 hodiny po vložení dekoru do košíka na orostone.sk bez začatia pokladne a bez objednávky (Klaviyo: Added to Cart z webu)
-- **Predmet:** Váš dekor čaká v košíku
-- **Preheader:** 🪨 Košík sme vám uložili. Dokončíte ho jedným kliknutím, alebo si dekor najprv overte na vzorke.
+- **Predmet:** Váš dekor čaká v košíku, so zľavou 5 %
+- **Preheader:** 🪨 Košík sme vám uložili. Ako odberateľ noviniek máte na jeho dokončenie 5 % zľavu s kódom KOSIK5.
 - **Šablóna:** `sablony/36-automatizacia-kosik-dekor.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí
@@ -31,10 +31,12 @@ V košíku máte
 {% if item.VariantName and item.VariantName != 'Default Title' %}{{ item.VariantName }} · {% endif %}{{ item.Quantity }} ks
 {% endfor %}
 
-### Tlačidlo (CTA)
-Dokončiť objednávku
-Tlačidlo otvorí váš uložený košík v pokladni.
-Pozrieť dekor znova
+### Ponuka
+Pre odberateľov noviniek
+5 % na dokončenie objednávky
+Rozhodnutie vám chceme uľahčiť: s kódom KOSIK5 je celá objednávka o 5 % lacnejšia. Kód dostávate ako odberateľ noviniek Orostone a platí na jednu objednávku. Tlačidlo otvorí váš uložený košík v pokladni a kód doplní samo; inak ho zadáte do poľa „Zľavový kód“.
+Dokončiť objednávku so zľavou
+Zľava sa počíta z ceny tovaru bez dopravy. Ak si chcete dekor najprv overiť na vzorke, kód vám ostáva. Pozrieť dekor znova
 
 ### Nadpis sekcie
 Ak ešte váhate
