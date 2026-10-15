@@ -61,7 +61,7 @@ export const OROSTONE_BUSINESS_GRAPH_LD = {
       '@type': ['LocalBusiness', 'HomeAndConstructionBusiness'],
       '@id': SHOWROOM_ID,
       name: 'OROSTONE Showroom Bošany',
-      description: 'Showroom sinterovaného kameňa v renesančnom kaštieli v Bošanoch. Celé platne si môžete pozrieť iba tu. Cez víkend po dohode.',
+      description: 'Showroom sinterovaného kameňa v renesančnom kaštieli v Bošanoch. Celé platne si môžete pozrieť iba tu. Cez víkend po dohode. Každú návštevu si, prosím, dohodnite telefonicky aspoň 1\u00A0hodinu vopred.',
       url: 'https://orostone.sk/kontakt',
       image: 'https://orostone.sk/images/home/showroom-kastiel.webp',
       telephone: '+421917588738',

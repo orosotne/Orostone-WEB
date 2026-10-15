@@ -225,7 +225,7 @@ const FooterComponent: React.FC<FooterProps> = ({ categories = [], isProductDeta
           </a>
           <a href="https://www.google.com/maps?q=SNP+113%2F1%2C+956+18+Bo%C5%A1any" target="_blank" rel="noopener noreferrer" className="group grid gap-0.5 no-underline">
             <span className="text-brand-light group-hover:underline group-hover:underline-offset-4">SNP 113/1, 956 18 Bošany</span>
-            <span className="text-[0.8rem] text-brand-light/60">Showroom — tu nás nájdete</span>
+            <span className="text-[0.8rem] text-brand-light/60">Showroom – každú návštevu si dohodnite telefonicky aspoň 1&nbsp;hodinu vopred.</span>
           </a>
           {/* Celé platne sú vystavené v showroome v Bošanoch. */}
           <div className="grid gap-0.5">
