@@ -34,7 +34,7 @@ const DELAY_MS = 8000;
 const HIDDEN_ON = ['/objednavka-dokoncena'];
 // Welcome reward: free shipping on the first sample. Shopify free-shipping code, shipping up to 3 €, once per customer.
 // Welcome e-mail 01 also carries WELCOME5 (5 % on slabs), the code pop-up B offers, once its Klaviyo template with
-// WELCOME5 is uploaded (a precondition of deploying this, jazykova-kontrola.md › Kolo 7).
+// WELCOME5 is uploaded (step 1 of the deploy order, lib/discountPopup.ts and jazykova-kontrola.md › Kolo 8).
 const DISCOUNT_CODE = SAMPLE_SHIPPING_CODE;
 
 function getPopupState(): string | null {
@@ -189,7 +189,7 @@ export const NewsletterPopup: React.FC = () => {
                     <p className="mt-2 text-[0.9rem] font-light leading-relaxed text-brand-muted">
                       {alreadySubscribed ? (
                         <>
-                          Tento <span className="whitespace-nowrap">e-mail</span> už odoberá novinky, nový <span className="whitespace-nowrap">e-mail</span> vám preto nepríde.
+                          Na túto adresu už novinky posielame, preto vám nový <span className="whitespace-nowrap">e-mail</span> nepríde.
                           Kódy si poznačte. Pri objednávke vzorky zadajte v&nbsp;pokladni tento kód:
                         </>
                       ) : (

@@ -185,7 +185,7 @@ serve(async (req) => {
                   </span>
                 </div>
                 <p class="email-subtext" style="margin: 12px 0 0 0; font-size: 13px; font-weight: 400; color: #5F5E5A; line-height: 1.5;">
-                  V&nbsp;pokladni zadajte kód ${SLAB_DISCOUNT_CODE}. Platí na jednu objednávku a&nbsp;nedá sa kombinovať so žiadnou inou zľavou&nbsp;– ani so zľavou 20&nbsp;%, ktorú e-shop odpočíta automaticky od troch platní.
+                  V&nbsp;pokladni zadajte kód ${SLAB_DISCOUNT_CODE}. Platí na jednu objednávku a&nbsp;nedá sa kombinovať so žiadnou inou zľavou&nbsp;– ani so zľavou 20&nbsp;%, ktorú e-shop odpočíta automaticky pri objednávke od troch platní.
                 </p>
                 <p style="margin: 14px 0 0 0; font-size: 12px;">
                   <a href="${DECORS_URL}" class="footer-link"

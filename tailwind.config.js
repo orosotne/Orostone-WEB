@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin');
+
 /** @type {import('tailwindcss').Config} */
 export default {
     darkMode: ["class"],
@@ -13,13 +15,6 @@ export default {
   ],
   theme: {
   	extend: {
-  		screens: {
-  			// Short phone screens (Facebook/Instagram in-app browsers are often 360 × 600): sheets shrink, then drop their
-  			// decoration, so their controls and conditions stay on screen. Never match together with sm (min-width 640px);
-  			// tiny-phone comes later in the CSS, so it wins where both match.
-  			'short-phone': { raw: '(max-width: 639px) and (max-height: 700px)' },
-  			'tiny-phone': { raw: '(max-width: 639px) and (max-height: 640px)' }
-  		},
   		fontFamily: {
   			sans: [
   				'Montserrat',
@@ -118,5 +113,14 @@ export default {
     require("tailwindcss-animate"),
     require("tailwind-scrollbar-hide"),
     require("@tailwindcss/typography"),
+    // Short phone screens (Facebook/Instagram in-app browsers are often 360 × 600): sheets shrink, then drop their
+    // decoration, so their controls and conditions stay on screen. Registered as variants, NOT in theme.screens:
+    // a raw-object screen makes Tailwind 3 drop every min-* and max-* variant on the whole site (min-[1360px]: header,
+    // max-md: …). Never match together with sm (min-width 640px); tiny-phone is registered later, so it wins where
+    // both match.
+    plugin(({ addVariant }) => {
+      addVariant('short-phone', '@media (max-width: 639px) and (max-height: 720px)');
+      addVariant('tiny-phone', '@media (max-width: 639px) and (max-height: 640px)');
+    }),
   ],
 }

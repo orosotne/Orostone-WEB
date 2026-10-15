@@ -10,9 +10,11 @@
 // to a subscriber. Pop-up A stands down for the whole visit.
 
 /**
- * Welcome codes. Every new web subscriber gets both in welcome e-mail 01: from Klaviyo once template 01 with WELCOME5
- * is uploaded there, and from the fallback send-newsletter-welcome once it is deployed from main (both are
- * preconditions of deploying the pop-ups, docs/pravne-texty/jazykova-kontrola.md › Kolo 7).
+ * Welcome codes. Every new web subscriber gets both in welcome e-mail 01. Deploy order
+ * (docs/pravne-texty/jazykova-kontrola.md › Kolo 8): (1) template 01 with WELCOME5 uploaded to Klaviyo (XkFccQ,
+ * preview text in VLzuhC) with the owner's OK; (2) merge this branch, the web deploys automatically; (3) right after,
+ * with the owner's OK, deploy send-newsletter-welcome from main. Between (2) and (3) only the fallback e-mail (sent
+ * only when Klaviyo rejects the sign-up) still lacks WELCOME5, a short and deliberate window.
  */
 export const SAMPLE_SHIPPING_CODE = 'VITAJTE'; // free shipping of the first sample, once per customer
 export const SLAB_DISCOUNT_CODE = 'WELCOME5'; // 5 % on the 12 decor slabs, once per customer, no combining

@@ -118,7 +118,7 @@ export const DiscountPopup: React.FC = () => {
     // the <picture>, so the browser preloads exactly the file it will show: the 720 on phones, 720 or 1440 by density
     // from 640 px. Browsers without AVIF skip the hint and load the WebP when the pop-up opens.
     preload(discountPopupPhoneSrc('avif'), { as: 'image', type: 'image/avif', media: DISCOUNT_POPUP_PHONE_MEDIA });
-    preload(DISCOUNT_POPUP_IMAGE_FALLBACK, {
+    preload(discountPopupPhoneSrc('avif'), {
       as: 'image',
       type: 'image/avif',
       media: DISCOUNT_POPUP_WIDE_MEDIA,
@@ -218,8 +218,9 @@ export const DiscountPopup: React.FC = () => {
                   />
                 </picture>
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/75 via-brand-dark/0 to-brand-dark/0" aria-hidden />
-                {/* Phones: on a dark chip, the light travertine behind it would leave the label at about 2.5:1 */}
-                <p className="absolute bottom-2 right-2 rounded-[4px] bg-brand-dark/75 px-2 py-0.5 text-xs text-brand-light sm:bottom-4 sm:left-6 sm:right-auto sm:bg-transparent sm:p-0">
+                {/* Phones: on a dark chip, the light travertine behind it would leave the label at about 2.5:1. On short
+                    screens the band is 88 px and the label smaller, so it stays clear of the sticker down to 320 px. */}
+                <p className="absolute bottom-2 right-2 rounded-[4px] bg-brand-dark/75 px-2 py-0.5 text-xs text-brand-light sm:bottom-4 sm:left-6 sm:right-auto sm:bg-transparent sm:p-0 short-phone:bottom-1.5 short-phone:right-1.5 short-phone:text-[0.68rem]">
                   {DISCOUNT_POPUP_IMAGE.label}
                 </p>
 
@@ -228,11 +229,11 @@ export const DiscountPopup: React.FC = () => {
                   initial={reduceMotion ? false : { scale: 0.6, rotate: -24, opacity: 0 }}
                   animate={{ scale: 1, rotate: -8, opacity: 1 }}
                   transition={{ ...SPRING, delay: 0.15 }}
-                  className="absolute left-4 top-4 grid h-[84px] w-[84px] place-content-center overflow-hidden rounded-full bg-brand-gold text-center text-brand-dark shadow-[0_10px_28px_-10px_rgba(0,0,0,0.6)] sm:left-6 sm:top-6 sm:h-[116px] sm:w-[116px] short-phone:left-3 short-phone:top-3 short-phone:h-[64px] short-phone:w-[64px]"
+                  className="absolute left-4 top-4 grid h-[84px] w-[84px] place-content-center overflow-hidden rounded-full bg-brand-gold text-center text-brand-dark shadow-[0_10px_28px_-10px_rgba(0,0,0,0.6)] sm:left-6 sm:top-6 sm:h-[116px] sm:w-[116px] short-phone:left-2 short-phone:top-2 short-phone:h-[56px] short-phone:w-[56px]"
                   aria-hidden
                 >
                   <span className="text-os-sticker short-phone:text-os-h3 short-phone:font-bold short-phone:leading-none">5&nbsp;%</span>
-                  <span className="mt-1 text-os-eyebrow uppercase leading-none short-phone:mt-0.5 short-phone:tracking-[0.1em]">zľava</span>
+                  <span className="mt-1 text-os-eyebrow uppercase leading-none short-phone:mt-0.5 short-phone:tracking-[0.04em]">zľava</span>
                   {!reduceMotion && (
                     <m.span
                       initial={{ x: '-130%' }}
@@ -266,7 +267,7 @@ export const DiscountPopup: React.FC = () => {
                     </p>
                     {alreadySubscribed ? (
                       <p className="mt-4 text-sm font-normal leading-relaxed text-brand-light/80 sm:text-base">
-                        Tento <span className="whitespace-nowrap">e-mail</span> už odoberá novinky, nový <span className="whitespace-nowrap">e-mail</span> vám preto nepríde.
+                        Na túto adresu už novinky posielame, preto vám nový <span className="whitespace-nowrap">e-mail</span> nepríde.
                         Kód si poznačte a&nbsp;zadajte ho v&nbsp;pokladni pri objednávke platní.
                       </p>
                     ) : (
