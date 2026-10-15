@@ -53,10 +53,10 @@ Kód WELCOME5
 Zľava 5 % na platne
 Keď si dekor vyberiete, kód odpočíta 5 % z ceny platní, nie z dopravy. Vzťahuje sa na všetkých 12 dekorov v e-shope.
 Pozrieť dekory
-V pokladni zadajte kód WELCOME5. Platí na jednu objednávku a nedá sa kombinovať so žiadnou inou zľavou – ani so zľavou 20 %, ktorú e-shop odpočíta automaticky pri objednávke od troch platní.
+V pokladni zadajte kód WELCOME5. Platí na jednu objednávku a nedá sa kombinovať so žiadnou inou zľavou – ani so zľavou 20 %, ktorú e-shop odpočíta automaticky pri objednávke troch alebo viacerých platní.
 
 ### Poznámka
-Kódy uplatníte len v e-shope orostone.sk, nie pri objednávke po telefóne ani na základe cenovej ponuky. Na vzorku zadajte VITAJTE. WELCOME5 si nechajte na objednávku platní – platí len raz a v pokladni by sa minul aj na vzorke.
+Kódy uplatníte len v e-shope orostone.sk, nie pri objednávke po telefóne ani na základe cenovej ponuky. Na vzorku zadajte VITAJTE. WELCOME5 si nechajte na objednávku platní – môžete ho uplatniť len raz; ak by ste ho uplatnili pri objednávke vzorky, na platne by ste ho už použiť nemohli.
 
 ### P. S.
 P. S. · Marián, Orostone

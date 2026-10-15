@@ -343,3 +343,12 @@ Martin 15. 10. 2026 rozhodol, že každý, kto sa na odber prihlási formulárom
 Bez zmeny textu: kampane 18, 20, 28, 30 a 35 spomínajú len kód VITAJTE a ostávajú, ako sú.
 
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
+
+## Kolo 30 – Codex review v PR #163 (15. 10. 2026, e-mail 01 po kole 29)
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 01 (ponuka WELCOME5) | …ani so zľavou 20 %, ktorú e-shop odpočíta automaticky pri objednávke od troch platní. | …ani so zľavou 20 %, ktorú e-shop odpočíta automaticky pri objednávke troch alebo viacerých platní. | štylistika | Spojenie „objednávka od troch platní“ pôsobí neprirodzene; nové znenie vyjadruje minimálne množstvo jednoznačne. | prijaté, zapracované |
+| 2 | 01 (poznámka) | WELCOME5 si nechajte na objednávku platní – platí len raz a v pokladni by sa minul aj na vzorke. | WELCOME5 si nechajte na objednávku platní – môžete ho uplatniť len raz; ak by ste ho uplatnili pri objednávke vzorky, na platne by ste ho už použiť nemohli. | štylistika | Zvratné „kód by sa minul“ je neprirodzené a nevyjadruje presne, že zákazník vyčerpá jeho jediné uplatnenie. | prijaté, zapracované |
+
+Rovnaké znenie podmienky preberá záložný uvítací e-mail (`supabase/functions/send-newsletter-welcome`, PR #165).
