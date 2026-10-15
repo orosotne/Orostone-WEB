@@ -550,9 +550,10 @@ serve(async (req) => {
             { status: 200, headers: corsHeaders },
           );
         }
-        // V Klaviyu odhlásený alebo potlačený: novinky mu nepôjdú, preto nehovoríme „už ste prihlásení“
-        // a web ukáže neutrálny text s kódmi (rovnaký ako pri 'unknown', stav odberu tým neprezradíme).
-        if (again === 'blocked') {
+        // Klaviyo odber nepotvrdilo ('unknown'), odmietlo ('rejected') alebo je adresa odhlásená či potlačená
+        // ('blocked'): „už vám novinky posielame“ by nemuselo platiť, preto web ukáže neutrálny text s kódmi
+        // (rovnaký pre všetky tri, stav odberu tým neprezradíme). 'member' ostáva alreadySubscribed.
+        if (again === 'unknown' || again === 'rejected' || again === 'blocked') {
           return new Response(
             JSON.stringify({ success: true, welcomeEmail: false }),
             { status: 200, headers: corsHeaders },
