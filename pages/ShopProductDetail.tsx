@@ -37,7 +37,7 @@ const SITE_URL = import.meta.env.VITE_PUBLIC_SITE_URL ?? 'https://orostone.sk';
 export const ShopProductDetail: React.FC = () => {
   const { id } = useParams();
   const { addItem, isInCart, sampleCount, isSampleInCart, isOpen: isCartOpen } = useCart();
-  const { hasConsented } = useCookies();
+  const { hasConsented, preferences } = useCookies();
   const { products: allProducts, isLoading: productsLoading } = useShopifyProducts();
 
   const cachedProduct = useMemo(
@@ -96,8 +96,19 @@ export const ShopProductDetail: React.FC = () => {
       currency: 'EUR',
     });
     trackGA4ViewItem({ id: product.shopifyVariantId ?? product.id, name: product.name, price });
-    // Klaviyo „Viewed Product“ (pripomenutie prezeraného dekoru odberateľom newslettera); vlastnosti
-    // v tvare, aký Klaviyo používa pre túto udalosť. ProductID je handle pre fotku a odkaz v e-maile.
+  }, [product]);
+
+  // Klaviyo „Viewed Product“ (pripomenutie prezeraného dekoru odberateľom newslettera); vlastnosti
+  // v tvare, aký Klaviyo používa pre túto udalosť. ProductID je handle pre fotku a odkaz v e-maile.
+  // Kľúč obsahuje aj súhlas: keď návštevník marketingové cookies povolí až na stránke, udalosť sa pošle.
+  const klaviyoTrackedKey = useRef<string | null>(null);
+  useEffect(() => {
+    if (!product) return;
+    const key = `${product.id}:${preferences.marketing}`;
+    if (klaviyoTrackedKey.current === key) return;
+    klaviyoTrackedKey.current = key;
+    if (!preferences.marketing) return;
+    const price = calculateSlabPrice(product.pricePerM2, product.dimensions);
     trackKlaviyoEvent('Viewed Product', {
       $value: price,
       ProductName: product.name,
@@ -107,7 +118,7 @@ export const ShopProductDetail: React.FC = () => {
       URL: `${SITE_URL}/produkt/${product.id}`,
       ImageURL: product.image ?? '',
     });
-  }, [product]);
+  }, [product, preferences.marketing]);
 
   if (isLoading) return <ProductDetailSkeleton />;
 
