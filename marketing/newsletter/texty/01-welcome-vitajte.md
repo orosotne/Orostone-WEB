@@ -1,8 +1,8 @@
 # 01 – Vitajte v Orostone
 
 - **Typ:** Automatizácia · Welcome séria 1/4
-- **Kedy sa posiela:** Hneď po prihlásení na odber (oba pop-upy, pätička, sekcia vzoriek)
-- **Predmet:** Vitajte v Orostone. Toto vám budeme posielať
+- **Kedy sa posiela:** Hneď po prihlásení na odber cez formuláre na webe orostone.sk (zoznam Newsletter – web)
+- **Predmet:** Vitajte v Orostone. Posielame vaše dva uvítacie kódy
 - **Preheader:** 🪨 Ako odberateľ máte dopravu prvej vzorky zadarmo a zľavu 5 % na platne.
 - **Šablóna:** `sablony/01-welcome-vitajte.html`
 
@@ -53,10 +53,10 @@ Kód WELCOME5
 Zľava 5 % na platne
 Keď si dekor vyberiete, kód odpočíta 5 % z ceny platní, nie z dopravy. Vzťahuje sa na všetkých 12 dekorov v e-shope.
 Pozrieť dekory
-V pokladni zadajte kód WELCOME5. Platí na jednu objednávku a nedá sa kombinovať so žiadnou inou zľavou – ani so zľavou 20 %, ktorú e-shop odpočíta automaticky pri troch a viac platniach.
+V pokladni zadajte kód WELCOME5. Platí na jednu objednávku a nedá sa kombinovať so žiadnou inou zľavou – ani so zľavou 20 %, ktorú e-shop odpočíta automaticky od troch platní.
 
 ### Poznámka
-Kódy uplatníte len v e-shope orostone.sk, nie pri objednávke po telefóne ani na základe cenovej ponuky. V jednej objednávke sa dá použiť len jeden z nich, preto si VITAJTE nechajte na vzorku a WELCOME5 na platne.
+Kódy uplatníte len v e-shope orostone.sk, nie pri objednávke po telefóne ani na základe cenovej ponuky. Na vzorku zadajte VITAJTE. WELCOME5 si nechajte na objednávku platní – platí len raz a v pokladni by sa minul aj na vzorke.
 
 ### P. S.
 P. S. · Marián, Orostone
