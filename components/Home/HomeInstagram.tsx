@@ -15,9 +15,12 @@ export const HomeInstagram: React.FC = () => {
 
   useEffect(() => {
     const el = ref.current;
-    if (!el || off || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const track = el?.firstElementChild as HTMLElement | null;
+    if (!el || !track || off || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const hover = window.matchMedia('(hover: hover)');
     let pos = el.scrollLeft;
     let written = pos;
+    let speed = 0;
     let last = performance.now();
     let frame = 0;
     const pause = () => {
@@ -31,19 +34,25 @@ export const HomeInstagram: React.FC = () => {
       const dt = Math.min(now - last, 100);
       last = now;
       const half = el.scrollWidth / 2;
-      const busy = now < hold.current || el.matches(':focus-within') || (el.matches(':hover') && matchMedia('(hover: hover)').matches);
+      const busy = now < hold.current || el.matches(':focus-within') || (el.matches(':hover') && hover.matches);
       if (busy) {
         pos = el.scrollLeft;
+        speed = 0;
       } else {
-        pos += (SPEED * dt) / 1000;
+        // eases up to full speed instead of starting with a jolt after a swipe
+        speed += (SPEED - speed) * (1 - Math.exp(-dt / 400));
+        pos += (speed * dt) / 1000;
       }
       // the second half repeats the first, so jumping by half keeps the loop seamless in both directions
       if (pos >= half) pos -= half;
       else if (pos <= 0 && busy) pos += half;
+      // scrollLeft snaps to whole device pixels (whole CSS pixels in Safari), so 0.4 px a frame came out as a 1 px jump every 2–3 frames; the scroller takes the whole pixels and a transform on the track the remainder
+      const whole = Math.floor(pos);
       if (!busy || Math.abs(el.scrollLeft - pos) > 2) {
-        el.scrollLeft = pos;
+        if (el.scrollLeft !== whole) el.scrollLeft = whole;
         written = el.scrollLeft;
       }
+      track.style.transform = busy ? '' : `translate3d(${(whole - pos).toFixed(3)}px, 0, 0)`;
       frame = requestAnimationFrame(tick);
     };
     el.addEventListener('touchstart', pause, { passive: true });
@@ -53,6 +62,7 @@ export const HomeInstagram: React.FC = () => {
     frame = requestAnimationFrame(tick);
     return () => {
       cancelAnimationFrame(frame);
+      track.style.transform = '';
       el.removeEventListener('touchstart', pause);
       el.removeEventListener('wheel', pause);
       el.removeEventListener('pointerdown', pause);
