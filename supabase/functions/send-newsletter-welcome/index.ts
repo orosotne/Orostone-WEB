@@ -14,6 +14,8 @@ import { isServiceRole } from '../_shared/auth.ts';
 
 const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
 const FROM_EMAIL = 'Orostone <noreply@orostone.sk>';
+// Replies (e.g. an opt-out, see the footer of the e-mail) must reach a monitored inbox, not noreply@
+const REPLY_TO = 'info@orostone.sk';
 const LOGO_URL = 'https://www.orostone.sk/images/orostone-logo-email.png';
 const LOGO_CIRCLE_URL = 'https://www.orostone.sk/images/logo-circle.png';
 // Uvítacia odmena: prvá vzorka bez poštovného. Kód je v Shopify zľava na dopravu
@@ -290,7 +292,7 @@ serve(async (req) => {
                   Dostali ste tento e-mail, pretože ste sa prihlásili na odber noviniek Orostone.
                 </p>
                 <p class="footer-small" style="margin: 6px 0 0 0; font-size: 10px; color: #cccccc; font-weight: 300;">
-                  Odhlásiť sa môžete kedykoľvek odpoveďou na tento e-mail alebo na info@orostone.sk.
+                  Odhlásiť sa môžete kedykoľvek: stačí odpovedať na tento e-mail alebo napísať na info@orostone.sk.
                 </p>
               </td>
             </tr>
@@ -339,7 +341,7 @@ async function sendEmail({ to, subject, html }: EmailParams): Promise<boolean> {
       Authorization: `Bearer ${RESEND_API_KEY}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ from: FROM_EMAIL, to, subject, html }),
+    body: JSON.stringify({ from: FROM_EMAIL, reply_to: REPLY_TO, to, subject, html }),
   });
 
   if (!response.ok) {

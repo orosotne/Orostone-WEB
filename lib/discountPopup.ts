@@ -123,7 +123,6 @@ export const rememberAdOfferLanding = (search: string): void => {
 export const isAdOfferVisit = (search: string, adSessionFlag: string | null): boolean =>
   adOfferLanding || hasAdOfferParam(search) || adSessionFlag !== null;
 
-/** What closing a pop-up stores: 'dismissed', unless the visitor subscribed in it ('done' stays, null = keep). */
 /**
  * How the visitor gets the codes after a successful sign-up: 'email' (welcome e-mail goes out), 'already' (address
  * was already subscribed, no new e-mail), 'screen' (no e-mail: Klaviyo blocked or did not answer). Older deploys of
@@ -133,6 +132,7 @@ export type CodesDelivery = 'email' | 'already' | 'screen';
 export const codesDelivery = (result: { alreadySubscribed?: boolean; welcomeEmail?: boolean }): CodesDelivery =>
   result.alreadySubscribed === true ? 'already' : result.welcomeEmail === false ? 'screen' : 'email';
 
+/** What closing a pop-up stores: 'dismissed', unless the visitor subscribed in it ('done' stays, null = keep). */
 export const nextStateOnDismiss = (stored: string | null): 'dismissed' | null =>
   stored === 'done' ? null : 'dismissed';
 

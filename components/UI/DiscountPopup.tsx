@@ -106,6 +106,11 @@ export const DiscountPopup: React.FC = () => {
     setStatusState(next);
   };
   const loading = status === 'loading';
+  // On only while the request is on its way (after the bot check): closing then would lose the codes. During the bot
+  // check closing still works and cancels the submit, so a visitor who ignores a Cloudflare challenge is not locked in
+  const sendingRef = useRef(false);
+  const [sending, setSending] = useState(false);
+  const cancelledRef = useRef(false);
   const { hasConsented, isSettingsOpen } = useCookies();
   const { isOpen: isCartOpen } = useCartUI();
   const { pathname, search } = useLocation();
@@ -153,7 +158,11 @@ export const DiscountPopup: React.FC = () => {
   // Not while the sign-up is on its way: with 'screen' or 'already' the codes would land in a closed dialog, the only
   // place they are shown. Read the stored state, not `status`: a signup ('done') must survive closing the dialog
   const dismiss = () => {
-    if (statusRef.current === 'loading') return;
+    if (sendingRef.current) return;
+    if (statusRef.current === 'loading') {
+      cancelledRef.current = true;
+      setStatus('idle');
+    }
     setVisible(false);
     const next = nextStateOnDismiss(read('local', DISCOUNT_POPUP_KEY));
     if (next) write('local', DISCOUNT_POPUP_KEY, next);
@@ -170,13 +179,25 @@ export const DiscountPopup: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) return;
+    cancelledRef.current = false;
     setStatus('loading');
 
-    const result = await subscribeToNewsletter({
-      email,
-      source: viaAd ? DISCOUNT_POPUP_AD_SOURCE : DISCOUNT_POPUP_SOURCE,
-      turnstileToken: await turnstile.getToken(),
-    });
+    const turnstileToken = await turnstile.getToken();
+    // Closed during the bot check: nothing was sent
+    if (cancelledRef.current) return;
+    sendingRef.current = true;
+    setSending(true);
+    let result: Awaited<ReturnType<typeof subscribeToNewsletter>>;
+    try {
+      result = await subscribeToNewsletter({
+        email,
+        source: viaAd ? DISCOUNT_POPUP_AD_SOURCE : DISCOUNT_POPUP_SOURCE,
+        turnstileToken,
+      });
+    } finally {
+      sendingRef.current = false;
+      setSending(false);
+    }
 
     if (result.success) {
       trackGA4Event('sign_up', { method: 'newsletter_popup_zlava5', offer_source: viaAd ? 'reklama' : 'web' });
@@ -268,7 +289,7 @@ export const DiscountPopup: React.FC = () => {
                 ref={closeButtonRef}
                 type="button"
                 onClick={dismiss}
-                disabled={loading}
+                disabled={sending}
                 className="absolute right-2 top-2 z-10 grid h-11 w-11 place-items-center rounded-full bg-brand-dark/60 text-brand-light os-press enabled:hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-50 tiny-phone:right-1 tiny-phone:top-1"
                 aria-label="Zavrieť"
               >
@@ -373,7 +394,7 @@ export const DiscountPopup: React.FC = () => {
                     <button
                       type="button"
                       onClick={dismiss}
-                      disabled={loading}
+                      disabled={sending}
                       className="mt-1 min-h-[44px] w-full text-center text-sm text-brand-light/70 active:opacity-50 enabled:hover:text-brand-light disabled:cursor-not-allowed disabled:opacity-50 short-phone:mt-0"
                     >
                       Nie, ďakujem

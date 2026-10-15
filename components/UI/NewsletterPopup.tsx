@@ -89,6 +89,11 @@ export const NewsletterPopup: React.FC = () => {
     setStatusState(next);
   };
   const loading = status === 'loading';
+  // On only while the request is on its way (after the bot check): closing then would lose the codes. During the bot
+  // check closing still works and cancels the submit, so a visitor who ignores a Cloudflare challenge is not locked in
+  const sendingRef = useRef(false);
+  const [sending, setSending] = useState(false);
+  const cancelledRef = useRef(false);
   const { hasConsented, isSettingsOpen } = useCookies();
   const { isOpen: isCartOpen } = useCartUI();
   const { pathname } = useLocation();
@@ -112,7 +117,11 @@ export const NewsletterPopup: React.FC = () => {
   // place they are shown. Read the stored state, not `status`: turning a signup ('done') into 'dismissed' would offer
   // pop-up B to a subscriber 3 days later
   const dismiss = () => {
-    if (statusRef.current === 'loading') return;
+    if (sendingRef.current) return;
+    if (statusRef.current === 'loading') {
+      cancelledRef.current = true;
+      setStatus('idle');
+    }
     setVisible(false);
     const next = nextStateOnDismiss(getPopupState());
     if (next) {
@@ -132,9 +141,21 @@ export const NewsletterPopup: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) return;
+    cancelledRef.current = false;
     setStatus('loading');
 
-    const result = await subscribeToNewsletter({ email, source: 'popup', turnstileToken: await turnstile.getToken() });
+    const turnstileToken = await turnstile.getToken();
+    // Closed during the bot check: nothing was sent
+    if (cancelledRef.current) return;
+    sendingRef.current = true;
+    setSending(true);
+    let result: Awaited<ReturnType<typeof subscribeToNewsletter>>;
+    try {
+      result = await subscribeToNewsletter({ email, source: 'popup', turnstileToken });
+    } finally {
+      sendingRef.current = false;
+      setSending(false);
+    }
 
     if (result.success) {
       trackGA4Event('sign_up', { method: 'newsletter_popup' });
@@ -192,7 +213,7 @@ export const NewsletterPopup: React.FC = () => {
                 ref={closeButtonRef}
                 type="button"
                 onClick={dismiss}
-                disabled={loading}
+                disabled={sending}
                 className="absolute right-2 top-2 grid h-11 w-11 place-items-center rounded-full bg-brand-light/85 text-brand-muted os-press enabled:hover:bg-brand-sand enabled:hover:text-brand-dark disabled:cursor-not-allowed disabled:opacity-50"
                 aria-label="Zavrieť"
               >
@@ -293,7 +314,7 @@ export const NewsletterPopup: React.FC = () => {
                     <button
                       type="button"
                       onClick={dismiss}
-                      disabled={loading}
+                      disabled={sending}
                       className="mt-2 min-h-[44px] w-full text-center text-[0.8rem] text-brand-muted active:opacity-50 enabled:hover:text-brand-dark disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       Nie, ďakujem
