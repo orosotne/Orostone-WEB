@@ -4,7 +4,9 @@
 
 ## Company Overview
 
-OROSTONE s.r.o. is a Slovak premium supplier of large-format sintered stone (veľkoformátové sinterované platne) for residential and commercial interiors. Founded and operating in Bratislava, Slovakia. We supply, cut, and deliver premium sintered stone slabs. We are not a manufacturer — we source from leading European producers and provide complete turnkey service.
+OROSTONE s.r.o. is a Slovak premium supplier of large-format sintered stone (veľkoformátové sinterované platne) for residential and commercial interiors. Registered office in Bratislava, showroom with full slabs in Bošany, Slovakia. We are not a manufacturer — we source from leading European producers.
+
+**Who does what:** Orostone advises on the choice of decor, supplies the material (whole slabs), delivers it, coordinates the schedule, and checks the result. Measuring (by hand, on site), fabrication, transport of the finished pieces, and installation are done and invoiced by a partner stonemason experienced with sintered stone — one we recommend or one the client chooses. Orostone prepares slabs to the client's exact dimensions only by written agreement.
 
 **Legal details:**
 - Company: OROSTONE s.r.o.
@@ -14,10 +16,11 @@ OROSTONE s.r.o. is a Slovak premium supplier of large-format sintered stone (ve�
 - DIČ: 2121930580
 - IČ DPH: SK2121930580 (VAT registered since 11 April 2023, §4)
 - Registered: Obchodný register Mestského súdu Bratislava III, oddiel Sro, vložka 167404/B
-- Email: info@orostone.sk
+- Quotes and inquiries: dopyt@orostone.sk
+- Administration and invoices: info@orostone.sk
 - Phone: +421 917 588 738
 - Website: https://orostone.sk
-- Instagram: https://www.instagram.com/orostone.sk/
+{{SOCIAL_LINKS}}
 
 ---
 
@@ -35,13 +38,13 @@ Sintered stone (sinterovaný kameň) is a premium surface material made from 100
 - Frost resistance: suitable for exterior applications
 - Food safety: certified for direct food contact
 
-**Available thicknesses:**
+**Thicknesses that exist on the market** (Orostone sells 12 mm only):
 - 3mm: wall cladding, furniture fronts, overlay
 - 6mm: lightweight applications, furniture
 - 12mm: standard countertops, floors, walls
 - 20mm: premium worktops, outdoor, high-load floors
 
-**Standard slab sizes:** 3200×1600mm, 3200×1440mm (varies by design)
+**Slab sizes on the market:** 3200×1600mm, 3200×1440mm (varies by design). Orostone sells 3200×1600mm.
 
 **Finishes available:**
 - Matte (matný): softer appearance, hides fingerprints, feels silky
@@ -72,13 +75,16 @@ A: Maintenance is minimal — warm water and mild soap is sufficient. The materi
 A: Yes. Sintered stone withstands temperatures up to 300°C. You can place hot pots or pans directly on the surface without risk of damage or discolouration.
 
 **Q: What is the delivery time?**
-A: Stock slabs are typically delivered in 3–5 working days from the order. Custom projects (with cutting and edge profiling) are completed within 15 working days.
+A: Stock slabs are typically delivered in 3–5 working days from the order; slabs to order ship in 3–6 weeks depending on availability at the manufacturer. The whole kitchen project, from consultation to finished kitchen, takes 10–15 working days.
 
 **Q: Do you provide installation?**
-A: Yes. OROSTONE arranges complete realization — templating, transport, edge fabrication, polishing and installation — at €279/m² incl. VAT. Fabrication and installation are carried out by partner stonemasons experienced with large-format sintered stone slabs.
+A: We coordinate it. Measuring, transport, edge processing, polishing and installation are done by a partner stonemason experienced with large-format sintered stone — one we recommend or one you choose. The orientation rate is ≈ €{{INSTALLATION_RATE}}/m² incl. VAT; the stonemason invoices this work directly, it is not part of Orostone's material price.
 
 **Q: What is the price per m²?**
-A: Slab material (12 mm, 3200 × 1600 mm) ranges from €{{SLAB_PRICE_MIN}} to €{{SLAB_PRICE_MAX}}/m² incl. VAT depending on the decor — full price list at https://orostone.sk/cennik. A finished countertop including fabrication and installation is typically €280–600 per running meter. Send us a floor plan for a precise quote.
+A: Slab material (12 mm, 3200 × 1600 mm) ranges from €{{SLAB_PRICE_MIN}} to €{{SLAB_PRICE_MAX}}/m² incl. VAT depending on the decor — full price list at https://orostone.sk/cennik. Orostone sells whole slabs only: €{{SLAB_TOTAL_MIN}}–€{{SLAB_TOTAL_MAX}} per slab incl. VAT, −{{BULK_PERCENT}} % from {{BULK_QTY}} slabs; a typical kitchen needs 1–2 slabs. On the market, a finished sintered stone countertop including fabrication and installation is typically €{{MARKET_BM_MIN}}–{{MARKET_BM_MAX}} per running meter. Send us a floor plan and we will calculate how many slabs you need.
+
+**Q: How much does a sample cost?**
+A: The first sample (10 × 10 cm) is free, each further sample costs €4.90 and shipping €2.50 (incl. VAT), max. three samples per order. Order at https://orostone.sk/vzorky.
 
 **Q: Is sintered stone the same as Dekton or Neolith?**
 A: Dekton (Cosentino) and Neolith are brand names for sintered stone — the same technology with different branding and proprietary formulations. OROSTONE sources from European producers offering equivalent technical performance.
@@ -90,40 +96,48 @@ A: Yes, some designs (e.g. Roman Travertine) are frost-resistant and rated for e
 
 ## The Orostone Process — 10 Steps
 
-1. **Consultation** — Free initial call or showroom visit. We assess your project, space, and style preferences. Duration: 30–60 minutes.
-2. **Material selection** — We bring physical samples of your shortlisted designs. You see and touch the actual material in your space.
-3. **Digital laser templating** — Our technician visits your site with a Leica laser scanner. Precision: ±0.05mm. No room for measurement error.
-4. **CNC design** — The digital template is imported into our CAD software. We design every cut, edge profile, and cutout (sink, hob, etc.) digitally.
-5. **Material ordering** — We order your specific slab batch from the manufacturer. Typically 5–10 working days lead time.
-6. **CNC fabrication** — Professional two-pass diamond-tool cutting on precision CNC machines. All edge profiles (half-bullnose, mitre, pencil) finished in our facility.
-7. **Quality control** — Every piece inspected for chips, micro-cracks, colour consistency. Any issue caught before delivery.
-8. **Transport** — In-house delivery in custom A-frame vehicles. Slabs travel vertically to prevent flexion damage. Crew of 2 minimum for handling.
-9. **Installation** — Certified technicians handle substrate preparation, adhesive selection, levelling, and placement. Expansion joints where required.
-10. **Final inspection** — Post-installation walkthrough with client. Minor adjustments, sealant application to joints where specified. Warranty documentation provided.
+Orostone advises, supplies the material (whole slabs) and coordinates the schedule. Measuring, fabrication, transport and installation are done and invoiced by the partner stonemason. Full guide: https://orostone.sk/blog/od-merania-po-instalaciu-proces-orostone
 
-Total project timeline: 10–15 working days from approved template to completed installation.
+1. **Consultation and material selection** — Free consultation at the Bošany showroom, where you compare full slabs, not just small samples.
+2. **Quote** — Within 48 hours of the consultation: an itemised quote with the material from Orostone and measuring, fabrication, transport and installation from the partner stonemason.
+3. **Measuring** — After quote approval and the deposit, the partner stonemason who will fabricate the worktop measures your kitchen by hand on site. Cabinets must be installed and levelled. The stonemason prepares drawings; fabrication starts only after you approve them.
+4. **CNC fabrication** — At the partner stonemason's workshop: diamond-tool cutting, cutouts and edge profiles. 7–10 working days from drawing approval.
+5. **Quality control** — The stonemason inspects every piece for thickness, surface and edge defects before it leaves the workshop.
+6. **Transport** — The stonemason transports the finished pieces upright in A-frames.
+7. **Substrate preparation** — Cabinet tops are checked for level and shimmed where needed.
+8. **Installation** — Carried out by the partner stonemason experienced with sintered stone.
+9. **Appliances** — The stonemason fits the sink, hob and tap during installation; electrical and gas connections are done by a qualified electrician or gas technician.
+10. **Final inspection and handover** — Joint and level checks, cleaning, care instructions. Warranty: 24 months on the material; the stonemason gives the warranty on fabrication and installation.
+
+Total project timeline: 10–15 working days from first consultation to finished kitchen.
 
 ---
 
 ## Shipping and Payment Information
 
-- **Delivery area:** Slovak Republic (primary), Czech Republic (available on request)
-- **Delivery method:** In-house A-frame vehicle transport — not courier/pallet delivery
-- **Payment:** Bank transfer (IBAN provided on invoice), card payment available
+Details: https://orostone.sk/doprava
+
+- **Delivery area:** Slovak Republic only
+- **Delivery method:** Specialised slab transport on a wheeled transport cart with strapped slabs — not courier/pallet delivery. Standard delivery is to the order address, at a place accessible by truck (usually ground floor); carrying inside or up stairs only by written agreement. At least two people must help with the handover.
+- **Delivery time:** Stock slabs typically 3–5 working days; slabs to order ship in 3–6 weeks depending on availability at the manufacturer
+- **Shipping cost (incl. VAT):** Bratislava and surroundings (up to 50 km) from €150; rest of Slovakia from €350. The exact price depends on the address, number of slabs and handling, and is confirmed before the binding order.
+- **Samples:** 10 × 10 cm by courier within Slovakia — first sample free, each further €4.90, shipping €2.50
+- **Payment:** Card (Visa, Mastercard), Apple Pay / Google Pay, bank transfer
 - **Currency:** EUR
 - **VAT:** 23% Slovak DPH included in all prices (IČ DPH: SK2121930580)
 - **Minimum order:** No formal minimum — single slab orders accepted
-- **Shipping cost:** Calculated individually based on project size and location
 
 ---
 
 ## Returns and Complaints (Reklamácie)
 
-- **Return window:** 14 days for uncut/unmodified standard goods
-- **Custom-cut material:** Cannot be returned (made-to-measure)
-- **Damaged goods:** Report within 24 hours of delivery with photographic evidence
-- **Warranty:** 24 months on material defects; installation warranty per contractor
-- **Complaint process:** Email info@orostone.sk with order number, photos, and description
+Details: https://orostone.sk/reklamacie
+
+- **Withdrawal:** Consumers buying online may withdraw within 14 days of receiving the goods, without giving a reason. Goods are returned to Orostone s.r.o., SNP 113/1, 956 18 Bošany; the consumer pays the return transport (slabs from about €150 incl. VAT in Bratislava and surroundings, from €350 elsewhere in Slovakia; samples by regular post).
+- **Made-to-measure goods:** For goods made or sourced to the consumer's specific requirements, Orostone may refuse cancellation or return to the extent permitted by law
+- **Warranty:** 24 months on the material (statutory liability for defects from delivery); the stonemason gives the warranty on fabrication and installation
+- **Check before processing:** Inspect dimensions, decor, shade, surface and visible defects before any cutting, fabrication or installation — defects that were visible before processing cannot be claimed afterwards
+- **Complaint process:** Email info@orostone.sk with the order or invoice number, a description of the defect and photos. Complaints are settled within 30 days.
 
 ---
 
@@ -136,11 +150,11 @@ Total project timeline: 10–15 working days from approved template to completed
 ## Contact
 
 - Website: https://orostone.sk
-- Email: info@orostone.sk
+- Quotes and inquiries: dopyt@orostone.sk
+- Administration and invoices: info@orostone.sk
 - Phone: +421 917 588 738
 - Commercial offices and registered office: Landererova 8, 811 09 Bratislava. Full slabs are displayed only at the Bošany showroom.
 - Showroom: SNP 113/1, 956 18 Bošany (full slabs)
 - Showroom hours: Mon–Fri 9:00–17:00, weekends by appointment
 - Languages: Slovak, English
-- Instagram: https://www.instagram.com/orostone.sk/
-- Response time: Within 1 business day for email inquiries
+{{SOCIAL_LINKS}}
