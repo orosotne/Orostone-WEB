@@ -9,6 +9,7 @@ import {
   DISCOUNT_POPUP_SOURCE,
   SLAB_CODE_TERMS,
   WAIT_AFTER_NEWSLETTER_POPUP_MS,
+  codesDelivery,
   decideDiscountPopup,
   discountPopupPhoneSrc,
   discountPopupSrcSet,
@@ -225,4 +226,12 @@ test('an ad visit is remembered from the landing URL, the current URL or the ses
   // Landed with the parameter, then clicked on (the URL no longer has it) before the cookie bar was answered
   rememberAdOfferLanding('?ponuka=zlava5&utm_source=meta');
   assert.equal(isAdOfferVisit('', null), true);
+});
+
+test('codes are promised by e-mail only when the welcome e-mail goes out', () => {
+  assert.equal(codesDelivery({}), 'email');
+  assert.equal(codesDelivery({ welcomeEmail: true }), 'email');
+  assert.equal(codesDelivery({ welcomeEmail: false }), 'screen');
+  assert.equal(codesDelivery({ alreadySubscribed: true }), 'already');
+  assert.equal(codesDelivery({ alreadySubscribed: true, welcomeEmail: false }), 'already');
 });

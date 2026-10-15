@@ -33,12 +33,14 @@ import {
   DISCOUNT_POPUP_SOURCE,
   SAMPLE_SHIPPING_CODE,
   SLAB_DISCOUNT_CODE,
+  codesDelivery,
   decideDiscountPopup,
   discountPopupPhoneSrc,
   discountPopupSrcSet,
   isAdOfferVisit,
   nextStateOnDismiss,
 } from '../../lib/discountPopup';
+import type { CodesDelivery } from '../../lib/discountPopup';
 
 // Pop-up B „5 % na váš kameň“: the second, louder offer for visitors who closed pop-up A (NewsletterPopup) without
 // subscribing, and for ad traffic with ?ponuka=zlava5. When and where it may show is decided by lib/discountPopup.ts
@@ -89,7 +91,7 @@ export const DiscountPopup: React.FC = () => {
   const [viaAd, setViaAd] = useState(false);
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [alreadySubscribed, setAlreadySubscribed] = useState(false);
+  const [delivery, setDelivery] = useState<CodesDelivery>('email');
   const [errorMsg, setErrorMsg] = useState('');
   const turnstile = useBackgroundTurnstile();
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -162,8 +164,8 @@ export const DiscountPopup: React.FC = () => {
     if (result.success) {
       trackGA4Event('sign_up', { method: 'newsletter_popup_zlava5', offer_source: viaAd ? 'reklama' : 'web' });
       write('local', DISCOUNT_POPUP_KEY, 'done');
-      // Already on the list: subscribe-newsletter sends no welcome e-mail, so the code is only on this screen
-      setAlreadySubscribed(result.alreadySubscribed === true);
+      // Already on the list, or Klaviyo blocked/did not answer: no welcome e-mail, the codes are only on this screen
+      setDelivery(codesDelivery(result));
       setStatus('success');
     } else {
       turnstile.reset();
@@ -265,10 +267,15 @@ export const DiscountPopup: React.FC = () => {
                     <p className="mt-5 rounded-[10px] border border-dashed border-brand-gold/70 bg-white/[0.04] px-4 py-4 text-center text-os-h2 font-bold leading-none tracking-[0.16em] text-brand-gold">
                       {SLAB_DISCOUNT_CODE}
                     </p>
-                    {alreadySubscribed ? (
+                    {delivery !== 'email' ? (
                       <p className="mt-4 text-sm font-normal leading-relaxed text-brand-light/80 sm:text-base">
-                        Na túto adresu už novinky posielame, preto vám nový <span className="whitespace-nowrap">e-mail</span> nepríde.
-                        Kód si poznačte a&nbsp;zadajte ho v&nbsp;pokladni pri objednávke platní.
+                        {delivery === 'already' ? (
+                          <>Na túto adresu už novinky posielame, preto vám nový <span className="whitespace-nowrap">e-mail</span> nepríde.</>
+                        ) : (
+                          <><span className="whitespace-nowrap">E-mail</span> s&nbsp;kódmi vám tentoraz poslať nevieme.</>
+                        )}{' '}
+                        Kód si poznačte a&nbsp;zadajte ho v&nbsp;pokladni pri objednávke platní. Na dopravu prvej vzorky zadarmo zadajte kód{' '}
+                        <strong className="font-semibold text-brand-light">{SAMPLE_SHIPPING_CODE}</strong>.
                       </p>
                     ) : (
                       <p className="mt-4 text-sm font-normal leading-relaxed text-brand-light/80 sm:text-base">

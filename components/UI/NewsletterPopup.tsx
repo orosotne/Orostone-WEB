@@ -15,10 +15,12 @@ import {
   DISCOUNT_POPUP_SESSION_KEY,
   SAMPLE_SHIPPING_CODE,
   SLAB_DISCOUNT_CODE,
+  codesDelivery,
   isAdOfferVisit,
   nextStateOnDismiss,
   shouldShowNewsletterPopup,
 } from '../../lib/discountPopup';
+import type { CodesDelivery } from '../../lib/discountPopup';
 import { trackGA4Event } from '../../services/analytics';
 import { useBackgroundTurnstile } from '../../hooks/useBackgroundTurnstile';
 import { useScrollLock } from '../../hooks/useScrollLock';
@@ -72,7 +74,7 @@ export const NewsletterPopup: React.FC = () => {
   const [visible, setVisible] = useState(false);
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [alreadySubscribed, setAlreadySubscribed] = useState(false);
+  const [delivery, setDelivery] = useState<CodesDelivery>('email');
   const [errorMsg, setErrorMsg] = useState('');
   const turnstile = useBackgroundTurnstile();
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -119,8 +121,8 @@ export const NewsletterPopup: React.FC = () => {
 
     if (result.success) {
       trackGA4Event('sign_up', { method: 'newsletter_popup' });
-      // Already on the list: subscribe-newsletter sends no welcome e-mail, so the codes are only on this screen
-      setAlreadySubscribed(result.alreadySubscribed === true);
+      // Already on the list, or Klaviyo blocked/did not answer: no welcome e-mail, the codes are only on this screen
+      setDelivery(codesDelivery(result));
       setStatus('success');
     } else {
       turnstile.reset();
@@ -187,9 +189,13 @@ export const NewsletterPopup: React.FC = () => {
                       Doprava prvej vzorky je na nás
                     </h2>
                     <p className="mt-2 text-[0.9rem] font-light leading-relaxed text-brand-muted">
-                      {alreadySubscribed ? (
+                      {delivery !== 'email' ? (
                         <>
-                          Na túto adresu už novinky posielame, preto vám nový <span className="whitespace-nowrap">e-mail</span> nepríde.
+                          {delivery === 'already' ? (
+                            <>Na túto adresu už novinky posielame, preto vám nový <span className="whitespace-nowrap">e-mail</span> nepríde.</>
+                          ) : (
+                            <><span className="whitespace-nowrap">E-mail</span> s&nbsp;kódmi vám tentoraz poslať nevieme.</>
+                          )}{' '}
                           Kódy si poznačte. Pri objednávke vzorky zadajte v&nbsp;pokladni tento kód:
                         </>
                       ) : (
@@ -200,7 +206,7 @@ export const NewsletterPopup: React.FC = () => {
                       {DISCOUNT_CODE}
                     </p>
                     <p className="mt-3 text-sm leading-relaxed text-brand-muted">
-                      {alreadySubscribed ? (
+                      {delivery !== 'email' ? (
                         <>Na 5&nbsp;% zľavu na platne zadajte v&nbsp;pokladni kód <strong className="font-semibold text-brand-dark">{SLAB_DISCOUNT_CODE}</strong>.</>
                       ) : (
                         <>V&nbsp;<span className="whitespace-nowrap">e-maile</span> nájdete aj kód <strong className="font-semibold text-brand-dark">{SLAB_DISCOUNT_CODE}</strong> na 5&nbsp;% zľavu na platne.</>

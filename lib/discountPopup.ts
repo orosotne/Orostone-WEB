@@ -13,8 +13,9 @@
  * Welcome codes. Every new web subscriber gets both in welcome e-mail 01. Deploy order
  * (docs/pravne-texty/jazykova-kontrola.md › Kolo 8): (1) template 01 with WELCOME5 uploaded to Klaviyo (XkFccQ,
  * preview text in VLzuhC) with the owner's OK; (2) merge this branch, the web deploys automatically; (3) right after,
- * with the owner's OK, deploy send-newsletter-welcome from main. Between (2) and (3) only the fallback e-mail (sent
- * only when Klaviyo rejects the sign-up) still lacks WELCOME5, a short and deliberate window.
+ * with the owner's OK, deploy send-newsletter-welcome and subscribe-newsletter from main. Between (2) and (3) only the
+ * fallback e-mail (sent only when Klaviyo rejects the sign-up) still lacks WELCOME5 and the pop-ups do not yet learn
+ * that a blocked sign-up gets no welcome e-mail, a short and deliberate window.
  */
 export const SAMPLE_SHIPPING_CODE = 'VITAJTE'; // free shipping of the first sample, once per customer
 export const SLAB_DISCOUNT_CODE = 'WELCOME5'; // 5 % on the 12 decor slabs, once per customer, no combining
@@ -122,6 +123,15 @@ export const isAdOfferVisit = (search: string, adSessionFlag: string | null): bo
   adOfferLanding || hasAdOfferParam(search) || adSessionFlag !== null;
 
 /** What closing a pop-up stores: 'dismissed', unless the visitor subscribed in it ('done' stays, null = keep). */
+/**
+ * How the visitor gets the codes after a successful sign-up: 'email' (welcome e-mail goes out), 'already' (address
+ * was already subscribed, no new e-mail), 'screen' (no e-mail: Klaviyo blocked or did not answer). Older deploys of
+ * subscribe-newsletter send no welcomeEmail, which counts as 'email'.
+ */
+export type CodesDelivery = 'email' | 'already' | 'screen';
+export const codesDelivery = (result: { alreadySubscribed?: boolean; welcomeEmail?: boolean }): CodesDelivery =>
+  result.alreadySubscribed === true ? 'already' : result.welcomeEmail === false ? 'screen' : 'email';
+
 export const nextStateOnDismiss = (stored: string | null): 'dismissed' | null =>
   stored === 'done' ? null : 'dismissed';
 

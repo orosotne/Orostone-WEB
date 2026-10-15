@@ -3,7 +3,6 @@ import { CheckCircle, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useShopifyProducts } from '../../hooks/useShopifyProducts';
 import { submitSampleLead } from '../../services/quotes.service';
-import { markSubscribed } from '../../services/newsletter.service';
 import { trackMetaEvent } from '../../hooks/useMetaPixel';
 import { trackGA4Event } from '../../services/analytics';
 import { useHoneypot } from '../../hooks/useHoneypot';
@@ -82,8 +81,6 @@ export const SampleLeadForm: React.FC<SampleLeadFormProps> = ({ preselectedDekor
         lead_source: 'sample_request',
         item_name: dekor,
       });
-      // submit-quote subscribed them server-side: the newsletter pop-ups must not offer it again
-      if (newsletterConsent) markSubscribed();
       setStatus('success');
     } else {
       // Token is single-use — reset the widget so a retry gets a fresh one.

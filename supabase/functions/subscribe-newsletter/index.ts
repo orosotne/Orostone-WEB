@@ -8,7 +8,9 @@
 //   services/newsletter.service.ts → subscribeToNewsletter()
 //
 // REQUEST: POST { email: string; name?: string; source: string; turnstileToken?: string }
-// RESPONSE: 200 { success: true; alreadySubscribed?: boolean }
+// RESPONSE: 200 { success: true; alreadySubscribed?: boolean; welcomeEmail?: boolean }
+//           welcomeEmail: false = uvítací e-mail s kódmi neodíde (Klaviyo odber zablokovalo
+//           alebo neodpovedalo), pop-up ukáže kódy len na obrazovke
 //           4xx { success: false; error: string }   (403 = overenie Turnstile neprešlo)
 //
 // DEPLOYMENT:
@@ -570,8 +572,11 @@ serve(async (req) => {
       }).catch((err) => console.warn('[subscribe-newsletter] Welcome email dispatch failed:', err));
     }
 
+    // Uvítací e-mail s kódmi: po 'ok' ho posiela flow v Klaviyu, po 'off'/'rejected' záložná
+    // funkcia vyššie. Po 'blocked' neodíde nič, po 'unknown' to nevieme, preto ho web nesľúbi.
+    const welcomeEmail = klaviyo === 'ok' || klaviyo === 'off' || klaviyo === 'rejected';
     return new Response(
-      JSON.stringify({ success: true }),
+      JSON.stringify({ success: true, welcomeEmail }),
       { status: 200, headers: corsHeaders },
     );
   } catch (error) {

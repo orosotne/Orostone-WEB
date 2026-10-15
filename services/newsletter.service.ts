@@ -47,6 +47,8 @@ export interface NewsletterSubscribeData {
 export interface NewsletterSubscribeResult {
   success: boolean;
   alreadySubscribed?: boolean;
+  /** false = no welcome e-mail with the codes goes out (Klaviyo blocked or did not answer); undefined from older deploys */
+  welcomeEmail?: boolean;
   error?: string;
 }
 
@@ -75,7 +77,7 @@ export async function subscribeToNewsletter(
       }),
     });
 
-    let body: { success?: boolean; alreadySubscribed?: boolean; error?: string };
+    let body: { success?: boolean; alreadySubscribed?: boolean; welcomeEmail?: boolean; error?: string };
     try {
       body = await res.json();
     } catch {
@@ -93,6 +95,7 @@ export async function subscribeToNewsletter(
     return {
       success: true,
       alreadySubscribed: body.alreadySubscribed,
+      welcomeEmail: body.welcomeEmail,
     };
   } catch (error) {
     if (import.meta.env.DEV) {
