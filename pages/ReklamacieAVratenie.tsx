@@ -217,7 +217,7 @@ export const ReklamacieAVratenie: React.FC = () => {
             <div className="mb-6 rounded-[3px] border border-brand-line bg-white/60 p-6 sm:p-8">
               <h3 className="mb-3 text-[1.1rem] font-semibold text-brand-dark">Výmena za iný dekor</h3>
               <p className="text-[0.95rem] font-light leading-relaxed text-brand-dark/85">
-                Prijímame aj výmeny nepoškodeného tovaru za iný dekor. Pri záujme o výmenu nás kontaktujte na{' '}
+                Prijímame aj výmeny nepoškodeného tovaru z bežného skladového sortimentu za iný dekor. Pri záujme o výmenu nás kontaktujte na{' '}
                 <a href="mailto:info@orostone.sk" className={LEGAL_LINK}>info@orostone.sk</a>, aby sme dohodli konkrétny dekor a postup výmeny.
               </p>
             </div>

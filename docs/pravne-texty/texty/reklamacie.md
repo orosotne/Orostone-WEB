@@ -86,7 +86,7 @@ Z dôvodu bezpečnej spätnej prepravy odporúčame tovar vrátiť v pôvodnom o
 
 ### Výmena za iný dekor
 
-Prijímame aj výmeny nepoškodeného tovaru za iný dekor. Pri záujme o výmenu nás kontaktujte na info@orostone.sk, aby sme dohodli konkrétny dekor a postup výmeny.
+Prijímame aj výmeny nepoškodeného tovaru z bežného skladového sortimentu za iný dekor. Pri záujme o výmenu nás kontaktujte na info@orostone.sk, aby sme dohodli konkrétny dekor a postup výmeny.
 
 ### Vrátenie platieb
 
