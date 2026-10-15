@@ -22,7 +22,7 @@ Ak kupujúci nezabezpečí prevzatie tovaru, prístup na miesto doručenia alebo
 
 ### Dodacie lehoty
 
-- Skladové platne: expedujeme spravidla do 5 pracovných dní od prijatia platby
+- Skladové platne: doručujeme spravidla za 3 – 5 pracovných dní od objednávky
 
 - Na objednávku: expedujeme spravidla v lehote 3 až 6 týždňov v závislosti od dostupnosti u výrobcu
 

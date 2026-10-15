@@ -6,6 +6,7 @@
 // (scripts/validate-dist.ts) all consume ONE definition of the static routes.
 // Keep this module free of React imports — it is loaded by tsx build scripts.
 import { CATEGORY_SEO } from './seo/categories';
+import { STOCK_SLAB_DELIVERY_TIMEFRAME } from '../lib/delivery';
 import {
   VYHODY_FAQ,
   COMPARISON_DATA,
@@ -65,7 +66,7 @@ export const INFO_PAGES: InfoPage[] = [
       'Informácie o doprave, platbe a špeciálnej preprave veľkoformátových platní a vzoriek sinterovaného kameňa po celom Slovensku.',
     h1: 'Doprava a platba',
     intro:
-      'OROSTONE zabezpečuje špeciálnu prepravu veľkoformátových sinterovaných platní 3200×1600 mm po celom Slovensku. Platba bankovým prevodom alebo kartou. Expedícia do 1–5 pracovných dní od potvrdenia objednávky.',
+      `OROSTONE zabezpečuje špeciálnu prepravu veľkoformátových sinterovaných platní 3200×1600 mm po celom Slovensku. Platba bankovým prevodom alebo kartou. Skladové platne doručujeme za ${STOCK_SLAB_DELIVERY_TIMEFRAME}.`,
     changefreq: 'monthly',
     priority: '0.5',
   },

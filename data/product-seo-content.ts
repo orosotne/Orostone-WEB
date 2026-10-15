@@ -1,5 +1,6 @@
 import { BULK_DISCOUNT, INSTALLATION_RATE_PER_M2, SLAB_PRICES, formatEur, formatEurWhole } from './pricing';
 import { calculateSlabPrice } from '../lib/slab';
+import { STOCK_SLAB_DELIVERY_TIMEFRAME } from '../lib/delivery';
 
 export interface ProductFAQ {
   question: string;
@@ -35,7 +36,7 @@ export const GENERIC_PRODUCT_FAQS: ProductFAQ[] = [
   },
   {
     question: 'Aká je dodacia lehota?',
-    answer: 'Skladové platne dodávame spravidla do 5 pracovných dní po úhrade. Projekty na mieru (s rezaním, opracovaním) dodávame do 15 pracovných dní.',
+    answer: `Skladové platne doručujeme spravidla za ${STOCK_SLAB_DELIVERY_TIMEFRAME}. Projekty na mieru (s rezaním, opracovaním) dodávame do 15 pracovných dní.`,
   },
   {
     question: 'Zabezpečujete aj montáž?',

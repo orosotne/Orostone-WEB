@@ -5,6 +5,7 @@ import { Turnstile } from '@marsidev/react-turnstile';
 import { useCookies } from '../../context/CookieContext';
 import { useBackgroundTurnstile } from '../../hooks/useBackgroundTurnstile';
 import { Container, useDrawIn, IconWarranty, IconSecurePay, IconDispatch, IconDelivery } from '../Design';
+import { STOCK_SLAB_DELIVERY_RANGE } from '../../lib/delivery';
 // Dynamic import — keeps supabase out of the initial bundle
 const loadNewsletter = () => import('../../services/newsletter.service');
 
@@ -18,7 +19,7 @@ const PAYMENT_MARKS = [
 const TRUST = [
   { Icon: IconWarranty, title: '24 mesiacov na reklamáciu', text: 'Zákonná zodpovednosť za vady' },
   { Icon: IconSecurePay, title: 'Bezpečná platba', text: 'Platobnou kartou' },
-  { Icon: IconDispatch, title: 'Expedícia do 5 pracovných dní', text: 'Po prijatí platby' },
+  { Icon: IconDispatch, title: `Doručenie za ${STOCK_SLAB_DELIVERY_RANGE}`, text: 'Skladové platne, od objednávky' },
   { Icon: IconDelivery, title: 'Doručenie po celom Slovensku', text: 'Špeciálna preprava platní' },
 ] as const;
 
