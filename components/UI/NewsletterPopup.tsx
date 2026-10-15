@@ -3,7 +3,13 @@ import { m, AnimatePresence } from 'framer-motion';
 import { X, Loader2 } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { Turnstile } from '@marsidev/react-turnstile';
-import { subscribeToNewsletter, NEWSLETTER_POPUP_KEY } from '../../services/newsletter.service';
+import {
+  subscribeToNewsletter,
+  NEWSLETTER_POPUP_KEY,
+  NEWSLETTER_POPUP_DISMISSED_AT_KEY,
+  NEWSLETTER_POPUP_SESSION_KEY,
+} from '../../services/newsletter.service';
+import { DISCOUNT_POPUP_SESSION_KEY, SAMPLE_SHIPPING_CODE, SLAB_DISCOUNT_CODE } from '../../lib/discountPopup';
 import { trackGA4Event } from '../../services/analytics';
 import { useBackgroundTurnstile } from '../../hooks/useBackgroundTurnstile';
 import { useScrollLock } from '../../hooks/useScrollLock';
@@ -16,7 +22,8 @@ const DELAY_MS = 8000;
 // Pages where an offer would get in the way of finishing an order
 const HIDDEN_ON = ['/objednavka-dokoncena'];
 // Welcome reward: free shipping on the first sample. Shopify free-shipping code, shipping up to 3 €, once per customer.
-const DISCOUNT_CODE = 'VITAJTE';
+// The welcome e-mail also carries WELCOME5 (5 % on slabs), the code pop-up B offers.
+const DISCOUNT_CODE = SAMPLE_SHIPPING_CODE;
 
 function getPopupState(): string | null {
   try { return localStorage.getItem(NEWSLETTER_POPUP_KEY); } catch { return null; }
@@ -24,6 +31,19 @@ function getPopupState(): string | null {
 
 function setPopupState(value: string) {
   try { localStorage.setItem(NEWSLETTER_POPUP_KEY, value); } catch { /* ignore */ }
+}
+
+// Pop-up B (5 %) waits 3 days from this close and never shows in a visit that showed this pop-up
+function stampDismissal() {
+  try { localStorage.setItem(NEWSLETTER_POPUP_DISMISSED_AT_KEY, new Date().toISOString()); } catch { /* ignore */ }
+}
+
+function discountPopupShownThisVisit(): boolean {
+  try { return sessionStorage.getItem(DISCOUNT_POPUP_SESSION_KEY) !== null; } catch { return false; }
+}
+
+function markShownThisVisit() {
+  try { sessionStorage.setItem(NEWSLETTER_POPUP_SESSION_KEY, '1'); } catch { /* ignore */ }
 }
 
 export const NewsletterPopup: React.FC = () => {
@@ -43,13 +63,23 @@ export const NewsletterPopup: React.FC = () => {
   const blocked = !hasConsented || isSettingsOpen || isCartOpen || HIDDEN_ON.includes(pathname);
   useEffect(() => {
     if (blocked || getPopupState()) return;
-    const timer = setTimeout(() => setVisible(true), DELAY_MS);
+    const timer = setTimeout(() => {
+      // Never both pop-ups in one visit: an ad visitor may already have seen pop-up B
+      if (getPopupState() || discountPopupShownThisVisit()) return;
+      markShownThisVisit();
+      setVisible(true);
+    }, DELAY_MS);
     return () => clearTimeout(timer);
   }, [blocked]);
 
+  // Read the stored state, not `status`: the Escape listener keeps the closure from when the dialog opened, and
+  // turning a signup ('done') into 'dismissed' would offer pop-up B to a subscriber 3 days later
   const dismiss = () => {
     setVisible(false);
-    if (status !== 'success') setPopupState('dismissed');
+    if (getPopupState() !== 'done') {
+      setPopupState('dismissed');
+      stampDismissal();
+    }
   };
 
   // Keyboard: focus lands on the close button, Escape closes the dialog
@@ -142,6 +172,9 @@ export const NewsletterPopup: React.FC = () => {
                     </p>
                     <p className="mt-4 rounded-[3px] border border-dashed border-brand-dark/40 bg-brand-sand px-4 py-3 text-center text-[1.1rem] font-semibold tracking-[0.2em]">
                       {DISCOUNT_CODE}
+                    </p>
+                    <p className="mt-3 text-[0.9rem] font-light leading-relaxed text-brand-muted">
+                      V e-maile nájdete aj kód <strong className="font-semibold text-brand-dark">{SLAB_DISCOUNT_CODE}</strong> na 5&nbsp;% zľavu na platne.
                     </p>
                     <ActionButton to="/vzorky" arrow onClick={dismiss} className="mt-4 w-full">
                       Vybrať vzorku

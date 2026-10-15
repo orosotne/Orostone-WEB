@@ -19,6 +19,9 @@ const LOGO_CIRCLE_URL = 'https://www.orostone.sk/images/logo-circle.png';
 // Uvítacia odmena: prvá vzorka bez poštovného. Kód je v Shopify zľava na dopravu
 // (len doprava do 3 €, raz na zákazníka), aby neplatil na dopravu platní.
 const DISCOUNT_CODE = 'VITAJTE';
+// Druhá uvítacia odmena (majiteľ 15. 10. 2026): 5 % na platne. V Shopify platí na 12 dekorov, raz na zákazníka
+// a nekombinuje sa s inými zľavami (ani s automatickými 20 % pri 3 a viac platniach, VITAJTE či KOSIK5).
+const SLAB_DISCOUNT_CODE = 'WELCOME5';
 
 const corsHeaders = {
   'Content-Type': 'application/json',
@@ -131,7 +134,7 @@ serve(async (req) => {
                   ${greeting}
                 </h1>
                 <p class="email-subtext" style="margin: 0; font-size: 16px; font-weight: 300; color: #666666; line-height: 1.6;">
-                  Ďakujeme za prihlásenie na odber noviniek Orostone.<br>Ako poďakovanie vám prvú vzorku pošleme bez poštovného.
+                  Ďakujeme za prihlásenie na odber noviniek Orostone.<br>Ako poďakovanie vám prvú vzorku pošleme bez poštovného a&nbsp;na platne máte 5&nbsp;% zľavu.
                 </p>
               </td>
             </tr>
@@ -163,11 +166,31 @@ serve(async (req) => {
               </td>
             </tr>
 
+            <!-- ZĽAVOVÝ KÓD NA PLATNE -->
+            <tr>
+              <td class="email-body" style="background-color: #ffffff; padding: 0 40px 36px 40px; text-align: center;">
+                <p class="email-text" style="margin: 0 0 12px 0; font-size: 12px; font-weight: 700;
+                          letter-spacing: 0.2em; text-transform: uppercase; color: #1A1A1A;">
+                  Váš kód na platne
+                </p>
+                <div class="code-box" style="display: inline-block; background-color: #FFFBEA;
+                            border: 2px solid #ECD488; border-radius: 8px;
+                            padding: 16px 40px;">
+                  <span class="code-text" style="font-size: 28px; font-weight: 700; letter-spacing: 0.15em; color: #B8960C;">
+                    ${SLAB_DISCOUNT_CODE}
+                  </span>
+                </div>
+                <p class="email-subtext" style="margin: 12px 0 0 0; font-size: 13px; font-weight: 300; color: #888888; line-height: 1.5;">
+                  5&nbsp;% zľava na platne pri objednávke v e-shope orostone.sk.<br>Platí raz a nedá sa kombinovať s inými zľavami.
+                </p>
+              </td>
+            </tr>
+
             <!-- ČO VÁS ČAKÁ -->
             <tr>
               <td class="email-body" style="background-color: #ffffff; padding: 0 40px 36px 40px;">
                 <p class="email-text" style="margin: 0 0 16px 0; font-size: 13px; font-weight: 700;
-                          letter-spacing: 0.15em; text-transform: uppercase; color: #1A1A1A;">Ako uplatniť kód?</p>
+                          letter-spacing: 0.15em; text-transform: uppercase; color: #1A1A1A;">Ako uplatniť kód na vzorku?</p>
                 <table width="100%" cellpadding="0" cellspacing="0">
                   <tr>
                     <td style="vertical-align: top; padding-bottom: 14px;">
@@ -262,7 +285,7 @@ serve(async (req) => {
 </body>
 </html>`;
 
-    await sendEmail({ to: email, subject: 'Vitajte v Orostone – prvá vzorka bez poštovného', html });
+    await sendEmail({ to: email, subject: 'Vitajte v Orostone – prvá vzorka bez poštovného a 5 % na platne', html });
 
     return new Response(JSON.stringify({ success: true }), { headers: corsHeaders });
   } catch (err) {

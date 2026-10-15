@@ -8,6 +8,10 @@ const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
 // localStorage key of the signup pop-up: 'dismissed' or 'done'. v2 since the free-shipping offer,
 // so visitors who closed the old 5 % pop-up see the new one once.
 export const NEWSLETTER_POPUP_KEY = 'orostone-newsletter-popup-v2';
+// When the visitor closed that pop-up without subscribing (ISO time): pop-up B (5 %) waits 3 days from it.
+export const NEWSLETTER_POPUP_DISMISSED_AT_KEY = 'orostone-newsletter-popup-v2-dismissed-at';
+// sessionStorage: the signup pop-up was shown in this visit, so pop-up B stays away (never both in one visit).
+export const NEWSLETTER_POPUP_SESSION_KEY = 'orostone-newsletter-popup-shown';
 
 // Any successful signup (footer, pop-up, …) stops the pop-up from offering it again.
 function markSubscribed() {

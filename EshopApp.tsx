@@ -21,6 +21,8 @@ import { CartProvider } from './context/CartContext';
 // Global overlays (lazy — defers supabase from initial bundle)
 // Newsletter pop-up: prvá vzorka s dopravou zadarmo (kód VITAJTE)
 const NewsletterPopup = lazyWithRetry(() => import('./components/UI/NewsletterPopup').then(m => ({ default: m.NewsletterPopup })));
+// Pop-up B: 5 % na kameň (kód WELCOME5) on a later visit, after pop-up A was closed (rules in lib/discountPopup.ts)
+const DiscountPopup = lazyWithRetry(() => import('./components/UI/DiscountPopup').then(m => ({ default: m.DiscountPopup })));
 
 // Capture UTM params from URL before React Router mounts (sync, runs once)
 captureUTM();
@@ -115,6 +117,7 @@ const EshopAppContent = () => {
     <EshopLayout>
       <ScrollToTop />
       <Suspense fallback={null}><NewsletterPopup /></Suspense>
+      <Suspense fallback={null}><DiscountPopup /></Suspense>
       <ErrorBoundary level="page">
         <Routes>
           {appRoutes}

@@ -155,3 +155,11 @@ Vecná zmena z rozhodnutia majiteľa z 15. 10. 2026. Pripomenutie nedokončenéh
 | # | Dokument | Pôvodný text | Nový text | Typ | Stav |
 |---|---|---|---|---|---|
 | 1 | Ochrana súkromia, čl. 2 – Pripomenutie nedokončeného nákupu | … a s odkazom na dokončenie nákupu. | … a s odkazom na dokončenie nákupu. E-mail môže obsahovať aj zľavový kód na dokončenie tohto nákupu. | význam | zapracované, majiteľ rozhodol 15. 10. 2026 |
+
+## Kolo 7 – zásady: uvítacia zľava pre nových odberateľov, PR #??? (15. 10. 2026)
+
+Vecná zmena z rozhodnutia majiteľa z 15. 10. 2026. Každý nový odberateľ newslettera dostane v uvítacom e-maile dva zľavové kódy: VITAJTE (doprava prvej vzorky zadarmo) a WELCOME5 (5 % zľava na platne). Každý kód platí raz na zákazníka a len pri objednávke v e-shope orostone.sk; WELCOME5 sa nedá kombinovať s inými zľavami. Na webe pribudol druhý pop-up „5 % na kameň“ (`components/UI/DiscountPopup.tsx`), ktorý podmienky zľavy uvádza pri formulári. Majiteľ 15. 10. 2026 doslovne: „teda ano sprav aj toto: Zľava 5 % za prihlásenie na newsletter (odporúčam). … Do zásad stačí jedna veta o zľave pre nových odberateľov.“ Kolo nadväzuje na Kolo 6 (PR #149).
+
+| # | Dokument | Pôvodný text | Nový text | Typ | Stav |
+|---|---|---|---|---|---|
+| 1 | Ochrana súkromia, čl. 3 – Newsletter | … odber newslettera nebude možný. | … odber newslettera nebude možný. Novým odberateľom newslettera pošleme v uvítacom e-maile zľavové kódy na dopravu prvej vzorky zadarmo a na 5 % zľavu na platne; každý z nich možno použiť raz. | význam | zapracované, majiteľ rozhodol 15. 10. 2026 |
