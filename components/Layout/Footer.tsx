@@ -166,7 +166,7 @@ const FooterComponent: React.FC<FooterProps> = ({ categories = [], isProductDeta
             {[
               { href: 'https://www.facebook.com/orostone.sk', label: 'Orostone na Facebooku', Icon: Facebook },
               { href: 'https://www.instagram.com/orostone_', label: 'Orostone na Instagrame', Icon: Instagram },
-              { href: 'https://www.youtube.com/@orostone', label: 'Orostone na YouTube', Icon: Youtube },
+              { href: 'https://www.youtube.com/@OrostoneSK', label: 'Orostone na YouTube', Icon: Youtube },
             ].map(({ href, label, Icon }) => (
               <a
                 key={href}
