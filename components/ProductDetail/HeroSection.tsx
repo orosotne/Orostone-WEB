@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { cn, formatPrice, onIdle, titleCase, withProductName } from '../../lib/utils';
 import { MAX_SAMPLES } from '../../constants';
+import { STOCK_SLAB_DELIVERY_TIMEFRAME } from '../../lib/delivery';
 import type { ShopProduct } from '../../constants';
 import { ShareButton } from '../UI/ShareButton';
 import { Container, Eyebrow } from '../Design';
@@ -601,7 +602,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               <div className="order-[13] space-y-3 text-sm text-brand-muted lg:order-[12]">
                 <div className="flex items-center gap-3">
                   <Truck size={16} className="text-brand-dark" aria-hidden="true" />
-                  <span>Expedícia do {product.deliveryTimeframe || '5 pracovných dní'} · doprava od 150 € s DPH</span>
+                  <span>{product.inStock ? `Doručenie za ${STOCK_SLAB_DELIVERY_TIMEFRAME}` : `Expedícia do ${product.deliveryTimeframe || '5 pracovných dní'}`} · doprava od 150 € s DPH</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Shield size={16} className="text-brand-dark" aria-hidden="true" />

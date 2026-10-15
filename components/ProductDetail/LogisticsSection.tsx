@@ -4,6 +4,7 @@ import { Package, Clock, Truck, MapPin } from 'lucide-react';
 import type { ShopProduct } from '../../constants';
 import { Container, Eyebrow, TextLink } from '../Design';
 import { REVEAL } from '../../lib/motion';
+import { STOCK_SLAB_DELIVERY_TIMEFRAME } from '../../lib/delivery';
 import { LIGHT_TONE_BG, type LightTone } from './types';
 
 interface LogisticsSectionProps {
@@ -22,8 +23,8 @@ export const LogisticsSection: React.FC<LogisticsSectionProps> = ({ product, ton
     },
     {
       icon: Clock,
-      label: 'Expedícia',
-      value: product.deliveryTimeframe || 'Do 5 pracovných dní'
+      label: product.inStock ? 'Doručenie' : 'Expedícia',
+      value: product.inStock ? STOCK_SLAB_DELIVERY_TIMEFRAME : product.deliveryTimeframe || 'Do 5 pracovných dní'
     },
     {
       icon: Truck,

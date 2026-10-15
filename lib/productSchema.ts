@@ -39,11 +39,22 @@ export const SHIPPING_DETAILS_LD = SHIPPING_OPTIONS.map(({ name, rate }) => ({
   shippingRate: { '@type': 'MonetaryAmount', value: rate, currency: 'EUR' },
   deliveryTime: {
     '@type': 'ShippingDeliveryTime',
-    // stock slabs ship within 5 working days of payment (/doprava)
-    handlingTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 5, unitCode: 'd' },
+    // In-stock slabs arrive 3–5 business days from the order (/doprava).
+    // Keep the existing 1–2-day transit range; 2–3 handling days represent
+    // the confirmed total and match the Merchant Center configuration.
+    businessDays: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    },
+    handlingTime: { '@type': 'QuantitativeValue', minValue: 2, maxValue: 3, unitCode: 'd' },
     transitTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 2, unitCode: 'd' },
   },
 }));
+
+/** The stock delivery window must not be promised for unavailable or made-to-order slabs. */
+export const shippingDetailsForStock = (inStock?: boolean) => inStock
+  ? SHIPPING_DETAILS_LD
+  : SHIPPING_DETAILS_LD.map(({ deliveryTime, ...details }) => details);
 
 /** 14-day withdrawal, return paid by the customer. ReturnByMail is Google's value for any shipped return, carrier pickup included. */
 export const RETURN_POLICY_LD = {
@@ -154,7 +165,7 @@ export function buildProductJsonLd(
       availability: product.inStock ? 'https://schema.org/InStock' : 'https://schema.org/PreOrder',
       itemCondition: 'https://schema.org/NewCondition',
       seller: { '@type': 'Organization', name: 'OROSTONE s.r.o.' },
-      shippingDetails: SHIPPING_DETAILS_LD,
+      shippingDetails: shippingDetailsForStock(product.inStock),
       hasMerchantReturnPolicy: RETURN_POLICY_LD,
     },
     additionalProperty: [

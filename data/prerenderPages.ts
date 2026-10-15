@@ -6,6 +6,7 @@
 // (scripts/validate-dist.ts) all consume ONE definition of the static routes.
 // Keep this module free of React imports — it is loaded by tsx build scripts.
 import { CATEGORY_SEO } from './seo/categories';
+import { STOCK_SLAB_DELIVERY_TIMEFRAME } from '../lib/delivery';
 import {
   VYHODY_FAQ,
   COMPARISON_DATA,
@@ -50,7 +51,7 @@ export const INFO_PAGES: InfoPage[] = [
       'Cenová ponuka, vzorky alebo konzultácia k pracovnej doske zo sinterovaného kameňa. Showroom Bošany, dodanie po celom Slovensku.',
     h1: 'Kontakt',
     intro:
-      'OROSTONE — slovenský dodávateľ sinterovaného kameňa. Showroom Bošany: SNP 113/1, 956 18 Bošany — otvorené po–pia 9:00–17:00, cez víkend po dohode. Sídlo: Landererova 8, 811 09 Bratislava (nejde o showroom). Telefón: +421 917 588 738. E-mail: info@orostone.sk. Radi pre vás pripravíme konzultáciu a cenovú ponuku.',
+      'OROSTONE — slovenský dodávateľ sinterovaného kameňa. Showroom Bošany: SNP 113/1, 956 18 Bošany — otvorené po–pia 9:00–17:00, cez víkend po dohode. Celé platne vystavujeme iba v showroome v Bošanoch. Obchodné kancelárie a sídlo: Landererova 8, 811 09 Bratislava. Telefón: +421 917 588 738. E-mail: info@orostone.sk. Radi pre vás pripravíme konzultáciu a cenovú ponuku.',
     extraLinks: [
       { label: 'Objednať vzorky', href: '/vzorky' },
       { label: 'Prehliadnuť produkty', href: '/kategoria/sintered-stone' },
@@ -65,7 +66,7 @@ export const INFO_PAGES: InfoPage[] = [
       'Informácie o doprave, platbe a špeciálnej preprave veľkoformátových platní a vzoriek sinterovaného kameňa po celom Slovensku.',
     h1: 'Doprava a platba',
     intro:
-      'OROSTONE zabezpečuje špeciálnu prepravu veľkoformátových sinterovaných platní 3200×1600 mm po celom Slovensku. Platba bankovým prevodom alebo kartou. Expedícia do 1–5 pracovných dní od potvrdenia objednávky.',
+      `OROSTONE zabezpečuje špeciálnu prepravu veľkoformátových sinterovaných platní 3200×1600 mm po celom Slovensku. Platba bankovým prevodom alebo kartou. Skladové platne doručujeme za ${STOCK_SLAB_DELIVERY_TIMEFRAME}.`,
     changefreq: 'monthly',
     priority: '0.5',
   },

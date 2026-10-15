@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { m, AnimatePresence } from 'framer-motion';
 import { SPRING } from '../lib/motion';
+import { STOCK_SLAB_DELIVERY_TIMEFRAME } from '../lib/delivery';
 import {
   ArrowLeft, ShoppingBag, Lock, Truck,
   Minus, Plus, Trash2, Package, ExternalLink
@@ -280,7 +281,7 @@ export const Checkout = () => {
               </li>
               <li className="flex items-center gap-2.5">
                 <Package size={16} strokeWidth={1.5} className="flex-none" />
-                Expedícia do 5 pracovných dní
+                Skladové platne doručujeme za {STOCK_SLAB_DELIVERY_TIMEFRAME}
               </li>
               <li className="flex items-center gap-2.5">
                 <Truck size={16} strokeWidth={1.5} className="flex-none" />
