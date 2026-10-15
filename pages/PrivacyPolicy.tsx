@@ -135,7 +135,7 @@ export const PrivacyPolicy = () => {
                   <h4 className="mb-2 font-semibold text-brand-dark">Newsletter</h4>
                   <p className="text-sm">
                     Prihlásenie na newsletter je <strong>dobrovoľné</strong>. Ak e-mailovú adresu neposkytnete, odber newslettera nebude možný.
-                    Novým odberateľom newslettera pošleme v uvítacom e-maile zľavové kódy na dopravu prvej vzorky zadarmo a na 5&nbsp;% zľavu na platne; každý z nich možno použiť raz.
+                    Ak sa na newsletter prihlásite formulárom na webe, v&nbsp;uvítacom e-maile vám pošleme dva zľavové kódy: na dopravu prvej vzorky zadarmo a&nbsp;na zľavu 5&nbsp;% z&nbsp;ceny platní; každý z&nbsp;nich možno použiť raz.
                     Súhlas s e-mailovým marketingom môžete dať aj v pokladni e-shopu zaškrtnutím políčka „Chcem dostávať novinky a ponuky e-mailom“. Políčko nie je vopred zaškrtnuté a nakúpiť môžete aj bez súhlasu.
                     Súhlas možno kedykoľvek odvolať kliknutím na odkaz v e-maile. Bez ohľadu na súhlas vám ku každému nákupu, ktorý v pokladni nedokončíte, môže prísť jedno pripomenutie (pozri časť Účel spracovania). Pripomenutie môžete kedykoľvek odmietnuť a na vaše nákupy to nemá vplyv.
                   </p>
@@ -539,7 +539,7 @@ export const PrivacyPolicy = () => {
         <div className="mt-6 flex flex-col items-start justify-between gap-6 border-t border-brand-line pt-8 md:flex-row md:items-center">
           <div>
             <p className="text-sm text-brand-muted">Posledná aktualizácia</p>
-            <p className="text-lg font-medium text-brand-dark">14.&nbsp;10.&nbsp;2026</p>
+            <p className="text-lg font-medium text-brand-dark">15.&nbsp;10.&nbsp;2026</p>
           </div>
           <ActionButton to="/kontakt" variant="outline" arrow>
             Kontaktujte nás

@@ -13,8 +13,8 @@ export const NEWSLETTER_POPUP_DISMISSED_AT_KEY = 'orostone-newsletter-popup-v2-d
 // sessionStorage: the signup pop-up was shown in this visit, so pop-up B stays away (never both in one visit).
 export const NEWSLETTER_POPUP_SESSION_KEY = 'orostone-newsletter-popup-shown';
 
-// Any successful signup (footer, pop-up, …) stops the pop-up from offering it again.
-function markSubscribed() {
+// Any successful signup (footer, pop-ups, the sample form's newsletter box …) stops both pop-ups from offering it again.
+export function markSubscribed() {
   try { localStorage.setItem(NEWSLETTER_POPUP_KEY, 'done'); } catch { /* ignore */ }
 }
 

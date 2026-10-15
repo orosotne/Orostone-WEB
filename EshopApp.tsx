@@ -6,6 +6,7 @@ import { useAnalytics } from './hooks/useAnalytics';
 import { useMetaPixel } from './hooks/useMetaPixel';
 import { useKlaviyo } from './hooks/useKlaviyo';
 import { captureUTM } from './hooks/useUTMTracking';
+import { rememberAdOfferLanding } from './lib/discountPopup';
 import { BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 import { EshopLayout } from './components/Eshop/EshopLayout';
 import { ErrorBoundary } from './components/UI/ErrorBoundary';
@@ -21,11 +22,14 @@ import { CartProvider } from './context/CartContext';
 // Global overlays (lazy — defers supabase from initial bundle)
 // Newsletter pop-up: prvá vzorka s dopravou zadarmo (kód VITAJTE)
 const NewsletterPopup = lazyWithRetry(() => import('./components/UI/NewsletterPopup').then(m => ({ default: m.NewsletterPopup })));
-// Pop-up B: 5 % na kameň (kód WELCOME5) on a later visit, after pop-up A was closed (rules in lib/discountPopup.ts)
+// Pop-up B: 5 % na váš kameň (kód WELCOME5) on a later visit after pop-up A was closed, or from an ad with
+// ?ponuka=zlava5 (rules in lib/discountPopup.ts)
 const DiscountPopup = lazyWithRetry(() => import('./components/UI/DiscountPopup').then(m => ({ default: m.DiscountPopup })));
 
 // Capture UTM params from URL before React Router mounts (sync, runs once)
 captureUTM();
+// An ad promising 5 % (?ponuka=zlava5): kept in memory, the pop-ups store it only after the cookie bar is answered
+rememberAdOfferLanding(window.location.search);
 
 // Schedule idle-time prefetch of likely-next chunks
 scheduleChunkPrefetch();

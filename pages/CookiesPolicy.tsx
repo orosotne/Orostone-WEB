@@ -224,11 +224,11 @@ export const CookiesPolicy = () => {
                       <td className="min-w-[8rem] py-3 px-2 align-top">Do zmeny nastavenia alebo vymazania prehliadačom</td>
                     </tr>
                     <tr>
-                      <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">orostone-newsletter-popup</td>
+                      <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">orostone-newsletter-popup-v2, orostone-newsletter-popup-v2-dismissed-at, orostone-discount-popup-v1, orostone-newsletter-popup-shown, orostone-discount-popup-shown, orostone-discount-popup-ad</td>
                       <td className="py-3 px-2 align-top">Orostone</td>
                       <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Funkčné</span></td>
-                      <td className="py-3 px-2 align-top">localStorage – uloženie informácie o vašej interakcii s vyskakovacím oknom newslettera</td>
-                      <td className="min-w-[8rem] py-3 px-2 align-top">Do vymazania prehliadačom alebo podľa nastavenia webu</td>
+                      <td className="py-3 px-2 align-top">localStorage a sessionStorage – stav vyskakovacích okien newslettera a zľavy (zobrazenie, zatvorenie a jeho čas, príchod z reklamy so zľavou)</td>
+                      <td className="min-w-[8rem] py-3 px-2 align-top">Do vymazania prehliadačom; sessionStorage do zatvorenia okna prehliadača</td>
                     </tr>
                     <tr>
                       <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">orostone_installation_data</td>
@@ -424,7 +424,7 @@ export const CookiesPolicy = () => {
         <div className="mt-6 flex flex-col items-start justify-between gap-6 border-t border-brand-line pt-8 md:flex-row md:items-center">
           <div>
             <p className="text-sm text-brand-muted">Posledná aktualizácia</p>
-            <p className="text-lg font-medium text-brand-dark">7.&nbsp;10.&nbsp;2026</p>
+            <p className="text-lg font-medium text-brand-dark">15.&nbsp;10.&nbsp;2026</p>
           </div>
           <div className="flex gap-4">
             <ActionButton variant="outline" onClick={openSettings}>
