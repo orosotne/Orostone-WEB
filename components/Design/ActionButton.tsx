@@ -5,7 +5,7 @@ import { isPlainHref, newTabProps } from './href';
 
 export type ActionButtonVariant = 'gold' | 'dark' | 'outline' | 'light-outline';
 
-// CTA levels: 1 gold (only header, gold band, mobile bar) · 2 dark · 3 TextLink
+// CTA levels: 1 gold (only header, gold band, mobile bar; one owner-approved exception, the pop-up „5 % na váš kameň“) · 2 dark · 3 TextLink
 const VARIANT_CLASSES: Record<ActionButtonVariant, string> = {
   gold: 'bg-brand-gold text-brand-dark hover:bg-brand-gold-hover',
   dark: 'bg-brand-dark text-brand-light hover:bg-[#333331]',

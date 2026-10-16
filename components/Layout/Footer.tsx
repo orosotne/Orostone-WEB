@@ -6,6 +6,9 @@ import { useCookies } from '../../context/CookieContext';
 import { useBackgroundTurnstile } from '../../hooks/useBackgroundTurnstile';
 import { Container, useDrawIn, IconWarranty, IconSecurePay, IconDispatch, IconDelivery } from '../Design';
 import { STOCK_SLAB_DELIVERY_RANGE } from '../../lib/delivery';
+import { SAMPLE_SHIPPING_CODE, SLAB_DISCOUNT_CODE, codesDelivery } from '../../lib/discountPopup';
+import type { CodesDelivery } from '../../lib/discountPopup';
+import { SlabCodeTerms } from '../UI/SlabCodeTerms';
 // Dynamic import — keeps supabase out of the initial bundle
 const loadNewsletter = () => import('../../services/newsletter.service');
 
@@ -36,6 +39,7 @@ const NewsletterWidget: React.FC = () => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [msg, setMsg] = useState('');
+  const [delivery, setDelivery] = useState<CodesDelivery>('email');
   const turnstile = useBackgroundTurnstile();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -45,8 +49,11 @@ const NewsletterWidget: React.FC = () => {
     const [{ subscribeToNewsletter }, turnstileToken] = await Promise.all([loadNewsletter(), turnstile.getToken()]);
     const result = await subscribeToNewsletter({ email, source: 'footer', turnstileToken });
     if (result.success) {
+      const codes = codesDelivery(result);
       setStatus('success');
-      setMsg(result.alreadySubscribed ? 'Tento e-mail je už prihlásený.' : 'Ďakujeme za prihlásenie!');
+      setDelivery(codes);
+      // 'screen': Klaviyo may have blocked the address, so no thanks for a sign-up that may not exist
+      setMsg(codes === 'already' ? 'Tento e-mail je už prihlásený.' : codes === 'screen' ? 'Ďakujeme.' : 'Ďakujeme za prihlásenie!');
     } else {
       turnstile.reset();
       setStatus('error');
@@ -56,9 +63,25 @@ const NewsletterWidget: React.FC = () => {
 
   if (status === 'success') {
     return (
-      <div className="flex items-center gap-2 text-sm text-brand-gold">
-        <CheckCircle size={16} />
-        <span>{msg}</span>
+      <div>
+        <div className="flex items-center gap-2 text-sm text-brand-gold">
+          <CheckCircle size={16} />
+          <span>{msg}</span>
+        </div>
+        {/* No welcome e-mail (already on the list, or Klaviyo blocked or did not answer): the codes are shown here,
+            as in the pop-ups, which this sign-up has just switched off */}
+        {delivery !== 'email' && (
+          <div className="mt-2 text-[0.78rem] leading-relaxed text-brand-light/[0.84]">
+            <p>
+              Uvítací <span className="whitespace-nowrap">e-mail</span> s&nbsp;kódmi vám{' '}
+              {delivery === 'already' ? 'znova nepošleme' : 'teraz poslať nemôžeme'}, kódy pre nových odberateľov uvádzame
+              tu: na dopravu prvej vzorky zadarmo{' '}
+              <strong className="font-semibold text-brand-light">{SAMPLE_SHIPPING_CODE}</strong>, na 5&nbsp;% zľavu na platne{' '}
+              <strong className="font-semibold text-brand-light">{SLAB_DISCOUNT_CODE}</strong>.
+            </p>
+            <p className="mt-1 text-brand-light/70"><SlabCodeTerms /></p>
+          </div>
+        )}
       </div>
     );
   }

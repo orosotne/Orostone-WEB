@@ -48,7 +48,7 @@ Tieto technológie sú potrebné na základné fungovanie webu, bezpečnosť, sp
 
 Podľa použitia funkcie
 
-Tieto technológie pomáhajú zapamätať si vaše preferencie a zlepšujú používateľský komfort. Aktivujú sa len v prípadoch, keď je to potrebné na uloženie vami výslovne zvoleného nastavenia.
+Tieto technológie pomáhajú zapamätať si vaše preferencie a zlepšujú používateľský komfort. Aktivujú sa len v prípadoch, keď je to potrebné na uloženie vami zvoleného nastavenia alebo stavu funkcie webu, napríklad či sa vám už zobrazilo vyskakovacie okno.
 
 ### Analytické
 
@@ -72,7 +72,7 @@ Podrobný zoznam
 | orostone_shopify_cart_id | Orostone / Shopify | Nevyhnutné | localStorage – zachovanie obsahu nákupného košíka | Do vymazania košíka alebo údajov prehliadača |
 | cf_clearance, __cf_bm | Cloudflare | Nevyhnutné | Ochrana formulárov a webu pred spamom, botmi a zneužitím; bezpečnostné mechanizmy Cloudflare | Do 30 minút alebo podľa konfigurácie služby |
 | orostone-theme | Orostone | Funkčné | localStorage – uloženie vami zvolenej preferencie zobrazenia stránky | Do zmeny nastavenia alebo vymazania prehliadačom |
-| orostone-newsletter-popup | Orostone | Funkčné | localStorage – uloženie informácie o vašej interakcii s vyskakovacím oknom newslettera | Do vymazania prehliadačom alebo podľa nastavenia webu |
+| orostone-newsletter-popup-v2, orostone-newsletter-popup-v2-dismissed-at, orostone-discount-popup-v1, orostone-newsletter-popup-shown, orostone-discount-popup-shown, orostone-discount-popup-ad | Orostone | Funkčné | localStorage a sessionStorage – stav vyskakovacích okien newslettera a zľavy (zobrazenie, zatvorenie a jeho čas, príchod z reklamy so zľavou) | Do vymazania prehliadačom; sessionStorage do zatvorenia okna prehliadača |
 | orostone_installation_data | Orostone | Funkčné | localStorage – vami zadané údaje kalkulácie montáže, ktoré sa zobrazia v košíku | Do odstránenia z košíka alebo vymazania prehliadačom |
 | _ga | Google | Analytické | Google Analytics – rozlíšenie návštevníkov a meranie návštevnosti (len so súhlasom) | 2 roky |
 | _ga_W3ZPVYZ9HQ, _ga_B7PV9X0X8X | Google | Analytické | Google Analytics – uchovanie stavu relácie | 2 roky |
@@ -143,6 +143,6 @@ Blokovanie alebo vypnutie niektorých technológií môže ovplyvniť funkčnos�
 
 Posledná aktualizácia
 
-7. 10. 2026
+15. 10. 2026
 
 NASTAVENIA COOKIES

@@ -93,12 +93,13 @@ Montserrat only (`font-sans`). Body text is 16 px, `font-light` (300), line heig
 | `text-os-h3` | `clamp(1.2rem, 1.6vw, 1.45rem)` | 600 | Sub-headings and card titles |
 | `text-os-lead` | `clamp(1rem, 1.2vw, 1.13rem)` | 300 | Intro under a heading, in `text-brand-muted` |
 | `text-os-eyebrow` | 0.74rem, 0.2em tracking | 700 | Labels, through `<Eyebrow>` |
+| `text-os-sticker` | `clamp(1.65rem, 1rem + 2vw, 2.3rem)` | 700 | Numeral on a round sticker (the gold „5 %“ in the pop-up „5 % na váš kameň“) |
 
 ---
 
 ## CTA levels
 
-1. **Gold `ActionButton`:** only in the header, the gold band at the end of a page and the mobile bar.
+1. **Gold `ActionButton`:** only in the header, the gold band at the end of a page and the mobile bar. One exception: pop-up „5 % na váš kameň“ na grafitovom paneli: zlaté primárne tlačidlo – rozhodnutie majiteľa 15. 10. 2026 (`components/UI/DiscountPopup.tsx`, both of its buttons). Don't extend it to other dialogs.
 2. **Dark `ActionButton`:** the main action inside a section, at most one per section.
 3. **`TextLink` with an arrow:** secondary actions.
 
@@ -122,6 +123,7 @@ Based on Apple's fluid-interface principles (the `apple-design` skill in `.claud
 - Subtle and once: a reveal or a line-icon draw-in when an element enters the viewport. Reveals use `REVEAL` / `revealAt(i)` from `lib/motion.ts` (0.35 s, 12 px); a row of line icons is fully drawn in about a second.
 - Anything that opens or closes uses a spring from `lib/motion.ts`, not a fixed-length tween: `SPRING` (critically damped, no overshoot) by default, `SPRING_SHEET` for drawers, `SPRING_FLICK` (slight settle) only after a flick. Springs start from the current position and speed, so an interrupted animation never jumps.
 - Enter and leave along the same path, from the element that opened it: the cart slides in from the right and out to the right, the search panel and the phone menu unroll from the header edge, dropdowns scale from their trigger corner. The product lightbox is a shared-element transition: the photo starts exactly where the page photo is, cropped the same way, grows without stretching (uniform scale plus a shrinking clip window) and flies back into the page photo when it closes.
+- Dialogs (the newsletter pop-ups) keep the keyboard inside with `useDialogFocus`: focus on the close button, Tab cycles within the dialog, Escape closes it and focus returns to where it was. On short phone screens (`short-phone:` at most 639 × 720 px, `tiny-phone:` at most 639 × 640 px) a sheet shrinks and then drops its decoration so its conditions and buttons stay visible without scrolling, and it still scrolls inside if needed.
 - Overlays lock the page with `useScrollLock`: `overflow: hidden` on the root only, so the page keeps its scroll position, sticky elements stay stuck and the browser toolbars (Facebook/Instagram in-app browsers included) don't spring open. Older iOS falls back to pinning the body with `position: fixed` and holding sticky elements with a `translate`.
 - Switching photos never shows what is behind them: the next photo fades in over the current one once it has decoded (`usePhotoLayers`; the product's main photo, the Realizácie lightbox), and neighbours are preloaded with `preloadImage`, which fetches the same srcset candidate the `<img>` will pick. These fades are CSS transitions on `opacity`; framer-motion's accelerated opacity animation drops the value for one frame when it finishes, which flashes the photo underneath.
 - Every control answers the press at once: `os-press` (scale 0.97 on `:active`, quick return; big option cards set `[--os-press-scale:0.99]`), links dim (`active:opacity-50`). Hover styles only on devices that hover: Tailwind has `future.hoverOnlyWhenSupported`, plain CSS puts `:hover` in `@media (hover: hover)`.

@@ -14,11 +14,20 @@ import { isServiceRole } from '../_shared/auth.ts';
 
 const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY');
 const FROM_EMAIL = 'Orostone <noreply@orostone.sk>';
+// Replies (e.g. an opt-out, see the footer of the e-mail) must reach a monitored inbox, not noreply@
+const REPLY_TO = 'info@orostone.sk';
 const LOGO_URL = 'https://www.orostone.sk/images/orostone-logo-email.png';
 const LOGO_CIRCLE_URL = 'https://www.orostone.sk/images/logo-circle.png';
 // Uvítacia odmena: prvá vzorka bez poštovného. Kód je v Shopify zľava na dopravu
 // (len doprava do 3 €, raz na zákazníka), aby neplatil na dopravu platní.
 const DISCOUNT_CODE = 'VITAJTE';
+// Druhá uvítacia odmena (majiteľ 15. 10. 2026: „Oba kódy každému“): 5 % na platne. V Shopify platí na 12 dekorov,
+// raz na zákazníka a nekombinuje sa s inými zľavami (ani s automatickými 20 % pri 3 a viac platniach, VITAJTE či KOSIK5).
+// Texty kódov, poznámka a predmet sú rovnaké ako vo verzii Klaviyo e-mailu 01 s WELCOME5
+// (marketing/newsletter/nastroje/build_emails.py) a ako podmienky v pop-upoch (lib/discountPopup.ts); pri zmene ich zladiť.
+const SLAB_DISCOUNT_CODE = 'WELCOME5';
+const SUBJECT = 'Vitajte v\u00A0Orostone. Posielame vaše dva uvítacie kódy';
+const DECORS_URL = 'https://orostone.sk/kategoria/sintered-stone';
 
 const corsHeaders = {
   'Content-Type': 'application/json',
@@ -131,7 +140,7 @@ serve(async (req) => {
                   ${greeting}
                 </h1>
                 <p class="email-subtext" style="margin: 0; font-size: 16px; font-weight: 300; color: #666666; line-height: 1.6;">
-                  Ďakujeme za prihlásenie na odber noviniek Orostone.<br>Ako poďakovanie vám prvú vzorku pošleme bez poštovného.
+                  Ďakujeme za prihlásenie na odber noviniek Orostone.<br>Ako poďakovanie vám prvú vzorku pošleme bez poštovného a&nbsp;na platne máte 5&nbsp;% zľavu.
                 </p>
               </td>
             </tr>
@@ -153,12 +162,46 @@ serve(async (req) => {
                 <div class="code-box" style="display: inline-block; background-color: #FFFBEA;
                             border: 2px solid #ECD488; border-radius: 8px;
                             padding: 16px 40px;">
-                  <span class="code-text" style="font-size: 28px; font-weight: 700; letter-spacing: 0.15em; color: #B8960C;">
+                  <span class="code-text" style="font-size: 28px; font-weight: 700; letter-spacing: 0.15em; color: #1A1A1A;">
                     ${DISCOUNT_CODE}
                   </span>
                 </div>
-                <p class="email-subtext" style="margin: 12px 0 0 0; font-size: 13px; font-weight: 300; color: #888888;">
+                <p class="email-subtext" style="margin: 12px 0 0 0; font-size: 13px; font-weight: 400; color: #5F5E5A;">
                   Platí na jednu objednávku vzoriek na orostone.sk/vzorky
+                </p>
+              </td>
+            </tr>
+
+            <!-- ZĽAVOVÝ KÓD NA PLATNE -->
+            <tr>
+              <td class="email-body" style="background-color: #ffffff; padding: 0 40px 36px 40px; text-align: center;">
+                <p class="email-text" style="margin: 0 0 12px 0; font-size: 12px; font-weight: 700;
+                          letter-spacing: 0.2em; text-transform: uppercase; color: #1A1A1A;">
+                  Váš kód na platne
+                </p>
+                <div class="code-box" style="display: inline-block; background-color: #FFFBEA;
+                            border: 2px solid #ECD488; border-radius: 8px;
+                            padding: 16px 40px;">
+                  <span class="code-text" style="font-size: 28px; font-weight: 700; letter-spacing: 0.15em; color: #1A1A1A;">
+                    ${SLAB_DISCOUNT_CODE}
+                  </span>
+                </div>
+                <p class="email-subtext" style="margin: 12px 0 0 0; font-size: 13px; font-weight: 400; color: #5F5E5A; line-height: 1.5;">
+                  Kód odpočíta 5&nbsp;% z&nbsp;ceny platní, nie z&nbsp;dopravy. V&nbsp;pokladni zadajte kód ${SLAB_DISCOUNT_CODE}. Platí na jednu objednávku a&nbsp;nedá sa kombinovať so žiadnou inou zľavou&nbsp;– ani so zľavou 20&nbsp;%, ktorú e-shop odpočíta automaticky pri objednávke troch alebo viacerých platní.
+                </p>
+                <p style="margin: 14px 0 0 0; font-size: 12px;">
+                  <a href="${DECORS_URL}" class="footer-link"
+                     style="color: #1A1A1A; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+                            text-decoration: underline; text-underline-offset: 4px;">Pozrieť dekory →</a>
+                </p>
+              </td>
+            </tr>
+
+            <!-- POZNÁMKA K OBOM KÓDOM -->
+            <tr>
+              <td class="email-body" style="background-color: #ffffff; padding: 0 40px 36px 40px; text-align: center;">
+                <p class="email-subtext" style="margin: 0; font-size: 13px; font-weight: 400; color: #5F5E5A; line-height: 1.6;">
+                  Kódy uplatníte len v&nbsp;e-shope orostone.sk, nie pri objednávke po telefóne ani na základe cenovej ponuky. Na vzorku zadajte ${DISCOUNT_CODE}, na platne ${SLAB_DISCOUNT_CODE}.
                 </p>
               </td>
             </tr>
@@ -167,7 +210,7 @@ serve(async (req) => {
             <tr>
               <td class="email-body" style="background-color: #ffffff; padding: 0 40px 36px 40px;">
                 <p class="email-text" style="margin: 0 0 16px 0; font-size: 13px; font-weight: 700;
-                          letter-spacing: 0.15em; text-transform: uppercase; color: #1A1A1A;">Ako uplatniť kód?</p>
+                          letter-spacing: 0.15em; text-transform: uppercase; color: #1A1A1A;">Ako uplatniť kód na vzorku?</p>
                 <table width="100%" cellpadding="0" cellspacing="0">
                   <tr>
                     <td style="vertical-align: top; padding-bottom: 14px;">
@@ -246,7 +289,10 @@ serve(async (req) => {
                      style="color: #bbbbbb; text-decoration: none;">www.orostone.sk</a>
                 </p>
                 <p class="footer-small" style="margin: 10px 0 0 0; font-size: 10px; color: #cccccc; font-weight: 300;">
-                  Dostali ste tento email, pretože ste sa prihlásili na odber noviniek Orostone.
+                  Dostali ste tento e-mail, pretože ste sa prihlásili na odber noviniek Orostone.
+                </p>
+                <p class="footer-small" style="margin: 6px 0 0 0; font-size: 10px; color: #cccccc; font-weight: 300;">
+                  Odhlásiť sa môžete kedykoľvek: stačí odpovedať na tento e-mail alebo napísať na info@orostone.sk.
                 </p>
               </td>
             </tr>
@@ -262,7 +308,13 @@ serve(async (req) => {
 </body>
 </html>`;
 
-    await sendEmail({ to: email, subject: 'Vitajte v Orostone – prvá vzorka bez poštovného', html });
+    // subscribe-newsletter promises the codes by e-mail only after a 2xx from here
+    if (!(await sendEmail({ to: email, subject: SUBJECT, html }))) {
+      return new Response(JSON.stringify({ success: false, error: 'Resend nie je nastavený' }), {
+        status: 503,
+        headers: corsHeaders,
+      });
+    }
 
     return new Response(JSON.stringify({ success: true }), { headers: corsHeaders });
   } catch (err) {
@@ -276,10 +328,11 @@ serve(async (req) => {
 
 interface EmailParams { to: string; subject: string; html: string; }
 
-async function sendEmail({ to, subject, html }: EmailParams) {
+/** true = Resend accepted the e-mail; false = RESEND_API_KEY is missing, nothing sent. Throws on a Resend error. */
+async function sendEmail({ to, subject, html }: EmailParams): Promise<boolean> {
   if (!RESEND_API_KEY) {
     console.warn('[send-newsletter-welcome] RESEND_API_KEY nie je nastavený — preskakujem email');
-    return;
+    return false;
   }
 
   const response = await fetch('https://api.resend.com/emails', {
@@ -288,7 +341,7 @@ async function sendEmail({ to, subject, html }: EmailParams) {
       Authorization: `Bearer ${RESEND_API_KEY}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ from: FROM_EMAIL, to, subject, html }),
+    body: JSON.stringify({ from: FROM_EMAIL, reply_to: REPLY_TO, to, subject, html }),
   });
 
   if (!response.ok) {
@@ -297,4 +350,5 @@ async function sendEmail({ to, subject, html }: EmailParams) {
   }
 
   console.log(`[send-newsletter-welcome] Email odoslaný na ${to}`);
+  return true;
 }

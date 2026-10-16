@@ -55,7 +55,7 @@ Poskytnutie kontaktných a dodacích údajov je zmluvnou požiadavkou potrebnou 
 
 #### Newsletter
 
-Prihlásenie na newsletter je dobrovoľné. Ak e-mailovú adresu neposkytnete, odber newslettera nebude možný. Súhlas s e-mailovým marketingom môžete dať aj v pokladni e-shopu zaškrtnutím políčka „Chcem dostávať novinky a ponuky e-mailom“. Políčko nie je vopred zaškrtnuté a nakúpiť môžete aj bez súhlasu. Súhlas možno kedykoľvek odvolať kliknutím na odkaz v e-maile. Bez ohľadu na súhlas vám ku každému nákupu, ktorý v pokladni nedokončíte, môže prísť jedno pripomenutie (pozri časť Účel spracovania). Pripomenutie môžete kedykoľvek odmietnuť a na vaše nákupy to nemá vplyv.
+Prihlásenie na newsletter je dobrovoľné. Ak e-mailovú adresu neposkytnete, odber newslettera nebude možný. Ak sa na newsletter prihlásite formulárom na webe, v uvítacom e-maile vám pošleme dva zľavové kódy: na dopravu prvej vzorky zadarmo a na zľavu 5 % z ceny platní; každý z nich možno použiť raz. Súhlas s e-mailovým marketingom môžete dať aj v pokladni e-shopu zaškrtnutím políčka „Chcem dostávať novinky a ponuky e-mailom“. Políčko nie je vopred zaškrtnuté a nakúpiť môžete aj bez súhlasu. Súhlas možno kedykoľvek odvolať kliknutím na odkaz v e-maile. Bez ohľadu na súhlas vám ku každému nákupu, ktorý v pokladni nedokončíte, môže prísť jedno pripomenutie (pozri časť Účel spracovania). Pripomenutie môžete kedykoľvek odmietnuť a na vaše nákupy to nemá vplyv.
 
 #### Analytické a marketingové cookies
 
@@ -322,6 +322,6 @@ Ak sa domnievate, že spracovanie vašich osobných údajov je v rozpore so zák
 
 Posledná aktualizácia
 
-14. 10. 2026
+15. 10. 2026
 
 KONTAKTUJTE NÁS
