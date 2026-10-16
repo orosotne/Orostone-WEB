@@ -109,7 +109,7 @@ Skratky: N = `marketing/newsletter`, B = `N/nastroje/build_emails.py`, PB = play
   | Sťažnosti na spam | 0 | 0 |
 
   Odhlásenia prišli 14. 10.: 1 o 08:00 a 2 o 10:00 UTC (UHCLGf).
-  Kontrola 16. 10. o 08:13 UTC (úloha „Výsledky kampane 35“, len čítanie): aktívne profily 430 z 500, segment XF7U3i „Horizont: do 3 mesiacov“ má 0 profilov a UHSrFj zatiaľ neposlal Mariánovi žiadne upozornenie. Pre súhrn 28. 1.
+  Kontrola 16. 10. o 08:13 UTC (úloha „Výsledky kampane 35“, len čítanie): aktívne profily 430 z 500, segment XF7U3i „Horizont: do 3 mesiacov“ má 0 profilov a UHSrFj zatiaľ neposlal Mariánovi žiadne upozornenie. Tieto údaje treba uviesť v súhrne 28. 1.
 - **Naplánované kampane**, všetky na VSrLFs bez RdLKj8 a TKAHuh:
 
   | Kampaň | Dátum odoslania |
