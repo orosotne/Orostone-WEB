@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__7f987dda-1a7d-44bc-93f5-054ce07a2e9c__execute_sql",
+      "mcp__supabase__execute_sql"
+    ]
+  }
+}
