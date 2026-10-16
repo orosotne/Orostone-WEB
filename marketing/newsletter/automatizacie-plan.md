@@ -54,7 +54,7 @@ Skratky: N = `marketing/newsletter`, B = `N/nastroje/build_emails.py`, PB = play
 **Naživo**
 - **SNJKTh „Uvítacia séria – Newsletter web“ (A1):**
   - Spúšťa ho zoznam VSrLFs, flow nemá filter.
-  - Poradie: 01 (správa VLzuhC, šablóna XkFccQ, smart sending vypnutý) → 2 dni → 02 (RyGEE3 / VtY4mS) → 3 dni → 07 (QVFC3q / YrVwKF) → 4 dni → 09 (S76sVg / Y5SfdX).
+  - Poradie: 01 (správa VLzuhC, šablóna UJFWQt od 16. 10. 2026, predtým XkFccQ, smart sending vypnutý) → 2 dni → 02 (RyGEE3 / VtY4mS) → 3 dni → 07 (QVFC3q / YrVwKF) → 4 dni → 09 (S76sVg / Y5SfdX).
   - Čakania končia o 09:00 v časovom pásme profilu.
   - Odosiela Š, transactional false, UTM `klaviyo / email / uvitacia-seria / NN-slug`.
   - Každá zo 4 akcií má vlastný status `live`.
@@ -98,17 +98,18 @@ Skratky: N = `marketing/newsletter`, B = `N/nastroje/build_emails.py`, PB = play
 **Kampane**
 - **Kampaň 35** odišla 14. 10. o 07:00 UTC na VSrLFs. Vylúčený bol segment U7xJVv (prihlásení po spustení uvítacej série 12. 10.).
 
-  | Ukazovateľ | Hodnota |
-  |---|---|
-  | Príjemcovia | 52 |
-  | Doručené | 50 |
-  | Nedoručené (bounce) | 2 |
-  | Unikátne otvorenia | 16 |
-  | Unikátne kliky | 3 |
-  | Odhlásenia | **3 (5,8 %)** |
-  | Sťažnosti na spam | 0 |
+  | Ukazovateľ | 14. 10. | 16. 10. 08:13 UTC |
+  |---|---|---|
+  | Príjemcovia | 52 | 52 |
+  | Doručené | 50 | 50 |
+  | Nedoručené (bounce) | 2 | 2 |
+  | Unikátne otvorenia | 16 | 27 |
+  | Unikátne kliky | 3 | 4 |
+  | Odhlásenia | **3 (5,8 %)** | **3 (5,8 %)**, nové nepribudli |
+  | Sťažnosti na spam | 0 | 0 |
 
   Odhlásenia prišli 14. 10.: 1 o 08:00 a 2 o 10:00 UTC (UHCLGf).
+  Kontrola 16. 10. o 08:13 UTC (úloha „Výsledky kampane 35“, len čítanie): aktívne profily 430 z 500, segment XF7U3i „Horizont: do 3 mesiacov“ má 0 profilov a UHSrFj zatiaľ neposlal Mariánovi žiadne upozornenie. Pre súhrn 28. 1.
 - **Naplánované kampane**, všetky na VSrLFs bez RdLKj8 a TKAHuh:
 
   | Kampaň | Dátum odoslania |
