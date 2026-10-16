@@ -11,8 +11,9 @@
 
 /**
  * Welcome codes. Every new web subscriber gets both in welcome e-mail 01. Deploy order
- * (docs/pravne-texty/jazykova-kontrola.md › Kolo 8): (1) template 01 with WELCOME5 uploaded to Klaviyo (template
- * XkFccQ) and the new subject and preview text in message VLzuhC, with the owner's OK; (2) merge this branch, the web
+ * (docs/pravne-texty/jazykova-kontrola.md › Kolo 8, all three steps done on 16. 10. 2026): (1) template 01 with WELCOME5
+ * uploaded to Klaviyo (message VLzuhC now uses template UJFWQt, Klaviyo's own copy of the upload) and the new subject
+ * and preview text in message VLzuhC, with the owner's OK; (2) merge this branch, the web
  * deploys automatically; (3) right after, with the owner's OK, deploy from main first send-newsletter-welcome, then
  * subscribe-newsletter. Between (2) and (3) the fallback e-mail (sent only when Klaviyo rejects the sign-up) still
  * lacks WELCOME5 and the pop-ups do not yet learn that the welcome e-mail does not go out (a blocked sign-up, Klaviyo

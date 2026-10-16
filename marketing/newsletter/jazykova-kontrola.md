@@ -362,3 +362,15 @@ Rovnaké znenie podmienky preberá záložný uvítací e-mail (`supabase/functi
 ## Kolo 32 – Codex review v PR #163 (15. 10. 2026, po zmenách z kôl 30 a 31)
 
 Codex na `993fe7f` aj na `3aff9f8` nenašiel žiadne pripomienky („Didn't find any major issues“). E-mail 01 s oboma uvítacími kódmi je vo finálnej podobe jazykovo skontrolovaný.
+
+Codex po prepnutí PR #163 z návrhu (16. 10. 2026) skontroloval aj `eaa2db3` a opäť nenašiel žiadne pripomienky.
+
+## Kolo 33 – Codex review v PR #167 (16. 10. 2026, zápis po spustení e-mailu 01)
+
+Nejde o text e-mailu, ale o nové vety v dokumentácii po spustení e-mailu 01 a v zadaní reklamy.
+
+| # | Súbor | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | README (riadok 01) | s novým predmetom aj Preview textom | s novým predmetom aj novým textom v poli Preview text | gramatika | Názov poľa „Preview text“ sa neskloňuje; spojenie skloňovalo len jeho anglické podstatné meno. | prijaté, zapracované |
+| 2 | automatizacie-plan.md (kampaň 35) | Pre súhrn 28. 1. | Tieto údaje treba uviesť v súhrne 28. 1. | štylistika | Neúplná veta bez podmetu a prísudku nehovorila, čo sa má so súhrnom urobiť. | prijaté, zapracované |
+| 3 | reklama/meta-zlava-5.md (frekvencia) | rozpočet sa riadi len týmto oknom: pri viac ako 3 za 7 dní ho znížiť | rozpočet sa upravuje iba podľa údajov za toto obdobie: pri frekvencii vyššej ako 3 za 7 dní ho treba znížiť | štylistika | Rozpočet sa „oknom“ neriadi a po predložke „pri“ chýbal ukazovateľ. | prijaté, zapracované |

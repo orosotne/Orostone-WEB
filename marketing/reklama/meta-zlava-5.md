@@ -158,7 +158,7 @@ K cieľu Predaj (optimalizácia na odber alebo nákup) sa oplatí vrátiť, keď
 
 ### Frekvencia, obmena, harmonogram
 
-- **Frekvencia:** pevný strop pri cieli Návštevnosť Meta neponúka (len pri cieli Povedomie s cieľom výkonu Dosah, overte v rozhraní). Frekvenciu preto drží rozpočet. Cieľ je 1,5–2,5 zobrazenia za 7 dní. Pri viac ako 3 za 7 dní alebo 6 za 30 dní znížiť rozpočet.
+- **Frekvencia:** pevný strop pri cieli Návštevnosť Meta neponúka (len pri cieli Povedomie s cieľom výkonu Dosah, overte v rozhraní). Frekvenciu preto drží rozpočet. Cieľ je 1,5–2,5 zobrazenia za 7 dní a rozpočet sa upravuje iba podľa údajov za toto obdobie: pri frekvencii vyššej ako 3 za 7 dní ho treba znížiť. Za 30 dní vychádza pri tom istom cieli frekvencia zhruba 6–11 a to je v poriadku. Vysoká frekvencia za 30 dní je dôvod obmeniť kreatívu (bod Obmena), nie znížiť rozpočet.
 - **Obmena:** pri malom publiku každé 2–3 týždne, alebo keď CTR klesne o viac ako 20 % oproti prvému týždňu. Najprv vymeniť nadpis alebo text na obrázku, potom fotku.
 - **Harmonogram:** spustiť až po splnení bodu 0, bez dátumu konca. Prvá kontrola po 7 dňoch, rozhodnutie po 14 dňoch (skôr sa nevyhodnocuje, Meta sa učí). Rozvrh hodín nenastavovať: pri dennom rozpočte nejde a publikum je malé.
 
