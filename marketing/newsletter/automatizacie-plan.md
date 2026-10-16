@@ -164,7 +164,7 @@ Skratky: N = `marketing/newsletter`, B = `N/nastroje/build_emails.py`, PB = play
 | A7 Reaktivácia | segment VGyNMu (Opened TqZ5Tp, Clicked VdqXpS) | áno | nič | **live od 14. 10. 11:50 UTC (flow R5jtdq)** |
 | A4 Opustený košík | Shopify Checkout Started TR4G9D | áno (13 udalostí, žiadna skutočne opustená) | Martin 14. 10.: e-mail o opustenej pokladni posiela Shopify všetkým zákazníkom, aj bez súhlasu (zásady: PR #144), A4 sa nespúšťa. Do 14. 10. Shopify neposlal ani jeden (0 z 3), lebo e-mail bol v stave Draft (overené 15. 10., pozri A4 › 4) | nič, flow nevytvorený |
 | A4b Košík z webu | Added to Cart z webu (API TANKsY, Klaviyo.js) | áno | nič | **live od 15. 10. 11:49 UTC (flow WV6K3N)** |
-| A9 Prezeraný dekor | Viewed Product z webu (Klaviyo.js, metrika vznikne prvou udalosťou) | nie | merge PR #157 (zásady Kolo 7 potvrdené 15. 10.) | flow po merge ako draft |
+| A9 Prezeraný dekor | Viewed Product z webu (API TaVuMS, Klaviyo.js) | áno (1 testovacia udalosť) | nič | **live od 15. 10. 15:19 UTC (flow WP5H2E)** |
 | A3 Dopyt → ponuka | CRM, fáza „Finálna ponuka odoslaná“ | nie | rozhodnutie Klaviyo vs. CRM; CRM kód; nový kľúč | nič |
 | A5 Po realizácii | CRM, montáž so stavom `dokoncene` | nie | CRM kód; fotky pre 08; súhlas | nič |
 | A8 B2B | neexistuje | nie | model súhlasu a zdroj kontaktov | nič |
@@ -479,7 +479,7 @@ Zadanie Martina 15. 10. 2026 (zo zoznamu odporúčaných automatizácií Shopify
 ### 1. Spúšťač a zdroj udalosti
 - **Web:** `pages/ShopProductDetail.tsx` pri zobrazení dekoru pošle `trackKlaviyoEvent('Viewed Product', …)` vedľa Meta ViewContent a GA4 view_item, raz na dekor. Vlastnosti v tvare, aký Klaviyo používa pre túto udalosť: `ProductName`, `ProductID` (handle), `URL`, `ImageURL`, `Price`, `Brand`, `$value`.
 - **Koho udalosť zachytí:** rovnako ako A4b len identifikovaného odberateľa (prišiel z odkazu v našom e-maile, cookie `__kla_id`, povolené marketingové cookies). Anonymné zobrazenia Klaviyo neukladá a nové profily nevznikajú.
-- **Metrika:** Viewed Product (API) v Klaviyu ešte nie je. Vznikne prvou udalosťou z webu po nasadení (test na internom profile ThRq8q, ako pri A4b).
+- **Metrika:** Viewed Product z integrácie **API**, ID **TaVuMS** (existovala od 2025 bez udalostí a bez flow; nie Shopify Te3Dx2). Prvá udalosť 15. 10. 2026 14:47 UTC: testovacia cez Create Event API so súhlasom Martina na internom profile (zoznam ThRq8q), s rovnakými vlastnosťami ako z webu.
 
 ### 2. Kroky, oneskorenia, filtre, podmienky ukončenia
 
@@ -506,6 +506,8 @@ Zadanie Martina 15. 10. 2026 (zo zoznamu odporúčaných automatizácií Shopify
 ### 4. Draft vs. live a schválenia
 - Zásady: čl. 2, čl. 4, čl. 9 a zásady cookies (`__kla_id`) upravené v tom istom PR; kontrolný log Kolo 7. **Martin znenie potvrdil 15. 10. 2026.**
 - Postup: Codex → merge PR → nasadenie webu → prvá udalosť Viewed Product (test na internom profile) → nahrať 37 z main → `create_flow` ako draft → test na adresu Martina → Martin OK → live.
+
+> **Stav 15. 10. 2026:** PR #157 zlúčený (d6baa1d, 14:35 UTC) a web nasadený. Šablóna 37 nahratá z main ako **RgDMSV**, flow **WP5H2E** „Prezeraný dekor (A9) – vzorka zadarmo“ ju skopíroval ako **Vz3BMq**, správa **XYuxUw**, akcie 120729122 (čakanie 1 deň do 9:00) a 120729123 (e-mail). Filtre: subscribed, člen VSrLFs, bez U2XF6B a TKAHuh, 0× Added to Cart TANKsY a 0× Checkout Started TR4G9D od vstupu, 0× Placed Order Uu5JLg za posledných 14 dní; re-entry 30 dní; smart sending zapnutý; UTM prezerany-dekor / 37-prezerany-dekor. Render s dekorom Appennino overený, test (Taj Mahal) odoslaný na adresu Martina. Martin: „spusti A9“ → flow aj e-mail **live** od 15:19 UTC. Po prvom týždni skontrolovať počet odoslaní (pasca s klikmi z kampaní, bod 5).
 
 ### 5. Pasce
 - **Safari** skracuje `__kla_id` (pozri A4b) – A9 zachytí len odberateľov krátko po kliknutí v e-maile.
