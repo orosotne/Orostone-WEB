@@ -54,7 +54,7 @@ Tieto technológie pomáhajú zapamätať si vaše preferencie a zlepšujú pou�
 
 Podľa vášho súhlasu
 
-Používajú sa na meranie návštevnosti a správania na webe, aby sme vedeli zlepšovať obsah, štruktúru a výkon stránky. Aktivujú sa iba po vašom predchádzajúcom súhlase.
+Používajú sa na meranie návštevnosti a správania na webe, aby sme vedeli zlepšovať obsah, štruktúru a výkon stránky, a v online chate na rozpoznanie vracajúceho sa návštevníka. Aktivujú sa iba po vašom predchádzajúcom súhlase.
 
 ### Marketingové
 
@@ -71,25 +71,30 @@ Podrobný zoznam
 | orostone-cookies | Orostone | Nevyhnutné | localStorage – uloženie vašich nastavení cookies a záznamu o udelenom alebo odvolanom súhlase | Do zmeny nastavení alebo vymazania prehliadačom |
 | orostone_shopify_cart_id | Orostone / Shopify | Nevyhnutné | localStorage – zachovanie obsahu nákupného košíka | Do vymazania košíka alebo údajov prehliadača |
 | cf_clearance, __cf_bm | Cloudflare | Nevyhnutné | Ochrana formulárov a webu pred spamom, botmi a zneužitím; bezpečnostné mechanizmy Cloudflare | Do 30 minút alebo podľa konfigurácie služby |
+| aipredajca:orostone | Orostone (online chat) | Nevyhnutné | localStorage – token a identifikátor rozhovoru v online chate, aby ste mohli v rozhovore pokračovať; vznikne až po otvorení chatu. Nevyžaduje súhlas, lebo je nevyhnutný pre službu, o ktorú ste požiadali. | Najviac 7 dní od poslednej správy |
 | orostone-theme | Orostone | Funkčné | localStorage – uloženie vami zvolenej preferencie zobrazenia stránky | Do zmeny nastavenia alebo vymazania prehliadačom |
 | orostone-newsletter-popup-v2, orostone-newsletter-popup-v2-dismissed-at, orostone-discount-popup-v1, orostone-newsletter-popup-shown, orostone-discount-popup-shown, orostone-discount-popup-ad | Orostone | Funkčné | localStorage a sessionStorage – stav vyskakovacích okien newslettera a zľavy (zobrazenie, zatvorenie a jeho čas, príchod z reklamy so zľavou) | Do vymazania prehliadačom; sessionStorage do zatvorenia okna prehliadača |
 | orostone_installation_data | Orostone | Funkčné | localStorage – vami zadané údaje kalkulácie montáže, ktoré sa zobrazia v košíku | Do odstránenia z košíka alebo vymazania prehliadačom |
+| aipredajca:orostone:teaser | Orostone (online chat) | Funkčné | sessionStorage – zapamätanie, že sa vám uvítacia bublina online chatu už zobrazila alebo ste ju zatvorili | Do zatvorenia karty prehliadača |
 | _ga | Google | Analytické | Google Analytics – rozlíšenie návštevníkov a meranie návštevnosti (len so súhlasom) | 2 roky |
 | _ga_W3ZPVYZ9HQ, _ga_B7PV9X0X8X | Google | Analytické | Google Analytics – uchovanie stavu relácie | 2 roky |
 | orostone_utm | Orostone | Analytické | sessionStorage – zdroj návštevy z odkazu kampane (UTM), ktorý sa odovzdá pokladni na priradenie objednávky | Do zatvorenia okna prehliadača |
 | orostone_pending_purchase | Orostone | Analytické | sessionStorage – súhrn objednávky pred presmerovaním do pokladne, aby sa po zaplatení dal zaznamenať nákup | Do zobrazenia potvrdenia objednávky alebo zatvorenia okna |
 | orostone_internal | Orostone | Analytické | cookie – označenie návštev nášho tímu, aby sa nezapočítavali do štatistík; nastaví sa len cez interný odkaz | 1 rok |
+| aipredajca:orostone:visitor | Orostone (online chat) | Analytické | localStorage – identifikátor vracajúceho sa návštevníka v online chate (len so súhlasom s analytickými cookies) | 180 dní |
 | _fbp | Meta | Marketingové | Meta Pixel – meranie konverzií a remarketing (len so súhlasom) | 3 mesiace |
 | _fbc | Meta | Marketingové | Meta Pixel – identifikátor kliknutia z Meta reklamy (len so súhlasom) | 3 mesiace |
 | __kla_id | Klaviyo | Marketingové | Klaviyo – rozpoznanie odberateľa newslettera, ktorý prišiel z odkazu v našom e-maile, a záznam prezretých dekorov a vloženia dekoru do košíka pre pripomenutie prezeraného dekoru a košíka (len so súhlasom) | Do 2 rokov; Safari a Firefox platnosť skracujú na dni až týždne |
 | __kla_off | Orostone | Nevyhnutné | cookie – záznam, že ste marketingové cookies odmietli alebo súhlas odvolali, aby Klaviyo na webe nesledovalo; nastaví sa len vtedy, ak už Klaviyo na webe bežalo | 1 rok |
 | _gcl_aw, _gcl_au | Google | Marketingové | Google Ads – uloženie identifikátora kliknutia na reklamu a meranie konverzií | 90 dní |
 
+Online chat (okno „AI asistent“) si do vášho prehliadača neukladá nič okrem záznamu o uvítacej bubline, kým ho neotvoríte; dovtedy sa stiahne len skript chatu a jeho verejná konfigurácia a neodchádzajú žiadne udalosti. Analytické udalosti chatu (zobrazenie pozdravu, prechod na stránku) sa pred vašou prvou správou posielajú len so súhlasom s analytickými cookies.
+
 ## 4. Právny základ
 
 Na základe čoho technológie používame
 
-Používanie nevyhnutných technológií je založené na potrebe zabezpečiť riadne fungovanie a bezpečnosť webu.
+Používanie nevyhnutných technológií je založené na potrebe zabezpečiť riadne fungovanie a bezpečnosť webu. Nevyhnutné je aj uloženie rozhovoru v online chate, ktorý ste otvorili, aby ste v ňom mohli pokračovať; ide o službu, o ktorú ste požiadali.
 
 Používanie analytických, funkčných a marketingových technológií je založené na vašom súhlase, ak právne predpisy alebo povaha konkrétnej technológie neumožňujú iný režim.
 
@@ -133,7 +138,7 @@ Meta (Meta Pixel) – remarketing a meranie konverzií
 
 Klaviyo – newsletter a automatické e-maily, rozpoznanie odberateľa newslettera na webe pre pripomenutie prezeraného dekoru a košíka
 
-Vercel – anonymné meranie návštevnosti a rýchlosti stránok bez cookies
+Vercel – anonymné meranie návštevnosti a rýchlosti stránok bez cookies, prevádzka online chatu s AI asistentom
 
 Ak sú technológie tretích strán spojené so spracúvaním osobných údajov, viac informácií nájdete v našich Zásadách ochrany osobných údajov.
 
@@ -143,6 +148,6 @@ Blokovanie alebo vypnutie niektorých technológií môže ovplyvniť funkčnos�
 
 Posledná aktualizácia
 
-15. 10. 2026
+19. 10. 2026
 
 NASTAVENIA COOKIES

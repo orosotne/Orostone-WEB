@@ -156,7 +156,8 @@ export const CookiesPolicy = () => {
                 </div>
                 <p className="text-sm leading-relaxed">
                   Používajú sa na meranie návštevnosti a správania na webe,
-                  aby sme vedeli zlepšovať obsah, štruktúru a výkon stránky.
+                  aby sme vedeli zlepšovať obsah, štruktúru a výkon stránky,
+                  a v online chate na rozpoznanie vracajúceho sa návštevníka.
                   Aktivujú sa iba po vašom predchádzajúcom súhlase.
                 </p>
               </div>
@@ -218,6 +219,13 @@ export const CookiesPolicy = () => {
                       <td className="min-w-[8rem] py-3 px-2 align-top">Do 30 minút alebo podľa konfigurácie služby</td>
                     </tr>
                     <tr>
+                      <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">aipredajca:orostone</td>
+                      <td className="py-3 px-2 align-top">Orostone (online chat)</td>
+                      <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Nevyhnutné</span></td>
+                      <td className="py-3 px-2 align-top">localStorage – token a identifikátor rozhovoru v online chate, aby ste mohli v rozhovore pokračovať; vznikne až po otvorení chatu. Nevyžaduje súhlas, lebo je nevyhnutný pre službu, o ktorú ste požiadali.</td>
+                      <td className="min-w-[8rem] py-3 px-2 align-top">Najviac 7&nbsp;dní od poslednej správy</td>
+                    </tr>
+                    <tr>
                       <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">orostone-theme</td>
                       <td className="py-3 px-2 align-top">Orostone</td>
                       <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Funkčné</span></td>
@@ -237,6 +245,13 @@ export const CookiesPolicy = () => {
                       <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Funkčné</span></td>
                       <td className="py-3 px-2 align-top">localStorage – vami zadané údaje kalkulácie montáže, ktoré sa zobrazia v košíku</td>
                       <td className="min-w-[8rem] py-3 px-2 align-top">Do odstránenia z košíka alebo vymazania prehliadačom</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">aipredajca:orostone:teaser</td>
+                      <td className="py-3 px-2 align-top">Orostone (online chat)</td>
+                      <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Funkčné</span></td>
+                      <td className="py-3 px-2 align-top">sessionStorage – zapamätanie, že sa vám uvítacia bublina online chatu už zobrazila alebo ste ju zatvorili</td>
+                      <td className="min-w-[8rem] py-3 px-2 align-top">Do zatvorenia karty prehliadača</td>
                     </tr>
                     <tr>
                       <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">_ga</td>
@@ -274,6 +289,13 @@ export const CookiesPolicy = () => {
                       <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Analytické</span></td>
                       <td className="py-3 px-2 align-top">cookie – označenie návštev nášho tímu, aby sa nezapočítavali do štatistík; nastaví sa len cez interný odkaz</td>
                       <td className="min-w-[8rem] py-3 px-2 align-top">1 rok</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">aipredajca:orostone:visitor</td>
+                      <td className="py-3 px-2 align-top">Orostone (online chat)</td>
+                      <td className="py-3 px-2 align-top"><span className="text-xs font-medium text-brand-muted">Analytické</span></td>
+                      <td className="py-3 px-2 align-top">localStorage – identifikátor vracajúceho sa návštevníka v online chate (len so súhlasom s analytickými cookies)</td>
+                      <td className="min-w-[8rem] py-3 px-2 align-top">180&nbsp;dní</td>
                     </tr>
                     <tr>
                       <td className="py-3 px-2 align-top font-mono text-xs [overflow-wrap:anywhere]">_fbp</td>
@@ -317,13 +339,22 @@ export const CookiesPolicy = () => {
                   </tbody>
                 </table>
               </div>
+              <div className={`${LEGAL_BOX} p-4`}>
+                <p className="text-sm">
+                  Online chat (okno „AI asistent“) si do vášho prehliadača neukladá nič okrem záznamu o uvítacej bubline, kým ho neotvoríte;
+                  dovtedy sa stiahne len skript chatu a jeho verejná konfigurácia a neodchádzajú žiadne udalosti.
+                  Analytické udalosti chatu (zobrazenie pozdravu, prechod na stránku) sa pred vašou prvou správou posielajú
+                  len so súhlasom s analytickými cookies.
+                </p>
+              </div>
           </LegalSection>
 
           {/* 4. Právny základ */}
           <LegalSection id="pravny-zaklad" number="4" title="Právny základ" subtitle="Na základe čoho technológie používame">
               <p>
                 Používanie <strong>nevyhnutných technológií</strong> je založené na potrebe
-                zabezpečiť riadne fungovanie a bezpečnosť webu.
+                zabezpečiť riadne fungovanie a bezpečnosť webu. Nevyhnutné je aj uloženie rozhovoru v online chate,
+                ktorý ste otvorili, aby ste v ňom mohli pokračovať; ide o službu, o ktorú ste požiadali.
               </p>
               <p>
                 Používanie <strong>analytických, funkčných a marketingových technológií</strong> je
@@ -392,7 +423,7 @@ export const CookiesPolicy = () => {
                   { name: 'Google (Google Analytics 4, Google Tag Manager, Google Ads)', desc: 'analytika návštevnosti, meranie konverzií a remarketing' },
                   { name: 'Meta (Meta Pixel)', desc: 'remarketing a meranie konverzií' },
                   { name: 'Klaviyo', desc: 'newsletter a automatické e-maily, rozpoznanie odberateľa newslettera na webe pre pripomenutie prezeraného dekoru a košíka' },
-                  { name: 'Vercel', desc: 'anonymné meranie návštevnosti a rýchlosti stránok bez cookies' },
+                  { name: 'Vercel', desc: 'anonymné meranie návštevnosti a rýchlosti stránok bez cookies, prevádzka online chatu s AI asistentom' },
                 ].map((item) => (
                   <div key={item.name} className={`${LEGAL_BOX} p-3`}>
                     <span className="font-semibold text-brand-dark">{item.name}</span>
@@ -425,7 +456,7 @@ export const CookiesPolicy = () => {
         <div className="mt-6 flex flex-col items-start justify-between gap-6 border-t border-brand-line pt-8 md:flex-row md:items-center">
           <div>
             <p className="text-sm text-brand-muted">Posledná aktualizácia</p>
-            <p className="text-lg font-medium text-brand-dark">15.&nbsp;10.&nbsp;2026</p>
+            <p className="text-lg font-medium text-brand-dark">19.&nbsp;10.&nbsp;2026</p>
           </div>
           <div className="flex gap-4">
             <ActionButton variant="outline" onClick={openSettings}>

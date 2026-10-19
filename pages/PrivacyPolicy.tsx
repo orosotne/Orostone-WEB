@@ -80,6 +80,21 @@ export const PrivacyPolicy = () => {
                       <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. b) – plnenie zmluvy / čl. 6 ods. 1 písm. f) – oprávnený záujem (vybavenie dopytu zákazníka a poskytnutie cenovej ponuky)</td>
                     </tr>
                     <tr>
+                      <td className="py-3 px-3 font-semibold text-brand-dark align-top">Online chat s AI asistentom</td>
+                      <td className="py-3 px-3 align-top">Odpovede na vaše otázky v okne „AI asistent“ na webe (aplikácia AI predajca, ktorú prevádzkuje Orostone s.r.o.), orientačná cena, príprava ponuky a dohodnutie návštevy showroomu na vašu žiadosť. Na otázky odpovedá AI asistent (umelá inteligencia). Ak o to požiadate, rozhovor odovzdáme kolegovi z Orostone, ktorý vám odpovie v internom systéme alebo v aplikácii pre iPhone. Zhrnutie rozhovoru vám e-mailom pošleme len vtedy, keď o to výslovne požiadate, a pripomienku termínu len pri potvrdenom termíne.</td>
+                      <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. b) – opatrenia pred uzavretím zmluvy na vašu žiadosť</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-3 font-semibold text-brand-dark align-top">Ochrana a zlepšovanie online chatu</td>
+                      <td className="py-3 px-3 align-top">Ochrana chatu pred zneužitím, bezpečnosť a zlepšovanie služby. IP adresu a identifikátor prehliadača na ochranu pred zneužitím ukladáme len v nevratnej podobe (hash so soľou).</td>
+                      <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. f) – oprávnený záujem (ochrana chatu pred zneužitím, bezpečnosť a zlepšovanie služby)</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-3 font-semibold text-brand-dark align-top">Žiadosť o hodnotenie</td>
+                      <td className="py-3 px-3 align-top">Po realizácii zákazky, ktorá vznikla z dopytu v online chate, vám môžeme raz poslať e-mail so žiadosťou o hodnotenie. E-mail obsahuje odkaz na odhlásenie.</td>
+                      <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. f) – oprávnený záujem (žiadosť o hodnotenie po realizácii zákazky)</td>
+                    </tr>
+                    <tr>
                       <td className="py-3 px-3 font-semibold text-brand-dark align-top">Zákonné povinnosti</td>
                       <td className="py-3 px-3 align-top">Vedenie účtovníctva, plnenie daňových a archivačných povinností</td>
                       <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. c) – zákonná povinnosť</td>
@@ -106,7 +121,7 @@ export const PrivacyPolicy = () => {
                     </tr>
                     <tr>
                       <td className="py-3 px-3 font-semibold text-brand-dark align-top">Analytika</td>
-                      <td className="py-3 px-3 align-top">Meranie návštevnosti a správania na webe (Google Analytics 4) po udelení súhlasu</td>
+                      <td className="py-3 px-3 align-top">Meranie návštevnosti a správania na webe (Google Analytics 4), v online chate analytické udalosti pred vašou prvou správou (zobrazenie pozdravu, prechod na stránku) a rozpoznanie vracajúceho sa návštevníka, všetko len po udelení súhlasu</td>
                       <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. a) – súhlas</td>
                     </tr>
                   </tbody>
@@ -114,6 +129,7 @@ export const PrivacyPolicy = () => {
               </div>
               <p className="mt-3 text-xs text-brand-muted">
                 Automatizované rozhodovanie, ktoré by malo pre vás právne alebo podobne významné účinky (čl. 22 GDPR), <strong>nevykonávame</strong>.
+                AI asistent v online chate nerobí automatizované rozhodnutia s právnymi účinkami a ceny, ktoré uvádza, sú orientačné.
                 Ktoré marketingové e-maily vám pošleme, určujeme podľa jednoduchých pravidiel, napríklad podľa toho, či ste nedokončili nákup v pokladni,
                 akú odpoveď ste v e-maile zvolili alebo či ste 90&nbsp;dní neotvorili žiadny z našich e-mailov ani v nich na nič neklikli. Ak v e-maile
                 zvolíte, že kuchyňu riešite do 3&nbsp;mesiacov, dostane o tom upozornenie náš obchodník, aby vám mohol osobne napísať. Proti takémuto spracovaniu môžete kedykoľvek
@@ -170,13 +186,13 @@ export const PrivacyPolicy = () => {
                     },
                     {
                       name: 'Supabase Inc.',
-                      purpose: 'Databáza zákazníkov, ukladanie dopytov a cenových ponúk, autentifikácia',
-                      location: 'EÚ (Frankfurt, Nemecko)',
-                      note: 'Dáta sú uložené na serveroch v EÚ. Prenos mimo EHP sa nevykonáva.',
+                      purpose: 'Databáza zákazníkov, ukladanie dopytov a cenových ponúk, autentifikácia; databáza online chatu (rozhovory, dopyty a termíny) a úložisko príloh z chatu',
+                      location: 'EÚ (Nemecko, Írsko)',
+                      note: 'Dáta sú uložené na serveroch v EÚ: databáza webu vo Frankfurte (Nemecko), databáza online chatu a prílohy z chatu v Írsku. Prenos mimo EHP sa nevykonáva.',
                     },
                     {
                       name: 'Resend Inc.',
-                      purpose: 'Odosielanie e-mailov – potvrdenia dopytov, notifikácie o objednávke a uvítací e-mail newslettera, ak ho nemôže poslať Klaviyo',
+                      purpose: 'Odosielanie e-mailov – potvrdenia dopytov, notifikácie o objednávke, e-maily z online chatu (napríklad zhrnutie rozhovoru, o ktoré požiadate) a uvítací e-mail newslettera, ak ho nemôže poslať Klaviyo',
                       location: 'USA',
                       note: 'E-mailová adresa príjemcu sa zdieľa iba na doručenie správy.',
                     },
@@ -188,9 +204,27 @@ export const PrivacyPolicy = () => {
                     },
                     {
                       name: 'Vercel Inc.',
-                      purpose: 'Hosting a doručovanie webovej stránky orostone.sk, anonymné meranie návštevnosti a rýchlosti stránok (Vercel Web Analytics, Speed Insights)',
+                      purpose: 'Hosting a doručovanie webovej stránky orostone.sk, prevádzka online chatu s AI asistentom vrátane sprostredkovania požiadaviek na jazykové modely (Vercel AI Gateway), anonymné meranie návštevnosti a rýchlosti stránok (Vercel Web Analytics, Speed Insights)',
                       location: 'USA',
-                      note: 'IP adresa a technické údaje návštevníka môžu byť dočasne spracované. Meranie návštevnosti a rýchlosti nepoužíva cookies.',
+                      note: 'IP adresa a technické údaje návštevníka môžu byť dočasne spracované. Meranie návštevnosti a rýchlosti nepoužíva cookies. Serverové funkcie online chatu bežia v EÚ (Dublin, Írsko). Pri jazykových modeloch je vynútené nulové uchovávanie údajov (zero data retention) a zákaz trénovania modelov na správach z chatu.',
+                    },
+                    {
+                      name: 'OpenAI',
+                      purpose: 'Jazykový model AI asistenta v online chate (hlavný model); údaje dostáva cez službu Vercel AI Gateway ako ďalší sprostredkovateľ spoločnosti Vercel Inc.',
+                      location: 'USA',
+                      note: 'Nulové uchovávanie údajov (zero data retention) je vynútené a trénovanie modelov na správach z chatu je zakázané.',
+                    },
+                    {
+                      name: 'Anthropic',
+                      purpose: 'Jazykový model AI asistenta v online chate (záložný model); údaje dostáva cez službu Vercel AI Gateway ako ďalší sprostredkovateľ spoločnosti Vercel Inc.',
+                      location: 'USA',
+                      note: 'Nulové uchovávanie údajov (zero data retention) je vynútené a trénovanie modelov na správach z chatu je zakázané.',
+                    },
+                    {
+                      name: 'Apple Inc.',
+                      purpose: 'Push upozornenia na správy z online chatu v aplikácii pre obchodníkov Orostone',
+                      location: 'USA',
+                      note: 'Upozornenie obsahuje krátky náhľad správy z chatu.',
                     },
                   ].map((item) => (
                     <div key={item.name} className={`${LEGAL_BOX} p-4`}>
@@ -295,6 +329,21 @@ export const PrivacyPolicy = () => {
                     <li>• Zdroj návštevy z odkazu kampane (UTM)</li>
                   </ul>
                 </div>
+                <div className={`${LEGAL_BOX} p-4`}>
+                  <h4 className="mb-2 font-semibold text-brand-dark">Online chat s AI asistentom</h4>
+                  <ul className="text-sm space-y-1">
+                    <li>• Obsah správ v chate vrátane príloh (fotky, pôdorysy – JPEG, PNG, WebP, GIF, PDF)</li>
+                    <li>• Údaje, ktoré v chate dobrovoľne uvediete (meno, telefón, e-mail, mesto, rozmery, dekor, termín, poznámky)</li>
+                    <li>• Stránka webu, z ktorej píšete, a jazyk prehliadača</li>
+                    <li>• Zdroj návštevy z odkazu kampane (len utm_source, utm_medium, utm_campaign, utm_term a utm_content, nie fbclid ani gclid)</li>
+                    <li>• IP adresa a identifikátor prehliadača len v nevratnej podobe (hash so soľou) na ochranu pred zneužitím</li>
+                  </ul>
+                  <p className="mt-2 text-xs text-brand-muted">
+                    Kým chat neotvoríte, stiahne sa len skript chatu a jeho verejná konfigurácia. Do databázy sa nič neukladá,
+                    neodchádzajú žiadne udalosti a v prehliadači sa uloží nanajvýš záznam o uvítacej bubline (pozri{' '}
+                    <Link to="/cookies" className={LEGAL_LINK}>zásady cookies</Link>).
+                  </p>
+                </div>
               </div>
           </LegalSection>
 
@@ -327,6 +376,13 @@ export const PrivacyPolicy = () => {
                   <div>
                     <p className="font-semibold text-brand-dark">roky</p>
                     <p className="text-sm">Zodpovednosť za vady – údaje na vybavenie reklamácií</p>
+                  </div>
+                </div>
+                <div className={`${LEGAL_BOX} flex items-start gap-4 p-4`}>
+                  <span className="min-w-[2.5rem] text-center text-2xl font-light tabular-nums text-brand-dark">365</span>
+                  <div>
+                    <p className="font-semibold text-brand-dark">dní</p>
+                    <p className="text-sm">Online chat – rozhovory vrátane správ, príloh, dopytu a termínov sa automaticky vymažú po 365&nbsp;dňoch od vzniku rozhovoru. O skoršie vymazanie môžete požiadať na <a href="mailto:info@orostone.sk" className={LEGAL_LINK}>info@orostone.sk</a>.</p>
                   </div>
                 </div>
                 <div className={`${LEGAL_BOX} flex items-start gap-4 p-4`}>
@@ -417,9 +473,24 @@ export const PrivacyPolicy = () => {
                       <td className="py-3 px-3 align-top">USA</td>
                       <td className="py-3 px-3 align-top">EU–US Data Privacy Framework</td>
                     </tr>
+                    <tr>
+                      <td className="py-3 px-3 font-semibold text-brand-dark align-top">OpenAI</td>
+                      <td className="py-3 px-3 align-top">USA</td>
+                      <td className="py-3 px-3 align-top">Štandardné zmluvné doložky (SCC)</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-3 font-semibold text-brand-dark align-top">Anthropic</td>
+                      <td className="py-3 px-3 align-top">USA</td>
+                      <td className="py-3 px-3 align-top">Štandardné zmluvné doložky (SCC)</td>
+                    </tr>
+                    <tr>
+                      <td className="py-3 px-3 font-semibold text-brand-dark align-top">Apple Inc.</td>
+                      <td className="py-3 px-3 align-top">USA</td>
+                      <td className="py-3 px-3 align-top">Štandardné zmluvné doložky (SCC)</td>
+                    </tr>
                     <tr className="bg-brand-sand/70">
                       <td className="py-3 px-3 font-semibold text-brand-dark align-top">Supabase Inc.</td>
-                      <td className="py-3 px-3 align-top">EÚ (Frankfurt)</td>
+                      <td className="py-3 px-3 align-top">EÚ (Nemecko, Írsko)</td>
                       <td className="py-3 px-3 align-top font-medium text-brand-dark">Prenos mimo EHP sa nevykonáva</td>
                     </tr>
                   </tbody>
@@ -427,8 +498,9 @@ export const PrivacyPolicy = () => {
               </div>
               <div className="mt-4 rounded-r-[3px] border-l-2 border-brand-dark bg-brand-sand p-4">
                 <p className="text-sm">
-                  Supabase (databáza dopytov a cenových ponúk) beží výhradne na serveroch v <strong>Nemecku (EÚ)</strong>, takže údaje
-                  uložené v tejto databáze zostávajú v EHP. Ostatní poskytovatelia v tabuľke spracúvajú údaje aj mimo EHP, napríklad Shopify spracúva
+                  Supabase beží výhradne na serveroch v EÚ: databáza webu (dopyty a cenové ponuky) v <strong>Nemecku</strong>, databáza online chatu
+                  a prílohy z chatu v <strong>Írsku</strong>. Údaje uložené v týchto databázach preto zostávajú v EHP. Serverové funkcie online chatu
+                  na platforme Vercel bežia tiež v Írsku (Dublin). Ostatní poskytovatelia v tabuľke spracúvajú údaje aj mimo EHP, napríklad Shopify spracúva
                   objednávky z e-shopu a nákupy nedokončené v pokladni (Kanada / USA) a Klaviyo profily zákazníkov a odberateľov (USA). Prenos údajov týmto poskytovateľom sa opiera
                   o rozhodnutie o primeranosti alebo o záruky uvedené v tabuľke vyššie.
                 </p>
@@ -492,11 +564,11 @@ export const PrivacyPolicy = () => {
               <div className="space-y-3">
                 <div className={`${LEGAL_BOX} p-4`}>
                   <h4 className="mb-1 font-semibold text-brand-dark">Nevyhnutné cookies</h4>
-                  <p className="text-sm">Technicky nutné pre fungovanie webu (napr. košík, súhlas s cookies). Aktívne vždy – nevyžadujú súhlas.</p>
+                  <p className="text-sm">Technicky nutné pre fungovanie webu (napr. košík, súhlas s cookies, pokračovanie rozhovoru v online chate, ktorý ste otvorili). Aktívne vždy – nevyžadujú súhlas.</p>
                 </div>
                 <div className={`${LEGAL_BOX} p-4`}>
                   <h4 className="mb-1 font-semibold text-brand-dark">Analytické cookies</h4>
-                  <p className="text-sm">Google Analytics 4 – meranie návštevnosti a správania na webe. Aktivujú sa iba po vašom súhlase.</p>
+                  <p className="text-sm">Google Analytics 4 – meranie návštevnosti a správania na webe. Online chat – rozpoznanie vracajúceho sa návštevníka a analytické udalosti chatu pred vašou prvou správou (zobrazenie pozdravu, prechod na stránku). Aktivujú sa iba po vašom súhlase.</p>
                 </div>
                 <div className={`${LEGAL_BOX} p-4`}>
                   <h4 className="mb-1 font-semibold text-brand-dark">Marketingové cookies</h4>
@@ -539,7 +611,7 @@ export const PrivacyPolicy = () => {
         <div className="mt-6 flex flex-col items-start justify-between gap-6 border-t border-brand-line pt-8 md:flex-row md:items-center">
           <div>
             <p className="text-sm text-brand-muted">Posledná aktualizácia</p>
-            <p className="text-lg font-medium text-brand-dark">15.&nbsp;10.&nbsp;2026</p>
+            <p className="text-lg font-medium text-brand-dark">19.&nbsp;10.&nbsp;2026</p>
           </div>
           <ActionButton to="/kontakt" variant="outline" arrow>
             Kontaktujte nás

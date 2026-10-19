@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { syncChatConsent } from '../lib/chatConsent';
 
 export interface CookiePreferences {
   necessary: boolean; // Always true
@@ -52,12 +53,15 @@ export const CookieProvider: React.FC<CookieProviderProps> = ({ children }) => {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-        setPreferences({
+        const loaded: CookiePreferences = {
           necessary: true, // Always true
           analytics: parsed.analytics ?? false,
           marketing: parsed.marketing ?? false,
-        });
+        };
+        setPreferences(loaded);
         setHasConsented(true);
+        // Only a saved choice reaches the chat widget; without one it stays without consent
+        syncChatConsent(loaded);
       }
     } catch (error) {
       console.error('Error loading cookie preferences:', error);
@@ -70,6 +74,7 @@ export const CookieProvider: React.FC<CookieProviderProps> = ({ children }) => {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...prefs, consentedAt: new Date().toISOString() }));
       setPreferences(prefs);
       setHasConsented(true);
+      syncChatConsent(prefs);
     } catch (error) {
       console.error('Error saving cookie preferences:', error);
     }
