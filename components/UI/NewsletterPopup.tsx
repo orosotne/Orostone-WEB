@@ -25,6 +25,7 @@ import { trackGA4Event } from '../../services/analytics';
 import { useBackgroundTurnstile } from '../../hooks/useBackgroundTurnstile';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { useDialogFocus } from '../../hooks/useDialogFocus';
+import { useAiChatOpen } from '../../hooks/useAiChatOpen';
 import { useCookies } from '../../context/CookieContext';
 import { useCartUI } from '../../context/CartContext';
 import { ActionButton, Eyebrow } from '../Design';
@@ -96,12 +97,14 @@ export const NewsletterPopup: React.FC = () => {
   const cancelledRef = useRef(false);
   const { hasConsented, isSettingsOpen } = useCookies();
   const { isOpen: isCartOpen } = useCartUI();
+  const isChatOpen = useAiChatOpen();
   const { pathname } = useLocation();
 
   useScrollLock(visible);
 
-  // Wait until the cookie bar is answered and nothing else is open, then give the visitor a few seconds on the page
-  const blocked = !hasConsented || isSettingsOpen || isCartOpen || HIDDEN_ON.includes(pathname);
+  // Wait until the cookie bar is answered and nothing else is open (the cart, the cookie settings, the AI chat window,
+  // which a dialog would take the focus from), then give the visitor a few seconds on the page
+  const blocked = !hasConsented || isSettingsOpen || isCartOpen || isChatOpen || HIDDEN_ON.includes(pathname);
   useEffect(() => {
     if (blocked || !mayShow()) return;
     const timer = setTimeout(() => {

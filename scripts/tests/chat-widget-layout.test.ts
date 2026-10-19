@@ -4,8 +4,9 @@ import { join } from 'node:path';
 import test from 'node:test';
 
 // The AI predajca chat (widget.js from index.html) floats its button bottom right, above every layer of the site.
-// It reads two attributes on the page: it moves the button above an element marked data-aipredajca-avoid and keeps
-// the button out of the way while an element marked data-aipredajca-hide is on the page.
+// It reads two attributes on the page: it moves the button above an element marked data-aipredajca-avoid (and keeps
+// its greeting and window below one at the top, the header) and keeps the button out of the way while an element
+// marked data-aipredajca-hide is on the page.
 const AVOID = 'data-aipredajca-avoid';
 const HIDE = 'data-aipredajca-hide';
 
@@ -24,7 +25,9 @@ const AVOIDED: Marked[] = [
   { file: 'pages/ShopProductDetail.tsx', marker: 'os-glass fixed inset-x-0 bottom-0', attribute: `${AVOID}={showStickyBar ? '' : undefined}` },
   { file: 'components/UI/CookieBanner.tsx', marker: 'aria-label="Súhlas s cookies"', attribute: `${AVOID}=""` },
   { file: 'pages/BlogArticle.tsx', marker: 'aria-label="Back to top"', attribute: `${AVOID}={showBackToTop ? '' : undefined}` },
-  { file: 'components/Shop/SampleCartonTray.tsx', marker: "className={'sample-carton-tray'", attribute: `${AVOID}={docked ? '' : undefined}` },
+  { file: 'components/Shop/SampleCartonTray.tsx', marker: "className={'sample-carton-tray'", attribute: `${AVOID}={docked && !compactDock ? '' : undefined}` },
+  // At the top: the chat's greeting and window stay below the header
+  { file: 'components/Layout/SiteHeader.tsx', marker: 'pt-[env(safe-area-inset-top,0px)] text-brand-dark', attribute: `${AVOID}=""` },
 ];
 
 // Drawers, dialogs and lightboxes: the marked element is mounted only while the overlay is open.
@@ -103,6 +106,20 @@ test('drawers, dialogs and lightboxes move the chat button out of the way while 
   for (const { file, marker, attribute } of HIDDEN_UNDER) {
     assert.ok(tagWithMarker(file, marker).includes(attribute), `${file}: ${attribute} missing on the tag with "${marker}"`);
   }
+});
+
+test('/vzorky on a phone: the docked tray spans the width under "Pridať do výberu", so the chat button steps aside', () => {
+  // Above the docked tray (avoid) the button would lie on the carousel's main button, which the dock keeps 12 px
+  // above the tray. Where the dock spans the width (the tray's compact layout, max-width 640 px) it is a hide element.
+  const file = 'components/Shop/SampleCartonTray.tsx';
+  const tag = tagWithMarker(file, "className={'sample-carton-tray'");
+  assert.ok(tag.includes(`${HIDE}={docked && compactDock ? '' : undefined}`), `${file}: the compact dock must hide the chat button`);
+  assert.ok(tag.includes(`${AVOID}={docked && !compactDock ? '' : undefined}`), `${file}: a dock beside the corner keeps it above`);
+  const source = readFileSync(file, 'utf8');
+  assert.match(source, /const compactMobile = \(\) => innerWidth <= 640;/);
+  assert.match(source, /setCompactDock\(isCompactDock\.current\)/);
+  // the same breakpoint as the full-width dock in the tray's CSS
+  assert.match(readFileSync('components/Shop/SampleCartonTray.css', 'utf8'), /@media\(max-width:640px\)\{[^\n]*\.sample-carton-tray\.is-docked\{right:auto;left:50%/);
 });
 
 test('every element fixed to the bottom edge is marked for the chat button', () => {

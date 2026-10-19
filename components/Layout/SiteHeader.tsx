@@ -166,6 +166,8 @@ export const SiteHeader: React.FC = () => {
     <header
       // While transparent over the homepage hero, a soft chalk veil (::before) keeps the dark nav, logo and icons
       // readable where the photo turns to dark wood (≥4.5:1 instead of ~2:1).
+      // The AI chat (widget.js) keeps its greeting and its window 12 px below the header (data-aipredajca-avoid)
+      data-aipredajca-avoid=""
       className={`fixed inset-x-0 z-50 pt-[env(safe-area-inset-top,0px)] text-brand-dark transition-shadow duration-300 before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:-z-10 before:h-[calc(100%+48px)] before:bg-gradient-to-b before:from-brand-light/65 before:via-brand-light/50 before:via-45% before:to-brand-light/0 before:transition-opacity before:duration-300 ${SHOW_ANNOUNCEMENT_BAR ? 'top-[36px]' : 'top-0'} ${isTransparent ? 'before:opacity-100' : 'shadow-[0_1px_0_rgba(26,26,26,0.08)] before:opacity-0'}`}
       onMouseLeave={() => setMegaOpen(null)}
     >

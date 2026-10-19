@@ -13,6 +13,8 @@ export interface ChatConsent {
 /** The public API of widget.js; it exists as soon as the script has run and replays early calls. */
 export interface AIPredajcaApi {
   setConsent(consent: boolean | Partial<ChatConsent>): void;
+  /** The chat window is open (lib/chatWindow.ts); missing in widget versions before October 2026. */
+  isOpen?(): boolean;
 }
 
 declare global {

@@ -15,6 +15,7 @@ import { trackGA4Event } from '../../services/analytics';
 import { useBackgroundTurnstile } from '../../hooks/useBackgroundTurnstile';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { useDialogFocus } from '../../hooks/useDialogFocus';
+import { useAiChatOpen } from '../../hooks/useAiChatOpen';
 import { useCookies } from '../../context/CookieContext';
 import { useCartUI } from '../../context/CartContext';
 import { ActionButton, Eyebrow } from '../Design';
@@ -113,6 +114,7 @@ export const DiscountPopup: React.FC = () => {
   const cancelledRef = useRef(false);
   const { hasConsented, isSettingsOpen } = useCookies();
   const { isOpen: isCartOpen } = useCartUI();
+  const isChatOpen = useAiChatOpen();
   const { pathname, search } = useLocation();
   const reduceMotion = useReducedMotion();
 
@@ -124,8 +126,9 @@ export const DiscountPopup: React.FC = () => {
     if (hasConsented && isAdOfferVisit(search, null)) write('session', AD_OFFER_SESSION_KEY, '1');
   }, [hasConsented, search]);
 
-  // Wait until the cookie bar is answered and nothing else is open; the page decides the delay (20 s, ads 3 s)
-  const blocked = !hasConsented || isSettingsOpen || isCartOpen;
+  // Wait until the cookie bar is answered and nothing else is open (the cart, the cookie settings, the AI chat window,
+  // which a dialog would take the focus from); the page decides the delay (20 s, ads 3 s)
+  const blocked = !hasConsented || isSettingsOpen || isCartOpen || isChatOpen;
   useEffect(() => {
     if (blocked) return;
     const decision = currentDecision(pathname, search);
