@@ -392,4 +392,8 @@ Fakty sú z `data/pricing.ts` (300 °C, nasiakavosť pod 0,1 %), z bloku o mater
 | 2 | 39 (úvod) | Pri rozhodovaní vás však viac zaujíma, čo z nich vyplýva v bežný deň. | Vás však skôr zaujíma, čo z nich vyplýva pri každodennom používaní. | štylistika | „Vyplýva v deň“ je významovo neprirodzené, dôsledky čísel sa ukážu pri používaní dosky. Úvod „Pri rozhodovaní“ vypadol, aby sa vo vete dvakrát neopakovalo „pri“. | prijaté, zapracované s úpravou |
 | 3 | 39 (úvod) | Prejdeme preto štyri situácie… | Prejdeme si preto štyri situácie… | gramatika | V tomto význame má sloveso väzbu „prejsť si niečo“ (slovník, sekcia 8). | prijaté, zapracované |
 
+## Kolo 35 – Codex review v PR #169 (19. 10. 2026, po zmenách z kola 34)
+
+Codex na `8ed9259` nenašiel žiadne pripomienky („Didn't find any major issues“). E-maily 38 a 39 sú vo finálnej podobe jazykovo skontrolované. E-mail 38 má rovnaký text aj v CRM (`web/lib/inquiryReplyChoosing.ts`, PR orosotne/orostone-crm#597).
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
