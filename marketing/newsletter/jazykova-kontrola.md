@@ -407,4 +407,8 @@ Codex pri prepnutí PR z návrhu skontroloval `6c74e90` a našiel dve vety, ktor
 
 E-mail 38 sa v CRM mení rovnako (`web/lib/inquiryReplyChoosing.ts`, PR orosotne/orostone-crm#597).
 
+## Kolo 37 – Codex review v PR #169 (19. 10. 2026, po zmenách z kola 36)
+
+Codex na `4990181` nenašiel žiadne pripomienky („Didn't find any major issues“). E-maily 38 a 39 sú vo finálnej podobe jazykovo skontrolované. Text e-mailu 38 v CRM je zhodný.
+
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
