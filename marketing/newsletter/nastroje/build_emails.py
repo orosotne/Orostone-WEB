@@ -2313,12 +2313,12 @@ write_nb("39-kampan-sprievodca-kuchyna.html", doc(
         "SPÚŠŤAČ:": "Kampaň vo februári 2027 o 9:00; termín určí Martin (vo februári idú aj 30 a 31, najviac 3 kampane do mesiaca)",
         "SEGMENT:": "Všetci odberatelia vrátane zákazníkov (Newsletter – web, VSrLFs); vylúčiť segment RdLKj8 a zoznam Dopyty (TKAHuh) ako pri ostatných kampaniach",
         "PREDMET:": "Čo pracovná doska zvládne v bežnej kuchyni",
-        "PREHEADER:": "Panvica, slnko, nože aj káva: ukážeme, čo doska znesie a kde si dať pozor.",
+        "PREHEADER:": "Panvica, slnko, nože aj káva: ukážeme, čo doska znesie a na čo si dať pozor.",
         "CIEĽ:": "Preložiť technický list do bežných situácií v kuchyni a povedať, kde má doska hranice → vzorka",
         "POZNÁMKA:": "Fakty: 300 °C a nasiakavosť pod 0,1 % sú z data/pricing.ts (HEAT_RESISTANCE_C, POROSITY_CLAIM); UV, Mohs 7+ a bežné poškriabanie z components/Home/HomeMaterial.tsx a data/product-seo-content.ts; utierka a saponát, doštička kvôli nožom, hrana a rohy z texty/17; zaoblená hrana sa odštiepi ťažšie z data/articles/article-05-edges-chipping.ts. Podložku netreba kvôli teplu, článok o horúcom riade (data/articles/article-02-hot-pans.ts, rámček „Čo robíme v Orostone“ a záver testov v showroome) ju však odporúča kvôli škrabancom od hrubého spodku liatinových panvíc. E-mail preto netvrdí, že podložku netreba vôbec. Na tento článok vedie aj odkaz pod tlačidlom. Či vylúčiť aj segment W8zMyZ (horizont hotovo), rozhodne Martin naraz pre všetky kampane (automatizacie-plan.md, otázka 11); dovtedy má 39 rovnaké publikum ako 30 a 31. Hero je ilustračný záber z blogu (article-07, panvica-gothic-gold.webp, výrez 1040 × 580), v e-maile to hovorí poznámka pod fotkou. Iný materiál v P. S. zámerne nemenujeme. Bez cien, zliav a dátumov.",
     },
     "Čo pracovná doska zvládne v bežnej kuchyni",
-    "Panvica, slnko, nože aj káva: ukážeme, čo doska znesie a kde si dať pozor.",
+    "Panvica, slnko, nože aj káva: ukážeme, čo doska znesie a na čo si dať pozor.",
     [
         header("Sprievodca", "február 2027"),
         eyebrow("Sprievodca", note="Raz za čas jedna odborná téma: hrúbka, hrany, údržba alebo cena."),
@@ -2326,7 +2326,7 @@ write_nb("39-kampan-sprievodca-kuchyna.html", doc(
         hero(IMG + "sprievodca-panvica-gothic-gold.jpg", "Liatinová panvica položená priamo na pracovnej doske v dekore Gothic Gold", capsule="Gothic Gold", top=14),
         note("Ilustračný záber.", top=8),
         text([
-            "technický list uvádza čísla. Pri rozhodovaní vás však viac zaujíma, čo z nich vyplýva v bežný deň. Prejdeme preto štyri situácie, ktoré poznáte z vlastnej kuchyne, a na konci aj to, na čo treba myslieť.",
+            "technický list uvádza čísla. Vás však skôr zaujíma, čo z nich vyplýva pri každodennom používaní. Prejdeme si preto štyri situácie, ktoré poznáte z vlastnej kuchyne, a na konci aj to, na čo treba myslieť.",
         ], top=24),
         numbered([
             ("Panvica zo sporáka, pekáč z rúry", "Doska znesie 300&nbsp;°C, takže horúci riad položíte priamo na ňu – podložku kvôli teplu nepotrebujete."),

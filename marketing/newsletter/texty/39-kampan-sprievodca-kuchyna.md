@@ -4,7 +4,7 @@
 - **Kedy sa posiela:** Kampaň vo februári 2027 o 9:00; termín určí Martin (vo februári idú aj 30 a 31, najviac 3 kampane do mesiaca)
 - **Komu:** Všetci odberatelia vrátane zákazníkov (Newsletter – web, VSrLFs); vylúčiť segment RdLKj8 a zoznam Dopyty (TKAHuh) ako pri ostatných kampaniach
 - **Predmet:** Čo pracovná doska zvládne v bežnej kuchyni
-- **Preheader:** 🪨 Panvica, slnko, nože aj káva: ukážeme, čo doska znesie a kde si dať pozor.
+- **Preheader:** 🪨 Panvica, slnko, nože aj káva: ukážeme, čo doska znesie a na čo si dať pozor.
 - **Šablóna:** `sablony/39-kampan-sprievodca-kuchyna.html`
 
 ## Text e-mailu v poradí, ako sa zobrazí
@@ -29,7 +29,7 @@ Ilustračný záber.
 
 ### Text
 Dobrý deň,
-technický list uvádza čísla. Pri rozhodovaní vás však viac zaujíma, čo z nich vyplýva v bežný deň. Prejdeme preto štyri situácie, ktoré poznáte z vlastnej kuchyne, a na konci aj to, na čo treba myslieť.
+technický list uvádza čísla. Vás však skôr zaujíma, čo z nich vyplýva pri každodennom používaní. Prejdeme si preto štyri situácie, ktoré poznáte z vlastnej kuchyne, a na konci aj to, na čo treba myslieť.
 
 ### Číslovaný zoznam
 01

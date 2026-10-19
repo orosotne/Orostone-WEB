@@ -383,3 +383,13 @@ Rozhodnutia Martina z 19. 10. 2026. Na kontrolu sú dva nové e-maily:
 - **39 – Čo pracovná doska zvládne v bežnej kuchyni** – kampaň zo série Sprievodca na február 2027, termín určí Martin. Hlavná fotka je ilustračný záber z blogu (liatinová panvica na doske v dekore Gothic Gold) a pod fotkou to e-mail uvádza. P. S. zámerne nemenuje žiadny iný materiál.
 
 Fakty sú z `data/pricing.ts` (300 °C, nasiakavosť pod 0,1 %), z bloku o materiáli na titulnej stránke (`components/Home/HomeMaterial.tsx`: UV, Mohs 7+), z produktových textov (`data/product-seo-content.ts`), z e-mailu 17 (utierka a saponát, doštička kvôli nožom, hrana a rohy) a z článkov o hrúbke 12 mm (`article-04-12mm-vs-20mm.ts`), o hranách (`article-05-edges-chipping.ts`) a o horúcom riade (`article-02-hot-pans.ts`: podložku netreba kvôli teplu, článok ju odporúča len kvôli škrabancom).
+
+## Kolo 34 – Codex review v PR #169 (19. 10. 2026, e-mail 39)
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 39 (preheader) | …ukážeme, čo doska znesie a kde si dať pozor. | …ukážeme, čo doska znesie a na čo si dať pozor. | gramatika | Väzba je „dať si pozor na niečo“; „kde“ označuje miesto, nie predmet opatrnosti. | prijaté, zapracované |
+| 2 | 39 (úvod) | Pri rozhodovaní vás však viac zaujíma, čo z nich vyplýva v bežný deň. | Vás však skôr zaujíma, čo z nich vyplýva pri každodennom používaní. | štylistika | „Vyplýva v deň“ je významovo neprirodzené, dôsledky čísel sa ukážu pri používaní dosky. Úvod „Pri rozhodovaní“ vypadol, aby sa vo vete dvakrát neopakovalo „pri“. | prijaté, zapracované s úpravou |
+| 3 | 39 (úvod) | Prejdeme preto štyri situácie… | Prejdeme si preto štyri situácie… | gramatika | V tomto význame má sloveso väzbu „prejsť si niečo“ (slovník, sekcia 8). | prijaté, zapracované |
+
+Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
