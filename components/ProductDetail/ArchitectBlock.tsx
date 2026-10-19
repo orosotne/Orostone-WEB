@@ -230,6 +230,8 @@ export const ArchitectBlock: React.FC<ArchitectBlockProps> = ({ product, tone = 
               role="dialog"
               aria-modal="true"
               aria-labelledby="bim-dialog-title"
+              // The AI chat button (widget.js) lies above every layer of the site: it steps aside while this is open
+              data-aipredajca-hide=""
               className="relative z-10 w-full max-w-md max-h-[90dvh] flex flex-col bg-white rounded-[3px] shadow-2xl overflow-hidden"
             >
               <div className="bg-brand-dark px-6 py-5 flex items-start justify-between gap-4 flex-shrink-0">

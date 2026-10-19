@@ -439,6 +439,8 @@ const Lightbox: React.FC<{
       role="dialog"
       aria-modal="true"
       aria-label={title}
+      // The AI chat button (widget.js) lies above every layer of the site: it steps aside while this is open
+      data-aipredajca-hide=""
     >
       {/* The controls stay above the photos (z-10): the photos are positioned too, and on a phone they reach under
           the arrows */}

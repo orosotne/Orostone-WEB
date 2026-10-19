@@ -319,7 +319,8 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
   const ids = view.packed ? view.visible.filter(i => view.slots[i]) : view.visible;
   const labelLeft = (i: number) => ((cartonLeft(ids.length, view.packed) + (view.packed ? 180 : 235) * ids.indexOf(i) + 90 - 104) / 720 * 100) + '%';
   return <div ref={homeRef} className={'sample-carton-home ' + (props.className ?? '')}>
-    <section ref={trayRef} className={'sample-carton-tray' + (docked ? ' is-docked' : '')} aria-label="Váš výber vzoriek" aria-busy={view.busy || props.locked} data-quantity={view.quantity} data-packed={view.packed}>
+    {/* Docked at the bottom edge, the tray is kept clear of the AI chat button (widget.js) */}
+    <section ref={trayRef} className={'sample-carton-tray' + (docked ? ' is-docked' : '')} data-aipredajca-avoid={docked ? '' : undefined} aria-label="Váš výber vzoriek" aria-busy={view.busy || props.locked} data-quantity={view.quantity} data-packed={view.packed}>
       <div className="sample-carton-heading"><div><p>Váš výber <strong>{view.slots.filter(Boolean).length} / {view.quantity}</strong></p><span>Spolu {formatSamplePrice(quoteSampleOrder(view.quantity).totalCents)}<span className="sample-carton-delivery-label"> s&nbsp;dopravou</span></span></div><button type="button" className="sample-carton-continue" disabled={view.busy || props.locked || !complete} onClick={props.onContinue}>Skontrolovať <span aria-hidden="true">→</span></button></div>
       <div ref={graphicRef} className="sample-carton-graphic" aria-hidden="true">
         {view.fallback && <svg className="sample-carton-fallback" viewBox={SCENE_VIEW}>{view.visible.map((i, rank) => <g key={i} transform={'translate(' + (cartonLeft(view.visible.length) + 235 * rank) + ',310)'}>

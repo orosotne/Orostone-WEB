@@ -148,7 +148,8 @@ export const MaterialPerspectivesViewer: React.FC<MaterialPerspectivesViewerProp
 
       <AnimatePresence>
         {isLightboxOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center">
+          // The AI chat button (widget.js) lies above every layer of the site: it steps aside while this is open
+          <div className="fixed inset-0 z-50 flex items-center justify-center" data-aipredajca-hide="">
             <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

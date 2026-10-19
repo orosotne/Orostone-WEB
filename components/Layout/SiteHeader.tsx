@@ -251,10 +251,11 @@ export const SiteHeader: React.FC = () => {
         {megaOpen && <EshopMegaMenu category={megaOpen} isOpen={true} onClose={() => setMegaOpen(null)} />}
       </AnimatePresence>
 
-      {/* Search panel */}
+      {/* Search panel. The AI chat button (widget.js) steps aside while it is open: the results reach towards the
+          bottom of a phone and the keyboard is up (data-aipredajca-hide) */}
       <AnimatePresence>
         {searchOpen && (
-          <m.div {...panelMotion} className="absolute inset-x-0 top-full border-t border-brand-line bg-brand-light shadow-[0_1px_0_theme(colors.brand.line)]">
+          <m.div {...panelMotion} data-aipredajca-hide="" className="absolute inset-x-0 top-full border-t border-brand-line bg-brand-light shadow-[0_1px_0_theme(colors.brand.line)]">
             <Container className="py-5">
               <form onSubmit={handleSearchSubmit} className="relative mx-auto max-w-xl" role="search">
                 <Search size={18} className="absolute left-0 top-1/2 -translate-y-1/2 text-brand-muted" aria-hidden="true" />
@@ -310,10 +311,11 @@ export const SiteHeader: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {/* Drawer (below 1360 px) */}
+      {/* Drawer (below 1360 px). The AI chat button (widget.js) lies above every layer: it steps aside while the
+          drawer is open (data-aipredajca-hide) */}
       <AnimatePresence>
         {drawerOpen && (
-          <m.div {...panelMotion} id="site-drawer" className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto overscroll-contain border-t border-brand-line bg-brand-light lg:top-20 min-[1360px]:hidden">
+          <m.div {...panelMotion} id="site-drawer" data-aipredajca-hide="" className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto overscroll-contain border-t border-brand-line bg-brand-light lg:top-20 min-[1360px]:hidden">
             <Container className="grid gap-8 py-4 pb-[calc(32px+env(safe-area-inset-bottom,0px))]">
               <nav aria-label="Menu" className="grid">
                 {CATEGORY && (

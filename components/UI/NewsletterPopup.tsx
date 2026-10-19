@@ -195,6 +195,8 @@ export const NewsletterPopup: React.FC = () => {
             role="dialog"
             aria-modal="true"
             aria-labelledby="newsletter-popup-title"
+            // The AI chat button (widget.js) lies above every layer of the site: it steps aside while this is open
+            data-aipredajca-hide=""
             // Centred by flex, not by translate classes: framer-motion's inline transform would override those
             className="pointer-events-none fixed inset-0 z-[10001] flex items-center justify-center p-3 sm:p-6"
           >

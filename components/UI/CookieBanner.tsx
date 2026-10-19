@@ -32,6 +32,8 @@ export const CookieBanner: React.FC = () => {
           className="fixed bottom-0 left-0 right-0 z-[10002] p-2 pb-[calc(8px+env(safe-area-inset-bottom,0px))] sm:p-4 print:hidden"
           role="region"
           aria-label="Súhlas s cookies"
+          // The AI chat button (widget.js) sits above the bar: it lies higher in the stack and would cover the buttons
+          data-aipredajca-avoid=""
         >
           <div className="mx-auto max-w-[1080px] rounded-[10px] border border-brand-line bg-brand-light p-4 text-brand-dark shadow-[0_24px_60px_-24px_rgba(26,26,26,0.4)] sm:px-6 sm:py-5">
             <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-8">

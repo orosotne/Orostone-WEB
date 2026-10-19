@@ -240,6 +240,9 @@ export const DiscountPopup: React.FC = () => {
               role="dialog"
               aria-modal="true"
               aria-labelledby="discount-popup-title"
+              // The AI chat button (widget.js) lies above every layer of the site and would cover the sheet's buttons:
+              // it steps aside while this is open
+              data-aipredajca-hide=""
               className="pointer-events-auto relative flex max-h-full w-full max-w-[460px] flex-col overflow-y-auto overscroll-contain rounded-[14px] bg-brand-dark text-brand-light shadow-[0_32px_80px_-24px_rgba(0,0,0,0.65)] sm:max-w-[760px] sm:flex-row sm:rounded-[6px]"
             >
               {/* Photo with the gold 5 % sticker: a band on phones (lower on short screens, gone on very short ones so the
