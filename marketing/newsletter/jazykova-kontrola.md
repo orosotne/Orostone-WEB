@@ -374,3 +374,41 @@ Nejde o text e-mailu, ale o nové vety v dokumentácii po spustení e-mailu 01 a
 | 1 | README (riadok 01) | s novým predmetom aj Preview textom | s novým predmetom aj novým textom v poli Preview text | gramatika | Názov poľa „Preview text“ sa neskloňuje; spojenie skloňovalo len jeho anglické podstatné meno. | prijaté, zapracované |
 | 2 | automatizacie-plan.md (kampaň 35) | Pre súhrn 28. 1. | Tieto údaje treba uviesť v súhrne 28. 1. | štylistika | Neúplná veta bez podmetu a prísudku nehovorila, čo sa má so súhrnom urobiť. | prijaté, zapracované |
 | 3 | reklama/meta-zlava-5.md (frekvencia) | rozpočet sa riadi len týmto oknom: pri viac ako 3 za 7 dní ho znížiť | rozpočet sa upravuje iba podľa údajov za toto obdobie: pri frekvencii vyššej ako 3 za 7 dní ho treba znížiť | štylistika | Rozpočet sa „oknom“ neriadi a po predložke „pri“ chýbal ukazovateľ. | prijaté, zapracované |
+
+### Nový obsah (19. 10. 2026, e-maily 38 a 39)
+
+Rozhodnutia Martina z 19. 10. 2026. Na kontrolu sú dva nové e-maily:
+
+- **38 – Tri krátke odpovede k pracovnej doske** – osobný list od Mariána v čistom texte pre ľudí, ktorí na e-mail 34 odpísali „1 – stále vyberám“. Návrh vznikne v CRM a odíde až po schválení Mariánom, najviac raz na človeka a nikdy nie ľuďom, ktorí e-maily nechcú. Odberateľov newslettera nevylučuje, o odpoveď požiadali sami. Oslovenie *vy, vám* je s malým v ako v 34: je to osobný list, ale s rovnakým textom pre všetkých adresátov (slovník, sekcia 1). Text sa posiela z CRM, preto sa mení spolu s kópiou v repozitári orostone-crm.
+- **39 – Čo pracovná doska zvládne v bežnej kuchyni** – kampaň zo série Sprievodca na február 2027, termín určí Martin. Hlavná fotka je ilustračný záber z blogu (liatinová panvica na doske v dekore Gothic Gold) a pod fotkou to e-mail uvádza. P. S. zámerne nemenuje žiadny iný materiál.
+
+Fakty sú z `data/pricing.ts` (300 °C, nasiakavosť pod 0,1 %), z bloku o materiáli na titulnej stránke (`components/Home/HomeMaterial.tsx`: UV, Mohs 7+), z produktových textov (`data/product-seo-content.ts`), z e-mailu 17 (utierka a saponát, doštička kvôli nožom, hrana a rohy) a z článkov o hrúbke 12 mm (`article-04-12mm-vs-20mm.ts`), o hranách (`article-05-edges-chipping.ts`) a o horúcom riade (`article-02-hot-pans.ts`: podložku netreba kvôli teplu, článok ju odporúča len kvôli škrabancom).
+
+## Kolo 34 – Codex review v PR #169 (19. 10. 2026, e-mail 39)
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 39 (preheader) | …ukážeme, čo doska znesie a kde si dať pozor. | …ukážeme, čo doska znesie a na čo si dať pozor. | gramatika | Väzba je „dať si pozor na niečo“; „kde“ označuje miesto, nie predmet opatrnosti. | prijaté, zapracované |
+| 2 | 39 (úvod) | Pri rozhodovaní vás však viac zaujíma, čo z nich vyplýva v bežný deň. | Vás však skôr zaujíma, čo z nich vyplýva pri každodennom používaní. | štylistika | „Vyplýva v deň“ je významovo neprirodzené, dôsledky čísel sa ukážu pri používaní dosky. Úvod „Pri rozhodovaní“ vypadol, aby sa vo vete dvakrát neopakovalo „pri“. | prijaté, zapracované s úpravou |
+| 3 | 39 (úvod) | Prejdeme preto štyri situácie… | Prejdeme si preto štyri situácie… | gramatika | V tomto význame má sloveso väzbu „prejsť si niečo“ (slovník, sekcia 8). | prijaté, zapracované |
+
+## Kolo 35 – Codex review v PR #169 (19. 10. 2026, po zmenách z kola 34)
+
+Codex na `8ed9259` nenašiel žiadne pripomienky („Didn't find any major issues“).
+
+## Kolo 36 – Codex review v PR #169 (19. 10. 2026, po prepnutí PR z návrhu)
+
+Codex pri prepnutí PR z návrhu skontroloval `6c74e90` a našiel dve vety, ktoré sa v kolách 34 a 35 nemenili.
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 38 (bod 1) | Doska z nich pri plnom podklade skriniek zvládne aj ostrovček. | Pri plnom podklade skriniek sa z nich dá urobiť aj ostrovček. | štylistika | Doska ostrovček „nezvláda“, ide o to, či sa z 12 mm platní dá urobiť. Návrh Codexu „Platne s plným podkladom skriniek možno použiť…“ by pripisoval podklad platniam, preto iné znenie. | prijaté, zapracované s úpravou |
+| 2 | 39 (pod tlačidlom) | Vyskúšajte si na nej kávu aj víno. | Vyskúšajte na nej, ako ľahko zotriete kávu aj víno. | štylistika | Pôvodné znenie sa dalo čítať aj tak, že si má čitateľ na vzorke dať kávu a víno. Namiesto návrhu „Otestujte ju kávou aj vínom“ ostáva domáce „vyskúšajte“ a veta hovorí, čo sa skúša. | prijaté, zapracované s úpravou |
+
+E-mail 38 sa v CRM mení rovnako (`web/lib/inquiryReplyChoosing.ts`, PR orosotne/orostone-crm#597).
+
+## Kolo 37 – Codex review v PR #169 (19. 10. 2026, po zmenách z kola 36)
+
+Codex na `4990181` nenašiel žiadne pripomienky („Didn't find any major issues“). E-maily 38 a 39 sú vo finálnej podobe jazykovo skontrolované. Text e-mailu 38 v CRM je zhodný.
+
+Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.
