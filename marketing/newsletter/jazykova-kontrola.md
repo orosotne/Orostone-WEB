@@ -394,6 +394,17 @@ Fakty sú z `data/pricing.ts` (300 °C, nasiakavosť pod 0,1 %), z bloku o mater
 
 ## Kolo 35 – Codex review v PR #169 (19. 10. 2026, po zmenách z kola 34)
 
-Codex na `8ed9259` nenašiel žiadne pripomienky („Didn't find any major issues“). E-maily 38 a 39 sú vo finálnej podobe jazykovo skontrolované. E-mail 38 má rovnaký text aj v CRM (`web/lib/inquiryReplyChoosing.ts`, PR orosotne/orostone-crm#597).
+Codex na `8ed9259` nenašiel žiadne pripomienky („Didn't find any major issues“).
+
+## Kolo 36 – Codex review v PR #169 (19. 10. 2026, po prepnutí PR z návrhu)
+
+Codex pri prepnutí PR z návrhu skontroloval `6c74e90` a našiel dve vety, ktoré sa v kolách 34 a 35 nemenili.
+
+| # | E-mail | Pôvodný text | Nový text | Typ | Prečo | Stav |
+|---|---|---|---|---|---|---|
+| 1 | 38 (bod 1) | Doska z nich pri plnom podklade skriniek zvládne aj ostrovček. | Pri plnom podklade skriniek sa z nich dá urobiť aj ostrovček. | štylistika | Doska ostrovček „nezvláda“, ide o to, či sa z 12 mm platní dá urobiť. Návrh Codexu „Platne s plným podkladom skriniek možno použiť…“ by pripisoval podklad platniam, preto iné znenie. | prijaté, zapracované s úpravou |
+| 2 | 39 (pod tlačidlom) | Vyskúšajte si na nej kávu aj víno. | Vyskúšajte na nej, ako ľahko zotriete kávu aj víno. | štylistika | Pôvodné znenie sa dalo čítať aj tak, že si má čitateľ na vzorke dať kávu a víno. Namiesto návrhu „Otestujte ju kávou aj vínom“ ostáva domáce „vyskúšajte“ a veta hovorí, čo sa skúša. | prijaté, zapracované s úpravou |
+
+E-mail 38 sa v CRM mení rovnako (`web/lib/inquiryReplyChoosing.ts`, PR orosotne/orostone-crm#597).
 
 Ďalšie kolo pridajte ako novú sekciu s rovnakou tabuľkou.

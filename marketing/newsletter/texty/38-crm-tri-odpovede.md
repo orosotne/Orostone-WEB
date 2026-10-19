@@ -12,7 +12,7 @@
 ### List
 Dobrý deň,
 ďakujem, že ste sa ozvali. Posielam vám krátke odpovede na tri otázky, ktoré pri výbere dosky dostávam často.
-1. Hrúbka 12 mm. Platne dodávame len v tejto hrúbke. Doska z nich pri plnom podklade skriniek zvládne aj ostrovček. Presah do 200 mm netreba podopierať, presah na sedenie potrebuje vždy kovovú konzolu.
+1. Hrúbka 12 mm. Platne dodávame len v tejto hrúbke. Pri plnom podklade skriniek sa z nich dá urobiť aj ostrovček. Presah do 200 mm netreba podopierať, presah na sedenie potrebuje vždy kovovú konzolu.
 2. Teplo a nože. Doska znesie 300 °C, horúci hrniec preto položíte priamo na ňu. Krájať odporúčam na doštičke – kvôli nožom, nie kvôli kameňu.
 3. Škvrny a slnko. Nasiakavosť je pod 0,1 %, takže víno ani olej sa do povrchu nevpijú a doska nepotrebuje impregnáciu. Farba odoláva UV žiareniu, pri veľkom okne nevybledne.
 Celé platne si môžete pozrieť v showroome v Bošanoch – stačí mi vopred napísať, kedy prídete. Ak vám viac vyhovuje vzorka, pošleme ju domov.

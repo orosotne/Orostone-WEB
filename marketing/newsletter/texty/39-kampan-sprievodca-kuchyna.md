@@ -51,7 +51,7 @@ Hrana a rohy sú najcitlivejšie miesta dosky. Ťažký hrniec na dosku položte
 
 ### Tlačidlo (CTA)
 Objednať vzorku
-Prvá vzorka je zadarmo. Vyskúšajte si na nej kávu aj víno.
+Prvá vzorka je zadarmo. Vyskúšajte na nej, ako ľahko zotriete kávu aj víno.
 Prečítať viac o horúcom riade
 
 ### P. S.

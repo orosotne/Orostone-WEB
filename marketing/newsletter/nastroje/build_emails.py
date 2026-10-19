@@ -2294,7 +2294,7 @@ write_nb("38-crm-tri-odpovede.html", plain(
     "Píšem o hrúbke 12 mm, horúcom riade, škvrnách a slnku pri okne.",
     [
         "ďakujem, že ste sa ozvali. Posielam vám krátke odpovede na tri otázky, ktoré pri výbere dosky dostávam často.",
-        "1. Hrúbka 12&nbsp;mm. Platne dodávame len v tejto hrúbke. Doska z nich pri plnom podklade skriniek zvládne aj ostrovček. Presah do 200&nbsp;mm netreba podopierať, presah na sedenie potrebuje vždy kovovú konzolu.",
+        "1. Hrúbka 12&nbsp;mm. Platne dodávame len v tejto hrúbke. Pri plnom podklade skriniek sa z nich dá urobiť aj ostrovček. Presah do 200&nbsp;mm netreba podopierať, presah na sedenie potrebuje vždy kovovú konzolu.",
         "2. Teplo a nože. Doska znesie 300&nbsp;°C, horúci hrniec preto položíte priamo na ňu. Krájať odporúčam na doštičke – kvôli nožom, nie kvôli kameňu.",
         "3. Škvrny a slnko. Nasiakavosť je pod 0,1&nbsp;%, takže víno ani olej sa do povrchu nevpijú a doska nepotrebuje impregnáciu. Farba odoláva UV žiareniu, pri veľkom okne nevybledne.",
         "Celé platne si môžete pozrieť v showroome v Bošanoch – stačí mi vopred napísať, kedy prídete. Ak vám viac vyhovuje vzorka, pošleme ju domov.",
@@ -2335,7 +2335,7 @@ write_nb("39-kampan-sprievodca-kuchyna.html", doc(
             ("Káva, víno a čistenie", "Nasiakavosť je pod 0,1&nbsp;%, škvrna preto ostane na povrchu. Doska nepotrebuje impregnáciu, stačí jej utierka a saponát."),
         ], top=4),
         quote_dark("Na čo myslieť", 'Hrana a rohy sú najcitlivejšie miesta dosky. Ťažký hrniec na dosku položte, nespúšťajte ho na hranu. A&nbsp;<strong style="font-weight:700; font-style:normal; color:#ECD488;">profil hrany si prejdite s kamenárom</strong> – zaoblená hrana sa odštiepi ťažšie než ostrá.', top=24),
-        cta("Objednať vzorku", SITE + "/vzorky", sub="Prvá vzorka je zadarmo. Vyskúšajte si na nej kávu aj víno.", link=("Prečítať viac o horúcom riade", SITE + "/blog/horuce-hrnce-na-sinterovanom-kameni"), width=260),
+        cta("Objednať vzorku", SITE + "/vzorky", sub="Prvá vzorka je zadarmo. Vyskúšajte na nej, ako ľahko zotriete kávu aj víno.", link=("Prečítať viac o horúcom riade", SITE + "/blog/horuce-hrnce-na-sinterovanom-kameni"), width=260),
         ps("Zvažujete popri sinterovanom kameni aj iný materiál? Odpíšte mi, ktorý – napíšem vám, v čom je pri vašej kuchyni rozdiel."),
         signature(top=0),
         footer(year="2027"),
