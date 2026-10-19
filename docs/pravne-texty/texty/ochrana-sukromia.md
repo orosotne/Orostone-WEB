@@ -116,7 +116,7 @@ IP adresa a technické údaje návštevníka môžu byť dočasne spracované. M
 
 USA
 
-Jazykový model AI asistenta v online chate (hlavný model) cez Vercel AI Gateway
+Jazykový model AI asistenta v online chate (hlavný model); údaje dostáva cez službu Vercel AI Gateway ako ďalší sprostredkovateľ spoločnosti Vercel Inc.
 
 Nulové uchovávanie údajov (zero data retention) je vynútené a trénovanie modelov na správach z chatu je zakázané.
 
@@ -124,11 +124,11 @@ Nulové uchovávanie údajov (zero data retention) je vynútené a trénovanie m
 
 USA
 
-Jazykový model AI asistenta v online chate (záložný model) cez Vercel AI Gateway
+Jazykový model AI asistenta v online chate (záložný model); údaje dostáva cez službu Vercel AI Gateway ako ďalší sprostredkovateľ spoločnosti Vercel Inc.
 
 Nulové uchovávanie údajov (zero data retention) je vynútené a trénovanie modelov na správach z chatu je zakázané.
 
-#### Apple
+#### Apple Inc.
 
 USA
 
@@ -281,7 +281,7 @@ Niektorí naši sprostredkovatelia a partneri sídlia mimo Európskeho hospodár
 | Meta Platforms, Inc. | USA | EU–US Data Privacy Framework |
 | OpenAI | USA | Štandardné zmluvné doložky (SCC) |
 | Anthropic | USA | Štandardné zmluvné doložky (SCC) |
-| Apple | USA | Štandardné zmluvné doložky (SCC) |
+| Apple Inc. | USA | Štandardné zmluvné doložky (SCC) |
 | Supabase Inc. | EÚ (Nemecko, Írsko) | Prenos mimo EHP sa nevykonáva |
 
 Supabase beží výhradne na serveroch v EÚ: databáza webu (dopyty a cenové ponuky) v Nemecku, databáza online chatu a prílohy z chatu v Írsku. Údaje uložené v týchto databázach preto zostávajú v EHP. Serverové funkcie online chatu na platforme Vercel bežia tiež v Írsku (Dublin). Ostatní poskytovatelia v tabuľke spracúvajú údaje aj mimo EHP, napríklad Shopify spracúva objednávky z e-shopu a nákupy nedokončené v pokladni (Kanada / USA) a Klaviyo profily zákazníkov a odberateľov (USA). Prenos údajov týmto poskytovateľom sa opiera o rozhodnutie o primeranosti alebo o záruky uvedené v tabuľke vyššie.
