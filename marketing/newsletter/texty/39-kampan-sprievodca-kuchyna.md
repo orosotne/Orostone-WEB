@@ -2,7 +2,7 @@
 
 - **Typ:** Kampaň · séria Sprievodca
 - **Kedy sa posiela:** Kampaň vo februári 2027 o 9:00; termín určí Martin (vo februári idú aj 30 a 31, najviac 3 kampane do mesiaca)
-- **Komu:** Všetci odberatelia (Newsletter – web, VSrLFs); vylúčiť segment RdLKj8, zoznam Dopyty (TKAHuh), segment U2XF6B a segment W8zMyZ (horizont hotovo)
+- **Komu:** Všetci odberatelia vrátane zákazníkov (Newsletter – web, VSrLFs); vylúčiť segment RdLKj8 a zoznam Dopyty (TKAHuh) ako pri ostatných kampaniach
 - **Predmet:** Čo pracovná doska zvládne v bežnej kuchyni
 - **Preheader:** 🪨 Panvica, slnko, nože aj káva: ukážeme, čo doska znesie a kde si dať pozor.
 - **Šablóna:** `sablony/39-kampan-sprievodca-kuchyna.html`
@@ -34,10 +34,10 @@ technický list uvádza čísla. Pri rozhodovaní vás však viac zaujíma, čo 
 ### Číslovaný zoznam
 01
 Panvica zo sporáka, pekáč z rúry
-Doska znesie 300 °C, takže horúci riad položíte priamo na ňu a podložku nepotrebujete.
+Doska znesie 300 °C, takže horúci riad položíte priamo na ňu – podložku kvôli teplu nepotrebujete.
 02
 Veľké okno a priame slnko
-Farba odoláva UV žiareniu, takže doska nevybledne ani pri veľkom okne.
+Farba odoláva UV žiareniu, takže doska na svetle nevybledne.
 03
 Nože a posúvaný riad
 Povrch má tvrdosť 7+ na Mohsovej stupnici a bežnému poškriabaniu odolá. Krájajte však na doštičke, aby sa vám neotupili nože.

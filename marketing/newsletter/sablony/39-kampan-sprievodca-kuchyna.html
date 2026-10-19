@@ -3,11 +3,11 @@
   OROSTONE — e-mailová šablóna (skill orostone-newsletter)
   TYP:       Kampaň · séria Sprievodca
   SPÚŠŤAČ:   Kampaň vo februári 2027 o 9:00; termín určí Martin (vo februári idú aj 30 a 31, najviac 3 kampane do mesiaca)
-  SEGMENT:   Všetci odberatelia (Newsletter – web, VSrLFs); vylúčiť segment RdLKj8, zoznam Dopyty (TKAHuh), segment U2XF6B a segment W8zMyZ (horizont hotovo)
+  SEGMENT:   Všetci odberatelia vrátane zákazníkov (Newsletter – web, VSrLFs); vylúčiť segment RdLKj8 a zoznam Dopyty (TKAHuh) ako pri ostatných kampaniach
   PREDMET:   Čo pracovná doska zvládne v bežnej kuchyni
   PREHEADER: 🪨 Panvica, slnko, nože aj káva: ukážeme, čo doska znesie a kde si dať pozor.
   CIEĽ:      Preložiť technický list do bežných situácií v kuchyni a povedať, kde má doska hranice → vzorka
-  POZNÁMKA:  Fakty: 300 °C a nasiakavosť pod 0,1 % sú z data/pricing.ts (HEAT_RESISTANCE_C, POROSITY_CLAIM); UV, Mohs 7+ a bežné poškriabanie z components/Home/HomeMaterial.tsx a data/product-seo-content.ts; utierka a saponát, doštička kvôli nožom, hrana a rohy z texty/17; zaoblená hrana sa odštiepi ťažšie z data/articles/article-05-edges-chipping.ts. Odkaz pod tlačidlom vedie na článok o horúcom riade (data/articles/article-02-hot-pans.ts). Hero je ilustračný záber z blogu (article-07, panvica-gothic-gold.webp, výrez 1040 × 580), v e-maile to hovorí poznámka pod fotkou. Iný materiál v P. S. zámerne nemenujeme. Bez cien, zliav a dátumov.
+  POZNÁMKA:  Fakty: 300 °C a nasiakavosť pod 0,1 % sú z data/pricing.ts (HEAT_RESISTANCE_C, POROSITY_CLAIM); UV, Mohs 7+ a bežné poškriabanie z components/Home/HomeMaterial.tsx a data/product-seo-content.ts; utierka a saponát, doštička kvôli nožom, hrana a rohy z texty/17; zaoblená hrana sa odštiepi ťažšie z data/articles/article-05-edges-chipping.ts. Podložku netreba kvôli teplu, článok o horúcom riade (data/articles/article-02-hot-pans.ts, rámček „Čo robíme v Orostone“ a záver testov v showroome) ju však odporúča kvôli škrabancom od hrubého spodku liatinových panvíc. E-mail preto netvrdí, že podložku netreba vôbec. Na tento článok vedie aj odkaz pod tlačidlom. Či vylúčiť aj segment W8zMyZ (horizont hotovo), rozhodne Martin naraz pre všetky kampane (automatizacie-plan.md, otázka 11); dovtedy má 39 rovnaké publikum ako 30 a 31. Hero je ilustračný záber z blogu (article-07, panvica-gothic-gold.webp, výrez 1040 × 580), v e-maile to hovorí poznámka pod fotkou. Iný materiál v P. S. zámerne nemenujeme. Bez cien, zliav a dátumov.
   Obrázky: https://orostone.sk/images/email/ (v repozitári Orostone-WEB: public/images/email/)
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="sk">
@@ -170,7 +170,7 @@
                       <td class="list-num" valign="top" width="44" style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:0.22em; color:#7A6A2E; padding-top:3px;">01</td>
                       <td valign="top">
                         <div class="t-title" style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:15px; font-weight:700; line-height:22px; color:#1A1A1A;">Panvica zo sporáka, pekáč z&nbsp;rúry</div>
-                        <div class="t-small" style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:13.5px; font-weight:400; line-height:22px; color:#6B7280; margin-top:4px;">Doska znesie 300&nbsp;°C, takže horúci riad položíte priamo na ňu a&nbsp;podložku nepotrebujete.</div>
+                        <div class="t-small" style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:13.5px; font-weight:400; line-height:22px; color:#6B7280; margin-top:4px;">Doska znesie 300&nbsp;°C, takže horúci riad položíte priamo na ňu – podložku kvôli teplu nepotrebujete.</div>
                       </td>
                     </tr>
                   </table>
@@ -183,7 +183,7 @@
                       <td class="list-num" valign="top" width="44" style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:0.22em; color:#7A6A2E; padding-top:3px;">02</td>
                       <td valign="top">
                         <div class="t-title" style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:15px; font-weight:700; line-height:22px; color:#1A1A1A;">Veľké okno a&nbsp;priame slnko</div>
-                        <div class="t-small" style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:13.5px; font-weight:400; line-height:22px; color:#6B7280; margin-top:4px;">Farba odoláva UV žiareniu, takže doska nevybledne ani pri veľkom okne.</div>
+                        <div class="t-small" style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:13.5px; font-weight:400; line-height:22px; color:#6B7280; margin-top:4px;">Farba odoláva UV žiareniu, takže doska na svetle nevybledne.</div>
                       </td>
                     </tr>
                   </table>
@@ -226,7 +226,7 @@
               <tr>
                 <td style="background:#1A1A1A; border-radius:16px; padding:24px 28px;">
                   <div style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:0.24em; text-transform:uppercase; color:#ECD488; margin-bottom:10px;">Na čo myslieť</div>
-                  <div class="pull" style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:18px; font-weight:300; font-style:italic; line-height:27px; color:#FFFFFF;">Hrana a&nbsp;rohy sú najcitlivejšie miesta dosky. Ťažký hrniec na dosku položte, nespúšťajte ho na hranu. A <strong style="font-weight:700; font-style:normal; color:#ECD488;">profil hrany si prejdite s&nbsp;kamenárom</strong> – zaoblená hrana sa odštiepi ťažšie než ostrá.</div>
+                  <div class="pull" style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:18px; font-weight:300; font-style:italic; line-height:27px; color:#FFFFFF;">Hrana a&nbsp;rohy sú najcitlivejšie miesta dosky. Ťažký hrniec na dosku položte, nespúšťajte ho na hranu. A&nbsp;<strong style="font-weight:700; font-style:normal; color:#ECD488;">profil hrany si prejdite s&nbsp;kamenárom</strong> – zaoblená hrana sa odštiepi ťažšie než ostrá.</div>
                 </td>
               </tr>
             </table>
