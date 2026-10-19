@@ -2278,4 +2278,67 @@ write_nb("37-automatizacia-prezerany-dekor.html", doc(
         footer(reason=REASON_PREZ),
     ]))
 
+# 38 – CRM: odpoveď na „1 – stále vyberám“ z e-mailu 34 (čistý text, osobne od Mariána)
+# Text posiela CRM ako návrh na schválenie. Pri zmene treba v tom istom kroku zmeniť aj kópiu v orostone-crm (web/lib).
+write_nb("38-crm-tri-odpovede.html", plain(
+    {
+        "TYP:": "Osobný e-mail z CRM · odpoveď na e-mail 34 (čistý text)",
+        "SPÚŠŤAČ:": "Návrh vznikne v CRM, keď človek na e-mail 34 odpíše „1“; odíde až po schválení Mariánom",
+        "SEGMENT:": "Len ľudia, ktorí na e-mail 34 odpísali „1“, s rovnakými vylúčeniami ako pri 34 (odberatelia newslettera, odmietnutie alebo prehra, rozpracovaný obchod, nový dopyt, zákazník po kúpe). Neposielať ľuďom, ktorí od nás e-maily nechcú (v CRM sú trvalo označení, napríklad po odpovedi „3“ alebo „nie“)",
+        "PREDMET:": "Tri krátke odpovede k pracovnej doske",
+        "PREHEADER:": "Píšem o hrúbke 12 mm, horúcom riade, škvrnách a slnku pri okne.",
+        "CIEĽ:": "Odpovedať na tri technické otázky pri výbere dosky a ponúknuť ďalší krok: celé platne v showroome alebo vzorku domov.",
+        "POZNÁMKA:": "Oslovenie vy, vám s malým v ako v 34: osobný list, ale rovnaký text pre všetkých, ktorí odpísali „1“ (slovník, sekcia 1). Fakty: hrúbka 12 mm, plný podklad, ostrovček, presah do 200 mm bez konzoly a konzola pri sedení sú z data/articles/article-04-12mm-vs-20mm.ts; 300 °C a nasiakavosť pod 0,1 % z data/pricing.ts (HEAT_RESISTANCE_C, POROSITY_CLAIM); horúci hrniec priamo na dosku a UV z components/Home/HomeMaterial.tsx a data/product-seo-content.ts; doštička kvôli nožom z texty/17. Text posiela CRM: pri zmene treba v tom istom kroku zmeniť aj kópiu v repozitári orostone-crm (web/lib). Ak človek pri „1“ chce upraviť ponuku (variant 34 pre ponuku), odpovie mu Marián osobne, tento text to nenahrádza.",
+    },
+    "Tri krátke odpovede k pracovnej doske",
+    "Píšem o hrúbke 12 mm, horúcom riade, škvrnách a slnku pri okne.",
+    [
+        "ďakujem za odpoveď. Posielam vám krátke odpovede na tri otázky, ktoré pri výbere dosky dostávam často.",
+        "1. Hrúbka 12&nbsp;mm. Platne dodávame len v tejto hrúbke. Doska z nich pri plnom podklade skriniek zvládne aj ostrovček. Presah do 200&nbsp;mm netreba podopierať, presah na sedenie potrebuje vždy kovovú konzolu.",
+        "2. Teplo a nože. Doska znesie 300&nbsp;°C, horúci hrniec preto položíte priamo na ňu. Krájať odporúčam na doštičke – kvôli nožom, nie kvôli kameňu.",
+        "3. Škvrny a slnko. Nasiakavosť je pod 0,1&nbsp;%, takže víno ani olej sa do povrchu nevpijú a doska nepotrebuje impregnáciu. Farba odoláva UV žiareniu, pri veľkom okne nevybledne.",
+        "Celé platne si môžete pozrieť v showroome v Bošanoch – stačí mi vopred napísať, kedy prídete. Ak vám viac vyhovuje vzorka, pošleme ju domov.",
+    ],
+    REASON_DOPYT,
+    sign=SIGN_MARIAN_CRM,
+    unsub=False,
+))
+
+# 39 – Kampaň február: Sprievodca – Čo pracovná doska zvládne v bežnej kuchyni
+# Hero sprievodca-panvica-gothic-gold.jpg je výrez 1040 × 580 z ilustrácie na blogu
+# (public/images/blog/article-07/panvica-gothic-gold.webp), preto je pod ním poznámka ako v 18.
+write_nb("39-kampan-sprievodca-kuchyna.html", doc(
+    {
+        "TYP:": "Kampaň · séria Sprievodca",
+        "SPÚŠŤAČ:": "Kampaň vo februári 2027 o 9:00; termín určí Martin (vo februári idú aj 30 a 31, najviac 3 kampane do mesiaca)",
+        "SEGMENT:": "Všetci odberatelia (Newsletter – web, VSrLFs); vylúčiť segment RdLKj8, zoznam Dopyty (TKAHuh), segment U2XF6B a segment W8zMyZ (horizont hotovo)",
+        "PREDMET:": "Čo pracovná doska zvládne v bežnej kuchyni",
+        "PREHEADER:": "Panvica, slnko, nože aj káva: ukážeme, čo doska znesie a kde si dať pozor.",
+        "CIEĽ:": "Preložiť technický list do bežných situácií v kuchyni a povedať, kde má doska hranice → vzorka",
+        "POZNÁMKA:": "Fakty: 300 °C a nasiakavosť pod 0,1 % sú z data/pricing.ts (HEAT_RESISTANCE_C, POROSITY_CLAIM); UV, Mohs 7+ a bežné poškriabanie z components/Home/HomeMaterial.tsx a data/product-seo-content.ts; utierka a saponát, doštička kvôli nožom, hrana a rohy z texty/17; zaoblená hrana sa odštiepi ťažšie z data/articles/article-05-edges-chipping.ts. Odkaz pod tlačidlom vedie na článok o horúcom riade (data/articles/article-02-hot-pans.ts). Hero je ilustračný záber z blogu (article-07, panvica-gothic-gold.webp, výrez 1040 × 580), v e-maile to hovorí poznámka pod fotkou. Iný materiál v P. S. zámerne nemenujeme. Bez cien, zliav a dátumov.",
+    },
+    "Čo pracovná doska zvládne v bežnej kuchyni",
+    "Panvica, slnko, nože aj káva: ukážeme, čo doska znesie a kde si dať pozor.",
+    [
+        header("Sprievodca", "február 2027"),
+        eyebrow("Sprievodca", note="Raz za čas jedna odborná téma: hrúbka, hrany, údržba alebo cena."),
+        headline("Čo doska zvládne<br />" + accent_light("v bežnej kuchyni.")),
+        hero(IMG + "sprievodca-panvica-gothic-gold.jpg", "Liatinová panvica položená priamo na pracovnej doske v dekore Gothic Gold", capsule="Gothic Gold", top=14),
+        note("Ilustračný záber.", top=8),
+        text([
+            "technický list uvádza čísla. Pri rozhodovaní vás však viac zaujíma, čo z nich vyplýva v bežný deň. Prejdeme preto štyri situácie, ktoré poznáte z vlastnej kuchyne, a na konci aj to, na čo treba myslieť.",
+        ], top=24),
+        numbered([
+            ("Panvica zo sporáka, pekáč z rúry", "Doska znesie 300&nbsp;°C, takže horúci riad položíte priamo na ňu a podložku nepotrebujete."),
+            ("Veľké okno a priame slnko", "Farba odoláva UV žiareniu, takže doska nevybledne ani pri veľkom okne."),
+            ("Nože a posúvaný riad", "Povrch má tvrdosť 7+ na Mohsovej stupnici a bežnému poškriabaniu odolá. Krájajte však na doštičke, aby sa vám neotupili nože."),
+            ("Káva, víno a čistenie", "Nasiakavosť je pod 0,1&nbsp;%, škvrna preto ostane na povrchu. Doska nepotrebuje impregnáciu, stačí jej utierka a saponát."),
+        ], top=4),
+        quote_dark("Na čo myslieť", 'Hrana a rohy sú najcitlivejšie miesta dosky. Ťažký hrniec na dosku položte, nespúšťajte ho na hranu. A <strong style="font-weight:700; font-style:normal; color:#ECD488;">profil hrany si prejdite s kamenárom</strong> – zaoblená hrana sa odštiepi ťažšie než ostrá.', top=24),
+        cta("Objednať vzorku", SITE + "/vzorky", sub="Prvá vzorka je zadarmo. Vyskúšajte si na nej kávu aj víno.", link=("Prečítať viac o horúcom riade", SITE + "/blog/horuce-hrnce-na-sinterovanom-kameni"), width=260),
+        ps("Zvažujete popri sinterovanom kameni aj iný materiál? Odpíšte mi, ktorý – napíšem vám, v čom je pri vašej kuchyni rozdiel."),
+        signature(top=0),
+        footer(year="2027"),
+    ]))
+
 print("hotovo →", OUT)

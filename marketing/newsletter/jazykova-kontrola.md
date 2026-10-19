@@ -374,3 +374,12 @@ Nejde o text e-mailu, ale o nové vety v dokumentácii po spustení e-mailu 01 a
 | 1 | README (riadok 01) | s novým predmetom aj Preview textom | s novým predmetom aj novým textom v poli Preview text | gramatika | Názov poľa „Preview text“ sa neskloňuje; spojenie skloňovalo len jeho anglické podstatné meno. | prijaté, zapracované |
 | 2 | automatizacie-plan.md (kampaň 35) | Pre súhrn 28. 1. | Tieto údaje treba uviesť v súhrne 28. 1. | štylistika | Neúplná veta bez podmetu a prísudku nehovorila, čo sa má so súhrnom urobiť. | prijaté, zapracované |
 | 3 | reklama/meta-zlava-5.md (frekvencia) | rozpočet sa riadi len týmto oknom: pri viac ako 3 za 7 dní ho znížiť | rozpočet sa upravuje iba podľa údajov za toto obdobie: pri frekvencii vyššej ako 3 za 7 dní ho treba znížiť | štylistika | Rozpočet sa „oknom“ neriadi a po predložke „pri“ chýbal ukazovateľ. | prijaté, zapracované |
+
+### Nový obsah (19. 10. 2026, e-maily 38 a 39)
+
+Rozhodnutia Martina z 19. 10. 2026. Na kontrolu sú dva nové e-maily:
+
+- **38 – Tri krátke odpovede k pracovnej doske** – osobný list od Mariána v čistom texte pre ľudí, ktorí na e-mail 34 odpísali „1 – stále vyberám“. Návrh vznikne v CRM a odíde až po schválení Mariánom, s rovnakými vylúčeniami ako 34 a nikdy nie ľuďom, ktorí e-maily nechcú. Oslovenie *vy, vám* je s malým v ako v 34: je to osobný list, ale s rovnakým textom pre všetkých adresátov (slovník, sekcia 1). Text sa posiela z CRM, preto sa mení spolu s kópiou v repozitári orostone-crm.
+- **39 – Čo pracovná doska zvládne v bežnej kuchyni** – kampaň zo série Sprievodca na február 2027, termín určí Martin. Hlavná fotka je ilustračný záber z blogu (liatinová panvica na doske v dekore Gothic Gold) a pod fotkou to e-mail uvádza. P. S. zámerne nemenuje žiadny iný materiál.
+
+Fakty sú z `data/pricing.ts` (300 °C, nasiakavosť pod 0,1 %), z bloku o materiáli na titulnej stránke (`components/Home/HomeMaterial.tsx`: UV, Mohs 7+), z produktových textov (`data/product-seo-content.ts`), z e-mailu 17 (utierka a saponát, doštička kvôli nožom, hrana a rohy) a z článkov o hrúbke 12 mm (`article-04-12mm-vs-20mm.ts`) a o hranách (`article-05-edges-chipping.ts`).
