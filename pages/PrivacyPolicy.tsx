@@ -121,7 +121,7 @@ export const PrivacyPolicy = () => {
                     </tr>
                     <tr>
                       <td className="py-3 px-3 font-semibold text-brand-dark align-top">Analytika</td>
-                      <td className="py-3 px-3 align-top">Meranie návštevnosti a správania na webe (Google Analytics 4) po udelení súhlasu</td>
+                      <td className="py-3 px-3 align-top">Meranie návštevnosti a správania na webe (Google Analytics 4), v online chate analytické udalosti pred vašou prvou správou (zobrazenie pozdravu, prechod na stránku) a rozpoznanie vracajúceho sa návštevníka, všetko len po udelení súhlasu</td>
                       <td className="py-3 px-3 align-top">čl. 6 ods. 1 písm. a) – súhlas</td>
                     </tr>
                   </tbody>
@@ -339,8 +339,8 @@ export const PrivacyPolicy = () => {
                     <li>• IP adresa a identifikátor prehliadača len v nevratnej podobe (hash so soľou) na ochranu pred zneužitím</li>
                   </ul>
                   <p className="mt-2 text-xs text-brand-muted">
-                    Kým chat neotvoríte, stiahne sa len skript chatu a jeho verejná konfigurácia: do databázy sa nič neukladá,
-                    neodchádzajú žiadne udalosti a v prehliadači sa ukladá nanajvýš záznam o uvítacej bubline (pozri{' '}
+                    Kým chat neotvoríte, stiahne sa len skript chatu a jeho verejná konfigurácia. Do databázy sa nič neukladá,
+                    neodchádzajú žiadne udalosti a v prehliadači sa uloží nanajvýš záznam o uvítacej bubline (pozri{' '}
                     <Link to="/cookies" className={LEGAL_LINK}>zásady cookies</Link>).
                   </p>
                 </div>
@@ -498,9 +498,9 @@ export const PrivacyPolicy = () => {
               </div>
               <div className="mt-4 rounded-r-[3px] border-l-2 border-brand-dark bg-brand-sand p-4">
                 <p className="text-sm">
-                  Supabase (databáza dopytov a cenových ponúk) beží výhradne na serveroch v <strong>Nemecku (EÚ)</strong>, takže údaje
-                  uložené v tejto databáze zostávajú v EHP. Databáza online chatu a prílohy z chatu sú v Supabase na serveroch v <strong>Írsku (EÚ)</strong>{' '}
-                  a serverové funkcie chatu na platforme Vercel bežia tiež v Írsku (Dublin). Ostatní poskytovatelia v tabuľke spracúvajú údaje aj mimo EHP, napríklad Shopify spracúva
+                  Supabase beží výhradne na serveroch v EÚ: databáza webu (dopyty a cenové ponuky) v <strong>Nemecku</strong>, databáza online chatu
+                  a prílohy z chatu v <strong>Írsku</strong>. Údaje uložené v týchto databázach preto zostávajú v EHP. Serverové funkcie online chatu
+                  na platforme Vercel bežia tiež v Írsku (Dublin). Ostatní poskytovatelia v tabuľke spracúvajú údaje aj mimo EHP, napríklad Shopify spracúva
                   objednávky z e-shopu a nákupy nedokončené v pokladni (Kanada / USA) a Klaviyo profily zákazníkov a odberateľov (USA). Prenos údajov týmto poskytovateľom sa opiera
                   o rozhodnutie o primeranosti alebo o záruky uvedené v tabuľke vyššie.
                 </p>
