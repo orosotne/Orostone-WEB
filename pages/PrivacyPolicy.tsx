@@ -210,18 +210,18 @@ export const PrivacyPolicy = () => {
                     },
                     {
                       name: 'OpenAI',
-                      purpose: 'Jazykový model AI asistenta v online chate (hlavný model) cez Vercel AI Gateway',
+                      purpose: 'Jazykový model AI asistenta v online chate (hlavný model); údaje dostáva cez službu Vercel AI Gateway ako ďalší sprostredkovateľ spoločnosti Vercel Inc.',
                       location: 'USA',
                       note: 'Nulové uchovávanie údajov (zero data retention) je vynútené a trénovanie modelov na správach z chatu je zakázané.',
                     },
                     {
                       name: 'Anthropic',
-                      purpose: 'Jazykový model AI asistenta v online chate (záložný model) cez Vercel AI Gateway',
+                      purpose: 'Jazykový model AI asistenta v online chate (záložný model); údaje dostáva cez službu Vercel AI Gateway ako ďalší sprostredkovateľ spoločnosti Vercel Inc.',
                       location: 'USA',
                       note: 'Nulové uchovávanie údajov (zero data retention) je vynútené a trénovanie modelov na správach z chatu je zakázané.',
                     },
                     {
-                      name: 'Apple',
+                      name: 'Apple Inc.',
                       purpose: 'Push upozornenia na správy z online chatu v aplikácii pre obchodníkov Orostone',
                       location: 'USA',
                       note: 'Upozornenie obsahuje krátky náhľad správy z chatu.',
@@ -484,7 +484,7 @@ export const PrivacyPolicy = () => {
                       <td className="py-3 px-3 align-top">Štandardné zmluvné doložky (SCC)</td>
                     </tr>
                     <tr>
-                      <td className="py-3 px-3 font-semibold text-brand-dark align-top">Apple</td>
+                      <td className="py-3 px-3 font-semibold text-brand-dark align-top">Apple Inc.</td>
                       <td className="py-3 px-3 align-top">USA</td>
                       <td className="py-3 px-3 align-top">Štandardné zmluvné doložky (SCC)</td>
                     </tr>
