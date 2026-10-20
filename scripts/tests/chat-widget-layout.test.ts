@@ -26,7 +26,7 @@ const AVOIDED: Marked[] = [
   { file: 'components/Layout/MobileCtaBar.tsx', marker: 'fixed inset-x-0 bottom-0', attribute: `${AVOID}={visible ? '' : undefined}` },
   { file: 'pages/ShopProductDetail.tsx', marker: 'os-glass fixed inset-x-0 bottom-0', attribute: `${AVOID}={showStickyBar ? '' : undefined}` },
   { file: 'components/UI/CookieBanner.tsx', marker: 'aria-label="Súhlas s cookies"', attribute: `${AVOID}=""` },
-  { file: 'pages/BlogArticle.tsx', marker: 'aria-label="Back to top"', attribute: `${AVOID}={showBackToTop ? '' : undefined}` },
+  { file: 'pages/BlogArticle.tsx', marker: 'aria-label="Back to top"', attribute: `${AVOID}={backToTopShown ? '' : undefined}` },
   { file: 'components/Shop/SampleCartonTray.tsx', marker: "className={'sample-carton-tray'", attribute: `${AVOID}={docked && !compactDock ? '' : undefined}` },
   // At the top: the chat's greeting and window stay below the header
   { file: 'components/Layout/SiteHeader.tsx', marker: 'pt-[env(safe-area-inset-top,0px)] text-brand-dark', attribute: `${AVOID}=""` },
