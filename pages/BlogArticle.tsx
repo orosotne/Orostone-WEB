@@ -16,6 +16,7 @@ import { SEOHead } from '../components/UI/SEOHead';
 import { ActionButton, Container, Eyebrow, FaqList, GoldBand, Section, SectionHeader, TextLink } from '../components/Design';
 import { BlogCard } from '../components/Blog/BlogCard';
 import { keepUnits } from '../lib/utils';
+import { useHeaderLayerOpen } from '../hooks/useHeaderLayerOpen';
 
 // ===========================================
 // HELPERS
@@ -159,6 +160,10 @@ export const BlogArticle: React.FC = () => {
   const [activeHeading, setActiveHeading] = useState<string>('');
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
+  // The header's menu drawer or search results are open: the back-to-top button (fixed z-50, after the header in the
+  // page) would lie on top of them, on the end of a drawer row, so it fades away (lib/headerLayer.ts)
+  const headerLayerOpen = useHeaderLayerOpen();
+  const backToTopShown = showBackToTop && !headerLayerOpen;
 
   // Find article
   const article = useMemo(
@@ -581,12 +586,12 @@ export const BlogArticle: React.FC = () => {
         type="button"
         onClick={scrollToTop}
         className={`fixed bottom-[calc(84px+env(safe-area-inset-bottom,0px))] right-5 z-50 grid h-11 w-11 lg:bottom-6 lg:right-6 place-items-center rounded-full bg-brand-dark text-brand-light shadow-[0_8px_24px_rgba(26,26,26,0.18)] transition-[opacity,transform] duration-200 hover:bg-[#333331] ${
-          showBackToTop ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-2 opacity-0'
+          backToTopShown ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-2 opacity-0'
         }`}
         aria-label="Back to top"
-        tabIndex={showBackToTop ? 0 : -1}
+        tabIndex={backToTopShown ? 0 : -1}
         // Same corner as the AI chat button (widget.js): while this one shows, the chat button moves above it
-        data-aipredajca-avoid={showBackToTop ? '' : undefined}
+        data-aipredajca-avoid={backToTopShown ? '' : undefined}
       >
         <ArrowUp size={18} strokeWidth={1.75} />
       </button>
