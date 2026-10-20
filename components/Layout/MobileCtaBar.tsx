@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ActionButton } from '../Design';
+import { useHeaderLayerOpen } from '../../hooks/useHeaderLayerOpen';
 
 // Pages without the bar: product detail has its own sticky cart bar, checkout and legal pages stay clean.
 const HIDDEN_PREFIXES = ['/produkt/', '/vzorky', '/checkout', '/objednavka-dokoncena', '/vop', '/ochrana-sukromia', '/cookies', '/odstupenie-od-zmluvy', '/reklamacie', '/doprava', '/podmienky-rezervacie-ceny'];
 
-/** Mobile/tablet bottom bar (below lg): gold free-sample CTA + phone. Slides in after 400 px of scroll. */
+/**
+ * Mobile/tablet bottom bar (below lg): gold free-sample CTA + phone. Slides in after 400 px of scroll and slides away
+ * while the header's menu drawer or search results are open (it lies above them and would cover their bottom).
+ */
 export const MobileCtaBar: React.FC = () => {
   const { pathname } = useLocation();
-  const [visible, setVisible] = useState(false);
+  const [scrolledPast, setScrolledPast] = useState(false);
+  const headerLayerOpen = useHeaderLayerOpen();
 
   useEffect(() => {
     let ticking = false;
@@ -17,7 +22,7 @@ export const MobileCtaBar: React.FC = () => {
       ticking = true;
       requestAnimationFrame(() => {
         const y = window.scrollY;
-        setVisible((prev) => (prev ? y > 350 : y > 400));
+        setScrolledPast((prev) => (prev ? y > 350 : y > 400));
         ticking = false;
       });
     };
@@ -27,6 +32,8 @@ export const MobileCtaBar: React.FC = () => {
   }, []);
 
   if (HIDDEN_PREFIXES.some((p) => pathname.startsWith(p))) return null;
+
+  const visible = scrolledPast && !headerLayerOpen;
 
   return (
     <div
