@@ -248,7 +248,7 @@ export const SiteHeader: React.FC = () => {
         </div>
       </Container>
 
-      {/* Mega menu (desktop) */}
+      {/* Mega menu (desktop). The open AI chat window steps aside for it (data-aipredajca-hide in EshopMegaMenu) */}
       <AnimatePresence>
         {megaOpen && <EshopMegaMenu category={megaOpen} isOpen={true} onClose={() => setMegaOpen(null)} />}
       </AnimatePresence>

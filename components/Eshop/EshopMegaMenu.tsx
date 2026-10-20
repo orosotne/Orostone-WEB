@@ -248,6 +248,9 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
 
   if (!isOpen) return null;
 
+  // Both layouts carry data-aipredajca-hide (mounted only while open): an open AI chat window (widget.js) would lie
+  // over the products on the right and steps aside instead.
+
   // For non-sintered-stone categories, use a simple fallback layout
   if (category.id !== 'sintered-stone') {
     return (
@@ -256,6 +259,7 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -10 }}
         transition={SPRING}
+        data-aipredajca-hide=""
         className="absolute left-0 right-0 top-full z-50 border-t border-brand-line bg-brand-light shadow-[0_24px_40px_-24px_rgba(26,26,26,0.25)]"
       >
         <div className="mx-auto max-w-os px-[var(--os-edge)] py-10">
@@ -288,6 +292,7 @@ export const EshopMegaMenu: React.FC<EshopMegaMenuProps> = ({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10 }}
       transition={SPRING}
+      data-aipredajca-hide=""
       className="absolute left-0 right-0 top-full z-50 border-t border-brand-line bg-brand-light shadow-[0_24px_40px_-24px_rgba(26,26,26,0.25)]"
     >
       <div className="mx-auto max-w-os px-[var(--os-edge)]">

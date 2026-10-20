@@ -12,10 +12,12 @@ const HIDE = 'data-aipredajca-hide';
 
 interface Marked {
   file: string;
-  /** Text inside the element's opening tag that identifies it (once in the file). */
+  /** Text inside the element's opening tag that identifies it (once in the file, or `count` times). */
   marker: string;
   /** The attribute exactly as written on that tag. */
   attribute: string;
+  /** Tags that carry the marker: the variants of one element (default 1). */
+  count?: number;
 }
 
 // Bars and buttons at the bottom edge. Those that stay in the DOM while slid away or faded out carry the attribute
@@ -35,6 +37,8 @@ const HIDDEN_UNDER: Marked[] = [
   { file: 'components/Cart/CartDrawer.tsx', marker: 'role="dialog"', attribute: `${HIDE}=""` },
   { file: 'components/Layout/SiteHeader.tsx', marker: 'id="site-drawer"', attribute: `${HIDE}=""` },
   { file: 'components/Layout/SiteHeader.tsx', marker: 'absolute inset-x-0 top-full', attribute: `${HIDE}=""` },
+  // The desktop mega menu under the header, in both layouts (sintered stone, other categories)
+  { file: 'components/Eshop/EshopMegaMenu.tsx', marker: 'absolute left-0 right-0 top-full z-50', attribute: `${HIDE}=""`, count: 2 },
   { file: 'components/UI/CookieSettings.tsx', marker: 'role="dialog"', attribute: `${HIDE}=""` },
   { file: 'components/UI/NewsletterPopup.tsx', marker: 'role="dialog"', attribute: `${HIDE}=""` },
   { file: 'components/UI/DiscountPopup.tsx', marker: 'role="dialog"', attribute: `${HIDE}=""` },
@@ -75,14 +79,22 @@ function openingTagAt(source: string, index: number): string {
   assert.fail('opening tag is not closed');
 }
 
-function tagWithMarker(file: string, marker: string): string {
+/** The opening tags that carry `marker`: exactly `count` of them in the file. */
+function tagsWithMarker(file: string, marker: string, count = 1): string[] {
   const source = readFileSync(file, 'utf8');
-  const at = source.indexOf(marker);
-  assert.ok(at >= 0, `${file}: "${marker}" not found`);
-  assert.equal(source.indexOf(marker, at + 1), -1, `${file}: "${marker}" is not unique`);
-  const tag = openingTagAt(source, at);
-  assert.ok(tag.includes(marker), `${file}: "${marker}" is not inside one opening tag`);
-  return tag;
+  const tags: string[] = [];
+  for (let at = source.indexOf(marker); at >= 0; at = source.indexOf(marker, at + 1)) {
+    const tag = openingTagAt(source, at);
+    assert.ok(tag.includes(marker), `${file}: "${marker}" is not inside one opening tag`);
+    tags.push(tag);
+  }
+  assert.ok(tags.length > 0, `${file}: "${marker}" not found`);
+  assert.equal(tags.length, count, `${file}: "${marker}" found ${tags.length}×, expected ${count}×`);
+  return tags;
+}
+
+function tagWithMarker(file: string, marker: string): string {
+  return tagsWithMarker(file, marker)[0] as string;
 }
 
 test('the tag reader keeps arrows, comments and quoted ">" inside the tag', () => {
@@ -97,14 +109,14 @@ test('the tag reader keeps arrows, comments and quoted ">" inside the tag', () =
 });
 
 test('bars at the bottom edge keep the chat button above them', () => {
-  for (const { file, marker, attribute } of AVOIDED) {
-    assert.ok(tagWithMarker(file, marker).includes(attribute), `${file}: ${attribute} missing on the tag with "${marker}"`);
+  for (const { file, marker, attribute, count } of AVOIDED) {
+    for (const tag of tagsWithMarker(file, marker, count)) assert.ok(tag.includes(attribute), `${file}: ${attribute} missing on the tag with "${marker}"`);
   }
 });
 
-test('drawers, dialogs and lightboxes move the chat button out of the way while open', () => {
-  for (const { file, marker, attribute } of HIDDEN_UNDER) {
-    assert.ok(tagWithMarker(file, marker).includes(attribute), `${file}: ${attribute} missing on the tag with "${marker}"`);
+test('drawers, dialogs, lightboxes and menus move the chat button out of the way while open', () => {
+  for (const { file, marker, attribute, count } of HIDDEN_UNDER) {
+    for (const tag of tagsWithMarker(file, marker, count)) assert.ok(tag.includes(attribute), `${file}: ${attribute} missing on the tag with "${marker}"`);
   }
 });
 
