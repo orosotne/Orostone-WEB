@@ -585,6 +585,8 @@ export const BlogArticle: React.FC = () => {
         }`}
         aria-label="Back to top"
         tabIndex={showBackToTop ? 0 : -1}
+        // Same corner as the AI chat button (widget.js): while this one shows, the chat button moves above it
+        data-aipredajca-avoid={showBackToTop ? '' : undefined}
       >
         <ArrowUp size={18} strokeWidth={1.75} />
       </button>

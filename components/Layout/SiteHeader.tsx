@@ -166,6 +166,8 @@ export const SiteHeader: React.FC = () => {
     <header
       // While transparent over the homepage hero, a soft chalk veil (::before) keeps the dark nav, logo and icons
       // readable where the photo turns to dark wood (≥4.5:1 instead of ~2:1).
+      // The AI chat (widget.js) keeps its greeting and its window 12 px below the header (data-aipredajca-avoid)
+      data-aipredajca-avoid=""
       className={`fixed inset-x-0 z-50 pt-[env(safe-area-inset-top,0px)] text-brand-dark transition-shadow duration-300 before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:-z-10 before:h-[calc(100%+48px)] before:bg-gradient-to-b before:from-brand-light/65 before:via-brand-light/50 before:via-45% before:to-brand-light/0 before:transition-opacity before:duration-300 ${SHOW_ANNOUNCEMENT_BAR ? 'top-[36px]' : 'top-0'} ${isTransparent ? 'before:opacity-100' : 'shadow-[0_1px_0_rgba(26,26,26,0.08)] before:opacity-0'}`}
       onMouseLeave={() => setMegaOpen(null)}
     >
@@ -246,15 +248,16 @@ export const SiteHeader: React.FC = () => {
         </div>
       </Container>
 
-      {/* Mega menu (desktop) */}
+      {/* Mega menu (desktop). The open AI chat window steps aside for it (data-aipredajca-hide in EshopMegaMenu) */}
       <AnimatePresence>
         {megaOpen && <EshopMegaMenu category={megaOpen} isOpen={true} onClose={() => setMegaOpen(null)} />}
       </AnimatePresence>
 
-      {/* Search panel */}
+      {/* Search panel. The AI chat button (widget.js) steps aside while it is open: the results reach towards the
+          bottom of a phone and the keyboard is up (data-aipredajca-hide) */}
       <AnimatePresence>
         {searchOpen && (
-          <m.div {...panelMotion} className="absolute inset-x-0 top-full border-t border-brand-line bg-brand-light shadow-[0_1px_0_theme(colors.brand.line)]">
+          <m.div {...panelMotion} data-aipredajca-hide="" className="absolute inset-x-0 top-full border-t border-brand-line bg-brand-light shadow-[0_1px_0_theme(colors.brand.line)]">
             <Container className="py-5">
               <form onSubmit={handleSearchSubmit} className="relative mx-auto max-w-xl" role="search">
                 <Search size={18} className="absolute left-0 top-1/2 -translate-y-1/2 text-brand-muted" aria-hidden="true" />
@@ -310,10 +313,11 @@ export const SiteHeader: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {/* Drawer (below 1360 px) */}
+      {/* Drawer (below 1360 px). The AI chat button (widget.js) lies above every layer: it steps aside while the
+          drawer is open (data-aipredajca-hide) */}
       <AnimatePresence>
         {drawerOpen && (
-          <m.div {...panelMotion} id="site-drawer" className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto overscroll-contain border-t border-brand-line bg-brand-light lg:top-20 min-[1360px]:hidden">
+          <m.div {...panelMotion} id="site-drawer" data-aipredajca-hide="" className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto overscroll-contain border-t border-brand-line bg-brand-light lg:top-20 min-[1360px]:hidden">
             <Container className="grid gap-8 py-4 pb-[calc(32px+env(safe-area-inset-bottom,0px))]">
               <nav aria-label="Menu" className="grid">
                 {CATEGORY && (

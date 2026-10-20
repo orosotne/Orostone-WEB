@@ -281,6 +281,8 @@ export const ShopProductDetail: React.FC = () => {
         aria-hidden={!showStickyBar}
         // inert while slid away: its button must not be reachable by Tab or a screen reader
         inert={!showStickyBar}
+        // While the bar is up, the AI chat button (widget.js, bottom right) sits above it instead of covering it
+        data-aipredajca-avoid={showStickyBar ? '' : undefined}
       >
         <div className="flex items-center gap-3">
           <div className="min-w-0 flex-1">

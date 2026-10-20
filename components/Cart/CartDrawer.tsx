@@ -140,6 +140,9 @@ export const CartDrawer: React.FC = () => {
             role="dialog"
             aria-modal="true"
             aria-labelledby="cart-title"
+            // The AI chat button (widget.js) lies above every layer of the site and would cover "Prejsť do pokladne":
+            // it steps aside while the drawer is open
+            data-aipredajca-hide=""
             className="fixed right-0 top-0 z-[80] flex h-full w-full max-w-[440px] flex-col bg-brand-light text-brand-dark shadow-[-24px_0_60px_-30px_rgba(26,26,26,0.45)]"
           >
             {/* Header */}

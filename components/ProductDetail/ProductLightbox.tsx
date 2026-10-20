@@ -279,6 +279,8 @@ const LightboxView: React.FC<ProductLightboxProps> = ({
       role="dialog"
       aria-modal="true"
       aria-label={`${productName}, galéria`}
+      // The AI chat button (widget.js) lies above every layer of the site: it steps aside while this is open
+      data-aipredajca-hide=""
     >
       <m.div className="absolute inset-0 bg-black/95" style={{ opacity: backdropOpacity }} onClick={onClose} aria-hidden="true" />
 

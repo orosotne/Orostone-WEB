@@ -40,12 +40,12 @@ const initialView = (quantity: SampleQuantity): TrayView => ({ slots: [null, nul
 const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProps>(function SampleCartonTray(props, ref) {
   const svgId = useId().replaceAll(':', '');
   const homeRef = useRef<HTMLDivElement>(null), trayRef = useRef<HTMLElement>(null), graphicRef = useRef<HTMLDivElement>(null);
-  const [view, setView] = useState(() => initialView(props.quantity)), [docked, setDocked] = useState(false);
+  const [view, setView] = useState(() => initialView(props.quantity)), [docked, setDocked] = useState(false), [compactDock, setCompactDock] = useState(false);
   const model = useRef(initialView(props.quantity)), preferredSlot = useRef<number | null>(null), callbacks = useRef(props); callbacks.current = props;
   const animation = useRef<LottieAnimation | null>(null), mountVersion = useRef(0), operationVersion = useRef(0), alive = useRef(false);
   const segmentDone = useRef<(() => void) | null>(null), segmentEnd = useRef<number | null>(null), reduced = useRef(false), flight = useRef(createSampleFlight());
   const pendingMounts = useRef(new Map<LottieAnimation, () => void>()), pendingQuantityProp = useRef<SampleQuantity | null>(null);
-  const transferring = useRef(false), dockRaf = useRef(0), isDocked = useRef(false), dockFits = useRef(false), homeHeight = useRef(0), scrollDone = useRef<(() => void) | null>(null);
+  const transferring = useRef(false), dockRaf = useRef(0), isDocked = useRef(false), isCompactDock = useRef(false), dockFits = useRef(false), homeHeight = useRef(0), scrollDone = useRef<(() => void) | null>(null);
   const insertingFromGallery = useRef(false);
   const dockMotion = useRef(createDockMotion()), dockSnapshot = useRef<DockSnapshot | null>(null), inlineGraphicOffset = useRef(54);
   // Browser chrome changes height during scrolling in Safari and social webviews.
@@ -125,6 +125,7 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     const homeMinHeight = next ? homeHeight.current + 'px' : '';
     if (home.style.minHeight !== homeMinHeight) home.style.minHeight = homeMinHeight;
     if (next !== isDocked.current) { isDocked.current = next; setDocked(next); }
+    if (compactMobile() !== isCompactDock.current) { isCompactDock.current = compactMobile(); setCompactDock(isCompactDock.current); }
   };
   const scheduleDock = () => { if (alive.current && !dockRaf.current) dockRaf.current = requestAnimationFrame(syncDock); };
   useLayoutEffect(() => {
@@ -319,7 +320,10 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
   const ids = view.packed ? view.visible.filter(i => view.slots[i]) : view.visible;
   const labelLeft = (i: number) => ((cartonLeft(ids.length, view.packed) + (view.packed ? 180 : 235) * ids.indexOf(i) + 90 - 104) / 720 * 100) + '%';
   return <div ref={homeRef} className={'sample-carton-home ' + (props.className ?? '')}>
-    <section ref={trayRef} className={'sample-carton-tray' + (docked ? ' is-docked' : '')} aria-label="Váš výber vzoriek" aria-busy={view.busy || props.locked} data-quantity={view.quantity} data-packed={view.packed}>
+    {/* Docked at the bottom edge, the tray is kept clear of the AI chat button (widget.js). On a phone the docked tray
+        spans the width with the carousel's "Pridať do výberu" 12 px above it: no corner is left free, so the button
+        steps aside while the visitor picks samples (above the tray it would lie on that button) */}
+    <section ref={trayRef} className={'sample-carton-tray' + (docked ? ' is-docked' : '')} data-aipredajca-avoid={docked && !compactDock ? '' : undefined} data-aipredajca-hide={docked && compactDock ? '' : undefined} aria-label="Váš výber vzoriek" aria-busy={view.busy || props.locked} data-quantity={view.quantity} data-packed={view.packed}>
       <div className="sample-carton-heading"><div><p>Váš výber <strong>{view.slots.filter(Boolean).length} / {view.quantity}</strong></p><span>Spolu {formatSamplePrice(quoteSampleOrder(view.quantity).totalCents)}<span className="sample-carton-delivery-label"> s&nbsp;dopravou</span></span></div><button type="button" className="sample-carton-continue" disabled={view.busy || props.locked || !complete} onClick={props.onContinue}>Skontrolovať <span aria-hidden="true">→</span></button></div>
       <div ref={graphicRef} className="sample-carton-graphic" aria-hidden="true">
         {view.fallback && <svg className="sample-carton-fallback" viewBox={SCENE_VIEW}>{view.visible.map((i, rank) => <g key={i} transform={'translate(' + (cartonLeft(view.visible.length) + 235 * rank) + ',310)'}>

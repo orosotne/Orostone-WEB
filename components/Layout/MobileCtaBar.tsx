@@ -34,6 +34,8 @@ export const MobileCtaBar: React.FC = () => {
       aria-hidden={!visible}
       // inert while slid away: its links must not be reachable by Tab or a screen reader
       inert={!visible}
+      // While the bar is up, the AI chat button (widget.js, bottom right) sits above it instead of covering it
+      data-aipredajca-avoid={visible ? '' : undefined}
     >
       <ActionButton variant="gold" to="/vzorky" className="min-h-[50px] flex-1">
         Vzorka zadarmo

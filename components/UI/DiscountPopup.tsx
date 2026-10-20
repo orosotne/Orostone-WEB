@@ -15,6 +15,7 @@ import { trackGA4Event } from '../../services/analytics';
 import { useBackgroundTurnstile } from '../../hooks/useBackgroundTurnstile';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { useDialogFocus } from '../../hooks/useDialogFocus';
+import { useAiChatOpen } from '../../hooks/useAiChatOpen';
 import { useCookies } from '../../context/CookieContext';
 import { useCartUI } from '../../context/CartContext';
 import { ActionButton, Eyebrow } from '../Design';
@@ -113,6 +114,7 @@ export const DiscountPopup: React.FC = () => {
   const cancelledRef = useRef(false);
   const { hasConsented, isSettingsOpen } = useCookies();
   const { isOpen: isCartOpen } = useCartUI();
+  const isChatOpen = useAiChatOpen();
   const { pathname, search } = useLocation();
   const reduceMotion = useReducedMotion();
 
@@ -124,8 +126,9 @@ export const DiscountPopup: React.FC = () => {
     if (hasConsented && isAdOfferVisit(search, null)) write('session', AD_OFFER_SESSION_KEY, '1');
   }, [hasConsented, search]);
 
-  // Wait until the cookie bar is answered and nothing else is open; the page decides the delay (20 s, ads 3 s)
-  const blocked = !hasConsented || isSettingsOpen || isCartOpen;
+  // Wait until the cookie bar is answered and nothing else is open (the cart, the cookie settings, the AI chat window,
+  // which a dialog would take the focus from); the page decides the delay (20 s, ads 3 s)
+  const blocked = !hasConsented || isSettingsOpen || isCartOpen || isChatOpen;
   useEffect(() => {
     if (blocked) return;
     const decision = currentDecision(pathname, search);
@@ -240,6 +243,9 @@ export const DiscountPopup: React.FC = () => {
               role="dialog"
               aria-modal="true"
               aria-labelledby="discount-popup-title"
+              // The AI chat button (widget.js) lies above every layer of the site and would cover the sheet's buttons:
+              // it steps aside while this is open
+              data-aipredajca-hide=""
               className="pointer-events-auto relative flex max-h-full w-full max-w-[460px] flex-col overflow-y-auto overscroll-contain rounded-[14px] bg-brand-dark text-brand-light shadow-[0_32px_80px_-24px_rgba(0,0,0,0.65)] sm:max-w-[760px] sm:flex-row sm:rounded-[6px]"
             >
               {/* Photo with the gold 5 % sticker: a band on phones (lower on short screens, gone on very short ones so the

@@ -25,6 +25,7 @@ import { trackGA4Event } from '../../services/analytics';
 import { useBackgroundTurnstile } from '../../hooks/useBackgroundTurnstile';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { useDialogFocus } from '../../hooks/useDialogFocus';
+import { useAiChatOpen } from '../../hooks/useAiChatOpen';
 import { useCookies } from '../../context/CookieContext';
 import { useCartUI } from '../../context/CartContext';
 import { ActionButton, Eyebrow } from '../Design';
@@ -96,12 +97,14 @@ export const NewsletterPopup: React.FC = () => {
   const cancelledRef = useRef(false);
   const { hasConsented, isSettingsOpen } = useCookies();
   const { isOpen: isCartOpen } = useCartUI();
+  const isChatOpen = useAiChatOpen();
   const { pathname } = useLocation();
 
   useScrollLock(visible);
 
-  // Wait until the cookie bar is answered and nothing else is open, then give the visitor a few seconds on the page
-  const blocked = !hasConsented || isSettingsOpen || isCartOpen || HIDDEN_ON.includes(pathname);
+  // Wait until the cookie bar is answered and nothing else is open (the cart, the cookie settings, the AI chat window,
+  // which a dialog would take the focus from), then give the visitor a few seconds on the page
+  const blocked = !hasConsented || isSettingsOpen || isCartOpen || isChatOpen || HIDDEN_ON.includes(pathname);
   useEffect(() => {
     if (blocked || !mayShow()) return;
     const timer = setTimeout(() => {
@@ -195,6 +198,8 @@ export const NewsletterPopup: React.FC = () => {
             role="dialog"
             aria-modal="true"
             aria-labelledby="newsletter-popup-title"
+            // The AI chat button (widget.js) lies above every layer of the site: it steps aside while this is open
+            data-aipredajca-hide=""
             // Centred by flex, not by translate classes: framer-motion's inline transform would override those
             className="pointer-events-none fixed inset-0 z-[10001] flex items-center justify-center p-3 sm:p-6"
           >
