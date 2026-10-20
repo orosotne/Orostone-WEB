@@ -11,9 +11,10 @@
 //   2. Zmaže aj neaktívne riadky, ktoré sú odhlásené viac ako 30 dní.
 //   3. Overí pokusy o odber, ktoré subscribe-newsletter poslal do Klaviya (stĺpec
 //      klaviyo_attempted_at) a sú staršie ako hodina: sú v zozname „Newsletter – web“
-//      prihlásené? Klaviyo úlohu odberu spracúva aj niekoľko minút, preto to neoveruje
-//      subscribe-newsletter hneď po odbere, ale až táto nočná kontrola. Kto chýba, toho tím
-//      dostane v jednom upozornení. Overený pokus si označí v klaviyo_checked_at (migrácia
+//      prihlásené? Overuje po 20 adresách, viac hodnôt filter zoznamu neberie. Klaviyo
+//      úlohu odberu spracúva aj niekoľko minút, preto to neoveruje subscribe-newsletter
+//      hneď po odbere, ale až táto nočná kontrola. Kto chýba, toho tím dostane v jednom
+//      upozornení. Overený pokus si označí v klaviyo_checked_at (migrácia
 //      20261013_newsletter_klaviyo_checked.sql), každý pokus sa tak overí raz. Vynechaný alebo
 //      neúspešný beh nič nevynechá: neoverený pokus počká na najbližší úspešný beh.
 //
@@ -36,8 +37,13 @@ import { sendEmail } from '../_shared/resend.ts';
 
 const SUPABASE_URL = Deno.env.get('SUPABASE_URL') ?? '';
 const SUPABASE_SERVICE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '';
-/** Koľko adries overiť v Klaviyu jednou požiadavkou (filter any(email, …)). */
-const CHUNK = 50;
+/** Koľko adries overiť v Klaviyu jednou požiadavkou GET profiles (filter any(email, …)). */
+const PROFILES_CHUNK = 50;
+/**
+ * GET lists/{id}/profiles berie vo filtri any(email, …) najviac 20 hodnôt, pri viac vráti 400
+ * „Maximum number of filter values is 20“ (overené 19. 10. 2026).
+ */
+const LIST_CHUNK = 20;
 /** Koľko riadkov čítať z databázy naraz. */
 const PAGE = 1000;
 const RETENTION_DAYS = 30;
@@ -46,14 +52,14 @@ const ALERT_EMAIL = 'dopyt@orostone.sk';
 const VERIFY_AFTER_MS = 60 * 60 * 1000;
 
 /**
- * Profily z Klaviya (e-mail malými písmenami → e-mailový marketing) pre adresy, po 50.
- * `path` je `profiles` (celý účet) alebo `lists/<id>/profiles` (len členovia zoznamu).
- * Pri chybe Klaviya hádže.
+ * Profily z Klaviya (e-mail malými písmenami → e-mailový marketing) pre adresy, po `chunk` adresách.
+ * `path` je `profiles` (celý účet, PROFILES_CHUNK) alebo `lists/<id>/profiles` (len členovia
+ * zoznamu, LIST_CHUNK). Pri chybe Klaviya hádže.
  */
-async function klaviyoMarketing(path: string, emails: string[]): Promise<Map<string, EmailMarketing>> {
+async function klaviyoMarketing(path: string, emails: string[], chunk: number): Promise<Map<string, EmailMarketing>> {
   const out = new Map<string, EmailMarketing>();
-  for (let i = 0; i < emails.length; i += CHUNK) {
-    const filter = encodeURIComponent(`any(email,${JSON.stringify(emails.slice(i, i + CHUNK))})`);
+  for (let i = 0; i < emails.length; i += chunk) {
+    const filter = encodeURIComponent(`any(email,${JSON.stringify(emails.slice(i, i + chunk))})`);
     const res = await klaviyoGet(`${path}?filter=${filter}&additional-fields[profile]=subscriptions&page[size]=100`);
     // Bez tela odpovede: chyba filtra by do logu vrátila e-mailové adresy.
     if (!res.ok) throw new Error(`Klaviyo ${res.status} ${(await res.json().catch(() => null))?.errors?.[0]?.code ?? ''}`);
@@ -68,13 +74,13 @@ async function klaviyoMarketing(path: string, emails: string[]): Promise<Map<str
 
 /** Adresy (malými písmenami), ktoré sú v Klaviyu odhlásené alebo potlačené. Pri chybe Klaviya hádže. */
 async function optedOutInKlaviyo(emails: string[]): Promise<Set<string>> {
-  const marketing = await klaviyoMarketing('profiles', emails);
+  const marketing = await klaviyoMarketing('profiles', emails, PROFILES_CHUNK);
   return new Set([...marketing].filter(([, m]) => optedOut(m)).map(([email]) => email));
 }
 
 /** Adresy, ktoré v zozname „Newsletter – web“ nie sú prihlásené (chýbajú alebo nemajú súhlas). */
 async function notSubscribedInList(emails: string[]): Promise<string[]> {
-  const members = await klaviyoMarketing(`lists/${KLAVIYO_LIST_ID}/profiles`, emails);
+  const members = await klaviyoMarketing(`lists/${KLAVIYO_LIST_ID}/profiles`, emails, LIST_CHUNK);
   return emails.filter((email) => {
     const m = members.get(email);
     return !(m?.consent === 'SUBSCRIBED' && !optedOut(m));
