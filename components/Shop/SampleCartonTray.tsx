@@ -6,6 +6,7 @@ import { createSampleFlight, siteHeaderBottom } from './sampleCartonFlight';
 import { createDockMotion } from './sampleCartonDock';
 import type { DockSnapshot } from './sampleCartonDock';
 import { formatSamplePrice, quoteSampleOrder } from '../../services/shopify/samples';
+import { useHeaderLayerOpen } from '../../hooks/useHeaderLayerOpen';
 import './SampleCartonTray.css';
 export type { SampleDecor, SampleQuantity } from './sampleCartonMotion';
 export interface SampleCartonTrayHandle {
@@ -47,6 +48,8 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
   const pendingMounts = useRef(new Map<LottieAnimation, () => void>()), pendingQuantityProp = useRef<SampleQuantity | null>(null);
   const transferring = useRef(false), dockRaf = useRef(0), isDocked = useRef(false), isCompactDock = useRef(false), dockFits = useRef(false), homeHeight = useRef(0), scrollDone = useRef<(() => void) | null>(null);
   const insertingFromGallery = useRef(false);
+  // The header's menu drawer or search panel is open: the docked tray lies above it and fades away (lib/headerLayer.ts)
+  const headerLayerOpen = useHeaderLayerOpen();
   const dockMotion = useRef(createDockMotion()), dockSnapshot = useRef<DockSnapshot | null>(null), inlineGraphicOffset = useRef(54);
   // Browser chrome changes height during scrolling in Safari and social webviews.
   // Only a new width/orientation may change the scene's responsive dimensions.
@@ -319,11 +322,13 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
   const complete = view.slots.filter(Boolean).length === view.quantity;
   const ids = view.packed ? view.visible.filter(i => view.slots[i]) : view.visible;
   const labelLeft = (i: number) => ((cartonLeft(ids.length, view.packed) + (view.packed ? 180 : 235) * ids.indexOf(i) + 90 - 104) / 720 * 100) + '%';
+  const underHeaderLayer = docked && headerLayerOpen;
   return <div ref={homeRef} className={'sample-carton-home ' + (props.className ?? '')}>
     {/* Docked at the bottom edge, the tray is kept clear of the AI chat button (widget.js). On a phone the docked tray
         spans the width with the carousel's "Pridať do výberu" 12 px above it: no corner is left free, so the button
-        steps aside while the visitor picks samples (above the tray it would lie on that button) */}
-    <section ref={trayRef} className={'sample-carton-tray' + (docked ? ' is-docked' : '')} data-aipredajca-avoid={docked && !compactDock ? '' : undefined} data-aipredajca-hide={docked && compactDock ? '' : undefined} aria-label="Váš výber vzoriek" aria-busy={view.busy || props.locked} data-quantity={view.quantity} data-packed={view.packed}>
+        steps aside while the visitor picks samples (above the tray it would lie on that button). Under the open menu
+        drawer or search panel it is hidden (aria-hidden, inert), which the chat button reads as gone */}
+    <section ref={trayRef} className={'sample-carton-tray' + (docked ? ' is-docked' : '') + (underHeaderLayer ? ' is-under-header-layer' : '')} data-aipredajca-avoid={docked && !compactDock ? '' : undefined} data-aipredajca-hide={docked && compactDock ? '' : undefined} aria-hidden={underHeaderLayer || undefined} inert={underHeaderLayer || undefined} aria-label="Váš výber vzoriek" aria-busy={view.busy || props.locked} data-quantity={view.quantity} data-packed={view.packed}>
       <div className="sample-carton-heading"><div><p>Váš výber <strong>{view.slots.filter(Boolean).length} / {view.quantity}</strong></p><span>Spolu {formatSamplePrice(quoteSampleOrder(view.quantity).totalCents)}<span className="sample-carton-delivery-label"> s&nbsp;dopravou</span></span></div><button type="button" className="sample-carton-continue" disabled={view.busy || props.locked || !complete} onClick={props.onContinue}>Skontrolovať <span aria-hidden="true">→</span></button></div>
       <div ref={graphicRef} className="sample-carton-graphic" aria-hidden="true">
         {view.fallback && <svg className="sample-carton-fallback" viewBox={SCENE_VIEW}>{view.visible.map((i, rank) => <g key={i} transform={'translate(' + (cartonLeft(view.visible.length) + 235 * rank) + ',310)'}>

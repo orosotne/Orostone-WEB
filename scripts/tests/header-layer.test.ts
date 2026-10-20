@@ -68,3 +68,21 @@ test('the product page cart bar slides away while a header layer is open, as for
     assert.ok(tag.includes(attribute), `${file}: ${attribute} missing on the bar`);
   }
 });
+
+test('/vzorky: the docked sample tray (z-index 900) fades away under an open header layer', () => {
+  const file = 'components/Shop/SampleCartonTray.tsx';
+  const source = readFileSync(file, 'utf8');
+  assert.match(source, /const headerLayerOpen = useHeaderLayerOpen\(\);/);
+  assert.match(source, /const underHeaderLayer = docked && headerLayerOpen;/);
+  const at = source.indexOf('<section ref={trayRef}');
+  assert.ok(at >= 0, `${file}: the tray's <section> not found`);
+  const tag = source.slice(at, source.indexOf('>\n', at));
+  for (const attribute of ["(underHeaderLayer ? ' is-under-header-layer' : '')", 'aria-hidden={underHeaderLayer || undefined}', 'inert={underHeaderLayer || undefined}']) {
+    assert.ok(tag.includes(attribute), `${file}: ${attribute} missing on the tray`);
+  }
+  // Only the docked tray: inline in the page flow it lies under the header's layers anyway
+  assert.match(
+    readFileSync('components/Shop/SampleCartonTray.css', 'utf8'),
+    /\.sample-carton-tray\.is-docked\.is-under-header-layer\{opacity:0;visibility:hidden;/,
+  );
+});

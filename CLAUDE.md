@@ -73,6 +73,7 @@ The site uses a new design system (October 2026). New and rewritten sections use
 - Gold #ECD488 only as an accent (gold CTA in the header, the gold band and the mobile bar), never as text on a light background.
 - Restyling must keep URLs, meta, JSON-LD, H1/H2, `id` anchors, tables, internal links and every tracking call (`trackMetaEvent`, `trackGA4*`) intact; the seo-diff check blocks removals.
 - The AI chat button (widget.js, loaded in `index.html`) floats bottom right above every layer of the site. A new element fixed to the bottom edge carries `data-aipredajca-avoid` while it shows (the button moves above it); a new drawer, drop-down panel (search, mega menu), dialog or lightbox gets `data-aipredajca-hide` on an element that is mounted only while it is open (the button steps aside). The header carries `data-aipredajca-avoid` as well: the chat's greeting and window stay below it. `scripts/tests/chat-widget-layout.test.ts` lists them. A new pop-up that opens by itself waits while the chat window is open (`hooks/useAiChatOpen.ts`, as in NewsletterPopup and DiscountPopup).
+- Bars fixed to the bottom edge lie above the header (z-50): on a phone they step away while the header's menu drawer or search panel is open (`hooks/useHeaderLayerOpen.ts`, as in MobileCtaBar, the product page's cart bar and the docked sample tray), or they cover the bottom of the menu.
 
 ## State Management
 
