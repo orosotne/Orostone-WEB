@@ -48,7 +48,7 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
   const pendingMounts = useRef(new Map<LottieAnimation, () => void>()), pendingQuantityProp = useRef<SampleQuantity | null>(null);
   const transferring = useRef(false), dockRaf = useRef(0), isDocked = useRef(false), isCompactDock = useRef(false), dockFits = useRef(false), homeHeight = useRef(0), scrollDone = useRef<(() => void) | null>(null);
   const insertingFromGallery = useRef(false);
-  // The header's menu drawer or search panel is open: the docked tray lies above it and fades away (lib/headerLayer.ts)
+  // The header's menu drawer or search results are open: the docked tray lies above them and fades away (lib/headerLayer.ts)
   const headerLayerOpen = useHeaderLayerOpen();
   const dockMotion = useRef(createDockMotion()), dockSnapshot = useRef<DockSnapshot | null>(null), inlineGraphicOffset = useRef(54);
   // Browser chrome changes height during scrolling in Safari and social webviews.
@@ -327,7 +327,7 @@ const SampleCartonTray = forwardRef<SampleCartonTrayHandle, SampleCartonTrayProp
     {/* Docked at the bottom edge, the tray is kept clear of the AI chat button (widget.js). On a phone the docked tray
         spans the width with the carousel's "Pridať do výberu" 12 px above it: no corner is left free, so the button
         steps aside while the visitor picks samples (above the tray it would lie on that button). Under the open menu
-        drawer or search panel it is hidden (aria-hidden, inert), which the chat button reads as gone */}
+        drawer or search results it is hidden (aria-hidden, inert), which the chat button reads as gone */}
     <section ref={trayRef} className={'sample-carton-tray' + (docked ? ' is-docked' : '') + (underHeaderLayer ? ' is-under-header-layer' : '')} data-aipredajca-avoid={docked && !compactDock ? '' : undefined} data-aipredajca-hide={docked && compactDock ? '' : undefined} aria-hidden={underHeaderLayer || undefined} inert={underHeaderLayer || undefined} aria-label="Váš výber vzoriek" aria-busy={view.busy || props.locked} data-quantity={view.quantity} data-packed={view.packed}>
       <div className="sample-carton-heading"><div><p>Váš výber <strong>{view.slots.filter(Boolean).length} / {view.quantity}</strong></p><span>Spolu {formatSamplePrice(quoteSampleOrder(view.quantity).totalCents)}<span className="sample-carton-delivery-label"> s&nbsp;dopravou</span></span></div><button type="button" className="sample-carton-continue" disabled={view.busy || props.locked || !complete} onClick={props.onContinue}>Skontrolovať <span aria-hidden="true">→</span></button></div>
       <div ref={graphicRef} className="sample-carton-graphic" aria-hidden="true">

@@ -153,9 +153,14 @@ export const SiteHeader: React.FC = () => {
   // The drawer covers the page: keep the page behind it from scrolling (iOS-safe, same lock as the other overlays)
   useScrollLock(drawerOpen);
 
-  // The bars fixed to the bottom edge and the docked sample tray lie above the header and step away while the drawer
-  // or the search panel is open, or they would cover its bottom (lib/headerLayer.ts)
-  const phoneLayerOpen = drawerOpen || searchOpen;
+  // The search results (or the „no results“ note) under the field, from the second letter on
+  const searchResultsShown = searchOpen && searchQuery.length >= 2;
+
+  // The bars fixed to the bottom edge, the docked sample tray and the blog's back-to-top button lie above the header
+  // and step away while the drawer or the search results are open, or they would cover their bottom
+  // (lib/headerLayer.ts). The bare search field (keyboard closed, no letters yet) is short and covers nothing, and it
+  // stays open while the page scrolls, so it alone does not count
+  const phoneLayerOpen = drawerOpen || searchResultsShown;
   useEffect(() => {
     setHeaderLayerOpen(phoneLayerOpen);
   }, [phoneLayerOpen]);
@@ -282,7 +287,7 @@ export const SiteHeader: React.FC = () => {
                   className="w-full border-b border-brand-dark bg-transparent py-3 pl-7 pr-2 text-lg text-brand-dark placeholder:text-brand-muted focus:outline-none"
                 />
               </form>
-              {searchQuery.length >= 2 && (
+              {searchResultsShown && (
                 <div className="mx-auto mt-3 max-w-xl overflow-hidden rounded-[10px] border border-brand-line bg-white">
                   {searchResults.length > 0 ? (
                     <>

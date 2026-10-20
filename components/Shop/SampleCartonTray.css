@@ -52,7 +52,7 @@
  .sample-carton-tray.is-docked .sample-carton-label.is-filled .sample-carton-slot-name{font-weight:600;color:#242822}
  .sample-carton-tray.is-docked .sample-carton-action-icon{display:block;flex:none;font-size:18px;line-height:1;color:#62665d}
 }
-/* While the header's menu drawer or search panel is open (lib/headerLayer.ts) the docked tray, which lies above the
+/* While the header's menu drawer or search results are open (lib/headerLayer.ts) the docked tray, which lies above the
    header, fades away and comes back afterwards, as the bottom bars slide away on the other pages. */
 .sample-carton-tray.is-docked{transition:opacity .2s,visibility 0s}
 .sample-carton-tray.is-docked.is-under-header-layer{opacity:0;visibility:hidden;transition:opacity .2s,visibility 0s .2s}

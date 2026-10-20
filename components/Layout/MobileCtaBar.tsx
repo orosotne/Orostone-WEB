@@ -8,7 +8,7 @@ const HIDDEN_PREFIXES = ['/produkt/', '/vzorky', '/checkout', '/objednavka-dokon
 
 /**
  * Mobile/tablet bottom bar (below lg): gold free-sample CTA + phone. Slides in after 400 px of scroll and slides away
- * while the header's menu drawer or search panel is open (it lies above them and would cover their bottom).
+ * while the header's menu drawer or search results are open (it lies above them and would cover their bottom).
  */
 export const MobileCtaBar: React.FC = () => {
   const { pathname } = useLocation();

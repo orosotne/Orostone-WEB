@@ -54,7 +54,7 @@ export const ShopProductDetail: React.FC = () => {
   // The hero's add-to-cart buttons are on screen: the mobile sticky bar steps aside (starts hidden, slides in)
   const [ctaVisible, setCtaVisible] = useState(true);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  // The header's menu drawer or search panel is open: the sticky bar lies above it and slides away
+  // The header's menu drawer or search results are open: the sticky bar lies above them and slides away
   const headerLayerOpen = useHeaderLayerOpen();
   const [installationSelected, setInstallationSelected] = useState(false);
   const [installationAreaM2, setInstallationAreaM2] = useState<number | null>(null);
