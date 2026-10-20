@@ -31,6 +31,7 @@ import {
 import { MAX_SAMPLES } from '../constants';
 import { ActionButton, GoldBand } from '../components/Design';
 import { Toast } from '../components/UI/Toast';
+import { useHeaderLayerOpen } from '../hooks/useHeaderLayerOpen';
 
 const SITE_URL = import.meta.env.VITE_PUBLIC_SITE_URL ?? 'https://orostone.sk';
 
@@ -53,6 +54,8 @@ export const ShopProductDetail: React.FC = () => {
   // The hero's add-to-cart buttons are on screen: the mobile sticky bar steps aside (starts hidden, slides in)
   const [ctaVisible, setCtaVisible] = useState(true);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  // The header's menu drawer or search panel is open: the sticky bar lies above it and slides away
+  const headerLayerOpen = useHeaderLayerOpen();
   const [installationSelected, setInstallationSelected] = useState(false);
   const [installationAreaM2, setInstallationAreaM2] = useState<number | null>(null);
 
@@ -225,7 +228,7 @@ export const ShopProductDetail: React.FC = () => {
     calculateSlabPrice(product.pricePerM2, product.dimensions) * selectedBundle.quantity * (1 - selectedBundle.discountPercent / 100) * 100,
   ) / 100;
   const quantityLabel = `${selectedBundle.quantity} ${selectedBundle.quantity === 1 ? 'platňa' : selectedBundle.quantity < 5 ? 'platne' : 'platní'}`;
-  const showStickyBar = !ctaVisible && !isCartOpen && !isLightboxOpen;
+  const showStickyBar = !ctaVisible && !isCartOpen && !isLightboxOpen && !headerLayerOpen;
   const inCart = isInCart(product.id);
 
   return (
@@ -272,7 +275,8 @@ export const ShopProductDetail: React.FC = () => {
       <GoldBand od="produkt" dekor={product.id} title="Potrebujete dosku na mieru?" />
 
       {/* Sticky add-to-cart bar, phones only: one row (price + button). It shows while the hero's buttons are off
-          screen and slides away when they scroll into view, so the two never compete. The sample stays in the hero. */}
+          screen and slides away when they scroll into view, so the two never compete. It also slides away while the cart,
+          the lightbox or the header's menu or search is open. The sample stays in the hero. */}
       <div
         className={cn(
           'os-glass fixed inset-x-0 bottom-0 z-[60] border-t border-brand-line px-4 pb-[calc(10px+env(safe-area-inset-bottom,0px))] pt-2.5 shadow-[0_-10px_30px_-18px_rgba(26,26,26,0.35)] transition-transform duration-300 [transition-timing-function:cubic-bezier(.2,.7,.2,1)] motion-reduce:transition-none lg:hidden',

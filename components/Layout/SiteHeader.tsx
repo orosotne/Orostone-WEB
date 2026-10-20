@@ -10,6 +10,7 @@ import { ActionButton, Container } from '../Design';
 import { shopifySized } from '../../lib/shopifyImage';
 import { titleCase } from '../../lib/utils';
 import { useScrollLock } from '../../hooks/useScrollLock';
+import { setHeaderLayerOpen } from '../../lib/headerLayer';
 
 const SHOPIFY_ACCOUNT_URL = 'https://shopify.com/101386420570/account';
 const PHONE_HREF = 'tel:+421917588738';
@@ -151,6 +152,14 @@ export const SiteHeader: React.FC = () => {
 
   // The drawer covers the page: keep the page behind it from scrolling (iOS-safe, same lock as the other overlays)
   useScrollLock(drawerOpen);
+
+  // The bars fixed to the bottom edge and the docked sample tray lie above the header and step away while the drawer
+  // or the search panel is open, or they would cover its bottom (lib/headerLayer.ts)
+  const phoneLayerOpen = drawerOpen || searchOpen;
+  useEffect(() => {
+    setHeaderLayerOpen(phoneLayerOpen);
+  }, [phoneLayerOpen]);
+  useEffect(() => () => setHeaderLayerOpen(false), []);
 
   const toggleSearch = () => {
     if (!searchOpen) setSearchEverOpened(true);
