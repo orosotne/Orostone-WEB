@@ -12,7 +12,10 @@ export type ShopifyOrder = {
   cancelledAt: string | null;
   customAttributes: Attribute[];
   lineItems: { nodes: Array<{ customAttributes: Attribute[] }> };
+  transactions: Array<{ kind: string; status: string; processedAt: string | null }>;
   fulfillments: Array<{
+    /** SUCCESS = odoslané; CANCELLED, ERROR, FAILURE ostávajú v Shopify aj po zrušení. */
+    status: string;
     createdAt: string;
     deliveredAt: string | null;
     trackingInfo: Array<{ number: string | null; url: string | null }>;
@@ -50,7 +53,7 @@ export type SampleOrder = {
   adminUrl: string;
 };
 
-/** Zaplatená objednávka vzoriek bez záznamu o Alfapureo je po tomto čase podozrivá. */
+/** Zaplatená objednávka vzoriek bez záznamu o Alfapureo je po tomto čase od zaplatenia podozrivá. */
 export const FORWARD_GRACE_MS = 30 * 60 * 1000;
 /** Koľko pracovných dní (po–pi) smie byť objednávka v Alfapureo bez odoslania. */
 export const SHIP_WORKDAYS = 2;
@@ -68,6 +71,18 @@ export function sampleNames(order: Pick<ShopifyOrder, 'lineItems'>): string[] {
     .filter(a => /^Vzorka \d+$/.test(a.key))
     .sort((a, b) => Number(a.key.slice(7)) - Number(b.key.slice(7)))
     .map(a => a.value));
+}
+
+/**
+ * Kedy bola objednávka zaplatená: prvá úspešná platba (SALE alebo CAPTURE). Objednávka môže
+ * vzniknúť ako nezaplatená a zaplatiť sa neskôr, až vtedy pošle Shopify webhook „Order payment“.
+ */
+export function paidAt(order: Pick<ShopifyOrder, 'transactions'>): string | null {
+  const times = order.transactions
+    .filter(t => t.status === 'SUCCESS' && (t.kind === 'SALE' || t.kind === 'CAPTURE') && t.processedAt)
+    .map(t => t.processedAt as string)
+    .sort();
+  return times[0] ?? null;
 }
 
 /** `from` posunutý o `days` pracovných dní (sobotu a nedeľu preskočí, sviatky nie). */
@@ -88,7 +103,7 @@ function daysWaiting(since: Date, now: Date): number {
 
 export function sampleStatus(order: ShopifyOrder, forwarding: Forwarding | undefined, now: Date, shop: string): SampleOrder {
   const fulfillment = order.fulfillments
-    .slice()
+    .filter(f => f.status === 'SUCCESS')
     .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
     .pop();
   const tracking = fulfillment?.trackingInfo.find(t => t.url || t.number);
@@ -107,7 +122,7 @@ export function sampleStatus(order: ShopifyOrder, forwarding: Forwarding | undef
     if (forwarding) {
       const reason = forwarding.last_http_status ? `HTTP ${forwarding.last_http_status}` : forwarding.last_error ?? 'bez odpovede';
       stuck = `Alfapureo objednávku neprijalo (${reason}, ${forwarding.last_attempts}× pokus). Treba ju poslať ručne.`;
-    } else if (now.getTime() - new Date(order.createdAt).getTime() > FORWARD_GRACE_MS) {
+    } else if (now.getTime() - new Date(paidAt(order) ?? order.createdAt).getTime() > FORWARD_GRACE_MS) {
       stuck = 'Nedorazila do Alfapurea, funkcia alfapureo-order o nej nevie (webhook zo Shopify neprišiel alebo bol odmietnutý).';
     }
   } else if (stage === 'at_alfapureo' && forwarding?.forwarded_at) {

@@ -77,7 +77,8 @@ const ORDERS_QUERY = `query SampleOrders($q: String!, $after: String) {
       legacyResourceId name createdAt displayFinancialStatus cancelledAt
       customAttributes { key value }
       lineItems(first: 10) { nodes { customAttributes { key value } } }
-      fulfillments(first: 5) { createdAt deliveredAt trackingInfo { number url } }
+      transactions(first: 10) { kind status processedAt }
+      fulfillments(first: 10) { status createdAt deliveredAt trackingInfo { number url } }
     }
   }
 }`;

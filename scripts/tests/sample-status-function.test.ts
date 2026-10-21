@@ -24,6 +24,7 @@ const shopifyOrder = (name: string, id: string, createdAt: string, extra: Record
   legacyResourceId: id, name, createdAt, displayFinancialStatus: 'PAID', cancelledAt: null,
   customAttributes: [{ key: '_orostone_flow', value: 'samples' }],
   lineItems: { nodes: [{ customAttributes: [{ key: 'Vzorka 1', value: 'TAJ MAHAL' }] }] },
+  transactions: [{ kind: 'SALE', status: 'SUCCESS', processedAt: createdAt }],
   fulfillments: [],
   ...extra,
 });

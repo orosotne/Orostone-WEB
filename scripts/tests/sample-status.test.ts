@@ -26,6 +26,7 @@ function order(overrides: Partial<ShopifyOrder> = {}): ShopifyOrder {
       { key: 'Vzorka 1', value: 'SUPER WHITE EXTRA' },
       { key: '_sample_code_1', value: 'MN257F321612' },
     ] }] },
+    transactions: [{ kind: 'SALE', status: 'SUCCESS', processedAt: '2026-10-20T07:59:55Z' }],
     fulfillments: [],
     ...overrides,
   };
@@ -83,7 +84,7 @@ test('at Alfapureo for two working days is fine, longer is stuck (weekend does n
 
 test('shipped with GLS tracking, delivered when Shopify knows it', () => {
   const shipped = sampleStatus(order({ fulfillments: [{
-    createdAt: '2026-10-22T10:00:00Z', deliveredAt: null,
+    status: 'SUCCESS', createdAt: '2026-10-22T10:00:00Z', deliveredAt: null,
     trackingInfo: [{ number: '1234567890', url: 'https://gls-group.com/SK/sk/sledovanie-zasielok?match=1234567890' }],
   }] }), forwarded('2026-10-21T08:00:00Z'), new Date('2026-10-30T10:00:00Z'), SHOP);
   assert.equal(shipped.stage, 'shipped');
@@ -92,19 +93,54 @@ test('shipped with GLS tracking, delivered when Shopify knows it', () => {
     at: '2026-10-22T10:00:00Z', trackingNumber: '1234567890', trackingUrl: 'https://gls-group.com/SK/sk/sledovanie-zasielok?match=1234567890',
   });
 
-  const delivered = sampleStatus(order({ fulfillments: [{ createdAt: '2026-10-22T10:00:00Z', deliveredAt: '2026-10-23T12:00:00Z', trackingInfo: [] }] }),
+  const delivered = sampleStatus(order({ fulfillments: [{ status: 'SUCCESS', createdAt: '2026-10-22T10:00:00Z', deliveredAt: '2026-10-23T12:00:00Z', trackingInfo: [] }] }),
     undefined, new Date('2026-10-30T10:00:00Z'), SHOP);
   assert.equal(delivered.stage, 'delivered');
   assert.equal(delivered.deliveredAt, '2026-10-23T12:00:00Z');
 });
 
 test('orders shipped by hand before Alfapureo (ORO-1010 to 1013) are shipped, not stuck', () => {
-  const status = sampleStatus(order({ fulfillments: [{ createdAt: '2026-10-14T08:19:51Z', deliveredAt: null, trackingInfo: [] }] }),
+  const status = sampleStatus(order({ fulfillments: [{ status: 'SUCCESS', createdAt: '2026-10-14T08:19:51Z', deliveredAt: null, trackingInfo: [] }] }),
     undefined, new Date('2026-10-21T10:00:00Z'), SHOP);
   assert.equal(status.stage, 'shipped');
   assert.equal(status.stuck, null);
   assert.deepEqual(status.shipped, { at: '2026-10-14T08:19:51Z', trackingNumber: null, trackingUrl: null });
   assert.equal(status.alfapureo, null);
+});
+
+test('a cancelled or failed fulfillment is not a shipment (order is still at Alfapureo)', () => {
+  const failed = order({ fulfillments: [
+    { status: 'CANCELLED', createdAt: '2026-10-19T10:00:00Z', deliveredAt: null, trackingInfo: [{ number: '111', url: 'https://gls.example/111' }] },
+    { status: 'FAILURE', createdAt: '2026-10-19T11:00:00Z', deliveredAt: null, trackingInfo: [] },
+  ] });
+  const status = sampleStatus(failed, forwarded('2026-10-16T09:00:00Z'), new Date('2026-10-21T09:00:00Z'), SHOP);
+  assert.equal(status.stage, 'at_alfapureo');
+  assert.equal(status.shipped, null);
+  assert.match(status.stuck ?? '', /čaká na odoslanie/);
+
+  // A later successful fulfillment wins over the cancelled one.
+  const reshipped = order({ fulfillments: [
+    ...failed.fulfillments,
+    { status: 'SUCCESS', createdAt: '2026-10-20T10:00:00Z', deliveredAt: null, trackingInfo: [{ number: '222', url: 'https://gls.example/222' }] },
+  ] });
+  const ok = sampleStatus(reshipped, forwarded('2026-10-16T09:00:00Z'), new Date('2026-10-21T09:00:00Z'), SHOP);
+  assert.equal(ok.stage, 'shipped');
+  assert.equal(ok.shipped?.trackingNumber, '222');
+});
+
+test('the 30-minute grace period starts at payment, not at order creation', () => {
+  // Created as pending at 8:00, paid at 10:00: at 10:20 the payment webhook may still be on its way.
+  const paidLater = order({ transactions: [
+    { kind: 'AUTHORIZATION', status: 'SUCCESS', processedAt: '2026-10-20T08:00:00Z' },
+    { kind: 'SALE', status: 'FAILURE', processedAt: '2026-10-20T08:01:00Z' },
+    { kind: 'CAPTURE', status: 'SUCCESS', processedAt: '2026-10-20T10:00:00Z' },
+  ] });
+  assert.equal(sampleStatus(paidLater, undefined, new Date('2026-10-20T10:20:00Z'), SHOP).stuck, null);
+  assert.match(sampleStatus(paidLater, undefined, new Date('2026-10-20T10:31:00Z'), SHOP).stuck ?? '', /Nedorazila do Alfapurea/);
+
+  // Without a successful payment transaction the order creation time is used.
+  const noTransactions = order({ transactions: [] });
+  assert.match(sampleStatus(noTransactions, undefined, new Date('2026-10-20T08:31:00Z'), SHOP).stuck ?? '', /Nedorazila do Alfapurea/);
 });
 
 test('unpaid and cancelled orders are never stuck', () => {
