@@ -9,7 +9,8 @@
 //      preposlanie alebo test smie poslať aj volajúci s tajným kľúčom projektu (isServiceRole),
 //      vtedy funkcia počká na odpoveď Alfapurea a vráti ju. Keď podpis príde, ale nesedí (napr.
 //      zlý SHOPIFY_WEBHOOK_SECRET), funkcia vráti 401 a pošle upozornenie na info@orostone.sk,
-//      raz za doručenie webhooku (Shopify ho opakuje s rovnakým X-Shopify-Webhook-Id).
+//      najviac raz za deň. Hlavičky si volí odosielateľ, kľúč podľa nich by ktokoľvek s URL
+//      funkcie zneužil na neobmedzené e-maily.
 //   2. Prepustí len objednávky vzoriek (atribút košíka _orostone_flow = samples, nastavuje ho
 //      services/shopify/samples.ts). Objednávky platní a ich zákazníci do Alfapurea nejdú.
 //   3. Telo pošle bez zmeny (formát Shopify webhooku orders/create, ako chce Alfapureo) na
@@ -131,10 +132,12 @@ async function alertBadSignature(req: Request, body: Uint8Array<ArrayBuffer>): P
     html: `<p>Webhook zo Shopify${name ? ` k objednávke <strong>${escapeHtml(name)}</strong>` : ''} má podpis
       (X-Shopify-Hmac-Sha256), ktorý nesedí so SHOPIFY_WEBHOOK_SECRET v Supabase (alebo kľúč chýba).
       Funkcia alfapureo-order ho odmietla (HTTP 401), takže objednávky vzoriek sa nedostávajú do Alfapureo.</p>
+      <p>Toto upozornenie príde najviac raz za deň, pri prvej odmietnutej objednávke. Ďalšie
+      objednávky v ten deň mohli zlyhať rovnako.</p>
       <p>Nastavte prosím SHOPIFY_WEBHOOK_SECRET na kľúč, ktorým Shopify podpisuje webhooky
-      (Settings → Notifications → Webhooks), a zaplatené objednávky vzoriek z tohto obdobia
-      pošlite Alfapureo ručne.</p>`,
-    idempotencyKey: `alfapureo-order-bad-signature-${req.headers.get('x-shopify-webhook-id') ?? new Date().toISOString().slice(0, 10)}`,
+      (Settings → Notifications → Webhooks), v Shopify skontrolujte všetky zaplatené objednávky
+      vzoriek z tohto obdobia a pošlite ich Alfapureo ručne.</p>`,
+    idempotencyKey: `alfapureo-order-bad-signature-${new Date().toISOString().slice(0, 10)}`,
     onMissingKey: 'skip',
   }).catch(err => console.error('[alfapureo-order] upozornenie sa neodoslalo:', err));
 }
