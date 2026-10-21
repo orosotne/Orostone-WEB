@@ -49,3 +49,8 @@ verify_jwt = false
 # Alfapureo posiela odkaz na sledovanie GLS; podpis overuje funkcia sama (ALFAPUREO_SECRET).
 [functions.alfapureo-tracking]
 verify_jwt = false
+
+# Prehľad vzoriek: CRM posiela kľúč SAMPLE_STATUS_KEY (x-sample-status-key), ranná kontrola tajný
+# kľúč sb_secret_… (apikey). Ani jeden nie je JWT, overuje ich funkcia sama.
+[functions.sample-status]
+verify_jwt = false

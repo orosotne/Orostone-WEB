@@ -23,8 +23,12 @@
 //      upozornenie na info@orostone.sk s číslom objednávky, aby sa dala poslať ručne.
 //      Opakované doručenie tej istej objednávky má Alfapureo rozpoznať podľa order id
 //      (alebo hlavičky X-Shopify-Webhook-Id).
+//   5. Výsledok (prijaté / HTTP status, počet pokusov) zapíše do tabuľky alfapureo_forwarding
+//      (migrácia 20261021_alfapureo_forwarding.sql). Z nej prehľad vzoriek (sample-status, CRM)
+//      ukáže, či objednávka dorazila do Alfapurea. Zlyhaný zápis odoslanie neovplyvní.
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import { isServiceRole } from '../_shared/auth.ts';
 import { sendEmail } from '../_shared/resend.ts';
 import { escapeHtml } from '../_shared/escape.ts';
@@ -32,6 +36,8 @@ import { escapeHtml } from '../_shared/escape.ts';
 const SHOPIFY_WEBHOOK_SECRET = Deno.env.get('SHOPIFY_WEBHOOK_SECRET') ?? '';
 const ALFAPUREO_ORDER_URL = Deno.env.get('ALFAPUREO_ORDER_URL') ?? '';
 const ALFAPUREO_SECRET = Deno.env.get('ALFAPUREO_SECRET') ?? '';
+const SUPABASE_URL = Deno.env.get('SUPABASE_URL') ?? '';
+const SUPABASE_SERVICE_KEY = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? '';
 const ALERT_EMAIL = 'info@orostone.sk';
 const FROM_EMAIL = 'Orostone <noreply@orostone.sk>';
 
@@ -117,6 +123,29 @@ async function forward(req: Request, body: Uint8Array<ArrayBuffer>, order: Order
   return last;
 }
 
+/** Zapíše výsledok do alfapureo_forwarding. forwarded_at mení len úspech, neúspech ho nezmaže. */
+async function record(order: Order, result: ForwardResult): Promise<void> {
+  if (typeof order.id !== 'number' || !SUPABASE_URL || !SUPABASE_SERVICE_KEY) return;
+  const now = new Date().toISOString();
+  const db = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY, { auth: { persistSession: false } });
+  const { error } = await db.from('alfapureo_forwarding').upsert({
+    order_id: order.id,
+    order_name: order.name ?? String(order.id),
+    last_attempt_at: now,
+    last_http_status: result.status ?? null,
+    last_attempts: result.attempts,
+    last_error: result.ok ? null : result.error?.slice(0, 300) ?? null,
+    ...(result.ok ? { forwarded_at: now } : {}),
+  }, { onConflict: 'order_id' });
+  if (error) console.error(`[alfapureo-order] ${order.name} výsledok sa nezapísal:`, error.message);
+}
+
+async function forwardAndRecord(req: Request, body: Uint8Array<ArrayBuffer>, order: Order): Promise<ForwardResult> {
+  const result = await forward(req, body, order);
+  await record(order, result).catch(err => console.error('[alfapureo-order] zápis výsledku:', err));
+  return result;
+}
+
 async function alertBadSignature(req: Request, body: Uint8Array<ArrayBuffer>): Promise<void> {
   // Telo nie je overené, preto číslo objednávky len v bežnom tvare (ORO-1014, #1014).
   let name: string | undefined;
@@ -177,7 +206,7 @@ serve(async (req) => {
   if (!isSampleOrder(order)) return json({ skipped: 'not a sample order' });
   if (order.financial_status !== 'paid') return json({ skipped: `financial_status ${order.financial_status}` });
 
-  if (manual) return json(await forward(req, body, order));
-  inBackground(forward(req, body, order));
+  if (manual) return json(await forwardAndRecord(req, body, order));
+  inBackground(forwardAndRecord(req, body, order));
   return json({ accepted: order.name });
 });

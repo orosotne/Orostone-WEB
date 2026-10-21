@@ -1,0 +1,41 @@
+name: Sample Status Alert
+
+on:
+  # Každý deň o 5:00 UTC (6:00 / 7:00 SK). Keď objednávka vzoriek nedorazila do Alfapurea alebo
+  # v Alfapureo čaká na odoslanie dlhšie ako 2 pracovné dni, príde e-mail na info@orostone.sk.
+  schedule:
+    - cron: '0 5 * * *'
+
+  # Manuálne spustenie (GitHub Actions UI → Run workflow)
+  workflow_dispatch:
+
+jobs:
+  check:
+    name: Skontrolovať objednávky vzoriek
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call Supabase Edge Function
+        env:
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+        run: |
+          if [ -z "$SUPABASE_SECRET_KEY" ]; then
+            echo "::error::Chýba secret SUPABASE_SECRET_KEY (tajný kľúč sb_secret_… zo Supabase → Project Settings → API Keys)."
+            exit 1
+          fi
+
+          RESPONSE=$(curl -s -o /tmp/status_response.json -w "%{http_code}" \
+            -X POST \
+            "https://xfkznvqufhnrphpdhfnc.supabase.co/functions/v1/sample-status" \
+            -H "apikey: $SUPABASE_SECRET_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{"alert": true}')
+
+          echo "HTTP status: $RESPONSE"
+          # Bez zoznamu objednávok v logu, len počty.
+          python3 -c "import json; d=json.load(open('/tmp/status_response.json')); print({k: d.get(k) for k in ('success', 'stuck', 'error')}, 'objednávok:', len(d.get('orders') or []))"
+
+          if [ "$RESPONSE" != "200" ]; then
+            echo "❌ Kontrola zlyhala so statusom $RESPONSE"
+            exit 1
+          fi
