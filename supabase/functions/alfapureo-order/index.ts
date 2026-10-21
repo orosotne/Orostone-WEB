@@ -7,7 +7,10 @@
 //
 //   1. Overí podpis Shopify (X-Shopify-Hmac-Sha256, secret SHOPIFY_WEBHOOK_SECRET). Ručné
 //      preposlanie alebo test smie poslať aj volajúci s tajným kľúčom projektu (isServiceRole),
-//      vtedy funkcia počká na odpoveď Alfapurea a vráti ju.
+//      vtedy funkcia počká na odpoveď Alfapurea a vráti ju. Keď podpis príde, ale nesedí (napr.
+//      zlý SHOPIFY_WEBHOOK_SECRET), funkcia vráti 401 a pošle upozornenie na info@orostone.sk,
+//      najviac raz za deň. Hlavičky si volí odosielateľ, kľúč podľa nich by ktokoľvek s URL
+//      funkcie zneužil na neobmedzené e-maily.
 //   2. Prepustí len objednávky vzoriek (atribút košíka _orostone_flow = samples, nastavuje ho
 //      services/shopify/samples.ts). Objednávky platní a ich zákazníci do Alfapurea nejdú.
 //   3. Telo pošle bez zmeny (formát Shopify webhooku orders/create, ako chce Alfapureo) na
@@ -113,6 +116,32 @@ async function forward(req: Request, body: Uint8Array<ArrayBuffer>, order: Order
   return last;
 }
 
+async function alertBadSignature(req: Request, body: Uint8Array<ArrayBuffer>): Promise<void> {
+  // Telo nie je overené, preto číslo objednávky len v bežnom tvare (ORO-1014, #1014).
+  let name: string | undefined;
+  try {
+    const order: Order | null = JSON.parse(new TextDecoder().decode(body));
+    if (typeof order?.name === 'string' && /^[\w#-]{1,32}$/.test(order.name)) name = order.name;
+  } catch {
+    // telo nie je JSON, upozornenie odíde bez čísla objednávky
+  }
+  await sendEmail({
+    from: FROM_EMAIL,
+    to: ALERT_EMAIL,
+    subject: `Vzorky${name ? ` ${name}` : ''}: podpis Shopify nesedí, objednávky nejdú do Alfapureo`,
+    html: `<p>Webhook zo Shopify${name ? ` k objednávke <strong>${escapeHtml(name)}</strong>` : ''} má podpis
+      (X-Shopify-Hmac-Sha256), ktorý nesedí so SHOPIFY_WEBHOOK_SECRET v Supabase (alebo kľúč chýba).
+      Funkcia alfapureo-order ho odmietla (HTTP 401), takže objednávky vzoriek sa nedostávajú do Alfapureo.</p>
+      <p>Toto upozornenie príde najviac raz za deň, pri prvej odmietnutej objednávke. Ďalšie
+      objednávky v ten deň mohli zlyhať rovnako.</p>
+      <p>Nastavte prosím SHOPIFY_WEBHOOK_SECRET na kľúč, ktorým Shopify podpisuje webhooky
+      (Settings → Notifications → Webhooks), v Shopify skontrolujte všetky zaplatené objednávky
+      vzoriek z tohto obdobia a pošlite ich Alfapureo ručne.</p>`,
+    idempotencyKey: `alfapureo-order-bad-signature-${new Date().toISOString().slice(0, 10)}`,
+    onMissingKey: 'skip',
+  }).catch(err => console.error('[alfapureo-order] upozornenie sa neodoslalo:', err));
+}
+
 /** Keeps the worker alive after the response until the task settles (Supabase Edge Runtime: waitUntil). */
 function inBackground(task: Promise<unknown>): void {
   const runtime = (globalThis as { EdgeRuntime?: { waitUntil(p: Promise<unknown>): void } }).EdgeRuntime;
@@ -129,7 +158,10 @@ serve(async (req) => {
 
   const body = new Uint8Array(await req.arrayBuffer());
   const manual = isServiceRole(req);
-  if (!manual && !(await isFromShopify(req, body))) return json({ error: 'Unauthorized' }, 401);
+  if (!manual && !(await isFromShopify(req, body))) {
+    if (req.headers.has('x-shopify-hmac-sha256')) inBackground(alertBadSignature(req, body));
+    return json({ error: 'Unauthorized' }, 401);
+  }
   if (!ALFAPUREO_ORDER_URL || !ALFAPUREO_SECRET) {
     console.error('[alfapureo-order] chýba ALFAPUREO_ORDER_URL alebo ALFAPUREO_SECRET');
     return json({ error: 'Not configured' }, 500);
