@@ -16,7 +16,8 @@
 //   3. Telo pošle bez zmeny (formát Shopify webhooku orders/create, ako chce Alfapureo) na
 //      ALFAPUREO_ORDER_URL. Podpíše ho rovnakým spôsobom ako Shopify, ale tajným kľúčom
 //      ALFAPUREO_SECRET, takže Alfapureo overí podpis bežným kódom pre Shopify webhooky.
-//      Názov a kód vzorky sú v line_items[].properties: „Vzorka N“ a „_sample_code_N“.
+//      Názov a kód vzorky sú v line_items[].properties: „Vzorka N“ a „_sample_code_N“. Kód je
+//      aj vo viditeľnom „Kód vzorky N“ hneď pod názvom (admin Shopify, pokladňa, potvrdenie).
 //   4. Shopify čaká na odpoveď najviac 5 s, server Alfapurea sa môže prebúdzať dlhšie. Funkcia
 //      preto Shopify odpovie hneď a posiela na pozadí, 3 pokusy. Keď všetky zlyhajú, príde
 //      upozornenie na info@orostone.sk s číslom objednávky, aby sa dala poslať ručne.

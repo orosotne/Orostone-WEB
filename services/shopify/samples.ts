@@ -187,9 +187,12 @@ export async function createSampleCheckout({ decorIds }: { decorIds: string[] })
     if (!product || product.handle !== id || !product.title.trim() || isSampleOrderProduct(product)) {
       throw new Error('Niektorý zo zvolených dekorov už nie je dostupný v ponuke. Upravte svoj výber.');
     }
-    attributes.push({ key: `Vzorka ${i + 1}`, value: product.title }, { key: `_sample_handle_${i + 1}`, value: id });
     // Fulfilment partner (Alfapureo) packs by this code; it lives in the product description.
     const code = sampleProductCode(product.description);
+    attributes.push({ key: `Vzorka ${i + 1}`, value: product.title });
+    // Visible right under the name (admin, checkout, confirmation) so name and code can be checked together.
+    if (code) attributes.push({ key: `Kód vzorky ${i + 1}`, value: code });
+    attributes.push({ key: `_sample_handle_${i + 1}`, value: id });
     if (code) attributes.push({ key: `_sample_code_${i + 1}`, value: code });
   });
 
