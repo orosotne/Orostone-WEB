@@ -5,6 +5,20 @@ import { PRODUCT_LIST_FRAGMENT, PRODUCT_FRAGMENT } from './fragments';
 import { shopifyProductToShopProduct } from './adapter';
 import { isSampleOrderProduct } from './samples';
 
+// Orotable tables share the Storefront channel with the slabs but are sold on
+// their own site, so the slab catalog, product detail and SEO leave them out.
+const OROTABLE_PRODUCT_TAG = 'orostone-table';
+const OROTABLE_PRODUCT_TYPE = 'orostone table';
+
+function isOrotableProduct(product: { tags?: string[]; productType?: string }): boolean {
+  return product.tags?.some(tag => tag.toLowerCase() === OROTABLE_PRODUCT_TAG) === true
+    || product.productType?.toLowerCase() === OROTABLE_PRODUCT_TYPE;
+}
+
+function isSlabCatalogProduct(product: ShopifyProduct): boolean {
+  return !isSampleOrderProduct(product) && !isOrotableProduct(product);
+}
+
 export async function fetchProducts(first: number = 50): Promise<ShopProduct[]> {
   const query = `
     ${PRODUCT_FRAGMENT}
@@ -23,7 +37,7 @@ export async function fetchProducts(first: number = 50): Promise<ShopProduct[]> 
     products: { edges: { node: ShopifyProduct }[] };
   }>({ query, variables: { first } });
 
-  return data.products.edges.filter(({ node }) => !isSampleOrderProduct(node)).map(({ node }) => shopifyProductToShopProduct(node));
+  return data.products.edges.filter(({ node }) => isSlabCatalogProduct(node)).map(({ node }) => shopifyProductToShopProduct(node));
 }
 
 // Lightweight listing fetch — fewer images, variants, metafields (~70% smaller response)
@@ -45,7 +59,7 @@ export async function fetchProductsForListing(first: number = 50): Promise<ShopP
     products: { edges: { node: ShopifyProduct }[] };
   }>({ query, variables: { first } });
 
-  return data.products.edges.filter(({ node }) => !isSampleOrderProduct(node)).map(({ node }) => shopifyProductToShopProduct(node));
+  return data.products.edges.filter(({ node }) => isSlabCatalogProduct(node)).map(({ node }) => shopifyProductToShopProduct(node));
 }
 
 // In-memory cache for product-by-handle — avoids redundant API calls when revisiting
@@ -72,7 +86,7 @@ export async function fetchProductByHandle(handle: string): Promise<ShopProduct 
     productByHandle: ShopifyProduct | null;
   }>({ query, variables: { handle } });
 
-  if (!data.productByHandle || isSampleOrderProduct(data.productByHandle)) return null;
+  if (!data.productByHandle || !isSlabCatalogProduct(data.productByHandle)) return null;
 
   const result = shopifyProductToShopProduct(data.productByHandle);
   productByHandleCache.set(handle, { data: result, timestamp: Date.now() });
