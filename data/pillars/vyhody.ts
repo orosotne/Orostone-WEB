@@ -20,7 +20,7 @@ export const VYHODY_FAQ: PillarFaq[] = [
   {
     question: 'Ako funguje neviditeľná varná doska v sinterovanom kameni?',
     answer:
-      'Indukčný modul sa nainštaluje priamo pod sinterovanú dosku s hrúbkou presne 12 mm. Kameň je nekovový a nepórovitý, takže elektromagnetické pole prechádza bez strát. Dôležité: platne s hrúbkou 20 mm sú príliš hrubé — elektromagnetické pole nimi neprejde dostatočne. Výsledkom je hladký, súvislý povrch bez viditeľných varných zón — varná doska je „neviditeľná".',
+      'Indukčný modul sa nainštaluje priamo pod sinterovanú dosku s hrúbkou presne 12 mm. Kameň je nekovový, takže elektromagnetické pole ním prechádza k hrncu. Dôležité: platne s hrúbkou 20 mm sú príliš hrubé — elektromagnetické pole nimi neprejde dostatočne. Výsledkom je hladký, súvislý povrch bez viditeľných varných zón — varná doska je „neviditeľná".',
   },
   {
     question: 'Je sinterovaný kameň bezúdržbový?',
@@ -88,7 +88,7 @@ export const VYHODY_BENEFITS: { title: string; description: string }[] = [
   },
   {
     title: 'Odolnosť voči škvrnám',
-    description: 'Víno, káva, citrónovú šťavu — jednoducho utriete. Nepórovitý povrch nenasiakne žiadne tekutiny.',
+    description: 'Nasiakavosť pod 0,1 % znamená, že tekutina ostane na povrchu a nevpije sa doň. Víno, kávu aj citrónovú šťavu preto jednoducho utriete.',
   },
   {
     title: 'UV stabilita',
@@ -109,7 +109,7 @@ export const VYHODY_VERDICTS: { material: string; verdict: string }[] = [
   {
     material: 'Sinterovaný kameň',
     verdict:
-      'Pre kuchyne s intenzívnym varením, ostrovčeky s neviditeľnou varnou doskou, exteriér a všade, kde chcete povrch bez impregnácie a bez starostí o škvrny.',
+      'Pre kuchyne s intenzívnym varením, ostrovčeky s neviditeľnou varnou doskou, exteriér a všade, kde chcete povrch bez impregnácie, do ktorého sa škvrny nevpíjajú.',
   },
   {
     material: 'Žula',
