@@ -25,7 +25,7 @@ export const VYHODY_FAQ: PillarFaq[] = [
   {
     question: 'Je sinterovaný kameň bezúdržbový?',
     answer:
-      'Takmer áno. Nasiakavosť pod 0,1 % znamená, že nepotrebuje impregnáciu ani špeciálne čistiace prostriedky. Na denné čistenie stačí vlhká utierka s pH neutrálnym saponátom.',
+      'Údržba je minimálna, bežné čistenie však potrebuje. Nasiakavosť pod 0,1 % znamená, že tekutiny sa nevpíjajú do povrchu, takže doska nepotrebuje impregnáciu ani špeciálne čistiace prostriedky. Na denné čistenie stačí vlhká utierka s pH neutrálnym saponátom.',
   },
   {
     question: 'Hodí sa sinterovaný kameň na exteriér?',
@@ -35,7 +35,7 @@ export const VYHODY_FAQ: PillarFaq[] = [
   {
     question: 'Aký je rozdiel oproti prírodnej žule alebo mramoru?',
     answer:
-      'Sinterovaný kameň má nulovú pórovitosť (žula 0,1–3 %), nepotrebuje impregnáciu, je odolnejší voči škvrnám a kyselinám, a je dostupný vo veľkoformátových doskách až 3 200 × 1 600 mm bez viditeľných spojov.',
+      'Sinterovaný kameň má nízku nasiakavosť pod 0,1 % (žula 0,1–3 %), nepotrebuje impregnáciu, je odolnejší voči škvrnám a kyselinám, a je dostupný vo veľkoformátových doskách až 3 200 × 1 600 mm bez viditeľných spojov.',
   },
   {
     question: 'Koľko stojí sinterovaný kameň v porovnaní s ostatnými materiálmi?',
@@ -83,7 +83,7 @@ export const VYHODY_BENEFITS: { title: string; description: string }[] = [
     description: 'Znáša teploty nad 300 °C. Horúci hrniec môžete položiť priamo na povrch bez poškodenia.',
   },
   {
-    title: 'Nulová nasiakavosť',
+    title: 'Nízka nasiakavosť',
     description: 'Nasiakavosť pod 0,1 % — odolný voči vlhkosti, plesniam a baktériám. Ideálny do kuchyne aj kúpeľne.',
   },
   {

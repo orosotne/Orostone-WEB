@@ -334,8 +334,6 @@ async function sendAdminNotification(quote: QuoteData, customer: CustomerData, i
 // ZÁKAZNÍK — POTVRDENIE VZORKY (krásny dizajn)
 // ===========================================
 async function sendSampleLeadConfirmation(quote: QuoteData, customer: CustomerData) {
-  const firstName = customer.name.split(' ')[0];
-
   const html = `
 <!DOCTYPE html>
 <html lang="sk" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -410,10 +408,10 @@ async function sendSampleLeadConfirmation(quote: QuoteData, customer: CustomerDa
             <tr>
               <td class="email-body" style="background-color: #ffffff; padding: 44px 40px 28px 40px; text-align: center;">
                 <h1 class="email-text" style="margin: 0 0 8px 0; font-size: 26px; font-weight: 700; color: #1A1A1A; letter-spacing: -0.02em;">
-                  Ďakujeme, ${h(firstName)}!
+                  Ďakujeme za žiadosť o vzorku
                 </h1>
                 <p class="email-subtext" style="margin: 0; font-size: 16px; font-weight: 300; color: #666666; line-height: 1.6;">
-                  Vaša žiadosť o vzorku bola úspešne prijatá.
+                  Dobrý deň,<br>vašu žiadosť sme prijali.
                 </p>
               </td>
             </tr>
