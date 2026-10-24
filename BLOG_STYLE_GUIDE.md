@@ -208,8 +208,8 @@ For the **final CTA tip** at the end of the article, include the contact button:
 
 ```html
 <div class="article-tip">
-  <p><strong>Alebo nás jednoducho kontaktuj v Orostone</strong></p>
-  <p>Radi ti všetko vysvetlíme a ukážeme priamo v našom showroome. Nezáväzná konzultácia je zadarmo.</p>
+  <p><strong>Alebo nás jednoducho kontaktujte v Orostone</strong></p>
+  <p>Radi vám všetko vysvetlíme a ukážeme priamo v našom showroome. Nezáväzná konzultácia je zadarmo.</p>
   <a href="/kontakt" class="tip-btn">Kontaktovať nás →</a>
 </div>
 ```
@@ -492,7 +492,7 @@ Target these types of phrases:
 | Type | Example |
 |---|---|
 | Surprising facts | `nie je nezničiteľný` (it's not indestructible) |
-| Counterintuitive statements | `praskne ti ako čokoláda` (it'll crack like chocolate) |
+| Counterintuitive statements | `praskne vám ako čokoláda` (it'll crack like chocolate) |
 | Key differentiators | `rozdiel nie je nikdy v materiáli` (the difference is never the material) |
 | Critical numbers | `3× vyššiu mieru chipovania` (3x higher chipping rate) |
 | Emotional hooks | `zamieňať ich je recept na katastrofu` (mixing them up is a recipe for disaster) |
@@ -823,8 +823,8 @@ export const ARTICLE_XX: BlogArticle = {
 <p>Closing paragraph with <strong class="gold">key takeaway</strong>.</p>
 
 <div class="article-tip">
-  <p><strong>Alebo nás jednoducho kontaktuj v Orostone</strong></p>
-  <p>Radi ti všetko vysvetlíme a ukážeme priamo v našom showroome. Nezáväzná konzultácia je zadarmo.</p>
+  <p><strong>Alebo nás jednoducho kontaktujte v Orostone</strong></p>
+  <p>Radi vám všetko vysvetlíme a ukážeme priamo v našom showroome. Nezáväzná konzultácia je zadarmo.</p>
   <a href="/kontakt" class="tip-btn">Kontaktovať nás →</a>
 </div>
 `,

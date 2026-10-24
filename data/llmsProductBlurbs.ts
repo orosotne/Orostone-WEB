@@ -23,87 +23,87 @@ export interface LlmsProductContent {
 export const LLMS_PRODUCT_CONTENT: Record<string, LlmsProductContent> = {
   'statuario-diamante': {
     blurb:
-      'Pure white elegance with dramatic silver-grey veining inspired by premium Italian marble. Large-format porcelain slabs eliminate grout lines for an uninterrupted luxury surface. Exceptional resistance to scratches, moisture, and stains. Ideal for luxury bathrooms, living rooms, and entrance halls in Bratislava.',
-    style: 'White base, dramatic silver-grey veining, Italian marble inspiration',
-    bestFor: 'Luxury bathrooms, living rooms, entrance halls, kitchen backsplashes',
+      'White sintered stone with silver-grey veining in the spirit of Italian Statuario marble. The veining is clearly visible but calm, so the surface brings light without weighing down the room. Suitable for kitchen countertops, islands, backsplashes, wall cladding and floors. Needs no impregnation.',
+    style: 'White base, silver-grey veining, inspired by Italian Statuario marble',
+    bestFor: 'Kitchen countertops and islands, backsplashes, wall cladding, floors, bathrooms, entrance halls',
     finishes: 'Matte, Polished',
   },
   'calacatta-top': {
     blurb:
-      'Warm golden-brown veining on a brilliant white base — the pinnacle of Italian stone craftsmanship. Calacatta pattern is one of the most exclusive marble designs in the world. Proven to increase property value. No impregnation needed. Perfect for kitchen islands, bathroom walls, and floors in Bratislava premium developments.',
-    style: 'Brilliant white base, warm golden-brown veining, Calacatta marble pattern',
-    bestFor: 'Kitchen islands, bathroom walls, floors, statement pieces',
+      'White marble-look sintered stone with warm golden-brown veining; the polished surface gives the pattern depth. Suitable for kitchen countertops, islands, backsplashes and bathroom walls where the surface should look representative without being showy. Unlike natural marble, it needs no impregnation and resists acids and stains.',
+    style: 'Bright white base, warm golden-brown veining, Calacatta marble pattern',
+    bestFor: 'Kitchen countertops and islands, backsplashes, bathroom walls',
     finishes: 'Polished (most popular), Matte',
   },
   'givenchy-gold': {
     blurb:
-      'Inspired by haute couture, warm gold-ochre tones with delicate veining create a five-star hotel atmosphere. Seamless large-format slabs optically enlarge spaces. Acid and stain resistant. Pairs beautifully with matte black hardware and natural wood. An investment in lifestyle, not just a wall covering.',
-    style: 'Warm gold-ochre tones, delicate veining, haute couture inspiration',
-    bestFor: 'Feature walls, bathroom cladding, kitchen islands, hospitality interiors',
+      'White base with pronounced golden-beige veining that branches in places. Suited to surfaces that carry the room on their own: a kitchen countertop, an island, a vanity top or wall cladding. Because the pattern does the work, the surroundings can stay calm. Resists acids and stains. A large slab is on display in the Bošany showroom.',
+    style: 'White base, pronounced golden-beige veining that branches in places',
+    bestFor: 'Kitchen countertops and islands, vanity tops, feature walls, bathroom cladding',
     finishes: 'Matte, Polished',
   },
   'roman-travertine': {
     blurb:
-      'Timeless beauty of Roman architecture captured in a ceramic slab. Warm cream-to-beige tones with authentic travertine texture create a welcoming Mediterranean atmosphere. Suitable for both interior and exterior (terraces, balconies). No impregnation required unlike natural travertine. Popular among Bratislava architects for villas and premium apartments.',
-    style: 'Warm cream-to-beige, authentic travertine texture, Mediterranean feel',
-    bestFor: 'Indoor/outdoor (terraces, balconies, pools), villas, apartments',
+      'Warm cream-to-beige tones with layered travertine texture and a fine relief. The surface looks natural and warm, without sharp contrasts. Suitable for kitchen countertops, wall cladding, floors and terraces. As sintered stone it needs no impregnation, unlike natural travertine.',
+    style: 'Warm cream-to-beige, layered travertine texture, fine relief',
+    bestFor: 'Kitchen countertops, wall cladding, floors, terraces and balconies',
     finishes: 'Leather/Textured, Matte',
     special: 'Frost-resistant, suitable for exterior',
   },
   'taj-mahal': {
     blurb:
-      'Creamy-white base with delicate golden veining — a serene, spa-like luxury that never goes out of style. Perfect for bathrooms where you want to feel pampered every morning. Favored by architects working on high-end Bratislava residential projects. Durable porcelain slab lasts decades without losing its beauty.',
-    style: 'Creamy-white base, delicate golden veining, spa-like serenity',
-    bestFor: 'Master bathrooms, wellness spaces, bedroom feature walls',
+      'Creamy-white marble-look decor with soft golden veining. It reads warmer than a cold white, and the pattern does not break up the surface. Suited to kitchens with wooden fronts, bathrooms and hallways, where the surface should feel warm rather than cool.',
+    style: 'Creamy-white base, soft golden veining, warm tone',
+    bestFor: 'Kitchens with wooden fronts, bathrooms, hallways',
     finishes: 'Matte, Polished',
   },
   appennino: {
     blurb:
-      'The wild beauty of Italian Apennine mountains. Dynamic veining with natural coloring makes each piece visually unique. Ideal as a statement accent wall, full bathroom, or exclusive kitchen island. Large-format slabs emphasize pattern continuity. Excellent choice for Bratislava lofts, high-ceiling apartments, and industrial-style spaces.',
-    style: 'Dynamic grey-brown veining, natural Italian mountain stone inspiration',
-    bestFor: 'Accent walls, full bathrooms, lofts, industrial-style spaces',
+      'Light, almost white decor with dense but fine golden-beige veining. The pattern is detailed yet low-contrast, so the surface looks clean and balanced and does not compete with the rest of the kitchen. Suitable for kitchen countertops, islands, wall cladding, floors and bathrooms. Needs no impregnation.',
+    style: 'Light, almost white base, fine low-contrast golden-beige veining',
+    bestFor: 'Light and minimalist kitchens, countertops, islands, wall cladding, bathrooms',
     finishes: 'Matte, Leather/Textured',
   },
   'astrana-grey': {
     blurb:
-      'The definition of modern elegance. Subtle grey tones with discreet veining suit any interior style — from Scandinavian to Italian contemporary. Perfect for open-plan Bratislava apartments where one surface flows through living room, dining area, and kitchen. Easy to maintain, durable, and visually understated. Ideal for families.',
-    style: 'Subtle grey tones, discreet veining, Scandinavian-Italian minimalism',
-    bestFor: 'Open-plan apartments, entire floor-to-ceiling applications, family homes',
+      'Even grey with subtle tonal gradation and discreet lighter veining. The surface holds a calm line and does not draw attention to itself. Suitable for kitchen countertops, islands and backsplashes in interiors where it should be a quiet base rather than the main theme.',
+    style: 'Even grey, subtle tonal gradation, discreet lighter veining',
+    bestFor: 'Kitchen countertops, islands, backsplashes, open-plan interiors',
     finishes: 'Matte, Polished',
   },
   'super-white-extra': {
     blurb:
-      'The ultimate answer to minimalism. Dazzling white brings light, purity, and absolute modernity to any space. Optically enlarges rooms — strategic choice for Bratislava apartments with limited natural light. Provides a perfect canvas for colorful accents, art, plants, and statement furniture. Maximum stain resistance with effortless daily cleaning.',
-    style: 'Pure dazzling white, minimal veining, absolute minimalism',
-    bestFor: 'Small spaces (optical enlargement), modern kitchens, minimalist interiors',
+      'Light white base with grey veins, some thin and subtle, others more pronounced. The countertop keeps a marble look even in a mostly white kitchen, and the light surface makes a smaller or darker room look larger. Needs no impregnation; everyday cleaning takes a damp cloth.',
+    style: 'Light white base, grey veining of varying intensity',
+    bestFor: 'White kitchens, smaller or darker rooms, countertops and islands',
     finishes: 'Polished (most popular), Matte',
   },
   'gothic-gold': {
     blurb:
-      'Deep dark base with fiery golden veining — dramatic beauty found in five-star hotels and private Bratislava villas. Wherever you place Gothic Gold, it becomes the undeniable focal point. Golden veins react fascinatingly to different lighting — candlelight creates romance, spotlights highlight dynamism. A bold choice for bold people.',
-    style: 'Deep dark base, fiery golden veining, dramatic luxury',
-    bestFor: 'Feature walls, VIP bathrooms, penthouses, hotel lobbies',
+      'Dark decor with golden veining that runs across the surface in irregular lines. Suited to spaces that need a clear centre: a kitchen island, a countertop, a backsplash or wall cladding. A large slab is on display in the Bošany showroom.',
+    style: 'Dark base, golden veining in irregular lines',
+    bestFor: 'Kitchen islands and countertops, backsplashes, feature walls',
     finishes: 'Polished, Leather/Textured',
   },
   'wild-forest': {
     blurb:
-      'The perfect bridge between biophilic design and modern living. Expressive patterns in grey-brown and warm earthy tones evoke deep forest stone surfaces. Popular in Bratislava new builds with panoramic windows. Pairs excellently with oak wood, green plants, and textured fabrics. Equally at home in wellness spaces, saunas, and freestanding bathtub bathrooms.',
-    style: 'Grey-brown and earthy tones, biophilic forest stone inspiration',
-    bestFor: 'Wellness spaces, saunas, panoramic-window apartments, nature-inspired interiors',
+      'Distinctive decor in grey-brown and earthy tones, with a pattern reminiscent of stone surfaces in a forest. The pattern is large-scale, so it shows best on a larger continuous surface: a kitchen island, full wall cladding, a bathroom or a wellness area. A 10 × 10 cm sample cannot capture it; we recommend seeing a full slab in the Bošany showroom.',
+    style: 'Grey-brown and earthy tones, large-scale forest stone pattern',
+    bestFor: 'Larger kitchen islands, full wall cladding, bathrooms, wellness spaces',
     finishes: 'Leather/Textured, Matte',
   },
   'nero-margiua': {
     blurb:
-      'Deep black with subtle silver-white veining — the ultimate statement of sophisticated taste. Creates unmistakable exclusivity in Bratislava penthouses, villas, and premium bathrooms. Equally impressive as an accent wall or full bathroom cladding. Contrasts perfectly with white sanitaryware, gold faucets, and wooden elements.',
-    style: 'Deep black, subtle silver-white veining, ultimate sophistication',
-    bestFor: 'Penthouses, premium bathrooms, accent walls, contrast with light elements',
+      'Deep black with silver-white veins that only gently lighten the pattern. The surface stays calm even in a large format. Works as a kitchen countertop or island, a feature wall or full bathroom cladding, wherever a dark surface should contrast with light surroundings. A large slab is on display in the Bošany showroom.',
+    style: 'Deep black, fine silver-white veining',
+    bestFor: 'Kitchen countertops and islands against light fronts, feature walls, bathroom cladding',
     finishes: 'Polished, Leather/Textured',
   },
   'yabo-white': {
     blurb:
-      "Purity in its most perfect form. Warm white with creamy undertones and subtle textures creates a welcoming yet always-current foundation. Works everywhere without exception — bathroom, hallway, kitchen. Porcelain technology ensures maximum hygiene and easy cleaning. A once-and-forever investment — because good taste doesn't age.",
-    style: 'Warm white with creamy undertones, universal elegance',
-    bestFor: 'Bathrooms, hallways, kitchens — universal application',
+      'Warm white with a creamy undertone and fine texture. It feels softer than a cold pure white, and the room stays light and airy. The neutral pattern makes it a base that works in kitchens, bathrooms and hallways. Needs no impregnation.',
+    style: 'Warm white, creamy undertone, fine texture',
+    bestFor: 'Kitchens, bathrooms, hallways',
     finishes: 'Matte, Polished',
   },
 };

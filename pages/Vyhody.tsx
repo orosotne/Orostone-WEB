@@ -157,7 +157,6 @@ export const Vyhody = () => {
           <SectionHeader
             eyebrow="Kľúčové vlastnosti"
             title="6 dôvodov, prečo si vybrať sinterovaný kameň"
-            lead="Každá vlastnosť je overená nezávislými certifikáciami a laboratórnymi testami."
           />
           <ul className={`${below} grid gap-x-5 gap-y-12 sm:grid-cols-2 lg:grid-cols-3`}>
             {BENEFITS.map((b) => (
