@@ -8,7 +8,7 @@ export const OROSTONE_MAPS_URL = 'https://www.google.com/maps?cid=12030968938306
 export const OROSTONE_SELLER_LD = {
   '@id': ORGANIZATION_ID,
   '@type': 'Organization',
-  name: 'OROSTONE s.r.o.',
+  name: 'Orostone s.r.o.',
 };
 
 const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
@@ -19,7 +19,7 @@ export const OROSTONE_BUSINESS_GRAPH_LD = {
     {
       '@type': 'Organization',
       '@id': ORGANIZATION_ID,
-      name: 'OROSTONE',
+      name: 'Orostone',
       legalName: 'Orostone s.r.o.',
       url: 'https://orostone.sk/',
       logo: 'https://orostone.sk/images/brand/orostone-circle.png',
@@ -60,7 +60,7 @@ export const OROSTONE_BUSINESS_GRAPH_LD = {
     {
       '@type': ['LocalBusiness', 'HomeAndConstructionBusiness'],
       '@id': SHOWROOM_ID,
-      name: 'OROSTONE Showroom Bošany',
+      name: 'Orostone Showroom Bošany',
       description: 'Showroom sinterovaného kameňa v renesančnom kaštieli v Bošanoch. Celé platne si môžete pozrieť iba tu. Cez víkend po dohode. Každú návštevu si, prosím, dohodnite telefonicky aspoň 1\u00A0hodinu vopred.',
       url: 'https://orostone.sk/kontakt',
       image: 'https://orostone.sk/images/home/showroom-kastiel.webp',

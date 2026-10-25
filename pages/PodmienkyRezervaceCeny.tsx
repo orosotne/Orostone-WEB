@@ -28,7 +28,7 @@ export const PodmienkyRezervaceCeny = () => {
   return (
     <div>
       <SEOHead
-        title="Podmienky rezervačného poplatku Orostone – 99 € | OROSTONE"
+        title="Podmienky rezervačného poplatku Orostone – 99 € | Orostone"
         description="Podmienky úhrady a použitia rezervačného poplatku 99 € za garanciu ceny produktov Orostone na 6 mesiacov. Informácie o nevratnosti poplatku a súhlase so začatím poskytovania služby."
         canonical="https://orostone.sk/podmienky-rezervacie-ceny"
       />

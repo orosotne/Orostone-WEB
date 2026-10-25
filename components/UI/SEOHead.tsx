@@ -180,7 +180,7 @@ export const createProductLD = (product: {
   sku: product.sku,
   brand: {
     '@type': 'Brand',
-    name: 'OROSTONE',
+    name: 'Orostone',
   },
   offers: {
     '@type': 'Offer',

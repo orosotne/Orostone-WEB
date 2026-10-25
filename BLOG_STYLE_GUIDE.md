@@ -1,6 +1,6 @@
-# OROSTONE Blog Article Style Guide
+# Orostone Blog Article Style Guide
 
-> **This is the single source of truth for creating, editing, and maintaining all OROSTONE blog articles.**
+> **This is the single source of truth for creating, editing, and maintaining all Orostone blog articles.**
 > Read this file IN FULL before making ANY changes to blog articles — whether creating new ones, editing existing ones, or updating old articles for consistency.
 
 ---
@@ -94,7 +94,7 @@ Always use the shared constant:
 import { BlogArticle, BLOG_AUTHOR_OROSTONE } from '../blogTypes';
 
 // BLOG_AUTHOR_OROSTONE = {
-//   name: 'OROSTONE tím',
+//   name: 'Orostone tím',
 //   role: 'Odborníci na sinterovaný kameň',
 //   avatar: '/images/logo-circle.png',
 // };

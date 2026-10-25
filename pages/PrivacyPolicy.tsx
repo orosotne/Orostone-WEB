@@ -20,8 +20,8 @@ export const PrivacyPolicy = () => {
   return (
     <div>
       <SEOHead
-        title="Ochrana osobných údajov | OROSTONE"
-        description="Zásady ochrany osobných údajov spoločnosti OROSTONE s.r.o. Spracúvanie údajov v súlade s GDPR — účely, právny základ a vaše práva."
+        title="Ochrana osobných údajov | Orostone"
+        description="Zásady ochrany osobných údajov spoločnosti Orostone s.r.o. Spracúvanie údajov v súlade s GDPR — účely, právny základ a vaše práva."
         canonical="https://orostone.sk/ochrana-sukromia"
       />
       <PageHero

@@ -16,8 +16,9 @@ import {
   formatEurWhole,
 } from '../pricing';
 import type { PillarFaq } from './vyhody';
+import { CUSTOMER_JOURNEY_STEPS } from '../customerJourney';
 
-/** H1 matches the page title („Kamenné pracovné dosky do kuchyne | OROSTONE") — one identity per page. */
+/** H1 matches the page title („Kamenné pracovné dosky do kuchyne | Orostone") — one identity per page. */
 export const KUCHYNE_H1 = 'Kamenné pracovné dosky do kuchyne';
 
 export const KITCHEN_FAQS: PillarFaq[] = [
@@ -64,28 +65,11 @@ export const KUCHYNE_FEATURES: { title: string; description: string }[] = [
   },
 ];
 
-export const KUCHYNE_PROCESS_STEPS: { title: string; description: string }[] = [
-  {
-    title: 'Pôdorys a konzultácia',
-    description:
-      'Prinesiete pôdorys, my prejdeme cez ostrovček, zástenu, plochy a riešenia bez kompromisu.',
-  },
-  {
-    title: 'Výber dekoru v Bošanoch',
-    description:
-      'V showroome v Bošanoch porovnáte celé platne pri dennom svetle a vyberiete kompozíciu.',
-  },
-  {
-    title: 'Príprava projektu',
-    description:
-      'Pripravíme špecifikáciu, prepojíme vás s kamenárom, ktorý zameria a spracuje dosky.',
-  },
-  {
-    title: 'Inštalácia kamenárom',
-    description:
-      'Kamenár dosky osadí u vás doma. My koordinujeme termín a kontrolujeme výsledok.',
-  },
-];
+/** The one public customer journey (data/customerJourney.ts), the same three steps as on the homepage. */
+export const KUCHYNE_PROCESS_STEPS: { title: string; description: string }[] = CUSTOMER_JOURNEY_STEPS.map((s) => ({
+  title: s.title,
+  description: s.text,
+}));
 
 // ---------------------------------------------------------------------------
 // Vizualizácie: kitchens, each in one decor, shown from four views.

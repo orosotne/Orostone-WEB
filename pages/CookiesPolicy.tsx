@@ -26,8 +26,8 @@ export const CookiesPolicy = () => {
   return (
     <div>
       <SEOHead
-        title="Zásady používania cookies a podobných technológií | OROSTONE"
-        description="Informácie o cookies a podobných technológiách na webe OROSTONE. Typy technológií, účely spracovania a nastavenie vlastných preferencií."
+        title="Zásady používania cookies a podobných technológií | Orostone"
+        description="Informácie o cookies a podobných technológiách na webe Orostone. Typy technológií, účely spracovania a nastavenie vlastných preferencií."
         canonical="https://orostone.sk/cookies"
       />
       <PageHero

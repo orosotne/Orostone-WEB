@@ -46,12 +46,12 @@ export interface InfoPage {
 export const INFO_PAGES: InfoPage[] = [
   {
     route: '/kontakt',
-    title: 'Kontakt | OROSTONE — sinterovaný kameň',
+    title: 'Kontakt | Orostone — sinterovaný kameň',
     description:
       'Cenová ponuka, vzorky alebo konzultácia k pracovnej doske zo sinterovaného kameňa. Showroom Bošany, dodanie po celom Slovensku.',
     h1: 'Kontakt',
     intro:
-      'OROSTONE — slovenský dodávateľ sinterovaného kameňa. Showroom Bošany: SNP 113/1, 956 18 Bošany — otvorené po–pia 9:00–17:00, cez víkend po dohode. Každú návštevu si, prosím, dohodnite telefonicky aspoň 1\u00A0hodinu vopred. Celé platne vystavujeme iba v showroome v Bošanoch. Obchodné kancelárie a sídlo: Landererova 8, 811 09 Bratislava. Telefón: +421 917 588 738 — telefonicky po–pia 8:00–17:00. Cenové ponuky a dopyty: dopyt@orostone.sk. Administratíva a faktúry: info@orostone.sk. Radi pre vás pripravíme konzultáciu a cenovú ponuku.',
+      'Orostone — slovenský dodávateľ sinterovaného kameňa. Showroom Bošany: SNP 113/1, 956 18 Bošany — otvorené po–pia 9:00–17:00, cez víkend po dohode. Každú návštevu si, prosím, dohodnite telefonicky aspoň 1\u00A0hodinu vopred. Celé platne vystavujeme iba v showroome v Bošanoch. Obchodné kancelárie a sídlo: Landererova 8, 811 09 Bratislava. Telefón: +421 917 588 738 — telefonicky po–pia 8:00–17:00. Cenové ponuky a dopyty: dopyt@orostone.sk. Administratíva a faktúry: info@orostone.sk. Radi pre vás pripravíme konzultáciu a cenovú ponuku.',
     extraLinks: [
       { label: 'Objednať vzorky', href: '/vzorky' },
       { label: 'Prehliadnuť produkty', href: '/kategoria/sintered-stone' },
@@ -61,23 +61,23 @@ export const INFO_PAGES: InfoPage[] = [
   },
   {
     route: '/doprava',
-    title: 'Doprava veľkoformátových platní | OROSTONE',
+    title: 'Doprava veľkoformátových platní | Orostone',
     description:
       'Informácie o doprave, platbe a špeciálnej preprave veľkoformátových platní a vzoriek sinterovaného kameňa po celom Slovensku.',
     h1: 'Doprava a platba',
     intro:
-      `OROSTONE zabezpečuje špeciálnu prepravu veľkoformátových sinterovaných platní 3200×1600 mm po celom Slovensku. Platba bankovým prevodom alebo kartou. Skladové platne doručujeme za ${STOCK_SLAB_DELIVERY_TIMEFRAME}.`,
+      `Orostone zabezpečuje špeciálnu prepravu veľkoformátových sinterovaných platní 3200×1600 mm po celom Slovensku. Platba bankovým prevodom alebo kartou. Skladové platne doručujeme za ${STOCK_SLAB_DELIVERY_TIMEFRAME}.`,
     changefreq: 'monthly',
     priority: '0.5',
   },
   {
     route: '/reklamacie',
-    title: 'Reklamácie a vrátenie tovaru | OROSTONE',
+    title: 'Reklamácie a vrátenie tovaru | Orostone',
     description:
-      'Reklamačný poriadok OROSTONE, postup pri reklamácii, vrátenie tovaru a zákonná zodpovednosť za vady pri nákupe cez e-shop.',
+      'Reklamačný poriadok Orostone, postup pri reklamácii, vrátenie tovaru a zákonná zodpovednosť za vady pri nákupe cez e-shop.',
     h1: 'Reklamácie a vrátenie tovaru',
     intro:
-      'Reklamačný poriadok a postup pri reklamácii tovaru zakúpeného v e-shope OROSTONE. Zákonná zodpovednosť za vady trvá 24 mesiacov. Spotrebiteľ má právo odstúpiť od kúpnej zmluvy uzavretej na diaľku do 14 dní bez uvedenia dôvodu.',
+      'Reklamačný poriadok a postup pri reklamácii tovaru zakúpeného v e-shope Orostone. Zákonná zodpovednosť za vady trvá 24 mesiacov. Spotrebiteľ má právo odstúpiť od kúpnej zmluvy uzavretej na diaľku do 14 dní bez uvedenia dôvodu.',
     extraLinks: [
       { label: 'Formulár na odstúpenie od zmluvy', href: '/odstupenie-od-zmluvy' },
       { label: 'Všeobecné obchodné podmienky', href: '/vop' },
@@ -87,9 +87,9 @@ export const INFO_PAGES: InfoPage[] = [
   },
   {
     route: '/odstupenie-od-zmluvy',
-    title: 'Odstúpenie od zmluvy | OROSTONE',
+    title: 'Odstúpenie od zmluvy | Orostone',
     description:
-      'Formuláre a informácie k odstúpeniu od zmluvy pri nákupe cez OROSTONE e-shop podľa platnej spotrebiteľskej legislatívy.',
+      'Formuláre a informácie k odstúpeniu od zmluvy pri nákupe cez Orostone e-shop podľa platnej spotrebiteľskej legislatívy.',
     h1: 'Formulár na odstúpenie od zmluvy',
     intro:
       'Vzorový formulár na odstúpenie od kúpnej zmluvy uzavretej na diaľku podľa zákona č. 108/2024 Z.z. o ochrane spotrebiteľa. Spotrebiteľ má právo odstúpiť od zmluvy do 14 dní bez uvedenia dôvodu.',
@@ -98,9 +98,9 @@ export const INFO_PAGES: InfoPage[] = [
   },
   {
     route: '/sinterovany-kamen',
-    title: 'Sinterovaný kameň: cena, výhody, použitie | OROSTONE',
+    title: 'Sinterovaný kameň: cena, výhody, použitie | Orostone',
     description:
-      'Čo je sinterovaný kameň, koľko stojí a kedy dáva zmysel ako pracovná doska. Praktický sprievodca pre kuchyňu, kde nechcete robiť kompromis.',
+      'Čo je sinterovaný kameň, koľko stojí a kedy sa oplatí ako pracovná doska. Praktický sprievodca pre kuchyňu, kde nechcete robiť kompromis.',
     h1: 'Sinterovaný kameň — čo to je a prečo ho chcete',
     intro:
       'Sinterovaný kameň je povrch vyrobený z prírodných minerálov pod extrémnym tlakom a teplotou. Odolá teplotám nad 300 °C, škvrnám, UV žiareniu aj škrabancom. Je ideálnym materiálom na kuchynské dosky, obklady kúpeľní a architektonické projekty. Nevyžaduje impregnáciu ani zvláštnu údržbu.',
@@ -126,7 +126,7 @@ export const INFO_PAGES: InfoPage[] = [
   },
   {
     route: '/vyhody',
-    title: 'Výhody sinterovaného kameňa | OROSTONE',
+    title: 'Výhody sinterovaného kameňa | Orostone',
     description:
       'Sinterovaný kameň odoláva teplu, škvrnám a poškriabaniu. Pozrite porovnanie s technickým kameňom, žulou a mramorom — rozdiely, ktoré reálne rozhodujú.',
     h1: 'Výhody sinterovaného kameňa',
@@ -156,18 +156,18 @@ export const INFO_PAGES: InfoPage[] = [
   },
   {
     route: '/vop',
-    title: 'Všeobecné obchodné podmienky | OROSTONE E-Shop',
+    title: 'Všeobecné obchodné podmienky | Orostone E-Shop',
     description:
-      'Všeobecné obchodné podmienky e-shopu OROSTONE. Informácie o objednávke, platbe, doprave, reklamáciách a právach spotrebiteľa podľa zákona č. 108/2024 Z.z.',
+      'Všeobecné obchodné podmienky e-shopu Orostone. Informácie o objednávke, platbe, doprave, reklamáciách a právach spotrebiteľa podľa zákona č. 108/2024 Z.z.',
     h1: 'Všeobecné obchodné podmienky',
     intro:
-      'Všeobecné obchodné podmienky e-shopu OROSTONE upravujú vzťah medzi predávajúcim (OROSTONE) a kupujúcim pri uzatváraní kúpnych zmlúv uzatvorených na diaľku. Podmienky sú v súlade so zákonom č. 108/2024 Z.z. o ochrane spotrebiteľa.',
+      'Všeobecné obchodné podmienky e-shopu Orostone upravujú vzťah medzi predávajúcim (Orostone) a kupujúcim pri uzatváraní kúpnych zmlúv uzatvorených na diaľku. Podmienky sú v súlade so zákonom č. 108/2024 Z.z. o ochrane spotrebiteľa.',
     changefreq: 'yearly',
     priority: '0.3',
   },
   {
     route: '/podmienky-rezervacie-ceny',
-    title: 'Podmienky rezervačného poplatku Orostone – 99 € | OROSTONE',
+    title: 'Podmienky rezervačného poplatku Orostone – 99 € | Orostone',
     description:
       'Podmienky úhrady a použitia rezervačného poplatku 99 € za garanciu ceny produktov Orostone na 6 mesiacov. Informácie o nevratnosti poplatku a súhlase so začatím poskytovania služby.',
     h1: 'Podmienky rezervačného poplatku Orostone – 99 €',
@@ -182,23 +182,23 @@ export const INFO_PAGES: InfoPage[] = [
   },
   {
     route: '/ochrana-sukromia',
-    title: 'Ochrana osobných údajov | OROSTONE',
+    title: 'Ochrana osobných údajov | Orostone',
     description:
-      'Zásady ochrany osobných údajov spoločnosti OROSTONE s.r.o. Spracúvanie údajov v súlade s GDPR — účely, právny základ a vaše práva.',
+      'Zásady ochrany osobných údajov spoločnosti Orostone s.r.o. Spracúvanie údajov v súlade s GDPR — účely, právny základ a vaše práva.',
     h1: 'Ochrana osobných údajov',
     intro:
-      'OROSTONE spracúva vaše osobné údaje v súlade s Nariadením GDPR a zákonom o ochrane osobných údajov. Na tejto stránke nájdete informácie o účeloch spracúvania, právnom základe, dobe uchovávania a o vašich právach dotknutej osoby.',
+      'Orostone spracúva vaše osobné údaje v súlade s Nariadením GDPR a zákonom o ochrane osobných údajov. Na tejto stránke nájdete informácie o účeloch spracúvania, právnom základe, dobe uchovávania a o vašich právach dotknutej osoby.',
     changefreq: 'yearly',
     priority: '0.3',
   },
   {
     route: '/cookies',
-    title: 'Zásady používania cookies a podobných technológií | OROSTONE',
+    title: 'Zásady používania cookies a podobných technológií | Orostone',
     description:
-      'Informácie o cookies a podobných technológiách na webe OROSTONE. Typy technológií, účely spracovania a nastavenie vlastných preferencií.',
+      'Informácie o cookies a podobných technológiách na webe Orostone. Typy technológií, účely spracovania a nastavenie vlastných preferencií.',
     h1: 'Zásady používania cookies',
     intro:
-      'OROSTONE používa cookies a podobné technológie na zabezpečenie funkčnosti stránky, analýzu návštevnosti a cielenú reklamu. Na tejto stránke nájdete informácie o jednotlivých typoch cookies, účeloch spracovania a ako si môžete nastaviť vlastné preferencie.',
+      'Orostone používa cookies a podobné technológie na zabezpečenie funkčnosti stránky, analýzu návštevnosti a cielenú reklamu. Na tejto stránke nájdete informácie o jednotlivých typoch cookies, účeloch spracovania a ako si môžete nastaviť vlastné preferencie.',
     changefreq: 'yearly',
     priority: '0.2',
   },

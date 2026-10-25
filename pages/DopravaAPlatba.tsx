@@ -9,7 +9,7 @@ export const DopravaAPlatba: React.FC = () => {
   return (
     <div>
       <SEOHead
-        title="Doprava veľkoformátových platní | OROSTONE"
+        title="Doprava veľkoformátových platní | Orostone"
         description="Informácie o doprave, platbe a špeciálnej preprave veľkoformátových platní a vzoriek sinterovaného kameňa po celom Slovensku."
         canonical="https://orostone.sk/doprava"
       />

@@ -129,7 +129,7 @@ export const Vyhody = () => {
   return (
     <div>
       <SEOHead
-        title="Výhody sinterovaného kameňa | OROSTONE"
+        title="Výhody sinterovaného kameňa | Orostone"
         description="Sinterovaný kameň odoláva teplu, škvrnám a poškriabaniu. Pozrite porovnanie s technickým kameňom, žulou a mramorom — rozdiely, ktoré reálne rozhodujú."
         canonical="https://orostone.sk/vyhody"
         keywords={['výhody sinterovaného kameňa', 'neviditeľná varná doska', 'neviditeľná indukčná doska', 'sinterovaný kameň vs žula', 'sinterovaný kameň údržba', 'odolnosť sinterovaného kameňa']}
@@ -321,7 +321,7 @@ export const Vyhody = () => {
                 Objednať vzorku
               </ActionButton>
               <TextLink to="/kontakt">Kontaktovať nás</TextLink>
-              <TextLink to="/kategoria/sintered-stone">Katalóg dekórov</TextLink>
+              <TextLink to="/kategoria/sintered-stone">Katalóg dekorov</TextLink>
             </div>
             <p className="flex flex-wrap gap-x-6 gap-y-1 text-[0.92rem] font-normal text-brand-muted">
               <a href="tel:+421917588738" className="tabular-nums hover:text-brand-dark">

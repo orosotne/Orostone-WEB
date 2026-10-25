@@ -129,7 +129,7 @@ export const ShopProductDetail: React.FC = () => {
     return (
       <div className="min-h-svh flex items-center justify-center">
         <SEOHead
-          title="Produkt nenájdený | OROSTONE"
+          title="Produkt nenájdený | Orostone"
           description="Požadovaný produkt neexistuje alebo bol odstránený."
           noindex={true}
         />
@@ -204,7 +204,7 @@ export const ShopProductDetail: React.FC = () => {
   };
 
   const metaOverride = PRODUCT_META_OVERRIDE[product.id];
-  const seoTitle = metaOverride?.title || product.metaTitle || product.seoTitle || `${product.name} | Veľkoformátové platne | OROSTONE`;
+  const seoTitle = metaOverride?.title || product.metaTitle || product.seoTitle || `${product.name} | Veľkoformátové platne | Orostone`;
   const seoDescription = metaOverride?.description || product.metaDescription || product.seoDescription || product.description;
   const seoImage = (product.gallery && product.gallery.length > 0 ? product.gallery[0] : product.image) || '/images/logo.png';
 

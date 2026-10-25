@@ -18,6 +18,7 @@ import { useScrollLock } from '@/hooks/useScrollLock';
 import { photoFade, usePhotoLayers } from '@/hooks/usePhotoLayers';
 import { preloadImage } from '@/lib/shopifyImage';
 import { SPRING } from '@/lib/motion';
+import { CUSTOMER_JOURNEY_NOTE, CUSTOMER_JOURNEY_STEPS } from '@/data/customerJourney';
 
 /* ─── PROJECT DATA ───────────────────────────────────── */
 
@@ -353,18 +354,15 @@ const PROJECTS: Project[] = [
 const FEATURED = PROJECTS.find((p) => p.featured)!;
 const GRID_PROJECTS = PROJECTS.filter((p) => !p.featured);
 
+// The 24 months are the statutory liability for defects, not a benefit of ours, so they are not a tile (owner decision 25. 10. 2026).
 const STATS = [
   { value: '150+', label: 'Realizácií' },
   { value: '12', label: 'Dekorov' },
   { value: '10–15', label: 'Pracovných dní' },
-  { value: '24', label: 'Mesiacov na reklamáciu' },
 ];
 
-const STEPS = [
-  { title: 'Konzultácia', text: 'Pomôžeme s výberom dekoru. Prvú vzorku pošleme zadarmo.' },
-  { title: 'Zameranie a príprava', text: 'Kamenár zameria priestor a platne nareže na CNC stroji na požadované rozmery.' },
-  { title: 'Montáž', text: 'Dodanie a montáž do 15 pracovných dní.' },
-];
+// The one public customer journey, the same three steps as on the homepage
+const STEPS = [...CUSTOMER_JOURNEY_STEPS];
 
 const breadcrumbLD = createBreadcrumbLD([
   { name: 'Domov', url: 'https://orostone.sk/' },
@@ -558,7 +556,7 @@ export const Realizacie = () => {
   return (
     <div>
       <SEOHead
-        title="Realizácie kuchynských dosiek | OROSTONE"
+        title="Realizácie kuchynských dosiek | Orostone"
         description="Pozrite, ako sinterovaný kameň vyzerá v reálnych kuchyniach a ostrovčekoch. Veľké plochy, kde dekor rozhoduje výsledok celej miestnosti."
         canonical="https://orostone.sk/realizacie"
         keywords={SEO_KEYWORDS}
@@ -687,6 +685,7 @@ export const Realizacie = () => {
             <TextLink to="/blog/od-merania-po-instalaciu-proces-orostone">Podrobný popis procesu</TextLink>
           </div>
           <StepList steps={STEPS} className="mt-[clamp(40px,5vw,64px)]" />
+          <p className="mt-8 max-w-[60ch] text-[0.92rem] font-normal text-brand-muted">{CUSTOMER_JOURNEY_NOTE}</p>
         </Container>
       </Section>
 

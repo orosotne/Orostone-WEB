@@ -15,7 +15,7 @@ export const ARTICLE_10: BlogArticle = {
     title: 'Matný vs lesklý povrch: čo vyzerá luxusnejšie v reálnych kuchyniach?',
     subtitle: 'Praktický sprievodca povrchmi sinterovaného kameňa – od odtlačkov prstov po fotogenickosť',
     excerpt: 'Objektívne porovnanie matného a lesklého povrchu sinterovaného kameňa. Odtlačky prstov, mikroškrabance, fotogenickosť, praktickosť a odporúčanie pre luxusné bratislavské kuchyne.',
-    metaTitle: 'Matný alebo lesklý povrch? Kuchynská doska | OROSTONE',
+    metaTitle: 'Matný alebo lesklý povrch? Kuchynská doska | Orostone',
     metaDescription: 'Matný alebo lesklý povrch? Rozdiel vo vzhľade, údržbe, odtlačkoch prstov a tom, ako sa doska v kuchyni dlhodobo „nosí“.',
     directAnswer: 'Matný povrch vyzerá v reálnych kuchyniach sofistikovanejšie a je praktickejší – nezobrazuje odtlačky prstov, mikroškrabance ani šmuhy. Lesklý povrch vyzerá dramatickejšie na fotkách, ale vyžaduje neustále utieranie. Pre luxusné bratislavské kuchyne s denným používaním odporúčame matný povrch.',
     content: `

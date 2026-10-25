@@ -26,11 +26,11 @@ export const EshopContact: React.FC = () => {
   return (
     <div>
       <SEOHead
-        title="Kontakt | OROSTONE — sinterovaný kameň"
+        title="Kontakt | Orostone — sinterovaný kameň"
         description="Cenová ponuka, vzorky alebo konzultácia k pracovnej doske zo sinterovaného kameňa. Showroom Bošany, dodanie po celom Slovensku."
         canonical="https://orostone.sk/kontakt"
         structuredData={createBreadcrumbLD([
-          { name: 'OROSTONE', url: 'https://orostone.sk/' },
+          { name: 'Orostone', url: 'https://orostone.sk/' },
           { name: 'Kontakt', url: 'https://orostone.sk/kontakt' },
         ])}
       />

@@ -97,7 +97,7 @@ export const BLOG_CATEGORY_LABELS: Record<BlogCategory, { sk: string; en: string
 };
 
 export const BLOG_AUTHOR_OROSTONE = {
-  name: 'OROSTONE tím',
+  name: 'Orostone tím',
   role: 'Odborníci na sinterovaný kameň',
   avatar: '/images/logo-circle.png',
 };

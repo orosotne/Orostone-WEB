@@ -8,8 +8,8 @@ export const ReklamacieAVratenie: React.FC = () => {
   return (
     <div>
       <SEOHead
-        title="Reklamácie a vrátenie tovaru | OROSTONE"
-        description="Reklamačný poriadok OROSTONE, postup pri reklamácii, vrátenie tovaru a zákonná zodpovednosť za vady pri nákupe cez e-shop."
+        title="Reklamácie a vrátenie tovaru | Orostone"
+        description="Reklamačný poriadok Orostone, postup pri reklamácii, vrátenie tovaru a zákonná zodpovednosť za vady pri nákupe cez e-shop."
         canonical="https://orostone.sk/reklamacie"
       />
 

@@ -606,7 +606,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 </div>
                 <div className="flex items-center gap-3">
                   <Shield size={16} className="text-brand-dark" aria-hidden="true" />
-                  <span>Záruka 24 mesiacov na materiál</span>
+                  <span>24-mesačná zákonná zodpovednosť za vady materiálu</span>
                 </div>
               </div>
             </div>

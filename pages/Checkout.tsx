@@ -35,7 +35,7 @@ export const Checkout = () => {
   if (itemCount === 0 && isLoading) {
     return (
       <Section tone="chalk" className="min-h-[calc(100svh-4rem)] lg:min-h-[calc(100svh-5rem)]" aria-busy="true">
-        <SEOHead title="Pokladňa | OROSTONE" description="Dokončite vašu objednávku." noindex={true} />
+        <SEOHead title="Pokladňa | Orostone" description="Dokončite vašu objednávku." noindex={true} />
       </Section>
     );
   }
@@ -44,7 +44,7 @@ export const Checkout = () => {
   if (itemCount === 0 && !isLoading) {
     return (
       <Section tone="chalk" className="flex min-h-[calc(100svh-4rem)] items-center lg:min-h-[calc(100svh-5rem)]">
-        <SEOHead title="Košík | OROSTONE" description="Váš nákupný košík." noindex={true} />
+        <SEOHead title="Košík | Orostone" description="Váš nákupný košík." noindex={true} />
         <Container className="grid justify-items-start gap-5">
           <span className="grid h-16 w-16 place-items-center rounded-full bg-brand-sand" aria-hidden="true">
             <ShoppingBag size={28} strokeWidth={1.3} className="text-brand-muted" />
@@ -80,7 +80,7 @@ export const Checkout = () => {
 
   return (
     <Section tone="chalk" className="!pt-[clamp(40px,5vw,72px)]">
-      <SEOHead title="Pokladňa | OROSTONE" description="Dokončite vašu objednávku." noindex={true} />
+      <SEOHead title="Pokladňa | Orostone" description="Dokončite vašu objednávku." noindex={true} />
       <Container>
 
         {/* Header */}

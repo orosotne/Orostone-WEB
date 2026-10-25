@@ -33,8 +33,8 @@ export const VOP = () => {
   return (
     <div>
       <SEOHead
-        title="Všeobecné obchodné podmienky | OROSTONE E-Shop"
-        description="Všeobecné obchodné podmienky e-shopu OROSTONE. Informácie o objednávke, platbe, doprave, reklamáciách a právach spotrebiteľa podľa zákona č. 108/2024 Z.z."
+        title="Všeobecné obchodné podmienky | Orostone E-Shop"
+        description="Všeobecné obchodné podmienky e-shopu Orostone. Informácie o objednávke, platbe, doprave, reklamáciách a právach spotrebiteľa podľa zákona č. 108/2024 Z.z."
         canonical="https://orostone.sk/vop"
       />
       <PageHero

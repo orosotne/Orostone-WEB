@@ -47,7 +47,7 @@ export const Shop = () => {
   return (
     <div className="hp w-full overflow-x-clip">
       <SEOHead
-        title="Sinterovaný kameň pre kuchyne | OROSTONE"
+        title="Sinterovaný kameň pre kuchyne | Orostone"
         description="Sinterovaný kameň pre kuchyne, ostrovčeky a interiéry. Pomôžeme vybrať dekor, ktorý funguje aj vo veľkej ploche. Showroom Bošany, dodanie po SR."
         canonical="https://orostone.sk/"
         ogType="website"
@@ -61,7 +61,7 @@ export const Shop = () => {
           dangerouslySetInnerHTML={{ __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ItemList",
-            "name": "OROSTONE veľkoformátové platne",
+            "name": "Orostone veľkoformátové platne",
             "numberOfItems": products.length,
             "itemListElement": products.slice(0, 20).map((p, i) => ({
               "@type": "ListItem",
@@ -69,10 +69,10 @@ export const Shop = () => {
               "item": {
                 "@type": "Product",
                 "name": p.name,
-                "description": p.metaDescription || p.seoDescription || `${p.name} — sinterovaný kameň od OROSTONE.`,
+                "description": p.metaDescription || p.seoDescription || `${p.name} — sinterovaný kameň od Orostone.`,
                 "url": `https://orostone.sk/produkt/${p.id}`,
                 "image": p.image,
-                "brand": { "@type": "Brand", "name": p.vendor || "OROSTONE" },
+                "brand": { "@type": "Brand", "name": p.vendor || "Orostone" },
                 "sku": p.sku || p.id,
                 "offers": {
                   "@type": "Offer",

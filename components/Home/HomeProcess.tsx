@@ -2,30 +2,28 @@ import React, { Suspense } from 'react';
 import { Container, Eyebrow, Section, SectionHeader, TextLink } from '../Design';
 import { lazyWithRetry } from '../../lib/utils';
 import { ORO_KLIENT } from './homeData';
+import { CUSTOMER_JOURNEY_STEPS } from '../../data/customerJourney';
 
 // The free-sample lead form (Turnstile, Supabase, Meta Lead + GA4 generate_lead) loads in its own chunk
 const SampleLeadForm = lazyWithRetry(() => import('../Shop/SampleLeadForm').then((m) => ({ default: m.SampleLeadForm })));
 
-const STEPS = [
+// Photo per step; titles and texts are the one public journey (data/customerJourney.ts)
+const STEP_PHOTOS = [
   {
     img: '1-orientacna-cena',
     alt: 'Pôdorys kuchyne a vzorky dekorov Calacatta Top, Roman Travertine a Nero Margiua na dubovom stole, pohľad zhora',
-    title: 'Orientačná cena',
-    text: 'Štyri krátke otázky: čo riešite, aký dekor sa vám páči, kedy plánujete a kam vám cenu poslať. Odpovieme spravidla nasledujúci pracovný deň.',
   },
   {
     img: '2-zameranie',
     alt: 'Ruka meria zvinovacím metrom hornú hranu dubových skriniek',
-    title: 'Zameranie',
-    text: 'Kamenár zameria kuchyňu u vás doma. Potom dostanete presnú ponuku, položku po položke.',
   },
   {
     img: '3-vyroba-a-montaz',
     alt: 'Ruky v pracovných rukaviciach osádzajú pracovnú dosku Calacatta Top na dubové skrinky',
-    title: 'Výroba a montáž',
-    text: 'Materiál dodá Orostone. Dosku vyrobia a osadia skúsení kamenári, s ktorými dlhodobo spolupracujeme.',
   },
 ] as const;
+
+const STEPS = CUSTOMER_JOURNEY_STEPS.map((step, i) => ({ ...step, ...STEP_PHOTOS[i] }));
 
 /** How it works (three steps, same as on oro-klient) and the personal advice from Marián. */
 export const HomeProcess: React.FC = () => (

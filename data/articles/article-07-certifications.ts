@@ -16,7 +16,7 @@ export const ARTICLE_07: BlogArticle = {
     heroAlt: 'Tri vzorky sinterovaného kameňa Gothic Gold s lupou, kvapkami vody a posuvným meradlom, pohľad zhora',
     heroCaption: 'Vizualizácia s dekorom Gothic Gold',
     excerpt: 'CE označenie, ISO 10545, NSF/ANSI 51, Greenguard Gold – čo tieto certifikácie skutočne zaručujú a ako sa nenechať oklamať „proprietárnym testovaním“.',
-    metaTitle: 'Certifikácie sinterovaného kameňa | OROSTONE',
+    metaTitle: 'Certifikácie sinterovaného kameňa | Orostone',
     metaDescription: 'CE, ISO 10545, NSF/ANSI 51 a Greenguard Gold. Ktoré certifikáty pri sinterovanom kameni reálne niečo znamenajú a na ktoré sa pri výbere oplatí pýtať.',
     directAnswer: 'Kľúčové certifikácie pre sinterovaný kameň sú: CE označenie (povinné v EÚ), séria ISO 10545 (mechanické a chemické vlastnosti), NSF/ANSI 51 (kontakt s potravinami) a Greenguard Gold (emisia VOC). Tieto certifikáty vydávajú nezávislé akreditované laboratóriá – nie výrobca sám. Pri výbere materiálu sa pýtajte na tieto konkrétne normy, nie na „interné testy kvality“.',
     content: `

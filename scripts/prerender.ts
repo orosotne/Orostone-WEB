@@ -36,6 +36,7 @@ const {
   KUCHYNE_VIZUALIZACIE_H2,
   KUCHYNE_VIZUALIZACIE_LEAD,
 } = await import('../data/pillars/kuchyne.js');
+const { CUSTOMER_JOURNEY_STEPS, CUSTOMER_JOURNEY_NOTE } = await import('../data/customerJourney.js');
 const {
   CENNIK_TITLE,
   CENNIK_DESCRIPTION,
@@ -130,7 +131,7 @@ let count = 0;
 // only this prerendered HTML — header/footer come from React). Labels mirror
 // the visible header menu, so crawlers and users get the same links.
 const SITE_NAV_HTML = `<nav aria-label="Hlavná navigácia"><ul>${[
-  ['/', 'OROSTONE'],
+  ['/', 'Orostone'],
   ['/kategoria/sintered-stone', 'Sinterovaný kameň'],
   ['/sinterovany-kamen', 'O kameni'],
   ['/kuchyne', 'Kuchyne'],
@@ -254,18 +255,18 @@ function prerenderBlogArticle(article: any): void {
 
   writePage({
     route: `/blog/${article.slug}`,
-    title: c.metaTitle || `${c.title} | OROSTONE`,
+    title: c.metaTitle || `${c.title} | Orostone`,
     description: (c.metaDescription || c.directAnswer || c.excerpt).slice(0, 300),
     canonical,
     ogImage,
     ogType: 'article',
     rootContent: `
       <article>
-        <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; <a href="/blog">Blog</a> &rsaquo; ${esc(c.title)}</nav>
+        <nav aria-label="breadcrumb"><a href="/">Orostone</a> &rsaquo; <a href="/blog">Blog</a> &rsaquo; ${esc(c.title)}</nav>
         <h1>${esc(c.title)}</h1>
         <p><em>${esc(c.subtitle)}</em></p>
         <p><strong>${esc(c.directAnswer || c.excerpt)}</strong></p>
-        <p><time datetime="${article.publishDate}">${article.publishDate}</time> &middot; ${article.readTimeMinutes} min čítanie &middot; ${esc(article.author?.name || 'OROSTONE tím')}</p>
+        <p><time datetime="${article.publishDate}">${article.publishDate}</time> &middot; ${article.readTimeMinutes} min čítanie &middot; ${esc(article.author?.name || 'Orostone tím')}</p>
         <div>${c.content}</div>
         ${faqHtml}
       </article>`,
@@ -282,12 +283,12 @@ function prerenderBlogArticle(article: any): void {
         keywords: article.tags.join(', '),
         author: {
           '@type': 'Person',
-          name: article.author?.name || 'OROSTONE tím',
-          worksFor: { '@type': 'Organization', name: 'OROSTONE', url: BASE_URL },
+          name: article.author?.name || 'Orostone tím',
+          worksFor: { '@type': 'Organization', name: 'Orostone', url: BASE_URL },
         },
         publisher: {
           '@type': 'Organization',
-          name: 'OROSTONE',
+          name: 'Orostone',
           logo: { '@type': 'ImageObject', url: `${BASE_URL}/images/brand/orostone-circle.png` },
         },
         mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
@@ -296,7 +297,7 @@ function prerenderBlogArticle(article: any): void {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'OROSTONE', item: `${BASE_URL}/` },
+          { '@type': 'ListItem', position: 1, name: 'Orostone', item: `${BASE_URL}/` },
           { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE_URL}/blog` },
           { '@type': 'ListItem', position: 3, name: c.title, item: canonical },
         ],
@@ -340,21 +341,21 @@ function prerenderBlogListing(): void {
 
   writePage({
     route: '/blog',
-    title: 'Blog o sinterovanom kameni | OROSTONE',
+    title: 'Blog o sinterovanom kameni | Orostone',
     description:
       'Články o sinterovanom kameni — cena, údržba, hrúbka, porovnania s keramikou a technickým kameňom. Pre tých, kto si vyberá dlhodobé riešenie.',
     canonical: `${BASE_URL}/blog`,
     rootContent: `
-      <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Blog</nav>
+      <nav aria-label="breadcrumb"><a href="/">Orostone</a> &rsaquo; Blog</nav>
       <h1>Blog — Sinterovaný kameň</h1>
-      <p>Odborné články o sinterovanom kameni od OROSTONE tímu.</p>
+      <p>Odborné články o sinterovanom kameni od tímu Orostone.</p>
       ${listHtml}`,
     jsonLd: [
       {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'OROSTONE', item: `${BASE_URL}/` },
+          { '@type': 'ListItem', position: 1, name: 'Orostone', item: `${BASE_URL}/` },
           { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE_URL}/blog` },
         ],
       },
@@ -413,7 +414,7 @@ function prerenderProduct(product: any): void {
 
   writePage({
     route: `/produkt/${product.id}`,
-    title: override?.title || product.metaTitle || `${product.name} | OROSTONE`,
+    title: override?.title || product.metaTitle || `${product.name} | Orostone`,
     description: (
       override?.description || product.metaDescription || stripHtml(product.description)
     ).slice(0, 300),
@@ -423,7 +424,7 @@ function prerenderProduct(product: any): void {
     heroImage: product.gallery?.[0] || product.image,
     rootContent: `
       <article>
-        <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; <a href="/kategoria/sintered-stone">Produkty</a> &rsaquo; ${esc(product.name)}</nav>
+        <nav aria-label="breadcrumb"><a href="/">Orostone</a> &rsaquo; <a href="/kategoria/sintered-stone">Produkty</a> &rsaquo; ${esc(product.name)}</nav>
         <h1>${esc(product.name)}</h1>
         <p><strong>${product.pricePerM2.toFixed(2)} &euro; / m² s DPH</strong> (platňa ${esc(product.dimensions)} ≈ ${slabTotal.toFixed(2)} &euro; s DPH)</p>
         <img src="${shopifySized(product.image, 800)}" alt="${esc(product.name)}" width="800" loading="lazy" />
@@ -443,7 +444,7 @@ function prerenderProduct(product: any): void {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'OROSTONE', item: `${BASE_URL}/` },
+          { '@type': 'ListItem', position: 1, name: 'Orostone', item: `${BASE_URL}/` },
           {
             '@type': 'ListItem',
             position: 2,
@@ -500,7 +501,7 @@ function prerenderCategoryListing(): void {
     description: CATEGORY_SEO['sintered-stone'].description,
     canonical: `${BASE_URL}/kategoria/sintered-stone`,
     rootContent: `
-      <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Sinterovaný kameň</nav>
+      <nav aria-label="breadcrumb"><a href="/">Orostone</a> &rsaquo; Sinterovaný kameň</nav>
       <h1>Sinterovaný kameň — Všetky dekory</h1>
       <p>Sinterované platne 3200×1600 mm. ${sintered.length} dekorov na výber.</p>
       ${productListHtml(sintered)}`,
@@ -509,7 +510,7 @@ function prerenderCategoryListing(): void {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'OROSTONE', item: `${BASE_URL}/` },
+          { '@type': 'ListItem', position: 1, name: 'Orostone', item: `${BASE_URL}/` },
           {
             '@type': 'ListItem',
             position: 2,
@@ -551,7 +552,7 @@ function prerenderColorSubcategory(sub: ColorSubcategory): void {
     description: sub.metaDescription,
     canonical,
     rootContent: `
-      <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; <a href="/kategoria/sintered-stone">Sinterovaný kameň</a> &rsaquo; ${esc(sub.name)}</nav>
+      <nav aria-label="breadcrumb"><a href="/">Orostone</a> &rsaquo; <a href="/kategoria/sintered-stone">Sinterovaný kameň</a> &rsaquo; ${esc(sub.name)}</nav>
       <h1>Sinterovaný kameň — ${esc(sub.name)} dekory</h1>
       <p>Kolekcia ${esc(sub.name)} — ${countPhrase} sinterovaného kameňa v rozmere 3200×1600 mm.</p>
       ${productListHtml(filtered)}`,
@@ -560,7 +561,7 @@ function prerenderColorSubcategory(sub: ColorSubcategory): void {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'OROSTONE', item: `${BASE_URL}/` },
+          { '@type': 'ListItem', position: 1, name: 'Orostone', item: `${BASE_URL}/` },
           {
             '@type': 'ListItem',
             position: 2,
@@ -632,7 +633,7 @@ function prerenderInfoPage(p: InfoPage): void {
     description: p.description,
     canonical,
     rootContent: `
-      <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; ${esc(p.h1)}</nav>
+      <nav aria-label="breadcrumb"><a href="/">Orostone</a> &rsaquo; ${esc(p.h1)}</nav>
       <h1>${esc(p.h1)}</h1>
       <p>${esc(p.intro)}</p>
       ${comparisonHtml}
@@ -644,7 +645,7 @@ function prerenderInfoPage(p: InfoPage): void {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'OROSTONE', item: `${BASE_URL}/` },
+          { '@type': 'ListItem', position: 1, name: 'Orostone', item: `${BASE_URL}/` },
           { '@type': 'ListItem', position: 2, name: p.h1, item: canonical },
         ],
       },
@@ -665,13 +666,13 @@ function prerenderHome(): void {
 
   writePage({
     route: '/',
-    title: 'Sinterovaný kameň pre kuchyne | OROSTONE',
+    title: 'Sinterovaný kameň pre kuchyne | Orostone',
     description:
       'Sinterovaný kameň pre kuchyne, ostrovčeky a interiéry. Pomôžeme vybrať dekor, ktorý funguje aj vo veľkej ploche. Showroom Bošany, dodanie po SR.',
     canonical: `${BASE_URL}/`,
     rootContent: `
       <header>
-        <h1>OROSTONE — sinterovaný kameň pre kuchyne, ktoré nechcú robiť kompromis</h1>
+        <h1>Orostone — sinterovaný kameň pre kuchyne, ktoré nechcú robiť kompromis</h1>
         <p>Sinterovaný kameň pre kuchyne, ostrovčeky a interiéry. Pomôžeme vybrať dekor, ktorý funguje aj vo veľkej ploche. Showroom Bošany, dodanie po SR.</p>
       </header>
       <section>
@@ -704,7 +705,7 @@ function prerenderHome(): void {
       {
         '@context': 'https://schema.org',
         '@type': 'WebSite',
-        name: 'OROSTONE',
+        name: 'Orostone',
         url: `${BASE_URL}/`,
         inLanguage: 'sk-SK',
       },
@@ -719,12 +720,12 @@ function prerenderHome(): void {
 function prerenderVzorky(): void {
   writePage({
     route: '/vzorky',
-    title: 'Vzorky sinterovaného kameňa | OROSTONE',
+    title: 'Vzorky sinterovaného kameňa | Orostone',
     description:
       'Objednajte si vzorku dekoru, ktorý vás zaujal, alebo viac vzoriek na porovnanie. Pri väčších plochách odporúčame návštevu showroomu Bošany.',
     canonical: `${BASE_URL}/vzorky`,
     rootContent: `
-      <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Vzorky</nav>
+      <nav aria-label="breadcrumb"><a href="/">Orostone</a> &rsaquo; Vzorky</nav>
       <h1>Vzorky materiálu</h1>
       <p>Porovnajte až tri dekory sinterovaného kameňa priamo u vás doma. Prvá vzorka je zadarmo, každá ďalšia stojí 4,90 €. Dopravu na Slovensko 2,50 € platíte iba raz.</p>
       <p>Vyberte si počet vzoriek a konkrétne dekory. Doručovaciu adresu a platbu doplníte v zabezpečenej pokladni Shopify.</p>
@@ -734,7 +735,7 @@ function prerenderVzorky(): void {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'OROSTONE', item: `${BASE_URL}/` },
+          { '@type': 'ListItem', position: 1, name: 'Orostone', item: `${BASE_URL}/` },
           { '@type': 'ListItem', position: 2, name: 'Vzorky', item: `${BASE_URL}/vzorky` },
         ],
       },
@@ -752,16 +753,16 @@ function prerenderKuchyne(): void {
   ).join('')}</section>`;
   const processHtml = `<section><h2>Od výberu po inštaláciu</h2><ol>${KUCHYNE_PROCESS_STEPS.map(
     (s) => `<li><strong>${esc(s.title)}</strong> — ${esc(s.description)}</li>`,
-  ).join('')}</ol></section>`;
+  ).join('')}</ol><p>${esc(CUSTOMER_JOURNEY_NOTE)}</p></section>`;
 
   writePage({
     route: '/kuchyne',
-    title: 'Kamenné pracovné dosky do kuchyne | OROSTONE',
+    title: 'Kamenné pracovné dosky do kuchyne | Orostone',
     description:
       'Pracovné dosky zo sinterovaného kameňa na mieru. Odolný povrch, nízka nasiakavosť, bez impregnácie. Pošlite pôdorys, vyrátame orientačnú cenu.',
     canonical: `${BASE_URL}/kuchyne`,
     rootContent: `
-      <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Kuchyne</nav>
+      <nav aria-label="breadcrumb"><a href="/">Orostone</a> &rsaquo; Kuchyne</nav>
       <h1>${esc(KUCHYNE_H1)}</h1>
       <p>Sinterovaný kameň pre kuchyňu — pracovné dosky, ostrovčeky a zásteny v dekoroch, ktoré obstoja pri dennom svetle. V showroome v Bošanoch porovnáte celé platne, prejdeme cez váš pôdorys a pripravíme projekt. Inštaláciu vykonáva kamenár. Bez impregnácie, s nízkou nasiakavosťou — pre kuchyne, kde nechcete kompromis.</p>
       ${visualizationsHtml}
@@ -774,7 +775,7 @@ function prerenderKuchyne(): void {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'OROSTONE', item: `${BASE_URL}/` },
+          { '@type': 'ListItem', position: 1, name: 'Orostone', item: `${BASE_URL}/` },
           { '@type': 'ListItem', position: 2, name: 'Kuchyne', item: `${BASE_URL}/kuchyne` },
         ],
       },
@@ -790,33 +791,36 @@ function prerenderKuchyne(): void {
 function prerenderRealizacie(): void {
   writePage({
     route: '/realizacie',
-    title: 'Realizácie kuchynských dosiek | OROSTONE',
+    title: 'Realizácie kuchynských dosiek | Orostone',
     description:
       'Pozrite, ako sinterovaný kameň vyzerá v reálnych kuchyniach a ostrovčekoch. Veľké plochy, kde dekor rozhoduje výsledok celej miestnosti.',
     canonical: `${BASE_URL}/realizacie`,
     rootContent: `
       <header>
-        <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Realizácie</nav>
+        <nav aria-label="breadcrumb"><a href="/">Orostone</a> &rsaquo; Realizácie</nav>
         <h1>Realizácie zo sinterovaného kameňa</h1>
         <p>Pozrite, ako sinterovaný kameň vyzerá v reálnych kuchyniach a ostrovčekoch. Veľké plochy, kde dekor rozhoduje výsledok celej miestnosti.</p>
         <p><a href="/kategoria/sintered-stone">Prehliadnuť všetky dekory</a> &middot; <a href="/vzorky">Objednať vzorky</a> &middot; <a href="/kontakt">Konzultácia zadarmo</a></p>
-      </header>`,
+      </header>
+      <section><h2>Od konzultácie po hotovú kuchyňu</h2><ol>${CUSTOMER_JOURNEY_STEPS.map(
+        (s) => `<li><strong>${esc(s.title)}</strong> — ${esc(s.text)}</li>`,
+      ).join('')}</ol><p>${esc(CUSTOMER_JOURNEY_NOTE)}</p></section>`,
     jsonLd: [
       {
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
-        name: 'Realizácie zo sinterovaného kameňa OROSTONE',
+        name: 'Realizácie zo sinterovaného kameňa Orostone',
         description:
           'Pozrite, ako sinterovaný kameň vyzerá v reálnych kuchyniach a ostrovčekoch. Veľké plochy, kde dekor rozhoduje výsledok celej miestnosti.',
         url: `${BASE_URL}/realizacie`,
         inLanguage: 'sk-SK',
-        isPartOf: { '@type': 'WebSite', name: 'OROSTONE', url: BASE_URL },
+        isPartOf: { '@type': 'WebSite', name: 'Orostone', url: BASE_URL },
       },
       {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'OROSTONE', item: `${BASE_URL}/` },
+          { '@type': 'ListItem', position: 1, name: 'Orostone', item: `${BASE_URL}/` },
           { '@type': 'ListItem', position: 2, name: 'Realizácie', item: `${BASE_URL}/realizacie` },
         ],
       },
@@ -856,13 +860,13 @@ function prerenderKariera(): void {
 
   writePage({
     route: '/kariera',
-    title: 'Kariéra v Orostone — otvorené pozície | OROSTONE',
+    title: 'Kariéra v Orostone — otvorené pozície | Orostone',
     description:
       'Hľadáme kamenára, CNC špecialistu na vodný lúč a pílu, obkladača na veľké formáty a PPC špecialistu. Životopis posielajte na info@orostone.sk.',
     canonical: `${BASE_URL}/kariera`,
     rootContent: `
       <header>
-        <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Kariéra</nav>
+        <nav aria-label="breadcrumb"><a href="/">Orostone</a> &rsaquo; Kariéra</nav>
         <h1>Hľadáme kolegov do tímu</h1>
         <p>Orostone privádza na slovenský trh sinterovaný kameň — materiál na pracovné dosky, ostrovčeky, zásteny a obklady. Rozširujeme tím o ľudí, ktorí robia svoju prácu presne a vedia, prečo ju robia práve tak.</p>
         <p>Životopis posielajte na <a href="mailto:${CAREERS_EMAIL}">${CAREERS_EMAIL}</a>. Do predmetu uveďte názov pozície.</p>
@@ -878,7 +882,7 @@ function prerenderKariera(): void {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'OROSTONE', item: `${BASE_URL}/` },
+          { '@type': 'ListItem', position: 1, name: 'Orostone', item: `${BASE_URL}/` },
           { '@type': 'ListItem', position: 2, name: 'Kariéra', item: `${BASE_URL}/kariera` },
         ],
       },
@@ -928,7 +932,7 @@ function prerenderCennik(): void {
     canonical,
     rootContent: `
       <article>
-        <nav aria-label="breadcrumb"><a href="/">OROSTONE</a> &rsaquo; Cenník</nav>
+        <nav aria-label="breadcrumb"><a href="/">Orostone</a> &rsaquo; Cenník</nav>
         <h1>${esc(CENNIK_H1)}</h1>
         <p><strong>${esc(CENNIK_DIRECT_ANSWER)}</strong></p>
         <p>Aktualizované: <time datetime="${PRICING_LAST_UPDATED}">${PRICING_LAST_UPDATED}</time>. Ceny sa synchronizujú s e-shopom.</p>
@@ -960,7 +964,7 @@ function prerenderCennik(): void {
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'OROSTONE', item: `${BASE_URL}/` },
+          { '@type': 'ListItem', position: 1, name: 'Orostone', item: `${BASE_URL}/` },
           { '@type': 'ListItem', position: 2, name: 'Cenník', item: canonical },
         ],
       },
@@ -978,7 +982,7 @@ function prerenderCennik(): void {
 function prerenderNotFound(): void {
   writePage({
     route: '/404',
-    title: 'Stránka nenájdená | OROSTONE',
+    title: 'Stránka nenájdená | Orostone',
     description: 'Hľadaná stránka neexistuje alebo bola presunutá.',
     canonical: `${BASE_URL}/`,
     notFound: true,

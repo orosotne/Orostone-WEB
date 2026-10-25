@@ -119,7 +119,7 @@ export function buildProductJsonLd(
     sku: product.sku || product.id,
     brand: {
       '@type': 'Brand',
-      name: product.vendor || 'OROSTONE',
+      name: product.vendor || 'Orostone',
     },
     category: 'Veľkoformátové platne',
     material: product.material || 'Sinterovaný kameň',

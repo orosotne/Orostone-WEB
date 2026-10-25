@@ -15,7 +15,7 @@ export const ARTICLE_13: BlogArticle = {
     title: 'Od merania po inštaláciu: proces Orostone v 10 krokoch',
     subtitle: 'Kompletný sprievodca celým procesom – od prvej konzultácie po odovzdanie hotovej kuchyne',
     excerpt: 'Presne budete vedieť, čo sa deje v každej fáze. 10 krokov, konkrétne termíny, jasné zodpovednosti. Celý proces od konzultácie po hotovú kuchyňu trvá 10 – 15 pracovných dní.',
-    metaTitle: 'Od pôdorysu po hotovú kuchyňu – proces | OROSTONE',
+    metaTitle: 'Od pôdorysu po hotovú kuchyňu – proces | Orostone',
     metaDescription: 'Od pôdorysu cez výber dekoru a zameranie po finálnu kuchyňu. Celý proces zastrešíme so skúsenými kamenármi – čo má klient na oboch stranách očakávať.',
     directAnswer: 'Celý proces od prvej konzultácie po hotovú kuchyňu trvá 10 – 15 pracovných dní. Zahŕňa: konzultáciu, výber materiálu, zameranie na mieste, CNC fabrikáciu, kontrolu kvality, transport na A-ráme, prípravu podkladu, montáž, inštaláciu spotrebičov a finálnu kontrolu.',
     content: `
@@ -32,7 +32,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <p>Či už plánujete novú kuchyňu, kúpeľňový obklad alebo ostrovček do otvoreného priestoru, proces je vždy rovnaký: <strong>10 jasných krokov, 10 – 15 pracovných dní, jasné zodpovednosti</strong>. Poďme na to.</p>
 
-<p><strong>Kto čo robí:</strong> Orostone vám poradí s výberom, dodá materiál – celé platne – a koordinuje termíny. Zameranie, výrobu, dopravu a montáž robí a fakturuje partnerský kamenár so skúsenosťami so sinterovaným kameňom. Výsledok kontrolujeme aj my.</p>
+<p><strong>Kto čo robí:</strong> Orostone vám poradí s výberom a dodá materiál – celé platne. Dohodne s kamenárom termín a zákazku sleduje až do montáže. Zameranie, výrobu, dopravu a montáž robí a fakturuje partnerský kamenár so skúsenosťami so sinterovaným kameňom. Za výrobu a montáž zodpovedá kamenár.</p>
 
 <h2 id="krok-1-konzultacia-a-vyber-materialu">Krok 1 – Čo sa deje na konzultácii?</h2>
 
@@ -115,7 +115,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <p><strong>Trvanie:</strong> 7 – 10 pracovných dní od schválenia výkresov. Komplexnejšie projekty s viacerými kusmi môžu trvať dlhšie – o presnom termíne vás informujeme pri schválení.</p>
 
-<h2 id="krok-5-kontrola-kvality">Krok 5 – Ako kontrolujeme kvalitu?</h2>
+<h2 id="krok-5-kontrola-kvality">Krok 5 – Ako kamenár kontroluje kvalitu?</h2>
 
 <p>Predtým, ako ktorýkoľvek diel opustí dielňu, prechádza štvorstupňovou kontrolou kvality. Chyba odhalená vo výrobe stojí hodiny – chyba odhalená pri inštalácii stojí dni a tisíce eur.</p>
 
@@ -210,7 +210,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <h2 id="krok-10-finalna-kontrola-a-odovzdanie">Krok 10 – Ako prebieha finálna kontrola a odovzdanie?</h2>
 
-<p>Posledný krok je rovnako dôležitý ako prvý. Kamenár nekončí montážou – prácu odovzdá, až keď je všetko v poriadku, a výsledok skontrolujeme aj my.</p>
+<p>Posledný krok je rovnako dôležitý ako prvý. Kamenár nekončí montážou – prácu odovzdá, až keď je všetko v poriadku. Za výrobu a montáž zodpovedá kamenár.</p>
 
 <p><strong>Finálna kontrola zahŕňa:</strong></p>
 <ul>
@@ -224,7 +224,7 @@ export const ARTICLE_13: BlogArticle = {
 <p><strong>Odovzdanie klientovi:</strong></p>
 <ul>
   <li><strong>Protokol o čistení a údržbe</strong> – vysvetlíme vám, ako sa o sinterovaný kameň starať (spoiler: je to veľmi jednoduché)</li>
-  <li><strong>Záruka</strong> – na materiál platí záruka 24\u00A0mesiacov, na výrobu a montáž dáva záruku kamenár. Podmienky dostanete v záručnom certifikáte pri odovzdaní</li>
+  <li><strong>Záruka</strong> – na materiál platí 24-mesačná zákonná zodpovednosť za vady, na výrobu a montáž dáva záruku kamenár. Podmienky dostanete v záručnom certifikáte pri odovzdaní</li>
   <li><strong>Čas na vytvrdnutie</strong> – <strong>24 hodín</strong> po inštalácii nepoužívajte dosku v plnom zaťažení. Lepidlá a tmely potrebujú čas na úplné vytvrdnutie</li>
   <li><strong>Kontakt pre budúcnosť</strong> – ak kedykoľvek v budúcnosti budete potrebovať poradiť, opraviť alebo rozšíriť, sme tu pre vás</li>
 </ul>
@@ -291,7 +291,7 @@ export const ARTICLE_13: BlogArticle = {
       },
       {
         question: 'Aká je záruka na inštaláciu a materiál?',
-        answer: 'Na fabrikáciu a montáž poskytuje záruku kamenár, ktorý ich realizuje. Na materiál platí záruka 24\u00A0mesiacov. Presné podmienky záruky sú súčasťou záručného certifikátu, ktorý dostanete pri odovzdaní projektu. V prípade akéhokoľvek problému nás kontaktujte – pomôžeme to doriešiť.'
+        answer: 'Na fabrikáciu a montáž poskytuje záruku kamenár, ktorý ich realizuje. Na materiál platí 24-mesačná zákonná zodpovednosť za vady. Presné podmienky záruky sú súčasťou záručného certifikátu, ktorý dostanete pri odovzdaní projektu. V prípade akéhokoľvek problému nás kontaktujte – pomôžeme to doriešiť.'
       }
     ]
   },
@@ -313,7 +313,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <p>Whether you're planning a new kitchen, bathroom cladding, or an island for an open-plan living space, the process is always the same: <strong>10 clear steps, 10–15 business days, clear responsibilities</strong>. Let's begin.</p>
 
-<p><strong>Who does what:</strong> Orostone advises you on the selection, supplies the material — whole slabs — and coordinates the schedule. Measurement, fabrication, transport and installation are carried out and invoiced by a partner stonemason experienced with sintered stone. We check the result as well.</p>
+<p><strong>Who does what:</strong> Orostone advises you on the selection and supplies the material — whole slabs. It agrees the schedule with the stonemason and follows the job through to installation. Measurement, fabrication, transport and installation are carried out and invoiced by a partner stonemason experienced with sintered stone. The stonemason is responsible for fabrication and installation.</p>
 
 <h2 id="step-1-consultation-and-material-selection">Step 1 — What happens at the consultation?</h2>
 
@@ -396,7 +396,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <p><strong>Duration:</strong> 7–10 business days from drawing approval. More complex projects with multiple pieces may take longer — we confirm the exact timeline at approval.</p>
 
-<h2 id="step-5-quality-control">Step 5 — How do we check quality?</h2>
+<h2 id="step-5-quality-control">Step 5 — How does the stonemason check quality?</h2>
 
 <p>Before any piece leaves the workshop, it undergoes a four-stage quality inspection. A defect found during manufacturing costs hours — a defect discovered during installation costs days and thousands of euros.</p>
 
@@ -491,7 +491,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <h2 id="step-10-final-inspection-and-handover">Step 10 — How does final inspection and handover work?</h2>
 
-<p>The final step is just as important as the first. The stonemason doesn't stop at installation — the work is handed over only when everything is right, and we check the result as well.</p>
+<p>The final step is just as important as the first. The stonemason doesn't stop at installation — the work is handed over only when everything is right. The stonemason is responsible for fabrication and installation.</p>
 
 <p><strong>Final inspection includes:</strong></p>
 <ul>
@@ -505,7 +505,7 @@ export const ARTICLE_13: BlogArticle = {
 <p><strong>Client handover:</strong></p>
 <ul>
   <li><strong>Cleaning and care guide</strong> — we explain how to maintain sintered stone (spoiler: it's very straightforward)</li>
-  <li><strong>Warranty</strong> — the material carries a 24-month warranty, fabrication and installation are warranted by the stonemason. You receive the terms in the warranty certificate at handover</li>
+  <li><strong>Warranty</strong> — the material carries the 24-month statutory liability for defects, fabrication and installation are warranted by the stonemason. You receive the terms in the warranty certificate at handover</li>
   <li><strong>Curing time</strong> — <strong>24 hours</strong> after installation, avoid full load on the worktop. Adhesives and sealants need time to fully cure</li>
   <li><strong>Future contact</strong> — whenever you need advice, repair, or expansion in the future, we're here for you</li>
 </ul>
@@ -572,7 +572,7 @@ export const ARTICLE_13: BlogArticle = {
       },
       {
         question: 'What warranty do you provide on installation and material?',
-        answer: 'Fabrication and installation are warranted by the stonemason who carries them out. The material carries a 24-month warranty. Exact warranty terms are included in the warranty certificate you receive at project handover. In case of any issue, contact us — we\'ll help get it resolved.'
+        answer: 'Fabrication and installation are warranted by the stonemason who carries them out. The material carries the 24-month statutory liability for defects. Exact warranty terms are included in the warranty certificate you receive at project handover. In case of any issue, contact us — we\'ll help get it resolved.'
       }
     ]
   }

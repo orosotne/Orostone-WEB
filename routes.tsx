@@ -43,7 +43,7 @@ const minH = <div className="min-h-screen" aria-hidden />;
 
 const NotFoundPage: React.FC = () => (
   <Section tone="chalk" className="flex min-h-[calc(100svh-4rem)] items-center lg:min-h-[calc(100svh-5rem)]">
-    <SEOHead title="Stránka nenájdená | OROSTONE" description="Hľadaná stránka neexistuje alebo bola presunutá." noindex={true} />
+    <SEOHead title="Stránka nenájdená | Orostone" description="Hľadaná stránka neexistuje alebo bola presunutá." noindex={true} />
     <Container className="grid justify-items-start gap-5">
       <Eyebrow>Chyba 404</Eyebrow>
       <h1 className="text-os-h1">Stránka nenájdená</h1>

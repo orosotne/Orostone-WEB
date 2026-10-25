@@ -19,7 +19,7 @@ export function categoryHeroCopy(
   const seoDescription =
     CATEGORY_SEO[subCategory ? `${slug}/${subCategory}` : slug]?.description ||
     category.description ||
-    `${category.name} — produkty od OROSTONE.`;
+    `${category.name} — produkty od Orostone.`;
   return {
     crumbs: ['E-shop', category.name, ...(subCategoryName ? [subCategoryName] : [])],
     title: subCategoryName ? `${category.name} — ${subCategoryName}` : category.name,

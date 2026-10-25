@@ -38,7 +38,7 @@ export const ARTICLE_16: BlogArticle = {
     title: 'Oplatí sa sinterovaný kameň? Cena vs životnosť vs údržba',
     subtitle: 'Reálna matematika – nie marketingové sľuby. Tri scenáre, konkrétne čísla v eurách a brutálne úprimná odpoveď.',
     excerpt: 'Kompletný finančný rozbor sinterovaného kameňa vs kvarcitu, žuly a laminátu. Tri reálne scenáre (rodinný dom, byt v Bratislave, Airbnb), 25-ročné náklady vlastníctva a úprimná odpoveď, kedy sa investícia oplatí – a kedy nie.',
-    metaTitle: 'Oplatí sa sinterovaný kameň? Cena a životnosť | OROSTONE',
+    metaTitle: 'Oplatí sa sinterovaný kameň? Cena a životnosť | Orostone',
     metaDescription: 'Cena, životnosť, údržba, odolnosť. Sinterovaný kameň proti žule a technickému kameňu – kde sa rozdiel reálne ukáže za 5 – 10 rokov používania.',
     directAnswer: 'Pre kuchyňu, ktorú plánujete používať 15+ rokov, sa sinterovaný kameň jednoznačne oplatí. Pri 25-ročnom horizonte vyjde lacnejšie ako žula (ušetríte 2\u00A0000 – 4\u00A0000\u00A0€ na údržbe) a porovnateľne s kvarcom – ale s výrazne lepšou odolnosťou voči teplu, UV a škvrnám. Neoplatí sa pri krátkodobom bývaní alebo prenájme.',
     content: `
@@ -152,7 +152,7 @@ export const ARTICLE_16: BlogArticle = {
 
 <p><strong>Verdikt pre rodinný dom:</strong> Sinterovaný kameň sa jednoznačne oplatí. Nie je to najlacnejšia počiatočná investícia, ale je to najnižší celkový náklad vlastníctva medzi prémiovými materiálmi – a to bez kompromisov v kvalite alebo estetike.</p>
 
-<h2 id="scenar-2-byt-bratislava">Scenár 2 – Dáva zmysel do bytu v Bratislave na 5 – 10 rokov?</h2>
+<h2 id="scenar-2-byt-bratislava">Scenár 2 – Oplatí sa do bytu v Bratislave na 5 – 10 rokov?</h2>
 
 <p>Iný scenár: kupujete alebo rekonštruujete 3-izbový byt v Bratislave. Plánujete v ňom bývať 5 – 10 rokov a potom ho predať alebo prenajať. Tu je matematika iná.</p>
 
@@ -180,7 +180,7 @@ export const ARTICLE_16: BlogArticle = {
 <li>Merateľná návratnosť investície do sinterovaného kameňa oproti kvarcitu pri predaji bytu do 10 rokov je <strong>neistá</strong>.</li>
 </ul>
 
-<p><strong>Naša úprimná odpoveď:</strong> Pre byt na 5 – 10 rokov je <strong>kvalitný kvarcit najlepší pomer ceny a hodnoty</strong>. Dostanete krásny, odolný povrch za nižšiu cenu. Sinterovaný kameň dáva zmysel, len ak máte kuchyňu vedľa veľkého okna (UV odolnosť) alebo ak varíte intenzívne a pravidelne kladiete horúce hrnce priamo na dosku.</p>
+<p><strong>Naša úprimná odpoveď:</strong> Pre byt na 5 – 10 rokov je <strong>kvalitný kvarcit najlepší pomer ceny a hodnoty</strong>. Dostanete krásny, odolný povrch za nižšiu cenu. Sinterovaný kameň sa oplatí, len ak máte kuchyňu vedľa veľkého okna (UV odolnosť) alebo ak varíte intenzívne a pravidelne kladiete horúce hrnce priamo na dosku.</p>
 
 <p>Áno, práve sme vám povedali, že v tomto scenári náš hlavný produkt nie je najlepšia voľba. Ale radšej spokojný zákazník s kvarcitom ako nespokojný zákazník, ktorý si myslí, že preplatil sinterovaný kameň.</p>
 

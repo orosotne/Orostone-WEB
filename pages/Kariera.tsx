@@ -226,7 +226,7 @@ export const Kariera: React.FC = () => {
   return (
     <div>
       <SEOHead
-        title="Kariéra v Orostone — otvorené pozície | OROSTONE"
+        title="Kariéra v Orostone — otvorené pozície | Orostone"
         description="Hľadáme kamenára, CNC špecialistu na vodný lúč a pílu, obkladača na veľké formáty a PPC špecialistu. Životopis posielajte na info@orostone.sk."
         canonical="https://orostone.sk/kariera"
         keywords={[
@@ -238,7 +238,7 @@ export const Kariera: React.FC = () => {
           'PPC špecialista práca',
         ]}
         structuredData={createBreadcrumbLD([
-          { name: 'OROSTONE', url: 'https://orostone.sk/' },
+          { name: 'Orostone', url: 'https://orostone.sk/' },
           { name: 'Kariéra', url: 'https://orostone.sk/kariera' },
         ])}
       />

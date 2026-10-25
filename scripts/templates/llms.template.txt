@@ -1,6 +1,6 @@
-# OROSTONE — Premium Sintered Stone Surfaces
+# Orostone — Premium Sintered Stone Surfaces
 
-> OROSTONE is a Slovak premium supplier of sintered stone (sinterovaný kameň) for kitchen countertops, kitchen islands, backsplashes, bathrooms, and wall cladding. Registered office in Bratislava, showroom with full slabs in Bošany, Slovakia. We help you choose a decor, sell whole slabs (3200 × 1600 × 12 mm), deliver them across Slovakia, and coordinate the project. Measuring (by hand, on site), fabrication, transport of the finished pieces, and installation are done and invoiced by a partner stonemason — one we recommend or one you choose.
+> Orostone is a Slovak premium supplier of sintered stone (sinterovaný kameň) for kitchen countertops, kitchen islands, backsplashes, bathrooms, and wall cladding. Registered office in Bratislava, showroom with full slabs in Bošany, Slovakia. We help you choose a decor, sell whole slabs (3200 × 1600 × 12 mm), deliver them across Slovakia, and coordinate the project. Measuring (by hand, on site), fabrication, transport of the finished pieces, and installation are done and invoiced by a partner stonemason — one we recommend or one you choose.
 
 > For the full, detailed version of this document (product specs, FAQs, legal details), see: https://orostone.sk/llms-full.txt
 
@@ -15,7 +15,7 @@
 - Material price: {{SLAB_PRICE_MIN}}–{{SLAB_PRICE_MAX}} €/m² incl. VAT depending on the decor. Orostone sells whole slabs only: {{SLAB_TOTAL_MIN}}–{{SLAB_TOTAL_MAX}} € per slab incl. VAT, −{{BULK_PERCENT}} % from {{BULK_QTY}} slabs. A typical kitchen needs 1–2 slabs.
 - Fabrication and installation: the partner stonemason's orientation rate is ≈ {{INSTALLATION_RATE}} €/m² incl. VAT (measuring, transport, edge processing, polishing, installation). The stonemason invoices this work; it is not part of Orostone's material price.
 - Samples (10 × 10 cm): the first sample is free, each further sample costs 4.90 € and shipping 2.50 € (incl. VAT), max. three samples per order
-- Warranty: 24 months on the material; the stonemason gives the warranty on fabrication and installation
+- Liability for defects: the material carries the 24-month statutory liability for defects; the stonemason gives the warranty on fabrication and installation
 - Delivery: Slovakia only; stock slabs typically within 3–5 working days
 
 ## Key Pages
