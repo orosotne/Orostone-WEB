@@ -7,36 +7,11 @@ Premium e-commerce website for Orostone (sintered stone / veľkoformátové plat
 - **Brand:** Orostone — Slovak market, content in Slovak/Czech
 - **Domain:** eshop.orostone.sk
 
-## Tech Stack
+## Stack notes
 
-- **Framework:** React 19 + TypeScript + Vite 6
-- **Styling:** Tailwind CSS 3 (custom brand colors/theme)
-- **Animations:** Framer Motion (LazyMotion, `m.*`); GSAP and Lenis are no longer imported anywhere
-- **E-commerce:** Shopify Storefront API via Hydrogen React
-- **Backend/Auth:** Supabase (PostgreSQL + auth)
-- **AI:** Google Gemini API (visualizer feature)
+- Animations: Framer Motion through `LazyMotion` with `m.*` components.
 
 ## Architecture
-
-### Single E-shop App
-- `index.tsx` → `EshopApp.tsx` — e-shop SPA (single entry point)
-- Entry HTML: `index.html`
-
-### Key Directories
-```
-pages/          # Route-level page components
-components/     # Reusable components
-  UI/           # Generic UI (buttons, cards, sliders)
-  Eshop/        # E-shop specific
-  Shop/         # Shop feature components
-  Layout/       # Navbar, Footer
-  Cart/          # Cart components
-context/        # React Context (Auth, Cart, Cookies, Theme)
-hooks/          # Custom hooks (Shopify, Instagram, collections)
-lib/            # Integrations (shopify.ts, supabase.ts)
-data/           # Static data, SEO content, blog articles, fallback catalog
-scripts/        # CLI scripts (sync, image processing)
-```
 
 ### Shopify Fallback Strategy
 `data/shop-products-fallback.json` is a local offline copy of the Shopify catalog. Sync with `npm run sync:shop-fallback`.
@@ -46,22 +21,11 @@ The homepage Instagram strip renders `data/instagram-feed.json` and 600×750 web
 
 ## Dev Commands
 
-```bash
-npm run dev              # Dev server on :3000
-npm run build            # Production build
-npm run preview          # Preview build
-npm test                 # node:test suite in scripts/tests (also runs on every PR to main)
-npm run sync:shop-fallback  # Sync Shopify product catalog to local fallback
-npm run sync:instagram   # Latest Instagram posts → data/instagram-feed.json + public/images/instagram/ (also runs in build)
-```
+`npm test` runs the node:test suite in `scripts/tests`; CI runs it on every PR to main.
 
 ## Environment Variables
 
-See `.env.example`. Required:
-- `VITE_SUPABASE_URL` + `VITE_SUPABASE_ANON_KEY`
-- `VITE_SHOPIFY_STORE_DOMAIN` + `VITE_SHOPIFY_STOREFRONT_TOKEN`
-- `VITE_PUBLIC_SITE_URL`
-- `GEMINI_API_KEY`
+See `.env.example`; `VITE_PUBLIC_SITE_URL` is also required but missing from it.
 
 ## Styling Conventions (see STYLE_GUIDE.md)
 
@@ -77,40 +41,8 @@ The site uses a new design system (October 2026). New and rewritten sections use
 
 ## State Management
 
-React Context API only — no Redux/Zustand. Contexts:
-- `AuthContext` — Supabase auth
-- `CartContext` — Shopify cart
-- `CookieContext` — GDPR cookie consent
-- `ThemeContext` — theme
+React Context API only — no Redux/Zustand.
 
 ## SEO
 
-- `SEOHead.tsx` component for meta/OG tags per page
-- Structured data (JSON-LD): Product, BreadcrumbList, FAQPage, LocalBusiness, Organization
-- SEO content DB: `data/product-seo-content.ts` (12 products)
 - **SEO diff gate:** every PR to `main` runs `.github/workflows/seo-diff.yml`, which compares title, meta description, H1/H2, `#` anchors, tables, JSON-LD types and internal links of every prerendered page against `main` and posts the list as a PR comment. Anything removed turns the check red — approve it deliberately or restore it (a rewrite must not silently drop a table or section that ranks). A reworded H2 that keeps its `#id` (on listings, its link) is listed as a change, not a removal. Locally: `npm run seo:diff -- <main dist> dist`.
-- `public/sitemap.xml`, `public/robots.txt`, `public/llms.txt`
-
-## Debug Infrastructure
-
-- Dev-only debug logging sent to local endpoint `http://127.0.0.1:7731/ingest/...`
-- Logs written to `.cursor/debug-*.log`
-- Always guarded by `import.meta.env.DEV` checks — never runs in production
-
-## Newsletter copy (`marketing/newsletter/`)
-
-Shared with Codex, which reviews the Slovak copy (`@codex review` on a PR; rules in `marketing/newsletter/AGENTS.md`).
-- Edit copy in `nastroje/build_emails.py`, then regenerate `sablony/` and `texty/` (see `marketing/newsletter/README.md`).
-- Language rules: `marketing/newsletter/slovnik.md`. Review log: `marketing/newsletter/jazykova-kontrola.md`.
-- After changing templates, keep the `orostone-newsletter` skill templates in sync.
-- Email images live in `public/images/email/` (served at `https://orostone.sk/images/email/`); every image a template references must exist there.
-
-## Pending Work (TODO.md)
-
-Key open items:
-- Checkout/cart flow (HIGH)
-- GA4 analytics (HIGH)
-- Google Search Console setup (HIGH)
-- Cookie consent banner (MEDIUM)
-- Blog content for SEO (HIGH)
-- Product filtering UX (MEDIUM)
