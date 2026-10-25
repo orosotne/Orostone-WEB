@@ -174,6 +174,7 @@ async function sendAdminNotification(quote: QuoteData, customer: CustomerData, i
     .data-label  { color: #888888 !important; }
     .data-value  { color: #f0f0f0 !important; }
     .data-link   { color: #ECD488 !important; }
+    .email-eyebrow { color: #ECD488 !important; }
     .data-row td { border-bottom-color: #333333 !important; }
     .footer-cell { background-color: #1e1e1e !important; border-top-color: #333333 !important; }
     .footer-id   { color: #555555 !important; }
@@ -185,6 +186,7 @@ async function sendAdminNotification(quote: QuoteData, customer: CustomerData, i
   [data-ogsc] .data-label  { color: #888888 !important; }
   [data-ogsc] .data-value  { color: #f0f0f0 !important; }
   [data-ogsc] .data-link   { color: #ECD488 !important; }
+  [data-ogsc] .email-eyebrow { color: #ECD488 !important; }
   [data-ogsc] .data-row td { border-bottom-color: #333333 !important; }
   [data-ogsc] .footer-cell { background-color: #1e1e1e !important; border-top-color: #333333 !important; }
   [data-ogsc] .footer-id   { color: #555555 !important; }
@@ -218,11 +220,11 @@ async function sendAdminNotification(quote: QuoteData, customer: CustomerData, i
             <!-- HLAVIČKA -->
             <tr>
               <td class="email-body" style="background-color: #ffffff; padding: 36px 40px 24px 40px;">
-                <p style="margin: 0 0 6px 0; font-size: 10px; font-weight: 700; letter-spacing: 0.25em;
-                          text-transform: uppercase; color: #B8960C;">
+                <p class="email-eyebrow" style="margin: 0 0 6px 0; font-size: 10px; font-weight: 700; letter-spacing: 0.25em;
+                          text-transform: uppercase; color: #7A6A2E;">
                   ${isSampleLead ? 'Žiadosť o vzorku' : 'Dopyt z webu'}
                 </p>
-                <h2 class="email-text" style="margin: 0 0 6px 0; font-size: 22px; font-weight: 700; color: #1A1A1A;">
+                <h2 class="email-text" style="margin: 0 0 6px 0; font-size: 22px; font-weight: 600; color: #1A1A1A;">
                   ${h(customer.name)}
                 </h2>
                 <p style="margin: 0; font-size: 12px; color: #999999; font-weight: 300;">
@@ -407,7 +409,7 @@ async function sendSampleLeadConfirmation(quote: QuoteData, customer: CustomerDa
             <!-- HERO TEXT -->
             <tr>
               <td class="email-body" style="background-color: #ffffff; padding: 44px 40px 28px 40px; text-align: center;">
-                <h1 class="email-text" style="margin: 0 0 8px 0; font-size: 26px; font-weight: 700; color: #1A1A1A; letter-spacing: -0.02em;">
+                <h1 class="email-text" style="margin: 0 0 8px 0; font-size: 26px; font-weight: 600; color: #1A1A1A; letter-spacing: -0.02em;">
                   Ďakujeme za žiadosť o vzorku
                 </h1>
                 <p class="email-subtext" style="margin: 0; font-size: 16px; font-weight: 300; color: #666666; line-height: 1.6;">
@@ -429,8 +431,8 @@ async function sendSampleLeadConfirmation(quote: QuoteData, customer: CustomerDa
                 <div class="dekor-card" style="background-color: #F9F9F7; border-left: 4px solid #ECD488;
                             border-radius: 0 8px 8px 0; padding: 16px 20px;">
                   <p class="dekor-label" style="margin: 0 0 4px 0; font-size: 10px; font-weight: 700;
-                            letter-spacing: 0.25em; text-transform: uppercase; color: #B8960C;">Váš vybraný dekor</p>
-                  <p class="email-text" style="margin: 0; font-size: 18px; font-weight: 700; color: #1A1A1A;">
+                            letter-spacing: 0.25em; text-transform: uppercase; color: #7A6A2E;">Váš vybraný dekor</p>
+                  <p class="email-text" style="margin: 0; font-size: 18px; font-weight: 600; color: #1A1A1A;">
                     ${h(quote.decor ?? '—')}
                   </p>
                 </div>
@@ -549,7 +551,7 @@ async function sendCustomerConfirmation(quote: QuoteData, customer: CustomerData
       <img src="${LOGO_URL}" alt="Orostone" style="height: 40px; margin-bottom: 8px; display: block;">
       <div style="background: #ECD488; height: 3px; margin-bottom: 28px;"></div>
 
-      <h2 style="font-weight: 700; font-size: 22px; color: #1A1A1A; margin: 0 0 8px 0;">Ďakujeme za Váš dopyt</h2>
+      <h2 style="font-weight: 600; font-size: 22px; color: #1A1A1A; margin: 0 0 8px 0;">Ďakujeme za Váš dopyt</h2>
       <p style="color: #444; font-weight: 300; line-height: 1.6; margin: 0 0 24px 0;">
         Vážený/á ${h(customer.name)},<br><br>
         Váš dopyt na <strong>${h(quote.project_type.toLowerCase())}</strong> sme úspešne prijali.

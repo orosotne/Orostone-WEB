@@ -23,7 +23,16 @@ Súvisí s rozhodnutiami Martina z 15. 10. 2026: popup B „5 % na váš kameň�
 
 Všetky tri stránky na produkcii vracajú 200 a ich titulky zodpovedajú dekorom (overené 15. 10. 2026). Neexistujúci dekor od PR #159 vracia 404. `utm_medium=paid_social` zaradí GA4 návštevy do kanála Paid Social.
 
-**Prečo kód v reklame nie je:**
+**Kedy zľava vedie (pravidlo, Martin 25. 10. 2026):** zľava smie byť na prvom mieste (predmet, nadpis, obrázok) len pri teplom publiku, ktoré už v e-shope niečo urobilo:
+- pripomienky košíka a pokladne (KOSIK5, DOKONCIT10),
+- remarketing návštevníkov webu (táto reklama, OROSTONE5),
+- odmena za odber v popupe (VITAJTE, WELCOME5).
+
+V awareness reklame, v organických príspevkoch, v hero webu, na oro-klient a v obchodnom follow-upe po dopyte či ponuke zľava nevedie: najprv je dekor a rada. Aj tam, kde vedie, platí poradie dekor → zľava → podmienky, pokojným hlasom a s presným znením („zľava 5 % na platne“, „len pri objednávke na orostone.sk“). Množstevná zľava 20 % od 3 platní je vecný údaj cenníka, nie akcia.
+
+**Kód v reklame (pravidlo, Martin 25. 10. 2026):** v reklame sa tlačí len kód vytvorený výhradne pre danú reklamu, napríklad OROSTONE5. Taký kód má v Shopify koniec platnosti rovnaký ako kampaň, platí raz na zákazníka, nekombinuje sa s inými zľavami a text reklamy uvádza podmienku „len na orostone.sk“. Kód, ktorý je odmenou za iný krok (WELCOME5 za odber, KOSIK5, DOKONCIT10, VITAJTE), sa v reklame netlačí nikdy: vytlačený by sa šíril a ten krok by stratil hodnotu.
+
+**Prečo kód WELCOME5 v tejto reklame nie je:**
 - WELCOME5 je odmena za prihlásenie na newsletter. Vytlačený v reklame by sa šíril bez prihlásenia (zdieľanie, zľavové weby) a reklama by prestala privádzať odberateľov.
 - Shopify ho pustí raz na zákazníka. To bráni opakovanému použitiu, nie tomu, aby ho použil ktokoľvek bez prihlásenia.
 - Reklama má tak jeden ďalší krok: otvoriť dekor, prihlásiť sa v popupe. Kód sa ukáže v popupe a novému odberateľovi príde e-mailom spolu s VITAJTE.
@@ -77,11 +86,13 @@ Každý variant ide v troch formátoch. Copy sa riadi skillom `copy-orostone`: n
 
 | Formát | Rozmer | Kde sa zobrazí | Bez textu a loga | Rozmiestnenie |
 |---|---|---|---|---|
-| Kanál 4:5 (hlavný) | 1080 × 1350 | FB a IG kanál na mobile | 250 px hore aj dole, 60 px po stranách | logo vpravo hore pod hornou zónou, text v strede ±15 % |
-| Kanál 1:1 | 1080 × 1080 | FB kanál na počítači, záloha | 100 px dookola | logo 100–150 px od horného okraja |
-| Stories a Reels 9:16 | 1080 × 1920 | FB a IG Stories a Reels | 270 px hore, 670 px dole, 65 px po stranách | logo 300–400 px od horného okraja, text v strednej osi, pod 1250 px nič |
+| Kanál 4:5 (hlavný) | 1080 × 1350 | FB a IG kanál | 250 px hore aj dole, 60 px po stranách | logo vľavo nad nadpisom pod hornou zónou, text v strede ±15 % |
+| Štvorec 1:1 | 1080 × 1080 | len umiestnenia, ktoré iný pomer nevedia (pravý stĺpec a vyhľadávanie na Facebooku); v tejto kampani sú vypnuté | 100 px dookola | logo vľavo nad nadpisom, 100–150 px od horného okraja |
+| Stories a Reels 9:16 | 1080 × 1920 | FB a IG Stories a Reels | 270 px hore, 670 px dole, 65 px po stranách | logo vľavo nad nadpisom, 300–400 px od horného okraja, text v strednej osi, pod 1250 px nič |
 
 Pre Stories aj Reels platí jedna kreatíva navrhnutá podľa prísnejšej zóny Reels. Tlačidlo dopĺňa Meta, na obrázok sa nekreslí.
+
+**Formáty (pravidlo, Martin 25. 10. 2026):** feedy dostávajú 4:5, Stories a Reels 9:16. Štvorec 1:1 a šírka 1,91:1 sú len formáty reklám pre umiestnenia, ktoré iný pomer nevedia: 1:1 pre pravý stĺpec a vyhľadávanie na Facebooku, 1,91:1 pre Audience Network. Aj tie majú vlastnú grafiku zo šablóny, nikdy nie dorovnanú rozmazanými okrajmi ani orezanú Metou. Organické príspevky štvorec nepoužívajú: feed 4:5, reels 9:16.
 
 ### Obrázky (súbory overené v repozitári 15. 10. 2026)
 
@@ -100,7 +111,8 @@ Pre Stories aj Reels platí jedna kreatíva navrhnutá podľa prísnejšej zóny
 ### Pravidlá vizuálu
 
 - Text najviac 20 % plochy, žiadne VEĽKÉ PÍSMENÁ vo vetách, žiadny výkričník a žiadny kód na obrázku.
-- Každý obrázok nesie malý popisok „Vizualizácia s dekorom Appennino / Roman Travertine / Wild Forest“ (Montserrat Light, asi 22–26 px, vnútri bezpečnej zóny, nie je súčasťou dvoch riadkov textu), ako vyžaduje `STYLE_GUIDE.md` › Photos. Meta môže pri obrázkoch z AI nástrojov sama pridať označenie „AI info“ (podľa metadát súboru).
+- Text je zarovnaný vľavo a logo stojí na osi textu: vľavo nad nadpisom, na ľavom okraji vnútri bezpečnej zóny, ako v živej šablóne OROSTONE5. Nikdy vpravo hore ani ako vodoznak v rohu fotky (pravidlo, Martin 25. 10. 2026).
+- Každý obrázok nesie malý popisok „Vizualizácia s dekorom Appennino / Roman Travertine / Wild Forest“ (Montserrat Light, asi 22–26 px, vnútri bezpečnej zóny, nie je súčasťou dvoch riadkov textu), ako vyžaduje `STYLE_GUIDE.md` › Photos: záber so scénou z AI je označený hneď pri prvom pohľade a popisok v texte je pravdivý. Metadáta súborov sa neodstraňujú. Meta môže pri obrázkoch z AI nástrojov sama pridať označenie „AI info“ (podľa metadát súboru).
 - Písmo len Montserrat. Paleta: `#1A1A1A`, `#F9F9F7`, `#F5F5F0`, jediný akcent zlatá `#ECD488`. Zlatý text len na tmavom podklade (graphite pás alebo tmavý prechod cez fotku), nikdy na svetlom.
 - Export PNG (ostrý text). Pred odovzdaním prejsť checklist zo skillu `orostone-kreativy`.
 
@@ -140,7 +152,7 @@ K cieľu Predaj (optimalizácia na odber alebo nákup) sa oplatí vrátiť, keď
 - Jednoduchšia možnosť: jedna sada s `utm_source={{site_source_name}}`. Meta vtedy vloží `fb` alebo `ig` namiesto `facebook` a `instagram`, s tým treba počítať v prehľadoch GA4.
 
 **4. Reklamy:** v každej sade tri reklamy (A, B, C), jeden obrázok, prispôsobenie podľa umiestnenia:
-- 4:5 pre kanály, 9:16 pre Stories a Reels, 1:1 ako záloha.
+- 4:5 pre kanály, 9:16 pre Stories a Reels. 1:1 len pre umiestnenia, ktoré iný pomer nevedia (v tejto kampani sú vypnuté, časť 3 › Formáty).
 - Webová stránka: `https://orostone.sk/produkt/<dekor>`. Do poľa Parametre URL vložiť celý reťazec, `<variant>` podľa tabuľky textov:
   - sada Facebook: `ponuka=zlava5&utm_source=facebook&utm_medium=paid_social&utm_campaign=retargeting-zlava5&utm_content=<variant>`
   - sada Instagram: `ponuka=zlava5&utm_source=instagram&utm_medium=paid_social&utm_campaign=retargeting-zlava5&utm_content=<variant>`
