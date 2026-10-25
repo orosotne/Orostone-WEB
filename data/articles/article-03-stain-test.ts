@@ -14,7 +14,7 @@ export const ARTICLE_03: BlogArticle = {
     title: 'Zafarbí sa sinterovaný kameň? Reálny test s kávou, vínom a kurkumou',
     subtitle: 'Testovali sme odolnosť sinterovaného kameňa voči najčastejším škvrnotvorným látkam v kuchyni – výsledky vás možno prekvapia',
     excerpt: 'Sinterovaný kameň má pórovitosť pod 0,1\u00A0% – káva, víno ani kurkuma doň neprenikajú. Ale testovali sme to a výsledky zaznamenali.',
-    metaTitle: 'Škvrny na sinterovanom kameni | OROSTONE',
+    metaTitle: 'Škvrny na sinterovanom kameni | Orostone',
     metaDescription: 'Káva, červené víno, kurkuma, olej. Zafarbí sa sinterovaný kameň po každodennom používaní? Nasiakavosť, čistenie a kde sú reálne hranice.',
     directAnswer: 'Sinterovaný kameň má takmer nulovú pórovitosť (absorpcia vody pod 0,1\u00A0%), čo znamená, že žiadna bežná kuchynská tekutina doň neprenikne. Škvrny od kávy, vína, kurkumy ani citrónovej šťavy sa nevstrebú do povrchu – stačí ich zotrieť vlhkou handrou. Impregnácia nie je potrebná.',
     content: `
@@ -179,7 +179,7 @@ export const ARTICLE_03: BlogArticle = {
       },
       {
         question: 'Je potrebná impregnácia sinterovaného kameňa?',
-        answer: 'Nie, nikdy. Absorpcia vody pod 0,1\u00A0% znamená, že v materiáli nie sú kapilárne kanáliky, cez ktoré by tekutiny prenikali. Impregnácia pri sinterovanom kameni nemá zmysel – nemá čo utesniť. Na rozdiel od prírodného mramoru alebo granitu, ktoré vyžadujú impregnáciu každé 1 – 3 roky.',
+        answer: 'Nie, nikdy. Absorpcia vody pod 0,1\u00A0% znamená, že v materiáli nie sú kapilárne kanáliky, cez ktoré by tekutiny prenikali. Impregnácia pri sinterovanom kameni je zbytočná – nemá čo utesniť. Na rozdiel od prírodného mramoru alebo granitu, ktoré vyžadujú impregnáciu každé 1 – 3 roky.',
       },
       {
         question: 'Čo ak zaschne kurkuma na sinterovanom kameni?',
@@ -211,7 +211,7 @@ export const ARTICLE_03: BlogArticle = {
       },
       {
         question: 'Ovplyvňuje dezén (farba) odolnosť voči škvrnám?',
-        answer: 'Nie. Odolnosť voči škvrnám závisí od materiálu a výrobnej technológie, nie od farebného dezénu. Biele aj tmavé dekóry majú rovnakú absorpciu vody a rovnakú odolnosť voči škvrnám. Vizuálne sa škvrny môžu javiť rôzne výrazne na rôznych podkladových farbách, ale chemická odolnosť je totožná.',
+        answer: 'Nie. Odolnosť voči škvrnám závisí od materiálu a výrobnej technológie, nie od farebného dezénu. Biele aj tmavé dekory majú rovnakú absorpciu vody a rovnakú odolnosť voči škvrnám. Vizuálne sa škvrny môžu javiť rôzne výrazne na rôznych podkladových farbách, ale chemická odolnosť je totožná.',
       },
       {
         question: 'Môžem použiť sinterovaný kameň v kuchyni s deťmi?',

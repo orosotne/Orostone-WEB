@@ -45,7 +45,7 @@ const structuredData = {
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'OROSTONE', item: 'https://orostone.sk/' },
+        { '@type': 'ListItem', position: 1, name: 'Orostone', item: 'https://orostone.sk/' },
         { '@type': 'ListItem', position: 2, name: 'Cenník', item: 'https://orostone.sk/cennik' },
       ],
     },

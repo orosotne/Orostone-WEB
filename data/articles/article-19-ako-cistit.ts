@@ -18,7 +18,7 @@ export const ARTICLE_19: BlogArticle = {
     heroCaption: 'Vizualizácia s dekorom Statuario Diamante',
     excerpt:
       'Najodolnejší povrch v kuchyni má paradoxne najjednoduchšiu údržbu. Vlhká utierka, saponát, hotovo. Tu je celá rutina aj postupy na zaschnuté škvrny.',
-    metaTitle: 'Ako čistiť sinterovaný kameň: denná rutina aj zaschnuté škvrny | OROSTONE',
+    metaTitle: 'Ako čistiť sinterovaný kameň: denná rutina aj zaschnuté škvrny | Orostone',
     metaDescription:
       'Návod na čistenie sinterovaného kameňa: denná údržba vlhkou utierkou a saponátom, postupy na kávu, víno, mastnotu aj vodný kameň – a zoznam prostriedkov, ktorým sa treba vyhnúť.',
     directAnswer:
@@ -158,7 +158,7 @@ export const ARTICLE_19: BlogArticle = {
     heroCaption: 'Visualization with the Statuario Diamante decor',
     excerpt:
       "The most durable surface in your kitchen paradoxically needs the simplest care. Damp cloth, mild soap, done. Here's the full routine plus fixes for dried stains.",
-    metaTitle: 'How to Clean Sintered Stone: Daily Routine & Dried Stains | OROSTONE',
+    metaTitle: 'How to Clean Sintered Stone: Daily Routine & Dried Stains | Orostone',
     metaDescription:
       'Cleaning sintered stone: daily care with a damp cloth and neutral soap, fixes for coffee, wine, grease and limescale — and the products to avoid.',
     directAnswer:

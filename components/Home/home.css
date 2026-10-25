@@ -196,7 +196,6 @@
 .hp .hp-rating-text { color: var(--chalk-80); font-size: 0.95rem; font-weight: 400; max-width: 30ch; }
 .hp .hp-rating-score { display: flex; align-items: baseline; gap: 12px; margin-top: 10px; }
 .hp .hp-rating-score b { font-size: clamp(2.6rem, 4vw, 3.4rem); font-weight: 600; line-height: 1; letter-spacing: -0.02em; }
-.hp .hp-rating-stars { color: var(--gold); font-size: 1.05rem; letter-spacing: 0.12em; }
 /* Without verified client quotes the Google card runs the full width as one band */
 .hp .hp-rev-solo { grid-template-columns: minmax(0, 1fr); }
 .hp .hp-rev-solo .hp-rating-q { display: none; }

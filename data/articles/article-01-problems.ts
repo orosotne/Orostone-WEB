@@ -15,7 +15,7 @@ export const ARTICLE_01: BlogArticle = {
     title: 'Problémy so sinterovaným kameňom, o ktorých vám nikto nepovie (a ako im predchádzame)',
     subtitle: 'Úprimný sprievodca rizikami sinterovaného kameňa – od chipovania po praskanie pri výrezoch',
     excerpt: 'Sinterovaný kameň je vynikajúci materiál, ale nie je nezničiteľný. Pozrite sa na reálne problémy, konkrétne čísla a overené riešenia, ktoré v Orostone denne používame.',
-    metaTitle: 'Riziká pri sinterovanom kameni | OROSTONE',
+    metaTitle: 'Riziká pri sinterovanom kameni | Orostone',
     metaDescription: 'Sinterovaný kameň má svoje riziká – pri výrezoch, hranách aj počas osádzania. Ako sa im dá predísť správnym zameraním a skúseným kamenárom.',
     directAnswer: 'Sinterovaný kameň môže prasknúť pri výrezoch, odštiepiť sa na hranách a poškodiť sa pri preprave – ak sa nedodržia presné technické postupy. Kľúčom je kvalitná fabrikácia, správna hrúbka materiálu, minimálny rádius rohov 5\u00A0mm a profesionálna inštalácia.',
     content: `
@@ -252,13 +252,13 @@ export const ARTICLE_01: BlogArticle = {
   <li>Po inštalácii prebieha vizuálna a funkčná kontrola vrátane fotodokumentácie</li>
 </ul>
 
-<h3>5. Záruka a popredajný servis</h3>
+<h3>5. Popredajný servis</h3>
 <p>Naša starostlivosť nekončí inštaláciou – ostávame vaším kontaktom aj po nej.</p>
 <ul>
-  <li>Na materiál platí záruka 24\u00A0mesiacov, na výrobu a montáž dáva záruku kamenár, ktorý ich realizoval</li>
   <li>V prípade akéhokoľvek problému reagujeme do 48 hodín</li>
   <li>Menšie odštiepky vie partnerský kamenár opraviť priamo na mieste špeciálnym epoxidovým tmelom</li>
 </ul>
+<p>Na materiál platí 24-mesačná zákonná zodpovednosť za vady. Na výrobu a montáž dáva záruku kamenár, ktorý ich realizoval.</p>
 
 <h2 id="zaver">Čo si z tohto odniesť?</h2>
 
@@ -331,7 +331,7 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Vzťahuje sa záruka na chipovanie spôsobené používaním?',
-        answer: 'Záruka 24\u00A0mesiacov na materiál pokrýva výrobné chyby, nie mechanické poškodenie. Drobné odštiepky však vie opraviť partnerský kamenár a opravu vám pomôžeme dohodnúť. A správnym výberom profilu hrán minimalizujeme pravdepodobnosť chipovania od začiatku.',
+        answer: 'Zákonná zodpovednosť za vady materiálu (24\u00A0mesiacov) pokrýva výrobné chyby, nie mechanické poškodenie. Drobné odštiepky však vie opraviť partnerský kamenár a opravu vám pomôžeme dohodnúť. A správnym výberom profilu hrán minimalizujeme pravdepodobnosť chipovania od začiatku.',
       },
     ],
   },
@@ -574,13 +574,13 @@ export const ARTICLE_01: BlogArticle = {
   <li>After installation, visual and functional inspection with photo documentation</li>
 </ul>
 
-<h3>5. Warranty and after-sales</h3>
+<h3>5. After-sales support</h3>
 <p>Our care doesn't end at installation — we remain your point of contact afterwards.</p>
 <ul>
-  <li>The material carries a 24-month warranty; fabrication and installation are warranted by the stonemason who carried them out</li>
   <li>Our team responds within 48 hours for any issue</li>
   <li>Minor chips can be repaired on-site by the partner stonemason with color-matched epoxy filler</li>
 </ul>
+<p>The material carries the 24-month statutory liability for defects. Fabrication and installation are warranted by the stonemason who carried them out.</p>
 
 <h2 id="conclusion">What should you take away from this?</h2>
 
@@ -653,7 +653,7 @@ export const ARTICLE_01: BlogArticle = {
       },
       {
         question: 'Does the warranty cover chipping from normal use?',
-        answer: 'The 24-month material warranty covers manufacturing defects, not mechanical damage from use. Minor chips can, however, be repaired by the partner stonemason, and we will help you arrange the repair. And by choosing the right edge profile, we minimize chipping probability from the start.',
+        answer: 'The 24-month statutory liability for material defects covers manufacturing defects, not mechanical damage from use. Minor chips can, however, be repaired by the partner stonemason, and we will help you arrange the repair. And by choosing the right edge profile, we minimize chipping probability from the start.',
       },
     ],
   },

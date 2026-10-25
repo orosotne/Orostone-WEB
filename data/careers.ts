@@ -275,7 +275,7 @@ export function createJobPostingLD(job: JobOpening): Record<string, unknown> {
     employmentType: job.schemaEmploymentType,
     hiringOrganization: {
       '@type': 'Organization',
-      name: 'OROSTONE s.r.o.',
+      name: 'Orostone s.r.o.',
       sameAs: BASE_URL,
       logo: `${BASE_URL}/images/brand/orostone-circle.png`,
     },

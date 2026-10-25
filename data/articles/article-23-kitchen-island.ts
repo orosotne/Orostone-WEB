@@ -23,7 +23,7 @@ export const ARTICLE_23: BlogArticle = {
     title: 'Kuchynský ostrovček zo sinterovaného kameňa – kompletný sprievodca',
     subtitle: 'Od rozmeru cez hrúbku po waterfall hrany: všetko, čo potrebujete vedieť pred objednaním',
     excerpt: 'Kuchynský ostrovček zo sinterovaného kameňa je vizuálna dominanta modernej kuchyne. Poradíme s rozmermi, hrúbkou platne, profilom hrán a waterfall vyhotovením.',
-    metaTitle: 'Ostrovček so sedením zo sinterovaného kameňa | OROSTONE',
+    metaTitle: 'Ostrovček so sedením zo sinterovaného kameňa | Orostone',
     metaDescription: 'Koľko miesta potrebuje ostrovček so sedením, aký previs a hrúbku zvoliť, waterfall hrany, podpera a cena materiálu. Praktický sprievodca pred objednaním.',
     directAnswer: `Kuchynský ostrovček zo sinterovaného kameňa sa robí z 12\u00A0mm platne. Previs nad 200\u00A0mm, napríklad pre barové sedenie, potrebuje podpernú konštrukciu z nerezovej ocele a výrezy sa robia presne na CNC. Pre waterfall efekt sa používa spojenie pod 45° uhlom s farebne zladeným lepidlom. Materiál sú 1 – 2 celé platne po ${ONE_SLAB}, výrobu a montáž robí a fakturuje partnerský kamenár.`,
     content: `
@@ -195,20 +195,20 @@ export const ARTICLE_23: BlogArticle = {
   <p>Orostone predáva materiál – celé platne. Výrobu (rezy, výrezy, waterfall hrany) a montáž robí a fakturuje partnerský kamenár, orientačne za ${INSTALLATION_RATE_PER_M2}\u00A0€/m² s DPH. Ceny všetkých dekorov nájdete v <a href="/cennik">cenníku</a>.</p>
 </div>
 
-<p>Cena závisí predovšetkým od dekóru (niektoré vzory sú drahšie), počtu waterfall hrán a zložitosti výrezov. <a href="/kontakt">Kontaktujte nás</a> pre nezáväznú cenovú ponuku na mieru.</p>
+<p>Cena závisí predovšetkým od dekoru (niektoré vzory sú drahšie), počtu waterfall hrán a zložitosti výrezov. <a href="/kontakt">Kontaktujte nás</a> pre nezáväznú cenovú ponuku na mieru.</p>
 
-<h2 id="odporucane-dekory">Odporúčané dekóry pre ostrovčeky</h2>
+<h2 id="odporucane-dekory">Odporúčané dekory pre ostrovčeky</h2>
 
-<p>Pre kuchynský ostrovček odporúčame dekóry s výrazným vzorom, ktorý vynikne na veľkej ploche:</p>
+<p>Pre kuchynský ostrovček odporúčame dekory s výrazným vzorom, ktorý vynikne na veľkej ploche:</p>
 
 <ul>
-  <li><a href="/produkt/calacatta-top"><strong>Calacatta Top</strong></a> – klasický mramorový vzor so zlatými žilami. Najobľúbenejší dekór pre ostrovčeky.</li>
+  <li><a href="/produkt/calacatta-top"><strong>Calacatta Top</strong></a> – klasický mramorový vzor so zlatými žilami. Najobľúbenejší dekor pre ostrovčeky.</li>
   <li><a href="/produkt/wild-forest"><strong>Wild Forest</strong></a> – dramatické tmavé žily na šedom podklade. Výrazný akcent pre moderné interiéry.</li>
   <li><a href="/produkt/statuario-diamante"><strong>Statuario Diamante</strong></a> – biely základ s výraznými sivými žilami. Klasický mramorový vzhľad.</li>
   <li><a href="/produkt/nero-margiua"><strong>Nero Margiua</strong></a> – čierny mramor pre odvážne priestory. Waterfall hrany v čiernej sú vizuálne najsilnejšie.</li>
 </ul>
 
-<p>Nie ste si istí dekórom? <a href="/vzorky">Objednajte si vzorky</a> – prvá je zadarmo, každá ďalšia stojí 4,90\u00A0€ a doprava 2,50\u00A0€. Vzorka 10\u00A0×\u00A010\u00A0cm ukáže farbu a povrch, celý priebeh kresby uvidíte na veľkej platni v showroome v Bošanoch.</p>
+<p>Nie ste si istí dekorom? <a href="/vzorky">Objednajte si vzorky</a> – prvá je zadarmo, každá ďalšia stojí 4,90\u00A0€ a doprava 2,50\u00A0€. Vzorka 10\u00A0×\u00A010\u00A0cm ukáže farbu a povrch, celý priebeh kresby uvidíte na veľkej platni v showroome v Bošanoch.</p>
 
 <figure class="article-figure">
   <img src="/images/blog/article-23/decor-lifestyle.webp" alt="Luxusný Calacatta ostrovček s waterfall hranami vo večernej atmosfére – pár s vínom pri barovom sedení" width="1408" height="792" loading="lazy" />
@@ -230,7 +230,7 @@ export const ARTICLE_23: BlogArticle = {
       },
       {
         question: 'Koľko stojí kuchynský ostrovček zo sinterovaného kameňa?',
-        answer: `Materiál na ostrovček je podľa rozmerov a waterfall hrán 1 – 2 celé platne: jedna platňa u Orostone stojí ${ONE_SLAB} s DPH podľa dekoru. Výrobu a montáž robí a fakturuje partnerský kamenár, orientačne za ${INSTALLATION_RATE_PER_M2}\u00A0€/m². Cena závisí od dekóru, počtu waterfall hrán a zložitosti výrezov.`,
+        answer: `Materiál na ostrovček je podľa rozmerov a waterfall hrán 1 – 2 celé platne: jedna platňa u Orostone stojí ${ONE_SLAB} s DPH podľa dekoru. Výrobu a montáž robí a fakturuje partnerský kamenár, orientačne za ${INSTALLATION_RATE_PER_M2}\u00A0€/m². Cena závisí od dekoru, počtu waterfall hrán a zložitosti výrezov.`,
       },
       {
         question: 'Čo je waterfall hrana na ostrovčeku?',

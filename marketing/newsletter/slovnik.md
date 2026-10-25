@@ -14,7 +14,7 @@ Podrobný manuál značky: skill `copy-orostone`. Tento súbor z neho preberá t
 - **Rozlúčka:** „S pozdravom“ bez čiarky, pod ňou meno.
 - **Tón:** pokojne, vecne, presne. Kratšie až stredne dlhé vety. Bez pátosu, bez výpredajového tónu, bez ospravedlňovania ceny.
 - Každé tvrdenie má dôvod: *vlastnosť → praktický dôsledok → význam pre klienta*.
-- **Nastavenie automatizácií neprezrádzame.** V hlavičke ani v texte nepíšeme poradie e-mailu v sérii (*1 / 4*), kedy príde ďalší e-mail (*o týždeň vám pošleme…*), čo sa stane, keď čitateľ nezareaguje (*ak nekliknete, už vám nebudeme písať*), ani odkazy na predchádzajúci e-mail. Každý e-mail musí dávať zmysel aj samostatne.
+- **Nastavenie automatizácií neprezrádzame.** V hlavičke ani v texte nepíšeme poradie e-mailu v sérii (*1 / 4*), kedy príde ďalší e-mail (*o týždeň vám pošleme…*), čo sa stane, keď čitateľ nezareaguje (*ak nekliknete, už vám nebudeme písať*), ani odkazy na predchádzajúci e-mail. Každý e-mail musí byť zrozumiteľný aj samostatne.
 
 ## 2. Gramatika, na ktorú si dávame pozor
 
@@ -106,6 +106,11 @@ Pravidlá, ktoré vznikli pri kontrole a platia ďalej. Najnovšie hore.
 
 | Dátum | Pravidlo | Príklad |
 |---|---|---|
+| 25. 10. 2026 | Píšeme *dekor* (*dekoru, dekory, dekorov*), nie *dekór*. Rozhodol majiteľ, platí aj pre web a blog. | Vyberte si dekor, ktorý sa hodí k frontom. · Odporúčané dekory pre ostrovčeky |
+| 25. 10. 2026 | *kvôli* je spisovné (sekcia 2), netreba ho nahrádzať slovom *pre*. | Kvôli ostriu nožov krájajte na doštičke. |
+| 25. 10. 2026 | Nepíšeme *dávať zmysel*. Namiesto neho sloveso, ktoré povie, čo presne platí: *oplatí sa, hodí sa, zodpovedá*. | Kedy sa sinterovaný kameň oplatí? · Doska sa hodí k vašej kuchyni. · či cena zodpovedá tomu, čo dostanete |
+| 25. 10. 2026 | *záležať na* niečom; pri slovese *závisieť* zasa *od*. | Záleží na dekore aj na svetle. · Cena závisí od počtu výrezov. |
+| 25. 10. 2026 | *na* pri účele, *pre* pri tom, komu je vec určená. Zaužívané *sinterovaný kameň pre kuchyne* (H1 webu) ostáva. | doska na ostrovček · platne na zástenu · pre domácnosti aj pre architektov |
 | 9. 10. 2026 | Realizácia je hotová kuchyňa u klienta (sekcia 4), preto ju neposielame. Posielame jej *ukážku* alebo *fotky*. | Posielame ukážku jednej realizácie alebo radu, ako si vybrať dosku. |
 | 7. 10. 2026 | Kalky z angličtiny: nie *pre mierku* (for scale), ale *na porovnanie veľkosti*; nie *držať kuchyňu svetlú*, ale *kuchyňa zostáva svetlá*. Vo výpočte s protikladom (*priniesť svetlo, nie pozornosť*) musí sloveso sedieť k obom členom. | Celá platňa vedľa človeka na porovnanie veľkosti. · Doska má priestor rozjasniť a nepútať na seba pozornosť. |
 | 7. 10. 2026 | Odborné termíny: *kryštalický oxid kremičitý* (nie *kremík*, to je prvok). Vzorku klient *vezme do ruky*, štúdio nás *zapojí do návrhu* (nie hovorové *chytiť*, *pribrať*). | Obsah kryštalického oxidu kremičitého nepresahuje 1 %. |

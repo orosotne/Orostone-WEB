@@ -296,7 +296,7 @@ export const BlogArticle: React.FC = () => {
     return (
       <Section tone="chalk" className="min-h-[60svh]">
         <SEOHead
-          title="Článok nebol nájdený | OROSTONE Blog"
+          title="Článok nebol nájdený | Orostone Blog"
           description="Článok, ktorý hľadáte, neexistuje."
           noindex={true}
         />
@@ -324,7 +324,7 @@ export const BlogArticle: React.FC = () => {
           fields on each article SK locale) with safe fallback to legacy shape
           for any article that does not yet have them populated. */}
       <SEOHead
-        title={content.metaTitle || `${content.title} | OROSTONE`}
+        title={content.metaTitle || `${content.title} | Orostone`}
         description={content.metaDescription || content.directAnswer || content.excerpt}
         ogType="article"
         ogImage={article.heroImage}
@@ -568,8 +568,8 @@ export const BlogArticle: React.FC = () => {
                     <p className="text-[1.15rem] font-semibold">{article.author.name}</p>
                     <p className="max-w-[60ch] text-[0.96rem] font-light leading-relaxed text-brand-muted">
                       {lang === 'sk'
-                        ? 'Tím OROSTONE sa špecializuje na sinterovaný kameň a povrchové materiály prémiového segmentu. S dlhoročnými skúsenosťami v oblasti interiérového dizajnu a materiálového inžinierstva vám pomôžeme nájsť ideálne riešenie.'
-                        : 'The OROSTONE team specializes in sintered stone and premium surface materials. With years of experience in interior design and material engineering, we help you find the ideal solution.'}
+                        ? 'Píše tím Orostone. S výberom sinterovaného kameňa radí Marián Brázdil, špecialista na sinterovaný kameň.'
+                        : 'Written by the Orostone team. Marián Brázdil, our sintered stone specialist, advises on choosing sintered stone.'}
                     </p>
                     <TextLink to="/kontakt">{lang === 'sk' ? 'Kontaktovať nás' : 'Contact us'}</TextLink>
                   </div>

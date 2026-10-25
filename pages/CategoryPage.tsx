@@ -117,7 +117,7 @@ export const CategoryPage: React.FC = () => {
     return (
       <Section tone="chalk" className="flex min-h-[calc(100svh-4rem)] items-center lg:min-h-[calc(100svh-5rem)]">
         <SEOHead
-          title="Kategória nenájdená | OROSTONE E-Shop"
+          title="Kategória nenájdená | Orostone E-Shop"
           description="Kategória s týmto názvom neexistuje alebo bola presunutá."
           noindex={true}
         />
@@ -139,11 +139,11 @@ export const CategoryPage: React.FC = () => {
   // the page safe if a new category lands before the SEO copy does).
   const seoLookupKey = subCategory ? `${slug}/${subCategory}` : (slug || '');
   const seoOverride = CATEGORY_SEO[seoLookupKey];
-  const seoTitle = seoOverride?.title || `${category.name} | OROSTONE`;
+  const seoTitle = seoOverride?.title || `${category.name} | Orostone`;
   const seoDescription =
     seoOverride?.description ||
     category.description ||
-    `${category.name} — produkty od OROSTONE.`;
+    `${category.name} — produkty od Orostone.`;
 
   const isSintered = mainCategory === 'sintered-stone';
   // the same title and lead the loading skeleton sets, so the hero keeps its height

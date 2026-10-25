@@ -1,15 +1,15 @@
-# OROSTONE — Full LLM Reference Document
+# Orostone — Full LLM Reference Document
 
-> This is the complete, detailed reference for OROSTONE. For a concise summary, see: https://orostone.sk/llms.txt
+> This is the complete, detailed reference for Orostone. For a concise summary, see: https://orostone.sk/llms.txt
 
 ## Company Overview
 
-OROSTONE s.r.o. is a Slovak premium supplier of large-format sintered stone (veľkoformátové sinterované platne) for residential and commercial interiors. Registered office in Bratislava, showroom with full slabs in Bošany, Slovakia. We are not a manufacturer — we source from leading European producers.
+Orostone s.r.o. is a Slovak premium supplier of large-format sintered stone (veľkoformátové sinterované platne) for residential and commercial interiors. Registered office in Bratislava, showroom with full slabs in Bošany, Slovakia. We are not a manufacturer — we source from leading European producers.
 
-**Who does what:** Orostone advises on the choice of decor, supplies the material (whole slabs), delivers it, coordinates the schedule, and checks the result. Measuring (by hand, on site), fabrication, transport of the finished pieces, and installation are done and invoiced by a partner stonemason experienced with sintered stone — one we recommend or one the client chooses. Orostone prepares slabs to the client's exact dimensions only by written agreement.
+**Who does what:** Orostone advises on the choice of decor, supplies the material (whole slabs) and delivers it, agrees the schedule with the stonemason and follows the job through to installation. The stonemason is responsible for fabrication and installation. Measuring (by hand, on site), fabrication, transport of the finished pieces, and installation are done and invoiced by a partner stonemason experienced with sintered stone — one we recommend or one the client chooses. Orostone prepares slabs to the client's exact dimensions only by written agreement.
 
 **Legal details:**
-- Company: OROSTONE s.r.o.
+- Company: Orostone s.r.o.
 - Commercial offices and registered office: Landererova 8, 811 09 Bratislava, mestská časť Staré Mesto. Full slabs are displayed only at the Bošany showroom.
 - Showroom: SNP 113/1, 956 18 Bošany (Renaissance mansion) — Mon–Fri 9:00–17:00, weekends by appointment. Every visit must be arranged by phone at least 1 hour in advance.
 - IČO: 55 254 772
@@ -87,27 +87,42 @@ A: Slab material (12 mm, 3200 × 1600 mm) ranges from €{{SLAB_PRICE_MIN}} to �
 A: The first sample (10 × 10 cm) is free, each further sample costs €4.90 and shipping €2.50 (incl. VAT), max. three samples per order. Order at https://orostone.sk/vzorky.
 
 **Q: Is sintered stone the same as Dekton or Neolith?**
-A: Dekton (Cosentino) and Neolith are brand names for sintered stone — the same technology with different branding and proprietary formulations. OROSTONE sources from European producers offering equivalent technical performance.
+A: Dekton (Cosentino) and Neolith are brand names for sintered stone — the same technology with different branding and proprietary formulations. Orostone sources from European producers offering equivalent technical performance.
 
 **Q: Can sintered stone be used outdoors?**
 A: Yes, some designs (e.g. Roman Travertine) are frost-resistant and rated for exterior use — terraces, balconies, pool surrounds. Confirm with us which specific design suits your outdoor project.
 
 ---
 
-## The Orostone Process — 10 Steps
+## The Orostone Process — 3 Steps
+
+The customer journey has three steps, the same on orostone.sk and on oro-klient.orostone.sk:
+
+1. **Orientation price** — Four short questions: what you are planning, which decor you like, when, and where to send the price. The orientation price usually arrives the next working day.
+2. **Measuring** — The partner stonemason measures your kitchen by hand on site. Then you receive an exact itemised quote.
+3. **Fabrication and installation** — Done by the partner stonemason. Orostone supplies the material, agrees the schedule with the stonemason and follows the job through to installation. The stonemason is responsible for fabrication and installation.
+
+Ordering a sample or seeing full slabs at the Bošany showroom is optional, before step 1.
 
 Orostone advises, supplies the material (whole slabs) and coordinates the schedule. Measuring, fabrication, transport and installation are done and invoiced by the partner stonemason. Full guide: https://orostone.sk/blog/od-merania-po-instalaciu-proces-orostone
 
-1. **Consultation and material selection** — Free consultation at the Bošany showroom, where you compare full slabs, not just small samples.
-2. **Quote** — Within 48 hours of the consultation: an itemised quote with the material from Orostone and measuring, fabrication, transport and installation from the partner stonemason.
-3. **Measuring** — After quote approval and the deposit, the partner stonemason who will fabricate the worktop measures your kitchen by hand on site. Cabinets must be installed and levelled. The stonemason prepares drawings; fabrication starts only after you approve them.
+### Detailed breakdown of the three steps
+
+Step 1 — Orientation price:
+1. **Showroom visit and decor selection (optional)** — At the Bošany showroom you compare full slabs, not just small samples. Every visit must be arranged by phone at least 1 hour in advance.
+2. **Orientation price** — Usually the next working day after you answer the four questions.
+
+Step 2 — Measuring:
+3. **Measuring and exact quote** — When you decide to go ahead, the partner stonemason who will fabricate the worktop measures your kitchen by hand on site. Cabinets must be installed and levelled. Then you receive an exact itemised quote with the material from Orostone and fabrication, transport and installation from the partner stonemason. The stonemason prepares drawings; fabrication starts only after you approve them.
+
+Step 3 — Fabrication and installation:
 4. **CNC fabrication** — At the partner stonemason's workshop: diamond-tool cutting, cutouts and edge profiles. 7–10 working days from drawing approval.
 5. **Quality control** — The stonemason inspects every piece for thickness, surface and edge defects before it leaves the workshop.
 6. **Transport** — The stonemason transports the finished pieces upright in A-frames.
 7. **Substrate preparation** — Cabinet tops are checked for level and shimmed where needed.
 8. **Installation** — Carried out by the partner stonemason experienced with sintered stone.
 9. **Appliances** — The stonemason fits the sink, hob and tap during installation; electrical and gas connections are done by a qualified electrician or gas technician.
-10. **Final inspection and handover** — Joint and level checks, cleaning, care instructions. Warranty: 24 months on the material; the stonemason gives the warranty on fabrication and installation.
+10. **Final inspection and handover** — Joint and level checks, cleaning, care instructions. The material carries the 24-month statutory liability for defects; the stonemason gives the warranty on fabrication and installation.
 
 Total project timeline: 10–15 working days from first consultation to finished kitchen.
 
@@ -135,7 +150,7 @@ Details: https://orostone.sk/reklamacie
 
 - **Withdrawal:** Consumers buying online may withdraw within 14 days of receiving the goods, without giving a reason. Goods are returned to Orostone s.r.o., SNP 113/1, 956 18 Bošany; the consumer pays the return transport (slabs from about €150 incl. VAT in Bratislava and surroundings, from €350 elsewhere in Slovakia; samples by regular post).
 - **Made-to-measure goods:** For goods made or sourced to the consumer's specific requirements, Orostone may refuse cancellation or return to the extent permitted by law
-- **Warranty:** 24 months on the material (statutory liability for defects from delivery); the stonemason gives the warranty on fabrication and installation
+- **Liability for defects:** the material carries the 24-month statutory liability for defects from delivery (not an additional commercial warranty); the stonemason gives the warranty on fabrication and installation
 - **Check before processing:** Inspect dimensions, decor, shade, surface and visible defects before any cutting, fabrication or installation — defects that were visible before processing cannot be claimed afterwards
 - **Complaint process:** Email info@orostone.sk with the order or invoice number, a description of the defect and photos. Orostone confirms the complaint in writing and settles it within 30 days of notification, unless a longer period is justified by an objective reason that cannot be influenced.
 

@@ -24,7 +24,7 @@ import { COMPARISON_DATA, VYHODY_COMPARISON_COLUMNS, type PillarFaq } from './vy
 // Orostone sells material only (whole slabs) — every price here is material.
 const PRICING_YEAR = PRICING_LAST_UPDATED.slice(0, 4);
 
-export const CENNIK_TITLE = `Kamenná pracovná doska: cena za m² (${PRICING_YEAR}) | OROSTONE`;
+export const CENNIK_TITLE = `Kamenná pracovná doska: cena za m² (${PRICING_YEAR}) | Orostone`;
 
 export const CENNIK_DESCRIPTION = `Sinterovaný kameň od ${formatEur(SLAB_PRICE_MIN)}/m² s DPH, celá platňa od ${formatEurWhole(
   SLAB_TOTAL_MIN,
@@ -136,7 +136,7 @@ const CENNIK_COMPARISON_PROPERTIES = [
 export const CENNIK_COMPARISON = {
   heading: 'Cena kamennej pracovnej dosky podľa materiálu',
   intro:
-    'Pri pracovnej doske nedáva zmysel čítať cenu izolovane. Ide o plochu, ktorú budete denne používať aj denne vidieť — preto porovnávajte cenu materiálu spolu s tým, čo si vyžaduje počas používania. Sinterovaný kameň klienti často poznajú aj ako technický kameň alebo keramickú dosku.',
+    'Pri pracovnej doske sa cena nedá čítať izolovane. Ide o plochu, ktorú budete denne používať aj denne vidieť — preto porovnávajte cenu materiálu spolu s tým, čo si vyžaduje počas používania. Sinterovaný kameň klienti často poznajú aj ako technický kameň alebo keramickú dosku.',
   columnLabels: ['Vlastnosť', ...Object.values(VYHODY_COMPARISON_COLUMNS)],
   rows: CENNIK_COMPARISON_PROPERTIES.flatMap((property) => {
     const r = COMPARISON_DATA.find((row) => row.property === property);

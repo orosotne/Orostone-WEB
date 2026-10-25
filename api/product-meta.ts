@@ -40,7 +40,7 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
 
   const title =
     product.metaTitle ||
-    `${product.name} | Veľkoformátové platne | OROSTONE`;
+    `${product.name} | Veľkoformátové platne | Orostone`;
   const description =
     product.metaDescription ||
     product.description.slice(0, 200);
@@ -58,7 +58,7 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
   <meta name="description" content="${escapeAttr(description)}" />
 
   <!-- Open Graph -->
-  <meta property="og:site_name" content="OROSTONE" />
+  <meta property="og:site_name" content="Orostone" />
   <meta property="og:title" content="${escapeAttr(title)}" />
   <meta property="og:description" content="${escapeAttr(description)}" />
   <meta property="og:type" content="product" />

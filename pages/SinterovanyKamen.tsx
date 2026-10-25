@@ -177,8 +177,8 @@ export const SinterovanyKamen = () => {
   return (
     <div>
       <SEOHead
-        title="Sinterovaný kameň: cena, výhody, použitie | OROSTONE"
-        description="Čo je sinterovaný kameň, koľko stojí a kedy dáva zmysel ako pracovná doska. Praktický sprievodca pre kuchyňu, kde nechcete robiť kompromis."
+        title="Sinterovaný kameň: cena, výhody, použitie | Orostone"
+        description="Čo je sinterovaný kameň, koľko stojí a kedy sa oplatí ako pracovná doska. Praktický sprievodca pre kuchyňu, kde nechcete robiť kompromis."
         canonical="https://orostone.sk/sinterovany-kamen"
         structuredData={faqStructuredData}
         maxVideoPreview={0}

@@ -15,7 +15,7 @@ export const ARTICLE_13: BlogArticle = {
     title: 'Od merania po inštaláciu: proces Orostone v 10 krokoch',
     subtitle: 'Kompletný sprievodca celým procesom – od prvej konzultácie po odovzdanie hotovej kuchyne',
     excerpt: 'Presne budete vedieť, čo sa deje v každej fáze. 10 krokov, konkrétne termíny, jasné zodpovednosti. Celý proces od konzultácie po hotovú kuchyňu trvá 10 – 15 pracovných dní.',
-    metaTitle: 'Od pôdorysu po hotovú kuchyňu – proces | OROSTONE',
+    metaTitle: 'Od pôdorysu po hotovú kuchyňu – proces | Orostone',
     metaDescription: 'Od pôdorysu cez výber dekoru a zameranie po finálnu kuchyňu. Celý proces zastrešíme so skúsenými kamenármi – čo má klient na oboch stranách očakávať.',
     directAnswer: 'Celý proces od prvej konzultácie po hotovú kuchyňu trvá 10 – 15 pracovných dní. Zahŕňa: konzultáciu, výber materiálu, zameranie na mieste, CNC fabrikáciu, kontrolu kvality, transport na A-ráme, prípravu podkladu, montáž, inštaláciu spotrebičov a finálnu kontrolu.',
     content: `
@@ -30,13 +30,13 @@ export const ARTICLE_13: BlogArticle = {
 
 <p>Neistota plodí stres – a práve preto vám v tomto článku ukážeme celý proces Orostone krok za krokom, s konkrétnymi termínmi, meraniami a zodpovednosťami.</p>
 
-<p>Či už plánujete novú kuchyňu, kúpeľňový obklad alebo ostrovček do otvoreného priestoru, proces je vždy rovnaký: <strong>10 jasných krokov, 10 – 15 pracovných dní, jasné zodpovednosti</strong>. Poďme na to.</p>
+<p>Či už plánujete novú kuchyňu, kúpeľňový obklad alebo ostrovček do otvoreného priestoru, proces je vždy rovnaký: <strong>10 jasných krokov, 10 – 15 pracovných dní, jasné zodpovednosti</strong>. Je to podrobný rozpis našich troch krokov: orientačná cena, zameranie, výroba a montáž. Poďme na to.</p>
 
-<p><strong>Kto čo robí:</strong> Orostone vám poradí s výberom, dodá materiál – celé platne – a koordinuje termíny. Zameranie, výrobu, dopravu a montáž robí a fakturuje partnerský kamenár so skúsenosťami so sinterovaným kameňom. Výsledok kontrolujeme aj my.</p>
+<p><strong>Kto čo robí:</strong> Orostone vám poradí s výberom a dodá materiál – celé platne. Dohodne s kamenárom termín a zákazku sleduje až do montáže. Zameranie, výrobu, dopravu a montáž robí a fakturuje partnerský kamenár so skúsenosťami so sinterovaným kameňom. Za výrobu a montáž zodpovedá kamenár.</p>
 
 <h2 id="krok-1-konzultacia-a-vyber-materialu">Krok 1 – Čo sa deje na konzultácii?</h2>
 
-<p>Všetko začína osobnou konzultáciou v našom showroome v Bošanoch. Nie je to predajný telefonát ani e-mail s katalógom – je to stretnutie, kde vidíte reálne materiály v plnej veľkosti a dotýkate sa ich.</p>
+<p>Ak si chcete materiál pred orientačnou cenou pozrieť naživo, príďte na konzultáciu do nášho showroomu v Bošanoch. Nie je to predajný telefonát ani e-mail s katalógom – je to stretnutie, kde vidíte reálne materiály v plnej veľkosti a dotýkate sa ich.</p>
 
 <p><strong>Čo sa deje počas konzultácie:</strong></p>
 <ul>
@@ -47,13 +47,13 @@ export const ARTICLE_13: BlogArticle = {
   <li><strong>Rozpočet a očakávania</strong> – otvorene diskutujeme o cene, aby ste vedeli, čo za svoj rozpočet dostanete</li>
 </ul>
 
-<p><strong>Trvanie:</strong> 1 – 2 hodiny. Konzultácia je bezplatná a nezáväzná.</p>
+<p><strong>Trvanie:</strong> 1 – 2 hodiny. Konzultácia je bezplatná, nezáväzná a nepovinná – orientačnú cenu vám pošleme aj bez nej.</p>
 
 <p><strong>Tip pre klientov:</strong> Prineste si pôdorys kuchyne, fotky inšpirácie a – ak máte – výkres od kuchynského štúdia. Čím viac informácií máme od začiatku, tým presnejšie vám poradíme.</p>
 
 <h2 id="krok-2-cenova-ponuka">Krok 2 – Čo obsahuje cenová ponuka?</h2>
 
-<p>Do 48 hodín po konzultácii dostanete detailnú cenovú ponuku. Nie jedno číslo, ale rozpis po položkách – od nás materiál, od partnerského kamenára zameranie, výroba, doprava a montáž.</p>
+<p>Najprv vám pošleme orientačnú cenu, spravidla nasledujúci pracovný deň – stačí odpovedať na štyri krátke otázky. Presnú cenovú ponuku dostanete po zameraní (krok 3). Nie jedno číslo, ale rozpis po položkách – od nás materiál, od partnerského kamenára zameranie, výroba, doprava a montáž.</p>
 
 <p><strong>Čo obsahuje cenová ponuka:</strong></p>
 <ul>
@@ -72,7 +72,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <h2 id="krok-3-digitalne-zameranie">Krok 3 – Prečo je zameranie najdôležitejší krok?</h2>
 
-<p>Po schválení ponuky a úhrade zálohy prichádza najdôležitejší technický krok celého procesu: zameranie priamo u vás doma. Tu sa rozhoduje o presnosti celej realizácie.</p>
+<p>Keď sa po orientačnej cene rozhodnete pokračovať, prichádza najdôležitejší technický krok celého procesu: zameranie priamo u vás doma. Tu sa rozhoduje o presnosti celej realizácie.</p>
 
 <p><strong>Kto meria:</strong> Kuchyňu ručne zameria priamo na mieste partnerský kamenár, ktorý bude dosku aj vyrábať. Zodpovednosť za rozmery je tak na jednom mieste.</p>
 
@@ -88,6 +88,8 @@ export const ARTICLE_13: BlogArticle = {
 <p><strong>Podmienka:</strong> Vaše skrinky musia byť <strong>kompletne nainštalované a vyrovnané</strong> pred príchodom kamenára. Meria sa finálny stav – akákoľvek zmena po zameraní znamená nové meranie.</p>
 
 <p><strong>Trvanie:</strong> 1 – 2 hodiny na mieste, v závislosti od komplexnosti kuchyne.</p>
+
+<p><strong>Presná ponuka:</strong> Po zameraní dostanete presnú cenovú ponuku, položku po položke.</p>
 
 <p><strong>Schválenie výkresov:</strong> Na základe merania kamenár pripraví výkresy s presným tvarom, rozmermi, pozíciami výrezov a profilmi hrán. Výkresy dostanete na schválenie – <strong>fabrikácia sa nespustí, kým ich neodsúhlasíte</strong>. Toto je vaša posledná príležitosť na zmeny bez dodatočných nákladov.</p>
 
@@ -115,7 +117,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <p><strong>Trvanie:</strong> 7 – 10 pracovných dní od schválenia výkresov. Komplexnejšie projekty s viacerými kusmi môžu trvať dlhšie – o presnom termíne vás informujeme pri schválení.</p>
 
-<h2 id="krok-5-kontrola-kvality">Krok 5 – Ako kontrolujeme kvalitu?</h2>
+<h2 id="krok-5-kontrola-kvality">Krok 5 – Ako kamenár kontroluje kvalitu?</h2>
 
 <p>Predtým, ako ktorýkoľvek diel opustí dielňu, prechádza štvorstupňovou kontrolou kvality. Chyba odhalená vo výrobe stojí hodiny – chyba odhalená pri inštalácii stojí dni a tisíce eur.</p>
 
@@ -210,7 +212,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <h2 id="krok-10-finalna-kontrola-a-odovzdanie">Krok 10 – Ako prebieha finálna kontrola a odovzdanie?</h2>
 
-<p>Posledný krok je rovnako dôležitý ako prvý. Kamenár nekončí montážou – prácu odovzdá, až keď je všetko v poriadku, a výsledok skontrolujeme aj my.</p>
+<p>Posledný krok je rovnako dôležitý ako prvý. Kamenár nekončí montážou – prácu odovzdá, až keď je všetko v poriadku. Za výrobu a montáž zodpovedá kamenár.</p>
 
 <p><strong>Finálna kontrola zahŕňa:</strong></p>
 <ul>
@@ -224,7 +226,7 @@ export const ARTICLE_13: BlogArticle = {
 <p><strong>Odovzdanie klientovi:</strong></p>
 <ul>
   <li><strong>Protokol o čistení a údržbe</strong> – vysvetlíme vám, ako sa o sinterovaný kameň starať (spoiler: je to veľmi jednoduché)</li>
-  <li><strong>Záruka</strong> – na materiál platí záruka 24\u00A0mesiacov, na výrobu a montáž dáva záruku kamenár. Podmienky dostanete v záručnom certifikáte pri odovzdaní</li>
+  <li><strong>Zodpovednosť za vady</strong> – na materiál platí 24-mesačná zákonná zodpovednosť, na výrobu a montáž dáva záruku kamenár. Podmienky dostanete v záručnom certifikáte pri odovzdaní</li>
   <li><strong>Čas na vytvrdnutie</strong> – <strong>24 hodín</strong> po inštalácii nepoužívajte dosku v plnom zaťažení. Lepidlá a tmely potrebujú čas na úplné vytvrdnutie</li>
   <li><strong>Kontakt pre budúcnosť</strong> – ak kedykoľvek v budúcnosti budete potrebovať poradiť, opraviť alebo rozšíriť, sme tu pre vás</li>
 </ul>
@@ -251,7 +253,7 @@ export const ARTICLE_13: BlogArticle = {
       },
       {
         question: 'Koľko stojí konzultácia v showroome?',
-        answer: 'Konzultácia v našom showroome v Bošanoch je úplne bezplatná a nezáväzná. Trvá 1 – 2 hodiny a zahŕňa prehliadku materiálov, diskusiu o vašom projekte a predbežnú kalkuláciu.'
+        answer: 'Konzultácia v našom showroome v Bošanoch je úplne bezplatná a nezáväzná. Trvá 1 – 2 hodiny a zahŕňa prehliadku materiálov, diskusiu o vašom projekte a predbežnú kalkuláciu. Nie je povinná – orientačnú cenu vám pošleme aj bez nej.'
       },
       {
         question: 'Prečo potrebujete hotové skrinky pred zameraním?',
@@ -291,7 +293,7 @@ export const ARTICLE_13: BlogArticle = {
       },
       {
         question: 'Aká je záruka na inštaláciu a materiál?',
-        answer: 'Na fabrikáciu a montáž poskytuje záruku kamenár, ktorý ich realizuje. Na materiál platí záruka 24\u00A0mesiacov. Presné podmienky záruky sú súčasťou záručného certifikátu, ktorý dostanete pri odovzdaní projektu. V prípade akéhokoľvek problému nás kontaktujte – pomôžeme to doriešiť.'
+        answer: 'Na fabrikáciu a montáž poskytuje záruku kamenár, ktorý ich realizuje. Na materiál platí 24-mesačná zákonná zodpovednosť za vady. Presné podmienky záruky sú súčasťou záručného certifikátu, ktorý dostanete pri odovzdaní projektu. V prípade akéhokoľvek problému nás kontaktujte – pomôžeme to doriešiť.'
       }
     ]
   },
@@ -311,13 +313,13 @@ export const ARTICLE_13: BlogArticle = {
 
 <p>Investing in sintered stone is a decision that will shape your space for decades. It's perfectly natural to want to know exactly what will happen, when, and who is responsible for what. Uncertainty breeds stress — and that's precisely why we're showing you the entire Orostone process step by step, with specific timelines, measurements, and responsibilities.</p>
 
-<p>Whether you're planning a new kitchen, bathroom cladding, or an island for an open-plan living space, the process is always the same: <strong>10 clear steps, 10–15 business days, clear responsibilities</strong>. Let's begin.</p>
+<p>Whether you're planning a new kitchen, bathroom cladding, or an island for an open-plan living space, the process is always the same: <strong>10 clear steps, 10–15 business days, clear responsibilities</strong>. They are the detailed breakdown of our three steps: orientation price, measuring, fabrication and installation. Let's begin.</p>
 
-<p><strong>Who does what:</strong> Orostone advises you on the selection, supplies the material — whole slabs — and coordinates the schedule. Measurement, fabrication, transport and installation are carried out and invoiced by a partner stonemason experienced with sintered stone. We check the result as well.</p>
+<p><strong>Who does what:</strong> Orostone advises you on the selection and supplies the material — whole slabs. It agrees the schedule with the stonemason and follows the job through to installation. Measurement, fabrication, transport and installation are carried out and invoiced by a partner stonemason experienced with sintered stone. The stonemason is responsible for fabrication and installation.</p>
 
 <h2 id="step-1-consultation-and-material-selection">Step 1 — What happens at the consultation?</h2>
 
-<p>Everything starts with a personal consultation in our Bošany showroom. This isn't a sales call or an email with a catalogue — it's a meeting where you see and touch real materials at full scale.</p>
+<p>If you want to see the material in person before the orientation price, come for a consultation at our Bošany showroom. This isn't a sales call or an email with a catalogue — it's a meeting where you see and touch real materials at full scale.</p>
 
 <p><strong>What happens during the consultation:</strong></p>
 <ul>
@@ -328,13 +330,13 @@ export const ARTICLE_13: BlogArticle = {
   <li><strong>Budget and expectations</strong> — we discuss pricing openly so you know exactly what your budget will deliver</li>
 </ul>
 
-<p><strong>Duration:</strong> 1–2 hours. The consultation is free and without obligation.</p>
+<p><strong>Duration:</strong> 1–2 hours. The consultation is free, without obligation and optional — we will send you the orientation price without it too.</p>
 
 <p><strong>Tip for clients:</strong> Bring your kitchen floor plan, inspiration photos, and — if you have one — the drawing from your kitchen studio. The more information we have from the start, the more precisely we can advise you.</p>
 
 <h2 id="step-2-quote">Step 2 — What does the quote include?</h2>
 
-<p>Within 48 hours of the consultation, you'll receive a detailed quote. Not a single figure, but an itemised breakdown — the material from us, measurement, fabrication, transport and installation from the partner stonemason.</p>
+<p>First we send you an orientation price, usually the next working day — you only answer four short questions. You receive the exact quote after measuring (step 3). Not a single figure, but an itemised breakdown — the material from us, measurement, fabrication, transport and installation from the partner stonemason.</p>
 
 <p><strong>What the quote includes:</strong></p>
 <ul>
@@ -353,7 +355,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <h2 id="step-3-digital-templating">Step 3 — Why is measurement the most critical step?</h2>
 
-<p>After quote approval and deposit payment, the most important technical step of the entire process begins: measurement directly at your home. This is where the precision of the entire project is determined.</p>
+<p>When you decide to go ahead after the orientation price, the most important technical step of the entire process begins: measurement directly at your home. This is where the precision of the entire project is determined.</p>
 
 <p><strong>Who measures:</strong> The partner stonemason who will fabricate the worktop measures your kitchen by hand on site. Responsibility for the dimensions stays in one place.</p>
 
@@ -369,6 +371,8 @@ export const ARTICLE_13: BlogArticle = {
 <p><strong>Requirement:</strong> Your cabinets must be <strong>fully installed and levelled</strong> before the stonemason's visit. The final state is measured — any change after measurement means a new measurement is required.</p>
 
 <p><strong>Duration:</strong> 1–2 hours on-site, depending on kitchen complexity.</p>
+
+<p><strong>Exact quote:</strong> After measuring, you receive the exact quote, item by item.</p>
 
 <p><strong>Drawing approval:</strong> Based on the measurements, the stonemason prepares drawings with the exact shape, dimensions, cutout positions, and edge profiles. You receive the drawings for approval — <strong>fabrication does not begin until you sign off</strong>. This is your last opportunity for changes without additional costs.</p>
 
@@ -396,7 +400,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <p><strong>Duration:</strong> 7–10 business days from drawing approval. More complex projects with multiple pieces may take longer — we confirm the exact timeline at approval.</p>
 
-<h2 id="step-5-quality-control">Step 5 — How do we check quality?</h2>
+<h2 id="step-5-quality-control">Step 5 — How does the stonemason check quality?</h2>
 
 <p>Before any piece leaves the workshop, it undergoes a four-stage quality inspection. A defect found during manufacturing costs hours — a defect discovered during installation costs days and thousands of euros.</p>
 
@@ -491,7 +495,7 @@ export const ARTICLE_13: BlogArticle = {
 
 <h2 id="step-10-final-inspection-and-handover">Step 10 — How does final inspection and handover work?</h2>
 
-<p>The final step is just as important as the first. The stonemason doesn't stop at installation — the work is handed over only when everything is right, and we check the result as well.</p>
+<p>The final step is just as important as the first. The stonemason doesn't stop at installation — the work is handed over only when everything is right. The stonemason is responsible for fabrication and installation.</p>
 
 <p><strong>Final inspection includes:</strong></p>
 <ul>
@@ -505,7 +509,7 @@ export const ARTICLE_13: BlogArticle = {
 <p><strong>Client handover:</strong></p>
 <ul>
   <li><strong>Cleaning and care guide</strong> — we explain how to maintain sintered stone (spoiler: it's very straightforward)</li>
-  <li><strong>Warranty</strong> — the material carries a 24-month warranty, fabrication and installation are warranted by the stonemason. You receive the terms in the warranty certificate at handover</li>
+  <li><strong>Liability for defects</strong> — the material carries the 24-month statutory liability, fabrication and installation are warranted by the stonemason. You receive the terms in the warranty certificate at handover</li>
   <li><strong>Curing time</strong> — <strong>24 hours</strong> after installation, avoid full load on the worktop. Adhesives and sealants need time to fully cure</li>
   <li><strong>Future contact</strong> — whenever you need advice, repair, or expansion in the future, we're here for you</li>
 </ul>
@@ -532,7 +536,7 @@ export const ARTICLE_13: BlogArticle = {
       },
       {
         question: 'How much does the showroom consultation cost?',
-        answer: 'The consultation at our Bošany showroom is completely free and without obligation. It lasts 1–2 hours and includes a materials tour, discussion of your project, and a preliminary estimate.'
+        answer: 'The consultation at our Bošany showroom is completely free and without obligation. It lasts 1–2 hours and includes a materials tour, discussion of your project, and a preliminary estimate. It is optional — we will send you the orientation price without it too.'
       },
       {
         question: 'Why do you need finished cabinets before measurement?',
@@ -572,7 +576,7 @@ export const ARTICLE_13: BlogArticle = {
       },
       {
         question: 'What warranty do you provide on installation and material?',
-        answer: 'Fabrication and installation are warranted by the stonemason who carries them out. The material carries a 24-month warranty. Exact warranty terms are included in the warranty certificate you receive at project handover. In case of any issue, contact us — we\'ll help get it resolved.'
+        answer: 'Fabrication and installation are warranted by the stonemason who carries them out. The material carries the 24-month statutory liability for defects. Exact warranty terms are included in the warranty certificate you receive at project handover. In case of any issue, contact us — we\'ll help get it resolved.'
       }
     ]
   }

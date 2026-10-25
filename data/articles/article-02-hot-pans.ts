@@ -14,7 +14,7 @@ export const ARTICLE_02: BlogArticle = {
     title: 'Môžete položiť horúci hrniec na sinterovaný kameň? Úprimná odpoveď',
     subtitle: 'Test tepelnej odolnosti sinterovaného kameňa v praxi – čo skutočne vydrží a kde sú limity',
     excerpt: 'Sinterovaný kameň odolá teplotám do 300\u00A0°C a horúce hrnce ho nepoškodia. Ale je tu jeden scenár, na ktorý si treba dávať pozor – termický šok.',
-    metaTitle: 'Horúci hrniec na sinterovanom kameni | OROSTONE',
+    metaTitle: 'Horúci hrniec na sinterovanom kameni | Orostone',
     metaDescription: 'Môžete položiť horúci hrniec priamo na pracovnú dosku? Vysvetlenie tepelnej odolnosti sinterovaného kameňa a hraníc, kde to už neplatí.',
     directAnswer: 'Áno, na sinterovaný kameň môžete položiť horúci hrniec priamo z plameňa alebo rúry. Materiál odolá teplotám nad 300\u00A0°C bez poškodenia, zmeny farby ani deformácie. Výrobný proces spekania pri 1\u00A0200\u00A0°C mu dáva tepelnú odolnosť, ktorú plastické živice v iných materiáloch nemajú.',
     content: `
@@ -117,7 +117,7 @@ export const ARTICLE_02: BlogArticle = {
 <div class="article-case-study">
   <span class="case-study-label">Z praxe</span>
   <h3>Séria testov v našom showroome – záznamy z 6 mesiacov</h3>
-  <p>Počas pol roka sme systematicky testovali tepelné zaťaženie sinterovaného kameňa v reálnych kuchynských podmienkach. Vzorky dekórov Statuario Diamante a Calacatta Top sme vystavili sérii testov.</p>
+  <p>Počas pol roka sme systematicky testovali tepelné zaťaženie sinterovaného kameňa v reálnych kuchynských podmienkach. Vzorky dekorov Statuario Diamante a Calacatta Top sme vystavili sérii testov.</p>
   <p><strong>Test 1 – hrniec z rúry (220\u00A0°C):</strong> Prikladaný priamo na sinterovaný kameň na 2 hodiny. Výsledok: <strong class="gold">žiadne poškodenie</strong>, žiadna zmena farby, povrch identický pred aj po.</p>
   <p><strong>Test 2 – liatinová panvica z plameňa (~280\u00A0°C):</strong> Prikladaná 15 minút. Výsledok: žiadne stopy. Pod panvicou vznikla kondenzácia, ktorá sa po ochladení vyparila. Povrch bez zmeny.</p>
   <p><strong>Test 3 – priamy plameň (kuchynský horák, 10 sekúnd):</strong> Výsledok: žiadna škvrna ani zmena. Pre porovnanie rovnaký test na vzorovom kvarcite zanechal biely odtlačok.</p>

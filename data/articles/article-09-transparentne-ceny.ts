@@ -48,7 +48,7 @@ export const ARTICLE_09: BlogArticle = {
     heroCaption: 'Vizualizácia so vzorkami dekorov Calacatta Top a Roman Travertine',
     excerpt:
       'Dve ponuky na tú istú kuchyňu sa môžu líšiť o stovky eur – a lacnejšia môže byť v skutočnosti drahšia. Zistite, čo musí férová ponuka obsahovať a na čo si dať pozor.',
-    metaTitle: 'Cenová ponuka na sinterovaný kameň: čo musí obsahovať | OROSTONE',
+    metaTitle: 'Cenová ponuka na sinterovaný kameň: čo musí obsahovať | Orostone',
     metaDescription: `Čo musí obsahovať férová cenová ponuka na pracovnú dosku zo sinterovaného kameňa. Ceny platní ${formatEurWhole(SLAB_TOTAL_MIN)} – ${formatEurWhole(SLAB_TOTAL_MAX)}, rozpis položiek a skryté náklady, na ktoré si dať pozor.`,
     directAnswer: `Férová cenová ponuka na pracovnú dosku zo sinterovaného kameňa musí obsahovať rozpis: materiál, fabrikáciu (výrezy, hrany), dopravu, montáž a DPH. Na trhu vychádza hotová doska orientačne ${MARKET.min} – ${MARKET.max}\u00A0€/bm vrátane výroby a montáže. Pri ponuke bez rozpisu položiek porovnávate jablká s hruškami.`,
     content: `
@@ -60,7 +60,7 @@ export const ARTICLE_09: BlogArticle = {
   <li>Najčastejšie skryté náklady: výrezy, opracovanie hrán, výnos do bytu a využitie platne</li>
 </ul>
 
-<p>Povedzme si to na rovinu: väčšina dodávateľov kameňa ceny nezverejňuje. „Napíšte nám a pripravíme ponuku na mieru.“ Znie to ústretovo, ale v praxi to znamená jedno – nemáte sa čoho chytiť a dve ponuky neviete porovnať.</p>
+<p>Povedzme si to na rovinu: keď pri doske nájdete len vetu „Napíšte nám a pripravíme ponuku na mieru“, znie to ústretovo, ale v praxi to znamená jedno – nemáte sa čoho chytiť a dve ponuky neviete porovnať.</p>
 
 <p>V Orostone sme sa rozhodli ísť opačnou cestou. Ceny všetkých dekorov máte na webe, sadzbu za realizáciu tiež. V tomto článku vám ukážem, ako sa cena pracovnej dosky reálne skladá – aby ste každú ponuku, aj od konkurencie, vedeli prečítať ako profík.</p>
 
@@ -192,7 +192,7 @@ export const ARTICLE_09: BlogArticle = {
     heroCaption: 'Visualization with Calacatta Top and Roman Travertine samples',
     excerpt:
       'Two quotes for the same kitchen can differ by hundreds of euros — and the cheaper one may actually cost more. Learn what a fair quote must include and what to watch out for.',
-    metaTitle: 'Sintered Stone Quote: What It Must Include | OROSTONE',
+    metaTitle: 'Sintered Stone Quote: What It Must Include | Orostone',
     metaDescription: `What a fair quote for a sintered stone countertop must include. Slab prices ${enEurWhole(SLAB_TOTAL_MIN)}–${enEurWhole(SLAB_TOTAL_MAX)}, itemized breakdown, and the hidden costs to watch for.`,
     directAnswer: `A fair sintered stone countertop quote must itemize: material, fabrication (cutouts, edges), transport, installation and VAT. On the market, a finished countertop runs roughly €${MARKET.min}–${MARKET.max} per running meter including fabrication and installation. A quote without an itemized breakdown means you are comparing apples to oranges.`,
     content: `
@@ -204,7 +204,7 @@ export const ARTICLE_09: BlogArticle = {
   <li>Most common hidden costs: cutouts, edge profiling, carry-up delivery and slab utilization</li>
 </ul>
 
-<p>Let's be honest: most stone suppliers don't publish prices. "Contact us for a custom quote" sounds helpful, but in practice it means one thing — you have nothing to anchor on and no way to compare two offers.</p>
+<p>Let's be honest: when all you find next to a countertop is "Contact us for a custom quote", it sounds helpful, but in practice it means one thing — you have nothing to anchor on and no way to compare two offers.</p>
 
 <p>At Orostone we went the opposite way. Every decor price is public, and so is the realization rate. This article shows you how a countertop price is actually built — so you can read any quote, including a competitor's, like a pro.</p>
 

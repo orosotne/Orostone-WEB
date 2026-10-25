@@ -36,7 +36,7 @@ export const GENERIC_PRODUCT_FAQS: ProductFAQ[] = [
   },
   {
     question: 'Aká je dodacia lehota?',
-    answer: `Skladové platne doručujeme spravidla za ${STOCK_SLAB_DELIVERY_TIMEFRAME}. Projekty na mieru (s rezaním, opracovaním) dodávame do 15 pracovných dní.`,
+    answer: `Skladové platne doručujeme spravidla za ${STOCK_SLAB_DELIVERY_TIMEFRAME}. Projekty na mieru (s rezaním a opracovaním) dodávame do 15 pracovných dní. Najprv vám pošleme orientačnú cenu, spravidla nasledujúci pracovný deň. Potom kamenár ručne zameria kuchyňu a dostanete presnú ponuku, položku po položke. Výrobu a montáž robí kamenár; Orostone dodá materiál a dohodne s ním termín.`,
   },
   {
     question: 'Zabezpečujete aj montáž?',
@@ -51,7 +51,7 @@ export const GENERIC_PRODUCT_FAQS: ProductFAQ[] = [
  */
 export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
   'statuario-diamante': {
-    metaTitle: 'Statuario Diamante — biely mramorový dekor | OROSTONE',
+    metaTitle: 'Statuario Diamante — biely mramorový dekor | Orostone',
     metaDescription: 'Biely sinterovaný kameň s jemným šedým žilkovaním. Pre kuchyne, kde má plocha priniesť svetlo bez toho, aby zaťažila výraz. Vzorka na vyžiadanie.',
     keywords: [
       'statuario diamante',
@@ -76,7 +76,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
   },
 
   'calacatta-top': {
-    metaTitle: 'Calacatta Top — biely mramorový dekor | OROSTONE',
+    metaTitle: 'Calacatta Top — biely mramorový dekor | Orostone',
     metaDescription: 'Biely mramorový dekor so zlatistými žilkami. Pre kuchyne a kúpeľne, kde má plocha pôsobiť reprezentatívne, ale nie efektne. Pošlite pôdorys, vyrátame cenu.',
     keywords: [
       'calacatta obklad',
@@ -101,7 +101,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
   },
 
   'givenchy-gold': {
-    metaTitle: 'Givenchy Gold — zlatistý mramorový dekor | OROSTONE',
+    metaTitle: 'Givenchy Gold — zlatistý mramorový dekor | Orostone',
     metaDescription: 'Biely dekor s výrazným zlatobéžovým žilkovaním. Pre interiéry, kde má dekor niesť vlastnú váhu — kúpeľne, akcentové steny, ostrovčeky. Veľká platňa v showroome Bošany.',
     keywords: [
       'givenchy gold obklad',
@@ -126,7 +126,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
   },
 
   'roman-travertine': {
-    metaTitle: 'Roman Travertine — travertínový dekor | OROSTONE',
+    metaTitle: 'Roman Travertine — travertínový dekor | Orostone',
     metaDescription: 'Roman Travertine prináša prirodzenú textúru travertínu — bez nasiakavosti, bez impregnácie a bez údržby, ktorú by si reálny travertín vyžadoval.',
     keywords: [
       'travertín obklad',
@@ -151,7 +151,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
   },
 
   'taj-mahal': {
-    metaTitle: 'Taj Mahal — krémový sinterovaný kameň | OROSTONE',
+    metaTitle: 'Taj Mahal — krémový sinterovaný kameň | Orostone',
     metaDescription: 'Krémový mramorový dekor s mäkkou kresbou. Pre kuchyne s teplými drevenými frontami a interiéry, kde má povrch hriať, nie chladiť. Vzorka aj poradenstvo bez záväzku.',
     keywords: [
       'taj mahal obklad',
@@ -176,7 +176,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
   },
 
   'appennino': {
-    metaTitle: 'Appennino — svetlý sinterovaný kameň | OROSTONE',
+    metaTitle: 'Appennino — svetlý sinterovaný kameň | Orostone',
     metaDescription: 'Pokojný svetlý dekor pre kuchyne, kde má plocha pôsobiť čisto a vyvážene. Bez agresívnej kresby a bez impregnácie. Vzorka Appennino na vyžiadanie.',
     keywords: [
       'appennino obklad',
@@ -201,7 +201,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
   },
 
   'astrana-grey': {
-    metaTitle: 'Astrana Grey — sivý sinterovaný kameň | OROSTONE',
+    metaTitle: 'Astrana Grey — sivý sinterovaný kameň | Orostone',
     metaDescription: 'Astrana Grey je vyrovnaný sivý dekor s jemnou kresbou. Funguje v kuchyniach, kde má pracovná doska držať pokojnú líniu interiéru. Vzorka aj poradenstvo bez záväzku.',
     keywords: [
       'sivé mramorové platne',
@@ -226,7 +226,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
   },
 
   'super-white-extra': {
-    metaTitle: 'Super White Extra — čistý biely dekor | OROSTONE',
+    metaTitle: 'Super White Extra — čistý biely dekor | Orostone',
     metaDescription: 'Svetlý biely sinterovaný kameň s jemným sivým žilkovaním. Pre kuchyne, kde má plocha zostať svetlá a pritom si udržať mramorový výraz. Vzorka na vyžiadanie.',
     keywords: [
       'biele mramorové platne',
@@ -251,7 +251,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
   },
 
   'gothic-gold': {
-    metaTitle: 'Gothic Gold — tmavý dekor so zlatistou kresbou | OROSTONE',
+    metaTitle: 'Gothic Gold — tmavý dekor so zlatistou kresbou | Orostone',
     metaDescription: 'Gothic Gold je tmavý dekor so zlatistými žilkami. Pre kuchyne, kde má pracovná doska niesť dramatickejšiu líniu. Pozrite veľkú platňu v showroome Bošany.',
     keywords: [
       'gothic gold obklad',
@@ -276,7 +276,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
   },
 
   'wild-forest': {
-    metaTitle: 'Wild Forest — výrazný dekor pre veľké plochy | OROSTONE',
+    metaTitle: 'Wild Forest — výrazný dekor pre veľké plochy | Orostone',
     metaDescription: 'Wild Forest je výrazný dekor s veľkoplošnou kresbou. Vzorka 10×10 cm ho nezachytí — odporúčame pozrieť veľkú platňu v showroome Bošany.',
     keywords: [
       'prírodný kameň obklad',
@@ -301,7 +301,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
   },
 
   'nero-margiua': {
-    metaTitle: 'Nero Margiua — čierny sinterovaný kameň | OROSTONE',
+    metaTitle: 'Nero Margiua — čierny sinterovaný kameň | Orostone',
     metaDescription: 'Čierny mramorový dekor s bielou žilkovou kresbou. Pre kuchyne, kde má pracovná doska byť kontrastom proti svetlým frontom. Veľká platňa v showroome Bošany.',
     keywords: [
       'čierny mramor obklad',
@@ -326,7 +326,7 @@ export const PRODUCT_SEO_CONTENT: Record<string, ProductSEOContent> = {
   },
 
   'yabo-white': {
-    metaTitle: 'Yabo White — teplý biely sinterovaný kameň | OROSTONE',
+    metaTitle: 'Yabo White — teplý biely sinterovaný kameň | Orostone',
     metaDescription: 'Yabo White je teplý biely dekor s mäkkou textúrou. Pre kuchyne, kde má svetlá plocha pôsobiť obytne, nie sterilne. Vzorka Yabo White na vyžiadanie.',
     keywords: [
       'biele obklady bratislava',

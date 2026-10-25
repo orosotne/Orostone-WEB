@@ -64,9 +64,9 @@ export const HomeShowroom: React.FC = () => (
       <div className={`hp-rev-in ${REVIEWS.length ? '' : 'hp-rev-solo'}`}>
         <div className="hp-rating hp-noise os-on-dark">
           <Eyebrow gold>Recenzie</Eyebrow>
+          {/* The score, count and source only: hard-coded stars would not follow GOOGLE_RATING (owner decision 25. 10. 2026) */}
           <p className="hp-rating-score">
             <b>{GOOGLE_RATING.value}</b>
-            <span className="hp-rating-stars" aria-hidden="true">★★★★★</span>
             <span className="sr-only">z 5 hviezdičiek</span>
           </p>
           <p className="hp-rating-text">

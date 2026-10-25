@@ -193,8 +193,8 @@ export const SiteHeader: React.FC = () => {
         className={`pointer-events-none absolute inset-0 -z-10 transition-opacity duration-300 ${layerOpen ? 'bg-brand-light' : 'os-glass'} ${isTransparent ? 'opacity-0' : 'opacity-100'}`}
       />
       <Container className="flex h-16 items-center gap-3 sm:gap-6 lg:h-20 min-[1360px]:gap-9">
-        <Link to="/" className="flex-none" aria-label="OROSTONE, hlavná stránka">
-          <img src="/images/orostone-logo.svg" alt="OROSTONE" width={136} height={27} className="h-auto w-[96px] sm:w-[118px] lg:w-[136px]" />
+        <Link to="/" className="flex-none" aria-label="Orostone, hlavná stránka">
+          <img src="/images/orostone-logo.svg" alt="Orostone" width={136} height={27} className="h-auto w-[96px] sm:w-[118px] lg:w-[136px]" />
         </Link>
 
         {/* Desktop navigation (from 1360 px) */}

@@ -14,8 +14,8 @@ export const ARTICLE_04: BlogArticle = {
     title: '12\u00A0mm vs 20\u00A0mm sinterovaný kameň: aký je skutočný rozdiel?',
     subtitle: 'Edukačný prehľad – čo obe hrúbky technicky môžu a kde sú ich limity. V Orostone pracujeme s 12\u00A0mm.',
     excerpt: 'Na trhu existujú dosky v hrúbke 12\u00A0mm aj 20\u00A0mm. Vysvetlíme vám technické rozdiely a povieme, prečo v Orostone pracujeme výhradne s 12\u00A0mm – a kedy to stačí.',
-    metaTitle: '12\u00A0mm alebo 20\u00A0mm? Sinterovaný kameň | OROSTONE',
-    metaDescription: 'Kedy stačí 12\u00A0mm a kedy má zmysel ísť do 20\u00A0mm. Praktický rozdiel pri kuchynskej doske, ostrovčeku a pri cene celého projektu.',
+    metaTitle: '12\u00A0mm alebo 20\u00A0mm? Sinterovaný kameň | Orostone',
+    metaDescription: 'Kedy stačí 12\u00A0mm a kedy sa oplatí ísť do 20\u00A0mm. Praktický rozdiel pri kuchynskej doske, ostrovčeku a pri cene celého projektu.',
     directAnswer: 'Sinterovaný kameň sa vyrába v hrúbkach 3\u00A0mm, 12\u00A0mm aj 20\u00A0mm. V Orostone pracujeme výhradne s 12\u00A0mm. Pri správnej podkladovej konštrukcii, plánovaní výrezov a dodržaní pravidiel previsu (max. 200\u00A0mm) 12\u00A0mm pokrýva všetky bežné aplikácie – kuchynské dosky, kúpeľne, obklady aj ostrovčeky.',
     content: `
 <p class="article-tldr-label">Zhrnutie článku</p>

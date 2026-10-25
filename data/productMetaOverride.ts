@@ -27,62 +27,62 @@ export interface ProductMetaOverrideEntry {
 
 export const PRODUCT_META_OVERRIDE: Record<string, ProductMetaOverrideEntry> = {
   appennino: {
-    title: 'Appennino — svetlý sinterovaný kameň | OROSTONE',
+    title: 'Appennino — svetlý sinterovaný kameň | Orostone',
     description:
       'Pokojný svetlý dekor pre kuchyne, kde má plocha pôsobiť čisto a vyvážene. Bez agresívnej kresby a bez impregnácie. Vzorka Appennino na vyžiadanie.',
   },
   'astrana-grey': {
-    title: 'Astrana Grey — sivý sinterovaný kameň | OROSTONE',
+    title: 'Astrana Grey — sivý sinterovaný kameň | Orostone',
     description:
       'Astrana Grey je vyrovnaný sivý dekor s jemnou kresbou. Funguje v kuchyniach, kde má pracovná doska držať pokojnú líniu interiéru. Vzorka aj poradenstvo bez záväzku.',
   },
   'calacatta-top': {
-    title: 'Calacatta Top — biely mramorový dekor | OROSTONE',
+    title: 'Calacatta Top — biely mramorový dekor | Orostone',
     description:
       'Biely mramorový dekor so zlatistými žilkami. Pre kuchyne a kúpeľne, kde má plocha pôsobiť reprezentatívne, ale nie efektne. Pošlite pôdorys, vyrátame cenu.',
   },
   'givenchy-gold': {
-    title: 'Givenchy Gold — zlatistý mramorový dekor | OROSTONE',
+    title: 'Givenchy Gold — zlatistý mramorový dekor | Orostone',
     description:
       'Biely dekor s výrazným zlatobéžovým žilkovaním. Pre interiéry, kde má dekor niesť vlastnú váhu — kúpeľne, akcentové steny, ostrovčeky. Veľká platňa v showroome Bošany.',
   },
   'gothic-gold': {
-    title: 'Gothic Gold — tmavý dekor so zlatistou kresbou | OROSTONE',
+    title: 'Gothic Gold — tmavý dekor so zlatistou kresbou | Orostone',
     description:
       'Gothic Gold je tmavý dekor so zlatistými žilkami. Pre kuchyne, kde má pracovná doska niesť dramatickejšiu líniu. Pozrite veľkú platňu v showroome Bošany.',
   },
   'nero-margiua': {
-    title: 'Nero Margiua — čierny sinterovaný kameň | OROSTONE',
+    title: 'Nero Margiua — čierny sinterovaný kameň | Orostone',
     description:
       'Čierny mramorový dekor s bielou žilkovou kresbou. Pre kuchyne, kde má pracovná doska byť kontrastom proti svetlým frontom. Veľká platňa v showroome Bošany.',
   },
   'roman-travertine': {
-    title: 'Roman Travertine — travertínový dekor | OROSTONE',
+    title: 'Roman Travertine — travertínový dekor | Orostone',
     description:
       'Roman Travertine prináša prirodzenú textúru travertínu — bez nasiakavosti, bez impregnácie a bez údržby, ktorú by si reálny travertín vyžadoval.',
   },
   'statuario-diamante': {
-    title: 'Statuario Diamante — biely mramorový dekor | OROSTONE',
+    title: 'Statuario Diamante — biely mramorový dekor | Orostone',
     description:
       'Biely sinterovaný kameň s jemným šedým žilkovaním. Pre kuchyne, kde má plocha priniesť svetlo bez toho, aby zaťažila výraz. Vzorka na vyžiadanie.',
   },
   'super-white-extra': {
-    title: 'Super White Extra — čistý biely dekor | OROSTONE',
+    title: 'Super White Extra — čistý biely dekor | Orostone',
     description:
       'Svetlý biely sinterovaný kameň s jemným sivým žilkovaním. Pre kuchyne, kde má plocha zostať svetlá a pritom si udržať mramorový výraz. Vzorka na vyžiadanie.',
   },
   'taj-mahal': {
-    title: 'Taj Mahal — krémový sinterovaný kameň | OROSTONE',
+    title: 'Taj Mahal — krémový sinterovaný kameň | Orostone',
     description:
       'Krémový mramorový dekor s mäkkou kresbou. Pre kuchyne s teplými drevenými frontami a interiéry, kde má povrch hriať, nie chladiť. Vzorka aj poradenstvo bez záväzku.',
   },
   'wild-forest': {
-    title: 'Wild Forest — výrazný dekor pre veľké plochy | OROSTONE',
+    title: 'Wild Forest — výrazný dekor pre veľké plochy | Orostone',
     description:
       'Wild Forest je výrazný dekor s veľkoplošnou kresbou. Vzorka 10×10 cm ho nezachytí — odporúčame pozrieť veľkú platňu v showroome Bošany.',
   },
   'yabo-white': {
-    title: 'Yabo White — teplý biely sinterovaný kameň | OROSTONE',
+    title: 'Yabo White — teplý biely sinterovaný kameň | Orostone',
     description:
       'Yabo White je teplý biely dekor s mäkkou textúrou. Pre kuchyne, kde má svetlá plocha pôsobiť obytne, nie sterilne. Vzorka Yabo White na vyžiadanie.',
   },

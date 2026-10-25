@@ -20,7 +20,7 @@ export const ARTICLE_22: BlogArticle = {
     title: 'Neviditeľná varná doska v sinterovanom kameni – kompletný sprievodca',
     subtitle: 'Ako funguje indukčné varenie integrované priamo pod sinterovaný kameň a prečo je to budúcnosť kuchýň',
     excerpt: 'Neviditeľná varná doska skrytá pod sinterovaným kameňom vytvára dokonale čistú pracovnú plochu. Vysvetľujeme technológiu, požiadavky na hrúbku platne, kompatibilné systémy a reálne skúsenosti.',
-    metaTitle: 'Neviditeľná varná doska v sinterovanom kameni | OROSTONE',
+    metaTitle: 'Neviditeľná varná doska v sinterovanom kameni | Orostone',
     metaDescription: 'Indukcia priamo pod sinterovaným kameňom – bez viditeľnej platne. Ako to funguje, čo to ponúka v kuchyni a kde sú technické limity.',
     directAnswer: 'Neviditeľná varná doska je indukčný systém inštalovaný pod sinterovaný kameň hrúbky 12\u00A0mm. Elektromagnetické pole prechádza cez kameň a ohrieva priamo hrniec. Výsledok: úplne hladká pracovná doska bez viditeľných horákov, ľahko čistiteľná, s plným výkonom indukcie.',
     content: `
@@ -190,11 +190,11 @@ export const ARTICLE_22: BlogArticle = {
   <p>Sinterovaný kameň nie je len pracovná doska. S neviditeľnou indukciou sa stáva celou kuchyňou.</p>
 </div>
 
-<p>Máte záujem o neviditeľnú varnú dosku zo sinterovaného kameňa? <a href="/kontakt">Kontaktujte nás</a> alebo si <a href="/vzorky">objednajte vzorky materiálov</a> – poradíme vám s výberom dekóru a kompatibilného indukčného systému.</p>
+<p>Máte záujem o neviditeľnú varnú dosku zo sinterovaného kameňa? <a href="/kontakt">Kontaktujte nás</a> alebo si <a href="/vzorky">objednajte vzorky materiálov</a> – poradíme vám s výberom dekoru a kompatibilného indukčného systému.</p>
 
-<h2 id="odporucane-dekory">Odporúčané dekóry pre neviditeľnú varnú dosku</h2>
+<h2 id="odporucane-dekory">Odporúčané dekory pre neviditeľnú varnú dosku</h2>
 
-<p>Nie každý dekór sinterovaného kameňa vyzerá rovnako dobre ako jednoliata plocha. Pre neviditeľnú varnú dosku odporúčame dekóry s jemným, neprerušeným vzorom:</p>
+<p>Nie každý dekor sinterovaného kameňa vyzerá rovnako dobre ako jednoliata plocha. Pre neviditeľnú varnú dosku odporúčame dekory s jemným, neprerušeným vzorom:</p>
 
 <ul>
   <li><a href="/produkt/calacatta-top"><strong>Calacatta Top</strong></a> – teplé zlaté žily na bielom podklade, elegantný a nadčasový</li>

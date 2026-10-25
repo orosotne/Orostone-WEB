@@ -4,7 +4,7 @@ import { Facebook, Instagram, Youtube, CheckCircle, Loader2 } from 'lucide-react
 import { Turnstile } from '@marsidev/react-turnstile';
 import { useCookies } from '../../context/CookieContext';
 import { useBackgroundTurnstile } from '../../hooks/useBackgroundTurnstile';
-import { Container, useDrawIn, IconWarranty, IconSecurePay, IconDispatch, IconDelivery } from '../Design';
+import { Container, useDrawIn, IconSecurePay, IconDispatch, IconDelivery } from '../Design';
 import { STOCK_SLAB_DELIVERY_RANGE } from '../../lib/delivery';
 import { SAMPLE_SHIPPING_CODE, SLAB_DISCOUNT_CODE, codesDelivery } from '../../lib/discountPopup';
 import type { CodesDelivery } from '../../lib/discountPopup';
@@ -19,8 +19,8 @@ const PAYMENT_MARKS = [
   { src: '/images/payments/google-pay.svg', alt: 'Google Pay' },
 ] as const;
 
+// The 24-month statutory liability for defects is a consumer right, not our benefit, so it is not a tile here (owner decision 25. 10. 2026).
 const TRUST = [
-  { Icon: IconWarranty, title: '24 mesiacov na reklamáciu', text: 'Zákonná zodpovednosť za vady' },
   { Icon: IconSecurePay, title: 'Bezpečná platba', text: 'Platobnou kartou' },
   { Icon: IconDispatch, title: `Doručenie za ${STOCK_SLAB_DELIVERY_RANGE}`, text: 'Skladové platne, od objednávky' },
   { Icon: IconDelivery, title: 'Doručenie po celom Slovensku', text: 'Špeciálna preprava platní' },
@@ -158,7 +158,7 @@ const FooterComponent: React.FC<FooterProps> = ({ categories = [], isProductDeta
       {!compactOrder && <Container>
         <div
           ref={draw.ref}
-          className={`mb-12 grid grid-cols-1 gap-9 border-b border-brand-light/15 pb-[clamp(56px,7vw,88px)] sm:grid-cols-2 lg:grid-cols-4 lg:gap-5 ${draw.className}`}
+          className={`mb-12 grid grid-cols-1 gap-9 border-b border-brand-light/15 pb-[clamp(56px,7vw,88px)] sm:grid-cols-3 lg:gap-5 ${draw.className}`}
         >
           {TRUST.map(({ Icon, title, text }, i) => (
             <div key={title} className="os-ico-item grid justify-items-center gap-1 text-center" style={{ '--d': `${i * 0.07}s` } as React.CSSProperties}>
@@ -173,8 +173,8 @@ const FooterComponent: React.FC<FooterProps> = ({ categories = [], isProductDeta
       {/* Main footer */}
       <Container className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.6fr)_repeat(3,minmax(0,1fr))] lg:gap-8">
         <div className="grid content-start gap-5">
-          <Link to="/" aria-label="OROSTONE, hlavná stránka">
-            <img src="/images/orostone-logo.svg" alt="OROSTONE" width={136} height={27} className="h-auto w-[136px] brightness-0 invert" />
+          <Link to="/" aria-label="Orostone, hlavná stránka">
+            <img src="/images/orostone-logo.svg" alt="Orostone" width={136} height={27} className="h-auto w-[136px] brightness-0 invert" />
           </Link>
           <p className="max-w-[32ch] text-[0.92rem] text-brand-light/60">
             Sinterované platne pre náročných zákazníkov. Spájame odolnosť kameňa s precíznosťou moderných technológií.

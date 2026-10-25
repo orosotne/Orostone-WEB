@@ -31,7 +31,7 @@ export const ARTICLE_25: BlogArticle = {
 <p>Tento článok nie je akademická definícia. Je to <strong class="gold">poctivý sprievodca rozhodnutím</strong>, ktorý napísal tím, ktorý s partnerskými kamenármi denne rieši zameranie, výrobu aj montáž kuchynských pracovných dosiek. Cieľ je jednoduchý: aby ste pred showroomom vedeli, čo sa pýtať, čomu sa vyhnúť a koľko reálne počítať. Ak hľadáte kompletnú definíciu kompozitných materiálov, prečítajte si <a href="/blog/technicky-kamen-cena-pracovna-doska">úplného sprievodcu technickým kameňom</a>. Tento článok začína tam, kde ten končí – pri rozhodnutí.</p>
 
 <div class="article-quote">
-  <p>Umelý kameň nie je horší ako prírodný. Je iný – a v niektorých kuchyniach má jednoznačne väčší zmysel.</p>
+  <p>Umelý kameň nie je horší ako prírodný. Je iný – a do niektorých kuchýň sa jednoznačne hodí lepšie.</p>
 </div>
 
 <figure class="article-figure">
@@ -104,7 +104,7 @@ export const ARTICLE_25: BlogArticle = {
 
 <h2 id="pre-koho-je-vhodna">Kuchynská pracovná doska z umelého kameňa: pre koho je vhodná?</h2>
 
-<p>Kuchynská pracovná doska z umelého kameňa dáva najväčší zmysel v domácnostiach, kde sa varí denne a kde má doska zvládnuť vodu, škvrny, čistenie aj dlhodobé používanie bez impregnácie. Oproti laminátu pôsobí hodnotnejšie, oproti prírodnému kameňu je predvídateľnejšia na údržbu a pri správnom výbere materiálu vydrží 15 rokov aj viac.</p>
+<p>Kuchynská pracovná doska z umelého kameňa sa najviac oplatí v domácnostiach, kde sa varí denne a kde má doska zvládnuť vodu, škvrny, čistenie aj dlhodobé používanie bez impregnácie. Oproti laminátu pôsobí hodnotnejšie, oproti prírodnému kameňu je predvídateľnejšia na údržbu a pri správnom výbere materiálu vydrží 15 rokov aj viac.</p>
 
 <h2 id="cenove-hladiny">Pracovná doska z umelého kameňa: cena podľa materiálu a montáže</h2>
 
@@ -248,7 +248,7 @@ export const ARTICLE_25: BlogArticle = {
   <span class="case-study-label">Z praxe</span>
   <h3>Klient z Bratislavy: 10 otázok zachránilo 1\u00A0200\u00A0€</h3>
   <p>Klient pred objednávkou prišiel so zoznamom 10 otázok, ktoré si pripravil. Pôvodný dodávateľ ponúkol „prémiový umelý kameň“ za 380\u00A0€/bm. Pri tretej otázke – značka a kolekcia – sa ukázalo, že ide o nešpecifikovaný kremenný kompozit s neuvedeným pôvodom.</p>
-  <p>Klient prišiel k nám. Pri rovnakom rozpočte sme navrhli sinterovaný kameň zo známej kolekcie. Cena bola o <strong>približne 8\u00A0% vyššia</strong>, ale obsahovala konkrétnu značku, certifikát, technický list a 24-mesačnú záruku na materiál.</p>
+  <p>Klient prišiel k nám. Pri rovnakom rozpočte sme navrhli sinterovaný kameň zo známej kolekcie. Cena bola o <strong>približne 8\u00A0% vyššia</strong>, ale obsahovala konkrétnu značku, certifikát a technický list.</p>
   <p>Po roku používania: bez problémov. Klient nedávno povedal, že tých 10 otázok nebolo o tom, že by nedôveroval prvému predajcovi – bolo to o tom, že sa naučil poznať rozdiel medzi materiálom a katalógom. To je presne dôvod, prečo táto sekcia v článku existuje.</p>
 </div>
 
@@ -558,7 +558,7 @@ export const ARTICLE_25: BlogArticle = {
   <span class="case-study-label">Case study</span>
   <h3>Bratislava client: 10 questions saved €1,200</h3>
   <p>Before ordering, the client came in with a list of 10 questions he had prepared. The original supplier offered "premium engineered stone" at €380/rm. By the third question — brand and collection — it became clear that it was an unspecified quartz composite of unstated origin.</p>
-  <p>The client came to us. At a similar budget, we proposed sintered stone from a known collection. The price was <strong>about 8% higher</strong> but included a specific brand, certification, technical data sheet and 24-month material warranty.</p>
+  <p>The client came to us. At a similar budget, we proposed sintered stone from a known collection. The price was <strong>about 8% higher</strong> but included a specific brand, certification and a technical data sheet.</p>
   <p>After a year of use: no issues. The client recently said the 10 questions were not about distrust of the first supplier — they were about learning the difference between material and a catalogue. Which is exactly why this section in the article exists.</p>
 </div>
 

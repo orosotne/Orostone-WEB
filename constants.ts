@@ -81,7 +81,7 @@ export const FAQS: FAQItem[] = [
   { question: "Zabezpečujete aj montáž?", answer: `Montáž nepredávame, sprostredkujeme ju. Zameranie, výrobu a montáž robí overený partnerský kamenár so skúsenosťou so sinterovaným kameňom, orientačne za ${INSTALLATION_RATE_PER_M2} €/m² s DPH. Cenu montáže platíte priamo kamenárovi; od nás kupujete materiál.` },
   { question: "Aká je dodacia lehota?", answer: `E-shop (skladové platne): doručenie spravidla za ${STOCK_SLAB_DELIVERY_TIMEFRAME}. Projekty na mieru: spravidla 15 pracovných dní (20 pri atypoch) po potvrdení a úhrade zálohy.` },
   { question: "Aké sú možnosti platby?", answer: "Bankový prevod alebo platba kartou online. Platbu v hotovosti ani dobierku neakceptujeme." },
-  { question: "Aká je záručná doba?", answer: "24 mesiacov na materiál. Záruka sa nevzťahuje na vady vzniknuté montážou, rezaním alebo nesprávnym používaním." },
+  { question: "Aká je záručná doba?", answer: "Na materiál platí 24-mesačná zákonná zodpovednosť za vady. Na výrobu a montáž dáva záruku kamenár. Zodpovednosť sa nevzťahuje na vady vzniknuté montážou, rezaním alebo nesprávnym používaním." },
 ];
 
 export type ProductCategory = 'sintered-stone' | 'tables' | 'invisible-cooktop' | 'accessories';
@@ -179,7 +179,8 @@ export function resolveCountryOfOrigin(
 // SAMPLE (VZORKA) CONSTANTS
 // ===========================================
 
-export const MAX_SAMPLES = 5;
+/** Same limit as the sample checkout (/vzorky) and the Shopify sample product: 1 to 3 samples per order. */
+export const MAX_SAMPLES = 3;
 export const SAMPLE_VARIANT_KEYWORD = 'Vzorka';  // keyword in variant title to identify samples in cart
 
 // Offline / výpadok Storefront API — snapshot z tvojho Shopify (`npm run sync:shop-fallback`)

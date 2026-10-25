@@ -30,6 +30,7 @@ import {
   KUCHYNE_VIZUALIZACIE_H2,
   KUCHYNE_VIZUALIZACIE_LEAD,
 } from '@/data/pillars/kuchyne';
+import { CUSTOMER_JOURNEY_NOTE } from '@/data/customerJourney';
 
 // Real client kitchens (decor names from the time of installation); six different decors, so the second Taj Mahal stays on the homepage only.
 const GALLERY = HOME_REALIZATIONS.filter((r) => r.image !== 'svetly-onyx');
@@ -111,7 +112,7 @@ export const Kuchyne = () => {
   return (
     <div>
       <SEOHead
-        title="Kamenné pracovné dosky do kuchyne | OROSTONE"
+        title="Kamenné pracovné dosky do kuchyne | Orostone"
         description="Pracovné dosky zo sinterovaného kameňa na mieru. Odolný povrch, nízka nasiakavosť, bez impregnácie. Pošlite pôdorys, vyrátame orientačnú cenu."
         canonical="https://orostone.sk/kuchyne"
         keywords={['kuchyne sinterovaný kameň', 'kuchynská doska', 'pracovná doska kuchyňa', 'sinterovaný kameň kuchyňa']}
@@ -230,6 +231,7 @@ export const Kuchyne = () => {
         <Container>
           <SectionHeader eyebrow="Ako to funguje" title="Od výberu po inštaláciu" />
           <StepList steps={STEPS} className={below} />
+          <p className="mt-8 max-w-[60ch] text-[0.92rem] font-normal text-brand-muted">{CUSTOMER_JOURNEY_NOTE}</p>
         </Container>
       </Section>
 

@@ -184,7 +184,7 @@ ${additionalImages ? additionalImages + '\n' : ''}      <g:availability>${p.inSt
       <g:price>${slabTotal.toFixed(2)} EUR</g:price>
       <g:unit_pricing_measure>${slabAreaM2(p.dimensions)}sqm</g:unit_pricing_measure>
       <g:unit_pricing_base_measure>1sqm</g:unit_pricing_base_measure>
-      <g:brand>OROSTONE</g:brand>
+      <g:brand>Orostone</g:brand>
       <g:condition>new</g:condition>
       <g:identifier_exists>false</g:identifier_exists>
       <g:shipping>
@@ -204,9 +204,9 @@ ${additionalImages ? additionalImages + '\n' : ''}      <g:availability>${p.inSt
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
   <channel>
-    <title>OROSTONE — sinterovaný kameň</title>
+    <title>Orostone — sinterovaný kameň</title>
     <link>${BASE_URL}</link>
-    <description>Veľkoformátové platne sinterovaného kameňa OROSTONE — kompletný katalóg s cenami.</description>
+    <description>Veľkoformátové platne sinterovaného kameňa Orostone — kompletný katalóg s cenami.</description>
 ${items}
   </channel>
 </rss>

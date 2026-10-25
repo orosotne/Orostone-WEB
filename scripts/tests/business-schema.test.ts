@@ -56,7 +56,7 @@ test('product seller resolves to the legal organization without inventing a manu
   const offer = product.offers as { seller: { '@id': string }; price: string };
   assert.equal(offer.seller['@id'], ORGANIZATION_ID);
   assert.ok(OROSTONE_BUSINESS_GRAPH_LD['@graph'].some((entity) => entity['@id'] === offer.seller['@id']));
-  assert.deepEqual(product.brand, { '@type': 'Brand', name: 'OROSTONE' });
+  assert.deepEqual(product.brand, { '@type': 'Brand', name: 'Orostone' });
   assert.equal(offer.price, '512.00');
   assert.equal(product.countryOfOrigin, 'CN');
   assert.ok(!('manufacturer' in product));

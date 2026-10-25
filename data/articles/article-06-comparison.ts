@@ -15,7 +15,7 @@ export const ARTICLE_06: BlogArticle = {
     title: 'Sinterovaný kameň vs kvarcit vs keramika vs porcelán: v čom je skutočný rozdiel?',
     subtitle: 'Technické porovnanie materiálov pre prémiové kuchynské dosky – bez marketingových klišé',
     excerpt: 'Komplexné porovnanie sinterovaného kameňa, kvarcitu, porcelánových dosiek a keramiky. Reálne čísla, certifikácie, cenové rozpätia a rozhodovací strom pre váš projekt.',
-    metaTitle: 'Sinterovaný kameň, keramika, porcelán, kvarcit | OROSTONE',
+    metaTitle: 'Sinterovaný kameň, keramika, porcelán, kvarcit | Orostone',
     metaDescription: 'Rozdiel medzi sinterovaným kameňom, keramikou, porcelánom a kvarcitom. Z čoho sa vyrábajú, ako reagujú na teplo, UV a každodennú prácu v kuchyni.',
     directAnswer: 'Sinterovaný kameň je 100\u00A0% minerálny materiál spečený pri 1\u00A0200\u00A0°C bez živíc – odolný voči teplu do 300\u00A0°C, UV žiareniu a škvrnám. Kvarcitový kompozit obsahuje 7 – 10\u00A0% polyesterových živíc, čo obmedzuje jeho tepelnú odolnosť na ~150\u00A0°C a vylučuje ho z exteriérových aplikácií. Porcelánové dosky sú sinterovanému kameňu technicky najbližšie – bez živíc, s nízkou pórovitosťou.',
     content: `
@@ -112,7 +112,7 @@ export const ARTICLE_06: BlogArticle = {
   <figcaption>Nasiakavosť pod 0,1\u00A0% – kvapky ostanú na povrchu a utrú sa bez stopy.</figcaption>
 </figure>
 
-<h2 id="certifikacie">Ktoré certifikácie majú zmysel a ktoré sú len marketing?</h2>
+<h2 id="certifikacie">Ktoré certifikácie sú dôležité a ktoré sú len marketing?</h2>
 
 <p>Svet certifikácií je džungľa. Niektoré majú reálnu výpovednú hodnotu. Iné sú iba povinné minimum alebo marketingový trik.</p>
 
@@ -153,7 +153,7 @@ export const ARTICLE_06: BlogArticle = {
 
 <p><strong>5. Kvalita hrán:</strong> Prejdite prstom po hranách – mali by byť hladké, bez dutín a výlomov. Pri full-body veining by farba na hrane mala zodpovedať povrchu.</p>
 
-<p><strong>6. Farebná konzistencia (delta E):</strong> Pri viacerých doskách rovnakého dekóru požiadajte o meranie delta E. Pre prémiové materiály by mala byť <strong>pod 1,0</strong>.</p>
+<p><strong>6. Farebná konzistencia (delta E):</strong> Pri viacerých doskách rovnakého dekoru požiadajte o meranie delta E. Pre prémiové materiály by mala byť <strong>pod 1,0</strong>.</p>
 
 <div class="article-highlight">
   <p><strong>Certifikát šarže – podceňovaný dokument:</strong></p>
@@ -201,7 +201,7 @@ export const ARTICLE_06: BlogArticle = {
   <p>Predstavte si L-tvarovú kuchyňu s rozlohou 3,2\u00A0m², jedným výrezom pre drez a jedným pre varnú dosku. Južné francúzske okná, priame slnko 4 hodiny denne.</p>
   <p><strong>Variant A – kvarcitový kompozit:</strong> 1\u00A0800\u00A0€ vrátane inštalácie. Krásny Calacatta dezén. Po 14 mesiacoch viditeľné žltnutie pri okne – UV degradácia živice. Výmena celej dosky: ďalších 1\u00A0800\u00A0€. Celkové náklady za 3 roky: <strong class="gold">3\u00A0600\u00A0€</strong>.</p>
   <p><strong>Variant B – sinterovaný kameň:</strong> 2\u00A0400\u00A0€ vrátane inštalácie. Rovnaký Calacatta look. Po 3 rokoch nulové zmeny – UV, teplo, škvrny, nič. Celkové náklady za 25 rokov: stále <strong class="gold">2\u00A0400\u00A0€</strong>.</p>
-  <p><strong>Variant C – keramická dlaždica:</strong> 650\u00A0€ vrátane inštalácie. Po 5 rokoch: tmavé spáry, 2 popraskané dlaždice (dekór už nie je v predaji), impregnácie za 200\u00A0€. Celkové náklady za 10 rokov: <strong>1\u00A0200+\u00A0€</strong>. A potreba kompletnej výmeny.</p>
+  <p><strong>Variant C – keramická dlaždica:</strong> 650\u00A0€ vrátane inštalácie. Po 5 rokoch: tmavé spáry, 2 popraskané dlaždice (dekor už nie je v predaji), impregnácie za 200\u00A0€. Celkové náklady za 10 rokov: <strong>1\u00A0200+\u00A0€</strong>. A potreba kompletnej výmeny.</p>
   <p>Poučenie: pri južnej orientácii okien kvarcit nie je správna voľba – nie preto, že je nekvalitný, ale preto, že živice <strong>nemajú šancu voči UV</strong>. Sinterovaný kameň stojí viac na začiatku, ale je to posledná doska, ktorú si kúpite.</p>
 </div>
 
@@ -258,7 +258,7 @@ export const ARTICLE_06: BlogArticle = {
 
 <div class="article-tip">
   <p><strong>Čo robíme v Orostone</strong></p>
-  <p>Každému zákazníkovi poskytneme technický list s nameranými hodnotami pre konkrétny dekór, ktorý si vyberá. Nespoliehame sa na všeobecné certifikáty – ukážeme vám čísla pre presne tú dosku, ktorú dostanete.</p>
+  <p>Každému zákazníkovi poskytneme technický list s nameranými hodnotami pre konkrétny dekor, ktorý si vyberá. Nespoliehame sa na všeobecné certifikáty – ukážeme vám čísla pre presne tú dosku, ktorú dostanete.</p>
 </div>
 
 <h2 id="zaver">Záver: úprimné odporúčanie</h2>
@@ -326,7 +326,7 @@ export const ARTICLE_06: BlogArticle = {
       },
       {
         question: 'Čo je delta E pri hodnotení farby dosiek?',
-        answer: 'Delta E je merná jednotka farebného rozdielu medzi dvoma vzorkami. Pre prémiové materiály by mala byť delta E medzi doskami rovnakého dekóru pod 1,0 – to je hranica, kde ľudské oko odlišnosť ťažko zaregistruje. Hodnoty nad 2,0 sú viditeľné voľným okom pri priamom porovnaní.',
+        answer: 'Delta E je merná jednotka farebného rozdielu medzi dvoma vzorkami. Pre prémiové materiály by mala byť delta E medzi doskami rovnakého dekoru pod 1,0 – to je hranica, kde ľudské oko odlišnosť ťažko zaregistruje. Hodnoty nad 2,0 sú viditeľné voľným okom pri priamom porovnaní.',
       },
       {
         question: 'Ako dlho trvá inštalácia kuchynskej dosky?',
@@ -334,7 +334,7 @@ export const ARTICLE_06: BlogArticle = {
       },
       {
         question: 'Môžem si materiál vyskúšať pred kúpou?',
-        answer: 'Áno – a odporúčame to. V našom showroome máme vzorky všetkých materiálových kategórií a viacero dekórov. Pozrite si ich pri prirodzenom svetle, preverte ručne kvalitu hrán a povrchu. Konzultácia a zapožičanie vzoriek domov sú zadarmo.',
+        answer: 'Áno – a odporúčame to. V našom showroome máme vzorky všetkých materiálových kategórií a viacero dekorov. Pozrite si ich pri prirodzenom svetle, preverte ručne kvalitu hrán a povrchu. Konzultácia a zapožičanie vzoriek domov sú zadarmo.',
       },
     ],
   },

@@ -58,12 +58,12 @@ export const Blog: React.FC = () => {
   return (
     <div>
       <SEOHead
-        title="Blog o sinterovanom kameni | OROSTONE"
+        title="Blog o sinterovanom kameni | Orostone"
         description="Články o sinterovanom kameni — cena, údržba, hrúbka, porovnania s keramikou a technickým kameňom. Pre tých, kto si vyberá dlhodobé riešenie."
         ogType="website"
         canonical="https://orostone.sk/blog"
         structuredData={createBreadcrumbLD([
-          { name: 'OROSTONE', url: 'https://orostone.sk/' },
+          { name: 'Orostone', url: 'https://orostone.sk/' },
           { name: 'Blog', url: 'https://orostone.sk/blog' },
         ])}
       />

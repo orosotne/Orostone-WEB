@@ -37,7 +37,7 @@ const ARTICLE_08: BlogArticle = {
     title: 'Ako rozpoznať nekvalitné dosky pred kúpou',
     subtitle: 'Na čo sa pozerať pri výbere sinterovaného kameňa — vizuálne aj technicky',
     excerpt: 'Naučte sa identifikovať nekvalitné dosky skôr, než za ne zaplatíte.',
-    directAnswer: 'Nekvalitné dosky spoznáte podľa nerovnomernej hrúbky, viditeľných dutín, nestabilného povrchového dekóru a chýbajúcej dokumentácie. Vždy si vyžiadajte technický list a fyzickú vzorku.',
+    directAnswer: 'Nekvalitné dosky spoznáte podľa nerovnomernej hrúbky, viditeľných dutín, nestabilného povrchového dekoru a chýbajúcej dokumentácie. Vždy si vyžiadajte technický list a fyzickú vzorku.',
     content: '<p>Článok sa pripravuje...</p>',
     faqs: [
       { question: 'Ako spoznám nekvalitný sinterovaný kameň?', answer: 'Článok sa pripravuje...' },
@@ -105,14 +105,14 @@ const ARTICLE_12: BlogArticle = {
   tags: ['sinterovaný kameň', 'dizajn', 'luxus', 'štýly', 'interiér'],
   sk: {
     title: 'Top 10 štýlov dosiek, ktoré vyzerajú luxusne',
-    subtitle: 'Najkrajšie dekóry sinterovaného kameňa pre moderné aj klasické interiéry',
+    subtitle: 'Najkrajšie dekory sinterovaného kameňa pre moderné aj klasické interiéry',
     excerpt: 'Inšpirujte sa 10 najluxusnejšie vyzerajúcimi štýlmi dosiek, ktoré dodajú vášmu priestoru prémiový vzhľad.',
-    directAnswer: 'Medzi najluxusnejšie štýly patria mramorové imitácie (Calacatta, Statuario), tmavé kamenné dekóry, betónové povrchy a jednofarebné ultra-matné dosky. Sinterovaný kameň dokáže reprodukovať tieto vzory s väčšou odolnosťou ako originál.',
+    directAnswer: 'Medzi najluxusnejšie štýly patria mramorové imitácie (Calacatta, Statuario), tmavé kamenné dekory, betónové povrchy a jednofarebné ultra-matné dosky. Sinterovaný kameň dokáže reprodukovať tieto vzory s väčšou odolnosťou ako originál.',
     content: '<p>Článok sa pripravuje...</p>',
     faqs: [
       { question: 'Aký štýl dosky je teraz v trende?', answer: 'Článok sa pripravuje...' },
       { question: 'Vyzerajú imitácie mramoru realisticky?', answer: 'Článok sa pripravuje...' },
-      { question: 'Aký dekór je najuniverzálnejší?', answer: 'Článok sa pripravuje...' },
+      { question: 'Aký dekor je najuniverzálnejší?', answer: 'Článok sa pripravuje...' },
     ],
   },
   en: {
@@ -317,7 +317,7 @@ const ARTICLE_21: BlogArticle = {
     title: 'Záruka vysvetlená jednoducho: čo je kryté a čo nie',
     subtitle: 'Zrozumiteľný prehľad záručných podmienok pre sinterovaný kameň',
     excerpt: 'Záručné podmienky bývajú komplikované. Vysvetľujeme jednoducho, čo je kryté a čo nie.',
-    directAnswer: 'Záruka na sinterovaný kameň typicky kryje výrobné chyby, problémy s dekórom a štrukturálne vady. Nekryje mechanické poškodenie, nesprávnu inštaláciu tretími stranami a bežné opotrebovanie.',
+    directAnswer: 'Záruka na sinterovaný kameň typicky kryje výrobné chyby, problémy s dekorom a štrukturálne vady. Nekryje mechanické poškodenie, nesprávnu inštaláciu tretími stranami a bežné opotrebovanie.',
     content: '<p>Článok sa pripravuje...</p>',
     faqs: [
       { question: 'Čo kryje záruka na sinterovaný kameň?', answer: 'Článok sa pripravuje...' },
