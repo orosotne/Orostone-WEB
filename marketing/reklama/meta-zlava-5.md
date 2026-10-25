@@ -86,9 +86,9 @@ Každý variant ide v troch formátoch. Copy sa riadi skillom `copy-orostone`: n
 
 | Formát | Rozmer | Kde sa zobrazí | Bez textu a loga | Rozmiestnenie |
 |---|---|---|---|---|
-| Kanál 4:5 (hlavný) | 1080 × 1350 | FB a IG kanál | 250 px hore aj dole, 60 px po stranách | logo vľavo nad nadpisom pod hornou zónou, text v strede ±15 % |
+| Kanál 4:5 (hlavný) | 1080 × 1350 | FB a IG kanál | 250 px hore aj dole, 60 px po stranách | logo vľavo nad nadpisom pod hornou zónou, text zarovnaný vľavo, vertikálne v strede ±15 % |
 | Štvorec 1:1 | 1080 × 1080 | len umiestnenia, ktoré iný pomer nevedia (pravý stĺpec a vyhľadávanie na Facebooku); v tejto kampani sú vypnuté | 100 px dookola | logo vľavo nad nadpisom, 100–150 px od horného okraja |
-| Stories a Reels 9:16 | 1080 × 1920 | FB a IG Stories a Reels | 270 px hore, 670 px dole, 65 px po stranách | logo vľavo nad nadpisom, 300–400 px od horného okraja, text v strednej osi, pod 1250 px nič |
+| Stories a Reels 9:16 | 1080 × 1920 | FB a IG Stories a Reels | 270 px hore, 670 px dole, 65 px po stranách | logo vľavo nad nadpisom, 300–400 px od horného okraja, text zarovnaný vľavo, vo vertikálnom strede, pod 1250 px nič |
 
 Pre Stories aj Reels platí jedna kreatíva navrhnutá podľa prísnejšej zóny Reels. Tlačidlo dopĺňa Meta, na obrázok sa nekreslí.
 

@@ -96,7 +96,7 @@ Montserrat only (`font-sans`). Body text is 16 px, `font-light` (300), line heig
 | `text-os-eyebrow` | 0.74rem, 0.2em tracking | 700 | Labels, through `<Eyebrow>` |
 | `text-os-sticker` | `clamp(1.65rem, 1rem + 2vw, 2.3rem)` | 700 | Numeral on a round sticker (the gold „5 %“ in the pop-up „5 % na váš kameň“) |
 
-The same weights hold in every channel, not only on the web (owner's decision, 25. 10. 2026): e-mails (`marketing/newsletter/nastroje/build_emails.py`, the edge-function e-mails in `supabase/functions/`), social posts and ads. Headings (H1–H3, section, card and list titles) are 600. Weight 500 stays only for the titles in the social templates T2 and T6–T8. 700 stays for eyebrows, buttons and big numerals and is never used for a heading. Every Montserrat import must include the 600 cut; where Montserrat doesn't load, the fallback font shows 600 as bold.
+The same weights hold in every channel, not only on the web (owner's decision, 25. 10. 2026): e-mails (`marketing/newsletter/nastroje/build_emails.py`, the edge-function e-mails in `supabase/functions/`), social posts and ads. Headings (H1–H3, section, card and list titles) are 600. Among headings, weight 500 is used only for the titles in the social templates T2 and T6–T8; 500 for non-heading text (captions, greetings, labels) is unaffected. 700 stays for eyebrows, buttons and big numerals and is never used for a heading. Every Montserrat import must include the 600 cut; where Montserrat doesn't load, the fallback font shows 600 as bold.
 
 ---
 
