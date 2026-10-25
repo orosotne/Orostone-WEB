@@ -36,7 +36,7 @@ export const GENERIC_PRODUCT_FAQS: ProductFAQ[] = [
   },
   {
     question: 'Aká je dodacia lehota?',
-    answer: `Skladové platne doručujeme spravidla za ${STOCK_SLAB_DELIVERY_TIMEFRAME}. Pri projekte na mieru (s rezaním a opracovaním) vám orientačnú cenu pošleme spravidla nasledujúci pracovný deň. Potom kamenár ručne zameria kuchyňu, dosku vyrobí a osadí; celý projekt trvá do 15 pracovných dní. Orostone dodá materiál a dohodne s kamenárom termín.`,
+    answer: `Skladové platne doručujeme spravidla za ${STOCK_SLAB_DELIVERY_TIMEFRAME}. Projekty na mieru (s rezaním a opracovaním) dodávame do 15 pracovných dní. Najprv vám pošleme orientačnú cenu, spravidla nasledujúci pracovný deň. Potom kamenár ručne zameria kuchyňu a dostanete presnú ponuku, položku po položke. Výrobu a montáž robí kamenár; Orostone dodá materiál a dohodne s ním termín.`,
   },
   {
     question: 'Zabezpečujete aj montáž?',

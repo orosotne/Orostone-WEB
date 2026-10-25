@@ -31,7 +31,7 @@ export const ARTICLE_25: BlogArticle = {
 <p>Tento článok nie je akademická definícia. Je to <strong class="gold">poctivý sprievodca rozhodnutím</strong>, ktorý napísal tím, ktorý s partnerskými kamenármi denne rieši zameranie, výrobu aj montáž kuchynských pracovných dosiek. Cieľ je jednoduchý: aby ste pred showroomom vedeli, čo sa pýtať, čomu sa vyhnúť a koľko reálne počítať. Ak hľadáte kompletnú definíciu kompozitných materiálov, prečítajte si <a href="/blog/technicky-kamen-cena-pracovna-doska">úplného sprievodcu technickým kameňom</a>. Tento článok začína tam, kde ten končí – pri rozhodnutí.</p>
 
 <div class="article-quote">
-  <p>Umelý kameň nie je horší ako prírodný. Je iný – a v niektorých kuchyniach má jednoznačne väčší zmysel.</p>
+  <p>Umelý kameň nie je horší ako prírodný. Je iný – a do niektorých kuchýň sa jednoznačne hodí lepšie.</p>
 </div>
 
 <figure class="article-figure">

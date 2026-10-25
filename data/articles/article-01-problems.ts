@@ -252,13 +252,13 @@ export const ARTICLE_01: BlogArticle = {
   <li>Po inštalácii prebieha vizuálna a funkčná kontrola vrátane fotodokumentácie</li>
 </ul>
 
-<h3>5. Záruka a popredajný servis</h3>
+<h3>5. Popredajný servis</h3>
 <p>Naša starostlivosť nekončí inštaláciou – ostávame vaším kontaktom aj po nej.</p>
 <ul>
-  <li>Na materiál platí 24-mesačná zákonná zodpovednosť za vady, na výrobu a montáž dáva záruku kamenár, ktorý ich realizoval</li>
   <li>V prípade akéhokoľvek problému reagujeme do 48 hodín</li>
   <li>Menšie odštiepky vie partnerský kamenár opraviť priamo na mieste špeciálnym epoxidovým tmelom</li>
 </ul>
+<p>Na materiál platí 24-mesačná zákonná zodpovednosť za vady. Na výrobu a montáž dáva záruku kamenár, ktorý ich realizoval.</p>
 
 <h2 id="zaver">Čo si z tohto odniesť?</h2>
 
@@ -574,13 +574,13 @@ export const ARTICLE_01: BlogArticle = {
   <li>After installation, visual and functional inspection with photo documentation</li>
 </ul>
 
-<h3>5. Warranty and after-sales</h3>
+<h3>5. After-sales support</h3>
 <p>Our care doesn't end at installation — we remain your point of contact afterwards.</p>
 <ul>
-  <li>The material carries the 24-month statutory liability for defects; fabrication and installation are warranted by the stonemason who carried them out</li>
   <li>Our team responds within 48 hours for any issue</li>
   <li>Minor chips can be repaired on-site by the partner stonemason with color-matched epoxy filler</li>
 </ul>
+<p>The material carries the 24-month statutory liability for defects. Fabrication and installation are warranted by the stonemason who carried them out.</p>
 
 <h2 id="conclusion">What should you take away from this?</h2>
 

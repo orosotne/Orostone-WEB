@@ -570,7 +570,7 @@ export const Realizacie = () => {
         title="Naše realizácie"
         lead="Každý projekt je unikátny — od kompaktných bytov po rozľahlé vily. Pozrite sa, ako sinterovaný kameň Orostone mení reálne priestory."
         media={
-          <dl className="m-0 grid grid-cols-2 gap-x-[clamp(24px,3vw,48px)] gap-y-8">
+          <dl className="m-0 grid grid-cols-3 gap-x-[clamp(24px,3vw,48px)] gap-y-8">
             {STATS.map((s) => (
               <div key={s.label} className="grid content-start gap-2 border-t border-brand-dark pt-5">
                 <dt className="order-2 text-[0.92rem] font-normal text-brand-muted">{s.label}</dt>

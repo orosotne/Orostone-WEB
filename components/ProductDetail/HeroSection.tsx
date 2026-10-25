@@ -8,7 +8,6 @@ import {
   ZoomIn,
   Maximize2,
   Stone,
-  Shield,
   Truck,
   Package,
   ChevronDown,
@@ -603,10 +602,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <div className="flex items-center gap-3">
                   <Truck size={16} className="text-brand-dark" aria-hidden="true" />
                   <span>{product.inStock ? `Doručenie za ${STOCK_SLAB_DELIVERY_TIMEFRAME}` : `Expedícia do ${product.deliveryTimeframe || '5 pracovných dní'}`} · doprava od 150 € s DPH</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Shield size={16} className="text-brand-dark" aria-hidden="true" />
-                  <span>24-mesačná zákonná zodpovednosť za vady materiálu</span>
                 </div>
               </div>
             </div>

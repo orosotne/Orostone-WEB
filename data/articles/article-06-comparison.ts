@@ -112,7 +112,7 @@ export const ARTICLE_06: BlogArticle = {
   <figcaption>Nasiakavosť pod 0,1\u00A0% – kvapky ostanú na povrchu a utrú sa bez stopy.</figcaption>
 </figure>
 
-<h2 id="certifikacie">Ktoré certifikácie majú zmysel a ktoré sú len marketing?</h2>
+<h2 id="certifikacie">Ktoré certifikácie sú dôležité a ktoré sú len marketing?</h2>
 
 <p>Svet certifikácií je džungľa. Niektoré majú reálnu výpovednú hodnotu. Iné sú iba povinné minimum alebo marketingový trik.</p>
 

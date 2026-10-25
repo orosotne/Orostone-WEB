@@ -252,7 +252,7 @@ export const ARTICLE_16: BlogArticle = {
 <p>Boli by sme nezodpovední, keby sme tvrdili, že sinterovaný kameň je správna voľba vždy. Nie je. Tu sú situácie, keď odporúčame iný materiál:</p>
 
 <h3>1. Prenájom s lacnými skrinkami</h3>
-<p>Ak máte kuchynské skrinky za 1\u00A0500\u00A0€, nemá zmysel na ne dať dosku za 2\u00A0800\u00A0€. Materiály by mali byť v rovnakej triede kvality. Prémiová doska na lacnej skrinke vyzerá nekoherentne – a tá investícia sa nikdy nevráti. <strong>Riešenie:</strong> kvalitný laminát za 500 – 700\u00A0€ alebo kvarcit nižšej triedy za 1\u00A0200\u00A0€.</p>
+<p>Ak máte kuchynské skrinky za 1\u00A0500\u00A0€, neoplatí sa na ne dať dosku za 2\u00A0800\u00A0€. Materiály by mali byť v rovnakej triede kvality. Prémiová doska na lacnej skrinke vyzerá nekoherentne – a tá investícia sa nikdy nevráti. <strong>Riešenie:</strong> kvalitný laminát za 500 – 700\u00A0€ alebo kvarcit nižšej triedy za 1\u00A0200\u00A0€.</p>
 
 <h3>2. Celkový rozpočet na dosku pod 1\u00A0000\u00A0€</h3>
 <p>Pri tomto rozpočte sinterovaný kameň jednoducho nie je možný (ani v najtenšej verzii a najmenšom rozmere). <strong>Riešenie:</strong> kvalitný HPL laminát s postformingom od značiek ako Egger alebo Pfleiderer. Za 500 – 800\u00A0€ dostanete veľmi slušnú dosku s 10 – 15-ročnou životnosťou.</p>

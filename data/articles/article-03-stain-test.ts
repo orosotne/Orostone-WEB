@@ -179,7 +179,7 @@ export const ARTICLE_03: BlogArticle = {
       },
       {
         question: 'Je potrebná impregnácia sinterovaného kameňa?',
-        answer: 'Nie, nikdy. Absorpcia vody pod 0,1\u00A0% znamená, že v materiáli nie sú kapilárne kanáliky, cez ktoré by tekutiny prenikali. Impregnácia pri sinterovanom kameni nemá zmysel – nemá čo utesniť. Na rozdiel od prírodného mramoru alebo granitu, ktoré vyžadujú impregnáciu každé 1 – 3 roky.',
+        answer: 'Nie, nikdy. Absorpcia vody pod 0,1\u00A0% znamená, že v materiáli nie sú kapilárne kanáliky, cez ktoré by tekutiny prenikali. Impregnácia pri sinterovanom kameni je zbytočná – nemá čo utesniť. Na rozdiel od prírodného mramoru alebo granitu, ktoré vyžadujú impregnáciu každé 1 – 3 roky.',
       },
       {
         question: 'Čo ak zaschne kurkuma na sinterovanom kameni?',
