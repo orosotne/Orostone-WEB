@@ -18,11 +18,13 @@ OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path
 os.makedirs(OUT, exist_ok=True)
 
 F = "'Montserrat',Helvetica,Arial,sans-serif"
+# Nadpisy (H1, H2, názvy kariet a položiek) majú váhu 600 ako na webe, nikdy 700
+# (STYLE_GUIDE.md › Typography). 700 ostáva pre eyebrow, tlačidlá a číslice.
 INK = "#1A1A1A"
 BODY = "#2A2A2A"
 GRAY = "#6B7280"
 GOLD = "#ECD488"
-GOLD_INK = "#7A6A2E"  # zlatý atrament: zlatý text na svetlom pozadí (kontrast 5.1:1)
+GOLD_INK = "#7A6A2E"  # zlatý atrament: jediný tmavozlatý odtieň pre text na svetlom pozadí (kontrast 5.1:1)
 CARD = "#FAFAF7"
 PAGE = "#E8E5DE"
 ALT = "#F5F5F0"
@@ -128,7 +130,7 @@ def doc(meta, title, preheader, rows):
 <!--[if mso]><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
 <style type="text/css">{CSS}</style>
 <!--[if !mso]><!-->
-<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap');</style>
+<style type="text/css">@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');</style>
 <!--<![endif]-->
 <!--[if mso]>
 <style type="text/css">body, table, td, p, a, li, div, span {{ font-family: Helvetica, Arial, sans-serif !important; }}</style>
@@ -232,7 +234,7 @@ def headline(html, top=18, bottom=8):
     return f"""
         <!-- HEADLINE -->
         <tr>
-          <td class="px-40 h1" style="padding:{top}px 40px {bottom}px; font-family:{F}; font-size:34px; font-weight:700; line-height:40px; letter-spacing:-0.005em; color:{INK};">
+          <td class="px-40 h1" style="padding:{top}px 40px {bottom}px; font-family:{F}; font-size:34px; font-weight:600; line-height:40px; letter-spacing:-0.005em; color:{INK};">
             {html}
           </td>
         </tr>
@@ -262,7 +264,7 @@ def dark_band(pill_text, headline_html, sub=None, image=None, cta=None, note=Non
               <tr>
                 <td>
                   {_pill(pill_text, dark=True)}
-                  <div class="h1-dark" style="font-family:{F}; font-size:34px; font-weight:700; line-height:40px; letter-spacing:-0.005em; color:#FFFFFF; margin-top:18px;">{headline_html}</div>{sub_html}{note_html}{img_html}{cta_html}
+                  <div class="h1-dark" style="font-family:{F}; font-size:34px; font-weight:600; line-height:40px; letter-spacing:-0.005em; color:#FFFFFF; margin-top:18px;">{headline_html}</div>{sub_html}{note_html}{img_html}{cta_html}
                 </td>
               </tr>
             </table>
@@ -324,7 +326,7 @@ def section_title(num, title, top=28):
         return f"""
         <!-- NADPIS SEKCIE -->
         <tr>
-          <td class="px-40 h2" style="padding:{top}px 40px 4px; font-family:{F}; font-size:22px; font-weight:700; line-height:28px; color:{INK};">{title}</td>
+          <td class="px-40 h2" style="padding:{top}px 40px 4px; font-family:{F}; font-size:22px; font-weight:600; line-height:28px; color:{INK};">{title}</td>
         </tr>
 """
     num = f"{num} &ndash;"
@@ -335,7 +337,7 @@ def section_title(num, title, top=28):
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td valign="baseline" width="50" style="font-family:{F}; font-size:11px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:{GOLD_INK};">{num}</td>
-                <td valign="baseline" class="h2" style="font-family:{F}; font-size:22px; font-weight:700; line-height:28px; color:{INK};">{title}</td>
+                <td valign="baseline" class="h2" style="font-family:{F}; font-size:22px; font-weight:600; line-height:28px; color:{INK};">{title}</td>
               </tr>
             </table>
           </td>
@@ -353,7 +355,7 @@ def numbered(items, top=12, note=None):
                     <tr>
                       <td class="list-num" valign="top" width="44" style="font-family:{F}; font-size:11px; font-weight:700; letter-spacing:0.22em; color:{GOLD_INK}; padding-top:3px;">{i:02d}</td>
                       <td valign="top">
-                        <div class="t-title" style="font-family:{F}; font-size:15px; font-weight:700; line-height:22px; color:{INK};">{t}</div>
+                        <div class="t-title" style="font-family:{F}; font-size:15px; font-weight:600; line-height:22px; color:{INK};">{t}</div>
                         <div class="t-small" style="font-family:{F}; font-size:13.5px; font-weight:400; line-height:22px; color:{GRAY}; margin-top:4px;">{d}</div>
                       </td>
                     </tr>
@@ -409,7 +411,7 @@ def cart_items(label, top=24):
               {{% for item in event.Items %}}
               <tr>
                 <td valign="top" style="padding:14px 0; border-top:1px solid {LINE};">
-                  <div class="t-title" style="font-family:{F}; font-size:15px; font-weight:700; line-height:22px; color:{INK};">{{{{ item.ProductName|title }}}}</div>
+                  <div class="t-title" style="font-family:{F}; font-size:15px; font-weight:600; line-height:22px; color:{INK};">{{{{ item.ProductName|title }}}}</div>
                   <div class="t-small" style="font-family:{F}; font-size:13.5px; font-weight:400; line-height:22px; color:{GRAY}; margin-top:2px;">{{% if item.VariantName and item.VariantName != 'Default Title' %}}{{{{ item.VariantName }}}} &middot; {{% endif %}}{{{{ item.Quantity }}}}&nbsp;ks</div>
                 </td>
               </tr>
@@ -529,7 +531,7 @@ def media_row(img, alt, items, top=18):
                         <tr>
                           <td valign="top" width="34" style="padding:8px 0;"><table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td width="22" height="22" style="width:22px; height:22px; background:{hexv}; border-radius:9999px; border:1px solid {LINE}; font-size:0; line-height:0;">&nbsp;</td></tr></table></td>
                           <td valign="top" style="padding:8px 0;">
-                            <div style="font-family:{F}; font-size:14px; font-weight:700; line-height:20px; color:{INK};">{label}</div>
+                            <div style="font-family:{F}; font-size:14px; font-weight:600; line-height:20px; color:{INK};">{label}</div>
                             <div style="font-family:{F}; font-size:12.5px; font-weight:400; line-height:19px; color:{GRAY}; margin-top:2px;">{desc}</div>
                           </td>
                         </tr>""" for hexv, label, desc in items)
@@ -577,7 +579,7 @@ def choices(question, note, options, top=28, prop=None):
               <tr>
                 <td style="padding:24px 24px 14px;">
                   <div style="font-family:{F}; font-size:10px; font-weight:700; letter-spacing:0.24em; text-transform:uppercase; color:{GOLD_INK}; margin-bottom:10px;">Jedna otázka pre nás</div>
-                  <div style="font-family:{F}; font-size:20px; font-weight:700; line-height:26px; color:{INK};">{question}</div>
+                  <div style="font-family:{F}; font-size:20px; font-weight:600; line-height:26px; color:{INK};">{question}</div>
                   <div class="t-small" style="font-family:{F}; font-size:13.5px; font-weight:400; line-height:21px; color:{GRAY}; margin:8px 0 16px;">{note}</div>
                   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">{btns}
                   </table>
@@ -638,7 +640,7 @@ def card_offer(label, title, body, cta_label, href, note=None, top=28):
               <tr>
                 <td style="padding:26px 28px 24px;">
                   <div style="font-family:{F}; font-size:10px; font-weight:700; letter-spacing:0.24em; text-transform:uppercase; color:{GOLD_INK}; margin-bottom:10px;">{label}</div>
-                  <div style="font-family:{F}; font-size:22px; font-weight:700; line-height:28px; color:{INK};">{title}</div>
+                  <div style="font-family:{F}; font-size:22px; font-weight:600; line-height:28px; color:{INK};">{title}</div>
                   <p class="t-small" style="margin:10px 0 18px; font-family:{F}; font-size:14px; font-weight:400; line-height:23px; color:{BODY};">{body}</p>
                   {button(cta_label, href)}{note_html}
                 </td>
@@ -666,7 +668,7 @@ def product(img, alt, name, desc, spec, cta_label, href, link=None, top=28):
                       </td>
                       <td class="product-txt-col" valign="top">
                         <div style="font-family:{F}; font-size:10px; font-weight:700; letter-spacing:0.24em; text-transform:uppercase; color:{GOLD_INK};">Dekor v e-shope</div>
-                        <div style="font-family:{F}; font-size:20px; font-weight:700; line-height:26px; letter-spacing:0.04em; color:{INK}; margin-top:6px;">{name}</div>
+                        <div style="font-family:{F}; font-size:20px; font-weight:600; line-height:26px; letter-spacing:0.04em; color:{INK}; margin-top:6px;">{name}</div>
                         <div class="t-small" style="font-family:{F}; font-size:13.5px; font-weight:400; line-height:21px; color:{BODY}; margin-top:8px;">{desc}</div>
                         <div style="font-family:{F}; font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:{GRAY}; margin-top:10px;">{spec}</div>
                         <div style="margin-top:16px;">{button(cta_label, href, width=220)}</div>{link_html}
@@ -826,7 +828,7 @@ def case_card(img, alt, label, title, body, top=24):
           <td class="px-40" style="padding:{top}px 40px 0;">
             <img src="{img}" alt="{alt}" width="520" style="width:100%; max-width:520px; height:auto; display:block; border-radius:12px;" />
             <div style="font-family:{F}; font-size:10px; font-weight:700; letter-spacing:0.22em; text-transform:uppercase; color:{GOLD_INK}; margin-top:14px; line-height:15px;">{label}</div>
-            <div style="font-family:{F}; font-size:18px; font-weight:700; line-height:24px; color:{INK}; margin-top:6px;">{title}</div>
+            <div style="font-family:{F}; font-size:18px; font-weight:600; line-height:24px; color:{INK}; margin-top:6px;">{title}</div>
             <div class="t-small" style="font-family:{F}; font-size:14px; font-weight:400; line-height:22px; color:{BODY}; margin-top:6px;">{body}</div>
           </td>
         </tr>

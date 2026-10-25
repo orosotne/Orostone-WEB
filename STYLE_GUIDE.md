@@ -79,6 +79,7 @@ Reference sheet while developing: `npm run dev` → http://localhost:3000/_dizaj
 | `brand-muted` | #5F5E5A | Secondary text and leads |
 | `brand-line` | #E2E0D8 | Hairlines and dividers |
 | `brand-gold` | #ECD488 | Accent only: gold CTA, gold band, small marks. Never body or heading text on a light background (contrast) |
+| Gold ink (`GOLD_INK` in `build_emails.py`, no Tailwind token) | #7A6A2E | The only dark gold for text on a light background, in every channel (e-mails, edge-function e-mails, social, ads): small labels, numerals, arrows. Passes WCAG AA for small text: 5.35 : 1 on white, 5.07 on chalk, 4.56 on sand. #8a7a3c (4.04 on chalk) and #B8960C (2.69) fail and are not used. The web sets such labels in graphite |
 
 ---
 
@@ -94,6 +95,8 @@ Montserrat only (`font-sans`). Body text is 16 px, `font-light` (300), line heig
 | `text-os-lead` | `clamp(1rem, 1.2vw, 1.13rem)` | 300 | Intro under a heading, in `text-brand-muted` |
 | `text-os-eyebrow` | 0.74rem, 0.2em tracking | 700 | Labels, through `<Eyebrow>` |
 | `text-os-sticker` | `clamp(1.65rem, 1rem + 2vw, 2.3rem)` | 700 | Numeral on a round sticker (the gold „5 %“ in the pop-up „5 % na váš kameň“) |
+
+The same weights hold in every channel, not only on the web (owner's decision, 25. 10. 2026): e-mails (`marketing/newsletter/nastroje/build_emails.py`, the edge-function e-mails in `supabase/functions/`), social posts and ads. Headings (H1–H3, section, card and list titles) are 600. Among headings, weight 500 is used only for the titles in the social templates T2 and T6–T8; 500 for non-heading text (captions, greetings, labels) is unaffected. 700 stays for eyebrows, buttons and big numerals and is never used for a heading. Every Montserrat import must include the 600 cut; where Montserrat doesn't load, the fallback font shows 600 as bold.
 
 ---
 
@@ -140,6 +143,7 @@ Based on Apple's fluid-interface principles (the `apple-design` skill in `.claud
 - Only real Orostone decors. Stone in a visualization comes from the supplier scan, never from an AI texture.
 - Straight-on view, minimal perspective distortion, corrected verticals, clean geometric composition.
 - Label visualizations ("Vizualizácia s dekorom X") and edited photos ("upravená fotografia realizácie").
+- One AI labelling rule for every channel (web, e-mail, organic posts, ads; owner's decision, 25. 10. 2026): every image or video with a scene made by AI is labelled at first glance, either with the word „Vizualizácia“ on the image itself (as in „Vizualizácia s dekorom X“, „Video je vizualizácia.“) or with Meta's „AI info“ label, and always with a truthful caption in the text. Never strip the files' metadata. Ads carry the „Vizualizácia“ caption on the image without Meta's label; organic visualizations get the label and the caption. Article 50 of the AI Act on labelling realistic AI content applies from 2. 8. 2026; whether it covers kitchen visualizations is for a lawyer to confirm.
 - Kitchen sets (`/kuchyne` › Vizualizácie, `components/Kuchyne/KitchenVisualizations`): one kitchen in one decor from four views (front, side, edge detail, the room), rendered in Higgsfield with Nano Banana 2.1, the decor's slab scan (its first Shopify image) as the reference and the front view as the reference for the other three. Compare the stone with the scan before publishing: a second reference photo can pull the decor's colour towards another stone.
 
 ---
@@ -148,7 +152,7 @@ Based on Apple's fluid-interface principles (the `apple-design` skill in `.claud
 
 - Visible keyboard focus everywhere.
 - Touch targets at least 44 px (`TextLink` enlarges its hit area on touch screens).
-- Gold text on a light background fails contrast; use graphite.
+- Gold (#ECD488) text on a light background fails contrast; use graphite, or gold ink #7A6A2E outside the web (Colours).
 
 ---
 
