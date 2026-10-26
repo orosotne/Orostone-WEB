@@ -11,6 +11,7 @@ Použitie:
 Texty e-mailov sa upravujú tu; `sablony/` a `texty/` sa z neho generujú.
 """
 import os
+import urllib.parse
 import sys
 import re
 
@@ -850,9 +851,10 @@ PLAIN_F = "Helvetica,Arial,sans-serif"
 
 def plain(meta, title, preheader, paragraphs, reason, greeting="Dobrý deň,",
           sign=("S pozdravom", "Marián Brázdil", "Orostone · sinterovaný kameň", "+421 917 588 738"),
-          unsub=True):
+          unsub=True, postscript=None):
     """Čistý text bez dizajnu: osobný e-mail od Mariána (Graza ~1 z 5).
-    unsub=False: e-mail z CRM mimo zoznamu odberateľov, pätička len s dôvodom."""
+    unsub=False: e-mail z CRM mimo zoznamu odberateľov, pätička len s dôvodom.
+    postscript: P. S. pod podpisom (bez úvodného „P. S.“)."""
     unsub_html = (' <a href="{% unsubscribe_link %}" style="color:#6B7280; text-decoration:underline;">Odhlásiť odber</a>'
                   if unsub else "")
     addr_html = "<br />Orostone, s.&nbsp;r.&nbsp;o. &middot; sídlo: Landererova&nbsp;8, 811&nbsp;09&nbsp;Bratislava" if unsub else ""
@@ -860,6 +862,7 @@ def plain(meta, title, preheader, paragraphs, reason, greeting="Dobrý deň,",
     pre_pad = PRE_PAD
     ps_html = "".join(f'<p style="margin:0 0 16px;">{x}</p>' for x in paragraphs)
     s1, s2, s3, s4 = sign
+    ps_after = f'<p style="margin:16px 0 0;">P.&nbsp;S. {postscript}</p>' if postscript else ""
     return f"""<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!--
   OROSTONE – e-mailová šablóna (skill orostone-newsletter), čistý text
@@ -889,7 +892,7 @@ def plain(meta, title, preheader, paragraphs, reason, greeting="Dobrý deň,",
           <td style="font-family:{PLAIN_F}; font-size:15px; line-height:24px; color:#1A1A1A;">
             <p style="margin:0 0 16px;">{greeting}</p>
             {ps_html}
-            <p style="margin:24px 0 0;">{s1}<br />{s2}<br />{s3}<br /><a href="tel:{s4.replace(" ", "")}" style="color:#1A1A1A; text-decoration:none;">{s4}</a></p>
+            <p style="margin:24px 0 0;">{s1}<br />{s2}<br />{s3}<br /><a href="tel:{s4.replace(" ", "")}" style="color:#1A1A1A; text-decoration:none;">{s4}</a></p>{ps_after}
           </td>
         </tr>
         <!-- LEGAL / UNSUB -->
@@ -1220,7 +1223,7 @@ write("08-automatizacia-dokoncena-zakazka.html", doc(
         "PREHEADER:": "Ďakujeme za dôveru. Posielame fotky z prvého dňa a prehľad toho, čo bude nasledovať.",
         "CIEĽ:": "Poďakovanie, súhlas so zverejnením fotiek (IG + newsletter), nastaviť očakávania",
         "FOTKY:": "Pre každého klienta iné: Marián ich vloží ručne (duplikát šablóny), alebo ich CRM zapíše do profilu ako foto_1–foto_3 (URL) a šablóna použije {{ person|lookup:'foto_1' }}.",
-        "POZNÁMKA:": "Hranaté zátvorky nahraď údajmi zákazky. Tlačidlá súhlasu = samostatné odkazy → segment/vlastnosť profilu.",
+        "POZNÁMKA:": "Hranaté zátvorky nahraď údajmi zákazky, [JANA-482] kódom zákazníka z programu Odporučte Orostone (CRM). Tlačidlá súhlasu = samostatné odkazy → segment/vlastnosť profilu.",
     },
     "Hotovo: fotky z vašej montáže",
     "Ďakujeme za dôveru. Posielame fotky z prvého dňa a prehľad toho, čo bude nasledovať.",
@@ -1244,7 +1247,7 @@ write("08-automatizacia-dokoncena-zakazka.html", doc(
                 [("Áno, môžete ich zverejniť", SITE + "/realizacie?suhlas=ano"),
                  ("Áno, ale najprv mi ich ukážte", SITE + "/realizacie?suhlas=najprv-ukazat"),
                  ("Radšej nie", SITE + "/realizacie?suhlas=nie")]),
-        ps("Ak poznáte niekoho, kto práve rieši kuchyňu, pokojne mu dajte náš kontakt. Rád poradím aj jemu."),
+        ps("Ak poznáte niekoho, kto práve rieši kuchyňu, dajte mu svoj kód [JANA-482]. Pri objednávke platní dostane 100&nbsp;€ z ceny materiálu a vy 150&nbsp;€, keď zákazku zaplatí."),
         signature(top=0),
         footer(reason="Tento e-mail ste dostali ako zákazník Orostone po dokončení montáže."),
     ]))
@@ -2342,5 +2345,105 @@ write_nb("39-kampan-sprievodca-kuchyna.html", doc(
         signature(top=0),
         footer(year="2027"),
     ]))
+
+# ===========================================================================
+# Odporúčací program „Odporučte Orostone“ (schválil Martin 26. 10. 2026)
+# Podmienky: orostone.sk/odporucte. Kód zákazníka vydá CRM (napr. JANA-482),
+# známy ho zadá na oro-klient alebo ho povie Mariánovi. 41 a 42 posiela CRM:
+# pri zmene textu treba v tom istom kroku zmeniť aj kópiu v orostone-crm (web/lib).
+# ===========================================================================
+
+REASON_ODPORUCANIE = "Tento e-mail ste dostali ako zákazník Orostone."
+REFERRAL_FRIEND_URL = "https://oro-klient.orostone.sk/?od=odporucanie&kod=JANA-482"
+REFERRAL_MESSAGE = ("Ahoj, ak riešiš kuchyňu, pozri si Orostone. My od nich máme pracovnú dosku zo sinterovaného kameňa. "
+                    "S mojím kódom JANA-482 dostaneš pri objednávke platní 100 € z ceny materiálu. "
+                    "Orientačnú cenu si vypýtaš tu, kód sa vyplní sám: " + REFERRAL_FRIEND_URL)
+REFERRAL_MAILTO = ("mailto:?subject=" + urllib.parse.quote("Kód Orostone na pracovnú dosku")
+                   + "&body=" + urllib.parse.quote(REFERRAL_MESSAGE))
+REFERRAL_WHATSAPP = "https://wa.me/?text=" + urllib.parse.quote(REFERRAL_MESSAGE)
+
+# 40 – Po realizácii: kód pre známych
+write_nb("40-automatizacia-odporucanie-kod.html", doc(
+    {
+        "TYP:": "Automatizácia · Po realizácii · odporúčací program",
+        "SPÚŠŤAČ:": "45 dní po montáži, teda 15 dní po e-maile 06, len zákazník s kódom v CRM. Kým séria po montáži (08, 17, 06) nie je zapojená, kód posiela Marián e-mailom 41; kto dostal 41, tento e-mail nedostane",
+        "PREDMET:": "Poznáte niekoho, kto rieši kuchyňu?",
+        "PREHEADER:": "Váš známy dostane 100 € z ceny materiálu a vy 150 €, keď zákazku zaplatí.",
+        "CIEĽ:": "Odporúčanie známemu: osobný kód a správa, ktorú zákazník pošle ďalej",
+        "POZNÁMKA:": "[JANA-482] nahradí kód zákazníka z CRM; v odkazoch tlačidla, WhatsAppu a oro-klient stojí JANA-482 ako príklad a CRM ho nahradí tiež. Tlačidlo otvorí e-mail so správou pre známeho (tyká, rozhodnutie 9), odkaz pod ním WhatsApp s tou istou správou. Odmena nezávisí od hodnotenia (pravidlá Google), preto e-mail ide 15 dní po prosbe o hodnotenie v 06. Bez fotky: kuchyňa by musela byť v dekore zákazníka.",
+    },
+    "Poznáte niekoho, kto rieši kuchyňu?",
+    "Váš známy dostane 100 € z ceny materiálu a vy 150 €, keď zákazku zaplatí.",
+    [
+        header(),
+        dark_band("Odporučte Orostone", "Poznáte niekoho,<br />" + accent_dark("kto rieši kuchyňu?")),
+        text([
+            "pracovná doska sa vyberá raz za veľa rokov. Preto sa ľudia najradšej pýtajú tých, ktorí ju už majú doma a vedia, ako sa správa v každodennom používaní.",
+            "Ak sa na Orostone spýta niekto z vašich známych, dajte mu svoj kód. Pri objednávke platní dostane 100&nbsp;€ z ceny materiálu. Keď zákazku zaplatí, pošleme vám 150&nbsp;€.",
+        ], top=28),
+        card_offer("Váš kód", "[JANA-482]",
+                   "Platí pre každého, kto od nás ešte nekúpil platne.",
+                   "Poslať kód známemu", REFERRAL_MAILTO,
+                   note=f'<a href="{REFERRAL_WHATSAPP}" target="_blank" style="color:{INK}; font-weight:700; text-decoration:underline;">Poslať cez WhatsApp</a><br />Alebo mu pošlite odkaz, v ktorom sa kód vyplní sám: <a href="{REFERRAL_FRIEND_URL}" target="_blank" style="color:{INK}; text-decoration:underline;">oro-klient.orostone.sk/?od=odporucanie&amp;kod=[JANA-482]</a>'),
+        section_title(None, "Ako to funguje"),
+        numbered([
+            ("Známy uvedie kód", "Pri žiadosti o orientačnú cenu, v e-maile alebo do telefónu, najneskôr pred zaplatením zálohy."),
+            ("V ponuke má odpočet", "100&nbsp;€ z ceny materiálu. Sčíta sa aj s množstevnou zľavou 20&nbsp;% od troch platní."),
+            ("Vy dostanete 150&nbsp;€", "Mesiac po tom, čo známy zaplatí materiál, vám napíšeme kvôli číslu účtu."),
+        ], top=4),
+        note('Odmena nezávisí od hodnotenia ani od zverejnenia fotiek. Podmienky programu sú na <a href="' + SITE + '/odporucte" target="_blank" style="color:' + INK + '; text-decoration:underline;">orostone.sk/odporucte</a>.', top=16),
+        ps("Ak si chce známy najprv pozrieť celé platne, pošlite ho do showroomu v Bošanoch. Nech mi vopred napíše, ktoré dekory ho zaujímajú, a pripravím ich."),
+        signature(top=0),
+        footer(reason=REASON_ZAKAZNIK),
+    ]))
+
+# 41 – CRM: kód zákazníkovi (osobný list od Mariána, čistý text)
+write_nb("41-crm-odporucanie-kod.html", plain(
+    {
+        "TYP:": "Osobný e-mail z CRM · odporúčací program (čistý text)",
+        "SPÚŠŤAČ:": "Marián ho pošle tlačidlom v CRM (/admin/odporucania): jednorazovo súčasným zákazníkom po montáži a potom každému zákazníkovi po montáži",
+        "SEGMENT:": "Kontakt so zaplatenou zákazkou a kódom v CRM. Neposielať ľuďom, ktorí od nás e-maily nechcú (v CRM sú trvalo označení)",
+        "PREDMET:": "Keď sa Vás známi pýtajú na dosku",
+        "PREHEADER:": "Známy s Vaším kódom dostane 100 € z ceny materiálu a Vy 150 €, keď zákazku zaplatí.",
+        "CIEĽ:": "Dať zákazníkovi osobný kód a odkaz, ktorý môže poslať známemu",
+        "POZNÁMKA:": "Osobný list jednému zákazníkovi, preto Vy, Vám s veľkým V (slovník, sekcia 1). [Taj Mahal] = dekor zákazky; bez dekoru veta znie „Dúfam, že sa Vám nová doska v kuchyni dobre používa.“ [JANA-482] = kód zákazníka z CRM, v odkaze stojí JANA-482 ako príklad a CRM ho nahradí tiež. Text posiela CRM: pri zmene treba v tom istom kroku zmeniť aj kópiu v repozitári orostone-crm (web/lib).",
+    },
+    "Keď sa Vás známi pýtajú na dosku",
+    "Známy s Vaším kódom dostane 100 € z ceny materiálu a Vy 150 €, keď zákazku zaplatí.",
+    [
+        "ďakujem, že ste si pracovnú dosku vybrali u nás. Dúfam, že sa Vám [Taj Mahal] v kuchyni dobre používa.",
+        "Pri doske, ktorá sa vyberá raz za veľa rokov, sa ľudia najradšej pýtajú tých, ktorí ju už majú doma. Ak sa niekto zo známych spýta Vás, dajte mu svoj kód [JANA-482]. Pri objednávke platní dostane 100&nbsp;€ z ceny materiálu. Keď zákazku zaplatí, pošleme Vám 150&nbsp;€ na účet.",
+        "Kód môžete dať komukoľvek, kto od nás ešte nekúpil platne. Stačí, keď ho uvedie pri žiadosti o orientačnú cenu alebo mi ho povie do telefónu. Môžete mu poslať aj tento odkaz, kód sa v ňom vyplní sám:<br />" + f'<a href="{REFERRAL_FRIEND_URL}" style="color:#1A1A1A;">{REFERRAL_FRIEND_URL}</a>',
+        "Ak by Vás na doske čokoľvek trápilo, odpovedzte na tento e-mail. Vyriešime to s kamenárom.",
+    ],
+    REASON_ODPORUCANIE,
+    sign=SIGN_MARIAN_CRM,
+    unsub=False,
+    postscript="Odmena nezávisí od hodnotenia ani od fotiek. Podmienky programu nájdete na orostone.sk/odporucte.",
+))
+
+# 42 – CRM: odmena je pripravená (osobný list od Mariána, čistý text)
+write_nb("42-crm-odporucanie-odmena.html", plain(
+    {
+        "TYP:": "Osobný e-mail z CRM · odporúčací program (čistý text)",
+        "SPÚŠŤAČ:": "Marián ho pošle tlačidlom v CRM, keď vznikne nárok na odmenu: 30 dní po tom, čo nový zákazník s kódom zaplatí celú cenu materiálu",
+        "SEGMENT:": "Odporúčajúci zákazník, ktorého kód použil nový zákazník. Neposielať ľuďom, ktorí od nás e-maily nechcú",
+        "PREDMET:": "Váš kód použil nový zákazník",
+        "PREHEADER:": "Odmena 150 € je pripravená. Pošlite nám číslo účtu a do 14 dní ju vyplatíme.",
+        "CIEĽ:": "Vyžiadať číslo účtu alebo voľbu odpočtu 200 € pri vlastnej ďalšej objednávke",
+        "POZNÁMKA:": "Osobný list, Vy s veľkým V. Meno, adresu ani sumu zákazky nového zákazníka neuvádzame (podmienky 7.1). [dátum o 24 mesiacov] doplní CRM. Text posiela CRM: pri zmene treba v tom istom kroku zmeniť aj kópiu v repozitári orostone-crm (web/lib).",
+    },
+    "Váš kód použil nový zákazník",
+    "Odmena 150 € je pripravená. Pošlite nám číslo účtu a do 14 dní ju vyplatíme.",
+    [
+        "Váš kód [JANA-482] uplatnil nový zákazník a materiál zaplatil. Ďakujem, že ste nás odporučili.",
+        "Odmena 150&nbsp;€ je pripravená. Odpovedzte na tento e-mail a pošlite mi číslo účtu (IBAN) a meno majiteľa účtu. Peniaze pošleme do 14 dní.",
+        "Ak by ste odmenu radšej využili pri vlastnej ďalšej objednávke platní, napríklad na zástenu alebo do kúpeľne, napíšte mi to. Odpočítame Vám 200&nbsp;€ z ceny materiálu, a to kedykoľvek do [dátum o 24 mesiacov].",
+        "Kód platí ďalej, môžete ho dať aj ďalším známym.",
+    ],
+    REASON_ODPORUCANIE,
+    sign=SIGN_MARIAN_CRM,
+    unsub=False,
+))
 
 print("hotovo →", OUT)
