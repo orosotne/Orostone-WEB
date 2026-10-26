@@ -902,20 +902,20 @@ function prerenderPreKamenarstva(): void {
     route: '/pre-kamenarstva',
     title: 'Sinterovaný kameň pre kamenárstva – B2B spolupráca | Orostone',
     description:
-      'Veľkoformátové platne zo sinterovaného kameňa pre kamenárstva: 12 modelov skladom na Slovensku, odber od jednej platne a B2B cenník pod úrovňou Dektonu.',
+      'Veľkoformátové platne zo sinterovaného kameňa pre kamenárstva: 12 modelov skladom na Slovensku, odber od jednej platne a partnerský cenník podľa ročného odberu.',
     canonical: `${BASE_URL}/pre-kamenarstva`,
     rootContent: `
       <header>
         <nav aria-label="breadcrumb"><a href="/">Orostone</a> &rsaquo; Pre kamenárstva</nav>
         <h1>Sinterovaný kameň pre vašu dielňu. Skladom, od jednej platne.</h1>
-        <p>Dodávame veľkoformátové platne priamo kamenárstvam. ${slabs.length} modelov máme skladom na Slovensku a partnerský cenník je nižší ako pri Dektone.</p>
+        <p>Dodávame veľkoformátové platne priamo kamenárstvam. ${slabs.length} modelov máme skladom na Slovensku a naša platňa je o 11 % väčšia ako bežný formát.</p>
       </header>
       <section id="vyhody-spoluprace">
         <h2>Čo dostanete ako partner</h2>
         <ul>
           <li>${slabs.length} modelov skladom ihneď</li>
           <li>Odber už od jednej platne</li>
-          <li>B2B cenník pod úrovňou Dektonu</li>
+          <li>Partnerský cenník podľa odberu</li>
           <li>Zákazky z e-shopu vo vašom regióne</li>
         </ul>
       </section>
