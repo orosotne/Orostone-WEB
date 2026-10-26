@@ -71,6 +71,16 @@ const { PRODUCT_META_OVERRIDE } = await import('../data/productMetaOverride.js')
 
 // Otvorené pozície — zdieľané s React stránkou pages/Kariera.tsx
 const { JOB_OPENINGS, CAREERS_EMAIL, createJobPostingLD } = await import('../data/careers.js');
+const {
+  ODPORUCTE_TITLE,
+  ODPORUCTE_DESCRIPTION,
+  ODPORUCTE_H1,
+  ODPORUCTE_LEAD,
+  ODPORUCTE_STEPS,
+  ODPORUCTE_RULES,
+  ODPORUCTE_FAQ,
+  REFERRAL_VALID_UNTIL,
+} = await import('../data/odporucte.js');
 
 // Product fallback data
 const products: any[] = JSON.parse(
@@ -954,6 +964,69 @@ function prerenderPreKamenarstva(): void {
 }
 
 // ---------------------------------------------------------------------------
+// Odporučte Orostone (referral program rules) — same URL as SPA route /odporucte
+// ---------------------------------------------------------------------------
+
+function prerenderOdporucte(): void {
+  const steps = ODPORUCTE_STEPS.map((step) => `<li><h3>${esc(step.title)}</h3><p>${esc(step.text)}</p></li>`).join('');
+  const rules = ODPORUCTE_RULES.map(
+    (rule) => `
+      <section id="${rule.id}">
+        <h2>${esc(rule.title)}</h2>
+        <ol>${rule.clauses.map((clause) => `<li>${esc(clause)}</li>`).join('')}</ol>
+      </section>`,
+  ).join('');
+  const faq = ODPORUCTE_FAQ.map((item) => `<dt>${esc(item.question)}</dt><dd>${esc(item.answer)}</dd>`).join('');
+
+  writePage({
+    route: '/odporucte',
+    title: ODPORUCTE_TITLE,
+    description: ODPORUCTE_DESCRIPTION,
+    canonical: `${BASE_URL}/odporucte`,
+    rootContent: `
+      <header>
+        <nav aria-label="breadcrumb"><a href="/">Orostone</a> &rsaquo; ${esc(ODPORUCTE_H1)}</nav>
+        <h1>${esc(ODPORUCTE_H1)}</h1>
+        <p>${esc(ODPORUCTE_LEAD)}</p>
+      </header>
+      <section id="ako-to-funguje">
+        <h2>Od kódu po odmenu</h2>
+        <ol>${steps}</ol>
+      </section>
+      <section id="podmienky">
+        <h2>Podmienky programu</h2>
+        <p>Program prevádzkuje Orostone s.r.o. a platí do ${esc(REFERRAL_VALID_UNTIL)}.</p>
+        ${rules}
+      </section>
+      <section id="otazky">
+        <h2>Čo sa zákazníci pýtajú</h2>
+        <dl>${faq}</dl>
+      </section>
+      <h2>Odporučil vám nás známy?</h2>
+      <p><a href="https://oro-klient.orostone.sk/?od=odporucte">Získať orientačnú cenu</a> &middot; <a href="/kontakt">Kontakt</a></p>`,
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Orostone', item: `${BASE_URL}/` },
+          { '@type': 'ListItem', position: 2, name: ODPORUCTE_H1, item: `${BASE_URL}/odporucte` },
+        ],
+      },
+      {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: ODPORUCTE_FAQ.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: { '@type': 'Answer', text: item.answer },
+        })),
+      },
+    ],
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Cennik (price list) — same URL as SPA route /cennik
 // ---------------------------------------------------------------------------
 
@@ -1123,6 +1196,8 @@ console.log('\nKariera:');
 prerenderKariera();
 prerenderPreKamenarstva();
 console.log('  ✓ /pre-kamenarstva');
+prerenderOdporucte();
+console.log('  ✓ /odporucte');
 const jobCount = (JOB_OPENINGS as any[]).length;
 console.log(`  ✓ /kariera (${jobCount} ${jobCount === 1 ? 'pozícia' : jobCount < 5 ? 'pozície' : 'pozícií'})`);
 

@@ -90,5 +90,6 @@ export function buildRouteRegistry(): RouteEntry[] {
     { path: '/realizacie', kind: 'static', changefreq: 'monthly', priority: '0.7' },
     { path: '/kariera', kind: 'static', changefreq: 'monthly', priority: '0.5' },
     { path: '/pre-kamenarstva', kind: 'static', changefreq: 'monthly', priority: '0.6' },
+    { path: '/odporucte', kind: 'static', changefreq: 'monthly', priority: '0.4' },
   ];
 }
