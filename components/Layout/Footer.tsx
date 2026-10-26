@@ -226,6 +226,7 @@ const FooterComponent: React.FC<FooterProps> = ({ categories = [], isProductDeta
           <Link to="/reklamacie" className={colLink}>Reklamácie a vrátenie</Link>
           <Link to="/odstupenie-od-zmluvy" className={colLink}>Odstúpenie od zmluvy</Link>
           <Link to="/kontakt" className={colLink}>Kontakt</Link>
+          <Link to="/pre-kamenarstva" className={colLink}>Pre kamenárstva</Link>
           <Link to="/kariera" className={`${colLink} inline-flex items-center gap-2`}>
             <span className="inline-block h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-gold" aria-hidden="true" />
             Kariéra — hľadáme kolegov
