@@ -31,6 +31,7 @@ dist-ssr
 # Local/AI settings
 .claude/*
 !.claude/skills/
+!.claude/agents/
 !.claude/settings.json
 .cursor/
 
