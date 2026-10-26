@@ -11,7 +11,7 @@
 
 ### List
 Dobrý deň,
-ďakujem, že ste si pracovnú dosku vybrali u nás. Dúfam, že sa Vám [Taj Mahal] v kuchyni dobre používa.
+ďakujem, že ste si pracovnú dosku vybrali u nás. Dúfam, že sa Vám doska v dekore [Taj Mahal] v kuchyni dobre používa.
 Pri doske, ktorá sa vyberá raz za veľa rokov, sa ľudia najradšej pýtajú tých, ktorí ju už majú doma. Ak sa niekto zo známych spýta Vás, dajte mu svoj kód [JANA-482]. Pri objednávke platní dostane 100 € z ceny materiálu. Keď zákazku zaplatí, pošleme Vám 150 € na účet.
 Kód môžete dať komukoľvek, kto od nás ešte nekúpil platne. Stačí, keď ho uvedie pri žiadosti o orientačnú cenu alebo mi ho povie do telefónu. Môžete mu poslať aj tento odkaz, kód sa v ňom vyplní sám:
 https://oro-klient.orostone.sk/?od=odporucanie&kod=JANA-482

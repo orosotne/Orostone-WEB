@@ -32,7 +32,7 @@ Ako to funguje
 ### Číslovaný zoznam
 01
 Známy uvedie kód
-Pri žiadosti o orientačnú cenu, v e-maile alebo do telefónu, najneskôr pred zaplatením zálohy.
+Pri žiadosti o orientačnú cenu, v e-maile alebo telefonicky, najneskôr pred zaplatením zálohy.
 02
 V ponuke má odpočet
 100 € z ceny materiálu. Sčíta sa aj s množstevnou zľavou 20 % od troch platní.

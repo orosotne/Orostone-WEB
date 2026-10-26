@@ -13,8 +13,8 @@
 Dobrý deň,
 Váš kód [JANA-482] uplatnil nový zákazník a materiál zaplatil. Ďakujem, že ste nás odporučili.
 Odmena 150 € je pripravená. Odpovedzte na tento e-mail a pošlite mi číslo účtu (IBAN) a meno majiteľa účtu. Peniaze pošleme do 14 dní.
-Ak by ste odmenu radšej využili pri vlastnej ďalšej objednávke platní, napríklad na zástenu alebo do kúpeľne, napíšte mi to. Odpočítame Vám 200 € z ceny materiálu, a to kedykoľvek do [dátum o 24 mesiacov].
-Kód platí ďalej, môžete ho dať aj ďalším známym.
+Ak by ste odmenu radšej využili pri vlastnej ďalšej objednávke platní, napríklad na zástenu alebo do kúpeľne, napíšte mi to. Odpočítame Vám 200 € z ceny materiálu kedykoľvek do [dátum o 24 mesiacov].
+Kód platí ďalej. Môžete ho dať aj ďalším známym.
 S pozdravom
 Marián Brázdil
 Orostone · sinterovaný kameň

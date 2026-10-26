@@ -2387,7 +2387,7 @@ write_nb("40-automatizacia-odporucanie-kod.html", doc(
                    note=f'<a href="{REFERRAL_WHATSAPP}" target="_blank" style="color:{INK}; font-weight:700; text-decoration:underline;">Poslať cez WhatsApp</a><br />Alebo mu pošlite odkaz, v ktorom sa kód vyplní sám: <a href="{REFERRAL_FRIEND_URL}" target="_blank" style="color:{INK}; text-decoration:underline;">oro-klient.orostone.sk/?od=odporucanie&amp;kod=[JANA-482]</a>'),
         section_title(None, "Ako to funguje"),
         numbered([
-            ("Známy uvedie kód", "Pri žiadosti o orientačnú cenu, v e-maile alebo do telefónu, najneskôr pred zaplatením zálohy."),
+            ("Známy uvedie kód", "Pri žiadosti o orientačnú cenu, v e-maile alebo telefonicky, najneskôr pred zaplatením zálohy."),
             ("V ponuke má odpočet", "100&nbsp;€ z ceny materiálu. Sčíta sa aj s množstevnou zľavou 20&nbsp;% od troch platní."),
             ("Vy dostanete 150&nbsp;€", "Mesiac po tom, čo známy zaplatí materiál, vám napíšeme kvôli číslu účtu."),
         ], top=4),
@@ -2411,7 +2411,7 @@ write_nb("41-crm-odporucanie-kod.html", plain(
     "Keď sa Vás známi pýtajú na dosku",
     "Známy s Vaším kódom dostane 100 € z ceny materiálu a Vy 150 €, keď zákazku zaplatí.",
     [
-        "ďakujem, že ste si pracovnú dosku vybrali u nás. Dúfam, že sa Vám [Taj Mahal] v kuchyni dobre používa.",
+        "ďakujem, že ste si pracovnú dosku vybrali u nás. Dúfam, že sa Vám doska v dekore [Taj Mahal] v kuchyni dobre používa.",
         "Pri doske, ktorá sa vyberá raz za veľa rokov, sa ľudia najradšej pýtajú tých, ktorí ju už majú doma. Ak sa niekto zo známych spýta Vás, dajte mu svoj kód [JANA-482]. Pri objednávke platní dostane 100&nbsp;€ z ceny materiálu. Keď zákazku zaplatí, pošleme Vám 150&nbsp;€ na účet.",
         "Kód môžete dať komukoľvek, kto od nás ešte nekúpil platne. Stačí, keď ho uvedie pri žiadosti o orientačnú cenu alebo mi ho povie do telefónu. Môžete mu poslať aj tento odkaz, kód sa v ňom vyplní sám:<br />" + f'<a href="{REFERRAL_FRIEND_URL}" style="color:#1A1A1A;">{REFERRAL_FRIEND_URL}</a>',
         "Ak by Vás na doske čokoľvek trápilo, odpovedzte na tento e-mail. Vyriešime to s kamenárom.",
@@ -2438,8 +2438,8 @@ write_nb("42-crm-odporucanie-odmena.html", plain(
     [
         "Váš kód [JANA-482] uplatnil nový zákazník a materiál zaplatil. Ďakujem, že ste nás odporučili.",
         "Odmena 150&nbsp;€ je pripravená. Odpovedzte na tento e-mail a pošlite mi číslo účtu (IBAN) a meno majiteľa účtu. Peniaze pošleme do 14 dní.",
-        "Ak by ste odmenu radšej využili pri vlastnej ďalšej objednávke platní, napríklad na zástenu alebo do kúpeľne, napíšte mi to. Odpočítame Vám 200&nbsp;€ z ceny materiálu, a to kedykoľvek do [dátum o 24 mesiacov].",
-        "Kód platí ďalej, môžete ho dať aj ďalším známym.",
+        "Ak by ste odmenu radšej využili pri vlastnej ďalšej objednávke platní, napríklad na zástenu alebo do kúpeľne, napíšte mi to. Odpočítame Vám 200&nbsp;€ z ceny materiálu kedykoľvek do [dátum o 24 mesiacov].",
+        "Kód platí ďalej. Môžete ho dať aj ďalším známym.",
     ],
     REASON_ODPORUCANIE,
     sign=SIGN_MARIAN_CRM,

@@ -29,7 +29,7 @@ export const ODPORUCTE_LEAD =
 export const ODPORUCTE_STEPS: { title: string; text: string }[] = [
   {
     title: 'Známy uvedie kód',
-    text: 'Pri žiadosti o orientačnú cenu, v e-maile alebo do telefónu, najneskôr pred zaplatením zálohy.',
+    text: 'Pri žiadosti o orientačnú cenu, v e-maile alebo telefonicky, najneskôr pred zaplatením zálohy.',
   },
   {
     title: 'V ponuke má odpočet',
