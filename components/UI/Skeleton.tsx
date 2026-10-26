@@ -85,8 +85,8 @@ export const ProductDetailSkeleton: React.FC = () => (
         </div>
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-start lg:gap-16">
-          <div className="hidden space-y-3 lg:col-span-7 lg:block">
-            <Skeleton className="aspect-square w-full rounded-[3px] bg-brand-sand lg:max-h-[calc(100svh-104px-24px-128px)] lg:min-h-[360px]" />
+          <div className="hidden space-y-3 lg:col-span-7 lg:block lg:max-w-[max(360px,calc(100svh-104px-24px-128px))]">
+            <Skeleton className="aspect-square w-full rounded-[3px] bg-brand-sand" />
             <div className="grid grid-cols-7 gap-2">
               {Array.from({ length: 7 }).map((_, i) => (
                 <Skeleton key={i} className="aspect-square rounded-[3px] bg-brand-sand" />

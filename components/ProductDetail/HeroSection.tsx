@@ -210,11 +210,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-start lg:gap-16">
           {/* Left: Image Gallery — desktop only. Sticky, so it stays in view while the visitor configures the order
-              on the right; the main photo is capped to the screen height so the thumbnail row fits under it. */}
-          <div className="hidden space-y-3 lg:sticky lg:top-[104px] lg:order-1 lg:col-span-7 lg:block">
+              on the right; on a short screen the whole gallery narrows, so the main photo stays square and the
+              thumbnail row still fits under it. */}
+          <div className="hidden space-y-3 lg:sticky lg:top-[104px] lg:order-1 lg:col-span-7 lg:block lg:max-w-[max(360px,calc(100svh-104px-24px-128px))]">
             <div
               ref={mainImageRef}
-              className="group relative aspect-square w-full cursor-pointer overflow-hidden rounded-[3px] bg-[#F5F5F3] lg:max-h-[calc(100svh-104px-24px-128px)] lg:min-h-[360px]"
+              className="group relative aspect-square w-full cursor-pointer overflow-hidden rounded-[3px] bg-[#F5F5F3]"
               onClick={() => openLightbox()}
             >
               <MainPhoto images={images} index={selectedImageIndex} alt={(i) => productImageAlt(product, i)} />
