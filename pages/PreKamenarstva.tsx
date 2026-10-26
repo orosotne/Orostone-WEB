@@ -66,16 +66,16 @@ const REASONS: FeatureItem[] = [
 ];
 
 const SPECS: { label: string; value: string }[] = [
-  { label: 'Rozmer platne', value: '3 200 × 1 600 mm' },
-  { label: 'Plocha platne', value: '5,12 m²' },
-  { label: 'Hrúbka', value: '12 mm' },
+  { label: 'Rozmer platne', value: '3 200 × 1 600 mm' },
+  { label: 'Plocha platne', value: '5,12 m²' },
+  { label: 'Hrúbka', value: '12 mm' },
   { label: 'Modely skladom', value: `${SLABS.length} dekorov` },
   { label: 'Showroom', value: 'Bošany, celé platne pri dennom svetle' },
 ];
 
 const STEPS: StepItem[] = [
   { title: 'Vyplníte formulár', text: 'Firma, kontakt a približne koľko platní ročne spracujete. Zaberie to minútu.' },
-  { title: 'Zavoláme a pošleme cenník', text: 'Do 24 hodín v pracovný deň sa ozveme a pošleme B2B cenník všetkých modelov.' },
+  { title: 'Zavoláme a pošleme cenník', text: 'Do 24 hodín v pracovný deň sa ozveme a pošleme B2B cenník všetkých modelov.' },
   { title: 'Vzorkovník do dielne', text: 'Vzorky dekorov pošleme alebo prinesieme osobne, aby ste ich mohli ukázať zákazníkom.' },
   { title: 'Prvá objednávka', text: 'Objednáte platne na prvú zákazku. Dovoz dohodneme podľa miesta vašej dielne.' },
 ];
@@ -94,7 +94,7 @@ const FAQ: FaqItem[] = [
     question: 'Môžem si platne pozrieť naživo?',
     answer: (
       <>
-        Áno, v showroome v Bošanoch si pozriete celé platne 3 200 × 1 600 mm. Návštevu dohodnite telefonicky na{' '}
+        Áno, v showroome v Bošanoch si pozriete celé platne 3 200 × 1 600 mm. Návštevu dohodnite telefonicky na{' '}
         <a href={PHONE_HREF} className="underline underline-offset-2">
           {PHONE_LABEL}
         </a>
@@ -103,9 +103,9 @@ const FAQ: FaqItem[] = [
     ),
   },
   {
-    question: 'Spracúvate aj vy dosky na mieru?',
+    question: 'Nebudete mi konkurovať pri spracovaní?',
     answer:
-      'Áno, pre koncových zákazníkov. Ak ale partner pôsobí v regióne zákazníka a zákazník chce spracovanie aj montáž, prednostne ho odovzdáme partnerovi.',
+      'Nie. Orostone predáva platne, dosky na mieru spracúvajú a montujú partnerskí kamenári. Zákazníka z e-shopu, ktorý chce dosku aj opracovať a namontovať, odovzdáme partnerovi z jeho regiónu.',
   },
 ];
 
@@ -187,7 +187,7 @@ const PartnerForm: React.FC = () => {
         <CheckCircle className="h-10 w-10 text-brand-dark" strokeWidth={1.5} />
         <h3 className="text-os-h3">Ďakujeme, dopyt máme.</h3>
         <p className="font-light text-brand-muted">
-          Ozveme sa do 24 hodín v pracovný deň a pošleme vám B2B cenník. Ak sa vám ponáhľa, zavolajte na {PHONE_LABEL}.
+          Ozveme sa do 24 hodín v pracovný deň a pošleme vám B2B cenník. Ak sa vám ponáhľa, zavolajte na {PHONE_LABEL}.
         </p>
       </div>
     );
@@ -290,7 +290,7 @@ const PartnerForm: React.FC = () => {
           'Chcem B2B cenník'
         )}
       </button>
-      <p className="text-[0.82rem] font-normal text-brand-muted">Bez záväzkov · Ozveme sa do 24 h v pracovný deň</p>
+      <p className="text-[0.82rem] font-normal text-brand-muted">Bez záväzkov · Ozveme sa do 24 h v pracovný deň</p>
     </form>
   );
 };
@@ -301,7 +301,7 @@ const PartnerForm: React.FC = () => {
 export const PreKamenarstva: React.FC = () => (
   <div>
     <SEOHead
-      title="Sinterovaný kameň pre kamenárstva — B2B spolupráca | Orostone"
+      title="Sinterovaný kameň pre kamenárstva – B2B spolupráca | Orostone"
       description="Veľkoformátové platne zo sinterovaného kameňa pre kamenárstva: 12 modelov skladom na Slovensku, odber od jednej platne a B2B cenník pod úrovňou Dektonu."
       canonical="https://orostone.sk/pre-kamenarstva"
       keywords={[
@@ -357,7 +357,7 @@ export const PreKamenarstva: React.FC = () => (
         <SectionHeader
           eyebrow="Platňa"
           title="Väčšia platňa, menej spojov"
-          lead="Naša platňa má 3 200 × 1 600 mm, teda 5,12 m². Bežný formát 3 200 × 1 440 mm má 4,61 m², takže z jednej platne vyrežete o 11 % viac a ostrov často urobíte bez spoja."
+          lead="Naša platňa má 3 200 × 1 600 mm, teda 5,12 m². Bežný formát 3 200 × 1 440 mm má 4,61 m², takže z jednej platne vyrežete o 11 % viac a ostrovček často urobíte bez spoja."
         />
         <dl className="m-0 grid border-t border-brand-dark">
           {SPECS.map((s) => (
@@ -413,7 +413,7 @@ export const PreKamenarstva: React.FC = () => (
         <div className="grid justify-items-start gap-6">
           <SectionHeader
             eyebrow="B2B dopyt"
-            title="Pošlite dopyt, cenník dostanete do 24 hodín"
+            title="Pošlite dopyt, cenník dostanete do 24 hodín"
             lead="Formulár je len pre firmy, ktoré dosky samy spracúvajú: kamenárstva, výrobcov kuchýň a montážne firmy."
           />
           <div className="grid gap-1.5">

@@ -900,7 +900,7 @@ function prerenderPreKamenarstva(): void {
 
   writePage({
     route: '/pre-kamenarstva',
-    title: 'Sinterovaný kameň pre kamenárstva — B2B spolupráca | Orostone',
+    title: 'Sinterovaný kameň pre kamenárstva – B2B spolupráca | Orostone',
     description:
       'Veľkoformátové platne zo sinterovaného kameňa pre kamenárstva: 12 modelov skladom na Slovensku, odber od jednej platne a B2B cenník pod úrovňou Dektonu.',
     canonical: `${BASE_URL}/pre-kamenarstva`,
@@ -921,7 +921,7 @@ function prerenderPreKamenarstva(): void {
       </section>
       <section id="platna">
         <h2>Väčšia platňa, menej spojov</h2>
-        <p>Platňa 3 200 × 1 600 mm, 5,12 m², hrúbka 12 mm.</p>
+        <p>Platňa 3 200 × 1 600 mm, 5,12 m², hrúbka 12 mm.</p>
       </section>
       <section id="modely-skladom">
         <h2>${slabs.length} modelov, ktoré máme na sklade</h2>
@@ -932,8 +932,8 @@ function prerenderPreKamenarstva(): void {
         <ol><li>Vyplníte formulár</li><li>Zavoláme a pošleme cenník</li><li>Vzorkovník do dielne</li><li>Prvá objednávka</li></ol>
       </section>
       <section id="b2b-dopyt">
-        <h2>Pošlite dopyt, cenník dostanete do 24 hodín</h2>
-        <p>Telefón <a href="tel:+421917588738">+421 917 588 738</a>, e-mail <a href="mailto:dopyt@orostone.sk">dopyt@orostone.sk</a>.</p>
+        <h2>Pošlite dopyt, cenník dostanete do 24 hodín</h2>
+        <p>Telefón <a href="tel:+421917588738">+421 917 588 738</a>, e-mail <a href="mailto:dopyt@orostone.sk">dopyt@orostone.sk</a>.</p>
       </section>
       <section id="otazky">
         <h2>Čo sa kamenári pýtajú</h2>
