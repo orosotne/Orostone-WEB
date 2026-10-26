@@ -55,8 +55,8 @@ const REASONS: FeatureItem[] = [
   },
   {
     icon: IconPriceClock,
-    title: 'B2B cenník pod úrovňou Dektonu',
-    text: 'Partnerské ceny za platňu aj za m², aby ste ich vedeli priamo porovnať. Cenník pošleme po vyplnení formulára.',
+    title: 'Partnerský cenník podľa odberu',
+    text: 'Čím viac platní ročne odoberiete, tým nižšia cena za platňu. Cenník pošleme po vyplnení formulára.',
   },
   {
     icon: IconDelivery,
@@ -302,12 +302,12 @@ export const PreKamenarstva: React.FC = () => (
   <div>
     <SEOHead
       title="Sinterovaný kameň pre kamenárstva – B2B spolupráca | Orostone"
-      description="Veľkoformátové platne zo sinterovaného kameňa pre kamenárstva: 12 modelov skladom na Slovensku, odber od jednej platne a B2B cenník pod úrovňou Dektonu."
+      description="Veľkoformátové platne zo sinterovaného kameňa pre kamenárstva: 12 modelov skladom na Slovensku, odber od jednej platne a partnerský cenník podľa ročného odberu."
       canonical="https://orostone.sk/pre-kamenarstva"
       keywords={[
         'sinterovaný kameň veľkoobchod',
         'platne pre kamenárov',
-        'alternatíva Dekton',
+        'platne pre kamenárstvo skladom',
         'sinterovaný kameň B2B',
         'veľkoformátové platne kamenárstvo',
       ]}
@@ -320,7 +320,7 @@ export const PreKamenarstva: React.FC = () => (
     <PageHero
       eyebrow="Pre kamenárstva"
       title="Sinterovaný kameň pre vašu dielňu. Skladom, od jednej platne."
-      lead={`Dodávame veľkoformátové platne priamo kamenárstvam. ${SLABS.length} modelov máme skladom na Slovensku a partnerský cenník je nižší ako pri Dektone.`}
+      lead={`Dodávame veľkoformátové platne priamo kamenárstvam. ${SLABS.length} modelov máme skladom na Slovensku a naša platňa je o 11 % väčšia ako bežný formát.`}
       actions={
         <>
           <ActionButton variant="dark" to="#b2b-dopyt" arrow>
