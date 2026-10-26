@@ -2353,7 +2353,7 @@ write_nb("39-kampan-sprievodca-kuchyna.html", doc(
 # pri zmene textu treba v tom istom kroku zmeniť aj kópiu v orostone-crm (web/lib).
 # ===========================================================================
 
-REASON_ODPORUCANIE = "Tento e-mail ste dostali ako zákazník Orostone."
+REASON_ODPORUCANIE = "Tento e-mail ste dostali, pretože ste si u nás objednali pracovnú dosku."  # rovnako ako CRM (web/lib/referralEmail.ts)
 REFERRAL_FRIEND_URL = "https://oro-klient.orostone.sk/?od=odporucanie&kod=JANA-482"
 REFERRAL_MESSAGE = ("Ahoj, ak riešiš kuchyňu, pozri si Orostone. My od nich máme pracovnú dosku zo sinterovaného kameňa. "
                     "S mojím kódom JANA-482 dostaneš pri objednávke platní 100 € z ceny materiálu. "

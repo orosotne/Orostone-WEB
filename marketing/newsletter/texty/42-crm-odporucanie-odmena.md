@@ -21,4 +21,4 @@ Orostone · sinterovaný kameň
 +421 911 891 875
 
 ### Pätička — dôvod a odhlásenie
-Tento e-mail ste dostali ako zákazník Orostone.
+Tento e-mail ste dostali, pretože ste si u nás objednali pracovnú dosku.

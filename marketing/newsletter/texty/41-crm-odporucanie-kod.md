@@ -23,4 +23,4 @@ Orostone · sinterovaný kameň
 P. S. Odmena nezávisí od hodnotenia ani od fotiek. Podmienky programu nájdete na orostone.sk/odporucte.
 
 ### Pätička — dôvod a odhlásenie
-Tento e-mail ste dostali ako zákazník Orostone.
+Tento e-mail ste dostali, pretože ste si u nás objednali pracovnú dosku.
