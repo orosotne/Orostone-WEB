@@ -193,6 +193,62 @@ export async function submitSampleLead(data: SampleLeadFormData, turnstileToken?
   }
 }
 
+export interface PartnerLeadFormData {
+  company: string;
+  ico?: string;
+  name: string;
+  email: string;
+  phone: string;
+  city: string;
+  volume: string;
+  message?: string;
+}
+
+/**
+ * Žiadosť kamenárstva o B2B cenník (/pre-kamenarstva) — customers + quotes.
+ * Firma a IČO idú do item_needed („Predmet“ v e-maile), objem a správa do dimensions.
+ * project_type sa v potvrdení zákazníkovi skladá do vety „Váš dopyt na <project_type> sme prijali“.
+ */
+export async function submitPartnerLead(data: PartnerLeadFormData, turnstileToken?: string): Promise<SubmitQuoteResult> {
+  if (!isSupabaseConfigured()) {
+    if (import.meta.env.DEV) {
+      console.warn('Supabase nie je nakonfigurovaný - simulujem odoslanie (B2B)');
+    }
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({ success: true, quoteId: 'demo-b2b-' + Date.now() });
+      }, 1500);
+    });
+  }
+
+  try {
+    const result = await callSubmitQuote({
+      email: data.email.trim(),
+      name: data.name.trim(),
+      phone: data.phone.trim() || undefined,
+      city: data.city.trim() || undefined,
+      project_type: 'Partnerskú spoluprácu (kamenárstvo)',
+      item_needed: [data.company.trim(), data.ico?.trim() && `IČO ${data.ico.trim()}`].filter(Boolean).join(', ').slice(0, 200),
+      dimensions: [`Ročný odber: ${data.volume}`, data.message?.trim()].filter(Boolean).join('\n\n'),
+      turnstileToken,
+    });
+
+    if (!result.success || !result.quote_id) {
+      return { success: false, error: result.error || 'Nepodarilo sa odoslať dopyt' };
+    }
+
+    return { success: true, quoteId: result.quote_id };
+  } catch (error) {
+    if (import.meta.env.DEV) {
+      console.error('Unexpected error in submitPartnerLead:', error);
+    }
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Neočakávaná chyba',
+    };
+  }
+}
+
 // ===========================================
 // ADMIN FUNCTIONS (require authenticated session)
 // ===========================================

@@ -891,6 +891,69 @@ function prerenderKariera(): void {
 }
 
 // ---------------------------------------------------------------------------
+// Pre kamenárstva (B2B landing page) — same URL as SPA route /pre-kamenarstva
+// ---------------------------------------------------------------------------
+
+function prerenderPreKamenarstva(): void {
+  const slabs = products.filter((p) => p.category === 'sintered-stone');
+  const slabLinks = slabs.map((p) => `<li><a href="/produkt/${esc(p.id)}">${esc(p.name)}</a></li>`).join('');
+
+  writePage({
+    route: '/pre-kamenarstva',
+    title: 'Sinterovaný kameň pre kamenárstva – B2B spolupráca | Orostone',
+    description:
+      'Veľkoformátové platne zo sinterovaného kameňa pre kamenárstva: 12 modelov skladom na Slovensku, odber od jednej platne a B2B cenník pod úrovňou Dektonu.',
+    canonical: `${BASE_URL}/pre-kamenarstva`,
+    rootContent: `
+      <header>
+        <nav aria-label="breadcrumb"><a href="/">Orostone</a> &rsaquo; Pre kamenárstva</nav>
+        <h1>Sinterovaný kameň pre vašu dielňu. Skladom, od jednej platne.</h1>
+        <p>Dodávame veľkoformátové platne priamo kamenárstvam. ${slabs.length} modelov máme skladom na Slovensku a partnerský cenník je nižší ako pri Dektone.</p>
+      </header>
+      <section id="vyhody-spoluprace">
+        <h2>Čo dostanete ako partner</h2>
+        <ul>
+          <li>${slabs.length} modelov skladom ihneď</li>
+          <li>Odber už od jednej platne</li>
+          <li>B2B cenník pod úrovňou Dektonu</li>
+          <li>Zákazky z e-shopu vo vašom regióne</li>
+        </ul>
+      </section>
+      <section id="platna">
+        <h2>Väčšia platňa, menej spojov</h2>
+        <p>Platňa 3 200 × 1 600 mm, 5,12 m², hrúbka 12 mm.</p>
+      </section>
+      <section id="modely-skladom">
+        <h2>${slabs.length} modelov, ktoré máme na sklade</h2>
+        <ul>${slabLinks}</ul>
+      </section>
+      <section id="ako-zacat">
+        <h2>Od dopytu po prvú platňu</h2>
+        <ol><li>Vyplníte formulár</li><li>Zavoláme a pošleme cenník</li><li>Vzorkovník do dielne</li><li>Prvá objednávka</li></ol>
+      </section>
+      <section id="b2b-dopyt">
+        <h2>Pošlite dopyt, cenník dostanete do 24 hodín</h2>
+        <p>Telefón <a href="tel:+421917588738">+421 917 588 738</a>, e-mail <a href="mailto:dopyt@orostone.sk">dopyt@orostone.sk</a>.</p>
+      </section>
+      <section id="otazky">
+        <h2>Čo sa kamenári pýtajú</h2>
+      </section>
+      <h2>Chcete vidieť partnerské ceny?</h2>
+      <p><a href="/kontakt">Kontakt</a> &middot; <a href="/sinterovany-kamen">Čo je sinterovaný kameň</a></p>`,
+    jsonLd: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Orostone', item: `${BASE_URL}/` },
+          { '@type': 'ListItem', position: 2, name: 'Pre kamenárstva', item: `${BASE_URL}/pre-kamenarstva` },
+        ],
+      },
+    ],
+  });
+}
+
+// ---------------------------------------------------------------------------
 // Cennik (price list) — same URL as SPA route /cennik
 // ---------------------------------------------------------------------------
 
@@ -1058,6 +1121,8 @@ console.log('  ✓ /realizacie');
 // Kariera
 console.log('\nKariera:');
 prerenderKariera();
+prerenderPreKamenarstva();
+console.log('  ✓ /pre-kamenarstva');
 const jobCount = (JOB_OPENINGS as any[]).length;
 console.log(`  ✓ /kariera (${jobCount} ${jobCount === 1 ? 'pozícia' : jobCount < 5 ? 'pozície' : 'pozícií'})`);
 
