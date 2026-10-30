@@ -13,6 +13,7 @@ import { useScrollLock } from '../../hooks/useScrollLock';
 import { setHeaderLayerOpen } from '../../lib/headerLayer';
 
 const SHOPIFY_ACCOUNT_URL = 'https://shopify.com/101386420570/account';
+const OROTABLE_URL = 'https://stoly.orostone.sk/';
 const PHONE_HREF = 'tel:+421917588738';
 const PHONE_LABEL = '+421 917 588 738';
 const PRICE_URL = (od: string) => `https://oro-klient.orostone.sk/?od=${od}`;
@@ -192,13 +193,13 @@ export const SiteHeader: React.FC = () => {
         aria-hidden="true"
         className={`pointer-events-none absolute inset-0 -z-10 transition-opacity duration-300 ${layerOpen ? 'bg-brand-light' : 'os-glass'} ${isTransparent ? 'opacity-0' : 'opacity-100'}`}
       />
-      <Container className="flex h-16 items-center gap-3 sm:gap-6 lg:h-20 min-[1360px]:gap-9">
+      <Container className="flex h-16 items-center gap-3 sm:gap-6 lg:h-20 min-[1536px]:gap-7">
         <Link to="/" className="flex-none" aria-label="Orostone, hlavná stránka">
           <img src="/images/orostone-logo.svg" alt="Orostone" width={136} height={27} className="h-auto w-[96px] sm:w-[118px] lg:w-[136px]" />
         </Link>
 
-        {/* Desktop navigation (from 1360 px) */}
-        <nav aria-label="Hlavné menu" className="mx-auto hidden items-center gap-[clamp(18px,1.6vw,30px)] text-[0.9rem] font-medium min-[1360px]:flex">
+        {/* Desktop navigation (from 1536 px) */}
+        <nav aria-label="Hlavné menu" className="mx-auto hidden items-center gap-[clamp(18px,1.6vw,30px)] text-[0.9rem] font-medium min-[1536px]:flex">
           {CATEGORY && (
             <div className="relative" onMouseEnter={() => setMegaOpen(CATEGORY)}>
               <NavLink to={`/kategoria/${CATEGORY.slug}`} className={(s) => `${navLinkClass(s)} inline-flex items-center gap-1`}>
@@ -207,6 +208,9 @@ export const SiteHeader: React.FC = () => {
               </NavLink>
             </div>
           )}
+          <a href={OROTABLE_URL} className={navLinkClass({ isActive: false })} onMouseEnter={() => setMegaOpen(null)}>
+            Jedálenské stoly
+          </a>
           {NAV_LINKS.map(({ to, label }) => (
             <NavLink key={to} to={to} className={navLinkClass} onMouseEnter={() => setMegaOpen(null)}>
               {label}
@@ -214,8 +218,8 @@ export const SiteHeader: React.FC = () => {
           ))}
         </nav>
 
-        <div className="ml-auto flex items-center gap-1 min-[1360px]:ml-0 min-[1360px]:gap-2">
-          <a href={PHONE_HREF} className={`${iconBtn} hidden min-[1360px]:grid min-[1600px]:hidden`} aria-label={`Zavolať ${PHONE_LABEL}`}>
+        <div className="ml-auto flex items-center gap-1 min-[1536px]:ml-0 min-[1536px]:gap-2">
+          <a href={PHONE_HREF} className={`${iconBtn} hidden min-[1536px]:grid min-[1600px]:hidden`} aria-label={`Zavolať ${PHONE_LABEL}`}>
             <Phone size={18} strokeWidth={1.6} />
           </a>
           <a href={PHONE_HREF} className="mr-2 hidden text-[0.88rem] font-medium tabular-nums no-underline hover:underline min-[1600px]:inline">
@@ -224,7 +228,7 @@ export const SiteHeader: React.FC = () => {
           <button type="button" onClick={toggleSearch} className={iconBtn} aria-label="Hľadať" aria-expanded={searchOpen}>
             {searchOpen ? <X size={20} strokeWidth={1.6} /> : <Search size={19} strokeWidth={1.6} />}
           </button>
-          <a href={SHOPIFY_ACCOUNT_URL} className={`${iconBtn} hidden min-[1360px]:grid`} aria-label="Môj účet">
+          <a href={SHOPIFY_ACCOUNT_URL} className={`${iconBtn} hidden min-[1536px]:grid`} aria-label="Môj účet">
             <User size={19} strokeWidth={1.6} />
           </a>
           <button type="button" onClick={openCart} className={`${iconBtn} relative`} aria-label={`Košík, ${itemCount} ${itemCount === 1 ? 'položka' : 'položky'}`}>
@@ -251,7 +255,7 @@ export const SiteHeader: React.FC = () => {
               setSearchOpen(false);
               startTransition(() => setDrawerOpen((v) => !v));
             }}
-            className={`${iconBtn} relative min-[1360px]:hidden`}
+            className={`${iconBtn} relative min-[1536px]:hidden`}
             aria-label="Menu"
             aria-expanded={drawerOpen}
             aria-controls="site-drawer"
@@ -327,11 +331,11 @@ export const SiteHeader: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {/* Drawer (below 1360 px). The AI chat button (widget.js) lies above every layer: it steps aside while the
+      {/* Drawer (below 1536 px). The AI chat button (widget.js) lies above every layer: it steps aside while the
           drawer is open (data-aipredajca-hide) */}
       <AnimatePresence>
         {drawerOpen && (
-          <m.div {...panelMotion} id="site-drawer" data-aipredajca-hide="" className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto overscroll-contain border-t border-brand-line bg-brand-light lg:top-20 min-[1360px]:hidden">
+          <m.div {...panelMotion} id="site-drawer" data-aipredajca-hide="" className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto overscroll-contain border-t border-brand-line bg-brand-light lg:top-20 min-[1536px]:hidden">
             <Container className="grid gap-8 py-4 pb-[calc(32px+env(safe-area-inset-bottom,0px))]">
               <nav aria-label="Menu" className="grid">
                 {CATEGORY && (
@@ -339,6 +343,9 @@ export const SiteHeader: React.FC = () => {
                     Dekory
                   </Link>
                 )}
+                <a href={OROTABLE_URL} className="border-b border-brand-line py-3.5 text-[1.05rem] font-medium no-underline transition-opacity active:opacity-60">
+                  Jedálenské stoly
+                </a>
                 {NAV_LINKS.map(({ to, label }) => (
                   <Link key={to} to={to} className="border-b border-brand-line py-3.5 text-[1.05rem] font-medium no-underline transition-opacity active:opacity-60">
                     {label}
