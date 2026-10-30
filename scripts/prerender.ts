@@ -133,6 +133,7 @@ let count = 0;
 const SITE_NAV_HTML = `<nav aria-label="Hlavná navigácia"><ul>${[
   ['/', 'Orostone'],
   ['/kategoria/sintered-stone', 'Sinterovaný kameň'],
+  ['https://stoly.orostone.sk/', 'Jedálenské stoly'],
   ['/sinterovany-kamen', 'O kameni'],
   ['/kuchyne', 'Kuchyne'],
   ['/cennik', 'Cenník'],
