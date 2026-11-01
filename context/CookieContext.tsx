@@ -68,16 +68,18 @@ export const CookieProvider: React.FC<CookieProviderProps> = ({ children }) => {
     }
   }, []);
 
-  // Save preferences to localStorage (includes consentedAt timestamp for GDPR Art. 7(1) accountability)
+  // Save preferences to localStorage (includes consentedAt timestamp for GDPR Art. 7(1) accountability).
+  // The choice applies even when the browser blocks storage: a rejection stops tracking and the chat's analytics
+  // right away and the bar closes; with nothing stored, the bar asks again on the next page load.
   const saveToStorage = useCallback((prefs: CookiePreferences) => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...prefs, consentedAt: new Date().toISOString() }));
-      setPreferences(prefs);
-      setHasConsented(true);
-      syncChatConsent(prefs);
     } catch (error) {
       console.error('Error saving cookie preferences:', error);
     }
+    setPreferences(prefs);
+    setHasConsented(true);
+    syncChatConsent(prefs);
   }, []);
 
   const acceptAll = useCallback(() => {

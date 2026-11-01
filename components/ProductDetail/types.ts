@@ -25,10 +25,14 @@ export interface InstallationData {
 }
 
 export const saveInstallationToStorage = (data: InstallationData | null): void => {
-  if (data) {
-    localStorage.setItem(INSTALLATION_STORAGE_KEY, JSON.stringify(data));
-  } else {
-    localStorage.removeItem(INSTALLATION_STORAGE_KEY);
+  try {
+    if (data) {
+      localStorage.setItem(INSTALLATION_STORAGE_KEY, JSON.stringify(data));
+    } else {
+      localStorage.removeItem(INSTALLATION_STORAGE_KEY);
+    }
+  } catch {
+    // Storage blocked by the browser: the cart shows no installation estimate, adding to the cart still works
   }
 };
 

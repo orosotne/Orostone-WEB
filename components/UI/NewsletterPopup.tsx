@@ -106,11 +106,15 @@ export const NewsletterPopup: React.FC = () => {
   // Wait until the cookie bar is answered and nothing else is open (the cart, the cookie settings, the AI chat window,
   // which a dialog would take the focus from), then give the visitor a few seconds on the page
   const blocked = !hasConsented || isSettingsOpen || isCartOpen || isChatOpen || HIDDEN_ON.includes(pathname);
+  // Shown in this page load: a browser that blocks storage keeps no close, and the pop-up would come back each time
+  // the cart or the chat closes
+  const shownRef = useRef(false);
   useEffect(() => {
-    if (blocked || !mayShow()) return;
+    if (blocked || shownRef.current || !mayShow()) return;
     const timer = setTimeout(() => {
       // Decide again: pop-up B may have opened meanwhile, or the visitor signed up in the footer
       if (!mayShow()) return;
+      shownRef.current = true;
       markShownThisVisit();
       setVisible(true);
     }, DELAY_MS);

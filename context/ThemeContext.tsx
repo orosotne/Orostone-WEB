@@ -12,13 +12,22 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [theme, setTheme] = useState<Theme>(() => {
-        // Persist theme choice
-        const saved = localStorage.getItem('orostone-theme');
-        return (saved as Theme) || 'classic';
+        // Persist theme choice. A browser that blocks site storage (Safari "Block All Cookies") throws on any
+        // access; uncaught here it would unmount the whole app and leave an empty page.
+        try {
+            const saved = localStorage.getItem('orostone-theme');
+            return (saved as Theme) || 'classic';
+        } catch {
+            return 'classic';
+        }
     });
 
     useEffect(() => {
-        localStorage.setItem('orostone-theme', theme);
+        try {
+            localStorage.setItem('orostone-theme', theme);
+        } catch {
+            // Storage blocked: the theme lasts for this page load
+        }
         // Apply dataset attribute to body for CSS selectors
         document.body.dataset.theme = theme;
     }, [theme]);
