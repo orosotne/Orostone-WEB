@@ -1,14 +1,7 @@
 import { useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
 import { useCookies } from '../context/CookieContext';
+import { installFbqStub, isPixelHost, setFbqConsent } from '../lib/metaPixel';
 import { useFirstInteraction } from './useFirstInteraction';
-
-declare global {
-  interface Window {
-    fbq?: (cmd: string, ...args: unknown[]) => void;
-    _fbq?: typeof window.fbq;
-  }
-}
 
 const PIXEL_ID = import.meta.env.VITE_META_PIXEL_ID as string | undefined;
 const FBQ_SRC = 'https://connect.facebook.net/en_US/fbevents.js';
@@ -23,42 +16,36 @@ const internalMember = getInternalMember();
  * Loads Meta Pixel only when:
  * - VITE_META_PIXEL_ID is set
  * - Cookie consent for marketing is granted
+ * - the page runs on the live site (isPixelHost)
  *
- * Also tracks PageView on every SPA route change.
+ * Sends the first PageView; fbevents.js sends one on every later SPA route change itself (pushState, replaceState,
+ * popstate) and drops a PageView tracked again by hand.
  */
 export function useMetaPixel(): void {
   const { preferences } = useCookies();
-  const location = useLocation();
   const loadedRef = useRef(false);
   // Defer Pixel script injection until first user interaction (or 5s timeout).
   // fbevents.js is ~113 KB raw and blocks the main thread on parse — same INP
   // hit as gtag.js. Same idea as useAnalytics: real users see PageView fired
   // within ~5s, bots/abandoners still get tracked via the timeout fallback.
   const interacted = useFirstInteraction();
-  // Path of the last PageView, so a consent change or the first interaction never sends a second one
-  const trackedPath = useRef<string | null>(null);
 
-  // Keep trackMetaEvent in step with the visitor's choice; a rejection also drops events waiting for the Pixel
+  // Keep trackMetaEvent in step with the visitor's choice; a rejection also drops events waiting for the Pixel. Once the
+  // Pixel is on the page, a rejection holds fbevents.js too, its own PageViews on route changes included
   useEffect(() => {
     marketingAllowed = preferences.marketing;
     if (!preferences.marketing) pendingEvents.length = 0;
+    setFbqConsent(window, preferences.marketing);
   }, [preferences.marketing]);
 
   // Load the pixel script once when marketing consent is granted
   useEffect(() => {
     if (!interacted) return;
-    if (!PIXEL_ID || !preferences.marketing || loadedRef.current) return;
+    if (!PIXEL_ID || !preferences.marketing || loadedRef.current || !isPixelHost(window.location.hostname)) return;
     loadedRef.current = true;
 
-    // Create fbq stub so events queued before script loads are not lost
-    if (typeof window.fbq !== 'function') {
-      const queue: unknown[][] = [];
-      const stub = (...args: unknown[]) => { queue.push(args); };
-      (stub as any).queue = queue;
-      (stub as any).loaded = false;
-      window.fbq = stub as typeof window.fbq;
-      window._fbq = stub as typeof window.fbq;
-    }
+    // Calls wait in the stub's queue until the script loads; later ones go straight to fbevents.js
+    installFbqStub(window);
 
     if (internalMember) {
       window.fbq!('init', PIXEL_ID, { external_id: `internal_${internalMember}` });
@@ -66,8 +53,6 @@ export function useMetaPixel(): void {
       window.fbq!('init', PIXEL_ID);
     }
     window.fbq!('track', 'PageView', internalMember ? { internal_traffic: internalMember } : undefined);
-    // The address bar can already show the next route when the first interaction is a link click; fbq reports that URL
-    trackedPath.current = window.location.pathname;
     pendingEvents.splice(0).forEach(([name, params]) => trackMetaEvent(name, params));
 
     const script = document.createElement('script');
@@ -75,14 +60,6 @@ export function useMetaPixel(): void {
     script.src = FBQ_SRC;
     document.head.appendChild(script);
   }, [preferences.marketing, interacted]);
-
-  // Track PageView on every SPA route change; the first one comes from the loader above
-  useEffect(() => {
-    if (trackedPath.current === null || trackedPath.current === location.pathname) return;
-    if (!preferences.marketing || typeof window.fbq !== 'function') return;
-    trackedPath.current = location.pathname;
-    window.fbq('track', 'PageView', internalMember ? { internal_traffic: internalMember } : undefined);
-  }, [location.pathname, preferences.marketing]);
 }
 
 // Events tracked before the deferred Pixel loads (e.g. ViewContent on a product landing page) wait here and are
