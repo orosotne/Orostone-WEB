@@ -41,3 +41,31 @@ export function installFbqStub(host: FbqHost): void {
   host.fbq = fbq;
   if (!host._fbq) host._fbq = fbq;
 }
+
+/**
+ * Holds the Pixel through Meta's consent API when marketing cookies are rejected or withdrawn. While consent is revoked
+ * fbevents.js keeps every call in `fbq.queue`, its own PageViews on route changes included. Before fbevents.js has
+ * loaded, the revoke goes to the front of the queue so the init and PageView already waiting there stay behind it, and
+ * consent given again takes it out. Once fbevents.js has run, the hold lasts until the page is loaded again: a grant
+ * would also send what fbevents.js gathered meanwhile (form fields for automatic matching, its own events).
+ */
+export function setFbqConsent(host: FbqHost, granted: boolean): void {
+  const fbq = host.fbq as FbqStub | undefined;
+  if (typeof fbq !== 'function') return;
+  if (fbq.callMethod || !fbq.queue) {
+    if (!granted) fbq('consent', 'revoke');
+    return;
+  }
+  const revoke = fbq.queue.findIndex(([cmd, action]) => cmd === 'consent' && action === 'revoke');
+  if (granted && revoke >= 0) fbq.queue.splice(revoke, 1);
+  if (!granted && revoke < 0) fbq.queue.unshift(['consent', 'revoke']);
+}
+
+// The live site is orostone.sk (vercel.json sends www and eshop there). Previews, localhost and any other host get no
+// Pixel, so testing a preview does not put AddToCart or Lead into the live dataset.
+const PIXEL_HOSTS = new Set(['orostone.sk', 'www.orostone.sk', 'eshop.orostone.sk']);
+
+/** The Pixel runs on this host. */
+export function isPixelHost(hostname: string): boolean {
+  return PIXEL_HOSTS.has(hostname);
+}

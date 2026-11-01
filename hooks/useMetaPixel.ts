@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useCookies } from '../context/CookieContext';
-import { installFbqStub } from '../lib/metaPixel';
+import { installFbqStub, isPixelHost, setFbqConsent } from '../lib/metaPixel';
 import { useFirstInteraction } from './useFirstInteraction';
 
 const PIXEL_ID = import.meta.env.VITE_META_PIXEL_ID as string | undefined;
@@ -16,6 +16,7 @@ const internalMember = getInternalMember();
  * Loads Meta Pixel only when:
  * - VITE_META_PIXEL_ID is set
  * - Cookie consent for marketing is granted
+ * - the page runs on the live site (isPixelHost)
  *
  * Sends the first PageView; fbevents.js sends one on every later SPA route change itself (pushState, replaceState,
  * popstate) and drops a PageView tracked again by hand.
@@ -29,16 +30,18 @@ export function useMetaPixel(): void {
   // within ~5s, bots/abandoners still get tracked via the timeout fallback.
   const interacted = useFirstInteraction();
 
-  // Keep trackMetaEvent in step with the visitor's choice; a rejection also drops events waiting for the Pixel
+  // Keep trackMetaEvent in step with the visitor's choice; a rejection also drops events waiting for the Pixel. Once the
+  // Pixel is on the page, a rejection holds fbevents.js too, its own PageViews on route changes included
   useEffect(() => {
     marketingAllowed = preferences.marketing;
     if (!preferences.marketing) pendingEvents.length = 0;
+    setFbqConsent(window, preferences.marketing);
   }, [preferences.marketing]);
 
   // Load the pixel script once when marketing consent is granted
   useEffect(() => {
     if (!interacted) return;
-    if (!PIXEL_ID || !preferences.marketing || loadedRef.current) return;
+    if (!PIXEL_ID || !preferences.marketing || loadedRef.current || !isPixelHost(window.location.hostname)) return;
     loadedRef.current = true;
 
     // Calls wait in the stub's queue until the script loads; later ones go straight to fbevents.js
