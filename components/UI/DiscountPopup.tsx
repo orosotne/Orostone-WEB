@@ -129,11 +129,14 @@ export const DiscountPopup: React.FC = () => {
   // Wait until the cookie bar is answered and nothing else is open (the cart, the cookie settings, the AI chat window,
   // which a dialog would take the focus from); the page decides the delay (20 s, ads 3 s)
   const blocked = !hasConsented || isSettingsOpen || isCartOpen || isChatOpen;
+  // Shown in this page load: a browser that blocks storage keeps no 'shown', and the pop-up would come back on every
+  // page and each time the cart or the chat closes
+  const shownRef = useRef(false);
   useEffect(() => {
     if (blocked) return;
     const decision = currentDecision(pathname, search);
     if (decision.stampDismissedAt) write('local', NEWSLETTER_POPUP_DISMISSED_AT_KEY, decision.stampDismissedAt);
-    if (!decision.show) return;
+    if (!decision.show || shownRef.current) return;
     // The photo is in the cache by the time the pop-up opens, so nothing pops in. The same media, srcset and sizes as
     // the <picture>, so the browser preloads exactly the file it will show: the 720 on phones, 720 or 1440 by density
     // from 640 px. Browsers without AVIF skip the hint and load the WebP when the pop-up opens.
@@ -149,6 +152,7 @@ export const DiscountPopup: React.FC = () => {
       // Decide again: pop-up A may have opened meanwhile, or the visitor signed up in the footer
       const now = currentDecision(pathname, search);
       if (!now.show) return;
+      shownRef.current = true;
       write('local', DISCOUNT_POPUP_KEY, 'shown');
       write('session', DISCOUNT_POPUP_SESSION_KEY, '1');
       setViaAd(now.reason === 'ad-offer');

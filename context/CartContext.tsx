@@ -77,6 +77,16 @@ interface CartContextType {
 // ===========================================
 
 const CART_ID_KEY = 'orostone_shopify_cart_id';
+// A browser that blocks site storage (Safari "Block All Cookies") throws on every call; the cart then lasts for this page load
+const readCartId = (): string | null => {
+  try { return localStorage.getItem(CART_ID_KEY); } catch { return null; }
+};
+const storeCartId = (id: string): void => {
+  try { localStorage.setItem(CART_ID_KEY, id); } catch { /* storage blocked */ }
+};
+const forgetCartId = (): void => {
+  try { localStorage.removeItem(CART_ID_KEY); } catch { /* storage blocked */ }
+};
 const CART_OP_TIMEOUT_MS = 15000;
 const SITE_URL = import.meta.env.VITE_PUBLIC_SITE_URL ?? 'https://orostone.sk';
 
@@ -211,7 +221,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     const adopt = (next: ShopifyCart) => {
       setCart(next);
       cartRef.current = next;
-      localStorage.setItem(CART_ID_KEY, next.id);
+      storeCartId(next.id);
       return next;
     };
 
@@ -219,7 +229,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       setIsLoading(true);
       try {
         // Skus nacitat existujuci cart z localStorage
-        const savedCartId = localStorage.getItem(CART_ID_KEY);
+        const savedCartId = readCartId();
 
         if (savedCartId) {
           try {
@@ -228,7 +238,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
             if (existingCart && existingCart.lines) return adopt(existingCart);
           } catch {
             // Cart expired or invalid — remove stale ID and create new
-            localStorage.removeItem(CART_ID_KEY);
+            forgetCartId();
           }
         }
 
@@ -237,7 +247,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       } catch (error) {
         console.error('Chyba pri inicializacii kosika:', error);
         // Vytvor novy cart ak sa nieco pokazilo
-        localStorage.removeItem(CART_ID_KEY);
+        forgetCartId();
         try {
           return adopt(await shopifyCreateCart());
         } catch (retryError) {
@@ -270,11 +280,11 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 
   /** Recover from expired/invalid cart by creating a new one */
   const recoverCart = useCallback(async (): Promise<ShopifyCart> => {
-    localStorage.removeItem(CART_ID_KEY);
+    forgetCartId();
     const newCart = await shopifyCreateCart();
     setCart(newCart);
     cartRef.current = newCart;
-    localStorage.setItem(CART_ID_KEY, newCart.id);
+    storeCartId(newCart.id);
     return newCart;
   }, []);
 
@@ -402,7 +412,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
       setCart(newCart);
       cartRef.current = newCart;
       trackCartEmptied(previousCart, newCart);
-      localStorage.setItem(CART_ID_KEY, newCart.id);
+      storeCartId(newCart.id);
     } catch (err) {
       console.error('Chyba pri vyprazdneni kosika:', err);
       setError('Nepodarilo sa vyprázdniť košík.');
