@@ -7,7 +7,7 @@
   PREHEADER: 🪨 Ďakujeme za dôveru. Posielame fotky z prvého dňa a prehľad toho, čo bude nasledovať.
   CIEĽ:      Poďakovanie, súhlas so zverejnením fotiek (IG + newsletter), nastaviť očakávania
   FOTKY:     Pre každého klienta iné: Marián ich vloží ručne (duplikát šablóny), alebo ich CRM zapíše do profilu ako foto_1–foto_3 (URL) a šablóna použije {{ person|lookup:'foto_1' }}.
-  POZNÁMKA:  Hranaté zátvorky nahraď údajmi zákazky. Tlačidlá súhlasu = samostatné odkazy → segment/vlastnosť profilu.
+  POZNÁMKA:  Hranaté zátvorky nahraď údajmi zákazky, [JANA-482] kódom zákazníka z programu Odporučte Orostone (CRM). Tlačidlá súhlasu = samostatné odkazy → segment/vlastnosť profilu.
   Obrázky: https://orostone.sk/images/email/ (v repozitári Orostone-WEB: public/images/email/)
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="sk">
@@ -239,7 +239,7 @@
                       </td>
                       <td valign="top">
                         <div style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:9.5px; font-weight:700; letter-spacing:0.24em; text-transform:uppercase; color:#7A6A2E; margin-bottom:8px;">P.&nbsp;S. &middot; Marián, Orostone</div>
-                        <div class="t-small" style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:13.5px; font-weight:400; line-height:22px; color:#3d3729;">Ak poznáte niekoho, kto práve rieši kuchyňu, pokojne mu dajte náš kontakt. Rád poradím aj jemu.</div>
+                        <div class="t-small" style="font-family:'Montserrat',Helvetica,Arial,sans-serif; font-size:13.5px; font-weight:400; line-height:22px; color:#3d3729;">Ak poznáte niekoho, kto práve rieši kuchyňu, dajte mu svoj kód [JANA-482]. Pri objednávke platní dostane 100&nbsp;€ z ceny materiálu a vy 150&nbsp;€, keď zákazku zaplatí.</div>
                       </td>
                     </tr>
                   </table>
