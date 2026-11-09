@@ -11,6 +11,7 @@ import { shopifySized } from '../../lib/shopifyImage';
 import { titleCase } from '../../lib/utils';
 import { useScrollLock } from '../../hooks/useScrollLock';
 import { setHeaderLayerOpen } from '../../lib/headerLayer';
+import { DiningTablesAnnouncement } from './DiningTablesAnnouncement';
 
 const SHOPIFY_ACCOUNT_URL = 'https://shopify.com/101386420570/account';
 const OROTABLE_URL = 'https://stoly.orostone.sk/';
@@ -193,6 +194,7 @@ export const SiteHeader: React.FC = () => {
         aria-hidden="true"
         className={`pointer-events-none absolute inset-0 -z-10 transition-opacity duration-300 ${layerOpen ? 'bg-brand-light' : 'os-glass'} ${isTransparent ? 'opacity-0' : 'opacity-100'}`}
       />
+      {isHomepage && <DiningTablesAnnouncement />}
       <Container className="flex h-16 items-center gap-3 sm:gap-6 lg:h-20 min-[1536px]:gap-7">
         <Link to="/" className="flex-none" aria-label="Orostone, hlavná stránka">
           <img src="/images/orostone-logo.svg" alt="Orostone" width={136} height={27} className="h-auto w-[96px] sm:w-[118px] lg:w-[136px]" />
@@ -335,7 +337,7 @@ export const SiteHeader: React.FC = () => {
           drawer is open (data-aipredajca-hide) */}
       <AnimatePresence>
         {drawerOpen && (
-          <m.div {...panelMotion} id="site-drawer" data-aipredajca-hide="" className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto overscroll-contain border-t border-brand-line bg-brand-light lg:top-20 min-[1536px]:hidden">
+          <m.div {...panelMotion} id="site-drawer" data-aipredajca-hide="" className="fixed inset-x-0 bottom-0 top-[calc(4rem+var(--os-home-announcement-height,0px)+env(safe-area-inset-top,0px))] overflow-y-auto overscroll-contain border-t border-brand-line bg-brand-light lg:top-[calc(5rem+var(--os-home-announcement-height,0px)+env(safe-area-inset-top,0px))] min-[1536px]:hidden">
             <Container className="grid gap-8 py-4 pb-[calc(32px+env(safe-area-inset-bottom,0px))]">
               <nav aria-label="Menu" className="grid">
                 {CATEGORY && (

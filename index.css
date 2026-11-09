@@ -239,6 +239,28 @@
   }
 }
 
+/* One quiet homepage announcement, in the brand's existing gold. */
+.site-table-announcement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: var(--os-home-announcement-height);
+  padding-inline: 16px;
+  background: #ECD488;
+  color: #1A1A1A;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-table-announcement-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.site-table-announcement svg { flex-shrink: 0; }
+.site-table-announcement:focus-visible { outline: 2px solid #1A1A1A; outline-offset: -4px; }
+@media (hover: hover) { .site-table-announcement:hover > span:nth-child(3) { text-decoration: underline; text-underline-offset: 3px; } }
+@media (max-width: 379px) { .site-table-announcement-brand { display: none; } }
+
 /* ===== Translucent chrome (site header): the page scrolls under a frosted layer ===== */
 .os-glass {
   background-color: rgb(249 249 247 / .9);
