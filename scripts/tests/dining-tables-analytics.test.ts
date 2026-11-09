@@ -18,6 +18,7 @@ test('an allowed click reaches the existing GA4 stream once, without campaign pa
   Object.defineProperty(globalThis, 'window', { configurable: true, value: {
     _GA_ESHOP_ID: 'G-TEST',
     gtag: (...args: unknown[]) => calls.push(args),
+    localStorage: { getItem: () => '{"analytics":true}' },
   } });
   t.after(() => Reflect.deleteProperty(globalThis, 'window'));
 
