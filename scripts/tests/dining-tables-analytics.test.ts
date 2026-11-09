@@ -26,6 +26,11 @@ test('an allowed click reaches the existing GA4 stream once, without campaign pa
   assert.deepEqual(calls, [['event', 'dining_tables_click', {
     send_to: 'G-TEST', placement: 'homepage_promotion', link_url: 'https://stoly.orostone.sk/',
   }]]);
+
+  trackDiningTablesPromotionClick(true, true, 'announcement_bar');
+  assert.deepEqual(calls[1], ['event', 'dining_tables_click', {
+    send_to: 'G-TEST', placement: 'announcement_bar', link_url: 'https://stoly.orostone.sk/?entry=announcement_bar',
+  }]);
 });
 
 test('unavailable analytics never prevents the dining-table navigation', () => {

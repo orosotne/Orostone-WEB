@@ -241,12 +241,12 @@ export const SiteHeader: React.FC = () => {
               </span>
             )}
           </button>
-          {/* On phones the label wraps to two short lines so it fits beside search, cart and menu. */}
+          {/* Narrow phones keep search, cart and menu visible; samples remain available in the menu. */}
           <ActionButton
             variant="gold"
             size="sm"
             to="/vzorky"
-            className="text-center md:ml-2 max-md:min-h-[40px] max-md:px-2.5 max-md:text-[0.6rem] max-md:leading-[1.15] max-md:tracking-[0.08em]"
+            className="text-center max-[359px]:hidden md:ml-2 max-md:min-h-[40px] max-md:px-2.5 max-md:text-[0.6rem] max-md:leading-[1.15] max-md:tracking-[0.08em]"
           >
             Vzorka
             <br className="md:hidden" /> zadarmo
