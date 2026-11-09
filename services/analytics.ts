@@ -1,8 +1,8 @@
 /**
  * GA4 Enhanced Ecommerce event helpers.
  * Plain functions (not a React hook) — callable from contexts and event handlers.
- * Consent gating is handled by Consent Mode v2 in the HTML <head>: if
- * analytics_storage is denied, GA4 silently ignores these events.
+ * A confirmed analytics choice is required before anything enters the queue.
+ * Purchase belongs to Shopify's official Google channel, never a local cart.
  */
 
 declare global {
@@ -13,6 +13,20 @@ declare global {
 
 function getGA4Id(): string | undefined {
   return typeof window !== 'undefined' ? (window as any)._GA_ESHOP_ID : undefined;
+}
+
+function hasAnalyticsConsent(gaId: string | undefined): boolean {
+  try {
+    // CookieContext writes the confirmed choice to this key. Its initial
+    // in-memory defaults are not a choice, and blocked storage fails closed.
+    const saved: unknown = JSON.parse(window.localStorage.getItem('orostone-cookies') || 'null');
+    if (!saved || typeof saved !== 'object' || Array.isArray(saved) ||
+      !('analytics' in saved) || saved.analytics !== true) return false;
+    // A withdrawal still applies when persisting the new choice failed.
+    return !gaId || (window as unknown as Record<string, unknown>)[`ga-disable-${gaId}`] !== true;
+  } catch {
+    return false;
+  }
 }
 
 export interface GA4Item {
@@ -26,6 +40,7 @@ export interface GA4Item {
 export function trackGA4Event(eventName: string, params: Record<string, unknown>): void {
   if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
   const GA_ID = getGA4Id();
+  if (eventName === 'purchase' || !hasAnalyticsConsent(GA_ID)) return;
   window.gtag('event', eventName, {
     ...(GA_ID ? { send_to: GA_ID } : {}),
     ...params,
@@ -87,6 +102,8 @@ export function trackGA4Purchase(params: {
   value: number;
   items: GA4Item[];
 }): void {
+  // Retained for import compatibility; trackGA4Event blocks local purchase
+  // inference. A paid Shopify order is measured by the official Google channel.
   trackGA4Event('purchase', {
     currency: 'EUR',
     transaction_id: params.transaction_id ?? `oro_${Date.now()}`,

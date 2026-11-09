@@ -5,9 +5,10 @@ import { buffer } from 'micro';
 /**
  * Shopify Order Webhook → GA4 Measurement Protocol
  *
- * Receives Shopify `orders/paid` and sends a server-side `purchase` event to
- * GA4 via the Measurement Protocol. Backup for client-side tracking in
- * ThankYou.tsx (covers buyers who never reach the thank-you page).
+ * Receives Shopify `orders/paid`. Purchase measurement is owned by Shopify's
+ * official Google channel. This legacy endpoint verifies the webhook and
+ * acknowledges it without sending GA4 events unless an operator explicitly
+ * sets GA4_LEGACY_PURCHASE_ENABLED=true while the official emitter is disabled.
  *
  * REFACTOR (finding f04): four coupled defects fixed, behaviour preserved:
  *   1. Unguarded JSON.parse → an HMAC-valid-but-malformed body threw a 500,
@@ -20,16 +21,16 @@ import { buffer } from 'micro';
  *   3. No idempotency → Shopify at-least-once delivery could double-send. We now
  *      dedupe on `x-shopify-webhook-id` within the instance (best-effort;
  *      promote to Upstash/KV for cross-instance guarantees — see note below).
- *   4. transaction_id was `shopify_${order.name}` here but `oro_${Date.now()}`
- *      on the client, so GA4 could never dedupe the two purchase events → up to
- *      2× revenue. Both paths must use the SAME real order id; this side now
- *      emits `shopify_${order_number}` and ThankYou.tsx must do the same
- *      (see companion patch) so GA4 collapses the pair.
+ *   4. The local thank-you page no longer treats a saved cart as a purchase.
+ *      The legacy payload below is retained only as an explicitly enabled
+ *      fallback, never a second emitter beside Shopify's Google channel.
  *
  * Environment variables required:
  *   SHOPIFY_WEBHOOK_SECRET  — Shopify webhook HMAC secret
- *   GA4_MEASUREMENT_ID      — e.g. G-W3ZPVYZ9HQ
- *   GA4_MP_API_SECRET       — Measurement Protocol API secret
+ * Optional legacy fallback only:
+ *   GA4_LEGACY_PURCHASE_ENABLED — must be exactly "true"; default is disabled
+ *   GA4_MEASUREMENT_ID          — e.g. G-W3ZPVYZ9HQ
+ *   GA4_MP_API_SECRET           — Measurement Protocol API secret
  */
 
 export const config = {
@@ -70,10 +71,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   const secret = process.env.SHOPIFY_WEBHOOK_SECRET?.trim();
-  const gaMeasurementId = process.env.GA4_MEASUREMENT_ID?.trim();
-  const gaApiSecret = process.env.GA4_MP_API_SECRET?.trim();
-
-  if (!secret || !gaMeasurementId || !gaApiSecret) {
+  if (!secret) {
     // Genuine server misconfiguration — a 500 here is correct: retries WILL
     // succeed once the env is fixed, and this fires before the HMAC check so it
     // cannot be triggered by an attacker with a valid-looking body.
@@ -96,10 +94,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   // subscription for a problem a retry cannot fix. Failures are logged instead.
 
   const webhookId = req.headers['x-shopify-webhook-id'] as string | undefined;
-  if (alreadyProcessed(webhookId)) {
-    console.log(JSON.stringify({ level: 'info', msg: 'duplicate webhook ignored', webhookId }));
-    return res.status(200).json({ ok: true, deduped: true });
-  }
 
   let order: any;
   try {
@@ -112,10 +106,22 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(200).json({ ok: false, reason: 'unparseable' });
   }
 
-  // Order identifier — kept BYTE-IDENTICAL to the original (`order.name ||
-  // order.order_number`) so GA4 behaviour is unchanged in this pass. The dedup
-  // fix (aligning this with the client's transaction_id in ThankYou.tsx) needs a
-  // coordinated client change and is intentionally deferred — see f04 follow-up.
+  if (process.env.GA4_LEGACY_PURCHASE_ENABLED !== 'true') {
+    return res.status(200).json({ ok: true, purchaseTracking: 'shopify_google_channel' });
+  }
+  const gaMeasurementId = process.env.GA4_MEASUREMENT_ID?.trim();
+  const gaApiSecret = process.env.GA4_MP_API_SECRET?.trim();
+  if (!gaMeasurementId || !gaApiSecret) {
+    console.error(JSON.stringify({ level: 'error', msg: 'legacy GA4 purchase fallback misconfigured', webhookId }));
+    return res.status(200).json({ ok: false, reason: 'legacy_tracking_unconfigured' });
+  }
+  if (alreadyProcessed(webhookId)) {
+    console.log(JSON.stringify({ level: 'info', msg: 'duplicate webhook ignored', webhookId }));
+    return res.status(200).json({ ok: true, deduped: true });
+  }
+
+  // Preserve the legacy identifier only for the explicitly enabled fallback.
+  // It must never run alongside the official Google channel's purchase event.
   const orderNumber = order.name || order.order_number;
   const transactionId = `shopify_${orderNumber}`;
 
