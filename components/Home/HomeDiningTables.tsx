@@ -10,7 +10,7 @@ export const HomeDiningTables: React.FC = () => {
   return (
   <section className="hp-dining" aria-labelledby="dining-tables-heading">
     <Container className="hp-dining-in">
-      <div className="hp-dining-copy" data-aipredajca-avoid="">
+      <div className="hp-dining-copy">
         <Eyebrow className="hp-dining-eyebrow">Orotable · Jedálenské stoly</Eyebrow>
         <h2 id="dining-tables-heading">Orostone má aj<br />jedálenské stoly.</h2>
         <p>Pevné aj rozkladacie modely. Pozrite si celú kolekciu a vyberte si stôl pre svoj priestor.</p>

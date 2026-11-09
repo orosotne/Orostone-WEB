@@ -121,32 +121,42 @@ export const useAnalytics = () => {
     if (state.current.injected && typeof window.gtag === 'function') {
       window.gtag('consent', 'update', consent());
     }
-    if (!interacted || !analytics) return;
 
-    if (!state.current.injected) {
-      state.current.injected = true;
-      window.dataLayer = window.dataLayer || [];
-      if (typeof window.gtag !== 'function') {
-        window.gtag = function () { window.dataLayer!.push(arguments); };
-      }
-      // The HTML stub defaults to denied before any tags can run. All Google
-      // tags in this container inherit manual page-view ownership.
-      window.gtag('set', 'send_page_view', false);
-      window.gtag('consent', 'update', consent());
-      window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
-      const script = document.createElement('script');
-      script.async = true;
-      script.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
-      script.onload = () => {
-        state.current.ready = true;
-        // A withdrawal or route change while the script loads must use the
-        // latest choice and current route, never the initial closure.
+    const start = () => {
+      if (!current.current.analytics) return false;
+      if (!state.current.injected) {
+        state.current.injected = true;
+        window.dataLayer = window.dataLayer || [];
+        if (typeof window.gtag !== 'function') {
+          window.gtag = function () { window.dataLayer!.push(arguments); };
+        }
+        // Consent must precede events queued by an outgoing first click.
+        window.gtag('set', 'send_page_view', false);
+        window.gtag('consent', 'update', consent());
+        window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' });
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
+        script.onload = () => {
+          state.current.ready = true;
+          // A withdrawal or route change while the script loads must use the
+          // latest choice and current route, never the initial closure.
+          window.gtag?.('consent', 'update', consent());
+          recordPage();
+        };
+        document.head.appendChild(script);
+      } else {
         window.gtag?.('consent', 'update', consent());
         recordPage();
-      };
-      document.head.appendChild(script);
-      return;
-    }
-    recordPage();
+      }
+      return true;
+    };
+    // The outgoing-link handler may run before the first-interaction effect.
+    // Both paths share this hook's injection guard and manual pageview owner.
+    window._startOrostoneAnalytics = start;
+    if (interacted && analytics) start();
+    return () => {
+      if (window._startOrostoneAnalytics === start) delete window._startOrostoneAnalytics;
+    };
   }, [hasConsented, preferences.analytics, preferences.marketing, interacted, pathname]);
 };
