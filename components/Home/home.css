@@ -58,6 +58,7 @@
 .hp .hp-dining-copy > p:not(.hp-dining-eyebrow) { max-width: 40ch; font-size: 1rem; font-weight: 300; line-height: 1.65; color: var(--g70); }
 .hp .hp-dining-action { width: fit-content; max-width: 100%; margin-top: 4px; }
 .hp .hp-dining-image { position: relative; margin: 0; min-width: 0; }
+.hp .hp-dining-new { position: absolute; top: 12px; left: 0; padding: 9px 13px; border-radius: 4px; background: var(--gold); color: var(--graphite); font-size: 0.7rem; line-height: 1; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
 .hp .hp-dining-image img { width: 100%; height: clamp(270px, 26vw, 380px); object-fit: contain; }
 .hp .hp-dining-image figcaption { display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 10px; font-size: 0.8rem; line-height: 1.5; font-weight: 500; }
 .hp .hp-dining-image figcaption span { font-weight: 400; color: var(--g70); }
