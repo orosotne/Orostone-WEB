@@ -35,7 +35,8 @@ import { SPRING, FADE } from '../../lib/motion';
 const DELAY_MS = 8000;
 // Pages where an offer would get in the way of finishing an order
 // /pre-kamenarstva: B2B page for stone workshops, the consumer welcome offer doesn't apply there
-const HIDDEN_ON = ['/objednavka-dokoncena', '/pre-kamenarstva'];
+// /odporucte: rules of the referral program, read by existing customers
+const HIDDEN_ON = ['/objednavka-dokoncena', '/pre-kamenarstva', '/odporucte'];
 // Welcome reward: free shipping on the first sample. Shopify free-shipping code, shipping up to 3 €, once per customer.
 // Welcome e-mail 01 also carries WELCOME5 (5 % on slabs), the code pop-up B offers, once its Klaviyo template with
 // WELCOME5 is uploaded (step 1 of the deploy order, lib/discountPopup.ts and jazykova-kontrola.md › Kolo 8).
