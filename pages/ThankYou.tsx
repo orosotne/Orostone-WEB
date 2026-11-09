@@ -1,32 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Check } from 'lucide-react';
-import { popPendingPurchase, trackMetaEvent } from '../hooks/useMetaPixel';
-import { trackGA4Purchase } from '../hooks/useGA4Ecommerce';
 import { SEOHead } from '../components/UI/SEOHead';
 import { ActionButton, Container, PHONE_HREF, PHONE_LABEL, Section } from '../components/Design';
 
 export const ThankYou: React.FC = () => {
-  const firedRef = useRef(false);
-
-  useEffect(() => {
-    if (firedRef.current) return;
-    firedRef.current = true;
-
-    const purchase = popPendingPurchase();
-    if (purchase) {
-      trackMetaEvent('Purchase', {
-        value: purchase.value,
-        currency: purchase.currency,
-        content_ids: purchase.content_ids,
-        content_type: 'product',
-        num_items: purchase.num_items,
-      });
-      trackGA4Purchase({
-        value: purchase.value,
-        items: purchase.items ?? purchase.content_ids.map(id => ({ item_id: id })),
-      });
-    }
-  }, []);
+  // A visit or a locally saved cart is not proof of payment. Shopify owns
+  // confirmed purchase events; this route only presents the existing message.
 
   return (
     <Section tone="chalk" className="flex min-h-[calc(100svh-4rem)] items-center lg:min-h-[calc(100svh-5rem)]">
