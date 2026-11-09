@@ -23,6 +23,7 @@ export const HomeDiningTables: React.FC = () => {
         </div>
       </div>
       <figure className="hp-dining-image">
+        <span className="hp-dining-new">Novinka</span>
         <img
           src="/images/home/orotable-pisa-tower-960.webp"
           srcSet="/images/home/orotable-pisa-tower-960.webp 960w, /images/home/orotable-pisa-tower-1600.webp 1600w"
