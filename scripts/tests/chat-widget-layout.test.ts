@@ -23,6 +23,7 @@ interface Marked {
 // Bars and buttons at the bottom edge. Those that stay in the DOM while slid away or faded out carry the attribute
 // only while they show; the cookie bar exists only while it shows.
 const AVOIDED: Marked[] = [
+  { file: 'components/Home/HomeDiningTables.tsx', marker: 'className="hp-dining-copy"', attribute: `${AVOID}=""` },
   { file: 'components/Layout/MobileCtaBar.tsx', marker: 'fixed inset-x-0 bottom-0', attribute: `${AVOID}={visible ? '' : undefined}` },
   { file: 'pages/ShopProductDetail.tsx', marker: 'os-glass fixed inset-x-0 bottom-0', attribute: `${AVOID}={showStickyBar ? '' : undefined}` },
   { file: 'components/UI/CookieBanner.tsx', marker: 'aria-label="Súhlas s cookies"', attribute: `${AVOID}=""` },

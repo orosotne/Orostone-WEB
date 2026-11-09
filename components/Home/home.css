@@ -49,6 +49,27 @@
 .hp .hp-hero-3d { flex-basis: 100%; }
 .hp .hp-hero-credit { position: absolute; right: var(--gutter); bottom: 18px; font-size: 0.7rem; font-weight: 500; color: var(--g70); }
 
+/* dining tables: an image-led entry to the separate Orotable shop */
+.hp .hp-dining { background: #fff; border-bottom: 1px solid var(--line); }
+.hp .hp-dining-in { display: grid; grid-template-columns: 1fr 1.15fr; align-items: center; gap: clamp(28px, 5vw, 80px); padding-block: 32px; }
+.hp .hp-dining-copy { display: grid; justify-items: start; gap: 18px; padding-block: 18px; }
+.hp .hp-dining-eyebrow::before { background: var(--gold); height: 3px; opacity: 1; }
+.hp .hp-dining h2 { font-size: clamp(1.8rem, 2.8vw, 2.65rem); font-weight: 600; line-height: 1.14; letter-spacing: -0.025em; }
+.hp .hp-dining-copy > p:not(.hp-dining-eyebrow) { max-width: 40ch; font-size: 1rem; font-weight: 300; line-height: 1.65; color: var(--g70); }
+.hp .hp-dining-action { width: fit-content; max-width: 100%; margin-top: 4px; }
+.hp .hp-dining-image { position: relative; margin: 0; min-width: 0; }
+.hp .hp-dining-image img { width: 100%; height: clamp(270px, 26vw, 380px); object-fit: contain; }
+.hp .hp-dining-image figcaption { display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 10px; font-size: 0.8rem; line-height: 1.5; font-weight: 500; }
+.hp .hp-dining-image figcaption span { font-weight: 400; color: var(--g70); }
+@media (max-width: 760px) {
+  .hp .hp-dining-in { grid-template-columns: 1fr; gap: 8px; padding-block: 32px; }
+  .hp .hp-dining-copy { gap: 16px; padding-block: 0; }
+  .hp .hp-dining-image { grid-row: 1; }
+  .hp .hp-dining-image img { height: auto; aspect-ratio: 4 / 3; max-height: 320px; }
+  .hp .hp-dining-image figcaption { justify-content: flex-start; margin-bottom: 20px; }
+  .hp .hp-dining-action > a { max-width: 100%; white-space: normal; line-height: 1.4; text-align: center; }
+}
+
 /* facts */
 .hp .hp-facts { background: var(--chalk); border-bottom: 1px solid var(--line); }
 .hp .hp-facts-in { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }

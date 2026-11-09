@@ -6,6 +6,7 @@ import { calculateSlabPrice } from '../lib/slab';
 import { OROSTONE_SELLER_LD } from '../lib/businessSchema';
 import { SEOHead } from '../components/UI/SEOHead';
 import { HomeHero } from '../components/Home/HomeHero';
+import { HomeDiningTables } from '../components/Home/HomeDiningTables';
 import { HomeFacts } from '../components/Home/HomeFacts';
 import { HomeDecors } from '../components/Home/HomeDecors';
 import { HomeMaterial } from '../components/Home/HomeMaterial';
@@ -20,7 +21,7 @@ import '../components/Home/home.css';
 // ===========================================
 // HOMEPAGE (new design, 2026-10)
 // ===========================================
-// Sections in order: hero → facts → decors (+ whole slab) → material → realizations →
+// Sections in order: hero → dining tables → facts → decors (+ whole slab) → material → realizations →
 // process (+ personal advice) → showroom (+ reviews) → guides → Instagram → gold band.
 // The SEO head and the ItemList JSON-LD are unchanged from the previous homepage.
 
@@ -102,6 +103,7 @@ export const Shop = () => {
       )}
 
       <HomeHero />
+      <HomeDiningTables />
       <HomeFacts />
       <HomeDecors />
       <HomeMaterial />
