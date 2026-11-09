@@ -8,6 +8,8 @@
 declare global {
   interface Window {
     gtag?: (...args: any[]) => void;
+    /** Registered by the consent-owned hook; reuses its single Google loader. */
+    _startOrostoneAnalytics?: () => boolean;
   }
 }
 
@@ -25,6 +27,17 @@ function hasAnalyticsConsent(gaId: string | undefined): boolean {
     // A withdrawal still applies when persisting the new choice failed.
     return !gaId || (window as unknown as Record<string, unknown>)[`ga-disable-${gaId}`] !== true;
   } catch {
+    return false;
+  }
+}
+
+/** An outgoing first click cannot wait for React's interaction effect to start Google. */
+export function startAnalyticsForNavigation(): boolean {
+  if (typeof window === 'undefined' || !hasAnalyticsConsent(getGA4Id())) return false;
+  try {
+    return window._startOrostoneAnalytics?.() === true;
+  } catch {
+    // A blocked tag or missing loader must never block the customer's navigation.
     return false;
   }
 }

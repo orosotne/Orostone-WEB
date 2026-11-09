@@ -100,6 +100,31 @@ test('one consent-owned GTM script configures manual pageviews, once per display
   assert.equal((h.pageviews()[1][2] as any).page_referrer, 'https://orostone.sk/');
 });
 
+test('an outgoing first click starts the same loader synchronously with consent before its event', () => {
+  const h = hookHost();
+  h.render('/', false);
+  assert.equal(h.host._startOrostoneAnalytics(), false, 'default preferences are not consent');
+  assert.equal(h.scripts.length, 0);
+  h.choice.hasConsented = true;
+  h.choice.preferences.marketing = false;
+  h.render('/', false);
+  assert.equal(h.scripts.length, 0, 'ordinary initial loading stays deferred');
+  assert.equal(h.host._startOrostoneAnalytics(), true);
+  assert.equal(h.scripts.length, 1, 'loader starts in the click, before React interaction effects');
+  h.host.gtag('event', 'dining_tables_click', {});
+  const consentIndex = h.calls.findIndex(call => call[0] === 'consent' && call[1] === 'update');
+  const clickIndex = h.calls.findIndex(call => call[1] === 'dining_tables_click');
+  assert.ok(consentIndex >= 0 && consentIndex < clickIndex);
+  assert.equal((h.calls[consentIndex][2] as any).analytics_storage, 'granted');
+  assert.equal((h.calls[consentIndex][2] as any).ad_storage, 'denied');
+  h.render('/', true);
+  h.host._startOrostoneAnalytics();
+  h.replayEffects();
+  assert.equal(h.scripts.length, 1, 'interaction and repeated clicks never inject another tag');
+  h.scripts[0].onload!();
+  assert.equal(h.pageviews().length, 1);
+});
+
 test('late loader uses current route and respects withdrawal before load or after reload', () => {
   const h = hookHost();
   h.choice.hasConsented = true;

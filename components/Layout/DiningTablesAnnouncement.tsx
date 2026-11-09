@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { useCookies } from '../../context/CookieContext';
-import { DINING_TABLES_ANNOUNCEMENT_URL, trackDiningTablesPromotionClick } from '../../services/diningTablesAnalytics';
+import { DINING_TABLES_ANNOUNCEMENT_URL, handleDiningTablesAnnouncementClick } from '../../services/diningTablesAnalytics';
 
 export const DiningTablesAnnouncement: React.FC = () => {
   const { hasConsented, preferences } = useCookies();
@@ -10,7 +10,7 @@ export const DiningTablesAnnouncement: React.FC = () => {
     <a
       className="site-table-announcement"
       href={DINING_TABLES_ANNOUNCEMENT_URL}
-      onClick={() => trackDiningTablesPromotionClick(hasConsented, preferences.analytics, 'announcement_bar')}
+      onClick={(event) => handleDiningTablesAnnouncementClick(event, hasConsented, preferences.analytics)}
     >
       <span className="site-table-announcement-label">Novinka</span>
       <span aria-hidden="true">·</span>
