@@ -144,7 +144,7 @@ test('ads show it only on the homepage, product, category and blog article pages
   for (const pathname of allowed) assert.equal(isAdOfferPage(pathname), true, pathname);
   const others = [
     '/checkout', '/objednavka-dokoncena', '/vzorky', '/vop', '/podmienky-rezervacie-ceny', '/ochrana-sukromia',
-    '/ochrana-sukromia/', '/cookies', '/odstupenie-od-zmluvy', '/reklamacie', '/doprava', '/kontakt', '/kariera', '/pre-kamenarstva',
+    '/ochrana-sukromia/', '/cookies', '/odstupenie-od-zmluvy', '/reklamacie', '/doprava', '/kontakt', '/kariera', '/pre-kamenarstva', '/odporucte',
     '/blog', '/kuchyne', '/realizacie', '/cennik', '/neexistuje', '/produkt', '/produkt/a/b', '/kategoria',
     '/kategoria/a/b/c', '/blog/a/b', '/doprava-zdarma-blog',
   ];

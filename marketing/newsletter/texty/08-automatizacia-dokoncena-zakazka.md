@@ -50,7 +50,7 @@ Radšej nie
 
 ### P. S.
 P. S. · Marián, Orostone
-Ak poznáte niekoho, kto práve rieši kuchyňu, pokojne mu dajte náš kontakt. Rád poradím aj jemu.
+Ak poznáte niekoho, kto práve rieši kuchyňu, dajte mu svoj kód [JANA-482]. Pri objednávke platní dostane 100 € z ceny materiálu a vy 150 €, keď zákazku zaplatí.
 
 ### Podpis značky
 Krása kameňa.

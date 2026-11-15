@@ -30,6 +30,7 @@ const Realizacie = lazyWithRetry(() => import('./pages/Realizacie').then(m => ({
 const Cennik = lazyWithRetry(() => import('./pages/Cennik').then(m => ({ default: m.Cennik })));
 const Kariera = lazyWithRetry(() => import('./pages/Kariera').then(m => ({ default: m.Kariera })));
 const PreKamenarstva = lazyWithRetry(() => import('./pages/PreKamenarstva').then(m => ({ default: m.PreKamenarstva })));
+const Odporucte = lazyWithRetry(() => import('./pages/Odporucte').then(m => ({ default: m.Odporucte })));
 
 // Dev-only reference sheet of the new design system — not part of production builds
 const DesignPreview = import.meta.env.DEV
@@ -100,6 +101,7 @@ export const appRoutes = (
     <Route path="/cennik" element={<Suspense fallback={minH}><Cennik /></Suspense>} />
     <Route path="/kariera" element={<Suspense fallback={minH}><Kariera /></Suspense>} />
     <Route path="/pre-kamenarstva" element={<Suspense fallback={minH}><PreKamenarstva /></Suspense>} />
+    <Route path="/odporucte" element={<Suspense fallback={minH}><Odporucte /></Suspense>} />
 
     {/* Legal */}
     <Route path="/vop" element={<Suspense fallback={minH}><VOP /></Suspense>} />
