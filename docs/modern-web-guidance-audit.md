@@ -20,6 +20,8 @@ Výkon (rýchlosť načítania, skákanie stránky) je na tom veľmi dobre, tam 
 |---|---|---|
 | `dark-mode-toggle`: prepínač témy ukladá voľbu do localStorage a nemení `<meta name="color-scheme">` | `context/ThemeContext.tsx:32` | **Falošný poplach.** Nejde o svetlý a tmavý režim, ale o dve palety „classic“ a „organic“. Návod sám hovorí, že prepínanie paliet sa nepočíta. Navyše tú tému dnes nič nepoužíva (pozri bod 7). |
 
+**Stav k 15. 11. 2026:** body 1 až 3 sú opravené v tom istom PR (#198), so súhlasom Martina.
+
 ## Zistenia podľa priority
 
 ### Vysoká priorita (malá práca, hneď to pomôže)

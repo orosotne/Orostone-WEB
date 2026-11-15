@@ -285,12 +285,13 @@ export const SiteHeader: React.FC = () => {
                 <input
                   id="site-search"
                   ref={searchInputRef}
-                  type="text"
+                  type="search"
+                  enterKeyHint="search"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Hľadať dekor…"
                   autoFocus
-                  className="w-full border-b border-brand-dark bg-transparent py-3 pl-7 pr-2 text-lg text-brand-dark placeholder:text-brand-muted focus:outline-none"
+                  className="w-full border-b border-brand-dark bg-transparent py-3 pl-7 pr-2 [&::-webkit-search-cancel-button]:appearance-none text-lg text-brand-dark placeholder:text-brand-muted focus:outline-none"
                 />
               </form>
               {searchResultsShown && (

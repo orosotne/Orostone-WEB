@@ -128,21 +128,21 @@ export const OdstupeniOdZmluvy: React.FC = () => {
             <p className={`${groupLabel} mb-3 mt-6`}>Údaje spotrebiteľa</p>
             <div className="space-y-4 break-inside-avoid">
               <div>
-                <label className="font-medium text-brand-dark mb-1 block">Meno a priezvisko:</label>
-                <input type="text" value={form.meno} onChange={update('meno')} className={inputClass} />
+                <label htmlFor="odstupenie-meno" className="font-medium text-brand-dark mb-1 block">Meno a priezvisko:</label>
+                <input id="odstupenie-meno" type="text" value={form.meno} autoComplete="name" onChange={update('meno')} className={inputClass} />
               </div>
               <div>
-                <label className="font-medium text-brand-dark mb-1 block">Adresa:</label>
-                <input type="text" value={form.adresa} onChange={update('adresa')} className={inputClass} />
+                <label htmlFor="odstupenie-adresa" className="font-medium text-brand-dark mb-1 block">Adresa:</label>
+                <input id="odstupenie-adresa" type="text" value={form.adresa} autoComplete="street-address" onChange={update('adresa')} className={inputClass} />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="font-medium text-brand-dark mb-1 block">E-mail:</label>
-                  <input type="email" value={form.email} onChange={update('email')} className={inputClass} />
+                  <label htmlFor="odstupenie-email" className="font-medium text-brand-dark mb-1 block">E-mail:</label>
+                  <input id="odstupenie-email" type="email" value={form.email} autoComplete="email" onChange={update('email')} className={inputClass} />
                 </div>
                 <div>
-                  <label className="font-medium text-brand-dark mb-1 block">Telefón:</label>
-                  <input type="tel" value={form.telefon} onChange={update('telefon')} className={inputClass} />
+                  <label htmlFor="odstupenie-telefon" className="font-medium text-brand-dark mb-1 block">Telefón:</label>
+                  <input id="odstupenie-telefon" type="tel" value={form.telefon} autoComplete="tel" onChange={update('telefon')} className={inputClass} />
                 </div>
               </div>
             </div>
@@ -151,44 +151,44 @@ export const OdstupeniOdZmluvy: React.FC = () => {
             <p className={`${groupLabel} mb-3 mt-8`}>Údaje o tovare</p>
             <div className="space-y-4 break-inside-avoid">
               <div>
-                <label className="font-medium text-brand-dark mb-1 block">Názov tovaru:</label>
-                <input type="text" value={form.nazovTovaru} onChange={update('nazovTovaru')} className={inputClass} />
+                <label htmlFor="odstupenie-nazovTovaru" className="font-medium text-brand-dark mb-1 block">Názov tovaru:</label>
+                <input id="odstupenie-nazovTovaru" type="text" value={form.nazovTovaru} onChange={update('nazovTovaru')} className={inputClass} />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="font-medium text-brand-dark mb-1 block">Počet kusov:</label>
-                  <input type="text" value={form.pocetKusov} onChange={update('pocetKusov')} className={inputClass} />
+                  <label htmlFor="odstupenie-pocetKusov" className="font-medium text-brand-dark mb-1 block">Počet kusov:</label>
+                  <input id="odstupenie-pocetKusov" type="text" value={form.pocetKusov} onChange={update('pocetKusov')} className={inputClass} />
                 </div>
                 <div>
-                  <label className="font-medium text-brand-dark mb-1 block">Číslo objednávky:</label>
-                  <input type="text" value={form.cisloObjednavky} onChange={update('cisloObjednavky')} className={inputClass} />
+                  <label htmlFor="odstupenie-cisloObjednavky" className="font-medium text-brand-dark mb-1 block">Číslo objednávky:</label>
+                  <input id="odstupenie-cisloObjednavky" type="text" value={form.cisloObjednavky} onChange={update('cisloObjednavky')} className={inputClass} />
                 </div>
               </div>
               <div>
-                <label className="font-medium text-brand-dark mb-1 block">Číslo faktúry <span className="font-normal text-brand-muted">(ak bolo vystavené)</span>:</label>
-                <input type="text" value={form.cisloFaktury} onChange={update('cisloFaktury')} className={inputClass} />
+                <label htmlFor="odstupenie-cisloFaktury" className="font-medium text-brand-dark mb-1 block">Číslo faktúry <span className="font-normal text-brand-muted">(ak bolo vystavené)</span>:</label>
+                <input id="odstupenie-cisloFaktury" type="text" value={form.cisloFaktury} onChange={update('cisloFaktury')} className={inputClass} />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="font-medium text-brand-dark mb-1 block">Dátum objednania:</label>
-                  <input type="text" value={form.datumObjednania} onChange={update('datumObjednania')} placeholder="dd.mm.rrrr" className={inputClass} />
+                  <label htmlFor="odstupenie-datumObjednania" className="font-medium text-brand-dark mb-1 block">Dátum objednania:</label>
+                  <input id="odstupenie-datumObjednania" type="text" value={form.datumObjednania} onChange={update('datumObjednania')} placeholder="dd.mm.rrrr" className={inputClass} />
                 </div>
                 <div>
-                  <label className="font-medium text-brand-dark mb-1 block">Dátum prevzatia tovaru:</label>
-                  <input type="text" value={form.datumPrevzatia} onChange={update('datumPrevzatia')} placeholder="dd.mm.rrrr" className={inputClass} />
+                  <label htmlFor="odstupenie-datumPrevzatia" className="font-medium text-brand-dark mb-1 block">Dátum prevzatia tovaru:</label>
+                  <input id="odstupenie-datumPrevzatia" type="text" value={form.datumPrevzatia} onChange={update('datumPrevzatia')} placeholder="dd.mm.rrrr" className={inputClass} />
                 </div>
               </div>
               <div>
-                <label className="font-medium text-brand-dark mb-1 block">Dôvod odstúpenia <span className="font-normal text-brand-muted">(nepovinné)</span>:</label>
-                <textarea value={form.dovod} onChange={update('dovod')} rows={2} className="w-full resize-none rounded-[3px] border-2 border-dashed border-brand-dark/25 bg-transparent p-2.5 text-sm text-brand-dark outline-none transition-colors focus:border-brand-dark print:border-solid print:border-gray-400" />
+                <label htmlFor="odstupenie-dovod" className="font-medium text-brand-dark mb-1 block">Dôvod odstúpenia <span className="font-normal text-brand-muted">(nepovinné)</span>:</label>
+                <textarea id="odstupenie-dovod" value={form.dovod} onChange={update('dovod')} rows={2} className="w-full resize-none rounded-[3px] border-2 border-dashed border-brand-dark/25 bg-transparent p-2.5 text-sm text-brand-dark outline-none transition-colors focus:border-brand-dark print:border-solid print:border-gray-400" />
               </div>
             </div>
 
             {/* Vrátenie platby */}
             <p className={`${groupLabel} mb-3 mt-8`}>Vrátenie platby</p>
             <div>
-              <label className="font-medium text-brand-dark mb-1 block">Číslo bankového účtu (IBAN):</label>
-              <input type="text" value={form.iban} onChange={update('iban')} placeholder="SK00 0000 0000 0000 0000 0000" className={inputClass} />
+              <label htmlFor="odstupenie-iban" className="font-medium text-brand-dark mb-1 block">Číslo bankového účtu (IBAN):</label>
+              <input id="odstupenie-iban" type="text" value={form.iban} onChange={update('iban')} placeholder="SK00 0000 0000 0000 0000 0000" className={inputClass} />
             </div>
 
             {/* Dátum a podpis */}

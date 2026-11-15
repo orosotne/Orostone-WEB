@@ -105,12 +105,13 @@ const NewsletterWidget: React.FC = () => {
         <input
           id="footer-newsletter"
           type="email"
+          autoComplete="email"
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           onFocus={turnstile.arm}
           placeholder="vas@email.sk"
-          className="min-h-[46px] flex-1 rounded-[10px] border border-brand-light/20 bg-brand-light/5 px-4 text-sm text-brand-light placeholder:text-brand-light/60 transition-colors focus:border-brand-gold focus:outline-none"
+          className="min-h-[46px] flex-1 rounded-[10px] border border-brand-light/20 bg-brand-light/5 px-4 text-base sm:text-sm text-brand-light placeholder:text-brand-light/60 transition-colors focus:border-brand-gold focus:outline-none"
         />
         <button
           type="submit"
