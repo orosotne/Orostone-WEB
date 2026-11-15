@@ -64,6 +64,7 @@
 
 /* New design system (2026-10): one content grid and one section rhythm for the whole site */
 :root {
+  color-scheme: light; /* the site has no dark version; keeps form controls and scrollbars light */
   --os-edge: clamp(20px, 5.5vw, 104px);
   --os-band: clamp(72px, 8vw, 120px);
 }
